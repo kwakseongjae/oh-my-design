@@ -1,426 +1,369 @@
 ---
-id: payhere
 name: Payhere
-display_name_kr: 페이히어
-country: KR
-category: fintech
-homepage: "https://payhere.in/"
-primary_color: "#0077fe"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=payhere.in&sz=128"
-verified: "2026-09-30"
-added: "2026-07-02"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://payhere.in/", inspected: "2026-09-30" }
-    - { id: surface-2, kind: marketing-product, url: "https://payhere.in/table-order/", inspected: "2026-09-30" }
-    - { id: surface-3, kind: marketing-product, url: "https://payhere.in/hardware/terminal/", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://payhere.in/", captured: "2026-09-30" }
-    - { id: surface-surface-2, kind: product-surface, url: "https://payhere.in/table-order/", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://payhere.in/hardware/terminal/", captured: "2026-09-30" }
-    - { id: payhere-probe-terminal, kind: product-surface, url: "https://payhere.in/hardware/terminal/", captured: "2026-09-30" }
-    - { id: company-info, kind: official-doc, url: "https://payhere.in/company-info", captured: "2026-09-30" }
-    - { id: welcome-kit, kind: official-doc, url: "https://tech.payhere.in/post/design-payhere-welcome-kit/", captured: "2026-09-30" }
-    - { id: careers, kind: official-doc, url: "https://careers.payhere.in/recruit/", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &pbuy { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"26\"]", captured: "2026-09-30" }
-    "tokens.colors.on-primary": *pbuy
-    "tokens.colors.header-action": &phead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
-    "tokens.colors.ink": &pbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.canvas": &pcanvas { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.colors.navy": &pcat { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.colors.deep-navy": &pinput { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"76\"]", captured: "2026-09-30" }
-    "tokens.colors.slate": &pslate { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h2", captured: "2026-09-30" }
-    "tokens.colors.body-muted": &plabeloff { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.colors.muted": &psubmit { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"78\"]", captured: "2026-09-30" }
-    "tokens.colors.inactive": &pinactive { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
-    "tokens.colors.surface": *pcat
-    "tokens.colors.surface-alt": &palt { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.colors.line": *pinput
-    "tokens.colors.inverse": &pdark { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.colors.selected-on-dark": &pdarkon { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"72\"]", captured: "2026-09-30" }
-    "tokens.colors.night": &pnight { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"42\"]", captured: "2026-09-30" }
-    "tokens.colors.badge-event": &pbadge { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.colors.badge-hot": *pbadge
-    "tokens.colors.badge-official": &pnaver { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.typography.family.primary": *pbody
-    "tokens.typography.display-xl.size": &pxl { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
-    "tokens.typography.display-xl.weight": *pxl
-    "tokens.typography.display-xl.lineHeight": *pxl
-    "tokens.typography.display-xl.tracking": *pxl
-    "tokens.typography.display-xl.use": *pxl
-    "tokens.typography.display.size": &pdisp { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
-    "tokens.typography.display.weight": *pdisp
-    "tokens.typography.display.lineHeight": *pdisp
-    "tokens.typography.display.tracking": *pdisp
-    "tokens.typography.display.use": *pdisp
-    "tokens.typography.section.size": &ph2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
-    "tokens.typography.section.weight": *ph2
-    "tokens.typography.section.lineHeight": *ph2
-    "tokens.typography.section.tracking": *ph2
-    "tokens.typography.section.use": *ph2
-    "tokens.typography.subsection.size": &psub { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
-    "tokens.typography.subsection.weight": *psub
-    "tokens.typography.subsection.lineHeight": *psub
-    "tokens.typography.subsection.tracking": *psub
-    "tokens.typography.subsection.use": *psub
-    "tokens.typography.title.size": &ptitle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
-    "tokens.typography.title.weight": *ptitle
-    "tokens.typography.title.lineHeight": *ptitle
-    "tokens.typography.title.tracking": *ptitle
-    "tokens.typography.title.use": *ptitle
-    "tokens.typography.card-title.size": *pcat
-    "tokens.typography.card-title.weight": *pcat
-    "tokens.typography.card-title.lineHeight": *pcat
-    "tokens.typography.card-title.tracking": *pcat
-    "tokens.typography.card-title.use": *pcat
-    "tokens.typography.card-heading.size": &pcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
-    "tokens.typography.card-heading.weight": *pcard
-    "tokens.typography.card-heading.lineHeight": *pcard
-    "tokens.typography.card-heading.tracking": *pcard
-    "tokens.typography.card-heading.use": *pcard
-    "tokens.typography.lead.size": *pslate
-    "tokens.typography.lead.weight": *pslate
-    "tokens.typography.lead.lineHeight": *pslate
-    "tokens.typography.lead.tracking": *pslate
-    "tokens.typography.lead.use": *pslate
-    "tokens.typography.tab.size": &ptabon { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
-    "tokens.typography.tab.weight": *ptabon
-    "tokens.typography.tab.lineHeight": *ptabon
-    "tokens.typography.tab.tracking": *ptabon
-    "tokens.typography.tab.use": *ptabon
-    "tokens.typography.body-lg.size": &pdesc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.typography.body-lg.weight": *pdesc
-    "tokens.typography.body-lg.lineHeight": *pdesc
-    "tokens.typography.body-lg.tracking": *pdesc
-    "tokens.typography.body-lg.use": *pdesc
-    "tokens.typography.button.size": &pdetail { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-09-30" }
-    "tokens.typography.button.weight": *pdetail
-    "tokens.typography.button.lineHeight": *pdetail
-    "tokens.typography.button.tracking": *pdetail
-    "tokens.typography.button.use": *pdetail
-    "tokens.typography.field.size": *pinput
-    "tokens.typography.field.weight": *pinput
-    "tokens.typography.field.lineHeight": *pinput
-    "tokens.typography.field.use": *pinput
-    "tokens.typography.body.size": *pbody
-    "tokens.typography.body.weight": *pbody
-    "tokens.typography.body.lineHeight": *pbody
-    "tokens.typography.body.use": *pbody
-    "tokens.typography.badge.size": *pbadge
-    "tokens.typography.badge.weight": *pbadge
-    "tokens.typography.badge.lineHeight": *pbadge
-    "tokens.typography.badge.tracking": *pbadge
-    "tokens.typography.badge.use": *pbadge
-    "tokens.typography.menu.size": &pmenu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"95\"]", captured: "2026-09-30" }
-    "tokens.typography.menu.weight": *pmenu
-    "tokens.typography.menu.lineHeight": *pmenu
-    "tokens.typography.menu.tracking": *pmenu
-    "tokens.typography.menu.use": *pmenu
-    "tokens.typography.caption.size": &pextra { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"164\"]", captured: "2026-09-30" }
-    "tokens.typography.caption.weight": *pextra
-    "tokens.typography.caption.lineHeight": *pextra
-    "tokens.typography.caption.tracking": *pextra
-    "tokens.typography.caption.use": *pextra
-    "tokens.spacing.header-x": *phead
-    "tokens.spacing.pill-y": &ptaboff { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-09-30" }
-    "tokens.spacing.pill-x": *ptaboff
-    "tokens.spacing.field": *pinput
-    "tokens.spacing.card": &pcontact { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.spacing.contact-card": *pcontact
-    "tokens.rounded.header": *phead
-    "tokens.rounded.field": *pinput
-    "tokens.rounded.action": *pdetail
-    "tokens.rounded.float": &pfab { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"173\"]", captured: "2026-09-30" }
-    "tokens.rounded.card": *pcontact
-    "tokens.rounded.pill": *ptaboff
-    "tokens.rounded.badge": *pbadge
-    "tokens.rounded.capsule": &ppricecta { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-09-30" }
-    "tokens.shadow.float": *pfab
-    "tokens.shadow.card": &pprice { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::div", captured: "2026-09-30" }
-    "tokens.shadow.header-ring": &poutline { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
-    "tokens.components.purchase-button.type": *pbuy
-    "tokens.components.purchase-button.bg": *pbuy
-    "tokens.components.purchase-button.fg": *pbuy
-    "tokens.components.purchase-button.radius": *pbuy
-    "tokens.components.purchase-button.padding": *pbuy
-    "tokens.components.purchase-button.height": *pbuy
-    "tokens.components.purchase-button.width": *pbuy
-    "tokens.components.purchase-button.font": *pbuy
-    "tokens.components.purchase-button.states": *pbuy
-    "tokens.components.purchase-button.use": *pbuy
-    "tokens.components.detail-button.type": *pdetail
-    "tokens.components.detail-button.bg": *pdetail
-    "tokens.components.detail-button.fg": *pdetail
-    "tokens.components.detail-button.radius": *pdetail
-    "tokens.components.detail-button.padding": *pdetail
-    "tokens.components.detail-button.height": *pdetail
-    "tokens.components.detail-button.width": *pdetail
-    "tokens.components.detail-button.font": *pdetail
-    "tokens.components.detail-button.states": *pdetail
-    "tokens.components.detail-button.use": *pdetail
-    "tokens.components.header-button.type": *phead
-    "tokens.components.header-button.bg": *phead
-    "tokens.components.header-button.fg": *phead
-    "tokens.components.header-button.radius": *phead
-    "tokens.components.header-button.padding": *phead
-    "tokens.components.header-button.height": *phead
-    "tokens.components.header-button.font": *phead
-    "tokens.components.header-button.hover": &pheadprobe { surface_id: surface-3, source_id: payhere-probe-terminal, method: live-state-probe, selector: "a 카드 단말기 (110.1 x 40, header, href /hardware/): rest bg rgb(0, 140, 255); hover and pressed NO CHANGE across self and 3 ancestor levels, transition all 0s", captured: "2026-09-30" }
-    "tokens.components.header-button.pressed": *pheadprobe
-    "tokens.components.header-button.use": *phead
-    "tokens.components.header-outline-button.type": *poutline
-    "tokens.components.header-outline-button.bg": *poutline
-    "tokens.components.header-outline-button.fg": *poutline
-    "tokens.components.header-outline-button.radius": *poutline
-    "tokens.components.header-outline-button.padding": *poutline
-    "tokens.components.header-outline-button.height": *poutline
-    "tokens.components.header-outline-button.font": *poutline
-    "tokens.components.header-outline-button.shadow": *poutline
-    "tokens.components.header-outline-button.hover": &poutprobe { surface_id: surface-3, source_id: payhere-probe-terminal, method: live-state-probe, selector: "a 테이블 오더 (110.1 x 40, header, href /table-order/): rest inset ring rgb(0, 140, 255); hover and pressed NO CHANGE across self and 3 ancestor levels", captured: "2026-09-30" }
-    "tokens.components.header-outline-button.pressed": *poutprobe
-    "tokens.components.header-outline-button.use": *poutline
-    "tokens.components.header-text-button.type": &plogin { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-09-30" }
-    "tokens.components.header-text-button.bg": *plogin
-    "tokens.components.header-text-button.fg": *plogin
-    "tokens.components.header-text-button.radius": *plogin
-    "tokens.components.header-text-button.padding": *plogin
-    "tokens.components.header-text-button.height": *plogin
-    "tokens.components.header-text-button.font": *plogin
-    "tokens.components.header-text-button.states": *plogin
-    "tokens.components.header-text-button.use": *plogin
-    "tokens.components.pill-tab.type": *ptaboff
-    "tokens.components.pill-tab.bg": *ptaboff
-    "tokens.components.pill-tab.fg": *ptaboff
-    "tokens.components.pill-tab.radius": *ptaboff
-    "tokens.components.pill-tab.padding": *ptaboff
-    "tokens.components.pill-tab.height": *ptaboff
-    "tokens.components.pill-tab.font": *ptaboff
-    "tokens.components.pill-tab.selected": *ptabon
-    "tokens.components.pill-tab.states": *ptaboff
-    "tokens.components.pill-tab.use": *ptaboff
-    "tokens.components.toggle-tab.type": &ptogoff { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"33\"]", captured: "2026-09-30" }
-    "tokens.components.toggle-tab.bg": *ptogoff
-    "tokens.components.toggle-tab.fg": *ptogoff
-    "tokens.components.toggle-tab.radius": *ptogoff
-    "tokens.components.toggle-tab.padding": *ptogoff
-    "tokens.components.toggle-tab.height": *ptogoff
-    "tokens.components.toggle-tab.font": *ptogoff
-    "tokens.components.toggle-tab.selected": &ptogon { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"32\"]", captured: "2026-09-30" }
-    "tokens.components.toggle-tab.states": *ptogoff
-    "tokens.components.toggle-tab.use": *ptogoff
-    "tokens.components.step-tab.type": &pstepoff { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"41\"]", captured: "2026-09-30" }
-    "tokens.components.step-tab.bg": *pstepoff
-    "tokens.components.step-tab.fg": *pstepoff
-    "tokens.components.step-tab.border": *pstepoff
-    "tokens.components.step-tab.padding": *pstepoff
-    "tokens.components.step-tab.height": *pstepoff
-    "tokens.components.step-tab.font": *pstepoff
-    "tokens.components.step-tab.selected": &pstep { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"40\"]", captured: "2026-09-30" }
-    "tokens.components.step-tab.states": *pstepoff
-    "tokens.components.step-tab.use": *pstepoff
-    "tokens.components.category-card.type": *pcat
-    "tokens.components.category-card.bg": *pcat
-    "tokens.components.category-card.fg": *pcat
-    "tokens.components.category-card.radius": *pcat
-    "tokens.components.category-card.padding": *pcat
-    "tokens.components.category-card.height": *pcat
-    "tokens.components.category-card.font": *pcat
-    "tokens.components.category-card.use": *pcat
-    "tokens.components.category-badge.type": *pbadge
-    "tokens.components.category-badge.bg": *pbadge
-    "tokens.components.category-badge.fg": *pbadge
-    "tokens.components.category-badge.radius": *pbadge
-    "tokens.components.category-badge.padding": *pbadge
-    "tokens.components.category-badge.height": *pbadge
-    "tokens.components.category-badge.font": *pbadge
-    "tokens.components.category-badge.use": *pbadge
-    "tokens.components.hero-badge.type": &pbanner { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::span", captured: "2026-09-30" }
-    "tokens.components.hero-badge.bg": *pbanner
-    "tokens.components.hero-badge.fg": *pbanner
-    "tokens.components.hero-badge.radius": *pbanner
-    "tokens.components.hero-badge.padding": *pbanner
-    "tokens.components.hero-badge.height": *pbanner
-    "tokens.components.hero-badge.font": *pbanner
-    "tokens.components.hero-badge.use": *pbanner
-    "tokens.components.content-card.type": *pcontact
-    "tokens.components.content-card.bg": *pcontact
-    "tokens.components.content-card.border": *pcontact
-    "tokens.components.content-card.radius": *pcontact
-    "tokens.components.content-card.padding": *pcontact
-    "tokens.components.content-card.use": *pcontact
-    "tokens.components.price-card.type": *pprice
-    "tokens.components.price-card.bg": *pprice
-    "tokens.components.price-card.border": *pprice
-    "tokens.components.price-card.radius": *pprice
-    "tokens.components.price-card.padding": *pprice
-    "tokens.components.price-card.shadow": *pprice
-    "tokens.components.price-card.use": *pprice
-    "tokens.components.text-field.type": *pinput
-    "tokens.components.text-field.bg": *pinput
-    "tokens.components.text-field.fg": *pinput
-    "tokens.components.text-field.border": *pinput
-    "tokens.components.text-field.radius": *pinput
-    "tokens.components.text-field.padding": *pinput
-    "tokens.components.text-field.height": *pinput
-    "tokens.components.text-field.font": *pinput
-    "tokens.components.text-field.states": *pinput
-    "tokens.components.text-field.use": *pinput
-    "tokens.components.form-submit.type": *psubmit
-    "tokens.components.form-submit.bg": *psubmit
-    "tokens.components.form-submit.fg": *psubmit
-    "tokens.components.form-submit.radius": *psubmit
-    "tokens.components.form-submit.padding": *psubmit
-    "tokens.components.form-submit.height": *psubmit
-    "tokens.components.form-submit.font": *psubmit
-    "tokens.components.form-submit.states": *psubmit
-    "tokens.components.form-submit.use": *psubmit
-    "tokens.components.pricing-cta.type": *ppricecta
-    "tokens.components.pricing-cta.bg": *ppricecta
-    "tokens.components.pricing-cta.fg": *ppricecta
-    "tokens.components.pricing-cta.radius": *ppricecta
-    "tokens.components.pricing-cta.padding": *ppricecta
-    "tokens.components.pricing-cta.height": *ppricecta
-    "tokens.components.pricing-cta.font": *ppricecta
-    "tokens.components.pricing-cta.states": *ppricecta
-    "tokens.components.pricing-cta.use": *ppricecta
-    "tokens.components.floating-cta.type": &pfloat { surface_id: surface-3, source_id: payhere-probe-terminal, method: live-state-probe, selector: "button 지금 25% 할인받기 (384 x 64): own bg transparent, ancestors 1-3 transparent; background-image linear-gradient(290.64deg, rgb(22, 59, 216) 6.63%, rgb(61, 167, 255) 107.33%); hover and pressed NO CHANGE, transition all 0s", captured: "2026-09-30" }
-    "tokens.components.floating-cta.bg": *pfloat
-    "tokens.components.floating-cta.fg": *pfloat
-    "tokens.components.floating-cta.radius": *pfloat
-    "tokens.components.floating-cta.height": *pfloat
-    "tokens.components.floating-cta.width": *pfloat
-    "tokens.components.floating-cta.shadow": *pfloat
-    "tokens.components.floating-cta.font": *pfloat
-    "tokens.components.floating-cta.hover": *pfloat
-    "tokens.components.floating-cta.pressed": *pfloat
-    "tokens.components.floating-cta.use": *pfloat
-    "tokens.components.floating-secondary.type": &pfloat2 { surface_id: surface-3, source_id: payhere-probe-terminal, method: live-state-probe, selector: "button 올인원 카드 단말기 (384 x 64): bg rgb(245, 248, 250), border 1px solid rgb(245, 248, 250), radius 50px, shadow rgba(0, 0, 0, 0.21) 0px 4px 12px 0px; hover and pressed NO CHANGE", captured: "2026-09-30" }
-    "tokens.components.floating-secondary.bg": *pfloat2
-    "tokens.components.floating-secondary.fg": &pfloat2label { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::span", captured: "2026-09-30" }
-    "tokens.components.floating-secondary.border": *pfloat2
-    "tokens.components.floating-secondary.radius": *pfloat2
-    "tokens.components.floating-secondary.height": *pfloat2
-    "tokens.components.floating-secondary.width": *pfloat2
-    "tokens.components.floating-secondary.shadow": *pfloat2
-    "tokens.components.floating-secondary.hover": *pfloat2
-    "tokens.components.floating-secondary.use": *pfloat2
-    "tokens.components.carousel-arrow.type": &parrow { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
-    "tokens.components.carousel-arrow.bg": *parrow
-    "tokens.components.carousel-arrow.border": *parrow
-    "tokens.components.carousel-arrow.radius": *parrow
-    "tokens.components.carousel-arrow.height": *parrow
-    "tokens.components.carousel-arrow.width": *parrow
-    "tokens.components.carousel-arrow.hover": &parrowst { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"6\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.carousel-arrow.pressed": *parrowst
-    "tokens.components.carousel-arrow.use": *parrow
-    "tokens.components.floating-button.type": *pfab
-    "tokens.components.floating-button.bg": *pfab
-    "tokens.components.floating-button.radius": *pfab
-    "tokens.components.floating-button.height": *pfab
-    "tokens.components.floating-button.width": *pfab
-    "tokens.components.floating-button.shadow": *pfab
-    "tokens.components.floating-button.states": *pfab
-    "tokens.components.floating-button.use": *pfab
-    "tokens.components.contact-card.type": &pcontactcard { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"42\"]", captured: "2026-09-30" }
-    "tokens.components.contact-card.bg": *pcontactcard
-    "tokens.components.contact-card.fg": *pcontactcard
-    "tokens.components.contact-card.radius": *pcontactcard
-    "tokens.components.contact-card.padding": *pcontactcard
-    "tokens.components.contact-card.height": *pcontactcard
-    "tokens.components.contact-card.width": *pcontactcard
-    "tokens.components.contact-card.use": *pcontactcard
-    "tokens.components.download-button.type": &pdl { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
-    "tokens.components.download-button.bg": *pdl
-    "tokens.components.download-button.border": *pdl
-    "tokens.components.download-button.radius": *pdl
-    "tokens.components.download-button.height": *pdl
-    "tokens.components.download-button.width": *pdl
-    "tokens.components.download-button.states": *pdl
-    "tokens.components.download-button.use": *pdl
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#0077fe"
-    on-primary: "#ffffff"
-    header-action: "#008cff"
-    ink: "#000000"
-    canvas: "#ffffff"
-    navy: "#1c2638"
-    deep-navy: "#101a2e"
-    slate: "#2b3648"
-    body-muted: "#5f6976"
-    muted: "#919ba5"
-    inactive: "#c1cad2"
-    surface: "#f5f8fa"
-    surface-alt: "#f4f8f9"
-    line: "#e2e8ee"
-    inverse: "#000000"
-    selected-on-dark: "#33abff"
-    night: "#0e1d40"
-    badge-event: "#f96eae"
-    badge-hot: "#ff5b46"
-    badge-official: "#08d07e"
-  typography:
-    family: { primary: "Noto Sans KR" }
-    display-xl: { size: 56, weight: 700, lineHeight: 1.39, tracking: -1, use: "Feature headline on the table-order page (NaverPlace sub-section), #0e1d40" }
-    display: { size: 48, weight: 700, lineHeight: 1.375, tracking: -1, use: "Terminal page hero title (h1) and the home dark-section title" }
-    section: { size: 44, weight: 700, lineHeight: 1.41, tracking: -1, use: "Section titles (SectionTitle h2); the #1c2638 variant keeps normal tracking" }
-    subsection: { size: 36, weight: 700, lineHeight: 1.5, tracking: -1, use: "Stand and hardware sub-titles (h3)" }
-    title: { size: 32, weight: 700, lineHeight: 1.5, tracking: -1, use: "Scroll-slider titles and the 구입하기 → label" }
-    card-title: { size: 26, weight: 700, lineHeight: 1.38, tracking: -1, use: "Category selector labels and blue section descriptions" }
-    card-heading: { size: 24, weight: 700, lineHeight: 1.5, tracking: -1, use: "Feature-card titles (#101a2e) and FAQ questions" }
-    lead: { size: 24, weight: 400, lineHeight: 1.5, tracking: -1, use: "Section description under the title on the terminal page (#2b3648)" }
-    tab: { size: 20, weight: 700, lineHeight: 1.6, tracking: -1, use: "Selected pill-tab label; unselected labels use weight 400" }
-    body-lg: { size: 20, weight: 400, lineHeight: 1.6, tracking: -0.5, use: "Feature-card description lines (#1c2638)" }
-    button: { size: 18, weight: 700, lineHeight: 1.0, tracking: -0.5, use: "자세히 보기 action label" }
-    field: { size: 16, weight: 400, lineHeight: 1.5, use: "Form inputs; they render in Arial because they do not inherit Noto Sans KR" }
-    body: { size: 16, weight: 400, lineHeight: 1.0, use: "Document default on body (computed 16px line height)" }
-    badge: { size: 16, weight: 700, lineHeight: 1.0, tracking: -0.5, use: "Category badges (BEST, EVENT, HOT)" }
-    menu: { size: 14, weight: 400, lineHeight: 1.86, tracking: -1, use: "Footer category menu links (#c1cad2)" }
-    caption: { size: 12, weight: 400, lineHeight: 1.83, tracking: -1, use: "Footer legal and external links" }
-  spacing: { header-x: 16, pill-y: 12, pill-x: 24, field: 12, card: 32, contact-card: 48 }
-  rounded: { header: 5, field: 8, action: 12, float: 16, card: 24, pill: 30, badge: 50, capsule: 100 }
-  shadow:
-    float: "rgba(0, 0, 0, 0.21) 0px 4px 12px 0px"
-    card: "rgba(0, 0, 0, 0.08) 0px 3px 15px 0px"
-    header-ring: "rgb(0, 140, 255) 0px 0px 0px 1px inset"
-  components:
-    purchase-button: { type: "button", bg: "#0077fe", fg: "#ffffff", radius: "0px 0px 24px 24px", padding: "24px 0px", height: "96px", width: "586px", font: "32px / 700 / 48px Noto Sans KR, letter-spacing -1px", states: "rest only; not probed", use: "구입하기 → closing the two hardware cards on the home (capture 26)" }
-    detail-button: { type: "button", bg: "#0077fe", fg: "#ffffff", radius: "12px", padding: "16px", height: "50px", width: "334px", font: "18px / 700 / 18px Noto Sans KR, letter-spacing -0.5px", states: "rest only; not probed", use: "자세히 보기 under the three feature cards on the home (capture 32)" }
-    header-button: { type: "button", bg: "#008cff", fg: "#ffffff", radius: "5px", padding: "0px 16px", height: "40px", font: "16px / 700 / 16px Noto Sans KR", hover: "no change within the compared scope (self and three ancestor levels; transition 0s) (probe)", pressed: "no change within the compared scope (probe)", use: "카드 단말기 in the header of all three pages; links to /hardware/" }
-    header-outline-button: { type: "button", bg: "#ffffff", fg: "#008cff", radius: "5px", padding: "0px 16px", height: "40px", font: "16px / 700 / 16px Noto Sans KR", shadow: "rgb(0, 140, 255) 0px 0px 0px 1px inset", hover: "no change within the compared scope (probe)", pressed: "no change within the compared scope (probe)", use: "테이블 오더 in the header of all three pages; links to /table-order/" }
-    header-text-button: { type: "button", bg: "#ffffff", fg: "#1c2638", radius: "5px", padding: "0px 12px", height: "40px", font: "16px / 700 / 16px Noto Sans KR (label span)", states: "rest only; not probed", use: "The text link at the left of the two header buttons (로그인)" }
-    pill-tab: { type: "tab", bg: "#ffffff", fg: "#5f6976", radius: "30px", padding: "12px 24px", height: "56px", font: "20px / 400 / 32px Noto Sans KR, letter-spacing -1px (label span)", selected: "bg #0077fe, label #ffffff at 20px / 700 (capture 13 on the home, 17 on table-order)", states: "selected variant read from rest values (capture 13 against 14); no pointer frame", use: "Feature and industry pill tabs: NFC, 비대면 결제, 선불권 on the home; 한식 · 음식점 and others on table-order" }
-    toggle-tab: { type: "toggle", bg: "#e2e8ee", fg: "#5f6976", radius: "30px", padding: "12px 24px", height: "56px", font: "20px / 400 / 32px Noto Sans KR (label span)", selected: "bg #ffffff, label #008cff at 20px / 700 (capture 32)", states: "selected variant read from rest values (capture 32 against 33); no pointer frame", use: "POS-type and industry toggles in a #e2e8ee track (30px radius, 4px padding) on the terminal page" }
-    step-tab: { type: "tab", bg: "transparent", fg: "#c1cad2", border: "bottom 3px solid #c1cad2", padding: "16px 24px", height: "67px", font: "20px / 700 / 32px Noto Sans KR, letter-spacing -1px", selected: "fg #0077fe with a 3px #0077fe bottom border (capture 40)", states: "selected variant read from rest values (capture 40 against 41); no pointer frame", use: "The two onboarding steps on the terminal page (포스를 변경하려는 기존 사업자, 포스를 처음 사용하는 신규 사업자)" }
-    category-card: { type: "card", bg: "#f5f8fa", fg: "#1c2638", radius: "12px", padding: "20px 0px", height: "84px", font: "26px / 700 / 36px Noto Sans KR, letter-spacing -1px", use: "카드 단말기, 테이블 오더, 키오스크 and 인터넷 패키지 selectors under the home hero (capture 9)" }
-    category-badge: { type: "badge", bg: "#0077fe", fg: "#ffffff", radius: "50px", padding: "4px 8px 5px", height: "25px", font: "16px / 700 / 16px Noto Sans KR, letter-spacing -0.5px", use: "BEST over a category card; EVENT uses #f96eae and HOT #ff5b46" }
-    hero-badge: { type: "badge", bg: "#0077fe", fg: "#ffffff", radius: "50px", padding: "8px 20px", height: "44px", font: "18px / 700 / 28px Noto Sans KR, letter-spacing -0.5px", use: "사장님 맞춤형 1:1 밀착 컨설팅 above the table-order hero title" }
-    content-card: { type: "card", bg: "#ffffff", border: "1px solid #c1cad2", radius: "24px", padding: "48px", use: "Contact cards near the foot of the home; hardware and pricing cards use a 1px #e2e8ee border at the same radius" }
-    price-card: { type: "card", bg: "#ffffff", border: "1px solid #e2e8ee", radius: "24px", padding: "36px 24px", shadow: "rgba(0, 0, 0, 0.08) 0px 3px 15px 0px", use: "Free-price cards on the terminal page, 384 x 172" }
-    text-field: { type: "input", bg: "#ffffff", fg: "#101a2e", border: "1px solid #e2e8ee", radius: "8px", padding: "12px", height: "48px", font: "16px / 400 / 24px Arial", states: "rest only; focus was not measured", use: "Consultation form fields on the home and table-order; the first option of the table-order form carries a 1px #008cff border" }
-    form-submit: { type: "button", bg: "#919ba5", fg: "#ffffff", radius: "8px", padding: "16px 0px", height: "58px", font: "18px / 700 Noto Sans KR, letter-spacing -1px", states: "the fill observed on an empty form (the disabled attribute was false); the form was never filled, so no other fill was observed", use: "도입 문의하기 and 동의하고 무료 상담 submit buttons" }
-    pricing-cta: { type: "button", bg: "#000000", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "60px", font: "18px / 700 / 28px Noto Sans KR, letter-spacing -1px", states: "rest only", use: "도입 비용 계산해보기 on the table-order page (capture 15)" }
-    floating-cta: { type: "button", bg: "linear-gradient(290.64deg, #163bd8 6.63%, #3da7ff 107.33%)", fg: "#ffffff", radius: "50px", height: "64px", width: "384px", shadow: "rgba(0, 0, 0, 0.21) 0px 4px 12px 0px", font: "20px / 700 / 32px Noto Sans KR, letter-spacing -1px (label span)", hover: "no change within the compared scope (self, one descendant, three ancestor levels; transition 0s) (probe)", pressed: "no change within the compared scope (probe)", use: "지금 25% 할인받기, floating at the foot of the terminal page; its fill is a background-image gradient, not a background colour" }
-    floating-secondary: { type: "button", bg: "#f5f8fa", fg: "#0077fe", border: "1px solid #f5f8fa", radius: "50px", height: "64px", width: "384px", shadow: "rgba(0, 0, 0, 0.21) 0px 4px 12px 0px", hover: "no change within the compared scope (probe)", use: "올인원 카드 단말기 beside the floating CTA" }
-    carousel-arrow: { type: "button", bg: "#ffffff", border: "1px solid #c1cad2", radius: "100%", height: "48px", width: "48px", hover: "border #111111; both arrows read the same value in their hover and pressed frames", pressed: "border #111111", use: "Seller-review carousel arrows on the terminal page (captures 6 and 7)" }
-    floating-button: { type: "button", bg: "#ffffff", radius: "16px", height: "80px", width: "80px", shadow: "rgba(0, 0, 0, 0.21) 0px 4px 12px 0px", states: "rest only", use: "The chat floating button on every page; back-to-top on the home and the terminal page" }
-    contact-card: { type: "card", bg: "#0e1d40", fg: "#ffffff", radius: "24px", padding: "64px 0px", height: "205px", width: "384px", use: "채팅 상담 card on the terminal page; 전화 상담 and 희망일 상담 use #f5f8fa with #0c4a6e text" }
-    download-button: { type: "button", bg: "#ffffff", border: "1px solid #919ba5", radius: "8px", height: "72px", width: "241px", states: "rest only", use: "The four POS download buttons on the home (label 18px / 400 in #1c2638)" }
-  components_harvested: true
+colors:
+  primary: '#0077fe'
+  on-primary: '#ffffff'
+  header-action: '#008cff'
+  ink: '#000000'
+  canvas: '#ffffff'
+  navy: '#1c2638'
+  deep-navy: '#101a2e'
+  slate: '#2b3648'
+  body-muted: '#5f6976'
+  muted: '#919ba5'
+  inactive: '#c1cad2'
+  surface: '#f5f8fa'
+  surface-alt: '#f4f8f9'
+  line: '#e2e8ee'
+  inverse: '#000000'
+  selected-on-dark: '#33abff'
+  night: '#0e1d40'
+  badge-event: '#f96eae'
+  badge-hot: '#ff5b46'
+  badge-official: '#08d07e'
+typography:
+  display-xl:
+    fontSize: 56px
+    fontWeight: 700
+    lineHeight: 1.39
+    letterSpacing: '-1px'
+    use: 'Feature headline on the table-order page (NaverPlace sub-section), #0e1d40'
+  display:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.375
+    letterSpacing: '-1px'
+    use: Terminal page hero title (h1) and the home dark-section title
+  section:
+    fontSize: 44px
+    fontWeight: 700
+    lineHeight: 1.41
+    letterSpacing: '-1px'
+    use: 'Section titles (SectionTitle h2); the #1c2638 variant keeps normal tracking'
+  subsection:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-1px'
+    use: Stand and hardware sub-titles (h3)
+  title:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-1px'
+    use: Scroll-slider titles and the 구입하기 → label
+  card-title:
+    fontSize: 26px
+    fontWeight: 700
+    lineHeight: 1.38
+    letterSpacing: '-1px'
+    use: Category selector labels and blue section descriptions
+  card-heading:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-1px'
+    use: Feature-card titles (#101a2e) and FAQ questions
+  lead:
+    fontSize: 24px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-1px'
+    use: Section description under the title on the terminal page (#2b3648)
+  tab:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.6
+    letterSpacing: '-1px'
+    use: Selected pill-tab label; unselected labels use weight 400
+  body-lg:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: '-0.5px'
+    use: Feature-card description lines (#1c2638)
+  button:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: '-0.5px'
+    use: 자세히 보기 action label
+  field:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Form inputs; they render in Arial because they do not inherit Noto Sans KR
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1
+    use: Document default on body (computed 16px line height)
+  badge:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: '-0.5px'
+    use: Category badges (BEST, EVENT, HOT)
+  menu:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.86
+    letterSpacing: '-1px'
+    use: Footer category menu links (#c1cad2)
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.83
+    letterSpacing: '-1px'
+    use: Footer legal and external links
+rounded:
+  header: 5px
+  field: 8px
+  action: 12px
+  float: 16px
+  card: 24px
+  pill: 30px
+  badge: 50px
+  capsule: 100px
+spacing:
+  header-x: 16
+  pill-y: 12
+  pill-x: 24
+  field: 12
+  card: 32
+  contact-card: 48
+components:
+  purchase-button:
+    type: button
+    backgroundColor: '#0077fe'
+    textColor: '#ffffff'
+    rounded: 0px 0px 24px 24px
+    padding: 24px 0px
+    height: 96px
+    width: 586px
+    typography: 32px / 700 / 48px Noto Sans KR, letter-spacing -1px
+    states: rest only; not probed
+    use: 구입하기 → closing the two hardware cards on the home (capture 26)
+  detail-button:
+    type: button
+    backgroundColor: '#0077fe'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 16px
+    height: 50px
+    width: 334px
+    typography: 18px / 700 / 18px Noto Sans KR, letter-spacing -0.5px
+    states: rest only; not probed
+    use: 자세히 보기 under the three feature cards on the home (capture 32)
+  header-button:
+    type: button
+    backgroundColor: '#008cff'
+    textColor: '#ffffff'
+    rounded: 5px
+    padding: 0px 16px
+    height: 40px
+    typography: 16px / 700 / 16px Noto Sans KR
+    hover: no change within the compared scope (self and three ancestor levels; transition 0s) (probe)
+    pressed: no change within the compared scope (probe)
+    use: 카드 단말기 in the header of all three pages; links to /hardware/
+  header-outline-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#008cff'
+    rounded: 5px
+    padding: 0px 16px
+    height: 40px
+    typography: 16px / 700 / 16px Noto Sans KR
+    shadow: rgb(0, 140, 255) 0px 0px 0px 1px inset
+    hover: no change within the compared scope (probe)
+    pressed: no change within the compared scope (probe)
+    use: 테이블 오더 in the header of all three pages; links to /table-order/
+  header-text-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1c2638'
+    rounded: 5px
+    padding: 0px 12px
+    height: 40px
+    typography: 16px / 700 / 16px Noto Sans KR (label span)
+    states: rest only; not probed
+    use: The text link at the left of the two header buttons (로그인)
+  pill-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#5f6976'
+    rounded: 30px
+    padding: 12px 24px
+    height: 56px
+    typography: 20px / 400 / 32px Noto Sans KR, letter-spacing -1px (label span)
+    selected: 'bg #0077fe, label #ffffff at 20px / 700 (capture 13 on the home, 17 on table-order)'
+    states: selected variant read from rest values (capture 13 against 14); no pointer frame
+    use: 'Feature and industry pill tabs: NFC, 비대면 결제, 선불권 on the home; 한식 · 음식점 and others on table-order'
+  toggle-tab:
+    type: toggle
+    backgroundColor: '#e2e8ee'
+    textColor: '#5f6976'
+    rounded: 30px
+    padding: 12px 24px
+    height: 56px
+    typography: 20px / 400 / 32px Noto Sans KR (label span)
+    selected: 'bg #ffffff, label #008cff at 20px / 700 (capture 32)'
+    states: selected variant read from rest values (capture 32 against 33); no pointer frame
+    use: 'POS-type and industry toggles in a #e2e8ee track (30px radius, 4px padding) on the terminal page'
+  step-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#c1cad2'
+    border: 'bottom 3px solid #c1cad2'
+    padding: 16px 24px
+    height: 67px
+    typography: 20px / 700 / 32px Noto Sans KR, letter-spacing -1px
+    selected: 'fg #0077fe with a 3px #0077fe bottom border (capture 40)'
+    states: selected variant read from rest values (capture 40 against 41); no pointer frame
+    use: The two onboarding steps on the terminal page (포스를 변경하려는 기존 사업자, 포스를 처음 사용하는 신규 사업자)
+  category-card:
+    type: card
+    backgroundColor: '#f5f8fa'
+    textColor: '#1c2638'
+    rounded: 12px
+    padding: 20px 0px
+    height: 84px
+    typography: 26px / 700 / 36px Noto Sans KR, letter-spacing -1px
+    use: 카드 단말기, 테이블 오더, 키오스크 and 인터넷 패키지 selectors under the home hero (capture 9)
+  category-badge:
+    type: badge
+    backgroundColor: '#0077fe'
+    textColor: '#ffffff'
+    rounded: 50px
+    padding: 4px 8px 5px
+    height: 25px
+    typography: 16px / 700 / 16px Noto Sans KR, letter-spacing -0.5px
+    use: 'BEST over a category card; EVENT uses #f96eae and HOT #ff5b46'
+  hero-badge:
+    type: badge
+    backgroundColor: '#0077fe'
+    textColor: '#ffffff'
+    rounded: 50px
+    padding: 8px 20px
+    height: 44px
+    typography: 18px / 700 / 28px Noto Sans KR, letter-spacing -0.5px
+    use: 사장님 맞춤형 1:1 밀착 컨설팅 above the table-order hero title
+  content-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #c1cad2'
+    rounded: 24px
+    padding: 48px
+    use: 'Contact cards near the foot of the home; hardware and pricing cards use a 1px #e2e8ee border at the same radius'
+  price-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #e2e8ee'
+    rounded: 24px
+    padding: 36px 24px
+    shadow: rgba(0, 0, 0, 0.08) 0px 3px 15px 0px
+    use: Free-price cards on the terminal page, 384 x 172
+  text-field:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#101a2e'
+    border: '1px solid #e2e8ee'
+    rounded: 8px
+    padding: 12px
+    height: 48px
+    typography: 16px / 400 / 24px Arial
+    states: rest only; focus was not measured
+    use: 'Consultation form fields on the home and table-order; the first option of the table-order form carries a 1px #008cff border'
+  form-submit:
+    type: button
+    backgroundColor: '#919ba5'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 16px 0px
+    height: 58px
+    typography: 18px / 700 Noto Sans KR, letter-spacing -1px
+    states: the fill observed on an empty form (the disabled attribute was false); the form was never filled, so no other fill was observed
+    use: 도입 문의하기 and 동의하고 무료 상담 submit buttons
+  pricing-cta:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 100px
+    padding: 16px 32px
+    height: 60px
+    typography: 18px / 700 / 28px Noto Sans KR, letter-spacing -1px
+    states: rest only
+    use: 도입 비용 계산해보기 on the table-order page (capture 15)
+  floating-cta:
+    type: button
+    backgroundColor: 'linear-gradient(290.64deg, #163bd8 6.63%, #3da7ff 107.33%)'
+    textColor: '#ffffff'
+    rounded: 50px
+    height: 64px
+    width: 384px
+    shadow: rgba(0, 0, 0, 0.21) 0px 4px 12px 0px
+    typography: 20px / 700 / 32px Noto Sans KR, letter-spacing -1px (label span)
+    hover: no change within the compared scope (self, one descendant, three ancestor levels; transition 0s) (probe)
+    pressed: no change within the compared scope (probe)
+    use: 지금 25% 할인받기, floating at the foot of the terminal page; its fill is a background-image gradient, not a background colour
+  floating-secondary:
+    type: button
+    backgroundColor: '#f5f8fa'
+    textColor: '#0077fe'
+    border: '1px solid #f5f8fa'
+    rounded: 50px
+    height: 64px
+    width: 384px
+    shadow: rgba(0, 0, 0, 0.21) 0px 4px 12px 0px
+    hover: no change within the compared scope (probe)
+    use: 올인원 카드 단말기 beside the floating CTA
+  carousel-arrow:
+    type: button
+    backgroundColor: '#ffffff'
+    border: '1px solid #c1cad2'
+    rounded: 100%
+    height: 48px
+    width: 48px
+    hover: 'border #111111; both arrows read the same value in their hover and pressed frames'
+    pressed: 'border #111111'
+    use: Seller-review carousel arrows on the terminal page (captures 6 and 7)
+  floating-button:
+    type: button
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    height: 80px
+    width: 80px
+    shadow: rgba(0, 0, 0, 0.21) 0px 4px 12px 0px
+    states: rest only
+    use: The chat floating button on every page; back-to-top on the home and the terminal page
+  contact-card:
+    type: card
+    backgroundColor: '#0e1d40'
+    textColor: '#ffffff'
+    rounded: 24px
+    padding: 64px 0px
+    height: 205px
+    width: 384px
+    use: '채팅 상담 card on the terminal page; 전화 상담 and 희망일 상담 use #f5f8fa with #0c4a6e text'
+  download-button:
+    type: button
+    backgroundColor: '#ffffff'
+    border: '1px solid #919ba5'
+    rounded: 8px
+    height: 72px
+    width: 241px
+    states: rest only
+    use: 'The four POS download buttons on the home (label 18px / 400 in #1c2638)'
+fonts:
+  roles:
+    primary: Noto Sans KR
 ---
 
 # Design System Inspiration of Payhere
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Payhere (페이히어, 주식회사 페이히어) is a Seoul company that builds point-of-sale and payment tools for shop owners. Its company page states the mission in two words, "WE MAKE THE FUTURE", and says the team reached the industry's largest merchant count "불과 1년만에" (within a single year), still pushing towards "매장의 새로운 미래" — the store's new future. What began as mobile POS ("모바일 포스 1위" on the home) now spans POS software, the all-in-one Payhere Terminal ("누적 판매 1위 올인원 카드 단말기"), table ordering, kiosks, delivery and pickup orders and sales analytics, and the company page describes a range "소상공인부터 엔터프라이즈까지", from small merchants to enterprises. The terminal page counts "업계 최다 90,000+ 가맹점". In December 2022 the company's tech blog recorded a rebrand that arrived with a new logo and a clearer brand colour, and the welcome kit built on it set three words for how Payhere should feel: Simple (이해하기 쉬운), Familiar (친숙한) and Long Awaited (기대되는).
 
@@ -437,7 +380,7 @@ Everything is set in Noto Sans KR, self-hosted through Next.js, at weight 700 fo
 - Rounded geometry: 24px cards, 30px pills, 50px badges, 12px actions, 5px header buttons
 - Mostly flat; soft shadows only on floating buttons and the terminal page's price cards
 
-## Primary tasks
+### Primary tasks
 
 - Pick which store setup to buy, from card terminal to kiosk
 - Narrow the feature list down to what the store actually needs
@@ -445,7 +388,31 @@ Everything is set in Noto Sans KR, self-hosted through Next.js, at weight 700 fo
 - Compare the bundled monthly cost against a legacy POS rental
 - Take table orders without a server writing each one down
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Payhere's company page frames the business as a single ambition: "WE MAKE THE FUTURE", a future for the store that its people believe changes their own lives and the world around them. The same page and the careers site credit the company's growth to obsession with the shop owner — "오직 사장님을 향한 집념으로" — and say it passed the industry's largest merchant count within one year. The careers site lists what the company builds today: POS, table order, kiosks, delivery and pickup ordering and sales analytics, connected in one platform so a shop can do more with fewer people. The footer names the company, 주식회사 페이히어, its representative 박준기 and its office on Gangnam-daero in Seoul, and the home cites recognition as one of Forbes' 100 promising companies in Asia.
+
+The rebrand is documented by the company itself. A December 2022 post on the Payhere Tech Blog, written by a content designer in the design chapter, explains that the rebrand and the new-hire welcome kit were produced at the same time, so the kit could carry a clearer identity and colour and the new logo. Its message was "Journey to the Future", and it chose three words for how new colleagues should feel: Simple, Familiar and Long Awaited. The captured pages carry that tone into the product: plain Korean nouns, one working blue, soft rounded shapes and very large type.
+
+### Principles
+
+1. **The store comes first.** *UI implication:* label features as shop tasks (테이블 오더, 카드 단말기) and lead with price and rank.
+2. **Simple, Familiar, Long Awaited.** Payhere's own welcome-kit words. *UI implication:* familiar patterns — pills, cards, big titles — and nothing an owner has to learn.
+3. **One working blue.** *UI implication:* `#0077fe` marks the next step and the current choice.
+4. **Soft and generous.** *UI implication:* 24px cards, 30px pills, 50px badges; tight but large type.
+5. **Shadows for floating things.** *UI implication:* content stays flat; only floating buttons and compared prices lift.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Payhere user segments (Korean small-business owners, café and restaurant operators, retail merchants), not individual people.*
+
+**김도윤, 34, 서울.** Runs a small café and moved from a leased legacy POS to Payhere for the lower monthly cost. Chose it because the page led with a price, not a sales meeting.
+
+**이서연, 41, 경기.** Owns a mid-size restaurant and added table ordering to cut order-taking work. Likes that the features are named the way she thinks about her shop.
+
+**박준호, 29, 부산.** A first-time shop owner who needed a card terminal and a kiosk without enterprise complexity. Trusts the plain, rank-forward tone.
+
+## Colors
 
 Every token below was read by the deterministic collector on 2026-09-30 from payhere.in, payhere.in/table-order/ and payhere.in/hardware/terminal/; the floating buttons and header states were confirmed by the keyboard-state probe of the terminal page the same day (`docs/research/2026-09-29-growth/raw/payhere-states-terminal.json`).
 
@@ -481,7 +448,7 @@ Every token below was read by the deterministic collector on 2026-09-30 from pay
 ### Brand assets, not tokens
 - The header logo's SVG fills include `#1d99ff`, `#163bd8` and `#a164f9`, the blue-to-purple mark from the 2022 rebrand. `#1d99ff` and `#a164f9` appear only in the logo, so they are brand assets, not tokens; `#163bd8` also starts the floating button's gradient.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Live surface use**: `Noto Sans KR`, self-hosted through Next.js from `payhere.in/_next/static/media/` (woff2), 1,010 observed uses: body, headings, actions, badges, cards, lists and toggles.
@@ -515,7 +482,87 @@ Every token below was read by the deterministic collector on 2026-09-30 from pay
 - **Tight Korean tracking**: `-1px` from 14px menus to 56px headlines, `-0.5px` on badges and small actions; the navy section-title variant is the exception at normal tracking.
 - **One family**: Noto Sans KR carries every captured element except the form inputs.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Header buttons: 0px 16px padding at 40px height
+- Pill tabs and toggles: 12px 24px padding at 56px height
+- Form fields: 12px padding at 48px height
+- Cards: 32px (step cards), 36px 24px (price cards), 48px (contact cards)
+- Section rhythm: 140px padding appears at the top and bottom of the home's tabbed sections
+- The most frequent spacing values in the capture are 24, 12, 8, 16, 40, 4, 32 and 28px
+
+### Grid & Container
+- Content sits in a 1200px column inside full-width bands at the 1440px viewport.
+- The home runs: a promotion banner over the header; a 44px hero title over four category cards; feature sliders and tabbed image sections; hardware cards with the blue purchase action; a black industry section; contact and investor rows; a download section; the footer.
+- The table-order page opens with a hero form and a pricing section, then tabbed industry sections on `#f5f8fa` bands; the terminal page opens with a navy hero title, reviews, price cards, a comparison table and FAQs.
+
+### Whitespace Philosophy
+- **Big type, big gaps**: each section is one large title and one visual, separated by generous bands.
+- **Bands for grouping**: white and `#f5f8fa` alternate; black sections mark a change of topic.
+
+### Border Radius Scale
+- 5px: header buttons
+- 8px: fields, form submit, download buttons
+- 12px: category cards, detail action
+- 16px: floating buttons, award cards, slide cards
+- 20px: image-grid cards
+- 24px: content, price, step and contact cards
+- 30px: pill tabs and toggles
+- 50px: badges and floating capsules
+- 100px: the pricing action and the 월회비 제로선언 badge
+- 100%: circles (the 48px carousel arrows, carousel dots and colour swatches)
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440px desktop viewport was captured. Class names such as `DesktopOptionToggleWrapper` and `DesktopImage` imply separate mobile layouts, but no breakpoint was measured.
+
+#### Touch Targets
+- Purchase action: 96px tall; floating capsules: 64px
+- Pill tabs and toggles: 56px; form submit: 58px; fields: 48px
+- Header buttons: 40px; floating buttons: 80 × 80
+
+#### Collapsing Strategy
+- Not measured.
+
+#### Image Behavior
+- Product and screen images sit inside 16px–24px rounded cards; nothing else was measured.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | No shadow | Sections, most cards, actions, tabs |
+| Tint | `#f5f8fa` fill | Category, contact and step cards |
+| Line | 1px solid `#e2e8ee` | Cards and fields |
+| Ring | rgb(0, 140, 255) 0px 0px 0px 1px inset | Header outline button |
+| Raised | rgba(0, 0, 0, 0.08) 0px 3px 15px 0px | Terminal price cards |
+| Floating | rgba(0, 0, 0, 0.21) 0px 4px 12px 0px | Floating CTA, floating buttons |
+
+**Shadow Philosophy**: Payhere keeps content flat and saves shadows for things that float or need to be compared: the floating buttons and capsules carry `rgba(0, 0, 0, 0.21) 0px 4px 12px 0px`, and the terminal page's free-price cards a lighter `rgba(0, 0, 0, 0.08) 0px 3px 15px 0px`.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.float`: `rgba(0, 0, 0, 0.21) 0px 4px 12px 0px`
+- `shadow.card`: `rgba(0, 0, 0, 0.08) 0px 3px 15px 0px`
+- `shadow.header-ring`: `rgb(0, 140, 255) 0px 0px 0px 1px inset`
+
+## Motion & Easing
+
+The four probed controls — the header buttons and both floating buttons — declare no transition (`transition: all 0s`) and show no hover or pressed change. The home and terminal pages use sliders and carousels, which shows motion exists, but no duration or easing was measured, so none is specified. Honour `prefers-reduced-motion` in any build.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/payhere.json (capturedAt 2026-09-30T07:52:32Z), deterministic collector, logged out: payhere.in, payhere.in/table-order/, payhere.in/hardware/terminal/.
+- Floating buttons and header states: docs/research/2026-09-29-growth/raw/payhere-states-terminal.json (keyboard-state probe of the terminal page, 2026-09-30T07:57Z, focus skipped).
+- §1, §10, §11: payhere.in/company-info, tech.payhere.in welcome-kit post (2022-12-16), careers.payhere.in/recruit/ and the payhere.in footer, opened 2026-09-30; narrative context only, no token.
+- Personas are fictional archetypes. Interpretive readings are editorial.
+-->
+
+## Components
 
 ### Buttons
 
@@ -735,51 +782,23 @@ Every token below was read by the deterministic collector on 2026-09-30 from pay
 **Tier 2 sources:** getdesign.md/payhere (HTTP 200, "payhere — 0 DESIGN.md files") and styles.refero.design/?q=payhere (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Header buttons: 0px 16px padding at 40px height
-- Pill tabs and toggles: 12px 24px padding at 56px height
-- Form fields: 12px padding at 48px height
-- Cards: 32px (step cards), 36px 24px (price cards), 48px (contact cards)
-- Section rhythm: 140px padding appears at the top and bottom of the home's tabbed sections
-- The most frequent spacing values in the capture are 24, 12, 8, 16, 40, 4, 32 and 28px
+Only these states were observed; nothing else is specified here.
 
-### Grid & Container
-- Content sits in a 1200px column inside full-width bands at the 1440px viewport.
-- The home runs: a promotion banner over the header; a 44px hero title over four category cards; feature sliders and tabbed image sections; hardware cards with the blue purchase action; a black industry section; contact and investor rows; a download section; the footer.
-- The table-order page opens with a hero form and a pricing section, then tabbed industry sections on `#f5f8fa` bands; the terminal page opens with a navy hero title, reviews, price cards, a comparison table and FAQs.
+| State | Observation |
+|---|---|
+| **Selected (pill tab)** | White pill with a `#5f6976` 400 label becomes `#0077fe` with a white 700 label. |
+| **Selected (toggle)** | `#e2e8ee` toggle with a `#5f6976` label becomes white with a `#008cff` 700 label. |
+| **Selected (step)** | `#c1cad2` text and underline become `#0077fe`. |
+| **Selected on dark** | The selected pill in the black section is `#33abff`; others `#1c2638`, both with white labels. |
+| **Hover / pressed (carousel arrow)** | Border `#c1cad2` becomes `#111111`. |
+| **Hover / pressed (header buttons, floating buttons)** | No change within the compared scope (probe). |
+| **Empty form** | The submit button shows a `#919ba5` fill with a white label. |
 
-### Whitespace Philosophy
-- **Big type, big gaps**: each section is one large title and one visual, separated by generous bands.
-- **Bands for grouping**: white and `#f5f8fa` alternate; black sections mark a change of topic.
+Focus was not measured: the probe ran with focus skipped, and the collector's focus frames are not used. Links whose own colour reads as the browser default blue or active red carry their labels in children, so those values are not brand values. Error, loading and success states were not captured, because no form was ever filled or submitted.
 
-### Border Radius Scale
-- 5px: header buttons
-- 8px: fields, form submit, download buttons
-- 12px: category cards, detail action
-- 16px: floating buttons, award cards, slide cards
-- 20px: image-grid cards
-- 24px: content, price, step and contact cards
-- 30px: pill tabs and toggles
-- 50px: badges and floating capsules
-- 100px: the pricing action and the 월회비 제로선언 badge
-- 100%: circles (the 48px carousel arrows, carousel dots and colour swatches)
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | No shadow | Sections, most cards, actions, tabs |
-| Tint | `#f5f8fa` fill | Category, contact and step cards |
-| Line | 1px solid `#e2e8ee` | Cards and fields |
-| Ring | rgb(0, 140, 255) 0px 0px 0px 1px inset | Header outline button |
-| Raised | rgba(0, 0, 0, 0.08) 0px 3px 15px 0px | Terminal price cards |
-| Floating | rgba(0, 0, 0, 0.21) 0px 4px 12px 0px | Floating CTA, floating buttons |
-
-**Shadow Philosophy**: Payhere keeps content flat and saves shadows for things that float or need to be compared: the floating buttons and capsules carry `rgba(0, 0, 0, 0.21) 0px 4px 12px 0px`, and the terminal page's free-price cards a lighter `rgba(0, 0, 0, 0.08) 0px 3px 15px 0px`.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#0077fe` for purchase and detail actions, selected pills and badges
@@ -797,23 +816,27 @@ Every token below was read by the deterministic collector on 2026-09-30 from pay
 - Don't render form inputs in Noto Sans KR and call it the observed design; the inputs render in Arial
 - Don't present Pretendard as the site face; it is declared but unused on these pages
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-Only the 1440px desktop viewport was captured. Class names such as `DesktopOptionToggleWrapper` and `DesktopImage` imply separate mobile layouts, but no breakpoint was measured.
+Payhere talks to shop owners plainly and with confidence: it leads with rank, price and the job a feature does, and names features the way an owner would. Headlines often pair a benefit with the product name after a comma.
 
-### Touch Targets
-- Purchase action: 96px tall; floating capsules: 64px
-- Pill tabs and toggles: 56px; form submit: 58px; fields: 48px
-- Header buttons: 40px; floating buttons: 80 × 80
+| Context | Tone |
+|---|---|
+| Hero headlines | Rank and promise. "모바일 포스 1위 매장의 새로운 미래, 페이히어." |
+| Section titles | Benefit, then product. "인쇄·스캔·키오스크 다 되는 올인원 단말기, 페이히어 터미널." |
+| Promotions | Concrete price. "인터넷+CCTV+단말기 다 해도 3만 원대." |
+| Product labels | Plain nouns. "카드 단말기", "테이블 오더", "키오스크", "인터넷 패키지". |
+| Brand copy | Mission-led. "WE MAKE THE FUTURE." |
 
-### Collapsing Strategy
-- Not measured.
+**Voice samples (verbatim, opened 2026-09-30):**
+- "모바일 포스 1위 매장의 새로운 미래, 페이히어" — home.
+- "업계 최다 90,000+ 가맹점의 이유 있는 선택" — terminal page.
+- "페이히어 테이블 오더로 어떤 고민을 해결해 드릴까요?" — table-order hero.
+- "페이히어는 매장의 새로운 미래를 만듭니다. (We Make The Future)" — tech blog welcome-kit post.
 
-### Image Behavior
-- Product and screen images sit inside 16px–24px rounded cards; nothing else was measured.
+**Forbidden register**: unexplained payments jargon, cold banking tone and fear-based urgency.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action and selection: `#0077fe` with `#ffffff` labels
@@ -837,74 +860,15 @@ Only the 1440px desktop viewport was captured. Class names such as `DesktopOptio
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Payhere talks to shop owners plainly and with confidence: it leads with rank, price and the job a feature does, and names features the way an owner would. Headlines often pair a benefit with the product name after a comma.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Rank and promise. "모바일 포스 1위 매장의 새로운 미래, 페이히어." |
-| Section titles | Benefit, then product. "인쇄·스캔·키오스크 다 되는 올인원 단말기, 페이히어 터미널." |
-| Promotions | Concrete price. "인터넷+CCTV+단말기 다 해도 3만 원대." |
-| Product labels | Plain nouns. "카드 단말기", "테이블 오더", "키오스크", "인터넷 패키지". |
-| Brand copy | Mission-led. "WE MAKE THE FUTURE." |
-
-**Voice samples (verbatim, opened 2026-09-30):**
-- "모바일 포스 1위 매장의 새로운 미래, 페이히어" — home.
-- "업계 최다 90,000+ 가맹점의 이유 있는 선택" — terminal page.
-- "페이히어 테이블 오더로 어떤 고민을 해결해 드릴까요?" — table-order hero.
-- "페이히어는 매장의 새로운 미래를 만듭니다. (We Make The Future)" — tech blog welcome-kit post.
-
-**Forbidden register**: unexplained payments jargon, cold banking tone and fear-based urgency.
-
-## 11. Brand Narrative
-
-Payhere's company page frames the business as a single ambition: "WE MAKE THE FUTURE", a future for the store that its people believe changes their own lives and the world around them. The same page and the careers site credit the company's growth to obsession with the shop owner — "오직 사장님을 향한 집념으로" — and say it passed the industry's largest merchant count within one year. The careers site lists what the company builds today: POS, table order, kiosks, delivery and pickup ordering and sales analytics, connected in one platform so a shop can do more with fewer people. The footer names the company, 주식회사 페이히어, its representative 박준기 and its office on Gangnam-daero in Seoul, and the home cites recognition as one of Forbes' 100 promising companies in Asia.
-
-The rebrand is documented by the company itself. A December 2022 post on the Payhere Tech Blog, written by a content designer in the design chapter, explains that the rebrand and the new-hire welcome kit were produced at the same time, so the kit could carry a clearer identity and colour and the new logo. Its message was "Journey to the Future", and it chose three words for how new colleagues should feel: Simple, Familiar and Long Awaited. The captured pages carry that tone into the product: plain Korean nouns, one working blue, soft rounded shapes and very large type.
-
-## 12. Principles
-
-1. **The store comes first.** *UI implication:* label features as shop tasks (테이블 오더, 카드 단말기) and lead with price and rank.
-2. **Simple, Familiar, Long Awaited.** Payhere's own welcome-kit words. *UI implication:* familiar patterns — pills, cards, big titles — and nothing an owner has to learn.
-3. **One working blue.** *UI implication:* `#0077fe` marks the next step and the current choice.
-4. **Soft and generous.** *UI implication:* 24px cards, 30px pills, 50px badges; tight but large type.
-5. **Shadows for floating things.** *UI implication:* content stays flat; only floating buttons and compared prices lift.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Payhere user segments (Korean small-business owners, café and restaurant operators, retail merchants), not individual people.*
-
-**김도윤, 34, 서울.** Runs a small café and moved from a leased legacy POS to Payhere for the lower monthly cost. Chose it because the page led with a price, not a sales meeting.
-
-**이서연, 41, 경기.** Owns a mid-size restaurant and added table ordering to cut order-taking work. Likes that the features are named the way she thinks about her shop.
-
-**박준호, 29, 부산.** A first-time shop owner who needed a card terminal and a kiosk without enterprise complexity. Trusts the plain, rank-forward tone.
-
-## 14. States
-
-Only these states were observed; nothing else is specified here.
-
-| State | Observation |
-|---|---|
-| **Selected (pill tab)** | White pill with a `#5f6976` 400 label becomes `#0077fe` with a white 700 label. |
-| **Selected (toggle)** | `#e2e8ee` toggle with a `#5f6976` label becomes white with a `#008cff` 700 label. |
-| **Selected (step)** | `#c1cad2` text and underline become `#0077fe`. |
-| **Selected on dark** | The selected pill in the black section is `#33abff`; others `#1c2638`, both with white labels. |
-| **Hover / pressed (carousel arrow)** | Border `#c1cad2` becomes `#111111`. |
-| **Hover / pressed (header buttons, floating buttons)** | No change within the compared scope (probe). |
-| **Empty form** | The submit button shows a `#919ba5` fill with a white label. |
-
-Focus was not measured: the probe ran with focus skipped, and the collector's focus frames are not used. Links whose own colour reads as the browser default blue or active red carry their labels in children, so those values are not brand values. Error, loading and success states were not captured, because no form was ever filled or submitted.
-
-## 15. Motion & Easing
-
-The four probed controls — the header buttons and both floating buttons — declare no transition (`transition: all 0s`) and show no hover or pressed change. The home and terminal pages use sliders and carousels, which shows motion exists, but no duration or easing was measured, so none is specified. Honour `prefers-reduced-motion` in any build.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/payhere.json (capturedAt 2026-09-30T07:52:32Z), deterministic collector, logged out: payhere.in, payhere.in/table-order/, payhere.in/hardware/terminal/.
-- Floating buttons and header states: docs/research/2026-09-29-growth/raw/payhere-states-terminal.json (keyboard-state probe of the terminal page, 2026-09-30T07:57Z, focus skipped).
-- §1, §10, §11: payhere.in/company-info, tech.payhere.in welcome-kit post (2022-12-16), careers.payhere.in/recruit/ and the payhere.in footer, opened 2026-09-30; narrative context only, no token.
-- Personas are fictional archetypes. Interpretive readings are editorial.
--->
+- **Contrast, `purchase-button`.** Text `#ffffff` on `#0077fe` measures 4.14:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `detail-button`.** Text `#ffffff` on `#0077fe` measures 4.14:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-button`.** Text `#ffffff` on `#008cff` measures 3.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-outline-button`.** Text `#008cff` on `#ffffff` measures 3.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `category-badge`.** Text `#ffffff` on `#0077fe` measures 4.14:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `hero-badge`.** Text `#ffffff` on `#0077fe` measures 4.14:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `form-submit`.** Text `#ffffff` on `#919ba5` measures 2.82:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `floating-secondary`.** Text `#0077fe` on `#f5f8fa` measures 3.88:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

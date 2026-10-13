@@ -4,10 +4,14 @@ import { join } from "node:path";
 import { componentsFromTokens, extractComponentSpecs } from "./extract-tokens";
 import { LEGACY_COMPONENT_FIXTURE } from "@/lib/references/legacy-fixtures";
 
-const REFS_DIR = join(process.cwd(), "references");
+
+// The flow-style frontmatter parser under test only ever sees legacy OmD 0.1 files, and the live
+// catalog has moved to DESIGN.md v3. These are the legacy files as they were at conversion
+// (2026-10-14), frozen so the assertions keep testing the parser, not the catalog's format.
+const LEGACY_DIR = join(process.cwd(), "src", "lib", "references", "fixtures", "legacy-omd-0.1");
 
 function readRef(id: string): string {
-  return readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf8");
+  return readFileSync(join(LEGACY_DIR, `${id}.md`), "utf8");
 }
 
 describe("component extraction against current reference contracts", () => {

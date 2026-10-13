@@ -1,191 +1,159 @@
 ---
-id: tving
 name: TVING
-display_name_kr: TVING (티빙)
-country: KR
-category: consumer-tech
-homepage: "https://www.tving.com"
-primary_color: "#ff153c"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=tving.com&sz=256"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: streaming-home, url: "https://www.tving.com/", inspected: "2026-07-13" }
-    - { id: movie, kind: streaming-catalog, url: "https://www.tving.com/movie", inspected: "2026-07-13" }
-    - { id: live, kind: streaming-live, url: "https://www.tving.com/live/C00551", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.tving.com/", captured: "2026-07-13" }
-    - { id: movie-live, kind: product-surface, url: "https://www.tving.com/movie", captured: "2026-07-13" }
-    - { id: live-live, kind: product-surface, url: "https://www.tving.com/live/C00551", captured: "2026-07-13" }
-    - { id: tving-policy, kind: official-doc, url: "https://www.tving.com/policy/terms?viewType=webview", captured: "2026-07-13" }
-    - { id: cj-lineup-2025, kind: official-doc, url: "https://newsroom.cj.net/?p=5803", captured: "2026-07-13" }
-    - { id: cj-tving-history, kind: official-doc, url: "https://newsroom.cj.net/cj-enms-tving-and-kts-seezn-announce-merger-to-become-south-koreas-largest-ott-platform/", captured: "2026-07-13" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.surface-raised": *home
-    "tokens.colors.foreground": *home
-    "tokens.colors.foreground-secondary": *home
-    "tokens.colors.foreground-muted": *home
-    "tokens.colors.hairline": *home
-    "tokens.typography.family.ui": *home
-    "tokens.typography.compact.size": *home
-    "tokens.typography.compact.weight": *home
-    "tokens.typography.compact.lineHeight": *home
-    "tokens.typography.compact.use": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.heading.size": *home
-    "tokens.typography.heading.weight": *home
-    "tokens.typography.heading.lineHeight": *home
-    "tokens.typography.heading.use": *home
-    "tokens.typography.live-tab.size": &live { surface_id: live, source_id: live-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.live-tab.weight": *live
-    "tokens.typography.live-tab.lineHeight": *live
-    "tokens.typography.live-tab.use": *live
-    "tokens.rounded.menu": *home
-    "tokens.rounded.live-pill": *live
-    "tokens.components.content-menu-trigger.type": *home
-    "tokens.components.content-menu-trigger.bg": *home
-    "tokens.components.content-menu-trigger.fg": *home
-    "tokens.components.content-menu-trigger.radius": *home
-    "tokens.components.content-menu-trigger.padding": *home
-    "tokens.components.content-menu-trigger.font": *home
-    "tokens.components.content-menu-trigger.states": *home
-    "tokens.components.content-menu-trigger.use": *home
-    "tokens.components.live-selected-tab.type": *live
-    "tokens.components.live-selected-tab.bg": *live
-    "tokens.components.live-selected-tab.fg": *live
-    "tokens.components.live-selected-tab.radius": *live
-    "tokens.components.live-selected-tab.padding": *live
-    "tokens.components.live-selected-tab.font": *live
-    "tokens.components.live-selected-tab.states": *live
-    "tokens.components.live-selected-tab.use": *live
-    "tokens.components.content-menu-listbox.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.border": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.shadow": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-listbox.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.content-menu-option.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.type": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.bg": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.fg": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.radius": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.padding": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.height": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.font": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.selected": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.states": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.use": { surface_id: movie, source_id: movie-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.header-subscribe-pill.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.landing-cta.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.type": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.bg": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.fg": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.radius": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.padding": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.height": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.font": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.states": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-white-pill-cta.use": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.type": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.bg": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.radius": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.padding": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.size": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.states": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-round-icon-button.use": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.type": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.bg": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.fg": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.radius": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.padding": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.height": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.font": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.selected": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.states": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.live-channel-tab.use": { surface_id: live, source_id: live-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  colors:
-    canvas: "#000000"
-    surface-raised: "#2e2e2e"
-    foreground: "#ffffff"
-    foreground-secondary: "#a3a3a3"
-    foreground-muted: "#6e6e6e"
-    hairline: "#4f4f4f"
-  typography:
-    family: { ui: "Pretendard" }
-    compact: { size: 13.2, weight: 400, lineHeight: 1.5, use: "Observed opened-menu text on home and movie surfaces." }
-    body: { size: 16.5, weight: 400, lineHeight: 1.15, use: "Observed product-surface body and utility text." }
-    heading: { size: 22.0044, weight: 700, lineHeight: 1.5, use: "Observed product-surface heading text." }
-    live-tab: { size: 14.2956, weight: 400, lineHeight: 1.15, use: "Observed unselected live-route tab text." }
-  rounded: { menu: 4.95, live-pill: 109.996 }
-  components_harvested: true
-  components:
-    content-menu-trigger: { type: button, bg: "#000000", fg: "#a3a3a3", radius: 4.95, padding: "0px 16.5px", font: "13.2/400 Pretendard", states: "expanded, menu-open", use: "Combobox trigger (aria-haspopup=menu) at home::[data-omd-capture=\"19\"] and \"20\" on home and movie; it sits in the footer row (top 647px, beside the footer links at 646px). Corrected 2026-09-29: its border width computes 0px, so the July border value is removed." }
-    live-selected-tab: { type: tab, bg: "rgba(255, 255, 255, 0.2)", fg: "#ffffff", radius: 109.996, padding: "8.8044px 13.2px", font: "14.2956/700 Pretendard", states: "selected", use: "Observed selected tab on the supplied live route only (surface-3::[data-omd-capture=\"61\"]); live-channel-tab records the same row with its unselected rest. Corrected 2026-09-29: its border width computes 0px, so the July border value is removed." }
-    content-menu-listbox: { type: card, bg: "#212121", fg: "#a3a3a3", border: "1px #4f4f4f", radius: "4.95px", padding: "0px", size: "144px x 305px", font: "13.2px / 400 / 15.18px Pretendard", shadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.1) 0px 2px 4px -2px", states: "captured open after the collector opened its trigger (menu interaction recording expanded and menu-open); two listboxes on home and two on movie; no pointer-state frame", use: "Opened listbox of the combobox trigger at home::[data-omd-interaction-capture=\"menu-0-0\"]; the computed shadow lists two alpha-0 layers before these two" }
-    content-menu-option: { type: listItem, bg: "transparent", fg: "#a3a3a3", radius: "0px", padding: "4.95px 6.6px", height: "30px", font: "13.2px / 400 / 19.8px Pretendard", states: "rest captured inside the opened listbox; the first option of every captured listbox (menu-0-3 and menu-1-3 on home and movie) computes bg #2e2e2e with aria-selected false, and the dump does not say which state paints it, so it is not declared", use: "Listbox option (role=option) at home::[data-omd-interaction-capture=\"menu-0-4\"]" }
-    header-nav-link: { type: tab, bg: "transparent", fg: "rgba(255, 255, 255, 0.6)", radius: "0px", padding: "0px", height: "16px", font: "16px / 400 / 16px Pretendard", selected: "fg #ffffff, 16px / 700", states: "rest and current-page link (class on) captured on the movie route; home computes rgba(255, 255, 255, 0.9) on all eight links with no current item, and the live route #ffffff / 400 on all eight; no pointer-state frame", use: "Header navigation link (a.other) at surface-2::[data-omd-capture=\"1\"]; the current-page link is \"3\" (a.other.on)" }
-    header-subscribe-pill: { type: button, fg: "#ffffff", radius: "42px", padding: "0px 12px", size: "61px x 33px", font: "14px / 700 / 16.1px Pretendard", states: "default captured on all three routes; no pointer-state frame", use: "Header pill link at home::[data-omd-capture=\"9\"]; its computed background-color is transparent on all three routes, the live copy names a gradient utility in its class list, and background-image is not in the dump, so no fill is claimed" }
-    landing-cta: { type: button, bg: "#dedede", fg: "#000000", radius: "3px", padding: "17.5956px 200.204px 19.8px", height: "57px", font: "19.8px / 700 / 19.8px Pretendard", states: "default captured on home and movie (529 x 57 at top 459px on both); no pointer-state frame", use: "Large light-grey button at home::[data-omd-capture=\"11\"]" }
-    live-white-pill-cta: { type: button, bg: "#ffffff", fg: "#000000", radius: "3.35544e+07px", padding: "13.2px 26.4px", height: "46px", font: "16.5px / 700 / 18.975px Pretendard", states: "default captured; no pointer-state frame", use: "Live-route white pill button at surface-3::[data-omd-capture=\"11\"]; the computed radius is the rounded-full utility value and renders as a full pill" }
-    live-round-icon-button: { type: button, bg: "#27272e", radius: "3.35544e+07px", padding: "0px", size: "44px x 44px", states: "default captured; it declares aria-haspopup=dialog, but the collector opened no dialog and recorded no pointer-state frame for it", use: "Live-route round icon button at surface-3::[data-omd-capture=\"15\"]; it has no text node, so no label colour is claimed" }
-    live-channel-tab: { type: tab, bg: "transparent", fg: "#ffffff", radius: "0px", padding: "8.8044px 13.2px", height: "34px", font: "14.2956px / 400 / 16.4399px Pretendard", selected: "bg rgba(255, 255, 255, 0.2), 14.2956px / 700, radius 109.996px", states: "unselected rest (capture 62, aria-selected=false) and the selected tab (capture 61, aria-selected=true, also recorded on its own as live-selected-tab); thirteen tabs in the row; no pointer-state frame", use: "Live-route tab (li role=tab) at surface-3::[data-omd-capture=\"62\"]" }
-    footer-link: { type: tab, bg: "transparent", fg: "#a3a3a3", radius: "0px", padding: "0px", height: "20px", font: "16.5px / 400 / 18.975px Pretendard", states: "default captured on seven links per route (home and movie 12-18, live 74-80); the third link in each row is 700 weight; no pointer-state frame", use: "Footer policy link row at home::[data-omd-capture=\"12\"]; a smaller underlined link below it (capture 21) computes #6e6e6e at 14.2956px / 400" }
+colors:
+  canvas: '#000000'
+  surface-raised: '#2e2e2e'
+  foreground: '#ffffff'
+  foreground-secondary: '#a3a3a3'
+  foreground-muted: '#6e6e6e'
+  hairline: '#4f4f4f'
+typography:
+  compact:
+    fontSize: 13.2px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Observed opened-menu text on home and movie surfaces.
+  body:
+    fontSize: 16.5px
+    fontWeight: 400
+    lineHeight: 1.15
+    use: Observed product-surface body and utility text.
+  heading:
+    fontSize: 22.0044px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Observed product-surface heading text.
+  live-tab:
+    fontSize: 14.2956px
+    fontWeight: 400
+    lineHeight: 1.15
+    use: Observed unselected live-route tab text.
+rounded:
+  menu: 4.95px
+  live-pill: 109.996px
+components:
+  content-menu-trigger:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#a3a3a3'
+    rounded: 4.95px
+    padding: 0px 16.5px
+    typography: 13.2/400 Pretendard
+    states: expanded, menu-open
+    use: 'Combobox trigger (aria-haspopup=menu) at home::[data-omd-capture="19"] and "20" on home and movie; it sits in the footer row (top 647px, beside the footer links at 646px). Corrected 2026-09-29: its border width computes 0px, so the July border value is removed.'
+  live-selected-tab:
+    type: tab
+    backgroundColor: rgba(255, 255, 255, 0.2)
+    textColor: '#ffffff'
+    rounded: 109.996px
+    padding: 8.8044px 13.2px
+    typography: 14.2956/700 Pretendard
+    states: selected
+    use: 'Observed selected tab on the supplied live route only (surface-3::[data-omd-capture="61"]); live-channel-tab records the same row with its unselected rest. Corrected 2026-09-29: its border width computes 0px, so the July border value is removed.'
+  content-menu-listbox:
+    type: card
+    backgroundColor: '#212121'
+    textColor: '#a3a3a3'
+    border: '1px #4f4f4f'
+    rounded: 4.95px
+    padding: 0px
+    size: 144px x 305px
+    typography: 13.2px / 400 / 15.18px Pretendard
+    shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.1) 0px 2px 4px -2px
+    states: captured open after the collector opened its trigger (menu interaction recording expanded and menu-open); two listboxes on home and two on movie; no pointer-state frame
+    use: Opened listbox of the combobox trigger at home::[data-omd-interaction-capture="menu-0-0"]; the computed shadow lists two alpha-0 layers before these two
+  content-menu-option:
+    type: listItem
+    backgroundColor: transparent
+    textColor: '#a3a3a3'
+    rounded: 0px
+    padding: 4.95px 6.6px
+    height: 30px
+    typography: 13.2px / 400 / 19.8px Pretendard
+    states: 'rest captured inside the opened listbox; the first option of every captured listbox (menu-0-3 and menu-1-3 on home and movie) computes bg #2e2e2e with aria-selected false, and the dump does not say which state paints it, so it is not declared'
+    use: Listbox option (role=option) at home::[data-omd-interaction-capture="menu-0-4"]
+  header-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(255, 255, 255, 0.6)
+    rounded: 0px
+    padding: 0px
+    height: 16px
+    typography: 16px / 400 / 16px Pretendard
+    selected: 'fg #ffffff, 16px / 700'
+    states: 'rest and current-page link (class on) captured on the movie route; home computes rgba(255, 255, 255, 0.9) on all eight links with no current item, and the live route #ffffff / 400 on all eight; no pointer-state frame'
+    use: Header navigation link (a.other) at surface-2::[data-omd-capture="1"]; the current-page link is "3" (a.other.on)
+  header-subscribe-pill:
+    type: button
+    textColor: '#ffffff'
+    rounded: 42px
+    padding: 0px 12px
+    size: 61px x 33px
+    typography: 14px / 700 / 16.1px Pretendard
+    states: default captured on all three routes; no pointer-state frame
+    use: Header pill link at home::[data-omd-capture="9"]; its computed background-color is transparent on all three routes, the live copy names a gradient utility in its class list, and background-image is not in the dump, so no fill is claimed
+  landing-cta:
+    type: button
+    backgroundColor: '#dedede'
+    textColor: '#000000'
+    rounded: 3px
+    padding: 17.5956px 200.204px 19.8px
+    height: 57px
+    typography: 19.8px / 700 / 19.8px Pretendard
+    states: default captured on home and movie (529 x 57 at top 459px on both); no pointer-state frame
+    use: Large light-grey button at home::[data-omd-capture="11"]
+  live-white-pill-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 3.35544e+07px
+    padding: 13.2px 26.4px
+    height: 46px
+    typography: 16.5px / 700 / 18.975px Pretendard
+    states: default captured; no pointer-state frame
+    use: Live-route white pill button at surface-3::[data-omd-capture="11"]; the computed radius is the rounded-full utility value and renders as a full pill
+  live-round-icon-button:
+    type: button
+    backgroundColor: '#27272e'
+    rounded: 3.35544e+07px
+    padding: 0px
+    size: 44px x 44px
+    states: default captured; it declares aria-haspopup=dialog, but the collector opened no dialog and recorded no pointer-state frame for it
+    use: Live-route round icon button at surface-3::[data-omd-capture="15"]; it has no text node, so no label colour is claimed
+  live-channel-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 8.8044px 13.2px
+    height: 34px
+    typography: 14.2956px / 400 / 16.4399px Pretendard
+    selected: bg rgba(255, 255, 255, 0.2), 14.2956px / 700, radius 109.996px
+    states: unselected rest (capture 62, aria-selected=false) and the selected tab (capture 61, aria-selected=true, also recorded on its own as live-selected-tab); thirteen tabs in the row; no pointer-state frame
+    use: Live-route tab (li role=tab) at surface-3::[data-omd-capture="62"]
+  footer-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#a3a3a3'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 16.5px / 400 / 18.975px Pretendard
+    states: default captured on seven links per route (home and movie 12-18, live 74-80); the third link in each row is 700 weight; no pointer-state frame
+    use: 'Footer policy link row at home::[data-omd-capture="12"]; a smaller underlined link below it (capture 21) computes #6e6e6e at 14.2956px / 400'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    ui: Pretendard
 ---
 
 # Design System Inspiration of TVING (티빙)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 TVING is CJ ENM's Korean streaming platform, serving series, movies, live channels, and sports. The three supplied public product routes use a cinema-dark field: black canvas, white and cool-gray text, a restrained raised surface, and a light hairline rather than a marketing-page palette. The product evidence is deliberately narrower than TVING's wider public narrative. CJ's 2025 lineup describes a program spanning varied original genres, signature franchises, and year-round live sports, while its earlier company reporting places TVING's independent expansion after its 2020 separation from CJ ENM and subsequent partnerships. Those are first-party context sources, not UI-token sources. [CJ ENM: TVING and Seezn](https://newsroom.cj.net/cj-enms-tving-and-kts-seezn-announce-merger-to-become-south-koreas-largest-ott-platform/) · [TVING 2025 lineup](https://newsroom.cj.net/?p=5803)
 
@@ -199,12 +167,28 @@ The captured home and movie routes share an opened content-menu treatment; the s
 - Product chrome uses a loaded, TVING-hosted Pretendard webfont; declared legacy faces are not promoted.
 - State claims are limited to an expanded/menu-open content selector, a selected live tab, and the movie route's current-page header link, each with route and selector provenance. The capture holds no hover, pressed or focus frame on any element.
 
-## Primary tasks
+### Primary tasks
 
 - Browse series and movies to find something to watch
 - Watch a live channel or live sports as it airs
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+CJ ENM's official account says TVING separated from CJ ENM in October 2020, then strengthened its platform position through a JTBC partnership and investment from Naver before its merger with KT's Seezn. That history establishes TVING as a Korean streaming platform built through content and platform partnerships; it does not establish a timeless UI system. [CJ ENM merger announcement](https://newsroom.cj.net/cj-enms-tving-and-kts-seezn-announce-merger-to-become-south-koreas-largest-ott-platform/)
+
+The current public editorial record emphasizes a varied original-content slate and live sports coverage. CJ's 2025 announcement describes genre breadth, signature franchises, and year-round sports programming; a later CJ announcement frames international distribution as part of TVING's expansion. These facts explain the service's content scope and current direction, while the tokens in this reference remain tied only to the three captured Korean web routes. [TVING 2025 lineup](https://newsroom.cj.net/?p=5803) · [TVING global expansion](https://newsroom.cj.net/tving-partners-with-disney-japan-to-accelerate-global-expansion/)
+
+### Principles
+
+1. **Keep content domains distinct.** TVING's official lineup differentiates original genres, signature programs, and sports. *UI implication:* do not collapse different route contexts into an invented universal component system.
+2. **Use contrast for viewing-first chrome.** The captured routes use black, white, and measured gray values. *UI implication:* preserve text hierarchy before adding decorative color.
+3. **Require state provenance.** The capture supplies menu-open and selected examples only. *UI implication:* make a state reusable only when its route, selector, and computed values are recorded.
+
+### Personas
+
+*No first-party TVING persona research or demographic segmentation was collected for this reference. Do not fabricate customer archetypes, motivations, or survey findings.*
+
+## Colors
 
 ### Observed live product surface
 
@@ -221,7 +205,7 @@ The catalog-level `primary_color` remains `#ff153c`, but the supplied 2026 produ
 
 Component-level values stay in their component records rather than the palette: the landing CTA's `#dedede` fill and the live round icon button's `#27272e` (§4).
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -241,7 +225,23 @@ Component-level values stay in their component records rather than the palette: 
 | Product heading text | 22.0044px | 700 | 33.0066px | Public product routes |
 | Unselected live tab | 14.2956px | 400 | 16.4399px | Supplied live route |
 
-## 4. Component Stylings
+## Layout
+
+The three supplied product routes establish route scope, not a full layout system. Home and movie share compact menu controls; the live route supplies a 34px tab treatment. No mobile viewport, grid, card aspect ratio, sticky header, player geometry, or breakpoint is retained because the collector evidence does not provide reliable cross-viewport provenance.
+
+### Responsive Behavior
+
+No mobile or alternate viewport was supplied. Touch targets, breakpoint changes, menu placement, shelf grids, and player behavior remain unverified.
+
+## Elevation & Depth
+
+The opened content menu is the only measured elevated layer: it uses `#212121`, a 1px `#4f4f4f` border, 4.95px radius, and two low-opacity black shadow layers. This route-local opened state does not authorize a global shadow scale. The normal controls retained in §4 report no shadow.
+
+## Motion & Easing
+
+No timing, easing, transition, or playback-control animation was captured. The opened-menu and selected-tab observations establish static states only.
+
+## Components
 
 ### Content selector
 
@@ -354,15 +354,20 @@ Every component above is specified at rest; the header navigation link and the l
 
 The supplied capture corroborates only the values and states above. Legacy red CTA, category-color, poster-card, avatar, sports-geometry, motion, and inferred-product claims are intentionally omitted rather than reconstructed from CSS declarations, corporate material, or an adjacent route.
 
-## 5. Layout Principles
+### States
 
-The three supplied product routes establish route scope, not a full layout system. Home and movie share compact menu controls; the live route supplies a 34px tab treatment. No mobile viewport, grid, card aspect ratio, sticky header, player geometry, or breakpoint is retained because the collector evidence does not provide reliable cross-viewport provenance.
+Only an opened content menu, a selected live tab, and the movie route's current-page header link were captured; the bundle holds no hover, pressed or focus frame. The following product states require direct product-surface observation before specification:
 
-## 6. Depth & Elevation
+| Category | Evidence status |
+|---|---|
+| Empty | Not observed in the captured routes |
+| Loading | Not observed in the captured routes |
+| Error | Not observed in the captured routes |
+| Success | Not observed in the captured routes |
+| Skeleton | Not observed in the captured routes |
+| Disabled | Not observed in the captured routes |
 
-The opened content menu is the only measured elevated layer: it uses `#212121`, a 1px `#4f4f4f` border, 4.95px radius, and two low-opacity black shadow layers. This route-local opened state does not authorize a global shadow scale. The normal controls retained in §4 report no shadow.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -378,17 +383,7 @@ The opened content menu is the only measured elevated layer: it uses `#212121`, 
 - Do not add hover, focus, pressed, disabled, error, dialog, or responsive variants without a new observed state and selector.
 - Do not use marketing, subscription, legal, or newsroom chrome as though it were the captured streaming product surface.
 
-## 8. Responsive Behavior
-
-No mobile or alternate viewport was supplied. Touch targets, breakpoint changes, menu placement, shelf grids, and player behavior remain unverified.
-
-## 9. Agent Prompt Guide
-
-### Verified prompt boundary
-
-“Create only the captured TVING product chrome: a black streaming shell with white, `#a3a3a3`, and `#6e6e6e` text; an expanded black content selector with a 4.95px corner; and the selected live tab with a 20% white fill and 109.996px pill radius. Use loaded Pretendard. Do not add red CTAs, poster cards, category colors, player geometry, or unobserved interaction states.”
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Official TVING product policy pages use compact legal-navigation labels such as `TVING 이용약관`, `유료이용약관`, `법적고지`, and `개인정보처리방침`. CJ's 2025 editorial framing names an “infinite spectrum,” “signature content,” and “immersive sports.” These are source-specific language samples: neither source establishes a general in-product microcopy system. [TVING policies](https://www.tving.com/policy/terms?viewType=webview) · [TVING 2025 lineup](https://newsroom.cj.net/?p=5803)
 
@@ -404,35 +399,14 @@ Official TVING product policy pages use compact legal-navigation labels such as 
 - `signature content` — official CJ 2025 lineup theme. <!-- verified: newsroom.cj.net/?p=5803 2026-07-13 -->
 - `immersive sports` — official CJ 2025 lineup theme. <!-- verified: newsroom.cj.net/?p=5803 2026-07-13 -->
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-CJ ENM's official account says TVING separated from CJ ENM in October 2020, then strengthened its platform position through a JTBC partnership and investment from Naver before its merger with KT's Seezn. That history establishes TVING as a Korean streaming platform built through content and platform partnerships; it does not establish a timeless UI system. [CJ ENM merger announcement](https://newsroom.cj.net/cj-enms-tving-and-kts-seezn-announce-merger-to-become-south-koreas-largest-ott-platform/)
+### Verified prompt boundary
 
-The current public editorial record emphasizes a varied original-content slate and live sports coverage. CJ's 2025 announcement describes genre breadth, signature franchises, and year-round sports programming; a later CJ announcement frames international distribution as part of TVING's expansion. These facts explain the service's content scope and current direction, while the tokens in this reference remain tied only to the three captured Korean web routes. [TVING 2025 lineup](https://newsroom.cj.net/?p=5803) · [TVING global expansion](https://newsroom.cj.net/tving-partners-with-disney-japan-to-accelerate-global-expansion/)
+“Create only the captured TVING product chrome: a black streaming shell with white, `#a3a3a3`, and `#6e6e6e` text; an expanded black content selector with a 4.95px corner; and the selected live tab with a 20% white fill and 109.996px pill radius. Use loaded Pretendard. Do not add red CTAs, poster cards, category colors, player geometry, or unobserved interaction states.”
 
-## 12. Principles
+## Governance
 
-1. **Keep content domains distinct.** TVING's official lineup differentiates original genres, signature programs, and sports. *UI implication:* do not collapse different route contexts into an invented universal component system.
-2. **Use contrast for viewing-first chrome.** The captured routes use black, white, and measured gray values. *UI implication:* preserve text hierarchy before adding decorative color.
-3. **Require state provenance.** The capture supplies menu-open and selected examples only. *UI implication:* make a state reusable only when its route, selector, and computed values are recorded.
+### Known Gaps
 
-## 13. Personas
-
-*No first-party TVING persona research or demographic segmentation was collected for this reference. Do not fabricate customer archetypes, motivations, or survey findings.*
-
-## 14. States
-
-Only an opened content menu, a selected live tab, and the movie route's current-page header link were captured; the bundle holds no hover, pressed or focus frame. The following product states require direct product-surface observation before specification:
-
-| Category | Evidence status |
-|---|---|
-| Empty | Not observed in the captured routes |
-| Loading | Not observed in the captured routes |
-| Error | Not observed in the captured routes |
-| Success | Not observed in the captured routes |
-| Skeleton | Not observed in the captured routes |
-| Disabled | Not observed in the captured routes |
-
-## 15. Motion & Easing
-
-No timing, easing, transition, or playback-control animation was captured. The opened-menu and selected-tab observations establish static states only.
+- **Contrast, `live-selected-tab`.** Text `#ffffff` on `#ffffff33` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

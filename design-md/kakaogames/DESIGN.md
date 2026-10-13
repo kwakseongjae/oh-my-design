@@ -1,150 +1,118 @@
 ---
-id: kakaogames
 name: 카카오게임즈
-country: KR
-category: consumer-tech
-homepage: "https://www.kakaogames.com/"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=kakaogames.com&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: public-marketing, url: "https://kakaogames.com/", inspected: "2026-07-13" }
-    - { id: error, kind: public-utility, url: "https://kakaogames.com/error/", inspected: "2026-07-13" }
-    - { id: company-about, kind: corporate, url: "https://kakaogames.com/en-us/about/", inspected: "2026-07-13" }
-    - { id: suit-license, kind: font-license, url: "https://github.com/sun-typeface/SUIT/blob/main/LICENSE", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://kakaogames.com/", captured: "2026-07-13" }
-    - { id: error-live, kind: product-surface, url: "https://kakaogames.com/error/", captured: "2026-07-13" }
-    - { id: company-about-doc, kind: official-doc, url: "https://kakaogames.com/en-us/about/", captured: "2026-07-13" }
-    - { id: suit-license, kind: license, url: "https://github.com/sun-typeface/SUIT/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.ink": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.hero-on-dark": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.footer-muted": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.family.ui": { surface_id: home, source_id: home-live, method: font-face-and-computed-style, captured: "2026-07-13" }
-    "tokens.typography.hero.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.hero.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.hero.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.hero.tracking": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.hero.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.section-title.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.section-title.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.section-title.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.section-title.tracking": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.section-title.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.footer.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.footer.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.footer.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.footer.tracking": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.footer.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.spacing.card-bottom": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.rounded.none": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.rounded.news-item": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.shadow.none": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-game-card.type": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-game-card.radius": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-game-card.padding": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-game-card.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.type": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.radius": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.padding": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.height": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.states": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-hero-arrow.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.home-slide-control.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.home-slide-control.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.home-slide-control.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.home-slide-control.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.home-slide-control.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.home-slide-control.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.home-game-filter-tab.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-title-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-title-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-title-link.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-title-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-title-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-title-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-slide-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-slide-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-slide-button.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-slide-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-07-13" }
-    "tokens.components.notice-bar-slide-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.footer-text-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.type": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.bg": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.border": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.radius": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.size": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.states": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.error-outline-link.use": { surface_id: error, source_id: error-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-news-card.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-news-card.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.home-news-card.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-news-card.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-news-card.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.home-news-card.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-news-card.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-media-card.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-media-card.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.home-media-card.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.home-media-card.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-media-card.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.home-media-card.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.home-media-card.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  colors:
-    ink: "#000000"
-    hero-on-dark: "#ffffff"
-    footer-muted: "#898989"
-  typography:
-    family: { ui: "SUIT Variable" }
-    hero: { size: 50, weight: 700, lineHeight: 1.2, tracking: 0, use: "Homepage desktop hero title only." }
-    section-title: { size: 34, weight: 600, lineHeight: "normal", tracking: 0, use: "Homepage section heading only." }
-    footer: { size: 14, weight: 300, lineHeight: 1.4, tracking: 0, use: "Homepage footer information only." }
-  spacing: { card-bottom: 40 }
-  rounded: { none: 0, news-item: 4 }
-  shadow: { none: "none" }
-  components_harvested: true
-  components:
-    home-game-card: { type: card, radius: 0, padding: "0px 0px 40px", use: "home::div.card; static homepage game-card wrapper, observed at 248px × 437px." }
-    home-hero-arrow: { type: button, bg: "rgba(255, 255, 255, 0.05)", radius: 0, padding: "0px", height: 60, states: "Default on the prev/next pair (capture 1, 2), 60px × 60px; the bundle holds no state frame for any element, so hover, focus, and pressed values are not recorded.", use: "home::[data-omd-capture=\"1\"] (.btn-arrow.btn-arrow--prev) on the homepage hero; its font size is 0px, so no label style is claimed." }
-    home-slide-control: { type: tab, bg: "transparent", padding: "0px 10px", size: "330px x 60px", states: "rest on three hero control-bar buttons (capture 4-6); capture 3 carries class active, but none of its captured properties differs from theirs and the capture holds no opacity, so no selected value is declared; the bundle holds no state frame", use: "Homepage hero slide control (button.swiper-controlbar__btn) at home::[data-omd-capture=\"4\"]; its own font size is 0px, so its label sits in an unsampled child and no label style is claimed" }
-    home-game-filter-tab: { type: tab, bg: "transparent", fg: "#000000", padding: "0px", height: "43px", font: "34px / 600 / normal SUIT Variable", states: "rest on two filter buttons (capture 13, 14); capture 12 carries class active, but none of its captured properties differs from theirs and the capture holds no opacity, so no selected value is declared; the bundle holds no state frame", use: "Homepage game-category filter button inside li.game-filter__item at home::[data-omd-capture=\"13\"], 60 x 43" }
-    notice-bar-title-link: { type: button, fg: "#000000", size: "70px x 25px", font: "20px / 400 / normal SUIT Variable", states: "default on the homepage (capture 32) and the error page (surface-2 capture 2); the bundle holds no state frame", use: "Notice-bar title link (a) inside h1.notice-bar__title at home::[data-omd-capture=\"32\"]; the ticker items beside it are p elements at #000000, 16px / 300 / 16px" }
-    notice-bar-slide-button: { type: button, bg: "transparent", size: "26px x 26px", states: "default on the prev/next pair on the homepage (capture 33, 34) and the error page (surface-2 capture 3, 4); the bundle holds no state frame", use: "Notice-bar prev/next button (button.btn-slide) at home::[data-omd-capture=\"33\"]; its font size is 0px, so no label style is claimed" }
-    footer-text-button: { type: button, bg: "transparent", fg: "#898989", padding: "0px", height: "20px", font: "14px / 300 / 19.6px SUIT Variable", states: "default on two footer buttons on the homepage (capture 46, 47) and the error page (surface-2 capture 16, 17); the bundle holds no state frame", use: "Footer information-line text button (button.btn-text) at home::[data-omd-capture=\"47\"]; capture 46 adds class underline, which the capture does not confirm as a text decoration" }
-    error-outline-link: { type: button, bg: "transparent", border: "1px #e0e0e0", radius: "4px", size: "318px x 78px", states: "default on the error page (surface-2 capture 1; the second error capture repeats it); the bundle holds no state frame", use: "Error-page outline link (a) at surface-2::[data-omd-capture=\"1\"]; its own font size is 0px and its colour is the browser-default link blue, so its label sits in an unsampled child and no label style is claimed" }
-    home-news-card: { type: card, fg: "#000000", radius: "4px", size: "650px x 230px", font: "24.48px / 600 / 35.496px SUIT Variable", states: "default on two news items; the bundle holds no state frame", use: "Homepage news item (li.news-box__item): radius and size sit on the li; text colour and type come from its title paragraph (home::p, 540 x 71), which holds all of the item text" }
-    home-media-card: { type: card, fg: "#000000", padding: "18px 0px 18px 28px on the caption", size: "423px x 291px", font: "16px / 400 / 16px SUIT Variable", states: "default on three media items; the bundle holds no state frame", use: "Homepage media item (li.media-box__item): size sits on the li; colour, padding and type come from its caption paragraph (home::p, 423 x 52), which holds all of the item text" }
+colors:
+  ink: '#000000'
+  hero-on-dark: '#ffffff'
+  footer-muted: '#898989'
+typography:
+  hero:
+    fontSize: 50px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: 0px
+    use: Homepage desktop hero title only.
+  section-title:
+    fontSize: 34px
+    fontWeight: 600
+    letterSpacing: 0px
+    use: Homepage section heading only.
+  footer:
+    fontSize: 14px
+    fontWeight: 300
+    lineHeight: 1.4
+    letterSpacing: 0px
+    use: Homepage footer information only.
+rounded:
+  none: 0px
+  news-item: 4px
+spacing:
+  card-bottom: 40
+components:
+  home-game-card:
+    type: card
+    rounded: 0px
+    padding: 0px 0px 40px
+    use: home::div.card; static homepage game-card wrapper, observed at 248px × 437px.
+  home-hero-arrow:
+    type: button
+    backgroundColor: rgba(255, 255, 255, 0.05)
+    rounded: 0px
+    padding: 0px
+    height: 60
+    states: Default on the prev/next pair (capture 1, 2), 60px × 60px; the bundle holds no state frame for any element, so hover, focus, and pressed values are not recorded.
+    use: home::[data-omd-capture="1"] (.btn-arrow.btn-arrow--prev) on the homepage hero; its font size is 0px, so no label style is claimed.
+  home-slide-control:
+    type: tab
+    backgroundColor: transparent
+    padding: 0px 10px
+    size: 330px x 60px
+    states: rest on three hero control-bar buttons (capture 4-6); capture 3 carries class active, but none of its captured properties differs from theirs and the capture holds no opacity, so no selected value is declared; the bundle holds no state frame
+    use: Homepage hero slide control (button.swiper-controlbar__btn) at home::[data-omd-capture="4"]; its own font size is 0px, so its label sits in an unsampled child and no label style is claimed
+  home-game-filter-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    padding: 0px
+    height: 43px
+    typography: 34px / 600 / normal SUIT Variable
+    states: rest on two filter buttons (capture 13, 14); capture 12 carries class active, but none of its captured properties differs from theirs and the capture holds no opacity, so no selected value is declared; the bundle holds no state frame
+    use: Homepage game-category filter button inside li.game-filter__item at home::[data-omd-capture="13"], 60 x 43
+  notice-bar-title-link:
+    type: button
+    textColor: '#000000'
+    size: 70px x 25px
+    typography: 20px / 400 / normal SUIT Variable
+    states: default on the homepage (capture 32) and the error page (surface-2 capture 2); the bundle holds no state frame
+    use: 'Notice-bar title link (a) inside h1.notice-bar__title at home::[data-omd-capture="32"]; the ticker items beside it are p elements at #000000, 16px / 300 / 16px'
+  notice-bar-slide-button:
+    type: button
+    backgroundColor: transparent
+    size: 26px x 26px
+    states: default on the prev/next pair on the homepage (capture 33, 34) and the error page (surface-2 capture 3, 4); the bundle holds no state frame
+    use: Notice-bar prev/next button (button.btn-slide) at home::[data-omd-capture="33"]; its font size is 0px, so no label style is claimed
+  footer-text-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#898989'
+    padding: 0px
+    height: 20px
+    typography: 14px / 300 / 19.6px SUIT Variable
+    states: default on two footer buttons on the homepage (capture 46, 47) and the error page (surface-2 capture 16, 17); the bundle holds no state frame
+    use: Footer information-line text button (button.btn-text) at home::[data-omd-capture="47"]; capture 46 adds class underline, which the capture does not confirm as a text decoration
+  error-outline-link:
+    type: button
+    backgroundColor: transparent
+    border: '1px #e0e0e0'
+    rounded: 4px
+    size: 318px x 78px
+    states: default on the error page (surface-2 capture 1; the second error capture repeats it); the bundle holds no state frame
+    use: Error-page outline link (a) at surface-2::[data-omd-capture="1"]; its own font size is 0px and its colour is the browser-default link blue, so its label sits in an unsampled child and no label style is claimed
+  home-news-card:
+    type: card
+    textColor: '#000000'
+    rounded: 4px
+    size: 650px x 230px
+    typography: 24.48px / 600 / 35.496px SUIT Variable
+    states: default on two news items; the bundle holds no state frame
+    use: 'Homepage news item (li.news-box__item): radius and size sit on the li; text colour and type come from its title paragraph (home::p, 540 x 71), which holds all of the item text'
+  home-media-card:
+    type: card
+    textColor: '#000000'
+    padding: 18px 0px 18px 28px on the caption
+    size: 423px x 291px
+    typography: 16px / 400 / 16px SUIT Variable
+    states: default on three media items; the bundle holds no state frame
+    use: 'Homepage media item (li.media-box__item): size sits on the li; colour, padding and type come from its caption paragraph (home::p, 423 x 52), which holds all of the item text'
+fonts:
+  roles:
+    ui: SUIT Variable
 ---
 
 # Design System Inspiration of 카카오게임즈
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 카카오게임즈 is a Korean publisher and developer that operates mobile, PC online, and console games across casual, subculture, and hardcore MMORPG genres. Founded in Korea in 2016, the company’s current official account describes a global studio-and-partnership model rather than a single-platform game label. Its public homepage expresses that broad catalogue through a high-contrast editorial shell: oversized black type, image-led game promotion, stark white hero copy, and restrained utility text instead of a persistent product-dashboard language. The current evolution documented by the company is expansion of its global development and publishing reach through studios and multiple platforms; the sources reviewed do not document a separate visual-identity rebrand. [Official company profile](https://kakaogames.com/en-us/about/)
 
@@ -155,13 +123,34 @@ tokens:
 - Image-led homepage promotion paired with large category labels
 - Measured public marketing and error-surface values kept distinct from unobserved in-game interfaces
 
-## Primary tasks
+### Primary tasks
 
 - Browse the publisher's game titles and company information
 - See which games the publisher is currently promoting
 - Read the company's account of its founding and global reach
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Kakao Games says it was founded in Korea in 2016 and has grown into a global comprehensive gaming company with offices in Europe, Japan, and other regions. Its stated operating scope combines publishing, development studios, and partnerships across mobile, PC online, and console games. [Official company profile](https://kakaogames.com/en-us/about/)
+
+Its published mission, “Uniting the World Through Games,” positions games as cultural content that connects people across regions and environments. The company’s public account of its current direction emphasizes high-quality content for global users, varied genres, and expansion beyond a single platform. This narrative is company context, not proof of any unobserved visual token.
+
+### Principles
+
+1. **Challenge through new experiences.** The company describes innovation, technology, and new opportunities as ways to deliver distinctive gaming experiences. *UI implication:* do not translate this into an unverified novelty visual treatment.
+2. **Connection across players and regions.** The official values describe global player community and listening to players. *UI implication:* keep locale, community, and accessibility decisions evidence-led per product surface.
+3. **Expansion across genres and platforms.** The company presents a portfolio that reaches beyond one platform or genre. *UI implication:* do not force every title into one generic game UI pattern.
+4. **Joyful creation.** The corporate-culture statement links team creativity and joy to player enjoyment. *UI implication:* use this as narrative context, not an invented component or motion rule.
+
+### Personas
+
+These are stakeholder archetypes derived from the company’s published audience and operating scope, not synthetic research personas.
+
+- **Global player:** seeks games across different genres and platforms; product-specific needs remain unverified here.
+- **Studio or publishing partner:** participates in Kakao Games’ development-and-partnership model; no partner portal UI is captured.
+- **Portfolio visitor:** browses public information about titles and the company; this is the surface the supplied evidence covers.
+
+## Colors
 
 - **Ink** (`#000000`): dominant observed public text and border color on all three supplied captures.
 - **Hero on dark** (`#ffffff`): observed homepage hero title and subtitle text.
@@ -169,7 +158,7 @@ tokens:
 
 The capture also exposes browser-default blue links (`#0000ee`) and transparent surfaces. Neither is promoted as a Kakao Games brand color: the first is not selector-backed brand treatment, and the second is not an opaque color token.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -187,7 +176,35 @@ The capture also exposes browser-default blue links (`#0000ee`) and transparent 
 | Homepage section title | SUIT Variable | 34px | 600 | normal | `.section__title` only |
 | Homepage footer info | SUIT Variable | 14px | 300 | 19.6px | `.footer-info__item` only |
 
-## 4. Component Stylings
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.section-title.lineHeight`: `normal`
+
+## Layout
+
+The public homepage uses a promotional hero followed by content modules rather than an application shell. The captured game-card wrapper measures 248px × 437px in one homepage variant and carries 40px bottom padding. No authenticated game-client grid, inventory layout, player profile arrangement, or responsive breakpoint is asserted.
+
+### Responsive Behavior
+
+The supplied evidence contains 1440px-wide captures only. It does not establish mobile typography, breakpoints, touch-target rules, carousel behavior, or game-client responsiveness.
+
+## Elevation & Depth
+
+The representative homepage cards and controls have `box-shadow: none` in the supplied artifact. No elevation scale, modal treatment, floating panel, or in-game overlay shadow is established.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+No duration, easing curve, transition property, or animation-state value is preserved in the supplied evidence. The homepage includes carousel-related controls, but the artifact contains zero interaction snapshots, so its motion behavior is omitted.
+
+## Components
 
 ### Homepage game card
 
@@ -243,15 +260,11 @@ The bundle holds no hover, pressed, or focus frame for any Kakao Games element (
 **Tier 2 sources:** https://getdesign.md/kakaogames (attempted; no usable Kakao Games record returned); https://styles.refero.design/?q=kakaogames (attempted; no usable Kakao Games style record returned)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-The public homepage uses a promotional hero followed by content modules rather than an application shell. The captured game-card wrapper measures 248px × 437px in one homepage variant and carries 40px bottom padding. No authenticated game-client grid, inventory layout, player profile arrangement, or responsive breakpoint is asserted.
+No visual empty, loading, error, success, skeleton, disabled, or selected treatment is established by the supplied capture; the two `active` classes in §4 carry no measured difference. The `/error/` route is a public utility surface, but it does not provide selector-backed error-component styling in this evidence bundle. Absence of a measured state is not a license to fill it with a generic pattern.
 
-## 6. Depth & Elevation
-
-The representative homepage cards and controls have `box-shadow: none` in the supplied artifact. No elevation scale, modal treatment, floating panel, or in-game overlay shadow is established.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -267,15 +280,7 @@ The representative homepage cards and controls have `box-shadow: none` in the su
 - Do not use public homepage components as evidence for a game client, account system, store, or gameplay HUD.
 - Do not invent hover, focus, pressed, disabled, error, or success styles from this capture.
 
-## 8. Responsive Behavior
-
-The supplied evidence contains 1440px-wide captures only. It does not establish mobile typography, breakpoints, touch-target rules, carousel behavior, or game-client responsiveness.
-
-## 9. Agent Prompt Guide
-
-Use this reference for the observed Kakao Games public web shell, not for a game UI. Start with black `#000000` text, white `#ffffff` hero text when it sits on an existing dark/image field, SUIT Variable, square card geometry, and no shadow. Preserve the source boundary: do not generate in-game navigation, combat HUDs, account flows, store states, or interaction variants as though they were captured facts.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official company profile frames games as cultural content that can connect people across regions and describes its mission as “Uniting the World Through Games.” Its values center on challenge, connection, and expansion. That supports a global, energetic, and inviting corporate register; it is not a verified in-game localization or microcopy system. [Official company profile](https://kakaogames.com/en-us/about/)
 
@@ -287,31 +292,12 @@ The official company profile frames games as cultural content that can connect p
 
 Illustrative, not official UI copy: “Discover a new world to play together.” · “Find your next adventure across platforms.” · “Share the game with players everywhere.”
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Kakao Games says it was founded in Korea in 2016 and has grown into a global comprehensive gaming company with offices in Europe, Japan, and other regions. Its stated operating scope combines publishing, development studios, and partnerships across mobile, PC online, and console games. [Official company profile](https://kakaogames.com/en-us/about/)
+Use this reference for the observed Kakao Games public web shell, not for a game UI. Start with black `#000000` text, white `#ffffff` hero text when it sits on an existing dark/image field, SUIT Variable, square card geometry, and no shadow. Preserve the source boundary: do not generate in-game navigation, combat HUDs, account flows, store states, or interaction variants as though they were captured facts.
 
-Its published mission, “Uniting the World Through Games,” positions games as cultural content that connects people across regions and environments. The company’s public account of its current direction emphasizes high-quality content for global users, varied genres, and expansion beyond a single platform. This narrative is company context, not proof of any unobserved visual token.
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Challenge through new experiences.** The company describes innovation, technology, and new opportunities as ways to deliver distinctive gaming experiences. *UI implication:* do not translate this into an unverified novelty visual treatment.
-2. **Connection across players and regions.** The official values describe global player community and listening to players. *UI implication:* keep locale, community, and accessibility decisions evidence-led per product surface.
-3. **Expansion across genres and platforms.** The company presents a portfolio that reaches beyond one platform or genre. *UI implication:* do not force every title into one generic game UI pattern.
-4. **Joyful creation.** The corporate-culture statement links team creativity and joy to player enjoyment. *UI implication:* use this as narrative context, not an invented component or motion rule.
-
-## 13. Personas
-
-These are stakeholder archetypes derived from the company’s published audience and operating scope, not synthetic research personas.
-
-- **Global player:** seeks games across different genres and platforms; product-specific needs remain unverified here.
-- **Studio or publishing partner:** participates in Kakao Games’ development-and-partnership model; no partner portal UI is captured.
-- **Portfolio visitor:** browses public information about titles and the company; this is the surface the supplied evidence covers.
-
-## 14. States
-
-No visual empty, loading, error, success, skeleton, disabled, or selected treatment is established by the supplied capture; the two `active` classes in §4 carry no measured difference. The `/error/` route is a public utility surface, but it does not provide selector-backed error-component styling in this evidence bundle. Absence of a measured state is not a license to fill it with a generic pattern.
-
-## 15. Motion & Easing
-
-No duration, easing curve, transition property, or animation-state value is preserved in the supplied evidence. The homepage includes carousel-related controls, but the artifact contains zero interaction snapshots, so its motion behavior is omitted.
+- **Contrast, `home-game-filter-tab`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,213 +1,157 @@
 ---
-id: cybozu
 name: Cybozu
-country: JP
-category: saas
-homepage: "https://cybozu.co.jp/"
-primary_color: "#139cb7"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=cybozu.co.jp&sz=128"
-verified: "2026-09-21"
-added: "2026-06-17"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: corporate, kind: product-surface, url: "https://cybozu.co.jp/", inspected: "2026-09-22" }
-    - { id: kintone, kind: product-surface, url: "https://kintone.cybozu.co.jp/", inspected: "2026-09-22" }
-  sources:
-    - { id: corp-live, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-09-21" }
-    - { id: kintone-live, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-09-21" }
-    - { id: corp-states, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-09-22" }
-    - { id: kintone-states, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-09-22" }
-    - { id: corp-components-jun, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-06-17" }
-    - { id: kintone-components-jun, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-06-17" }
-    - { id: kuc-repo, kind: official-doc, url: "https://github.com/kintone-labs/kintone-ui-component", captured: "2026-09-21" }
-  conflicts: []
-  claims:
-    tokens.colors.canvas: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.hairline: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.ink: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.ink-pure: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-amber: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-amber-deep: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-card-border: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-dark: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-ink: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-surface: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-tint: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.kintone-yellow: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.muted: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.muted-slate: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.on-primary: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.primary: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.primary-light: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.slate-dark: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.slate-darker: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.surface: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.components.corp-card.bg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-card.border: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-card.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-card.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-icon-button.focus: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.corp-icon-button.hover: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.corp-icon-button.pressed: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.corp-icon-button.bg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-icon-button.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-icon-button.radius: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-icon-button.shadow: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-icon-button.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-icon-button.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-nav-link.active: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-nav-link.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-nav-link.font: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-nav-link.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-nav-link.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-text-link.focus: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.corp-text-link.hover: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.corp-text-link.pressed: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.corp-text-link.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-text-link.font: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-text-link.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.corp-text-link.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.font: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-badge.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.border: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-card.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.focus: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.kintone-cta-dark.hover: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.kintone-cta-dark.pressed: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.kintone-cta-dark.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.font: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.height: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-cta-dark.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.focus: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.kintone-outline-button.hover: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.kintone-outline-button.pressed: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.kintone-outline-button.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.border: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.height: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.components.kintone-outline-button.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
-    tokens.rounded.full: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.rounded.lg: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.rounded.md: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.rounded.sm: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.shadow.none: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.shadow.pickup: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.shadow.soft: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.base: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.lg: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.md: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.section: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.sm: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.xl: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.xs: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.spacing.xxl: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.chip.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.chip.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.chip.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-body.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-body.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-body.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-body.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-en-label.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-en-label.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-en-label.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-nav.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-nav.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.corp-nav.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.family.corporate: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.family.fallback: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.family.product: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-body.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-body.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-body.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-body.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2-alt.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2-alt.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2-alt.tracking: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2-alt.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2-alt.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2.tracking: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-    tokens.typography.kintone-h2.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "Two brand-owned surfaces. Corporate identity (cybozu.co.jp) = teal accent #139cb7 on #333333 ink — the canonical company color (primary). Design-led flagship product kintone (kintone.cybozu.co.jp) = yellow #ffbf00 on warm-brown ink #231200 — documented as a distinct product system (Stripe-style split), not a conflict."
-  colors:
-    primary: "#139cb7"
-    primary-light: "#64bdd4"
-    ink: "#333333"
-    ink-pure: "#000000"
-    muted: "#aaaaaa"
-    muted-slate: "#838d94"
-    slate-dark: "#31424e"
-    slate-darker: "#465560"
-    canvas: "#ffffff"
-    surface: "#f6f6f6"
-    hairline: "#e6e6e6"
-    on-primary: "#ffffff"
-    kintone-yellow: "#ffbf00"
-    kintone-amber: "#ffdb4f"
-    kintone-amber-deep: "#ff8f00"
-    kintone-ink: "#231200"
-    kintone-surface: "#f3f3f3"
-    kintone-tint: "#fff5e1"
-    kintone-card-border: "#d6d5d5"
-    kintone-dark: "#333333"
-  typography:
-    family: { corporate: "Hiragino Kaku Gothic Pro", product: "Roboto / Noto Sans JP", fallback: "Meiryo" }
-    corp-body:    { size: 16, weight: 400, lineHeight: 2.0, use: "Corporate body text, Hiragino, 32px line-height" }
-    corp-nav:     { size: 14, weight: 700, use: "Corporate nav links, bold Hiragino" }
-    corp-en-label: { size: 16, weight: 400, use: "English section labels in muted grey #aaaaaa" }
-    kintone-h2:   { size: 52, weight: 700, lineHeight: 1.45, tracking: 2.6, use: "kintone section heads, Roboto + Noto Sans JP, positive tracking" }
-    kintone-h2-alt: { size: 48, weight: 700, lineHeight: 1.40, tracking: 0.96, use: "kintone secondary heads" }
-    kintone-body: { size: 16, weight: 400, lineHeight: 1.69, use: "kintone body text, 27px line-height" }
-    chip:         { size: 12, weight: 700, use: "kintone yellow badge chips" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 62 }
-  rounded: { sm: 4, md: 8, lg: 10, full: 9999 }
-  shadow:
-    soft: "rgba(0,0,0,0.1) 0px 0px 6px 0px"
-    pickup: "rgba(0,0,0,0.17) 0px 1px 10px 0px"
-    none: "none"
-  components:
-    corp-nav-link: { type: tab, fg: "#333333", font: "14px / 700 Hiragino", active: "teal #139cb7 text on hover/active", use: "Corporate top-nav item" }
-    corp-text-link: { type: button, fg: "#139cb7", font: "16px / 400 Hiragino", hover: "#139cb7", pressed: "#139cb7", focus: "#2693ff", use: "Corporate inline / list text link — the single teal action color. Hover and pressed leave it unchanged; focus recolours the text to #2693ff." }
-    corp-icon-button: { type: button, bg: "#ffffff", fg: "#139cb7", radius: "9999px", shadow: "rgba(0,0,0,0.1) 0 0 6px", hover: "rgba(0,0,0,0.2) 0 0 2px", pressed: "rgba(0,0,0,0.2) 0 0 2px", focus: "#2693ff", use: "Circular icon button, soft shadow, 40px. Hover and pressed tighten the shadow and drop it 2px — it presses into the page rather than lifting off it." }
-    corp-card: { type: card, bg: "#ffffff", border: "1px solid #e6e6e6", use: "Corporate content card, hairline-separated on #f6f6f6 surface" }
-    kintone-cta-dark: { type: button, bg: "#333333", fg: "#ffffff", radius: "8px", padding: "5px 5px 5px 20px", height: "64px", font: "16px / 400 Roboto", hover: "#333333", pressed: "#ffbf00", focus: "#ffbf00", use: "kintone primary CTA (30日間無料お試し) — dark fill with yellow accent. Hover changes nothing; pressed and focus draw the kintone yellow as the outline colour." }
-    kintone-outline-button: { type: button, bg: "#ffffff", fg: "#231200", border: "1px solid #d6d5d5", radius: "8px", padding: "5px 5px 5px 20px", height: "66px", hover: "#ffffff", pressed: "#ffbf00", focus: "#ffbf00", use: "kintone secondary outlined button — the same yellow outline on pressed and focus as the dark CTA, and the same unchanged hover." }
-    kintone-card: { type: card, bg: "#ffffff", fg: "#231200", border: "1px solid #d6d5d5", radius: "10px", padding: "24px", use: "kintone feature card, flat (no shadow)" }
-    kintone-badge: { type: badge, bg: "#ffbf00", fg: "#231200", radius: "8px", padding: "5px 8px 10px", font: "12px / 700", use: "kintone yellow tab/banner chip (さわってみよう！, 30日間無料！)" }
-  components_harvested: true
+colors:
+  primary: '#139cb7'
+  primary-light: '#64bdd4'
+  ink: '#333333'
+  ink-pure: '#000000'
+  muted: '#aaaaaa'
+  muted-slate: '#838d94'
+  slate-dark: '#31424e'
+  slate-darker: '#465560'
+  canvas: '#ffffff'
+  surface: '#f6f6f6'
+  hairline: '#e6e6e6'
+  on-primary: '#ffffff'
+  kintone-yellow: '#ffbf00'
+  kintone-amber: '#ffdb4f'
+  kintone-amber-deep: '#ff8f00'
+  kintone-ink: '#231200'
+  kintone-surface: '#f3f3f3'
+  kintone-tint: '#fff5e1'
+  kintone-card-border: '#d6d5d5'
+  kintone-dark: '#333333'
+typography:
+  corp-body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 2
+    use: Corporate body text, Hiragino, 32px line-height
+  corp-nav:
+    fontSize: 14px
+    fontWeight: 700
+    use: Corporate nav links, bold Hiragino
+  corp-en-label:
+    fontSize: 16px
+    fontWeight: 400
+    use: 'English section labels in muted grey #aaaaaa'
+  kintone-h2:
+    fontSize: 52px
+    fontWeight: 700
+    lineHeight: 1.45
+    letterSpacing: 2.6px
+    use: kintone section heads, Roboto + Noto Sans JP, positive tracking
+  kintone-h2-alt:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: 0.96px
+    use: kintone secondary heads
+  kintone-body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.69
+    use: kintone body text, 27px line-height
+  chip:
+    fontSize: 12px
+    fontWeight: 700
+    use: kintone yellow badge chips
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 10px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 32
+  section: 62
+components:
+  corp-nav-link:
+    type: tab
+    textColor: '#333333'
+    typography: 14px / 700 Hiragino
+    active: 'teal #139cb7 text on hover/active'
+    use: Corporate top-nav item
+  corp-text-link:
+    type: button
+    textColor: '#139cb7'
+    typography: 16px / 400 Hiragino
+    hover: '#139cb7'
+    pressed: '#139cb7'
+    focus: '#2693ff'
+    use: 'Corporate inline / list text link — the single teal action color. Hover and pressed leave it unchanged; focus recolours the text to #2693ff.'
+  corp-icon-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#139cb7'
+    rounded: 9999px
+    shadow: rgba(0,0,0,0.1) 0 0 6px
+    hover: rgba(0,0,0,0.2) 0 0 2px
+    pressed: rgba(0,0,0,0.2) 0 0 2px
+    focus: '#2693ff'
+    use: Circular icon button, soft shadow, 40px. Hover and pressed tighten the shadow and drop it 2px — it presses into the page rather than lifting off it.
+  corp-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #e6e6e6'
+    use: 'Corporate content card, hairline-separated on #f6f6f6 surface'
+  kintone-cta-dark:
+    type: button
+    backgroundColor: '#333333'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 5px 5px 5px 20px
+    height: 64px
+    typography: 16px / 400 Roboto
+    hover: '#333333'
+    pressed: '#ffbf00'
+    focus: '#ffbf00'
+    use: kintone primary CTA (30日間無料お試し) — dark fill with yellow accent. Hover changes nothing; pressed and focus draw the kintone yellow as the outline colour.
+  kintone-outline-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#231200'
+    border: '1px solid #d6d5d5'
+    rounded: 8px
+    padding: 5px 5px 5px 20px
+    height: 66px
+    hover: '#ffffff'
+    pressed: '#ffbf00'
+    focus: '#ffbf00'
+    use: kintone secondary outlined button — the same yellow outline on pressed and focus as the dark CTA, and the same unchanged hover.
+  kintone-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#231200'
+    border: '1px solid #d6d5d5'
+    rounded: 10px
+    padding: 24px
+    use: kintone feature card, flat (no shadow)
+  kintone-badge:
+    type: badge
+    backgroundColor: '#ffbf00'
+    textColor: '#231200'
+    rounded: 8px
+    padding: 5px 8px 10px
+    typography: 12px / 700
+    use: kintone yellow tab/banner chip (さわってみよう！, 30日間無料！)
+fonts:
+  roles:
+    corporate: Hiragino Kaku Gothic Pro
+    product: Roboto / Noto Sans JP
+    fallback: Meiryo
 ---
 
 # Design System Inspiration of Cybozu
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Cybozu (サイボウズ) is Japan's leading teamwork-software maker — the company behind kintone, Garoon, and Cybozu Office — and its design language splits cleanly into two brand-owned worlds that share one philosophy: clarity in service of teamwork. The corporate face at cybozu.co.jp is calm, editorial, and almost civic in tone: a pure white (`#ffffff`) canvas, dark grey body ink (`#333333`) set in the classic Japanese Hiragino Kaku Gothic Pro stack at a generous 16px / 32px line-height, and a single confident teal accent (`#139cb7`) that does almost all of the interactive work. On the homepage that teal appears 446 times as the link and call-to-action color, training the eye to read teal as "the next step." Light teal (`#64bdd4`) appears as a softer fill and border companion, and a muted grey (`#aaaaaa`) carries the bilingual English section labels ("News", "Products", "Seminar・Event") that sit quietly above each Japanese block.
 
@@ -225,14 +169,40 @@ What unites both worlds is restraint with depth and a hairline-first separation 
 - Bilingual JP/EN section labels with muted-grey (`#aaaaaa`) English headers over Japanese content
 - Soft circular icon buttons with a faint `rgba(0,0,0,0.1)` shadow as the corporate site's only elevation
 
-## Primary tasks
+### Primary tasks
 
 - Build your own case-management app in kintone without being an engineer
 - Start the 30-day free trial and try making an app
 - Evaluate kintone and Garoon before choosing one for a company
 - Find the use case that matches your team's work
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Cybozu (サイボウズ) was founded in **1997 in Matsuyama, Ehime** by Yoshihisa Aono and co-founders, and grew into one of Japan's most influential groupware companies — the maker of Cybozu Office, Garoon, and, since 2011, kintone. Its corporate mission, stated plainly across cybozu.co.jp, is to build "チームワークあふれる社会を創る" (to create a society overflowing with teamwork). That mission is unusually load-bearing: Cybozu is also well known in Japan for pioneering flexible work styles ("働き方改革"), and it frames its software not as productivity tooling but as social infrastructure for collaboration.
+
+kintone is where Cybozu's design-led culture is most visible. The product reframes business-application building — historically the domain of engineers and consultants — as something "みんな、つくれる" (everyone can build). Around it sits an open product-design organization: the kintone Design System (Figma + the `kintone-ui-component` npm library + Storybook docs at ui-component.kintone.dev), and the long-running Cybozu Product Design Magazine on note.com/cybozu_design, where designers publish their process, organization changes, and research in the open.
+
+What Cybozu's design refuses, visible on the surface: the heavy, intimidating chrome of legacy enterprise software (no shadow-stacked dashboards, no corporate navy-and-grey severity) and the hard-sell urgency of Western SaaS marketing. What it embraces: a calm civic corporate voice in teal (`#139cb7`), a warm and democratizing product voice in yellow (`#ffbf00`), bilingual accessibility, flat hairline-separated layouts, and a transparent, published design practice.
+
+### Principles
+
+1. **Teamwork is the product.** Cybozu's stated mission is a society overflowing with teamwork; software is the means. *UI implication:* favor clarity and collaboration cues over feature density; the interface should never feel like a competition.
+2. **Everyone can build.** kintone's "みんな、つくれる" democratizes app-building beyond engineers. *UI implication:* decode jargon into friendly tools; positive headline tracking and warm yellow make the product feel inviting, not technical.
+3. **Two voices, one philosophy.** A civic corporate teal and a warm product yellow are kept distinct. *UI implication:* never mix the teal and yellow systems on one surface — each carries its own register.
+4. **Flat and human.** Near-shadowless, hairline-separated layouts keep B2B software approachable. *UI implication:* separate with tint and hairlines; reserve shadow for the smallest interactive accents.
+5. **Design in the open.** The kintone Design System and Product Design Magazine make the practice transparent. *UI implication:* components are documented, reusable, and consistent — the system is a shared, published artifact, not tribal knowledge.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Cybozu / kintone user segments (Japanese SMB operations staff, non-engineer "citizen developers", enterprise IT, and Cybozu's own product designers), not individual people.*
+
+**田中美咲, 38, 松山.** Operations lead at a regional manufacturer. Not an engineer, but builds her own 案件管理 (case-management) apps in kintone because "みんな、つくれる" turned out to be literally true. Values that the cards and forms feel friendly rather than technical.
+
+**佐藤健, 45, 東京.** Corporate IT manager evaluating Garoon and kintone for a 300-person company. Reads cybozu.co.jp's calm, factual IR and news pages and trusts the civic, non-hype tone. Cares that the design feels stable and accessible, not flashy.
+
+**鈴木あみ, 29, 大阪.** A product designer at Cybozu contributing to the kintone Design System and writing for the Product Design Magazine. Believes design should be published and shared; cares about the `kintone-ui-component` library staying consistent across the product.
+
+## Colors
 
 ### Primary (Corporate Cybozu)
 - **Cybozu Teal** (`#139cb7`): The canonical company accent and `primary_color`. Link color, text-link CTAs, circular-icon-button glyphs — the single saturated "action" color across cybozu.co.jp (446 occurrences live).
@@ -259,7 +229,7 @@ What unites both worlds is restraint with depth and a hairline-first separation 
 - **kintone Card Border** (`#d6d5d5`): Hairline border for kintone's flat outlined cards and buttons.
 - **kintone Dark** (`#333333`): Dark fill for kintone's primary CTA buttons (yellow/white label sits on this dark surface).
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Corporate**: `Hiragino Kaku Gothic Pro` (`"ヒラギノ角ゴ Pro W3"`, `"Hiragino Kaku Gothic Pro"`) with `Meiryo` / `メイリオ` / `"ＭＳ Ｐゴシック"` fallbacks — the classic Japanese corporate gothic stack, used across cybozu.co.jp.
@@ -283,7 +253,129 @@ What unites both worlds is restraint with depth and a hairline-first separation 
 - **Bold where it labels, regular where it reads**: corporate nav is weight 700, body is weight 400; kintone heads are 700, body is 400. Weight, not color, carries most hierarchy.
 - **Warm ink over black**: corporate uses `#333333`, kintone uses `#231200` — never pure black for sustained reading.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px / 8px
+- Scale: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 62px
+- Notable: kintone feature cards use a generous 24px internal padding; corporate sections breathe with ~62px top padding on each block
+
+### Grid & Container
+- Corporate: centered single-column news/products portal with bilingual section labels; content bands alternate white and `#f6f6f6`
+- kintone: large bold section headings anchor each band; feature/use-case cards arranged in multi-column grids (顧客・案件管理, 脱エクセル, ワークフロー, etc.)
+- Cards use 8–10px radius and group related services/use-cases
+
+### Whitespace Philosophy
+- **Editorial calm**: the corporate site reads like a civic publication — generous vertical rhythm, quiet bilingual labels, never a hard sell
+- **Flat segmentation**: sections separate by tint (`#f6f6f6`, `#f3f3f3`, `#fff5e1`) and `#e6e6e6` / `#d6d5d5` hairlines, not by elevation
+- **Approachable density**: kintone's airy headlines + positive tracking keep an information-rich B2B product feeling welcoming
+
+### Border Radius Scale
+- Small (4px): compact kintone link buttons
+- Medium (8px): kintone cards, primary/secondary buttons, yellow chips
+- Large (10px): kintone feature cards — the workhorse
+- Full (9999px / 50%): corporate circular icon buttons
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, headings compress, feature cards stack |
+| Tablet | 640-1024px | 2-column feature grids, moderate padding |
+| Desktop | 1024-1440px | Full layout, multi-column kintone use-case grids, centered corporate portal |
+
+#### Touch Targets
+- kintone primary CTA at 64px height — an unmistakable target
+- kintone secondary outlined buttons at 66px height with generous left padding
+- Corporate nav items within the 56px header; circular icon buttons at 40px
+
+#### Collapsing Strategy
+- Corporate: bilingual section bands maintain full-width treatment; news/products lists stack
+- kintone: 52px headlines scale down on mobile, weight 700 and positive tracking maintained
+- kintone feature-card grids collapse multi-column → 2-up → single stacked
+- Tinted/white alternating sections keep full-width treatment
+
+#### Image Behavior
+- kintone product screenshots and illustrations carry no shadow at any size, consistent with the flat system
+- Cards maintain 8–10px radius across breakpoints
+- Corporate circular buttons keep their soft `rgba(0,0,0,0.1)` shadow
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | kintone cards/buttons, corporate body, most surfaces |
+| Tint (Level 1) | `#f6f6f6` / `#f3f3f3` / `#fff5e1` background shift | Section separation without elevation |
+| Hairline (Level 2) | `1px solid #e6e6e6` (corp) / `1px solid #d6d5d5` (kintone) | Card outlines, dividers |
+| Soft (Level 3) | `rgba(0,0,0,0.1) 0px 0px 6px 0px` | Corporate circular icon buttons only |
+| Pickup (Level 3b) | `rgba(0,0,0,0.17) 0px 1px 10px 0px` | Featured circular "PickUp" button |
+
+**Shadow Philosophy**: Cybozu is a near-flat system. Live inspection found `box-shadow: none` across kintone's hero, feature cards, and outlined buttons; the corporate site uses elevation only on small circular icon buttons (`rgba(0,0,0,0.1) 0px 0px 6px 0px`) and one featured "PickUp" button (`rgba(0,0,0,0.17) 0px 1px 10px 0px`). Depth and grouping come from flat tinted surfaces and thin hairlines (`#e6e6e6`, `#d6d5d5`). When emphasis is needed, the system reaches for color — corporate teal (`#139cb7`) or kintone yellow (`#ffbf00`) — never a heavy card stack. This keeps Japanese B2B software feeling clean, fast, and approachable rather than institutionally heavy.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.soft`: `rgba(0,0,0,0.1) 0px 0px 6px 0px`
+- `shadow.pickup`: `rgba(0,0,0,0.17) 0px 1px 10px 0px`
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, link/button press, focus |
+| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, sheets |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and quiet — consistent with the calm, flat aesthetic. Corporate teal links and kintone buttons respond to press with a subtle color/opacity shift; cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — Japanese B2B teamwork software signals steadiness and trust, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on two brand-owned surfaces:
+- https://cybozu.co.jp/ — corporate: teal #139cb7 accent (446× link color), #333333 ink,
+  Hiragino Kaku Gothic Pro stack, bilingual EN labels in #aaaaaa, circular icon buttons
+  with rgba(0,0,0,0.1) 0 0 6px shadow, #e6e6e6 hairlines, #f6f6f6 surface.
+- https://kintone.cybozu.co.jp/ — kintone product: yellow #ffbf00 / amber #ffdb4f / deep
+  amber #ff8f00, warm ink #231200, Roboto + Noto Sans JP, H2 52px/700 letter-spacing +2.6px,
+  dark #333333 CTA at 8px radius, flat #d6d5d5 outlined cards at 10px radius, box-shadow none.
+- https://ui-component.kintone.dev/ + https://github.com/kintone-labs/kintone-ui-component —
+  confirm the open kintone UI Component library (`kintone-ui-component`, MIT, v1.25.0). The
+  docs-site chrome is generic Docusaurus and is NOT cited for tokens.
+
+Token-level claims (§1-9) are sourced from this live inspection. Full raw computed-style
+samples are recorded in web/references/cybozu/.verification.md (Proof block).
+
+Voice samples (§10) are verbatim page titles / CTA labels from the live surfaces.
+
+Brand narrative (§11): Cybozu founded 1997 in Matsuyama, Ehime (Yoshihisa Aono); mission
+"チームワークあふれる社会を創る"; kintone since 2011; open product-design org (kintone Design
+System, kintone-ui-component, Cybozu Product Design Magazine on note.com/cybozu_design).
+Founding-year/location and mission phrasing are widely documented public facts about the
+company; the mission and product taglines ("みんな、つくれる") are confirmed on the live surfaces.
+
+Personas (§13) are fictional archetypes informed by publicly observable Cybozu/kintone user
+segments (Japanese SMB operations staff, non-engineer citizen developers, enterprise IT,
+Cybozu's own product designers). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "two voices, one philosophy", "flat and human as a rejection of
+legacy enterprise chrome", "positive tracking as friendliness") are editorial readings
+connecting Cybozu's observed design to its stated mission, not directly sourced statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -404,42 +496,30 @@ from `0 0 6px` at 10% to `0 0 2px` at 20% and moves the button down 2px.
 **Tier 2 sources:** getdesign.md/cybozu — not listed (JP B2B under-covered) ; styles.refero.design/?q=cybozu — no canonical style page surfaced
 **Conflicts unresolved:** none — corporate teal `#139cb7` vs kintone yellow `#ffbf00` documented as an intentional two-system split (corporate identity vs design-led product), not a conflict
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px / 8px
-- Scale: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 62px
-- Notable: kintone feature cards use a generous 24px internal padding; corporate sections breathe with ~62px top padding on each block
+**Measured, 2026-09-22.** Four interactive components carry observed hover, pressed and focus;
+see the table in §4. The pattern across both brands is the same: **hover does almost nothing,
+and focus carries the whole affordance** — `#2693ff` on the corporate side, `#ffbf00` on
+kintone. The one exception is the corporate icon button, which tightens its shadow and
+translates 2px down on hover and pressed.
 
-### Grid & Container
-- Corporate: centered single-column news/products portal with bilingual section labels; content bands alternate white and `#f6f6f6`
-- kintone: large bold section headings anchor each band; feature/use-case cards arranged in multi-column grids (顧客・案件管理, 脱エクセル, ワークフロー, etc.)
-- Cards use 8–10px radius and group related services/use-cases
+The table below is the prescriptive system for states this capture could not observe (empty,
+loading, error, success, skeleton, disabled). It is design guidance, not measurement.
 
-### Whitespace Philosophy
-- **Editorial calm**: the corporate site reads like a civic publication — generous vertical rhythm, quiet bilingual labels, never a hard sell
-- **Flat segmentation**: sections separate by tint (`#f6f6f6`, `#f3f3f3`, `#fff5e1`) and `#e6e6e6` / `#d6d5d5` hairlines, not by elevation
-- **Approachable density**: kintone's airy headlines + positive tracking keep an information-rich B2B product feeling welcoming
+| State | Treatment |
+|---|---|
+| **Empty (no apps / no records yet)** | White canvas. Single warm-ink line (`#231200` kintone / `#333333` corporate) explaining nothing exists yet, with one friendly CTA to create or try. No intimidating illustration clutter. |
+| **Empty (search no results)** | Muted grey (`#aaaaaa`) single line: nothing matched, plus a path to adjust criteria. Calm and honest. |
+| **Loading (records/cards fetch)** | Skeleton cards on the tinted surface (`#f3f3f3` / `#f6f6f6`) at final 10px-radius dimensions. Flat pulse — no shadow shimmer, consistent with the near-flat system. |
+| **Loading (in-place refresh)** | Subtle progress within the affected area; previous content stays visible. Never block the page. |
+| **Error (action failed)** | Inline message in warm ink with a plain-language explanation and a retry. No generic "エラーが発生しました" alone — states what to do next. |
+| **Error (form validation)** | Field-level message below the input (1px `#d6d5d5` outlined field); describes what's valid, not just "必須". |
+| **Success (saved / submitted)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. kintone may use a yellow (`#ffbf00`) accent chip; no celebratory excess. |
+| **Skeleton** | Tinted blocks (`#f3f3f3`) at final dimensions, 10px radius, flat pulse. |
+| **Disabled** | Reduced-opacity surface with muted grey (`#aaaaaa`) text; teal/yellow actions fade rather than turn grey to preserve brand read. |
 
-### Border Radius Scale
-- Small (4px): compact kintone link buttons
-- Medium (8px): kintone cards, primary/secondary buttons, yellow chips
-- Large (10px): kintone feature cards — the workhorse
-- Full (9999px / 50%): corporate circular icon buttons
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | kintone cards/buttons, corporate body, most surfaces |
-| Tint (Level 1) | `#f6f6f6` / `#f3f3f3` / `#fff5e1` background shift | Section separation without elevation |
-| Hairline (Level 2) | `1px solid #e6e6e6` (corp) / `1px solid #d6d5d5` (kintone) | Card outlines, dividers |
-| Soft (Level 3) | `rgba(0,0,0,0.1) 0px 0px 6px 0px` | Corporate circular icon buttons only |
-| Pickup (Level 3b) | `rgba(0,0,0,0.17) 0px 1px 10px 0px` | Featured circular "PickUp" button |
-
-**Shadow Philosophy**: Cybozu is a near-flat system. Live inspection found `box-shadow: none` across kintone's hero, feature cards, and outlined buttons; the corporate site uses elevation only on small circular icon buttons (`rgba(0,0,0,0.1) 0px 0px 6px 0px`) and one featured "PickUp" button (`rgba(0,0,0,0.17) 0px 1px 10px 0px`). Depth and grouping come from flat tinted surfaces and thin hairlines (`#e6e6e6`, `#d6d5d5`). When emphasis is needed, the system reaches for color — corporate teal (`#139cb7`) or kintone yellow (`#ffbf00`) — never a heavy card stack. This keeps Japanese B2B software feeling clean, fast, and approachable rather than institutionally heavy.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use corporate teal (`#139cb7`) as the single action color on Cybozu-corporate surfaces — keep it the link/CTA signal
@@ -460,32 +540,27 @@ from `0 0 6px` at 10% to `0 0 2px` at 20% and moves the button down 2px.
 - Spread teal across many corporate elements — it dilutes the single-action signal
 - Use Hiragino on kintone or Roboto/Noto on the corporate site — the two stacks stay on their own surfaces
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, headings compress, feature cards stack |
-| Tablet | 640-1024px | 2-column feature grids, moderate padding |
-| Desktop | 1024-1440px | Full layout, multi-column kintone use-case grids, centered corporate portal |
+Cybozu's voice is **calm, civic, and teamwork-first** — a Japanese B2B software maker that frames technology as a way to build "チームワークあふれる社会" (a society overflowing with teamwork) rather than as a competitive weapon. The corporate site reads like a thoughtful public-facing publication: bilingual section labels, measured news entries, no hype. kintone shifts register toward warm and democratizing — its tagline "みんな、つくれる。" ("Everyone can build.") and chips like "さわってみよう！" ("Give it a try!") invite the non-engineer to participate, decoding "no-code / low-code" into something friendly.
 
-### Touch Targets
-- kintone primary CTA at 64px height — an unmistakable target
-- kintone secondary outlined buttons at 66px height with generous left padding
-- Corporate nav items within the 56px header; circular icon buttons at 40px
+| Context | Tone |
+|---|---|
+| Corporate headlines | Civic, mission-framed. Teamwork and social contribution over product features. |
+| Corporate news / IR | Measured, factual, dated. Reads like a public record. |
+| kintone product copy | Warm, democratizing. "みんな、つくれる。" — anyone can build. |
+| kintone CTAs | Low-pressure, concrete. "30日間無料お試し", "さくっと体験", "個人情報不要！". |
+| Badge chips | Encouraging, exclamation-friendly (kintone only). "さわってみよう！", "30日間無料！". |
+| Product Design Magazine | Reflective, transparent — designers narrating their process in the open. |
 
-### Collapsing Strategy
-- Corporate: bilingual section bands maintain full-width treatment; news/products lists stack
-- kintone: 52px headlines scale down on mobile, weight 700 and positive tracking maintained
-- kintone feature-card grids collapse multi-column → 2-up → single stacked
-- Tinted/white alternating sections keep full-width treatment
+**Voice samples (verbatim from live surfaces):**
+- "サイボウズ株式会社" — corporate page title (institutional register). *(verified live 2026-06-17)*
+- "kintone（キントーン） | みんな、つくれる。業務アプリがつくれるサイボウズのノーコード・ローコードツール" — kintone page title (democratizing promise). *(verified live 2026-06-17)*
+- "30日間無料お試し" / "個人情報不要！" — kintone trial CTAs (low-pressure, concrete). *(verified live 2026-06-17)*
 
-### Image Behavior
-- kintone product screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain 8–10px radius across breakpoints
-- Corporate circular buttons keep their soft `rgba(0,0,0,0.1)` shadow
+**Forbidden register**: aggressive sales urgency, fear-based B2B FUD, undefined enterprise jargon, anything that makes "no-code" sound exclusive or intimidating.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Corporate primary action: Cybozu Teal (`#139cb7`)
@@ -515,126 +590,8 @@ from `0 0 6px` at 10% to `0 0 2px` at 20% and moves the button down 2px.
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Cybozu's voice is **calm, civic, and teamwork-first** — a Japanese B2B software maker that frames technology as a way to build "チームワークあふれる社会" (a society overflowing with teamwork) rather than as a competitive weapon. The corporate site reads like a thoughtful public-facing publication: bilingual section labels, measured news entries, no hype. kintone shifts register toward warm and democratizing — its tagline "みんな、つくれる。" ("Everyone can build.") and chips like "さわってみよう！" ("Give it a try!") invite the non-engineer to participate, decoding "no-code / low-code" into something friendly.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Corporate headlines | Civic, mission-framed. Teamwork and social contribution over product features. |
-| Corporate news / IR | Measured, factual, dated. Reads like a public record. |
-| kintone product copy | Warm, democratizing. "みんな、つくれる。" — anyone can build. |
-| kintone CTAs | Low-pressure, concrete. "30日間無料お試し", "さくっと体験", "個人情報不要！". |
-| Badge chips | Encouraging, exclamation-friendly (kintone only). "さわってみよう！", "30日間無料！". |
-| Product Design Magazine | Reflective, transparent — designers narrating their process in the open. |
-
-**Voice samples (verbatim from live surfaces):**
-- "サイボウズ株式会社" — corporate page title (institutional register). *(verified live 2026-06-17)*
-- "kintone（キントーン） | みんな、つくれる。業務アプリがつくれるサイボウズのノーコード・ローコードツール" — kintone page title (democratizing promise). *(verified live 2026-06-17)*
-- "30日間無料お試し" / "個人情報不要！" — kintone trial CTAs (low-pressure, concrete). *(verified live 2026-06-17)*
-
-**Forbidden register**: aggressive sales urgency, fear-based B2B FUD, undefined enterprise jargon, anything that makes "no-code" sound exclusive or intimidating.
-
-## 11. Brand Narrative
-
-Cybozu (サイボウズ) was founded in **1997 in Matsuyama, Ehime** by Yoshihisa Aono and co-founders, and grew into one of Japan's most influential groupware companies — the maker of Cybozu Office, Garoon, and, since 2011, kintone. Its corporate mission, stated plainly across cybozu.co.jp, is to build "チームワークあふれる社会を創る" (to create a society overflowing with teamwork). That mission is unusually load-bearing: Cybozu is also well known in Japan for pioneering flexible work styles ("働き方改革"), and it frames its software not as productivity tooling but as social infrastructure for collaboration.
-
-kintone is where Cybozu's design-led culture is most visible. The product reframes business-application building — historically the domain of engineers and consultants — as something "みんな、つくれる" (everyone can build). Around it sits an open product-design organization: the kintone Design System (Figma + the `kintone-ui-component` npm library + Storybook docs at ui-component.kintone.dev), and the long-running Cybozu Product Design Magazine on note.com/cybozu_design, where designers publish their process, organization changes, and research in the open.
-
-What Cybozu's design refuses, visible on the surface: the heavy, intimidating chrome of legacy enterprise software (no shadow-stacked dashboards, no corporate navy-and-grey severity) and the hard-sell urgency of Western SaaS marketing. What it embraces: a calm civic corporate voice in teal (`#139cb7`), a warm and democratizing product voice in yellow (`#ffbf00`), bilingual accessibility, flat hairline-separated layouts, and a transparent, published design practice.
-
-## 12. Principles
-
-1. **Teamwork is the product.** Cybozu's stated mission is a society overflowing with teamwork; software is the means. *UI implication:* favor clarity and collaboration cues over feature density; the interface should never feel like a competition.
-2. **Everyone can build.** kintone's "みんな、つくれる" democratizes app-building beyond engineers. *UI implication:* decode jargon into friendly tools; positive headline tracking and warm yellow make the product feel inviting, not technical.
-3. **Two voices, one philosophy.** A civic corporate teal and a warm product yellow are kept distinct. *UI implication:* never mix the teal and yellow systems on one surface — each carries its own register.
-4. **Flat and human.** Near-shadowless, hairline-separated layouts keep B2B software approachable. *UI implication:* separate with tint and hairlines; reserve shadow for the smallest interactive accents.
-5. **Design in the open.** The kintone Design System and Product Design Magazine make the practice transparent. *UI implication:* components are documented, reusable, and consistent — the system is a shared, published artifact, not tribal knowledge.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Cybozu / kintone user segments (Japanese SMB operations staff, non-engineer "citizen developers", enterprise IT, and Cybozu's own product designers), not individual people.*
-
-**田中美咲, 38, 松山.** Operations lead at a regional manufacturer. Not an engineer, but builds her own 案件管理 (case-management) apps in kintone because "みんな、つくれる" turned out to be literally true. Values that the cards and forms feel friendly rather than technical.
-
-**佐藤健, 45, 東京.** Corporate IT manager evaluating Garoon and kintone for a 300-person company. Reads cybozu.co.jp's calm, factual IR and news pages and trusts the civic, non-hype tone. Cares that the design feels stable and accessible, not flashy.
-
-**鈴木あみ, 29, 大阪.** A product designer at Cybozu contributing to the kintone Design System and writing for the Product Design Magazine. Believes design should be published and shared; cares about the `kintone-ui-component` library staying consistent across the product.
-
-## 14. States
-
-**Measured, 2026-09-22.** Four interactive components carry observed hover, pressed and focus;
-see the table in §4. The pattern across both brands is the same: **hover does almost nothing,
-and focus carries the whole affordance** — `#2693ff` on the corporate side, `#ffbf00` on
-kintone. The one exception is the corporate icon button, which tightens its shadow and
-translates 2px down on hover and pressed.
-
-The table below is the prescriptive system for states this capture could not observe (empty,
-loading, error, success, skeleton, disabled). It is design guidance, not measurement.
-
-
-| State | Treatment |
-|---|---|
-| **Empty (no apps / no records yet)** | White canvas. Single warm-ink line (`#231200` kintone / `#333333` corporate) explaining nothing exists yet, with one friendly CTA to create or try. No intimidating illustration clutter. |
-| **Empty (search no results)** | Muted grey (`#aaaaaa`) single line: nothing matched, plus a path to adjust criteria. Calm and honest. |
-| **Loading (records/cards fetch)** | Skeleton cards on the tinted surface (`#f3f3f3` / `#f6f6f6`) at final 10px-radius dimensions. Flat pulse — no shadow shimmer, consistent with the near-flat system. |
-| **Loading (in-place refresh)** | Subtle progress within the affected area; previous content stays visible. Never block the page. |
-| **Error (action failed)** | Inline message in warm ink with a plain-language explanation and a retry. No generic "エラーが発生しました" alone — states what to do next. |
-| **Error (form validation)** | Field-level message below the input (1px `#d6d5d5` outlined field); describes what's valid, not just "必須". |
-| **Success (saved / submitted)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. kintone may use a yellow (`#ffbf00`) accent chip; no celebratory excess. |
-| **Skeleton** | Tinted blocks (`#f3f3f3`) at final dimensions, 10px radius, flat pulse. |
-| **Disabled** | Reduced-opacity surface with muted grey (`#aaaaaa`) text; teal/yellow actions fade rather than turn grey to preserve brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, link/button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the calm, flat aesthetic. Corporate teal links and kintone buttons respond to press with a subtle color/opacity shift; cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — Japanese B2B teamwork software signals steadiness and trust, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on two brand-owned surfaces:
-- https://cybozu.co.jp/ — corporate: teal #139cb7 accent (446× link color), #333333 ink,
-  Hiragino Kaku Gothic Pro stack, bilingual EN labels in #aaaaaa, circular icon buttons
-  with rgba(0,0,0,0.1) 0 0 6px shadow, #e6e6e6 hairlines, #f6f6f6 surface.
-- https://kintone.cybozu.co.jp/ — kintone product: yellow #ffbf00 / amber #ffdb4f / deep
-  amber #ff8f00, warm ink #231200, Roboto + Noto Sans JP, H2 52px/700 letter-spacing +2.6px,
-  dark #333333 CTA at 8px radius, flat #d6d5d5 outlined cards at 10px radius, box-shadow none.
-- https://ui-component.kintone.dev/ + https://github.com/kintone-labs/kintone-ui-component —
-  confirm the open kintone UI Component library (`kintone-ui-component`, MIT, v1.25.0). The
-  docs-site chrome is generic Docusaurus and is NOT cited for tokens.
-
-Token-level claims (§1-9) are sourced from this live inspection. Full raw computed-style
-samples are recorded in web/references/cybozu/.verification.md (Proof block).
-
-Voice samples (§10) are verbatim page titles / CTA labels from the live surfaces.
-
-Brand narrative (§11): Cybozu founded 1997 in Matsuyama, Ehime (Yoshihisa Aono); mission
-"チームワークあふれる社会を創る"; kintone since 2011; open product-design org (kintone Design
-System, kintone-ui-component, Cybozu Product Design Magazine on note.com/cybozu_design).
-Founding-year/location and mission phrasing are widely documented public facts about the
-company; the mission and product taglines ("みんな、つくれる") are confirmed on the live surfaces.
-
-Personas (§13) are fictional archetypes informed by publicly observable Cybozu/kintone user
-segments (Japanese SMB operations staff, non-engineer citizen developers, enterprise IT,
-Cybozu's own product designers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "two voices, one philosophy", "flat and human as a rejection of
-legacy enterprise chrome", "positive tracking as friendliness") are editorial readings
-connecting Cybozu's observed design to its stated mission, not directly sourced statements.
--->
+- **Contrast, `corp-icon-button`.** Text `#139cb7` on `#ffffff` measures 3.25:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,59 +1,133 @@
 ---
-id: replicate
 name: Replicate
-country: US
-category: ai
-homepage: "https://replicate.com"
-primary_color: "#fc7676"
-logo:
-  type: simpleicons
-  slug: replicate
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    dark: "#202020"
-    red: "#ea2804"
-    secondary-red: "#dd4425"
-    status-green: "#2b9a66"
-    github-dark: "#24292e"
-    white: "#ffffff"
-    near-white: "#fcfcfc"
-    medium-gray: "#646464"
-    warm-gray: "#4e4e4e"
-    mid-silver: "#8d8d8d"
-    light-silver: "#bbbbbb"
-    black: "#000000"
-  typography:
-    family: { sans: "basier-square", mono: "jetbrains-mono" }
-    display-mega: { size: 128, weight: 700, lineHeight: 1.00, use: "Closing manifesto (rb-freigeist-neue)" }
-    display-hero: { size: 72, weight: 700, lineHeight: 1.00, tracking: -1.8, use: "Hero headline (rb-freigeist-neue)" }
-    section:      { size: 48, weight: 700, lineHeight: 1.00, use: "Feature section titles (rb-freigeist-neue)" }
-    subheading:   { size: 30, weight: 600, lineHeight: 1.20, use: "Card headings (rb-freigeist-neue)" }
-    body-lg:      { size: 20, weight: 400, lineHeight: 1.40, use: "Intro paragraphs" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard text, buttons" }
-    caption:      { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions" }
-    code:         { size: 14, weight: 400, lineHeight: 1.43, use: "Code snippets (jetbrains-mono)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 9999, md: 9999, lg: 9999, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-dark: { type: button, bg: "#202020", fg: "#fcfcfc", radius: 9999, padding: "0 4px", use: "Maximum-emphasis dark pill on light surface" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#202020", radius: 9999, use: "Outlined pill, 1px #202020 border, secondary actions" }
-    button-glass: { type: button, bg: "transparent", fg: "#202020", radius: 9999, padding: "6px 56px 6px 28px", use: "Frosted glass search/input button, 1px #bbbbbb outline" }
-    card: { type: card, bg: "#ffffff", fg: "#202020", radius: 9999, use: "Container, 1px #202020 border; #ea2804 border when featured" }
-    input: { type: input, bg: "transparent", fg: "#202020", radius: 9999, padding: "6px 56px 6px 28px", use: "Frosted glass search-style input" }
-    status-badge: { type: badge, bg: "#2b9a66", fg: "#ffffff", radius: 9999, font: "14/400", use: "Operational/running status indicator" }
-    code-block: { type: card, bg: "#24292e", fg: "#ffffff", radius: 9999, font: "14/400", use: "Code block (jetbrains-mono)" }
-  components_harvested: true
+colors:
+  dark: '#202020'
+  red: '#ea2804'
+  secondary-red: '#dd4425'
+  status-green: '#2b9a66'
+  github-dark: '#24292e'
+  white: '#ffffff'
+  near-white: '#fcfcfc'
+  medium-gray: '#646464'
+  warm-gray: '#4e4e4e'
+  mid-silver: '#8d8d8d'
+  light-silver: '#bbbbbb'
+  black: '#000000'
+typography:
+  display-mega:
+    fontSize: 128px
+    fontWeight: 700
+    lineHeight: 1
+    use: Closing manifesto (rb-freigeist-neue)
+  display-hero:
+    fontSize: 72px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: '-1.8px'
+    use: Hero headline (rb-freigeist-neue)
+  section:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1
+    use: Feature section titles (rb-freigeist-neue)
+  subheading:
+    fontSize: 30px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Card headings (rb-freigeist-neue)
+  body-lg:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Intro paragraphs
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard text, buttons
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Metadata, descriptions
+  code:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Code snippets (jetbrains-mono)
+rounded:
+  sm: 9999px
+  md: 9999px
+  lg: 9999px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 96
+components:
+  button-dark:
+    type: button
+    backgroundColor: '#202020'
+    textColor: '#fcfcfc'
+    rounded: 9999px
+    padding: 0 4px
+    use: Maximum-emphasis dark pill on light surface
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#202020'
+    rounded: 9999px
+    use: 'Outlined pill, 1px #202020 border, secondary actions'
+  button-glass:
+    type: button
+    backgroundColor: transparent
+    textColor: '#202020'
+    rounded: 9999px
+    padding: 6px 56px 6px 28px
+    use: 'Frosted glass search/input button, 1px #bbbbbb outline'
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#202020'
+    rounded: 9999px
+    use: 'Container, 1px #202020 border; #ea2804 border when featured'
+  input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#202020'
+    rounded: 9999px
+    padding: 6px 56px 6px 28px
+    use: Frosted glass search-style input
+  status-badge:
+    type: badge
+    backgroundColor: '#2b9a66'
+    textColor: '#ffffff'
+    rounded: 9999px
+    typography: 14/400
+    use: Operational/running status indicator
+  code-block:
+    type: card
+    backgroundColor: '#24292e'
+    textColor: '#ffffff'
+    rounded: 9999px
+    typography: 14/400
+    use: Code block (jetbrains-mono)
+fonts:
+  roles:
+    sans: basier-square
+    mono: jetbrains-mono
 ---
 
 # Design System Inspiration of Replicate
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Replicate's interface is a developer playground crackling with creative energy — a bold, high-contrast design that feels more like a music festival poster than a typical API platform. The hero section explodes with a vibrant orange-red-magenta gradient that immediately signals "this is where AI models come alive," while the body of the page grounds itself in a clean white canvas where code snippets and model galleries take center stage.
 
@@ -71,14 +145,36 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 - Bold/heavy font weights (600-700) creating maximum typographic impact
 - Playful closing manifesto: "Imagine what you can build."
 
-## Primary tasks
+### Primary tasks
 
 - Try an image model without provisioning your own GPU
 - Browse the model gallery to find a model to run
 - Copy a ready-made code example to call a model
 - Serve model inference inside a product you ship
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Replicate was founded **2019** by **Ben Firshman** + **Andreas Jansson** ([Y Combinator — Replicate](https://www.ycombinator.com/companies/replicate), [Sequoia Capital — Partnering with Replicate](https://sequoiacap.com/article/partnering-with-replicate-machine-learning-simplified/)). **Firshman**: created **Docker Compose** during his time at Docker; **Jansson**: built research tools and infrastructure at **Spotify** with a **PhD in ML for music**. **Zeke Sikelianos** joined as a co-founder later. The founders' mission was to improve dissemination of scientific research with friendlier ML tools, leading to **Cog** — an open-source tool for packaging ML models into production-ready containers (Rust + Axum HTTP server). **Y Combinator Winter 2020 (W20)** batch ([MLQ — Replicate Deep Dive](https://mlq.ai/startups/replicate/)). Total funding **~$57.8M** with **post-Series B valuation $350M** (investors include **Sequoia Capital**, **Heavybit**). **Late 2025**: 50,000+ public models hosted + ~100 official curated by Replicate. **Acquired by Cloudflare** (Firshman's [LinkedIn](https://www.linkedin.com/in/bfirsh/) confirms current title **Head of AI Platform at Cloudflare**). The brand sits at the intersection of OSS researcher culture + cloud convenience — "run any model with one API call."
+
+### Principles
+
+1. **One API, every model.** *UI implication:* uniform input/output schema across model variants.
+2. **Open-source heritage.** Cog still public. *UI implication:* surfaces emphasize OSS roots.
+3. **Gradient hero is the anchor.** *UI implication:* hero modules use bold gradient backgrounds.
+4. **Mixed type system.** basier-square / rb-freigeist-neue / JetBrains Mono. *UI implication:* don't substitute.
+5. **Model showcase first.** *UI implication:* discover/explore is the entry point, not pricing.
+
+### Personas
+
+*Personas are fictional archetypes informed by Replicate user segments (ML researchers, indie AI builders, content creators), not individual people.*
+
+**Yuki Tanaka, 30, Tokyo.** ML researcher experimenting with image models. Replicate for one-line API access without GPU setup.
+
+**Sofia Russo, 28, Milan.** Indie AI app builder shipping multiple SaaS. Replicate as the inference layer.
+
+**Marcus Chen, 41, San Francisco.** Senior engineer at content startup. Production replicate for image/video generation.
+
+## Colors
 
 ### Primary
 - **Replicate Dark** (`#202020`): The primary text color and dark surface — a near-black that's the anchor of all text and borders. Slightly warmer than pure #000.
@@ -105,7 +201,7 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 - **Hero Blaze**: A dramatic multi-stop gradient flowing through orange (`#ea2804`) → red → magenta → hot pink. This gradient occupies the full hero section and is the most visually dominant element on the page.
 - **Dark Sections**: Deep dark (#202020) sections with white/near-white text provide contrast against the white body.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display**: `rb-freigeist-neue`, with fallbacks: `ui-sans-serif, system-ui`
@@ -136,7 +232,86 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 - **Lowercase tags**: 12px basier-square uses `text-transform: lowercase` — an unusual choice that creates a casual, developer-friendly vibe.
 - **Weight 600 as emphasis**: When basier-square needs emphasis, it uses 600 (semibold) — never bold (700), which is reserved for rb-freigeist-neue display text.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 1px, 2px, 4px, 6px, 8px, 10px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 160px, 192px
+- Button padding: varies widely (0px 4px to 6px 56px)
+- Section vertical spacing: very generous (96–192px)
+
+### Grid & Container
+- Fluid width with responsive constraints
+- Hero: full-width gradient with centered content
+- Model gallery: multi-column responsive grid
+- Feature sections: mixed layouts
+- Code examples: contained dark blocks
+
+### Whitespace Philosophy
+- **Bold and generous**: Massive spacing between sections (up to 192px) creates distinct zones.
+- **Dense within galleries**: Model images are tightly packed in the grid for browsable density.
+- **The gradient IS the whitespace**: The hero gradient section occupies significant vertical space as a colored void.
+
+### Border Radius Scale
+- **Pill (9999px)**: The ONLY radius in the system. Everything interactive, every image, every badge, every label, every container uses 9999px. This is the most extreme pill-radius commitment in any major tech brand.
+
+### Responsive Behavior
+
+#### Breakpoints
+*No explicit breakpoints detected — likely using fluid/container-query responsive system.*
+
+#### Touch Targets
+- Pill buttons with generous padding
+- Gallery images as large touch targets
+- Navigation adequately spaced
+
+#### Collapsing Strategy
+- **Hero text**: 128px → 72px → 48px progressive scaling
+- **Model gallery**: Grid reduces columns
+- **Navigation**: Collapses to hamburger
+- **Manifesto**: Scales down but maintains impact
+
+#### Image Behavior
+- AI-generated images scale within pill containers
+- Gallery reflows to fewer columns on narrow screens
+- Hero gradient maintained at all sizes
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | White body, text blocks |
+| Bordered (Level 1) | `1px solid #202020` | Cards, buttons, containers |
+| Accent Border (Level 2) | `1px solid #ea2804` | Featured/highlighted items |
+| Gradient Hero (Level 3) | Full-width blaze gradient | Hero section, maximum visual impact |
+| Dark Section (Level 4) | Dark bg (#202020) with light text | Manifesto, footer, feature sections |
+
+**Shadow Philosophy**: Replicate relies on **borders and background color** for depth rather than shadows. The `1px solid #202020` border is the primary containment mechanism. The dramatic gradient hero and dark/light section alternation provide all the depth the design needs.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 49 — Apple-tier)
+**Tier 1 sources:** https://replicate.com home + /explore (live DOM via playwright — Primary `#000` Black 0px sharp three-tier height (hero 54 / page 42 / mini 34) / 12-16×8-16 / 14-18px·400; **Replicate Orange-Red `#dd4425`** featured-accent on **Replicate Cream `#fffcfc`** card; Mid-Gray `#646464` nav + secondary; Charcoal `#202020` active code-tab states).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/Cloudflare-acquisition):** Y Combinator (W20), Sequoia Capital (Partnering with Replicate), Heavybit, MLQ Deep Dive, Latent Space podcast, LinkedIn (Firshman = Cloudflare Head of AI Platform — confirms Cloudflare acquisition), Tracxn.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** 3-height tier system + Orange-Red `#dd4425` accent + Cream `#fffcfc` featured-surface + Cloudflare acquisition narrative missed by prior pass.
+
+## Components
 
 ### Buttons
 
@@ -215,42 +390,23 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 - Images embedded between words
 - The emotional climax of the page
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 2px, 4px, 6px, 8px, 10px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 160px, 192px
-- Button padding: varies widely (0px 4px to 6px 56px)
-- Section vertical spacing: very generous (96–192px)
+| State | Treatment |
+|---|---|
+| **Empty (no API keys)** | "Generate first API key" CTA |
+| **Empty (no predictions)** | "Try a model" with featured grid |
+| **Loading (prediction)** | Per-step status + ETA |
+| **Loading (model loading)** | Cold-start indicator |
+| **Error (model)** | Specific. "Model failed: <reason>. Retry?" |
+| **Error (rate limit)** | Tier limit + upgrade |
+| **Success (prediction)** | Result inline + share link |
+| **Success (deployment)** | Endpoint + credentials |
+| **Skeleton (model grid)** | Gradient-tinted placeholders |
+| **Disabled (insufficient credits)** | Add credits link |
+| **Loading (long generation)** | Persistent progress |
 
-### Grid & Container
-- Fluid width with responsive constraints
-- Hero: full-width gradient with centered content
-- Model gallery: multi-column responsive grid
-- Feature sections: mixed layouts
-- Code examples: contained dark blocks
-
-### Whitespace Philosophy
-- **Bold and generous**: Massive spacing between sections (up to 192px) creates distinct zones.
-- **Dense within galleries**: Model images are tightly packed in the grid for browsable density.
-- **The gradient IS the whitespace**: The hero gradient section occupies significant vertical space as a colored void.
-
-### Border Radius Scale
-- **Pill (9999px)**: The ONLY radius in the system. Everything interactive, every image, every badge, every label, every container uses 9999px. This is the most extreme pill-radius commitment in any major tech brand.
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | White body, text blocks |
-| Bordered (Level 1) | `1px solid #202020` | Cards, buttons, containers |
-| Accent Border (Level 2) | `1px solid #ea2804` | Featured/highlighted items |
-| Gradient Hero (Level 3) | Full-width blaze gradient | Hero section, maximum visual impact |
-| Dark Section (Level 4) | Dark bg (#202020) with light text | Manifesto, footer, feature sections |
-
-**Shadow Philosophy**: Replicate relies on **borders and background color** for depth rather than shadows. The `1px solid #202020` border is the primary containment mechanism. The dramatic gradient hero and dark/light section alternation provide all the depth the design needs.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use pill-shaped (9999px) radius on EVERYTHING — buttons, images, badges, containers
@@ -274,28 +430,23 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 - Don't skip the code examples — they're primary content, not decoration
 - Don't make the hero gradient subtle — it should be BOLD and vibrant
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-*No explicit breakpoints detected — likely using fluid/container-query responsive system.*
+Replicate's voice is **research-engineering-friendly and API-first.** "Run AI with an API" — capability-driven, model-versioned. Marketing copy emphasizes the running-models-without-infra value prop.
 
-### Touch Targets
-- Pill buttons with generous padding
-- Gallery images as large touch targets
-- Navigation adequately spaced
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started for free", "Try a model", "API access" |
+| Marketing | Model-driven. "Run X model with one line of code" |
+| Documentation | Code-first, copy-paste-ready |
+| Error | Specific. "Model output exceeded timeout (60s). Try smaller input." |
 
-### Collapsing Strategy
-- **Hero text**: 128px → 72px → 48px progressive scaling
-- **Model gallery**: Grid reduces columns
-- **Navigation**: Collapses to hamburger
-- **Manifesto**: Scales down but maintains impact
+**Voice samples**
+- Tagline: *"Run AI with an API"* <!-- verified: replicate.com homepage 2026-05 -->
 
-### Image Behavior
-- AI-generated images scale within pill containers
-- Gallery reflows to fewer columns on narrow screens
-- Hero gradient maintained at all sizes
+**Forbidden phrases.** "Revolutionary AI hosting". Generic platform claims.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary Text: "Replicate Dark (#202020)"
@@ -320,73 +471,10 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 4. The gradient hero is the visual anchor — make it bold
 5. Use basier-square for body, rb-freigeist-neue for display, JetBrains Mono for code
 
-## 10. Voice & Tone
+## Governance
 
-Replicate's voice is **research-engineering-friendly and API-first.** "Run AI with an API" — capability-driven, model-versioned. Marketing copy emphasizes the running-models-without-infra value prop.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get started for free", "Try a model", "API access" |
-| Marketing | Model-driven. "Run X model with one line of code" |
-| Documentation | Code-first, copy-paste-ready |
-| Error | Specific. "Model output exceeded timeout (60s). Try smaller input." |
-
-**Voice samples**
-- Tagline: *"Run AI with an API"* <!-- verified: replicate.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary AI hosting". Generic platform claims.
-
-## 11. Brand Narrative
-
-Replicate was founded **2019** by **Ben Firshman** + **Andreas Jansson** ([Y Combinator — Replicate](https://www.ycombinator.com/companies/replicate), [Sequoia Capital — Partnering with Replicate](https://sequoiacap.com/article/partnering-with-replicate-machine-learning-simplified/)). **Firshman**: created **Docker Compose** during his time at Docker; **Jansson**: built research tools and infrastructure at **Spotify** with a **PhD in ML for music**. **Zeke Sikelianos** joined as a co-founder later. The founders' mission was to improve dissemination of scientific research with friendlier ML tools, leading to **Cog** — an open-source tool for packaging ML models into production-ready containers (Rust + Axum HTTP server). **Y Combinator Winter 2020 (W20)** batch ([MLQ — Replicate Deep Dive](https://mlq.ai/startups/replicate/)). Total funding **~$57.8M** with **post-Series B valuation $350M** (investors include **Sequoia Capital**, **Heavybit**). **Late 2025**: 50,000+ public models hosted + ~100 official curated by Replicate. **Acquired by Cloudflare** (Firshman's [LinkedIn](https://www.linkedin.com/in/bfirsh/) confirms current title **Head of AI Platform at Cloudflare**). The brand sits at the intersection of OSS researcher culture + cloud convenience — "run any model with one API call."
-
-## 12. Principles
-
-1. **One API, every model.** *UI implication:* uniform input/output schema across model variants.
-2. **Open-source heritage.** Cog still public. *UI implication:* surfaces emphasize OSS roots.
-3. **Gradient hero is the anchor.** *UI implication:* hero modules use bold gradient backgrounds.
-4. **Mixed type system.** basier-square / rb-freigeist-neue / JetBrains Mono. *UI implication:* don't substitute.
-5. **Model showcase first.** *UI implication:* discover/explore is the entry point, not pricing.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Replicate user segments (ML researchers, indie AI builders, content creators), not individual people.*
-
-**Yuki Tanaka, 30, Tokyo.** ML researcher experimenting with image models. Replicate for one-line API access without GPU setup.
-
-**Sofia Russo, 28, Milan.** Indie AI app builder shipping multiple SaaS. Replicate as the inference layer.
-
-**Marcus Chen, 41, San Francisco.** Senior engineer at content startup. Production replicate for image/video generation.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no API keys)** | "Generate first API key" CTA |
-| **Empty (no predictions)** | "Try a model" with featured grid |
-| **Loading (prediction)** | Per-step status + ETA |
-| **Loading (model loading)** | Cold-start indicator |
-| **Error (model)** | Specific. "Model failed: <reason>. Retry?" |
-| **Error (rate limit)** | Tier limit + upgrade |
-| **Success (prediction)** | Result inline + share link |
-| **Success (deployment)** | Endpoint + credentials |
-| **Skeleton (model grid)** | Gradient-tinted placeholders |
-| **Disabled (insufficient credits)** | Add credits link |
-| **Loading (long generation)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 49 — Apple-tier)
-**Tier 1 sources:** https://replicate.com home + /explore (live DOM via playwright — Primary `#000` Black 0px sharp three-tier height (hero 54 / page 42 / mini 34) / 12-16×8-16 / 14-18px·400; **Replicate Orange-Red `#dd4425`** featured-accent on **Replicate Cream `#fffcfc`** card; Mid-Gray `#646464` nav + secondary; Charcoal `#202020` active code-tab states).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/Cloudflare-acquisition):** Y Combinator (W20), Sequoia Capital (Partnering with Replicate), Heavybit, MLQ Deep Dive, Latent Space podcast, LinkedIn (Firshman = Cloudflare Head of AI Platform — confirms Cloudflare acquisition), Tracxn.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** 3-height tier system + Orange-Red `#dd4425` accent + Cream `#fffcfc` featured-surface + Cloudflare acquisition narrative missed by prior pass.
+- **Contrast, `button-glass`.** Text `#202020` on `#00000000` measures 1.29:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `input`.** Text `#202020` on `#00000000` measures 1.29:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `status-badge`.** Text `#ffffff` on `#2b9a66` measures 3.55:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

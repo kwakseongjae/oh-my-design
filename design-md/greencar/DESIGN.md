@@ -1,266 +1,221 @@
 ---
-id: "greencar"
-name: "Greencar"
-display_name_kr: "그린카"
-country: "KR"
-category: "automotive"
-homepage: "https://www.greencar.co.kr"
-primary_color: "#222222"
-logo:
-  type: "favicon"
-  slug: "https://www.google.com/s2/favicons?domain=greencar.co.kr&sz=128"
-verified: "2026-09-30"
-added: "2026-06-26"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: "home", kind: "corporate", url: "https://www.greencar.co.kr/", inspected: "2026-09-30" }
-    - { id: "surface-2", kind: "marketing", url: "https://www.greencar-gcar.co.kr/", inspected: "2026-09-30" }
-    - { id: "surface-3", kind: "marketing", url: "https://www.greencar-gcar.co.kr/sharing/gcar", inspected: "2026-09-30" }
-  sources:
-    - { id: "surface-home", kind: "product-surface", url: "https://www.greencar.co.kr/", captured: "2026-09-30" }
-    - { id: "surface-surface-2", kind: "product-surface", url: "https://www.greencar-gcar.co.kr/", captured: "2026-09-30" }
-    - { id: "surface-surface-3", kind: "product-surface", url: "https://www.greencar-gcar.co.kr/sharing/gcar", captured: "2026-09-30" }
-    - { id: "greencar-probe-home", kind: "product-surface", url: "https://www.greencar.co.kr/", captured: "2026-09-30" }
-    - { id: "greencar-history", kind: "official-doc", url: "https://www.greencar.co.kr/greencar/history", captured: "2026-09-30" }
-    - { id: "greencar-about", kind: "official-doc", url: "https://www.greencar.co.kr/greencar/about", captured: "2026-09-30" }
-    - { id: "greencar-ci", kind: "official-doc", url: "https://www.greencar.co.kr/greencar/ci", captured: "2026-09-30" }
-    - { id: "outfit-license", kind: "license", url: "https://raw.githubusercontent.com/Outfitio/Outfit-Fonts/main/OFL.txt", captured: "2026-09-30" }
-    - { id: "pretendard-license", kind: "license", url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &cta { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"39\"]", captured: "2026-09-30" }
-    "tokens.colors.on-primary": *cta
-    "tokens.colors.accent": &ctastate { surface_id: "home", source_id: "greencar-probe-home", method: "live-state-probe", selector: "a 채용 바로가기 (128 x 52.4, rest bg rgb(34, 34, 34), fg rgb(255, 255, 255)): hover and pressed bg -> rgb(0, 200, 140), fg -> rgb(34, 34, 34), border -> 1px solid rgb(0, 200, 140); ancestor up3 div.section.section-06 bg rgb(0, 200, 140) at rest; focus (Tab #57) paints the same fill plus the browser default ring rgb(0, 95, 204) auto 1px", captured: "2026-09-30" }
-    "tokens.colors.ink": &body { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.ink-soft": &gnb { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.colors.warm-grey": &gsummary { surface_id: "surface-2", source_id: "surface-surface-2", method: "computed-style", selector: "surface-2::p", captured: "2026-09-30" }
-    "tokens.colors.body-grey": &bullet { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-interaction-capture=\"tab-0-4\"]", captured: "2026-09-30" }
-    "tokens.colors.muted": &gdesc { surface_id: "surface-2", source_id: "surface-surface-2", method: "computed-style", selector: "surface-2::p", captured: "2026-09-30" }
-    "tokens.colors.faint": &faint { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"44\"]", captured: "2026-09-30" }
-    "tokens.colors.surface": &scard { surface_id: "surface-2", source_id: "surface-surface-2", method: "computed-style", selector: "surface-2::div", captured: "2026-09-30" }
-    "tokens.colors.hairline": &coupon { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::div", captured: "2026-09-30" }
-    "tokens.colors.promo-red": &badge { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::p", captured: "2026-09-30" }
-    "tokens.colors.white": &linkbtn { surface_id: "surface-2", source_id: "surface-surface-2", method: "computed-style", selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.typography.family.display": &wordmark { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::h1", captured: "2026-09-30" }
-    "tokens.typography.family.body": &sec3 { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::h3", captured: "2026-09-30" }
-    "tokens.typography.display-service.size": &local { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::h2", captured: "2026-09-30" }
-    "tokens.typography.display-service.weight": *local
-    "tokens.typography.display-service.lineHeight": *local
-    "tokens.typography.display-service.use": *local
-    "tokens.typography.display.size": &gh2 { surface_id: "surface-2", source_id: "surface-surface-2", method: "computed-style", selector: "surface-2::h2", captured: "2026-09-30" }
-    "tokens.typography.display.weight": *gh2
-    "tokens.typography.display.lineHeight": *gh2
-    "tokens.typography.display.use": *gh2
-    "tokens.typography.headline.size": &gh3 { surface_id: "surface-2", source_id: "surface-surface-2", method: "computed-style", selector: "surface-2::h3", captured: "2026-09-30" }
-    "tokens.typography.headline.weight": *gh3
-    "tokens.typography.headline.lineHeight": *gh3
-    "tokens.typography.headline.use": *gh3
-    "tokens.typography.section.size": &section { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::h3", captured: "2026-09-30" }
-    "tokens.typography.section.weight": *section
-    "tokens.typography.section.lineHeight": *section
-    "tokens.typography.section.use": *section
-    "tokens.typography.section-service.size": *sec3
-    "tokens.typography.section-service.weight": *sec3
-    "tokens.typography.section-service.lineHeight": *sec3
-    "tokens.typography.section-service.use": *sec3
-    "tokens.typography.wordmark.size": *wordmark
-    "tokens.typography.wordmark.weight": *wordmark
-    "tokens.typography.wordmark.lineHeight": *wordmark
-    "tokens.typography.wordmark.use": *wordmark
-    "tokens.typography.card-title.size": &subject { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::p", captured: "2026-09-30" }
-    "tokens.typography.card-title.weight": *subject
-    "tokens.typography.card-title.lineHeight": *subject
-    "tokens.typography.card-title.use": *subject
-    "tokens.typography.tab.size": &tab { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.typography.tab.weight": *tab
-    "tokens.typography.tab.lineHeight": *tab
-    "tokens.typography.tab.use": *tab
-    "tokens.typography.lead.size": &summary { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::p", captured: "2026-09-30" }
-    "tokens.typography.lead.weight": *summary
-    "tokens.typography.lead.lineHeight": *summary
-    "tokens.typography.lead.use": *summary
-    "tokens.typography.reading.size": *bullet
-    "tokens.typography.reading.weight": *bullet
-    "tokens.typography.reading.lineHeight": *bullet
-    "tokens.typography.reading.use": *bullet
-    "tokens.typography.nav.size": *gnb
-    "tokens.typography.nav.weight": *gnb
-    "tokens.typography.nav.lineHeight": *gnb
-    "tokens.typography.nav.use": *gnb
-    "tokens.typography.button.size": *cta
-    "tokens.typography.button.weight": *cta
-    "tokens.typography.button.lineHeight": *cta
-    "tokens.typography.button.use": *cta
-    "tokens.typography.badge.size": *badge
-    "tokens.typography.badge.weight": *badge
-    "tokens.typography.badge.lineHeight": *badge
-    "tokens.typography.badge.use": *badge
-    "tokens.typography.body.size": *body
-    "tokens.typography.body.weight": *body
-    "tokens.typography.body.lineHeight": *body
-    "tokens.typography.body.use": *body
-    "tokens.typography.desc.size": *gdesc
-    "tokens.typography.desc.weight": *gdesc
-    "tokens.typography.desc.lineHeight": *gdesc
-    "tokens.typography.desc.use": *gdesc
-    "tokens.spacing.button-y": *cta
-    "tokens.spacing.button-x": *cta
-    "tokens.spacing.card-y": *scard
-    "tokens.spacing.card-x": *scard
-    "tokens.spacing.coupon": *coupon
-    "tokens.spacing.badge-y": *badge
-    "tokens.spacing.badge-x": *badge
-    "tokens.spacing.link-y": *linkbtn
-    "tokens.spacing.link-x": *linkbtn
-    "tokens.rounded.button": *cta
-    "tokens.rounded.badge": *badge
-    "tokens.rounded.coupon": *coupon
-    "tokens.rounded.link": *linkbtn
-    "tokens.rounded.tab": *tab
-    "tokens.rounded.card": *scard
-    "tokens.components.button-fill.type": *cta
-    "tokens.components.button-fill.bg": *cta
-    "tokens.components.button-fill.fg": *cta
-    "tokens.components.button-fill.border": *cta
-    "tokens.components.button-fill.radius": *cta
-    "tokens.components.button-fill.padding": *cta
-    "tokens.components.button-fill.height": *cta
-    "tokens.components.button-fill.font": *cta
-    "tokens.components.button-fill.hover": *ctastate
-    "tokens.components.button-fill.pressed": *ctastate
-    "tokens.components.button-fill.states": *ctastate
-    "tokens.components.button-fill.use": *cta
-    "tokens.components.button-line.type": &line { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"12\"]", captured: "2026-09-30" }
-    "tokens.components.button-line.bg": *line
-    "tokens.components.button-line.fg": *line
-    "tokens.components.button-line.border": *line
-    "tokens.components.button-line.radius": *line
-    "tokens.components.button-line.padding": *line
-    "tokens.components.button-line.height": *line
-    "tokens.components.button-line.font": *line
-    "tokens.components.button-line.hover": &linestate { surface_id: "home", source_id: "greencar-probe-home", method: "live-state-probe", selector: "a 더 많은 뉴스 보기 (147.9 x 52.4, rest fg #222222, transparent): hover and pressed bg -> rgb(0, 200, 140), border -> 1px solid rgb(0, 200, 140), label unchanged; transition all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0s", captured: "2026-09-30" }
-    "tokens.components.button-line.pressed": *linestate
-    "tokens.components.button-line.states": *linestate
-    "tokens.components.button-line.use": *line
-    "tokens.components.button-line-invert.type": &invert { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
-    "tokens.components.button-line-invert.bg": *invert
-    "tokens.components.button-line-invert.fg": *invert
-    "tokens.components.button-line-invert.border": *invert
-    "tokens.components.button-line-invert.radius": *invert
-    "tokens.components.button-line-invert.padding": *invert
-    "tokens.components.button-line-invert.height": *invert
-    "tokens.components.button-line-invert.font": *invert
-    "tokens.components.button-line-invert.states": *invert
-    "tokens.components.button-line-invert.use": *invert
-    "tokens.components.brand-panel.type": &panel { surface_id: "home", source_id: "greencar-probe-home", method: "live-state-probe", selector: "rest.ups of 채용 바로가기: up3 div.section.section-06 bg rgb(0, 200, 140) with ::after url(bg-noise.png) repeat overlay, 1440 x 640.4", captured: "2026-09-30" }
-    "tokens.components.brand-panel.bg": *panel
-    "tokens.components.brand-panel.size": *panel
-    "tokens.components.brand-panel.use": *panel
-    "tokens.components.nav-item.type": *gnb
-    "tokens.components.nav-item.fg": *gnb
-    "tokens.components.nav-item.font": *gnb
-    "tokens.components.nav-item.states": *gnb
-    "tokens.components.nav-item.use": *gnb
-    "tokens.components.link-button.type": *linkbtn
-    "tokens.components.link-button.bg": *linkbtn
-    "tokens.components.link-button.fg": *linkbtn
-    "tokens.components.link-button.border": *linkbtn
-    "tokens.components.link-button.radius": *linkbtn
-    "tokens.components.link-button.padding": *linkbtn
-    "tokens.components.link-button.height": *linkbtn
-    "tokens.components.link-button.font": *linkbtn
-    "tokens.components.link-button.states": *linkbtn
-    "tokens.components.link-button.use": *linkbtn
-    "tokens.components.service-card.type": *scard
-    "tokens.components.service-card.bg": *scard
-    "tokens.components.service-card.border": *scard
-    "tokens.components.service-card.radius": *scard
-    "tokens.components.service-card.padding": *scard
-    "tokens.components.service-card.size": *scard
-    "tokens.components.service-card.use": *scard
-    "tokens.components.service-tab.type": *tab
-    "tokens.components.service-tab.bg": *tab
-    "tokens.components.service-tab.fg": *tab
-    "tokens.components.service-tab.border": *tab
-    "tokens.components.service-tab.radius": *tab
-    "tokens.components.service-tab.padding": *tab
-    "tokens.components.service-tab.height": *tab
-    "tokens.components.service-tab.font": *tab
-    "tokens.components.service-tab.selected": &tabsel { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-interaction-capture=\"tab-0-0\"]", captured: "2026-09-30" }
-    "tokens.components.service-tab.states": *tabsel
-    "tokens.components.service-tab.use": *tab
-    "tokens.components.coupon-card.type": *coupon
-    "tokens.components.coupon-card.bg": *coupon
-    "tokens.components.coupon-card.border": *coupon
-    "tokens.components.coupon-card.radius": *coupon
-    "tokens.components.coupon-card.padding": *coupon
-    "tokens.components.coupon-card.shadow": *coupon
-    "tokens.components.coupon-card.size": *coupon
-    "tokens.components.coupon-card.use": *coupon
-    "tokens.components.coupon-badge.type": *badge
-    "tokens.components.coupon-badge.bg": *badge
-    "tokens.components.coupon-badge.fg": *badge
-    "tokens.components.coupon-badge.radius": *badge
-    "tokens.components.coupon-badge.padding": *badge
-    "tokens.components.coupon-badge.height": *badge
-    "tokens.components.coupon-badge.font": *badge
-    "tokens.components.coupon-badge.use": *badge
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#222222"
-    on-primary: "#ffffff"
-    accent: "#00c88c"
-    ink: "#000000"
-    ink-soft: "#171717"
-    warm-grey: "#3e3a39"
-    body-grey: "#434343"
-    muted: "#5e5e5e"
-    faint: "#b4b4b4"
-    surface: "#f6f6f6"
-    hairline: "#dddddd"
-    promo-red: "#f83333"
-    white: "#ffffff"
-  typography:
-    family: { display: "Outfit", body: "Pretendard" }
-    display-service: { size: 80, weight: 600, lineHeight: 1.5, use: "Service page title on the G car round-trip page (h2.local-name), 120px line, #222222, Outfit stack" }
-    display: { size: 64, weight: 600, lineHeight: 1.5, use: "Closing headline on the G car home (h2.title), 96px line, #171717, Outfit stack" }
-    headline: { size: 52, weight: 800, lineHeight: 1.5, use: "Feature headlines on the G car home (h3.title), 78px line, #171717; the section h2s run 52px at weight 600" }
-    section: { size: 36, weight: 700, lineHeight: 1.5, use: "Section headings on the corporate home (h3.section-subject, p.para), 54px line, #222222; stack Outfit, Pretendard, so Hangul glyphs render in Pretendard" }
-    section-service: { size: 36, weight: 600, lineHeight: 1.5, use: "Section titles on the G car round-trip page (h3.section-title), Pretendard first, 54px line, #171717" }
-    wordmark: { size: 32, weight: 700, lineHeight: 1.5, use: "Header h1 wordmark on the corporate home, 48px line, #000000" }
-    card-title: { size: 24, weight: 600, lineHeight: 1.5, use: "Card subjects on the G car round-trip page (p.subject), 36px line, #171717" }
-    tab: { size: 24, weight: 500, lineHeight: 1.5, use: "Service tabs on the G car round-trip page, Pretendard, 36px line" }
-    lead: { size: 20, weight: 500, lineHeight: 1.5, use: "Service slide summaries on the corporate home (p.summary), 30px line, white on the slide image" }
-    reading: { size: 20, weight: 400, lineHeight: 1.5, use: "Guide bullets revealed by the G car round-trip tabs (li.bullet-item), 30px line, #434343" }
-    nav: { size: 18, weight: 500, lineHeight: 1.2, use: "Header navigation on the corporate home (a.gnb-name), 21.6px line, #171717" }
-    button: { size: 16, weight: 700, lineHeight: 1.4, use: "Button labels on the corporate home, 22.4px line, Outfit stack" }
-    badge: { size: 16, weight: 600, lineHeight: 1.5, use: "Coupon and promotion labels on the G car round-trip page, Pretendard, 24px line" }
-    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Document default on the corporate home, stack Outfit, Pretendard, sans-serif, 24px line, #000000" }
-    desc: { size: 16, weight: 400, lineHeight: 1.5, use: "Service-card descriptions on the G car home (p.desc), Pretendard, 24px line, #5e5e5e" }
-  spacing: { button-y: 14, button-x: 20, card-y: 40, card-x: 24, coupon: 18, badge-y: 4, badge-x: 12, link-y: 13, link-x: 17 }
-  rounded: { button: 8, badge: 8, coupon: 10, link: 12, tab: 16, card: 20 }
-  components:
-    button-fill: { type: "button", bg: "#222222", fg: "#ffffff", border: "1px solid #222222", radius: "8px", padding: "14px 20px", height: "52px", font: "16px / 700 / 22.4px Outfit stack", hover: "bg #00c88c, fg #222222, border #00c88c", pressed: "bg #00c88c, fg #222222, border #00c88c", states: "probe: hover and pressed settle on #00c88c with a #222222 label after an 800ms transition; focus paints the same fill but the only ring is the browser default, so no brand focus style is declared", use: "채용 바로가기 on the corporate home at home::[data-omd-capture=\"39\"], 128 x 52, sitting on the green recruiting band" }
-    button-line: { type: "button", bg: "transparent", fg: "#222222", border: "1px solid #222222", radius: "8px", padding: "14px 20px", height: "52px", font: "16px / 700 / 22.4px Outfit stack", hover: "bg #00c88c, border #00c88c", pressed: "bg #00c88c, border #00c88c", states: "probe: hover and pressed fill #00c88c and turn the border green; the label stays #222222; transition all 0.2s", use: "더 많은 뉴스 보기 under the news section of the corporate home at home::[data-omd-capture=\"12\"], 148 x 52" }
-    button-line-invert: { type: "button", bg: "transparent", fg: "#ffffff", border: "1px solid #ffffff", radius: "8px", padding: "14px 20px", height: "52px", font: "16px / 700 / 22.4px Outfit stack", states: "rest only; the bundle holds a focus frame, which is not declared", use: "더 알아보기 on the three service slides of the corporate home (G car, 무버스, 세차클링), 324 x 52" }
-    brand-panel: { type: "card", bg: "#00c88c", size: "1440px x 640px", use: "Full-bleed green recruiting band (div.section-06) on the corporate home, with a repeating noise texture in ::after; read by the probe as the ancestor of 채용 바로가기" }
-    nav-item: { type: "tab", fg: "#171717", font: "18px / 500 / 21.6px Outfit stack", states: "rest only; no pointer or keyboard state was read", use: "Header navigation (그린카, 서비스, 인재채용, 뉴스) on the corporate home" }
-    link-button: { type: "button", bg: "#ffffff", fg: "#000000", border: "1px solid rgba(0, 0, 0, 0.08)", radius: "12px", padding: "13px 17px", height: "50px", font: "16px / 400 Outfit stack", states: "rest only; no pointer or keyboard state was read", use: "Outbound-link buttons (a.btn.module-a with an out-link icon) on the G car home, four instances, 138-158 x 50" }
-    service-card: { type: "card", bg: "#f6f6f6", border: "1px solid rgba(0, 0, 0, 0.08)", radius: "20px", padding: "40px 24px", size: "400px x 431px", use: "Six grey service cards on the G car home" }
-    service-tab: { type: "tab", bg: "#ffffff", fg: "#222222", border: "1px solid rgba(0, 0, 0, 0.08)", radius: "16px", padding: "18px", height: "74px", font: "24px / 500 / 36px Pretendard", selected: "bg #222222, fg #ffffff, border #222222", states: "selected read after the collector clicked the first tab; no hover, pressed or focus value was read", use: "Tabs on the G car round-trip page; the collector clicked the first and read the selected fill" }
-    coupon-card: { type: "card", bg: "#ffffff", border: "1px solid #dddddd", radius: "10px", padding: "18px", shadow: "rgba(0, 0, 0, 0.08) 0px 4px 8px 0px", size: "220px x 136px", use: "Three coupon cards on the G car round-trip page, the only elements with a shadow" }
-    coupon-badge: { type: "badge", bg: "#f83333", fg: "#ffffff", radius: "8px", padding: "4px 12px", height: "32px", font: "16px / 600 / 24px Pretendard", use: "Red coupon and promotion labels (p.coupon-label, p.label) on the G car round-trip page, eight instances" }
-  components_harvested: true
+name: Greencar
+colors:
+  primary: '#222222'
+  on-primary: '#ffffff'
+  accent: '#00c88c'
+  ink: '#000000'
+  ink-soft: '#171717'
+  warm-grey: '#3e3a39'
+  body-grey: '#434343'
+  muted: '#5e5e5e'
+  faint: '#b4b4b4'
+  surface: '#f6f6f6'
+  hairline: '#dddddd'
+  promo-red: '#f83333'
+  white: '#ffffff'
+typography:
+  display-service:
+    fontSize: 80px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: 'Service page title on the G car round-trip page (h2.local-name), 120px line, #222222, Outfit stack'
+  display:
+    fontSize: 64px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: 'Closing headline on the G car home (h2.title), 96px line, #171717, Outfit stack'
+  headline:
+    fontSize: 52px
+    fontWeight: 800
+    lineHeight: 1.5
+    use: 'Feature headlines on the G car home (h3.title), 78px line, #171717; the section h2s run 52px at weight 600'
+  section:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: 'Section headings on the corporate home (h3.section-subject, p.para), 54px line, #222222; stack Outfit, Pretendard, so Hangul glyphs render in Pretendard'
+  section-service:
+    fontSize: 36px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: 'Section titles on the G car round-trip page (h3.section-title), Pretendard first, 54px line, #171717'
+  wordmark:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: 'Header h1 wordmark on the corporate home, 48px line, #000000'
+  card-title:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: 'Card subjects on the G car round-trip page (p.subject), 36px line, #171717'
+  tab:
+    fontSize: 24px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Service tabs on the G car round-trip page, Pretendard, 36px line
+  lead:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Service slide summaries on the corporate home (p.summary), 30px line, white on the slide image
+  reading:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: 'Guide bullets revealed by the G car round-trip tabs (li.bullet-item), 30px line, #434343'
+  nav:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 1.2
+    use: 'Header navigation on the corporate home (a.gnb-name), 21.6px line, #171717'
+  button:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Button labels on the corporate home, 22.4px line, Outfit stack
+  badge:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Coupon and promotion labels on the G car round-trip page, Pretendard, 24px line
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: 'Document default on the corporate home, stack Outfit, Pretendard, sans-serif, 24px line, #000000'
+  desc:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: 'Service-card descriptions on the G car home (p.desc), Pretendard, 24px line, #5e5e5e'
+rounded:
+  button: 8px
+  badge: 8px
+  coupon: 10px
+  link: 12px
+  tab: 16px
+  card: 20px
+spacing:
+  button-y: 14
+  button-x: 20
+  card-y: 40
+  card-x: 24
+  coupon: 18
+  badge-y: 4
+  badge-x: 12
+  link-y: 13
+  link-x: 17
+components:
+  button-fill:
+    type: button
+    backgroundColor: '#222222'
+    textColor: '#ffffff'
+    border: '1px solid #222222'
+    rounded: 8px
+    padding: 14px 20px
+    height: 52px
+    typography: 16px / 700 / 22.4px Outfit stack
+    hover: 'bg #00c88c, fg #222222, border #00c88c'
+    pressed: 'bg #00c88c, fg #222222, border #00c88c'
+    states: 'probe: hover and pressed settle on #00c88c with a #222222 label after an 800ms transition; focus paints the same fill but the only ring is the browser default, so no brand focus style is declared'
+    use: 채용 바로가기 on the corporate home at home::[data-omd-capture="39"], 128 x 52, sitting on the green recruiting band
+  button-line:
+    type: button
+    backgroundColor: transparent
+    textColor: '#222222'
+    border: '1px solid #222222'
+    rounded: 8px
+    padding: 14px 20px
+    height: 52px
+    typography: 16px / 700 / 22.4px Outfit stack
+    hover: 'bg #00c88c, border #00c88c'
+    pressed: 'bg #00c88c, border #00c88c'
+    states: 'probe: hover and pressed fill #00c88c and turn the border green; the label stays #222222; transition all 0.2s'
+    use: 더 많은 뉴스 보기 under the news section of the corporate home at home::[data-omd-capture="12"], 148 x 52
+  button-line-invert:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    border: '1px solid #ffffff'
+    rounded: 8px
+    padding: 14px 20px
+    height: 52px
+    typography: 16px / 700 / 22.4px Outfit stack
+    states: rest only; the bundle holds a focus frame, which is not declared
+    use: 더 알아보기 on the three service slides of the corporate home (G car, 무버스, 세차클링), 324 x 52
+  brand-panel:
+    type: card
+    backgroundColor: '#00c88c'
+    size: 1440px x 640px
+    use: Full-bleed green recruiting band (div.section-06) on the corporate home, with a repeating noise texture in ::after; read by the probe as the ancestor of 채용 바로가기
+  nav-item:
+    type: tab
+    textColor: '#171717'
+    typography: 18px / 500 / 21.6px Outfit stack
+    states: rest only; no pointer or keyboard state was read
+    use: Header navigation (그린카, 서비스, 인재채용, 뉴스) on the corporate home
+  link-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: 1px solid rgba(0, 0, 0, 0.08)
+    rounded: 12px
+    padding: 13px 17px
+    height: 50px
+    typography: 16px / 400 Outfit stack
+    states: rest only; no pointer or keyboard state was read
+    use: Outbound-link buttons (a.btn.module-a with an out-link icon) on the G car home, four instances, 138-158 x 50
+  service-card:
+    type: card
+    backgroundColor: '#f6f6f6'
+    border: 1px solid rgba(0, 0, 0, 0.08)
+    rounded: 20px
+    padding: 40px 24px
+    size: 400px x 431px
+    use: Six grey service cards on the G car home
+  service-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#222222'
+    border: 1px solid rgba(0, 0, 0, 0.08)
+    rounded: 16px
+    padding: 18px
+    height: 74px
+    typography: 24px / 500 / 36px Pretendard
+    selected: 'bg #222222, fg #ffffff, border #222222'
+    states: selected read after the collector clicked the first tab; no hover, pressed or focus value was read
+    use: Tabs on the G car round-trip page; the collector clicked the first and read the selected fill
+  coupon-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #dddddd'
+    rounded: 10px
+    padding: 18px
+    shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px
+    size: 220px x 136px
+    use: Three coupon cards on the G car round-trip page, the only elements with a shadow
+  coupon-badge:
+    type: badge
+    backgroundColor: '#f83333'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 4px 12px
+    height: 32px
+    typography: 16px / 600 / 24px Pretendard
+    use: Red coupon and promotion labels (p.coupon-label, p.label) on the G car round-trip page, eight instances
+fonts:
+  roles:
+    display: Outfit
+    body: Pretendard
 ---
 
 # Design System Inspiration of Greencar
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Greencar (그린카) calls itself Korea's first commercial car-sharing service. Its own timeline starts with the founding of (주)그린포인트 in December 2009, a car-sharing server and in-car terminal in 2010, a patent filing on the car-sharing system in May 2011 and the start of "국내 최초 카셰어링 상용화 서비스" in September 2011. The company took the name 그린카 in February 2015 and, in June 2015, became a Lotte group company as a subsidiary of Lotte Rental (롯데렌탈). By December 2020 it reported about 8,000 cars at 3,200 그린존 in 147 areas, 3.5 million individual members and 10,000 corporate car-sharing accounts. It then widened past car-sharing: the at-home car-wash platform 세차클링 (September 2021), a next-generation app (May 2023) and the car-delivery app 무버스 (November 2023). In September 2024 the consumer service was renamed: "그린카 → 롯데렌터카 G car로 BI 리뉴얼". Today (주)그린카 is the company and 롯데렌터카 G car is the car-sharing brand it runs. The CI/BI page draws that hierarchy and offers the company CI, the G car, 무버스 and 세차클링 BIs and a service-brand design guideline as downloads.
 
@@ -274,14 +229,35 @@ The company describes itself with three principles, Connect, Communicate and Co-
 - Buttons are 8px-radius rectangles 52px tall. Link buttons use 12px, tabs 16px and cards 20px.
 - The pages are flat. Only the G car coupon cards carry a shadow (`rgba(0, 0, 0, 0.08) 0px 4px 8px`). Elsewhere surfaces are separated by the `#f6f6f6` fill and hairlines.
 
-## Primary tasks
+### Primary tasks
 
 - Book a shared G car for a weekend trip
 - Take a one-way car for errands
 - Compare the services in the mobility line-up (G car, 무버스, 세차클링)
 - Look into a corporate account for a small business
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+The narrative comes from the company's own timeline and about pages. It began as (주)그린포인트 in 2009, launched commercial car-sharing in 2011, became 그린카 and joined Lotte Rental in 2015, and passed 3.5 million members by 2020. The about page places it inside Lotte Rental's "Mobility Full Line up": rental, maintenance and used-car sales across the group, which Greencar uses for vehicle upkeep and disposal. The product side calls itself a "라이프스타일 Mobility Platform": car-sharing (G car), contactless car delivery (무버스) and at-home washing (세차클링). The 2024 rename to 롯데렌터카 G car tied the consumer brand to its parent's rental brand. Meanwhile (주)그린카 keeps its own name, site and green CI. The two websites show the split. The corporate site uses green as the brand's surface and interaction colour. The G car site uses dark tabs, grey cards and red promotion labels.
+
+### Principles
+
+1. **Connect, Communicate, Co-Create.** These are the company's three stated principles. *UI implication:* keep the interface about the journey and the service, not the price.
+2. **Dark to act, green to respond.** *UI implication:* a rest-state action is `#222222`, and the green `#00c88c` arrives on hover and press.
+3. **One stack, two scripts.** *UI implication:* Outfit for Latin, Pretendard for Hangul, even leading at 1.5.
+4. **Flat by default.** *UI implication:* separate surfaces with fills and translucent hairlines, and raise only promotional coupons.
+
+### Personas
+
+*Personas are fictional archetypes informed by the service lines Greencar describes (round-trip and one-way car-sharing, corporate car-sharing). They are not real people.*
+
+**김도윤, 28, 서울.** Has no car of his own and books a G car round-trip for weekend trips. He expects the booking path to feel calm rather than like a rental counter.
+
+**이서연, 34, 경기.** Uses one-way G car for errands. She reads the coupon labels and wants clear, low-pressure actions.
+
+**박준호, 41, 부산.** A small-business owner looking at corporate car-sharing. He reads the Lotte Rental connection as reassurance.
+
+## Colors
 
 ### Primary action
 - **Action Dark** (`#222222`): the primary colour. It fills 채용 바로가기 on the corporate home with a white label and a matching 1px border. It is also the fill of the selected service tab on the G car round-trip page. No other colour fills a rest-state action on the three captured pages, which is why `#222222` is the primary.
@@ -305,7 +281,7 @@ The company describes itself with three principles, Connect, Communicate and Co-
 - **Hairline** (`#dddddd`): coupon-card border. Card and tab borders elsewhere are translucent `rgba(0, 0, 0, 0.08)`.
 - **Promo Red** (`#f83333`): coupon and promotion labels on the G car round-trip page. It is a signal colour, not an action colour.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Stack:** `Outfit, Pretendard, sans-serif` is the computed family on the body of all three pages. Outfit is a Latin typeface, so Korean text in any Outfit-first element renders in Pretendard. The two faces divide the work by script, not by role.
@@ -336,7 +312,39 @@ The company describes itself with three principles, Connect, Communicate and Co-
 - **Weight carries hierarchy:** 800 and 700 for headlines, 600 for sub-heads and badges, 500 for navigation and leads, 400 for reading.
 - **No tracking:** every captured element computes `letter-spacing: normal`.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing observed
+- Buttons: `14px 20px`. Link buttons: `13px 17px`. Badges: `4px 12px`.
+- Service cards: `40px 24px`. Coupon cards: `18px`. Tabs: `18px`.
+
+### Grid and container
+- Captured at 1440 × 900. Corporate headings and the G car tab strip span 1400px, which leaves a 20px side margin. The service cards on G car sit three across at 400px.
+
+### Border radius scale
+- 8px buttons and badges, 10px coupon cards, 12px link buttons, 16px tabs, 20px service cards.
+
+### Responsive Behavior
+
+Only the 1440 × 900 desktop viewport was captured. Breakpoints, touch targets and collapse behaviour were not measured and are not declared here. The buttons are 52px tall and the service tabs 74px on desktop.
+
+## Elevation & Depth
+
+Almost nothing is raised. The coupon cards on the G car round-trip page carry `rgba(0, 0, 0, 0.08) 0px 4px 8px 0px`, and every other captured element computes `box-shadow: none`. Depth comes from fills instead: the green band, the grey `#f6f6f6` cards, and translucent `rgba(0, 0, 0, 0.08)` borders on cards, tabs and link buttons.
+
+## Motion & Easing
+
+The probe read two transitions on the corporate home. The filled button's longest transition is 800ms. The outline button declares `transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0s`. When keyboard focus scrolled 채용 바로가기 into view, its section head's transform went from `translateY(100px)` to `0` and stayed there after blur. That is a reveal animation, not a control state. No other duration or easing was measured, and none is declared.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/greencar.json (capturedAt 2026-09-30T11:47:59Z), deterministic collector, 1440x900, logged out: www.greencar.co.kr, www.greencar-gcar.co.kr, /sharing/gcar. Button states and the green band: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/greencar-states-home.json (2026-09-30T13:13Z).
+- §1, §10, §11 context: greencar.co.kr/greencar/history, /greencar/about, /greencar/ci and the corporate home copy, opened 2026-09-30.
+- §3 licences: the Outfit OFL.txt and Pretendard LICENSE files on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
+-->
+
+## Components
 
 ### Buttons
 - **Filled** (`button-fill`): `#222222` fill, white label, 1px `#222222` border, 8px radius, `14px 20px` padding, 52px tall, 16px/700. On hover and press it turns `#00c88c` with a `#222222` label and a green border. Used for 채용 바로가기.
@@ -358,23 +366,21 @@ The company describes itself with three principles, Connect, Communicate and Co-
 **Tier 1 sources:** https://www.greencar.co.kr/ ; https://www.greencar-gcar.co.kr/ ; https://www.greencar-gcar.co.kr/sharing/gcar ; https://www.greencar.co.kr/greencar/history ; https://www.greencar.co.kr/greencar/about ; https://www.greencar.co.kr/greencar/ci
 **Tier 2 sources:** getdesign.md and styles.refero.design were not re-queried in this pass; no Tier 2 value used
 
-## 5. Layout Principles
+### States
 
-### Spacing observed
-- Buttons: `14px 20px`. Link buttons: `13px 17px`. Badges: `4px 12px`.
-- Service cards: `40px 24px`. Coupon cards: `18px`. Tabs: `18px`.
+Only states read from the capture and the probe are listed.
 
-### Grid and container
-- Captured at 1440 × 900. Corporate headings and the G car tab strip span 1400px, which leaves a 20px side margin. The service cards on G car sit three across at 400px.
+| Component | State | Treatment | Evidence |
+|---|---|---|---|
+| Filled button | hover, pressed | `#00c88c` fill, `#222222` label, green border | probe |
+| Outline button | hover, pressed | `#00c88c` fill, green border, label unchanged | probe |
+| Filled / outline button | focus | same green fill plus the browser default ring. No brand focus style is declared | probe |
+| Service tab | selected | `#222222` fill, white label | collector tab interaction |
+| Carousel arrow | disabled | `swiper-button-disabled` on the G car round-trip page | collector |
 
-### Border radius scale
-- 8px buttons and badges, 10px coupon cards, 12px link buttons, 16px tabs, 20px service cards.
+Empty, loading, error and success states were not observed and are not declared.
 
-## 6. Depth & Elevation
-
-Almost nothing is raised. The coupon cards on the G car round-trip page carry `rgba(0, 0, 0, 0.08) 0px 4px 8px 0px`, and every other captured element computes `box-shadow: none`. Depth comes from fills instead: the green band, the grey `#f6f6f6` cards, and translucent `rgba(0, 0, 0, 0.08)` borders on cards, tabs and link buttons.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Fill the primary action in `#222222` with a white label, and use an 8px radius and a 52px height.
@@ -389,11 +395,22 @@ Almost nothing is raised. The coupon cards on the G car round-trip page carry `r
 - Don't track Korean headlines. Every captured element is at `normal`.
 - Don't use pill radii on actions. The largest radius on an action is 12px.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-Only the 1440 × 900 desktop viewport was captured. Breakpoints, touch targets and collapse behaviour were not measured and are not declared here. The buttons are 52px tall and the service tabs 74px on desktop.
+Greencar speaks about mobility as connection and daily life rather than rental transactions. The corporate copy is mission-framed and calm. The G car copy is promotional but plain.
 
-## 9. Agent Prompt Guide
+| Context | Sample (verbatim, 2026-09-30) |
+|---|---|
+| Company principle | "그린카의 이동은 물리적인 거리를 넘어 사람과 시간 그리고 공간을 연결합니다" |
+| Corporate hero | "연결된 우리의 다양한 일상은 새로운 경험을 만들어내고 더 나은 삶의 가치를 완성시킵니다." |
+| Section heading | "그린카는 고객 중심의 모빌리티 풀 라인업을 열어갑니다." |
+| Service slides | "당신의 라이프스타일에 맞춘 편안한 이동, 카셰어링 서비스 G car" |
+| Recruiting band | "더 나은 모빌리티 경험을 함께 만들어 갈 여러분을 기다립니다." |
+| CTAs | "더 알아보기", "더 많은 뉴스 보기", "채용 바로가기" |
+
+The June record's English hero tagline "Create a Better Life" is not on the current corporate home and is no longer quoted.
+
+## Agent Prompt Guide
 
 ### Quick colour reference
 - Primary action: `#222222` (white label)
@@ -413,64 +430,9 @@ Only the 1440 × 900 desktop viewport was captured. Breakpoints, touch targets a
 - If a card has a shadow, remove it unless the card is a coupon.
 - If Korean text renders in a Latin face, check that Pretendard is second in the stack.
 
-## 10. Voice & Tone
+## Governance
 
-Greencar speaks about mobility as connection and daily life rather than rental transactions. The corporate copy is mission-framed and calm. The G car copy is promotional but plain.
+### Known Gaps
 
-| Context | Sample (verbatim, 2026-09-30) |
-|---|---|
-| Company principle | "그린카의 이동은 물리적인 거리를 넘어 사람과 시간 그리고 공간을 연결합니다" |
-| Corporate hero | "연결된 우리의 다양한 일상은 새로운 경험을 만들어내고 더 나은 삶의 가치를 완성시킵니다." |
-| Section heading | "그린카는 고객 중심의 모빌리티 풀 라인업을 열어갑니다." |
-| Service slides | "당신의 라이프스타일에 맞춘 편안한 이동, 카셰어링 서비스 G car" |
-| Recruiting band | "더 나은 모빌리티 경험을 함께 만들어 갈 여러분을 기다립니다." |
-| CTAs | "더 알아보기", "더 많은 뉴스 보기", "채용 바로가기" |
-
-The June record's English hero tagline "Create a Better Life" is not on the current corporate home and is no longer quoted.
-
-## 11. Brand Narrative
-
-The narrative comes from the company's own timeline and about pages. It began as (주)그린포인트 in 2009, launched commercial car-sharing in 2011, became 그린카 and joined Lotte Rental in 2015, and passed 3.5 million members by 2020. The about page places it inside Lotte Rental's "Mobility Full Line up": rental, maintenance and used-car sales across the group, which Greencar uses for vehicle upkeep and disposal. The product side calls itself a "라이프스타일 Mobility Platform": car-sharing (G car), contactless car delivery (무버스) and at-home washing (세차클링). The 2024 rename to 롯데렌터카 G car tied the consumer brand to its parent's rental brand. Meanwhile (주)그린카 keeps its own name, site and green CI. The two websites show the split. The corporate site uses green as the brand's surface and interaction colour. The G car site uses dark tabs, grey cards and red promotion labels.
-
-## 12. Principles
-
-1. **Connect, Communicate, Co-Create.** These are the company's three stated principles. *UI implication:* keep the interface about the journey and the service, not the price.
-2. **Dark to act, green to respond.** *UI implication:* a rest-state action is `#222222`, and the green `#00c88c` arrives on hover and press.
-3. **One stack, two scripts.** *UI implication:* Outfit for Latin, Pretendard for Hangul, even leading at 1.5.
-4. **Flat by default.** *UI implication:* separate surfaces with fills and translucent hairlines, and raise only promotional coupons.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by the service lines Greencar describes (round-trip and one-way car-sharing, corporate car-sharing). They are not real people.*
-
-**김도윤, 28, 서울.** Has no car of his own and books a G car round-trip for weekend trips. He expects the booking path to feel calm rather than like a rental counter.
-
-**이서연, 34, 경기.** Uses one-way G car for errands. She reads the coupon labels and wants clear, low-pressure actions.
-
-**박준호, 41, 부산.** A small-business owner looking at corporate car-sharing. He reads the Lotte Rental connection as reassurance.
-
-## 14. States
-
-Only states read from the capture and the probe are listed.
-
-| Component | State | Treatment | Evidence |
-|---|---|---|---|
-| Filled button | hover, pressed | `#00c88c` fill, `#222222` label, green border | probe |
-| Outline button | hover, pressed | `#00c88c` fill, green border, label unchanged | probe |
-| Filled / outline button | focus | same green fill plus the browser default ring. No brand focus style is declared | probe |
-| Service tab | selected | `#222222` fill, white label | collector tab interaction |
-| Carousel arrow | disabled | `swiper-button-disabled` on the G car round-trip page | collector |
-
-Empty, loading, error and success states were not observed and are not declared.
-
-## 15. Motion & Easing
-
-The probe read two transitions on the corporate home. The filled button's longest transition is 800ms. The outline button declares `transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0s`. When keyboard focus scrolled 채용 바로가기 into view, its section head's transform went from `translateY(100px)` to `0` and stayed there after blur. That is a reveal animation, not a control state. No other duration or easing was measured, and none is declared.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/greencar.json (capturedAt 2026-09-30T11:47:59Z), deterministic collector, 1440x900, logged out: www.greencar.co.kr, www.greencar-gcar.co.kr, /sharing/gcar. Button states and the green band: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/greencar-states-home.json (2026-09-30T13:13Z).
-- §1, §10, §11 context: greencar.co.kr/greencar/history, /greencar/about, /greencar/ci and the corporate home copy, opened 2026-09-30.
-- §3 licences: the Outfit OFL.txt and Pretendard LICENSE files on GitHub, opened 2026-09-30.
-- Personas are fictional archetypes. Interpretive readings are editorial.
--->
+- **Contrast, `button-line`.** Text `#222222` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `coupon-badge`.** Text `#ffffff` on `#f83333` measures 3.81:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

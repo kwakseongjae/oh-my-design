@@ -1,0 +1,301 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "taishinbank",
+    "name": "台新銀行",
+    "country": "TW",
+    "category": "fintech",
+    "homepage": "https://www.taishinbank.com.tw/",
+    "primary_color": "#0056b3",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=taishinbank.com.tw&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "note": "Packet-backed public Taishin personal-banking and investment-product observations at 1440×900. The third supplied snapshot is an external association page and is retained only as raw evidence, never as a Taishin token source. No loaded Taishin webfont, authenticated banking surface, native app, or official design system was established.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-14",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-personal-banking",
+        "url": "https://www.taishinbank.com.tw/TSB/personal/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "investment",
+        "kind": "public-investment-product",
+        "url": "https://www.taishinbank.com.tw/invst/product/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "association-page",
+        "kind": "external-association-page",
+        "url": "https://www.lia-roc.org.tw/list_article?article_content=163&menu_title=%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.taishinbank.com.tw/TSB/personal/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "investment-live",
+        "kind": "product-surface",
+        "url": "https://www.taishinbank.com.tw/invst/product/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "bank-history",
+        "kind": "official-doc",
+        "url": "https://www.taishinbank.com.tw/TSB/about-taishin/brief-introduction-to-the-bank/taishin-story/index.html",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "bank-services",
+        "kind": "official-doc",
+        "url": "https://www.taishinbank.com.tw/TSB/about-taishin/brief-introduction-to-the-bank/TSBankGridPage-000091-00002/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "richart-upgrade",
+        "kind": "official-doc",
+        "url": "https://www.taishinbank.com.tw/TSB/personal/common/news/TSBankNews-007654/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "bank-integration",
+        "kind": "official-doc",
+        "url": "https://web.taishinbank.com.tw/TSB/personal/common/news/TSBankNews-008090/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "fair-treatment",
+        "kind": "official-doc",
+        "url": "https://www.taishinbank.com.tw/TSB/fair-treatment/about/TSBankGridPage-000226/",
+        "captured": "2026-07-14"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.link": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.flat": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.type": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.backgroundColor": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.textColor": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.border": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.rounded": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.padding": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.typography": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.height": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      },
+      "components.investment-fund-card.use": {
+        "surface_id": "investment",
+        "source_id": "investment-live",
+        "method": "selector-backed-component",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 9,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 1,
+      "extension-component-property": 3,
+      "missing-primary": 1,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 3
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.investment-fund-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.investment-fund-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.investment-fund-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.investment-fund-card",
+        "message": "textColor (#212529) on backgroundColor (#00000000) has contrast ratio 1.36:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "0184ded7d132a570c99ca6b3cfc5c216f9e99799d24e5c8dd7bec8b227feef7d",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.flat",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "rounded.square"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "rounded",
+        "shadow",
+        "components_harvested",
+        "components"
+      ]
+    }
+  }
+}

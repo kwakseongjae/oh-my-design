@@ -1,269 +1,217 @@
 ---
-id: stayfolio
 name: Stayfolio
-display_name_kr: 스테이폴리오
-country: KR
-category: consumer-tech
-homepage: "https://www.stayfolio.com/"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=stayfolio.com&sz=128"
-verified: "2026-09-30"
-added: "2026-07-02"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: product-web, url: "https://www.stayfolio.com/", inspected: "2026-09-30" }
-    - { id: surface-2, kind: product-web, url: "https://www.stayfolio.com/findstay?check_in=2026-12-09&check_out=2026-12-10&adult_cnt=2", inspected: "2026-09-30" }
-    - { id: surface-3, kind: product-web, url: "https://www.stayfolio.com/journal/magazines", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://www.stayfolio.com/", captured: "2026-09-30" }
-    - { id: surface-surface-2, kind: product-surface, url: "https://www.stayfolio.com/findstay?check_in=2026-12-09&check_out=2026-12-10&adult_cnt=2", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://www.stayfolio.com/journal/magazines", captured: "2026-09-30" }
-    - { id: business-site, kind: official-doc, url: "https://business.stayfolio.com/", captured: "2026-09-30" }
-    - { id: terms, kind: official-doc, url: "https://stayfolio.notion.site/2cc309999c4c8072b8dafde8bc6ce394", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &map { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-09-30" }
-    "tokens.colors.on-primary": *map
-    "tokens.colors.ink": &sbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.heading": &sh2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
-    "tokens.colors.nav": &snav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
-    "tokens.colors.secondary": &sp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
-    "tokens.colors.meta": *sp
-    "tokens.colors.base-price": *sp
-    "tokens.colors.discount": *sp
-    "tokens.colors.last-minute": &sbadge { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.colors.footer-chip": &fchip { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
-    "tokens.colors.journal-text": &jp { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
-    "tokens.colors.journal-muted": &jtabk { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"8\"]", captured: "2026-09-30" }
-    "tokens.colors.journal-number": *jp
-    "tokens.colors.hairline": &toggle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.colors.skeleton": &skel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
-    "tokens.colors.canvas": *sbody
-    "tokens.typography.family.sans": *sbody
-    "tokens.typography.section.size": *sh2
-    "tokens.typography.section.weight": *sh2
-    "tokens.typography.section.lineHeight": *sh2
-    "tokens.typography.section.tracking": *sh2
-    "tokens.typography.section.use": *sh2
-    "tokens.typography.stay-name.size": *sp
-    "tokens.typography.stay-name.weight": *sp
-    "tokens.typography.stay-name.lineHeight": *sp
-    "tokens.typography.stay-name.tracking": *sp
-    "tokens.typography.stay-name.use": *sp
-    "tokens.typography.price.size": *sp
-    "tokens.typography.price.weight": *sp
-    "tokens.typography.price.lineHeight": *sp
-    "tokens.typography.price.tracking": *sp
-    "tokens.typography.price.use": *sp
-    "tokens.typography.nav.size": *snav
-    "tokens.typography.nav.weight": *snav
-    "tokens.typography.nav.lineHeight": *snav
-    "tokens.typography.nav.use": *snav
-    "tokens.typography.button.size": *map
-    "tokens.typography.button.weight": *map
-    "tokens.typography.button.lineHeight": *map
-    "tokens.typography.button.use": *map
-    "tokens.typography.subtitle.size": *sp
-    "tokens.typography.subtitle.weight": *sp
-    "tokens.typography.subtitle.lineHeight": *sp
-    "tokens.typography.subtitle.use": *sp
-    "tokens.typography.toggle.size": &titem { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.typography.toggle.weight": *titem
-    "tokens.typography.toggle.lineHeight": *titem
-    "tokens.typography.toggle.tracking": *titem
-    "tokens.typography.toggle.use": *titem
-    "tokens.typography.meta.size": *sp
-    "tokens.typography.meta.weight": *sp
-    "tokens.typography.meta.lineHeight": *sp
-    "tokens.typography.meta.use": *sp
-    "tokens.typography.badge.size": &btxt { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.typography.badge.weight": *btxt
-    "tokens.typography.badge.lineHeight": *btxt
-    "tokens.typography.badge.tracking": *btxt
-    "tokens.typography.badge.use": *btxt
-    "tokens.typography.caption.size": *fchip
-    "tokens.typography.caption.weight": *fchip
-    "tokens.typography.caption.lineHeight": *fchip
-    "tokens.typography.caption.tracking": *fchip
-    "tokens.typography.caption.use": *fchip
-    "tokens.typography.body.size": *sbody
-    "tokens.typography.body.weight": *sbody
-    "tokens.typography.body.lineHeight": *sbody
-    "tokens.typography.body.use": *sbody
-    "tokens.typography.journal-title.size": *jp
-    "tokens.typography.journal-title.weight": *jp
-    "tokens.typography.journal-title.lineHeight": *jp
-    "tokens.typography.journal-title.use": *jp
-    "tokens.typography.journal-tab.size": &jtab { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.typography.journal-tab.weight": *jtab
-    "tokens.typography.journal-tab.lineHeight": *jtab
-    "tokens.typography.journal-tab.use": *jtab
-    "tokens.spacing.badge-y": *sbadge
-    "tokens.spacing.badge-x": *sbadge
-    "tokens.spacing.button-y": *map
-    "tokens.spacing.button-x": *map
-    "tokens.spacing.toggle-y": *titem
-    "tokens.spacing.toggle-inner": *titem
-    "tokens.spacing.toggle-outer": *titem
-    "tokens.spacing.caption-y": *fchip
-    "tokens.spacing.caption-x": *fchip
-    "tokens.spacing.journal-frame": &jbox { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
-    "tokens.rounded.xs": *fchip
-    "tokens.rounded.sm": *sbadge
-    "tokens.rounded.md": *skel
-    "tokens.rounded.lg": &swiper { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
-    "tokens.rounded.button": *map
-    "tokens.rounded.pill": *toggle
-    "tokens.shadow.toggle": *toggle
-    "tokens.shadow.thumb": &thumb { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.shadow.button": *map
-    "tokens.components.nav-menu-button.type": *snav
-    "tokens.components.nav-menu-button.bg": *snav
-    "tokens.components.nav-menu-button.fg": *snav
-    "tokens.components.nav-menu-button.border": *snav
-    "tokens.components.nav-menu-button.height": *snav
-    "tokens.components.nav-menu-button.font": *snav
-    "tokens.components.nav-menu-button.hover": { surface_id: home, source_id: surface-home, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"4\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.nav-menu-button.pressed": { surface_id: home, source_id: surface-home, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"4\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.nav-menu-button.selected": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.components.nav-menu-button.states": *snav
-    "tokens.components.nav-menu-button.use": *snav
-    "tokens.components.region-toggle.type": *toggle
-    "tokens.components.region-toggle.bg": *toggle
-    "tokens.components.region-toggle.fg": *titem
-    "tokens.components.region-toggle.border": *toggle
-    "tokens.components.region-toggle.radius": *toggle
-    "tokens.components.region-toggle.height": *toggle
-    "tokens.components.region-toggle.padding": *titem
-    "tokens.components.region-toggle.shadow": *toggle
-    "tokens.components.region-toggle.selected": *thumb
-    "tokens.components.region-toggle.states": *toggle
-    "tokens.components.region-toggle.use": *toggle
-    "tokens.components.map-button.type": *map
-    "tokens.components.map-button.bg": *map
-    "tokens.components.map-button.fg": *map
-    "tokens.components.map-button.radius": *map
-    "tokens.components.map-button.padding": *map
-    "tokens.components.map-button.height": *map
-    "tokens.components.map-button.font": *map
-    "tokens.components.map-button.shadow": *map
-    "tokens.components.map-button.states": *map
-    "tokens.components.map-button.use": *map
-    "tokens.components.stay-badge.type": *sbadge
-    "tokens.components.stay-badge.bg": *sbadge
-    "tokens.components.stay-badge.fg": *btxt
-    "tokens.components.stay-badge.radius": *sbadge
-    "tokens.components.stay-badge.padding": *sbadge
-    "tokens.components.stay-badge.height": *sbadge
-    "tokens.components.stay-badge.font": *btxt
-    "tokens.components.stay-badge.use": *sbadge
-    "tokens.components.last-minute-badge.type": *sbadge
-    "tokens.components.last-minute-badge.bg": *sbadge
-    "tokens.components.last-minute-badge.fg": *btxt
-    "tokens.components.last-minute-badge.radius": *sbadge
-    "tokens.components.last-minute-badge.padding": *sbadge
-    "tokens.components.last-minute-badge.height": *sbadge
-    "tokens.components.last-minute-badge.font": *btxt
-    "tokens.components.last-minute-badge.use": *sbadge
-    "tokens.components.stay-card.type": &card { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
-    "tokens.components.stay-card.fg": *sp
-    "tokens.components.stay-card.size": *card
-    "tokens.components.stay-card.use": *card
-    "tokens.components.listing-photo.type": *swiper
-    "tokens.components.listing-photo.radius": *swiper
-    "tokens.components.listing-photo.size": *swiper
-    "tokens.components.listing-photo.use": *swiper
-    "tokens.components.skeleton.type": *skel
-    "tokens.components.skeleton.bg": *skel
-    "tokens.components.skeleton.radius": *skel
-    "tokens.components.skeleton.use": *skel
-    "tokens.components.footer-chip.type": *fchip
-    "tokens.components.footer-chip.bg": *fchip
-    "tokens.components.footer-chip.fg": *fchip
-    "tokens.components.footer-chip.border": *fchip
-    "tokens.components.footer-chip.radius": *fchip
-    "tokens.components.footer-chip.padding": *fchip
-    "tokens.components.footer-chip.height": *fchip
-    "tokens.components.footer-chip.font": *fchip
-    "tokens.components.footer-chip.states": *fchip
-    "tokens.components.footer-chip.use": *fchip
-    "tokens.components.journal-tab.type": *jtab
-    "tokens.components.journal-tab.bg": *jtab
-    "tokens.components.journal-tab.fg": *jtab
-    "tokens.components.journal-tab.height": *jtab
-    "tokens.components.journal-tab.font": *jtab
-    "tokens.components.journal-tab.selected": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
-    "tokens.components.journal-tab.states": *jtab
-    "tokens.components.journal-tab.use": *jtab
-    "tokens.components.journal-card.type": *jbox
-    "tokens.components.journal-card.border": *jbox
-    "tokens.components.journal-card.size": *jbox
-    "tokens.components.journal-card.use": *jbox
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#000000"
-    on-primary: "#ffffff"
-    ink: "#181818"
-    heading: "#171719"
-    nav: "#1a1a1a"
-    secondary: "#767676"
-    meta: "#6b6b6e"
-    base-price: "#979799"
-    discount: "#0199f8"
-    last-minute: "#017bc6"
-    footer-chip: "#595959"
-    journal-text: "#333333"
-    journal-muted: "#898989"
-    journal-number: "#c0c0c0"
-    hairline: "#dfe0e2"
-    skeleton: "#f2f2f2"
-    canvas: "#ffffff"
-  typography:
-    family: { sans: "Pretendard" }
-    section: { size: 28, weight: 600, lineHeight: 1.29, tracking: -0.56, use: "Home section heading (h2, class title-28-sb)" }
-    stay-name: { size: 16, weight: 600, lineHeight: 1.5, tracking: -0.2, use: "Stay name on home cards (class label-16-sb)" }
-    price: { size: 18, weight: 600, lineHeight: 1.44, tracking: -0.54, use: "Stay price; the discount rate beside it is 700" }
-    nav: { size: 16, weight: 600, lineHeight: 1.5, use: "Uppercase top navigation (FIND STAY, PROMOTION, JOURNAL, PRE-ORDER)" }
-    button: { size: 16, weight: 500, lineHeight: 1.5, use: "지도 action label" }
-    subtitle: { size: 16, weight: 400, lineHeight: 1.5, use: "Home section subtitle (class label-16-rg)" }
-    toggle: { size: 15, weight: 700, lineHeight: 1, tracking: 0.21, use: "Selected 국내 / 해외 label; the unselected label is 600" }
-    meta: { size: 13, weight: 400, lineHeight: 1.38, use: "Region and capacity line on stay cards" }
-    badge: { size: 12, weight: 500, lineHeight: 1.33, tracking: 0.24, use: "Photo badge label" }
-    caption: { size: 12, weight: 400, lineHeight: 1.33, tracking: 0.12, use: "Footer outline buttons (class caption-12-rg)" }
-    body: { size: 14, weight: 400, lineHeight: 1, use: "Body default (line height computes to 14px)" }
-    journal-title: { size: 21, weight: 400, lineHeight: 1.5, use: "Magazine card title on the journal page" }
-    journal-tab: { size: 18, weight: 400, lineHeight: 1.83, use: "Journal section tabs; Latin labels in Lato-Light, the selected one in Lato-Bold" }
-  spacing: { badge-y: 4, badge-x: 8, button-y: 8, button-x: 16, toggle-y: 6, toggle-inner: 12, toggle-outer: 16, caption-y: 4, caption-x: 8, journal-frame: 15 }
-  rounded: { xs: 4, sm: 5, md: 8, lg: 10, button: 20, pill: 100 }
-  shadow:
-    toggle: "rgba(0, 0, 0, 0.08) 0px 4px 8px 0px"
-    thumb: "rgba(0, 0, 0, 0.12) 0px 4px 12px 0px"
-    button: "rgba(26, 26, 26, 0.1) 0px 2px 6px 0px"
-  components:
-    nav-menu-button: { type: tab, bg: "transparent", fg: "#1a1a1a", border: "2px solid transparent (bottom only)", height: "26px", font: "16px / 600 / 24px Pretendard", hover: "bottom border 2px solid #1a1a1a", pressed: "bottom border 2px solid #1a1a1a", selected: "bottom border 2px solid #1a1a1a on the current section (FIND STAY on the listing, JOURNAL on the journal)", states: "rest, hover, pressed and selected; all eleven unselected items on the three pages turn the bottom edge solid in both frames, and the current section keeps it at rest (surface-2 capture 1, surface-3 capture 4); focus is not declared from the capture", use: "Uppercase top navigation (FIND STAY, PROMOTION, JOURNAL, PRE-ORDER) at home::[data-omd-capture=\"4\"]" }
-    region-toggle: { type: toggle, bg: "rgba(255, 255, 255, 0.24)", fg: "#171719", border: "1px solid #dfe0e2", radius: "100px", height: "44px", padding: "6px 12px 6px 16px", shadow: "rgba(0, 0, 0, 0.08) 0px 4px 8px 0px", selected: "a #171719 thumb (62 x 42, 100px radius, rgba(0, 0, 0, 0.12) 0px 4px 12px 0px) under a white 15px / 700 label", states: "selected segment read from rest values (국내 selected, 해외 at 15px / 600 #171719); no pointer frame", use: "국내 / 해외 switch in the home header at home::[data-omd-capture=\"1\"], 120 x 44; padding is per segment" }
-    map-button: { type: button, bg: "#000000", fg: "#ffffff", radius: "20px", padding: "8px 16px", height: "40px", font: "16px / 500 / 24px Pretendard", shadow: "rgba(26, 26, 26, 0.1) 0px 2px 6px 0px", states: "rest only; no state frame", use: "지도 (map view) action floating over the FIND STAY listing at surface-2::[data-omd-capture=\"12\"], 86 x 40 — the only filled action on the captured pages" }
-    stay-badge: { type: badge, bg: "rgba(26, 26, 26, 0.6)", fg: "#ffffff", radius: "5px", padding: "4px 8px", height: "24px", font: "12px / 500 / 16px Pretendard", use: "Overlay labels on stay photographs on home (페스타, 프로모션, 단독소개); the white label is a child span with 0.24px tracking" }
-    last-minute-badge: { type: badge, bg: "#017bc6", fg: "#ffffff", radius: "5px", padding: "4px 8px", height: "24px", font: "12px / 500 / 16px Pretendard", use: "마감할인 (last-minute discount) overlay on stay photographs, five on home" }
-    stay-card: { type: card, fg: "#171719", size: "411px x 378px", use: "Stay card on home at home::[data-omd-capture=\"11\"]: photograph with overlay badges, name 16px / 600 / 24px, region and capacity 13px / 400 in #6b6b6e, price 18px / 600 with the discount rate in 18px / 700 #0199f8 and the struck base price 13px / 500 in #979799; no card border, fill or shadow" }
-    listing-photo: { type: card, radius: "10px", size: "389px x 260px", use: "Photo slider at the top of each FIND STAY listing card (twenty captured)" }
-    skeleton: { type: card, bg: "#f2f2f2", radius: "8px", use: "Loading placeholders on the FIND STAY listing (a 389 x 260 photo block, a 90 x 24 title and region lines), captured while the list was still loading" }
-    footer-chip: { type: button, bg: "transparent", fg: "#595959", border: "1px solid #767676", radius: "4px", padding: "4px 8px", height: "26px", font: "12px / 400 / 16px Pretendard", states: "rest only on three siblings per page; no state frame", use: "Small outline buttons in the footer beside the customer-centre hours at surface-2::[data-omd-capture=\"13\"]" }
-    journal-tab: { type: tab, bg: "transparent", fg: "#898989", height: "33px", font: "18px / 400 / 33px Lato-Light", selected: "fg #000000 in Lato-Bold (MAGAZINE on the magazine page, capture 10)", states: "selected variant read from rest values (capture 10 against captures 8, 9 and 11); no pointer frame", use: "Journal section tabs (나의 스테이 답사기, TRAVEL, MAGAZINE, PICK) at surface-3::[data-omd-capture=\"9\"]; the hangul tab renders in the Pretendard stack" }
-    journal-card: { type: card, border: "15px solid #ffffff", size: "664px x 683px", use: "Magazine card on the journal page: issue number in DroidSerif-Italic 27px #c0c0c0, title 21px / 400 / 31.5px #333333, and a more link in Abel 14px / 400 / 30px with 1.3px tracking in #000000 over a 1px rule" }
-  components_harvested: true
+colors:
+  primary: '#000000'
+  on-primary: '#ffffff'
+  ink: '#181818'
+  heading: '#171719'
+  nav: '#1a1a1a'
+  secondary: '#767676'
+  meta: '#6b6b6e'
+  base-price: '#979799'
+  discount: '#0199f8'
+  last-minute: '#017bc6'
+  footer-chip: '#595959'
+  journal-text: '#333333'
+  journal-muted: '#898989'
+  journal-number: '#c0c0c0'
+  hairline: '#dfe0e2'
+  skeleton: '#f2f2f2'
+  canvas: '#ffffff'
+typography:
+  section:
+    fontSize: 28px
+    fontWeight: 600
+    lineHeight: 1.29
+    letterSpacing: '-0.56px'
+    use: Home section heading (h2, class title-28-sb)
+  stay-name:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: '-0.2px'
+    use: Stay name on home cards (class label-16-sb)
+  price:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.44
+    letterSpacing: '-0.54px'
+    use: Stay price; the discount rate beside it is 700
+  nav:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Uppercase top navigation (FIND STAY, PROMOTION, JOURNAL, PRE-ORDER)
+  button:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: 지도 action label
+  subtitle:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Home section subtitle (class label-16-rg)
+  toggle:
+    fontSize: 15px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: 0.21px
+    use: Selected 국내 / 해외 label; the unselected label is 600
+  meta:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.38
+    use: Region and capacity line on stay cards
+  badge:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.33
+    letterSpacing: 0.24px
+    use: Photo badge label
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    letterSpacing: 0.12px
+    use: Footer outline buttons (class caption-12-rg)
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1
+    use: Body default (line height computes to 14px)
+  journal-title:
+    fontSize: 21px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Magazine card title on the journal page
+  journal-tab:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.83
+    use: Journal section tabs; Latin labels in Lato-Light, the selected one in Lato-Bold
+rounded:
+  xs: 4px
+  sm: 5px
+  md: 8px
+  lg: 10px
+  button: 20px
+  pill: 100px
+spacing:
+  badge-y: 4
+  badge-x: 8
+  button-y: 8
+  button-x: 16
+  toggle-y: 6
+  toggle-inner: 12
+  toggle-outer: 16
+  caption-y: 4
+  caption-x: 8
+  journal-frame: 15
+components:
+  nav-menu-button:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#1a1a1a'
+    border: 2px solid transparent (bottom only)
+    height: 26px
+    typography: 16px / 600 / 24px Pretendard
+    hover: 'bottom border 2px solid #1a1a1a'
+    pressed: 'bottom border 2px solid #1a1a1a'
+    selected: 'bottom border 2px solid #1a1a1a on the current section (FIND STAY on the listing, JOURNAL on the journal)'
+    states: rest, hover, pressed and selected; all eleven unselected items on the three pages turn the bottom edge solid in both frames, and the current section keeps it at rest (surface-2 capture 1, surface-3 capture 4); focus is not declared from the capture
+    use: Uppercase top navigation (FIND STAY, PROMOTION, JOURNAL, PRE-ORDER) at home::[data-omd-capture="4"]
+  region-toggle:
+    type: toggle
+    backgroundColor: rgba(255, 255, 255, 0.24)
+    textColor: '#171719'
+    border: '1px solid #dfe0e2'
+    rounded: 100px
+    height: 44px
+    padding: 6px 12px 6px 16px
+    shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px
+    selected: 'a #171719 thumb (62 x 42, 100px radius, rgba(0, 0, 0, 0.12) 0px 4px 12px 0px) under a white 15px / 700 label'
+    states: 'selected segment read from rest values (국내 selected, 해외 at 15px / 600 #171719); no pointer frame'
+    use: 국내 / 해외 switch in the home header at home::[data-omd-capture="1"], 120 x 44; padding is per segment
+  map-button:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 20px
+    padding: 8px 16px
+    height: 40px
+    typography: 16px / 500 / 24px Pretendard
+    shadow: rgba(26, 26, 26, 0.1) 0px 2px 6px 0px
+    states: rest only; no state frame
+    use: 지도 (map view) action floating over the FIND STAY listing at surface-2::[data-omd-capture="12"], 86 x 40 — the only filled action on the captured pages
+  stay-badge:
+    type: badge
+    backgroundColor: rgba(26, 26, 26, 0.6)
+    textColor: '#ffffff'
+    rounded: 5px
+    padding: 4px 8px
+    height: 24px
+    typography: 12px / 500 / 16px Pretendard
+    use: Overlay labels on stay photographs on home (페스타, 프로모션, 단독소개); the white label is a child span with 0.24px tracking
+  last-minute-badge:
+    type: badge
+    backgroundColor: '#017bc6'
+    textColor: '#ffffff'
+    rounded: 5px
+    padding: 4px 8px
+    height: 24px
+    typography: 12px / 500 / 16px Pretendard
+    use: 마감할인 (last-minute discount) overlay on stay photographs, five on home
+  stay-card:
+    type: card
+    textColor: '#171719'
+    size: 411px x 378px
+    use: 'Stay card on home at home::[data-omd-capture="11"]: photograph with overlay badges, name 16px / 600 / 24px, region and capacity 13px / 400 in #6b6b6e, price 18px / 600 with the discount rate in 18px / 700 #0199f8 and the struck base price 13px / 500 in #979799; no card border, fill or shadow'
+  listing-photo:
+    type: card
+    rounded: 10px
+    size: 389px x 260px
+    use: Photo slider at the top of each FIND STAY listing card (twenty captured)
+  skeleton:
+    type: card
+    backgroundColor: '#f2f2f2'
+    rounded: 8px
+    use: Loading placeholders on the FIND STAY listing (a 389 x 260 photo block, a 90 x 24 title and region lines), captured while the list was still loading
+  footer-chip:
+    type: button
+    backgroundColor: transparent
+    textColor: '#595959'
+    border: '1px solid #767676'
+    rounded: 4px
+    padding: 4px 8px
+    height: 26px
+    typography: 12px / 400 / 16px Pretendard
+    states: rest only on three siblings per page; no state frame
+    use: Small outline buttons in the footer beside the customer-centre hours at surface-2::[data-omd-capture="13"]
+  journal-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#898989'
+    height: 33px
+    typography: 18px / 400 / 33px Lato-Light
+    selected: 'fg #000000 in Lato-Bold (MAGAZINE on the magazine page, capture 10)'
+    states: selected variant read from rest values (capture 10 against captures 8, 9 and 11); no pointer frame
+    use: Journal section tabs (나의 스테이 답사기, TRAVEL, MAGAZINE, PICK) at surface-3::[data-omd-capture="9"]; the hangul tab renders in the Pretendard stack
+  journal-card:
+    type: card
+    border: '15px solid #ffffff'
+    size: 664px x 683px
+    use: 'Magazine card on the journal page: issue number in DroidSerif-Italic 27px #c0c0c0, title 21px / 400 / 31.5px #333333, and a more link in Abel 14px / 400 / 30px with 1.3px tracking in #000000 over a 1px rule'
+fonts:
+  roles:
+    sans: Pretendard
 ---
 
 # Design System Inspiration of Stayfolio
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Stayfolio (스테이폴리오) is a Korean stay-curation and booking platform run by 주식회사 스테이폴리오 from Tongin-dong in Jongno, Seoul; its footer lists 장인성 as chief executive, an online-sales registration numbered 제2015-서울종로-0499호 and a general travel agency registration numbered 2018-000049호. Its business site states the idea plainly — "스테이폴리오는 머무름만으로 여행이 되는 공간을 제안합니다": a place where the stay itself is the trip — and describes ten years of curation and operating know-how, more than 1,500 stays, a million monthly visitors and partners such as Aman, Hoshino Resorts and 설해원. It presents itself as "안목있는 여행자의 선택", the choice of travellers with an eye, curating "철학이 담긴 공간" and building stays into a travel culture of their own.
 
@@ -280,7 +228,7 @@ The interface is near-black on white. Body text is `#181818`, headings `#171719`
 - Class names expose a type scale — `title-28-sb`, `label-16-sb`, `label-16-rg`, `caption-12-rg`, `caption-13-bd`
 - A separate editorial voice on the journal: Lato, Droid Serif Italic numerals and Abel links
 
-## Primary tasks
+### Primary tasks
 
 - Browse curated domestic and overseas stays
 - Switch between 국내 and 해외 while browsing
@@ -289,7 +237,33 @@ The interface is near-black on white. Body text is `#181818`, headings `#171719`
 - Pre-order a newly opening stay at an early discount
 - Save stays to bookmarks and book through the platform
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+The name reads, editorially, as "stay" plus "folio": a selected collection rather than an inventory. Stayfolio's own business pitch is about curation over a decade — "10년 간 쌓아온 큐레이션과 운영 노하우" — spaces with a philosophy behind them, and a culture of treating the stay as the destination. The company's scale now backs the stance: its business site counts more than 1,500 stays, 300-plus corporate clients and partners from Aman to Hoshino Resorts.
+
+The product shows how that curation is growing. PRE-ORDER lets travellers book stays before they open; the JOURNAL keeps an editorial voice with its own typography; the 국내 / 해외 switch and the home promotions bring Japanese and Chinese hotels into the same monochrome frame as Korean private houses; and STAYFOLIO for Business offers the collection to companies for welfare and marketing programmes.
+
+What the interface refuses, as an editorial reading of the captured pages: card chrome, colourful navigation and loud badges. What it embraces: photographs as cards, near-black type, an underline for state, and colour spent only where a price or a deadline needs it.
+
+### Principles
+
+1. **Curation over aggregation.** *UI implication:* present each stay as a photograph and a name, not a dense listing row.
+2. **The photograph is the card.** *UI implication:* no borders, fills or shadows on stay cards; badges sit on the image.
+3. **State by underline.** *UI implication:* navigation shows hover and the current section with a 2px `#1a1a1a` underline.
+4. **One filled action.** *UI implication:* `#000000` pill with a white label for the key action; everything else is text or outline.
+5. **Colour for value, not decoration.** *UI implication:* blue only for discount rates and last-minute badges.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Stayfolio user segments (design-conscious Korean travellers, overseas hotel seekers, corporate programme buyers), not individual people.*
+
+**정다은, 32, 서울.** A designer planning a quiet weekend away. Chooses from the curated list because the photographs and names tell her more than an amenity grid.
+
+**김도현, 38, 경기.** Reads the JOURNAL and watches PRE-ORDER for new stays opening at a discount before booking a family trip.
+
+**박서윤, 41, 서울.** An HR manager comparing STAYFOLIO for Business for an employee welfare programme.
+
+## Colors
 
 Every token below was read on 2026-09-30 from the home page, the FIND STAY listing and the journal's magazine page.
 
@@ -325,7 +299,7 @@ Every token below was read on 2026-09-30 from the home page, the FIND STAY listi
 - `#007aff` on the home banner's arrows is the carousel library's default theme colour, not a Stayfolio colour.
 - `#444444` is the inherited colour of the listing's card containers; no visible label in it was identified, so it is not a token.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Live surface use**: `Pretendard`, from the jsdelivr `pretendard@v1.3.9` dynamic-subset stylesheet the site links. Every element's stack reads `"Pretendard JP Variable", "Pretendard JP", Pretendard, -apple-system…`; the first two names have no `@font-face` on the pages and never load, so text falls through to Pretendard, whose subsets were loaded on all three pages in a same-day headless check (49 on home, 40 on the listing, 24 on the journal).
@@ -358,7 +332,78 @@ Every token below was read on 2026-09-30 from the home page, the FIND STAY listi
 - **A named scale**: class names such as `title-28-sb`, `label-16-sb` and `caption-12-rg` pair a size with a weight.
 - **The journal speaks differently**: Latin tabs in Lato, italic serif numerals, spaced Abel links.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Badges: 4px 8px; the 지도 pill 8px 16px; footer buttons 4px 8px
+- 국내 / 해외 segments: 6px vertical, 12px inside and 16px outside
+- Journal cards: a 15px white frame around each card
+
+### Grid & Container
+- Home stay rows run three 411px cards per row under a section heading and subtitle.
+- The FIND STAY listing places 389px cards three to a row under a three-part search bar (place, dates, guests), with the 지도 pill floating over the list.
+- The journal lays magazine cards two to a row at 664px.
+
+### Whitespace Philosophy
+- **The photograph is the card**: no card borders, fills or shadows; space and imagery do the grouping.
+- **Chrome recedes**: navigation is text with an underline; controls are small pills.
+
+### Border Radius Scale
+- 4px: footer buttons
+- 5px: photo badges
+- 8px: loading skeletons
+- 10px: listing photos
+- 20px: the 지도 pill
+- 100px: the 국내 / 해외 switch and its thumb
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440px desktop layout was captured; no breakpoint values are claimed.
+
+#### Touch Targets
+- The 국내 / 해외 switch is 44px tall; the 지도 pill 40px; footer buttons 26px.
+
+#### Collapsing Strategy
+Not captured. The home page's markup includes a mobile tab bar (홈, 탐색, 프로모션, 북마크, 메시지) that the desktop capture did not measure.
+
+#### Image Behavior
+- Stay photographs fill their cards; listing photos are clipped at a 10px radius.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | No shadow | Page, cards, navigation, badges |
+| Translucent | `rgba(26, 26, 26, 0.6)` | Badges over photographs |
+| Float | `rgba(0, 0, 0, 0.08) 0px 4px 8px 0px` | 국내 / 해외 switch |
+| Thumb | `rgba(0, 0, 0, 0.12) 0px 4px 12px 0px` | Selected segment thumb |
+| Action | `rgba(26, 26, 26, 0.1) 0px 2px 6px 0px` | 지도 pill |
+
+**Shadow Philosophy**: content stays flat; only controls that float over content — the region switch and the map pill — carry soft shadows.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.toggle`: `rgba(0, 0, 0, 0.08) 0px 4px 8px 0px`
+- `shadow.thumb`: `rgba(0, 0, 0, 0.12) 0px 4px 12px 0px`
+- `shadow.button`: `rgba(26, 26, 26, 0.1) 0px 2px 6px 0px`
+
+## Motion & Easing
+
+The collector reads computed style, not animation. A same-day headless read of declared `transition` values found: the 지도 pill transitions colour, background, shadow and transform over 0.32s; the 국내 / 해외 thumb transitions its transform over 0.16s; the navigation declares `transition: all` with no duration, which matches the settled hover frames. No easing curve is claimed. Honour `prefers-reduced-motion` in any build.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/stayfolio.json (capturedAt 2026-09-30), deterministic collector, 1440x900, logged out: www.stayfolio.com, /findstay (the site redirects it to its own default dates, check_in=2026-12-09&check_out=2026-12-10&adult_cnt=2; no booking step was taken), /journal/magazines.
+- §1, §10, §11: home footer and promotions, business.stayfolio.com, and the terms page on stayfolio.notion.site, read 2026-09-30.
+- The June body's "PRE-ORDER (physical publications)" was wrong: PRE-ORDER lists stays opening for early booking. Its "single saturated accent" and "sharp 0px photo cards" readings were also not supported by this capture.
+- brunch.co.kr/@stayfolio could not be opened logged out and is not cited.
+- Personas are fictional archetypes. Interpretive readings are editorial.
+-->
+
+## Components
 
 ### Navigation
 
@@ -465,43 +510,21 @@ Every token below was read on 2026-09-30 from the home page, the FIND STAY listi
 **Tier 2 sources:** getdesign.md/stayfolio (HTTP 200; the served page contains no occurrence of the name) and styles.refero.design/?q=stayfolio (HTTP 200; the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Badges: 4px 8px; the 지도 pill 8px 16px; footer buttons 4px 8px
-- 국내 / 해외 segments: 6px vertical, 12px inside and 16px outside
-- Journal cards: a 15px white frame around each card
+Only these states were observed on the three captured pages.
 
-### Grid & Container
-- Home stay rows run three 411px cards per row under a section heading and subtitle.
-- The FIND STAY listing places 389px cards three to a row under a three-part search bar (place, dates, guests), with the 지도 pill floating over the list.
-- The journal lays magazine cards two to a row at 664px.
+| State | Observation |
+|---|---|
+| **Hover and pressed (top navigation)** | The transparent 2px bottom border turns solid `#1a1a1a`; eleven items on three pages agree. |
+| **Selected (top navigation)** | The current section keeps the solid 2px `#1a1a1a` underline at rest (FIND STAY on the listing, JOURNAL on the journal). |
+| **Selected (국내 / 해외)** | A `#171719` thumb sits under the selected white 15px / 700 label. |
+| **Selected (journal tab)** | The current tab switches to `#000000` Lato-Bold. |
+| **Loading (listing)** | `#f2f2f2` placeholders at 8px radius for photo, title and region lines. |
 
-### Whitespace Philosophy
-- **The photograph is the card**: no card borders, fills or shadows; space and imagery do the grouping.
-- **Chrome recedes**: navigation is text with an underline; controls are small pills.
+Focus rings, disabled, empty, error and success treatments were not captured and are not described.
 
-### Border Radius Scale
-- 4px: footer buttons
-- 5px: photo badges
-- 8px: loading skeletons
-- 10px: listing photos
-- 20px: the 지도 pill
-- 100px: the 국내 / 해외 switch and its thumb
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | No shadow | Page, cards, navigation, badges |
-| Translucent | `rgba(26, 26, 26, 0.6)` | Badges over photographs |
-| Float | `rgba(0, 0, 0, 0.08) 0px 4px 8px 0px` | 국내 / 해외 switch |
-| Thumb | `rgba(0, 0, 0, 0.12) 0px 4px 12px 0px` | Selected segment thumb |
-| Action | `rgba(26, 26, 26, 0.1) 0px 2px 6px 0px` | 지도 pill |
-
-**Shadow Philosophy**: content stays flat; only controls that float over content — the region switch and the map pill — carry soft shadows.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Keep text on the near-black ladder: `#181818` body, `#171719` headings, `#1a1a1a` navigation
@@ -517,21 +540,28 @@ Every token below was read on 2026-09-30 from the home page, the FIND STAY listi
 - Set body text in pure black; `#000000` is for the action and the selected journal tab
 - Mix the journal's Lato, serif and Abel faces into the booking interface
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-Only the 1440px desktop layout was captured; no breakpoint values are claimed.
+Stayfolio writes like a travel editor: short, sensory lines about places, with the offer stated after the mood. Section labels stay in plain uppercase English; promotional lines are specific about the benefit without shouting.
 
-### Touch Targets
-- The 국내 / 해외 switch is 44px tall; the 지도 pill 40px; footer buttons 26px.
+| Context | Tone |
+|---|---|
+| Positioning | Calm, confident. "머무름만으로 여행이 되는 공간" |
+| Section heads | Place-led and descriptive. "하이엔드를 말하는 스테이 4선" |
+| Promotions | Mood first, then the benefit. "잠시 숨고르기, 스테이 테라피 — 최대 20% 할인 & 3만 원 쿠폰" |
+| Navigation | Minimal uppercase English: FIND STAY, PROMOTION, JOURNAL, PRE-ORDER |
+| Search | Conversational. "어디로 떠날까요?" |
 
-### Collapsing Strategy
-Not captured. The home page's markup includes a mobile tab bar (홈, 탐색, 프로모션, 북마크, 메시지) that the desktop capture did not measure.
+**Voice samples (read on 2026-09-30):**
+- "스테이폴리오는 머무름만으로 여행이 되는 공간을 제안합니다" — business site.
+- "안목있는 여행자의 선택" — business site.
+- "잠시 숨고르기, 스테이 테라피" — home promotion.
+- "해외 스테이 지금 보러 가기" — header promo pill.
+- "어디로 떠날까요?" — home search.
 
-### Image Behavior
-- Stay photographs fill their cards; listing photos are clipped at a 10px radius.
+**Forbidden register**: discount-shouting, countdown urgency, exclamation-heavy hype, generic OTA phrasing.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action: `#000000` with `#ffffff` label
@@ -556,76 +586,9 @@ Not captured. The home page's markup includes a mobile tab bar (홈, 탐색, 프
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Stayfolio writes like a travel editor: short, sensory lines about places, with the offer stated after the mood. Section labels stay in plain uppercase English; promotional lines are specific about the benefit without shouting.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Positioning | Calm, confident. "머무름만으로 여행이 되는 공간" |
-| Section heads | Place-led and descriptive. "하이엔드를 말하는 스테이 4선" |
-| Promotions | Mood first, then the benefit. "잠시 숨고르기, 스테이 테라피 — 최대 20% 할인 & 3만 원 쿠폰" |
-| Navigation | Minimal uppercase English: FIND STAY, PROMOTION, JOURNAL, PRE-ORDER |
-| Search | Conversational. "어디로 떠날까요?" |
-
-**Voice samples (read on 2026-09-30):**
-- "스테이폴리오는 머무름만으로 여행이 되는 공간을 제안합니다" — business site.
-- "안목있는 여행자의 선택" — business site.
-- "잠시 숨고르기, 스테이 테라피" — home promotion.
-- "해외 스테이 지금 보러 가기" — header promo pill.
-- "어디로 떠날까요?" — home search.
-
-**Forbidden register**: discount-shouting, countdown urgency, exclamation-heavy hype, generic OTA phrasing.
-
-## 11. Brand Narrative
-
-The name reads, editorially, as "stay" plus "folio": a selected collection rather than an inventory. Stayfolio's own business pitch is about curation over a decade — "10년 간 쌓아온 큐레이션과 운영 노하우" — spaces with a philosophy behind them, and a culture of treating the stay as the destination. The company's scale now backs the stance: its business site counts more than 1,500 stays, 300-plus corporate clients and partners from Aman to Hoshino Resorts.
-
-The product shows how that curation is growing. PRE-ORDER lets travellers book stays before they open; the JOURNAL keeps an editorial voice with its own typography; the 국내 / 해외 switch and the home promotions bring Japanese and Chinese hotels into the same monochrome frame as Korean private houses; and STAYFOLIO for Business offers the collection to companies for welfare and marketing programmes.
-
-What the interface refuses, as an editorial reading of the captured pages: card chrome, colourful navigation and loud badges. What it embraces: photographs as cards, near-black type, an underline for state, and colour spent only where a price or a deadline needs it.
-
-## 12. Principles
-
-1. **Curation over aggregation.** *UI implication:* present each stay as a photograph and a name, not a dense listing row.
-2. **The photograph is the card.** *UI implication:* no borders, fills or shadows on stay cards; badges sit on the image.
-3. **State by underline.** *UI implication:* navigation shows hover and the current section with a 2px `#1a1a1a` underline.
-4. **One filled action.** *UI implication:* `#000000` pill with a white label for the key action; everything else is text or outline.
-5. **Colour for value, not decoration.** *UI implication:* blue only for discount rates and last-minute badges.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Stayfolio user segments (design-conscious Korean travellers, overseas hotel seekers, corporate programme buyers), not individual people.*
-
-**정다은, 32, 서울.** A designer planning a quiet weekend away. Chooses from the curated list because the photographs and names tell her more than an amenity grid.
-
-**김도현, 38, 경기.** Reads the JOURNAL and watches PRE-ORDER for new stays opening at a discount before booking a family trip.
-
-**박서윤, 41, 서울.** An HR manager comparing STAYFOLIO for Business for an employee welfare programme.
-
-## 14. States
-
-Only these states were observed on the three captured pages.
-
-| State | Observation |
-|---|---|
-| **Hover and pressed (top navigation)** | The transparent 2px bottom border turns solid `#1a1a1a`; eleven items on three pages agree. |
-| **Selected (top navigation)** | The current section keeps the solid 2px `#1a1a1a` underline at rest (FIND STAY on the listing, JOURNAL on the journal). |
-| **Selected (국내 / 해외)** | A `#171719` thumb sits under the selected white 15px / 700 label. |
-| **Selected (journal tab)** | The current tab switches to `#000000` Lato-Bold. |
-| **Loading (listing)** | `#f2f2f2` placeholders at 8px radius for photo, title and region lines. |
-
-Focus rings, disabled, empty, error and success treatments were not captured and are not described.
-
-## 15. Motion & Easing
-
-The collector reads computed style, not animation. A same-day headless read of declared `transition` values found: the 지도 pill transitions colour, background, shadow and transform over 0.32s; the 국내 / 해외 thumb transitions its transform over 0.16s; the navigation declares `transition: all` with no duration, which matches the settled hover frames. No easing curve is claimed. Honour `prefers-reduced-motion` in any build.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/stayfolio.json (capturedAt 2026-09-30), deterministic collector, 1440x900, logged out: www.stayfolio.com, /findstay (the site redirects it to its own default dates, check_in=2026-12-09&check_out=2026-12-10&adult_cnt=2; no booking step was taken), /journal/magazines.
-- §1, §10, §11: home footer and promotions, business.stayfolio.com, and the terms page on stayfolio.notion.site, read 2026-09-30.
-- The June body's "PRE-ORDER (physical publications)" was wrong: PRE-ORDER lists stays opening for early booking. Its "single saturated accent" and "sharp 0px photo cards" readings were also not supported by this capture.
-- brunch.co.kr/@stayfolio could not be opened logged out and is not cited.
-- Personas are fictional archetypes. Interpretive readings are editorial.
--->
+- **Contrast, `nav-menu-button`.** Text `#1a1a1a` on `#00000000` measures 1.21:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-chip`.** Text `#595959` on `#00000000` measures 3.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

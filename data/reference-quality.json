@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-01",
+  "generated_at": "2026-10-13",
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 521,
   "counts": {
@@ -5539,8 +5539,8 @@
       "verified_at": "2026-07-11",
       "next_reverify_at": "2027-01-07",
       "evidence_coverage": 1,
-      "surface_count": 9,
-      "source_count": 10,
+      "surface_count": 11,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },

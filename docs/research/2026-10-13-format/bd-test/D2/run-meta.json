@@ -1,0 +1,7 @@
+{
+ "num_turns": 20,
+ "duration_ms": 187837,
+ "total_cost_usd": 0.7279918,
+ "is_error": false,
+ "model": "sonnet (claude -p --model sonnet)"
+}

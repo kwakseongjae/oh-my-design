@@ -1,130 +1,83 @@
 ---
-id: zhihu
 name: Zhihu
-country: CN
-category: consumer-tech
-homepage: "https://www.zhihu.com"
-primary_color: "#1772F6"
-logo:
-  type: simpleicons
-  slug: zhihu
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "Zhihu Map tokens"
-  url: "https://www.zhihu.com/"
-  type: system
-  description: "Zhihu's web token set — Map* semantic roles published in explicit _light and _dark pairs, abbreviated primitive ramps (BL/YL/RD/BK/EB), and separate VIP and SVIP membership brand colours."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    brand: "#1772f6"
-    brand-alt: "#18afff"
-    foreground: "#191b1f"
-    text-secondary: "#373a40"
-    text-muted: "#8491a5"
-    text-placeholder: "#81858f"
-    ui-frame: "#535861"
-    canvas: "#ffffff"
-    page: "#f4f6f9"
-    surface: "#fbfcfc"
-    surface-alt: "#f8f8fa"
-    commerce: "#ff7d55"
-    vip: "#ce994f"
-    vip-frame: "#f2ba6b"
-    svip: "#142457"
-    success: "#11a668"
-    accent-purple: "#5a4df8"
-    blue-light: "#80c1ff"
-    neutral-mid: "#646464"
-    neutral-line: "#d3d3d3"
-    dark-text: "#c2c6cf"
-    on-brand: "#ffffff"
-  typography:
-    base: { size: 15, use: "Dominant reading size on the home feed" }
-    body: { size: 16, use: "Column and article body" }
-    control: { size: 14, use: "Control and secondary label text" }
-    caption: { size: 12, use: "Metadata and counts" }
-    lead: { size: 18, use: "Column lead" }
-    micro: { size: 11, use: "Smallest observed step" }
-  rounded: { sm: 3, md: 6, pill: 20, circle: 9999 }
-  components:
-    button-primary: { type: "button", bg: "#1772f6", fg: "#ffffff", radius: 3, font: "14px / 400", hover: "oklch(0.535218 0.21381 259.318)", pressed: "oklch(0.535218 0.21381 259.318)", focus: "oklch(0.581758 0.21381 259.318 / 0.3)", use: "Sign-in / register — 36px on the home feed, 34px in columns; focus draws a two-layer ring." }
-    button-secondary: { type: "button", bg: "#ffffff", fg: "#8491a5", radius: 20, font: "14px / 400", hover: "color(srgb 0.870588 0.876471 0.889412)", pressed: "color(srgb 0.870588 0.876471 0.889412)", focus: "oklch(0.581758 0.21381 259.318 / 0.3)", use: "Rounded utility control, 60px — hover shifts both fill and label; the same two-layer focus ring as the primary." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.zhihu.com/", inspected: "2026-09-22" }
-    - { id: column, kind: product-surface, url: "https://zhuanlan.zhihu.com/", inspected: "2026-09-22" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.zhihu.com/", captured: "2026-09-22" }
-    - { id: column-live, kind: product-surface, url: "https://zhuanlan.zhihu.com/", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-alt: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-placeholder: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.ui-frame: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.page: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-alt: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.commerce: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.vip: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.vip-frame: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.svip: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.success: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-purple: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.blue-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.neutral-mid: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.neutral-line: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.dark-text: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.on-brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.control.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.control.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.circle: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+colors:
+  brand: '#1772f6'
+  brand-alt: '#18afff'
+  foreground: '#191b1f'
+  text-secondary: '#373a40'
+  text-muted: '#8491a5'
+  text-placeholder: '#81858f'
+  ui-frame: '#535861'
+  canvas: '#ffffff'
+  page: '#f4f6f9'
+  surface: '#fbfcfc'
+  surface-alt: '#f8f8fa'
+  commerce: '#ff7d55'
+  vip: '#ce994f'
+  vip-frame: '#f2ba6b'
+  svip: '#142457'
+  success: '#11a668'
+  accent-purple: '#5a4df8'
+  blue-light: '#80c1ff'
+  neutral-mid: '#646464'
+  neutral-line: '#d3d3d3'
+  dark-text: '#c2c6cf'
+  on-brand: '#ffffff'
+typography:
+  base:
+    fontSize: 15px
+    use: Dominant reading size on the home feed
+  body:
+    fontSize: 16px
+    use: Column and article body
+  control:
+    fontSize: 14px
+    use: Control and secondary label text
+  caption:
+    fontSize: 12px
+    use: Metadata and counts
+  lead:
+    fontSize: 18px
+    use: Column lead
+  micro:
+    fontSize: 11px
+    use: Smallest observed step
+rounded:
+  sm: 3px
+  md: 6px
+  pill: 20px
+  circle: 9999px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#1772f6'
+    textColor: '#ffffff'
+    rounded: 3px
+    typography: 14px / 400
+    hover: oklch(0.535218 0.21381 259.318)
+    pressed: oklch(0.535218 0.21381 259.318)
+    focus: oklch(0.581758 0.21381 259.318 / 0.3)
+    use: Sign-in / register — 36px on the home feed, 34px in columns; focus draws a two-layer ring.
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#8491a5'
+    rounded: 20px
+    typography: 14px / 400
+    hover: color(srgb 0.870588 0.876471 0.889412)
+    pressed: color(srgb 0.870588 0.876471 0.889412)
+    focus: oklch(0.581758 0.21381 259.318 / 0.3)
+    use: Rounded utility control, 60px — hover shifts both fill and label; the same two-layer focus ring as the primary.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
+
 # Design System Inspiration of Zhihu (知乎)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Zhihu is China's question-and-answer platform — founded 2011, opened to the public in 2013,
 and for a decade the place where long, sourced, argued answers get written. Its interface is
@@ -141,12 +94,30 @@ carries **separate brand colours for VIP and SVIP membership tiers** — a gold 
 deep navy `#142457`. Paid membership is a first-class visual concept here, with its own
 identity, not a badge bolted onto the standard palette.
 
-### Primary tasks
+#### Primary tasks
 - Read a long answer without interface competing for attention.
 - Distinguish answer, column and commercial surfaces that share one chrome.
 - Recognise membership tiers, which carry their own colour identity.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Founded in 2011 as an invitation-only Q&A community and opened publicly in 2013, Zhihu built
+its reputation on long, sourced answers and listed in New York in 2021. Its monetisation
+runs through membership tiers and commercial placement, which is exactly what the token set
+shows: VIP and SVIP carry their own brand colours, and commerce has a dedicated coral. A
+design system that names what a company charges for is describing its business model.
+
+### Principles
+
+- **Reading first.** Sizes, washes and contrast are tuned for paragraphs, not cards.
+- **Theme lives in the token name.** `_light` and `_dark` pairs rather than a runtime switch.
+- **Name the tiers.** Membership is a visual concept, not a badge.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 via `getComputedStyle` on `zhihu.com` (389 custom properties) and
 `zhuanlan.zhihu.com`. Zhihu's token name follows each role.
@@ -198,7 +169,7 @@ Four colours that exist only to mark *what you have paid for and what is being s
 
 - **Success** (`#11a668`) · **Accent Purple** (`#5a4df8`) · **Blue Light** (`#80c1ff`) — `BL04`.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 
@@ -220,7 +191,29 @@ platform system face is not promoted to a brand typeface.
 The **home feed sets 15px and the column sets 16px** — Zhihu reads its long-form surface one
 step larger than its feed. That is a deliberate split, not drift.
 
-## 4. Component Stylings
+## Layout
+
+- **Cool wash, white article.** `#f4f6f9` behind `#ffffff` reading surfaces.
+- **15px feed, 16px column.** The reading surface is a step larger than the scanning surface.
+- **Near-invisible chrome.** One blue, one near-black, everything else grey.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×900 only.
+
+## Elevation & Depth
+
+**Not measured.** No shadow or elevation token appears among the 389 properties.
+
+## Motion & Easing
+
+**Not measured.** No transition or duration token appears among the 389 properties.
+
+---
+
+**Tier 1 sources:** https://www.zhihu.com/ (live production home — 389 custom properties read via `getComputedStyle`, including the `Map*` semantic roles with `_light`/`_dark` pairs and the VIP/SVIP tier colours, plus both measured controls with hover and pressed, 2026-09-22); https://zhuanlan.zhihu.com/ (Zhihu Columns — the long-form surface, confirming the 16px body step and the same control contract at 34px, 2026-09-22)
+
+## Components
 
 Measured live on both surfaces, pointer parked, navigation suppressed.
 
@@ -253,17 +246,20 @@ writing a hex here would be asserting a precision the measurement does not have.
 `9999px` and one asymmetric `0 9999px 9999px 0`. The 3px primary is unusually tight for 2026 —
 most of this catalog sits at 4–8px or full pills.
 
-## 5. Layout Principles
+### States
 
-- **Cool wash, white article.** `#f4f6f9` behind `#ffffff` reading surfaces.
-- **15px feed, 16px column.** The reading surface is a step larger than the scanning surface.
-- **Near-invisible chrome.** One blue, one near-black, everything else grey.
+Two controls, both carrying hover and pressed, both identical between the two states, both
+expressed in modern colour spaces.
 
-## 6. Depth & Elevation
+**Both controls carry the same focus ring**, measured 2026-09-22:
+`rgb(255, 255, 255) 0 0 0 2px, oklch(0.581758 0.21381 259.318 / 0.3) 0 0 0 4px`. A white 2px
+spacer lifts the halo off the control, then 4px of brand blue at 30% — and the halo's hue and
+chroma (`0.21381 259.318`) are exactly the hover value's, one lightness step up. **One ring
+token across component types**, from a 36px rectangular sign-in button to a 60px round corner
+widget. It is a `box-shadow`, so it is authored: the browser's own ring is an `outline`.
+No disabled state was observed on a rendered control.
 
-**Not measured.** No shadow or elevation token appears among the 389 properties.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Set long-form at 16px and feeds at 15px — Zhihu distinguishes them.
@@ -277,11 +273,12 @@ most of this catalog sits at 4–8px or full pills.
 - Don't promote the system font stack to a brand typeface.
 - Don't spend the VIP gold as a general accent.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×900 only.
+Considered and explanatory. Zhihu's product is argued prose, and its chrome stays out of the
+way of it — interface copy is minimal and unpersuasive.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#1772f6` brand · `#191b1f` foreground · `#8491a5` muted · `#f4f6f9` page ·
@@ -291,46 +288,9 @@ most of this catalog sits at 4–8px or full pills.
 - "A long-form answer surface: 16px `#191b1f` on white over a `#f4f6f9` page, 3px-radius
   `#1772f6` action, `#8491a5` metadata."
 
-## 10. Voice & Tone
+## Governance
 
-Considered and explanatory. Zhihu's product is argued prose, and its chrome stays out of the
-way of it — interface copy is minimal and unpersuasive.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Founded in 2011 as an invitation-only Q&A community and opened publicly in 2013, Zhihu built
-its reputation on long, sourced answers and listed in New York in 2021. Its monetisation
-runs through membership tiers and commercial placement, which is exactly what the token set
-shows: VIP and SVIP carry their own brand colours, and commerce has a dedicated coral. A
-design system that names what a company charges for is describing its business model.
-
-## 12. Principles
-
-- **Reading first.** Sizes, washes and contrast are tuned for paragraphs, not cards.
-- **Theme lives in the token name.** `_light` and `_dark` pairs rather than a runtime switch.
-- **Name the tiers.** Membership is a visual concept, not a badge.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Two controls, both carrying hover and pressed, both identical between the two states, both
-expressed in modern colour spaces.
-
-**Both controls carry the same focus ring**, measured 2026-09-22:
-`rgb(255, 255, 255) 0 0 0 2px, oklch(0.581758 0.21381 259.318 / 0.3) 0 0 0 4px`. A white 2px
-spacer lifts the halo off the control, then 4px of brand blue at 30% — and the halo's hue and
-chroma (`0.21381 259.318`) are exactly the hover value's, one lightness step up. **One ring
-token across component types**, from a 36px rectangular sign-in button to a 60px round corner
-widget. It is a `box-shadow`, so it is authored: the browser's own ring is an `outline`.
-No disabled state was observed on a rendered control.
-
-## 15. Motion & Easing
-
-**Not measured.** No transition or duration token appears among the 389 properties.
-
----
-
-**Tier 1 sources:** https://www.zhihu.com/ (live production home — 389 custom properties read via `getComputedStyle`, including the `Map*` semantic roles with `_light`/`_dark` pairs and the VIP/SVIP tier colours, plus both measured controls with hover and pressed, 2026-09-22); https://zhuanlan.zhihu.com/ (Zhihu Columns — the long-form surface, confirming the 16px body step and the same control contract at 34px, 2026-09-22)
+- **Contrast, `button-primary`.** Text `#ffffff` on `#1772f6` measures 4.40:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-secondary`.** Text `#8491a5` on `#ffffff` measures 3.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

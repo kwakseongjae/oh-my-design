@@ -1,0 +1,646 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "ibm",
+    "name": "IBM",
+    "country": "US",
+    "category": "consumer-tech",
+    "homepage": "https://www.ibm.com",
+    "primary_color": "#0f62fe",
+    "logo": {
+      "type": "github",
+      "slug": "IBM"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Carbon",
+      "url": "https://carbondesignsystem.com",
+      "type": "system",
+      "description": "IBM's official open-source design system; Carbon documentation is distinct from the captured IBM.com product surfaces.",
+      "og_image": "https://carbondesignsystem.com/ogimage.png"
+    }
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "marketing",
+        "url": "https://www.ibm.com/kr-ko",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "cloud-support",
+        "kind": "public-product",
+        "url": "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "confluent",
+        "kind": "public-product",
+        "url": "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.ibm.com/kr-ko",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ibm-component-index",
+        "kind": "official-doc",
+        "url": "https://carbondesignsystem.com/components/overview/components/",
+        "captured": "2026-09-19"
+      },
+      {
+        "id": "cloud-support-live",
+        "kind": "product-surface",
+        "url": "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "confluent-live",
+        "kind": "product-surface",
+        "url": "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "carbon-docs",
+        "kind": "official-doc",
+        "url": "https://carbondesignsystem.com/components/button/usage/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "plex-typeface",
+        "kind": "license",
+        "url": "https://www.ibm.com/design/language/typography/typeface/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ibm-history",
+        "kind": "official-doc",
+        "url": "https://www.ibm.com/history/ctr-and-ibm",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.layer": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.border": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.link": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.action.fontSize": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.action.fontWeight": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.action.lineHeight": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.action.letterSpacing": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.action.use": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.label.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.label.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.label.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.label.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.label.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.section": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.sharp": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.flat": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.pressed": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.focus": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.type": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.backgroundColor": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.textColor": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.rounded": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.padding": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.height": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.typography": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.states": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.use": {
+        "surface_id": "cloud-support",
+        "source_id": "cloud-support-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.hover": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.pressed": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.type": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.backgroundColor": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.textColor": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.border": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.rounded": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.padding": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.height": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.typography": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.states": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.product-tabs.use": {
+        "surface_id": "confluent",
+        "source_id": "confluent-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 21,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 4,
+      "extension-component-property": 11,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.action.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tabs.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tabs.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tabs.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tabs.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tabs.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tabs.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.layer",
+        "message": "'layer' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "ab5040e3a8ff508d97d171952b4e1caf69ec4fe2dd8186f0334af720dc442ae1",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.flat",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.body.fontSize",
+      "typography.action.fontSize",
+      "typography.action.letterSpacing",
+      "typography.label.fontSize",
+      "typography.label.letterSpacing",
+      "rounded.sharp",
+      "rounded.control",
+      "components.primary-action.rounded",
+      "components.product-tabs.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "body",
+        "action",
+        "label"
+      ]
+    }
+  }
+}

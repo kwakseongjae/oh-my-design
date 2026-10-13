@@ -1,0 +1,253 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Toss product (TDS Mobile) and toss.im marketing surfaces, kept separate. Values are limited to current computed styles and current official TDS documentation; unresolved values are omitted.",
+  "color": {
+    "$type": "color",
+    "primary": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.192,
+          0.51,
+          0.965
+        ],
+        "hex": "#3182f6"
+      }
+    },
+    "primary-hover": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.133,
+          0.447,
+          0.922
+        ],
+        "hex": "#2272eb"
+      }
+    },
+    "on-primary": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      }
+    },
+    "canvas": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      }
+    },
+    "foreground": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.098,
+          0.122,
+          0.157
+        ],
+        "hex": "#191f28"
+      }
+    },
+    "body": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.306,
+          0.349,
+          0.408
+        ],
+        "hex": "#4e5968"
+      }
+    },
+    "muted": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.545,
+          0.584,
+          0.631
+        ],
+        "hex": "#8b95a1"
+      }
+    },
+    "surface": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.949,
+          0.957,
+          0.965
+        ],
+        "hex": "#f2f4f6"
+      }
+    },
+    "border": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.898,
+          0.91,
+          0.922
+        ],
+        "hex": "#e5e8eb"
+      }
+    },
+    "danger": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.894,
+          0.161,
+          0.224
+        ],
+        "hex": "#e42939"
+      }
+    },
+    "weak-background": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.91,
+          0.953,
+          1
+        ],
+        "hex": "#e8f3ff"
+      }
+    },
+    "weak-foreground": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.106,
+          0.392,
+          0.855
+        ],
+        "hex": "#1b64da"
+      }
+    }
+  },
+  "rounded": {
+    "$type": "dimension",
+    "sm": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      }
+    },
+    "md": {
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      }
+    },
+    "default": {
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      }
+    },
+    "button-small": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "button-medium": {
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      }
+    },
+    "button-large": {
+      "$value": {
+        "value": 14,
+        "unit": "px"
+      }
+    },
+    "button-xlarge": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    }
+  },
+  "typography": {
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "value": 36,
+          "unit": "px"
+        },
+        "fontWeight": 700,
+        "lineHeight": 54
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "value": 30,
+          "unit": "px"
+        },
+        "fontWeight": 600,
+        "lineHeight": 45
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "value": 24,
+          "unit": "px"
+        },
+        "fontWeight": 600,
+        "lineHeight": 36
+      }
+    },
+    "h4": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "value": 22,
+          "unit": "px"
+        },
+        "fontWeight": 600,
+        "lineHeight": 33
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Toss Product Sans, sans-serif",
+        "fontSize": {
+          "value": 16,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 24
+      }
+    },
+    "body-small": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "value": 14,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 21
+      }
+    }
+  }
+}

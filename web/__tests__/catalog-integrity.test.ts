@@ -10,6 +10,11 @@ import { join, resolve } from "node:path";
 import { REGISTRY, REGISTRY_BY_ID } from "../src/data/registry.generated";
 import { KNOWN_FIELD_KEYS } from "../src/lib/extract-tokens";
 import { REFERENCE_CATEGORIES, isReferenceCategory } from "../src/lib/reference-categories";
+import { isV3Markdown, parseV3 } from "../scripts/lib/design-md-v3.mjs";
+import { checkV3, v3Section } from "../scripts/lib/design-md-v3-check.mjs";
+import { readReferenceSource } from "../scripts/lib/reference-source.mjs";
+import { extractTier1Urls } from "../scripts/lib/reference-quality.mjs";
+import { lint as googleLint } from "@google/design.md/linter";
 
 const WEB_ROOT = resolve(__dirname, "..");
 const ROOT = resolve(WEB_ROOT, "..");
@@ -230,51 +235,81 @@ describe("catalog-integrity / per-reference", () => {
       return;
     }
 
-    // Frontmatter-leak guard. The YAML frontmatter (between the opening `---`
-    // and its closing `---`) must contain NO markdown prose — a `## heading`
-    // or `- bullet` leaked above the closing `---` (a) never renders on the
-    // page and (b) breaks strict-YAML parsing the moment a `tokens:` block is
-    // added (the lenient field-parser silently hides it until then). This bit
-    // catchtable/dabang/lunit/toss-securities/wadiz; the guard stops regressions.
-    expect(md.startsWith("---\n"), `${id}: must open with a --- frontmatter`).toBe(true);
-    const fmClose = md.indexOf("\n---\n", 4);
-    expect(fmClose, `${id}: frontmatter has no closing ---`).toBeGreaterThan(0);
-    // Strip ONLY the tokens: block (its `tokens:` line plus its indented
-    // continuation), not everything after it — a leak can sit AFTER the tokens
-    // block, just above the closing ---. Tokens values are all indented, so a
-    // col-0 markdown heading/bullet that survives this strip is a real leak.
-    const fmRegion = md.slice(4, fmClose).replace(/^tokens:\n(?:(?:[ \t].*)?\n)*/m, "");
-    expect(
-      /^#{1,6}\s/m.test(fmRegion) || /^- /m.test(fmRegion),
-      `${id}: markdown prose leaked into the YAML frontmatter (a heading or bullet above the closing ---). Move that section into the body, after the closing ---.`
-    ).toBe(false);
+    // DESIGN.md v3 (spec/design-md-v3.md): Google frontmatter + Google section names, catalog
+    // identity and evidence in reference.json. The legacy guards below are ported, not dropped:
+    // §1 prose-first reads the Overview's Visual Theme H3, §4 lints read `## Components`, and
+    // colour grounding reads everything outside the token block — the body plus the catalog
+    // metadata, which now lives in the sidecar (projected back by readReferenceSource).
+    const isV3 = isV3Markdown(md);
+    const sidecarPath = join(REFS_DIR, id, "reference.json");
+    let componentsSection: string;
+    let groundingText: string;
+    if (isV3) {
+      expect(existsSync(sidecarPath), `${id}: a v3 DESIGN.md needs reference.json beside it`).toBe(true);
+      const sidecar = JSON.parse(readFileSync(sidecarPath, "utf-8"));
+      const problems = checkV3({ text: md, sidecar, lint: googleLint(md) });
+      expect(problems, `${id}: DESIGN.md v3 conformance (spec §10)`).toEqual([]);
+      const body = parseV3(md)!.body;
+      if (/^### Visual Theme & Atmosphere/m.test(body)) {
+        const theme = (body.split(/^### Visual Theme & Atmosphere[^\n]*\n/m)[1] ?? "").split(/^#{2,3} /m)[0];
+        expect(theme.startsWith("\n"), `${id}: Visual Theme heading must be followed by a blank line`).toBe(true);
+        const first = (theme as string).split("\n").map((l: string) => l.trim()).find((l: string) => l.length > 0) || "";
+        expect(
+          /^#{1,6}(\s|$)/.test(first) || first.startsWith("|") || /^[-+]\s/.test(first) || /^\*\s(?!\*)/.test(first) || /^\d+\.\s/.test(first),
+          `${id}: Visual Theme must start with prose, got: ${first.slice(0, 80)}`,
+        ).toBe(false);
+      }
+      componentsSection = v3Section(body, "Components");
+      groundingText = readReferenceSource(join(REFS_DIR, id)).markdown;
+    } else {
+      // Frontmatter-leak guard. The YAML frontmatter (between the opening `---`
+      // and its closing `---`) must contain NO markdown prose — a `## heading`
+      // or `- bullet` leaked above the closing `---` (a) never renders on the
+      // page and (b) breaks strict-YAML parsing the moment a `tokens:` block is
+      // added (the lenient field-parser silently hides it until then). This bit
+      // catchtable/dabang/lunit/toss-securities/wadiz; the guard stops regressions.
+      expect(md.startsWith("---\n"), `${id}: must open with a --- frontmatter`).toBe(true);
+      const fmClose = md.indexOf("\n---\n", 4);
+      expect(fmClose, `${id}: frontmatter has no closing ---`).toBeGreaterThan(0);
+      // Strip ONLY the tokens: block (its `tokens:` line plus its indented
+      // continuation), not everything after it — a leak can sit AFTER the tokens
+      // block, just above the closing ---. Tokens values are all indented, so a
+      // col-0 markdown heading/bullet that survives this strip is a real leak.
+      const fmRegion = md.slice(4, fmClose).replace(/^tokens:\n(?:(?:[ \t].*)?\n)*/m, "");
+      expect(
+        /^#{1,6}\s/m.test(fmRegion) || /^- /m.test(fmRegion),
+        `${id}: markdown prose leaked into the YAML frontmatter (a heading or bullet above the closing ---). Move that section into the body, after the closing ---.`
+      ).toBe(false);
 
-    expect(md, `${id}: §1 header`).toMatch(/^## 1\. Visual Theme & Atmosphere/m);
-    const sec1 = md.split(/^## 1\. Visual Theme & Atmosphere[^\n]*\n/m)[1] || "";
-    // Blank line required after the §1 header. The llms-full generator splits on
-    // blank lines and skips `#`-led blocks; without the blank line, header+prose
-    // become ONE skipped block and the generator grabs a later §4 component spec
-    // instead (broke gogolook). The §1-prose check below is blank-line-lenient, so
-    // this is a distinct guard.
-    expect(
-      sec1.startsWith("\n"),
-      `${id}: §1 header must be followed by a blank line (else llms-full mis-extracts the summary)`
-    ).toBe(true);
-    // Skip blank lines, then check the first non-empty line is prose.
-    const firstLine = sec1.split("\n").map(l => l.trim()).find(l => l.length > 0) || "";
-    // Block-level markdown leaders disqualify a prose paragraph:
-    //  - heading: starts with `#` followed by space or another `#`
-    //  - table:   starts with `|`
-    //  - bullet:  starts with `- `, `* ` (but NOT `**bold**`), `+ `
-    //  - ordered: starts with `1.<space>`
-    const isHeader = /^#{1,6}(\s|$)/.test(firstLine);
-    const isTable = firstLine.startsWith("|");
-    const isBullet = /^[-+]\s/.test(firstLine) || /^\*\s(?!\*)/.test(firstLine);
-    const isOrdered = /^\d+\.\s/.test(firstLine);
-    expect(
-      isHeader || isTable || isBullet || isOrdered,
-      `${id}: §1 must start with prose, got: ${firstLine.slice(0, 80)}`
-    ).toBe(false);
+      expect(md, `${id}: §1 header`).toMatch(/^## 1\. Visual Theme & Atmosphere/m);
+      const sec1 = md.split(/^## 1\. Visual Theme & Atmosphere[^\n]*\n/m)[1] || "";
+      // Blank line required after the §1 header. The llms-full generator splits on
+      // blank lines and skips `#`-led blocks; without the blank line, header+prose
+      // become ONE skipped block and the generator grabs a later §4 component spec
+      // instead (broke gogolook). The §1-prose check below is blank-line-lenient, so
+      // this is a distinct guard.
+      expect(
+        sec1.startsWith("\n"),
+        `${id}: §1 header must be followed by a blank line (else llms-full mis-extracts the summary)`
+      ).toBe(true);
+      // Skip blank lines, then check the first non-empty line is prose.
+      const firstLine = sec1.split("\n").map(l => l.trim()).find(l => l.length > 0) || "";
+      // Block-level markdown leaders disqualify a prose paragraph:
+      //  - heading: starts with `#` followed by space or another `#`
+      //  - table:   starts with `|`
+      //  - bullet:  starts with `- `, `* ` (but NOT `**bold**`), `+ `
+      //  - ordered: starts with `1.<space>`
+      const isHeader = /^#{1,6}(\s|$)/.test(firstLine);
+      const isTable = firstLine.startsWith("|");
+      const isBullet = /^[-+]\s/.test(firstLine) || /^\*\s(?!\*)/.test(firstLine);
+      const isOrdered = /^\d+\.\s/.test(firstLine);
+      expect(
+        isHeader || isTable || isBullet || isOrdered,
+        `${id}: §1 must start with prose, got: ${firstLine.slice(0, 80)}`
+      ).toBe(false);
+      componentsSection = md.match(/## 4\. Component[\s\S]*?(?=\n## 5\.|$)/i)?.[0] ?? "";
+      groundingText = md;
+    }
 
     // §4 slash-multi-field anti-pattern (the KRDS 35/36-variants-lost bug).
     // The parser reads `- Field: value` as ONE field; if a writer combines
@@ -283,7 +318,7 @@ describe("catalog-integrity / per-reference", () => {
     // field bullet whose value contains ` / <knownField>:`. Variant headers
     // (`**Secondary chip / checkbox:**`) are excluded — only `- ` field bullets
     // are scanned, and a leading `**` disqualifies the line.
-    const sec4 = md.match(/## 4\. Component[\s\S]*?(?=\n## 5\.|$)/i)?.[0] ?? "";
+    const sec4 = componentsSection;
     const knownAfterSlash = new RegExp(
       ` / \\*{0,2}(?:${KNOWN_FIELD_KEYS.map(k => k.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).join("|")})\\*{0,2}\\s*[:：]`,
       "i"
@@ -347,7 +382,11 @@ describe("catalog-integrity / per-reference", () => {
 
       // §4 footer Tier-1-sources, and the KR/TW >= 2 brand-owned regional rule.
       const tier1Line = md.match(/^\*\*Tier 1 sources:\*\*\s*(.+)$/m)?.[1] ?? "";
-      const tier1Urls = tier1Line.match(/https?:\/\/[^\s,)]+/g) ?? [];
+      // A v3 reference converted from a native Core v2 package (serendie) never had the prose
+      // line; like the quality engine, it then reads the evidence graph's own sources.
+      const tier1Urls: string[] = isV3 && !tier1Line
+        ? extractTier1Urls(md, JSON.parse(readFileSync(sidecarPath, "utf-8")).verification_v2)
+        : tier1Line.match(/https?:\/\/[^\s,)]+/g) ?? [];
       expect(
         tier1Urls.length,
         `${id}: §4 footer "Tier 1 sources" lists no URL`
@@ -382,7 +421,7 @@ describe("catalog-integrity / per-reference", () => {
     // is what keeps a `prose-derived` token honest; getdesign.md has no such check.
     const tokenColors = entry.tokens?.colors ?? entry.tokens?.color;
     if (tokenColors) {
-      const grounding = md
+      const grounding = groundingText
         .replace(/\ntokens:\n(?:[ \t].*(?:\n|$))*/, "\n")
         .toLowerCase();
       for (const [role, hex] of Object.entries(tokenColors)) {
@@ -405,7 +444,7 @@ describe("catalog-integrity / per-reference", () => {
         typeof entry.tokens?.components_harvested,
         `${id}: has tokens.components but components_harvested is not a boolean`
       ).toBe("boolean");
-      const groundingC = md.replace(/\ntokens:\n(?:[ \t].*(?:\n|$))*/, "\n").toLowerCase();
+      const groundingC = groundingText.replace(/\ntokens:\n(?:[ \t].*(?:\n|$))*/, "\n").toLowerCase();
       for (const [cname, c] of Object.entries(comps)) {
         expect(
           typeof c === "object" && c !== null,
@@ -442,6 +481,13 @@ describe("catalog-integrity / per-reference", () => {
       expect(
         readFileSync(mirrorPath, "utf-8") === md,
         `${id}: design-md/${id}/DESIGN.md is not byte-identical to the reference — re-sync the mirror`
+      ).toBe(true);
+    }
+    if (isV3) {
+      const mirrorSidecar = join(DESIGN_MD_MIRROR, id, "reference.json");
+      expect(
+        existsSync(mirrorSidecar) && readFileSync(mirrorSidecar, "utf-8") === readFileSync(sidecarPath, "utf-8"),
+        `${id}: design-md/${id}/reference.json missing or not byte-identical — re-sync the mirror`,
       ).toBe(true);
     }
   });
@@ -581,13 +627,18 @@ void statSync;
  * a third arrives.
  */
 describe("adopted references survive every catalog reader", () => {
+  // A reference converted to DESIGN.md v3 keeps its `.omd/system/` package as an archive, but its
+  // canonical is the v3 file (readReferenceSource checks v3 first), so it is no longer adopted.
   const adoptedIds = readdirSync(REFS_DIR, { withFileTypes: true })
     .filter((entry) => entry.isDirectory()
-      && existsSync(join(REFS_DIR, entry.name, ".omd", "system", "graph.json")))
+      && existsSync(join(REFS_DIR, entry.name, ".omd", "system", "graph.json"))
+      && readFileSync(join(REFS_DIR, entry.name, "DESIGN.md"), "utf8").includes("<!-- design-md:section "))
     .map((entry) => entry.name)
     .sort();
 
-  test("at least one reference is adopted, or this whole block is vacuous", () => {
+  // Every catalog reference is DESIGN.md v3 since 2026-10-14; the Core v2 packages remain as
+  // archives. The block stays for the day a reference is adopted into Core again.
+  test.skipIf(adoptedIds.length === 0)("at least one reference is adopted, or this whole block is vacuous", () => {
     expect(adoptedIds.length).toBeGreaterThan(0);
   });
 

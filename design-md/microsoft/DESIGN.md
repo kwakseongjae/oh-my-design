@@ -1,133 +1,88 @@
 ---
-id: microsoft
 name: Microsoft
-country: US
-category: consumer-tech
-homepage: "https://www.microsoft.com"
-primary_color: "#0078d4"
-logo:
-  type: github
-  slug: microsoft
-verified: "2026-07-13"
-added: "2026-06-11"
-omd: "0.1"
-ds:
-  name: Fluent 2
-  url: "https://fluent2.microsoft.design"
-  type: system
-  description: "Microsoft's cross-platform design system, with platform-aware typography, tokens, component guidance, and accessibility guidance."
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, kind: public-marketing, url: "https://www.microsoft.com/ko-kr", inspected: "2026-07-13" }
-    - { id: fluent-docs, kind: documentation-chrome, url: "https://fluent2.microsoft.design/", inspected: "2026-07-13" }
-    - { id: microsoft-365, kind: public-marketing, url: "https://www.microsoft.com/en-us/microsoft-365", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.microsoft.com/ko-kr", captured: "2026-07-13" }
-    - { id: microsoft-component-index, kind: official-doc, url: "https://fluent2.microsoft.design/components/web/react", captured: "2026-09-19" }
-    - { id: fluent-docs-live, kind: official-doc, url: "https://fluent2.microsoft.design/", captured: "2026-07-13" }
-    - { id: microsoft-365-live, kind: product-surface, url: "https://www.microsoft.com/en-us/microsoft-365", captured: "2026-07-13" }
-    - { id: fluent-typography, kind: official-doc, url: "https://fluent2.microsoft.design/typography", captured: "2026-07-13" }
-    - { id: segoue-font, kind: official-doc, url: "https://learn.microsoft.com/en-us/typography/font-list/segoe-ui", captured: "2026-07-13" }
-    - { id: segoue-license, kind: license, url: "https://learn.microsoft.com/en-us/typography/fonts/font-faq", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.ink": *home
-    "tokens.colors.body": *home
-    "tokens.colors.nav-ink": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.link": *home
-    "tokens.colors.canvas": *home
-    "tokens.colors.footer": *home
-    "tokens.colors.primary-dark": &m365 { surface_id: microsoft-365, source_id: microsoft-365-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.card": *m365
-    "tokens.typography.family.ui": *home
-    "tokens.typography.family.display": *home
-    "tokens.typography.family.chrome": *home
-    "tokens.typography.display.size": *home
-    "tokens.typography.display.weight": *home
-    "tokens.typography.display.lineHeight": *home
-    "tokens.typography.display.tracking": *home
-    "tokens.typography.display.use": *home
-    "tokens.typography.section.size": *home
-    "tokens.typography.section.weight": *home
-    "tokens.typography.section.lineHeight": *home
-    "tokens.typography.section.tracking": *home
-    "tokens.typography.section.use": *home
-    "tokens.typography.card-title.size": *home
-    "tokens.typography.card-title.weight": *home
-    "tokens.typography.card-title.lineHeight": *home
-    "tokens.typography.card-title.tracking": *home
-    "tokens.typography.card-title.use": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.tracking": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.cta.size": *home
-    "tokens.typography.cta.weight": *home
-    "tokens.typography.cta.lineHeight": *home
-    "tokens.typography.cta.tracking": *home
-    "tokens.typography.cta.use": *home
-    "tokens.typography.nav.size": *home
-    "tokens.typography.nav.weight": *home
-    "tokens.typography.nav.use": *home
-    "tokens.spacing.xs": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.base": *home
-    "tokens.spacing.lg": *home
-    "tokens.spacing.xl": *home
-    "tokens.spacing.xxl": *home
-    "tokens.rounded.sm": *home
-    "tokens.rounded.md": *home
-    "tokens.rounded.lg": *home
-    "tokens.rounded.xl": *home
-    "tokens.rounded.pill": *m365
-    "tokens.components.m365-tab-active.type": *m365
-    "tokens.components.m365-tab-active.bg": *m365
-    "tokens.components.m365-tab-active.fg": *m365
-    "tokens.components.m365-tab-active.radius": *m365
-    "tokens.components.m365-tab-active.padding": *m365
-    "tokens.components.m365-tab-active.height": *m365
-    "tokens.components.m365-tab-active.font": *m365
-    "tokens.components.m365-tab-active.active": *m365
-    "tokens.components.m365-tab-active.use": *m365
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  components_harvested: true
-  note: "Marketing tokens below are observed only on microsoft.com home and Microsoft 365 public marketing. Fluent documentation is a separate source domain; its product-system tokens are not inferred from marketing."
-  colors:
-    primary: "#0078d4"
-    primary-dark: "#091f2c"
-    ink: "#0e1726"
-    body: "#17253d"
-    nav-ink: "#262626"
-    muted: "#616161"
-    link: "#0067b8"
-    canvas: "#ffffff"
-    card: "#fefefe"
-    footer: "#f2f2f2"
-  typography:
-    family: { ui: "Segoe UI Variable Text", display: "Segoe UI Variable Display", chrome: "Segoe UI" }
-    display: { size: 48, weight: 500, lineHeight: 1.17, tracking: -1.2, use: "Observed home and Microsoft 365 public-marketing headings" }
-    section: { size: 32, weight: 500, lineHeight: 1.25, tracking: -0.8, use: "Observed marketing section headings" }
-    card-title: { size: 20, weight: 600, lineHeight: 1.4, tracking: -0.5, use: "Observed home card headings" }
-    body: { size: 16, weight: 400, lineHeight: 1.5, tracking: -0.48, use: "Observed marketing body copy" }
-    cta: { size: 15, weight: 600, lineHeight: 1.47, tracking: -0.3, use: "Observed marketing action labels" }
-    nav: { size: 13, weight: 400, use: "Observed home global navigation" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { sm: 2, md: 4, lg: 8, xl: 24, pill: 200 }
-  components:
-    m365-tab-active: { type: tab, bg: "#06161f", fg: "#ffffff", radius: "200px", padding: "8px 24px", height: "40px", font: "16px / 600 Segoe UI Variable Text", active: true, use: "Observed active Microsoft 365 pill tab" }
+colors:
+  primary: '#0078d4'
+  primary-dark: '#091f2c'
+  ink: '#0e1726'
+  body: '#17253d'
+  nav-ink: '#262626'
+  muted: '#616161'
+  link: '#0067b8'
+  canvas: '#ffffff'
+  card: '#fefefe'
+  footer: '#f2f2f2'
+typography:
+  display:
+    fontSize: 48px
+    fontWeight: 500
+    lineHeight: 1.17
+    letterSpacing: '-1.2px'
+    use: Observed home and Microsoft 365 public-marketing headings
+  section:
+    fontSize: 32px
+    fontWeight: 500
+    lineHeight: 1.25
+    letterSpacing: '-0.8px'
+    use: Observed marketing section headings
+  card-title:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: '-0.5px'
+    use: Observed home card headings
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-0.48px'
+    use: Observed marketing body copy
+  cta:
+    fontSize: 15px
+    fontWeight: 600
+    lineHeight: 1.47
+    letterSpacing: '-0.3px'
+    use: Observed marketing action labels
+  nav:
+    fontSize: 13px
+    fontWeight: 400
+    use: Observed home global navigation
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 8px
+  xl: 24px
+  pill: 200px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+components:
+  m365-tab-active:
+    type: tab
+    backgroundColor: '#06161f'
+    textColor: '#ffffff'
+    rounded: 200px
+    padding: 8px 24px
+    height: 40px
+    typography: 16px / 600 Segoe UI Variable Text
+    active: true
+    use: Observed active Microsoft 365 pill tab
+fonts:
+  roles:
+    ui: Segoe UI Variable Text
+    display: Segoe UI Variable Display
+    chrome: Segoe UI
 ---
 
 # Design System Inspiration of Microsoft
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Microsoft makes public experiences for people, teams, and organizations across consumer software, cloud services, devices, and developer tools. Its current public marketing uses generous white space, product imagery, blue calls to action, and a familiar Segoe typographic voice to make that breadth feel coherent rather than experimental. The July 2026 capture distinguishes two public marketing surfaces—Microsoft home and Microsoft 365—from Fluent 2 documentation chrome: the first two load the Microsoft-hosted Segoe variable webfonts and use Communication Blue (`#0078d4`) for home actions, while the documentation site is evidence for the Fluent design system rather than a proxy for every Microsoft product UI. Microsoft’s official mission is to empower every person and every organization on the planet to achieve more; its visual system supports that broad, practical framing with clear hierarchy and deliberately familiar controls.
 
@@ -141,14 +96,31 @@ On the captured marketing surfaces, headings use a display instance of Segoe, te
 - Segoe UI in global navigation/footer chrome, with `#262626` navigation and `#616161` footer links
 - Fluent 2 is a separate official system domain; its component guidance is not used to fill missing marketing variants
 
-## Primary tasks
+### Primary tasks
 
 - Find a product across software, cloud services, devices, and developer tools
 - Read what the company says it stands for
 - Look up Fluent 2 tokens for color, type, spacing, and elevation
 - Follow Fluent component and accessibility guidance while building a product
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Microsoft describes its mission as empowering every person and every organization on the planet to achieve more. Its current About material connects that mission to expanding opportunity, earning trust, protecting fundamental rights, and advancing sustainability. That purpose provides useful narrative context for a broad product family, but it is not itself a visual-token source.
+
+Fluent 2 supplies the cross-platform design-system context: official documentation describes global and alias tokens for color, type, spacing, elevation, and theming. The public marketing capture and Fluent documentation are therefore complementary—not interchangeable—evidence domains.
+
+### Principles
+
+1. **Empower people and organizations.** Microsoft’s stated mission centers the user’s outcome. *UI implication:* state the user’s task and next action plainly.
+2. **Earn trust.** Microsoft names a safe, secure, and responsible digital world as an enduring commitment. *UI implication:* make consequential states and explanations clear rather than decorative.
+3. **Respect platform context.** Fluent uses native platform defaults where appropriate. *UI implication:* use the relevant platform/Fluent guidance instead of forcing marketing chrome into a product UI.
+4. **Use semantic systems.** Fluent documents global and alias token layers. *UI implication:* choose role-based tokens in a Fluent implementation rather than hard-coding a marketing hex.
+
+### Personas
+
+Microsoft’s official mission names people and organizations globally, but this capture does not provide validated research defining product-specific personas. Personas may be added only from approved, product-specific research.
+
+## Colors
 
 ### Observed public marketing
 - **Communication Blue** (`#0078d4`): home primary CTA background.
@@ -166,7 +138,7 @@ On the captured marketing surfaces, headings use a display instance of Segoe, te
 ### Fluent 2 boundary
 Fluent’s official color guidance describes global values and semantic alias tokens, including theme-aware state values. Those design-system values are useful for Fluent implementations, but they are not assigned to the marketing token set above unless they occur in the supplied marketing capture.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 - **Live computed and loaded:** `Segoe UI Variable Text` is high-confidence loaded (797 visible uses) in body, buttons, cards, dialogs, menus, tabs, and text. Its Microsoft-hosted WOFF2/TTF sources were recorded by the collector.
@@ -191,7 +163,25 @@ Fluent’s official color guidance describes global values and semantic alias to
 ### Fluent typography context
 Fluent’s web ramp starts at 10px/14px captions and documents a 68px/92px display role, with Segoe UI as the default web face. Treat that as official Fluent system guidance, separate from the values captured above.
 
-## 4. Component Stylings
+## Layout
+
+- Home marketing uses large image-led bands and 40px or 48px actions; Microsoft 365 has its own dense product-marketing modules.
+- The supplied capture records a public-web spacing cluster of 4px, 8px, 12px, 16px, 24px, 32px, and 48px. It does not establish a universal layout scale for authenticated apps.
+- Do not use Fluent documentation geometry to fill gaps in the two captured marketing surfaces.
+
+### Responsive Behavior
+
+The supplied evidence is desktop-only (1440×900). It demonstrates 40px, 48px, and 52px public-marketing actions, but it does not establish mobile breakpoints, navigation collapse behavior, or touch-target rules. Follow the relevant Fluent platform guidance when implementing a responsive product surface.
+
+## Elevation & Depth
+
+The current bundle records mostly flat public-marketing actions and containers. It does not provide a stable, cross-surface shadow recipe for Microsoft marketing, so no shadow token is exported. Fluent elevation guidance belongs to the Fluent design-system domain and must be consulted there for a Fluent product implementation.
+
+## Motion & Easing
+
+Fluent’s official design-token documentation establishes that motion can be tokenized, but the supplied capture does not provide a source-backed Microsoft-wide duration or easing table. The relevant official Fluent platform token source applies once a target product and platform are known.
+
+## Components
 
 All values below retain their public-surface and selector provenance. State rows are only included where the collector recorded an active selection; no hover, disabled, validation, or menu variant is inferred from a class name or general Fluent guidance.
 
@@ -297,17 +287,11 @@ product surface rather than on the Fluent documentation, and identified by posit
 `fui-` class recorded. Microsoft 365 is built with Fluent, but that does not make the capture a
 reading of Fluent's published Tablist. None of the 47 above carries a measured value here.
 
-## 5. Layout Principles
+### States
 
-- Home marketing uses large image-led bands and 40px or 48px actions; Microsoft 365 has its own dense product-marketing modules.
-- The supplied capture records a public-web spacing cluster of 4px, 8px, 12px, 16px, 24px, 32px, and 48px. It does not establish a universal layout scale for authenticated apps.
-- Do not use Fluent documentation geometry to fill gaps in the two captured marketing surfaces.
+The collector recorded a Fluent documentation form-error interaction and Microsoft 365 dialog/tab interactions, but does not provide reusable error, success, loading, empty, disabled, or responsive state specifications. State treatments may be added only from the target product’s observed surface or official component guidance.
 
-## 6. Depth & Elevation
-
-The current bundle records mostly flat public-marketing actions and containers. It does not provide a stable, cross-surface shadow recipe for Microsoft marketing, so no shadow token is exported. Fluent elevation guidance belongs to the Fluent design-system domain and must be consulted there for a Fluent product implementation.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Scope `#0078d4` 8px CTAs to the captured home-marketing surface.
@@ -321,25 +305,7 @@ The current bundle records mostly flat public-marketing actions and containers. 
 - Promote Cascadia Code or icon fonts from zero-use declarations into UI typography.
 - Invent inactive, disabled, hover, error, or responsive variants not recorded by the collector.
 
-## 8. Responsive Behavior
-
-The supplied evidence is desktop-only (1440×900). It demonstrates 40px, 48px, and 52px public-marketing actions, but it does not establish mobile breakpoints, navigation collapse behavior, or touch-target rules. Follow the relevant Fluent platform guidance when implementing a responsive product surface.
-
-## 9. Agent Prompt Guide
-
-### Quick Color Reference
-- Home primary CTA: `#0078d4` on `#ffffff`, 8px radius
-- Microsoft 365 captured dark CTA: `#091f2c` on `#ffffff`, 8px radius
-- Microsoft 365 captured active pill: `#06161f` on `#ffffff`, 200px radius
-- Marketing heading/body: `#0e1726` / `#17253d`
-- Global chrome/footer: `#262626` / `#616161` on `#ffffff` / `#f2f2f2`
-
-### Example Component Prompts
-- "Reproduce the observed Microsoft home CTA: #0078d4 background, white text, 8px radius, 8px 16px padding, 40px high, 15px/600 Segoe UI Variable Text."
-- "Reproduce the observed Microsoft 365 active pill tab: #06161f background, white text, 200px radius, 8px 24px padding, 40px high, 16px/600 Segoe UI Variable Text."
-- "Use Fluent 2 documentation for product-system values; do not infer missing Fluent variants from the Microsoft home page."
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Microsoft’s official corporate voice is empowering, inclusive, and practical. Its About page frames the mission as helping every person and organization achieve more, while the public Copilot copy uses companion language rather than technical showmanship. Use concise benefit-led labels and sentence case; this is a narrative and content boundary, not an observed rule for every product team.
 
@@ -355,27 +321,16 @@ Microsoft’s official corporate voice is empowering, inclusive, and practical. 
 - "Your everyday AI companion" — Microsoft About’s Copilot section.
 - "What will you do with Copilot?" — Microsoft About’s Copilot section.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Microsoft describes its mission as empowering every person and every organization on the planet to achieve more. Its current About material connects that mission to expanding opportunity, earning trust, protecting fundamental rights, and advancing sustainability. That purpose provides useful narrative context for a broad product family, but it is not itself a visual-token source.
+### Quick Color Reference
+- Home primary CTA: `#0078d4` on `#ffffff`, 8px radius
+- Microsoft 365 captured dark CTA: `#091f2c` on `#ffffff`, 8px radius
+- Microsoft 365 captured active pill: `#06161f` on `#ffffff`, 200px radius
+- Marketing heading/body: `#0e1726` / `#17253d`
+- Global chrome/footer: `#262626` / `#616161` on `#ffffff` / `#f2f2f2`
 
-Fluent 2 supplies the cross-platform design-system context: official documentation describes global and alias tokens for color, type, spacing, elevation, and theming. The public marketing capture and Fluent documentation are therefore complementary—not interchangeable—evidence domains.
-
-## 12. Principles
-
-1. **Empower people and organizations.** Microsoft’s stated mission centers the user’s outcome. *UI implication:* state the user’s task and next action plainly.
-2. **Earn trust.** Microsoft names a safe, secure, and responsible digital world as an enduring commitment. *UI implication:* make consequential states and explanations clear rather than decorative.
-3. **Respect platform context.** Fluent uses native platform defaults where appropriate. *UI implication:* use the relevant platform/Fluent guidance instead of forcing marketing chrome into a product UI.
-4. **Use semantic systems.** Fluent documents global and alias token layers. *UI implication:* choose role-based tokens in a Fluent implementation rather than hard-coding a marketing hex.
-
-## 13. Personas
-
-Microsoft’s official mission names people and organizations globally, but this capture does not provide validated research defining product-specific personas. Personas may be added only from approved, product-specific research.
-
-## 14. States
-
-The collector recorded a Fluent documentation form-error interaction and Microsoft 365 dialog/tab interactions, but does not provide reusable error, success, loading, empty, disabled, or responsive state specifications. State treatments may be added only from the target product’s observed surface or official component guidance.
-
-## 15. Motion & Easing
-
-Fluent’s official design-token documentation establishes that motion can be tokenized, but the supplied capture does not provide a source-backed Microsoft-wide duration or easing table. The relevant official Fluent platform token source applies once a target product and platform are known.
+### Example Component Prompts
+- "Reproduce the observed Microsoft home CTA: #0078d4 background, white text, 8px radius, 8px 16px padding, 40px high, 15px/600 Segoe UI Variable Text."
+- "Reproduce the observed Microsoft 365 active pill tab: #06161f background, white text, 200px radius, 8px 24px padding, 40px high, 16px/600 Segoe UI Variable Text."
+- "Use Fluent 2 documentation for product-system values; do not infer missing Fluent variants from the Microsoft home page."

@@ -1,203 +1,135 @@
 ---
-id: zenn
 name: Zenn
-country: JP
-category: developer-tools
-homepage: "https://zenn.dev"
-primary_color: "#3EA8FF"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=zenn.dev&sz=128"
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "Zenn --c-* tokens"
-  url: "https://zenn.dev/"
-  type: system
-  description: "129 custom properties, all Zenn's own: 109 --c-* colours of which roughly half are component-level — eight button variants and four label variants each publish their own bg, fg, border and hover — beside an eight-step radius scale that includes one named after a product concept, an eight-step spacing scale, and three font stacks with the Latin display face scoped to its own token."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    primary: "#3ea8ff"
-    primary-hover: "#0f83fd"
-    primary-pressed: "#0868ce"
-    foreground: "#000000"
-    secondary: "#807aff"
-    alert: "#ff6868"
-    like: "#f76685"
-    text-low-priority: "#65717b"
-    text-lower-priority: "#8f9faa"
-    text-link: "#0f83fd"
-    text-link-visited: "#4b4f52"
-    canvas: "#ffffff"
-    bg-outer: "#edf2f7"
-    bg-neutral-lighter: "#f1f5f9"
-    bg-neutral-lightest: "#f5f9fc"
-    bg-primary: "#e0efff"
-    bg-primary-lighter: "#ecf5ff"
-    bg-secondary: "#f3f2ff"
-    bg-alert: "#fff0f0"
-    bg-like: "#ffeaf4"
-    border: "#d6e3ed"
-    border-lighter: "#e4edf4"
-    focus-shadow: "#bfdcff"
-    form-input-bg: "#f5f9fc"
-    blue-100: "#f0f7ff"
-    blue-200: "#ecf5ff"
-    blue-350: "#cfe5ff"
-    blue-400: "#bfdcff"
-    blue-700: "#0868ce"
-    gray-100: "#f5f9fc"
-    gray-400: "#e4edf4"
-    gray-600: "#acbcc7"
-    gray-800: "#65717b"
-    purple-200: "#f3f2ff"
-    purple-300: "#dbdfff"
-    red-100: "#fff0f0"
-    red-300: "#ffc5c5"
-    warn: "#ffa909"
-    warn-bg: "#fff6e4"
-    button-share-fg: "#8f9faa"
-    button-secondary-hover-bg: "#f5fbff"
-    button-secondary-grayed-bg: "#f5f9fc"
-  typography:
-    family: { sans: "Hiragino Kaku Gothic ProN", latin: "Inter", mono: "SFMono-Regular" }
-    micro: { size: 10, use: "The smallest rendered step" }
-    caption: { size: 11, use: "Metadata under a card; 93 elements" }
-    small: { size: 11.5, use: "The second most common size on the page — 308 elements" }
-    label: { size: 12, use: "Tags and counts; 267 elements" }
-    base: { size: 16, use: "The dominant size — 956 of 2,227 elements, and the primary button's label" }
-    lead: { size: 16.8, use: "Card titles" }
-    display: { size: 42, use: "The hero, set in Inter; 256 elements" }
-  spacing: { s3xs: 4, sxxs: 8, sxs: 16, ssm: 24, smd: 32, slg: 40, sxl: 48, sxxl: 64 }
-  rounded: { xxs: 2, xs: 4, sm: 7, md: 10, lg: 14, xl: 20, full: 1584 }
-  components:
-    button-primary: { type: "button", bg: "#3ea8ff", fg: "#ffffff", border: "1px solid rgba(92,147,187,.15)", radius: 1584, height: "44px", font: "16px / 700", hover: "#0f83fd", pressed: "#0f83fd", focus: "#0f83fd", use: "今すぐはじめる — the filled pill. Hover, pressed and focus are the same #0f83fd fill and nothing else: the component sets outline-style none and supplies no replacement, so focus is indistinguishable from hover." }
-    button-secondary: { type: "button", bg: "#ffffff", fg: "rgba(0,0,0,.82)", border: "1px solid #d6e3ed", radius: 1584, height: "40px", font: "14.4px / 400", hover: "#f5fbff", pressed: "#bfdcff", focus: "#bfdcff", use: "…もっとみる — the outline pill. Hover fills #f5fbff; pressed and focus draw an authored 2px #bfdcff box-shadow ring and turn the border #3ea8ff." }
-    button-signin: { type: "button", bg: "#3ea8ff", fg: "#ffffff", radius: 1584, height: "36px", font: "15px / 600", hover: "#0f83fd", pressed: "#0f83fd", focus: "#0f83fd", use: "Log in, in the header — the primary variant at a second size, confirming the no-ring behaviour on an independent instance." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://zenn.dev/", inspected: "2026-09-22" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://zenn.dev/", captured: "2026-09-22" }
-    - { id: home-verify, kind: product-surface, url: "https://zenn.dev/", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.alert: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-alert: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-like: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-neutral-lighter: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-neutral-lightest: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-outer: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-primary-lighter: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bg-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.blue-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.blue-200: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.blue-350: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.blue-400: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.blue-700: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.border-lighter: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.button-secondary-grayed-bg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.button-secondary-hover-bg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.button-share-fg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.focus-shadow: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.form-input-bg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.gray-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.gray-400: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.gray-600: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.gray-800: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.like: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.primary-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.primary-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.purple-200: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.purple-300: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.red-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.red-300: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-link: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-link-visited: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-low-priority: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text-lower-priority: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.warn: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.warn-bg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signin.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.rounded.full: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xxs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s3xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.slg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.smd: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.ssm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.sxl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.sxs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.sxxl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.sxxs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.latin: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.mono: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.label.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.label.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
+colors:
+  primary: '#3ea8ff'
+  primary-hover: '#0f83fd'
+  primary-pressed: '#0868ce'
+  foreground: '#000000'
+  secondary: '#807aff'
+  alert: '#ff6868'
+  like: '#f76685'
+  text-low-priority: '#65717b'
+  text-lower-priority: '#8f9faa'
+  text-link: '#0f83fd'
+  text-link-visited: '#4b4f52'
+  canvas: '#ffffff'
+  bg-outer: '#edf2f7'
+  bg-neutral-lighter: '#f1f5f9'
+  bg-neutral-lightest: '#f5f9fc'
+  bg-primary: '#e0efff'
+  bg-primary-lighter: '#ecf5ff'
+  bg-secondary: '#f3f2ff'
+  bg-alert: '#fff0f0'
+  bg-like: '#ffeaf4'
+  border: '#d6e3ed'
+  border-lighter: '#e4edf4'
+  focus-shadow: '#bfdcff'
+  form-input-bg: '#f5f9fc'
+  blue-100: '#f0f7ff'
+  blue-200: '#ecf5ff'
+  blue-350: '#cfe5ff'
+  blue-400: '#bfdcff'
+  blue-700: '#0868ce'
+  gray-100: '#f5f9fc'
+  gray-400: '#e4edf4'
+  gray-600: '#acbcc7'
+  gray-800: '#65717b'
+  purple-200: '#f3f2ff'
+  purple-300: '#dbdfff'
+  red-100: '#fff0f0'
+  red-300: '#ffc5c5'
+  warn: '#ffa909'
+  warn-bg: '#fff6e4'
+  button-share-fg: '#8f9faa'
+  button-secondary-hover-bg: '#f5fbff'
+  button-secondary-grayed-bg: '#f5f9fc'
+typography:
+  micro:
+    fontSize: 10px
+    use: The smallest rendered step
+  caption:
+    fontSize: 11px
+    use: Metadata under a card; 93 elements
+  small:
+    fontSize: 11.5px
+    use: The second most common size on the page — 308 elements
+  label:
+    fontSize: 12px
+    use: Tags and counts; 267 elements
+  base:
+    fontSize: 16px
+    use: The dominant size — 956 of 2,227 elements, and the primary button's label
+  lead:
+    fontSize: 16.8px
+    use: Card titles
+  display:
+    fontSize: 42px
+    use: The hero, set in Inter; 256 elements
+rounded:
+  xxs: 2px
+  xs: 4px
+  sm: 7px
+  md: 10px
+  lg: 14px
+  xl: 20px
+  full: 1584px
+spacing:
+  s3xs: 4
+  sxxs: 8
+  sxs: 16
+  ssm: 24
+  smd: 32
+  slg: 40
+  sxl: 48
+  sxxl: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#3ea8ff'
+    textColor: '#ffffff'
+    border: 1px solid rgba(92,147,187,.15)
+    rounded: 1584px
+    height: 44px
+    typography: 16px / 700
+    hover: '#0f83fd'
+    pressed: '#0f83fd'
+    focus: '#0f83fd'
+    use: '今すぐはじめる — the filled pill. Hover, pressed and focus are the same #0f83fd fill and nothing else: the component sets outline-style none and supplies no replacement, so focus is indistinguishable from hover.'
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: rgba(0,0,0,.82)
+    border: '1px solid #d6e3ed'
+    rounded: 1584px
+    height: 40px
+    typography: 14.4px / 400
+    hover: '#f5fbff'
+    pressed: '#bfdcff'
+    focus: '#bfdcff'
+    use: '…もっとみる — the outline pill. Hover fills #f5fbff; pressed and focus draw an authored 2px #bfdcff box-shadow ring and turn the border #3ea8ff.'
+  button-signin:
+    type: button
+    backgroundColor: '#3ea8ff'
+    textColor: '#ffffff'
+    rounded: 1584px
+    height: 36px
+    typography: 15px / 600
+    hover: '#0f83fd'
+    pressed: '#0f83fd'
+    focus: '#0f83fd'
+    use: Log in, in the header — the primary variant at a second size, confirming the no-ring behaviour on an independent instance.
+fonts:
+  roles:
+    sans: Hiragino Kaku Gothic ProN
+    latin: Inter
+    mono: SFMono-Regular
 ---
+
 # Design System Inspiration of Zenn (ゼン)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Zenn is a Japanese publishing platform for developers — articles, books and scraps, run by
 Classmethod. The surface is white on a pale blue-grey `#edf2f7`, with one saturated blue
@@ -218,11 +150,31 @@ Eight button variants, four label variants, three message boxes — each with it
 set, written down. Most systems in this catalog stop at `surface` / `text` / `border` and let
 the component compose. Zenn composes in the token layer.
 
-### Primary tasks
+#### Primary tasks
 - Read the feed of articles, books and scraps; open one.
 - Sign in, or start writing.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Zenn is where Japanese developers publish, and the interface is built to disappear behind what
+they wrote: white cards on a pale blue-grey, one blue for every action, black at 82% for text,
+and a hero in Inter that is the only thing on the page with a licensed typeface.
+
+The token set says the same thing from the other side. It does not describe a visual language
+in the abstract; it enumerates the things Zenn has — a follow button, a following button, a
+share button, a publication avatar, a like — and gives each one its colours.
+
+### Principles
+
+- **Name the component, not just the role.** Eight button variants in the colour layer.
+- **Painted or outlined**, for every label.
+- **Scope the licensed face.** Inter is the hero's, not the page's.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 with `getComputedStyle` on `zenn.dev`. **All 129 properties are Zenn's** —
 no framework prefix appears.
@@ -278,7 +230,7 @@ systems tokenise at all; and `--c-message-box-*-border` **`#0000000d`**, black a
 One property is a **raw channel triplet**: `--c-bg-base-rgb` is `255 255 255`, published
 beside `--c-bg-base` `#fff` so a consumer can compose an alpha from it. It is the only one.
 
-## 3. Typography Rules
+## Typography
 
 ### Three stacks, and the Latin face is scoped
 
@@ -303,7 +255,34 @@ Rendered: **16px ×956** · 11.5px ×308 · 12px ×267 · **42px ×256** (the he
 There is no size token — these are readings. The 11.5px and 12.5px steps are fractional,
 which is what a rem scale on a non-16px context produces.
 
-## 4. Component Stylings
+## Layout
+
+- **Compose in the token layer.** Eight button variants and four label variants are colour
+  sets, not recipes for the component to assemble.
+- **Painted versus outlined** is the label system's one axis: every label publishes `bg` / `fg`
+  and `painted-bg` / `painted-fg`.
+- **Everything is a full pill** at 99rem; the 2–20px scale is for cards and inputs.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only. `--c-header-height` is `62px`.
+
+## Elevation & Depth
+
+**No shadow token exists** and none was observed at rest. The only `box-shadow` on any measured
+control is the focus ring on the secondary button. Depth is the `#edf2f7` outer background
+against white cards, plus the `#d6e3ed` border.
+
+## Motion & Easing
+
+**No motion token exists** among the 129, and no transition value was captured on the three
+measured controls.
+
+---
+
+**Tier 1 sources:** https://zenn.dev/ (live product surface — 129 custom properties read via `getComputedStyle`, all Zenn's own; three controls measured at rest, hover, pressed and focus, 2026-09-22); https://zenn.dev/ (an independent second capture verifying the focus finding, including a real Tab keypress that landed on the site logo and rendered Chrome's default `auto 1px` ring, establishing that the buttons suppress a ring that is otherwise available on the page, 2026-09-22)
+
+## Components
 
 Three controls measured, each state on its own page load, then re-verified in a second run
 with focus read before the mouse moved.
@@ -347,21 +326,17 @@ this page.** The buttons specifically suppress it.
 Recorded as measured. A keyboard user tabbing to the primary call to action sees the same
 thing a mouse user sees on hover, and nothing else.
 
-## 5. Layout Principles
+### States
 
-- **Compose in the token layer.** Eight button variants and four label variants are colour
-  sets, not recipes for the component to assemble.
-- **Painted versus outlined** is the label system's one axis: every label publishes `bg` / `fg`
-  and `painted-bg` / `painted-fg`.
-- **Everything is a full pill** at 99rem; the 2–20px scale is for cards and inputs.
+All three components carry measured hover, pressed and focus, and **nothing was left
+unmeasured**. Hover and pressed are the same value on the primary variant; the secondary
+separates them, hovering to a fill and pressing to a ring.
 
-## 6. Depth & Elevation
+**Focus is the finding.** See §4: the buttons set `outline-style: none` and only the secondary
+replaces it. Disabled exists as a token — `--c-button-quaternary-disabled-fg` `#8f9faa` — and
+was **not observed on a rendered control**, so no disabled component is declared.
 
-**No shadow token exists** and none was observed at rest. The only `box-shadow` on any measured
-control is the focus ring on the secondary button. Depth is the `#edf2f7` outer background
-against white cards, plus the `#d6e3ed` border.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Take a button variant whole. `--c-button-secondary-{bg,border,fg,hover-bg}` are published
@@ -375,11 +350,11 @@ against white cards, plus the `#d6e3ed` border.
 - Don't treat `#0f83fd` as only a hover. It is also the link colour.
 - Don't set Inter for body text. It is scoped to the Latin hero and does not cover Japanese.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only. `--c-header-height` is `62px`.
+Not assessed as authored voice. The measured surface is a feed of user-written article titles.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#3ea8ff` primary · `#0f83fd` hover and links · `#0868ce` pressed · `#807aff` secondary ·
@@ -393,45 +368,9 @@ against white cards, plus the `#d6e3ed` border.
 - "Its outline twin at 40px: white with a `#d6e3ed` border, `#000000d1` label, hover fill
   `#f5fbff`, focus `box-shadow: #bfdcff 0 0 0 2px` and border `#3ea8ff`."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice. The measured surface is a feed of user-written article titles.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Zenn is where Japanese developers publish, and the interface is built to disappear behind what
-they wrote: white cards on a pale blue-grey, one blue for every action, black at 82% for text,
-and a hero in Inter that is the only thing on the page with a licensed typeface.
-
-The token set says the same thing from the other side. It does not describe a visual language
-in the abstract; it enumerates the things Zenn has — a follow button, a following button, a
-share button, a publication avatar, a like — and gives each one its colours.
-
-## 12. Principles
-
-- **Name the component, not just the role.** Eight button variants in the colour layer.
-- **Painted or outlined**, for every label.
-- **Scope the licensed face.** Inter is the hero's, not the page's.
-
-## 13. States
-
-All three components carry measured hover, pressed and focus, and **nothing was left
-unmeasured**. Hover and pressed are the same value on the primary variant; the secondary
-separates them, hovering to a fill and pressing to a ring.
-
-**Focus is the finding.** See §4: the buttons set `outline-style: none` and only the secondary
-replaces it. Disabled exists as a token — `--c-button-quaternary-disabled-fg` `#8f9faa` — and
-was **not observed on a rendered control**, so no disabled component is declared.
-
-## 14. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 15. Motion & Easing
-
-**No motion token exists** among the 129, and no transition value was captured on the three
-measured controls.
-
----
-
-**Tier 1 sources:** https://zenn.dev/ (live product surface — 129 custom properties read via `getComputedStyle`, all Zenn's own; three controls measured at rest, hover, pressed and focus, 2026-09-22); https://zenn.dev/ (an independent second capture verifying the focus finding, including a real Tab keypress that landed on the site logo and rendered Chrome's default `auto 1px` ring, establishing that the buttons suppress a ring that is otherwise available on the page, 2026-09-22)
+- **Contrast, `button-primary`.** Text `#ffffff` on `#3ea8ff` measures 2.55:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-signin`.** Text `#ffffff` on `#3ea8ff` measures 2.55:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

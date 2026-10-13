@@ -1,0 +1,373 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "mynavi",
+    "name": "マイナビ",
+    "country": "JP",
+    "category": "productivity",
+    "homepage": "https://www.mynavi.jp/",
+    "primary_color": "#0071bb",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=mynavi.jp&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "components_harvested": true,
+    "note": "Machine tokens contain only selector-backed values from three public mynavi.jp corporate/service routes. No authenticated service, marketing-adjacent asset, or system fallback is promoted as a shared product token."
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "corporate-home",
+        "kind": "corporate-home",
+        "url": "https://www.mynavi.jp/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "service-directory",
+        "kind": "service-directory",
+        "url": "https://www.mynavi.jp/service/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "corporate-information",
+        "kind": "corporate-information",
+        "url": "https://www.mynavi.jp/company/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.mynavi.jp/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "service-live",
+        "kind": "product-surface",
+        "url": "https://www.mynavi.jp/service/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "company-live",
+        "kind": "product-surface",
+        "url": "https://www.mynavi.jp/company/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "history-doc",
+        "kind": "official-doc",
+        "url": "https://www.mynavi.jp/company/history/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "purpose-doc",
+        "kind": "official-doc",
+        "url": "https://www.mynavi.jp/recruit/career/company/purpose/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "message-doc",
+        "kind": "official-doc",
+        "url": "https://www.mynavi.jp/company/message/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "logo-story",
+        "kind": "brand-asset",
+        "url": "https://news.mynavi.jp/article/font_quiz-2/",
+        "captured": "2026-07-13"
+      }
+    ],
+    "claims": {
+      "colors.body": {
+        "surface_id": "corporate-home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.heading": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.corporate-heading": {
+        "surface_id": "corporate-information",
+        "source_id": "company-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.tab-fill": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.info-surface": {
+        "surface_id": "corporate-information",
+        "source_id": "company-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.display": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "font-face-set",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "corporate-home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "corporate-home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "corporate-home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "corporate-home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.list-indent": {
+        "surface_id": "corporate-home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.tab-y": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.tab-x": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.tab": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.flat": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.type": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.backgroundColor": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.textColor": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.rounded": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.padding": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.height": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.states": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "supplied-capture-summary",
+        "captured": "2026-07-13"
+      },
+      "components.service-filter-tab.use": {
+        "surface_id": "service-directory",
+        "source_id": "service-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 11,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 2,
+      "extension-component-property": 3,
+      "missing-primary": 1,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-filter-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-filter-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-filter-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.heading",
+        "message": "'heading' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-heading",
+        "message": "'corporate-heading' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.tab-fill",
+        "message": "'tab-fill' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.info-surface",
+        "message": "'info-surface' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "b107e1a40dfc378dd948f8b5a6eaac904857f07c60d6aab26eaeee13674fc692",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.flat",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.display.fontSize",
+      "rounded.tab"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "components_harvested",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "display"
+      ]
+    }
+  }
+}

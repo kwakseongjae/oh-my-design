@@ -1,95 +1,53 @@
 ---
-id: alipay
 name: Alipay
-country: CN
-category: fintech
-homepage: "https://www.alipay.com"
-primary_color: "#1890FF"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=alipay.com&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Ant Design
-  url: "https://ant.design/docs/spec/introduce/"
-  type: system
-  description: Ant Group's open enterprise design language; it is design context, not a substitute for the observed Alipay Open Platform surface.
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, kind: developer-platform, url: "https://open.alipay.com/?mobile=2", inspected: "2026-07-13" }
-    - { id: web-app, kind: developer-platform-product, url: "https://open.alipay.com/module/webApp", inspected: "2026-07-13" }
-    - { id: tools, kind: developer-platform-tools, url: "https://open.alipay.com/tool", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://open.alipay.com/?mobile=2", captured: "2026-07-13" }
-    - { id: web-app-live, kind: product-surface, url: "https://open.alipay.com/module/webApp", captured: "2026-07-13" }
-    - { id: tools-live, kind: product-surface, url: "https://open.alipay.com/tool", captured: "2026-07-13" }
-    - { id: ant-context, kind: official-doc, url: "https://ant.design/docs/spec/introduce/", captured: "2026-07-13" }
-    - { id: ant-font, kind: official-doc, url: "https://ant.design/docs/spec/font-cn/", captured: "2026-07-13" }
-    - { id: ant-values, kind: official-doc, url: "https://ant.design/docs/spec/values/", captured: "2026-07-13" }
-    - { id: ant-license, kind: license, url: "https://github.com/ant-design/ant-design/blob/master/LICENSE", captured: "2026-07-13" }
-    - { id: antgroup-context, kind: official-doc, url: "https://www.antgroup.com/en/home", captured: "2026-07-13" }
-    - { id: alipay-component-index, kind: official-doc, url: "https://ant.design/components/overview", captured: "2026-09-19" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &webapp { surface_id: web-app, source_id: web-app-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.surface": *webapp
-    "tokens.colors.foreground": *home
-    "tokens.colors.nav": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.input-border": *webapp
-    "tokens.typography.family.sans": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.nav-active.size": *home
-    "tokens.typography.nav-active.weight": *home
-    "tokens.typography.nav-active.lineHeight": *home
-    "tokens.typography.nav-active.use": *home
-    "tokens.typography.cta.size": *webapp
-    "tokens.typography.cta.weight": *webapp
-    "tokens.typography.cta.lineHeight": *webapp
-    "tokens.typography.cta.use": *webapp
-    "tokens.rounded.card": &tools { surface_id: tools, source_id: tools-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.rounded.input": *webapp
-    "tokens.shadow.cta": *webapp
-    "tokens.components.tool-card.type": *tools
-    "tokens.components.tool-card.bg": *tools
-    "tokens.components.tool-card.radius": *tools
-    "tokens.components.tool-card.padding": *tools
-    "tokens.components.tool-card.font": *tools
-    "tokens.components.tool-card.use": *tools
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "Only supplied deterministic capture values for Alipay Open Platform are tokens. Ant Design defaults remain separately documented official design-system context."
-  colors:
-    primary: "#1890FF"
-    canvas: "#F5F5F5"
-    surface: "#FFFFFF"
-    foreground: "#000000"
-    nav: "#333333"
-    muted: "#8997AD"
-    input-border: "#999999"
-  typography:
-    family: { sans: "-apple-system, system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif" }
-    body: { size: 14, weight: 400, lineHeight: 1.5715, use: "Observed Open Platform body and footer text; a system stack, not a branded webfont." }
-    nav-active: { size: 18, weight: 500, lineHeight: 3.3333, use: "Observed active home navigation link." }
-    cta: { size: 16, weight: 400, lineHeight: 2.5, use: "Observed web-app banner action." }
-  rounded: { input: 2, card: 8 }
-  shadow: { cta: "0 2px 0 rgba(0,0,0,0.043)" }
-  components_harvested: true
-  components:
-    tool-card: { type: card, bg: "#FFFFFF", radius: 8, padding: "22px 10px", font: "14px/400 system", use: "Observed developer-tools content card only." }
+colors:
+  primary: '#1890FF'
+  canvas: '#F5F5F5'
+  surface: '#FFFFFF'
+  foreground: '#000000'
+  nav: '#333333'
+  muted: '#8997AD'
+  input-border: '#999999'
+typography:
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5715
+    use: Observed Open Platform body and footer text; a system stack, not a branded webfont.
+  nav-active:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 3.3333
+    use: Observed active home navigation link.
+  cta:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 2.5
+    use: Observed web-app banner action.
+rounded:
+  input: 2px
+  card: 8px
+components:
+  tool-card:
+    type: card
+    backgroundColor: '#FFFFFF'
+    rounded: 8px
+    padding: 22px 10px
+    typography: 14px/400 system
+    use: Observed developer-tools content card only.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: '-apple-system, system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif'
 ---
 
 # Design System Inspiration of Alipay
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Alipay began in 2004 as a way to create trust between online buyers and sellers, and Ant Group now describes it as a one-stop digital daily-life platform that works with partners across payments, public services, and local life. The three supplied public captures are narrower: they are the Alipay Open Platform's developer-facing home, web/mobile-app integration page, and developer-tools page. Their shared expression is practical rather than promotional—light gray page ground, white content planes, compact Chinese-language navigation, a blue call-to-action, and a system-font stack chosen by the browser. That is an observable developer-platform surface, not evidence for the native consumer wallet or for a universal Alipay app theme.
 
@@ -103,13 +61,36 @@ Ant Design is important historical and design context: its official introduction
 - Small 2px search/action geometry alongside an 8px developer-tool card
 - No observed hover, pressed, disabled, menu, dialog, toast, or mobile state in the supplied capture
 
-## Primary tasks
+### Primary tasks
 
 - Integrate Alipay payment into a web or mobile application
 - Take an integration through configuration, review, and release
 - Browse the developer-tools page to find a tool
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Ant Group says Alipay was officially established in 2004 after an escrow service was introduced on Taobao, with the purpose of creating trust between online sellers and buyers. It now describes Alipay as having developed from a payment tool into a one-stop digital daily-life platform and describes the group's work with consumers, small businesses, merchants, and global partners. The Open Platform is one of the public developer-facing expressions of that ecosystem, offering payment and marketing capabilities through APIs and tools.
+
+Ant Design is related but distinct context. Its official introduction identifies Ant User-Experience Design Team and its enterprise-product focus; its values describe how a reusable system should reduce coordination cost and support work. Those public documents explain the lineage of the developer-platform chrome without proving that every Alipay surface uses an unmodified Ant Design theme.
+
+### Principles
+
+1. **Trust through explicit capability boundaries.** Alipay's origin story is escrow trust; in this reference, that means do not overstate what an observed developer page proves. *UI implication:* keep native-wallet and payment-flow claims out until their own surface is observed.
+2. **Certain, reusable work patterns.** Ant Design's published “Certain” value links components and patterns to lower coordination entropy. *UI implication:* use documented, surface-proven values consistently rather than inventing variants.
+3. **System-font readability.** Both the observed Open Platform pages and Ant Design's font guidance favor a broad system stack. *UI implication:* preserve the actual stack classification; do not substitute a lookalike webfont.
+4. **Semantic separation of domains.** Developer-platform UI, corporate context, and open-source design-system material each answer different questions. *UI implication:* a first-party narrative or license source cannot fill a missing computed component value.
+
+### Personas
+
+These are stakeholder groups named or implied by first-party sources, not fictional user profiles.
+
+**Developers integrating web or mobile applications.** The Open Platform's web/mobile-app page addresses developers using SDKs, tools, APIs, keys, gateways, review, and release steps. Their evidence is the developer-platform surface, not the consumer wallet.
+
+**Businesses and service providers.** Ant Group describes its partner ecosystem as supporting consumers and small businesses, while the platform offers payment, marketing, and data capabilities. No individual workflow or screen preference is inferred beyond that public role.
+
+**Consumers.** Ant Group describes Alipay as a digital daily-life platform for consumers. No consumer UI component, typography, or microcopy has been captured in this update.
+
+## Colors
 
 ### Observed Alipay Open Platform
 
@@ -125,7 +106,7 @@ Ant Design is important historical and design context: its official introduction
 
 Ant Design currently documents `#1677FF` as its default `colorPrimary`, plus configurable color, radius, and component tokens. Its theming documentation explicitly supports overrides. The value is useful when discussing Ant Design itself, but it is not substituted for the captured Open Platform `#1890FF` action.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -143,7 +124,29 @@ Ant Design currently documents `#1677FF` as its default `colorPrimary`, plus con
 
 Do not render Inter, an Ant Design default stack, or a declared AlipayNumber face as though it were an observed proprietary Alipay product font.
 
-## 4. Component Stylings
+## Layout
+
+The supplied capture is desktop-only at 1440×900. Its verified layout evidence is limited to the 60px top navigation line, a 199px × 30px search input, the 110px × 40px banner action, and 308px-wide developer-tool cards. It does not establish consumer-wallet breakpoints, a merchant-console sider, table grids, payment-dialog layout, or a mobile bottom action bar.
+
+### Responsive Behavior
+
+No responsive capture was supplied. The 1440px desktop observations above must not be generalized to mobile, native-app, or merchant-console behavior.
+
+## Elevation & Depth
+
+The observed banner action has `0 2px 0 rgba(0,0,0,0.043)` shadow. The observed tool card has no shadow. No overlay, popover, menu, modal, drawer, or elevation scale was captured, so none is inferred.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.cta`: `0 2px 0 rgba(0,0,0,0.043)`
+
+## Motion & Easing
+
+No motion, duration, easing curve, or reduced-motion behavior was present in the supplied raw evidence. Ant Design's published motion configuration is a design-system resource, not evidence for this Open Platform surface, so no Alipay motion token is specified.
+
+## Components
 
 ### Developer action
 
@@ -237,15 +240,11 @@ carried over here.
 
 The observed Alipay Open Platform action is `#1890FF`; the prior reference's Ant Design v5 defaults, generic payments components, and unobserved state variants have not been carried forward as live Alipay product claims. Measured button and input defaults remain in §4 as raw surface evidence, but are absent from machine components because no interaction state was captured.
 
-## 5. Layout Principles
+### States
 
-The supplied capture is desktop-only at 1440×900. Its verified layout evidence is limited to the 60px top navigation line, a 199px × 30px search input, the 110px × 40px banner action, and 308px-wide developer-tool cards. It does not establish consumer-wallet breakpoints, a merchant-console sider, table grids, payment-dialog layout, or a mobile bottom action bar.
+Only one state label is present in the collector output: the Open Platform search specimen is marked `focus`, with the raw values recorded in §4. There are no interaction snapshots and no observed hover, pressed, disabled, error, loading, success, toast, dialog, or payment-processing states. Those states remain unresolved rather than being imported from Ant Design examples.
 
-## 6. Depth & Elevation
-
-The observed banner action has `0 2px 0 rgba(0,0,0,0.043)` shadow. The observed tool card has no shadow. No overlay, popover, menu, modal, drawer, or elevation scale was captured, so none is inferred.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -261,15 +260,7 @@ The observed banner action has `0 2px 0 rgba(0,0,0,0.043)` shadow. The observed 
 - Recreate payment flows, tables, status tags, dialogs, or interaction variants from generic Ant Design defaults.
 - Treat marketing/corporate history or documentation chrome as a live consumer-wallet token source.
 
-## 8. Responsive Behavior
-
-No responsive capture was supplied. The 1440px desktop observations above must not be generalized to mobile, native-app, or merchant-console behavior.
-
-## 9. Agent Prompt Guide
-
-Use this reference narrowly: “Create an Alipay Open Platform developer banner action observed at 110×40px: `#1890FF`, white 16px system text, 2px radius, padding `0.01px 15px 4px`; do not invent hover or pressed states.” For the developer tools page, use a white 8px-radius content card with `22px 10px` padding and 14px system text. Do not use this capture to generate a consumer payment confirmation, wallet dashboard, status badge, or Ant Design's generic component catalog.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The supplied Open Platform pages are developer-oriented: their official web/mobile-app description emphasizes payment, marketing, data, APIs, SDKs, configuration, review, and release. This supports a direct, task-oriented tone for developer documentation; it does not establish transactional consumer copy. Ant Design's official value of certainty supports clear outcomes and restrained wording in its own system guidance.
 
@@ -279,33 +270,6 @@ The supplied Open Platform pages are developer-oriented: their official web/mobi
 | API/tool documentation | Use precise terms and preserve technical labels. |
 | Consumer payment copy | Unresolved in this capture; do not manufacture a house voice. |
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Ant Group says Alipay was officially established in 2004 after an escrow service was introduced on Taobao, with the purpose of creating trust between online sellers and buyers. It now describes Alipay as having developed from a payment tool into a one-stop digital daily-life platform and describes the group's work with consumers, small businesses, merchants, and global partners. The Open Platform is one of the public developer-facing expressions of that ecosystem, offering payment and marketing capabilities through APIs and tools.
-
-Ant Design is related but distinct context. Its official introduction identifies Ant User-Experience Design Team and its enterprise-product focus; its values describe how a reusable system should reduce coordination cost and support work. Those public documents explain the lineage of the developer-platform chrome without proving that every Alipay surface uses an unmodified Ant Design theme.
-
-## 12. Principles
-
-1. **Trust through explicit capability boundaries.** Alipay's origin story is escrow trust; in this reference, that means do not overstate what an observed developer page proves. *UI implication:* keep native-wallet and payment-flow claims out until their own surface is observed.
-2. **Certain, reusable work patterns.** Ant Design's published “Certain” value links components and patterns to lower coordination entropy. *UI implication:* use documented, surface-proven values consistently rather than inventing variants.
-3. **System-font readability.** Both the observed Open Platform pages and Ant Design's font guidance favor a broad system stack. *UI implication:* preserve the actual stack classification; do not substitute a lookalike webfont.
-4. **Semantic separation of domains.** Developer-platform UI, corporate context, and open-source design-system material each answer different questions. *UI implication:* a first-party narrative or license source cannot fill a missing computed component value.
-
-## 13. Personas
-
-These are stakeholder groups named or implied by first-party sources, not fictional user profiles.
-
-**Developers integrating web or mobile applications.** The Open Platform's web/mobile-app page addresses developers using SDKs, tools, APIs, keys, gateways, review, and release steps. Their evidence is the developer-platform surface, not the consumer wallet.
-
-**Businesses and service providers.** Ant Group describes its partner ecosystem as supporting consumers and small businesses, while the platform offers payment, marketing, and data capabilities. No individual workflow or screen preference is inferred beyond that public role.
-
-**Consumers.** Ant Group describes Alipay as a digital daily-life platform for consumers. No consumer UI component, typography, or microcopy has been captured in this update.
-
-## 14. States
-
-Only one state label is present in the collector output: the Open Platform search specimen is marked `focus`, with the raw values recorded in §4. There are no interaction snapshots and no observed hover, pressed, disabled, error, loading, success, toast, dialog, or payment-processing states. Those states remain unresolved rather than being imported from Ant Design examples.
-
-## 15. Motion & Easing
-
-No motion, duration, easing curve, or reduced-motion behavior was present in the supplied raw evidence. Ant Design's published motion configuration is a design-system resource, not evidence for this Open Platform surface, so no Alipay motion token is specified.
+Use this reference narrowly: “Create an Alipay Open Platform developer banner action observed at 110×40px: `#1890FF`, white 16px system text, 2px radius, padding `0.01px 15px 4px`; do not invent hover or pressed states.” For the developer tools page, use a white 8px-radius content card with `22px 10px` padding and 14px system text. Do not use this capture to generate a consumer payment confirmation, wallet dashboard, status badge, or Ant Design's generic component catalog.

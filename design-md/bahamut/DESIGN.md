@@ -1,58 +1,124 @@
 ---
-id: bahamut
 name: Bahamut
-country: TW
-category: consumer-tech
-homepage: "https://www.gamer.com.tw"
-primary_color: "#11aac1"
-logo:
-  type: favicon
-  slug: "https://i2.bahamut.com.tw/apple-touch-icon-144x144.png"
-verified: "2026-06-22"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-22"
-  note: "primary = Bahamut Teal (#11aac1) — active tab/CTA background; active link text is a darker teal (#117e96). Body text is warm dark gray (#464646). Page canvas is near-white (#f8f8f8)."
-  colors:
-    primary: "#11aac1"
-    primary-dark: "#117e96"
-    primary-deeper: "#009cad"
-    canvas: "#ffffff"
-    page-bg: "#f8f8f8"
-    surface: "#f3f3f3"
-    heading: "#2d2d2d"
-    body: "#464646"
-    muted: "#8c8c8c"
-    on-primary: "#ffffff"
-    red-accent: "#e60012"
-    hairline: "#e5e7eb"
-  typography:
-    family: { sans: "\"Helvetica Neue\", Helvetica, Roboto, Arial, \"Lucida Grande\", \"PingFang TC\", sans-serif" }
-    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text and nav links" }
-    body-sm:     { size: 14, weight: 400, lineHeight: 1.57, use: "Sidebar links, tab labels, metadata" }
-    body-xs:     { size: 13, weight: 400, lineHeight: 1.50, use: "Supplementary labels, timestamps" }
-    heading:     { size: 18, weight: 700, lineHeight: 1.40, use: "Section headings" }
-    active-nav:  { size: 14, weight: 700, lineHeight: 1.57, use: "Active navigation tab (bold + teal)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
-  shadow:
-    card: "0 1px 3px rgba(0,0,0,0.08)"
-  components:
-    nav-tab-active: { type: tab, bg: "#11aac1", fg: "#ffffff", radius: "4px", padding: "8px 12px", font: "14px / 700", active: "bg #11aac1 text #ffffff", use: "Active section tab in top nav (首頁, GNN新聞)" }
-    nav-tab-inactive: { type: tab, fg: "#464646", radius: "4px", padding: "8px 12px", font: "14px / 400", use: "Inactive nav tab" }
-    nav-link-active: { type: listItem, fg: "#117e96", font: "14px / 700", use: "Active sidenav link with teal tint bg" }
-    search-input: { type: input, bg: "#ffffff", border: "0px none", radius: "0px", font: "14px / 400", use: "Search bar embedded in nav header" }
-    content-card: { type: card, bg: "#ffffff", radius: "4px", use: "Article and game content card, shadow 0 1px 3px rgba(0,0,0,0.08)" }
-    post-badge: { type: badge, bg: "#e60012", fg: "#ffffff", radius: "2px", font: "12px / 400", use: "Hot/new post indicator tag" }
-    section-tag: { type: badge, bg: "#f3f3f3", fg: "#464646", radius: "4px", padding: "4px 8px", font: "12px / 400", use: "Category tags in listing pages" }
-    register-btn: { type: button, fg: "#ffffff", radius: "0px", padding: "0px 10px", font: "16px / 400", use: "Register / Login header links on dark nav" }
-  components_harvested: true
+colors:
+  primary: '#11aac1'
+  primary-dark: '#117e96'
+  primary-deeper: '#009cad'
+  canvas: '#ffffff'
+  page-bg: '#f8f8f8'
+  surface: '#f3f3f3'
+  heading: '#2d2d2d'
+  body: '#464646'
+  muted: '#8c8c8c'
+  on-primary: '#ffffff'
+  red-accent: '#e60012'
+  hairline: '#e5e7eb'
+typography:
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text and nav links
+  body-sm:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.57
+    use: Sidebar links, tab labels, metadata
+  body-xs:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Supplementary labels, timestamps
+  heading:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Section headings
+  active-nav:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1.57
+    use: Active navigation tab (bold + teal)
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  nav-tab-active:
+    type: tab
+    backgroundColor: '#11aac1'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 700
+    active: 'bg #11aac1 text #ffffff'
+    use: Active section tab in top nav (首頁, GNN新聞)
+  nav-tab-inactive:
+    type: tab
+    textColor: '#464646'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: Inactive nav tab
+  nav-link-active:
+    type: listItem
+    textColor: '#117e96'
+    typography: 14px / 700
+    use: Active sidenav link with teal tint bg
+  search-input:
+    type: input
+    backgroundColor: '#ffffff'
+    border: 0px none
+    rounded: 0px
+    typography: 14px / 400
+    use: Search bar embedded in nav header
+  content-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    use: Article and game content card, shadow 0 1px 3px rgba(0,0,0,0.08)
+  post-badge:
+    type: badge
+    backgroundColor: '#e60012'
+    textColor: '#ffffff'
+    rounded: 2px
+    typography: 12px / 400
+    use: Hot/new post indicator tag
+  section-tag:
+    type: badge
+    backgroundColor: '#f3f3f3'
+    textColor: '#464646'
+    rounded: 4px
+    padding: 4px 8px
+    typography: 12px / 400
+    use: Category tags in listing pages
+  register-btn:
+    type: button
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 0px 10px
+    typography: 16px / 400
+    use: Register / Login header links on dark nav
+fonts:
+  roles:
+    sans: '"Helvetica Neue", Helvetica, Roboto, Arial, "Lucida Grande", "PingFang TC", sans-serif'
 ---
 
 # Design System Inspiration of Bahamut
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 巴哈姆特 (Bahamut Gamer) is Taiwan's largest gaming and ACG (Anime, Comics, Games) community portal, and its visual design embodies the no-nonsense density of a community-first information hub that has served Taiwanese gamers since 1996. The page opens on a near-white canvas (`#f8f8f8`) that recedes into the background, letting an enormous volume of content — news links, forum threads, game entries, live events — occupy the foreground without visual noise. The signature color is a confident teal-blue (`#11aac1`), drawn from the Bahamut brand's longstanding palette, appearing most legibly as the active state of navigation tabs and in the horizontal section indicators.
 
@@ -70,14 +136,40 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 - Body text in warm dark gray (`#464646`) over near-black heading (`#2d2d2d`)
 - Horizontal tab navigation with teal fill (`#11aac1` bg, white text) on active, transparent on inactive
 
-## Primary tasks
+### Primary tasks
 
 - Check the news feed for game releases and review scores
 - Jump to a board to discuss a game with other fans
 - Watch seasonal anime on the platform's streaming service
 - Look up a game wiki or a strategy-guide board
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+巴哈姆特 (Bahamut Gamer) was founded in **1996** in Taiwan by a group of gaming enthusiasts — the name drawn from the legendary dragon **Bahamut** in role-playing game mythology. The site launched as a game information and news portal at a time when Taiwanese internet infrastructure was nascent, and grew organically to become the dominant community hub for gaming and ACG culture in the Chinese-speaking world.
+
+Today, Bahamut operates as a multi-surface platform: the main portal at `gamer.com.tw` covers news (GNN), forum boards (哈啦區 — "Harla" community discussions), a commerce section (巴哈商城), and the streaming/anime platform 動畫瘋 (`ani.gamer.com.tw`), which is Taiwan's largest legal anime streaming service. The company has grown from a volunteer-driven fan site into a professional media property, but the design language has preserved the dense, community-oriented layout that users have navigated for decades.
+
+What Bahamut refuses: the minimalist, whitespace-heavy redesign that would alienate its core users who depend on information density. What it embraces: a recognizable teal brand color that has persisted across design iterations, a system-font stack that ensures CJK legibility on every Taiwanese device, and tab-navigation patterns that veteran users navigate without thought.
+
+### Principles
+
+1. **Information density is a feature, not a problem.** The community comes for coverage breadth — more content links per page is a user benefit. *UI implication:* two-column layouts with sidebars, not single-column editorial.
+2. **Brand continuity across decades.** The teal color has been Bahamut's signature since early versions. *UI implication:* preserve `#11aac1` as the unambiguous active-state signal.
+3. **CJK legibility is non-negotiable.** Taiwan-first means Traditional Chinese characters must render clearly at all body sizes. *UI implication:* system fonts over web fonts; 14px minimum for list contexts.
+4. **Red for urgency, teal for active.** Two functional hues carry the whole semantic system. *UI implication:* no additional accent colors; badge colors have fixed meanings.
+5. **Community naming over generic labels.** Interface terms are community-fluent ("哈啦區", "我的小屋"). *UI implication:* localize for the community's own vocabulary, not corporate nomenclature.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Bahamut user segments, not individual people.*
+
+**陳建宇, 22, 台北.** A university student who checks Bahamut's GNN news feed every morning for game release announcements and review scores. He navigates by top tab — directly to 哈啦區 for forum discussion, then the front page for headlines. Has been a registered member since high school. Finds the dense layout comfortable; he'd be disoriented by a whitespace-heavy redesign.
+
+**林怡君, 28, 台中.** An ACG fan who uses 動畫瘋 for seasonal anime and maintains a "小屋" profile with a curated anime list. Participates in the 哈啦板 (board) for specific series. Values the coverage breadth — Bahamut is the only site that covers both gaming news and anime streaming in Traditional Chinese at this scale.
+
+**王志明, 35, 高雄.** A veteran member who has been active since the early 2000s. Knows the site's navigation by muscle memory. Occasional contributor to game wikis and 攻略 (strategy guide) boards. Would be frustrated by any UI change that breaks his 20-year-old navigation pattern.
+
+## Colors
 
 ### Primary
 - **Bahamut Teal** (`#11aac1`): The brand's signature color. Active tab backgrounds, active section indicators, CTA elements. A medium-depth teal that reads as contemporary and energetic without the aggression of pure cyan.
@@ -100,7 +192,7 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 ### Borders
 - **Hairline** (`#e5e7eb`): Standard card and input borders.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary stack**: `"Helvetica Neue"`, `Helvetica`, `Roboto`, `Arial`, `"Lucida Grande"`, `"PingFang TC"`, `蘋果儷中黑`, `"Apple LiGothic Medium"`, `sans-serif`
@@ -122,7 +214,104 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 - **Weight as state signal**: Bold (700) is used only for active navigation states and headings — body/inactive elements stay at 400.
 - **Size discipline**: Three functional sizes (16px body, 14px UI, 13px micro) keep the system legible at dense layouts.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Notable: Nav padding at 8px × 12px per tab creates a compact-but-tappable horizontal menu
+
+### Grid & Container
+- Fixed top navigation bar with logo left, tabs center, utility links right
+- Main layout: wide left content column (~70%) + right sidebar (~30%)
+- Forum boards and game listings use a two-column grid
+- Max content width approximately 1200px, centered
+
+### Whitespace Philosophy
+- **Information density first**: Whitespace is functional, not decorative. Every row and card packs content.
+- **Flat depth, no shadows**: Page hierarchy comes from background-color tiers (`#f8f8f8` → `#ffffff` → `#f3f3f3`) rather than elevation.
+- **Tab rhythm**: Horizontal tab strips are the primary navigation pattern, appearing at both the global nav and within content cards.
+
+### Border Radius Scale
+- None (0px): Legacy input borders, some footer elements
+- Micro (2px): Hot/new badges
+- Standard (4px): Tabs, cards, sidebar links, category tags — the workhorse
+- Large (8px): Occasional larger UI containers
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, collapsed nav, simplified tab row |
+| Tablet | 640-1024px | Partial sidebar, 2-column content |
+| Desktop | 1024-1280px | Full 3-zone layout (content + sidebar + optional right rail) |
+
+#### Touch Targets
+- Nav tabs at 40px height with 8px × 12px padding
+- Sidebar links at 40px height
+- Header register/login at 44px height
+
+#### Collapsing Strategy
+- Desktop two-column grid collapses to single column on mobile
+- Horizontal tab strips wrap or scroll horizontally on narrow viewports
+- Sidebar disappears on mobile; content takes full width
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, section surfaces |
+| Card (Level 1) | `0 1px 3px rgba(0,0,0,0.08)` | Content cards, news articles |
+| Nav (Level 2) | `#ffffff` background on `#f8f8f8` page | Nav bar lifts visually via contrast |
+
+**Shadow Philosophy**: Bahamut uses minimal elevation. The portal predates heavy shadow systems and its design language has not adopted them — depth is communicated through flat color layering (`#f8f8f8` page bg vs `#ffffff` card bg vs `#f3f3f3` section tint). This keeps the interface feeling fast and uncluttered for a dense information context.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `0 1px 3px rgba(0,0,0,0.08)`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+**Motion rules**: Bahamut is a portal with decades of community habit. Motion is functional and subtle — hover states change color in ~100ms; tab switches are near-instant. No page transition animations, no hero reveals. The community uses the site at high frequency and motion that adds latency perception is unwelcome. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the site remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-22) via playwright getComputedStyle:
+- https://www.gamer.com.tw — nav, tabs, body text, cards, badges (primary surface)
+- https://forum.gamer.com.tw — 哈啦區 forum board (secondary surface confirm)
+
+Key observations:
+- Active nav tab: bg rgb(17,170,193) = #11aac1 / text #ffffff / radius 4px / font 14px weight 700
+- Active sidenav link: bg rgba(17,170,193,0.1) / color rgb(17,126,150) = #117e96 / weight 700
+- Body text: rgb(70,70,70) = #464646 (warm dark gray)
+- Page bg: rgb(248,248,248) = #f8f8f8
+- Section surface: rgb(243,243,243) = #f3f3f3
+- Nav bar bg: rgb(255,255,255) = #ffffff
+- Muted text: rgb(140,140,140) = #8c8c8c
+- Red accent: rgb(230,0,18) = #e60012
+
+Brand narrative: Bahamut (巴哈姆特) founded 1996 in Taiwan as a gaming community — public record.
+The 動畫瘋 (ani.gamer.com.tw) streaming platform was bot-challenged during inspection; 
+visual design confirmed consistent with main portal via source inspection.
+
+Personas (§13) are fictional archetypes informed by publicly observable Bahamut user segments. 
+Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "information density is a feature", "brand continuity across decades") 
+are editorial readings connecting Bahamut's observed design to its community heritage, not 
+directly sourced Bahamut statements.
+-->
+
+## Components
 
 ### Tabs
 
@@ -216,41 +405,22 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 **Tier 2 sources:** getdesign.md/bahamut — 0 results (not listed); styles.refero.design/?q=bahamut — no matching results
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: Nav padding at 8px × 12px per tab creates a compact-but-tappable horizontal menu
+| State | Treatment |
+|---|---|
+| **Empty (no forum results)** | Near-white canvas. Simple text in body gray (`#464646`) explaining no results. One teal link back to listing. No illustration. |
+| **Empty (user has no posts)** | Brief note in muted gray (`#8c8c8c`), link to browse boards. |
+| **Loading (content section)** | Gray placeholder bars on `#f3f3f3` surface at approximate text dimensions. No shimmer — flat gray blocks consistent with the non-animated system. |
+| **Loading (image thumbnails)** | `#f3f3f3` placeholder at final image dimensions. |
+| **Error (page not found)** | "找不到網頁" heading. Teal link back to previous page and home. Matches live site behavior (verified 2026-06-22). |
+| **Error (login required)** | Redirect to login page with brief message. Teal confirm button. |
+| **Success (post submitted)** | Inline confirmation on the same page. No modal — community sites favor in-page feedback. |
+| **Skeleton** | Flat `#f3f3f3` blocks at content dimensions. No animated shimmer. |
+| **Disabled** | Reduced opacity on links and buttons; muted gray (`#8c8c8c`) text. |
+| **Active / Selected** | Teal background (`#11aac1`), white text — the consistent system-wide active signal. |
 
-### Grid & Container
-- Fixed top navigation bar with logo left, tabs center, utility links right
-- Main layout: wide left content column (~70%) + right sidebar (~30%)
-- Forum boards and game listings use a two-column grid
-- Max content width approximately 1200px, centered
-
-### Whitespace Philosophy
-- **Information density first**: Whitespace is functional, not decorative. Every row and card packs content.
-- **Flat depth, no shadows**: Page hierarchy comes from background-color tiers (`#f8f8f8` → `#ffffff` → `#f3f3f3`) rather than elevation.
-- **Tab rhythm**: Horizontal tab strips are the primary navigation pattern, appearing at both the global nav and within content cards.
-
-### Border Radius Scale
-- None (0px): Legacy input borders, some footer elements
-- Micro (2px): Hot/new badges
-- Standard (4px): Tabs, cards, sidebar links, category tags — the workhorse
-- Large (8px): Occasional larger UI containers
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, section surfaces |
-| Card (Level 1) | `0 1px 3px rgba(0,0,0,0.08)` | Content cards, news articles |
-| Nav (Level 2) | `#ffffff` background on `#f8f8f8` page | Nav bar lifts visually via contrast |
-
-**Shadow Philosophy**: Bahamut uses minimal elevation. The portal predates heavy shadow systems and its design language has not adopted them — depth is communicated through flat color layering (`#f8f8f8` page bg vs `#ffffff` card bg vs `#f3f3f3` section tint). This keeps the interface feeling fast and uncluttered for a dense information context.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the teal (`#11aac1`) exclusively for active states and primary indicators — it's the brand signal
@@ -268,26 +438,26 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 - Apply bright/saturated colors beyond teal and red — the palette is deliberately restrained
 - Add decorative gradients or illustration — Bahamut's aesthetic is text-and-link information density
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, collapsed nav, simplified tab row |
-| Tablet | 640-1024px | Partial sidebar, 2-column content |
-| Desktop | 1024-1280px | Full 3-zone layout (content + sidebar + optional right rail) |
+Bahamut's voice is **communal, direct, and encyclopedic** — the editorial register of a gaming community that has been Taiwan's trusted authority on gaming and ACG culture for three decades. The platform speaks to fans as fellow fans: no corporate distance, no marketing jargon, just fast, confident information delivery. Chinese headings are short and punchy ("巴哈姆特30週年", "GNN新聞", "哈啦區"), and the interface labels privilege familiarity over formality — regular users know what "我的小屋" (My Cottage — user profile) means without explanation.
 
-### Touch Targets
-- Nav tabs at 40px height with 8px × 12px padding
-- Sidebar links at 40px height
-- Header register/login at 44px height
+| Context | Tone |
+|---|---|
+| Navigation labels | Concise, community-idiomatic. "哈啦區", "動畫瘋", "GNN新聞" — brand-specific names, not generic. |
+| Forum section names | Thematic and self-explanatory within community context. |
+| Game listings | Factual: title + release date + genre tags. No marketing superlatives. |
+| Error states | Practical and brief. "找不到網頁" + link back. |
+| Registration prompts | Low-friction. "註冊" / "登入" — two words, no persuasion. |
 
-### Collapsing Strategy
-- Desktop two-column grid collapses to single column on mobile
-- Horizontal tab strips wrap or scroll horizontally on narrow viewports
-- Sidebar disappears on mobile; content takes full width
+**Voice samples (verified live 2026-06-22):**
+- "巴哈姆特電玩資訊站" — site title (category statement: gaming information station). *(verified live 2026-06-22)*
+- "首頁" — home tab label (literal, unadorned). *(verified live 2026-06-22)*
+- "我的小屋" — user profile link (warm community idiom: "My Cottage"). *(verified live 2026-06-22)*
 
-## 9. Agent Prompt Guide
+**Forbidden register**: gaming hype marketing, corporate formality, English-only labels on Taiwan-facing surfaces.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary active: Bahamut Teal (`#11aac1`)
@@ -315,100 +485,8 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Bahamut's voice is **communal, direct, and encyclopedic** — the editorial register of a gaming community that has been Taiwan's trusted authority on gaming and ACG culture for three decades. The platform speaks to fans as fellow fans: no corporate distance, no marketing jargon, just fast, confident information delivery. Chinese headings are short and punchy ("巴哈姆特30週年", "GNN新聞", "哈啦區"), and the interface labels privilege familiarity over formality — regular users know what "我的小屋" (My Cottage — user profile) means without explanation.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Navigation labels | Concise, community-idiomatic. "哈啦區", "動畫瘋", "GNN新聞" — brand-specific names, not generic. |
-| Forum section names | Thematic and self-explanatory within community context. |
-| Game listings | Factual: title + release date + genre tags. No marketing superlatives. |
-| Error states | Practical and brief. "找不到網頁" + link back. |
-| Registration prompts | Low-friction. "註冊" / "登入" — two words, no persuasion. |
-
-**Voice samples (verified live 2026-06-22):**
-- "巴哈姆特電玩資訊站" — site title (category statement: gaming information station). *(verified live 2026-06-22)*
-- "首頁" — home tab label (literal, unadorned). *(verified live 2026-06-22)*
-- "我的小屋" — user profile link (warm community idiom: "My Cottage"). *(verified live 2026-06-22)*
-
-**Forbidden register**: gaming hype marketing, corporate formality, English-only labels on Taiwan-facing surfaces.
-
-## 11. Brand Narrative
-
-巴哈姆特 (Bahamut Gamer) was founded in **1996** in Taiwan by a group of gaming enthusiasts — the name drawn from the legendary dragon **Bahamut** in role-playing game mythology. The site launched as a game information and news portal at a time when Taiwanese internet infrastructure was nascent, and grew organically to become the dominant community hub for gaming and ACG culture in the Chinese-speaking world.
-
-Today, Bahamut operates as a multi-surface platform: the main portal at `gamer.com.tw` covers news (GNN), forum boards (哈啦區 — "Harla" community discussions), a commerce section (巴哈商城), and the streaming/anime platform 動畫瘋 (`ani.gamer.com.tw`), which is Taiwan's largest legal anime streaming service. The company has grown from a volunteer-driven fan site into a professional media property, but the design language has preserved the dense, community-oriented layout that users have navigated for decades.
-
-What Bahamut refuses: the minimalist, whitespace-heavy redesign that would alienate its core users who depend on information density. What it embraces: a recognizable teal brand color that has persisted across design iterations, a system-font stack that ensures CJK legibility on every Taiwanese device, and tab-navigation patterns that veteran users navigate without thought.
-
-## 12. Principles
-
-1. **Information density is a feature, not a problem.** The community comes for coverage breadth — more content links per page is a user benefit. *UI implication:* two-column layouts with sidebars, not single-column editorial.
-2. **Brand continuity across decades.** The teal color has been Bahamut's signature since early versions. *UI implication:* preserve `#11aac1` as the unambiguous active-state signal.
-3. **CJK legibility is non-negotiable.** Taiwan-first means Traditional Chinese characters must render clearly at all body sizes. *UI implication:* system fonts over web fonts; 14px minimum for list contexts.
-4. **Red for urgency, teal for active.** Two functional hues carry the whole semantic system. *UI implication:* no additional accent colors; badge colors have fixed meanings.
-5. **Community naming over generic labels.** Interface terms are community-fluent ("哈啦區", "我的小屋"). *UI implication:* localize for the community's own vocabulary, not corporate nomenclature.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Bahamut user segments, not individual people.*
-
-**陳建宇, 22, 台北.** A university student who checks Bahamut's GNN news feed every morning for game release announcements and review scores. He navigates by top tab — directly to 哈啦區 for forum discussion, then the front page for headlines. Has been a registered member since high school. Finds the dense layout comfortable; he'd be disoriented by a whitespace-heavy redesign.
-
-**林怡君, 28, 台中.** An ACG fan who uses 動畫瘋 for seasonal anime and maintains a "小屋" profile with a curated anime list. Participates in the 哈啦板 (board) for specific series. Values the coverage breadth — Bahamut is the only site that covers both gaming news and anime streaming in Traditional Chinese at this scale.
-
-**王志明, 35, 高雄.** A veteran member who has been active since the early 2000s. Knows the site's navigation by muscle memory. Occasional contributor to game wikis and 攻略 (strategy guide) boards. Would be frustrated by any UI change that breaks his 20-year-old navigation pattern.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no forum results)** | Near-white canvas. Simple text in body gray (`#464646`) explaining no results. One teal link back to listing. No illustration. |
-| **Empty (user has no posts)** | Brief note in muted gray (`#8c8c8c`), link to browse boards. |
-| **Loading (content section)** | Gray placeholder bars on `#f3f3f3` surface at approximate text dimensions. No shimmer — flat gray blocks consistent with the non-animated system. |
-| **Loading (image thumbnails)** | `#f3f3f3` placeholder at final image dimensions. |
-| **Error (page not found)** | "找不到網頁" heading. Teal link back to previous page and home. Matches live site behavior (verified 2026-06-22). |
-| **Error (login required)** | Redirect to login page with brief message. Teal confirm button. |
-| **Success (post submitted)** | Inline confirmation on the same page. No modal — community sites favor in-page feedback. |
-| **Skeleton** | Flat `#f3f3f3` blocks at content dimensions. No animated shimmer. |
-| **Disabled** | Reduced opacity on links and buttons; muted gray (`#8c8c8c`) text. |
-| **Active / Selected** | Teal background (`#11aac1`), white text — the consistent system-wide active signal. |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-**Motion rules**: Bahamut is a portal with decades of community habit. Motion is functional and subtle — hover states change color in ~100ms; tab switches are near-instant. No page transition animations, no hero reveals. The community uses the site at high frequency and motion that adds latency perception is unwelcome. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the site remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle:
-- https://www.gamer.com.tw — nav, tabs, body text, cards, badges (primary surface)
-- https://forum.gamer.com.tw — 哈啦區 forum board (secondary surface confirm)
-
-Key observations:
-- Active nav tab: bg rgb(17,170,193) = #11aac1 / text #ffffff / radius 4px / font 14px weight 700
-- Active sidenav link: bg rgba(17,170,193,0.1) / color rgb(17,126,150) = #117e96 / weight 700
-- Body text: rgb(70,70,70) = #464646 (warm dark gray)
-- Page bg: rgb(248,248,248) = #f8f8f8
-- Section surface: rgb(243,243,243) = #f3f3f3
-- Nav bar bg: rgb(255,255,255) = #ffffff
-- Muted text: rgb(140,140,140) = #8c8c8c
-- Red accent: rgb(230,0,18) = #e60012
-
-Brand narrative: Bahamut (巴哈姆特) founded 1996 in Taiwan as a gaming community — public record.
-The 動畫瘋 (ani.gamer.com.tw) streaming platform was bot-challenged during inspection; 
-visual design confirmed consistent with main portal via source inspection.
-
-Personas (§13) are fictional archetypes informed by publicly observable Bahamut user segments. 
-Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "information density is a feature", "brand continuity across decades") 
-are editorial readings connecting Bahamut's observed design to its community heritage, not 
-directly sourced Bahamut statements.
--->
+- **Contrast, `nav-tab-active`.** Text `#ffffff` on `#11aac1` measures 2.78:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

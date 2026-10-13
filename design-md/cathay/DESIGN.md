@@ -1,61 +1,128 @@
 ---
-id: cathay
 name: Cathay
-country: TW
-category: fintech
-homepage: "https://www.cathaybk.com.tw"
-primary_color: "#00512a"
-logo:
-  type: favicon
-  slug: "https://www.cathaybk.com.tw/apple-touch-icon.png"
-verified: "2026-06-08"
-added: "2026-06-08"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-08"
-  note: "primary = deep brand green #00512a (live primary CTA fill); accent = bright Cathay green #26a862 (most-used non-neutral, icon + emphasis)"
-  colors:
-    primary: "#00512a"
-    accent: "#26a862"
-    accent-tint: "#f3fff7"
-    ink-deep: "#00283d"
-    canvas: "#fafafa"
-    surface: "#ffffff"
-    heading: "#333333"
-    body: "#555555"
-    muted: "#888888"
-    hairline: "#eeeeee"
-    border-mute: "#bebebe"
-    on-primary: "#ffffff"
-    warn: "#e87c07"
-  typography:
-    family: { sans: "Roboto Flex", cjk: "Noto Sans TC", fallback: "PingFang TC, Microsoft JhengHei, Heiti TC, sans-serif" }
-    hero:        { size: 36, weight: 700, lineHeight: 1.50, tracking: 0, use: "Homepage hero headline" }
-    section:     { size: 28, weight: 700, lineHeight: 1.50, tracking: 0, use: "Feature / section titles" }
-    subheading:  { size: 18, weight: 400, lineHeight: 1.50, tracking: 0, use: "Quick-action labels, lead text" }
-    body:        { size: 16, weight: 400, lineHeight: 1.50, tracking: 0, use: "Standard reading text, nav, button label" }
-    caption:     { size: 14, weight: 400, lineHeight: 1.50, tracking: 0, use: "Footer links, metadata, fine print" }
-  spacing: { xs: 5, sm: 11, md: 15, base: 20, lg: 27, xl: 40, section: 64 }
-  rounded: { sm: 5, md: 5, lg: 5, full: 9999 }
-  shadow:
-    ambient: "rgba(0,0,0,0.08) 0px 2px 8px"
-    standard: "rgba(0,0,0,0.12) 0px 4px 16px"
-    overlay: "rgba(0,0,0,0.22) 0px 8px 24px"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#00512a", fg: "#ffffff", border: "1px solid #00512a", radius: "5px", height: "50px", padding: "12px 20px", font: "16px / 400", active: "fill darkens briefly", use: "Primary CTA (把握好機匯, 我有興趣)" }
-    button-outline: { type: button, bg: "transparent", fg: "#00512a", border: "1px solid #00512a", radius: "5px", font: "16px / 400", use: "Secondary action beside primary CTA" }
-    nav-link: { type: tab, bg: "transparent", fg: "#333333", font: "16px / 400", use: "Top nav links (個人金融, 企業金融), no underline" }
-    card: { type: card, bg: "#ffffff", radius: "5px", padding: "27px", shadow: "rgba(0,0,0,0.12) 0px 4px 16px", use: "Content/product cards (CUBE信用卡)" }
-    card-glass: { type: card, bg: "rgba(255,255,255,0.5)", radius: "5px", padding: "40px 15px", use: "Quick-entry glass tiles over hero imagery (開戶, 匯率查詢)" }
-    input: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #eeeeee", radius: "5px", focus: "border #00512a", use: "Form input, placeholder #888888" }
-    footer-link: { type: tab, bg: "#00283d", fg: "#ffffff", font: "14px / 400", use: "Footer group-company + policy links on dark band" }
+colors:
+  primary: '#00512a'
+  accent: '#26a862'
+  accent-tint: '#f3fff7'
+  ink-deep: '#00283d'
+  canvas: '#fafafa'
+  surface: '#ffffff'
+  heading: '#333333'
+  body: '#555555'
+  muted: '#888888'
+  hairline: '#eeeeee'
+  border-mute: '#bebebe'
+  on-primary: '#ffffff'
+  warn: '#e87c07'
+typography:
+  hero:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Homepage hero headline
+  section:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Feature / section titles
+  subheading:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Quick-action labels, lead text
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Standard reading text, nav, button label
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Footer links, metadata, fine print
+rounded:
+  sm: 5px
+  md: 5px
+  lg: 5px
+  full: 9999px
+spacing:
+  xs: 5
+  sm: 11
+  md: 15
+  base: 20
+  lg: 27
+  xl: 40
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#00512a'
+    textColor: '#ffffff'
+    border: '1px solid #00512a'
+    rounded: 5px
+    height: 50px
+    padding: 12px 20px
+    typography: 16px / 400
+    active: fill darkens briefly
+    use: Primary CTA (把握好機匯, 我有興趣)
+  button-outline:
+    type: button
+    backgroundColor: transparent
+    textColor: '#00512a'
+    border: '1px solid #00512a'
+    rounded: 5px
+    typography: 16px / 400
+    use: Secondary action beside primary CTA
+  nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#333333'
+    typography: 16px / 400
+    use: Top nav links (個人金融, 企業金融), no underline
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 5px
+    padding: 27px
+    shadow: rgba(0,0,0,0.12) 0px 4px 16px
+    use: Content/product cards (CUBE信用卡)
+  card-glass:
+    type: card
+    backgroundColor: rgba(255,255,255,0.5)
+    rounded: 5px
+    padding: 40px 15px
+    use: Quick-entry glass tiles over hero imagery (開戶, 匯率查詢)
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #eeeeee'
+    rounded: 5px
+    focus: 'border #00512a'
+    use: 'Form input, placeholder #888888'
+  footer-link:
+    type: tab
+    backgroundColor: '#00283d'
+    textColor: '#ffffff'
+    typography: 14px / 400
+    use: Footer group-company + policy links on dark band
+fonts:
+  roles:
+    sans: Roboto Flex
+    cjk: Noto Sans TC
+    fallback: PingFang TC, Microsoft JhengHei, Heiti TC, sans-serif
 ---
 
 # Design System Inspiration of Cathay
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Cathay United Bank (國泰世華銀行) presents the calm, dependable face of one of Taiwan's largest financial groups — and its digital design reflects exactly that institutional weight, rendered with surprising lightness. The homepage opens on an almost-white canvas (`#fafafa`) carrying near-black `#333333` text, so the page never feels heavy or corporate-cold; the warmth comes entirely from a single confident brand color: Cathay green. Two greens do the work — a deep, forest-toned `#00512a` that anchors every primary action and a brighter, more optimistic `#26a862` that lights up icons, links, and emphasis. The result reads as trustworthy and grounded (the deep green), but never stuffy (the bright green and airy off-white). This is a bank that wants to feel like a steady partner for everyday financial life, not a marble-columned vault.
 
@@ -73,7 +140,7 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 - Green-as-punctuation: neutrals dominate, green appears only on intent
 - Deep teal-navy (`#00283d`) grounding the footer and dark surfaces
 
-## Primary tasks
+### Primary tasks
 
 - Check the exchange rate before travelling abroad
 - Transfer money to another account from the quick-action row
@@ -81,7 +148,37 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 - Manage a shop's corporate account at the same bank
 - Correct a form field the bank flagged as invalid
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Cathay United Bank (國泰世華商業銀行) is the banking arm of **Cathay Financial Holding** (國泰金控), one of Taiwan's largest financial groups, with the broader Cathay group spanning life insurance (國泰人壽), property insurance (國泰產險), securities (國泰綜合證券), investment trust (國泰投信), and more — all surfaced directly in the bank's own footer. The bank in its current form is the product of the 2003 merger of **Cathay Commercial Bank** and **United World Chinese Commercial Bank (世華聯合商業銀行)**, uniting two long-standing Taiwanese institutions under the Cathay umbrella.
+
+The contemporary digital identity centers on the **CUBE** brand — the CUBE App and CUBE credit card ("CUBE信用卡") form the consumer-facing core of a "better every time" product philosophy. The redirect from cathaybk.com.tw into the unified **cathay-cube.com.tw** experience signals the strategic bet: a single, technology-forward digital platform ("用科技讓金融生活更安全簡單") that consolidates everyday banking, cards, and lifestyle services. The deep Cathay green is the through-line connecting this modern digital surface back to the group's decades-long institutional heritage.
+
+What Cathay's design refuses: the cold marble-and-gold visual clichés of legacy banking, and the hype-driven aesthetics of disruptor fintech. What it embraces: a single trustworthy brand green used with discipline, airy off-white surfaces, bold-but-friendly Traditional Chinese type, and a task-first layout that treats the customer's daily needs as the product.
+
+### Principles
+
+1. **Trust is the product.** Every color, weight, and corner radius serves the perception of a safe, dependable bank. Design that gambles trust for novelty is off-brand.
+2. **Green with discipline.** The brand green earns its impact precisely because it is rare — punctuation, never wallpaper. Neutrals carry the page so green can mean something.
+3. **Service before marketing.** The most common banking tasks sit above the fold in dense quick-action tiles; promotion gets the lower, airier real estate.
+4. **Readable in Traditional Chinese first.** 1.5 line-height and the Noto Sans TC pairing are non-negotiable — Han legibility outranks Latin-centric tightness.
+5. **One radius, one rhythm.** The uniform 5px corner across every surface is a quiet consistency that reads as institutional reliability.
+6. **Warm, not cold.** Off-white over stark white, bold-but-friendly headlines, optimistic bright green — the bank chooses approachability over austerity.
+7. **Honest depth.** Shadows stay neutral and subtle. Elevation signals function, never spectacle.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Cathay United Bank customer segments (everyday retail banking customers in Taiwan, CUBE App / CUBE card users, group cross-sell customers), not individual people.*
+
+**Lin Yi-chen (林宜臻), 29, Taipei.** Marketing coordinator and daily CUBE App user. Pays bills, splits dinners, and checks exchange rates before travel. Chose Cathay because the app made transfers and FX feel effortless. Trusts the green brand the way she trusts a familiar convenience store — always there, never surprising.
+
+**Chen Kuo-wei (陳國維), 47, Taichung.** Small-business owner banking with Cathay for both his shop's corporate account (企業金融) and his family's personal accounts. Values that one group covers banking, insurance, and securities. Notices and appreciates when the digital experience is "safer and simpler" because his time is scarce.
+
+**Wang Mei-ling (王美玲), 63, Kaohsiung.** Long-time customer since the United World Chinese Commercial Bank days. Prefers larger, high-contrast text and clear buttons. The bold 700-weight headlines, generous line-height, and obvious green CTAs make the site usable for her without help.
+
+**David Hsu (許大衛), 35, Hsinchu.** Engineer and private-banking-curious investor exploring wealth services (私人銀行). Reads carefully, distrusts hype, and is reassured by the bank's restrained, compliance-aware tone over flashier competitors.
+
+## Colors
 
 ### Primary
 - **Cathay Deep Green** (`#00512a`): The primary brand color. Fills every primary CTA ("把握好機匯", "我有興趣", "更多新鮮事"), forms outline-button borders, and signals the bank's identity. A dark forest green that reads as stable, mature, and trustworthy.
@@ -106,7 +203,7 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 ### Status
 - **Warn Orange** (`#e87c07`): Sparingly used warning / attention accent for notices and highlights. Never an interactive primary.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Latin**: `Roboto Flex` — a variable grotesque carrying numerals, English labels, and product names.
@@ -130,7 +227,105 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 - **No letter-spacing tricks**: Tracking is `normal` everywhere. Han characters are already monospaced by design; forcing tracking would break their rhythm.
 - **Size, not weight, separates body tiers**: Subheadings step up to 18px while staying weight 400 — the system prefers scaling type size over adding weight for secondary emphasis.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~5px, with the live DOM favoring multiples and near-multiples: 5px, 11px, 15px, 20px, 27px, 40px
+- Notable: button padding `12px 20px`, card padding `21-27px`, glass-tile padding `40px 15px` — generous internal breathing room on tappable surfaces
+
+### Grid & Container
+- Centered max-width content column with full-bleed hero and feature bands
+- Quick-action row: a horizontal strip of equal-width tiles (換匯 / 提款 / 轉帳 / 視訊) directly below the hero — task-first IA
+- Product/activity sections: multi-column card grids that collapse to single column on mobile
+- Footer: wide multi-column link directory grouping the broader Cathay Financial group on a dark `#00283d` band
+
+### Whitespace Philosophy
+- **Service density up top, marketing breathing room below**: The most-used banking tasks are packed tightly into the quick-action row, while promotional sections below get generous vertical spacing.
+- **Card-driven rhythm**: Nearly all content lives in 5px-radius white cards on the off-white canvas, so whitespace reads as the gap between cards rather than empty void.
+- **CJK-comfortable leading**: 1.5 line-height across the board gives Traditional Chinese paragraphs the air they need.
+
+### Border Radius Scale
+- The system is effectively single-radius: **5px** on buttons, cards, tiles, and inputs alike.
+- 0px on plain text links and full-width footer rows.
+- No pill shapes, no large 12px+ rounding — the uniform gentle 5px is a brand signature.
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, stacked cards, quick-actions wrap to grid |
+| Tablet | 768-1024px | 2-column card grids, condensed nav |
+| Desktop | 1024-1440px | Full multi-column layout, horizontal quick-action row |
+| Large | >1440px | Centered content with wide margins |
+
+#### Touch Targets
+- Buttons at 50px height — comfortably tappable
+- Quick-action tiles tall (≈187px) with 40px 15px padding for large tap zones
+- Footer links at 14px with row spacing for finger accuracy
+
+#### Collapsing Strategy
+- Hero: 36px headline scales down on mobile, weight 700 maintained
+- Quick-action strip: horizontal row → 2-up or 3-up grid of tiles
+- Product/activity card grids: multi-column → single column stacked
+- Top nav: full horizontal → hamburger drawer
+- Footer directory: wide multi-column → stacked accordion groups
+
+#### Image Behavior
+- Glass tiles over imagery keep `rgba(255,255,255,0.5)` legibility scrim at all sizes
+- Hero imagery crops to maintain headline contrast on narrow viewports
+- Card images keep the consistent 5px radius
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, footer |
+| Ambient (Level 1) | `rgba(0,0,0,0.08) 0px 2px 8px` | Subtle card lift, hover hints |
+| Standard (Level 2) | `rgba(0,0,0,0.12) 0px 4px 16px` | Content cards, product cards |
+| Overlay (Level 3) | `rgba(0,0,0,0.22) 0px 8px 24px` | Dropdowns, modals, floating menus |
+
+**Shadow Philosophy**: Cathay's elevation is honest and neutral — soft black shadows (`rgba(0,0,0,...)`) with no color tint, in deliberate contrast to fintechs that brand their shadows. The bank's depth language is about subtle, trustworthy lift rather than dramatic float. The live DOM shows semi-transparent black overlays (`rgba(0,0,0,0.5)`, `rgba(0,0,0,0.22)`) used for scrims and floating layers, keeping the green palette reserved exclusively for brand intent rather than spending it on shadow.
+
+### Decorative Depth
+- Glass tiles (`rgba(255,255,255,0.5)`) over hero imagery create a frosted, layered feel without heavy shadow
+- Dark footer band (`#00283d`) provides grounding contrast at page end
+- Mint tint (`#f3fff7`) sections create gentle figure-ground separation without elevation
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.ambient`: `rgba(0,0,0,0.08) 0px 2px 8px`
+- `shadow.standard`: `rgba(0,0,0,0.12) 0px 4px 16px`
+- `shadow.overlay`: `rgba(0,0,0,0.22) 0px 8px 24px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 150ms | Hover, focus, button press states |
+| `motion-standard` | 250ms | Dropdowns, tile hover lift, card reveals |
+| `motion-slow` | 400ms | Page-level transitions, hero / carousel reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Most two-way transitions |
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, menus |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+
+**Forbidden.** No bounce, no spring overshoot, no playful elastic motion. A bank's motion is steady and predictable — the same discipline as its color use. Carousels and hero reveals on the homepage move at the slow end (≈400ms) and never call attention to themselves.
+
+**Signature motions.**
+1. **Quick-action tile hover.** Gentle lift with the standard shadow (`rgba(0,0,0,0.12) 0px 4px 16px`) at `motion-standard / ease-standard`. No color flash — the tile rises, it does not light up.
+2. **Primary CTA press.** Brief darkening of the `#00512a` fill at `motion-fast`. Subtle, tactile, trustworthy.
+3. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all transitions collapse to near-instant. Carousels become static. Function is never sacrificed for delight.
+
+## Components
 
 ### Buttons
 
@@ -194,45 +389,19 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 **Country sources:** cathaybk.com.tw (brand-owned .tw), cathayholdings.com (國泰金控 group .tw), Apple App Store TW (CUBE App listing)
 **`.verification.md`:** `web/references/cathay/.verification.md`
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~5px, with the live DOM favoring multiples and near-multiples: 5px, 11px, 15px, 20px, 27px, 40px
-- Notable: button padding `12px 20px`, card padding `21-27px`, glass-tile padding `40px 15px` — generous internal breathing room on tappable surfaces
+| State | Treatment |
+|---|---|
+| **Empty (no transactions)** | Off-white canvas, single line in `#555555` at 16px: a plain statement that nothing has happened yet, plus one deep-green `#00512a` CTA to begin. No illustration clutter. |
+| **Loading** | Neutral skeleton blocks in `#eeeeee` at final dimensions, soft shimmer. No green spinner — loading stays neutral. |
+| **Error (form validation)** | Field-level message below the input, warn orange `#e87c07` accent + `#bebebe` emphasized border. Plain-language guidance on what to fix. |
+| **Error (service failure)** | Inline notice in regulator-aware tone. States what happened and the next step. No vague "something went wrong". |
+| **Success (action complete)** | Brief confirmation using bright green `#26a862` accent + `#f3fff7` mint background. Calm, past-tense, no exclamation. |
+| **Disabled** | Reduced opacity on the green action so it desaturates toward gray while keeping brand read. |
+| **Focus** | Deep green `#00512a` border / ring on inputs and buttons for keyboard accessibility. |
 
-### Grid & Container
-- Centered max-width content column with full-bleed hero and feature bands
-- Quick-action row: a horizontal strip of equal-width tiles (換匯 / 提款 / 轉帳 / 視訊) directly below the hero — task-first IA
-- Product/activity sections: multi-column card grids that collapse to single column on mobile
-- Footer: wide multi-column link directory grouping the broader Cathay Financial group on a dark `#00283d` band
-
-### Whitespace Philosophy
-- **Service density up top, marketing breathing room below**: The most-used banking tasks are packed tightly into the quick-action row, while promotional sections below get generous vertical spacing.
-- **Card-driven rhythm**: Nearly all content lives in 5px-radius white cards on the off-white canvas, so whitespace reads as the gap between cards rather than empty void.
-- **CJK-comfortable leading**: 1.5 line-height across the board gives Traditional Chinese paragraphs the air they need.
-
-### Border Radius Scale
-- The system is effectively single-radius: **5px** on buttons, cards, tiles, and inputs alike.
-- 0px on plain text links and full-width footer rows.
-- No pill shapes, no large 12px+ rounding — the uniform gentle 5px is a brand signature.
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, footer |
-| Ambient (Level 1) | `rgba(0,0,0,0.08) 0px 2px 8px` | Subtle card lift, hover hints |
-| Standard (Level 2) | `rgba(0,0,0,0.12) 0px 4px 16px` | Content cards, product cards |
-| Overlay (Level 3) | `rgba(0,0,0,0.22) 0px 8px 24px` | Dropdowns, modals, floating menus |
-
-**Shadow Philosophy**: Cathay's elevation is honest and neutral — soft black shadows (`rgba(0,0,0,...)`) with no color tint, in deliberate contrast to fintechs that brand their shadows. The bank's depth language is about subtle, trustworthy lift rather than dramatic float. The live DOM shows semi-transparent black overlays (`rgba(0,0,0,0.5)`, `rgba(0,0,0,0.22)`) used for scrims and floating layers, keeping the green palette reserved exclusively for brand intent rather than spending it on shadow.
-
-### Decorative Depth
-- Glass tiles (`rgba(255,255,255,0.5)`) over hero imagery create a frosted, layered feel without heavy shadow
-- Dark footer band (`#00283d`) provides grounding contrast at page end
-- Mint tint (`#f3fff7`) sections create gentle figure-ground separation without elevation
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use deep green `#00512a` for every primary CTA fill and outline border
@@ -253,151 +422,6 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 - Don't use orange `#e87c07` as an interactive/primary color — warning only
 - Don't replace off-white `#fafafa` with stark pure white across full pages
 - Don't bold body, nav, or button labels — they stay weight 400
-
-## 8. Responsive Behavior
-
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, stacked cards, quick-actions wrap to grid |
-| Tablet | 768-1024px | 2-column card grids, condensed nav |
-| Desktop | 1024-1440px | Full multi-column layout, horizontal quick-action row |
-| Large | >1440px | Centered content with wide margins |
-
-### Touch Targets
-- Buttons at 50px height — comfortably tappable
-- Quick-action tiles tall (≈187px) with 40px 15px padding for large tap zones
-- Footer links at 14px with row spacing for finger accuracy
-
-### Collapsing Strategy
-- Hero: 36px headline scales down on mobile, weight 700 maintained
-- Quick-action strip: horizontal row → 2-up or 3-up grid of tiles
-- Product/activity card grids: multi-column → single column stacked
-- Top nav: full horizontal → hamburger drawer
-- Footer directory: wide multi-column → stacked accordion groups
-
-### Image Behavior
-- Glass tiles over imagery keep `rgba(255,255,255,0.5)` legibility scrim at all sizes
-- Hero imagery crops to maintain headline contrast on narrow viewports
-- Card images keep the consistent 5px radius
-
-## 9. Agent Prompt Guide
-
-### Quick Color Reference
-- Primary CTA: Cathay Deep Green (`#00512a`)
-- Accent / icons: Cathay Bright Green (`#26a862`)
-- Accent tint: Mint (`#f3fff7`)
-- Background: Off-White (`#fafafa`)
-- Surface: White (`#ffffff`)
-- Heading text: Near-Black (`#333333`)
-- Body text: Slate (`#555555`)
-- Muted text: Gray (`#888888`)
-- Border: Hairline (`#eeeeee`)
-- Dark / footer: Teal-Navy (`#00283d`)
-- Warning: Orange (`#e87c07`)
-
-### Example Component Prompts
-- "Create a hero on off-white `#fafafa`. Headline 36px Noto Sans TC weight 700, line-height 1.5, color `#333333`. Below it a horizontal strip of quick-action tiles, each `rgba(255,255,255,0.5)` glass with 5px radius and 40px 15px padding. Primary CTA: `#00512a` fill, white text, 5px radius, 50px height, 12px 20px padding, weight 400."
-- "Design a product card: white `#ffffff` surface, 5px radius, 27px padding, shadow `rgba(0,0,0,0.12) 0px 4px 16px`. Title 18px weight 400 `#333333`, body 16px weight 400 `#555555`. Bottom CTA: deep green `#00512a` button, white text, 5px radius."
-- "Build an outline button: transparent fill, `#00512a` text, 1px solid `#00512a` border, 5px radius, 16px weight 400."
-- "Create a footer: dark `#00283d` background, white `#ffffff` links at 14px weight 400, grouped in multiple columns for the Cathay group companies."
-- "Design a green-themed highlight band: `#f3fff7` mint background, `#26a862` bright-green icons and emphasis, `#333333` body text, 5px-radius cards inside."
-
-### Iteration Guide
-1. Green is punctuation — keep neutrals dominant and apply `#00512a` / `#26a862` only on intent.
-2. Weight 700 for headlines, weight 400 for body / nav / buttons. No in-between.
-3. Every interactive surface gets the uniform 5px radius — never a pill.
-4. Use 1.5 line-height everywhere for Traditional Chinese comfort.
-5. Keep shadows neutral soft-black (`rgba(0,0,0,...)`) — never tint with green.
-6. Canvas is `#fafafa`, not pure white; surfaces are `#ffffff`.
-7. Ground dark surfaces and footers in teal-navy `#00283d`.
-8. Reserve orange `#e87c07` strictly for warnings, never CTAs.
-
----
-
-## 10. Voice & Tone
-
-Cathay United Bank's voice is warm, reassuring, and service-led — the tone of a knowledgeable teller who genuinely wants your everyday banking to be easier. The homepage tagline "每次都是更好的體驗" ("Every time, a better experience") and "用科技讓金融生活更安全簡單" ("Use technology to make financial life safer and simpler") set the register: progress framed as care, not disruption. Copy speaks directly to common life tasks — exchange currency, withdraw, transfer, set up mobile withdrawal — in plain, action-first Traditional Chinese.
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Warm, optimistic, human. "每次都是更好的體驗." Progress as care. |
-| Quick-action labels | Single concrete verb. "換匯", "提款", "轉帳", "視訊". No fluff. |
-| CTAs | Friendly invitation, not command. "我有興趣", "更多新鮮事", "想轉就轉". |
-| Product descriptions | Benefit-first, reassurance-led. Safety and simplicity foregrounded. |
-| Notices / fine print | Formal, regulator-aware, precise. Banking compliance register. |
-| Footer / legal | Institutional, exact. Group-company and policy links stated plainly. |
-
-**Forbidden register.** Hype superlatives ("革命性" / "revolutionary"), pressure tactics, anything that undercuts the bank's core promise of safety and trust. Cathay sells reassurance; the voice never gambles it for excitement.
-
-## 11. Brand Narrative
-
-Cathay United Bank (國泰世華商業銀行) is the banking arm of **Cathay Financial Holding** (國泰金控), one of Taiwan's largest financial groups, with the broader Cathay group spanning life insurance (國泰人壽), property insurance (國泰產險), securities (國泰綜合證券), investment trust (國泰投信), and more — all surfaced directly in the bank's own footer. The bank in its current form is the product of the 2003 merger of **Cathay Commercial Bank** and **United World Chinese Commercial Bank (世華聯合商業銀行)**, uniting two long-standing Taiwanese institutions under the Cathay umbrella.
-
-The contemporary digital identity centers on the **CUBE** brand — the CUBE App and CUBE credit card ("CUBE信用卡") form the consumer-facing core of a "better every time" product philosophy. The redirect from cathaybk.com.tw into the unified **cathay-cube.com.tw** experience signals the strategic bet: a single, technology-forward digital platform ("用科技讓金融生活更安全簡單") that consolidates everyday banking, cards, and lifestyle services. The deep Cathay green is the through-line connecting this modern digital surface back to the group's decades-long institutional heritage.
-
-What Cathay's design refuses: the cold marble-and-gold visual clichés of legacy banking, and the hype-driven aesthetics of disruptor fintech. What it embraces: a single trustworthy brand green used with discipline, airy off-white surfaces, bold-but-friendly Traditional Chinese type, and a task-first layout that treats the customer's daily needs as the product.
-
-## 12. Principles
-
-1. **Trust is the product.** Every color, weight, and corner radius serves the perception of a safe, dependable bank. Design that gambles trust for novelty is off-brand.
-2. **Green with discipline.** The brand green earns its impact precisely because it is rare — punctuation, never wallpaper. Neutrals carry the page so green can mean something.
-3. **Service before marketing.** The most common banking tasks sit above the fold in dense quick-action tiles; promotion gets the lower, airier real estate.
-4. **Readable in Traditional Chinese first.** 1.5 line-height and the Noto Sans TC pairing are non-negotiable — Han legibility outranks Latin-centric tightness.
-5. **One radius, one rhythm.** The uniform 5px corner across every surface is a quiet consistency that reads as institutional reliability.
-6. **Warm, not cold.** Off-white over stark white, bold-but-friendly headlines, optimistic bright green — the bank chooses approachability over austerity.
-7. **Honest depth.** Shadows stay neutral and subtle. Elevation signals function, never spectacle.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Cathay United Bank customer segments (everyday retail banking customers in Taiwan, CUBE App / CUBE card users, group cross-sell customers), not individual people.*
-
-**Lin Yi-chen (林宜臻), 29, Taipei.** Marketing coordinator and daily CUBE App user. Pays bills, splits dinners, and checks exchange rates before travel. Chose Cathay because the app made transfers and FX feel effortless. Trusts the green brand the way she trusts a familiar convenience store — always there, never surprising.
-
-**Chen Kuo-wei (陳國維), 47, Taichung.** Small-business owner banking with Cathay for both his shop's corporate account (企業金融) and his family's personal accounts. Values that one group covers banking, insurance, and securities. Notices and appreciates when the digital experience is "safer and simpler" because his time is scarce.
-
-**Wang Mei-ling (王美玲), 63, Kaohsiung.** Long-time customer since the United World Chinese Commercial Bank days. Prefers larger, high-contrast text and clear buttons. The bold 700-weight headlines, generous line-height, and obvious green CTAs make the site usable for her without help.
-
-**David Hsu (許大衛), 35, Hsinchu.** Engineer and private-banking-curious investor exploring wealth services (私人銀行). Reads carefully, distrusts hype, and is reassured by the bank's restrained, compliance-aware tone over flashier competitors.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no transactions)** | Off-white canvas, single line in `#555555` at 16px: a plain statement that nothing has happened yet, plus one deep-green `#00512a` CTA to begin. No illustration clutter. |
-| **Loading** | Neutral skeleton blocks in `#eeeeee` at final dimensions, soft shimmer. No green spinner — loading stays neutral. |
-| **Error (form validation)** | Field-level message below the input, warn orange `#e87c07` accent + `#bebebe` emphasized border. Plain-language guidance on what to fix. |
-| **Error (service failure)** | Inline notice in regulator-aware tone. States what happened and the next step. No vague "something went wrong". |
-| **Success (action complete)** | Brief confirmation using bright green `#26a862` accent + `#f3fff7` mint background. Calm, past-tense, no exclamation. |
-| **Disabled** | Reduced opacity on the green action so it desaturates toward gray while keeping brand read. |
-| **Focus** | Deep green `#00512a` border / ring on inputs and buttons for keyboard accessibility. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover, focus, button press states |
-| `motion-standard` | 250ms | Dropdowns, tile hover lift, card reveals |
-| `motion-slow` | 400ms | Page-level transitions, hero / carousel reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Most two-way transitions |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, menus |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Forbidden.** No bounce, no spring overshoot, no playful elastic motion. A bank's motion is steady and predictable — the same discipline as its color use. Carousels and hero reveals on the homepage move at the slow end (≈400ms) and never call attention to themselves.
-
-**Signature motions.**
-1. **Quick-action tile hover.** Gentle lift with the standard shadow (`rgba(0,0,0,0.12) 0px 4px 16px`) at `motion-standard / ease-standard`. No color flash — the tile rises, it does not light up.
-2. **Primary CTA press.** Brief darkening of the `#00512a` fill at `motion-fast`. Subtle, tactile, trustworthy.
-3. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all transitions collapse to near-instant. Carousels become static. Function is never sacrificed for delight.
-
-## 16. Do's and Don'ts
 
 ### Do
 - Anchor every primary action in deep green `#00512a` and keep accents in bright green `#26a862`.
@@ -438,3 +462,59 @@ people. Interpretive claims (e.g. "green as punctuation", "trust is the
 product") are editorial readings connecting the measured design system to the
 bank's stated safety-and-simplicity positioning.
 -->
+
+## Voice & Tone
+
+Cathay United Bank's voice is warm, reassuring, and service-led — the tone of a knowledgeable teller who genuinely wants your everyday banking to be easier. The homepage tagline "每次都是更好的體驗" ("Every time, a better experience") and "用科技讓金融生活更安全簡單" ("Use technology to make financial life safer and simpler") set the register: progress framed as care, not disruption. Copy speaks directly to common life tasks — exchange currency, withdraw, transfer, set up mobile withdrawal — in plain, action-first Traditional Chinese.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Warm, optimistic, human. "每次都是更好的體驗." Progress as care. |
+| Quick-action labels | Single concrete verb. "換匯", "提款", "轉帳", "視訊". No fluff. |
+| CTAs | Friendly invitation, not command. "我有興趣", "更多新鮮事", "想轉就轉". |
+| Product descriptions | Benefit-first, reassurance-led. Safety and simplicity foregrounded. |
+| Notices / fine print | Formal, regulator-aware, precise. Banking compliance register. |
+| Footer / legal | Institutional, exact. Group-company and policy links stated plainly. |
+
+**Forbidden register.** Hype superlatives ("革命性" / "revolutionary"), pressure tactics, anything that undercuts the bank's core promise of safety and trust. Cathay sells reassurance; the voice never gambles it for excitement.
+
+## Agent Prompt Guide
+
+### Quick Color Reference
+- Primary CTA: Cathay Deep Green (`#00512a`)
+- Accent / icons: Cathay Bright Green (`#26a862`)
+- Accent tint: Mint (`#f3fff7`)
+- Background: Off-White (`#fafafa`)
+- Surface: White (`#ffffff`)
+- Heading text: Near-Black (`#333333`)
+- Body text: Slate (`#555555`)
+- Muted text: Gray (`#888888`)
+- Border: Hairline (`#eeeeee`)
+- Dark / footer: Teal-Navy (`#00283d`)
+- Warning: Orange (`#e87c07`)
+
+### Example Component Prompts
+- "Create a hero on off-white `#fafafa`. Headline 36px Noto Sans TC weight 700, line-height 1.5, color `#333333`. Below it a horizontal strip of quick-action tiles, each `rgba(255,255,255,0.5)` glass with 5px radius and 40px 15px padding. Primary CTA: `#00512a` fill, white text, 5px radius, 50px height, 12px 20px padding, weight 400."
+- "Design a product card: white `#ffffff` surface, 5px radius, 27px padding, shadow `rgba(0,0,0,0.12) 0px 4px 16px`. Title 18px weight 400 `#333333`, body 16px weight 400 `#555555`. Bottom CTA: deep green `#00512a` button, white text, 5px radius."
+- "Build an outline button: transparent fill, `#00512a` text, 1px solid `#00512a` border, 5px radius, 16px weight 400."
+- "Create a footer: dark `#00283d` background, white `#ffffff` links at 14px weight 400, grouped in multiple columns for the Cathay group companies."
+- "Design a green-themed highlight band: `#f3fff7` mint background, `#26a862` bright-green icons and emphasis, `#333333` body text, 5px-radius cards inside."
+
+### Iteration Guide
+1. Green is punctuation — keep neutrals dominant and apply `#00512a` / `#26a862` only on intent.
+2. Weight 700 for headlines, weight 400 for body / nav / buttons. No in-between.
+3. Every interactive surface gets the uniform 5px radius — never a pill.
+4. Use 1.5 line-height everywhere for Traditional Chinese comfort.
+5. Keep shadows neutral soft-black (`rgba(0,0,0,...)`) — never tint with green.
+6. Canvas is `#fafafa`, not pure white; surfaces are `#ffffff`.
+7. Ground dark surfaces and footers in teal-navy `#00283d`.
+8. Reserve orange `#e87c07` strictly for warnings, never CTAs.
+
+---
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `button-outline`.** Text `#00512a` on `#00000000` measures 2.21:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

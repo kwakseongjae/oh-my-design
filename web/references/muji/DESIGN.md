@@ -1,74 +1,233 @@
 ---
-id: muji
 name: MUJI
-country: JP
-category: ecommerce
-homepage: "https://www.muji.com"
-primary_color: "#7f0019"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=muji.com&sz=128"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#333333"
-    primary-hover: "#000000"
-    brand: "#7f0019"
-    brand-hover: "#6b0015"
-    canvas: "#ffffff"
-    surface: "#f7f7f7"
-    foreground: "#333333"
-    muted: "#666666"
-    on-primary: "#ffffff"
-    hairline: "#dddddd"
-    border-strong: "#cccccc"
-    error: "#c0392b"
-    success: "#4a7c59"
-  typography:
-    family: { sans: "Helvetica Neue", mono: "Helvetica Neue" }
-    page-title:    { size: 28, weight: 300, lineHeight: 1.4, tracking: 0.02, use: "Quiet authority page title" }
-    section:       { size: 22, weight: 400, lineHeight: 1.4, tracking: 0.02, use: "Category / section titles" }
-    subheading:    { size: 18, weight: 400, lineHeight: 1.5, tracking: 0.02, use: "Card titles, group labels" }
-    lead:          { size: 16, weight: 300, lineHeight: 1.7, tracking: 0.02, use: "Editorial intro paragraphs" }
-    body:          { size: 14, weight: 400, lineHeight: 1.7, tracking: 0.02, use: "Standard reading text" }
-    body-small:    { size: 13, weight: 400, lineHeight: 1.6, tracking: 0.02, use: "Product descriptions, dense copy" }
-    caption:       { size: 12, weight: 400, lineHeight: 1.5, tracking: 0.04, use: "Metadata, legal, breadcrumbs" }
-    price:         { size: 16, weight: 400, lineHeight: 1.3, use: "Product price" }
-    button:        { size: 14, weight: 400, lineHeight: 1.0, tracking: 0.04, use: "Add to cart, primary actions" }
-  spacing: [4, 8, 12, 16, 24, 32, 48, 64, 96]
-  rounded: { sm: 2, md: 2, lg: 2, full: 9999 }
-  shadow:
-    subtle: "0 2px 8px rgba(0,0,0,0.08)"
-    modal: "0 4px 24px rgba(0,0,0,0.16)"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#333333", fg: "#ffffff", radius: "2px", padding: "14px 24px", font: "14px / 400", states: "hover #000000", use: "Single primary action (add to cart / checkout)" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #333333", radius: "2px", padding: "13px 24px", font: "14px / 400", states: "hover bg #f7f7f7", use: "Secondary actions" }
-    button-tertiary: { type: button, bg: "transparent", fg: "#666666", border: "1px solid #dddddd", radius: "2px", padding: "10px 16px", font: "13px / 400", use: "Low-priority actions, filters" }
-    button-brand: { type: button, bg: "#7f0019", fg: "#ffffff", radius: "2px", padding: "14px 24px", font: "14px / 400", states: "hover #6b0015", use: "Sale / campaign CTAs only" }
-    button-disabled: { type: button, bg: "#eeeeee", fg: "#999999", radius: "2px", use: "Out-of-stock, unavailable" }
-    input: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #cccccc", radius: "2px", padding: "12px 14px", font: "14px / 400", focus: "border #333333, no glow", use: "Standard form field" }
-    input-error: { type: input, bg: "#ffffff", border: "1px solid #c0392b", radius: "2px", use: "Validation failure, help text #c0392b" }
-    card-product: { type: card, bg: "#ffffff", radius: "0px", padding: "0", shadow: "none", use: "Catalog grid card, photo is the card" }
-    card-editorial: { type: card, bg: "#ffffff", border: "1px solid #eeeeee", radius: "2px", padding: "20px", shadow: "none", use: "Story modules, info panels" }
-    tag-sale: { type: badge, bg: "#7f0019", fg: "#ffffff", radius: "0px", padding: "2px 8px", font: "11px / 400", use: "Sale indicator, printed-label feel" }
-    tag-neutral: { type: badge, bg: "#eeeeee", fg: "#666666", radius: "0px", padding: "2px 8px", font: "11px / 400", use: "NEW, category labels" }
-    tab: { type: tab, fg: "#999999", font: "14px / 400", active: "text #333333, 2px bottom border #333333", use: "PDP detail tabs, category switching" }
-    segmented: { type: tab, bg: "#eeeeee", radius: "2px", font: "13px / 400", active: "bg #ffffff, text #333333", use: "View toggles, sort modes" }
-    toast: { type: toast, bg: "#333333", fg: "#ffffff", radius: "2px", padding: "12px 16px", shadow: "0 2px 8px rgba(0,0,0,0.12)", font: "13px / 400", use: "Transient confirmation" }
-    notice-inline: { type: card, bg: "#f7f7f7", fg: "#333333", border: "2px solid #7f0019", radius: "0px", padding: "12px 16px", use: "Shipping info, stock notices" }
-    dialog: { type: dialog, bg: "#ffffff", fg: "#333333", radius: "2px", padding: "32px", shadow: "0 4px 24px rgba(0,0,0,0.16)", use: "Confirmation, size guide, login" }
-    checkbox: { type: toggle, border: "1px solid #cccccc", radius: "2px", active: "#333333 fill, white check", use: "Filters, terms agreement, square" }
-    toggle: { type: toggle, bg: "#cccccc", radius: "9999px", active: "track #333333, white thumb", use: "Newsletter / setting switches" }
+colors:
+  primary: '#333333'
+  primary-hover: '#000000'
+  brand: '#7f0019'
+  brand-hover: '#6b0015'
+  canvas: '#ffffff'
+  surface: '#f7f7f7'
+  foreground: '#333333'
+  muted: '#666666'
+  on-primary: '#ffffff'
+  hairline: '#dddddd'
+  border-strong: '#cccccc'
+  error: '#c0392b'
+  success: '#4a7c59'
+typography:
+  page-title:
+    fontSize: 28px
+    fontWeight: 300
+    lineHeight: 1.4
+    letterSpacing: 0.02px
+    use: Quiet authority page title
+  section:
+    fontSize: 22px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: 0.02px
+    use: Category / section titles
+  subheading:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0.02px
+    use: Card titles, group labels
+  lead:
+    fontSize: 16px
+    fontWeight: 300
+    lineHeight: 1.7
+    letterSpacing: 0.02px
+    use: Editorial intro paragraphs
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.7
+    letterSpacing: 0.02px
+    use: Standard reading text
+  body-small:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: 0.02px
+    use: Product descriptions, dense copy
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0.04px
+    use: Metadata, legal, breadcrumbs
+  price:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.3
+    use: Product price
+  button:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: 0.04px
+    use: Add to cart, primary actions
+rounded:
+  sm: 2px
+  md: 2px
+  lg: 2px
+  full: 9999px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#333333'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 14px 24px
+    typography: 14px / 400
+    states: 'hover #000000'
+    use: Single primary action (add to cart / checkout)
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #333333'
+    rounded: 2px
+    padding: 13px 24px
+    typography: 14px / 400
+    states: 'hover bg #f7f7f7'
+    use: Secondary actions
+  button-tertiary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#666666'
+    border: '1px solid #dddddd'
+    rounded: 2px
+    padding: 10px 16px
+    typography: 13px / 400
+    use: Low-priority actions, filters
+  button-brand:
+    type: button
+    backgroundColor: '#7f0019'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 14px 24px
+    typography: 14px / 400
+    states: 'hover #6b0015'
+    use: Sale / campaign CTAs only
+  button-disabled:
+    type: button
+    backgroundColor: '#eeeeee'
+    textColor: '#999999'
+    rounded: 2px
+    use: Out-of-stock, unavailable
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #cccccc'
+    rounded: 2px
+    padding: 12px 14px
+    typography: 14px / 400
+    focus: 'border #333333, no glow'
+    use: Standard form field
+  input-error:
+    type: input
+    backgroundColor: '#ffffff'
+    border: '1px solid #c0392b'
+    rounded: 2px
+    use: 'Validation failure, help text #c0392b'
+  card-product:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 0px
+    padding: '0'
+    shadow: none
+    use: Catalog grid card, photo is the card
+  card-editorial:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #eeeeee'
+    rounded: 2px
+    padding: 20px
+    shadow: none
+    use: Story modules, info panels
+  tag-sale:
+    type: badge
+    backgroundColor: '#7f0019'
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 2px 8px
+    typography: 11px / 400
+    use: Sale indicator, printed-label feel
+  tag-neutral:
+    type: badge
+    backgroundColor: '#eeeeee'
+    textColor: '#666666'
+    rounded: 0px
+    padding: 2px 8px
+    typography: 11px / 400
+    use: NEW, category labels
+  tab:
+    type: tab
+    textColor: '#999999'
+    typography: 14px / 400
+    active: 'text #333333, 2px bottom border #333333'
+    use: PDP detail tabs, category switching
+  segmented:
+    type: tab
+    backgroundColor: '#eeeeee'
+    rounded: 2px
+    typography: 13px / 400
+    active: 'bg #ffffff, text #333333'
+    use: View toggles, sort modes
+  toast:
+    type: toast
+    backgroundColor: '#333333'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 12px 16px
+    shadow: 0 2px 8px rgba(0,0,0,0.12)
+    typography: 13px / 400
+    use: Transient confirmation
+  notice-inline:
+    type: card
+    backgroundColor: '#f7f7f7'
+    textColor: '#333333'
+    border: '2px solid #7f0019'
+    rounded: 0px
+    padding: 12px 16px
+    use: Shipping info, stock notices
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    rounded: 2px
+    padding: 32px
+    shadow: 0 4px 24px rgba(0,0,0,0.16)
+    use: Confirmation, size guide, login
+  checkbox:
+    type: toggle
+    border: '1px solid #cccccc'
+    rounded: 2px
+    active: '#333333 fill, white check'
+    use: Filters, terms agreement, square
+  toggle:
+    type: toggle
+    backgroundColor: '#cccccc'
+    rounded: 9999px
+    active: 'track #333333, white thumb'
+    use: Newsletter / setting switches
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: Helvetica Neue
+    mono: Helvetica Neue
 ---
 
 # Design System Inspiration of MUJI (無印良品)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 MUJI — *Mujirushi Ryohin* (無印良品), "no-brand quality goods" — is the rare retailer whose entire visual identity is an argument *against* visual identity. Founded in 1980 as a product line inside the Seiyu supermarket chain, MUJI was a deliberate rejection of the brand-premium economics of late-bubble Japan: strip out the packaging, strip out the logo tax, keep the material quality. The website is the digital extension of that thesis. It opens on a near-white canvas (`#ffffff` / `#f7f7f7`) with quiet near-black text (`#333333`) and exactly one chromatic note in the whole system — the signature MUJI maroon (`#7f0019`), reserved almost entirely for the logo plate and a few load-bearing accents.
 
@@ -86,7 +245,7 @@ What defines MUJI visually is restraint taken to the level of doctrine. The maro
 - Generous whitespace and wide margins as the core compositional tool
 - Product photography does the talking; chrome stays silent
 
-## Primary tasks
+### Primary tasks
 
 - Scan a category grid of products without visual noise
 - Read a product description for its material and origin
@@ -94,7 +253,36 @@ What defines MUJI visually is restraint taken to the level of doctrine. The maro
 - Build a wishlist on mobile while browsing categories
 - Check whether an item is out of stock before ordering
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+MUJI launched in **December 1980** as a 40-item private label inside the **Seiyu** supermarket chain, not as a standalone company. Japan's post-bubble consumers were beginning to ask whether they were paying for objects or for the packaging and advertising wrapped around them. MUJI's founding answer — encoded in the name *無印良品*, "no-mark quality goods" — was to strip the brand premium out entirely: remove the logo, remove the decorative packaging, simplify the production process, and pass the honesty on as both lower price and higher trust. The first slogan, *「わけあって、安い」* ("Lower priced for a reason"), made the logic explicit: cheaper *because* of deliberate choices, not despite them.
+
+The visual program matured under art director **Kenya Hara**, who joined in 2001 and articulated the concept of **emptiness** (空 / 無) as distinct from minimalism. In a 2017 conversation with *Dezeen*, Hara drew the line sharply: minimalism is a Western system for reducing elements to their essential form; emptiness is a *prior* state — a vessel open enough that the user determines what an object means. A MUJI product, like a MUJI page, does not present a finished argument; it presents an open container. This is why the design refuses to over-specify: square corners, neutral Helvetica Neue, white grounds, and a single reserved maroon are not stylistic preferences but the formal expression of *mu* — a refusal to crowd the user's own meaning out.
+
+What MUJI refuses is instructive: the status-signaling of luxury branding, the urgency theater of discount retail, the chromatic noise of mass-market e-commerce, and the "delightful" decoration of consumer apps. What it embraces is the calm of good paper, the dignity of an ordinary object well made, and the radical idea that the most confident thing a brand can do is get out of the way.
+
+### Principles
+
+1. **Emptiness, not minimalism.** The goal is not to remove until nothing remains; it is to leave an open vessel the user completes. Whitespace invites, it doesn't merely subtract.
+2. **The product speaks; the chrome is silent.** Every UI decision should recede so merchandise photography carries the page. If chrome competes with the product, the chrome is wrong.
+3. **One color, held precious.** Maroon (`#7f0019`) appears only as the brand mark and rare sale accent. The moment it becomes a generic accent, it stops meaning "MUJI."
+4. **Square is honest.** Corners are 0px (or barely 2px). Rounded, friendly corners editorialize; the printed-page squareness states the facts plainly.
+5. **No black, no shouting.** Text is `#333333`, headings are weight 300. Authority comes from calm, not from contrast cranked to maximum.
+6. **Separate with air and hairlines.** Whitespace first, a 1px `#dddddd` rule second. Shadows only where physics demands (header over scroll, modal over scrim).
+7. **"This will do" over "this is the best."** Copy and design both choose modest sufficiency over aspirational excess. Restraint *is* the value proposition.
+8. **Evenness as calm.** Spacing is regular and predictable. A tidy, evenly stocked shelf — never a dramatic, density-jolting layout.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable MUJI customer segments (design-conscious urban professionals, minimalist-lifestyle adopters, students furnishing first apartments), not individual people.*
+
+**佐藤 美咲 (Misaki Sato), 32, Tokyo.** UX designer furnishing a small Setagaya apartment. Shops MUJI online for storage, stationery, and skincare because the products "don't decorate" her space — they recede the way good tools should. Notices immediately when an e-commerce site adds shadows and gradients to feel premium; to her that reads as trying too hard. Trusts MUJI precisely because the site looks like it isn't selling. Reads product copy for material and origin, ignores marketing adjectives.
+
+**James Whitfield, 41, London.** Architect, MUJI shopper for over a decade across stores and online. Buys in muted color stories and appreciates that the catalog photography is honest — the linen looks like the linen that arrives. Would be put off by urgency banners or countdown timers; he associates them with brands he distrusts. Values the wide whitespace and square product grid because he can scan a category quickly without visual noise competing for attention.
+
+**김지원 (Jiwon Kim), 24, Seoul.** Graduate student, first independent apartment. MUJI is aspirational-but-attainable — affordable goods that signal taste without logos. Browses on mobile, building a wishlist of pens, a CD player, and acrylic drawers. Cares that the mobile site is calm and fast; full-width near-black buttons and a clean single-column flow make checkout feel effortless. Came for the aesthetic, stayed because "これでいい" — it's enough, and that's the point.
+
+## Colors
 
 ### Primary / Brand
 - **MUJI Maroon** (`#7f0019`): The single signature brand color (RGB 127, 0, 25). Used for the logo plate, the "MUJI" wordmark background, and a handful of high-priority accents (sale tags, active brand-nav markers). Deep brick-red with no orange in it — somber, traditional, Japanese.
@@ -124,7 +312,7 @@ What defines MUJI visually is restraint taken to the level of doctrine. The maro
 - **Footer Ground** (`#333333`): Footer / global navigation dark band on some regional sites.
 - **Footer Text** (`#ffffff` / `rgba(255,255,255,0.7)`): Footer links and muted secondary footer text.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary (Latin)**: `"Helvetica Neue", Helvetica, Arial, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif`
@@ -154,7 +342,150 @@ What defines MUJI visually is restraint taken to the level of doctrine. The maro
 - **No bold for hierarchy**: Hierarchy comes from size and color (Ink → Ink Secondary), not from heavy weights. Bold (700) is rare and reserved for an active price or a single emphasized word.
 - **Two scripts, one neutrality**: Latin Helvetica Neue and Japanese gothic are weighted to sit calmly together; neither dominates. No decorative serif/mincho enters the chrome.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- Section vertical rhythm is large: 64px–96px between major bands
+- Product grids use tight internal gutters (8px–16px) but wide outer margins
+
+### Grid & Container
+- Max content width: ~1180px, centered
+- Wide page gutters — content rarely touches the viewport edge except for full-bleed campaign imagery
+- Product catalog: 4–5 column grid on desktop, even gutters, square cells
+- Editorial: single centered column ~720px for readable measure
+- Full-bleed hero/campaign bands alternate with constrained content columns
+
+### Whitespace Philosophy
+- **Emptiness is the material.** Whitespace is not leftover space; it is the primary compositional element. A product floating in white communicates quality more than any frame could.
+- **Let the product speak.** Chrome recedes so merchandise photography carries the page. Reducing UI ornament is a feature, not a constraint.
+- **Even, calm rhythm.** Spacing is regular and predictable — no dramatic density shifts. The page should feel like a tidy shelf, evenly stocked.
+- **Wide margins as luxury.** Generous outer margins signal confidence; cramming signals discount-bin urgency, which MUJI refuses.
+
+### Border Radius Scale
+- Square (0px): Product cards, tags, image frames, banners — the default
+- Hairline (2px): Buttons, inputs, modals, content cards — barely softened
+- Pill (9999px): Toggle switches only
+- **No large radii.** Nothing rounder than 2px except the toggle. Square corners are intrinsic to the printed, no-nonsense MUJI feel.
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single/2-column product grid, hamburger nav, full-width buttons |
+| Tablet | 768–1024px | 3-column grid, condensed nav |
+| Desktop | 1024–1280px | 4-column grid, full global nav |
+| Large | >1280px | 5-column grid, centered ~1180px content with wide margins |
+
+#### Touch Targets
+- Buttons: minimum 44px tall on mobile
+- Product cards: full tappable cell; tap targets never smaller than the photo
+- Nav items and filters: comfortable 44px rows in the mobile drawer
+
+#### Collapsing Strategy
+- Global nav collapses to a hamburger drawer with full-height white panel
+- Product grid: 5→4→3→2 columns down the breakpoints
+- Primary buttons become full-width on mobile
+- Editorial column stays centered, padding reduces from 32px to 16px
+- Sticky add-to-cart bar appears on mobile PDP, white with hairline top border
+
+#### Image Behavior
+- Product photography maintains square/3:4 ratio across breakpoints
+- Full-bleed campaign imagery scales edge-to-edge; text overlays reflow below image on mobile
+- Images stay on white/off-white ground — never cropped tightly or framed with shadow
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `spacing`: `[4,8,12,16,24,32,48,64,96]`
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, product cards, most surfaces — the default |
+| Hairline (Level 1) | 1px solid `#dddddd` border | Separation without shadow — the primary "elevation" device |
+| Subtle (Level 2) | `0 2px 8px rgba(0,0,0,0.08)` | Sticky header on scroll, toast |
+| Modal (Level 3) | `0 4px 24px rgba(0,0,0,0.16)` | Dialogs, dropdown menus |
+
+**Shadow Philosophy**: MUJI's depth system is, by design, almost no depth at all. Where most e-commerce leans on cards-with-shadows to create hierarchy, MUJI separates elements with whitespace and hairline borders (`#dddddd`). Shadows are pure neutral black at low opacity and appear only where physically necessary — a header floating over scrolling content, a modal over a scrim. There are no colored shadows, no multi-layer elevation, no "lifted" decorative cards. Flatness is the brand statement: a printed page does not cast shadows, and MUJI's digital surfaces aspire to the calm of good paper.
+
+### Blur Effects
+- Sticky header may apply a light `backdrop-filter: blur(8px)` with a translucent white background on scroll
+- Otherwise blur is avoided — clarity over effect
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `0 2px 8px rgba(0,0,0,0.08)`
+- `shadow.modal`: `0 4px 24px rgba(0,0,0,0.16)`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Checkbox/toggle state commits, focus borders |
+| `motion-fast` | 150ms | Hover tints, button press, small fades |
+| `motion-standard` | 250ms | Dropdown, drawer, modal, image crossfade |
+| `motion-slow` | 400ms | Page-level transitions, hero reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Arriving — drawers, modals, fades-in |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tabs, accordions |
+
+**Explicitly avoided.** No spring, no bounce, no overshoot. Playful or kinetic motion contradicts the calm-paper register — a MUJI surface should never feel "delightful" in the consumer-app sense. Motion exists to soften transitions, not to entertain. No `cubic-bezier` with a control value above `1.0` anywhere.
+
+**Signature motions.**
+
+1. **Image crossfade.** Product-gallery thumbnails crossfade the main image over `motion-standard / ease-standard`. Never a slide or zoom — the photograph simply replaces itself, calmly.
+2. **Drawer / hamburger nav.** The mobile nav panel slides in from the side over `motion-standard / ease-enter` with a synchronized `rgba(0,0,0,0.4)` scrim fade. Dismissal uses `motion-fast / ease-exit` — leaving is lighter than arriving.
+3. **Hover tint, not lift.** Cards and buttons respond to hover with a `motion-fast` background tint (`#f7f7f7`) or border darken — never a shadow or translate. Elements do not "lift"; flatness is preserved.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Crossfades become instant swaps. The site stays fully usable; nothing is lost but the easing.
+
+<!--
+OmD v0.1 Sources
+
+Direct verification via WebSearch (2026-06-06):
+- brandcolorcode.com/muji — MUJI Red #7F0019, RGB (127, 0, 25), listed as the
+  single documented MUJI brand color.
+- encycolorpedia.com/7f0019 and colorswall — corroborate #7f0019 as MUJI's
+  signature maroon; related tints #8c1a30, #993347 reported by registries.
+- fontalternatives.com/inspiration/muji-helvetica — confirms Helvetica Neue as
+  MUJI's Latin typeface, refined under art director Kenya Hara across signage,
+  packaging, and advertising.
+- dezeen.com (2017-12-13 Kenya Hara interview) and bworldonline.com — confirm
+  Hara as art director since 2001 and the "emptiness" (空/無) philosophy as
+  distinct from minimalism.
+- General brand history (founded December 1980 as a Seiyu private label;
+  「わけあって、安い」 founding slogan; 無印良品 = "no-brand quality goods")
+  is widely documented and used as context.
+
+Token-level chrome values (#333333 ink, #f7f7f7 / #eeeeee / #dddddd neutrals,
+2px button/input radius, square cards, near-black primary buttons, Helvetica
+Neue type scale) are read from the live muji.com chrome and conformed to MUJI's
+documented minimalist/emptiness doctrine. MUJI publishes no public design-token
+system, so these are observational, not from an official spec.
+
+Personas (§13) are fictional archetypes informed by publicly observable MUJI
+customer segments. Names are illustrative and do not refer to real people.
+
+Interpretive claims (e.g., "square is honest", "one color held precious",
+"this will do over this is the best") are editorial readings connecting MUJI's
+stated no-brand / emptiness philosophy to its visual system, not directly
+sourced MUJI statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -364,49 +695,23 @@ MUJI product cards are nearly invisible frames — the photograph is the card.
 **Conflicts:** none. `#7f0019` is consistently reported as the singular MUJI brand color; the brand intentionally avoids a broader chromatic palette.
 **Note:** MUJI publishes no public token-level design system; chrome values are read from the live site and brand-color registries, then conformed to the brand's documented minimalist doctrine.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
-- Section vertical rhythm is large: 64px–96px between major bands
-- Product grids use tight internal gutters (8px–16px) but wide outer margins
+| State | Treatment |
+|---|---|
+| **Empty (no search results)** | White canvas. Single line in Ink (`#333333`) 14px: "該当する商品はありません". One quiet outline CTA to clear filters. No illustration. |
+| **Empty (empty cart)** | Centered single line `#666666`: "カートに商品がありません". One near-black button "お買い物を続ける". Calm, never cute. |
+| **Loading (grid first paint)** | Skeleton blocks in `#eeeeee` at exact product-cell dimensions. Subtle 1.2s shimmer. No spinners on the main grid. |
+| **Loading (action in progress)** | Button label swaps to a small neutral spinner; button keeps its width and `#333333` fill. No color change. |
+| **Error (form validation)** | Field border becomes `#c0392b` (distinct from brand maroon), 12px help text below in the same red. Specific and blameless: states what to fix. |
+| **Error (page-level)** | Inline notice: `#f7f7f7` background, 2px `#7f0019` left border, `#333333` text. One sentence, one action. |
+| **Success (added to cart)** | `#333333` toast, white text, 2px radius, brief `0 2px 8px rgba(0,0,0,0.08)` shadow, 3s auto-dismiss: "カートに追加しました". No emoji. |
+| **Success (order placed)** | Dedicated confirmation page, not a toast. Quiet `#4a7c59` confirmation mark, order summary in plain Ink type, single "続けてお買い物" button. |
+| **Skeleton** | `#eeeeee` blocks at final dimensions, square corners matching the cards. Shimmer is neutral, no brand tint. |
+| **Disabled** | `#eeeeee` background, `#999999` text. Used for out-of-stock add-to-cart. Geometry unchanged so re-enabling is stable. |
+| **Out of stock** | Product card stays; price replaced by `#999999` "在庫切れ" label; add-to-cart disabled. No alarming red. |
 
-### Grid & Container
-- Max content width: ~1180px, centered
-- Wide page gutters — content rarely touches the viewport edge except for full-bleed campaign imagery
-- Product catalog: 4–5 column grid on desktop, even gutters, square cells
-- Editorial: single centered column ~720px for readable measure
-- Full-bleed hero/campaign bands alternate with constrained content columns
-
-### Whitespace Philosophy
-- **Emptiness is the material.** Whitespace is not leftover space; it is the primary compositional element. A product floating in white communicates quality more than any frame could.
-- **Let the product speak.** Chrome recedes so merchandise photography carries the page. Reducing UI ornament is a feature, not a constraint.
-- **Even, calm rhythm.** Spacing is regular and predictable — no dramatic density shifts. The page should feel like a tidy shelf, evenly stocked.
-- **Wide margins as luxury.** Generous outer margins signal confidence; cramming signals discount-bin urgency, which MUJI refuses.
-
-### Border Radius Scale
-- Square (0px): Product cards, tags, image frames, banners — the default
-- Hairline (2px): Buttons, inputs, modals, content cards — barely softened
-- Pill (9999px): Toggle switches only
-- **No large radii.** Nothing rounder than 2px except the toggle. Square corners are intrinsic to the printed, no-nonsense MUJI feel.
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, product cards, most surfaces — the default |
-| Hairline (Level 1) | 1px solid `#dddddd` border | Separation without shadow — the primary "elevation" device |
-| Subtle (Level 2) | `0 2px 8px rgba(0,0,0,0.08)` | Sticky header on scroll, toast |
-| Modal (Level 3) | `0 4px 24px rgba(0,0,0,0.16)` | Dialogs, dropdown menus |
-
-**Shadow Philosophy**: MUJI's depth system is, by design, almost no depth at all. Where most e-commerce leans on cards-with-shadows to create hierarchy, MUJI separates elements with whitespace and hairline borders (`#dddddd`). Shadows are pure neutral black at low opacity and appear only where physically necessary — a header floating over scrolling content, a modal over a scrim. There are no colored shadows, no multi-layer elevation, no "lifted" decorative cards. Flatness is the brand statement: a printed page does not cast shadows, and MUJI's digital surfaces aspire to the calm of good paper.
-
-### Blur Effects
-- Sticky header may apply a light `backdrop-filter: blur(8px)` with a translucent white background on scroll
-- Otherwise blur is avoided — clarity over effect
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Reserve MUJI Maroon (`#7f0019`) for the logo and rare brand accents — treat it as precious
@@ -428,34 +733,23 @@ MUJI product cards are nearly invisible frames — the photograph is the card.
 - Don't use pure black text or gradients
 - Don't let chrome compete with merchandise photography
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single/2-column product grid, hamburger nav, full-width buttons |
-| Tablet | 768–1024px | 3-column grid, condensed nav |
-| Desktop | 1024–1280px | 4-column grid, full global nav |
-| Large | >1280px | 5-column grid, centered ~1180px content with wide margins |
+MUJI's voice is plain, unhurried, and quietly declarative — the verbal equivalent of an unbranded paper bag. It describes, it does not sell. The brand's own founding register is captured in its 1980 slogan *「わけあって、安い」* ("Lower priced for a reason") and the recurring *「これがいい」ではなく「これでいい」* framing — not "this is *the best*," but "this *will do*," a deliberately modest contentment over assertive desire. Copy explains the material, the process, and the reason a thing is the way it is. There are no superlatives, no urgency theater, no exclamation points on routine surfaces.
 
-### Touch Targets
-- Buttons: minimum 44px tall on mobile
-- Product cards: full tappable cell; tap targets never smaller than the photo
-- Nav items and filters: comfortable 44px rows in the mobile drawer
+| Context | Tone |
+|---|---|
+| Product descriptions | Factual, material-first. "オーガニックコットン100%。" States what it is and why. Never "amazing" or "luxurious". |
+| CTAs | Plain imperative. "カートに入れる", "ご購入手続きへ", "もっと見る". No hype verbs. |
+| Sale messaging | Reason-given, never panicked. "わけあって、安い。" Explains the why; no countdown urgency. |
+| Confirmation | Calm past-tense. "カートに追加しました". No emoji, no celebration. |
+| Editorial / story | Reflective, essayistic — the "emptiness" voice. Talks about everyday life, not features. |
+| Empty states | Honest and brief. "該当する商品はありません". Offers a quiet next step. |
+| Error messages | Plain and blameless. States what to fix, no apology theater. |
 
-### Collapsing Strategy
-- Global nav collapses to a hamburger drawer with full-height white panel
-- Product grid: 5→4→3→2 columns down the breakpoints
-- Primary buttons become full-width on mobile
-- Editorial column stays centered, padding reduces from 32px to 16px
-- Sticky add-to-cart bar appears on mobile PDP, white with hairline top border
+**Forbidden register.** No superlatives ("最高", "革命的", "amazing", "luxury"), no urgency manipulation ("今だけ!急いで!"), no exclamation marks on routine CTAs, no emoji on product or checkout surfaces. MUJI never claims to be the best — claiming superiority contradicts the no-brand premise. The voice is "this will do," stated with calm conviction.
 
-### Image Behavior
-- Product photography maintains square/3:4 ratio across breakpoints
-- Full-bleed campaign imagery scales edge-to-edge; text overlays reflow below image on mobile
-- Images stay on white/off-white ground — never cropped tightly or framed with shadow
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Brand mark / sale accent: MUJI Maroon (`#7f0019`)
@@ -490,124 +784,9 @@ MUJI product cards are nearly invisible frames — the photograph is the card.
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-MUJI's voice is plain, unhurried, and quietly declarative — the verbal equivalent of an unbranded paper bag. It describes, it does not sell. The brand's own founding register is captured in its 1980 slogan *「わけあって、安い」* ("Lower priced for a reason") and the recurring *「これがいい」ではなく「これでいい」* framing — not "this is *the best*," but "this *will do*," a deliberately modest contentment over assertive desire. Copy explains the material, the process, and the reason a thing is the way it is. There are no superlatives, no urgency theater, no exclamation points on routine surfaces.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Product descriptions | Factual, material-first. "オーガニックコットン100%。" States what it is and why. Never "amazing" or "luxurious". |
-| CTAs | Plain imperative. "カートに入れる", "ご購入手続きへ", "もっと見る". No hype verbs. |
-| Sale messaging | Reason-given, never panicked. "わけあって、安い。" Explains the why; no countdown urgency. |
-| Confirmation | Calm past-tense. "カートに追加しました". No emoji, no celebration. |
-| Editorial / story | Reflective, essayistic — the "emptiness" voice. Talks about everyday life, not features. |
-| Empty states | Honest and brief. "該当する商品はありません". Offers a quiet next step. |
-| Error messages | Plain and blameless. States what to fix, no apology theater. |
-
-**Forbidden register.** No superlatives ("最高", "革命的", "amazing", "luxury"), no urgency manipulation ("今だけ!急いで!"), no exclamation marks on routine CTAs, no emoji on product or checkout surfaces. MUJI never claims to be the best — claiming superiority contradicts the no-brand premise. The voice is "this will do," stated with calm conviction.
-
-## 11. Brand Narrative
-
-MUJI launched in **December 1980** as a 40-item private label inside the **Seiyu** supermarket chain, not as a standalone company. Japan's post-bubble consumers were beginning to ask whether they were paying for objects or for the packaging and advertising wrapped around them. MUJI's founding answer — encoded in the name *無印良品*, "no-mark quality goods" — was to strip the brand premium out entirely: remove the logo, remove the decorative packaging, simplify the production process, and pass the honesty on as both lower price and higher trust. The first slogan, *「わけあって、安い」* ("Lower priced for a reason"), made the logic explicit: cheaper *because* of deliberate choices, not despite them.
-
-The visual program matured under art director **Kenya Hara**, who joined in 2001 and articulated the concept of **emptiness** (空 / 無) as distinct from minimalism. In a 2017 conversation with *Dezeen*, Hara drew the line sharply: minimalism is a Western system for reducing elements to their essential form; emptiness is a *prior* state — a vessel open enough that the user determines what an object means. A MUJI product, like a MUJI page, does not present a finished argument; it presents an open container. This is why the design refuses to over-specify: square corners, neutral Helvetica Neue, white grounds, and a single reserved maroon are not stylistic preferences but the formal expression of *mu* — a refusal to crowd the user's own meaning out.
-
-What MUJI refuses is instructive: the status-signaling of luxury branding, the urgency theater of discount retail, the chromatic noise of mass-market e-commerce, and the "delightful" decoration of consumer apps. What it embraces is the calm of good paper, the dignity of an ordinary object well made, and the radical idea that the most confident thing a brand can do is get out of the way.
-
-## 12. Principles
-
-1. **Emptiness, not minimalism.** The goal is not to remove until nothing remains; it is to leave an open vessel the user completes. Whitespace invites, it doesn't merely subtract.
-2. **The product speaks; the chrome is silent.** Every UI decision should recede so merchandise photography carries the page. If chrome competes with the product, the chrome is wrong.
-3. **One color, held precious.** Maroon (`#7f0019`) appears only as the brand mark and rare sale accent. The moment it becomes a generic accent, it stops meaning "MUJI."
-4. **Square is honest.** Corners are 0px (or barely 2px). Rounded, friendly corners editorialize; the printed-page squareness states the facts plainly.
-5. **No black, no shouting.** Text is `#333333`, headings are weight 300. Authority comes from calm, not from contrast cranked to maximum.
-6. **Separate with air and hairlines.** Whitespace first, a 1px `#dddddd` rule second. Shadows only where physics demands (header over scroll, modal over scrim).
-7. **"This will do" over "this is the best."** Copy and design both choose modest sufficiency over aspirational excess. Restraint *is* the value proposition.
-8. **Evenness as calm.** Spacing is regular and predictable. A tidy, evenly stocked shelf — never a dramatic, density-jolting layout.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable MUJI customer segments (design-conscious urban professionals, minimalist-lifestyle adopters, students furnishing first apartments), not individual people.*
-
-**佐藤 美咲 (Misaki Sato), 32, Tokyo.** UX designer furnishing a small Setagaya apartment. Shops MUJI online for storage, stationery, and skincare because the products "don't decorate" her space — they recede the way good tools should. Notices immediately when an e-commerce site adds shadows and gradients to feel premium; to her that reads as trying too hard. Trusts MUJI precisely because the site looks like it isn't selling. Reads product copy for material and origin, ignores marketing adjectives.
-
-**James Whitfield, 41, London.** Architect, MUJI shopper for over a decade across stores and online. Buys in muted color stories and appreciates that the catalog photography is honest — the linen looks like the linen that arrives. Would be put off by urgency banners or countdown timers; he associates them with brands he distrusts. Values the wide whitespace and square product grid because he can scan a category quickly without visual noise competing for attention.
-
-**김지원 (Jiwon Kim), 24, Seoul.** Graduate student, first independent apartment. MUJI is aspirational-but-attainable — affordable goods that signal taste without logos. Browses on mobile, building a wishlist of pens, a CD player, and acrylic drawers. Cares that the mobile site is calm and fast; full-width near-black buttons and a clean single-column flow make checkout feel effortless. Came for the aesthetic, stayed because "これでいい" — it's enough, and that's the point.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no search results)** | White canvas. Single line in Ink (`#333333`) 14px: "該当する商品はありません". One quiet outline CTA to clear filters. No illustration. |
-| **Empty (empty cart)** | Centered single line `#666666`: "カートに商品がありません". One near-black button "お買い物を続ける". Calm, never cute. |
-| **Loading (grid first paint)** | Skeleton blocks in `#eeeeee` at exact product-cell dimensions. Subtle 1.2s shimmer. No spinners on the main grid. |
-| **Loading (action in progress)** | Button label swaps to a small neutral spinner; button keeps its width and `#333333` fill. No color change. |
-| **Error (form validation)** | Field border becomes `#c0392b` (distinct from brand maroon), 12px help text below in the same red. Specific and blameless: states what to fix. |
-| **Error (page-level)** | Inline notice: `#f7f7f7` background, 2px `#7f0019` left border, `#333333` text. One sentence, one action. |
-| **Success (added to cart)** | `#333333` toast, white text, 2px radius, brief `0 2px 8px rgba(0,0,0,0.08)` shadow, 3s auto-dismiss: "カートに追加しました". No emoji. |
-| **Success (order placed)** | Dedicated confirmation page, not a toast. Quiet `#4a7c59` confirmation mark, order summary in plain Ink type, single "続けてお買い物" button. |
-| **Skeleton** | `#eeeeee` blocks at final dimensions, square corners matching the cards. Shimmer is neutral, no brand tint. |
-| **Disabled** | `#eeeeee` background, `#999999` text. Used for out-of-stock add-to-cart. Geometry unchanged so re-enabling is stable. |
-| **Out of stock** | Product card stays; price replaced by `#999999` "在庫切れ" label; add-to-cart disabled. No alarming red. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Checkbox/toggle state commits, focus borders |
-| `motion-fast` | 150ms | Hover tints, button press, small fades |
-| `motion-standard` | 250ms | Dropdown, drawer, modal, image crossfade |
-| `motion-slow` | 400ms | Page-level transitions, hero reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Arriving — drawers, modals, fades-in |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tabs, accordions |
-
-**Explicitly avoided.** No spring, no bounce, no overshoot. Playful or kinetic motion contradicts the calm-paper register — a MUJI surface should never feel "delightful" in the consumer-app sense. Motion exists to soften transitions, not to entertain. No `cubic-bezier` with a control value above `1.0` anywhere.
-
-**Signature motions.**
-
-1. **Image crossfade.** Product-gallery thumbnails crossfade the main image over `motion-standard / ease-standard`. Never a slide or zoom — the photograph simply replaces itself, calmly.
-2. **Drawer / hamburger nav.** The mobile nav panel slides in from the side over `motion-standard / ease-enter` with a synchronized `rgba(0,0,0,0.4)` scrim fade. Dismissal uses `motion-fast / ease-exit` — leaving is lighter than arriving.
-3. **Hover tint, not lift.** Cards and buttons respond to hover with a `motion-fast` background tint (`#f7f7f7`) or border darken — never a shadow or translate. Elements do not "lift"; flatness is preserved.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Crossfades become instant swaps. The site stays fully usable; nothing is lost but the easing.
-
-<!--
-OmD v0.1 Sources
-
-Direct verification via WebSearch (2026-06-06):
-- brandcolorcode.com/muji — MUJI Red #7F0019, RGB (127, 0, 25), listed as the
-  single documented MUJI brand color.
-- encycolorpedia.com/7f0019 and colorswall — corroborate #7f0019 as MUJI's
-  signature maroon; related tints #8c1a30, #993347 reported by registries.
-- fontalternatives.com/inspiration/muji-helvetica — confirms Helvetica Neue as
-  MUJI's Latin typeface, refined under art director Kenya Hara across signage,
-  packaging, and advertising.
-- dezeen.com (2017-12-13 Kenya Hara interview) and bworldonline.com — confirm
-  Hara as art director since 2001 and the "emptiness" (空/無) philosophy as
-  distinct from minimalism.
-- General brand history (founded December 1980 as a Seiyu private label;
-  「わけあって、安い」 founding slogan; 無印良品 = "no-brand quality goods")
-  is widely documented and used as context.
-
-Token-level chrome values (#333333 ink, #f7f7f7 / #eeeeee / #dddddd neutrals,
-2px button/input radius, square cards, near-black primary buttons, Helvetica
-Neue type scale) are read from the live muji.com chrome and conformed to MUJI's
-documented minimalist/emptiness doctrine. MUJI publishes no public design-token
-system, so these are observational, not from an official spec.
-
-Personas (§13) are fictional archetypes informed by publicly observable MUJI
-customer segments. Names are illustrative and do not refer to real people.
-
-Interpretive claims (e.g., "square is honest", "one color held precious",
-"this will do over this is the best") are editorial readings connecting MUJI's
-stated no-brand / emptiness philosophy to its visual system, not directly
-sourced MUJI statements.
--->
+- **Contrast, `button-tertiary`.** Text `#666666` on `#00000000` measures 3.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-disabled`.** Text `#999999` on `#eeeeee` measures 2.46:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

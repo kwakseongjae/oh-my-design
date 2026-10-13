@@ -1,0 +1,711 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "evaair",
+    "name": "長榮航空",
+    "country": "TW",
+    "category": "consumer-tech",
+    "homepage": "https://www.evaair.com/",
+    "primary_color": "#4b7d6b",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=evaair.com&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "note": "Tokens are only selector-backed values from three supplied public EVA Air surfaces. Corporate policy, history, font declarations, and external font licensing remain separate evidence domains.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-14",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-airline-home",
+        "url": "https://www.evaair.com/ko-kr/index.html",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "about",
+        "kind": "public-corporate-about",
+        "url": "https://www.evaair.com/ko-kr/about-eva-air/about-us/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "awards",
+        "kind": "public-corporate-awards",
+        "url": "https://www.evaair.com/ko-kr/about-eva-air/about-us/awards-and-honors/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.evaair.com/ko-kr/index.html",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "about-live",
+        "kind": "product-surface",
+        "url": "https://www.evaair.com/ko-kr/about-eva-air/about-us/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "awards-live",
+        "kind": "product-surface",
+        "url": "https://www.evaair.com/ko-kr/about-eva-air/about-us/awards-and-honors/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "eva-values",
+        "kind": "official-doc",
+        "url": "https://www.evaair.com/en-global/about-eva-air/about-us/eva-values/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "eva-chronicle",
+        "kind": "official-doc",
+        "url": "https://www.evaair.com/en-au/about-eva-air/about-us/company-chronicle/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "eva-marketing-policy",
+        "kind": "official-doc",
+        "url": "https://www.evaair.com/en-global/about-eva-air/marketing-and-advertising-policy/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "eva-ip",
+        "kind": "brand-asset",
+        "url": "https://www.evaair.com/en-sg/website-disclaimer/intellectual-property-rights/",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "roboto-license",
+        "kind": "license",
+        "url": "https://github.com/googlefonts/roboto-2/blob/main/LICENSE",
+        "captured": "2026-07-14"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-green": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.green-panel": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.accent": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-label.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-label.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-label.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-label.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.accordion-label.fontSize": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.accordion-label.fontWeight": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:typography.accordion-label.lineHeight": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.accordion-label.use": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.media": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.input": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.travel-card": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-field.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.booking-widget-tab.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.type": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.textColor": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.border": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.rounded": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.padding": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.height": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.typography": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.states": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.award-accordion.use": {
+        "surface_id": "awards",
+        "source_id": "awards-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.type": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.backgroundColor": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.textColor": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.rounded": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.padding": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.typography": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.green-information-card.use": {
+        "surface_id": "about",
+        "source_id": "about-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.footer-list-item.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.footer-list-item.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.footer-list-item.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.footer-list-item.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.footer-list-item.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.footer-list-item.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 25,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 15,
+      "missing-primary": 1,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav-label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.accordion-label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-field.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-field.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-field.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-field.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-widget-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-widget-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.booking-widget-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.award-accordion.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.award-accordion.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.award-accordion.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.award-accordion.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.green-information-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.green-information-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.on-green",
+        "message": "'on-green' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green-panel",
+        "message": "'green-panel' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent",
+        "message": "'accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "542476fed2f509d0b4705e557bee9edaea62ef1aa87b462c0bd49175880165d7",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "typography.accordion-label.lineHeight",
+        "value": "normal"
+      },
+      {
+        "path": "shadow.travel-card",
+        "value": "rgba(0,0,0,0.16) 0px 3px 6px 0px"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.nav-label.fontSize",
+      "typography.accordion-label.fontSize",
+      "rounded.square",
+      "rounded.media",
+      "rounded.input"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography.accordion-label": [
+        "size",
+        "weight",
+        "lineHeight",
+        "use"
+      ]
+    }
+  }
+}

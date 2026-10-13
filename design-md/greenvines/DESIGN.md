@@ -1,65 +1,163 @@
 ---
-id: greenvines
 name: Greenvines
-country: TW
-category: ecommerce
-homepage: "https://www.greenvines.com.tw"
-primary_color: "#002d18"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=www.greenvines.com.tw&sz=128"
-verified: "2026-06-10"
-added: "2026-06-10"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-10"
-  note: "primary = deep forest green ink (#002d18) used for text, borders, and footer; single warm accent = burnt orange (#c84600) reserved for commerce CTAs. Sharp-corner (0px radius), shadowless system with ultra-thin (weight 100) display type."
-  colors:
-    primary: "#002d18"
-    accent: "#c84600"
-    canvas: "#ffffff"
-    sage: "#9caba3"
-    sage-pale: "#e6eae8"
-    sage-button: "#ced5d1"
-    green-soft: "#3b5647"
-    ink-alt: "#0a2d1b"
-    stepper-grey: "#f1f1f1"
-    footer-heading: "#9b9b9b"
-    footer-muted: "#aaaaaa"
-    helper-grey: "#666464"
-    on-primary: "#ffffff"
-  typography:
-    family: { display: "gv (custom webfont)", fallback: "Noto Sans TC / 微軟正黑體", base: "Helvetica Neue" }
-    display-hero: { size: 104, weight: 100, lineHeight: 1.10, tracking: 2, use: "Page-title hero (品牌故事, brand name)" }
-    display:      { size: 52, weight: 100, lineHeight: 1.23, tracking: 2, use: "Section headlines, homepage H2/H3" }
-    heading:      { size: 45, weight: 100, lineHeight: 1.25, tracking: 2, use: "Product-page section H2" }
-    subheading:   { size: 30, weight: 100, lineHeight: 1.30, tracking: 2, use: "Sub-section heads, story links" }
-    card-title:   { size: 28, weight: 100, lineHeight: 1.36, use: "Overlay card titles on photography" }
-    body-lg:      { size: 20, weight: 400, lineHeight: 1.60, use: "Brand-story paragraphs" }
-    nav:          { size: 16, weight: 300, lineHeight: 1.20, use: "Mega-menu product links" }
-    body:         { size: 14, weight: 400, lineHeight: 1.43, use: "Standard body text, buttons" }
-    button:       { size: 14, weight: 400, lineHeight: 1.40, tracking: 1, use: "Outline / fill CTA labels" }
-    footer-head:  { size: 15, weight: 100, lineHeight: 2.40, use: "Footer column headings" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 15, lg: 20, xl: 32, xxl: 50, section: 80 }
-  rounded: { none: 0, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-outline: { type: button, fg: "#002d18", border: "2px solid #002d18", radius: "0px", padding: "12px 20px", height: "48px", font: "14px / 400", states: "letter-spacing 1px, arrow suffix →", use: "Default CTA — 深入了解, 閱讀文章, 純淨保養組合" }
-    button-accent: { type: button, bg: "#c84600", fg: "#ffffff", border: "2px solid #c84600", radius: "0px", padding: "12px 20px", height: "48px", font: "14px / 400", use: "Emphasis CTA — sustainability 深入了解 blocks, promo links" }
-    button-cart: { type: button, bg: "#c84600", fg: "#ffffff", radius: "0px", padding: "12px 20px", height: "80px", font: "20px / 600", use: "加入購物車 add-to-cart bar on product pages" }
-    button-stepper: { type: button, bg: "#f1f1f1", fg: "#0a2d1b", radius: "0px", height: "80px", font: "20px / 400", use: "Quantity +/− stepper flanking add-to-cart" }
-    button-newsletter: { type: button, bg: "#ced5d1", fg: "#002d18", radius: "0px", height: "50px", font: "16px / 400", use: "Newsletter submit on footer dark panel" }
-    input-newsletter: { type: input, fg: "#ffffff", radius: "0px", height: "55px", font: "14px / 400", use: "Newsletter name/email field on #002d18 footer, translucent #e6eae8-tinted fill" }
-    card-sage: { type: card, bg: "#9caba3", fg: "#002d18", radius: "0px", use: "Sage-green tinted section surface / content band" }
-    footer-link: { type: listItem, fg: "#ffffff", font: "15px / 400", use: "Footer navigation link on #002d18 (品牌故事, 永續報告書)" }
-  components_harvested: true
+colors:
+  primary: '#002d18'
+  accent: '#c84600'
+  canvas: '#ffffff'
+  sage: '#9caba3'
+  sage-pale: '#e6eae8'
+  sage-button: '#ced5d1'
+  green-soft: '#3b5647'
+  ink-alt: '#0a2d1b'
+  stepper-grey: '#f1f1f1'
+  footer-heading: '#9b9b9b'
+  footer-muted: '#aaaaaa'
+  helper-grey: '#666464'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 104px
+    fontWeight: 100
+    lineHeight: 1.1
+    letterSpacing: 2px
+    use: Page-title hero (品牌故事, brand name)
+  display:
+    fontSize: 52px
+    fontWeight: 100
+    lineHeight: 1.23
+    letterSpacing: 2px
+    use: Section headlines, homepage H2/H3
+  heading:
+    fontSize: 45px
+    fontWeight: 100
+    lineHeight: 1.25
+    letterSpacing: 2px
+    use: Product-page section H2
+  subheading:
+    fontSize: 30px
+    fontWeight: 100
+    lineHeight: 1.3
+    letterSpacing: 2px
+    use: Sub-section heads, story links
+  card-title:
+    fontSize: 28px
+    fontWeight: 100
+    lineHeight: 1.36
+    use: Overlay card titles on photography
+  body-lg:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: Brand-story paragraphs
+  nav:
+    fontSize: 16px
+    fontWeight: 300
+    lineHeight: 1.2
+    use: Mega-menu product links
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Standard body text, buttons
+  button:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: 1px
+    use: Outline / fill CTA labels
+  footer-head:
+    fontSize: 15px
+    fontWeight: 100
+    lineHeight: 2.4
+    use: Footer column headings
+rounded:
+  none: 0px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 15
+  lg: 20
+  xl: 32
+  xxl: 50
+  section: 80
+components:
+  button-outline:
+    type: button
+    textColor: '#002d18'
+    border: '2px solid #002d18'
+    rounded: 0px
+    padding: 12px 20px
+    height: 48px
+    typography: 14px / 400
+    states: letter-spacing 1px, arrow suffix →
+    use: Default CTA — 深入了解, 閱讀文章, 純淨保養組合
+  button-accent:
+    type: button
+    backgroundColor: '#c84600'
+    textColor: '#ffffff'
+    border: '2px solid #c84600'
+    rounded: 0px
+    padding: 12px 20px
+    height: 48px
+    typography: 14px / 400
+    use: Emphasis CTA — sustainability 深入了解 blocks, promo links
+  button-cart:
+    type: button
+    backgroundColor: '#c84600'
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 12px 20px
+    height: 80px
+    typography: 20px / 600
+    use: 加入購物車 add-to-cart bar on product pages
+  button-stepper:
+    type: button
+    backgroundColor: '#f1f1f1'
+    textColor: '#0a2d1b'
+    rounded: 0px
+    height: 80px
+    typography: 20px / 400
+    use: Quantity +/− stepper flanking add-to-cart
+  button-newsletter:
+    type: button
+    backgroundColor: '#ced5d1'
+    textColor: '#002d18'
+    rounded: 0px
+    height: 50px
+    typography: 16px / 400
+    use: Newsletter submit on footer dark panel
+  input-newsletter:
+    type: input
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 55px
+    typography: 14px / 400
+    use: 'Newsletter name/email field on #002d18 footer, translucent #e6eae8-tinted fill'
+  card-sage:
+    type: card
+    backgroundColor: '#9caba3'
+    textColor: '#002d18'
+    rounded: 0px
+    use: Sage-green tinted section surface / content band
+  footer-link:
+    type: listItem
+    textColor: '#ffffff'
+    typography: 15px / 400
+    use: 'Footer navigation link on #002d18 (品牌故事, 永續報告書)'
+fonts:
+  roles:
+    display: gv (custom webfont)
+    fallback: Noto Sans TC / 微軟正黑體
+    base: Helvetica Neue
 ---
 
 # Design System Inspiration of Greenvines
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Greenvines (綠藤生機) is Taiwan's flagship clean-beauty brand, and its site reads like a botanical manifesto typeset by a luxury magazine. The canvas is pure white (`#ffffff`), but the system's soul is a deep forest-green ink (`#002d18`) that does triple duty as body text, button borders, and the footer's immersive dark panel — the brand literally writes in the color of leaves. Large photographic sections sit on a muted sage surface (`#9caba3`), the single most frequent background on the homepage, supported by a pale grey-green (`#e6eae8`). The one deliberate disruption is a burnt orange (`#c84600`) reserved for commerce moments: add-to-cart, promotional deep-dives, and offer links. Green is the voice; orange is the ask.
 
@@ -77,7 +175,7 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 - Custom "gv" webfont over Noto Sans TC for Traditional Chinese display
 - Dark green footer (`#002d18`) with grey column headings (`#9b9b9b`) and white links
 
-## Primary tasks
+### Primary tasks
 
 - Add a skincare product to the cart from its page
 - Read which ingredients the brand refuses to use
@@ -85,7 +183,33 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 - Find out where the subtraction philosophy came from
 - Return empty bottles through the recycling programme
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Greenvines (綠藤生機) was founded in **2010** in Taipei by three National Taiwan University finance graduates — **鄭涵睿 (Harris Cheng)**, **廖怡雯 (Patricia Liao)**, and **許偉哲 (Wei-Che Hsu)** — who left careers in banking and asset management and pooled NT$5 million to start the company. The scientific soul of the brand is **林碧霞博士 (Dr. Lin Bi-Hsia)**, the agricultural scientist (and mother of co-founder 鄭涵睿) whose 20+ years of plant-cell research the brand-story page credits directly: 「承襲自林碧霞博士的啟發」. The company began with living broccoli sprouts (活芽菜) before growing into Taiwan's defining clean-beauty house, and in **2015 became one of Taiwan's first certified B Corporations** — repeatedly honored among B Lab's "Best for the World." As of the 2024 永續報告書, **廖怡雯 serves as CEO**, and the company donates 1% for the Planet (over NT$10 million cumulatively) while running a closed-loop 空瓶回收計畫 bottle-recycling program.
+
+The founding question, preserved verbatim on the brand-story page, is disarmingly simple: 「如果肌膚只需要水和油，為什麼我們不單純替肌膚補水補油？」 ("If skin only needs water and oil, why don't we simply give it water and oil?"). From that came 減法保養 (subtraction skincare): strip every routine and formula down to what skin actually needs, and maintain a public 非必要成分清單 of **3,200+ unnecessary or questionable ingredients** the brand refuses to use — codified in its FAITH formulation principles. The brand is explicit that it does not blindly worship "natural": 「我們並不盲目信仰天然，而是從天然之中找尋與安全的交集」.
+
+What Greenvines refuses: shadow-heavy, discount-screaming beauty e-commerce; bold-faced hype typography; and the industry habit of selling more steps. What it embraces: ink-green text on white, hairline-thin headlines, photography of real plants and real bottles, and a sustainability report published like a product. The design system *is* the philosophy — every removed border-radius, shadow, and font-weight is subtraction made visible.
+
+### Principles
+
+1. **Subtraction is the product.** 減法保養 governs formulas, routines, and pixels alike. *UI implication:* one idea per section, one CTA per band; remove decoration before adding it — no shadows, no rounding, no second accent.
+2. **Transparency builds trust.** The 3200+ 非必要成分清單 and 配方架構 透明解析 make exclusion lists public. *UI implication:* surface ingredient data, sources, and numbers plainly; never hide claims behind marketing gloss.
+3. **Teach before selling.** The blog, calculators of skin knowledge, and 深入了解 CTAs put understanding first. *UI implication:* default CTA is an outline "learn more," not a filled "buy now"; commerce orange appears only at the cart.
+4. **Sustainability is an action, not a badge.** B Corp certification, 空瓶回收計畫, 1% for the Planet. *UI implication:* report real numbers (letters collected, bottles recycled) with the same typographic dignity as product claims.
+5. **Quiet confidence over volume.** Weight-100 headlines and a 45-day unconditional return policy say the same thing: we don't need to shout. *UI implication:* whisper-thin display type, generous whitespace, no urgency patterns.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Greenvines customer segments (Taiwanese clean-beauty consumers, sustainability-minded shoppers), not individual people.*
+
+**林佳穎, 31, 台北.** A marketing manager with sensitized skin from years of 10-step routines. Found Greenvines through the 無乳液實驗 articles and was converted by the idea of doing *less*. Reads the 非必要成分清單 before trying any new brand, and trusts the 45-day return policy enough to experiment.
+
+**陳威廷, 38, 新竹.** An engineer who buys the 頭皮淨化蜂膠+ 洗髮精 on subscription and returns empty bottles through 空瓶回收計畫. Chose the brand for its B Corp certification — he wants his household spending to match his values, and Greenvines is the only beauty brand whose sustainability report he has actually opened.
+
+**張雅婷, 26, 台中.** A graduate student who discovered the brand at the 台中漢神洲際 store. Loves the calm, apothecary-like retail space and the poetic product names (入夢 θ 呼吸精萃). Follows the blog for evidence-based skincare and mindfulness content rather than influencer reviews.
+
+## Colors
 
 ### Primary
 - **Forest Ink** (`#002d18`): The brand color. Body text, headings, outline-button borders and labels, footer background, chat FAB. A near-black green that reads as ink on paper.
@@ -105,7 +229,7 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 - **Footer Muted** (`#aaaaaa`): Footer fine print and legal text on the dark panel.
 - **Helper Grey** (`#666464`): Customer-service helper paragraphs and low-emphasis notes.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display & UI**: `gv` (custom webfont), fallback `"Noto Sans TC", 微軟正黑體, serif` — carries every headline, nav item, button label, and footer link.
@@ -132,7 +256,125 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 - **Hanzi-first scale**: the system is tuned for Traditional Chinese — generous line-heights (1.4–1.6 body) and large display sizes keep dense hanzi legible and elegant.
 - **Two jobs, one family**: the gv/Noto Sans TC stack covers both whisper-thin display and functional UI; hierarchy is created by weight and size, never by switching typefaces.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Button padding: 12px 20px — the recurring interactive unit
+- Mega-menu links carry 50px right padding; product story tabs use 15px horizontal padding
+- Section bands are tall and full-bleed, with display headlines given generous 64px+ line boxes
+
+### Grid & Container
+- Full-width photographic bands alternate with white editorial blocks — the page is a vertical rhythm of image, manifesto, image
+- Homepage: hero photography → 52px thin headline → outline CTA, repeated as a cadence
+- Product pages: long-form narrative sections (配方架構 透明解析, reviews) with a persistent 80px add-to-cart bar
+- Footer is a four-column directory (深入了解 / 客戶服務 / 關注我們 / 訂閱電子報) on the dark green panel
+
+### Whitespace Philosophy
+- **Subtraction as layout**: consistent with 減法保養, sections hold one idea each — a headline, a paragraph, one CTA. No sidebars, no widget clutter.
+- **Photography is the container**: instead of cards-with-borders, content sits directly on full-bleed imagery or sage tints.
+- **Flat segmentation**: bands of `#ffffff`, `#9caba3`, `#e6eae8`, and `#002d18` create the page's entire depth structure.
+
+### Border Radius Scale
+- 0px: every button, input, card, and band — the system is rigorously sharp-cornered
+- 50% / 9999px: the floating chat button only
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column; display sizes compress; mega menu becomes full-screen list |
+| Tablet | 768–1200px | Photographic bands persist full-bleed; editorial blocks narrow |
+| Desktop | >1200px | Full layout, 1440px-class canvas with centered editorial measure |
+
+#### Touch Targets
+- Outline CTAs at 48px height with 12px 20px padding — comfortably tappable
+- Add-to-cart bar at 80px height with full-width steppers — thumb-zone commerce
+- Newsletter fields at 55px height on the footer panel
+
+#### Collapsing Strategy
+- Display headlines scale down but keep weight 100 and positive tracking
+- Full-bleed photography crops rather than stacks — imagery stays immersive
+- The persistent add-to-cart bar docks to the bottom on product pages
+- Footer columns stack vertically on the dark panel
+
+#### Image Behavior
+- Photography is full-bleed at every size, with white weight-100 titles overlaid
+- No image carries shadow or rounded corners at any breakpoint
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | The entire system — `box-shadow: none` measured across nav, buttons, cards |
+| Tint (Level 1) | `#9caba3` / `#e6eae8` background shift | Section and card separation |
+| Dark panel (Level 2) | `#002d18` background | Footer, mega menu — immersive brand moments |
+
+**Shadow Philosophy**: Greenvines is a fully shadowless system. Live inspection found no box-shadows on any measured element — buttons, the add-to-cart bar, photo cards, and the sticky chrome are all flat. Depth is communicated by color temperature instead: white canvas → sage tint → deep forest green, a progression that mirrors walking from daylight into foliage. Combined with the 0px radius discipline, the result feels printed rather than layered — closer to high-end packaging design than to app UI, which is precisely the brand's territory.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 150ms | Hover fills on outline buttons, link underlines |
+| `motion-standard` | 250ms | Section fades, mega-menu open, image crossfades |
+| `motion-slow` | 400ms | Full-screen menu and photographic hero transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Default two-way transitions |
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Menu and overlay arrivals |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+
+**Motion rules**: Motion is slow, soft, and botanical — closer to a breath than a bounce. Outline CTAs transition border/fill on hover at `motion-fast`; the full-screen `#002d18` mega menu fades in at `motion-slow`; photography crossfades rather than slides. No spring, overshoot, or parallax gimmicks — a brand built on subtraction does not add kinetic noise. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and crossfades become cuts; the store remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on:
+- https://www.greenvines.com.tw (homepage) — document.title 「綠藤生機 Greenvines｜沒有減法，何來精華」;
+  H3 52px/100 headlines incl. 「現在，保養從減法開始 #二減一加」, 「超過兩萬則真實好評，23 款純淨保養洗沐產品」;
+  outline CTAs 2px solid rgb(0,45,24) / 0px radius / 12px 20px / 14px / letter-spacing 1px;
+  accent CTA bg rgb(200,70,0); footer bg rgb(0,45,24); bgFreq top rgb(156,171,163).
+- https://www.greenvines.com.tw/products/know-more-luminosity-serum — 加入購物車 bg rgb(200,70,0) h 80px,
+  stepper bg rgb(241,241,241), H2 45-52px weight 100 letter-spacing 2px, 「讓肌膚熟悉的，應該純淨」.
+- https://www.greenvines.com.tw/pages/about-us — H1 品牌故事 104px/100; "More is Less. 多，即是少。";
+  brand-story paragraphs verbatim (林碧霞博士, 非必要成分清單 3200+, 公平貿易辣木油).
+
+WebFetch (2026-06-10):
+- https://www.greenvines.com.tw/pages/clean-beliefs — FAITH principles, "The more we know, the less we need.",
+  3200+ unnecessary-ingredient list, 98%+ natural origin, 45-day return.
+- https://www.greenvines.com.tw/pages/benefit-report — 2024 sustainability report: 空瓶回收計畫 closed-loop,
+  1% for the Planet NT$10M+ cumulative, 綠色生活 21 天 (8th year, 66,000+ letters), CEO 廖怡雯,
+  2024 DBS Asia Business Impact Award.
+- https://blog.greenvines.com.tw — official blog 純淨生活提案部落格 (brand-owned surface).
+
+Web search (2026-06-10) — founding facts: founded 2010 by 鄭涵睿/廖怡雯/許偉哲 (NTU finance, ex-UBS/ABN AMRO),
+NT$5M initial capital; certified as one of Taiwan's first B Corps (2015); sources: B Lab Taiwan
+(blab.tw/bcommunity-greenvines), DBS feature (dbs.com/livemore/tw-zh/social-enterprise/greenvines.html),
+Greenvines official blog founder interviews. Leadership noted as of the 2024 benefit report (CEO 廖怡雯).
+
+Personas (§13) are fictional archetypes informed by publicly observable Greenvines customer segments.
+Names are illustrative; they do not refer to real people.
+
+§14 States and §15 Motion are editorial extrapolations consistent with the measured flat/sharp/quiet system
+(box-shadow: none, 0px radius, weight-100 display) — marked as design guidance, not measured values.
+
+Interpretive claims (e.g., "subtraction made visible", "green is the voice; orange is the ask") are editorial
+readings connecting Greenvines' stated philosophy to its observed design, not direct brand statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -231,39 +473,22 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 **Tier 2 sources:** none available (getdesign.md/greenvines → 404 "No designs found"; styles.refero.design searched "greenvines" and "綠藤" — brand not listed)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Button padding: 12px 20px — the recurring interactive unit
-- Mega-menu links carry 50px right padding; product story tabs use 15px horizontal padding
-- Section bands are tall and full-bleed, with display headlines given generous 64px+ line boxes
+| State | Treatment |
+|---|---|
+| **Empty (no search/filter results)** | White canvas, single thin headline in Forest Ink (`#002d18`) stating no matches, with one outline CTA back to 所有產品. No illustration clutter — subtraction applies to empty states too. |
+| **Empty (cart)** | Calm one-line statement plus an outline 深入了解 path to bestsellers; never urgency copy. |
+| **Loading (page/section)** | Flat sage (`#e6eae8`) placeholder blocks at final dimensions, 0px radius, gentle opacity pulse — no shimmer, no shadow, consistent with the flat system. |
+| **Loading (add-to-cart)** | The `#c84600` bar holds its size with an inline progress state; label stays visible. |
+| **Error (form validation)** | Field-level message below the input in plain Traditional Chinese describing what's needed; the field keeps its translucent fill, no aggressive red flooding. |
+| **Error (checkout/network)** | Inline banner in Forest Ink on pale sage explaining the failure and the retry path; tone stays calm and instructional. |
+| **Success (added to cart)** | Quiet inline confirmation near the cart bar; the persistent bar itself reflects quantity. No confetti, no modal interruption. |
+| **Success (newsletter subscribed)** | Single white confirmation line on the `#002d18` footer panel, replacing the form. |
+| **Skeleton** | `#e6eae8` blocks at exact final dimensions with 0px radius — sharp-cornered like everything else. |
+| **Disabled** | Outline buttons drop to reduced-opacity `#002d18` border and label together; orange CTAs fade rather than turn grey to preserve the commerce signal. |
 
-### Grid & Container
-- Full-width photographic bands alternate with white editorial blocks — the page is a vertical rhythm of image, manifesto, image
-- Homepage: hero photography → 52px thin headline → outline CTA, repeated as a cadence
-- Product pages: long-form narrative sections (配方架構 透明解析, reviews) with a persistent 80px add-to-cart bar
-- Footer is a four-column directory (深入了解 / 客戶服務 / 關注我們 / 訂閱電子報) on the dark green panel
-
-### Whitespace Philosophy
-- **Subtraction as layout**: consistent with 減法保養, sections hold one idea each — a headline, a paragraph, one CTA. No sidebars, no widget clutter.
-- **Photography is the container**: instead of cards-with-borders, content sits directly on full-bleed imagery or sage tints.
-- **Flat segmentation**: bands of `#ffffff`, `#9caba3`, `#e6eae8`, and `#002d18` create the page's entire depth structure.
-
-### Border Radius Scale
-- 0px: every button, input, card, and band — the system is rigorously sharp-cornered
-- 50% / 9999px: the floating chat button only
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | The entire system — `box-shadow: none` measured across nav, buttons, cards |
-| Tint (Level 1) | `#9caba3` / `#e6eae8` background shift | Section and card separation |
-| Dark panel (Level 2) | `#002d18` background | Footer, mega menu — immersive brand moments |
-
-**Shadow Philosophy**: Greenvines is a fully shadowless system. Live inspection found no box-shadows on any measured element — buttons, the add-to-cart bar, photo cards, and the sticky chrome are all flat. Depth is communicated by color temperature instead: white canvas → sage tint → deep forest green, a progression that mirrors walking from daylight into foliage. Combined with the 0px radius discipline, the result feels printed rather than layered — closer to high-end packaging design than to app UI, which is precisely the brand's territory.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Set display headlines in weight 100 at 45–104px with +2px letter-spacing — thinness is the brand voice
@@ -285,31 +510,31 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 - Crowd sections with multiple CTAs — one idea, one button, per band
 - Replace the photographic surfaces with illustration or gradients — real botanicals are the brand texture
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column; display sizes compress; mega menu becomes full-screen list |
-| Tablet | 768–1200px | Photographic bands persist full-bleed; editorial blocks narrow |
-| Desktop | >1200px | Full layout, 1440px-class canvas with centered editorial measure |
+Greenvines speaks in the voice of a **calm, knowledgeable, subtraction-minded** botanist — confident enough to tell customers to use *less*. The register is editorial and philosophical rather than promotional: the site's own title is a thesis, 「沒有減法，何來精華」 ("without subtraction, whence essence?"). Copy consistently teaches before it sells, decodes ingredient science into plain Traditional Chinese, and frames purchases as choices within a larger sustainable life.
 
-### Touch Targets
-- Outline CTAs at 48px height with 12px 20px padding — comfortably tappable
-- Add-to-cart bar at 80px height with full-width steppers — thumb-zone commerce
-- Newsletter fields at 55px height on the footer panel
+| Context | Tone |
+|---|---|
+| Hero headlines | Aphoristic, manifesto-like. 「現在，保養從減法開始」. Statements of philosophy, not offers. |
+| Product naming | Poetic-functional compounds: 活萃三日修護精華, 綠色海洋精華油, 入夢 θ 呼吸精萃. |
+| CTAs | Invitations to understand: 深入了解 →, 閱讀文章 →. Even commerce CTAs stay quiet (加入購物車). |
+| Ingredient claims | Evidence-framed and transparent: 配方架構 透明解析, the 3200+ 非必要成分清單. |
+| Social proof | Concrete numbers, no superlatives: 超過兩萬則真實好評，23 款純淨保養洗沐產品. |
+| Customer service | Warm, unhurried, reassuring — 45 天無條件退貨 stated as confidence in the product. |
+| Sustainability | Action-led reporting: 空瓶回收計畫, 綠色生活 21 天, presented as ongoing experiments. |
 
-### Collapsing Strategy
-- Display headlines scale down but keep weight 100 and positive tracking
-- Full-bleed photography crops rather than stacks — imagery stays immersive
-- The persistent add-to-cart bar docks to the bottom on product pages
-- Footer columns stack vertically on the dark panel
+**Voice samples (verbatim from brand surfaces):**
+- 「沒有減法，何來精華」 — site title tagline. *(verified live 2026-06-10, document.title)*
+- 「現在，保養從減法開始 #二減一加」 — homepage section headline. *(verified live 2026-06-10)*
+- 「超過兩萬則真實好評，23 款純淨保養洗沐產品」 — homepage social-proof headline. *(verified live 2026-06-10)*
+- "More is Less. 多，即是少。" — brand-story page headline. *(verified live 2026-06-10, /pages/about-us)*
+- 「讓肌膚熟悉的，應該純淨」 — product-page section headline. *(verified live 2026-06-10)*
+- "The more we know, the less we need." — clean-beauty beliefs page. *(fetched 2026-06-10, /pages/clean-beliefs)*
 
-### Image Behavior
-- Photography is full-bleed at every size, with white weight-100 titles overlaid
-- No image carries shadow or rounded corners at any breakpoint
+**Forbidden register**: miracle-cure promises, fear-based ingredient scaremongering without evidence, urgency pressure (countdown timers, 限時搶購 hysteria), beauty-standard shaming, and undefined chemistry jargon left unexplained.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Text / borders / dark panels: Forest Ink (`#002d18`)
@@ -339,124 +564,3 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 8. The dark green panel (footer/menu) is the brand's immersive moment — white text, grey headings
 
 ---
-
-## 10. Voice & Tone
-
-Greenvines speaks in the voice of a **calm, knowledgeable, subtraction-minded** botanist — confident enough to tell customers to use *less*. The register is editorial and philosophical rather than promotional: the site's own title is a thesis, 「沒有減法，何來精華」 ("without subtraction, whence essence?"). Copy consistently teaches before it sells, decodes ingredient science into plain Traditional Chinese, and frames purchases as choices within a larger sustainable life.
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Aphoristic, manifesto-like. 「現在，保養從減法開始」. Statements of philosophy, not offers. |
-| Product naming | Poetic-functional compounds: 活萃三日修護精華, 綠色海洋精華油, 入夢 θ 呼吸精萃. |
-| CTAs | Invitations to understand: 深入了解 →, 閱讀文章 →. Even commerce CTAs stay quiet (加入購物車). |
-| Ingredient claims | Evidence-framed and transparent: 配方架構 透明解析, the 3200+ 非必要成分清單. |
-| Social proof | Concrete numbers, no superlatives: 超過兩萬則真實好評，23 款純淨保養洗沐產品. |
-| Customer service | Warm, unhurried, reassuring — 45 天無條件退貨 stated as confidence in the product. |
-| Sustainability | Action-led reporting: 空瓶回收計畫, 綠色生活 21 天, presented as ongoing experiments. |
-
-**Voice samples (verbatim from brand surfaces):**
-- 「沒有減法，何來精華」 — site title tagline. *(verified live 2026-06-10, document.title)*
-- 「現在，保養從減法開始 #二減一加」 — homepage section headline. *(verified live 2026-06-10)*
-- 「超過兩萬則真實好評，23 款純淨保養洗沐產品」 — homepage social-proof headline. *(verified live 2026-06-10)*
-- "More is Less. 多，即是少。" — brand-story page headline. *(verified live 2026-06-10, /pages/about-us)*
-- 「讓肌膚熟悉的，應該純淨」 — product-page section headline. *(verified live 2026-06-10)*
-- "The more we know, the less we need." — clean-beauty beliefs page. *(fetched 2026-06-10, /pages/clean-beliefs)*
-
-**Forbidden register**: miracle-cure promises, fear-based ingredient scaremongering without evidence, urgency pressure (countdown timers, 限時搶購 hysteria), beauty-standard shaming, and undefined chemistry jargon left unexplained.
-
-## 11. Brand Narrative
-
-Greenvines (綠藤生機) was founded in **2010** in Taipei by three National Taiwan University finance graduates — **鄭涵睿 (Harris Cheng)**, **廖怡雯 (Patricia Liao)**, and **許偉哲 (Wei-Che Hsu)** — who left careers in banking and asset management and pooled NT$5 million to start the company. The scientific soul of the brand is **林碧霞博士 (Dr. Lin Bi-Hsia)**, the agricultural scientist (and mother of co-founder 鄭涵睿) whose 20+ years of plant-cell research the brand-story page credits directly: 「承襲自林碧霞博士的啟發」. The company began with living broccoli sprouts (活芽菜) before growing into Taiwan's defining clean-beauty house, and in **2015 became one of Taiwan's first certified B Corporations** — repeatedly honored among B Lab's "Best for the World." As of the 2024 永續報告書, **廖怡雯 serves as CEO**, and the company donates 1% for the Planet (over NT$10 million cumulatively) while running a closed-loop 空瓶回收計畫 bottle-recycling program.
-
-The founding question, preserved verbatim on the brand-story page, is disarmingly simple: 「如果肌膚只需要水和油，為什麼我們不單純替肌膚補水補油？」 ("If skin only needs water and oil, why don't we simply give it water and oil?"). From that came 減法保養 (subtraction skincare): strip every routine and formula down to what skin actually needs, and maintain a public 非必要成分清單 of **3,200+ unnecessary or questionable ingredients** the brand refuses to use — codified in its FAITH formulation principles. The brand is explicit that it does not blindly worship "natural": 「我們並不盲目信仰天然，而是從天然之中找尋與安全的交集」.
-
-What Greenvines refuses: shadow-heavy, discount-screaming beauty e-commerce; bold-faced hype typography; and the industry habit of selling more steps. What it embraces: ink-green text on white, hairline-thin headlines, photography of real plants and real bottles, and a sustainability report published like a product. The design system *is* the philosophy — every removed border-radius, shadow, and font-weight is subtraction made visible.
-
-## 12. Principles
-
-1. **Subtraction is the product.** 減法保養 governs formulas, routines, and pixels alike. *UI implication:* one idea per section, one CTA per band; remove decoration before adding it — no shadows, no rounding, no second accent.
-2. **Transparency builds trust.** The 3200+ 非必要成分清單 and 配方架構 透明解析 make exclusion lists public. *UI implication:* surface ingredient data, sources, and numbers plainly; never hide claims behind marketing gloss.
-3. **Teach before selling.** The blog, calculators of skin knowledge, and 深入了解 CTAs put understanding first. *UI implication:* default CTA is an outline "learn more," not a filled "buy now"; commerce orange appears only at the cart.
-4. **Sustainability is an action, not a badge.** B Corp certification, 空瓶回收計畫, 1% for the Planet. *UI implication:* report real numbers (letters collected, bottles recycled) with the same typographic dignity as product claims.
-5. **Quiet confidence over volume.** Weight-100 headlines and a 45-day unconditional return policy say the same thing: we don't need to shout. *UI implication:* whisper-thin display type, generous whitespace, no urgency patterns.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Greenvines customer segments (Taiwanese clean-beauty consumers, sustainability-minded shoppers), not individual people.*
-
-**林佳穎, 31, 台北.** A marketing manager with sensitized skin from years of 10-step routines. Found Greenvines through the 無乳液實驗 articles and was converted by the idea of doing *less*. Reads the 非必要成分清單 before trying any new brand, and trusts the 45-day return policy enough to experiment.
-
-**陳威廷, 38, 新竹.** An engineer who buys the 頭皮淨化蜂膠+ 洗髮精 on subscription and returns empty bottles through 空瓶回收計畫. Chose the brand for its B Corp certification — he wants his household spending to match his values, and Greenvines is the only beauty brand whose sustainability report he has actually opened.
-
-**張雅婷, 26, 台中.** A graduate student who discovered the brand at the 台中漢神洲際 store. Loves the calm, apothecary-like retail space and the poetic product names (入夢 θ 呼吸精萃). Follows the blog for evidence-based skincare and mindfulness content rather than influencer reviews.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no search/filter results)** | White canvas, single thin headline in Forest Ink (`#002d18`) stating no matches, with one outline CTA back to 所有產品. No illustration clutter — subtraction applies to empty states too. |
-| **Empty (cart)** | Calm one-line statement plus an outline 深入了解 path to bestsellers; never urgency copy. |
-| **Loading (page/section)** | Flat sage (`#e6eae8`) placeholder blocks at final dimensions, 0px radius, gentle opacity pulse — no shimmer, no shadow, consistent with the flat system. |
-| **Loading (add-to-cart)** | The `#c84600` bar holds its size with an inline progress state; label stays visible. |
-| **Error (form validation)** | Field-level message below the input in plain Traditional Chinese describing what's needed; the field keeps its translucent fill, no aggressive red flooding. |
-| **Error (checkout/network)** | Inline banner in Forest Ink on pale sage explaining the failure and the retry path; tone stays calm and instructional. |
-| **Success (added to cart)** | Quiet inline confirmation near the cart bar; the persistent bar itself reflects quantity. No confetti, no modal interruption. |
-| **Success (newsletter subscribed)** | Single white confirmation line on the `#002d18` footer panel, replacing the form. |
-| **Skeleton** | `#e6eae8` blocks at exact final dimensions with 0px radius — sharp-cornered like everything else. |
-| **Disabled** | Outline buttons drop to reduced-opacity `#002d18` border and label together; orange CTAs fade rather than turn grey to preserve the commerce signal. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover fills on outline buttons, link underlines |
-| `motion-standard` | 250ms | Section fades, mega-menu open, image crossfades |
-| `motion-slow` | 400ms | Full-screen menu and photographic hero transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Default two-way transitions |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Menu and overlay arrivals |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Motion rules**: Motion is slow, soft, and botanical — closer to a breath than a bounce. Outline CTAs transition border/fill on hover at `motion-fast`; the full-screen `#002d18` mega menu fades in at `motion-slow`; photography crossfades rather than slides. No spring, overshoot, or parallax gimmicks — a brand built on subtraction does not add kinetic noise. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and crossfades become cuts; the store remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on:
-- https://www.greenvines.com.tw (homepage) — document.title 「綠藤生機 Greenvines｜沒有減法，何來精華」;
-  H3 52px/100 headlines incl. 「現在，保養從減法開始 #二減一加」, 「超過兩萬則真實好評，23 款純淨保養洗沐產品」;
-  outline CTAs 2px solid rgb(0,45,24) / 0px radius / 12px 20px / 14px / letter-spacing 1px;
-  accent CTA bg rgb(200,70,0); footer bg rgb(0,45,24); bgFreq top rgb(156,171,163).
-- https://www.greenvines.com.tw/products/know-more-luminosity-serum — 加入購物車 bg rgb(200,70,0) h 80px,
-  stepper bg rgb(241,241,241), H2 45-52px weight 100 letter-spacing 2px, 「讓肌膚熟悉的，應該純淨」.
-- https://www.greenvines.com.tw/pages/about-us — H1 品牌故事 104px/100; "More is Less. 多，即是少。";
-  brand-story paragraphs verbatim (林碧霞博士, 非必要成分清單 3200+, 公平貿易辣木油).
-
-WebFetch (2026-06-10):
-- https://www.greenvines.com.tw/pages/clean-beliefs — FAITH principles, "The more we know, the less we need.",
-  3200+ unnecessary-ingredient list, 98%+ natural origin, 45-day return.
-- https://www.greenvines.com.tw/pages/benefit-report — 2024 sustainability report: 空瓶回收計畫 closed-loop,
-  1% for the Planet NT$10M+ cumulative, 綠色生活 21 天 (8th year, 66,000+ letters), CEO 廖怡雯,
-  2024 DBS Asia Business Impact Award.
-- https://blog.greenvines.com.tw — official blog 純淨生活提案部落格 (brand-owned surface).
-
-Web search (2026-06-10) — founding facts: founded 2010 by 鄭涵睿/廖怡雯/許偉哲 (NTU finance, ex-UBS/ABN AMRO),
-NT$5M initial capital; certified as one of Taiwan's first B Corps (2015); sources: B Lab Taiwan
-(blab.tw/bcommunity-greenvines), DBS feature (dbs.com/livemore/tw-zh/social-enterprise/greenvines.html),
-Greenvines official blog founder interviews. Leadership noted as of the 2024 benefit report (CEO 廖怡雯).
-
-Personas (§13) are fictional archetypes informed by publicly observable Greenvines customer segments.
-Names are illustrative; they do not refer to real people.
-
-§14 States and §15 Motion are editorial extrapolations consistent with the measured flat/sharp/quiet system
-(box-shadow: none, 0px radius, weight-100 display) — marked as design guidance, not measured values.
-
-Interpretive claims (e.g., "subtraction made visible", "green is the voice; orange is the ask") are editorial
-readings connecting Greenvines' stated philosophy to its observed design, not direct brand statements.
--->

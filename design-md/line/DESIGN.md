@@ -1,208 +1,135 @@
 ---
-id: line
 name: LINE
-country: JP
-category: consumer-tech
-homepage: "https://line.me"
-primary_color: "#06c755"
-logo:
-  type: simpleicons
-  slug: line
-verified: "2026-07-11"
-omd: "0.1"
-ds:
-  name: LINE Design System
-  url: "https://designsystem.line.me"
-  type: system
-  description: "LINE Messenger and Global Family Service design guidance, including foundations, components, UX guidelines, principles, and LINE Voice."
-  og_image: "https://designsystem.line.me/static/36a4ead41b7b972b1130287e849a14b1/73f08/SEO_IMG_1741574443.png"
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.line.me/ko/", inspected: "2026-07-11" }
-    - { id: ds-home, kind: design-system, url: "https://designsystem.line.me/", inspected: "2026-07-11" }
-    - { id: colors, kind: design-system, url: "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/", inspected: "2026-07-11" }
-    - { id: typography, kind: design-system, url: "https://designsystem.line.me/LDSM/foundation/typography-ex-en/", inspected: "2026-07-11" }
-    - { id: layout, kind: design-system, url: "https://designsystem.line.me/LDSM/foundation/layout-ex-en/", inspected: "2026-07-11" }
-    - { id: box-button, kind: design-system, url: "https://designsystem.line.me/LDSM/components/box-button-ex-en/", inspected: "2026-07-11" }
-    - { id: capsule-button, kind: design-system, url: "https://designsystem.line.me/LDSM/components/capsule-button-ex-en/", inspected: "2026-07-11" }
-    - { id: input, kind: design-system, url: "https://designsystem.line.me/LDSM/components/input-ex-en/", inspected: "2026-07-11" }
-    - { id: popup, kind: design-system, url: "https://designsystem.line.me/LDSM/components/popup-ex-en/", inspected: "2026-07-11" }
-    - { id: tabs, kind: design-system, url: "https://designsystem.line.me/LDSM/components/tabs-ex-en/", inspected: "2026-07-11" }
-    - { id: badge, kind: design-system, url: "https://designsystem.line.me/LDSM/components/badge-ex-en/", inspected: "2026-07-11" }
-    - { id: principles, kind: design-system, url: "https://designsystem.line.me/about/design-principle-en", inspected: "2026-07-11" }
-    - { id: voice, kind: design-system, url: "https://designsystem.line.me/about/line-voice-en", inspected: "2026-07-11" }
-    - { id: corporate-style, kind: corporate, url: "https://www.lycorp.co.jp/en/technology-design/design/", inspected: "2026-07-11" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.line.me/ko/", captured: "2026-07-11" }
-    - { id: line-component-index, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/", captured: "2026-09-19" }
-    - { id: ds-home-doc, kind: official-doc, url: "https://designsystem.line.me/", captured: "2026-07-11" }
-    - { id: colors-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/", captured: "2026-07-11" }
-    - { id: typography-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/typography-ex-en/", captured: "2026-07-11" }
-    - { id: layout-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/layout-ex-en/", captured: "2026-07-11" }
-    - { id: box-button-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/box-button-ex-en/", captured: "2026-07-11" }
-    - { id: capsule-button-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/capsule-button-ex-en/", captured: "2026-07-11" }
-    - { id: input-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/input-ex-en/", captured: "2026-07-11" }
-    - { id: popup-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/popup-ex-en/", captured: "2026-07-11" }
-    - { id: tabs-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/tabs-ex-en/", captured: "2026-07-11" }
-    - { id: badge-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/badge-ex-en/", captured: "2026-07-11" }
-    - { id: principles-doc, kind: official-doc, url: "https://designsystem.line.me/about/design-principle-en", captured: "2026-07-11" }
-    - { id: voice-doc, kind: official-doc, url: "https://designsystem.line.me/about/line-voice-en", captured: "2026-07-11" }
-    - { id: corporate-style-doc, kind: official-doc, url: "https://www.lycorp.co.jp/en/technology-design/design/", captured: "2026-07-11" }
-  claims:
-    "tokens.colors.action-blue": &color_evidence { surface_id: colors, source_id: colors-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.colors.android-primary": *color_evidence
-    "tokens.colors.border": *color_evidence
-    "tokens.colors.canvas": *color_evidence
-    "tokens.colors.danger": *color_evidence
-    "tokens.colors.foreground": *color_evidence
-    "tokens.colors.on-primary": *color_evidence
-    "tokens.colors.outline": *color_evidence
-    "tokens.colors.primary": *color_evidence
-    "tokens.colors.text-muted": *color_evidence
-    "tokens.colors.text-secondary": *color_evidence
-    "tokens.components.box-button-destructive.bg": &button_evidence { surface_id: box-button, source_id: box-button-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.box-button-destructive.fg": *button_evidence
-    "tokens.components.box-button-destructive.height": *button_evidence
-    "tokens.components.box-button-destructive.radius": *button_evidence
-    "tokens.components.box-button-destructive.states": *button_evidence
-    "tokens.components.box-button-destructive.type": *button_evidence
-    "tokens.components.box-button-destructive.use": *button_evidence
-    "tokens.components.box-button-outline.bg": *button_evidence
-    "tokens.components.box-button-outline.border": *button_evidence
-    "tokens.components.box-button-outline.fg": *button_evidence
-    "tokens.components.box-button-outline.height": *button_evidence
-    "tokens.components.box-button-outline.radius": *button_evidence
-    "tokens.components.box-button-outline.states": *button_evidence
-    "tokens.components.box-button-outline.type": *button_evidence
-    "tokens.components.box-button-outline.use": *button_evidence
-    "tokens.components.box-button-primary.bg": *button_evidence
-    "tokens.components.box-button-primary.fg": *button_evidence
-    "tokens.components.box-button-primary.height": *button_evidence
-    "tokens.components.box-button-primary.radius": *button_evidence
-    "tokens.components.box-button-primary.states": *button_evidence
-    "tokens.components.box-button-primary.type": *button_evidence
-    "tokens.components.box-button-primary.use": *button_evidence
-    "tokens.components.capsule-button.bg": &capsule_evidence { surface_id: capsule-button, source_id: capsule-button-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.capsule-button.fg": *capsule_evidence
-    "tokens.components.capsule-button.radius": *capsule_evidence
-    "tokens.components.capsule-button.states": *capsule_evidence
-    "tokens.components.capsule-button.type": *capsule_evidence
-    "tokens.components.capsule-button.use": *capsule_evidence
-    "tokens.components.notification-badge.bg": &badge_evidence { surface_id: badge, source_id: badge-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.notification-badge.fg": *badge_evidence
-    "tokens.components.notification-badge.radius": *badge_evidence
-    "tokens.components.notification-badge.type": *badge_evidence
-    "tokens.components.notification-badge.use": *badge_evidence
-    "tokens.components.popup.bg": &popup_evidence { surface_id: popup, source_id: popup-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.popup.fg": *popup_evidence
-    "tokens.components.popup.states": *popup_evidence
-    "tokens.components.popup.type": *popup_evidence
-    "tokens.components.popup.use": *popup_evidence
-    "tokens.components.tabs.bg": &tabs_evidence { surface_id: tabs, source_id: tabs-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.tabs.border": *tabs_evidence
-    "tokens.components.tabs.fg": *tabs_evidence
-    "tokens.components.tabs.states": *tabs_evidence
-    "tokens.components.tabs.type": *tabs_evidence
-    "tokens.components.tabs.use": *tabs_evidence
-    "tokens.components.text-input.bg": &input_evidence { surface_id: input, source_id: input-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.text-input.border": *input_evidence
-    "tokens.components.text-input.fg": *input_evidence
-    "tokens.components.text-input.states": *input_evidence
-    "tokens.components.text-input.type": *input_evidence
-    "tokens.components.text-input.use": *input_evidence
-    "tokens.rounded.button": *button_evidence
-    "tokens.rounded.button-large": *button_evidence
-    "tokens.rounded.full": *capsule_evidence
-    "tokens.shadow.flat": &ds_home_evidence { surface_id: ds-home, source_id: ds-home-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.spacing.card-margin": &layout_evidence { surface_id: layout, source_id: layout-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.spacing.gutter-2-column": *layout_evidence
-    "tokens.spacing.gutter-3-column": *layout_evidence
-    "tokens.spacing.gutter-4-column": *layout_evidence
-    "tokens.spacing.screen-margin": *layout_evidence
-    "tokens.typography.body-1.size": &typography_evidence { surface_id: typography, source_id: typography-doc, method: official-doc, captured: "2026-07-11" }
-    "tokens.typography.body-1.use": *typography_evidence
-    "tokens.typography.body-1.weight": *typography_evidence
-    "tokens.typography.body-2.size": *typography_evidence
-    "tokens.typography.body-2.use": *typography_evidence
-    "tokens.typography.body-2.weight": *typography_evidence
-    "tokens.typography.body-4.size": *typography_evidence
-    "tokens.typography.body-4.use": *typography_evidence
-    "tokens.typography.body-4.weight": *typography_evidence
-    "tokens.typography.family.display": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-11" }
-    "tokens.typography.family.sans": *typography_evidence
-    "tokens.typography.heading-1.size": *typography_evidence
-    "tokens.typography.heading-1.use": *typography_evidence
-    "tokens.typography.heading-1.weight": *typography_evidence
-    "tokens.typography.heading-2.size": *typography_evidence
-    "tokens.typography.heading-2.use": *typography_evidence
-    "tokens.typography.heading-2.weight": *typography_evidence
-    "tokens.typography.marketing-hero.size": *home_evidence
-    "tokens.typography.marketing-hero.use": *home_evidence
-    "tokens.typography.marketing-hero.weight": *home_evidence
-    "tokens.typography.marketing-service.lineHeight": *home_evidence
-    "tokens.typography.marketing-service.size": *home_evidence
-    "tokens.typography.marketing-service.use": *home_evidence
-    "tokens.typography.marketing-service.weight": *home_evidence
-    "tokens.typography.title-1.size": *typography_evidence
-    "tokens.typography.title-1.use": *typography_evidence
-    "tokens.typography.title-1.weight": *typography_evidence
-    "tokens.typography.title-3.size": *typography_evidence
-    "tokens.typography.title-3.use": *typography_evidence
-    "tokens.typography.title-3.weight": *typography_evidence
-
-tokens:
-  source: reconciled
-  extracted: "2026-07-11"
-  note: "LINE Messenger product UI uses OS system fonts; public marketing and design-system headings use loaded LINESeed. The official v3.5 palette defines #06c755, replacing the legacy #07b53b value. LY corporate chrome is a separate domain and is not mixed into Messenger tokens."
-  colors:
-    primary: "#06c755"
-    android-primary: "#4cc764"
-    canvas: "#ffffff"
-    foreground: "#000000"
-    text-secondary: "#616161"
-    text-muted: "#949494"
-    border: "#e8e8e8"
-    outline: "#efefef"
-    action-blue: "#638dff"
-    danger: "#ff334b"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "System", display: "LINESeed" }
-    marketing-hero: { size: 70, weight: 700, use: "Public line.me Life on LINE heading" }
-    marketing-service: { size: 60, weight: 700, lineHeight: 1.334, use: "Public line.me Messenger and Services headings" }
-    heading-1: { size: 24, weight: 900, use: "Messenger product heading 1; official Heavy role" }
-    heading-2: { size: 17, weight: 700, use: "Messenger product heading 2" }
-    title-1: { size: 23, weight: 700, use: "Messenger product title 1" }
-    title-3: { size: 16, weight: 500, use: "Messenger product title 3; Medium or Semibold" }
-    body-1: { size: 16, weight: 400, use: "Messenger primary body" }
-    body-2: { size: 14, weight: 400, use: "Messenger secondary body" }
-    body-4: { size: 12, weight: 400, use: "Minimum recommended Messenger body role" }
-  spacing:
-    gutter-4-column: 5
-    gutter-3-column: 8
-    gutter-2-column: 9
-    screen-margin: 16
-    card-margin: 16
-  rounded: { button: 5, button-large: 6, full: 9999 }
-  shadow:
-    flat: "none"
-  components_harvested: true
-  components:
-    box-button-primary: { type: button, bg: "#06c755", fg: "#ffffff", radius: "5px", height: "36px", states: "active, inactive, pressed, loading, on, off", use: "Primary general action; official medium box-button geometry" }
-    box-button-destructive: { type: button, bg: "#ff334b", fg: "#ffffff", radius: "5px", height: "36px", states: "active, inactive, pressed, loading", use: "Delete, replace, remove, and other destructive actions" }
-    box-button-outline: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #efefef", radius: "5px", height: "36px", states: "active, inactive, pressed, loading, off", use: "Secondary or turned-off box-button action" }
-    capsule-button: { type: button, bg: "#06c755", fg: "#ffffff", radius: "9999px", states: "active, pressed; disappears after completing its scroll action", use: "Move to new content above or below the current scroll position" }
-    text-input: { type: input, bg: "#ffffff", fg: "#000000", border: "0 0 1px solid #949494", states: "inactive, focused #06c755, typing, completed, error #ff334b, disabled", use: "Text, password, and code input with required underline and reset action" }
-    popup: { type: dialog, bg: "#ffffff", fg: "#000000", states: "light, dark, one-button, two-button, three-button, affirmative-disabled", use: "Important information or user decision with content, action area, and scrim" }
-    tabs: { type: tab, bg: "transparent", fg: "#000000", border: "selected indicator uses #06c755", states: "selected, unselected, pressed", use: "Text, box, or icon grouping at the top of dependent content" }
-    notification-badge: { type: badge, bg: "#06c755", fg: "#ffffff", radius: "9999px", use: "N, dot, or number update badge; red is reserved for GNB placement" }
+colors:
+  primary: '#06c755'
+  android-primary: '#4cc764'
+  canvas: '#ffffff'
+  foreground: '#000000'
+  text-secondary: '#616161'
+  text-muted: '#949494'
+  border: '#e8e8e8'
+  outline: '#efefef'
+  action-blue: '#638dff'
+  danger: '#ff334b'
+  on-primary: '#ffffff'
+typography:
+  marketing-hero:
+    fontSize: 70px
+    fontWeight: 700
+    use: Public line.me Life on LINE heading
+  marketing-service:
+    fontSize: 60px
+    fontWeight: 700
+    lineHeight: 1.334
+    use: Public line.me Messenger and Services headings
+  heading-1:
+    fontSize: 24px
+    fontWeight: 900
+    use: Messenger product heading 1; official Heavy role
+  heading-2:
+    fontSize: 17px
+    fontWeight: 700
+    use: Messenger product heading 2
+  title-1:
+    fontSize: 23px
+    fontWeight: 700
+    use: Messenger product title 1
+  title-3:
+    fontSize: 16px
+    fontWeight: 500
+    use: Messenger product title 3; Medium or Semibold
+  body-1:
+    fontSize: 16px
+    fontWeight: 400
+    use: Messenger primary body
+  body-2:
+    fontSize: 14px
+    fontWeight: 400
+    use: Messenger secondary body
+  body-4:
+    fontSize: 12px
+    fontWeight: 400
+    use: Minimum recommended Messenger body role
+rounded:
+  button: 5px
+  button-large: 6px
+  full: 9999px
+spacing:
+  gutter-4-column: 5
+  gutter-3-column: 8
+  gutter-2-column: 9
+  screen-margin: 16
+  card-margin: 16
+components:
+  box-button-primary:
+    type: button
+    backgroundColor: '#06c755'
+    textColor: '#ffffff'
+    rounded: 5px
+    height: 36px
+    states: active, inactive, pressed, loading, on, off
+    use: Primary general action; official medium box-button geometry
+  box-button-destructive:
+    type: button
+    backgroundColor: '#ff334b'
+    textColor: '#ffffff'
+    rounded: 5px
+    height: 36px
+    states: active, inactive, pressed, loading
+    use: Delete, replace, remove, and other destructive actions
+  box-button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: '1px solid #efefef'
+    rounded: 5px
+    height: 36px
+    states: active, inactive, pressed, loading, off
+    use: Secondary or turned-off box-button action
+  capsule-button:
+    type: button
+    backgroundColor: '#06c755'
+    textColor: '#ffffff'
+    rounded: 9999px
+    states: active, pressed; disappears after completing its scroll action
+    use: Move to new content above or below the current scroll position
+  text-input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: '0 0 1px solid #949494'
+    states: 'inactive, focused #06c755, typing, completed, error #ff334b, disabled'
+    use: Text, password, and code input with required underline and reset action
+  popup:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    states: light, dark, one-button, two-button, three-button, affirmative-disabled
+    use: Important information or user decision with content, action area, and scrim
+  tabs:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    border: 'selected indicator uses #06c755'
+    states: selected, unselected, pressed
+    use: Text, box, or icon grouping at the top of dependent content
+  notification-badge:
+    type: badge
+    backgroundColor: '#06c755'
+    textColor: '#ffffff'
+    rounded: 9999px
+    use: N, dot, or number update badge; red is reserved for GNB placement
+fonts:
+  roles:
+    sans: System
+    display: LINESeed
 ---
 
 # Design System Inspiration of LINE
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 LINE is a communication product whose identity begins with helping people stay close, then extends into services that support everyday life. Its current evidence has two related but distinct public design surfaces. The consumer marketing site uses large `LINESeed` display typography and lifestyle imagery, while the official LINE Design System for Messenger specifies OS-native system fonts, compact product type roles, a structured color palette, and reusable interaction patterns. They share LINE Green and a direct, approachable tone, but their typography and density must not be collapsed into one generic marketing system.
 
@@ -210,7 +137,7 @@ The July 11 capture covered the Korean consumer site plus seven official design-
 
 Current product identity is anchored by official LINE Green `#06c755`, white `#ffffff`, black `#000000`, and a deep gray scale. The official component system is broader than pills: box buttons, capsule buttons, inputs, popups, tabs, badges, sheets, navigation, lists, cards, and feedback components each have defined anatomy, usage, and state behavior.
 
-## Primary tasks
+### Primary tasks
 
 - Start a chat and keep it going with someone close
 - Spot which conversations have an update waiting
@@ -218,7 +145,41 @@ Current product identity is anchored by official LINE Green `#06c755`, white `#f
 - Jump to content that arrived above or below where you are reading
 - Recover from a communication error mid-conversation
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+LINE's current first-party design documentation frames its mission as closing the distance between information, services, and people. The core product priority is conversation: the official principle “Chat comes first” states that sharing messages with people closest to the user is central to LINE's values.
+
+The public marketing site describes LINE as more than a messenger and as infrastructure for everyday life. This supports the product's broad service surface without requiring unverified name-origin, founding, or ownership mythology. LY Corporation is the current publisher of these documents, but its separate corporate visual system is not treated as Messenger UI.
+
+That boundary is part of LINE's current design identity. The consumer brand can use LINESeed, lifestyle imagery, and expansive display copy, while Messenger relies on native type, compact roles, and predictable interaction patterns. Green and conversational clarity connect the surfaces; identical typography does not. Keeping those layers separate makes the reference useful for recreating a product flow without flattening the wider brand.
+
+### Principles
+
+The official LINE Design Principles are:
+
+1. **WE ≠ USERS.** Investigate what users actually need rather than assuming designer perspectives are universal.
+   *UI implication:* validate tasks and localization with real usage evidence.
+
+2. **Clear primary tasks.** Make primary tasks intuitive.
+   *UI implication:* one primary action should dominate the screen and remain easy to identify.
+
+3. **Chat comes first.** New features should reinforce conversation between people.
+   *UI implication:* avoid features or flows that obscure the messaging core.
+
+4. **Reliable design.** Pursue trustworthy, intuitive design for all ages and varied use cases.
+   *UI implication:* prioritize clear states, accessibility, and predictable actions.
+
+5. **A cohesive experience.** Design seamless flows across related screens.
+   *UI implication:* components and terminology must remain consistent across journeys.
+
+6. **Respect for legacy.** Phase beneficial changes carefully because users develop familiarity and unexpected workflows.
+   *UI implication:* migration and redesign need compatibility and staged rollout plans.
+
+### Personas
+
+No current first-party LINE persona definitions were found in the inspected public design-system documents. Supported task contexts include starting and maintaining a chat, reading notifications, sharing content, recovering from a communication error, and using localized interfaces across operating systems. Do not convert the broad global audience into fictional demographic profiles inside the canonical reference. Persona research should be stored separately with market, language, task, device, and observed behavior.
+
+## Colors
 
 ### Official Messenger palette
 - **LINE Green** — `#06c755`: brand color and primary action.
@@ -236,7 +197,7 @@ The official color guide does not permit arbitrary opacity changes except for LI
 
 The previous `#07b53b` green was removed. It appeared in an older live tab capture, but the current v3.5 official palette and current product metadata identify `#06c755` as LINE Green.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence boundary
 
@@ -276,7 +237,51 @@ Sizes smaller than 12pt are not recommended. The scale is recommended rather tha
 
 The public consumer surface uses loaded `LINESeed` for major display roles: “Life on LINE” is 70px/700, while “Messenger APP” and “Services” are 60px/700. The design-system documentation also uses LINESeed for 48px/900 page titles and 32px/700 section titles, while its explanatory body uses system-ui.
 
-## 4. Component Stylings
+## Layout
+
+The official Messenger layout uses a common 16pt left and right screen margin and repeats 16pt inside cards. Its reference grid defines:
+
+| Grid | Column width | Gutter | Margin |
+|---|---:|---:|---:|
+| 2 columns | 167pt | 9pt | 16pt |
+| 3 columns | 109pt | 8pt | 16pt |
+| 4 columns | 82pt | 5pt | 16pt |
+
+When resolution increases, the guideline keeps the gutter and increases column count while maintaining proportional column widths. This is a product grid rule, not a claim about the wide marketing site's layout.
+
+### Responsive Behavior
+
+LINE's official guidance is resolution-adaptive rather than breakpoint-specific. Gutters remain stable while the number of grid columns increases, and screen/card margins remain 16pt in the documented mobile grid.
+
+Multilingual behavior is part of responsiveness. English, Japanese, Korean, Chinese, and Thai labels can vary substantially in length. Buttons and popups should switch from horizontal to vertical arrangements when translations would truncate action labels. Tabs can become horizontally scrollable, but labels remain single-line and the selected tab must be fully revealed.
+
+No canonical CSS breakpoints were published in the inspected Messenger documents.
+
+## Elevation & Depth
+
+The captured public and documentation surfaces are predominantly flat and reported `box-shadow: none`. Component hierarchy is expressed through color, borders, scrims, fixed placement, and content order.
+
+A popup is elevated semantically in front of app content using a scrim. Sticky buttons sit above scrolling content but below dialogs and sheets. No reusable shadow value was published or reliably extracted, so the canonical shadow token remains `none` rather than an invented modal shadow.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+The inspected documents define interaction outcomes but do not publish canonical duration or easing tokens.
+
+- Capsule buttons scroll to new content and disappear after the destination is reached.
+- Tabs navigate through press or content swipe, subject to documented gesture-priority rules.
+- Box buttons may show loading progress for save/download-like actions.
+- Code inputs submit automatically after the final digit.
+- Popup content can scroll while its button area remains fixed.
+
+Computed transition-duration, transition-timing-function, animation-duration, and reduced-motion behaviour must be captured before any motion token is added.
+
+## Components
 
 ### Box Button
 
@@ -384,25 +389,24 @@ Badge, Banner, Bottom Navigation, Bottom Sheet, Box Button, Capsule Button, Card
 LINE publishes a **second** system at the same host, LDSG, with its own component set. This
 roster is LDSM only; LDSG is not enumerated here and should not be assumed to match.
 
-## 5. Layout Principles
+### States
 
-The official Messenger layout uses a common 16pt left and right screen margin and repeats 16pt inside cards. Its reference grid defines:
+| Component | Official states |
+|---|---|
+| Box button | Active, inactive, pressed, loading, on, off |
+| Text input | Inactive, focused, typing, completed, error, disabled |
+| Password input | Inactive, focused, typing visible, typing hidden |
+| Code input | Initial focused, typing, submitted, error |
+| Capsule button | Active, pressed, disappears after scroll completion |
+| Tabs | Selected, unselected, pressed |
+| Popup | Light, dark, one/two/three actions, affirmative disabled |
+| Badge | N, dot, number; appears on update and dismisses by defined action |
+| Destructive action | Solid red; may be affirmative depending on context |
+| Disabled label | 40% treatment according to white or Gray 900 foreground rules |
 
-| Grid | Column width | Gutter | Margin |
-|---|---:|---:|---:|
-| 2 columns | 167pt | 9pt | 16pt |
-| 3 columns | 109pt | 8pt | 16pt |
-| 4 columns | 82pt | 5pt | 16pt |
+The collector safely exercised five official documentation tab controls and recorded selected/tab-selected variants. It did not execute form submission, destructive actions, or popup actions.
 
-When resolution increases, the guideline keeps the gutter and increases column count while maintaining proportional column widths. This is a product grid rule, not a claim about the wide marketing site's layout.
-
-## 6. Depth & Elevation
-
-The captured public and documentation surfaces are predominantly flat and reported `box-shadow: none`. Component hierarchy is expressed through color, borders, scrims, fixed placement, and content order.
-
-A popup is elevated semantically in front of app content using a scrim. Sticky buttons sit above scrolling content but below dialogs and sheets. No reusable shadow value was published or reliably extracted, so the canonical shadow token remains `none` rather than an invented modal shadow.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use official `#06c755` LINE Green for primary Messenger actions.
@@ -424,15 +428,17 @@ A popup is elevated semantically in front of app content using a scrim. Sticky b
 - Use capsule buttons in the center of content; place them at the top or bottom scroll boundary.
 - Merge LY corporate charcoal chrome into Messenger tokens.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-LINE's official guidance is resolution-adaptive rather than breakpoint-specific. Gutters remain stable while the number of grid columns increases, and screen/card margins remain 16pt in the documented mobile grid.
+The official LINE Voice defines three qualities:
 
-Multilingual behavior is part of responsiveness. English, Japanese, Korean, Chinese, and Thai labels can vary substantially in length. Buttons and popups should switch from horizontal to vertical arrangements when translations would truncate action labels. Tabs can become horizontally scrollable, but labels remain single-line and the selected tab must be fully revealed.
+1. **Clear** — remove unimportant information, prefer unambiguous language, and choose clarity over rigid consistency.
+2. **Conversational** — translate complex concepts into the user's language, use active sentences, and treat buttons as the user's voice.
+3. **Considerate** — avoid assumptions, focus on user goals, anticipate problems, and emphasize what users can do.
 
-No canonical CSS breakpoints were published in the inspected Messenger documents.
+Official examples include “Keep it short,” “Buttons are the user's voice,” and “Use descriptive links instead of URLs paired with instructions.” These are current first-party writing rules, not inferred marketing tone.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Product UI tokens
 - Primary: `#06c755`
@@ -454,75 +460,12 @@ No canonical CSS breakpoints were published in the inspected Messenger documents
 
 Treat the public 70px LINESeed headline as marketing typography. Do not transfer it into Messenger product screens.
 
-## 10. Voice & Tone
+## Governance
 
-The official LINE Voice defines three qualities:
+### Known Gaps
 
-1. **Clear** — remove unimportant information, prefer unambiguous language, and choose clarity over rigid consistency.
-2. **Conversational** — translate complex concepts into the user's language, use active sentences, and treat buttons as the user's voice.
-3. **Considerate** — avoid assumptions, focus on user goals, anticipate problems, and emphasize what users can do.
-
-Official examples include “Keep it short,” “Buttons are the user's voice,” and “Use descriptive links instead of URLs paired with instructions.” These are current first-party writing rules, not inferred marketing tone.
-
-## 11. Brand Narrative
-
-LINE's current first-party design documentation frames its mission as closing the distance between information, services, and people. The core product priority is conversation: the official principle “Chat comes first” states that sharing messages with people closest to the user is central to LINE's values.
-
-The public marketing site describes LINE as more than a messenger and as infrastructure for everyday life. This supports the product's broad service surface without requiring unverified name-origin, founding, or ownership mythology. LY Corporation is the current publisher of these documents, but its separate corporate visual system is not treated as Messenger UI.
-
-That boundary is part of LINE's current design identity. The consumer brand can use LINESeed, lifestyle imagery, and expansive display copy, while Messenger relies on native type, compact roles, and predictable interaction patterns. Green and conversational clarity connect the surfaces; identical typography does not. Keeping those layers separate makes the reference useful for recreating a product flow without flattening the wider brand.
-
-## 12. Principles
-
-The official LINE Design Principles are:
-
-1. **WE ≠ USERS.** Investigate what users actually need rather than assuming designer perspectives are universal.
-   *UI implication:* validate tasks and localization with real usage evidence.
-
-2. **Clear primary tasks.** Make primary tasks intuitive.
-   *UI implication:* one primary action should dominate the screen and remain easy to identify.
-
-3. **Chat comes first.** New features should reinforce conversation between people.
-   *UI implication:* avoid features or flows that obscure the messaging core.
-
-4. **Reliable design.** Pursue trustworthy, intuitive design for all ages and varied use cases.
-   *UI implication:* prioritize clear states, accessibility, and predictable actions.
-
-5. **A cohesive experience.** Design seamless flows across related screens.
-   *UI implication:* components and terminology must remain consistent across journeys.
-
-6. **Respect for legacy.** Phase beneficial changes carefully because users develop familiarity and unexpected workflows.
-   *UI implication:* migration and redesign need compatibility and staged rollout plans.
-
-## 13. Personas
-
-No current first-party LINE persona definitions were found in the inspected public design-system documents. Supported task contexts include starting and maintaining a chat, reading notifications, sharing content, recovering from a communication error, and using localized interfaces across operating systems. Do not convert the broad global audience into fictional demographic profiles inside the canonical reference. Persona research should be stored separately with market, language, task, device, and observed behavior.
-
-## 14. States
-
-| Component | Official states |
-|---|---|
-| Box button | Active, inactive, pressed, loading, on, off |
-| Text input | Inactive, focused, typing, completed, error, disabled |
-| Password input | Inactive, focused, typing visible, typing hidden |
-| Code input | Initial focused, typing, submitted, error |
-| Capsule button | Active, pressed, disappears after scroll completion |
-| Tabs | Selected, unselected, pressed |
-| Popup | Light, dark, one/two/three actions, affirmative disabled |
-| Badge | N, dot, number; appears on update and dismisses by defined action |
-| Destructive action | Solid red; may be affirmative depending on context |
-| Disabled label | 40% treatment according to white or Gray 900 foreground rules |
-
-The collector safely exercised five official documentation tab controls and recorded selected/tab-selected variants. It did not execute form submission, destructive actions, or popup actions.
-
-## 15. Motion & Easing
-
-The inspected documents define interaction outcomes but do not publish canonical duration or easing tokens.
-
-- Capsule buttons scroll to new content and disappear after the destination is reached.
-- Tabs navigate through press or content swipe, subject to documented gesture-priority rules.
-- Box buttons may show loading progress for save/download-like actions.
-- Code inputs submit automatically after the final digit.
-- Popup content can scroll while its button area remains fixed.
-
-Computed transition-duration, transition-timing-function, animation-duration, and reduced-motion behaviour must be captured before any motion token is added.
+- **Contrast, `box-button-primary`.** Text `#ffffff` on `#06c755` measures 2.26:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `box-button-destructive`.** Text `#ffffff` on `#ff334b` measures 3.60:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `capsule-button`.** Text `#ffffff` on `#06c755` measures 2.26:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tabs`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `notification-badge`.** Text `#ffffff` on `#06c755` measures 2.26:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

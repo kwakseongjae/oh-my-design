@@ -1,128 +1,88 @@
 ---
-id: epidemicsound
 name: Epidemic Sound
-country: SE
-category: consumer-tech
-homepage: "https://www.epidemicsound.com"
-primary_color: "#FF82C2"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=epidemicsound.com&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    brand-pink: "#ff82c2"
-    pink-hovered: "#e575af"
-    pink-pressed: "#cc689b"
-    brand-off-white: "#f1f0eb"
-    brand-off-black: "#292c33"
-    brand-azur: "#20afff"
-    brand-yellow: "#ffda40"
-    brand-red: "#ff6138"
-    brand-fog: "#cfd6e5"
-    brand-ecru: "#e4d9cf"
-    brand-moss: "#bfbda8"
-    brand-stone: "#9793a5"
-    background-base: "#121418"
-    foreground: "#000000"
-    inverse-hovered: "#272727"
-    inverse-pressed: "#333333"
-    canvas: "#ffffff"
-    light-tint: "#3d4d74"
-    positive: "#5ad363"
-    purple: "#bb76ff"
-  typography:
-    family: { display: "Sebenta", sans: "Inter" }
-    display: { size: 80, weight: 500, use: "hero heading" }
-    button: { size: 14, weight: 600, use: "pill buttons" }
-  rounded: { pill: 10000 }
-  components:
-    button-primary: { type: "button", bg: "#000000", fg: "#ffffff", radius: 10000, height: "44px", padding: "4px 16px", font: "14px / 600", hover: "#272727", pressed: "#333333", focus: "outline 2px solid #000000", use: "Create free account — black pill on the off-white page (--es-color-action-primary-inverse-*); lifts to #272727 and #333333." }
-    button-secondary: { type: "button", bg: "rgba(61,77,116,0.12)", fg: "#000000", radius: 10000, height: "44px", padding: "4px 16px", font: "14px / 600", hover: "rgba(61,77,116,0.18)", pressed: "rgba(61,77,116,0.24)", focus: "outline 2px solid #000000", use: "Log in — a translucent blue-grey pill that deepens 12% → 18% → 24%." }
-    button-ghost: { type: "button", bg: "transparent", fg: "#000000", radius: 10000, height: "44px", padding: "4px 16px", font: "14px / 600", hover: "rgba(61,77,116,0.06)", pressed: "rgba(61,77,116,0.12)", focus: "outline 2px solid #000000", use: "What we offer / For business — ghost navigation pills tinting 6% on hover and 12% when pressed." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.epidemicsound.com/", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.epidemicsound.com/", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://www.epidemicsound.com/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: about, kind: official-doc, url: "https://www.epidemicsound.com/about-us/", captured: "2026-09-26" }
-    - { id: press, kind: official-doc, url: "https://corporate.epidemicsound.com/press-and-media/press-releases/2026/financial-times-recognizes-epidemic-sound-as-one-of-europes-fastest-growing-companies-2026/", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.background-base: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-azur: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-ecru: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-fog: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-moss: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-off-black: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-off-white: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-pink: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-red: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-stone: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-yellow: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.inverse-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.inverse-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.light-tint: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.pink-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.pink-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.positive: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.purple: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-ghost.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-ghost.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.display.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.display.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.display.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.display: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  brand-pink: '#ff82c2'
+  pink-hovered: '#e575af'
+  pink-pressed: '#cc689b'
+  brand-off-white: '#f1f0eb'
+  brand-off-black: '#292c33'
+  brand-azur: '#20afff'
+  brand-yellow: '#ffda40'
+  brand-red: '#ff6138'
+  brand-fog: '#cfd6e5'
+  brand-ecru: '#e4d9cf'
+  brand-moss: '#bfbda8'
+  brand-stone: '#9793a5'
+  background-base: '#121418'
+  foreground: '#000000'
+  inverse-hovered: '#272727'
+  inverse-pressed: '#333333'
+  canvas: '#ffffff'
+  light-tint: '#3d4d74'
+  positive: '#5ad363'
+  purple: '#bb76ff'
+typography:
+  display:
+    fontSize: 80px
+    fontWeight: 500
+    use: hero heading
+  button:
+    fontSize: 14px
+    fontWeight: 600
+    use: pill buttons
+rounded:
+  pill: 10000px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 10000px
+    height: 44px
+    padding: 4px 16px
+    typography: 14px / 600
+    hover: '#272727'
+    pressed: '#333333'
+    focus: 'outline 2px solid #000000'
+    use: 'Create free account — black pill on the off-white page (--es-color-action-primary-inverse-*); lifts to #272727 and #333333.'
+  button-secondary:
+    type: button
+    backgroundColor: rgba(61,77,116,0.12)
+    textColor: '#000000'
+    rounded: 10000px
+    height: 44px
+    padding: 4px 16px
+    typography: 14px / 600
+    hover: rgba(61,77,116,0.18)
+    pressed: rgba(61,77,116,0.24)
+    focus: 'outline 2px solid #000000'
+    use: Log in — a translucent blue-grey pill that deepens 12% → 18% → 24%.
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 10000px
+    height: 44px
+    padding: 4px 16px
+    typography: 14px / 600
+    hover: rgba(61,77,116,0.06)
+    pressed: rgba(61,77,116,0.12)
+    focus: 'outline 2px solid #000000'
+    use: What we offer / For business — ghost navigation pills tinting 6% on hover and 12% when pressed.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    display: Sebenta
+    sans: Inter
 ---
+
 # Design System Inspiration of Epidemic Sound
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Epidemic Sound licenses music and sound effects to brands and creators — "an expansive catalog of
 world-class music and sound effects that's seen and heard over 3 billion times a day", more than
@@ -145,11 +105,27 @@ What makes it worth reading:
 - **Named brand neutrals.** Off-white, off-black, fog, ecru, moss and stone sit beside the brights,
   plus platform colours (`--es-color-platform-tiktok`, `-youtube`, `-twitch` …) for integrations.
 
-### Primary tasks
+#### Primary tasks
 - Explore music and sound effects.
 - Create a free account; see pricing.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+A Stockholm company that owns its whole catalogue so creators never worry about rights. Its product
+lives in the dark; its storefront turns the lights on — off-white, black pills and Sebenta headlines
+— with pink, azur and yellow as the music.
+
+### Principles
+
+- **Worry-free rights.** The licence model is the product.
+- **Artists paid fairly.** 50/50 royalties and upfront payments.
+- **Every action has four states.**
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `epidemicsound.com`: 223 root custom properties — `--es-*` 168
 plus a few `--color-brand-*`; Tailwind's `--tw-*` (20) excluded.
@@ -171,7 +147,7 @@ plus a few `--color-brand-*`; Tailwind's `--tw-*` (20) excluded.
 - **Inverse hovered** (`#272727`) · **Inverse pressed** (`#333333`).
 - **Canvas** (`#ffffff`) · **Light tint** (`#3d4d74`) — the translucent secondary pills.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -182,7 +158,27 @@ plus a few `--color-brand-*`; Tailwind's `--tw-*` (20) excluded.
 H1 80px/500 Sebenta; H2 32px/500 Sebenta; section labels 14px/600 Inter uppercase; buttons
 14px/600.
 
-## 4. Component Stylings
+## Layout
+
+- A sticky header of pill buttons over an off-white page with big Sebenta headlines and media tiles.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+`--es-elevation-floating` `0 8px 16px rgba(0,0,0,.25)`; `--es-elevation-bottom` mirrors it upward.
+
+## Motion & Easing
+
+Not measured.
+
+---
+
+**Tier 1 sources:** https://www.epidemicsound.com/ (live homepage — 223 root custom properties read via `getComputedStyle`, Tailwind excluded; Sebenta and Inter loaded; three components measured at rest, hover, pressed and focus, captured 2026-09-26); https://www.epidemicsound.com/zz-this-does-not-exist (nonsense-path control — HTTP 404 in the browser, read 2026-09-26); https://www.epidemicsound.com/about-us/ (About — 3 billion plays a day, 55,000+ original tracks, direct licensing, read 2026-09-26); https://corporate.epidemicsound.com/press-and-media/press-releases/2026/financial-times-recognizes-epidemic-sound-as-one-of-europes-fastest-growing-companies-2026/ (press release — Stockholm, Sweden dateline; "Swedish Unicorn"; 50/50 royalty split, read 2026-09-26)
+
+## Components
 
 Measured with focus under a real Tab key and a hover counted only when `:hover` matched. The consent
 banner offered only "Change cookie settings" and "Accept"; it was never answered.
@@ -196,15 +192,12 @@ banner offered only "Change cookie settings" and "Accept"; it was never answered
 
 Full pills (`10000px`).
 
-## 5. Layout Principles
+### States
 
-- A sticky header of pill buttons over an off-white page with big Sebenta headlines and media tiles.
+Hover: black pills lift to `#272727`; translucent pills deepen 6%. Press: `#333333`, another 6%.
+Focus: 2px black outlines.
 
-## 6. Depth & Elevation
-
-`--es-elevation-floating` `0 8px 16px rgba(0,0,0,.25)`; `--es-elevation-bottom` mirrors it upward.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Put black pills on off-white `#f1f0eb`, and step translucent pills 6% → 12% → 18% → 24%.
@@ -216,11 +209,11 @@ Full pills (`10000px`).
 - Don't make buttons square; everything is a full pill.
 - Don't use the platform colours for Epidemic's own UI.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#f1f0eb` off-white · `#000000` ink · `#272727` hover · `#ff82c2` pink · `#20afff` azur ·
@@ -231,35 +224,9 @@ Full pills (`10000px`).
   outline."
 - "An 80px Sebenta headline in black on `#f1f0eb`."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice.
+### Known Gaps
 
-## 11. Brand Narrative
-
-A Stockholm company that owns its whole catalogue so creators never worry about rights. Its product
-lives in the dark; its storefront turns the lights on — off-white, black pills and Sebenta headlines
-— with pink, azur and yellow as the music.
-
-## 12. Principles
-
-- **Worry-free rights.** The licence model is the product.
-- **Artists paid fairly.** 50/50 royalties and upfront payments.
-- **Every action has four states.**
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Hover: black pills lift to `#272727`; translucent pills deepen 6%. Press: `#333333`, another 6%.
-Focus: 2px black outlines.
-
-## 15. Motion & Easing
-
-Not measured.
-
----
-
-**Tier 1 sources:** https://www.epidemicsound.com/ (live homepage — 223 root custom properties read via `getComputedStyle`, Tailwind excluded; Sebenta and Inter loaded; three components measured at rest, hover, pressed and focus, captured 2026-09-26); https://www.epidemicsound.com/zz-this-does-not-exist (nonsense-path control — HTTP 404 in the browser, read 2026-09-26); https://www.epidemicsound.com/about-us/ (About — 3 billion plays a day, 55,000+ original tracks, direct licensing, read 2026-09-26); https://corporate.epidemicsound.com/press-and-media/press-releases/2026/financial-times-recognizes-epidemic-sound-as-one-of-europes-fastest-growing-companies-2026/ (press release — Stockholm, Sweden dateline; "Swedish Unicorn"; 50/50 royalty split, read 2026-09-26)
+- **Contrast, `button-secondary`.** Text `#000000` on `#3d4d741f` measures 2.51:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-ghost`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

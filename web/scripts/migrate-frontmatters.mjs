@@ -14,6 +14,7 @@
  *   node web/scripts/migrate-frontmatters.mjs            # write
  *   node web/scripts/migrate-frontmatters.mjs --dry-run  # diff only
  */
+import { refuseV3Target } from "./lib/legacy-writer-guard.mjs";
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -536,6 +537,7 @@ const today = new Date().toISOString().slice(0, 10);
 for (const id of ids) {
   const path = join(REFS_DIR, id, 'DESIGN.md');
   const original = readFileSync(path, 'utf-8');
+  refuseV3Target(original, id, 'migrate-frontmatters'); // OmD 0.1-only tool, retired by DESIGN.md v3
   const { fm, body } = parseFrontmatter(original);
 
   // Merge logic: existing fm wins (when non-empty), source maps fill gaps.

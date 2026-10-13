@@ -1,234 +1,189 @@
 ---
-id: weverse
 name: Weverse
-display_name_kr: 위버스
-country: KR
-category: consumer-tech
-homepage: "https://weverse.io"
-primary_color: "#00cbd5"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=weverse.io&sz=128"
-verified: "2026-09-30"
-added: "2026-06-26"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: product-home, url: "https://weverse.io/", inspected: "2026-09-30" }
-    - { id: surface-2, kind: product, url: "https://shop.weverse.io/ko/home", inspected: "2026-09-30" }
-    - { id: surface-3, kind: product, url: "https://shop.weverse.io/ko/shop/KRW/artists/2", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://weverse.io/", captured: "2026-09-30" }
-    - { id: surface-surface-2, kind: product-surface, url: "https://shop.weverse.io/ko/home", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://shop.weverse.io/ko/shop/KRW/artists/2", captured: "2026-09-30" }
-    - { id: hybe-business, kind: official-doc, url: "https://hybecorp.com/ko/company/business/", captured: "2026-09-30" }
-    - { id: hybe-company, kind: official-doc, url: "https://hybecorp.com/ko/company/info/", captured: "2026-09-30" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &wlogin { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-09-30" }
-    "tokens.colors.primary-text": *wlogin
-    "tokens.colors.ink": &wbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.canvas": *wbody
-    "tokens.colors.shop-ink": &wsbody { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::body", captured: "2026-09-30" }
-    "tokens.colors.shop-heading": &wsh2 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
-    "tokens.colors.shop-body": &wsmeta { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
-    "tokens.colors.muted": &wsign { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
-    "tokens.colors.hairline": &wtab { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"171\"]", captured: "2026-09-30" }
-    "tokens.typography.family.sans": *wbody
-    "tokens.typography.banner-title.size": &wbanner { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
-    "tokens.typography.banner-title.weight": *wbanner
-    "tokens.typography.banner-title.lineHeight": *wbanner
-    "tokens.typography.banner-title.use": *wbanner
-    "tokens.typography.artist-name.size": &wartist { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
-    "tokens.typography.artist-name.weight": *wartist
-    "tokens.typography.artist-name.lineHeight": *wartist
-    "tokens.typography.artist-name.use": *wartist
-    "tokens.typography.section.size": *wsh2
-    "tokens.typography.section.weight": *wsh2
-    "tokens.typography.section.lineHeight": *wsh2
-    "tokens.typography.section.use": *wsh2
-    "tokens.typography.list-title.size": &wlist { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
-    "tokens.typography.list-title.weight": *wlist
-    "tokens.typography.list-title.lineHeight": *wlist
-    "tokens.typography.list-title.use": *wlist
-    "tokens.typography.shop-body.size": *wsbody
-    "tokens.typography.shop-body.weight": *wsbody
-    "tokens.typography.shop-body.lineHeight": *wsbody
-    "tokens.typography.shop-body.use": *wsbody
-    "tokens.typography.tab.size": *wtab
-    "tokens.typography.tab.weight": *wtab
-    "tokens.typography.tab.lineHeight": *wtab
-    "tokens.typography.tab.use": *wtab
-    "tokens.typography.button.size": *wlogin
-    "tokens.typography.button.weight": *wlogin
-    "tokens.typography.button.lineHeight": *wlogin
-    "tokens.typography.button.use": *wlogin
-    "tokens.typography.prompt.size": *wsign
-    "tokens.typography.prompt.weight": *wsign
-    "tokens.typography.prompt.lineHeight": *wsign
-    "tokens.typography.prompt.use": *wsign
-    "tokens.typography.meta.size": *wsmeta
-    "tokens.typography.meta.weight": *wsmeta
-    "tokens.typography.meta.lineHeight": *wsmeta
-    "tokens.typography.meta.use": *wsmeta
-    "tokens.typography.body.size": *wbody
-    "tokens.typography.body.weight": *wbody
-    "tokens.typography.body.use": *wbody
-    "tokens.typography.badge.size": &wbadge { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.typography.badge.weight": *wbadge
-    "tokens.typography.badge.lineHeight": *wbadge
-    "tokens.typography.badge.use": *wbadge
-    "tokens.spacing.control-x": *wlogin
-    "tokens.spacing.menu-y": &wmenu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
-    "tokens.spacing.menu-x": *wmenu
-    "tokens.spacing.card": &wcard { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::article", captured: "2026-09-30" }
-    "tokens.rounded.control": *wlogin
-    "tokens.rounded.card": *wcard
-    "tokens.rounded.float": &wfloat { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"180\"]", captured: "2026-09-30" }
-    "tokens.rounded.pill": *wtab
-    "tokens.shadow.card": *wcard
-    "tokens.shadow.float": *wfloat
-    "tokens.shadow.chip-ring": &wchip { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.components.login-button.type": *wlogin
-    "tokens.components.login-button.bg": *wlogin
-    "tokens.components.login-button.fg": *wlogin
-    "tokens.components.login-button.border": *wlogin
-    "tokens.components.login-button.radius": *wlogin
-    "tokens.components.login-button.padding": *wlogin
-    "tokens.components.login-button.height": *wlogin
-    "tokens.components.login-button.font": *wlogin
-    "tokens.components.login-button.states": *wlogin
-    "tokens.components.login-button.use": *wlogin
-    "tokens.components.global-menu-item.type": *wmenu
-    "tokens.components.global-menu-item.bg": *wmenu
-    "tokens.components.global-menu-item.fg": *wmenu
-    "tokens.components.global-menu-item.radius": *wmenu
-    "tokens.components.global-menu-item.padding": *wmenu
-    "tokens.components.global-menu-item.height": *wmenu
-    "tokens.components.global-menu-item.font": *wmenu
-    "tokens.components.global-menu-item.hover": &wmenuh { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.global-menu-item.pressed": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.global-menu-item.states": *wmenuh
-    "tokens.components.global-menu-item.use": *wmenu
-    "tokens.components.shop-tab.type": *wtab
-    "tokens.components.shop-tab.bg": *wtab
-    "tokens.components.shop-tab.fg": *wtab
-    "tokens.components.shop-tab.border": *wtab
-    "tokens.components.shop-tab.radius": *wtab
-    "tokens.components.shop-tab.padding": *wtab
-    "tokens.components.shop-tab.height": *wtab
-    "tokens.components.shop-tab.font": *wtab
-    "tokens.components.shop-tab.selected": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"170\"]", captured: "2026-09-30" }
-    "tokens.components.shop-tab.states": *wtab
-    "tokens.components.shop-tab.use": *wtab
-    "tokens.components.shop-carousel-arrow.type": &warrow { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-09-30" }
-    "tokens.components.shop-carousel-arrow.bg": *warrow
-    "tokens.components.shop-carousel-arrow.fg": *warrow
-    "tokens.components.shop-carousel-arrow.border": *warrow
-    "tokens.components.shop-carousel-arrow.radius": *warrow
-    "tokens.components.shop-carousel-arrow.height": *warrow
-    "tokens.components.shop-carousel-arrow.disabled": *warrow
-    "tokens.components.shop-carousel-arrow.states": *warrow
-    "tokens.components.shop-carousel-arrow.use": *warrow
-    "tokens.components.banner-arrow.type": &wbarrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
-    "tokens.components.banner-arrow.bg": *wbarrow
-    "tokens.components.banner-arrow.fg": *wbarrow
-    "tokens.components.banner-arrow.border": *wbarrow
-    "tokens.components.banner-arrow.radius": *wbarrow
-    "tokens.components.banner-arrow.height": *wbarrow
-    "tokens.components.banner-arrow.states": *wbarrow
-    "tokens.components.banner-arrow.use": *wbarrow
-    "tokens.components.community-badge.type": *wbadge
-    "tokens.components.community-badge.bg": *wbadge
-    "tokens.components.community-badge.fg": *wbadge
-    "tokens.components.community-badge.border": *wbadge
-    "tokens.components.community-badge.radius": *wbadge
-    "tokens.components.community-badge.padding": *wbadge
-    "tokens.components.community-badge.height": *wbadge
-    "tokens.components.community-badge.font": *wbadge
-    "tokens.components.community-badge.use": *wbadge
-    "tokens.components.dm-chip.type": *wchip
-    "tokens.components.dm-chip.bg": *wchip
-    "tokens.components.dm-chip.fg": *wchip
-    "tokens.components.dm-chip.radius": *wchip
-    "tokens.components.dm-chip.padding": *wchip
-    "tokens.components.dm-chip.height": *wchip
-    "tokens.components.dm-chip.font": *wchip
-    "tokens.components.dm-chip.shadow": *wchip
-    "tokens.components.dm-chip.use": *wchip
-    "tokens.components.community-row.type": &wcomm { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-09-30" }
-    "tokens.components.community-row.fg": *wcomm
-    "tokens.components.community-row.height": *wcomm
-    "tokens.components.community-row.use": *wcomm
-    "tokens.components.shop-card.type": *wcard
-    "tokens.components.shop-card.bg": *wcard
-    "tokens.components.shop-card.fg": *wcard
-    "tokens.components.shop-card.radius": *wcard
-    "tokens.components.shop-card.padding": *wcard
-    "tokens.components.shop-card.shadow": *wcard
-    "tokens.components.shop-card.use": *wcard
-    "tokens.components.shop-outline-button.type": &wwide { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"37\"]", captured: "2026-09-30" }
-    "tokens.components.shop-outline-button.bg": *wwide
-    "tokens.components.shop-outline-button.fg": *wwide
-    "tokens.components.shop-outline-button.border": *wwide
-    "tokens.components.shop-outline-button.radius": *wwide
-    "tokens.components.shop-outline-button.padding": *wwide
-    "tokens.components.shop-outline-button.height": *wwide
-    "tokens.components.shop-outline-button.font": *wwide
-    "tokens.components.shop-outline-button.states": *wwide
-    "tokens.components.shop-outline-button.use": *wwide
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#00cbd5"
-    primary-text: "#00b8c1"
-    ink: "#000000"
-    canvas: "#ffffff"
-    shop-ink: "#202429"
-    shop-heading: "#111111"
-    shop-body: "#484848"
-    muted: "#8e8e8e"
-    hairline: "#ebedf2"
-  typography:
-    family: { sans: "Pretendard" }
-    banner-title: { size: 28, weight: 800, lineHeight: 1.29, use: "Headline on the Weverse Shop home's banner slides, white over imagery or black on light slides" }
-    artist-name: { size: 24, weight: 800, lineHeight: 1.29, use: "Artist names over artist cards on the Weverse Shop home, white" }
-    section: { size: 18, weight: 700, lineHeight: 1.28, use: "Section headings on the Weverse Shop home" }
-    list-title: { size: 16, weight: 700, lineHeight: 1.38, use: "Titles of the recommended DM and featured-community lists on weverse.io" }
-    shop-body: { size: 16, weight: 400, lineHeight: 1.0, use: "Body text on Weverse Shop (line height computes 16px)" }
-    tab: { size: 14, weight: 500, lineHeight: 1.29, use: "Category tabs on Weverse Shop and DM chips on weverse.io" }
-    button: { size: 14, weight: 700, lineHeight: 1.29, use: "로그인 label on weverse.io and the full-width outlined pill on Weverse Shop" }
-    prompt: { size: 14, weight: 500, lineHeight: 1.29, use: "Sign-in prompt in the global menu on weverse.io, grey" }
-    meta: { size: 13, weight: 400, lineHeight: 1.31, use: "Product meta lines under Weverse Shop products" }
-    body: { size: 13, weight: 400, use: "Body text on weverse.io (line height computes normal)" }
-    badge: { size: 11, weight: 700, lineHeight: 1.27, use: "Artist-name badge on weverse.io banner slides" }
-  spacing: { control-x: 16, menu-y: 12, menu-x: 16, card: 16 }
-  rounded: { control: 8, card: 16, float: 18, pill: 100 }
-  shadow:
-    card: "rgba(0, 0, 0, 0.12) 0px 4px 28px 0px"
-    float: "rgba(0, 0, 0, 0.08) 0px 2px 12px 0px"
-    chip-ring: "rgb(235, 237, 242) 0px 0px 0px 1px inset"
-  components:
-    login-button: { type: button, bg: "#ffffff", fg: "#00b8c1", border: "1px solid #00cbd5", radius: "8px", padding: "0px 16px", height: "36px", font: "14px / 700 / 18px Pretendard", states: "rest only; not probed, because a press opens sign-in; the collector recorded no state frame for it", use: "로그인 in the global menu's sign-in block under the prompt 로그인하고 나만의 아티스트를 만나보세요! at home::[data-omd-capture=\"3\"], 70 x 36; the label span also computes #00b8c1; its own class is button-_--secondary1; the only teal on a product action across the three captured pages (the artist shop's cookie bar renders a separate teal, #08ccca, on its 전체 동의 label)" }
-    global-menu-item: { type: button, bg: "transparent", fg: "#000000", radius: "8px", padding: "12px 16px", height: "48px", font: "13px / 400 Pretendard", hover: "bg #ffffff", pressed: "bg #ffffff", states: "hover and pressed both read bg #ffffff on all seven sibling items (captures 4-10), a full step from transparent to a clean value, so both are declared; focus is not declared", use: "Items of the global menu on weverse.io at home::[data-omd-capture=\"4\"], 225 x 48; labels were not read" }
-    shop-tab: { type: tab, bg: "#ffffff", fg: "#000000", border: "1px solid #ebedf2", radius: "100px", padding: "0px 16px", height: "36px", font: "14px / 500 / 18px Pretendard", selected: "bg #000000, fg #ffffff, border 1px solid #000000 (capture 170, aria-selected true)", states: "selected read from rest values; the collector's interaction pass activated three tabs (captures 171-173) and each became selected; no pointer frame", use: "Category tabs on Weverse Shop at surface-2::[data-omd-capture=\"171\"]; on the BTS artist shop they read NEW, Merch, Tour Merch, BT21, Album and Global Membership" }
-    shop-carousel-arrow: { type: button, bg: "#ffffff", fg: "#202429", border: "1px solid rgba(0, 0, 0, 0.1)", radius: "100px", height: "36px", disabled: "the collector recorded a disabled state in this group of 18 instances; no separate disabled colour was isolated", states: "rest and disabled at capture; no pointer frame", use: "Previous and next arrows of the carousels on the Weverse Shop home at surface-2::[data-omd-capture=\"49\"], 36 x 36" }
-    banner-arrow: { type: button, bg: "rgba(0, 0, 0, 0.2)", fg: "#ffffff", border: "1px solid rgba(0, 0, 0, 0.04)", radius: "100px", height: "36px", states: "rest only; the collector recorded no state frame for it", use: "Round controls of the weverse.io banner carousel at home::[data-omd-capture=\"22\"], 36 x 36" }
-    community-badge: { type: badge, bg: "rgba(255, 255, 255, 0.04)", fg: "#ffffff", border: "1px solid rgba(255, 255, 255, 0.2)", radius: "100px", padding: "0px 8px", height: "24px", font: "11px / 700 / 14px Pretendard", use: "Artist-name badge on dark weverse.io banner slides (home::div, 81 x 24); a second variant reads rgba(0, 0, 0, 0.04) fill, #000000 text and a rgba(0, 0, 0, 0.2) border" }
-    dm-chip: { type: badge, bg: "transparent", fg: "#000000", radius: "100px", padding: "0px 20px 0px 6px", height: "44px", font: "14px / 500 / 18px Pretendard", shadow: "rgb(235, 237, 242) 0px 0px 0px 1px inset", use: "Recommended Weverse DM chips on weverse.io (home::span, chips-_-wrapper), 133 x 44, a 32px round avatar followed by the artist name" }
-    community-row: { type: listItem, fg: "#000000", height: "76px", use: "Featured-community rows on weverse.io at home::[data-omd-capture=\"35\"], 516 x 76, each led by a 72 x 72 avatar" }
-    shop-card: { type: card, bg: "#ffffff", fg: "#202429", radius: "16px", padding: "16px", shadow: "rgba(0, 0, 0, 0.12) 0px 4px 28px 0px", use: "Raised white panel on the Weverse Shop home (surface-2::article, 1080 x 202) and the artist shop's side panels (713 and 347 wide)" }
-    shop-outline-button: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid rgba(0, 0, 0, 0.2)", radius: "100px", padding: "0px 16px", height: "36px", font: "14px / 700 / 18px Pretendard", states: "rest only; no state frame", use: "Full-width outlined pill on the Weverse Shop home at surface-2::[data-omd-capture=\"37\"], 1048 x 36; its label was not read" }
-  components_harvested: true
+colors:
+  primary: '#00cbd5'
+  primary-text: '#00b8c1'
+  ink: '#000000'
+  canvas: '#ffffff'
+  shop-ink: '#202429'
+  shop-heading: '#111111'
+  shop-body: '#484848'
+  muted: '#8e8e8e'
+  hairline: '#ebedf2'
+typography:
+  banner-title:
+    fontSize: 28px
+    fontWeight: 800
+    lineHeight: 1.29
+    use: Headline on the Weverse Shop home's banner slides, white over imagery or black on light slides
+  artist-name:
+    fontSize: 24px
+    fontWeight: 800
+    lineHeight: 1.29
+    use: Artist names over artist cards on the Weverse Shop home, white
+  section:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.28
+    use: Section headings on the Weverse Shop home
+  list-title:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.38
+    use: Titles of the recommended DM and featured-community lists on weverse.io
+  shop-body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1
+    use: Body text on Weverse Shop (line height computes 16px)
+  tab:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.29
+    use: Category tabs on Weverse Shop and DM chips on weverse.io
+  button:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1.29
+    use: 로그인 label on weverse.io and the full-width outlined pill on Weverse Shop
+  prompt:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.29
+    use: Sign-in prompt in the global menu on weverse.io, grey
+  meta:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.31
+    use: Product meta lines under Weverse Shop products
+  body:
+    fontSize: 13px
+    fontWeight: 400
+    use: Body text on weverse.io (line height computes normal)
+  badge:
+    fontSize: 11px
+    fontWeight: 700
+    lineHeight: 1.27
+    use: Artist-name badge on weverse.io banner slides
+rounded:
+  control: 8px
+  card: 16px
+  float: 18px
+  pill: 100px
+spacing:
+  control-x: 16
+  menu-y: 12
+  menu-x: 16
+  card: 16
+components:
+  login-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#00b8c1'
+    border: '1px solid #00cbd5'
+    rounded: 8px
+    padding: 0px 16px
+    height: 36px
+    typography: 14px / 700 / 18px Pretendard
+    states: rest only; not probed, because a press opens sign-in; the collector recorded no state frame for it
+    use: '로그인 in the global menu''s sign-in block under the prompt 로그인하고 나만의 아티스트를 만나보세요! at home::[data-omd-capture="3"], 70 x 36; the label span also computes #00b8c1; its own class is button-_--secondary1; the only teal on a product action across the three captured pages (the artist shop''s cookie bar renders a separate teal, #08ccca, on its 전체 동의 label)'
+  global-menu-item:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 8px
+    padding: 12px 16px
+    height: 48px
+    typography: 13px / 400 Pretendard
+    hover: 'bg #ffffff'
+    pressed: 'bg #ffffff'
+    states: 'hover and pressed both read bg #ffffff on all seven sibling items (captures 4-10), a full step from transparent to a clean value, so both are declared; focus is not declared'
+    use: Items of the global menu on weverse.io at home::[data-omd-capture="4"], 225 x 48; labels were not read
+  shop-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: '1px solid #ebedf2'
+    rounded: 100px
+    padding: 0px 16px
+    height: 36px
+    typography: 14px / 500 / 18px Pretendard
+    selected: 'bg #000000, fg #ffffff, border 1px solid #000000 (capture 170, aria-selected true)'
+    states: selected read from rest values; the collector's interaction pass activated three tabs (captures 171-173) and each became selected; no pointer frame
+    use: Category tabs on Weverse Shop at surface-2::[data-omd-capture="171"]; on the BTS artist shop they read NEW, Merch, Tour Merch, BT21, Album and Global Membership
+  shop-carousel-arrow:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#202429'
+    border: 1px solid rgba(0, 0, 0, 0.1)
+    rounded: 100px
+    height: 36px
+    disabled: the collector recorded a disabled state in this group of 18 instances; no separate disabled colour was isolated
+    states: rest and disabled at capture; no pointer frame
+    use: Previous and next arrows of the carousels on the Weverse Shop home at surface-2::[data-omd-capture="49"], 36 x 36
+  banner-arrow:
+    type: button
+    backgroundColor: rgba(0, 0, 0, 0.2)
+    textColor: '#ffffff'
+    border: 1px solid rgba(0, 0, 0, 0.04)
+    rounded: 100px
+    height: 36px
+    states: rest only; the collector recorded no state frame for it
+    use: Round controls of the weverse.io banner carousel at home::[data-omd-capture="22"], 36 x 36
+  community-badge:
+    type: badge
+    backgroundColor: rgba(255, 255, 255, 0.04)
+    textColor: '#ffffff'
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    rounded: 100px
+    padding: 0px 8px
+    height: 24px
+    typography: 11px / 700 / 14px Pretendard
+    use: 'Artist-name badge on dark weverse.io banner slides (home::div, 81 x 24); a second variant reads rgba(0, 0, 0, 0.04) fill, #000000 text and a rgba(0, 0, 0, 0.2) border'
+  dm-chip:
+    type: badge
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 100px
+    padding: 0px 20px 0px 6px
+    height: 44px
+    typography: 14px / 500 / 18px Pretendard
+    shadow: rgb(235, 237, 242) 0px 0px 0px 1px inset
+    use: Recommended Weverse DM chips on weverse.io (home::span, chips-_-wrapper), 133 x 44, a 32px round avatar followed by the artist name
+  community-row:
+    type: listItem
+    textColor: '#000000'
+    height: 76px
+    use: Featured-community rows on weverse.io at home::[data-omd-capture="35"], 516 x 76, each led by a 72 x 72 avatar
+  shop-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#202429'
+    rounded: 16px
+    padding: 16px
+    shadow: rgba(0, 0, 0, 0.12) 0px 4px 28px 0px
+    use: Raised white panel on the Weverse Shop home (surface-2::article, 1080 x 202) and the artist shop's side panels (713 and 347 wide)
+  shop-outline-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: 1px solid rgba(0, 0, 0, 0.2)
+    rounded: 100px
+    padding: 0px 16px
+    height: 36px
+    typography: 14px / 700 / 18px Pretendard
+    states: rest only; no state frame
+    use: Full-width outlined pill on the Weverse Shop home at surface-2::[data-omd-capture="37"], 1048 x 36; its label was not read
+fonts:
+  roles:
+    sans: Pretendard
 ---
 
 # Design System Inspiration of Weverse
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Weverse (위버스) is the fan platform that calls itself a "Global Fandom Platform". It is run by Weverse Company Inc. ((주)위버스컴퍼니), whose footer on weverse.io gives a Pangyo address in Seongnam and names two affiliates, Weverse Japan Inc. and Weverse America Inc. HYBE's business page lists WEVERSE COMPANY under a promise to reinvent fandom culture with IT: "모든 팬이 즐겁고 행복할 수 있는 공간, 팬과 아티스트가 더 가깝게 연결되는 세상을 만듭니다." — a space where every fan can be happy, and a world where fans and artists are more closely connected. HYBE describes itself as a global entertainment lifestyle platform company based on music and technology.
 
@@ -245,14 +200,40 @@ The captured pages read as a white stage for artist imagery. weverse.io is white
 - Flat home; raised white cards and round floating controls on Shop
 - Artist photography carries the colour of the banners
 
-## Primary tasks
+### Primary tasks
 
 - Find an artist community and sign in to join it
 - Subscribe to an artist's Weverse DM
 - Buy official albums, merch and memberships on Weverse Shop
 - Browse an artist's shop by category (NEW, Merch, Tour Merch, Album, Global Membership)
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Weverse belongs to HYBE's technology business. HYBE's business page places WEVERSE COMPANY under a statement of purpose: HYBE uses IT to innovate fandom culture and extend the customer experience, making "모든 팬이 즐겁고 행복할 수 있는 공간" and a world where "팬과 아티스트가 더 가깝게 연결되는" — fans and artists more closely connected. HYBE's own mission is "DISCOVER A NEW UNIVERSE, UNLOCK AN IMMERSIVE JOURNEY", and its vision a "음악과 기술에 기반한 글로벌 엔터테인먼트 라이프스타일 플랫폼 기업".
+
+The platform has grown into a family of services under one company. weverse.io hosts artist communities and Weverse DM, and links from its home to Weverse Shop and Jelly Shop. Weverse Shop sells official merchandise and global fan-club memberships and also lists products from independent sellers, and Weverse Magazine publishes at magazine.weverse.io. The company operates from Pangyo with Japanese and American affiliates, which fits the platform's global audience.
+
+The interface follows that purpose: the home is organised around communities, DM and artist news rather than products, and the single teal is spent on the invitation to sign in. (This reading of the design is editorial, not a Weverse statement.)
+
+### Principles
+
+1. **Fans and artists, closer.** HYBE's stated purpose for the platform. *UI implication:* lead with communities, DMs and artist news; keep chrome quiet.
+2. **One invitation.** *UI implication:* spend the teal on the sign-in action and nowhere else. (Editorial, from the captured pages.)
+3. **Artists carry the colour.** *UI implication:* black, white and grey chrome; colour comes from banners and avatars.
+4. **For fans everywhere.** Shop addresses "전 세계 모든 팬들" and the company runs Japanese and American affiliates. *UI implication:* short, plain copy that travels; currency and language selectors on Shop (KO, KRW, KR in the header).
+5. **Choices as pills.** *UI implication:* tabs, chips and carousel controls share the 100px pill; selection turns the pill black.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Weverse user segments (global K-pop fans, community members, merchandise buyers), not individual people.*
+
+**Mina, 19, Seoul.** A daily community user. Signs in from the home, follows her group's posts and subscribes to a member's Weverse DM.
+
+**Sofia, 24, São Paulo.** A global fan who buys albums and a fan-club membership on Weverse Shop because they are official and ship abroad.
+
+**Jae, 28, Los Angeles.** Reads Weverse Magazine and checks an artist's shop for new tour merch under the Tour Merch tab.
+
+## Colors
 
 Every token below was read by the deterministic collector on 2026-09-30 from weverse.io, the Weverse Shop home and the BTS artist shop.
 
@@ -275,7 +256,7 @@ Every token below was read by the deterministic collector on 2026-09-30 from wev
 - The Weverse logo and wordmark were not measured, and no logo colour is a token here. A blue `#5989fe` marks "예약판매" (pre-order) labels on Shop products, but only two captured elements carry it, so it stays out of the tokens.
 - Weverse's cookie bar, which appeared on the artist shop, renders its 전체 동의 label in teal `#08ccca` on `#3a3a3a`. It is consent chrome, not a product action, and supplies no token.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Live surface use**: `Pretendard` (1,221 observed uses across all three pages), self-hosted by Weverse as v1.3.9 subsets from `cdn-v2pstatic.weverse.io/wev_web_fe/assets/fonts/pretendard/v1.3.9/` (woff2 with woff companions).
@@ -304,7 +285,81 @@ Every token below was read by the deterministic collector on 2026-09-30 from wev
 - **Small, dense base**: weverse.io body text is 13px; Shop reading text is 16px.
 - **Normal tracking**: no captured product text sets letter-spacing.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Controls: 16px horizontal padding (login button, Shop tabs, Shop pill)
+- Menu items: 12px 16px
+- Shop cards: 16px
+- DM chips: 6px before the avatar, 20px after the name
+- The collector's spacing census is led by 12px (123 uses), then 6px (72), 16px (64) and 8px (62)
+
+### Grid & Container
+- weverse.io: a left global menu (sign-in block, then 48px items) beside a banner carousel, a row of recommended DM chips and a two-column list of featured communities.
+- Weverse Shop home: full-width banner slides with 28px headlines, artist cards with white 24px names, product rails in 253px columns, and 16px cards.
+- Artist shop: a row of category tabs above the product grid, with raised side panels.
+
+### Whitespace Philosophy
+- **Artist first**: banners and avatars carry the colour; the chrome stays black, white and grey.
+- **Pills for choices**: tabs, chips and carousel controls share the 100px pill.
+
+### Border Radius Scale
+- 0px: most elements (983 captured)
+- 8px: login button and menu items
+- 16px: Shop cards
+- 18px: 32px round Shop controls
+- 100px: tabs, chips, badges, carousel controls
+- 50%: avatars
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440 × 900 desktop viewport was captured. Class names such as `featured-community-list-view-on-non-mobile` and `home-banner-on-desktop-view` show separate mobile layouts; no breakpoint was measured.
+
+#### Touch Targets
+- Global menu items: 48px
+- DM chips: 44px
+- Login button, tabs, carousel controls, outlined pill: 36px
+- Round Shop controls: 32px
+
+#### Collapsing Strategy
+- Not measured.
+
+#### Image Behavior
+- Artist imagery fills the banner slides and cards; avatars are round (DM chips) or round-square (community rows).
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | No shadow | weverse.io page, menu, rows, login button |
+| Ring | `rgb(235, 237, 242) 0px 0px 0px 1px inset` | DM chips |
+| Hairline | 1px `#ebedf2` / rgba(0, 0, 0, 0.1–0.2) | Tabs, arrows, outlined pill |
+| Float | `rgba(0, 0, 0, 0.08) 0px 2px 12px 0px` | 32px round Shop controls |
+| Card | `rgba(0, 0, 0, 0.12) 0px 4px 28px 0px` | Shop cards |
+
+**Shadow Philosophy**: weverse.io is flat; its chips use an inset ring instead of a border. Weverse Shop lifts its panels with one soft, wide shadow and gives its small round controls a lighter one.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `rgba(0, 0, 0, 0.12) 0px 4px 28px 0px`
+- `shadow.float`: `rgba(0, 0, 0, 0.08) 0px 2px 12px 0px`
+- `shadow.chip-ring`: `rgb(235, 237, 242) 0px 0px 0px 1px inset`
+
+## Motion & Easing
+
+The collector reads computed style, not animation, so no duration or easing is measured. The home banner and the Shop rails are carousels, which shows motion exists without timing it. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/weverse.json (capturedAt 2026-09-30T07:57:22Z), deterministic collector, 1440x900, logged out: weverse.io (the frontmatter homepage), shop.weverse.io/ko/home (shop.weverse.io redirects there; linked from the weverse.io home under 서비스 바로가기 and named in the weverse.io footer), shop.weverse.io/ko/shop/KRW/artists/2.
+- §1, §10, §11 context: the weverse.io footer and home, Weverse Shop home, logged-out community pages (weverse.io/bts/feed and others), hybecorp.com company and business pages, magazine.weverse.io (title only), all opened 2026-09-30. Pretendard licence: github.com/orioncactus/pretendard LICENSE.
+- Personas are fictional archetypes. Interpretive readings are marked as editorial.
+-->
+
+## Components
 
 ### Buttons
 
@@ -400,45 +455,20 @@ Every token below was read by the deterministic collector on 2026-09-30 from wev
 **Tier 2 sources:** getdesign.md/weverse ("weverse — 0 DESIGN.md files") and styles.refero.design/?q=weverse (the query appears only in the search box), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Controls: 16px horizontal padding (login button, Shop tabs, Shop pill)
-- Menu items: 12px 16px
-- Shop cards: 16px
-- DM chips: 6px before the avatar, 20px after the name
-- The collector's spacing census is led by 12px (123 uses), then 6px (72), 16px (64) and 8px (62)
+Only these states were observed on the three captured pages; nothing else is specified here.
 
-### Grid & Container
-- weverse.io: a left global menu (sign-in block, then 48px items) beside a banner carousel, a row of recommended DM chips and a two-column list of featured communities.
-- Weverse Shop home: full-width banner slides with 28px headlines, artist cards with white 24px names, product rails in 253px columns, and 16px cards.
-- Artist shop: a row of category tabs above the product grid, with raised side panels.
+| State | Observation |
+|---|---|
+| **Selected (Shop tab)** | Black `#000000` pill with `#ffffff` text and a black border; unselected tabs are white with a 1px `#ebedf2` border. The collector activated three tabs and each became selected. |
+| **Hover / pressed (global menu item)** | Background turns `#ffffff` from transparent on all seven items. |
+| **Disabled (Shop carousel arrow)** | The collector recorded a disabled state in the arrow group; no separate colour was isolated. |
+| **Members only** | Logged out, community pages show "커뮤니티 멤버만 이용 가능합니다." with a 로그인 후 계속 action. |
 
-### Whitespace Philosophy
-- **Artist first**: banners and avatars carry the colour; the chrome stays black, white and grey.
-- **Pills for choices**: tabs, chips and carousel controls share the 100px pill.
+A hover frame on a Shop header control read `rgba(0, 0, 0, 0.004)`, a mid-transition value, so it is not declared; no focus value is declared from the bundle. The login button was not probed. Error, empty, loading and success states were not captured and are not described.
 
-### Border Radius Scale
-- 0px: most elements (983 captured)
-- 8px: login button and menu items
-- 16px: Shop cards
-- 18px: 32px round Shop controls
-- 100px: tabs, chips, badges, carousel controls
-- 50%: avatars
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | No shadow | weverse.io page, menu, rows, login button |
-| Ring | `rgb(235, 237, 242) 0px 0px 0px 1px inset` | DM chips |
-| Hairline | 1px `#ebedf2` / rgba(0, 0, 0, 0.1–0.2) | Tabs, arrows, outlined pill |
-| Float | `rgba(0, 0, 0, 0.08) 0px 2px 12px 0px` | 32px round Shop controls |
-| Card | `rgba(0, 0, 0, 0.12) 0px 4px 28px 0px` | Shop cards |
-
-**Shadow Philosophy**: weverse.io is flat; its chips use an inset ring instead of a border. Weverse Shop lifts its panels with one soft, wide shadow and gives its small round controls a lighter one.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Set everything in Pretendard and carry hierarchy with weight (800 / 700 / 500 / 400)
@@ -456,24 +486,28 @@ Every token below was read by the deterministic collector on 2026-09-30 from wev
 - Don't use grey for body text; use `#000000` on weverse.io and `#202429` on Shop
 - Don't treat the two `#5989fe` pre-order labels as a brand colour
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-Only the 1440 × 900 desktop viewport was captured. Class names such as `featured-community-list-view-on-non-mobile` and `home-banner-on-desktop-view` show separate mobile layouts; no breakpoint was measured.
+Weverse speaks to fans plainly and warmly, in Korean first with English product names. It invites rather than sells: the home asks visitors to sign in and meet their artist, and Shop frames itself as the store for fans everywhere.
 
-### Touch Targets
-- Global menu items: 48px
-- DM chips: 44px
-- Login button, tabs, carousel controls, outlined pill: 36px
-- Round Shop controls: 32px
+| Context | Tone |
+|---|---|
+| Platform | Short and global. "Global Fandom Platform". |
+| Sign-in | An invitation. "로그인하고 나만의 아티스트를 만나보세요!" |
+| Community access | Clear and polite. "커뮤니티 멤버만 이용 가능합니다." |
+| Shop | Celebratory and inclusive. "전 세계 모든 팬들을 위한 No.1 Official Merch Store!" |
+| Banners | Artist first, then the offer. "위버스샵에서 예약 판매 중!" |
 
-### Collapsing Strategy
-- Not measured.
+**Voice samples (verbatim, opened 2026-09-30):**
+- "Global Fandom Platform - Weverse" — weverse.io page title.
+- "로그인하고 나만의 아티스트를 만나보세요!" — sign-in prompt in the global menu.
+- "Weverse Shop - All Things for Fans!" — Weverse Shop page title.
+- "전 세계 모든 팬들을 위한 No.1 Official Merch Store!" — Weverse Shop home.
+- "커뮤니티 멤버만 이용 가능합니다." — a community page, logged out.
 
-### Image Behavior
-- Artist imagery fills the banner slides and cards; avatars are round (DM chips) or round-square (community rows).
+**Forbidden register**: gatekeeping language, hard-sell urgency, hype that overshadows the artist, copy that treats fans as buyers only.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Call-to-action: outline `#00cbd5`, label `#00b8c1`, fill `#ffffff`
@@ -496,73 +530,11 @@ Only the 1440 × 900 desktop viewport was captured. Class names such as `feature
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Weverse speaks to fans plainly and warmly, in Korean first with English product names. It invites rather than sells: the home asks visitors to sign in and meet their artist, and Shop frames itself as the store for fans everywhere.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Platform | Short and global. "Global Fandom Platform". |
-| Sign-in | An invitation. "로그인하고 나만의 아티스트를 만나보세요!" |
-| Community access | Clear and polite. "커뮤니티 멤버만 이용 가능합니다." |
-| Shop | Celebratory and inclusive. "전 세계 모든 팬들을 위한 No.1 Official Merch Store!" |
-| Banners | Artist first, then the offer. "위버스샵에서 예약 판매 중!" |
-
-**Voice samples (verbatim, opened 2026-09-30):**
-- "Global Fandom Platform - Weverse" — weverse.io page title.
-- "로그인하고 나만의 아티스트를 만나보세요!" — sign-in prompt in the global menu.
-- "Weverse Shop - All Things for Fans!" — Weverse Shop page title.
-- "전 세계 모든 팬들을 위한 No.1 Official Merch Store!" — Weverse Shop home.
-- "커뮤니티 멤버만 이용 가능합니다." — a community page, logged out.
-
-**Forbidden register**: gatekeeping language, hard-sell urgency, hype that overshadows the artist, copy that treats fans as buyers only.
-
-## 11. Brand Narrative
-
-Weverse belongs to HYBE's technology business. HYBE's business page places WEVERSE COMPANY under a statement of purpose: HYBE uses IT to innovate fandom culture and extend the customer experience, making "모든 팬이 즐겁고 행복할 수 있는 공간" and a world where "팬과 아티스트가 더 가깝게 연결되는" — fans and artists more closely connected. HYBE's own mission is "DISCOVER A NEW UNIVERSE, UNLOCK AN IMMERSIVE JOURNEY", and its vision a "음악과 기술에 기반한 글로벌 엔터테인먼트 라이프스타일 플랫폼 기업".
-
-The platform has grown into a family of services under one company. weverse.io hosts artist communities and Weverse DM, and links from its home to Weverse Shop and Jelly Shop. Weverse Shop sells official merchandise and global fan-club memberships and also lists products from independent sellers, and Weverse Magazine publishes at magazine.weverse.io. The company operates from Pangyo with Japanese and American affiliates, which fits the platform's global audience.
-
-The interface follows that purpose: the home is organised around communities, DM and artist news rather than products, and the single teal is spent on the invitation to sign in. (This reading of the design is editorial, not a Weverse statement.)
-
-## 12. Principles
-
-1. **Fans and artists, closer.** HYBE's stated purpose for the platform. *UI implication:* lead with communities, DMs and artist news; keep chrome quiet.
-2. **One invitation.** *UI implication:* spend the teal on the sign-in action and nowhere else. (Editorial, from the captured pages.)
-3. **Artists carry the colour.** *UI implication:* black, white and grey chrome; colour comes from banners and avatars.
-4. **For fans everywhere.** Shop addresses "전 세계 모든 팬들" and the company runs Japanese and American affiliates. *UI implication:* short, plain copy that travels; currency and language selectors on Shop (KO, KRW, KR in the header).
-5. **Choices as pills.** *UI implication:* tabs, chips and carousel controls share the 100px pill; selection turns the pill black.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Weverse user segments (global K-pop fans, community members, merchandise buyers), not individual people.*
-
-**Mina, 19, Seoul.** A daily community user. Signs in from the home, follows her group's posts and subscribes to a member's Weverse DM.
-
-**Sofia, 24, São Paulo.** A global fan who buys albums and a fan-club membership on Weverse Shop because they are official and ship abroad.
-
-**Jae, 28, Los Angeles.** Reads Weverse Magazine and checks an artist's shop for new tour merch under the Tour Merch tab.
-
-## 14. States
-
-Only these states were observed on the three captured pages; nothing else is specified here.
-
-| State | Observation |
-|---|---|
-| **Selected (Shop tab)** | Black `#000000` pill with `#ffffff` text and a black border; unselected tabs are white with a 1px `#ebedf2` border. The collector activated three tabs and each became selected. |
-| **Hover / pressed (global menu item)** | Background turns `#ffffff` from transparent on all seven items. |
-| **Disabled (Shop carousel arrow)** | The collector recorded a disabled state in the arrow group; no separate colour was isolated. |
-| **Members only** | Logged out, community pages show "커뮤니티 멤버만 이용 가능합니다." with a 로그인 후 계속 action. |
-
-A hover frame on a Shop header control read `rgba(0, 0, 0, 0.004)`, a mid-transition value, so it is not declared; no focus value is declared from the bundle. The login button was not probed. Error, empty, loading and success states were not captured and are not described.
-
-## 15. Motion & Easing
-
-The collector reads computed style, not animation, so no duration or easing is measured. The home banner and the Shop rails are carousels, which shows motion exists without timing it. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/weverse.json (capturedAt 2026-09-30T07:57:22Z), deterministic collector, 1440x900, logged out: weverse.io (the frontmatter homepage), shop.weverse.io/ko/home (shop.weverse.io redirects there; linked from the weverse.io home under 서비스 바로가기 and named in the weverse.io footer), shop.weverse.io/ko/shop/KRW/artists/2.
-- §1, §10, §11 context: the weverse.io footer and home, Weverse Shop home, logged-out community pages (weverse.io/bts/feed and others), hybecorp.com company and business pages, magazine.weverse.io (title only), all opened 2026-09-30. Pretendard licence: github.com/orioncactus/pretendard LICENSE.
-- Personas are fictional archetypes. Interpretive readings are marked as editorial.
--->
+- **Contrast, `login-button`.** Text `#00b8c1` on `#ffffff` measures 2.43:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `global-menu-item`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `community-badge`.** Text `#ffffff` on `#ffffff0a` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `dm-chip`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

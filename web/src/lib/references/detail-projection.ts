@@ -1,6 +1,14 @@
 import { isSystemFontStack, resolveFontsFromDesignMd } from "@/lib/font-registry";
 import { selectReferenceFoundations } from "./normalize.ts";
+import { legacyOrNamedSection, visualThemeBody } from "./sections.ts";
+
 import type { ReferenceAst, ReferenceAstFoundations } from "./schema";
+
+/** The document from a v3 `## <name>` heading to its end ("" when absent), like the legacy `## N.`-anchored scans. */
+function fromNamedSection(md: string, name: string): string {
+  const at = md.search(new RegExp(`^## ${name}[ \\t]*$`, "m"));
+  return at < 0 ? "" : md.slice(at);
+}
 
 export interface ReferenceDetail {
   readonly id: string;
@@ -53,10 +61,12 @@ export interface AstReferenceDetailProjection {
 export function extractLegacyReferenceDetail(id: string, designMd: string): ReferenceDetail {
   const primaryMatch = designMd.match(
     /## 2\. Color[\s\S]*?\*\*([^*]+)\*\*\s*\(`(#[0-9a-fA-F]{6})`\).*?(?:primary|brand|CTA|main)/i,
+  ) ?? fromNamedSection(designMd, "Colors").match(
+    /\*\*([^*]+)\*\*\s*\(`(#[0-9a-fA-F]{6})`\).*?(?:primary|brand|CTA|main)/i,
   );
   const primary = primaryMatch ? primaryMatch[2] : "#6366f1";
 
-  const s2Full = designMd.match(/## 2\. Color[\s\S]*?(?=## 3\.)/i)?.[0] ?? "";
+  const s2Full = legacyOrNamedSection(designMd, /## 2\. Color[\s\S]*?(?=## 3\.)/i, "Colors");
   let background = "#ffffff";
   const s2Early = s2Full.slice(0, 2000);
   const roleRe = /\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)[^\n]{0,300}?(?:primary\s+page\s+background|primary\s+canvas|main\s+canvas|default\s+canvas|page\s+background|primary\s+background|the\s+primary\s+(?:page\s+)?(?:canvas|background)|page\s+canvas|void\s+canvas|main\s+page\s+background)/i;
@@ -93,7 +103,7 @@ export function extractLegacyReferenceDetail(id: string, designMd: string): Refe
   const radius = radiusMatch ? radiusMatch[1] : "6px";
   const accentMatch = designMd.match(/(?:accent|secondary).*?`(#[0-9a-fA-F]{6})`/i);
   const borderMatch = designMd.match(/(?:border.*?default|border.*?standard).*?`(#[0-9a-fA-F]{6})`/i);
-  const mood = designMd.match(/## 1\. Visual Theme.*?\n([\s\S]*?)(?=## 2\.)/)?.[1]?.trim().split("\n\n")[0] || "";
+  const mood = visualThemeBody(designMd)?.trim().split("\n\n")[0] || "";
 
   return {
     id,

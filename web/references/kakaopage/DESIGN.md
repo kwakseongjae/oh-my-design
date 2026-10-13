@@ -1,168 +1,131 @@
 ---
-id: kakaopage
 name: KakaoPage
-display_name_kr: 카카오페이지
-country: KR
-category: consumer-tech
-homepage: "https://page.kakao.com"
-primary_color: "#ffd618"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=page.kakao.com&sz=128"
-verified: "2026-09-30"
-added: "2026-06-22"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: product-web, url: "https://page.kakao.com/", inspected: "2026-09-30" }
-    - { id: surface-2, kind: product-web, url: "https://page.kakao.com/menu/10010/", inspected: "2026-09-30" }
-    - { id: surface-3, kind: product-web, url: "https://page.kakao.com/content/57668776/", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://page.kakao.com/", captured: "2026-09-30" }
-    - { id: surface-surface-2, kind: product-surface, url: "https://page.kakao.com/menu/10010/", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://page.kakao.com/content/57668776/", captured: "2026-09-30" }
-    - { id: kakaopage-probe-content, kind: product-surface, url: "https://page.kakao.com/content/57668776/", captured: "2026-09-30" }
-    - { id: kakaocorp-service, kind: official-doc, url: "https://www.kakaocorp.com/page/service/service/KakaoPage", captured: "2026-09-30" }
-    - { id: notice, kind: official-doc, url: "https://page.kakao.com/notice/", captured: "2026-09-30" }
-    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (272 x 56, own fill transparent) -> ancestor level 2 div.flex.items-center, bg rgb(255, 214, 24)", captured: "2026-09-30" }
-    "tokens.colors.ink": &kbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.canvas": *kbody
-    "tokens.colors.cta-label": &kcta { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-09-30" }
-    "tokens.colors.muted": &kfoot { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"81\"]", captured: "2026-09-30" }
-    "tokens.colors.on-media": &kcover { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.typography.body.size": *kbody
-    "tokens.typography.body.weight": *kbody
-    "tokens.typography.body.lineHeight": *kbody
-    "tokens.typography.body.use": *kbody
-    "tokens.typography.section-title.size": &kh2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
-    "tokens.typography.section-title.weight": *kh2
-    "tokens.typography.section-title.lineHeight": *kh2
-    "tokens.typography.section-title.use": *kh2
-    "tokens.typography.cover-title.size": *kcover
-    "tokens.typography.cover-title.weight": *kcover
-    "tokens.typography.cover-title.lineHeight": *kcover
-    "tokens.typography.cover-title.use": *kcover
-    "tokens.typography.cta.size": *kcta
-    "tokens.typography.cta.weight": *kcta
-    "tokens.typography.cta.lineHeight": *kcta
-    "tokens.typography.cta.use": *kcta
-    "tokens.typography.small-heading.size": &kmeta { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h2", captured: "2026-09-30" }
-    "tokens.typography.small-heading.weight": *kmeta
-    "tokens.typography.small-heading.lineHeight": *kmeta
-    "tokens.typography.small-heading.use": *kmeta
-    "tokens.typography.search.size": &ksearch { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
-    "tokens.typography.search.weight": *ksearch
-    "tokens.typography.search.lineHeight": *ksearch
-    "tokens.typography.search.use": *ksearch
-    "tokens.typography.footer-link.size": *kfoot
-    "tokens.typography.footer-link.weight": *kfoot
-    "tokens.typography.footer-link.lineHeight": *kfoot
-    "tokens.typography.footer-link.use": *kfoot
-    "tokens.spacing.menu-gap": &kmenu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::li", captured: "2026-09-30" }
-    "tokens.spacing.chip-x": &kchip { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"47\"]", captured: "2026-09-30" }
-    "tokens.spacing.chip-gap": *kchip
-    "tokens.spacing.cta-x": *kcta
-    "tokens.rounded.md": &kcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-09-30" }
-    "tokens.components.main-menu-item.type": *kmenu
-    "tokens.components.main-menu-item.bg": *kmenu
-    "tokens.components.main-menu-item.fg": *kmenu
-    "tokens.components.main-menu-item.height": *kmenu
-    "tokens.components.main-menu-item.font": *kmenu
-    "tokens.components.main-menu-item.states": *kmenu
-    "tokens.components.main-menu-item.use": *kmenu
-    "tokens.components.primary-cta.type": *kcta
-    "tokens.components.primary-cta.fg": *kcta
-    "tokens.components.primary-cta.padding": *kcta
-    "tokens.components.primary-cta.height": *kcta
-    "tokens.components.primary-cta.font": *kcta
-    "tokens.components.primary-cta.states": *kcta
-    "tokens.components.primary-cta.use": *kcta
-    "tokens.components.carousel-button-lg.type": &karrowlg { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"43\"]", captured: "2026-09-30" }
-    "tokens.components.carousel-button-lg.bg": *karrowlg
-    "tokens.components.carousel-button-lg.radius": *karrowlg
-    "tokens.components.carousel-button-lg.size": *karrowlg
-    "tokens.components.carousel-button-lg.states": *karrowlg
-    "tokens.components.carousel-button-lg.use": *karrowlg
-    "tokens.components.carousel-button.type": &karrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-09-30" }
-    "tokens.components.carousel-button.bg": *karrow
-    "tokens.components.carousel-button.radius": *karrow
-    "tokens.components.carousel-button.size": *karrow
-    "tokens.components.carousel-button.states": *karrow
-    "tokens.components.carousel-button.use": *karrow
-    "tokens.components.reaction-chip.type": *kchip
-    "tokens.components.reaction-chip.bg": *kchip
-    "tokens.components.reaction-chip.fg": *kchip
-    "tokens.components.reaction-chip.radius": *kchip
-    "tokens.components.reaction-chip.padding": *kchip
-    "tokens.components.reaction-chip.height": *kchip
-    "tokens.components.reaction-chip.states": *kchip
-    "tokens.components.reaction-chip.use": *kchip
-    "tokens.components.search-input.type": *ksearch
-    "tokens.components.search-input.bg": *ksearch
-    "tokens.components.search-input.fg": *ksearch
-    "tokens.components.search-input.height": *ksearch
-    "tokens.components.search-input.font": *ksearch
-    "tokens.components.search-input.states": *ksearch
-    "tokens.components.search-input.use": *ksearch
-    "tokens.components.cover-card.type": *kcard
-    "tokens.components.cover-card.radius": *kcard
-    "tokens.components.cover-card.size": *kcard
-    "tokens.components.cover-card.use": *kcard
-    "tokens.components.content-row.type": &krow { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
-    "tokens.components.content-row.fg": *krow
-    "tokens.components.content-row.size": *krow
-    "tokens.components.content-row.font": *krow
-    "tokens.components.content-row.use": *krow
-    "tokens.components.first-episode-cta.type": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.bg": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.fg": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.size": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.font": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.hover": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.pressed": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.states": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-    "tokens.components.first-episode-cta.use": { surface_id: surface-3, source_id: kakaopage-probe-content, method: live-state-probe, selector: "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)", captured: "2026-09-30" }
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#ffd618"
-    ink: "#000000"
-    canvas: "#ffffff"
-    cta-label: "#222222"
-    muted: "#999999"
-    on-media: "#ffffff"
-  typography:
-    body: { size: 16, weight: 400, lineHeight: 1.4, use: "Default text on all three pages (body)" }
-    section-title: { size: 16, weight: 700, lineHeight: 1.38, use: "Shelf heading on home and the webtoon page (h2)" }
-    cover-title: { size: 16, weight: 700, lineHeight: 1.25, use: "Title overlaid on a cover card, white" }
-    cta: { size: 16, weight: 700, lineHeight: 1.38, use: "첫 화 보기 label on the content page" }
-    small-heading: { size: 12, weight: 700, lineHeight: 1.33, use: "Small bold heading on the content page (h2)" }
-    search: { size: 13, weight: 400, lineHeight: 1.38, use: "Header search field" }
-    footer-link: { size: 13, weight: 400, lineHeight: 1.4, use: "Underlined footer link" }
-  spacing: { menu-gap: 6, chip-x: 12, chip-gap: 8, cta-x: 15 }
-  rounded: { md: 8 }
-  components:
-    main-menu-item: { type: tab, bg: "transparent", fg: "#000000", height: "56px", font: "16px / 400 / 22.4px", states: "rest only in the capture; a same-day supplementary probe found the current menu marked aria-current=page and set bold, which the bundle does not record, so no selected value is declared", use: "Top menu item (추천, 웹툰, 웹소설 and the rest) at home::li, 64-97 x 56 with a 6px right margin; the webtoon page repeats it" }
-    primary-cta: { type: button, fg: "#222222", padding: "0px 15px", height: "56px", font: "16px / 700 / 22px", states: "the pressed frame reads the label at rgba(34, 34, 34, 0.3), matching the authored class active:text-[rgb(var(--colors-static-mono-90)_/_30%)]; one element with no sibling, so no pressed value is declared", use: "첫 화 보기 on the content page at surface-3::[data-omd-capture=\"12\"], 272 x 56. The button's own background is transparent; the visible fill is painted by a wrapper div the collector does not record (see §2), so no bg or radius is declared" }
-    carousel-button-lg: { type: button, bg: "#000000", radius: "3.35544e+07px", size: "44px x 44px", states: "rest only; no state frame", use: "Hero carousel previous and next buttons (bg-static-mono-black, class opacity-80) at home::[data-omd-capture=\"43\"] and 44; the webtoon page repeats the pair" }
-    carousel-button: { type: button, bg: "#000000", radius: "3.35544e+07px", size: "36px x 36px", states: "rest only; no state frame", use: "Shelf carousel button (bg-static-mono-black, class opacity-80) at home::[data-omd-capture=\"61\"]; also on the webtoon page and twice on the content page" }
-    reaction-chip: { type: button, bg: "rgba(0, 0, 0, 0.05)", fg: "#000000", radius: "8px", padding: "0px 12px", height: "28px", states: "rest only; no state frame", use: "Comment reaction chip (bg-theme-transparent-10) on the content page at surface-3::[data-omd-capture=\"47\"], 55-75 x 28 with an 8px right margin; icon-only variants are 28 x 28; 77 captured. The label sits in a child the collector did not record, so no font is declared" }
-    search-input: { type: input, bg: "transparent", fg: "#000000", height: "18px", font: "13px / 400 / 18px", states: "rest only; no state frame", use: "Header search field at home::[data-omd-capture=\"6\"], 150 x 18, identical on all three pages; no border or fill of its own" }
-    cover-card: { type: card, radius: "8px", size: "152px x 274px", use: "Cover card (rounded-8pxr overflow-hidden) at home::div on home and the webtoon page, 24 captured; the cover image fills it and its title overlays in 16px / 700 / 20px #ffffff" }
-    content-row: { type: listItem, fg: "#000000", size: "632px x 88px", font: "16px / 400 / 22.4px", use: "List row on the content page at surface-3::li, six captured" }
-    first-episode-cta: { type: button, bg: "#ffd618", fg: "#222222", size: "272px x 56px", font: "12px / 700 (label span)", hover: "no change across self, 1 descendant and 3 ancestor levels (live probe)", pressed: "label fg rgba(34, 34, 34, 0.3), opacity 1 -> 0.3; the yellow wrapper is unchanged", states: "hover and pressed measured by the live keyboard probe on 2026-09-30; focus not measured (--no-focus)", use: "Work-page 첫 화 보기 call-to-action on surface-3; the button is transparent and the point-yellow fill is its grandparent div (bg-static-point-yellow)" }
-  components_harvested: true
+colors:
+  primary: '#ffd618'
+  ink: '#000000'
+  canvas: '#ffffff'
+  cta-label: '#222222'
+  muted: '#999999'
+  on-media: '#ffffff'
+typography:
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Default text on all three pages (body)
+  section-title:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.38
+    use: Shelf heading on home and the webtoon page (h2)
+  cover-title:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.25
+    use: Title overlaid on a cover card, white
+  cta:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.38
+    use: 첫 화 보기 label on the content page
+  small-heading:
+    fontSize: 12px
+    fontWeight: 700
+    lineHeight: 1.33
+    use: Small bold heading on the content page (h2)
+  search:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.38
+    use: Header search field
+  footer-link:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Underlined footer link
+rounded:
+  md: 8px
+spacing:
+  menu-gap: 6
+  chip-x: 12
+  chip-gap: 8
+  cta-x: 15
+components:
+  main-menu-item:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    height: 56px
+    typography: 16px / 400 / 22.4px
+    states: rest only in the capture; a same-day supplementary probe found the current menu marked aria-current=page and set bold, which the bundle does not record, so no selected value is declared
+    use: Top menu item (추천, 웹툰, 웹소설 and the rest) at home::li, 64-97 x 56 with a 6px right margin; the webtoon page repeats it
+  primary-cta:
+    type: button
+    textColor: '#222222'
+    padding: 0px 15px
+    height: 56px
+    typography: 16px / 700 / 22px
+    states: the pressed frame reads the label at rgba(34, 34, 34, 0.3), matching the authored class active:text-[rgb(var(--colors-static-mono-90)_/_30%)]; one element with no sibling, so no pressed value is declared
+    use: 첫 화 보기 on the content page at surface-3::[data-omd-capture="12"], 272 x 56. The button's own background is transparent; the visible fill is painted by a wrapper div the collector does not record (see §2), so no bg or radius is declared
+  carousel-button-lg:
+    type: button
+    backgroundColor: '#000000'
+    rounded: 3.35544e+07px
+    size: 44px x 44px
+    states: rest only; no state frame
+    use: Hero carousel previous and next buttons (bg-static-mono-black, class opacity-80) at home::[data-omd-capture="43"] and 44; the webtoon page repeats the pair
+  carousel-button:
+    type: button
+    backgroundColor: '#000000'
+    rounded: 3.35544e+07px
+    size: 36px x 36px
+    states: rest only; no state frame
+    use: Shelf carousel button (bg-static-mono-black, class opacity-80) at home::[data-omd-capture="61"]; also on the webtoon page and twice on the content page
+  reaction-chip:
+    type: button
+    backgroundColor: rgba(0, 0, 0, 0.05)
+    textColor: '#000000'
+    rounded: 8px
+    padding: 0px 12px
+    height: 28px
+    states: rest only; no state frame
+    use: Comment reaction chip (bg-theme-transparent-10) on the content page at surface-3::[data-omd-capture="47"], 55-75 x 28 with an 8px right margin; icon-only variants are 28 x 28; 77 captured. The label sits in a child the collector did not record, so no font is declared
+  search-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#000000'
+    height: 18px
+    typography: 13px / 400 / 18px
+    states: rest only; no state frame
+    use: Header search field at home::[data-omd-capture="6"], 150 x 18, identical on all three pages; no border or fill of its own
+  cover-card:
+    type: card
+    rounded: 8px
+    size: 152px x 274px
+    use: 'Cover card (rounded-8pxr overflow-hidden) at home::div on home and the webtoon page, 24 captured; the cover image fills it and its title overlays in 16px / 700 / 20px #ffffff'
+  content-row:
+    type: listItem
+    textColor: '#000000'
+    size: 632px x 88px
+    typography: 16px / 400 / 22.4px
+    use: List row on the content page at surface-3::li, six captured
+  first-episode-cta:
+    type: button
+    backgroundColor: '#ffd618'
+    textColor: '#222222'
+    size: 272px x 56px
+    typography: 12px / 700 (label span)
+    hover: no change across self, 1 descendant and 3 ancestor levels (live probe)
+    pressed: label fg rgba(34, 34, 34, 0.3), opacity 1 -> 0.3; the yellow wrapper is unchanged
+    states: hover and pressed measured by the live keyboard probe on 2026-09-30; focus not measured (--no-focus)
+    use: Work-page 첫 화 보기 call-to-action on surface-3; the button is transparent and the point-yellow fill is its grandparent div (bg-static-point-yellow)
 ---
 
 # Design System Inspiration of KakaoPage
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 카카오페이지 (KakaoPage) is Kakao Entertainment's webtoon and web-novel service; the web footer links to kakaoent.com, and its privacy policy is served from kakaoent.com with `service=kakaopage`. Kakao's own service page introduces it as "세상 모든 이야기를 담다" — original webtoons and web novels serialised exclusively, popular Daum Webtoon originals alongside them, chat-style 톡드립 stories, films and broadcast replays. Its signature mechanism is 기다리면 무료: works marked with a clock icon give one free episode, and a new free pass recharges a set time after you read. A daily 오늘의 선물 box hands out passes for new works. The web page's own description says the same in two sentences: "오리지널 독점 웹툰, 웹소설 부터 책 까지 한 곳에서 즐기세요. 인기 콘텐츠가 기다리면 무료!"
 
@@ -180,7 +143,7 @@ The current web build shows how the look is organised. It is a Next.js app (its 
 - Translucent `rgba(0, 0, 0, 0.05)` reaction chips on the content page
 - No box shadow on any of the 447 captured elements
 
-## Primary tasks
+### Primary tasks
 
 - Start reading a webtoon or web novel from its content page (첫 화 보기)
 - Read the next episode free after the 기다리면 무료 wait
@@ -188,7 +151,33 @@ The current web build shows how the look is organised. It is a Next.js app (its 
 - Browse by menu (추천, 웹툰, 웹소설 and the rest) and by shelf
 - Search for a work by title or author
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Kakao's service page frames KakaoPage as the place that holds every story: exclusive, advance-serialised webtoons and web novels, Daum Webtoon's popular originals, chat-style 톡드립 stories, and films and broadcast replays that can be watched in parts. The page's differentiator is its access model. 기다리면 무료 recharges a free pass a set time after each free read, and 오늘의 선물 adds daily passes, so waiting is a first-class way to read.
+
+The web product carries that promise with very little chrome. The captured pages leave colour to the cover art, and they keep the interface in black and white with weight-based emphasis. They reserve a single static "point" yellow for the reading action; the capture could not record that yellow, so it is documented rather than tokenised. The build's split between fixed static colours and theme colours that follow a `light` body class shows a product organised around a small token set, not around page-by-page styling.
+
+The June record's launch year, merger history and overseas-platform claims were not re-verified from a first-party page this session and are omitted.
+
+### Principles
+
+1. **The art is the colour.** *UI implication:* monochrome chrome; no hue on navigation, chips or shelves.
+2. **Waiting is a way to read.** *UI implication:* the free-by-waiting model is stated plainly in copy, not hidden in fine print.
+3. **Weight before colour.** *UI implication:* the current menu and headings are bold; nothing turns blue or gets a pill.
+4. **One reading action per work.** *UI implication:* the content page's 56px 첫 화 보기 is the single large action.
+5. **Flat and fast.** *UI implication:* no shadows; overlay controls are black at reduced opacity.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable KakaoPage reader segments, not individual people.*
+
+**이하나, 22, 서울.** A university student who found a series through its drama adaptation. She reads on the wait-for-free cycle and pays only for the few titles she cannot wait for.
+
+**박민준, 31, 부산.** A commuter who reads web novels on the subway. He wants to open a work, tap 첫 화 보기 and be reading, with nothing in the way.
+
+**김서연, 38, 대전.** A working parent who started with a romance webtoon her daughter recommended. The plain black-and-white pages feel calm and trustworthy to her.
+
+## Colors
 
 ### Why the primary is point yellow
 
@@ -211,7 +200,7 @@ The product's primary action on a work page is 첫 화 보기 (read the first ep
 - `#eeeeee` card surface, `rgba(153,153,153,0.15)` skeleton, `#666666` date text, `#ff3042` BEST badge and its white label. None of them appears in the 2026-09-30 bundle or probe.
 - `oklch(0.928 0.006 264.531)` appears 358 times, but only as the border colour of elements whose border width is 0px (a framework default), so nothing is drawn. It is excluded.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Declared stack:** `"Pretendard Variable", Pretendard, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, …` on every captured element.
@@ -236,7 +225,64 @@ The product's primary action on a work page is 첫 화 보기 (read the first ep
 - **Small type is for meta only.** 12–13px appears only on the small content-page heading, the search field and footer links.
 - **Letter spacing is normal throughout.**
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Captured spacing values, by frequency: 12px (50), 8px (43), 6px (26), 4px (23), 16px (15), 32px (12), 24px (6).
+- Named in tokens: 6px between menu items, 12px chip padding, 8px between chips, 15px inside the reading CTA.
+
+### Grid & Container
+- Captured at 1440 wide. The header search sits near the top (y ≈ 39), the menu strip starts at y = 96 with 56px items, the hero carousel's buttons sit at y = 448, and cover shelves begin near y = 704.
+- Shelves are horizontal rows of 152px-wide cover cards with carousel buttons at the edge.
+
+### Whitespace Philosophy
+- **The art fills, the chrome recedes.** Cover cards carry no border or shadow, and the image runs to the 8px corners.
+- **Flat rows.** List rows and chips separate by position and a 5% tint, not by rules or elevation.
+
+### Border Radius Scale
+- 8px: cover cards and reaction chips (99 captured elements)
+- Fully round: carousel buttons
+- 2px: the reading CTA's transparent inner button only
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440px desktop layout was captured; no breakpoint values were measured, so none are specified.
+
+#### Touch Targets
+- Reading CTA: 56px tall
+- Hero carousel buttons: 44 × 44; shelf carousel buttons: 36 × 36
+- Reaction chips: 28px tall — below common touch-target minimums, desktop-captured
+
+#### Collapsing Strategy
+Not captured.
+
+#### Image Behavior
+Cover images fill 152 × 274 cards with 8px corners (`overflow-hidden`); titles overlay the art in white.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | `box-shadow: none` | All 447 captured elements |
+| Tint | `rgba(0, 0, 0, 0.05)` fill | Reaction chips |
+| Overlay control | `#000000` at class `opacity-80` | Carousel buttons over cover art |
+
+KakaoPage's captured pages use no shadow at all. Separation comes from the cover art itself, from white space and from one 5% black tint.
+
+## Motion & Easing
+
+The collector reads computed style, not animation, so no duration or easing is measured. The supplementary probe read the computed `transition` of the reading CTA and its wrappers as the bare shorthand `all`, which declares no timing. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/kakaopage.json (capturedAt 2026-09-30T07:01:42Z), deterministic collector, 1440x900, logged out: page.kakao.com, page.kakao.com/menu/10010/, page.kakao.com/content/57668776/.
+- Supplementary (not tokens): headless playwright-core probe the same day of the content page and home — CTA ancestor chain, loaded fonts, aria-current.
+- §1, §10, §11 context: www.kakaocorp.com/page/service/service/KakaoPage, page.kakao.com meta description, page.kakao.com/notice/ (title only). All opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
+-->
+
+## Components
 
 ### Navigation
 
@@ -311,36 +357,17 @@ The product's primary action on a work page is 첫 화 보기 (read the first ep
 **Tier 2 sources:** not attempted on 2026-09-30 (the June 2026 record found no getdesign.md or refero entry); no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Captured spacing values, by frequency: 12px (50), 8px (43), 6px (26), 4px (23), 16px (15), 32px (12), 24px (6).
-- Named in tokens: 6px between menu items, 12px chip padding, 8px between chips, 15px inside the reading CTA.
+Only these were captured or probed; nothing else is specified.
 
-### Grid & Container
-- Captured at 1440 wide. The header search sits near the top (y ≈ 39), the menu strip starts at y = 96 with 56px items, the hero carousel's buttons sit at y = 448, and cover shelves begin near y = 704.
-- Shelves are horizontal rows of 152px-wide cover cards with carousel buttons at the edge.
+| State | Observation |
+|---|---|
+| **Pressed frame (reading CTA)** | The label reads `rgba(34, 34, 34, 0.3)`, matching the authored `active:` class; one element with no sibling, so it is not declared as a pressed value. |
+| **Current menu (supplementary probe)** | 추천 marked `aria-current=page` and set bold; not in the bundle. |
+| **No other state frames** | The bundle holds no hover, focus, expanded or selected frames (`interactionCount: 0`). That means none were recorded, not that the product has none. |
 
-### Whitespace Philosophy
-- **The art fills, the chrome recedes.** Cover cards carry no border or shadow, and the image runs to the 8px corners.
-- **Flat rows.** List rows and chips separate by position and a 5% tint, not by rules or elevation.
-
-### Border Radius Scale
-- 8px: cover cards and reaction chips (99 captured elements)
-- Fully round: carousel buttons
-- 2px: the reading CTA's transparent inner button only
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | `box-shadow: none` | All 447 captured elements |
-| Tint | `rgba(0, 0, 0, 0.05)` fill | Reaction chips |
-| Overlay control | `#000000` at class `opacity-80` | Carousel buttons over cover art |
-
-KakaoPage's captured pages use no shadow at all. Separation comes from the cover art itself, from white space and from one 5% black tint.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Keep chrome monochrome: `#000000` text on `#ffffff`, and let cover art carry colour
@@ -356,23 +383,26 @@ KakaoPage's captured pages use no shadow at all. Separation comes from the cover
 - Don't reintroduce the June `#eeeeee` card surface, `#666666` date text or `#ff3042` badge as tokens; the current capture does not show them
 - Don't render another font as if it were Pretendard; if Pretendard is unavailable, say so
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-Only the 1440px desktop layout was captured; no breakpoint values were measured, so none are specified.
+KakaoPage's voice is short and service-plain. Menu labels are single nouns (추천, 웹툰, 웹소설), the reading action is a direct verb phrase (첫 화 보기), and the service copy explains its benefit model in a clause: 기다리면 무료.
 
-### Touch Targets
-- Reading CTA: 56px tall
-- Hero carousel buttons: 44 × 44; shelf carousel buttons: 36 × 36
-- Reaction chips: 28px tall — below common touch-target minimums, desktop-captured
+| Context | Tone |
+|---|---|
+| Menus | Single nouns — 추천, 웹툰, 웹소설 |
+| Reading action | Direct — 첫 화 보기 |
+| Benefit model | Plain promise — 기다리면 무료 |
+| Service introduction | Warm, inclusive — "세상 모든 이야기를 담다" |
 
-### Collapsing Strategy
-Not captured.
+**Voice samples (read 2026-09-30):**
+- "오리지널 독점 웹툰, 웹소설 부터 책 까지 한 곳에서 즐기세요. 인기 콘텐츠가 기다리면 무료!" — page.kakao.com meta description.
+- "추천 - 지금핫한 | 카카오페이지" — home page title in the headless session.
+- "오직 카카오페이지에만 볼 수 있는 오리지널, 인기 작품을 기다리면 무료로 즐겨보세요!" — Kakao's service page.
+- "첫 화 보기" — the content page's reading action.
 
-### Image Behavior
-Cover images fill 152 × 274 cards with 8px corners (`overflow-hidden`); titles overlay the art in white.
+**Forbidden register**: spoilers or genre hype in chrome, urgency dark patterns on paid episodes, decoration that competes with cover art.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary / ink: `#000000`
@@ -397,69 +427,10 @@ Cover images fill 152 × 274 cards with 8px corners (`overflow-hidden`); titles 
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-KakaoPage's voice is short and service-plain. Menu labels are single nouns (추천, 웹툰, 웹소설), the reading action is a direct verb phrase (첫 화 보기), and the service copy explains its benefit model in a clause: 기다리면 무료.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Menus | Single nouns — 추천, 웹툰, 웹소설 |
-| Reading action | Direct — 첫 화 보기 |
-| Benefit model | Plain promise — 기다리면 무료 |
-| Service introduction | Warm, inclusive — "세상 모든 이야기를 담다" |
-
-**Voice samples (read 2026-09-30):**
-- "오리지널 독점 웹툰, 웹소설 부터 책 까지 한 곳에서 즐기세요. 인기 콘텐츠가 기다리면 무료!" — page.kakao.com meta description.
-- "추천 - 지금핫한 | 카카오페이지" — home page title in the headless session.
-- "오직 카카오페이지에만 볼 수 있는 오리지널, 인기 작품을 기다리면 무료로 즐겨보세요!" — Kakao's service page.
-- "첫 화 보기" — the content page's reading action.
-
-**Forbidden register**: spoilers or genre hype in chrome, urgency dark patterns on paid episodes, decoration that competes with cover art.
-
-## 11. Brand Narrative
-
-Kakao's service page frames KakaoPage as the place that holds every story: exclusive, advance-serialised webtoons and web novels, Daum Webtoon's popular originals, chat-style 톡드립 stories, and films and broadcast replays that can be watched in parts. The page's differentiator is its access model. 기다리면 무료 recharges a free pass a set time after each free read, and 오늘의 선물 adds daily passes, so waiting is a first-class way to read.
-
-The web product carries that promise with very little chrome. The captured pages leave colour to the cover art, and they keep the interface in black and white with weight-based emphasis. They reserve a single static "point" yellow for the reading action; the capture could not record that yellow, so it is documented rather than tokenised. The build's split between fixed static colours and theme colours that follow a `light` body class shows a product organised around a small token set, not around page-by-page styling.
-
-The June record's launch year, merger history and overseas-platform claims were not re-verified from a first-party page this session and are omitted.
-
-## 12. Principles
-
-1. **The art is the colour.** *UI implication:* monochrome chrome; no hue on navigation, chips or shelves.
-2. **Waiting is a way to read.** *UI implication:* the free-by-waiting model is stated plainly in copy, not hidden in fine print.
-3. **Weight before colour.** *UI implication:* the current menu and headings are bold; nothing turns blue or gets a pill.
-4. **One reading action per work.** *UI implication:* the content page's 56px 첫 화 보기 is the single large action.
-5. **Flat and fast.** *UI implication:* no shadows; overlay controls are black at reduced opacity.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable KakaoPage reader segments, not individual people.*
-
-**이하나, 22, 서울.** A university student who found a series through its drama adaptation. She reads on the wait-for-free cycle and pays only for the few titles she cannot wait for.
-
-**박민준, 31, 부산.** A commuter who reads web novels on the subway. He wants to open a work, tap 첫 화 보기 and be reading, with nothing in the way.
-
-**김서연, 38, 대전.** A working parent who started with a romance webtoon her daughter recommended. The plain black-and-white pages feel calm and trustworthy to her.
-
-## 14. States
-
-Only these were captured or probed; nothing else is specified.
-
-| State | Observation |
-|---|---|
-| **Pressed frame (reading CTA)** | The label reads `rgba(34, 34, 34, 0.3)`, matching the authored `active:` class; one element with no sibling, so it is not declared as a pressed value. |
-| **Current menu (supplementary probe)** | 추천 marked `aria-current=page` and set bold; not in the bundle. |
-| **No other state frames** | The bundle holds no hover, focus, expanded or selected frames (`interactionCount: 0`). That means none were recorded, not that the product has none. |
-
-## 15. Motion & Easing
-
-The collector reads computed style, not animation, so no duration or easing is measured. The supplementary probe read the computed `transition` of the reading CTA and its wrappers as the bare shorthand `all`, which declares no timing. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/kakaopage.json (capturedAt 2026-09-30T07:01:42Z), deterministic collector, 1440x900, logged out: page.kakao.com, page.kakao.com/menu/10010/, page.kakao.com/content/57668776/.
-- Supplementary (not tokens): headless playwright-core probe the same day of the content page and home — CTA ancestor chain, loaded fonts, aria-current.
-- §1, §10, §11 context: www.kakaocorp.com/page/service/service/KakaoPage, page.kakao.com meta description, page.kakao.com/notice/ (title only). All opened 2026-09-30.
-- Personas are fictional archetypes. Interpretive readings are editorial.
--->
+- **Contrast, `main-menu-item`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `reaction-chip`.** Text `#000000` on `#0000000d` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-input`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

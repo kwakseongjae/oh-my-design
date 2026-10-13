@@ -1,81 +1,232 @@
 ---
-id: robinhood
 name: Robinhood
-country: US
-category: fintech
-homepage: "https://robinhood.com"
-primary_color: "#00C805"
-logo:
-  type: simpleicons
-  slug: "robinhood"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#00C805"
-    primary-hover: "#00B004"
-    primary-tint: "#E6FBE9"
-    canvas-dark: "#0E0E0E"
-    canvas: "#FFFFFF"
-    ink: "#1B1B1B"
-    loss: "#FF5000"
-    warning: "#FFB000"
-    info: "#2E6FF2"
-    gray-50: "#F7F7F7"
-    gray-100: "#EFEFEF"
-    gray-200: "#E0E0E0"
-    gray-400: "#A8A8A8"
-    gray-500: "#8C8C8C"
-    gray-600: "#6B6B6B"
-    gray-700: "#4A4A4A"
-    gray-800: "#2C2C2C"
-    gray-900: "#1B1B1B"
-  typography:
-    family: { sans: "Capsule Sans", mono: "Capsule Sans Mono" }
-    display-hero: { size: 56, weight: 700, lineHeight: 1.07, tracking: -0.02, use: "Marketing hero headlines" }
-    display-lg:   { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.02, use: "Section headers" }
-    heading-lg:   { size: 30, weight: 700, lineHeight: 1.27, tracking: -0.01, use: "Feature titles, modal headers" }
-    heading:      { size: 24, weight: 600, lineHeight: 1.33, tracking: -0.01, use: "Card headings, sub-sections" }
-    subtitle:     { size: 18, weight: 600, lineHeight: 1.44, use: "List headers, nav titles" }
-    body-lg:      { size: 18, weight: 400, lineHeight: 1.56, use: "Marketing body, explanations" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    body-sm:      { size: 14, weight: 400, lineHeight: 1.43, use: "Secondary information" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, disclosures, fine print" }
-    number:       { size: 40, weight: 700, tracking: -0.01, use: "Portfolio value, tabular numerals" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 8, md: 12, lg: 20, full: 9999 }
-  shadow:
-    card: "0px 1px 3px rgba(0,0,0,0.06)"
-    toast: "0px 8px 24px rgba(0,0,0,0.20)"
-    modal: "0px 16px 48px rgba(0,0,0,0.24)"
-  components:
-    button-primary: { type: button, bg: "#00C805", fg: "#0E0E0E", radius: 9999, padding: "16px 28px", font: "16px/600 Capsule Sans", use: "Primary CTA, dark text on bright green" }
-    button-secondary: { type: button, bg: "#FFFFFF", fg: "#1B1B1B", radius: 9999, padding: "16px 28px", font: "16px/600 Capsule Sans", use: "Outline secondary, 1.5px #E0E0E0 border" }
-    button-tertiary: { type: button, bg: "#FFFFFF", fg: "#00B004", padding: "12px 8px", font: "16px/600 Capsule Sans", use: "Inline links, low-emphasis" }
-    button-destructive: { type: button, bg: "#FF5000", fg: "#FFFFFF", radius: 12, padding: "16px 28px", font: "16px/600 Capsule Sans", use: "Sell confirmation, destructive flows" }
-    input-text: { type: input, bg: "#FFFFFF", fg: "#1B1B1B", radius: 10, padding: "14px 16px", font: "16px/400 Capsule Sans", use: "Standard form input, 1.5px #E0E0E0 border, focus #00C805" }
-    card-standard: { type: card, bg: "#FFFFFF", radius: 16, padding: "20px", use: "Holding, watchlist, account cards, 1px #E0E0E0 border" }
-    card-featured: { type: card, bg: "#0E0E0E", fg: "#FFFFFF", radius: 20, padding: "28px", use: "Promotional, Gold upsell, portfolio hero" }
-    list-row: { type: listItem, radius: 0, padding: "14px 16px", use: "Ticker rows, transaction history, bottom 1px #EFEFEF border" }
-    badge-gain: { type: badge, fg: "#00B004", radius: 8, padding: "3px 8px", font: "13px/600 Capsule Sans Mono", use: "Positive movement indicator" }
-    badge-loss: { type: badge, fg: "#FF5000", radius: 8, padding: "3px 8px", font: "13px/600 Capsule Sans Mono", use: "Negative movement indicator" }
-    badge-neutral: { type: badge, bg: "#EFEFEF", fg: "#4A4A4A", radius: 8, padding: "3px 8px", font: "12px/600 Capsule Sans", use: "NEW, category labels" }
-    badge-gold: { type: badge, fg: "#0E0E0E", radius: 8, padding: "3px 8px", font: "12px/700 Capsule Sans", use: "Robinhood Gold marker, gold gradient" }
-    tab-segmented: { type: tab, bg: "#EFEFEF", fg: "#8C8C8C", radius: 9999, padding: "6px 14px", font: "13px/600 Capsule Sans", active: "Active #FFFFFF bg + #1B1B1B text", use: "Chart timeframe selector" }
-    tab-bottom: { type: tab, bg: "#FFFFFF", fg: "#A8A8A8", font: "11px/500 Capsule Sans", active: "Active #00C805 icon + label", use: "Primary mobile navigation" }
-    toast-default: { type: toast, bg: "#1B1B1B", fg: "#FFFFFF", radius: 12, padding: "14px 18px", font: "14px/500 Capsule Sans", use: "Transient confirmation" }
-    dialog-modal: { type: dialog, bg: "#FFFFFF", radius: 20, padding: "28px", use: "Confirmations, disclosures" }
-    dialog-sheet: { type: dialog, bg: "#FFFFFF", radius: 20, padding: "24px 20px", use: "Trade ticket, order review, pickers, top corners only" }
-    toggle-default: { type: toggle, bg: "#00C805", radius: 9999, use: "Boolean settings, #E0E0E0 off, #FFFFFF thumb" }
-  components_harvested: true
+colors:
+  primary: '#00C805'
+  primary-hover: '#00B004'
+  primary-tint: '#E6FBE9'
+  canvas-dark: '#0E0E0E'
+  canvas: '#FFFFFF'
+  ink: '#1B1B1B'
+  loss: '#FF5000'
+  warning: '#FFB000'
+  info: '#2E6FF2'
+  gray-50: '#F7F7F7'
+  gray-100: '#EFEFEF'
+  gray-200: '#E0E0E0'
+  gray-400: '#A8A8A8'
+  gray-500: '#8C8C8C'
+  gray-600: '#6B6B6B'
+  gray-700: '#4A4A4A'
+  gray-800: '#2C2C2C'
+  gray-900: '#1B1B1B'
+typography:
+  display-hero:
+    fontSize: 56px
+    fontWeight: 700
+    lineHeight: 1.07
+    letterSpacing: '-0.02px'
+    use: Marketing hero headlines
+  display-lg:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: '-0.02px'
+    use: Section headers
+  heading-lg:
+    fontSize: 30px
+    fontWeight: 700
+    lineHeight: 1.27
+    letterSpacing: '-0.01px'
+    use: Feature titles, modal headers
+  heading:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.33
+    letterSpacing: '-0.01px'
+    use: Card headings, sub-sections
+  subtitle:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.44
+    use: List headers, nav titles
+  body-lg:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.56
+    use: Marketing body, explanations
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+  body-sm:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Secondary information
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    use: Timestamps, disclosures, fine print
+  number:
+    fontSize: 40px
+    fontWeight: 700
+    letterSpacing: '-0.01px'
+    use: Portfolio value, tabular numerals
+rounded:
+  sm: 8px
+  md: 12px
+  lg: 20px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 96
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#00C805'
+    textColor: '#0E0E0E'
+    rounded: 9999px
+    padding: 16px 28px
+    typography: 16px/600 Capsule Sans
+    use: Primary CTA, dark text on bright green
+  button-secondary:
+    type: button
+    backgroundColor: '#FFFFFF'
+    textColor: '#1B1B1B'
+    rounded: 9999px
+    padding: 16px 28px
+    typography: 16px/600 Capsule Sans
+    use: 'Outline secondary, 1.5px #E0E0E0 border'
+  button-tertiary:
+    type: button
+    backgroundColor: '#FFFFFF'
+    textColor: '#00B004'
+    padding: 12px 8px
+    typography: 16px/600 Capsule Sans
+    use: Inline links, low-emphasis
+  button-destructive:
+    type: button
+    backgroundColor: '#FF5000'
+    textColor: '#FFFFFF'
+    rounded: 12px
+    padding: 16px 28px
+    typography: 16px/600 Capsule Sans
+    use: Sell confirmation, destructive flows
+  input-text:
+    type: input
+    backgroundColor: '#FFFFFF'
+    textColor: '#1B1B1B'
+    rounded: 10px
+    padding: 14px 16px
+    typography: 16px/400 Capsule Sans
+    use: 'Standard form input, 1.5px #E0E0E0 border, focus #00C805'
+  card-standard:
+    type: card
+    backgroundColor: '#FFFFFF'
+    rounded: 16px
+    padding: 20px
+    use: 'Holding, watchlist, account cards, 1px #E0E0E0 border'
+  card-featured:
+    type: card
+    backgroundColor: '#0E0E0E'
+    textColor: '#FFFFFF'
+    rounded: 20px
+    padding: 28px
+    use: Promotional, Gold upsell, portfolio hero
+  list-row:
+    type: listItem
+    rounded: 0px
+    padding: 14px 16px
+    use: 'Ticker rows, transaction history, bottom 1px #EFEFEF border'
+  badge-gain:
+    type: badge
+    textColor: '#00B004'
+    rounded: 8px
+    padding: 3px 8px
+    typography: 13px/600 Capsule Sans Mono
+    use: Positive movement indicator
+  badge-loss:
+    type: badge
+    textColor: '#FF5000'
+    rounded: 8px
+    padding: 3px 8px
+    typography: 13px/600 Capsule Sans Mono
+    use: Negative movement indicator
+  badge-neutral:
+    type: badge
+    backgroundColor: '#EFEFEF'
+    textColor: '#4A4A4A'
+    rounded: 8px
+    padding: 3px 8px
+    typography: 12px/600 Capsule Sans
+    use: NEW, category labels
+  badge-gold:
+    type: badge
+    textColor: '#0E0E0E'
+    rounded: 8px
+    padding: 3px 8px
+    typography: 12px/700 Capsule Sans
+    use: Robinhood Gold marker, gold gradient
+  tab-segmented:
+    type: tab
+    backgroundColor: '#EFEFEF'
+    textColor: '#8C8C8C'
+    rounded: 9999px
+    padding: 6px 14px
+    typography: 13px/600 Capsule Sans
+    active: 'Active #FFFFFF bg + #1B1B1B text'
+    use: Chart timeframe selector
+  tab-bottom:
+    type: tab
+    backgroundColor: '#FFFFFF'
+    textColor: '#A8A8A8'
+    typography: 11px/500 Capsule Sans
+    active: 'Active #00C805 icon + label'
+    use: Primary mobile navigation
+  toast-default:
+    type: toast
+    backgroundColor: '#1B1B1B'
+    textColor: '#FFFFFF'
+    rounded: 12px
+    padding: 14px 18px
+    typography: 14px/500 Capsule Sans
+    use: Transient confirmation
+  dialog-modal:
+    type: dialog
+    backgroundColor: '#FFFFFF'
+    rounded: 20px
+    padding: 28px
+    use: Confirmations, disclosures
+  dialog-sheet:
+    type: dialog
+    backgroundColor: '#FFFFFF'
+    rounded: 20px
+    padding: 24px 20px
+    use: Trade ticket, order review, pickers, top corners only
+  toggle-default:
+    type: toggle
+    backgroundColor: '#00C805'
+    rounded: 9999px
+    use: 'Boolean settings, #E0E0E0 off, #FFFFFF thumb'
+fonts:
+  roles:
+    sans: Capsule Sans
+    mono: Capsule Sans Mono
 ---
 
 # Design System Inspiration of Robinhood
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Robinhood is the American brokerage that turned investing from a gated, mahogany-paneled ritual into something that looks and feels like a consumer app. The brand's visual signature is a single, electric act of defiance: **Robinhood Green (`#00C805`)** — a bright, almost radioactive green that exists nowhere in legacy finance. Where incumbents (Fidelity green, Schwab blue, Vanguard maroon) chose colors that signal old-money permanence, Robinhood chose a color that signals *now* — energetic, optimistic, unmistakably young. The green doesn't whisper trust; it announces access.
 
@@ -92,7 +243,7 @@ The custom typeface **Capsule Sans** is the quiet counterweight to the loud gree
 - Restrained, near-flat depth; emphasis through contrast and color, not heavy shadow
 - Mobile-first at a 390px baseline, scaling to confident full-bleed desktop marketing
 
-## Primary tasks
+### Primary tasks
 
 - Check a portfolio's total value and how it moved today
 - Place a buy order and review it before it goes through
@@ -100,7 +251,38 @@ The custom typeface **Capsule Sans** is the quiet counterweight to the loud gree
 - Compare prices and percent moves down a list of tickers
 - Earn interest on uninvested cash through the paid Gold tier
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Robinhood was founded in 2013 by **Vladimir Tenev** and **Baiju Bhatt**, two Stanford physics graduates who had built high-frequency trading infrastructure for Wall Street firms and realized the actual cost of executing a trade was near zero — yet incumbent brokerages charged retail investors $5–$10 per trade. The thesis was a direct moral argument encoded in the name: the tools of finance had been hoarded by the wealthy, and Robinhood would take from that asymmetry and give access back to everyone. **Commission-free trading** was the wedge; the app launched publicly in 2015 to a waitlist of nearly a million people.
+
+The brand's entire visual language descends from that founding rejection. Legacy finance dressed itself in navy, maroon, and serif gravitas — colors and fonts engineered to signal *we have always been here and always will be*. Robinhood chose **electric green (`#00C805`)**, a color with no heritage in finance, precisely because it had no heritage. It reads as a startup, a growth chart, a "go" signal — optimism rendered as a single hue. The feather mark evokes the legend's arrow and lightness; the name does the rest of the storytelling.
+
+The 2024 rebrand with **COLLINS** matured this energy without abandoning it. As Robinhood expanded from a single commission-free-stocks app into a multi-product platform — options, crypto, retirement, Robinhood Gold, a cash card, and emerging agentic and prediction-market features — the identity needed to hold both the scrappy access story and a more premium, durable register. The dark surfaces, the refined custom Capsule Sans, and the disciplined rationing of the green are the answer: still defiant, now grown up.
+
+What Robinhood refuses: the mahogany seriousness of legacy brokerages, the intimidation of Bloomberg-terminal density, and the gatekeeping of high account minimums. It occupies a deliberate middle — serious enough to be trusted with real money, accessible enough that a 22-year-old's first-ever dollar of investing feels like it belongs to them.
+
+### Principles
+
+1. **One green, rationed.** There is a single brand green (`#00C805`). It marks the most important action and positive movement — nothing else. Inventing decorative green shades dilutes the entire signal.
+2. **Money is the hero element.** The headline portfolio number gets the largest type, tabular figures, and the most surrounding whitespace on any screen. Everything else supports it.
+3. **Access over flex.** Copy and design celebrate beginning ("$1 to start") over displays of wealth. The brand is for the person making their first trade, not bragging about their last.
+4. **Dark makes green electric.** Hero and emotional moments live on `#0E0E0E` so the green reads at maximum intensity. Light mode is for clarity; dark mode is for impact.
+5. **Numbers are typography.** Prices, percentages, and balances use tabular/mono figures with the same care as display headlines — digits never jitter as values update.
+6. **Restraint is the grown-up move.** Near-flat depth, one accent color, disciplined type weights. The 2024 maturity came from removing, not adding.
+7. **Gains and losses are infrastructure.** Green-up / warm-red-down is a semantic contract that runs through every surface; it is never repurposed for decoration.
+8. **Trust through precision, warmth through tone.** Numbers are exact and disclosures honest (the trust); voice is plain and encouraging (the warmth). Both, always.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described US retail-investing segments, not individual people.*
+
+**Marcus, 24, Austin.** First job out of college, software support. Robinhood is the first investing app he's ever opened — he started with $50 in an index ETF after seeing a friend's screenshot. Checks his portfolio 3–4 times a day, mostly for the dopamine of the green number. Intimidated by traditional brokerage interfaces; chose Robinhood because it "looked like an app, not a bank." Reads the percent change before anything else. Would churn instantly if the app felt like work.
+
+**Priya, 31, Jersey City.** Product designer with a stable income, contributing to a Roth IRA and dabbling in options. Uses Robinhood Gold for the higher interest on uninvested cash. Values the clean dark-mode charts and fast order entry. Skeptical of hype — ignores meme-stock noise — but appreciates that the interface respects her enough to surface real data without condescension. Tabular-clean numerics and honest disclosures are why she trusts it.
+
+**Dré, 19, Atlanta.** College sophomore, treats investing like a learning hobby. Started through Robinhood Learn articles, buys fractional shares of companies he uses daily. Mobile-only, never touches a desktop. The "$1 to start" framing is exactly why he's here — no other broker made it feel possible. Sensitive to anything that reads as a sales pitch; trusts the app because it has never made him feel small for starting tiny.
+
+## Colors
 
 ### Primary
 - **Robinhood Green** (`#00C805`): The brand. Primary CTAs, active states, brand marks, positive financial movement, links, focus accents. The single loudest element in the system.
@@ -136,7 +318,7 @@ The custom typeface **Capsule Sans** is the quiet counterweight to the loud gree
 - **Surface Dark Elevated**: `#1B1B1B`. Cards sitting on the `#0E0E0E` canvas.
 - **Overlay Scrim**: `rgba(0,0,0,0.6)`. Modal/sheet backdrops.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `"Capsule Sans", "Capsule Sans Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif`
@@ -165,7 +347,142 @@ The custom typeface **Capsule Sans** is the quiet counterweight to the loud gree
 - **Weight restraint**: Capsule Sans ships multiple weights but the UI leans on 400 (body), 600 (emphasis/subtitles), 700 (headings and financial amounts). Avoid 300 in product UI — it loses legibility at mobile sizes.
 - **Mobile-tuned legibility**: The typeface was refined specifically to hold up at small sizes; never set product body text below 14px.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 48px, 64px, 96px
+- Product horizontal padding: 16px (mobile), 20px (tablet)
+- Marketing section vertical rhythm: 96px+ between major bands
+
+### Grid & Container
+- Product baseline: 390px mobile width, single-column
+- Marketing: 12-column grid, max content width ~1200px, centered
+- Charts: full-bleed width, fixed aspect ratio, edge-to-edge on mobile
+- Lists: full-width rows, name left-aligned, tabular numerics right-aligned
+
+### Whitespace Philosophy
+- **Money is the hero**: Portfolio value sits in large type with generous surrounding space — the single most important number on any screen gets room to breathe.
+- **Marketing is spacious; product is efficient**: Landing pages use editorial whitespace and full-bleed imagery; the trading product is tighter and data-dense where it counts.
+- **Green is rationed**: Empty space lets the one green element command attention. Crowding the green dilutes the brand signal.
+
+### Border Radius Scale
+- Compact (8px): Badges, pills, inline tags
+- Standard (10–12px): Inputs, product buttons, small cards
+- Comfortable (16px): Standard cards
+- Large (20px): Hero cards, modals, bottom sheets
+- Pill (9999px): Marketing CTAs, segmented controls, toggles
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile (Primary) | <600px | Single column, 390px product baseline, full-bleed charts |
+| Tablet | 600–1024px | Two-column marketing, wider cards, side margins |
+| Desktop | >1024px | 12-col grid, max ~1200px content, full-bleed hero imagery |
+
+#### Touch Targets
+- Buttons: min-height 52px (primary), 44px (compact)
+- List rows: minimum 56px row height for tickers/transactions
+- Segmented timeframe controls: 36px tall, generous horizontal hit area
+
+#### Collapsing Strategy
+- Desktop marketing hero collapses to a single-column stacked layout on mobile
+- Trade actions live in a bottom sheet on mobile, a right-side panel on desktop
+- Sticky bottom CTA bar (Buy/Sell) with safe-area insets on mobile product
+- Horizontal scrolling carousels for discover/watchlist sections
+
+#### Image Behavior
+- Charts: full-width, responsive, fixed aspect ratio, edge-to-edge on mobile
+- Brand/marketing imagery: full-bleed, often on dark backgrounds with green accents
+- Company logos in lists: 36–40px circular, consistent sizing
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Dark surfaces, inline elements, list rows |
+| Subtle (Level 1) | `0px 1px 3px rgba(0,0,0,0.06)` | Cards on light, slight lift |
+| Standard (Level 2) | `0px 4px 12px rgba(0,0,0,0.10)` | Dropdowns, popovers |
+| Elevated (Level 3) | `0px 8px 24px rgba(0,0,0,0.20)` | Toasts, floating panels |
+| Modal (Level 4) | `0px 16px 48px rgba(0,0,0,0.24)` | Dialogs, bottom sheets |
+
+**Shadow Philosophy**: Robinhood is near-flat by instinct. On dark surfaces, elevation is communicated by *surface lightness* (a `#1B1B1B` card on a `#0E0E0E` canvas) rather than shadow. On light surfaces, shadows are soft, neutral, single-layer. Depth never competes with the green — color and contrast carry hierarchy, not drop shadows.
+
+### Blur Effects
+- Sticky nav applies a backdrop blur (`backdrop-filter: blur(12px)`) over a translucent dark/light fill on scroll.
+- Bottom-sheet scrims use a plain `rgba(0,0,0,0.6)` dim, no blur, to keep trade data crisp behind.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `0px 1px 3px rgba(0,0,0,0.06)`
+- `shadow.toast`: `0px 8px 24px rgba(0,0,0,0.20)`
+- `shadow.modal`: `0px 16px 48px rgba(0,0,0,0.24)`
+
+## Motion & Easing
+
+**Durations** (named, not raw milliseconds):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, immediate state changes |
+| `motion-fast` | 150ms | Hover, focus, press overlays, small reveals |
+| `motion-standard` | 250ms | Default — sheet opens, tab switches, card expand |
+| `motion-slow` | 400ms | Emphasized — success checkmark, onboarding advances |
+| `motion-page` | 320ms | Full-screen route transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Appearing — sheets, toasts, screen pushes |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals, pops |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — collapsibles, tab content |
+| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reserved — order-filled success checkmark only |
+
+**Signature motions.**
+
+1. **Value tick.** When a price or portfolio value updates, the digit animates in place with a brief color flash (green up `#00C805` / warm red down `#FF5000`) over `motion-fast`. Money is never cross-faded between two values — a flickering number looks like a bug, not a market.
+2. **Chart draw-in.** On load, the price line draws left-to-right over `motion-slow` with `ease-standard`, the area gradient fading up beneath it. Reinforces "growth" as a felt motion, not just a color.
+3. **Bottom-sheet trade ticket.** Rises from `y+40px` with `motion-standard / ease-enter` and a synchronized scrim fade to `rgba(0,0,0,0.6)`. Dismissal uses `motion-fast / ease-exit` — leaving feels lighter than entering.
+4. **Order-filled checkmark.** The one place `ease-spring` is licensed: the confirmation checkmark draws over `motion-slow` with a single confident overshoot. Everywhere else, standard easing — overshoot on routine UI would feel unserious for money.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse toward `motion-instant`, slides become fades, and the chart renders fully drawn. Stays usable; just less kinetic.
+
+<!--
+OmD v0.1 Sources
+
+Token grounding (WebSearch + WebFetch, 2026-06-06):
+- Robinhood Green #00C805 — confirmed primary brand color across multiple brand
+  references and the 2024 COLLINS rebrand coverage.
+- Capsule Sans — confirmed custom typeface (refinement of Maison Neue / Milieu
+  Grotesque) with a custom 'R' wordmark, tuned for mobile legibility, via the
+  COLLINS x Robinhood rebrand writeups (the-brandidentity.com, Robinhood newsroom
+  "A visual identity that better reflects our vision").
+- robinhood.com (WebFetch) — confirmed marketing voice ("Investing for everyone",
+  "Join a new generation of investors", "Get started"/"Learn more" CTAs,
+  commission-free positioning, agentic/crypto/prediction-market expansion).
+
+Sources:
+- https://newsroom.aboutrobinhood.com/a-visual-identity-that-better-reflects-our-vision/
+- https://the-brandidentity.com/project/collins-robinhood-combine-make-investing-accessible-affordable-engaging
+- https://1000logos.net/robinhood-logo/
+- https://robinhood.com
+
+Not independently token-verified (editorial/secondary): exact neutral-gray ramp
+values, semantic loss-red #FF5000, focus-ring opacities, radius/padding specifics,
+and motion tokens are reasoned brand-consistent values for agent use, not published
+Robinhood design-system tokens. Brand color #00C805, Capsule Sans, dark-first
+aesthetic, gain-green/loss-red dualism, and marketing voice are grounded in sources.
+
+Personas (§13) are fictional archetypes informed by publicly described US retail-
+investing segments. Founding narrative (Tenev/Bhatt, 2013, commission-free thesis)
+is widely documented public history.
+-->
+
+## Components
 
 ### Buttons
 
@@ -361,52 +678,26 @@ Robinhood buttons are pill-to-soft-rounded, high-contrast, and lean on the green
 - Thumb: `#FFFFFF` 20px circle, `0px 1px 2px rgba(0,0,0,0.15)` shadow
 - Use: Boolean settings, notification preferences
 
-
 **Tier 1 sources:** https://robinhood.com (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 48px, 64px, 96px
-- Product horizontal padding: 16px (mobile), 20px (tablet)
-- Marketing section vertical rhythm: 96px+ between major bands
+| State | Treatment |
+|---|---|
+| **Empty (no holdings)** | Friendly one-line `#6B6B6B` body explaining the screen plus a green primary CTA (`Get started` / `Make your first trade`). Encouraging, never `No data`. |
+| **Empty (filtered)** | Single `#8C8C8C` caption line (`No results match your filter`). No CTA — user resets the filter. |
+| **Loading (first paint)** | Skeleton blocks at `#EFEFEF` (light) / `#1B1B1B` (dark) matching final layout. Portfolio values show `--` until resolved — never a fake skeleton number. |
+| **Loading (refresh)** | Subtle green `#00C805` pull spinner. Content stays visible with prior values; no blocking overlay. |
+| **Error (inline field)** | 1.5px `#FF5000` border + `rgba(255,80,0,0.15)` focus ring, one actionable sentence below in `#FF5000` 13px. |
+| **Error (toast)** | `#1B1B1B` bg, white 14px 500 text, ~4s auto-dismiss, bottom inset. One sentence, no cute voice. |
+| **Error (blocking)** | Reserved for outage/market-data failure. Centered `#1B1B1B` 18px weight 600 message + green retry button. No illustration on money screens. |
+| **Success (order placed)** | Toast for routine submission. **Order filled** gets a dedicated confirmation screen — green checkmark, exact filled price/quantity, tabular amount. Fills are not toasts. |
+| **Gain/Loss live update** | Value and percent recolor in place: green `#00C805` up, warm red `#FF5000` down, with a brief flash, never a cross-fade between numbers. |
+| **Skeleton** | `#EFEFEF` / `#1B1B1B` blocks at exact final dimensions, 1.2s shimmer with low-opacity highlight. Component-matched radius. Never on live financial amounts. |
+| **Disabled** | Button bg `#A8A8A8`, text white, no pointer. Inputs keep `#E0E0E0` border so geometry stays stable when re-enabled. |
+| **Market closed** | Amber `#FFB000` caption banner (`Market closed`) above the trade ticket; trade button stays available for queued/extended-hours orders where applicable. |
 
-### Grid & Container
-- Product baseline: 390px mobile width, single-column
-- Marketing: 12-column grid, max content width ~1200px, centered
-- Charts: full-bleed width, fixed aspect ratio, edge-to-edge on mobile
-- Lists: full-width rows, name left-aligned, tabular numerics right-aligned
-
-### Whitespace Philosophy
-- **Money is the hero**: Portfolio value sits in large type with generous surrounding space — the single most important number on any screen gets room to breathe.
-- **Marketing is spacious; product is efficient**: Landing pages use editorial whitespace and full-bleed imagery; the trading product is tighter and data-dense where it counts.
-- **Green is rationed**: Empty space lets the one green element command attention. Crowding the green dilutes the brand signal.
-
-### Border Radius Scale
-- Compact (8px): Badges, pills, inline tags
-- Standard (10–12px): Inputs, product buttons, small cards
-- Comfortable (16px): Standard cards
-- Large (20px): Hero cards, modals, bottom sheets
-- Pill (9999px): Marketing CTAs, segmented controls, toggles
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Dark surfaces, inline elements, list rows |
-| Subtle (Level 1) | `0px 1px 3px rgba(0,0,0,0.06)` | Cards on light, slight lift |
-| Standard (Level 2) | `0px 4px 12px rgba(0,0,0,0.10)` | Dropdowns, popovers |
-| Elevated (Level 3) | `0px 8px 24px rgba(0,0,0,0.20)` | Toasts, floating panels |
-| Modal (Level 4) | `0px 16px 48px rgba(0,0,0,0.24)` | Dialogs, bottom sheets |
-
-**Shadow Philosophy**: Robinhood is near-flat by instinct. On dark surfaces, elevation is communicated by *surface lightness* (a `#1B1B1B` card on a `#0E0E0E` canvas) rather than shadow. On light surfaces, shadows are soft, neutral, single-layer. Depth never competes with the green — color and contrast carry hierarchy, not drop shadows.
-
-### Blur Effects
-- Sticky nav applies a backdrop blur (`backdrop-filter: blur(12px)`) over a translucent dark/light fill on scroll.
-- Bottom-sheet scrims use a plain `rgba(0,0,0,0.6)` dim, no blur, to keep trade data crisp behind.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Robinhood Green (`#00C805`) for the single most important action on a screen
@@ -426,32 +717,23 @@ Robinhood buttons are pill-to-soft-rounded, high-contrast, and lean on the green
 - Don't add heavy multi-layer shadows — depth comes from surface lightness and contrast
 - Don't mix variable-width and tabular numerals in the same data column
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile (Primary) | <600px | Single column, 390px product baseline, full-bleed charts |
-| Tablet | 600–1024px | Two-column marketing, wider cards, side margins |
-| Desktop | >1024px | 12-col grid, max ~1200px content, full-bleed hero imagery |
+Robinhood speaks like a confident friend who demystifies money without dumbing it down — direct, encouraging, jargon-light, and quietly anti-establishment. The founding promise is in the name: democratizing finance for all. Copy is plain-spoken and active, favoring short imperatives. It celebrates beginning ("Start with as little as $1") and access ("Investing for everyone") over wealth-flex bravado. Disclosures are present and precise — this is a regulated brokerage — but kept out of the way of the primary message.
 
-### Touch Targets
-- Buttons: min-height 52px (primary), 44px (compact)
-- List rows: minimum 56px row height for tickers/transactions
-- Segmented timeframe controls: 36px tall, generous horizontal hit area
+| Context | Tone |
+|---|---|
+| CTAs | Short imperative verbs (`Get started`, `Buy`, `Learn more`, `Sign up`) |
+| Headlines | Bold, declarative, access-oriented (`Investing for everyone`, `Join a new generation of investors`) |
+| Success | Plain past-tense confirmation (`Order placed`, `Transfer complete`). No exclamation overload. |
+| Error messages | Specific, blameless, actionable. Never a bare `Something went wrong`. |
+| Onboarding | Second-person, encouraging, one idea per step (`Start with as little as $1`) |
+| Financial amounts | Exact, comma-separated, currency symbol prefixed: `$1,240.50` — never rounded on primary surfaces |
+| Disclosures | Plain-English regulatory tone; accurate but unobtrusive footnotes |
 
-### Collapsing Strategy
-- Desktop marketing hero collapses to a single-column stacked layout on mobile
-- Trade actions live in a bottom sheet on mobile, a right-side panel on desktop
-- Sticky bottom CTA bar (Buy/Sell) with safe-area insets on mobile product
-- Horizontal scrolling carousels for discover/watchlist sections
+**Forbidden moves.** No condescension or finance-bro swagger. No "guaranteed returns" language (regulatory and brand violation). No rounding money on primary surfaces. Avoid `Oops` and cute error voice on money screens — clarity over personality where dollars are involved.
 
-### Image Behavior
-- Charts: full-width, responsive, fixed aspect ratio, edge-to-edge on mobile
-- Brand/marketing imagery: full-bleed, often on dark backgrounds with green accents
-- Company logos in lists: 36–40px circular, consistent sizing
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Robinhood Green (`#00C805`)
@@ -487,126 +769,11 @@ Robinhood buttons are pill-to-soft-rounded, high-contrast, and lean on the green
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Robinhood speaks like a confident friend who demystifies money without dumbing it down — direct, encouraging, jargon-light, and quietly anti-establishment. The founding promise is in the name: democratizing finance for all. Copy is plain-spoken and active, favoring short imperatives. It celebrates beginning ("Start with as little as $1") and access ("Investing for everyone") over wealth-flex bravado. Disclosures are present and precise — this is a regulated brokerage — but kept out of the way of the primary message.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Short imperative verbs (`Get started`, `Buy`, `Learn more`, `Sign up`) |
-| Headlines | Bold, declarative, access-oriented (`Investing for everyone`, `Join a new generation of investors`) |
-| Success | Plain past-tense confirmation (`Order placed`, `Transfer complete`). No exclamation overload. |
-| Error messages | Specific, blameless, actionable. Never a bare `Something went wrong`. |
-| Onboarding | Second-person, encouraging, one idea per step (`Start with as little as $1`) |
-| Financial amounts | Exact, comma-separated, currency symbol prefixed: `$1,240.50` — never rounded on primary surfaces |
-| Disclosures | Plain-English regulatory tone; accurate but unobtrusive footnotes |
-
-**Forbidden moves.** No condescension or finance-bro swagger. No "guaranteed returns" language (regulatory and brand violation). No rounding money on primary surfaces. Avoid `Oops` and cute error voice on money screens — clarity over personality where dollars are involved.
-
-## 11. Brand Narrative
-
-Robinhood was founded in 2013 by **Vladimir Tenev** and **Baiju Bhatt**, two Stanford physics graduates who had built high-frequency trading infrastructure for Wall Street firms and realized the actual cost of executing a trade was near zero — yet incumbent brokerages charged retail investors $5–$10 per trade. The thesis was a direct moral argument encoded in the name: the tools of finance had been hoarded by the wealthy, and Robinhood would take from that asymmetry and give access back to everyone. **Commission-free trading** was the wedge; the app launched publicly in 2015 to a waitlist of nearly a million people.
-
-The brand's entire visual language descends from that founding rejection. Legacy finance dressed itself in navy, maroon, and serif gravitas — colors and fonts engineered to signal *we have always been here and always will be*. Robinhood chose **electric green (`#00C805`)**, a color with no heritage in finance, precisely because it had no heritage. It reads as a startup, a growth chart, a "go" signal — optimism rendered as a single hue. The feather mark evokes the legend's arrow and lightness; the name does the rest of the storytelling.
-
-The 2024 rebrand with **COLLINS** matured this energy without abandoning it. As Robinhood expanded from a single commission-free-stocks app into a multi-product platform — options, crypto, retirement, Robinhood Gold, a cash card, and emerging agentic and prediction-market features — the identity needed to hold both the scrappy access story and a more premium, durable register. The dark surfaces, the refined custom Capsule Sans, and the disciplined rationing of the green are the answer: still defiant, now grown up.
-
-What Robinhood refuses: the mahogany seriousness of legacy brokerages, the intimidation of Bloomberg-terminal density, and the gatekeeping of high account minimums. It occupies a deliberate middle — serious enough to be trusted with real money, accessible enough that a 22-year-old's first-ever dollar of investing feels like it belongs to them.
-
-## 12. Principles
-
-1. **One green, rationed.** There is a single brand green (`#00C805`). It marks the most important action and positive movement — nothing else. Inventing decorative green shades dilutes the entire signal.
-2. **Money is the hero element.** The headline portfolio number gets the largest type, tabular figures, and the most surrounding whitespace on any screen. Everything else supports it.
-3. **Access over flex.** Copy and design celebrate beginning ("$1 to start") over displays of wealth. The brand is for the person making their first trade, not bragging about their last.
-4. **Dark makes green electric.** Hero and emotional moments live on `#0E0E0E` so the green reads at maximum intensity. Light mode is for clarity; dark mode is for impact.
-5. **Numbers are typography.** Prices, percentages, and balances use tabular/mono figures with the same care as display headlines — digits never jitter as values update.
-6. **Restraint is the grown-up move.** Near-flat depth, one accent color, disciplined type weights. The 2024 maturity came from removing, not adding.
-7. **Gains and losses are infrastructure.** Green-up / warm-red-down is a semantic contract that runs through every surface; it is never repurposed for decoration.
-8. **Trust through precision, warmth through tone.** Numbers are exact and disclosures honest (the trust); voice is plain and encouraging (the warmth). Both, always.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described US retail-investing segments, not individual people.*
-
-**Marcus, 24, Austin.** First job out of college, software support. Robinhood is the first investing app he's ever opened — he started with $50 in an index ETF after seeing a friend's screenshot. Checks his portfolio 3–4 times a day, mostly for the dopamine of the green number. Intimidated by traditional brokerage interfaces; chose Robinhood because it "looked like an app, not a bank." Reads the percent change before anything else. Would churn instantly if the app felt like work.
-
-**Priya, 31, Jersey City.** Product designer with a stable income, contributing to a Roth IRA and dabbling in options. Uses Robinhood Gold for the higher interest on uninvested cash. Values the clean dark-mode charts and fast order entry. Skeptical of hype — ignores meme-stock noise — but appreciates that the interface respects her enough to surface real data without condescension. Tabular-clean numerics and honest disclosures are why she trusts it.
-
-**Dré, 19, Atlanta.** College sophomore, treats investing like a learning hobby. Started through Robinhood Learn articles, buys fractional shares of companies he uses daily. Mobile-only, never touches a desktop. The "$1 to start" framing is exactly why he's here — no other broker made it feel possible. Sensitive to anything that reads as a sales pitch; trusts the app because it has never made him feel small for starting tiny.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no holdings)** | Friendly one-line `#6B6B6B` body explaining the screen plus a green primary CTA (`Get started` / `Make your first trade`). Encouraging, never `No data`. |
-| **Empty (filtered)** | Single `#8C8C8C` caption line (`No results match your filter`). No CTA — user resets the filter. |
-| **Loading (first paint)** | Skeleton blocks at `#EFEFEF` (light) / `#1B1B1B` (dark) matching final layout. Portfolio values show `--` until resolved — never a fake skeleton number. |
-| **Loading (refresh)** | Subtle green `#00C805` pull spinner. Content stays visible with prior values; no blocking overlay. |
-| **Error (inline field)** | 1.5px `#FF5000` border + `rgba(255,80,0,0.15)` focus ring, one actionable sentence below in `#FF5000` 13px. |
-| **Error (toast)** | `#1B1B1B` bg, white 14px 500 text, ~4s auto-dismiss, bottom inset. One sentence, no cute voice. |
-| **Error (blocking)** | Reserved for outage/market-data failure. Centered `#1B1B1B` 18px weight 600 message + green retry button. No illustration on money screens. |
-| **Success (order placed)** | Toast for routine submission. **Order filled** gets a dedicated confirmation screen — green checkmark, exact filled price/quantity, tabular amount. Fills are not toasts. |
-| **Gain/Loss live update** | Value and percent recolor in place: green `#00C805` up, warm red `#FF5000` down, with a brief flash, never a cross-fade between numbers. |
-| **Skeleton** | `#EFEFEF` / `#1B1B1B` blocks at exact final dimensions, 1.2s shimmer with low-opacity highlight. Component-matched radius. Never on live financial amounts. |
-| **Disabled** | Button bg `#A8A8A8`, text white, no pointer. Inputs keep `#E0E0E0` border so geometry stays stable when re-enabled. |
-| **Market closed** | Amber `#FFB000` caption banner (`Market closed`) above the trade ticket; trade button stays available for queued/extended-hours orders where applicable. |
-
-## 15. Motion & Easing
-
-**Durations** (named, not raw milliseconds):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, immediate state changes |
-| `motion-fast` | 150ms | Hover, focus, press overlays, small reveals |
-| `motion-standard` | 250ms | Default — sheet opens, tab switches, card expand |
-| `motion-slow` | 400ms | Emphasized — success checkmark, onboarding advances |
-| `motion-page` | 320ms | Full-screen route transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Appearing — sheets, toasts, screen pushes |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals, pops |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — collapsibles, tab content |
-| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reserved — order-filled success checkmark only |
-
-**Signature motions.**
-
-1. **Value tick.** When a price or portfolio value updates, the digit animates in place with a brief color flash (green up `#00C805` / warm red down `#FF5000`) over `motion-fast`. Money is never cross-faded between two values — a flickering number looks like a bug, not a market.
-2. **Chart draw-in.** On load, the price line draws left-to-right over `motion-slow` with `ease-standard`, the area gradient fading up beneath it. Reinforces "growth" as a felt motion, not just a color.
-3. **Bottom-sheet trade ticket.** Rises from `y+40px` with `motion-standard / ease-enter` and a synchronized scrim fade to `rgba(0,0,0,0.6)`. Dismissal uses `motion-fast / ease-exit` — leaving feels lighter than entering.
-4. **Order-filled checkmark.** The one place `ease-spring` is licensed: the confirmation checkmark draws over `motion-slow` with a single confident overshoot. Everywhere else, standard easing — overshoot on routine UI would feel unserious for money.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse toward `motion-instant`, slides become fades, and the chart renders fully drawn. Stays usable; just less kinetic.
-
-<!--
-OmD v0.1 Sources
-
-Token grounding (WebSearch + WebFetch, 2026-06-06):
-- Robinhood Green #00C805 — confirmed primary brand color across multiple brand
-  references and the 2024 COLLINS rebrand coverage.
-- Capsule Sans — confirmed custom typeface (refinement of Maison Neue / Milieu
-  Grotesque) with a custom 'R' wordmark, tuned for mobile legibility, via the
-  COLLINS x Robinhood rebrand writeups (the-brandidentity.com, Robinhood newsroom
-  "A visual identity that better reflects our vision").
-- robinhood.com (WebFetch) — confirmed marketing voice ("Investing for everyone",
-  "Join a new generation of investors", "Get started"/"Learn more" CTAs,
-  commission-free positioning, agentic/crypto/prediction-market expansion).
-
-Sources:
-- https://newsroom.aboutrobinhood.com/a-visual-identity-that-better-reflects-our-vision/
-- https://the-brandidentity.com/project/collins-robinhood-combine-make-investing-accessible-affordable-engaging
-- https://1000logos.net/robinhood-logo/
-- https://robinhood.com
-
-Not independently token-verified (editorial/secondary): exact neutral-gray ramp
-values, semantic loss-red #FF5000, focus-ring opacities, radius/padding specifics,
-and motion tokens are reasoned brand-consistent values for agent use, not published
-Robinhood design-system tokens. Brand color #00C805, Capsule Sans, dark-first
-aesthetic, gain-green/loss-red dualism, and marketing voice are grounded in sources.
-
-Personas (§13) are fictional archetypes informed by publicly described US retail-
-investing segments. Founding narrative (Tenev/Bhatt, 2013, commission-free thesis)
-is widely documented public history.
--->
+- **Contrast, `button-tertiary`.** Text `#00b004` on `#ffffff` measures 2.91:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-destructive`.** Text `#ffffff` on `#ff5000` measures 3.28:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tab-segmented`.** Text `#8c8c8c` on `#efefef` measures 2.92:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tab-bottom`.** Text `#a8a8a8` on `#ffffff` measures 2.38:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

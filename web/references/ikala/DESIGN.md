@@ -1,308 +1,247 @@
 ---
-id: ikala
 name: iKala
-country: TW
-category: developer-tools
-homepage: https://ikala.ai
-primary_color: "#061232"
-logo:
-  type: favicon
-  slug: https://www.google.com/s2/favicons?domain=ikala.ai&sz=128
-verified: "2026-10-01"
-added: "2026-06-08"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-10-01"
-  surfaces:
-    - {id: home, kind: marketing, url: https://ikala.ai/, inspected: "2026-10-01"}
-    - {id: surface-2, kind: marketing, url: https://ikala.ai/ikala-nexus/, inspected: "2026-10-01"}
-    - {id: surface-3, kind: marketing, url: https://ikala.ai/zh-tw/, inspected: "2026-10-01"}
-  sources:
-    - {id: surface-home, kind: product-surface, url: https://ikala.ai/, captured: "2026-10-01"}
-    - {id: surface-surface-2, kind: product-surface, url: https://ikala.ai/ikala-nexus/, captured: "2026-10-01"}
-    - {id: surface-surface-3, kind: product-surface, url: https://ikala.ai/zh-tw/, captured: "2026-10-01"}
-    - {id: ikala-about, kind: official-doc, url: https://ikala.ai/about/, captured: "2026-10-01"}
-    - {id: noto-cjk-license, kind: license, url: https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/LICENSE, captured: "2026-10-01"}
-    - {id: noto-sans-license, kind: license, url: https://raw.githubusercontent.com/notofonts/latin-greek-cyrillic/main/OFL.txt, captured: "2026-10-01"}
-  conflicts: []
-  claims:
-    tokens.colors.action-blue: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.colors.arrow-blue: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.colors.black: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::#menu-item-28739, captured: "2026-10-01"}
-    tokens.colors.body: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
-    tokens.colors.field-border: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.colors.footer-blue: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"39\"]", captured: "2026-10-01"}
-    tokens.colors.hairline: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"54\"]", captured: "2026-10-01"}
-    tokens.colors.heading: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.colors.link: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-10-01"}
-    tokens.colors.nexus-blue: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.colors.primary: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.colors.tab-idle: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.colors.tab-selected: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-10-01"}
-    tokens.colors.timeline-blue: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.colors.white: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.blue-button.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.disabled: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"43\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.shadow: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.carousel-arrow.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.components.faq-accordion-row.border: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.components.faq-accordion-row.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.components.faq-accordion-row.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.components.faq-accordion-row.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.components.faq-accordion-row.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.components.faq-accordion-row.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.form-submit.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.hero-cta.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nav-link.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.components.nav-link.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.components.nav-link.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.components.nav-link.selected: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::#menu-item-28739, captured: "2026-10-01"}
-    tokens.components.nav-link.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.components.nav-link.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.components.nav-link.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.components.news-label.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.news-label.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.nexus-hero-button.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.selected: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.solution-tab.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.components.text-field.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.border: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.text-field.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.timeline-pill.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
-    tokens.components.white-button.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.shadow: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.components.white-button.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.rounded.arrow: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.rounded.button: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.rounded.field: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
-    tokens.rounded.label: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.shadow.floating: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
-    tokens.shadow.glow: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
-    tokens.spacing.accordion: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
-    tokens.spacing.button-x: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.spacing.button-y: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
-    tokens.spacing.cta-x: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.spacing.cta-y: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.spacing.label-x: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.spacing.label-y: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.spacing.tab-x: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.spacing.tab-y: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.typography.body.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
-    tokens.typography.body.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
-    tokens.typography.body.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
-    tokens.typography.body.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
-    tokens.typography.button.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.typography.button.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.typography.button.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.typography.button.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.typography.card-title.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.card-title.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.card-title.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.card-title.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.card-title.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.case-name.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.case-name.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.case-name.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.case-name.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.case-name.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.display-hero.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.display-hero.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.display-hero.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.display-hero.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.display-hero.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.family.body: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
-    tokens.typography.family.button: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
-    tokens.typography.footer-heading.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.footer-heading.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.footer-heading.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.footer-heading.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.footer-heading.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.industry-title.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.industry-title.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.industry-title.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.industry-title.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.industry-title.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.label.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.typography.label.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.typography.label.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.typography.label.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
-    tokens.typography.nav.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.typography.nav.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.typography.nav.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.typography.nav.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.typography.nav.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
-    tokens.typography.news-title.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.news-title.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.news-title.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.news-title.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.news-title.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
-    tokens.typography.nexus-title.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.nexus-title.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.nexus-title.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.nexus-title.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.nexus-title.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.section-nexus.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.section-nexus.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.section-nexus.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.section-nexus.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.section-nexus.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
-    tokens.typography.section.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.section.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.section.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.section.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.section.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
-    tokens.typography.tab.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.typography.tab.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.typography.tab.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.typography.tab.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-    tokens.typography.tab.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
-tokens:
-  source: reconciled
-  extracted: "2026-10-01"
-  colors:
-    primary: "#061232"
-    white: "#ffffff"
-    action-blue: "#2563eb"
-    nexus-blue: "#3b81db"
-    timeline-blue: "#1677ff"
-    arrow-blue: "#005cec"
-    link: "#3a82dd"
-    footer-blue: "#4770df"
-    tab-selected: "#2a415e"
-    tab-idle: "#95a2b2"
-    heading: "#333333"
-    body: "#525151"
-    black: "#000000"
-    field-border: "#cccccc"
-    hairline: "#dbdbdb"
-  typography:
-    family: {body: Noto Sans TC, button: Noto Sans}
-    display-hero: {size: 72, weight: 600, lineHeight: 1.4, tracking: -2.99, use: "Hero headline on home (Data → Intelligence → Impact) and /zh-tw/ (數據 → 智慧 → 決策), 100.8px line, white over the hero image"}
-    nexus-title: {size: 60, weight: 700, lineHeight: 1.3, tracking: 0.5, use: "iKala Nexus hero title, 78px line, #333333"}
-    section: {size: 36, weight: 600, lineHeight: 1.4, tracking: -1.5, use: "Section headings on home and /zh-tw/, 50.4px line, #333333 (white on dark bands)"}
-    section-nexus: {size: 36, weight: 700, lineHeight: 1, tracking: -1.5, use: "Section headings on iKala Nexus, 36px line"}
-    card-title: {size: 24, weight: 600, lineHeight: 1.4, tracking: -1, use: "Data-science cards on home (DataOps, MLOps, Predictive Analytics), 33.6px line"}
-    industry-title: {size: 24, weight: 600, lineHeight: 1, tracking: -1, use: "Industry card titles on home (Manufacturing, Retail & Marketing, Medical, Finance), 24px line"}
-    case-name: {size: 24, weight: 700, lineHeight: 1.4, tracking: 0.3, use: "Customer names in the iKala Nexus case carousel, 33.6px line"}
-    footer-heading: {size: 20, weight: 500, lineHeight: 1.25, tracking: -0.83, use: "Footer column headings (About, Solutions), 25px line, white"}
-    body: {size: 18, weight: 400, tracking: -0.27, use: "Page default on all three pages, line-height normal, #525151"}
-    nav: {size: 18, weight: 400, lineHeight: 1.5, tracking: -0.5, use: "Header navigation links, 27px line, #333333"}
-    news-title: {size: 18, weight: 600, lineHeight: 1.4, tracking: -0.75, use: "News and insight card titles, 25.2px line"}
-    button: {size: 18, weight: 500, lineHeight: 1, use: "Hero and news button labels in Noto Sans, 18px line"}
-    tab: {size: 16, weight: 600, lineHeight: 1.25, tracking: 0.53, use: "iKala Nexus solution tabs, 20px line, white"}
-    label: {size: 12, weight: 400, lineHeight: 1.48, use: "News / Insight pills, 17.7px line, white"}
-  spacing:
-    cta-y: 20
-    cta-x: 30
-    button-y: 16
-    button-x: 24
-    tab-y: 8
-    tab-x: 16
-    accordion: 20
-    label-y: 3
-    label-x: 10
-  rounded:
-    field: 2
-    button: 8
-    label: 30
-    arrow: 50
-  shadow:
-    glow: rgba(0, 0, 0, 0.19) 0px 0px 10px 0px
-    floating: rgba(135, 158, 180, 0.7) 0px 6px 25px 0px
-  components:
-    hero-cta: {type: button, bg: "#061232", fg: "#ffffff", radius: 8px, padding: 20px 30px, height: 58px, font: 18px / 500 / 18px Noto Sans, states: "rest only; no state frame was captured and no probe was run, so no hover, pressed or focus value is declared", use: "Get in Touch on the home hero at home::[data-omd-capture=\"18\"] (167 x 58) and 聯絡我們 on /zh-tw/ (132 x 58)"}
-    blue-button: {type: button, bg: "#2563eb", fg: "#ffffff", radius: 8px, padding: 16px 24px, height: 50px, font: 18px / 500 / 18px Noto Sans, states: rest only; no state frame, use: Read More Articles / 閱讀更多文章 under the news list on home and /zh-tw/}
-    white-button: {type: button, bg: "#ffffff", fg: "#2563eb", radius: 8px, padding: 16px 24px, height: 50px, font: 18px / 500 / 18px Noto Sans, shadow: "rgba(0, 0, 0, 0.19) 0px 0px 10px 0px", states: rest only; no state frame, use: View More News / 查看更多新聞 beside the blue button}
-    nexus-hero-button: {type: button, bg: "#3b81db", fg: "#ffffff", radius: 0px, padding: 20px 40px, height: 60px, font: 20px / 700 / 20px Noto Sans, states: rest only; no state frame, use: "Contact Us on the iKala Nexus hero, 188 x 60"}
-    timeline-pill: {type: button, bg: "#ffffff", fg: "#1677ff", radius: 8px, padding: 12px 24px, height: 38px, font: 14px / 700 / 14px Noto Sans, states: rest only; no state frame, use: "1st Month, 2nd Month, 3rd Month, Go Live in the iKala Nexus four-step section, 216 x 38"}
-    carousel-arrow: {type: button, bg: "#ffffff", fg: "#005cec", radius: 50px, size: 44px x 44px, shadow: "rgba(135, 158, 180, 0.7) 0px 6px 25px 0px", disabled: the previous arrow (capture 43) is disabled at rest and computes the same values, states: rest and disabled only; no pointer frame, use: Next and previous arrows of the iKala Nexus case carousel}
-    form-submit: {type: button, bg: "#3b81db", fg: "#ffffff", radius: 2px, padding: 10px, height: 40px, font: 14px / 500 / 20.3px Noto Sans TC, states: rest only; no state frame, use: "Submit on the iKala Nexus contact form, 100 x 40"}
-    solution-tab: {type: tab, bg: "#95a2b2", fg: "#ffffff", radius: 8px, padding: 8px 16px, height: 50px, font: "16px / 600 / 20px Noto Sans TC, letter-spacing 0.53px", selected: "bg #2a415e (Answer FAQs, capture 19)", states: selected variant read from rest values; no pointer frame, use: "Seven use-case tabs on iKala Nexus, 362 x 50"}
-    faq-accordion-row: {type: tab, border: "1px solid rgba(0, 0, 0, 0.02)", padding: 20px, height: 60px, states: rest only; no state frame, use: "Getting-started questions on home and /zh-tw/ and the iKala Nexus FAQ, 940 x 60; the question text sits in a child element the capture did not record, so no label colour or font is declared"}
-    nav-link: {type: tab, fg: "#333333", padding: 0px 20px 0px 0px, font: "18px / 400 / 27px Noto Sans TC, letter-spacing -0.5px", selected: "2px solid #000000 bottom border on the current section menu item (Solutions on iKala Nexus)", states: selected variant read from rest values; no pointer frame, use: "Header navigation (Solutions, AI Technology, Blog, About) in the white fixed header"}
-    text-field: {type: input, bg: "#ffffff", fg: "#525151", border: "1px solid #cccccc", radius: 2px, padding: 9px, height: 41px, font: "16px / 400 / 20.8px Noto Sans TC, letter-spacing -0.24px", states: rest only, use: "Contact form fields on iKala Nexus, 255 x 41 and 540 x 41"}
-    news-label: {type: badge, bg: "rgba(0, 0, 0, 0.7)", fg: "#ffffff", radius: 30px, padding: 3px 10px, height: 24px, font: 12px / 400 / 17.7px Noto Sans TC, use: News / Insight (新聞 / 洞察) labels over news card images on home and /zh-tw/}
-  components_harvested: true
+colors:
+  primary: '#061232'
+  white: '#ffffff'
+  action-blue: '#2563eb'
+  nexus-blue: '#3b81db'
+  timeline-blue: '#1677ff'
+  arrow-blue: '#005cec'
+  link: '#3a82dd'
+  footer-blue: '#4770df'
+  tab-selected: '#2a415e'
+  tab-idle: '#95a2b2'
+  heading: '#333333'
+  body: '#525151'
+  black: '#000000'
+  field-border: '#cccccc'
+  hairline: '#dbdbdb'
+typography:
+  display-hero:
+    fontSize: 72px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: '-2.99px'
+    use: Hero headline on home (Data → Intelligence → Impact) and /zh-tw/ (數據 → 智慧 → 決策), 100.8px line, white over the hero image
+  nexus-title:
+    fontSize: 60px
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: 0.5px
+    use: 'iKala Nexus hero title, 78px line, #333333'
+  section:
+    fontSize: 36px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: '-1.5px'
+    use: 'Section headings on home and /zh-tw/, 50.4px line, #333333 (white on dark bands)'
+  section-nexus:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: '-1.5px'
+    use: Section headings on iKala Nexus, 36px line
+  card-title:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: '-1px'
+    use: Data-science cards on home (DataOps, MLOps, Predictive Analytics), 33.6px line
+  industry-title:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: '-1px'
+    use: Industry card titles on home (Manufacturing, Retail & Marketing, Medical, Finance), 24px line
+  case-name:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: 0.3px
+    use: Customer names in the iKala Nexus case carousel, 33.6px line
+  footer-heading:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.25
+    letterSpacing: '-0.83px'
+    use: Footer column headings (About, Solutions), 25px line, white
+  body:
+    fontSize: 18px
+    fontWeight: 400
+    letterSpacing: '-0.27px'
+    use: 'Page default on all three pages, line-height normal, #525151'
+  nav:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: 'Header navigation links, 27px line, #333333'
+  news-title:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: '-0.75px'
+    use: News and insight card titles, 25.2px line
+  button:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 1
+    use: Hero and news button labels in Noto Sans, 18px line
+  tab:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: 0.53px
+    use: iKala Nexus solution tabs, 20px line, white
+  label:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.48
+    use: News / Insight pills, 17.7px line, white
+rounded:
+  field: 2px
+  button: 8px
+  label: 30px
+  arrow: 50px
+spacing:
+  cta-y: 20
+  cta-x: 30
+  button-y: 16
+  button-x: 24
+  tab-y: 8
+  tab-x: 16
+  accordion: 20
+  label-y: 3
+  label-x: 10
+components:
+  hero-cta:
+    type: button
+    backgroundColor: '#061232'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 20px 30px
+    height: 58px
+    typography: 18px / 500 / 18px Noto Sans
+    states: rest only; no state frame was captured and no probe was run, so no hover, pressed or focus value is declared
+    use: Get in Touch on the home hero at home::[data-omd-capture="18"] (167 x 58) and 聯絡我們 on /zh-tw/ (132 x 58)
+  blue-button:
+    type: button
+    backgroundColor: '#2563eb'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 16px 24px
+    height: 50px
+    typography: 18px / 500 / 18px Noto Sans
+    states: rest only; no state frame
+    use: Read More Articles / 閱讀更多文章 under the news list on home and /zh-tw/
+  white-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#2563eb'
+    rounded: 8px
+    padding: 16px 24px
+    height: 50px
+    typography: 18px / 500 / 18px Noto Sans
+    shadow: rgba(0, 0, 0, 0.19) 0px 0px 10px 0px
+    states: rest only; no state frame
+    use: View More News / 查看更多新聞 beside the blue button
+  nexus-hero-button:
+    type: button
+    backgroundColor: '#3b81db'
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 20px 40px
+    height: 60px
+    typography: 20px / 700 / 20px Noto Sans
+    states: rest only; no state frame
+    use: Contact Us on the iKala Nexus hero, 188 x 60
+  timeline-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1677ff'
+    rounded: 8px
+    padding: 12px 24px
+    height: 38px
+    typography: 14px / 700 / 14px Noto Sans
+    states: rest only; no state frame
+    use: 1st Month, 2nd Month, 3rd Month, Go Live in the iKala Nexus four-step section, 216 x 38
+  carousel-arrow:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#005cec'
+    rounded: 50px
+    size: 44px x 44px
+    shadow: rgba(135, 158, 180, 0.7) 0px 6px 25px 0px
+    disabled: the previous arrow (capture 43) is disabled at rest and computes the same values
+    states: rest and disabled only; no pointer frame
+    use: Next and previous arrows of the iKala Nexus case carousel
+  form-submit:
+    type: button
+    backgroundColor: '#3b81db'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 10px
+    height: 40px
+    typography: 14px / 500 / 20.3px Noto Sans TC
+    states: rest only; no state frame
+    use: Submit on the iKala Nexus contact form, 100 x 40
+  solution-tab:
+    type: tab
+    backgroundColor: '#95a2b2'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 8px 16px
+    height: 50px
+    typography: 16px / 600 / 20px Noto Sans TC, letter-spacing 0.53px
+    selected: 'bg #2a415e (Answer FAQs, capture 19)'
+    states: selected variant read from rest values; no pointer frame
+    use: Seven use-case tabs on iKala Nexus, 362 x 50
+  faq-accordion-row:
+    type: tab
+    border: 1px solid rgba(0, 0, 0, 0.02)
+    padding: 20px
+    height: 60px
+    states: rest only; no state frame
+    use: Getting-started questions on home and /zh-tw/ and the iKala Nexus FAQ, 940 x 60; the question text sits in a child element the capture did not record, so no label colour or font is declared
+  nav-link:
+    type: tab
+    textColor: '#333333'
+    padding: 0px 20px 0px 0px
+    typography: 18px / 400 / 27px Noto Sans TC, letter-spacing -0.5px
+    selected: '2px solid #000000 bottom border on the current section menu item (Solutions on iKala Nexus)'
+    states: selected variant read from rest values; no pointer frame
+    use: Header navigation (Solutions, AI Technology, Blog, About) in the white fixed header
+  text-field:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#525151'
+    border: '1px solid #cccccc'
+    rounded: 2px
+    padding: 9px
+    height: 41px
+    typography: 16px / 400 / 20.8px Noto Sans TC, letter-spacing -0.24px
+    states: rest only
+    use: Contact form fields on iKala Nexus, 255 x 41 and 540 x 41
+  news-label:
+    type: badge
+    backgroundColor: rgba(0, 0, 0, 0.7)
+    textColor: '#ffffff'
+    rounded: 30px
+    padding: 3px 10px
+    height: 24px
+    typography: 12px / 400 / 17.7px Noto Sans TC
+    use: News / Insight (新聞 / 洞察) labels over news card images on home and /zh-tw/
+fonts:
+  roles:
+    body: Noto Sans TC
+    button: Noto Sans
 ---
 
 # Design System Inspiration of iKala
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 iKala is a Taiwanese AI company that describes itself as "a data science native company" and sells AI transformation to enterprises. Its About page says it was "Co-founded by Sega Cheng in 2012" and "originated with its core software technology in data analysis". Today it runs two pillars, "AI Adoption and Marketing Super-Intelligence". The site's solution menu lists **iKala Nexus** (enterprise knowledge and AI agents), **Kolr** (an "influence search engine" that tracks "over 300 million influencers"), **iKala Cloud** and **iKala Foundry**. The footer of every page states the scale: "Headquartered in Taiwan with a global footprint, iKala serves over 1,000 enterprises and 50,000 brands across more than 190 countries". The home's news list shows where the company stands in 2026. iKala is extending TMMLU+, a Traditional Chinese benchmark, "to Strengthen Taiwan's Sovereign AI Evaluation Capabilities", and co-founder and chairman Sega Cheng was named the 2026 Jeffrey Koo Fellow.
 
@@ -319,7 +258,7 @@ Type is Google's **Noto Sans TC**, set first in the stack (`"Noto Sans TC", "Not
 - 8px radius on buttons and tabs, 30px on label pills, 50px on round arrows, 2px on form fields
 - Translucent black `rgba(0, 0, 0, 0.7)` pills for News and Insight labels
 
-## Primary tasks
+### Primary tasks
 
 - Contact iKala about an AI transformation project
 - Find the solution for a goal: iKala Nexus for enterprise knowledge, Kolr for creator and social intelligence
@@ -327,7 +266,35 @@ Type is Google's **Noto Sans TC**, set first in the stack (`"Noto Sans TC", "Not
 - Read iKala's news and AI insights
 - Check the credibility signals before shortlisting iKala as a vendor
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+iKala's About page tells the story in its own words: "Co-founded by Sega Cheng in 2012, iKala originated with its core software technology in data analysis." The company now offers AI solutions to enterprises and brand owners through two pillars, AI Adoption and Marketing Super-Intelligence. It reports over 1,000 enterprises using its AI implementation solutions and more than 50,000 brand owners and advertisers using its marketing technology. **Kolr**, the "influence search engine" iKala built, "collects and continuously tracks data on over 300 million influencers and billions of social data points worldwide everyday". **iKala Nexus** turns enterprise data into structured knowledge and deploys AI agents. The home says the platforms, models and solutions are built in-house by "iKala's AI Lab, a team of 50+ AI and data science experts".
+
+The About page lists the recognition the company leads with: Google Cloud Partner of the Year (2025), Best AI Transformation Solution Provider in APAC by APAC Insider (2024 and 2023), Taiwan's Top 10 Innovative Enterprises by Startup City Taiwan (2023), Top 10 Emerging Giants in Taiwan by KPMG and HSBC (2022), the Taiwan government's NEXT BIG national startups project (2021) and Gartner Cool Vendor (2020). The 2026 news adds work on Taiwan's sovereign AI evaluation through TMMLU+.
+
+The design follows the positioning. A Traditional-Chinese-first typeface signals a company rooted in Taiwan. A navy hero action and a white canvas present it as a credible vendor to procurement-minded enterprise buyers. Industry sections and an FAQ about ROI keep the page about outcomes.
+
+### Principles
+
+1. **Impact over algorithms.** The brand frames itself as Data → Intelligence → Impact; pages lead with outcomes and industries.
+2. **Regional authenticity.** Noto Sans TC leads every stack; the brand reads as Taiwanese and serves three languages.
+3. **Enterprise credibility.** A navy hero action, a white canvas and plain answers about security and ROI.
+4. **One loud moment.** The 72px hero is the only display-size type on the home; everything below is 36px or smaller.
+5. **Bilingual parity.** The English and Chinese home pages share the same layout and components.
+
+### Personas
+
+*Fictional archetypes informed by the audiences iKala's pages address (enterprise AI buyers, marketers using creator intelligence, IT leads). They are not real people.*
+
+**Wei-Chen Lin, 42, Taipei.** Head of digital transformation at a precision manufacturer. Evaluates vendors on whether they understand his processes. Reads the Manufacturing section and the FAQ on timelines.
+
+**Priya Raman, 35, Singapore.** Regional marketing director at a consumer brand. Uses Kolr to vet creators and measure campaigns across Southeast Asia.
+
+**Hiroshi Tanaka, 48, Tokyo.** Enterprise IT director assessing AI partners for an APAC rollout. Reads the Japanese page and checks the information security page before shortlisting.
+
+**Mei-Ling Wu, 29, Kaohsiung.** Data analyst at a retail group. Follows iKala's insight articles on new models.
+
+## Colors
 
 ### Primary
 - **Deep Navy** (`#061232`): The hero call-to-action fill, on Get in Touch (home, 167 × 58) and 聯絡我們 (/zh-tw/, 132 × 58). It is the primary because it fills the first and only hero action on both home pages. No single blue plays that role across all three captured pages; each blue belongs to one page or one component.
@@ -356,7 +323,7 @@ Type is Google's **Noto Sans TC**, set first in the stack (`"Noto Sans TC", "Not
 - `#2168c2` is declared in the header CSS for the menu toggle but did not compute on any captured element.
 - Translucent values stay in component fields: the news label fill `rgba(0, 0, 0, 0.7)`, the accordion border `rgba(0, 0, 0, 0.02)` and both shadows.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Noto Sans TC** — live surface use on 479 elements: body, headings, tabs, form fields and labels. It is the first family in the theme's rule for `body`, `button`, `.entry-content`, `.entry-content h2` and `.entry-content p` (`font-family:"Noto Sans TC","Noto Sans",sans-serif!important`). Served by the site's own `@font-face` rules. Official distributed asset: Noto Sans CJK / Noto Sans TC from the Noto project, SIL Open Font License 1.1.
@@ -388,7 +355,52 @@ Type is Google's **Noto Sans TC**, set first in the stack (`"Noto Sans TC", "Not
 - Tracking tightens with size: -2.99px at 72px, -1.5px at 36px, -1px at 24px, -0.27px at 18px. The Nexus page breaks the pattern with +0.5px on its 60px title.
 - Weight 600 carries most headings; 700 appears on the Nexus page.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing
+- The bundle's spacing histogram is led by 20px (71 uses) and 10px (51).
+- Measured paddings: 20px 30px on the hero button, 16px 24px on the news buttons, 8px 16px on tabs, 12px 24px on timeline pills, 20px on accordion rows, 3px 10px on labels, 9px in fields.
+
+### Grid and container
+- Hero and section headings run 1180px wide on home and /zh-tw/; the Nexus page uses 1200px.
+- Industry cards sit four across in 215px columns; data-science cards three across at about 300px; news cards in 318px and 259px columns.
+- The FAQ accordion is a 940px column of 60px rows.
+- iKala Nexus shows its customer cases in a bordered table (1px `#dbdbdb`, 18px Noto Sans TC body) and a carousel of case names.
+
+### Border radius
+- 0px for most elements (474 of 512 recorded radii).
+- 2px on form fields and Submit; 8px on buttons, tabs and pills; 30px on labels; 50px on round arrows.
+
+### Responsive Behavior
+
+Only a 1440px-wide desktop view was captured. No breakpoint, collapse or touch-target behaviour was measured, and none is declared. At that width the hero button is 58px tall, the news buttons 50px and the form fields 41px.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|---|---|---|
+| Flat | No shadow | Headings, text, navy and blue buttons, tabs, fields |
+| Glow | `rgba(0, 0, 0, 0.19) 0px 0px 10px 0px` | White View More News button |
+| Floating | `rgba(135, 158, 180, 0.7) 0px 6px 25px 0px` | Nexus carousel arrows |
+
+The filled buttons are flat; shadow marks only the white button on a white field and the arrows that float over the case carousel.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.glow`: `rgba(0, 0, 0, 0.19) 0px 0px 10px 0px`
+- `shadow.floating`: `rgba(135, 158, 180, 0.7) 0px 6px 25px 0px`
+
+## Motion & Easing
+
+No motion was measured. The header's submenu toggle declares `data-toggle-duration="250"` in its markup, which is a declared attribute and not an observed transition, so no duration or easing token is set.
+
+<!--
+Sources: three logged-out ikala.ai pages captured through the owner's browser on 2026-10-01 (bundle artifacts/reference-evidence/ikala.json, raw docs/research/2026-09-29-growth/raw/aside/ikala-capture.json); page text and the About page read by plain HTTP the same day. ikala.tw serves a GoDaddy parking page and contributes nothing. Full proof block in .verification.md.
+-->
+
+## Components
 
 ### Buttons
 
@@ -511,33 +523,11 @@ Type is Google's **Noto Sans TC**, set first in the stack (`"Noto Sans TC", "Not
 **Tier 2 sources:** not attempted
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing
-- The bundle's spacing histogram is led by 20px (71 uses) and 10px (51).
-- Measured paddings: 20px 30px on the hero button, 16px 24px on the news buttons, 8px 16px on tabs, 12px 24px on timeline pills, 20px on accordion rows, 3px 10px on labels, 9px in fields.
+No state frames were captured: the capture recorded rest values only, with `interactionCount: 0`, which does not mean the site has no states. Read from rest values are the selected solution tab (`#2a415e`), the current-section underline in the header (2px `#000000`) and the disabled carousel arrow. Hover, pressed, focus, loading, error and success treatments are not declared.
 
-### Grid and container
-- Hero and section headings run 1180px wide on home and /zh-tw/; the Nexus page uses 1200px.
-- Industry cards sit four across in 215px columns; data-science cards three across at about 300px; news cards in 318px and 259px columns.
-- The FAQ accordion is a 940px column of 60px rows.
-- iKala Nexus shows its customer cases in a bordered table (1px `#dbdbdb`, 18px Noto Sans TC body) and a carousel of case names.
-
-### Border radius
-- 0px for most elements (474 of 512 recorded radii).
-- 2px on form fields and Submit; 8px on buttons, tabs and pills; 30px on labels; 50px on round arrows.
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|---|---|---|
-| Flat | No shadow | Headings, text, navy and blue buttons, tabs, fields |
-| Glow | `rgba(0, 0, 0, 0.19) 0px 0px 10px 0px` | White View More News button |
-| Floating | `rgba(135, 158, 180, 0.7) 0px 6px 25px 0px` | Nexus carousel arrows |
-
-The filled buttons are flat; shadow marks only the white button on a white field and the arrows that float over the case carousel.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Put Noto Sans TC first in the font stack, with Noto Sans as the Latin fallback
@@ -555,11 +545,21 @@ The filled buttons are flat; shadow marks only the white button on a white field
 - Use positive tracking on hero headings; the +0.5px Nexus title is the one exception
 - Promote `#2168c2` to a token; it never computed on the captured pages
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-Only a 1440px-wide desktop view was captured. No breakpoint, collapse or touch-target behaviour was measured, and none is declared. At that width the hero button is 58px tall, the news buttons 50px and the form fields 41px.
+iKala speaks as an enterprise AI partner that talks about business outcomes, not algorithms. The tagline "Data → Intelligence → Impact" and the section heading "Total AI Transformation Solutions and Services for Key Verticals" set the register. Copy leads with results ("turning data into measurable financial and performance results") and reassures newcomers ("Even if you don't have a data science team or prior AI experience…"). Calls-to-action are short imperatives: "Get in Touch", "Contact Us", "Try it Now", "Read More Articles". The Traditional Chinese page carries the same voice ("數據 → 智慧 → 決策", "全方位 AI 轉型解決方案，專注核心垂直產業").
 
-## 9. Agent Prompt Guide
+| Context | Tone |
+|---|---|
+| Hero | Outcome-first: "We provide intelligent infrastructure for AI transformation" |
+| Industries | Sector by sector, tied to measurable results |
+| FAQ | Plain, reassuring answers about timelines, readiness, security and ROI |
+| Calls-to-action | Short imperatives |
+| Bilingual pages | One voice across English, 繁體中文 and 日本語 |
+
+**Forbidden register.** Hype superlatives, emoji on enterprise pages, and AI claims that are not tied to a business outcome.
+
+## Agent Prompt Guide
 
 ### Quick colour reference
 - Hero action fill: `#061232`
@@ -589,56 +589,11 @@ Only a 1440px-wide desktop view was captured. No breakpoint, collapse or touch-t
 4. Radii come in four sizes: 2, 8, 30 and 50px.
 5. Shadows only where a white control sits on white or floats over content.
 
-## 10. Voice & Tone
+## Governance
 
-iKala speaks as an enterprise AI partner that talks about business outcomes, not algorithms. The tagline "Data → Intelligence → Impact" and the section heading "Total AI Transformation Solutions and Services for Key Verticals" set the register. Copy leads with results ("turning data into measurable financial and performance results") and reassures newcomers ("Even if you don't have a data science team or prior AI experience…"). Calls-to-action are short imperatives: "Get in Touch", "Contact Us", "Try it Now", "Read More Articles". The Traditional Chinese page carries the same voice ("數據 → 智慧 → 決策", "全方位 AI 轉型解決方案，專注核心垂直產業").
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero | Outcome-first: "We provide intelligent infrastructure for AI transformation" |
-| Industries | Sector by sector, tied to measurable results |
-| FAQ | Plain, reassuring answers about timelines, readiness, security and ROI |
-| Calls-to-action | Short imperatives |
-| Bilingual pages | One voice across English, 繁體中文 and 日本語 |
-
-**Forbidden register.** Hype superlatives, emoji on enterprise pages, and AI claims that are not tied to a business outcome.
-
-## 11. Brand Narrative
-
-iKala's About page tells the story in its own words: "Co-founded by Sega Cheng in 2012, iKala originated with its core software technology in data analysis." The company now offers AI solutions to enterprises and brand owners through two pillars, AI Adoption and Marketing Super-Intelligence. It reports over 1,000 enterprises using its AI implementation solutions and more than 50,000 brand owners and advertisers using its marketing technology. **Kolr**, the "influence search engine" iKala built, "collects and continuously tracks data on over 300 million influencers and billions of social data points worldwide everyday". **iKala Nexus** turns enterprise data into structured knowledge and deploys AI agents. The home says the platforms, models and solutions are built in-house by "iKala's AI Lab, a team of 50+ AI and data science experts".
-
-The About page lists the recognition the company leads with: Google Cloud Partner of the Year (2025), Best AI Transformation Solution Provider in APAC by APAC Insider (2024 and 2023), Taiwan's Top 10 Innovative Enterprises by Startup City Taiwan (2023), Top 10 Emerging Giants in Taiwan by KPMG and HSBC (2022), the Taiwan government's NEXT BIG national startups project (2021) and Gartner Cool Vendor (2020). The 2026 news adds work on Taiwan's sovereign AI evaluation through TMMLU+.
-
-The design follows the positioning. A Traditional-Chinese-first typeface signals a company rooted in Taiwan. A navy hero action and a white canvas present it as a credible vendor to procurement-minded enterprise buyers. Industry sections and an FAQ about ROI keep the page about outcomes.
-
-## 12. Principles
-
-1. **Impact over algorithms.** The brand frames itself as Data → Intelligence → Impact; pages lead with outcomes and industries.
-2. **Regional authenticity.** Noto Sans TC leads every stack; the brand reads as Taiwanese and serves three languages.
-3. **Enterprise credibility.** A navy hero action, a white canvas and plain answers about security and ROI.
-4. **One loud moment.** The 72px hero is the only display-size type on the home; everything below is 36px or smaller.
-5. **Bilingual parity.** The English and Chinese home pages share the same layout and components.
-
-## 13. Personas
-
-*Fictional archetypes informed by the audiences iKala's pages address (enterprise AI buyers, marketers using creator intelligence, IT leads). They are not real people.*
-
-**Wei-Chen Lin, 42, Taipei.** Head of digital transformation at a precision manufacturer. Evaluates vendors on whether they understand his processes. Reads the Manufacturing section and the FAQ on timelines.
-
-**Priya Raman, 35, Singapore.** Regional marketing director at a consumer brand. Uses Kolr to vet creators and measure campaigns across Southeast Asia.
-
-**Hiroshi Tanaka, 48, Tokyo.** Enterprise IT director assessing AI partners for an APAC rollout. Reads the Japanese page and checks the information security page before shortlisting.
-
-**Mei-Ling Wu, 29, Kaohsiung.** Data analyst at a retail group. Follows iKala's insight articles on new models.
-
-## 14. States
-
-No state frames were captured: the capture recorded rest values only, with `interactionCount: 0`, which does not mean the site has no states. Read from rest values are the selected solution tab (`#2a415e`), the current-section underline in the header (2px `#000000`) and the disabled carousel arrow. Hover, pressed, focus, loading, error and success treatments are not declared.
-
-## 15. Motion & Easing
-
-No motion was measured. The header's submenu toggle declares `data-toggle-duration="250"` in its markup, which is a declared attribute and not an observed transition, so no duration or easing token is set.
-
-<!--
-Sources: three logged-out ikala.ai pages captured through the owner's browser on 2026-10-01 (bundle artifacts/reference-evidence/ikala.json, raw docs/research/2026-09-29-growth/raw/aside/ikala-capture.json); page text and the About page read by plain HTTP the same day. ikala.tw serves a GoDaddy parking page and contributes nothing. Full proof block in .verification.md.
--->
+- **Contrast, `nexus-hero-button`.** Text `#ffffff` on `#3b81db` measures 3.93:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `timeline-pill`.** Text `#1677ff` on `#ffffff` measures 4.10:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `form-submit`.** Text `#ffffff` on `#3b81db` measures 3.93:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `solution-tab`.** Text `#ffffff` on `#95a2b2` measures 2.60:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

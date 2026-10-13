@@ -1,0 +1,681 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "smartbank",
+    "name": "SmartBank",
+    "country": "JP",
+    "category": "fintech",
+    "homepage": "https://smartbank.co.jp",
+    "primary_color": "#1DD0B0",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=smartbank.co.jp&sz=128"
+    },
+    "verified": "2026-09-22",
+    "added": "2026-09-22",
+    "ds": {
+      "name": "SmartBank design tokens",
+      "url": "https://smartbank.co.jp/",
+      "type": "system",
+      "description": "371 custom properties resolving on the corporate surface: 110 scale colours across nine named hues, 76 semantic colours in a role/variant/emphasis structure that includes families for emoji and for each prepaid card product, 18 gradients, a 34-step dimension scale, a 36-cell line-height matrix of three densities by twelve sizes, platform-split font families for web, iOS and Android, and seventeen durations with four easings."
+    }
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-09-22",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-22",
+    "surfaces": [
+      {
+        "id": "corporate",
+        "kind": "product-surface",
+        "url": "https://smartbank.co.jp/",
+        "inspected": "2026-09-22"
+      },
+      {
+        "id": "product",
+        "kind": "product-surface",
+        "url": "https://onebank.jp/",
+        "inspected": "2026-09-22"
+      }
+    ],
+    "sources": [
+      {
+        "id": "corp-live",
+        "kind": "product-surface",
+        "url": "https://smartbank.co.jp/",
+        "captured": "2026-09-22"
+      },
+      {
+        "id": "product-live",
+        "kind": "product-surface",
+        "url": "https://onebank.jp/",
+        "captured": "2026-09-22"
+      },
+      {
+        "id": "company",
+        "kind": "official-doc",
+        "url": "https://smartbank.co.jp/company",
+        "captured": "2026-09-22"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.attention-base": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.attention-container": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.canvas": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.card-junior-base": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.card-junior-container": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.card-my-on-container": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.coral": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.emoji-coral-base-variant": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.emoji-marine-on-container": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.emoji-sun-base": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.foreground": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.grape": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.marine": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.mint": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.mint-deep": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.negative-base": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.negative-container": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.peach": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.positive-on-container": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.sky": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.stone": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "colors.wood": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "rounded.lg": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "rounded.md": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "rounded.sm": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "rounded.xl": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "rounded.xs": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "rounded.xxl": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.huge": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.huger": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.hugest": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.lg": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.md": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.sm": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.xl": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.xs": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.xxl": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.xxs": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.xxxl": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "spacing.xxxs": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.display-xl.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.display-xl.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.display-xxl.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.display-xxl.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.display.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "fonts.roles.accent": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "fonts.roles.latin": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.lg.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.lg.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.md.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.md.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.sm.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.sm.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xl.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xl.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xs.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xs.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxl.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxl.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxs.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxs.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxxl.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxxl.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxxs.fontSize": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      },
+      "typography.xxxs.use": {
+        "surface_id": "corporate",
+        "source_id": "corp-live",
+        "method": "computed-style",
+        "captured": "2026-09-22"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 13,
+      "infos": 3
+    },
+    "byRule": {
+      "unknown-typography-property": 12,
+      "missing-primary": 1
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.xxxs.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.xxs.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.xs.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.sm.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.md.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.lg.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.xl.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.xxl.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.xxxl.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-xl.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-xxl.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "3f8900fed5e9fa2417218f84e2f2863d6983fdf0f0350e6be4e5b7788019fc69",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "motion.duration-50",
+        "value": "50ms"
+      },
+      {
+        "path": "motion.duration-100",
+        "value": ".1s"
+      },
+      {
+        "path": "motion.duration-150",
+        "value": ".15s"
+      },
+      {
+        "path": "motion.duration-200",
+        "value": ".2s"
+      },
+      {
+        "path": "motion.duration-250",
+        "value": ".25s"
+      },
+      {
+        "path": "motion.duration-300",
+        "value": ".3s"
+      },
+      {
+        "path": "motion.duration-500",
+        "value": ".5s"
+      },
+      {
+        "path": "motion.duration-1000",
+        "value": "1s"
+      },
+      {
+        "path": "motion.ease-enter",
+        "value": "cubic-bezier(.24, 1, .32, 1)"
+      },
+      {
+        "path": "motion.ease-exit",
+        "value": "cubic-bezier(.64, 0, .78, 0)"
+      },
+      {
+        "path": "motion.ease-move",
+        "value": "cubic-bezier(.83, 0, .17, 1)"
+      },
+      {
+        "path": "motion.ease-feedback",
+        "value": "cubic-bezier(0, 0, 1, 1)"
+      }
+    ],
+    "numeric": [
+      "typography.xxxs.fontSize",
+      "typography.xxs.fontSize",
+      "typography.xs.fontSize",
+      "typography.sm.fontSize",
+      "typography.md.fontSize",
+      "typography.lg.fontSize",
+      "typography.xl.fontSize",
+      "typography.xxl.fontSize",
+      "typography.xxxl.fontSize",
+      "typography.display.fontSize",
+      "typography.display-xl.fontSize",
+      "typography.display-xxl.fontSize",
+      "rounded.xs",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg",
+      "rounded.xl",
+      "rounded.xxl"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "added",
+        "omd",
+        "ds",
+        "tokens",
+        "verification_v2"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "motion",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "xxxs",
+        "xxs",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+        "xxxl",
+        "display",
+        "display-xl",
+        "display-xxl"
+      ]
+    }
+  }
+}

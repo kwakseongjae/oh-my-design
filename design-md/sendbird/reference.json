@@ -1,0 +1,1235 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "sendbird",
+    "name": "Sendbird",
+    "country": "US",
+    "category": "developer-tools",
+    "homepage": "https://sendbird.com",
+    "primary_color": "#742DDD",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=sendbird.com&sz=128"
+    },
+    "verified": "2026-09-21",
+    "ds": {
+      "name": "Sendbird UIKit",
+      "url": "https://sendbird.github.io/sendbird-uikit-react",
+      "type": "system",
+      "description": "Sendbird's official chat UIKit — a documented, token-driven conversation-UI system (React, iOS, Android, React Native) with named color sets, message components, and themeable light/dark resources."
+    }
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-09-21",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-22",
+    "surfaces": [
+      {
+        "id": "uikit",
+        "kind": "product-surface",
+        "url": "https://sendbird.github.io/sendbird-uikit-react",
+        "inspected": "2026-09-21"
+      },
+      {
+        "id": "marketing",
+        "kind": "product-surface",
+        "url": "https://sendbird.com/",
+        "inspected": "2026-09-21"
+      }
+    ],
+    "sources": [
+      {
+        "id": "uikit-button",
+        "kind": "product-surface",
+        "url": "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--primary&viewMode=story",
+        "captured": "2026-09-21"
+      },
+      {
+        "id": "uikit-danger",
+        "kind": "product-surface",
+        "url": "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--danger&viewMode=story",
+        "captured": "2026-09-21"
+      },
+      {
+        "id": "uikit-disabled",
+        "kind": "product-surface",
+        "url": "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--disabled&viewMode=story",
+        "captured": "2026-09-21"
+      },
+      {
+        "id": "uikit-checkbox",
+        "kind": "product-surface",
+        "url": "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-checkbox--unchecked&viewMode=story",
+        "captured": "2026-09-21"
+      },
+      {
+        "id": "uikit-toggle",
+        "kind": "product-surface",
+        "url": "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-toggle--default&viewMode=story",
+        "captured": "2026-09-21"
+      },
+      {
+        "id": "marketing-0922",
+        "kind": "product-surface",
+        "url": "https://sendbird.com/",
+        "captured": "2026-09-22"
+      },
+      {
+        "id": "marketing-live",
+        "kind": "product-surface",
+        "url": "https://sendbird.com/",
+        "captured": "2026-09-21"
+      },
+      {
+        "id": "marketing-june",
+        "kind": "product-surface",
+        "url": "https://sendbird.com/",
+        "captured": "2026-06-01"
+      },
+      {
+        "id": "uikit-docs",
+        "kind": "official-doc",
+        "url": "https://sendbird.com/docs/chat/uikit/v3/react/overview",
+        "captured": "2026-09-21"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.body": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "colors.border-light": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "colors.brand": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.canvas": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.error": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.foreground": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "colors.hairline": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "colors.info": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.ink-dark": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "colors.muted": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.on-primary": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.primary": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.primary-active": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.primary-hover": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.success": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "colors.surface": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "components.button-pill-marketing.backgroundColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.textColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.focus": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.typography": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.height": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.hover": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.pressed": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.rounded": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.type": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.button-pill-marketing.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-0922",
+        "method": "live-inspect",
+        "captured": "2026-09-22"
+      },
+      "components.bubble-incoming.backgroundColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-incoming.textColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-incoming.type": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-incoming.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-outgoing.backgroundColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-outgoing.textColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-outgoing.type": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.bubble-outgoing.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.button-danger.backgroundColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.textColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.typography": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.hover": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.pressed": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-danger.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-danger",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-disabled.backgroundColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-disabled",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-disabled.disabled": {
+        "surface_id": "uikit",
+        "source_id": "uikit-disabled",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-disabled.textColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-disabled",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-disabled.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-disabled",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-disabled.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-disabled",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-disabled.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-disabled",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.backgroundColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.textColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.focus": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.typography": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.hover": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.pressed": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-primary.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.textColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.typography": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.hover": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.pressed": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.button-secondary.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.checkbox.focus": {
+        "surface_id": "uikit",
+        "source_id": "uikit-checkbox",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.checkbox.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-checkbox",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.checkbox.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-checkbox",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.checkbox.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-checkbox",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.chip.backgroundColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.border": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.textColor": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.typography": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.height": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.padding": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.rounded": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.type": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.chip.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "live-inspect",
+        "captured": "2026-06-01"
+      },
+      "components.input.backgroundColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.border": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.textColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.focus": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.typography": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.padding": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.input.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.toggle.backgroundColor": {
+        "surface_id": "uikit",
+        "source_id": "uikit-toggle",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.toggle.focus": {
+        "surface_id": "uikit",
+        "source_id": "uikit-toggle",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.toggle.rounded": {
+        "surface_id": "uikit",
+        "source_id": "uikit-toggle",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.toggle.type": {
+        "surface_id": "uikit",
+        "source_id": "uikit-toggle",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "components.toggle.use": {
+        "surface_id": "uikit",
+        "source_id": "uikit-toggle",
+        "method": "live-inspect",
+        "captured": "2026-09-21"
+      },
+      "rounded.full": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "rounded.lg": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "rounded.md": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "rounded.sm": {
+        "surface_id": "uikit",
+        "source_id": "uikit-button",
+        "method": "computed-style",
+        "captured": "2026-09-21"
+      },
+      "spacing.base": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "spacing.lg": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "spacing.md": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "spacing.sm": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "spacing.xl": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "spacing.xs": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.body-lg.fontSize": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.body-lg.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.body-lg.fontWeight": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.body.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.cta.fontSize": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.cta.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.cta.fontWeight": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.display-serif.fontSize": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.display-serif.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.display-serif.fontWeight": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "fonts.roles.mono": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.label.fontSize": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.label.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.label.fontWeight": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.nav.use": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "marketing",
+        "source_id": "marketing-june",
+        "method": "computed-style",
+        "captured": "2026-06-01"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 56,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 6,
+      "extension-component-property": 38,
+      "orphaned-tokens": 12
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-serif.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body-lg.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.cta.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-secondary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-secondary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-secondary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-secondary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-danger.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-danger.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-danger.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-danger.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-disabled.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-disabled.disabled",
+        "message": "'disabled' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-disabled.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.bubble-outgoing.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.bubble-outgoing.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.bubble-incoming.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.bubble-incoming.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-marketing.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-marketing.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-marketing.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-marketing.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-marketing.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.chip.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.chip.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.chip.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.checkbox.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.checkbox.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.checkbox.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.toggle.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.toggle.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.toggle.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-hover",
+        "message": "'primary-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-active",
+        "message": "'primary-active' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.brand",
+        "message": "'brand' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.success",
+        "message": "'success' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.info",
+        "message": "'info' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border-light",
+        "message": "'border-light' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink-dark",
+        "message": "'ink-dark' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "e5991a87d5f32d8a7dbb511a763693f7d3a26f4c9590a3a4c2d144f60c026b61",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display-serif.fontSize",
+      "typography.body-lg.fontSize",
+      "typography.nav.fontSize",
+      "typography.body.fontSize",
+      "typography.label.fontSize",
+      "typography.cta.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg",
+      "rounded.full"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-serif",
+        "body-lg",
+        "nav",
+        "body",
+        "label",
+        "cta"
+      ]
+    }
+  }
+}

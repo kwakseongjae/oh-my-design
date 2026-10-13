@@ -1,161 +1,139 @@
 ---
-id: uber
 name: Uber
-country: US
-category: consumer-tech
-homepage: "https://www.uber.com"
-primary_color: "#000000"
-logo:
-  type: simpleicons
-  slug: uber
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Base Web
-  url: "https://github.com/uber/baseweb"
-  type: system
-  description: Uber's public React component library implementing the Base design language; its repository license does not establish the current public-site runtime.
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.uber.com/kr/ko/", inspected: "2026-07-13" }
-    - { id: about, kind: corporate, url: "https://www.uber.com/kr/ko/about/", inspected: "2026-07-13" }
-    - { id: accessibility, kind: official-content, url: "https://www.uber.com/kr/ko/about/accessibility/", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.uber.com/kr/ko/", captured: "2026-07-13" }
-    - { id: uber-component-index, kind: official-doc, url: "https://baseweb.design/components/", captured: "2026-09-19" }
-    - { id: about-live, kind: product-surface, url: "https://www.uber.com/kr/ko/about/", captured: "2026-07-13" }
-    - { id: accessibility-live, kind: product-surface, url: "https://www.uber.com/kr/ko/about/accessibility/", captured: "2026-07-13" }
-    - { id: new-look, kind: official-doc, url: "https://www.uber.com/us/en/blog/a-new-look/", captured: "2026-07-13" }
-    - { id: advertising-guide, kind: official-doc, url: "https://www.uber.com/us/en/advertising/specs/guidelines/", captured: "2026-07-13" }
-    - { id: baseweb, kind: official-doc, url: "https://github.com/uber/baseweb", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.foreground": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.on-primary": *home
-    "tokens.colors.primary": *home
-    "tokens.colors.subtle": *home
-    "tokens.colors.surface-hover": &about { surface_id: about, source_id: about-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.surface-soft": *home
-    "tokens.components.header-dark-control.bg": *home
-    "tokens.components.header-dark-control.fg": *home
-    "tokens.components.header-dark-control.font": *home
-    "tokens.components.header-dark-control.padding": *home
-    "tokens.components.header-dark-control.radius": *home
-    "tokens.components.header-dark-control.states": *home
-    "tokens.components.header-dark-control.type": *home
-    "tokens.components.header-dark-control.use": *home
-    "tokens.components.header-light-menu-control.bg": *home
-    "tokens.components.header-light-menu-control.fg": *home
-    "tokens.components.header-light-menu-control.font": *home
-    "tokens.components.header-light-menu-control.padding": *home
-    "tokens.components.header-light-menu-control.radius": *home
-    "tokens.components.header-light-menu-control.states": *home
-    "tokens.components.header-light-menu-control.type": *home
-    "tokens.components.header-light-menu-control.use": *home
-    "tokens.components.soft-pill-control.bg": *home
-    "tokens.components.soft-pill-control.fg": *home
-    "tokens.components.soft-pill-control.font": *home
-    "tokens.components.soft-pill-control.padding": *home
-    "tokens.components.soft-pill-control.radius": *home
-    "tokens.components.soft-pill-control.states": *home
-    "tokens.components.soft-pill-control.type": *home
-    "tokens.components.soft-pill-control.use": *home
-    "tokens.rounded.card": *home
-    "tokens.rounded.none": *home
-    "tokens.rounded.pill": *home
-    "tokens.shadow.menu": *home
-    "tokens.spacing.base": *home
-    "tokens.spacing.control-wide": *home
-    "tokens.spacing.control-x": *home
-    "tokens.spacing.control-y": *home
-    "tokens.spacing.lg": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.xl": *home
-    "tokens.spacing.xs": *home
-    "tokens.typography.body-strong.lineHeight": *home
-    "tokens.typography.body-strong.size": *home
-    "tokens.typography.body-strong.use": *home
-    "tokens.typography.body-strong.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.caption.lineHeight": *home
-    "tokens.typography.caption.size": *home
-    "tokens.typography.caption.use": *home
-    "tokens.typography.caption.weight": *home
-    "tokens.typography.display.lineHeight": *home
-    "tokens.typography.display.size": *home
-    "tokens.typography.display.use": *home
-    "tokens.typography.display.weight": *home
-    "tokens.typography.family.display": *home
-    "tokens.typography.family.ui": *home
-    "tokens.typography.fine-print.lineHeight": *home
-    "tokens.typography.fine-print.size": *home
-    "tokens.typography.fine-print.use": *home
-    "tokens.typography.fine-print.weight": *home
-    "tokens.typography.heading.lineHeight": *home
-    "tokens.typography.heading.size": *home
-    "tokens.typography.heading.use": *home
-    "tokens.typography.heading.weight": *home
-    "tokens.typography.label.lineHeight": *home
-    "tokens.typography.label.size": *home
-    "tokens.typography.label.use": *home
-    "tokens.typography.label.weight": *home
-    "tokens.typography.section.lineHeight": *about
-    "tokens.typography.section.size": *about
-    "tokens.typography.section.use": *about
-    "tokens.typography.section.weight": *about
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  colors:
-    primary: "#000000"
-    canvas: "#ffffff"
-    on-primary: "#ffffff"
-    surface-soft: "#efefef"
-    surface-hover: "#e2e2e2"
-    foreground: "#000000"
-    muted: "#757575"
-    subtle: "#afafaf"
-  typography:
-    family: { display: "UberMove", ui: "UberMoveText" }
-    display: { size: 52, weight: 700, lineHeight: 1.23, use: "Public marketing/corporate h1" }
-    section: { size: 36, weight: 700, lineHeight: 1.22, use: "Public marketing/corporate h2" }
-    heading: { size: 24, weight: 700, lineHeight: 1.33, use: "Observed h2/h3" }
-    body: { size: 16, weight: 400, lineHeight: 1.50, use: "Observed body copy" }
-    body-strong: { size: 16, weight: 500, lineHeight: 1.25, use: "Observed UI text" }
-    label: { size: 14, weight: 500, lineHeight: 1.14, use: "Header button labels" }
-    caption: { size: 14, weight: 400, lineHeight: 1.43, use: "Menu item labels" }
-    fine-print: { size: 12, weight: 400, lineHeight: 1.67, use: "Observed small body copy" }
-  spacing: { xs: 4, sm: 8, control-x: 10, control-y: 12, md: 14, base: 16, lg: 20, control-wide: 25, xl: 48 }
-  rounded: { none: 0, card: 8, pill: 999 }
-  shadow:
-    menu: "rgba(0,0,0,0.16) 0px 4px 16px 0px"
-  components:
-    header-dark-control: { type: button, bg: "#000000", fg: "#ffffff", radius: 999, padding: "10px 12px", font: "14px/500", states: "hover white 0.1 inset overlay; pressed white 0.2 inset overlay", use: "Public-site header control" }
-    header-light-menu-control: { type: button, bg: "#ffffff", fg: "#000000", radius: 999, padding: "10px 12px", font: "14px/500", states: "focus #fbfbfb/#fdfdfd; pressed white 0.2 inset overlay", use: "Public-site header menu trigger" }
-    soft-pill-control: { type: button, bg: "#efefef", fg: "#000000", radius: 999, padding: "14px 16px", font: "16px/500", states: "hover black 0.04 inset overlay; pressed black 0.08 inset overlay", use: "Home public-surface control" }
-  components_harvested: true
+colors:
+  primary: '#000000'
+  canvas: '#ffffff'
+  on-primary: '#ffffff'
+  surface-soft: '#efefef'
+  surface-hover: '#e2e2e2'
+  foreground: '#000000'
+  muted: '#757575'
+  subtle: '#afafaf'
+typography:
+  display:
+    fontSize: 52px
+    fontWeight: 700
+    lineHeight: 1.23
+    use: Public marketing/corporate h1
+  section:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.22
+    use: Public marketing/corporate h2
+  heading:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.33
+    use: Observed h2/h3
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Observed body copy
+  body-strong:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.25
+    use: Observed UI text
+  label:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.14
+    use: Header button labels
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Menu item labels
+  fine-print:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.67
+    use: Observed small body copy
+rounded:
+  none: 0px
+  card: 8px
+  pill: 999px
+spacing:
+  xs: 4
+  sm: 8
+  control-x: 10
+  control-y: 12
+  md: 14
+  base: 16
+  lg: 20
+  control-wide: 25
+  xl: 48
+components:
+  header-dark-control:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 999px
+    padding: 10px 12px
+    typography: 14px/500
+    states: hover white 0.1 inset overlay; pressed white 0.2 inset overlay
+    use: Public-site header control
+  header-light-menu-control:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 999px
+    padding: 10px 12px
+    typography: 14px/500
+    states: 'focus #fbfbfb/#fdfdfd; pressed white 0.2 inset overlay'
+    use: Public-site header menu trigger
+  soft-pill-control:
+    type: button
+    backgroundColor: '#efefef'
+    textColor: '#000000'
+    rounded: 999px
+    padding: 14px 16px
+    typography: 16px/500
+    states: hover black 0.04 inset overlay; pressed black 0.08 inset overlay
+    use: Home public-surface control
+fonts:
+  roles:
+    display: UberMove
+    ui: UberMoveText
 ---
 
 # Design System Inspiration of Uber
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Uber operates a marketplace that connects people who ride, earn, eat, deliver, and sell; its stated mission is to reimagine how the world moves for the better. The current Korean public web capture expresses that broad mobility role through high-contrast black navigation, white type, and compact capsule controls rather than a broad decorative palette. Across the home, About, and Accessibility pages, the same header geometry recurs: black or white 999px controls set in UberMoveText, with an 8px-radius menu panel appearing when a header menu is expanded. Uber's 2018 official “A new look” announcement framed a new logo and mission around clearer recognition for riders, while the current capture confirms the sober black-and-white public chrome is still live. This reference documents that public marketing/corporate surface only; it does not claim the authenticated rider, earner, courier, or merchant product UI uses the same tokens.
 
-## Primary tasks
+### Primary tasks
 
 - Open the header menu to reach Uber's other public pages.
 - Read how Uber describes its mission and who its marketplace serves.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Uber's 2024 proxy statement describes the company's mission as reimagining how the world moves for the better and names a marketplace of earners, riders, eaters, couriers, and merchants. Its 2018 official “A new look” post introduced a new mission and logo, emphasizing easier recognition for riders and a more dependable partnership with drivers. Together, these official sources frame the public site as a movement marketplace with multiple participants, not merely a rider-facing transport page.
+
+The July 2026 public capture carries that framing through a restrained header system: dark and light capsule controls, compact labels, and a menu that opens into a neutral white panel. This is evidence of public marketing/corporate chrome. It is not evidence for a private trip workflow or operational product screen.
+
+### Principles
+
+1. **See every marketplace side.** Uber's corporate source names earners, riders, eaters, couriers, and merchants. *UI implication:* identify the audience and product surface before applying a public-web pattern.
+2. **Keep movement legible.** The official mission centers movement, going, getting, and earning. *UI implication:* favor direct labels and clear action outcomes over decorative phrasing.
+3. **Use public chrome precisely.** The capture repeats ink/paper capsule controls and a neutral menu panel. *UI implication:* retain measured geometry only on the public-site header patterns documented here.
+4. **Respect source domains.** Advertising guidelines, public marketing pages, and authenticated product interfaces are distinct evidence domains. *UI implication:* do not transfer advertising-copy or public-header rules into a product flow without direct evidence.
+
+### Personas
+
+*These are official stakeholder groups, not invented personas; the source does not provide individual biographies or task narratives.*
+
+- **Riders and eaters:** People seeking movement or goods through the marketplace.
+- **Earners, couriers, and merchants:** Participants who provide services, deliveries, or commerce through the marketplace.
+
+The supplied public capture does not establish distinct interface needs, journeys, or success criteria for these groups.
+
+## Colors
 
 ### Observed public-site foundation
 
@@ -167,7 +145,7 @@ Uber operates a marketplace that connects people who ride, earn, eat, deliver, a
 
 The capture also contains `#0000ee` in Accessibility-page link content and a single red pressed-link observation. They are content/link observations, not promoted as Uber brand or semantic-status tokens.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -192,7 +170,44 @@ The capture also contains `#0000ee` in Accessibility-page link content and a sin
 
 Base Web is an Uber-published React component library under an MIT repository license. That code license is separate from UberMove/UberMoveText licensing and does not prove the current public-site font runtime or product UI implementation.
 
-## 4. Component Stylings
+## Layout
+
+- The captured desktop public header is 64px tall with `12px 0px` padding and a black background at `home::nav`.
+- The capture was taken at 1440×900; it provides no canonical container width, breakpoint, or mobile-grid value.
+- The observed pattern is compact horizontal public navigation: 14px labels inside 36–38px capsule controls, with an expanded 8px-radius menu panel.
+
+### Responsive Behavior
+
+The supplied evidence records a 1440×900 public-web capture only. It confirms an expandable header menu on all three captured URLs, but it does not provide measured breakpoint, touch-target, stacking, or mobile-layout rules. Those values remain outside this reference.
+
+## Elevation & Depth
+
+| Level | Treatment | Observed use |
+|---|---|---|
+| Flat | No shadow | Header controls and soft capsule control |
+| Menu | `rgba(0,0,0,0.16) 0px 4px 16px 0px` | Expanded header menu on About and Accessibility |
+
+No broader card-elevation scale is claimed from this capture.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.menu`: `rgba(0,0,0,0.16) 0px 4px 16px 0px`
+
+## Motion & Easing
+
+The supplied evidence records menu expansion and hover/focus/pressed visual results, but no transition duration, easing curve, animation, or reduced-motion rule. No motion token is claimed.
+
+---
+
+**Verified:** 2026-07-13
+**Tier 1 sources:** Raw computed-style and FontFaceSet evidence from `https://www.uber.com/kr/ko/`, `https://www.uber.com/kr/ko/about/`, and `https://www.uber.com/kr/ko/about/accessibility/`; official context/design sources: `https://www.uber.com/us/en/blog/a-new-look/`, `https://tb-static.uber.com/prod/uber-static/uber-sites/_pdf/22789bea-a413-4014-99e4-31144c54ef56.pdf`, `https://www.uber.com/us/en/advertising/specs/guidelines/`, and `https://github.com/uber/baseweb`.
+**Tier 2 sources:** `https://getdesign.md/uber`, `https://getdesign.md/design-md/uber/preview`, and `https://styles.refero.design/style/caf8d2ef-4173-4431-9d26-05be0272e9f8`.
+**Evidence boundary:** No public rider/earner/courier/merchant product-surface capture or first-party public UberMove/UberMoveText license term was located. Tier 2's unobserved `#9dcdd6` and substitute-font advice are not canonicalized.
+**Conflicts unresolved:** none
+
+## Components
 
 ### Public header controls
 
@@ -272,22 +287,21 @@ The three stylings in §4 are public-site header controls, captured on Uber's ow
 rather than on the Base Web documentation. No capture carries a `baseui` class. None of the 89
 above carries a measured value here.
 
-## 5. Layout Principles
+### States
 
-- The captured desktop public header is 64px tall with `12px 0px` padding and a black background at `home::nav`.
-- The capture was taken at 1440×900; it provides no canonical container width, breakpoint, or mobile-grid value.
-- The observed pattern is compact horizontal public navigation: 14px labels inside 36–38px capsule controls, with an expanded 8px-radius menu panel.
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Observed use |
+| State | Observed treatment | Provenance |
 |---|---|---|
-| Flat | No shadow | Header controls and soft capsule control |
-| Menu | `rgba(0,0,0,0.16) 0px 4px 16px 0px` | Expanded header menu on About and Accessibility |
+| Header menu expanded | White 8px-radius panel with menu items | `home`, `surface-2`, `surface-3` menu interaction capture |
+| Dark capsule hover | White 0.1 inset overlay | `home::[data-omd-capture="3"]::state-hover` |
+| Dark capsule pressed | White 0.2 inset overlay | `home::[data-omd-capture="3"]::state-pressed` |
+| Light capsule focus | `#fbfbfb` or `#fdfdfd` fill | Captured home/About/Accessibility focus states |
+| Light capsule pressed | White 0.2 inset overlay | `home::[data-omd-capture="7"]::state-pressed` |
+| Soft capsule hover | Black 0.04 inset overlay | `home::[data-omd-capture="9"]::state-hover` |
+| Soft capsule pressed | Black 0.08 inset overlay | `home::[data-omd-capture="9"]::state-pressed` |
 
-No broader card-elevation scale is claimed from this capture.
+Loading, validation, payment, booking, and map states were not observed and are intentionally omitted.
 
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -305,11 +319,17 @@ No broader card-elevation scale is claimed from this capture.
 - Don't add an unobserved card, input, toast, modal, map, or form-error variant to this reference.
 - Don't infer a public redistribution license for UberMove or UberMoveText.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-The supplied evidence records a 1440×900 public-web capture only. It confirms an expandable header menu on all three captured URLs, but it does not provide measured breakpoint, touch-target, stacking, or mobile-layout rules. Those values remain outside this reference.
+Uber's current public corporate source describes movement across going, getting, and earning, while its advertising guidance asks for sentence case, friendly language, simple comprehensible promotions, and clear destination-aware CTAs. The latter is advertising guidance, not a universal product-content specification.
 
-## 9. Agent Prompt Guide
+| Context | Supported direction | Boundary |
+|---|---|---|
+| Corporate mission | Movement, access, and marketplace participants | From the 2024 proxy statement |
+| Advertising copy | Sentence case, friendly, simple, comprehensible | Applies to Uber advertising guidance |
+| Public navigation | Concise Korean labels in the supplied capture | Does not establish app microcopy |
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 
@@ -322,61 +342,3 @@ The supplied evidence records a 1440×900 public-web capture only. It confirms a
 
 - “Create a public-site header action using the observed dark capsule: `#000000` background, `#ffffff` label, 999px radius, 10px 12px padding, UberMoveText 14px/500. On hover use the measured white 0.1 inset overlay.”
 - “Create an expanded public navigation menu with a white 8px-radius panel, 8px 0px padding, and the observed `rgba(0,0,0,0.16) 0px 4px 16px` shadow. Do not represent it as an in-app ride menu.”
-
-## 10. Voice & Tone
-
-Uber's current public corporate source describes movement across going, getting, and earning, while its advertising guidance asks for sentence case, friendly language, simple comprehensible promotions, and clear destination-aware CTAs. The latter is advertising guidance, not a universal product-content specification.
-
-| Context | Supported direction | Boundary |
-|---|---|---|
-| Corporate mission | Movement, access, and marketplace participants | From the 2024 proxy statement |
-| Advertising copy | Sentence case, friendly, simple, comprehensible | Applies to Uber advertising guidance |
-| Public navigation | Concise Korean labels in the supplied capture | Does not establish app microcopy |
-
-## 11. Brand Narrative
-
-Uber's 2024 proxy statement describes the company's mission as reimagining how the world moves for the better and names a marketplace of earners, riders, eaters, couriers, and merchants. Its 2018 official “A new look” post introduced a new mission and logo, emphasizing easier recognition for riders and a more dependable partnership with drivers. Together, these official sources frame the public site as a movement marketplace with multiple participants, not merely a rider-facing transport page.
-
-The July 2026 public capture carries that framing through a restrained header system: dark and light capsule controls, compact labels, and a menu that opens into a neutral white panel. This is evidence of public marketing/corporate chrome. It is not evidence for a private trip workflow or operational product screen.
-
-## 12. Principles
-
-1. **See every marketplace side.** Uber's corporate source names earners, riders, eaters, couriers, and merchants. *UI implication:* identify the audience and product surface before applying a public-web pattern.
-2. **Keep movement legible.** The official mission centers movement, going, getting, and earning. *UI implication:* favor direct labels and clear action outcomes over decorative phrasing.
-3. **Use public chrome precisely.** The capture repeats ink/paper capsule controls and a neutral menu panel. *UI implication:* retain measured geometry only on the public-site header patterns documented here.
-4. **Respect source domains.** Advertising guidelines, public marketing pages, and authenticated product interfaces are distinct evidence domains. *UI implication:* do not transfer advertising-copy or public-header rules into a product flow without direct evidence.
-
-## 13. Personas
-
-*These are official stakeholder groups, not invented personas; the source does not provide individual biographies or task narratives.*
-
-- **Riders and eaters:** People seeking movement or goods through the marketplace.
-- **Earners, couriers, and merchants:** Participants who provide services, deliveries, or commerce through the marketplace.
-
-The supplied public capture does not establish distinct interface needs, journeys, or success criteria for these groups.
-
-## 14. States
-
-| State | Observed treatment | Provenance |
-|---|---|---|
-| Header menu expanded | White 8px-radius panel with menu items | `home`, `surface-2`, `surface-3` menu interaction capture |
-| Dark capsule hover | White 0.1 inset overlay | `home::[data-omd-capture="3"]::state-hover` |
-| Dark capsule pressed | White 0.2 inset overlay | `home::[data-omd-capture="3"]::state-pressed` |
-| Light capsule focus | `#fbfbfb` or `#fdfdfd` fill | Captured home/About/Accessibility focus states |
-| Light capsule pressed | White 0.2 inset overlay | `home::[data-omd-capture="7"]::state-pressed` |
-| Soft capsule hover | Black 0.04 inset overlay | `home::[data-omd-capture="9"]::state-hover` |
-| Soft capsule pressed | Black 0.08 inset overlay | `home::[data-omd-capture="9"]::state-pressed` |
-
-Loading, validation, payment, booking, and map states were not observed and are intentionally omitted.
-
-## 15. Motion & Easing
-
-The supplied evidence records menu expansion and hover/focus/pressed visual results, but no transition duration, easing curve, animation, or reduced-motion rule. No motion token is claimed.
-
----
-
-**Verified:** 2026-07-13
-**Tier 1 sources:** Raw computed-style and FontFaceSet evidence from `https://www.uber.com/kr/ko/`, `https://www.uber.com/kr/ko/about/`, and `https://www.uber.com/kr/ko/about/accessibility/`; official context/design sources: `https://www.uber.com/us/en/blog/a-new-look/`, `https://tb-static.uber.com/prod/uber-static/uber-sites/_pdf/22789bea-a413-4014-99e4-31144c54ef56.pdf`, `https://www.uber.com/us/en/advertising/specs/guidelines/`, and `https://github.com/uber/baseweb`.
-**Tier 2 sources:** `https://getdesign.md/uber`, `https://getdesign.md/design-md/uber/preview`, and `https://styles.refero.design/style/caf8d2ef-4173-4431-9d26-05be0272e9f8`.
-**Evidence boundary:** No public rider/earner/courier/merchant product-surface capture or first-party public UberMove/UberMoveText license term was located. Tier 2's unobserved `#9dcdd6` and substitute-font advice are not canonicalized.
-**Conflicts unresolved:** none

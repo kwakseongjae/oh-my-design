@@ -1,0 +1,42 @@
+{
+  "findings": [
+    {
+      "severity": "error",
+      "path": "typography.heading.lineHeight",
+      "message": "'normal' is not a valid dimension."
+    },
+    {
+      "severity": "warning",
+      "path": "typography.heading.use",
+      "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+    },
+    {
+      "severity": "warning",
+      "path": "components.nav.type",
+      "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width.",
+      "rule": "broken-ref"
+    },
+    {
+      "severity": "warning",
+      "path": "components.carousel",
+      "message": "textColor (#000000) on backgroundColor (#00000066) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1.",
+      "rule": "contrast-ratio"
+    },
+    {
+      "severity": "info",
+      "message": "Design system defines 1 color, 3 typography scales, 1 rounding level, 2 components.",
+      "rule": "token-summary"
+    },
+    {
+      "severity": "info",
+      "path": "spacing",
+      "message": "No 'spacing' section defined. Layout spacing will fall back to agent defaults.",
+      "rule": "missing-sections"
+    }
+  ],
+  "summary": {
+    "errors": 1,
+    "warnings": 3,
+    "infos": 2
+  }
+}

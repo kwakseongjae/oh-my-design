@@ -1,278 +1,235 @@
 ---
-id: heydealer
 name: Heydealer
-display_name_kr: 헤이딜러
-country: KR
-category: consumer-tech
-homepage: "https://www.heydealer.com/"
-primary_color: "#396eff"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=heydealer.com&sz=128"
-verified: "2026-09-30"
-added: "2026-07-02"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.heydealer.com/", inspected: "2026-09-30" }
-    - { id: surface-2, kind: marketing-product, url: "https://www.heydealer.com/market/cars", inspected: "2026-09-30" }
-    - { id: surface-3, kind: marketing-product, url: "https://www.heydealer.com/sell", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://www.heydealer.com/", captured: "2026-09-30" }
-    - { id: surface-surface-2, kind: product-surface, url: "https://www.heydealer.com/market/cars", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://www.heydealer.com/sell", captured: "2026-09-30" }
-    - { id: prnd-careers, kind: official-doc, url: "https://www.prnd.co.kr/ko/home", captured: "2026-09-30" }
-    - { id: prnd-life, kind: official-doc, url: "https://www.prnd.co.kr/ko/life", captured: "2026-09-30" }
-    - { id: heydealer-blog, kind: official-doc, url: "https://www.heydealer.com/blog", captured: "2026-09-30" }
-    - { id: spoqa-license, kind: license, url: "https://raw.githubusercontent.com/spoqa/spoqa-han-sans/master/LICENSE", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &hcta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-09-30" }
-    "tokens.colors.on-primary": *hcta
-    "tokens.colors.ink": &hbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.black": &hh2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
-    "tokens.colors.canvas": *hbody
-    "tokens.colors.dark": &hdark { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
-    "tokens.typography.family.body": *hbody
-    "tokens.typography.display.size": &hsh2 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h2", captured: "2026-09-30" }
-    "tokens.typography.display.weight": *hsh2
-    "tokens.typography.display.lineHeight": *hsh2
-    "tokens.typography.display.tracking": *hsh2
-    "tokens.typography.display.use": *hsh2
-    "tokens.typography.hero.size": &hsh1 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
-    "tokens.typography.hero.weight": *hsh1
-    "tokens.typography.hero.use": *hsh1
-    "tokens.typography.page-title.size": &hh1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
-    "tokens.typography.page-title.weight": *hh1
-    "tokens.typography.page-title.lineHeight": *hh1
-    "tokens.typography.page-title.tracking": *hh1
-    "tokens.typography.page-title.use": *hh1
-    "tokens.typography.section.size": *hh2
-    "tokens.typography.section.weight": *hh2
-    "tokens.typography.section.use": *hh2
-    "tokens.typography.subsection.size": *hh2
-    "tokens.typography.subsection.weight": *hh2
-    "tokens.typography.subsection.lineHeight": *hh2
-    "tokens.typography.subsection.tracking": *hh2
-    "tokens.typography.subsection.use": *hh2
-    "tokens.typography.card-head.size": *hh2
-    "tokens.typography.card-head.weight": *hh2
-    "tokens.typography.card-head.lineHeight": *hh2
-    "tokens.typography.card-head.tracking": *hh2
-    "tokens.typography.card-head.use": *hh2
-    "tokens.typography.emphasis.size": &hh3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
-    "tokens.typography.emphasis.weight": *hh3
-    "tokens.typography.emphasis.lineHeight": *hh3
-    "tokens.typography.emphasis.tracking": *hh3
-    "tokens.typography.emphasis.use": *hh3
-    "tokens.typography.body.size": &hp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
-    "tokens.typography.body.weight": *hp
-    "tokens.typography.body.lineHeight": *hp
-    "tokens.typography.body.tracking": *hp
-    "tokens.typography.body.use": *hp
-    "tokens.typography.text.size": *hbody
-    "tokens.typography.text.weight": *hbody
-    "tokens.typography.text.use": *hbody
-    "tokens.typography.caption.size": &hcap { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"290\"]", captured: "2026-09-30" }
-    "tokens.typography.caption.weight": *hcap
-    "tokens.typography.caption.lineHeight": *hcap
-    "tokens.typography.caption.tracking": *hcap
-    "tokens.typography.caption.use": *hcap
-    "tokens.typography.label.size": *hh2
-    "tokens.typography.label.weight": *hh2
-    "tokens.typography.label.lineHeight": *hh2
-    "tokens.typography.label.tracking": *hh2
-    "tokens.typography.label.use": *hh2
-    "tokens.typography.fine.size": &hsp { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
-    "tokens.typography.fine.weight": *hsp
-    "tokens.typography.fine.lineHeight": *hsp
-    "tokens.typography.fine.tracking": *hsp
-    "tokens.typography.fine.use": *hsp
-    "tokens.spacing.chip-y": &hchip { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-09-30" }
-    "tokens.spacing.chip-x": *hchip
-    "tokens.spacing.button-x": *hcta
-    "tokens.spacing.select-y": &hsel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
-    "tokens.spacing.card": &hli { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
-    "tokens.rounded.base": *hcta
-    "tokens.rounded.card": &hart { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::article", captured: "2026-09-30" }
-    "tokens.rounded.switch": &hsw { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
-    "tokens.rounded.pill": &hchat { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"105\"]", captured: "2026-09-30" }
-    "tokens.shadow.float": &hmenu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-09-30" }
-    "tokens.shadow.chat": *hchat
-    "tokens.shadow.card": *hli
-    "tokens.components.primary-button.type": *hcta
-    "tokens.components.primary-button.bg": *hcta
-    "tokens.components.primary-button.fg": *hcta
-    "tokens.components.primary-button.radius": *hcta
-    "tokens.components.primary-button.padding": *hcta
-    "tokens.components.primary-button.height": *hcta
-    "tokens.components.primary-button.font": *hcta
-    "tokens.components.primary-button.states": *hcta
-    "tokens.components.primary-button.use": *hcta
-    "tokens.components.select-button.type": *hsel
-    "tokens.components.select-button.bg": *hsel
-    "tokens.components.select-button.fg": *hsel
-    "tokens.components.select-button.border": *hsel
-    "tokens.components.select-button.radius": *hsel
-    "tokens.components.select-button.padding": *hsel
-    "tokens.components.select-button.height": *hsel
-    "tokens.components.select-button.font": *hsel
-    "tokens.components.select-button.disabled": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-09-30" }
-    "tokens.components.select-button.states": *hsel
-    "tokens.components.select-button.use": *hsel
-    "tokens.components.search-trigger.type": &hsearch { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.components.search-trigger.bg": *hsearch
-    "tokens.components.search-trigger.fg": *hsearch
-    "tokens.components.search-trigger.radius": *hsearch
-    "tokens.components.search-trigger.padding": *hsearch
-    "tokens.components.search-trigger.height": *hsearch
-    "tokens.components.search-trigger.font": *hsearch
-    "tokens.components.search-trigger.states": *hsearch
-    "tokens.components.search-trigger.use": *hsearch
-    "tokens.components.nav-button.type": &hnav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
-    "tokens.components.nav-button.bg": *hnav
-    "tokens.components.nav-button.fg": *hnav
-    "tokens.components.nav-button.radius": *hnav
-    "tokens.components.nav-button.padding": *hnav
-    "tokens.components.nav-button.height": *hnav
-    "tokens.components.nav-button.font": *hnav
-    "tokens.components.nav-button.selected": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
-    "tokens.components.nav-button.states": *hnav
-    "tokens.components.nav-button.use": *hnav
-    "tokens.components.filter-chip.type": *hchip
-    "tokens.components.filter-chip.bg": *hchip
-    "tokens.components.filter-chip.fg": *hchip
-    "tokens.components.filter-chip.border": *hchip
-    "tokens.components.filter-chip.radius": *hchip
-    "tokens.components.filter-chip.padding": *hchip
-    "tokens.components.filter-chip.height": *hchip
-    "tokens.components.filter-chip.font": *hchip
-    "tokens.components.filter-chip.states": *hchip
-    "tokens.components.filter-chip.use": *hchip
-    "tokens.components.radio-chip.type": &hrad { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"226\"]", captured: "2026-09-30" }
-    "tokens.components.radio-chip.bg": *hrad
-    "tokens.components.radio-chip.fg": *hrad
-    "tokens.components.radio-chip.border": *hrad
-    "tokens.components.radio-chip.radius": *hrad
-    "tokens.components.radio-chip.padding": *hrad
-    "tokens.components.radio-chip.height": *hrad
-    "tokens.components.radio-chip.font": *hrad
-    "tokens.components.radio-chip.checked": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"225\"]", captured: "2026-09-30" }
-    "tokens.components.radio-chip.states": *hrad
-    "tokens.components.radio-chip.use": *hrad
-    "tokens.components.switch.type": *hsw
-    "tokens.components.switch.bg": *hsw
-    "tokens.components.switch.fg": *hsw
-    "tokens.components.switch.radius": *hsw
-    "tokens.components.switch.size": *hsw
-    "tokens.components.switch.states": *hsw
-    "tokens.components.switch.use": *hsw
-    "tokens.components.outline-small-button.type": *hcap
-    "tokens.components.outline-small-button.bg": *hcap
-    "tokens.components.outline-small-button.fg": *hcap
-    "tokens.components.outline-small-button.border": *hcap
-    "tokens.components.outline-small-button.radius": *hcap
-    "tokens.components.outline-small-button.padding": *hcap
-    "tokens.components.outline-small-button.height": *hcap
-    "tokens.components.outline-small-button.font": *hcap
-    "tokens.components.outline-small-button.states": *hcap
-    "tokens.components.outline-small-button.use": *hcap
-    "tokens.components.chat-button.type": *hchat
-    "tokens.components.chat-button.bg": *hchat
-    "tokens.components.chat-button.fg": *hchat
-    "tokens.components.chat-button.radius": *hchat
-    "tokens.components.chat-button.padding": *hchat
-    "tokens.components.chat-button.height": *hchat
-    "tokens.components.chat-button.shadow": *hchat
-    "tokens.components.chat-button.states": *hchat
-    "tokens.components.chat-button.use": *hchat
-    "tokens.components.warranty-banner.type": *hdark
-    "tokens.components.warranty-banner.bg": *hdark
-    "tokens.components.warranty-banner.radius": *hdark
-    "tokens.components.warranty-banner.size": *hdark
-    "tokens.components.warranty-banner.use": *hdark
-    "tokens.components.step-card.type": *hli
-    "tokens.components.step-card.bg": *hli
-    "tokens.components.step-card.radius": *hli
-    "tokens.components.step-card.size": *hli
-    "tokens.components.step-card.shadow": *hli
-    "tokens.components.step-card.highlighted": *hli
-    "tokens.components.step-card.use": *hli
-    "tokens.components.review-card.type": *hli
-    "tokens.components.review-card.bg": *hli
-    "tokens.components.review-card.border": *hli
-    "tokens.components.review-card.radius": *hli
-    "tokens.components.review-card.padding": *hli
-    "tokens.components.review-card.size": *hli
-    "tokens.components.review-card.shadow": *hli
-    "tokens.components.review-card.use": *hli
-    "tokens.components.dropdown-menu.type": *hmenu
-    "tokens.components.dropdown-menu.bg": *hmenu
-    "tokens.components.dropdown-menu.radius": *hmenu
-    "tokens.components.dropdown-menu.padding": *hmenu
-    "tokens.components.dropdown-menu.shadow": *hmenu
-    "tokens.components.dropdown-menu.use": *hmenu
-    "tokens.components.faq-row.type": &hfaq { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-09-30" }
-    "tokens.components.faq-row.bg": *hfaq
-    "tokens.components.faq-row.fg": *hfaq
-    "tokens.components.faq-row.padding": *hfaq
-    "tokens.components.faq-row.height": *hfaq
-    "tokens.components.faq-row.font": *hfaq
-    "tokens.components.faq-row.states": *hfaq
-    "tokens.components.faq-row.use": *hfaq
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#396eff"
-    on-primary: "#ffffff"
-    ink: "#0c0d11"
-    black: "#000000"
-    canvas: "#ffffff"
-    dark: "#101115"
-  typography:
-    family: { body: "spoqaHanSansNeo" }
-    display: { size: 36, weight: 700, lineHeight: 1.33, tracking: -1.008, use: "The largest heading on /sell (an h2)" }
-    hero: { size: 32, weight: 700, use: "The /sell hero heading (최대 50개 견적, 최고가 그대로 내차팔기); line height normal" }
-    page-title: { size: 28, weight: 700, lineHeight: 1.36, tracking: -0.728, use: "모든 차량 at the top of home (h1)" }
-    section: { size: 24, weight: 700, use: "Listing section headings on home (할인 중, eye 인증 차량, 오늘 가장 많이 조회된 차량); line height normal" }
-    subsection: { size: 20, weight: 700, lineHeight: 1.4, tracking: -0.32, use: "타 본 사람들 이야기 on home; 자주 묻는 질문 and 판매후기 on /sell" }
-    card-head: { size: 18, weight: 700, lineHeight: 1.44, tracking: -0.252, use: "헤이딜러가 인증 했어요, 인기 모델 and the section links on home, in #000000" }
-    emphasis: { size: 15, weight: 700, lineHeight: 1.47, tracking: -0.195, use: "Car names, sale-step titles, header navigation and the primary button label" }
-    body: { size: 15, weight: 400, lineHeight: 1.6, tracking: -0.195, use: "Owner-review paragraphs on home" }
-    text: { size: 16, weight: 400, use: "Default text, chips and selects; line height normal" }
-    caption: { size: 13, weight: 400, lineHeight: 1.38, tracking: 0.078, use: "Small outlined buttons and footer links" }
-    label: { size: 13, weight: 700, lineHeight: 1.38, tracking: 0.078, use: "인기 검색 and small card labels on home" }
-    fine: { size: 12, weight: 400, lineHeight: 1.5, tracking: 0.12, use: "Notes under the /sell step cards" }
-  spacing: { chip-y: 8, chip-x: 12, button-x: 24, select-y: 16, card: 16 }
-  rounded: { base: 4, card: 8, switch: 16, pill: 100 }
-  shadow:
-    float: "rgba(0, 0, 0, 0.08) 0px 16px 20px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px 0px, rgba(0, 0, 0, 0.04) 0px 0px 8px 0px"
-    chat: "rgba(0, 0, 0, 0.12) 0px 2px 8px 0px"
-    card: "rgba(0, 0, 0, 0.03) 0px 4px 2px 0px"
-  components:
-    primary-button: { type: button, bg: "#396eff", fg: "#ffffff", radius: "4px", padding: "0px 24px", height: "56px (52px on /sell)", font: "15px / 700 / 22px spoqaHanSansNeo, tracking -0.195px", states: "rest on both captured instances; no hover or pressed frame was recorded, so no state value is declared", use: "The count-and-보기 action under the brand, type and model selects on home (132 x 56) at home::[data-omd-capture=\"14\"], and 10초 만에 확인 on /sell (280 x 52, surface-3 capture 10)" }
-    select-button: { type: button, bg: "rgba(97, 113, 159, 0.08)", fg: "#0c0d11", border: "1px solid transparent", radius: "4px", padding: "16px 24px", height: "56px", font: "16px / 400 spoqaHanSansNeo", disabled: "차종 선택 and 모델 선택 were disabled at capture (captures 12 and 13) and compute the same rgba(97, 113, 159, 0.08) fill and #0c0d11 text as the enabled select", states: "expanded: the collector opened 브랜드 전체 and read the brand menu", use: "브랜드 전체, 차종 선택 and 모델 선택 on home (240 x 56) at home::[data-omd-capture=\"11\"]" }
-    search-trigger: { type: button, bg: "rgba(97, 113, 159, 0.08)", fg: "#0c0d11", radius: "4px", padding: "0px 16px", height: "52px", font: "16px / 400 spoqaHanSansNeo", states: "rest only; it was not opened", use: "모델을 입력해주세요. in the header of home and /market/cars (240 x 52) at home::[data-omd-capture=\"9\"]" }
-    nav-button: { type: tab, bg: "transparent", fg: "rgba(38, 55, 97, 0.6)", radius: "4px", padding: "8px", height: "38px", font: "15px / 700 / 22px spoqaHanSansNeo, tracking -0.195px", selected: "fg #0c0d11 on the current section (내차사기 on /market/cars, 내차팔기 on /sell)", states: "selected read from rest values across the three pages; no pointer frame", use: "내차사기, 내차팔기, 폐차 견적받기 and 중고차 숨은 이력 in the header at home::[data-omd-capture=\"2\"]" }
-    filter-chip: { type: button, bg: "transparent", fg: "#0c0d11", border: "1px solid rgba(97, 113, 159, 0.16)", radius: "4px", padding: "8px 12px", height: "36px", font: "16px / 400 spoqaHanSansNeo", states: "rest only; no filter panel was opened", use: "전체 필터, eye 인증, 할인 중, 연식, 주행거리, 가격 and the other filters on /market/cars at surface-2::[data-omd-capture=\"42\"]" }
-    radio-chip: { type: toggle, bg: "transparent", fg: "#0c0d11", border: "1px solid rgba(97, 113, 159, 0.16)", radius: "4px", padding: "8px 12px", height: "36px", font: "16px / 400 spoqaHanSansNeo", checked: "bg rgba(97, 113, 159, 0.08) with a 1px solid #000000 border (capture 225, aria-checked true)", states: "checked and unchecked read from rest values; no pointer frame", use: "A row of role=radio chips on home (50-84 x 36) at home::[data-omd-capture=\"226\"]" }
-    switch: { type: toggle, bg: "#000000", fg: "#f7f8fb", radius: "16px", size: "30px x 18px", states: "rest only; the switch was not operated", use: "Switch input inside a label in the /market/cars filter bar at surface-2::[data-omd-capture=\"11\"]" }
-    outline-small-button: { type: button, bg: "transparent", fg: "#0c0d11", border: "1px solid rgba(97, 113, 159, 0.16)", radius: "4px", padding: "0px 12px", height: "40px", font: "13px / 400 / 18px spoqaHanSansNeo, tracking 0.078px", states: "rest only", use: "Small outlined actions such as 판매과정 더 자세히 on /sell (148 x 40); home capture 290 (89 x 40)" }
-    chat-button: { type: button, bg: "#ffffff", fg: "#0c0d11", radius: "100px", padding: "8px 16px 8px 8px", height: "56px", shadow: "rgba(0, 0, 0, 0.12) 0px 2px 8px 0px", states: "rest only", use: "채팅 문의 floating button on /market/cars (127 x 56) at surface-2::[data-omd-capture=\"105\"]" }
-    warranty-banner: { type: card, bg: "#101115", radius: "4px", size: "248px x 100px", use: "모든 차 1년 무료 보증 banner at the top of /market/cars at surface-2::[data-omd-capture=\"10\"]; its text sits in children that were not captured, so no text colour is claimed" }
-    step-card: { type: card, bg: "#ffffff", radius: "4px", size: "200px x 280px", shadow: "rgba(0, 0, 0, 0.08) 0px 16px 20px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px 0px, rgba(0, 0, 0, 0.04) 0px 0px 8px 0px", highlighted: "bg #396eff with #ffffff text and 24px padding on one card of the row", use: "Sale-process cards on /sell (집 앞, 방문 평가 / 48시간 경매 / 최고가에 판매결정) at surface-3::li" }
-    review-card: { type: card, bg: "#ffffff", border: "1px solid rgba(97, 113, 159, 0.16)", radius: "4px", padding: "16px", size: "304px x 256px", shadow: "rgba(0, 0, 0, 0.03) 0px 4px 2px 0px", use: "판매후기 cards on /sell (G70, 더 뉴 스포티지 R, QM6 and others) at surface-3::li" }
-    dropdown-menu: { type: card, bg: "#ffffff", radius: "4px", padding: "8px 0px 8px 8px", shadow: "rgba(0, 0, 0, 0.08) 0px 16px 20px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px 0px, rgba(0, 0, 0, 0.04) 0px 0px 8px 0px", use: "Brand menu opened from 브랜드 전체 on home (240 x 429) at home::[data-omd-interaction-capture=\"menu-0-0\"]; 30 items of 224 x 38 with 8px 12px padding and a 4px radius" }
-    faq-row: { type: button, bg: "transparent", fg: "#0c0d11", padding: "12px 0px", height: "48px", font: "18.72px / 700 spoqaHanSansNeo — the browser's default h3 size, since the question sits in an unstyled h3", states: "rest only; no answer was opened", use: "자주 묻는 질문 on /sell (944 x 48) at surface-3::[data-omd-capture=\"12\"]" }
-  components_harvested: true
+colors:
+  primary: '#396eff'
+  on-primary: '#ffffff'
+  ink: '#0c0d11'
+  black: '#000000'
+  canvas: '#ffffff'
+  dark: '#101115'
+typography:
+  display:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: '-1.008px'
+    use: The largest heading on /sell (an h2)
+  hero:
+    fontSize: 32px
+    fontWeight: 700
+    use: The /sell hero heading (최대 50개 견적, 최고가 그대로 내차팔기); line height normal
+  page-title:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.36
+    letterSpacing: '-0.728px'
+    use: 모든 차량 at the top of home (h1)
+  section:
+    fontSize: 24px
+    fontWeight: 700
+    use: Listing section headings on home (할인 중, eye 인증 차량, 오늘 가장 많이 조회된 차량); line height normal
+  subsection:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: '-0.32px'
+    use: 타 본 사람들 이야기 on home; 자주 묻는 질문 and 판매후기 on /sell
+  card-head:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.44
+    letterSpacing: '-0.252px'
+    use: '헤이딜러가 인증 했어요, 인기 모델 and the section links on home, in #000000'
+  emphasis:
+    fontSize: 15px
+    fontWeight: 700
+    lineHeight: 1.47
+    letterSpacing: '-0.195px'
+    use: Car names, sale-step titles, header navigation and the primary button label
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: '-0.195px'
+    use: Owner-review paragraphs on home
+  text:
+    fontSize: 16px
+    fontWeight: 400
+    use: Default text, chips and selects; line height normal
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.38
+    letterSpacing: 0.078px
+    use: Small outlined buttons and footer links
+  label:
+    fontSize: 13px
+    fontWeight: 700
+    lineHeight: 1.38
+    letterSpacing: 0.078px
+    use: 인기 검색 and small card labels on home
+  fine:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0.12px
+    use: Notes under the /sell step cards
+rounded:
+  base: 4px
+  card: 8px
+  switch: 16px
+  pill: 100px
+spacing:
+  chip-y: 8
+  chip-x: 12
+  button-x: 24
+  select-y: 16
+  card: 16
+components:
+  primary-button:
+    type: button
+    backgroundColor: '#396eff'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0px 24px
+    height: 56px (52px on /sell)
+    typography: 15px / 700 / 22px spoqaHanSansNeo, tracking -0.195px
+    states: rest on both captured instances; no hover or pressed frame was recorded, so no state value is declared
+    use: The count-and-보기 action under the brand, type and model selects on home (132 x 56) at home::[data-omd-capture="14"], and 10초 만에 확인 on /sell (280 x 52, surface-3 capture 10)
+  select-button:
+    type: button
+    backgroundColor: rgba(97, 113, 159, 0.08)
+    textColor: '#0c0d11'
+    border: 1px solid transparent
+    rounded: 4px
+    padding: 16px 24px
+    height: 56px
+    typography: 16px / 400 spoqaHanSansNeo
+    disabled: '차종 선택 and 모델 선택 were disabled at capture (captures 12 and 13) and compute the same rgba(97, 113, 159, 0.08) fill and #0c0d11 text as the enabled select'
+    states: 'expanded: the collector opened 브랜드 전체 and read the brand menu'
+    use: 브랜드 전체, 차종 선택 and 모델 선택 on home (240 x 56) at home::[data-omd-capture="11"]
+  search-trigger:
+    type: button
+    backgroundColor: rgba(97, 113, 159, 0.08)
+    textColor: '#0c0d11'
+    rounded: 4px
+    padding: 0px 16px
+    height: 52px
+    typography: 16px / 400 spoqaHanSansNeo
+    states: rest only; it was not opened
+    use: 모델을 입력해주세요. in the header of home and /market/cars (240 x 52) at home::[data-omd-capture="9"]
+  nav-button:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(38, 55, 97, 0.6)
+    rounded: 4px
+    padding: 8px
+    height: 38px
+    typography: 15px / 700 / 22px spoqaHanSansNeo, tracking -0.195px
+    selected: 'fg #0c0d11 on the current section (내차사기 on /market/cars, 내차팔기 on /sell)'
+    states: selected read from rest values across the three pages; no pointer frame
+    use: 내차사기, 내차팔기, 폐차 견적받기 and 중고차 숨은 이력 in the header at home::[data-omd-capture="2"]
+  filter-chip:
+    type: button
+    backgroundColor: transparent
+    textColor: '#0c0d11'
+    border: 1px solid rgba(97, 113, 159, 0.16)
+    rounded: 4px
+    padding: 8px 12px
+    height: 36px
+    typography: 16px / 400 spoqaHanSansNeo
+    states: rest only; no filter panel was opened
+    use: 전체 필터, eye 인증, 할인 중, 연식, 주행거리, 가격 and the other filters on /market/cars at surface-2::[data-omd-capture="42"]
+  radio-chip:
+    type: toggle
+    backgroundColor: transparent
+    textColor: '#0c0d11'
+    border: 1px solid rgba(97, 113, 159, 0.16)
+    rounded: 4px
+    padding: 8px 12px
+    height: 36px
+    typography: 16px / 400 spoqaHanSansNeo
+    checked: 'bg rgba(97, 113, 159, 0.08) with a 1px solid #000000 border (capture 225, aria-checked true)'
+    states: checked and unchecked read from rest values; no pointer frame
+    use: A row of role=radio chips on home (50-84 x 36) at home::[data-omd-capture="226"]
+  switch:
+    type: toggle
+    backgroundColor: '#000000'
+    textColor: '#f7f8fb'
+    rounded: 16px
+    size: 30px x 18px
+    states: rest only; the switch was not operated
+    use: Switch input inside a label in the /market/cars filter bar at surface-2::[data-omd-capture="11"]
+  outline-small-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#0c0d11'
+    border: 1px solid rgba(97, 113, 159, 0.16)
+    rounded: 4px
+    padding: 0px 12px
+    height: 40px
+    typography: 13px / 400 / 18px spoqaHanSansNeo, tracking 0.078px
+    states: rest only
+    use: Small outlined actions such as 판매과정 더 자세히 on /sell (148 x 40); home capture 290 (89 x 40)
+  chat-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#0c0d11'
+    rounded: 100px
+    padding: 8px 16px 8px 8px
+    height: 56px
+    shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px 0px
+    states: rest only
+    use: 채팅 문의 floating button on /market/cars (127 x 56) at surface-2::[data-omd-capture="105"]
+  warranty-banner:
+    type: card
+    backgroundColor: '#101115'
+    rounded: 4px
+    size: 248px x 100px
+    use: 모든 차 1년 무료 보증 banner at the top of /market/cars at surface-2::[data-omd-capture="10"]; its text sits in children that were not captured, so no text colour is claimed
+  step-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    size: 200px x 280px
+    shadow: rgba(0, 0, 0, 0.08) 0px 16px 20px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px 0px, rgba(0, 0, 0, 0.04) 0px 0px 8px 0px
+    highlighted: 'bg #396eff with #ffffff text and 24px padding on one card of the row'
+    use: Sale-process cards on /sell (집 앞, 방문 평가 / 48시간 경매 / 최고가에 판매결정) at surface-3::li
+  review-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: 1px solid rgba(97, 113, 159, 0.16)
+    rounded: 4px
+    padding: 16px
+    size: 304px x 256px
+    shadow: rgba(0, 0, 0, 0.03) 0px 4px 2px 0px
+    use: 판매후기 cards on /sell (G70, 더 뉴 스포티지 R, QM6 and others) at surface-3::li
+  dropdown-menu:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 0px 8px 8px
+    shadow: rgba(0, 0, 0, 0.08) 0px 16px 20px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px 0px, rgba(0, 0, 0, 0.04) 0px 0px 8px 0px
+    use: Brand menu opened from 브랜드 전체 on home (240 x 429) at home::[data-omd-interaction-capture="menu-0-0"]; 30 items of 224 x 38 with 8px 12px padding and a 4px radius
+  faq-row:
+    type: button
+    backgroundColor: transparent
+    textColor: '#0c0d11'
+    padding: 12px 0px
+    height: 48px
+    typography: 18.72px / 700 spoqaHanSansNeo — the browser's default h3 size, since the question sits in an unstyled h3
+    states: rest only; no answer was opened
+    use: 자주 묻는 질문 on /sell (944 x 48) at surface-3::[data-omd-capture="12"]
+fonts:
+  roles:
+    body: spoqaHanSansNeo
 ---
 
 # Design System Inspiration of Heydealer
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Heydealer (헤이딜러) is the used-car platform of (주)피알앤디컴퍼니 (PRND Company), whose careers site lists 박진우 as chief executive and a head office in Seocho, Seoul. According to 매일경제 (2018-07-16), 박진우 — then on leave from Seoul National University — built Heydealer in early 2015 as an online market where dealers compete to buy a car its owner registers, and it passed ₩30 billion in cumulative deals within a year. In January 2016 a proposed amendment to the Automobile Management Act would have required online auction companies to run offline premises, a 3,300 m² car park and a 200 m² auction room, which pushed the company toward closure; the same article reports the law was changed after the paper's coverage and headlines Heydealer's ₩500 billion in cumulative deals once the rule was eased. Today the site describes three services in its own words: 내차팔기 through a top-price auction among 11,000 dealers nationwide, certified used cars with a one-year free warranty, and a car's price and 19-item accident and flood history from its number plate. PRND's careers site states the mission as "아무도 바꾸지 못한 중고차 시장을 혁신합니다".
 
@@ -289,7 +246,7 @@ Type is Spoqa Han Sans Neo, self-hosted on static.web.heydealer.com, in Regular 
 - Flat listings; soft shadows only on the floating chat button, the dropdown menu and the /sell cards
 - A near-black `#101115` warranty banner as the one dark block on /market/cars
 
-## Primary tasks
+### Primary tasks
 
 - Sell your car by letting dealers bid for it in a 48-hour auction.
 - Find a certified used car by brand, type and model.
@@ -297,7 +254,33 @@ Type is Spoqa Han Sans Neo, self-hosted on static.web.heydealer.com, in Regular 
 - Check a car's price and hidden history from its number plate.
 - Get a scrap-car quote.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Heydealer began as an online auction for sellers. 매일경제's 2018 account describes the 2015 model — an owner registers once and dealers compete to buy — and the growth that followed, ₩30 billion in cumulative deals in the first year. It also records the moment the model nearly ended: a January 2016 amendment that would have treated online auction companies as illegal unless they ran large offline lots. The law was changed, and the article's headline puts Heydealer's cumulative deals at ₩500 billion after the rule was eased.
+
+PRND's careers site tells the rest in the company's own words. It frames the work as questions — "왜 중고차 사고 이력은 알기 어려울까?", "왜 중고차 거래는 항상 불안하지?" — and answers them with hidden-history checks, selling without unfair depreciation, and "세상에서 가장 믿을 만한 인증 중고차". Its stated working values are Break, Create and Drive. The same site lists a showroom in Yongin and a technical base in Incheon, and the company runs a consumer blog of car-buying guides at heydealer.com/blog.
+
+On the captured pages that stance shows as restraint: a white page, one blue action, guarantees stated as short facts, and data laid out densely enough to compare.
+
+### Principles
+
+1. **The market should work for the owner.** Dealers compete for the seller's car. *UI implication:* show competing offers and their numbers plainly.
+2. **Guarantees as facts.** *UI implication:* state 1년 무료 보증 and 단순변심 무료 환불 as short lines, not badges full of adjectives.
+3. **One action, one colour.** *UI implication:* keep `#396eff` for the next step.
+4. **Dense but calm.** *UI implication:* group with slate tints and hairlines; keep shadows for floating elements. (An editorial reading of the captured pages, not a Heydealer statement.)
+5. **Weight carries the structure.** *UI implication:* Bold 700 for what matters, Regular 400 for the rest.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Heydealer user segments (Korean owners selling used cars, used-car buyers), not individual people.*
+
+**김민재, 33, 서울.** Selling his first car before an upgrade. Distrusts haggling in person; checks the price from his number plate and lets dealers bid.
+
+**이서연, 41, 경기.** Buying a certified used car for the family. Filters by accident history and cares most about the one-year warranty and free returns.
+
+**박준호, 28, 부산.** Compares trims and prices across the listing, reading owner reviews before deciding.
+
+## Colors
 
 Every token below was read by the deterministic collector on 2026-09-30 from www.heydealer.com, www.heydealer.com/market/cars and www.heydealer.com/sell.
 
@@ -318,7 +301,7 @@ Every token below was read by the deterministic collector on 2026-09-30 from www
 ### Brand assets, not tokens
 - The Heydealer logo was not measured, and no logo colour is a token here.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Live surface use**: `spoqaHanSansNeo` (771 observed uses), served from `static.web.heydealer.com/_next/static/media/` (`SpoqaHanSansNeo_Regular.*.woff2` and its sibling weights). The survey's `document.fonts` list shows weights 400, 500 and 700 loaded. The stack continues `"Spoqa Han Sans Neo Fallback", -apple-system, "Apple Color Emoji", TossFace, system-ui, sans-serif`.
@@ -349,7 +332,80 @@ Every token below was read by the deterministic collector on 2026-09-30 from www
 - **Tracking scales with size**: tight at 15px and above, slightly open at 12–13px.
 - **One family**: Spoqa Han Sans Neo runs from 36px headings to 12px notes.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Buttons: 24px horizontal padding
+- Selects: 16px 24px padding at 56px
+- Chips: 8px 12px padding at 36px
+- Review cards: 16px padding
+- Menu items: 8px 12px padding at 38px
+
+### Grid & Container
+- Home: a header with navigation and the search trigger, 모든 차량 with three selects and the blue action, then rows of listing cards (할인 중, eye 인증 차량, 오늘 가장 많이 조회된 차량), popular models and owner reviews.
+- /market/cars: the warranty banner, a filter-chip bar with a switch, and the listing grid.
+- /sell: a hero with the number-plate check and its blue action, three sale-step cards, an FAQ and a review carousel.
+
+### Whitespace Philosophy
+- **Dense but ordered**: listing data sits close together, separated by 16% slate borders and 8% slate fills rather than by large gaps.
+- **The blue marks the next step**: it appears once per view, on the action.
+
+### Border Radius Scale
+- 4px: buttons, selects, chips, step and review cards, menus
+- 8px: article cards on home
+- 16px: the switch
+- 100px: the chat button
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440 × 900 desktop viewport was captured; no breakpoint was measured.
+
+#### Touch Targets
+- Primary button: 56px on home, 52px on /sell
+- Selects: 56px; search trigger: 52px
+- Chips: 36px; header navigation: 38px
+- Chat button: 56px
+
+#### Collapsing Strategy
+- Not measured.
+
+#### Image Behavior
+- Not measured.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | No shadow | Page, listings, chips, selects, buttons |
+| Tint | `rgba(97, 113, 159, 0.08)` fill | Selects, search trigger, checked chip |
+| Line | 1px `rgba(97, 113, 159, 0.16)` | Chips, review cards, small buttons |
+| Card | `rgba(0, 0, 0, 0.03) 0px 4px 2px 0px` | Review cards |
+| Float | three-layer `rgba(0, 0, 0, 0.08 / 0.04 / 0.04)` shadow; `rgba(0, 0, 0, 0.12) 0px 2px 8px 0px` | Brand menu, sale-step cards; chat button |
+
+**Shadow Philosophy**: The listing surfaces are flat — chips, selects, buttons and listing cards compute `box-shadow: none`, and grouping comes from slate tints and borders. Shadows appear where something floats or is presented as a step: the brand menu, the /sell step and review cards, and the chat button.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.float`: `rgba(0, 0, 0, 0.08) 0px 16px 20px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px 0px, rgba(0, 0, 0, 0.04) 0px 0px 8px 0px`
+- `shadow.chat`: `rgba(0, 0, 0, 0.12) 0px 2px 8px 0px`
+- `shadow.card`: `rgba(0, 0, 0, 0.03) 0px 4px 2px 0px`
+
+## Motion & Easing
+
+The collector reads computed style, not animation, so no duration or easing is measured. The home rows and the /sell reviews are carousels with previous and next controls, which shows motion exists without timing it. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/heydealer.json (capturedAt 2026-09-30T07:52:26Z), deterministic collector, 1440x900, logged out: www.heydealer.com, www.heydealer.com/market/cars, www.heydealer.com/sell. No sale, quote, number-plate lookup or chat was started. Labels were matched to captures with a headless read-only survey of the same pages.
+- §1 and §11 company facts: prnd.co.kr/ko/home and /ko/life (mission, questions, Break / Create / Drive, (주)피알앤디컴퍼니, 대표이사 박진우, Seocho address, Yongin showroom, Incheon tech bay), the www.heydealer.com meta description (11,000 dealers, 1-year warranty, 19-item history), and 매일경제, "폐업위기 중고車거래앱 규제 풀리자…누적거래 5천억 `승승장구`" (2018-07-16, via n.news.naver.com/mnews/article/009/0004185809): early-2015 founding, ₩30 billion in the first year, the January 2016 amendment and its revision.
+- §3 licence: github.com/spoqa/spoqa-han-sans LICENSE (SIL Open Font License, Version 1.1).
+- Personas are fictional archetypes. Interpretive readings are editorial.
+-->
+
+## Components
 
 ### Buttons
 
@@ -494,43 +550,20 @@ The listing cards on home (220 × 224 anchors) keep their text in children that 
 **Tier 2 sources:** getdesign.md/heydealer (HTTP 200, the name does not appear on the page) and styles.refero.design/?q=heydealer (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Buttons: 24px horizontal padding
-- Selects: 16px 24px padding at 56px
-- Chips: 8px 12px padding at 36px
-- Review cards: 16px padding
-- Menu items: 8px 12px padding at 38px
+Only these states were observed on the three captured pages; nothing else is specified here.
 
-### Grid & Container
-- Home: a header with navigation and the search trigger, 모든 차량 with three selects and the blue action, then rows of listing cards (할인 중, eye 인증 차량, 오늘 가장 많이 조회된 차량), popular models and owner reviews.
-- /market/cars: the warranty banner, a filter-chip bar with a switch, and the listing grid.
-- /sell: a hero with the number-plate check and its blue action, three sale-step cards, an FAQ and a review carousel.
+| State | Observation |
+|---|---|
+| **Selected (navigation)** | The current section's label is `#0c0d11`; the others are `rgba(38, 55, 97, 0.6)`. |
+| **Checked (radio chip)** | Slate fill `rgba(97, 113, 159, 0.08)` with a 1px `#000000` border; unchecked chips are transparent with a 16% slate border. |
+| **Disabled (selects)** | 차종 선택 and 모델 선택 are disabled until a brand is chosen; their computed fill and text match the enabled select. |
+| **Expanded** | 브랜드 전체 opens a white brand menu with a three-layer shadow. |
 
-### Whitespace Philosophy
-- **Dense but ordered**: listing data sits close together, separated by 16% slate borders and 8% slate fills rather than by large gaps.
-- **The blue marks the next step**: it appears once per view, on the action.
+No hover, pressed or focus frame was recorded for any control, so those treatments are unmeasured rather than absent. Error, empty, loading and success states were not captured and are not described.
 
-### Border Radius Scale
-- 4px: buttons, selects, chips, step and review cards, menus
-- 8px: article cards on home
-- 16px: the switch
-- 100px: the chat button
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | No shadow | Page, listings, chips, selects, buttons |
-| Tint | `rgba(97, 113, 159, 0.08)` fill | Selects, search trigger, checked chip |
-| Line | 1px `rgba(97, 113, 159, 0.16)` | Chips, review cards, small buttons |
-| Card | `rgba(0, 0, 0, 0.03) 0px 4px 2px 0px` | Review cards |
-| Float | three-layer `rgba(0, 0, 0, 0.08 / 0.04 / 0.04)` shadow; `rgba(0, 0, 0, 0.12) 0px 2px 8px 0px` | Brand menu, sale-step cards; chat button |
-
-**Shadow Philosophy**: The listing surfaces are flat — chips, selects, buttons and listing cards compute `box-shadow: none`, and grouping comes from slate tints and borders. Shadows appear where something floats or is presented as a step: the brand menu, the /sell step and review cards, and the chat button.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#396eff` for the one primary action in a view
@@ -547,24 +580,27 @@ The listing cards on home (220 × 224 anchors) keep their text in children that 
 - Don't use a soft grey for body text
 - Don't invent hover or pressed colours; none were recorded
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-Only the 1440 × 900 desktop viewport was captured; no breakpoint was measured.
+Heydealer's copy is plain, concrete and reassuring: it states guarantees and numbers instead of adjectives, and keeps actions short.
 
-### Touch Targets
-- Primary button: 56px on home, 52px on /sell
-- Selects: 56px; search trigger: 52px
-- Chips: 36px; header navigation: 38px
-- Chat button: 56px
+| Context | Tone |
+|---|---|
+| Page title | Scope in plain words. "헤이딜러 – 인증중고차 매매 사이트, 내차팔기, 중고차 시세조회". |
+| Trust band | A reason, then the guarantees. "헤이딜러가 선별했으니까, 모든 차량 무사고", "1년 무료 보증", "단순변심 무료 환불". |
+| Sell hero | A number and a promise. "최대 50개 견적, 최고가 그대로 내차팔기". |
+| Actions | Short and time-bound: "10초 만에 확인", "판매과정 더 자세히", "채팅 문의". |
+| Company | Direct questions about the market. "왜 중고차 거래는 항상 불안하지?" |
 
-### Collapsing Strategy
-- Not measured.
+**Voice samples (verbatim, opened 2026-09-30):**
+- "헤이딜러가 선별했으니까, 모든 차량 무사고" — trust band on home and /market/cars.
+- "최대 50개 견적, 최고가 그대로 내차팔기" — /sell hero.
+- "먼저 구매한 8,236명이 남긴 후기" — home review heading.
+- "아무도 바꾸지 못한 중고차 시장을 혁신합니다" — prnd.co.kr careers site.
 
-### Image Behavior
-- Not measured.
+**Forbidden register**: dealership pressure, vague superlatives in place of guarantees, hidden conditions, exclamation-heavy promotion.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action: `#396eff`, label `#ffffff`
@@ -588,73 +624,15 @@ Only the 1440 × 900 desktop viewport was captured; no breakpoint was measured.
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Heydealer's copy is plain, concrete and reassuring: it states guarantees and numbers instead of adjectives, and keeps actions short.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Page title | Scope in plain words. "헤이딜러 – 인증중고차 매매 사이트, 내차팔기, 중고차 시세조회". |
-| Trust band | A reason, then the guarantees. "헤이딜러가 선별했으니까, 모든 차량 무사고", "1년 무료 보증", "단순변심 무료 환불". |
-| Sell hero | A number and a promise. "최대 50개 견적, 최고가 그대로 내차팔기". |
-| Actions | Short and time-bound: "10초 만에 확인", "판매과정 더 자세히", "채팅 문의". |
-| Company | Direct questions about the market. "왜 중고차 거래는 항상 불안하지?" |
-
-**Voice samples (verbatim, opened 2026-09-30):**
-- "헤이딜러가 선별했으니까, 모든 차량 무사고" — trust band on home and /market/cars.
-- "최대 50개 견적, 최고가 그대로 내차팔기" — /sell hero.
-- "먼저 구매한 8,236명이 남긴 후기" — home review heading.
-- "아무도 바꾸지 못한 중고차 시장을 혁신합니다" — prnd.co.kr careers site.
-
-**Forbidden register**: dealership pressure, vague superlatives in place of guarantees, hidden conditions, exclamation-heavy promotion.
-
-## 11. Brand Narrative
-
-Heydealer began as an online auction for sellers. 매일경제's 2018 account describes the 2015 model — an owner registers once and dealers compete to buy — and the growth that followed, ₩30 billion in cumulative deals in the first year. It also records the moment the model nearly ended: a January 2016 amendment that would have treated online auction companies as illegal unless they ran large offline lots. The law was changed, and the article's headline puts Heydealer's cumulative deals at ₩500 billion after the rule was eased.
-
-PRND's careers site tells the rest in the company's own words. It frames the work as questions — "왜 중고차 사고 이력은 알기 어려울까?", "왜 중고차 거래는 항상 불안하지?" — and answers them with hidden-history checks, selling without unfair depreciation, and "세상에서 가장 믿을 만한 인증 중고차". Its stated working values are Break, Create and Drive. The same site lists a showroom in Yongin and a technical base in Incheon, and the company runs a consumer blog of car-buying guides at heydealer.com/blog.
-
-On the captured pages that stance shows as restraint: a white page, one blue action, guarantees stated as short facts, and data laid out densely enough to compare.
-
-## 12. Principles
-
-1. **The market should work for the owner.** Dealers compete for the seller's car. *UI implication:* show competing offers and their numbers plainly.
-2. **Guarantees as facts.** *UI implication:* state 1년 무료 보증 and 단순변심 무료 환불 as short lines, not badges full of adjectives.
-3. **One action, one colour.** *UI implication:* keep `#396eff` for the next step.
-4. **Dense but calm.** *UI implication:* group with slate tints and hairlines; keep shadows for floating elements. (An editorial reading of the captured pages, not a Heydealer statement.)
-5. **Weight carries the structure.** *UI implication:* Bold 700 for what matters, Regular 400 for the rest.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Heydealer user segments (Korean owners selling used cars, used-car buyers), not individual people.*
-
-**김민재, 33, 서울.** Selling his first car before an upgrade. Distrusts haggling in person; checks the price from his number plate and lets dealers bid.
-
-**이서연, 41, 경기.** Buying a certified used car for the family. Filters by accident history and cares most about the one-year warranty and free returns.
-
-**박준호, 28, 부산.** Compares trims and prices across the listing, reading owner reviews before deciding.
-
-## 14. States
-
-Only these states were observed on the three captured pages; nothing else is specified here.
-
-| State | Observation |
-|---|---|
-| **Selected (navigation)** | The current section's label is `#0c0d11`; the others are `rgba(38, 55, 97, 0.6)`. |
-| **Checked (radio chip)** | Slate fill `rgba(97, 113, 159, 0.08)` with a 1px `#000000` border; unchecked chips are transparent with a 16% slate border. |
-| **Disabled (selects)** | 차종 선택 and 모델 선택 are disabled until a brand is chosen; their computed fill and text match the enabled select. |
-| **Expanded** | 브랜드 전체 opens a white brand menu with a three-layer shadow. |
-
-No hover, pressed or focus frame was recorded for any control, so those treatments are unmeasured rather than absent. Error, empty, loading and success states were not captured and are not described.
-
-## 15. Motion & Easing
-
-The collector reads computed style, not animation, so no duration or easing is measured. The home rows and the /sell reviews are carousels with previous and next controls, which shows motion exists without timing it. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/heydealer.json (capturedAt 2026-09-30T07:52:26Z), deterministic collector, 1440x900, logged out: www.heydealer.com, www.heydealer.com/market/cars, www.heydealer.com/sell. No sale, quote, number-plate lookup or chat was started. Labels were matched to captures with a headless read-only survey of the same pages.
-- §1 and §11 company facts: prnd.co.kr/ko/home and /ko/life (mission, questions, Break / Create / Drive, (주)피알앤디컴퍼니, 대표이사 박진우, Seocho address, Yongin showroom, Incheon tech bay), the www.heydealer.com meta description (11,000 dealers, 1-year warranty, 19-item history), and 매일경제, "폐업위기 중고車거래앱 규제 풀리자…누적거래 5천억 `승승장구`" (2018-07-16, via n.news.naver.com/mnews/article/009/0004185809): early-2015 founding, ₩30 billion in the first year, the January 2016 amendment and its revision.
-- §3 licence: github.com/spoqa/spoqa-han-sans LICENSE (SIL Open Font License, Version 1.1).
-- Personas are fictional archetypes. Interpretive readings are editorial.
--->
+- **Contrast, `primary-button`.** Text `#ffffff` on `#396eff` measures 4.33:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `select-button`.** Text `#0c0d11` on `#61719f14` measures 4.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-trigger`.** Text `#0c0d11` on `#61719f14` measures 4.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-button`.** Text `#26376199` on `#00000000` measures 1.80:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `filter-chip`.** Text `#0c0d11` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `radio-chip`.** Text `#0c0d11` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `outline-small-button`.** Text `#0c0d11` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `faq-row`.** Text `#0c0d11` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

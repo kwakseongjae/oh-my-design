@@ -74,3 +74,16 @@ The rule and its two traps are written up in `docs/SOURCE_INDEX_BLINDNESS_2026-0
   of them API documentation.
 
 Fold Step 0 in before restoring the three name-guessing moves, not after.
+
+## Write path: DESIGN.md v3 (2026-10-14)
+
+The catalog is DESIGN.md v3 (`spec/design-md-v3.md`): every `web/references/<id>/` holds a
+Google-frontmatter `DESIGN.md` and a `reference.json` sidecar. Any write this gate permits (an
+evidence refresh on an existing reference) goes through one path: read
+`readReferenceSource(dir).markdown` (the legacy-shaped source), edit it, and write it with
+`scripts/design-md-v3/writer.mjs` `writeReference(dir, text)`, which converts, checks spec §10
+conformance with 0 Google lint errors, and writes the file, the sidecar and the `design-md/` mirror.
+`web/scripts/assemble-reference.mjs` emits v3 the same way. The OmD 0.1 text-patching tools
+(`apply-state-values`, `apply-measured-palette`, `apply-primary-tasks`, `migrate-frontmatters`,
+`retire-template-motion`) refuse v3 files until they are ported. Creating a new reference stays
+refused until the owner lifts this gate.

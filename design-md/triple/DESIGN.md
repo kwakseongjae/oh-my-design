@@ -1,67 +1,168 @@
 ---
-id: triple
 name: Triple
-country: KR
-category: consumer-tech
-homepage: "https://triple.guide"
-primary_color: "#368FFF"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=triple.guide&sz=128"
-verified: "2026-05-19"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#368fff"
-    primary-pressed: "#1a85e8"
-    sky-accent: "#1aadf6"
-    blue-tint: "#f1f7ff"
-    canvas: "#ffffff"
-    surface: "#f5f6f7"
-    heading: "#1b1d1f"
-    body: "#3a3e41"
-    secondary: "#7e848a"
-    tertiary: "#adb1b5"
-    border: "#e8eaec"
-    border-strong: "#d5d8db"
-    success: "#22c55e"
-    highlight-teal: "#0ecedb"
-    error: "#ff3b30"
-    warning: "#faad14"
-  typography:
-    family: { sans: "-apple-system", mono: "-apple-system" }
-    hero:        { size: 32, weight: 700, lineHeight: 1.3, use: "Intro hero, feature headlines" }
-    section:     { size: 22, weight: 700, lineHeight: 1.35, use: "Itinerary day headers, section titles" }
-    card-title:  { size: 16, weight: 600, lineHeight: 1.4, use: "Place/itinerary card titles" }
-    cta:         { size: 18, weight: 700, lineHeight: 1.4, use: "Primary buttons" }
-    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Descriptions, tip copy" }
-    meta:        { size: 14, weight: 400, lineHeight: 1.4, use: "Place metadata, distance, hours" }
-    caption:     { size: 12, weight: 400, lineHeight: 1.4, use: "Badges, fine print" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { sm: 12, md: 12, lg: 20, full: 9999 }
-  shadow:
-    none: "none"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#368fff", fg: "#ffffff", radius: 9999, padding: "0 28px", font: "18/700", use: "Primary CTA, 56px pill" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#368fff", radius: 9999, padding: "0 28px", font: "18/700", use: "Secondary action, 1px border #368fff" }
-    button-soft: { type: button, bg: "#f1f7ff", fg: "#368fff", radius: 9999, padding: "0 24px", font: "16/600", use: "Low-emphasis action" }
-    button-ghost: { type: button, fg: "#3a3e41", font: "16/600", use: "Tertiary nav, 더보기" }
-    input-search: { type: input, bg: "#f5f6f7", fg: "#1b1d1f", radius: 12, padding: "12px 16px", font: "16/400", use: "Destination/place search" }
-    card-place: { type: card, bg: "#ffffff", radius: 20, padding: "16px", use: "Place/itinerary card, 1px border #e8eaec" }
-    card-tip: { type: card, bg: "#f1f7ff", fg: "#3a3e41", radius: 20, padding: "20px", font: "16/400", use: "Travel tips, contextual info" }
-    chip-filter: { type: badge, bg: "#f5f6f7", fg: "#3a3e41", radius: 9999, padding: "6px 14px", font: "13/500", use: "Place-type filters", active: "text #368fff" }
-    chip-selected: { type: badge, fg: "#368fff", radius: 12, use: "Selected itinerary item, 1px border #368fff" }
-    tab-nav: { type: tab, fg: "#7e848a", font: "12/500", use: "Bottom/top nav switcher", active: "icon+label #368fff" }
-    toast: { type: toast, bg: "#1b1d1f", fg: "#ffffff", radius: 12, padding: "12px 16px", use: "Snackbar transient feedback" }
-    sheet: { type: dialog, bg: "#ffffff", fg: "#1b1d1f", radius: 20, padding: "24px", use: "Modal / bottom sheet" }
+colors:
+  primary: '#368fff'
+  primary-pressed: '#1a85e8'
+  sky-accent: '#1aadf6'
+  blue-tint: '#f1f7ff'
+  canvas: '#ffffff'
+  surface: '#f5f6f7'
+  heading: '#1b1d1f'
+  body: '#3a3e41'
+  secondary: '#7e848a'
+  tertiary: '#adb1b5'
+  border: '#e8eaec'
+  border-strong: '#d5d8db'
+  success: '#22c55e'
+  highlight-teal: '#0ecedb'
+  error: '#ff3b30'
+  warning: '#faad14'
+typography:
+  hero:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Intro hero, feature headlines
+  section:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.35
+    use: Itinerary day headers, section titles
+  card-title:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Place/itinerary card titles
+  cta:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Primary buttons
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Descriptions, tip copy
+  meta:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Place metadata, distance, hours
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Badges, fine print
+rounded:
+  sm: 12px
+  md: 12px
+  lg: 20px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#368fff'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 0 28px
+    typography: 18/700
+    use: Primary CTA, 56px pill
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#368fff'
+    rounded: 9999px
+    padding: 0 28px
+    typography: 18/700
+    use: 'Secondary action, 1px border #368fff'
+  button-soft:
+    type: button
+    backgroundColor: '#f1f7ff'
+    textColor: '#368fff'
+    rounded: 9999px
+    padding: 0 24px
+    typography: 16/600
+    use: Low-emphasis action
+  button-ghost:
+    type: button
+    textColor: '#3a3e41'
+    typography: 16/600
+    use: Tertiary nav, 더보기
+  input-search:
+    type: input
+    backgroundColor: '#f5f6f7'
+    textColor: '#1b1d1f'
+    rounded: 12px
+    padding: 12px 16px
+    typography: 16/400
+    use: Destination/place search
+  card-place:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 20px
+    padding: 16px
+    use: 'Place/itinerary card, 1px border #e8eaec'
+  card-tip:
+    type: card
+    backgroundColor: '#f1f7ff'
+    textColor: '#3a3e41'
+    rounded: 20px
+    padding: 20px
+    typography: 16/400
+    use: Travel tips, contextual info
+  chip-filter:
+    type: badge
+    backgroundColor: '#f5f6f7'
+    textColor: '#3a3e41'
+    rounded: 9999px
+    padding: 6px 14px
+    typography: 13/500
+    use: Place-type filters
+    active: 'text #368fff'
+  chip-selected:
+    type: badge
+    textColor: '#368fff'
+    rounded: 12px
+    use: 'Selected itinerary item, 1px border #368fff'
+  tab-nav:
+    type: tab
+    textColor: '#7e848a'
+    typography: 12/500
+    use: Bottom/top nav switcher
+    active: 'icon+label #368fff'
+  toast:
+    type: toast
+    backgroundColor: '#1b1d1f'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 12px 16px
+    use: Snackbar transient feedback
+  sheet:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#1b1d1f'
+    rounded: 20px
+    padding: 24px
+    use: Modal / bottom sheet
+fonts:
+  roles:
+    sans: '-apple-system'
+    mono: '-apple-system'
 ---
 
 # Design System Inspiration of Triple (트리플)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Triple is Korea's personal travel-planning app — "나를 아는 여행 앱, 트리플" (the travel app that knows me). Where most travel products are booking marketplaces, Triple's core is the *itinerary*: a friendly companion that helps you plan a trip day by day, recommends places that fit your taste, and gets richer the more you plan with friends. The interface reflects that companion role — bright, clean, approachable, with a single cheerful sky-blue carrying the entire interactive system and lots of soft, rounded, pill-shaped geometry that feels more like a chat app than a corporate OTA.
 
@@ -78,7 +179,7 @@ Typography rides the platform's native system sans (`-apple-system, "system-ui",
 - Personal, collaborative, slightly playful — a travel companion, not a marketplace
 - Itinerary-first: the day-by-day plan is the product
 
-## Primary tasks
+### Primary tasks
 
 - Plan a trip day by day, dragging recommended places onto a timeline
 - Search for a destination or a specific place to put in the plan
@@ -86,7 +187,37 @@ Typography rides the platform's native system sans (`-apple-system, "system-ui",
 - Check what each day holds and how far apart its places are
 - Book hotels and tickets straight from the plan you built
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Triple (트리플) is a Korean travel-planning app operated by **Triple Corporation**, which became part of the **Interpark Triple** group (and the broader Yanolja ecosystem after consolidation in the Korean travel-tech sector). Its founding insight was the opposite of the OTA marketplace: most travel products help you *book*, but few help you *plan* — and planning is where the anxiety and the joy of a trip actually live. Triple built an app around the **day-by-day itinerary**: pick a destination, get taste-fit recommendations, drag places onto a timeline, see them on a map, and plan together with the people you're traveling with. The tagline — "나를 아는 여행 앱" — promises a planner that learns your preferences and anticipates them. ([triple.guide](https://triple.guide/) — product; [triple.guide/intro](https://triple.guide/intro))
+
+The design is the form of "companion, not marketplace." The cheerful sky-blue, the soft pill CTAs, the rounded tinted cards, and the light personal copy all push toward a feeling of *planning with a friend* rather than *transacting with a vendor*. Collaboration is first-class — "함께 할수록, 더 풍성해지는 여행" — so the app is built to be shared, and the warm, anticipatory tone scales naturally to a group planning a trip together.
+
+What Triple refuses: the banner-heavy, discount-shouting density of booking OTAs (Triple is calm and glanceable), the impersonal inventory feed (every surface centers *your* taste and *your* plan), and the corporate-trust blue of fintech (Triple's blue is a clear-sky travel blue, optimistic and light). Triple is a travel buddy with a map — personal, collaborative, and gently delightful.
+
+### Principles
+
+1. **Plan, don't just book.** The itinerary is the product; booking serves the plan. *UI implication:* The day-by-day timeline is primary; recommendations and bookings flow into it. Don't bury planning under a storefront.
+
+2. **One cheerful blue owns interaction.** `#368FFF` is everywhere a user acts; nothing else competes. *UI implication:* No second saturated accent. The blue-tint family extends it for info/selected states.
+
+3. **Soft is the signature.** Pill CTAs (36px) and 20px cards make planning feel easy and friendly. *UI implication:* Don't use sharp/small radii on actions. Roundness is brand identity, not decoration.
+
+4. **It knows you, so it speaks to you.** Copy is personal and anticipatory. *UI implication:* `이런 곳은 어때요?`, `나를 아는 여행 앱` — second person, taste-fit framing. Lead with the traveler.
+
+5. **Better together.** Collaboration is built in, and the tone scales to a group. *UI implication:* Invite, share, and co-edit affordances are first-class; plural-friendly copy (`함께`) throughout.
+
+### Personas
+
+*Personas are fictional archetypes informed by publicly described Triple user segments (Korean leisure travelers and trip-planners), not individual people.*
+
+**유진 (Yu-jin), 28, Seoul.** Plans every trip in detail. Uses Triple to build a day-by-day itinerary before departure, dragging recommended places onto the timeline and checking them on the map. Loves that the app learns her taste (cafes, viewpoints) and pre-fills suggestions.
+
+**민서 (Min-seo), 25, Suwon.** Travels with friends. Triple's collaboration is why she uses it — the whole group edits one shared itinerary, so nobody's left out of planning. Picks places by the friendly recommendation cards and group votes.
+
+**태현 (Tae-hyun), 35, Daejeon.** Family trips. Wants a low-stress, glanceable plan — what to do each day, how far apart places are. Distrusts dense booking apps; Triple's calm, rounded, companion feel keeps him in it. Books hotels and tickets directly from the plan.
+
+## Colors
 
 Colors below are extracted from live computed styles on triple.guide/intro (2026-05-19). Triple does not publish a public token layer; values are observed.
 
@@ -119,7 +250,7 @@ Colors below are extracted from live computed styles on triple.guide/intro (2026
 - **Error** (`#FF3B30`): Errors, destructive.
 - **Warning** (`#FAAD14`): Pending, attention.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Stack
 ```
@@ -146,7 +277,122 @@ Triple is mobile-app-first; the web mirrors the app by using the platform native
 - **16px base body** — comfortable reading for trip tips and place descriptions.
 - **Korean-primary** — Korean is first-class; English used in place names and the app stores.
 
-## 4. Component Stylings
+## Layout
+
+### Page Structure
+- Mobile-app-first; web intro/marketing is a vertical scroll of feature sections with rounded cards.
+- In-app: a day-by-day itinerary timeline with place cards, a map view, and bottom-tab navigation.
+
+### Spacing
+- Base unit 8px; common values 4 / 8 / 12 / 16 / 20 / 24 / 32.
+- Card gutter ~12–16px; section vertical gap ~32px.
+- Page horizontal padding ~20px mobile, ~24px desktop.
+
+### Density
+**Comfortable, companion-density.** The itinerary is meant to be glanceable — generous spacing around place cards, soft tinted info blocks, lots of rounded breathing room. Not a data-dense table; a friendly planning canvas.
+
+### Border Radius Scale
+- Standard (12px): inputs, selected regions, snackbars
+- Comfortable (20px): cards, info blocks, sheets
+- Pill (36px): primary/secondary CTAs
+- Pill (999px): chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|---|---|---|
+| Mobile (primary) | <768px | App-native: itinerary timeline + bottom tabs + map toggle; full-width pill CTA |
+| Tablet | 768–1024px | Two-pane (itinerary + map), condensed nav |
+| Desktop (web) | >1024px | Centered marketing column for intro; in-app web mirrors mobile in a column |
+
+#### Touch & Media
+- Pill CTAs are large (56px) — generous tap targets.
+- Place cards swipeable; map pins tappable to popover.
+- Sticky bottom add/save CTA with safe-area inset.
+
+#### Image Behavior
+- Place photos 4:3 or 1:1, `object-fit: cover`, rounded 20px (matching cards).
+- Maps full-bleed with rounded container and blue pins.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|---|---|---|
+| Flat | no shadow | Page bg, inline, cards at rest on bands |
+| Subtle | `0 1px 3px rgba(0,0,0,0.04)` | Resting place cards |
+| Hover/Active | `0 4px 12px rgba(0,0,0,0.08)` | Lifted card, floating add button |
+| Floating | `0 6px 20px rgba(0,0,0,0.12)` | Map pins popover, sticky CTA |
+| Modal | `0 8px 24px rgba(0,0,0,0.16)` | Sheets, dialogs |
+
+Depth is gentle and soft-edged, matching the rounded geometry. The blue-tint family does as much separating work as shadows — a `#F1F7FF` block reads as "set apart" without any elevation. The signature lift is the floating add-to-itinerary button (pill, blue, soft shadow) that follows the planning flow.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+Triple's motion is light and friendly — gentle slides, soft pops, map-pin reveals. Playful at small moments, calm overall.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle/checkbox, chip select |
+| `motion-fast` | 150ms | Hover, press, add-to-itinerary check |
+| `motion-standard` | 250ms | Card lift, sheet open, tab switch, map pin drop |
+| `motion-slow` | 350ms | Page-to-detail, itinerary reorder settle |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, modals, toasts, map pins appearing |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Add-to-itinerary pop, map-pin drop |
+
+**Spring stance.** Spring is licensed for the small delight moments that make planning fun — the add-to-itinerary pop and the map-pin drop. Navigation and sheets use standard easing. The companion should feel playful when you add a place, calm when you move around.
+
+**Signature motions.**
+1. **Add to itinerary.** On tap, the place chip pops to ~1.15 and the item slides into the timeline over `motion-fast / ease-spring`, with a snackbar confirm. The signature delight.
+2. **Map-pin drop.** Pins drop onto the map with a brief overshoot `motion-standard / ease-spring`, sequenced ~40ms apart for multiple places.
+3. **Itinerary reorder.** Dragging a place reflows the timeline with `motion-standard / ease-standard`; the dropped item settles softly.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, pops/drops/slides collapse to instant opacity; skeletons go static `#F5F6F7`. No exceptions.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 (UI tokens, §1–9): triple.guide/intro live computed styles via
+Playwright MCP, 2026-05-19. Confirmed: primary CTA `#368FFF` (rgb 54,143,255)
+36px pill radius 18px·700 56px tall, the most-frequent saturated color (39×);
+info card `#F1F7FF` (rgb 241,247,255) 20px radius; selected wash
+`rgba(54,143,255,0.07)` (17×); sky accent `#1AADF6` (rgb 26,173,246); highlight
+teal `#0ECEDB` (rgb 14,206,219); white bg; system-sans font stack
+`-apple-system, "system-ui", "Segoe UI", Helvetica, Arial, ...`. Page title
+`나를 아는 여행 앱, 트리플`.
+
+Brief `#2EA6FF` vs live `#368FFF` — live adopted (verified on CTAs/active).
+
+Tier 2 (narrative): triple.guide / triple.guide/intro for product positioning
+(itinerary-first, collaboration). Corporate ownership (Triple Corporation /
+Interpark Triple / Yanolja ecosystem) is general industry knowledge from
+Korean travel-tech consolidation; not re-verified against primary press in
+this pass — treat ownership detail as background, not load-bearing.
+
+Voice samples: `일정 살펴보기`, `함께 할수록, 더 풍성해지는 여행`, and
+`나를 아는 여행 앱, 트리플` verified live (button / headline / page title).
+`이런 곳은 어때요?`, `일정에 추가했어요`, empty/error copy are ILLUSTRATIVE
+patterns following Triple's light `~요` companion register; not verbatim.
+
+Personas (§13) are fictional archetypes. Any resemblance to specific users is
+unintended.
+-->
+
+## Components
 
 ### Buttons
 
@@ -268,39 +514,23 @@ Triple is mobile-app-first; the web mirrors the app by using the platform native
 **Tier 2 sources:** getdesign.md/triple — not checked; styles.refero.design — not checked.
 **Conflicts unresolved:** Brief-provided `#2EA6FF` vs live observed `#368FFF` — live adopted as canonical primary (39 occurrences on CTAs/active). No internal conflicts.
 
-## 5. Layout Principles
+### States
 
-### Page Structure
-- Mobile-app-first; web intro/marketing is a vertical scroll of feature sections with rounded cards.
-- In-app: a day-by-day itinerary timeline with place cards, a map view, and bottom-tab navigation.
+| State | Treatment |
+|---|---|
+| **Empty (no itinerary)** | Warm line `#7E848A` (`아직 일정이 없어요`) + blue pill CTA (`첫 여행 만들기`). |
+| **Empty (search no results)** | `#7E848A` caption (`검색 결과가 없어요. 다른 장소를 찾아보세요`) + suggested places. |
+| **Loading (feed/itinerary first paint)** | Card-shaped skeletons at `#F5F6F7` matching layout, subtle shimmer. |
+| **Loading (place detail)** | Inline ring spinner in `#368FFF`; content stays. |
+| **Error (inline field)** | Input border `#FF3B30`, caption below in red, one actionable sentence. |
+| **Error (toast)** | `#1B1D1F` bg, white 14px text, 3s dismiss, one sentence, no icon. |
+| **Error (data load)** | Centered line `#1B1D1F` + retry pill `#368FFF`. Never blames the user. |
+| **Success (added to itinerary)** | Snackbar `#1B1D1F` + white text (`일정에 추가했어요`), 3s dismiss; the place card gets a blue check. |
+| **Success (trip saved/shared)** | Inline confirmation — green `#22C55E` check + share link affordance. |
+| **Skeleton** | `#F5F6F7` blocks at exact card dimensions, 20px radius, ~1.2s shimmer. |
+| **Disabled (button)** | Pill drops to `rgba(54,143,255,0.4)`, white text; geometry stable. |
 
-### Spacing
-- Base unit 8px; common values 4 / 8 / 12 / 16 / 20 / 24 / 32.
-- Card gutter ~12–16px; section vertical gap ~32px.
-- Page horizontal padding ~20px mobile, ~24px desktop.
-
-### Density
-**Comfortable, companion-density.** The itinerary is meant to be glanceable — generous spacing around place cards, soft tinted info blocks, lots of rounded breathing room. Not a data-dense table; a friendly planning canvas.
-
-### Border Radius Scale
-- Standard (12px): inputs, selected regions, snackbars
-- Comfortable (20px): cards, info blocks, sheets
-- Pill (36px): primary/secondary CTAs
-- Pill (999px): chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|---|---|---|
-| Flat | no shadow | Page bg, inline, cards at rest on bands |
-| Subtle | `0 1px 3px rgba(0,0,0,0.04)` | Resting place cards |
-| Hover/Active | `0 4px 12px rgba(0,0,0,0.08)` | Lifted card, floating add button |
-| Floating | `0 6px 20px rgba(0,0,0,0.12)` | Map pins popover, sticky CTA |
-| Modal | `0 8px 24px rgba(0,0,0,0.16)` | Sheets, dialogs |
-
-Depth is gentle and soft-edged, matching the rounded geometry. The blue-tint family does as much separating work as shadows — a `#F1F7FF` block reads as "set apart" without any elevation. The signature lift is the floating add-to-itinerary button (pill, blue, soft shadow) that follows the planning flow.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#368FFF` for every interactive element — it's the single accent.
@@ -316,25 +546,29 @@ Depth is gentle and soft-edged, matching the rounded geometry. The blue-tint fam
 - Don't fight the white canvas with heavy chrome; tints do the separating.
 - Don't use a darker fintech-trust blue; Triple's blue is bright and cheerful.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|---|---|---|
-| Mobile (primary) | <768px | App-native: itinerary timeline + bottom tabs + map toggle; full-width pill CTA |
-| Tablet | 768–1024px | Two-pane (itinerary + map), condensed nav |
-| Desktop (web) | >1024px | Centered marketing column for intro; in-app web mirrors mobile in a column |
+Triple speaks like a cheerful travel buddy who already knows your taste — warm, light, second-person, a little playful. The register is friendly Korean with `~요`/`~어요` endings (`일정에 추가했어요`, `이런 곳은 어때요?`), the companion voice, never stiff `~습니다` except in policy. The brand line — "나를 아는 여행 앱" (the app that knows me) — sets the tone: copy is personal and anticipatory, surfacing places that fit *you* and getting more useful as you plan together. Korean is primary; place names and stores in English.
 
-### Touch & Media
-- Pill CTAs are large (56px) — generous tap targets.
-- Place cards swipeable; map pins tappable to popover.
-- Sticky bottom add/save CTA with safe-area inset.
+| Context | Tone |
+|---|---|
+| CTAs | Light Korean verb form (`일정 살펴보기`, `함께 일정 만들기`, `추가하기`, `둘러보기`). |
+| Recommendations | Personal, anticipatory (`이런 곳은 어때요?`, `나를 아는 여행 앱`). |
+| Success toasts | Past-tense soft ending (`일정에 추가했어요`). No emoji on chrome. |
+| Error messages | Blameless, specific, one action (`정보를 불러올 수 없어요. 잠시 후 다시 시도해 주세요`). Never `오류가 발생했습니다`. |
+| Empty states | Warm + one action (`아직 일정이 없어요. 첫 여행을 만들어볼까요?`). |
+| Collaboration | Inviting, plural-friendly (`함께 할수록, 더 풍성해지는 여행`). |
+| Legal / booking | Formal `~합니다` register — the exception. |
 
-### Image Behavior
-- Place photos 4:3 or 1:1, `object-fit: cover`, rounded 20px (matching cards).
-- Maps full-bleed with rounded container and blue pins.
+**Forbidden phrases.** `오류가 발생했습니다` (generic error), `죄송하지만` on non-destructive failures, pressure CTAs (`지금 예약하세요!` → `예약하기`), superlatives on UI chrome, English-first strings on Korean surfaces, emoji on system toasts (emoji belongs to user trip notes).
 
-## 9. Agent Prompt Guide
+**Voice samples.**
+- `일정 살펴보기` — primary CTA, observed live on the `#368FFF` pill button. <!-- verified: triple.guide/intro via Playwright 2026-05-19 -->
+- `나를 아는 여행 앱, 트리플` — brand line (page title `나를 아는 여행 앱, 트리플`). <!-- verified: page title via Playwright 2026-05-19 -->
+- `함께 할수록, 더 풍성해지는 여행` — collaboration headline, observed live. <!-- verified: triple.guide/intro via WebFetch 2026-05-19 -->
+- `이런 곳은 어때요?` — illustrative recommendation line, soft `~요`. <!-- illustrative: not verified verbatim -->
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary/active/link: Triple Blue `#368FFF` (pressed `#1A85E8`)
@@ -361,129 +595,10 @@ Depth is gentle and soft-edged, matching the rounded geometry. The blue-tint fam
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Triple speaks like a cheerful travel buddy who already knows your taste — warm, light, second-person, a little playful. The register is friendly Korean with `~요`/`~어요` endings (`일정에 추가했어요`, `이런 곳은 어때요?`), the companion voice, never stiff `~습니다` except in policy. The brand line — "나를 아는 여행 앱" (the app that knows me) — sets the tone: copy is personal and anticipatory, surfacing places that fit *you* and getting more useful as you plan together. Korean is primary; place names and stores in English.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Light Korean verb form (`일정 살펴보기`, `함께 일정 만들기`, `추가하기`, `둘러보기`). |
-| Recommendations | Personal, anticipatory (`이런 곳은 어때요?`, `나를 아는 여행 앱`). |
-| Success toasts | Past-tense soft ending (`일정에 추가했어요`). No emoji on chrome. |
-| Error messages | Blameless, specific, one action (`정보를 불러올 수 없어요. 잠시 후 다시 시도해 주세요`). Never `오류가 발생했습니다`. |
-| Empty states | Warm + one action (`아직 일정이 없어요. 첫 여행을 만들어볼까요?`). |
-| Collaboration | Inviting, plural-friendly (`함께 할수록, 더 풍성해지는 여행`). |
-| Legal / booking | Formal `~합니다` register — the exception. |
-
-**Forbidden phrases.** `오류가 발생했습니다` (generic error), `죄송하지만` on non-destructive failures, pressure CTAs (`지금 예약하세요!` → `예약하기`), superlatives on UI chrome, English-first strings on Korean surfaces, emoji on system toasts (emoji belongs to user trip notes).
-
-**Voice samples.**
-- `일정 살펴보기` — primary CTA, observed live on the `#368FFF` pill button. <!-- verified: triple.guide/intro via Playwright 2026-05-19 -->
-- `나를 아는 여행 앱, 트리플` — brand line (page title `나를 아는 여행 앱, 트리플`). <!-- verified: page title via Playwright 2026-05-19 -->
-- `함께 할수록, 더 풍성해지는 여행` — collaboration headline, observed live. <!-- verified: triple.guide/intro via WebFetch 2026-05-19 -->
-- `이런 곳은 어때요?` — illustrative recommendation line, soft `~요`. <!-- illustrative: not verified verbatim -->
-
-## 11. Brand Narrative
-
-Triple (트리플) is a Korean travel-planning app operated by **Triple Corporation**, which became part of the **Interpark Triple** group (and the broader Yanolja ecosystem after consolidation in the Korean travel-tech sector). Its founding insight was the opposite of the OTA marketplace: most travel products help you *book*, but few help you *plan* — and planning is where the anxiety and the joy of a trip actually live. Triple built an app around the **day-by-day itinerary**: pick a destination, get taste-fit recommendations, drag places onto a timeline, see them on a map, and plan together with the people you're traveling with. The tagline — "나를 아는 여행 앱" — promises a planner that learns your preferences and anticipates them. ([triple.guide](https://triple.guide/) — product; [triple.guide/intro](https://triple.guide/intro))
-
-The design is the form of "companion, not marketplace." The cheerful sky-blue, the soft pill CTAs, the rounded tinted cards, and the light personal copy all push toward a feeling of *planning with a friend* rather than *transacting with a vendor*. Collaboration is first-class — "함께 할수록, 더 풍성해지는 여행" — so the app is built to be shared, and the warm, anticipatory tone scales naturally to a group planning a trip together.
-
-What Triple refuses: the banner-heavy, discount-shouting density of booking OTAs (Triple is calm and glanceable), the impersonal inventory feed (every surface centers *your* taste and *your* plan), and the corporate-trust blue of fintech (Triple's blue is a clear-sky travel blue, optimistic and light). Triple is a travel buddy with a map — personal, collaborative, and gently delightful.
-
-## 12. Principles
-
-1. **Plan, don't just book.** The itinerary is the product; booking serves the plan. *UI implication:* The day-by-day timeline is primary; recommendations and bookings flow into it. Don't bury planning under a storefront.
-
-2. **One cheerful blue owns interaction.** `#368FFF` is everywhere a user acts; nothing else competes. *UI implication:* No second saturated accent. The blue-tint family extends it for info/selected states.
-
-3. **Soft is the signature.** Pill CTAs (36px) and 20px cards make planning feel easy and friendly. *UI implication:* Don't use sharp/small radii on actions. Roundness is brand identity, not decoration.
-
-4. **It knows you, so it speaks to you.** Copy is personal and anticipatory. *UI implication:* `이런 곳은 어때요?`, `나를 아는 여행 앱` — second person, taste-fit framing. Lead with the traveler.
-
-5. **Better together.** Collaboration is built in, and the tone scales to a group. *UI implication:* Invite, share, and co-edit affordances are first-class; plural-friendly copy (`함께`) throughout.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by publicly described Triple user segments (Korean leisure travelers and trip-planners), not individual people.*
-
-**유진 (Yu-jin), 28, Seoul.** Plans every trip in detail. Uses Triple to build a day-by-day itinerary before departure, dragging recommended places onto the timeline and checking them on the map. Loves that the app learns her taste (cafes, viewpoints) and pre-fills suggestions.
-
-**민서 (Min-seo), 25, Suwon.** Travels with friends. Triple's collaboration is why she uses it — the whole group edits one shared itinerary, so nobody's left out of planning. Picks places by the friendly recommendation cards and group votes.
-
-**태현 (Tae-hyun), 35, Daejeon.** Family trips. Wants a low-stress, glanceable plan — what to do each day, how far apart places are. Distrusts dense booking apps; Triple's calm, rounded, companion feel keeps him in it. Books hotels and tickets directly from the plan.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no itinerary)** | Warm line `#7E848A` (`아직 일정이 없어요`) + blue pill CTA (`첫 여행 만들기`). |
-| **Empty (search no results)** | `#7E848A` caption (`검색 결과가 없어요. 다른 장소를 찾아보세요`) + suggested places. |
-| **Loading (feed/itinerary first paint)** | Card-shaped skeletons at `#F5F6F7` matching layout, subtle shimmer. |
-| **Loading (place detail)** | Inline ring spinner in `#368FFF`; content stays. |
-| **Error (inline field)** | Input border `#FF3B30`, caption below in red, one actionable sentence. |
-| **Error (toast)** | `#1B1D1F` bg, white 14px text, 3s dismiss, one sentence, no icon. |
-| **Error (data load)** | Centered line `#1B1D1F` + retry pill `#368FFF`. Never blames the user. |
-| **Success (added to itinerary)** | Snackbar `#1B1D1F` + white text (`일정에 추가했어요`), 3s dismiss; the place card gets a blue check. |
-| **Success (trip saved/shared)** | Inline confirmation — green `#22C55E` check + share link affordance. |
-| **Skeleton** | `#F5F6F7` blocks at exact card dimensions, 20px radius, ~1.2s shimmer. |
-| **Disabled (button)** | Pill drops to `rgba(54,143,255,0.4)`, white text; geometry stable. |
-
-## 15. Motion & Easing
-
-Triple's motion is light and friendly — gentle slides, soft pops, map-pin reveals. Playful at small moments, calm overall.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle/checkbox, chip select |
-| `motion-fast` | 150ms | Hover, press, add-to-itinerary check |
-| `motion-standard` | 250ms | Card lift, sheet open, tab switch, map pin drop |
-| `motion-slow` | 350ms | Page-to-detail, itinerary reorder settle |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, modals, toasts, map pins appearing |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Add-to-itinerary pop, map-pin drop |
-
-**Spring stance.** Spring is licensed for the small delight moments that make planning fun — the add-to-itinerary pop and the map-pin drop. Navigation and sheets use standard easing. The companion should feel playful when you add a place, calm when you move around.
-
-**Signature motions.**
-1. **Add to itinerary.** On tap, the place chip pops to ~1.15 and the item slides into the timeline over `motion-fast / ease-spring`, with a snackbar confirm. The signature delight.
-2. **Map-pin drop.** Pins drop onto the map with a brief overshoot `motion-standard / ease-spring`, sequenced ~40ms apart for multiple places.
-3. **Itinerary reorder.** Dragging a place reflows the timeline with `motion-standard / ease-standard`; the dropped item settles softly.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, pops/drops/slides collapse to instant opacity; skeletons go static `#F5F6F7`. No exceptions.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 (UI tokens, §1–9): triple.guide/intro live computed styles via
-Playwright MCP, 2026-05-19. Confirmed: primary CTA `#368FFF` (rgb 54,143,255)
-36px pill radius 18px·700 56px tall, the most-frequent saturated color (39×);
-info card `#F1F7FF` (rgb 241,247,255) 20px radius; selected wash
-`rgba(54,143,255,0.07)` (17×); sky accent `#1AADF6` (rgb 26,173,246); highlight
-teal `#0ECEDB` (rgb 14,206,219); white bg; system-sans font stack
-`-apple-system, "system-ui", "Segoe UI", Helvetica, Arial, ...`. Page title
-`나를 아는 여행 앱, 트리플`.
-
-Brief `#2EA6FF` vs live `#368FFF` — live adopted (verified on CTAs/active).
-
-Tier 2 (narrative): triple.guide / triple.guide/intro for product positioning
-(itinerary-first, collaboration). Corporate ownership (Triple Corporation /
-Interpark Triple / Yanolja ecosystem) is general industry knowledge from
-Korean travel-tech consolidation; not re-verified against primary press in
-this pass — treat ownership detail as background, not load-bearing.
-
-Voice samples: `일정 살펴보기`, `함께 할수록, 더 풍성해지는 여행`, and
-`나를 아는 여행 앱, 트리플` verified live (button / headline / page title).
-`이런 곳은 어때요?`, `일정에 추가했어요`, empty/error copy are ILLUSTRATIVE
-patterns following Triple's light `~요` companion register; not verbatim.
-
-Personas (§13) are fictional archetypes. Any resemblance to specific users is
-unintended.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#368fff` measures 3.22:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-outline`.** Text `#368fff` on `#ffffff` measures 3.22:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-soft`.** Text `#368fff` on `#f1f7ff` measures 2.98:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

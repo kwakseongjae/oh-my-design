@@ -1,74 +1,205 @@
 ---
-id: nike
 name: Nike
-country: US
-category: ecommerce
-homepage: "https://www.nike.com"
-primary_color: "#111111"
-logo:
-  type: simpleicons
-  slug: "nike"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    ink: "#111111"
-    canvas: "#ffffff"
-    volt: "#d8ff00"
-    volt-ui: "#cdfb40"
-    orange-heritage: "#fa5400"
-    sale: "#d43f21"
-    error: "#e34f2b"
-    success: "#0a8800"
-    info: "#1463ff"
-    warning: "#cd7b00"
-    grey-50: "#f7f7f7"
-    grey-100: "#f5f5f5"
-    grey-200: "#e5e5e5"
-    grey-300: "#cccccc"
-    grey-500: "#8d8d8d"
-    grey-600: "#757575"
-    grey-700: "#707072"
-  typography:
-    family: { sans: "Helvetica Now Text", mono: "Helvetica Now Text" }
-    hero:       { size: 80, weight: 700, lineHeight: 0.95, tracking: "-0.01em", use: "Hero headline, UPPERCASE condensed" }
-    display-lg: { size: 48, weight: 700, lineHeight: 1.0, tracking: "-0.01em", use: "Section banners (JUST IN)" }
-    display-md: { size: 36, weight: 700, lineHeight: 1.05, use: "Editorial sub-headers" }
-    h1:         { size: 28, weight: 700, lineHeight: 1.2, use: "Product title (PDP)" }
-    h2:         { size: 24, weight: 500, lineHeight: 1.25, use: "Card / section titles" }
-    subtitle:   { size: 20, weight: 400, lineHeight: 1.4, use: "Product category, list headers" }
-    body-lg:    { size: 16, weight: 400, lineHeight: 1.5, use: "Descriptions, paragraphs" }
-    body:       { size: 15, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    price:      { size: 16, weight: 500, lineHeight: 1.4, use: "Price; sale price in red" }
-    caption:    { size: 13, weight: 400, lineHeight: 1.4, use: "Metadata, color count" }
-    label:      { size: 13, weight: 700, lineHeight: 1.3, tracking: "0.04em", use: "UPPERCASE micro-labels" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
-  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
-  shadow:
-    toast: "0 4px 16px rgba(0,0,0,0.12)"
-  components:
-    button-primary: { type: button, bg: "#111111", fg: "#ffffff", radius: 9999, padding: "0 24px", font: "16px/500", use: "Add to Bag, Checkout on white" }
-    button-inverted: { type: button, bg: "#ffffff", fg: "#111111", radius: 9999, padding: "0 24px", font: "16px/500", use: "Primary CTA on dark sections" }
-    button-secondary: { type: button, bg: "transparent", fg: "#111111", radius: 9999, padding: "0 24px", font: "16px/500", use: "Secondary outline action" }
-    button-volt: { type: button, bg: "#d8ff00", fg: "#111111", radius: 9999, padding: "0 24px", font: "16px/700", use: "Energy CTA, drops/SNKRS" }
-    input-default: { type: input, bg: "#ffffff", fg: "#111111", radius: 8, padding: "14px 16px", font: "16px/400", use: "Form / checkout field" }
-    input-search: { type: input, bg: "#f5f5f5", fg: "#111111", radius: 9999, padding: "12px 20px", font: "16px/400", use: "Header search field" }
-    product-card: { type: card, bg: "#ffffff", fg: "#111111", radius: 0, use: "Grid PLP product tile" }
-    surface-card: { type: card, bg: "#f7f7f7", radius: 12, padding: "24px", use: "Member panels, bag summary" }
-    promo-pill: { type: badge, bg: "#111111", fg: "#ffffff", radius: 9999, padding: "4px 12px", font: "12px/700", use: "MEMBER ACCESS tags" }
-    sale-pill: { type: badge, bg: "#d43f21", fg: "#ffffff", radius: 4, padding: "2px 8px", font: "12px/700", use: "Discount flag on imagery" }
-    filter-chip: { type: tab, bg: "#ffffff", fg: "#111111", radius: 9999, padding: "8px 16px", font: "15px/400", use: "PLP filter row", active: "filled #111111 bg, #ffffff text" }
-    toast: { type: toast, bg: "#ffffff", fg: "#111111", radius: 8, padding: "16px 20px", use: "Cart confirmation, favorite saved" }
-    dialog: { type: dialog, bg: "#ffffff", fg: "#111111", radius: 12, padding: "32px", use: "Size guide, quick add, login wall" }
-  components_harvested: true
+colors:
+  ink: '#111111'
+  canvas: '#ffffff'
+  volt: '#d8ff00'
+  volt-ui: '#cdfb40'
+  orange-heritage: '#fa5400'
+  sale: '#d43f21'
+  error: '#e34f2b'
+  success: '#0a8800'
+  info: '#1463ff'
+  warning: '#cd7b00'
+  grey-50: '#f7f7f7'
+  grey-100: '#f5f5f5'
+  grey-200: '#e5e5e5'
+  grey-300: '#cccccc'
+  grey-500: '#8d8d8d'
+  grey-600: '#757575'
+  grey-700: '#707072'
+typography:
+  hero:
+    fontSize: 80px
+    fontWeight: 700
+    lineHeight: 0.95
+    letterSpacing: '-0.01em'
+    use: Hero headline, UPPERCASE condensed
+  display-lg:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: '-0.01em'
+    use: Section banners (JUST IN)
+  display-md:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.05
+    use: Editorial sub-headers
+  h1:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Product title (PDP)
+  h2:
+    fontSize: 24px
+    fontWeight: 500
+    lineHeight: 1.25
+    use: Card / section titles
+  subtitle:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Product category, list headers
+  body-lg:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Descriptions, paragraphs
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+  price:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Price; sale price in red
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Metadata, color count
+  label:
+    fontSize: 13px
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: 0.04em
+    use: UPPERCASE micro-labels
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 0 24px
+    typography: 16px/500
+    use: Add to Bag, Checkout on white
+  button-inverted:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 9999px
+    padding: 0 24px
+    typography: 16px/500
+    use: Primary CTA on dark sections
+  button-secondary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    rounded: 9999px
+    padding: 0 24px
+    typography: 16px/500
+    use: Secondary outline action
+  button-volt:
+    type: button
+    backgroundColor: '#d8ff00'
+    textColor: '#111111'
+    rounded: 9999px
+    padding: 0 24px
+    typography: 16px/700
+    use: Energy CTA, drops/SNKRS
+  input-default:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 8px
+    padding: 14px 16px
+    typography: 16px/400
+    use: Form / checkout field
+  input-search:
+    type: input
+    backgroundColor: '#f5f5f5'
+    textColor: '#111111'
+    rounded: 9999px
+    padding: 12px 20px
+    typography: 16px/400
+    use: Header search field
+  product-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 0px
+    use: Grid PLP product tile
+  surface-card:
+    type: card
+    backgroundColor: '#f7f7f7'
+    rounded: 12px
+    padding: 24px
+    use: Member panels, bag summary
+  promo-pill:
+    type: badge
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 4px 12px
+    typography: 12px/700
+    use: MEMBER ACCESS tags
+  sale-pill:
+    type: badge
+    backgroundColor: '#d43f21'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/700
+    use: Discount flag on imagery
+  filter-chip:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 9999px
+    padding: 8px 16px
+    typography: 15px/400
+    use: PLP filter row
+    active: 'filled #111111 bg, #ffffff text'
+  toast:
+    type: toast
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 8px
+    padding: 16px 20px
+    use: Cart confirmation, favorite saved
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 12px
+    padding: 32px
+    use: Size guide, quick add, login wall
+fonts:
+  roles:
+    sans: Helvetica Now Text
+    mono: Helvetica Now Text
 ---
 
 # Design System Inspiration of Nike
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Nike's digital storefront is athletic minimalism turned into a sales engine. The page opens on pure white (`#ffffff`) with near-black ink (`#111111`) and a single high-voltage accent — **Volt** (`#d8ff00` / commonly rendered `#cdfb40`) — held in reserve for moments of energy. The default mood is editorial and confident: enormous product photography sits on generous whitespace, headlines shout in condensed bold caps, and almost nothing competes with the product or the swoosh. This is not a "friendly" e-commerce template; it is a brand magazine that happens to take payment.
 
@@ -85,7 +216,7 @@ What defines Nike visually is *contrast as a system*: black on white, then white
 - Photography-first: huge imagery, minimal chrome, swoosh as punctuation
 - Flat surfaces — depth comes from contrast and scale, not shadow
 
-## Primary tasks
+### Primary tasks
 
 - Add a shoe to your bag straight from the product grid
 - Narrow a product list with filters, and adjust when nothing matches
@@ -93,7 +224,38 @@ What defines Nike visually is *contrast as a system*: black on white, then white
 - Check size guidance, then reorder the model you already run in
 - Buy a limited-release pair the moment it goes live
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Nike was founded in 1964 as **Blue Ribbon Sports** by University of Oregon runner **Phil Knight** and his coach **Bill Bowerman**, rebranding to **Nike** — for the Greek goddess of victory — in 1971. That same year design student **Carolyn Davidson** drew the Swoosh for $35; it would become one of the most recognized marks on earth. The waffle sole, born from Bowerman pouring rubber into a kitchen waffle iron, set the template: performance innovation as brand story.
+
+The aesthetic doctrine is athletic clarity. Nike adopted **Futura Bold Condensed** as its brand typeface in the mid-1970s — a geometric, no-nonsense face that reads as fast and engineered. In 1988 the agency Wieden+Kennedy delivered **"Just Do It,"** set in Futura Condensed Extra Black, and the brand voice was fixed: imperative, universal, unstoppable. The visual identity has stayed deliberately spare ever since — black, white, and the swoosh — so the product and the athlete are always the loudest thing on screen.
+
+Online, Nike is one of the largest direct-to-consumer retailers in the world, with the **Nike**, **Jordan**, **SNKRS**, and **Nike Run/Training Club** apps forming a membership ecosystem. The design's job is commerce that feels like culture: a storefront that reads like a sports magazine, where buying a shoe is buying into a story about effort and victory. Volt — the neon yellow-green Nike popularized in elite running and the 2012 Olympics — is the one color permitted to break the monochrome, because it signals pure energy.
+
+What Nike refuses: clutter, timidity, decoration for its own sake, and any visual that competes with the athlete. The brand occupies the space where minimalism meets adrenaline — restrained in palette, maximal in conviction.
+
+### Principles
+
+1. **Product is the hero.** Photography dominates; UI chrome shrinks to invisibility. If a UI element competes with the shoe, the UI loses.
+2. **Black and white carry the brand.** Color is rationed. A view should work in monochrome; accent is the exception that creates emphasis.
+3. **One spark per view.** Volt (or a single status color) appears once, intentionally. Two sparks is no spark.
+4. **Command, don't ask.** Copy and CTAs use imperative verbs. The interface has a point of view and states it plainly.
+5. **Flat is premium.** Depth comes from contrast, scale, and inversion — not shadows. Resting surfaces stay flat.
+6. **Left-aligned authority.** Text hangs on a left rail like editorial print. Centering is reserved for solitary CTAs.
+7. **Condensed shouts, grotesque reads.** Display type is condensed bold caps; running text is clean Helvetica Now. Never confuse the two roles.
+8. **Speed is a feeling.** Tight leading, italic energy, edge-bleed imagery, and snappy motion make a static page feel kinetic.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described athletic-retail segments, not individual people.*
+
+**Marcus, 24, Atlanta.** Sneakerhead and SNKRS power user. Has push notifications on for drops; can recite release calendars. Shops on mobile, mostly at midnight ET when limited pairs go live. Judges the experience by speed and fairness of the draw — a laggy add-to-bag during a drop is unforgivable. Reads the product page for materials and colorway names, not marketing copy. Volt and OG colorways catch his eye instantly.
+
+**Priya, 31, Chicago.** Marathon trainer, three runs a week. Uses Nike Run Club and buys for performance — cushioning, drop, weight matter more than hype. Wants honest product detail, size guidance, and easy reorder of the same model. Trusts the brand's running pedigree. Browses on desktop at lunch, buys on mobile. Annoyed by anything that hides the spec behind lifestyle imagery.
+
+**Dani, 17, Los Angeles.** High-school athlete and style-conscious buyer. Discovers through Instagram and the Nike app's editorial tiles. Responds to campaign energy — bold headlines, athletes, the "Just Do It" feeling. Budget-aware, watches sale labels and member-exclusive access. Mixes performance and lifestyle; cares how it looks as much as how it runs. Mobile-only, fast scroller — the image has one second to land.
+
+## Colors
 
 ### Primary
 - **Nike Black** (`#111111`): `black`. Primary ink, headings, body text, primary button fill, inverted section backgrounds. The dominant brand color — Nike is a black-and-white brand first.
@@ -126,7 +288,7 @@ What defines Nike visually is *contrast as a system*: black on white, then white
 - **Inverted Surface**: `#111111`. Full-bleed dark sections, footer, video overlays.
 - **Overlay Scrim**: `rgba(0,0,0,0.5)` to `rgba(0,0,0,0.75)`. Modal/quick-view backdrop, image gradients for legible overlaid text.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display / Headlines**: `"Nike Futura", "Futura ND", "Trade Gothic", "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif` — condensed, bold, frequently uppercase.
@@ -156,7 +318,140 @@ What defines Nike visually is *contrast as a system*: black on white, then white
 - **Italic implies motion.** Italicized condensed caps are reserved for energy/sport moments — "JUST DO IT", drop announcements.
 - **Two weights do the work.** UI text lives at 400 (body) and 500 (emphasis/price/buttons); 700 is for display and labels only.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- Section vertical rhythm: 64-96px between major editorial blocks
+- Product grid gutter: 16px; card internal text gap: 8-12px
+
+### Grid & Container
+- Max content width: ~1600px, centered, with edge padding 24-48px
+- PLP grid: 2 columns (mobile) → 3 → 4 (desktop)
+- Hero blocks: full-bleed, edge-to-edge imagery breaking the container
+- Editorial: asymmetric 1:1 or 2:1 splits, left-aligned text columns
+
+### Whitespace Philosophy
+- **Product breathes.** Generous margin around photography; the shoe is never crowded.
+- **Edge-to-edge drama.** Heroes and campaign blocks bleed past the container to feel immersive; text modules respect the grid.
+- **Left-aligned authority.** Headlines and copy hang on a left rail like print editorial — rarely centered except single CTAs.
+
+### Border Radius Scale
+- Square (0px): Product images, full-bleed heroes, sale flags
+- Compact (4px): Size swatches, small tags
+- Standard (8px): Inputs, surface tags, toasts
+- Comfortable (12px): Surface cards, carousel cards, modals
+- Pill (9999px): Buttons, chips, search field, promo pills
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <600px | 2-col product grid, full-width pill CTAs, hamburger nav, sticky add-to-bag |
+| Tablet | 600-960px | 3-col grid, condensed nav, side margins 24px |
+| Desktop | 960-1440px | 4-col grid, full mega-nav, hero edge-bleed |
+| Wide | >1440px | Max 1600px content, larger heroes, increased whitespace |
+
+#### Touch Targets
+- Buttons: 48px default height, 60px hero — full-width pills on mobile
+- Size swatches: minimum 44px tap height
+- Nav/menu items: 48px row height
+
+#### Collapsing Strategy
+- Mega-nav collapses to slide-in drawer on mobile
+- PDP image gallery → swipeable carousel under 960px
+- Sticky bottom "Add to Bag" bar appears on mobile PDP scroll
+- Editorial 2-col splits stack vertically on mobile, image first
+
+#### Image Behavior
+- Hero/campaign images: full-bleed, art-directed crops per breakpoint
+- Product images: square 1:1, white or neutral background, lazy-loaded
+- Maintain aspect ratio; never letterbox the product
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Product cards, sections, the default — Nike is a flat brand |
+| Hairline (Level 1) | 1px `#e5e5e5` border | Inputs, surface cards, filter chips |
+| Floating (Level 2) | `0 4px 16px rgba(0,0,0,0.12)` | Toasts, dropdowns, sticky add-to-bag bar |
+| Modal (Level 3) | `0 8px 32px rgba(0,0,0,0.18)` | Quick view, size guide, login dialogs |
+| Sticky header | `0 1px 0 rgba(0,0,0,0.08)` on scroll | Pinned nav separation |
+
+**Shadow Philosophy**: Nike communicates hierarchy through **contrast and scale**, not depth. Most surfaces are perfectly flat; an item earns a shadow only when it floats above content (toast, modal, sticky bar). There are no colored shadows and no multi-layer elevation stacks — depth would compete with the photography. Inverted black sections create separation without any shadow at all.
+
+### Blur Effects
+- Sticky header gains a subtle backdrop blur + white translucency on scroll over imagery
+- Video heroes use gradient scrims (not blur) for text legibility
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.toast`: `0 4px 16px rgba(0,0,0,0.12)`
+
+## Motion & Easing
+
+**Durations** (named):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Reduced-motion fallback, state flips |
+| `motion-fast` | 150ms | Hover, focus, button press, chip select |
+| `motion-standard` | 250ms | Default — quick-add reveal, toast in, tab switch |
+| `motion-slow` | 400ms | Image gallery transitions, section reveals |
+| `motion-hero` | 600ms | Hero/campaign entrance, parallax settle |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — toasts, drawers, quick-add |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, pops out |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — tabs, accordions, hover scale |
+| `ease-power` | `cubic-bezier(0.2, 0.8, 0.2, 1)` | Athletic accelerate-out — image zoom, hero parallax, the "fast" feeling |
+
+**Signature motions.**
+
+1. **Hover product zoom.** On product-card hover the image scales `1.0 → 1.04` over `motion-standard` with `ease-power`, conveying athletic momentum. No shadow lift — scale alone.
+2. **Quick-add reveal.** A black pill "Add to Bag" slides up from the card's bottom edge (`y+12px → 0`, `motion-standard / ease-enter`) on hover, fading in. Exits faster (`motion-fast / ease-exit`).
+3. **Section inversion / scroll reveal.** Editorial blocks fade-and-rise (`y+24px → 0`, `motion-slow / ease-power`) as they enter the viewport — content arrives with momentum, not a passive fade.
+4. **Bag toast.** Confirmation slides from the top-right (`x+24px → 0`, `motion-standard / ease-enter`), holds, then exits with `ease-exit`.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; scales and parallax disable, crossfades replace slides. The store stays fully usable.
+
+<!--
+OmD v0.1 Sources — Nike
+
+Token layer (sections 1-9): grounded in Nike's documented brand system —
+black (#111111) + white (#ffffff) core with Volt (#d8ff00) energy accent,
+pill button geometry, condensed-display + Helvetica grotesque typography.
+Live WebFetch of nike.com returned HTTP 403 (bot protection); tokens reflect
+Nike's published identity and observed storefront conventions rather than a
+single scraped DOM, so exact pixel values are representative, not asserted as
+pulled from one live computed style.
+
+Typography history (Futura ND Nike 365 / Futura Bold Condensed since mid-1970s;
+Trade Gothic + Helvetica Now for digital UI; "Just Do It" in Futura Condensed
+Extra Black, 1988) corroborated via WebSearch:
+- designyourway.net/blog/nike-font
+- fontsinuse.com/uses/14239/nike-website-2016
+- fontyouneed.com / fontinlogo.com
+
+Brand narrative facts (Blue Ribbon Sports 1964, renamed Nike 1971, Swoosh by
+Carolyn Davidson for $35, Bowerman waffle sole, Wieden+Kennedy "Just Do It"
+1988) are widely documented public history.
+
+Volt exact hex varies by surface (#d8ff00 product / #cdfb40 UI accent); both
+retained. Heritage orange #fa5400 noted as packaging/legacy, not core UI accent.
+
+Personas (§13) are fictional archetypes informed by publicly described athletic-
+retail segments. Interpretive claims (e.g., "one spark per view") are editorial
+readings of the design, not documented Nike statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -352,49 +647,24 @@ Nike's primary interactive shape is the **pill** (fully rounded). Buttons are bo
 **Tier 2 sources:** Nike typography history (Futura Bold Condensed since mid-1970s; Trade Gothic / Helvetica Now for digital UI) — designyourway.net, fontsinuse.com.
 **Conflicts unresolved:** none. Volt exact hex varies by surface (`#d8ff00` product / `#cdfb40` UI accent); both retained.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
-- Section vertical rhythm: 64-96px between major editorial blocks
-- Product grid gutter: 16px; card internal text gap: 8-12px
+| State | Treatment |
+|---|---|
+| **Empty (bag)** | Centered short line `#111111` 18px ("Your bag is empty."), one black pill CTA "Start Shopping". No illustration clutter. |
+| **Empty (search/filter)** | `#757575` caption ("No results. Try another filter."), filters remain editable. |
+| **Loading (grid)** | Skeleton tiles at `#f5f5f5` matching square product aspect ratio, 1.2s shimmer with 8% white sweep. Price/title as grey bars. |
+| **Loading (button)** | Label replaced by white spinner on `#111111`; button width preserved, no double-submit. |
+| **Error (inline field)** | 1.5px `#d43f21` border, helper text below in `#d43f21` 13px, one actionable sentence ("Select a size to continue."). |
+| **Error (page)** | Centered black headline + grey body + black pill "Try Again". No stack traces, no apology spam. |
+| **Success (added to bag)** | White toast top-right, 1px `#e5e5e5` border, `0 4px 16px rgba(0,0,0,0.12)` shadow, "Added to Bag" + mini product thumb. Auto-dismiss ~4s. |
+| **Sold out** | Size swatch text `#cccccc` with diagonal strike; "Sold Out" replaces CTA; "Notify Me" outline button offered. |
+| **Low stock** | Amber `#cd7b00` caption ("Almost Sold Out") under price. |
+| **Sale** | Original price struck-through `#8d8d8d`, sale price `#d43f21`, optional `#d43f21` "Sale" pill on image. |
+| **Disabled (button)** | `#e5e5e5` background, `#8d8d8d` text, no pointer. |
+| **Skeleton** | `#f5f5f5` blocks at exact final dimensions, shimmer at component radius (0px image / pill button). |
 
-### Grid & Container
-- Max content width: ~1600px, centered, with edge padding 24-48px
-- PLP grid: 2 columns (mobile) → 3 → 4 (desktop)
-- Hero blocks: full-bleed, edge-to-edge imagery breaking the container
-- Editorial: asymmetric 1:1 or 2:1 splits, left-aligned text columns
-
-### Whitespace Philosophy
-- **Product breathes.** Generous margin around photography; the shoe is never crowded.
-- **Edge-to-edge drama.** Heroes and campaign blocks bleed past the container to feel immersive; text modules respect the grid.
-- **Left-aligned authority.** Headlines and copy hang on a left rail like print editorial — rarely centered except single CTAs.
-
-### Border Radius Scale
-- Square (0px): Product images, full-bleed heroes, sale flags
-- Compact (4px): Size swatches, small tags
-- Standard (8px): Inputs, surface tags, toasts
-- Comfortable (12px): Surface cards, carousel cards, modals
-- Pill (9999px): Buttons, chips, search field, promo pills
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Product cards, sections, the default — Nike is a flat brand |
-| Hairline (Level 1) | 1px `#e5e5e5` border | Inputs, surface cards, filter chips |
-| Floating (Level 2) | `0 4px 16px rgba(0,0,0,0.12)` | Toasts, dropdowns, sticky add-to-bag bar |
-| Modal (Level 3) | `0 8px 32px rgba(0,0,0,0.18)` | Quick view, size guide, login dialogs |
-| Sticky header | `0 1px 0 rgba(0,0,0,0.08)` on scroll | Pinned nav separation |
-
-**Shadow Philosophy**: Nike communicates hierarchy through **contrast and scale**, not depth. Most surfaces are perfectly flat; an item earns a shadow only when it floats above content (toast, modal, sticky bar). There are no colored shadows and no multi-layer elevation stacks — depth would compete with the photography. Inverted black sections create separation without any shadow at all.
-
-### Blur Effects
-- Sticky header gains a subtle backdrop blur + white translucency on scroll over imagery
-- Video heroes use gradient scrims (not blur) for text legibility
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Lead with black (`#111111`) and white (`#ffffff`) — they carry the brand
@@ -414,33 +684,23 @@ Nike's primary interactive shape is the **pill** (fully rounded). Buttons are bo
 - Don't crowd the product — whitespace signals premium
 - Don't use Nike orange (`#fa5400`) as the primary UI accent — it's heritage/packaging
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | 2-col product grid, full-width pill CTAs, hamburger nav, sticky add-to-bag |
-| Tablet | 600-960px | 3-col grid, condensed nav, side margins 24px |
-| Desktop | 960-1440px | 4-col grid, full mega-nav, hero edge-bleed |
-| Wide | >1440px | Max 1600px content, larger heroes, increased whitespace |
+Nike speaks like a coach who believes in you and refuses small talk. The voice is imperative, motivational, and brief — verbs first, second person, present tense. Headlines command ("Just Do It", "Dream Crazy", "Find Your Greatness"). Product copy is confident and benefit-led, never apologetic. Sentences are short. Periods land like a finish line.
 
-### Touch Targets
-- Buttons: 48px default height, 60px hero — full-width pills on mobile
-- Size swatches: minimum 44px tap height
-- Nav/menu items: 48px row height
+| Context | Tone |
+|---|---|
+| CTAs | Imperative, sentence case ("Add to Bag", "Shop All", "Become a Member") |
+| Campaign headlines | UPPERCASE, aspirational, 2-5 words ("JUST DO IT", "MOVE TO ZERO") |
+| Product titles | Plain, factual, model-forward ("Nike Air Max 270") |
+| Success states | Affirming, brief ("Added to Bag", "You're in.") |
+| Error messages | Direct, blameless, actionable ("Select a size to continue.") |
+| Member / loyalty | Insider, exclusive, warm ("Members get more. Join us.") |
+| Sustainability | Plainspoken, proud, no greenwash jargon ("Move to Zero — our journey toward zero carbon and zero waste.") |
 
-### Collapsing Strategy
-- Mega-nav collapses to slide-in drawer on mobile
-- PDP image gallery → swipeable carousel under 960px
-- Sticky bottom "Add to Bag" bar appears on mobile PDP scroll
-- Editorial 2-col splits stack vertically on mobile, image first
+**Forbidden patterns.** No hedging ("maybe", "kind of"), no corporate apology ("We apologize for the inconvenience"), no exclamation-mark spam, no jargon. Never weaken a CTA ("Click here to maybe add"). Energy without noise.
 
-### Image Behavior
-- Hero/campaign images: full-bleed, art-directed crops per breakpoint
-- Product images: square 1:1, white or neutral background, lazy-loaded
-- Maintain aspect ratio; never letterbox the product
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary / Ink: Nike Black (`#111111`)
@@ -472,125 +732,8 @@ Nike's primary interactive shape is the **pill** (fully rounded). Buttons are bo
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Nike speaks like a coach who believes in you and refuses small talk. The voice is imperative, motivational, and brief — verbs first, second person, present tense. Headlines command ("Just Do It", "Dream Crazy", "Find Your Greatness"). Product copy is confident and benefit-led, never apologetic. Sentences are short. Periods land like a finish line.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Imperative, sentence case ("Add to Bag", "Shop All", "Become a Member") |
-| Campaign headlines | UPPERCASE, aspirational, 2-5 words ("JUST DO IT", "MOVE TO ZERO") |
-| Product titles | Plain, factual, model-forward ("Nike Air Max 270") |
-| Success states | Affirming, brief ("Added to Bag", "You're in.") |
-| Error messages | Direct, blameless, actionable ("Select a size to continue.") |
-| Member / loyalty | Insider, exclusive, warm ("Members get more. Join us.") |
-| Sustainability | Plainspoken, proud, no greenwash jargon ("Move to Zero — our journey toward zero carbon and zero waste.") |
-
-**Forbidden patterns.** No hedging ("maybe", "kind of"), no corporate apology ("We apologize for the inconvenience"), no exclamation-mark spam, no jargon. Never weaken a CTA ("Click here to maybe add"). Energy without noise.
-
-## 11. Brand Narrative
-
-Nike was founded in 1964 as **Blue Ribbon Sports** by University of Oregon runner **Phil Knight** and his coach **Bill Bowerman**, rebranding to **Nike** — for the Greek goddess of victory — in 1971. That same year design student **Carolyn Davidson** drew the Swoosh for $35; it would become one of the most recognized marks on earth. The waffle sole, born from Bowerman pouring rubber into a kitchen waffle iron, set the template: performance innovation as brand story.
-
-The aesthetic doctrine is athletic clarity. Nike adopted **Futura Bold Condensed** as its brand typeface in the mid-1970s — a geometric, no-nonsense face that reads as fast and engineered. In 1988 the agency Wieden+Kennedy delivered **"Just Do It,"** set in Futura Condensed Extra Black, and the brand voice was fixed: imperative, universal, unstoppable. The visual identity has stayed deliberately spare ever since — black, white, and the swoosh — so the product and the athlete are always the loudest thing on screen.
-
-Online, Nike is one of the largest direct-to-consumer retailers in the world, with the **Nike**, **Jordan**, **SNKRS**, and **Nike Run/Training Club** apps forming a membership ecosystem. The design's job is commerce that feels like culture: a storefront that reads like a sports magazine, where buying a shoe is buying into a story about effort and victory. Volt — the neon yellow-green Nike popularized in elite running and the 2012 Olympics — is the one color permitted to break the monochrome, because it signals pure energy.
-
-What Nike refuses: clutter, timidity, decoration for its own sake, and any visual that competes with the athlete. The brand occupies the space where minimalism meets adrenaline — restrained in palette, maximal in conviction.
-
-## 12. Principles
-
-1. **Product is the hero.** Photography dominates; UI chrome shrinks to invisibility. If a UI element competes with the shoe, the UI loses.
-2. **Black and white carry the brand.** Color is rationed. A view should work in monochrome; accent is the exception that creates emphasis.
-3. **One spark per view.** Volt (or a single status color) appears once, intentionally. Two sparks is no spark.
-4. **Command, don't ask.** Copy and CTAs use imperative verbs. The interface has a point of view and states it plainly.
-5. **Flat is premium.** Depth comes from contrast, scale, and inversion — not shadows. Resting surfaces stay flat.
-6. **Left-aligned authority.** Text hangs on a left rail like editorial print. Centering is reserved for solitary CTAs.
-7. **Condensed shouts, grotesque reads.** Display type is condensed bold caps; running text is clean Helvetica Now. Never confuse the two roles.
-8. **Speed is a feeling.** Tight leading, italic energy, edge-bleed imagery, and snappy motion make a static page feel kinetic.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described athletic-retail segments, not individual people.*
-
-**Marcus, 24, Atlanta.** Sneakerhead and SNKRS power user. Has push notifications on for drops; can recite release calendars. Shops on mobile, mostly at midnight ET when limited pairs go live. Judges the experience by speed and fairness of the draw — a laggy add-to-bag during a drop is unforgivable. Reads the product page for materials and colorway names, not marketing copy. Volt and OG colorways catch his eye instantly.
-
-**Priya, 31, Chicago.** Marathon trainer, three runs a week. Uses Nike Run Club and buys for performance — cushioning, drop, weight matter more than hype. Wants honest product detail, size guidance, and easy reorder of the same model. Trusts the brand's running pedigree. Browses on desktop at lunch, buys on mobile. Annoyed by anything that hides the spec behind lifestyle imagery.
-
-**Dani, 17, Los Angeles.** High-school athlete and style-conscious buyer. Discovers through Instagram and the Nike app's editorial tiles. Responds to campaign energy — bold headlines, athletes, the "Just Do It" feeling. Budget-aware, watches sale labels and member-exclusive access. Mixes performance and lifestyle; cares how it looks as much as how it runs. Mobile-only, fast scroller — the image has one second to land.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (bag)** | Centered short line `#111111` 18px ("Your bag is empty."), one black pill CTA "Start Shopping". No illustration clutter. |
-| **Empty (search/filter)** | `#757575` caption ("No results. Try another filter."), filters remain editable. |
-| **Loading (grid)** | Skeleton tiles at `#f5f5f5` matching square product aspect ratio, 1.2s shimmer with 8% white sweep. Price/title as grey bars. |
-| **Loading (button)** | Label replaced by white spinner on `#111111`; button width preserved, no double-submit. |
-| **Error (inline field)** | 1.5px `#d43f21` border, helper text below in `#d43f21` 13px, one actionable sentence ("Select a size to continue."). |
-| **Error (page)** | Centered black headline + grey body + black pill "Try Again". No stack traces, no apology spam. |
-| **Success (added to bag)** | White toast top-right, 1px `#e5e5e5` border, `0 4px 16px rgba(0,0,0,0.12)` shadow, "Added to Bag" + mini product thumb. Auto-dismiss ~4s. |
-| **Sold out** | Size swatch text `#cccccc` with diagonal strike; "Sold Out" replaces CTA; "Notify Me" outline button offered. |
-| **Low stock** | Amber `#cd7b00` caption ("Almost Sold Out") under price. |
-| **Sale** | Original price struck-through `#8d8d8d`, sale price `#d43f21`, optional `#d43f21` "Sale" pill on image. |
-| **Disabled (button)** | `#e5e5e5` background, `#8d8d8d` text, no pointer. |
-| **Skeleton** | `#f5f5f5` blocks at exact final dimensions, shimmer at component radius (0px image / pill button). |
-
-## 15. Motion & Easing
-
-**Durations** (named):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Reduced-motion fallback, state flips |
-| `motion-fast` | 150ms | Hover, focus, button press, chip select |
-| `motion-standard` | 250ms | Default — quick-add reveal, toast in, tab switch |
-| `motion-slow` | 400ms | Image gallery transitions, section reveals |
-| `motion-hero` | 600ms | Hero/campaign entrance, parallax settle |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — toasts, drawers, quick-add |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, pops out |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — tabs, accordions, hover scale |
-| `ease-power` | `cubic-bezier(0.2, 0.8, 0.2, 1)` | Athletic accelerate-out — image zoom, hero parallax, the "fast" feeling |
-
-**Signature motions.**
-
-1. **Hover product zoom.** On product-card hover the image scales `1.0 → 1.04` over `motion-standard` with `ease-power`, conveying athletic momentum. No shadow lift — scale alone.
-2. **Quick-add reveal.** A black pill "Add to Bag" slides up from the card's bottom edge (`y+12px → 0`, `motion-standard / ease-enter`) on hover, fading in. Exits faster (`motion-fast / ease-exit`).
-3. **Section inversion / scroll reveal.** Editorial blocks fade-and-rise (`y+24px → 0`, `motion-slow / ease-power`) as they enter the viewport — content arrives with momentum, not a passive fade.
-4. **Bag toast.** Confirmation slides from the top-right (`x+24px → 0`, `motion-standard / ease-enter`), holds, then exits with `ease-exit`.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; scales and parallax disable, crossfades replace slides. The store stays fully usable.
-
-<!--
-OmD v0.1 Sources — Nike
-
-Token layer (sections 1-9): grounded in Nike's documented brand system —
-black (#111111) + white (#ffffff) core with Volt (#d8ff00) energy accent,
-pill button geometry, condensed-display + Helvetica grotesque typography.
-Live WebFetch of nike.com returned HTTP 403 (bot protection); tokens reflect
-Nike's published identity and observed storefront conventions rather than a
-single scraped DOM, so exact pixel values are representative, not asserted as
-pulled from one live computed style.
-
-Typography history (Futura ND Nike 365 / Futura Bold Condensed since mid-1970s;
-Trade Gothic + Helvetica Now for digital UI; "Just Do It" in Futura Condensed
-Extra Black, 1988) corroborated via WebSearch:
-- designyourway.net/blog/nike-font
-- fontsinuse.com/uses/14239/nike-website-2016
-- fontyouneed.com / fontinlogo.com
-
-Brand narrative facts (Blue Ribbon Sports 1964, renamed Nike 1971, Swoosh by
-Carolyn Davidson for $35, Bowerman waffle sole, Wieden+Kennedy "Just Do It"
-1988) are widely documented public history.
-
-Volt exact hex varies by surface (#d8ff00 product / #cdfb40 UI accent); both
-retained. Heritage orange #fa5400 noted as packaging/legacy, not core UI accent.
-
-Personas (§13) are fictional archetypes informed by publicly described athletic-
-retail segments. Interpretive claims (e.g., "one spark per view") are editorial
-readings of the design, not documented Nike statements.
--->
+- **Contrast, `button-secondary`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

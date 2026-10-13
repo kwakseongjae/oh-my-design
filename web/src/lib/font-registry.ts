@@ -1,3 +1,5 @@
+import { namedSection } from "./references/sections";
+
 /**
  * Per-font metadata: license, install source, and friendly notes.
  *
@@ -466,13 +468,39 @@ function splitFlowCommas(s: string): string[] {
  *  display / playful / …). Returns null when there's no frontmatter family
  *  block. Hand-parsed (no YAML dep) to match how componentsFromTokens reads
  *  the flow-style tokens block. */
+/**
+ * Indented `key: value` lines under a block-style header line, e.g. the `family:` map a js-yaml dump
+ * writes, or DESIGN.md v3's `fonts:\n  roles:` (spec/design-md-v3.md §6.2).
+ */
+function blockMapAfter(fm: string, header: RegExp): Record<string, string> | null {
+  const lines = fm.split("\n");
+  const at = lines.findIndex((line) => header.test(line));
+  if (at < 0) return null;
+  const baseIndent = lines[at].match(/^\s*/)![0].length;
+  const obj: Record<string, string> = {};
+  for (const line of lines.slice(at + 1)) {
+    if (!line.trim()) continue;
+    const indent = line.match(/^\s*/)![0].length;
+    if (indent <= baseIndent) break;
+    const m = line.match(/^\s*([^:#]+?):\s+(.+)$/);
+    if (!m) continue;
+    const k = m[1].trim().replace(/^['"]|['"]$/g, "");
+    const v = m[2].trim().replace(/^['"]|['"]$/g, "");
+    if (k && v) obj[k] = v;
+  }
+  return Object.keys(obj).length ? obj : null;
+}
+
 function parseFrontmatterFamily(md: string): Record<string, string> | null {
   if (!md.startsWith("---")) return null;
   const fmEnd = md.indexOf("\n---", 3);
   if (fmEnd === -1) return null;
   const fm = md.slice(0, fmEnd);
   const m = fm.match(/^\s*family:\s*\{([^}]*)\}/m);
-  if (!m) return null;
+  if (!m) {
+    return blockMapAfter(fm, /^\s+family:\s*$/)
+      ?? (/^fonts:\s*$/m.test(fm) ? blockMapAfter(fm.slice(fm.search(/^fonts:\s*$/m)), /^\s+roles:\s*$/) : null);
+  }
   const obj: Record<string, string> = {};
   for (const pair of splitFlowCommas(m[1])) {
     const i = pair.indexOf(":");
@@ -485,7 +513,7 @@ function parseFrontmatterFamily(md: string): Record<string, string> | null {
 }
 
 function sec3Of(md: string): string {
-  return md.match(/## 3\. Typography[\s\S]*?(?=## 4\.)/i)?.[0] ?? md;
+  return md.match(/## 3\. Typography[\s\S]*?(?=## 4\.)/i)?.[0] ?? (namedSection(md, "Typography") || md);
 }
 
 /** §3-prose primary-font fallback. Mirrors the historical route.ts patterns but

@@ -1,0 +1,437 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "elastic",
+    "name": "Elastic UI",
+    "country": "US",
+    "category": "developer-tools",
+    "homepage": "https://eui.elastic.co/",
+    "primary_color": "#0b64dd",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=eui.elastic.co&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Only values observed on the supplied public EUI capture are UI tokens. Elastic corporate history, product-brand writing, EUI documentation, and declared-only fonts remain separate evidence domains.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-eui-home",
+        "url": "https://eui.elastic.co/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "components",
+        "kind": "public-eui-components-docs",
+        "url": "https://eui.elastic.co/docs/components/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "card-docs",
+        "kind": "public-eui-card-docs",
+        "url": "https://eui.elastic.co/docs/components/containers/card/index.html",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "eui-home-live",
+        "kind": "product-surface",
+        "url": "https://eui.elastic.co/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "eui-components-live",
+        "kind": "official-doc",
+        "url": "https://eui.elastic.co/docs/components/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "eui-card-live",
+        "kind": "official-doc",
+        "url": "https://eui.elastic.co/docs/components/containers/card/index.html",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "eui-font-settings",
+        "kind": "official-doc",
+        "url": "https://eui.elastic.co/docs/getting-started/theming/tokens/typography/font-settings/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "eui-theme-provider",
+        "kind": "official-doc",
+        "url": "https://eui.elastic.co/docs/getting-started/theming/theme-provider/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "elastic-history",
+        "kind": "brand-asset",
+        "url": "https://www.elastic.co/about/press/elasticsearch-changes-name-to-elastic-to-reflect-wide-adoption-beyond-search",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "elastic-design-hierarchy",
+        "kind": "brand-asset",
+        "url": "https://www.elastic.co/blog/redesigning-product-logos-and-icons-while-building-a-design-hierarchy-at-elastic",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "eui-elastic-license",
+        "kind": "license",
+        "url": "https://github.com/elastic/eui/blob/main/licenses/ELASTIC-LICENSE-2.0.md",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground-strong": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.action": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.action-subtle": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.surface-subdued": {
+        "surface_id": "card-docs",
+        "source_id": "eui-card-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "eui-font-settings",
+        "method": "computed-style-and-official-token-doc",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontSize": {
+        "surface_id": "card-docs",
+        "source_id": "eui-card-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontWeight": {
+        "surface_id": "card-docs",
+        "source_id": "eui-card-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.lineHeight": {
+        "surface_id": "card-docs",
+        "source_id": "eui-card-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.use": {
+        "surface_id": "card-docs",
+        "source_id": "eui-card-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontSize": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontWeight": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.lineHeight": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.use": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "home",
+        "source_id": "eui-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xxl": {
+        "surface_id": "card-docs",
+        "source_id": "eui-card-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.type": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.backgroundColor": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.textColor": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.rounded": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.padding": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.typography": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-sidebar-category.use": {
+        "surface_id": "components",
+        "source_id": "eui-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 14,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 2,
+      "missing-primary": 1,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 7
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.docs-sidebar-category.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.docs-sidebar-category.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.docs-sidebar-category",
+        "message": "textColor (#1d2a3e) on backgroundColor (#00000000) has contrast ratio 1.45:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground-strong",
+        "message": "'foreground-strong' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.action",
+        "message": "'action' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.action-subtle",
+        "message": "'action-subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.surface-subdued",
+        "message": "'surface-subdued' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "64ebbba8b49a0b700fa9b3a1f222c8f55b038eb87374a6891039d23422554043",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.heading.fontSize",
+      "typography.control.fontSize",
+      "rounded.control",
+      "components.docs-sidebar-category.rounded"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "components_harvested",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "heading",
+        "control"
+      ]
+    }
+  }
+}

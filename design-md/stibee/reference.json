@@ -1,0 +1,1540 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "stibee",
+    "name": "Stibee",
+    "display_name_kr": "스티비",
+    "country": "KR",
+    "category": "marketing",
+    "homepage": "https://stibee.com",
+    "primary_color": "#ff6464",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=stibee.com&sz=128"
+    },
+    "verified": "2026-09-30",
+    "added": "2026-06-17"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-09-30",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-30",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "marketing",
+        "url": "https://stibee.com/",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-2",
+        "kind": "marketing",
+        "url": "https://stibee.com/pricing",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-3",
+        "kind": "marketing",
+        "url": "https://stibee.com/feature/email",
+        "inspected": "2026-09-30"
+      }
+    ],
+    "sources": [
+      {
+        "id": "surface-home",
+        "kind": "product-surface",
+        "url": "https://stibee.com/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-2",
+        "kind": "product-surface",
+        "url": "https://stibee.com/pricing",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-3",
+        "kind": "product-surface",
+        "url": "https://stibee.com/feature/email",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "stibee-probe-home",
+        "kind": "product-surface",
+        "url": "https://stibee.com/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "stibee-probe-pricing",
+        "kind": "product-surface",
+        "url": "https://stibee.com/pricing",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "stibee-team",
+        "kind": "official-doc",
+        "url": "https://team.stibee.com/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "pretendard-license",
+        "kind": "license",
+        "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
+        "captured": "2026-09-30"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.primary-hover": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the header (128.2 x 42, rest bg rgb(255, 100, 100), fg rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #7) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "colors.on-primary": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.ink": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "colors.caption": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "colors.subtle": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 가격 (67.7 x 42, rest bg rgba(0, 0, 0, 0), fg rgb(32, 33, 36)): hover bg -> rgb(255, 255, 255), fg -> rgb(157, 158, 162); pressed bg -> rgb(255, 255, 255); focus (Tab #3) bg -> rgb(255, 255, 255); transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "colors.border": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.border-focus": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "select subscriber tier (180 x 48, rest bg rgb(255, 255, 255), border 1px solid rgb(188, 189, 193)): hover no change; pressed unmeasured (:active did not match); focus (Tab #8) border -> 1px solid rgb(65, 66, 69); transition all 0s; ancestor up3 bg rgb(246, 246, 246)",
+        "captured": "2026-09-30"
+      },
+      "colors.surface": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "select subscriber tier (180 x 48, rest bg rgb(255, 255, 255), border 1px solid rgb(188, 189, 193)): hover no change; pressed unmeasured (:active did not match); focus (Tab #8) border -> 1px solid rgb(65, 66, 69); transition all 0s; ancestor up3 bg rgb(246, 246, 246)",
+        "captured": "2026-09-30"
+      },
+      "colors.hairline": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "colors.white": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.feature-title.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.feature-title.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.feature-title.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.feature-title.letterSpacing": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.feature-title.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.plan-price.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.plan-price.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.plan-price.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.plan-price.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.button.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.button.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.button.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.label.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.label.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.label.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.label.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "spacing.cta-x": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.cta-lg-x": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.outline-y": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "spacing.outline-x": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "spacing.field-y": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.field-x": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.field-trail": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "rounded.none": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "rounded.control": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.hover": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the header (128.2 x 42, rest bg rgb(255, 100, 100), fg rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #7) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.pressed": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the header (128.2 x 42, rest bg rgb(255, 100, 100), fg rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #7) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.states": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the header (128.2 x 42, rest bg rgb(255, 100, 100), fg rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #7) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.hover": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the hero (152.8 x 52, rest bg rgb(255, 100, 100)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #8) no change; transition all 0.6s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.pressed": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the hero (152.8 x 52, rest bg rgb(255, 100, 100)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #8) no change; transition all 0.6s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.states": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 in the hero (152.8 x 52, rest bg rgb(255, 100, 100)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #8) no change; transition all 0.6s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-primary-lg.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.type": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.padding": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.height": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.typography": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.hover": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 on a plan card (228 x 38, rest bg rgb(255, 100, 100)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #11) no change; transition all 0.6s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 on a plan card (228 x 38, rest bg rgb(255, 100, 100)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #11) no change; transition all 0.6s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.states": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "a 무료로 시작하기 on a plan card (228 x 38, rest bg rgb(255, 100, 100)): hover and pressed bg -> rgb(255, 82, 82); focus (Tab #11) no change; transition all 0.6s ease",
+        "captured": "2026-09-30"
+      },
+      "components.button-plan.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.type": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.border": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.padding": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.height": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.typography": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.states": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.button-outline.use": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "button 영업팀에 문의하기 (232 x 52, rest bg rgba(0, 0, 0, 0) over rgb(255, 255, 255), fg rgb(255, 100, 100), border 1px solid rgb(255, 100, 100), radius 4px, padding 12px 20px, 16px/400 Pretendard Variable): hover, pressed and focus (Tab #15) no change; transition all 0s; ancestor up1 border 1px solid rgb(235, 235, 235)",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.rounded": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.typography": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.states": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.text-link.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.hover": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 가격 (67.7 x 42, rest bg rgba(0, 0, 0, 0), fg rgb(32, 33, 36)): hover bg -> rgb(255, 255, 255), fg -> rgb(157, 158, 162); pressed bg -> rgb(255, 255, 255); focus (Tab #3) bg -> rgb(255, 255, 255); transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.pressed": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 가격 (67.7 x 42, rest bg rgba(0, 0, 0, 0), fg rgb(32, 33, 36)): hover bg -> rgb(255, 255, 255), fg -> rgb(157, 158, 162); pressed bg -> rgb(255, 255, 255); focus (Tab #3) bg -> rgb(255, 255, 255); transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.focus": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 가격 (67.7 x 42, rest bg rgba(0, 0, 0, 0), fg rgb(32, 33, 36)): hover bg -> rgb(255, 255, 255), fg -> rgb(157, 158, 162); pressed bg -> rgb(255, 255, 255); focus (Tab #3) bg -> rgb(255, 255, 255); transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.states": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 가격 (67.7 x 42, rest bg rgba(0, 0, 0, 0), fg rgb(32, 33, 36)): hover bg -> rgb(255, 255, 255), fg -> rgb(157, 158, 162); pressed bg -> rgb(255, 255, 255); focus (Tab #3) bg -> rgb(255, 255, 255); transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-link.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.hover": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "button 기능 (67.7 x 42, rest bg rgb(255, 255, 255), fg rgb(32, 33, 36)): hover and pressed fg -> rgb(157, 158, 162) on the button and its label span; focus (Tab #2) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.pressed": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "button 기능 (67.7 x 42, rest bg rgb(255, 255, 255), fg rgb(32, 33, 36)): hover and pressed fg -> rgb(157, 158, 162) on the button and its label span; focus (Tab #2) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.states": {
+        "surface_id": "home",
+        "source_id": "stibee-probe-home",
+        "method": "live-state-probe",
+        "selector": "button 기능 (67.7 x 42, rest bg rgb(255, 255, 255), fg rgb(32, 33, 36)): hover and pressed fg -> rgb(157, 158, 162) on the button and its label span; focus (Tab #2) no change; transition all 0.3s ease",
+        "captured": "2026-09-30"
+      },
+      "components.nav-menu.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.type": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.border": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.padding": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.height": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.typography": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.focus": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "select subscriber tier (180 x 48, rest bg rgb(255, 255, 255), border 1px solid rgb(188, 189, 193)): hover no change; pressed unmeasured (:active did not match); focus (Tab #8) border -> 1px solid rgb(65, 66, 69); transition all 0s; ancestor up3 bg rgb(246, 246, 246)",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.states": {
+        "surface_id": "surface-2",
+        "source_id": "stibee-probe-pricing",
+        "method": "live-state-probe",
+        "selector": "select subscriber tier (180 x 48, rest bg rgb(255, 255, 255), border 1px solid rgb(188, 189, 193)): hover no change; pressed unmeasured (:active did not match); focus (Tab #8) border -> 1px solid rgb(65, 66, 69); transition all 0s; ancestor up3 bg rgb(246, 246, 246)",
+        "captured": "2026-09-30"
+      },
+      "components.tier-select.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-09-30"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 60,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 10,
+      "extension-component-property": 38,
+      "contrast-ratio": 3,
+      "orphaned-tokens": 9
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.page-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.feature-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.plan-price.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.lead.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.link.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.button.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary-lg.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary-lg.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary-lg.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary-lg.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary-lg.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-plan.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-plan.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-plan.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-plan.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-plan.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-outline.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-outline.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-outline.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-outline.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.text-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.text-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.text-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-menu.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-menu.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-menu.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-menu.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-menu.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tier-select.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tier-select.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tier-select.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tier-select.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tier-select.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.button-primary",
+        "message": "textColor (#ffffff) on backgroundColor (#ff6464) has contrast ratio 2.89:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.button-primary-lg",
+        "message": "textColor (#ffffff) on backgroundColor (#ff6464) has contrast ratio 2.89:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.button-plan",
+        "message": "textColor (#ffffff) on backgroundColor (#ff6464) has contrast ratio 2.89:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-hover",
+        "message": "'primary-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.caption",
+        "message": "'caption' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.subtle",
+        "message": "'subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border-focus",
+        "message": "'border-focus' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.white",
+        "message": "'white' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "0f11818888cfc4ccfee2b590b8988d539e83a3ea1e58e55e73ebcbacc5151a6e",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display-hero.fontSize",
+      "typography.display-hero.letterSpacing",
+      "typography.page-title.fontSize",
+      "typography.feature-title.fontSize",
+      "typography.feature-title.letterSpacing",
+      "typography.plan-price.fontSize",
+      "typography.lead.fontSize",
+      "typography.nav.fontSize",
+      "typography.link.fontSize",
+      "typography.body.fontSize",
+      "typography.button.fontSize",
+      "typography.label.fontSize",
+      "rounded.none",
+      "rounded.control"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-hero",
+        "page-title",
+        "feature-title",
+        "plan-price",
+        "lead",
+        "nav",
+        "link",
+        "body",
+        "button",
+        "label"
+      ]
+    }
+  }
+}

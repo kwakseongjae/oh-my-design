@@ -1,0 +1,602 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "mercari",
+    "name": "Mercari",
+    "country": "JP",
+    "category": "consumer-tech",
+    "homepage": "https://www.mercari.com",
+    "primary_color": "#5356ee",
+    "logo": {
+      "type": "github",
+      "slug": "mercari"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-12",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-marketplace",
+        "url": "https://www.mercari.com/",
+        "inspected": "2026-07-12"
+      },
+      {
+        "id": "surface-2",
+        "kind": "corporate-marketing",
+        "url": "https://www.mercari.com/about/",
+        "inspected": "2026-07-12"
+      },
+      {
+        "id": "surface-3",
+        "kind": "brand-directory",
+        "url": "https://www.mercari.com/us/brand/",
+        "inspected": "2026-07-12"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.mercari.com/",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "about-live",
+        "kind": "product-surface",
+        "url": "https://www.mercari.com/about/",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "brand-live",
+        "kind": "product-surface",
+        "url": "https://www.mercari.com/us/brand/",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "marketplace-guidelines",
+        "kind": "official-doc",
+        "url": "https://www.mercari.com/us/help_center/article/407/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "listing-guide",
+        "kind": "official-doc",
+        "url": "https://www.mercari.com/us/help_center/topics/listing/guides/creating-a-listing/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "marketplace-principles",
+        "kind": "official-doc",
+        "url": "https://pj.mercari.com/principles/marketplace-principles-and-history_EN.pdf",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "averta-foundry",
+        "kind": "official-doc",
+        "url": "https://foundryfivetype.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "averta-license",
+        "kind": "license",
+        "url": "https://foundryfivetype.com/eulas/",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.public-action": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.header-action.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.header-action.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.header-action.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.header-action.use": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.marketing-display.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.marketing-display.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.marketing-display.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.marketing-display.use": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.lg": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xl": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.compact": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.image": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.circular": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "prose:shadow.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketplace-sell-action.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.type": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.padding": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.typography": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.states": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-sell-action.use": {
+        "surface_id": "surface-2",
+        "source_id": "about-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.marketing-skip-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.listing-image.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.listing-image.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.listing-image.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 19,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 11,
+      "missing-primary": 1,
+      "orphaned-tokens": 4
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.header-action.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.marketing-display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-sell-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-sell-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-sell-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-sell-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-sell-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-sell-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-skip-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-skip-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-skip-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-image.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-image.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.public-action",
+        "message": "'public-action' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "ac10c4d3a73e33e93d4941938bab165f5369409d7122a3bb7baf0764bc6c5ff1",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.none",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.header-action.fontSize",
+      "typography.marketing-display.fontSize",
+      "rounded.none",
+      "rounded.compact",
+      "rounded.image",
+      "rounded.circular",
+      "components.marketplace-sell-action.rounded",
+      "components.marketing-sell-action.rounded",
+      "components.marketing-skip-link.rounded",
+      "components.listing-image.rounded"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "header-action",
+        "marketing-display"
+      ]
+    }
+  }
+}

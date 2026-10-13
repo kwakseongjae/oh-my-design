@@ -1,0 +1,853 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "apple",
+    "name": "Apple",
+    "country": "US",
+    "category": "consumer-tech",
+    "homepage": "https://www.apple.com",
+    "primary_color": "#000000",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "apple"
+    },
+    "verified": "2026-07-11",
+    "ds": {
+      "name": "Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines",
+      "type": "system",
+      "description": "Apple's official platform design guidance; this reference separately labels apple.com and HIG documentation-site UI.",
+      "og_image": "https://docs.developer.apple.com/tutorials/developer-og.jpg"
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-11",
+    "note": "apple.com marketing/commerce values are distinct from HIG guidance and the HIG documentation site's own chrome.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "apple-home",
+        "kind": "marketing",
+        "url": "https://www.apple.com/",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "apple-home-states",
+        "kind": "marketing",
+        "url": "https://www.apple.com/",
+        "inspected": "2026-09-17"
+      },
+      {
+        "id": "apple-store-product",
+        "kind": "commerce",
+        "url": "https://www.apple.com/shop/product/mw5g3am/a/siri-remote",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "hig-buttons",
+        "kind": "design-system",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "hig-components",
+        "kind": "design-system",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/components",
+        "inspected": "2026-07-11"
+      }
+    ],
+    "sources": [
+      {
+        "id": "apple-live",
+        "kind": "product-surface",
+        "url": "https://www.apple.com/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "apple-component-index",
+        "kind": "official-doc",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/components",
+        "captured": "2026-09-19"
+      },
+      {
+        "id": "apple-live-states",
+        "kind": "product-surface",
+        "url": "https://www.apple.com/",
+        "captured": "2026-09-17"
+      },
+      {
+        "id": "apple-store-live",
+        "kind": "product-surface",
+        "url": "https://www.apple.com/shop/product/mw5g3am/a/siri-remote",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "hig-buttons-live",
+        "kind": "official-doc",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "hig-components-live",
+        "kind": "official-doc",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/components",
+        "captured": "2026-07-11"
+      }
+    ],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.brand": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.canvas": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.canvas-dark": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.surface": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.foreground": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.on-primary": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.muted": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.secondary": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.link": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.link-on-dark": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "fonts.roles.display": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "fonts.roles.text": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.display-hero.fontSize": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.display-hero.fontWeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.display-hero.lineHeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.display-hero.letterSpacing": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.section.fontSize": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.section.fontWeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.section.lineHeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.tile-heading.fontSize": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.tile-heading.fontWeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.tile-heading.lineHeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.tile-heading.letterSpacing": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body.letterSpacing": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.fontSize": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.fontWeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.lineHeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.letterSpacing": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.caption.fontSize": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.caption.fontWeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.caption.lineHeight": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.caption.letterSpacing": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.compact": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.control-inline": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.pill-block": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.pill-inline": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.content": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.control": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.docs-card": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.marketing-pill": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.type": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.hover": {
+        "surface_id": "apple-home-states",
+        "source_id": "apple-live-states",
+        "method": "computed-style",
+        "captured": "2026-09-17"
+      },
+      "components.marketing-primary.pressed": {
+        "surface_id": "apple-home-states",
+        "source_id": "apple-live-states",
+        "method": "computed-style",
+        "captured": "2026-09-17"
+      },
+      "components.marketing-primary.focus": {
+        "surface_id": "apple-home-states",
+        "source_id": "apple-live-states",
+        "method": "computed-style",
+        "captured": "2026-09-17"
+      },
+      "components.marketing-primary.backgroundColor": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.textColor": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.rounded": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.padding": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.height": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.typography": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.states": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.use": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.type": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.backgroundColor": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.textColor": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.border": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.rounded": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.padding": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.height": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.typography": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.states": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-outline.use": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.type": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.backgroundColor": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.textColor": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.rounded": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.padding": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.height": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.typography": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.states": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-compact.use": {
+        "surface_id": "apple-home",
+        "source_id": "apple-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.product-gallery-tab.type": {
+        "surface_id": "apple-store-product",
+        "source_id": "apple-store-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.product-gallery-tab.textColor": {
+        "surface_id": "apple-store-product",
+        "source_id": "apple-store-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.product-gallery-tab.height": {
+        "surface_id": "apple-store-product",
+        "source_id": "apple-store-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.product-gallery-tab.typography": {
+        "surface_id": "apple-store-product",
+        "source_id": "apple-store-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.product-gallery-tab.states": {
+        "surface_id": "apple-store-product",
+        "source_id": "apple-store-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.product-gallery-tab.use": {
+        "surface_id": "apple-store-product",
+        "source_id": "apple-store-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.hig-reference-card.type": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.hig-reference-card.backgroundColor": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.hig-reference-card.rounded": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.hig-reference-card.states": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.hig-reference-card.use": {
+        "surface_id": "hig-components",
+        "source_id": "hig-components-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 27,
+      "infos": 2
+    },
+    "byRule": {
+      "extension-component-property": 19,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 7
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-outline.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-outline.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-outline.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-outline.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-compact.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-compact.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-compact.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-gallery-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-gallery-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-gallery-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hig-reference-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hig-reference-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hig-reference-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.marketing-outline",
+        "message": "textColor (#0066cc) on backgroundColor (#00000000) has contrast ratio 3.77:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.brand",
+        "message": "'brand' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas-dark",
+        "message": "'canvas-dark' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link-on-dark",
+        "message": "'link-on-dark' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "70e9dcc088878065535d5a0704411c1e20ccb7345d424af947a980288cb4061a",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display-hero.fontSize",
+      "typography.section.fontSize",
+      "typography.tile-heading.fontSize",
+      "typography.body.fontSize",
+      "typography.body-small.fontSize",
+      "typography.caption.fontSize",
+      "rounded.control",
+      "rounded.docs-card",
+      "rounded.marketing-pill"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-hero",
+        "section",
+        "tile-heading",
+        "body",
+        "body-small",
+        "caption"
+      ]
+    }
+  }
+}

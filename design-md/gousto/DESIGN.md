@@ -1,141 +1,101 @@
 ---
----
-id: gousto
 name: Gousto
-country: UK
-category: ecommerce
-homepage: "https://www.gousto.co.uk/"
-primary_color: "#615cff"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=gousto.co.uk&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-ds:
-  name: "Gousto web tokens"
-  url: "https://www.gousto.co.uk/"
-  type: system
-  description: "No published design-system name or documentation exists on gousto.co.uk (checked with a nonsense-path control). The homepage exposes 212 first-party custom properties on :root beyond the 31 --cc-* cookie-consent vars: a fruit/veg-named colour palette, four parallel type-scale namespaces (--fontStyle-*, --font-Static*, --fontSize-*, --Font-Scale-*), three parallel grey ramps, and a --Gousto-* namespace for component-level button/focus tokens."
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    primary: "#615cff"
-    primary-highlight: "#412dee"
-    primary-surface: "#eae9ff"
-    foreground: "#516272"
-    text-strong: "#373a3c"
-    text-black: "#000000"
-    surface: "#f4f7fa"
-    surface-dark: "#333d47"
-    surface-darkest: "#11161b"
-    border: "#ced4d9"
-    canvas: "#ffffff"
-    red: "#ff0032"
-    green: "#01a92b"
-    grey: "#7d7e7f"
-    link-blue: "#0275d8"
-  typography:
-    family: { sans: "Axiforma" }
-    body: { size: 18, use: "--fontStyle-BodyL (18px/27px), AxiformaBook 400" }
-    button: { size: 18, use: "primary CTA label, AxiformaBook 400" }
-    nav: { size: 14, use: "top-nav links Recipe boxes / Box prices, Axiforma 700" }
-    login: { size: 13, use: "Login ghost button, AxiformaBook 400" }
-  rounded: { sm: 3, lg: 8, pill: 64 }
-  components:
-    button-primary: { type: "button", bg: "#615cff", fg: "#ffffff", radius: 8, height: "48px", padding: "10px 24px", font: "18px / 400", hover: "#412dee", pressed: "shadow 0 0 0 3px #412dee", focus: "ring inset 0 0 0 1px #ffffff, outline 2px solid #412dee", use: "\"Get started\" hero CTA. Renders at 8px radius though --Gousto-button-border-radius declares 3px. Hover and pressed both deepen to Secondary-600 #412dee; focus adds a white inset ring plus a 2px solid #412dee outline." }
-    link-nav: { type: "button", bg: "transparent", fg: "#ffffff", radius: 3, height: "20px", font: "14px / 700", hover: "#ffffff", pressed: "shadow 0 0 0 3px #412dee", focus: "shadow 0 0 0 3px #412dee", use: "\"Recipe boxes\" and \"Box prices\" top-nav links on the red header. Hover shows no visible change (confirmed); pressed and focus both draw the same #412dee ring even on the red background." }
-    link-nav-dropdown: { type: "button", fg: "#ffffff", height: "24px", font: "18px / 400", pressed: "ring inset 0 0 0 1px #ffffff, outline 2px solid #412dee", focus: "ring inset 0 0 0 1px #ffffff, outline 2px solid #412dee", use: "\"How it works\" dropdown trigger. Hover not measured. Pressed and focus match the primary CTA's ring treatment." }
-    link-ghost: { type: "button", bg: "transparent", fg: "#373a3c", radius: 0, height: "35px", font: "13px / 400", hover: "transparent", pressed: "transparent", use: "\"Login\" top-right ghost/text link. No hover or pressed change measured. Its focus is the browser default outline (auto), not a brand ring — the only control on the page without one." }
-    card-link: { type: "button", fg: "#615cff", border: "top/left/right #615cff, bottom #c0c5c9 (asymmetric)", height: "402px", hover: "fg #3e3ac2", pressed: "fg #3e3ac2", use: "Recipe cards on /cookbook/recipes (e.g. \"Simply Perfect Beef Spag Bol\") — the whole card is one anchor. Hover and pressed both turn the label and border #3e3ac2 (--color-BlueBaseDarker). Focus draws the browser's default blue ring, not the purple ring used on nav/CTA controls." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.gousto.co.uk/", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.gousto.co.uk/", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://www.gousto.co.uk/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: cookbook, kind: product-surface, url: "https://www.gousto.co.uk/cookbook/recipes", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.green: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.grey: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.link-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-highlight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.red: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface-dark: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface-darkest: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.text-black: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.text-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-ghost.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav-dropdown.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.login.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.login.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.nav.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.nav.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  primary: '#615cff'
+  primary-highlight: '#412dee'
+  primary-surface: '#eae9ff'
+  foreground: '#516272'
+  text-strong: '#373a3c'
+  text-black: '#000000'
+  surface: '#f4f7fa'
+  surface-dark: '#333d47'
+  surface-darkest: '#11161b'
+  border: '#ced4d9'
+  canvas: '#ffffff'
+  red: '#ff0032'
+  green: '#01a92b'
+  grey: '#7d7e7f'
+  link-blue: '#0275d8'
+typography:
+  body:
+    fontSize: 18px
+    use: '--fontStyle-BodyL (18px/27px), AxiformaBook 400'
+  button:
+    fontSize: 18px
+    use: primary CTA label, AxiformaBook 400
+  nav:
+    fontSize: 14px
+    use: top-nav links Recipe boxes / Box prices, Axiforma 700
+  login:
+    fontSize: 13px
+    use: Login ghost button, AxiformaBook 400
+rounded:
+  sm: 3px
+  lg: 8px
+  pill: 64px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#615cff'
+    textColor: '#ffffff'
+    rounded: 8px
+    height: 48px
+    padding: 10px 24px
+    typography: 18px / 400
+    hover: '#412dee'
+    pressed: 'shadow 0 0 0 3px #412dee'
+    focus: 'ring inset 0 0 0 1px #ffffff, outline 2px solid #412dee'
+    use: '"Get started" hero CTA. Renders at 8px radius though --Gousto-button-border-radius declares 3px. Hover and pressed both deepen to Secondary-600 #412dee; focus adds a white inset ring plus a 2px solid #412dee outline.'
+  link-nav:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 3px
+    height: 20px
+    typography: 14px / 700
+    hover: '#ffffff'
+    pressed: 'shadow 0 0 0 3px #412dee'
+    focus: 'shadow 0 0 0 3px #412dee'
+    use: '"Recipe boxes" and "Box prices" top-nav links on the red header. Hover shows no visible change (confirmed); pressed and focus both draw the same #412dee ring even on the red background.'
+  link-nav-dropdown:
+    type: button
+    textColor: '#ffffff'
+    height: 24px
+    typography: 18px / 400
+    pressed: 'ring inset 0 0 0 1px #ffffff, outline 2px solid #412dee'
+    focus: 'ring inset 0 0 0 1px #ffffff, outline 2px solid #412dee'
+    use: '"How it works" dropdown trigger. Hover not measured. Pressed and focus match the primary CTA''s ring treatment.'
+  link-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#373a3c'
+    rounded: 0px
+    height: 35px
+    typography: 13px / 400
+    hover: transparent
+    pressed: transparent
+    use: '"Login" top-right ghost/text link. No hover or pressed change measured. Its focus is the browser default outline (auto), not a brand ring — the only control on the page without one.'
+  card-link:
+    type: button
+    textColor: '#615cff'
+    border: 'top/left/right #615cff, bottom #c0c5c9 (asymmetric)'
+    height: 402px
+    hover: 'fg #3e3ac2'
+    pressed: 'fg #3e3ac2'
+    use: 'Recipe cards on /cookbook/recipes (e.g. "Simply Perfect Beef Spag Bol") — the whole card is one anchor. Hover and pressed both turn the label and border #3e3ac2 (--color-BlueBaseDarker). Focus draws the browser''s default blue ring, not the purple ring used on nav/CTA controls.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: Axiforma
 ---
+
 # Design System Inspiration of Gousto
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Gousto is a British recipe-box company: it delivers measured ingredients and recipe cards for
 cooking at home, and publishes a public cookbook of its recipes. Its current identity dates from
@@ -149,11 +109,40 @@ and pressed states, over a body-copy ink of **`#516272`** and a dominant nav/UI 
 bands, **`#333d47`** and **`#11161b`**. A red ribbon (**`#ff0032`**) and a green accent
 (**`#01a92b`**) appear as promotional and status colours.
 
-### Primary tasks
+#### Primary tasks
 - Browse recipe boxes and prices; get started signing up.
 - Browse the public recipe cookbook (`/cookbook/recipes`).
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Regional UK trade press corroborates a 2017 rebrand: Fresh Produce Journal/Fruitnet ("Gousto rebrand
+targets families," 13 Sep 2017) describes a new logo, "design system" and photography style aimed at
+families, a TV campaign via The Sharp Agency (production by The Gate, director Cosmo Wallace), with
+CEO Timo Boldt quoted on "good food on the table." underconsideration.com's Brand New ("New Logo for
+Gousto," 27 Sep 2017) corroborates the same rebrand date and describes it with tags including
+circle, geometric, lowercase and monogram, though its full analysis is paywalled and was not read.
+
+Grocery Gazette ("How Gousto used AI guardrails to speed up Ireland website development," 24 Sep
+2026) describes active 2026 engineering and design work: an engineer-built, Claude-based "AI
+harness" for constrained code generation, a pricing-page redesign, and a homepage overhaul across
+mobile/tablet/desktop via Figma and feature flags, with product designer Dec Roberts quoted; it also
+confirms roughly 15 years of UK operation before Gousto's Ireland launch in February 2025.
+
+### Principles
+
+- **One colour for doing.** `#615cff`/`#412dee` carries every primary action and every interactive
+  ring, on light and dark backgrounds alike.
+- **Body ink is its own colour.** `#516272` for paragraph text is distinct from the `#373a3c` used
+  in navigation and headings.
+- **The ring travels, the radius doesn't agree with itself.** The `#412dee` focus/pressed ring is
+  applied consistently across button, nav and dropdown controls, even though the CTA's 8px radius
+  contradicts its own declared 3px token.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `www.gousto.co.uk`: 212 root custom properties beyond the 31
 `--cc-*` cookie-consent vars, which belong to the third-party "vanilla-cookieconsent" library
@@ -188,7 +177,7 @@ messy: four parallel type-scale namespaces and three parallel grey ramps coexist
 - **Link Blue** (`#0275d8`) — 53 occurrences, a Bootstrap-blue-looking link colour that reads as a
   stray default rather than an intentional brand colour; flagged, not promoted further.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -218,7 +207,44 @@ Confirmed rendered sizes: the primary CTA label is 18px at weight 400; the "Reci
 prices" nav links are 14px at weight 700; the "How it works" dropdown trigger is 18px at weight 400;
 the "Login" ghost link is 13px at weight 400.
 
-## 4. Component Stylings
+## Layout
+
+- Two parallel spacing scales: mobile `--spacing-*` (`XXS` 5 … `XXXXXL` 100) and
+  `--spacing-Desktop*`, which uses different px values below `XXL` and converges with the mobile
+  scale from `XXL` up.
+- Button padding: `--Gousto-button-padding` `8px 16px`; the rendered primary CTA instead uses
+  `10px 24px`.
+- Border widths were not enumerated as a dedicated scale beyond the component borders above.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+Mostly flat, with the ring itself doing the work of state feedback: `0 0 0 3px #412dee` (button and
+nav-link pressed/focus), `0 0 0 1px #ffffff inset` (the focus inner ring on white-text buttons). A
+soft `rgba(2,2,3,.28)` shadow belongs to the cookie-consent modal and is excluded as third-party.
+
+## Motion & Easing
+
+**Not measured.** No `--transition`/`--duration` custom properties were found in the root
+enumeration.
+
+---
+
+**Tier 1 sources:** https://www.gousto.co.uk/ (live homepage, headless-refused, headed Chrome;
+en-GB, 1440×1000; 212 first-party `:root` custom properties beyond `--cc-*`; consent banner
+rejected via "Reject all non-essential" before any measurement; captured 2026-09-26);
+https://www.gousto.co.uk/cookbook/recipes (public recipe browse page, used to measure the card-link
+component and to confirm no search input exists logged out, captured 2026-09-26);
+https://www.gousto.co.uk/zz-this-does-not-exist (nonsense-path control — HTTP 200, byte-identical
+785-character "Oh crumbs!" 404 body to `/about-us` and `/our-story`, captured 2026-09-26), compared
+against https://www.gousto.co.uk/jobs (a real, distinct 3,862-character page, same date).
+
+**Regional sources:** https://www.underconsideration.com/brandnew/archives/new_logo_for_gousto.php (Brand New — "New Logo for Gousto", spotted 2017-09-27; circle, geometric, lowercase, monogram)
+
+## Components
 
 Six controls were checked; five were measurable on the logged-out public surface. A search input
 was **not found** — the only `<input>` elements reachable while logged out (homepage and
@@ -246,22 +272,15 @@ text/search field exists without logging in.
   (`--color-BlueBaseDarker`). Focus draws the browser's default blue ring, inconsistent with the
   purple ring used on nav and CTA controls.
 
-## 5. Layout Principles
+### States
 
-- Two parallel spacing scales: mobile `--spacing-*` (`XXS` 5 … `XXXXXL` 100) and
-  `--spacing-Desktop*`, which uses different px values below `XXL` and converges with the mobile
-  scale from `XXL` up.
-- Button padding: `--Gousto-button-padding` `8px 16px`; the rendered primary CTA instead uses
-  `10px 24px`.
-- Border widths were not enumerated as a dedicated scale beyond the component borders above.
+Five controls measured. Hover: unchanged on the two nav links, `#412dee` fill on the primary CTA, no
+data on the dropdown trigger or Login, `#3e3ac2` on the recipe-card link. Pressed: a `#412dee` ring
+on CTA and nav links, `#3e3ac2` on the card link. Focus: an authored `#412dee`-based ring on CTA, nav
+links and the dropdown trigger; the browser's own default ring on Login and the recipe card, with no
+brand token assigned to either.
 
-## 6. Depth & Elevation
-
-Mostly flat, with the ring itself doing the work of state feedback: `0 0 0 3px #412dee` (button and
-nav-link pressed/focus), `0 0 0 1px #ffffff inset` (the focus inner ring on white-text buttons). A
-soft `rgba(2,2,3,.28)` shadow belongs to the cookie-consent modal and is excluded as third-party.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#615cff` for the primary action and `#412dee` for hover/pressed/focus.
@@ -276,11 +295,12 @@ soft `rgba(2,2,3,.28)` shadow belongs to the cookie-consent modal and is exclude
   here.
 - Don't treat `#0275d8` as a brand colour; it reads as a stray default link colour.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice. The only first-party line captured is the hero banner "Meet the New
+Gousto," undated and unexplained on the page itself.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#615cff` primary · `#412dee` highlight/hover · `#eae9ff` primary surface · `#516272` body text ·
@@ -293,62 +313,8 @@ soft `rgba(2,2,3,.28)` shadow belongs to the cookie-consent modal and is exclude
   `#412dee`; focus adds a white inset ring plus a 2px `#412dee` outline."
 - "A recipe-card link: `#615cff` text and border, turning `#3e3ac2` on hover, 402px tall."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice. The only first-party line captured is the hero banner "Meet the New
-Gousto," undated and unexplained on the page itself.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Regional UK trade press corroborates a 2017 rebrand: Fresh Produce Journal/Fruitnet ("Gousto rebrand
-targets families," 13 Sep 2017) describes a new logo, "design system" and photography style aimed at
-families, a TV campaign via The Sharp Agency (production by The Gate, director Cosmo Wallace), with
-CEO Timo Boldt quoted on "good food on the table." underconsideration.com's Brand New ("New Logo for
-Gousto," 27 Sep 2017) corroborates the same rebrand date and describes it with tags including
-circle, geometric, lowercase and monogram, though its full analysis is paywalled and was not read.
-
-Grocery Gazette ("How Gousto used AI guardrails to speed up Ireland website development," 24 Sep
-2026) describes active 2026 engineering and design work: an engineer-built, Claude-based "AI
-harness" for constrained code generation, a pricing-page redesign, and a homepage overhaul across
-mobile/tablet/desktop via Figma and feature flags, with product designer Dec Roberts quoted; it also
-confirms roughly 15 years of UK operation before Gousto's Ireland launch in February 2025.
-
-## 12. Principles
-
-- **One colour for doing.** `#615cff`/`#412dee` carries every primary action and every interactive
-  ring, on light and dark backgrounds alike.
-- **Body ink is its own colour.** `#516272` for paragraph text is distinct from the `#373a3c` used
-  in navigation and headings.
-- **The ring travels, the radius doesn't agree with itself.** The `#412dee` focus/pressed ring is
-  applied consistently across button, nav and dropdown controls, even though the CTA's 8px radius
-  contradicts its own declared 3px token.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Five controls measured. Hover: unchanged on the two nav links, `#412dee` fill on the primary CTA, no
-data on the dropdown trigger or Login, `#3e3ac2` on the recipe-card link. Pressed: a `#412dee` ring
-on CTA and nav links, `#3e3ac2` on the card link. Focus: an authored `#412dee`-based ring on CTA, nav
-links and the dropdown trigger; the browser's own default ring on Login and the recipe card, with no
-brand token assigned to either.
-
-## 15. Motion & Easing
-
-**Not measured.** No `--transition`/`--duration` custom properties were found in the root
-enumeration.
-
----
-
-**Tier 1 sources:** https://www.gousto.co.uk/ (live homepage, headless-refused, headed Chrome;
-en-GB, 1440×1000; 212 first-party `:root` custom properties beyond `--cc-*`; consent banner
-rejected via "Reject all non-essential" before any measurement; captured 2026-09-26);
-https://www.gousto.co.uk/cookbook/recipes (public recipe browse page, used to measure the card-link
-component and to confirm no search input exists logged out, captured 2026-09-26);
-https://www.gousto.co.uk/zz-this-does-not-exist (nonsense-path control — HTTP 200, byte-identical
-785-character "Oh crumbs!" 404 body to `/about-us` and `/our-story`, captured 2026-09-26), compared
-against https://www.gousto.co.uk/jobs (a real, distinct 3,862-character page, same date).
-
-**Regional sources:** https://www.underconsideration.com/brandnew/archives/new_logo_for_gousto.php (Brand New — "New Logo for Gousto", spotted 2017-09-27; circle, geometric, lowercase, monogram)
+- **Contrast, `link-ghost`.** Text `#373a3c` on `#00000000` measures 1.83:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

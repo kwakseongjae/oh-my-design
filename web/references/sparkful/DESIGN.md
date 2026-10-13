@@ -1,72 +1,156 @@
 ---
-id: sparkful
 name: Fourdesire
-country: TW
-category: design-tools
-homepage: "https://sparkful.app/"
-primary_color: "#2dd4bf"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=sparkful.app&sz=128"
-verified: "2026-06-17"
-added: "2026-06-17"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "Primary 'action' is a tri-color gradient pill (amber #fbbf24 -> lime #a3e635 -> teal #2dd4bf); primary_color set to the gradient terminus teal #2dd4bf. Neutral system is Tailwind gray ladder on white; per-app pages add a Walkr teal accent family (#215468 / #00455b / #a5f3fc). Type is Montserrat with system-CJK fallback for Traditional Chinese."
-  colors:
-    primary: "#2dd4bf"
-    gradient-start: "#fbbf24"
-    gradient-mid: "#a3e635"
-    gradient-end: "#2dd4bf"
-    ink: "#000000"
-    heading: "#374151"
-    strong: "#111827"
-    body: "#4b5563"
-    muted: "#6b7280"
-    faint: "#9ca3af"
-    canvas: "#ffffff"
-    surface: "#f3f4f6"
-    hairline: "#e5e7eb"
-    panel-dark: "#1f2937"
-    amber-glow: "#fffbeb"
-    walkr-green: "#55b67c"
-    walkr-teal: "#215468"
-    walkr-teal-deep: "#00455b"
-    walkr-cyan: "#a5f3fc"
-    walkr-surface: "#e3efee"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Montserrat", cjk-fallback: "system Traditional-Chinese (PingFang TC / Noto Sans TC)" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.0, tracking: 0, use: "Top hero headline, Montserrat Bold" }
-    section:      { size: 36, weight: 700, lineHeight: 1.11, tracking: -0.9, use: "Section headline, Montserrat Bold" }
-    feature:      { size: 30, weight: 800, lineHeight: 1.2, tracking: -0.75, use: "Feature block titles, Montserrat ExtraBold" }
-    card-title:   { size: 24, weight: 700, lineHeight: 1.33, use: "App/feature card heads" }
-    eyebrow:      { size: 16, weight: 800, lineHeight: 1.5, tracking: -0.4, use: "Small all-emphasis eyebrow labels" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading + nav text" }
-    button:       { size: 18, weight: 600, lineHeight: 1.5, use: "Primary CTA pill label" }
-    button-sm:    { size: 12, weight: 600, lineHeight: 1.5, use: "Compact Download pill label" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 28, section: 48 }
-  rounded: { sm: 8, md: 12, lg: 20, xl: 24, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, fg: "#ffffff", radius: "9999px", padding: "14px 28px", height: "56px", font: "18px / 600 Montserrat", use: "Hero CTA 'Explore SPARKFUL Apps' — tri-color gradient #fbbf24 -> #a3e635 -> #2dd4bf, white text, full pill" }
-    button-download: { type: button, fg: "#ffffff", radius: "9999px", padding: "12px 24px", font: "16px / 600 Montserrat", use: "App-page 'Download' pill — same tri-color gradient fill, white text" }
-    button-white-pill: { type: button, bg: "#ffffff", fg: "#000000", radius: "9999px", padding: "12px 24px", font: "16px / 600 Montserrat", use: "Secondary pill on colored app sections ('Explore the planets')" }
-    nav-link: { type: tab, fg: "#111827", font: "16px / 400 Montserrat", use: "Top nav app/menu item; 76px-tall transparent header on white", active: "darkens to #000000 ink" }
-    card-app: { type: card, bg: "#ffffff", fg: "#374151", radius: "12px", use: "App preview card on white; separated by tint not shadow (shadowless)" }
-    card-surface: { type: card, bg: "#f3f4f6", fg: "#374151", radius: "20px", use: "Tinted feature panel on the gray-100 'bg-light' band" }
-    panel-dark: { type: card, bg: "#1f2937", fg: "#ffffff", radius: "24px", use: "Dark slate phone-frame / media panel" }
-    media-thumb: { type: card, bg: "#e5e7eb", radius: "20px 20px 0px 0px", use: "Article/video thumbnail, top-rounded only" }
-    footer-link: { type: listItem, fg: "#111827", font: "16px / 400 Montserrat", use: "Footer + app-list navigation link" }
-  components_harvested: true
+colors:
+  primary: '#2dd4bf'
+  gradient-start: '#fbbf24'
+  gradient-mid: '#a3e635'
+  gradient-end: '#2dd4bf'
+  ink: '#000000'
+  heading: '#374151'
+  strong: '#111827'
+  body: '#4b5563'
+  muted: '#6b7280'
+  faint: '#9ca3af'
+  canvas: '#ffffff'
+  surface: '#f3f4f6'
+  hairline: '#e5e7eb'
+  panel-dark: '#1f2937'
+  amber-glow: '#fffbeb'
+  walkr-green: '#55b67c'
+  walkr-teal: '#215468'
+  walkr-teal-deep: '#00455b'
+  walkr-cyan: '#a5f3fc'
+  walkr-surface: '#e3efee'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: 0px
+    use: Top hero headline, Montserrat Bold
+  section:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.11
+    letterSpacing: '-0.9px'
+    use: Section headline, Montserrat Bold
+  feature:
+    fontSize: 30px
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: '-0.75px'
+    use: Feature block titles, Montserrat ExtraBold
+  card-title:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.33
+    use: App/feature card heads
+  eyebrow:
+    fontSize: 16px
+    fontWeight: 800
+    lineHeight: 1.5
+    letterSpacing: '-0.4px'
+    use: Small all-emphasis eyebrow labels
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading + nav text
+  button:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Primary CTA pill label
+  button-sm:
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Compact Download pill label
+rounded:
+  sm: 8px
+  md: 12px
+  lg: 20px
+  xl: 24px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 28
+  section: 48
+components:
+  button-primary:
+    type: button
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 14px 28px
+    height: 56px
+    typography: 18px / 600 Montserrat
+    use: 'Hero CTA ''Explore SPARKFUL Apps'' — tri-color gradient #fbbf24 -> #a3e635 -> #2dd4bf, white text, full pill'
+  button-download:
+    type: button
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 12px 24px
+    typography: 16px / 600 Montserrat
+    use: App-page 'Download' pill — same tri-color gradient fill, white text
+  button-white-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 9999px
+    padding: 12px 24px
+    typography: 16px / 600 Montserrat
+    use: Secondary pill on colored app sections ('Explore the planets')
+  nav-link:
+    type: tab
+    textColor: '#111827'
+    typography: 16px / 400 Montserrat
+    use: Top nav app/menu item; 76px-tall transparent header on white
+    active: 'darkens to #000000 ink'
+  card-app:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#374151'
+    rounded: 12px
+    use: App preview card on white; separated by tint not shadow (shadowless)
+  card-surface:
+    type: card
+    backgroundColor: '#f3f4f6'
+    textColor: '#374151'
+    rounded: 20px
+    use: Tinted feature panel on the gray-100 'bg-light' band
+  panel-dark:
+    type: card
+    backgroundColor: '#1f2937'
+    textColor: '#ffffff'
+    rounded: 24px
+    use: Dark slate phone-frame / media panel
+  media-thumb:
+    type: card
+    backgroundColor: '#e5e7eb'
+    rounded: 20px 20px 0px 0px
+    use: Article/video thumbnail, top-rounded only
+  footer-link:
+    type: listItem
+    textColor: '#111827'
+    typography: 16px / 400 Montserrat
+    use: Footer + app-list navigation link
+fonts:
+  roles:
+    sans: Montserrat
+    cjk-fallback: system Traditional-Chinese (PingFang TC / Noto Sans TC)
 ---
 
 # Design System Inspiration of Fourdesire
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Fourdesire — the Taipei studio that publishes its apps under the **SPARKFUL** brand (Walkr, Plant Nanny 植物保姆, Fortune City 記帳城市, To-Do Adventure 記事探險, Book Morning!) — designs around one stated idea: *"Spark the fun in the ordinary."* The marketing system at `sparkful.app` is deliberately bright, weightless, and hand-illustrated-adjacent. The canvas is pure white (`#ffffff`) with a soft cool-gray band (`#f3f4f6`, the site's `bg-light` section) doing the work of segmenting content. Text is an unfussy near-black-to-slate Tailwind ladder — pure black `#000000` for the biggest hero words, slate `#374151` for section heads, gray `#4b5563`/`#6b7280` for body and captions — never a heavy institutional navy. The mood is a children's-book cheerfulness rendered with restraint: lots of air, no clutter, no hard sell.
 
@@ -84,7 +168,7 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 - Amber-50 (`#fffbeb`) ambient glow as warmth instead of drop shadows
 - Per-app accent worlds layered on the white chassis (Walkr teal `#215468` / deep `#00455b` / cyan `#a5f3fc` over surface `#e3efee`)
 
-## Primary tasks
+### Primary tasks
 
 - Browse the app menu and pick one of the studio apps
 - Download one of the apps from its page
@@ -92,7 +176,33 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 - Explore the planets of Walkr from its own app page
 - Read an article or watch a video from the studio
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Fourdesire (四合願) is a **Taipei, Taiwan**-based studio founded in 2012 that makes "gamified self-improvement" apps under the **SPARKFUL** brand — most famously **Walkr** (a walking game set in a galaxy of planets), **Plant Nanny 植物保姆** (drink-water habit that grows a virtual plant), **Fortune City 記帳城市** (expense tracking that builds a city), **To-Do Adventure 記事探險**, and **Book Morning!** (a story-driven alarm). The studio's premise — visible in its self-description as "樂趣電力公司," the Fun Power Company — is that lasting behavior change comes from delight, not discipline: turn the boring, healthy habit into a small game and people will keep doing it.
+
+That thesis shapes the whole design language. Where most habit and wellness apps lean on streaks, guilt, and clinical charts, Fourdesire wraps each behavior in a hand-crafted illustrated world with its own characters and progression — drink water and a creature grows, walk and you discover a planet, log spending and a city rises. The SPARKFUL marketing site is the neutral, bright lobby for those colorful worlds: a flat white chassis, a single joyful gradient as the "press me" signal, and Montserrat's friendly geometry, so that each app's distinct color world (Walkr's space teal, Plant Nanny's greens) can shine on its own page without the brand frame competing.
+
+What Fourdesire refuses, visible in its design: the heavy, anxious chrome of productivity software (no dense dashboards on the marketing surface, no shadow-stacked "enterprise" cards), and the dark-pattern urgency of engagement-farming apps. What it embraces: warmth, hand-made character, generous whitespace, and a single bright action — fun as the mechanism, care as the goal.
+
+### Principles
+
+1. **Fun is the mechanism, not the decoration.** Self-improvement is reframed as play. *UI implication:* lead with delight (the joyful gradient, the illustrated worlds); never present a habit as a chore or a chart to be obeyed.
+2. **One bright action.** The tri-color gradient pill is the single saturated element in most views. *UI implication:* reserve the gradient for the primary CTA so the next step is unmistakable; keep everything else neutral.
+3. **Flat, light, and fast.** A picture-book feel beats decorative depth. *UI implication:* no shadows; separate with tint and hairlines; round generously; keep the page airy.
+4. **A neutral chassis, colorful worlds.** The SPARKFUL frame is quiet so each app's world can be loud. *UI implication:* keep the brand shell white/gray/Montserrat; let per-app accent palettes (Walkr teal/cyan) live inside it without overwriting it.
+5. **The wise, cheerful friend.** Encourage, don't lecture. *UI implication:* copy is warm and simple; motion and color reward progress gently — never guilt the user for a missed day.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable SPARKFUL / Fourdesire user segments (people building healthy habits through gamified apps), not individual people.*
+
+**陳怡君, 28, Taipei.** A designer who installed Plant Nanny to actually drink water through long studio days. Stays because the plant growing is a tiny daily delight, not a nag. Loves that the app feels made by people who care about craft.
+
+**Marcus Lee, 34, Singapore.** A remote engineer who walks with Walkr to hit a step goal without it feeling like exercise. Treats discovering planets as the reward. Trusts the studio because the apps never guilt-trip or dark-pattern him into engagement.
+
+**林雅婷, 41, Kaohsiung.** A parent using Fortune City 記帳城市 to make budgeting bearable — watching a city grow as she logs spending. Appreciates the gentle, cheerful tone and the absence of finance-app anxiety.
+
+## Colors
 
 ### Primary Action (Gradient)
 - **Gradient Start — Amber** (`#fbbf24`): Left edge of the primary-CTA gradient. Warm, sunny entry.
@@ -122,7 +232,7 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 - **Walkr Cyan** (`#a5f3fc`): Bright cyan heading on the dark "Explore the Boundless Universe" block.
 - **Walkr Surface** (`#e3efee`): Soft pale-teal surface tint for Walkr content cards.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Latin / primary**: `Montserrat, sans-serif` — used for every text element, display through body.
@@ -147,7 +257,114 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 - **ExtraBold for the feature voice**: the 800 weight at 30px is the most distinctive typographic choice — punchy, friendly, almost poster-like.
 - **CJK rides the system**: Traditional-Chinese copy inherits the platform's Han font, so the brand never ships a heavy CJK webfont — keeping the playful, fast feel intact in both languages.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px
+- Scale: 4px, 8px, 12px, 16px, 20px, 24px, 28px, 48px
+- Notable: app-menu nav buttons use a 20px / 12px asymmetric padding; CTA pills use 14px / 28px (hero) and 12px / 24px (compact)
+
+### Grid & Container
+- Centered single-column hero anchored by the 48px Montserrat headline and the gradient CTA pill
+- App entries presented as a horizontal menu row (Plant Nanny / Fortune City / Walkr / To-Do Adventure / Book Morning!) each at 76px tall
+- Feature sections alternate white (`#ffffff`) and tinted gray (`#f3f4f6` `bg-light`) full-width bands
+- Cards and panels round generously (12px / 20px / 24px); phone-frame previews use the dark slate panel
+
+### Whitespace Philosophy
+- **Air over density**: generous vertical rhythm; the page breathes like a picture book, never crowded
+- **Flat segmentation**: sections separate by background tint (`#f3f4f6` vs `#ffffff`) and `#e5e7eb` hairlines, not elevation
+- **One bright moment per view**: the gradient pill is the single saturated element in most viewports; everything else is neutral
+
+### Border Radius Scale
+- Small (8px): inner elements, small containers
+- Medium (12px): app cards — the workhorse
+- Large (20px): tinted feature panels, media thumbnails (top-only)
+- XL (24px): dark slate phone-frame panels
+- Full (9999px): all pills, avatar chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, app menu stacks/scrolls |
+| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
+| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+
+#### Touch Targets
+- Hero CTA pill at 56px height, full pill — an unmistakable tap target
+- App-menu nav rows at 76px height with comfortable 20px/12px padding
+- Download pills at 12px/24px padding, full-round for clear hit area
+
+#### Collapsing Strategy
+- Hero: 48px Montserrat headline scales down on mobile, weight 700 maintained
+- App menu: horizontal row wraps/stacks on narrow viewports
+- Feature bands: multi-column → stacked single column
+- Tinted/white alternating sections keep full-width treatment
+
+#### Image Behavior
+- App screenshots and illustrations carry no shadow at any size (flat system)
+- Media thumbnails keep top-only `20px 20px 0 0` rounding above white caption blocks
+- Cards maintain 12px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
+| Glow (Level 0.5) | `#fffbeb` amber-50 soft circular glow | Ambient warmth behind the hero (decorative, not elevation) |
+| Tint (Level 1) | `#f3f4f6` background shift | Card/section separation without elevation |
+| Hairline (Level 2) | `1px solid #e5e7eb` | Card outlines, dividers |
+| Panel (Level 3) | `#1f2937` dark slate fill, 24px radius | Phone-frame / media block contrast |
+
+**Shadow Philosophy**: SPARKFUL is a shadowless system. Live inspection found `box-shadow: none` across the hero, nav, app cards, footer, and panels. Depth is communicated by background tint (`#f3f4f6`), thin `#e5e7eb` hairlines, generous rounding, and color contrast — the dark slate panel (`#1f2937`) or the gradient pill — never by drop shadows. Warmth that a shadow might otherwise add comes from the ambient amber-50 (`#fffbeb`) glow behind the hero. This keeps the playful brand feeling light, fast, and illustration-friendly.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 240ms | Card/section reveal, sheet, dropdown |
+| `motion-playful` | 360ms | Hero / illustrated-world reveals, app-page transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, panels, pills |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-bounce-soft` | `cubic-bezier(0.34, 1.4, 0.64, 1)` | Gentle reward overshoot on success delights (sparingly) |
+
+**Motion rules**: Motion is warm and lively but never frantic — it should feel like the "wise and cheerful friend," not a slot machine. The gradient pill responds to press with a subtle scale; sections and app worlds fade-and-rise on reveal at `motion-standard / ease-enter`. A small soft overshoot (`ease-bounce-soft`) is reserved for genuine reward moments (a habit completed, a planet discovered) and used sparingly so delight stays special. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the overshoot is removed; the product stays fully functional and cheerful in tone.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle on three brand-owned surfaces:
+- https://sparkful.app/ — hero CTA gradient linear-gradient(to right, rgb(251,191,36) #fbbf24, rgb(163,230,53) #a3e635, rgb(45,212,191) #2dd4bf) / 9999px / white text / 18px 600; Montserrat body; gray text ladder; box-shadow none; dark panel rgb(31,41,55) #1f2937 24px; amber glow rgb(255,251,235) #fffbeb
+- https://sparkful.app/zh-TW/about — Traditional-Chinese brand surface; "創造樂趣，啟動向上", "歡迎來到「樂趣電力公司」", "打造伴隨人們多年、一同成長的有趣產品"; Montserrat with system CJK fallback (font-family resolved to montserrat, sans-serif on CJK nodes)
+- https://sparkful.app/walkr — per-app accent world: rgb(33,84,104) #215468, rgb(0,69,91) #00455b, rgb(165,243,252) #a5f3fc, surface rgb(227,239,238) #e3efee, Walkr green rgb(85,182,124) #55b67c (~0.2 alpha)
+
+Meta description (verified via page head, 2026-06-17): "SPARKFUL lights up your life like a wise and cheerful friend. SPARKFUL's apps help you take care of your health and wellness without forgetting the fun!"
+
+Voice samples (§10) are verbatim from the live homepage and About page (EN hero/section/feature headlines; zh-TW About headlines).
+
+Brand narrative (§11): Fourdesire (四合願) is a Taipei, Taiwan studio publishing gamified self-improvement apps under the SPARKFUL brand (Walkr, Plant Nanny 植物保姆, Fortune City 記帳城市, To-Do Adventure 記事探險, Book Morning!). The app roster and the "樂趣電力公司" self-description are confirmed from the live site (nav + About page, 2026-06-17). Founding year (~2012) and headquarters (Taipei) are widely documented public facts, not directly quoted from a verified Fourdesire statement this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable SPARKFUL user segments (people building healthy habits through gamified apps). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "fun is the mechanism, not the decoration", "a neutral chassis so colorful worlds can shine") are editorial readings connecting Fourdesire's observed design and stated mission to its design system, not directly sourced statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -227,44 +444,21 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 **Tier 2 sources:** getdesign.md/sparkful + getdesign.md/fourdesire — NOT FOUND (no entry); styles.refero.design ?q=sparkful / ?q=fourdesire — NOT LISTED (search returned only generic browse grid, no SPARKFUL/Fourdesire style)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 20px, 24px, 28px, 48px
-- Notable: app-menu nav buttons use a 20px / 12px asymmetric padding; CTA pills use 14px / 28px (hero) and 12px / 24px (compact)
+| State | Treatment |
+|---|---|
+| **Empty (no apps explored yet)** | White canvas, warm single line in Slate (`#374151`) inviting exploration, one gradient CTA pill ("Explore SPARKFUL Apps"). No clutter, friendly tone. |
+| **Empty (app list / saved, none yet)** | Muted Gray (`#6b7280`) single line in a cheerful, non-judgmental voice, with a path back to browse. |
+| **Loading (content fetch)** | Skeleton blocks on the `#f3f4f6` tinted surface at final card dimensions, 12px radius. Flat pulse — no shadow shimmer (consistent with the shadowless system). |
+| **Loading (in-place)** | Inline progress; previous content stays visible. No blocking spinner over the page. |
+| **Error (load failed)** | Inline message in Slate (`#374151`) with a plain, warm explanation and a retry. No cold "Something went wrong" alone — keep the friendly voice. |
+| **Error (form / input)** | Field-level message below the field describing what's valid, in a gentle tone — never a bare "Required". |
+| **Success (action done)** | Brief inline confirmation in a cheerful tone; on app surfaces this is the delight moment (plant grows, planet found). No guilt, no pressure. |
+| **Skeleton** | `#f3f4f6` blocks at final dimensions, 12px radius, flat pulse. |
+| **Disabled** | Faint Gray (`#9ca3af`) text on reduced-opacity surface; the gradient pill fades rather than turning gray, to preserve the playful brand read. |
 
-### Grid & Container
-- Centered single-column hero anchored by the 48px Montserrat headline and the gradient CTA pill
-- App entries presented as a horizontal menu row (Plant Nanny / Fortune City / Walkr / To-Do Adventure / Book Morning!) each at 76px tall
-- Feature sections alternate white (`#ffffff`) and tinted gray (`#f3f4f6` `bg-light`) full-width bands
-- Cards and panels round generously (12px / 20px / 24px); phone-frame previews use the dark slate panel
-
-### Whitespace Philosophy
-- **Air over density**: generous vertical rhythm; the page breathes like a picture book, never crowded
-- **Flat segmentation**: sections separate by background tint (`#f3f4f6` vs `#ffffff`) and `#e5e7eb` hairlines, not elevation
-- **One bright moment per view**: the gradient pill is the single saturated element in most viewports; everything else is neutral
-
-### Border Radius Scale
-- Small (8px): inner elements, small containers
-- Medium (12px): app cards — the workhorse
-- Large (20px): tinted feature panels, media thumbnails (top-only)
-- XL (24px): dark slate phone-frame panels
-- Full (9999px): all pills, avatar chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Glow (Level 0.5) | `#fffbeb` amber-50 soft circular glow | Ambient warmth behind the hero (decorative, not elevation) |
-| Tint (Level 1) | `#f3f4f6` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e5e7eb` | Card outlines, dividers |
-| Panel (Level 3) | `#1f2937` dark slate fill, 24px radius | Phone-frame / media block contrast |
-
-**Shadow Philosophy**: SPARKFUL is a shadowless system. Live inspection found `box-shadow: none` across the hero, nav, app cards, footer, and panels. Depth is communicated by background tint (`#f3f4f6`), thin `#e5e7eb` hairlines, generous rounding, and color contrast — the dark slate panel (`#1f2937`) or the gradient pill — never by drop shadows. Warmth that a shadow might otherwise add comes from the ambient amber-50 (`#fffbeb`) glow behind the hero. This keeps the playful brand feeling light, fast, and illustration-friendly.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the tri-color gradient pill (`#fbbf24` → `#a3e635` → `#2dd4bf`) for the single primary action — full `9999px`, white text, weight 600
@@ -286,32 +480,28 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 - Use pure black `#000000` for body text — reserve it for the biggest hero words; body is gray `#4b5563`
 - Let a per-app accent color overwrite the neutral SPARKFUL chassis — accents layer on, they don't replace
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, app menu stacks/scrolls |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+SPARKFUL's voice is **warm, encouraging, and playful** — what the brand itself calls being "a wise and cheerful friend." Its own meta description reads: *"SPARKFUL lights up your life like a wise and cheerful friend. SPARKFUL's apps help you take care of your health and wellness without forgetting the fun!"* The register is upbeat without being hyper, and self-improvement is framed as play rather than discipline. The Traditional-Chinese voice is the same friend in another language — Fourdesire literally calls itself "樂趣電力公司" ("the Fun Power Company").
 
-### Touch Targets
-- Hero CTA pill at 56px height, full pill — an unmistakable tap target
-- App-menu nav rows at 76px height with comfortable 20px/12px padding
-- Download pills at 12px/24px padding, full-round for clear hit area
+| Context | Tone |
+|---|---|
+| Hero headlines | Playful imperative. "Spark the fun in the ordinary." Light, inviting. |
+| Section headlines | Warm benefit framing. "Change Begins with fun!", "Play for a Better YOU". |
+| CTAs | Friendly and simple. "Explore SPARKFUL Apps", "Download". |
+| Feature copy | Self-care reframed as play; gentle, never preachy. "The Most Playful Form of Self-Care". |
+| Brand / About (zh-TW) | Earnest and cheerful. "創造樂趣，啟動向上" ("Create fun, spark progress"). |
 
-### Collapsing Strategy
-- Hero: 48px Montserrat headline scales down on mobile, weight 700 maintained
-- App menu: horizontal row wraps/stacks on narrow viewports
-- Feature bands: multi-column → stacked single column
-- Tinted/white alternating sections keep full-width treatment
+**Voice samples (verbatim from live brand surfaces):**
+- "Spark the fun in the ordinary" — hero headline, sparkful.app/ *(verified live 2026-06-17)*
+- "Change Begins with fun!" — section headline, sparkful.app/ *(verified live 2026-06-17)*
+- "The Most Playful Form of Self-Care" — feature headline, sparkful.app/ *(verified live 2026-06-17)*
+- "創造樂趣，啟動向上" — About page headline, sparkful.app/zh-TW/about *(verified live 2026-06-17)*
+- "歡迎來到「樂趣電力公司」" ("Welcome to the Fun Power Company") — About page, sparkful.app/zh-TW/about *(verified live 2026-06-17)*
 
-### Image Behavior
-- App screenshots and illustrations carry no shadow at any size (flat system)
-- Media thumbnails keep top-only `20px 20px 0 0` rounding above white caption blocks
-- Cards maintain 12px radius across breakpoints
+**Forbidden register**: guilt-driven productivity pressure, clinical wellness jargon, aggressive sales urgency, exclamation-stacked hype that loses the gentle warmth. The fun must never tip into mania.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action: tri-color gradient `linear-gradient(to right, #fbbf24, #a3e635, #2dd4bf)`, white text
@@ -340,103 +530,3 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 8. Per-app pages add an accent world (Walkr teal/cyan) on the white chassis — never replace it
 
 ---
-
-## 10. Voice & Tone
-
-SPARKFUL's voice is **warm, encouraging, and playful** — what the brand itself calls being "a wise and cheerful friend." Its own meta description reads: *"SPARKFUL lights up your life like a wise and cheerful friend. SPARKFUL's apps help you take care of your health and wellness without forgetting the fun!"* The register is upbeat without being hyper, and self-improvement is framed as play rather than discipline. The Traditional-Chinese voice is the same friend in another language — Fourdesire literally calls itself "樂趣電力公司" ("the Fun Power Company").
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Playful imperative. "Spark the fun in the ordinary." Light, inviting. |
-| Section headlines | Warm benefit framing. "Change Begins with fun!", "Play for a Better YOU". |
-| CTAs | Friendly and simple. "Explore SPARKFUL Apps", "Download". |
-| Feature copy | Self-care reframed as play; gentle, never preachy. "The Most Playful Form of Self-Care". |
-| Brand / About (zh-TW) | Earnest and cheerful. "創造樂趣，啟動向上" ("Create fun, spark progress"). |
-
-**Voice samples (verbatim from live brand surfaces):**
-- "Spark the fun in the ordinary" — hero headline, sparkful.app/ *(verified live 2026-06-17)*
-- "Change Begins with fun!" — section headline, sparkful.app/ *(verified live 2026-06-17)*
-- "The Most Playful Form of Self-Care" — feature headline, sparkful.app/ *(verified live 2026-06-17)*
-- "創造樂趣，啟動向上" — About page headline, sparkful.app/zh-TW/about *(verified live 2026-06-17)*
-- "歡迎來到「樂趣電力公司」" ("Welcome to the Fun Power Company") — About page, sparkful.app/zh-TW/about *(verified live 2026-06-17)*
-
-**Forbidden register**: guilt-driven productivity pressure, clinical wellness jargon, aggressive sales urgency, exclamation-stacked hype that loses the gentle warmth. The fun must never tip into mania.
-
-## 11. Brand Narrative
-
-Fourdesire (四合願) is a **Taipei, Taiwan**-based studio founded in 2012 that makes "gamified self-improvement" apps under the **SPARKFUL** brand — most famously **Walkr** (a walking game set in a galaxy of planets), **Plant Nanny 植物保姆** (drink-water habit that grows a virtual plant), **Fortune City 記帳城市** (expense tracking that builds a city), **To-Do Adventure 記事探險**, and **Book Morning!** (a story-driven alarm). The studio's premise — visible in its self-description as "樂趣電力公司," the Fun Power Company — is that lasting behavior change comes from delight, not discipline: turn the boring, healthy habit into a small game and people will keep doing it.
-
-That thesis shapes the whole design language. Where most habit and wellness apps lean on streaks, guilt, and clinical charts, Fourdesire wraps each behavior in a hand-crafted illustrated world with its own characters and progression — drink water and a creature grows, walk and you discover a planet, log spending and a city rises. The SPARKFUL marketing site is the neutral, bright lobby for those colorful worlds: a flat white chassis, a single joyful gradient as the "press me" signal, and Montserrat's friendly geometry, so that each app's distinct color world (Walkr's space teal, Plant Nanny's greens) can shine on its own page without the brand frame competing.
-
-What Fourdesire refuses, visible in its design: the heavy, anxious chrome of productivity software (no dense dashboards on the marketing surface, no shadow-stacked "enterprise" cards), and the dark-pattern urgency of engagement-farming apps. What it embraces: warmth, hand-made character, generous whitespace, and a single bright action — fun as the mechanism, care as the goal.
-
-## 12. Principles
-
-1. **Fun is the mechanism, not the decoration.** Self-improvement is reframed as play. *UI implication:* lead with delight (the joyful gradient, the illustrated worlds); never present a habit as a chore or a chart to be obeyed.
-2. **One bright action.** The tri-color gradient pill is the single saturated element in most views. *UI implication:* reserve the gradient for the primary CTA so the next step is unmistakable; keep everything else neutral.
-3. **Flat, light, and fast.** A picture-book feel beats decorative depth. *UI implication:* no shadows; separate with tint and hairlines; round generously; keep the page airy.
-4. **A neutral chassis, colorful worlds.** The SPARKFUL frame is quiet so each app's world can be loud. *UI implication:* keep the brand shell white/gray/Montserrat; let per-app accent palettes (Walkr teal/cyan) live inside it without overwriting it.
-5. **The wise, cheerful friend.** Encourage, don't lecture. *UI implication:* copy is warm and simple; motion and color reward progress gently — never guilt the user for a missed day.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable SPARKFUL / Fourdesire user segments (people building healthy habits through gamified apps), not individual people.*
-
-**陳怡君, 28, Taipei.** A designer who installed Plant Nanny to actually drink water through long studio days. Stays because the plant growing is a tiny daily delight, not a nag. Loves that the app feels made by people who care about craft.
-
-**Marcus Lee, 34, Singapore.** A remote engineer who walks with Walkr to hit a step goal without it feeling like exercise. Treats discovering planets as the reward. Trusts the studio because the apps never guilt-trip or dark-pattern him into engagement.
-
-**林雅婷, 41, Kaohsiung.** A parent using Fortune City 記帳城市 to make budgeting bearable — watching a city grow as she logs spending. Appreciates the gentle, cheerful tone and the absence of finance-app anxiety.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no apps explored yet)** | White canvas, warm single line in Slate (`#374151`) inviting exploration, one gradient CTA pill ("Explore SPARKFUL Apps"). No clutter, friendly tone. |
-| **Empty (app list / saved, none yet)** | Muted Gray (`#6b7280`) single line in a cheerful, non-judgmental voice, with a path back to browse. |
-| **Loading (content fetch)** | Skeleton blocks on the `#f3f4f6` tinted surface at final card dimensions, 12px radius. Flat pulse — no shadow shimmer (consistent with the shadowless system). |
-| **Loading (in-place)** | Inline progress; previous content stays visible. No blocking spinner over the page. |
-| **Error (load failed)** | Inline message in Slate (`#374151`) with a plain, warm explanation and a retry. No cold "Something went wrong" alone — keep the friendly voice. |
-| **Error (form / input)** | Field-level message below the field describing what's valid, in a gentle tone — never a bare "Required". |
-| **Success (action done)** | Brief inline confirmation in a cheerful tone; on app surfaces this is the delight moment (plant grows, planet found). No guilt, no pressure. |
-| **Skeleton** | `#f3f4f6` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | Faint Gray (`#9ca3af`) text on reduced-opacity surface; the gradient pill fades rather than turning gray, to preserve the playful brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 240ms | Card/section reveal, sheet, dropdown |
-| `motion-playful` | 360ms | Hero / illustrated-world reveals, app-page transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, panels, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-bounce-soft` | `cubic-bezier(0.34, 1.4, 0.64, 1)` | Gentle reward overshoot on success delights (sparingly) |
-
-**Motion rules**: Motion is warm and lively but never frantic — it should feel like the "wise and cheerful friend," not a slot machine. The gradient pill responds to press with a subtle scale; sections and app worlds fade-and-rise on reveal at `motion-standard / ease-enter`. A small soft overshoot (`ease-bounce-soft`) is reserved for genuine reward moments (a habit completed, a planet discovered) and used sparingly so delight stays special. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the overshoot is removed; the product stays fully functional and cheerful in tone.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle on three brand-owned surfaces:
-- https://sparkful.app/ — hero CTA gradient linear-gradient(to right, rgb(251,191,36) #fbbf24, rgb(163,230,53) #a3e635, rgb(45,212,191) #2dd4bf) / 9999px / white text / 18px 600; Montserrat body; gray text ladder; box-shadow none; dark panel rgb(31,41,55) #1f2937 24px; amber glow rgb(255,251,235) #fffbeb
-- https://sparkful.app/zh-TW/about — Traditional-Chinese brand surface; "創造樂趣，啟動向上", "歡迎來到「樂趣電力公司」", "打造伴隨人們多年、一同成長的有趣產品"; Montserrat with system CJK fallback (font-family resolved to montserrat, sans-serif on CJK nodes)
-- https://sparkful.app/walkr — per-app accent world: rgb(33,84,104) #215468, rgb(0,69,91) #00455b, rgb(165,243,252) #a5f3fc, surface rgb(227,239,238) #e3efee, Walkr green rgb(85,182,124) #55b67c (~0.2 alpha)
-
-Meta description (verified via page head, 2026-06-17): "SPARKFUL lights up your life like a wise and cheerful friend. SPARKFUL's apps help you take care of your health and wellness without forgetting the fun!"
-
-Voice samples (§10) are verbatim from the live homepage and About page (EN hero/section/feature headlines; zh-TW About headlines).
-
-Brand narrative (§11): Fourdesire (四合願) is a Taipei, Taiwan studio publishing gamified self-improvement apps under the SPARKFUL brand (Walkr, Plant Nanny 植物保姆, Fortune City 記帳城市, To-Do Adventure 記事探險, Book Morning!). The app roster and the "樂趣電力公司" self-description are confirmed from the live site (nav + About page, 2026-06-17). Founding year (~2012) and headquarters (Taipei) are widely documented public facts, not directly quoted from a verified Fourdesire statement this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable SPARKFUL user segments (people building healthy habits through gamified apps). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "fun is the mechanism, not the decoration", "a neutral chassis so colorful worlds can shine") are editorial readings connecting Fourdesire's observed design and stated mission to its design system, not directly sourced statements.
--->

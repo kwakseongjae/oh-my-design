@@ -1,229 +1,183 @@
 ---
-id: kakao
 name: Kakao
-country: KR
-category: consumer-tech
-homepage: "https://www.kakaocorp.com/page/"
-primary_color: "#fee500"
-logo:
-  type: simpleicons
-  slug: kakaotalk
-verified: "2026-07-11"
-omd: "0.1"
-ds:
-  name: Kakao Login Design Guide
-  url: "https://developers.kakao.com/docs/latest/ko/kakaologin/design-guide"
-  type: system
-  description: Official Kakao Login button compliance guidance; corporate-site design is tracked as a separate surface.
-verification_v2:
-  schema: 2
-  checked: "2026-09-29"
-  surfaces:
-    - { id: corp-home, kind: marketing, url: "https://www.kakaocorp.com/page/", inspected: "2026-07-11" }
-    - { id: corp-culture, kind: marketing, url: "https://www.kakaocorp.com/page/about/culture", inspected: "2026-07-11" }
-    - { id: corp-milestones, kind: marketing, url: "https://www.kakaocorp.com/page/about/milestones", inspected: "2026-07-11" }
-    - { id: login-guide, kind: design-system, url: "https://developers.kakao.com/docs/ko/kakaologin/design-guide", inspected: "2026-07-11" }
-  sources:
-    - { id: corp-home-live, kind: product-surface, url: "https://www.kakaocorp.com/page/", captured: "2026-07-11" }
-    - { id: corp-culture-live, kind: product-surface, url: "https://www.kakaocorp.com/page/about/culture", captured: "2026-07-11" }
-    - { id: corp-milestones-live, kind: product-surface, url: "https://www.kakaocorp.com/page/about/milestones", captured: "2026-07-11" }
-    - { id: login-guide-live, kind: official-doc, url: "https://developers.kakao.com/docs/ko/kakaologin/design-guide", captured: "2026-07-11" }
-    - { id: kakao-probe, kind: product-surface, url: "https://www.kakaocorp.com/page/", captured: "2026-09-29" }
-  claims:
-    "tokens.colors.login": &login_doc { surface_id: login-guide, source_id: login-guide-live, method: official-doc-rendered-text, captured: "2026-07-11" }
-    "tokens.colors.login-symbol": *login_doc
-    "tokens.colors.login-label": *login_doc
-    "tokens.colors.marketing": &corp_live { surface_id: corp-home, source_id: corp-home-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.colors.dark-marketing": *corp_live
-    "tokens.colors.canvas": *corp_live
-    "tokens.colors.foreground": *corp_live
-    "tokens.colors.on-dark": *corp_live
-    "tokens.colors.muted": &milestones_live { surface_id: corp-milestones, source_id: corp-milestones-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.colors.surface": *milestones_live
-    "tokens.colors.border": &culture_live { surface_id: corp-culture, source_id: corp-culture-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.typography.family.display": *corp_live
-    "tokens.typography.family.text": *corp_live
-    "tokens.typography.family.login": *login_doc
-    "tokens.typography.display.size": *corp_live
-    "tokens.typography.display.weight": *corp_live
-    "tokens.typography.display.lineHeight": *corp_live
-    "tokens.typography.display.tracking": *corp_live
-    "tokens.typography.heading.size": *corp_live
-    "tokens.typography.heading.weight": *corp_live
-    "tokens.typography.heading.lineHeight": *corp_live
-    "tokens.typography.title.size": *corp_live
-    "tokens.typography.title.weight": *corp_live
-    "tokens.typography.title.lineHeight": *corp_live
-    "tokens.typography.nav.size": *corp_live
-    "tokens.typography.nav.weight": *corp_live
-    "tokens.typography.nav.lineHeight": *corp_live
-    "tokens.typography.body.size": *corp_live
-    "tokens.typography.body.weight": *corp_live
-    "tokens.typography.body.lineHeight": *corp_live
-    "tokens.typography.body-readable.size": *corp_live
-    "tokens.typography.body-readable.weight": *corp_live
-    "tokens.typography.body-readable.lineHeight": *corp_live
-    "tokens.typography.body-readable.tracking": *corp_live
-    "tokens.typography.caption.size": *corp_live
-    "tokens.typography.caption.weight": *corp_live
-    "tokens.typography.caption.lineHeight": *corp_live
-    "tokens.typography.caption.tracking": *corp_live
-    "tokens.typography.login-label.size": *login_doc
-    "tokens.spacing.xs": *corp_live
-    "tokens.spacing.sm": *corp_live
-    "tokens.spacing.md": *corp_live
-    "tokens.spacing.lg": *corp_live
-    "tokens.spacing.xl": *corp_live
-    "tokens.rounded.login": *login_doc
-    "tokens.rounded.marketing": *corp_live
-    "tokens.rounded.search": *corp_live
-    "tokens.rounded.footer": *milestones_live
-    "tokens.rounded.filter": *milestones_live
-    "tokens.rounded.full": *corp_live
-    "tokens.components.kakao-login.type": *login_doc
-    "tokens.components.kakao-login.bg": *login_doc
-    "tokens.components.kakao-login.fg": *login_doc
-    "tokens.components.kakao-login.radius": *login_doc
-    "tokens.components.kakao-login.font": *login_doc
-    "tokens.components.kakao-login.states": *login_doc
-    "tokens.components.kakao-login.use": *login_doc
-    "tokens.components.corporate-nav.focus": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.item_menu 소개 at :focus-visible, Tab stop 4", captured: "2026-09-29" }
-    "tokens.components.corporate-nav.type": *corp_live
-    "tokens.components.corporate-nav.bg": *corp_live
-    "tokens.components.corporate-nav.fg": *corp_live
-    "tokens.components.corporate-nav.radius": *corp_live
-    "tokens.components.corporate-nav.padding": *corp_live
-    "tokens.components.corporate-nav.height": *corp_live
-    "tokens.components.corporate-nav.font": *corp_live
-    "tokens.components.corporate-nav.hover": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.item_menu 소개 at :hover", captured: "2026-09-29" }
-    "tokens.components.corporate-nav.pressed": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.item_menu 소개 at :active", captured: "2026-09-29" }
-    "tokens.components.corporate-nav.states": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.item_menu 소개", captured: "2026-09-29" }
-    "tokens.components.corporate-nav.use": *corp_live
-    "tokens.components.search-control.type": *corp_live
-    "tokens.components.search-control.bg": *corp_live
-    "tokens.components.search-control.fg": *corp_live
-    "tokens.components.search-control.radius": *corp_live
-    "tokens.components.search-control.height": *corp_live
-    "tokens.components.search-control.font": *corp_live
-    "tokens.components.search-control.hover": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.btn_search 검색창 열기 at :hover", captured: "2026-09-29" }
-    "tokens.components.search-control.pressed": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.btn_search 검색창 열기 at :active", captured: "2026-09-29" }
-    "tokens.components.search-control.states": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "button.btn_search 검색창 열기", captured: "2026-09-29" }
-    "tokens.components.search-control.use": *corp_live
-    "tokens.components.dark-marketing-tag.hover": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.btn_top.btn_tag at :hover", captured: "2026-09-29" }
-    "tokens.components.dark-marketing-tag.pressed": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.btn_top.btn_tag at :active", captured: "2026-09-29" }
-    "tokens.components.dark-marketing-tag.type": *corp_live
-    "tokens.components.dark-marketing-tag.bg": *corp_live
-    "tokens.components.dark-marketing-tag.fg": *corp_live
-    "tokens.components.dark-marketing-tag.border": *corp_live
-    "tokens.components.dark-marketing-tag.radius": *corp_live
-    "tokens.components.dark-marketing-tag.padding": *corp_live
-    "tokens.components.dark-marketing-tag.height": *corp_live
-    "tokens.components.dark-marketing-tag.font": *corp_live
-    "tokens.components.dark-marketing-tag.states": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.btn_top.btn_tag", captured: "2026-09-29" }
-    "tokens.components.dark-marketing-tag.use": *corp_live
-    "tokens.components.milestone-filter.pressed": *milestones_live
-    "tokens.components.milestone-filter.type": *milestones_live
-    "tokens.components.milestone-filter.bg": *milestones_live
-    "tokens.components.milestone-filter.fg": *milestones_live
-    "tokens.components.milestone-filter.radius": *milestones_live
-    "tokens.components.milestone-filter.padding": *milestones_live
-    "tokens.components.milestone-filter.height": *milestones_live
-    "tokens.components.milestone-filter.font": *milestones_live
-    "tokens.components.milestone-filter.states": *milestones_live
-    "tokens.components.milestone-filter.use": *milestones_live
-    "tokens.components.footer-pill.type": *milestones_live
-    "tokens.components.footer-pill.bg": *milestones_live
-    "tokens.components.footer-pill.fg": *milestones_live
-    "tokens.components.footer-pill.radius": *milestones_live
-    "tokens.components.footer-pill.padding": *milestones_live
-    "tokens.components.footer-pill.height": *milestones_live
-    "tokens.components.footer-pill.font": *milestones_live
-    "tokens.components.footer-pill.states": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "footer a 관련사이트 at :hover and :active", captured: "2026-09-29" }
-    "tokens.components.footer-pill.use": *milestones_live
-    "tokens.components.marketing-download-cta.type": &kDownloadCta { surface_id: corp-home, source_id: corp-home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-11" }
-    "tokens.components.marketing-download-cta.bg": *kDownloadCta
-    "tokens.components.marketing-download-cta.fg": *kDownloadCta
-    "tokens.components.marketing-download-cta.border": *kDownloadCta
-    "tokens.components.marketing-download-cta.radius": *kDownloadCta
-    "tokens.components.marketing-download-cta.padding": *kDownloadCta
-    "tokens.components.marketing-download-cta.height": *kDownloadCta
-    "tokens.components.marketing-download-cta.font": *kDownloadCta
-    "tokens.components.marketing-download-cta.states": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.btn_top.btn_down at :hover, :active and :focus-visible (Tab stop 25)", captured: "2026-09-29" }
-    "tokens.components.marketing-download-cta.use": *kDownloadCta
-    "tokens.components.service-card.type": &kServiceCard { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.item_service, first of 8 candidates, rest", captured: "2026-09-29" }
-    "tokens.components.service-card.bg": *kServiceCard
-    "tokens.components.service-card.fg": *kServiceCard
-    "tokens.components.service-card.padding": *kServiceCard
-    "tokens.components.service-card.size": *kServiceCard
-    "tokens.components.service-card.font": *kServiceCard
-    "tokens.components.service-card.hover": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.item_service at :hover", captured: "2026-09-29" }
-    "tokens.components.service-card.pressed": { surface_id: corp-home, source_id: kakao-probe, method: live-state-probe, selector: "a.item_service at :active", captured: "2026-09-29" }
-    "tokens.components.service-card.states": *kServiceCard
-    "tokens.components.service-card.use": *kServiceCard
-    "tokens.components.milestone-service-link.type": &kMilestoneLink { surface_id: corp-milestones, source_id: corp-milestones-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-11" }
-    "tokens.components.milestone-service-link.bg": *kMilestoneLink
-    "tokens.components.milestone-service-link.fg": *kMilestoneLink
-    "tokens.components.milestone-service-link.height": *kMilestoneLink
-    "tokens.components.milestone-service-link.font": *kMilestoneLink
-    "tokens.components.milestone-service-link.hover": { surface_id: corp-milestones, source_id: corp-milestones-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"21\"]::state-hover", captured: "2026-07-11" }
-    "tokens.components.milestone-service-link.pressed": { surface_id: corp-milestones, source_id: corp-milestones-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"21\"]::state-pressed", captured: "2026-07-11" }
-    "tokens.components.milestone-service-link.states": *kMilestoneLink
-    "tokens.components.milestone-service-link.use": *kMilestoneLink
-    "tokens.components.culture-carousel-control.type": &kCarousel { surface_id: corp-culture, source_id: corp-culture-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"11\"]", captured: "2026-07-11" }
-    "tokens.components.culture-carousel-control.bg": *kCarousel
-    "tokens.components.culture-carousel-control.fg": *kCarousel
-    "tokens.components.culture-carousel-control.border": *kCarousel
-    "tokens.components.culture-carousel-control.radius": *kCarousel
-    "tokens.components.culture-carousel-control.size": *kCarousel
-    "tokens.components.culture-carousel-control.font": *kCarousel
-    "tokens.components.culture-carousel-control.states": *kCarousel
-    "tokens.components.culture-carousel-control.use": *kCarousel
-  conflicts: []
-tokens:
-  source: reconciled
-  extracted: "2026-07-11"
-  note: "Kakao Login compliance, Kakao corporate marketing, and Kakao Developers documentation chrome are separate evidence domains."
-  colors:
-    login: "#fee500"
-    login-symbol: "#000000"
-    login-label: "#000000"
-    marketing: "#fae100"
-    dark-marketing: "#111111"
-    canvas: "#ffffff"
-    foreground: "#333333"
-    on-dark: "#ffffff"
-    muted: "#888888"
-    surface: "#eeeeee"
-    border: "#dbdbdb"
-  typography:
-    family: { display: "KakaoBig", text: "KakaoSmall", login: "System" }
-    display: { size: 53.82, weight: 700, lineHeight: "66px", tracking: "-1px" }
-    heading: { size: 30, weight: 700, lineHeight: "40px" }
-    title: { size: 28, weight: 700, lineHeight: "42px" }
-    nav: { size: 17, weight: 400, lineHeight: "27px" }
-    body: { size: 14, weight: 400, lineHeight: "21px" }
-    body-readable: { size: 14, weight: 400, lineHeight: "24.92px", tracking: "-0.2px" }
-    caption: { size: 12, weight: 400, lineHeight: "18px", tracking: "-0.2px" }
-    login-label: { size: "30Pt" }
-  spacing: { xs: 4, sm: 6, md: 8, lg: 16, xl: 20 }
-  rounded: { login: 12, marketing: 16, search: 18, footer: 24, filter: 30, full: 999 }
-  components_harvested: true
-  components:
-    kakao-login: { type: button, bg: "#fee500", fg: "rgba(0, 0, 0, 0.85)", radius: "12px", font: "30Pt / OS system", states: "full label or shortened label; hover, pressed, and disabled visuals are not specified by this guide", use: "Kakao Login only; preserve black speech-bubble symbol and mandated colors" }
-    corporate-nav: { type: button, bg: "#ffffff", fg: "#000000", radius: "999px", padding: "4px 16px 6px", height: "37px", font: "17px / 400 / KakaoBig", hover: "bg #f3f3f3", pressed: "bg #f3f3f3", focus: "bg #f3f3f3", states: "light and dark theme variants; hover and pressed bg #f3f3f3 in the 2026-07-11 capture on three corporate pages and again on 2026-09-29 with :hover and :active matched; keyboard focus (Tab stop 4, :focus-visible matched) fills bg #f3f3f3 beside the browser default ring (outline auto); the fill stayed after focus moved on, which suggests a script-applied current-item state (a lead, not a finding)", use: "top-level corporate menu trigger" }
-    search-control: { type: button, bg: "transparent", fg: "#333333", radius: "18px", height: "36px", font: "14px / 400 / KakaoSmall", hover: "bg #eeeeee", pressed: "bg #eeeeee", states: "hover and pressed bg #eeeeee, measured 2026-09-29 on the corporate home with :hover and :active matched and sampled 2026-07-11 on the search, language and theme buttons of the corporate pages; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared; the search input opens in a layer behind a click and was not measured", use: "corporate-site circular search control; the language and theme toggles share the same 36px circle" }
-    dark-marketing-tag: { type: badge, bg: "#111111", fg: "#ffffff", border: "2px solid #ffffff", radius: "16px", padding: "7px 8px 8px", height: "32px", font: "13px / 700 / KakaoSmall", hover: "bg rgba(17, 17, 17, 0.75)", pressed: "bg rgba(17, 17, 17, 0.75)", states: "hover and pressed bg rgba(17, 17, 17, 0.75), sampled 2026-07-11 and confirmed 2026-09-29 with :hover and :active matched; border and label stay as at rest; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared", use: "dark corporate marketing tag/CTA label" }
-    milestone-filter: { type: button, bg: "#eeeeee", fg: "#000000", radius: "30px", padding: "8px 20px 12px", height: "44px", font: "16px / 700 / KakaoBig", pressed: "bg #dfdfdf", states: "selected filter captured; pressed bg #dfdfdf from one 2026-07-11 frame on the category combobox (surface-3::[data-omd-capture=\"15\"]); hover and focus not sampled", use: "milestone category filter" }
-    footer-pill: { type: button, bg: "#eeeeee", fg: "#000000", radius: "24px", padding: "10px 20px 12px", height: "40px", font: "12px / 400 / KakaoSmall", states: "default captured 2026-07-11 on the milestones page; on 2026-09-29 the same pill on the corporate home matched :hover and :active and kept bg #eeeeee and fg #000000, so there is no hover or pressed value to declare; keyboard focus draws only the browser default ring (outline auto)", use: "corporate footer related-site pill" }
-    marketing-download-cta: { type: button, bg: "#fae100", fg: "#000000", border: "2px solid #000000", radius: "16px", padding: "7px 13px 8px 30px", height: "32px", font: "13px / 700 / KakaoSmall", states: "default captured 2026-07-11 (home::[data-omd-capture=\"10\"], 142 x 32, tracking -0.5px); on 2026-09-29 hover and pressed matched :hover and :active and left fill, border and label at rest, so no hover or pressed value is declared; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared", use: "Corporate-home marketing download pill (a.btn_top.btn_down, 카카오톡 다운로드) beside the dark marketing tag; the only #fae100 element in the capture" }
-    service-card: { type: card, bg: "transparent", fg: "#111111", padding: "0px 16px 0px 0px", size: "288px x 299px", font: "30px / 700", hover: "icon opacity 1 via title ::after (24 x 24 SVG)", pressed: "icon opacity 1 via title ::after (24 x 24 SVG)", states: "rest, hover and pressed measured 2026-09-29 with :hover and :active matched: the title ::after icon goes from opacity 0 to 1 and nothing recolours, moves or casts a shadow; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared; fg and font are the title label (strong.title_service), not the anchor (#333333, 14px / 400 / KakaoBig); not in the 2026-07-11 capture", use: "Corporate-home service card link (a.item_service) with a 120px service image, title and description" }
-    milestone-service-link: { type: button, bg: "transparent", fg: "#333333", height: "20px", font: "14px / 400 / KakaoSmall", hover: "fg #111111", pressed: "fg #111111", states: "default, hover and pressed sampled 2026-07-11 on three sibling links (surface-3 captures 21, 22 and 23), each fg #333333 to #111111, the dark-marketing colour; focus not sampled (the 2026-09-29 probe covered the corporate home only)", use: "Milestones-page service-name text link (a.link_service in li.item_service, 35 in the list); line height 24.92px, tracking -0.2px" }
-    culture-carousel-control: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #dbdbdb", radius: "50%", size: "50px x 50px", font: "14px / 400 / KakaoSmall", states: "default captured 2026-07-11 (surface-2::[data-omd-capture=\"11\"]); no pointer-state sample", use: "Culture-page circular carousel control (button.btn_control); the element behind the #dbdbdb border token" }
+colors:
+  login: '#fee500'
+  login-symbol: '#000000'
+  login-label: '#000000'
+  marketing: '#fae100'
+  dark-marketing: '#111111'
+  canvas: '#ffffff'
+  foreground: '#333333'
+  on-dark: '#ffffff'
+  muted: '#888888'
+  surface: '#eeeeee'
+  border: '#dbdbdb'
+typography:
+  display:
+    fontSize: 53.82px
+    fontWeight: 700
+    lineHeight: 66px
+    letterSpacing: '-1px'
+  heading:
+    fontSize: 30px
+    fontWeight: 700
+    lineHeight: 40px
+  title:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 42px
+  nav:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 27px
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 21px
+  body-readable:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 24.92px
+    letterSpacing: '-0.2px'
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 18px
+    letterSpacing: '-0.2px'
+rounded:
+  login: 12px
+  marketing: 16px
+  search: 18px
+  footer: 24px
+  filter: 30px
+  full: 999px
+spacing:
+  xs: 4
+  sm: 6
+  md: 8
+  lg: 16
+  xl: 20
+components:
+  kakao-login:
+    type: button
+    backgroundColor: '#fee500'
+    textColor: rgba(0, 0, 0, 0.85)
+    rounded: 12px
+    typography: 30Pt / OS system
+    states: full label or shortened label; hover, pressed, and disabled visuals are not specified by this guide
+    use: Kakao Login only; preserve black speech-bubble symbol and mandated colors
+  corporate-nav:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 999px
+    padding: 4px 16px 6px
+    height: 37px
+    typography: 17px / 400 / KakaoBig
+    hover: 'bg #f3f3f3'
+    pressed: 'bg #f3f3f3'
+    focus: 'bg #f3f3f3'
+    states: 'light and dark theme variants; hover and pressed bg #f3f3f3 in the 2026-07-11 capture on three corporate pages and again on 2026-09-29 with :hover and :active matched; keyboard focus (Tab stop 4, :focus-visible matched) fills bg #f3f3f3 beside the browser default ring (outline auto); the fill stayed after focus moved on, which suggests a script-applied current-item state (a lead, not a finding)'
+    use: top-level corporate menu trigger
+  search-control:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 18px
+    height: 36px
+    typography: 14px / 400 / KakaoSmall
+    hover: 'bg #eeeeee'
+    pressed: 'bg #eeeeee'
+    states: 'hover and pressed bg #eeeeee, measured 2026-09-29 on the corporate home with :hover and :active matched and sampled 2026-07-11 on the search, language and theme buttons of the corporate pages; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared; the search input opens in a layer behind a click and was not measured'
+    use: corporate-site circular search control; the language and theme toggles share the same 36px circle
+  dark-marketing-tag:
+    type: badge
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    border: '2px solid #ffffff'
+    rounded: 16px
+    padding: 7px 8px 8px
+    height: 32px
+    typography: 13px / 700 / KakaoSmall
+    hover: bg rgba(17, 17, 17, 0.75)
+    pressed: bg rgba(17, 17, 17, 0.75)
+    states: hover and pressed bg rgba(17, 17, 17, 0.75), sampled 2026-07-11 and confirmed 2026-09-29 with :hover and :active matched; border and label stay as at rest; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared
+    use: dark corporate marketing tag/CTA label
+  milestone-filter:
+    type: button
+    backgroundColor: '#eeeeee'
+    textColor: '#000000'
+    rounded: 30px
+    padding: 8px 20px 12px
+    height: 44px
+    typography: 16px / 700 / KakaoBig
+    pressed: 'bg #dfdfdf'
+    states: 'selected filter captured; pressed bg #dfdfdf from one 2026-07-11 frame on the category combobox (surface-3::[data-omd-capture="15"]); hover and focus not sampled'
+    use: milestone category filter
+  footer-pill:
+    type: button
+    backgroundColor: '#eeeeee'
+    textColor: '#000000'
+    rounded: 24px
+    padding: 10px 20px 12px
+    height: 40px
+    typography: 12px / 400 / KakaoSmall
+    states: 'default captured 2026-07-11 on the milestones page; on 2026-09-29 the same pill on the corporate home matched :hover and :active and kept bg #eeeeee and fg #000000, so there is no hover or pressed value to declare; keyboard focus draws only the browser default ring (outline auto)'
+    use: corporate footer related-site pill
+  marketing-download-cta:
+    type: button
+    backgroundColor: '#fae100'
+    textColor: '#000000'
+    border: '2px solid #000000'
+    rounded: 16px
+    padding: 7px 13px 8px 30px
+    height: 32px
+    typography: 13px / 700 / KakaoSmall
+    states: default captured 2026-07-11 (home::[data-omd-capture="10"], 142 x 32, tracking -0.5px); on 2026-09-29 hover and pressed matched :hover and :active and left fill, border and label at rest, so no hover or pressed value is declared; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared
+    use: 'Corporate-home marketing download pill (a.btn_top.btn_down, 카카오톡 다운로드) beside the dark marketing tag; the only #fae100 element in the capture'
+  service-card:
+    type: card
+    backgroundColor: transparent
+    textColor: '#111111'
+    padding: 0px 16px 0px 0px
+    size: 288px x 299px
+    typography: 30px / 700
+    hover: icon opacity 1 via title ::after (24 x 24 SVG)
+    pressed: icon opacity 1 via title ::after (24 x 24 SVG)
+    states: 'rest, hover and pressed measured 2026-09-29 with :hover and :active matched: the title ::after icon goes from opacity 0 to 1 and nothing recolours, moves or casts a shadow; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared; fg and font are the title label (strong.title_service), not the anchor (#333333, 14px / 400 / KakaoBig); not in the 2026-07-11 capture'
+    use: Corporate-home service card link (a.item_service) with a 120px service image, title and description
+  milestone-service-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    height: 20px
+    typography: 14px / 400 / KakaoSmall
+    hover: 'fg #111111'
+    pressed: 'fg #111111'
+    states: 'default, hover and pressed sampled 2026-07-11 on three sibling links (surface-3 captures 21, 22 and 23), each fg #333333 to #111111, the dark-marketing colour; focus not sampled (the 2026-09-29 probe covered the corporate home only)'
+    use: Milestones-page service-name text link (a.link_service in li.item_service, 35 in the list); line height 24.92px, tracking -0.2px
+  culture-carousel-control:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #dbdbdb'
+    rounded: 50%
+    size: 50px x 50px
+    typography: 14px / 400 / KakaoSmall
+    states: default captured 2026-07-11 (surface-2::[data-omd-capture="11"]); no pointer-state sample
+    use: 'Culture-page circular carousel control (button.btn_control); the element behind the #dbdbdb border token'
+fonts:
+  roles:
+    display: KakaoBig
+    text: KakaoSmall
+    login: System
 ---
 
 # Design System Inspiration of Kakao (카카오)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Kakao is a mobile-life platform whose identity is built around making communication and everyday services feel immediately approachable. Yellow, speech-bubble symbolism, friendly proprietary type, and compact Korean language create recognition before a person reads a product name. That familiarity spans many services, but it is not one transferable UI kit: the corporate site uses KakaoBig and KakaoSmall with black, white, and marketing yellow; Kakao Login is a regulated integration component; and Kakao Developers uses Pretendard only for documentation chrome. Correct reuse begins by naming the surface and relationship being designed.
 
@@ -235,14 +189,41 @@ The clean-slate rule is therefore surface identity first: name whether a value b
 - Login compliance: `#fee500`, black symbol, black 85% label, 12px radius, OS system font at 30Pt
 - Corporate marketing yellow `#fae100` remains distinct from login yellow
 
-## Primary tasks
+### Primary tasks
 
 - Browse the company's milestone history filtered by category
 - Read how the company describes itself and its services
 - Search the corporate site for a page or service
 - Add a compliant Kakao Login button to a third-party service
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Kakao describes itself as a mobile-life platform that uses technology, content, and high mobile reach to make everyday services more convenient. Its current mission—bringing a needed future closer through technology that understands people—places human context before technical novelty.
+
+KakaoTalk’s communication model became the organizing metaphor for a broader ecosystem: channels connect people with brands and stores, messages carry transactional information, and services extend into commerce, maps, content, mobility, and social impact. The corporate yellow and speech-bubble identity therefore signal connection, but each service still needs its own product rules.
+
+This is why surface separation is essential. Kakao’s corporate type and marketing yellow express the parent identity; Kakao Login uses a precisely regulated `#fee500` component so third-party integrations remain recognizable and trustworthy; developer documentation uses its own Pretendard chrome. A coherent Kakao reference preserves the relationship between these systems without flattening them into one fictional theme.
+
+### Principles
+
+These are evidence-derived implementation principles:
+
+1. **Compliance outranks approximation.** Login symbols, labels, colors, type, and relative emphasis follow the official integration guide even when another treatment looks more fashionable.
+2. **Surface-specific fonts are part of correctness.** KakaoBig/KakaoSmall, OS system labels, and Pretendard documentation chrome describe different jobs, not a fallback chain.
+3. **Preserve the dual-yellow distinction.** Corporate marketing `#fae100` and regulated Login `#fee500` remain separately named and sourced.
+4. **Connection should stay legible.** Friendly language and familiar symbols can reduce distance, but transactional information, consent, and support states must remain explicit.
+5. **Use first-party evidence over remembered KakaoTalk conventions.** Do not fabricate chat bubbles, navigation, or native-service tokens from cultural familiarity with the brand.
+
+### Personas
+
+These are official service and stakeholder contexts, not invented demographic personas.
+
+- **A person communicating in daily life:** expects familiar language, fast recognition, and continuity between conversation and adjacent services.
+- **A customer receiving information or benefits from a channel:** needs promotional, transactional, and support messages to remain clearly distinguishable.
+- **A business or creator operating a Kakao channel:** needs approachable customer communication without losing operational clarity or consent boundaries.
+- **A developer integrating Kakao Login:** needs exact compliance rules for symbol, color, type, label, and relative emphasis so the integration remains trustworthy.
+
+## Colors
 
 ### Kakao Login compliance
 - **Container** (`#fee500`): mandatory login-button background.
@@ -261,7 +242,7 @@ The official guide explicitly says colors outside this regulation must not be ap
 - **Surface** (`#eeeeee`): current filter/footer-pill fill.
 - **Border** (`#dbdbdb`): captured culture-page circular-control border.
 
-## 3. Typography Rules
+## Typography
 
 ### Verified families
 - **KakaoBig**: loaded/high; 49 visible uses; display, navigation, card, and heading roles.
@@ -289,7 +270,33 @@ The official guide explicitly says colors outside this regulation must not be ap
 | **Declared-only** | KakaoDigitLatin is declared but had zero visible first-family uses in the inspected surfaces |
 | **Unresolved** | A universal KakaoTalk/native-service family mapping beyond the exact official surfaces documented here |
 
-## 4. Component Stylings
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.login-label.fontSize`: `30Pt`
+
+## Layout
+
+- Corporate content uses a compact 4/6/8/16/20 spacing rhythm around controls and text.
+- The Login guide requires the symbol and label zones to remain intact when widening the container; expand left and right equally.
+- When scaling the whole Login button, preserve symbol/label proportions and keep the label height at no more than one third of the container height.
+
+### Responsive Behavior
+
+The corporate pages are responsive, but this run does not promote universal breakpoints. For the Login button, follow the official proportional resizing rule: extend both sides equally when widening, preserve symbol/label zones, and use the shortened label if a smaller format is required.
+
+## Elevation & Depth
+
+No canonical shadow token is promoted. Captured corporate controls are largely flat; the Developers documentation site contains its own hover shadows, but those belong to documentation chrome rather than the Kakao Login component.
+
+## Motion & Easing
+
+No exact motion duration or easing token is promoted. Preserve focus and hover clarity on the corporate site and platform-standard interaction feedback for the Login button; label custom timing as an extension until first-party evidence is available.
+
+On 2026-09-29 all six probed corporate-home controls computed `transition: all 0s`: their hover, pressed and focus changes are instant, not animated.
+
+## Components
 
 ### Kakao Login Button
 - Background: `#fee500`
@@ -398,78 +405,7 @@ All six controls probed on the corporate home (navigation pill, search button, d
 **Surface split:** corporate marketing uses KakaoBig/KakaoSmall; the Login component requires OS system type; Developers docs chrome uses Pretendard.
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
-
-- Corporate content uses a compact 4/6/8/16/20 spacing rhythm around controls and text.
-- The Login guide requires the symbol and label zones to remain intact when widening the container; expand left and right equally.
-- When scaling the whole Login button, preserve symbol/label proportions and keep the label height at no more than one third of the container height.
-
-## 6. Depth & Elevation
-
-No canonical shadow token is promoted. Captured corporate controls are largely flat; the Developers documentation site contains its own hover shadows, but those belong to documentation chrome rather than the Kakao Login component.
-
-## 7. Do's and Don'ts
-
-### Do
-- Use the exact Kakao Login compliance colors, symbol, radius, and system font.
-- Keep corporate KakaoBig/KakaoSmall values separate from Developers-site Pretendard.
-- Name marketing yellow `#fae100` separately from login yellow `#fee500`.
-- Use the shortened Login label instead of distorting a standard button below its intended size.
-- Preserve observed theme and interaction states on corporate navigation.
-
-### Don't
-- Don't change the Kakao Login symbol shape, proportion, or color.
-- Don't replace the speech-bubble symbol with Kakao CI or a functional icon.
-- Don't remove the symbol from the Login button.
-- Don't use Developers-site Pretendard as evidence that the Login button uses Pretendard.
-- Don't present unverified KakaoTalk chat bubbles, mobile inputs, tabs, badges, or semantic colors as current canonical Kakao tokens.
-
-## 8. Responsive Behavior
-
-The corporate pages are responsive, but this run does not promote universal breakpoints. For the Login button, follow the official proportional resizing rule: extend both sides equally when widening, preserve symbol/label zones, and use the shortened label if a smaller format is required.
-
-## 9. Agent Prompt Guide
-
-- “Build a compliant Kakao Login button with `#fee500`, black speech-bubble symbol, 85% black label, 12px radius, and OS system font at 30Pt.”
-- “Create the current corporate navigation pill with KakaoBig 17px/400, 37px height, 999px radius, and explicit light/dark themes.”
-- “Use KakaoSmall for corporate body/control text; do not substitute Pretendard unless reproducing Developers documentation chrome.”
-- “Create the corporate download pill: `#fae100` fill, 2px black border, 16px radius, 32px height, KakaoSmall 13px/700. It does not change on hover or press.”
-- “Treat any KakaoTalk in-app component as an unverified extension unless native product evidence is supplied.”
-
-## 10. Voice & Tone
-
-Kakao’s corporate mission centers on bringing a needed future closer through technology that understands people. In user-facing copy, that translates into familiar Korean, short labels, and service explanations grounded in an everyday action—talking, finding a place, sending a gift, following a channel—rather than abstract technology claims.
-
-The tone changes by surface. Corporate and culture pages can be optimistic and connective; product/service descriptions should be concrete about the benefit; developer and compliance guidance must be prescriptive and exact. Kakao Login wording, symbol, color, and label rules are not a place for playful rewriting. Avoid turning Kakao’s friendliness into childishness or using yellow as a substitute for clear instructions.
-
-## 11. Brand Narrative
-
-Kakao describes itself as a mobile-life platform that uses technology, content, and high mobile reach to make everyday services more convenient. Its current mission—bringing a needed future closer through technology that understands people—places human context before technical novelty.
-
-KakaoTalk’s communication model became the organizing metaphor for a broader ecosystem: channels connect people with brands and stores, messages carry transactional information, and services extend into commerce, maps, content, mobility, and social impact. The corporate yellow and speech-bubble identity therefore signal connection, but each service still needs its own product rules.
-
-This is why surface separation is essential. Kakao’s corporate type and marketing yellow express the parent identity; Kakao Login uses a precisely regulated `#fee500` component so third-party integrations remain recognizable and trustworthy; developer documentation uses its own Pretendard chrome. A coherent Kakao reference preserves the relationship between these systems without flattening them into one fictional theme.
-
-## 12. Principles
-
-These are evidence-derived implementation principles:
-
-1. **Compliance outranks approximation.** Login symbols, labels, colors, type, and relative emphasis follow the official integration guide even when another treatment looks more fashionable.
-2. **Surface-specific fonts are part of correctness.** KakaoBig/KakaoSmall, OS system labels, and Pretendard documentation chrome describe different jobs, not a fallback chain.
-3. **Preserve the dual-yellow distinction.** Corporate marketing `#fae100` and regulated Login `#fee500` remain separately named and sourced.
-4. **Connection should stay legible.** Friendly language and familiar symbols can reduce distance, but transactional information, consent, and support states must remain explicit.
-5. **Use first-party evidence over remembered KakaoTalk conventions.** Do not fabricate chat bubbles, navigation, or native-service tokens from cultural familiarity with the brand.
-
-## 13. Personas
-
-These are official service and stakeholder contexts, not invented demographic personas.
-
-- **A person communicating in daily life:** expects familiar language, fast recognition, and continuity between conversation and adjacent services.
-- **A customer receiving information or benefits from a channel:** needs promotional, transactional, and support messages to remain clearly distinguishable.
-- **A business or creator operating a Kakao channel:** needs approachable customer communication without losing operational clarity or consent boundaries.
-- **A developer integrating Kakao Login:** needs exact compliance rules for symbol, color, type, label, and relative emphasis so the integration remains trustworthy.
-
-## 14. States
+### States
 
 | Component | Verified state evidence |
 |---|---|
@@ -486,8 +422,40 @@ These are official service and stakeholder contexts, not invented demographic pe
 
 Keyboard focus was walked with real Tab presses on 2026-09-29. None of the six probed controls has an authored focus ring; the browser default is not a Kakao value and is not tokenized.
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-No exact motion duration or easing token is promoted. Preserve focus and hover clarity on the corporate site and platform-standard interaction feedback for the Login button; label custom timing as an extension until first-party evidence is available.
+### Do
+- Use the exact Kakao Login compliance colors, symbol, radius, and system font.
+- Keep corporate KakaoBig/KakaoSmall values separate from Developers-site Pretendard.
+- Name marketing yellow `#fae100` separately from login yellow `#fee500`.
+- Use the shortened Login label instead of distorting a standard button below its intended size.
+- Preserve observed theme and interaction states on corporate navigation.
 
-On 2026-09-29 all six probed corporate-home controls computed `transition: all 0s`: their hover, pressed and focus changes are instant, not animated.
+### Don't
+- Don't change the Kakao Login symbol shape, proportion, or color.
+- Don't replace the speech-bubble symbol with Kakao CI or a functional icon.
+- Don't remove the symbol from the Login button.
+- Don't use Developers-site Pretendard as evidence that the Login button uses Pretendard.
+- Don't present unverified KakaoTalk chat bubbles, mobile inputs, tabs, badges, or semantic colors as current canonical Kakao tokens.
+
+## Voice & Tone
+
+Kakao’s corporate mission centers on bringing a needed future closer through technology that understands people. In user-facing copy, that translates into familiar Korean, short labels, and service explanations grounded in an everyday action—talking, finding a place, sending a gift, following a channel—rather than abstract technology claims.
+
+The tone changes by surface. Corporate and culture pages can be optimistic and connective; product/service descriptions should be concrete about the benefit; developer and compliance guidance must be prescriptive and exact. Kakao Login wording, symbol, color, and label rules are not a place for playful rewriting. Avoid turning Kakao’s friendliness into childishness or using yellow as a substitute for clear instructions.
+
+## Agent Prompt Guide
+
+- “Build a compliant Kakao Login button with `#fee500`, black speech-bubble symbol, 85% black label, 12px radius, and OS system font at 30Pt.”
+- “Create the current corporate navigation pill with KakaoBig 17px/400, 37px height, 999px radius, and explicit light/dark themes.”
+- “Use KakaoSmall for corporate body/control text; do not substitute Pretendard unless reproducing Developers documentation chrome.”
+- “Create the corporate download pill: `#fae100` fill, 2px black border, 16px radius, 32px height, KakaoSmall 13px/700. It does not change on hover or press.”
+- “Treat any KakaoTalk in-app component as an unverified extension unless native product evidence is supplied.”
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `search-control`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `service-card`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `milestone-service-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,0 +1,1972 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "karrot",
+    "name": "Karrot",
+    "country": "KR",
+    "category": "consumer-tech",
+    "homepage": "https://www.karrotmarket.com",
+    "primary_color": "#ff7e36",
+    "logo": {
+      "type": "github",
+      "slug": "daangn"
+    },
+    "verified": "2026-07-11",
+    "ds": {
+      "name": "SEED Design",
+      "url": "https://v2.seed-design.io",
+      "type": "system",
+      "description": "Karrot (Daangn)'s open-source design system for marketplace apps."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-11",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-29",
+    "surfaces": [
+      {
+        "id": "marketing-home",
+        "kind": "marketing",
+        "url": "https://www.karrotmarket.com/",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "marketing-about",
+        "kind": "marketing",
+        "url": "https://www.karrotmarket.com/about/",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "seed-system",
+        "kind": "design-system",
+        "url": "https://v2.seed-design.io/",
+        "inspected": "2026-07-11"
+      }
+    ],
+    "sources": [
+      {
+        "id": "karrot-live",
+        "kind": "product-surface",
+        "url": "https://www.karrotmarket.com/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "karrot-component-index",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/component/",
+        "captured": "2026-09-19"
+      },
+      {
+        "id": "seed-source",
+        "kind": "official-doc",
+        "url": "https://github.com/daangn/seed-design/blob/fb4459e90f84e049112395964319b163f980b821/packages/stylesheet/global.css",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "seed-typography",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/foundation/typography/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "seed-box-button",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/component/box-button/usage/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "seed-box-button-tokens",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/component/box-button/usage/",
+        "captured": "2026-09-17"
+      },
+      {
+        "id": "seed-text-field",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/component/text-field/usage/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "seed-tabs",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/component/tabs/usage/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "seed-snackbar",
+        "kind": "official-doc",
+        "url": "https://v2.seed-design.io/component/snackbar/usage/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "karrot-probe",
+        "kind": "product-surface",
+        "url": "https://www.karrotmarket.com/",
+        "captured": "2026-09-29"
+      }
+    ],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.primary-hover": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.primary-pressed": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.canvas": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.background": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.surface": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.foreground": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.muted": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.on-primary": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.hairline": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.brand-tint": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.error": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.info": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.success": {
+        "surface_id": "seed-system",
+        "source_id": "seed-source",
+        "method": "official-source",
+        "captured": "2026-07-11"
+      },
+      "colors.marketing": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.h1.fontSize": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h1.fontWeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.h1.lineHeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h2.fontSize": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h2.fontWeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.h2.lineHeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h3.fontSize": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h3.fontWeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.h3.lineHeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.title.fontSize": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.title.fontWeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.title.lineHeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.body.lineHeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.fontSize": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.fontWeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.body-small.lineHeight": {
+        "surface_id": "seed-system",
+        "source_id": "seed-typography",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "spacing.sm": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.md": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.lg": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.xl": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.section": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.sm": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.md": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.full": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.padding": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-primary.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button Sell, ::before at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-primary.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button Sell, ::before at :active",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-primary.focus": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button Sell at :focus-visible, Tab stop 3",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-primary.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button Sell",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-primary.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.box-button.type": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.box-button.backgroundColor": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button-tokens",
+        "method": "css-custom-property",
+        "captured": "2026-09-17"
+      },
+      "components.box-button.textColor": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button-tokens",
+        "method": "css-custom-property",
+        "captured": "2026-09-17"
+      },
+      "components.box-button.hover": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button-tokens",
+        "method": "css-custom-property",
+        "captured": "2026-09-17"
+      },
+      "components.box-button.pressed": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button-tokens",
+        "method": "css-custom-property",
+        "captured": "2026-09-17"
+      },
+      "components.box-button.disabled": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button-tokens",
+        "method": "css-custom-property",
+        "captured": "2026-09-17"
+      },
+      "components.box-button.states": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.box-button.use": {
+        "surface_id": "seed-system",
+        "source_id": "seed-box-button",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.text-field.type": {
+        "surface_id": "seed-system",
+        "source_id": "seed-text-field",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.text-field.states": {
+        "surface_id": "seed-system",
+        "source_id": "seed-text-field",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.text-field.use": {
+        "surface_id": "seed-system",
+        "source_id": "seed-text-field",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.tabs.type": {
+        "surface_id": "seed-system",
+        "source_id": "seed-tabs",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.tabs.states": {
+        "surface_id": "seed-system",
+        "source_id": "seed-tabs",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.tabs.use": {
+        "surface_id": "seed-system",
+        "source_id": "seed-tabs",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.snackbar.type": {
+        "surface_id": "seed-system",
+        "source_id": "seed-snackbar",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.snackbar.states": {
+        "surface_id": "seed-system",
+        "source_id": "seed-snackbar",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.snackbar.use": {
+        "surface_id": "seed-system",
+        "source_id": "seed-snackbar",
+        "method": "official-doc",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.border": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.padding": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-secondary.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button About us, ::before at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-secondary.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button About us, ::before at :active",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-secondary.focus": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button About us at :focus-visible, Tab stop 4",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-secondary.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "header button About us",
+        "captured": "2026-09-29"
+      },
+      "components.marketing-secondary.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.padding": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.marketing-ghost.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.border": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.size": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"4\"]::state-hover",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"4\"]::state-pressed",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-button.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.padding": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.size": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.shadow": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.size": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.flag-menu-item.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-interaction-capture=\"dialog-0-3\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.padding": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"5\"]::state-hover",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"5\"]::state-pressed",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.location-chip.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"5\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-field.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-field.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search wrapper div.iusiv71 at rest",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-field.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search wrapper div.iusiv71 at rest",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search wrapper div.iusiv71 at rest",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-field.shadow": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search wrapper div.iusiv71 at rest",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search input :hover, wrapper read",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search input :active, wrapper read",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.focus": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search input :focus-visible, wrapper read, Tab stop 7",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "search input and wrapper",
+        "captured": "2026-09-29"
+      },
+      "components.search-field.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-11"
+      },
+      "components.listing-card.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.rounded": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.size": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.listing-card.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main feed listing card link, first of 60",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.footer-link.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "footer link About Karrot",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.hover": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.pressed": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.category-link.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-probe",
+        "method": "live-state-probe",
+        "selector": "main category link Furniture",
+        "captured": "2026-09-29"
+      },
+      "components.search-keyword-link.type": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-keyword-link.backgroundColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-keyword-link.textColor": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-keyword-link.height": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-keyword-link.typography": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-keyword-link.states": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      },
+      "components.search-keyword-link.use": {
+        "surface_id": "marketing-home",
+        "source_id": "karrot-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-11"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 95,
+      "infos": 2
+    },
+    "byRule": {
+      "extension-component-property": 74,
+      "contrast-ratio": 11,
+      "orphaned-tokens": 10
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-primary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.box-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.box-button.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.box-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.box-button.disabled",
+        "message": "'disabled' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.box-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.box-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.text-field.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.text-field.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.text-field.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tabs.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tabs.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tabs.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.snackbar.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.snackbar.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.snackbar.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-secondary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-ghost.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-ghost.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-ghost.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-button.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-button.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.flag-menu-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.location-chip.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.location-chip.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.location-chip.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.location-chip.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.location-chip.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-field.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-card.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-card.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.listing-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-keyword-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-keyword-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-keyword-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.marketing-primary",
+        "message": "textColor (#ffffff) on backgroundColor (#ff6600) has contrast ratio 2.94:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.box-button",
+        "message": "textColor (#ffffff) on backgroundColor (#ff6f0f) has contrast ratio 2.79:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.marketing-secondary",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.marketing-ghost",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.flag-menu-button",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.flag-menu-item",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.location-chip",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.listing-card",
+        "message": "textColor (#2a3038) on backgroundColor (#00000000) has contrast ratio 1.58:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.footer-link",
+        "message": "textColor (#555d6d) on backgroundColor (#00000000) has contrast ratio 3.17:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.category-link",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.search-keyword-link",
+        "message": "textColor (#1a1c20) on backgroundColor (#00000000) has contrast ratio 1.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-hover",
+        "message": "'primary-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-pressed",
+        "message": "'primary-pressed' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.marketing",
+        "message": "'marketing' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.brand-tint",
+        "message": "'brand-tint' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.info",
+        "message": "'info' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.success",
+        "message": "'success' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "ac0dda77a2f1ba04b3d1d7060bfe682f0329058aba1b23fd70a0e0d10b19d8fc",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "typography.h1.lineHeight",
+        "value": "135%"
+      },
+      {
+        "path": "typography.h2.lineHeight",
+        "value": "135%"
+      },
+      {
+        "path": "typography.h3.lineHeight",
+        "value": "135%"
+      },
+      {
+        "path": "typography.title.lineHeight",
+        "value": "135%"
+      },
+      {
+        "path": "typography.body.lineHeight",
+        "value": "150%"
+      },
+      {
+        "path": "typography.body-small.lineHeight",
+        "value": "150%"
+      }
+    ],
+    "numeric": [
+      "typography.h1.fontSize",
+      "typography.h2.fontSize",
+      "typography.h3.fontSize",
+      "typography.title.fontSize",
+      "typography.body.fontSize",
+      "typography.body-small.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.full"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "h1",
+        "h2",
+        "h3",
+        "title",
+        "body",
+        "body-small"
+      ]
+    }
+  }
+}

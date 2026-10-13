@@ -1,234 +1,219 @@
 ---
-id: "nhncloud"
-name: "NHN Cloud"
-country: KR
-category: backend-devops
-homepage: "https://www.nhncloud.com"
-primary_color: "#125de6"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=nhncloud.com&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: TOAST UI
-  url: "https://ui.toast.com"
-  type: system
-  description: NHN Cloud's official, continuously maintained open-source JavaScript UI catalog; it is a distinct developer/documentation surface, not a published token sheet for the NHN Cloud marketing site.
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: corporate-marketing, kind: marketing, url: "https://www.nhncloud.com/kr", inspected: "2026-07-13" }
-    - { id: toast-catalog, kind: documentation-catalog, url: "https://ui.toast.com/", inspected: "2026-07-13" }
-    - { id: cloud-docs, kind: documentation-chrome, url: "https://docs.nhncloud.com/ko/nhncloud/ko/overview/", inspected: "2026-07-13" }
-  sources:
-    - { id: corporate-marketing-live, kind: product-surface, url: "https://www.nhncloud.com/kr", captured: "2026-07-13" }
-    - { id: nhncloud-component-index, kind: official-doc, url: "https://ui.toast.com/", captured: "2026-09-19" }
-    - { id: toast-catalog-live, kind: product-surface, url: "https://ui.toast.com/", captured: "2026-07-13" }
-    - { id: cloud-docs-live, kind: product-surface, url: "https://docs.nhncloud.com/ko/nhncloud/ko/overview/", captured: "2026-07-13" }
-    - { id: company-about, kind: official-doc, url: "https://company.nhncloud.com/about?lang=en", captured: "2026-07-13" }
-    - { id: toast-ui-official, kind: official-doc, url: "https://ui.toast.com/", captured: "2026-07-13" }
-    - { id: toast-ui-license, kind: official-doc, url: "https://github.com/nhn/toast-ui.doc", captured: "2026-07-13" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &corporate { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.on-primary": *corporate
-    "tokens.colors.dark": *corporate
-    "tokens.colors.muted": *corporate
-    "tokens.colors.border": *corporate
-    "tokens.typography.family.ui": *corporate
-    "tokens.typography.body.size": *corporate
-    "tokens.typography.body.weight": *corporate
-    "tokens.typography.body.use": *corporate
-    "tokens.typography.cta.size": *corporate
-    "tokens.typography.cta.weight": *corporate
-    "tokens.typography.cta.use": *corporate
-    "tokens.typography.cta-lg.size": *corporate
-    "tokens.typography.cta-lg.weight": *corporate
-    "tokens.typography.cta-lg.use": *corporate
-    "tokens.spacing.cta-sm-y": *corporate
-    "tokens.spacing.cta-sm-x": *corporate
-    "tokens.spacing.cta-lg-y": *corporate
-    "tokens.spacing.cta-lg-x": *corporate
-    "tokens.spacing.menu-y": *corporate
-    "tokens.spacing.menu-x": *corporate
-    "tokens.rounded.cta": *corporate
-    "tokens.rounded.control": *corporate
-    "tokens.rounded.menu": *corporate
-    "tokens.shadow.menu-overlay": *corporate
-    "tokens.components.corporate-header-cta.hover": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"13\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.corporate-header-cta.pressed": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"13\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.corporate-header-cta.type": *corporate
-    "tokens.components.corporate-header-cta.bg": *corporate
-    "tokens.components.corporate-header-cta.fg": *corporate
-    "tokens.components.corporate-header-cta.border": *corporate
-    "tokens.components.corporate-header-cta.radius": *corporate
-    "tokens.components.corporate-header-cta.padding": *corporate
-    "tokens.components.corporate-header-cta.height": *corporate
-    "tokens.components.corporate-header-cta.font": *corporate
-    "tokens.components.corporate-header-cta.states": *corporate
-    "tokens.components.corporate-header-cta.use": *corporate
-    "tokens.components.corporate-section-cta.type": *corporate
-    "tokens.components.corporate-section-cta.bg": *corporate
-    "tokens.components.corporate-section-cta.fg": *corporate
-    "tokens.components.corporate-section-cta.border": *corporate
-    "tokens.components.corporate-section-cta.radius": *corporate
-    "tokens.components.corporate-section-cta.padding": *corporate
-    "tokens.components.corporate-section-cta.height": *corporate
-    "tokens.components.corporate-section-cta.font": *corporate
-    "tokens.components.corporate-section-cta.states": *corporate
-    "tokens.components.corporate-section-cta.use": *corporate
-    "tokens.components.resource-menu-trigger.type": *corporate
-    "tokens.components.resource-menu-trigger.fg": *corporate
-    "tokens.components.resource-menu-trigger.border": *corporate
-    "tokens.components.resource-menu-trigger.radius": *corporate
-    "tokens.components.resource-menu-trigger.padding": *corporate
-    "tokens.components.resource-menu-trigger.height": *corporate
-    "tokens.components.resource-menu-trigger.font": *corporate
-    "tokens.components.resource-menu-trigger.states": *corporate
-    "tokens.components.resource-menu-trigger.use": *corporate
-    "tokens.components.corporate-outline-pill.type": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.bg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.fg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.border": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.radius": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.padding": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.height": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.font": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.hover": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"15\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.pressed": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"15\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.states": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-pill.use": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.type": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.bg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.fg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.radius": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.padding": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.height": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.font": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.hover": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"9\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.pressed": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"9\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.states": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-utility-link.use": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.type": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.bg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.fg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.radius": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.padding": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.height": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.font": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.states": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-gnb-item.use": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.type": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.bg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.fg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.radius": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.padding": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.height": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.font": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.states": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-footer-link.use": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.type": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.bg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.fg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.border": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.radius": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.padding": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.size": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.font": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.shadow": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.states": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu.use": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.type": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.bg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.fg": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.radius": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.padding": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.size": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.font": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.states": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.resource-menu-item.use": { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-2\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.type": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.bg": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.fg": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.radius": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.padding": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.height": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.font": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.states": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-header-cta.use": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.type": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.bg": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.fg": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.radius": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.padding": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.height": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.font": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.selected": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.hover": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"4\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.pressed": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"4\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.states": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-category-link.use": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.type": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.bg": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.fg": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.radius": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.padding": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.height": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.font": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.selected": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.hover": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"7\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.pressed": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"7\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.states": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.docs-page-link.use": { surface_id: cloud-docs, source_id: cloud-docs-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  components_harvested: true
-  note: "Colour, typography, spacing, radius, and shadow tokens are limited to selector-backed values from the NHN Cloud public corporate marketing route. Components prefixed docs- are documentation-chrome components from docs.nhncloud.com, claimed on the cloud-docs surface; they do not populate corporate tokens. TOAST UI is recorded as a separate source domain."
-  colors:
-    primary: "#125de6"
-    on-primary: "#ffffff"
-    dark: "#111111"
-    muted: "#727781"
-    border: "#51565f"
-  typography:
-    family: { ui: "Pretendard Variable" }
-    body: { size: 16, weight: 400, use: "Corporate-marketing body sample" }
-    cta: { size: 15, weight: 400, use: "40px corporate header CTA" }
-    cta-lg: { size: 17, weight: 500, use: "48px corporate section CTA" }
-  spacing: { cta-sm-y: 8, cta-sm-x: 19, cta-lg-y: 10, cta-lg-x: 27, menu-y: 8, menu-x: 16 }
-  rounded: { cta: 30, control: 6, menu: 8 }
-  shadow: { menu-overlay: "0px 4px 8px rgba(0, 0, 0, 0.06)" }
-  components:
-    corporate-header-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "8px 19px", height: "40px", font: "15px / 400 Pretendard Variable", states: "hover and pressed sampled on this selector; both frames record the fill #1446c8, with text and border colours equal to rest. One element, no sibling; the two frames agree. No focus frame. Corrected 2026-09-29: the July text said no state value was inferred while the value was already declared", use: "Corporate-marketing header CTA, selector home::[data-omd-capture=13]" , hover: "bg #1446c8", pressed: "bg #1446c8"}
-    corporate-section-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "10px 27px", height: "48px", font: "17px / 500 Pretendard Variable", states: "default captured; the capture holds no hover, pressed, or focus frame for this element (corrected 2026-09-29: the July text gave it the state names of other rounded-30 buttons, capture 13 and 15-17)", use: "Corporate-marketing section CTA, selector home::[data-omd-capture=29]" }
-    resource-menu-trigger: { type: button, fg: "#727781", border: "1px solid #51565f", radius: "6px", padding: "10px 16px", height: "42px", font: "16px / 400 Pretendard Variable", states: "expanded and menu-open observed", use: "Corporate-marketing resource/menu trigger, selector home::[data-omd-capture=130]" }
-    corporate-outline-pill: { type: button, bg: "transparent", fg: "#ffffff", border: "1px #ffffff", radius: "30px", padding: "11px 28px", height: "50px", font: "17px / 500 / 26px", hover: "fg #c8ccd4, border #c8ccd4", pressed: "fg #c8ccd4, border #c8ccd4", states: "rest on four pills (capture 14-17); hover and pressed sampled on three of them (15-17), all recording the same value; no focus frame", use: "Corporate-marketing outline pill at home::[data-omd-capture=\"15\"]; the white label implies a dark section behind it, whose fill was not sampled" }
-    corporate-utility-link: { type: tab, bg: "transparent", fg: "#ffffff", radius: "0px", padding: "0px", height: "26px", font: "17px / 500 / 26px", hover: "fg #125de6", pressed: "fg #125de6", states: "rest, hover, and pressed sampled on both header utility controls (capture 9 and 10), which record the same values; no focus frame", use: "Corporate-marketing header utility control at home::[data-omd-capture=\"9\"] (button) and \"10\" (link), both classed hover:text-blue-700" }
-    corporate-gnb-item: { type: tab, bg: "transparent", fg: "#ffffff", radius: "0px", padding: "0px 18px", height: "72px", font: "17px / 500 / 26px", states: "rest sampled on eight items (capture 1-8); the hover and pressed frames record near-black text that differs per item and between the two frames (rgb(17, 17, 17) to rgb(17, 19, 23)), a transition in progress, so no state value is declared", use: "Corporate-marketing top navigation item at home::[data-omd-capture=\"2\"]; the first item drops its left padding and the last its right" }
-    corporate-footer-link: { type: tab, bg: "transparent", fg: "#727781", radius: "0px", padding: "0px", height: "20px", font: "14px / 400 / 20px", states: "default captured; no pointer-state sample", use: "Corporate-marketing footer link at home::[data-omd-capture=\"58\"] (74 occurrences of this variant)" }
-    resource-menu: { type: card, bg: "#111111", fg: "#ffffff", border: "1px #727781", radius: "8px", padding: "8px 0px", size: "180px x 378px", font: "16px / 400 / 24px", shadow: "0px 4px 8px rgba(0, 0, 0, 0.06)", states: "expanded and menu-open observed", use: "Expanded corporate-marketing resource menu (role=menu) at home::[data-omd-interaction-capture=\"menu-0-0\"], opened from the resource-menu trigger" }
-    resource-menu-item: { type: button, bg: "transparent", fg: "#727781", radius: "0px", padding: "8px 16px", size: "178px x 36px", font: "17px / 400 / 26px", states: "observed only inside the expanded menu; no pointer-state sample", use: "Item (role=menuitem) inside the expanded resource menu at home::[data-omd-interaction-capture=\"menu-0-2\"]; \"menu-0-3\" records the same values" }
-    docs-header-cta: { type: button, bg: "#125de6", fg: "#ffffff", radius: "30px", padding: "9px 20px", height: "40px", font: "15px / 300 / 22px", states: "default captured; no pointer-state sample", use: "Documentation-chrome header CTA (a.link-text) on docs.nhncloud.com at surface-3::[data-omd-capture=\"3\"]; not the corporate CTA token" }
-    docs-category-link: { type: tab, bg: "transparent", fg: "#222222", radius: "0px", padding: "0px 0px 0px 60px", height: "46px", font: "14px / 400 / 46px", selected: "fg #125de6", hover: "fg #125de6, bg #e9f1ff", pressed: "fg #125de6, bg #e9f1ff", states: "rest, hover, and pressed sampled on nine category links (capture 4 and 16-23), all recording the same values; the current category (capture 5) is #125de6 at rest and takes the same #e9f1ff fill; no focus frame", use: "Documentation sidebar category link (a.gnb_link.category_menu) on docs.nhncloud.com at surface-3::[data-omd-capture=\"4\"]" }
-    docs-page-link: { type: tab, bg: "transparent", fg: "#555555", radius: "0px", padding: "8px 37px 8px 33px", height: "36px", font: "13px / 300 / 16px", selected: "fg #125de6", hover: "fg #125de6, bg #e9f1ff", pressed: "fg #125de6, bg #e9f1ff", states: "rest, hover, and pressed sampled on nine page links (capture 7-15), all recording the same values; the current page (capture 6, class current) is #125de6 at rest and takes the same #e9f1ff fill; no focus frame", use: "Documentation sidebar page link (a.gnb_link.link_txt) on docs.nhncloud.com at surface-3::[data-omd-capture=\"7\"]" }
+name: NHN Cloud
+colors:
+  primary: '#125de6'
+  on-primary: '#ffffff'
+  dark: '#111111'
+  muted: '#727781'
+  border: '#51565f'
+typography:
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    use: Corporate-marketing body sample
+  cta:
+    fontSize: 15px
+    fontWeight: 400
+    use: 40px corporate header CTA
+  cta-lg:
+    fontSize: 17px
+    fontWeight: 500
+    use: 48px corporate section CTA
+rounded:
+  cta: 30px
+  control: 6px
+  menu: 8px
+spacing:
+  cta-sm-y: 8
+  cta-sm-x: 19
+  cta-lg-y: 10
+  cta-lg-x: 27
+  menu-y: 8
+  menu-x: 16
+components:
+  corporate-header-cta:
+    type: button
+    backgroundColor: '#125de6'
+    textColor: '#ffffff'
+    border: '1px solid #125de6'
+    rounded: 30px
+    padding: 8px 19px
+    height: 40px
+    typography: 15px / 400 Pretendard Variable
+    states: 'hover and pressed sampled on this selector; both frames record the fill #1446c8, with text and border colours equal to rest. One element, no sibling; the two frames agree. No focus frame. Corrected 2026-09-29: the July text said no state value was inferred while the value was already declared'
+    use: Corporate-marketing header CTA, selector home::[data-omd-capture=13]
+    hover: 'bg #1446c8'
+    pressed: 'bg #1446c8'
+  corporate-section-cta:
+    type: button
+    backgroundColor: '#125de6'
+    textColor: '#ffffff'
+    border: '1px solid #125de6'
+    rounded: 30px
+    padding: 10px 27px
+    height: 48px
+    typography: 17px / 500 Pretendard Variable
+    states: 'default captured; the capture holds no hover, pressed, or focus frame for this element (corrected 2026-09-29: the July text gave it the state names of other rounded-30 buttons, capture 13 and 15-17)'
+    use: Corporate-marketing section CTA, selector home::[data-omd-capture=29]
+  resource-menu-trigger:
+    type: button
+    textColor: '#727781'
+    border: '1px solid #51565f'
+    rounded: 6px
+    padding: 10px 16px
+    height: 42px
+    typography: 16px / 400 Pretendard Variable
+    states: expanded and menu-open observed
+    use: Corporate-marketing resource/menu trigger, selector home::[data-omd-capture=130]
+  corporate-outline-pill:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    border: '1px #ffffff'
+    rounded: 30px
+    padding: 11px 28px
+    height: 50px
+    typography: 17px / 500 / 26px
+    hover: 'fg #c8ccd4, border #c8ccd4'
+    pressed: 'fg #c8ccd4, border #c8ccd4'
+    states: rest on four pills (capture 14-17); hover and pressed sampled on three of them (15-17), all recording the same value; no focus frame
+    use: Corporate-marketing outline pill at home::[data-omd-capture="15"]; the white label implies a dark section behind it, whose fill was not sampled
+  corporate-utility-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 0px
+    height: 26px
+    typography: 17px / 500 / 26px
+    hover: 'fg #125de6'
+    pressed: 'fg #125de6'
+    states: rest, hover, and pressed sampled on both header utility controls (capture 9 and 10), which record the same values; no focus frame
+    use: Corporate-marketing header utility control at home::[data-omd-capture="9"] (button) and "10" (link), both classed hover:text-blue-700
+  corporate-gnb-item:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 0px 18px
+    height: 72px
+    typography: 17px / 500 / 26px
+    states: rest sampled on eight items (capture 1-8); the hover and pressed frames record near-black text that differs per item and between the two frames (rgb(17, 17, 17) to rgb(17, 19, 23)), a transition in progress, so no state value is declared
+    use: Corporate-marketing top navigation item at home::[data-omd-capture="2"]; the first item drops its left padding and the last its right
+  corporate-footer-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#727781'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 14px / 400 / 20px
+    states: default captured; no pointer-state sample
+    use: Corporate-marketing footer link at home::[data-omd-capture="58"] (74 occurrences of this variant)
+  resource-menu:
+    type: card
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    border: '1px #727781'
+    rounded: 8px
+    padding: 8px 0px
+    size: 180px x 378px
+    typography: 16px / 400 / 24px
+    shadow: 0px 4px 8px rgba(0, 0, 0, 0.06)
+    states: expanded and menu-open observed
+    use: Expanded corporate-marketing resource menu (role=menu) at home::[data-omd-interaction-capture="menu-0-0"], opened from the resource-menu trigger
+  resource-menu-item:
+    type: button
+    backgroundColor: transparent
+    textColor: '#727781'
+    rounded: 0px
+    padding: 8px 16px
+    size: 178px x 36px
+    typography: 17px / 400 / 26px
+    states: observed only inside the expanded menu; no pointer-state sample
+    use: Item (role=menuitem) inside the expanded resource menu at home::[data-omd-interaction-capture="menu-0-2"]; "menu-0-3" records the same values
+  docs-header-cta:
+    type: button
+    backgroundColor: '#125de6'
+    textColor: '#ffffff'
+    rounded: 30px
+    padding: 9px 20px
+    height: 40px
+    typography: 15px / 300 / 22px
+    states: default captured; no pointer-state sample
+    use: Documentation-chrome header CTA (a.link-text) on docs.nhncloud.com at surface-3::[data-omd-capture="3"]; not the corporate CTA token
+  docs-category-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#222222'
+    rounded: 0px
+    padding: 0px 0px 0px 60px
+    height: 46px
+    typography: 14px / 400 / 46px
+    selected: 'fg #125de6'
+    hover: 'fg #125de6, bg #e9f1ff'
+    pressed: 'fg #125de6, bg #e9f1ff'
+    states: 'rest, hover, and pressed sampled on nine category links (capture 4 and 16-23), all recording the same values; the current category (capture 5) is #125de6 at rest and takes the same #e9f1ff fill; no focus frame'
+    use: Documentation sidebar category link (a.gnb_link.category_menu) on docs.nhncloud.com at surface-3::[data-omd-capture="4"]
+  docs-page-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#555555'
+    rounded: 0px
+    padding: 8px 37px 8px 33px
+    height: 36px
+    typography: 13px / 300 / 16px
+    selected: 'fg #125de6'
+    hover: 'fg #125de6, bg #e9f1ff'
+    pressed: 'fg #125de6, bg #e9f1ff'
+    states: 'rest, hover, and pressed sampled on nine page links (capture 7-15), all recording the same values; the current page (capture 6, class current) is #125de6 at rest and takes the same #e9f1ff fill; no focus frame'
+    use: Documentation sidebar page link (a.gnb_link.link_txt) on docs.nhncloud.com at surface-3::[data-omd-capture="7"]
+fonts:
+  roles:
+    ui: Pretendard Variable
 ---
+
 # Design System Inspiration of NHN Cloud
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 NHN Cloud is a cloud and IT-service company whose public platform describes a broad set of infrastructure and platform services for business operations and service development. Its corporate history traces the cloud service to a 2014 OpenStack launch and records NHN Cloud Corp.'s 2022 establishment, while the current company site frames the role as enabling customers' next technical challenge. On the captured corporate marketing route, that promise is expressed with a narrow, high-contrast action system: a bright `#125DE6` blue on fully rounded CTAs, white labels, dark resource menus, and the loaded `Pretendard Variable` face. The company’s official symbol describes three dots as both cloud and connection; the visual interface does not literalize that story with a broad decorative palette. It instead uses blue as a deliberate conversion signal. [NHN Cloud Company](https://company.nhncloud.com/about?lang=en) and the public [cloud platform](https://www.nhncloud.com/kr) are distinct from the developer-facing TOAST UI catalog and from the documentation chrome captured below.
 
-## Primary tasks
+### Primary tasks
 
 - Review the cloud services on offer, then take the next step
 - Pick a JavaScript UI component such as a grid or editor
 - Look up reference material for a service in the documentation
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+NHN Cloud's official history records an OpenStack public-cloud launch in 2014, a cloud-center build in Pangyo in 2015, and the launch of NHN Cloud in April 2022. The company now describes itself as a cloud and IT-service business, with current growth efforts spanning data/AI services, private and global markets, and regional data centers. Its official logo explanation centres connection and boundless possibility; the three-dot symbol is described as a cloud and as a prompt for easy, flexible collaboration.
+
+The developer-facing counterpart is TOAST UI: its own site calls it a JavaScript UI library and free open-source project constantly managed by NHN Cloud, listing applications such as Grid, Editor, Calendar, Chart, and Image Editor alongside smaller components and front-end guides. The catalog is informative evidence of the developer ecosystem, not proof that its catalog-page typography or any unobserved component value is the NHN Cloud corporate design system.
+
+### Principles
+
+1. **Enable a customer’s technical journey.**
+   *UI implication:* Prefer a clear capability and an unambiguous next action over decorative language.
+
+2. **Connection is a brand idea, not a license to invent a token system.**
+   *UI implication:* Keep the action lane focused; do not turn the corporate logo story into unsupported visual rules.
+
+3. **Corporate marketing and developer catalog are distinct public domains.**
+   *UI implication:* Attribute each token and component to its captured route before reuse.
+
+4. **Open-source developer tools need precise boundaries.**
+   *UI implication:* Describe TOAST UI's documented applications and components without claiming unseen states or styles.
+
+### Personas
+
+- **Enterprise technical evaluator:** visits the public cloud marketing route to understand services and a next step; the verified CTA values belong to this route.
+- **Developer evaluating a UI utility:** visits TOAST UI’s catalog for applications, components, and guides; this is a developer/documentation journey, not the NHN Cloud console.
+- **Cloud documentation reader:** uses `docs.nhncloud.com` for reference material; its loaded Noto Sans KR documentation chrome remains surface-local.
+
+## Colors
 
 **Corporate marketing route — selector-backed machine tokens**
 
@@ -242,7 +227,7 @@ Measured corporate pointer states (§4, §14): the header CTA fill deepens to `#
 
 The capture also records `#E9F1FF` in documentation chrome. It is not promoted as a corporate marketing or TOAST UI token: the page is a separate documentation shell. It is the hover and pressed fill of the documentation sidebar links and is recorded on those `docs-` components only.
 
-## 3. Typography Rules
+## Typography
 
 - **Live corporate computed use:** `Pretendard Variable` is the only general corporate UI family promoted here. It has 480 visible uses across the corporate marketing capture and a loaded FontFace/source match at `https://www.nhncloud.com/fonts/PretendardVariable.woff2`.
 - **Live documentation-chrome use:** `Noto Sans KR` is loaded/high confidence with 203 visible uses on `docs.nhncloud.com`, from Google Fonts sources. It is documentation chrome evidence, not a replacement for the corporate token family.
@@ -250,7 +235,36 @@ The capture also records `#E9F1FF` in documentation chrome. It is not promoted a
 - **Declared-only assets:** `common`, `Noto Sans`, `Noto Sans JP`, `swiper-icons`, and `tui-calendar-font-icon` have declaration/source evidence but zero visible observed use. They are not promoted or substituted.
 - **Font licence boundary:** Pretendard’s upstream project distributes the family under SIL Open Font License 1.1. The licence describes the family; the corporate FontFaceSet/source evidence above is what establishes current NHN Cloud web use.
 
-## 4. Component Stylings
+## Layout
+
+The corporate marketing capture pairs a 40px header action with 48px section actions, keeping the bright blue lane intentionally limited. The 30px CTA radius belongs to this marketing surface; the observed 6px trigger and 8px menu panel are a separate resource-control cluster. The source artifact does not establish a universal grid, app-shell spacing scale, or layout rule for the cloud console, TOAST UI applications, or documentation pages.
+
+### Responsive Behavior
+
+The supplied capture is 1440×900 only. It establishes 40px and 48px CTA examples and a 42px resource trigger at that viewport, but it does not establish a mobile breakpoint, responsive menu geometry, or touch-target policy. Preserve the observed values only where the same surface is being recreated; validate any responsive implementation separately.
+
+## Elevation & Depth
+
+The captured corporate CTA samples have no shadow. The expanded resource menu alone records an overlay shadow of `0px 4px 8px rgba(0, 0, 0, 0.06)` behind a `#111111` panel and `#727781` hairline. Do not turn that one menu observation into a general card-elevation system.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.menu-overlay`: `0px 4px 8px rgba(0, 0, 0, 0.06)`
+
+## Motion & Easing
+
+No computed duration, easing curve, or motion sequence was supplied as a reliable token. The menu-open capture establishes the resulting expanded panel only. Treat motion values as unresolved until a relevant public surface is captured with explicit computed transition evidence.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.nhncloud.com/kr (corporate marketing computed styles and loaded Pretendard Variable), https://ui.toast.com/ (official TOAST UI catalog), https://docs.nhncloud.com/ko/nhncloud/ko/overview/ (separate documentation chrome), https://company.nhncloud.com/about?lang=en (official company history and brand context)
+**Tier 2 sources:** https://getdesign.md/nhncloud — attempted; built-in web open returned a non-retryable error and search returned no record. https://styles.refero.design/?q=nhncloud — attempted; built-in web open returned a non-retryable error and search returned no record.
+**Conflicts unresolved:** none
+**Proof:** see .verification.md (## Proof — Tier 1 live inspect)
+
+## Components
 
 ### Corporate Header CTA
 
@@ -413,15 +427,17 @@ Fourteen is the real number, not a short read. TOAST UI is published as a set of
 libraries — Grid, Chart, Editor and Calendar are each their own release — rather than as one
 component set covering a whole interface.
 
-## 5. Layout Principles
+### States
 
-The corporate marketing capture pairs a 40px header action with 48px section actions, keeping the bright blue lane intentionally limited. The 30px CTA radius belongs to this marketing surface; the observed 6px trigger and 8px menu panel are a separate resource-control cluster. The source artifact does not establish a universal grid, app-shell spacing scale, or layout rule for the cloud console, TOAST UI applications, or documentation pages.
+- Corporate header CTA (`home::[data-omd-capture="13"]`): hover and pressed frames both record the fill `rgb(20, 70, 200)` (`#1446C8`); text and border colours equal the rest frame. One element, no sibling; the two frames agree. The section CTA (`"29"`) has no state frame of its own. Corrected 2026-09-29: the July text said no state value was promoted, while the frontmatter already declared `#1446C8`, and it gave the section CTA the state markers of other `rounded-30` buttons.
+- Corporate outline pills: hover and pressed text and border `#C8CCD4` (three of the four pills sampled; all agree). Corporate header utility links: hover and pressed text `#125DE6` (both sampled; they agree). Corporate top navigation: the hover and pressed frames caught the text colour mid-transition, so no value is declared.
+- Documentation sidebar links (docs chrome): hover and pressed `#125DE6` text on a `#E9F1FF` fill, eighteen links in agreement; the current category and current page are `#125DE6` at rest.
+- The corporate resource trigger was observed expanded/menu-open with the 42px, 6px-radius trigger values above.
+- The expanded corporate menu panel was observed at `#111111`, with a 1px `#727781` border, 8px radius, and the recorded overlay shadow.
+- A documentation-chrome CTA was observed separately at `surface-3::[data-omd-capture="3"]`: `#125DE6`, white text, 30px radius, `9px 20px` padding, and Noto Sans KR 15px/300. It is not promoted as the corporate CTA token.
+- No focus value is declared: the collector presses the mouse before it calls `.focus()`, so its focus frames are not keyboard focus-visible measurements. No disabled, error, success, loading, empty, toast, dialog, or form-validation state is asserted.
 
-## 6. Depth & Elevation
-
-The captured corporate CTA samples have no shadow. The expanded resource menu alone records an overlay shadow of `0px 4px 8px rgba(0, 0, 0, 0.06)` behind a `#111111` panel and `#727781` hairline. Do not turn that one menu observation into a general card-elevation system.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -438,61 +454,17 @@ The captured corporate CTA samples have no shadow. The expanded resource menu al
 - Do not invent grid, editor, calendar, error, hover, disabled, or responsive variants from TOAST UI’s product list.
 - Do not generalize the menu overlay shadow into a broad elevation ladder.
 
-## 8. Responsive Behavior
-
-The supplied capture is 1440×900 only. It establishes 40px and 48px CTA examples and a 42px resource trigger at that viewport, but it does not establish a mobile breakpoint, responsive menu geometry, or touch-target policy. Preserve the observed values only where the same surface is being recreated; validate any responsive implementation separately.
-
-## 9. Agent Prompt Guide
-
-For a corporate NHN Cloud marketing treatment, use `Pretendard Variable`, a white-on-`#125DE6` 30px pill CTA, and choose either the 40px / `8px 19px` / 15px-400 header sample or the 48px / `10px 27px` / 17px-500 section sample. For the captured resource menu, use a transparent `#727781` / `#51565F` 6px trigger and an expanded `#111111` panel with an 8px radius and the observed light overlay shadow. On hover and press the header CTA fill deepens to `#1446C8`, and the white outline pills dim to `#C8CCD4`. For the separate documentation shell, sidebar links take `#125DE6` text on a `#E9F1FF` fill on hover and press; keep that docs-local. Do not use this small marketing sample to synthesize a cloud-console UI or TOAST UI widget library.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official company statement is business-enabling and practical: it positions NHN Cloud as technology support for customers' new journeys. Keep corporate copy direct, capability-led, and concrete about the operational outcome. The TOAST UI catalog has a different, developer-oriented voice: it presents applications, components, tools, and front-end guidance. That public catalog voice is useful context for developers, but it does not turn documentation labels into corporate-marketing microcopy. [Company statement](https://company.nhncloud.com/about?lang=en) · [TOAST UI](https://ui.toast.com/)
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-NHN Cloud's official history records an OpenStack public-cloud launch in 2014, a cloud-center build in Pangyo in 2015, and the launch of NHN Cloud in April 2022. The company now describes itself as a cloud and IT-service business, with current growth efforts spanning data/AI services, private and global markets, and regional data centers. Its official logo explanation centres connection and boundless possibility; the three-dot symbol is described as a cloud and as a prompt for easy, flexible collaboration.
+For a corporate NHN Cloud marketing treatment, use `Pretendard Variable`, a white-on-`#125DE6` 30px pill CTA, and choose either the 40px / `8px 19px` / 15px-400 header sample or the 48px / `10px 27px` / 17px-500 section sample. For the captured resource menu, use a transparent `#727781` / `#51565F` 6px trigger and an expanded `#111111` panel with an 8px radius and the observed light overlay shadow. On hover and press the header CTA fill deepens to `#1446C8`, and the white outline pills dim to `#C8CCD4`. For the separate documentation shell, sidebar links take `#125DE6` text on a `#E9F1FF` fill on hover and press; keep that docs-local. Do not use this small marketing sample to synthesize a cloud-console UI or TOAST UI widget library.
 
-The developer-facing counterpart is TOAST UI: its own site calls it a JavaScript UI library and free open-source project constantly managed by NHN Cloud, listing applications such as Grid, Editor, Calendar, Chart, and Image Editor alongside smaller components and front-end guides. The catalog is informative evidence of the developer ecosystem, not proof that its catalog-page typography or any unobserved component value is the NHN Cloud corporate design system.
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Enable a customer’s technical journey.**
-   *UI implication:* Prefer a clear capability and an unambiguous next action over decorative language.
-
-2. **Connection is a brand idea, not a license to invent a token system.**
-   *UI implication:* Keep the action lane focused; do not turn the corporate logo story into unsupported visual rules.
-
-3. **Corporate marketing and developer catalog are distinct public domains.**
-   *UI implication:* Attribute each token and component to its captured route before reuse.
-
-4. **Open-source developer tools need precise boundaries.**
-   *UI implication:* Describe TOAST UI's documented applications and components without claiming unseen states or styles.
-
-## 13. Personas
-
-- **Enterprise technical evaluator:** visits the public cloud marketing route to understand services and a next step; the verified CTA values belong to this route.
-- **Developer evaluating a UI utility:** visits TOAST UI’s catalog for applications, components, and guides; this is a developer/documentation journey, not the NHN Cloud console.
-- **Cloud documentation reader:** uses `docs.nhncloud.com` for reference material; its loaded Noto Sans KR documentation chrome remains surface-local.
-
-## 14. States
-
-- Corporate header CTA (`home::[data-omd-capture="13"]`): hover and pressed frames both record the fill `rgb(20, 70, 200)` (`#1446C8`); text and border colours equal the rest frame. One element, no sibling; the two frames agree. The section CTA (`"29"`) has no state frame of its own. Corrected 2026-09-29: the July text said no state value was promoted, while the frontmatter already declared `#1446C8`, and it gave the section CTA the state markers of other `rounded-30` buttons.
-- Corporate outline pills: hover and pressed text and border `#C8CCD4` (three of the four pills sampled; all agree). Corporate header utility links: hover and pressed text `#125DE6` (both sampled; they agree). Corporate top navigation: the hover and pressed frames caught the text colour mid-transition, so no value is declared.
-- Documentation sidebar links (docs chrome): hover and pressed `#125DE6` text on a `#E9F1FF` fill, eighteen links in agreement; the current category and current page are `#125DE6` at rest.
-- The corporate resource trigger was observed expanded/menu-open with the 42px, 6px-radius trigger values above.
-- The expanded corporate menu panel was observed at `#111111`, with a 1px `#727781` border, 8px radius, and the recorded overlay shadow.
-- A documentation-chrome CTA was observed separately at `surface-3::[data-omd-capture="3"]`: `#125DE6`, white text, 30px radius, `9px 20px` padding, and Noto Sans KR 15px/300. It is not promoted as the corporate CTA token.
-- No focus value is declared: the collector presses the mouse before it calls `.focus()`, so its focus frames are not keyboard focus-visible measurements. No disabled, error, success, loading, empty, toast, dialog, or form-validation state is asserted.
-
-## 15. Motion & Easing
-
-No computed duration, easing curve, or motion sequence was supplied as a reliable token. The menu-open capture establishes the resulting expanded panel only. Treat motion values as unresolved until a relevant public surface is captured with explicit computed transition evidence.
-
----
-**Verified:** 2026-07-13
-**Tier 1 sources:** https://www.nhncloud.com/kr (corporate marketing computed styles and loaded Pretendard Variable), https://ui.toast.com/ (official TOAST UI catalog), https://docs.nhncloud.com/ko/nhncloud/ko/overview/ (separate documentation chrome), https://company.nhncloud.com/about?lang=en (official company history and brand context)
-**Tier 2 sources:** https://getdesign.md/nhncloud — attempted; built-in web open returned a non-retryable error and search returned no record. https://styles.refero.design/?q=nhncloud — attempted; built-in web open returned a non-retryable error and search returned no record.
-**Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof — Tier 1 live inspect)
+- **Contrast, `docs-category-link`.** Text `#222222` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `docs-page-link`.** Text `#555555` on `#00000000` measures 2.82:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

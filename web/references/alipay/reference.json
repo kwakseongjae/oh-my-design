@@ -1,0 +1,413 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "alipay",
+    "name": "Alipay",
+    "country": "CN",
+    "category": "fintech",
+    "homepage": "https://www.alipay.com",
+    "primary_color": "#1890FF",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=alipay.com&sz=128"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Ant Design",
+      "url": "https://ant.design/docs/spec/introduce/",
+      "type": "system",
+      "description": "Ant Group's open enterprise design language; it is design context, not a substitute for the observed Alipay Open Platform surface."
+    }
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "note": "Only supplied deterministic capture values for Alipay Open Platform are tokens. Ant Design defaults remain separately documented official design-system context.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "developer-platform",
+        "url": "https://open.alipay.com/?mobile=2",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "web-app",
+        "kind": "developer-platform-product",
+        "url": "https://open.alipay.com/module/webApp",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "tools",
+        "kind": "developer-platform-tools",
+        "url": "https://open.alipay.com/tool",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://open.alipay.com/?mobile=2",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "web-app-live",
+        "kind": "product-surface",
+        "url": "https://open.alipay.com/module/webApp",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "tools-live",
+        "kind": "product-surface",
+        "url": "https://open.alipay.com/tool",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ant-context",
+        "kind": "official-doc",
+        "url": "https://ant.design/docs/spec/introduce/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ant-font",
+        "kind": "official-doc",
+        "url": "https://ant.design/docs/spec/font-cn/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ant-values",
+        "kind": "official-doc",
+        "url": "https://ant.design/docs/spec/values/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ant-license",
+        "kind": "license",
+        "url": "https://github.com/ant-design/ant-design/blob/master/LICENSE",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "antgroup-context",
+        "kind": "official-doc",
+        "url": "https://www.antgroup.com/en/home",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "alipay-component-index",
+        "kind": "official-doc",
+        "url": "https://ant.design/components/overview",
+        "captured": "2026-09-19"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.surface": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.nav": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.input-border": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-active.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-active.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-active.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.nav-active.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.cta.fontSize": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.cta.fontWeight": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.cta.lineHeight": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.cta.use": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.card": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.input": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.cta": {
+        "surface_id": "web-app",
+        "source_id": "web-app-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.tool-card.type": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.tool-card.backgroundColor": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.tool-card.rounded": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.tool-card.padding": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.tool-card.typography": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.tool-card.use": {
+        "surface_id": "tools",
+        "source_id": "tools-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 10,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 2,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav-active.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.cta.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tool-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.tool-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.nav",
+        "message": "'nav' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.input-border",
+        "message": "'input-border' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "99cfc78e7e95c8fe700e55f7d2e6af8e2adcf2512a0e0a50c14642bd9fcb4c2a",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.cta",
+        "value": "0 2px 0 rgba(0,0,0,0.043)"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.nav-active.fontSize",
+      "typography.cta.fontSize",
+      "rounded.input",
+      "rounded.card",
+      "components.tool-card.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "rounded",
+        "shadow",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "nav-active",
+        "cta"
+      ]
+    }
+  }
+}

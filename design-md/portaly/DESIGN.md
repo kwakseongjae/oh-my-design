@@ -1,68 +1,152 @@
 ---
-id: portaly
 name: Portaly
-country: TW
-category: design-tools
-homepage: "https://portaly.cc/"
-primary_color: "#862983"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=portaly.cc&sz=128"
-verified: "2026-06-17"
-added: "2026-06-17"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "primary = pricing interactive magenta/plum (#862983) on filled CTAs + toggle thumb; teal (#00a6a3 / #12a3a0) is the brand accent (logo swoosh, checkmarks, gradient endpoint); hero uses a purple gradient (#6e28af → #ac8ffe); navy (#0c2340) for nav. Marketing site renders English globally but the font stack carries Noto Sans TC for Traditional Chinese."
-  colors:
-    primary: "#862983"
-    teal: "#00a6a3"
-    teal-alt: "#12a3a0"
-    teal-soft: "#38aaaa"
-    purple-hero: "#6e28af"
-    purple-hero-light: "#ac8ffe"
-    swoosh-magenta: "#bb53b9"
-    navy: "#0c2340"
-    navy-deep: "#1a2a3a"
-    ink: "#333333"
-    ink-pure: "#000000"
-    muted: "#969696"
-    canvas: "#f8f8f8"
-    surface: "#ffffff"
-    surface-alt: "#f2f2f2"
-    hairline: "#d9d9d9"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Noto Sans", cjk: "Noto Sans TC" }
-    display-hero: { size: 50, weight: 800, lineHeight: 1.38, tracking: 1, use: "Hero headline, Noto Sans ExtraBold" }
-    feature-xl:   { size: 50, weight: 700, lineHeight: 1.50, use: "Large feature statement (Turn Traffic into Revenue)" }
-    section:      { size: 36, weight: 700, lineHeight: 1.50, use: "Section titles" }
-    feature:      { size: 24, weight: 700, lineHeight: 1.50, use: "Feature card heads" }
-    lede:         { size: 20, weight: 400, lineHeight: 1.50, use: "Hero subhead / lede" }
-    nav:          { size: 18, weight: 600, lineHeight: 1.33, use: "Nav links, Noto Sans SemiBold" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 40, section: 64 }
-  rounded: { sm: 6, md: 12, lg: 20, full: 9999 }
-  shadow:
-    card: "rgba(99,99,99,0.2) 0px 2px 8px 0px"
-    block: "rgba(0,0,0,0.05) 0px 1px 2px 0px"
-  components:
-    button-primary: { type: button, bg: "#862983", fg: "#ffffff", radius: "6px", padding: "4px 16px", height: "32px", font: "16px / 600 Noto Sans", use: "Primary CTA on pricing (Join Now), hover deepens plum" }
-    button-primary-lg: { type: button, bg: "#862983", fg: "#ffffff", radius: "20px", padding: "24px 40px", height: "52px", font: "18px / 600 Noto Sans", use: "Large primary CTA (Start Free)" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#862983", border: "1px solid #862983", radius: "6px", padding: "4px 16px", height: "32px", font: "16px / 600 Noto Sans", use: "Secondary CTA (Start for Free), magenta outline" }
-    button-hero-ghost: { type: button, fg: "#ffffff", border: "2px solid #ffffff", radius: "9999px", padding: "14px 70px", font: "28px / 600 Noto Sans", use: "White outline pill CTA over the purple hero gradient" }
-    nav-link: { type: tab, fg: "#0c2340", font: "18px / 600 Noto Sans", active: "magenta #862983 text on the active item", use: "Top nav item (Features, Pricing, Portaly AI, Blog)" }
-    plan-card: { type: card, bg: "#ffffff", radius: "12px", shadow: "rgba(99,99,99,0.2) 0px 2px 8px 0px", use: "Pricing plan card on #f8f8f8 canvas, no border" }
-    link-block: { type: card, bg: "#ffffff", radius: "6px", padding: "8px 16px", font: "16px / 600 Noto Sans", use: "Creator-page link block (filled 6px / rounded 16px variants); accent color is creator-chosen" }
-    toggle-billing: { type: toggle, bg: "#d9d9d9", radius: "9999px", height: "24px", use: "Annual/Monthly billing switch, magenta #862983 active thumb" }
-    feature-check: { type: badge, fg: "#12a3a0", font: "16px / 400 Noto Sans", use: "Teal checkmark in plan feature lists" }
-  components_harvested: true
+colors:
+  primary: '#862983'
+  teal: '#00a6a3'
+  teal-alt: '#12a3a0'
+  teal-soft: '#38aaaa'
+  purple-hero: '#6e28af'
+  purple-hero-light: '#ac8ffe'
+  swoosh-magenta: '#bb53b9'
+  navy: '#0c2340'
+  navy-deep: '#1a2a3a'
+  ink: '#333333'
+  ink-pure: '#000000'
+  muted: '#969696'
+  canvas: '#f8f8f8'
+  surface: '#ffffff'
+  surface-alt: '#f2f2f2'
+  hairline: '#d9d9d9'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 50px
+    fontWeight: 800
+    lineHeight: 1.38
+    letterSpacing: 1px
+    use: Hero headline, Noto Sans ExtraBold
+  feature-xl:
+    fontSize: 50px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Large feature statement (Turn Traffic into Revenue)
+  section:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Section titles
+  feature:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Feature card heads
+  lede:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Hero subhead / lede
+  nav:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.33
+    use: Nav links, Noto Sans SemiBold
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+rounded:
+  sm: 6px
+  md: 12px
+  lg: 20px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 40
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#862983'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 4px 16px
+    height: 32px
+    typography: 16px / 600 Noto Sans
+    use: Primary CTA on pricing (Join Now), hover deepens plum
+  button-primary-lg:
+    type: button
+    backgroundColor: '#862983'
+    textColor: '#ffffff'
+    rounded: 20px
+    padding: 24px 40px
+    height: 52px
+    typography: 18px / 600 Noto Sans
+    use: Large primary CTA (Start Free)
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#862983'
+    border: '1px solid #862983'
+    rounded: 6px
+    padding: 4px 16px
+    height: 32px
+    typography: 16px / 600 Noto Sans
+    use: Secondary CTA (Start for Free), magenta outline
+  button-hero-ghost:
+    type: button
+    textColor: '#ffffff'
+    border: '2px solid #ffffff'
+    rounded: 9999px
+    padding: 14px 70px
+    typography: 28px / 600 Noto Sans
+    use: White outline pill CTA over the purple hero gradient
+  nav-link:
+    type: tab
+    textColor: '#0c2340'
+    typography: 18px / 600 Noto Sans
+    active: 'magenta #862983 text on the active item'
+    use: Top nav item (Features, Pricing, Portaly AI, Blog)
+  plan-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 12px
+    shadow: rgba(99,99,99,0.2) 0px 2px 8px 0px
+    use: 'Pricing plan card on #f8f8f8 canvas, no border'
+  link-block:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 6px
+    padding: 8px 16px
+    typography: 16px / 600 Noto Sans
+    use: Creator-page link block (filled 6px / rounded 16px variants); accent color is creator-chosen
+  toggle-billing:
+    type: toggle
+    backgroundColor: '#d9d9d9'
+    rounded: 9999px
+    height: 24px
+    use: 'Annual/Monthly billing switch, magenta #862983 active thumb'
+  feature-check:
+    type: badge
+    textColor: '#12a3a0'
+    typography: 16px / 400 Noto Sans
+    use: Teal checkmark in plan feature lists
+fonts:
+  roles:
+    sans: Noto Sans
+    cjk: Noto Sans TC
 ---
 
 # Design System Inspiration of Portaly
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Portaly (傳送門) is Taiwan's largest Traditional-Chinese link-in-bio and creator landing-page builder, operated by Real Engine, and its marketing surface reads like a bright, optimistic creator-economy product rather than a utilitarian dev tool. The page background is a soft off-white (`#f8f8f8`) under crisp white (`#ffffff`) content cards, with body copy in a comfortable warm grey-black (`#333333`) and headlines in true black (`#000000`). The single most saturated interactive color is a confident magenta-plum (`#862983`) — it owns every filled "Join Now" / "Start Free" call-to-action and the billing toggle — so the eye is trained to read that one plum as "the action."
 
@@ -80,7 +164,7 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 - Gentle depth — one soft grey card shadow (`rgba(99,99,99,0.2) 0px 2px 8px`) + `#d9d9d9` hairlines
 - Off-white canvas (`#f8f8f8`) under white surfaces; warm-grey body text (`#333333`)
 
-## Primary tasks
+### Primary tasks
 
 - Add the first link block to a brand-new creator page.
 - Sell digital goods and collect leads from the same page.
@@ -88,7 +172,33 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 - Spin up a campaign landing page with the AI builder.
 - Compare the free and paid plans before upgrading.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Portaly (傳送門) was launched in **2022** by **CW Lin (林啟維)** under **Real Engine, Inc. (真實引擎)**, a Taiwan startup, to solve a problem visual creators and small Traditional-Chinese-speaking businesses faced: the dominant Western link-in-bio tools were built for a Latin, English-first audience and treated a creator's page as a bare list of links rather than a real, monetizable web presence. Portaly reframed the link-in-bio as a *social landing page* — a place to not only point followers outward but to sell, collect leads, and build a brand, localized first for the Taiwanese creator market.
+
+The product grew into Taiwan's largest Traditional-Chinese link-in-bio / creator landing-page builder, serving a stated 200,000+ creators worldwide, with generative-AI page building added in 2023 — a launch that won **#2 Product of the Day** on Product Hunt (the badge still sits live on the homepage and pricing page). The company has been recognized in Taiwan's **Neo 30 (2023)** startup list and is a **500 Global** alumnus.
+
+What Portaly refuses, visible in its design: the cold, utilitarian aesthetic of a pure-utility link list, and the high-pressure monetization patterns of growth-hacking tools. What it embraces: a bright, optimistic creator-economy mood; a friendly magenta-and-teal identity carried by a curved-arrow swoosh; native Traditional-Chinese typography (Noto Sans TC); and copy that frames growth and profit as encouraging outcomes the creator owns.
+
+### Principles
+
+1. **A page, not a link list.** Portaly treats a creator's page as a real, monetizable landing page. *UI implication:* full-width tappable link blocks, plan-grade cards, and product/lead blocks — structure beyond a bare list.
+2. **One action, one plum.** Magenta-plum (`#862983`) means "do this." *UI implication:* reserve the saturated plum exclusively for the primary filled CTA so the next step is never ambiguous.
+3. **Teal is the brand's warmth.** The teal-magenta duality and curved-arrow swoosh are the identity. *UI implication:* use teal (`#00a6a3`/`#12a3a0`) for accents, checkmarks, and the signature gradient; don't introduce a competing hue.
+4. **Traditional-Chinese first.** The product is built for a Traditional-Chinese creator market. *UI implication:* always carry the Noto Sans TC fallback so CJK renders natively and consistently with Latin.
+5. **Optimistic, not pushy.** Growth and profit are framed as encouraging outcomes. *UI implication:* keep CTAs free-forward and low-pressure; lean on bright color and airy layout, never scarcity or dark patterns.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Portaly user segments (Traditional-Chinese visual creators, small businesses, course/product sellers), not individual people.*
+
+**陳郁婷, 27, 台北.** An illustrator selling commissions and digital goods. Switched from a Western link-in-bio because Portaly let her build a real shopfront page in Traditional Chinese, collect leads, and take payment in one place. Values that the page feels like *hers*, not a generic list.
+
+**黃彥儒, 34, 台中.** A fitness coach running paid programs. Uses Portaly's monetization blocks and AI page builder to spin up campaign landing pages fast. Likes that the free tier is genuinely usable and the upgrade ("the first 14 days free") feels low-risk.
+
+**林思妤, 41, 高雄.** A small-shop owner driving social traffic to a single Portaly page. Appreciates the bright, friendly look that matches her brand and the plain pricing copy that tells her exactly what she gets — no jargon, no pressure.
+
+## Colors
 
 ### Primary & Brand
 - **Portaly Plum** (`#862983`): Primary interactive color. Filled CTA background ("Join Now", "Start Free"), billing toggle active thumb, secondary-button outline/text. The system's single "action" color.
@@ -115,7 +225,7 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 - **Muted** (`#969696`): Helper/fine-print text ("Permanently Free to Use", annual-fee notes).
 - **On Primary** (`#ffffff`): Text/icon color on plum and teal fills.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Sans**: `Noto Sans` — the primary Latin face for all display and body text.
@@ -139,7 +249,125 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 - **Near-flat tracking**: only the hero carries a slight positive `1px` letter-spacing for its ExtraBold display line; everything else sits at normal tracking.
 - **Generous line-height**: body and most heads run at a comfortable 1.5 line-height, reinforcing the airy, approachable creator-economy feel.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px
+- Scale: 4px, 8px, 12px, 16px, 20px, 24px, 40px, 64px
+- Notable: section CTAs use a generous 24px 40px padding for the large "Start Free" button; plan cards sit ~540px wide in a two-up grid
+
+### Grid & Container
+- Centered marketing column: full-width purple hero gradient band, then white content sections on the `#f8f8f8` canvas
+- Pricing: a centered two-up plan-card grid (Free / Premium), each card ~538px wide at 12px radius
+- Feature sections alternate white feature-card rows with template-thumbnail gradient grids
+- Creator pages: a single mobile-first centered column of full-width link blocks under an avatar + handle header
+
+### Whitespace Philosophy
+- **Airy and optimistic**: generous vertical rhythm between sections; the creator-economy product avoids dense dashboard packing on its marketing surface.
+- **Color band cadence**: the purple hero gradient gives way to clean white content, a bright-to-calm transition that anchors the brand mood up top.
+- **Soft segmentation**: sections separate by `#f8f8f8` vs `#ffffff` background shift and thin `#d9d9d9` hairlines, not heavy borders.
+
+### Border Radius Scale
+- Small (6px): pricing buttons, filled creator link blocks — the workhorse
+- Medium (12px): pricing plan cards, content containers
+- Large (16px–20px): rounded creator link blocks, large CTAs
+- Full (9999px): hero/nav pills, billing toggle, "Join Now" header pill
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column; hero headline compresses; plan cards stack; creator pages are mobile-first by default |
+| Tablet | 640-1024px | Moderate padding; two-up feature/plan grids begin |
+| Desktop | 1024-1440px | Full layout; centered hero; two-up plan grid; template-thumbnail rows |
+
+#### Touch Targets
+- Filled CTAs at 32px+ height with comfortable horizontal padding; large CTA at 52px
+- Creator link blocks at 44px+ full-width rows — generous, unmistakable tap targets
+- Nav links spaced for touch within the white header
+
+#### Collapsing Strategy
+- Hero: 50px ExtraBold headline scales down on mobile, weight 800 maintained
+- Pricing: two-up plan cards → stacked single column
+- Feature sections + template grids: multi-column → stacked
+- Purple hero band maintains its gradient full-width across breakpoints
+
+#### Image Behavior
+- Template thumbnails keep their vibrant gradient fills and rounded corners at all sizes
+- Phone-mockup product shots in the hero scale proportionally
+- Creator-page avatars and link blocks remain full-width centered on narrow viewports
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, most marketing chrome |
+| Block (Level 1) | `rgba(0,0,0,0.05) 0px 1px 2px 0px` | Creator link blocks, subtle lift |
+| Card (Level 2) | `rgba(99,99,99,0.2) 0px 2px 8px 0px` | Pricing plan cards, elevated content |
+| Hairline | `1px solid #d9d9d9` | Plan-grid dividers, section separators |
+
+**Shadow Philosophy**: Portaly keeps elevation gentle and friendly. The signature card shadow is a soft, neutral grey ambient blur (`rgba(99,99,99,0.2) 0px 2px 8px`) — low spread, no harsh contrast — used on pricing plan cards. Creator link blocks carry an even lighter `rgba(0,0,0,0.05) 0px 1px 2px` lift. Most of the marketing surface is flat; depth is reserved for the few surfaces that genuinely need to read as "tappable cards." The mood is approachable, not engineered — the opposite of a heavy fintech card-stack.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `rgba(99,99,99,0.2) 0px 2px 8px 0px`
+- `shadow.block`: `rgba(0,0,0,0.05) 0px 1px 2px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, toggle flip, focus |
+| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown, link-block reorder |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, blocks, sheets |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is friendly but functional — consistent with the bright, approachable creator-economy mood. The billing toggle flips its plum thumb at `motion-fast`; link blocks and cards reveal/reorder at `motion-standard / ease-enter` with a small fade-from-below; the purple hero settles in once on load. A light delight is on-brand here (more than a fintech tool would allow), but never bouncy chaos — a creator's published page must feel stable and trustworthy. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via playwright getComputedStyle:
+- https://portaly.cc/ (homepage, geo-redirects to /en) — hero, hero gradient, nav, CTAs, template thumbnails, color-frequency scan
+- https://portaly.cc/en/pricing — primary/secondary buttons (#862983), plan cards (12px, soft grey shadow), billing toggle, teal checkmarks (#12a3a0)
+- https://portaly.cc/en/blog — brand-owned surface, same chrome/font stack
+- https://portaly.cc/cwl — founder 林啟維's live creator page (Traditional-Chinese product surface; link-block component; "Noto Sans, Noto Sans TC, Noto Color Emoji" stack confirmed)
+
+All token-level claims (§1–9) are sourced from this live inspection. Full raw samples in
+web/references/portaly/.verification.md.
+
+Voice samples (§10) are verbatim from the live homepage and pricing page.
+
+Brand narrative (§11): Portaly (傳送門) launched 2022 by CW Lin (林啟維) under Real Engine, Inc.
+(真實引擎), a Taiwan startup; Taiwan's largest Traditional-Chinese link-in-bio / creator
+landing-page builder; AI feature won #2 Product of the Day on Product Hunt (2023, badge live
+on site); Neo 30 (2023) and 500 Global recognition. Gathered via WebSearch 2026-06-17
+(LinkedIn /company/portaly-cc, Cake /me/chi-wei-lin-CW, Yourator Real-Engine, Crunchbase
+/organization/portaly) + live marketing copy. These are widely documented public facts, not
+directly quoted from a verified internal Portaly statement beyond the live site copy.
+
+Personas (§13) are fictional archetypes informed by publicly observable Portaly user segments
+(Traditional-Chinese visual creators, small businesses, course/product sellers). Names are
+illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "a page, not a link list", "one action, one plum", "teal-magenta
+duality as the brand's warmth") are editorial readings connecting Portaly's observed design to
+its positioning, not directly sourced Portaly statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -224,42 +452,21 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 **Tier 2 sources:** getdesign.md/portaly — NO DATA ("No designs found for 'portaly'"); styles.refero.design/?q=portaly — Portaly not indexed (only generic default cards returned)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 12px, 16px, 20px, 24px, 40px, 64px
-- Notable: section CTAs use a generous 24px 40px padding for the large "Start Free" button; plan cards sit ~540px wide in a two-up grid
+| State | Treatment |
+|---|---|
+| **Empty (new creator page)** | White canvas, avatar placeholder + handle, a single Ink (`#333333`) prompt to add the first link block, with a plum (`#862983`) "add" CTA. Encouraging, never blank-scary. |
+| **Empty (no analytics yet)** | Muted (`#969696`) single line explaining no data has been collected yet, with a path to share the page. Honest and calm. |
+| **Loading (page/builder)** | Skeleton blocks at final link-block dimensions on the `#f8f8f8` canvas, 6px radius, soft pulse consistent with the gentle-shadow system. |
+| **Loading (AI page generation)** | Inline progress with the plum accent; existing blocks stay visible while AI proposes new ones. |
+| **Error (save/publish failed)** | Inline message in Ink (`#333333`) with a plain-language explanation and a retry — states what to do next, no bare error code. |
+| **Error (form validation)** | Field-level message below the input describing what's valid, not just "required". |
+| **Success (published / saved)** | Brief inline confirmation in calm tone; the live page link surfaces immediately below. No celebratory emoji spam. |
+| **Skeleton** | `#f2f2f2` / `#f8f8f8` blocks at final dimensions, 6px–12px radius, soft pulse. |
+| **Disabled** | Muted (`#969696`) text on reduced-opacity surface; plum actions fade rather than turn grey to preserve brand read. |
 
-### Grid & Container
-- Centered marketing column: full-width purple hero gradient band, then white content sections on the `#f8f8f8` canvas
-- Pricing: a centered two-up plan-card grid (Free / Premium), each card ~538px wide at 12px radius
-- Feature sections alternate white feature-card rows with template-thumbnail gradient grids
-- Creator pages: a single mobile-first centered column of full-width link blocks under an avatar + handle header
-
-### Whitespace Philosophy
-- **Airy and optimistic**: generous vertical rhythm between sections; the creator-economy product avoids dense dashboard packing on its marketing surface.
-- **Color band cadence**: the purple hero gradient gives way to clean white content, a bright-to-calm transition that anchors the brand mood up top.
-- **Soft segmentation**: sections separate by `#f8f8f8` vs `#ffffff` background shift and thin `#d9d9d9` hairlines, not heavy borders.
-
-### Border Radius Scale
-- Small (6px): pricing buttons, filled creator link blocks — the workhorse
-- Medium (12px): pricing plan cards, content containers
-- Large (16px–20px): rounded creator link blocks, large CTAs
-- Full (9999px): hero/nav pills, billing toggle, "Join Now" header pill
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most marketing chrome |
-| Block (Level 1) | `rgba(0,0,0,0.05) 0px 1px 2px 0px` | Creator link blocks, subtle lift |
-| Card (Level 2) | `rgba(99,99,99,0.2) 0px 2px 8px 0px` | Pricing plan cards, elevated content |
-| Hairline | `1px solid #d9d9d9` | Plan-grid dividers, section separators |
-
-**Shadow Philosophy**: Portaly keeps elevation gentle and friendly. The signature card shadow is a soft, neutral grey ambient blur (`rgba(99,99,99,0.2) 0px 2px 8px`) — low spread, no harsh contrast — used on pricing plan cards. Creator link blocks carry an even lighter `rgba(0,0,0,0.05) 0px 1px 2px` lift. Most of the marketing surface is flat; depth is reserved for the few surfaces that genuinely need to read as "tappable cards." The mood is approachable, not engineered — the opposite of a heavy fintech card-stack.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Reserve magenta-plum (`#862983`) for the primary action — filled CTAs and the billing toggle
@@ -281,32 +488,26 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 - Add a third saturated brand hue — plum + teal (+ the playful purple hero) is the whole palette
 - Set headlines in a light weight — display is always Bold/ExtraBold
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column; hero headline compresses; plan cards stack; creator pages are mobile-first by default |
-| Tablet | 640-1024px | Moderate padding; two-up feature/plan grids begin |
-| Desktop | 1024-1440px | Full layout; centered hero; two-up plan grid; template-thumbnail rows |
+Portaly's voice is **encouraging, growth-minded, and creator-first** — it speaks to visual creators and small businesses as ambitious people turning an audience into income, not as users to be onboarded. The hero line "Your All-in-One Platform for Growth and Profit" and the supporting "Join 200,000 creators worldwide to turn passion into profit" set the register: aspirational, plain-spoken, benefit-forward, never jargon-heavy. Pricing copy ("Growth & monetization plans built for creators", "From basic presence to steady monetization — choose the plan that fits you") frames money positively and removes friction rather than pressuring.
 
-### Touch Targets
-- Filled CTAs at 32px+ height with comfortable horizontal padding; large CTA at 52px
-- Creator link blocks at 44px+ full-width rows — generous, unmistakable tap targets
-- Nav links spaced for touch within the white header
+| Context | Tone |
+|---|---|
+| Hero headlines | Aspirational, benefit-first. "Your All-in-One Platform for Growth and Profit." Confident, not hype. |
+| Feature heads | Action verbs naming an outcome. "Turn Traffic into Revenue", "Grow Your Fanbase", "Monetize Your Content". |
+| CTAs | Direct, low-pressure, free-forward. "Start for free", "Join Now", "Start Free". |
+| Pricing copy | Reassuring and transparent. "Permanently Free to Use", "with the first 14 days free", "Save 14% monthly". |
+| Creator product (TC) | Personal and warm, in Traditional Chinese — a creator's own links, columns, and recruiting posts. |
 
-### Collapsing Strategy
-- Hero: 50px ExtraBold headline scales down on mobile, weight 800 maintained
-- Pricing: two-up plan cards → stacked single column
-- Feature sections + template grids: multi-column → stacked
-- Purple hero band maintains its gradient full-width across breakpoints
+**Voice samples (verbatim from live surfaces):**
+- "Your All-in-One Platform for Growth and Profit" — hero headline (mission-framed). *(verified live 2026-06-17, portaly.cc/)*
+- "Join 200,000 creators worldwide to turn passion into profit" — hero subhead (scale + benefit). *(verified live 2026-06-17, portaly.cc/)*
+- "Growth & monetization plans built for creators" — pricing headline. *(verified live 2026-06-17, portaly.cc/en/pricing)*
 
-### Image Behavior
-- Template thumbnails keep their vibrant gradient fills and rounded corners at all sizes
-- Phone-mockup product shots in the hero scale proportionally
-- Creator-page avatars and link blocks remain full-width centered on narrow viewports
+**Forbidden register**: fear-based or scarcity urgency, undefined growth-hacking jargon, exclamation-heavy hype, dismissive or gatekeeping language toward small creators.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Portaly Plum (`#862983`)
@@ -337,113 +538,3 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 8. Canvas `#f8f8f8` under white surfaces; hairlines `#d9d9d9`
 
 ---
-
-## 10. Voice & Tone
-
-Portaly's voice is **encouraging, growth-minded, and creator-first** — it speaks to visual creators and small businesses as ambitious people turning an audience into income, not as users to be onboarded. The hero line "Your All-in-One Platform for Growth and Profit" and the supporting "Join 200,000 creators worldwide to turn passion into profit" set the register: aspirational, plain-spoken, benefit-forward, never jargon-heavy. Pricing copy ("Growth & monetization plans built for creators", "From basic presence to steady monetization — choose the plan that fits you") frames money positively and removes friction rather than pressuring.
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Aspirational, benefit-first. "Your All-in-One Platform for Growth and Profit." Confident, not hype. |
-| Feature heads | Action verbs naming an outcome. "Turn Traffic into Revenue", "Grow Your Fanbase", "Monetize Your Content". |
-| CTAs | Direct, low-pressure, free-forward. "Start for free", "Join Now", "Start Free". |
-| Pricing copy | Reassuring and transparent. "Permanently Free to Use", "with the first 14 days free", "Save 14% monthly". |
-| Creator product (TC) | Personal and warm, in Traditional Chinese — a creator's own links, columns, and recruiting posts. |
-
-**Voice samples (verbatim from live surfaces):**
-- "Your All-in-One Platform for Growth and Profit" — hero headline (mission-framed). *(verified live 2026-06-17, portaly.cc/)*
-- "Join 200,000 creators worldwide to turn passion into profit" — hero subhead (scale + benefit). *(verified live 2026-06-17, portaly.cc/)*
-- "Growth & monetization plans built for creators" — pricing headline. *(verified live 2026-06-17, portaly.cc/en/pricing)*
-
-**Forbidden register**: fear-based or scarcity urgency, undefined growth-hacking jargon, exclamation-heavy hype, dismissive or gatekeeping language toward small creators.
-
-## 11. Brand Narrative
-
-Portaly (傳送門) was launched in **2022** by **CW Lin (林啟維)** under **Real Engine, Inc. (真實引擎)**, a Taiwan startup, to solve a problem visual creators and small Traditional-Chinese-speaking businesses faced: the dominant Western link-in-bio tools were built for a Latin, English-first audience and treated a creator's page as a bare list of links rather than a real, monetizable web presence. Portaly reframed the link-in-bio as a *social landing page* — a place to not only point followers outward but to sell, collect leads, and build a brand, localized first for the Taiwanese creator market.
-
-The product grew into Taiwan's largest Traditional-Chinese link-in-bio / creator landing-page builder, serving a stated 200,000+ creators worldwide, with generative-AI page building added in 2023 — a launch that won **#2 Product of the Day** on Product Hunt (the badge still sits live on the homepage and pricing page). The company has been recognized in Taiwan's **Neo 30 (2023)** startup list and is a **500 Global** alumnus.
-
-What Portaly refuses, visible in its design: the cold, utilitarian aesthetic of a pure-utility link list, and the high-pressure monetization patterns of growth-hacking tools. What it embraces: a bright, optimistic creator-economy mood; a friendly magenta-and-teal identity carried by a curved-arrow swoosh; native Traditional-Chinese typography (Noto Sans TC); and copy that frames growth and profit as encouraging outcomes the creator owns.
-
-## 12. Principles
-
-1. **A page, not a link list.** Portaly treats a creator's page as a real, monetizable landing page. *UI implication:* full-width tappable link blocks, plan-grade cards, and product/lead blocks — structure beyond a bare list.
-2. **One action, one plum.** Magenta-plum (`#862983`) means "do this." *UI implication:* reserve the saturated plum exclusively for the primary filled CTA so the next step is never ambiguous.
-3. **Teal is the brand's warmth.** The teal-magenta duality and curved-arrow swoosh are the identity. *UI implication:* use teal (`#00a6a3`/`#12a3a0`) for accents, checkmarks, and the signature gradient; don't introduce a competing hue.
-4. **Traditional-Chinese first.** The product is built for a Traditional-Chinese creator market. *UI implication:* always carry the Noto Sans TC fallback so CJK renders natively and consistently with Latin.
-5. **Optimistic, not pushy.** Growth and profit are framed as encouraging outcomes. *UI implication:* keep CTAs free-forward and low-pressure; lean on bright color and airy layout, never scarcity or dark patterns.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Portaly user segments (Traditional-Chinese visual creators, small businesses, course/product sellers), not individual people.*
-
-**陳郁婷, 27, 台北.** An illustrator selling commissions and digital goods. Switched from a Western link-in-bio because Portaly let her build a real shopfront page in Traditional Chinese, collect leads, and take payment in one place. Values that the page feels like *hers*, not a generic list.
-
-**黃彥儒, 34, 台中.** A fitness coach running paid programs. Uses Portaly's monetization blocks and AI page builder to spin up campaign landing pages fast. Likes that the free tier is genuinely usable and the upgrade ("the first 14 days free") feels low-risk.
-
-**林思妤, 41, 高雄.** A small-shop owner driving social traffic to a single Portaly page. Appreciates the bright, friendly look that matches her brand and the plain pricing copy that tells her exactly what she gets — no jargon, no pressure.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (new creator page)** | White canvas, avatar placeholder + handle, a single Ink (`#333333`) prompt to add the first link block, with a plum (`#862983`) "add" CTA. Encouraging, never blank-scary. |
-| **Empty (no analytics yet)** | Muted (`#969696`) single line explaining no data has been collected yet, with a path to share the page. Honest and calm. |
-| **Loading (page/builder)** | Skeleton blocks at final link-block dimensions on the `#f8f8f8` canvas, 6px radius, soft pulse consistent with the gentle-shadow system. |
-| **Loading (AI page generation)** | Inline progress with the plum accent; existing blocks stay visible while AI proposes new ones. |
-| **Error (save/publish failed)** | Inline message in Ink (`#333333`) with a plain-language explanation and a retry — states what to do next, no bare error code. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, not just "required". |
-| **Success (published / saved)** | Brief inline confirmation in calm tone; the live page link surfaces immediately below. No celebratory emoji spam. |
-| **Skeleton** | `#f2f2f2` / `#f8f8f8` blocks at final dimensions, 6px–12px radius, soft pulse. |
-| **Disabled** | Muted (`#969696`) text on reduced-opacity surface; plum actions fade rather than turn grey to preserve brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, toggle flip, focus |
-| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown, link-block reorder |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, blocks, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is friendly but functional — consistent with the bright, approachable creator-economy mood. The billing toggle flips its plum thumb at `motion-fast`; link blocks and cards reveal/reorder at `motion-standard / ease-enter` with a small fade-from-below; the purple hero settles in once on load. A light delight is on-brand here (more than a fintech tool would allow), but never bouncy chaos — a creator's published page must feel stable and trustworthy. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle:
-- https://portaly.cc/ (homepage, geo-redirects to /en) — hero, hero gradient, nav, CTAs, template thumbnails, color-frequency scan
-- https://portaly.cc/en/pricing — primary/secondary buttons (#862983), plan cards (12px, soft grey shadow), billing toggle, teal checkmarks (#12a3a0)
-- https://portaly.cc/en/blog — brand-owned surface, same chrome/font stack
-- https://portaly.cc/cwl — founder 林啟維's live creator page (Traditional-Chinese product surface; link-block component; "Noto Sans, Noto Sans TC, Noto Color Emoji" stack confirmed)
-
-All token-level claims (§1–9) are sourced from this live inspection. Full raw samples in
-web/references/portaly/.verification.md.
-
-Voice samples (§10) are verbatim from the live homepage and pricing page.
-
-Brand narrative (§11): Portaly (傳送門) launched 2022 by CW Lin (林啟維) under Real Engine, Inc.
-(真實引擎), a Taiwan startup; Taiwan's largest Traditional-Chinese link-in-bio / creator
-landing-page builder; AI feature won #2 Product of the Day on Product Hunt (2023, badge live
-on site); Neo 30 (2023) and 500 Global recognition. Gathered via WebSearch 2026-06-17
-(LinkedIn /company/portaly-cc, Cake /me/chi-wei-lin-CW, Yourator Real-Engine, Crunchbase
-/organization/portaly) + live marketing copy. These are widely documented public facts, not
-directly quoted from a verified internal Portaly statement beyond the live site copy.
-
-Personas (§13) are fictional archetypes informed by publicly observable Portaly user segments
-(Traditional-Chinese visual creators, small businesses, course/product sellers). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "a page, not a link list", "one action, one plum", "teal-magenta
-duality as the brand's warmth") are editorial readings connecting Portaly's observed design to
-its positioning, not directly sourced Portaly statements.
--->

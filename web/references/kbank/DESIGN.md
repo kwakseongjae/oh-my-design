@@ -1,173 +1,128 @@
 ---
-id: kbank
 name: K bank
-country: KR
-category: fintech
-homepage: "https://www.kbanknow.com"
-primary_color: "#0114a7"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=kbanknow.com&sz=256"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: public-product-web, url: "https://www.kbanknow.com/web/web-home/home/main", inspected: "2026-07-13" }
-    - { id: product-index, kind: public-product-web, url: "https://www.kbanknow.com/web/product/info/list?tab=deposit", inspected: "2026-07-13" }
-    - { id: product-curious, kind: public-product-web, url: "https://www.kbanknow.com/web/product/deposit/curious-saving", inspected: "2026-07-13" }
-    - { id: product-rolling, kind: public-product-web, url: "https://www.kbanknow.com/web/product/deposit/rolling-farm", inspected: "2026-07-13" }
-    - { id: product-one-card, kind: public-product-web, url: "https://www.kbanknow.com/web/product/card/one-card", inspected: "2026-07-13" }
-  sources:
-    - { id: product-home, kind: product-surface, url: "https://www.kbanknow.com/web/web-home/home/main", captured: "2026-07-13" }
-    - { id: product-index-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/info/list?tab=deposit", captured: "2026-07-13" }
-    - { id: product-curious-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/deposit/curious-saving", captured: "2026-07-13" }
-    - { id: product-rolling-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/deposit/rolling-farm", captured: "2026-07-13" }
-    - { id: product-one-card-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/card/one-card", captured: "2026-07-13" }
-    - { id: brand-resource, kind: brand-asset, url: "https://brand.kbanknow.com/resource.html", captured: "2026-07-13" }
-    - { id: brand-story, kind: official-doc, url: "https://brand.kbanknow.com/", captured: "2026-07-13" }
-    - { id: culture-story, kind: official-doc, url: "https://blog.kbanknow.com/%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-1%ED%8E%B8-%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-%ED%83%84%EC%83%9D-%EA%B8%B0%EB%A1%9D-%EC%9D%91%EC%95%A0%F0%9F%90%A3/", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": { surface_id: home, source_id: product-home, method: computed-style-and-official-brand-guide, captured: "2026-07-13" }
-    "tokens.colors.secondary": { surface_id: home, source_id: product-home, method: computed-style-and-official-brand-guide, captured: "2026-07-13" }
-    "tokens.colors.canvas": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.foreground": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.family.ui": { surface_id: home, source_id: product-home, method: computed-style-and-FontFaceSet, captured: "2026-07-13" }
-    "tokens.typography.body.size": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.body.weight": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.body.lineHeight": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.body.use": { surface_id: home, source_id: product-home, method: selector-provenance, captured: "2026-07-13" }
-    "tokens.typography.product-display.size": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.product-display.weight": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.product-display.lineHeight": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.product-display.tracking": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.product-display.use": { surface_id: product-curious, source_id: product-curious-source, method: selector-provenance, captured: "2026-07-13" }
-    "tokens.spacing.compact-action-inline": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.spacing.wide-action-inline": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
-    "tokens.rounded.compact-action": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.rounded.primary-action": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
-    "tokens.rounded.selected-tab": { surface_id: product-index, source_id: product-index-source, method: computed-style-and-aria-selected, captured: "2026-07-13" }
-    "tokens.shadow.none": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.public-home-shell.type": { surface_id: home, source_id: product-home, method: selector-provenance, captured: "2026-07-13" }
-    "tokens.components.public-home-shell.bg": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.public-home-shell.radius": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.public-home-shell.shadow": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.public-home-shell.use": { surface_id: home, source_id: product-home, method: selector-provenance, captured: "2026-07-13" }
-    "tokens.components.public-compact-action.type": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.bg": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.fg": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.radius": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.padding": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.height": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.font": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.states": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-compact-action.use": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.type": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.bg": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.fg": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.radius": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.padding": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.height": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.font": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.states": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.public-primary-action.use": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.type": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.bg": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.fg": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.radius": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.padding": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.height": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.font": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.states": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-index-tab.use": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.type": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.bg": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.fg": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.border": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.radius": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.padding": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.height": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.font": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.states": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-choice-chip.use": { surface_id: product-index, source_id: product-index-source, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.type": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.bg": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.fg": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.radius": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.padding": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.height": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.font": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.states": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-text-button.use": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.type": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.bg": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.padding": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.height": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.states": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.use": { surface_id: home, source_id: product-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.type": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.bg": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.fg": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.radius": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.padding": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.height": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.font": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.states": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.product-soft-action.use": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, selector: "surface-4::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.type": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.bg": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.radius": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.padding": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.size": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.states": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.benefit-slide-card.use": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.slide-pagination-tab.type": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"31\"]", captured: "2026-07-13" }
-    "tokens.components.slide-pagination-tab.bg": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"31\"]", captured: "2026-07-13" }
-    "tokens.components.slide-pagination-tab.padding": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"31\"]", captured: "2026-07-13" }
-    "tokens.components.slide-pagination-tab.size": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"31\"]", captured: "2026-07-13" }
-    "tokens.components.slide-pagination-tab.states": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"31\"]", captured: "2026-07-13" }
-    "tokens.components.slide-pagination-tab.use": { surface_id: product-one-card, source_id: product-one-card-source, method: computed-style, selector: "surface-6::[data-omd-capture=\"31\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Product tokens are selector-backed values from the supplied six-route public-web capture. The official resource center corroborates the two blue brand colors and Pretendard K Edition as a brand font, but does not create extra product components or states."
-  colors:
-    primary: "#0114a7"
-    secondary: "#4262ff"
-    canvas: "#ffffff"
-    foreground: "#000000"
-  typography:
-    family: { ui: "Pretendard K Edition" }
-    body: { size: 16, weight: 400, lineHeight: "normal", use: "Observed public-web home body and compact action control; do not generalize to native or authenticated banking." }
-    product-display: { size: 44, weight: 700, lineHeight: "59.4px", tracking: "-0.22px", use: "Observed on the supplied public deposit-product pages only." }
-  spacing:
-    compact-action-inline: 14
-    wide-action-inline: 28
-  rounded:
-    compact-action: 8
-    primary-action: 10
-    selected-tab: 0
-  shadow:
-    none: "none"
-  components_harvested: true
-  components:
-    public-home-shell: { type: card, bg: "transparent", radius: "0px", shadow: "none", use: "Observed static home shell at home::div.mainCardWrapper.css-x2jyed; not a general card family." }
-    public-compact-action: { type: button, bg: "#4262ff", fg: "#ffffff", radius: "8px", padding: "0px 14px", height: "40px", font: "16px / 400 / Pretendard K Edition", states: "default captured on all six routes; the bundle holds no state frame for any element", use: "Header compact action (button.css-1ags3br) at home::[data-omd-capture=\"3\"], 96 x 40; computed oklch(0.571 0.235 268.681) on oklch(1 0 0); on the four product routes the same button computes a font stack led by -apple-system" }
-    public-primary-action: { type: button, bg: "#0114a7", fg: "#ffffff", radius: "10px", padding: "0px 28px", height: "48px", font: "16px / 400 / system stack led by -apple-system", states: "default captured; no state frame", use: "Primary action (button.css-1mbo487) at product-curious::[data-omd-capture=\"19\"], 143 x 48; computed oklch(0.343 0.219 264.362); the home copy (home::[data-omd-capture=\"18\"], 202 x 48) computes 14px / 400 Pretendard K Edition" }
-    product-index-tab: { type: tab, bg: "transparent", fg: "#545b69", radius: "0px", padding: "10px 4px 12px", height: "44px", font: "18px / 700 / 24.3px Pretendard K Edition", states: "rest on six tabs; capture 14 carries aria-selected=true and captures 15 to 19 false, yet all six compute the same colour, type and geometry, so no selected value is declared; no state frame", use: "Deposit-index product tab (button role=tab, css-1npe48v) at product-index::[data-omd-capture=\"15\"], 180 x 44; computed oklch(0.47 0.024 264.308)" }
-    product-choice-chip: { type: button, bg: "#ffffff", fg: "#2a2e36", border: "1px #ced4e2", radius: "6px", padding: "0px 12px", height: "32px", font: "16px / 400 / system stack led by -apple-system", states: "default captured on thirteen chips; no state frame", use: "Deposit-index bordered choice (button.css-174ue6) at product-index::[data-omd-capture=\"21\"], 74 x 32; computed oklch(1 0 0), text oklch(0.301 0.016 264.308), border oklch(0.87 0.02 267.27)" }
-    product-detail-text-button: { type: button, bg: "transparent", fg: "#000000", radius: "0px", padding: "16px 20px", height: "60px", font: "18.72px / 700 / system stack led by -apple-system", states: "default captured; no state frame and no expansion record", use: "Product-detail full-width text button (button.css-1kjxfqu) at product-curious::[data-omd-capture=\"14\"], 1080 x 60; five on product-curious, four on product-rolling, three on product-one-card" }
-    gnb-link: { type: tab, bg: "transparent", padding: "0px 24px", height: "56px", states: "default captured, nine per route; no state frame", use: "Global navigation link (a.css-opegi4) at home::[data-omd-capture=\"4\"], 110 x 56; its own 16px / 400 black equals the inherited page default, so no label style is declared" }
-    product-soft-action: { type: button, bg: "#edf3ff", fg: "#0114a7", radius: "8px", padding: "0px 14px", height: "40px", font: "16px / 400 / system stack led by -apple-system", states: "default captured on product-curious (one) and product-one-card (thirteen); no state frame", use: "Product-page tinted action (button.css-162fgkl) at product-curious::[data-omd-capture=\"13\"], 178 x 40; computed oklch(0.963 0.017 264.487) with oklch(0.343 0.219 264.362) text, the primary blue; the copies inside the ONE card benefit slides are 90 x 37" }
-    benefit-slide-card: { type: card, bg: "#f7f8fb", radius: "16px", padding: "32px 0px", size: "316px x 381px", states: "non-interactive carousel panel; eight at 316 x 381 and the fully visible slide at 340 x 410", use: "ONE card benefit slide (div role=tabpanel, swiper-slide benefit-slide) at product-one-card::[data-omd-capture=\"13\"]; computed oklch(0.979 0.004 271.37); 12px right margin" }
-    slide-pagination-tab: { type: tab, bg: "transparent", padding: "3px", size: "18px x 18px", states: "three at rest in a 62 x 18 tablist; no aria-selected recorded, so no current-page style is declared; no state frame", use: "ONE card benefit carousel pagination (div role=tab, css-120l21f) at product-one-card::[data-omd-capture=\"31\"]; the dot is drawn by a child that was not sampled; a 30 x 30 play toggle (capture 34) sits beside it" }
+colors:
+  primary: '#0114a7'
+  secondary: '#4262ff'
+  canvas: '#ffffff'
+  foreground: '#000000'
+typography:
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    use: Observed public-web home body and compact action control; do not generalize to native or authenticated banking.
+  product-display:
+    fontSize: 44px
+    fontWeight: 700
+    lineHeight: 59.4px
+    letterSpacing: '-0.22px'
+    use: Observed on the supplied public deposit-product pages only.
+rounded:
+  compact-action: 8px
+  primary-action: 10px
+  selected-tab: 0px
+spacing:
+  compact-action-inline: 14
+  wide-action-inline: 28
+components:
+  public-home-shell:
+    type: card
+    backgroundColor: transparent
+    rounded: 0px
+    shadow: none
+    use: Observed static home shell at home::div.mainCardWrapper.css-x2jyed; not a general card family.
+  public-compact-action:
+    type: button
+    backgroundColor: '#4262ff'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0px 14px
+    height: 40px
+    typography: 16px / 400 / Pretendard K Edition
+    states: default captured on all six routes; the bundle holds no state frame for any element
+    use: Header compact action (button.css-1ags3br) at home::[data-omd-capture="3"], 96 x 40; computed oklch(0.571 0.235 268.681) on oklch(1 0 0); on the four product routes the same button computes a font stack led by -apple-system
+  public-primary-action:
+    type: button
+    backgroundColor: '#0114a7'
+    textColor: '#ffffff'
+    rounded: 10px
+    padding: 0px 28px
+    height: 48px
+    typography: 16px / 400 / system stack led by -apple-system
+    states: default captured; no state frame
+    use: Primary action (button.css-1mbo487) at product-curious::[data-omd-capture="19"], 143 x 48; computed oklch(0.343 0.219 264.362); the home copy (home::[data-omd-capture="18"], 202 x 48) computes 14px / 400 Pretendard K Edition
+  product-index-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#545b69'
+    rounded: 0px
+    padding: 10px 4px 12px
+    height: 44px
+    typography: 18px / 700 / 24.3px Pretendard K Edition
+    states: rest on six tabs; capture 14 carries aria-selected=true and captures 15 to 19 false, yet all six compute the same colour, type and geometry, so no selected value is declared; no state frame
+    use: Deposit-index product tab (button role=tab, css-1npe48v) at product-index::[data-omd-capture="15"], 180 x 44; computed oklch(0.47 0.024 264.308)
+  product-choice-chip:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#2a2e36'
+    border: '1px #ced4e2'
+    rounded: 6px
+    padding: 0px 12px
+    height: 32px
+    typography: 16px / 400 / system stack led by -apple-system
+    states: default captured on thirteen chips; no state frame
+    use: Deposit-index bordered choice (button.css-174ue6) at product-index::[data-omd-capture="21"], 74 x 32; computed oklch(1 0 0), text oklch(0.301 0.016 264.308), border oklch(0.87 0.02 267.27)
+  product-detail-text-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 16px 20px
+    height: 60px
+    typography: 18.72px / 700 / system stack led by -apple-system
+    states: default captured; no state frame and no expansion record
+    use: Product-detail full-width text button (button.css-1kjxfqu) at product-curious::[data-omd-capture="14"], 1080 x 60; five on product-curious, four on product-rolling, three on product-one-card
+  gnb-link:
+    type: tab
+    backgroundColor: transparent
+    padding: 0px 24px
+    height: 56px
+    states: default captured, nine per route; no state frame
+    use: Global navigation link (a.css-opegi4) at home::[data-omd-capture="4"], 110 x 56; its own 16px / 400 black equals the inherited page default, so no label style is declared
+  product-soft-action:
+    type: button
+    backgroundColor: '#edf3ff'
+    textColor: '#0114a7'
+    rounded: 8px
+    padding: 0px 14px
+    height: 40px
+    typography: 16px / 400 / system stack led by -apple-system
+    states: default captured on product-curious (one) and product-one-card (thirteen); no state frame
+    use: Product-page tinted action (button.css-162fgkl) at product-curious::[data-omd-capture="13"], 178 x 40; computed oklch(0.963 0.017 264.487) with oklch(0.343 0.219 264.362) text, the primary blue; the copies inside the ONE card benefit slides are 90 x 37
+  benefit-slide-card:
+    type: card
+    backgroundColor: '#f7f8fb'
+    rounded: 16px
+    padding: 32px 0px
+    size: 316px x 381px
+    states: non-interactive carousel panel; eight at 316 x 381 and the fully visible slide at 340 x 410
+    use: ONE card benefit slide (div role=tabpanel, swiper-slide benefit-slide) at product-one-card::[data-omd-capture="13"]; computed oklch(0.979 0.004 271.37); 12px right margin
+  slide-pagination-tab:
+    type: tab
+    backgroundColor: transparent
+    padding: 3px
+    size: 18px x 18px
+    states: three at rest in a 62 x 18 tablist; no aria-selected recorded, so no current-page style is declared; no state frame
+    use: ONE card benefit carousel pagination (div role=tab, css-120l21f) at product-one-card::[data-omd-capture="31"]; the dot is drawn by a child that was not sampled; a 30 x 30 play toggle (capture 34) sits beside it
+fonts:
+  roles:
+    ui: Pretendard K Edition
 ---
 
 # K bank — Design Reference
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 K bank is South Korea’s first internet-only bank. Its official brand story describes a “pleasant financial life” built from the basics of banking—rates and fees—then carries that promise into everyday rewards, investment, safety, and connected services. The public-web product capture has a more restrained job than that broad marketing story: it uses a white canvas and black chrome with two blue actions, while product information pages mix the loaded K bank webfont with system-stack controls. K bank’s own resource center makes the blue pair and Pretendard K Edition part of its brand expression; its culture writing adds a participatory way of working. These sources explain the brand’s current public expression, but only the supplied selector-backed product capture establishes the tokens and components below.
 
@@ -180,21 +135,59 @@ The evidence covers five distinct public product URLs plus a duplicate home snap
 - Pretendard K Edition is the loaded public-web family; selected product controls also expose an operating-system stack
 - Flat, selector-local controls: 8px and 10px action corners coexist with 0px tabs and utility controls
 
-## Primary tasks
+### Primary tasks
 
 - Explore savings, card, and investment products on the public pages
 - Read what a deposit product is worth before its conditions
 - Check the eligibility limits a product page spells out
 
-## 2. Layout & Grid
+### Iconography & Imagery
 
-- The supplied collector uses a `1440×900` viewport on the home, product index, two deposit pages, and the ONE card page. The second home record is a duplicate URL, not a breakpoint or a distinct surface.
-- The home’s `mainCardWrapper` is a measured static shell (`1365px × 840px`, no padding, 0px radius), not a reusable product-card or grid contract.
-- Public product-page measurements include 44px tabs and 40px/48px action controls. No mobile breakpoint, authenticated layout, or responsive rule was captured.
+K bank’s official resource center publishes logo, K-bank identification icon, logo spacing, light/dark icon colors, and media-kit material. The icon guide says the K position is visually adjusted and should not be moved; it is brand-asset guidance for identifying K bank, including transfer screens, rather than a general application icon library. The supplied product collector does not identify a named SVG set, illustration ratio, or icon-component geometry. `swiper-icons` is declared but unused and must not be substituted for a K bank text or icon token.
 
-## 3. Color & Typography
+#### Do
 
-### Color tokens
+- Keep the two blue action treatments tied to their public-web selector and surface provenance.
+- Use Pretendard K Edition only where loaded public-web evidence or official brand guidance applies.
+- Use the official resource center for logo and K icon treatment, keeping those assets separate from product-control tokens.
+
+#### Don't
+
+- Generalize captured public actions to transfer, account, login, or native-app flows.
+- Invent interaction states, a responsive grid, a general card family, or a documentation system from these static routes.
+- Render a system fallback or `swiper-icons` as a verified K bank-branded typeface.
+
+### Brand Narrative
+
+K bank’s official culture story identifies the company as South Korea’s first internet-only bank. Its current brand story frames the evolution not as finance for finance’s sake, but as a pleasant daily financial life: better basics, rewards woven into ordinary moments, access to investment, and reassurance around customers’ assets.
+
+That public expression is supported by a resource center that gives the brand a consistent visual vocabulary—deep and secondary blue, a K identification icon, and Pretendard K Edition—while distinguishing logo/asset guidance from the public-web UI. The public product routes in this reference show only a bounded web slice of that system; they do not prove the design of protected banking work or the native app.
+
+### Principles
+
+1. **Make the financial basics feel worthwhile.** The brand story foregrounds rates, fees, and practical benefits.
+   *UI implication:* lead public product pages with the customer value, then keep conditions readable.
+2. **Connect finance to daily life.** The brand explicitly places banking around shopping, meals, rewards, and ordinary routines.
+   *UI implication:* use concrete scenarios in public education without trivializing regulated detail.
+3. **Protect confidence while broadening access.** The brand combines approachable benefits with asset reassurance, IT, and AI-security messaging.
+   *UI implication:* do not reuse campaign exuberance as a substitute for clear security and transaction states.
+4. **Build shared language through participation.** The culture story documents collective input into K bank’s way of working.
+   *UI implication:* retain provenance and evidence boundaries so product, brand, and design teams can review decisions together.
+
+### Personas
+
+These are source-grounded service audiences, not fictional user profiles.
+
+- **Everyday banking customer:** the brand story addresses spending, rewards, and routine money management; protected-flow requirements were not captured.
+- **Customer exploring savings, cards, or investment:** public product pages and the brand story cover these offerings, without establishing a unified dashboard UI.
+- **Customer seeking reassurance:** the brand story speaks to security and asset confidence; specific support or fraud-response flows remain unobserved.
+- **Internal contributor:** the culture story documents employees participating in defining shared working practices, an organizational stakeholder rather than an end user.
+
+## Colors
+
+### Color & Typography
+
+#### Color tokens
 
 - `#0114A7` — official primary color in K bank’s resource center; also the computed fill of the 48px public primary action.
 - `#4262FF` — official secondary color in the same resource center; also the computed fill of the 40px compact action.
@@ -203,7 +196,7 @@ The evidence covers five distinct public product URLs plus a duplicate home snap
 
 The resource center additionally lists `#E0E6F1`, `#EDF1F7`, and `#F7F9FD` as brand grayscale and `#2848DF` for the icon’s dark-mode treatment. They are official brand/asset guidance, not tokens promoted from the supplied product capture.
 
-### Typography evidence classes
+#### Typography evidence classes
 
 - **Official product/brand-use:** K bank’s resource center designates Pretendard K Edition for its consistent brand image and permits Pretendard as an alternate. This is official brand guidance, not a license grant or proof of every app surface.
 - **Live computed surface-use:** Pretendard K Edition is `loaded` with high confidence, 58 observed uses, and four first-party WOFF2 sources on the supplied public-web routes. It is the sole UI-family token because both computed use and FontFaceSet/source evidence are present.
@@ -217,7 +210,47 @@ The resource center additionally lists `#E0E6F1`, `#EDF1F7`, and `#F7F9FD` as br
 | Public deposit display | 44px | 700 | 59.4px | Supplied public deposit-product pages; -0.22px tracking |
 | Selected product tab | 18px | 700 | 24.3px | Deposit index only; Pretendard K Edition |
 
-## 4. Components
+## Typography
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.body.lineHeight`: `normal`
+
+## Layout
+
+### Layout & Grid
+
+- The supplied collector uses a `1440×900` viewport on the home, product index, two deposit pages, and the ONE card page. The second home record is a duplicate URL, not a breakpoint or a distinct surface.
+- The home’s `mainCardWrapper` is a measured static shell (`1365px × 840px`, no padding, 0px radius), not a reusable product-card or grid contract.
+- Public product-page measurements include 44px tabs and 40px/48px action controls. No mobile breakpoint, authenticated layout, or responsive rule was captured.
+
+## Elevation & Depth
+
+### Elevation
+
+The selector-backed public-home shell and all promoted action/tab samples have `box-shadow: none`. This is a route-level flatness observation, not a shadow scale for native banking, brand marketing, or unobserved panels.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Shapes
+
+### Spacing & Shape
+
+- The measured compact and primary actions use `0px 14px` / 8px and `0px 28px` / 10px respectively.
+- The product tabs are square (`0px`) with `10px 4px 12px` padding, selected or not; the product-index bordered choice is 6px with `0px 12px` padding.
+- The bundle also contains 2px, 3px, 4px, 6px, 8px, 10px, 12px, 16px, 20px, 24px, 28px, 32px, and 100px spacing observations. Their semantics are not promoted into a global scale.
+
+## Motion & Easing
+
+No motion, transition, easing, or interaction expansion appears in the supplied raw evidence. Motion tokens and behavioral rules are not established here; the observed selected tab is not proof of a tab transition or easing curve.
+
+## Components
 
 ### Public compact action
 
@@ -321,43 +354,27 @@ The bundle holds no `::state-*` frame for any element on any of the six captured
 **Tier 2 sources:** `https://getdesign.md/kbank` and `https://styles.refero.design/?q=kbank` were both attempted with built-in web open and returned internal errors; corresponding built-in web searches returned no K bank-specific record.
 **Conflicts unresolved:** none
 
-## 5. Elevation
+### States
 
-The selector-backed public-home shell and all promoted action/tab samples have `box-shadow: none`. This is a route-level flatness observation, not a shadow scale for native banking, brand marketing, or unobserved panels.
+| Category | Evidence boundary |
+|---|---|
+| Empty | No public product empty state captured |
+| Loading | No loading state captured |
+| Error: validation | No validation state captured |
+| Error: transaction or service interruption | No operational-error state captured |
+| Success | No public product success state captured |
+| Skeleton | No skeleton state captured |
+| Disabled | No disabled control captured |
+| Focus | No focus-visible state captured |
+| Pressed | No pressed state captured |
+| Hover | No hover state captured |
+| Selected tab | Public deposit-index `aria-selected="true"` on one of six tabs; all six compute the same dumped values, so no selected style is declared (corrected 2026-09-29). No selection-change interaction captured. |
 
-## 6. Spacing & Shape
+## Voice & Tone
 
-- The measured compact and primary actions use `0px 14px` / 8px and `0px 28px` / 10px respectively.
-- The product tabs are square (`0px`) with `10px 4px 12px` padding, selected or not; the product-index bordered choice is 6px with `0px 12px` padding.
-- The bundle also contains 2px, 3px, 4px, 6px, 8px, 10px, 12px, 16px, 20px, 24px, 28px, 32px, and 100px spacing observations. Their semantics are not promoted into a global scale.
-
-## 7. Iconography & Imagery
-
-K bank’s official resource center publishes logo, K-bank identification icon, logo spacing, light/dark icon colors, and media-kit material. The icon guide says the K position is visually adjusted and should not be moved; it is brand-asset guidance for identifying K bank, including transfer screens, rather than a general application icon library. The supplied product collector does not identify a named SVG set, illustration ratio, or icon-component geometry. `swiper-icons` is declared but unused and must not be substituted for a K bank text or icon token.
-
-### Do
-
-- Keep the two blue action treatments tied to their public-web selector and surface provenance.
-- Use Pretendard K Edition only where loaded public-web evidence or official brand guidance applies.
-- Use the official resource center for logo and K icon treatment, keeping those assets separate from product-control tokens.
-
-### Don't
-
-- Generalize captured public actions to transfer, account, login, or native-app flows.
-- Invent interaction states, a responsive grid, a general card family, or a documentation system from these static routes.
-- Render a system fallback or `swiper-icons` as a verified K bank-branded typeface.
-
-## 8. Accessibility
-
-- The compact and primary actions pair white text with `#4262FF` and `#0114A7`; this reference does not substitute for a contrast or accessibility audit.
-- No focus, keyboard, disabled, error, validation, or interaction snapshot was captured. A future implementation needs accessible focus and state treatments designed and verified on the relevant flow.
-- The official brand resource asks that logo visibility be considered against its background. That asset rule is not evidence for control contrast, accessible names, landmarks, or mobile behavior.
-
-## 9. Content & Voice
+### Content & Voice
 
 The official brand story writes about rates, fees, everyday rewards, investment, and safety in short, conversational Korean: financial life should feel closer, easier, and more pleasant. It pairs that accessible public register with precise product explanations and terms on the public product pages. K bank-inspired public marketing can explain a concrete everyday benefit plainly, but this does not establish copy rules for regulated disclosures, transaction confirmations, eligibility decisions, or errors.
-
-## 10. Voice & Tone
 
 - **Everyday and benefit-led:** the brand story grounds financial features in shopping, meals, rewards, and daily situations.
 - **Reassuring but specific:** public pages pair cheerful benefit language with product conditions and legal information.
@@ -374,48 +391,15 @@ The official brand story writes about rates, fees, everyday rewards, investment,
 - Treat playful campaign language as the verified voice of every banking flow.
 - Fabricate executive quotations, customer promises, or error-state language.
 
-## 11. Brand Narrative
+## Governance
 
-K bank’s official culture story identifies the company as South Korea’s first internet-only bank. Its current brand story frames the evolution not as finance for finance’s sake, but as a pleasant daily financial life: better basics, rewards woven into ordinary moments, access to investment, and reassurance around customers’ assets.
+### Accessibility
 
-That public expression is supported by a resource center that gives the brand a consistent visual vocabulary—deep and secondary blue, a K identification icon, and Pretendard K Edition—while distinguishing logo/asset guidance from the public-web UI. The public product routes in this reference show only a bounded web slice of that system; they do not prove the design of protected banking work or the native app.
+- The compact and primary actions pair white text with `#4262FF` and `#0114A7`; this reference does not substitute for a contrast or accessibility audit.
+- No focus, keyboard, disabled, error, validation, or interaction snapshot was captured. A future implementation needs accessible focus and state treatments designed and verified on the relevant flow.
+- The official brand resource asks that logo visibility be considered against its background. That asset rule is not evidence for control contrast, accessible names, landmarks, or mobile behavior.
 
-## 12. Principles
+### Known Gaps
 
-1. **Make the financial basics feel worthwhile.** The brand story foregrounds rates, fees, and practical benefits.
-   *UI implication:* lead public product pages with the customer value, then keep conditions readable.
-2. **Connect finance to daily life.** The brand explicitly places banking around shopping, meals, rewards, and ordinary routines.
-   *UI implication:* use concrete scenarios in public education without trivializing regulated detail.
-3. **Protect confidence while broadening access.** The brand combines approachable benefits with asset reassurance, IT, and AI-security messaging.
-   *UI implication:* do not reuse campaign exuberance as a substitute for clear security and transaction states.
-4. **Build shared language through participation.** The culture story documents collective input into K bank’s way of working.
-   *UI implication:* retain provenance and evidence boundaries so product, brand, and design teams can review decisions together.
-
-## 13. Personas
-
-These are source-grounded service audiences, not fictional user profiles.
-
-- **Everyday banking customer:** the brand story addresses spending, rewards, and routine money management; protected-flow requirements were not captured.
-- **Customer exploring savings, cards, or investment:** public product pages and the brand story cover these offerings, without establishing a unified dashboard UI.
-- **Customer seeking reassurance:** the brand story speaks to security and asset confidence; specific support or fraud-response flows remain unobserved.
-- **Internal contributor:** the culture story documents employees participating in defining shared working practices, an organizational stakeholder rather than an end user.
-
-## 14. States
-
-| Category | Evidence boundary |
-|---|---|
-| Empty | No public product empty state captured |
-| Loading | No loading state captured |
-| Error: validation | No validation state captured |
-| Error: transaction or service interruption | No operational-error state captured |
-| Success | No public product success state captured |
-| Skeleton | No skeleton state captured |
-| Disabled | No disabled control captured |
-| Focus | No focus-visible state captured |
-| Pressed | No pressed state captured |
-| Hover | No hover state captured |
-| Selected tab | Public deposit-index `aria-selected="true"` on one of six tabs; all six compute the same dumped values, so no selected style is declared (corrected 2026-09-29). No selection-change interaction captured. |
-
-## 15. Motion & Easing
-
-No motion, transition, easing, or interaction expansion appears in the supplied raw evidence. Motion tokens and behavioral rules are not established here; the observed selected tab is not proof of a tab transition or easing curve.
+- **Contrast, `product-index-tab`.** Text `#545b69` on `#00000000` measures 3.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `product-detail-text-button`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

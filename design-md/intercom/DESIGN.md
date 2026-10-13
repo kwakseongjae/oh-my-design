@@ -1,58 +1,106 @@
 ---
-id: intercom
 name: Intercom
-country: US
-category: productivity
-homepage: "https://www.intercom.com"
-primary_color: "#286efa"
-logo:
-  type: simpleicons
-  slug: intercom
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "primary text/buttons are off-black #111111; Fin Orange #ff5600 is the singular brand accent"
-  colors:
-    off-black: "#111111"
-    white: "#ffffff"
-    canvas: "#faf9f6"
-    fin-orange: "#ff5600"
-    report-orange: "#fe4c02"
-    report-blue: "#65b5ff"
-    report-green: "#0bdf50"
-    report-red: "#c41c1c"
-    report-pink: "#ff2067"
-    black-80: "#313130"
-    black-60: "#626260"
-    muted: "#7b7b78"
-    tertiary: "#9c9fa5"
-    border: "#dedbd6"
-    warm-sand: "#d3cec6"
-  typography:
-    family: { sans: "Saans", serif: "Serrif", mono: "SaansMono" }
-    display-hero: { size: 80, weight: 400, lineHeight: 1.00, tracking: -2.4, use: "Display hero, ultra-compressed" }
-    section:      { size: 54, weight: 400, lineHeight: 1.00, tracking: -1.6, use: "Section heading" }
-    feature:      { size: 24, weight: 400, lineHeight: 1.00, tracking: -0.48, use: "Feature title" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    nav:          { size: 18, weight: 400, lineHeight: 1.00, use: "Nav / UI" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
-  shadow:
-    flat: "none"
-  components:
-    button-primary: { type: button, bg: "#111111", fg: "#ffffff", radius: 4, padding: "0px 14px", use: "Primary dark button, scale(1.1) hover" }
-    button-outlined: { type: button, bg: "#faf9f6", fg: "#111111", radius: 4, use: "Outlined button, 1px off-black border" }
-    button-warm: { type: button, bg: "#faf9f6", fg: "#111111", padding: "16px", use: "Warm card button" }
-    card: { type: card, bg: "#faf9f6", radius: 8, use: "Warm cream card, oat border, no shadow" }
-    nav-link: { type: tab, fg: "#111111", font: "16px Saans", use: "Nav link, off-black on white" }
-  components_harvested: true
+colors:
+  off-black: '#111111'
+  white: '#ffffff'
+  canvas: '#faf9f6'
+  fin-orange: '#ff5600'
+  report-orange: '#fe4c02'
+  report-blue: '#65b5ff'
+  report-green: '#0bdf50'
+  report-red: '#c41c1c'
+  report-pink: '#ff2067'
+  black-80: '#313130'
+  black-60: '#626260'
+  muted: '#7b7b78'
+  tertiary: '#9c9fa5'
+  border: '#dedbd6'
+  warm-sand: '#d3cec6'
+typography:
+  display-hero:
+    fontSize: 80px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: '-2.4px'
+    use: Display hero, ultra-compressed
+  section:
+    fontSize: 54px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: '-1.6px'
+    use: Section heading
+  feature:
+    fontSize: 24px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: '-0.48px'
+    use: Feature title
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+  nav:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1
+    use: Nav / UI
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0px 14px
+    use: Primary dark button, scale(1.1) hover
+  button-outlined:
+    type: button
+    backgroundColor: '#faf9f6'
+    textColor: '#111111'
+    rounded: 4px
+    use: Outlined button, 1px off-black border
+  button-warm:
+    type: button
+    backgroundColor: '#faf9f6'
+    textColor: '#111111'
+    padding: 16px
+    use: Warm card button
+  card:
+    type: card
+    backgroundColor: '#faf9f6'
+    rounded: 8px
+    use: Warm cream card, oat border, no shadow
+  nav-link:
+    type: tab
+    textColor: '#111111'
+    typography: 16px Saans
+    use: Nav link, off-black on white
+fonts:
+  roles:
+    sans: Saans
+    serif: Serrif
+    mono: SaansMono
 ---
 
 # Design System Inspiration of Intercom
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Intercom's website is a warm, confident customer service platform that communicates "AI-first helpdesk" through a clean, editorial design language. The page operates on a warm off-white canvas (`#faf9f6`) with off-black (`#111111`) text, creating an intimate, magazine-like reading experience. The signature Fin Orange (`#ff5600`) — named after Intercom's AI agent — serves as the singular vibrant accent against the warm neutral palette.
 
@@ -70,7 +118,7 @@ What distinguishes Intercom is its remarkably sharp geometry — 4px border-radi
 - Rich multi-color report palette (blue, green, red, pink, lime, orange)
 - oklab color values for sophisticated opacity management
 
-## Primary tasks
+### Primary tasks
 
 - Answer customer messages as conversations rather than tickets
 - Configure the AI agent to deflect tier-one questions
@@ -79,7 +127,29 @@ What distinguishes Intercom is its remarkably sharp geometry — 4px border-radi
 - Work through the inbox with keyboard shortcuts and macros
 - Book a demo or try the AI agent first
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Intercom was founded **2011** in **California** by **four Irish designers and engineers** — **Eoghan McCabe (Chairman, ex-CEO)**, **Des Traynor**, **Ciaran Lee**, and **David Barrett** ([Intercom — Wikipedia](https://en.wikipedia.org/wiki/Intercom,_Inc.), [Eoghan McCabe — Crunchbase](https://www.crunchbase.com/person/eoghan-mccabe)). The four had previously run a Dublin design consultancy named **Contrast** and built the bug-tracking tool **Exceptional**, which they **sold to Rackspace 2011** — those proceeds funded Intercom. Initially employed 30 people in **Dublin** before the founders relocated HQ to **San Francisco**. Funding/lineage: **2012 angel from Twitter co-founder Biz Stone**, then seed from **David Sacks, Andy McLoughlin (Huddle), Dan Martell, 500 Global, Digital Garage** → **Series A $6M March 2013** led by **Social Capital** ([Irish Times — Four Irishmen on a billion-dollar mission](https://www.irishtimes.com/business/technology/four-irishmen-on-a-mission-to-build-a-billion-dollar-company-1.1664244)) → **$250M debt financing 2025** alongside **€87M / $94M extra AI investment 2024** ([Irish Times — €87M AI investment](https://www.irishtimes.com/business/2024/05/14/intercom-boss-wants-aggression-on-all-fronts-amid-extra-94m-ai-investment/), [Silicon Republic — $250M debt](https://www.siliconrepublic.com/business/intercom-eoghan-mccabe-debt-financing-hiring-jobs-ai)). Originally positioned as "the customer messaging platform" (challenging Zendesk's ticketing model with conversation-first UX). **2023 launch of Fin** — AI chatbot powered by GPT-4 — became the central product story; in 2025 the AI Agent now ships on **fin.ai** as a discrete product surface alongside intercom.com helpdesk chrome.
+
+### Principles
+
+1. **Conversations over tickets.** *UI implication:* main inbox is conversation-shaped, not row-shaped.
+2. **Fin is the agent layer.** *UI implication:* Fin Resolutions metric has main-nav placement; AI agent isn't a sub-feature.
+3. **Saans is the type voice.** *UI implication:* warm cream + Saans 80px hero is the brand register.
+4. **Hover scale signals interactive.** Buttons grow on hover (scale 1.1). *UI implication:* preserve hover scale; don't replace with color-only transition.
+5. **Cream over white.** Default canvas `#faf9f6`. *UI implication:* don't use pure white — the cream is intentional warmth.
+
+### Personas
+
+*Personas are fictional archetypes informed by Intercom user segments (support team leads, RevOps, AI/Fin admins), not individual people.*
+
+**Aisha Patel, 33, Dublin.** Support team lead at SaaS startup. Configures Fin to deflect 60% of tier-1 tickets.
+
+**Marcus Webb, 41, San Francisco.** RevOps at B2B SaaS. Uses Intercom outbound for product-led growth campaigns.
+
+**Priya Krishnan, 28, Bengaluru.** Frontline support agent. Cares about Inbox keyboard shortcuts + macros.
+
+## Colors
 
 ### Primary
 - **Off Black** (`#111111`): `--color-off-black`, primary text, button backgrounds
@@ -105,7 +175,7 @@ What distinguishes Intercom is its remarkably sharp geometry — 4px border-radi
 - **Oat Border** (`#dedbd6`): Warm border color
 - **Warm Sand** (`#d3cec6`): Light warm neutral
 
-## 3. Typography Rules
+## Typography
 
 ### Font Families
 - **Primary**: `Saans`, fallbacks: `Saans Fallback, ui-sans-serif, system-ui`
@@ -131,7 +201,42 @@ What distinguishes Intercom is its remarkably sharp geometry — 4px border-radi
 | Serif Body | Serrif | 16px | 300 | 1.40 | -0.16px |
 | Mono Label | SaansMono | 12px | 400–500 | 1.00–1.30 | 0.6px–1.2px uppercase |
 
-## 4. Component Stylings
+## Layout
+
+### Spacing: 8px, 10px, 12px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 60px, 64px, 80px, 96px
+### Border Radius: 4px (buttons), 6px (nav items), 8px (cards, containers)
+
+### Responsive Behavior
+Breakpoints: 425px, 530px, 600px, 640px, 768px, 896px
+
+## Elevation & Depth
+
+Minimal shadows. Depth through warm border colors and surface tints.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; **hover scale 1.1 is signature**. `prefers-reduced-motion: reduce` disables hover scale (color shift only).
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 29 — Apple-tier)
+**Tier 1 sources:** https://intercom.com home + https://fin.ai/ (dual-product live DOM via playwright — Hero Primary `#000` 6px / 42px / 12×16 / 16px·400 (https://intercom.com Cream `#faf9f6` canvas) and `#fff` 6px (https://fin.ai dark canvas); Compact Primary **`#111111`** Intercom Charcoal 4px / 40px / 0×14).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Wikipedia (Intercom Inc.), Crunchbase (McCabe), Irish Times (4-Irishmen origin + €87M AI investment), Silicon Republic ($250M debt), Tracxn, Paperflite.
+**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only nav + canvas; canonical Primary is Black 6px hero + Charcoal `#111111` 4px compact across dual-product (intercom.com + fin.ai) chrome.
+
+## Components
 
 ### Buttons
 
@@ -168,83 +273,7 @@ What distinguishes Intercom is its remarkably sharp geometry — 4px border-radi
 - Small 4px–6px radius buttons
 - Orange Fin accent for AI features
 
-## 5. Layout Principles
-
-### Spacing: 8px, 10px, 12px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 60px, 64px, 80px, 96px
-### Border Radius: 4px (buttons), 6px (nav items), 8px (cards, containers)
-
-## 6. Depth & Elevation
-Minimal shadows. Depth through warm border colors and surface tints.
-
-## 7. Do's and Don'ts
-
-### Do
-- Use Saans with 1.00 line-height and negative tracking on all headings
-- Apply 4px radius on buttons — sharp geometry is the identity
-- Use Fin Orange (#ff5600) for AI/brand accent only
-- Apply scale(1.1) hover on buttons
-- Use warm neutrals (#faf9f6, #dedbd6)
-
-### Don't
-- Don't round buttons beyond 4px
-- Don't use Fin Orange decoratively
-- Don't use cool gray borders — always warm oat tones
-- Don't skip the negative tracking on headings
-
-## 8. Responsive Behavior
-Breakpoints: 425px, 530px, 600px, 640px, 768px, 896px
-
-## 9. Agent Prompt Guide
-
-### Quick Color Reference
-- Text: Off Black (`#111111`)
-- Background: Warm Cream (`#faf9f6`)
-- Accent: Fin Orange (`#ff5600`)
-- Border: Oat (`#dedbd6`)
-- Muted: `#7b7b78`
-
-### Example Component Prompts
-- "Create hero: warm cream (#faf9f6) background. Saans 80px weight 400, line-height 1.00, letter-spacing -2.4px, #111111. Dark button (#111111, 4px radius). Hover: scale(1.1), white bg."
-
-## 10. Voice & Tone
-
-Intercom's voice is **support-team-first and product-agentic** — speaks as a customer messaging platform that's positioned itself for the AI agent era ("the only helpdesk designed for the AI Agent era"). Marketing copy emphasizes the support team workflow + AI agent integration.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get started", "Try Fin", "Book a demo" |
-| Marketing | AI-agent-positioned. Fin (their AI agent) is first-class brand element |
-| Documentation | Practical, integration-heavy |
-| Error | Specific. "Conversation not synced. Refresh to retry." |
-
-**Voice samples**
-- Marketing tagline: *"The only helpdesk designed for the AI Agent era"* <!-- verified: intercom.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary support", "AI-powered" without specifics.
-
-## 11. Brand Narrative
-
-Intercom was founded **2011** in **California** by **four Irish designers and engineers** — **Eoghan McCabe (Chairman, ex-CEO)**, **Des Traynor**, **Ciaran Lee**, and **David Barrett** ([Intercom — Wikipedia](https://en.wikipedia.org/wiki/Intercom,_Inc.), [Eoghan McCabe — Crunchbase](https://www.crunchbase.com/person/eoghan-mccabe)). The four had previously run a Dublin design consultancy named **Contrast** and built the bug-tracking tool **Exceptional**, which they **sold to Rackspace 2011** — those proceeds funded Intercom. Initially employed 30 people in **Dublin** before the founders relocated HQ to **San Francisco**. Funding/lineage: **2012 angel from Twitter co-founder Biz Stone**, then seed from **David Sacks, Andy McLoughlin (Huddle), Dan Martell, 500 Global, Digital Garage** → **Series A $6M March 2013** led by **Social Capital** ([Irish Times — Four Irishmen on a billion-dollar mission](https://www.irishtimes.com/business/technology/four-irishmen-on-a-mission-to-build-a-billion-dollar-company-1.1664244)) → **$250M debt financing 2025** alongside **€87M / $94M extra AI investment 2024** ([Irish Times — €87M AI investment](https://www.irishtimes.com/business/2024/05/14/intercom-boss-wants-aggression-on-all-fronts-amid-extra-94m-ai-investment/), [Silicon Republic — $250M debt](https://www.siliconrepublic.com/business/intercom-eoghan-mccabe-debt-financing-hiring-jobs-ai)). Originally positioned as "the customer messaging platform" (challenging Zendesk's ticketing model with conversation-first UX). **2023 launch of Fin** — AI chatbot powered by GPT-4 — became the central product story; in 2025 the AI Agent now ships on **fin.ai** as a discrete product surface alongside intercom.com helpdesk chrome.
-
-## 12. Principles
-
-1. **Conversations over tickets.** *UI implication:* main inbox is conversation-shaped, not row-shaped.
-2. **Fin is the agent layer.** *UI implication:* Fin Resolutions metric has main-nav placement; AI agent isn't a sub-feature.
-3. **Saans is the type voice.** *UI implication:* warm cream + Saans 80px hero is the brand register.
-4. **Hover scale signals interactive.** Buttons grow on hover (scale 1.1). *UI implication:* preserve hover scale; don't replace with color-only transition.
-5. **Cream over white.** Default canvas `#faf9f6`. *UI implication:* don't use pure white — the cream is intentional warmth.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Intercom user segments (support team leads, RevOps, AI/Fin admins), not individual people.*
-
-**Aisha Patel, 33, Dublin.** Support team lead at SaaS startup. Configures Fin to deflect 60% of tier-1 tickets.
-
-**Marcus Webb, 41, San Francisco.** RevOps at B2B SaaS. Uses Intercom outbound for product-led growth campaigns.
-
-**Priya Krishnan, 28, Bengaluru.** Frontline support agent. Cares about Inbox keyboard shortcuts + macros.
-
-## 14. States
+### States
 
 | State | Treatment |
 |---|---|
@@ -260,19 +289,45 @@ Intercom was founded **2011** in **California** by **four Irish designers and en
 | **Disabled (no permission)** | 0.5 opacity + tooltip permission level |
 | **Loading (long Fin run)** | Per-step "Searching knowledge base..." trace |
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+### Do
+- Use Saans with 1.00 line-height and negative tracking on all headings
+- Apply 4px radius on buttons — sharp geometry is the identity
+- Use Fin Orange (#ff5600) for AI/brand accent only
+- Apply scale(1.1) hover on buttons
+- Use warm neutrals (#faf9f6, #dedbd6)
 
-Standard cubic-bezier; **hover scale 1.1 is signature**. `prefers-reduced-motion: reduce` disables hover scale (color shift only).
+### Don't
+- Don't round buttons beyond 4px
+- Don't use Fin Orange decoratively
+- Don't use cool gray borders — always warm oat tones
+- Don't skip the negative tracking on headings
 
----
+## Voice & Tone
 
-**Verified:** 2026-05-08 (omd:migrate run 29 — Apple-tier)
-**Tier 1 sources:** https://intercom.com home + https://fin.ai/ (dual-product live DOM via playwright — Hero Primary `#000` 6px / 42px / 12×16 / 16px·400 (https://intercom.com Cream `#faf9f6` canvas) and `#fff` 6px (https://fin.ai dark canvas); Compact Primary **`#111111`** Intercom Charcoal 4px / 40px / 0×14).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders):** Wikipedia (Intercom Inc.), Crunchbase (McCabe), Irish Times (4-Irishmen origin + €87M AI investment), Silicon Republic ($250M debt), Tracxn, Paperflite.
-**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only nav + canvas; canonical Primary is Black 6px hero + Charcoal `#111111` 4px compact across dual-product (intercom.com + fin.ai) chrome.
+Intercom's voice is **support-team-first and product-agentic** — speaks as a customer messaging platform that's positioned itself for the AI agent era ("the only helpdesk designed for the AI Agent era"). Marketing copy emphasizes the support team workflow + AI agent integration.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try Fin", "Book a demo" |
+| Marketing | AI-agent-positioned. Fin (their AI agent) is first-class brand element |
+| Documentation | Practical, integration-heavy |
+| Error | Specific. "Conversation not synced. Refresh to retry." |
+
+**Voice samples**
+- Marketing tagline: *"The only helpdesk designed for the AI Agent era"* <!-- verified: intercom.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary support", "AI-powered" without specifics.
+
+## Agent Prompt Guide
+
+### Quick Color Reference
+- Text: Off Black (`#111111`)
+- Background: Warm Cream (`#faf9f6`)
+- Accent: Fin Orange (`#ff5600`)
+- Border: Oat (`#dedbd6`)
+- Muted: `#7b7b78`
+
+### Example Component Prompts
+- "Create hero: warm cream (#faf9f6) background. Saans 80px weight 400, line-height 1.00, letter-spacing -2.4px, #111111. Dark button (#111111, 4px radius). Hover: scale(1.1), white bg."

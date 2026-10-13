@@ -1,76 +1,192 @@
 ---
-id: posthog
 name: PostHog
-country: US
-category: backend-devops
-homepage: "https://posthog.com"
-primary_color: "#1d4aff"
-logo:
-  type: simpleicons
-  slug: posthog
-verified: "2026-05-15"
-omd: "0.1"
-ds:
-  name: PostHog Brand Assets
-  url: "https://posthog.com/handbook/company/brand-assets"
-  type: brand
-  description: PostHog's public handbook brand, logo, and illustration guidelines.
-  og_image: "https://d36j3rcgc2qfsv.cloudfront.net/handbookcompanybrand-assets.jpeg"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "primary = dark near-black CTA fill (#1e1f23); brand accent = hidden PostHog Orange (#F54E00) that only appears on hover"
-  colors:
-    primary: "#1e1f23"
-    brand: "#F54E00"
-    canvas: "#fdfdf8"
-    foreground: "#4d4f46"
-    heading: "#23251d"
-    muted: "#65675e"
-    surface: "#eeefe9"
-    surface-sage: "#e5e7e0"
-    surface-tan: "#d4c9b8"
-    hairline: "#bfc1b7"
-    border-light: "#b6b7af"
-    placeholder: "#9ea096"
-    accent-amber: "#F7A501"
-    accent-gold: "#b17816"
-    focus: "#3b82f6"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "IBM Plex Sans Variable", mono: "Source Code Pro" }
-    display-hero:   { size: 30, weight: 800, lineHeight: 1.20, tracking: -0.75, use: "Hero headline — extra-bold, tight" }
-    section:        { size: 36, weight: 700, lineHeight: 1.50, use: "Section titles — large, generous line-height" }
-    feature:        { size: 24, weight: 700, lineHeight: 1.33, use: "Feature section titles" }
-    subheading:     { size: 20, weight: 700, lineHeight: 1.40, tracking: -0.5, use: "Content sub-sections" }
-    body-semi:      { size: 18, weight: 600, lineHeight: 1.56, use: "Semi-bold body / callout text" }
-    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    nav:            { size: 15, weight: 600, lineHeight: 1.50, use: "Navigation and UI labels" }
-    caption:        { size: 14, weight: 400, lineHeight: 1.43, use: "Small text, captions" }
-    micro:          { size: 12, weight: 500, lineHeight: 1.33, use: "Tags, badges, smallest labels" }
-    code:           { size: 14, weight: 500, lineHeight: 1.43, use: "Code snippets and terminal" }
-  spacing: { xs: 2, sm: 4, md: 8, base: 12, lg: 16, xl: 24, xxl: 32, section: 48 }
-  rounded: { sm: 2, md: 4, lg: 6, full: 9999 }
-  shadow:
-    deep: "0px 25px 50px -12px rgba(0,0,0,0.25)"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#1e1f23", fg: "#ffffff", radius: "6px", padding: "10px 12px", font: "15px / 600", hover: "opacity 0.7, text #F7A501", active: "opacity 0.8, slight scale", use: "Main CTA — dark and confident" }
-    button-sage: { type: button, bg: "#e5e7e0", fg: "#4d4f46", radius: "4px", padding: "4px", font: "14px / 500", hover: "bg #f4f4f4, text #F54E00", use: "Compact utility button" }
-    button-tan: { type: button, bg: "#d4c9b8", fg: "#000000", radius: "0px", padding: "10px 12px", hover: "text #F54E00", use: "Featured/premium actions" }
-    button-ghost: { type: button, bg: "#fdfdf8", fg: "#4d4f46", border: "1px solid transparent", radius: "4px", padding: "8px 12px", hover: "text #F54E00", use: "Minimal-presence ghost button" }
-    input-default: { type: input, bg: "#eeefe9", fg: "#374151", border: "1px solid #b6b7af", radius: "4px", padding: "2px 0 2px 8px", focus: "#3b82f6 ring at 50% opacity", use: "Standard form input" }
-    input-search: { type: input, bg: "#eeefe9", fg: "#374151", border: "1px solid #b6b7af", radius: "4px", padding: "6px 8px", use: "Search/filter control" }
-    card-bordered: { type: card, bg: "#fdfdf8", border: "1px solid #bfc1b7", radius: "6px", padding: "16px", use: "Clean minimal default card" }
-    card-sage: { type: card, bg: "#eeefe9", border: "1px solid #bfc1b7", radius: "4px", padding: "16px", use: "Secondary content container" }
-    card-shadow: { type: card, bg: "#fdfdf8", radius: "6px", padding: "16px", shadow: "0px 25px 50px -12px rgba(0,0,0,0.25)", hover: "orange text flash", use: "Elevated content (modals, dropdowns)" }
-    badge-default: { type: badge, bg: "#e5e7e0", fg: "#4d4f46", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Default tag" }
-    badge-featured: { type: badge, bg: "#d4c9b8", fg: "#000000", radius: "4px", padding: "2px 8px", font: "12px / 600", use: "Warm tan featured tag" }
+colors:
+  primary: '#1e1f23'
+  brand: '#F54E00'
+  canvas: '#fdfdf8'
+  foreground: '#4d4f46'
+  heading: '#23251d'
+  muted: '#65675e'
+  surface: '#eeefe9'
+  surface-sage: '#e5e7e0'
+  surface-tan: '#d4c9b8'
+  hairline: '#bfc1b7'
+  border-light: '#b6b7af'
+  placeholder: '#9ea096'
+  accent-amber: '#F7A501'
+  accent-gold: '#b17816'
+  focus: '#3b82f6'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 30px
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: '-0.75px'
+    use: Hero headline — extra-bold, tight
+  section:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Section titles — large, generous line-height
+  feature:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.33
+    use: Feature section titles
+  subheading:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: '-0.5px'
+    use: Content sub-sections
+  body-semi:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.56
+    use: Semi-bold body / callout text
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+  nav:
+    fontSize: 15px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Navigation and UI labels
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Small text, captions
+  micro:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.33
+    use: Tags, badges, smallest labels
+  code:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.43
+    use: Code snippets and terminal
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 6px
+  full: 9999px
+spacing:
+  xs: 2
+  sm: 4
+  md: 8
+  base: 12
+  lg: 16
+  xl: 24
+  xxl: 32
+  section: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#1e1f23'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 10px 12px
+    typography: 15px / 600
+    hover: 'opacity 0.7, text #F7A501'
+    active: opacity 0.8, slight scale
+    use: Main CTA — dark and confident
+  button-sage:
+    type: button
+    backgroundColor: '#e5e7e0'
+    textColor: '#4d4f46'
+    rounded: 4px
+    padding: 4px
+    typography: 14px / 500
+    hover: 'bg #f4f4f4, text #F54E00'
+    use: Compact utility button
+  button-tan:
+    type: button
+    backgroundColor: '#d4c9b8'
+    textColor: '#000000'
+    rounded: 0px
+    padding: 10px 12px
+    hover: 'text #F54E00'
+    use: Featured/premium actions
+  button-ghost:
+    type: button
+    backgroundColor: '#fdfdf8'
+    textColor: '#4d4f46'
+    border: 1px solid transparent
+    rounded: 4px
+    padding: 8px 12px
+    hover: 'text #F54E00'
+    use: Minimal-presence ghost button
+  input-default:
+    type: input
+    backgroundColor: '#eeefe9'
+    textColor: '#374151'
+    border: '1px solid #b6b7af'
+    rounded: 4px
+    padding: 2px 0 2px 8px
+    focus: '#3b82f6 ring at 50% opacity'
+    use: Standard form input
+  input-search:
+    type: input
+    backgroundColor: '#eeefe9'
+    textColor: '#374151'
+    border: '1px solid #b6b7af'
+    rounded: 4px
+    padding: 6px 8px
+    use: Search/filter control
+  card-bordered:
+    type: card
+    backgroundColor: '#fdfdf8'
+    border: '1px solid #bfc1b7'
+    rounded: 6px
+    padding: 16px
+    use: Clean minimal default card
+  card-sage:
+    type: card
+    backgroundColor: '#eeefe9'
+    border: '1px solid #bfc1b7'
+    rounded: 4px
+    padding: 16px
+    use: Secondary content container
+  card-shadow:
+    type: card
+    backgroundColor: '#fdfdf8'
+    rounded: 6px
+    padding: 16px
+    shadow: 0px 25px 50px -12px rgba(0,0,0,0.25)
+    hover: orange text flash
+    use: Elevated content (modals, dropdowns)
+  badge-default:
+    type: badge
+    backgroundColor: '#e5e7e0'
+    textColor: '#4d4f46'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px / 500
+    use: Default tag
+  badge-featured:
+    type: badge
+    backgroundColor: '#d4c9b8'
+    textColor: '#000000'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px / 600
+    use: Warm tan featured tag
+fonts:
+  roles:
+    sans: IBM Plex Sans Variable
+    mono: Source Code Pro
 ---
 
 # Design System Inspiration of PostHog
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 PostHog's website feels like a startup's internal wiki that escaped into the wild — warm, irreverent, and deliberately anti-corporate. The background isn't the expected crisp white or dark void of developer tools; it's a warm, sage-tinted cream (`#fdfdf8`) that gives every surface a handmade, paper-like quality. Colors lean into earthy olive greens and muted sage rather than the conventional blues and purples of the SaaS world. It's as if someone designed a developer analytics platform inside a cozy garden shed.
 
@@ -88,7 +204,7 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 - Content-heavy editorial layout — the site reads like a magazine, not a typical landing page
 - Tailwind CSS + Radix UI + shadcn/ui component architecture
 
-## Primary tasks
+### Primary tasks
 
 - Track product analytics, feature flags, and session replay in one stack
 - Self-host the platform to keep customer data on your own infrastructure
@@ -96,7 +212,29 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 - Create a first insight from the template gallery
 - Read the public handbook, roadmap, and board materials
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+PostHog was founded **2020** by **James Hawkins (Co-CEO)** and **Tim Glaser (CTO/Co-CEO)** as an open-source alternative to Amplitude/Mixpanel ([PostHog — About](https://posthog.com/about), [Y Combinator — PostHog](https://www.ycombinator.com/companies/posthog)). The company **hatched in Y Combinator's W20 batch** and **launched on Hacker News with their MVP just 4 weeks after writing first code**. **Hawkins**: previously **VP Sales & Channels at Arachnys**; founded **c2o Media** before PostHog. **Glaser**: leads technical strategy, built PostHog on **ClickHouse + open-source frameworks**. Famous for **radical transparency** — **public handbook, public salaries, public roadmap, public board materials**. **From-pivot-hell-to-$1.4B-unicorn** YC library case study documents the journey ([YC Library — Pivot Hell to $1.4B Unicorn](https://www.ycombinator.com/library/NA-from-pivot-hell-to-1-4-billion-unicorn)). **Total funding ~$182M** from **Stripe, GV, Y Combinator** + angels including **Jason Warner (CTO GitHub)** and **Solomon Hykes (Founder Docker)** ([PostHog — Reflecting on YC 2 years on](https://posthog.com/blog/yc-2-years-on), [Tracxn — PostHog](https://tracxn.com/d/companies/posthog/__tWY33MozggoGzQ9VYs8-O9tG9o6ZXDONwy37RdpGE_0)). **Used by 190,254+ teams** including **65% of YC batch companies**. The brand voice tracks this culture: scrappy, honest, occasionally meme-aware. The "Product OS" pivot in 2024-2025 expanded PostHog from analytics to **feature flags, session replay, surveys, A/B tests** as a single integrated product platform.
+
+### Principles
+
+1. **Open source is the default.** *UI implication:* self-hosting first-class option, never deprioritized.
+2. **Radical transparency.** *UI implication:* handbook + roadmap publicly linked.
+3. **Sage-tinted warm gray.** Borders `#bfc1b7`. *UI implication:* never neutral pure gray; warmth carries.
+4. **Hedgehog mascot.** *UI implication:* mascot appears in product (404 pages, empty states) as personality moments.
+5. **Wiki feel over corporate polish.** *UI implication:* documentation can be playful; chrome can have texture.
+
+### Personas
+
+*Personas are fictional archetypes informed by PostHog user segments (product engineers, indie devs, growth teams), not individual people.*
+
+**Sarah Lin, 31, San Francisco.** Founding engineer at Series A. PostHog for analytics + feature flags + session replay in one stack.
+
+**Henrik Sondergaard, 38, Copenhagen.** Indie SaaS founder. Self-hosts PostHog to keep customer data on his infra.
+
+**Priya Krishnan, 27, Bengaluru.** Growth engineer at fintech. A/B tests + funnel analysis daily.
+
+## Colors
 
 ### Primary
 - **Olive Ink** (`#4d4f46`): Primary text color — a distinctive olive-gray that gives all text a warm, earthy tone
@@ -132,7 +270,7 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 - No gradients on the marketing site — PostHog's visual language is deliberately flat and warm
 - Depth is achieved through layered surfaces and border containment, not color transitions
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display & Body**: `IBM Plex Sans Variable` — variable font (100–700+ weight range). Fallbacks: `IBM Plex Sans, -apple-system, system-ui, Avenir Next, Avenir, Segoe UI, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Arial`
@@ -168,7 +306,107 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 - **Uppercase as category signal**: Bold uppercase labels (18px–20px weight 700) are used for product category headings — a magazine-editorial convention
 - **Selective negative tracking**: Letter-spacing tightens on display text (-0.75px at 30px) but relaxes to 0px on body — headlines compress, body breathes
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- **Base unit**: 8px
+- **Scale**: 2px, 4px, 6px, 8px, 10px, 12px, 16px, 18px, 24px, 32px, 34px
+- **Section padding**: 32px–48px vertical between sections (compact for a content-heavy site)
+- **Card padding**: 4px–12px internal (notably compact)
+- **Component gaps**: 4px–8px between related elements
+
+### Grid & Container
+- **Max width**: 1536px (largest breakpoint), with content containers likely 1200px–1280px
+- **Column patterns**: Varied — single column for text content, 2-3 column grids for feature cards, asymmetric layouts for product demos
+- **Breakpoints**: 13 defined — 1px, 425px, 482px, 640px, 768px, 767px, 800px, 900px, 1024px, 1076px, 1160px, 1280px, 1536px
+
+### Whitespace Philosophy
+- **Content-dense by design**: PostHog's site is information-rich — whitespace is measured, not lavish
+- **Editorial pacing**: Content sections flow like a magazine with varied layouts keeping the eye moving
+- **Illustrations as breathing room**: Hand-drawn hedgehog art breaks up dense content sections naturally
+
+### Border Radius Scale
+- **2px**: Small inline elements, tags (`span`)
+- **4px**: Primary UI components — buttons, inputs, dropdowns, menu items (`button`, `div`, `combobox`)
+- **6px**: Secondary containers — larger buttons, list items, card variants (`button`, `div`, `li`)
+- **9999px**: Pill shape — badges, status indicators, rounded tags (`span`, `div`)
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile Small | <425px | Single column, compact padding, stacked cards |
+| Mobile | 425px–640px | Slight layout adjustments, larger touch targets |
+| Tablet | 640px–768px | 2-column grids begin, nav partially visible |
+| Tablet Large | 768px–1024px | Multi-column layouts, expanded navigation |
+| Desktop | 1024px–1280px | Full layout, 3-column feature grids, expanded mega-menu |
+| Large Desktop | 1280px–1536px | Max-width container, generous margins |
+| Extra Large | >1536px | Centered container at max-width |
+
+#### Touch Targets
+- Buttons: 4px–6px radius with `4px–12px` padding — compact but usable
+- Nav links: 15px text at weight 600 with adequate padding
+- Mobile: Hamburger menu with simplified navigation
+- Inputs: Generous vertical padding for thumb-friendly forms
+
+#### Collapsing Strategy
+- **Navigation**: Full mega-menu with dropdowns → hamburger menu on mobile
+- **Feature grids**: 3-column → 2-column → single column stacked
+- **Typography**: Display sizes reduce across breakpoints (30px → smaller)
+- **Illustrations**: Scale within containers, some may hide on mobile for space
+- **Section spacing**: Reduces proportionally while maintaining readability
+
+#### Image Behavior
+- Illustrations scale responsively within containers
+- Product screenshots maintain aspect ratios
+- Trust logos reflow into multi-row grids on mobile
+- AI chat widget may reposition or simplify on small screens
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Level 0 (Flat) | No shadow, warm parchment background | Page canvas, most surfaces |
+| Level 1 (Border) | `1px solid #bfc1b7` (Sage Border) | Card containment, input borders, section dividers |
+| Level 2 (Compound Border) | Multiple 1px borders on different sides | Input groupings, toolbar elements |
+| Level 3 (Deep Shadow) | `0px 25px 50px -12px rgba(0, 0, 0, 0.25)` | Modals, floating elements, mega-menu dropdowns |
+
+### Shadow Philosophy
+PostHog's elevation system is remarkably minimal — only one shadow definition exists in the entire system. Depth is communicated through:
+- **Border containment**: Sage-tinted borders (`#bfc1b7`) at 1px create gentle warm separation
+- **Surface color shifts**: Moving from `#fdfdf8` to `#eeefe9` to `#e5e7e0` creates layered depth without shadows
+- **The single shadow**: The one defined shadow (`0 25px 50px -12px`) is reserved for floating elements — modals, dropdowns, popovers. It's a deep, dramatic shadow that creates clear separation when needed
+
+### Decorative Depth
+- **Illustration layering**: Hand-drawn hedgehog art creates visual depth naturally
+- **No gradients or glow**: The flat, warm surface system relies entirely on border and surface-color differentiation
+- **No glassmorphism**: Fully opaque surfaces throughout
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.deep`: `0px 25px 50px -12px rgba(0,0,0,0.25)`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier. Hedgehog mascot moments are personality, not chrome. `prefers-reduced-motion: reduce` makes mascot static.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 46 — Apple-tier)
+**Tier 1 sources:** https://posthog.com home + /pricing (live DOM via playwright — **Primary `#cd8407` PostHog Amber-Gold** 6-8px / 32-46px / 15-16px·400 with **Sage-Black `#23251d`** text; **Light Amber `#eb9d2a`** Secondary; nav 4px / 13px·500; **Region badge** Amber-tint 4px / 14px·**700**; warm three-color (Amber/Sage/Cool Gray) canvas).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** PostHog About + handbook + blog (YC 2-years-on), Y Combinator (PostHog W20 + Pivot Hell to $1.4B Library), Tracxn, GV.com.
+**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer captured nav-only — canonical Primary is **`#cd8407` Amber-Gold** (the brand-defining color), missed entirely.
+
+## Components
 
 ### Buttons
 
@@ -288,52 +526,23 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 ### AI Chat Widget
 - Floating PostHog AI assistant with speech bubble — an interactive product demo embedded in the marketing site
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- **Base unit**: 8px
-- **Scale**: 2px, 4px, 6px, 8px, 10px, 12px, 16px, 18px, 24px, 32px, 34px
-- **Section padding**: 32px–48px vertical between sections (compact for a content-heavy site)
-- **Card padding**: 4px–12px internal (notably compact)
-- **Component gaps**: 4px–8px between related elements
+| State | Treatment |
+|---|---|
+| **Empty (no events)** | "Install PostHog SDK to start" code snippet |
+| **Empty (no insights)** | "Create your first insight" with template gallery |
+| **Loading (query)** | Per-step execution visible |
+| **Loading (replay loading)** | Session video loader with frame previews |
+| **Error (SDK not detected)** | Specific instructions + verify-installation button |
+| **Error (rate limit)** | Plain explanation + upgrade link |
+| **Success (event captured)** | Implicit; events appear in feed |
+| **Success (insight saved)** | Soft confirmation, no celebration |
+| **Skeleton (insight grid)** | Sage-tinted placeholders |
+| **Disabled (free plan)** | Upgrade link — never block existing OSS features |
+| **Loading (long replay)** | Persistent progress |
 
-### Grid & Container
-- **Max width**: 1536px (largest breakpoint), with content containers likely 1200px–1280px
-- **Column patterns**: Varied — single column for text content, 2-3 column grids for feature cards, asymmetric layouts for product demos
-- **Breakpoints**: 13 defined — 1px, 425px, 482px, 640px, 768px, 767px, 800px, 900px, 1024px, 1076px, 1160px, 1280px, 1536px
-
-### Whitespace Philosophy
-- **Content-dense by design**: PostHog's site is information-rich — whitespace is measured, not lavish
-- **Editorial pacing**: Content sections flow like a magazine with varied layouts keeping the eye moving
-- **Illustrations as breathing room**: Hand-drawn hedgehog art breaks up dense content sections naturally
-
-### Border Radius Scale
-- **2px**: Small inline elements, tags (`span`)
-- **4px**: Primary UI components — buttons, inputs, dropdowns, menu items (`button`, `div`, `combobox`)
-- **6px**: Secondary containers — larger buttons, list items, card variants (`button`, `div`, `li`)
-- **9999px**: Pill shape — badges, status indicators, rounded tags (`span`, `div`)
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Flat) | No shadow, warm parchment background | Page canvas, most surfaces |
-| Level 1 (Border) | `1px solid #bfc1b7` (Sage Border) | Card containment, input borders, section dividers |
-| Level 2 (Compound Border) | Multiple 1px borders on different sides | Input groupings, toolbar elements |
-| Level 3 (Deep Shadow) | `0px 25px 50px -12px rgba(0, 0, 0, 0.25)` | Modals, floating elements, mega-menu dropdowns |
-
-### Shadow Philosophy
-PostHog's elevation system is remarkably minimal — only one shadow definition exists in the entire system. Depth is communicated through:
-- **Border containment**: Sage-tinted borders (`#bfc1b7`) at 1px create gentle warm separation
-- **Surface color shifts**: Moving from `#fdfdf8` to `#eeefe9` to `#e5e7e0` creates layered depth without shadows
-- **The single shadow**: The one defined shadow (`0 25px 50px -12px`) is reserved for floating elements — modals, dropdowns, popovers. It's a deep, dramatic shadow that creates clear separation when needed
-
-### Decorative Depth
-- **Illustration layering**: Hand-drawn hedgehog art creates visual depth naturally
-- **No gradients or glow**: The flat, warm surface system relies entirely on border and surface-color differentiation
-- **No glassmorphism**: Fully opaque surfaces throughout
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the olive/sage color family (#4d4f46, #23251d, #bfc1b7) for text and borders — the warm green undertone is essential to the brand
@@ -355,39 +564,23 @@ PostHog's elevation system is remarkably minimal — only one shadow definition 
 - Replace illustrations with stock photography — the hand-drawn hedgehog art is the brand
 - Use pure white (#ffffff) as page background — the warm sage-cream (#fdfdf8) tint is foundational
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <425px | Single column, compact padding, stacked cards |
-| Mobile | 425px–640px | Slight layout adjustments, larger touch targets |
-| Tablet | 640px–768px | 2-column grids begin, nav partially visible |
-| Tablet Large | 768px–1024px | Multi-column layouts, expanded navigation |
-| Desktop | 1024px–1280px | Full layout, 3-column feature grids, expanded mega-menu |
-| Large Desktop | 1280px–1536px | Max-width container, generous margins |
-| Extra Large | >1536px | Centered container at max-width |
+PostHog's voice is **scrappy-startup-wiki and engineer-honest.** "We make dev tools for product engineers" — terse, capability-driven, slightly irreverent. Sage-tinted gray (`#bfc1b7`) borders + warm canvas signal "small but serious team that ships." Famous for company handbook being entirely public (posthog.com/handbook).
 
-### Touch Targets
-- Buttons: 4px–6px radius with `4px–12px` padding — compact but usable
-- Nav links: 15px text at weight 600 with adequate padding
-- Mobile: Hamburger menu with simplified navigation
-- Inputs: Generous vertical padding for thumb-friendly forms
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Sign up", "Talk to sales" |
+| Marketing | Capability-list with personality. "Product OS" framing |
+| Documentation | Wiki-style, deeply linked, occasional jokes |
+| Handbook | Radically transparent — even sensitive topics |
 
-### Collapsing Strategy
-- **Navigation**: Full mega-menu with dropdowns → hamburger menu on mobile
-- **Feature grids**: 3-column → 2-column → single column stacked
-- **Typography**: Display sizes reduce across breakpoints (30px → smaller)
-- **Illustrations**: Scale within containers, some may hide on mobile for space
-- **Section spacing**: Reduces proportionally while maintaining readability
+**Voice samples**
+- Marketing tagline: *"We make dev tools for product engineers"* <!-- verified: posthog.com homepage 2026-05 -->
 
-### Image Behavior
-- Illustrations scale responsively within containers
-- Product screenshots maintain aspect ratios
-- Trust logos reflow into multi-row grids on mobile
-- AI chat widget may reposition or simplify on small screens
+**Forbidden phrases.** "Revolutionary product analytics". Aggressive Amplitude-comparison framing.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary Text: Olive Ink (`#4d4f46`)
@@ -413,74 +606,3 @@ When refining existing screens generated with this design system:
 3. Ensure hover states flash PostHog Orange (#F54E00) — if hovering feels bland, you're missing this
 4. Confirm borders use sage-tinted gray (#bfc1b7) not neutral gray — warmth runs through every element
 5. The overall tone should feel like a fun, scrappy startup wiki — never corporate-polished or sterile
-
-## 10. Voice & Tone
-
-PostHog's voice is **scrappy-startup-wiki and engineer-honest.** "We make dev tools for product engineers" — terse, capability-driven, slightly irreverent. Sage-tinted gray (`#bfc1b7`) borders + warm canvas signal "small but serious team that ships." Famous for company handbook being entirely public (posthog.com/handbook).
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get started", "Sign up", "Talk to sales" |
-| Marketing | Capability-list with personality. "Product OS" framing |
-| Documentation | Wiki-style, deeply linked, occasional jokes |
-| Handbook | Radically transparent — even sensitive topics |
-
-**Voice samples**
-- Marketing tagline: *"We make dev tools for product engineers"* <!-- verified: posthog.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary product analytics". Aggressive Amplitude-comparison framing.
-
-## 11. Brand Narrative
-
-PostHog was founded **2020** by **James Hawkins (Co-CEO)** and **Tim Glaser (CTO/Co-CEO)** as an open-source alternative to Amplitude/Mixpanel ([PostHog — About](https://posthog.com/about), [Y Combinator — PostHog](https://www.ycombinator.com/companies/posthog)). The company **hatched in Y Combinator's W20 batch** and **launched on Hacker News with their MVP just 4 weeks after writing first code**. **Hawkins**: previously **VP Sales & Channels at Arachnys**; founded **c2o Media** before PostHog. **Glaser**: leads technical strategy, built PostHog on **ClickHouse + open-source frameworks**. Famous for **radical transparency** — **public handbook, public salaries, public roadmap, public board materials**. **From-pivot-hell-to-$1.4B-unicorn** YC library case study documents the journey ([YC Library — Pivot Hell to $1.4B Unicorn](https://www.ycombinator.com/library/NA-from-pivot-hell-to-1-4-billion-unicorn)). **Total funding ~$182M** from **Stripe, GV, Y Combinator** + angels including **Jason Warner (CTO GitHub)** and **Solomon Hykes (Founder Docker)** ([PostHog — Reflecting on YC 2 years on](https://posthog.com/blog/yc-2-years-on), [Tracxn — PostHog](https://tracxn.com/d/companies/posthog/__tWY33MozggoGzQ9VYs8-O9tG9o6ZXDONwy37RdpGE_0)). **Used by 190,254+ teams** including **65% of YC batch companies**. The brand voice tracks this culture: scrappy, honest, occasionally meme-aware. The "Product OS" pivot in 2024-2025 expanded PostHog from analytics to **feature flags, session replay, surveys, A/B tests** as a single integrated product platform.
-
-## 12. Principles
-
-1. **Open source is the default.** *UI implication:* self-hosting first-class option, never deprioritized.
-2. **Radical transparency.** *UI implication:* handbook + roadmap publicly linked.
-3. **Sage-tinted warm gray.** Borders `#bfc1b7`. *UI implication:* never neutral pure gray; warmth carries.
-4. **Hedgehog mascot.** *UI implication:* mascot appears in product (404 pages, empty states) as personality moments.
-5. **Wiki feel over corporate polish.** *UI implication:* documentation can be playful; chrome can have texture.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by PostHog user segments (product engineers, indie devs, growth teams), not individual people.*
-
-**Sarah Lin, 31, San Francisco.** Founding engineer at Series A. PostHog for analytics + feature flags + session replay in one stack.
-
-**Henrik Sondergaard, 38, Copenhagen.** Indie SaaS founder. Self-hosts PostHog to keep customer data on his infra.
-
-**Priya Krishnan, 27, Bengaluru.** Growth engineer at fintech. A/B tests + funnel analysis daily.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no events)** | "Install PostHog SDK to start" code snippet |
-| **Empty (no insights)** | "Create your first insight" with template gallery |
-| **Loading (query)** | Per-step execution visible |
-| **Loading (replay loading)** | Session video loader with frame previews |
-| **Error (SDK not detected)** | Specific instructions + verify-installation button |
-| **Error (rate limit)** | Plain explanation + upgrade link |
-| **Success (event captured)** | Implicit; events appear in feed |
-| **Success (insight saved)** | Soft confirmation, no celebration |
-| **Skeleton (insight grid)** | Sage-tinted placeholders |
-| **Disabled (free plan)** | Upgrade link — never block existing OSS features |
-| **Loading (long replay)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier. Hedgehog mascot moments are personality, not chrome. `prefers-reduced-motion: reduce` makes mascot static.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 46 — Apple-tier)
-**Tier 1 sources:** https://posthog.com home + /pricing (live DOM via playwright — **Primary `#cd8407` PostHog Amber-Gold** 6-8px / 32-46px / 15-16px·400 with **Sage-Black `#23251d`** text; **Light Amber `#eb9d2a`** Secondary; nav 4px / 13px·500; **Region badge** Amber-tint 4px / 14px·**700**; warm three-color (Amber/Sage/Cool Gray) canvas).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** PostHog About + handbook + blog (YC 2-years-on), Y Combinator (PostHog W20 + Pivot Hell to $1.4B Library), Tracxn, GV.com.
-**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer captured nav-only — canonical Primary is **`#cd8407` Amber-Gold** (the brand-defining color), missed entirely.

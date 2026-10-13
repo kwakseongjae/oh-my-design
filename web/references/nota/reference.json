@@ -1,0 +1,1328 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "nota",
+    "name": "Nota AI",
+    "display_name_kr": "노타",
+    "country": "KR",
+    "category": "ai",
+    "homepage": "https://www.nota.ai",
+    "primary_color": "#3264f0",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=nota.ai&sz=128"
+    },
+    "verified": "2026-09-30",
+    "added": "2026-06-26"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-09-30",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-30",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "marketing",
+        "url": "https://www.nota.ai/",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-2",
+        "kind": "corporate",
+        "url": "https://www.nota.ai/aboutus",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-3",
+        "kind": "marketing",
+        "url": "https://www.nota.ai/netspresso",
+        "inspected": "2026-09-30"
+      }
+    ],
+    "sources": [
+      {
+        "id": "surface-home",
+        "kind": "product-surface",
+        "url": "https://www.nota.ai/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-2",
+        "kind": "product-surface",
+        "url": "https://www.nota.ai/aboutus",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-3",
+        "kind": "product-surface",
+        "url": "https://www.nota.ai/netspresso",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "nota-probe-home",
+        "kind": "product-surface",
+        "url": "https://www.nota.ai/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "netspresso-site",
+        "kind": "official-doc",
+        "url": "https://netspresso.ai/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "nota-blog",
+        "kind": "official-doc",
+        "url": "https://blog.nota.ai/insights",
+        "captured": "2026-09-30"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "colors.ink": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "colors.navy": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "colors.white": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"18\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.hairline": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"18\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.surface": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "colors.border": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      },
+      "colors.hero-link": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"10\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.body": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-section.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1 (43.2px / 400)",
+        "captured": "2026-09-30"
+      },
+      "typography.display-section.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1 (43.2px / 400)",
+        "captured": "2026-09-30"
+      },
+      "typography.display-section.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1 (43.2px / 400)",
+        "captured": "2026-09-30"
+      },
+      "typography.display-section.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1 (43.2px / 400)",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.list.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "typography.list.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "typography.list.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "typography.list.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.small.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "typography.small.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "typography.small.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "typography.small.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "typography.tag.fontSize": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "typography.tag.fontWeight": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "typography.tag.use": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "spacing.card-y": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "spacing.card-x": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "spacing.button-y": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.button-x": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.tag-y": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "spacing.tag-x": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "rounded.control": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "rounded.slider": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      },
+      "rounded.card": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"18\"]",
+        "captured": "2026-09-30"
+      },
+      "rounded.tag": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "prose:shadow.card": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "prose:shadow.card-hover": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.type": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"18\"]",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.border": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.rounded": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.size": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.hover": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.pressed": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.states": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-card.use": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.nota-rss__card (382.9 x 332.6): rest bg rgb(255, 255, 255), border 1px solid rgb(236, 236, 241), radius 10px; title h3 fg rgb(37, 42, 57) 17px/700; thumb bg rgb(246, 246, 248); hover and pressed border -> rgb(50, 100, 240), shadow none -> rgba(37, 42, 57, 0.1) 0px 6px 12px 0px, transform -> translateY(-4px); transition transform, box-shadow, border-color 0.18s ease; focus not measured (--no-focus)",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.type": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.textColor": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.rounded": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.padding": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.height": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.typography": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.blog-tag.use": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "span.nota-rss__tag Tech (44.9 x 24): rest fg rgb(50, 100, 240), bg rgba(50, 100, 240, 0.08), radius 999px, padding 3px 9px, 11.5px/600; its card ancestor (up2) turns border rgb(236, 236, 241) -> rgb(50, 100, 240) on hover and pressed",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.textColor": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.np-hero-tab Nota Vision Agent (130.3 x 19, inactive): rest fg rgba(255, 255, 255, 0.55), 16px/700; hover and pressed fg -> rgba(255, 255, 255, 0.85) on self and label; transition color 0.3s ease-out, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.selected": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.hover": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.np-hero-tab Nota Vision Agent (130.3 x 19, inactive): rest fg rgba(255, 255, 255, 0.55), 16px/700; hover and pressed fg -> rgba(255, 255, 255, 0.85) on self and label; transition color 0.3s ease-out, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.pressed": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.np-hero-tab Nota Vision Agent (130.3 x 19, inactive): rest fg rgba(255, 255, 255, 0.55), 16px/700; hover and pressed fg -> rgba(255, 255, 255, 0.85) on self and label; transition color 0.3s ease-out, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.states": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.np-hero-tab Nota Vision Agent (130.3 x 19, inactive): rest fg rgba(255, 255, 255, 0.55), 16px/700; hover and pressed fg -> rgba(255, 255, 255, 0.85) on self and label; transition color 0.3s ease-out, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-tab.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"11\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"10\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"10\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"10\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"10\"]",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.hover": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.np-hero-cta Learn More → (102 x 26): rest fg rgb(231, 231, 231), 16px/700; hover and pressed ::after size 0px x 1px -> 102.047px x 1px (longest transition 600ms)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.pressed": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.np-hero-cta Learn More → (102 x 26): rest fg rgb(231, 231, 231), 16px/700; hover and pressed ::after size 0px x 1px -> 102.047px x 1px (longest transition 600ms)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.states": {
+        "surface_id": "home",
+        "source_id": "nota-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.np-hero-cta Learn More → (102 x 26): rest fg rgb(231, 231, 231), 16px/700; hover and pressed ::after size 0px x 1px -> 102.047px x 1px (longest transition 600ms)",
+        "captured": "2026-09-30"
+      },
+      "components.hero-link.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"10\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.backgroundColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.rounded": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.padding": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.states": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.netspresso-button.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"13\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.lang-button.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-folder.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-folder.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-folder.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-folder.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-folder.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.partner-card.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "components.partner-card.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "components.partner-card.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "components.partner-card.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "components.partner-card.shadow": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "components.partner-card.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div.partner-logo-card",
+        "captured": "2026-09-30"
+      },
+      "components.slider-card.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      },
+      "components.slider-card.border": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      },
+      "components.slider-card.rounded": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      },
+      "components.slider-card.size": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      },
+      "components.slider-card.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::div.custom-slider-card",
+        "captured": "2026-09-30"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 51,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 9,
+      "extension-component-property": 34,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 7
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-section.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.eyebrow.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.list.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.card-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.tab.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.small.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.tag.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-card.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-card.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-tag.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-tag.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-tab.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-tab.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.netspresso-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.netspresso-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.netspresso-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.lang-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.lang-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.lang-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-folder.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-folder.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-folder.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.partner-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.partner-card.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.partner-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.blog-tag",
+        "message": "textColor (#3264f0) on backgroundColor (#3264f014) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.navy",
+        "message": "'navy' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.white",
+        "message": "'white' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hero-link",
+        "message": "'hero-link' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "d5c988a6ce8f72e450bf10b0a009eebd8dd4c73b3e13a814572739b16028a14f",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.card",
+        "value": "rgba(141, 141, 141, 0.15) 10px 10px 28px 0px"
+      },
+      {
+        "path": "shadow.card-hover",
+        "value": "rgba(37, 42, 57, 0.1) 0px 6px 12px 0px"
+      }
+    ],
+    "numeric": [
+      "typography.display-hero.fontSize",
+      "typography.display-section.fontSize",
+      "typography.eyebrow.fontSize",
+      "typography.list.fontSize",
+      "typography.card-title.fontSize",
+      "typography.card-title.letterSpacing",
+      "typography.nav.fontSize",
+      "typography.tab.fontSize",
+      "typography.small.fontSize",
+      "typography.tag.fontSize",
+      "rounded.control",
+      "rounded.slider",
+      "rounded.card",
+      "rounded.tag"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-hero",
+        "display-section",
+        "eyebrow",
+        "list",
+        "card-title",
+        "nav",
+        "tab",
+        "small",
+        "tag"
+      ]
+    }
+  }
+}

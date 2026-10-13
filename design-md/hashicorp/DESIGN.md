@@ -1,136 +1,81 @@
 ---
-id: hashicorp
 name: Hashicorp
-country: US
-category: backend-devops
-homepage: "https://www.hashicorp.com"
-primary_color: "#1060ff"
-logo:
-  type: simpleicons
-  slug: hashicorp
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Helios
-  url: "https://helios.hashicorp.design"
-  type: system
-  description: HashiCorp's public design system for product foundations, content, components, and patterns.
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.hashicorp.com/ko", inspected: "2026-07-13" }
-    - { id: pricing, kind: pricing, url: "https://www.hashicorp.com/ko/pricing", inspected: "2026-07-13" }
-    - { id: boundary, kind: product-marketing, url: "https://www.hashicorp.com/ko/products/boundary", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.hashicorp.com/ko", captured: "2026-07-13" }
-    - { id: hashicorp-component-index, kind: official-doc, url: "https://helios.hashicorp.design/components", captured: "2026-09-19" }
-    - { id: pricing-live, kind: product-surface, url: "https://www.hashicorp.com/ko/pricing", captured: "2026-07-13" }
-    - { id: boundary-live, kind: product-surface, url: "https://www.hashicorp.com/ko/products/boundary", captured: "2026-07-13" }
-    - { id: helios, kind: official-doc, url: "https://helios.hashicorp.design/", captured: "2026-07-13" }
-    - { id: font-announcement, kind: official-doc, url: "https://www.hashicorp.com/en/blog/introducing-hashicorp-sans", captured: "2026-07-13" }
-    - { id: typography-guideline, kind: brand-asset, url: "https://www.hashicorp.com/en/brand/hcp-product-typography", captured: "2026-07-13" }
-    - { id: terms, kind: license, url: "https://www.hashicorp.com/terms-of-service", captured: "2026-07-13" }
-    - { id: about, kind: official-doc, url: "https://www.hashicorp.com/en/about", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.boundary": &boundary { surface_id: boundary, source_id: boundary-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.foreground": *home
-    "tokens.colors.foreground-dark": *home
-    "tokens.colors.hairline": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.on-dark": *home
-    "tokens.colors.on-primary": *home
-    "tokens.colors.primary": *home
-    "tokens.colors.primary-border": *home
-    "tokens.colors.primary-bright": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.surface": *home
-    "tokens.colors.surface-dark": *home
-    "tokens.colors.surface-deep": *home
-    "tokens.colors.surface-muted": *home
-    "tokens.colors.terraform": *pricing
-    "tokens.components.card.bg": *home
-    "tokens.components.card.fg": *home
-    "tokens.components.card.radius": *home
-    "tokens.components.card.type": *home
-    "tokens.components.card.use": *home
-    "tokens.rounded.card": *home
-    "tokens.rounded.control": *home
-    "tokens.rounded.nav": *home
-    "tokens.rounded.sm": *home
-    "tokens.rounded.square": *home
-    "tokens.shadow.control": *home
-    "tokens.spacing.base": *home
-    "tokens.spacing.lg": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.xl": *home
-    "tokens.spacing.xs": *home
-    "tokens.spacing.xxl": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.button.lineHeight": *home
-    "tokens.typography.button.size": *home
-    "tokens.typography.button.use": *home
-    "tokens.typography.button.weight": *home
-    "tokens.typography.display-hero.lineHeight": *home
-    "tokens.typography.display-hero.size": *home
-    "tokens.typography.display-hero.use": *home
-    "tokens.typography.display-hero.weight": *home
-    "tokens.typography.family.display": *home
-    "tokens.typography.family.ui": *home
-    "tokens.typography.heading.lineHeight": *home
-    "tokens.typography.heading.size": *home
-    "tokens.typography.heading.use": *home
-    "tokens.typography.heading.weight": *home
-    "tokens.typography.label.lineHeight": *boundary
-    "tokens.typography.label.size": *boundary
-    "tokens.typography.label.tracking": *boundary
-    "tokens.typography.label.use": *boundary
-    "tokens.typography.label.weight": *boundary
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "Only values observed in the supplied three-route capture are machine tokens; HashiCorp Sans is a loaded display family, while controls and body text use system stacks."
-  colors:
-    primary: "#1060ff"
-    primary-border: "#0c56e9"
-    primary-bright: "#2b89ff"
-    canvas: "#ffffff"
-    surface: "#fafafa"
-    surface-muted: "#f1f2f3"
-    surface-dark: "#15181e"
-    surface-deep: "#0d0e12"
-    foreground: "#3b3d45"
-    foreground-dark: "#d5d7db"
-    on-primary: "#ffffff"
-    on-dark: "#efeff1"
-    muted: "#656a76"
-    hairline: "#b2b6bd"
-    terraform: "#7b42bc"
-    boundary: "#f24c53"
-  typography:
-    family: { ui: "system-ui", display: "HashiCorp Sans" }
-    display-hero: { size: 82, weight: 600, lineHeight: 1.17, use: "Loaded HashiCorp Sans H1 on captured public surfaces" }
-    heading: { size: 52, weight: 600, lineHeight: 1.19, use: "Loaded HashiCorp Sans H2 on captured public surfaces" }
-    body: { size: 16, weight: 400, lineHeight: 1.63, use: "Computed system-ui reading text" }
-    button: { size: 16, weight: 500, lineHeight: 1.69, use: "Computed system-ui primary and secondary control label" }
-    label: { size: 13, weight: 600, lineHeight: 1.69, tracking: 1.3, use: "Loaded HashiCorp Sans eyebrow observed on Boundary" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { square: 0, sm: 2, nav: 4, control: 5, card: 6 }
-  shadow:
-    control: "rgba(101,104,118,0.05) 0px 1px 1px, rgba(101,104,118,0.05) 0px 2px 2px"
-  components:
-    card: { type: card, bg: "#ffffff", fg: "#3b3d45", radius: 6, use: "Home content card with a 1px rgba(101,104,118,0.2) outline shadow" }
-  components_harvested: true
+colors:
+  primary: '#1060ff'
+  primary-border: '#0c56e9'
+  primary-bright: '#2b89ff'
+  canvas: '#ffffff'
+  surface: '#fafafa'
+  surface-muted: '#f1f2f3'
+  surface-dark: '#15181e'
+  surface-deep: '#0d0e12'
+  foreground: '#3b3d45'
+  foreground-dark: '#d5d7db'
+  on-primary: '#ffffff'
+  on-dark: '#efeff1'
+  muted: '#656a76'
+  hairline: '#b2b6bd'
+  terraform: '#7b42bc'
+  boundary: '#f24c53'
+typography:
+  display-hero:
+    fontSize: 82px
+    fontWeight: 600
+    lineHeight: 1.17
+    use: Loaded HashiCorp Sans H1 on captured public surfaces
+  heading:
+    fontSize: 52px
+    fontWeight: 600
+    lineHeight: 1.19
+    use: Loaded HashiCorp Sans H2 on captured public surfaces
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.63
+    use: Computed system-ui reading text
+  button:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.69
+    use: Computed system-ui primary and secondary control label
+  label:
+    fontSize: 13px
+    fontWeight: 600
+    lineHeight: 1.69
+    letterSpacing: 1.3px
+    use: Loaded HashiCorp Sans eyebrow observed on Boundary
+rounded:
+  square: 0px
+  sm: 2px
+  nav: 4px
+  control: 5px
+  card: 6px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+components:
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#3b3d45'
+    rounded: 6px
+    use: Home content card with a 1px rgba(101,104,118,0.2) outline shadow
+fonts:
+  roles:
+    ui: system-ui
+    display: HashiCorp Sans
 ---
 
 # Design System Inspiration of HashiCorp
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 HashiCorp, now an IBM company, builds infrastructure and security software for multi-cloud and hybrid environments. Its current public expression puts a sober operational interface around that mission: white and near-white information surfaces sit beside deep charcoal sections, with blue as the shared action color and named product routes able to introduce their own accent. The 2024 Infrastructure Cloud brand launch also introduced HashiCorp Sans, a custom display typeface that ties the logotype and headlines together. In the captured public routes, that mix produces a clear division of labor: HashiCorp Sans carries large headings and eyebrow labels; system stacks carry reading text, navigation, controls, and cards.
 
@@ -142,14 +87,31 @@ The raw capture covers three public-facing domains within the company site, not 
 - Loaded HashiCorp Sans appears in headings and a Boundary eyebrow; system-ui dominates visible UI text
 - Controls use small 4–5px corners; the captured home card uses 6px
 
-## Primary tasks
+### Primary tasks
 
 - Read up on one named product before trying it.
 - Pick a product from the pricing page and start it.
 - Submit an email address through the shared marketing form.
 - Weigh the open-source route against a commercial plan.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Mitchell Hashimoto and Armon Dadgar met at the University of Washington in 2008 while working on a research project to make public-cloud technologies available to scientists. Hashimoto started HashiCorp in November 2012 and Dadgar joined as co-founder in 2013. Their early view was that organizations using multiple clouds would need a consistent, reliable set of automation tools for combinations of cloud and on-premises environments.
+
+The present company describes itself as an IBM company that helps organizations automate and secure multi-cloud and hybrid environments through The Infrastructure Cloud. In April 2024 it introduced that brand chapter and HashiCorp Sans; in February 2025 it officially joined IBM. These facts describe the corporate/brand domain and should not be read as a claim about the captured public UI’s runtime tokens.
+
+### Principles
+
+1. **Workflows, not technologies.** The company frames its offering around real-world operator workflows. *UI implication:* lead with the task or outcome before product mechanics.
+2. **Multi-cloud and hybrid operations.** The public mission is to automate and secure these environments. *UI implication:* avoid implying that a single provider is the default context.
+3. **Open source at the core.** HashiCorp describes source-available projects and a practitioner community as foundational. *UI implication:* make technical learning and implementation paths legible alongside commercial paths.
+4. **Pragmatic beauty.** The font announcement links “beauty works better” with pragmatism. *UI implication:* use distinctive display typography deliberately while keeping functional UI plain and readable.
+
+### Personas
+
+The official company material identifies technical and business teams, IT operators, practitioners, users, customers, and partners as stakeholders. This reference does not invent named or demographic personas; use those verified stakeholder groups as the starting point for task research.
+
+## Colors
 
 ### Shared live surfaces
 - **Shared primary** (`#1060ff`): blue primary CTA background, with observed border `#0c56e9`
@@ -168,7 +130,7 @@ The raw capture covers three public-facing domains within the company site, not 
 
 No other product-color variant is included: it was not present in the supplied capture.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -190,7 +152,40 @@ No other product-color variant is included: it was not present in the supplied c
 | Controls | system-ui | 16px | 500 | 26–27px | shared CTAs and tabs |
 | Navigation | system-ui | 15.008px | 500 | 24.013px | top navigation trigger |
 
-## 4. Component Stylings
+## Layout
+
+The capture records a recurring 4/8/12/16/24/32/48px spacing rhythm. Its high-frequency visible corners are 0px, 4px, 5px, and 6px; the only captured 8px radius is not promoted as the card standard. No responsive breakpoint, container-width, or grid behavior was measured in this packet.
+
+### Responsive Behavior
+
+No responsive observations were collected in this packet. Do not infer breakpoint values or mobile transformations from the desktop-route evidence.
+
+## Elevation & Depth
+
+- **Control shadow:** the primary, secondary, Terraform, and Boundary CTAs use a two-layer 5% shadow, with the exact values recorded in §4.
+- **Light-card outline:** home cards use `rgba(101, 106, 118, 0.2) 0px 0px 0px 1px`.
+- **Dark-input inset:** the captured email field uses `rgba(97, 104, 117, 0.1) 0px 1px 2px 1px inset`.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.control`: `rgba(101,104,118,0.05) 0px 1px 1px, rgba(101,104,118,0.05) 0px 2px 2px`
+
+## Motion & Easing
+
+No motion duration, easing value, or reduced-motion behavior was measured in this packet. Keep motion tokens unresolved.
+
+---
+
+**Verified:** 2026-07-13
+**Tier 1 sources:** supplied live capture of `https://www.hashicorp.com/ko`, `https://www.hashicorp.com/ko/pricing`, and `https://www.hashicorp.com/ko/products/boundary`; [Helios](https://helios.hashicorp.design/); [HashiCorp Sans announcement](https://www.hashicorp.com/en/blog/introducing-hashicorp-sans); [official typography guideline](https://www.hashicorp.com/en/brand/hcp-product-typography); [official terms of service](https://www.hashicorp.com/terms-of-service); [About](https://www.hashicorp.com/en/about); [Origin story](https://www.hashicorp.com/en/about/origin-story); [IBM-family announcement](https://www.hashicorp.com/en/blog/hashicorp-officially-joins-the-ibm-family).
+**Tier 2 sources:** [getdesign.md/hashicorp](https://getdesign.md/hashicorp) directory metadata only; [Refero’s HashiCorp style](https://styles.refero.design/style/834ce97f-61f2-4b12-bf5c-e9fad2544456) cross-check. Its 4px-control and 8px-card claims conflict with the supplied raw capture, so the Tier 1 values remain canonical.
+**Conflicts unresolved:** none
+
+Refero’s differing radii and active-blue account are documented in `.verification.md` and resolved to the supplied computed evidence; unobserved prior claims for Vault, Waypoint, Vagrant, focus/hover behavior, responsive behavior, and motion remain omitted.
+
+## Components
 
 All values below are raw computed values from the supplied 2026-07-13 capture. Selector and route provenance are retained in `.verification.md`. The capture reports zero interaction events, so hover, focus, pressed, modal, menu, and error variants are intentionally omitted.
 
@@ -319,17 +314,11 @@ the `hds-` prefix, which is how Helios names its published components in markup.
 
 None of the 37 carries a measured value here, including Card.
 
-## 5. Layout Principles
+### States
 
-The capture records a recurring 4/8/12/16/24/32/48px spacing rhythm. Its high-frequency visible corners are 0px, 4px, 5px, and 6px; the only captured 8px radius is not promoted as the card standard. No responsive breakpoint, container-width, or grid behavior was measured in this packet.
+The supplied capture records one disabled icon-only primary button and selected/unselected pricing tabs. It records no interaction events, loading, error, success, empty, skeleton, dialog, or toast state transitions, so those treatments are intentionally unresolved.
 
-## 6. Depth & Elevation
-
-- **Control shadow:** the primary, secondary, Terraform, and Boundary CTAs use a two-layer 5% shadow, with the exact values recorded in §4.
-- **Light-card outline:** home cards use `rgba(101, 106, 118, 0.2) 0px 0px 0px 1px`.
-- **Dark-input inset:** the captured email field uses `rgba(97, 104, 117, 0.1) 0px 1px 2px 1px inset`.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use HashiCorp Sans only where the official brand describes display/logo/headline use and where it can actually be loaded.
@@ -341,15 +330,7 @@ The capture records a recurring 4/8/12/16/24/32/48px spacing rhythm. Its high-fr
 - Don't infer unobserved product colors, hover states, focus rings, or component variants from class names or adjacent routes.
 - Don't treat declared DejaVu Sans Mono assets as a live code-font token.
 
-## 8. Responsive Behavior
-
-No responsive observations were collected in this packet. Do not infer breakpoint values or mobile transformations from the desktop-route evidence.
-
-## 9. Agent Prompt Guide
-
-Use the captured public-marketing pattern only: `#1060ff` shared primary CTA or `#fafafa` secondary CTA, 5px corners, 16px/500 system-ui labels, and the recorded low-opacity control shadow. Use the Terraform `#7b42bc` or Boundary `#f24c53` CTA only for those specifically observed route contexts. Treat all other product colors and states as unresolved.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 HashiCorp describes its work in operational, outcome-oriented terms: automate and secure multi-cloud and hybrid environments; focus on workflows rather than technologies; and keep source code freely available at the core of its offerings. The public marketing routes use short imperative actions.
 
@@ -358,36 +339,6 @@ HashiCorp describes its work in operational, outcome-oriented terms: automate an
 - “Contact us” — shared marketing CTA, captured on `/ko`
 - “The Infrastructure Cloud” — official company positioning
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Mitchell Hashimoto and Armon Dadgar met at the University of Washington in 2008 while working on a research project to make public-cloud technologies available to scientists. Hashimoto started HashiCorp in November 2012 and Dadgar joined as co-founder in 2013. Their early view was that organizations using multiple clouds would need a consistent, reliable set of automation tools for combinations of cloud and on-premises environments.
-
-The present company describes itself as an IBM company that helps organizations automate and secure multi-cloud and hybrid environments through The Infrastructure Cloud. In April 2024 it introduced that brand chapter and HashiCorp Sans; in February 2025 it officially joined IBM. These facts describe the corporate/brand domain and should not be read as a claim about the captured public UI’s runtime tokens.
-
-## 12. Principles
-
-1. **Workflows, not technologies.** The company frames its offering around real-world operator workflows. *UI implication:* lead with the task or outcome before product mechanics.
-2. **Multi-cloud and hybrid operations.** The public mission is to automate and secure these environments. *UI implication:* avoid implying that a single provider is the default context.
-3. **Open source at the core.** HashiCorp describes source-available projects and a practitioner community as foundational. *UI implication:* make technical learning and implementation paths legible alongside commercial paths.
-4. **Pragmatic beauty.** The font announcement links “beauty works better” with pragmatism. *UI implication:* use distinctive display typography deliberately while keeping functional UI plain and readable.
-
-## 13. Personas
-
-The official company material identifies technical and business teams, IT operators, practitioners, users, customers, and partners as stakeholders. This reference does not invent named or demographic personas; use those verified stakeholder groups as the starting point for task research.
-
-## 14. States
-
-The supplied capture records one disabled icon-only primary button and selected/unselected pricing tabs. It records no interaction events, loading, error, success, empty, skeleton, dialog, or toast state transitions, so those treatments are intentionally unresolved.
-
-## 15. Motion & Easing
-
-No motion duration, easing value, or reduced-motion behavior was measured in this packet. Keep motion tokens unresolved.
-
----
-
-**Verified:** 2026-07-13
-**Tier 1 sources:** supplied live capture of `https://www.hashicorp.com/ko`, `https://www.hashicorp.com/ko/pricing`, and `https://www.hashicorp.com/ko/products/boundary`; [Helios](https://helios.hashicorp.design/); [HashiCorp Sans announcement](https://www.hashicorp.com/en/blog/introducing-hashicorp-sans); [official typography guideline](https://www.hashicorp.com/en/brand/hcp-product-typography); [official terms of service](https://www.hashicorp.com/terms-of-service); [About](https://www.hashicorp.com/en/about); [Origin story](https://www.hashicorp.com/en/about/origin-story); [IBM-family announcement](https://www.hashicorp.com/en/blog/hashicorp-officially-joins-the-ibm-family).
-**Tier 2 sources:** [getdesign.md/hashicorp](https://getdesign.md/hashicorp) directory metadata only; [Refero’s HashiCorp style](https://styles.refero.design/style/834ce97f-61f2-4b12-bf5c-e9fad2544456) cross-check. Its 4px-control and 8px-card claims conflict with the supplied raw capture, so the Tier 1 values remain canonical.
-**Conflicts unresolved:** none
-
-Refero’s differing radii and active-blue account are documented in `.verification.md` and resolved to the supplied computed evidence; unobserved prior claims for Vault, Waypoint, Vagrant, focus/hover behavior, responsive behavior, and motion remain omitted.
+Use the captured public-marketing pattern only: `#1060ff` shared primary CTA or `#fafafa` secondary CTA, 5px corners, 16px/500 system-ui labels, and the recorded low-opacity control shadow. Use the Terraform `#7b42bc` or Boundary `#f24c53` CTA only for those specifically observed route contexts. Treat all other product colors and states as unresolved.

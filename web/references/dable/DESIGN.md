@@ -1,67 +1,143 @@
 ---
-id: dable
 name: Dable
-display_name_kr: 데이블
-country: KR
-category: marketing
-homepage: "https://dable.io/ko/"
-primary_color: "#0071ce"
-logo:
-  type: github
-  slug: teamdable
-verified: "2026-07-02"
-added: "2026-07-02"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live CTA blue (#0071ce); a distinctive mint/teal (#56cfc2) is the secondary CTA accent. Flat, shadowless, pill-heavy adtech marketing site. Poppins for display + buttons, Open Sans for body + product-page headings."
-  colors:
-    primary: "#0071ce"
-    primary-link: "#0b7ed1"
-    accent-mint: "#56cfc2"
-    ink: "#000000"
-    ink-soft: "#181818"
-    body: "#3d3d3d"
-    slate: "#464646"
-    muted: "#8a8a8a"
-    faint: "#cccccc"
-    neutral-btn: "#e8e8e8"
-    neutral-btn-text: "#6f6f6f"
-    surface: "#efefef"
-    dark: "#212121"
-    outline-text: "#2b2b2b"
-    canvas: "#ffffff"
-    on-primary: "#ffffff"
-  typography:
-    family: { display: "Poppins", body: "Open Sans" }
-    display:       { size: 56, weight: 400, lineHeight: 1.0, use: "Full-screen hero feature words (Personalization, Machine learning), Poppins" }
-    heading-lg:    { size: 35, weight: 400, lineHeight: 1.0, use: "Product-page hero heading, Open Sans" }
-    heading:       { size: 26, weight: 400, lineHeight: 1.0, use: "Section titles (데이블 네이티브 애드란?), Open Sans" }
-    subheading:    { size: 22, weight: 400, lineHeight: 1.0, use: "Feature sub-titles, Open Sans" }
-    feature-title: { size: 18, weight: 700, lineHeight: 1.0, use: "Targeting-option card titles, Open Sans Bold" }
-    body:          { size: 14, weight: 400, lineHeight: 1.5, use: "Body and dense UI text, Open Sans" }
-    button:        { size: 14, weight: 400, lineHeight: 1.0, use: "CTA pill label, Poppins" }
-    nav:           { size: 13, weight: 600, lineHeight: 1.0, use: "Top-nav links, Poppins SemiBold" }
-    footer:        { size: 15, weight: 400, lineHeight: 3.0, use: "Footer section headings, Open Sans" }
-  spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 44, section: 64 }
-  rounded: { square: 0, pill: 50, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#0071ce", fg: "#ffffff", radius: "50px", height: "48px", padding: "17px 44px", font: "14px / 400 Poppins", use: "Primary CTA pill (자세히 보기, 광고계정 생성하기, 시작하기)" }
-    button-mint: { type: button, bg: "#56cfc2", fg: "#ffffff", radius: "50px", height: "48px", padding: "17px 29px", font: "14px / 400 Poppins", use: "Secondary teal CTA (기본 견적 확인)" }
-    button-ghost-light: { type: button, bg: "#ffffff", fg: "#2b2b2b", radius: "50px", height: "48px", padding: "17px 44px", font: "14px / 400 Poppins", use: "White pill over dark hero (서비스 문의하기, 광고주 지원)" }
-    button-neutral: { type: button, bg: "#e8e8e8", fg: "#6f6f6f", radius: "50px", height: "48px", padding: "17px 29px", font: "14px / 400 Poppins", use: "Tertiary grey pill (콘텐츠 검토 가이드)" }
-    nav-link: { type: tab, fg: "#ffffff", font: "13px / 600 Poppins", active: "text #0071ce", use: "Top-nav item over dark hero" }
-    feature-card: { type: card, bg: "#ffffff", fg: "#000000", use: "Flat feature/content block on white band — no shadow, no border" }
-    surface-band: { type: card, bg: "#efefef", fg: "#3d3d3d", use: "Alternating grey content band / section surface" }
-  components_harvested: true
+colors:
+  primary: '#0071ce'
+  primary-link: '#0b7ed1'
+  accent-mint: '#56cfc2'
+  ink: '#000000'
+  ink-soft: '#181818'
+  body: '#3d3d3d'
+  slate: '#464646'
+  muted: '#8a8a8a'
+  faint: '#cccccc'
+  neutral-btn: '#e8e8e8'
+  neutral-btn-text: '#6f6f6f'
+  surface: '#efefef'
+  dark: '#212121'
+  outline-text: '#2b2b2b'
+  canvas: '#ffffff'
+  on-primary: '#ffffff'
+typography:
+  display:
+    fontSize: 56px
+    fontWeight: 400
+    lineHeight: 1
+    use: Full-screen hero feature words (Personalization, Machine learning), Poppins
+  heading-lg:
+    fontSize: 35px
+    fontWeight: 400
+    lineHeight: 1
+    use: Product-page hero heading, Open Sans
+  heading:
+    fontSize: 26px
+    fontWeight: 400
+    lineHeight: 1
+    use: Section titles (데이블 네이티브 애드란?), Open Sans
+  subheading:
+    fontSize: 22px
+    fontWeight: 400
+    lineHeight: 1
+    use: Feature sub-titles, Open Sans
+  feature-title:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1
+    use: Targeting-option card titles, Open Sans Bold
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body and dense UI text, Open Sans
+  button:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1
+    use: CTA pill label, Poppins
+  nav:
+    fontSize: 13px
+    fontWeight: 600
+    lineHeight: 1
+    use: Top-nav links, Poppins SemiBold
+  footer:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 3
+    use: Footer section headings, Open Sans
+rounded:
+  square: 0px
+  pill: 50px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 16
+  lg: 24
+  xl: 44
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#0071ce'
+    textColor: '#ffffff'
+    rounded: 50px
+    height: 48px
+    padding: 17px 44px
+    typography: 14px / 400 Poppins
+    use: Primary CTA pill (자세히 보기, 광고계정 생성하기, 시작하기)
+  button-mint:
+    type: button
+    backgroundColor: '#56cfc2'
+    textColor: '#ffffff'
+    rounded: 50px
+    height: 48px
+    padding: 17px 29px
+    typography: 14px / 400 Poppins
+    use: Secondary teal CTA (기본 견적 확인)
+  button-ghost-light:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#2b2b2b'
+    rounded: 50px
+    height: 48px
+    padding: 17px 44px
+    typography: 14px / 400 Poppins
+    use: White pill over dark hero (서비스 문의하기, 광고주 지원)
+  button-neutral:
+    type: button
+    backgroundColor: '#e8e8e8'
+    textColor: '#6f6f6f'
+    rounded: 50px
+    height: 48px
+    padding: 17px 29px
+    typography: 14px / 400 Poppins
+    use: Tertiary grey pill (콘텐츠 검토 가이드)
+  nav-link:
+    type: tab
+    textColor: '#ffffff'
+    typography: 13px / 600 Poppins
+    active: 'text #0071ce'
+    use: Top-nav item over dark hero
+  feature-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    use: Flat feature/content block on white band — no shadow, no border
+  surface-band:
+    type: card
+    backgroundColor: '#efefef'
+    textColor: '#3d3d3d'
+    use: Alternating grey content band / section surface
+fonts:
+  roles:
+    display: Poppins
+    body: Open Sans
 ---
 
 # Design System Inspiration of Dable
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Dable (데이블) is Korea's leading content-discovery and native-advertising platform, and its site reads like a confident, technology-forward adtech product rather than a busy media page. The canvas is pure white (`#ffffff`) broken up by full-bleed dark cinematic hero bands (`#212121`) and light-grey content surfaces (`#efefef`), giving the page a clean, spacious, presentation-like rhythm. Body copy sits in a soft near-black (`#3d3d3d`) — never a harsh pure-black wall of text — while headings drop to true black (`#000000`) for maximum authority. The single saturated brand anchor is a clear, trustworthy blue (`#0071ce`), reserved almost exclusively for the pill call-to-action, so the eye learns to read that one color as "the action."
 
@@ -79,14 +155,40 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 - Pill-everything geometry — 50px capsules on every button
 - Cool neutral ladder (`#464646` → `#8a8a8a` → `#cccccc`) for text hierarchy
 
-## Primary tasks
+### Primary tasks
 
 - Create an advertising account to start a native campaign
 - Check a basic quote for a native ad buy
 - Evaluate content-discovery widgets for a regional media network
 - Justify the media buy internally using the platform's scale numbers
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Dable (데이블) was founded in **2015** by **이채현 (Lee Chae-hyun, CEO)** and three co-founders who had built the RecoPick recommendation venture inside SK Planet. The name itself encodes the thesis — "Data" + "able", doing everything possible with data. Lee, a POSTECH computer-science graduate with a background in big-data processing and recommendation algorithms, framed the company around a single mission: to "connect users, media, and content" (사용자와 미디어, 콘텐츠를 연결하자).
+
+The product grew into two linked engines: **Dable News**, a personalized content-discovery widget that recommends articles to readers on media sites, and **Dable Native Ad**, described as Asia's largest native ad exchange. Together they process the behavior of **500 million-plus monthly users** through machine learning, powering personalized recommendations and auto-optimized native campaigns. By 2021 Dable had passed **3,000 media partnerships** and expanded across 10+ Asia-Pacific markets — Korea, Japan, Taiwan, Indonesia, Vietnam, Malaysia, Thailand, Hong Kong, Singapore, and beyond — before being acquired by Yanolja.
+
+What Dable's design refuses, visible in the site: the cluttered, banner-heavy chrome of legacy ad networks and the dark-pattern urgency of performance marketing. What it embraces: a flat, cinematic, presentation-like interface; two disciplined brand hues (blue for action, mint for the alternate); geometric Poppins display over calm Open Sans copy; and a technology story told through capability words and hard numbers rather than superlatives.
+
+### Principles
+
+1. **Lead with capability.** The homepage is three technology words, not a slogan. *UI implication:* let the feature word and the metric carry the section; keep decoration minimal.
+2. **One action, one color.** Blue (`#0071ce`) means "do this." *UI implication:* reserve the saturated blue exclusively for the primary CTA so the next step is unambiguous; the mint (`#56cfc2`) is the single sanctioned alternate.
+3. **Flat and fast.** Cinematic clarity beats decorative depth. *UI implication:* no shadows; separate sections with full-width color bands and let color do the work.
+4. **Two voices, two fonts.** *UI implication:* Poppins for feature words and interactive chrome; Open Sans for the reading layer — never blend the two roles.
+5. **Prove it with numbers.** Trust in adtech comes from scale. *UI implication:* surface concrete counts (users, media partners, markets) rather than adjectives.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Dable user segments (performance advertisers, media/publisher partners, adtech buyers across APAC), not individual people.*
+
+**정민수, 34, 서울.** A performance marketer at a mid-size ecommerce brand buying native campaigns. Cares that auto-optimization actually lowers his cost-per-acquisition and that the reporting is legible. Chose Dable because the pitch led with the machine-learning capability and concrete results, not with hype.
+
+**Aria Tan, 29, Singapore.** A publisher-side partnerships lead evaluating content-discovery widgets for a regional media network. Values that Dable is present across APAC and integrates cleanly; wants a partner whose product looks engineered, not like a legacy banner network.
+
+**김서연, 41, 판교.** A marketing director allocating budget across channels. Uses Dable's scale numbers (media partners, monthly users) to justify the buy internally. Trusts the calm, capability-first brand tone over urgency-driven ad tooling.
+
+## Colors
 
 ### Primary
 - **Dable Blue** (`#0071ce`): Primary brand color and CTA background — the saturated blue on the pill call-to-action, the system's single "action" color.
@@ -110,7 +212,7 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 - **Outline Text** (`#2b2b2b`): Dark label color inside the white ghost pill on dark heroes.
 - **On Primary** (`#ffffff`): White text sitting on the blue and mint CTAs.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display**: `Poppins` — used for hero feature words, CTA labels, and top-nav links. Geometric sans, weights 400 (display/buttons) and 600 (nav).
@@ -136,7 +238,125 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 - **Quiet body**: body copy holds a dense, readable 14px / 400 with 1.5 line-height — information-forward, never shouting.
 - **Poppins for the chrome**: every tappable label (CTA, nav) is Poppins, so the interactive layer is visually distinct from explanatory Open Sans copy.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px, scaling 4px → 8px → 16px → 24px → 44px → 64px
+- Notable: CTA pills use a generous asymmetric 17px vertical / 29–44px horizontal padding, giving the capsules a comfortable, tappable hit area
+
+### Grid & Container
+- Full-screen cinematic hero bands anchor the page, each a single dark (`#212121`) slide with a large Poppins feature word
+- Product/feature sections alternate white (`#ffffff`) and light-grey (`#efefef`) full-width bands
+- Content is centered and generously spaced — a slide-deck cadence rather than dense dashboard packing
+- CTAs are grouped as horizontal rows of pills beneath section copy
+
+### Whitespace Philosophy
+- **Presentation rhythm**: the layout reads like a scroll-driven deck — one idea per band, generous vertical breathing room between sections.
+- **Flat segmentation**: sections separate by background color (`#212121` / `#efefef` / `#ffffff`), never by shadow or heavy borders.
+- **Pill cadence**: the repeated 50px capsule creates a consistent horizontal rhythm across every call-to-action.
+
+### Border Radius Scale
+- Square (0px): content blocks, image tiles, section bands
+- Pill (50px): every button and CTA — the system's defining geometry
+- Full (9999px): circular play buttons and icon frames
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero feature word compresses, pill rows wrap/stack |
+| Tablet | 640-1024px | Moderate padding, 2-up feature blocks |
+| Desktop | 1024-1440px | Full slide-band layout, centered heroes, multi-column feature bands |
+
+#### Touch Targets
+- CTA pills at 48px height with 17px vertical padding — comfortably tappable
+- Compact contact pill at 39px height for dense footer bands
+- Nav links spaced for touch across the top bar
+
+#### Collapsing Strategy
+- Hero: 56px Poppins feature word scales down on mobile, weight maintained
+- Pill rows: wrap or stack on narrow viewports
+- Feature bands: multi-column → stacked single column
+- Dark/grey/white alternating bands maintain full-width treatment
+
+#### Image Behavior
+- Product screenshots and illustrations carry no shadow at any size, consistent with the flat system
+- Content blocks stay square-cornered across breakpoints; only buttons and circular play frames round
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, text, buttons, most surfaces |
+| Band (Level 1) | Background color shift (`#212121` / `#efefef` / `#ffffff`) | Section separation without elevation |
+
+**Shadow Philosophy**: Dable is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, and every pill button. Depth and grouping are communicated entirely through full-width color bands — cinematic dark (`#212121`), light grey (`#efefef`), and white (`#ffffff`) — rather than elevation. This is a deliberate flat, presentation-like choice that keeps the adtech story feeling fast and modern. When emphasis is needed, the system reaches for color (blue `#0071ce` or mint `#56cfc2`) or a dark band, never a drop shadow.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 240ms | Band/section reveal, dropdown, sheet |
+| `motion-slow` | 360ms | Full-screen hero slide transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, sheets, pills |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is presentation-driven and quiet — the site scrolls like a deck, with full-screen hero bands revealing one idea at a time at `motion-slow / ease-standard`. Pills respond to press with a subtle scale/opacity shift; section content fades in from below at `motion-standard / ease-enter`. No bounce or spring — an adtech platform signals steadiness and precision, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the hero bands snap into place; the product stays fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on 2 surfaces:
+- https://dable.io/ko/ (homepage) — hero feature words "Personalization"/"Machine learning"/"Auto-optimization"
+  Poppins 56px weight 400 color rgb(0,0,0); primary CTA "자세히 보기" bg rgb(0,113,206) #0071ce radius 50px
+  padding 17px 44px Poppins 14px white text; nav links Poppins 13px weight 600 white; body font "Open Sans" 14px
+  color rgb(0,0,0); box-shadow none across hero/nav/headings/buttons; document.title
+  "네이티브 광고와 콘텐츠 디스커버리".
+- https://dable.io/ko/advertising/ (product page) — headings Open Sans 35px/26px/22px/18px(700); CTAs:
+  blue #0071ce "광고계정 생성하기"/"상품소개서 다운로드"/"시작하기"; mint rgb(86,207,194) #56cfc2 "기본 견적 확인";
+  white ghost pill rgb(255,255,255) bg text rgb(43,43,43) #2b2b2b "서비스 문의하기"; grey pill rgb(232,232,232)
+  #e8e8e8 bg text rgb(111,111,111) #6f6f6f "콘텐츠 검토 가이드"; document.title
+  "인공 지능 기반의 네이티브 광고를 통한 적합한 고객 발견 | Dable".
+
+Token-level claims (§1-9) are sourced from this live inspection; see web/references/dable/.verification.md
+for the full raw-sample list and the Tier-2 conflict matrix.
+
+Voice samples (§10) are verbatim from the live homepage title, the advertising product title, and the product
+hero heading.
+
+Brand narrative (§11): Dable (데이블) founded 2015; CEO 이채현 (Lee Chae-hyun), POSTECH CS; four founders out of
+SK Planet's RecoPick recommendation venture; name = "Data" + "able"; mission "사용자와 미디어, 콘텐츠를 연결하자";
+Dable News (content discovery) + Dable Native Ad (Asia's largest native ad exchange); 500M+ monthly users;
+3,000+ media partners by 2021; APAC expansion (Japan/Taiwan/Indonesia/Vietnam/Malaysia/Thailand/Hong Kong/
+Singapore); acquired by Yanolja. Sourced from Dable's own /dable-story/ page and public interviews
+(startuptoday.kr, theteams.kr). Specific figures beyond the site are widely documented public facts, not
+directly quoted from a single verified Dable statement in this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable Dable user segments (advertisers,
+publisher partners, adtech buyers). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "one action, one color", "flat and fast as a rejection of legacy banner-network
+chrome") are editorial readings connecting Dable's observed design to its positioning, not directly sourced
+Dable statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -216,38 +436,21 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 **Tier 2 sources:** getdesign.md/dable (SPA shell — no dable coverage); styles.refero.design/?q=dable (query returned default gallery, no dable-specific match)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px, scaling 4px → 8px → 16px → 24px → 44px → 64px
-- Notable: CTA pills use a generous asymmetric 17px vertical / 29–44px horizontal padding, giving the capsules a comfortable, tappable hit area
+| State | Treatment |
+|---|---|
+| **Empty (no campaign/report data)** | White canvas. A single Body Grey (`#3d3d3d`) line explaining there is nothing yet, with one blue (`#0071ce`) pill CTA to create the first campaign. No clutter. |
+| **Empty (saved list, none yet)** | Muted (`#8a8a8a`) single line noting nothing saved, plus a path back. Calm and factual. |
+| **Loading (dashboard/results)** | Flat skeleton blocks on the grey surface (`#efefef`) at final dimensions — no shadow shimmer, consistent with the shadowless system. |
+| **Loading (in-place refresh)** | Subtle blue (`#0071ce`) progress indicator; previous values stay visible. |
+| **Error (fetch/compute failed)** | Inline message in Body Grey (`#3d3d3d`) with a plain-language explanation and a retry. Never a bare "오류가 발생했습니다". |
+| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "필수". |
+| **Success (campaign submitted)** | Brief inline confirmation in a calm tone; next-step detail linked below. No celebratory emoji. |
+| **Skeleton** | `#efefef` blocks at final dimensions, square corners, flat pulse. |
+| **Disabled** | Faint (`#cccccc`) text on a neutral (`#e8e8e8`) surface; blue actions fade rather than switch to grey to preserve the brand read. |
 
-### Grid & Container
-- Full-screen cinematic hero bands anchor the page, each a single dark (`#212121`) slide with a large Poppins feature word
-- Product/feature sections alternate white (`#ffffff`) and light-grey (`#efefef`) full-width bands
-- Content is centered and generously spaced — a slide-deck cadence rather than dense dashboard packing
-- CTAs are grouped as horizontal rows of pills beneath section copy
-
-### Whitespace Philosophy
-- **Presentation rhythm**: the layout reads like a scroll-driven deck — one idea per band, generous vertical breathing room between sections.
-- **Flat segmentation**: sections separate by background color (`#212121` / `#efefef` / `#ffffff`), never by shadow or heavy borders.
-- **Pill cadence**: the repeated 50px capsule creates a consistent horizontal rhythm across every call-to-action.
-
-### Border Radius Scale
-- Square (0px): content blocks, image tiles, section bands
-- Pill (50px): every button and CTA — the system's defining geometry
-- Full (9999px): circular play buttons and icon frames
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, text, buttons, most surfaces |
-| Band (Level 1) | Background color shift (`#212121` / `#efefef` / `#ffffff`) | Section separation without elevation |
-
-**Shadow Philosophy**: Dable is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, and every pill button. Depth and grouping are communicated entirely through full-width color bands — cinematic dark (`#212121`), light grey (`#efefef`), and white (`#ffffff`) — rather than elevation. This is a deliberate flat, presentation-like choice that keeps the adtech story feeling fast and modern. When emphasis is needed, the system reaches for color (blue `#0071ce` or mint `#56cfc2`) or a dark band, never a drop shadow.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Poppins for display feature words (56px) and all interactive chrome (buttons, nav)
@@ -268,31 +471,26 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 - Mix the display and body fonts — Poppins owns chrome, Open Sans owns reading
 - Use the mint (`#56cfc2`) for primary CTAs — the primary action is always blue
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero feature word compresses, pill rows wrap/stack |
-| Tablet | 640-1024px | Moderate padding, 2-up feature blocks |
-| Desktop | 1024-1440px | Full slide-band layout, centered heroes, multi-column feature bands |
+Dable's voice is **clear, technical, and quietly confident** — an adtech company that leads with capability, not hype. The homepage opens on three single-word promises ("Personalization", "Machine learning", "Auto-optimization") and a mission line about connecting "사용자와 미디어, 콘텐츠" (users, media, and content). Copy treats the reader as a professional — an advertiser or publisher — who wants to know what the technology does and what results it produces, stated plainly with concrete numbers (500M+ monthly users, 3,000+ media partners).
 
-### Touch Targets
-- CTA pills at 48px height with 17px vertical padding — comfortably tappable
-- Compact contact pill at 39px height for dense footer bands
-- Nav links spaced for touch across the top bar
+| Context | Tone |
+|---|---|
+| Hero feature words | Single-word, declarative capability. "Personalization", "Machine learning", "Auto-optimization". |
+| Product headings | Plain, benefit-first. "인공 지능 기반의 네이티브 광고를 통한 적합한 고객 발견". |
+| CTAs | Direct, functional imperatives. "자세히 보기", "광고계정 생성하기", "기본 견적 확인". |
+| Feature descriptions | Explains the technology in professional language; leads with the outcome for advertisers/publishers. |
+| Metrics / proof | Concrete and specific — user counts, media-partner counts, market coverage. |
 
-### Collapsing Strategy
-- Hero: 56px Poppins feature word scales down on mobile, weight maintained
-- Pill rows: wrap or stack on narrow viewports
-- Feature bands: multi-column → stacked single column
-- Dark/grey/white alternating bands maintain full-width treatment
+**Voice samples (verbatim from live surfaces):**
+- "네이티브 광고와 콘텐츠 디스커버리" — homepage title (category positioning). *(verified live 2026-07-02)*
+- "인공 지능 기반의 네이티브 광고를 통한 적합한 고객 발견" — advertising product title. *(verified live 2026-07-02)*
+- "글로벌 프리미엄 미디어 네트워크에 광고하세요" — product hero heading (scope claim). *(verified live 2026-07-02)*
 
-### Image Behavior
-- Product screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Content blocks stay square-cornered across breakpoints; only buttons and circular play frames round
+**Forbidden register**: buzzword-stacking without substance, fear-based marketing, undefined jargon left unexplained, exclamation-heavy hype. Dable's authority comes from stated capability and numbers, not adjectives.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Dable Blue (`#0071ce`)
@@ -321,118 +519,9 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Dable's voice is **clear, technical, and quietly confident** — an adtech company that leads with capability, not hype. The homepage opens on three single-word promises ("Personalization", "Machine learning", "Auto-optimization") and a mission line about connecting "사용자와 미디어, 콘텐츠" (users, media, and content). Copy treats the reader as a professional — an advertiser or publisher — who wants to know what the technology does and what results it produces, stated plainly with concrete numbers (500M+ monthly users, 3,000+ media partners).
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero feature words | Single-word, declarative capability. "Personalization", "Machine learning", "Auto-optimization". |
-| Product headings | Plain, benefit-first. "인공 지능 기반의 네이티브 광고를 통한 적합한 고객 발견". |
-| CTAs | Direct, functional imperatives. "자세히 보기", "광고계정 생성하기", "기본 견적 확인". |
-| Feature descriptions | Explains the technology in professional language; leads with the outcome for advertisers/publishers. |
-| Metrics / proof | Concrete and specific — user counts, media-partner counts, market coverage. |
-
-**Voice samples (verbatim from live surfaces):**
-- "네이티브 광고와 콘텐츠 디스커버리" — homepage title (category positioning). *(verified live 2026-07-02)*
-- "인공 지능 기반의 네이티브 광고를 통한 적합한 고객 발견" — advertising product title. *(verified live 2026-07-02)*
-- "글로벌 프리미엄 미디어 네트워크에 광고하세요" — product hero heading (scope claim). *(verified live 2026-07-02)*
-
-**Forbidden register**: buzzword-stacking without substance, fear-based marketing, undefined jargon left unexplained, exclamation-heavy hype. Dable's authority comes from stated capability and numbers, not adjectives.
-
-## 11. Brand Narrative
-
-Dable (데이블) was founded in **2015** by **이채현 (Lee Chae-hyun, CEO)** and three co-founders who had built the RecoPick recommendation venture inside SK Planet. The name itself encodes the thesis — "Data" + "able", doing everything possible with data. Lee, a POSTECH computer-science graduate with a background in big-data processing and recommendation algorithms, framed the company around a single mission: to "connect users, media, and content" (사용자와 미디어, 콘텐츠를 연결하자).
-
-The product grew into two linked engines: **Dable News**, a personalized content-discovery widget that recommends articles to readers on media sites, and **Dable Native Ad**, described as Asia's largest native ad exchange. Together they process the behavior of **500 million-plus monthly users** through machine learning, powering personalized recommendations and auto-optimized native campaigns. By 2021 Dable had passed **3,000 media partnerships** and expanded across 10+ Asia-Pacific markets — Korea, Japan, Taiwan, Indonesia, Vietnam, Malaysia, Thailand, Hong Kong, Singapore, and beyond — before being acquired by Yanolja.
-
-What Dable's design refuses, visible in the site: the cluttered, banner-heavy chrome of legacy ad networks and the dark-pattern urgency of performance marketing. What it embraces: a flat, cinematic, presentation-like interface; two disciplined brand hues (blue for action, mint for the alternate); geometric Poppins display over calm Open Sans copy; and a technology story told through capability words and hard numbers rather than superlatives.
-
-## 12. Principles
-
-1. **Lead with capability.** The homepage is three technology words, not a slogan. *UI implication:* let the feature word and the metric carry the section; keep decoration minimal.
-2. **One action, one color.** Blue (`#0071ce`) means "do this." *UI implication:* reserve the saturated blue exclusively for the primary CTA so the next step is unambiguous; the mint (`#56cfc2`) is the single sanctioned alternate.
-3. **Flat and fast.** Cinematic clarity beats decorative depth. *UI implication:* no shadows; separate sections with full-width color bands and let color do the work.
-4. **Two voices, two fonts.** *UI implication:* Poppins for feature words and interactive chrome; Open Sans for the reading layer — never blend the two roles.
-5. **Prove it with numbers.** Trust in adtech comes from scale. *UI implication:* surface concrete counts (users, media partners, markets) rather than adjectives.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Dable user segments (performance advertisers, media/publisher partners, adtech buyers across APAC), not individual people.*
-
-**정민수, 34, 서울.** A performance marketer at a mid-size ecommerce brand buying native campaigns. Cares that auto-optimization actually lowers his cost-per-acquisition and that the reporting is legible. Chose Dable because the pitch led with the machine-learning capability and concrete results, not with hype.
-
-**Aria Tan, 29, Singapore.** A publisher-side partnerships lead evaluating content-discovery widgets for a regional media network. Values that Dable is present across APAC and integrates cleanly; wants a partner whose product looks engineered, not like a legacy banner network.
-
-**김서연, 41, 판교.** A marketing director allocating budget across channels. Uses Dable's scale numbers (media partners, monthly users) to justify the buy internally. Trusts the calm, capability-first brand tone over urgency-driven ad tooling.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no campaign/report data)** | White canvas. A single Body Grey (`#3d3d3d`) line explaining there is nothing yet, with one blue (`#0071ce`) pill CTA to create the first campaign. No clutter. |
-| **Empty (saved list, none yet)** | Muted (`#8a8a8a`) single line noting nothing saved, plus a path back. Calm and factual. |
-| **Loading (dashboard/results)** | Flat skeleton blocks on the grey surface (`#efefef`) at final dimensions — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Subtle blue (`#0071ce`) progress indicator; previous values stay visible. |
-| **Error (fetch/compute failed)** | Inline message in Body Grey (`#3d3d3d`) with a plain-language explanation and a retry. Never a bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "필수". |
-| **Success (campaign submitted)** | Brief inline confirmation in a calm tone; next-step detail linked below. No celebratory emoji. |
-| **Skeleton** | `#efefef` blocks at final dimensions, square corners, flat pulse. |
-| **Disabled** | Faint (`#cccccc`) text on a neutral (`#e8e8e8`) surface; blue actions fade rather than switch to grey to preserve the brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 240ms | Band/section reveal, dropdown, sheet |
-| `motion-slow` | 360ms | Full-screen hero slide transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, sheets, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is presentation-driven and quiet — the site scrolls like a deck, with full-screen hero bands revealing one idea at a time at `motion-slow / ease-standard`. Pills respond to press with a subtle scale/opacity shift; section content fades in from below at `motion-standard / ease-enter`. No bounce or spring — an adtech platform signals steadiness and precision, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the hero bands snap into place; the product stays fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on 2 surfaces:
-- https://dable.io/ko/ (homepage) — hero feature words "Personalization"/"Machine learning"/"Auto-optimization"
-  Poppins 56px weight 400 color rgb(0,0,0); primary CTA "자세히 보기" bg rgb(0,113,206) #0071ce radius 50px
-  padding 17px 44px Poppins 14px white text; nav links Poppins 13px weight 600 white; body font "Open Sans" 14px
-  color rgb(0,0,0); box-shadow none across hero/nav/headings/buttons; document.title
-  "네이티브 광고와 콘텐츠 디스커버리".
-- https://dable.io/ko/advertising/ (product page) — headings Open Sans 35px/26px/22px/18px(700); CTAs:
-  blue #0071ce "광고계정 생성하기"/"상품소개서 다운로드"/"시작하기"; mint rgb(86,207,194) #56cfc2 "기본 견적 확인";
-  white ghost pill rgb(255,255,255) bg text rgb(43,43,43) #2b2b2b "서비스 문의하기"; grey pill rgb(232,232,232)
-  #e8e8e8 bg text rgb(111,111,111) #6f6f6f "콘텐츠 검토 가이드"; document.title
-  "인공 지능 기반의 네이티브 광고를 통한 적합한 고객 발견 | Dable".
-
-Token-level claims (§1-9) are sourced from this live inspection; see web/references/dable/.verification.md
-for the full raw-sample list and the Tier-2 conflict matrix.
-
-Voice samples (§10) are verbatim from the live homepage title, the advertising product title, and the product
-hero heading.
-
-Brand narrative (§11): Dable (데이블) founded 2015; CEO 이채현 (Lee Chae-hyun), POSTECH CS; four founders out of
-SK Planet's RecoPick recommendation venture; name = "Data" + "able"; mission "사용자와 미디어, 콘텐츠를 연결하자";
-Dable News (content discovery) + Dable Native Ad (Asia's largest native ad exchange); 500M+ monthly users;
-3,000+ media partners by 2021; APAC expansion (Japan/Taiwan/Indonesia/Vietnam/Malaysia/Thailand/Hong Kong/
-Singapore); acquired by Yanolja. Sourced from Dable's own /dable-story/ page and public interviews
-(startuptoday.kr, theteams.kr). Specific figures beyond the site are widely documented public facts, not
-directly quoted from a single verified Dable statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Dable user segments (advertisers,
-publisher partners, adtech buyers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one color", "flat and fast as a rejection of legacy banner-network
-chrome") are editorial readings connecting Dable's observed design to its positioning, not directly sourced
-Dable statements.
--->
+- **Contrast, `button-mint`.** Text `#ffffff` on `#56cfc2` measures 1.89:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-neutral`.** Text `#6f6f6f` on `#e8e8e8` measures 4.10:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

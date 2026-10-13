@@ -1,67 +1,157 @@
 ---
-id: mikan
 name: mikan
-country: JP
-category: education
-homepage: "https://mikan.link/"
-primary_color: "#ff4c0a"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=mikan.com&sz=128"
-verified: "2026-06-17"
-added: "2026-06-17"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "primary = corporate-site brand orange (#ff4c0a) on every CTA + section heading; mikan for School (school.mikan.com) runs a warmer marigold (#fd9b12) + accent orange (#ff7f09) with a 3D hard-shadow (#e26f00) button. Deep navy (#001c46) bands + near-black text (#000e22 / #333333). CJK display via Hiragino Kaku Gothic ProN."
-  colors:
-    primary: "#ff4c0a"
-    marigold: "#fd9b12"
-    accent-orange: "#ff7f09"
-    orange-shadow: "#e26f00"
-    navy: "#001c46"
-    ink: "#000e22"
-    text: "#333333"
-    canvas: "#ffffff"
-    surface: "#f7f4f3"
-    surface-grey: "#fafafa"
-    surface-alt: "#f9f9f9"
-    hairline: "#eeeeee"
-    muted: "#666666"
-    on-primary: "#ffffff"
-  typography:
-    family: { display: "Hiragino Kaku Gothic ProN", body: "Noto Sans JP", numeral: "Oswald" }
-    hero:        { size: 36, weight: 900, lineHeight: 1.4, use: "Corporate hero copy, Hiragino weight 900" }
-    section:     { size: 60, weight: 900, use: "Large English section labels (Service), brand orange" }
-    section-jp:  { size: 36, weight: 900, use: "Japanese section headings, brand orange" }
-    school-h2:   { size: 32, weight: 700, lineHeight: 1.5, use: "mikan for School section titles, Noto Sans 700" }
-    school-h3:   { size: 24, weight: 700, use: "School feature sub-heads, Noto Sans JP 700" }
-    step-num:    { size: 46, weight: 600, use: "Step numerals 01/02/03, Oswald, marigold" }
-    body:        { size: 16, weight: 400, lineHeight: 1.7, use: "Standard reading text" }
-    nav:         { size: 16, weight: 700, use: "Top nav links, weight 700" }
-    button:      { size: 15, weight: 700, use: "Corporate CTA label" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 30, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, lg: 12, xl: 20, full: 320 }
-  shadow:
-    none: "none"
-    hard-3d: "#e26f00 0px 4px 0px 0px"
-  components:
-    button-primary: { type: button, bg: "#ff4c0a", fg: "#ffffff", radius: "6px", padding: "15px 30px", height: "48px", font: "15px / 700", use: "Corporate CTA — 採用情報 / View More" }
-    button-school-fill: { type: button, bg: "#ff7f09", fg: "#ffffff", radius: "8px", padding: "17px 30px", height: "61px", shadow: "#e26f00 0px 4px 0px 0px", font: "16px / 400", use: "mikan for School primary — 無料トライアルのお申し込み, 3D hard-shadow" }
-    button-school-outline: { type: button, bg: "#ffffff", fg: "#333333", border: "2px solid #ff7f09", radius: "8px", padding: "17px 30px", height: "65px", shadow: "#e26f00 0px 4px 0px 0px", font: "16px / 400", use: "School secondary — 資料請求する" }
-    button-download: { type: button, bg: "#fd9b12", fg: "#ffffff", radius: "4px", height: "44px", font: "15px / 400", use: "School 資料ダウンロード marigold pill" }
-    news-card: { type: card, bg: "#ffffff", fg: "#333333", radius: "10px", padding: "20px", use: "News / お知らせ list card, flat" }
-    job-card: { type: card, bg: "#ffffff", fg: "#333333", radius: "12px", padding: "20px", use: "Careers posting card 🍊" }
-    review-card: { type: card, bg: "#ffffff", fg: "#333333", radius: "8px", use: "Note interview / review card" }
-    nav-link: { type: tab, fg: "#333333", font: "16px / 700", use: "Top nav item (Top / About / Members)", active: "brand orange #ff4c0a text on active" }
-    step-badge: { type: badge, fg: "#fd9b12", font: "46px / 600 Oswald", use: "Step numeral 01/02/03 on School" }
-  components_harvested: true
+colors:
+  primary: '#ff4c0a'
+  marigold: '#fd9b12'
+  accent-orange: '#ff7f09'
+  orange-shadow: '#e26f00'
+  navy: '#001c46'
+  ink: '#000e22'
+  text: '#333333'
+  canvas: '#ffffff'
+  surface: '#f7f4f3'
+  surface-grey: '#fafafa'
+  surface-alt: '#f9f9f9'
+  hairline: '#eeeeee'
+  muted: '#666666'
+  on-primary: '#ffffff'
+typography:
+  hero:
+    fontSize: 36px
+    fontWeight: 900
+    lineHeight: 1.4
+    use: Corporate hero copy, Hiragino weight 900
+  section:
+    fontSize: 60px
+    fontWeight: 900
+    use: Large English section labels (Service), brand orange
+  section-jp:
+    fontSize: 36px
+    fontWeight: 900
+    use: Japanese section headings, brand orange
+  school-h2:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: mikan for School section titles, Noto Sans 700
+  school-h3:
+    fontSize: 24px
+    fontWeight: 700
+    use: School feature sub-heads, Noto Sans JP 700
+  step-num:
+    fontSize: 46px
+    fontWeight: 600
+    use: Step numerals 01/02/03, Oswald, marigold
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.7
+    use: Standard reading text
+  nav:
+    fontSize: 16px
+    fontWeight: 700
+    use: Top nav links, weight 700
+  button:
+    fontSize: 15px
+    fontWeight: 700
+    use: Corporate CTA label
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 12px
+  xl: 20px
+  full: 320px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 30
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ff4c0a'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 15px 30px
+    height: 48px
+    typography: 15px / 700
+    use: Corporate CTA — 採用情報 / View More
+  button-school-fill:
+    type: button
+    backgroundColor: '#ff7f09'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 17px 30px
+    height: 61px
+    shadow: '#e26f00 0px 4px 0px 0px'
+    typography: 16px / 400
+    use: mikan for School primary — 無料トライアルのお申し込み, 3D hard-shadow
+  button-school-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '2px solid #ff7f09'
+    rounded: 8px
+    padding: 17px 30px
+    height: 65px
+    shadow: '#e26f00 0px 4px 0px 0px'
+    typography: 16px / 400
+    use: School secondary — 資料請求する
+  button-download:
+    type: button
+    backgroundColor: '#fd9b12'
+    textColor: '#ffffff'
+    rounded: 4px
+    height: 44px
+    typography: 15px / 400
+    use: School 資料ダウンロード marigold pill
+  news-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    rounded: 10px
+    padding: 20px
+    use: News / お知らせ list card, flat
+  job-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    rounded: 12px
+    padding: 20px
+    use: Careers posting card 🍊
+  review-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    rounded: 8px
+    use: Note interview / review card
+  nav-link:
+    type: tab
+    textColor: '#333333'
+    typography: 16px / 700
+    use: Top nav item (Top / About / Members)
+    active: 'brand orange #ff4c0a text on active'
+  step-badge:
+    type: badge
+    textColor: '#fd9b12'
+    typography: 46px / 600 Oswald
+    use: Step numeral 01/02/03 on School
+fonts:
+  roles:
+    display: Hiragino Kaku Gothic ProN
+    body: Noto Sans JP
+    numeral: Oswald
 ---
 
 # Design System Inspiration of mikan
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 mikan (英語アプリmikan) is Japan's most-downloaded English-vocabulary learning app — over 10 million downloads — and its surfaces read exactly as the product promises: bright, friendly, and relentlessly encouraging. The corporate site (`mikan.link`) opens on a warm off-white canvas (`#f7f4f3`) and white cards (`#ffffff`), with a single high-energy citrus orange (`#ff4c0a`) doing all the heavy lifting. That orange is the brand's namesake — *mikan* is the Japanese mandarin orange — and it appears on every call-to-action, every English section label ("Service", "News"), and every Japanese section heading. The eye is trained to read orange as "go here, do this," while text sits in a calm near-black charcoal (`#333333`) and a deep navy (`#000e22`) so the page never feels shouty despite the saturated accent.
 
@@ -79,14 +169,40 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 - Conservative radius ladder: 4px → 6px → 8px → 10px → 12px → 20px cards
 - Oswald numerals (`#fd9b12` marigold) for step counters — numbered-tutorial cadence
 
-## Primary tasks
+### Primary tasks
 
 - Build English vocabulary in short sessions during a commute
 - Finish a lesson and see the win confirmed on screen
 - Save words for later and come back to study them
 - Manage a class's English study at scale as a teacher
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+mikan (株式会社mikan) builds Japan's most-used English-vocabulary learning app, 英語アプリmikan, which has surpassed 10 million downloads ("1000万ダウンロード突破" stated on the homepage). The product's premise is behavioral, not just instructional: language acquisition is hard mostly because momentum is hard to sustain, so mikan engineers the experience around "小さな『できた』" — small, frequent, felt moments of success — to keep learners coming back day after day. The name itself, *mikan* (みかん, the mandarin orange), gives the brand its cheerful citrus identity and its signature orange.
+
+The company has grown from a single consumer app into a two-sided education business: the toC `英語アプリmikan` for individual learners, and `mikan for School` (`school.mikan.com`), a toB service for schools and cram schools that wraps the same learning engine in teacher-facing management tools ("先生の学習管理を効率化"). Partnerships with established Japanese education publishers (KADOKAWA's 『真・英文法大全』, Z会's 速読速聴・英単語 series) extend the content library, positioning mikan as infrastructure for English study rather than a single app.
+
+What mikan refuses, visible in its design: the cold, exam-pressure aesthetic of legacy Japanese cram-school materials, and the gamified-but-hollow look of attention-farming apps. What it embraces: a bright, friendly citrus identity; heavy, approachable gothic type; flat, fast, low-friction layouts; and playful tactile buttons that make tapping "next" feel like a small reward. The design is the mission rendered visually — learning that feels like a stack of small wins.
+
+### Principles
+
+1. **Celebrate small wins.** The product is built on "小さな『できた』." *UI implication:* surface progress visibly and frequently; reward the next tap with a tactile, satisfying affordance (the School 3D hard-shadow button).
+2. **One bright signal.** Orange (`#ff4c0a`) means "this is mikan, do this." *UI implication:* reserve the saturated citrus for CTAs and section identity so the action is never ambiguous; don't dilute it with decorative color.
+3. **Friendly, never intimidating.** English study should feel approachable. *UI implication:* heavy but rounded gothic type, generous whitespace, warm off-white canvas — no cram-school severity.
+4. **Flat and fast, with a tactile reward.** *UI implication:* keep marketing chrome flat (tint + hairline + navy bands); reserve the playful 3D shadow for the moments where a tap should feel good.
+5. **Two audiences, one warmth.** Learners and teachers both get an encouraging tone. *UI implication:* the toB School surface stays as friendly as the consumer app while adding concrete benefit framing.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable mikan user segments (Japanese students preparing for English exams, working adults relearning vocabulary, teachers adopting toB tools), not individual people.*
+
+**佐藤ひなた, 17, 名古屋.** A high-schooler studying for university entrance English. Uses mikan in short bursts between classes because the "できた！" feedback keeps her going when flashcards would bore her. Chose mikan because it felt like a game that happened to teach, not a test.
+
+**田中健, 34, 東京.** A working professional rebuilding his English vocabulary for work. Values that mikan turns a dreaded chore into a daily streak of small wins he can finish on the train. Trusts the brand's calm, non-pushy tone.
+
+**山本先生, 45, 新潟.** A high-school English teacher who adopted mikan for School to manage student study at scale. Appreciates that the toB dashboard streamlines assignment tracking ("先生の学習管理を効率化") while students still get the friendly app they already like.
+
+## Colors
 
 ### Primary
 - **mikan Orange** (`#ff4c0a`): The namesake citrus brand color. CTA backgrounds, English section labels ("Service", "News"), and Japanese section headings on the corporate site. The system's single saturated "action + identity" hue.
@@ -110,7 +226,7 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 - **Orange Shadow** (`#e26f00`): The solid offset color of the School 3D hard-shadow button (`#e26f00 0px 4px 0px 0px`) — a darker burnt-orange that grounds the pressable affordance.
 - **On-Primary White** (`#ffffff`): Text/icon color on all orange and navy fills.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display (corporate)**: `Hiragino Kaku Gothic ProN` — the full stack is `-apple-system, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif`. Weight 900 at display sizes; weight 700 for nav.
@@ -139,7 +255,135 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 - **Oswald owns numerals**: condensed Latin numerals (01/02/03) give the toB step tutorials a crisp, counted cadence distinct from the rounded gothic body.
 - **Two surfaces, two body fonts**: the corporate site leans on the system Hiragino stack; `mikan for School` standardizes on Noto Sans JP — both gothic, both friendly, never serif for UI.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px (with 4px sub-step)
+- Scale: 4px, 8px, 12px, 16px, 20px, 30px, 48px, 64px
+- Notable: CTA horizontal padding lands at 30px (measured) giving the orange buttons a generous, tappable hit area; cards use 20px / 24px inner padding
+
+### Grid & Container
+- Centered single-column hero with the 36px Hiragino weight-900 headline as the anchor
+- News / careers cards arranged in responsive multi-column grids that wrap to single column on mobile
+- Feature sections alternate white (`#ffffff`) and warm canvas (`#f7f4f3`), broken by deep navy (`#001c46`) full-width bands
+- mikan for School uses numbered (01/02/03) feature blocks with Oswald counters anchoring each step
+
+### Whitespace Philosophy
+- **Friendly breathing room**: despite being information-rich ed-tech, the surfaces stay airy with generous vertical rhythm between sections.
+- **Flat segmentation**: corporate sections separate by background tint (warm canvas vs white) and `#eeeeee` hairlines rather than heavy elevation.
+- **Color as anchor**: deep navy bands and orange section labels create rhythm without arbitrary decoration.
+
+### Border Radius Scale
+- XSmall (4px): School download pill, small inner elements
+- Small (6px): corporate CTA buttons
+- Medium (8px): School CTAs, review cards
+- Large (10–12px): news cards, careers cards — the card workhorse
+- XLarge (20px): larger feature containers
+- Pill (320px / full): rounded avatar/icon chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, cards stack |
+| Tablet | 640-1024px | 2-up feature/news cards, moderate padding |
+| Desktop | 1024-1366px | Full layout, multi-column news/careers grids, navy bands full-width |
+
+#### Touch Targets
+- Corporate CTA at 48px height with 15px 30px padding — comfortably tappable
+- School primary CTA at 61px height — large, unmistakable, with 3D affordance
+- Nav links at 16px weight 700 within a generous header
+
+#### Collapsing Strategy
+- Hero: 36px Hiragino headline scales down on mobile, weight 900 maintained
+- News / careers card grids: multi-column → single column stack
+- Navy contrast bands and warm-canvas sections maintain full-width treatment
+- School numbered steps (01/02/03) stack vertically on narrow viewports
+
+#### Image Behavior
+- App screenshots and illustrations sit flat (no shadow) on corporate, consistent with the flat system
+- Cards maintain their 8–12px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Corporate page background, cards, headings |
+| Tint (Level 1) | `#f7f4f3` / `#fafafa` background shift | Section separation without elevation |
+| Hairline (Level 2) | `1px solid #eeeeee` border | Card outlines, dividers |
+| Hard-3D (Level 3) | `#e26f00 0px 4px 0px 0px` solid offset | mikan for School pressable buttons only |
+
+**Shadow Philosophy**: mikan's corporate site is near-shadowless — live inspection found `box-shadow: none` across the hero, nav, headings, and most cards. Depth and grouping are communicated through flat tinted surfaces (`#f7f4f3`, `#fafafa`), thin `#eeeeee` hairlines, and deep navy (`#001c46`) contrast bands. The one deliberate exception lives on `mikan for School`: a solid-offset **3D hard-shadow** (`#e26f00 0px 4px 0px 0px`) on the primary buttons — not a soft blur but a flat, game-like, pressable affordance that matches the more energetic toB tone. This split is intentional: calm flat marketing chrome on corporate, playful tactile buttons where the product wants kids and teachers to tap.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+- `shadow.hard-3d`: `#e26f00 0px 4px 0px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus |
+| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, panels |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is friendly but restrained. The signature interaction is the School **3D hard-shadow button press** — on tap, the `#e26f00 0px 4px 0px 0px` offset collapses so the button visibly "presses down," a tactile reward consistent with the "できた！" philosophy. Section content fades in from below at `motion-standard / ease-enter`. Celebration moments (lesson complete) may use a brief bouncy accent, but routine UI avoids gratuitous spring. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the button-press offset becomes a static state change; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle:
+- https://mikan.link/ (corporate site): brand orange rgb(255,76,10) #ff4c0a on every CTA + section
+  heading; deep navy rgb(0,28,70) #001c46 bands; text rgb(51,51,51) #333333 / rgb(0,14,34) #000e22;
+  warm canvas rgb(247,244,243) #f7f4f3; Hiragino Kaku Gothic ProN weight 900 display; nav weight 700.
+- https://school.mikan.com/ (mikan for School, toB): accent orange rgb(255,127,9) #ff7f09 primary CTA
+  with 3D hard-shadow rgb(226,111,0) #e26f00 0px 4px 0px; marigold rgb(253,155,18) #fd9b12 download +
+  step numerals; Noto Sans / Noto Sans JP weight 700 headings; Oswald 46px numerals.
+
+Token-level claims (§1-9) are sourced from this live inspection.
+
+Voice samples (§10) are verbatim from the live surfaces:
+- "小さな『できた』の積み重ねをずっと支える" — mikan.link corporate hero
+- "生徒の学習が続く仕組み", "できた！を実感できるmikanの学習ステップ" — school.mikan.com
+
+Brand narrative (§11): 株式会社mikan builds 英語アプリmikan ("1000万ダウンロード突破" stated on
+mikan.link homepage); two-sided business with mikan for School (school.mikan.com); content
+partnerships with KADOKAWA (『真・英文法大全』) and Z会 (速読速聴・英単語) are stated as partnership
+cards on the homepage. The name mikan = みかん (mandarin orange) is the source of the citrus brand
+identity. These are drawn from the live homepage; broader corporate facts are general public
+knowledge, not quoted from a single verified mikan statement in this turn.
+
+A public mikan DesignSystem (Figma) is documented by mikan designers (note.com/jirosh1998
+"Figmaのリファクタリングからはじめるデザインシステムの構築") describing a semantic color model
+(Background/Surface/Text/UI/Border/Social) with "mikan Orange" as the primary brand color, Component/
+Type/Size/status naming, and cross-platform iOS/Android JP+EN typography — corroborating the orange-
+primary, friendly-gothic system observed live. Exact in-app hex codes are not disclosed there, so all
+hex values in this doc come from the live website inspection above, not from the Figma article.
+
+Personas (§13) are fictional archetypes informed by publicly observable mikan user segments
+(Japanese exam-prep students, adult relearners, teachers adopting toB tools). Names are illustrative;
+they do not refer to real people.
+
+Interpretive claims (e.g., "the design is the mission rendered visually", "one bright signal",
+"flat and fast with a tactile reward") are editorial readings connecting mikan's observed design to
+its stated mission, not directly sourced mikan statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -224,44 +468,21 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 **Tier 2 sources:** getdesign.md/mikan — no entry (empty); styles.refero.design/?q=mikan — no brand-specific result (only default trending cards returned)
 **Conflicts unresolved:** none. Two-surface palette split documented intentionally: corporate brand orange `#ff4c0a` (flat 6px CTA) vs mikan for School accent orange `#ff7f09` (3D hard-shadow 8px CTA) + marigold `#fd9b12`. Both retained as distinct variant subgroups in §4.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px (with 4px sub-step)
-- Scale: 4px, 8px, 12px, 16px, 20px, 30px, 48px, 64px
-- Notable: CTA horizontal padding lands at 30px (measured) giving the orange buttons a generous, tappable hit area; cards use 20px / 24px inner padding
+| State | Treatment |
+|---|---|
+| **Empty (no study history)** | Warm canvas (`#f7f4f3`). Single charcoal (`#333333`) line encouraging a first session, with one orange (`#ff4c0a`) CTA to start. Friendly, never blank or scolding. |
+| **Empty (no saved word lists)** | Muted Grey (`#666666`) single line noting nothing saved yet, plus a path back to study. Calm and inviting. |
+| **Loading (content fetch)** | Skeleton blocks at final card dimensions on `#fafafa`, 10px radius, flat pulse consistent with the shadow-light system. |
+| **Loading (button press)** | School 3D buttons depress (offset shadow collapses) on tap; previous content stays visible. |
+| **Error (network)** | Inline message in charcoal with a plain, encouraging explanation and a retry — no bare "エラーが発生しました." States the next step. |
+| **Error (form validation)** | Field-level message below the input describing what's valid, in a warm tone — not just "必須". |
+| **Success (lesson complete)** | Bright "できた！" celebration moment; orange/marigold accent confirms the win. The reward IS the success state. |
+| **Skeleton** | `#fafafa` blocks at final dimensions, 8–10px radius, flat pulse. |
+| **Disabled** | Muted Grey (`#666666`) text on reduced-opacity surface; orange actions fade rather than turn grey to preserve brand read. |
 
-### Grid & Container
-- Centered single-column hero with the 36px Hiragino weight-900 headline as the anchor
-- News / careers cards arranged in responsive multi-column grids that wrap to single column on mobile
-- Feature sections alternate white (`#ffffff`) and warm canvas (`#f7f4f3`), broken by deep navy (`#001c46`) full-width bands
-- mikan for School uses numbered (01/02/03) feature blocks with Oswald counters anchoring each step
-
-### Whitespace Philosophy
-- **Friendly breathing room**: despite being information-rich ed-tech, the surfaces stay airy with generous vertical rhythm between sections.
-- **Flat segmentation**: corporate sections separate by background tint (warm canvas vs white) and `#eeeeee` hairlines rather than heavy elevation.
-- **Color as anchor**: deep navy bands and orange section labels create rhythm without arbitrary decoration.
-
-### Border Radius Scale
-- XSmall (4px): School download pill, small inner elements
-- Small (6px): corporate CTA buttons
-- Medium (8px): School CTAs, review cards
-- Large (10–12px): news cards, careers cards — the card workhorse
-- XLarge (20px): larger feature containers
-- Pill (320px / full): rounded avatar/icon chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Corporate page background, cards, headings |
-| Tint (Level 1) | `#f7f4f3` / `#fafafa` background shift | Section separation without elevation |
-| Hairline (Level 2) | `1px solid #eeeeee` border | Card outlines, dividers |
-| Hard-3D (Level 3) | `#e26f00 0px 4px 0px 0px` solid offset | mikan for School pressable buttons only |
-
-**Shadow Philosophy**: mikan's corporate site is near-shadowless — live inspection found `box-shadow: none` across the hero, nav, headings, and most cards. Depth and grouping are communicated through flat tinted surfaces (`#f7f4f3`, `#fafafa`), thin `#eeeeee` hairlines, and deep navy (`#001c46`) contrast bands. The one deliberate exception lives on `mikan for School`: a solid-offset **3D hard-shadow** (`#e26f00 0px 4px 0px 0px`) on the primary buttons — not a soft blur but a flat, game-like, pressable affordance that matches the more energetic toB tone. This split is intentional: calm flat marketing chrome on corporate, playful tactile buttons where the product wants kids and teachers to tap.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the citrus brand orange (`#ff4c0a`) for every corporate CTA and section heading — it's the namesake "action + identity" color
@@ -283,31 +504,26 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 - Set Japanese headlines in a thin weight — display is always weight 700–900
 - Use positive, decorative letter-spacing on dense CJK body — keep it tight and legible
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, cards stack |
-| Tablet | 640-1024px | 2-up feature/news cards, moderate padding |
-| Desktop | 1024-1366px | Full layout, multi-column news/careers grids, navy bands full-width |
+mikan's voice is **warm, encouraging, and achievement-celebrating** — an English-learning companion that turns a daunting task (memorizing tens of thousands of words) into a stream of small wins. The brand mission "小さな『できた』の積み重ねをずっと支える" ("supporting the steady accumulation of small *I-did-it!* moments") sets the register: motivational, kind, never scolding. Copy treats the learner as someone capable who just needs momentum, not a struggling student to be lectured. The toB `mikan for School` voice stays equally friendly while adding concrete teacher-facing benefit framing ("先生の学習管理を効率化" / "streamline teachers' study management").
 
-### Touch Targets
-- Corporate CTA at 48px height with 15px 30px padding — comfortably tappable
-- School primary CTA at 61px height — large, unmistakable, with 3D affordance
-- Nav links at 16px weight 700 within a generous header
+| Context | Tone |
+|---|---|
+| Mission / hero | Warm, motivational. "小さな『できた』の積み重ねをずっと支える." Celebrates progress. |
+| Service labels | Plain English/Japanese. "Service", "英語アプリmikan", "mikan for School". |
+| CTAs | Direct, low-pressure. "資料ダウンロード", "無料トライアルのお申し込み", "View More →". |
+| School benefit copy | Concrete and outcome-framed. "生徒の学習が続く仕組み", "先生の学習管理を効率化". |
+| Careers cards | Friendly, 🍊-prefixed, role-clear. "英語アプリmikanフロントエンドエンジニア". |
 
-### Collapsing Strategy
-- Hero: 36px Hiragino headline scales down on mobile, weight 900 maintained
-- News / careers card grids: multi-column → single column stack
-- Navy contrast bands and warm-canvas sections maintain full-width treatment
-- School numbered steps (01/02/03) stack vertically on narrow viewports
+**Voice samples (verbatim from live surfaces):**
+- "小さな『できた』の積み重ねをずっと支える" — corporate hero (mission, achievement-framed). *(verified live 2026-06-17)*
+- "生徒の学習が続く仕組み" — mikan for School section heading ("the system that keeps students learning"). *(verified live 2026-06-17)*
+- "できた！を実感できるmikanの学習ステップ" — School feature sub-head ("mikan's study steps where you feel *I did it!*"). *(verified live 2026-06-17)*
 
-### Image Behavior
-- App screenshots and illustrations sit flat (no shadow) on corporate, consistent with the flat system
-- Cards maintain their 8–12px radius across breakpoints
+**Forbidden register**: shame-based study pressure, exam-anxiety fear appeals, cold institutional tone, undefined jargon. mikan keeps the tone of an encouraging coach, not a stern teacher.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA / brand: mikan Orange (`#ff4c0a`)
@@ -337,121 +553,10 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-mikan's voice is **warm, encouraging, and achievement-celebrating** — an English-learning companion that turns a daunting task (memorizing tens of thousands of words) into a stream of small wins. The brand mission "小さな『できた』の積み重ねをずっと支える" ("supporting the steady accumulation of small *I-did-it!* moments") sets the register: motivational, kind, never scolding. Copy treats the learner as someone capable who just needs momentum, not a struggling student to be lectured. The toB `mikan for School` voice stays equally friendly while adding concrete teacher-facing benefit framing ("先生の学習管理を効率化" / "streamline teachers' study management").
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Mission / hero | Warm, motivational. "小さな『できた』の積み重ねをずっと支える." Celebrates progress. |
-| Service labels | Plain English/Japanese. "Service", "英語アプリmikan", "mikan for School". |
-| CTAs | Direct, low-pressure. "資料ダウンロード", "無料トライアルのお申し込み", "View More →". |
-| School benefit copy | Concrete and outcome-framed. "生徒の学習が続く仕組み", "先生の学習管理を効率化". |
-| Careers cards | Friendly, 🍊-prefixed, role-clear. "英語アプリmikanフロントエンドエンジニア". |
-
-**Voice samples (verbatim from live surfaces):**
-- "小さな『できた』の積み重ねをずっと支える" — corporate hero (mission, achievement-framed). *(verified live 2026-06-17)*
-- "生徒の学習が続く仕組み" — mikan for School section heading ("the system that keeps students learning"). *(verified live 2026-06-17)*
-- "できた！を実感できるmikanの学習ステップ" — School feature sub-head ("mikan's study steps where you feel *I did it!*"). *(verified live 2026-06-17)*
-
-**Forbidden register**: shame-based study pressure, exam-anxiety fear appeals, cold institutional tone, undefined jargon. mikan keeps the tone of an encouraging coach, not a stern teacher.
-
-## 11. Brand Narrative
-
-mikan (株式会社mikan) builds Japan's most-used English-vocabulary learning app, 英語アプリmikan, which has surpassed 10 million downloads ("1000万ダウンロード突破" stated on the homepage). The product's premise is behavioral, not just instructional: language acquisition is hard mostly because momentum is hard to sustain, so mikan engineers the experience around "小さな『できた』" — small, frequent, felt moments of success — to keep learners coming back day after day. The name itself, *mikan* (みかん, the mandarin orange), gives the brand its cheerful citrus identity and its signature orange.
-
-The company has grown from a single consumer app into a two-sided education business: the toC `英語アプリmikan` for individual learners, and `mikan for School` (`school.mikan.com`), a toB service for schools and cram schools that wraps the same learning engine in teacher-facing management tools ("先生の学習管理を効率化"). Partnerships with established Japanese education publishers (KADOKAWA's 『真・英文法大全』, Z会's 速読速聴・英単語 series) extend the content library, positioning mikan as infrastructure for English study rather than a single app.
-
-What mikan refuses, visible in its design: the cold, exam-pressure aesthetic of legacy Japanese cram-school materials, and the gamified-but-hollow look of attention-farming apps. What it embraces: a bright, friendly citrus identity; heavy, approachable gothic type; flat, fast, low-friction layouts; and playful tactile buttons that make tapping "next" feel like a small reward. The design is the mission rendered visually — learning that feels like a stack of small wins.
-
-## 12. Principles
-
-1. **Celebrate small wins.** The product is built on "小さな『できた』." *UI implication:* surface progress visibly and frequently; reward the next tap with a tactile, satisfying affordance (the School 3D hard-shadow button).
-2. **One bright signal.** Orange (`#ff4c0a`) means "this is mikan, do this." *UI implication:* reserve the saturated citrus for CTAs and section identity so the action is never ambiguous; don't dilute it with decorative color.
-3. **Friendly, never intimidating.** English study should feel approachable. *UI implication:* heavy but rounded gothic type, generous whitespace, warm off-white canvas — no cram-school severity.
-4. **Flat and fast, with a tactile reward.** *UI implication:* keep marketing chrome flat (tint + hairline + navy bands); reserve the playful 3D shadow for the moments where a tap should feel good.
-5. **Two audiences, one warmth.** Learners and teachers both get an encouraging tone. *UI implication:* the toB School surface stays as friendly as the consumer app while adding concrete benefit framing.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable mikan user segments (Japanese students preparing for English exams, working adults relearning vocabulary, teachers adopting toB tools), not individual people.*
-
-**佐藤ひなた, 17, 名古屋.** A high-schooler studying for university entrance English. Uses mikan in short bursts between classes because the "できた！" feedback keeps her going when flashcards would bore her. Chose mikan because it felt like a game that happened to teach, not a test.
-
-**田中健, 34, 東京.** A working professional rebuilding his English vocabulary for work. Values that mikan turns a dreaded chore into a daily streak of small wins he can finish on the train. Trusts the brand's calm, non-pushy tone.
-
-**山本先生, 45, 新潟.** A high-school English teacher who adopted mikan for School to manage student study at scale. Appreciates that the toB dashboard streamlines assignment tracking ("先生の学習管理を効率化") while students still get the friendly app they already like.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no study history)** | Warm canvas (`#f7f4f3`). Single charcoal (`#333333`) line encouraging a first session, with one orange (`#ff4c0a`) CTA to start. Friendly, never blank or scolding. |
-| **Empty (no saved word lists)** | Muted Grey (`#666666`) single line noting nothing saved yet, plus a path back to study. Calm and inviting. |
-| **Loading (content fetch)** | Skeleton blocks at final card dimensions on `#fafafa`, 10px radius, flat pulse consistent with the shadow-light system. |
-| **Loading (button press)** | School 3D buttons depress (offset shadow collapses) on tap; previous content stays visible. |
-| **Error (network)** | Inline message in charcoal with a plain, encouraging explanation and a retry — no bare "エラーが発生しました." States the next step. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, in a warm tone — not just "必須". |
-| **Success (lesson complete)** | Bright "できた！" celebration moment; orange/marigold accent confirms the win. The reward IS the success state. |
-| **Skeleton** | `#fafafa` blocks at final dimensions, 8–10px radius, flat pulse. |
-| **Disabled** | Muted Grey (`#666666`) text on reduced-opacity surface; orange actions fade rather than turn grey to preserve brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is friendly but restrained. The signature interaction is the School **3D hard-shadow button press** — on tap, the `#e26f00 0px 4px 0px 0px` offset collapses so the button visibly "presses down," a tactile reward consistent with the "できた！" philosophy. Section content fades in from below at `motion-standard / ease-enter`. Celebration moments (lesson complete) may use a brief bouncy accent, but routine UI avoids gratuitous spring. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the button-press offset becomes a static state change; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle:
-- https://mikan.link/ (corporate site): brand orange rgb(255,76,10) #ff4c0a on every CTA + section
-  heading; deep navy rgb(0,28,70) #001c46 bands; text rgb(51,51,51) #333333 / rgb(0,14,34) #000e22;
-  warm canvas rgb(247,244,243) #f7f4f3; Hiragino Kaku Gothic ProN weight 900 display; nav weight 700.
-- https://school.mikan.com/ (mikan for School, toB): accent orange rgb(255,127,9) #ff7f09 primary CTA
-  with 3D hard-shadow rgb(226,111,0) #e26f00 0px 4px 0px; marigold rgb(253,155,18) #fd9b12 download +
-  step numerals; Noto Sans / Noto Sans JP weight 700 headings; Oswald 46px numerals.
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) are verbatim from the live surfaces:
-- "小さな『できた』の積み重ねをずっと支える" — mikan.link corporate hero
-- "生徒の学習が続く仕組み", "できた！を実感できるmikanの学習ステップ" — school.mikan.com
-
-Brand narrative (§11): 株式会社mikan builds 英語アプリmikan ("1000万ダウンロード突破" stated on
-mikan.link homepage); two-sided business with mikan for School (school.mikan.com); content
-partnerships with KADOKAWA (『真・英文法大全』) and Z会 (速読速聴・英単語) are stated as partnership
-cards on the homepage. The name mikan = みかん (mandarin orange) is the source of the citrus brand
-identity. These are drawn from the live homepage; broader corporate facts are general public
-knowledge, not quoted from a single verified mikan statement in this turn.
-
-A public mikan DesignSystem (Figma) is documented by mikan designers (note.com/jirosh1998
-"Figmaのリファクタリングからはじめるデザインシステムの構築") describing a semantic color model
-(Background/Surface/Text/UI/Border/Social) with "mikan Orange" as the primary brand color, Component/
-Type/Size/status naming, and cross-platform iOS/Android JP+EN typography — corroborating the orange-
-primary, friendly-gothic system observed live. Exact in-app hex codes are not disclosed there, so all
-hex values in this doc come from the live website inspection above, not from the Figma article.
-
-Personas (§13) are fictional archetypes informed by publicly observable mikan user segments
-(Japanese exam-prep students, adult relearners, teachers adopting toB tools). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "the design is the mission rendered visually", "one bright signal",
-"flat and fast with a tactile reward") are editorial readings connecting mikan's observed design to
-its stated mission, not directly sourced mikan statements.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ff4c0a` measures 3.34:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-school-fill`.** Text `#ffffff` on `#ff7f09` measures 2.53:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-download`.** Text `#ffffff` on `#fd9b12` measures 2.13:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,193 +1,175 @@
 ---
-id: naverwebtoon
 name: Naver Webtoon
-country: KR
-category: consumer-tech
-homepage: "https://comic.naver.com"
-primary_color: "#00dc64"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=comic.naver.com&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: product-home, url: "https://comic.naver.com/index", inspected: "2026-07-13" }
-    - { id: webtoon-list, kind: product-browse, url: "https://comic.naver.com/webtoon", inspected: "2026-07-13" }
-    - { id: best-challenge, kind: product-creator-discovery, url: "https://comic.naver.com/bestChallenge", inspected: "2026-07-13" }
-  sources:
-    - { id: home-capture, kind: product-surface, url: "https://comic.naver.com/index", captured: "2026-07-13" }
-    - { id: webtoon-list-capture, kind: product-surface, url: "https://comic.naver.com/webtoon", captured: "2026-07-13" }
-    - { id: best-challenge-capture, kind: product-surface, url: "https://comic.naver.com/bestChallenge", captured: "2026-07-13" }
-    - { id: company-about, kind: official-doc, url: "https://about.webtoon.com/", captured: "2026-07-13" }
-    - { id: company-brands, kind: official-doc, url: "https://about.webtoon.com/our-brands?company=naverWebtoon", captured: "2026-07-13" }
-    - { id: font-design, kind: official-doc, url: "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md", captured: "2026-07-13" }
-    - { id: font-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &product { surface_id: home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.surface": *product
-    "tokens.colors.foreground": *product
-    "tokens.colors.muted": *product
-    "tokens.colors.tag-surface": *product
-    "tokens.colors.on-primary": &webtoon { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.family.ui": *product
-    "tokens.typography.brand-title.size": *product
-    "tokens.typography.brand-title.weight": *product
-    "tokens.typography.brand-title.use": *product
-    "tokens.typography.section-title.size": *product
-    "tokens.typography.section-title.weight": *product
-    "tokens.typography.section-title.lineHeight": *product
-    "tokens.typography.section-title.use": *product
-    "tokens.typography.tab.size": *product
-    "tokens.typography.tab.weight": *product
-    "tokens.typography.tab.lineHeight": *product
-    "tokens.typography.tab.use": *product
-    "tokens.typography.tag.size": *product
-    "tokens.typography.tag.weight": *product
-    "tokens.typography.tag.lineHeight": *product
-    "tokens.typography.tag.use": *product
-    "tokens.rounded.square": *product
-    "tokens.rounded.compact": *product
-    "tokens.components.content-tab.type": *product
-    "tokens.components.content-tab.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.content-tab.font": *product
-    "tokens.components.content-tab.states": *product
-    "tokens.components.content-tab.selected": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.content-tab.use": *product
-    "tokens.components.tag-link.type": *product
-    "tokens.components.tag-link.bg": *product
-    "tokens.components.tag-link.fg": *product
-    "tokens.components.tag-link.radius": *product
-    "tokens.components.tag-link.padding": *product
-    "tokens.components.tag-link.font": *product
-    "tokens.components.tag-link.use": *product
-    "tokens.components.pagination.type": &challenge { surface_id: best-challenge, source_id: best-challenge-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.components.pagination.fg": { surface_id: best-challenge, source_id: best-challenge-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"134\"]", captured: "2026-07-13" }
-    "tokens.components.pagination.font": *challenge
-    "tokens.components.pagination.states": *challenge
-    "tokens.components.pagination.use": *challenge
-    "tokens.components.header-search.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-search.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.creator-entry.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.selected": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.type": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.bg": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.fg": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.radius": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.padding": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.height": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.font": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.states": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.sub-nav-link.use": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.type": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.bg": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.fg": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.size": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.font": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.states": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.weekday-heading.use": { surface_id: webtoon-list, source_id: webtoon-list-capture, method: computed-style, selector: "surface-2::h3", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.tag-link-large.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.border": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.qr-code-button.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"364\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.author-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Selector-backed values are restricted to the supplied public comic.naver.com product capture. NAVER global-shell chrome and zero-use font declarations are not product-token substitutes."
-  colors:
-    primary: "#00dc64"
-    surface: "#ffffff"
-    foreground: "#000000"
-    muted: "#666666"
-    tag-surface: "#f6f6f6"
-    on-primary: "#ffffff"
-  typography:
-    family: { ui: "Pretendard" }
-    brand-title: { size: 24, weight: 700, use: "Product header wordmark area" }
-    section-title: { size: 20, weight: 600, lineHeight: 1.05, use: "Product-home section heading" }
-    tab: { size: 15, weight: 500, lineHeight: 1.40, use: "Product content tab" }
-    tag: { size: 14, weight: 500, lineHeight: 2.14, use: "Product-home tag link" }
-  rounded: { square: 0, compact: 4 }
-  components:
-    content-tab: { type: tab, fg: "#666666", font: "15px / 500 Pretendard", selected: "fg #00dc64", states: "rest (aria-selected=false) #666666 and selected (aria-selected=true) #00dc64 captured on all three routes; the seven tab interactions record fg #00dc64 on each newly selected tab; no state frame. Corrected 2026-09-29: fg previously held the selected #00dc64", use: "Product content tabs, selectors home::[data-omd-capture=16] and home::[data-omd-capture=17]" }
-    tag-link: { type: badge, bg: "#f6f6f6", fg: "#666666", radius: "4px", padding: "0px 10px", font: "14px / 500 Pretendard", use: "Product-home tag link, selector home::[data-omd-capture=64]" }
-    pagination: { type: button, fg: "#000000", font: "14px / 500 Pretendard", states: "ten page buttons captured at rest: the first (capture 133) computes fg #00dc64 and the other nine #000000; no aria-current is recorded, so the green is described, not declared as a selected state. The previous control (capture 132) is disabled and computes #000000; it is not read as a rest value. No state frame. Corrected 2026-09-29: fg previously held the first page's #00dc64", use: "Best Challenge page buttons (button.Paginate__page, 28 x 28), selector surface-3::[data-omd-capture=134]; the green first page is surface-3::[data-omd-capture=133]" }
-    header-search: { type: input, bg: "#ffffff", fg: "#000000", radius: "0px", padding: "0px 65px 0px 10px", size: "268px x 35px", font: "14px / 400 / Pretendard", states: "default captured on all three routes; no state frame", use: "Product header search field (input.SearchBar__search_input) at home::[data-omd-capture=\"4\"]; the 35 x 35 search button beside it (capture 5) has no fill" }
-    creator-entry: { type: button, bg: "#00dc64", fg: "#000000", radius: "4px", padding: "11px 33px", height: "39px", font: "12px / 400 / Pretendard", states: "default captured on all three routes; no state frame", use: "Global navigation creator entry (button.GlobalNavigationBar__button_creators) at home::[data-omd-capture=\"14\"], 151 px wide" }
-    gnb-link: { type: tab, bg: "transparent", fg: "#000000", radius: "0px", padding: "0px 18px", height: "55px", font: "16px / 600 / Pretendard", selected: "bg #00dc64, fg #ffffff", states: "six links per route; on each captured route exactly one link computes a #00dc64 fill with #ffffff text, and it moves with the route: the first link on /index (capture 8), the second on /webtoon (capture 9), the fourth on /bestChallenge (capture 11). No aria-current is recorded; the selected value rests on that route-by-route agreement. No state frame", use: "Product global navigation link (a.GlobalNavigationBar__link) at home::[data-omd-capture=\"9\"]; line height 55px, tracking -0.5px" }
-    sub-nav-link: { type: tab, bg: "transparent", fg: "#000000", radius: "0px", padding: "0px 5px", height: "49px", font: "15px / 600 / Pretendard", states: "twelve links on /webtoon and eleven on /bestChallenge; on both routes the first link (capture 16) computes fg #00dc64 and the rest #000000. No aria-selected or aria-current is recorded, so the green first link is described, not declared as a selected state; no state frame", use: "Product sub-navigation link (a.SubNavigationBar__link) at surface-2::[data-omd-capture=\"17\"]; line height 49px, tracking -0.5px" }
-    weekday-heading: { type: card, bg: "transparent", fg: "#000000", size: "169px x 45px", font: "14.04px / 700 / Pretendard", states: "non-interactive; two headings captured on /webtoon: one computes a #00dc64 fill with #ffffff text, the other transparent with #000000; the capture does not record what the green one marks", use: "Weekday column heading (h3.WeekdayMainView__heading) at surface-2::h3" }
-    tag-link-large: { type: badge, bg: "#f6f6f6", fg: "#666666", radius: "4px", padding: "0px 10px", height: "37px", font: "16px / 500 / Pretendard", states: "default captured; no state frame", use: "The common size of the TagGroup__tag class at home::[data-omd-capture=\"130\"]: 184 of the 191 home tag links compute 16px / 500 / 37px (tracking -0.42px); the 14px / 30px tag-link covers the other seven" }
-    qr-code-button: { type: button, bg: "transparent", fg: "#666666", border: "1px #ebebeb", radius: "4px", padding: "0px", size: "172px x 43px", font: "13px / 500 / Pretendard", states: "default captured on home (captures 364-365) and /bestChallenge (captures 210-211); no state frame", use: "Outline QR-code button (button.QrCode__button) at home::[data-omd-capture=\"364\"]; tracking -0.5px" }
-    author-link: { type: button, bg: "transparent", fg: "#000000", height: "20px", font: "14px / 500 / Pretendard", states: "default captured on all three routes (82 occurrences); no state frame", use: "Author-name link (a.ContentAuthor__author) at home::[data-omd-capture=\"23\"]; line height 20px" }
-  components_harvested: true
+colors:
+  primary: '#00dc64'
+  surface: '#ffffff'
+  foreground: '#000000'
+  muted: '#666666'
+  tag-surface: '#f6f6f6'
+  on-primary: '#ffffff'
+typography:
+  brand-title:
+    fontSize: 24px
+    fontWeight: 700
+    use: Product header wordmark area
+  section-title:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.05
+    use: Product-home section heading
+  tab:
+    fontSize: 15px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Product content tab
+  tag:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 2.14
+    use: Product-home tag link
+rounded:
+  square: 0px
+  compact: 4px
+components:
+  content-tab:
+    type: tab
+    textColor: '#666666'
+    typography: 15px / 500 Pretendard
+    selected: 'fg #00dc64'
+    states: 'rest (aria-selected=false) #666666 and selected (aria-selected=true) #00dc64 captured on all three routes; the seven tab interactions record fg #00dc64 on each newly selected tab; no state frame. Corrected 2026-09-29: fg previously held the selected #00dc64'
+    use: Product content tabs, selectors home::[data-omd-capture=16] and home::[data-omd-capture=17]
+  tag-link:
+    type: badge
+    backgroundColor: '#f6f6f6'
+    textColor: '#666666'
+    rounded: 4px
+    padding: 0px 10px
+    typography: 14px / 500 Pretendard
+    use: Product-home tag link, selector home::[data-omd-capture=64]
+  pagination:
+    type: button
+    textColor: '#000000'
+    typography: 14px / 500 Pretendard
+    states: 'ten page buttons captured at rest: the first (capture 133) computes fg #00dc64 and the other nine #000000; no aria-current is recorded, so the green is described, not declared as a selected state. The previous control (capture 132) is disabled and computes #000000; it is not read as a rest value. No state frame. Corrected 2026-09-29: fg previously held the first page''s #00dc64'
+    use: Best Challenge page buttons (button.Paginate__page, 28 x 28), selector surface-3::[data-omd-capture=134]; the green first page is surface-3::[data-omd-capture=133]
+  header-search:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 0px
+    padding: 0px 65px 0px 10px
+    size: 268px x 35px
+    typography: 14px / 400 / Pretendard
+    states: default captured on all three routes; no state frame
+    use: Product header search field (input.SearchBar__search_input) at home::[data-omd-capture="4"]; the 35 x 35 search button beside it (capture 5) has no fill
+  creator-entry:
+    type: button
+    backgroundColor: '#00dc64'
+    textColor: '#000000'
+    rounded: 4px
+    padding: 11px 33px
+    height: 39px
+    typography: 12px / 400 / Pretendard
+    states: default captured on all three routes; no state frame
+    use: Global navigation creator entry (button.GlobalNavigationBar__button_creators) at home::[data-omd-capture="14"], 151 px wide
+  gnb-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 0px 18px
+    height: 55px
+    typography: 16px / 600 / Pretendard
+    selected: 'bg #00dc64, fg #ffffff'
+    states: 'six links per route; on each captured route exactly one link computes a #00dc64 fill with #ffffff text, and it moves with the route: the first link on /index (capture 8), the second on /webtoon (capture 9), the fourth on /bestChallenge (capture 11). No aria-current is recorded; the selected value rests on that route-by-route agreement. No state frame'
+    use: Product global navigation link (a.GlobalNavigationBar__link) at home::[data-omd-capture="9"]; line height 55px, tracking -0.5px
+  sub-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 0px 5px
+    height: 49px
+    typography: 15px / 600 / Pretendard
+    states: 'twelve links on /webtoon and eleven on /bestChallenge; on both routes the first link (capture 16) computes fg #00dc64 and the rest #000000. No aria-selected or aria-current is recorded, so the green first link is described, not declared as a selected state; no state frame'
+    use: Product sub-navigation link (a.SubNavigationBar__link) at surface-2::[data-omd-capture="17"]; line height 49px, tracking -0.5px
+  weekday-heading:
+    type: card
+    backgroundColor: transparent
+    textColor: '#000000'
+    size: 169px x 45px
+    typography: 14.04px / 700 / Pretendard
+    states: 'non-interactive; two headings captured on /webtoon: one computes a #00dc64 fill with #ffffff text, the other transparent with #000000; the capture does not record what the green one marks'
+    use: Weekday column heading (h3.WeekdayMainView__heading) at surface-2::h3
+  tag-link-large:
+    type: badge
+    backgroundColor: '#f6f6f6'
+    textColor: '#666666'
+    rounded: 4px
+    padding: 0px 10px
+    height: 37px
+    typography: 16px / 500 / Pretendard
+    states: default captured; no state frame
+    use: 'The common size of the TagGroup__tag class at home::[data-omd-capture="130"]: 184 of the 191 home tag links compute 16px / 500 / 37px (tracking -0.42px); the 14px / 30px tag-link covers the other seven'
+  qr-code-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#666666'
+    border: '1px #ebebeb'
+    rounded: 4px
+    padding: 0px
+    size: 172px x 43px
+    typography: 13px / 500 / Pretendard
+    states: default captured on home (captures 364-365) and /bestChallenge (captures 210-211); no state frame
+    use: Outline QR-code button (button.QrCode__button) at home::[data-omd-capture="364"]; tracking -0.5px
+  author-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    height: 20px
+    typography: 14px / 500 / Pretendard
+    states: default captured on all three routes (82 occurrences); no state frame
+    use: Author-name link (a.ContentAuthor__author) at home::[data-omd-capture="23"]; line height 20px
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    ui: Pretendard
 ---
 
 # Design System Inspiration of Naver Webtoon (네이버웹툰)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 NAVER WEBTOON is WEBTOON Entertainment's Korean webcomic platform. The company describes it as Korea's largest webcomic platform, launched in 2005 to let both emerging and established creators build an audience and earn from webcomics; its BEST CHALLENGE route is the self-publishing path for up-and-coming creators. In the supplied public capture, that creator-and-reader service is expressed with a compact white product shell, black text, a bright green creator entry, and image/content-led browsing rather than a marketing campaign system.
 
 The captured product surfaces share a short, practical visual vocabulary: white `#FFFFFF`, black `#000000`, muted `#666666`, pale tag fills `#F6F6F6`, and green `#00DC64` on a creator entry, selected tabs, selected pagination, and a browse heading. This is a record of the current captured routes—not a claim that every NAVER, WEBTOON Entertainment, mobile, reader, payment, or logged-in surface follows the same contract. NAVER account/service utility chrome appears in the artifact as a separate inherited shell and is not promoted into these product tokens.
 
-## Primary tasks
+### Primary tasks
 
 - Discover a webcomic story to follow as a reader
 - Search from the product-home header field
 - Self-publish a webcomic through the BEST CHALLENGE route
 - Build an audience and earn from your webcomics
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+WEBTOON Entertainment describes NAVER WEBTOON as Korea's largest webcomic platform. Its official brands page says it launched in 2005 and enables new and established creators to build an audience and make money from webcomics; it distinguishes BEST CHALLENGE as the self-publishing path for emerging creators. The official company site frames the wider organization as a story-oriented entertainment service and a platform where creators and users discover, create, and share stories. These are service and company facts, not proof of a visual or interaction system beyond the captured routes.
+
+### Principles
+
+1. **Creator participation.** Official material says the service gives new and established creators ways to build an audience and make money. *UI implication:* the captured global product navigation includes a green creator entry; no broader creator-flow pattern is inferred.
+2. **Discovery, creation, and sharing.** WEBTOON Entertainment describes its platform around those three participant activities. *UI implication:* no unmeasured navigation, recommendation, or sharing pattern is prescribed here.
+3. **Emerging-creator publishing.** The official brands page identifies BEST CHALLENGE as the self-publishing path for up-and-coming creators. *UI implication:* the captured Best Challenge route is retained as a distinct product surface rather than generalized to reader browsing.
+
+### Personas
+
+This reference does not invent demographic personas. The official context identifies three stakeholder groups: readers/users who discover stories, new and established webcomic creators who build audiences and monetize work, and emerging self-publishers using BEST CHALLENGE. No motivations, demographics, or task flows beyond those official descriptions are asserted.
+
+## Colors
 
 - **Product green** (`#00DC64`): Observed on the creator-entry button, selected content tabs, the current route's global-navigation link (as a fill), the first sub-navigation link and first pagination button (as text), and a weekday browse heading.
 - **Surface white** (`#FFFFFF`): Observed header-search background and the text on the captured green weekday heading.
@@ -198,7 +180,7 @@ The captured product surfaces share a short, practical visual vocabulary: white 
 
 No hover color, error color, dark reader surface, shadow ladder, or universal brand palette is promoted because it was not established by the supplied product capture.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence classes
 
@@ -217,7 +199,23 @@ No hover color, error color, dark reader surface, shadow ladder, or universal br
 | Content tab | 15px | 500 | 21px | selected and unselected `ComponentHead__button_tab` |
 | Tag link | 14px | 500 | 30px | `TagGroup__tag` on product home |
 
-## 4. Component Stylings
+## Layout
+
+The capture establishes a 1440×900 view of three public product routes, not a responsive layout system. Observed geometry includes a 35px header search input, a 39px creator entry, 21px content tabs, 30px and 37px tag links, and a 45px green weekday heading. It does not establish breakpoints, a reusable grid, poster aspect ratios, sticky behavior, or reader layout rules.
+
+### Responsive Behavior
+
+No responsive viewport comparison was supplied. The reference makes no breakpoint, touch-target, image-ratio, or mobile-reader assertion.
+
+## Elevation & Depth
+
+The documented search, creator entry, tabs, tags, weekday heading, and pagination samples all report `box-shadow: none`. No elevation token is promoted.
+
+## Motion & Easing
+
+No duration, easing, animation, or reduced-motion behavior was captured. Tab selection is the only observed interaction kind; it establishes state provenance, not a motion token.
+
+## Components
 
 ### Header search
 
@@ -335,15 +333,19 @@ Only tab selection has interaction provenance in the supplied bundle (`interacti
 
 The legacy prose-derived token sheet, hover/pressed/focus treatments, reader and payment states, logo-color assertions, shadow ladder, universal spacing/radius rules, and unobserved component variants were removed because the supplied 2026 capture does not substantiate them.
 
-## 5. Layout Principles
+### States
 
-The capture establishes a 1440×900 view of three public product routes, not a responsive layout system. Observed geometry includes a 35px header search input, a 39px creator entry, 21px content tabs, 30px and 37px tag links, and a 45px green weekday heading. It does not establish breakpoints, a reusable grid, poster aspect ratios, sticky behavior, or reader layout rules.
+| State | Captured treatment |
+|---|---|
+| Content tab, unselected | `#666666`, 15px/500, `home::[data-omd-capture="16"]` |
+| Content tab, selected | `#00DC64`, 15px/500, `home::[data-omd-capture="17"]`; tab interaction provenance exists |
+| Pagination, first page | `#00DC64`, 14px/500, `surface-3::[data-omd-capture="133"]`; the other nine page buttons compute `#000000`; no `aria-current` is recorded |
+| Global navigation link, current route | `#00DC64` fill with `#FFFFFF` text on one link per route, moving with the route (§4) |
+| Pagination, disabled previous | Statically disabled with `#000000`, 14px/500, `surface-3::[data-omd-capture="132"]`; not a generalized disabled rule |
 
-## 6. Depth & Elevation
+No loading, empty, success, error, toast, skeleton, focus, hover, or pressed state was captured for promotion.
 
-The documented search, creator entry, tabs, tags, weekday heading, and pagination samples all report `box-shadow: none`. No elevation token is promoted.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -357,44 +359,20 @@ The documented search, creator entry, tabs, tags, weekday heading, and paginatio
 - Don't substitute `Pretendard Variable`, `NanumSquare`, or another declared font for the verified computed `Pretendard` family.
 - Don't infer card, reader, payment, hover, focus, error, or responsive contracts from this three-route capture.
 
-## 8. Responsive Behavior
-
-No responsive viewport comparison was supplied. The reference makes no breakpoint, touch-target, image-ratio, or mobile-reader assertion.
-
-## 9. Agent Prompt Guide
-
-For a captured content-tab pattern, use `15px / 500 Pretendard`, `#666666` unselected text, and `#00DC64` selected text; retain the state only where tab-selection behavior exists. For the captured header search, use a white, square-cornered 35px field with `0px 65px 0px 10px` padding and `14px / 400 Pretendard`. Do not extend these snippets into a generic WEBTOON app system.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The supplied evidence contains Korean product labels but no official voice guide or verified product-copy inventory. No reusable tone rule, do/don't table, or sample copy is asserted.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-WEBTOON Entertainment describes NAVER WEBTOON as Korea's largest webcomic platform. Its official brands page says it launched in 2005 and enables new and established creators to build an audience and make money from webcomics; it distinguishes BEST CHALLENGE as the self-publishing path for emerging creators. The official company site frames the wider organization as a story-oriented entertainment service and a platform where creators and users discover, create, and share stories. These are service and company facts, not proof of a visual or interaction system beyond the captured routes.
+For a captured content-tab pattern, use `15px / 500 Pretendard`, `#666666` unselected text, and `#00DC64` selected text; retain the state only where tab-selection behavior exists. For the captured header search, use a white, square-cornered 35px field with `0px 65px 0px 10px` padding and `14px / 400 Pretendard`. Do not extend these snippets into a generic WEBTOON app system.
 
-## 12. Principles
+## Governance
 
-1. **Creator participation.** Official material says the service gives new and established creators ways to build an audience and make money. *UI implication:* the captured global product navigation includes a green creator entry; no broader creator-flow pattern is inferred.
-2. **Discovery, creation, and sharing.** WEBTOON Entertainment describes its platform around those three participant activities. *UI implication:* no unmeasured navigation, recommendation, or sharing pattern is prescribed here.
-3. **Emerging-creator publishing.** The official brands page identifies BEST CHALLENGE as the self-publishing path for up-and-coming creators. *UI implication:* the captured Best Challenge route is retained as a distinct product surface rather than generalized to reader browsing.
+### Known Gaps
 
-## 13. Personas
-
-This reference does not invent demographic personas. The official context identifies three stakeholder groups: readers/users who discover stories, new and established webcomic creators who build audiences and monetize work, and emerging self-publishers using BEST CHALLENGE. No motivations, demographics, or task flows beyond those official descriptions are asserted.
-
-## 14. States
-
-| State | Captured treatment |
-|---|---|
-| Content tab, unselected | `#666666`, 15px/500, `home::[data-omd-capture="16"]` |
-| Content tab, selected | `#00DC64`, 15px/500, `home::[data-omd-capture="17"]`; tab interaction provenance exists |
-| Pagination, first page | `#00DC64`, 14px/500, `surface-3::[data-omd-capture="133"]`; the other nine page buttons compute `#000000`; no `aria-current` is recorded |
-| Global navigation link, current route | `#00DC64` fill with `#FFFFFF` text on one link per route, moving with the route (§4) |
-| Pagination, disabled previous | Statically disabled with `#000000`, 14px/500, `surface-3::[data-omd-capture="132"]`; not a generalized disabled rule |
-
-No loading, empty, success, error, toast, skeleton, focus, hover, or pressed state was captured for promotion.
-
-## 15. Motion & Easing
-
-No duration, easing, animation, or reduced-motion behavior was captured. Tab selection is the only observed interaction kind; it establishes state provenance, not a motion token.
+- **Contrast, `gnb-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `sub-nav-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `weekday-heading`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `qr-code-button`.** Text `#666666` on `#00000000` measures 3.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `author-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

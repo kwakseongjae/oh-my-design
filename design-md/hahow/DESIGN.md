@@ -1,62 +1,105 @@
 ---
-id: hahow
-name: "Hahow"
-country: TW
-category: education
-homepage: "https://hahow.in"
-primary_color: "#00CCB4"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=hahow.in&sz=128"
-verified: "2026-06-01"
-omd: "0.1"
-ds:
-  name: "hahow-design"
-  url: "https://github.com/hahow/hahow-design"
-  type: system
-  description: "Hahow's open-source design-system theme — Primary/Secondary token scales (Primary 500 #00ccb4)."
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#00ccb4"
-    primary-100: "#a3ffe8"
-    primary-400: "#23d9bd"
-    primary-800: "#006166"
-    primary-900: "#00444d"
-    secondary: "#ffb940"
-    canvas: "#f5f7f9"
-    text: "#262626"
-    promo-orange: "#fa8c16"
-    coral: "#f65f55"
-  typography:
-    family: { sans: "PingFang TC", mono: "PingFang TC" }
-    heading: { size: 24, weight: 600, lineHeight: 1.3, use: "Section headings" }
-    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Primary body text" }
-    chip:    { size: 14, weight: 400, lineHeight: 1.4, use: "Tag / chip labels" }
-  spacing: { xs: 4, sm: 8, base: 16, lg: 24, xl: 32, section: 48 }
-  rounded: { sm: 8, md: 8, lg: 20, full: 9999 }
-  components:
-    button-primary: { type: button, bg: "transparent", fg: "#00ccb4", radius: "8px", font: "16px / 600", use: "Teal outline primary CTA, 2px #dcf9f3 border, 42px height" }
-    button-card: { type: button, bg: "#ffffff", fg: "#595959", radius: "8px", use: "Neutral white card-level action" }
-    chip-tag: { type: badge, bg: "rgba(0,0,0,0.04)", fg: "rgba(0,0,0,0.65)", radius: "20px", font: "14px / 400", use: "Metadata, category, filter tags, 33px height" }
-  components_harvested: true
+name: Hahow
+colors:
+  primary: '#00ccb4'
+  primary-100: '#a3ffe8'
+  primary-400: '#23d9bd'
+  primary-800: '#006166'
+  primary-900: '#00444d'
+  secondary: '#ffb940'
+  canvas: '#f5f7f9'
+  text: '#262626'
+  promo-orange: '#fa8c16'
+  coral: '#f65f55'
+typography:
+  heading:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.3
+    use: Section headings
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Primary body text
+  chip:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Tag / chip labels
+rounded:
+  sm: 8px
+  md: 8px
+  lg: 20px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  base: 16
+  lg: 24
+  xl: 32
+  section: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#00ccb4'
+    rounded: 8px
+    typography: 16px / 600
+    use: 'Teal outline primary CTA, 2px #dcf9f3 border, 42px height'
+  button-card:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#595959'
+    rounded: 8px
+    use: Neutral white card-level action
+  chip-tag:
+    type: badge
+    backgroundColor: rgba(0,0,0,0.04)
+    textColor: rgba(0,0,0,0.65)
+    rounded: 20px
+    typography: 14px / 400
+    use: Metadata, category, filter tags, 33px height
+fonts:
+  roles:
+    sans: PingFang TC
+    mono: PingFang TC
 ---
 
 # Design System Inspiration of Hahow
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Hahow (好學校) is Taiwan's leading EdTech course marketplace, and its interface carries the warmth of a place that wants you to keep learning rather than the polish of a place that wants to close a sale. The atmosphere is friendly, approachable, and unmistakably human: a soft gray-blue page canvas of #F5F7F9 lets bright content breathe, while a vivid brand teal of #00CCB4 — drawn directly from Hahow's own open-source design tokens — signals interactivity and energy without ever shouting. Cards and buttons settle on a gentle 8px radius that rounds every hard edge into something inviting, and text sits in calm near-black #262626 for comfortable, sustained reading. Warm promotional accents in orange #FA8C16 and coral #F65F55 punctuate the surface where excitement is earned — a sale, a featured course, a moment worth noticing. Set throughout in PingFang TC, the typography feels native and legible to a Traditional-Chinese audience. The overall effect is encouraging and personable, the opposite of corporate sterility — a learning surface that feels like a good teacher: clear, warm, and on your side.
 
-## Primary tasks
+### Primary tasks
 
 - Browse the marketplace for a new skill
 - Create and publish a course of your own
 - Come back to pick up a course already started
 - Spot which courses are on sale or featured
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Hahow built Taiwan's leading EdTech course marketplace on a simple, human premise: everyone has something to learn and something to teach. As 好學校 — "the good school" — it positions itself as an open, encouraging place where knowledge moves between people rather than being handed down from an institution. The visual identity reinforces that story: a bright, friendly teal pulled from its own open-source design system, a soft and unintimidating canvas, rounded approachable shapes, and native Traditional-Chinese typography. Every choice tells the same narrative — learning here is warm, accessible, and on your side.
+
+### Principles
+
+- **Warmth over polish** — feel like a good teacher, not a sales funnel.
+- **Calm canvas, bright signals** — let the soft #F5F7F9 base carry quiet content while teal and warm accents earn attention.
+- **Rounded and approachable** — consistent 8px / 20px radii keep every surface inviting.
+- **Native and legible** — PingFang TC and near-black #262626 text serve a Traditional-Chinese audience comfortably.
+- **Restraint with the brand color** — teal #00CCB4 marks interaction; it is never wallpaper.
+
+### Personas
+
+- **The Curious Learner** — browsing the marketplace for a new skill; needs a calm, scannable surface where featured courses (orange/coral accents) stand out and primary actions (teal outline button) are obvious and inviting.
+- **The Knowledge-Sharing Instructor** — creating and publishing courses; needs the platform to feel encouraging and credible, with friendly rounded components and warm tone that lower the barrier to teaching.
+- **The Returning Member** — coming back to continue learning; relies on consistent color roles and tap-friendly components across devices to pick up quickly.
+
+## Colors
 
 Hahow's color system is anchored by a teal Primary scale published in its open-source `hahow-design` theme, layered over a quiet neutral canvas and lifted by warm promotional accents.
 
@@ -72,7 +115,7 @@ Hahow's color system is anchored by a teal Primary scale published in its open-s
 - **Coral** — #F65F55. Warm secondary promotional accent.
 - **Chip fill** — rgba(0,0,0,0.04). Faint neutral wash for tags and metadata chips.
 
-## 3. Typography Rules
+## Typography
 
 - **Typeface:** PingFang TC across the interface — native, legible Traditional-Chinese rendering.
 - **Body:** 16px, primary text color #262626.
@@ -80,7 +123,33 @@ Hahow's color system is anchored by a teal Primary scale published in its open-s
 - **Secondary text:** rgba(0,0,0,0.65) for de-emphasized labels and metadata.
 - **Hierarchy principle:** lean on size and the near-black body color for contrast; reserve teal #00CCB4 for interactive text rather than headings, keeping reading surfaces calm.
 
-## 4. Component Stylings
+## Layout
+
+- Content sits on a soft gray-blue #F5F7F9 canvas, letting white cards and bright accents read as the foreground.
+- Rounded geometry is consistent: 8px on cards and buttons, 20px (fully rounded) on tag chips.
+- Generous, calm spacing keeps the marketplace browsable rather than dense — the surface invites scanning across many courses.
+- Teal is used sparingly as an interactive signal, never as a flood, preserving the quiet neutral base.
+
+### Responsive Behavior
+
+The live hahow.in marketplace is a course-browsing surface built to scale from desktop grids to mobile stacks. Cards keep their 8px radius and white #FFFFFF fill across breakpoints, and tag chips stay fully rounded at 20px so metadata remains legible when reflowed. Touch targets hold comfortable heights — the teal outline button at 42px and tag chips at 33px — that translate naturally to mobile tapping. (Specific breakpoint widths were not captured in the blob and are not specified here; the verified pattern is consistent rounding, consistent color roles, and generous tap-friendly sizing across viewports.)
+
+## Elevation & Depth
+
+Hahow's elevation language is restrained and soft rather than dramatic. White cards (#FFFFFF) lift off the gray-blue #F5F7F9 canvas largely through tonal contrast and rounded 8px corners rather than heavy shadow. The teal outline button uses a 2px solid #DCF9F3 border — a pale teal ring — to define its edge instead of a drop shadow, reinforcing a flat, friendly aesthetic. Depth here is implied by layering light surfaces over the muted background, keeping the interface airy and approachable. (Exact shadow values were not captured in the blob and are intentionally not specified.)
+
+## Motion & Easing
+
+Hahow's motion language was not captured with specific values in the blob, so no durations or easing curves are specified here. In keeping with the brand's warm, approachable, flat aesthetic, transitions should read as gentle and encouraging rather than abrupt — soft enough to match the rounded geometry and calm canvas, with the teal token scale (Primary 400 #23D9BD into Primary 500 #00CCB4) available for smooth interactive color transitions.
+
+---
+**Verified:** 2026-06-01
+**Tier 1 sources:** https://hahow.in (live homepage live-DOM inspect), https://business.hahow.in (brand-owned regional business surface), https://github.com/hahow (brand-owned org hosting the open-source design tokens)
+**Tier 2 sources:** getdesign.md/hahow — NOT LISTED. refero — not listed.
+**Conflicts unresolved:** none
+**Proof:** see .verification.md (## Proof block)
+
+## Components
 
 ### Button
 
@@ -135,18 +204,15 @@ class from the package. This reference has no `verification_v2` block and so no 
 One of the three shares a name with a published component (Button). It is not claimed as a
 rendered instance of it, and none of the four above carries a measured value here.
 
-## 5. Layout Principles
+### States
 
-- Content sits on a soft gray-blue #F5F7F9 canvas, letting white cards and bright accents read as the foreground.
-- Rounded geometry is consistent: 8px on cards and buttons, 20px (fully rounded) on tag chips.
-- Generous, calm spacing keeps the marketplace browsable rather than dense — the surface invites scanning across many courses.
-- Teal is used sparingly as an interactive signal, never as a flood, preserving the quiet neutral base.
+- **Default action:** teal outline button — transparent background, #00CCB4 text, 2px solid #DCF9F3 border, 8px radius, 42px height.
+- **Neutral / card action:** white card button — #FFFFFF background, #595959 text, 8px radius.
+- **Metadata / tag:** chip — rgba(0,0,0,0.04) fill, rgba(0,0,0,0.65) text, 20px radius, 33px height, 14px/400.
+- **Promotional emphasis:** warm orange #FA8C16 and coral #F65F55 accents for sales and featured callouts.
+- (Hover, pressed, focus, and disabled state values were not captured in the blob and are intentionally not specified; the teal token scale — Primary 400 #23D9BD, Primary 800 #006166 — provides the natural darker steps for any hover/pressed treatment.)
 
-## 6. Depth & Elevation
-
-Hahow's elevation language is restrained and soft rather than dramatic. White cards (#FFFFFF) lift off the gray-blue #F5F7F9 canvas largely through tonal contrast and rounded 8px corners rather than heavy shadow. The teal outline button uses a 2px solid #DCF9F3 border — a pale teal ring — to define its edge instead of a drop shadow, reinforcing a flat, friendly aesthetic. Depth here is implied by layering light surfaces over the muted background, keeping the interface airy and approachable. (Exact shadow values were not captured in the blob and are intentionally not specified.)
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Anchor interactive emphasis in the brand teal #00CCB4 from the official tokens.
@@ -160,51 +226,16 @@ Hahow's elevation language is restrained and soft rather than dramatic. White ca
 - Introduce a heavy, corporate shadow language that contradicts the flat, warm aesthetic.
 - Substitute a non-native typeface for PingFang TC in Traditional-Chinese contexts.
 
-## 8. Responsive Behavior
-
-The live hahow.in marketplace is a course-browsing surface built to scale from desktop grids to mobile stacks. Cards keep their 8px radius and white #FFFFFF fill across breakpoints, and tag chips stay fully rounded at 20px so metadata remains legible when reflowed. Touch targets hold comfortable heights — the teal outline button at 42px and tag chips at 33px — that translate naturally to mobile tapping. (Specific breakpoint widths were not captured in the blob and are not specified here; the verified pattern is consistent rounding, consistent color roles, and generous tap-friendly sizing across viewports.)
-
-## 9. Agent Prompt Guide
-
-When generating UI in Hahow's style, instruct the agent: "Use a soft gray-blue page background (#F5F7F9) with white (#FFFFFF) content cards at 8px radius. Make the primary action a teal outline button — transparent background, #00CCB4 text, 2px solid #DCF9F3 border, 8px radius, 42px height, 16px/600 PingFang TC. Render tags as fully-rounded chips (20px radius, 33px height) with a rgba(0,0,0,0.04) fill and rgba(0,0,0,0.65) text at 14px/400. Keep body text near-black (#262626) at 16px and headings at 24px/600. Use teal #00CCB4 only for interactive emphasis. Reserve orange #FA8C16 and coral #F65F55 strictly for promotional callouts. Aim for a warm, encouraging, human EdTech tone — friendly, never corporate."
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Hahow's voice is encouraging and human — the tone of a supportive teacher and a welcoming community of learners (好學校 literally means "good school"). It is warm and approachable rather than corporate or transactional, celebrating curiosity and the act of learning itself. Microcopy should feel like gentle encouragement: inviting people to start, to keep going, to share what they know. Even promotional moments, signaled by the warm orange and coral accents, carry friendliness over hard-sell urgency.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Hahow built Taiwan's leading EdTech course marketplace on a simple, human premise: everyone has something to learn and something to teach. As 好學校 — "the good school" — it positions itself as an open, encouraging place where knowledge moves between people rather than being handed down from an institution. The visual identity reinforces that story: a bright, friendly teal pulled from its own open-source design system, a soft and unintimidating canvas, rounded approachable shapes, and native Traditional-Chinese typography. Every choice tells the same narrative — learning here is warm, accessible, and on your side.
+When generating UI in Hahow's style, instruct the agent: "Use a soft gray-blue page background (#F5F7F9) with white (#FFFFFF) content cards at 8px radius. Make the primary action a teal outline button — transparent background, #00CCB4 text, 2px solid #DCF9F3 border, 8px radius, 42px height, 16px/600 PingFang TC. Render tags as fully-rounded chips (20px radius, 33px height) with a rgba(0,0,0,0.04) fill and rgba(0,0,0,0.65) text at 14px/400. Keep body text near-black (#262626) at 16px and headings at 24px/600. Use teal #00CCB4 only for interactive emphasis. Reserve orange #FA8C16 and coral #F65F55 strictly for promotional callouts. Aim for a warm, encouraging, human EdTech tone — friendly, never corporate."
 
-## 12. Principles
+## Governance
 
-- **Warmth over polish** — feel like a good teacher, not a sales funnel.
-- **Calm canvas, bright signals** — let the soft #F5F7F9 base carry quiet content while teal and warm accents earn attention.
-- **Rounded and approachable** — consistent 8px / 20px radii keep every surface inviting.
-- **Native and legible** — PingFang TC and near-black #262626 text serve a Traditional-Chinese audience comfortably.
-- **Restraint with the brand color** — teal #00CCB4 marks interaction; it is never wallpaper.
+### Known Gaps
 
-## 13. Personas
-
-- **The Curious Learner** — browsing the marketplace for a new skill; needs a calm, scannable surface where featured courses (orange/coral accents) stand out and primary actions (teal outline button) are obvious and inviting.
-- **The Knowledge-Sharing Instructor** — creating and publishing courses; needs the platform to feel encouraging and credible, with friendly rounded components and warm tone that lower the barrier to teaching.
-- **The Returning Member** — coming back to continue learning; relies on consistent color roles and tap-friendly components across devices to pick up quickly.
-
-## 14. States
-
-- **Default action:** teal outline button — transparent background, #00CCB4 text, 2px solid #DCF9F3 border, 8px radius, 42px height.
-- **Neutral / card action:** white card button — #FFFFFF background, #595959 text, 8px radius.
-- **Metadata / tag:** chip — rgba(0,0,0,0.04) fill, rgba(0,0,0,0.65) text, 20px radius, 33px height, 14px/400.
-- **Promotional emphasis:** warm orange #FA8C16 and coral #F65F55 accents for sales and featured callouts.
-- (Hover, pressed, focus, and disabled state values were not captured in the blob and are intentionally not specified; the teal token scale — Primary 400 #23D9BD, Primary 800 #006166 — provides the natural darker steps for any hover/pressed treatment.)
-
-## 15. Motion & Easing
-
-Hahow's motion language was not captured with specific values in the blob, so no durations or easing curves are specified here. In keeping with the brand's warm, approachable, flat aesthetic, transitions should read as gentle and encouraging rather than abrupt — soft enough to match the rounded geometry and calm canvas, with the teal token scale (Primary 400 #23D9BD into Primary 500 #00CCB4) available for smooth interactive color transitions.
-
----
-**Verified:** 2026-06-01
-**Tier 1 sources:** https://hahow.in (live homepage live-DOM inspect), https://business.hahow.in (brand-owned regional business surface), https://github.com/hahow (brand-owned org hosting the open-source design tokens)
-**Tier 2 sources:** getdesign.md/hahow — NOT LISTED. refero — not listed.
-**Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof block)
+- **Contrast, `chip-tag`.** Text `#000000a6` on `#0000000a` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

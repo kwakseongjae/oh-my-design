@@ -1,112 +1,68 @@
 ---
-id: zendesk
 name: Zendesk Garden
-country: US
-category: saas
-homepage: "https://garden.zendesk.com/"
-primary_color: "#1f73b7"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=garden.zendesk.com&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Zendesk Garden
-  url: "https://garden.zendesk.com/"
-  type: system
-  description: Zendesk's public design-system documentation.
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, kind: design-system-home, url: "https://garden.zendesk.com/", inspected: "2026-07-13" }
-    - { id: surface-2, kind: component-documentation, url: "https://garden.zendesk.com/components/button", inspected: "2026-07-13" }
-    - { id: surface-3, kind: color-documentation, url: "https://garden.zendesk.com/design/color", inspected: "2026-07-13" }
-  sources:
-    - { id: garden-home-live, kind: product-surface, url: "https://garden.zendesk.com/", captured: "2026-07-13" }
-    - { id: garden-button-live, kind: official-doc, url: "https://garden.zendesk.com/components/button", captured: "2026-07-13" }
-    - { id: garden-color-live, kind: product-surface, url: "https://garden.zendesk.com/design/color", captured: "2026-07-13" }
-    - { id: garden-home-official, kind: official-doc, url: "https://garden.zendesk.com/", captured: "2026-07-13" }
-    - { id: garden-palette-official, kind: official-doc, url: "https://garden.zendesk.com/design/palette/", captured: "2026-07-13" }
-    - { id: zendesk-company, kind: official-doc, url: "https://www.zendesk.com/company/", captured: "2026-07-13" }
-    - { id: zendesk-signin-refresh, kind: official-doc, url: "https://support.zendesk.com/hc/en-us/articles/9850316391322-Announcing-an-updated-look-to-the-team-member-and-end-user-sign-in-experiences", captured: "2026-07-13" }
-    - { id: garden-github, kind: brand-asset, url: "https://github.com/zendeskgarden", captured: "2026-07-13" }
-    - { id: zendesk-component-index, kind: official-doc, url: "https://garden.zendesk.com/components/", captured: "2026-09-19" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &button { surface_id: surface-2, source_id: garden-button-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": &home { surface_id: home, source_id: garden-home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.foreground": *home
-    "tokens.colors.muted": *button
-    "tokens.colors.border": &color { surface_id: surface-3, source_id: garden-color-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.success": *color
-    "tokens.colors.danger": *button
-    "tokens.typography.display.size": *home
-    "tokens.typography.display.weight": *home
-    "tokens.typography.display.lineHeight": *home
-    "tokens.typography.display.use": *home
-    "tokens.typography.section-heading.size": *button
-    "tokens.typography.section-heading.weight": *button
-    "tokens.typography.section-heading.lineHeight": *button
-    "tokens.typography.section-heading.use": *button
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.use": *home
-    "tokens.spacing.xs": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.md": *button
-    "tokens.spacing.lg": *button
-    "tokens.spacing.xl": *button
-    "tokens.rounded.control": *button
-    "tokens.rounded.icon-control": *home
-    "tokens.components.primary-doc-button.type": *button
-    "tokens.components.primary-doc-button.bg": *button
-    "tokens.components.primary-doc-button.fg": *button
-    "tokens.components.primary-doc-button.radius": *button
-    "tokens.components.primary-doc-button.padding": *button
-    "tokens.components.primary-doc-button.height": *button
-    "tokens.components.primary-doc-button.states": *button
-    "tokens.components.primary-doc-button.use": *button
-    "tokens.components.icon-button.type": *button
-    "tokens.components.icon-button.fg": *button
-    "tokens.components.icon-button.radius": *button
-    "tokens.components.icon-button.height": *button
-    "tokens.components.icon-button.states": *button
-    "tokens.components.icon-button.use": *button
-    "tokens.components.sidebar-list-item.type": *button
-    "tokens.components.sidebar-list-item.fg": *button
-    "tokens.components.sidebar-list-item.radius": *button
-    "tokens.components.sidebar-list-item.height": *button
-    "tokens.components.sidebar-list-item.use": *button
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Selector-backed values from the supplied Garden home, button-documentation, and color-documentation capture only. The observed system-ui stack is not a Zendesk font token; no interaction state is promoted because interactionCount is 0."
-  colors:
-    primary: "#1f73b7"
-    canvas: "#ffffff"
-    foreground: "#293239"
-    muted: "#5c6970"
-    border: "#b0b8be"
-    success: "#4eab89"
-    danger: "#cd3642"
-  typography:
-    display: { size: 48, weight: 700, lineHeight: 1.17, use: "Observed 48px/700/56px h1 on the supplied Garden home route" }
-    section-heading: { size: 36, weight: 600, lineHeight: 1.22, use: "Observed documentation h2 on the supplied button route" }
-    body: { size: 14, weight: 400, lineHeight: 1.43, use: "Repeated body, navigation, list-item, and control text; family omitted because the capture resolves only to a system stack" }
-  spacing: { xs: 4, sm: 8, md: 12, lg: 20, xl: 36 }
-  rounded: { control: 4, icon-control: 100 }
-  components:
-    primary-doc-button: { type: button, bg: "#1f73b7", fg: "#ffffff", radius: 4, padding: "0px 15px", height: 40, states: "Default only; no hover, focus, pressed, disabled, or loading state was observed", use: "Native button on the public button-documentation route; selector surface-2::[data-omd-capture=\"90\"]" }
-    icon-button: { type: button, fg: "#5c6970", radius: 4, height: 40, states: "Default only; no hover, focus, pressed, disabled, or loading state was observed", use: "Native icon button on the public button-documentation route; selector surface-2::[data-omd-capture=\"64\"]" }
-    sidebar-list-item: { type: listItem, fg: "#293239", radius: 0, height: 32, use: "Static documentation sidebar row; selector surface-2::li" }
-  components_harvested: true
+colors:
+  primary: '#1f73b7'
+  canvas: '#ffffff'
+  foreground: '#293239'
+  muted: '#5c6970'
+  border: '#b0b8be'
+  success: '#4eab89'
+  danger: '#cd3642'
+typography:
+  display:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.17
+    use: Observed 48px/700/56px h1 on the supplied Garden home route
+  section-heading:
+    fontSize: 36px
+    fontWeight: 600
+    lineHeight: 1.22
+    use: Observed documentation h2 on the supplied button route
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Repeated body, navigation, list-item, and control text; family omitted because the capture resolves only to a system stack
+rounded:
+  control: 4px
+  icon-control: 100px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  lg: 20
+  xl: 36
+components:
+  primary-doc-button:
+    type: button
+    backgroundColor: '#1f73b7'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0px 15px
+    height: 40
+    states: Default only; no hover, focus, pressed, disabled, or loading state was observed
+    use: Native button on the public button-documentation route; selector surface-2::[data-omd-capture="90"]
+  icon-button:
+    type: button
+    textColor: '#5c6970'
+    rounded: 4px
+    height: 40
+    states: Default only; no hover, focus, pressed, disabled, or loading state was observed
+    use: Native icon button on the public button-documentation route; selector surface-2::[data-omd-capture="64"]
+  sidebar-list-item:
+    type: listItem
+    textColor: '#293239'
+    rounded: 0px
+    height: 32
+    use: Static documentation sidebar row; selector surface-2::li
 ---
 
 # Zendesk Garden — Design Reference
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Zendesk builds customer-service software, and Garden is its public design system: the company calls it the source of truth for the tools, standards, and practices used to build Zendesk products. The system’s distinctive expression is deliberate rather than ornamental. Its own introduction describes an evolving shared library that joins design, content strategy, and engineering, while the supplied documentation capture makes that coordination visible through a white workspace, deep blue actions, dark gray reading text, restrained 4px controls, and dense technical navigation. Garden 9 is the current major version of the public site, so this reference treats the captured routes as current documentation-surface evidence, not as a proxy for signed-in Zendesk product UI or the separate corporate marketing site.
 
@@ -120,13 +76,35 @@ Zendesk’s company story gives the system a useful product context: the company
 - Measured editorial hierarchy: 48px/700 display on home, 36px/600 section headings in the button documentation, and repeated 14px/400 reading/control text.
 - System-ui is the only resolved computed family. It is retained as a runtime observation, not represented as a Zendesk brand font.
 
-## Primary tasks
+### Primary tasks
 
 - Find the documented instructions for a component before building it.
 - Look up which color carries an action or a validation.
 - Decide whether a loading state needs a skeleton or a spinner.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Zendesk says its origin was a literal desk—more exactly a door or kitchen table—and connects that origin to an early ambition of bringing calm to chaotic customer service. Its current company framing is broader: simplify business complexity and help companies and customers make better connections. That is the company context for Garden, not evidence that the Garden documentation routes reproduce every Zendesk product surface.
+
+Garden is the operational bridge from that mission to interface work. Zendesk describes it as the source of truth for product-building tools, standards, and best practices, and as an evolving library shared across design, content strategy, and engineering. The current public site announces Garden 9, while Zendesk’s 2025 sign-in update describes continued alignment with current UI frameworks and brand standards. Together, those first-party sources support a story of an actively maintained system and an evolving product presentation; they do not authorize unobserved UI tokens.
+
+### Principles
+
+1. **Treat shared knowledge as product infrastructure.** Garden explicitly joins design, content strategy, and engineering. *UI implication:* document selector-backed defaults and boundaries together, rather than exporting isolated colors.
+2. **Make purposeful UI legible before decorative.** Garden frames its design foundation as purposeful UI. *UI implication:* retain the observed white field, dark reading text, and compact geometry before adding visual effects.
+3. **Use color with a documented role.** The official palette separates UI and brand color and connects primary UI colors to structure, action, and validation. *UI implication:* reserve `#1f73b7` for the observed documentation action rather than treating every palette color as a primary CTA.
+4. **Keep public evidence domains separate.** Garden docs, Zendesk corporate storytelling, and signed-in product UI answer different questions. *UI implication:* do not let company narrative or a sign-in-refresh announcement create CSS token claims.
+
+### Personas
+
+Zendesk’s official Garden introduction names the disciplines that share this library; its company page names companies and customers as the people whose connections the product seeks to improve. These are stakeholder groups, not fictional or researched personas:
+
+- **Product designers:** need documented foundations and patterns to make purposeful UI consistently.
+- **Content strategists:** need the same shared guidance so interface language and structure reinforce one another.
+- **Engineers:** need component instructions and standards that can be implemented without turning adjacent examples into new rules.
+- **Service teams and their customers:** are the downstream audience for clearer, less complex customer interactions described by Zendesk’s company mission.
+
+## Colors
 
 ### Selector-backed current-route values
 
@@ -140,7 +118,7 @@ Zendesk’s company story gives the system a useful product context: the company
 
 Garden’s Palette page distinguishes UI colors from brand colors and says its UI colors are designed for interface structure, actions, validation, and accessibility. That documentation provides semantic context; the seven token roles above remain limited to values seen in the supplied computed-style packet.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -162,7 +140,29 @@ Garden’s Palette page distinguishes UI colors from brand colors and says its U
 
 The 48px display token uses the home h1’s 56px line-height sample; the packet also contains a 52px h1 on the button-documentation route. The table preserves that measured sibling rather than averaging it into a fabricated universal style.
 
-## 4. Component Stylings
+## Layout
+
+The supplied 1440px documentation capture clusters spacing at 4px, 8px, 12px, 20px, and 36px. These values are retained as observed spacing tokens, not asserted as a complete Garden spacing scale. The public header is 80px high with 16px horizontal padding; the primary documentation button is 40px high with 15px horizontal padding. The sidebar-list observation is 32px high, while a nearby typography list observation is 20px high. Keep those geometries surface-local unless another selector proves a shared rule.
+
+### Responsive Behavior
+
+Only 1440×900 supplied renders are available. They establish the captured desktop values, including the 80px header and the listed control geometries. No mobile viewport, breakpoint, collapsed navigation, touch target behavior, or interaction trace was supplied, so none is claimed.
+
+## Elevation & Depth
+
+The chosen canonical components are shadow-free in the supplied packet. The header alone has a measured `0px 16px 24px rgba(10, 13, 14, 0.04)` shadow, which is retained as raw proof in the verification notes but not promoted into a general elevation token. No universal card, dialog, popover, or floating-layer recipe is established.
+
+## Motion & Easing
+
+No duration, easing curve, transition, animation, or interaction trace appears in the supplied packet. Garden’s public loader documentation discusses when a loader should appear and remain visible, but it does not supply a measured timing token in this evidence set. Motion and easing tokens are therefore omitted.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://garden.zendesk.com/` (design-system home), `https://garden.zendesk.com/components/button` (public component documentation), `https://garden.zendesk.com/design/color` (public color documentation), `https://garden.zendesk.com/design/palette/` (official palette semantics), `https://www.zendesk.com/company/` (company context), `https://support.zendesk.com/hc/en-us/articles/9850316391322-Announcing-an-updated-look-to-the-team-member-and-end-user-sign-in-experiences` (current-evolution context)
+**Tier 2 sources:** `https://getdesign.md/zendesk` (attempted; built-in open returned an internal error), `https://styles.refero.design/?q=zendesk` (attempted; built-in open returned an internal error)
+**Conflicts unresolved:** none
+
+## Components
 
 ### Documentation primary action
 
@@ -248,15 +248,20 @@ The flattening loses the distinction in the other direction too. `dots`, `inline
 `dots` and `inline` as loaders, `span` under Typography, `grid` on its own. A route list can say
 which pages exist. Only the index says which of them Garden calls a component.
 
-## 5. Layout Principles
+### States
 
-The supplied 1440px documentation capture clusters spacing at 4px, 8px, 12px, 20px, and 36px. These values are retained as observed spacing tokens, not asserted as a complete Garden spacing scale. The public header is 80px high with 16px horizontal padding; the primary documentation button is 40px high with 15px horizontal padding. The sidebar-list observation is 32px high, while a nearby typography list observation is 20px high. Keep those geometries surface-local unless another selector proves a shared rule.
+The supplied runtime packet has `interactionCount: 0`; it establishes no visual interactive or validation state values. Garden’s public patterns documentation does describe purpose-level state guidance, which is retained here without inventing colors, radii, timing, or component-state geometry:
 
-## 6. Depth & Elevation
+| Category | Official guidance / evidence boundary |
+|---|---|
+| Empty | No empty-state visual recipe was supplied in the packet; omit a token rather than infer one. |
+| Loading | Garden’s loader pattern differentiates skeletons for predictable content and spinners for unpredictable content. No computed loader styling was captured. |
+| Error | Garden lists error handling as a pattern, but no error value or component state was captured. |
+| Success | The supplied capture includes green `#4eab89` as a color observation, not a verified success-message component recipe. |
+| Skeleton | Use only the official purpose-level guidance above; no skeleton geometry, color, or animation token is claimed. |
+| Disabled | No disabled control state was captured. Do not derive one from the static native-button variants. |
 
-The chosen canonical components are shadow-free in the supplied packet. The header alone has a measured `0px 16px 24px rgba(10, 13, 14, 0.04)` shadow, which is retained as raw proof in the verification notes but not promoted into a general elevation token. No universal card, dialog, popover, or floating-layer recipe is established.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -272,18 +277,7 @@ The chosen canonical components are shadow-free in the supplied packet. The head
 - Do not invent hover, focus, pressed, disabled, loading, validation, menu, dialog, toast, or error styles from class names or product expectations.
 - Do not generalize the header shadow into cards, dialogs, or all navigation surfaces.
 
-## 8. Responsive Behavior
-
-Only 1440×900 supplied renders are available. They establish the captured desktop values, including the 80px header and the listed control geometries. No mobile viewport, breakpoint, collapsed navigation, touch target behavior, or interaction trace was supplied, so none is claimed.
-
-## 9. Agent Prompt Guide
-
-- Build a public documentation primary action only when its context is equivalent to the captured native button: `#1f73b7`, white text, 4px radius, 40px height, and 0px 15px padding.
-- Use `#293239` for observed documentation foreground text and `#5c6970` for the captured icon-control treatment; retain system-font uncertainty rather than naming a Zendesk family.
-- Treat the 32px sidebar row as a `listItem` rather than an action button.
-- When implementation requires focus, error, loading, or disabled behavior, design it accessibly for the target product but label it as a new implementation decision, not an observed Garden value.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 **Voice adjectives:** practical · cohesive · outcome-oriented
 
@@ -301,47 +295,9 @@ Illustrative, not copied microcopy:
 
 These are fresh examples derived from Garden’s stated role as a shared knowledge library and Zendesk’s customer-connection mission; they are not quotations or observed product strings.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Zendesk says its origin was a literal desk—more exactly a door or kitchen table—and connects that origin to an early ambition of bringing calm to chaotic customer service. Its current company framing is broader: simplify business complexity and help companies and customers make better connections. That is the company context for Garden, not evidence that the Garden documentation routes reproduce every Zendesk product surface.
-
-Garden is the operational bridge from that mission to interface work. Zendesk describes it as the source of truth for product-building tools, standards, and best practices, and as an evolving library shared across design, content strategy, and engineering. The current public site announces Garden 9, while Zendesk’s 2025 sign-in update describes continued alignment with current UI frameworks and brand standards. Together, those first-party sources support a story of an actively maintained system and an evolving product presentation; they do not authorize unobserved UI tokens.
-
-## 12. Principles
-
-1. **Treat shared knowledge as product infrastructure.** Garden explicitly joins design, content strategy, and engineering. *UI implication:* document selector-backed defaults and boundaries together, rather than exporting isolated colors.
-2. **Make purposeful UI legible before decorative.** Garden frames its design foundation as purposeful UI. *UI implication:* retain the observed white field, dark reading text, and compact geometry before adding visual effects.
-3. **Use color with a documented role.** The official palette separates UI and brand color and connects primary UI colors to structure, action, and validation. *UI implication:* reserve `#1f73b7` for the observed documentation action rather than treating every palette color as a primary CTA.
-4. **Keep public evidence domains separate.** Garden docs, Zendesk corporate storytelling, and signed-in product UI answer different questions. *UI implication:* do not let company narrative or a sign-in-refresh announcement create CSS token claims.
-
-## 13. Personas
-
-Zendesk’s official Garden introduction names the disciplines that share this library; its company page names companies and customers as the people whose connections the product seeks to improve. These are stakeholder groups, not fictional or researched personas:
-
-- **Product designers:** need documented foundations and patterns to make purposeful UI consistently.
-- **Content strategists:** need the same shared guidance so interface language and structure reinforce one another.
-- **Engineers:** need component instructions and standards that can be implemented without turning adjacent examples into new rules.
-- **Service teams and their customers:** are the downstream audience for clearer, less complex customer interactions described by Zendesk’s company mission.
-
-## 14. States
-
-The supplied runtime packet has `interactionCount: 0`; it establishes no visual interactive or validation state values. Garden’s public patterns documentation does describe purpose-level state guidance, which is retained here without inventing colors, radii, timing, or component-state geometry:
-
-| Category | Official guidance / evidence boundary |
-|---|---|
-| Empty | No empty-state visual recipe was supplied in the packet; omit a token rather than infer one. |
-| Loading | Garden’s loader pattern differentiates skeletons for predictable content and spinners for unpredictable content. No computed loader styling was captured. |
-| Error | Garden lists error handling as a pattern, but no error value or component state was captured. |
-| Success | The supplied capture includes green `#4eab89` as a color observation, not a verified success-message component recipe. |
-| Skeleton | Use only the official purpose-level guidance above; no skeleton geometry, color, or animation token is claimed. |
-| Disabled | No disabled control state was captured. Do not derive one from the static native-button variants. |
-
-## 15. Motion & Easing
-
-No duration, easing curve, transition, animation, or interaction trace appears in the supplied packet. Garden’s public loader documentation discusses when a loader should appear and remain visible, but it does not supply a measured timing token in this evidence set. Motion and easing tokens are therefore omitted.
-
----
-**Verified:** 2026-07-13
-**Tier 1 sources:** `https://garden.zendesk.com/` (design-system home), `https://garden.zendesk.com/components/button` (public component documentation), `https://garden.zendesk.com/design/color` (public color documentation), `https://garden.zendesk.com/design/palette/` (official palette semantics), `https://www.zendesk.com/company/` (company context), `https://support.zendesk.com/hc/en-us/articles/9850316391322-Announcing-an-updated-look-to-the-team-member-and-end-user-sign-in-experiences` (current-evolution context)
-**Tier 2 sources:** `https://getdesign.md/zendesk` (attempted; built-in open returned an internal error), `https://styles.refero.design/?q=zendesk` (attempted; built-in open returned an internal error)
-**Conflicts unresolved:** none
+- Build a public documentation primary action only when its context is equivalent to the captured native button: `#1f73b7`, white text, 4px radius, 40px height, and 0px 15px padding.
+- Use `#293239` for observed documentation foreground text and `#5c6970` for the captured icon-control treatment; retain system-font uncertainty rather than naming a Zendesk family.
+- Treat the 32px sidebar row as a `listItem` rather than an action button.
+- When implementation requires focus, error, loading, or disabled behavior, design it accessibly for the target product but label it as a new implementation decision, not an observed Garden value.

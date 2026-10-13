@@ -1,112 +1,375 @@
 ---
-id: github
 name: GitHub
-country: US
-category: developer-tools
-homepage: "https://github.com"
-primary_color: "#0969da"
-logo:
-  type: simpleicons
-  slug: "github"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: design-system
-  extracted: "2026-06-08"
-  components_harvested: true
-  note: "Grounded in Primer (primer.style public DS) functional + base tokens, cross-checked against live github.com computed styles (dark-default canvas #0d1117, green primary #1f883d, 6px radius, 32px control height). primary = fgColor-accent #0969da."
-  colors:
-    primary: "#0969da"
-    primary-dark: "#4493f8"
-    accent-subtle: "#ddf4ff"
-    success: "#1f883d"
-    success-hover: "#1a7f37"
-    success-subtle: "#dafbe1"
-    danger: "#cf222e"
-    danger-subtle: "#ffebe9"
-    attention: "#9a6700"
-    attention-emphasis: "#bf8700"
-    attention-subtle: "#fff8c5"
-    done: "#8250df"
-    done-subtle: "#fbefff"
-    sponsors: "#bf3989"
-    canvas: "#ffffff"
-    canvas-inset: "#f6f8fa"
-    canvas-dark: "#0d1117"
-    canvas-dark-inset: "#010409"
-    canvas-dark-subtle: "#161b22"
-    heading: "#1f2328"
-    muted: "#59636e"
-    subtle: "#818b98"
-    on-emphasis: "#ffffff"
-    text-dark: "#e6edf3"
-    muted-dark: "#9198a1"
-    border: "#d1d9e0"
-    border-muted: "#d8dee4"
-    border-dark: "#30363d"
-    tab-active: "#fd8c73"
-  typography:
-    family: { ui: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif", mono: "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace", marketing: "Mona Sans, Hubot Sans" }
-    page-title:  { size: 32, weight: 600, lineHeight: 1.25, use: "Repo/profile name, page title" }
-    h1:          { size: 24, weight: 600, lineHeight: 1.25, use: "Section titles, settings headers" }
-    h2:          { size: 20, weight: 600, lineHeight: 1.25, use: "Card headers, sub-sections" }
-    h3:          { size: 16, weight: 600, lineHeight: 1.25, use: "List group headers, dialog titles" }
-    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "The GitHub baseline — most UI text" }
-    body-strong: { size: 14, weight: 600, lineHeight: 1.5, use: "File names, author names, emphasized labels" }
-    small:       { size: 12, weight: 400, lineHeight: 1.4, use: "Metadata, timestamps, counts, badges" }
-    code:        { size: 13, weight: 400, lineHeight: 1.45, use: "Mono — code, SHAs, paths, inline code" }
-  spacing: { xs: 4, sm: 8, base: 16, lg: 24, xl: 32, xxl: 40, xxxl: 48 }
-  rounded: { small: 3, medium: 6, large: 12, full: 9999 }
-  shadow:
-    small: "0 1px 0 rgba(31,35,40,0.04)"
-    medium: "0 3px 6px rgba(140,149,159,0.15)"
-    large: "0 8px 24px rgba(31,35,40,0.2)"
-    xlarge: "0 12px 28px rgba(31,35,40,0.3)"
-    focus: "0 0 0 3px rgba(9,105,218,0.3)"
-  components:
-    button-primary:    { type: button, bg: "#1f883d", fg: "#ffffff", border: "1px solid rgba(31,35,40,0.15)", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 600", hover: "bg #1a7f37", active: "bg #187733", disabled: "bg #94d3a2 · text 0.8 opacity", use: "The one constructive primary action — Create/Commit/Merge. Never blue." }
-    button-default:    { type: button, bg: "#f6f8fa", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 600", hover: "bg #eef1f4", active: "bg #e6eaef", use: "The most common neutral button — Cancel/Edit, secondary actions" }
-    button-danger:     { type: button, bg: "#ffffff", fg: "#cf222e", border: "1px solid #d1d9e0", radius: "6px", height: "32px", hover: "bg #cf222e · text #ffffff · border #cf222e", use: "Destructive — Delete/Remove. Quiet until hovered, then commits to red." }
-    button-invisible:  { type: button, bg: "transparent", fg: "#0969da", border: "none", radius: "6px", height: "32px", hover: "bg #f6f8fa", use: "Borderless tertiary — overflow triggers, icon buttons, in-row controls" }
-    icon-button:       { type: button, bg: "transparent", fg: "#59636e", radius: "6px", height: "32px", padding: "0", hover: "bg #f6f8fa", use: "Square icon-only control 28/32/40px, min 32x32 hit area — kebab menu, copy, bell" }
-    button-sizes:      { type: button, radius: "6px", states: "small 28px / 12px / 0 12px · medium 32px / 14px / 0 16px · large 40px / 14px / 0 20px", use: "Button size scale (height · font · padding)" }
-    text-input:        { type: input, bg: "#ffffff", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", height: "32px", padding: "5px 12px", font: "14px / 400", focus: "border #0969da + shadow 0 0 0 3px rgba(9,105,218,0.3)", states: "error border #cf222e + ring rgba(207,34,46,0.3) + #cf222e help text", use: "Standard form field; placeholder #818b98" }
-    select:            { type: input, bg: "#ffffff", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", focus: "shadow 0 0 0 3px rgba(9,105,218,0.3)", use: "Native-backed dropdown styled as default input, trailing chevron #59636e" }
-    checkbox:          { type: toggle, border: "1px solid #d1d9e0", radius: "3px", height: "16px", active: "checked #0969da fill + white check glyph", focus: "shadow 0 0 0 3px rgba(9,105,218,0.3)", use: "16px box; indeterminate shows a dash" }
-    radio:             { type: toggle, border: "1px solid #d1d9e0", radius: "9999px", height: "16px", active: "checked #0969da ring + filled #0969da dot", focus: "shadow 0 0 0 3px rgba(9,105,218,0.3)", use: "16px circle, mutually-exclusive option groups" }
-    toggle-switch:     { type: toggle, bg: "#818b98", radius: "9999px", active: "on #1f883d", use: "Settings boolean, ~32px pill track, white thumb with subtle shadow" }
-    box:               { type: card, bg: "#ffffff", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", padding: "16px", shadow: "none", use: "Canonical container, border-first. Optional #f6f8fa header + 1px bottom border. Repo rows, settings panels." }
-    label:             { type: badge, bg: "#ddf4ff", fg: "#0969da", border: "1px solid #ddf4ff", radius: "9999px", height: "20px", padding: "0 7px", font: "12px / 500", use: "Issue/PR tag tinted from its own hue at low alpha; ten color schemes" }
-    counter-label:     { type: badge, bg: "rgba(175,184,193,0.2)", fg: "#1f2328", radius: "9999px", padding: "0 6px", font: "12px / 400", use: "Numeric pill, tabular — tab/notification/star counts" }
-    state-label:       { type: badge, bg: "#1f883d", fg: "#ffffff", radius: "9999px", padding: "4px 12px", font: "12px / 500", states: "open #1f883d · merged #8250df · closed #cf222e · draft #59636e", use: "Large status pill atop an issue/PR, leading state icon" }
-    token:             { type: badge, bg: "#f6f8fa", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "9999px", use: "Removable chip with trailing x — assignees, topics, applied labels" }
-    avatar:            { type: avatar, radius: "9999px", height: "20px", use: "Circular for people, 6px-radius square for orgs/teams/bots. Sizes 16-64px, default 20px." }
-    avatar-stack:      { type: avatar, radius: "9999px", border: "white ring between", use: "Overlapping circular avatars ~-8px overlap, collapsing a contributor list into a cluster" }
-    action-list:       { type: listItem, padding: "16px", hover: "bg #f6f8fa", active: "selected bg #ddf4ff + text #0969da", use: "Vertical list of actions in menus/panels; leading/trailing visuals, group headings, dividers, danger items" }
-    action-menu:       { type: dialog, bg: "#ffffff", border: "1px solid #d1d9e0", radius: "6px", shadow: "0 8px 24px rgba(31,35,40,0.2)", use: "An action-list rendered in an overlay popover — kebab overflow and dropdown menus" }
-    underline-nav:     { type: tab, border: "1px bottom border #d1d9e0", fg: "#1f2328", font: "14px / 400", active: "text #1f2328 600 + 2px bottom border #fd8c73", hover: "bg #f6f8fa", use: "Primary tab pattern (Code/Issues/PR/Actions, profile tabs); neutral counter pills" }
-    segmented-control: { type: tab, bg: "#f6f8fa", border: "1px solid #d1d9e0", height: "32px", active: "selected white panel + 1px #d1d9e0 + small shadow", use: "Pick one of a small linear set; sizes 28/32px; collapses to dropdown/hideLabels in tight space" }
-    breadcrumbs:       { type: tab, fg: "#0969da", active: "last crumb #1f2328 no-link", use: "Inline path trail; #59636e slash separators. Repo file-path navigation." }
-    pagination:        { type: tab, fg: "#0969da", radius: "6px", active: "current page #0969da fill + #ffffff text", use: "Numbered links with prev/next chevrons under long issue/commit lists" }
-    tree-view:         { type: listItem, hover: "bg #f6f8fa", active: "selected bg #ddf4ff", use: "Indented file/symbol tree, 8px-step indentation, chevron disclosure on folders, keyboard-navigable" }
-    dialog:            { type: dialog, bg: "#ffffff", border: "1px solid #d1d9e0", radius: "12px", padding: "16px", shadow: "0 8px 24px rgba(31,35,40,0.2)", use: "Modal; rgba(31,35,40,0.5) scrim, 16px header + 1px bottom border, title 16px / 600. Confirmation/delete prompts." }
-    overlay:           { type: dialog, bg: "#ffffff", border: "1px solid #d1d9e0", radius: "6px", shadow: "0 3px 6px rgba(140,149,159,0.15)", use: "Floating-surface primitive (6-12px radius, medium/large shadow) — base for menus, popovers, dialogs" }
-    tooltip:           { type: card, bg: "#1f2328", fg: "#ffffff", radius: "6px", padding: "6px 12px", font: "12px / 400", use: "Dark bubble with small directional arrow, on hover/focus, for icon-button labels and truncated text" }
-    banner:            { type: card, bg: "#ddf4ff", fg: "#1f2328", border: "1px solid rgba(9,105,218,0.4)", radius: "6px", padding: "16px", states: "info #ddf4ff · success #dafbe1 · warning #fff8c5 · critical #ffebe9", use: "In-context message block, leading status icon + optional dismiss x; compact and flush layouts" }
-    flash:             { type: card, bg: "#ddf4ff", fg: "#1f2328", radius: "6px", padding: "16px", states: "info #ddf4ff · success #dafbe1 · warning #fff8c5 · critical #ffebe9", use: "Page-level banner spanning content width at page top; persists until navigation" }
-    inline-message:    { type: card, fg: "#1a7f37", states: "success #1a7f37 · attention #9a6700 · danger #cf222e", use: "Compact single-line status beside a control, leading icon + tone-colored text — validation hints" }
-    spinner:           { type: card, fg: "#59636e", use: "Indeterminate circular loader, ~1.5px stroke, sizes 16/24/32/48px; replaces a button label during long ops" }
-    progress-bar:      { type: card, bg: "#d1d9e0", fg: "#1f883d", radius: "9999px", height: "8px", use: "Rounded full track with green fill — language-breakdown bars, upload/operation progress" }
-    skeleton:          { type: card, bg: "#f6f8fa", radius: "6px", use: "Loading placeholders at final element geometry, subtle shimmer; SHAs/counts render as skeleton bars not values" }
-    blankslate:        { type: card, fg: "#1f2328", use: "Centered empty state — icon visual, #1f2328 heading, #59636e description, green primary action + optional secondary link; narrow/spacious/bordered variants" }
-    timeline:          { type: listItem, border: "#d1d9e0 vertical rail", use: "Issue/PR activity thread; badge nodes (commit/comment/label/merge) and avatar-led rows. Merge event in #8250df done purple." }
-    branch-name:       { type: badge, bg: "#ddf4ff", fg: "#0969da", radius: "6px", padding: "0 6px", font: "mono", use: "Inline branch/ref reference in monospace" }
+colors:
+  primary: '#0969da'
+  primary-dark: '#4493f8'
+  accent-subtle: '#ddf4ff'
+  success: '#1f883d'
+  success-hover: '#1a7f37'
+  success-subtle: '#dafbe1'
+  danger: '#cf222e'
+  danger-subtle: '#ffebe9'
+  attention: '#9a6700'
+  attention-emphasis: '#bf8700'
+  attention-subtle: '#fff8c5'
+  done: '#8250df'
+  done-subtle: '#fbefff'
+  sponsors: '#bf3989'
+  canvas: '#ffffff'
+  canvas-inset: '#f6f8fa'
+  canvas-dark: '#0d1117'
+  canvas-dark-inset: '#010409'
+  canvas-dark-subtle: '#161b22'
+  heading: '#1f2328'
+  muted: '#59636e'
+  subtle: '#818b98'
+  on-emphasis: '#ffffff'
+  text-dark: '#e6edf3'
+  muted-dark: '#9198a1'
+  border: '#d1d9e0'
+  border-muted: '#d8dee4'
+  border-dark: '#30363d'
+  tab-active: '#fd8c73'
+typography:
+  page-title:
+    fontSize: 32px
+    fontWeight: 600
+    lineHeight: 1.25
+    use: Repo/profile name, page title
+  h1:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.25
+    use: Section titles, settings headers
+  h2:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.25
+    use: Card headers, sub-sections
+  h3:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.25
+    use: List group headers, dialog titles
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: The GitHub baseline — most UI text
+  body-strong:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: File names, author names, emphasized labels
+  small:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Metadata, timestamps, counts, badges
+  code:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.45
+    use: Mono — code, SHAs, paths, inline code
+rounded:
+  small: 3px
+  medium: 6px
+  large: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 40
+  xxxl: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#1f883d'
+    textColor: '#ffffff'
+    border: 1px solid rgba(31,35,40,0.15)
+    rounded: 6px
+    height: 32px
+    padding: 0 16px
+    typography: 14px / 600
+    hover: 'bg #1a7f37'
+    active: 'bg #187733'
+    disabled: 'bg #94d3a2 · text 0.8 opacity'
+    use: The one constructive primary action — Create/Commit/Merge. Never blue.
+  button-default:
+    type: button
+    backgroundColor: '#f6f8fa'
+    textColor: '#1f2328'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    height: 32px
+    padding: 0 16px
+    typography: 14px / 600
+    hover: 'bg #eef1f4'
+    active: 'bg #e6eaef'
+    use: The most common neutral button — Cancel/Edit, secondary actions
+  button-danger:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#cf222e'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    height: 32px
+    hover: 'bg #cf222e · text #ffffff · border #cf222e'
+    use: Destructive — Delete/Remove. Quiet until hovered, then commits to red.
+  button-invisible:
+    type: button
+    backgroundColor: transparent
+    textColor: '#0969da'
+    border: none
+    rounded: 6px
+    height: 32px
+    hover: 'bg #f6f8fa'
+    use: Borderless tertiary — overflow triggers, icon buttons, in-row controls
+  icon-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#59636e'
+    rounded: 6px
+    height: 32px
+    padding: '0'
+    hover: 'bg #f6f8fa'
+    use: Square icon-only control 28/32/40px, min 32x32 hit area — kebab menu, copy, bell
+  button-sizes:
+    type: button
+    rounded: 6px
+    states: small 28px / 12px / 0 12px · medium 32px / 14px / 0 16px · large 40px / 14px / 0 20px
+    use: Button size scale (height · font · padding)
+  text-input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1f2328'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    height: 32px
+    padding: 5px 12px
+    typography: 14px / 400
+    focus: 'border #0969da + shadow 0 0 0 3px rgba(9,105,218,0.3)'
+    states: 'error border #cf222e + ring rgba(207,34,46,0.3) + #cf222e help text'
+    use: 'Standard form field; placeholder #818b98'
+  select:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1f2328'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    focus: shadow 0 0 0 3px rgba(9,105,218,0.3)
+    use: 'Native-backed dropdown styled as default input, trailing chevron #59636e'
+  checkbox:
+    type: toggle
+    border: '1px solid #d1d9e0'
+    rounded: 3px
+    height: 16px
+    active: 'checked #0969da fill + white check glyph'
+    focus: shadow 0 0 0 3px rgba(9,105,218,0.3)
+    use: 16px box; indeterminate shows a dash
+  radio:
+    type: toggle
+    border: '1px solid #d1d9e0'
+    rounded: 9999px
+    height: 16px
+    active: 'checked #0969da ring + filled #0969da dot'
+    focus: shadow 0 0 0 3px rgba(9,105,218,0.3)
+    use: 16px circle, mutually-exclusive option groups
+  toggle-switch:
+    type: toggle
+    backgroundColor: '#818b98'
+    rounded: 9999px
+    active: 'on #1f883d'
+    use: Settings boolean, ~32px pill track, white thumb with subtle shadow
+  box:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#1f2328'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    padding: 16px
+    shadow: none
+    use: 'Canonical container, border-first. Optional #f6f8fa header + 1px bottom border. Repo rows, settings panels.'
+  label:
+    type: badge
+    backgroundColor: '#ddf4ff'
+    textColor: '#0969da'
+    border: '1px solid #ddf4ff'
+    rounded: 9999px
+    height: 20px
+    padding: 0 7px
+    typography: 12px / 500
+    use: Issue/PR tag tinted from its own hue at low alpha; ten color schemes
+  counter-label:
+    type: badge
+    backgroundColor: rgba(175,184,193,0.2)
+    textColor: '#1f2328'
+    rounded: 9999px
+    padding: 0 6px
+    typography: 12px / 400
+    use: Numeric pill, tabular — tab/notification/star counts
+  state-label:
+    type: badge
+    backgroundColor: '#1f883d'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 4px 12px
+    typography: 12px / 500
+    states: 'open #1f883d · merged #8250df · closed #cf222e · draft #59636e'
+    use: Large status pill atop an issue/PR, leading state icon
+  token:
+    type: badge
+    backgroundColor: '#f6f8fa'
+    textColor: '#1f2328'
+    border: '1px solid #d1d9e0'
+    rounded: 9999px
+    use: Removable chip with trailing x — assignees, topics, applied labels
+  avatar:
+    type: avatar
+    rounded: 9999px
+    height: 20px
+    use: Circular for people, 6px-radius square for orgs/teams/bots. Sizes 16-64px, default 20px.
+  avatar-stack:
+    type: avatar
+    rounded: 9999px
+    border: white ring between
+    use: Overlapping circular avatars ~-8px overlap, collapsing a contributor list into a cluster
+  action-list:
+    type: listItem
+    padding: 16px
+    hover: 'bg #f6f8fa'
+    active: 'selected bg #ddf4ff + text #0969da'
+    use: Vertical list of actions in menus/panels; leading/trailing visuals, group headings, dividers, danger items
+  action-menu:
+    type: dialog
+    backgroundColor: '#ffffff'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    shadow: 0 8px 24px rgba(31,35,40,0.2)
+    use: An action-list rendered in an overlay popover — kebab overflow and dropdown menus
+  underline-nav:
+    type: tab
+    border: '1px bottom border #d1d9e0'
+    textColor: '#1f2328'
+    typography: 14px / 400
+    active: 'text #1f2328 600 + 2px bottom border #fd8c73'
+    hover: 'bg #f6f8fa'
+    use: Primary tab pattern (Code/Issues/PR/Actions, profile tabs); neutral counter pills
+  segmented-control:
+    type: tab
+    backgroundColor: '#f6f8fa'
+    border: '1px solid #d1d9e0'
+    height: 32px
+    active: 'selected white panel + 1px #d1d9e0 + small shadow'
+    use: Pick one of a small linear set; sizes 28/32px; collapses to dropdown/hideLabels in tight space
+  breadcrumbs:
+    type: tab
+    textColor: '#0969da'
+    active: 'last crumb #1f2328 no-link'
+    use: 'Inline path trail; #59636e slash separators. Repo file-path navigation.'
+  pagination:
+    type: tab
+    textColor: '#0969da'
+    rounded: 6px
+    active: 'current page #0969da fill + #ffffff text'
+    use: Numbered links with prev/next chevrons under long issue/commit lists
+  tree-view:
+    type: listItem
+    hover: 'bg #f6f8fa'
+    active: 'selected bg #ddf4ff'
+    use: Indented file/symbol tree, 8px-step indentation, chevron disclosure on folders, keyboard-navigable
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    border: '1px solid #d1d9e0'
+    rounded: 12px
+    padding: 16px
+    shadow: 0 8px 24px rgba(31,35,40,0.2)
+    use: Modal; rgba(31,35,40,0.5) scrim, 16px header + 1px bottom border, title 16px / 600. Confirmation/delete prompts.
+  overlay:
+    type: dialog
+    backgroundColor: '#ffffff'
+    border: '1px solid #d1d9e0'
+    rounded: 6px
+    shadow: 0 3px 6px rgba(140,149,159,0.15)
+    use: Floating-surface primitive (6-12px radius, medium/large shadow) — base for menus, popovers, dialogs
+  tooltip:
+    type: card
+    backgroundColor: '#1f2328'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 6px 12px
+    typography: 12px / 400
+    use: Dark bubble with small directional arrow, on hover/focus, for icon-button labels and truncated text
+  banner:
+    type: card
+    backgroundColor: '#ddf4ff'
+    textColor: '#1f2328'
+    border: 1px solid rgba(9,105,218,0.4)
+    rounded: 6px
+    padding: 16px
+    states: 'info #ddf4ff · success #dafbe1 · warning #fff8c5 · critical #ffebe9'
+    use: In-context message block, leading status icon + optional dismiss x; compact and flush layouts
+  flash:
+    type: card
+    backgroundColor: '#ddf4ff'
+    textColor: '#1f2328'
+    rounded: 6px
+    padding: 16px
+    states: 'info #ddf4ff · success #dafbe1 · warning #fff8c5 · critical #ffebe9'
+    use: Page-level banner spanning content width at page top; persists until navigation
+  inline-message:
+    type: card
+    textColor: '#1a7f37'
+    states: 'success #1a7f37 · attention #9a6700 · danger #cf222e'
+    use: Compact single-line status beside a control, leading icon + tone-colored text — validation hints
+  spinner:
+    type: card
+    textColor: '#59636e'
+    use: Indeterminate circular loader, ~1.5px stroke, sizes 16/24/32/48px; replaces a button label during long ops
+  progress-bar:
+    type: card
+    backgroundColor: '#d1d9e0'
+    textColor: '#1f883d'
+    rounded: 9999px
+    height: 8px
+    use: Rounded full track with green fill — language-breakdown bars, upload/operation progress
+  skeleton:
+    type: card
+    backgroundColor: '#f6f8fa'
+    rounded: 6px
+    use: Loading placeholders at final element geometry, subtle shimmer; SHAs/counts render as skeleton bars not values
+  blankslate:
+    type: card
+    textColor: '#1f2328'
+    use: 'Centered empty state — icon visual, #1f2328 heading, #59636e description, green primary action + optional secondary link; narrow/spacious/bordered variants'
+  timeline:
+    type: listItem
+    border: '#d1d9e0 vertical rail'
+    use: 'Issue/PR activity thread; badge nodes (commit/comment/label/merge) and avatar-led rows. Merge event in #8250df done purple.'
+  branch-name:
+    type: badge
+    backgroundColor: '#ddf4ff'
+    textColor: '#0969da'
+    rounded: 6px
+    padding: 0 6px
+    typography: mono
+    use: Inline branch/ref reference in monospace
+fonts:
+  roles:
+    ui: '-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif'
+    mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace
+    marketing: Mona Sans, Hubot Sans
 ---
 
 # Design System Inspiration of GitHub
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 GitHub is the home of the world's software, and its interface reflects a deliberate engineering aesthetic: precise, legible, and quietly confident. The product surface is built on **Primer**, GitHub's open-source design system — a token-driven framework that has powered github.com for over a decade. The atmosphere is utilitarian without being cold; it is the visual language of a tool used eight hours a day by people who care about whitespace, monospace alignment, and the diff between two characters.
 
@@ -125,7 +388,7 @@ Monospace is not a decoration here — it is structural. Code, SHAs, file paths,
 - Subtle 1px borders (`#d1d9e0`) do the structural work that shadows do elsewhere
 - Diff semantics (green add / red delete) bleed into the entire color system
 
-## Primary tasks
+### Primary tasks
 
 - Review a pull request diff line by line
 - Create a repository and push its first commit
@@ -134,7 +397,38 @@ Monospace is not a decoration here — it is structural. Code, SHAs, file paths,
 - Check whether a pull request is open, merged, or closed
 - Merge a pull request once the review is finished
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+GitHub was founded in **2008** by Tom Preston-Werner, Chris Wanstrath, P. J. Hyett, and Scott Chacon, built around **Git**, Linus Torvalds' 2005 distributed version-control system. The product's entire visual language descends from Git's core data model: a commit either *adds* lines (green) or *removes* them (red), branches *diverge* and *merge*, and the merge is a constructive, celebrated act. GitHub turned those mechanics into a social platform — the pull request, the issue, the star — and the design encodes the same semantics everywhere: **green is creation, red is destruction, purple is the completed merge.**
+
+GitHub was acquired by **Microsoft in 2018** for $7.5B and now hosts over **100 million developers** and **hundreds of millions of repositories**, making it the de facto home of open-source software. The **Octocat** — the cat-octopus mascot designed by Simon Oxley — is the brand's playful soul, but it is deliberately rationed: the product surface is sober and tool-like, and the mascot's whimsy is reserved for 404 pages, swag, and the margins. This split — serious tool, playful soul — is intentional.
+
+The design system, **Primer**, is open-source and itself a public artifact: GitHub designs in the open, the way it builds in the open. The dual-theme architecture reflects a real user truth — a huge fraction of developers work in dark mode, often for long sessions, and GitHub treats their canvas (`#0d1117`) with the same rigor as the white one. The shift in 2022–2024 from older greens and blues to the current Primer functional palette (`#1f883d` green, `#0969da` blue, `#0d1117` dark) was a system-wide token migration, not a reskin — evidence of a brand that treats its color as infrastructure.
+
+What GitHub refuses: consumer-app playfulness in core workflows, decorative gradients and illustration in dense data views, single-theme thinking, and color used as ornament. Every color carries version-control meaning. The aesthetic is the meaning.
+
+### Principles
+
+1. **Green creates, red destroys, purple completes.** Color is not decoration — it inherits Git's diff semantics. A primary action is green because committing is constructive. A delete is red. A merged PR is purple. Never assign these colors arbitrarily.
+2. **Blue is the link, green is the action.** The most-violated GitHub rule by outsiders. Interactive *text* is blue; the primary *button* is green. Keep them distinct.
+3. **Dark mode is not a setting, it's a theme.** Every component is fully specified on `#0d1117`. Shipping light-only is shipping half the product.
+4. **Structure with borders, float with shadows.** A 1px `#d1d9e0` border defines a resting surface. A shadow means "this is overlaid and temporary." Don't blur the two.
+5. **Density is a feature.** Developers want information per pixel — file trees, diffs, long threads. 14px baseline, consistent 8px rhythm. Dense, never cramped.
+6. **Monospace is for alignment, not flavor.** Use mono only where column-alignment matters (code, SHAs, paths). Never to make prose look "technical."
+7. **Restraint is the brand.** No gradients in data views, no shadows on cards, the mascot rationed to the margins. The tool gets out of the way of the work.
+8. **Design in the open.** Primer is public; tokens are documented; themes are auditable. The design system is itself an open-source artifact.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described developer-platform user segments, not individual people.*
+
+**Maya, 31, Berlin.** Senior backend engineer at a Series-B startup. Lives in GitHub eight hours a day, exclusively in dark mode. Reviews 10–15 pull requests daily and judges a diff's readability the way a chef judges knife balance. Cares deeply that the side-by-side diff aligns to the column and that the green/red of additions/deletions is exactly right. Uses keyboard shortcuts for everything; a missing focus ring is a bug to her. Has the Octocat sticker on her laptop but would be annoyed by mascot whimsy inside a code review.
+
+**Daniel, 24, Lagos.** Self-taught developer, two years into open source. GitHub is both his portfolio and his classroom. Reads issues and discussions to learn how mature projects work. The green "Create" buttons and the empty-repo quick-setup block were how he learned Git — copy, paste, commit. Stars repos as bookmarks. Switches between light mode (daytime, bright office) and dark (late nights). Notices and trusts the polish; a janky open-source project's README signals risk to him.
+
+**Priya, 42, Seattle.** Engineering manager at an enterprise on GitHub Enterprise. Rarely writes code now; lives in pull-request dashboards, Actions runs, and org settings. Cares about status legibility at a glance — green checks passing, red checks failing, the merged-purple badge. Scans long lists fast and relies on the 1px-border density to parse them. Reviews access controls in Settings, where the calm, documentation-grade UI tone reassures her that nothing is hidden.
+
+## Colors
 
 GitHub's color system is built in two layers: **base scales** (raw hue ramps, e.g. `blue-0` … `blue-9`) and **functional tokens** (semantic roles like `fgColor-accent`, `bgColor-default`). Values below are the canonical Primer light-theme values unless marked `(dark)`.
 
@@ -183,7 +477,7 @@ GitHub's color system is built in two layers: **base scales** (raw hue ramps, e.
 - **Border Default (dark)** (`#30363d`): dark-mode borders.
 - **Neutral Muted** (`rgba(175,184,193,0.2)`): inline `code` background, subtle fills.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **UI / System**: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"` — GitHub uses the native system stack for all interface chrome (fast, familiar, zero web-font cost).
@@ -217,7 +511,149 @@ GitHub's color system is built in two layers: **base scales** (raw hue ramps, e.
 - **Weight, not size, carries emphasis.** Most hierarchy uses 600 vs 400 at the same size rather than dramatic size jumps. Restraint keeps dense pages calm.
 - **System fonts in product, Mona Sans in marketing.** Never mix: a Mona Sans headline inside the product app would feel off-brand.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px (Primer spacing scale: 4, 8, 16, 24, 32, 40, 48...)
+- Primer tokens: `--base-size-4` (4px) through `--base-size-48`; common UI gaps are 8px and 16px
+- Content padding: 16px inside Box components, 24px page gutters on desktop
+- Dense data rows (file lists, commit lists): 8px vertical, 16px horizontal
+
+### Grid & Container
+- Max content width: `1280px` for app pages (`container-xl`), with `1012px` (`container-lg`) for reading-optimized pages like settings and docs
+- Three container sizes: `container-md` (768px), `container-lg` (1012px), `container-xl` (1280px)
+- Repo pages: 12-column grid with a primary content column and a metadata sidebar (About, topics, releases)
+- Centered, gutter-padded; never full-bleed except marketing heroes
+
+### Whitespace Philosophy
+- **Density with air.** GitHub is information-dense — file trees, diffs, long issue threads — but each row gets consistent 8px breathing room. Dense ≠ cramped.
+- **Borders over gaps.** Where other systems separate with whitespace, GitHub separates with 1px `#d1d9e0` rules. This keeps tables and lists scannable at high density.
+- **The sidebar pattern.** Detail pages (issue, PR, repo) use a wide main column + narrow right rail. The rail holds metadata; the main column holds the conversation/content.
+
+### Border Radius Scale
+- Small (2px): inline label edges, tight badges
+- Default (6px): buttons, inputs, boxes, the GitHub workhorse radius
+- Medium (12px): dialogs, profile cards, rounded boxes
+- Pill (2em): labels, counters, state badges, toggles
+- Circle (50%): avatars (always circular), icon-only round buttons
+
+### Responsive Behavior
+
+Primer's responsive system is documented in the public DS and drives github.com's layout. Six breakpoints; the repo/detail layouts collapse a two-column main-plus-rail into a single stacked column.
+
+#### Breakpoints (Primer)
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| XSmall (`xs`) | ≥320px | Base mobile, fully stacked, hamburger nav |
+| Small (`sm`) | ≥544px | Single-column, stacked metadata |
+| Medium (`md`) | ≥768px | Two-column begins, sidebar appears |
+| Large (`lg`) | ≥1012px | Full repo layout, right rail visible, `container-lg` reading width |
+| XLarge (`xl`) | ≥1280px | Max content width `container-xl`, wide gutters |
+| XXLarge (`xxl`) | ≥1400px | Widest gutters for ultra-wide displays |
+
+#### Touch & Targets
+- Minimum interactive target: 28px (small button); default 32px; comfortable 40px
+- List rows: ~40px+ tappable height on touch
+- Icon buttons: 32×32px hit area minimum
+
+#### Collapsing Strategy
+- Right metadata rail (About, topics, contributors) drops **below** the main column under `md`
+- Repo tab bar (`underline-nav`) becomes horizontally scrollable on narrow screens
+- File tree (`tree-view`) collapses to a toggle-drawer on mobile
+- `segmented-control` collapses to its `dropdown` / `hideLabels` responsive variant in tight space
+- Two-pane diff (side-by-side) collapses to **unified diff** on narrow viewports
+- Top nav collapses to a hamburger; global search becomes an icon-triggered overlay
+- `banner` / `flash` actions reflow from inline to stacked under `sm`
+
+#### Image & Avatar Behavior
+- Avatars: circular (people) or 6px square (orgs/bots), sized 16/20/24/32/48/64px by context
+- Repo social-preview images: 16:9, full-width within their container
+- Markdown-rendered images: max-width 100%, never overflow the prose column
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | 1px border `#d1d9e0`, no shadow | Boxes, cards, the default surface — **structure via border, not shadow** |
+| Small (1) | `0 1px 0 rgba(31,35,40,0.04)` | Buttons resting state, subtle row lift |
+| Medium (2) | `0 3px 6px rgba(140,149,159,0.15)` | Dropdowns, popovers, hovercards |
+| Large (3) | `0 8px 24px rgba(31,35,40,0.2)` | Dialogs, modals, command palette |
+| XLarge (4) | `0 12px 28px rgba(31,35,40,0.3)` | Full-screen overlays, large floating panels |
+
+**Shadow Philosophy**: GitHub's elevation is **border-first**. The flat surface — boxes, tables, panels — carries no shadow at all; a single 1px `#d1d9e0` border defines its edge. Shadows are reserved exclusively for genuinely floating, transient layers (dropdowns, popovers, dialogs). This restraint matches the engineering tone: depth implies "this is temporary / overlaid", flatness implies "this is the page". In dark mode, borders shift to `#30363d` and shadows deepen but stay neutral-cool, never colored.
+
+### Focus Ring
+- The signature GitHub focus indicator: `0 0 0 3px rgba(9,105,218,0.3)` — a 3px blue glow, never an OS outline. Danger contexts use `rgba(207,34,46,0.3)`. Accessibility-critical: visible on every interactive element via keyboard.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.small`: `0 1px 0 rgba(31,35,40,0.04)`
+- `shadow.medium`: `0 3px 6px rgba(140,149,159,0.15)`
+- `shadow.large`: `0 8px 24px rgba(31,35,40,0.2)`
+- `shadow.xlarge`: `0 12px 28px rgba(31,35,40,0.3)`
+- `shadow.focus`: `0 0 0 3px rgba(9,105,218,0.3)`
+
+## Motion & Easing
+
+GitHub motion is **minimal and functional** — this is a productivity tool, and animation that delays a developer is a tax. Transitions are short, easing is gentle, and large theatrical motions are absent from core workflows. The `prefers-reduced-motion` query is fully honored.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `instant` | 0ms | State toggles where animation would lag input |
+| `fast` | 80–120ms | Hover background, focus ring appearance, button press |
+| `standard` | 160–200ms | Dropdown/popover open, details expand, tab content swap |
+| `slow` | 300ms | Dialog/modal entrance, larger panel reveals |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-out` | `cubic-bezier(0.33, 1, 0.68, 1)` | Things appearing — dropdowns, popovers, dialogs |
+| `ease-in-out` | `cubic-bezier(0.65, 0, 0.35, 1)` | Two-way transitions — expand/collapse, accordions |
+| `ease-in` | `cubic-bezier(0.32, 0, 0.67, 0)` | Things leaving — dismissals |
+
+**Signature motions.**
+
+1. **Dropdown / popover.** Open with a quick `fast`–`standard` fade + 4px upward slide on `ease-out`; close instantly. Hovercards (the repo/user preview card) fade in on a short hover delay (~300ms intent delay) so they don't flicker during cursor travel.
+2. **Details expand.** Issue/PR comment collapse, file tree, and `<details>` blocks expand with a `standard` height transition on `ease-in-out`. No bounce — engineering-precise.
+3. **Copy feedback.** Copy-to-clipboard buttons (on code blocks, SHAs) flash a checkmark for ~1.5s then revert. The one tiny moment of delight, and it's functional confirmation.
+4. **Merge celebration.** Merging a PR is the brand's emotional peak — a brief confetti/emoji animation has historically marked it. This is the single licensed moment of whimsy in the core workflow; everywhere else, motion stays utilitarian.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all transitions collapse to opacity-only or instant. The product stays fully usable; just static.
+
+<!--
+OmD v0.1 Sources — GitHub (Primer)
+
+Token-level claims (§1–9) are grounded in the public Primer Design System
+(primer.style) functional + base color scales and component specs:
+- GitHub Blue accent.fg #0969da (light) / #4493f8 (dark)
+- success.emphasis / primary green #1f883d, danger #cf222e, attention #9a6700,
+  done/merged purple #8250df, sponsors pink #bf3989
+- bgColor-default #ffffff / #0d1117 (dark), inset #f6f8fa / #161b22 / #010409
+- fgColor-default #1f2328 / #e6edf3 (dark), muted #59636e / #9198a1
+- borderColor-default #d1d9e0 / #30363d
+- 6px default radius, 3px rgba(9,105,218,0.3) focus ring
+- system-font UI stack + ui-monospace code stack; Mona Sans / Hubot Sans marketing
+
+Brand narrative (§11): GitHub founded 2008 around Git (2005, Torvalds),
+acquired by Microsoft 2018 ($7.5B), 100M+ developers. Octocat mascot by
+Simon Oxley. Primer is open-source. These are widely documented public facts.
+
+Personas (§13) are fictional archetypes informed by publicly described
+developer-platform user segments, not specific individuals.
+
+Interpretive claims (e.g., "green is primary because committing is
+constructive — a diff semantics inheritance") are editorial readings of the
+design system, not official GitHub statements.
+
+Live homepage voice strings ("Change is constant. GitHub keeps you ahead",
+"The future of building happens together") observed via WebFetch 2026-06-06.
+-->
+
+## Components
 
 All values below are Primer light-theme defaults. Dark-theme equivalents swap to the `#0d1117` / `#30363d` token set noted in §2.
 
@@ -382,72 +818,6 @@ Primer calls these **Box**. They are border-first, shadow-rarely.
 **Tier 1 sources:** https://primer.style (Primer Design System — base scales, functional tokens, Button/TextInput/Label specs), https://github.com (live product UI — light/dark theming, green-primary buttons, blue links). · https://github.com (live production site)
 **Surface split:** §4 documents the **Primer product UI** (github.com app). Marketing pages (homepage, Enterprise) use a parallel system with **Mona Sans / Hubot Sans** display type and larger hero scales — noted in §3 but not the primary spec target.
 
-## 5. Layout Principles
-
-### Spacing System
-- Base unit: 8px (Primer spacing scale: 4, 8, 16, 24, 32, 40, 48...)
-- Primer tokens: `--base-size-4` (4px) through `--base-size-48`; common UI gaps are 8px and 16px
-- Content padding: 16px inside Box components, 24px page gutters on desktop
-- Dense data rows (file lists, commit lists): 8px vertical, 16px horizontal
-
-### Grid & Container
-- Max content width: `1280px` for app pages (`container-xl`), with `1012px` (`container-lg`) for reading-optimized pages like settings and docs
-- Three container sizes: `container-md` (768px), `container-lg` (1012px), `container-xl` (1280px)
-- Repo pages: 12-column grid with a primary content column and a metadata sidebar (About, topics, releases)
-- Centered, gutter-padded; never full-bleed except marketing heroes
-
-### Whitespace Philosophy
-- **Density with air.** GitHub is information-dense — file trees, diffs, long issue threads — but each row gets consistent 8px breathing room. Dense ≠ cramped.
-- **Borders over gaps.** Where other systems separate with whitespace, GitHub separates with 1px `#d1d9e0` rules. This keeps tables and lists scannable at high density.
-- **The sidebar pattern.** Detail pages (issue, PR, repo) use a wide main column + narrow right rail. The rail holds metadata; the main column holds the conversation/content.
-
-### Border Radius Scale
-- Small (2px): inline label edges, tight badges
-- Default (6px): buttons, inputs, boxes, the GitHub workhorse radius
-- Medium (12px): dialogs, profile cards, rounded boxes
-- Pill (2em): labels, counters, state badges, toggles
-- Circle (50%): avatars (always circular), icon-only round buttons
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | 1px border `#d1d9e0`, no shadow | Boxes, cards, the default surface — **structure via border, not shadow** |
-| Small (1) | `0 1px 0 rgba(31,35,40,0.04)` | Buttons resting state, subtle row lift |
-| Medium (2) | `0 3px 6px rgba(140,149,159,0.15)` | Dropdowns, popovers, hovercards |
-| Large (3) | `0 8px 24px rgba(31,35,40,0.2)` | Dialogs, modals, command palette |
-| XLarge (4) | `0 12px 28px rgba(31,35,40,0.3)` | Full-screen overlays, large floating panels |
-
-**Shadow Philosophy**: GitHub's elevation is **border-first**. The flat surface — boxes, tables, panels — carries no shadow at all; a single 1px `#d1d9e0` border defines its edge. Shadows are reserved exclusively for genuinely floating, transient layers (dropdowns, popovers, dialogs). This restraint matches the engineering tone: depth implies "this is temporary / overlaid", flatness implies "this is the page". In dark mode, borders shift to `#30363d` and shadows deepen but stay neutral-cool, never colored.
-
-### Focus Ring
-- The signature GitHub focus indicator: `0 0 0 3px rgba(9,105,218,0.3)` — a 3px blue glow, never an OS outline. Danger contexts use `rgba(207,34,46,0.3)`. Accessibility-critical: visible on every interactive element via keyboard.
-
-## 7. Do's and Don'ts
-
-### Do
-- Use **green (`#1f883d`) for the primary constructive action** — this is GitHub's signature; commit/create/merge are green, never blue
-- Use **blue (`#0969da`) for links and focus**, not for primary buttons
-- Specify every component in **both light and dark** — dark mode is first-class, not optional
-- Use **1px borders (`#d1d9e0`)** to structure content; reserve shadows for floating layers only
-- Use the **monospace stack** for all code, SHAs, file paths, and branch names
-- Keep **6px radius** on buttons, inputs, and boxes; pills (2em) for labels and badges
-- Use **14px as the body baseline** — GitHub UI is denser than consumer products
-- Apply the **3px blue focus ring** (`rgba(9,105,218,0.3)`) on all keyboard-focusable elements
-- Use **diff semantics**: green for additions/success, red for deletions/danger, purple for merged/done
-
-### Don't
-- Don't make the primary button blue — blue is for links; **green is the primary action**
-- Don't use shadows on resting cards — a 1px border is the GitHub surface treatment
-- Don't use Mona Sans / Hubot Sans in product UI — those are marketing display fonts only
-- Don't style prose as monospace for "techy" flavor — mono is structural (alignment), not decorative
-- Don't use pure white text on dark mode — use `#e6edf3`, the softened off-white
-- Don't use pure black text on light mode — use `#1f2328`, the warm near-black
-- Don't exceed 6px radius on buttons/inputs — GitHub is engineering-precise, not friendly-rounded
-- Don't forget the dark theme — shipping light-only is incomplete by GitHub's standard
-
-## 8. Component Patterns
-
 This section catalogs GitHub's component vocabulary as documented in **Primer** (primer.style — the public design system) and verified against live github.com computed styles. All Primer radius tokens are exact: `small` 3px, `medium` 6px, `large` 12px, `full` 9999px. Control heights are `small` 28px, `medium` 32px (default), `large` 40px. Border widths: `thin`/`default` 1px, `thick` 2px, `thicker` 4px. Values below are light-theme; dark-theme swaps to the `#0d1117` / `#161b22` / `#30363d` token set from §2.
 
 ### Actions
@@ -544,40 +914,64 @@ This section catalogs GitHub's component vocabulary as documented in **Primer** 
 
 **blankslate** — The empty state. Centered: an icon/illustration visual, a `#1f2328` heading, a `#59636e` description, a green primary action and an optional secondary link ("There aren't any issues yet." + "New issue"). Variants: narrow, spacious, and bordered. Often carries a rationed Octocat illustration.
 
-## Responsive Behavior
+### States
 
-Primer's responsive system is documented in the public DS and drives github.com's layout. Six breakpoints; the repo/detail layouts collapse a two-column main-plus-rail into a single stacked column.
+| State | Treatment |
+|---|---|
+| **Empty (no content yet)** | Centered short message in `#59636e` explaining what belongs here, plus one primary action: "There aren't any issues yet." + green "New issue" button. Often a subtle Octocat/blankslate illustration. |
+| **Empty repo** | The signature quick-setup card: monospace terminal commands (`git init`, `git remote add origin...`) in a `#f6f8fa` block with copy buttons. Pure utility. |
+| **Loading (first paint)** | Skeleton rows at `#f6f8fa` (light) / `#161b22` (dark), matching final row geometry. Subtle shimmer. SHAs and counts render as skeleton, not placeholder values. |
+| **Loading (action in button)** | Spinner replaces the label, button width preserved, button disabled. "Merging..." with inline spinner for long operations. |
+| **Error (inline field)** | `#cf222e` 1px border + `0 0 0 3px rgba(207,34,46,0.3)` ring, error text below in `#cf222e` 12px, specific and actionable. |
+| **Error (flash banner)** | Page-top flash: `#ffebe9` bg, `rgba(207,34,46,0.4)` border, leading alert icon, one specific sentence. |
+| **Success (flash)** | `#dafbe1` bg, `rgba(31,136,61,0.4)` border, leading check icon. "Repository created." Auto-persists until navigation, not auto-dismissed. |
+| **Status — checks passing** | `#1a7f37` check icon + "All checks have passed" in success green; merge button enabled green. |
+| **Status — checks failing** | `#cf222e` X icon + "Some checks were not successful"; merge button stays available but warns. |
+| **Status — merged** | `#8250df` merge icon + purple "Merged" state badge at the PR header. |
+| **Disabled** | Button bg lightened (`#94d3a2` for green primary), text 0.8 opacity, cursor not-allowed, no focus ring. Geometry unchanged. |
+| **Focus (keyboard)** | `0 0 0 3px rgba(9,105,218,0.3)` blue ring on every interactive element. Never suppressed. |
+| **Hover (row)** | List rows lift to `#f6f8fa` (light) / `#161b22` (dark) background. Links underline. |
 
-### Breakpoints (Primer)
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| XSmall (`xs`) | ≥320px | Base mobile, fully stacked, hamburger nav |
-| Small (`sm`) | ≥544px | Single-column, stacked metadata |
-| Medium (`md`) | ≥768px | Two-column begins, sidebar appears |
-| Large (`lg`) | ≥1012px | Full repo layout, right rail visible, `container-lg` reading width |
-| XLarge (`xl`) | ≥1280px | Max content width `container-xl`, wide gutters |
-| XXLarge (`xxl`) | ≥1400px | Widest gutters for ultra-wide displays |
+## Do's and Don'ts
 
-### Touch & Targets
-- Minimum interactive target: 28px (small button); default 32px; comfortable 40px
-- List rows: ~40px+ tappable height on touch
-- Icon buttons: 32×32px hit area minimum
+### Do
+- Use **green (`#1f883d`) for the primary constructive action** — this is GitHub's signature; commit/create/merge are green, never blue
+- Use **blue (`#0969da`) for links and focus**, not for primary buttons
+- Specify every component in **both light and dark** — dark mode is first-class, not optional
+- Use **1px borders (`#d1d9e0`)** to structure content; reserve shadows for floating layers only
+- Use the **monospace stack** for all code, SHAs, file paths, and branch names
+- Keep **6px radius** on buttons, inputs, and boxes; pills (2em) for labels and badges
+- Use **14px as the body baseline** — GitHub UI is denser than consumer products
+- Apply the **3px blue focus ring** (`rgba(9,105,218,0.3)`) on all keyboard-focusable elements
+- Use **diff semantics**: green for additions/success, red for deletions/danger, purple for merged/done
 
-### Collapsing Strategy
-- Right metadata rail (About, topics, contributors) drops **below** the main column under `md`
-- Repo tab bar (`underline-nav`) becomes horizontally scrollable on narrow screens
-- File tree (`tree-view`) collapses to a toggle-drawer on mobile
-- `segmented-control` collapses to its `dropdown` / `hideLabels` responsive variant in tight space
-- Two-pane diff (side-by-side) collapses to **unified diff** on narrow viewports
-- Top nav collapses to a hamburger; global search becomes an icon-triggered overlay
-- `banner` / `flash` actions reflow from inline to stacked under `sm`
+### Don't
+- Don't make the primary button blue — blue is for links; **green is the primary action**
+- Don't use shadows on resting cards — a 1px border is the GitHub surface treatment
+- Don't use Mona Sans / Hubot Sans in product UI — those are marketing display fonts only
+- Don't style prose as monospace for "techy" flavor — mono is structural (alignment), not decorative
+- Don't use pure white text on dark mode — use `#e6edf3`, the softened off-white
+- Don't use pure black text on light mode — use `#1f2328`, the warm near-black
+- Don't exceed 6px radius on buttons/inputs — GitHub is engineering-precise, not friendly-rounded
+- Don't forget the dark theme — shipping light-only is incomplete by GitHub's standard
 
-### Image & Avatar Behavior
-- Avatars: circular (people) or 6px square (orgs/bots), sized 16/20/24/32/48/64px by context
-- Repo social-preview images: 16:9, full-width within their container
-- Markdown-rendered images: max-width 100%, never overflow the prose column
+## Voice & Tone
 
-## 9. Agent Prompt Guide
+GitHub speaks like a senior engineer writing good documentation: precise, direct, warm but never cute. It respects the reader's time and competence. Sentences are declarative. Errors are specific and actionable. Marketing voice (homepage) is more aspirational ("The future of building happens together"), but product UI voice is plain, instructional, and free of hype.
+
+| Context | Tone |
+|---|---|
+| Buttons | Imperative verb + object: "Create repository", "Commit changes", "Merge pull request". Never "Submit" or "OK". |
+| Success flash | Plain past-tense confirmation: "Repository created." No exclamation marks in product UI. |
+| Error messages | Specific + actionable: "Repository name already exists. Choose a different name." Never "An error occurred." |
+| Empty states | Explain what goes here + offer the action: "There aren't any issues yet. Create the first one." |
+| Onboarding / docs | Second person, step-numbered, code-sample-heavy. Show, don't just tell. |
+| Marketing (homepage) | Aspirational, collective: "Change is constant. GitHub keeps you ahead." Mona Sans, big and confident. |
+| Empty repo | The famous quick-setup code block — terminal commands ready to copy, zero fluff. |
+
+**Forbidden patterns.** Vague errors ("Something went wrong" without a next step), exclamation-heavy hype in product UI, anthropomorphizing the system ("I couldn't find..."), "Oops". Octocat personality (Mona the mascot, playful 404 pages) is licensed only in error/easter-egg surfaces, never in core workflows.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action (Create/Commit/Merge): **Green `#1f883d`**
@@ -612,125 +1006,10 @@ Primer's responsive system is documented in the public DS and drives github.com'
 6. Always include the 3px blue focus ring on interactive elements
 7. Lean on diff semantics: green=add/success, red=delete/danger, purple=merged
 
-## 10. Voice & Tone
+## Governance
 
-GitHub speaks like a senior engineer writing good documentation: precise, direct, warm but never cute. It respects the reader's time and competence. Sentences are declarative. Errors are specific and actionable. Marketing voice (homepage) is more aspirational ("The future of building happens together"), but product UI voice is plain, instructional, and free of hype.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Buttons | Imperative verb + object: "Create repository", "Commit changes", "Merge pull request". Never "Submit" or "OK". |
-| Success flash | Plain past-tense confirmation: "Repository created." No exclamation marks in product UI. |
-| Error messages | Specific + actionable: "Repository name already exists. Choose a different name." Never "An error occurred." |
-| Empty states | Explain what goes here + offer the action: "There aren't any issues yet. Create the first one." |
-| Onboarding / docs | Second person, step-numbered, code-sample-heavy. Show, don't just tell. |
-| Marketing (homepage) | Aspirational, collective: "Change is constant. GitHub keeps you ahead." Mona Sans, big and confident. |
-| Empty repo | The famous quick-setup code block — terminal commands ready to copy, zero fluff. |
-
-**Forbidden patterns.** Vague errors ("Something went wrong" without a next step), exclamation-heavy hype in product UI, anthropomorphizing the system ("I couldn't find..."), "Oops". Octocat personality (Mona the mascot, playful 404 pages) is licensed only in error/easter-egg surfaces, never in core workflows.
-
-## 11. Brand Narrative
-
-GitHub was founded in **2008** by Tom Preston-Werner, Chris Wanstrath, P. J. Hyett, and Scott Chacon, built around **Git**, Linus Torvalds' 2005 distributed version-control system. The product's entire visual language descends from Git's core data model: a commit either *adds* lines (green) or *removes* them (red), branches *diverge* and *merge*, and the merge is a constructive, celebrated act. GitHub turned those mechanics into a social platform — the pull request, the issue, the star — and the design encodes the same semantics everywhere: **green is creation, red is destruction, purple is the completed merge.**
-
-GitHub was acquired by **Microsoft in 2018** for $7.5B and now hosts over **100 million developers** and **hundreds of millions of repositories**, making it the de facto home of open-source software. The **Octocat** — the cat-octopus mascot designed by Simon Oxley — is the brand's playful soul, but it is deliberately rationed: the product surface is sober and tool-like, and the mascot's whimsy is reserved for 404 pages, swag, and the margins. This split — serious tool, playful soul — is intentional.
-
-The design system, **Primer**, is open-source and itself a public artifact: GitHub designs in the open, the way it builds in the open. The dual-theme architecture reflects a real user truth — a huge fraction of developers work in dark mode, often for long sessions, and GitHub treats their canvas (`#0d1117`) with the same rigor as the white one. The shift in 2022–2024 from older greens and blues to the current Primer functional palette (`#1f883d` green, `#0969da` blue, `#0d1117` dark) was a system-wide token migration, not a reskin — evidence of a brand that treats its color as infrastructure.
-
-What GitHub refuses: consumer-app playfulness in core workflows, decorative gradients and illustration in dense data views, single-theme thinking, and color used as ornament. Every color carries version-control meaning. The aesthetic is the meaning.
-
-## 12. Principles
-
-1. **Green creates, red destroys, purple completes.** Color is not decoration — it inherits Git's diff semantics. A primary action is green because committing is constructive. A delete is red. A merged PR is purple. Never assign these colors arbitrarily.
-2. **Blue is the link, green is the action.** The most-violated GitHub rule by outsiders. Interactive *text* is blue; the primary *button* is green. Keep them distinct.
-3. **Dark mode is not a setting, it's a theme.** Every component is fully specified on `#0d1117`. Shipping light-only is shipping half the product.
-4. **Structure with borders, float with shadows.** A 1px `#d1d9e0` border defines a resting surface. A shadow means "this is overlaid and temporary." Don't blur the two.
-5. **Density is a feature.** Developers want information per pixel — file trees, diffs, long threads. 14px baseline, consistent 8px rhythm. Dense, never cramped.
-6. **Monospace is for alignment, not flavor.** Use mono only where column-alignment matters (code, SHAs, paths). Never to make prose look "technical."
-7. **Restraint is the brand.** No gradients in data views, no shadows on cards, the mascot rationed to the margins. The tool gets out of the way of the work.
-8. **Design in the open.** Primer is public; tokens are documented; themes are auditable. The design system is itself an open-source artifact.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described developer-platform user segments, not individual people.*
-
-**Maya, 31, Berlin.** Senior backend engineer at a Series-B startup. Lives in GitHub eight hours a day, exclusively in dark mode. Reviews 10–15 pull requests daily and judges a diff's readability the way a chef judges knife balance. Cares deeply that the side-by-side diff aligns to the column and that the green/red of additions/deletions is exactly right. Uses keyboard shortcuts for everything; a missing focus ring is a bug to her. Has the Octocat sticker on her laptop but would be annoyed by mascot whimsy inside a code review.
-
-**Daniel, 24, Lagos.** Self-taught developer, two years into open source. GitHub is both his portfolio and his classroom. Reads issues and discussions to learn how mature projects work. The green "Create" buttons and the empty-repo quick-setup block were how he learned Git — copy, paste, commit. Stars repos as bookmarks. Switches between light mode (daytime, bright office) and dark (late nights). Notices and trusts the polish; a janky open-source project's README signals risk to him.
-
-**Priya, 42, Seattle.** Engineering manager at an enterprise on GitHub Enterprise. Rarely writes code now; lives in pull-request dashboards, Actions runs, and org settings. Cares about status legibility at a glance — green checks passing, red checks failing, the merged-purple badge. Scans long lists fast and relies on the 1px-border density to parse them. Reviews access controls in Settings, where the calm, documentation-grade UI tone reassures her that nothing is hidden.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no content yet)** | Centered short message in `#59636e` explaining what belongs here, plus one primary action: "There aren't any issues yet." + green "New issue" button. Often a subtle Octocat/blankslate illustration. |
-| **Empty repo** | The signature quick-setup card: monospace terminal commands (`git init`, `git remote add origin...`) in a `#f6f8fa` block with copy buttons. Pure utility. |
-| **Loading (first paint)** | Skeleton rows at `#f6f8fa` (light) / `#161b22` (dark), matching final row geometry. Subtle shimmer. SHAs and counts render as skeleton, not placeholder values. |
-| **Loading (action in button)** | Spinner replaces the label, button width preserved, button disabled. "Merging..." with inline spinner for long operations. |
-| **Error (inline field)** | `#cf222e` 1px border + `0 0 0 3px rgba(207,34,46,0.3)` ring, error text below in `#cf222e` 12px, specific and actionable. |
-| **Error (flash banner)** | Page-top flash: `#ffebe9` bg, `rgba(207,34,46,0.4)` border, leading alert icon, one specific sentence. |
-| **Success (flash)** | `#dafbe1` bg, `rgba(31,136,61,0.4)` border, leading check icon. "Repository created." Auto-persists until navigation, not auto-dismissed. |
-| **Status — checks passing** | `#1a7f37` check icon + "All checks have passed" in success green; merge button enabled green. |
-| **Status — checks failing** | `#cf222e` X icon + "Some checks were not successful"; merge button stays available but warns. |
-| **Status — merged** | `#8250df` merge icon + purple "Merged" state badge at the PR header. |
-| **Disabled** | Button bg lightened (`#94d3a2` for green primary), text 0.8 opacity, cursor not-allowed, no focus ring. Geometry unchanged. |
-| **Focus (keyboard)** | `0 0 0 3px rgba(9,105,218,0.3)` blue ring on every interactive element. Never suppressed. |
-| **Hover (row)** | List rows lift to `#f6f8fa` (light) / `#161b22` (dark) background. Links underline. |
-
-## 15. Motion & Easing
-
-GitHub motion is **minimal and functional** — this is a productivity tool, and animation that delays a developer is a tax. Transitions are short, easing is gentle, and large theatrical motions are absent from core workflows. The `prefers-reduced-motion` query is fully honored.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `instant` | 0ms | State toggles where animation would lag input |
-| `fast` | 80–120ms | Hover background, focus ring appearance, button press |
-| `standard` | 160–200ms | Dropdown/popover open, details expand, tab content swap |
-| `slow` | 300ms | Dialog/modal entrance, larger panel reveals |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-out` | `cubic-bezier(0.33, 1, 0.68, 1)` | Things appearing — dropdowns, popovers, dialogs |
-| `ease-in-out` | `cubic-bezier(0.65, 0, 0.35, 1)` | Two-way transitions — expand/collapse, accordions |
-| `ease-in` | `cubic-bezier(0.32, 0, 0.67, 0)` | Things leaving — dismissals |
-
-**Signature motions.**
-
-1. **Dropdown / popover.** Open with a quick `fast`–`standard` fade + 4px upward slide on `ease-out`; close instantly. Hovercards (the repo/user preview card) fade in on a short hover delay (~300ms intent delay) so they don't flicker during cursor travel.
-2. **Details expand.** Issue/PR comment collapse, file tree, and `<details>` blocks expand with a `standard` height transition on `ease-in-out`. No bounce — engineering-precise.
-3. **Copy feedback.** Copy-to-clipboard buttons (on code blocks, SHAs) flash a checkmark for ~1.5s then revert. The one tiny moment of delight, and it's functional confirmation.
-4. **Merge celebration.** Merging a PR is the brand's emotional peak — a brief confetti/emoji animation has historically marked it. This is the single licensed moment of whimsy in the core workflow; everywhere else, motion stays utilitarian.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all transitions collapse to opacity-only or instant. The product stays fully usable; just static.
-
-<!--
-OmD v0.1 Sources — GitHub (Primer)
-
-Token-level claims (§1–9) are grounded in the public Primer Design System
-(primer.style) functional + base color scales and component specs:
-- GitHub Blue accent.fg #0969da (light) / #4493f8 (dark)
-- success.emphasis / primary green #1f883d, danger #cf222e, attention #9a6700,
-  done/merged purple #8250df, sponsors pink #bf3989
-- bgColor-default #ffffff / #0d1117 (dark), inset #f6f8fa / #161b22 / #010409
-- fgColor-default #1f2328 / #e6edf3 (dark), muted #59636e / #9198a1
-- borderColor-default #d1d9e0 / #30363d
-- 6px default radius, 3px rgba(9,105,218,0.3) focus ring
-- system-font UI stack + ui-monospace code stack; Mona Sans / Hubot Sans marketing
-
-Brand narrative (§11): GitHub founded 2008 around Git (2005, Torvalds),
-acquired by Microsoft 2018 ($7.5B), 100M+ developers. Octocat mascot by
-Simon Oxley. Primer is open-source. These are widely documented public facts.
-
-Personas (§13) are fictional archetypes informed by publicly described
-developer-platform user segments, not specific individuals.
-
-Interpretive claims (e.g., "green is primary because committing is
-constructive — a diff semantics inheritance") are editorial readings of the
-design system, not official GitHub statements.
-
-Live homepage voice strings ("Change is constant. GitHub keeps you ahead",
-"The future of building happens together") observed via WebFetch 2026-06-06.
--->
+- **Contrast, `button-invisible`.** Text `#0969da` on `#00000000` measures 4.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `icon-button`.** Text `#59636e` on `#00000000` measures 3.43:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `progress-bar`.** Text `#1f883d` on `#d1d9e0` measures 3.17:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

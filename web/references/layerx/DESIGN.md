@@ -1,86 +1,243 @@
 ---
-id: layerx
 name: LayerX
-country: JP
-category: fintech
-homepage: "https://layerx.co.jp"
-primary_color: "#534DFF"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=layerx.co.jp&sz=128"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  components_harvested: true
-  colors:
-    primary: "#534dff"
-    primary-hover: "#403ae6"
-    primary-tint: "#eeedff"
-    canvas: "#ffffff"
-    ink: "#152632"
-    sky: "#8dbbff"
-    gradient-end: "#7b6cff"
-    error: "#e5484d"
-    success: "#1fa971"
-    warning: "#f5a623"
-    info: "#3e63dd"
-    grey-50: "#f7f8fa"
-    grey-100: "#f0f2f5"
-    grey-200: "#e3e6eb"
-    grey-300: "#cbd1d9"
-    grey-400: "#9aa4b2"
-    grey-500: "#6b7585"
-    grey-600: "#4a5360"
-    grey-700: "#333b45"
-    grey-800: "#1f2832"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Inter", mono: "SF Mono" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.25, tracking: -0.02, use: "Landing hero headline" }
-    display:      { size: 36, weight: 700, lineHeight: 1.33, tracking: -0.02, use: "Section headers" }
-    heading-1:    { size: 28, weight: 700, lineHeight: 1.43, tracking: -0.01, use: "Feature titles" }
-    heading-2:    { size: 22, weight: 700, lineHeight: 1.45, tracking: -0.01, use: "Card/block headings" }
-    heading-3:    { size: 18, weight: 600, lineHeight: 1.56, use: "Sub-sections" }
-    subtitle:     { size: 16, weight: 600, lineHeight: 1.63, use: "List headers, labels" }
-    body-large:   { size: 16, weight: 400, lineHeight: 1.75, use: "Lead paragraphs" }
-    body:         { size: 15, weight: 400, lineHeight: 1.73, use: "Standard reading text" }
-    body-small:   { size: 14, weight: 400, lineHeight: 1.57, use: "Secondary text" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.50, tracking: 0.01, use: "Timestamps, fine print" }
-    amount:       { size: 24, weight: 600, use: "Invoice & financial figures, tabular nums" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
-  shadow:
-    subtle: "0 1px 3px rgba(21,38,50,0.06)"
-    standard: "0 4px 16px rgba(21,38,50,0.10)"
-    elevated: "0 8px 24px rgba(21,38,50,0.12)"
-    modal: "0 16px 48px rgba(21,38,50,0.20)"
-  components:
-    button-primary: { type: button, bg: "#534dff", fg: "#ffffff", radius: 8, padding: "0 24px", font: "15px/600", use: "Primary CTA, 44px height" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#534dff", radius: 8, padding: "0 24px", font: "15px/600", use: "Secondary paired action, 1px indigo border" }
-    button-ghost: { type: button, bg: "transparent", fg: "#333b45", radius: 8, padding: "0 16px", font: "15px/600", use: "Low-emphasis nav actions" }
-    button-danger: { type: button, bg: "#e5484d", fg: "#ffffff", radius: 8, padding: "0 24px", font: "15px/600", use: "Destructive confirmation" }
-    input-default: { type: input, bg: "#ffffff", fg: "#1f2832", radius: 8, padding: "11px 14px", font: "15px/400", use: "Standard form field" }
-    input-select: { type: input, bg: "#ffffff", radius: 8, padding: "11px 14px", use: "Single choice from list" }
-    card-standard: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Feature blocks, content panels" }
-    card-featured: { type: card, bg: "#ffffff", radius: 16, padding: "32px", use: "Hero/marketing cards, pricing highlight" }
-    card-compact: { type: card, bg: "#ffffff", radius: 8, padding: "16px", use: "List rows, dense cards" }
-    badge-brand: { type: badge, bg: "#534dff", fg: "#ffffff", radius: 6, padding: "2px 8px", font: "12px/600", use: "Primary emphasis NEW" }
-    badge-soft-brand: { type: badge, bg: "#eeedff", fg: "#403ae6", radius: 6, padding: "2px 8px", font: "12px/600", use: "Subtle category/status tag" }
-    badge-success: { type: badge, fg: "#1fa971", radius: 6, padding: "2px 8px", font: "12px/600", use: "Approved/completed" }
-    tab-underline: { type: tab, bg: "transparent", fg: "#6b7585", padding: "12px 16px", font: "15px/600", active: "#534dff text + 2px bottom border #534dff", use: "Section navigation" }
-    tab-segmented: { type: tab, bg: "#f0f2f5", fg: "#6b7585", radius: 8, padding: "8px 16px", font: "14px/600", active: "#ffffff bg + #152632 text", use: "View switching" }
-    toast-default: { type: toast, bg: "#152632", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14px/500", use: "Transient auto-dismiss notification" }
-    dialog-modal: { type: dialog, bg: "#ffffff", fg: "#152632", radius: 16, padding: "32px", use: "Confirmation, forms, detail overlays" }
-    dialog-drawer: { type: dialog, bg: "#ffffff", radius: 0, padding: "24px", use: "Side panel, detail view, filters" }
-    toggle-default: { type: toggle, bg: "#534dff", radius: 9999, use: "Boolean settings, feature flags (off #cbd1d9)" }
+colors:
+  primary: '#534dff'
+  primary-hover: '#403ae6'
+  primary-tint: '#eeedff'
+  canvas: '#ffffff'
+  ink: '#152632'
+  sky: '#8dbbff'
+  gradient-end: '#7b6cff'
+  error: '#e5484d'
+  success: '#1fa971'
+  warning: '#f5a623'
+  info: '#3e63dd'
+  grey-50: '#f7f8fa'
+  grey-100: '#f0f2f5'
+  grey-200: '#e3e6eb'
+  grey-300: '#cbd1d9'
+  grey-400: '#9aa4b2'
+  grey-500: '#6b7585'
+  grey-600: '#4a5360'
+  grey-700: '#333b45'
+  grey-800: '#1f2832'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: '-0.02px'
+    use: Landing hero headline
+  display:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: '-0.02px'
+    use: Section headers
+  heading-1:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.43
+    letterSpacing: '-0.01px'
+    use: Feature titles
+  heading-2:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.45
+    letterSpacing: '-0.01px'
+    use: Card/block headings
+  heading-3:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.56
+    use: Sub-sections
+  subtitle:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.63
+    use: List headers, labels
+  body-large:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.75
+    use: Lead paragraphs
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.73
+    use: Standard reading text
+  body-small:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.57
+    use: Secondary text
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0.01px
+    use: Timestamps, fine print
+  amount:
+    fontSize: 24px
+    fontWeight: 600
+    use: Invoice & financial figures, tabular nums
+rounded:
+  sm: 6px
+  md: 8px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 96
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#534dff'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0 24px
+    typography: 15px/600
+    use: Primary CTA, 44px height
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#534dff'
+    rounded: 8px
+    padding: 0 24px
+    typography: 15px/600
+    use: Secondary paired action, 1px indigo border
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333b45'
+    rounded: 8px
+    padding: 0 16px
+    typography: 15px/600
+    use: Low-emphasis nav actions
+  button-danger:
+    type: button
+    backgroundColor: '#e5484d'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0 24px
+    typography: 15px/600
+    use: Destructive confirmation
+  input-default:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1f2832'
+    rounded: 8px
+    padding: 11px 14px
+    typography: 15px/400
+    use: Standard form field
+  input-select:
+    type: input
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    padding: 11px 14px
+    use: Single choice from list
+  card-standard:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 12px
+    padding: 24px
+    use: Feature blocks, content panels
+  card-featured:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    padding: 32px
+    use: Hero/marketing cards, pricing highlight
+  card-compact:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    padding: 16px
+    use: List rows, dense cards
+  badge-brand:
+    type: badge
+    backgroundColor: '#534dff'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 2px 8px
+    typography: 12px/600
+    use: Primary emphasis NEW
+  badge-soft-brand:
+    type: badge
+    backgroundColor: '#eeedff'
+    textColor: '#403ae6'
+    rounded: 6px
+    padding: 2px 8px
+    typography: 12px/600
+    use: Subtle category/status tag
+  badge-success:
+    type: badge
+    textColor: '#1fa971'
+    rounded: 6px
+    padding: 2px 8px
+    typography: 12px/600
+    use: Approved/completed
+  tab-underline:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#6b7585'
+    padding: 12px 16px
+    typography: 15px/600
+    active: '#534dff text + 2px bottom border #534dff'
+    use: Section navigation
+  tab-segmented:
+    type: tab
+    backgroundColor: '#f0f2f5'
+    textColor: '#6b7585'
+    rounded: 8px
+    padding: 8px 16px
+    typography: 14px/600
+    active: '#ffffff bg + #152632 text'
+    use: View switching
+  toast-default:
+    type: toast
+    backgroundColor: '#152632'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 12px 16px
+    typography: 14px/500
+    use: Transient auto-dismiss notification
+  dialog-modal:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#152632'
+    rounded: 16px
+    padding: 32px
+    use: Confirmation, forms, detail overlays
+  dialog-drawer:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 0px
+    padding: 24px
+    use: Side panel, detail view, filters
+  toggle-default:
+    type: toggle
+    backgroundColor: '#534dff'
+    rounded: 9999px
+    use: 'Boolean settings, feature flags (off #cbd1d9)'
+fonts:
+  roles:
+    sans: Inter
+    mono: SF Mono
 ---
 
 # Design System Inspiration of LayerX
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 LayerX is a Tokyo-based "compound startup" whose mission — *すべての経済活動を、デジタル化する* ("digitize all economic activity") — sets the tone for a design language that is at once corporate-trustworthy and quietly futuristic. The brand's flagship is the **Bakuraku (バクラク)** suite, cloud back-office software for corporate spend, invoices, and expense management; the parent site (`layerx.co.jp`) is a refined modern corporate site that reads like a fintech infrastructure company rather than a consumer app. The atmosphere is **clean, white, generous with whitespace, and anchored by a single confident electric indigo** (`#534DFF`) that reads as both technological and human.
 
@@ -97,7 +254,7 @@ The typographic system is bilingual by necessity: Japanese (kanji/kana) and Lati
 - Soft, low-opacity neutral shadows — depth through layering, not drama
 - Moderate-to-large border radii (8–16px) for an approachable, modern-SaaS feel
 
-## Primary tasks
+### Primary tasks
 
 - Process an invoice and settle the spend behind it
 - Check which invoices are still waiting on an approver
@@ -105,7 +262,36 @@ The typographic system is bilingual by necessity: Japanese (kanji/kana) and Lati
 - Open an invoice preview in a side panel while reviewing
 - Compare money figures down a column of a financial table
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+LayerX, Inc. is a **Tokyo-based compound startup founded in August 2018**, with the mission *すべての経済活動を、デジタル化する* — "digitize all economic activity." It began with a blockchain/R&D heritage and pivoted into enterprise SaaS, building the **Bakuraku (バクラク)** suite: cloud software for invoice processing, expense management, corporate cards, and back-office spend. The recruiting-facing tagline — *未来の希望を、実装しよう* ("let's implement a future full of hope") — captures the company's engineer-led, mission-forward identity.
+
+The design system reflects this positioning. LayerX is not a consumer fintech app; it is **infrastructure for businesses**, and the visual language must earn the trust of finance and accounting teams. The choice of a vivid electric indigo (`#534DFF`) rather than the conservative navy of legacy Japanese enterprise software is deliberate: it signals that LayerX is a *modern* infrastructure company — technologically ambitious, software-native — while the white canvas, navy ink, and restrained shadows keep it firmly credible. The brand threads a narrow needle: energetic enough to feel like the future, sober enough to handle a corporation's money.
+
+What LayerX refuses: the cramped, grey, ActiveX-era density of incumbent Japanese back-office tools; the cartoonish playfulness of consumer apps; and the cold sterility of pure-enterprise dashboards. It occupies a confident middle — clean, spacious, indigo-accented, bilingual, and unmistakably built by engineers for serious work.
+
+### Principles
+
+1. **Whitespace is credibility.** Generous margins around headlines and CTAs signal an established infrastructure company. Reducing whitespace to fit more content is the wrong trade — add a section instead.
+2. **One accent, one meaning.** `#534DFF` means "interactive." It is never a decorative fill behind text. Gradients and illustration use sky blue; actions use indigo.
+3. **Ink, not black.** Headings and text use navy `#152632`; shadows use navy-tinted alpha. Pure black is too harsh for the calm corporate palette.
+4. **Bilingual by default.** Every layout assumes Japanese and Latin render together. Type weights, line-heights, and tracking are tuned so neither script dominates.
+5. **Numbers are infrastructure.** Financial figures use tabular numerals and align in columns. Money is never decorative — it is precise, legible, and trustworthy.
+6. **Restraint communicates trust.** Single-layer shadows, three font weights, one accent. In fintech, visual noise is a credibility tax.
+7. **Dense where work happens.** Marketing pages breathe at 96px rhythm; product tables compress to 8–12px rows. Match density to the user's task.
+8. **Mission over features.** Copy leads with the value and the mission, not a bullet list of capabilities.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Japanese B2B SaaS user segments, not individual people.*
+
+**佐藤 美咲 (Misaki Sato), 34, Tokyo.** Accounting team lead at a 300-person company. Evaluates Bakuraku for invoice processing. Lives in spreadsheets and approval queues; needs dense, tabular, fast-loading screens with unambiguous status badges (承認待ち / 承認済み). Distrusts anything that looks "consumer-cute" — wants software that signals it can be audited. Reads Japanese only on product surfaces; English appears only in vendor names.
+
+**田中 健一 (Kenichi Tanaka), 47, Osaka.** CFO of a mid-market manufacturer. Encounters LayerX first through the corporate marketing site. Judges credibility in seconds: clean layout, clear mission, recognizable customer logos. Whitespace and a confident headline matter more to him than feature depth at this stage. Will forward the page to his finance manager if it reads as "serious infrastructure," not a startup gamble.
+
+**Emma Chen, 29, Singapore.** Engineering candidate browsing the English careers site. Responds to the "implement a future full of hope" framing and the engineer-led culture. Wants to see a modern, polished, technically credible brand — the indigo, the clean type, the product screenshots — as proof the company builds quality software. Bilingual; reads both EN and JP comfortably.
+
+## Colors
 
 ### Primary
 - **LayerX Indigo** (`#534DFF`): The primary brand and interactive color. Primary CTAs, links, active states, focus rings, key data highlights. Bright violet-blue that is the unmistakable signature of the brand.
@@ -141,7 +327,7 @@ The typographic system is bilingual by necessity: Japanese (kanji/kana) and Lati
 - **Surface Raised**: `#ffffff`. Cards, dropdowns, floating panels.
 - **Overlay Scrim**: `rgba(21, 38, 50, 0.55)`. Modal backdrop — navy-tinted dark, never pure black.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Latin Primary**: `"Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
@@ -172,7 +358,134 @@ The typographic system is bilingual by necessity: Japanese (kanji/kana) and Lati
 - **Tabular numerals for money**: Invoice amounts, totals, and figures use tabular/monospaced numerals so columns align in financial tables.
 - **Bilingual balance**: Latin and Japanese are weighted to share even visual density on a shared line; never let one script dominate.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- Section vertical rhythm: 96px between major marketing sections, 64px on tablet
+- Card internal padding: 24px (standard), 32px (featured)
+
+### Grid & Container
+- Max content width: 1200px, centered
+- Marketing layout: 12-column grid, 24px gutters
+- Horizontal page padding: 24px mobile, 40px tablet, auto-center desktop
+- Product (Bakuraku) UI: left nav + fluid content area, data tables at full content width
+
+### Whitespace Philosophy
+- **Whitespace as trust.** Generous margins around headlines and CTAs signal an established infrastructure company, not a scrappy startup. Sections breathe.
+- **One idea per band.** Each full-width section carries a single message — headline, supporting copy, one visual, one CTA — separated by 96px.
+- **Dense where it counts.** Marketing pages are spacious; the product's invoice/expense tables are deliberately dense and tabular, with 8–12px row padding.
+
+### Border Radius Scale
+- Compact (6px): Badges, tags, inline chips
+- Standard (8px): Buttons, inputs, compact cards, segmented controls
+- Comfortable (12px): Standard cards, dropdowns
+- Large (16px): Featured cards, modals, hero panels
+- Pill (9999px): Toggles, avatar rings, status dots
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, stacked sections, 24px padding, hamburger nav |
+| Tablet | 768–1024px | 2-column feature grids, 40px padding, condensed nav |
+| Desktop | >1024px | Full 12-column grid, 1200px max-width centered, full nav bar |
+| Wide | >1440px | Content stays 1200px; extra space becomes margin |
+
+#### Touch Targets
+- Buttons: minimum 44px height (md), 36px (sm) reserved for desktop-dense UI only
+- Nav links and list rows: minimum 44px tappable height on mobile
+- Toggles and checkboxes: 24px control with 44px hit area
+
+#### Collapsing Strategy
+- Desktop multi-column feature grids collapse to a single stacked column on mobile.
+- Top nav collapses to a hamburger drawer below 768px; CTA stays visible as a sticky bottom or pinned header button.
+- Product (Bakuraku) left nav collapses to an icon rail, then to a drawer on mobile.
+- Data tables become stacked key–value cards on narrow screens.
+
+#### Image Behavior
+- Product screenshots: full-width within container, 12px radius, subtle Level-1 shadow.
+- Illustrations use the indigo→sky-blue gradient palette, scale fluidly, maintain aspect ratio.
+- Logos in customer-logo strips: greyscale `#9AA4B2` at rest, full-color on hover (marketing trust strip).
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, optional 1px `#E3E6EB` border | Page background, inline-bordered cards |
+| Subtle (Level 1) | `0 1px 3px rgba(21,38,50,0.06)` | Standard cards, list separation |
+| Standard (Level 2) | `0 4px 16px rgba(21,38,50,0.10)` | Featured cards, hover-lifted tiles |
+| Elevated (Level 3) | `0 8px 24px rgba(21,38,50,0.12)` | Dropdowns, popovers, drawers |
+| Modal (Level 4) | `0 16px 48px rgba(21,38,50,0.20)` | Dialogs, command palettes |
+
+**Shadow Philosophy**: Shadows are single-layer, low-opacity, and tinted with the navy ink (`rgba(21,38,50,…)`) rather than pure black — keeping elevation cohesive with the cool, corporate palette. Depth comes mostly from a 1px border + faint shadow, not from dramatic drop shadows. In a fintech context, restraint reads as competence; heavy shadows would feel consumer-app playful and undercut the infrastructure positioning.
+
+### Blur Effects
+- Sticky header applies a subtle `backdrop-filter: blur(8px)` with `rgba(255,255,255,0.8)` on scroll.
+- Modal backdrops use the navy scrim, no blur, to keep dialog content sharp.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `0 1px 3px rgba(21,38,50,0.06)`
+- `shadow.standard`: `0 4px 16px rgba(21,38,50,0.10)`
+- `shadow.elevated`: `0 8px 24px rgba(21,38,50,0.12)`
+- `shadow.modal`: `0 16px 48px rgba(21,38,50,0.20)`
+
+## Motion & Easing
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox state |
+| `motion-fast` | 150ms | Hover, focus ring, button press, small reveals |
+| `motion-standard` | 240ms | Default — dropdowns, card hover-lift, tab switch |
+| `motion-slow` | 360ms | Modals, drawers, emphasized transitions |
+| `motion-page` | 320ms | Route/section transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Appearing — modals, drawers, toasts, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals, pops |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — hover-lift, tab content, collapsibles |
+| `ease-emphasis` | `cubic-bezier(0.2, 0.0, 0, 1)` | Hero reveals on scroll, featured-card entrances |
+
+**Signature motions.**
+
+1. **Card hover-lift.** On hover, cards rise 2px and shadow deepens Level-1 → Level-2 over `motion-standard / ease-standard`. Subtle, never bouncy — the corporate register forbids overshoot.
+2. **Drawer slide.** Side panels (invoice preview, filters) slide from `x+24px` with `motion-slow / ease-enter`, backdrop fades to `rgba(21,38,50,0.55)`. Dismiss uses `motion-fast / ease-exit`.
+3. **Scroll reveals.** Marketing sections fade + rise 16px on enter with `motion-slow / ease-emphasis`, staggered ~60ms per item. Used sparingly to keep the page calm.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; slides become fades. The site stays fully usable.
+
+<!--
+OmD v0.1 Sources — LayerX
+
+Direct verification:
+- WebFetch https://layerx.co.jp (2026-06-06): confirms mission "すべての経済活動を、デジタル化する",
+  recruiting tagline "未来の希望を、実装しよう", Bakuraku product family, refined white-canvas
+  corporate layout, optimistic mission-driven tone. No explicit hex/font in fetched markup.
+- WebSearch (2026-06-06): brand-color aggregator records report primary #534DFF (rgb 83,77,255),
+  complementary #8DBBFF (sky) and #152632 (Big Stone navy ink). Company profile: Tokyo compound
+  startup founded Aug 2018, mission to digitize all economic activity, Bakuraku SaaS suite.
+- Brandfetch (https://brandfetch.com/layerx.co.jp) returned HTTP 403; not used.
+
+Token-level component values (radii 8/12/16, 44px button height, focus-ring rgba, shadow tokens,
+type scale) are a brand-faithful modern-SaaS interpretation consistent with the live corporate
+site's styling and the verified palette; LayerX/Bakuraku do not publish a public design-token spec,
+so these are reasoned defaults, not dumped production tokens.
+
+Personas (§13) are fictional archetypes informed by publicly described Japanese B2B SaaS segments.
+Interpretive claims (e.g., indigo chosen to signal "modern infrastructure" vs legacy navy) are
+editorial readings of the design, not documented LayerX statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -386,52 +699,25 @@ Size scale (height · font · padding · radius): `sm` 36px · 14px · 0 16px ·
 
 **Verified:** 2026-06-06 (OmD v0.1). Primary `#534DFF` grounded via WebSearch (brand-color aggregators) and `layerx.co.jp` WebFetch (mission/tone, white-canvas corporate layout). Secondary `#8DBBFF` and ink `#152632` confirmed in the same brand-color record. Component geometry (radii 8/12/16, 44px buttons, focus-ring tokens) is a documented modern-SaaS interpretation consistent with the live site's refined corporate styling; exact product-UI tokens for the Bakuraku app were not independently dumped from a public spec and are reasoned, brand-faithful values.
 
-
 **Tier 1 sources:** https://layerx.co.jp (live production site, verified via live DOM getComputedStyle); https://note.com/layerx_design (株式会社LayerX design team's official note — first-party design writing, e.g. "バクラクらしさの設計図"; brand-operated account on a third-party platform).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
-- Section vertical rhythm: 96px between major marketing sections, 64px on tablet
-- Card internal padding: 24px (standard), 32px (featured)
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | Centered single line of `#6B7585` body text explaining what will appear (`まだ請求書がありません`), plus one primary CTA to add the first item. Optional light-line illustration in indigo/sky-blue, never a heavy graphic. |
+| **Empty (filtered)** | Single `#9AA4B2` caption (`条件に一致する結果がありません`) with a "フィルターをクリア" ghost button. |
+| **Loading (first paint)** | Skeleton blocks at `#F0F2F5` matching final layout. Shimmer 1.2s, 8% white highlight. Financial figures render as `—` until resolved, never as skeleton bars. |
+| **Loading (action)** | Inline spinner in `#534DFF` inside the pressed button; label hidden, button width preserved to prevent double-submit. |
+| **Error (inline field)** | 1px `#E5484D` border + 3px `rgba(229,72,77,0.15)` ring, red 12px help text below with one actionable sentence. |
+| **Error (toast)** | `#152632` surface, white 14px text, red leading icon, 4s auto-dismiss, bottom-right with 24px inset. |
+| **Error (page)** | Reserved for outages. Centered navy headline 18px/600, body in `#6B7585`, indigo retry button. No heavy illustration. |
+| **Success (toast)** | `#152632` surface, green `#1FA971` icon, single past-tense sentence (`承認しました`). |
+| **Success (status change)** | Row badge flips to Soft Success (`#E6F6EF` / `#1FA971`) with a 200ms tint fade. |
+| **Disabled** | Button bg `#C9C7F5`; inputs keep `#E3E6EB` border at 0.6 opacity, cursor `not-allowed`. Geometry unchanged so re-enable is stable. |
+| **Focus** | 3px `rgba(83,77,255,0.15)` ring + `#534DFF` border on all interactive elements. Always visible for keyboard users — never `outline: none` without a replacement. |
 
-### Grid & Container
-- Max content width: 1200px, centered
-- Marketing layout: 12-column grid, 24px gutters
-- Horizontal page padding: 24px mobile, 40px tablet, auto-center desktop
-- Product (Bakuraku) UI: left nav + fluid content area, data tables at full content width
-
-### Whitespace Philosophy
-- **Whitespace as trust.** Generous margins around headlines and CTAs signal an established infrastructure company, not a scrappy startup. Sections breathe.
-- **One idea per band.** Each full-width section carries a single message — headline, supporting copy, one visual, one CTA — separated by 96px.
-- **Dense where it counts.** Marketing pages are spacious; the product's invoice/expense tables are deliberately dense and tabular, with 8–12px row padding.
-
-### Border Radius Scale
-- Compact (6px): Badges, tags, inline chips
-- Standard (8px): Buttons, inputs, compact cards, segmented controls
-- Comfortable (12px): Standard cards, dropdowns
-- Large (16px): Featured cards, modals, hero panels
-- Pill (9999px): Toggles, avatar rings, status dots
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, optional 1px `#E3E6EB` border | Page background, inline-bordered cards |
-| Subtle (Level 1) | `0 1px 3px rgba(21,38,50,0.06)` | Standard cards, list separation |
-| Standard (Level 2) | `0 4px 16px rgba(21,38,50,0.10)` | Featured cards, hover-lifted tiles |
-| Elevated (Level 3) | `0 8px 24px rgba(21,38,50,0.12)` | Dropdowns, popovers, drawers |
-| Modal (Level 4) | `0 16px 48px rgba(21,38,50,0.20)` | Dialogs, command palettes |
-
-**Shadow Philosophy**: Shadows are single-layer, low-opacity, and tinted with the navy ink (`rgba(21,38,50,…)`) rather than pure black — keeping elevation cohesive with the cool, corporate palette. Depth comes mostly from a 1px border + faint shadow, not from dramatic drop shadows. In a fintech context, restraint reads as competence; heavy shadows would feel consumer-app playful and undercut the infrastructure positioning.
-
-### Blur Effects
-- Sticky header applies a subtle `backdrop-filter: blur(8px)` with `rgba(255,255,255,0.8)` on scroll.
-- Modal backdrops use the navy scrim, no blur, to keep dialog content sharp.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use LayerX Indigo (`#534DFF`) for all primary interactive elements — CTAs, links, focus rings, active tabs.
@@ -450,33 +736,23 @@ Size scale (height · font · padding · radius): `sm` 36px · 14px · 0 16px ·
 - Don't use heavy multi-layer shadows — single-layer, low-opacity only.
 - Don't mix the sky-blue secondary into button fills — it's for gradients and illustration, not actions.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, stacked sections, 24px padding, hamburger nav |
-| Tablet | 768–1024px | 2-column feature grids, 40px padding, condensed nav |
-| Desktop | >1024px | Full 12-column grid, 1200px max-width centered, full nav bar |
-| Wide | >1440px | Content stays 1200px; extra space becomes margin |
+LayerX speaks with the calm confidence of an infrastructure company that businesses entrust with their money and back-office operations. Japanese is the primary voice; English exists for global recruiting and investor surfaces but is secondary. The tone is **mission-driven, optimistic, and precise** — declarative statements about digitizing economic activity, never hype-y or jokey. Copy favors clear value ("バクラクに、業務を。") over feature lists, and treats the reader as a competent professional, not a novice.
 
-### Touch Targets
-- Buttons: minimum 44px height (md), 36px (sm) reserved for desktop-dense UI only
-- Nav links and list rows: minimum 44px tappable height on mobile
-- Toggles and checkboxes: 24px control with 44px hit area
+| Context | Tone |
+|---|---|
+| CTAs | Concise imperative (`お問い合わせ`, `資料をダウンロード`, `無料で試す`) |
+| Section headlines | Declarative mission/value statements — short, confident |
+| Body copy | Polite-plain (です・ます) professional register, no slang |
+| Success messages | Single past-tense confirmation (`承認しました`), no emoji |
+| Error messages | Specific, blameless, actionable (`金額を再度ご確認ください`) |
+| Recruiting / culture | Warmer, forward-looking ("未来の希望を、実装しよう") |
+| Legal / compliance | Formal Japanese business register, full です・ます with full disclosure |
 
-### Collapsing Strategy
-- Desktop multi-column feature grids collapse to a single stacked column on mobile.
-- Top nav collapses to a hamburger drawer below 768px; CTA stays visible as a sticky bottom or pinned header button.
-- Product (Bakuraku) left nav collapses to an icon rail, then to a drawer on mobile.
-- Data tables become stacked key–value cards on narrow screens.
+**Forbidden moves.** No exclamatory hype ("すごい！"), no emoji in product/financial surfaces, no vague apologies ("ご不便をおかけして…") without a concrete next step, no casual-spoken endings on transactional copy. English strings stay corporate-neutral; avoid startup slang.
 
-### Image Behavior
-- Product screenshots: full-width within container, 12px radius, subtle Level-1 shadow.
-- Illustrations use the indigo→sky-blue gradient palette, scale fluidly, maintain aspect ratio.
-- Logos in customer-logo strips: greyscale `#9AA4B2` at rest, full-color on hover (marketing trust strip).
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: LayerX Indigo (`#534DFF`)
@@ -511,113 +787,10 @@ Size scale (height · font · padding · radius): `sm` 36px · 14px · 0 16px ·
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-LayerX speaks with the calm confidence of an infrastructure company that businesses entrust with their money and back-office operations. Japanese is the primary voice; English exists for global recruiting and investor surfaces but is secondary. The tone is **mission-driven, optimistic, and precise** — declarative statements about digitizing economic activity, never hype-y or jokey. Copy favors clear value ("バクラクに、業務を。") over feature lists, and treats the reader as a competent professional, not a novice.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Concise imperative (`お問い合わせ`, `資料をダウンロード`, `無料で試す`) |
-| Section headlines | Declarative mission/value statements — short, confident |
-| Body copy | Polite-plain (です・ます) professional register, no slang |
-| Success messages | Single past-tense confirmation (`承認しました`), no emoji |
-| Error messages | Specific, blameless, actionable (`金額を再度ご確認ください`) |
-| Recruiting / culture | Warmer, forward-looking ("未来の希望を、実装しよう") |
-| Legal / compliance | Formal Japanese business register, full です・ます with full disclosure |
-
-**Forbidden moves.** No exclamatory hype ("すごい！"), no emoji in product/financial surfaces, no vague apologies ("ご不便をおかけして…") without a concrete next step, no casual-spoken endings on transactional copy. English strings stay corporate-neutral; avoid startup slang.
-
-## 11. Brand Narrative
-
-LayerX, Inc. is a **Tokyo-based compound startup founded in August 2018**, with the mission *すべての経済活動を、デジタル化する* — "digitize all economic activity." It began with a blockchain/R&D heritage and pivoted into enterprise SaaS, building the **Bakuraku (バクラク)** suite: cloud software for invoice processing, expense management, corporate cards, and back-office spend. The recruiting-facing tagline — *未来の希望を、実装しよう* ("let's implement a future full of hope") — captures the company's engineer-led, mission-forward identity.
-
-The design system reflects this positioning. LayerX is not a consumer fintech app; it is **infrastructure for businesses**, and the visual language must earn the trust of finance and accounting teams. The choice of a vivid electric indigo (`#534DFF`) rather than the conservative navy of legacy Japanese enterprise software is deliberate: it signals that LayerX is a *modern* infrastructure company — technologically ambitious, software-native — while the white canvas, navy ink, and restrained shadows keep it firmly credible. The brand threads a narrow needle: energetic enough to feel like the future, sober enough to handle a corporation's money.
-
-What LayerX refuses: the cramped, grey, ActiveX-era density of incumbent Japanese back-office tools; the cartoonish playfulness of consumer apps; and the cold sterility of pure-enterprise dashboards. It occupies a confident middle — clean, spacious, indigo-accented, bilingual, and unmistakably built by engineers for serious work.
-
-## 12. Principles
-
-1. **Whitespace is credibility.** Generous margins around headlines and CTAs signal an established infrastructure company. Reducing whitespace to fit more content is the wrong trade — add a section instead.
-2. **One accent, one meaning.** `#534DFF` means "interactive." It is never a decorative fill behind text. Gradients and illustration use sky blue; actions use indigo.
-3. **Ink, not black.** Headings and text use navy `#152632`; shadows use navy-tinted alpha. Pure black is too harsh for the calm corporate palette.
-4. **Bilingual by default.** Every layout assumes Japanese and Latin render together. Type weights, line-heights, and tracking are tuned so neither script dominates.
-5. **Numbers are infrastructure.** Financial figures use tabular numerals and align in columns. Money is never decorative — it is precise, legible, and trustworthy.
-6. **Restraint communicates trust.** Single-layer shadows, three font weights, one accent. In fintech, visual noise is a credibility tax.
-7. **Dense where work happens.** Marketing pages breathe at 96px rhythm; product tables compress to 8–12px rows. Match density to the user's task.
-8. **Mission over features.** Copy leads with the value and the mission, not a bullet list of capabilities.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Japanese B2B SaaS user segments, not individual people.*
-
-**佐藤 美咲 (Misaki Sato), 34, Tokyo.** Accounting team lead at a 300-person company. Evaluates Bakuraku for invoice processing. Lives in spreadsheets and approval queues; needs dense, tabular, fast-loading screens with unambiguous status badges (承認待ち / 承認済み). Distrusts anything that looks "consumer-cute" — wants software that signals it can be audited. Reads Japanese only on product surfaces; English appears only in vendor names.
-
-**田中 健一 (Kenichi Tanaka), 47, Osaka.** CFO of a mid-market manufacturer. Encounters LayerX first through the corporate marketing site. Judges credibility in seconds: clean layout, clear mission, recognizable customer logos. Whitespace and a confident headline matter more to him than feature depth at this stage. Will forward the page to his finance manager if it reads as "serious infrastructure," not a startup gamble.
-
-**Emma Chen, 29, Singapore.** Engineering candidate browsing the English careers site. Responds to the "implement a future full of hope" framing and the engineer-led culture. Wants to see a modern, polished, technically credible brand — the indigo, the clean type, the product screenshots — as proof the company builds quality software. Bilingual; reads both EN and JP comfortably.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (first use)** | Centered single line of `#6B7585` body text explaining what will appear (`まだ請求書がありません`), plus one primary CTA to add the first item. Optional light-line illustration in indigo/sky-blue, never a heavy graphic. |
-| **Empty (filtered)** | Single `#9AA4B2` caption (`条件に一致する結果がありません`) with a "フィルターをクリア" ghost button. |
-| **Loading (first paint)** | Skeleton blocks at `#F0F2F5` matching final layout. Shimmer 1.2s, 8% white highlight. Financial figures render as `—` until resolved, never as skeleton bars. |
-| **Loading (action)** | Inline spinner in `#534DFF` inside the pressed button; label hidden, button width preserved to prevent double-submit. |
-| **Error (inline field)** | 1px `#E5484D` border + 3px `rgba(229,72,77,0.15)` ring, red 12px help text below with one actionable sentence. |
-| **Error (toast)** | `#152632` surface, white 14px text, red leading icon, 4s auto-dismiss, bottom-right with 24px inset. |
-| **Error (page)** | Reserved for outages. Centered navy headline 18px/600, body in `#6B7585`, indigo retry button. No heavy illustration. |
-| **Success (toast)** | `#152632` surface, green `#1FA971` icon, single past-tense sentence (`承認しました`). |
-| **Success (status change)** | Row badge flips to Soft Success (`#E6F6EF` / `#1FA971`) with a 200ms tint fade. |
-| **Disabled** | Button bg `#C9C7F5`; inputs keep `#E3E6EB` border at 0.6 opacity, cursor `not-allowed`. Geometry unchanged so re-enable is stable. |
-| **Focus** | 3px `rgba(83,77,255,0.15)` ring + `#534DFF` border on all interactive elements. Always visible for keyboard users — never `outline: none` without a replacement. |
-
-## 15. Motion & Easing
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox state |
-| `motion-fast` | 150ms | Hover, focus ring, button press, small reveals |
-| `motion-standard` | 240ms | Default — dropdowns, card hover-lift, tab switch |
-| `motion-slow` | 360ms | Modals, drawers, emphasized transitions |
-| `motion-page` | 320ms | Route/section transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Appearing — modals, drawers, toasts, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals, pops |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — hover-lift, tab content, collapsibles |
-| `ease-emphasis` | `cubic-bezier(0.2, 0.0, 0, 1)` | Hero reveals on scroll, featured-card entrances |
-
-**Signature motions.**
-
-1. **Card hover-lift.** On hover, cards rise 2px and shadow deepens Level-1 → Level-2 over `motion-standard / ease-standard`. Subtle, never bouncy — the corporate register forbids overshoot.
-2. **Drawer slide.** Side panels (invoice preview, filters) slide from `x+24px` with `motion-slow / ease-enter`, backdrop fades to `rgba(21,38,50,0.55)`. Dismiss uses `motion-fast / ease-exit`.
-3. **Scroll reveals.** Marketing sections fade + rise 16px on enter with `motion-slow / ease-emphasis`, staggered ~60ms per item. Used sparingly to keep the page calm.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; slides become fades. The site stays fully usable.
-
-<!--
-OmD v0.1 Sources — LayerX
-
-Direct verification:
-- WebFetch https://layerx.co.jp (2026-06-06): confirms mission "すべての経済活動を、デジタル化する",
-  recruiting tagline "未来の希望を、実装しよう", Bakuraku product family, refined white-canvas
-  corporate layout, optimistic mission-driven tone. No explicit hex/font in fetched markup.
-- WebSearch (2026-06-06): brand-color aggregator records report primary #534DFF (rgb 83,77,255),
-  complementary #8DBBFF (sky) and #152632 (Big Stone navy ink). Company profile: Tokyo compound
-  startup founded Aug 2018, mission to digitize all economic activity, Bakuraku SaaS suite.
-- Brandfetch (https://brandfetch.com/layerx.co.jp) returned HTTP 403; not used.
-
-Token-level component values (radii 8/12/16, 44px button height, focus-ring rgba, shadow tokens,
-type scale) are a brand-faithful modern-SaaS interpretation consistent with the live corporate
-site's styling and the verified palette; LayerX/Bakuraku do not publish a public design-token spec,
-so these are reasoned defaults, not dumped production tokens.
-
-Personas (§13) are fictional archetypes informed by publicly described Japanese B2B SaaS segments.
-Interpretive claims (e.g., indigo chosen to signal "modern infrastructure" vs legacy navy) are
-editorial readings of the design, not documented LayerX statements.
--->
+- **Contrast, `button-ghost`.** Text `#333b45` on `#00000000` measures 1.85:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-danger`.** Text `#ffffff` on `#e5484d` measures 3.91:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tab-segmented`.** Text `#6b7585` on `#f0f2f5` measures 4.15:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

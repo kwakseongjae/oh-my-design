@@ -1,72 +1,152 @@
 ---
-id: fitpet
 name: Fitpet
-display_name_kr: 핏펫
-country: KR
-category: healthcare
-homepage: "https://fitpet.co.kr/"
-primary_color: "#0050ff"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=fitpet.co.kr&sz=128"
-verified: "2026-07-02"
-added: "2026-07-02"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = brand blue #0050ff (logo dominant + mall primary button); #1482ff is the lighter corporate marketing accent; #0035a8 a deep navy for emphasis. Sale accent #ff5967, rating/points yellow #ffd633. Near-flat depth (box-shadow none). Corporate site = Noto Sans KR + Poppins latin; mall = Pretendard."
-  colors:
-    primary: "#0050ff"
-    primary-deep: "#0035a8"
-    brand-blue-lt: "#1482ff"
-    accent-orange: "#ff9300"
-    sale: "#ff5967"
-    points: "#ffd633"
-    ink: "#1b1e21"
-    ink-corp: "#282828"
-    body: "#42494f"
-    muted: "#727a82"
-    muted-alt: "#8c949c"
-    faint: "#a7aeb5"
-    canvas: "#ffffff"
-    surface: "#f4f7fa"
-    promo-tint: "#edf4ff"
-    hairline: "#eef1f5"
-    border: "#dfe3e8"
-    border-strong: "#c2c8cf"
-    on-dark: "#eeeeee"
-    ink-pure: "#000000"
-  typography:
-    family: { display: "Poppins", kr: "Noto Sans KR", product: "Pretendard" }
-    stat-hero:   { size: 85, weight: 600, use: "Big number stat on corporate hero (16만+), Noto Sans KR" }
-    display:     { size: 40, weight: 600, lineHeight: 1.2, use: "Corporate hero headline, Noto Sans KR" }
-    section:     { size: 24, weight: 700, use: "Mall section title (오늘의 핫딜), Pretendard" }
-    subsection:  { size: 19, weight: 700, use: "Mall page / group title (홈), Pretendard" }
-    product:     { size: 17, weight: 400, lineHeight: 1.4, use: "Product-card title, Pretendard" }
-    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Body copy, search field text" }
-    nav:         { size: 13, weight: 700, use: "Corporate nav link, Poppins" }
-    caption:     { size: 12, weight: 400, use: "Badges, metadata, fine print, Pretendard" }
-  spacing: { xs: 4, sm: 8, base: 15, md: 16, lg: 24, chip: 30, xl: 39, xxl: 50 }
-  rounded: { sm: 5, md: 10, chip: 30, pill: 999, full: 9999 }
-  shadow:
-    none: "none"
-    hairline: "rgba(0, 0, 0, 0.03) 0px 0px 0px 1px"
-  components:
-    button-primary: { type: button, bg: "#0050ff", fg: "#ffffff", radius: "28px", padding: "7px 17px", height: "48px", font: "13px / 400 Pretendard", use: "Primary / recommend action button on the mall" }
-    button-ghost: { type: button, fg: "#ffffff", border: "2px solid #ffffff", radius: "30px", padding: "10px 50px", height: "42px", font: "12px / 600 Poppins", use: "Ghost pill CTA over corporate hero imagery (일반채용)" }
-    search-input: { type: input, bg: "#f4f7fa", fg: "#000000", radius: "10px", padding: "1px 50px", height: "50px", font: "16px Pretendard", use: "Filled borderless search field, placeholder #a7aeb5" }
-    filter-chip: { type: badge, fg: "#42494f", border: "1px solid #c2c8cf", radius: "999px", padding: "0 14px", height: "43px", font: "13px / 400 Pretendard", use: "Category / filter chip on the mall" }
-    discount-badge: { type: badge, bg: "#ff5967", fg: "#ffffff", radius: "5px", padding: "5px", font: "12px / 700 Pretendard", use: "Discount-percentage badge on product cards" }
-    product-card: { type: card, bg: "#ffffff", border: "1px solid #eef1f5", radius: "10px", use: "Product card on grey #f4f7fa surface, hairline separation, near-flat" }
-    promo-strip: { type: card, bg: "#edf4ff", fg: "#42494f", radius: "10px", use: "First-purchase / coupon promo strip" }
-    nav-link: { type: tab, fg: "#000000", font: "13px / 700 Poppins", active: "text #1482ff", use: "Corporate top-nav item (회사 소개, 팀 문화)" }
-  components_harvested: true
+colors:
+  primary: '#0050ff'
+  primary-deep: '#0035a8'
+  brand-blue-lt: '#1482ff'
+  accent-orange: '#ff9300'
+  sale: '#ff5967'
+  points: '#ffd633'
+  ink: '#1b1e21'
+  ink-corp: '#282828'
+  body: '#42494f'
+  muted: '#727a82'
+  muted-alt: '#8c949c'
+  faint: '#a7aeb5'
+  canvas: '#ffffff'
+  surface: '#f4f7fa'
+  promo-tint: '#edf4ff'
+  hairline: '#eef1f5'
+  border: '#dfe3e8'
+  border-strong: '#c2c8cf'
+  on-dark: '#eeeeee'
+  ink-pure: '#000000'
+typography:
+  stat-hero:
+    fontSize: 85px
+    fontWeight: 600
+    use: Big number stat on corporate hero (16만+), Noto Sans KR
+  display:
+    fontSize: 40px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Corporate hero headline, Noto Sans KR
+  section:
+    fontSize: 24px
+    fontWeight: 700
+    use: Mall section title (오늘의 핫딜), Pretendard
+  subsection:
+    fontSize: 19px
+    fontWeight: 700
+    use: Mall page / group title (홈), Pretendard
+  product:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Product-card title, Pretendard
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body copy, search field text
+  nav:
+    fontSize: 13px
+    fontWeight: 700
+    use: Corporate nav link, Poppins
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    use: Badges, metadata, fine print, Pretendard
+rounded:
+  sm: 5px
+  md: 10px
+  chip: 30px
+  pill: 999px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  base: 15
+  md: 16
+  lg: 24
+  chip: 30
+  xl: 39
+  xxl: 50
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#0050ff'
+    textColor: '#ffffff'
+    rounded: 28px
+    padding: 7px 17px
+    height: 48px
+    typography: 13px / 400 Pretendard
+    use: Primary / recommend action button on the mall
+  button-ghost:
+    type: button
+    textColor: '#ffffff'
+    border: '2px solid #ffffff'
+    rounded: 30px
+    padding: 10px 50px
+    height: 42px
+    typography: 12px / 600 Poppins
+    use: Ghost pill CTA over corporate hero imagery (일반채용)
+  search-input:
+    type: input
+    backgroundColor: '#f4f7fa'
+    textColor: '#000000'
+    rounded: 10px
+    padding: 1px 50px
+    height: 50px
+    typography: 16px Pretendard
+    use: 'Filled borderless search field, placeholder #a7aeb5'
+  filter-chip:
+    type: badge
+    textColor: '#42494f'
+    border: '1px solid #c2c8cf'
+    rounded: 999px
+    padding: 0 14px
+    height: 43px
+    typography: 13px / 400 Pretendard
+    use: Category / filter chip on the mall
+  discount-badge:
+    type: badge
+    backgroundColor: '#ff5967'
+    textColor: '#ffffff'
+    rounded: 5px
+    padding: 5px
+    typography: 12px / 700 Pretendard
+    use: Discount-percentage badge on product cards
+  product-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #eef1f5'
+    rounded: 10px
+    use: 'Product card on grey #f4f7fa surface, hairline separation, near-flat'
+  promo-strip:
+    type: card
+    backgroundColor: '#edf4ff'
+    textColor: '#42494f'
+    rounded: 10px
+    use: First-purchase / coupon promo strip
+  nav-link:
+    type: tab
+    textColor: '#000000'
+    typography: 13px / 700 Poppins
+    active: 'text #1482ff'
+    use: Corporate top-nav item (회사 소개, 팀 문화)
+fonts:
+  roles:
+    display: Poppins
+    kr: Noto Sans KR
+    product: Pretendard
 ---
 
 # Design System Inspiration of Fitpet
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Fitpet (핏펫) is Korea's pet-healthcare and pet-commerce brand — an at-home health-check kit, a curated product mall, and an animal-hospital booking flow, all under one confident blue. The system spans two surfaces with one identity: a clean, editorial corporate flagship (`fitpet.co.kr`) that reads like a modern healthcare brand, and a dense, warm commerce mall (`fitpetmall.com`) built for browsing food, treats, and supplies. The connective tissue is a single saturated brand blue — `#0050ff` — which is literally the dominant color of the logo and the fill of the mall's primary action button. Text sits in a near-black `#1b1e21` on the mall (never pure black for product copy) and pure `#000000` on the corporate site, both on a bright `#ffffff` canvas softened by a pervasive cool-grey surface tint (`#f4f7fa`).
 
@@ -84,14 +164,40 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 - Semantic accents only: coral `#ff5967` for discounts, yellow `#ffd633` for ratings/points, `#edf4ff` for coupon strips
 - Near-black `#1b1e21` (mall) and pure `#000000` (corporate) heading text on a bright `#ffffff` canvas
 
-## Primary tasks
+### Primary tasks
 
 - Check a pet's health at home instead of an immediate vet visit
 - Buy food, treats, and supplies chosen against health criteria
 - Find a good animal hospital and book an appointment
 - Search the mall for a product
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Fitpet (핏펫) is a Korean pet-healthcare and pet-commerce company founded in **2017**, built around a simple premise: that caring for a companion animal's health should be as easy as checking your own. Its best-known product is an at-home health-check experience — the homepage's central promise is "반려동물의 건강을 집에서 1분만에 확인" ("check your pet's health at home in one minute") — which lowered the barrier between noticing something and knowing something about a pet's wellbeing. *(2017 founding is widely-documented public knowledge; the mission framing here is quoted from the live homepage.)*
+
+From that health-check root the brand grew outward into a full "건강한 반려생활" ("healthy companion life") platform: **Fitpet Mall** (`fitpetmall.com`) curates food, treats, and supplies chosen against health criteria ("엄격한 기준으로 고른 제품"), and a hospital-finding and booking flow closes the loop ("좋은 병원 찾고 진료 예약까지"). The "16만+" stat on the corporate hero is the trust anchor — scale as evidence that the health-first approach works.
+
+What Fitpet's design refuses is the heavy, anxious chrome of both legacy commerce (shadow-stacked cards, banner clutter) and clinical healthcare (cold institutional palettes). What it embraces is a single friendly blue, a near-flat surface system, rounded pill geometry, and plain, warm Korean copy — signalling a brand that wants pet health to feel approachable, not intimidating.
+
+### Principles
+
+1. **Health first, commerce second.** Products exist to serve the pet's wellbeing, not the other way around. *UI implication:* lead with health benefit and curation criteria; keep sale urgency scoped to clearly-labeled deal modules.
+2. **One action, one blue.** `#0050ff` means "do this." *UI implication:* reserve the saturated brand blue for the single primary action so the next step is never ambiguous.
+3. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* no shadows; separate with the `#f4f7fa` tint and hairlines; keep the grid quick to scan.
+4. **Approachable, not clinical.** Pet health should feel warm. *UI implication:* rounded pills, friendly Pretendard type, and plain Korean labels instead of cold veterinary framing.
+5. **Trust through concreteness.** *UI implication:* prefer real numbers (the 85px "16만+" stat) and specific claims over adjectives; make discounts and ratings literal with the coral `#ff5967` and yellow `#ffd633`.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Fitpet user segments (Korean pet owners managing health and shopping for supplies), not individual people.*
+
+**김하늘, 31, 서울.** A first-time dog owner who worries about spotting health issues early. Uses Fitpet's at-home check because a one-minute test at home is less stressful than an immediate vet visit. Trusts the brand because the copy explains rather than alarms.
+
+**이준호, 38, 경기.** A busy cat owner who buys food and litter monthly on Fitpet Mall. Values the curated "엄격한 기준으로 고른 제품" framing and the clearly-labeled hot deals; scans the flat product grid quickly on his phone.
+
+**박서연, 44, 부산.** A multi-pet household manager who uses Fitpet to find a good animal hospital and book appointments. Appreciates that finding care and shopping live in one calm, non-intimidating app.
+
+## Colors
 
 ### Primary
 - **Fitpet Blue** (`#0050ff`): The brand's signature saturated blue. It is the dominant color of the logo and the background fill of the mall's primary action button — the system's single "do this" color.
@@ -121,7 +227,7 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 - **Border** (`#dfe3e8`): Standard border for containers and chip outlines.
 - **Border Strong** (`#c2c8cf`): Higher-contrast outline for filter chips and toggled controls.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Corporate display / hangul**: `Noto Sans KR` — hero headlines and stats on `fitpet.co.kr`, at weight 600.
@@ -147,7 +253,121 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 - **Big, confident hero numbers**: the 85px weight-600 stat is the corporate site's boldest typographic move — scale communicates trust ("16만+" pets checked).
 - **Hangul-first body sizing**: mall body sits at a legible 16px in the search field and 17px for product titles, dense enough for information-rich commerce.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base rhythm: 4 / 8 / 15 / 16 / 24 / 39 px (measured paddings)
+- Notable: corporate nav uses a tall 39px vertical padding for a spacious 100px header; ghost CTA runs 10px 50px for a wide tap target
+- Mall chips and buttons use tighter 7–14px horizontal padding for dense browsing
+
+### Grid & Container
+- **Corporate flagship**: centered single-column hero anchored by the 40px headline and the 85px stat, alternating white and dark (`#282828`) editorial bands
+- **Mall**: grid of product cards on a `#f4f7fa` surface, horizontally-scrolling category/filter chip rows, coupon strips in `#edf4ff`
+- Cards group related products at a consistent 10px radius
+
+### Whitespace Philosophy
+- **Flat segmentation**: sections separate by background tint (`#f4f7fa` vs `#ffffff`) and hairlines, not by shadow
+- **Editorial calm on brand, dense grid on commerce**: the corporate site breathes; the mall packs product cards efficiently while keeping generous chip spacing
+- **Pill rhythm**: repeated 999px chips and ~28–30px buttons create a soft, consistent horizontal cadence
+
+### Border Radius Scale
+- Small (5px): discount badges, fine-grained tags
+- Medium (10px): cards, inputs, promo strips — the workhorse
+- Chip (28–30px): primary buttons, ghost CTAs
+- Full (999px): filter chips, fully-rounded pills
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column; corporate hero compresses; mall chip rows scroll horizontally |
+| Tablet | 640-1024px | 2-up product cards; moderate padding |
+| Desktop | 1024-1440px | Full grid, centered corporate hero, multi-column mall bands |
+
+#### Touch Targets
+- Primary button at 48px height, filter chips at 43px — comfortably tappable
+- Search field at 50px height, full-width on mobile
+- Corporate nav links inside a tall 100px header (39px vertical padding)
+
+#### Collapsing Strategy
+- Corporate hero: 40px headline and 85px stat scale down on mobile, weight 600 maintained
+- Mall category / filter chips: horizontal scroll on narrow viewports
+- Product grid: multi-column collapses to 2-up then single column
+- Tinted (`#f4f7fa`) and white bands maintain full-width treatment
+
+#### Image Behavior
+- Product imagery and illustrations carry no shadow at any size, consistent with the flat system
+- Cards maintain the 10px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, most surfaces |
+| Tint (Level 1) | `#f4f7fa` background shift | Card / section separation without elevation |
+| Hairline (Level 2) | `rgba(0, 0, 0, 0.03)` / `#eef1f5` / `#dfe3e8` border | White card outlines, dividers |
+
+**Shadow Philosophy**: Fitpet is a near-shadowless system. Live inspection found `box-shadow: none` across the corporate hero, nav, and the mall's cards, chips, and buttons; the only depth cue is a whisper-thin `rgba(0, 0, 0, 0.03)` border repeated across product cards. Grouping is communicated entirely through the flat `#f4f7fa` tint and thin `#eef1f5` / `#dfe3e8` hairlines. This keeps a data-dense commerce grid feeling fast, mobile-native, and calm rather than heavy. When emphasis is needed the system reaches for color — the blue `#0050ff`, the coral `#ff5967`, the yellow `#ffd633` — never elevation.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+- `shadow.hairline`: `rgba(0, 0, 0, 0.03) 0px 0px 0px 1px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, chip press, focus |
+| `motion-standard` | 200ms | Card / sheet / dropdown reveal |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, chips, sheets |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and quiet, matching the flat, fast aesthetic. Pill chips and buttons respond to press with a subtle scale/opacity shift; product cards and results fade in from below at `motion-standard / ease-enter`. No bounce or spring — a pet-health brand signals steadiness and care, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product stays fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10-15)
+
+Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on two brand-owned surfaces:
+- https://fitpet.co.kr/ — corporate/brand flagship: Noto Sans KR 40px/600 hero, 85px/600 stat "16만+",
+  Poppins 13px/700 nav, ghost pill (2px solid #ffffff, 30px radius), accent blue #1482ff, dark bands #282828.
+- https://www.fitpetmall.com/ — commerce mall: Pretendard body, primary button #0050ff (28.8px radius),
+  discount badge #ff5967 (4.8px radius), surface #f4f7fa, promo strip #edf4ff, deep navy #0035a8,
+  rating yellow #ffd633, filter chip (1px #c2c8cf, 999px), near-flat depth (box-shadow none).
+- https://www.fitpetmall.com/mall/search — filled search field (#f4f7fa bg, 9.6px radius, 16px, no border).
+- Logo (google favicon proxy, fitpet.co.kr, 128px) dominant color #0050ff + secondary orange #ff9300.
+
+Token-level claims (§1-9) are sourced from this live inspection (see .verification.md for 26 raw samples).
+
+Voice samples (§10) are verbatim from the live corporate homepage and mall page title.
+
+Brand narrative (§11): Fitpet (핏펫) founded 2017 as a Korean pet-healthcare / pet-commerce company;
+at-home health-check origin, Fitpet Mall, and hospital booking. The 2017 founding is widely-documented
+public knowledge; mission/positioning phrasing is quoted from the live homepage and mall. Specific
+corporate details beyond the live surfaces are general public knowledge, not directly quoted from a
+verified Fitpet statement in this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable Fitpet user segments (Korean
+pet owners). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "one action, one blue", "approachable, not clinical" as a rejection of cold
+healthcare chrome) are editorial readings connecting Fitpet's observed design to its positioning, not
+directly sourced Fitpet statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -229,40 +449,21 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 **Tier 2 sources:** getdesign.md/fitpet (0 DESIGN.md files — no entry); styles.refero.design/?q=fitpet (not listed — generic results only)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base rhythm: 4 / 8 / 15 / 16 / 24 / 39 px (measured paddings)
-- Notable: corporate nav uses a tall 39px vertical padding for a spacious 100px header; ghost CTA runs 10px 50px for a wide tap target
-- Mall chips and buttons use tighter 7–14px horizontal padding for dense browsing
+| State | Treatment |
+|---|---|
+| **Empty (no search results)** | White canvas. Single Ink (`#1b1e21`) line explaining no matching products, with one blue `#0050ff` action to adjust filters. No clutter. |
+| **Empty (cart / saved, none yet)** | Muted Slate (`#727a82`) single line inviting the user back to browsing. Calm, honest. |
+| **Loading (product grid)** | Skeleton cards on the `#f4f7fa` surface at final dimensions, 10px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
+| **Loading (in-place refresh)** | Existing cards stay visible; a subtle progress cue rather than a full block. |
+| **Error (fetch failed)** | Inline message in Ink (`#1b1e21`) with a plain-language explanation and a retry. Never a bare "오류가 발생했습니다". |
+| **Error (form validation)** | Field-level message below the input describing what is valid, not just "필수". |
+| **Success (order placed / booked)** | Brief inline confirmation in calm tone; next-step detail linked immediately below. No celebratory emoji. |
+| **Skeleton** | `#f4f7fa` blocks at final dimensions, 10px radius, flat pulse. |
+| **Disabled** | Faint Grey (`#a7aeb5`) text on reduced-opacity surface; the blue action fades rather than turning grey to preserve brand read. |
 
-### Grid & Container
-- **Corporate flagship**: centered single-column hero anchored by the 40px headline and the 85px stat, alternating white and dark (`#282828`) editorial bands
-- **Mall**: grid of product cards on a `#f4f7fa` surface, horizontally-scrolling category/filter chip rows, coupon strips in `#edf4ff`
-- Cards group related products at a consistent 10px radius
-
-### Whitespace Philosophy
-- **Flat segmentation**: sections separate by background tint (`#f4f7fa` vs `#ffffff`) and hairlines, not by shadow
-- **Editorial calm on brand, dense grid on commerce**: the corporate site breathes; the mall packs product cards efficiently while keeping generous chip spacing
-- **Pill rhythm**: repeated 999px chips and ~28–30px buttons create a soft, consistent horizontal cadence
-
-### Border Radius Scale
-- Small (5px): discount badges, fine-grained tags
-- Medium (10px): cards, inputs, promo strips — the workhorse
-- Chip (28–30px): primary buttons, ghost CTAs
-- Full (999px): filter chips, fully-rounded pills
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, most surfaces |
-| Tint (Level 1) | `#f4f7fa` background shift | Card / section separation without elevation |
-| Hairline (Level 2) | `rgba(0, 0, 0, 0.03)` / `#eef1f5` / `#dfe3e8` border | White card outlines, dividers |
-
-**Shadow Philosophy**: Fitpet is a near-shadowless system. Live inspection found `box-shadow: none` across the corporate hero, nav, and the mall's cards, chips, and buttons; the only depth cue is a whisper-thin `rgba(0, 0, 0, 0.03)` border repeated across product cards. Grouping is communicated entirely through the flat `#f4f7fa` tint and thin `#eef1f5` / `#dfe3e8` hairlines. This keeps a data-dense commerce grid feeling fast, mobile-native, and calm rather than heavy. When emphasis is needed the system reaches for color — the blue `#0050ff`, the coral `#ff5967`, the yellow `#ffd633` — never elevation.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Reserve the brand blue (`#0050ff`) for the single primary action — keep it the one "do this" color
@@ -284,31 +485,27 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 - Use the sale coral or rating yellow as decorative fills unrelated to price or rating
 - Crowd the corporate hero — it relies on editorial whitespace and one bold stat
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column; corporate hero compresses; mall chip rows scroll horizontally |
-| Tablet | 640-1024px | 2-up product cards; moderate padding |
-| Desktop | 1024-1440px | Full grid, centered corporate hero, multi-column mall bands |
+Fitpet's voice is **warm, reassuring, and health-first** — it treats companion animals as family and the owner as a caretaker who deserves clarity, not upsell. The corporate flagship speaks in plain, benefit-led Korean ("반려동물의 건강을 집에서 1분만에 확인" — "Check your pet's health at home in one minute"), while the mall is practical and friendly, labeling deals and categories in everyday language. The through-line is trust: health claims are concrete, and commerce copy stays low-pressure even during sales.
 
-### Touch Targets
-- Primary button at 48px height, filter chips at 43px — comfortably tappable
-- Search field at 50px height, full-width on mobile
-- Corporate nav links inside a tall 100px header (39px vertical padding)
+| Context | Tone |
+|---|---|
+| Corporate hero | Benefit-led, mission-framed. "반려동물의 건강을 집에서 1분만에 확인." Calm confidence, not hype. |
+| Trust / scale proof | Concrete numbers. "16만+" as a plain stat rather than a superlative. |
+| Mall section titles | Practical, energetic. "오늘의 핫딜 🔥", "인기상품 한정 특가!" |
+| Category / filter labels | Everyday plain Korean. "사료", "간식", "용품", "건강". |
+| CTAs | Direct, low-pressure. "추천", "핏펫이 궁금해요". |
+| Care / hospital copy | Reassuring, service-framed. "좋은 병원 찾고 진료 예약까지". |
 
-### Collapsing Strategy
-- Corporate hero: 40px headline and 85px stat scale down on mobile, weight 600 maintained
-- Mall category / filter chips: horizontal scroll on narrow viewports
-- Product grid: multi-column collapses to 2-up then single column
-- Tinted (`#f4f7fa`) and white bands maintain full-width treatment
+**Voice samples (verbatim from live surfaces):**
+- "반려동물의 건강을 집에서 1분만에 확인" — corporate hero (health-first promise). *(verified live 2026-07-02)*
+- "건강한 반려생활의 시작 - 핏펫" — mall page title / positioning line. *(verified live 2026-07-02)*
+- "좋은 병원 찾는 것도 핏펫에선 쉽게 병원 찾고 진료 예약까지" — corporate section (end-to-end care). *(verified live 2026-07-02)*
 
-### Image Behavior
-- Product imagery and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain the 10px radius across breakpoints
+**Forbidden register**: fear-based pet-health scare copy, aggressive sales urgency beyond clearly-labeled deals, undefined veterinary jargon left unexplained, exclamation-heavy hype outside the deal context.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action: Fitpet Blue (`#0050ff`)
@@ -341,112 +538,8 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Fitpet's voice is **warm, reassuring, and health-first** — it treats companion animals as family and the owner as a caretaker who deserves clarity, not upsell. The corporate flagship speaks in plain, benefit-led Korean ("반려동물의 건강을 집에서 1분만에 확인" — "Check your pet's health at home in one minute"), while the mall is practical and friendly, labeling deals and categories in everyday language. The through-line is trust: health claims are concrete, and commerce copy stays low-pressure even during sales.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Corporate hero | Benefit-led, mission-framed. "반려동물의 건강을 집에서 1분만에 확인." Calm confidence, not hype. |
-| Trust / scale proof | Concrete numbers. "16만+" as a plain stat rather than a superlative. |
-| Mall section titles | Practical, energetic. "오늘의 핫딜 🔥", "인기상품 한정 특가!" |
-| Category / filter labels | Everyday plain Korean. "사료", "간식", "용품", "건강". |
-| CTAs | Direct, low-pressure. "추천", "핏펫이 궁금해요". |
-| Care / hospital copy | Reassuring, service-framed. "좋은 병원 찾고 진료 예약까지". |
-
-**Voice samples (verbatim from live surfaces):**
-- "반려동물의 건강을 집에서 1분만에 확인" — corporate hero (health-first promise). *(verified live 2026-07-02)*
-- "건강한 반려생활의 시작 - 핏펫" — mall page title / positioning line. *(verified live 2026-07-02)*
-- "좋은 병원 찾는 것도 핏펫에선 쉽게 병원 찾고 진료 예약까지" — corporate section (end-to-end care). *(verified live 2026-07-02)*
-
-**Forbidden register**: fear-based pet-health scare copy, aggressive sales urgency beyond clearly-labeled deals, undefined veterinary jargon left unexplained, exclamation-heavy hype outside the deal context.
-
-## 11. Brand Narrative
-
-Fitpet (핏펫) is a Korean pet-healthcare and pet-commerce company founded in **2017**, built around a simple premise: that caring for a companion animal's health should be as easy as checking your own. Its best-known product is an at-home health-check experience — the homepage's central promise is "반려동물의 건강을 집에서 1분만에 확인" ("check your pet's health at home in one minute") — which lowered the barrier between noticing something and knowing something about a pet's wellbeing. *(2017 founding is widely-documented public knowledge; the mission framing here is quoted from the live homepage.)*
-
-From that health-check root the brand grew outward into a full "건강한 반려생활" ("healthy companion life") platform: **Fitpet Mall** (`fitpetmall.com`) curates food, treats, and supplies chosen against health criteria ("엄격한 기준으로 고른 제품"), and a hospital-finding and booking flow closes the loop ("좋은 병원 찾고 진료 예약까지"). The "16만+" stat on the corporate hero is the trust anchor — scale as evidence that the health-first approach works.
-
-What Fitpet's design refuses is the heavy, anxious chrome of both legacy commerce (shadow-stacked cards, banner clutter) and clinical healthcare (cold institutional palettes). What it embraces is a single friendly blue, a near-flat surface system, rounded pill geometry, and plain, warm Korean copy — signalling a brand that wants pet health to feel approachable, not intimidating.
-
-## 12. Principles
-
-1. **Health first, commerce second.** Products exist to serve the pet's wellbeing, not the other way around. *UI implication:* lead with health benefit and curation criteria; keep sale urgency scoped to clearly-labeled deal modules.
-2. **One action, one blue.** `#0050ff` means "do this." *UI implication:* reserve the saturated brand blue for the single primary action so the next step is never ambiguous.
-3. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* no shadows; separate with the `#f4f7fa` tint and hairlines; keep the grid quick to scan.
-4. **Approachable, not clinical.** Pet health should feel warm. *UI implication:* rounded pills, friendly Pretendard type, and plain Korean labels instead of cold veterinary framing.
-5. **Trust through concreteness.** *UI implication:* prefer real numbers (the 85px "16만+" stat) and specific claims over adjectives; make discounts and ratings literal with the coral `#ff5967` and yellow `#ffd633`.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Fitpet user segments (Korean pet owners managing health and shopping for supplies), not individual people.*
-
-**김하늘, 31, 서울.** A first-time dog owner who worries about spotting health issues early. Uses Fitpet's at-home check because a one-minute test at home is less stressful than an immediate vet visit. Trusts the brand because the copy explains rather than alarms.
-
-**이준호, 38, 경기.** A busy cat owner who buys food and litter monthly on Fitpet Mall. Values the curated "엄격한 기준으로 고른 제품" framing and the clearly-labeled hot deals; scans the flat product grid quickly on his phone.
-
-**박서연, 44, 부산.** A multi-pet household manager who uses Fitpet to find a good animal hospital and book appointments. Appreciates that finding care and shopping live in one calm, non-intimidating app.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no search results)** | White canvas. Single Ink (`#1b1e21`) line explaining no matching products, with one blue `#0050ff` action to adjust filters. No clutter. |
-| **Empty (cart / saved, none yet)** | Muted Slate (`#727a82`) single line inviting the user back to browsing. Calm, honest. |
-| **Loading (product grid)** | Skeleton cards on the `#f4f7fa` surface at final dimensions, 10px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Existing cards stay visible; a subtle progress cue rather than a full block. |
-| **Error (fetch failed)** | Inline message in Ink (`#1b1e21`) with a plain-language explanation and a retry. Never a bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level message below the input describing what is valid, not just "필수". |
-| **Success (order placed / booked)** | Brief inline confirmation in calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f4f7fa` blocks at final dimensions, 10px radius, flat pulse. |
-| **Disabled** | Faint Grey (`#a7aeb5`) text on reduced-opacity surface; the blue action fades rather than turning grey to preserve brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, chip press, focus |
-| `motion-standard` | 200ms | Card / sheet / dropdown reveal |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, chips, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet, matching the flat, fast aesthetic. Pill chips and buttons respond to press with a subtle scale/opacity shift; product cards and results fade in from below at `motion-standard / ease-enter`. No bounce or spring — a pet-health brand signals steadiness and care, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product stays fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10-15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on two brand-owned surfaces:
-- https://fitpet.co.kr/ — corporate/brand flagship: Noto Sans KR 40px/600 hero, 85px/600 stat "16만+",
-  Poppins 13px/700 nav, ghost pill (2px solid #ffffff, 30px radius), accent blue #1482ff, dark bands #282828.
-- https://www.fitpetmall.com/ — commerce mall: Pretendard body, primary button #0050ff (28.8px radius),
-  discount badge #ff5967 (4.8px radius), surface #f4f7fa, promo strip #edf4ff, deep navy #0035a8,
-  rating yellow #ffd633, filter chip (1px #c2c8cf, 999px), near-flat depth (box-shadow none).
-- https://www.fitpetmall.com/mall/search — filled search field (#f4f7fa bg, 9.6px radius, 16px, no border).
-- Logo (google favicon proxy, fitpet.co.kr, 128px) dominant color #0050ff + secondary orange #ff9300.
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md for 26 raw samples).
-
-Voice samples (§10) are verbatim from the live corporate homepage and mall page title.
-
-Brand narrative (§11): Fitpet (핏펫) founded 2017 as a Korean pet-healthcare / pet-commerce company;
-at-home health-check origin, Fitpet Mall, and hospital booking. The 2017 founding is widely-documented
-public knowledge; mission/positioning phrasing is quoted from the live homepage and mall. Specific
-corporate details beyond the live surfaces are general public knowledge, not directly quoted from a
-verified Fitpet statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Fitpet user segments (Korean
-pet owners). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one blue", "approachable, not clinical" as a rejection of cold
-healthcare chrome) are editorial readings connecting Fitpet's observed design to its positioning, not
-directly sourced Fitpet statements.
--->
+- **Contrast, `discount-badge`.** Text `#ffffff` on `#ff5967` measures 3.05:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
