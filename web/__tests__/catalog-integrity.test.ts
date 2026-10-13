@@ -622,9 +622,12 @@ void statSync;
  * a third arrives.
  */
 describe("adopted references survive every catalog reader", () => {
+  // A reference converted to DESIGN.md v3 keeps its `.omd/system/` package as an archive, but its
+  // canonical is the v3 file (readReferenceSource checks v3 first), so it is no longer adopted.
   const adoptedIds = readdirSync(REFS_DIR, { withFileTypes: true })
     .filter((entry) => entry.isDirectory()
-      && existsSync(join(REFS_DIR, entry.name, ".omd", "system", "graph.json")))
+      && existsSync(join(REFS_DIR, entry.name, ".omd", "system", "graph.json"))
+      && readFileSync(join(REFS_DIR, entry.name, "DESIGN.md"), "utf8").includes("<!-- design-md:section "))
     .map((entry) => entry.name)
     .sort();
 
