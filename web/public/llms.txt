@@ -38,7 +38,7 @@ Cursor 2.4+ discovers the 27 compatible OmD Agent Skills from `.cursor/skills/`,
 
 For older Cursor clients, `--cursor-rule-only` installs the rule + catalog compatibility mode without Agent Skills. There, create the project spec through one of these paths:
 
-1. Choose/customize a reference in https://oh-my-design.kr/builder, download `DESIGN.md`, and save it at the project root; or
+1. Open a reference page at https://oh-my-design.kr/design-systems/<id> (or fetch the raw file at https://oh-my-design.kr/<id>/design.md), download `DESIGN.md`, and save it at the project root; or
 2. ask Cursor: `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`
 
 Then ask Cursor: `Read @DESIGN.md and redesign the home screen without changing behavior.` The installed rule applies root `DESIGN.md` first, pending `.omd/preferences.md` corrections second, and framework defaults last.
@@ -670,8 +670,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - [Live demo runbook](https://oh-my-design.kr/docs/en/demo): 5-, 15-, and 30-minute truthful demo formats
 - [AI slop definition and comparisons](https://oh-my-design.kr/docs/en/anti-slop): observable criteria, before/after examples, and the OmD review direction
 - [Documentation](https://oh-my-design.kr/docs/en): how the harness works in detail
-- [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any bundled reference
-- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references
+- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references; each reference page copies or downloads its DESIGN.md and gives the install command and a first prompt
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
 - [Blog](https://oh-my-design.kr/blog): release notes and what held up in the harness — Korean canonical with English versions at /blog/en, RSS at /blog/feed.xml
 - [AI and machine-readable docs](https://oh-my-design.kr/docs/en/ai): the old MCP connector is retired; skills use local catalogs and raw DESIGN.md endpoints

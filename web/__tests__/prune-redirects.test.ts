@@ -7,7 +7,8 @@ import config from "../next.config";
  * redirect to the content it used to hold.
  */
 const EXPECTED: Record<string, string> = {
-  "/font-playground": "/builder",
+  "/font-playground": "/design-systems",
+  "/curation": "/design-systems",
   "/presets": "/docs/en/skills",
   "/benchmarks": "/docs/en/showcase",
   "/collections": "/design-systems",
@@ -17,9 +18,17 @@ const EXPECTED: Record<string, string> = {
   "/cli": "/docs/en",
   "/docs/connector": "/docs/en/ai",
   "/twitter-image.png": "/og-image.png",
+  "/reference/:id": "/design-systems/:id",
 };
 
 describe("pruned-page redirects", () => {
+  it("never routes through /builder, which is itself a redirect now", async () => {
+    const redirects = await config.redirects!();
+    expect(redirects.filter((rule) => rule.destination.startsWith("/builder"))).toEqual([]);
+    // A config rule for /builder would shadow the Route Handler that checks the ref.
+    expect(redirects.filter((rule) => rule.source.startsWith("/builder"))).toEqual([]);
+  });
+
   it("308s every removed or merged URL to its surviving page", async () => {
     const redirects = await config.redirects!();
     for (const [source, destination] of Object.entries(EXPECTED)) {

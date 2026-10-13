@@ -23,12 +23,11 @@ export default function GlobalNotFound() {
           <p className="font-mono text-xs uppercase tracking-wide text-[var(--omd-proof)]">404</p>
           <h1 className="text-3xl font-bold tracking-tight">This page does not exist.</h1>
           <p className="text-[var(--omd-ink-2)]">
-            The link may be from an older version of the site. The catalog and the builder are still here.
+            The link may be from an older version of the site. Every DESIGN.md is still in the catalog.
           </p>
           <p className="flex gap-4 text-sm font-medium">
             <Link href="/" className="underline underline-offset-4">Home</Link>
             <Link href="/design-systems" className="underline underline-offset-4">Catalog</Link>
-            <Link href="/builder" className="underline underline-offset-4">Builder</Link>
           </p>
         </main>
       </body>

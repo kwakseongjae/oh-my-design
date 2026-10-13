@@ -66,17 +66,13 @@ export function trackDetailOpen(args: { reference: string; source: string }) {
   event("ds_detail_open", { reference: args.reference, source: args.source });
 }
 
-export function trackOpenInBuilder(reference: string) {
-  event("ds_open_in_builder", { reference });
-}
-
 export function trackRawMdOpen(reference: string) {
   event("ds_raw_md_open", { reference });
 }
 
 export function trackReferenceShare(args: {
   reference: string;
-  location: "builder" | "ref_detail" | "evolution";
+  location: "ref_detail" | "evolution";
   artifact: "detail" | "evolution";
 }) {
   event("ref_share_copy", {

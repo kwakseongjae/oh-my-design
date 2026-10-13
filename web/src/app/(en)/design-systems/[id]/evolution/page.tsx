@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, Download, ShieldCheck } from "lucide-react";
 import { ENGLISH_REFERENCE_IDS, getReferenceEnglishEditorial } from "@/lib/references/editorial";
 import { loadReference } from "@/lib/references/repository.server";
 import { ReferenceShareButton } from "@/components/reference-share-button";
-import { canonicalBuilderPreviewPath } from "@/lib/builder/preview-path";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -48,7 +47,8 @@ export default async function ReferenceEvolutionPage({ params }: { params: Promi
   if (!editorial || !loaded || loaded.quality.status !== "verified_v2") notFound();
 
   const checked = loaded.ast?.evidence?.checkedAt ?? loaded.quality.verifiedAt;
-  const builderPath = canonicalBuilderPreviewPath(id);
+  // The item page's hand-off block: copy, download, install, first prompt.
+  const usePath = `/design-systems/${id}#use`;
   const pageUrl = `${SITE_URL}/design-systems/${id}/evolution`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -136,10 +136,10 @@ export default async function ReferenceEvolutionPage({ params }: { params: Promi
         <section className="mt-12 flex flex-col gap-4 rounded-xl bg-muted/30 p-5 ring-1 ring-foreground/10 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-base font-medium">Use the current verified reference</h2>
-            <p className="mt-1 text-sm text-muted-foreground">Open the builder with {editorial.name} selected, then preview or export the canonical DESIGN.md.</p>
+            <p className="mt-1 text-sm text-muted-foreground">Copy or download the {editorial.name} DESIGN.md, or install it with the first prompt for your coding agent.</p>
           </div>
-          <Link href={builderPath} className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50">
-            Open in builder <ArrowRight className="h-4 w-4" />
+          <Link href={usePath} className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50">
+            Use this DESIGN.md <ArrowRight className="h-4 w-4" />
           </Link>
         </section>
       </div>

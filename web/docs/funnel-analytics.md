@@ -5,6 +5,20 @@ ad-hoc `reference_select` / `generation_complete` / `builder_export` / `ds_*` /
 `curation_*` events. Pattern follows the reference impl
 (`src/lib/fonts/analytics.ts` + `docs/font-playground-analytics.md`).
 
+## Builder retired (2026-10-13)
+
+The owner removed `/builder` and its customize feature (decision Q1,
+docs/REDESIGN_DECISIONS_2026-10-01.md). `/builder?ref=<id>` now 308s to
+`/design-systems/<id>#use`, so no page fires builder events any more. Retired
+and deleted from code: every `bld_*` event (`src/lib/builder/analytics.ts` is
+gone), `ds_open_in_builder`, `col_builder_click`, and the `builder` values of
+`surface` (install/handoff), `origin` (collections) and `location` (share).
+`mode`, `entry`, `entry_step`, `token`, `format` and `action` only ever rode on
+`bld_*` events, so they stop arriving too. The only product funnel left is the
+directory one below: `ds_detail_view` → `act_handoff(surface=ref_detail)`.
+Historical rows below are kept for reading old GA4 data; rows marked
+**retired** no longer fire.
+
 ## Why this redesign
 
 The current taxonomy conflates intents that must be measured apart:
@@ -37,10 +51,10 @@ The current taxonomy conflates intents that must be measured apart:
 
 `<surface>_<action>`, snake_case, verb form. Surfaces:
 
-- `bld_` — the builder (`/builder`)
+- `bld_` — the builder (`/builder`) — **retired 2026-10-13**
 - `ds_` — the design-system directory (`/design-systems/[id]`)
 - `act_` — activation hand-offs shared across surfaces
-- `col_` — collection discovery and builder transfer
+- `col_` — collection discovery
 - `ref_` — cross-surface reference sharing
 - `bm_` — versioned internal-benchmark inspection and handoff
 
@@ -50,7 +64,7 @@ ID parameter is **always `reference`** (finite catalog ~400 → safe dimension).
 
 ## Primary funnels
 
-### Builder (`bld_`) — the generator
+### Builder (`bld_`) — the generator — **retired 2026-10-13**
 ```
 bld_open            {entry_step}                    land on /builder
 bld_reference_select{reference, category, entry}   pick a reference
@@ -70,20 +84,39 @@ act_handoff         {kind, surface, reference?}    export/prompt/install handoff
 ```
 `channel` on `ds_detail_view` = bucketed referrer enum (`direct|search|social|ai|referral|internal`), NOT the raw referrer.
 
+**Item-page placement (2026-10-01, IA decision D2).** Landing rows and search
+now open `/design-systems/[id]` instead of `/builder`. No event was renamed and
+no dimension added:
+- landing → detail: `ds_detail_open {reference, source}` with `source` =
+  `home_top` (most-selected row), `home_preview` (preview card) or
+  `home_search` (search box); `/` and `/ko` share these values. `source` is
+  sent as `event_source` by `lib/gtag.ts`. The directory grid keeps `directory`.
+- every hand-off on the detail page lives in one `#use` block, one control per
+  action: Copy/Download → `ds_export` + `act_handoff(surface=ref_detail)`;
+  install command / first prompt → `act_install_copy` / `act_prompt_copy`
+  (`surface=ref_detail`, formerly the sticky bottom bar); Raw .md →
+  `ds_raw_md_open`; Customize → `ds_open_in_builder`, then
+  `bld_open {entry_step: customize}` on arrival (Customize and both events
+  were removed with the builder on 2026-10-13). The header Copy/Download/Raw
+  buttons and the sticky bar were removed, so `surface=ref_detail` still names
+  a single placement — compare across the 2026-10-01 boundary, not within it.
+- expect `/builder` opens to fall by design; the item-page KPI is
+  `act_handoff(surface=ref_detail)` per `ds_detail_view`.
+
 ---
 
 ## Events table (current → target)
 
 | Target event | Status | Replaces | Params | Fires when |
 |---|---|---|---|---|
-| `bld_open` | keep+fix | — | entry_step | /builder mounts; differentiates select/customize/preview deep links |
-| `bld_reference_select` | rename | `reference_select` | reference, category, entry | a reference is picked |
-| `bld_generate` | rename+merge | `generation_complete` (+`builder_export`) | reference, **mode** | DESIGN.md generated / preview reached |
-| `bld_export` | rename+merge | `download_designmd`, `copy_designmd` | reference, channel | user downloads/copies the generated .md |
-| `bld_customize_open` | rename | `wizard_step_view`/`skip_wizard_toggle` | reference | customize panel opened (demoted path) |
-| `bld_customize_change` | rename | `style_preference` | reference, token | a style token changed (`color\|font\|weight\|radius\|dark\|components`) |
-| `bld_search` | rename+fix | `search_reference` | query_len_bucket, has_results | search in builder (**no raw query**) |
-| `bld_category_filter` | rename | `category_filter` | category | category chip toggled |
+| `bld_open` | **retired 2026-10-13** (keep+fix) | — | entry_step | /builder mounts; differentiates select/customize/preview deep links |
+| `bld_reference_select` | **retired 2026-10-13** (rename) | `reference_select` | reference, category, entry | a reference is picked |
+| `bld_generate` | **retired 2026-10-13** (rename+merge) | `generation_complete` (+`builder_export`) | reference, **mode** | DESIGN.md generated / preview reached |
+| `bld_export` | **retired 2026-10-13** (rename+merge) | `download_designmd`, `copy_designmd` | reference, channel | user downloads/copies the generated .md |
+| `bld_customize_open` | **retired 2026-10-13** (rename) | `wizard_step_view`/`skip_wizard_toggle` | reference | customize panel opened (demoted path) |
+| `bld_customize_change` | **retired 2026-10-13** (rename) | `style_preference` | reference, token | a style token changed (`color\|font\|weight\|radius\|dark\|components`) |
+| `bld_search` | **retired 2026-10-13** (rename+fix) | `search_reference` | query_len_bucket, has_results | search in builder (**no raw query**) |
+| `bld_category_filter` | **retired 2026-10-13** (rename) | `category_filter` | category | category chip toggled |
 | `ds_detail_view` | keep+fix | `ds_detail_view` | reference, channel | detail page mounts (**referrer→enum**) |
 | `ds_export` | rename+merge | `ds_copy_md`, `ds_download_md` | reference, channel | copy/download canonical .md |
 | `ds_external_click` | keep | `ds_external_click` | reference, destination | outbound to official DS |
@@ -93,11 +126,11 @@ act_handoff         {kind, surface, reference?}    export/prompt/install handoff
 | `ds_browse` | merge | `browse_ds_directory`, `browse_open`, `hot_filter` | filter | directory browse / filter |
 | `act_install_copy` | rename | `install_copy` | reference, surface | npx install command copied ← **KEY EVENT** |
 | `act_handoff` | **add** | dual-fired from export/prompt/install | kind, surface, reference? | canonical deduplicated activation audience |
-| `bld_source_format_view` | add | — | reference, format | DESIGN.md/Tailwind/CSS/DTCG source tab selected |
-| `bld_source_format_export` | add | — | reference, format, action | selected source artifact copied/downloaded |
+| `bld_source_format_view` | **retired 2026-10-13** (add) | — | reference, format | DESIGN.md/Tailwind/CSS/DTCG source tab selected |
+| `bld_source_format_export` | **retired 2026-10-13** (add) | — | reference, format, action | selected source artifact copied/downloaded |
 | `col_view` | add | — | collection, color_family? | collection landing rendered |
-| `col_open` | add | — | collection, origin, color_family? | collection opened from index/builder/directory/related |
-| `col_builder_click` | add | — | collection, color_family | color collection transferred into builder filter |
+| `col_open` | add | — | collection, origin, color_family? | collection opened from index/directory/related (`builder` origin retired 2026-10-13) |
+| `col_builder_click` | **retired 2026-10-13** (add) | — | collection, color_family | color collection transferred into builder filter |
 | `ref_share_copy` | add | — | reference, location, artifact | detail/evolution share URL copied |
 | `bm_entry` | add | — | origin, experiment_version | Home CLI evidence link opened |
 | `bm_view` | add | — | experiment_version | internal benchmark mounted |
@@ -120,9 +153,9 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `channel` (export) | enum `download\|copy` | 2 | on `bld_export` / `ds_export` |
 | `channel` (view) | enum `direct\|search\|social\|ai\|referral\|internal` | 6 | on `ds_detail_view` — bucketed referrer |
 | `entry` | enum `search\|browse\|hot\|deeplink` | 4 | how the reference was reached |
-| `surface` (install) | enum `hero\|ref_detail\|collection\|builder\|docs\|cli\|benchmark` | 7 | where the install command was copied (matches `InstallSurface` in `lib/activation/analytics.ts`) |
-| `kind` (handoff) | enum `designmd_copy\|designmd_download\|prompt_copy\|install_copy` | 4 | one activation vocabulary across builder/detail/CTA |
-| `entry_step` | enum `select\|customize\|preview` | 3 | separates normal builder entry from deep links |
+| `surface` (install) | enum `hero\|final_cta\|ref_detail\|collection\|docs\|cli\|benchmark` | 7 | where the install command was copied (matches `InstallSurface` in `lib/activation/analytics.ts`) |
+| `kind` (handoff) | enum `designmd_copy\|designmd_download\|prompt_copy\|install_copy` | 4 | one activation vocabulary across detail/CTA/benchmark |
+| `entry_step` | enum `select\|customize\|preview` | 3 | **retired 2026-10-13** with `bld_open` |
 | `taxonomy_version` | constant | 1 per cutover | attached centrally by `lib/gtag.ts` |
 | `category` | enum (catalog categories) | ~12 | finite |
 | `token` | enum `color\|font\|weight\|radius\|dark\|components` | 6 | which style was customized |
@@ -133,8 +166,8 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `action` | enum `copy\|download` | 2 | source artifact action |
 | `collection` | collection slug | 17, finite | color/curated collection join key |
 | `color_family` | enum `neutral\|red\|orange\|yellow\|green\|teal\|blue\|purple\|pink` | 9 | deterministic primary-color family |
-| `origin` | enum `index\|builder\|directory\|related` | 4 | internal collection entry point |
-| `location` | enum `builder\|ref_detail\|evolution` | 3 | share affordance surface |
+| `origin` | enum `index\|directory\|related` | 3 | internal collection entry point |
+| `location` | enum `ref_detail\|evolution` | 2 | share affordance surface |
 | `artifact` | enum `detail\|evolution` | 2 | copied share target |
 | `experiment_version` | frozen patch id | 1 per experiment | isolates benchmark activation cohorts |
 | `target` | bounded benchmark source enum | 7 | method or canonical evidence inspected |
@@ -216,7 +249,7 @@ Data API (these are currently 400-erroring):
 | Share location | `location` | Event |
 | Share artifact | `artifact` | Event |
 
-**Key events (conversions):** `bld_generate`, `act_install_copy`, `act_handoff`.
+**Key events (conversions):** `act_install_copy`, `act_handoff` (`bld_generate` retired with the builder on 2026-10-13 — un-mark it in GA4).
 Use weekly unique `act_handoff` users as the product activation KPI.
 
 **Annotation:** add a GA4 annotation on the cutover date marking the taxonomy reset.
@@ -225,34 +258,35 @@ Use weekly unique `act_handoff` users as the product activation KPI.
 
 ## Funnel Exploration specs (GA4 UI)
 
-**Builder activation funnel** (open → select → generate → export → install):
+**Builder activation funnel** — retired 2026-10-13, kept for reading pre-removal data (open → select → generate → export → install):
 `bld_open` → `bld_reference_select` → `bld_generate` → `act_handoff(surface=builder)`,
 breakdown by `mode` and `entry`.
 
 **Directory as-is funnel:** `ds_detail_view` → `act_handoff(surface=ref_detail)`,
 breakdown by `channel`.
 
-**As-is vs customize:** segment `bld_generate` by `mode`; compare downstream
+**As-is vs customize** (retired 2026-10-13): segment `bld_generate` by `mode`; compare downstream
 `act_handoff` rates → answers "do customizers convert better?"
 (the question we currently can't answer).
 
-**Source-format adoption:** `bld_generate` → `bld_source_format_view` →
+**Source-format adoption** (retired 2026-10-13): `bld_generate` → `bld_source_format_view` →
 `bld_source_format_export`, breakdown by `format` and `action`. This measures
 whether non-DESIGN.md exports are discovery-only or genuine handoff artifacts.
 
-**Color discovery:** `col_view` → `col_builder_click` → `bld_generate`, breakdown
-by `color_family`; use `origin` on `col_open` to compare builder, directory,
+**Color discovery:** `col_view` → `col_open` → `ds_detail_view` (the
+`col_builder_click` → `bld_generate` leg retired 2026-10-13), breakdown
+by `color_family`; use `origin` on `col_open` to compare directory,
 related, and the collection index as acquisition surfaces.
 
 **Reference sharing:** `ref_share_copy`, breakdown by `artifact` and `location`;
 compare evolution shares against downstream `/design-systems/*/evolution` landing
-sessions and builder opens.
+sessions.
 
 ---
 
 ## Helper modules (to create)
 
-- `src/lib/builder/analytics.ts` — `trackOpen`, `trackReferenceSelect`,
+- `src/lib/builder/analytics.ts` (deleted 2026-10-13) — `trackOpen`, `trackReferenceSelect`,
   `trackGenerate`, `trackExport`, `trackCustomizeOpen`, `trackCustomizeChange`,
   `trackSearch`, `trackCategoryFilter` (+ shared `lenBucket`).
 - `src/lib/design-systems/analytics.ts` — `trackDetailView`, `trackExport`,

@@ -110,7 +110,7 @@ export interface CliDocsDictionary {
     language: string;
     copy: string;
     copied: string;
-    openBuilder: string;
+    openCatalog: string;
     github: string;
     onThisPage: string;
     previous: string;
@@ -312,8 +312,8 @@ export interface CliDocsDictionary {
     prompt: string;
     contractTitle: string;
     contract: string[];
-    builderTitle: string;
-    builderBody: string;
+    catalogTitle: string;
+    catalogBody: string;
   };
 }
 
@@ -334,7 +334,7 @@ const en: CliDocsDictionary = {
     language: "Language",
     copy: "Copy",
     copied: "Copied",
-    openBuilder: "Open Builder",
+    openCatalog: "Open the catalog",
     github: "GitHub",
     onThisPage: "On this page",
     previous: "Previous",
@@ -407,7 +407,7 @@ const en: CliDocsDictionary = {
       "Taste-style anti-slop guidance, but anchored to a project-owned DESIGN.md instead of taste alone.",
       "Impeccable-style audit vocabulary and deterministic gates, plus reference evidence and multi-agent delivery.",
       "Catalog quality is explicit; public demos use verified_v2 evidence, and unknown values are omitted instead of replaced with plausible fallbacks.",
-      "The builder remains the visual reference entry point; the CLI carries that context into the user’s own codebase.",
+      "The catalog is where you read a reference; the CLI carries that context into the user’s own codebase.",
     ],
   },
   gettingStarted: {
@@ -729,8 +729,8 @@ const en: CliDocsDictionary = {
     prompt: "Read DESIGN.md first. Preserve existing routes, behaviors, and user copy unless I explicitly ask to change them. Improve the checkout hierarchy and states, use only verified design tokens, omit unknown reference fields, and run the relevant accessibility and interface-feel checks before reporting.",
     contractTitle: "The contract your agent should retain",
     contract: ["DESIGN.md is project ground truth.", "Unknown reference data is absent, never replaced by a plausible fallback.", "Reference evidence and product facts stay in their correct domains.", "A UI task is complete only after the real product route is verified.", "User corrections become scoped preferences, not chat-only memory."],
-    builderTitle: "Builder remains the visual preview.",
-    builderBody: "These docs explain the CLI handoff. Reference discovery and visual preview still run through Home → Builder.",
+    catalogTitle: "Read a reference in the catalog.",
+    catalogBody: "These docs explain the CLI handoff. To find a reference and read it before you install, open the catalog — each reference page has its DESIGN.md, the install command and a first prompt.",
   },
 };
 
@@ -738,7 +738,7 @@ const ko: CliDocsDictionary = {
   ...en,
   localeName: "한국어",
   metaDescription: "oh-my-design을 설치하고 AI 코딩 에이전트에 품질 등급이 표시된 디자인 맥락을 연결해 실제 화면을 만드는 방법을 안내합니다.",
-  ui: { product: "oh-my-design CLI", docs: "문서", language: "언어", copy: "복사", copied: "복사됨", openBuilder: "Builder 열기", github: "GitHub", onThisPage: "이 페이지에서", previous: "이전", next: "다음", actualOutput: "실제 프로젝트 결과", prompt: "프롬프트", result: "결과", files: "변경 파일", verified: "검증", homeAria: "oh-my-design 홈", pagination: "문서 페이지 이동", skillsLabel: "스킬", pipeline: "품질 등급 레퍼런스 → DESIGN.md → 구현 → 검증", pipelineNote: "verified_v2 299개 · partial 109개 · legacy 113개. 공개 데모는 verified_v2를 사용하세요.", skipContent: "문서 본문으로 건너뛰기", copyFailed: "복사 실패", copyPage: "페이지 복사", pageCopied: "페이지 복사됨", pageTools: "페이지 도구", morePageActions: "페이지 작업 더 보기", viewMarkdown: "Markdown으로 보기", copyForAgent: "AI 에이전트용으로 복사", ready: "준비 완료" },
+  ui: { product: "oh-my-design CLI", docs: "문서", language: "언어", copy: "복사", copied: "복사됨", openCatalog: "카탈로그 열기", github: "GitHub", onThisPage: "이 페이지에서", previous: "이전", next: "다음", actualOutput: "실제 프로젝트 결과", prompt: "프롬프트", result: "결과", files: "변경 파일", verified: "검증", homeAria: "oh-my-design 홈", pagination: "문서 페이지 이동", skillsLabel: "스킬", pipeline: "품질 등급 레퍼런스 → DESIGN.md → 구현 → 검증", pipelineNote: "verified_v2 299개 · partial 109개 · legacy 113개. 공개 데모는 verified_v2를 사용하세요.", skipContent: "문서 본문으로 건너뛰기", copyFailed: "복사 실패", copyPage: "페이지 복사", pageCopied: "페이지 복사됨", pageTools: "페이지 도구", morePageActions: "페이지 작업 더 보기", viewMarkdown: "Markdown으로 보기", copyForAgent: "AI 에이전트용으로 복사", ready: "준비 완료" },
   nav: { overview: "개요", "getting-started": "시작하기", demo: "라이브 데모", workflows: "워크플로", skills: "스킬", "anti-slop": "AI slop", showcase: "실제 사례", troubleshooting: "문제 해결", ai: "AI용 문서" },
   overview: {
     eyebrow: "코딩 에이전트를 위한 디자인 맥락",
@@ -758,7 +758,7 @@ const ko: CliDocsDictionary = {
     installBody: "프로젝트 루트에서 실행하세요. 설치기가 사용 중인 코딩 에이전트를 감지하고 설치할 채널을 고르게 합니다.",
     afterInstall: "에이전트를 재시작하고 doctor를 한 번 실행한 뒤 원하는 화면을 설명하세요. 데몬·API 키·MCP 서버가 필요하지 않습니다.",
     differentiatorTitle: "최근 디자인 스킬 흐름에 OmD가 더하는 것",
-    differentiators: ["Taste 계열의 anti-slop 판단을 취향만이 아니라 프로젝트 DESIGN.md에 고정합니다.", "Impeccable 계열의 감사 어휘와 결정론적 게이트에 레퍼런스 증거와 멀티 에이전트 실행을 더합니다.", "검증되지 않은 브랜드 값은 그럴듯한 폴백으로 채우지 않고 비워 둡니다.", "Builder는 시각 레퍼런스 진입점으로 유지하고 CLI는 그 맥락을 사용자의 코드베이스로 옮깁니다."],
+    differentiators: ["Taste 계열의 anti-slop 판단을 취향만이 아니라 프로젝트 DESIGN.md에 고정합니다.", "Impeccable 계열의 감사 어휘와 결정론적 게이트에 레퍼런스 증거와 멀티 에이전트 실행을 더합니다.", "검증되지 않은 브랜드 값은 그럴듯한 폴백으로 채우지 않고 비워 둡니다.", "레퍼런스는 카탈로그에서 읽고, CLI는 그 맥락을 사용자의 코드베이스로 옮깁니다."],
   },
   gettingStarted: {
     eyebrow: "첫 5분",
@@ -1075,8 +1075,8 @@ const ko: CliDocsDictionary = {
     prompt: "먼저 DESIGN.md를 읽어. 내가 명시하지 않으면 기존 라우트, 동작, 사용자 카피를 보존해. 체크아웃의 위계와 상태를 개선하고 검증된 디자인 토큰만 사용해. 모르는 레퍼런스 필드는 생략하고 보고 전에 접근성 및 interface-feel 검사를 실행해.",
     contractTitle: "에이전트가 유지해야 할 계약",
     contract: ["DESIGN.md가 프로젝트 정본입니다.", "모르는 레퍼런스 데이터는 폴백으로 채우지 않고 비워 둡니다.", "레퍼런스 증거와 제품 사실의 도메인을 구분합니다.", "실제 제품 라우트를 검증해야 UI 작업이 끝납니다.", "사용자 교정은 채팅 기억이 아니라 범위 있는 선호로 남깁니다."],
-    builderTitle: "시각적 미리보기의 정본은 Builder입니다.",
-    builderBody: "이 문서는 CLI가 에이전트로 문맥을 전달하는 과정을 설명합니다. 레퍼런스 탐색과 미리보기는 계속 Home → Builder에서 진행합니다.",
+    catalogTitle: "레퍼런스는 카탈로그에서 읽습니다.",
+    catalogBody: "이 문서는 CLI가 에이전트로 문맥을 전달하는 과정을 설명합니다. 레퍼런스를 찾아 읽으려면 카탈로그를 여세요. 레퍼런스마다 DESIGN.md, 설치 명령, 첫 프롬프트가 한 페이지에 있습니다.",
   },
 };
 
@@ -1094,12 +1094,12 @@ const ja = translatedLocale(
   "oh-my-design を導入し、品質グレード付きのデザイン文脈を AI コーディングエージェントに渡して、確認可能な手順で実際の製品画面を改善するためのドキュメントです。",
   { overview: "概要", "getting-started": "はじめに", demo: "ライブデモ", workflows: "ワークフロー", skills: "スキル", "anti-slop": "AI slop の判断基準", showcase: "実例", troubleshooting: "トラブルシューティング", ai: "AI 向けドキュメント" },
   {
-    ui: { product: "oh-my-design CLI", docs: "ドキュメント", language: "言語", copy: "コピー", copied: "コピー済み", openBuilder: "Builder を開く", github: "GitHub", onThisPage: "このページ", previous: "前へ", next: "次へ", actualOutput: "実際のプロジェクト成果", prompt: "プロンプト", result: "結果", files: "変更ファイル", verified: "検証", homeAria: "oh-my-design ホーム", pagination: "ドキュメントのページ移動", skillsLabel: "スキル", pipeline: "品質グレード付きリファレンス → DESIGN.md → 実装 → 検証", pipelineNote: "verified_v2 299件 · partial 109件 · legacy 113件。公開デモには verified_v2 を使います。", skipContent: "本文へスキップ", copyFailed: "コピーできませんでした", copyPage: "ページをコピー", pageCopied: "コピーしました", pageTools: "ページツール", morePageActions: "その他のページ操作", viewMarkdown: "Markdown で表示", copyForAgent: "AI エージェント用にコピー", ready: "準備済み" },
+    ui: { product: "oh-my-design CLI", docs: "ドキュメント", language: "言語", copy: "コピー", copied: "コピー済み", openCatalog: "カタログを開く", github: "GitHub", onThisPage: "このページ", previous: "前へ", next: "次へ", actualOutput: "実際のプロジェクト成果", prompt: "プロンプト", result: "結果", files: "変更ファイル", verified: "検証", homeAria: "oh-my-design ホーム", pagination: "ドキュメントのページ移動", skillsLabel: "スキル", pipeline: "品質グレード付きリファレンス → DESIGN.md → 実装 → 検証", pipelineNote: "verified_v2 299件 · partial 109件 · legacy 113件。公開デモには verified_v2 を使います。", skipContent: "本文へスキップ", copyFailed: "コピーできませんでした", copyPage: "ページをコピー", pageCopied: "コピーしました", pageTools: "ページツール", morePageActions: "その他のページ操作", viewMarkdown: "Markdown で表示", copyForAgent: "AI エージェント用にコピー", ready: "準備済み" },
     overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには28の製品スキル、20のエージェント定義、品質グレード付き DESIGN.md 521件があります。内訳は verified_v2 299件、partial 109件、legacy snapshot 113件で、公開デモには verified_v2 を使います。Cursor 2.4+ には互換 Agent Skills 27 個と小さなプロジェクトルールが入り、別個の専門ロールは対応チャネルにのみ導入されます。", proof: "製品スキル28個 · 専門エージェント20個 · verified_v2 299 / partial 109 / legacy 113 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
       { title: "デザインシステムを作る", description: "製品ブリーフと verified_v2 リファレンスから、プロジェクト所有の DESIGN.md を作ります。不明な事実は補完しません。", prompt: "家族向け資産管理アプリに、落ち着きと信頼感のあるデザインシステムを設定して。Toss を参考にしつつ、既存のロゴとコピーは維持して。", result: "DESIGN.md、エージェント用 shim、明示的なトークン差分、確認済みの最初の画面。" },
       { title: "完全な画面を作る", description: "Discovery、IA、ワイヤーフレーム、コンポーネント、コピー、アクセシビリティ、検証を一つのチェックポイント付きフローで進めます。", prompt: "このアプリのオンボーディングを設計・実装して。現在のスタックを維持し、DESIGN.md を正本として使って。", result: "動く画面、状態網羅、検証記録、リポジトリ内のハンドオフ成果物。" },
       { title: "既存UIを改善する", description: "製品の挙動を保ったまま、階層、リズム、アクセシビリティ、典型的なAI UIパターンを修正します。", prompt: "URLとフォーム名は変えずに料金ページを改善して。影響の大きい修正を適用し、結果を検証して。", result: "焦点を絞ったコード変更、前後の根拠、決定論的な品質チェック。" },
-    ], installTitle: "1つのコマンド、その後に1つの製品プロンプト", installBody: "プロジェクトルートで実行します。インストーラーが利用中のエージェントを検出し、対象チャネルを選べます。", afterInstall: "エージェントを再起動し、doctor を一度実行してから欲しい画面を説明してください。デーモン、APIキー、MCPサーバーは不要です。", differentiatorTitle: "現在のデザインスキル潮流に OmD が加えるもの", differentiators: ["anti-slop の判断を、好みだけでなくプロジェクトの DESIGN.md に固定します。", "監査の語彙と決定論的ゲートに、リファレンス証拠とマルチエージェント実行を加えます。", "未検証のブランド値を、もっともらしいフォールバックで埋めません。", "Builder は視覚的リファレンスの入口として残し、CLI はその文脈をコードベースへ運びます。"] },
+    ], installTitle: "1つのコマンド、その後に1つの製品プロンプト", installBody: "プロジェクトルートで実行します。インストーラーが利用中のエージェントを検出し、対象チャネルを選べます。", afterInstall: "エージェントを再起動し、doctor を一度実行してから欲しい画面を説明してください。デーモン、APIキー、MCPサーバーは不要です。", differentiatorTitle: "現在のデザインスキル潮流に OmD が加えるもの", differentiators: ["anti-slop の判断を、好みだけでなくプロジェクトの DESIGN.md に固定します。", "監査の語彙と決定論的ゲートに、リファレンス証拠とマルチエージェント実行を加えます。", "未検証のブランド値を、もっともらしいフォールバックで埋めません。", "リファレンスはカタログで読み、CLI はその文脈をコードベースへ運びます。"] },
     gettingStarted: { ...en.gettingStarted, eyebrow: "最初の5分", title: "インストールして、一つの画面を改善する", lead: "バンドルを導入し、doctor で実際のファイルを確認したら、具体的な製品画面を一つ依頼します。", prerequisitesTitle: "準備", prerequisites: ["Node.js 18以上", "製品リポジトリ", "Claude Code、Codex、OpenCode、または Cursor"], stepsTitle: "クイックスタート", steps: [
       { title: "プロジェクトルートを開く", body: "プロジェクト単位で導入すると、デザイン文脈も製品コードと一緒にバージョン管理できます。" },
       { title: "バンドルを導入", body: "対話式インストーラーは利用中のツールを検出し、完全な製品バンドルを既定値にします。", command: CLI_INSTALL_COMMAND },
@@ -1315,7 +1315,7 @@ const ja = translatedLocale(
       previewStats: ["スキル28個", "エージェント20個", "10フェーズ"],
     },
     troubleshooting: { ...en.troubleshooting, eyebrow: "復旧", title: "失敗したら、次の行動が明確であるべきです。", lead: "まず doctor を実行します。一つのスキルファイルだけで正常とせず、チャネル別のスキル、エージェント、カタログ、プロジェクト有効化を確認します。", doctorTitle: "一つの診断から始める", doctorBody: "CI では JSON 出力を使い、人向けレポートはそのままエージェントに貼れます。degraded は非0で終了します。", cases: en.troubleshooting.cases.map((c, i) => ({ symptom: ["インストール後にスキルが見えない", "doctor がカタログ不足を報告する", "デザイン文脈がないと言われる", "守りたい挙動まで書き換えられた", "根拠のないフォントや部品が表示された"][i], fix: ["エージェントを再起動してから doctor を再実行します。", "対象チャネルを指定して最新インストーラーを再実行します。", "プロジェクトのデザインシステム設定を依頼し、DESIGN.md 書き込み前に提案を確認します。", "その変更だけ戻し、守る挙動を明示して omd:remember に記録します。", "未解決のフィールドまたは空のグループだけを削除し、代替値をブランド事実として出しません。"][i] })) },
-    ai: { ...en.ai, eyebrow: "人と AI が読めるドキュメント", title: "確認したページを、そのまま AI エージェントにも渡す", lead: "各ルートは安定した情報構造を持ちます。非推奨の MCP やブラウザセッションがなくても、原典カタログと製品上の決まりを読めます。", machineTitle: "機械可読の入口", machineBody: "ルーティングには compact index、製品モデルと規則全体には full ファイルを使います。", machineLinks: [{ label: "llms.ja.txt", href: "/llms.ja.txt", description: "日本語の製品契約とルーティング概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英語の compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "拡張ドキュメントとカタログ文脈。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "リファレンスごとの安定した原文パス。" }], promptTitle: "引き継ぎに使えるプロンプト", prompt: "最初に DESIGN.md を読んでください。明示しない限り既存ルート、挙動、ユーザーコピーを維持してください。検証済みトークンだけを使い、不明な参照フィールドは省略し、報告前にアクセシビリティと interface-feel を確認してください。", contractTitle: "エージェントが守る項目", contract: ["DESIGN.md をプロジェクトの基準として扱います。", "不明な参照データを代替値で埋めません。", "リファレンスの根拠と製品の事実を区別します。", "実際の製品ルートを確認してから完了します。", "ユーザーの修正は範囲付きの好みとして残します。"], builderTitle: "視覚プレビューは Builder で確認します", builderBody: "このドキュメントは CLI からエージェントへの引き継ぎを説明します。リファレンスの探索とプレビューは引き続き Home → Builder で行います。" },
+    ai: { ...en.ai, eyebrow: "人と AI が読めるドキュメント", title: "確認したページを、そのまま AI エージェントにも渡す", lead: "各ルートは安定した情報構造を持ちます。非推奨の MCP やブラウザセッションがなくても、原典カタログと製品上の決まりを読めます。", machineTitle: "機械可読の入口", machineBody: "ルーティングには compact index、製品モデルと規則全体には full ファイルを使います。", machineLinks: [{ label: "llms.ja.txt", href: "/llms.ja.txt", description: "日本語の製品契約とルーティング概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英語の compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "拡張ドキュメントとカタログ文脈。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "リファレンスごとの安定した原文パス。" }], promptTitle: "引き継ぎに使えるプロンプト", prompt: "最初に DESIGN.md を読んでください。明示しない限り既存ルート、挙動、ユーザーコピーを維持してください。検証済みトークンだけを使い、不明な参照フィールドは省略し、報告前にアクセシビリティと interface-feel を確認してください。", contractTitle: "エージェントが守る項目", contract: ["DESIGN.md をプロジェクトの基準として扱います。", "不明な参照データを代替値で埋めません。", "リファレンスの根拠と製品の事実を区別します。", "実際の製品ルートを確認してから完了します。", "ユーザーの修正は範囲付きの好みとして残します。"], catalogTitle: "リファレンスはカタログで確認します", catalogBody: "このドキュメントは CLI からエージェントへの引き継ぎを説明します。リファレンスを探して読むときはカタログを開いてください。各リファレンスのページに DESIGN.md、インストールコマンド、最初のプロンプトがまとまっています。" },
   },
 );
 
@@ -1324,12 +1324,12 @@ const zhCn = translatedLocale(
   "安装 oh-my-design，把带质量等级的设计上下文交给 AI 编程助手，再用可核验的流程改进实际产品界面。",
   { overview: "概览", "getting-started": "快速开始", demo: "现场演示", workflows: "工作流", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "故障排查", ai: "面向 AI 的文档" },
   {
-    ui: { product: "oh-my-design CLI", docs: "文档", language: "语言", copy: "复制", copied: "已复制", openBuilder: "打开 Builder", github: "GitHub", onThisPage: "本页内容", previous: "上一页", next: "下一页", actualOutput: "实际项目产出", prompt: "提示词", result: "结果", files: "变更文件", verified: "验证", homeAria: "oh-my-design 首页", pagination: "文档翻页", skillsLabel: "技能", pipeline: "质量分级参考 → DESIGN.md → 实现 → 验证", pipelineNote: "verified_v2 299 个 · partial 109 个 · legacy 113 个。公开演示请使用 verified_v2。", skipContent: "跳到文档正文", copyFailed: "复制失败", copyPage: "复制本页", pageCopied: "已复制本页", pageTools: "页面工具", morePageActions: "更多页面操作", viewMarkdown: "以 Markdown 查看", copyForAgent: "复制给 AI 编程助手", ready: "准备就绪" },
+    ui: { product: "oh-my-design CLI", docs: "文档", language: "语言", copy: "复制", copied: "已复制", openCatalog: "打开目录", github: "GitHub", onThisPage: "本页内容", previous: "上一页", next: "下一页", actualOutput: "实际项目产出", prompt: "提示词", result: "结果", files: "变更文件", verified: "验证", homeAria: "oh-my-design 首页", pagination: "文档翻页", skillsLabel: "技能", pipeline: "质量分级参考 → DESIGN.md → 实现 → 验证", pipelineNote: "verified_v2 299 个 · partial 109 个 · legacy 113 个。公开演示请使用 verified_v2。", skipContent: "跳到文档正文", copyFailed: "复制失败", copyPage: "复制本页", pageCopied: "已复制本页", pageTools: "页面工具", morePageActions: "更多页面操作", viewMarkdown: "以 Markdown 查看", copyForAgent: "复制给 AI 编程助手", ready: "准备就绪" },
     overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 28 个产品技能、20 个智能体定义和 521 份带质量等级的 DESIGN.md：verified_v2 299 份、partial 109 份、legacy snapshot 113 份。公开演示请使用 verified_v2。Cursor 2.4+ 会获得 27 个兼容 Agent Skills 和精简的项目规则；独立专业角色仅安装到支持它们的渠道。", proof: "28 个产品技能 · 20 个专业智能体 · verified_v2 299 / partial 109 / legacy 113 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
       { title: "建立设计系统", description: "把产品需求和 verified_v2 参考转成项目自有的 DESIGN.md；未知事实不会被补写。", prompt: "为家庭财务应用建立冷静、可信的设计系统。参考 Toss，但保留现有标志和文案。", result: "DESIGN.md、代理连接文件、明确的 token 差异和已确认的首个界面。" },
       { title: "交付完整界面", description: "把调研、IA、线框、组件、文案、无障碍和验证串成带检查点的流程。", prompt: "设计并实现这个应用的引导流程。保留当前技术栈，以 DESIGN.md 为唯一依据。", result: "可运行界面、完整状态、验证记录和仓库内交付物。" },
       { title: "改进现有 UI", description: "保留产品行为，同时修复层级、节奏、无障碍和缺少产品依据的重复模式。", prompt: "不要更改 URL 或字段名，改进定价页。先应用影响最大的修复并验证结果。", result: "聚焦的代码改动、前后依据和确定性质量检查。" },
-    ], installTitle: "运行一个命令，再描述一个产品任务", installBody: "在项目根目录运行。安装器会检测正在使用的 AI 编程工具，并让你选择安装目标。", afterInstall: "重启 AI 编程助手，运行一次 doctor，再描述要做的界面。无需守护进程、API Key 或 MCP 服务器。", differentiatorTitle: "OmD 为当前设计技能增加的能力", differentiators: ["anti-slop 判断会参考项目 DESIGN.md，不只依靠审美偏好。", "在审计词汇和确定性检查之外，增加参考证据和多智能体协作。", "未经验证的品牌值保持缺省，不用看似合理的 fallback 代替。", "Builder 仍是视觉参考入口，CLI 把上下文带入用户代码库。"] },
+    ], installTitle: "运行一个命令，再描述一个产品任务", installBody: "在项目根目录运行。安装器会检测正在使用的 AI 编程工具，并让你选择安装目标。", afterInstall: "重启 AI 编程助手，运行一次 doctor，再描述要做的界面。无需守护进程、API Key 或 MCP 服务器。", differentiatorTitle: "OmD 为当前设计技能增加的能力", differentiators: ["anti-slop 判断会参考项目 DESIGN.md，不只依靠审美偏好。", "在审计词汇和确定性检查之外，增加参考证据和多智能体协作。", "未经验证的品牌值保持缺省，不用看似合理的 fallback 代替。", "在目录中阅读参考，CLI 把上下文带入用户代码库。"] },
     gettingStarted: { ...en.gettingStarted, eyebrow: "前 5 分钟", title: "安装、验证，然后做出一个看得见的变化。", lead: "最快的成功路径很短：安装完整包，用 doctor 检查真实文件，然后提出一个具体界面需求。", prerequisitesTitle: "准备", prerequisites: ["Node.js 18 或更高版本", "产品代码仓库", "Claude Code、Codex、OpenCode 或 Cursor"], stepsTitle: "快速开始", steps: [
       { title: "打开项目根目录", body: "项目级安装会让设计上下文和产品代码一起版本化。" },
       { title: "安装完整包", body: "交互式安装会检测正在使用的工具，并默认选择完整产品包。", command: CLI_INSTALL_COMMAND },
@@ -1545,7 +1545,7 @@ const zhCn = translatedLocale(
       previewStats: ["28 个技能", "20 个智能体", "10 个阶段"],
     },
     troubleshooting: { ...en.troubleshooting, eyebrow: "恢复", title: "出现问题时，先确认下一步", lead: "先运行 doctor。它会按工具检查技能、智能体角色、参考目录和项目启用状态，不会因为发现一个文件就判定安装正常。", doctorTitle: "先运行一次诊断", doctorBody: "CI 使用 JSON 输出；面向用户的报告可以直接粘贴给 AI 编程助手。degraded 状态会返回非零退出码。", cases: en.troubleshooting.cases.map((c, i) => ({ symptom: ["安装后看不到技能", "doctor 报告目录缺失", "AI 编程助手说没有设计上下文", "想保留的行为也被改写", "参考中出现无依据的字体或组件"][i], fix: ["重启 AI 编程助手，再运行 doctor。", "选择正确的目标工具，重新运行最新版安装器。", "请求建立项目设计系统，并在写入 DESIGN.md 前确认方案。", "只回退相关改动，明确受保护行为并用 omd:remember 记录修正。", "只移除未解决字段或空组，不用系统字体或通用组件冒充品牌事实。"][i] })) },
-    ai: { ...en.ai, eyebrow: "人和 AI 都能读取", title: "把已经确认的文档直接交给 AI 编程助手", lead: "每个文档路由都有稳定的信息结构。无需浏览器会话或已弃用的 MCP，也能读取原始目录和产品约定。", machineTitle: "机器可读入口", machineBody: "路由使用 compact index，需要完整产品模型和规则时使用 full 文件。", machineLinks: [{ label: "llms.zh-cn.txt", href: "/llms.zh-cn.txt", description: "简体中文产品约定与路由概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英文 compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "扩展文档和目录上下文。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "每个参考的稳定原文路径。" }], promptTitle: "可直接交给 AI 编程助手的提示词", prompt: "先读 DESIGN.md。除非我明确要求，否则保留现有路由、行为和用户文案。只使用已验证的设计 token，省略未知参考字段，并在汇报前运行无障碍和 interface-feel 检查。", contractTitle: "AI 编程助手需要遵守的约定", contract: ["DESIGN.md 是项目唯一的设计依据。", "未知参考数据保持缺省。", "参考证据和产品事实属于不同领域。", "验证实际产品页面后才算完成。", "用户修正应记录为有明确范围的偏好。"], builderTitle: "视觉预览仍以 Builder 为准", builderBody: "这些文档说明 CLI 如何把上下文交给 AI 编程助手。参考探索和视觉预览仍通过 Home → Builder 完成。" },
+    ai: { ...en.ai, eyebrow: "人和 AI 都能读取", title: "把已经确认的文档直接交给 AI 编程助手", lead: "每个文档路由都有稳定的信息结构。无需浏览器会话或已弃用的 MCP，也能读取原始目录和产品约定。", machineTitle: "机器可读入口", machineBody: "路由使用 compact index，需要完整产品模型和规则时使用 full 文件。", machineLinks: [{ label: "llms.zh-cn.txt", href: "/llms.zh-cn.txt", description: "简体中文产品约定与路由概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英文 compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "扩展文档和目录上下文。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "每个参考的稳定原文路径。" }], promptTitle: "可直接交给 AI 编程助手的提示词", prompt: "先读 DESIGN.md。除非我明确要求，否则保留现有路由、行为和用户文案。只使用已验证的设计 token，省略未知参考字段，并在汇报前运行无障碍和 interface-feel 检查。", contractTitle: "AI 编程助手需要遵守的约定", contract: ["DESIGN.md 是项目唯一的设计依据。", "未知参考数据保持缺省。", "参考证据和产品事实属于不同领域。", "验证实际产品页面后才算完成。", "用户修正应记录为有明确范围的偏好。"], catalogTitle: "在目录中查看参考", catalogBody: "这些文档说明 CLI 如何把上下文交给 AI 编程助手。要查找和阅读参考，请打开目录。每个参考页面都提供 DESIGN.md、安装命令和第一条提示词。" },
   },
 );
 
@@ -1554,12 +1554,12 @@ const zhTw = translatedLocale(
   "安裝 oh-my-design，把有品質分級的設計脈絡交給 AI 程式助理，再用可追溯的流程改善實際產品介面。",
   { overview: "總覽", "getting-started": "快速開始", demo: "現場示範", workflows: "工作流程", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "問題排解", ai: "給 AI 的文件" },
   {
-    ui: { product: "oh-my-design CLI", docs: "文件", language: "語言", copy: "複製", copied: "已複製", openBuilder: "開啟 Builder", github: "GitHub", onThisPage: "本頁內容", previous: "上一頁", next: "下一頁", actualOutput: "實際專案產出", prompt: "提示詞", result: "結果", files: "變更檔案", verified: "驗證", homeAria: "oh-my-design 首頁", pagination: "文件換頁", skillsLabel: "技能", pipeline: "品質分級參考 → DESIGN.md → 實作 → 驗證", pipelineNote: "verified_v2 299 份 · partial 109 份 · legacy 113 份。公開示範請使用 verified_v2。", skipContent: "跳到文件正文", copyFailed: "複製失敗", copyPage: "複製本頁", pageCopied: "已複製本頁", pageTools: "頁面工具", morePageActions: "更多頁面操作", viewMarkdown: "以 Markdown 檢視", copyForAgent: "複製給 AI 程式助理", ready: "準備完成" },
+    ui: { product: "oh-my-design CLI", docs: "文件", language: "語言", copy: "複製", copied: "已複製", openCatalog: "開啟目錄", github: "GitHub", onThisPage: "本頁內容", previous: "上一頁", next: "下一頁", actualOutput: "實際專案產出", prompt: "提示詞", result: "結果", files: "變更檔案", verified: "驗證", homeAria: "oh-my-design 首頁", pagination: "文件換頁", skillsLabel: "技能", pipeline: "品質分級參考 → DESIGN.md → 實作 → 驗證", pipelineNote: "verified_v2 299 份 · partial 109 份 · legacy 113 份。公開示範請使用 verified_v2。", skipContent: "跳到文件正文", copyFailed: "複製失敗", copyPage: "複製本頁", pageCopied: "已複製本頁", pageTools: "頁面工具", morePageActions: "更多頁面操作", viewMarkdown: "以 Markdown 檢視", copyForAgent: "複製給 AI 程式助理", ready: "準備完成" },
     overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 28 個產品技能、20 個代理定義與 521 份有品質分級的 DESIGN.md：verified_v2 299 份、partial 109 份、legacy snapshot 113 份。公開示範請使用 verified_v2。Cursor 2.4+ 會取得 27 個相容 Agent Skills 與精簡的專案規則；獨立專業角色只安裝到支援它們的通道。", proof: "28 個產品技能 · 20 個專業代理 · verified_v2 299 / partial 109 / legacy 113 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
       { title: "建立設計系統", description: "把產品需求和 verified_v2 參考轉成專案自有 DESIGN.md；未知事實不會被補寫。", prompt: "為家庭財務 App 建立沉穩、可信的設計系統。參考 Toss，但保留現有標誌與文案。", result: "DESIGN.md、代理連接檔、清楚的 token 差異與確認過的第一個介面。" },
       { title: "交付完整介面", description: "把研究、IA、線框、元件、文案、無障礙與驗證串成有檢查點的流程。", prompt: "設計並實作這個 App 的 onboarding。保留目前技術堆疊，以 DESIGN.md 為唯一依據。", result: "可運作介面、完整狀態、驗證紀錄與程式庫內交付物。" },
       { title: "改善既有 UI", description: "保留產品行為，同時修正層級、節奏、無障礙與缺少產品依據的重複模式。", prompt: "不要改 URL 或欄位名稱，改善定價頁。先套用影響最大的修正並驗證。", result: "聚焦的程式變更、前後依據與確定性品質檢查。" },
-    ], installTitle: "執行一個指令，再說明一項產品工作", installBody: "在專案根目錄執行。安裝器會偵測正在使用的 AI 程式工具，並讓你選擇安裝目標。", afterInstall: "重新啟動 AI 程式助理、執行一次 doctor，再說明要調整的介面。無需 daemon、API Key 或 MCP 伺服器。", differentiatorTitle: "OmD 為現有設計技能增加的能力", differentiators: ["anti-slop 判斷會參考專案 DESIGN.md，不只依靠審美偏好。", "在正式檢查詞彙與確定性檢查之外，加入參考依據與多代理協作。", "未經驗證的品牌值保持空缺，不用看似合理的 fallback 代替。", "Builder 維持為視覺參考入口，CLI 把脈絡帶入使用者的程式碼儲存庫。"] },
+    ], installTitle: "執行一個指令，再說明一項產品工作", installBody: "在專案根目錄執行。安裝器會偵測正在使用的 AI 程式工具，並讓你選擇安裝目標。", afterInstall: "重新啟動 AI 程式助理、執行一次 doctor，再說明要調整的介面。無需 daemon、API Key 或 MCP 伺服器。", differentiatorTitle: "OmD 為現有設計技能增加的能力", differentiators: ["anti-slop 判斷會參考專案 DESIGN.md，不只依靠審美偏好。", "在正式檢查詞彙與確定性檢查之外，加入參考依據與多代理協作。", "未經驗證的品牌值保持空缺，不用看似合理的 fallback 代替。", "在目錄中閱讀參考，CLI 把脈絡帶入使用者的程式碼儲存庫。"] },
     gettingStarted: { ...zhCn.gettingStarted, eyebrow: "前 5 分鐘", title: "安裝後，先改善一個介面", lead: "安裝完整套件，用 doctor 檢查實際檔案，再提出一個具體的介面需求。", prerequisitesTitle: "準備", prerequisites: ["Node.js 18 或更新版本", "產品程式碼儲存庫", "Claude Code、Codex、OpenCode 或 Cursor"], stepsTitle: "快速開始", steps: zhCn.gettingStarted.steps.map((s, i) => ({ ...s, title: ["開啟專案根目錄", "安裝完整套件", "重新啟動並驗證", "提出第一項介面需求"][i], body: ["專案層級安裝會讓設計脈絡與產品程式碼一起納入版本控制。", "互動式安裝會偵測使用中的工具，並預設選取完整產品套件。", "重新啟動 AI 程式助理以載入新技能。doctor 會回報缺少的參考目錄、代理角色或 DESIGN.md。", "從具體介面開始。AI 程式助理會先檢查程式碼儲存庫，再提出設計問題。"][i], command: i === 3 ? "使用 DESIGN.md 改善首頁，保留既有行為並驗證結果。" : s.command })), channelsTitle: "依工具進行非互動安裝", channels: [
       { name: "Codex", body: "安裝技能、內嵌完整內容的代理角色、輔助腳本與本地參考目錄。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "安裝技能、子代理、目錄與安全合併的專案 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
@@ -1776,7 +1776,7 @@ const zhTw = translatedLocale(
       { symptom: "想保留的行為也被改寫", fix: "只還原相關變更，明確說明要保護的行為，並用 omd:remember 記錄修正。" },
       { symptom: "參考中出現沒有依據的字型或元件", fix: "只移除未解決欄位或空群組，不用系統字型或通用元件冒充品牌事實。" },
     ] },
-    ai: { ...zhCn.ai, eyebrow: "人與 AI 都能讀取", title: "把確認過的文件直接交給 AI 程式助理", lead: "每個文件路徑都有穩定的資訊架構。不需要瀏覽器 session 或已停止使用的 MCP，也能讀取原始參考目錄與產品約定。", machineTitle: "機器可讀入口", machineBody: "路由使用 compact index；需要完整產品模型與規則時，改用 full 檔案。", machineLinks: [{ label: "llms.zh-tw.txt", href: "/llms.zh-tw.txt", description: "繁體中文產品約定與路由摘要。" }, { label: "llms.txt", href: "/llms.txt", description: "英文 compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "擴充文件與參考目錄脈絡。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "每個參考的穩定原文路徑。" }], promptTitle: "可直接交給 AI 程式助理的提示詞", prompt: "先讀 DESIGN.md。除非我明確要求，否則保留現有路由、行為與使用者文案。只使用已驗證的設計 token，省略未知參考欄位，並在回報前執行無障礙與 interface-feel 檢查。", contractTitle: "AI 程式助理需要遵守的約定", contract: ["DESIGN.md 是專案唯一的設計依據。", "未知參考資料保持空缺。", "參考依據與產品事實分開處理。", "檢查實際產品頁面後才算完成。", "使用者修正應記錄為範圍明確的偏好。"], builderTitle: "視覺預覽仍以 Builder 為準", builderBody: "這些文件說明 CLI 如何把脈絡交給 AI 程式助理。參考探索與視覺預覽仍透過 Home → Builder 完成。" },
+    ai: { ...zhCn.ai, eyebrow: "人與 AI 都能讀取", title: "把確認過的文件直接交給 AI 程式助理", lead: "每個文件路徑都有穩定的資訊架構。不需要瀏覽器 session 或已停止使用的 MCP，也能讀取原始參考目錄與產品約定。", machineTitle: "機器可讀入口", machineBody: "路由使用 compact index；需要完整產品模型與規則時，改用 full 檔案。", machineLinks: [{ label: "llms.zh-tw.txt", href: "/llms.zh-tw.txt", description: "繁體中文產品約定與路由摘要。" }, { label: "llms.txt", href: "/llms.txt", description: "英文 compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "擴充文件與參考目錄脈絡。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "每個參考的穩定原文路徑。" }], promptTitle: "可直接交給 AI 程式助理的提示詞", prompt: "先讀 DESIGN.md。除非我明確要求，否則保留現有路由、行為與使用者文案。只使用已驗證的設計 token，省略未知參考欄位，並在回報前執行無障礙與 interface-feel 檢查。", contractTitle: "AI 程式助理需要遵守的約定", contract: ["DESIGN.md 是專案唯一的設計依據。", "未知參考資料保持空缺。", "參考依據與產品事實分開處理。", "檢查實際產品頁面後才算完成。", "使用者修正應記錄為範圍明確的偏好。"], catalogTitle: "在目錄中查看參考", catalogBody: "這些文件說明 CLI 如何把脈絡交給 AI 程式助理。要尋找與閱讀參考，請開啟目錄。每個參考頁面都提供 DESIGN.md、安裝指令與第一則提示詞。" },
   },
 );
 

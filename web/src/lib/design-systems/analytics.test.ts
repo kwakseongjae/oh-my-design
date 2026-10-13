@@ -12,10 +12,10 @@ beforeEach(() => mockedEvent.mockClear());
 
 describe("reference share analytics", () => {
   it("records a bounded artifact and location", () => {
-    trackReferenceShare({ reference: "toss", location: "builder", artifact: "evolution" });
+    trackReferenceShare({ reference: "toss", location: "evolution", artifact: "evolution" });
     expect(mockedEvent).toHaveBeenCalledWith("ref_share_copy", {
       reference: "toss",
-      location: "builder",
+      location: "evolution",
       artifact: "evolution",
     });
   });

@@ -36,7 +36,12 @@ const schema = {
   },
 };
 
-export function Markdown({ content }: { content: string }) {
+/**
+ * `demoteH1` renders the document's `# Title` as an <h2> with the same styling.
+ * Pages that embed a whole DESIGN.md under their own <h1> (the reference detail
+ * page, the builder preview) set it so the page keeps exactly one <h1>.
+ */
+export function Markdown({ content, demoteH1 = false }: { content: string; demoteH1?: boolean }) {
   // Strip leading YAML frontmatter from the rendered view — the file on
   // disk keeps it (agents/tools that inspect the file need the metadata),
   // but the human-facing rendering reads better without the raw delimiters.
@@ -52,12 +57,15 @@ export function Markdown({ content }: { content: string }) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, [rehypeSanitize, schema]]}
         components={{
-          h1: (props) => (
-            <h1
-              className="mt-8 mb-3 text-3xl font-bold tracking-tight text-foreground first:mt-0"
-              {...props}
-            />
-          ),
+          h1: (props) => {
+            const Tag = demoteH1 ? "h2" : "h1";
+            return (
+              <Tag
+                className="mt-8 mb-3 text-3xl font-bold tracking-tight text-foreground first:mt-0"
+                {...props}
+              />
+            );
+          },
           h2: (props) => (
             <h2
               className="mt-10 mb-3 border-b border-border/40 pb-2 text-2xl font-semibold tracking-tight text-foreground"

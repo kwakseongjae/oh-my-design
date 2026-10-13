@@ -314,10 +314,10 @@ export default function FaqPage() {
               npm
             </a>
             <Link
-              href="/builder"
+              href="/design-systems"
               className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
             >
-              Try the builder
+              Browse the catalog
             </Link>
           </div>
         </div>

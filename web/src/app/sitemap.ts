@@ -29,12 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: { en: siteUrl, ko: `${siteUrl}/ko` } },
     },
     {
-      url: `${siteUrl}/builder`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${siteUrl}/design-systems`,
       lastModified: now,
       changeFrequency: "weekly",

@@ -10,7 +10,6 @@ export type InstallSurface =
   | "final_cta"
   | "ref_detail"
   | "collection"
-  | "builder"
   | "docs"
   | "cli"
   | "benchmark";

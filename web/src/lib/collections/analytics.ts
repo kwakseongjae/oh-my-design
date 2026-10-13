@@ -1,6 +1,6 @@
 import { event } from "@/lib/gtag";
 
-export type CollectionOrigin = "index" | "builder" | "directory" | "related";
+export type CollectionOrigin = "index" | "directory" | "related";
 
 export function trackCollectionView(args: { slug: string; colorFamily?: string }) {
   event("col_view", {
@@ -18,12 +18,5 @@ export function trackCollectionOpen(args: {
     collection: args.slug,
     origin: args.origin,
     ...(args.colorFamily ? { color_family: args.colorFamily } : {}),
-  });
-}
-
-export function trackCollectionBuilderClick(args: { slug: string; colorFamily: string }) {
-  event("col_builder_click", {
-    collection: args.slug,
-    color_family: args.colorFamily,
   });
 }

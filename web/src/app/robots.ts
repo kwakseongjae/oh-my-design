@@ -14,8 +14,12 @@ import { SITE_ORIGIN as siteUrl } from "@/lib/site";
  * with just `Allow: /` silently lifts the wildcard's disallows for that bot —
  * which is how AI crawlers were reaching /api/ and the /reference/ duplicates
  * until 2026-10-01.
+ *
+ * /reference/ is no longer disallowed: since 2026-10-01 (decision D4) it is a
+ * 308 to /design-systems/<id>, and a crawler only sees a redirect on a URL it
+ * is allowed to fetch.
  */
-const DISALLOW = ["/api/", "/qa-references", "/reference/"];
+const DISALLOW = ["/api/", "/qa-references"];
 
 const AI_CRAWLERS = [
   // Anthropic Claude (live fetch + training)
@@ -40,8 +44,7 @@ const AI_CRAWLERS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Default — every crawler. Keep API, admin-only paths, and the
-      // legacy /reference/* preview route (canonicalized to /design-systems/*) out.
+      // Default — every crawler. Keep API and admin-only paths out.
       { userAgent: "*", allow: "/", disallow: DISALLOW },
       ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: "/", disallow: DISALLOW })),
     ],

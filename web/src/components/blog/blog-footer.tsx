@@ -18,7 +18,6 @@ export function BlogFooter({ locale }: { locale: PostLocale }) {
 
   const productLinks = [
     { label: chrome.mainSite, href: siteHref("/") },
-    { label: chrome.footerBuilder, href: siteHref("/builder") },
     { label: chrome.footerReferences, href: siteHref("/design-systems") },
     { label: chrome.footerDocs, href: siteHref("/docs/en") },
   ];
