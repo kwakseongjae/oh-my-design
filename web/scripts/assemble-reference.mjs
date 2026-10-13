@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * assemble-reference.mjs — 프론트매터 YAML + 본문 MD를 합쳐 DESIGN.md를 만들고,
+ * assemble-reference.mjs — 프론트매터 YAML + 본문 MD를 합쳐 DESIGN.md(v3, + reference.json)를 만들고,
  * `verification_v2` 블록(표면·출처·클레임)을 토큰 경로에서 기계적으로 생성한다.
  *
  * 왜 레포에 있나 (2026-09-23). 루프 회차마다 스크래치패드에 같은 스크립트를 두고 썼는데,
@@ -14,9 +14,11 @@
  *   extra sources: [{"id":"brand-history","kind":"official-doc","url":"…","captured":"2026-09-23"}]
  */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 import yaml from "js-yaml";
 import { collectCanonicalClaimPaths } from "./lib/reference-quality.mjs";
+import { checkV3 } from "./lib/design-md-v3-check.mjs";
+import { convertText } from "../../scripts/design-md-v3/convert-legacy.mjs";
 
 const [frontP, bodyP, outP, captured, home, extraJson] = process.argv.slice(2);
 if (!frontP || !bodyP || !outP || !captured || !home) {
@@ -57,6 +59,17 @@ for (const c of Object.values(fm.tokens?.components ?? {})) {
 const ungrounded = [...hexes].filter((h) => /^#[0-9a-f]{6}$/i.test(h) && !body.includes(h.toLowerCase()));
 if (ungrounded.length) console.warn(`⚠ not in body text (grounding will fail): ${ungrounded.join(" ")}`);
 
+// The catalog is single-write DESIGN.md v3 (spec/design-md-v3.md §12.3). The legacy-shaped text
+// assembled above is the converter's input; what lands on disk is the v3 DESIGN.md plus its
+// reference.json sidecar, checked for spec §10 conformance with 0 Google lint errors.
+const legacy = `---\n${frontSrc.trimEnd()}\n${lines.join("\n")}\n---\n${readFileSync(bodyP, "utf8")}`;
+const { designMd, sidecar, lint } = convertText(legacy, {});
+const problems = checkV3({ text: designMd, sidecar, lint });
+if (problems.length) {
+  console.error(`not written — DESIGN.md v3 conformance:\n- ${problems.join("\n- ")}`);
+  process.exit(1);
+}
 mkdirSync(dirname(outP), { recursive: true });
-writeFileSync(outP, `---\n${frontSrc.trimEnd()}\n${lines.join("\n")}\n---\n${readFileSync(bodyP, "utf8")}`);
-console.log(`claims ${paths.length}`);
+writeFileSync(outP, designMd);
+writeFileSync(join(dirname(outP), "reference.json"), `${JSON.stringify(sidecar, null, 2)}\n`);
+console.log(`claims ${paths.length} · DESIGN.md v3 + reference.json written`);

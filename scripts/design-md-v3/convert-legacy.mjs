@@ -14,7 +14,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 import {
-  convertFrontmatter, restructureBody, proseExtras, renderV3, splitFrontmatter,
+  convertFrontmatter, projectLegacyFrontmatter, restructureBody, proseExtras, renderV3, splitFrontmatter, stripGeneratedProse,
 } from '../../web/scripts/lib/design-md-v3.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -70,11 +70,28 @@ export function lintRecord(lint) {
   };
 }
 
-/** In-memory conversion. Returns { designMd, sidecar, lint }. */
-export function convertText(text, { overlay = {}, overlayName = null } = {}) {
+/**
+ * In-memory conversion. Returns { designMd, sidecar, lint }.
+ *
+ * `previous` ({ frontmatter, sidecar } of the current v3 file) makes this the v3 writer: the input is
+ * the legacy-shaped source readReferenceSource projects, edited by a tool, and the v3-only facts the
+ * projection does not carry — description, font faces and safe defaults, typesetting, substitute
+ * measurements and the migration record — are kept from the current file.
+ */
+export function convertText(text, { overlay = {}, overlayName = null, previous = null } = {}) {
   const split = splitFrontmatter(text);
   if (!split) throw new Error('legacy file must start with YAML frontmatter');
   const fm = yaml.load(split.fmText, { schema: yaml.JSON_SCHEMA });
+  if (previous) {
+    const { roles: _roles, ...faces } = previous.frontmatter.fonts ?? {};
+    overlay = {
+      ...(previous.frontmatter.description ? { description: previous.frontmatter.description } : {}),
+      ...(Object.keys(faces).length ? { fonts: faces } : {}),
+      ...(previous.frontmatter.typesetting ? { typesetting: previous.frontmatter.typesetting } : {}),
+      ...overlay,
+    };
+    split.body = stripGeneratedProse(split.body);
+  }
   const { frontmatter, sidecar } = convertFrontmatter(fm, overlay);
   const prose = sidecar.migration.prose;
   const extras = proseExtras(prose);
@@ -84,12 +101,27 @@ export function convertText(text, { overlay = {}, overlayName = null } = {}) {
   // Pass 1 renders without Known Gaps so the lint can report contrast facts on the measured values.
   const first = runLint(renderV3(frontmatter, restructureBody(split.body, extras)));
   const gaps = [...contrastGaps(first), ...(overlay.prose?.knownGaps ?? []).map((g) => `- ${g}`)];
-  const governance = gaps.length ? `### Known Gaps\n\n${gaps.join('\n')}` : null;
+  // A body that already states its Known Gaps (a v3 file being rewritten) keeps them as written;
+  // a contrast finding it does not mention then fails conformance instead of being appended blindly.
+  const governance = gaps.length && !/^### Known Gaps$/m.test(split.body) ? `### Known Gaps\n\n${gaps.join('\n')}` : null;
   const designMd = renderV3(frontmatter, restructureBody(split.body, { ...extras, Governance: governance }));
   const lint = runLint(designMd);
   sidecar.lint = lintRecord(lint);
   sidecar.migration.sourceSha256 = crypto.createHash('sha256').update(text).digest('hex');
   sidecar.migration.overlay = overlayName;
+  if (previous) {
+    for (const k of ['from', 'source', 'sourceSha256', 'overlay']) {
+      if (previous.sidecar?.migration?.[k] !== undefined) sidecar.migration[k] = previous.sidecar.migration[k];
+    }
+    if (previous.sidecar?.fonts) sidecar.fonts = previous.sidecar.fonts;
+    // The key-order record is relative to the original legacy file. When the rewrite projects the
+    // same frontmatter in the same order, keep the original record rather than re-deriving it.
+    const prevOrder = previous.sidecar?.migration?.order;
+    if (prevOrder && JSON.stringify(projectLegacyFrontmatter(frontmatter, { ...sidecar, migration: { ...sidecar.migration, order: prevOrder } })) === JSON.stringify(fm)) {
+      sidecar.migration.order = prevOrder;
+    }
+    if (previous.sidecar?.format) sidecar.format = previous.sidecar.format;
+  }
   // Keep `lint` before `migration` for readability.
   const { migration, ...rest } = sidecar;
   return { designMd, sidecar: { ...rest, migration }, lint };

@@ -23,6 +23,7 @@
  *   node scripts/apply-state-values.mjs            # dry-run, 적용 대상만 출력
  *   node scripts/apply-state-values.mjs --write
  */
+import { refuseV3Target } from "./lib/legacy-writer-guard.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -144,6 +145,7 @@ for (const file of readFileSync(join(WEB, "src/data/reference-quality.generated.
   if (!extracted.ok || !extracted.components.length) continue;
 
   const markdown = readFileSync(refPath(id), "utf8");
+  refuseV3Target(markdown, id, "apply-state-values");
   let tokens;
   try { tokens = yaml.load(markdown.match(/^---\n([\s\S]*?)\n---/)[1], { schema: yaml.JSON_SCHEMA })?.tokens; }
   catch { continue; }
@@ -218,6 +220,7 @@ for (const entry of plan) {
 let applied = 0, skipped = 0;
 for (const [id, entries] of byRef) {
   let markdown = readFileSync(refPath(id), "utf8");
+  refuseV3Target(markdown, id, "apply-state-values");
   const notes = [];
   for (const entry of entries) {
     const inserted = insertStateKeys(markdown, entry.component, entry.states);
