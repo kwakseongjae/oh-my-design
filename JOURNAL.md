@@ -1,5 +1,10 @@
 # JOURNAL
 
+## 2026-10-13 — builder 제거 (프리뷰 대기)
+- 한 일: `feat/ia-item-page`에서 builder 완전 제거 + `/builder` 308 핸들러(ref→상세 #use, 그 외→카탈로그), Customize 링크·문구 전부 제거(5개 로캘 문서·llms 포함), AGENTS.md 퍼널 재작성. push `9fc9ea9a`, QA 19/19.
+- 열린 것: 오너 프리뷰 확인 → main GO. CLI 설치 안내문의 'Builder' 문구(npm 범위), legacy 레퍼런스의 Core v2 다운로드 대체 경로 없음.
+- 다음: 프리뷰 URL 오너 확인, 리브랜딩 조사.
+
 ## 2026-10-01 저녁 — 리디자인 1차 출시
 - 한 일: /hangul v5·Tesseract 영상 r2, 리디자인 감사·경쟁 조사·시안 3개, 페이지 정리+SEO, 교정지 랜딩(/·/ko), 번들 중복 수정 → main c0ec4385 출시·라이브 확인.
 - 열린 것: IA D1~D7 구현(랜딩 행→상세, 상세 #use, builder 'Customize'), DESIGN.md.patch 승인, /hangul 새 컨셉 재제작, 한국어 상세(Phase 3), 레퍼런스·블로그 OG가 /api/og 아래(공유봇 차단).
