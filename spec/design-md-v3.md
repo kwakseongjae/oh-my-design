@@ -1,6 +1,7 @@
 # DESIGN.md v3
 
-Status: **Draft — Phase 1, for owner review** (not yet the catalog write format)
+Status: **Approved** (owner G2, 2026-10-13) — the catalog write format. All 521 references converted
+on `feat/design-md-v3` (2026-10-14); Phase 2 record in `docs/research/2026-10-13-format/PHASE2.md`.
 Format version: **3.0.0**
 Primary artifact: **`DESIGN.md`**, with an optional **`reference.json`** sidecar beside it
 Decision record: `docs/research/2026-10-13-format/PHASE1.md` (F1–F5 in `docs/REDESIGN_DECISIONS_2026-10-01.md`)
@@ -104,7 +105,9 @@ Google component properties: `backgroundColor`, `textColor`, `typography`, `roun
 - `typography` MAY be a reference (`{typography.body}`), an inline Typography map, or a literal
   shorthand string (`17px / 600`). All three are lint-silent.
 - **Extension properties.** OmD component fields with no Google equivalent keep their legacy names:
-  `type`, `border`, `hover`, `pressed`, `active`, `focus`, `disabled`, `states`, `use`, `shadow`.
+  `type`, `border`, `hover`, `pressed`, `active`, `focus`, `disabled`, `states`, `use`, `shadow`,
+  and every other field the catalog carries (`selected`, `checked`, `error`, `highlighted`, `gap`,
+  `margin`, `text`, `alert`, `count`, `variants`, `icon`, `bodyPadding`, `inputFont`).
   They hold measured values or measured state descriptions that cannot be split into Google variant
   siblings without interpretation. Google lint reports each as a `broken-ref` *warning* ("not a
   recognized component sub-token"); the sidecar counts them as `extension-component-property`.
@@ -382,7 +385,14 @@ routing them through Core v2.
   },
   "migration": {          // present on converted files
     "from": "omd-0.1", "sourceSha256": "…", "overlay": "overlay.yaml",
-    "prose": [ { "path": "typography.baemin-heading.lineHeight", "value": "normal" } ]
+    "prose": [ { "path": "typography.baemin-heading.lineHeight", "value": "normal" } ],
+    // Phase 2: what the v3 grammar cannot carry, so the inverse (reader adapter) is exact.
+    "numeric": [ "rounded.sm" ],          // v3 `<n>px` values that were bare numbers in 0.1
+    "aliases": { "typography.nav.letterSpacing": "typography.nav.letterSpacing" }, // non-default 0.1 field name
+    "order": { "tokens": [ "source", "colors", "…" ] },  // 0.1 key order where the default differs
+    "emptyMaps": [ "components" ],        // empty 0.1 maps
+    "danglingClaims": [ "…" ],            // 0.1 claims on a value the file never had
+    "omd": { "schema": 1 }                // a non-string 0.1 `omd`, kept verbatim
   }
 }
 ```
@@ -455,8 +465,12 @@ comparator is `scripts/design-md-v3/compare-values.mjs`.
 | `id, name, country, category, homepage, primary_color, logo, verified, added, ds` | `reference.json` `catalog.*` (`name` also stays in frontmatter) | unchanged |
 | `omd: "0.1"` | `reference.json` `migration.from` | — |
 
-Any other legacy token group or field (`tokens.font`, `tokens.text`, `tokens.shadow`, …) stops the
-converter. Phase 2 extends the table per shape found in the catalog; it never guesses.
+Phase 2 additions from the catalog survey (no value is inferred; each goes to section prose with a
+`prose:` claim, spec §5): `tokens.shadow.<n>` (308 files) → Elevation & Depth prose; `tokens.motion.*`
+(3) → Motion & Easing prose; a list-valued `tokens.spacing` (4) → Layout prose, because naming its
+entries would be invented; a typography entry with no role field (a scale map such as
+`typography.leading: {tight, normal}`) → Typography prose; a non-dimension `size`/`tracking`
+keyword → Typography prose. Any other shape still stops the converter.
 
 ### 11.2 Section moves
 
@@ -473,6 +487,7 @@ converter. Phase 2 extends the table per shape found in the catalog; it never gu
 | Voice & Tone | `Voice & Tone` |
 | Agent Prompt Guide | `Agent Prompt Guide` |
 | (none) | `CJK Typesetting`, `Governance` → `Known Gaps`, added from the reviewed overlay and the lint |
+| Other hand-written H2s (Phase 2) | kept verbatim as an H3 under the closest v3 section (`SECTION_RULES` in `web/scripts/lib/design-md-v3.mjs`): evidence, verification, implementation and accessibility notes → `Governance`; imagery, principles, personas → `Overview`; interaction and state notes → `Components` |
 
 Prose lines move verbatim. Facts the legacy file holds only in prose (font licence and distribution,
 typesetting, extra Known Gaps) enter the structured fields through a **reviewed overlay** file that
