@@ -1,0 +1,412 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "toyota",
+    "name": "トヨタ",
+    "country": "JP",
+    "category": "automotive",
+    "homepage": "https://global.toyota/en/",
+    "primary_color": "#034f6d",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=global.toyota&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "note": "Public Toyota Global pages used loaded toyotatext_rg across the three supplied public surfaces. Toyota-red branding, a universal semantic palette, and interaction states were not established by this packet.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-global-home",
+        "url": "https://global.toyota/en/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "production-sales",
+        "kind": "company-data",
+        "url": "https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_header_menu",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "tps",
+        "kind": "company-philosophy",
+        "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://global.toyota/en/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "production-sales-live",
+        "kind": "product-surface",
+        "url": "https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_header_menu",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "tps-live",
+        "kind": "product-surface",
+        "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "toyota-text-web-assets",
+        "kind": "brand-asset",
+        "url": "https://global.toyota/fonts/toyotatext/toyotatext_rg.woff2",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "toyota-history",
+        "kind": "official-doc",
+        "url": "https://global.toyota/en/company/trajectory-of-toyota/history/%26gt",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "toyota-philosophy",
+        "kind": "official-doc",
+        "url": "https://global.toyota/en/company/vision-and-philosophy/philosophy/?bt_code=brand_google_pai",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "toyota-mobility",
+        "kind": "official-doc",
+        "url": "https://global.toyota/en/mobility/?padid=ag478_from_header_menu",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "toyota-tps",
+        "kind": "official-doc",
+        "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-dark": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "toyota-text-web-assets",
+        "method": "computed-font-face",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontSize": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontWeight": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.lineHeight": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.use": {
+        "surface_id": "production-sales",
+        "source_id": "production-sales-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-8": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-15": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-16": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-24": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-25": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-list-item.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 10,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 4,
+      "extension-component-property": 3,
+      "orphaned-tokens": 3
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section-heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.global-nav-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.global-nav-list-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.global-nav-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.on-dark",
+        "message": "'on-dark' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "255fdc0fe83de6d6ce7e34f8a1d72e07985771f81e7fea9a5e54bc867d1f5457",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.section-heading.fontSize",
+      "typography.body.fontSize",
+      "typography.nav.fontSize",
+      "rounded.none"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "section-heading",
+        "body",
+        "nav"
+      ]
+    }
+  }
+}

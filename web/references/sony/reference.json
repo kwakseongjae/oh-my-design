@@ -1,0 +1,334 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "sony",
+    "name": "ソニー",
+    "country": "JP",
+    "category": "consumer-tech",
+    "homepage": "https://www.sony.com/",
+    "primary_color": "#000000",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=sony.com&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-corporate-home",
+        "url": "https://www.sony.com/en/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "products",
+        "kind": "public-products-catalog",
+        "url": "https://www.sony.com/en/SonyInfo/products/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "electronics",
+        "kind": "public-products-catalog",
+        "url": "https://www.sony.com/en/SonyInfo/products/#electronics",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.sony.com/en/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "products-live",
+        "kind": "product-surface",
+        "url": "https://www.sony.com/en/SonyInfo/products/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "electronics-live",
+        "kind": "product-surface",
+        "url": "https://www.sony.com/en/SonyInfo/products/#electronics",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "sst-type-project",
+        "kind": "official-doc",
+        "url": "https://www.sony.com/en/SonyInfo/design/stories/sst-font/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "purpose-values",
+        "kind": "official-doc",
+        "url": "https://www.sony.com/en/SonyInfo/CorporateInfo/purpose_and_values/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "corporate-history",
+        "kind": "official-doc",
+        "url": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "corporate-blog",
+        "kind": "official-doc",
+        "url": "https://www.sony.com/en/SonyInfo/blog/2021/04/08/",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::h1",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::p.m-text-lead",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "fontfaceset-and-computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.display": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "fontfaceset-and-computed-style",
+        "selector": "surface-2::h1.m-h1",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::h1.m-h1",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::h1.m-h1",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::h1.m-h1",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::h1.m-h1",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::p.m-text-lead",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::p.m-text-lead",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::p.m-text-lead",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "products",
+        "source_id": "products-live",
+        "method": "live-inspect",
+        "selector": "surface-2::p.m-text-lead",
+        "captured": "2026-07-13"
+      },
+      "spacing.header-block": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "spacing.header-inline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "rounded.sharp": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "fontfaceset-and-computed-style",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "selector": "home::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 6,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 2,
+      "extension-component-property": 2,
+      "orphaned-tokens": 2
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-navigation-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-navigation-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "347cca8b3d28878239f7c52b1dd0c5df856d17590a7bfa06eb1ed0b4aba9293b",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.body.fontSize",
+      "rounded.sharp",
+      "components.header-navigation-link.rounded"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "body"
+      ]
+    }
+  }
+}

@@ -1,124 +1,90 @@
 ---
-id: chatwork
 name: Chatwork
-country: JP
-category: saas
-homepage: "https://go.chatwork.com/ja/"
-primary_color: "#F03748"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=chatwork.com&sz=128"
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "RISE (--rise--*)"
-  url: "https://go.chatwork.com/ja/"
-  type: system
-  description: "20 --rise--* custom properties, and sixteen of them are typographic: four font-family tokens naming four weights of Chatwork's own typeface, a twelve-step rem type scale split into headline, body, caption and button roles, and two line heights. Two colours complete it."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    brand: "#f03748"
-    link: "#df1c13"
-    secondary: "#645b4a"
-    foreground: "#13202f"
-    ink: "#191919"
-    muted: "#949aa2"
-    canvas: "#ffffff"
-  typography:
-    family: { sans: "Chatwork Sans R", display: "Chatwork Sans B" }
-    leading: { base: 1.6, headline: 1.5 }
-    xsmall: { size: 10, use: "--rise--fontSize-other-xSmall, .625rem" }
-    caption: { size: 12, use: "--rise--fontSize-caption, .75rem — and the most common rendered size, on 105 elements" }
-    body2: { size: 14, use: "--rise--fontSize-body2 and -button-small, .875rem" }
-    body1: { size: 16, use: "--rise--fontSize-body1 and -button-medium, 1rem" }
-    subtitle: { size: 20, use: "--rise--fontSize-subtitle and -button-large, 1.25rem" }
-    headline3: { size: 24, use: "--rise--fontSize-headline3, 1.5rem" }
-    headline2: { size: 32, use: "--rise--fontSize-headline2, 2.0rem" }
-    headline1: { size: 40, use: "--rise--fontSize-headline1, 2.5rem" }
-    other-large: { size: 48, use: "--rise--fontSize-other-large, 3rem — the largest published step" }
-  rounded: { sm: 5, md: 6, lg: 15, xl: 20, pill: 50 }
-  components:
-    button-cta: { type: "button", bg: "#f03748", fg: "#ffffff", radius: 50, height: "60px", font: "17px / 700", hover: "#f03748", pressed: "#f03748", use: "The primary call to action (無料登録して使う) — a 50px pill repeated at 35, 60, 80 and 85px tall. Measured across hover and pressed with :hover live; neither changes anything." }
-    button-outline-red: { type: "button", bg: "#ffffff", fg: "#df1c13", radius: 50, height: "42px", font: "14px / 400", hover: "#645b4a", pressed: "#645b4a", use: "White 50px pill with the link red as text and no border at all. Hover and pressed move the text to #645b4a, the system's olive secondary." }
-    link-brand: { type: "button", bg: "transparent", fg: "#df1c13", font: "16px / 400", hover: "#645b4a", pressed: "#645b4a", use: "Brand-red text action, including the wordmark link. Same #645b4a on hover and pressed." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: product, kind: product-surface, url: "https://go.chatwork.com/ja/", inspected: "2026-09-22" }
-    - { id: corporate, kind: product-surface, url: "https://www.kubell.com/", inspected: "2026-09-22" }
-  sources:
-    - { id: product-live, kind: product-surface, url: "https://go.chatwork.com/ja/", captured: "2026-09-22" }
-    - { id: kubell-live, kind: product-surface, url: "https://www.kubell.com/", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.brand: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.ink: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.link: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.muted: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.secondary: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-cta.bg: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.fg: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.font: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.height: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.hover: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.pressed: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.radius: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.type: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.use: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.bg: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.fg: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.font: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.height: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.hover: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.pressed: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.radius: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.type: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-outline-red.use: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.bg: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.fg: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.font: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.hover: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.pressed: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.type: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.link-brand.use: { surface_id: product, source_id: product-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.rounded.lg: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.pill: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xl: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body1.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body1.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body2.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body2.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.display: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.sans: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.headline1.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.headline1.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.headline2.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.headline2.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.headline3.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.headline3.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.leading.base: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.leading.headline: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.other-large.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.other-large.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.subtitle.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.subtitle.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xsmall.size: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xsmall.use: { surface_id: product, source_id: product-live, method: computed-style, captured: "2026-09-22" }
+colors:
+  brand: '#f03748'
+  link: '#df1c13'
+  secondary: '#645b4a'
+  foreground: '#13202f'
+  ink: '#191919'
+  muted: '#949aa2'
+  canvas: '#ffffff'
+typography:
+  xsmall:
+    fontSize: 10px
+    use: '--rise--fontSize-other-xSmall, .625rem'
+  caption:
+    fontSize: 12px
+    use: '--rise--fontSize-caption, .75rem — and the most common rendered size, on 105 elements'
+  body2:
+    fontSize: 14px
+    use: '--rise--fontSize-body2 and -button-small, .875rem'
+  body1:
+    fontSize: 16px
+    use: '--rise--fontSize-body1 and -button-medium, 1rem'
+  subtitle:
+    fontSize: 20px
+    use: '--rise--fontSize-subtitle and -button-large, 1.25rem'
+  headline3:
+    fontSize: 24px
+    use: '--rise--fontSize-headline3, 1.5rem'
+  headline2:
+    fontSize: 32px
+    use: '--rise--fontSize-headline2, 2.0rem'
+  headline1:
+    fontSize: 40px
+    use: '--rise--fontSize-headline1, 2.5rem'
+  other-large:
+    fontSize: 48px
+    use: '--rise--fontSize-other-large, 3rem — the largest published step'
+rounded:
+  sm: 5px
+  md: 6px
+  lg: 15px
+  xl: 20px
+  pill: 50px
+components:
+  button-cta:
+    type: button
+    backgroundColor: '#f03748'
+    textColor: '#ffffff'
+    rounded: 50px
+    height: 60px
+    typography: 17px / 700
+    hover: '#f03748'
+    pressed: '#f03748'
+    use: The primary call to action (無料登録して使う) — a 50px pill repeated at 35, 60, 80 and 85px tall. Measured across hover and pressed with :hover live; neither changes anything.
+  button-outline-red:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#df1c13'
+    rounded: 50px
+    height: 42px
+    typography: 14px / 400
+    hover: '#645b4a'
+    pressed: '#645b4a'
+    use: 'White 50px pill with the link red as text and no border at all. Hover and pressed move the text to #645b4a, the system''s olive secondary.'
+  link-brand:
+    type: button
+    backgroundColor: transparent
+    textColor: '#df1c13'
+    typography: 16px / 400
+    hover: '#645b4a'
+    pressed: '#645b4a'
+    use: 'Brand-red text action, including the wordmark link. Same #645b4a on hover and pressed.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: Chatwork Sans R
+    display: Chatwork Sans B
 ---
+
 # Design System Inspiration of Chatwork (チャットワーク)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Chatwork is Japan's business chat service, operated by 株式会社kubell — which states on its own
 site that it was Chatwork株式会社 until **1 July 2024**, and that Chatwork was used by 430,000
@@ -134,11 +100,33 @@ That makes sense once you see what the typeface is. **Chatwork Sans**, in four w
 brand's own face, and it renders on **318 of 319 text-bearing elements**. The one exception is
 a single Helvetica fallback.
 
-### Primary tasks
+#### Primary tasks
 - Understand the product and start a free account, from a red pill repeated at four sizes.
 - Download the explainer material, or sign in.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+株式会社kubell states on its own site that Chatwork株式会社 became kubell on 1 July 2024, that
+it operates Chatwork — "日本最大級のビジネスチャット" — and that the service was used by 430,000
+companies as of December 2023. Alongside it the company lists Taxita, Secure SAMBA and a cloud
+postal service.
+
+The two surfaces have separated visually. `go.chatwork.com` is Chatwork Sans, red and 50px
+pills; `kubell.com` is Noto Sans JP with Poppins, an orange `#f04600` and a `#121212` ink, and
+carries no `--rise--*` at all. The product kept its identity through the rename and the parent
+built a different one.
+
+### Principles
+
+- **The typeface is the system.** Four weights, four tokens, 318 of 319 elements.
+- **Name the size by role, in rem**, and let buttons alias the body steps.
+- **Two reds, one job each.** Fill and text, close enough to read as one.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 with `getComputedStyle` on `go.chatwork.com/ja/`. RISE declares exactly two
 colours; the rest of this palette is read off the rendered page.
@@ -163,7 +151,7 @@ colours; the rest of this palette is read off the rendered page.
 marker inside an embedded Marketo form. The Marketo form also brings its own button styling
 (`.mktoButton:hover { background: rgb(60, 72, 14) }`), and none of it is Chatwork's.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family — four weights, four tokens
 
@@ -204,7 +192,40 @@ The rendered page leans small: 12px on 105 elements, then 14 and 16 on 35 each, 
 17 on 22 — several of which are not scale steps, so the marketing page sets sizes the system
 does not name.
 
-## 4. Component Stylings
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.leading.base`: `1.6`
+- `typography.leading.headline`: `1.5`
+
+## Layout
+
+- **The system is a typeface and a scale.** Sixteen of twenty tokens are typographic; spacing,
+  radius, shadow and motion are all absent from RISE and left to the page.
+- **One pill at five sizes** carries every call to action.
+- **Two reds that are nearly the same**, split by job: fill versus text.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+**No shadow was observed** on any measured control, and RISE declares none. The only shadow on
+the page belongs to the embedded Marketo input.
+
+## Motion & Easing
+
+**No motion token exists** in RISE. The measured controls declare `transition: all` with no
+duration, which resolves to `0s` — the state changes above are instant, not animated. The one
+timed transition on the page (`0.2s ease-in-out`) belongs to the embedded Marketo button.
+
+---
+
+**Tier 1 sources:** https://go.chatwork.com/ja/ (live product surface — 20 `--rise--*` custom properties read via `getComputedStyle`, three controls measured at rest, hover, pressed and focus, and the stylesheet searched to separate Chatwork's rules from the embedded Marketo form's, 2026-09-22); https://www.kubell.com/ (株式会社kubell's own corporate site — the rename date, the statement that it operates Chatwork, and the 430,000-company figure; a second brand-owned Japanese surface, and the evidence that the parent's visual system is a separate one; not cited for tokens)
+
+## Components
 
 Three controls measured, each state read on its own page load.
 
@@ -239,19 +260,17 @@ Every focusable control matched `:focus-visible` and painted
 Rendered: **5px on 71 elements** — by far the dominant value and not a RISE token — then 50px
 on 17 (the pills), 6px on 5, 20px on 5, 15px on 3, and 100% on 5.
 
-## 5. Layout Principles
+### States
 
-- **The system is a typeface and a scale.** Sixteen of twenty tokens are typographic; spacing,
-  radius, shadow and motion are all absent from RISE and left to the page.
-- **One pill at five sizes** carries every call to action.
-- **Two reds that are nearly the same**, split by job: fill versus text.
+Three components carry measured hover and pressed. The split is by control type: the **filled
+pill does not move at all**, while both **red text actions go to `#645b4a`** — the same value,
+reached from two different rest colours, on hover and on pressed alike.
 
-## 6. Depth & Elevation
+Focus is Chrome's own ring on everything that can take focus, and the primary pill is a `span`
+that cannot. **No focus state is recorded.** No disabled state was observed on a rendered
+control.
 
-**No shadow was observed** on any measured control, and RISE declares none. The only shadow on
-the page belongs to the embedded Marketo input.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Pick the weight by token, not by `font-weight` — RISE names four separate families.
@@ -265,11 +284,11 @@ the page belongs to the embedded Marketo input.
 - Don't copy the focus ring — it is Chrome's `auto 1px`, not a brand value.
 - Don't expect the primary pill to respond to hover. It was measured and it does not.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as copy. 3,807 characters on the measured surface.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#f03748` fill red · `#df1c13` text red · `#645b4a` olive secondary, hover only · `#13202f`
@@ -281,48 +300,9 @@ foreground · `#191919` rules · `#949aa2` muted · `#ffffff` canvas
 - "Its outline twin: white, `#df1c13` 14px/400 label, 50px radius, **no border**, text to
   `#645b4a` on hover."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as copy. 3,807 characters on the measured surface.
+### Known Gaps
 
-## 11. Brand Narrative
-
-株式会社kubell states on its own site that Chatwork株式会社 became kubell on 1 July 2024, that
-it operates Chatwork — "日本最大級のビジネスチャット" — and that the service was used by 430,000
-companies as of December 2023. Alongside it the company lists Taxita, Secure SAMBA and a cloud
-postal service.
-
-The two surfaces have separated visually. `go.chatwork.com` is Chatwork Sans, red and 50px
-pills; `kubell.com` is Noto Sans JP with Poppins, an orange `#f04600` and a `#121212` ink, and
-carries no `--rise--*` at all. The product kept its identity through the rename and the parent
-built a different one.
-
-## 12. Principles
-
-- **The typeface is the system.** Four weights, four tokens, 318 of 319 elements.
-- **Name the size by role, in rem**, and let buttons alias the body steps.
-- **Two reds, one job each.** Fill and text, close enough to read as one.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Three components carry measured hover and pressed. The split is by control type: the **filled
-pill does not move at all**, while both **red text actions go to `#645b4a`** — the same value,
-reached from two different rest colours, on hover and on pressed alike.
-
-Focus is Chrome's own ring on everything that can take focus, and the primary pill is a `span`
-that cannot. **No focus state is recorded.** No disabled state was observed on a rendered
-control.
-
-## 15. Motion & Easing
-
-**No motion token exists** in RISE. The measured controls declare `transition: all` with no
-duration, which resolves to `0s` — the state changes above are instant, not animated. The one
-timed transition on the page (`0.2s ease-in-out`) belongs to the embedded Marketo button.
-
----
-
-**Tier 1 sources:** https://go.chatwork.com/ja/ (live product surface — 20 `--rise--*` custom properties read via `getComputedStyle`, three controls measured at rest, hover, pressed and focus, and the stylesheet searched to separate Chatwork's rules from the embedded Marketo form's, 2026-09-22); https://www.kubell.com/ (株式会社kubell's own corporate site — the rename date, the statement that it operates Chatwork, and the 430,000-company figure; a second brand-owned Japanese surface, and the evidence that the parent's visual system is a separate one; not cited for tokens)
+- **Contrast, `button-cta`.** Text `#ffffff` on `#f03748` measures 3.93:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `link-brand`.** Text `#df1c13` on `#00000000` measures 4.31:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

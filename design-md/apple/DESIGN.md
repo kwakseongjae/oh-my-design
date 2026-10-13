@@ -1,163 +1,116 @@
 ---
-id: apple
 name: Apple
-country: US
-category: consumer-tech
-homepage: "https://www.apple.com"
-primary_color: "#000000"
-logo:
-  type: simpleicons
-  slug: apple
-verified: "2026-07-11"
-omd: "0.1"
-ds:
-  name: Human Interface Guidelines
-  url: "https://developer.apple.com/design/human-interface-guidelines"
-  type: system
-  description: Apple's official platform design guidance; this reference separately labels apple.com and HIG documentation-site UI.
-  og_image: "https://docs.developer.apple.com/tutorials/developer-og.jpg"
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: apple-home, kind: marketing, url: "https://www.apple.com/", inspected: "2026-07-11" }
-    - { id: apple-home-states, kind: marketing, url: "https://www.apple.com/", inspected: "2026-09-17" }
-    - { id: apple-store-product, kind: commerce, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", inspected: "2026-07-11" }
-    - { id: hig-buttons, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", inspected: "2026-07-11" }
-    - { id: hig-components, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/components", inspected: "2026-07-11" }
-  sources:
-    - { id: apple-live, kind: product-surface, url: "https://www.apple.com/", captured: "2026-07-11" }
-    - { id: apple-component-index, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/components", captured: "2026-09-19" }
-    - { id: apple-live-states, kind: product-surface, url: "https://www.apple.com/", captured: "2026-09-17" }
-    - { id: apple-store-live, kind: product-surface, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", captured: "2026-07-11" }
-    - { id: hig-buttons-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", captured: "2026-07-11" }
-    - { id: hig-components-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/components", captured: "2026-07-11" }
-  claims:
-    "tokens.colors.primary": &apple_live { surface_id: apple-home, source_id: apple-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.colors.brand": *apple_live
-    "tokens.colors.canvas": *apple_live
-    "tokens.colors.canvas-dark": *apple_live
-    "tokens.colors.surface": *apple_live
-    "tokens.colors.foreground": *apple_live
-    "tokens.colors.on-primary": *apple_live
-    "tokens.colors.muted": &hig_live { surface_id: hig-components, source_id: hig-components-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.colors.secondary": *hig_live
-    "tokens.colors.link": *apple_live
-    "tokens.colors.link-on-dark": *apple_live
-    "tokens.typography.family.display": *apple_live
-    "tokens.typography.family.text": *apple_live
-    "tokens.typography.display-hero.size": *apple_live
-    "tokens.typography.display-hero.weight": *apple_live
-    "tokens.typography.display-hero.lineHeight": *apple_live
-    "tokens.typography.display-hero.tracking": *apple_live
-    "tokens.typography.section.size": *apple_live
-    "tokens.typography.section.weight": *apple_live
-    "tokens.typography.section.lineHeight": *apple_live
-    "tokens.typography.tile-heading.size": *apple_live
-    "tokens.typography.tile-heading.weight": *apple_live
-    "tokens.typography.tile-heading.lineHeight": *apple_live
-    "tokens.typography.tile-heading.tracking": *apple_live
-    "tokens.typography.body.size": *apple_live
-    "tokens.typography.body.weight": *apple_live
-    "tokens.typography.body.lineHeight": *apple_live
-    "tokens.typography.body.tracking": *apple_live
-    "tokens.typography.body-small.size": *apple_live
-    "tokens.typography.body-small.weight": *apple_live
-    "tokens.typography.body-small.lineHeight": *apple_live
-    "tokens.typography.body-small.tracking": *apple_live
-    "tokens.typography.caption.size": *apple_live
-    "tokens.typography.caption.weight": *apple_live
-    "tokens.typography.caption.lineHeight": *apple_live
-    "tokens.typography.caption.tracking": *apple_live
-    "tokens.spacing.compact": *apple_live
-    "tokens.spacing.control-inline": *apple_live
-    "tokens.spacing.pill-block": *apple_live
-    "tokens.spacing.pill-inline": *apple_live
-    "tokens.spacing.content": *apple_live
-    "tokens.rounded.control": *apple_live
-    "tokens.rounded.docs-card": *hig_live
-    "tokens.rounded.marketing-pill": *apple_live
-    "tokens.components.marketing-primary.type": *apple_live
-    "tokens.components.marketing-primary.hover": &apple_states { surface_id: apple-home-states, source_id: apple-live-states, method: computed-style, captured: "2026-09-17" }
-    "tokens.components.marketing-primary.pressed": *apple_states
-    "tokens.components.marketing-primary.focus": *apple_states
-    "tokens.components.marketing-primary.bg": *apple_live
-    "tokens.components.marketing-primary.fg": *apple_live
-    "tokens.components.marketing-primary.radius": *apple_live
-    "tokens.components.marketing-primary.padding": *apple_live
-    "tokens.components.marketing-primary.height": *apple_live
-    "tokens.components.marketing-primary.font": *apple_live
-    "tokens.components.marketing-primary.states": *apple_live
-    "tokens.components.marketing-primary.use": *apple_live
-    "tokens.components.marketing-outline.type": *apple_live
-    "tokens.components.marketing-outline.bg": *apple_live
-    "tokens.components.marketing-outline.fg": *apple_live
-    "tokens.components.marketing-outline.border": *apple_live
-    "tokens.components.marketing-outline.radius": *apple_live
-    "tokens.components.marketing-outline.padding": *apple_live
-    "tokens.components.marketing-outline.height": *apple_live
-    "tokens.components.marketing-outline.font": *apple_live
-    "tokens.components.marketing-outline.states": *apple_live
-    "tokens.components.marketing-outline.use": *apple_live
-    "tokens.components.marketing-compact.type": *apple_live
-    "tokens.components.marketing-compact.bg": *apple_live
-    "tokens.components.marketing-compact.fg": *apple_live
-    "tokens.components.marketing-compact.radius": *apple_live
-    "tokens.components.marketing-compact.padding": *apple_live
-    "tokens.components.marketing-compact.height": *apple_live
-    "tokens.components.marketing-compact.font": *apple_live
-    "tokens.components.marketing-compact.states": *apple_live
-    "tokens.components.marketing-compact.use": *apple_live
-    "tokens.components.product-gallery-tab.type": &store_live { surface_id: apple-store-product, source_id: apple-store-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.components.product-gallery-tab.fg": *store_live
-    "tokens.components.product-gallery-tab.height": *store_live
-    "tokens.components.product-gallery-tab.font": *store_live
-    "tokens.components.product-gallery-tab.states": *store_live
-    "tokens.components.product-gallery-tab.use": *store_live
-    "tokens.components.hig-reference-card.type": *hig_live
-    "tokens.components.hig-reference-card.bg": *hig_live
-    "tokens.components.hig-reference-card.radius": *hig_live
-    "tokens.components.hig-reference-card.states": *hig_live
-    "tokens.components.hig-reference-card.use": *hig_live
-  conflicts: []
-tokens:
-  source: reconciled
-  extracted: "2026-07-11"
-  note: "apple.com marketing/commerce values are distinct from HIG guidance and the HIG documentation site's own chrome."
-  colors:
-    primary: "#0071e3"
-    brand: "#000000"
-    canvas: "#f5f5f7"
-    canvas-dark: "#000000"
-    surface: "#ffffff"
-    foreground: "#1d1d1f"
-    on-primary: "#ffffff"
-    muted: "#6e6e73"
-    secondary: "#515154"
-    link: "#0066cc"
-    link-on-dark: "#2997ff"
-  typography:
-    family: { display: "SF Pro Display", text: "SF Pro Text" }
-    display-hero: { size: 56, weight: 600, lineHeight: "60px", tracking: "-0.28px" }
-    section: { size: 40, weight: 600, lineHeight: "44px" }
-    tile-heading: { size: 28, weight: 400, lineHeight: "32px", tracking: "0.196px" }
-    body: { size: 17, weight: 400, lineHeight: "25px", tracking: "-0.374px" }
-    body-small: { size: 14, weight: 400, lineHeight: "18.0008px", tracking: "-0.224px" }
-    caption: { size: 12, weight: 400, lineHeight: "16.0005px", tracking: "-0.12px" }
-  spacing: { compact: 8, control-inline: 15, pill-block: 11, pill-inline: 21, content: 20 }
-  rounded: { control: 8, docs-card: 18, marketing-pill: 980 }
-  components_harvested: true
-  components:
-    marketing-primary: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", hover: "#0076df", pressed: "#006edb", focus: "0 0 0 2px #0071e3 outline", states: "hover, pressed and keyboard focus re-measured live 2026-09-17; the focus ring is the brand blue, not a user-agent default", use: "large apple.com marketing CTA" }
-    marketing-outline: { type: button, bg: "transparent", fg: "#0066cc", border: "1px solid #0066cc", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", states: "default captured; hover not retained", use: "secondary apple.com marketing CTA" }
-    marketing-compact: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "8px 15px", height: "36px", font: "14px / 400", states: "default captured; hover not retained", use: "compact apple.com tile CTA" }
-    product-gallery-tab: { type: tab, fg: "#1d1d1f", height: "53px", font: "17px / 400", states: "selected and unselected gallery thumbnails", use: "Apple Store product image selection" }
-    hig-reference-card: { type: card, bg: "#ffffff", radius: "18px", states: "default documentation card; hover not retained", use: "HIG documentation index card, not a native-platform component token" }
+colors:
+  primary: '#0071e3'
+  brand: '#000000'
+  canvas: '#f5f5f7'
+  canvas-dark: '#000000'
+  surface: '#ffffff'
+  foreground: '#1d1d1f'
+  on-primary: '#ffffff'
+  muted: '#6e6e73'
+  secondary: '#515154'
+  link: '#0066cc'
+  link-on-dark: '#2997ff'
+typography:
+  display-hero:
+    fontSize: 56px
+    fontWeight: 600
+    lineHeight: 60px
+    letterSpacing: '-0.28px'
+  section:
+    fontSize: 40px
+    fontWeight: 600
+    lineHeight: 44px
+  tile-heading:
+    fontSize: 28px
+    fontWeight: 400
+    lineHeight: 32px
+    letterSpacing: 0.196px
+  body:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 25px
+    letterSpacing: '-0.374px'
+  body-small:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 18.0008px
+    letterSpacing: '-0.224px'
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 16.0005px
+    letterSpacing: '-0.12px'
+rounded:
+  control: 8px
+  docs-card: 18px
+  marketing-pill: 980px
+spacing:
+  compact: 8
+  control-inline: 15
+  pill-block: 11
+  pill-inline: 21
+  content: 20
+components:
+  marketing-primary:
+    type: button
+    backgroundColor: '#0071e3'
+    textColor: '#ffffff'
+    rounded: 980px
+    padding: 11px 21px
+    height: 44px
+    typography: 17px / 400
+    hover: '#0076df'
+    pressed: '#006edb'
+    focus: '0 0 0 2px #0071e3 outline'
+    states: hover, pressed and keyboard focus re-measured live 2026-09-17; the focus ring is the brand blue, not a user-agent default
+    use: large apple.com marketing CTA
+  marketing-outline:
+    type: button
+    backgroundColor: transparent
+    textColor: '#0066cc'
+    border: '1px solid #0066cc'
+    rounded: 980px
+    padding: 11px 21px
+    height: 44px
+    typography: 17px / 400
+    states: default captured; hover not retained
+    use: secondary apple.com marketing CTA
+  marketing-compact:
+    type: button
+    backgroundColor: '#0071e3'
+    textColor: '#ffffff'
+    rounded: 980px
+    padding: 8px 15px
+    height: 36px
+    typography: 14px / 400
+    states: default captured; hover not retained
+    use: compact apple.com tile CTA
+  product-gallery-tab:
+    type: tab
+    textColor: '#1d1d1f'
+    height: 53px
+    typography: 17px / 400
+    states: selected and unselected gallery thumbnails
+    use: Apple Store product image selection
+  hig-reference-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 18px
+    states: default documentation card; hover not retained
+    use: HIG documentation index card, not a native-platform component token
+fonts:
+  roles:
+    display: SF Pro Display
+    text: SF Pro Text
 ---
 
 # Design System Inspiration of Apple
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Apple’s current design language makes hardware, software, content, and controls feel like one continuous system. On the public web, a small neutral palette, SF Pro optical families, and conspicuous blue actions leave product photography and page composition to carry most of the drama. Across Apple platforms, the newer Liquid Glass direction adds a translucent functional layer for controls and navigation while keeping content visually primary. The recognizable effect is not minimalism for its own sake: precise hierarchy, familiar behavior, platform harmony, and carefully limited ornament make complex capabilities feel immediately usable.
 
@@ -169,7 +122,7 @@ This reference distinguishes three evidence domains: `apple.com` marketing, Appl
 - 44px large pill and 36px compact pill coexist on the current homepage
 - HIG documentation cards use an 18px radius but are not native-platform component tokens
 
-## Primary tasks
+### Primary tasks
 
 - Choose which product photo to view on a store page
 - Read a product's marketing page, then open its denser store page
@@ -177,7 +130,34 @@ This reference distinguishes three evidence domains: `apple.com` marketing, Appl
 - Reverse a mistake and keep going with the task
 - Use the same interface with a different device, input, or accessibility setting
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Apple publishes the Human Interface Guidelines as a living platform design system rather than a static visual kit. The current principles start from how people think, feel, and act, then organize design around purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, and delight. This makes the system’s restraint functional: interfaces are expected to help people act, preserve context, recover from mistakes, and trust how their information is handled.
+
+The 2025 software redesign introduced Liquid Glass across iOS, iPadOS, macOS, watchOS, and tvOS. Apple describes it as a shared material language that creates harmony while preserving what makes each platform distinct. Controls and navigation occupy a translucent functional layer above content; they should not become a decorative glass effect spread across the content layer.
+
+Typography follows the same system logic. SF Pro is neutral and flexible, with optical sizing and platform integration; SF Compact adapts to narrow watch contexts; SF Mono supports alignment in coding environments; New York provides a serif companion. The family names matter less than using the platform role, license, and context correctly.
+
+### Principles
+
+These are implementation principles derived from the verified public surfaces:
+
+1. Let product content dominate while controls remain visually restrained.
+2. Use one clear chromatic action accent per local composition.
+3. Match typography optical role to size: Display for large hierarchy, Text for reading and controls.
+4. Keep marketing, commerce, documentation, and native-platform evidence separate.
+5. Prefer verified component-local measurements over a fictional universal Apple scale.
+
+### Personas
+
+These are official design contexts from the Human Interface Guidelines, not invented demographic personas.
+
+- **A person pursuing a goal:** expects the interface to stay out of the way, provide feedback, and make mistakes reversible.
+- **A person protecting sensitive information:** needs clear reasons for permissions, transparent data behavior, and safe defaults.
+- **A person using a different device, input, language, or accessibility setting:** needs the experience to adapt while preserving familiar structure and context.
+- **A person learning a new interaction:** relies on established physical and digital patterns plus consistent behavior to build confidence quickly.
+
+## Colors
 
 - **Primary Action** (`#0071e3`): current filled buttons across Apple-owned web surfaces.
 - **Brand / Dark Canvas** (`#000000`): identity and immersive dark sections.
@@ -192,7 +172,7 @@ This reference distinguishes three evidence domains: `apple.com` marketing, Appl
 
 Do not infer a universal native-platform semantic palette from these web values. HIG platform colors are dynamic and context-dependent; this pass records public web evidence.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display**: `SF Pro Display`, loaded/high confidence, 31 visible uses across current Apple public pages.
@@ -216,7 +196,25 @@ Do not infer a universal native-platform semantic palette from these web values.
 | **Declared-only** | SF Mono was declared on the inspected HIG website but not observed as visible page chrome |
 | **Unresolved** | A universal mapping from Apple web roles to every native platform context; platform APIs remain the authority |
 
-## 4. Component Stylings
+## Layout
+
+- Public marketing sections use full-width composition and centered content; store pages use denser product-detail layout.
+- Exact spacing promoted here is component-local: 8px and 15px for compact action padding; 11px and 21px for the large pill; 20px as a recurrent content cluster.
+- Avoid treating every sampled margin from Apple page composition as a universal system token.
+
+### Responsive Behavior
+
+The homepage and store surface are responsive, but this pass does not promote universal breakpoints. Preserve control geometry at the inspected desktop surface, then use platform-specific HIG guidance when targeting iOS, macOS, watchOS, tvOS, or visionOS rather than scaling web values mechanically.
+
+## Elevation & Depth
+
+No shadow token is canonical in this revision. Captured primary and outline buttons reported no shadow, and HIG reference cards were flat in computed style. Product imagery and color contrast create depth on the inspected surfaces.
+
+## Motion & Easing
+
+No exact Apple motion token is promoted from this web capture. Use relevant platform HIG guidance and reduced-motion support for native implementation; label any web animation duration or easing as a local extension until verified.
+
+## Components
 
 ### apple.com Marketing Primary
 - Background: `#0071e3`
@@ -294,17 +292,15 @@ third parties, and it spans iOS, iPadOS, macOS, tvOS, visionOS and watchOS — a
 `Watch faces` or `Top Shelf` belongs to one platform only. Nothing above is asserted to apply
 to every platform.
 
-## 5. Layout Principles
+### States
 
-- Public marketing sections use full-width composition and centered content; store pages use denser product-detail layout.
-- Exact spacing promoted here is component-local: 8px and 15px for compact action padding; 11px and 21px for the large pill; 20px as a recurrent content cluster.
-- Avoid treating every sampled margin from Apple page composition as a universal system token.
+| Component | Verified state evidence |
+|---|---|
+| Marketing buttons | default geometry captured; hover/pressed/disabled not retained |
+| Product gallery tab | selected and unselected thumbnail states |
+| HIG reference card | default documentation state only |
 
-## 6. Depth & Elevation
-
-No shadow token is canonical in this revision. Captured primary and outline buttons reported no shadow, and HIG reference cards were flat in computed style. Product imagery and color contrast create depth on the inspected surfaces.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use SF Pro Display for verified large display roles and SF Pro Text for body/control roles.
@@ -320,58 +316,21 @@ No shadow token is canonical in this revision. Captured primary and outline butt
 - Don't collapse 36px and 44px marketing controls into one invented default.
 - Don't infer hover, disabled, or focus visuals that were not retained by the capture.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-The homepage and store surface are responsive, but this pass does not promote universal breakpoints. Preserve control geometry at the inspected desktop surface, then use platform-specific HIG guidance when targeting iOS, macOS, watchOS, tvOS, or visionOS rather than scaling web values mechanically.
+Apple’s current design guidance treats language as part of simplicity and agency. Labels should be concise, recognizable, and directly tied to what happens next; feedback should keep people informed and in control. Product pages tend to make one capability the subject of a headline and use short actions, while platform guidance explains the rationale and constraints without promotional filler.
 
-## 9. Agent Prompt Guide
+Clarity does not mean stripping away character. Apple’s current principles pair **Simplicity** with **Craft** and **Delight**: remove what is unnecessary, care about every detail, and create defining moments that support the task rather than interrupt it. Privacy, safety, permissions, and destructive actions require transparent language and recoverability, not euphemism.
+
+## Agent Prompt Guide
 
 - “Create a large Apple web CTA with `#0071e3`, white text, 44px height, 980px radius, 11px 21px padding, and SF Pro Text 17px/400.”
 - “Pair it with an outline action using transparent background and `#0066cc` text/border.”
 - “For a compact homepage tile, use the separately verified 36px / 8px 15px variant.”
 - “When building a native app, treat this web reference as inspiration and consult the relevant platform HIG instead of copying web geometry.”
 
-## 10. Voice & Tone
+## Governance
 
-Apple’s current design guidance treats language as part of simplicity and agency. Labels should be concise, recognizable, and directly tied to what happens next; feedback should keep people informed and in control. Product pages tend to make one capability the subject of a headline and use short actions, while platform guidance explains the rationale and constraints without promotional filler.
+### Known Gaps
 
-Clarity does not mean stripping away character. Apple’s current principles pair **Simplicity** with **Craft** and **Delight**: remove what is unnecessary, care about every detail, and create defining moments that support the task rather than interrupt it. Privacy, safety, permissions, and destructive actions require transparent language and recoverability, not euphemism.
-
-## 11. Brand Narrative
-
-Apple publishes the Human Interface Guidelines as a living platform design system rather than a static visual kit. The current principles start from how people think, feel, and act, then organize design around purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, and delight. This makes the system’s restraint functional: interfaces are expected to help people act, preserve context, recover from mistakes, and trust how their information is handled.
-
-The 2025 software redesign introduced Liquid Glass across iOS, iPadOS, macOS, watchOS, and tvOS. Apple describes it as a shared material language that creates harmony while preserving what makes each platform distinct. Controls and navigation occupy a translucent functional layer above content; they should not become a decorative glass effect spread across the content layer.
-
-Typography follows the same system logic. SF Pro is neutral and flexible, with optical sizing and platform integration; SF Compact adapts to narrow watch contexts; SF Mono supports alignment in coding environments; New York provides a serif companion. The family names matter less than using the platform role, license, and context correctly.
-
-## 12. Principles
-
-These are implementation principles derived from the verified public surfaces:
-
-1. Let product content dominate while controls remain visually restrained.
-2. Use one clear chromatic action accent per local composition.
-3. Match typography optical role to size: Display for large hierarchy, Text for reading and controls.
-4. Keep marketing, commerce, documentation, and native-platform evidence separate.
-5. Prefer verified component-local measurements over a fictional universal Apple scale.
-
-## 13. Personas
-
-These are official design contexts from the Human Interface Guidelines, not invented demographic personas.
-
-- **A person pursuing a goal:** expects the interface to stay out of the way, provide feedback, and make mistakes reversible.
-- **A person protecting sensitive information:** needs clear reasons for permissions, transparent data behavior, and safe defaults.
-- **A person using a different device, input, language, or accessibility setting:** needs the experience to adapt while preserving familiar structure and context.
-- **A person learning a new interaction:** relies on established physical and digital patterns plus consistent behavior to build confidence quickly.
-
-## 14. States
-
-| Component | Verified state evidence |
-|---|---|
-| Marketing buttons | default geometry captured; hover/pressed/disabled not retained |
-| Product gallery tab | selected and unselected thumbnail states |
-| HIG reference card | default documentation state only |
-
-## 15. Motion & Easing
-
-No exact Apple motion token is promoted from this web capture. Use relevant platform HIG guidance and reduced-motion support for native implementation; label any web animation duration or easing as a local extension until verified.
+- **Contrast, `marketing-outline`.** Text `#0066cc` on `#00000000` measures 3.77:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,210 +1,165 @@
 ---
-id: pinkfong
 name: The Pinkfong Company
-display_name_kr: 더핑크퐁컴퍼니
-country: KR
-category: consumer-tech
-homepage: "https://www.thepinkfongcompany.com"
-primary_color: "#ff66af"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=pinkfong.com&sz=128"
-verified: "2026-07-13"
-added: "2026-06-17"
-omd: "0.1"
-ds:
-  name: The Pinkfong Company Identity
-  url: "https://www.thepinkfongcompany.com/company"
-  type: brand
-  description: Official corporate identity page with company and franchise BI downloads; not a public product-component specification.
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: corporate-home, kind: marketing, url: "https://www.thepinkfongcompany.com/", inspected: "2026-07-13" }
-    - { id: corporate-company, kind: marketing, url: "https://www.thepinkfongcompany.com/company", inspected: "2026-07-13" }
-    - { id: corporate-business, kind: marketing, url: "https://www.thepinkfongcompany.com/business", inspected: "2026-07-13" }
-    - { id: font-release, kind: brand-assets, url: "https://www.thepinkfongcompany.com/news/pr/207", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.thepinkfongcompany.com/", captured: "2026-07-13" }
-    - { id: company-live, kind: product-surface, url: "https://www.thepinkfongcompany.com/company", captured: "2026-07-13" }
-    - { id: business-live, kind: product-surface, url: "https://www.thepinkfongcompany.com/business", captured: "2026-07-13" }
-    - { id: identity-official, kind: brand-asset, url: "https://www.thepinkfongcompany.com/company", captured: "2026-07-13" }
-    - { id: font-release-official, kind: official-doc, url: "https://www.thepinkfongcompany.com/news/pr/207", captured: "2026-07-13" }
-    - { id: spoqa-license, kind: license, url: "https://github.com/spoqa/spoqa-han-sans", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: corporate-home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.foreground": *home
-    "tokens.colors.muted": *home
-    "tokens.typography.family.corporate-ui": *home
-    "tokens.typography.family.brand-display": &font { surface_id: font-release, source_id: font-release-official, method: official-doc, captured: "2026-07-13" }
-    "tokens.typography.corporate-body.size": *home
-    "tokens.typography.corporate-body.weight": *home
-    "tokens.typography.corporate-body.lineHeight": *home
-    "tokens.typography.corporate-body.use": *home
-    "tokens.typography.corporate-heading.size": &company { surface_id: corporate-company, source_id: company-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.typography.corporate-heading.weight": *company
-    "tokens.typography.corporate-heading.lineHeight": *company
-    "tokens.typography.corporate-heading.use": *company
-    "tokens.typography.brand-display.size": &business { surface_id: corporate-business, source_id: business-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.typography.brand-display.weight": *business
-    "tokens.typography.brand-display.lineHeight": *business
-    "tokens.typography.brand-display.use": *business
-    "tokens.spacing.xs": *home
-    "tokens.spacing.control": *home
-    "tokens.spacing.action": *home
-    "tokens.rounded.none": *home
-    "tokens.rounded.compact": *home
-    "tokens.rounded.pill": *home
-    "tokens.rounded.emphasis": *business
-    "tokens.shadow.none": *home
-    "tokens.shadow.pink-lift": *home
-    "tokens.components.corporate-primary-action.type": *home
-    "tokens.components.corporate-primary-action.bg": *home
-    "tokens.components.corporate-primary-action.fg": *home
-    "tokens.components.corporate-primary-action.radius": *home
-    "tokens.components.corporate-primary-action.padding": *home
-    "tokens.components.corporate-primary-action.font": *home
-    "tokens.components.corporate-primary-action.states": *home
-    "tokens.components.corporate-primary-action.use": *home
-    "tokens.components.family-site-pill.type": *home
-    "tokens.components.family-site-pill.bg": *home
-    "tokens.components.family-site-pill.fg": *home
-    "tokens.components.family-site-pill.radius": *home
-    "tokens.components.family-site-pill.padding": *home
-    "tokens.components.family-site-pill.font": *home
-    "tokens.components.family-site-pill.states": *home
-    "tokens.components.family-site-pill.use": *home
-    "tokens.components.business-outline-action.type": *company
-    "tokens.components.business-outline-action.bg": *company
-    "tokens.components.business-outline-action.fg": *company
-    "tokens.components.business-outline-action.radius": *company
-    "tokens.components.business-outline-action.padding": *company
-    "tokens.components.business-outline-action.font": *company
-    "tokens.components.business-outline-action.states": *company
-    "tokens.components.business-outline-action.use": *company
-    "tokens.components.mobile-menu-dialog.type": *home
-    "tokens.components.mobile-menu-dialog.bg": *home
-    "tokens.components.mobile-menu-dialog.fg": *home
-    "tokens.components.mobile-menu-dialog.padding": *home
-    "tokens.components.mobile-menu-dialog.font": *home
-    "tokens.components.mobile-menu-dialog.use": *home
-    "tokens.components.header-nav-link.type": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.bg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.fg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.radius": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.padding": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.height": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.font": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.selected": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.states": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-link.use": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.type": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.bg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.fg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.radius": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.padding": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.size": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.font": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.states": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.header-submenu-trigger.use": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.type": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.bg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.fg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.radius": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.padding": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.size": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.font": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.selected": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.states": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.locale-toggle.use": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.type": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.bg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.fg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.radius": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.padding": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.size": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.font": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.states": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.use": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.type": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.bg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.fg": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.radius": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.padding": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.height": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.font": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.states": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.use": { surface_id: corporate-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.type": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.bg": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.fg": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.radius": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.padding": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.height": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.font": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.states": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.history-collapse-header.use": { surface_id: corporate-company, source_id: company-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.type": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.bg": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.fg": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.radius": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.padding": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.height": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.font": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.shadow": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.states": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-primary-action.use": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.type": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.bg": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.fg": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.radius": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.padding": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.height": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.font": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.shadow": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.states": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.business-overlay-chip.use": { surface_id: corporate-business, source_id: business-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Only the supplied corporate-site capture is token authority. Consumer Pinkfong pages, authenticated apps, and a general brand component kit were not captured. Spoqa Han Sans Neo is loaded on the corporate capture; BabyShark is a separately confirmed official distributed display asset and a single loaded h1 use."
-  colors:
-    primary: "#ff66af"
-    canvas: "#ffffff"
-    foreground: "#000000"
-    muted: "#5a5a5a"
-  typography:
-    family: { corporate-ui: "Spoqa Han Sans Neo", brand-display: "Pinkfong Baby Shark Font" }
-    corporate-body: { size: 16, weight: 400, lineHeight: 1.5715, use: "Observed corporate body text on the supplied public routes." }
-    corporate-heading: { size: 38, weight: 700, lineHeight: 1.5715, use: "Observed corporate-company h1 scale; its computed family is the system stack, not a Pinkfong font token." }
-    brand-display: { size: 48, weight: 700, lineHeight: 1, use: "One corporate-business h1 uses loaded BabyShark; official release calls the distributed family Pinkfong Baby Shark Font." }
-  spacing: { xs: 8, control: 20, action: 32 }
-  rounded: { none: 0, compact: 8, pill: 32, emphasis: 40 }
-  shadow:
-    none: "none"
-    pink-lift: "rgba(255, 5, 88, 0.06) 0px 2px 0px 0px"
-  components_harvested: true
-  components:
-    corporate-primary-action: { type: button, bg: "#ff66af", fg: "#ffffff", radius: 32, padding: "32px 15px", font: "24px / 400 / system stack", states: "Default captured; this element has no pointer-state frame.", use: "corporate-home `home::[data-omd-capture=\"26\"]`; one public corporate CTA, 64px rendered height." }
-    family-site-pill: { type: button, bg: "#ffffff", fg: "#8c8c8c", radius: 32, padding: "4px 20px", font: "14px / 400 / system stack", states: "Default captured; this element has no pointer-state frame.", use: "`home::[data-omd-capture=\"31\"]`, repeated across the three corporate routes; 35px rendered height." }
-    business-outline-action: { type: button, bg: "#ffffff", fg: "#08c7ff", radius: 32, padding: "30px 15px", font: "18px / 400 / system stack", states: "Default captured. The hover, pressed and focus frames on `surface-2::[data-omd-capture=\"23\"]` move bg #ffffff to #fffffe or #fffffc and fg #08c7ff to #09c7ff, #0bc8ff or #0ec8ff, a transition caught in progress, so no state value is declared; focus is never declared from this collector.", use: "corporate-company `surface-2::[data-omd-capture=\"23\"]`; one public company-page action, 60px rendered height." }
-    mobile-menu-dialog: { type: dialog, bg: "#ffffff", fg: "#000000", padding: "30px", font: "14px / 400 / system stack", use: "`home::div.DefaultMenu_mobile-menu-modal__SEaJA`; hidden mobile-menu dialog structure captured on all three corporate routes." }
-    header-nav-link: { type: tab, bg: "transparent", fg: "rgba(0, 0, 0, 0.88)", radius: "0px", padding: "0px 16px", height: "64px", font: "14px / 400 / 64px system stack", selected: "fg #ff66af", states: "rest on every header menu link; the current-page item (li.ant-menu-item-selected) computes #ff66af on the company and business pages; no pointer-state frame", use: "Header menu link: the anchor at home::[data-omd-capture=\"5\"] inside the antd menu item li at \"4\"; padding and height belong to that li" }
-    header-submenu-trigger: { type: button, bg: "transparent", fg: "rgba(0, 0, 0, 0.88)", radius: "8px", padding: "0px", size: "48px x 64px", font: "14px / 400 / 64px system stack", states: "default captured on all three pages (capture 14); it declares aria-haspopup, but the collector opened no submenu and recorded no pointer-state frame for it", use: "Header submenu title (div.ant-menu-submenu-title) at home::[data-omd-capture=\"14\"]" }
-    locale-toggle: { type: button, bg: "transparent", fg: "#dddddd", radius: "0px", padding: "0px", size: "44px x 15px", font: "13.3333px / 400 / Arial", selected: "fg #2e2e2e", states: "inactive and active-locale (class LocaleSelector_active) buttons captured as pairs on all three pages (capture 1/2 and 21/22); no pointer-state frame", use: "Header locale switch at home::[data-omd-capture=\"2\"]; the active locale at \"1\" computes #2e2e2e. The 13.3333px Arial is the browser default button font as computed, not a brand face" }
-    section-more-link: { type: button, bg: "transparent", fg: "#a0a0a0", radius: "0px", padding: "0px", size: "121px x 25px", font: "16px / 400 / 25.144px system stack", states: "default captured on three carousel copies (capture 23-25); the hover and pressed frames of \"23\" record #c08ca5 and its focus frame #be8ba6, a colour caught mid-transition that matches no rest colour, so no hover or pressed value is declared", use: "Home business-section more link with a right-arrow icon (a.BusinessSection_more) at home::[data-omd-capture=\"23\"]" }
-    footer-link: { type: tab, bg: "transparent", fg: "#5a5a5a", radius: "0px", padding: "0px", height: "17px", font: "14px / 400 / 22.001px system stack", states: "default captured on five footer links on each of the three pages (home 32-36, company 34-38); no pointer-state frame", use: "Footer link row at home::[data-omd-capture=\"32\"]" }
-    history-collapse-header: { type: button, bg: "transparent", fg: "rgba(0, 0, 0, 0.88)", radius: "8px 8px 0px 0px", padding: "12px 16px", height: "55px", font: "14px / 400 / 22px system stack", states: "default captured on six collapsed headers (capture 24-29); the collector expanded none and recorded no pointer-state frame", use: "Company-page history accordion header (div.ant-collapse-header, role=button) at surface-2::[data-omd-capture=\"24\"]; the first header rounds 8px 8px 0px 0px, the middle four 0px, the last 0px 0px 8px 8px" }
-    business-primary-action: { type: button, bg: "#ff66af", fg: "#ffffff", radius: "40px", padding: "40px 15px", height: "82px", font: "19px / 400 / system stack", shadow: "rgba(255, 5, 88, 0.06) 0px 2px 0px 0px", states: "default captured on two buttons (capture 23 and 40, 344 and 327 wide); the business page has no state frame", use: "Business-page pink action (antd round primary button) at surface-3::[data-omd-capture=\"23\"]; its label is the inner link at \"24\" (#ffffff, 19px / 400, 0px 50px padding); its 1px border computes rgba(0, 0, 0, 0)" }
-    business-overlay-chip: { type: button, bg: "rgba(0, 0, 0, 0.5)", fg: "rgba(255, 255, 255, 0.4)", radius: "24px", padding: "0px 7px", height: "24px", font: "14px / 400 / system stack", shadow: "rgba(255, 5, 88, 0.06) 0px 2px 0px 0px", states: "default captured on fifteen chips (capture 25-39; \"25\" is 26px high); no pointer-state frame", use: "Business-page translucent round chip (restyled antd round primary button) at surface-3::[data-omd-capture=\"26\"]; what the chips switch or label is not in the dump" }
+colors:
+  primary: '#ff66af'
+  canvas: '#ffffff'
+  foreground: '#000000'
+  muted: '#5a5a5a'
+typography:
+  corporate-body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5715
+    use: Observed corporate body text on the supplied public routes.
+  corporate-heading:
+    fontSize: 38px
+    fontWeight: 700
+    lineHeight: 1.5715
+    use: Observed corporate-company h1 scale; its computed family is the system stack, not a Pinkfong font token.
+  brand-display:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1
+    use: One corporate-business h1 uses loaded BabyShark; official release calls the distributed family Pinkfong Baby Shark Font.
+rounded:
+  none: 0px
+  compact: 8px
+  pill: 32px
+  emphasis: 40px
+spacing:
+  xs: 8
+  control: 20
+  action: 32
+components:
+  corporate-primary-action:
+    type: button
+    backgroundColor: '#ff66af'
+    textColor: '#ffffff'
+    rounded: 32px
+    padding: 32px 15px
+    typography: 24px / 400 / system stack
+    states: Default captured; this element has no pointer-state frame.
+    use: corporate-home `home::[data-omd-capture="26"]`; one public corporate CTA, 64px rendered height.
+  family-site-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#8c8c8c'
+    rounded: 32px
+    padding: 4px 20px
+    typography: 14px / 400 / system stack
+    states: Default captured; this element has no pointer-state frame.
+    use: '`home::[data-omd-capture="31"]`, repeated across the three corporate routes; 35px rendered height.'
+  business-outline-action:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#08c7ff'
+    rounded: 32px
+    padding: 30px 15px
+    typography: 18px / 400 / system stack
+    states: 'Default captured. The hover, pressed and focus frames on `surface-2::[data-omd-capture="23"]` move bg #ffffff to #fffffe or #fffffc and fg #08c7ff to #09c7ff, #0bc8ff or #0ec8ff, a transition caught in progress, so no state value is declared; focus is never declared from this collector.'
+    use: corporate-company `surface-2::[data-omd-capture="23"]`; one public company-page action, 60px rendered height.
+  mobile-menu-dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    padding: 30px
+    typography: 14px / 400 / system stack
+    use: '`home::div.DefaultMenu_mobile-menu-modal__SEaJA`; hidden mobile-menu dialog structure captured on all three corporate routes.'
+  header-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(0, 0, 0, 0.88)
+    rounded: 0px
+    padding: 0px 16px
+    height: 64px
+    typography: 14px / 400 / 64px system stack
+    selected: 'fg #ff66af'
+    states: 'rest on every header menu link; the current-page item (li.ant-menu-item-selected) computes #ff66af on the company and business pages; no pointer-state frame'
+    use: 'Header menu link: the anchor at home::[data-omd-capture="5"] inside the antd menu item li at "4"; padding and height belong to that li'
+  header-submenu-trigger:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(0, 0, 0, 0.88)
+    rounded: 8px
+    padding: 0px
+    size: 48px x 64px
+    typography: 14px / 400 / 64px system stack
+    states: default captured on all three pages (capture 14); it declares aria-haspopup, but the collector opened no submenu and recorded no pointer-state frame for it
+    use: Header submenu title (div.ant-menu-submenu-title) at home::[data-omd-capture="14"]
+  locale-toggle:
+    type: button
+    backgroundColor: transparent
+    textColor: '#dddddd'
+    rounded: 0px
+    padding: 0px
+    size: 44px x 15px
+    typography: 13.3333px / 400 / Arial
+    selected: 'fg #2e2e2e'
+    states: inactive and active-locale (class LocaleSelector_active) buttons captured as pairs on all three pages (capture 1/2 and 21/22); no pointer-state frame
+    use: 'Header locale switch at home::[data-omd-capture="2"]; the active locale at "1" computes #2e2e2e. The 13.3333px Arial is the browser default button font as computed, not a brand face'
+  section-more-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#a0a0a0'
+    rounded: 0px
+    padding: 0px
+    size: 121px x 25px
+    typography: 16px / 400 / 25.144px system stack
+    states: 'default captured on three carousel copies (capture 23-25); the hover and pressed frames of "23" record #c08ca5 and its focus frame #be8ba6, a colour caught mid-transition that matches no rest colour, so no hover or pressed value is declared'
+    use: Home business-section more link with a right-arrow icon (a.BusinessSection_more) at home::[data-omd-capture="23"]
+  footer-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#5a5a5a'
+    rounded: 0px
+    padding: 0px
+    height: 17px
+    typography: 14px / 400 / 22.001px system stack
+    states: default captured on five footer links on each of the three pages (home 32-36, company 34-38); no pointer-state frame
+    use: Footer link row at home::[data-omd-capture="32"]
+  history-collapse-header:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(0, 0, 0, 0.88)
+    rounded: 8px 8px 0px 0px
+    padding: 12px 16px
+    height: 55px
+    typography: 14px / 400 / 22px system stack
+    states: default captured on six collapsed headers (capture 24-29); the collector expanded none and recorded no pointer-state frame
+    use: Company-page history accordion header (div.ant-collapse-header, role=button) at surface-2::[data-omd-capture="24"]; the first header rounds 8px 8px 0px 0px, the middle four 0px, the last 0px 0px 8px 8px
+  business-primary-action:
+    type: button
+    backgroundColor: '#ff66af'
+    textColor: '#ffffff'
+    rounded: 40px
+    padding: 40px 15px
+    height: 82px
+    typography: 19px / 400 / system stack
+    shadow: rgba(255, 5, 88, 0.06) 0px 2px 0px 0px
+    states: default captured on two buttons (capture 23 and 40, 344 and 327 wide); the business page has no state frame
+    use: Business-page pink action (antd round primary button) at surface-3::[data-omd-capture="23"]; its label is the inner link at "24" (#ffffff, 19px / 400, 0px 50px padding); its 1px border computes rgba(0, 0, 0, 0)
+  business-overlay-chip:
+    type: button
+    backgroundColor: rgba(0, 0, 0, 0.5)
+    textColor: rgba(255, 255, 255, 0.4)
+    rounded: 24px
+    padding: 0px 7px
+    height: 24px
+    typography: 14px / 400 / system stack
+    shadow: rgba(255, 5, 88, 0.06) 0px 2px 0px 0px
+    states: default captured on fifteen chips (capture 25-39; "25" is 26px high); no pointer-state frame
+    use: Business-page translucent round chip (restyled antd round primary button) at surface-3::[data-omd-capture="26"]; what the chips switch or label is not in the dump
+fonts:
+  roles:
+    corporate-ui: Spoqa Han Sans Neo
+    brand-display: Pinkfong Baby Shark Font
 ---
 
 # Design System Inspiration of The Pinkfong Company
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 The Pinkfong Company is a global family-entertainment company whose official corporate pages describe a portfolio led by Pinkfong, Baby Shark, and Bebefinn. Its public materials pair memorable music, stories, technology, character worlds, and experiences for children and families; the company page explicitly frames the work as content that connects people through joy. The current reference is intentionally narrower than that portfolio: its supplied collector evidence covers only the public corporate home, company, and business pages. Those pages use a mostly white, black, and gray corporate shell with Pinkfong pink (`#ff66af`) for a prominent action, rather than proving a universal consumer-product interface. [Company](https://www.thepinkfongcompany.com/en/company) · [Business](https://www.thepinkfongcompany.com/en/business)
 
@@ -218,13 +173,29 @@ The company’s identity page supplies CI and BI downloads for The Pinkfong Comp
 - Pinkfong Baby Shark Font is an official distributed brand asset and one loaded corporate-business display use; it is not promoted to the corporate UI family.
 - Only corporate-page defaults, two measured selected variants (the current-page header link and the active locale), and their exact selector/surface provenance are documented. The capture holds no settled hover or pressed value. Product flows, consumer-site UI, and generic family-site components are omitted.
 
-## Primary tasks
+### Primary tasks
 
 - Find out what the company makes across music, apps, and events
 - Download the identity assets for the company or a franchise
 - Download the official Baby Shark font for a document
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+The Pinkfong Company describes itself as a global family-entertainment company working across music, stories, technology, video and audio content, live events, mobile apps, partnerships, and merchandise. Its official identity page groups the company CI with Pinkfong, Baby Shark, and Bebefinn BI assets, showing a portfolio structure rather than a single product surface. [Company](https://www.thepinkfongcompany.com/en/company) · [Business](https://www.thepinkfongcompany.com/en/business)
+
+In 2025, the company released Pinkfong Baby Shark Font for Baby Shark’s tenth anniversary. The release describes a 9-language family with 13,200 characters, fin-inspired triangular details, and a rhythmic visual idea based on the song; it offers the font through the identity page for everyday documents, fan art, and card news. That is an official asset and brand-expression evolution, not evidence that every corporate or consumer control uses the font. [Official font release](https://www.thepinkfongcompany.com/news/pr/207)
+
+### Principles
+
+1. **Connect through joyful content.** The official mission explicitly centers joyful content and entertaining experiences. *UI implication:* corporate public copy should state the content or experience clearly before adding promotional flourish.
+2. **Keep portfolio identities distinct.** The company page distributes separate CI/BI assets for the company, Pinkfong, Baby Shark, and Bebefinn. *UI implication:* do not collapse corporate identity assets into a single universal franchise UI palette.
+3. **Treat type as an asset with a boundary.** The official font release gives purpose and permitted creative examples, while the corporate capture separately proves a loaded body family. *UI implication:* use a named font only with the evidence class and load/distribution condition that supports it.
+
+### Personas
+
+Official public materials identify **kids and families worldwide** as the audience for joyful content, and enumerate business contexts including content, partnerships, merchandise, live events, and mobile apps. These are public audience and stakeholder cues, not validated individual personas. No fictional personas are added. [Company](https://www.thepinkfongcompany.com/en/company) · [Business](https://www.thepinkfongcompany.com/en/business)
+
+## Colors
 
 ### Observed corporate surfaces
 
@@ -237,7 +208,7 @@ The company’s identity page supplies CI and BI downloads for The Pinkfong Comp
 
 The capture does not include Pinkfong consumer pages, an authenticated product, or an official color-specification document that maps these values to semantic states. `#08c7ff` occurs only as the selector-backed corporate-company outline-action foreground; it is retained inside that component record, not elevated to a global color token. The identity-page BI downloads establish asset availability, not a UI palette. Other component-level colours stay in their component records the same way: the inactive and active locale buttons (`#dddddd`, `#2e2e2e`) and the section more link (`#a0a0a0`).
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -255,7 +226,30 @@ The capture does not include Pinkfong consumer pages, an authenticated product, 
 | Corporate heading | 38px | 700 | 59.717px | Corporate-company h1; computed system stack, not a brand-font token |
 | Brand display | 48px | 700 | 48px | One corporate-business h1 computes to loaded `BabyShark`; official distribution is Pinkfong Baby Shark Font |
 
-## 4. Component Stylings
+## Layout
+
+The supplied evidence is a single desktop corporate capture. It records spacing clusters at 8px, 20px, and 32px, but does not establish a reusable product grid, consumer-content layout, or mobile breakpoint system. The measured controls above preserve their own padding; no generic card or page-spacing rule is inferred.
+
+### Responsive Behavior
+
+Only a 1440×900 collector viewport was supplied. The artifact includes a hidden mobile-menu dialog structure, but no open-dialog or mobile viewport observation. Breakpoints, touch-target rules, safe-area behavior, and responsive layout changes are intentionally absent.
+
+## Elevation & Depth
+
+Most representative corporate controls and the dialog have `box-shadow: none`. The antd buttons carry small shadows: every captured primary button (the home CTA, the company-page outline action, the business-page actions and the overlay chips) uses `rgba(255, 5, 88, 0.06) 0px 2px 0px 0px`, while the default-style family-site pill uses `rgba(0, 0, 0, 0.02) 0px 2px 0px 0px`. These are component-local observations, not an elevation scale. Corrected 2026-09-29: the July text named only the home CTA and the family-site pill.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+- `shadow.pink-lift`: `rgba(255, 5, 88, 0.06) 0px 2px 0px 0px`
+
+## Motion & Easing
+
+No duration, easing curve, reduced-motion rule, or captured animated state is available in the supplied artifact. Motion tokens are intentionally absent.
+
+## Components
 
 ### Public corporate home
 
@@ -386,15 +380,11 @@ Every component above is specified at rest, and two carry a measured selected va
 
 The prior reference mixed a historical consumer capture into this corporate-only artifact. This update preserves official brand and font context but retains machine tokens and components only where the 2026-07-13 supplied evidence provides a current selector and surface. On 2026-09-29 eight components were added from the same bundle, and three transition-frame state values were removed from the outline action (see `.verification.md`).
 
-## 5. Layout Principles
+### States
 
-The supplied evidence is a single desktop corporate capture. It records spacing clusters at 8px, 20px, and 32px, but does not establish a reusable product grid, consumer-content layout, or mobile breakpoint system. The measured controls above preserve their own padding; no generic card or page-spacing rule is inferred.
+The supplied artifact contains default corporate controls, two measured selected variants (the current-page header menu link in #ff66af and the active locale in #2e2e2e), a hidden mobile-menu dialog structure, and one disabled menu-overflow sample. It also holds twelve hover, pressed and focus frames on four elements; each records colour drift or a colour caught mid-transition, so no hover, pressed or focus value is specified (§4). Corrected 2026-09-29: the July text tied the missing state values to `interactionCount: 0`, which counts only dialog, menu and tab expansions, not pointer frames. It does not provide opened-dialog, empty, loading, error, success, toast, form-validation, or product-state evidence. Those specifications are intentionally absent.
 
-## 6. Depth & Elevation
-
-Most representative corporate controls and the dialog have `box-shadow: none`. The antd buttons carry small shadows: every captured primary button (the home CTA, the company-page outline action, the business-page actions and the overlay chips) uses `rgba(255, 5, 88, 0.06) 0px 2px 0px 0px`, while the default-style family-site pill uses `rgba(0, 0, 0, 0.02) 0px 2px 0px 0px`. These are component-local observations, not an elevation scale. Corrected 2026-09-29: the July text named only the home CTA and the family-site pill.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -412,38 +402,23 @@ Most representative corporate controls and the dialog have `box-shadow: none`. T
 - Do not promote the company’s BI downloads or font release into a public component library.
 - Do not invent mobile, error, success, loading, or responsive variants from this desktop artifact.
 
-## 8. Responsive Behavior
-
-Only a 1440×900 collector viewport was supplied. The artifact includes a hidden mobile-menu dialog structure, but no open-dialog or mobile viewport observation. Breakpoints, touch-target rules, safe-area behavior, and responsive layout changes are intentionally absent.
-
-## 9. Agent Prompt Guide
-
-For a public corporate Pinkfong concept, start from the evidence boundary: white `#ffffff`, black `#000000`, muted `#5a5a5a`, and a selector-backed Pinkfong-pink `#ff66af` action. Use the specific corporate CTA, family-site pill, or business outline action only with its recorded route and default-state limitation. Load Spoqa Han Sans Neo only when the verified source can be loaded; use Pinkfong Baby Shark Font as an official display asset only within its stated distribution boundary. Do not generate a Pinkfong consumer site, child-facing app, purchase flow, status system, or generic character-card library from this reference.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official company description ties vivid characters, memorable music, and easy-to-follow movement to family-entertainment content IP. Its English company page says the mission is to connect people through joyful content and entertaining experiences, while the business page presents content, partnership, merchandise, live events, and mobile apps as separate offerings. This supports an optimistic, clear corporate voice that speaks about family enjoyment and content capability without treating all corporate copy as child-facing UI guidance. [Company](https://www.thepinkfongcompany.com/en/company) · [Business](https://www.thepinkfongcompany.com/en/business)
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-The Pinkfong Company describes itself as a global family-entertainment company working across music, stories, technology, video and audio content, live events, mobile apps, partnerships, and merchandise. Its official identity page groups the company CI with Pinkfong, Baby Shark, and Bebefinn BI assets, showing a portfolio structure rather than a single product surface. [Company](https://www.thepinkfongcompany.com/en/company) · [Business](https://www.thepinkfongcompany.com/en/business)
+For a public corporate Pinkfong concept, start from the evidence boundary: white `#ffffff`, black `#000000`, muted `#5a5a5a`, and a selector-backed Pinkfong-pink `#ff66af` action. Use the specific corporate CTA, family-site pill, or business outline action only with its recorded route and default-state limitation. Load Spoqa Han Sans Neo only when the verified source can be loaded; use Pinkfong Baby Shark Font as an official display asset only within its stated distribution boundary. Do not generate a Pinkfong consumer site, child-facing app, purchase flow, status system, or generic character-card library from this reference.
 
-In 2025, the company released Pinkfong Baby Shark Font for Baby Shark’s tenth anniversary. The release describes a 9-language family with 13,200 characters, fin-inspired triangular details, and a rhythmic visual idea based on the song; it offers the font through the identity page for everyday documents, fan art, and card news. That is an official asset and brand-expression evolution, not evidence that every corporate or consumer control uses the font. [Official font release](https://www.thepinkfongcompany.com/news/pr/207)
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Connect through joyful content.** The official mission explicitly centers joyful content and entertaining experiences. *UI implication:* corporate public copy should state the content or experience clearly before adding promotional flourish.
-2. **Keep portfolio identities distinct.** The company page distributes separate CI/BI assets for the company, Pinkfong, Baby Shark, and Bebefinn. *UI implication:* do not collapse corporate identity assets into a single universal franchise UI palette.
-3. **Treat type as an asset with a boundary.** The official font release gives purpose and permitted creative examples, while the corporate capture separately proves a loaded body family. *UI implication:* use a named font only with the evidence class and load/distribution condition that supports it.
-
-## 13. Personas
-
-Official public materials identify **kids and families worldwide** as the audience for joyful content, and enumerate business contexts including content, partnerships, merchandise, live events, and mobile apps. These are public audience and stakeholder cues, not validated individual personas. No fictional personas are added. [Company](https://www.thepinkfongcompany.com/en/company) · [Business](https://www.thepinkfongcompany.com/en/business)
-
-## 14. States
-
-The supplied artifact contains default corporate controls, two measured selected variants (the current-page header menu link in #ff66af and the active locale in #2e2e2e), a hidden mobile-menu dialog structure, and one disabled menu-overflow sample. It also holds twelve hover, pressed and focus frames on four elements; each records colour drift or a colour caught mid-transition, so no hover, pressed or focus value is specified (§4). Corrected 2026-09-29: the July text tied the missing state values to `interactionCount: 0`, which counts only dialog, menu and tab expansions, not pointer frames. It does not provide opened-dialog, empty, loading, error, success, toast, form-validation, or product-state evidence. Those specifications are intentionally absent.
-
-## 15. Motion & Easing
-
-No duration, easing curve, reduced-motion rule, or captured animated state is available in the supplied artifact. Motion tokens are intentionally absent.
+- **Contrast, `corporate-primary-action`.** Text `#ffffff` on `#ff66af` measures 2.70:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `family-site-pill`.** Text `#8c8c8c` on `#ffffff` measures 3.36:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `business-outline-action`.** Text `#08c7ff` on `#ffffff` measures 1.98:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-nav-link`.** Text `#000000e0` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-submenu-trigger`.** Text `#000000e0` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-link`.** Text `#5a5a5a` on `#00000000` measures 3.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `history-collapse-header`.** Text `#000000e0` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `business-primary-action`.** Text `#ffffff` on `#ff66af` measures 2.70:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

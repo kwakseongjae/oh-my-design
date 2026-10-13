@@ -1,138 +1,87 @@
 ---
-id: wolt
 name: Wolt
-country: FI
-category: consumer-tech
-homepage: "https://wolt.com"
-primary_color: "#66CBF0"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=wolt.com&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-ds:
-  name: "Alchemy"
-  url: "https://wolt.com/de/deu"
-  type: system
-  description: "Wolt's in-house design system, named in its own CSS (`@layer alchemy`). wolt.com serves it as --al-* custom properties (405) from its own theme files, beside an older --cb-* layer (257) with the same base colours and no component tokens. Alchemy names every fill, surface, text and border colour with hovered, pressed, selected and disabled steps, and gives components their own radius tokens. The headline face, DD Scoop, is served from DoorDash's CDN — Wolt's owner since 2022."
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    brand: "#66cbf0"
-    brand-hovered: "#56bee3"
-    brand-pressed: "#4ab1d5"
-    brand-surface: "#dcf7ff"
-    brand-text: "#145367"
-    brand-text-hovered: "#0e4253"
-    brand-deep: "#08303e"
-    focus: "#23748f"
-    fill: "#151727"
-    fill-hovered: "#363b57"
-    foreground: "#272b42"
-    input-text: "#202125"
-    text-hovered: "#5e5b59"
-    canvas: "#ffffff"
-    surface: "#f5f1ed"
-    surface-secondary: "#fbf8f5"
-    surface-hovered: "#eeeae5"
-    border: "#c3beb9"
-    border-subdued: "#ded9d4"
-    border-selected: "#3899bb"
-    inverse: "#21201f"
-    negative: "#c83527"
-    positive: "#77d377"
-    warning: "#ffad52"
-    input-hover: "#009de0"
-    input-focus: "#0f2594"
-  typography:
-    family: { display: "DD Scoop" }
-    body: { size: 16, use: "navigation, buttons and the address field, on the system sans" }
-  rounded: { sm: 8, md: 12, lg: 20, pill: 9999 }
-  components:
-    button-register: { type: "button", bg: "transparent", fg: "#145367", radius: 12, height: "46px", padding: "0 16px", font: "16px / 500", hover: "transparent", focus: "outline 3px solid #23748f", use: "Registrieren in the header, in --al-color-text-brand. Hover changes nothing (confirmed with :hover matched); focus draws a 3px teal outline — --al-color-outline-focused." }
-    link-nav: { type: "button", bg: "transparent", fg: "#272b42", radius: 8, height: "24px", font: "16px / 500", hover: "fg #5e5b59", focus: "outline 3px solid #23748f", use: "Anmelden and Jobs — the ink label warms to --al-color-text-hovered on hover; focus is the same teal outline." }
-    input-address: { type: "input", bg: "#ffffff", fg: "#202125", radius: 100, height: "58px", padding: "16px 52px", font: "16px / 400", hover: "border #009de0", focus: "border #0f2594", use: "Lieferadresse eingeben — the address pill with a transparent 2px border that turns cyan on hover and indigo on focus; no outline on this control." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://wolt.com/de/deu", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://wolt.com/de/deu", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://wolt.com/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: alchemy-theme, kind: product-surface, url: "https://wolt.com/static/themes/al/default.css", captured: "2026-09-26" }
-    - { id: acquisition-release, kind: official-doc, url: "https://press.wolt.com/en-WW/215041-doordash-completes-acquisition-of-wolt/", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.border-selected: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.border-subdued: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-text: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-text-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.fill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.fill-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.focus: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.input-focus: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.input-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.input-text: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.inverse: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.negative: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.positive: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.text-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.warning: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-register.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-register.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-address.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.display: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  brand: '#66cbf0'
+  brand-hovered: '#56bee3'
+  brand-pressed: '#4ab1d5'
+  brand-surface: '#dcf7ff'
+  brand-text: '#145367'
+  brand-text-hovered: '#0e4253'
+  brand-deep: '#08303e'
+  focus: '#23748f'
+  fill: '#151727'
+  fill-hovered: '#363b57'
+  foreground: '#272b42'
+  input-text: '#202125'
+  text-hovered: '#5e5b59'
+  canvas: '#ffffff'
+  surface: '#f5f1ed'
+  surface-secondary: '#fbf8f5'
+  surface-hovered: '#eeeae5'
+  border: '#c3beb9'
+  border-subdued: '#ded9d4'
+  border-selected: '#3899bb'
+  inverse: '#21201f'
+  negative: '#c83527'
+  positive: '#77d377'
+  warning: '#ffad52'
+  input-hover: '#009de0'
+  input-focus: '#0f2594'
+typography:
+  body:
+    fontSize: 16px
+    use: navigation, buttons and the address field, on the system sans
+rounded:
+  sm: 8px
+  md: 12px
+  lg: 20px
+  pill: 9999px
+components:
+  button-register:
+    type: button
+    backgroundColor: transparent
+    textColor: '#145367'
+    rounded: 12px
+    height: 46px
+    padding: 0 16px
+    typography: 16px / 500
+    hover: transparent
+    focus: 'outline 3px solid #23748f'
+    use: Registrieren in the header, in --al-color-text-brand. Hover changes nothing (confirmed with :hover matched); focus draws a 3px teal outline — --al-color-outline-focused.
+  link-nav:
+    type: button
+    backgroundColor: transparent
+    textColor: '#272b42'
+    rounded: 8px
+    height: 24px
+    typography: 16px / 500
+    hover: 'fg #5e5b59'
+    focus: 'outline 3px solid #23748f'
+    use: Anmelden and Jobs — the ink label warms to --al-color-text-hovered on hover; focus is the same teal outline.
+  input-address:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#202125'
+    rounded: 100px
+    height: 58px
+    padding: 16px 52px
+    typography: 16px / 400
+    hover: 'border #009de0'
+    focus: 'border #0f2594'
+    use: Lieferadresse eingeben — the address pill with a transparent 2px border that turns cyan on hover and indigo on focus; no outline on this control.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    display: DD Scoop
 ---
+
 # Design System Inspiration of Wolt
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Wolt is a delivery platform from Helsinki — restaurants, groceries and shops delivered through one
 app. On 31 May 2022 DoorDash
@@ -157,11 +106,28 @@ What makes it worth reading:
   base colours and no component tokens; the page's own layer order is `reset, codeless, cb, alchemy,
   wpt-ui`.
 
-### Primary tasks
+#### Primary tasks
 - Enter a delivery address; browse restaurants and shops.
 - Sign up or log in.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Wolt grew from Helsinki into a multi-country delivery company with a friendly, rounded, light-blue
+identity, and joined DoorDash in 2022 while keeping its own name. The web shows both halves of that
+story: Wolt's own design system, Alchemy, carrying every colour and state, and a headline face
+fetched from DoorDash's servers.
+
+### Principles
+
+- **States are named.** Five steps for every colour.
+- **Round and warm.** Big radii, greige neutrals.
+- **Components decide.** Each component carries its own radius.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `wolt.com/de/deu`: 678 root custom properties — **405 `--al-*`**
 (Alchemy), 257 `--cb-*` (the earlier layer), eight `--global-*` scroll-padding helpers and a few
@@ -198,7 +164,7 @@ steps.
 The address field's hover border **`#009de0`** and focus border **`#0f2594`**, and its text
 **`#202125`**, are written directly on the control.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -216,7 +182,31 @@ Body text, navigation and buttons use the operating system's sans stack (`-apple
 Navigation, buttons and the address field are 16px, at 500 for controls and 400 in the field. The
 `cb` layer carries the type primitives (`font-size-title-xxxlarge`, weights regular to bold).
 
-## 4. Component Stylings
+## Layout
+
+- `--wcom-main-header-height` 70px, `--wcom-side-padding` 32px.
+- Discovery pages use carousels with cloned off-screen cards (an infinite-scroll technique).
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+No shadow on any measured control in any state. `--al-color-shadow` is `rgba(0,0,0,0.07)` and the
+overlay `rgba(0,0,0,0.48)`.
+
+## Motion & Easing
+
+Not measured.
+
+---
+
+**Tier 1 sources:** https://wolt.com/de/deu (live landing page — 678 root custom properties, 405 --al-* Alchemy, read via `getComputedStyle`; three components measured at rest, hover, pressed and focus after dismissing the consent banner; DD Scoop loaded from img.cdn4dd.com, captured 2026-09-26); https://wolt.com/zz-this-does-not-exist (nonsense-path control, captured 2026-09-26); https://wolt.com/static/themes/al/default.css (Alchemy theme file — `@layer alchemy { :root { --al-* } }`; the page declares `@layer reset, codeless, cb, alchemy, wpt-ui`, read 2026-09-26); https://press.wolt.com/en-WW/215041-doordash-completes-acquisition-of-wolt/ (Wolt newsroom — "DoorDash Completes Acquisition of Wolt", read 2026-09-26)
+
+**Regional sources:** https://www.sec.gov/Archives/edgar/data/1792789/000162828022015815/dash-20220531.htm (DoorDash Form 8-K, 2022-05-31 — the completed acquisition of Wolt Enterprises Oy)
+
+## Components
 
 Three components, every state on its own page load after the consent banner was dismissed ("Nur
 erforderliche verwenden"), focus read under a real Tab key.
@@ -238,17 +228,13 @@ Alchemy's component radii: buttons 20px (medium, large) and fully round (small, 
 20px or 16px, search fully round, popovers, toasts and tooltips 20px, checkboxes 4px. Rendered on the
 page: 12px, 8px, and the 100px pill.
 
-## 5. Layout Principles
+### States
 
-- `--wcom-main-header-height` 70px, `--wcom-side-padding` 32px.
-- Discovery pages use carousels with cloned off-screen cards (an infinite-scroll technique).
+Three components. Hover: none on Register, warm grey on navigation links, a cyan border on the address
+field. Focus: a 3px `#23748f` outline on buttons and links, an indigo border on the field. No disabled
+state was observed.
 
-## 6. Depth & Elevation
-
-No shadow on any measured control in any state. `--al-color-shadow` is `rgba(0,0,0,0.07)` and the
-overlay `rgba(0,0,0,0.48)`.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#66cbf0` for brand fills and `#145367` for brand text and links.
@@ -261,11 +247,11 @@ overlay `rgba(0,0,0,0.48)`.
 - Don't use DD Scoop for body text; it is a headline face.
 - Don't drop the 3px `#23748f` focus outline.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#66cbf0` brand blue · `#145367` brand text · `#23748f` focus · `#272b42` ink · `#151727` dark fill ·
@@ -277,39 +263,9 @@ overlay `rgba(0,0,0,0.48)`.
 - "A 58px address pill: white, 100px radius, transparent 2px border that turns `#009de0` on hover and
   `#0f2594` on focus."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Wolt grew from Helsinki into a multi-country delivery company with a friendly, rounded, light-blue
-identity, and joined DoorDash in 2022 while keeping its own name. The web shows both halves of that
-story: Wolt's own design system, Alchemy, carrying every colour and state, and a headline face
-fetched from DoorDash's servers.
-
-## 12. Principles
-
-- **States are named.** Five steps for every colour.
-- **Round and warm.** Big radii, greige neutrals.
-- **Components decide.** Each component carries its own radius.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Three components. Hover: none on Register, warm grey on navigation links, a cyan border on the address
-field. Focus: a 3px `#23748f` outline on buttons and links, an indigo border on the field. No disabled
-state was observed.
-
-## 15. Motion & Easing
-
-Not measured.
-
----
-
-**Tier 1 sources:** https://wolt.com/de/deu (live landing page — 678 root custom properties, 405 --al-* Alchemy, read via `getComputedStyle`; three components measured at rest, hover, pressed and focus after dismissing the consent banner; DD Scoop loaded from img.cdn4dd.com, captured 2026-09-26); https://wolt.com/zz-this-does-not-exist (nonsense-path control, captured 2026-09-26); https://wolt.com/static/themes/al/default.css (Alchemy theme file — `@layer alchemy { :root { --al-* } }`; the page declares `@layer reset, codeless, cb, alchemy, wpt-ui`, read 2026-09-26); https://press.wolt.com/en-WW/215041-doordash-completes-acquisition-of-wolt/ (Wolt newsroom — "DoorDash Completes Acquisition of Wolt", read 2026-09-26)
-
-**Regional sources:** https://www.sec.gov/Archives/edgar/data/1792789/000162828022015815/dash-20220531.htm (DoorDash Form 8-K, 2022-05-31 — the completed acquisition of Wolt Enterprises Oy)
+- **Contrast, `button-register`.** Text `#145367` on `#00000000` measures 2.46:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `link-nav`.** Text `#272b42` on `#00000000` measures 1.51:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,224 +1,182 @@
 ---
-id: datarize
 name: Datarize
-display_name_kr: 데이터라이즈
-country: KR
-category: marketing
-homepage: "https://www.datarize.ai"
-primary_color: "#191919"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=datarize.ai&sz=128"
-verified: "2026-07-13"
-added: "2026-06-26"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.datarize.ai/", inspected: "2026-07-13" }
-    - { id: blog, kind: editorial, url: "https://www.datarize.ai/blog/hidden_product", inspected: "2026-07-13" }
-    - { id: pricing, kind: pricing, url: "https://www.datarize.ai/pricing", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.datarize.ai/", captured: "2026-07-13" }
-    - { id: blog-live, kind: product-surface, url: "https://www.datarize.ai/blog/hidden_product", captured: "2026-07-13" }
-    - { id: pricing-live, kind: product-surface, url: "https://www.datarize.ai/pricing", captured: "2026-07-13" }
-    - { id: about, kind: official-doc, url: "https://www.datarize.ai/en/about", captured: "2026-07-13" }
-    - { id: terms, kind: official-doc, url: "https://policy.datarize.ai/en/terms", captured: "2026-07-13" }
-    - { id: product-guide, kind: official-doc, url: "https://datarize.gitbook.io/docs/guide-en", captured: "2026-07-13" }
-    - { id: pretendard-project, kind: official-doc, url: "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md", captured: "2026-07-13" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.action": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.body": &blog { surface_id: blog, source_id: blog-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.hairline": *home
-    "tokens.colors.ink": *home
-    "tokens.colors.link": *home
-    "tokens.colors.surface": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.components.pricing-tab.bg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-tab.fg": *pricing
-    "tokens.components.pricing-tab.font": *pricing
-    "tokens.components.pricing-tab.padding": *pricing
-    "tokens.components.pricing-tab.radius": *pricing
-    "tokens.components.pricing-tab.selected": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-tab.states": *pricing
-    "tokens.components.pricing-tab.type": *pricing
-    "tokens.components.pricing-tab.use": *pricing
-    "tokens.rounded.full": *home
-    "tokens.rounded.md": *home
-    "tokens.rounded.pill": *home
-    "tokens.rounded.sm": *home
-    "tokens.shadow.none": *home
-    "tokens.spacing.lg": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.section": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.xl": *home
-    "tokens.spacing.xs": *home
-    "tokens.spacing.xxl": *home
-    "tokens.spacing.xxxl": *home
-    "tokens.typography.body.lineHeight": *blog
-    "tokens.typography.body.size": *blog
-    "tokens.typography.body.use": *blog
-    "tokens.typography.body.weight": *blog
-    "tokens.typography.cta.size": *home
-    "tokens.typography.cta.use": *home
-    "tokens.typography.cta.weight": *home
-    "tokens.typography.display-hero.lineHeight": *home
-    "tokens.typography.display-hero.size": *home
-    "tokens.typography.display-hero.tracking": *home
-    "tokens.typography.display-hero.use": *home
-    "tokens.typography.display-hero.weight": *home
-    "tokens.typography.family.marketing": *home
-    "tokens.typography.nav.lineHeight": *home
-    "tokens.typography.nav.size": *home
-    "tokens.typography.nav.use": *home
-    "tokens.typography.nav.weight": *home
-    "tokens.typography.section.lineHeight": *home
-    "tokens.typography.section.size": *home
-    "tokens.typography.section.tracking": *home
-    "tokens.typography.section.use": *home
-    "tokens.typography.section.weight": *home
-    "tokens.components.action-ink-pill.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.action-ink-pill.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.shared-ink-pill.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.border": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.locale-control.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.border": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.testimonial-nav-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.type": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.bg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.border": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.radius": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.padding": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.height": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.states": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.pricing-tablist.use": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::div", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.type": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.bg": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.fg": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.radius": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.padding": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.size": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.font": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.states": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-email-input.use": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.type": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.bg": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.fg": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::p", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.radius": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.padding": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.size": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.font": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::p", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.states": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.newsletter-submit-button.use": { surface_id: blog, source_id: blog-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.text-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.preset-text-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "July evidence covers Datarize-owned Korean marketing home, blog, and pricing surfaces at desktop. It does not cover the authenticated console, GitBook documentation chrome, or an official design system."
-  colors:
-    canvas: "#ffffff"
-    ink: "#191919"
-    action: "#111111"
-    body: "#5d6875"
-    link: "#007aff"
-    surface: "#f2f5fa"
-    hairline: "#e5e7eb"
-  typography:
-    family: { marketing: "Pretendard" }
-    display-hero: { size: 64, weight: 700, lineHeight: 83.2, tracking: -3.2, use: "Marketing homepage H1; loaded Pretendard Bold" }
-    section: { size: 44, weight: 600, lineHeight: 57.2, tracking: -0.05, use: "Marketing H2; loaded Pretendard SemiBold" }
-    body: { size: 16, weight: 400, lineHeight: 24, use: "Blog and pricing body copy; loaded Pretendard Regular" }
-    nav: { size: 15, weight: 500, lineHeight: 21, use: "Marketing navigation; loaded Pretendard Medium" }
-    cta: { size: 16, weight: 600, use: "Marketing CTA links; loaded Pretendard Variable" }
-  spacing: { xs: 6, sm: 8, md: 10, lg: 14, xl: 16, xxl: 20, xxxl: 24, section: 32 }
-  rounded: { sm: 8, md: 10, pill: 50, full: 999 }
-  shadow:
-    none: "none"
-  components_harvested: true
-  components:
-    pricing-tab: { type: tab, bg: "transparent", fg: "#191919", radius: "999px", padding: "8px 16px", font: "12px / 400 Pretendard", selected: "bg #ffffff", states: "unselected rest (capture 12, aria-selected=false) and selected (capture 11, aria-selected=true) captured; after the collector clicked capture 12 and 13, each was re-captured with bg #ffffff and aria-selected=true (tab-0-0, tab-1-0); no pointer-state frame", use: "Pricing tab (button role=tab, 34px) at surface-3::[data-omd-capture=\"12\"] inside the pricing tablist. Corrected 2026-09-29: the July token held the selected tab's #ffffff as its rest background" }
-    action-ink-pill: { type: button, bg: "#111111", fg: "#ffffff", radius: "50px", padding: "14px 24px", height: "47px", font: "16px / 600 / Pretendard Variable", states: "default captured; the bundle holds no pointer-state frame on any of its three surfaces", use: "Home CTA link at home::[data-omd-capture=\"11\"]" }
-    shared-ink-pill: { type: button, bg: "#191919", fg: "#ffffff", radius: "50px", padding: "14px 24px", height: "46px", font: "15px / 600 / Pretendard Variable", states: "default captured on home, blog and pricing (capture 10 on each, identical values); no pointer-state frame", use: "Header CTA link at home::[data-omd-capture=\"10\"]; the pricing body repeats the fill at 16px / 47px (surface-3 capture 18)" }
-    outline-pill: { type: button, bg: "transparent", fg: "#111111", border: "1px #111111", radius: "100px", padding: "14px 24px", height: "49px", font: "16px / 600 / Pretendard Variable", states: "default captured; no pointer-state frame", use: "Home outline CTA link at home::[data-omd-capture=\"12\"]; the pricing copy (surface-3 capture 16) uses #191919 for its text and border" }
-    locale-control: { type: button, bg: "transparent", fg: "#191919", radius: "8px", padding: "10px 12px", height: "40px", font: "15px / 500 / Pretendard Variable", states: "default captured on all three surfaces (capture 8); no pointer-state frame", use: "Header button at home::[data-omd-capture=\"8\"]; its 1px border computes rgba(0, 0, 0, 0), so no visible frame is claimed" }
-    testimonial-nav-button: { type: button, bg: "transparent", border: "1px #e5e7eb", radius: "8px", padding: "1px 6px", size: "48px x 48px", states: "default captured on both buttons (capture 18 and 19, identical values); no pointer-state frame", use: "Home testimonial carousel button at home::[data-omd-capture=\"18\"]; it has no text node, so no label colour is claimed" }
-    pricing-tablist: { type: card, bg: "#f2f5fa", border: "1px rgba(25, 25, 25, 0.1)", radius: "999px", padding: "5px", height: "46px", states: "default captured; container of the pricing tabs", use: "Pricing tablist (div role=tablist, 275 x 46) at surface-3::div; it holds the 34px pricing tabs" }
-    newsletter-email-input: { type: input, bg: "transparent", fg: "#000000", radius: "0px", padding: "0px", size: "295px x 20px", font: "15px / 400 / 18px Pretendard Regular", states: "default captured; the form-error interaction re-captured the same input (form-error-0-0) with identical computed values, so no error style is declared; no pointer-state or focus frame", use: "Blog newsletter email field at surface-2::[data-omd-capture=\"15\"]; the input has a 0px border, so no field frame is claimed" }
-    newsletter-submit-button: { type: button, bg: "#191919", fg: "#ffffff", radius: "10px", padding: "0px", size: "141px x 44px", font: "15px / 600 / 18px Pretendard SemiBold", states: "default captured; no pointer-state frame", use: "Blog newsletter submit button at surface-2::[data-omd-capture=\"16\"]; the button itself computes #000000, so the label colour and font come from its child p at top 6170px (#ffffff)" }
-    text-link: { type: tab, bg: "transparent", fg: "#007aff", radius: "0px", padding: "0px", height: "24px", font: "15px / 400 / 24px Pretendard", states: "default captured on six home links (capture 14-17, 21, 22); no pointer-state frame", use: "Home text link at home::[data-omd-capture=\"14\"]" }
-    preset-text-link: { type: tab, bg: "transparent", fg: "#00a3eb", radius: "0px", padding: "0px", height: "19px", font: "16px / 400 / 24px Pretendard Regular", states: "default captured on five links across home, blog and pricing; no pointer-state frame", use: "Framer text-preset link (framer-styles-preset-1pfuu6) at home::[data-omd-capture=\"23\"]; the blog copy (surface-2 capture 11) computes Inter at 16px / 28.8px" }
-    footer-social-button: { type: button, bg: "rgba(255, 255, 255, 0.1)", radius: "1000px", padding: "6px", size: "36px x 36px", states: "default captured, four per surface on all three surfaces; no pointer-state frame", use: "Footer social icon link at home::[data-omd-capture=\"53\"]; icon only, so no label colour is claimed" }
+colors:
+  canvas: '#ffffff'
+  ink: '#191919'
+  action: '#111111'
+  body: '#5d6875'
+  link: '#007aff'
+  surface: '#f2f5fa'
+  hairline: '#e5e7eb'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 700
+    lineHeight: 83.2
+    letterSpacing: '-3.2px'
+    use: Marketing homepage H1; loaded Pretendard Bold
+  section:
+    fontSize: 44px
+    fontWeight: 600
+    lineHeight: 57.2
+    letterSpacing: '-0.05px'
+    use: Marketing H2; loaded Pretendard SemiBold
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 24
+    use: Blog and pricing body copy; loaded Pretendard Regular
+  nav:
+    fontSize: 15px
+    fontWeight: 500
+    lineHeight: 21
+    use: Marketing navigation; loaded Pretendard Medium
+  cta:
+    fontSize: 16px
+    fontWeight: 600
+    use: Marketing CTA links; loaded Pretendard Variable
+rounded:
+  sm: 8px
+  md: 10px
+  pill: 50px
+  full: 999px
+spacing:
+  xs: 6
+  sm: 8
+  md: 10
+  lg: 14
+  xl: 16
+  xxl: 20
+  xxxl: 24
+  section: 32
+components:
+  pricing-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#191919'
+    rounded: 999px
+    padding: 8px 16px
+    typography: 12px / 400 Pretendard
+    selected: 'bg #ffffff'
+    states: 'unselected rest (capture 12, aria-selected=false) and selected (capture 11, aria-selected=true) captured; after the collector clicked capture 12 and 13, each was re-captured with bg #ffffff and aria-selected=true (tab-0-0, tab-1-0); no pointer-state frame'
+    use: 'Pricing tab (button role=tab, 34px) at surface-3::[data-omd-capture="12"] inside the pricing tablist. Corrected 2026-09-29: the July token held the selected tab''s #ffffff as its rest background'
+  action-ink-pill:
+    type: button
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    rounded: 50px
+    padding: 14px 24px
+    height: 47px
+    typography: 16px / 600 / Pretendard Variable
+    states: default captured; the bundle holds no pointer-state frame on any of its three surfaces
+    use: Home CTA link at home::[data-omd-capture="11"]
+  shared-ink-pill:
+    type: button
+    backgroundColor: '#191919'
+    textColor: '#ffffff'
+    rounded: 50px
+    padding: 14px 24px
+    height: 46px
+    typography: 15px / 600 / Pretendard Variable
+    states: default captured on home, blog and pricing (capture 10 on each, identical values); no pointer-state frame
+    use: Header CTA link at home::[data-omd-capture="10"]; the pricing body repeats the fill at 16px / 47px (surface-3 capture 18)
+  outline-pill:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    border: '1px #111111'
+    rounded: 100px
+    padding: 14px 24px
+    height: 49px
+    typography: 16px / 600 / Pretendard Variable
+    states: default captured; no pointer-state frame
+    use: 'Home outline CTA link at home::[data-omd-capture="12"]; the pricing copy (surface-3 capture 16) uses #191919 for its text and border'
+  locale-control:
+    type: button
+    backgroundColor: transparent
+    textColor: '#191919'
+    rounded: 8px
+    padding: 10px 12px
+    height: 40px
+    typography: 15px / 500 / Pretendard Variable
+    states: default captured on all three surfaces (capture 8); no pointer-state frame
+    use: Header button at home::[data-omd-capture="8"]; its 1px border computes rgba(0, 0, 0, 0), so no visible frame is claimed
+  testimonial-nav-button:
+    type: button
+    backgroundColor: transparent
+    border: '1px #e5e7eb'
+    rounded: 8px
+    padding: 1px 6px
+    size: 48px x 48px
+    states: default captured on both buttons (capture 18 and 19, identical values); no pointer-state frame
+    use: Home testimonial carousel button at home::[data-omd-capture="18"]; it has no text node, so no label colour is claimed
+  pricing-tablist:
+    type: card
+    backgroundColor: '#f2f5fa'
+    border: 1px rgba(25, 25, 25, 0.1)
+    rounded: 999px
+    padding: 5px
+    height: 46px
+    states: default captured; container of the pricing tabs
+    use: Pricing tablist (div role=tablist, 275 x 46) at surface-3::div; it holds the 34px pricing tabs
+  newsletter-email-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 0px
+    size: 295px x 20px
+    typography: 15px / 400 / 18px Pretendard Regular
+    states: default captured; the form-error interaction re-captured the same input (form-error-0-0) with identical computed values, so no error style is declared; no pointer-state or focus frame
+    use: Blog newsletter email field at surface-2::[data-omd-capture="15"]; the input has a 0px border, so no field frame is claimed
+  newsletter-submit-button:
+    type: button
+    backgroundColor: '#191919'
+    textColor: '#ffffff'
+    rounded: 10px
+    padding: 0px
+    size: 141px x 44px
+    typography: 15px / 600 / 18px Pretendard SemiBold
+    states: default captured; no pointer-state frame
+    use: 'Blog newsletter submit button at surface-2::[data-omd-capture="16"]; the button itself computes #000000, so the label colour and font come from its child p at top 6170px (#ffffff)'
+  text-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#007aff'
+    rounded: 0px
+    padding: 0px
+    height: 24px
+    typography: 15px / 400 / 24px Pretendard
+    states: default captured on six home links (capture 14-17, 21, 22); no pointer-state frame
+    use: Home text link at home::[data-omd-capture="14"]
+  preset-text-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#00a3eb'
+    rounded: 0px
+    padding: 0px
+    height: 19px
+    typography: 16px / 400 / 24px Pretendard Regular
+    states: default captured on five links across home, blog and pricing; no pointer-state frame
+    use: Framer text-preset link (framer-styles-preset-1pfuu6) at home::[data-omd-capture="23"]; the blog copy (surface-2 capture 11) computes Inter at 16px / 28.8px
+  footer-social-button:
+    type: button
+    backgroundColor: rgba(255, 255, 255, 0.1)
+    rounded: 1000px
+    padding: 6px
+    size: 36px x 36px
+    states: default captured, four per surface on all three surfaces; no pointer-state frame
+    use: Footer social icon link at home::[data-omd-capture="53"]; icon only, so no label colour is claimed
+fonts:
+  roles:
+    marketing: Pretendard
 ---
 
 # Design System Inspiration of Datarize
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Datarize is an e-commerce growth and CRM platform: its official site presents AI that turns customer behavior into analysis, campaign action, and revenue growth. The current public story is broader than a single campaign tool—Audience, on-site banners, email, analytics, and metrics sit in its product navigation—while its guide describes the operational sequence from store data collection to campaign execution. The company frames that as “Autonomous Marketing Intelligence,” a current international-facing expression alongside its Korean marketing surfaces.
 
@@ -235,7 +193,7 @@ The recognizable typography is a Korean marketing stack built from loaded Preten
 - 8px / 10px small corners and 50px / 100px / 999px pill geometry
 - Flat observed controls (`box-shadow: none`); no general elevation scale is claimed
 
-## Primary tasks
+### Primary tasks
 
 - Register a store and complete installation to start collecting data.
 - Create audiences from customer behavior data.
@@ -243,7 +201,27 @@ The recognizable typography is a Korean marketing stack built from loaded Preten
 - Monitor analytics and metrics after campaigns run.
 - Compare pricing by switching between the pricing tabs.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Datarize describes itself as an e-commerce growth platform built around behavior data. Its About page says the company began from the question of how many e-commerce brands make full use of their data, and explains its approach as following signals such as clicks, scrolls, and pauses across a customer journey. The official guide grounds that story operationally: stores collect data, profile behavior, run on-site or message campaigns, and monitor analytics.
+
+The current public evolution is visible in Datarize’s English-facing language, “Autonomous Marketing Intelligence,” and in its product navigation for Audience, on-site banners, emails, metrics, and analytics. This reference records the Korean public marketing styling separately from that narrative and does not infer the styling of the authenticated console from either the English marketing pages or the GitBook guide.
+
+### Principles
+
+1. **Turn behavior into action.** The official home and guide connect customer signals to campaigns and analytics. *UI implication:* make the transition from an observed signal to the next action legible.
+2. **Keep the growth loop operational.** Audience, on-site campaign, message campaign, and analytics are explicitly documented product areas. *UI implication:* distinguish these jobs rather than collapsing them into a generic “AI dashboard.”
+3. **Make the marketing surface decisive.** Captured marketing CTAs use a small set of dark-pill and outline treatments. *UI implication:* avoid competing action colors on a page modeled from this evidence.
+
+### Personas
+
+The official sources identify stakeholder groups but do not publish named user personas. The following non-fictional roles are scope labels, not invented people or research findings:
+
+- **E-commerce store operator:** registers a store, completes installation, and receives data/campaign capabilities through Datarize’s documented onboarding.
+- **CRM or growth marketer:** creates audiences and operates on-site or message campaigns using customer-behavior data.
+- **Platform administrator:** manages store, user, payment, and integration settings documented in the guide.
+
+## Colors
 
 ### Observed Marketing Colors
 
@@ -261,7 +239,7 @@ The recognizable typography is a Korean marketing stack built from loaded Preten
 
 Two link colours stay at component level. `#00a3eb` is a Framer text-preset link colour captured on all three surfaces (five links, §4); it is not promoted to a palette role. `#0000ee`, the second most frequent text colour in the census (103 occurrences), is the browser's default link colour computed on Framer wrapper anchors whose visible text sits in child elements with their own colours; it is not a Datarize colour.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -282,7 +260,29 @@ Two link colours stay at component level. `#00a3eb` is a Framer text-preset link
 | Navigation | Pretendard Medium, loaded | 15px | 500 | 21px | normal | Shared marketing navigation |
 | CTA | Pretendard Variable, loaded | 16px | 600 | normal | normal | Home/pricing CTA links |
 
-## 4. Component Stylings
+## Layout
+
+The current evidence is desktop-only (1440×900) and does not justify a responsive grid specification. The repeatable layout signals are a shared 40px header control, 50px/100px CTA pills, and a compact pricing tablist (46px outer height, 5px padding) that houses 34px tabs. The extracted spacing clusters include 6, 8, 10, 14, 16, 20, 24, and 32px; they are recorded as observed values, not a published spacing scale.
+
+### Responsive Behavior
+
+No responsive behavior is specified from this evidence. The capture viewport is 1440×900 only; mobile breakpoints, stacking rules, and touch-target adaptations require a separate observed source.
+
+## Elevation & Depth
+
+Captured component styles use `box-shadow: none`. Controls separate through ink/white contrast, an outline border, or a pale tablist surface. The bundle does not establish a site-wide card or elevation system.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+No motion durations, easing curves, or reduced-motion behavior were measured in the supplied evidence or found in an official public design-system source. Motion is intentionally unspecified.
+
+## Components
 
 ### Marketing CTA links
 
@@ -417,15 +417,11 @@ All components here are specified at rest; the pricing tab adds its measured sel
 **Tier 2 sources:** https://getdesign.md/datarize (attempted; no accessible entry evidence), https://styles.refero.design/?q=datarize (attempted; no accessible result evidence)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-The current evidence is desktop-only (1440×900) and does not justify a responsive grid specification. The repeatable layout signals are a shared 40px header control, 50px/100px CTA pills, and a compact pricing tablist (46px outer height, 5px padding) that houses 34px tabs. The extracted spacing clusters include 6, 8, 10, 14, 16, 20, 24, and 32px; they are recorded as observed values, not a published spacing scale.
+Only two public interaction facts were captured: the blog route emitted a `form-error` event for its email form (the re-captured input computes the same values as at rest), and pricing tabs expose transparent rest versus `#ffffff` selected states. The bundle holds no hover, pressed or focus frame on any surface. No visible error copy, loading treatment, success confirmation, disabled control, toast, or product-console state was captured. Those unobserved states are intentionally unspecified.
 
-## 6. Depth & Elevation
-
-Captured component styles use `box-shadow: none`. Controls separate through ink/white contrast, an outline border, or a pale tablist surface. The bundle does not establish a site-wide card or elevation system.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -442,15 +438,7 @@ Captured component styles use `box-shadow: none`. Controls separate through ink/
 - Add a pricing tab state beyond the transparent default and white selected state that were observed.
 - Invent an email-error visual treatment from the captured form-error event.
 
-## 8. Responsive Behavior
-
-No responsive behavior is specified from this evidence. The capture viewport is 1440×900 only; mobile breakpoints, stacking rules, and touch-target adaptations require a separate observed source.
-
-## 9. Agent Prompt Guide
-
-For the captured marketing surface, start with a white canvas and `#191919` type. Use loaded Pretendard hierarchy—64px / 700 marketing hero, 44px / 600 section heading, 16px / 400 body—and choose one 50px dark CTA pill or one 100px outline CTA. A pricing selector may use a `#f2f5fa` 999px tablist with a white selected 34px tab. Do not add lime blobs, generic dashboard cards, product-console components, or undocumented interaction states.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official English home leads with “Behavior Captured. Growth Automated.” and describes a flow from data to insight to action. The About page states a mission of empowering e-commerce growth with autonomous marketing intelligence. The resulting public voice is direct, operational, and outcome-oriented: behavior and data are the inputs; campaign action and growth are the intended outcomes.
 
@@ -470,30 +458,15 @@ The official English home leads with “Behavior Captured. Growth Automated.” 
 - Attribute unverified product promises, metrics, or customer stories to Datarize.
 - Treat external marketing copy as console UI microcopy.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Datarize describes itself as an e-commerce growth platform built around behavior data. Its About page says the company began from the question of how many e-commerce brands make full use of their data, and explains its approach as following signals such as clicks, scrolls, and pauses across a customer journey. The official guide grounds that story operationally: stores collect data, profile behavior, run on-site or message campaigns, and monitor analytics.
+For the captured marketing surface, start with a white canvas and `#191919` type. Use loaded Pretendard hierarchy—64px / 700 marketing hero, 44px / 600 section heading, 16px / 400 body—and choose one 50px dark CTA pill or one 100px outline CTA. A pricing selector may use a `#f2f5fa` 999px tablist with a white selected 34px tab. Do not add lime blobs, generic dashboard cards, product-console components, or undocumented interaction states.
 
-The current public evolution is visible in Datarize’s English-facing language, “Autonomous Marketing Intelligence,” and in its product navigation for Audience, on-site banners, emails, metrics, and analytics. This reference records the Korean public marketing styling separately from that narrative and does not infer the styling of the authenticated console from either the English marketing pages or the GitBook guide.
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Turn behavior into action.** The official home and guide connect customer signals to campaigns and analytics. *UI implication:* make the transition from an observed signal to the next action legible.
-2. **Keep the growth loop operational.** Audience, on-site campaign, message campaign, and analytics are explicitly documented product areas. *UI implication:* distinguish these jobs rather than collapsing them into a generic “AI dashboard.”
-3. **Make the marketing surface decisive.** Captured marketing CTAs use a small set of dark-pill and outline treatments. *UI implication:* avoid competing action colors on a page modeled from this evidence.
-
-## 13. Personas
-
-The official sources identify stakeholder groups but do not publish named user personas. The following non-fictional roles are scope labels, not invented people or research findings:
-
-- **E-commerce store operator:** registers a store, completes installation, and receives data/campaign capabilities through Datarize’s documented onboarding.
-- **CRM or growth marketer:** creates audiences and operates on-site or message campaigns using customer-behavior data.
-- **Platform administrator:** manages store, user, payment, and integration settings documented in the guide.
-
-## 14. States
-
-Only two public interaction facts were captured: the blog route emitted a `form-error` event for its email form (the re-captured input computes the same values as at rest), and pricing tabs expose transparent rest versus `#ffffff` selected states. The bundle holds no hover, pressed or focus frame on any surface. No visible error copy, loading treatment, success confirmation, disabled control, toast, or product-console state was captured. Those unobserved states are intentionally unspecified.
-
-## 15. Motion & Easing
-
-No motion durations, easing curves, or reduced-motion behavior were measured in the supplied evidence or found in an official public design-system source. Motion is intentionally unspecified.
+- **Contrast, `pricing-tab`.** Text `#191919` on `#00000000` measures 1.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `outline-pill`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `locale-control`.** Text `#191919` on `#00000000` measures 1.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `newsletter-email-input`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

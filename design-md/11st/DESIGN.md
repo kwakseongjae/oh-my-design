@@ -1,232 +1,211 @@
 ---
-id: 11st
 name: 11st
-country: KR
-category: ecommerce
-homepage: "https://www.11st.co.kr/"
-primary_color: "#ff0038"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=11st.co.kr&sz=128"
-verified: "2026-07-13"
-added: "2026-06-09"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: product-home, url: "https://www.11st.co.kr/", inspected: "2026-07-13" }
-    - { id: main, kind: product-home, url: "https://www.11st.co.kr/main", inspected: "2026-07-13" }
-    - { id: category, kind: product-category, url: "https://www.11st.co.kr/categories/1467565", inspected: "2026-07-13" }
-  sources:
-    - { id: home-capture, kind: product-surface, url: "https://www.11st.co.kr/", captured: "2026-07-13" }
-    - { id: main-capture, kind: product-surface, url: "https://www.11st.co.kr/main", captured: "2026-07-13" }
-    - { id: category-capture, kind: product-surface, url: "https://www.11st.co.kr/categories/1467565", captured: "2026-07-13" }
-    - { id: brand-context, kind: official-doc, url: "https://www.11stcorp.com/brand", captured: "2026-07-13" }
-    - { id: design-system, kind: official-doc, url: "https://design.11stcorp.com/", captured: "2026-07-13" }
-    - { id: company-profile, kind: official-doc, url: "https://www.11stcorp.com/resources/guide/2026_11street_Brochure_Kor.pdf", captured: "2026-07-13" }
-    - { id: advertising-guide, kind: official-doc, url: "https://ads.11st.co.kr/contents/guide/read?bbsNo=617&incHideYN=Y", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.canvas": &product { surface_id: home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.foreground": *product
-    "tokens.colors.body": *product
-    "tokens.colors.brand-red": *product
-    "tokens.colors.muted": *product
-    "tokens.colors.hairline": *product
-    "tokens.colors.on-brand": *product
-    "tokens.typography.family.ui": *product
-    "tokens.typography.family.numerals": *product
-    "tokens.typography.family.brand": *product
-    "tokens.typography.body.size": *product
-    "tokens.typography.body.weight": *product
-    "tokens.typography.body.lineHeight": *product
-    "tokens.typography.body.use": *product
-    "tokens.typography.search.size": *product
-    "tokens.typography.search.weight": *product
-    "tokens.typography.search.lineHeight": *product
-    "tokens.typography.search.use": *product
-    "tokens.typography.price.size": *product
-    "tokens.typography.price.weight": *product
-    "tokens.typography.price.lineHeight": *product
-    "tokens.typography.price.use": *product
-    "tokens.typography.price-struck.size": *product
-    "tokens.typography.price-struck.weight": *product
-    "tokens.typography.price-struck.lineHeight": *product
-    "tokens.typography.price-struck.use": *product
-    "tokens.spacing.xs": *product
-    "tokens.spacing.sm": *product
-    "tokens.spacing.md": *product
-    "tokens.spacing.lg": *product
-    "tokens.rounded.square": *product
-    "tokens.rounded.card": *product
-    "tokens.rounded.billboard-control": *product
-    "tokens.rounded.circular": *product
-    "tokens.components.global-search.pressed": *product
-    "tokens.components.global-search.type": *product
-    "tokens.components.global-search.bg": *product
-    "tokens.components.global-search.fg": *product
-    "tokens.components.global-search.radius": *product
-    "tokens.components.global-search.height": *product
-    "tokens.components.global-search.font": *product
-    "tokens.components.global-search.states": *product
-    "tokens.components.global-search.use": *product
-    "tokens.components.billboard-control.type": *product
-    "tokens.components.billboard-control.bg": *product
-    "tokens.components.billboard-control.fg": *product
-    "tokens.components.billboard-control.border": *product
-    "tokens.components.billboard-control.radius": *product
-    "tokens.components.billboard-control.height": *product
-    "tokens.components.billboard-control.font": *product
-    "tokens.components.billboard-control.states": *product
-    "tokens.components.billboard-control.use": *product
-    "tokens.components.deal-card.type": *product
-    "tokens.components.deal-card.bg": *product
-    "tokens.components.deal-card.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::div", captured: "2026-07-13" }
-    "tokens.components.deal-card.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::div", captured: "2026-07-13" }
-    "tokens.components.deal-card.radius": *product
-    "tokens.components.deal-card.shadow": *product
-    "tokens.components.deal-card.states": *product
-    "tokens.components.deal-card.use": *product
-    "tokens.components.header-inventory-dialog.type": *product
-    "tokens.components.header-inventory-dialog.bg": *product
-    "tokens.components.header-inventory-dialog.fg": *product
-    "tokens.components.header-inventory-dialog.radius": *product
-    "tokens.components.header-inventory-dialog.states": *product
-    "tokens.components.header-inventory-dialog.use": *product
-    "tokens.components.gnb-category-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-category-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-side-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.hover": { surface_id: home, source_id: home-capture, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"3\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.header-list-link.pressed": { surface_id: home, source_id: home-capture, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"3\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.header-list-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.header-list-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.icon-text-tile.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"117\"]", captured: "2026-07-13" }
-    "tokens.components.wing-top-button.type": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"120\"]", captured: "2026-07-13" }
-    "tokens.components.wing-top-button.bg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"120\"]", captured: "2026-07-13" }
-    "tokens.components.wing-top-button.radius": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"120\"]", captured: "2026-07-13" }
-    "tokens.components.wing-top-button.size": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"120\"]", captured: "2026-07-13" }
-    "tokens.components.wing-top-button.states": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"120\"]", captured: "2026-07-13" }
-    "tokens.components.wing-top-button.use": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"120\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.type": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.bg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.fg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.radius": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.padding": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.height": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.font": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.states": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.use": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"121\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.type": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.bg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.fg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.border": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.radius": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.padding": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.height": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.font": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.states": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.use": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"130\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.type": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.bg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.fg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.border": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.radius": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.padding": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.height": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.font": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.states": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.use": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"133\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.type": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.bg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.fg": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.radius": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.padding": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.height": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.font": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.states": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.footer-contact-button.use": { surface_id: main, source_id: main-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Values are selector-backed observations from three public 11st product routes. The corporate brand site, advertising guide, and declared fonts are separate evidence domains."
-  colors:
-    canvas: "#ffffff"
-    foreground: "#111111"
-    body: "#666666"
-    brand-red: "#ff0038"
-    muted: "#a9a9a9"
-    hairline: "#eeeeee"
-    on-brand: "#ffffff"
-  typography:
-    family: { ui: "Noto Sans KR", numerals: "Lato New", brand: "11StreetGothic" }
-    body: { size: 14, weight: 400, lineHeight: 1.50, use: "Repeated public product-home body, list, button, and dialog samples" }
-    search: { size: 18, weight: 400, lineHeight: 2.44, use: "Public product-home global search input" }
-    price: { size: 16, weight: 400, lineHeight: 1.50, use: "Public home deal-card price using Lato New first" }
-    price-struck: { size: 13, weight: 400, lineHeight: 1.85, use: "Public home deal-card struck price using Lato New first" }
-  spacing: { xs: 4, sm: 8, md: 12, lg: 20 }
-  rounded: { square: 0, card: 4, billboard-control: 50, circular: 9999 }
-  components:
-    global-search: { type: input, bg: "transparent", fg: "#666666", radius: "0px", height: "44px", font: "18px / 400 Noto Sans KR", states: "pressed samples on home and /main change foreground to #111111; focus not declared (the bundle records its focus frames after a press, so they are not a focus-visible sample); no flow transition inferred", use: "Product home and /main; selector home::[data-omd-capture=1]" , pressed: "#111111"}
-    billboard-control: { type: button, bg: "#ffffff", fg: "#999999", border: "1px solid #eeeeee", radius: "50px", height: "50px", font: "17px / 400 Noto Sans KR", states: "default only; no interaction transition captured", use: "Product home and /main billboard control; selector home::[data-omd-capture=109]" }
-    deal-card: { type: card, bg: "#ffffff", fg: "#111111", radius: "4px", font: "15px / 400 Noto Sans KR", shadow: "rgba(0,0,0,0.06) 0px 2px 10px -2px, rgba(0,0,0,0.28) 0px 0px 1px", states: "default only; hover not sampled. Text colour and font are the card name line (div.c-card-item__name, line height 22.5px), corrected 2026-09-30", use: "Home deal card; selector home::div.c-card-item.c-card-item--deal.c-card-item--box" }
-    header-inventory-dialog: { type: dialog, bg: "#ffffff", fg: "#666666", radius: "0px", states: "dialog-open observed after the menu trigger on home and /main", use: "Header inventory dialog; selector home::[data-omd-interaction-capture=dialog-0-0]" }
-    gnb-category-link: { type: tab, bg: "transparent", fg: "#111111", radius: "0px", padding: "0px", height: "66px", font: "17px / 700 11StreetGothic", states: "rest captured on home and /main (captures 12-18 on each route); no state frame in the bundle", use: "Header category link set in the brand face, home::[data-omd-capture=\"12\"]; line height 66px, the height of the row" }
-    gnb-side-link: { type: tab, bg: "transparent", fg: "#111111", radius: "0px", padding: "0px", height: "21px", font: "14px / 400 Noto Sans KR", states: "rest captured on home and /main (captures 19 and 20 on each route); no state frame in the bundle", use: "Header link to the right of the category links, home::[data-omd-capture=\"19\"]; line height 21px; its list item (class line) adds 14px left padding" }
-    header-list-link: { type: button, bg: "transparent", fg: "#666666", radius: "0px", padding: "0px", height: "24px", font: "14px / 400 Noto Sans KR", hover: "fg #ff0038", pressed: "fg #ff0038", states: "rest on four links (captures 3 and 4 on home and /main); hover and pressed sampled on three of them (6 frames), each recording colour #666666 to #ff0038 and nothing else; focus not sampled", use: "Header text link, 147 px wide, in the two-row list between the search button (capture 2) and the button with class raking_button (capture 5), home::[data-omd-capture=\"3\"]; line height 21px" }
-    icon-text-tile: { type: card, bg: "#ffffff", radius: "27px", padding: "90px 0px 0px", size: "166px x 103px", states: "six captured at rest on home (captures 117-122); no state frame in the bundle", use: "Home icon-and-text shortcut tile (a.c-icontext), home::[data-omd-capture=\"117\"]. The anchor computes font-size 0px, so its label sits in a child outside the dump and no label style is declared. The more tile (button.c-icontext--more, capture 123) shares the background, radius and padding at 166 x 126" }
-    wing-top-button: { type: button, bg: "#000000", radius: "50%", size: "60px x 60px", states: "one captured at rest on /main; no state frame in the bundle", use: "Circular button with class c_wing_top on /main, surface-2::[data-omd-capture=\"120\"]; its label text is visually hidden (line height 200px), so no label style is declared" }
-    footer-menu-link: { type: button, bg: "transparent", fg: "#333333", radius: "0px", padding: "0px", height: "20px", font: "14px / 400 Noto Sans KR", states: "nine captured at rest on /main (captures 121-129); no state frame in the bundle", use: "Footer menu link (a.lk_f_menu) on /main, surface-2::[data-omd-capture=\"121\"]; line height 21px" }
-    footer-outline-button: { type: button, bg: "transparent", fg: "#111111", border: "1px #cccccc", radius: "0px", padding: "0px 35px 0px 10px", height: "36px", font: "14px / 400 Noto Sans KR", states: "two captured at rest on /main (captures 130 and 131, both 175 px wide); no state frame in the bundle", use: "Footer outlined button on /main, surface-2::[data-omd-capture=\"130\"]; line height 21px" }
-    footer-bordered-link: { type: button, bg: "transparent", fg: "#111111", border: "1px #eeeeee", radius: "0px", padding: "0px 6px", height: "24px", font: "12px / 400 Noto Sans KR", states: "two captured at rest on /main (captures 133 and 134); no state frame in the bundle", use: "Small bordered footer link on /main, surface-2::[data-omd-capture=\"133\"]; line height 22px" }
-    footer-contact-button: { type: button, bg: "transparent", fg: "#111111", radius: "0px", padding: "0px", height: "20px", font: "14px / 700 Noto Sans KR", states: "one captured at rest on /main; no state frame in the bundle", use: "Bold footer text button (button.c-footer-contact__button) on /main, surface-2::[data-omd-capture=\"135\"]; line height 20px" }
-  components_harvested: true
+colors:
+  canvas: '#ffffff'
+  foreground: '#111111'
+  body: '#666666'
+  brand-red: '#ff0038'
+  muted: '#a9a9a9'
+  hairline: '#eeeeee'
+  on-brand: '#ffffff'
+typography:
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Repeated public product-home body, list, button, and dialog samples
+  search:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 2.44
+    use: Public product-home global search input
+  price:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Public home deal-card price using Lato New first
+  price-struck:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.85
+    use: Public home deal-card struck price using Lato New first
+rounded:
+  square: 0px
+  card: 4px
+  billboard-control: 50px
+  circular: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  lg: 20
+components:
+  global-search:
+    type: input
+    backgroundColor: transparent
+    textColor: '#666666'
+    rounded: 0px
+    height: 44px
+    typography: 18px / 400 Noto Sans KR
+    states: 'pressed samples on home and /main change foreground to #111111; focus not declared (the bundle records its focus frames after a press, so they are not a focus-visible sample); no flow transition inferred'
+    use: Product home and /main; selector home::[data-omd-capture=1]
+    pressed: '#111111'
+  billboard-control:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#999999'
+    border: '1px solid #eeeeee'
+    rounded: 50px
+    height: 50px
+    typography: 17px / 400 Noto Sans KR
+    states: default only; no interaction transition captured
+    use: Product home and /main billboard control; selector home::[data-omd-capture=109]
+  deal-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#111111'
+    rounded: 4px
+    typography: 15px / 400 Noto Sans KR
+    shadow: rgba(0,0,0,0.06) 0px 2px 10px -2px, rgba(0,0,0,0.28) 0px 0px 1px
+    states: default only; hover not sampled. Text colour and font are the card name line (div.c-card-item__name, line height 22.5px), corrected 2026-09-30
+    use: Home deal card; selector home::div.c-card-item.c-card-item--deal.c-card-item--box
+  header-inventory-dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#666666'
+    rounded: 0px
+    states: dialog-open observed after the menu trigger on home and /main
+    use: Header inventory dialog; selector home::[data-omd-interaction-capture=dialog-0-0]
+  gnb-category-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#111111'
+    rounded: 0px
+    padding: 0px
+    height: 66px
+    typography: 17px / 700 11StreetGothic
+    states: rest captured on home and /main (captures 12-18 on each route); no state frame in the bundle
+    use: Header category link set in the brand face, home::[data-omd-capture="12"]; line height 66px, the height of the row
+  gnb-side-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#111111'
+    rounded: 0px
+    padding: 0px
+    height: 21px
+    typography: 14px / 400 Noto Sans KR
+    states: rest captured on home and /main (captures 19 and 20 on each route); no state frame in the bundle
+    use: Header link to the right of the category links, home::[data-omd-capture="19"]; line height 21px; its list item (class line) adds 14px left padding
+  header-list-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#666666'
+    rounded: 0px
+    padding: 0px
+    height: 24px
+    typography: 14px / 400 Noto Sans KR
+    hover: 'fg #ff0038'
+    pressed: 'fg #ff0038'
+    states: 'rest on four links (captures 3 and 4 on home and /main); hover and pressed sampled on three of them (6 frames), each recording colour #666666 to #ff0038 and nothing else; focus not sampled'
+    use: Header text link, 147 px wide, in the two-row list between the search button (capture 2) and the button with class raking_button (capture 5), home::[data-omd-capture="3"]; line height 21px
+  icon-text-tile:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 27px
+    padding: 90px 0px 0px
+    size: 166px x 103px
+    states: six captured at rest on home (captures 117-122); no state frame in the bundle
+    use: Home icon-and-text shortcut tile (a.c-icontext), home::[data-omd-capture="117"]. The anchor computes font-size 0px, so its label sits in a child outside the dump and no label style is declared. The more tile (button.c-icontext--more, capture 123) shares the background, radius and padding at 166 x 126
+  wing-top-button:
+    type: button
+    backgroundColor: '#000000'
+    rounded: 50%
+    size: 60px x 60px
+    states: one captured at rest on /main; no state frame in the bundle
+    use: Circular button with class c_wing_top on /main, surface-2::[data-omd-capture="120"]; its label text is visually hidden (line height 200px), so no label style is declared
+  footer-menu-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 14px / 400 Noto Sans KR
+    states: nine captured at rest on /main (captures 121-129); no state frame in the bundle
+    use: Footer menu link (a.lk_f_menu) on /main, surface-2::[data-omd-capture="121"]; line height 21px
+  footer-outline-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    border: '1px #cccccc'
+    rounded: 0px
+    padding: 0px 35px 0px 10px
+    height: 36px
+    typography: 14px / 400 Noto Sans KR
+    states: two captured at rest on /main (captures 130 and 131, both 175 px wide); no state frame in the bundle
+    use: Footer outlined button on /main, surface-2::[data-omd-capture="130"]; line height 21px
+  footer-bordered-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    border: '1px #eeeeee'
+    rounded: 0px
+    padding: 0px 6px
+    height: 24px
+    typography: 12px / 400 Noto Sans KR
+    states: two captured at rest on /main (captures 133 and 134); no state frame in the bundle
+    use: Small bordered footer link on /main, surface-2::[data-omd-capture="133"]; line height 22px
+  footer-contact-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 14px / 700 Noto Sans KR
+    states: one captured at rest on /main; no state frame in the bundle
+    use: Bold footer text button (button.c-footer-contact__button) on /main, surface-2::[data-omd-capture="135"]; line height 20px
+fonts:
+  roles:
+    ui: Noto Sans KR
+    numerals: Lato New
+    brand: 11StreetGothic
 ---
 
 # Design System Inspiration of 11st (11번가)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 11st is a Korean open-market platform that has operated since 2008 and now presents shopping, search, payment, delivery, and seller participation as one commerce ecosystem. Its official company profile frames the service as a guide for a shopper’s product discovery and purchase journey; its brand page turns that metaphor into a minimal street-sign logo. The current public product routes express a much more utilitarian layer of that identity: a mostly white, compact information field where product names, prices, navigation, and search occupy the visual foreground. The saturated `#FF0038` appears in observed product text and border samples, while near-black and gray do the repetitive reading work. This is a reference for the captured public web surfaces, not a claim about a logged-in order flow, seller console, or mobile app.
 
 The official brand presentation is broader than the captured web palette. It describes the logo’s orange-red-pink gradient as an expression of customer, shopping, and experience. That official identity context is valuable, but it does not authorize unobserved gradient, CTA, or product-status tokens on the public storefront.
 
-## Primary tasks
+### Primary tasks
 
 - Search for a product across the marketplace
 - Scan product names and prices down the home page
 - Compare a deal price against its struck-out original
 - Buy a product after discovering it on the storefront
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+11st launched as an open market in February 2008, opened a mobile service in 2010, and renewed its brand identity in 2016, according to its 2026 company profile. The same profile presents an evolving platform that connects customers and sellers across products, services, delivery, payment, and content.
+
+The official brand page describes the logo as a minimal street sign: a visual guide toward diverse goods and differentiated services. Its downloadable 11번가 고딕 family was tested for shopping words, numbers, punctuation, device environments, spacing, and readability, with the sign motif incorporated into its letterforms. Those brand and typeface statements explain the identity; they do not expand the observed public web component contract.
+
+### Principles
+
+1. **Guide the shopping journey.** The company describes a platform spanning search, information, and purchase. *UI implication:* make observed product information easy to scan without inventing a flow.
+2. **Keep identity recognizable across surfaces.** The official logo and typeface both use the street-sign motif. *UI implication:* preserve the documented asset boundary rather than copying unobserved campaign treatments.
+3. **Support both customers and sellers.** The company profile presents both as stakeholders in the marketplace. *UI implication:* do not collapse a seller or advertising surface into a consumer-product component claim.
+
+### Personas
+
+*The reference does not invent named personas. The official company profile identifies customers and sellers as distinct marketplace stakeholders; any product-specific persona work needs task-specific research beyond this public capture.*
+
+## Colors
 
 - **Canvas — `#FFFFFF`:** observed white surface on public product routes and the header-inventory dialog.
 - **Foreground — `#111111`:** repeated dark text and the pressed global-search foreground.
@@ -235,7 +214,7 @@ The official brand presentation is broader than the captured web palette. It des
 - **Muted — `#A9A9A9`:** home deal-card struck-price text sample.
 - **Hairline — `#EEEEEE`:** observed billboard-control border on home and `/main`.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -256,7 +235,23 @@ The official brand presentation is broader than the captured web palette. It des
 
 The official advertising-production guide allows 11Street Gothic-Kor and Noto Sans CJK KR for PC and mobile, with other limited numeric conventions. It is documentation for advertising materials, not a replacement for the product-route computed/font-loading evidence above.
 
-## 4. Component Stylings
+## Layout
+
+The supplied evidence covers two public desktop routes at `1440×900` (a third, the category URL, rendered an error page). It establishes a 44px search input, 50px billboard control, repeated header/list chrome, and the observed deal-card samples above. It does not establish a reusable grid width, breakpoint range, mobile composition, category hierarchy, seller tool, cart, checkout, or account layout; those are deliberately omitted rather than inferred from an open-market category.
+
+### Responsive Behavior
+
+No responsive capture was supplied. The only verified viewport is `1440×900`; no breakpoint, touch-target, mobile navigation, or image-resizing rule is recorded.
+
+## Elevation & Depth
+
+The observed deal-card sample has the specific two-layer shadow recorded in §4. The observed billboard control and header-inventory dialog have `box-shadow: none`. These route-local facts do not form an elevation scale.
+
+## Motion & Easing
+
+No duration, easing curve, or transition property was observed in the supplied evidence. The dialog-open interaction proves that the layer can be expanded on the captured routes, not how it should animate.
+
+## Components
 
 ### Global search
 
@@ -409,15 +404,19 @@ The sections below were added on 2026-09-30 from the same 2026-07-13 bundle (bun
 
 Legacy claims that promoted a `#F43142` discount token, filled primary/ghost CTAs, a 25px search tab, an 8px universal product-card radius, hover elevation, generic mobile breakpoints, checkout/cart states, and motion tokens were removed. The supplied 2026 capture does not substantiate those values or variants.
 
-## 5. Layout Principles
+### States
 
-The supplied evidence covers two public desktop routes at `1440×900` (a third, the category URL, rendered an error page). It establishes a 44px search input, 50px billboard control, repeated header/list chrome, and the observed deal-card samples above. It does not establish a reusable grid width, breakpoint range, mobile composition, category hierarchy, seller tool, cart, checkout, or account layout; those are deliberately omitted rather than inferred from an open-market category.
+| Observed state | Treatment | Evidence boundary |
+|---|---|---|
+| Search default | Transparent field, `#666666` text, 44px height | Public home and `/main` selector-backed sample |
+| Search pressed | `#111111` foreground | Captured pseudo-state only |
+| Header inventory dialog open | White, square, `#666666` text dialog | Two collector interaction expansions on home and `/main` |
+| Header list link hover | `#ff0038` foreground | Hover frames on three header list links, home and `/main` (added 2026-09-30) |
+| Header list link pressed | `#ff0038` foreground | Pressed frames on the same three links (added 2026-09-30) |
 
-## 6. Depth & Elevation
+No empty, loading, validation, disabled, cart, order, error, toast, or success state was captured, so none is specified.
 
-The observed deal-card sample has the specific two-layer shadow recorded in §4. The observed billboard control and header-inventory dialog have `box-shadow: none`. These route-local facts do not form an elevation scale.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -433,46 +432,24 @@ The observed deal-card sample has the specific two-layer shadow recorded in §4.
 - Invent filled CTA, hover, checkout, or responsive variants absent from the collector evidence.
 - Generalize a card or control from a marketing, documentation, or unobserved authenticated surface.
 
-## 8. Responsive Behavior
-
-No responsive capture was supplied. The only verified viewport is `1440×900`; no breakpoint, touch-target, mobile navigation, or image-resizing rule is recorded.
-
-## 9. Agent Prompt Guide
-
-Use only selector-backed public-web facts: a transparent 44px search field with `#666666` default text that becomes `#111111` in captured pressed samples; a white 50px billboard control with `#999999` text, `#EEEEEE` border, and 50px radius; or the specifically observed home deal card. Do not ask an implementation to reproduce an unobserved purchase journey, brand-gradient campaign, or loaded font that the evidence does not support.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official company profile describes 11st as a commerce platform that connects product search, information, purchase, and customer life. Keep public-facing content practical, product-specific, and clear about the next shopping action. This is a content-direction reading of the official profile, not a capture of checkout, service-recovery, or notification copy.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-11st launched as an open market in February 2008, opened a mobile service in 2010, and renewed its brand identity in 2016, according to its 2026 company profile. The same profile presents an evolving platform that connects customers and sellers across products, services, delivery, payment, and content.
+Use only selector-backed public-web facts: a transparent 44px search field with `#666666` default text that becomes `#111111` in captured pressed samples; a white 50px billboard control with `#999999` text, `#EEEEEE` border, and 50px radius; or the specifically observed home deal card. Do not ask an implementation to reproduce an unobserved purchase journey, brand-gradient campaign, or loaded font that the evidence does not support.
 
-The official brand page describes the logo as a minimal street sign: a visual guide toward diverse goods and differentiated services. Its downloadable 11번가 고딕 family was tested for shopping words, numbers, punctuation, device environments, spacing, and readability, with the sign motif incorporated into its letterforms. Those brand and typeface statements explain the identity; they do not expand the observed public web component contract.
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Guide the shopping journey.** The company describes a platform spanning search, information, and purchase. *UI implication:* make observed product information easy to scan without inventing a flow.
-2. **Keep identity recognizable across surfaces.** The official logo and typeface both use the street-sign motif. *UI implication:* preserve the documented asset boundary rather than copying unobserved campaign treatments.
-3. **Support both customers and sellers.** The company profile presents both as stakeholders in the marketplace. *UI implication:* do not collapse a seller or advertising surface into a consumer-product component claim.
-
-## 13. Personas
-
-*The reference does not invent named personas. The official company profile identifies customers and sellers as distinct marketplace stakeholders; any product-specific persona work needs task-specific research beyond this public capture.*
-
-## 14. States
-
-| Observed state | Treatment | Evidence boundary |
-|---|---|---|
-| Search default | Transparent field, `#666666` text, 44px height | Public home and `/main` selector-backed sample |
-| Search pressed | `#111111` foreground | Captured pseudo-state only |
-| Header inventory dialog open | White, square, `#666666` text dialog | Two collector interaction expansions on home and `/main` |
-| Header list link hover | `#ff0038` foreground | Hover frames on three header list links, home and `/main` (added 2026-09-30) |
-| Header list link pressed | `#ff0038` foreground | Pressed frames on the same three links (added 2026-09-30) |
-
-No empty, loading, validation, disabled, cart, order, error, toast, or success state was captured, so none is specified.
-
-## 15. Motion & Easing
-
-No duration, easing curve, or transition property was observed in the supplied evidence. The dialog-open interaction proves that the layer can be expanded on the captured routes, not how it should animate.
+- **Contrast, `global-search`.** Text `#666666` on `#00000000` measures 3.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `billboard-control`.** Text `#999999` on `#ffffff` measures 2.85:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `gnb-category-link`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `gnb-side-link`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-list-link`.** Text `#666666` on `#00000000` measures 3.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-menu-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-outline-button`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-bordered-link`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-contact-button`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

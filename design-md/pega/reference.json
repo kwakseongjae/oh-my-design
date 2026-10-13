@@ -1,0 +1,521 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "pega",
+    "name": "Pega UX Design System",
+    "country": "US",
+    "category": "saas",
+    "homepage": "https://design.pega.com/",
+    "primary_color": "#1a3a5c",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=pega.com&sz=128"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Pega UX Design System",
+      "url": "https://design.pega.com/",
+      "type": "system",
+      "description": "Pega's public, prescribed system for enterprise application workflows."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Only the supplied public Pega UX Design System surfaces are tokenized; corporate and authenticated-product UI are outside this evidence bundle.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-18",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "design-system",
+        "url": "https://design.pega.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "surface-2",
+        "kind": "design-system",
+        "url": "https://design.pega.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "surface-3",
+        "kind": "design-system",
+        "url": "https://design.pega.com/components/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "pega-ui-home",
+        "kind": "product-surface",
+        "url": "https://design.pega.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "pega-components",
+        "kind": "official-doc",
+        "url": "https://design.pega.com/components/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "pega-design-resources",
+        "kind": "brand-asset",
+        "url": "https://design.pega.com/resources/design-resources/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "roboto-flex-license",
+        "kind": "license",
+        "url": "https://github.com/googlefonts/roboto-flex",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "pega-component-index",
+        "kind": "official-doc",
+        "url": "https://design.pega.com/page-sitemap.xml",
+        "captured": "2026-09-18"
+      }
+    ],
+    "claims": {
+      "colors.header": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.action": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.accent": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.accent-weak": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style-and-FontFaceSet",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "pega-components",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "pega-components",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "pega-components",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.version-button-y": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.version-button-x": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.search-input-x": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.dark-action-y": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.dark-action-x": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.version-button": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.dark-action": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.search-input": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.type": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.textColor": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.border": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.rounded": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.height": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.padding": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.typography": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.states": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "supplied-interaction-summary",
+        "captured": "2026-07-13"
+      },
+      "components.dark-link-action.use": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-and-classname",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.type": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.textColor": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.rounded": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.height": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.padding": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.typography": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.states": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "supplied-interaction-summary",
+        "captured": "2026-07-13"
+      },
+      "components.header-search.use": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-and-input-type",
+        "captured": "2026-07-13"
+      },
+      "components.menu-row.type": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.menu-row.textColor": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.menu-row.height": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.menu-row.typography": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.menu-row.use": {
+        "surface_id": "home",
+        "source_id": "pega-ui-home",
+        "method": "selector-and-role",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 17,
+      "infos": 2
+    },
+    "byRule": {
+      "extension-component-property": 9,
+      "missing-primary": 1,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.dark-link-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.dark-link-action.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.dark-link-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.dark-link-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-search.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-search.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-search.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-row.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-row.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.header-search",
+        "message": "textColor (#ffffff) on backgroundColor (#ffffff24) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.header",
+        "message": "'header' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.action",
+        "message": "'action' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent",
+        "message": "'accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent-weak",
+        "message": "'accent-weak' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "2ef4305ff4e4b9cf9e003043995274009c7f0cbf190fcf9f7dd19949930925bd",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.heading.fontSize",
+      "typography.body.fontSize",
+      "rounded.version-button",
+      "rounded.dark-action",
+      "rounded.search-input"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "heading",
+        "body"
+      ]
+    }
+  }
+}

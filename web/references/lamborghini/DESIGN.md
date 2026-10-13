@@ -1,109 +1,76 @@
 ---
-id: lamborghini
 name: Lamborghini
-country: IT
-category: automotive
-homepage: "https://www.lamborghini.com"
-primary_color: "#ffc000"
-logo:
-  type: simpleicons
-  slug: lamborghini
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.lamborghini.com/ko-en", inspected: "2026-07-13" }
-    - { id: global-home, kind: marketing, url: "https://www.lamborghini.com/en-en", inspected: "2026-07-13" }
-    - { id: models, kind: marketing, url: "https://www.lamborghini.com/en-en/models", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.lamborghini.com/ko-en", captured: "2026-07-13" }
-    - { id: global-home-live, kind: product-surface, url: "https://www.lamborghini.com/en-en", captured: "2026-07-13" }
-    - { id: models-live, kind: product-surface, url: "https://www.lamborghini.com/en-en/models", captured: "2026-07-13" }
-    - { id: corporate-look, kind: official-doc, url: "https://www.lamborghini.com/en-en/news/automobili-lamborghini-launches-its-new-corporate-look", captured: "2026-07-13" }
-    - { id: brand-manifesto, kind: official-doc, url: "https://www.lamborghini.com/en-en/beyond/brand-manifesto", captured: "2026-07-13" }
-    - { id: lambotype-design, kind: brand-asset, url: "https://charactertype.com/typefaces/lamborghini/", captured: "2026-07-13" }
-    - { id: website-terms, kind: license, url: "https://www.lamborghini.com/en-en/privacy-legal", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home_live { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.primary-muted": *home_live
-    "tokens.colors.surface-light": *home_live
-    "tokens.colors.foreground": *home_live
-    "tokens.colors.on-primary": *home_live
-    "tokens.colors.inverse": *home_live
-    "tokens.colors.muted": *home_live
-    "tokens.typography.family.ui": *home_live
-    "tokens.spacing.xs": *home_live
-    "tokens.spacing.sm": *home_live
-    "tokens.spacing.md": *home_live
-    "tokens.spacing.lg": *home_live
-    "tokens.spacing.section": *home_live
-    "tokens.rounded.square": *home_live
-    "tokens.components.accent-cta.type": *home_live
-    "tokens.components.accent-cta.bg": *home_live
-    "tokens.components.accent-cta.fg": *home_live
-    "tokens.components.accent-cta.radius": *home_live
-    "tokens.components.accent-cta.padding": *home_live
-    "tokens.components.accent-cta.font": *home_live
-    "tokens.components.accent-cta.states": *home_live
-    "tokens.components.accent-cta.use": *home_live
-    "tokens.components.outline-action.type": *home_live
-    "tokens.components.outline-action.fg": *home_live
-    "tokens.components.outline-action.border": *home_live
-    "tokens.components.outline-action.radius": *home_live
-    "tokens.components.outline-action.padding": *home_live
-    "tokens.components.outline-action.font": *home_live
-    "tokens.components.outline-action.states": *home_live
-    "tokens.components.outline-action.use": *home_live
-    "tokens.components.menu-link.type": *home_live
-    "tokens.components.menu-link.fg": *home_live
-    "tokens.components.menu-link.radius": *home_live
-    "tokens.components.menu-link.padding": *home_live
-    "tokens.components.menu-link.font": *home_live
-    "tokens.components.menu-link.states": *home_live
-    "tokens.components.menu-link.use": *home_live
-    "tokens.components.selected-tab.type": *home_live
-    "tokens.components.selected-tab.fg": *home_live
-    "tokens.components.selected-tab.border": *home_live
-    "tokens.components.selected-tab.radius": *home_live
-    "tokens.components.selected-tab.padding": *home_live
-    "tokens.components.selected-tab.font": *home_live
-    "tokens.components.selected-tab.states": *home_live
-    "tokens.components.selected-tab.use": *home_live
-    "tokens.components.news-card.type": *home_live
-    "tokens.components.news-card.fg": *home_live
-    "tokens.components.news-card.radius": *home_live
-    "tokens.components.news-card.padding": *home_live
-    "tokens.components.news-card.use": *home_live
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  components_harvested: true
-  colors:
-    primary: "#ffc000"
-    primary-muted: "#917300"
-    surface-light: "#ffffff"
-    foreground: "#202020"
-    on-primary: "#000000"
-    inverse: "#ffffff"
-    muted: "#969696"
-  typography:
-    family: { ui: "LamboType" }
-  spacing: { xs: 8, sm: 16, md: 24, lg: 32, section: 48 }
-  rounded: { square: 0 }
-  components:
-    accent-cta: { type: button, bg: "#ffc000", fg: "#000000", radius: "0px", padding: "24px", font: "16px / 400 / LamboType", states: "captured in selected/tab-selected surface context; no activation transition asserted", use: "Marketing accent action at home::[data-omd-capture=\"45\"]" }
-    outline-action: { type: button, fg: "#ffffff", border: "1px solid #ffffff", radius: "0px", padding: "24px", font: "16px / 400 / LamboType", states: "captured in selected/tab-selected surface context; no activation transition asserted", use: "Marketing secondary action at home::[data-omd-capture=\"46\"]" }
-    menu-link: { type: button, fg: "#ffffff", radius: "0px", padding: "16px 0px", font: "18px / 400 / LamboType", states: "default capture; menu open/close transition was not captured", use: "Burger-menu hierarchy link at home::[data-omd-capture=\"4\"]" }
-    selected-tab: { type: tab, fg: "#ffffff", border: "0px 0px 2px #ffc000", radius: "0px", padding: "24px", font: "16px / 400 / LamboType", states: "selected and tab-selected after observed tab interaction", use: "React tab at home::[data-omd-capture=\"41\"]" }
-    news-card: { type: card, fg: "#202020", radius: "0px", padding: "0px", use: "News-card image wrapper at home::div.card-news__image-wrapper" }
+colors:
+  primary: '#ffc000'
+  primary-muted: '#917300'
+  surface-light: '#ffffff'
+  foreground: '#202020'
+  on-primary: '#000000'
+  inverse: '#ffffff'
+  muted: '#969696'
+rounded:
+  square: 0px
+spacing:
+  xs: 8
+  sm: 16
+  md: 24
+  lg: 32
+  section: 48
+components:
+  accent-cta:
+    type: button
+    backgroundColor: '#ffc000'
+    textColor: '#000000'
+    rounded: 0px
+    padding: 24px
+    typography: 16px / 400 / LamboType
+    states: captured in selected/tab-selected surface context; no activation transition asserted
+    use: Marketing accent action at home::[data-omd-capture="45"]
+  outline-action:
+    type: button
+    textColor: '#ffffff'
+    border: '1px solid #ffffff'
+    rounded: 0px
+    padding: 24px
+    typography: 16px / 400 / LamboType
+    states: captured in selected/tab-selected surface context; no activation transition asserted
+    use: Marketing secondary action at home::[data-omd-capture="46"]
+  menu-link:
+    type: button
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 16px 0px
+    typography: 18px / 400 / LamboType
+    states: default capture; menu open/close transition was not captured
+    use: Burger-menu hierarchy link at home::[data-omd-capture="4"]
+  selected-tab:
+    type: tab
+    textColor: '#ffffff'
+    border: '0px 0px 2px #ffc000'
+    rounded: 0px
+    padding: 24px
+    typography: 16px / 400 / LamboType
+    states: selected and tab-selected after observed tab interaction
+    use: React tab at home::[data-omd-capture="41"]
+  news-card:
+    type: card
+    textColor: '#202020'
+    rounded: 0px
+    padding: 0px
+    use: News-card image wrapper at home::div.card-news__image-wrapper
+omitted:
+  - section: typography
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    ui: LamboType
 ---
 
 # Lamborghini — Design Reference
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Automobili Lamborghini is an Italian super sports car maker founded in 1963, whose current public positioning pairs technological performance with audacious design and its “Driving Humans Beyond” mission. The captured public web surfaces express that identity as editorial automotive marketing: large LamboType headlines, full-bleed product imagery, hard-edged controls, and a tightly observed palette of yellow, black, white, and neutral gray. This is not a reference for an authenticated vehicle, owner, dealer, checkout, or documentation product: the supplied evidence covers only three public marketing routes. Lamborghini’s 2024 corporate refresh explicitly reconnects black and white with yellow and gold accents, an official typeface, and a new icon set; the live capture corroborates LamboType in visible public UI rather than treating the older site snapshot as a universal product system.
 
@@ -111,13 +78,27 @@ Automobili Lamborghini is an Italian super sports car maker founded in 1963, who
 - **Measured character:** 0px controls and panels recur throughout the capture; yellow is observed on accent actions rather than elevated to a general semantic palette.
 - **Current context:** the official 2024 identity update links the visual direction to the company’s brave, unexpected, and authentic values.
 
-## Primary tasks
+### Primary tasks
 
 - Open Models, Ownership, or News from the site navigation
 - Browse the model lineup on the public models page
 - Read the brand manifesto to see what the company stands for
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Lamborghini’s official company material dates the founding to 1963 in Sant’Agata Bolognese and describes more than sixty years of super sports car design and performance. Its current company framing adds sustainability, well-being, and inclusion to the “Driving Humans Beyond” mission. The 2024 corporate refresh is the relevant current evolution for this reference: it introduces a broader logo typeface, reconfirms black and white as primary hues with yellow and gold accents, and adds a new official typeface and icon set for company communications.
+
+### Principles
+
+1. **Brave.** The manifesto identifies courage as a brand value. *UI implication:* make emphasis deliberate and sparse rather than accumulating decorative emphasis.
+2. **Unexpected.** The manifesto asks the brand to push boundaries. *UI implication:* use the measured accent action only where a public-marketing action needs visual priority.
+3. **Authentic.** The official identity work ties visual expression to the company’s own design language. *UI implication:* retain 0px control geometry and licensed LamboType only where the cited marketing evidence applies.
+
+### Personas
+
+No first-party persona segmentation or user-research evidence was supplied for this reverify. Research-backed audience needs may be added only when an official or user-provided source is available.
+
+## Colors
 
 The roles below are limited to values that the supplied collector observed in computed styles on the three marketing surfaces.
 
@@ -130,7 +111,7 @@ The roles below are limited to values that the supplied collector observed in co
 
 The bundle also records `#181818`, `#f5f5f5`, `#c4c4c4`, `#494949`, and `#7d7d7d` in local text or border contexts. They are not promoted to semantic, error, success, link, or global-surface tokens because the capture does not establish those roles.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -152,7 +133,29 @@ The bundle also records `#181818`, `#f5f5f5`, `#c4c4c4`, `#494949`, and `#7d7d7d
 | Body / control | 16px / 400 / 24px | recurring captured text/button/card sample |
 | Small label | 10px / 400 / 10px, `0.225px` tracking | `home::[data-omd-capture="51"]` |
 
-## 4. Components
+## Layout
+
+The capture repeatedly measures 8px, 16px, 24px, 32px, and 48px in local padding, margin, and gap values. The strongest observed local pattern is 24px: it occurs in action padding, tab padding, and layout gaps. A carousel shell is observed with `80px 0px` padding and an editorial-content card with `40px` padding, but neither value is promoted into the compact token scale because their roles are isolated. No grid, breakpoint, or max-width is claimed without an explicit measurement.
+
+### Responsive Behavior
+
+The supplied evidence does not provide a viewport matrix or mobile/desktop comparison. Responsive breakpoints, navigation collapse behavior, touch-target policy, and image-art-direction rules remain unresolved rather than inferred from the marketing layout.
+
+## Elevation & Depth
+
+The captured component samples report `box-shadow: none`. Transparent wrappers and photography carry much of the page’s visual weight; this evidence does not establish a global black-canvas policy, overlay scale, modal treatment, or image gradient system. Treat depth beyond the observed no-shadow samples as unresolved.
+
+## Motion & Easing
+
+No duration, easing, transition, or reduced-motion value was measured in the supplied evidence. Do not derive a motion scale from cinematic imagery or the corporate narrative.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.lamborghini.com/ko-en · https://www.lamborghini.com/en-en · https://www.lamborghini.com/en-en/models
+**Tier 2 sources:** https://getdesign.md/lamborghini · https://styles.refero.design/style/c9c5be5a-aaa1-4338-9681-8378d2e24fbd
+**Conflicts unresolved:** none
+
+## Components
 
 All values below are selector-level observations from the supplied public marketing capture. It reports seven successful tab interactions. The collector’s `selected` / `tab-selected` component labels are retained as provenance; they do not establish a general button-hover, menu, dialog, or form-state specification.
 
@@ -203,15 +206,11 @@ All values below are selector-level observations from the supplied public market
 - Padding: `0px`
 - Use: `home::div.card-news__image-wrapper`; no card fill, border, shadow, or state is claimed from this transparent wrapper
 
-## 5. Layout Principles
+### States
 
-The capture repeatedly measures 8px, 16px, 24px, 32px, and 48px in local padding, margin, and gap values. The strongest observed local pattern is 24px: it occurs in action padding, tab padding, and layout gaps. A carousel shell is observed with `80px 0px` padding and an editorial-content card with `40px` padding, but neither value is promoted into the compact token scale because their roles are isolated. No grid, breakpoint, or max-width is claimed without an explicit measurement.
+The only observed interaction class is tabs: seven captured interactions produced `selected` / `tab-selected` provenance. Disabled carousel-control styling appears in component samples, but no disabled behavior was exercised. Empty, loading, error, success, skeleton, menu, dialog, form-validation, and toast states were not captured and are intentionally omitted.
 
-## 6. Depth & Elevation
-
-The captured component samples report `box-shadow: none`. Transparent wrappers and photography carry much of the page’s visual weight; this evidence does not establish a global black-canvas policy, overlay scale, modal treatment, or image gradient system. Treat depth beyond the observed no-shadow samples as unresolved.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -227,15 +226,7 @@ The captured component samples report `box-shadow: none`. Transparent wrappers a
 - Do not promote `Lambo-icons`, Roboto, Helvetica Neue, or Arial to a verified Lamborghini UI family.
 - Do not invent menu, dialog, form-validation, carousel, or motion variants beyond the selected tab interaction that was observed.
 
-## 8. Responsive Behavior
-
-The supplied evidence does not provide a viewport matrix or mobile/desktop comparison. Responsive breakpoints, navigation collapse behavior, touch-target policy, and image-art-direction rules remain unresolved rather than inferred from the marketing layout.
-
-## 9. Agent Prompt Guide
-
-Use this reference as a constrained public-marketing direction, not an implementation kit for a vehicle or ownership product. A safe prompt names the source boundary and the measured inputs: “Create a public automotive editorial action with LamboType only when licensed, `#ffc000` background, `#000000` text, 0px radius, 24px padding, and no unobserved hover behavior.” Do not request a generic Lamborghini configurator, error state, account flow, or modal from this evidence.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official manifesto frames Lamborghini as brave, unexpected, and authentic, with “Driving Humans Beyond” as its mission. The live public navigation and model marketing use concise, uppercase labels; the corporate-look announcement describes the identity change as a clearer expression of those values. This supports a direct, declarative marketing register—not an invented support, legal, or product-error voice.
 
@@ -245,30 +236,6 @@ The official manifesto frames Lamborghini as brave, unexpected, and authentic, w
 | Public marketing navigation | Brief uppercase labels such as “MODELS”, “OWNERSHIP”, and “NEWS” |
 | Product storytelling | Model-focused, editorial presentation on the captured public pages |
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Lamborghini’s official company material dates the founding to 1963 in Sant’Agata Bolognese and describes more than sixty years of super sports car design and performance. Its current company framing adds sustainability, well-being, and inclusion to the “Driving Humans Beyond” mission. The 2024 corporate refresh is the relevant current evolution for this reference: it introduces a broader logo typeface, reconfirms black and white as primary hues with yellow and gold accents, and adds a new official typeface and icon set for company communications.
-
-## 12. Principles
-
-1. **Brave.** The manifesto identifies courage as a brand value. *UI implication:* make emphasis deliberate and sparse rather than accumulating decorative emphasis.
-2. **Unexpected.** The manifesto asks the brand to push boundaries. *UI implication:* use the measured accent action only where a public-marketing action needs visual priority.
-3. **Authentic.** The official identity work ties visual expression to the company’s own design language. *UI implication:* retain 0px control geometry and licensed LamboType only where the cited marketing evidence applies.
-
-## 13. Personas
-
-No first-party persona segmentation or user-research evidence was supplied for this reverify. Research-backed audience needs may be added only when an official or user-provided source is available.
-
-## 14. States
-
-The only observed interaction class is tabs: seven captured interactions produced `selected` / `tab-selected` provenance. Disabled carousel-control styling appears in component samples, but no disabled behavior was exercised. Empty, loading, error, success, skeleton, menu, dialog, form-validation, and toast states were not captured and are intentionally omitted.
-
-## 15. Motion & Easing
-
-No duration, easing, transition, or reduced-motion value was measured in the supplied evidence. Do not derive a motion scale from cinematic imagery or the corporate narrative.
-
----
-**Verified:** 2026-07-13
-**Tier 1 sources:** https://www.lamborghini.com/ko-en · https://www.lamborghini.com/en-en · https://www.lamborghini.com/en-en/models
-**Tier 2 sources:** https://getdesign.md/lamborghini · https://styles.refero.design/style/c9c5be5a-aaa1-4338-9681-8378d2e24fbd
-**Conflicts unresolved:** none
+Use this reference as a constrained public-marketing direction, not an implementation kit for a vehicle or ownership product. A safe prompt names the source boundary and the measured inputs: “Create a public automotive editorial action with LamboType only when licensed, `#ffc000` background, `#000000` text, 0px radius, 24px padding, and no unobserved hover behavior.” Do not request a generic Lamborghini configurator, error state, account flow, or modal from this evidence.

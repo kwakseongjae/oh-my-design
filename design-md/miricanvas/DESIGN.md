@@ -1,237 +1,197 @@
 ---
-id: miricanvas
 name: MiriCanvas
-display_name_kr: 미리캔버스
-country: KR
-category: design-tools
-homepage: "https://www.miricanvas.com"
-primary_color: "#21afbf"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=miricanvas.com&sz=128"
-verified: "2026-07-13"
-added: "2026-06-10"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: public-product, url: "https://www.miricanvas.com/ko", inspected: "2026-07-13" }
-    - { id: templates, kind: public-product, url: "https://www.miricanvas.com/ko/templates", inspected: "2026-07-13" }
-    - { id: pricing, kind: public-product, url: "https://www.miricanvas.com/ko/pricing", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.miricanvas.com/ko", captured: "2026-07-13" }
-    - { id: templates-live, kind: product-surface, url: "https://www.miricanvas.com/ko/templates", captured: "2026-07-13" }
-    - { id: pricing-live, kind: product-surface, url: "https://www.miricanvas.com/ko/pricing", captured: "2026-07-13" }
-    - { id: company-context, kind: official-doc, url: "https://www.miridih.com/ko/home", captured: "2026-07-13" }
-    - { id: editor-doc, kind: official-doc, url: "https://help.miricanvas.com/hc/ko/articles/4413862566937", captured: "2026-07-13" }
-    - { id: license-doc, kind: official-doc, url: "https://help.miricanvas.com/hc/ko/articles/56483608870681", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.primary-deep": *home
-    "tokens.colors.ink": *home
-    "tokens.colors.ink-soft": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.canvas": *home
-    "tokens.colors.on-primary": *home
-    "tokens.typography.family.sans": *home
-    "tokens.typography.display-hero.size": *home
-    "tokens.typography.display-hero.weight": *home
-    "tokens.typography.display-hero.lineHeight": *home
-    "tokens.typography.display-hero.use": *home
-    "tokens.typography.page-title.size": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.typography.page-title.weight": *pricing
-    "tokens.typography.page-title.lineHeight": *pricing
-    "tokens.typography.page-title.use": *pricing
-    "tokens.typography.subsection.size": *home
-    "tokens.typography.subsection.weight": *home
-    "tokens.typography.subsection.lineHeight": *home
-    "tokens.typography.subsection.use": *home
-    "tokens.typography.section.size": *home
-    "tokens.typography.section.weight": *home
-    "tokens.typography.section.lineHeight": *home
-    "tokens.typography.section.use": *home
-    "tokens.typography.ui.size": *home
-    "tokens.typography.ui.weight": *home
-    "tokens.typography.ui.lineHeight": *home
-    "tokens.typography.ui.use": *home
-    "tokens.spacing.xs": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.lg": *home
-    "tokens.spacing.xl": *home
-    "tokens.spacing.xxl": *home
-    "tokens.spacing.hero": *home
-    "tokens.rounded.sm": *home
-    "tokens.rounded.md": *home
-    "tokens.rounded.lg": *home
-    "tokens.rounded.xl": *home
-    "tokens.shadow.menu-open": *home
-    "tokens.components.primary-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.primary-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-item.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-switcher-item.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-trigger.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.shadow": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.menu-panel.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-primary-cta.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.hero-secondary-cta.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.white-large-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"59\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.type": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.bg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.fg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.radius": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.padding": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.size": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.font": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.states": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-plan-text-button.use": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.type": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.bg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.fg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.radius": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.padding": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.height": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.font": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.states": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-billing-toggle.use": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.type": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.bg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.fg": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.radius": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.padding": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.height": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.font": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.states": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.pricing-white-button.use": { surface_id: pricing, source_id: pricing-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.type": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.bg": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.fg": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.size": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.font": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.states": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.template-search-input.use": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"22\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.type": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.bg": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.border": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.radius": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.size": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.shadow": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.states": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.use": { surface_id: templates, source_id: templates-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-    "tokens.components.footer-social-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"61\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Public MiriCanvas surfaces only. Tokens are limited to computed observations corroborated by the supplied FontFaceSet evidence; no authenticated editor or help-center chrome is promoted."
-  colors:
-    primary: "#21afbf"
-    primary-deep: "#1c95a2"
-    ink: "#16181d"
-    ink-soft: "#23242a"
-    muted: "#70798f"
-    canvas: "#ffffff"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Pretendard Variable" }
-    display-hero: { size: 64, weight: 700, lineHeight: 1.50, use: "Public homepage h1" }
-    page-title: { size: 40, weight: 700, lineHeight: 1.20, use: "Public pricing h1" }
-    subsection: { size: 28, weight: 600, lineHeight: 1.29, use: "Public-surface heading" }
-    section: { size: 24, weight: 600, lineHeight: 1.33, use: "Public-surface heading" }
-    ui: { size: 14, weight: 500, lineHeight: 1.43, use: "Observed navigation and standard buttons" }
-  spacing: { xs: 4, sm: 6, md: 8, lg: 12, xl: 16, xxl: 20, hero: 24 }
-  rounded: { sm: 8, md: 10, lg: 12, xl: 16 }
-  shadow:
-    menu-open: "rgba(11, 60, 65, 0.2) 0px 6px 20px 0px"
-  components:
-    primary-button: { type: button, bg: "#21afbf", fg: "#ffffff", radius: "8px", padding: "8px 16px", height: "40px", font: "14px / 500 / 20px Pretendard Variable", states: "default captured on all three routes; the bundle holds no state frame for any element", use: "Header filled action (button.gidKcw) at home::[data-omd-capture=\"21\"], 80 x 40; repeated near the foot of home (capture 58) and as the highlighted pricing-plan button (surface-3::[data-omd-capture=\"25\"], 249 x 40)" }
-    nav-item: { type: button, bg: "transparent", fg: "#23242a", radius: "8px", padding: "8px 16px", height: "40px", font: "14px / 500 / 20px Pretendard Variable", states: "default captured, five per route; no state frame", use: "Global navigation item (button.cuArBU) at home::[data-omd-capture=\"12\"], 68 x 40; the fill computes rgba(35, 36, 42, 0)" }
-    nav-switcher-item: { type: button, bg: "transparent", fg: "#23242a", radius: "8px", padding: "12px", height: "44px", font: "14px / 500 / 20px Pretendard Variable", states: "default captured, four per route; no state frame and no selected attribute", use: "Top service-switcher item (button.cuArBU) at home::[data-omd-capture=\"1\"], 85 x 44; the first switcher link (capture 0) computes a #ffffff fill and the other three are transparent" }
-    menu-trigger: { type: button, bg: "transparent", fg: "#23242a", radius: "8px", padding: "8px 12px 8px 16px", height: "40px", font: "14px / 500 / 20px Pretendard Variable", states: "default captured with aria-haspopup=menu; the open state is the menu-panel component; no pointer-state frame", use: "Global navigation menu trigger at home::[data-omd-capture=\"9\"], 86 x 40 (capture 10 is 102 x 40)" }
-    menu-panel: { type: card, bg: "#ffffff", radius: "16px", padding: "16px", size: "1172px x 321px", shadow: "rgba(11, 60, 65, 0.2) 0px 6px 20px 0px", states: "captured open only: the three interaction records are menu expansions (expanded, menu-open), one per route", use: "Navigation menu panel (div role=menu) at home::[data-omd-interaction-capture=\"menu-0-0\"]; the second home menu and the templates and pricing menus are 696 x 321; its links (156 x 40) and feature tiles (288 x 260) carry their labels in children that were not sampled, so no text colour is declared" }
-    hero-primary-cta: { type: button, bg: "#21afbf", fg: "#ffffff", radius: "12px", padding: "14px 24px", height: "56px", font: "18px / 500 / 26px Pretendard Variable", states: "default captured; no state frame", use: "Home hero filled action (button.hxEAEt) at home::[data-omd-capture=\"22\"], 200 x 56; the same style closes a later home section (capture 49, 197 x 56)" }
-    hero-secondary-cta: { type: button, bg: "#ffffff", fg: "#1c95a2", radius: "12px", padding: "14px 24px", height: "56px", font: "18px / 500 / 26px Pretendard Variable", states: "default captured; no state frame", use: "Home hero white action (a) beside the filled one at home::[data-omd-capture=\"23\"], 200 x 56" }
-    white-large-button: { type: button, bg: "#ffffff", fg: "rgba(0, 0, 0, 0.8)", radius: "12px", padding: "14px 24px", height: "56px", font: "18px / 500 / 26px Pretendard Variable", states: "default captured on four copies; no state frame", use: "Home white large button (button.dFMoUp): labelled 146 x 56 at home::[data-omd-capture=\"59\"]; three icon-only 56 x 56 copies at captures 34 to 36" }
-    pricing-plan-text-button: { type: button, bg: "transparent", fg: "#1c95a2", radius: "8px", padding: "8px 16px", size: "249px x 40px", font: "14px / 500 / 20px Pretendard Variable", states: "default captured on three plan buttons; no state frame", use: "Pricing plan button (button.dnPzbg) at surface-3::[data-omd-capture=\"24\"]; captures 26 and 27 match, beside the filled plan button (capture 25); border width 0px" }
-    pricing-billing-toggle: { type: button, bg: "transparent", fg: "#505462", radius: "0px", padding: "0px 12px", height: "40px", font: "14px / 400 / 19.88px Pretendard Variable", states: "two options at rest: capture 22 computes #505462 and capture 23 #23242a; neither carries an aria state, so no selected value is declared; no state frame", use: "Pricing billing-period toggle option (button.eufCKf) at surface-3::[data-omd-capture=\"22\"], 48 x 40; its partner (capture 23, kiVaiH) has the same geometry" }
-    pricing-white-button: { type: button, bg: "#ffffff", fg: "rgba(0, 0, 0, 0.8)", radius: "10px", padding: "12px 20px", height: "48px", font: "16px / 500 / 24px Pretendard Variable", states: "default captured on two copies; no state frame", use: "Pricing white button (button.cWuGVk) at surface-3::[data-omd-capture=\"29\"], 143 x 48; capture 30 is 113 x 48" }
-    template-search-input: { type: input, bg: "transparent", fg: "#16181d", size: "827px x 46px", font: "16px / 400 / 24.48px Pretendard Variable", states: "default captured; no state frame", use: "Templates search field (input) at surface-2::[data-omd-capture=\"22\"]; the input's own border width is 0px, so any visible frame belongs to a wrapper that was not sampled and no border is declared" }
-    carousel-arrow: { type: button, bg: "#ffffff", border: "1px rgba(88, 98, 118, 0.1)", radius: "50%", size: "40px x 40px", shadow: "rgba(0, 0, 0, 0.1) 0px 2px 8px 0px", states: "default captured on two arrows; no state frame", use: "Templates carousel arrow (button.lkcSVE, icon-only) at surface-2::[data-omd-capture=\"40\"]; capture 61 matches; the glyph colour was not sampled" }
-    footer-social-link: { type: button, bg: "rgba(88, 98, 118, 0.05)", radius: "50%", padding: "8px", size: "40px x 40px", states: "default captured, five per footer; no state frame", use: "Footer social link (a.qpvPW, icon-only) at home::[data-omd-capture=\"61\"]; captures 62 to 65 match, and the pricing footer repeats them (surface-3 captures 32 to 36)" }
-  components_harvested: true
+colors:
+  primary: '#21afbf'
+  primary-deep: '#1c95a2'
+  ink: '#16181d'
+  ink-soft: '#23242a'
+  muted: '#70798f'
+  canvas: '#ffffff'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Public homepage h1
+  page-title:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Public pricing h1
+  subsection:
+    fontSize: 28px
+    fontWeight: 600
+    lineHeight: 1.29
+    use: Public-surface heading
+  section:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.33
+    use: Public-surface heading
+  ui:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.43
+    use: Observed navigation and standard buttons
+rounded:
+  sm: 8px
+  md: 10px
+  lg: 12px
+  xl: 16px
+spacing:
+  xs: 4
+  sm: 6
+  md: 8
+  lg: 12
+  xl: 16
+  xxl: 20
+  hero: 24
+components:
+  primary-button:
+    type: button
+    backgroundColor: '#21afbf'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 8px 16px
+    height: 40px
+    typography: 14px / 500 / 20px Pretendard Variable
+    states: default captured on all three routes; the bundle holds no state frame for any element
+    use: Header filled action (button.gidKcw) at home::[data-omd-capture="21"], 80 x 40; repeated near the foot of home (capture 58) and as the highlighted pricing-plan button (surface-3::[data-omd-capture="25"], 249 x 40)
+  nav-item:
+    type: button
+    backgroundColor: transparent
+    textColor: '#23242a'
+    rounded: 8px
+    padding: 8px 16px
+    height: 40px
+    typography: 14px / 500 / 20px Pretendard Variable
+    states: default captured, five per route; no state frame
+    use: Global navigation item (button.cuArBU) at home::[data-omd-capture="12"], 68 x 40; the fill computes rgba(35, 36, 42, 0)
+  nav-switcher-item:
+    type: button
+    backgroundColor: transparent
+    textColor: '#23242a'
+    rounded: 8px
+    padding: 12px
+    height: 44px
+    typography: 14px / 500 / 20px Pretendard Variable
+    states: default captured, four per route; no state frame and no selected attribute
+    use: 'Top service-switcher item (button.cuArBU) at home::[data-omd-capture="1"], 85 x 44; the first switcher link (capture 0) computes a #ffffff fill and the other three are transparent'
+  menu-trigger:
+    type: button
+    backgroundColor: transparent
+    textColor: '#23242a'
+    rounded: 8px
+    padding: 8px 12px 8px 16px
+    height: 40px
+    typography: 14px / 500 / 20px Pretendard Variable
+    states: default captured with aria-haspopup=menu; the open state is the menu-panel component; no pointer-state frame
+    use: Global navigation menu trigger at home::[data-omd-capture="9"], 86 x 40 (capture 10 is 102 x 40)
+  menu-panel:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    padding: 16px
+    size: 1172px x 321px
+    shadow: rgba(11, 60, 65, 0.2) 0px 6px 20px 0px
+    states: 'captured open only: the three interaction records are menu expansions (expanded, menu-open), one per route'
+    use: Navigation menu panel (div role=menu) at home::[data-omd-interaction-capture="menu-0-0"]; the second home menu and the templates and pricing menus are 696 x 321; its links (156 x 40) and feature tiles (288 x 260) carry their labels in children that were not sampled, so no text colour is declared
+  hero-primary-cta:
+    type: button
+    backgroundColor: '#21afbf'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 14px 24px
+    height: 56px
+    typography: 18px / 500 / 26px Pretendard Variable
+    states: default captured; no state frame
+    use: Home hero filled action (button.hxEAEt) at home::[data-omd-capture="22"], 200 x 56; the same style closes a later home section (capture 49, 197 x 56)
+  hero-secondary-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1c95a2'
+    rounded: 12px
+    padding: 14px 24px
+    height: 56px
+    typography: 18px / 500 / 26px Pretendard Variable
+    states: default captured; no state frame
+    use: Home hero white action (a) beside the filled one at home::[data-omd-capture="23"], 200 x 56
+  white-large-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: rgba(0, 0, 0, 0.8)
+    rounded: 12px
+    padding: 14px 24px
+    height: 56px
+    typography: 18px / 500 / 26px Pretendard Variable
+    states: default captured on four copies; no state frame
+    use: 'Home white large button (button.dFMoUp): labelled 146 x 56 at home::[data-omd-capture="59"]; three icon-only 56 x 56 copies at captures 34 to 36'
+  pricing-plan-text-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#1c95a2'
+    rounded: 8px
+    padding: 8px 16px
+    size: 249px x 40px
+    typography: 14px / 500 / 20px Pretendard Variable
+    states: default captured on three plan buttons; no state frame
+    use: Pricing plan button (button.dnPzbg) at surface-3::[data-omd-capture="24"]; captures 26 and 27 match, beside the filled plan button (capture 25); border width 0px
+  pricing-billing-toggle:
+    type: button
+    backgroundColor: transparent
+    textColor: '#505462'
+    rounded: 0px
+    padding: 0px 12px
+    height: 40px
+    typography: 14px / 400 / 19.88px Pretendard Variable
+    states: 'two options at rest: capture 22 computes #505462 and capture 23 #23242a; neither carries an aria state, so no selected value is declared; no state frame'
+    use: Pricing billing-period toggle option (button.eufCKf) at surface-3::[data-omd-capture="22"], 48 x 40; its partner (capture 23, kiVaiH) has the same geometry
+  pricing-white-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: rgba(0, 0, 0, 0.8)
+    rounded: 10px
+    padding: 12px 20px
+    height: 48px
+    typography: 16px / 500 / 24px Pretendard Variable
+    states: default captured on two copies; no state frame
+    use: Pricing white button (button.cWuGVk) at surface-3::[data-omd-capture="29"], 143 x 48; capture 30 is 113 x 48
+  template-search-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#16181d'
+    size: 827px x 46px
+    typography: 16px / 400 / 24.48px Pretendard Variable
+    states: default captured; no state frame
+    use: Templates search field (input) at surface-2::[data-omd-capture="22"]; the input's own border width is 0px, so any visible frame belongs to a wrapper that was not sampled and no border is declared
+  carousel-arrow:
+    type: button
+    backgroundColor: '#ffffff'
+    border: 1px rgba(88, 98, 118, 0.1)
+    rounded: 50%
+    size: 40px x 40px
+    shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px 0px
+    states: default captured on two arrows; no state frame
+    use: Templates carousel arrow (button.lkcSVE, icon-only) at surface-2::[data-omd-capture="40"]; capture 61 matches; the glyph colour was not sampled
+  footer-social-link:
+    type: button
+    backgroundColor: rgba(88, 98, 118, 0.05)
+    rounded: 50%
+    padding: 8px
+    size: 40px x 40px
+    states: default captured, five per footer; no state frame
+    use: Footer social link (a.qpvPW, icon-only) at home::[data-omd-capture="61"]; captures 62 to 65 match, and the pricing footer repeats them (surface-3 captures 32 to 36)
+fonts:
+  roles:
+    sans: Pretendard Variable
 ---
 
 # Design System Inspiration of MiriCanvas
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 MiriCanvas (미리캔버스) is MIRIDIH's browser-based design service: its public template and pricing surfaces position design creation as something users can begin from ready-made material instead of specialist software. The visible system is deliberately spare: a white canvas (`#ffffff`), dark ink (`#16181d`), and an aqua-teal action color (`#21afbf`) recur across the home, template, and pricing routes. This gives the public experience a clear action hierarchy without turning every surface into brand decoration. MIRIDIH frames its broader purpose as reducing inconvenient moments in design and enabling easier communication through design; its corporate site also describes a move from domestic success toward global markets. Those company statements provide context for the inclusive product positioning, but they are not UI-token evidence.
 
@@ -245,7 +205,7 @@ The collector confirms a loaded, site-hosted `Pretendard Variable` face througho
 - 8px, 10px, 12px, and 16px are observed radii, with 8px the strongest public-button cluster
 - An expanded navigation menu is the only captured interaction state; it is white, 16px-rounded, and softly elevated
 
-## Primary tasks
+### Primary tasks
 
 - Start a design from a ready-made template
 - Compare plans on the pricing page before subscribing
@@ -253,7 +213,32 @@ The collector confirms a loaded, site-hosted `Pretendard Variable` face througho
 - Restrict which colors, fonts, and templates teammates can use
 - Order printed material made from a finished design
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+MiriCanvas is operated by MIRIDIH. The operator's official corporate page says it aims to change inconvenient moments in design and enable people to communicate more easily through design; it lists integrity, customer focus, data-driven work, and high standards as operating values. The same page describes current growth beyond the domestic market, providing a bounded account of the brand's present direction.
+
+The public MiriCanvas ecosystem shows two verified contexts rather than one undifferentiated surface. Template and pricing routes serve public discovery and plan comparison, while the business and Help Center materials describe organization-level governance, approval, and content use. The company’s terms state that rights in service-provided content remain with the original author/content provider or company as applicable and that use follows the license agreement. That is a license boundary, not a claim that every template, font, or customer output has the same rights.
+
+### Principles
+
+1. **Ease communication through design.** MIRIDIH's stated mission supports clear, approachable public entry points. *UI implication:* retain the public routes' plain action hierarchy, without asserting unobserved editor flows.
+2. **Customer focus and high standards.** These are MIRIDIH's stated values. *UI implication:* treat a visual token as canonical only when its source domain and computed evidence agree.
+3. **Governable team creation.** Official help documentation allows owners and managers to constrain colors, fonts, templates, and elements for members. *UI implication:* brand-governance controls are product capabilities, not a license to promote documentation chrome into the public token system.
+4. **Licensed content has boundaries.** The service terms describe content rights and license-based use. *UI implication:* do not characterize templates or font assets as universally “copyright safe” without a specific applicable license.
+
+### Personas
+
+*These are evidence-backed stakeholder groups, not fictional individuals or demographic personas.*
+
+**Workspace owners and managers.** The editor-control documentation identifies these roles as configuring permitted editor functions and brand-managed colors, fonts, templates, and elements.
+
+**Workspace members.** The same documentation identifies members as the people to whom those configured controls apply.
+
+**Review collaborators.** The design-approval guide describes people requesting approval and exchanging feedback in a workspace.
+
+**Organization and franchise operators.** The official business material addresses organizations that need consistent design, production, and distribution across headquarters and locations.
+
+## Colors
 
 ### Action and canvas
 
@@ -269,7 +254,7 @@ The collector confirms a loaded, site-hosted `Pretendard Variable` face througho
 
 No semantic error, success, disabled, hover, focus, or editor color token is asserted from this packet.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -289,7 +274,31 @@ No semantic error, success, disabled, hover, focus, or editor color token is ass
 | Heading | Pretendard Variable | 24px | 600 | 32px | public heading observations |
 | Navigation / standard button | Pretendard Variable | 14px | 500 | 20px | high-confidence button records |
 
-## 4. Component Stylings
+## Layout
+
+The public packet establishes component-level spacing, not a full grid. Observed spacing values are 4px, 6px, 8px, 12px, 14px, 16px, 20px, 24px, and 56px; the strongest component pairs are 8px 16px, 12px, and 14px 24px. The page-level grid, card-rail behavior, and authenticated-editor layout are unresolved.
+
+Observed public geometry is a small radius ladder: 8px is common on navigation and the filled CTA; 10px, 12px, and 16px occur less often. Do not turn the capture frequency into a claim about an exhaustive design scale.
+
+### Responsive Behavior
+
+No viewport comparison or responsive-state capture was supplied. Breakpoints, navigation collapse behavior, touch-target policy, and mobile editor behavior are absent from this reference rather than inferred from desktop public routes.
+
+## Elevation & Depth
+
+The high-confidence filled CTA and navigation records have `box-shadow: none`. One expanded navigation menu state has `rgba(11, 60, 65, 0.2) 0px 6px 20px 0px`. The icon-only templates carousel arrow has `rgba(0, 0, 0, 0.1) 0px 2px 8px 0px` (added 2026-09-29, §4). No card, modal, editor, hover-lift, or general elevation policy is established from the new packet.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.menu-open`: `rgba(11, 60, 65, 0.2) 0px 6px 20px 0px`
+
+## Motion & Easing
+
+No duration, easing curve, transition, or reduced-motion rule was captured in the supplied evidence. No motion token is asserted.
+
+## Components
 
 Only the following public-surface variants have sufficient selector and computed-style provenance. No hover, pressed, focused, disabled, error, dialog, tab, toast, or authenticated-editor variant is inferred: the bundle holds no `::state-*` frame for any element on the three routes, and its only interaction records are the three menu expansions.
 
@@ -435,17 +444,11 @@ Every component in this section is a rest capture. The bundle holds no state fra
 
 Tier 2 token/component data could not be retrieved, so no Tier 2 comparison is asserted.
 
-## 5. Layout Principles
+### States
 
-The public packet establishes component-level spacing, not a full grid. Observed spacing values are 4px, 6px, 8px, 12px, 14px, 16px, 20px, 24px, and 56px; the strongest component pairs are 8px 16px, 12px, and 14px 24px. The page-level grid, card-rail behavior, and authenticated-editor layout are unresolved.
+No public runtime empty, loading, error, success, validation, disabled, skeleton, or reduced-motion state was captured. This reference deliberately does not prescribe them. The bundle also holds no hover, pressed, or focus frame for any element, so no pointer state is declared; the open navigation menu (§4) is the only captured interaction state.
 
-Observed public geometry is a small radius ladder: 8px is common on navigation and the filled CTA; 10px, 12px, and 16px occur less often. Do not turn the capture frequency into a claim about an exhaustive design scale.
-
-## 6. Depth & Elevation
-
-The high-confidence filled CTA and navigation records have `box-shadow: none`. One expanded navigation menu state has `rgba(11, 60, 65, 0.2) 0px 6px 20px 0px`. The icon-only templates carousel arrow has `rgba(0, 0, 0, 0.1) 0px 2px 8px 0px` (added 2026-09-29, §4). No card, modal, editor, hover-lift, or general elevation policy is established from the new packet.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -461,15 +464,7 @@ The high-confidence filled CTA and navigation records have `box-shadow: none`. O
 - Generalize the menu's shadow to all cards or buttons.
 - Treat Help Center styling or a feature/marketing page as evidence for the authenticated product editor.
 
-## 8. Responsive Behavior
-
-No viewport comparison or responsive-state capture was supplied. Breakpoints, navigation collapse behavior, touch-target policy, and mobile editor behavior are absent from this reference rather than inferred from desktop public routes.
-
-## 9. Agent Prompt Guide
-
-For a public MiriCanvas-inspired CTA, use a white canvas, `#21afbf` filled action, `#ffffff` text, 8px radius, 8px 16px padding, 40px height, and `Pretendard Variable` 14px/500. For public navigation, use transparent background, `#23242a` text, 8px radius, and the same 40px / 14px 500 baseline. Use the white 16px-rounded menu with the recorded shadow only after a menu is explicitly expanded.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The public product copy is direct, inclusive, and task-oriented. The template route promises that complex design can be completed with a template in three minutes; the business route frames the service as an all-in-one answer for creation, management, and made-to-order printing. This is source context for voice, not evidence of an editor microcopy system.
 
@@ -482,35 +477,19 @@ The public product copy is direct, inclusive, and task-oriented. The template ro
 
 Avoid inventing editor error messages, onboarding wording, or persona-specific voice rules: these were not available in public evidence.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-MiriCanvas is operated by MIRIDIH. The operator's official corporate page says it aims to change inconvenient moments in design and enable people to communicate more easily through design; it lists integrity, customer focus, data-driven work, and high standards as operating values. The same page describes current growth beyond the domestic market, providing a bounded account of the brand's present direction.
+For a public MiriCanvas-inspired CTA, use a white canvas, `#21afbf` filled action, `#ffffff` text, 8px radius, 8px 16px padding, 40px height, and `Pretendard Variable` 14px/500. For public navigation, use transparent background, `#23242a` text, 8px radius, and the same 40px / 14px 500 baseline. Use the white 16px-rounded menu with the recorded shadow only after a menu is explicitly expanded.
 
-The public MiriCanvas ecosystem shows two verified contexts rather than one undifferentiated surface. Template and pricing routes serve public discovery and plan comparison, while the business and Help Center materials describe organization-level governance, approval, and content use. The company’s terms state that rights in service-provided content remain with the original author/content provider or company as applicable and that use follows the license agreement. That is a license boundary, not a claim that every template, font, or customer output has the same rights.
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Ease communication through design.** MIRIDIH's stated mission supports clear, approachable public entry points. *UI implication:* retain the public routes' plain action hierarchy, without asserting unobserved editor flows.
-2. **Customer focus and high standards.** These are MIRIDIH's stated values. *UI implication:* treat a visual token as canonical only when its source domain and computed evidence agree.
-3. **Governable team creation.** Official help documentation allows owners and managers to constrain colors, fonts, templates, and elements for members. *UI implication:* brand-governance controls are product capabilities, not a license to promote documentation chrome into the public token system.
-4. **Licensed content has boundaries.** The service terms describe content rights and license-based use. *UI implication:* do not characterize templates or font assets as universally “copyright safe” without a specific applicable license.
-
-## 13. Personas
-
-*These are evidence-backed stakeholder groups, not fictional individuals or demographic personas.*
-
-**Workspace owners and managers.** The editor-control documentation identifies these roles as configuring permitted editor functions and brand-managed colors, fonts, templates, and elements.
-
-**Workspace members.** The same documentation identifies members as the people to whom those configured controls apply.
-
-**Review collaborators.** The design-approval guide describes people requesting approval and exchanging feedback in a workspace.
-
-**Organization and franchise operators.** The official business material addresses organizations that need consistent design, production, and distribution across headquarters and locations.
-
-## 14. States
-
-No public runtime empty, loading, error, success, validation, disabled, skeleton, or reduced-motion state was captured. This reference deliberately does not prescribe them. The bundle also holds no hover, pressed, or focus frame for any element, so no pointer state is declared; the open navigation menu (§4) is the only captured interaction state.
-
-## 15. Motion & Easing
-
-No duration, easing curve, transition, or reduced-motion rule was captured in the supplied evidence. No motion token is asserted.
+- **Contrast, `primary-button`.** Text `#ffffff` on `#21afbf` measures 2.64:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-item`.** Text `#23242a` on `#00000000` measures 1.36:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-switcher-item`.** Text `#23242a` on `#00000000` measures 1.36:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `menu-trigger`.** Text `#23242a` on `#00000000` measures 1.36:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `hero-primary-cta`.** Text `#ffffff` on `#21afbf` measures 2.64:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `hero-secondary-cta`.** Text `#1c95a2` on `#ffffff` measures 3.58:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `pricing-billing-toggle`.** Text `#505462` on `#00000000` measures 2.79:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `template-search-input`.** Text `#16181d` on `#00000000` measures 1.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

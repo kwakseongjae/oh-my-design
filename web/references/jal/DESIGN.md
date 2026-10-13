@@ -1,186 +1,127 @@
 ---
-id: jal
 name: JAL
-country: JP
-category: consumer-tech
-homepage: "https://www.jal.co.jp/ja-jp/"
-primary_color: "#CC0000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=jal.co.jp&sz=128"
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "JAL ds-* tokens"
-  url: "https://www.jal.co.jp/ja-jp/"
-  type: system
-  description: "416 of the booking surface's 479 custom properties are JAL's own: a four-part semantic colour system (surfaceColor / textColor / iconColor / strokeColor, each role × state), seven language-specific font families, a semantic and a numeric type scale, and colour tokens for every JMB and JGC membership tier. The set is mid-migration — 87 of its 105 semantic colours are published twice under two naming conventions."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    brand: "#cc0000"
-    brand-pressed: "#a30000"
-    foreground: "#000000"
-    subtle: "#666666"
-    disabled: "#999999"
-    informative: "#2a344b"
-    informative-pressed: "#4c559b"
-    canvas: "#ffffff"
-    border: "#d5d5d5"
-    surface-muted: "#e2e7ed"
-    surface-alert: "#fdf5f5"
-    surface-emphasis: "#e8e8e8"
-    neutral-3: "#f5f6f6"
-    neutral-80: "#333333"
-    icon-white-pressed: "#e1e3e6"
-    accent-steel-blue: "#6a7181"
-    accent-gray-blue: "#b7c1cd"
-    accent-light-cyan: "#f0f7ff"
-    red-10: "#fae5e5"
-    red-20: "#f7d6d6"
-    red-60: "#d63131"
-    red-75: "#b80000"
-    jmb-crystal-red: "#ba1334"
-    jmb-sapphire-blue: "#066fbf"
-    jmb-emblem-gold: "#edc900"
-    jmb-emblem-bronze: "#733b11"
-    jmb-blue: "#0f327b"
-    jmb-green: "#097048"
-    jgc-three-star: "#960a20"
-    jgc-four-star: "#112a6c"
-    jgc-five-star: "#535a60"
-    jmb-elite: "#652d73"
-  typography:
-    family: { sans: "Noto Sans JP", english: "Noto Sans", korean: "Noto Sans KR", thai: "Noto Sans Thai", chinese-simplified: "Noto Sans SC", chinese-traditional: "Noto Sans TC", chinese-hongkong: "Noto Sans HK" }
-    caption: { size: 11, use: "--text-caption-sm and --fontSize-11; the smallest step" }
-    small: { size: 12, use: "--text-body-sm, -caption-md and -label-xs" }
-    body: { size: 14, use: "--text-body-md, -caption-lg and -label-sm; the login button's label" }
-    base: { size: 16, use: "--text-body-lg and -heading-xs; 188 of 232 rendered text elements" }
-    lead: { size: 18, use: "--text-body-xl, -heading-sm and -label-lg" }
-    title: { size: 20, use: "--fontSize-20" }
-    heading: { size: 24, use: "--fontSize-24" }
-    heading-lg: { size: 28, use: "--fontSize-28" }
-    display-sm: { size: 32, use: "--fontSize-32" }
-    display: { size: 36, use: "--fontSize-36" }
-    display-lg: { size: 40, use: "--fontSize-40; the largest published step" }
-  spacing: { s4: 4, s8: 8, s16: 16, s20: 20, s24: 24, s32: 32, s40: 40, s48: 48, s64: 64, s96: 96 }
-  rounded: { xs: 2, sm: 4, md: 8, lg: 16, pill: 9999 }
-  components:
-    button-primary: { type: "button", bg: "#cc0000", fg: "#ffffff", border: "1px solid #cc0000", radius: 9999, height: "34px", font: "14px / 700", hover: "#cc0000", focus: "#cc0000", use: "The sign-in pill in the header, 193×34. Hover changes nothing; focus draws a #cc0000 2px solid ring, which is --strokeColor-focus-primary." }
-    nav-link: { type: "tab", bg: "#ffffff", fg: "#000000", radius: 0, height: "47px", font: "16px / 700", hover: "#cc0000", focus: "#cc0000", use: "Global navigation item, 80×47. Hover turns the label #cc0000 and grows a 3px bottom border in the same red; focus adds a #cc0000 1px solid ring and a 2px radius on top of that." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.jal.co.jp/ja-jp/", inspected: "2026-09-22" }
-    - { id: corporate, kind: product-surface, url: "https://www.jal.com/ja-jp/", inspected: "2026-09-22" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.jal.co.jp/ja-jp/", captured: "2026-09-22" }
-    - { id: corp-live, kind: product-surface, url: "https://www.jal.com/ja-jp/", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.accent-gray-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-light-cyan: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-steel-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.icon-white-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.informative: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.informative-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jgc-five-star: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jgc-four-star: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jgc-three-star: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-crystal-red: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-elite: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-emblem-bronze: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-emblem-gold: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-green: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.jmb-sapphire-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.neutral-3: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.neutral-80: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.red-10: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.red-20: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.red-60: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.red-75: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.subtle: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-alert: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-emphasis: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.nav-link.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s16: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s20: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s24: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s32: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s4: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s40: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s48: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s64: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s8: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.spacing.s96: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display-lg.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display-lg.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display-sm.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display-sm.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.display.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.chinese-hongkong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.chinese-simplified: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.chinese-traditional: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.english: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.korean: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.thai: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.heading-lg.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.heading-lg.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.heading.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.heading.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.title.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.title.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
+colors:
+  brand: '#cc0000'
+  brand-pressed: '#a30000'
+  foreground: '#000000'
+  subtle: '#666666'
+  disabled: '#999999'
+  informative: '#2a344b'
+  informative-pressed: '#4c559b'
+  canvas: '#ffffff'
+  border: '#d5d5d5'
+  surface-muted: '#e2e7ed'
+  surface-alert: '#fdf5f5'
+  surface-emphasis: '#e8e8e8'
+  neutral-3: '#f5f6f6'
+  neutral-80: '#333333'
+  icon-white-pressed: '#e1e3e6'
+  accent-steel-blue: '#6a7181'
+  accent-gray-blue: '#b7c1cd'
+  accent-light-cyan: '#f0f7ff'
+  red-10: '#fae5e5'
+  red-20: '#f7d6d6'
+  red-60: '#d63131'
+  red-75: '#b80000'
+  jmb-crystal-red: '#ba1334'
+  jmb-sapphire-blue: '#066fbf'
+  jmb-emblem-gold: '#edc900'
+  jmb-emblem-bronze: '#733b11'
+  jmb-blue: '#0f327b'
+  jmb-green: '#097048'
+  jgc-three-star: '#960a20'
+  jgc-four-star: '#112a6c'
+  jgc-five-star: '#535a60'
+  jmb-elite: '#652d73'
+typography:
+  caption:
+    fontSize: 11px
+    use: '--text-caption-sm and --fontSize-11; the smallest step'
+  small:
+    fontSize: 12px
+    use: '--text-body-sm, -caption-md and -label-xs'
+  body:
+    fontSize: 14px
+    use: '--text-body-md, -caption-lg and -label-sm; the login button''s label'
+  base:
+    fontSize: 16px
+    use: '--text-body-lg and -heading-xs; 188 of 232 rendered text elements'
+  lead:
+    fontSize: 18px
+    use: '--text-body-xl, -heading-sm and -label-lg'
+  title:
+    fontSize: 20px
+    use: '--fontSize-20'
+  heading:
+    fontSize: 24px
+    use: '--fontSize-24'
+  heading-lg:
+    fontSize: 28px
+    use: '--fontSize-28'
+  display-sm:
+    fontSize: 32px
+    use: '--fontSize-32'
+  display:
+    fontSize: 36px
+    use: '--fontSize-36'
+  display-lg:
+    fontSize: 40px
+    use: '--fontSize-40; the largest published step'
+rounded:
+  xs: 2px
+  sm: 4px
+  md: 8px
+  lg: 16px
+  pill: 9999px
+spacing:
+  s4: 4
+  s8: 8
+  s16: 16
+  s20: 20
+  s24: 24
+  s32: 32
+  s40: 40
+  s48: 48
+  s64: 64
+  s96: 96
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#cc0000'
+    textColor: '#ffffff'
+    border: '1px solid #cc0000'
+    rounded: 9999px
+    height: 34px
+    typography: 14px / 700
+    hover: '#cc0000'
+    focus: '#cc0000'
+    use: 'The sign-in pill in the header, 193×34. Hover changes nothing; focus draws a #cc0000 2px solid ring, which is --strokeColor-focus-primary.'
+  nav-link:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 0px
+    height: 47px
+    typography: 16px / 700
+    hover: '#cc0000'
+    focus: '#cc0000'
+    use: 'Global navigation item, 80×47. Hover turns the label #cc0000 and grows a 3px bottom border in the same red; focus adds a #cc0000 1px solid ring and a 2px radius on top of that.'
+fonts:
+  roles:
+    sans: Noto Sans JP
+    english: Noto Sans
+    korean: Noto Sans KR
+    thai: Noto Sans Thai
+    chinese-simplified: Noto Sans SC
+    chinese-traditional: Noto Sans TC
+    chinese-hongkong: Noto Sans HK
 ---
+
 # Design System Inspiration of JAL (日本航空)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 JAL is Japan's flag carrier, and `jal.co.jp` is a booking surface — white, dense, and set
 almost entirely in **Noto Sans JP at 16px** (188 of 232 text-bearing elements). One red,
@@ -204,11 +145,31 @@ language** — Japanese, English, Korean, Thai and three Chinese variants — an
 And it is **caught mid-migration**: 87 of its 105 semantic colours exist twice, under two
 different naming conventions, with 18 of those pairs written in two different notations.
 
-### Primary tasks
+#### Primary tasks
 - Search and book a flight; sign in to JMB.
 - Reach the fare, status and service pages from a persistent global nav.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+JAL's booking surface reads like infrastructure rather than marketing: one red, one typeface at
+one size, and a token set that spends its detail on the things an airline actually has to get
+right in software — a colour for every membership tier, a font for every market, and a state
+named for every way a control can be.
+
+The migration visible in §14 fits that too. Nobody renames 87 colour tokens for fun; it is what
+a long-lived system looks like partway through being tidied.
+
+### Principles
+
+- **Four families, one per painted thing.** Surface, text, icon, stroke.
+- **A font per language**, not a fallback chain.
+- **The product's own vocabulary becomes tokens.** Tier colours are part of the system.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 with `getComputedStyle` on `jal.co.jp/ja-jp/`.
 
@@ -289,7 +250,7 @@ This matters more than usual, because **the most-rendered text colour on the pag
 the page actually paints. Neither the oklch values nor `rgb(31, 41, 55)` (Tailwind's gray-800,
 4 elements) are recorded here.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family — one per language
 
@@ -325,7 +286,33 @@ The two overlap from 11 to 18 and only the numeric one goes above it. Rendered, 
 almost monotone: **16px on 188 elements**, then 18px on 14 and 14px on 11. Weights are 400 on
 154 and 700 on 78 — two weights, no middle.
 
-## 4. Component Stylings
+## Layout
+
+- **Colour by what is being painted.** Surface, text, icon and stroke are four parallel
+  families, so `--iconColor-subtle-hover` exists separately from `--textColor-subtle`.
+- **States live in the token name**, not in the consumer's code: `default`, `hover`, `pressed`,
+  `disabled`, `selected`, and compound ones like `base-selected-hover` and `base-hover-compact`.
+- **Alpha does the hover work.** `rgba(204,0,0,0.8)` rather than a second red.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1100 only.
+
+## Elevation & Depth
+
+**No shadow was observed** on either declared control, and no shadow token appears among the
+416. Separation is `#d5d5d5` lines and the `#e8e8e8` / `#f5f6f6` surface steps.
+
+## Motion & Easing
+
+**No motion token exists** among the 416, and no transition value was captured on either
+declared control.
+
+---
+
+**Tier 1 sources:** https://www.jal.co.jp/ja-jp/ (live booking surface — 479 custom properties read via `getComputedStyle`, of which 416 are JAL's own and 63 are `--tw-*`; two controls measured at rest, hover and focus, 2026-09-22); https://www.jal.com/ja-jp/ (JAL's corporate surface — a second brand-owned Japanese surface rendering the same `#cc0000` on 13 elements and the same `#2a344b` informative navy, on a separate stylesheet carrying only two custom properties; cited for ownership and for the brand red, not for the token set, 2026-09-22)
+
+## Components
 
 Measured with focus read for every control before the mouse moved at all.
 
@@ -357,77 +344,7 @@ were not measured, so they are not declared.**
 Rendered: **9999px on 17 elements** — the pill is the house shape — then `0px 0px 8px 8px`
 on 6 (dropdown panels), 16px on 4, 8px on 4, 4px on 3 and 50px on 2.
 
-## 5. Layout Principles
-
-- **Colour by what is being painted.** Surface, text, icon and stroke are four parallel
-  families, so `--iconColor-subtle-hover` exists separately from `--textColor-subtle`.
-- **States live in the token name**, not in the consumer's code: `default`, `hover`, `pressed`,
-  `disabled`, `selected`, and compound ones like `base-selected-hover` and `base-hover-compact`.
-- **Alpha does the hover work.** `rgba(204,0,0,0.8)` rather than a second red.
-
-## 6. Depth & Elevation
-
-**No shadow was observed** on either declared control, and no shadow token appears among the
-416. Separation is `#d5d5d5` lines and the `#e8e8e8` / `#f5f6f6` surface steps.
-
-## 7. Do's and Don'ts
-
-### Do
-- Pick the family by what you are colouring — a glyph takes `iconColor`, not `textColor`.
-- Use `#cc0000` at `solid 2px` for focus; it is declared as `--strokeColor-focus-primary` and
-  measured on the rendered pill.
-- Take hover as the base colour at 0.8 or 0.6 alpha, which is what the system does.
-
-### Don't
-- Don't reuse the JMB and JGC tier colours decoratively. `#066fbf` means Sapphire.
-- Don't read `oklch(0.145 0 0)` as JAL's ink even though it paints 150 elements — it is
-  shadcn's default. JAL's heading colour is `#000000`.
-- Don't assume `#a30000` is only the pressed red; it is also danger and form-error.
-
-## 8. Responsive Behavior
-
-**Not measured.** Desktop 1440×1100 only.
-
-## 9. Agent Prompt Guide
-
-### Quick Color Reference
-`#cc0000` brand · `#a30000` pressed and danger · `#000000` heading · `#666666` subtle ·
-`#999999` disabled · `#2a344b` informative · `#4c559b` link · `#d5d5d5` lines ·
-`#e2e7ed` muted surface · `#fdf5f5` alert · `#e8e8e8` emphasis · `#f5f6f6` lightest ·
-`#333333` icon pressed · `#e1e3e6` icon on dark · accents `#6a7181` `#b7c1cd` `#f0f7ff` ·
-reds `#fae5e5` `#f7d6d6` `#d63131` `#b80000`
-
-### Example Component Prompts
-- "A 34px sign-in pill: `#cc0000` fill and border, `#ffffff` 14px/700 label, fully rounded, no
-  hover change, focus `outline: #cc0000 solid 2px`."
-- "A 47px nav item: `#000000` 16px/700 on white; hover turns the label `#cc0000` and adds a 3px
-  `#cc0000` bottom border."
-
-## 10. Voice & Tone
-
-Not assessed as copy. 2,810 characters on the measured surface, most of it fare and route names.
-
-## 11. Brand Narrative
-
-JAL's booking surface reads like infrastructure rather than marketing: one red, one typeface at
-one size, and a token set that spends its detail on the things an airline actually has to get
-right in software — a colour for every membership tier, a font for every market, and a state
-named for every way a control can be.
-
-The migration visible in §14 fits that too. Nobody renames 87 colour tokens for fun; it is what
-a long-lived system looks like partway through being tidied.
-
-## 12. Principles
-
-- **Four families, one per painted thing.** Surface, text, icon, stroke.
-- **A font per language**, not a fallback chain.
-- **The product's own vocabulary becomes tokens.** Tier colours are part of the system.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States, and a system caught mid-rename
+### States, and a system caught mid-rename
 
 Both declared components carry measured hover and focus. The pill does nothing on hover and
 rings on focus; the nav item colours on hover and rings on top of that. Pressed was not
@@ -438,7 +355,7 @@ The state *vocabulary* is much larger than what was observed: `default`, `hover`
 `base-dark-emphasis`, `base-light-emphasis`, `disabled-light` and `disabled-dark`. Recorded
 here in prose; only the two observed states reached the component block.
 
-### 87 colours published twice
+#### 87 colours published twice
 
 The 105 `--surfaceColor / textColor / iconColor / strokeColor` tokens are **also** published
 under a second convention, `--color-<kebab-case>`:
@@ -464,11 +381,35 @@ under a second convention, `--color-<kebab-case>`:
 system written down twice, and a consumer should take the camelCase names, which are the
 complete set.
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-**No motion token exists** among the 416, and no transition value was captured on either
-declared control.
+### Do
+- Pick the family by what you are colouring — a glyph takes `iconColor`, not `textColor`.
+- Use `#cc0000` at `solid 2px` for focus; it is declared as `--strokeColor-focus-primary` and
+  measured on the rendered pill.
+- Take hover as the base colour at 0.8 or 0.6 alpha, which is what the system does.
 
----
+### Don't
+- Don't reuse the JMB and JGC tier colours decoratively. `#066fbf` means Sapphire.
+- Don't read `oklch(0.145 0 0)` as JAL's ink even though it paints 150 elements — it is
+  shadcn's default. JAL's heading colour is `#000000`.
+- Don't assume `#a30000` is only the pressed red; it is also danger and form-error.
 
-**Tier 1 sources:** https://www.jal.co.jp/ja-jp/ (live booking surface — 479 custom properties read via `getComputedStyle`, of which 416 are JAL's own and 63 are `--tw-*`; two controls measured at rest, hover and focus, 2026-09-22); https://www.jal.com/ja-jp/ (JAL's corporate surface — a second brand-owned Japanese surface rendering the same `#cc0000` on 13 elements and the same `#2a344b` informative navy, on a separate stylesheet carrying only two custom properties; cited for ownership and for the brand red, not for the token set, 2026-09-22)
+## Voice & Tone
+
+Not assessed as copy. 2,810 characters on the measured surface, most of it fare and route names.
+
+## Agent Prompt Guide
+
+### Quick Color Reference
+`#cc0000` brand · `#a30000` pressed and danger · `#000000` heading · `#666666` subtle ·
+`#999999` disabled · `#2a344b` informative · `#4c559b` link · `#d5d5d5` lines ·
+`#e2e7ed` muted surface · `#fdf5f5` alert · `#e8e8e8` emphasis · `#f5f6f6` lightest ·
+`#333333` icon pressed · `#e1e3e6` icon on dark · accents `#6a7181` `#b7c1cd` `#f0f7ff` ·
+reds `#fae5e5` `#f7d6d6` `#d63131` `#b80000`
+
+### Example Component Prompts
+- "A 34px sign-in pill: `#cc0000` fill and border, `#ffffff` 14px/700 label, fully rounded, no
+  hover change, focus `outline: #cc0000 solid 2px`."
+- "A 47px nav item: `#000000` 16px/700 on white; hover turns the label `#cc0000` and adds a 3px
+  `#cc0000` bottom border."

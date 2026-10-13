@@ -1,240 +1,203 @@
 ---
-id: "lotteon"
-name: "롯데ON"
-country: KR
-category: ecommerce
-homepage: "https://www.lotteon.com/"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=lotteon.com&sz=128"
-verified: "2026-07-14"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-14"
-  surfaces:
-    - { id: home, kind: storefront, url: "https://www.lotteon.com/p/display/main/lotteon", inspected: "2026-07-13" }
-    - { id: recent-products, kind: account-history, url: "https://www.lotteon.com/p/mylotte/recent/product", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.lotteon.com/p/display/main/lotteon", captured: "2026-07-13" }
-    - { id: recent-products-live, kind: product-surface, url: "https://www.lotteon.com/p/mylotte/recent/product", captured: "2026-07-13" }
-    - { id: corporate-profile, kind: official-doc, url: "https://www.lotte.co.kr/business/compDetail.do?compCd=L207", captured: "2026-07-14" }
-    - { id: lotteon-story, kind: official-doc, url: "https://story.lotteon.com/", captured: "2026-07-14" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-14" }
-  claims:
-    "tokens.colors.canvas": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.field-border": *home_evidence
-    "tokens.colors.foreground": *home_evidence
-    "tokens.colors.hairline": *home_evidence
-    "tokens.colors.muted": *home_evidence
-    "tokens.colors.primary": *home_evidence
-    "tokens.colors.secondary": *home_evidence
-    "tokens.colors.tab-border": *home_evidence
-    "tokens.components.home-image-tab.bg": *home_evidence
-    "tokens.components.home-image-tab.border": *home_evidence
-    "tokens.components.home-image-tab.fg": *home_evidence
-    "tokens.components.home-image-tab.font": *home_evidence
-    "tokens.components.home-image-tab.height": *home_evidence
-    "tokens.components.home-image-tab.padding": *home_evidence
-    "tokens.components.home-image-tab.radius": *home_evidence
-    "tokens.components.home-image-tab.selected": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.home-image-tab.states": *home_evidence
-    "tokens.components.home-image-tab.type": *home_evidence
-    "tokens.components.home-image-tab.use": *home_evidence
-    "tokens.components.product-card.bg": *home_evidence
-    "tokens.components.product-card.height": *home_evidence
-    "tokens.components.product-card.padding": *home_evidence
-    "tokens.components.product-card.radius": *home_evidence
-    "tokens.components.product-card.type": *home_evidence
-    "tokens.components.product-card.use": *home_evidence
-    "tokens.components.recent-products-dropdown.bg": &recent_evidence { surface_id: recent-products, source_id: recent-products-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.components.recent-products-dropdown.border": *recent_evidence
-    "tokens.components.recent-products-dropdown.fg": *recent_evidence
-    "tokens.components.recent-products-dropdown.font": *recent_evidence
-    "tokens.components.recent-products-dropdown.height": *recent_evidence
-    "tokens.components.recent-products-dropdown.padding": *recent_evidence
-    "tokens.components.recent-products-dropdown.radius": *recent_evidence
-    "tokens.components.recent-products-dropdown.states": *recent_evidence
-    "tokens.components.recent-products-dropdown.type": *recent_evidence
-    "tokens.components.recent-products-dropdown.use": *recent_evidence
-    "tokens.components.search-input.bg": *home_evidence
-    "tokens.components.search-input.fg": *home_evidence
-    "tokens.components.search-input.font": *home_evidence
-    "tokens.components.search-input.height": *home_evidence
-    "tokens.components.search-input.padding": *home_evidence
-    "tokens.components.search-input.radius": *home_evidence
-    "tokens.components.search-input.states": *home_evidence
-    "tokens.components.search-input.type": *home_evidence
-    "tokens.components.search-input.use": *home_evidence
-    "tokens.rounded.pill": *home_evidence
-    "tokens.rounded.square": *home_evidence
-    "tokens.shadow.flat": *home_evidence
-    "tokens.spacing.base": *home_evidence
-    "tokens.spacing.md": *home_evidence
-    "tokens.spacing.sm": *home_evidence
-    "tokens.spacing.xs": *home_evidence
-    "tokens.typography.body.lineHeight": *home_evidence
-    "tokens.typography.body.size": *home_evidence
-    "tokens.typography.body.use": *home_evidence
-    "tokens.typography.body.weight": *home_evidence
-    "tokens.typography.family.commerce": *home_evidence
-    "tokens.typography.family.navigation": *home_evidence
-    "tokens.typography.home-heading.lineHeight": *home_evidence
-    "tokens.typography.home-heading.size": *home_evidence
-    "tokens.typography.home-heading.use": *home_evidence
-    "tokens.typography.home-heading.weight": *home_evidence
-    "tokens.typography.tab-label.lineHeight": *home_evidence
-    "tokens.typography.tab-label.size": *home_evidence
-    "tokens.typography.tab-label.use": *home_evidence
-    "tokens.typography.tab-label.weight": *home_evidence
-    "tokens.components.gnb-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.hover": { surface_id: home, source_id: home-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"10\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.gnb-link.pressed": { surface_id: home, source_id: home-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"10\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.gnb-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-utility-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.header-icon-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.section-more-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.product-tag.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.product-tag.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.recent-tab.type": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.bg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.fg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.radius": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.padding": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.height": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.font": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.selected": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"77\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.states": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.recent-tab.use": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"76\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.type": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.bg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.fg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.radius": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.padding": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.height": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.font": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.states": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-menu-link.use": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"55\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.type": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.bg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.fg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.border": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.radius": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.padding": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.size": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.font": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.states": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.mylotte-outline-link.use": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"74\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.type": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.bg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.border": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.radius": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.size": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.states": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.outline-pill-link.use": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"78\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.type": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.bg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.fg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.radius": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.padding": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.height": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.font": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.states": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.use": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"80\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.type": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"94\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.bg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"94\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.fg": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"94\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.border": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.radius": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.padding": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.height": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.font": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"94\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.states": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"94\"]", captured: "2026-07-13" }
-    "tokens.components.footer-bordered-link.use": { surface_id: recent-products, source_id: recent-products-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"94\"]", captured: "2026-07-13" }
-
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "Two public product surfaces; values are limited to measured computed styles. Pretendard and NotoSansKR were loaded; Avenuel Didot and Roboto Condensed were declared-only."
-  colors:
-    primary: "#000000"
-    foreground: "#333333"
-    canvas: "#ffffff"
-    muted: "#757575"
-    secondary: "#666666"
-    hairline: "#e5e5e5"
-    field-border: "#dddddd"
-    tab-border: "#eeeeee"
-  typography:
-    family: { commerce: "Pretendard", navigation: "NotoSansKR" }
-    home-heading: { size: 22, weight: 600, lineHeight: 1.27, use: "Observed home body-heading text" }
-    body: { size: 14, weight: 500, lineHeight: 1.29, use: "Observed home commerce body text" }
-    tab-label: { size: 16, weight: 500, lineHeight: 1.31, use: "Home image-tab label" }
-  spacing: { xs: 2, sm: 4, md: 8, base: 16 }
-  rounded: { square: 0, pill: 23 }
-  shadow:
-    flat: "none"
-  components_harvested: true
-  components:
-    product-card: { type: card, bg: "transparent", radius: "0px", padding: "0px", height: "368px", use: "Repeated home product-card container; its name, price and tags sit in child elements, so no label colour or font is declared (corrected 2026-09-30)" }
-    home-image-tab: { type: tab, bg: "#ffffff", fg: "#666666", border: "1px solid #eeeeee", radius: "23px", padding: "0px 16px 0px 4px", height: "46px", font: "16px / 500", selected: "bg #000000, fg #ffffff, border 1px #000000", states: "default and selected captured (aria-selected true on capture 147 and on three tab-interaction captures); hover, focus, pressed, disabled and error were not sampled", use: "Home image-tab control" }
-    search-input: { type: input, bg: "transparent", fg: "#333333", radius: "0px", padding: "0px 28px 0px 0px", height: "30px", font: "16px / 400", states: "default captured; hover, focus, pressed, disabled and error were not sampled", use: "Home search field" }
-    recent-products-dropdown: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #dddddd", radius: "0px", padding: "0px 38px 0px 16px", height: "32px", font: "13px / 400", states: "default captured; hover, focus, pressed, disabled and error were not sampled", use: "Dropdown trigger in the recent-products page footer row (captures 89 and 90 at top 1690, below the content area that ends at 1675); corrected 2026-09-30 from a recently viewed products trigger" }
-    gnb-link: { type: tab, bg: "transparent", fg: "#333333", radius: "0px", padding: "0px", height: "19px", font: "16px / 400", hover: "fg #000000", pressed: "fg #000000", states: "rest on 22 header links (11 on home, 11 on recent products); hover and pressed sampled on 21 of them (42 frames), each recording colour #333333 to #000000 and nothing else; focus frames exist but are not declared", use: "Header navigation link, home::[data-omd-capture=\"10\"]; NotoSansKR, line height 50px (the height of the row), tracking -0.32px" }
-    header-utility-link: { type: button, bg: "transparent", fg: "#757575", radius: "0px", padding: "0px", height: "14px", font: "12px / 400", states: "three per route captured at rest on home and recent products; no state frame in the bundle", use: "Top utility link, home::[data-omd-capture=\"0\"]; NotoSansKR, line height 17px, tracking -0.2px" }
-    header-icon-link: { type: button, bg: "transparent", fg: "#333333", radius: "0px", padding: "37px 0px 0px", size: "74px x 56px", font: "13px / 400", states: "three per route captured at rest on home and recent products; no state frame in the bundle", use: "Header icon link with its label below the icon (a.heart and two siblings), home::[data-omd-capture=\"6\"]; the 37px top padding holds the icon; NotoSansKR, line height 18.98px, tracking -0.3px" }
-    section-more-link: { type: button, bg: "transparent", fg: "#757575", radius: "0px", padding: "0px 12px 0px 0px", height: "20px", font: "14px / 400", states: "one captured at rest on home; no state frame in the bundle", use: "Section heading more link (a.c-title__more), home::[data-omd-capture=\"146\"]; Pretendard, line height 20px" }
-    product-tag: { type: badge, bg: "#f5f5f5", fg: "#333333", radius: "0px", padding: "0px 4px", height: "21px", font: "12px / 400", states: "13 captured at rest in the home product cards; no state frame in the bundle", use: "Product-card tag: a list item that holds its own text, home::li (top 1407); Pretendard, line height 21px" }
-    recent-tab: { type: tab, bg: "#ffffff", fg: "#666666", radius: "0px", padding: "12px 16px", height: "52px", font: "20px / 500", selected: "fg #000000, 20px / 600", states: "two tabs captured on recent products: the rest tab (capture 76) and the tab with class active (capture 77); no state frame in the bundle", use: "Recent-products page tab (a.tab), surface-2::[data-omd-capture=\"76\"]; NotoSansKR, line height 28px, tracking -0.036px; each tab is 453 px wide" }
-    mylotte-menu-link: { type: tab, bg: "transparent", fg: "#757575", radius: "0px", padding: "0px", height: "21px", font: "14px / 400", states: "19 captured at rest on recent products (captures 55-73); no state frame in the bundle", use: "Account-page menu link on recent products, surface-2::[data-omd-capture=\"55\"]; NotoSansKR, line height 21px, tracking -0.42px" }
-    mylotte-outline-link: { type: button, bg: "transparent", fg: "#333333", border: "1px #dddddd", radius: "6px", padding: "0px", size: "178px x 40px", font: "13px / 400", states: "two captured at rest on recent products (captures 74 and 75); no state frame in the bundle", use: "Outlined link on recent products, surface-2::[data-omd-capture=\"74\"]; NotoSansKR, line height 38px, tracking -0.26px" }
-    outline-pill-link: { type: button, bg: "transparent", border: "1px #000000", radius: "24px", size: "242px x 48px", states: "one captured at rest on recent products; no state frame in the bundle", use: "Outlined pill link (a.anchor) in the recent-products content, surface-2::[data-omd-capture=\"78\"]. The anchor computes 16px / 400 with the 16px line height of the content area, which is inherited container type, so no label style is declared" }
-    footer-menu-link: { type: button, bg: "transparent", fg: "#333333", radius: "0px", padding: "0px", height: "15px", font: "13px / 400", states: "nine captured at rest on recent products (captures 80-88); capture 83 computes 700; no state frame in the bundle", use: "Footer menu link, surface-2::[data-omd-capture=\"80\"]; NotoSansKR, line height 21.32px, tracking -0.3px" }
-    footer-bordered-link: { type: button, bg: "transparent", fg: "#757575", border: "1px #dddddd", radius: "2px", padding: "0px 6px", height: "22px", font: "11px / 400", states: "four captured at rest on recent products (links 94-97 in bordered list items); no state frame in the bundle", use: "Small bordered footer link: the list item holds the border, radius, padding and 22px height, and the link inside it (surface-2::[data-omd-capture=\"94\"]) holds the text; NotoSansKR, line height 22px, tracking -0.1px" }
+name: 롯데ON
+colors:
+  primary: '#000000'
+  foreground: '#333333'
+  canvas: '#ffffff'
+  muted: '#757575'
+  secondary: '#666666'
+  hairline: '#e5e5e5'
+  field-border: '#dddddd'
+  tab-border: '#eeeeee'
+typography:
+  home-heading:
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.27
+    use: Observed home body-heading text
+  body:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.29
+    use: Observed home commerce body text
+  tab-label:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.31
+    use: Home image-tab label
+rounded:
+  square: 0px
+  pill: 23px
+spacing:
+  xs: 2
+  sm: 4
+  md: 8
+  base: 16
+components:
+  product-card:
+    type: card
+    backgroundColor: transparent
+    rounded: 0px
+    padding: 0px
+    height: 368px
+    use: Repeated home product-card container; its name, price and tags sit in child elements, so no label colour or font is declared (corrected 2026-09-30)
+  home-image-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#666666'
+    border: '1px solid #eeeeee'
+    rounded: 23px
+    padding: 0px 16px 0px 4px
+    height: 46px
+    typography: 16px / 500
+    selected: 'bg #000000, fg #ffffff, border 1px #000000'
+    states: default and selected captured (aria-selected true on capture 147 and on three tab-interaction captures); hover, focus, pressed, disabled and error were not sampled
+    use: Home image-tab control
+  search-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 0px
+    padding: 0px 28px 0px 0px
+    height: 30px
+    typography: 16px / 400
+    states: default captured; hover, focus, pressed, disabled and error were not sampled
+    use: Home search field
+  recent-products-dropdown:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #dddddd'
+    rounded: 0px
+    padding: 0px 38px 0px 16px
+    height: 32px
+    typography: 13px / 400
+    states: default captured; hover, focus, pressed, disabled and error were not sampled
+    use: Dropdown trigger in the recent-products page footer row (captures 89 and 90 at top 1690, below the content area that ends at 1675); corrected 2026-09-30 from a recently viewed products trigger
+  gnb-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 0px
+    padding: 0px
+    height: 19px
+    typography: 16px / 400
+    hover: 'fg #000000'
+    pressed: 'fg #000000'
+    states: 'rest on 22 header links (11 on home, 11 on recent products); hover and pressed sampled on 21 of them (42 frames), each recording colour #333333 to #000000 and nothing else; focus frames exist but are not declared'
+    use: Header navigation link, home::[data-omd-capture="10"]; NotoSansKR, line height 50px (the height of the row), tracking -0.32px
+  header-utility-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#757575'
+    rounded: 0px
+    padding: 0px
+    height: 14px
+    typography: 12px / 400
+    states: three per route captured at rest on home and recent products; no state frame in the bundle
+    use: Top utility link, home::[data-omd-capture="0"]; NotoSansKR, line height 17px, tracking -0.2px
+  header-icon-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 0px
+    padding: 37px 0px 0px
+    size: 74px x 56px
+    typography: 13px / 400
+    states: three per route captured at rest on home and recent products; no state frame in the bundle
+    use: Header icon link with its label below the icon (a.heart and two siblings), home::[data-omd-capture="6"]; the 37px top padding holds the icon; NotoSansKR, line height 18.98px, tracking -0.3px
+  section-more-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#757575'
+    rounded: 0px
+    padding: 0px 12px 0px 0px
+    height: 20px
+    typography: 14px / 400
+    states: one captured at rest on home; no state frame in the bundle
+    use: Section heading more link (a.c-title__more), home::[data-omd-capture="146"]; Pretendard, line height 20px
+  product-tag:
+    type: badge
+    backgroundColor: '#f5f5f5'
+    textColor: '#333333'
+    rounded: 0px
+    padding: 0px 4px
+    height: 21px
+    typography: 12px / 400
+    states: 13 captured at rest in the home product cards; no state frame in the bundle
+    use: 'Product-card tag: a list item that holds its own text, home::li (top 1407); Pretendard, line height 21px'
+  recent-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#666666'
+    rounded: 0px
+    padding: 12px 16px
+    height: 52px
+    typography: 20px / 500
+    selected: 'fg #000000, 20px / 600'
+    states: 'two tabs captured on recent products: the rest tab (capture 76) and the tab with class active (capture 77); no state frame in the bundle'
+    use: Recent-products page tab (a.tab), surface-2::[data-omd-capture="76"]; NotoSansKR, line height 28px, tracking -0.036px; each tab is 453 px wide
+  mylotte-menu-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#757575'
+    rounded: 0px
+    padding: 0px
+    height: 21px
+    typography: 14px / 400
+    states: 19 captured at rest on recent products (captures 55-73); no state frame in the bundle
+    use: Account-page menu link on recent products, surface-2::[data-omd-capture="55"]; NotoSansKR, line height 21px, tracking -0.42px
+  mylotte-outline-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    border: '1px #dddddd'
+    rounded: 6px
+    padding: 0px
+    size: 178px x 40px
+    typography: 13px / 400
+    states: two captured at rest on recent products (captures 74 and 75); no state frame in the bundle
+    use: Outlined link on recent products, surface-2::[data-omd-capture="74"]; NotoSansKR, line height 38px, tracking -0.26px
+  outline-pill-link:
+    type: button
+    backgroundColor: transparent
+    border: '1px #000000'
+    rounded: 24px
+    size: 242px x 48px
+    states: one captured at rest on recent products; no state frame in the bundle
+    use: Outlined pill link (a.anchor) in the recent-products content, surface-2::[data-omd-capture="78"]. The anchor computes 16px / 400 with the 16px line height of the content area, which is inherited container type, so no label style is declared
+  footer-menu-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 0px
+    padding: 0px
+    height: 15px
+    typography: 13px / 400
+    states: nine captured at rest on recent products (captures 80-88); capture 83 computes 700; no state frame in the bundle
+    use: Footer menu link, surface-2::[data-omd-capture="80"]; NotoSansKR, line height 21.32px, tracking -0.3px
+  footer-bordered-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#757575'
+    border: '1px #dddddd'
+    rounded: 2px
+    padding: 0px 6px
+    height: 22px
+    typography: 11px / 400
+    states: four captured at rest on recent products (links 94-97 in bordered list items); no state frame in the bundle
+    use: 'Small bordered footer link: the list item holds the border, radius, padding and 22px height, and the link inside it (surface-2::[data-omd-capture="94"]) holds the text; NotoSansKR, line height 22px, tracking -0.1px'
+fonts:
+  roles:
+    commerce: Pretendard
+    navigation: NotoSansKR
 ---
 
 # Design System Inspiration of 롯데ON
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 롯데ON은 롯데 계열 상품과 오픈마켓 상품을 한 곳에서 검색·구매하도록 만든 통합 이커머스 플랫폼이며, 백화점·그로서리·전자제품·브랜드 상품을 발견하는 흐름을 함께 다룬다. 공식 기업 소개는 1996년 롯데닷컴에서 시작한 온라인 종합쇼핑의 계보와 2020년 4월 롯데ON 출범을 연결하고, 현재 서비스는 오프라인 유통 인프라와 온라인 경험을 결합한 쇼핑을 지향한다. 그 결과로 보이는 화면의 인상은 과장된 브랜드 색보다 상품·카테고리·혜택을 빠르게 읽게 하는 흰 바탕, 짙은 문자, 얇은 경계, 그리고 0px 또는 제한적인 pill 형상이다. 공식 Lotte ON Story가 말하는 ‘취향, 브랜드, 혜택을 발견하는 즐거움’과 버티컬·개인화 서비스의 확장은, 이 공용 쇼핑 셸이 탐색성과 비교 가능성을 우선하는 현재 방향을 설명한다.
 
@@ -250,14 +213,45 @@ tokens:
 - 2px, 4px, 8px, 16px의 반복 간격 샘플
 - 상호작용 확장은 홈 이미지 탭의 selected 상태 세 건만 안전하게 관찰됨
 
-## Primary tasks
+### Primary tasks
 
 - Search and buy Lotte affiliate and open-market products in one place
 - Explore beauty, luxury, fashion, or kids shopping areas
 - Scan a personal history of recently viewed products
 - Browse product categories from the home navigation
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+롯데 e-commerce의 공식 기업 소개에 따르면, 롯데닷컴은 1996년 국내 온라인 종합 쇼핑몰로 출발했고 롯데e커머스는 2018년 롯데쇼핑 사업부로 출범했다. 롯데ON은 2020년 4월 롯데의 통합 온라인 쇼핑 플랫폼으로 선보였으며, 계열사 상품과 오픈마켓 상품을 한 번에 검색하고 구매하는 범위를 갖는다.
+
+현재의 표현은 단순한 상품 나열보다 발견의 경험을 강조한다. 공식 Story는 해외직구·뷰티·그로서리·선물하기 같은 영역과 오프라인 매장 연계를 설명하고, 공식 기업 소개는 뷰티·명품·패션·키즈 버티컬과 멤버십 혜택을 현재 확장 방향으로 제시한다. 이 reference의 제품 UI 관찰은 그 방향과 일치하는 넓은 홈 탐색과 더 조밀한 개인 목록을 보여 준다.
+
+공개 자료가 확인하지 않은 창업자 인용, 로고의 의미, 상세 리브랜딩 연혁, 내부 브랜드 원칙은 추가하지 않는다. 이 문서가 보존하는 범위는 공식적으로 설명된 통합·발견·온오프라인 연결의 서비스 맥락과, 지정된 두 표면에서 측정된 제품 표현이다.
+
+### Principles
+
+The following are official service directions paraphrased from first-party material, not an invented design manifesto.
+
+1. **Make shopping discovery useful.** Official Story frames the service around discovering taste, brands, and benefits.
+   *UI implication:* Make category, brand, benefit, and search affordances legible before adding decorative treatment.
+2. **Connect online choice to offline retail strength.** Official sources describe the use of Lotte’s online know-how and offline infrastructure.
+   *UI implication:* Keep a clear boundary between verified product information and any unmeasured fulfilment or store-integration pattern.
+3. **Serve specialist shopping contexts.** The corporate profile identifies vertical areas including beauty, luxury, fashion, and kids.
+   *UI implication:* Let surface density vary by task—for example, home discovery versus recent-product scanning—rather than imposing one card treatment.
+4. **Support customers and participating brands.** Official material describes customer benefits and brand-oriented commerce support.
+   *UI implication:* Treat customer-facing shopping controls and seller/brand operational flows as separate surfaces unless direct UI evidence links them.
+
+### Personas
+
+These are service-role archetypes grounded in first-party service descriptions, not demographic personas or user-research findings.
+
+1. **Integrated-shopper customer.** Searches and buys across Lotte affiliate and open-market assortment; the public service description explicitly frames this as one platform.
+2. **Vertical-service shopper.** Explores beauty, luxury, fashion, or kids-focused shopping areas and related benefits described by the corporate profile.
+3. **Participating brand or seller.** Uses the broader e-commerce offering to reach customers; the official profile describes brand-store and commerce-support services, but this capture does not validate its operational UI.
+
+No age, income, motivation, task-success rate, or behavioral preference is inferred beyond those stated service roles.
+
+## Colors
 
 ### Core
 - **Primary** — `#000000`: 관찰된 검색 아이콘 배경과 선택된 홈 이미지 탭.
@@ -273,7 +267,7 @@ tokens:
 
 `#f3f3f3`과 `#f5f5f5`도 홈에서 제한적으로 관찰됐지만 한 표면의 낮은 빈도 배경이므로 canonical color token으로 올리지 않았다. 제품 표면에서 측정되지 않은 롯데 그룹 컬러·프로모션 컬러·오류 색은 이 reference에 없다.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence
 
@@ -302,7 +296,46 @@ tokens:
 
 The three tokenized roles retain their measured sizes, weights, and line-height ratios. The remaining rows are useful measured siblings, not an invented universal type scale.
 
-## 4. Component Stylings
+## Layout
+
+The home surface combines a centered search field, horizontal category navigation, image-tab selection, and repeated product-card containers. The recent-products surface changes density: utility rows, list structures, tabs, and a 32px dropdown permit scanning a personal commerce history. Preserve this distinction rather than applying the large home product-card geometry to every commerce context.
+
+Measured spacing samples recur at 2px, 4px, 8px, and 16px. They are observed values rather than an assertion of a complete mathematical scale. The home product-card contains a 220px-wide, 368px-tall outer container; its visual sub-area is 220px square, but that sub-area is not separately promoted as a component token.
+
+### Responsive Behavior
+
+The evidence bundle contains two desktop 1440px-wide product surfaces. It supports the measured component heights and list/card structure, not breakpoint rules or a mobile layout contract.
+
+- Keep home product-card media and information grouping together when adapting width.
+- Retain the 46px home tab and 30px search-input heights unless a measured responsive variant replaces them.
+- Preserve the recent-products list hierarchy and its dropdown trigger as separate controls.
+- Treat mobile columns, navigation collapse, touch-target expansion, sticky elements, tablet gutters, and image crop policy as unestablished until a controlled multi-viewport capture is made.
+
+## Elevation & Depth
+
+| Treatment | Captured use |
+|---|---|
+| Flat / no shadow | Page, product card, search field, tabs, and dropdown trigger |
+| `1px solid #eeeeee` | Unselected home image tab |
+| `1px solid #dddddd` | Recent-products dropdown trigger |
+| `1px solid #e5e5e5` | Circular shopping-mall button |
+| 23px radius | Home image-tab control |
+
+The canonical shadow token is `none`. It reports the reusable box-shadow result in these two captures; it does not claim that overlays or uninspected transient product states have no elevation.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No transition duration, easing curve, animation name, or reduced-motion behavior was present in the supplied evidence.
+
+The evidence records static values and three tab selected-state interactions. Do not infer hover animation, carousel timing, modal transitions, skeleton motion, toast dismissal, or a generic ecommerce duration scale from this capture.
+
+## Components
 
 ### Product Card
 
@@ -499,116 +532,7 @@ The sections below were added on 2026-09-30 from the same 2026-07-13 bundle (bun
 
 Tier 2 supplied no component or token value; all promoted visual values come from the supplied Tier 1 evidence bundle.
 
-## 5. Layout Principles
-
-The home surface combines a centered search field, horizontal category navigation, image-tab selection, and repeated product-card containers. The recent-products surface changes density: utility rows, list structures, tabs, and a 32px dropdown permit scanning a personal commerce history. Preserve this distinction rather than applying the large home product-card geometry to every commerce context.
-
-Measured spacing samples recur at 2px, 4px, 8px, and 16px. They are observed values rather than an assertion of a complete mathematical scale. The home product-card contains a 220px-wide, 368px-tall outer container; its visual sub-area is 220px square, but that sub-area is not separately promoted as a component token.
-
-## 6. Depth & Elevation
-
-| Treatment | Captured use |
-|---|---|
-| Flat / no shadow | Page, product card, search field, tabs, and dropdown trigger |
-| `1px solid #eeeeee` | Unselected home image tab |
-| `1px solid #dddddd` | Recent-products dropdown trigger |
-| `1px solid #e5e5e5` | Circular shopping-mall button |
-| 23px radius | Home image-tab control |
-
-The canonical shadow token is `none`. It reports the reusable box-shadow result in these two captures; it does not claim that overlays or uninspected transient product states have no elevation.
-
-## 7. Do's and Don'ts
-
-### Do
-- Use `#ffffff`, `#333333`, and thin neutral borders for the measured public commerce surfaces.
-- Preserve `Pretendard` and `NotoSansKR` as separate loaded families where the observed surface calls for them.
-- Use 23px pill geometry only for the observed home image-tab control; keep the product-card container square.
-- Keep product-card, tab, input, and dropdown semantics distinct.
-- Describe only the captured tab selected state; request a new capture before adding hover, focus, pressed, disabled, or error styling.
-
-### Don't
-- Don't substitute a system font for `Pretendard` or `NotoSansKR` and present it as the loaded family.
-- Don't promote declared-only `Avenuel Didot` or `Roboto Condensed` as a UI font.
-- Don't turn `#000000` into a universal filled CTA token; it was measured on the selected tab and search icon, not as a general button rule.
-- Don't infer brand-wide red, success, error, campaign, or promotion colors from the absent evidence.
-- Don't map a link or list row to button semantics without evidence.
-
-## 8. Responsive Behavior
-
-The evidence bundle contains two desktop 1440px-wide product surfaces. It supports the measured component heights and list/card structure, not breakpoint rules or a mobile layout contract.
-
-- Keep home product-card media and information grouping together when adapting width.
-- Retain the 46px home tab and 30px search-input heights unless a measured responsive variant replaces them.
-- Preserve the recent-products list hierarchy and its dropdown trigger as separate controls.
-- Treat mobile columns, navigation collapse, touch-target expansion, sticky elements, tablet gutters, and image crop policy as unestablished until a controlled multi-viewport capture is made.
-
-## 9. Agent Prompt Guide
-
-### Quick token reference
-- Canvas: `#ffffff`
-- Foreground: `#333333`
-- Primary / selected tab: `#000000`
-- Muted / secondary: `#757575`, `#666666`
-- Borders: `#e5e5e5`, `#dddddd`, `#eeeeee`
-- Families: Pretendard (commerce), NotoSansKR (navigation)
-- Spacing samples: 2px, 4px, 8px, 16px
-- Geometry: 0px square; 23px home image-tab pill
-
-### Construction prompts
-- “Build the observed home product-card container: transparent background, `#333333` text, 0px radius, 0px padding, 368px height, 16px/400 Pretendard.”
-- “Build the observed home image tab: white `#ffffff` surface, `#666666` label, 1px `#eeeeee` border, 23px radius, 46px height, and 0px 16px 0px 4px padding. The selected capture uses black `#000000` with white `#ffffff` text.”
-- “Build the observed home search input: transparent background, `#333333` text, 30px height, 0px radius, and 0px 28px 0px 0px padding.”
-- “Build the recently viewed-products dropdown trigger: white background, `#333333` text, 1px `#dddddd` border, square corners, 32px height, and 0px 38px 0px 16px padding.”
-
-If a requested state, component, viewport, product flow, or brand color is absent, leave that smallest field or group absent and obtain new evidence rather than using a generic ecommerce fallback.
-
-## 10. Voice & Tone
-
-Official Lotte ON materials describe a discovery-oriented commerce service: the Story home uses phrases about discovering taste, brands, and benefits, while the corporate profile describes vertical shopping services and customer benefits. This supports a concise, practical, discovery-led interface voice. It is not a published comprehensive writing standard, so it does not authorize invented error, push, legal, or accessibility copy rules.
-
-| Do | Don't |
-|---|---|
-| Name the shopping subject, benefit, or next action directly. | Turn a product label into an ungrounded lifestyle claim. |
-| Keep utility labels short enough for dense navigation and product rows. | Add emotive sales language where no official product wording supports it. |
-| Use discovery language where a browse surface actually presents brands, benefits, or categories. | Recast operational states as a brand promise without evidence. |
-
-### Source-backed copy samples
-- “취향을, 브랜드를, 혜택을 발견하는 즐거움” — official Lotte ON Story home.
-- “고객이 원하고 만족하는 서비스를 만들어요” — official Lotte ON Story home.
-- “쇼핑을 새롭게, 세상을 이롭게!” — official Lotte e-commerce corporate profile.
-
-## 11. Brand Narrative
-
-롯데 e-commerce의 공식 기업 소개에 따르면, 롯데닷컴은 1996년 국내 온라인 종합 쇼핑몰로 출발했고 롯데e커머스는 2018년 롯데쇼핑 사업부로 출범했다. 롯데ON은 2020년 4월 롯데의 통합 온라인 쇼핑 플랫폼으로 선보였으며, 계열사 상품과 오픈마켓 상품을 한 번에 검색하고 구매하는 범위를 갖는다.
-
-현재의 표현은 단순한 상품 나열보다 발견의 경험을 강조한다. 공식 Story는 해외직구·뷰티·그로서리·선물하기 같은 영역과 오프라인 매장 연계를 설명하고, 공식 기업 소개는 뷰티·명품·패션·키즈 버티컬과 멤버십 혜택을 현재 확장 방향으로 제시한다. 이 reference의 제품 UI 관찰은 그 방향과 일치하는 넓은 홈 탐색과 더 조밀한 개인 목록을 보여 준다.
-
-공개 자료가 확인하지 않은 창업자 인용, 로고의 의미, 상세 리브랜딩 연혁, 내부 브랜드 원칙은 추가하지 않는다. 이 문서가 보존하는 범위는 공식적으로 설명된 통합·발견·온오프라인 연결의 서비스 맥락과, 지정된 두 표면에서 측정된 제품 표현이다.
-
-## 12. Principles
-
-The following are official service directions paraphrased from first-party material, not an invented design manifesto.
-
-1. **Make shopping discovery useful.** Official Story frames the service around discovering taste, brands, and benefits.
-   *UI implication:* Make category, brand, benefit, and search affordances legible before adding decorative treatment.
-2. **Connect online choice to offline retail strength.** Official sources describe the use of Lotte’s online know-how and offline infrastructure.
-   *UI implication:* Keep a clear boundary between verified product information and any unmeasured fulfilment or store-integration pattern.
-3. **Serve specialist shopping contexts.** The corporate profile identifies vertical areas including beauty, luxury, fashion, and kids.
-   *UI implication:* Let surface density vary by task—for example, home discovery versus recent-product scanning—rather than imposing one card treatment.
-4. **Support customers and participating brands.** Official material describes customer benefits and brand-oriented commerce support.
-   *UI implication:* Treat customer-facing shopping controls and seller/brand operational flows as separate surfaces unless direct UI evidence links them.
-
-## 13. Personas
-
-These are service-role archetypes grounded in first-party service descriptions, not demographic personas or user-research findings.
-
-1. **Integrated-shopper customer.** Searches and buys across Lotte affiliate and open-market assortment; the public service description explicitly frames this as one platform.
-2. **Vertical-service shopper.** Explores beauty, luxury, fashion, or kids-focused shopping areas and related benefits described by the corporate profile.
-3. **Participating brand or seller.** Uses the broader e-commerce offering to reach customers; the official profile describes brand-store and commerce-support services, but this capture does not validate its operational UI.
-
-No age, income, motivation, task-success rate, or behavioral preference is inferred beyond those stated service roles.
-
-## 14. States
+### States
 
 | State | Verified treatment |
 |---|---|
@@ -629,8 +553,63 @@ No age, income, motivation, task-success rate, or behavioral preference is infer
 
 The interaction count of three covers the tab expansions only. The pointer-state frames are separate: 63 on the header navigation links, of which the 42 hover and pressed frames are declared (corrected 2026-09-30). Neither justifies filling state values for other buttons, inputs, or tabs.
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-No transition duration, easing curve, animation name, or reduced-motion behavior was present in the supplied evidence.
+### Do
+- Use `#ffffff`, `#333333`, and thin neutral borders for the measured public commerce surfaces.
+- Preserve `Pretendard` and `NotoSansKR` as separate loaded families where the observed surface calls for them.
+- Use 23px pill geometry only for the observed home image-tab control; keep the product-card container square.
+- Keep product-card, tab, input, and dropdown semantics distinct.
+- Describe only the captured tab selected state; request a new capture before adding hover, focus, pressed, disabled, or error styling.
 
-The evidence records static values and three tab selected-state interactions. Do not infer hover animation, carousel timing, modal transitions, skeleton motion, toast dismissal, or a generic ecommerce duration scale from this capture.
+### Don't
+- Don't substitute a system font for `Pretendard` or `NotoSansKR` and present it as the loaded family.
+- Don't promote declared-only `Avenuel Didot` or `Roboto Condensed` as a UI font.
+- Don't turn `#000000` into a universal filled CTA token; it was measured on the selected tab and search icon, not as a general button rule.
+- Don't infer brand-wide red, success, error, campaign, or promotion colors from the absent evidence.
+- Don't map a link or list row to button semantics without evidence.
+
+## Voice & Tone
+
+Official Lotte ON materials describe a discovery-oriented commerce service: the Story home uses phrases about discovering taste, brands, and benefits, while the corporate profile describes vertical shopping services and customer benefits. This supports a concise, practical, discovery-led interface voice. It is not a published comprehensive writing standard, so it does not authorize invented error, push, legal, or accessibility copy rules.
+
+| Do | Don't |
+|---|---|
+| Name the shopping subject, benefit, or next action directly. | Turn a product label into an ungrounded lifestyle claim. |
+| Keep utility labels short enough for dense navigation and product rows. | Add emotive sales language where no official product wording supports it. |
+| Use discovery language where a browse surface actually presents brands, benefits, or categories. | Recast operational states as a brand promise without evidence. |
+
+### Source-backed copy samples
+- “취향을, 브랜드를, 혜택을 발견하는 즐거움” — official Lotte ON Story home.
+- “고객이 원하고 만족하는 서비스를 만들어요” — official Lotte ON Story home.
+- “쇼핑을 새롭게, 세상을 이롭게!” — official Lotte e-commerce corporate profile.
+
+## Agent Prompt Guide
+
+### Quick token reference
+- Canvas: `#ffffff`
+- Foreground: `#333333`
+- Primary / selected tab: `#000000`
+- Muted / secondary: `#757575`, `#666666`
+- Borders: `#e5e5e5`, `#dddddd`, `#eeeeee`
+- Families: Pretendard (commerce), NotoSansKR (navigation)
+- Spacing samples: 2px, 4px, 8px, 16px
+- Geometry: 0px square; 23px home image-tab pill
+
+### Construction prompts
+- “Build the observed home product-card container: transparent background, `#333333` text, 0px radius, 0px padding, 368px height, 16px/400 Pretendard.”
+- “Build the observed home image tab: white `#ffffff` surface, `#666666` label, 1px `#eeeeee` border, 23px radius, 46px height, and 0px 16px 0px 4px padding. The selected capture uses black `#000000` with white `#ffffff` text.”
+- “Build the observed home search input: transparent background, `#333333` text, 30px height, 0px radius, and 0px 28px 0px 0px padding.”
+- “Build the recently viewed-products dropdown trigger: white background, `#333333` text, 1px `#dddddd` border, square corners, 32px height, and 0px 38px 0px 16px padding.”
+
+If a requested state, component, viewport, product flow, or brand color is absent, leave that smallest field or group absent and obtain new evidence rather than using a generic ecommerce fallback.
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `search-input`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `gnb-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-icon-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `mylotte-outline-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-menu-link`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

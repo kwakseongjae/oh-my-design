@@ -1,237 +1,201 @@
 ---
-id: cgv
 name: CGV
-country: KR
-category: consumer-tech
-homepage: "https://www.cgv.co.kr/"
-primary_color: "#121212"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=cgv.co.kr&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: marketing-product, url: "https://cgv.co.kr/", inspected: "2026-07-13" }
-    - { id: surface-2, kind: public-home-variant, url: "https://cgv.co.kr/", inspected: "2026-07-13" }
-    - { id: surface-3, kind: public-home-variant, url: "https://cgv.co.kr/", inspected: "2026-07-13" }
-  sources:
-    - { id: cgv-home, kind: product-surface, url: "https://cgv.co.kr/", captured: "2026-07-13" }
-    - { id: cgv-home-2, kind: product-surface, url: "https://cgv.co.kr/", captured: "2026-07-13" }
-    - { id: cgv-home-3, kind: product-surface, url: "https://cgv.co.kr/", captured: "2026-07-13" }
-    - { id: cgv-2024-report, kind: official-doc, url: "https://img.cgv.co.kr/company/sustainabilityStrategy/Report/2024/2024_CJCGV_SUSTAINABILITY_REPORT_kor.pdf", captured: "2026-07-13" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.foreground": &home { surface_id: home, source_id: cgv-home, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.subtle": *home
-    "tokens.colors.secondary": *home
-    "tokens.colors.line": *home
-    "tokens.colors.signal": *home
-    "tokens.typography.family.sans": *home
-    "tokens.typography.display.size": *home
-    "tokens.typography.display.weight": *home
-    "tokens.typography.display.lineHeight": *home
-    "tokens.typography.display.tracking": *home
-    "tokens.typography.display.use": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.tracking": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.label.size": *home
-    "tokens.typography.label.weight": *home
-    "tokens.typography.label.lineHeight": *home
-    "tokens.typography.label.tracking": *home
-    "tokens.typography.label.use": *home
-    "tokens.spacing.dense": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.base": *home
-    "tokens.spacing.lg": *home
-    "tokens.rounded.badge": *home
-    "tokens.rounded.media": *home
-    "tokens.rounded.action": *home
-    "tokens.rounded.chip": *home
-    "tokens.shadow.flat": *home
-    "tokens.components.category-chip.type": *home
-    "tokens.components.category-chip.bg": *home
-    "tokens.components.category-chip.fg": *home
-    "tokens.components.category-chip.border": *home
-    "tokens.components.category-chip.radius": *home
-    "tokens.components.category-chip.padding": *home
-    "tokens.components.category-chip.height": *home
-    "tokens.components.category-chip.font": *home
-    "tokens.components.category-chip.selected": { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-07-13" }
-    "tokens.components.category-chip.states": *home
-    "tokens.components.category-chip.use": *home
-    "tokens.components.outline-action.type": *home
-    "tokens.components.outline-action.bg": *home
-    "tokens.components.outline-action.fg": *home
-    "tokens.components.outline-action.border": *home
-    "tokens.components.outline-action.radius": *home
-    "tokens.components.outline-action.padding": *home
-    "tokens.components.outline-action.font": *home
-    "tokens.components.outline-action.states": *home
-    "tokens.components.outline-action.use": *home
-    "tokens.components.screen-format-badge.type": *home
-    "tokens.components.screen-format-badge.bg": *home
-    "tokens.components.screen-format-badge.radius": *home
-    "tokens.components.screen-format-badge.padding": *home
-    "tokens.components.screen-format-badge.height": *home
-    "tokens.components.screen-format-badge.use": *home
-    "tokens.components.menu-row.type": *home
-    "tokens.components.menu-row.bg": *home
-    "tokens.components.menu-row.radius": *home
-    "tokens.components.menu-row.height": *home
-    "tokens.components.menu-row.use": *home
-    "tokens.components.line-tab.type": &w6LineTab { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.line-tab.bg": *w6LineTab
-    "tokens.components.line-tab.fg": *w6LineTab
-    "tokens.components.line-tab.padding": *w6LineTab
-    "tokens.components.line-tab.height": *w6LineTab
-    "tokens.components.line-tab.font": *w6LineTab
-    "tokens.components.line-tab.selected": { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"41\"]", captured: "2026-07-13" }
-    "tokens.components.line-tab.states": *w6LineTab
-    "tokens.components.line-tab.use": *w6LineTab
-    "tokens.components.like-button.type": &w6Like { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"51\"]", captured: "2026-07-13" }
-    "tokens.components.like-button.bg": *w6Like
-    "tokens.components.like-button.radius": *w6Like
-    "tokens.components.like-button.size": *w6Like
-    "tokens.components.like-button.states": *w6Like
-    "tokens.components.like-button.use": *w6Like
-    "tokens.components.poster-card.type": &w6Poster { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::div.mainMovieChartCard_imgArea", captured: "2026-07-13" }
-    "tokens.components.poster-card.radius": *w6Poster
-    "tokens.components.poster-card.size": *w6Poster
-    "tokens.components.poster-card.shadow": *w6Poster
-    "tokens.components.poster-card.states": *w6Poster
-    "tokens.components.poster-card.use": *w6Poster
-    "tokens.components.search-input.type": &w6Search { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.search-input.bg": *w6Search
-    "tokens.components.search-input.fg": *w6Search
-    "tokens.components.search-input.border": *w6Search
-    "tokens.components.search-input.radius": *w6Search
-    "tokens.components.search-input.padding": *w6Search
-    "tokens.components.search-input.size": *w6Search
-    "tokens.components.search-input.font": *w6Search
-    "tokens.components.search-input.states": *w6Search
-    "tokens.components.search-input.use": *w6Search
-    "tokens.components.search-shortcut-pill.type": &w6Pill { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"145\"]", captured: "2026-07-13" }
-    "tokens.components.search-shortcut-pill.bg": *w6Pill
-    "tokens.components.search-shortcut-pill.fg": *w6Pill
-    "tokens.components.search-shortcut-pill.border": *w6Pill
-    "tokens.components.search-shortcut-pill.radius": *w6Pill
-    "tokens.components.search-shortcut-pill.padding": *w6Pill
-    "tokens.components.search-shortcut-pill.height": *w6Pill
-    "tokens.components.search-shortcut-pill.font": *w6Pill
-    "tokens.components.search-shortcut-pill.states": *w6Pill
-    "tokens.components.search-shortcut-pill.use": *w6Pill
-    "tokens.components.reserve-button.type": &w6Reserve { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"152\"]", captured: "2026-07-13" }
-    "tokens.components.reserve-button.bg": *w6Reserve
-    "tokens.components.reserve-button.fg": *w6Reserve
-    "tokens.components.reserve-button.border": *w6Reserve
-    "tokens.components.reserve-button.radius": *w6Reserve
-    "tokens.components.reserve-button.padding": *w6Reserve
-    "tokens.components.reserve-button.size": *w6Reserve
-    "tokens.components.reserve-button.font": *w6Reserve
-    "tokens.components.reserve-button.states": *w6Reserve
-    "tokens.components.reserve-button.use": *w6Reserve
-    "tokens.components.text-link-button.type": &w6TextLink { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"47\"]", captured: "2026-07-13" }
-    "tokens.components.text-link-button.bg": *w6TextLink
-    "tokens.components.text-link-button.fg": *w6TextLink
-    "tokens.components.text-link-button.size": *w6TextLink
-    "tokens.components.text-link-button.font": *w6TextLink
-    "tokens.components.text-link-button.states": *w6TextLink
-    "tokens.components.text-link-button.use": *w6TextLink
-    "tokens.components.footer-link.type": &w6Footer { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.bg": *w6Footer
-    "tokens.components.footer-link.fg": *w6Footer
-    "tokens.components.footer-link.padding": *w6Footer
-    "tokens.components.footer-link.height": *w6Footer
-    "tokens.components.footer-link.font": *w6Footer
-    "tokens.components.footer-link.states": *w6Footer
-    "tokens.components.footer-link.use": *w6Footer
-    "tokens.components.common-select.type": &w6Select { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"29\"]", captured: "2026-07-13" }
-    "tokens.components.common-select.bg": *w6Select
-    "tokens.components.common-select.fg": *w6Select
-    "tokens.components.common-select.border": *w6Select
-    "tokens.components.common-select.radius": *w6Select
-    "tokens.components.common-select.padding": *w6Select
-    "tokens.components.common-select.size": *w6Select
-    "tokens.components.common-select.font": *w6Select
-    "tokens.components.common-select.states": *w6Select
-    "tokens.components.common-select.use": *w6Select
-    "tokens.components.bottom-sheet.type": &w6Sheet { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::div.main-modal-container", captured: "2026-07-13" }
-    "tokens.components.bottom-sheet.bg": *w6Sheet
-    "tokens.components.bottom-sheet.radius": *w6Sheet
-    "tokens.components.bottom-sheet.padding": *w6Sheet
-    "tokens.components.bottom-sheet.size": *w6Sheet
-    "tokens.components.bottom-sheet.states": *w6Sheet
-    "tokens.components.bottom-sheet.use": *w6Sheet
-    "tokens.components.sheet-close-button.type": &w6SheetClose { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.sheet-close-button.bg": *w6SheetClose
-    "tokens.components.sheet-close-button.fg": *w6SheetClose
-    "tokens.components.sheet-close-button.radius": *w6SheetClose
-    "tokens.components.sheet-close-button.padding": *w6SheetClose
-    "tokens.components.sheet-close-button.size": *w6SheetClose
-    "tokens.components.sheet-close-button.font": *w6SheetClose
-    "tokens.components.sheet-close-button.states": *w6SheetClose
-    "tokens.components.sheet-close-button.use": *w6SheetClose
-    "tokens.components.round-outline-pill.type": &w6RoundPill { surface_id: home, source_id: cgv-home, method: computed-style, selector: "home::[data-omd-capture=\"30\"]", captured: "2026-07-13" }
-    "tokens.components.round-outline-pill.bg": *w6RoundPill
-    "tokens.components.round-outline-pill.fg": *w6RoundPill
-    "tokens.components.round-outline-pill.border": *w6RoundPill
-    "tokens.components.round-outline-pill.radius": *w6RoundPill
-    "tokens.components.round-outline-pill.padding": *w6RoundPill
-    "tokens.components.round-outline-pill.size": *w6RoundPill
-    "tokens.components.round-outline-pill.font": *w6RoundPill
-    "tokens.components.round-outline-pill.states": *w6RoundPill
-    "tokens.components.round-outline-pill.use": *w6RoundPill
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "Three supplied public CGV captures (coverage 81). Pretendard is loaded/high with 1,217 visible uses; the bundle holds no ::state-* sample for any element, so only rest values and two class-marked selected tabs are promoted."
-  colors:
-    foreground: "#121212"
-    canvas: "#ffffff"
-    subtle: "#f4f4f4"
-    secondary: "#454545"
-    line: "#d9d9d9"
-    signal: "#fc5555"
-  typography:
-    family: { sans: "Pretendard" }
-    display: { size: 22, weight: 700, lineHeight: 1.4, tracking: -0.4, use: "Observed prominent body-role heading" }
-    body: { size: 14, weight: 400, lineHeight: 1.4, tracking: -0.2, use: "Observed public-page body and input copy" }
-    label: { size: 15, weight: 400, lineHeight: 1, tracking: -0.2, use: "Observed category-tab label" }
-  spacing: { dense: 10, sm: 8, base: 16, lg: 24 }
-  rounded: { badge: 4, media: 16, action: 20, chip: 25 }
-  shadow:
-    flat: "none"
-  components_harvested: true
-  components:
-    category-chip: { type: button, bg: "#f4f4f4", fg: "#454545", border: "1px solid #f4f4f4", radius: "25px", padding: "0px 16px", height: "40px", font: "15px / 400 / Pretendard", selected: "bg #121212, border 1px #121212, fg #ffffff, 15px / 700", states: "rest on four main-category tabs (home capture 36-39); the tab with class maintab_tabTitleActive (capture 35) differs from them and is recorded as selected; the bundle holds no state frame for any CGV element", use: "Public main-category tab" }
-    outline-action: { type: button, bg: "#ffffff", fg: "#121212", border: "1px solid #d9d9d9", radius: "20px", padding: "9px 24px", font: "14px / 500 / Pretendard", states: "rest on 33 movie-card actions per capture; rects vary with the carousel slide they sit on (e.g. 104px x 31px, 90px x 31px); no state frame", use: "Rounded public movie-card action (button.btn.btn-round32.line-gray.bg-white) at home::[data-omd-capture=\"49\"]" }
-    screen-format-badge: { type: badge, bg: "rgba(0, 0, 0, 0.55)", radius: "4px", padding: "0px 5px", height: "20px", use: "Movie-card screen-format marker (span.badge.screenType.img); all 15 sampled badges record no text (textLength 0), so no label colour or type is claimed" }
-    menu-row: { type: listItem, bg: "transparent", radius: "0px", height: "40px", use: "Observed public navigation/menu row (li.mets01390_linkItem, 200px x 40px, five per capture); its #121212 and 10px / 400 equal the page body's inherited values, so no label style is claimed" }
-    line-tab: { type: tab, bg: "transparent", fg: "#121212", padding: "2px 0px 8px", height: "25px", font: "15px / 500 / 15px Pretendard, tracking -0.225px", selected: "weight 700, tracking -0.3px; fg #121212 as at rest", states: "rest on five tabs (home capture 42-46); the tab with class linetabMini_tabTitleActive (capture 41) differs from them and is recorded as selected; the bundle holds no state frame for any CGV element", use: "Movie-chart line tab (button.linetabMini_tabTitle) at home::[data-omd-capture=\"42\"], 74px x 25px; the capture records no border on the tab element" }
-    like-button: { type: button, bg: "rgba(18, 18, 18, 0.2)", radius: "50%", size: "36px x 36px", states: "rest on 22-23 buttons per capture; copies on the smaller carousel slides render 27-33px; no state frame", use: "Circular like button (button.btn-like.dark) on the largest movie-chart poster at home::[data-omd-capture=\"51\"]; its own #121212 and 10px / 400 equal the page body's inherited values, so no label style is claimed" }
-    poster-card: { type: card, radius: "12px", size: "254px x 362px", shadow: "rgba(18, 18, 18, 0.24) 0px 20px 25px 0px on the largest card", states: "rest; 33 poster areas per capture; the largest records the shadow, the other 32 a zero-alpha shadow and smaller rects; no state frame", use: "Movie-chart poster area (div.mainMovieChartCard_imgArea) holding the poster image (img.mainMovieChartCard_poster, same rect); its text values are inherited, so no label style is claimed" }
-    search-input: { type: input, bg: "transparent", fg: "#000000", border: "1px #121212", radius: "8px", padding: "0px 52px 0px 16px", size: "530px x 46px", font: "14px / 400 / 19.6px Pretendard, tracking -0.2px", states: "rest, empty (textLength 0); no state frame", use: "Main search field (input.mainSearch_mainSearchInput) at home::[data-omd-capture=\"141\"]; its 52px right padding matches the 52px x 46px search button beside it (capture 143, radius 0px 8px 8px 0px)" }
-    search-shortcut-pill: { type: button, bg: "#ffffff", fg: "#121212", border: "1px #e9e9e9", radius: "30px", padding: "0px 12px", height: "46px", font: "13px / 500 / 13px Pretendard, tracking -0.2px", states: "rest on three pills (home capture 144-146); no state frame", use: "Search shortcut pill (button.mainSearch_searchBtn) at home::[data-omd-capture=\"145\"], 78px x 46px, below the search field; the two with class mainSearch_withImg (capture 144, 146) use 0px 12px 0px 6px padding" }
-    reserve-button: { type: button, bg: "transparent", fg: "#fc5555", border: "1px #fc5555", radius: "4px", padding: "8px", size: "60px x 29px", font: "11px / 500 / 11px Pretendard, tracking -0.165px", states: "rest; one per capture (surface-2 and surface-3 capture 151); no state frame", use: "Outline button with class btn_reserve at home::[data-omd-capture=\"152\"], inside the video article, below its player; the #fc5555 signal value is this button's text and border" }
-    text-link-button: { type: button, bg: "transparent", fg: "#707070", size: "77px x 20px", font: "14px / 400 / 19.6px Pretendard, tracking -0.21px", states: "rest; no state frame", use: "Movie-chart text button (button.mainMovieChart_linkBtn) at home::[data-omd-capture=\"47\"], at the end of the line-tab row; column gap 2px" }
-    footer-link: { type: button, bg: "transparent", fg: "#707070", padding: "0px 9px 0px 0px", height: "17px", font: "12px / 400 / 16.8px Pretendard, tracking -0.2px", states: "rest on eight footer links (home capture 21-28); no state frame", use: "Footer link (button.cgv-footer-link) at home::[data-omd-capture=\"21\"]; the last link of each row (capture 23, 25, 28) has 0px padding" }
-    common-select: { type: input, bg: "transparent", fg: "#121212", border: "1px #d9d9d9", radius: "10px", padding: "0px 16px", size: "200px x 48px", font: "14px / 400 / 19.6px Pretendard, tracking -0.2px", states: "rest; no state frame", use: "Native select (select.select_commonSelect) below the footer links at home::[data-omd-capture=\"29\"]" }
-    bottom-sheet: { type: dialog, bg: "#ffffff", radius: "24px 24px 0px 0px", padding: "20px 0px 32px", size: "600px x 391px", states: "open in all three captures (div.cgv-modal.cgv-bot-modal.active, role dialog); no state frame", use: "Promotional bottom sheet (div.main-modal-container), 600px wide and flush with the bottom of the 900px viewport (top 509px); its own #121212 10px / 400 is inherited page text, so no label style is claimed" }
-    sheet-close-button: { type: button, bg: "#f5f5f5", fg: "#707070", radius: "6px", padding: "8px 10px", size: "40px x 28px", font: "12px / 400 / 12px Pretendard, tracking -0.2px", states: "rest; no state frame", use: "Close button (button.mmns00008_close) in the bottom sheet at home::[data-omd-capture=\"8\"]; beside it a fill-less #707070 14px / 400 / 19.6px text button (button.mmns00008_today, capture 7)" }
-    round-outline-pill: { type: button, bg: "transparent", fg: "#ffffff", border: "1px #ffffff", radius: "100px", padding: "0px 12px", size: "90px x 34px", font: "12px / 500 / 16.8px Pretendard, tracking -0.2px", states: "rest; no state frame", use: "White outline pill (button.mets01390_roundBtn) at home::[data-omd-capture=\"30\"], under white 22px / 700 and 14px / 700 text (p.mets01390_title, p.mets01390_txt); the fill behind the three is not in the capture" }
+colors:
+  foreground: '#121212'
+  canvas: '#ffffff'
+  subtle: '#f4f4f4'
+  secondary: '#454545'
+  line: '#d9d9d9'
+  signal: '#fc5555'
+typography:
+  display:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: '-0.4px'
+    use: Observed prominent body-role heading
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: '-0.2px'
+    use: Observed public-page body and input copy
+  label:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: '-0.2px'
+    use: Observed category-tab label
+rounded:
+  badge: 4px
+  media: 16px
+  action: 20px
+  chip: 25px
+spacing:
+  dense: 10
+  sm: 8
+  base: 16
+  lg: 24
+components:
+  category-chip:
+    type: button
+    backgroundColor: '#f4f4f4'
+    textColor: '#454545'
+    border: '1px solid #f4f4f4'
+    rounded: 25px
+    padding: 0px 16px
+    height: 40px
+    typography: 15px / 400 / Pretendard
+    selected: 'bg #121212, border 1px #121212, fg #ffffff, 15px / 700'
+    states: rest on four main-category tabs (home capture 36-39); the tab with class maintab_tabTitleActive (capture 35) differs from them and is recorded as selected; the bundle holds no state frame for any CGV element
+    use: Public main-category tab
+  outline-action:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#121212'
+    border: '1px solid #d9d9d9'
+    rounded: 20px
+    padding: 9px 24px
+    typography: 14px / 500 / Pretendard
+    states: rest on 33 movie-card actions per capture; rects vary with the carousel slide they sit on (e.g. 104px x 31px, 90px x 31px); no state frame
+    use: Rounded public movie-card action (button.btn.btn-round32.line-gray.bg-white) at home::[data-omd-capture="49"]
+  screen-format-badge:
+    type: badge
+    backgroundColor: rgba(0, 0, 0, 0.55)
+    rounded: 4px
+    padding: 0px 5px
+    height: 20px
+    use: Movie-card screen-format marker (span.badge.screenType.img); all 15 sampled badges record no text (textLength 0), so no label colour or type is claimed
+  menu-row:
+    type: listItem
+    backgroundColor: transparent
+    rounded: 0px
+    height: 40px
+    use: 'Observed public navigation/menu row (li.mets01390_linkItem, 200px x 40px, five per capture); its #121212 and 10px / 400 equal the page body''s inherited values, so no label style is claimed'
+  line-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#121212'
+    padding: 2px 0px 8px
+    height: 25px
+    typography: 15px / 500 / 15px Pretendard, tracking -0.225px
+    selected: 'weight 700, tracking -0.3px; fg #121212 as at rest'
+    states: rest on five tabs (home capture 42-46); the tab with class linetabMini_tabTitleActive (capture 41) differs from them and is recorded as selected; the bundle holds no state frame for any CGV element
+    use: Movie-chart line tab (button.linetabMini_tabTitle) at home::[data-omd-capture="42"], 74px x 25px; the capture records no border on the tab element
+  like-button:
+    type: button
+    backgroundColor: rgba(18, 18, 18, 0.2)
+    rounded: 50%
+    size: 36px x 36px
+    states: rest on 22-23 buttons per capture; copies on the smaller carousel slides render 27-33px; no state frame
+    use: 'Circular like button (button.btn-like.dark) on the largest movie-chart poster at home::[data-omd-capture="51"]; its own #121212 and 10px / 400 equal the page body''s inherited values, so no label style is claimed'
+  poster-card:
+    type: card
+    rounded: 12px
+    size: 254px x 362px
+    shadow: rgba(18, 18, 18, 0.24) 0px 20px 25px 0px on the largest card
+    states: rest; 33 poster areas per capture; the largest records the shadow, the other 32 a zero-alpha shadow and smaller rects; no state frame
+    use: Movie-chart poster area (div.mainMovieChartCard_imgArea) holding the poster image (img.mainMovieChartCard_poster, same rect); its text values are inherited, so no label style is claimed
+  search-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#000000'
+    border: '1px #121212'
+    rounded: 8px
+    padding: 0px 52px 0px 16px
+    size: 530px x 46px
+    typography: 14px / 400 / 19.6px Pretendard, tracking -0.2px
+    states: rest, empty (textLength 0); no state frame
+    use: Main search field (input.mainSearch_mainSearchInput) at home::[data-omd-capture="141"]; its 52px right padding matches the 52px x 46px search button beside it (capture 143, radius 0px 8px 8px 0px)
+  search-shortcut-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#121212'
+    border: '1px #e9e9e9'
+    rounded: 30px
+    padding: 0px 12px
+    height: 46px
+    typography: 13px / 500 / 13px Pretendard, tracking -0.2px
+    states: rest on three pills (home capture 144-146); no state frame
+    use: Search shortcut pill (button.mainSearch_searchBtn) at home::[data-omd-capture="145"], 78px x 46px, below the search field; the two with class mainSearch_withImg (capture 144, 146) use 0px 12px 0px 6px padding
+  reserve-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#fc5555'
+    border: '1px #fc5555'
+    rounded: 4px
+    padding: 8px
+    size: 60px x 29px
+    typography: 11px / 500 / 11px Pretendard, tracking -0.165px
+    states: rest; one per capture (surface-2 and surface-3 capture 151); no state frame
+    use: 'Outline button with class btn_reserve at home::[data-omd-capture="152"], inside the video article, below its player; the #fc5555 signal value is this button''s text and border'
+  text-link-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#707070'
+    size: 77px x 20px
+    typography: 14px / 400 / 19.6px Pretendard, tracking -0.21px
+    states: rest; no state frame
+    use: Movie-chart text button (button.mainMovieChart_linkBtn) at home::[data-omd-capture="47"], at the end of the line-tab row; column gap 2px
+  footer-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#707070'
+    padding: 0px 9px 0px 0px
+    height: 17px
+    typography: 12px / 400 / 16.8px Pretendard, tracking -0.2px
+    states: rest on eight footer links (home capture 21-28); no state frame
+    use: Footer link (button.cgv-footer-link) at home::[data-omd-capture="21"]; the last link of each row (capture 23, 25, 28) has 0px padding
+  common-select:
+    type: input
+    backgroundColor: transparent
+    textColor: '#121212'
+    border: '1px #d9d9d9'
+    rounded: 10px
+    padding: 0px 16px
+    size: 200px x 48px
+    typography: 14px / 400 / 19.6px Pretendard, tracking -0.2px
+    states: rest; no state frame
+    use: Native select (select.select_commonSelect) below the footer links at home::[data-omd-capture="29"]
+  bottom-sheet:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 24px 24px 0px 0px
+    padding: 20px 0px 32px
+    size: 600px x 391px
+    states: open in all three captures (div.cgv-modal.cgv-bot-modal.active, role dialog); no state frame
+    use: 'Promotional bottom sheet (div.main-modal-container), 600px wide and flush with the bottom of the 900px viewport (top 509px); its own #121212 10px / 400 is inherited page text, so no label style is claimed'
+  sheet-close-button:
+    type: button
+    backgroundColor: '#f5f5f5'
+    textColor: '#707070'
+    rounded: 6px
+    padding: 8px 10px
+    size: 40px x 28px
+    typography: 12px / 400 / 12px Pretendard, tracking -0.2px
+    states: rest; no state frame
+    use: 'Close button (button.mmns00008_close) in the bottom sheet at home::[data-omd-capture="8"]; beside it a fill-less #707070 14px / 400 / 19.6px text button (button.mmns00008_today, capture 7)'
+  round-outline-pill:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    border: '1px #ffffff'
+    rounded: 100px
+    padding: 0px 12px
+    size: 90px x 34px
+    typography: 12px / 500 / 16.8px Pretendard, tracking -0.2px
+    states: rest; no state frame
+    use: White outline pill (button.mets01390_roundBtn) at home::[data-omd-capture="30"], under white 22px / 700 and 14px / 700 text (p.mets01390_title, p.mets01390_txt); the fill behind the three is not in the capture
+fonts:
+  roles:
+    sans: Pretendard
 ---
 
 # Design System Inspiration of CGV
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 CGV is Korea’s multiplex cinema brand and a consumer-facing service for finding films, choosing a theatre, and moving toward a viewing experience. Its recognizable expression pairs the practical density of a ticketing and programme surface with cinema-oriented moments: black `#121212` text and outlines, an open white `#ffffff` canvas, small screen-format labels, compact movie metadata, and rounded actions around discovery. That restrained public-web palette does not by itself establish a historical CGV logo or corporate colour system; it describes the supplied current surface only. CGV introduced the multiplex format in Korea with Gangbyeon in 1998 and has evolved its stated Cultureplex proposition beyond a conventional screening venue. Its 2024 sustainability report describes a rebranding campaign around “Deep Dive Space,” positioning the business around immersive experience, special formats, CGV-only content, and expanded space use.
 
@@ -244,13 +208,42 @@ The captured interface is crisp and utility-led rather than theatrical by defaul
 - Compact 12px, 13px, 14px, 15px, and 22px observed text roles; the 10px on the page body and its wrappers is the inherited root size, not a rendered label (corrected 2026-09-30)
 - Rest values for tabs, buttons, fields, a select, a bottom sheet, poster cards, badges, and a navigation row, plus two class-marked selected tabs; the bundle holds no hover, pressed, or focus frame
 
-## Primary tasks
+### Primary tasks
 
 - Find a film and choose a theatre to watch it in
 - Pick a screening by title, time, location, and format
 - Choose a special-format screening such as 4DX or ScreenX
 
-## 2. Color Palette & Roles
+### Iconography & Imagery
+
+- Movie artwork and screen-format labels carry much of the public discovery context; the verified badge sits as a compact overlay.
+- `swiper-icons` is declared-only and is not promoted as a CGV icon token.
+- No CGV brand-icon grid, illustration style, or imagery treatment beyond these supplied public observations is specified here.
+
+### Brand Narrative
+
+CGV opened Gangbyeon in 1998 as Korea’s first multiplex and later formed the CJ CGV corporate identity through the CJ Village / CJ Golden Village lineage. The official history describes a shift away from the single-screen cinema model toward a cultural space that connects film viewing with adjacent lifestyle experiences.
+
+The current corporate narrative calls this direction Cultureplex: a comprehensive cultural and lifestyle space built around differentiated viewing environments, services, and content. In 2024 CGV documented a “Deep Dive Space” rebranding campaign, connecting special-format expansion, CGV-only content, and broader use of physical space to a more immersive experience.
+
+This narrative is official brand context, not a substitute for UI evidence. The canonical tokens remain limited to the supplied public-web capture.
+
+### Principles
+
+1. **Evolve beyond a screening transaction.** CGV’s official mission frames the brand as more than a film-viewing environment. *UI implication:* connect practical selection steps to confirmed format and venue context.
+2. **Make differentiated experiences legible.** Special formats and content are part of the stated direction. *UI implication:* present verified format information as clear, compact metadata.
+3. **Design for cultural use, not only attendance.** The Cultureplex proposition treats the venue as a broader cultural space. *UI implication:* avoid reducing supporting discovery content to decoration when it informs a real visit.
+4. **Keep practical decisions clear.** A cinema service still needs reliable choices around title, time, location, and format. *UI implication:* preserve strong text hierarchy and explicit actions.
+
+### Personas
+
+These are stakeholder groups stated or directly implied by first-party CGV materials, not fictional personas or synthetic research.
+
+- **Moviegoers:** people choosing a film, a theatre, and a viewing format; the public experience should keep essential selection information clear.
+- **Cultureplex visitors:** audiences using a cinema venue as a broader cultural and leisure destination, consistent with CGV’s stated Cultureplex direction.
+- **Special-format audiences and partners:** people engaging with differentiated formats such as 4DX or ScreenX; format claims should remain accurate and specific.
+
+## Colors
 
 ### Current public-surface colors
 
@@ -264,7 +257,7 @@ The captured interface is crisp and utility-led rather than theatrical by defaul
 
 No verified current error, success, warning, hover, pressed, or focus palette was supplied. Those groups are omitted.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence boundary
 
@@ -294,7 +287,31 @@ No verified current error, success, warning, hover, pressed, or focus palette wa
 
 Corrected 2026-09-30: a "Screen marker" row (11px / 700 / 19px) described the screen-format badge, but all 15 sampled badges record no text (textLength 0), so it was not a rendered text style and is withdrawn. The 10px / 400 / 10px on the page body, wrappers, the menu row, and icon buttons is the root size those elements inherit, not a label.
 
-## 4. Component Stylings
+## Layout
+
+- Use white public surfaces and a near-black information hierarchy where the captured CGV pattern is relevant.
+- Keep dense content roles compact: 12-14px metadata, 8/10/16/24px recurring spacing, and 40px category/menu controls where specifically observed (10px is the inherited root size, not a metadata style; corrected 2026-09-30).
+- Treat rounded controls as role-specific: 25px category chip, 20px outline action, 16px media, and 4px badge.
+- Do not generalize the supplied home capture into authenticated seat selection, payment, or theatre-operation layouts.
+
+### Responsive Behavior
+
+- The supplied evidence confirms public components across three capture surfaces but does not establish a responsive breakpoint system.
+- Preserve the observed component values only where they remain appropriate; breakpoint, navigation collapse, and seat-map behavior are unresolved.
+
+## Elevation & Depth
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No duration, easing, transition, or animated-state value is present in the supplied evidence. No motion token is prescribed for CGV in this reference.
+
+## Components
 
 ### Current verified components
 
@@ -383,82 +400,7 @@ The capture contains 383 component variants over three captures of the same URL 
 **Tier 2 sources:** https://getdesign.md/cgv (attempted; unavailable) · https://styles.refero.design/?q=cgv (attempted; unavailable)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
-
-- Use white public surfaces and a near-black information hierarchy where the captured CGV pattern is relevant.
-- Keep dense content roles compact: 12-14px metadata, 8/10/16/24px recurring spacing, and 40px category/menu controls where specifically observed (10px is the inherited root size, not a metadata style; corrected 2026-09-30).
-- Treat rounded controls as role-specific: 25px category chip, 20px outline action, 16px media, and 4px badge.
-- Do not generalize the supplied home capture into authenticated seat selection, payment, or theatre-operation layouts.
-
-## 6. Iconography & Imagery
-
-- Movie artwork and screen-format labels carry much of the public discovery context; the verified badge sits as a compact overlay.
-- `swiper-icons` is declared-only and is not promoted as a CGV icon token.
-- No CGV brand-icon grid, illustration style, or imagery treatment beyond these supplied public observations is specified here.
-
-## 7. Do's and Don'ts
-
-### Do
-
-- Preserve a clear contrast hierarchy with `#121212` content on `#ffffff` surfaces.
-- Use the verified rounded category and outline-action patterns only in their observed public roles.
-- Keep screen-format metadata compact and subordinate to movie information.
-
-### Don't
-
-- Treat the low-frequency `#fc5555` observation as a universal CGV primary or error colour.
-- Add hover, focus, pressed, disabled, or error component values from assumptions.
-- Substitute Roboto, swiper-icons, or a system fallback as though it were the loaded Pretendard UI family.
-
-## 8. Responsive Behavior
-
-- The supplied evidence confirms public components across three capture surfaces but does not establish a responsive breakpoint system.
-- Preserve the observed component values only where they remain appropriate; breakpoint, navigation collapse, and seat-map behavior are unresolved.
-
-## 9. Accessibility Notes
-
-- Maintain the observed high-contrast `#121212` / `#ffffff` reading hierarchy when applying these public patterns.
-- The supplied capture has no focus or error-state observation; accessible focus treatment and form validation styling require separate verified evidence.
-- Do not rely on screen-format badge colour alone to convey movie-format information.
-
-## 10. Voice & Tone
-
-The corporate material frames CGV around immersive, differentiated cultural experience; public UI copy should be direct, experience-oriented, and concise rather than overly cinematic.
-
-| Voice quality | Use | Avoid |
-|---|---|---|
-| Clear | Name the film, theatre, format, and next action plainly. | Vague promotional instructions. |
-| Immersive | Describe a confirmed format or space experience. | Promising an unverified sensory outcome. |
-| Considerate | Give timing and booking information in compact language. | Hiding practical constraints behind campaign language. |
-
-- “영화와 상영 시간을 선택하세요.” *(illustrative; no claim of current CGV copy)*
-- “특별관 정보를 확인하세요.” *(illustrative; no claim of current CGV copy)*
-- “예매 내용을 다시 확인하세요.” *(illustrative; no claim of current CGV copy)*
-
-## 11. Brand Narrative
-
-CGV opened Gangbyeon in 1998 as Korea’s first multiplex and later formed the CJ CGV corporate identity through the CJ Village / CJ Golden Village lineage. The official history describes a shift away from the single-screen cinema model toward a cultural space that connects film viewing with adjacent lifestyle experiences.
-
-The current corporate narrative calls this direction Cultureplex: a comprehensive cultural and lifestyle space built around differentiated viewing environments, services, and content. In 2024 CGV documented a “Deep Dive Space” rebranding campaign, connecting special-format expansion, CGV-only content, and broader use of physical space to a more immersive experience.
-
-This narrative is official brand context, not a substitute for UI evidence. The canonical tokens remain limited to the supplied public-web capture.
-
-## 12. Principles
-
-1. **Evolve beyond a screening transaction.** CGV’s official mission frames the brand as more than a film-viewing environment. *UI implication:* connect practical selection steps to confirmed format and venue context.
-2. **Make differentiated experiences legible.** Special formats and content are part of the stated direction. *UI implication:* present verified format information as clear, compact metadata.
-3. **Design for cultural use, not only attendance.** The Cultureplex proposition treats the venue as a broader cultural space. *UI implication:* avoid reducing supporting discovery content to decoration when it informs a real visit.
-4. **Keep practical decisions clear.** A cinema service still needs reliable choices around title, time, location, and format. *UI implication:* preserve strong text hierarchy and explicit actions.
-
-## 13. Personas
-
-These are stakeholder groups stated or directly implied by first-party CGV materials, not fictional personas or synthetic research.
-
-- **Moviegoers:** people choosing a film, a theatre, and a viewing format; the public experience should keep essential selection information clear.
-- **Cultureplex visitors:** audiences using a cinema venue as a broader cultural and leisure destination, consistent with CGV’s stated Cultureplex direction.
-- **Special-format audiences and partners:** people engaging with differentiated formats such as 4DX or ScreenX; format claims should remain accurate and specific.
-
-## 14. States
+### States
 
 Observed: two class-marked selected tabs — the main-category tab (`maintab_tabTitleActive`: `#121212` fill and border, `#ffffff` label at 700) and the movie-chart line tab (`linetabMini_tabTitleActive`: 700, tracking -0.3px) — and the bottom sheet, open in all three captures. The bundle holds no hover, pressed, or focus frame for any element, so none is declared. Two class markers have no unmarked sibling to compare against (`button.cgv-footer-content-title.active`, the search banner's `mainSearch_active`), so neither is recorded as a state. The following content requirements are not token values and must be designed only with separately verified visual evidence.
 
@@ -472,6 +414,46 @@ Observed: two class-marked selected tabs — the main-category tab (`maintab_tab
 | Skeleton | Reserve structure without asserting unmeasured geometry. |
 | Disabled | Explain why a booking or selection action cannot proceed. |
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-No duration, easing, transition, or animated-state value is present in the supplied evidence. No motion token is prescribed for CGV in this reference.
+### Do
+
+- Preserve a clear contrast hierarchy with `#121212` content on `#ffffff` surfaces.
+- Use the verified rounded category and outline-action patterns only in their observed public roles.
+- Keep screen-format metadata compact and subordinate to movie information.
+
+### Don't
+
+- Treat the low-frequency `#fc5555` observation as a universal CGV primary or error colour.
+- Add hover, focus, pressed, disabled, or error component values from assumptions.
+- Substitute Roboto, swiper-icons, or a system fallback as though it were the loaded Pretendard UI family.
+
+## Voice & Tone
+
+The corporate material frames CGV around immersive, differentiated cultural experience; public UI copy should be direct, experience-oriented, and concise rather than overly cinematic.
+
+| Voice quality | Use | Avoid |
+|---|---|---|
+| Clear | Name the film, theatre, format, and next action plainly. | Vague promotional instructions. |
+| Immersive | Describe a confirmed format or space experience. | Promising an unverified sensory outcome. |
+| Considerate | Give timing and booking information in compact language. | Hiding practical constraints behind campaign language. |
+
+- “영화와 상영 시간을 선택하세요.” *(illustrative; no claim of current CGV copy)*
+- “특별관 정보를 확인하세요.” *(illustrative; no claim of current CGV copy)*
+- “예매 내용을 다시 확인하세요.” *(illustrative; no claim of current CGV copy)*
+
+## Governance
+
+### Accessibility Notes
+
+- Maintain the observed high-contrast `#121212` / `#ffffff` reading hierarchy when applying these public patterns.
+- The supplied capture has no focus or error-state observation; accessible focus treatment and form validation styling require separate verified evidence.
+- Do not rely on screen-format badge colour alone to convey movie-format information.
+
+### Known Gaps
+
+- **Contrast, `line-tab`.** Text `#121212` on `#00000000` measures 1.12:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-input`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `text-link-button`.** Text `#707070` on `#00000000` measures 4.24:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-link`.** Text `#707070` on `#00000000` measures 4.24:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `common-select`.** Text `#121212` on `#00000000` measures 1.12:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

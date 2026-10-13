@@ -1,0 +1,340 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "bmw",
+    "name": "BMW",
+    "country": "DE",
+    "category": "automotive",
+    "homepage": "https://www.bmw.com",
+    "primary_color": "#1c69d4",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "bmw"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "components_harvested": false
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-marketing",
+        "url": "https://www.bmwusa.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "models",
+        "kind": "vehicle-catalog",
+        "url": "https://www.bmwusa.com/vehicles/all-bmw-models.html",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "configurator",
+        "kind": "configurator-marketing",
+        "url": "https://www.bmwusa.com/build-your-own.html#/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.bmwusa.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "models-live",
+        "kind": "product-surface",
+        "url": "https://www.bmwusa.com/vehicles/all-bmw-models.html",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "configurator-live",
+        "kind": "product-surface",
+        "url": "https://www.bmwusa.com/build-your-own.html#/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "bmwtype-web-assets",
+        "kind": "brand-asset",
+        "url": "https://www.bmwusa.com/etc.clientlibs/bmw-web/clientlibs/clientlib-site/resources/fonts/BMWTypeNext-Regular.woff2",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "bmw-club-ci",
+        "kind": "official-doc",
+        "url": "https://www.bmwgroup-werke.com/content/dam/grpw/websites/bmwgroup-classic_com/bmw_clubs/downloads/leitlinien/en/BCIC_Guideline_no5_version2.1.1.pdf",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "bmw-brand-design",
+        "kind": "official-doc",
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0306305EN/introducing-bmw%E2%80%99s-new-brand-design-for-online-and-offline-communication?language=en",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "bmw-history",
+        "kind": "official-doc",
+        "url": "https://www.bmwgroup.com/en/company/history.html",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "bmw-neue-klasse",
+        "kind": "official-doc",
+        "url": "https://www.bmwgroup.com/en/company/neue-klasse.html",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-dark": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.outline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground-configurator": {
+        "surface_id": "configurator",
+        "source_id": "configurator-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "bmwtype-web-assets",
+        "method": "computed-font-face",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.utility.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.utility.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.utility.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.utility.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-4": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-12": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-24": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.space-32": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 4,
+      "infos": 3
+    },
+    "byRule": {
+      "unknown-typography-property": 4
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.utility.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "264cf6d0bdbfa0287e32492116a35d23d8f8f26da94b98ee66dc7f96275fe095",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.body.fontSize",
+      "typography.control.fontSize",
+      "typography.utility.fontSize",
+      "rounded.none",
+      "rounded.control"
+    ],
+    "emptyMaps": [
+      "components"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "components_harvested",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "body",
+        "control",
+        "utility"
+      ]
+    }
+  }
+}

@@ -1,0 +1,431 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "recruit",
+    "name": "リクルート",
+    "country": "JP",
+    "category": "productivity",
+    "homepage": "https://www.recruit.co.jp/",
+    "primary_color": "#0065bd",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=recruit.co.jp&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "note": "Only selector- and surface-backed values from three public Recruit corporate surfaces are canonical. Recruit Holdings narrative, third-party font licensing, and declared-only faces remain separate evidence domains.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "corporate-home",
+        "kind": "product",
+        "url": "https://www.recruit.co.jp/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "productivity",
+        "kind": "product",
+        "url": "https://www.recruit.co.jp/sustainability/improve-productivity/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "about-rss",
+        "kind": "product",
+        "url": "https://www.recruit.co.jp/about_rss/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "corporate-home-live",
+        "kind": "product-surface",
+        "url": "https://www.recruit.co.jp/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "productivity-live",
+        "kind": "product-surface",
+        "url": "https://www.recruit.co.jp/sustainability/improve-productivity/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "about-rss-live",
+        "kind": "product-surface",
+        "url": "https://www.recruit.co.jp/about_rss/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "group-about",
+        "kind": "official-doc",
+        "url": "https://recruit-holdings.com/en/about/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "group-history",
+        "kind": "official-doc",
+        "url": "https://recruit-holdings.com/en/about/history/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "group-values",
+        "kind": "official-doc",
+        "url": "https://recruit-holdings.com/ja/about/vision-mission-values/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "tazugane-license",
+        "kind": "license",
+        "url": "https://www.monotype.com/fonts/tazugane",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.foreground": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.subtle": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.accent": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.surface-subtle": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.spacing": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.latin-heading": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontSize": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontWeight": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.lineHeight": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.use": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontSize": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontWeight": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.lineHeight": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.control.use": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xxl": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.none": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.side-control": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-navigation-item.type": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-navigation-item.textColor": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-navigation-item.border": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-navigation-item.rounded": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-navigation-item.padding": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-navigation-item.typography": {
+        "surface_id": "productivity",
+        "source_id": "productivity-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 13,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 2,
+      "missing-primary": 1,
+      "orphaned-tokens": 7
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-navigation-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-navigation-item.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.subtle",
+        "message": "'subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent",
+        "message": "'accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.surface-subtle",
+        "message": "'surface-subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "46f39e862fd127a7dc977058ec786c9e9d0b5b8b7314e1e71cff0256ee60eea9",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.heading.fontSize",
+      "typography.control.fontSize",
+      "rounded.none",
+      "rounded.side-control",
+      "components.primary-navigation-item.rounded"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "heading",
+        "control"
+      ]
+    }
+  }
+}

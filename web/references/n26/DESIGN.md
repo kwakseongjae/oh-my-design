@@ -1,123 +1,77 @@
 ---
-id: n26
 name: N26
-country: DE
-category: fintech
-homepage: "https://n26.com"
-primary_color: "#088177"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=n26.com&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-ds:
-  name: "N26 web tokens (nemo)"
-  url: "https://n26.com/de-de"
-  type: system
-  description: "About 250 authored custom properties on n26.com, beside Tailwind v4's engine variables. Colours are ramps named for the 2018 rebrand's palette — teal, rhubarb, lagoon (petrol blue), sand (golden wheat) and cream — each aliased under a --color-nemo* name; type, spacing, radius and tracking are nemo-prefixed scales. The family names N26 and N26-Extended are served from GT America font files."
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    primary: "#088177"
-    primary-strong: "#045e58"
-    primary-deep: "#005451"
-    primary-heavy: "#003b39"
-    primary-light: "#a8ded8"
-    primary-bright: "#d8edeb"
-    primary-mist: "#809d9c"
-    rhubarb: "#b55b64"
-    rhubarb-strong: "#b04364"
-    rhubarb-deep: "#8e1b44"
-    rhubarb-light: "#ffdce1"
-    lagoon: "#1d6ea2"
-    lagoon-deep: "#00395f"
-    lagoon-light: "#c6eaff"
-    sand: "#c6b29f"
-    cream: "#faf8f5"
-    cream-deep: "#ede7e0"
-    foreground: "#1b1b1b"
-    gray-strong: "#6d6d6d"
-    gray-deep: "#2a2a2a"
-    gray-line: "#d9d9d9"
-    canvas: "#ffffff"
-  typography:
-    family: { sans: "N26", display: "N26-Extended" }
-    body: { size: 16, use: "N26 400/500; the buttons at 500" }
-  rounded: { xs: 2, sm: 4, md: 8, lg: 16, pill: 24, xl: 32, xxl: 40 }
-  components:
-    button-primary: { type: "button", bg: "#003b39", fg: "#ffffff", radius: 24, height: "48px", padding: "12px 24px", font: "16px / 500", hover: "#045e58", focus: "ring 0 0 0 2px #ffffff, 0 0 0 4px #045e58", use: "Girokonto eröffnen — the account-opening pill in --color-nemoTealHeavy. Hover lightens to --color-nemoTealStrong over 0.15s; focus draws a double ring, 2px white inside 4px teal." }
-    button-tonal: { type: "button", bg: "rgba(198,178,159,0.25)", fg: "#003b39", radius: 24, height: "48px", padding: "12px 24px", font: "16px / 500", hover: "rgba(198,178,159,0.5)", focus: "ring 0 0 0 2px #ffffff, 0 0 0 4px #045e58", use: "Login in the header — sand at 25% (--color-nemoSand25) with a deep-teal label. Hover doubles the sand to 50%; focus is the same double ring." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://n26.com/de-de", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://n26.com/de-de", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://n26.com/zz-this-does-not-exist-omd-probe", captured: "2026-09-26" }
-    - { id: rebrand-2018, kind: official-doc, url: "https://n26.com/en-eu/blog/n26-new-logo-new-colors", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.cream: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.cream-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.gray-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.gray-line: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.gray-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.lagoon: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.lagoon-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.lagoon-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-bright: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-heavy: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-mist: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.rhubarb: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.rhubarb-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.rhubarb-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.rhubarb-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.sand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-tonal.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.xxl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.display: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  primary: '#088177'
+  primary-strong: '#045e58'
+  primary-deep: '#005451'
+  primary-heavy: '#003b39'
+  primary-light: '#a8ded8'
+  primary-bright: '#d8edeb'
+  primary-mist: '#809d9c'
+  rhubarb: '#b55b64'
+  rhubarb-strong: '#b04364'
+  rhubarb-deep: '#8e1b44'
+  rhubarb-light: '#ffdce1'
+  lagoon: '#1d6ea2'
+  lagoon-deep: '#00395f'
+  lagoon-light: '#c6eaff'
+  sand: '#c6b29f'
+  cream: '#faf8f5'
+  cream-deep: '#ede7e0'
+  foreground: '#1b1b1b'
+  gray-strong: '#6d6d6d'
+  gray-deep: '#2a2a2a'
+  gray-line: '#d9d9d9'
+  canvas: '#ffffff'
+typography:
+  body:
+    fontSize: 16px
+    use: N26 400/500; the buttons at 500
+rounded:
+  xs: 2px
+  sm: 4px
+  md: 8px
+  lg: 16px
+  pill: 24px
+  xl: 32px
+  xxl: 40px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#003b39'
+    textColor: '#ffffff'
+    rounded: 24px
+    height: 48px
+    padding: 12px 24px
+    typography: 16px / 500
+    hover: '#045e58'
+    focus: 'ring 0 0 0 2px #ffffff, 0 0 0 4px #045e58'
+    use: Girokonto eröffnen — the account-opening pill in --color-nemoTealHeavy. Hover lightens to --color-nemoTealStrong over 0.15s; focus draws a double ring, 2px white inside 4px teal.
+  button-tonal:
+    type: button
+    backgroundColor: rgba(198,178,159,0.25)
+    textColor: '#003b39'
+    rounded: 24px
+    height: 48px
+    padding: 12px 24px
+    typography: 16px / 500
+    hover: rgba(198,178,159,0.5)
+    focus: 'ring 0 0 0 2px #ffffff, 0 0 0 4px #045e58'
+    use: Login in the header — sand at 25% (--color-nemoSand25) with a deep-teal label. Hover doubles the sand to 50%; focus is the same double ring.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: N26
+    display: N26-Extended
 ---
+
 # Design System Inspiration of N26
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 N26 is a mobile bank from Berlin — a current account opened and run from a phone. Its look was set
 in a rebrand announced on its own blog on 19 December 2018: a rounder, heavier logo, a new typeface,
@@ -141,11 +95,28 @@ What makes it worth reading:
   `--radius-nemo24`, `--tracking-nemoWide` — one prefix across the system.
 - **Focus is a double ring**: 2px of white inside 4px of teal, on every measured button.
 
-### Primary tasks
+#### Primary tasks
 - Open a current account (Girokonto eröffnen); log in.
 - Compare account plans; read about banking, saving, investing and travel.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+N26 set out to be a bank people might like, and its 2018 rebrand said so in colour: familiar hues —
+a blue, a yellow, a green — each made slightly unusual. The site has kept that palette intact, named
+every token in one consistent vocabulary, and put its care into details like a focus ring that works
+on any background and fallback fonts tuned so text does not shift as the brand face arrives.
+
+### Principles
+
+- **Familiar, then unusual.** Teal, wheat, rhubarb, petrol.
+- **One vocabulary.** Every token is nemo-named.
+- **Soft and round.** Cream grounds, pill buttons, a soft black.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `n26.com/de-de`: 305 root custom properties. **Tailwind v4's
 engine variables are excluded** (29 `--tw-*`, and the stock container and drop-shadow scales), as
@@ -180,7 +151,7 @@ the colours are Tailwind defaults — all are flat hex values.
 - **Cream** (`#faf8f5`) — `--color-nemoCream`, section backgrounds · **Cream Deep** (`#ede7e0`) ·
   **Canvas** (`#ffffff`).
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -201,7 +172,36 @@ load.
 `--font-weight-nemoNormal` 400 and `-nemoMedium` 500. Tracking is slightly open:
 `--tracking-nemoWide` 0.015625em, `-nemoWider` 0.01875em.
 
-## 4. Component Stylings
+## Layout
+
+- Spacing tokens `--spacing-nemo0 … nemo132` in pixels.
+- Named z-index layers: tooltip 980, floating button 990, overlay-under-header 995, dialog 998,
+  header 999, overlay 1000, modal 1001.
+- Header heights are tokens per breakpoint (63 / 69 / 73px); section heights are computed from the
+  viewport minus the header.
+
+### Responsive Behavior
+
+**Not measured** beyond the breakpoint header-height tokens. Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+Flat at rest — no drop shadows in the measured view. Separation comes from cream and sand fills and
+from radius. The only shadow is the focus ring.
+
+## Motion & Easing
+
+Buttons transition over `--default-transition-duration` 0.15s; 16 `--animate-*` shorthands (slideUp,
+fadeIn, accordionSlideDown/Up, shimmer, scaleIn/Out, dropDownScaleIn/Out) and three `--ease-*`
+curves are declared.
+
+---
+
+**Tier 1 sources:** https://n26.com/de-de (live homepage — 305 root custom properties read via `getComputedStyle`, Tailwind and build variables excluded; two components measured at rest, hover and focus after rejecting the consent banner; N26 and N26-Extended loaded, captured 2026-09-26); https://n26.com/zz-this-does-not-exist-omd-probe (nonsense-path control — a real HTTP 404, "Whoops, that page cannot be found", captured 2026-09-26); https://n26.com/en-eu/blog/n26-new-logo-new-colors (N26 blog, 2018-12-19 — "Introducing our new look": teal, golden wheat, rhubarb and petrol blue; Christian Hertlein's quote; a new logo and typeface, read 2026-09-26)
+
+**Regional sources:** https://www.deutsche-startups.de/2018/03/20/5-knallharte-fakten-zum-fintech-wunderkind-n26/ (deutsche-startups.de, 2018-03-20 — "5 knallharte Fakten zum FinTech-Wunderkind N26")
+
+## Components
 
 Two components, measured in one browser session after rejecting the consent banner (Usercentrics),
 focus read under a real Tab key before the pointer moved, hover confirmed with `:hover` matched.
@@ -221,20 +221,13 @@ a teal ring, readable on white and on teal alike.
 `--radius-nemo2 … nemo40`. Rendered: **16px** ×39 (cards), **24px** ×27 (pills), 32px ×13, 8px ×9,
 40px ×8, fully round ×8, plus top-only `8px 8px 0 0` and `16px 16px 0 0`.
 
-## 5. Layout Principles
+### States
 
-- Spacing tokens `--spacing-nemo0 … nemo132` in pixels.
-- Named z-index layers: tooltip 980, floating button 990, overlay-under-header 995, dialog 998,
-  header 999, overlay 1000, modal 1001.
-- Header heights are tokens per breakpoint (63 / 69 / 73px); section heights are computed from the
-  viewport minus the header.
+Two components. Hover: the primary lightens to `#045e58`; the tonal button doubles its sand. Focus:
+the double ring on both. The plan-selection buttons, tabs and FAQ accordions on the comparison page
+were not measured. No disabled state was observed.
 
-## 6. Depth & Elevation
-
-Flat at rest — no drop shadows in the measured view. Separation comes from cream and sand fills and
-from radius. The only shadow is the focus ring.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Keep to the four rebrand families: teal, rhubarb, lagoon, sand.
@@ -247,11 +240,12 @@ from radius. The only shadow is the focus ring.
 - Don't use pure black for text; the ink is `#1b1b1b`.
 - Don't square off buttons — they are pills.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured** beyond the breakpoint header-height tokens. Desktop 1440×1000 only.
+Not assessed as authored voice. The German page is functional ("Girokonto eröffnen"); the English
+page leads with "Love your bank".
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#088177` teal · `#045e58` teal strong · `#003b39` teal heavy · `#b55b64` rhubarb · `#1d6ea2`
@@ -261,43 +255,3 @@ lagoon · `#c6b29f` sand · `#faf8f5` cream · `#1b1b1b` ink · `#ffffff` white
 - "A 48px pill: `#003b39`, white 16px/500, 24px radius; hover `#045e58`; focus
   `0 0 0 2px #fff, 0 0 0 4px #045e58`."
 - "A tonal pill: sand `rgba(198,178,159,0.25)` with a `#003b39` label; hover 50% sand."
-
-## 10. Voice & Tone
-
-Not assessed as authored voice. The German page is functional ("Girokonto eröffnen"); the English
-page leads with "Love your bank".
-
-## 11. Brand Narrative
-
-N26 set out to be a bank people might like, and its 2018 rebrand said so in colour: familiar hues —
-a blue, a yellow, a green — each made slightly unusual. The site has kept that palette intact, named
-every token in one consistent vocabulary, and put its care into details like a focus ring that works
-on any background and fallback fonts tuned so text does not shift as the brand face arrives.
-
-## 12. Principles
-
-- **Familiar, then unusual.** Teal, wheat, rhubarb, petrol.
-- **One vocabulary.** Every token is nemo-named.
-- **Soft and round.** Cream grounds, pill buttons, a soft black.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Two components. Hover: the primary lightens to `#045e58`; the tonal button doubles its sand. Focus:
-the double ring on both. The plan-selection buttons, tabs and FAQ accordions on the comparison page
-were not measured. No disabled state was observed.
-
-## 15. Motion & Easing
-
-Buttons transition over `--default-transition-duration` 0.15s; 16 `--animate-*` shorthands (slideUp,
-fadeIn, accordionSlideDown/Up, shimmer, scaleIn/Out, dropDownScaleIn/Out) and three `--ease-*`
-curves are declared.
-
----
-
-**Tier 1 sources:** https://n26.com/de-de (live homepage — 305 root custom properties read via `getComputedStyle`, Tailwind and build variables excluded; two components measured at rest, hover and focus after rejecting the consent banner; N26 and N26-Extended loaded, captured 2026-09-26); https://n26.com/zz-this-does-not-exist-omd-probe (nonsense-path control — a real HTTP 404, "Whoops, that page cannot be found", captured 2026-09-26); https://n26.com/en-eu/blog/n26-new-logo-new-colors (N26 blog, 2018-12-19 — "Introducing our new look": teal, golden wheat, rhubarb and petrol blue; Christian Hertlein's quote; a new logo and typeface, read 2026-09-26)
-
-**Regional sources:** https://www.deutsche-startups.de/2018/03/20/5-knallharte-fakten-zum-fintech-wunderkind-n26/ (deutsche-startups.de, 2018-03-20 — "5 knallharte Fakten zum FinTech-Wunderkind N26")

@@ -1,208 +1,139 @@
 ---
-id: newspicks
 name: NewsPicks
-country: JP
-category: consumer-tech
-homepage: "https://newspicks.com"
-primary_color: "#146AF5"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=newspicks.com&sz=128"
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "NewsPicks semantic tokens"
-  url: "https://newspicks.com/"
-  type: system
-  description: "220 custom properties with no framework among them: an 84-step --palette-* ramp underneath four parallel semantic families named for what is being painted — surface 53, text 22, object 19, border 19 — each carrying role, emphasis and state. Beside them sit product families the product itself needs: a Premium green, an AI purple, a BookPicks cream, a read/unread pair, and a brand colour for each third-party sign-in."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    accent: "#146af5"
-    accent-hover: "#0032ca"
-    accent-inverse: "#4b9dfa"
-    accent-surface: "#ebf3ff"
-    accent-surface-hover: "#d6e6ff"
-    foreground: "#222222"
-    disabled: "#a3a3a3"
-    canvas: "#ffffff"
-    premium: "#00b357"
-    premium-hover: "#007d3c"
-    premium-surface: "#f0faf5"
-    campaign-yellow: "#ffc800"
-    ai: "#9b2cc1"
-    bookpicks: "#f7f3eb"
-    highlight: "#ffe86b"
-    investment-gold: "#886c0f"
-    caution: "#de3535"
-    caution-hover: "#ab0000"
-    recommend: "#ed5353"
-    success: "#018a26"
-    success-hover: "#044f20"
-    success-surface: "#e8ffe8"
-    caution-surface: "#fff0f0"
-    caution-surface-hover: "#ffdbdb"
-    unread: "#ebf3ff"
-    unread-hover: "#d6e6ff"
-    inverse-hover: "#474747"
-    palette-blue-100: "#d6e6ff"
-    palette-blue-400: "#4b9dfa"
-    palette-blue-500: "#2986ff"
-    palette-blue-700: "#0040e0"
-    palette-gray-100: "#e6e6e6"
-    palette-gray-500: "#616161"
-    palette-gray-700: "#333333"
-    palette-red-50: "#fff0f0"
-    palette-red-100: "#ffdbdb"
-    palette-red-400: "#fa7373"
-    palette-red-700: "#d41717"
-    palette-green-100: "#d0f2d0"
-    palette-green-500: "#239e2f"
-    palette-green-700: "#037020"
-    social-facebook: "#0866ff"
-    social-linkedin: "#2967b2"
-    social-bizd: "#0081cc"
-    social-apple: "#000000"
-  typography:
-    micro: { size: 10, use: "Timestamps and pick counts; 20 rendered elements" }
-    caption: { size: 11, use: "The smallest label step" }
-    base: { size: 12, use: "The page's default — 138 of 286 text-bearing elements, including every control label" }
-    body: { size: 13, use: "Comment body" }
-    reading: { size: 14, use: "Article summaries; 43 elements" }
-    lead: { size: 16, use: "Headlines in the feed; 42 elements" }
-    title: { size: 18, use: "Section titles" }
-    heading: { size: 20, use: "The largest rendered step" }
-  rounded: { xs: 2, sm: 4, md: 8, pill: 20, circle: 9999 }
-  components:
-    button-login: { type: "button", bg: "#ffffff", fg: "#222222", border: "1px solid #222222", radius: 4, height: "32px", padding: "0 12px", font: "12px / 400", hover: "rgba(34,34,34,0.05)", pressed: "rgba(34,34,34,0.05)", use: "ログイン — the outline action, 73×32. Hover and pressed wash the fill with ink at 5%, which is --surface-color-base-primary-hover exactly." }
-    button-premium: { type: "button", bg: "#146af5", fg: "#ffffff", radius: 4, height: "32px", padding: "0 12px", font: "12px / 400", hover: "#0032ca", pressed: "#0032ca", use: "プレミアムを無料で体験 — the filled action, 160×32. Hover and pressed are --surface-color-accent-primary-hover; note the button is accent blue while the Premium product colour is the green #00b357." }
-    tab-active: { type: "tab", bg: "#146af5", fg: "#ffffff", radius: 20, height: "40px", padding: "0 16px", font: "12px / 400", hover: "#146af5", pressed: "#146af5", use: "The selected feed tab (総合), 58×40 — a blue pill. Hover and pressed change nothing; the current tab does not respond to the pointer." }
-    tab-inactive: { type: "tab", bg: "transparent", fg: "#222222", border: "1px solid #222222", radius: 20, height: "40px", padding: "0 16px", font: "12px / 400", hover: "rgba(34,34,34,0.05)", pressed: "rgba(34,34,34,0.05)", use: "An unselected feed tab (ワールド), 86×40 — outlined, and it takes the same 5% ink wash as the login button." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://newspicks.com/", inspected: "2026-09-22" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://newspicks.com/", captured: "2026-09-22" }
-    - { id: control-404, kind: product-surface, url: "https://newspicks.com/zz-this-does-not-exist", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.accent: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-inverse: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.accent-surface-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.ai: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.bookpicks: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.campaign-yellow: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.caution: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.caution-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.caution-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.caution-surface-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.highlight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.inverse-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.investment-gold: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-blue-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-blue-400: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-blue-500: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-blue-700: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-gray-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-gray-500: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-gray-700: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-green-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-green-500: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-green-700: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-red-100: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-red-400: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-red-50: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.palette-red-700: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.premium: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.premium-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.premium-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.recommend: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.social-apple: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.social-bizd: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.social-facebook: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.social-linkedin: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.success: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.success-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.success-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.unread: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.unread-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-login.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-premium.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-active.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.tab-inactive.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.rounded.circle: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.caption.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.heading.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.heading.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.reading.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.reading.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.title.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.title.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
+colors:
+  accent: '#146af5'
+  accent-hover: '#0032ca'
+  accent-inverse: '#4b9dfa'
+  accent-surface: '#ebf3ff'
+  accent-surface-hover: '#d6e6ff'
+  foreground: '#222222'
+  disabled: '#a3a3a3'
+  canvas: '#ffffff'
+  premium: '#00b357'
+  premium-hover: '#007d3c'
+  premium-surface: '#f0faf5'
+  campaign-yellow: '#ffc800'
+  ai: '#9b2cc1'
+  bookpicks: '#f7f3eb'
+  highlight: '#ffe86b'
+  investment-gold: '#886c0f'
+  caution: '#de3535'
+  caution-hover: '#ab0000'
+  recommend: '#ed5353'
+  success: '#018a26'
+  success-hover: '#044f20'
+  success-surface: '#e8ffe8'
+  caution-surface: '#fff0f0'
+  caution-surface-hover: '#ffdbdb'
+  unread: '#ebf3ff'
+  unread-hover: '#d6e6ff'
+  inverse-hover: '#474747'
+  palette-blue-100: '#d6e6ff'
+  palette-blue-400: '#4b9dfa'
+  palette-blue-500: '#2986ff'
+  palette-blue-700: '#0040e0'
+  palette-gray-100: '#e6e6e6'
+  palette-gray-500: '#616161'
+  palette-gray-700: '#333333'
+  palette-red-50: '#fff0f0'
+  palette-red-100: '#ffdbdb'
+  palette-red-400: '#fa7373'
+  palette-red-700: '#d41717'
+  palette-green-100: '#d0f2d0'
+  palette-green-500: '#239e2f'
+  palette-green-700: '#037020'
+  social-facebook: '#0866ff'
+  social-linkedin: '#2967b2'
+  social-bizd: '#0081cc'
+  social-apple: '#000000'
+typography:
+  micro:
+    fontSize: 10px
+    use: Timestamps and pick counts; 20 rendered elements
+  caption:
+    fontSize: 11px
+    use: The smallest label step
+  base:
+    fontSize: 12px
+    use: The page's default — 138 of 286 text-bearing elements, including every control label
+  body:
+    fontSize: 13px
+    use: Comment body
+  reading:
+    fontSize: 14px
+    use: Article summaries; 43 elements
+  lead:
+    fontSize: 16px
+    use: Headlines in the feed; 42 elements
+  title:
+    fontSize: 18px
+    use: Section titles
+  heading:
+    fontSize: 20px
+    use: The largest rendered step
+rounded:
+  xs: 2px
+  sm: 4px
+  md: 8px
+  pill: 20px
+  circle: 9999px
+components:
+  button-login:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#222222'
+    border: '1px solid #222222'
+    rounded: 4px
+    height: 32px
+    padding: 0 12px
+    typography: 12px / 400
+    hover: rgba(34,34,34,0.05)
+    pressed: rgba(34,34,34,0.05)
+    use: ログイン — the outline action, 73×32. Hover and pressed wash the fill with ink at 5%, which is --surface-color-base-primary-hover exactly.
+  button-premium:
+    type: button
+    backgroundColor: '#146af5'
+    textColor: '#ffffff'
+    rounded: 4px
+    height: 32px
+    padding: 0 12px
+    typography: 12px / 400
+    hover: '#0032ca'
+    pressed: '#0032ca'
+    use: 'プレミアムを無料で体験 — the filled action, 160×32. Hover and pressed are --surface-color-accent-primary-hover; note the button is accent blue while the Premium product colour is the green #00b357.'
+  tab-active:
+    type: tab
+    backgroundColor: '#146af5'
+    textColor: '#ffffff'
+    rounded: 20px
+    height: 40px
+    padding: 0 16px
+    typography: 12px / 400
+    hover: '#146af5'
+    pressed: '#146af5'
+    use: The selected feed tab (総合), 58×40 — a blue pill. Hover and pressed change nothing; the current tab does not respond to the pointer.
+  tab-inactive:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#222222'
+    border: '1px solid #222222'
+    rounded: 20px
+    height: 40px
+    padding: 0 16px
+    typography: 12px / 400
+    hover: rgba(34,34,34,0.05)
+    pressed: rgba(34,34,34,0.05)
+    use: An unselected feed tab (ワールド), 86×40 — outlined, and it takes the same 5% ink wash as the login button.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
+
 # Design System Inspiration of NewsPicks (ニューズピックス)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 NewsPicks is a Japanese business-news platform where journalism sits next to expert
 commentary. The surface is white, very dense — 19,523 characters on one screen — and set
@@ -225,11 +156,31 @@ And then a layer that no framework would ever generate, because it is made of **
 product's own nouns**: a Premium green, an AI purple, a BookPicks cream, a read/unread pair,
 and a brand colour for each third-party sign-in.
 
-### Primary tasks
+#### Primary tasks
 - Read the feed, switch between topic tabs, open a story and its picks.
 - Sign in, or start a free Premium trial.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+NewsPicks is a feed where a story is followed by named experts arguing about it, sold partly
+behind a Premium tier. The token set reads exactly like that product: a colour for the paid
+tier, a colour for machine-written text, a colour for whether you have read something, a full
+role set for one editorial category, and the brand blue of every service you can sign in with.
+
+The rest is restraint. No webfont, no type scale, no shadow, 12px almost everywhere — the
+design spends nothing on surface and all of it on telling one kind of thing from another.
+
+### Principles
+
+- **Four families over one palette.** Surface, text, object, border.
+- **Ink at alpha, never grey.**
+- **If the product has a noun, the system has a token for it.**
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 with `getComputedStyle` on `newspicks.com`.
 
@@ -286,7 +237,7 @@ This is what separates the reference from a generic semantic system.
 Two entries resolve to CSS keywords rather than hex — `--palette-gray-400` is `grey` and
 `--text-color-base-primary-visited` is `grey`. Recorded as found; not promoted.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -301,7 +252,35 @@ Rendered: **12px ×138** · 14px ×43 · 16px ×42 · 10px ×20 · 13px ×12 · 
 
 The scale is not tokenised either — these are readings, not declarations.
 
-## 4. Component Stylings
+## Layout
+
+- **Four families, one per painted thing**, over one raw palette. A glyph takes
+  `--object-color-*`, never `--text-color-*`.
+- **Ink at alpha, eight steps deep**, instead of a grey ramp for secondary text and washes.
+- **Name the product's nouns.** Premium, AI, BookPicks, unread, and each sign-in provider get
+  tokens because the product has those things.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1100 only.
+
+## Elevation & Depth
+
+**No shadow was observed** on any measured control and no shadow token exists among the 220.
+Separation is the `rgba(34,34,34,.12)` / `.16` border pair and the pale surface washes.
+
+## Motion & Easing
+
+**No motion token exists.** Durations are written inline and differ by control:
+`background-color 0.1s linear` on the buttons, and
+`color 0.3s, text-decoration 0.3s, background-color …` on the tabs. The tabs transition three
+times slower than the buttons, and nothing names either value.
+
+---
+
+**Tier 1 sources:** https://newspicks.com/ (live product surface — 220 custom properties read via `getComputedStyle`, none belonging to a framework; four controls measured at rest, hover, pressed and focus, 2026-09-22); https://newspicks.com/zz-this-does-not-exist (nonsense-path control — returns a real HTTP 404 of 89 characters, establishing that the host is not a catch-all and that the homepage reading is a real route, 2026-09-22)
+
+## Components
 
 Four controls measured, each with focus read for every control before the mouse moved.
 
@@ -348,20 +327,20 @@ recorded**, and the set declares none. The selected tab does not report `:focus-
 Rendered: **4px ×51** — the house value — then `50%` ×29 (avatars), **20px ×28** (the tab
 pills), 2px ×18, 8px ×2.
 
-## 5. Layout Principles
+### States
 
-- **Four families, one per painted thing**, over one raw palette. A glyph takes
-  `--object-color-*`, never `--text-color-*`.
-- **Ink at alpha, eight steps deep**, instead of a grey ramp for secondary text and washes.
-- **Name the product's nouns.** Premium, AI, BookPicks, unread, and each sign-in provider get
-  tokens because the product has those things.
+All four components carry measured hover and pressed; hover and pressed are identical on every
+one of them, so the system distinguishes "pointer is here" and not "pointer is down".
 
-## 6. Depth & Elevation
+**The selected tab is the interesting case.** It changes nothing while `:hover` matches true —
+measured, not missed. A control that is already current has nothing to offer the pointer.
 
-**No shadow was observed** on any measured control and no shadow token exists among the 220.
-Separation is the `rgba(34,34,34,.12)` / `.16` border pair and the pale surface washes.
+**Focus is Chrome's on everything.** No focus value is recorded. Disabled exists thoroughly in
+the tokens — `--surface-color-*-disabled`, `--text-color-base-primary-disabled` `#a3a3a3`,
+`--border-color-*` — but was **not observed on a rendered control**, so no disabled component
+is declared.
 
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Wash with ink at 5% (`rgba(34,34,34,0.05)`) for a neutral hover — that is the system's rule
@@ -375,11 +354,12 @@ Separation is the `rgba(34,34,34,.12)` / `.16` border pair and the pale surface 
 - Don't use `#146af5` for Premium. The Premium button is blue but Premium itself is green.
 - Don't build a grey ramp for secondary text. The system uses `#222222` at alpha.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1100 only.
+Not assessed as authored voice. 19,523 characters on the measured surface, almost all of it
+headlines and comment excerpts.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#146af5` accent · `#0032ca` accent hover · `#4b9dfa` accent inverse · `#ebf3ff`/`#d6e6ff`
@@ -394,51 +374,8 @@ highlight · `#886c0f` investment gold · `#de3535`/`#ab0000` caution · `#ed535
 - "A 40px filter pill: 20px radius; selected is `#146af5` with white 12px label and does not
   react to hover; unselected is transparent with a `#222222` outline and the 5% ink wash."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice. 19,523 characters on the measured surface, almost all of it
-headlines and comment excerpts.
+### Known Gaps
 
-## 11. Brand Narrative
-
-NewsPicks is a feed where a story is followed by named experts arguing about it, sold partly
-behind a Premium tier. The token set reads exactly like that product: a colour for the paid
-tier, a colour for machine-written text, a colour for whether you have read something, a full
-role set for one editorial category, and the brand blue of every service you can sign in with.
-
-The rest is restraint. No webfont, no type scale, no shadow, 12px almost everywhere — the
-design spends nothing on surface and all of it on telling one kind of thing from another.
-
-## 12. Principles
-
-- **Four families over one palette.** Surface, text, object, border.
-- **Ink at alpha, never grey.**
-- **If the product has a noun, the system has a token for it.**
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-All four components carry measured hover and pressed; hover and pressed are identical on every
-one of them, so the system distinguishes "pointer is here" and not "pointer is down".
-
-**The selected tab is the interesting case.** It changes nothing while `:hover` matches true —
-measured, not missed. A control that is already current has nothing to offer the pointer.
-
-**Focus is Chrome's on everything.** No focus value is recorded. Disabled exists thoroughly in
-the tokens — `--surface-color-*-disabled`, `--text-color-base-primary-disabled` `#a3a3a3`,
-`--border-color-*` — but was **not observed on a rendered control**, so no disabled component
-is declared.
-
-## 15. Motion & Easing
-
-**No motion token exists.** Durations are written inline and differ by control:
-`background-color 0.1s linear` on the buttons, and
-`color 0.3s, text-decoration 0.3s, background-color …` on the tabs. The tabs transition three
-times slower than the buttons, and nothing names either value.
-
----
-
-**Tier 1 sources:** https://newspicks.com/ (live product surface — 220 custom properties read via `getComputedStyle`, none belonging to a framework; four controls measured at rest, hover, pressed and focus, 2026-09-22); https://newspicks.com/zz-this-does-not-exist (nonsense-path control — returns a real HTTP 404 of 89 characters, establishing that the host is not a catch-all and that the homepage reading is a real route, 2026-09-22)
+- **Contrast, `tab-inactive`.** Text `#222222` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

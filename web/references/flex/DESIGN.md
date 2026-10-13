@@ -1,164 +1,135 @@
 ---
-id: flex
 name: flex
-country: KR
-category: saas
-homepage: "https://flex.team"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=flex.team&sz=256"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://flex.team/", inspected: "2026-07-13" }
-    - { id: about, kind: corporate-marketing, url: "https://flex.team/about", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://flex.team/", captured: "2026-07-13" }
-    - { id: about-live, kind: product-surface, url: "https://flex.team/about", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.ink": *home
-    "tokens.colors.on-dark": *home
-    "tokens.colors.action-lime": *home
-    "tokens.colors.announcement-orange": *home
-    "tokens.typography.family.ui": *home
-    "tokens.typography.about-display.size": &about { surface_id: about, source_id: about-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.typography.about-display.weight": *about
-    "tokens.typography.about-display.lineHeight": *about
-    "tokens.typography.about-display.use": *about
-    "tokens.typography.about-display-inverse.size": *about
-    "tokens.typography.about-display-inverse.weight": *about
-    "tokens.typography.about-display-inverse.lineHeight": *about
-    "tokens.typography.about-display-inverse.use": *about
-    "tokens.typography.body-emphasis.size": *about
-    "tokens.typography.body-emphasis.weight": *about
-    "tokens.typography.body-emphasis.lineHeight": *about
-    "tokens.typography.body-emphasis.use": *about
-    "tokens.typography.navigation.size": *about
-    "tokens.typography.navigation.weight": *about
-    "tokens.typography.navigation.lineHeight": *about
-    "tokens.typography.navigation.use": *about
-    "tokens.spacing.compact": *about
-    "tokens.spacing.nav-action-x": *about
-    "tokens.spacing.cta-y": *home
-    "tokens.spacing.cta-x": *home
-    "tokens.rounded.nav": *about
-    "tokens.rounded.badge": *home
-    "tokens.rounded.cta": *home
-    "tokens.components.relationship-story-card.type": *home
-    "tokens.components.relationship-story-card.bg": *home
-    "tokens.components.relationship-story-card.border": *home
-    "tokens.components.relationship-story-card.radius": *home
-    "tokens.components.relationship-story-card.padding": *home
-    "tokens.components.relationship-story-card.use": *home
-    "tokens.components.nav-action-outline.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.fg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.border": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.height": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.font": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-outline.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.fg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.height": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.font": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.nav-action-solid.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.fg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.height": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.font": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-menu-button.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.lime-cta.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.new-badge.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.new-badge.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::span", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.size": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.hover": { surface_id: about, source_id: about-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"12\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.pressed": { surface_id: about, source_id: about-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"12\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.accordion-item.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.accordion-item.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.accordion-item.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.accordion-item.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.accordion-item.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.accordion-item.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.feature-card.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.feature-card.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.feature-card.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.feature-card.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.feature-card.size": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.feature-card.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.feature-card.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-card.type": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-card.bg": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-card.radius": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-card.padding": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-card.states": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-card.use": { surface_id: about, source_id: about-live, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  components_harvested: true
-  colors:
-    canvas: "#ffffff"
-    ink: "#111111"
-    on-dark: "#ffffff"
-    action-lime: "#00ff44"
-    announcement-orange: "#ff4d00"
-  typography:
-    family: { ui: "Pretendard Variable" }
-    about-display: { size: 96, weight: 600, lineHeight: 1.00, use: "About-page relationship statement" }
-    about-display-inverse: { size: 80, weight: 600, lineHeight: 1.20, use: "Dark About-page statement" }
-    body-emphasis: { size: 17, weight: 600, lineHeight: 1.55, use: "About-page explanatory copy" }
-    navigation: { size: 14, weight: 700, lineHeight: 1.00, use: "Global navigation controls" }
-  spacing: { compact: 8, nav-action-x: 14, cta-y: 30, cta-x: 44 }
-  rounded: { nav: 8, badge: 18, cta: 24 }
-  components:
-    relationship-story-card: { type: card, bg: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", radius: "16px", padding: "24px", use: "Non-interactive relationship-data story item observed on the public home surface" }
-    nav-action-outline: { type: button, bg: "transparent", fg: "#111111", border: "1px #111111", radius: "8px", padding: "8px 14px", height: "33px", font: "13px / 700", states: "default captured on both surfaces; the capture holds no state frame for this action", use: "About-page global navigation secondary action (a, variant-border) at surface-2::[data-omd-capture=\"8\"]; on the dark home header the same action computes #ffffff text and a 1px #ffffff border (home::[data-omd-capture=\"8\"])" }
-    nav-action-solid: { type: button, bg: "#111111", fg: "#ffffff", radius: "8px", padding: "8px 14px", height: "33px", font: "13px / 700", states: "default captured on both surfaces; the capture holds no state frame for this action", use: "About-page global navigation primary action (a, variant-invert) at surface-2::[data-omd-capture=\"9\"]; on the dark home header it inverts to a #ffffff fill with #111111 text (home::[data-omd-capture=\"9\"])" }
-    gnb-menu-button: { type: button, bg: "transparent", fg: "#111111", radius: "8px", padding: "8px", height: "32px", font: "14px / 700", states: "default captured on six menu buttons per surface; no state frame and no menu-open record", use: "About-page global navigation menu button (button, variant-gnb) at surface-2::[data-omd-capture=\"2\"]; the dark home header computes #ffffff text for the same buttons" }
-    lime-cta: { type: button, bg: "#00ff44", fg: "#111111", radius: "24px", padding: "30px 44px", height: "80px", font: "17px / 700", states: "default captured on both surfaces; no state frame", use: "High-emphasis marketing conversion link (a, variant-color, size-xl) at home::[data-omd-capture=\"13\"]; /about repeats it at surface-2::[data-omd-capture=\"25\"]" }
-    new-badge: { type: badge, bg: "#ff4d00", fg: "#000000", radius: "18px", padding: "0px 8px", height: "20px", font: "12px / 700 / 16.56px", states: "static label; no state frame", use: "Announcement-strip new badge (span, badgeType-new) at home::span; /about carries the same badge (surface-2::span)" }
-    carousel-arrow: { type: button, bg: "rgba(17, 17, 17, 0.08)", radius: "50%", padding: "0px", size: "40px x 40px", hover: "bg rgba(17, 17, 17, 0.12)", pressed: "bg rgba(17, 17, 17, 0.12)", states: "rest, hover, and pressed sampled on the enabled arrow (capture 12); both frames record rgba(17, 17, 17, 0.12). The disabled arrow beside it (capture 11, same class) records the same two frames, which supports a settled value; the disabled arrow is given no state. Focus is not declared from the bundle: there is no focus frame, and the collector presses before it focuses", use: "About-page carousel arrow (button.l2024-c-lnBcZQ) at surface-2::[data-omd-capture=\"12\"]; icon-only, its glyph colour was not sampled" }
-    accordion-item: { type: card, bg: "rgba(255, 255, 255, 0.08)", radius: "24px", padding: "24px", states: "collapsed (capture 15, class open-false) and expanded (capture 13 and 14, class open-true) variants captured at rest; the expanded fill is rgba(255, 255, 255, 0.1); no pointer-state frame", use: "About-page accordion item (li role=button, l2024-c-bloTie) at surface-2::[data-omd-capture=\"15\"]; the white-alpha fill implies a dark section, and the label style was not sampled separately" }
-    feature-card: { type: card, bg: "rgba(17, 17, 17, 0.96)", radius: "24px", padding: "24px", size: "328px x 452px", states: "non-interactive; three colour variants", use: "About-page feature card (li.l2024-c-fMALsr, color-black, two occurrences) at surface-2::li; the color-gray variant fills rgba(17, 17, 17, 0.1) and the color-green variant #00dc3a" }
-    about-card: { type: card, bg: "#ffffff", radius: "24px", padding: "24px", states: "non-interactive; three colour variants", use: "About-page 500px-wide card (li.l2024-c-CFKUv, color-white) at surface-2::li; the color-black variant fills #111111 and the color-trans variant rgba(255, 255, 255, 0.08)" }
+colors:
+  canvas: '#ffffff'
+  ink: '#111111'
+  on-dark: '#ffffff'
+  action-lime: '#00ff44'
+  announcement-orange: '#ff4d00'
+typography:
+  about-display:
+    fontSize: 96px
+    fontWeight: 600
+    lineHeight: 1
+    use: About-page relationship statement
+  about-display-inverse:
+    fontSize: 80px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Dark About-page statement
+  body-emphasis:
+    fontSize: 17px
+    fontWeight: 600
+    lineHeight: 1.55
+    use: About-page explanatory copy
+  navigation:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1
+    use: Global navigation controls
+rounded:
+  nav: 8px
+  badge: 18px
+  cta: 24px
+spacing:
+  compact: 8
+  nav-action-x: 14
+  cta-y: 30
+  cta-x: 44
+components:
+  relationship-story-card:
+    type: card
+    backgroundColor: rgba(255,255,255,0.04)
+    border: 1px solid rgba(255,255,255,0.08)
+    rounded: 16px
+    padding: 24px
+    use: Non-interactive relationship-data story item observed on the public home surface
+  nav-action-outline:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    border: '1px #111111'
+    rounded: 8px
+    padding: 8px 14px
+    height: 33px
+    typography: 13px / 700
+    states: default captured on both surfaces; the capture holds no state frame for this action
+    use: 'About-page global navigation secondary action (a, variant-border) at surface-2::[data-omd-capture="8"]; on the dark home header the same action computes #ffffff text and a 1px #ffffff border (home::[data-omd-capture="8"])'
+  nav-action-solid:
+    type: button
+    backgroundColor: '#111111'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 8px 14px
+    height: 33px
+    typography: 13px / 700
+    states: default captured on both surfaces; the capture holds no state frame for this action
+    use: 'About-page global navigation primary action (a, variant-invert) at surface-2::[data-omd-capture="9"]; on the dark home header it inverts to a #ffffff fill with #111111 text (home::[data-omd-capture="9"])'
+  gnb-menu-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#111111'
+    rounded: 8px
+    padding: 8px
+    height: 32px
+    typography: 14px / 700
+    states: default captured on six menu buttons per surface; no state frame and no menu-open record
+    use: 'About-page global navigation menu button (button, variant-gnb) at surface-2::[data-omd-capture="2"]; the dark home header computes #ffffff text for the same buttons'
+  lime-cta:
+    type: button
+    backgroundColor: '#00ff44'
+    textColor: '#111111'
+    rounded: 24px
+    padding: 30px 44px
+    height: 80px
+    typography: 17px / 700
+    states: default captured on both surfaces; no state frame
+    use: High-emphasis marketing conversion link (a, variant-color, size-xl) at home::[data-omd-capture="13"]; /about repeats it at surface-2::[data-omd-capture="25"]
+  new-badge:
+    type: badge
+    backgroundColor: '#ff4d00'
+    textColor: '#000000'
+    rounded: 18px
+    padding: 0px 8px
+    height: 20px
+    typography: 12px / 700 / 16.56px
+    states: static label; no state frame
+    use: Announcement-strip new badge (span, badgeType-new) at home::span; /about carries the same badge (surface-2::span)
+  carousel-arrow:
+    type: button
+    backgroundColor: rgba(17, 17, 17, 0.08)
+    rounded: 50%
+    padding: 0px
+    size: 40px x 40px
+    hover: bg rgba(17, 17, 17, 0.12)
+    pressed: bg rgba(17, 17, 17, 0.12)
+    states: 'rest, hover, and pressed sampled on the enabled arrow (capture 12); both frames record rgba(17, 17, 17, 0.12). The disabled arrow beside it (capture 11, same class) records the same two frames, which supports a settled value; the disabled arrow is given no state. Focus is not declared from the bundle: there is no focus frame, and the collector presses before it focuses'
+    use: About-page carousel arrow (button.l2024-c-lnBcZQ) at surface-2::[data-omd-capture="12"]; icon-only, its glyph colour was not sampled
+  accordion-item:
+    type: card
+    backgroundColor: rgba(255, 255, 255, 0.08)
+    rounded: 24px
+    padding: 24px
+    states: collapsed (capture 15, class open-false) and expanded (capture 13 and 14, class open-true) variants captured at rest; the expanded fill is rgba(255, 255, 255, 0.1); no pointer-state frame
+    use: About-page accordion item (li role=button, l2024-c-bloTie) at surface-2::[data-omd-capture="15"]; the white-alpha fill implies a dark section, and the label style was not sampled separately
+  feature-card:
+    type: card
+    backgroundColor: rgba(17, 17, 17, 0.96)
+    rounded: 24px
+    padding: 24px
+    size: 328px x 452px
+    states: non-interactive; three colour variants
+    use: 'About-page feature card (li.l2024-c-fMALsr, color-black, two occurrences) at surface-2::li; the color-gray variant fills rgba(17, 17, 17, 0.1) and the color-green variant #00dc3a'
+  about-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 24px
+    padding: 24px
+    states: non-interactive; three colour variants
+    use: 'About-page 500px-wide card (li.l2024-c-CFKUv, color-white) at surface-2::li; the color-black variant fills #111111 and the color-trans variant rgba(255, 255, 255, 0.08)'
+fonts:
+  roles:
+    ui: Pretendard Variable
 ---
 
 # flex — Design Reference
@@ -169,7 +140,9 @@ tokens:
 
 ---
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 flex is a Korean company building an HR-data-based AI platform for organizations: its public product language spans people and organization management, performance, payroll and benefits, and operational workflows. Its current expression is not the earlier “one ink / graphite card” system. The 2026 public site leads with **Relations Driven AX**—the claim that AI becomes useful when it understands the relationships and context inside an organization—and turns that idea into a high-contrast, editorial marketing system. Black or white fields establish the serious enterprise register; `#00FF44` appears as a deliberately loud action color rather than a general-purpose semantic palette. The About page gives the brand’s “Human Relations” reinterpretation of HR room to breathe in 80–96px type, then alternates dark and light narrative sections. This reference describes those current public marketing and corporate surfaces only; it does not treat the separate help center as product UI evidence.
 
@@ -180,7 +153,7 @@ What is distinctive in the observed surfaces:
 - **Editorial scale plus dense enterprise copy.** About-page statements reach 96px, then resolve into 17px/600 explanatory copy and 15px supporting copy.
 - **Rounded actions rather than rounded everything.** Global nav actions use 8px corners; campaign CTAs use 24px pills. No universal card-radius rule is asserted.
 
-## Primary tasks
+### Primary tasks
 
 - Find out which HR operations the platform covers
 - Judge whether an AI subscription actually changes how a company works
@@ -188,17 +161,41 @@ What is distinctive in the observed surfaces:
 - Read how the company grew and where it is heading
 - Start a trial or send an inquiry
 
-## 2. Layout & Grid
+### Iconography
 
-- **Global announcement strip:** the two captured public surfaces begin with a 48px-high announcement link; it uses 60px horizontal padding at the 1440px collector viewport.
-- **Global navigation:** on `/about`, the captured menu controls use 8px radius and 8px internal padding; the two conversion actions use 8px 14px padding.
-- **About-page editorial hierarchy:** measured headline styles include 96px/600/96px on a light field and 80px/600/96px on a dark field. These are surface-local display treatments, not a claimed product-app type scale.
-- **Conversion action:** the observed lime action is a 24px-radius link with 30px 44px padding and 17px/700 text on both captured public surfaces.
-- **Boundary:** no container maximum, page section height, or responsive breakpoint is promoted because the supplied 1440×900 capture does not establish those values across viewports.
+The captured public surfaces expose inline brand/product imagery and ordinary navigation affordances, but no named icon library or reusable icon-size/weight rule. No icon token is promoted.
 
-## 3. Color & Typography
+### Imagery & Illustration
 
-### Color tokens
+- The home page uses application screenshots to demonstrate contextual AI answers, organizational signals, and connected-work-system data; these are marketing illustrations of the platform, not a component library.
+- The About page is primarily typographic and narrative. Its light/dark editorial fields frame the company story rather than adding a stock-photo visual language.
+- No imagery crop ratio, overlay treatment, or product-screen frame is promoted because the supplied evidence does not identify a repeatable image component.
+
+### Brand Narrative
+
+Flex says it was established in 2019 and launched its flex service in 2020. Its current About page describes a progression from establishing an HR-platform standard (2019–2021), through enterprise expansion (2022–2024), toward an AX platform grounded in HR data (2025–2027). The current brand thesis is **Relations Driven AX**: HR is redefined from “Human Resources” to “Human Relations,” and relationship data is presented as the context that lets AI diagnose, suggest, and execute work safely. The company frames its mission as solving organizations’ and employees’ problems so that it becomes an essential service for everyone who works.
+
+### Principles
+
+1. **Context before capability.** Explain what the organization knows and how access is bounded before claiming AI benefit.
+2. **Contrast carries authority.** Build the public hierarchy with black, white, and measured opacity; reserve lime for the decisive conversion point.
+3. **Use lime as an action, not a status system.** `#00FF44` is evidenced on marketing CTA links, not as a universal product semantic token.
+4. **Let scale establish the thesis.** Keep editorial statements distinct from supporting explanation; the recorded 80–96px About styles are a surface-specific example.
+5. **Keep source domains separate.** Marketing/corporate pages, Help Center chrome, and unverified app surfaces must not be mixed into one inferred product design system.
+
+### Personas
+
+Flex’s official copy names organizations, members, leaders, and teams as the stakeholders of its platform. It also describes HR teams dealing with attendance, evaluation, compensation, compliance, and data-informed decisions. This reference therefore recognizes those official stakeholder groups without inventing named fictional personas or unverified audience demographics:
+
+- **Organization and HR operators:** need connected organizational and employee data to handle HR operations and compliance.
+- **Leaders:** use organizational context and goal/health signals to make decisions.
+- **Employees:** receive access and AI assistance bounded by their role and organizational relationship.
+
+## Colors
+
+### Color & Typography
+
+#### Color tokens
 
 - `#000000` — public-surface black field and the catalog primary color
 - `#111111` — light-surface navigation text and solid navigation action background
@@ -211,14 +208,32 @@ What is distinctive in the observed surfaces:
 
 The lime and orange are observed marketing accents with separate purposes; neither is promoted as a product-app status color.
 
-### Typography evidence classes
+#### Typography evidence classes
 
 - **Live loaded Flex webfont:** both supplied public surfaces resolve visible text to `"Pretendard Variable", Pretendard, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif`. The collector classifies `Pretendard Variable` as loaded/high-confidence, records 351 visible uses across headings, body, navigation, badges, and actions, and resolves 92 Flex-hosted subset URLs under `static.flex.team`. The machine family token therefore names only `Pretendard Variable`.
 - **Declared but unused fallback:** static `Pretendard` is present in declarations but has zero observed visible uses. `system-ui` appears once as an operating-system stack. Neither is promoted as another Flex UI-family token or rendered as a substitute specimen.
 - **Measured public hierarchy:** `/about` includes 96px/600/96px and 80px/600/96px display samples, 17px/600/24.65–26.35px body-emphasis samples, and 14px/700 global-navigation controls. These sizes are retained as measured styles without assigning a family token.
 - **Documentation chrome:** `guide.flex.team` is a separate Help Center surface. It was inspected only to classify the source domain and contributes no color, typography, or component token here.
 
-## 4. Components
+## Layout
+
+### Layout & Grid
+
+- **Global announcement strip:** the two captured public surfaces begin with a 48px-high announcement link; it uses 60px horizontal padding at the 1440px collector viewport.
+- **Global navigation:** on `/about`, the captured menu controls use 8px radius and 8px internal padding; the two conversion actions use 8px 14px padding.
+- **About-page editorial hierarchy:** measured headline styles include 96px/600/96px on a light field and 80px/600/96px on a dark field. These are surface-local display treatments, not a claimed product-app type scale.
+- **Conversion action:** the observed lime action is a 24px-radius link with 30px 44px padding and 17px/700 text on both captured public surfaces.
+- **Boundary:** no container maximum, page section height, or responsive breakpoint is promoted because the supplied 1440×900 capture does not establish those values across viewports.
+
+## Motion & Easing
+
+### Motion
+
+No duration, easing, transition, or scroll-trigger state was recorded in the supplied evidence. Motion is intentionally undocumented rather than extrapolated from the static surfaces.
+
+No motion values were captured. Preserve the absence of a claimed motion system rather than assigning easing curves, delays, or stagger behavior from visual inference.
+
+## Components
 
 ### Global navigation action — outline
 
@@ -321,73 +336,11 @@ The legacy `#1D1D1F`/graphite/pill-service-card claims conflict with the supplie
 
 ---
 
-## 5. Iconography
-
-The captured public surfaces expose inline brand/product imagery and ordinary navigation affordances, but no named icon library or reusable icon-size/weight rule. No icon token is promoted.
-
-## 6. Imagery & Illustration
-
-- The home page uses application screenshots to demonstrate contextual AI answers, organizational signals, and connected-work-system data; these are marketing illustrations of the platform, not a component library.
-- The About page is primarily typographic and narrative. Its light/dark editorial fields frame the company story rather than adding a stock-photo visual language.
-- No imagery crop ratio, overlay treatment, or product-screen frame is promoted because the supplied evidence does not identify a repeatable image component.
-
-## 7. Motion
-
-No duration, easing, transition, or scroll-trigger state was recorded in the supplied evidence. Motion is intentionally undocumented rather than extrapolated from the static surfaces.
-
-## 8. Accessibility
-
-- `#111111` on `#FFFFFF` and `#FFFFFF` on `#111111` are high-contrast text pairs in the captured light/dark chrome.
-- The lime primary CTA uses `#111111` text over `#00FF44`; retain this pairing when reproducing the observed action treatment.
-- The collector did not record focus-visible or keyboard interaction states. Do not infer focus treatment from the 8px or 24px radii; provide an accessible focus indicator in an implementation.
-- `Pretendard Variable` is backed by loaded-face evidence and Flex-hosted subset URLs. Static `Pretendard` and `system-ui` remain declared/system fallbacks and must not be presented as additional Flex font roles.
-
-## 9. Content & Voice
-
-The public narrative starts from organizational context rather than generic AI capability. The home page asks whether blanket AI subscriptions actually change how a company works, then answers through three forms of knowledge: knowing the user, anticipating work, and connecting enterprise context. The About page reframes HR as **Human Relations** and positions the company’s mission around solving organizational and employee problems. CTA language is direct and operational—trial or inquiry—while the surrounding prose remains declarative and explanatory.
-
-## 10. Voice & Tone
-
-**Voice adjectives:** contextual · declarative · enterprise-serious
-
-| Do | Don't |
-|---|---|
-| Start with a concrete organizational condition or question. | Lead with abstract “AI transformation” claims without context. |
-| Explain how context, access, and relationships change an outcome. | Treat every user or team as interchangeable. |
-| Use a clear conversion label for a trial or inquiry. | Turn every paragraph into a sales CTA. |
-| Pair confident headlines with explanatory follow-through. | Use playful hype that conflicts with the governance and safety message. |
-
-The examples are a source-derived style description, not a license to reproduce Flex copy verbatim.
-
-## 11. Brand Narrative
-
-Flex says it was established in 2019 and launched its flex service in 2020. Its current About page describes a progression from establishing an HR-platform standard (2019–2021), through enterprise expansion (2022–2024), toward an AX platform grounded in HR data (2025–2027). The current brand thesis is **Relations Driven AX**: HR is redefined from “Human Resources” to “Human Relations,” and relationship data is presented as the context that lets AI diagnose, suggest, and execute work safely. The company frames its mission as solving organizations’ and employees’ problems so that it becomes an essential service for everyone who works.
-
-## 12. Principles
-
-1. **Context before capability.** Explain what the organization knows and how access is bounded before claiming AI benefit.
-2. **Contrast carries authority.** Build the public hierarchy with black, white, and measured opacity; reserve lime for the decisive conversion point.
-3. **Use lime as an action, not a status system.** `#00FF44` is evidenced on marketing CTA links, not as a universal product semantic token.
-4. **Let scale establish the thesis.** Keep editorial statements distinct from supporting explanation; the recorded 80–96px About styles are a surface-specific example.
-5. **Keep source domains separate.** Marketing/corporate pages, Help Center chrome, and unverified app surfaces must not be mixed into one inferred product design system.
-
-## 13. Personas
-
-Flex’s official copy names organizations, members, leaders, and teams as the stakeholders of its platform. It also describes HR teams dealing with attendance, evaluation, compensation, compliance, and data-informed decisions. This reference therefore recognizes those official stakeholder groups without inventing named fictional personas or unverified audience demographics:
-
-- **Organization and HR operators:** need connected organizational and employee data to handle HR operations and compliance.
-- **Leaders:** use organizational context and goal/health signals to make decisions.
-- **Employees:** receive access and AI assistance bounded by their role and organizational relationship.
-
-## 14. States
+### States
 
 No loading, error, empty, disabled, or success state was captured for a Flex product workflow. The bundle's `interactions[]` record is empty, but it holds pointer-state frames for the About-page carousel arrows: hover and pressed both record `rgba(17, 17, 17, 0.12)` over the `rgba(17, 17, 17, 0.08)` rest (§4). The other state-like observations are surface-theme variants (dark versus light navigation), the accordion's collapsed and expanded variants, and static defaults in §4. Focus is not declared. Corrected 2026-09-29: the July text said the evidence reported zero interaction coverage and read that as no state sample.
 
-## 15. Motion & Easing
-
-No motion values were captured. Preserve the absence of a claimed motion system rather than assigning easing curves, delays, or stagger behavior from visual inference.
-
-## 16. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -410,3 +363,34 @@ No motion values were captured. Preserve the absence of a claimed motion system 
 **Verified:** 2026-07-13
 **Pipeline:** omd:add-reference UPDATE (3-tier reconcile)
 **Catalog position:** KR · saas · HR-data/AI platform
+
+## Voice & Tone
+
+### Content & Voice
+
+The public narrative starts from organizational context rather than generic AI capability. The home page asks whether blanket AI subscriptions actually change how a company works, then answers through three forms of knowledge: knowing the user, anticipating work, and connecting enterprise context. The About page reframes HR as **Human Relations** and positions the company’s mission around solving organizational and employee problems. CTA language is direct and operational—trial or inquiry—while the surrounding prose remains declarative and explanatory.
+
+**Voice adjectives:** contextual · declarative · enterprise-serious
+
+| Do | Don't |
+|---|---|
+| Start with a concrete organizational condition or question. | Lead with abstract “AI transformation” claims without context. |
+| Explain how context, access, and relationships change an outcome. | Treat every user or team as interchangeable. |
+| Use a clear conversion label for a trial or inquiry. | Turn every paragraph into a sales CTA. |
+| Pair confident headlines with explanatory follow-through. | Use playful hype that conflicts with the governance and safety message. |
+
+The examples are a source-derived style description, not a license to reproduce Flex copy verbatim.
+
+## Governance
+
+### Accessibility
+
+- `#111111` on `#FFFFFF` and `#FFFFFF` on `#111111` are high-contrast text pairs in the captured light/dark chrome.
+- The lime primary CTA uses `#111111` text over `#00FF44`; retain this pairing when reproducing the observed action treatment.
+- The collector did not record focus-visible or keyboard interaction states. Do not infer focus treatment from the 8px or 24px radii; provide an accessible focus indicator in an implementation.
+- `Pretendard Variable` is backed by loaded-face evidence and Flex-hosted subset URLs. Static `Pretendard` and `system-ui` remain declared/system fallbacks and must not be presented as additional Flex font roles.
+
+### Known Gaps
+
+- **Contrast, `nav-action-outline`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `gnb-menu-button`.** Text `#111111` on `#00000000` measures 1.11:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

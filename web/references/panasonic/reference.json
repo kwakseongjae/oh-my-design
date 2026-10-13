@@ -1,0 +1,441 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "panasonic",
+    "name": "パナソニック",
+    "country": "JP",
+    "category": "consumer-tech",
+    "homepage": "https://holdings.panasonic/global/",
+    "primary_color": "#0041c0",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=holdings.panasonic&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-07-13",
+    "note": "Only the three supplied Panasonic Holdings public-web surfaces ground these tokens. Corporate narrative, official design philosophy, and declared-only font observations remain separate where the evidence does not connect them.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-surface",
+        "url": "https://holdings.panasonic/global/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "about",
+        "kind": "product-surface",
+        "url": "https://holdings.panasonic/global/corporate/about.html",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "technology",
+        "kind": "product-surface",
+        "url": "https://holdings.panasonic/global/corporate/technology.html",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-capture",
+        "kind": "product-surface",
+        "url": "https://holdings.panasonic/global/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "about-capture",
+        "kind": "product-surface",
+        "url": "https://holdings.panasonic/global/corporate/about.html",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "technology-capture",
+        "kind": "product-surface",
+        "url": "https://holdings.panasonic/global/corporate/technology.html",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "noto-license",
+        "kind": "license",
+        "url": "https://github.com/googlefonts/noto-cjk/blob/main/Sans/LICENSE",
+        "captured": "2026-07-13"
+      }
+    ],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-footer__sns__list__item)",
+        "captured": "2026-07-13"
+      },
+      "colors.navigation": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "colors.link": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=115]",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "noto-license",
+        "method": "visible computed family backed by loaded FontFace; Noto Sans SIL Open Font License",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "typography.navigation.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "typography.navigation.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "typography.navigation.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "typography.navigation.use": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-footer__sns__list__item)",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=115]",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "spacing.nav-gap": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::#page-29286b2519",
+        "captured": "2026-07-13"
+      },
+      "rounded.cookie-control": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=118]",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.type": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.textColor": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.rounded": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.margin": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.size": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.typography": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.header-navigation-item.use": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::li (class: holdings-header__nav__list__item l2)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.type": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.textColor": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.border": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.rounded": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.padding": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.size": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.typography": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.states": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      },
+      "components.search-toggle.use": {
+        "surface_id": "home",
+        "source_id": "home-capture",
+        "method": "computed-style; home::[data-omd-capture=10] (class: holdings-header__search__tglbtn)",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 16,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 2,
+      "extension-component-property": 7,
+      "missing-primary": 1,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.navigation.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-navigation-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-navigation-item.margin",
+        "message": "'margin' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-navigation-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-toggle.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-toggle.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-toggle.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-toggle.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.search-toggle",
+        "message": "textColor (#1a1a1a) on backgroundColor (#00000000) has contrast ratio 1.21:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.navigation",
+        "message": "'navigation' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "b04c38206fc4ceef0ae2de3046ecf380f6bcffcef67e76777fc0ad49e17a128e",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.navigation.fontSize",
+      "rounded.square",
+      "rounded.cookie-control"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "navigation"
+      ]
+    }
+  }
+}

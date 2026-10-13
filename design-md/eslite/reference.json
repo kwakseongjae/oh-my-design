@@ -1,0 +1,484 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "eslite",
+    "name": "誠品",
+    "country": "TW",
+    "category": "ecommerce",
+    "homepage": "https://www.eslite.com/",
+    "primary_color": "#917e57",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=eslite.com&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Only supplied selector-backed public commerce values are tokens. Corporate, editorial, anniversary, and unresolved-font evidence is retained as context rather than promoted into product UI tokens.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-14",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-product-web",
+        "url": "https://www.eslite.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "brand-directory",
+        "kind": "public-product-catalog",
+        "url": "https://www.eslite.com/brand",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "expo-brand",
+        "kind": "public-brand-catalog",
+        "url": "https://www.eslite.com/brand/1098",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.eslite.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "brand-directory-live",
+        "kind": "product-surface",
+        "url": "https://www.eslite.com/brand",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "expo-brand-live",
+        "kind": "product-surface",
+        "url": "https://www.eslite.com/brand/1098",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "corporate-ideals",
+        "kind": "official-doc",
+        "url": "https://www.eslitecorp.com/eslite/index.jsp?func_id=fee3ba0215&site_id=eslite_tw",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "corporate-founder",
+        "kind": "official-doc",
+        "url": "https://www.eslitecorp.com/eslite/index.jsp?func_id=20f9eec115&site_id=eslite_tw",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "japan-cultural-bridge",
+        "kind": "official-doc",
+        "url": "https://meet.eslite.com/tw/tc/article/201909260001",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "anniversary-35",
+        "kind": "official-doc",
+        "url": "https://meet.eslite.com/tw/tcr/article/202411040002",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "expo-platform",
+        "kind": "product-surface",
+        "url": "https://www.eslite.com/brand/1098",
+        "captured": "2026-07-14"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.accent": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "typography.compact-control.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.compact-control.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.compact-control.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.compact-control.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "spacing.search-y": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.search-x": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.search-leading": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.search-left": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-static-state-samples-without-interaction",
+        "captured": "2026-07-13"
+      },
+      "components.public-search-input.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.type": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-provenance-and-classification",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.backgroundColor": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.textColor": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.border": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.rounded": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.padding": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.height": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.typography": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.expo-product-card.use": {
+        "surface_id": "expo-brand",
+        "source_id": "expo-brand-live",
+        "method": "supplied-selector-provenance",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 18,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 2,
+      "extension-component-property": 9,
+      "missing-primary": 1,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.compact-control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-search-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-search-input.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-search-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-search-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-search-input.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-search-input.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.expo-product-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.expo-product-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.expo-product-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.public-search-input",
+        "message": "textColor (#999999) on backgroundColor (#ffffff) has contrast ratio 2.85:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent",
+        "message": "'accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "be8e11b4418ab46e908381d7a07c2b56218576e1f597f25a0540bef56c2813a6",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.compact-control.fontSize",
+      "rounded.square",
+      "rounded.search-left"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ]
+    }
+  }
+}

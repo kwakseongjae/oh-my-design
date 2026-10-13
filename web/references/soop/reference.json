@@ -1,0 +1,1550 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "soop",
+    "name": "숲",
+    "display_name_kr": "숲",
+    "country": "KR",
+    "category": "consumer-tech",
+    "homepage": "https://www.sooplive.co.kr/",
+    "primary_color": "#0182ff",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=sooplive.co.kr&sz=256"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Only selector-backed public SOOP product-surface values are tokens. Corporate, brand-guide, advertising, esports, declared-only-font, and license evidence remain separate domains; no fallback or unobserved interaction value is promoted.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-14",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-product-home",
+        "url": "https://www.sooplive.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "home-repeat",
+        "kind": "duplicate-public-product-home",
+        "url": "https://www.sooplive.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "esports",
+        "kind": "public-product-esports",
+        "url": "https://esports.sooplive.com/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.sooplive.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "esports-live",
+        "kind": "product-surface",
+        "url": "https://esports.sooplive.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "brand-guide",
+        "kind": "official-doc",
+        "url": "https://res.sooplive.com/policy/contents/brand_guide.html",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "creative-guide",
+        "kind": "brand-asset",
+        "url": "https://static.file.sooplive.co.kr/da_guide_file/2024/10/24/SOOP_CreativeGuide.pdf",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "esg-overview",
+        "kind": "official-doc",
+        "url": "https://corp.sooplive.com/esg/2024/index.php?page=overview",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "esg-user-feedback",
+        "kind": "official-doc",
+        "url": "https://corp.sooplive.com/esg/2023/index.php?page=winwin",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "pretendard-license",
+        "kind": "license",
+        "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+        "captured": "2026-07-14"
+      }
+    ],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.surface-subtle": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.chip-surface": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-family-backed-by-loaded-font-face",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "typography.list-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.list-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.list-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.list-title.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "spacing.search-input-inline-start": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.search-input-inline-end": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.chip-inline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.search-input": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.chip": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "no-interaction-recorded",
+        "captured": "2026-07-13"
+      },
+      "components.home-search-input.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-tag-chip.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-category-chip.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"57\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-profile-avatar.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-profile-avatar.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-profile-avatar.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-profile-avatar.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-profile-avatar.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-profile-avatar.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-nickname-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-nickname-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-nickname-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-nickname-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-nickname-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-nickname-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-title-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"56\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-title-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"56\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-title-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"56\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-title-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"56\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-title-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"56\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-title-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"56\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-thumbnail.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-thumbnail.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-thumbnail.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-thumbnail.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-thumbnail.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-broadcast-thumbnail.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-content-card.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"30\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-content-card.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"30\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-content-card.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"30\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-content-card.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"30\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-content-card.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"30\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-content-card.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"30\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.shadow": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-alarm-button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"33\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-live-button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"31\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-login-button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.selected": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.home-banner-thumb-tab.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.type": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.backgroundColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.textColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.border": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.padding": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.height": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.typography": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.states": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-gnb-link.use": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.type": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.backgroundColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.textColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.border": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.rounded": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.padding": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.height": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.typography": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.states": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-filter-button.use": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"108\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.type": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.backgroundColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.textColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.rounded": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.padding": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.height": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.typography": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.states": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-status-badge.use": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"236\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.type": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.backgroundColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.textColor": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.border": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.rounded": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.padding": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.height": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.typography": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.states": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      },
+      "components.esports-accent-button.use": {
+        "surface_id": "esports",
+        "source_id": "esports-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"228\"]",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 66,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 2,
+      "extension-component-property": 54,
+      "contrast-ratio": 6,
+      "orphaned-tokens": 4
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.list-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-search-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-search-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-search-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-tag-chip.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-tag-chip.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-tag-chip.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-category-chip.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-category-chip.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-category-chip.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-profile-avatar.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-profile-avatar.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-profile-avatar.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-profile-avatar.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-nickname-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-nickname-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-nickname-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-broadcast-title-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-broadcast-title-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-broadcast-title-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-broadcast-thumbnail.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-broadcast-thumbnail.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-broadcast-thumbnail.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-content-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-content-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-content-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-alarm-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-alarm-button.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-alarm-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-alarm-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-live-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-live-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-live-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-login-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-login-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-login-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-banner-thumb-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-banner-thumb-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-banner-thumb-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-banner-thumb-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-gnb-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-gnb-link.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-gnb-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-gnb-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-filter-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-filter-button.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-filter-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-filter-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-status-badge.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-status-badge.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-status-badge.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-accent-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-accent-button.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-accent-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.esports-accent-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.home-tag-chip",
+        "message": "textColor (#757b8a) on backgroundColor (#f6f6f9) has contrast ratio 3.93:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.home-category-chip",
+        "message": "textColor (#757b8a) on backgroundColor (#e8ebed) has contrast ratio 3.54:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.home-live-button",
+        "message": "textColor (#fcfcfd) on backgroundColor (#ff2f00) has contrast ratio 3.62:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.home-login-button",
+        "message": "textColor (#525661) on backgroundColor (#00000000) has contrast ratio 2.86:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.esports-status-badge",
+        "message": "textColor (#acb0b9) on backgroundColor (#e2e4e9) has contrast ratio 1.71:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.esports-accent-button",
+        "message": "textColor (#0182ff) on backgroundColor (#fcfcfd) has contrast ratio 3.63:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.surface-subtle",
+        "message": "'surface-subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.chip-surface",
+        "message": "'chip-surface' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "d19bba85337199c293cd4b637c0d34785f5de5382d2c919dbd5452c36d1c9c18",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.none",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.list-title.fontSize",
+      "rounded.search-input",
+      "rounded.chip"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "list-title"
+      ]
+    }
+  }
+}

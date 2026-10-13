@@ -1,203 +1,169 @@
 ---
-id: makinarocks
 name: MakinaRocks
-display_name_kr: 마키나락스
-country: KR
-category: ai
-homepage: "https://www.makinarocks.ai"
-primary_color: "#2b2b3b"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=makinarocks.ai&sz=128"
-verified: "2026-07-13"
-added: "2026-06-26"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.makinarocks.ai/", inspected: "2026-07-13" }
-    - { id: about, kind: corporate-marketing, url: "https://www.makinarocks.ai/en/about/", inspected: "2026-07-13" }
-    - { id: blog, kind: editorial-marketing, url: "https://www.makinarocks.ai/en/blog/", inspected: "2026-07-13" }
-  sources:
-    - { id: home-capture, kind: product-surface, url: "https://www.makinarocks.ai/", captured: "2026-07-13" }
-    - { id: about-capture, kind: product-surface, url: "https://www.makinarocks.ai/en/about/", captured: "2026-07-13" }
-    - { id: blog-capture, kind: product-surface, url: "https://www.makinarocks.ai/en/blog/", captured: "2026-07-13" }
-    - { id: rebrand-context, kind: brand-asset, url: "https://www.makinarocks.ai/en/blog/makinarocks-rebranding-meet-our-new-logo/", captured: "2026-07-13" }
-    - { id: kmr-apparat-assets, kind: brand-asset, url: "https://www.makinarocks.ai/fonts/kmr-apparat-regular.woff2", captured: "2026-07-13" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.ink": *home
-    "tokens.colors.slate": *home
-    "tokens.colors.muted": *home
-    "tokens.typography.family.display": *home
-    "tokens.typography.family.body": *home
-    "tokens.typography.display-hero.size": *home
-    "tokens.typography.display-hero.weight": *home
-    "tokens.typography.display-hero.lineHeight": *home
-    "tokens.typography.display-hero.tracking": *home
-    "tokens.typography.display-hero.use": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.tracking": *home
-    "tokens.typography.body.use": *home
-    "tokens.spacing.nav-control": *home
-    "tokens.rounded.nav-control": *home
-    "tokens.rounded.carousel-arrow": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-nav-button.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.border": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.header-contact-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.border": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.hero-outline-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.type": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.bg": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.fg": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.border": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.radius": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.padding": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.height": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.font": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.states": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.large-outline-link.use": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-arrow-button.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::h3", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.solution-card-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::h3", captured: "2026-07-13" }
-    "tokens.components.news-card-link.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.padding": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::h3", captured: "2026-07-13" }
-    "tokens.components.news-card-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.news-card-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.type": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.bg": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.radius": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.padding": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.size": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.states": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.about-stat-card.use": { surface_id: about, source_id: about-capture, method: computed-style, selector: "surface-2::li", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.type": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.bg": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.fg": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.radius": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.padding": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.height": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.font": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.selected": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.states": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-category-tab.use": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.blog-featured-post.type": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.blog-featured-post.fg": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::h3", captured: "2026-07-13" }
-    "tokens.components.blog-featured-post.size": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.blog-featured-post.font": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::h3", captured: "2026-07-13" }
-    "tokens.components.blog-featured-post.states": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.blog-featured-post.use": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.type": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.fg": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::h3", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.radius": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.padding": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.size": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.font": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::h3", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.states": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.blog-post-card.use": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.type": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.bg": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.fg": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.radius": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.size": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.font": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.states": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.blog-pagination-link.use": { surface_id: blog, source_id: blog-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.height": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::li", captured: "2026-07-13" }
-    "tokens.components.footer-link.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.type": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.bg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.fg": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.border": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.radius": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.size": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.font": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.states": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-outline-button.use": { surface_id: home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  components_harvested: true
-  colors:
-    primary: "#2b2b3b"
-    canvas: "#ffffff"
-    ink: "#000000"
-    slate: "#5a5a72"
-    muted: "#8d8da5"
-  typography:
-    family: { display: "KmrApparat", body: "Pretendard" }
-    display-hero: { size: 64, weight: 700, lineHeight: 83.2, tracking: -1.6, use: "Public-home marketing hero" }
-    body: { size: 16, weight: 400, lineHeight: 25.6, tracking: -0.16, use: "Public marketing and corporate reading text" }
-  spacing: { nav-control: 16 }
-  rounded: { nav-control: 0, carousel-arrow: 28 }
-  components:
-    header-nav-button: { type: button, bg: "transparent", fg: "#000000", radius: "0px", padding: "16px", height: "64px", font: "16px / 400 / 32px KmrApparat", states: "rest on four header buttons (capture 1-4) on all three capture records; the bundle holds no state frame for any MakinaRocks element", use: "Public header navigation button at home::[data-omd-capture=\"1\"], 133 x 64, tracking normal" }
-    header-contact-link: { type: button, bg: "#ffffff", border: "1px #000000", radius: "19px", padding: "5px 30px", height: "38px", states: "rest on all three capture records (capture 5); no state frame", use: "Header contact link (a.contact) at home::[data-omd-capture=\"5\"], 117 x 38 on home and 141 x 38 on About and Blog; its #000000 16px / 400 / 25.6px Pretendard text equals the page body text, so no label style is claimed" }
-    hero-outline-link: { type: button, bg: "transparent", fg: "#1a1a1a", border: "1px #1a1a1a", radius: "50px", padding: "9px 24px", height: "46px", font: "16px / 500 / 25.6px KmrApparat", states: "rest on the light hero slide (capture 9, a.outline); the dark hero slide link (capture 8, a.outline.dark) records fg #ffffff and border 1px #ffffff with the same geometry; no state frame", use: "Hero outline pill link at home::[data-omd-capture=\"9\"], 157 x 46, gap 12px, tracking -0.16px" }
-    large-outline-link: { type: button, bg: "transparent", fg: "#1a1a1a", border: "1px #e7e7ee", radius: "50px", padding: "12px 24px", height: "55px", font: "18px / 500 / 28.8px KmrApparat", states: "rest on two About links (capture 8, 9, a.outline.light); the home closing-band link (capture 31, a.outline.dark) records fg #ffffff and border 1px #ffffff with the same geometry; no state frame", use: "Large outline pill link at surface-2::[data-omd-capture=\"8\"], 169 x 55, gap 12px, tracking -0.16px" }
-    carousel-arrow-button: { type: button, bg: "rgba(196, 196, 212, 0.5)", radius: "28px", padding: "0px", size: "40px x 40px", states: "rest on the enabled next arrows (capture 20, 30); the prev arrows beside them (capture 19, 29) are disabled and record the same captured values, and opacity is not among the captured properties, so no disabled treatment is declared; no state frame", use: "Home carousel arrow button (button.next) at home::[data-omd-capture=\"20\"]; its 13.3333px / 400 type is the browser default for a button, so no label style is claimed" }
-    solution-card-link: { type: card, radius: "24px", padding: "20px 37px", size: "358px x 358px", font: "24px / 700 / 38.4px KmrApparat", states: "captured at rest on the home solution cards (capture 12 and its siblings); no state frame", use: "Home solution card link (a) at home::[data-omd-capture=\"12\"]; the title is a child h3 in #ffffff 24px / 700 / 38.4px KmrApparat over artwork the capture does not record (background-color computes transparent; background-image is not among the captured properties), so no fill or fg is claimed; the link's own #0000ee is the browser default link colour" }
-    news-card-link: { type: card, bg: "#ffffff", fg: "#000000", radius: "12px", padding: "0px", size: "340px x 376px", font: "16px / 500 / 20.8px KmrApparat", states: "eight cards captured at rest (capture 21-28); no state frame", use: "Home news card link (a) at home::[data-omd-capture=\"21\"]; fg and font come from its child h3 title (tracking -0.16px); the link itself records the page body text" }
-    about-stat-card: { type: card, bg: "#f9f9fb", radius: "24px", padding: "24px", size: "328px x 328px", states: "eight tiles captured at rest; no state frame", use: "About-page tile (li) at surface-2::li, two rows of four; the li records #5a5a72 24px / 400 / 31.2px Pretendard, but its inner text elements were not sampled, so no label style is claimed" }
-    blog-category-tab: { type: tab, bg: "transparent", fg: "#5a5a72", radius: "12px", padding: "4px 30px", height: "29px", font: "16px / 500 / 20.8px Pretendard", selected: "bg #ffffff", states: "rest on three category links (capture 9-11); the link with class on (capture 8) records bg #ffffff with the same text and geometry and is recorded as selected; no state frame", use: "Blog category filter link (a) in div#category-toggle.tab-list at surface-3::[data-omd-capture=\"9\"], tracking -0.16px" }
-    blog-featured-post: { type: card, fg: "#2b2b3b", size: "1408px x 422px", font: "32px / 500 / 41.6px Pretendard", states: "one featured post captured at rest; no state frame", use: "Blog featured post link (a) at surface-3::[data-omd-capture=\"12\"]: a 774 x 422 image block with 24px radius (p.image) beside a text column opened by a category line (padding 40px 40px 0px), a #2b2b3b 32px / 500 / 41.6px title (h3) and a #5a5a72 16px / 400 description" }
-    blog-post-card: { type: card, fg: "#2b2b3b", radius: "16px", padding: "16px", size: "354px x 381px", font: "20px / 500 / normal Pretendard", states: "twelve post cards captured at rest (capture 13-24); no state frame", use: "Blog post card link (a) at surface-3::[data-omd-capture=\"13\"]: a 322 x 180 image with 16px radius, a category line (padding 24px 0px 0px), a #2b2b3b 20px / 500 title (h3) and a #5a5a72 16px / 400 / 25.6px date" }
-    blog-pagination-link: { type: button, bg: "transparent", fg: "#2b2b3b", radius: "22px", size: "44px x 44px", font: "16px / 400 / 25.6px Pretendard", states: "rest on three page links (capture 25-27); no link records a different value, so no current-page variant is declared; no state frame", use: "Blog pagination link (a) at surface-3::[data-omd-capture=\"25\"]" }
-    footer-link: { type: listItem, fg: "#ffffff", height: "26px", font: "16px / 400 / 25.6px KmrApparat", states: "rest on the footer link columns (capture 35 and its siblings); no state frame", use: "Footer link (a) at home::[data-omd-capture=\"35\"] inside a 202 x 26 li whose own text is #8d8da5; tracking -0.16px" }
-    footer-outline-button: { type: button, bg: "transparent", fg: "#ffffff", border: "1px #ffffff", radius: "10px", size: "100px x 40px", font: "12px / 700 / normal Pretendard", states: "one button captured at rest (capture 32); no state frame", use: "Footer outline button at home::[data-omd-capture=\"32\"]; its 1px 6px padding is the browser default for a button and is not claimed" }
+colors:
+  primary: '#2b2b3b'
+  canvas: '#ffffff'
+  ink: '#000000'
+  slate: '#5a5a72'
+  muted: '#8d8da5'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 700
+    lineHeight: 83.2
+    letterSpacing: '-1.6px'
+    use: Public-home marketing hero
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 25.6
+    letterSpacing: '-0.16px'
+    use: Public marketing and corporate reading text
+rounded:
+  nav-control: 0px
+  carousel-arrow: 28px
+spacing:
+  nav-control: 16
+components:
+  header-nav-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 16px
+    height: 64px
+    typography: 16px / 400 / 32px KmrApparat
+    states: rest on four header buttons (capture 1-4) on all three capture records; the bundle holds no state frame for any MakinaRocks element
+    use: Public header navigation button at home::[data-omd-capture="1"], 133 x 64, tracking normal
+  header-contact-link:
+    type: button
+    backgroundColor: '#ffffff'
+    border: '1px #000000'
+    rounded: 19px
+    padding: 5px 30px
+    height: 38px
+    states: rest on all three capture records (capture 5); no state frame
+    use: 'Header contact link (a.contact) at home::[data-omd-capture="5"], 117 x 38 on home and 141 x 38 on About and Blog; its #000000 16px / 400 / 25.6px Pretendard text equals the page body text, so no label style is claimed'
+  hero-outline-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#1a1a1a'
+    border: '1px #1a1a1a'
+    rounded: 50px
+    padding: 9px 24px
+    height: 46px
+    typography: 16px / 500 / 25.6px KmrApparat
+    states: 'rest on the light hero slide (capture 9, a.outline); the dark hero slide link (capture 8, a.outline.dark) records fg #ffffff and border 1px #ffffff with the same geometry; no state frame'
+    use: Hero outline pill link at home::[data-omd-capture="9"], 157 x 46, gap 12px, tracking -0.16px
+  large-outline-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#1a1a1a'
+    border: '1px #e7e7ee'
+    rounded: 50px
+    padding: 12px 24px
+    height: 55px
+    typography: 18px / 500 / 28.8px KmrApparat
+    states: 'rest on two About links (capture 8, 9, a.outline.light); the home closing-band link (capture 31, a.outline.dark) records fg #ffffff and border 1px #ffffff with the same geometry; no state frame'
+    use: Large outline pill link at surface-2::[data-omd-capture="8"], 169 x 55, gap 12px, tracking -0.16px
+  carousel-arrow-button:
+    type: button
+    backgroundColor: rgba(196, 196, 212, 0.5)
+    rounded: 28px
+    padding: 0px
+    size: 40px x 40px
+    states: rest on the enabled next arrows (capture 20, 30); the prev arrows beside them (capture 19, 29) are disabled and record the same captured values, and opacity is not among the captured properties, so no disabled treatment is declared; no state frame
+    use: Home carousel arrow button (button.next) at home::[data-omd-capture="20"]; its 13.3333px / 400 type is the browser default for a button, so no label style is claimed
+  solution-card-link:
+    type: card
+    rounded: 24px
+    padding: 20px 37px
+    size: 358px x 358px
+    typography: 24px / 700 / 38.4px KmrApparat
+    states: captured at rest on the home solution cards (capture 12 and its siblings); no state frame
+    use: 'Home solution card link (a) at home::[data-omd-capture="12"]; the title is a child h3 in #ffffff 24px / 700 / 38.4px KmrApparat over artwork the capture does not record (background-color computes transparent; background-image is not among the captured properties), so no fill or fg is claimed; the link''s own #0000ee is the browser default link colour'
+  news-card-link:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 12px
+    padding: 0px
+    size: 340px x 376px
+    typography: 16px / 500 / 20.8px KmrApparat
+    states: eight cards captured at rest (capture 21-28); no state frame
+    use: Home news card link (a) at home::[data-omd-capture="21"]; fg and font come from its child h3 title (tracking -0.16px); the link itself records the page body text
+  about-stat-card:
+    type: card
+    backgroundColor: '#f9f9fb'
+    rounded: 24px
+    padding: 24px
+    size: 328px x 328px
+    states: eight tiles captured at rest; no state frame
+    use: 'About-page tile (li) at surface-2::li, two rows of four; the li records #5a5a72 24px / 400 / 31.2px Pretendard, but its inner text elements were not sampled, so no label style is claimed'
+  blog-category-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#5a5a72'
+    rounded: 12px
+    padding: 4px 30px
+    height: 29px
+    typography: 16px / 500 / 20.8px Pretendard
+    selected: 'bg #ffffff'
+    states: 'rest on three category links (capture 9-11); the link with class on (capture 8) records bg #ffffff with the same text and geometry and is recorded as selected; no state frame'
+    use: Blog category filter link (a) in div#category-toggle.tab-list at surface-3::[data-omd-capture="9"], tracking -0.16px
+  blog-featured-post:
+    type: card
+    textColor: '#2b2b3b'
+    size: 1408px x 422px
+    typography: 32px / 500 / 41.6px Pretendard
+    states: one featured post captured at rest; no state frame
+    use: 'Blog featured post link (a) at surface-3::[data-omd-capture="12"]: a 774 x 422 image block with 24px radius (p.image) beside a text column opened by a category line (padding 40px 40px 0px), a #2b2b3b 32px / 500 / 41.6px title (h3) and a #5a5a72 16px / 400 description'
+  blog-post-card:
+    type: card
+    textColor: '#2b2b3b'
+    rounded: 16px
+    padding: 16px
+    size: 354px x 381px
+    typography: 20px / 500 / normal Pretendard
+    states: twelve post cards captured at rest (capture 13-24); no state frame
+    use: 'Blog post card link (a) at surface-3::[data-omd-capture="13"]: a 322 x 180 image with 16px radius, a category line (padding 24px 0px 0px), a #2b2b3b 20px / 500 title (h3) and a #5a5a72 16px / 400 / 25.6px date'
+  blog-pagination-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#2b2b3b'
+    rounded: 22px
+    size: 44px x 44px
+    typography: 16px / 400 / 25.6px Pretendard
+    states: rest on three page links (capture 25-27); no link records a different value, so no current-page variant is declared; no state frame
+    use: Blog pagination link (a) at surface-3::[data-omd-capture="25"]
+  footer-link:
+    type: listItem
+    textColor: '#ffffff'
+    height: 26px
+    typography: 16px / 400 / 25.6px KmrApparat
+    states: rest on the footer link columns (capture 35 and its siblings); no state frame
+    use: 'Footer link (a) at home::[data-omd-capture="35"] inside a 202 x 26 li whose own text is #8d8da5; tracking -0.16px'
+  footer-outline-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    border: '1px #ffffff'
+    rounded: 10px
+    size: 100px x 40px
+    typography: 12px / 700 / normal Pretendard
+    states: one button captured at rest (capture 32); no state frame
+    use: Footer outline button at home::[data-omd-capture="32"]; its 1px 6px padding is the browser default for a button and is not claimed
+fonts:
+  roles:
+    display: KmrApparat
+    body: Pretendard
 ---
 
 # Design System Inspiration of MakinaRocks
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 MakinaRocks is a Korean Physical AI company building specialized AI and an enterprise AI OS for industrial operations, from manufacturing to defense. Its current public web language is a restrained, type-led marketing system: a white field, black reading text, dark indigo `#2b2b3b` titles, and a measured muted-text ladder. The supplied evidence covers the public homepage, corporate About page, and editorial blog—not an authenticated product application or documentation chrome—so this reference records those marketing surfaces without treating them as an application-wide design system.
 
@@ -208,14 +174,34 @@ The public design is also in transition. In May 2026, MakinaRocks introduced a n
 - **Type-led hierarchy:** loaded KmrApparat carries public display and navigation moments; loaded Pretendard carries broad reading and control use.
 - **Rebrand expression:** fluorescent yellow-green is first-party brand context, not a captured machine token; do not substitute a guessed hex value.
 
-## Primary tasks
+### Primary tasks
 
 - Read what the company builds and where its AI runs
 - Check the company's founding year and stated deployment figures
 - Find out what the Runway enterprise AI OS does
 - Read the rebrand article explaining the new symbol
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+MakinaRocks positions itself as a Physical AI company whose specialized AI and enterprise AI OS address complex industrial operations. Its official About page says it builds AI for harsh, unpredictable environments ranging from factories to battlefields, and lists manufacturing, defense, energy, logistics, and related industrial contexts. The same page states the company was founded in 2017, has a research-and-development workforce share above 70%, and reports more than 6,000 models applied in industrial fields; those are company-stated figures, not independently audited metrics.
+
+The May 2026 rebrand gives the visual story a new center: the company introduced a symbol intended to represent the real world as a dense, grounded outer form and the AI core as energy breaking outward. It also says its fluorescent yellow-green signature and black foundation embody stability/precision alongside energy/acceleration, and that the new system is being applied across business, digital, event, and product touchpoints. This reference uses that article as brand context while keeping exact UI tokens restricted to the supplied computed-style evidence.
+
+### Principles
+
+1. **Physical environments are the reference point.** The company explicitly frames its work around AI operating in harsh industrial conditions. *UI implication:* prefer concrete, operational language over speculative consumer-AI metaphors.
+2. **Specialization precedes generalization.** MakinaRocks describes industry-specialized AI and an enterprise AI OS, rather than a generic assistant. *UI implication:* distinguish industry context and product claims; do not invent universal product states from marketing pages.
+3. **The rebrand pairs stability with energy.** The official identity narrative describes deep black/precision alongside fluorescent yellow-green/acceleration. *UI implication:* retain that as a qualitative image and brand direction until an exact public UI token is observed.
+
+### Personas
+
+The first-party sources identify industrial contexts rather than named end-user personas. Treat the following as stakeholder groups, not fictional individuals or validated usability personas:
+
+- **Manufacturing and industrial operations organizations:** explicitly named on the official homepage and About page as contexts for specialized AI.
+- **Defense and public-infrastructure organizations:** named in the rebrand and About narratives as environments where MakinaRocks operates or intends to operate.
+- **Enterprise AI teams using Runway:** the homepage describes Runway as an enterprise AI operating system; no authenticated workflow, role permissions, or individual task evidence was supplied.
+
+## Colors
 
 ### Observed public-web roles
 
@@ -230,7 +216,7 @@ The public design is also in transition. In May 2026, MakinaRocks introduced a n
 
 MakinaRocks’ 2026 rebrand post identifies fluorescent yellow-green as the new signature color and describes it against a deep-black foundation. The supplied raw collector did not capture an exact computed green value on a reusable element. Preserve the qualitative brand context; do not manufacture a token from the logo asset or use the old indigo as a substitute for it.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -252,7 +238,29 @@ MakinaRocks’ 2026 rebrand post identifies fluorescent yellow-green as the new 
 
 Corrected 2026-09-30: the table listed a disabled public-home control at 13.3333px / 400. That is the browser's default button type on the home carousel arrows, and the enabled arrows record the same, so it is not a MakinaRocks type role; the row is replaced by two measured control and card roles.
 
-## 4. Component Stylings
+## Layout
+
+### Evidence boundary
+
+The supplied routes show public marketing, corporate, and editorial layouts only. They support the measured 16px public-navigation padding and public-web typography above; they do not support a product grid, app spacing scale, responsive breakpoint system, content-card geometry, or visual behavior outside those routes.
+
+### Rebrand context
+
+The official rebrand article explains the new symbol as a visual expression of the physical world and an expanding AI core, and says the broader design system was rebuilt around the identity. That is useful context for image direction and brand narrative, but it supplies no exact layout, spacing, or UI-component token.
+
+### Responsive Behavior
+
+No responsive viewport comparison was supplied. The collector used a 1440×900 viewport for all three routes; mobile breakpoints, stacking behavior, touch-target policy, and image treatment remain unresolved.
+
+## Elevation & Depth
+
+No reusable shadow or elevation token is promoted. The supplied collector output has no selector-provenanced component shadow claim in the retained component set. Treat flatness, depth, and card elevation as unresolved for reuse rather than carrying forward an older inferred shadow ladder.
+
+## Motion & Easing
+
+No duration, easing, or transition token is captured. The official rebrand’s language of expansion and momentum is narrative context only; it is not evidence for interface animation. Respect reduced-motion requirements in any implementation, but do not attribute a motion system to MakinaRocks without a selector-provenanced observation.
+
+## Components
 
 ### Public header navigation control
 
@@ -351,21 +359,11 @@ The bundle holds no `::state-*` frame for any MakinaRocks element, so hover, pre
 **Tier 2 sources:** https://getdesign.md/makinarocks (built-in web open failed; no matching result in site search); https://styles.refero.design/?q=makinarocks (built-in web open failed; no matching result in site search)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Evidence boundary
+No reusable product-state guidance is established. The bundle holds no `::state-*` frame for any element, so hover, pressed, and focus values are not declared. The disabled carousel arrows (`home::[data-omd-capture="19"]`, `"29"`) record the same captured values as the enabled ones and opacity is not captured, so no disabled treatment is declared either. The blog category link with class `on` is the one selected variant recorded. Empty, loading, error, success, form-validation, and motion states are unresolved rather than inferred from marketing copy. Corrected 2026-09-30: the July text cited `interactions: []` and `interactionCount: 0`; those count menu, dialog, and tab expansions only.
 
-The supplied routes show public marketing, corporate, and editorial layouts only. They support the measured 16px public-navigation padding and public-web typography above; they do not support a product grid, app spacing scale, responsive breakpoint system, content-card geometry, or visual behavior outside those routes.
-
-### Rebrand context
-
-The official rebrand article explains the new symbol as a visual expression of the physical world and an expanding AI core, and says the broader design system was rebuilt around the identity. That is useful context for image direction and brand narrative, but it supplies no exact layout, spacing, or UI-component token.
-
-## 6. Depth & Elevation
-
-No reusable shadow or elevation token is promoted. The supplied collector output has no selector-provenanced component shadow claim in the retained component set. Treat flatness, depth, and card elevation as unresolved for reuse rather than carrying forward an older inferred shadow ladder.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -383,20 +381,7 @@ No reusable shadow or elevation token is promoted. The supplied collector output
 - Don't call `Pretendard JP` a live family: this bundle records it as declared-only with zero visible use.
 - Don't advertise KmrApparat as a redistributable public font; no downstream licence was found.
 
-## 8. Responsive Behavior
-
-No responsive viewport comparison was supplied. The collector used a 1440×900 viewport for all three routes; mobile breakpoints, stacking behavior, touch-target policy, and image treatment remain unresolved.
-
-## 9. Agent Prompt Guide
-
-### Safe public-web reference
-
-- Use white `#ffffff`, ink `#000000`, dark indigo `#2b2b3b`, slate `#5a5a72`, and muted `#8d8da5` only as public-web visual evidence.
-- Use a 64px / 700 / 83.2px / -1.6px KmrApparat hero only when the target can legally load that family; otherwise omit that specimen rather than use a substitute.
-- Use Pretendard 16px / 400 / 25.6px / -0.16px for the captured public-web reading example when appropriate.
-- Components are limited to the fourteen selector-provenanced entries in §4 (header controls, outline pills, carousel arrow, home cards, About tile, blog tabs, cards and pagination, footer); none carries a measured pointer or focus state.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 MakinaRocks’ first-party public language is industrial, concrete, and outcome-led. The English homepage frames the company around specialized AI and “Delivering Reality,” while the Korean About page describes Physical AI operating from factories to battlefields and accelerating a fully autonomous future through industry-specialized AI. The rebrand article adds a more energetic visual metaphor—an AI core breaking through the constraints of industrial reality—but its claims remain about brand expression, not an instruction to overstate product capability.
 
@@ -411,30 +396,21 @@ MakinaRocks’ first-party public language is industrial, concrete, and outcome-
 - “Deploying AI, Delivering Reality” — official homepage.
 - “The Physical AI Leader — Built for the Field, Powered by Enterprise AI OS” — official About positioning.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-MakinaRocks positions itself as a Physical AI company whose specialized AI and enterprise AI OS address complex industrial operations. Its official About page says it builds AI for harsh, unpredictable environments ranging from factories to battlefields, and lists manufacturing, defense, energy, logistics, and related industrial contexts. The same page states the company was founded in 2017, has a research-and-development workforce share above 70%, and reports more than 6,000 models applied in industrial fields; those are company-stated figures, not independently audited metrics.
+### Safe public-web reference
 
-The May 2026 rebrand gives the visual story a new center: the company introduced a symbol intended to represent the real world as a dense, grounded outer form and the AI core as energy breaking outward. It also says its fluorescent yellow-green signature and black foundation embody stability/precision alongside energy/acceleration, and that the new system is being applied across business, digital, event, and product touchpoints. This reference uses that article as brand context while keeping exact UI tokens restricted to the supplied computed-style evidence.
+- Use white `#ffffff`, ink `#000000`, dark indigo `#2b2b3b`, slate `#5a5a72`, and muted `#8d8da5` only as public-web visual evidence.
+- Use a 64px / 700 / 83.2px / -1.6px KmrApparat hero only when the target can legally load that family; otherwise omit that specimen rather than use a substitute.
+- Use Pretendard 16px / 400 / 25.6px / -0.16px for the captured public-web reading example when appropriate.
+- Components are limited to the fourteen selector-provenanced entries in §4 (header controls, outline pills, carousel arrow, home cards, About tile, blog tabs, cards and pagination, footer); none carries a measured pointer or focus state.
 
-## 12. Principles
+## Governance
 
-1. **Physical environments are the reference point.** The company explicitly frames its work around AI operating in harsh industrial conditions. *UI implication:* prefer concrete, operational language over speculative consumer-AI metaphors.
-2. **Specialization precedes generalization.** MakinaRocks describes industry-specialized AI and an enterprise AI OS, rather than a generic assistant. *UI implication:* distinguish industry context and product claims; do not invent universal product states from marketing pages.
-3. **The rebrand pairs stability with energy.** The official identity narrative describes deep black/precision alongside fluorescent yellow-green/acceleration. *UI implication:* retain that as a qualitative image and brand direction until an exact public UI token is observed.
+### Known Gaps
 
-## 13. Personas
-
-The first-party sources identify industrial contexts rather than named end-user personas. Treat the following as stakeholder groups, not fictional individuals or validated usability personas:
-
-- **Manufacturing and industrial operations organizations:** explicitly named on the official homepage and About page as contexts for specialized AI.
-- **Defense and public-infrastructure organizations:** named in the rebrand and About narratives as environments where MakinaRocks operates or intends to operate.
-- **Enterprise AI teams using Runway:** the homepage describes Runway as an enterprise AI operating system; no authenticated workflow, role permissions, or individual task evidence was supplied.
-
-## 14. States
-
-No reusable product-state guidance is established. The bundle holds no `::state-*` frame for any element, so hover, pressed, and focus values are not declared. The disabled carousel arrows (`home::[data-omd-capture="19"]`, `"29"`) record the same captured values as the enabled ones and opacity is not captured, so no disabled treatment is declared either. The blog category link with class `on` is the one selected variant recorded. Empty, loading, error, success, form-validation, and motion states are unresolved rather than inferred from marketing copy. Corrected 2026-09-30: the July text cited `interactions: []` and `interactionCount: 0`; those count menu, dialog, and tab expansions only.
-
-## 15. Motion & Easing
-
-No duration, easing, or transition token is captured. The official rebrand’s language of expansion and momentum is narrative context only; it is not evidence for interface animation. Respect reduced-motion requirements in any implementation, but do not attribute a motion system to MakinaRocks without a selector-provenanced observation.
+- **Contrast, `header-nav-button`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `hero-outline-link`.** Text `#1a1a1a` on `#00000000` measures 1.21:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `large-outline-link`.** Text `#1a1a1a` on `#00000000` measures 1.21:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `blog-category-tab`.** Text `#5a5a72` on `#00000000` measures 3.14:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `blog-pagination-link`.** Text `#2b2b3b` on `#00000000` measures 1.51:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

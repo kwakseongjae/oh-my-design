@@ -1,0 +1,1742 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "catchtable",
+    "name": "CatchTable",
+    "country": "KR",
+    "category": "consumer-tech",
+    "homepage": "https://www.catchtable.co.kr",
+    "primary_color": "#ff3d00",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=catchtable.co.kr&sz=256"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Selector-backed values are limited to the supplied consumer, merchant-marketing, and careers-marketing captures. These domains are not a single inferred product UI.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "consumer-home",
+        "kind": "consumer-product",
+        "url": "https://www.catchtable.net/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "merchant-marketing",
+        "kind": "b2b-marketing",
+        "url": "https://biz.catchtable.co.kr/n/main",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "careers-marketing",
+        "kind": "careers-marketing",
+        "url": "https://career.catchtable.co.kr/ko/service",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "consumer-capture",
+        "kind": "product-surface",
+        "url": "https://www.catchtable.net/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "merchant-capture",
+        "kind": "product-surface",
+        "url": "https://biz.catchtable.co.kr/n/main",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "careers-capture",
+        "kind": "product-surface",
+        "url": "https://career.catchtable.co.kr/ko/service",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "service-context",
+        "kind": "official-doc",
+        "url": "https://career.catchtable.co.kr/ko/service",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "font-design",
+        "kind": "official-doc",
+        "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "font-license",
+        "kind": "license",
+        "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.title": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.search-surface": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.control-border": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.brand-orange": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-brand": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-body.fontSize": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-body.fontWeight": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-body.lineHeight": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-body.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-title.fontSize": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-title.fontWeight": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-title.lineHeight": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consumer-title.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.search-control.fontSize": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.search-control.fontWeight": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.search-control.lineHeight": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.search-control.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.career-display.fontSize": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.career-display.fontWeight": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.career-display.lineHeight": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.career-display.use": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.discovery-tile": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.search": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.career-action": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.backgroundColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.textColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.rounded": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.padding": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.typography": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-search.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.backgroundColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.textColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.border": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.rounded": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.height": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.typography": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-filter-control.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-discovery-tile.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-discovery-tile.rounded": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-discovery-tile.padding": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-discovery-tile.typography": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-discovery-tile.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-discovery-tile.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.type": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.backgroundColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.textColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.rounded": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.height": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.typography": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.shadow": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.states": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-cta.use": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.type": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.backgroundColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.textColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.rounded": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.padding": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.typography": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.states": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.careers-orange-action.use": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.type": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.backgroundColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.textColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.rounded": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.padding": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.height": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.typography": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.hover": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style-state-sample",
+        "selector": "surface-2::[data-omd-capture=\"1\"]::state-hover",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.pressed": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style-state-sample",
+        "selector": "surface-2::[data-omd-capture=\"1\"]::state-pressed",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.states": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-gnb-link.use": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.type": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.backgroundColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.textColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.border": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.rounded": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.padding": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.height": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.typography": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.states": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-submit-outline.use": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"14\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.type": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.backgroundColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.textColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.rounded": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.padding": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.size": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.typography": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.states": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-form-input.use": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"3\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.type": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.backgroundColor": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.border": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.rounded": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.size": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.states": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.merchant-checkbox.use": {
+        "surface_id": "merchant-marketing",
+        "source_id": "merchant-capture",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"6\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.type": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.backgroundColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.textColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.rounded": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.padding": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.height": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.typography": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.states": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-menu-item.use": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.type": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.backgroundColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.textColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.rounded": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.padding": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.height": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.typography": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.states": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-header-orange-item.use": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.type": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.backgroundColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.textColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.rounded": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.padding": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.height": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.typography": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.states": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-blue-action.use": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.type": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.backgroundColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.textColor": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.rounded": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.padding": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.height": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.typography": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.states": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.careers-pill-action.use": {
+        "surface_id": "careers-marketing",
+        "source_id": "careers-capture",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.backgroundColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.textColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.size": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.typography": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-category-shortcut.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::article",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.backgroundColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::article",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.textColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.size": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::article",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.typography": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::article",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-restaurant-card.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::article",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-bottom-tab.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-bottom-tab.backgroundColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-bottom-tab.size": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-bottom-tab.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-bottom-tab.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.type": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.backgroundColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.textColor": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.height": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.typography": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.states": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      },
+      "components.consumer-modal-text-button.use": {
+        "surface_id": "consumer-home",
+        "source_id": "consumer-capture",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"65\"]",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 77,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 4,
+      "extension-component-property": 57,
+      "missing-primary": 1,
+      "contrast-ratio": 7,
+      "orphaned-tokens": 8
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.consumer-body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.consumer-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.search-control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.career-display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-search.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-search.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-search.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-filter-control.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-filter-control.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-filter-control.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-filter-control.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-discovery-tile.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-discovery-tile.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-discovery-tile.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-cta.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-cta.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-orange-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-orange-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-orange-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-gnb-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-gnb-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-gnb-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-gnb-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-gnb-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-submit-outline.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-submit-outline.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-submit-outline.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-submit-outline.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-form-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-form-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-form-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-checkbox.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-checkbox.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-checkbox.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.merchant-checkbox.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-header-menu-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-header-menu-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-header-menu-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-header-orange-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-header-orange-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-header-orange-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-blue-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-blue-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-blue-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-pill-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-pill-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-pill-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-category-shortcut.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-category-shortcut.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-category-shortcut.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-restaurant-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-restaurant-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-restaurant-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-bottom-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-bottom-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-bottom-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-modal-text-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-modal-text-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-modal-text-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.careers-orange-action",
+        "message": "textColor (#ffffff) on backgroundColor (#ff3d00) has contrast ratio 3.55:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.merchant-gnb-link",
+        "message": "textColor (#37352f) on backgroundColor (#00000000) has contrast ratio 1.71:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.careers-header-orange-item",
+        "message": "textColor (#ffffff) on backgroundColor (#ff3d00) has contrast ratio 3.55:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.careers-blue-action",
+        "message": "textColor (#ffffff) on backgroundColor (#388fff) has contrast ratio 3.21:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.careers-pill-action",
+        "message": "textColor (#ffffff) on backgroundColor (#ff3d00) has contrast ratio 3.55:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.consumer-category-shortcut",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.consumer-restaurant-card",
+        "message": "textColor (#222222) on backgroundColor (#00000000) has contrast ratio 1.32:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.title",
+        "message": "'title' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.search-surface",
+        "message": "'search-surface' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.control-border",
+        "message": "'control-border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.brand-orange",
+        "message": "'brand-orange' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.on-brand",
+        "message": "'on-brand' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "dbe17fcb7ff0d60b1d4038bca1b6f7091aab2abbfa84bb78d5a0bc066f991906",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.consumer-body.fontSize",
+      "typography.consumer-title.fontSize",
+      "typography.search-control.fontSize",
+      "typography.career-display.fontSize",
+      "rounded.square",
+      "rounded.discovery-tile",
+      "rounded.control",
+      "rounded.search",
+      "rounded.career-action"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "consumer-body",
+        "consumer-title",
+        "search-control",
+        "career-display"
+      ]
+    }
+  }
+}

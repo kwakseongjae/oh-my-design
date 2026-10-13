@@ -1,0 +1,1015 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "portone",
+    "name": "PortOne",
+    "display_name_kr": "포트원",
+    "country": "KR",
+    "category": "fintech",
+    "homepage": "https://www.portone.io",
+    "primary_color": "#fc6b2d",
+    "logo": {
+      "type": "github",
+      "slug": "portone-io"
+    },
+    "verified": "2026-09-30",
+    "added": "2026-06-26"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-09-30",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-30",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "marketing",
+        "url": "https://www.portone.io/",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-2",
+        "kind": "corporate",
+        "url": "https://www.portone.io/team",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-3",
+        "kind": "marketing",
+        "url": "https://www.portone.io/pricing",
+        "inspected": "2026-09-30"
+      }
+    ],
+    "sources": [
+      {
+        "id": "surface-home",
+        "kind": "product-surface",
+        "url": "https://www.portone.io/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-2",
+        "kind": "product-surface",
+        "url": "https://www.portone.io/team",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-3",
+        "kind": "product-surface",
+        "url": "https://www.portone.io/pricing",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "portone-probe-home",
+        "kind": "product-surface",
+        "url": "https://www.portone.io/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "portone-blog",
+        "kind": "official-doc",
+        "url": "https://blog.portone.io/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "pretendard-license",
+        "kind": "license",
+        "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
+        "captured": "2026-09-30"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "colors.secondary": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "colors.on-primary": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "colors.selected-surface": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "colors.ink": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "colors.body": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "colors.subtle": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "colors.label-dark": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "colors.accent-blue": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "colors.accent-purple": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.body": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.serif-accent": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.display-hero.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.page-title.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h1",
+        "captured": "2026-09-30"
+      },
+      "typography.section.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.section.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.section.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.sub-section.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.sub-section.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.sub-section.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.sub-section.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.serif-accent.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.serif-accent.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.serif-accent.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.serif-accent.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.eyebrow.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.body.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::p",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::p",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::p",
+        "captured": "2026-09-30"
+      },
+      "typography.caption.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.caption.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.caption.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "spacing.pill-pad": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "spacing.tab-pad": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "rounded.tab": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "rounded.pill": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.type": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.textColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.rounded": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.height": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.padding": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.typography": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.hover": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.header-cta.use": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.type": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.textColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.height": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.typography": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.shadow": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.hover": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.hero-cta.use": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.type": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.textColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.rounded": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.height": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.padding": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.typography": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.hover": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.pressed": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.login-button.use": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.type": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 해외 결제, unselected product tab (566 x 55): rest bg rgb(255, 255, 255), label h2 rgb(55, 65, 81) 17px, ::after border 1px solid rgb(229, 229, 229), radius 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.textColor": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 해외 결제, unselected product tab (566 x 55): rest bg rgb(255, 255, 255), label h2 rgb(55, 65, 81) 17px, ::after border 1px solid rgb(229, 229, 229), radius 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.border": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 해외 결제, unselected product tab (566 x 55): rest bg rgb(255, 255, 255), label h2 rgb(55, 65, 81) 17px, ::after border 1px solid rgb(229, 229, 229), radius 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.rounded": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.height": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.padding": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.typography": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.selected": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.states": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      },
+      "components.product-tab.use": {
+        "surface_id": "home",
+        "source_id": "portone-probe-home",
+        "method": "live-state-probe",
+        "selector": "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured",
+        "captured": "2026-09-30"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 37,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 10,
+      "extension-component-property": 18,
+      "orphaned-tokens": 9
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.page-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.sub-section.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.serif-accent.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.eyebrow.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.card-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.caption.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-cta.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-cta.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-button.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tab.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.selected-surface",
+        "message": "'selected-surface' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.subtle",
+        "message": "'subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.label-dark",
+        "message": "'label-dark' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent-blue",
+        "message": "'accent-blue' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent-purple",
+        "message": "'accent-purple' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "af206661bf306d619ccecfd8ffb0b564006c233267419eb27e4dc97b93ea45cb",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display-hero.fontSize",
+      "typography.page-title.fontSize",
+      "typography.section.fontSize",
+      "typography.sub-section.fontSize",
+      "typography.serif-accent.fontSize",
+      "typography.eyebrow.fontSize",
+      "typography.card-title.fontSize",
+      "typography.body.fontSize",
+      "typography.nav.fontSize",
+      "typography.caption.fontSize",
+      "rounded.tab",
+      "rounded.pill"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-hero",
+        "page-title",
+        "section",
+        "sub-section",
+        "serif-accent",
+        "eyebrow",
+        "card-title",
+        "body",
+        "nav",
+        "caption"
+      ]
+    }
+  }
+}

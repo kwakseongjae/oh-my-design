@@ -1,171 +1,133 @@
 ---
-id: bloomandwild
 name: Bloom & Wild
-country: UK
-category: ecommerce
-homepage: "https://www.bloomandwild.com"
-primary_color: "#262626"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=bloomandwild.com&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-ds:
-  name: "Bloom & Wild web tokens"
-  url: "https://www.bloomandwild.com/"
-  type: system
-  description: "60 first-party custom properties at :root — a --bwBrand__* palette of 12 colours and shadow recipes, a --spacing-* scale of 9 steps, a --radius-* scale of 6 steps, --bw-* layout heights for the nav/header, and a --ui__* set of image aspect ratios. A separate, much larger --oasys-* layer (889 declarations) is the Bloom & Wild Group's shared design-token platform across its three brands — it feeds a few brand values (the pine-green ramp, the universal focus-ring blue) but is not brand-specific."
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    foreground: "#262626"
-    foreground-muted: "#534e46"
-    canvas: "#ffffff"
-    linen: "#f9ecd7"
-    lemon: "#fdf888"
-    pine-green: "#447964"
-    pine-green-light: "#a1bcb1"
-    error: "#db4141"
-    border: "#e2e0dc"
-    search-hover: "#fcf5ea"
-    focus-ring: "#2771fc"
-  typography:
-    family: { display: "Tiempos Headline", sans: "Unica 77 LL TT" }
-    body: { size: 16, use: "body computed font-family Unica 77 LL TT, weight 400" }
-    button: { size: 18, use: "Unica 77 LL TT 400 on the primary call to action" }
-    nav-link: { size: 16, use: "Unica 77 LL TT 500, mega-nav top-level items" }
-    h1: { size: 32, use: "Tiempos Headline 700 (Bold only face observed)" }
-  spacing: { xxxs: 4, xxs: 8, xs: 12, sm: 16, md: 24, lg: 32, xl: 48, xxl: 64, xxxl: 80 }
-  rounded: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, full: 9999 }
-  components:
-    button-primary: { type: "button", bg: "#262626", fg: "#ffffff", border: "#262626", radius: 2, height: "48px", padding: "13px 19px", font: "18px / 400", hover: "#262626", pressed: "#262626", focus: "outline 2px solid #2771fc", use: "Claim offer — the primary promo-banner CTA. No visible change on hover or press; the 2px focus outline is the only state change." }
-    button-secondary: { type: "button", bg: "transparent", fg: "#262626", border: "#262626", radius: 2, height: "48px", padding: "13px 19px", font: "18px / 400", hover: "transparent", pressed: "transparent", focus: "outline 2px solid #2771fc", use: "Next slide — the outline carousel-arrow control. No visible change on hover or press." }
-    nav-link: { type: "button", bg: "transparent", fg: "#262626", radius: 0, height: "45px", padding: "10px 4px 11px", font: "16px / 500", hover: "transparent", pressed: "transparent", focus: "outline 2px solid #2771fc", use: "Flowers — a mega-nav top-level item. No visible change on hover or press." }
-    search-trigger: { type: "input", bg: "#ffffff", fg: "#534e46", border: "#e2e0dc", radius: 9999, height: "37px", padding: "8px 72px 8px 36px", font: "16px / 400", hover: "#fcf5ea", pressed: "#fcf5ea", focus: "#fcf5ea, outline 2px solid #2771fc", use: "Search for products — the header search pill. The only control with a real colour-changing hover: a cream fill close to the linen family." }
-    icon-link: { type: "button", bg: "transparent", fg: "#262626", border: "#262626", radius: 0, height: "58px", padding: "8px", font: "16px / 400", hover: "underline #262626", pressed: "underline #262626", focus: "outline 2px solid #2771fc", use: "Log in — secondary-nav icon link. Hover and press underline the label in #262626." }
-    card-link: { type: "card", bg: "transparent", fg: "#ffffff", radius: 0, height: "24px", padding: "0", font: "16px / 500", focus: "outline 2px solid #2771fc", use: "Birthday Gifts — an image-backed category card, white label over a photo. Focus draws the #2771fc outline. Hover and press were not measured (the pointer could not reach it)." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.bloomandwild.com/", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.bloomandwild.com/", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://www.bloomandwild.com/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: about-us, kind: official-doc, url: "https://www.bloomandwild.com/about-us", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.error: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.focus-ring: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.lemon: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.linen: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.pine-green: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.pine-green-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.search-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.card-link.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.icon-link.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-link.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.search-trigger.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.full: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.none: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.xxl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.xxs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.xxxl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.spacing.xxxs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.display: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.h1.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.h1.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.nav-link.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.nav-link.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  foreground: '#262626'
+  foreground-muted: '#534e46'
+  canvas: '#ffffff'
+  linen: '#f9ecd7'
+  lemon: '#fdf888'
+  pine-green: '#447964'
+  pine-green-light: '#a1bcb1'
+  error: '#db4141'
+  border: '#e2e0dc'
+  search-hover: '#fcf5ea'
+  focus-ring: '#2771fc'
+typography:
+  body:
+    fontSize: 16px
+    use: body computed font-family Unica 77 LL TT, weight 400
+  button:
+    fontSize: 18px
+    use: Unica 77 LL TT 400 on the primary call to action
+  nav-link:
+    fontSize: 16px
+    use: Unica 77 LL TT 500, mega-nav top-level items
+  h1:
+    fontSize: 32px
+    use: Tiempos Headline 700 (Bold only face observed)
+rounded:
+  none: 0px
+  sm: 4px
+  md: 8px
+  lg: 12px
+  xl: 16px
+  full: 9999px
+spacing:
+  xxxs: 4
+  xxs: 8
+  xs: 12
+  sm: 16
+  md: 24
+  lg: 32
+  xl: 48
+  xxl: 64
+  xxxl: 80
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#262626'
+    textColor: '#ffffff'
+    border: '#262626'
+    rounded: 2px
+    height: 48px
+    padding: 13px 19px
+    typography: 18px / 400
+    hover: '#262626'
+    pressed: '#262626'
+    focus: 'outline 2px solid #2771fc'
+    use: Claim offer — the primary promo-banner CTA. No visible change on hover or press; the 2px focus outline is the only state change.
+  button-secondary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#262626'
+    border: '#262626'
+    rounded: 2px
+    height: 48px
+    padding: 13px 19px
+    typography: 18px / 400
+    hover: transparent
+    pressed: transparent
+    focus: 'outline 2px solid #2771fc'
+    use: Next slide — the outline carousel-arrow control. No visible change on hover or press.
+  nav-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#262626'
+    rounded: 0px
+    height: 45px
+    padding: 10px 4px 11px
+    typography: 16px / 500
+    hover: transparent
+    pressed: transparent
+    focus: 'outline 2px solid #2771fc'
+    use: Flowers — a mega-nav top-level item. No visible change on hover or press.
+  search-trigger:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#534e46'
+    border: '#e2e0dc'
+    rounded: 9999px
+    height: 37px
+    padding: 8px 72px 8px 36px
+    typography: 16px / 400
+    hover: '#fcf5ea'
+    pressed: '#fcf5ea'
+    focus: '#fcf5ea, outline 2px solid #2771fc'
+    use: 'Search for products — the header search pill. The only control with a real colour-changing hover: a cream fill close to the linen family.'
+  icon-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#262626'
+    border: '#262626'
+    rounded: 0px
+    height: 58px
+    padding: 8px
+    typography: 16px / 400
+    hover: 'underline #262626'
+    pressed: 'underline #262626'
+    focus: 'outline 2px solid #2771fc'
+    use: 'Log in — secondary-nav icon link. Hover and press underline the label in #262626.'
+  card-link:
+    type: card
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 24px
+    padding: '0'
+    typography: 16px / 500
+    focus: 'outline 2px solid #2771fc'
+    use: 'Birthday Gifts — an image-backed category card, white label over a photo. Focus draws the #2771fc outline. Hover and press were not measured (the pointer could not reach it).'
+fonts:
+  roles:
+    display: Tiempos Headline
+    sans: Unica 77 LL TT
 ---
+
 # Design System Inspiration of Bloom & Wild
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Bloom & Wild is a British flower and gifting company, founded in **2013** by **Aron Gelbard** and
 **Ben Stanway** in **London**, known for flowers that fit through the letterbox. Its site describes
@@ -196,11 +158,35 @@ What makes it worth reading:
   feeds at least one brand colour (the pine-green ramp) without being a Bloom & Wild-specific
   namespace itself.
 
-### Primary tasks
+#### Primary tasks
 - Browse and buy letterbox flowers and gifts; claim a promotional offer.
 - Search for products; log in; browse by occasion (e.g. Birthday Gifts) via mega-nav.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Bloom & Wild's landing surface reads as warm and restrained: a near-black ink and white base, lit
+by cream, lemon and pine-green bands, with almost no interactive colour change beyond a shared
+focus ring. The one type pairing that carries the brand's visual identity — Tiempos Headline
+for display, Unica 77 LL for everything else — is self-hosted rather than served from a foundry,
+and both faces load and render on the homepage.
+
+The token structure tells a group story as much as a brand one: a compact, 60-variable Bloom &
+Wild layer sits on top of an 889-variable `--oasys-*` platform shared with its sibling brands
+(bloomon, Bergamotte) since the 2021 group formation — visible in the identical focus-ring blue
+and the borrowed pine-green value. No rebrand case study or design-system page documents the
+Tiempos/Unica pairing publicly; it is read here from the rendered page alone.
+
+### Principles
+
+- **Near-monochrome, warmed by bands.** `#262626` on white, lit by linen and lemon.
+- **Interaction is quiet.** Half the controls don't change on hover; the focus ring is the constant.
+- **Two foundry faces, self-hosted.** Tiempos Headline for display, Unica 77 LL for the rest.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle(document.documentElement)` plus a recursive stylesheet walk: 60
 custom properties at `:root`, 965 declarations across all rules.
@@ -259,7 +245,7 @@ Bloom & Wild's own surface and are excluded from its brand token count.
 controls: the header search pill's rest-to-hover fill, close to the linen family but a distinct
 lighter cream.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -297,7 +283,57 @@ Fonts and no external font `<link>` were found.
 No `--font-size-*` or `--text-*` custom-property scale was found at `:root`; sizes above are read
 directly off the probed controls and headline.
 
-## 4. Component Stylings
+## Layout
+
+- Warm paper tones (linen `#f9ecd7`, lemon `#fdf888`) alternate with white and pine-green
+  (`#447964`) to structure sections, rather than borders or shadows.
+- A fixed set of layout heights (`--bw-nav__top--height: 120px`, `--bw-navbar__bottom--height:
+  62px`, `--bw-servicebar--height: 32px`, `--bw-site-header-content-height: 113px`) governs the
+  header stack.
+- Image aspect ratios are tokenised per placement (`--ui__hero-banner`: 16:10 desktop / 3:4
+  mobile; `--ui__main-image` and `--ui__secondary-image`: 1:1; `--ui__generic-content-block-item`:
+  5:3; `--ui__expressive-list-odd`: 3:4 / `-even`: 1:1; `--ui__story-block-image`: 4:3;
+  `--ui__blog-hero-image`: 1:1; `--ui__blog-item-square`: 1:1; `--ui__blog-item-rectangle`: 3:4),
+  with a shared `--ui__gutter-width: 12px`.
+
+### Responsive Behavior
+
+**Not measured.** The probe ran at a single 1440×1000 desktop viewport; no mobile breakpoint or
+layout was rendered this session.
+
+## Elevation & Depth
+
+Three shadow recipes, all built from the same two blur-colour primitives:
+
+```
+--bwBrand__box-shadow:              0 0 3px rgba(0,0,0,.1), 0 1px 32px rgba(0,0,0,.07)
+--bwBrand__box-shadow--inverse:     0 0 3px rgba(0,0,0,.1), 0 -1px 32px rgba(0,0,0,.07)
+--bwBrand__box-shadow--bottom-only: 0 4px 3px -3px rgba(0,0,0,.1), 0 38px 32px -32px rgba(0,0,0,.07)
+```
+
+No shadow was observed at rest on any of the six probed interactive controls — elevation is
+reserved for card/panel surfaces, not buttons or links.
+
+## Motion & Easing
+
+No transition duration or easing token was found on the six probed controls or in the root custom
+properties; state changes (where present) render without a measured animation curve this session.
+
+---
+
+**Tier 1 sources:** https://www.bloomandwild.com/ (live landing page — 60 root custom properties
+and 965 stylesheet declarations read via `getComputedStyle` and a recursive rule walk; six
+components measured at rest, hover, pressed and focus via `scripts/probe-component-states.mjs`;
+Tiempos Headline and Unica 77 LL TT confirmed loaded via `document.fonts`, captured 2026-09-26);
+https://www.bloomandwild.com/zz-this-does-not-exist (nonsense-path control — the same generic
+404, "Uhoh! We can't find the page...", as `bloomandwild.com/design-system`, confirming no
+official design-system page exists on this host, captured 2026-09-26);
+https://www.bloomandwild.com/about-us (the "care wildly" line; the footer lists the bloomon and Bergamotte sites and the B Corp
+certification, read 2026-09-26)
+
+**Regional sources:** https://www.uktech.news/news/london-bloom-and-wild-online-flower-delivery-startup-funding-20210118 (UKTN, 2021-01-18 — "Bloom & Wild raises £75M, London-based online flower delivery and gifting startup achieves 160% growth in revenue"; founded in 2013 by Aron Gelbard and Ben Stanway)
+
+## Components
 
 Six controls probed (`scripts/probe-component-states.mjs`), each at rest, hover, pressed and
 focus. A universal focus ring, `outline: #2771fc solid 2px`, appears on every control regardless
@@ -328,33 +364,16 @@ Only the search pill shows a colour-changing hover, and only the Log in link an 
 primary, outline and nav controls carry their resting values through hover and press, with the
 `#2771fc` ring the sole marker of interactivity on focus.
 
-## 5. Layout Principles
+### States
 
-- Warm paper tones (linen `#f9ecd7`, lemon `#fdf888`) alternate with white and pine-green
-  (`#447964`) to structure sections, rather than borders or shadows.
-- A fixed set of layout heights (`--bw-nav__top--height: 120px`, `--bw-navbar__bottom--height:
-  62px`, `--bw-servicebar--height: 32px`, `--bw-site-header-content-height: 113px`) governs the
-  header stack.
-- Image aspect ratios are tokenised per placement (`--ui__hero-banner`: 16:10 desktop / 3:4
-  mobile; `--ui__main-image` and `--ui__secondary-image`: 1:1; `--ui__generic-content-block-item`:
-  5:3; `--ui__expressive-list-odd`: 3:4 / `-even`: 1:1; `--ui__story-block-image`: 4:3;
-  `--ui__blog-hero-image`: 1:1; `--ui__blog-item-square`: 1:1; `--ui__blog-item-rectangle`: 3:4),
-  with a shared `--ui__gutter-width: 12px`.
+Six components probed. Hover: no visible change on the primary CTA, secondary button and nav
+link; the search trigger fills `#fcf5ea` and the Log in icon-link underlines, on both hover and
+press; the card-link's hover was not measured. Focus: a universal `#2771fc` 2px outline on five
+controls; the card-link instead flips its fg/border to `#262626` with no visible outline. The
+card-link's hover state was not measured (locator timeout) and is left unrecorded rather than
+marked unchanged. No disabled state was observed.
 
-## 6. Depth & Elevation
-
-Three shadow recipes, all built from the same two blur-colour primitives:
-
-```
---bwBrand__box-shadow:              0 0 3px rgba(0,0,0,.1), 0 1px 32px rgba(0,0,0,.07)
---bwBrand__box-shadow--inverse:     0 0 3px rgba(0,0,0,.1), 0 -1px 32px rgba(0,0,0,.07)
---bwBrand__box-shadow--bottom-only: 0 4px 3px -3px rgba(0,0,0,.1), 0 38px 32px -32px rgba(0,0,0,.07)
-```
-
-No shadow was observed at rest on any of the six probed interactive controls — elevation is
-reserved for card/panel surfaces, not buttons or links.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#262626` as both the primary ink and the primary CTA's background — the palette is
@@ -375,12 +394,12 @@ reserved for card/panel surfaces, not buttons or links.
   use an undocumented **2px** radius outside that scale.
 - Don't cite a rebrand case study for the Tiempos + Unica 77 pairing; none was found on-site.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** The probe ran at a single 1440×1000 desktop viewport; no mobile breakpoint or
-layout was rendered this session.
+Not assessed as authored voice. The one confirmed brand line — "We don't just send gifts. We help
+you care wildly." — is a mission statement from the about page, not a UI-copy sample.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#262626` ink / primary CTA · `#ffffff` canvas · `#f9ecd7` linen · `#fdf888` lemon · `#447964`
@@ -393,59 +412,10 @@ border · `#fcf5ea` search-hover · `#2771fc` focus ring (group platform)
 - "A pill search field: white background, `#534e46` placeholder text, `#e2e0dc` border; hover and
   press fill `#fcf5ea`."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice. The one confirmed brand line — "We don't just send gifts. We help
-you care wildly." — is a mission statement from the about page, not a UI-copy sample.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Bloom & Wild's landing surface reads as warm and restrained: a near-black ink and white base, lit
-by cream, lemon and pine-green bands, with almost no interactive colour change beyond a shared
-focus ring. The one type pairing that carries the brand's visual identity — Tiempos Headline
-for display, Unica 77 LL for everything else — is self-hosted rather than served from a foundry,
-and both faces load and render on the homepage.
-
-The token structure tells a group story as much as a brand one: a compact, 60-variable Bloom &
-Wild layer sits on top of an 889-variable `--oasys-*` platform shared with its sibling brands
-(bloomon, Bergamotte) since the 2021 group formation — visible in the identical focus-ring blue
-and the borrowed pine-green value. No rebrand case study or design-system page documents the
-Tiempos/Unica pairing publicly; it is read here from the rendered page alone.
-
-## 12. Principles
-
-- **Near-monochrome, warmed by bands.** `#262626` on white, lit by linen and lemon.
-- **Interaction is quiet.** Half the controls don't change on hover; the focus ring is the constant.
-- **Two foundry faces, self-hosted.** Tiempos Headline for display, Unica 77 LL for the rest.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Six components probed. Hover: no visible change on the primary CTA, secondary button and nav
-link; the search trigger fills `#fcf5ea` and the Log in icon-link underlines, on both hover and
-press; the card-link's hover was not measured. Focus: a universal `#2771fc` 2px outline on five
-controls; the card-link instead flips its fg/border to `#262626` with no visible outline. The
-card-link's hover state was not measured (locator timeout) and is left unrecorded rather than
-marked unchanged. No disabled state was observed.
-
-## 15. Motion & Easing
-
-No transition duration or easing token was found on the six probed controls or in the root custom
-properties; state changes (where present) render without a measured animation curve this session.
-
----
-
-**Tier 1 sources:** https://www.bloomandwild.com/ (live landing page — 60 root custom properties
-and 965 stylesheet declarations read via `getComputedStyle` and a recursive rule walk; six
-components measured at rest, hover, pressed and focus via `scripts/probe-component-states.mjs`;
-Tiempos Headline and Unica 77 LL TT confirmed loaded via `document.fonts`, captured 2026-09-26);
-https://www.bloomandwild.com/zz-this-does-not-exist (nonsense-path control — the same generic
-404, "Uhoh! We can't find the page...", as `bloomandwild.com/design-system`, confirming no
-official design-system page exists on this host, captured 2026-09-26);
-https://www.bloomandwild.com/about-us (the "care wildly" line; the footer lists the bloomon and Bergamotte sites and the B Corp
-certification, read 2026-09-26)
-
-**Regional sources:** https://www.uktech.news/news/london-bloom-and-wild-online-flower-delivery-startup-funding-20210118 (UKTN, 2021-01-18 — "Bloom & Wild raises £75M, London-based online flower delivery and gifting startup achieves 160% growth in revenue"; founded in 2013 by Aron Gelbard and Ben Stanway)
+- **Contrast, `button-secondary`.** Text `#262626` on `#00000000` measures 1.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-link`.** Text `#262626` on `#00000000` measures 1.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `icon-link`.** Text `#262626` on `#00000000` measures 1.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

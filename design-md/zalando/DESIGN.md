@@ -1,134 +1,89 @@
 ---
-id: zalando
 name: Zalando
-country: DE
-category: ecommerce
-homepage: "https://www.zalando.de"
-primary_color: "#FF4C00"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=zalando.de&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-ds:
-  name: "ZDS (Zalando Design System)"
-  url: "https://brand.zalando.com"
-  type: system
-  description: "Zalando's in-house design system, described on its engineering blog as design tokens, CSS electrons, atoms, molecules and organisms, used by almost every team. zalando.de serves 360 first-party custom properties from paths named /zds/. A second token file, loaded on top of them, changes radius, font and state greys for the 2024 rebrand: 9984px pills, 12px cards, ZalandoSans, and a hover and pressed grey ramp. The brand orange #ff4c00 marks the brand, not the actions, which are black."
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    brand: "#ff4c00"
-    primary: "#000000"
-    foreground: "#000000"
-    canvas: "#ffffff"
-    interactive: "#6328e0"
-    negative: "#da0410"
-    positive: "#00875a"
-    hover: "#d2d8dd"
-    pressed: "#b9c0c6"
-    tertiary: "#f1f1f1"
-    secondary: "#5c6169"
-    border-secondary: "#d2d8dd"
-    legacy-hover: "#efeff0"
-    legacy-pressed: "#d0d1d3"
-    legacy-secondary: "#66676e"
-    legacy-red: "#d9000c"
-    legacy-blue: "#0d6dff"
-  typography:
-    family: { sans: "ZalandoSans" }
-    body: { size: 16, weight: 400, use: "--typography-body, 1rem/1.5rem" }
-    h1: { size: 40, weight: 700, use: "--typography-h1, 2.5rem/3rem" }
-    jumbo1: { size: 72, weight: 700, use: "--typography-jumbo1, 4.5rem/5.25rem, the largest step" }
-  rounded: { sm: 4, md: 8, lg: 12, pill: 9984 }
-  components:
-    nav-pill: { type: "button", bg: "#ffffff", fg: "#000000", radius: 9984, height: "36px", padding: "6px 18px", font: "16px / 400", hover: "#f1f1f1", pressed: "#f1f1f1", use: "Damen, Herren, Kinder at the top of zalando.de — a white pill that greys to --color-background-tertiary on hover and press. Focus is the browser's ring." }
-    button-primary: { type: "button", bg: "#000000", fg: "#ffffff", radius: 9984, height: "48px", padding: "12px 24px", font: "16px / 400", hover: "#d2d8dd", pressed: "#b9c0c6", focus: "rgba(0,0,0,0.3)", use: "A black pill with a 1px inset ring (the newsletter confirmation on the home page). Hover turns it light grey with a black label, press a shade darker, focus a 30% black wash — --color-background-focus — with no outline drawn." }
-    input-search: { type: "input", bg: "transparent", fg: "#000000", radius: 0, height: "40px", padding: "10px 12px 10px 0", font: "16px / 400", hover: "transparent", focus: "transparent", use: "The header search field (Suche). None of its measured values change on hover or focus." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.zalando.de/", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.zalando.de/", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://brand.zalando.com/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: brand-site, kind: official-doc, url: "https://brand.zalando.com/", captured: "2026-09-26" }
-    - { id: eng-zds-2022, kind: official-doc, url: "https://engineering.zalando.com/posts/2022/07/an-introduction-to-the-zalando-design-system.html", captured: "2026-09-26" }
-    - { id: eng-theming-2024, kind: official-doc, url: "https://engineering.zalando.com/posts/2024/05/theming-the-zalando-design-system.html", captured: "2026-09-26" }
-    - { id: press-rebrand, kind: official-doc, url: "https://corporate.zalando.com/en/fashion/zalando-unveils-new-brand-positioning-focus-quality-lifestyle-and-inspiration-updates-brand", captured: "2026-09-26" }
-    - { id: history, kind: official-doc, url: "https://corporate.zalando.com/en/about-us/our-history", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.border-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.interactive: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.legacy-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.legacy-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.legacy-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.legacy-red: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.legacy-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.negative: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.positive: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.tertiary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.input-search.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.nav-pill.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.h1.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.h1.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.h1.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.jumbo1.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.jumbo1.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.jumbo1.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  brand: '#ff4c00'
+  primary: '#000000'
+  foreground: '#000000'
+  canvas: '#ffffff'
+  interactive: '#6328e0'
+  negative: '#da0410'
+  positive: '#00875a'
+  hover: '#d2d8dd'
+  pressed: '#b9c0c6'
+  tertiary: '#f1f1f1'
+  secondary: '#5c6169'
+  border-secondary: '#d2d8dd'
+  legacy-hover: '#efeff0'
+  legacy-pressed: '#d0d1d3'
+  legacy-secondary: '#66676e'
+  legacy-red: '#d9000c'
+  legacy-blue: '#0d6dff'
+typography:
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    use: '--typography-body, 1rem/1.5rem'
+  h1:
+    fontSize: 40px
+    fontWeight: 700
+    use: '--typography-h1, 2.5rem/3rem'
+  jumbo1:
+    fontSize: 72px
+    fontWeight: 700
+    use: '--typography-jumbo1, 4.5rem/5.25rem, the largest step'
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 12px
+  pill: 9984px
+components:
+  nav-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 9984px
+    height: 36px
+    padding: 6px 18px
+    typography: 16px / 400
+    hover: '#f1f1f1'
+    pressed: '#f1f1f1'
+    use: Damen, Herren, Kinder at the top of zalando.de — a white pill that greys to --color-background-tertiary on hover and press. Focus is the browser's ring.
+  button-primary:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 9984px
+    height: 48px
+    padding: 12px 24px
+    typography: 16px / 400
+    hover: '#d2d8dd'
+    pressed: '#b9c0c6'
+    focus: rgba(0,0,0,0.3)
+    use: A black pill with a 1px inset ring (the newsletter confirmation on the home page). Hover turns it light grey with a black label, press a shade darker, focus a 30% black wash — --color-background-focus — with no outline drawn.
+  input-search:
+    type: input
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    height: 40px
+    padding: 10px 12px 10px 0
+    typography: 16px / 400
+    hover: transparent
+    focus: transparent
+    use: The header search field (Suche). None of its measured values change on hover or focus.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: ZalandoSans
 ---
+
 # Design System Inspiration of Zalando
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Zalando is Europe's large online fashion and lifestyle platform. Robert Gentz and David Schneider
 founded it in Berlin in 2008, launching from a shared Torstraße apartment that also served as office
@@ -159,11 +114,31 @@ What makes it worth reading:
 - **Purple is the interactive colour.** `--color-text-interactive` is **`#6328e0`**, separate from the
   brand orange and from the sale red.
 
-### Primary tasks
+#### Primary tasks
 - Browse categories and brands; search; open a product.
 - Sign up for the newsletter; manage an account and returns.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Zalando grew from a Berlin apartment in 2008 into a platform across 29 markets. Its 2024
+repositioning moves it from an e-commerce pioneer toward a destination for style, with a warmer,
+more vibrant orange, a new wordmark and its own typeface. The design system was already in place:
+the engineering blog described ZDS in 2022 as tokens, electrons, atoms, molecules and organisms, with
+adoption close to 100% after more than two years. A 2024 post described themes that can be switched
+on per page. The live site shows that mechanism at work: a staged token file layered over the old
+theme, carrying the rebrand's pills, font and greys.
+
+### Principles
+
+- **Black acts, orange signs.** Actions in black and white; orange for the brand.
+- **Round and flat.** Full pills and inset rings, no elevation.
+- **Themes over rewrites.** New values arrive as a token layer on top of the old.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `zalando.de`: 360 root custom properties, all first-party ZDS.
 There is no Tailwind, MUI or other framework namespace. Current values come from the rebrand layer.
@@ -199,7 +174,7 @@ The base theme has hover **`#efeff0`**, pressed **`#d0d1d3`** and secondary **`#
 deprecated layer adds red **`#d9000c`** and blue **`#0d6dff`**. On the page measured, the rendered
 greys match the rebrand values, not these.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -226,7 +201,32 @@ primary button compute to a bare `sans-serif`, so ZalandoSans does not reach the
 Letter spacing tightens with size (h1 `-0.025rem`, jumbo1 `-0.045rem`). The rebrand layer lowers
 `--font-weight-bold` to **650**.
 
-## 4. Component Stylings
+## Layout
+
+- `--grid-columns` 12 · `--grid-gutter` 16px · `--grid-margin` 32px · `--grid-max-width` 1280px.
+- Spacing: `--spacing-3xs` 4px, `2xs` 8px, `xs` 12px, `s` 16px, `m` 24px, `l` 36px, `xl` 48px, `2xl`
+  64px.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+Flat. The 28 `--box-*` tokens are inset rings — `inset 0 0 0 1px` and `2px` for focus, hover,
+pressed, selected and status — and bottom-only insets for tab underlines. No drop shadow was found in
+the tokens or on the page.
+
+## Motion & Easing
+
+Overlay geometry and transitions are tokenised (`--drawer-*`, `--flyout-*`, `--modal-*`). Their
+timing was not measured.
+
+---
+
+**Tier 1 sources:** https://www.zalando.de/ (live homepage — 360 root custom properties read via `getComputedStyle`, rebrand token layer read from its stylesheet, ZalandoSans loaded, three components measured at rest, hover, pressed and focus, captured 2026-09-26); https://brand.zalando.com/ (Zalando brand site — ZalandoSans and brand guidelines; nonsense path returns a different, non-content response, read 2026-09-26); https://engineering.zalando.com/posts/2022/07/an-introduction-to-the-zalando-design-system.html (Zalando Engineering, 21 Jul 2022 — ZDS layers, adoption close to 100%, read 2026-09-26); https://engineering.zalando.com/posts/2024/05/theming-the-zalando-design-system.html (Zalando Engineering, 14 May 2024 — themes, read 2026-09-26); https://corporate.zalando.com/en/fashion/zalando-unveils-new-brand-positioning-focus-quality-lifestyle-and-inspiration-updates-brand (Zalando press release, 9 Sep 2024 — new positioning, orange, wordmark, custom font; agency Kurppa Hosk, read 2026-09-26); https://corporate.zalando.com/en/about-us/our-history (Zalando history — founded Berlin 2008 by Robert Gentz and David Schneider, read 2026-09-26); https://www.kurppahosk.com/work/zalando (Kurppa Hosk case study — typeface superfamily, vibrant orange, new wordmark, read 2026-09-26)
+
+## Components
 
 Measured on `zalando.de`, focus read under a real Tab key, and a hover counted only when `:hover`
 matched.
@@ -245,19 +245,13 @@ The base theme's `--component-*-border-radius` tokens are all `0px`, and its `--
 are `0px` too. The rebrand layer sets v2: `s` 4px · `m` 8px · **`l` 12px** (product cards) ·
 **`round` 9984px** (pills).
 
-## 5. Layout Principles
+### States
 
-- `--grid-columns` 12 · `--grid-gutter` 16px · `--grid-margin` 32px · `--grid-max-width` 1280px.
-- Spacing: `--spacing-3xs` 4px, `2xs` 8px, `xs` 12px, `s` 16px, `m` 24px, `l` 36px, `xl` 48px, `2xl`
-  64px.
+Hover: pills grey to `#f1f1f1`; the primary turns `#d2d8dd`. Press: `#b9c0c6` on the primary. Focus:
+a 30% black fill on the primary, the browser's ring on navigation pills, and nothing on the search
+field. No disabled state was observed.
 
-## 6. Depth & Elevation
-
-Flat. The 28 `--box-*` tokens are inset rings — `inset 0 0 0 1px` and `2px` for focus, hover,
-pressed, selected and status — and bottom-only insets for tab underlines. No drop shadow was found in
-the tokens or on the page.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Keep actions black and white; use orange `#ff4c00` for the brand.
@@ -269,11 +263,11 @@ the tokens or on the page.
 - Don't use `#6328e0` as a brand colour; it marks interactive text.
 - Don't add drop shadows.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#ff4c00` brand · `#000000` ink and primary · `#ffffff` canvas · `#d2d8dd` hover · `#b9c0c6`
@@ -284,41 +278,8 @@ pressed · `#f1f1f1` pill hover · `#5c6169` dark grey · `#6328e0` interactive 
   `#b9c0c6`, focus a 30% black fill."
 - "A row of 36px white navigation pills, 16px/400 black labels, hover `#f1f1f1`."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Zalando grew from a Berlin apartment in 2008 into a platform across 29 markets. Its 2024
-repositioning moves it from an e-commerce pioneer toward a destination for style, with a warmer,
-more vibrant orange, a new wordmark and its own typeface. The design system was already in place:
-the engineering blog described ZDS in 2022 as tokens, electrons, atoms, molecules and organisms, with
-adoption close to 100% after more than two years. A 2024 post described themes that can be switched
-on per page. The live site shows that mechanism at work: a staged token file layered over the old
-theme, carrying the rebrand's pills, font and greys.
-
-## 12. Principles
-
-- **Black acts, orange signs.** Actions in black and white; orange for the brand.
-- **Round and flat.** Full pills and inset rings, no elevation.
-- **Themes over rewrites.** New values arrive as a token layer on top of the old.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Hover: pills grey to `#f1f1f1`; the primary turns `#d2d8dd`. Press: `#b9c0c6` on the primary. Focus:
-a 30% black fill on the primary, the browser's ring on navigation pills, and nothing on the search
-field. No disabled state was observed.
-
-## 15. Motion & Easing
-
-Overlay geometry and transitions are tokenised (`--drawer-*`, `--flyout-*`, `--modal-*`). Their
-timing was not measured.
-
----
-
-**Tier 1 sources:** https://www.zalando.de/ (live homepage — 360 root custom properties read via `getComputedStyle`, rebrand token layer read from its stylesheet, ZalandoSans loaded, three components measured at rest, hover, pressed and focus, captured 2026-09-26); https://brand.zalando.com/ (Zalando brand site — ZalandoSans and brand guidelines; nonsense path returns a different, non-content response, read 2026-09-26); https://engineering.zalando.com/posts/2022/07/an-introduction-to-the-zalando-design-system.html (Zalando Engineering, 21 Jul 2022 — ZDS layers, adoption close to 100%, read 2026-09-26); https://engineering.zalando.com/posts/2024/05/theming-the-zalando-design-system.html (Zalando Engineering, 14 May 2024 — themes, read 2026-09-26); https://corporate.zalando.com/en/fashion/zalando-unveils-new-brand-positioning-focus-quality-lifestyle-and-inspiration-updates-brand (Zalando press release, 9 Sep 2024 — new positioning, orange, wordmark, custom font; agency Kurppa Hosk, read 2026-09-26); https://corporate.zalando.com/en/about-us/our-history (Zalando history — founded Berlin 2008 by Robert Gentz and David Schneider, read 2026-09-26); https://www.kurppahosk.com/work/zalando (Kurppa Hosk case study — typeface superfamily, vibrant orange, new wordmark, read 2026-09-26)
+- **Contrast, `input-search`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

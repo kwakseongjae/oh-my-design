@@ -1,0 +1,985 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "vercel",
+    "name": "Vercel",
+    "country": "US",
+    "category": "developer-tools",
+    "homepage": "https://vercel.com",
+    "primary_color": "#171717",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "vercel"
+    },
+    "verified": "2026-07-12",
+    "ds": {
+      "name": "Geist",
+      "url": "https://vercel.com/geist",
+      "type": "system",
+      "description": "Vercel's official design-system and type-family documentation; marketing, component examples, and authenticated dashboard evidence remain distinct."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-12",
+    "note": "Fresh public home and official Geist introduction capture. Baseline-only mode avoided unsafe long-running interaction enumeration; current defaults are combined with explicit state absence rather than inferred hover values.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-product",
+        "url": "https://vercel.com/",
+        "inspected": "2026-07-12"
+      },
+      {
+        "id": "geist",
+        "kind": "official-design-system",
+        "url": "https://vercel.com/geist/introduction",
+        "inspected": "2026-07-12"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://vercel.com/",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "geist-live",
+        "kind": "official-doc",
+        "url": "https://vercel.com/geist/introduction",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "geist-font",
+        "kind": "license",
+        "url": "https://vercel.com/font",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "vercel-component-index",
+        "kind": "official-doc",
+        "url": "https://vercel.com/geist/introduction",
+        "captured": "2026-09-19"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.body": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.border": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.surface": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "fonts.roles.mono": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.hero.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.hero.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.hero.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.hero.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.hero.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.section.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.section.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.section.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.section.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.section.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.feature.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.feature.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.feature.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.feature.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.feature.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.card-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.card-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.card-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.card-title.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.card-title.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.ui.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.ui.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.ui.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.ui.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.mono.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.mono.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.mono.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.mono.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.lg": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xl": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.compact": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.control": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.full": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "prose:shadow.control-ring": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.header-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.type": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.backgroundColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.textColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.border": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.rounded": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.padding": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.height": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.typography": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.states": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-secondary-action.use": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.type": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.backgroundColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.textColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.border": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.rounded": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.size": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.states": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-icon-button.use": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.type": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.backgroundColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.textColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.border": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.rounded": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.padding": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.height": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.typography": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.states": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-input.use": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.type": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.backgroundColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.textColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.rounded": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.size": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.states": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-radio.use": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.type": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.backgroundColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.textColor": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.border": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.rounded": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.padding": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.gap": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.geist-example-card.use": {
+        "surface_id": "geist",
+        "source_id": "geist-live",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 37,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 7,
+      "extension-component-property": 22,
+      "contrast-ratio": 3,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.feature.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.card-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.ui.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.mono.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-secondary-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-secondary-action.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-secondary-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-secondary-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-icon-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-icon-button.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-icon-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-icon-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-input.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-radio.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-radio.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-radio.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-example-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-example-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-example-card.gap",
+        "message": "'gap' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.geist-example-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.header-link",
+        "message": "textColor (#4d4d4d) on backgroundColor (#00000000) has contrast ratio 2.48:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.geist-radio",
+        "message": "textColor (#4d4d4d) on backgroundColor (#00000000) has contrast ratio 2.48:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.geist-example-card",
+        "message": "textColor (#171717) on backgroundColor (#00000000) has contrast ratio 1.17:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "5d4e285d48586d8f1ed5613d97ffa7e9c2d076437ca51bf4e3875bfb11f092ce",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.control-ring",
+        "value": "0 0 0 1px #ebebeb"
+      }
+    ],
+    "numeric": [
+      "typography.hero.fontSize",
+      "typography.hero.letterSpacing",
+      "typography.section.fontSize",
+      "typography.section.letterSpacing",
+      "typography.feature.fontSize",
+      "typography.feature.letterSpacing",
+      "typography.card-title.fontSize",
+      "typography.card-title.letterSpacing",
+      "typography.body.fontSize",
+      "typography.ui.fontSize",
+      "typography.mono.fontSize",
+      "rounded.compact",
+      "rounded.control",
+      "rounded.full"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "hero",
+        "section",
+        "feature",
+        "card-title",
+        "body",
+        "ui",
+        "mono"
+      ]
+    }
+  }
+}

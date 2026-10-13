@@ -1,0 +1,596 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "claude",
+    "name": "Claude (Anthropic)",
+    "country": "US",
+    "category": "ai",
+    "homepage": "https://claude.com",
+    "primary_color": "#c96442",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "anthropic"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Selector-backed observations from Anthropic marketing, Claude product overview, and public pricing are retained as separate surface domains. No authenticated chat UI, documentation chrome, or declared-only font asset is represented as a token.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "anthropic-home",
+        "kind": "marketing",
+        "url": "https://www.anthropic.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "claude-overview",
+        "kind": "product-marketing",
+        "url": "https://claude.com/product/overview",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "claude-pricing",
+        "kind": "product-pricing",
+        "url": "https://claude.com/pricing",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "anthropic-home-live",
+        "kind": "product-surface",
+        "url": "https://www.anthropic.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "claude-overview-live",
+        "kind": "product-surface",
+        "url": "https://claude.com/product/overview",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "claude-pricing-live",
+        "kind": "product-surface",
+        "url": "https://claude.com/pricing",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "anthropic-company",
+        "kind": "official-doc",
+        "url": "https://www.anthropic.com/company",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "claude-constitution",
+        "kind": "official-doc",
+        "url": "https://www.anthropic.com/constitution",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.surface": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.surface-dark": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.warm-sand": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.display": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontSize": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontWeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.lineHeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.use": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontSize": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.control.fontWeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.control.lineHeight": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.control.use": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xxl": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.3xl": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.sm": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.md": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.lg": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.card": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.media": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.type": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.backgroundColor": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.textColor": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.rounded": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.padding": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.typography": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.states": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.overview-tab.use": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.model-card.type": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.model-card.backgroundColor": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.model-card.border": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.model-card.rounded": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.model-card.padding": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.model-card.use": {
+        "surface_id": "claude-overview",
+        "source_id": "claude-overview-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.pricing-card.type": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.pricing-card.backgroundColor": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.pricing-card.border": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.pricing-card.rounded": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.pricing-card.padding": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.pricing-card.use": {
+        "surface_id": "claude-pricing",
+        "source_id": "claude-pricing-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 19,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 4,
+      "extension-component-property": 9,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.overview-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.overview-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.overview-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.model-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.model-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.model-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.pricing-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.pricing-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.pricing-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.surface-dark",
+        "message": "'surface-dark' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.warm-sand",
+        "message": "'warm-sand' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "9363635d47cb2fab4d03152cb925dc73842d74be49aaa61482bde9ee09886936",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.heading.fontSize",
+      "typography.body.fontSize",
+      "typography.control.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg",
+      "rounded.card",
+      "rounded.media"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "heading",
+        "body",
+        "control"
+      ]
+    }
+  }
+}

@@ -1,159 +1,128 @@
 ---
-id: musinsa
 name: Musinsa
-country: KR
-category: ecommerce
-homepage: "https://www.musinsa.com"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://image.msscdn.net/static/assets/bi/favicon/favicon.svg"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: storefront, url: "https://www.musinsa.com/main/musinsa/recommend?gf=A", inspected: "2026-07-12" }
-    - { id: standard, kind: brand-storefront, url: "https://www.musinsa.com/brand/musinsastandard?gf=A", inspected: "2026-07-12" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.musinsa.com/main/musinsa/recommend?gf=A", captured: "2026-07-12" }
-    - { id: standard-live, kind: product-surface, url: "https://www.musinsa.com/brand/musinsastandard?gf=A", captured: "2026-07-12" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-12" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.foreground": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.line": *home
-    "tokens.typography.family.sans": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.tracking": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.nav.size": *home
-    "tokens.typography.nav.weight": *home
-    "tokens.typography.nav.lineHeight": *home
-    "tokens.typography.nav.tracking": *home
-    "tokens.typography.nav.use": *home
-    "tokens.spacing.xs": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.lg": &standard { surface_id: standard, source_id: standard-live, method: computed-style, captured: "2026-07-12" }
-    "tokens.rounded.square": *home
-    "tokens.rounded.icon": *home
-    "tokens.rounded.control": *home
-    "tokens.shadow.flat": *home
-    "tokens.components.gnb-store-link.type": *home
-    "tokens.components.gnb-store-link.fg": *home
-    "tokens.components.gnb-store-link.radius": *home
-    "tokens.components.gnb-store-link.padding": *home
-    "tokens.components.gnb-store-link.height": *home
-    "tokens.components.gnb-store-link.font": *home
-    "tokens.components.gnb-store-link.states": *home
-    "tokens.components.gnb-store-link.use": *home
-    "tokens.components.search-input.type": *home
-    "tokens.components.search-input.bg": *home
-    "tokens.components.search-input.fg": *home
-    "tokens.components.search-input.radius": *home
-    "tokens.components.search-input.padding": *home
-    "tokens.components.search-input.height": *home
-    "tokens.components.search-input.font": *home
-    "tokens.components.search-input.states": *home
-    "tokens.components.search-input.use": *home
-    "tokens.components.product-image-link.type": *standard
-    "tokens.components.product-image-link.radius": *standard
-    "tokens.components.product-image-link.padding": *standard
-    "tokens.components.product-image-link.height": *standard
-    "tokens.components.product-image-link.font": *standard
-    "tokens.components.product-image-link.use": *standard
-    "tokens.components.product-utility-button.type": *standard
-    "tokens.components.product-utility-button.fg": *standard
-    "tokens.components.product-utility-button.radius": *standard
-    "tokens.components.product-utility-button.padding": *standard
-    "tokens.components.product-utility-button.height": *standard
-    "tokens.components.product-utility-button.font": *standard
-    "tokens.components.product-utility-button.states": *standard
-    "tokens.components.product-utility-button.use": *standard
-    "tokens.components.home-tab-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.home-tab-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.border": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.floating-action-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.selected": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.global-filter-toggle.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.type": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.bg": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.fg": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.border": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.radius": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.padding": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.height": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.font": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.states": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.outline-button.use": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.type": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.bg": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.fg": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.radius": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.padding": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.height": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.font": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.states": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-    "tokens.components.search-keyword-tag.use": { surface_id: standard, source_id: standard-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-07-12" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-12"
-  note: "Two current first-party storefronts. Pretendard is both computed on visible text and backed by loaded Musinsa CDN FontFace records (657 uses). The capture reported zero interaction expansions; only default component observations are promoted."
-  colors:
-    primary: "#000000"
-    canvas: "#ffffff"
-    foreground: "#000000"
-    muted: "#666666"
-    line: "#ebebeb"
-  typography:
-    family: { sans: "Pretendard" }
-    body: { size: 14, weight: 400, lineHeight: 1.5, tracking: 0, use: "Repeated storefront body and product text" }
-    nav: { size: 16, weight: 500, lineHeight: 1.375, tracking: 0, use: "56px global-navigation store link" }
-  spacing: { xs: 4, sm: 6, md: 8, lg: 24 }
-  rounded: { square: 0, icon: 2, control: 4 }
-  shadow:
-    flat: "none"
-  components_harvested: true
-  components:
-    gnb-store-link: { type: button, fg: "rgba(255,255,255,0.8)", radius: "0px", padding: "0px 8px", height: "56px", font: "16px / 500 / Pretendard", states: "default captured only; the capture holds no pointer-state frame for any element on either storefront (interaction coverage 0 counts expansions only)", use: "Global-navigation store link on both captured storefronts" }
-    search-input: { type: input, bg: "#ffffff", fg: "#8a8a8a", radius: "4px", padding: "8px 28px 8px 8px", height: "36px", font: "14px / 400 / Pretendard", states: "default captured only; the capture holds no pointer-state frame for any element on either storefront (interaction coverage 0 counts expansions only)", use: "Home storefront search input" }
-    product-image-link: { type: card, radius: "0px", padding: "0px", height: "312px", font: "14px / 400 / Pretendard", use: "MUSINSA STANDARD product-image link in the listing grid" }
-    product-utility-button: { type: button, fg: "#000000", radius: "0px", padding: "4px", height: "28px", font: "14px / 400 / Pretendard", states: "default captured only; the capture holds no pointer-state frame for any element on either storefront (interaction coverage 0 counts expansions only)", use: "Product-card utility control on the MUSINSA STANDARD storefront" }
-    home-tab-link: { type: tab, bg: "transparent", fg: "#000000", radius: "0px", padding: "14px 7px", height: "48px", font: "14px / 400 / 21px Pretendard", states: "rest captured on five tabs, none marked selected; the capture holds no pointer-state frame for any element on either storefront", use: "Main-storefront category tab link (TabItem__TabLink) at home::[data-omd-capture=\"22\"] through \"26\"" }
-    floating-action-button: { type: button, bg: "rgba(255, 255, 255, 0.92)", border: "1px solid #ebebeb", radius: "100%", size: "40px x 40px", states: "rest captured; the capture holds no pointer-state frame for any element on either storefront", use: "Main-storefront white floating action button (_fab__button--white) at home::[data-omd-capture=\"32\"]; \"36\" records the same values. It carries an icon, not text, so no label colour is claimed" }
-    global-filter-toggle: { type: toggle, bg: "transparent", fg: "#000000", radius: "100%", size: "40px x 40px", font: "12px / 500 / 18px Pretendard", selected: "12px / 600, class _fab-global-filter__button--active", states: "inactive rest and one active variant captured as static markup; the active option's own fill is transparent and the fill behind it was not sampled, so neither the active fill nor its text colour is claimed; the capture holds no pointer-state frame for any element on either storefront", use: "Main-storefront floating global filter option at home::[data-omd-capture=\"34\"] and \"35\"; active sample \"33\"" }
-    outline-button: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #e0e0e0", radius: "4px", padding: "0px 11px", height: "32px", font: "14px / 400 / 21px Pretendard", states: "rest captured on three controls; the capture holds no pointer-state frame for any element on either storefront", use: "MUSINSA STANDARD outline button at surface-2::[data-omd-capture=\"36\"]; \"37\" (an anchor) and \"38\" record the same values" }
-    search-keyword-tag: { type: badge, bg: "transparent", fg: "#000000", radius: "0px", padding: "0px", height: "18px", font: "14px / 400 / 18px Pretendard", states: "rest captured on 26 tags; the capture holds no pointer-state frame for any element on either storefront", use: "MUSINSA STANDARD search keyword tag (UISearchTags__Tag) at surface-2::[data-omd-capture=\"40\"]; all 26 tags record the same values, with no fill, border, or padding" }
+colors:
+  primary: '#000000'
+  canvas: '#ffffff'
+  foreground: '#000000'
+  muted: '#666666'
+  line: '#ebebeb'
+typography:
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Repeated storefront body and product text
+  nav:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.375
+    letterSpacing: 0px
+    use: 56px global-navigation store link
+rounded:
+  square: 0px
+  icon: 2px
+  control: 4px
+spacing:
+  xs: 4
+  sm: 6
+  md: 8
+  lg: 24
+components:
+  gnb-store-link:
+    type: button
+    textColor: rgba(255,255,255,0.8)
+    rounded: 0px
+    padding: 0px 8px
+    height: 56px
+    typography: 16px / 500 / Pretendard
+    states: default captured only; the capture holds no pointer-state frame for any element on either storefront (interaction coverage 0 counts expansions only)
+    use: Global-navigation store link on both captured storefronts
+  search-input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#8a8a8a'
+    rounded: 4px
+    padding: 8px 28px 8px 8px
+    height: 36px
+    typography: 14px / 400 / Pretendard
+    states: default captured only; the capture holds no pointer-state frame for any element on either storefront (interaction coverage 0 counts expansions only)
+    use: Home storefront search input
+  product-image-link:
+    type: card
+    rounded: 0px
+    padding: 0px
+    height: 312px
+    typography: 14px / 400 / Pretendard
+    use: MUSINSA STANDARD product-image link in the listing grid
+  product-utility-button:
+    type: button
+    textColor: '#000000'
+    rounded: 0px
+    padding: 4px
+    height: 28px
+    typography: 14px / 400 / Pretendard
+    states: default captured only; the capture holds no pointer-state frame for any element on either storefront (interaction coverage 0 counts expansions only)
+    use: Product-card utility control on the MUSINSA STANDARD storefront
+  home-tab-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 14px 7px
+    height: 48px
+    typography: 14px / 400 / 21px Pretendard
+    states: rest captured on five tabs, none marked selected; the capture holds no pointer-state frame for any element on either storefront
+    use: Main-storefront category tab link (TabItem__TabLink) at home::[data-omd-capture="22"] through "26"
+  floating-action-button:
+    type: button
+    backgroundColor: rgba(255, 255, 255, 0.92)
+    border: '1px solid #ebebeb'
+    rounded: 100%
+    size: 40px x 40px
+    states: rest captured; the capture holds no pointer-state frame for any element on either storefront
+    use: Main-storefront white floating action button (_fab__button--white) at home::[data-omd-capture="32"]; "36" records the same values. It carries an icon, not text, so no label colour is claimed
+  global-filter-toggle:
+    type: toggle
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 100%
+    size: 40px x 40px
+    typography: 12px / 500 / 18px Pretendard
+    selected: 12px / 600, class _fab-global-filter__button--active
+    states: inactive rest and one active variant captured as static markup; the active option's own fill is transparent and the fill behind it was not sampled, so neither the active fill nor its text colour is claimed; the capture holds no pointer-state frame for any element on either storefront
+    use: Main-storefront floating global filter option at home::[data-omd-capture="34"] and "35"; active sample "33"
+  outline-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: '1px solid #e0e0e0'
+    rounded: 4px
+    padding: 0px 11px
+    height: 32px
+    typography: 14px / 400 / 21px Pretendard
+    states: rest captured on three controls; the capture holds no pointer-state frame for any element on either storefront
+    use: MUSINSA STANDARD outline button at surface-2::[data-omd-capture="36"]; "37" (an anchor) and "38" record the same values
+  search-keyword-tag:
+    type: badge
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 0px
+    height: 18px
+    typography: 14px / 400 / 18px Pretendard
+    states: rest captured on 26 tags; the capture holds no pointer-state frame for any element on either storefront
+    use: MUSINSA STANDARD search keyword tag (UISearchTags__Tag) at surface-2::[data-omd-capture="40"]; all 26 tags record the same values, with no fill, border, or padding
+fonts:
+  roles:
+    sans: Pretendard
 ---
 
 # Design System Inspiration of Musinsa (무신사)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Musinsa is a Korean fashion platform that began with sneaker photographs and street snaps, then grew into a marketplace and content ecosystem for Korean fashion brands. Its current public storefront capture is visually restrained at the interface layer: `#ffffff` canvas, `#000000` text, `#ebebeb` lines, square product imagery, and a loaded Pretendard text system. That restraint serves a catalog whose product photography, brand imagery, and editorial modules carry the visual variety. The official history connects this emphasis on images to the 2001 sneaker community and the later development of MUSINSA.com, Magazine, and Store. In 2025 Musinsa also renewed the MUSINSA STORE BI, making the retail-service identity bolder and separating it from the company CI as its global and offline footprint expanded. [Official history](https://about.musinsa.com/newsroom/about-musinsa) and [BI announcement](https://about.musinsa.com/newsroom/2025-1022) provide the narrative context; they do not by themselves supply interface tokens.
 
@@ -167,13 +136,27 @@ The two supplied Tier 1 surfaces are the main Musinsa recommendation storefront 
 - Square product imagery and listing controls; 4px search-input corners and 2px small-icon geometry are local defaults, not a universal radius scale
 - No captured hover, focus, pressed, disabled, dialog, toast, or form-error state is promoted
 
-## Primary tasks
+### Primary tasks
 
 - Search the main storefront for a specific item
 - Browse a brand storefront's grid of product photos
 - Discover Korean fashion brands through snaps and editorials
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Musinsa began in 2001 as a sneaker-focused community whose name is an abbreviation of “a place with tremendous sneaker photography.” The company says the community evolved into MUSINSA.com in 2003, expanded through fashion content and street snaps, and opened MUSINSA Store in 2009 to connect fashion brands with customers. Its 2025 founder story frames the company’s present role as a bridge for Korean fashion brands to reach international audiences; the company’s 2025 store-BI announcement separately explains that the renewed retail identity is intended to distinguish the store service from the corporate identity as online, offline, and global operations expand. [Official origin and evolution](https://about.musinsa.com/newsroom/musinsa-ceo) · [Official 2025 BI announcement](https://about.musinsa.com/newsroom/2025-1022)
+
+### Principles
+
+1. **Fashion content and partner brands are central to the platform story.** Musinsa’s official history describes street snaps, lookbooks, editorials, and brand discovery as part of the service. *UI implication:* do not replace verified product and editorial imagery with invented brand-color decoration. [Official history](https://about.musinsa.com/newsroom/about-musinsa)
+2. **Store identity and company identity are intentionally distinct.** The 2025 announcement says the renewed MUSINSA STORE BI separates the retail service from the corporate CI. *UI implication:* do not generalize a store-surface token to corporate, campaign, or offline-signage contexts without evidence. [Official BI announcement](https://about.musinsa.com/newsroom/2025-1022)
+3. **Evidence domains remain separate.** The two live storefront captures verify a small set of web tokens; official company history explains brand context. *UI implication:* leave any unobserved interaction, mobile, authenticated, marketing, or documentation pattern absent rather than filling it with a plausible ecommerce convention.
+
+### Personas
+
+No individual personas are promoted. The official material discusses customers, fashion enthusiasts, partner brands, and Korean designers at a group level, but it does not provide evidence for detailed fictional user biographies. Use stakeholder groups only: fashion shoppers seeking K-fashion discovery, and brands seeking a retail and content platform. [Official history](https://about.musinsa.com/newsroom/about-musinsa)
+
+## Colors
 
 ### Current storefront tokens
 
@@ -186,7 +169,7 @@ The two supplied Tier 1 surfaces are the main Musinsa recommendation storefront 
 
 No sale, error, success, selected-filter, promotional, or dark-surface color is canonical in this pass. The older red and yellow claims were not present in the supplied Tier 1 color evidence and are omitted rather than reconstructed from a past snapshot or a different surface.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence boundary
 
@@ -214,7 +197,29 @@ No sale, error, success, selected-filter, promotional, or dark-surface color is 
 | Global-navigation store link | Pretendard | 16px | 500 | 22px | normal | `home::[data-omd-capture="1"]`, 56px high |
 | Storefront search input | Pretendard | 14px | 400 | 20px | normal | `home::[data-omd-capture="20"]`, 36px high |
 
-## 4. Component Stylings
+## Layout
+
+The captured storefronts repeatedly use 4px, 6px, 8px, and 24px spacing values. Product-image links on the MUSINSA STANDARD listing surface are square, with no observed container padding; section articles on that surface include 24px bottom padding. The two captures do not establish a responsive grid, desktop-to-mobile breakpoints, or a universal content gutter, so those are intentionally omitted.
+
+### Responsive Behavior
+
+No breakpoint transition, mobile navigation, or interaction expansion was captured in the supplied desktop evidence. The 56px global-navigation link, 36px home search input, 312px product-image link, and 28px product utility control are desktop-capture measurements, not cross-viewport specifications.
+
+## Elevation & Depth
+
+The captured navigation, product-link, and utility-control representatives report `box-shadow: none`. This supports a flat treatment for these observed elements only. No modal, sheet, dropdown, sticky, or promotional elevation token was captured.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No motion duration, easing curve, or reduced-motion behavior was observed in the supplied raw evidence. No motion token is promoted.
+
+## Components
 
 ### Captured storefront components
 
@@ -318,15 +323,11 @@ No primary checkout button, product-filter chip, sale badge, modal, toast, input
 **Tier 2 sources:** https://getdesign.md/musinsa (attempted direct lookup and indexed search; no usable record returned); https://styles.refero.design/?q=musinsa (attempted direct lookup and indexed search; no usable result returned).
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-The captured storefronts repeatedly use 4px, 6px, 8px, and 24px spacing values. Product-image links on the MUSINSA STANDARD listing surface are square, with no observed container padding; section articles on that surface include 24px bottom padding. The two captures do not establish a responsive grid, desktop-to-mobile breakpoints, or a universal content gutter, so those are intentionally omitted.
+No empty, loading, error, success, skeleton, disabled, hover, focus, or pressed state was captured in the supplied evidence. The reason is that the bundle holds no pointer-state frame (`<selector>::state-hover|pressed|focus`) for any element on either storefront (`observedStates: 0`); the zero interaction coverage separately means that no dialog, menu, or tab was expanded. (Refined 2026-09-29: the July text gave the interaction count as the reason.) The one non-default variant recorded is static markup: the active global-filter option (`_fab-global-filter__button--active`) at 12px / 600; its fill and text colour are not claimed.
 
-## 6. Depth & Elevation
-
-The captured navigation, product-link, and utility-control representatives report `box-shadow: none`. This supports a flat treatment for these observed elements only. No modal, sheet, dropdown, sticky, or promotional elevation token was captured.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -340,36 +341,19 @@ The captured navigation, product-link, and utility-control representatives repor
 - Do not present the MUSINSA STANDARD storefront as proof of universal Musinsa product, marketing, docs, or mobile-app behavior.
 - Do not substitute a system font for a different claimed family; only the observed Pretendard family is available here.
 
-## 8. Responsive Behavior
-
-No breakpoint transition, mobile navigation, or interaction expansion was captured in the supplied desktop evidence. The 56px global-navigation link, 36px home search input, 312px product-image link, and 28px product utility control are desktop-capture measurements, not cross-viewport specifications.
-
-## 9. Agent Prompt Guide
-
-Use only the evidence-backed subset: “Create a square MUSINSA STANDARD product-image link with no container padding, 14px/400 Pretendard supporting text, `#000000` foreground, `#ffffff` canvas, and `#ebebeb` line color where a captured border is needed.” Do not add a sale badge, prominent CTA, interaction state, responsive grid, or proprietary display face unless separately verified.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 The official company story uses a direct K-fashion platform narrative and the 2025 BI announcement uses the campaign line “Bolder Than Ever: The New MUSINSA.” Those are corporate/newsroom expressions, not a complete product-microcopy guide. Current storefront CTA, error, empty-state, and support-copy rules were not captured, so no synthetic voice samples are promoted.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Musinsa began in 2001 as a sneaker-focused community whose name is an abbreviation of “a place with tremendous sneaker photography.” The company says the community evolved into MUSINSA.com in 2003, expanded through fashion content and street snaps, and opened MUSINSA Store in 2009 to connect fashion brands with customers. Its 2025 founder story frames the company’s present role as a bridge for Korean fashion brands to reach international audiences; the company’s 2025 store-BI announcement separately explains that the renewed retail identity is intended to distinguish the store service from the corporate identity as online, offline, and global operations expand. [Official origin and evolution](https://about.musinsa.com/newsroom/musinsa-ceo) · [Official 2025 BI announcement](https://about.musinsa.com/newsroom/2025-1022)
+Use only the evidence-backed subset: “Create a square MUSINSA STANDARD product-image link with no container padding, 14px/400 Pretendard supporting text, `#000000` foreground, `#ffffff` canvas, and `#ebebeb` line color where a captured border is needed.” Do not add a sale badge, prominent CTA, interaction state, responsive grid, or proprietary display face unless separately verified.
 
-## 12. Principles
+## Governance
 
-1. **Fashion content and partner brands are central to the platform story.** Musinsa’s official history describes street snaps, lookbooks, editorials, and brand discovery as part of the service. *UI implication:* do not replace verified product and editorial imagery with invented brand-color decoration. [Official history](https://about.musinsa.com/newsroom/about-musinsa)
-2. **Store identity and company identity are intentionally distinct.** The 2025 announcement says the renewed MUSINSA STORE BI separates the retail service from the corporate CI. *UI implication:* do not generalize a store-surface token to corporate, campaign, or offline-signage contexts without evidence. [Official BI announcement](https://about.musinsa.com/newsroom/2025-1022)
-3. **Evidence domains remain separate.** The two live storefront captures verify a small set of web tokens; official company history explains brand context. *UI implication:* leave any unobserved interaction, mobile, authenticated, marketing, or documentation pattern absent rather than filling it with a plausible ecommerce convention.
+### Known Gaps
 
-## 13. Personas
-
-No individual personas are promoted. The official material discusses customers, fashion enthusiasts, partner brands, and Korean designers at a group level, but it does not provide evidence for detailed fictional user biographies. Use stakeholder groups only: fashion shoppers seeking K-fashion discovery, and brands seeking a retail and content platform. [Official history](https://about.musinsa.com/newsroom/about-musinsa)
-
-## 14. States
-
-No empty, loading, error, success, skeleton, disabled, hover, focus, or pressed state was captured in the supplied evidence. The reason is that the bundle holds no pointer-state frame (`<selector>::state-hover|pressed|focus`) for any element on either storefront (`observedStates: 0`); the zero interaction coverage separately means that no dialog, menu, or tab was expanded. (Refined 2026-09-29: the July text gave the interaction count as the reason.) The one non-default variant recorded is static markup: the active global-filter option (`_fab-global-filter__button--active`) at 12px / 600; its fill and text colour are not claimed.
-
-## 15. Motion & Easing
-
-No motion duration, easing curve, or reduced-motion behavior was observed in the supplied raw evidence. No motion token is promoted.
+- **Contrast, `search-input`.** Text `#8a8a8a` on `#ffffff` measures 3.45:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `home-tab-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `global-filter-toggle`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-keyword-tag`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

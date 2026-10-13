@@ -1,189 +1,131 @@
 ---
-id: loglass
 name: Loglass
-country: JP
-category: saas
-homepage: "https://loglass.jp"
-primary_color: "#2352C8"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=loglass.jp&sz=128"
-verified: "2026-09-23"
-added: "2026-09-23"
-omd: "0.1"
-ds:
-  name: "Loglass web tokens"
-  url: "https://loglass.jp/"
-  type: system
-  description: "About 225 brand custom properties on the product site, beside Tailwind v4's own. Six ten-step colour ramps under a role layer — bg, border, surface, text, cta — plus an eleven-step categorical chart palette for a management-accounting product, 22 shadows named for the component that casts them, and campaign namespaces for landing pages and the company's annual conference."
-tokens:
-  source: live-extract
-  extracted: "2026-09-23"
-  colors:
-    primary: "#2352c8"
-    primary-hover: "#1337a1"
-    primary-deep: "#062073"
-    primary-surface: "#eef5ff"
-    primary-tint: "#f8fafd"
-    chart-blue-light: "#d5e4fb"
-    foreground: "#171725"
-    text-normal: "#3f3f4a"
-    text-secondary: "#6c6c7f"
-    text-placeholder: "#9090a1"
-    disabled: "#b5b5be"
-    border: "#d5d5dc"
-    muted: "#f1f1f5"
-    surface: "#fafafb"
-    canvas: "#ffffff"
-    night: "#000c2a"
-    accent: "#e77623"
-    accent-hover: "#c3540a"
-    warning-surface: "#fff2de"
-    info: "#026572"
-    info-surface: "#f0f7ff"
-    success: "#108a10"
-    success-surface: "#eafbe5"
-    danger: "#d3403a"
-    danger-surface: "#ffede9"
-    chart-turquoise: "#29a4b3"
-    chart-green: "#37ac32"
-    chart-red: "#ee6e66"
-  typography:
-    family: { sans: "Noto Sans JP" }
-    leading: { tight: 1.3, snug: 1.4, normal: 1.7, relaxed: 1.8 }
-    xs: { size: 12, use: "--text-xs" }
-    sm: { size: 14, use: "--text-sm; header buttons and navigation" }
-    base: { size: 16, use: "--text-base" }
-    lg: { size: 18, use: "--text-lg" }
-    xl: { size: 20, use: "--text-xl" }
-    2xl: { size: 24, use: "--text-2xl" }
-    3xl: { size: 32, use: "--text-3xl" }
-    4xl: { size: 40, use: "--text-4xl" }
-    5xl: { size: 48, use: "--text-5xl; the home page h1" }
-    6xl: { size: 60, use: "--text-6xl" }
-    8xl: { size: 96, use: "--text-8xl, the largest step" }
-  rounded: { sm: 4, md: 8, xl: 12, 2xl: 16, full: 9999 }
-  components:
-    button-primary: { type: "button", bg: "#2352c8", fg: "#ffffff", radius: 4, height: "40px", padding: "6px 12px", font: "14px / 700", shadow: "rgba(0,0,0,0.1) 0 1px 3px, rgba(0,0,0,0.1) 0 1px 2px -1px", hover: "#1337a1", pressed: "#1337a1", use: "資料ダウンロード in the header — --color-cta-primary, deepening to --color-cta-primary-hover. Focus is the browser's ring." }
-    button-secondary: { type: "button", bg: "transparent", fg: "#171725", border: "#d5d5dc", radius: 4, height: "40px", padding: "6px 12px", font: "14px / 700", hover: "#f1f1f5, border #b5b5be", pressed: "#f1f1f5, border #b5b5be", use: "お問い合わせ — an outlined twin that fills with --color-neutral-2 and darkens its border on hover." }
-    card-cta: { type: "button", bg: "#ffffff", fg: "#171725", radius: 4, shadow: "0 0 0 3px rgba(255,255,255,0.5)", hover: "ring 0 0 0 3px #e77623", pressed: "ring 0 0 0 3px #e77623", use: "無料デモを体験する on the hero — a white card with a translucent 3px ring (--shadow-cta-card) that turns solid orange #e77623 on hover (--shadow-cta-card-hover)." }
-    link-nav: { type: "button", bg: "transparent", fg: "#171725", height: "44px", padding: "0 8px", font: "14px / 600", hover: "fg #2352c8", pressed: "fg #2352c8", use: "Header navigation (サービス一覧 and siblings). The label turns brand blue on hover — the only place the link colour appears at rest-to-hover." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-23"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://loglass.jp/", inspected: "2026-09-23" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://loglass.jp/", captured: "2026-09-23" }
-    - { id: control-404, kind: product-surface, url: "https://loglass.jp/zz-this-does-not-exist", captured: "2026-09-23" }
-    - { id: corp-company, kind: official-doc, url: "https://loglass.co.jp/company", captured: "2026-09-23" }
-    - { id: corp-about, kind: official-doc, url: "https://loglass.co.jp/about", captured: "2026-09-23" }
-  conflicts: []
-  claims:
-    tokens.colors.accent: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.accent-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.chart-blue-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.chart-green: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.chart-red: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.chart-turquoise: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.danger: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.danger-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.info: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.info-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.night: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.primary-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.primary-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.primary-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.primary-tint: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.success: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.success-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.text-normal: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.text-placeholder: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.text-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.warning-surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.shadow: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.shadow: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.card-cta.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-nav.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.rounded.2xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.rounded.full: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.rounded.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.2xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.2xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.3xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.3xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.4xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.4xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.5xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.5xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.6xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.6xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.8xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.8xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.base.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.base.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.leading.normal: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.leading.relaxed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.leading.snug: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.leading.tight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.lg.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.lg.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.sm.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.sm.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.xs.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.xs.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
+colors:
+  primary: '#2352c8'
+  primary-hover: '#1337a1'
+  primary-deep: '#062073'
+  primary-surface: '#eef5ff'
+  primary-tint: '#f8fafd'
+  chart-blue-light: '#d5e4fb'
+  foreground: '#171725'
+  text-normal: '#3f3f4a'
+  text-secondary: '#6c6c7f'
+  text-placeholder: '#9090a1'
+  disabled: '#b5b5be'
+  border: '#d5d5dc'
+  muted: '#f1f1f5'
+  surface: '#fafafb'
+  canvas: '#ffffff'
+  night: '#000c2a'
+  accent: '#e77623'
+  accent-hover: '#c3540a'
+  warning-surface: '#fff2de'
+  info: '#026572'
+  info-surface: '#f0f7ff'
+  success: '#108a10'
+  success-surface: '#eafbe5'
+  danger: '#d3403a'
+  danger-surface: '#ffede9'
+  chart-turquoise: '#29a4b3'
+  chart-green: '#37ac32'
+  chart-red: '#ee6e66'
+typography:
+  xs:
+    fontSize: 12px
+    use: '--text-xs'
+  sm:
+    fontSize: 14px
+    use: '--text-sm; header buttons and navigation'
+  base:
+    fontSize: 16px
+    use: '--text-base'
+  lg:
+    fontSize: 18px
+    use: '--text-lg'
+  xl:
+    fontSize: 20px
+    use: '--text-xl'
+  2xl:
+    fontSize: 24px
+    use: '--text-2xl'
+  3xl:
+    fontSize: 32px
+    use: '--text-3xl'
+  4xl:
+    fontSize: 40px
+    use: '--text-4xl'
+  5xl:
+    fontSize: 48px
+    use: '--text-5xl; the home page h1'
+  6xl:
+    fontSize: 60px
+    use: '--text-6xl'
+  8xl:
+    fontSize: 96px
+    use: '--text-8xl, the largest step'
+rounded:
+  sm: 4px
+  md: 8px
+  xl: 12px
+  2xl: 16px
+  full: 9999px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#2352c8'
+    textColor: '#ffffff'
+    rounded: 4px
+    height: 40px
+    padding: 6px 12px
+    typography: 14px / 700
+    shadow: rgba(0,0,0,0.1) 0 1px 3px, rgba(0,0,0,0.1) 0 1px 2px -1px
+    hover: '#1337a1'
+    pressed: '#1337a1'
+    use: 資料ダウンロード in the header — --color-cta-primary, deepening to --color-cta-primary-hover. Focus is the browser's ring.
+  button-secondary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#171725'
+    border: '#d5d5dc'
+    rounded: 4px
+    height: 40px
+    padding: 6px 12px
+    typography: 14px / 700
+    hover: '#f1f1f5, border #b5b5be'
+    pressed: '#f1f1f5, border #b5b5be'
+    use: お問い合わせ — an outlined twin that fills with --color-neutral-2 and darkens its border on hover.
+  card-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#171725'
+    rounded: 4px
+    shadow: 0 0 0 3px rgba(255,255,255,0.5)
+    hover: 'ring 0 0 0 3px #e77623'
+    pressed: 'ring 0 0 0 3px #e77623'
+    use: '無料デモを体験する on the hero — a white card with a translucent 3px ring (--shadow-cta-card) that turns solid orange #e77623 on hover (--shadow-cta-card-hover).'
+  link-nav:
+    type: button
+    backgroundColor: transparent
+    textColor: '#171725'
+    height: 44px
+    padding: 0 8px
+    typography: 14px / 600
+    hover: 'fg #2352c8'
+    pressed: 'fg #2352c8'
+    use: Header navigation (サービス一覧 and siblings). The label turns brand blue on hover — the only place the link colour appears at rest-to-hover.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: Noto Sans JP
 ---
+
 # Design System Inspiration of Loglass (ログラス)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Loglass makes management-accounting software — budgeting, forecast-versus-actual and planning for
 finance teams that otherwise live in spreadsheets. The company, 株式会社ログラス, was founded on
@@ -212,11 +154,32 @@ What makes it worth reading:
 - **Shadows named for what casts them** — `--shadow-cta-card`, `--shadow-resource-card`,
   `--shadow-ai-hero` — 22 of them.
 
-### Primary tasks
+#### Primary tasks
 - Download the product overview; book a demo; contact sales.
 - Browse the product suite and solutions.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Loglass sells an argument against the spreadsheet — that a century-old discipline has been run on
+tools not built for it. The product's first name said too much, and within three months it was cut
+to one word. The site carries the same economy: a single blue for doing, an orange kept for the
+moment of attention, and an ink that is nearly black but not quite.
+
+Under the surface the token set is organised the way a finance team would want its own data
+organised — by role, with the raw scales hidden behind names that say what each value is for, and
+with the charts, which are the product's output, given their own palette.
+
+### Principles
+
+- **Name the job.** Every colour in use reaches the page through a role token.
+- **One blue for action, one orange for attention.**
+- **Charts are first-class.** Eleven categorical steps, in order.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `loglass.jp`: 309 custom properties. **Tailwind v4's are
 excluded** — 69 `--tw-*` runtime variables, `--default-*`, the stock `--ease-*` curves,
@@ -294,7 +257,7 @@ appears as a strong step and a pale step, so paired series read as related.
 
 None of these is recorded as a brand token.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -321,7 +284,54 @@ Only Noto Sans JP is a font fact here. The others are declared names.
 text. Tracking is small and positive: `--tracking-tight` 0.24px, `-normal` 0.28px, `-wide`
 0.36px, `-wider` 0.4px. Weights are tokenised 300 to 900.
 
-## 4. Component Stylings
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.leading.tight`: `1.3`
+- `typography.leading.snug`: `1.4`
+- `typography.leading.normal`: `1.7`
+- `typography.leading.relaxed`: `1.8`
+
+## Layout
+
+- `--container-max`, `--container-header` and `--container-padding` sit beside Tailwind's stock
+  container sizes.
+- `--btn-section-list-height` is a single-purpose layout token.
+- Radius splits by role: buttons square-ish at 4px, content cards 8px, anything that is a label or a
+  person fully round.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+22 shadow tokens. The generic `--shadow-sm/md/lg/xl` are not seen rendered on the home page; the
+named ones are:
+
+- `--shadow-floating` `0 0 32px 0 #1717252e, 0 0 8px 0 #17172514` — the most rendered (10), centred.
+- `--shadow-card` `0 10px 30px -20px #17172533, 0 16px 30px -30px #17172533` (9) — two long, tight
+  shadows cast down, tinted with the ink rather than black; `--shadow-card-hover` lengthens them
+  and adds a 1px ink hairline.
+- `--shadow-cta-card` / `-hover` — the 3px white and orange rings above.
+- `--shadow-ai-block` `0 5px 50px -10px var(--color-blue-8)` — a blue glow.
+
+Shadows are tinted with `#171725` or the brand blue, not with black, apart from the four generic
+ones and the header button's hairline.
+
+## Motion & Easing
+
+Three `--transition-*` tokens are Loglass's; the two `--ease-*` curves are Tailwind's stock.
+Durations on the measured controls were not recorded.
+
+---
+
+**Tier 1 sources:** https://loglass.jp/ (live product site — 309 custom properties read via `getComputedStyle`, Tailwind v4 excluded; six controls measured at rest, hover, pressed and focus, four declared; only Noto Sans JP loaded, captured 2026-09-23); https://loglass.jp/zz-this-does-not-exist (nonsense-path control — a real HTTP 404 with a 400-character body, establishing the host is not a catch-all, captured 2026-09-23); https://loglass.co.jp/company (会社概要 — 設立 2019年5月30日, read 2026-09-23); https://loglass.co.jp/about (mission 「管理会計100年の歴史に終止符を打ち、新しいデータ経営の在り方を生み出す。」, read 2026-09-23)
+
+**Regional sources:** https://ascii.jp/elem/000/004/019/4019188/ (ASCII STARTUP, 2020-07-08 — public launch of Loglass after an April 2020 closed release as 「コーポレート・インテリジェンス・クラウド・ログラス」 with more than ten paying companies); https://prtimes.jp/main/html/rd/p/000000007.000052025.html (Loglass release on PR TIMES — public launch of Loglass together with an ¥80M seed round)
+
+## Components
 
 Four controls declared, every state on its own page load, focus read before the mouse moved.
 
@@ -352,30 +362,14 @@ Rendered: **9999px** ×52 (pills, badges, avatars) · **4px** ×28 (buttons) · 
 `8px 8px 0 0` ×6 (card headers) · 12px ×3. A **6px** radius appears 9 times and is not on the
 scale.
 
-## 5. Layout Principles
+### States
 
-- `--container-max`, `--container-header` and `--container-padding` sit beside Tailwind's stock
-  container sizes.
-- `--btn-section-list-height` is a single-purpose layout token.
-- Radius splits by role: buttons square-ish at 4px, content cards 8px, anything that is a label or a
-  person fully round.
+Four components declared, every state measured. The primary deepens to `#1337a1`; the secondary
+fills `#f1f1f5` with a `#b5b5be` border; the demo card's ring turns `#e77623`; navigation turns
+`#2352c8`. Focus is the browser's `auto` ring throughout. No disabled state was observed;
+`--color-text-disabled` / `--color-surface-disabled` `#b5b5be` exist.
 
-## 6. Depth & Elevation
-
-22 shadow tokens. The generic `--shadow-sm/md/lg/xl` are not seen rendered on the home page; the
-named ones are:
-
-- `--shadow-floating` `0 0 32px 0 #1717252e, 0 0 8px 0 #17172514` — the most rendered (10), centred.
-- `--shadow-card` `0 10px 30px -20px #17172533, 0 16px 30px -30px #17172533` (9) — two long, tight
-  shadows cast down, tinted with the ink rather than black; `--shadow-card-hover` lengthens them
-  and adds a 1px ink hairline.
-- `--shadow-cta-card` / `-hover` — the 3px white and orange rings above.
-- `--shadow-ai-block` `0 5px 50px -10px var(--color-blue-8)` — a blue glow.
-
-Shadows are tinted with `#171725` or the brand blue, not with black, apart from the four generic
-ones and the header button's hairline.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Ask for a role — `--color-cta-primary`, `--color-text-secondary` — not a ramp step.
@@ -389,11 +383,11 @@ ones and the header button's hairline.
 - Don't read `--font-mono` as a monospace face.
 - Don't treat `-summit` or `-lp` colours as the product palette.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice. 3,010 characters on the measured surface.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#2352c8` action · `#1337a1` action hover · `#171725` ink · `#3f3f4a` / `#6c6c7f` / `#9090a1`
@@ -404,45 +398,9 @@ text steps · `#d5d5dc` borders · `#f1f1f5` / `#fafafb` / `#ffffff` surfaces ·
 - "A 40px button: `#2352c8`, white 14px/700, 4px radius, `6px 12px`; hover `#1337a1`."
 - "A white card with a `0 0 0 3px #ffffff80` ring that turns `0 0 0 3px #e77623` on hover."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice. 3,010 characters on the measured surface.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Loglass sells an argument against the spreadsheet — that a century-old discipline has been run on
-tools not built for it. The product's first name said too much, and within three months it was cut
-to one word. The site carries the same economy: a single blue for doing, an orange kept for the
-moment of attention, and an ink that is nearly black but not quite.
-
-Under the surface the token set is organised the way a finance team would want its own data
-organised — by role, with the raw scales hidden behind names that say what each value is for, and
-with the charts, which are the product's output, given their own palette.
-
-## 12. Principles
-
-- **Name the job.** Every colour in use reaches the page through a role token.
-- **One blue for action, one orange for attention.**
-- **Charts are first-class.** Eleven categorical steps, in order.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Four components declared, every state measured. The primary deepens to `#1337a1`; the secondary
-fills `#f1f1f5` with a `#b5b5be` border; the demo card's ring turns `#e77623`; navigation turns
-`#2352c8`. Focus is the browser's `auto` ring throughout. No disabled state was observed;
-`--color-text-disabled` / `--color-surface-disabled` `#b5b5be` exist.
-
-## 15. Motion & Easing
-
-Three `--transition-*` tokens are Loglass's; the two `--ease-*` curves are Tailwind's stock.
-Durations on the measured controls were not recorded.
-
----
-
-**Tier 1 sources:** https://loglass.jp/ (live product site — 309 custom properties read via `getComputedStyle`, Tailwind v4 excluded; six controls measured at rest, hover, pressed and focus, four declared; only Noto Sans JP loaded, captured 2026-09-23); https://loglass.jp/zz-this-does-not-exist (nonsense-path control — a real HTTP 404 with a 400-character body, establishing the host is not a catch-all, captured 2026-09-23); https://loglass.co.jp/company (会社概要 — 設立 2019年5月30日, read 2026-09-23); https://loglass.co.jp/about (mission 「管理会計100年の歴史に終止符を打ち、新しいデータ経営の在り方を生み出す。」, read 2026-09-23)
-
-**Regional sources:** https://ascii.jp/elem/000/004/019/4019188/ (ASCII STARTUP, 2020-07-08 — public launch of Loglass after an April 2020 closed release as 「コーポレート・インテリジェンス・クラウド・ログラス」 with more than ten paying companies); https://prtimes.jp/main/html/rd/p/000000007.000052025.html (Loglass release on PR TIMES — public launch of Loglass together with an ¥80M seed round)
+- **Contrast, `button-secondary`.** Text `#171725` on `#00000000` measures 1.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `link-nav`.** Text `#171725` on `#00000000` measures 1.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

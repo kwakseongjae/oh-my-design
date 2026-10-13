@@ -1,0 +1,542 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "zendesk",
+    "name": "Zendesk Garden",
+    "country": "US",
+    "category": "saas",
+    "homepage": "https://garden.zendesk.com/",
+    "primary_color": "#1f73b7",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=garden.zendesk.com&sz=128"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Zendesk Garden",
+      "url": "https://garden.zendesk.com/",
+      "type": "system",
+      "description": "Zendesk's public design-system documentation."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Selector-backed values from the supplied Garden home, button-documentation, and color-documentation capture only. The observed system-ui stack is not a Zendesk font token; no interaction state is promoted because interactionCount is 0.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "design-system-home",
+        "url": "https://garden.zendesk.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "surface-2",
+        "kind": "component-documentation",
+        "url": "https://garden.zendesk.com/components/button",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "surface-3",
+        "kind": "color-documentation",
+        "url": "https://garden.zendesk.com/design/color",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "garden-home-live",
+        "kind": "product-surface",
+        "url": "https://garden.zendesk.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "garden-button-live",
+        "kind": "official-doc",
+        "url": "https://garden.zendesk.com/components/button",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "garden-color-live",
+        "kind": "product-surface",
+        "url": "https://garden.zendesk.com/design/color",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "garden-home-official",
+        "kind": "official-doc",
+        "url": "https://garden.zendesk.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "garden-palette-official",
+        "kind": "official-doc",
+        "url": "https://garden.zendesk.com/design/palette/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "zendesk-company",
+        "kind": "official-doc",
+        "url": "https://www.zendesk.com/company/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "zendesk-signin-refresh",
+        "kind": "official-doc",
+        "url": "https://support.zendesk.com/hc/en-us/articles/9850316391322-Announcing-an-updated-look-to-the-team-member-and-end-user-sign-in-experiences",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "garden-github",
+        "kind": "brand-asset",
+        "url": "https://github.com/zendeskgarden",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "zendesk-component-index",
+        "kind": "official-doc",
+        "url": "https://garden.zendesk.com/components/",
+        "captured": "2026-09-19"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.border": {
+        "surface_id": "surface-3",
+        "source_id": "garden-color-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.success": {
+        "surface_id": "surface-3",
+        "source_id": "garden-color-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.danger": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.use": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.icon-control": {
+        "surface_id": "home",
+        "source_id": "garden-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.type": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.padding": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.height": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.states": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.primary-doc-button.use": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.icon-button.type": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.icon-button.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.icon-button.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.icon-button.height": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.icon-button.states": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.icon-button.use": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.sidebar-list-item.type": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.sidebar-list-item.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.sidebar-list-item.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.sidebar-list-item.height": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.sidebar-list-item.use": {
+        "surface_id": "surface-2",
+        "source_id": "garden-button-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 17,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 8,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section-heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-doc-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-doc-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-doc-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.icon-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.icon-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.icon-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sidebar-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sidebar-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.success",
+        "message": "'success' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.danger",
+        "message": "'danger' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "5855be450b6b61ccee9bc1f18c519776ce286b14bc11385e4e7df1bf50406e07",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.section-heading.fontSize",
+      "typography.body.fontSize",
+      "rounded.control",
+      "rounded.icon-control",
+      "components.primary-doc-button.rounded",
+      "components.icon-button.rounded",
+      "components.sidebar-list-item.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ]
+    }
+  }
+}

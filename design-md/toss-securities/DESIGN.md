@@ -1,220 +1,181 @@
 ---
-id: toss-securities
 name: Toss Securities
-display_name_kr: Toss Securities (토스증권)
-country: KR
-category: fintech
-homepage: "https://tossinvest.com"
-primary_color: "#3182f6"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=tossinvest.com&sz=256"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: public-wts, kind: public-web-trading, url: "https://www.tossinvest.com/?focusedProductCode=A000660", inspected: "2026-07-13" }
-    - { id: corporate-info, kind: corporate-marketing, url: "https://home.tossinvest.com/en/corporate-info", inspected: "2026-07-13" }
-    - { id: investment-marketing, kind: product-marketing, url: "https://home.tossinvest.com/en/investment-products", inspected: "2026-07-13" }
-  sources:
-    - { id: wts-live, kind: product-surface, url: "https://www.tossinvest.com/?focusedProductCode=A000660", captured: "2026-07-13" }
-    - { id: corporate-live, kind: official-doc, url: "https://home.tossinvest.com/en/corporate-info", captured: "2026-07-13" }
-    - { id: investment-live, kind: official-doc, url: "https://home.tossinvest.com/en/investment-products", captured: "2026-07-13" }
-    - { id: tps-design, kind: brand-asset, url: "https://toss.im/simplicity-21/sessions/3-3", captured: "2026-07-13" }
-    - { id: tossface-repo, kind: brand-asset, url: "https://github.com/toss/tossface", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &wts { surface_id: public-wts, source_id: wts-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.canvas": *wts
-    "tokens.colors.foreground": *wts
-    "tokens.colors.body": *wts
-    "tokens.colors.on-primary": *wts
-    "tokens.colors.dialog-canvas": *wts
-    "tokens.typography.family.sans": &font { surface_id: public-wts, source_id: wts-live, method: computed-style-and-fontfaceset-source, captured: "2026-07-13" }
-    "tokens.typography.compact.size": *wts
-    "tokens.typography.compact.weight": *wts
-    "tokens.typography.compact.lineHeight": *wts
-    "tokens.typography.compact.use": *wts
-    "tokens.typography.body.size": *wts
-    "tokens.typography.body.weight": *wts
-    "tokens.typography.body.lineHeight": *wts
-    "tokens.typography.body.use": *wts
-    "tokens.typography.marketing-heading.size": &marketing { surface_id: investment-marketing, source_id: investment-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.marketing-heading.weight": *marketing
-    "tokens.typography.marketing-heading.lineHeight": *marketing
-    "tokens.typography.marketing-heading.use": *marketing
-    "tokens.spacing.xs": *wts
-    "tokens.spacing.sm": *wts
-    "tokens.spacing.md": *wts
-    "tokens.spacing.lg": *marketing
-    "tokens.spacing.xl": *wts
-    "tokens.rounded.compact-control": *wts
-    "tokens.rounded.primary": *wts
-    "tokens.rounded.menu": *wts
-    "tokens.rounded.dialog": *wts
-    "tokens.rounded.marketing-pill": *marketing
-    "tokens.shadow.menu": *wts
-    "tokens.shadow.dialog": *wts
-    "tokens.components.wts-primary-entry.type": *wts
-    "tokens.components.wts-primary-entry.bg": *wts
-    "tokens.components.wts-primary-entry.fg": *wts
-    "tokens.components.wts-primary-entry.radius": *wts
-    "tokens.components.wts-primary-entry.padding": *wts
-    "tokens.components.wts-primary-entry.height": *wts
-    "tokens.components.wts-primary-entry.font": *wts
-    "tokens.components.wts-primary-entry.states": *wts
-    "tokens.components.wts-primary-entry.use": *wts
-    "tokens.components.investment-primary.type": *marketing
-    "tokens.components.investment-primary.bg": *marketing
-    "tokens.components.investment-primary.fg": *marketing
-    "tokens.components.investment-primary.radius": *marketing
-    "tokens.components.investment-primary.padding": *marketing
-    "tokens.components.investment-primary.height": *marketing
-    "tokens.components.investment-primary.font": *marketing
-    "tokens.components.investment-primary.states": *marketing
-    "tokens.components.investment-primary.use": *marketing
-    "tokens.components.wts-selection-dialog.type": *wts
-    "tokens.components.wts-selection-dialog.bg": *wts
-    "tokens.components.wts-selection-dialog.fg": *wts
-    "tokens.components.wts-selection-dialog.radius": *wts
-    "tokens.components.wts-selection-dialog.size": *wts
-    "tokens.components.wts-selection-dialog.font": *wts
-    "tokens.components.wts-selection-dialog.states": *wts
-    "tokens.components.wts-selection-dialog.use": *wts
-    "tokens.components.wts-tab.type": &wtsTab { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.wts-tab.bg": *wtsTab
-    "tokens.components.wts-tab.fg": *wtsTab
-    "tokens.components.wts-tab.radius": *wtsTab
-    "tokens.components.wts-tab.padding": *wtsTab
-    "tokens.components.wts-tab.height": *wtsTab
-    "tokens.components.wts-tab.font": *wtsTab
-    "tokens.components.wts-tab.selected": { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.wts-tab.hover": { surface_id: public-wts, source_id: wts-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"13\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.wts-tab.pressed": { surface_id: public-wts, source_id: wts-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"13\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.wts-tab.states": *wtsTab
-    "tokens.components.wts-tab.use": *wtsTab
-    "tokens.components.wts-segmented-radio.type": &wtsRadio { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.wts-segmented-radio.bg": *wtsRadio
-    "tokens.components.wts-segmented-radio.fg": *wtsRadio
-    "tokens.components.wts-segmented-radio.radius": *wtsRadio
-    "tokens.components.wts-segmented-radio.padding": *wtsRadio
-    "tokens.components.wts-segmented-radio.height": *wtsRadio
-    "tokens.components.wts-segmented-radio.font": *wtsRadio
-    "tokens.components.wts-segmented-radio.checked": { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.wts-segmented-radio.hover": { surface_id: public-wts, source_id: wts-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"18\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.wts-segmented-radio.pressed": { surface_id: public-wts, source_id: wts-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"18\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.wts-segmented-radio.states": *wtsRadio
-    "tokens.components.wts-segmented-radio.use": *wtsRadio
-    "tokens.components.wts-content-card-link.type": &wtsCard { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.wts-content-card-link.bg": *wtsCard
-    "tokens.components.wts-content-card-link.fg": *wtsCard
-    "tokens.components.wts-content-card-link.radius": *wtsCard
-    "tokens.components.wts-content-card-link.padding": *wtsCard
-    "tokens.components.wts-content-card-link.size": *wtsCard
-    "tokens.components.wts-content-card-link.font": *wtsCard
-    "tokens.components.wts-content-card-link.hover": { surface_id: public-wts, source_id: wts-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"11\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.wts-content-card-link.pressed": { surface_id: public-wts, source_id: wts-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"11\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.wts-content-card-link.states": *wtsCard
-    "tokens.components.wts-content-card-link.use": *wtsCard
-    "tokens.components.wts-nav-link.type": &wtsNav { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.wts-nav-link.bg": *wtsNav
-    "tokens.components.wts-nav-link.fg": *wtsNav
-    "tokens.components.wts-nav-link.radius": *wtsNav
-    "tokens.components.wts-nav-link.padding": *wtsNav
-    "tokens.components.wts-nav-link.height": *wtsNav
-    "tokens.components.wts-nav-link.font": *wtsNav
-    "tokens.components.wts-nav-link.states": *wtsNav
-    "tokens.components.wts-nav-link.use": *wtsNav
-    "tokens.components.wts-menu-trigger.type": &wtsTrigger { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-capture=\"27\"]", captured: "2026-07-13" }
-    "tokens.components.wts-menu-trigger.bg": *wtsTrigger
-    "tokens.components.wts-menu-trigger.fg": *wtsTrigger
-    "tokens.components.wts-menu-trigger.radius": *wtsTrigger
-    "tokens.components.wts-menu-trigger.padding": *wtsTrigger
-    "tokens.components.wts-menu-trigger.height": *wtsTrigger
-    "tokens.components.wts-menu-trigger.font": *wtsTrigger
-    "tokens.components.wts-menu-trigger.shadow": *wtsTrigger
-    "tokens.components.wts-menu-trigger.states": *wtsTrigger
-    "tokens.components.wts-menu-trigger.use": *wtsTrigger
-    "tokens.components.wts-expanded-menu.type": &wtsMenu { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-07-13" }
-    "tokens.components.wts-expanded-menu.bg": *wtsMenu
-    "tokens.components.wts-expanded-menu.fg": *wtsMenu
-    "tokens.components.wts-expanded-menu.radius": *wtsMenu
-    "tokens.components.wts-expanded-menu.size": *wtsMenu
-    "tokens.components.wts-expanded-menu.font": *wtsMenu
-    "tokens.components.wts-expanded-menu.shadow": *wtsMenu
-    "tokens.components.wts-expanded-menu.states": *wtsMenu
-    "tokens.components.wts-expanded-menu.use": *wtsMenu
-    "tokens.components.wts-dialog-input.type": &wtsDialogInput { surface_id: public-wts, source_id: wts-live, method: computed-style, selector: "home::[data-omd-interaction-capture=\"dialog-1-2\"]", captured: "2026-07-13" }
-    "tokens.components.wts-dialog-input.bg": *wtsDialogInput
-    "tokens.components.wts-dialog-input.fg": *wtsDialogInput
-    "tokens.components.wts-dialog-input.radius": *wtsDialogInput
-    "tokens.components.wts-dialog-input.padding": *wtsDialogInput
-    "tokens.components.wts-dialog-input.height": *wtsDialogInput
-    "tokens.components.wts-dialog-input.font": *wtsDialogInput
-    "tokens.components.wts-dialog-input.states": *wtsDialogInput
-    "tokens.components.wts-dialog-input.use": *wtsDialogInput
-    "tokens.components.investment-nav-link.type": &mktNav { surface_id: investment-marketing, source_id: investment-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.investment-nav-link.bg": *mktNav
-    "tokens.components.investment-nav-link.fg": *mktNav
-    "tokens.components.investment-nav-link.radius": *mktNav
-    "tokens.components.investment-nav-link.padding": *mktNav
-    "tokens.components.investment-nav-link.height": *mktNav
-    "tokens.components.investment-nav-link.font": *mktNav
-    "tokens.components.investment-nav-link.hover": { surface_id: investment-marketing, source_id: investment-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"1\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.investment-nav-link.pressed": { surface_id: investment-marketing, source_id: investment-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"1\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.investment-nav-link.states": *mktNav
-    "tokens.components.investment-nav-link.use": *mktNav
-    "tokens.components.investment-secondary.type": &mktSecondary { surface_id: investment-marketing, source_id: investment-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.investment-secondary.bg": *mktSecondary
-    "tokens.components.investment-secondary.fg": *mktSecondary
-    "tokens.components.investment-secondary.radius": *mktSecondary
-    "tokens.components.investment-secondary.padding": *mktSecondary
-    "tokens.components.investment-secondary.height": *mktSecondary
-    "tokens.components.investment-secondary.font": *mktSecondary
-    "tokens.components.investment-secondary.states": *mktSecondary
-    "tokens.components.investment-secondary.use": *mktSecondary
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Only the supplied public WTS and corporate/marketing capture is canonical here. Authenticated or native trading UI, documentation chrome, and declared-only fonts are separate or unresolved evidence domains."
-  colors:
-    primary: "#3182f6"
-    canvas: "#ffffff"
-    foreground: "#1a1f29"
-    body: "#4e5968"
-    on-primary: "#ffffff"
-    dialog-canvas: "#fbfcfd"
-  typography:
-    family: { sans: "Toss Product Sans" }
-    compact: { size: 13, weight: 600, lineHeight: "20px", use: "Public WTS compact menu-trigger text" }
-    body: { size: 16, weight: 400, lineHeight: "23.2px", use: "Public WTS body, tab, menu, and dialog copy" }
-    marketing-heading: { size: 18, weight: 700, lineHeight: "28.8px", use: "Investment-product marketing H1" }
-  spacing: { xs: 4, sm: 8, md: 12, lg: 14, xl: 16 }
-  rounded: { compact-control: 7, primary: 8, menu: 12, dialog: 16, marketing-pill: 100 }
-  shadow:
-    menu: "0 16px 24px -2px rgba(0,0,0,0.06), 0 8px 56px rgba(0,0,0,0.1)"
-    dialog: "0 12px 28px -4px rgba(0,0,0,0.12), 0 8px 56px -4px rgba(0,0,0,0.1)"
-  components_harvested: true
-  components:
-    wts-primary-entry: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "8px", padding: "6px 12px", height: "32px", font: "14px / 600 / 16px", states: "default, focus, and pressed observed; colors and geometry remained the same in the retained samples (the dump records no opacity, outline, or transform; the focus frame followed a mouse press and is not a keyboard focus-visible measurement)", use: "Public WTS compact primary link-action" }
-    investment-primary: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "100px", padding: "11px 14px", height: "40px", font: "15px / 600 / 18px", states: "default observed; the capture holds no hover, pressed, or focus sample for this element (corrected 2026-09-29: those state names belong to the same-class secondary pill)", use: "Investment-products marketing primary action" }
-    wts-selection-dialog: { type: dialog, bg: "#fbfcfd", fg: "#4e5968", radius: "16px", size: "640px x 600px", font: "16px / 400 / 23.2px", states: "dialog-open observed", use: "Public WTS selection dialog container" }
-    wts-tab: { type: tab, bg: "transparent", fg: "rgba(18, 31, 51, 0.47)", radius: "0px", padding: "0px", height: "36px", font: "16px / 400 / 18.4px", selected: "fg rgba(26, 31, 41, 0.89)", hover: "fg rgba(22, 31, 46, 0.61)", pressed: "fg rgba(22, 31, 46, 0.61)", states: "unselected rest, selected, hover, and pressed sampled; focus not sampled", use: "Public WTS tab" }
-    wts-segmented-radio: { type: toggle, bg: "transparent", fg: "rgba(18, 31, 51, 0.47)", radius: "5px", padding: "0px", height: "24px", font: "16px / 400 / 18.4px", checked: "fg rgba(26, 31, 41, 0.89)", hover: "bg rgba(13, 25, 74, 0.02)", pressed: "bg rgba(7, 25, 76, 0.04)", states: "unchecked rest, checked, hover, and pressed sampled; focus not sampled", use: "Public WTS segmented radio option (role=radio)" }
-    wts-content-card-link: { type: card, bg: "transparent", fg: "#4e5968", radius: "12px", padding: "4px", size: "248px x 176px", font: "16px / 400 / 23.2px", hover: "bg rgba(13, 25, 74, 0.02)", pressed: "bg rgba(7, 25, 76, 0.04)", states: "rest, hover, and pressed sampled; focus not sampled", use: "Public WTS content card link" }
-    wts-nav-link: { type: tab, bg: "transparent", fg: "rgba(22, 31, 46, 0.61)", radius: "9px", padding: "8px 12px", height: "36px", font: "14px / 600 / 20px", states: "rest sampled; the hover, pressed, and focus frames caught a colour transition in progress (alpha 0.61 to 0.63-0.67, different per link), so no state value is declared", use: "Public WTS top navigation link" }
-    wts-menu-trigger: { type: button, bg: "rgba(7, 25, 76, 0.04)", fg: "rgba(26, 31, 41, 0.89)", radius: "7px", padding: "4px 8px", height: "28px", font: "13px / 600 / 20px", shadow: "rgba(0, 23, 51, 0.02) 0px 0px 0px 0.5px inset", states: "rest sampled; expanded and menu-open observed through the captured menu interaction; no pointer-state sample", use: "Public WTS compact menu trigger" }
-    wts-expanded-menu: { type: card, bg: "#ffffff", fg: "#4e5968", radius: "12px", size: "160px x 204px", font: "16px / 400 / 23.2px", shadow: "rgb(212, 217, 225) 0px 0px 0px 0.5px inset, 0 16px 24px -2px rgba(0,0,0,0.06), 0 8px 56px rgba(0,0,0,0.1)", states: "expanded and menu-open observed", use: "Public WTS expanded menu container" }
-    wts-dialog-input: { type: input, bg: "transparent", fg: "rgba(0, 12, 30, 0.8)", radius: "0px", padding: "0px", height: "17px", font: "15px / 600 / 17.25px", states: "observed only inside the opened selection dialog; no pointer-state sample", use: "Text field inside the public WTS selection dialog; its visible frame belongs to a wrapper the capture did not sample" }
-    investment-nav-link: { type: tab, bg: "transparent", fg: "rgba(253, 253, 255, 0.75)", radius: "0px", padding: "0px 8px", height: "14px", font: "14px / 600 / 14px", hover: "fg #3182f6", pressed: "fg #3182f6", states: "rest, hover, and pressed sampled on nine header controls; focus not sampled", use: "Investment-products header navigation link" }
-    investment-secondary: { type: button, bg: "rgba(2, 32, 71, 0.05)", fg: "rgba(3, 18, 40, 0.7)", radius: "100px", padding: "11px 14px", height: "40px", font: "15px / 600 / 18px", states: "rest sampled; the hover, pressed, and focus frames differ only by transition-frame deltas (fill alpha 0.05 to 0.055, fractional inset-shadow width), so no state value is declared", use: "Investment-products secondary pill" }
+colors:
+  primary: '#3182f6'
+  canvas: '#ffffff'
+  foreground: '#1a1f29'
+  body: '#4e5968'
+  on-primary: '#ffffff'
+  dialog-canvas: '#fbfcfd'
+typography:
+  compact:
+    fontSize: 13px
+    fontWeight: 600
+    lineHeight: 20px
+    use: Public WTS compact menu-trigger text
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 23.2px
+    use: Public WTS body, tab, menu, and dialog copy
+  marketing-heading:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 28.8px
+    use: Investment-product marketing H1
+rounded:
+  compact-control: 7px
+  primary: 8px
+  menu: 12px
+  dialog: 16px
+  marketing-pill: 100px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  lg: 14
+  xl: 16
+components:
+  wts-primary-entry:
+    type: button
+    backgroundColor: '#3182f6'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 6px 12px
+    height: 32px
+    typography: 14px / 600 / 16px
+    states: default, focus, and pressed observed; colors and geometry remained the same in the retained samples (the dump records no opacity, outline, or transform; the focus frame followed a mouse press and is not a keyboard focus-visible measurement)
+    use: Public WTS compact primary link-action
+  investment-primary:
+    type: button
+    backgroundColor: '#3182f6'
+    textColor: '#ffffff'
+    rounded: 100px
+    padding: 11px 14px
+    height: 40px
+    typography: 15px / 600 / 18px
+    states: 'default observed; the capture holds no hover, pressed, or focus sample for this element (corrected 2026-09-29: those state names belong to the same-class secondary pill)'
+    use: Investment-products marketing primary action
+  wts-selection-dialog:
+    type: dialog
+    backgroundColor: '#fbfcfd'
+    textColor: '#4e5968'
+    rounded: 16px
+    size: 640px x 600px
+    typography: 16px / 400 / 23.2px
+    states: dialog-open observed
+    use: Public WTS selection dialog container
+  wts-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(18, 31, 51, 0.47)
+    rounded: 0px
+    padding: 0px
+    height: 36px
+    typography: 16px / 400 / 18.4px
+    selected: fg rgba(26, 31, 41, 0.89)
+    hover: fg rgba(22, 31, 46, 0.61)
+    pressed: fg rgba(22, 31, 46, 0.61)
+    states: unselected rest, selected, hover, and pressed sampled; focus not sampled
+    use: Public WTS tab
+  wts-segmented-radio:
+    type: toggle
+    backgroundColor: transparent
+    textColor: rgba(18, 31, 51, 0.47)
+    rounded: 5px
+    padding: 0px
+    height: 24px
+    typography: 16px / 400 / 18.4px
+    checked: fg rgba(26, 31, 41, 0.89)
+    hover: bg rgba(13, 25, 74, 0.02)
+    pressed: bg rgba(7, 25, 76, 0.04)
+    states: unchecked rest, checked, hover, and pressed sampled; focus not sampled
+    use: Public WTS segmented radio option (role=radio)
+  wts-content-card-link:
+    type: card
+    backgroundColor: transparent
+    textColor: '#4e5968'
+    rounded: 12px
+    padding: 4px
+    size: 248px x 176px
+    typography: 16px / 400 / 23.2px
+    hover: bg rgba(13, 25, 74, 0.02)
+    pressed: bg rgba(7, 25, 76, 0.04)
+    states: rest, hover, and pressed sampled; focus not sampled
+    use: Public WTS content card link
+  wts-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(22, 31, 46, 0.61)
+    rounded: 9px
+    padding: 8px 12px
+    height: 36px
+    typography: 14px / 600 / 20px
+    states: rest sampled; the hover, pressed, and focus frames caught a colour transition in progress (alpha 0.61 to 0.63-0.67, different per link), so no state value is declared
+    use: Public WTS top navigation link
+  wts-menu-trigger:
+    type: button
+    backgroundColor: rgba(7, 25, 76, 0.04)
+    textColor: rgba(26, 31, 41, 0.89)
+    rounded: 7px
+    padding: 4px 8px
+    height: 28px
+    typography: 13px / 600 / 20px
+    shadow: rgba(0, 23, 51, 0.02) 0px 0px 0px 0.5px inset
+    states: rest sampled; expanded and menu-open observed through the captured menu interaction; no pointer-state sample
+    use: Public WTS compact menu trigger
+  wts-expanded-menu:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#4e5968'
+    rounded: 12px
+    size: 160px x 204px
+    typography: 16px / 400 / 23.2px
+    shadow: rgb(212, 217, 225) 0px 0px 0px 0.5px inset, 0 16px 24px -2px rgba(0,0,0,0.06), 0 8px 56px rgba(0,0,0,0.1)
+    states: expanded and menu-open observed
+    use: Public WTS expanded menu container
+  wts-dialog-input:
+    type: input
+    backgroundColor: transparent
+    textColor: rgba(0, 12, 30, 0.8)
+    rounded: 0px
+    padding: 0px
+    height: 17px
+    typography: 15px / 600 / 17.25px
+    states: observed only inside the opened selection dialog; no pointer-state sample
+    use: Text field inside the public WTS selection dialog; its visible frame belongs to a wrapper the capture did not sample
+  investment-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(253, 253, 255, 0.75)
+    rounded: 0px
+    padding: 0px 8px
+    height: 14px
+    typography: 14px / 600 / 14px
+    hover: 'fg #3182f6'
+    pressed: 'fg #3182f6'
+    states: rest, hover, and pressed sampled on nine header controls; focus not sampled
+    use: Investment-products header navigation link
+  investment-secondary:
+    type: button
+    backgroundColor: rgba(2, 32, 71, 0.05)
+    textColor: rgba(3, 18, 40, 0.7)
+    rounded: 100px
+    padding: 11px 14px
+    height: 40px
+    typography: 15px / 600 / 18px
+    states: rest sampled; the hover, pressed, and focus frames differ only by transition-frame deltas (fill alpha 0.05 to 0.055, fractional inset-shadow width), so no state value is declared
+    use: Investment-products secondary pill
+fonts:
+  roles:
+    sans: Toss Product Sans
 ---
 
 # Design System Inspiration of Toss Securities (토스증권)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Toss Securities positions itself as an investment platform for both beginners and experienced investors: the company says its mission is to empower everyone with investing, combining access to global markets, investment information, social participation, and expanding channels such as WTS. Its public web language turns that broad promise into a familiar Toss hierarchy—white canvas, dense dark-neutral reading text, a precise blue action color, and a single Korean-first product face—rather than turning the marketing site into a simulation of a trading terminal. The result is an inviting, information-led public entry point for a regulated investment product.
 
@@ -232,13 +193,42 @@ No authenticated account, native app, order-entry flow, or documentation UI was 
 - Public WTS menu and dialog were interaction-expanded; focus, hover, and pressed states are preserved only where observed
 - Measured pointer states are quiet: WTS tabs deepen their text alpha on hover, segmented radios and content cards take a 2% then 4% navy wash, and the investment-products header links turn Toss blue `#3182f6`
 
-## Primary tasks
+### Primary tasks
 
 - Choose among domestic and overseas stocks, ETFs, options, and bonds
 - Trade through the public web trading surface in a browser
 - Read investment information and take part in the community
 
-## 2. Color Palette & Roles
+### Iconography & Imagery
+
+The public WTS capture shows compact control and text-led UI; the expanded menu and dialog establish interaction containers but not a reusable icon family. The investment-products page uses product imagery and explanatory marketing content. No proprietary chart, illustration, or native-app icon system is promoted from this evidence.
+
+### Brand Narrative
+
+Toss Securities is a Korean securities company building an investment platform around the mission “To Empower Everyone with Investing.” Its official company page describes an aim to offer better investing experiences and access to opportunities in global capital markets.
+
+The current public company narrative expands that scope from stock trading toward an inclusive platform for beginners and experts, with investment content, a social community, broader investment products, and WTS access. Its investment-products page makes the portfolio breadth concrete through domestic and overseas stocks, ETFs, U.S. stock options, and overseas bonds.
+
+The company page also records current international expansion milestones, including a U.S. broker-dealer license in 2025. This is company context, not a claim about any uninspected product interface.
+
+### Principles
+
+1. **Opportunity should be broadly reachable.** The stated mission is to empower everyone with investing.
+   *UI implication:* explain product choices and next actions without presuming expert knowledge.
+2. **Global-market access should feel connected.** The company describes global products and WTS as access channels.
+   *UI implication:* make market, product, and account context explicit rather than relying on implicit navigation.
+3. **Technology should make investing easier.** The official narrative connects technology and AI with better decisions.
+   *UI implication:* present information as decision support, not as a promise of outcomes.
+
+### Personas
+
+*These are official audience-scope archetypes, not user-research findings or synthetic satisfaction scores.*
+
+- **Beginning investor:** the company explicitly names beginners among the people its inclusive platform should serve. Use plain explanations and visible product context.
+- **Experienced investor:** the same platform is intended to include experts. Keep high-information paths available without representing unobserved native or authenticated UI as canonical.
+- **Cross-market investor:** the official product range includes domestic and overseas investments. Make product and market boundaries explicit.
+
+## Colors
 
 - **Primary action** (`#3182f6`): observed on the public WTS compact primary action and the investment-products marketing CTA.
 - **Canvas** (`#ffffff`): observed public WTS and marketing page canvas.
@@ -249,7 +239,7 @@ No authenticated account, native app, order-entry flow, or documentation UI was 
 
 The packet does not establish a public positive/negative market-color system, dark trading canvas, error color, or success color. Those values are intentionally absent rather than inferred from the Toss parent brand or a previous snapshot. Hover and pressed treatments were measured as translucent navy washes and text-alpha steps (§4, §14), not as new opaque palette colors; the one opaque state color is `#3182f6` on the investment-products header links.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence boundary
 
@@ -270,7 +260,26 @@ The packet does not establish a public positive/negative market-color system, da
 | Investment-products H1 | 18px | 700 | 28.8px | Marketing |
 | Marketing primary action | 15px | 600 | 18px | Marketing |
 
-## 4. Components
+## Layout
+
+### Layout & Spacing
+
+The observed public WTS uses compact 4px, 8px, 12px, and 16px spacing clusters; the investment-marketing CTA contributes a 14px horizontal inset. Treat this as a small observed set, not as a complete spacing scale. WTS has square-edged tabs, 7–8px compact controls, a 12px menu, and a 16px dialog; the marketing pill’s 100px radius belongs only to that action.
+
+## Elevation & Depth
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.menu`: `0 16px 24px -2px rgba(0,0,0,0.06), 0 8px 56px rgba(0,0,0,0.1)`
+- `shadow.dialog`: `0 12px 28px -4px rgba(0,0,0,0.12), 0 8px 56px -4px rgba(0,0,0,0.1)`
+
+## Motion & Easing
+
+No duration, easing, or transition token was measured in the supplied evidence. The captured hover, focus, pressed, menu, and dialog snapshots establish state presence only; they do not authorize a motion scale. Several state frames were caught mid-transition (fractional inset-shadow widths, text alpha that differs link to link), which shows that transitions exist but not their duration or easing. Keep any future motion specification separate until first-party computed transition evidence is available.
+
+## Components
 
 ### Public WTS compact primary entry
 
@@ -431,80 +440,7 @@ Only selectors, surfaces, and states present in the supplied raw collector evide
 **Tier 2 sources:** https://getdesign.md/toss-securities (direct detail attempt; no importable record returned) · https://styles.refero.design/?q=Toss%20Securities (query attempt; no importable record returned)
 **Conflicts unresolved:** none
 
-## 5. Layout & Spacing
-
-The observed public WTS uses compact 4px, 8px, 12px, and 16px spacing clusters; the investment-marketing CTA contributes a 14px horizontal inset. Treat this as a small observed set, not as a complete spacing scale. WTS has square-edged tabs, 7–8px compact controls, a 12px menu, and a 16px dialog; the marketing pill’s 100px radius belongs only to that action.
-
-## 6. Iconography & Imagery
-
-The public WTS capture shows compact control and text-led UI; the expanded menu and dialog establish interaction containers but not a reusable icon family. The investment-products page uses product imagery and explanatory marketing content. No proprietary chart, illustration, or native-app icon system is promoted from this evidence.
-
-## 7. Usage Guidelines
-
-### Do
-
-- Keep public WTS compact actions distinct from the 40px marketing pill.
-- Use `#3182f6` with `#ffffff` for the observed primary action pairing.
-- Preserve the recorded WTS container progression: 12px menu, 16px dialog.
-- Use Toss Product Sans where the verified public web family is available; label unavailable specimens rather than substituting a system face as if it were Toss Product Sans.
-- Limit interaction claims to the sampled states: WTS tab and segmented-radio hover and pressed, content-card hover and pressed, investment header-link hover and pressed, the compact primary's pressed frame, expanded/menu-open, and dialog-open. Focus frames were not keyboard-measured.
-
-### Don't
-
-- Reintroduce an unverified dark trading canvas or red/blue market semantics from the legacy snapshot.
-- Treat the corporate or investment-marketing page as proof of authenticated or native trading UI.
-- Generalize the 100px marketing pill to WTS controls.
-- Promote Tossface to the UI family merely because it is declared in the stack.
-- Invent disabled, error, loading, toast, or checkout variants, or card treatments beyond the sampled content card link.
-
-## 8. Accessibility & Density
-
-The public WTS samples use `#1a1f29` and `#4e5968` on light surfaces, while primary actions use `#ffffff` on `#3182f6`. The packet establishes visible selected and unselected tab/radio controls plus menu and dialog expansion, but it does not provide a full keyboard, screen-reader, contrast, disabled, error, or responsive audit. Retain the observed state distinction and perform a product-specific accessibility audit before extending it to account or order entry.
-
-## 9. Voice
-
-The official corporate language is direct, inclusive, and opportunity-oriented: it frames the service around better investment experiences, access to global markets, and technology that makes investing easier. The samples below are original tone guidance, not verbatim Toss Securities copy.
-
-- “See the choice clearly, then decide.”
-- “투자를 더 쉽게, 다음 기회를 더 가깝게.”
-- “One account, more ways to invest.”
-
-## 10. Voice & Tone
-
-| Attribute | Do | Don't |
-|---|---|---|
-| Inclusive | Explain options for a broad investor range. | Assume expertise or exclude beginners. |
-| Direct | Name the product, market, and next action plainly. | Make a regulated choice sound effortless or guaranteed. |
-| Useful | Pair a feature with the decision it supports. | Use market drama as decoration. |
-
-The examples in §9 are illustrative paraphrases only; no tagline or customer promise is reproduced as official copy.
-
-## 11. Brand Narrative
-
-Toss Securities is a Korean securities company building an investment platform around the mission “To Empower Everyone with Investing.” Its official company page describes an aim to offer better investing experiences and access to opportunities in global capital markets.
-
-The current public company narrative expands that scope from stock trading toward an inclusive platform for beginners and experts, with investment content, a social community, broader investment products, and WTS access. Its investment-products page makes the portfolio breadth concrete through domestic and overseas stocks, ETFs, U.S. stock options, and overseas bonds.
-
-The company page also records current international expansion milestones, including a U.S. broker-dealer license in 2025. This is company context, not a claim about any uninspected product interface.
-
-## 12. Principles
-
-1. **Opportunity should be broadly reachable.** The stated mission is to empower everyone with investing.
-   *UI implication:* explain product choices and next actions without presuming expert knowledge.
-2. **Global-market access should feel connected.** The company describes global products and WTS as access channels.
-   *UI implication:* make market, product, and account context explicit rather than relying on implicit navigation.
-3. **Technology should make investing easier.** The official narrative connects technology and AI with better decisions.
-   *UI implication:* present information as decision support, not as a promise of outcomes.
-
-## 13. Personas
-
-*These are official audience-scope archetypes, not user-research findings or synthetic satisfaction scores.*
-
-- **Beginning investor:** the company explicitly names beginners among the people its inclusive platform should serve. Use plain explanations and visible product context.
-- **Experienced investor:** the same platform is intended to include experts. Keep high-information paths available without representing unobserved native or authenticated UI as canonical.
-- **Cross-market investor:** the official product range includes domestic and overseas investments. Make product and market boundaries explicit.
-
-## 14. States
+### States
 
 | State | Evidence boundary |
 |---|---|
@@ -519,14 +455,64 @@ The company page also records current international expansion milestones, includ
 | Loading / skeleton | Not observed; no loading or skeleton token is claimed. |
 | Empty / success | Not observed; no empty or success treatment is claimed. |
 
-## 15. Motion & Easing
+## Voice & Tone
 
-No duration, easing, or transition token was measured in the supplied evidence. The captured hover, focus, pressed, menu, and dialog snapshots establish state presence only; they do not authorize a motion scale. Several state frames were caught mid-transition (fractional inset-shadow widths, text alpha that differs link to link), which shows that transitions exist but not their duration or easing. Keep any future motion specification separate until first-party computed transition evidence is available.
+### Voice
 
-## 16. Reference URLs
+The official corporate language is direct, inclusive, and opportunity-oriented: it frames the service around better investment experiences, access to global markets, and technology that makes investing easier. The samples below are original tone guidance, not verbatim Toss Securities copy.
+
+- “See the choice clearly, then decide.”
+- “투자를 더 쉽게, 다음 기회를 더 가깝게.”
+- “One account, more ways to invest.”
+
+| Attribute | Do | Don't |
+|---|---|---|
+| Inclusive | Explain options for a broad investor range. | Assume expertise or exclude beginners. |
+| Direct | Name the product, market, and next action plainly. | Make a regulated choice sound effortless or guaranteed. |
+| Useful | Pair a feature with the decision it supports. | Use market drama as decoration. |
+
+The examples in §9 are illustrative paraphrases only; no tagline or customer promise is reproduced as official copy.
+
+## Governance
+
+### Usage Guidelines
+
+#### Do
+
+- Keep public WTS compact actions distinct from the 40px marketing pill.
+- Use `#3182f6` with `#ffffff` for the observed primary action pairing.
+- Preserve the recorded WTS container progression: 12px menu, 16px dialog.
+- Use Toss Product Sans where the verified public web family is available; label unavailable specimens rather than substituting a system face as if it were Toss Product Sans.
+- Limit interaction claims to the sampled states: WTS tab and segmented-radio hover and pressed, content-card hover and pressed, investment header-link hover and pressed, the compact primary's pressed frame, expanded/menu-open, and dialog-open. Focus frames were not keyboard-measured.
+
+#### Don't
+
+- Reintroduce an unverified dark trading canvas or red/blue market semantics from the legacy snapshot.
+- Treat the corporate or investment-marketing page as proof of authenticated or native trading UI.
+- Generalize the 100px marketing pill to WTS controls.
+- Promote Tossface to the UI family merely because it is declared in the stack.
+- Invent disabled, error, loading, toast, or checkout variants, or card treatments beyond the sampled content card link.
+
+### Accessibility & Density
+
+The public WTS samples use `#1a1f29` and `#4e5968` on light surfaces, while primary actions use `#ffffff` on `#3182f6`. The packet establishes visible selected and unselected tab/radio controls plus menu and dialog expansion, but it does not provide a full keyboard, screen-reader, contrast, disabled, error, or responsive audit. Retain the observed state distinction and perform a product-specific accessibility audit before extending it to account or order entry.
+
+### Reference URLs
 
 - Public WTS surface: https://www.tossinvest.com/?focusedProductCode=A000660
 - Corporate context: https://home.tossinvest.com/en/corporate-info
 - Investment-products marketing: https://home.tossinvest.com/en/investment-products
 - Toss Product Sans context: https://toss.im/simplicity-21/sessions/3-3
 - Tossface official repository: https://github.com/toss/tossface
+
+### Known Gaps
+
+- **Contrast, `wts-primary-entry`.** Text `#ffffff` on `#3182f6` measures 3.71:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `investment-primary`.** Text `#ffffff` on `#3182f6` measures 3.71:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `wts-tab`.** Text `#121f3378` on `#00000000` measures 1.27:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `wts-segmented-radio`.** Text `#121f3378` on `#00000000` measures 1.27:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `wts-content-card-link`.** Text `#4e5968` on `#00000000` measures 2.95:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `wts-nav-link`.** Text `#161f2e9c` on `#00000000` measures 1.27:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `wts-menu-trigger`.** Text `#1a1f29e3` on `#07194c0a` measures 1.02:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `wts-dialog-input`.** Text `#000c1ecc` on `#00000000` measures 1.07:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `investment-secondary`.** Text `#031228b3` on `#0220470d` measures 1.16:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
