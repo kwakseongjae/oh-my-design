@@ -13,7 +13,7 @@ model: opus
 
 1. 활성 host의 skill root에서 `omd-slop-audit/SKILL.md`와 `references/pattern-catalog.md`를 끝까지 읽는다.
 2. 프로젝트 `DESIGN.md`, `.omd/preferences.md`, 실제 사용자 journey와 대상 route를 확인한다.
-3. builder 요청이면 Home → `/builder` → 선택 → preview를 대상 route로 삼는다. `/reference/[id]`만 보고 끝내지 않는다.
+3. oh-my-design 사이트 funnel 요청이면 Home → 브랜드 행 → `/design-systems/[id]` → `#use`를 대상 route로 삼는다. 리디렉트일 뿐인 `/reference/[id]`나 `/builder`만 보고 끝내지 않는다.
 
 ## Audit
 

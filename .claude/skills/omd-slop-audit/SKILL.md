@@ -88,8 +88,8 @@ severity는 다음처럼 쓴다.
 
 ## APPLY 가드레일
 
-- 사용자-facing creation funnel이면 Home → `/builder` → 선택 → preview에서 검증한다.
-- `/reference/[id]`만 보고 builder 작업을 완료하지 않는다.
+- oh-my-design 사이트의 사용자 funnel이면 Home → 브랜드 행 → `/design-systems/[id]` 상세 → `#use`(복사·다운로드·설치·첫 프롬프트)에서 검증한다.
+- `/reference/[id]`나 `/builder`(둘 다 이제 리디렉트일 뿐이다)만 보고 작업을 완료하지 않는다.
 - 기존 route, 데이터 흐름, 필드명, 카피, 상태를 보존하라는 요청을 최우선으로 둔다.
 - 새 token은 DESIGN.md 확장 승인 없이 만들지 않는다.
 - 이미지·아이콘·motion은 제품 목적이 있을 때만 추가하고 reduced-motion·alt·fallback을 함께 다룬다.
