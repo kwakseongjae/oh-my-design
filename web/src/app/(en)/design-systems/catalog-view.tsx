@@ -23,7 +23,7 @@ import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DSCard } from "@/components/ds-card";
 import { GithubStarButton } from "@/components/github-star-button";
 import { trackCollectionOpen } from "@/lib/collections/analytics";
-import type { ColorFamily } from "@/lib/builder/color-family";
+import type { ColorFamily } from "@/lib/color-family";
 import type { DesignSystemInfo } from "@/lib/design-systems";
 
 /** The serializable slice of a Collection the directory renders. */

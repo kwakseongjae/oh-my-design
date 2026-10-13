@@ -263,7 +263,7 @@ export default function WhatIsDesignMdPage() {
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
           Visible YAML이나 vendor metadata가 없는 7-section Portable Core 예시입니다. 현재
           {REFERENCE_COUNT}개 catalog 원본은 migration window 동안 legacy reader로도
-          보존되며, Builder download는 Core v2로 투영됩니다. 형식은 Core이지만
+          보존됩니다. 형식은 Core이지만
           primary task 근거가 없는 reference는 validator에서 structural-only로 남습니다.
           전체 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
@@ -334,8 +334,8 @@ export default function WhatIsDesignMdPage() {
             <Link href="/docs/en" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
               Docs
             </Link>
-            <Link href="/builder" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
-              Try the builder
+            <Link href="/design-systems" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
+              Browse the catalog
             </Link>
             <Link href="/faq" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
               FAQ

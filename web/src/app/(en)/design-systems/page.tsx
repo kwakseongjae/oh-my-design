@@ -11,6 +11,8 @@
  */
 
 import { getAllDesignSystems } from "@/lib/design-systems";
+import { REGISTRY_BY_ID } from "@/data/registry.generated";
+import { SITE_ORIGIN } from "@/lib/site";
 import { COLLECTIONS, getCollectionEntries } from "@/lib/collections";
 import { REFERENCE_QUALITY, REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
 import { CatalogView, type CatalogCollection, type CatalogStats } from "./catalog-view";
@@ -49,5 +51,31 @@ export default function DesignSystemsPage() {
     ids: getCollectionEntries(c.slug).map((entry) => entry.id),
   }));
 
-  return <CatalogView systems={systems} collections={collections} stats={STATS} />;
+  // CollectionPage + ItemList mirroring the grid the server renders: every
+  // reference, in grid order, named as its detail page names it (registry
+  // `name` first). Built here so the client view never sees the registry.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Design systems",
+    url: `${SITE_ORIGIN}/design-systems`,
+    isPartOf: { "@type": "WebSite", name: "oh-my-design", url: SITE_ORIGIN },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: systems.length,
+      itemListElement: systems.map((ds, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: REGISTRY_BY_ID[ds.refId]?.name || REGISTRY_BY_ID[ds.refId]?.displayName || ds.name,
+        url: `${SITE_ORIGIN}/design-systems/${ds.refId}`,
+      })),
+    },
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <CatalogView systems={systems} collections={collections} stats={STATS} />
+    </>
+  );
 }

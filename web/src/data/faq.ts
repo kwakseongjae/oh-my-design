@@ -51,11 +51,6 @@ export const FAQ_EN: FaqEntry[] = [
     jsonLd: false,
   },
   {
-    q: "I customized a reference in the web builder — how do I hand it to my agent?",
-    a: "The builder preview composes your first prompt from your live config (reference, components, token overrides, dark mode). Copy it from the install CTA and paste it into your agent — omd:init reads the prompt and bootstraps a matching DESIGN.md.",
-    jsonLd: false,
-  },
-  {
     q: "Can I bring my own DESIGN.md?",
     a: "Yes. If a DESIGN.md exists at repo root, omd:apply uses it as-is. Otherwise omd:init proposes a hybrid from one of the " + REFERENCE_COUNT + " references.",
     jsonLd: false,

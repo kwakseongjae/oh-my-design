@@ -24,13 +24,26 @@ import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
 
 const SITE_URL = "https://oh-my-design.kr";
 
-/** Display name for a reference id — registry first, then a title-cased id. */
+/**
+ * Display name for a reference id on this English page — the registry `name`
+ * first, then `displayName`, then a title-cased id.
+ *
+ * `name` leads because 129 references carry a native-script `displayName`
+ * ("토스뱅크", "삼쩜삼") that read as mixed script inside an English title and
+ * H1. The title, H1, breadcrumb and JSON-LD all read this one function so they
+ * cannot name the brand differently.
+ */
 function refName(id: string): string {
   return (
-    REGISTRY_BY_ID[id]?.displayName ||
     REGISTRY_BY_ID[id]?.name ||
+    REGISTRY_BY_ID[id]?.displayName ||
     id.replace(".app", "").replace(/^./, (c) => c.toUpperCase())
   );
+}
+
+/** "{Name} Design System — DESIGN.md, Colors & Typography" (IA plan, Phase 1). */
+function detailTitle(name: string): string {
+  return `${name} Design System — DESIGN.md, Colors & Typography`;
 }
 
 /**
@@ -111,10 +124,12 @@ export async function generateMetadata({
   const name = refName(id);
   const path = `/design-systems/${id}`;
   const editorial = getReferenceEnglishEditorial(id);
-  // #6 query-shaped title (matches "<brand> design system / colors / typography
-  // / tokens" searches) + answer-first summary as the description (extractable,
-  // and identical to the visible band + JSON-LD description).
-  const title = `${name} Design System — Colors, Typography & Tokens`;
+  // Query-shaped title: matches "<brand> design system", "<brand> DESIGN.md"
+  // and "<brand> colors / typography" searches. No site suffix, as before —
+  // the brand and the file name are the part a result needs to show.
+  // The answer-first summary is the description (extractable, and identical to
+  // the visible band + JSON-LD description).
+  const title = detailTitle(name);
   const desc =
     buildSummary(name, detail) ||
     `${name} design system — DESIGN.md, live preview, and token reference.`;
@@ -227,6 +242,15 @@ export default async function DesignSystemDetailPage({
         },
       ],
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Design systems", item: `${SITE_URL}/design-systems` },
+        { "@type": "ListItem", position: 3, name, item: pageUrl },
+      ],
+    },
   ];
 
   return (
@@ -236,6 +260,7 @@ export default async function DesignSystemDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <DetailView
+        name={name}
         detail={detail}
         tokens={tokens}
         summary={summary}

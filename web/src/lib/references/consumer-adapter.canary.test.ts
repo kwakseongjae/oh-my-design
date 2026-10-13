@@ -4,22 +4,13 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { projectBuilderDesignMdCore } from "@/lib/builder/design-md-core-export";
 import { projectActiveReference } from "./consumer-adapter";
 import { extractCoreV2ReferenceDetail } from "./detail-projection";
 import { loadReference } from "./repository.server";
 import { referenceResponseBody } from "@/app/api/references/[id]/response";
 import { applyOverrides, extractTokens } from "@/lib/extract-tokens";
-import { createCoreReferenceFormatArtifacts } from "./export-formats";
 
 const require = createRequire(import.meta.url);
-const coreEngine = require("../../../../scripts/design-md-core.cjs") as {
-  inspectDesignMd(markdown: string): { format: string; conformance: { structurally_valid: boolean } };
-  migrateDesignMd(markdown: string, options: { requireSourceValid: boolean }): {
-    designMd: string;
-    report: { status: string; projection_roundtrip_equal: boolean };
-  };
-};
 const compiler = require("../../../../scripts/compile-design-md-core.cjs") as {
   compileAdoptedCore(graph: Record<string, any>, options: Record<string, any>): {
     designMd: string;
@@ -254,7 +245,7 @@ describe.sequential("Baemin active Core consumer parity", () => {
     expect(apiBody.coreContract).toBe(projection.coreContract);
     expect(apiBody).toMatchObject({ referenceFormat: "core-v2", coreStatus: "verified" });
 
-    // This is the same serialized shape consumed by /builder. Exact Core token
+    // This is the same serialized shape /api/references/[id] serves. Exact Core token
     // values survive while an absent sibling semantic field remains absent.
     const tokens = extractTokens(apiBody);
     expect(tokens.identity.primary).toBe("#123456");
@@ -307,56 +298,6 @@ describe.sequential("Baemin active Core consumer parity", () => {
     expect(customizedAbsent.radiusScale).toEqual([
       { element: "default", value: "12px", label: "Builder override" },
     ]);
-
-    const artifacts = createCoreReferenceFormatArtifacts({
-      referenceId: "baemin",
-      designMd: apiBody.designMd,
-      contract: apiBody.coreContract!,
-      overrides: {
-        primaryColor: "#654321",
-        fontFamily: "User Chosen Sans",
-        headingWeight: "650",
-        borderRadius: "12px",
-      },
-    });
-    expect(artifacts.css.content).toContain("--color-primary: #654321;");
-    expect(artifacts.css.content).toContain("--radius-default: 12px;");
-    expect(artifacts.css.content).toContain("--font-ui-sans: User Chosen Sans;");
-    expect(artifacts.css.content).toContain("--font-weight-ui-sans: 650;");
-    expect(artifacts.tailwind.content).toContain("--color-primary: #654321;");
-    expect(artifacts.tailwind.content).not.toContain("--theme-color-primary");
-    expect(JSON.parse(artifacts.dtcg.content)).toMatchObject({
-      color: {
-        primary: { $type: "color", $value: { colorSpace: "srgb", hex: "#654321" } },
-        action: { primary: { $type: "color", $value: { colorSpace: "srgb", hex: "#2457e6" } } },
-      },
-      radius: { default: { $type: "dimension", $value: { value: 12, unit: "px" } } },
-      font: { "ui-sans": { $type: "fontFamily", $value: "User Chosen Sans" } },
-      "font-weight": { "ui-sans": { $type: "fontWeight", $value: 650 } },
-    });
-    const compositeContract = {
-      ...apiBody.coreContract!,
-      tokens: [...apiBody.coreContract!.tokens, {
-        id: "motion.spring",
-        claimPath: "foundations.tokens.motion.spring",
-        type: "transition",
-        value: { duration: "180ms", easing: [0.2, 0, 0, 1] },
-        sourceClass: "repository-fact",
-        evidence: ["fixture://composite-token"],
-      }],
-    };
-    const compositeDtcg = JSON.parse(createCoreReferenceFormatArtifacts({
-      referenceId: "baemin",
-      designMd: apiBody.designMd,
-      contract: compositeContract,
-      overrides: { primaryColor: "", fontFamily: "", headingWeight: "", borderRadius: "" },
-    }).dtcg.content);
-    expect(compositeDtcg.motion).toBeUndefined();
-    expect(compositeDtcg.$extensions["oh-my-design"].sourceTokens["motion.spring"].$value).toEqual({ duration: "180ms", easing: [0.2, 0, 0, 1] });
-    expect(compositeDtcg.$extensions["oh-my-design"].conversion.unsupported).toContainEqual({
-      sourceId: "motion.spring",
-      reason: "transition-value-invalid",
-    });
   });
 
   it("preserves exact source-backed Core detail when a verified graph has no typed presentation token", () => {
@@ -373,12 +314,6 @@ describe.sequential("Baemin active Core consumer parity", () => {
       radius: "12px",
     });
     expect(projection.coreContract?.tokens).toEqual([]);
-    expect(createCoreReferenceFormatArtifacts({
-      referenceId: "baemin",
-      designMd: projection.detail.designMd,
-      contract: projection.coreContract!,
-      overrides: { primaryColor: "", fontFamily: "", headingWeight: "", borderRadius: "" },
-    }).css.content).toBe(":root {\n\n}");
   });
 
   it("keeps an explicit unresolved Core token absent instead of restoring its Markdown compatibility value", () => {
@@ -532,34 +467,6 @@ ${shape}
     expect(extractCoreV2ReferenceDetail("test", core("- **Default radius:** `12px` — not canonical across product surfaces.")).radius).toBe("");
     expect(extractCoreV2ReferenceDetail("test", core("- **Surface-local corner:** `12px` — default for download cards.")).radius).toBe("");
     expect(extractCoreV2ReferenceDetail("test", core("- **Canonical radius:** `8px` — catalog-wide default.")).radius).toBe("8px");
-  });
-
-  it("keeps Baemin narrative and unknown-radius semantics through Builder and CLI projection", () => {
-    const staged = readFileSync(stagedPath, "utf8");
-    const active = projectActiveReference(loadReference("baemin", projectRootWithBaemin(staged))!).detail;
-    const builder = projectBuilderDesignMdCore({
-      source: active.designMd,
-      referenceName: "Baemin",
-      original: {
-        primaryColor: active.primary,
-        fontFamily: active.fontFamily,
-        headingWeight: active.headingWeight,
-        borderRadius: active.radius,
-      },
-      overrides: { primaryColor: "", fontFamily: "", headingWeight: "", borderRadius: "", darkMode: false },
-    });
-    expect(builder.decisions).toEqual([]);
-    expect(builder.markdown).toContain("official current Baemin app typeface");
-    expect(builder.markdown).toContain("Corporate Foreground");
-    expect(builder.markdown).toContain("No canonical shadow token is promoted");
-    expect(builder.markdown).not.toContain("**Border radius:**");
-    expect(coreEngine.inspectDesignMd(builder.markdown)).toMatchObject({
-      format: "core-v2",
-      conformance: { structurally_valid: true },
-    });
-    const cli = coreEngine.migrateDesignMd(builder.markdown, { requireSourceValid: true });
-    expect(cli.report).toMatchObject({ status: "pass", projection_roundtrip_equal: true });
-    expect(cli.designMd).toBe(builder.markdown);
   });
 
   it("restores the exact legacy bytes and legacy AST path for rollback", () => {

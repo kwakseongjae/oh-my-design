@@ -150,7 +150,7 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
       for (const link of content.machineLinks) add(`- [${link.label}](${SITE_URL}${link.href}) — ${link.description}`);
       add(...section(content.promptTitle), ...code(content.prompt));
       add(...section(content.contractTitle), ...bullets(content.contract));
-      add(...section(content.builderTitle, content.builderBody));
+      add(...section(content.catalogTitle, content.catalogBody));
       break;
     }
   }

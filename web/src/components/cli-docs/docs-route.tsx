@@ -727,7 +727,7 @@ function AiPage({ dictionary }: { dictionary: CliDocsDictionary }) {
         <div className="mt-6 space-y-3">{content.contract.map((item, index) => <div key={item} className="flex gap-3 rounded-lg p-4 ring-1 ring-foreground/10"><span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-primary/10 font-mono text-[10px] text-primary">{index + 1}</span><p className="text-sm leading-6 text-muted-foreground">{item}</p></div>)}</div>
       </section>
       <div className="mt-16 rounded-xl bg-primary/10 p-6 ring-1 ring-primary/20">
-        <div className="flex items-start gap-3"><Route className="mt-0.5 h-5 w-5 text-primary" /><div><p className="text-sm font-semibold text-foreground">{content.builderTitle}</p><p className="mt-2 text-sm leading-6 text-muted-foreground">{content.builderBody}</p><Link href="/builder" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">{dictionary.ui.openBuilder}<ArrowUpRight className="h-3.5 w-3.5" /></Link></div></div>
+        <div className="flex items-start gap-3"><Route className="mt-0.5 h-5 w-5 text-primary" /><div><p className="text-sm font-semibold text-foreground">{content.catalogTitle}</p><p className="mt-2 text-sm leading-6 text-muted-foreground">{content.catalogBody}</p><Link href="/design-systems" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">{dictionary.ui.openCatalog}<ArrowUpRight className="h-3.5 w-3.5" /></Link></div></div>
       </div>
     </article>
   );

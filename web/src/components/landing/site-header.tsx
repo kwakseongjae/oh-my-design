@@ -3,8 +3,8 @@ import type { LandingCopy } from "./copy";
 import { Wordmark } from "./wordmark";
 
 /**
- * Proof-sheet header for the landing pages (/ and /ko). The builder, catalog
- * and docs keep their own inline headers — the redesign brief keeps those
+ * Proof-sheet header for the landing pages (/ and /ko). The catalog and docs
+ * keep their own inline headers — the redesign brief keeps those
  * surfaces visually unchanged.
  */
 export function SiteHeader({ copy }: { copy: LandingCopy }) {
@@ -38,13 +38,6 @@ export function SiteHeader({ copy }: { copy: LandingCopy }) {
           >
             {copy.nav.switchText}
           </a>
-          <Link
-            href="/builder"
-            prefetch={false}
-            className="ml-1 hidden rounded-tag bg-ink px-3 py-1.5 text-paper hover:opacity-90 sm:inline-block"
-          >
-            {copy.nav.builder}
-          </Link>
         </nav>
       </div>
     </header>

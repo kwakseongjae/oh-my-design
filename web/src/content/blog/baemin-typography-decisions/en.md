@@ -67,6 +67,6 @@ For an original example, imagine a neighborhood meal called “Sunday Table.” 
 
 The test is concrete: can a first-time visitor find when and where the meal takes place, understand whether they can join, and see what changed after the action? Repeat that check on a narrow screen and with a longer event name. The example is OmD’s own design exercise, not a reconstruction of an official Baemin interface.
 
-When collecting a reference, keep its visual character and its original job together. Choose a company in [Builder](https://oh-my-design.kr/builder), then distinguish the facts you are carrying forward from the choices your new project still needs to make.
+When collecting a reference, keep its visual character and its original job together. Choose a company in the [catalog](https://oh-my-design.kr/design-systems), then distinguish the facts you are carrying forward from the choices your new project still needs to make.
 
 OmD is also preparing a skill for Hangul typography.

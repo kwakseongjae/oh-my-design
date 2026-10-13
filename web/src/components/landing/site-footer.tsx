@@ -8,7 +8,6 @@ export function SiteFooter({ copy }: { copy: LandingCopy }) {
   const l = copy.footer.links;
   const product: [string, string][] = [
     [l.catalog, "/design-systems"],
-    [l.builder, "/builder"],
     [l.docs, copy.docsHref],
     [l.what, "/what-is-design-md"],
     [l.faq, "/faq"],
