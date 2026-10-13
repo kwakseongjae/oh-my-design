@@ -1,3 +1,14 @@
+/* Hero posters per locale and theme (rebrand round 2). Each locale's hero shows its own cap
+   order (getHeroCaps), so each has its own poster rendered from the live scene; the caps no
+   longer reshuffle when the canvas fades in. --k3p desktop (1440), --k3pm phone (390). */
+:root{--k3p:url(/brand-a/hero-keys-light.webp);--k3pm:url(/brand-a/hero-keys-light-m.webp)}
+.dark{--k3p:url(/brand-a/hero-keys-dark.webp);--k3pm:url(/brand-a/hero-keys-dark-m.webp)}
+:root:lang(ko){--k3p:url(/brand-a/hero-keys-ko-light.webp);--k3pm:url(/brand-a/hero-keys-ko-light-m.webp)}
+:root:lang(ko).dark{--k3p:url(/brand-a/hero-keys-ko-dark.webp);--k3pm:url(/brand-a/hero-keys-ko-dark-m.webp)}
+:root:lang(ja){--k3p:url(/brand-a/hero-keys-ja-light.webp);--k3pm:url(/brand-a/hero-keys-ja-light-m.webp)}
+:root:lang(ja).dark{--k3p:url(/brand-a/hero-keys-ja-dark.webp);--k3pm:url(/brand-a/hero-keys-ja-dark-m.webp)}
+:root:lang(zh-Hant){--k3p:url(/brand-a/hero-keys-zh-tw-light.webp);--k3pm:url(/brand-a/hero-keys-zh-tw-light-m.webp)}
+:root:lang(zh-Hant).dark{--k3p:url(/brand-a/hero-keys-zh-tw-dark.webp);--k3pm:url(/brand-a/hero-keys-zh-tw-dark-m.webp)}
 /*
  * Landing (concept A) and site chrome. Ported from the approved prototype
  * docs/research/2026-10-13-rebrand/a-landing/{styles,sections,keys,genui,genui5}.css
@@ -213,7 +224,7 @@
 .sq-rkey .sq-lg{font-size:24cqw}
 .sq-hero-x{position:relative;isolation:isolate}
 .sq-k3{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0;overflow:hidden}
-.sq-k3.sq-poster{background:url(/brand-a/hero-keys-light.webp) center/cover no-repeat}
+.sq-k3.sq-poster{background:var(--k3p) center/cover no-repeat}
 .sq-k3.sq-live{background:none!important}
 .sq-k3-canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .45s ease;touch-action:pan-y}
 .sq-k3.sq-live .sq-k3-canvas{opacity:1}
@@ -228,7 +239,7 @@
 .sq-k3-more:hover{color:var(--sq-ink)}
 @media (max-width:900px) {
   .sq-k3{bottom:auto;height:380px}
-  .sq-k3.sq-poster{background-image:url(/brand-a/hero-keys-light-m.webp)}
+  .sq-k3.sq-poster{background-image:var(--k3pm)}
   .sq-hero-x .sq-hero{min-height:0}
   .sq-hero-x .sq-sheet{padding-top:330px}
 }
@@ -380,8 +391,6 @@
 
 /* ---- hand additions ---- */
 .sq-sk-name.sq-h{font-family:inherit}
-.dark .sq-k3.sq-poster{background-image:url(/brand-a/hero-keys-dark.webp)}
-@media (max-width:900px){.dark .sq-k3.sq-poster{background-image:url(/brand-a/hero-keys-dark-m.webp)}}
 .sq-faq summary:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-skills.sq-later .sq-pub .sq-sk-ic{border-style:solid}
 /* mobile: the poster waits until the host sits on the cap area (otherwise it would be behind the h1) */
