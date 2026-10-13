@@ -1,63 +1,129 @@
 ---
-id: hp
 name: HP
-country: US
-category: consumer-tech
-homepage: "https://www.hp.com"
-primary_color: "#0096D6"
-logo:
-  type: simpleicons
-  slug: "hp"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#0096d6"
-    primary-hover: "#0073a8"
-    primary-pressed: "#005c87"
-    primary-light: "#e6f4fb"
-    electric-blue: "#0278ab"
-    ink: "#212121"
-    canvas: "#ffffff"
-    grey-50: "#f7f7f7"
-    grey-100: "#eeeeee"
-    border: "#e0e0e0"
-    border-strong: "#cccccc"
-    placeholder: "#9e9e9e"
-    caption: "#767676"
-    body: "#595959"
-    emphasis: "#404040"
-    success: "#0c7d2f"
-    error: "#d32f2f"
-    warning: "#f5a623"
-  typography:
-    family: { sans: "Forma DJR UI", mono: "SF Mono" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.17, tracking: -0.5, use: "Marketing hero headlines" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text, inputs" }
-    button:       { size: 16, weight: 600, use: "Button label" }
-    label:        { size: 13, weight: 600, use: "Input labels, captions" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
-  shadow:
-    flat: "none"
-  components:
-    button-primary: { type: button, bg: "#0096d6", fg: "#ffffff", radius: 4, padding: "12px 24px", font: "16px weight 600", use: "Primary CTA, 44px min-height" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#0096d6", radius: 4, padding: "12px 24px", font: "16px weight 600", use: "Outlined secondary, 1.5px blue border" }
-    button-tertiary: { type: button, bg: "#ffffff", fg: "#0096d6", radius: 4, padding: "12px 8px", use: "Low-emphasis text action, underline on hover" }
-    button-dark: { type: button, bg: "#ffffff", fg: "#212121", radius: 4, padding: "12px 24px", use: "CTA on imagery / dark hero" }
-    button-danger: { type: button, bg: "#d32f2f", fg: "#ffffff", radius: 4, padding: "12px 24px", use: "Destructive confirmation" }
-    input-default: { type: input, bg: "#ffffff", fg: "#212121", radius: 4, padding: "12px 14px", font: "16px weight 400", use: "Standard form input, grey border" }
-    input-error: { type: input, bg: "#ffffff", fg: "#212121", radius: 4, padding: "12px 14px", use: "Validation failure, red border" }
-    input-search: { type: input, bg: "#f7f7f7", fg: "#212121", radius: 8, padding: "10px 16px", use: "Header product search, rounded" }
-  components_harvested: true
+colors:
+  primary: '#0096d6'
+  primary-hover: '#0073a8'
+  primary-pressed: '#005c87'
+  primary-light: '#e6f4fb'
+  electric-blue: '#0278ab'
+  ink: '#212121'
+  canvas: '#ffffff'
+  grey-50: '#f7f7f7'
+  grey-100: '#eeeeee'
+  border: '#e0e0e0'
+  border-strong: '#cccccc'
+  placeholder: '#9e9e9e'
+  caption: '#767676'
+  body: '#595959'
+  emphasis: '#404040'
+  success: '#0c7d2f'
+  error: '#d32f2f'
+  warning: '#f5a623'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.17
+    letterSpacing: '-0.5px'
+    use: Marketing hero headlines
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text, inputs
+  button:
+    fontSize: 16px
+    fontWeight: 600
+    use: Button label
+  label:
+    fontSize: 13px
+    fontWeight: 600
+    use: Input labels, captions
+rounded:
+  sm: 4px
+  md: 4px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#0096d6'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 12px 24px
+    typography: 16px weight 600
+    use: Primary CTA, 44px min-height
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#0096d6'
+    rounded: 4px
+    padding: 12px 24px
+    typography: 16px weight 600
+    use: Outlined secondary, 1.5px blue border
+  button-tertiary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#0096d6'
+    rounded: 4px
+    padding: 12px 8px
+    use: Low-emphasis text action, underline on hover
+  button-dark:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#212121'
+    rounded: 4px
+    padding: 12px 24px
+    use: CTA on imagery / dark hero
+  button-danger:
+    type: button
+    backgroundColor: '#d32f2f'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 12px 24px
+    use: Destructive confirmation
+  input-default:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#212121'
+    rounded: 4px
+    padding: 12px 14px
+    typography: 16px weight 400
+    use: Standard form input, grey border
+  input-error:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#212121'
+    rounded: 4px
+    padding: 12px 14px
+    use: Validation failure, red border
+  input-search:
+    type: input
+    backgroundColor: '#f7f7f7'
+    textColor: '#212121'
+    rounded: 8px
+    padding: 10px 16px
+    use: Header product search, rounded
+fonts:
+  roles:
+    sans: Forma DJR UI
+    mono: SF Mono
 ---
 
 # Design System Inspiration of HP
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 HP is one of the founding companies of Silicon Valley, and its digital surfaces carry that legacy with a deliberate, engineered calm. The hp.com experience opens on bright white (`#ffffff`) with near-black text (`#212121`) and a single, unmistakable accent: **HP Blue** (`#0096D6`) — a clean, confident cyan-leaning blue that has been the brand's signature since 2012. The atmosphere is precise but approachable: lots of air, generous photography of hardware (laptops, printers, monitors), and a restrained interface that lets the products themselves be the color.
 
@@ -74,7 +140,7 @@ The typographic voice is **Forma DJR**, a contemporary grotesque commissioned fr
 - Flat, low-shadow surfaces — hardware photography supplies the visual richness
 - Generous whitespace and a clean 8px-derived spacing rhythm
 
-## Primary tasks
+### Primary tasks
 
 - Add a printer or laptop to the cart
 - Compare specs and total cost across HP products
@@ -82,7 +148,36 @@ The typographic voice is **Forma DJR**, a contemporary grotesque commissioned fr
 - Get a printer connected with step-by-step support guidance
 - Ask to be notified when an out-of-stock product returns
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+HP traces to a **1939 Palo Alto garage** where Bill Hewlett and Dave Packard built audio oscillators — the literal origin of the Silicon Valley founder myth. That heritage of practical, well-engineered hardware still anchors the brand: HP makes things people use to get work done. In 2015 the company split into **HP Inc.** (personal systems and printing — the consumer-facing hp.com) and Hewlett Packard Enterprise; this design system describes HP Inc.'s consumer surface.
+
+The visual identity has been deliberately stable. **HP Blue `#0096D6`** has held since 2012, and the four-letter lowercase logo inside a circle — designed by Eight Inc. as a "future" mark — represents continuity and approachability. The 2024–2025 brand evolution refreshed the system with **Forma DJR** typography (replacing HP Simplified) and a brighter **Electric Blue** for campaign energy, while keeping the working digital blue intact. The thesis: technology that is **human-centered and quietly capable** — the device, not the chrome, is the hero.
+
+What HP refuses: the cold institutional gray of legacy enterprise IT, the neon maximalism of gaming-first rivals (HP's OMEN sub-brand carries that energy separately), and decorative ornament that competes with product photography. HP's restraint *is* its statement — a brand confident enough to let a laptop on white speak for itself.
+
+### Principles
+
+1. **The product is the hero.** Interface chrome recedes; hardware photography and whitespace carry the visual weight. Never let UI ornament out-shout the device.
+2. **Blue is interaction, not decoration.** `#0096D6` appears only where the user can act. Headlines, rules, and illustration never borrow it.
+3. **One ink per layout.** Text is black or white. Color richness comes from imagery and the single blue accent — never multi-color type.
+4. **Sentence case, always.** Approachable over authoritative. Headlines read like a helpful person talking, not a billboard shouting.
+5. **Engineered restraint.** Flat surfaces, 1px borders, neutral shadows on hover only. The system should feel as precisely built as the hardware it sells.
+6. **Benefit before spec.** Copy and layout lead with what you can do; specifications are available but secondary.
+7. **Stability is a feature.** The blue and the logo have barely moved in over a decade. Consistency signals reliability — a core consumer-tech trust cue.
+8. **Accessible by default.** High contrast (`#212121` on white), 44px touch targets, visible focus rings in HP Blue.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described consumer-tech buyer segments, not individual people.*
+
+**Marcus, 41, Austin.** Small-business owner shopping for an OfficeJet printer and three laptops for new hires. Comes to hp.com to compare specs and total cost, not to be entertained. Wants clear product cards, honest stock status, and a frictionless cart. Trusts HP because his last printer "just worked for six years." Bounces if the spec table is hard to scan on his phone.
+
+**Priya, 23, Toronto.** Design student buying her first premium laptop (eyeing a Spectre). She researches across three sites and reads every review tab. Responds to the clean product photography and benefit-led headlines, but ultimately decides on screen quality and weight. Expects sentence-case, jargon-free copy and a fast mobile flow with the sticky "Add to cart" bar.
+
+**Robert, 58, Manchester.** Replacing the family printer and dreading driver setup. Lands on HP Support, not the store. Needs patient, step-by-step guidance (`Let's get your printer connected`) with big tap targets and no marketing distraction. Values that HP's support pages look calm and official. Will call support if the page feels cluttered.
+
+## Colors
 
 ### Primary
 - **HP Blue** (`#0096D6`): The brand-defining cyan-blue (PMS 2925 C). Primary interactive color — CTAs, links, active states, focus rings, selection. Stable since 2012.
@@ -117,7 +212,7 @@ The typographic voice is **Forma DJR**, a contemporary grotesque commissioned fr
 - HP Blue is interaction. It never colors plain paragraph text or decorative rules.
 - Per HP brand guidelines, foreground type is **black or white only** within a single layout — no mixed-color text. Color lives in the photography and the blue accent.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary (screen/UI)**: `"Forma DJR UI", "Forma DJR Display", "HP Simplified", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`
@@ -147,7 +242,130 @@ The typographic voice is **Forma DJR**, a contemporary grotesque commissioned fr
 - **Black or white text only.** Within a layout, type is one ink color — never blue, never multi-color paragraphs. Blue is reserved for interactive text.
 - **Humanist grotesque legibility.** Forma DJR's open apertures and tall x-height carry small UI sizes (12–14px) cleanly; do not condense or letterspace body copy.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Section vertical rhythm: 48–64px between major page bands
+- Card internal padding: 16–24px
+
+### Grid & Container
+- Max content width: 1280px, centered
+- Desktop: 12-column grid, 24px gutters, 32px outer margins
+- Product grids: 4 columns (desktop) → 2 (tablet) → 1 (mobile)
+- Generous outer margins keep hardware photography from touching viewport edges
+
+### Whitespace Philosophy
+- **Let the hardware breathe.** Product imagery gets surrounding negative space so devices read as hero objects, not catalog thumbnails.
+- **Banded sections.** The page alternates `#ffffff` and `#f7f7f7` full-width bands to chunk content without borders.
+- **Quiet density on support/specs.** Marketing pages are spacious; specification tables and support docs become denser and more utilitarian.
+
+### Border Radius Scale
+- Sharp (4px): Buttons, inputs, badges, banners
+- Soft (8px): Cards, tiles, modals
+- Pill (9999px): Filter chips, toggles, search field
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <600px | Single column, hamburger nav, full-width CTAs |
+| Tablet | 600–1024px | 2-column product grids, condensed header |
+| Desktop | 1024–1280px | 3–4 column grids, mega-menu |
+| Wide | >1280px | Content capped at 1280px, side margins grow |
+
+#### Touch Targets
+- Buttons: minimum 44px height
+- List/nav items: minimum 48px row height on mobile
+- Icon buttons: 40px minimum tap area
+
+#### Collapsing Strategy
+- Mega-menu collapses to an accordion drawer on mobile
+- 4-up product grid reflows to 2-up (tablet) then 1-up (mobile)
+- Specification tables become stacked key/value rows below tablet width
+- Sticky "Add to cart" bar pins to the bottom on mobile product pages
+
+#### Image Behavior
+- Hero product shots: responsive, maintain aspect ratio, never edge-crop the device
+- Product thumbnails: square, contained on white, 1:1
+- Logos / icons: 24–40px, consistent within context
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow | Page bands, flat tiles, inline elements |
+| Subtle (1) | `0 2px 8px rgba(0,0,0,0.08)` | Content cards, resting product cards |
+| Raised (2) | `0 4px 12px rgba(0,0,0,0.10)` | Product card hover, dropdowns |
+| Floating (3) | `0 8px 24px rgba(0,0,0,0.16)` | Modals, mega-menu panels |
+| Sticky header | `0 1px 4px rgba(0,0,0,0.08)` | Header shadow once scrolled |
+
+**Shadow Philosophy**: HP uses shadows sparingly and neutrally. Depth is communicated mainly through background banding and 1px borders; shadows appear on hover and floating layers only. Pure black at low opacity keeps the system clinical and product-forward — no colored or brand-tinted shadows.
+
+### Blur Effects
+- Mega-menu and sticky header may apply a light backdrop blur over content on scroll.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox changes |
+| `motion-fast` | 150ms | Hover, focus, button press, card lift |
+| `motion-standard` | 250ms | Default — dropdowns, accordions, tab content |
+| `motion-slow` | 350ms | Mega-menu reveal, modal entrance |
+| `motion-page` | 400ms | Route / full-screen transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — menus, modals, banners |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — accordions, tabs, hover lifts |
+
+**Signature motions.**
+
+1. **Product card lift.** On hover, the card raises to `0 4px 12px rgba(0,0,0,0.10)` and the product image scales `1.02×` over `motion-fast / ease-standard`. Subtle — the device should appear to come forward, not bounce.
+2. **Mega-menu reveal.** The header mega-menu fades and slides down from `y-8px` over `motion-slow / ease-enter`, with a synchronized light backdrop. Dismissal uses `motion-fast / ease-exit`.
+3. **Add-to-cart confirmation.** The cart icon count animates with a brief scale pulse (`1 → 1.15 → 1`, `motion-standard`), paired with the success banner sliding in. Reassuring, never flashy.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; slides and scales become simple fades. The experience stays fully usable.
+
+<!--
+OmD v0.1 Sources — HP
+
+Verified via WebFetch / WebSearch (2026-06-06):
+- HP Blue #0096D6 (PMS 2925 C), stable since 2012 — brandpalettes.com/hewlett-packard-color-codes,
+  brandcolorcode.com/hp
+- Forma DJR typography (Forma DJR UI for screen, Forma DJR Office for documents), by
+  David Jonathan Ross; sentence-case default; "type is black or white, don't mix colors
+  on a layout" — brandcentral.hp.com/us/en/elements/typography.html and HP Type Guidelines 2.0 PDF
+- 2025 refresh introduced HP Electric Blue (Pantone 2132) — HP Brand Visual Identity page
+- hp.com (https://www.hp.com) redirects to www-redirect.ext.hp.com (geo/consent gateway);
+  live DOM not directly inspected, so token-level UI values (radii, padding, semantic greens/
+  reds, motion) are conventional consumer-tech / e-commerce values consistent with HP's
+  published color + type system and observed hp.com store patterns.
+
+Brand narrative facts (1939 garage founding, 2015 HP Inc. / HPE split, Eight Inc. circle logo,
+HP Simplified → Forma DJR migration) are widely documented public history.
+
+Personas (§13) are fictional archetypes informed by publicly described consumer-tech buyer
+segments. Any resemblance to specific individuals is unintended.
+
+Interpretive claims (e.g., "the product is the hero", "restraint is the statement") are
+editorial readings of HP's design, not documented HP statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -337,49 +555,25 @@ Sizes (height · font · padding): `small` 36px · 14px · 8px 16px; `medium` (d
 - Thumb: `#ffffff` 18px circle, `0 1px 2px rgba(0,0,0,0.2)`
 - Use: Boolean settings, compare toggles
 
-
 **Tier 1 sources:** https://www.hp.com (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Section vertical rhythm: 48–64px between major page bands
-- Card internal padding: 16–24px
+| State | Treatment |
+|---|---|
+| **Empty (cart)** | Centered grey700 line (`Your cart is empty`) + primary CTA (`Shop laptops`, `#0096D6`). Simple icon, no heavy illustration. |
+| **Empty (search/filter)** | Single grey600 caption (`No results match your filters`) + a text button to clear filters. |
+| **Loading (page)** | Grey100 (`#eeeeee`) skeleton blocks matching final layout; product price renders as `—` until resolved. |
+| **Loading (button)** | Inline white spinner replaces label, button width preserved, control disabled to prevent double-submit. |
+| **Error (inline field)** | `#d32f2f` 1px border + red 13px help text below, one actionable sentence (`Enter a valid email address`). |
+| **Error (banner)** | `#fdecea` background, 4px `#d32f2f` left border, `#212121` 14px text, summary of what to fix. |
+| **Success (order)** | `#e6f4d9` banner with `#0c7d2f` left border + check icon (`Your order is confirmed`). Order number shown. |
+| **Out of stock** | Red `#d32f2f` weak badge (`Out of stock`), CTA swaps to `Notify me` secondary outline button. |
+| **Disabled** | Background `#cccccc`, text `#767676`. Inputs keep `#cccccc` border for stable geometry. |
+| **Focus** | 2px `#0096D6` ring (`rgba(0,150,214,0.3)`) on all interactive elements — always visible for accessibility. |
+| **Hover (card)** | Lift to `0 4px 12px rgba(0,0,0,0.10)`, 150ms ease; image may zoom 1.02×. |
 
-### Grid & Container
-- Max content width: 1280px, centered
-- Desktop: 12-column grid, 24px gutters, 32px outer margins
-- Product grids: 4 columns (desktop) → 2 (tablet) → 1 (mobile)
-- Generous outer margins keep hardware photography from touching viewport edges
-
-### Whitespace Philosophy
-- **Let the hardware breathe.** Product imagery gets surrounding negative space so devices read as hero objects, not catalog thumbnails.
-- **Banded sections.** The page alternates `#ffffff` and `#f7f7f7` full-width bands to chunk content without borders.
-- **Quiet density on support/specs.** Marketing pages are spacious; specification tables and support docs become denser and more utilitarian.
-
-### Border Radius Scale
-- Sharp (4px): Buttons, inputs, badges, banners
-- Soft (8px): Cards, tiles, modals
-- Pill (9999px): Filter chips, toggles, search field
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow | Page bands, flat tiles, inline elements |
-| Subtle (1) | `0 2px 8px rgba(0,0,0,0.08)` | Content cards, resting product cards |
-| Raised (2) | `0 4px 12px rgba(0,0,0,0.10)` | Product card hover, dropdowns |
-| Floating (3) | `0 8px 24px rgba(0,0,0,0.16)` | Modals, mega-menu panels |
-| Sticky header | `0 1px 4px rgba(0,0,0,0.08)` | Header shadow once scrolled |
-
-**Shadow Philosophy**: HP uses shadows sparingly and neutrally. Depth is communicated mainly through background banding and 1px borders; shadows appear on hover and floating layers only. Pure black at low opacity keeps the system clinical and product-forward — no colored or brand-tinted shadows.
-
-### Blur Effects
-- Mega-menu and sticky header may apply a light backdrop blur over content on scroll.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use HP Blue (`#0096D6`) for every interactive element — links, buttons, focus, toggles, active tabs
@@ -399,33 +593,23 @@ Sizes (height · font · padding): `small` 36px · 14px · 8px 16px; `medium` (d
 - Don't use pure black (`#000`) — the brand ink is `#212121`
 - Don't over-round controls; buttons stay at 4px, not pill, except filter chips
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single column, hamburger nav, full-width CTAs |
-| Tablet | 600–1024px | 2-column product grids, condensed header |
-| Desktop | 1024–1280px | 3–4 column grids, mega-menu |
-| Wide | >1280px | Content capped at 1280px, side margins grow |
+HP speaks like a knowledgeable, optimistic guide — clear, confident, human, and free of jargon. The tagline lineage ("Keep Reinventing", "Let's create") frames technology as an enabler of human creativity, not a spec sheet. Copy is in **sentence case**, declarative, and benefit-led: it explains what the product lets you *do* before how it works.
 
-### Touch Targets
-- Buttons: minimum 44px height
-- List/nav items: minimum 48px row height on mobile
-- Icon buttons: 40px minimum tap area
+| Context | Tone |
+|---|---|
+| CTAs | Short, action-first, sentence case (`Add to cart`, `Shop laptops`, `Learn more`) |
+| Product headlines | Benefit-led, one idea (`Power through your day`), sentence case |
+| Success messages | Plain past-tense confirmation (`Your order is confirmed`). No exclamation pile-ups. |
+| Error messages | Specific, blameless, actionable (`Enter a valid email address`). Never `Oops`. |
+| Support copy | Patient, step-by-step, second person (`Let's get your printer connected`) |
+| Legal / specs | Precise, neutral, factual — utilitarian register for technical detail |
+| Sustainability | Earnest, evidence-led — HP leans on recycled-material and carbon claims |
 
-### Collapsing Strategy
-- Mega-menu collapses to an accordion drawer on mobile
-- 4-up product grid reflows to 2-up (tablet) then 1-up (mobile)
-- Specification tables become stacked key/value rows below tablet width
-- Sticky "Add to cart" bar pins to the bottom on mobile product pages
+**Forbidden moves.** ALL-CAPS headlines, multi-color text in one layout, exclamation-heavy hype, jargon without payoff, and pure-black (`#000`) ink. Avoid "Oops" and faux-casual error apologies.
 
-### Image Behavior
-- Hero product shots: responsive, maintain aspect ratio, never edge-crop the device
-- Product thumbnails: square, contained on white, 1:1
-- Logos / icons: 24–40px, consistent within context
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: HP Blue (`#0096D6`)
@@ -457,115 +641,10 @@ Sizes (height · font · padding): `small` 36px · 14px · 8px 16px; `medium` (d
 6. Give product imagery generous whitespace; contained on white
 7. Desktop max 1280px, 12-col / 24px gutters; reflow grids 4→2→1
 
-## 10. Voice & Tone
+## Governance
 
-HP speaks like a knowledgeable, optimistic guide — clear, confident, human, and free of jargon. The tagline lineage ("Keep Reinventing", "Let's create") frames technology as an enabler of human creativity, not a spec sheet. Copy is in **sentence case**, declarative, and benefit-led: it explains what the product lets you *do* before how it works.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Short, action-first, sentence case (`Add to cart`, `Shop laptops`, `Learn more`) |
-| Product headlines | Benefit-led, one idea (`Power through your day`), sentence case |
-| Success messages | Plain past-tense confirmation (`Your order is confirmed`). No exclamation pile-ups. |
-| Error messages | Specific, blameless, actionable (`Enter a valid email address`). Never `Oops`. |
-| Support copy | Patient, step-by-step, second person (`Let's get your printer connected`) |
-| Legal / specs | Precise, neutral, factual — utilitarian register for technical detail |
-| Sustainability | Earnest, evidence-led — HP leans on recycled-material and carbon claims |
-
-**Forbidden moves.** ALL-CAPS headlines, multi-color text in one layout, exclamation-heavy hype, jargon without payoff, and pure-black (`#000`) ink. Avoid "Oops" and faux-casual error apologies.
-
-## 11. Brand Narrative
-
-HP traces to a **1939 Palo Alto garage** where Bill Hewlett and Dave Packard built audio oscillators — the literal origin of the Silicon Valley founder myth. That heritage of practical, well-engineered hardware still anchors the brand: HP makes things people use to get work done. In 2015 the company split into **HP Inc.** (personal systems and printing — the consumer-facing hp.com) and Hewlett Packard Enterprise; this design system describes HP Inc.'s consumer surface.
-
-The visual identity has been deliberately stable. **HP Blue `#0096D6`** has held since 2012, and the four-letter lowercase logo inside a circle — designed by Eight Inc. as a "future" mark — represents continuity and approachability. The 2024–2025 brand evolution refreshed the system with **Forma DJR** typography (replacing HP Simplified) and a brighter **Electric Blue** for campaign energy, while keeping the working digital blue intact. The thesis: technology that is **human-centered and quietly capable** — the device, not the chrome, is the hero.
-
-What HP refuses: the cold institutional gray of legacy enterprise IT, the neon maximalism of gaming-first rivals (HP's OMEN sub-brand carries that energy separately), and decorative ornament that competes with product photography. HP's restraint *is* its statement — a brand confident enough to let a laptop on white speak for itself.
-
-## 12. Principles
-
-1. **The product is the hero.** Interface chrome recedes; hardware photography and whitespace carry the visual weight. Never let UI ornament out-shout the device.
-2. **Blue is interaction, not decoration.** `#0096D6` appears only where the user can act. Headlines, rules, and illustration never borrow it.
-3. **One ink per layout.** Text is black or white. Color richness comes from imagery and the single blue accent — never multi-color type.
-4. **Sentence case, always.** Approachable over authoritative. Headlines read like a helpful person talking, not a billboard shouting.
-5. **Engineered restraint.** Flat surfaces, 1px borders, neutral shadows on hover only. The system should feel as precisely built as the hardware it sells.
-6. **Benefit before spec.** Copy and layout lead with what you can do; specifications are available but secondary.
-7. **Stability is a feature.** The blue and the logo have barely moved in over a decade. Consistency signals reliability — a core consumer-tech trust cue.
-8. **Accessible by default.** High contrast (`#212121` on white), 44px touch targets, visible focus rings in HP Blue.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described consumer-tech buyer segments, not individual people.*
-
-**Marcus, 41, Austin.** Small-business owner shopping for an OfficeJet printer and three laptops for new hires. Comes to hp.com to compare specs and total cost, not to be entertained. Wants clear product cards, honest stock status, and a frictionless cart. Trusts HP because his last printer "just worked for six years." Bounces if the spec table is hard to scan on his phone.
-
-**Priya, 23, Toronto.** Design student buying her first premium laptop (eyeing a Spectre). She researches across three sites and reads every review tab. Responds to the clean product photography and benefit-led headlines, but ultimately decides on screen quality and weight. Expects sentence-case, jargon-free copy and a fast mobile flow with the sticky "Add to cart" bar.
-
-**Robert, 58, Manchester.** Replacing the family printer and dreading driver setup. Lands on HP Support, not the store. Needs patient, step-by-step guidance (`Let's get your printer connected`) with big tap targets and no marketing distraction. Values that HP's support pages look calm and official. Will call support if the page feels cluttered.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (cart)** | Centered grey700 line (`Your cart is empty`) + primary CTA (`Shop laptops`, `#0096D6`). Simple icon, no heavy illustration. |
-| **Empty (search/filter)** | Single grey600 caption (`No results match your filters`) + a text button to clear filters. |
-| **Loading (page)** | Grey100 (`#eeeeee`) skeleton blocks matching final layout; product price renders as `—` until resolved. |
-| **Loading (button)** | Inline white spinner replaces label, button width preserved, control disabled to prevent double-submit. |
-| **Error (inline field)** | `#d32f2f` 1px border + red 13px help text below, one actionable sentence (`Enter a valid email address`). |
-| **Error (banner)** | `#fdecea` background, 4px `#d32f2f` left border, `#212121` 14px text, summary of what to fix. |
-| **Success (order)** | `#e6f4d9` banner with `#0c7d2f` left border + check icon (`Your order is confirmed`). Order number shown. |
-| **Out of stock** | Red `#d32f2f` weak badge (`Out of stock`), CTA swaps to `Notify me` secondary outline button. |
-| **Disabled** | Background `#cccccc`, text `#767676`. Inputs keep `#cccccc` border for stable geometry. |
-| **Focus** | 2px `#0096D6` ring (`rgba(0,150,214,0.3)`) on all interactive elements — always visible for accessibility. |
-| **Hover (card)** | Lift to `0 4px 12px rgba(0,0,0,0.10)`, 150ms ease; image may zoom 1.02×. |
-
-## 15. Motion & Easing
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox changes |
-| `motion-fast` | 150ms | Hover, focus, button press, card lift |
-| `motion-standard` | 250ms | Default — dropdowns, accordions, tab content |
-| `motion-slow` | 350ms | Mega-menu reveal, modal entrance |
-| `motion-page` | 400ms | Route / full-screen transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — menus, modals, banners |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — accordions, tabs, hover lifts |
-
-**Signature motions.**
-
-1. **Product card lift.** On hover, the card raises to `0 4px 12px rgba(0,0,0,0.10)` and the product image scales `1.02×` over `motion-fast / ease-standard`. Subtle — the device should appear to come forward, not bounce.
-2. **Mega-menu reveal.** The header mega-menu fades and slides down from `y-8px` over `motion-slow / ease-enter`, with a synchronized light backdrop. Dismissal uses `motion-fast / ease-exit`.
-3. **Add-to-cart confirmation.** The cart icon count animates with a brief scale pulse (`1 → 1.15 → 1`, `motion-standard`), paired with the success banner sliding in. Reassuring, never flashy.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; slides and scales become simple fades. The experience stays fully usable.
-
-<!--
-OmD v0.1 Sources — HP
-
-Verified via WebFetch / WebSearch (2026-06-06):
-- HP Blue #0096D6 (PMS 2925 C), stable since 2012 — brandpalettes.com/hewlett-packard-color-codes,
-  brandcolorcode.com/hp
-- Forma DJR typography (Forma DJR UI for screen, Forma DJR Office for documents), by
-  David Jonathan Ross; sentence-case default; "type is black or white, don't mix colors
-  on a layout" — brandcentral.hp.com/us/en/elements/typography.html and HP Type Guidelines 2.0 PDF
-- 2025 refresh introduced HP Electric Blue (Pantone 2132) — HP Brand Visual Identity page
-- hp.com (https://www.hp.com) redirects to www-redirect.ext.hp.com (geo/consent gateway);
-  live DOM not directly inspected, so token-level UI values (radii, padding, semantic greens/
-  reds, motion) are conventional consumer-tech / e-commerce values consistent with HP's
-  published color + type system and observed hp.com store patterns.
-
-Brand narrative facts (1939 garage founding, 2015 HP Inc. / HPE split, Eight Inc. circle logo,
-HP Simplified → Forma DJR migration) are widely documented public history.
-
-Personas (§13) are fictional archetypes informed by publicly described consumer-tech buyer
-segments. Any resemblance to specific individuals is unintended.
-
-Interpretive claims (e.g., "the product is the hero", "restraint is the statement") are
-editorial readings of HP's design, not documented HP statements.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#0096d6` measures 3.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-secondary`.** Text `#0096d6` on `#ffffff` measures 3.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-tertiary`.** Text `#0096d6` on `#ffffff` measures 3.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

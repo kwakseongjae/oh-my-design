@@ -1,57 +1,141 @@
 ---
-id: jumpit
 name: Jumpit
-country: KR
-category: productivity
-homepage: "https://www.jumpit.co.kr"
-primary_color: "#00dd6d"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=jumpit.co.kr&sz=256"
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    brand: "#00dd6d"
-    heading: "#000000"
-    heading-soft: "#222222"
-    body: "#444444"
-    muted: "#888888"
-    inverse: "#ffffff"
-    canvas: "#ffffff"
-    footer-plate: "#fbfbfb"
-  typography:
-    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
-    hero-title:  { size: 32, weight: 700, lineHeight: 1.3, use: "Hero carousel card title over photo, white" }
-    section-h3:  { size: 24, weight: 700, lineHeight: 1.3, use: "Section heading titles" }
-    cta:         { size: 15, weight: 700, use: "Primary auth CTA label" }
-    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Body, link, chip rest state" }
-    chip-active: { size: 16, weight: 700, use: "Active filter chip label" }
-    footer-link: { size: 14, weight: 400, use: "Footer nav link" }
-    eyebrow:     { size: 13, weight: 700, use: "Brand Notice eyebrow, always green" }
-  spacing: { xs: 8, sm: 16, md: 24, base: 32, lg: 40 }
-  rounded: { sm: 8, md: 20, lg: 100, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "0px 16px", font: "15px / 700", use: "회원가입/로그인 auth CTA — black, never green" , hover: "#333333", pressed: "#333333"}
-    chip-role-active: { type: badge, bg: "#00dd6d", fg: "#ffffff", radius: "20px", padding: "7px 16px", font: "16px / 700", use: "Single-selected job-role filter chip" }
-    chip-role-rest: { type: badge, bg: "#ffffff", fg: "#444444", radius: "20px", padding: "7px 16px", font: "16px / 400", use: "Unselected role chips in 22-chip filter row" }
-    dropdown-filter: { type: tab, bg: "#ffffff", fg: "#000000", radius: "100px", padding: "8px 30px 8px 12px", font: "16px / 400", use: "Outlined multi-select filter dropdown trigger" }
-    card-hero: { type: card, bg: "#ffffff", fg: "#ffffff", radius: "0px", font: "32px / 700", use: "Hero carousel promo card, full-bleed photo, no shadow, 340px tall" }
-    card-job: { type: card, bg: "#ffffff", fg: "#444444", radius: "0px", use: "Result-grid JobCard on /positions, no shadow, hairline border" }
-    eyebrow-brand: { type: badge, bg: "#ffffff", fg: "#00dd6d", font: "13px / 700", use: "Notice eyebrow above announcement card" }
-    heading-section: { type: badge, bg: "#ffffff", fg: "#222222", font: "24px / 700", use: "Section H3 title on canvas" }
-    link-footer: { type: listItem, bg: "#ffffff", fg: "#444444", radius: "0px", font: "14px / 400", use: "Footer nav link" }
-    link-viewall: { type: listItem, bg: "#ffffff", fg: "#888888", font: "16px / 400", use: "전체 보기 inline affordance at section header edge" }
-  components_harvested: true
+colors:
+  brand: '#00dd6d'
+  heading: '#000000'
+  heading-soft: '#222222'
+  body: '#444444'
+  muted: '#888888'
+  inverse: '#ffffff'
+  canvas: '#ffffff'
+  footer-plate: '#fbfbfb'
+typography:
+  hero-title:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Hero carousel card title over photo, white
+  section-h3:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Section heading titles
+  cta:
+    fontSize: 15px
+    fontWeight: 700
+    use: Primary auth CTA label
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body, link, chip rest state
+  chip-active:
+    fontSize: 16px
+    fontWeight: 700
+    use: Active filter chip label
+  footer-link:
+    fontSize: 14px
+    fontWeight: 400
+    use: Footer nav link
+  eyebrow:
+    fontSize: 13px
+    fontWeight: 700
+    use: Brand Notice eyebrow, always green
+rounded:
+  sm: 8px
+  md: 20px
+  lg: 100px
+  full: 9999px
+spacing:
+  xs: 8
+  sm: 16
+  md: 24
+  base: 32
+  lg: 40
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0px 16px
+    typography: 15px / 700
+    use: 회원가입/로그인 auth CTA — black, never green
+    hover: '#333333'
+    pressed: '#333333'
+  chip-role-active:
+    type: badge
+    backgroundColor: '#00dd6d'
+    textColor: '#ffffff'
+    rounded: 20px
+    padding: 7px 16px
+    typography: 16px / 700
+    use: Single-selected job-role filter chip
+  chip-role-rest:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#444444'
+    rounded: 20px
+    padding: 7px 16px
+    typography: 16px / 400
+    use: Unselected role chips in 22-chip filter row
+  dropdown-filter:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 100px
+    padding: 8px 30px 8px 12px
+    typography: 16px / 400
+    use: Outlined multi-select filter dropdown trigger
+  card-hero:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#ffffff'
+    rounded: 0px
+    typography: 32px / 700
+    use: Hero carousel promo card, full-bleed photo, no shadow, 340px tall
+  card-job:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#444444'
+    rounded: 0px
+    use: Result-grid JobCard on /positions, no shadow, hairline border
+  eyebrow-brand:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#00dd6d'
+    typography: 13px / 700
+    use: Notice eyebrow above announcement card
+  heading-section:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#222222'
+    typography: 24px / 700
+    use: Section H3 title on canvas
+  link-footer:
+    type: listItem
+    backgroundColor: '#ffffff'
+    textColor: '#444444'
+    rounded: 0px
+    typography: 14px / 400
+    use: Footer nav link
+  link-viewall:
+    type: listItem
+    backgroundColor: '#ffffff'
+    textColor: '#888888'
+    typography: 16px / 400
+    use: 전체 보기 inline affordance at section header edge
+fonts:
+  roles:
+    sans: Pretendard Variable
+    mono: Pretendard Variable
 ---
 
 # Design System Inspiration of Jumpit (점핏)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Jumpit (점핏) is the developer-only recruitment channel run by **Saramin HR** (사람인HR, KOSDAQ 143240) — a separate brand spun out so that engineering hiring would not share chrome with the parent's generalist job marketplace. The visual identity reads as a deliberate inversion of two adjacent Korean references: it rejects Wanted's saturated `#0066FF` "growth blue" trust signal **and** the maximalist gradients of fintech marketing — substituting a single high-key green `#00DD6D` used so sparingly that across two surfaces and 112 live element samples it appears on chrome exactly **twice** (one active filter chip, one section eyebrow). Everything else is a tight three-stop greyscale stack on a `#FFFFFF` canvas with `#FBFBFB` footer relief. The product feels closer to a developer terminal than to an HR portal — sharp 0px card corners, no box-shadows, and a vocabulary that reads "요즘 폼 미친 기업s" / "#꿀 피드" / ".zip" in casual recruiter-to-engineer register.
 
@@ -71,7 +155,7 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 
 ---
 
-## Primary tasks
+### Primary tasks
 
 - Narrow developer job postings down to a single role
 - Filter postings further by stack, experience, region, or tag
@@ -79,7 +163,54 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 - Read developer interviews to judge what a company is like
 - Check whether a posting lists a compensation range
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Jumpit launched as Saramin HR's answer to a specific market gap: by 2019, Korea's developer-recruitment funnel had bifurcated into "premium curated" (Wanted, Programmers) and "high-volume listings" (the parent Saramin marketplace), with no Saramin-operated channel speaking directly to engineers in their own vocabulary. Saramin's challenge: how do you build credibility with developers who associate the parent brand with résumé spam and recruiter cold-outreach? The answer was operational separation — a different domain (`jumpit.co.kr`, later consolidated to `jumpit.saramin.co.kr`), a different voice (developer-vernacular, not corporate-HR), and a visual language (sharp 0px corners, terminal-prompt green, binary type weight) that signals "this is not the same product as the parent."
+
+The colour choice itself is a positioning statement. Where Wanted owns `#0066FF` "growth blue" and Programmers leans into a clean blue-and-white code-academy aesthetic, Jumpit picked `#00DD6D` — a green that reads closer to a terminal cursor than to a brand-marketing palette. Then they made the bold move: **restrict it to two appearances per surface.** Most Korean services treat brand colour as something to splash; Jumpit treats it like a syntax highlight. The discipline reads as taste to engineers and as confidence to recruiters.
+
+Parent context (factual, not narrative): Saramin HR (KOSDAQ 143240) is the operator. Founded 2005, headquartered in Guro-gu Seoul. Jumpit positions itself within Saramin's portfolio as the engineer-facing channel — companion brands at the parent include the generalist Saramin marketplace, the freelance platform Saramin 잡스, and the headhunter-network Saramin 서치. Specific founder/launch quotes were not located at OmD attribution fidelity in public English-language sources — flagged for future re-research if needed.
+
+---
+
+### Principles
+
+1. **One brand colour, two appearances.**
+   *UI implication*: `#00DD6D` is reserved for the active state of single-select controls and a single eyebrow accent per surface. Audit-fail if it appears more than twice on a screen.
+
+2. **Sharp by default, pilled by role.**
+   *UI implication*: Cards and surfaces are 0px-radius. Pill radii (8 / 20 / 100) are reserved for interactive controls and encode control class — never use a pill radius on a static surface.
+
+3. **Type carries hierarchy, not colour.**
+   *UI implication*: Build hierarchy with weight (400 vs 700) and size (16 → 24 → 32). Don't tint a section heading green to make it pop — make it 24/700 `#222` like everything else.
+
+4. **Depth via tint, never shadow.**
+   *UI implication*: `box-shadow: none` is the default. If you need to indicate "this is a different surface tier," use `#FBFBFB` against `#FFFFFF`. No card lift, no hover shadow.
+
+5. **Speak in developer vernacular, write in fresh copy.**
+   *UI implication*: Section labels are one or two Korean words plus an optional English keyword inline. Avoid honorific imperatives ("선택해 주세요"). Don't lift Jumpit copy verbatim — write in the same register.
+
+---
+
+### Personas
+
+*Personas below are inferred from publicly observable Jumpit + Saramin positioning. They are not sourced from a published Jumpit research artefact and should be treated as illustrative downstream context, not as ground truth.*
+
+1. **연차 3-7년 백엔드 개발자, 이직 탐색 모드**
+   Currently employed at a Series-B SaaS in Pangyo. Browses `/positions` filtered to 서버/백엔드 + 5-10년 차 + 강남/판교/원격. Reads the "꿀 피드" weekly because it shows comp data she can't get from her manager.
+
+2. **3년차 프론트엔드, MZ vocabulary native**
+   Reads section labels like "요즘 폼 미친 기업s" without irony. Filters by 기술스택 React + TypeScript and ignores any posting that doesn't list a comp range. Treats Jumpit and Wanted as competing tabs in the same browser window.
+
+3. **부트캠프 신입, "더.루키" hunter**
+   Just finished 위코드 / 크래프톤 정글 / 우아한테크코스. Lives in the "신입 개발자를 위한 더.루키 포지션" thematic curation row on the home page. Uses Jumpit's "개발자 인터뷰" content as their primary "what's that company actually like" channel.
+
+4. **테크 리크루터 at a Saramin enterprise customer**
+   Manages the company-side dashboard (out of scope for this reference). Logs in to the 기업 서비스 surface to post and review applicants. Cares that Jumpit's brand looks credible enough to engineers that the inbound funnel converts.
+
+---
+
+## Colors
 
 ### Primary (Brand)
 - **Jumpit Green** (`#00DD6D` / `rgb(0, 221, 109)`): The sole brand accent. Restricted to two chrome uses — active role-filter chip background and the 13/700 "Notice" eyebrow above the announcement card. **Never** on the primary CTA, never on body text, never as a hover wash.
@@ -103,7 +234,7 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 
 ---
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 - **UI / Display (single stack)**: `"Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif` — verified on 100% (112/112) of sampled elements. No `Wanted Sans`-style brand display face is layered over body.
@@ -129,7 +260,65 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 
 ---
 
-## 4. Component Stylings
+## Layout
+
+- **Single-canvas page model**. `#FFFFFF` from header to last section, then `#FBFBFB` for the footer plate. No alternating section backgrounds, no coloured banners, no full-bleed brand-green strips.
+- **Filter-row pattern is the layout fingerprint**. On `/positions`, two stacked filter rows (22 role chips + 4 outlined dropdowns) precede the result grid — a horizontal-scrolling chip row above a `flex-wrap` dropdown row. The visual contract: pill class signals taxonomy class.
+- **Sticky 121px header** on home — global nav (개발자 채용 / 이력서 / #꿀 피드 / 개발자 인터뷰) on the left, secondary auth (회원가입/로그인) and 기업 서비스 on the right.
+- **Section vertical rhythm** uses ~24/32/40px steps (inferred from sampling, not measured). Card grids appear at 8-up on home, n-up on positions.
+- **No `<h1>` on home**. The semantic heading tree starts at h2 (`Notice`) → h3 (section titles + 12 carousel-card titles). Flagged in §8.
+- **Footer = 363px tall**, padding `40px 0px 30px`, 14/400 `#444` links arranged in 6-7 columns.
+
+---
+
+### Responsive Behavior
+
+- **Home + positions both inspected at 1280×720 desktop**. Mobile viewport not captured this pass.
+- The 22-chip role-filter row on `/positions` is wider than 1280px content area → horizontal scroll is the inferred behaviour (CSS `overflow-x: auto` typical for this pattern, not validated by this capture).
+- Hero carousel sliding cards retain 340px height at desktop; mobile breakpoint behaviour pending.
+- Footer 6-7 column nav grid is expected to collapse to 2-3 cols at mobile (standard pattern, not validated).
+- No `prefers-color-scheme: dark` support detected — Jumpit ships light-mode only on web.
+- Saramin parent ships a separate mobile app for Jumpit (App Store / Google Play CTAs present in the footer area) — design system for the native app is out of scope for this reference.
+
+**UPDATE pass should capture**: 390×844 iPhone viewport with iOS UA, chip-row scroll affordance, mobile filter sheet (likely a bottom-sheet pattern for 기술스택/경력/지역/태그 on mobile).
+
+---
+
+## Elevation & Depth
+
+- **No box-shadow on any sampled element.** Zero. Across 112 raw samples (buttons, cards, inputs, nav, header, footer) every `box-shadow: none`.
+- Depth is communicated entirely by **surface tint**: `#FBFBFB` footer plate against `#FFFFFF` page is the single elevation tier.
+- Cards on photo carousels rely on the photo itself + a black-on-photo overlay text contrast, not on shadow stacking.
+- Borders, where present, are hairline tints rather than `1px solid black` — but the dominant pattern is "no border, no shadow, content separated by whitespace alone."
+
+This is a deliberate stylistic position: by withholding depth tokens, the system signals "we are a terminal, not a banking app."
+
+---
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Motion tokens were **not captured** this pass (single static page-load CDP inspection). Observable behaviours:
+
+- Hero carousel auto-rotates 3-up promotion cards (timing not measured — likely 4-6s dwell).
+- Filter-chip selection transition is instant or very short (<150ms inferred from styled-components default behaviour).
+- No page-load fade / hero parallax / scroll-triggered reveal observed in the rendered snapshot.
+
+**Recommended downstream defaults** (Toss style-ref per skill rule P-1, since Jumpit publishes no motion table):
+
+These are **inferred placeholders** — Jumpit's actual production durations should be captured in a follow-up pass with CDP `Animation.enable` + `transitionstart` event recording.
+
+## Components
 
 ### Button
 
@@ -229,29 +418,24 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 
 ---
 
-## 5. Layout Principles
+### States
 
-- **Single-canvas page model**. `#FFFFFF` from header to last section, then `#FBFBFB` for the footer plate. No alternating section backgrounds, no coloured banners, no full-bleed brand-green strips.
-- **Filter-row pattern is the layout fingerprint**. On `/positions`, two stacked filter rows (22 role chips + 4 outlined dropdowns) precede the result grid — a horizontal-scrolling chip row above a `flex-wrap` dropdown row. The visual contract: pill class signals taxonomy class.
-- **Sticky 121px header** on home — global nav (개발자 채용 / 이력서 / #꿀 피드 / 개발자 인터뷰) on the left, secondary auth (회원가입/로그인) and 기업 서비스 on the right.
-- **Section vertical rhythm** uses ~24/32/40px steps (inferred from sampling, not measured). Card grids appear at 8-up on home, n-up on positions.
-- **No `<h1>` on home**. The semantic heading tree starts at h2 (`Notice`) → h3 (section titles + 12 carousel-card titles). Flagged in §8.
-- **Footer = 363px tall**, padding `40px 0px 30px`, 14/400 `#444` links arranged in 6-7 columns.
-
----
-
-## 6. Depth & Elevation
-
-- **No box-shadow on any sampled element.** Zero. Across 112 raw samples (buttons, cards, inputs, nav, header, footer) every `box-shadow: none`.
-- Depth is communicated entirely by **surface tint**: `#FBFBFB` footer plate against `#FFFFFF` page is the single elevation tier.
-- Cards on photo carousels rely on the photo itself + a black-on-photo overlay text contrast, not on shadow stacking.
-- Borders, where present, are hairline tints rather than `1px solid black` — but the dominant pattern is "no border, no shadow, content separated by whitespace alone."
-
-This is a deliberate stylistic position: by withholding depth tokens, the system signals "we are a terminal, not a banking app."
+| Category | Observed | Notes |
+|---|---|---|
+| **Empty** | inferred | Empty-state visuals (no filtered results / empty 이력서) not captured this pass. Likely follows the same `#FFF` / `#444` 14/400 typography rule with no illustration — flagged for UPDATE. |
+| **Loading** | inferred | No skeleton screens captured. Likely uses Next.js streaming SSR — flagged for UPDATE. |
+| **Error (form)** | not captured | No form errors triggered. Downstream should adopt a Toss-family `#F04452` error ink at 14/700 below the failing input. |
+| **Error (page)** | not captured | 404 / 500 page chrome not inspected. |
+| **Success** | not captured | Application-submitted state pending UPDATE pass. |
+| **Skeleton** | not captured | — |
+| **Disabled (button)** | not captured | Likely a `#444` / 50% alpha pattern (inferred) — flagged. |
+| **Active (filter chip)** | ✓ captured | `#00DD6D` bg + `#FFF` text + 16/700 — the canonical active-state token in the system. |
+| **Hover** | not captured | No mouse-interaction simulated. Likely a `#222` tint on the black primary CTA + a soft `#F5F5F5` plate on chips — flagged. |
+| **Focus (a11y)** | not captured | Keyboard focus-ring colour and width pending — important UPDATE candidate. |
 
 ---
 
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Keep `#00DD6D` to two semantic uses: active state + brand eyebrow. Two appearances per screen is the comfortable max.
@@ -270,36 +454,7 @@ This is a deliberate stylistic position: by withholding depth tokens, the system
 
 ---
 
-## 8. Responsive Behavior
-
-- **Home + positions both inspected at 1280×720 desktop**. Mobile viewport not captured this pass.
-- The 22-chip role-filter row on `/positions` is wider than 1280px content area → horizontal scroll is the inferred behaviour (CSS `overflow-x: auto` typical for this pattern, not validated by this capture).
-- Hero carousel sliding cards retain 340px height at desktop; mobile breakpoint behaviour pending.
-- Footer 6-7 column nav grid is expected to collapse to 2-3 cols at mobile (standard pattern, not validated).
-- No `prefers-color-scheme: dark` support detected — Jumpit ships light-mode only on web.
-- Saramin parent ships a separate mobile app for Jumpit (App Store / Google Play CTAs present in the footer area) — design system for the native app is out of scope for this reference.
-
-**UPDATE pass should capture**: 390×844 iPhone viewport with iOS UA, chip-row scroll affordance, mobile filter sheet (likely a bottom-sheet pattern for 기술스택/경력/지역/태그 on mobile).
-
----
-
-## 9. Agent Prompt Guide
-
-When generating Jumpit-styled surfaces, hold these constraints:
-
-1. **One brand green, two chrome uses.** If a screen has more than two appearances of `#00DD6D`, you have failed the system. Audit before shipping.
-2. **CTA is black, not green.** The primary action pill is `#000000` / `#FFFFFF` / 8px radius / 15/700.
-3. **Three pill radii encode role.** 8 = primary CTA. 20 = single-select role chip. 100 = outlined multi-select dropdown. Don't mix.
-4. **Cards have 0 corner radius and no shadow.** If you need depth, use whitespace or the `#FBFBFB` footer tint — that's the only elevation tier you have.
-5. **Pretendard Variable, 400 or 700 — pick one per element.** Skip 500 unless you have a justified reason (footnotes, micro-meta).
-6. **Three-stop ink ladder.** `#000` for the loudest moment (primary CTA, hero card text), `#222` for section heads, `#444` for body, `#888` for tertiary muted. No greys outside this set.
-7. **Voice = developer-vernacular Korean with English keyword inlining.** Don't slip into corporate-HR register ("귀하의 지원이 …"). Don't lift Jumpit verbatim either — write fresh copy in the same register (see §10 samples).
-8. **A11y caveat to fix downstream**: Jumpit ships home without an `<h1>` — your port should not. Add a semantic h1 to the announcement / hero region. Audit colour contrast on `#888` body text (it is below WCAG AA at 14px).
-9. **Semantic ladder is yours to add.** Jumpit's production code does not expose error/success/warning tokens publicly. Adopt a Toss-family semantic palette rather than re-tinting `#00DD6D`.
-
----
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Jumpit speaks **developer-to-developer in casual recruiter-vernacular Korean**, with English keyword inlining for technical signals. The register is "사람인이 우리 들으면 좀 의외다" — playful, slightly self-aware, never corporate-HR. Compare to Wanted's polished "growth blue" voice or Saramin's neutral marketplace tone — Jumpit deliberately sounds like a Slack message from a tech recruiter who codes on the weekend.
 
@@ -327,83 +482,27 @@ All three are illustrative — derived from the *shape* of Jumpit voice (English
 
 ---
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Jumpit launched as Saramin HR's answer to a specific market gap: by 2019, Korea's developer-recruitment funnel had bifurcated into "premium curated" (Wanted, Programmers) and "high-volume listings" (the parent Saramin marketplace), with no Saramin-operated channel speaking directly to engineers in their own vocabulary. Saramin's challenge: how do you build credibility with developers who associate the parent brand with résumé spam and recruiter cold-outreach? The answer was operational separation — a different domain (`jumpit.co.kr`, later consolidated to `jumpit.saramin.co.kr`), a different voice (developer-vernacular, not corporate-HR), and a visual language (sharp 0px corners, terminal-prompt green, binary type weight) that signals "this is not the same product as the parent."
+When generating Jumpit-styled surfaces, hold these constraints:
 
-The colour choice itself is a positioning statement. Where Wanted owns `#0066FF` "growth blue" and Programmers leans into a clean blue-and-white code-academy aesthetic, Jumpit picked `#00DD6D` — a green that reads closer to a terminal cursor than to a brand-marketing palette. Then they made the bold move: **restrict it to two appearances per surface.** Most Korean services treat brand colour as something to splash; Jumpit treats it like a syntax highlight. The discipline reads as taste to engineers and as confidence to recruiters.
-
-Parent context (factual, not narrative): Saramin HR (KOSDAQ 143240) is the operator. Founded 2005, headquartered in Guro-gu Seoul. Jumpit positions itself within Saramin's portfolio as the engineer-facing channel — companion brands at the parent include the generalist Saramin marketplace, the freelance platform Saramin 잡스, and the headhunter-network Saramin 서치. Specific founder/launch quotes were not located at OmD attribution fidelity in public English-language sources — flagged for future re-research if needed.
-
----
-
-## 12. Principles
-
-1. **One brand colour, two appearances.**
-   *UI implication*: `#00DD6D` is reserved for the active state of single-select controls and a single eyebrow accent per surface. Audit-fail if it appears more than twice on a screen.
-
-2. **Sharp by default, pilled by role.**
-   *UI implication*: Cards and surfaces are 0px-radius. Pill radii (8 / 20 / 100) are reserved for interactive controls and encode control class — never use a pill radius on a static surface.
-
-3. **Type carries hierarchy, not colour.**
-   *UI implication*: Build hierarchy with weight (400 vs 700) and size (16 → 24 → 32). Don't tint a section heading green to make it pop — make it 24/700 `#222` like everything else.
-
-4. **Depth via tint, never shadow.**
-   *UI implication*: `box-shadow: none` is the default. If you need to indicate "this is a different surface tier," use `#FBFBFB` against `#FFFFFF`. No card lift, no hover shadow.
-
-5. **Speak in developer vernacular, write in fresh copy.**
-   *UI implication*: Section labels are one or two Korean words plus an optional English keyword inline. Avoid honorific imperatives ("선택해 주세요"). Don't lift Jumpit copy verbatim — write in the same register.
+1. **One brand green, two chrome uses.** If a screen has more than two appearances of `#00DD6D`, you have failed the system. Audit before shipping.
+2. **CTA is black, not green.** The primary action pill is `#000000` / `#FFFFFF` / 8px radius / 15/700.
+3. **Three pill radii encode role.** 8 = primary CTA. 20 = single-select role chip. 100 = outlined multi-select dropdown. Don't mix.
+4. **Cards have 0 corner radius and no shadow.** If you need depth, use whitespace or the `#FBFBFB` footer tint — that's the only elevation tier you have.
+5. **Pretendard Variable, 400 or 700 — pick one per element.** Skip 500 unless you have a justified reason (footnotes, micro-meta).
+6. **Three-stop ink ladder.** `#000` for the loudest moment (primary CTA, hero card text), `#222` for section heads, `#444` for body, `#888` for tertiary muted. No greys outside this set.
+7. **Voice = developer-vernacular Korean with English keyword inlining.** Don't slip into corporate-HR register ("귀하의 지원이 …"). Don't lift Jumpit verbatim either — write fresh copy in the same register (see §10 samples).
+8. **A11y caveat to fix downstream**: Jumpit ships home without an `<h1>` — your port should not. Add a semantic h1 to the announcement / hero region. Audit colour contrast on `#888` body text (it is below WCAG AA at 14px).
+9. **Semantic ladder is yours to add.** Jumpit's production code does not expose error/success/warning tokens publicly. Adopt a Toss-family semantic palette rather than re-tinting `#00DD6D`.
 
 ---
 
-## 13. Personas
+## Governance
 
-*Personas below are inferred from publicly observable Jumpit + Saramin positioning. They are not sourced from a published Jumpit research artefact and should be treated as illustrative downstream context, not as ground truth.*
+### Known Gaps
 
-1. **연차 3-7년 백엔드 개발자, 이직 탐색 모드**
-   Currently employed at a Series-B SaaS in Pangyo. Browses `/positions` filtered to 서버/백엔드 + 5-10년 차 + 강남/판교/원격. Reads the "꿀 피드" weekly because it shows comp data she can't get from her manager.
-
-2. **3년차 프론트엔드, MZ vocabulary native**
-   Reads section labels like "요즘 폼 미친 기업s" without irony. Filters by 기술스택 React + TypeScript and ignores any posting that doesn't list a comp range. Treats Jumpit and Wanted as competing tabs in the same browser window.
-
-3. **부트캠프 신입, "더.루키" hunter**
-   Just finished 위코드 / 크래프톤 정글 / 우아한테크코스. Lives in the "신입 개발자를 위한 더.루키 포지션" thematic curation row on the home page. Uses Jumpit's "개발자 인터뷰" content as their primary "what's that company actually like" channel.
-
-4. **테크 리크루터 at a Saramin enterprise customer**
-   Manages the company-side dashboard (out of scope for this reference). Logs in to the 기업 서비스 surface to post and review applicants. Cares that Jumpit's brand looks credible enough to engineers that the inbound funnel converts.
-
----
-
-## 14. States
-
-| Category | Observed | Notes |
-|---|---|---|
-| **Empty** | inferred | Empty-state visuals (no filtered results / empty 이력서) not captured this pass. Likely follows the same `#FFF` / `#444` 14/400 typography rule with no illustration — flagged for UPDATE. |
-| **Loading** | inferred | No skeleton screens captured. Likely uses Next.js streaming SSR — flagged for UPDATE. |
-| **Error (form)** | not captured | No form errors triggered. Downstream should adopt a Toss-family `#F04452` error ink at 14/700 below the failing input. |
-| **Error (page)** | not captured | 404 / 500 page chrome not inspected. |
-| **Success** | not captured | Application-submitted state pending UPDATE pass. |
-| **Skeleton** | not captured | — |
-| **Disabled (button)** | not captured | Likely a `#444` / 50% alpha pattern (inferred) — flagged. |
-| **Active (filter chip)** | ✓ captured | `#00DD6D` bg + `#FFF` text + 16/700 — the canonical active-state token in the system. |
-| **Hover** | not captured | No mouse-interaction simulated. Likely a `#222` tint on the black primary CTA + a soft `#F5F5F5` plate on chips — flagged. |
-| **Focus (a11y)** | not captured | Keyboard focus-ring colour and width pending — important UPDATE candidate. |
-
----
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Motion tokens were **not captured** this pass (single static page-load CDP inspection). Observable behaviours:
-
-- Hero carousel auto-rotates 3-up promotion cards (timing not measured — likely 4-6s dwell).
-- Filter-chip selection transition is instant or very short (<150ms inferred from styled-components default behaviour).
-- No page-load fade / hero parallax / scroll-triggered reveal observed in the rendered snapshot.
-
-**Recommended downstream defaults** (Toss style-ref per skill rule P-1, since Jumpit publishes no motion table):
-
-These are **inferred placeholders** — Jumpit's actual production durations should be captured in a follow-up pass with CDP `Animation.enable` + `transitionstart` event recording.
+- **Contrast, `chip-role-active`.** Text `#ffffff` on `#00dd6d` measures 1.82:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `card-hero`.** Text `#ffffff` on `#ffffff` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `eyebrow-brand`.** Text `#00dd6d` on `#ffffff` measures 1.82:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `link-viewall`.** Text `#888888` on `#ffffff` measures 3.54:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
