@@ -174,6 +174,7 @@ add:
       fontSize: 11px
       lineHeight: 16.5px
 verification:
+  checked: "2026-10-13"
   surfaces:
     - { id: tds-foundation-colors, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/foundation/colors/", inspected: "2026-10-13" }
     - { id: tds-foundation-typography, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/", inspected: "2026-10-13" }
@@ -181,6 +182,13 @@ verification:
     - { id: tds-colors-doc, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/foundation/colors/", captured: "2026-10-13" }
     - { id: tds-typography-doc, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/", captured: "2026-10-13" }
   claims:
+    # Per-role stacks: the 2026-07-11 capture records Toss Product Sans as the first family on this role.
+    typography.h1.fontFamily: { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
+    typography.h2.fontFamily: { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
+    typography.h3.fontFamily: { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
+    typography.h4.fontFamily: { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
+    typography.body.fontFamily: { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
+    typography.body-small.fontFamily: { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
     colors.grey50: { surface_id: tds-foundation-colors, source_id: tds-colors-doc, method: official-doc, captured: "2026-10-13" }
     colors.grey100: { surface_id: tds-foundation-colors, source_id: tds-colors-doc, method: official-doc, captured: "2026-10-13" }
     colors.grey200: { surface_id: tds-foundation-colors, source_id: tds-colors-doc, method: official-doc, captured: "2026-10-13" }
@@ -307,6 +315,17 @@ prose:
     ### Colour palette
 
     The official TDS Colors page (https://tossmini-docs.toss.im/tds-mobile/foundation/colors/, read 2026-10-13) publishes ten-step scales, 50–900, for grey, blue, red, orange, yellow, green, teal and purple; they are in the frontmatter as `grey50` … `purple900`. The role colours above sit on those scales: primary `#3182f6` is blue500, primary hover `#2272eb` blue600, weak foreground `#1b64da` blue700, weak background `#e8f3ff` blue50, foreground `#191f28` grey900, body `#4e5968` grey700, muted `#8b95a1` grey500, surface `#f2f4f6` grey100, border `#e5e8eb` grey200, and danger `#e42939` red600. The page does not say which red is the danger colour; red600 is the one observed on the button documentation. The greyOpacity scale is not added, because its values are a base colour plus an alpha that this reading could not confirm verbatim.
+
+    | Scale | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
+    |---|---|---|---|---|---|---|---|---|---|---|
+    | grey | `#f9fafb` | `#f2f4f6` | `#e5e8eb` | `#d1d6db` | `#b0b8c1` | `#8b95a1` | `#6b7684` | `#4e5968` | `#333d4b` | `#191f28` |
+    | blue | `#e8f3ff` | `#c9e2ff` | `#90c2ff` | `#64a8ff` | `#4593fc` | `#3182f6` | `#2272eb` | `#1b64da` | `#1957c2` | `#194aa6` |
+    | red | `#ffeeee` | `#ffd4d6` | `#feafb4` | `#fb8890` | `#f66570` | `#f04452` | `#e42939` | `#d22030` | `#bc1b2a` | `#a51926` |
+    | orange | `#fff3e0` | `#ffe0b0` | `#ffcd80` | `#ffbd51` | `#ffa927` | `#fe9800` | `#fb8800` | `#f57800` | `#ed6700` | `#e45600` |
+    | yellow | `#fff9e7` | `#ffefbf` | `#ffe69b` | `#ffdd78` | `#ffd158` | `#ffc342` | `#ffb331` | `#faa131` | `#ee8f11` | `#dd7d02` |
+    | green | `#f0faf6` | `#aeefd5` | `#76e4b8` | `#3fd599` | `#15c47e` | `#03b26c` | `#02a262` | `#029359` | `#028450` | `#027648` |
+    | teal | `#edf8f8` | `#bce9e9` | `#89d8d8` | `#58c7c7` | `#30b6b6` | `#18a5a5` | `#109595` | `#0c8585` | `#097575` | `#076565` |
+    | purple | `#f9f0fc` | `#edccf8` | `#da9bef` | `#c770e4` | `#b44bd7` | `#a234c7` | `#9128b4` | `#8222a2` | `#73228e` | `#65237b` |
   typography: |
     ### TDS foundation type scale
 

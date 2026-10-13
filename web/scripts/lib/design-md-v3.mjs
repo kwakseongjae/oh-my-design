@@ -309,6 +309,9 @@ export function convertFrontmatter(fm, overlay = {}, sourceText = "") {
     verification = { ...v2 };
     if (v2.claims !== undefined) verification.claims = rekeyClaims(v2.claims, tokens);
     if (overlay.verification) {
+      // A reviewed overlay that adds observations also moves `checked` to the review that accepted
+      // them: an observation may not postdate its check (evidence-integrity).
+      if (overlay.verification.checked) verification.checked = overlay.verification.checked;
       verification.surfaces = [...(verification.surfaces ?? []), ...(overlay.verification.surfaces ?? [])];
       verification.sources = [...(verification.sources ?? []), ...(overlay.verification.sources ?? [])];
       for (const [k, ev] of Object.entries(overlay.verification.claims ?? {})) {

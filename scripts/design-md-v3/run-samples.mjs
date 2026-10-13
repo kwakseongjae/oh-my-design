@@ -18,8 +18,9 @@ execFileSync('node', [path.join(root, 'scripts/design-md-v3/extract-core-legacy.
 
 const plan = {
   toss: tossLegacy,
-  stripe: path.join(root, 'web/references/stripe/DESIGN.md'),
-  baemin: path.join(root, 'web/references/baemin/DESIGN.md'),
+  // stripe and baemin are v3 in the catalog since 2026-10-14; their legacy bytes are frozen here.
+  stripe: path.join(root, 'web/src/lib/references/fixtures/legacy-omd-0.1/stripe.md'),
+  baemin: path.join(root, 'web/src/lib/references/fixtures/legacy-omd-0.1/baemin.md'),
 };
 let failed = false;
 for (const [id, src] of Object.entries(plan)) {

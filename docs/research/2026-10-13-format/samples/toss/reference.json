@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-17",
+    "checked": "2026-10-13",
     "surfaces": [
       {
         "id": "marketing-home",
@@ -656,6 +656,42 @@
         "surface_id": "marketing-home",
         "source_id": "toss-live",
         "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.h1.fontFamily": {
+        "surface_id": "tds-button",
+        "source_id": "tds-button-live",
+        "method": "computed-style-and-official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h2.fontFamily": {
+        "surface_id": "tds-button",
+        "source_id": "tds-button-live",
+        "method": "computed-style-and-official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h3.fontFamily": {
+        "surface_id": "tds-button",
+        "source_id": "tds-button-live",
+        "method": "computed-style-and-official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.h4.fontFamily": {
+        "surface_id": "tds-button",
+        "source_id": "tds-button-live",
+        "method": "computed-style-and-official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.body.fontFamily": {
+        "surface_id": "tds-button",
+        "source_id": "tds-button-live",
+        "method": "computed-style-and-official-doc",
+        "captured": "2026-07-11"
+      },
+      "typography.body-small.fontFamily": {
+        "surface_id": "tds-button",
+        "source_id": "tds-button-live",
+        "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
       "colors.grey50": {

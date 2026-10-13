@@ -65,8 +65,16 @@ read date unless the column says otherwise.
 
 - `colors`: 12 → 92 (80 palette steps appended after the existing roles; existing values unchanged).
 - `typography`: 6 → 26 roles (20 appended; existing roles unchanged).
-- Claims: 81 → 201; `verification_v2.sources` 10 → 12 and `surfaces` 9 → 11 (two foundation pages).
-  The evidence ledger therefore moves by +2 sources when toss converts (1,845 → 1,847).
+- Claims: 81 → 207: 120 official-doc claims, plus 6 for the per-role `fontFamily` stacks the Phase 1
+  sample already carried without a claim. Those six cite the existing 2026-07-11 capture
+  (`tds-button-live`), which records Toss Product Sans as the first family on every captured type
+  role (715 of 715 occurrences); without them the catalog tier engine reads toss as `partial`
+  (`claim_evidence_missing`). `verification_v2.sources` 10 → 12 and `surfaces` 9 → 11 (two
+  foundation pages), and `verification_v2.checked` 2026-07-11 → 2026-10-13, because an observation
+  may not postdate the check that accepted it. The evidence ledger moves by +2 sources
+  (1,845 → 1,847). Toss stays `verified_v2`.
+- The Colors prose carries the full palette as a table, so every palette token is grounded in the
+  body (the catalog's colour-grounding gate).
 - No existing value is changed or removed. Spacing, radii, pressed and focus stay; two Known Gaps
   state where they come from.
 - Lint: 0 errors, 110 warnings (89 `orphaned-tokens`, from palette steps not bound to a component —
@@ -80,3 +88,5 @@ numeric line heights keep plain `typography.<role>.lineHeight` claim keys (baemi
 
 Reproduce: `node scripts/design-md-v3/run-samples.mjs` (toss: comparator OK, 85 legacy leaves, 126
 listed overlay additions — 80 colours, 40 type values and the 6 per-role `fontFamily` stacks).
+The catalog file `web/references/toss/` is this sample, byte for byte (converted 2026-10-14);
+`web/references/toss/.omd/system/` stays as the archived Core v2 package.

@@ -87,6 +87,7 @@ export function compareText(legacyText, designMd, side, overlay = {}) {
   if (expectedClaims !== Object.keys(nc).length) problems.push(`claim count ${expectedClaims} → ${Object.keys(nc).length}`);
   const { claims: _a, surfaces: ls = [], sources: lsrc = [], ...lv2 } = legacy.fm.verification_v2 ?? {};
   const { claims: _b, surfaces: ns = [], sources: nsrc = [], ...nv2 } = side.verification_v2 ?? {};
+  if (overlay.verification?.checked) lv2.checked = overlay.verification.checked;
   if (!isDeepStrictEqual(lv2, nv2)) problems.push('verification_v2 (non-claim fields) changed');
   if (!isDeepStrictEqual([...ls, ...(overlay.verification?.surfaces ?? [])], ns)) problems.push('verification_v2.surfaces changed');
   if (!isDeepStrictEqual([...lsrc, ...(overlay.verification?.sources ?? [])], nsrc)) problems.push('verification_v2.sources changed');
