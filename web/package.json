@@ -60,6 +60,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@google/design.md": "0.4.0",
     "@projectwallace/css-analyzer": "^9.9.0",
     "@tailwindcss/postcss": "^4",
     "@types/mixpanel-browser": "^2.60.0",
