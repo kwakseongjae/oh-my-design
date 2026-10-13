@@ -12,7 +12,6 @@ import { SearchBox } from "./search-box";
 import { SiteFooterA } from "./site-footer";
 import { SiteHeaderA } from "./site-header";
 import { UPCOMING_SKILLS } from "./skills-status";
-import "../../styles/wanted-sans-cjk.css";
 import "./landing.css";
 
 const GH_SKILLS = "https://github.com/kwakseongjae/oh-my-design/tree/main/skills/";

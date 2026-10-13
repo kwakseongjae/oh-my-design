@@ -11,7 +11,7 @@ import { Geist, Geist_Mono } from "next/font/google";
  *  - Wanted Sans Variable — the concept-A brand face (Latin + Hangul), self-
  *    hosted unicode-range slices in public/fonts/wanted-sans: Latin slices via
  *    styles/brand-a.css (site-wide), Hangul/CJK slices via
- *    styles/wanted-sans-cjk.css (landing pages only).
+ *    styles/wanted-sans-cjk.css (the /ko root layout only).
  *  - Noto Sans JP / Noto Sans TC — declared in app/(ja)/layout.tsx and
  *    app/(zh-tw)/layout.tsx so only those root layouts pull them in.
  *

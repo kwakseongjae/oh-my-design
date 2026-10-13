@@ -1,7 +1,6 @@
 import { Noto_Sans_JP } from "next/font/google";
 import { RootDocument } from "@/components/root-document";
 import { siteMetadata, siteViewport } from "@/lib/site-metadata";
-import { geistMono, geistSans } from "../fonts";
 import "../globals.css";
 
 /**
@@ -25,7 +24,7 @@ export const metadata = siteMetadata;
 
 export default function JapaneseRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <RootDocument lang="ja" className={`${geistSans.variable} ${geistMono.variable} ${notoJP.variable}`}>
+    <RootDocument lang="ja" className={notoJP.variable}>
       {children}
     </RootDocument>
   );

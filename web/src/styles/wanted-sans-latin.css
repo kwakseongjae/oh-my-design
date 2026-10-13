@@ -1,7 +1,7 @@
 /* Wanted Sans Variable v1.0.3, split build, self-hosted from public/fonts/wanted-sans.
  * Copyright (c) 2024 Wanted Lab, Inc., Reserved Font Name "Wanted Sans Variable".
  * SIL Open Font License 1.1 (public/fonts/wanted-sans/OFL.txt). Files unmodified.
- * Latin slices only (site-wide). Hangul/CJK slices are in wanted-sans-cjk.css (landing pages).
+ * Latin slices only (site-wide). Hangul/CJK slices are in wanted-sans-cjk.css (/ko only).
  * unicode-range slices: a page downloads only the slices its text uses. */
 @font-face {font-family: "Wanted Sans Variable"; font-style: normal; font-display: swap; font-weight: 400 1000; src: url("/fonts/wanted-sans/WantedSansVariable.split.89.woff2") format("woff2-variations"); unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2605-2606, U+2661, U+2665, U+2669-266C, U+2C7C;}
 @font-face {font-family: "Wanted Sans Variable"; font-style: normal; font-display: swap; font-weight: 400 1000; src: url("/fonts/wanted-sans/WantedSansVariable.split.90.woff2") format("woff2-variations"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6-02C7, U+02D0-02DD, U+2000-209F, U+20A0-20CF, U+2122, U+2190-2199, U+2212, U+2215, U+FEFF, U+FFFD;}

@@ -2,6 +2,8 @@ import { RootDocument } from "@/components/root-document";
 import { siteMetadata, siteViewport } from "@/lib/site-metadata";
 import { geistMono, geistSans } from "../fonts";
 import "../globals.css";
+// Hangul slices of Wanted Sans (the brand face for Korean); other locales fall back to the platform Korean face.
+import "../../styles/wanted-sans-cjk.css";
 
 /**
  * Root layout for the Korean landing (/ko). It exists separately from

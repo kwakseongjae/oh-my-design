@@ -28,7 +28,9 @@ const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w
 
 /* canvas fonts can't read CSS variables: resolve them against the document */
 function resolveFamily(f: string) {
-  return f.replace(/var\((--[\w-]+)\)/g, (_, v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || getComputedStyle(document.body).getPropertyValue(v).trim() || "sans-serif");
+  return f
+    .replace(/var\((--[\w-]+)\)/g, (_, v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim())
+    .replace(/^,+|,(?=,)/g, "");
 }
 
 interface K3 {

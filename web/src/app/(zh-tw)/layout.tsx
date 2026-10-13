@@ -1,7 +1,6 @@
 import { Noto_Sans_TC } from "next/font/google";
 import { RootDocument } from "@/components/root-document";
 import { siteMetadata, siteViewport } from "@/lib/site-metadata";
-import { geistMono, geistSans } from "../fonts";
 import "../globals.css";
 
 /**
@@ -23,7 +22,7 @@ export const metadata = siteMetadata;
 
 export default function TraditionalChineseRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <RootDocument lang="zh-Hant-TW" className={`${geistSans.variable} ${geistMono.variable} ${notoTC.variable}`}>
+    <RootDocument lang="zh-Hant-TW" className={notoTC.variable}>
       {children}
     </RootDocument>
   );

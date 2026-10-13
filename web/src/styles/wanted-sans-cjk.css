@@ -1,7 +1,7 @@
 /* Wanted Sans Variable v1.0.3, split build, self-hosted from public/fonts/wanted-sans.
  * Copyright (c) 2024 Wanted Lab, Inc., Reserved Font Name "Wanted Sans Variable".
  * SIL Open Font License 1.1 (public/fonts/wanted-sans/OFL.txt). Files unmodified.
- * Hangul/CJK/symbol slices (landing pages only). Latin is in wanted-sans-latin.css.
+ * Hangul/CJK/symbol slices (imported by the /ko root layout only; elsewhere Hangul uses the platform Korean face). Latin is in wanted-sans-latin.css.
  * unicode-range slices: a page downloads only the slices its text uses. */
 @font-face {font-family: "Wanted Sans Variable"; font-style: normal; font-display: swap; font-weight: 400 1000; src: url("/fonts/wanted-sans/WantedSansVariable.split.0.woff2") format("woff2-variations"); unicode-range: U+d723-d728, U+d72a-d733, U+d735-d748, U+d74a-d74f, U+d752-d753, U+d755-d757, U+d75a-d75f, U+d762-d764, U+d766-d768, U+d76a-d76b, U+d76d-d76f, U+d771-d787, U+d789-d78b, U+d78d-d78f, U+d791-d797, U+d79a, U+d79c, U+d79e-d7a3, U+f900-f909, U+f90b-f92e;}
 @font-face {font-family: "Wanted Sans Variable"; font-style: normal; font-display: swap; font-weight: 400 1000; src: url("/fonts/wanted-sans/WantedSansVariable.split.1.woff2") format("woff2-variations"); unicode-range: U+d679-d68b, U+d68e-d69e, U+d6a0, U+d6a2-d6a7, U+d6a9-d6c3, U+d6c6-d6c7, U+d6c9-d6cb, U+d6cd-d6d3, U+d6d5-d6d6, U+d6d8-d6e3, U+d6e5-d6e7, U+d6e9-d6fb, U+d6fd-d717, U+d719-d71f, U+d721-d722;}
