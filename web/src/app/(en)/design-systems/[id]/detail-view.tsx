@@ -26,7 +26,7 @@
  * /builder?ref=<id> links 308 to this block.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ReferencePreview } from "@/components/reference-preview";
 import { InstallCta } from "@/components/install-cta";
@@ -141,7 +141,7 @@ export function DetailView({
 }) {
   const [mobileView, setMobileView] = useState<MobileView>("preview");
   const [copied, setCopied] = useState(false);
-  const [drawer, setDrawer] = useState(false);
+  const drawerRef = useRef<HTMLDetailsElement>(null);
 
   // Fire page-view analytics once per mount.
   useEffect(() => {
@@ -154,7 +154,7 @@ export function DetailView({
   // The landing links /design-systems/toss#evidence as its evidence example:
   // arriving there opens the drawer rather than showing it closed.
   useEffect(() => {
-    if (window.location.hash === "#evidence") setDrawer(true);
+    if (window.location.hash === "#evidence" && drawerRef.current) drawerRef.current.open = true;
   }, []);
 
   const displayName =
@@ -351,7 +351,7 @@ export function DetailView({
                   </div>
                 </dl>
                 {(quality.reasonCodes.length > 0 || advisories.length > 0 || quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY)) && (
-                  <details className="sq-drawer" open={drawer} onToggle={(e) => setDrawer(e.currentTarget.open)}>
+                  <details className="sq-drawer" ref={drawerRef}>
                     <summary>What the evidence does not cover</summary>
                     {quality.reasonCodes.length > 0 && (
                       <p className="sq-drawer-codes">

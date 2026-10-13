@@ -78,3 +78,8 @@ body:has(.sq-root-page){background:var(--sq-paper)}
 .sq-loc a:focus-visible{outline:2px solid var(--sq-focus)}
 .sq-loc a[aria-current="page"]{background:var(--sq-ink);color:var(--sq-paper)}
 @media (max-width:1080px){.sq-loc a{padding:6px 7px}}
+/* surface links in the header tools slot (blog index + its ko/en switch, docs language) */
+.sq-xlink{display:inline-flex;align-items:center;min-height:34px;padding:0 10px;border:1px solid var(--sq-guide);font-size:13px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
+.sq-xlink:hover{color:var(--sq-ink);border-color:var(--sq-ink)}
+.sq-xlink-on{background:var(--sq-ink);border-color:var(--sq-ink);color:var(--sq-paper)}
+.sq-xlink-on:hover{color:var(--sq-paper)}

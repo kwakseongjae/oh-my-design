@@ -24,7 +24,7 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
       <BlogHtmlLang locale={locale} />
       <BlogHeader locale={locale} switchTo={blogIndexHref(other)} />
 
-      <section className="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6">
+      <section id="main" className="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6">
         <Link
           href={siteHref("/")}
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -36,7 +36,7 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
         </div>
         <h1
           className="text-4xl font-bold tracking-tight sm:text-5xl"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+          style={{ fontFamily: "var(--sq-f-en)" }}
         >
           {chrome.indexTitle}
         </h1>

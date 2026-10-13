@@ -34,7 +34,7 @@ export function BlogPostView({
       <BlogHtmlLang locale={post.locale} />
       <BlogHeader locale={locale} switchTo={switchTo} />
 
-      <article className="mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6" lang={post.locale}>
+      <article id="main" className="mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6" lang={post.locale}>
         <Link
           href={blogIndexHref(locale)}
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -61,7 +61,7 @@ export function BlogPostView({
 
         <h1
           className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+          style={{ fontFamily: "var(--sq-f-en)" }}
         >
           {post.title}
         </h1>

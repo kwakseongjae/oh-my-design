@@ -16,7 +16,7 @@ function remember(l: SiteLocale) {
   }
 }
 
-export function LocaleSwitch({ current, label }: { current: SiteLocale | null; label: string }) {
+export function LocaleSwitch({ current, label, origin = "" }: { current: SiteLocale | null; label: string; origin?: string }) {
   return (
     <>
       <nav className="sq-loc" aria-label={label}>
@@ -25,7 +25,7 @@ export function LocaleSwitch({ current, label }: { current: SiteLocale | null; l
           return (
             <a
               key={l}
-              href={m.path}
+              href={`${origin}${m.path}`}
               lang={m.htmlLang}
               hrefLang={m.hreflang}
               aria-current={l === current ? "page" : undefined}
@@ -44,7 +44,7 @@ export function LocaleSwitch({ current, label }: { current: SiteLocale | null; l
             const l = e.target.value as SiteLocale;
             if (!SITE_LOCALE_META[l]) return;
             remember(l);
-            window.location.href = SITE_LOCALE_META[l].path;
+            window.location.href = `${origin}${SITE_LOCALE_META[l].path}`;
           }}
         >
           {current ? null : <option value="">{label}</option>}

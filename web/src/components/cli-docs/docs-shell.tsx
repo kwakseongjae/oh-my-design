@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookOpen, Menu } from "lucide-react";
+import { ArrowLeft, ArrowRight, Menu } from "lucide-react";
 import type { ReactNode } from "react";
-import { Mark } from "@/components/brand-a/mark";
+import { SiteHeaderA } from "@/components/brand-a/site-header";
+import { SiteFooterA } from "@/components/brand-a/site-footer";
+import type { SiteLocale } from "@/lib/i18n/site-locales";
 import type { CliDocsDictionary } from "@/data/cli-docs";
 import {
   DOC_HTML_LANG,
@@ -13,7 +15,15 @@ import {
 import { LanguageSwitcher } from "./language-switcher";
 import { DocsPageActions } from "./docs-page-actions";
 import { DocsToc } from "./docs-toc";
-import { GithubStarButton } from "@/components/github-star-button";
+
+/** Site chrome copy per docs locale; zh-cn has no site locale, so it reads English chrome. */
+const SITE_COPY_LOCALE: Record<DocsLocale, SiteLocale> = {
+  en: "en",
+  ko: "ko",
+  ja: "ja",
+  "zh-tw": "zh-tw",
+  "zh-cn": "en",
+};
 import { docsPageMarkdown } from "@/lib/docs/page-markdown";
 import { docsLlmsText } from "@/lib/docs/llms-text";
 
@@ -57,34 +67,14 @@ export function DocsShell({
 
   return (
     <div lang={DOC_HTML_LANG[locale]} className="min-h-screen bg-background text-foreground">
-      <a
-        href="#docs-content"
-        className="sr-only z-[60] rounded-lg bg-background px-3 py-2 text-sm text-foreground ring-3 ring-ring/50 focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-      >
-        {dictionary.ui.skipContent}
-      </a>
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background">
-        <div className="mx-auto flex h-14 max-w-[1480px] items-center gap-3 px-4 sm:px-6">
-          <Link
-            href="/"
-            className="inline-flex shrink-0 items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-            aria-label={dictionary.ui.homeAria}
-          >
-            {/* Concept-A mark + wordmark (rebrand 2026-10-13); the docs keep their own nav and 5-locale switcher. */}
-            <Mark className="h-7 w-7 text-foreground" />
-            <span className="font-bold tracking-[-0.01em] text-foreground" style={{ fontFamily: "var(--sq-f-en)" }}>oh-my-design</span>
-          </Link>
-          <span className="h-5 w-px bg-border" aria-hidden />
-          <Link href={docsHref(locale)} className="hidden items-center gap-1.5 text-sm font-medium text-foreground/75 sm:inline-flex">
-            <BookOpen className="h-4 w-4 text-primary" />
-            {dictionary.ui.docs}
-          </Link>
-          <div className="ml-auto flex items-center gap-2">
-            <LanguageSwitcher locale={locale} page={page} label={dictionary.ui.language} />
-            <GithubStarButton variant="control" className="hidden sm:inline-flex" />
-          </div>
-        </div>
-      </header>
+      {/* Concept-A site header (rebrand round 2). The docs keep their own 5-locale
+          switcher in its tools slot, so the landing-locale switch is off here. */}
+      <SiteHeaderA
+        locale={SITE_COPY_LOCALE[locale]}
+        locales={false}
+        skipTo="#docs-content"
+        extra={<LanguageSwitcher locale={locale} page={page} label={dictionary.ui.language} />}
+      />
 
       <div className="border-b border-border/60 px-4 py-2 lg:hidden">
         <details className="group mx-auto max-w-3xl">
@@ -137,6 +127,7 @@ export function DocsShell({
           </div>
         </aside>
       </div>
+      <SiteFooterA locale={SITE_COPY_LOCALE[locale]} />
     </div>
   );
 }
