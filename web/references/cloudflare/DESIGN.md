@@ -1,95 +1,299 @@
 ---
-id: cloudflare
 name: Cloudflare
-country: US
-category: backend-devops
-homepage: "https://www.cloudflare.com"
-primary_color: "#F6821F"
-logo:
-  type: simpleicons
-  slug: "cloudflare"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: design-system
-  extracted: "2026-06-08"
-  components_harvested: true
-  note: "Cloudflare Orange #F6821F is the singular brand + primary-action color; rationed to one or two places per screen. Warm near-black text, never pure #000."
-  colors:
-    primary: "#F6821F"
-    primary-hover: "#E2700B"
-    primary-pressed: "#D9700F"
-    brand: "#F6821F"
-    brand-gradient-end: "#FAAD3F"
-    canvas: "#FFFFFF"
-    surface: "#FFFFFF"
-    surface-alt: "#F7F7F7"
-    foreground: "#1D1F20"
-    body: "#36393A"
-    muted: "#717174"
-    placeholder: "#999999"
-    hairline: "#EDEDED"
-    border-strong: "#D9D9D9"
-    on-primary: "#FFFFFF"
-    orange-tint: "#FDF3E7"
-    success: "#2FB344"
-    error: "#BD2528"
-    warning: "#F6C549"
-    info: "#2C7CB0"
-    dark-bg: "#15171A"
-    dark-surface: "#262A2E"
-    dark-border: "#3A3F44"
-    dark-text: "#E4E6E7"
-  typography:
-    family: { sans: "Inter", mono: "JetBrains Mono" }
-    display-hero: { size: 56, weight: 700, lineHeight: 1.1, tracking: -0.02, use: "Marketing hero headline" }
-    display:      { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.02, use: "Major section headers" }
-    heading-1:    { size: 32, weight: 700, lineHeight: 1.2, tracking: -0.01, use: "Page titles" }
-    heading-2:    { size: 24, weight: 600, lineHeight: 1.3, tracking: -0.01, use: "Section / card group titles" }
-    heading-3:    { size: 20, weight: 600, lineHeight: 1.4, use: "Card headings, panel titles" }
-    subtitle:     { size: 18, weight: 600, lineHeight: 1.45, use: "Lead-in / dashboard section labels" }
-    body-large:   { size: 16, weight: 400, lineHeight: 1.6, use: "Marketing paragraphs" }
-    body:         { size: 14, weight: 400, lineHeight: 1.55, use: "Dashboard standard text" }
-    body-small:   { size: 13, weight: 400, lineHeight: 1.5, use: "Table cells, secondary info" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.5, use: "Metadata, timestamps, helper text" }
-    label-eyebrow: { size: 12, weight: 600, lineHeight: 1.4, tracking: 0.06, use: "Section eyebrows, table headers, uppercase" }
-    code-mono:    { size: 13, weight: 400, lineHeight: 1.6, use: "DNS records, IPs, API tokens, code" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, xl: 12, full: 9999 }
-  shadow:
-    subtle: "rgba(0,0,0,0.06) 0px 1px 3px 0px"
-    raised: "rgba(0,0,0,0.08) 0px 4px 16px 0px"
-    floating: "rgba(0,0,0,0.12) 0px 8px 24px 0px"
-    modal: "rgba(0,0,0,0.18) 0px 12px 32px 0px"
-  components:
-    button-primary:   { type: button, bg: "#f6821f", fg: "#ffffff", radius: "8px", height: "36px", padding: "0 12px", font: "14px / 600", hover: "#e2700b", active: "#d9700f", focus: "2px brand ring", disabled: "brand 50% opacity", use: "Primary action — Get started, Add site, Save, Deploy" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#36393a", border: "1px solid #d9d9d9", radius: "8px", hover: "bg #fafafa · border #a1a1a1", use: "Companion to a primary — Cancel, Back" }
-    button-ghost:     { type: button, bg: "transparent", fg: "#f6821f", radius: "8px", padding: "0 12px", hover: "bg #fdf3e7", use: "Inline low-emphasis action, Learn more, text-link button" }
-    button-danger:    { type: button, bg: "#bd2528", fg: "#ffffff", radius: "8px", hover: "#a11f22", use: "Delete zone, remove record, purge — confirmation contexts only" }
-    button-sm:        { type: button, height: "26px", radius: "6px", padding: "0 8px", font: "12px / 600", use: "Toolbar and table-row inline actions where vertical space is tight" }
-    icon-button:      { type: button, height: "36px", radius: "8px", padding: "0", use: "Close, kebab menu, copy-to-clipboard affordance" }
-    input:            { type: input, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #d9d9d9", radius: "8px", height: "40px", padding: "0 16px", font: "14px / 400", focus: "1.5px brand ring · 0 0 0 3px rgba(246,130,31,0.2)", use: "Standard form input, search, config values" }
-    input-mono:       { type: input, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #d9d9d9", radius: "8px", font: "13px / 400 JetBrains Mono", use: "DNS record values, IP entry, token paste fields" }
-    select:           { type: input, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #d9d9d9", radius: "8px", height: "40px", use: "Plan picker, record-type selector, region dropdown — #717174 chevron" }
-    switch:           { type: toggle, active: "#f6821f", disabled: "#d9d9d9", radius: "5px", use: "Proxy on/off, feature flags, security toggles — white thumb with edge+drop shadow" }
-    checkbox:         { type: toggle, bg: "#f6821f", border: "1px solid #d9d9d9", radius: "6px", use: "Multi-select rules, plan options, consent — brand fill + white glyph when checked" }
-    card:             { type: card, bg: "#ffffff", border: "1px solid #ededed", radius: "8px", padding: "24px", shadow: "0 1px 3px rgba(0,0,0,0.06)", use: "Dashboard config panels, analytics modules — the workhorse surface" }
-    stat-card:        { type: card, bg: "#ffffff", border: "1px solid #ededed", radius: "8px", padding: "20px", font: "32px / 700 #1d1f20 number · 12px / 600 uppercase #717174 label", use: "Analytics summary tiles (requests, bandwidth, threats blocked)" }
-    surface:          { type: card, bg: "#ffffff", border: "1px solid #ededed", use: "kumo elevation roles — canvas #ffffff, recessed #f7f7f7, line/hairline #ededed" }
-    badge:            { type: badge, radius: "9999px", padding: "2px 8px", font: "12px / 500", use: "NEW, Beta, version, plan, short metadata — neutral/success/error/warning/info/orange + dashed-brand + 7px status dot" }
-    status-pill:      { type: badge, bg: "#e8f5d8", fg: "#3d6b14", radius: "9999px", padding: "2px 10px", font: "12px / 600", states: "green active #e8f5d8/#3d6b14 · red down #fbe2e2/#bd2528 · yellow pending #fcf3d6/#8a6d1b · grey #ededed/#4d4d4d · orange #fdf3e7/#c2670f", use: "Active, Proxied, Down, Pending status with colored dot" }
-    tabs:             { type: tab, active: "text #1d1f20 + 2px bottom border #f6821f", border: "1px solid #ededed bottom rule", font: "14px / 600", disabled: "#717174 inactive label", use: "Dashboard section switching (Overview / Analytics / DNS / SSL)" }
-    table:            { type: card, bg: "#ffffff", border: "1px solid #ededed", font: "13px / 400 #36393a body", padding: "12px 16px", hover: "#fafafa row", use: "DNS records, firewall rules, analytics logs — header bg #fafafa 12px/600 uppercase #717174" }
-    dialog:           { type: dialog, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #ededed", radius: "12px", padding: "32px", shadow: "0 12px 32px rgba(0,0,0,0.18)", use: "Confirmations, destructive double-checks, add-record flows — scrim rgba(29,31,32,0.5), scale-90 enter over 150ms" }
-    toast:            { type: toast, bg: "#1d1f20", fg: "#ffffff", radius: "12px", padding: "16px", shadow: "0 8px 24px rgba(0,0,0,0.12)", states: "success #2fb344 · error #bd2528 · warning #f6c549 · info #2c7cb0", use: "Auto-dismissing confirmation, fixed bottom-right 340px, 4-5s dismiss" }
-    tooltip:          { type: card, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #ededed", radius: "6px", padding: "6px 10px", font: "13px / 400", shadow: "shadow-lg", use: "Icon labels, truncated-value reveal, glossary terms" }
-    code-block:       { type: card, bg: "#f5f5f5", fg: "#1d1f20", border: "1px solid #ededed", radius: "6px", padding: "12px 16px", font: "13px / 400 JetBrains Mono", use: "API examples, Worker snippets, curl commands, DNS values" }
+colors:
+  primary: '#F6821F'
+  primary-hover: '#E2700B'
+  primary-pressed: '#D9700F'
+  brand: '#F6821F'
+  brand-gradient-end: '#FAAD3F'
+  canvas: '#FFFFFF'
+  surface: '#FFFFFF'
+  surface-alt: '#F7F7F7'
+  foreground: '#1D1F20'
+  body: '#36393A'
+  muted: '#717174'
+  placeholder: '#999999'
+  hairline: '#EDEDED'
+  border-strong: '#D9D9D9'
+  on-primary: '#FFFFFF'
+  orange-tint: '#FDF3E7'
+  success: '#2FB344'
+  error: '#BD2528'
+  warning: '#F6C549'
+  info: '#2C7CB0'
+  dark-bg: '#15171A'
+  dark-surface: '#262A2E'
+  dark-border: '#3A3F44'
+  dark-text: '#E4E6E7'
+typography:
+  display-hero:
+    fontSize: 56px
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: '-0.02px'
+    use: Marketing hero headline
+  display:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: '-0.02px'
+    use: Major section headers
+  heading-1:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: '-0.01px'
+    use: Page titles
+  heading-2:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: '-0.01px'
+    use: Section / card group titles
+  heading-3:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Card headings, panel titles
+  subtitle:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.45
+    use: Lead-in / dashboard section labels
+  body-large:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: Marketing paragraphs
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.55
+    use: Dashboard standard text
+  body-small:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Table cells, secondary info
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Metadata, timestamps, helper text
+  label-eyebrow:
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: 0.06px
+    use: Section eyebrows, table headers, uppercase
+  code-mono:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: DNS records, IPs, API tokens, code
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 8px
+  xl: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 16
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#f6821f'
+    textColor: '#ffffff'
+    rounded: 8px
+    height: 36px
+    padding: 0 12px
+    typography: 14px / 600
+    hover: '#e2700b'
+    active: '#d9700f'
+    focus: 2px brand ring
+    disabled: brand 50% opacity
+    use: Primary action — Get started, Add site, Save, Deploy
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#36393a'
+    border: '1px solid #d9d9d9'
+    rounded: 8px
+    hover: 'bg #fafafa · border #a1a1a1'
+    use: Companion to a primary — Cancel, Back
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#f6821f'
+    rounded: 8px
+    padding: 0 12px
+    hover: 'bg #fdf3e7'
+    use: Inline low-emphasis action, Learn more, text-link button
+  button-danger:
+    type: button
+    backgroundColor: '#bd2528'
+    textColor: '#ffffff'
+    rounded: 8px
+    hover: '#a11f22'
+    use: Delete zone, remove record, purge — confirmation contexts only
+  button-sm:
+    type: button
+    height: 26px
+    rounded: 6px
+    padding: 0 8px
+    typography: 12px / 600
+    use: Toolbar and table-row inline actions where vertical space is tight
+  icon-button:
+    type: button
+    height: 36px
+    rounded: 8px
+    padding: '0'
+    use: Close, kebab menu, copy-to-clipboard affordance
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1d1f20'
+    border: '1px solid #d9d9d9'
+    rounded: 8px
+    height: 40px
+    padding: 0 16px
+    typography: 14px / 400
+    focus: 1.5px brand ring · 0 0 0 3px rgba(246,130,31,0.2)
+    use: Standard form input, search, config values
+  input-mono:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1d1f20'
+    border: '1px solid #d9d9d9'
+    rounded: 8px
+    typography: 13px / 400 JetBrains Mono
+    use: DNS record values, IP entry, token paste fields
+  select:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1d1f20'
+    border: '1px solid #d9d9d9'
+    rounded: 8px
+    height: 40px
+    use: 'Plan picker, record-type selector, region dropdown — #717174 chevron'
+  switch:
+    type: toggle
+    active: '#f6821f'
+    disabled: '#d9d9d9'
+    rounded: 5px
+    use: Proxy on/off, feature flags, security toggles — white thumb with edge+drop shadow
+  checkbox:
+    type: toggle
+    backgroundColor: '#f6821f'
+    border: '1px solid #d9d9d9'
+    rounded: 6px
+    use: Multi-select rules, plan options, consent — brand fill + white glyph when checked
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #ededed'
+    rounded: 8px
+    padding: 24px
+    shadow: 0 1px 3px rgba(0,0,0,0.06)
+    use: Dashboard config panels, analytics modules — the workhorse surface
+  stat-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #ededed'
+    rounded: 8px
+    padding: 20px
+    typography: '32px / 700 #1d1f20 number · 12px / 600 uppercase #717174 label'
+    use: Analytics summary tiles (requests, bandwidth, threats blocked)
+  surface:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #ededed'
+    use: 'kumo elevation roles — canvas #ffffff, recessed #f7f7f7, line/hairline #ededed'
+  badge:
+    type: badge
+    rounded: 9999px
+    padding: 2px 8px
+    typography: 12px / 500
+    use: NEW, Beta, version, plan, short metadata — neutral/success/error/warning/info/orange + dashed-brand + 7px status dot
+  status-pill:
+    type: badge
+    backgroundColor: '#e8f5d8'
+    textColor: '#3d6b14'
+    rounded: 9999px
+    padding: 2px 10px
+    typography: 12px / 600
+    states: 'green active #e8f5d8/#3d6b14 · red down #fbe2e2/#bd2528 · yellow pending #fcf3d6/#8a6d1b · grey #ededed/#4d4d4d · orange #fdf3e7/#c2670f'
+    use: Active, Proxied, Down, Pending status with colored dot
+  tabs:
+    type: tab
+    active: 'text #1d1f20 + 2px bottom border #f6821f'
+    border: '1px solid #ededed bottom rule'
+    typography: 14px / 600
+    disabled: '#717174 inactive label'
+    use: Dashboard section switching (Overview / Analytics / DNS / SSL)
+  table:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #ededed'
+    typography: '13px / 400 #36393a body'
+    padding: 12px 16px
+    hover: '#fafafa row'
+    use: 'DNS records, firewall rules, analytics logs — header bg #fafafa 12px/600 uppercase #717174'
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#1d1f20'
+    border: '1px solid #ededed'
+    rounded: 12px
+    padding: 32px
+    shadow: 0 12px 32px rgba(0,0,0,0.18)
+    use: Confirmations, destructive double-checks, add-record flows — scrim rgba(29,31,32,0.5), scale-90 enter over 150ms
+  toast:
+    type: toast
+    backgroundColor: '#1d1f20'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 16px
+    shadow: 0 8px 24px rgba(0,0,0,0.12)
+    states: 'success #2fb344 · error #bd2528 · warning #f6c549 · info #2c7cb0'
+    use: Auto-dismissing confirmation, fixed bottom-right 340px, 4-5s dismiss
+  tooltip:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#1d1f20'
+    border: '1px solid #ededed'
+    rounded: 6px
+    padding: 6px 10px
+    typography: 13px / 400
+    shadow: shadow-lg
+    use: Icon labels, truncated-value reveal, glossary terms
+  code-block:
+    type: card
+    backgroundColor: '#f5f5f5'
+    textColor: '#1d1f20'
+    border: '1px solid #ededed'
+    rounded: 6px
+    padding: 12px 16px
+    typography: 13px / 400 JetBrains Mono
+    use: API examples, Worker snippets, curl commands, DNS values
+fonts:
+  roles:
+    sans: Inter
+    mono: JetBrains Mono
 ---
 
 # Design System Inspiration of Cloudflare
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Cloudflare is the connectivity-cloud company that sits in front of a meaningful slice of the internet — CDN, DNS, DDoS mitigation, Zero Trust, Workers edge compute. Its visual identity has one job: make planet-scale infrastructure feel *approachable and human* in a category that defaults to cold, blue, enterprise seriousness. The answer is a single, unmistakable move — **Cloudflare Orange (`#F6821F`)** against generous white space and near-black charcoal text. In a backend-devops landscape where AWS, Azure, GCP, Datadog, and nearly every security vendor reach for navy and electric blue, Cloudflare's warm orange is a deliberate act of differentiation. The orange *is* the brand; everything else is restraint built to let it sing.
 
@@ -106,7 +310,7 @@ Typography is **Inter-led** — a clean, highly-legible neo-grotesque optimized 
 - Perceptual color scales (orange, blue, grey, plus semantic red/green/yellow) for tokens
 - Engineering-grade restraint: clean rules, subtle shadows, generous whitespace, no gratuitous gradients
 
-## Primary tasks
+### Primary tasks
 
 - Add a site and get it set up on Cloudflare
 - Add the first DNS record to an empty zone
@@ -114,7 +318,38 @@ Typography is **Inter-led** — a clean, highly-legible neo-grotesque optimized 
 - Manage firewall rules and access policies across many zones
 - Copy an API token or IP address out of the dashboard
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Cloudflare was founded in **2009** by **Matthew Prince, Lee Holloway, and Michelle Zatlyn**, growing out of Project Honey Pot — a system for tracking online attackers. The founding insight: the tools that protect and accelerate the internet were locked behind enterprise price tags, available only to the largest companies. Cloudflare's thesis was to **democratize** that infrastructure — give the same DDoS protection, CDN, and DNS that a bank uses to a hobbyist's blog, much of it free. The mission, repeated everywhere, is *"to help build a better Internet."*
+
+That populist, pro-developer DNA explains the design. In a category dominated by navy-blue, suit-and-tie enterprise security branding, Cloudflare chose **warm orange** — friendly, energetic, human — to signal that powerful infrastructure could be approachable. The orange cloud logomark, built from a warm orange-to-yellow gradient, is both literal (a cloud) and emotional (warmth in a cold category). The generous whitespace and clean Inter typography say "this is easy"; the dense, monospace-heavy dashboard says "this is serious engineering." Both are true at once.
+
+Cloudflare went public on the NYSE in **2019 (ticker NET)** and has grown into a "connectivity cloud" — CDN, DNS (1.1.1.1), Zero Trust, Workers edge compute, R2 storage, and AI inference at the edge. The design system scaled with it: a published color system ("Color by Cloudflare Design"), the open-source cf-ui component library, a comprehensive style guide, and a fully-realized dashboard dark mode. Through every expansion the orange has stayed fixed — the one constant that makes a sprawling platform feel like a single, recognizable brand.
+
+What Cloudflare refuses: the cold blue of incumbent security and cloud vendors, the fear-based marketing of the security industry, and gratuitous visual ornament. It occupies a deliberate middle — technically credible yet warm, massive in scale yet approachable in tone.
+
+### Principles
+
+1. **Orange is the action.** `#F6821F` marks where the user should look and click. It is rationed to one or two places per screen. When orange decorates instead of directs, it has been misused.
+2. **Borders before shadows.** Structure comes from crisp 1px neutral rules and alignment. Shadows are reserved for genuinely floating layers. A dense dashboard stays legible because surfaces are outlined, not stacked in soft elevation.
+3. **Monospace for truth.** Anything an operator must read exactly — IPs, DNS records, tokens, code — is monospace. Proportional fonts are for prose, not infrastructure.
+4. **Whitespace where you sell, density where you work.** Marketing breathes; the dashboard packs. Both are intentional, neither apologizes.
+5. **Warm, not cold.** Near-black is warm charcoal, the accent is warm orange. Cloudflare deliberately rejects the cold blue of its category — humanity is a design requirement.
+6. **Plain words, precise claims.** Copy is direct and benefit-led; technical labels are exact. No jargon for its own sake, no vague enterprise filler.
+7. **Parity in dark.** Product UI must work in light and dark with equal polish. Orange holds in both; surfaces shift, the brand doesn't.
+8. **Powerful but approachable.** Every screen must feel usable by a solo developer and trustworthy to an enterprise team simultaneously. That tension is the brand.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Cloudflare user segments, not individual people.*
+
+**Devin, 29, Austin.** Full-stack developer at a Series-B startup. Runs the company's marketing site and a handful of side projects through Cloudflare's free and Pro plans. Lives in the DNS and Workers sections of the dashboard. Wants the proxy toggle and DNS record table to be instant and unambiguous; copies API tokens and IPs constantly and is annoyed when they aren't in a monospace, click-to-copy field. Reads the Cloudflare blog for fun. Picked Cloudflare partly because the free tier let him do real things without a sales call.
+
+**Priya, 41, London.** Security engineer at a mid-market fintech. Manages WAF rules, Zero Trust access policies, and bot mitigation across dozens of zones. Spends her day in dense data tables and log streams; values information density over whitespace and wants status (Proxied / Blocked / Down) legible at a glance via colored pills. Distrusts marketing fluff — judges the product by the precision of its labels and the speed of its analytics. Dark mode all day.
+
+**Marcus, 52, Chicago.** VP of Infrastructure evaluating Cloudflare for an enterprise migration. Lands first on the marketing site, where the calm whitespace, confident headlines, and single orange CTA signal a mature, trustworthy vendor. Clicks "Talk to an expert." Cares that the brand reads as serious engineering *and* approachable enough that his whole team will actually adopt it. The warmth of the orange is, to him, a subtle promise that this won't feel like legacy enterprise software.
+
+## Colors
 
 ### Primary
 - **Cloudflare Orange** (`#F6821F`): The brand. Primary CTAs, the cloud logomark, links, active/selected states, focus accents. The one color that carries emotional weight.
@@ -158,7 +393,7 @@ Typography is **Inter-led** — a clean, highly-legible neo-grotesque optimized 
 - **Dark Text** (`#E4E6E7`): Primary text on dark; muted `#9BA1A6`.
 - Orange stays `#F6821F` in dark mode — it is bright enough to hold against dark surfaces without adjustment.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`
@@ -188,7 +423,136 @@ Typography is **Inter-led** — a clean, highly-legible neo-grotesque optimized 
 - **Monospace is a first-class citizen.** Technical strings — IPs, DNS records, hashes, tokens, JSON — always render in mono so they are scannable and copy-safe. Never set an API key in a proportional font.
 - **Uppercase eyebrows.** Small 12px/600 uppercase labels with `0.06em` tracking mark sections and table headers — a quiet structural device, not decoration.
 
-## 4. Component Patterns
+## Layout
+
+### Spacing System
+- Base unit: 4px; primary rhythm on 8px.
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px.
+- Marketing sections: generous 64–96px vertical rhythm.
+- Dashboard panels: tighter 16–24px internal padding for density.
+
+### Grid & Container
+- Marketing max-width: ~1200px, centered, 24px gutters.
+- Dashboard: persistent left nav (~240px) + fluid content area; tables go full-width within content.
+- 12-column responsive grid on marketing; flexible flex/stack layout in product.
+
+### Whitespace Philosophy
+- **Whitespace earns trust.** Marketing pages breathe — one idea per band, large headline, supporting paragraph, single orange CTA.
+- **Density where work happens.** The dashboard trades whitespace for information: data tables, log streams, and config grids are intentionally dense because operators want facts per pixel.
+- **Orange is rationed.** A screen typically shows orange in exactly one or two places. Scarcity is what makes it read as "the action."
+
+### Border Radius Scale
+- Tight (4px): pills' inner chips, small inline tags
+- Standard (6px): buttons, inputs, selects, code blocks
+- Comfortable (8px): cards, panels, toasts
+- Large (10–12px): modals, marketing feature cards
+- Pill (9999px): status badges, toggles, avatars
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, stacked cards, hamburger nav, full-width buttons |
+| Tablet | 640–1024px | 2-column feature grids, collapsible dashboard side nav |
+| Desktop | 1024–1280px | Full marketing grid; dashboard left nav + content |
+| Wide | >1280px | Centered 1200px marketing container; dashboard tables expand |
+
+#### Touch Targets
+- Buttons: ≥40px tall (≥44px on mobile).
+- Table row actions: ≥40px tap height on touch.
+- Toggle/switch: ≥32px hit area.
+
+#### Collapsing Strategy
+- Dashboard left nav collapses to an icon rail, then to a drawer on mobile.
+- Wide data tables become horizontally scrollable or collapse to stacked key-value cards on small screens.
+- Marketing multi-column feature bands stack to single column; CTAs go full-width.
+
+#### Image / Asset Behavior
+- Product/partner logos render in a consistent grayscale-or-mono treatment in logo walls.
+- Analytics charts are full-width and responsive, maintaining aspect ratio.
+- The orange cloud logomark scales but never recolors.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow, 1px `#EDEDED` border | Inline elements, table rows, bordered panels |
+| Subtle (1) | `0 1px 3px rgba(0,0,0,0.06)` | Standard dashboard cards |
+| Raised (2) | `0 4px 16px rgba(0,0,0,0.08)` | Marketing feature cards, hover lift |
+| Floating (3) | `0 8px 24px rgba(0,0,0,0.12)` | Dropdowns, popovers, tooltips |
+| Modal (4) | `0 12px 32px rgba(0,0,0,0.18)` | Dialogs, command palette |
+
+**Shadow Philosophy:** Cloudflare prefers **borders over shadows** for structure — a crisp 1px `#EDEDED` rule defines most surfaces, with soft neutral shadows reserved for genuinely floating layers. Shadows are pure-black low-opacity, never tinted. This keeps the dense dashboard legible: dozens of bordered panels read cleanly where dozens of shadowed cards would muddy. The brand's depth comes from clarity and alignment, not drop-shadow drama.
+
+### Dark Mode Elevation
+- In dark mode, elevation is conveyed by **surface lightness**, not shadow: background `#15171A` → card `#262A2E` → popover `#2E3338`. Borders shift to `#3A3F44`.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `rgba(0,0,0,0.06) 0px 1px 3px 0px`
+- `shadow.raised`: `rgba(0,0,0,0.08) 0px 4px 16px 0px`
+- `shadow.floating`: `rgba(0,0,0,0.12) 0px 8px 24px 0px`
+- `shadow.modal`: `rgba(0,0,0,0.18) 0px 12px 32px 0px`
+
+## Motion & Easing
+
+**Durations** (named, not raw ms):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox state |
+| `motion-fast` | 120ms | Hover, focus ring, button press |
+| `motion-standard` | 200ms | Dropdowns, tab switches, accordion expand |
+| `motion-emphasis` | 300ms | Modal open, sheet, toast enter |
+| `motion-page` | 350ms | Route/section transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Appearing — modals, toasts, popovers |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals, collapses |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — tabs, accordions, hover lift |
+| `ease-out-soft` | `cubic-bezier(0.16, 1, 0.3, 1)` | Emphasized marketing reveals on scroll |
+
+**Signature motions.**
+
+1. **Hover lift.** Marketing feature cards rise ~2px and deepen shadow (`motion-fast / ease-standard`) on hover — a light, responsive cue that the surface is interactive.
+2. **Orange focus ring.** On keyboard focus, the 3px `rgba(246,130,31,0.2)` ring fades in over `motion-fast`. Accessibility-first; never suppressed for aesthetics.
+3. **Toast slide-in.** Toasts enter from the top-right (or bottom) translating ~16px with `motion-emphasis / ease-enter`, exit via `motion-fast / ease-exit` — leaving is quicker than arriving.
+4. **Status transitions.** When a zone flips state (Pending → Active), the pill cross-fades color over `motion-standard`; never a hard swap, so operators perceive the change.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; slides become fades; the dashboard stays fully usable.
+
+<!--
+OmD v0.1 Sources — Cloudflare
+
+Token grounding:
+- Cloudflare Orange #F6821F is the documented primary brand color (hint + widely
+  published brand-color references: brandcolors.net/b/cloudflare, brandpalettes.com,
+  schemecolor.com). Logomark gradient #F6821F → #FAAD3F (#F48120 alt).
+- Typography: Inter with system-ui fallback; JetBrains/mono for technical strings —
+  grounded in Cloudflare design-system docs (developers.cloudflare.com design-system,
+  cloudflare.github.io/cf-ui, color.cloudflare.design "Color by Cloudflare Design").
+- Dark mode: confirmed shipped (blog.cloudflare.com/dark-mode).
+- Founders/history (Prince, Holloway, Zatlyn, 2009; NYSE NET 2019; mission
+  "help build a better Internet") are widely documented public facts.
+
+Web research (2026-06-06): WebSearch results for Cloudflare brand color / design
+system / typography. color.cloudflare.design and cloudflare.com WebFetch were
+unreachable at write time (ECONNREFUSED / classifier unavailable); token values
+above are reconciled from multiple public brand-color references and the hint.
+
+Neutral/grey, semantic, and dark-mode hex values, component geometry (radii,
+padding, shadow tokens), motion tokens, and personas are interpretive
+reconstructions consistent with Cloudflare's observed marketing site and
+dashboard, not verbatim from a single published spec. Personas are fictional
+archetypes informed by publicly described Cloudflare user segments.
+-->
+
+## Components
 
 Cloudflare maintains a public, open-source component library — **kumo** (`github.com/cloudflare/kumo`, built on Base UI primitives + Tailwind CSS v4), succeeding the earlier **cf-ui** styleguide (`cloudflare.github.io/cf-ui`) — plus a public docs Style Guide (`developers.cloudflare.com/style-guide/components`). The geometry below is lifted from kumo's actual source: a consistent four-step control-size scale (`h-5`/`h-6.5`/`h-9`/`h-10` → 20/26/36/40px), a `rounded-sm → rounded-md → rounded-lg → rounded-xl` radius ladder (4/6/8/12px), and `ring`-based borders over solid borders. One honest nuance worth recording: kumo's *interactive* brand token (`--color-kumo-brand`) is a **blue** in the current library, while **Cloudflare Orange `#F6821F`** persists as the marketing/brand accent (`--text-color-kumo-brand: #f6821f`) and is what the live cloudflare.com surface renders for primary CTAs. The specs below keep the orange-led brand identity that the public marketing surface still ships, annotating where kumo diverges to blue.
 
@@ -400,50 +764,28 @@ Cloudflare maintains a public, open-source component library — **kumo** (`gith
 
 ---
 
-
 **Tier 1 sources:** https://www.cloudflare.com (live production marketing site, verified via live DOM getComputedStyle); Cloudflare's public component library **kumo** (`https://github.com/cloudflare/kumo` — source TSX + `theme-kumo.css` design tokens), the legacy **cf-ui** styleguide (`https://cloudflare.github.io/cf-ui`), and the docs **Style Guide** (`https://developers.cloudflare.com/style-guide/components`). Component geometry (size scale, radius ladder, ring borders, dialog/toast/tooltip specs) is lifted from kumo source; the orange-led palette is grounded in the live marketing surface.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px; primary rhythm on 8px.
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px.
-- Marketing sections: generous 64–96px vertical rhythm.
-- Dashboard panels: tighter 16–24px internal padding for density.
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | One line of `#36393A` body explaining the *why* ("No DNS records yet.") plus one orange-ghost or secondary action ("Add a record"). No illustration in the dashboard; marketing may use a light spot graphic. |
+| **Empty (filtered)** | Single `#717174` caption ("No records match your filter.") with a "Clear filter" text button. |
+| **Loading (first paint)** | Skeleton blocks at `#EDEDED` (light) / `#2A2E33` (dark) matching final layout. Metric values show `—` until resolved. |
+| **Loading (refresh)** | Inline orange spinner or top progress bar; existing data stays visible, never blanked. |
+| **Error (inline field)** | 1px `#BD2528` border, helper text below in `#BD2528` 12px, one actionable sentence ("Enter a valid IPv4 address."). |
+| **Error (toast)** | `#1D1F20` bg, white text, 4px red left-border, 4–5s auto-dismiss, one sentence. |
+| **Error (page-level)** | Centered message in `#1D1F20` 16px/600 + cause + retry button in orange. Reserved for outage/permission failures. |
+| **Success (toast)** | `#1D1F20` bg, white text, 4px green left-border ("Record added."). |
+| **Status: healthy** | Green pill + dot — "Active" / "Proxied" / "Healthy". |
+| **Status: degraded/paused** | Yellow pill — "Pending" / "DNS only" / "Paused". |
+| **Status: down/blocked** | Red pill — "Down" / "Blocked" / "Error". |
+| **Disabled** | Control at 40–50% opacity; orange buttons keep hue but drop opacity; geometry unchanged. |
+| **Focus** | 3px orange focus ring `rgba(246,130,31,0.2)` on inputs/buttons — visible for keyboard nav. |
+| **Loading inside button** | Label swapped for a small white spinner; button width preserved; press committed, no double-submit. |
 
-### Grid & Container
-- Marketing max-width: ~1200px, centered, 24px gutters.
-- Dashboard: persistent left nav (~240px) + fluid content area; tables go full-width within content.
-- 12-column responsive grid on marketing; flexible flex/stack layout in product.
-
-### Whitespace Philosophy
-- **Whitespace earns trust.** Marketing pages breathe — one idea per band, large headline, supporting paragraph, single orange CTA.
-- **Density where work happens.** The dashboard trades whitespace for information: data tables, log streams, and config grids are intentionally dense because operators want facts per pixel.
-- **Orange is rationed.** A screen typically shows orange in exactly one or two places. Scarcity is what makes it read as "the action."
-
-### Border Radius Scale
-- Tight (4px): pills' inner chips, small inline tags
-- Standard (6px): buttons, inputs, selects, code blocks
-- Comfortable (8px): cards, panels, toasts
-- Large (10–12px): modals, marketing feature cards
-- Pill (9999px): status badges, toggles, avatars
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow, 1px `#EDEDED` border | Inline elements, table rows, bordered panels |
-| Subtle (1) | `0 1px 3px rgba(0,0,0,0.06)` | Standard dashboard cards |
-| Raised (2) | `0 4px 16px rgba(0,0,0,0.08)` | Marketing feature cards, hover lift |
-| Floating (3) | `0 8px 24px rgba(0,0,0,0.12)` | Dropdowns, popovers, tooltips |
-| Modal (4) | `0 12px 32px rgba(0,0,0,0.18)` | Dialogs, command palette |
-
-**Shadow Philosophy:** Cloudflare prefers **borders over shadows** for structure — a crisp 1px `#EDEDED` rule defines most surfaces, with soft neutral shadows reserved for genuinely floating layers. Shadows are pure-black low-opacity, never tinted. This keeps the dense dashboard legible: dozens of bordered panels read cleanly where dozens of shadowed cards would muddy. The brand's depth comes from clarity and alignment, not drop-shadow drama.
-
-### Dark Mode Elevation
-- In dark mode, elevation is conveyed by **surface lightness**, not shadow: background `#15171A` → card `#262A2E` → popover `#2E3338`. Borders shift to `#3A3F44`.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Cloudflare Orange (`#F6821F`) for the primary CTA and key interactive accents — and almost nowhere else.
@@ -463,32 +805,23 @@ Cloudflare maintains a public, open-source component library — **kumo** (`gith
 - Don't set body text in 700 — reserve bold for headings and emphasis.
 - Don't mix the logomark gradient orange (`#FAAD3F`) into UI text or buttons.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked cards, hamburger nav, full-width buttons |
-| Tablet | 640–1024px | 2-column feature grids, collapsible dashboard side nav |
-| Desktop | 1024–1280px | Full marketing grid; dashboard left nav + content |
-| Wide | >1280px | Centered 1200px marketing container; dashboard tables expand |
+Cloudflare's voice is **technical but human** — confident, plain-spoken, and quietly witty. It explains hard infrastructure to a broad audience (a solo developer on the free plan and a Fortune 100 security team) without dumbing it down or drowning it in jargon. The famous mission line — *"to help build a better Internet"* — sets the register: ambitious, optimistic, capital-I "Internet." Marketing copy is benefit-led and concrete; the blog (a beloved engineering channel) goes deep with precision and personality. Sentences are direct. Claims are specific and measurable.
 
-### Touch Targets
-- Buttons: ≥40px tall (≥44px on mobile).
-- Table row actions: ≥40px tap height on touch.
-- Toggle/switch: ≥32px hit area.
+| Context | Tone |
+|---|---|
+| CTAs | Short imperative verb phrases — "Get started", "Add a site", "Sign up", "Talk to an expert". |
+| Headlines | Confident, benefit-first, plain — "Make employees, applications and networks faster and more secure." |
+| Product UI labels | Precise, technical, unambiguous — "Proxied", "DNS only", "Always Use HTTPS". |
+| Success messages | Past-tense, specific — "DNS record added", "SSL certificate issued". |
+| Error messages | Specific, blameless, actionable — name what failed and what to do next. |
+| Blog / docs | Deep, candid, occasionally playful; explains the *why* behind the engineering. |
+| Empty states | One line of why + one action — "No DNS records yet. Add your first record." |
 
-### Collapsing Strategy
-- Dashboard left nav collapses to an icon rail, then to a drawer on mobile.
-- Wide data tables become horizontally scrollable or collapse to stacked key-value cards on small screens.
-- Marketing multi-column feature bands stack to single column; CTAs go full-width.
+**Forbidden moves.** Vague enterprise filler ("synergy", "best-in-class") without substance; fear-mongering security FUD; over-promising 100% guarantees; burying the user in acronyms without a first-use expansion.
 
-### Image / Asset Behavior
-- Product/partner logos render in a consistent grayscale-or-mono treatment in logo walls.
-- Analytics charts are full-width and responsive, maintaining aspect ratio.
-- The orange cloud logomark scales but never recolors.
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Cloudflare Orange (`#F6821F`)
@@ -523,123 +856,8 @@ Cloudflare maintains a public, open-source component library — **kumo** (`gith
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Cloudflare's voice is **technical but human** — confident, plain-spoken, and quietly witty. It explains hard infrastructure to a broad audience (a solo developer on the free plan and a Fortune 100 security team) without dumbing it down or drowning it in jargon. The famous mission line — *"to help build a better Internet"* — sets the register: ambitious, optimistic, capital-I "Internet." Marketing copy is benefit-led and concrete; the blog (a beloved engineering channel) goes deep with precision and personality. Sentences are direct. Claims are specific and measurable.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Short imperative verb phrases — "Get started", "Add a site", "Sign up", "Talk to an expert". |
-| Headlines | Confident, benefit-first, plain — "Make employees, applications and networks faster and more secure." |
-| Product UI labels | Precise, technical, unambiguous — "Proxied", "DNS only", "Always Use HTTPS". |
-| Success messages | Past-tense, specific — "DNS record added", "SSL certificate issued". |
-| Error messages | Specific, blameless, actionable — name what failed and what to do next. |
-| Blog / docs | Deep, candid, occasionally playful; explains the *why* behind the engineering. |
-| Empty states | One line of why + one action — "No DNS records yet. Add your first record." |
-
-**Forbidden moves.** Vague enterprise filler ("synergy", "best-in-class") without substance; fear-mongering security FUD; over-promising 100% guarantees; burying the user in acronyms without a first-use expansion.
-
-## 11. Brand Narrative
-
-Cloudflare was founded in **2009** by **Matthew Prince, Lee Holloway, and Michelle Zatlyn**, growing out of Project Honey Pot — a system for tracking online attackers. The founding insight: the tools that protect and accelerate the internet were locked behind enterprise price tags, available only to the largest companies. Cloudflare's thesis was to **democratize** that infrastructure — give the same DDoS protection, CDN, and DNS that a bank uses to a hobbyist's blog, much of it free. The mission, repeated everywhere, is *"to help build a better Internet."*
-
-That populist, pro-developer DNA explains the design. In a category dominated by navy-blue, suit-and-tie enterprise security branding, Cloudflare chose **warm orange** — friendly, energetic, human — to signal that powerful infrastructure could be approachable. The orange cloud logomark, built from a warm orange-to-yellow gradient, is both literal (a cloud) and emotional (warmth in a cold category). The generous whitespace and clean Inter typography say "this is easy"; the dense, monospace-heavy dashboard says "this is serious engineering." Both are true at once.
-
-Cloudflare went public on the NYSE in **2019 (ticker NET)** and has grown into a "connectivity cloud" — CDN, DNS (1.1.1.1), Zero Trust, Workers edge compute, R2 storage, and AI inference at the edge. The design system scaled with it: a published color system ("Color by Cloudflare Design"), the open-source cf-ui component library, a comprehensive style guide, and a fully-realized dashboard dark mode. Through every expansion the orange has stayed fixed — the one constant that makes a sprawling platform feel like a single, recognizable brand.
-
-What Cloudflare refuses: the cold blue of incumbent security and cloud vendors, the fear-based marketing of the security industry, and gratuitous visual ornament. It occupies a deliberate middle — technically credible yet warm, massive in scale yet approachable in tone.
-
-## 12. Principles
-
-1. **Orange is the action.** `#F6821F` marks where the user should look and click. It is rationed to one or two places per screen. When orange decorates instead of directs, it has been misused.
-2. **Borders before shadows.** Structure comes from crisp 1px neutral rules and alignment. Shadows are reserved for genuinely floating layers. A dense dashboard stays legible because surfaces are outlined, not stacked in soft elevation.
-3. **Monospace for truth.** Anything an operator must read exactly — IPs, DNS records, tokens, code — is monospace. Proportional fonts are for prose, not infrastructure.
-4. **Whitespace where you sell, density where you work.** Marketing breathes; the dashboard packs. Both are intentional, neither apologizes.
-5. **Warm, not cold.** Near-black is warm charcoal, the accent is warm orange. Cloudflare deliberately rejects the cold blue of its category — humanity is a design requirement.
-6. **Plain words, precise claims.** Copy is direct and benefit-led; technical labels are exact. No jargon for its own sake, no vague enterprise filler.
-7. **Parity in dark.** Product UI must work in light and dark with equal polish. Orange holds in both; surfaces shift, the brand doesn't.
-8. **Powerful but approachable.** Every screen must feel usable by a solo developer and trustworthy to an enterprise team simultaneously. That tension is the brand.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Cloudflare user segments, not individual people.*
-
-**Devin, 29, Austin.** Full-stack developer at a Series-B startup. Runs the company's marketing site and a handful of side projects through Cloudflare's free and Pro plans. Lives in the DNS and Workers sections of the dashboard. Wants the proxy toggle and DNS record table to be instant and unambiguous; copies API tokens and IPs constantly and is annoyed when they aren't in a monospace, click-to-copy field. Reads the Cloudflare blog for fun. Picked Cloudflare partly because the free tier let him do real things without a sales call.
-
-**Priya, 41, London.** Security engineer at a mid-market fintech. Manages WAF rules, Zero Trust access policies, and bot mitigation across dozens of zones. Spends her day in dense data tables and log streams; values information density over whitespace and wants status (Proxied / Blocked / Down) legible at a glance via colored pills. Distrusts marketing fluff — judges the product by the precision of its labels and the speed of its analytics. Dark mode all day.
-
-**Marcus, 52, Chicago.** VP of Infrastructure evaluating Cloudflare for an enterprise migration. Lands first on the marketing site, where the calm whitespace, confident headlines, and single orange CTA signal a mature, trustworthy vendor. Clicks "Talk to an expert." Cares that the brand reads as serious engineering *and* approachable enough that his whole team will actually adopt it. The warmth of the orange is, to him, a subtle promise that this won't feel like legacy enterprise software.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (first use)** | One line of `#36393A` body explaining the *why* ("No DNS records yet.") plus one orange-ghost or secondary action ("Add a record"). No illustration in the dashboard; marketing may use a light spot graphic. |
-| **Empty (filtered)** | Single `#717174` caption ("No records match your filter.") with a "Clear filter" text button. |
-| **Loading (first paint)** | Skeleton blocks at `#EDEDED` (light) / `#2A2E33` (dark) matching final layout. Metric values show `—` until resolved. |
-| **Loading (refresh)** | Inline orange spinner or top progress bar; existing data stays visible, never blanked. |
-| **Error (inline field)** | 1px `#BD2528` border, helper text below in `#BD2528` 12px, one actionable sentence ("Enter a valid IPv4 address."). |
-| **Error (toast)** | `#1D1F20` bg, white text, 4px red left-border, 4–5s auto-dismiss, one sentence. |
-| **Error (page-level)** | Centered message in `#1D1F20` 16px/600 + cause + retry button in orange. Reserved for outage/permission failures. |
-| **Success (toast)** | `#1D1F20` bg, white text, 4px green left-border ("Record added."). |
-| **Status: healthy** | Green pill + dot — "Active" / "Proxied" / "Healthy". |
-| **Status: degraded/paused** | Yellow pill — "Pending" / "DNS only" / "Paused". |
-| **Status: down/blocked** | Red pill — "Down" / "Blocked" / "Error". |
-| **Disabled** | Control at 40–50% opacity; orange buttons keep hue but drop opacity; geometry unchanged. |
-| **Focus** | 3px orange focus ring `rgba(246,130,31,0.2)` on inputs/buttons — visible for keyboard nav. |
-| **Loading inside button** | Label swapped for a small white spinner; button width preserved; press committed, no double-submit. |
-
-## 15. Motion & Easing
-
-**Durations** (named, not raw ms):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox state |
-| `motion-fast` | 120ms | Hover, focus ring, button press |
-| `motion-standard` | 200ms | Dropdowns, tab switches, accordion expand |
-| `motion-emphasis` | 300ms | Modal open, sheet, toast enter |
-| `motion-page` | 350ms | Route/section transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Appearing — modals, toasts, popovers |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Leaving — dismissals, collapses |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — tabs, accordions, hover lift |
-| `ease-out-soft` | `cubic-bezier(0.16, 1, 0.3, 1)` | Emphasized marketing reveals on scroll |
-
-**Signature motions.**
-
-1. **Hover lift.** Marketing feature cards rise ~2px and deepen shadow (`motion-fast / ease-standard`) on hover — a light, responsive cue that the surface is interactive.
-2. **Orange focus ring.** On keyboard focus, the 3px `rgba(246,130,31,0.2)` ring fades in over `motion-fast`. Accessibility-first; never suppressed for aesthetics.
-3. **Toast slide-in.** Toasts enter from the top-right (or bottom) translating ~16px with `motion-emphasis / ease-enter`, exit via `motion-fast / ease-exit` — leaving is quicker than arriving.
-4. **Status transitions.** When a zone flips state (Pending → Active), the pill cross-fades color over `motion-standard`; never a hard swap, so operators perceive the change.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; slides become fades; the dashboard stays fully usable.
-
-<!--
-OmD v0.1 Sources — Cloudflare
-
-Token grounding:
-- Cloudflare Orange #F6821F is the documented primary brand color (hint + widely
-  published brand-color references: brandcolors.net/b/cloudflare, brandpalettes.com,
-  schemecolor.com). Logomark gradient #F6821F → #FAAD3F (#F48120 alt).
-- Typography: Inter with system-ui fallback; JetBrains/mono for technical strings —
-  grounded in Cloudflare design-system docs (developers.cloudflare.com design-system,
-  cloudflare.github.io/cf-ui, color.cloudflare.design "Color by Cloudflare Design").
-- Dark mode: confirmed shipped (blog.cloudflare.com/dark-mode).
-- Founders/history (Prince, Holloway, Zatlyn, 2009; NYSE NET 2019; mission
-  "help build a better Internet") are widely documented public facts.
-
-Web research (2026-06-06): WebSearch results for Cloudflare brand color / design
-system / typography. color.cloudflare.design and cloudflare.com WebFetch were
-unreachable at write time (ECONNREFUSED / classifier unavailable); token values
-above are reconciled from multiple public brand-color references and the hint.
-
-Neutral/grey, semantic, and dark-mode hex values, component geometry (radii,
-padding, shadow tokens), motion tokens, and personas are interpretive
-reconstructions consistent with Cloudflare's observed marketing site and
-dashboard, not verbatim from a single published spec. Personas are fictional
-archetypes informed by publicly described Cloudflare user segments.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#f6821f` measures 2.58:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

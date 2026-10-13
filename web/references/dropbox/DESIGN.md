@@ -1,66 +1,134 @@
 ---
-id: dropbox
 name: Dropbox
-country: US
-category: productivity
-homepage: "https://www.dropbox.com"
-primary_color: "#0061fe"
-logo:
-  type: simpleicons
-  slug: dropbox
-verified: "2026-06-11"
-added: "2026-06-11"
-omd: "0.1"
-ds:
-  name: Dropbox Brand Guidelines
-  url: https://brand.dropbox.com
-  type: brand
-  description: "Official brand site (dropbox.design redirects here) — framework, voice & tone, logo, typography, iconography, color, imagery, motion."
-tokens:
-  source: reconciled
-  extracted: "2026-06-11"
-  note: "Core trio from official brand site, confirmed live: Dropbox Blue #0061fe on Coconut cream #f7f5f2 with Graphite ink #1e1919. Text on blue is coconut, not pure white. Flat, shadowless marketing system."
-  colors:
-    primary: "#0061fe"
-    coconut: "#f7f5f2"
-    graphite: "#1e1919"
-    canvas: "#f7f5f2"
-    surface-white: "#ffffff"
-    sand: "#eee9e2"
-    graphite-deep: "#1c1d21"
-    muted: "#716b61"
-    on-primary: "#f7f5f2"
-    azalea: "#cd2f7b"
-    sunset: "#fa551e"
-    tangerine: "#ff8c19"
-    crimson: "#9b0032"
-  typography:
-    family: { display: "Sharp Grotesk", body: "Atlas Grotesk" }
-    display-hero: { size: 40, weight: 500, lineHeight: 1.20, use: "Hero headline, Sharp Grotesk Medium" }
-    section:      { size: 32, weight: 400, lineHeight: 1.20, use: "Section titles, Sharp Grotesk 23 (wide cut)" }
-    heading-sm:   { size: 26, weight: 500, lineHeight: 1.30, use: "Feature block headings, Sharp Grotesk" }
-    subheading:   { size: 20, weight: 500, lineHeight: 1.20, use: "Social-proof / card heads, Atlas Grotesk" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text, Atlas Grotesk" }
-    nav:          { size: 16, weight: 400, lineHeight: 1.50, use: "Header nav items, Atlas Grotesk" }
-    caption:      { size: 14, weight: 400, lineHeight: 1.55, use: "Footer links, legal, metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 72 }
-  rounded: { sm: 8, md: 12, lg: 16, full: 100 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#0061fe", fg: "#f7f5f2", border: "2px solid #0061fe", radius: "16px", padding: "16px 24px", height: "55px", font: "16px / 400 Atlas Grotesk", use: "Marketing/pricing CTA — Try Dropbox free, Buy now" }
-    button-compact: { type: button, bg: "#0061fe", fg: "#f7f5f2", radius: "12px", padding: "0 12px", height: "40px", font: "16px / 400 Atlas Grotesk", use: "Get started CTA in the 72px global header" }
-    button-outline: { type: button, fg: "#1e1919", border: "2px solid #1e1919", radius: "16px", padding: "16px 24px", height: "55px", font: "16px / 400 Atlas Grotesk", use: "Secondary CTA — Learn more" }
-    nav-link: { type: tab, fg: "#1e1919", padding: "16px 12px", font: "16px / 400 Atlas Grotesk", use: "Global header item (Products, Solutions, Pricing)" }
-    card-sand: { type: card, bg: "#eee9e2", fg: "#1e1919", radius: "12px", use: "Warm sand surface card alternating with cream canvas" }
-    card-menu: { type: card, fg: "#1e1919", radius: "12px", padding: "16px", height: "92px", use: "Mega-menu product entry card (Dropbox, Replay, Sign, Dash)" }
-    footer-link: { type: listItem, bg: "#1e1919", fg: "#f7f5f2", font: "14px / 400 Atlas Grotesk", use: "Footer navigation link on graphite band" }
-  components_harvested: true
+colors:
+  primary: '#0061fe'
+  coconut: '#f7f5f2'
+  graphite: '#1e1919'
+  canvas: '#f7f5f2'
+  surface-white: '#ffffff'
+  sand: '#eee9e2'
+  graphite-deep: '#1c1d21'
+  muted: '#716b61'
+  on-primary: '#f7f5f2'
+  azalea: '#cd2f7b'
+  sunset: '#fa551e'
+  tangerine: '#ff8c19'
+  crimson: '#9b0032'
+typography:
+  display-hero:
+    fontSize: 40px
+    fontWeight: 500
+    lineHeight: 1.2
+    use: Hero headline, Sharp Grotesk Medium
+  section:
+    fontSize: 32px
+    fontWeight: 400
+    lineHeight: 1.2
+    use: Section titles, Sharp Grotesk 23 (wide cut)
+  heading-sm:
+    fontSize: 26px
+    fontWeight: 500
+    lineHeight: 1.3
+    use: Feature block headings, Sharp Grotesk
+  subheading:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.2
+    use: Social-proof / card heads, Atlas Grotesk
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text, Atlas Grotesk
+  nav:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Header nav items, Atlas Grotesk
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.55
+    use: Footer links, legal, metadata
+rounded:
+  sm: 8px
+  md: 12px
+  lg: 16px
+  full: 100px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 72
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#0061fe'
+    textColor: '#f7f5f2'
+    border: '2px solid #0061fe'
+    rounded: 16px
+    padding: 16px 24px
+    height: 55px
+    typography: 16px / 400 Atlas Grotesk
+    use: Marketing/pricing CTA — Try Dropbox free, Buy now
+  button-compact:
+    type: button
+    backgroundColor: '#0061fe'
+    textColor: '#f7f5f2'
+    rounded: 12px
+    padding: 0 12px
+    height: 40px
+    typography: 16px / 400 Atlas Grotesk
+    use: Get started CTA in the 72px global header
+  button-outline:
+    type: button
+    textColor: '#1e1919'
+    border: '2px solid #1e1919'
+    rounded: 16px
+    padding: 16px 24px
+    height: 55px
+    typography: 16px / 400 Atlas Grotesk
+    use: Secondary CTA — Learn more
+  nav-link:
+    type: tab
+    textColor: '#1e1919'
+    padding: 16px 12px
+    typography: 16px / 400 Atlas Grotesk
+    use: Global header item (Products, Solutions, Pricing)
+  card-sand:
+    type: card
+    backgroundColor: '#eee9e2'
+    textColor: '#1e1919'
+    rounded: 12px
+    use: Warm sand surface card alternating with cream canvas
+  card-menu:
+    type: card
+    textColor: '#1e1919'
+    rounded: 12px
+    padding: 16px
+    height: 92px
+    use: Mega-menu product entry card (Dropbox, Replay, Sign, Dash)
+  footer-link:
+    type: listItem
+    backgroundColor: '#1e1919'
+    textColor: '#f7f5f2'
+    typography: 14px / 400 Atlas Grotesk
+    use: Footer navigation link on graphite band
+fonts:
+  roles:
+    display: Sharp Grotesk
+    body: Atlas Grotesk
 ---
 
 # Design System Inspiration of Dropbox
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Dropbox's marketing surface reads like a warm editorial workspace rather than a sterile SaaS dashboard. The canvas is not white but **Coconut** — a warm cream (`#f7f5f2`) that the official brand site names as one of its three core colors — layered with pure white panels (`#ffffff`) and a deeper warm sand (`#eee9e2`) for alternating card surfaces. Text sits in **Graphite** (`#1e1919`), a warm near-black with a reddish undertone instead of a cold neutral. Against this paper-like field, a single electric **Dropbox Blue** (`#0061fe`) carries every primary action. The most telling micro-decision in the system: text on blue buttons is coconut cream (`#f7f5f2`), not pure white — even at maximum contrast, the brand keeps its warmth.
 
@@ -78,7 +146,7 @@ Depth is essentially flat. Live inspection found `box-shadow: none` across CTAs,
 - 12px workhorse radius; 16px for large CTAs; 100px pill accents
 - 2px borders on all buttons, including filled ones (border matches fill)
 
-## Primary tasks
+### Primary tasks
 
 - Collect timestamped feedback on a video cut from clients
 - Send a client a link that opens on any device
@@ -86,7 +154,33 @@ Depth is essentially flat. Live inspection found `box-shadow: none` across CTAs,
 - Work out of shared folders and DocSend trackers
 - Compare plans on the pricing page and start free
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Dropbox was founded in **2007** by **Drew Houston** (with co-founder Arash Ferdowsi — a widely documented public fact; the current about page lists Houston as Co-Founder and Co-CEO, joined by Co-CEO Ashraf Alkarmi in 2024). The famous origin: Houston kept forgetting his USB drive on a bus ride and decided file sync should just work. Nearly two decades later the mission has widened from file syncing to the stated aim to **"design a more enlightened way of working"** — productivity tools that reduce busywork rather than create it.
+
+The product evolved from a single magic folder into a workspace platform — cloud storage plus Replay (video review), Sign, DocSend, Dash (AI-powered organization and search), and Reclaim.ai (scheduling) — serving, per the live homepage, "over 700 million registered users." The brand framework states the design intent plainly: "Dropbox is designed to simplify the frenzy of modern work," resting on four pillars — Humanity, Clarity, Action, Delight.
+
+What Dropbox refuses, visible in the design: sterile SaaS chrome (the canvas is warm coconut, not dashboard white), shadow-stacked skeuomorphism, and hype-driven copy. What it embraces: a paper-warm editorial surface, one decisive blue, a custom typeface built to be "warm, soulful, and relatable," and the Eames maxim quoted on its own brand site — "The details are not the details. They make the design."
+
+### Principles
+
+1. **Humanity.** "Warm, soulful, and relatable. We're here to keep life organized and make work easier." *UI implication:* warm coconut canvas, graphite (not black) ink, coconut (not white) text on blue — every neutral carries warmth.
+2. **Clarity.** "It's about surfacing what matters, cutting out what doesn't, and reducing complexity." *UI implication:* one action color, flat shadowless hierarchy, medium-weight type — nothing competes with the next step.
+3. **Action.** Users "always know what to do next. They should never have to read a manual." *UI implication:* a single unmistakable `#0061fe` CTA per context; verb-first labels ("Get started", "Try Dropbox free").
+4. **Delight.** "We design small moments of joy into everything we do." *UI implication:* witty copy, unexpected accent hues from the 16-color wheel, and motion that winks — used sparingly, one moment at a time.
+5. **The details are not the details.** The Eames quote anchors the brand framework. *UI implication:* micro-decisions carry the system — the 2px self-colored border on filled buttons, the cream-on-blue label, the wide type cut reserved for 32px titles.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Dropbox user segments (creative teams, small businesses, knowledge workers, IT admins), not individual people.*
+
+**Maya Chen, 34, Portland.** Freelance video editor juggling client review cycles. Uses Dropbox Replay to collect timestamped feedback and shares final cuts through plain Dropbox links. Chose it because clients never need a manual — the link just works on any device.
+
+**Tom Okafor, 41, Manchester.** Operations lead at a 40-person architecture firm. Migrated the studio from a chaotic file server; values that Dropbox feels calm and organized rather than enterprise-heavy. Reads "Security never comes second" and actually believes it because the interface never oversells.
+
+**Priya Raghavan, 28, Austin.** Startup marketer who lives in shared folders and DocSend trackers. Appreciates the warmth of the product's tone — confirmation messages that sound like a person — and the fact that the one blue button always tells her what to do next.
+
+## Colors
 
 ### Core (official brand trio)
 - **Dropbox Blue** (`#0061fe`): The primary brand color and the system's single action color. Every primary CTA ("Get started", "Try Dropbox free", "Buy now") is this blue. Confirmed identical on brand.dropbox.com swatches and live computed styles.
@@ -110,7 +204,7 @@ Depth is essentially flat. Live inspection found `box-shadow: none` across CTAs,
 - **Crimson** (`#9b0032`): Deep red accent.
 - The brand guidelines list further accents (Pink, Rust, Gold, Vivid Vargas, Canopy, Lime, Ocean, Zen, Navy, Cloud, Plum, Orchid) plus a 20-step grey scale; the guidance: "A diverse and unexpected color palette is a key visual expression of our brand."
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display**: `Sharp Grotesk` ("DB Sharp Grotesk") — custom variable typeface by Sharp Type. Headlines, feature heads. A wider cut, `Sharp Grotesk 23`, appears for large section titles.
@@ -134,7 +228,133 @@ Depth is essentially flat. Live inspection found `box-shadow: none` across CTAs,
 - **Normal tracking**: Letter-spacing stays `normal` across the measured hierarchy — the warmth comes from the letterforms, not from compression.
 - **"Type is what meaning looks like"** — the maxim quoted on the official typography page (Max Phillips, Sharp Type).
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px with a 12/16/24 working rhythm
+- Measured paddings: 12px (nav item horizontal), 16px (menu cards, CTA vertical), 24px (CTA horizontal, hero CTA)
+- Section gaps run generous (~72px) between full-width bands
+
+### Grid & Container
+- 72px sticky global header on the coconut canvas
+- Hero: two-column — headline + CTAs left, product visual right
+- Feature sections alternate coconut (`#f7f5f2`), white, sand (`#eee9e2`), and graphite (`#1e1919`) full-width bands
+- Mega-menu dropdowns arrange product cards (92px tall, 12px radius) in a grid
+- Pricing: plan columns with repeated `#0061fe` CTAs, one per plan
+
+### Whitespace Philosophy
+- **Editorial air**: the cream canvas plus generous vertical rhythm makes marketing pages read like a magazine spread, not a feature checklist.
+- **Band cadence**: light/dark alternation (coconut → white → graphite) paces the page; color shifts, not dividers, mark section boundaries.
+- **Flat segmentation**: with no shadows, grouping is communicated by surface tint and the 2px border language.
+
+### Border Radius Scale
+- Small (8px): minor elements
+- Medium (12px): the workhorse — menu cards, compact CTAs, content cards (60 occurrences live)
+- Large (16px): marketing CTAs, large containers
+- Full (100px): occasional pill accents
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero stacks, CTAs go full-width |
+| Tablet | 640–1024px | 2-column grids, condensed nav |
+| Desktop | 1024–1440px | Full layout, mega-menu nav, two-column hero |
+
+#### Touch Targets
+- Marketing CTAs at 55px height (71px hero variant) — generously tappable
+- Header items at 72px row height with 16px 12px padding
+- Mega-menu cards at 92px height with full-card hit areas
+
+#### Collapsing Strategy
+- Hero: 40px Sharp Grotesk headline scales down, weight 500 maintained
+- Mega-menu: dropdown grid collapses into accordion sheets
+- Band sections: keep full-width tint treatment, reduce internal padding
+- Plan columns on pricing stack vertically with repeated `#0061fe` CTAs
+
+#### Image Behavior
+- Product UI screenshots sit flat (no shadow) on tinted surfaces at all sizes
+- Cards and media keep the 12px radius across breakpoints
+- Illustration and photography carry the warm accent palette per brand imagery guidance
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Everything — buttons, nav, cards |
+| Tint (Level 1) | Surface shift `#f7f5f2` → `#ffffff` → `#eee9e2` | Card/section separation |
+| Border (Level 2) | 2px solid border (`#0061fe`, `#1e1919`, or `#f7f5f2` on dark) | Interactive emphasis |
+| Inversion (Level 3) | Graphite band `#1e1919` with coconut text | Maximum-emphasis sections |
+
+**Shadow Philosophy**: Dropbox's marketing system is shadowless by design. Live inspection returned `box-shadow: none` on every measured CTA, nav element, and card across both surfaces. Hierarchy is carried by warm surface contrast and the unusually heavy 2px border weight — a flat, print-like approach consistent with the brand's editorial, paper-toned identity. When Dropbox needs emphasis it inverts to graphite or reaches for an accent hue; it never lifts elements off the page.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button feedback, focus |
+| `motion-standard` | 240ms | Menu open, card reveal, sheet |
+| `motion-slow` | 400ms | Band transitions, hero illustration moments |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-dropbox` | `cubic-bezier(0.65, 0, 0.45, 1)` | The documented brand curve (from the official "Create folder" motion example) — symmetric, snappy in, soft out |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+
+**Motion rules** (the four official principles): **Prioritize Simplicity** — "fewer, better elements means that the movement will always have a purpose"; **Deepen Understanding** — motion explains complex actions and eases cognitive load; **Instant Feedback** — interactions respond immediately with movement that "echoes physical properties"; **Subtle Playfulness** — "make the user smile with a wink, rather than throwing confetti in their face." The homepage ships an explicit "Enable animation" toggle — motion is opt-out-able by design, and under `prefers-reduced-motion: reduce` everything collapses to instant.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 official brand site (dropbox.design → 301 → brand.dropbox.com), fetched 2026-06-11:
+- /voice-and-tone — four voice pillars (Simple / Helpful / Human / Magic) with verbatim
+  guidance and example lines ("Go from idea to done with Dropbox.", "These aren't just
+  your files. They are pieces of your life.", "Get to work, with a lot less work.").
+- /framework — "Dropbox is designed to simplify the frenzy of modern work" and the four
+  pillars Humanity / Clarity / Action / Delight with verbatim descriptions; Eames quote
+  "The details are not the details. They make the design."
+- /motion — four motion principles (Prioritize Simplicity / Deepen Understanding /
+  Instant Feedback / Subtle Playfulness) and the cubic-bezier(0.65, 0, 0.45, 1) example.
+- /typography — DB Sharp Grotesk custom typeface by Sharp Type; variable weight for
+  optical alignment; "Type is what meaning looks like" (Max Phillips).
+- /color — core trio (Dropbox Blue #0061FE, Coconut #F7F5F2, Graphite #1E1919) +
+  16 named accents + 20-step grey scale; "A diverse and unexpected color palette is a
+  key visual expression of our brand."
+
+Tier 1 live inspect (2026-06-11, playwright getComputedStyle) on https://www.dropbox.com
+and https://www.dropbox.com/plans — source for all measured token values in §1–9.
+
+Brand narrative (§11): mission "design a more enlightened way of working", founding year
+2007, Drew Houston Co-Founder/Co-CEO, Co-CEO Ashraf Alkarmi (joined 2024), product list
+(Replay, Sign, DocSend, Dash, Reclaim.ai) from https://www.dropbox.com/about (fetched
+2026-06-11). "Over 700 million registered users" is verbatim from the live homepage H2.
+Arash Ferdowsi as co-founder and the USB-drive origin story are widely documented public
+facts, not on the fetched about page.
+
+Motion durations in §15 (120/240/400ms) are illustrative scale values consistent with the
+observed snappy marketing motion; only the cubic-bezier(0.65, 0, 0.45, 1) curve is
+officially documented.
+
+Personas (§13) are fictional archetypes informed by publicly observable Dropbox user
+segments. Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "the system is shadowless by design", "coconut-on-blue as
+warmth preserved at full contrast") are editorial readings connecting observed values to
+the brand's stated framework, not direct Dropbox statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -220,43 +440,21 @@ A hero-size primary also appears at 71px height with 24px uniform padding; on gr
 **Tier 2 sources:** styles.refero.design/style/2b41e7c4-1e8c-4ea2-a87f-51e24c57886e (Dropbox.com — confirms #0061fe / #f7f5f2 / #1e1919 / #eee9e2 / #cd2f7b, 16px button radius, flat shadowless system); getdesign.md/dropbox — not listed ("No designs found", also tried dropbox.com variant)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px with a 12/16/24 working rhythm
-- Measured paddings: 12px (nav item horizontal), 16px (menu cards, CTA vertical), 24px (CTA horizontal, hero CTA)
-- Section gaps run generous (~72px) between full-width bands
+| State | Treatment |
+|---|---|
+| **Empty (no files yet)** | Coconut (`#f7f5f2`) canvas, one Graphite (`#1e1919`) sentence in Atlas Grotesk explaining the folder is empty, one blue (`#0061fe`) CTA to upload or create. Friendly, zero clutter. |
+| **Empty (search, no results)** | Muted taupe (`#716b61`) single line stating no matches, with a plain-language suggestion to adjust the query. No dead ends — always a next action. |
+| **Loading (page / list)** | Flat skeleton blocks in sand (`#eee9e2`) on the coconut canvas at final dimensions, 12px radius. No shadow shimmer — flat pulse consistent with the shadowless system. |
+| **Loading (file operation)** | Inline progress on the affected row; surrounding content stays interactive. Motion gives "instant feedback" that "echoes physical properties." |
+| **Error (sync/upload failed)** | Inline message in plain words: what failed, why, and the retry action. Human register — no error codes without translation. |
+| **Error (form validation)** | Field-level note below the input describing what a valid value looks like, not just "Required". |
+| **Success (action completed)** | Brief inline confirmation in the human voice ("It's that simple :)" register), auto-dismissing; the changed row itself shows the new state. |
+| **Skeleton** | Sand `#eee9e2` blocks, 12px radius, flat pulse at final dimensions. |
+| **Disabled** | Reduced-opacity blue rather than grey for primary actions — the brand read survives; labels drop to muted taupe. |
 
-### Grid & Container
-- 72px sticky global header on the coconut canvas
-- Hero: two-column — headline + CTAs left, product visual right
-- Feature sections alternate coconut (`#f7f5f2`), white, sand (`#eee9e2`), and graphite (`#1e1919`) full-width bands
-- Mega-menu dropdowns arrange product cards (92px tall, 12px radius) in a grid
-- Pricing: plan columns with repeated `#0061fe` CTAs, one per plan
-
-### Whitespace Philosophy
-- **Editorial air**: the cream canvas plus generous vertical rhythm makes marketing pages read like a magazine spread, not a feature checklist.
-- **Band cadence**: light/dark alternation (coconut → white → graphite) paces the page; color shifts, not dividers, mark section boundaries.
-- **Flat segmentation**: with no shadows, grouping is communicated by surface tint and the 2px border language.
-
-### Border Radius Scale
-- Small (8px): minor elements
-- Medium (12px): the workhorse — menu cards, compact CTAs, content cards (60 occurrences live)
-- Large (16px): marketing CTAs, large containers
-- Full (100px): occasional pill accents
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Everything — buttons, nav, cards |
-| Tint (Level 1) | Surface shift `#f7f5f2` → `#ffffff` → `#eee9e2` | Card/section separation |
-| Border (Level 2) | 2px solid border (`#0061fe`, `#1e1919`, or `#f7f5f2` on dark) | Interactive emphasis |
-| Inversion (Level 3) | Graphite band `#1e1919` with coconut text | Maximum-emphasis sections |
-
-**Shadow Philosophy**: Dropbox's marketing system is shadowless by design. Live inspection returned `box-shadow: none` on every measured CTA, nav element, and card across both surfaces. Hierarchy is carried by warm surface contrast and the unusually heavy 2px border weight — a flat, print-like approach consistent with the brand's editorial, paper-toned identity. When Dropbox needs emphasis it inverts to graphite or reaches for an accent hue; it never lifts elements off the page.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use coconut (`#f7f5f2`) as the default canvas — white (`#ffffff`) is for panels on top of it
@@ -278,32 +476,27 @@ A hero-size primary also appears at 71px height with 24px uniform padding; on gr
 - Stack multiple accent hues in one section — accents are single, intentional moments
 - Round cards past 16px or square off CTAs — geometry stays in the 8–16px band
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero stacks, CTAs go full-width |
-| Tablet | 640–1024px | 2-column grids, condensed nav |
-| Desktop | 1024–1440px | Full layout, mega-menu nav, two-column hero |
+Dropbox's voice is **simple, human, and quietly witty** — the brand site distills it into four named pillars: **Simple** ("Keep it crystal clear. Trim words. Use strong nouns. Craft a story."), **Helpful** ("Help people take action. Tell them what's coming, then show them how to get there."), **Human** ("Stay real and relatable. Write the way you talk. Avoid jargon."), and **Magic** ("Charm them with wit. Clever is great. Fresh language is even better."). The governing rule: "no matter what we're saying, or where, we always sound like Dropbox."
 
-### Touch Targets
-- Marketing CTAs at 55px height (71px hero variant) — generously tappable
-- Header items at 72px row height with 16px 12px padding
-- Mega-menu cards at 92px height with full-card hit areas
+| Context | Tone |
+|---|---|
+| Hero headlines | Plainspoken with a twist of wordplay. "Get to work, with a lot less work." |
+| Product descriptions | Verb-first, concrete. "Store, share, and access files across devices." |
+| CTAs | Friendly imperatives, zero pressure. "Try Dropbox free", "Get started", "Learn more". |
+| Social proof | Numbers stated plainly. "Join the over 700 million registered users who trust Dropbox." |
+| Security / trust copy | Calm and declarative. "Security never comes second." |
+| Help / onboarding | Step-by-step, anticipatory — tell them what's coming, then how to get there. |
 
-### Collapsing Strategy
-- Hero: 40px Sharp Grotesk headline scales down, weight 500 maintained
-- Mega-menu: dropdown grid collapses into accordion sheets
-- Band sections: keep full-width tint treatment, reduce internal padding
-- Plan columns on pricing stack vertically with repeated `#0061fe` CTAs
+**Voice samples (from official brand guidelines and live homepage):**
+- "Get to work, with a lot less work." — live homepage H1 and cited example on brand.dropbox.com/voice-and-tone. *(verified live 2026-06-11)*
+- "Go from idea to done with Dropbox." — brand.dropbox.com/voice-and-tone example. *(verified 2026-06-11)*
+- "These aren't just your files. They are pieces of your life." — brand.dropbox.com/voice-and-tone example. *(verified 2026-06-11)*
 
-### Image Behavior
-- Product UI screenshots sit flat (no shadow) on tinted surfaces at all sizes
-- Cards and media keep the 12px radius across breakpoints
-- Illustration and photography carry the warm accent palette per brand imagery guidance
+**Forbidden register**: jargon, enterprise-speak, hype superlatives, pressure tactics. Wit is "a wink, rather than throwing confetti in their face" (per the motion guidelines — the same restraint applies to words).
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Dropbox Blue (`#0061fe`)
@@ -332,122 +525,3 @@ A hero-size primary also appears at 71px height with 24px uniform padding; on gr
 7. Accents (azalea, sunset, tangerine) are single intentional moments, not a rainbow
 
 ---
-
-## 10. Voice & Tone
-
-Dropbox's voice is **simple, human, and quietly witty** — the brand site distills it into four named pillars: **Simple** ("Keep it crystal clear. Trim words. Use strong nouns. Craft a story."), **Helpful** ("Help people take action. Tell them what's coming, then show them how to get there."), **Human** ("Stay real and relatable. Write the way you talk. Avoid jargon."), and **Magic** ("Charm them with wit. Clever is great. Fresh language is even better."). The governing rule: "no matter what we're saying, or where, we always sound like Dropbox."
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Plainspoken with a twist of wordplay. "Get to work, with a lot less work." |
-| Product descriptions | Verb-first, concrete. "Store, share, and access files across devices." |
-| CTAs | Friendly imperatives, zero pressure. "Try Dropbox free", "Get started", "Learn more". |
-| Social proof | Numbers stated plainly. "Join the over 700 million registered users who trust Dropbox." |
-| Security / trust copy | Calm and declarative. "Security never comes second." |
-| Help / onboarding | Step-by-step, anticipatory — tell them what's coming, then how to get there. |
-
-**Voice samples (from official brand guidelines and live homepage):**
-- "Get to work, with a lot less work." — live homepage H1 and cited example on brand.dropbox.com/voice-and-tone. *(verified live 2026-06-11)*
-- "Go from idea to done with Dropbox." — brand.dropbox.com/voice-and-tone example. *(verified 2026-06-11)*
-- "These aren't just your files. They are pieces of your life." — brand.dropbox.com/voice-and-tone example. *(verified 2026-06-11)*
-
-**Forbidden register**: jargon, enterprise-speak, hype superlatives, pressure tactics. Wit is "a wink, rather than throwing confetti in their face" (per the motion guidelines — the same restraint applies to words).
-
-## 11. Brand Narrative
-
-Dropbox was founded in **2007** by **Drew Houston** (with co-founder Arash Ferdowsi — a widely documented public fact; the current about page lists Houston as Co-Founder and Co-CEO, joined by Co-CEO Ashraf Alkarmi in 2024). The famous origin: Houston kept forgetting his USB drive on a bus ride and decided file sync should just work. Nearly two decades later the mission has widened from file syncing to the stated aim to **"design a more enlightened way of working"** — productivity tools that reduce busywork rather than create it.
-
-The product evolved from a single magic folder into a workspace platform — cloud storage plus Replay (video review), Sign, DocSend, Dash (AI-powered organization and search), and Reclaim.ai (scheduling) — serving, per the live homepage, "over 700 million registered users." The brand framework states the design intent plainly: "Dropbox is designed to simplify the frenzy of modern work," resting on four pillars — Humanity, Clarity, Action, Delight.
-
-What Dropbox refuses, visible in the design: sterile SaaS chrome (the canvas is warm coconut, not dashboard white), shadow-stacked skeuomorphism, and hype-driven copy. What it embraces: a paper-warm editorial surface, one decisive blue, a custom typeface built to be "warm, soulful, and relatable," and the Eames maxim quoted on its own brand site — "The details are not the details. They make the design."
-
-## 12. Principles
-
-1. **Humanity.** "Warm, soulful, and relatable. We're here to keep life organized and make work easier." *UI implication:* warm coconut canvas, graphite (not black) ink, coconut (not white) text on blue — every neutral carries warmth.
-2. **Clarity.** "It's about surfacing what matters, cutting out what doesn't, and reducing complexity." *UI implication:* one action color, flat shadowless hierarchy, medium-weight type — nothing competes with the next step.
-3. **Action.** Users "always know what to do next. They should never have to read a manual." *UI implication:* a single unmistakable `#0061fe` CTA per context; verb-first labels ("Get started", "Try Dropbox free").
-4. **Delight.** "We design small moments of joy into everything we do." *UI implication:* witty copy, unexpected accent hues from the 16-color wheel, and motion that winks — used sparingly, one moment at a time.
-5. **The details are not the details.** The Eames quote anchors the brand framework. *UI implication:* micro-decisions carry the system — the 2px self-colored border on filled buttons, the cream-on-blue label, the wide type cut reserved for 32px titles.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Dropbox user segments (creative teams, small businesses, knowledge workers, IT admins), not individual people.*
-
-**Maya Chen, 34, Portland.** Freelance video editor juggling client review cycles. Uses Dropbox Replay to collect timestamped feedback and shares final cuts through plain Dropbox links. Chose it because clients never need a manual — the link just works on any device.
-
-**Tom Okafor, 41, Manchester.** Operations lead at a 40-person architecture firm. Migrated the studio from a chaotic file server; values that Dropbox feels calm and organized rather than enterprise-heavy. Reads "Security never comes second" and actually believes it because the interface never oversells.
-
-**Priya Raghavan, 28, Austin.** Startup marketer who lives in shared folders and DocSend trackers. Appreciates the warmth of the product's tone — confirmation messages that sound like a person — and the fact that the one blue button always tells her what to do next.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no files yet)** | Coconut (`#f7f5f2`) canvas, one Graphite (`#1e1919`) sentence in Atlas Grotesk explaining the folder is empty, one blue (`#0061fe`) CTA to upload or create. Friendly, zero clutter. |
-| **Empty (search, no results)** | Muted taupe (`#716b61`) single line stating no matches, with a plain-language suggestion to adjust the query. No dead ends — always a next action. |
-| **Loading (page / list)** | Flat skeleton blocks in sand (`#eee9e2`) on the coconut canvas at final dimensions, 12px radius. No shadow shimmer — flat pulse consistent with the shadowless system. |
-| **Loading (file operation)** | Inline progress on the affected row; surrounding content stays interactive. Motion gives "instant feedback" that "echoes physical properties." |
-| **Error (sync/upload failed)** | Inline message in plain words: what failed, why, and the retry action. Human register — no error codes without translation. |
-| **Error (form validation)** | Field-level note below the input describing what a valid value looks like, not just "Required". |
-| **Success (action completed)** | Brief inline confirmation in the human voice ("It's that simple :)" register), auto-dismissing; the changed row itself shows the new state. |
-| **Skeleton** | Sand `#eee9e2` blocks, 12px radius, flat pulse at final dimensions. |
-| **Disabled** | Reduced-opacity blue rather than grey for primary actions — the brand read survives; labels drop to muted taupe. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button feedback, focus |
-| `motion-standard` | 240ms | Menu open, card reveal, sheet |
-| `motion-slow` | 400ms | Band transitions, hero illustration moments |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-dropbox` | `cubic-bezier(0.65, 0, 0.45, 1)` | The documented brand curve (from the official "Create folder" motion example) — symmetric, snappy in, soft out |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Motion rules** (the four official principles): **Prioritize Simplicity** — "fewer, better elements means that the movement will always have a purpose"; **Deepen Understanding** — motion explains complex actions and eases cognitive load; **Instant Feedback** — interactions respond immediately with movement that "echoes physical properties"; **Subtle Playfulness** — "make the user smile with a wink, rather than throwing confetti in their face." The homepage ships an explicit "Enable animation" toggle — motion is opt-out-able by design, and under `prefers-reduced-motion: reduce` everything collapses to instant.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 official brand site (dropbox.design → 301 → brand.dropbox.com), fetched 2026-06-11:
-- /voice-and-tone — four voice pillars (Simple / Helpful / Human / Magic) with verbatim
-  guidance and example lines ("Go from idea to done with Dropbox.", "These aren't just
-  your files. They are pieces of your life.", "Get to work, with a lot less work.").
-- /framework — "Dropbox is designed to simplify the frenzy of modern work" and the four
-  pillars Humanity / Clarity / Action / Delight with verbatim descriptions; Eames quote
-  "The details are not the details. They make the design."
-- /motion — four motion principles (Prioritize Simplicity / Deepen Understanding /
-  Instant Feedback / Subtle Playfulness) and the cubic-bezier(0.65, 0, 0.45, 1) example.
-- /typography — DB Sharp Grotesk custom typeface by Sharp Type; variable weight for
-  optical alignment; "Type is what meaning looks like" (Max Phillips).
-- /color — core trio (Dropbox Blue #0061FE, Coconut #F7F5F2, Graphite #1E1919) +
-  16 named accents + 20-step grey scale; "A diverse and unexpected color palette is a
-  key visual expression of our brand."
-
-Tier 1 live inspect (2026-06-11, playwright getComputedStyle) on https://www.dropbox.com
-and https://www.dropbox.com/plans — source for all measured token values in §1–9.
-
-Brand narrative (§11): mission "design a more enlightened way of working", founding year
-2007, Drew Houston Co-Founder/Co-CEO, Co-CEO Ashraf Alkarmi (joined 2024), product list
-(Replay, Sign, DocSend, Dash, Reclaim.ai) from https://www.dropbox.com/about (fetched
-2026-06-11). "Over 700 million registered users" is verbatim from the live homepage H2.
-Arash Ferdowsi as co-founder and the USB-drive origin story are widely documented public
-facts, not on the fetched about page.
-
-Motion durations in §15 (120/240/400ms) are illustrative scale values consistent with the
-observed snappy marketing motion; only the cubic-bezier(0.65, 0, 0.45, 1) curve is
-officially documented.
-
-Personas (§13) are fictional archetypes informed by publicly observable Dropbox user
-segments. Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "the system is shadowless by design", "coconut-on-blue as
-warmth preserved at full contrast") are editorial readings connecting observed values to
-the brand's stated framework, not direct Dropbox statements.
--->

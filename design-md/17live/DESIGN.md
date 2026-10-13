@@ -1,63 +1,147 @@
 ---
-id: 17live
 name: 17LIVE
-country: TW
-category: consumer-tech
-homepage: "https://17.live"
-primary_color: "#FF4F6E"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=17.live&sz=128"
-verified: "2026-05-19"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary = 17 Pink #FF4F6E; dark-stage palette and non-primary hexes are grounded approximations pending live re-inspection (see §2 note)"
-  colors:
-    primary: "#FF4F6E"
-    primary-hover: "#E8455F"
-    canvas: "#121212"
-    surface-1: "#1C1C1E"
-    surface-2: "#2C2C2E"
-    foreground: "#FFFFFF"
-    on-primary: "#FFFFFF"
-    rank-gold: "#FFC83D"
-    vip-purple: "#8B5CF6"
-    success: "#27C76F"
-    warning: "#F5A623"
-    error: "#FF453A"
-  typography:
-    family: { default: "-apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif", tc: "\"PingFang TC\", \"Microsoft JhengHei\", sans-serif", jp: "\"Hiragino Kaku Gothic Pro\", \"Meiryo\", sans-serif", sc: "\"PingFang SC\", \"Microsoft YaHei\", sans-serif" }
-    micro:    { size: 11, weight: 700, use: "Viewer count, LIVE badge, gamified numbers" }
-    caption:  { size: 12, weight: 400, use: "Chat meta, captions, metadata" }
-    body:     { size: 14, weight: 400, use: "Chat message, body text" }
-    liver-name: { size: 16, weight: 700, use: "LIVER name, list title, key labels" }
-    section:  { size: 20, weight: 600, use: "Section heading, tab labels" }
-    hero:     { size: 28, weight: 700, use: "Hero / spotlight headline" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24 }
-  rounded: { sm: 4, md: 12, lg: 24, full: 9999 }
-  shadow:
-    sheet: "soft top shadow over rgba(0,0,0,0.5) scrim"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#FF4F6E", fg: "#FFFFFF", radius: "24px", padding: "12px 24px", font: "16px / 700", states: "pressed #E8455F", use: "GO LIVE, primary CTAs, sign-up" }
-    button-follow: { type: button, bg: "#FF4F6E", fg: "#FFFFFF", radius: "16px", padding: "6px 16px", font: "14px / 600", states: "following → transparent + 1px rgba(255,255,255,0.3), fg rgba(255,255,255,0.7)", use: "Follow / Following toggle" }
-    button-secondary: { type: button, bg: "transparent", fg: "#FFFFFF", border: "1px solid rgba(255,255,255,0.3)", radius: "24px", padding: "12px 24px", font: "16px / 600", use: "Secondary actions, Maybe later" }
-    button-gift: { type: button, bg: "#FF4F6E → #FF2D8E gradient", fg: "#FFFFFF", radius: "20px", use: "Send-gift — highest-energy transaction" }
-    input: { type: input, bg: "#2C2C2E", fg: "#FFFFFF", radius: "12px", padding: "12px 16px", focus: "1px solid #FF4F6E", use: "Search, login, profile; placeholder rgba(255,255,255,0.45)" }
-    chat-input: { type: input, bg: "#2C2C2E", radius: "24px", use: "Live-chat composer overlay, trailing pink #FF4F6E send icon" }
-    stream-card: { type: card, radius: "12px", use: "Discover grid — thumbnail + rgba(0,0,0,0.5) bottom gradient, LIVE badge + viewer count + LIVER name" }
-    card: { type: card, bg: "#1C1C1E", radius: "12px", padding: "12px", use: "LIVER lists, ranking rows, fan-club cards" }
-    badge-live: { type: badge, bg: "#FF4F6E", fg: "#FFFFFF", radius: "4px", padding: "2px 6px", font: "11px / 700", use: "Live-now indicator (or #27C76F dot)" }
-    badge-rank: { type: badge, bg: "#FFC83D", fg: "#121212", radius: "50%", use: "Leaderboard / top-fan #1 status" }
-    avatar: { type: avatar, radius: "50%", use: "LIVER and viewer avatars, optional pink/gradient ring for live or VIP" }
-    tab-bar: { type: tab, use: "Bottom tab bar; center GO LIVE elevated pink", active: "#FF4F6E label", states: "inactive rgba(255,255,255,0.45)" }
-omd: "0.1"
+colors:
+  primary: '#FF4F6E'
+  primary-hover: '#E8455F'
+  canvas: '#121212'
+  surface-1: '#1C1C1E'
+  surface-2: '#2C2C2E'
+  foreground: '#FFFFFF'
+  on-primary: '#FFFFFF'
+  rank-gold: '#FFC83D'
+  vip-purple: '#8B5CF6'
+  success: '#27C76F'
+  warning: '#F5A623'
+  error: '#FF453A'
+typography:
+  micro:
+    fontSize: 11px
+    fontWeight: 700
+    use: Viewer count, LIVE badge, gamified numbers
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    use: Chat meta, captions, metadata
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    use: Chat message, body text
+  liver-name:
+    fontSize: 16px
+    fontWeight: 700
+    use: LIVER name, list title, key labels
+  section:
+    fontSize: 20px
+    fontWeight: 600
+    use: Section heading, tab labels
+  hero:
+    fontSize: 28px
+    fontWeight: 700
+    use: Hero / spotlight headline
+rounded:
+  sm: 4px
+  md: 12px
+  lg: 24px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#FF4F6E'
+    textColor: '#FFFFFF'
+    rounded: 24px
+    padding: 12px 24px
+    typography: 16px / 700
+    states: 'pressed #E8455F'
+    use: GO LIVE, primary CTAs, sign-up
+  button-follow:
+    type: button
+    backgroundColor: '#FF4F6E'
+    textColor: '#FFFFFF'
+    rounded: 16px
+    padding: 6px 16px
+    typography: 14px / 600
+    states: following → transparent + 1px rgba(255,255,255,0.3), fg rgba(255,255,255,0.7)
+    use: Follow / Following toggle
+  button-secondary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#FFFFFF'
+    border: 1px solid rgba(255,255,255,0.3)
+    rounded: 24px
+    padding: 12px 24px
+    typography: 16px / 600
+    use: Secondary actions, Maybe later
+  button-gift:
+    type: button
+    backgroundColor: '#FF4F6E → #FF2D8E gradient'
+    textColor: '#FFFFFF'
+    rounded: 20px
+    use: Send-gift — highest-energy transaction
+  input:
+    type: input
+    backgroundColor: '#2C2C2E'
+    textColor: '#FFFFFF'
+    rounded: 12px
+    padding: 12px 16px
+    focus: '1px solid #FF4F6E'
+    use: Search, login, profile; placeholder rgba(255,255,255,0.45)
+  chat-input:
+    type: input
+    backgroundColor: '#2C2C2E'
+    rounded: 24px
+    use: 'Live-chat composer overlay, trailing pink #FF4F6E send icon'
+  stream-card:
+    type: card
+    rounded: 12px
+    use: Discover grid — thumbnail + rgba(0,0,0,0.5) bottom gradient, LIVE badge + viewer count + LIVER name
+  card:
+    type: card
+    backgroundColor: '#1C1C1E'
+    rounded: 12px
+    padding: 12px
+    use: LIVER lists, ranking rows, fan-club cards
+  badge-live:
+    type: badge
+    backgroundColor: '#FF4F6E'
+    textColor: '#FFFFFF'
+    rounded: 4px
+    padding: 2px 6px
+    typography: 11px / 700
+    use: 'Live-now indicator (or #27C76F dot)'
+  badge-rank:
+    type: badge
+    backgroundColor: '#FFC83D'
+    textColor: '#121212'
+    rounded: 50%
+    use: 'Leaderboard / top-fan #1 status'
+  avatar:
+    type: avatar
+    rounded: 50%
+    use: LIVER and viewer avatars, optional pink/gradient ring for live or VIP
+  tab-bar:
+    type: tab
+    use: Bottom tab bar; center GO LIVE elevated pink
+    active: '#FF4F6E label'
+    states: inactive rgba(255,255,255,0.45)
+fonts:
+  roles:
+    default: '-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+    tc: '"PingFang TC", "Microsoft JhengHei", sans-serif'
+    jp: '"Hiragino Kaku Gothic Pro", "Meiryo", sans-serif'
+    sc: '"PingFang SC", "Microsoft YaHei", sans-serif'
 ---
 
 # Design System Inspiration of 17LIVE
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 17LIVE is one of the world's largest live-streaming and interactive-entertainment platforms — a place where a "LIVER" (17LIVE's word for a livestreamer) broadcasts to fans who react in real time with virtual gifts, fan-club subscriptions, and chat. Its design system is built for the energy and intimacy of live performance, and the atmosphere is **dark-stage with a hot-pink spotlight**. The interface defaults to dark surfaces (`#121212` / `#1C1C1E`), the way a streaming or video app does — because the content is video, video looks best framed in dark, and a dark UI keeps a phone-screen glowing in a bedroom at midnight from blowing out the room. Against that dark stage, a vivid coral-pink (`#FF4F6E`) is the brand's signature: it lights up the logo, the "GO LIVE" button, the gift-send action, the follow state — every moment of connection and transaction.
 
@@ -77,7 +161,7 @@ What distinguishes 17LIVE from a generic dark-mode app is that **its design is e
 - Rounded, friendly geometry — pill follow buttons, soft cards, circular avatars
 - High motion budget on reactions, low motion on navigation chrome
 
-## Primary tasks
+### Primary tasks
 
 - Watch a live stream and react while it happens
 - Send a virtual gift during a live stream
@@ -85,7 +169,39 @@ What distinguishes 17LIVE from a generic dark-mode app is that **its design is e
 - Browse a grid of live streams to pick one
 - Go live and stream gaming or talk content
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+17LIVE was founded in **June 2015 in Taiwan** by **Jeffrey Huang** (黃立成), a musician-entrepreneur, as a live-streaming app built around the idea that broadcasting should be **interactive and intimate** — not a one-way feed but a real-time room where fans shape the show through chat and virtual gifts ([en.wikipedia.org/wiki/17LIVE](https://en.wikipedia.org/wiki/17LIVE)). The name "17" (read "one-seven", and a homophone play in Mandarin) became shorthand for going live. After early leadership transitions — Joseph Phua (co-founder of Paktor) became CEO following a 2017 merger, and Alex Lien became Global CEO in 2023 — the company grew into an international entertainment platform headquartered across Japan, Taiwan, and beyond.
+
+The design language is the product-surface expression of that interactive-intimacy thesis. The dark stage exists so the LIVER's video is the hero and the late-night, in-your-hand viewing feels right; the hot pink is the color of every act of connection — going live, following, sending a gift, joining a fan club — because the platform's entire economy and emotion run on those moments. The high motion budget (flying gifts, floating hearts, level-up bursts) is not decoration; it is the visible feedback loop that makes a fan feel *seen* by a LIVER, which is the product.
+
+By April 2022, 17LIVE reported roughly **60 million registered users across 154 countries**, around **46,000 contracted artists**, and over **2.3 million monthly active users**, ranking among the largest live-broadcasting platforms in the world; it is publicly listed on the Singapore Exchange (SGX: VT1). Revenue flows through virtual gifting, monthly fan-club subscriptions, pay-per-view ticketed events, and live-commerce (HandsUp / OrderPally). ([en.wikipedia.org/wiki/17LIVE](https://en.wikipedia.org/wiki/17LIVE)) <!-- source: Wikipedia via WebFetch 2026-05-19; metrics not independently audited -->
+
+### Principles
+
+1. **Dark stage, lit content.** The UI is a darkened theater so the LIVER's video and the pink actions carry the light. *UI implication:* Default surfaces to `#121212`/`#1C1C1E`; keep overlay chrome edge-anchored and minimal; never use a light streaming surface.
+
+2. **Pink is connection.** The signature pink marks every act of social connection and transaction. *UI implication:* Apply `#FF4F6E` to GO LIVE, follow, gift, and primary CTA; keep neutral chrome neutral so pink always reads as "a moment of connection."
+
+3. **Reactions are the product.** Gifts, hearts, and level-ups are the visible loop that makes a fan feel seen. *UI implication:* Spend the motion budget here — top-layer gift animations, floating reactions — while keeping navigation motion quiet. The reaction layer is the highest z-index.
+
+4. **Money moves; be trustworthy.** Coins, top-ups, and gifting involve real money and a creator's livelihood. *UI implication:* Show exact balances and amounts; never use spend-pressure dark patterns; keep transaction flows clear, with safety/report flows calm and serious.
+
+5. **Two-plus languages, all native.** Japanese and Traditional Chinese lead; copy is authored per market. *UI implication:* Use the locale-aware CJK font stack; route microcopy through locale bundles; never Simplified on TW surfaces.
+
+6. **Friendly geometry.** Pills, circular avatars, soft cards signal a social, human platform. *UI implication:* Buttons 16–24px radius; avatars 50%; cards ~12px. Avoid sharp enterprise corners.
+
+### Personas
+
+*Personas are fictional archetypes informed by publicly described 17LIVE user segments (JP/TW livestream fans and LIVERs), not individual people.*
+
+**さくら (Sakura), 23, Tokyo.** A devoted fan who follows three LIVERs and tunes in nightly after work. Belongs to a paid fan club, sends mid-tier gifts during special streams, and treats the chat community as a real social circle. Cares that her gift visibly registers — the animation and the LIVER's reaction are the payoff.
+
+**阿哲 (A-Zhe), 27, Taipei.** A part-time LIVER who streams gaming and talk content several evenings a week, building toward full-time. Watches his ranking and fan-club growth closely, optimizes his GO LIVE schedule, and values clear earnings/analytics. The pink GO LIVE button is the most important pixel in his day.
+
+**Kevin, 19, Kaohsiung.** A casual viewer who discovers streams through the explore feed, drops in for a few minutes, occasionally sends a free heart, and rarely spends. Browses on mobile in short sessions; the discover grid and quick swipe-between-streams are his whole experience.
+
+## Colors
 
 > **Note:** Live computed-style verification was not completed this pass (the inspection browser session redirected unreliably; WebFetch surfaced only the tagline). Values below combine the brief-provided primary, 17LIVE's known dark-mode + hot-pink streaming identity, and conventional live-streaming-app roles. Hexes other than the primary are well-grounded approximations pending live re-inspection.
 
@@ -120,7 +236,7 @@ What distinguishes 17LIVE from a generic dark-mode app is that **its design is e
 - **Divider** (`rgba(255,255,255,0.08)`): Hairline separators on dark surfaces.
 - **Border Subtle** (`rgba(255,255,255,0.15)`): Outlined buttons/chips on dark.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Stack (locale-aware, inferred)
 | Locale | Stack |
@@ -153,7 +269,123 @@ No custom display typeface — system stacks render natively across JP/TW and ke
 - **Numbers are gamified** — viewer counts, gift totals, ranks render bold, often with gold for top status.
 - **Text over video** always sits on a gradient scrim or has a subtle shadow for legibility.
 
-## 4. Component Stylings
+## Layout
+
+### Structure
+- **Mobile / vertical-video first** — the canonical surface is a portrait phone screen with a full-bleed stream and overlay chrome
+- Discover = grid/feed of stream thumbnails; Stream view = full-bleed video + floating chat + gift rail + bottom action bar
+- Web/desktop is a secondary surface that frames the same dark-stage system
+
+### Spacing
+- 4/8px-based spacing scale, tight on overlay chrome
+- Safe-area-aware padding for notches and home indicators on the stream overlay
+
+### Density
+17LIVE is **medium density with high motion**. Overlay chrome is minimal and edge-anchored so the video breathes; lists and discover grids pack efficiently; the "noise" comes from animated reactions, not from static density.
+
+### Responsive Behavior
+
+#### Breakpoints
+| Width | Behavior |
+|---|---|
+| Mobile `<768px` | Canonical surface — full-bleed vertical video, bottom tab bar, overlay chat/gift chrome |
+| Tablet `768–1024px` | Stream centers with side panels (chat / ranking) appearing |
+| Desktop `>1024px` | Stream center stage with persistent chat rail + gift panel + recommendations sidebar (Twitch-like three-zone layout) |
+
+#### Touch & Mobile
+- Large tap targets (44px+); center GO LIVE elevated for thumb reach
+- Gift rail and chat composer are bottom-anchored within thumb zone
+- Swipe gestures to switch streams (feed-like) on mobile
+- Safe-area insets respected on overlay chrome
+
+#### Media
+- Video full-bleed `object-fit: cover` on mobile, contained on desktop center stage
+- Thumbnails lazy-load; LIVE thumbnails may show a short motion preview on hover (desktop)
+
+## Elevation & Depth
+
+On a dark UI, elevation is communicated by **surface lightness steps** (`#121212` → `#1C1C1E` → `#2C2C2E`) and by scrims, more than by shadow.
+
+- **Bottom sheet / modal**: `#1C1C1E` surface rising over a `rgba(0,0,0,0.5)` scrim; soft top shadow
+- **Stream overlay chrome**: anchored to a bottom/top gradient scrim so it floats legibly over video
+- **Gift animations**: render in a top layer above all chrome
+- **Glow accents**: pink/gradient glows on live-avatar rings and premium gifts — the system's "lighting"
+
+### Z-Index (stream view)
+1. Video (base)
+2. Gradient scrims
+3. Chat + overlay chrome
+4. Gift/reaction animation layer (highest)
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.sheet`: `soft top shadow over rgba(0,0,0,0.5) scrim`
+
+## Motion & Easing
+
+17LIVE has a **bifurcated motion philosophy**: lavish and celebratory on reactions, quick and quiet on navigation. This is the rare brand where overshoot is welcome — but only in the reaction layer.
+
+**Durations:**
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, reduce-motion fallback |
+| `motion-fast` | 150ms | Hover/press, tab switch, chrome transitions |
+| `motion-standard` | 250ms | Sheets, modals, panel slides |
+| `motion-slow` | 400ms | Stream-switch transitions |
+| `motion-reaction` | 600–1500ms | Gift animations, floating hearts, level-up bursts |
+
+**Easings:**
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Navigation, sheets, chrome — quiet and platform-native |
+| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things appearing |
+| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reaction layer ONLY — gift pops, heart bursts, level-up |
+
+**Spring stance.** Unlike utility brands, 17LIVE **embraces overshoot — but quarantines it to the reaction layer.** A sent gift should pop, scale-bounce, and celebrate; a tab switch should not. Navigation, sheets, and form chrome use the standard non-bouncy easings. The rule: spring lives where the social/emotional payoff lives (gifts, hearts, follows, level-ups); everything structural stays calm.
+
+**Signature motions.**
+1. **Gift send.** On send, a gift graphic enters with `ease-spring` over `motion-reaction`, scales up, drifts, and fades — playing in the top z-index layer above all chrome. Premium gifts trigger full-screen gradient effects.
+2. **Floating hearts.** Tapping the like control spawns hearts that float up and fade over `motion-reaction` with slight random drift — continuous, ambient live energy.
+3. **Follow toggle.** Flips to "Following" with a brief pink pulse over `motion-fast` — a small celebratory beat, not a full spring.
+4. **Stream switch (swipe).** On mobile, swiping between streams transitions over `motion-slow / ease-standard` — smooth, not bouncy, to keep orientation.
+
+**Reduce motion.** Under `prefers-reduced-motion: reduce`, gift/heart/level-up animations collapse to a static confirmation (the gift still registers in chat, but without the bounce); navigation motion goes instant. The reaction *event* is never lost — only its theatrics.
+
+<!--
+OmD v0.1 Sources — 17live
+Created: 2026-05-19
+
+Tier 1 (attempted): live computed-style inspection of 17.live was NOT completed — WebFetch surfaced
+only the tagline "Live Streaming 直播互動娛樂平台" and the Playwright MCP session redirected to
+injected ad interstitials, blocking a clean DOM read this pass. primary_color #FF4F6E is the
+creation-brief-provided value and matches 17LIVE's known hot-pink brand identity, but exact
+production hexes and the dark-surface palette in §2 are NOT live-verified — they are well-grounded
+approximations from live-streaming-app conventions + the brand's known dark+pink identity. Flagged
+for a future omd:add-reference UPDATE pass with a working browser.
+
+Tier 2 (philosophy/founders):
+- en.wikipedia.org/wiki/17LIVE (WebFetch 2026-05-19) — founded June 2015 Taiwan by Jeffrey Huang;
+  Joseph Phua CEO post-2017 merger; Alex Lien Global CEO 2023; ~60M registered users / 154 countries
+  (Apr 2022); ~46k contracted artists; 2.3M+ MAU; SGX-listed (VT1); revenue via virtual gifting,
+  fan-club subs, ticketed events, live-commerce (HandsUp/OrderPally); "LIVER" = streamer.
+  Metrics not independently audited.
+
+Illustrative (not verified as live copy): all CTA/social/empty/error strings beyond the tagline,
+type scale, semantic + accent hexes, font stack (inferred from JP/TW live-streaming conventions).
+Marked inline. Personas fictional (§13).
+-->
+
+---
+
+**Verified:** 2026-05-19
+**Tier 1 sources:** https://17.live — live inspect NOT completed (browser redirect); tagline "Live Streaming 直播互動娛樂平台" (WebFetch). primary `#FF4F6E` is brief-provided and matches 17LIVE's hot-pink identity; dark-surface palette and other hexes are grounded approximations pending live re-inspection.
+**Tier 2 sources:** styles.refero.design / getdesign.md — not checked this pass (browser session unreliable).
+**Tier 2 (Philosophy/founders):** Wikipedia (17LIVE — Jeffrey Huang / June 2015 Taiwan / SGX VT1 / 60M users 154 countries / LIVER terminology / virtual-gift economy).
+**Style ref:** `pinkoi` (TW consumer tone, adapted dark). **Conflicts unresolved:** production hexes beyond primary not live-verified this pass (browser unreliable) — flagged for UPDATE.
+
+## Components
 
 ### Buttons
 
@@ -248,36 +480,23 @@ No custom display typeface — system stacks render natively across JP/TW and ke
 - Active tab: `#FF4F6E`; inactive: `rgba(255,255,255,0.45)`
 - Center GO LIVE is an elevated pink action
 
-## 5. Layout Principles
+### States
 
-### Structure
-- **Mobile / vertical-video first** — the canonical surface is a portrait phone screen with a full-bleed stream and overlay chrome
-- Discover = grid/feed of stream thumbnails; Stream view = full-bleed video + floating chat + gift rail + bottom action bar
-- Web/desktop is a secondary surface that frames the same dark-stage system
+| State | Treatment |
+|---|---|
+| **Empty (no live streams in category)** | One `rgba(255,255,255,0.7)` line + a CTA to explore Trending. No illustration required; keep it encouraging. |
+| **Empty (no messages / followers)** | Friendly one-liner + suggested action (discover LIVERs). |
+| **Loading (discover grid)** | Dark skeleton tiles (`#1C1C1E`) at 12px radius matching final thumbnails; subtle shimmer. No spinner takeover. |
+| **Loading (stream connecting)** | Centered spinner over a dark scrim with `Connecting…`; preserves the dark stage. |
+| **Loading (inline — send gift)** | Gift button holds width; brief in-button spinner; on success, trigger the gift animation. |
+| **Error (stream failed to load)** | Blameless one-liner over dark scrim + retry in `#FF4F6E`. Never a raw error code alone. |
+| **Error (insufficient coins)** | Clear, non-shaming prompt with exact balance + a top-up action; never pressure language. |
+| **Success (follow)** | Toggle flips to "Following", brief pink confirmation; optional toast `You're now following <LIVER>!`. |
+| **Success (gift sent)** | Top-layer gift animation plays over the stream; chat shows the gift event. The animation IS the confirmation. |
+| **Skeleton** | `#1C1C1E` blocks at exact card dimensions; numeric placeholders render as `—`, never `0`. |
+| **Disabled (button)** | Faded fill + `rgba(255,255,255,0.3)` text; geometry preserved. |
 
-### Spacing
-- 4/8px-based spacing scale, tight on overlay chrome
-- Safe-area-aware padding for notches and home indicators on the stream overlay
-
-### Density
-17LIVE is **medium density with high motion**. Overlay chrome is minimal and edge-anchored so the video breathes; lists and discover grids pack efficiently; the "noise" comes from animated reactions, not from static density.
-
-## 6. Depth & Elevation
-
-On a dark UI, elevation is communicated by **surface lightness steps** (`#121212` → `#1C1C1E` → `#2C2C2E`) and by scrims, more than by shadow.
-
-- **Bottom sheet / modal**: `#1C1C1E` surface rising over a `rgba(0,0,0,0.5)` scrim; soft top shadow
-- **Stream overlay chrome**: anchored to a bottom/top gradient scrim so it floats legibly over video
-- **Gift animations**: render in a top layer above all chrome
-- **Glow accents**: pink/gradient glows on live-avatar rings and premium gifts — the system's "lighting"
-
-### Z-Index (stream view)
-1. Video (base)
-2. Gradient scrims
-3. Chat + overlay chrome
-4. Gift/reaction animation layer (highest)
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 - **DO** default to the dark stage (`#121212`) — video looks best framed in dark and the UI stays out of the way.
 - **DON'T** use a light background for the streaming surface — it blows out late-night phone viewing and dilutes the video.
@@ -293,26 +512,32 @@ On a dark UI, elevation is communicated by **surface lightness steps** (`#121212
 - **DON'T** conflate the status colors with the pink action color.
 - **DO** use Traditional Chinese on TW surfaces and native CJK per market; never Simplified on TW.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Width | Behavior |
+17LIVE speaks like an upbeat host hyping the room — warm, encouraging, and celebratory, the voice of a platform whose whole premise is connection between a LIVER and their fans. The register is **playful and intimate**, leaning on second-person address and the platform's own vocabulary ("LIVER" for streamer, "GO LIVE", fan-club language). It is genuinely multilingual — Japanese and Traditional Chinese are the largest first-class voices, authored per market across 150+ countries, never machine-translated from one master. Copy celebrates moments (a new follower, a gift received, a fan-club join) without being saccharine, and keeps transactional flows (top-ups, gifting) clear and trustworthy because real money moves through them. The bilingual tagline "Live Streaming 直播互動娛樂平台" captures the positioning — interactive entertainment, live and social.
+
+| Context | Tone |
 |---|---|
-| Mobile `<768px` | Canonical surface — full-bleed vertical video, bottom tab bar, overlay chat/gift chrome |
-| Tablet `768–1024px` | Stream centers with side panels (chat / ranking) appearing |
-| Desktop `>1024px` | Stream center stage with persistent chat rail + gift panel + recommendations sidebar (Twitch-like three-zone layout) |
+| Onboarding / hero | Inviting, energetic. `GO LIVE`, `Join the party`. Second-person, action-forward. |
+| CTAs | Imperative + warm. `Go Live`, `Send Gift`, `Follow`, `Join Fan Club`. |
+| Social events (follow / gift) | Celebratory micro-copy. `You're now following <LIVER>!`, `Gift sent — they felt that!`. Genuine, not corporate. |
+| Live chat / reactions | Casual, emoji-friendly (user territory), real-time. |
+| Transactions (coins / top-up) | Clear and trustworthy — exact amounts, no dark patterns, balance always visible. |
+| Empty states | Encouraging next step. `No one's live in this category right now — explore Trending.` |
+| Errors | Blameless, friendly, actionable. Never blame the fan or the LIVER. |
+| Safety / report | Calm, serious, supportive — the one place the playful tone yields to clarity. |
+| Legal / policy | Formal and plain. |
 
-### Touch & Mobile
-- Large tap targets (44px+); center GO LIVE elevated for thumb reach
-- Gift rail and chat composer are bottom-anchored within thumb zone
-- Swipe gestures to switch streams (feed-like) on mobile
-- Safe-area insets respected on overlay chrome
+**Forbidden phrases.** Manipulative spend-pressure on gifting/top-up (`Hurry, gift now!`), shaming a user for not spending, `Oops! Something went wrong` without a reason, cold corporate jargon in social moments, emoji in safety/report flows (keep those serious), Simplified-Chinese characters on TW-Traditional surfaces, fake hype in error messages.
 
-### Media
-- Video full-bleed `object-fit: cover` on mobile, contained on desktop center stage
-- Thumbnails lazy-load; LIVE thumbnails may show a short motion preview on hover (desktop)
+**Voice samples.**
+- `Live Streaming 直播互動娛樂平台` — bilingual platform positioning <!-- verified: 17.live tagline via WebFetch 2026-05-19 -->
+- `GO LIVE` — primary creator CTA <!-- illustrative/conventional: 17LIVE's core action verb; not live-DOM-verified this pass -->
+- `Follow` / `Following` — LIVER follow toggle <!-- illustrative/conventional -->
+- `You're now following this LIVER!` — illustrative follow-success micro-copy <!-- illustrative: not verified as live 17LIVE copy -->
+- `No one's live here right now — check out Trending.` — illustrative empty state <!-- illustrative: not verified as live 17LIVE copy -->
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Brand / action: 17 Pink (`#FF4F6E`); pressed `#E8455F`
@@ -339,137 +564,10 @@ On a dark UI, elevation is communicated by **surface lightness steps** (`#121212
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-17LIVE speaks like an upbeat host hyping the room — warm, encouraging, and celebratory, the voice of a platform whose whole premise is connection between a LIVER and their fans. The register is **playful and intimate**, leaning on second-person address and the platform's own vocabulary ("LIVER" for streamer, "GO LIVE", fan-club language). It is genuinely multilingual — Japanese and Traditional Chinese are the largest first-class voices, authored per market across 150+ countries, never machine-translated from one master. Copy celebrates moments (a new follower, a gift received, a fan-club join) without being saccharine, and keeps transactional flows (top-ups, gifting) clear and trustworthy because real money moves through them. The bilingual tagline "Live Streaming 直播互動娛樂平台" captures the positioning — interactive entertainment, live and social.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Onboarding / hero | Inviting, energetic. `GO LIVE`, `Join the party`. Second-person, action-forward. |
-| CTAs | Imperative + warm. `Go Live`, `Send Gift`, `Follow`, `Join Fan Club`. |
-| Social events (follow / gift) | Celebratory micro-copy. `You're now following <LIVER>!`, `Gift sent — they felt that!`. Genuine, not corporate. |
-| Live chat / reactions | Casual, emoji-friendly (user territory), real-time. |
-| Transactions (coins / top-up) | Clear and trustworthy — exact amounts, no dark patterns, balance always visible. |
-| Empty states | Encouraging next step. `No one's live in this category right now — explore Trending.` |
-| Errors | Blameless, friendly, actionable. Never blame the fan or the LIVER. |
-| Safety / report | Calm, serious, supportive — the one place the playful tone yields to clarity. |
-| Legal / policy | Formal and plain. |
-
-**Forbidden phrases.** Manipulative spend-pressure on gifting/top-up (`Hurry, gift now!`), shaming a user for not spending, `Oops! Something went wrong` without a reason, cold corporate jargon in social moments, emoji in safety/report flows (keep those serious), Simplified-Chinese characters on TW-Traditional surfaces, fake hype in error messages.
-
-**Voice samples.**
-- `Live Streaming 直播互動娛樂平台` — bilingual platform positioning <!-- verified: 17.live tagline via WebFetch 2026-05-19 -->
-- `GO LIVE` — primary creator CTA <!-- illustrative/conventional: 17LIVE's core action verb; not live-DOM-verified this pass -->
-- `Follow` / `Following` — LIVER follow toggle <!-- illustrative/conventional -->
-- `You're now following this LIVER!` — illustrative follow-success micro-copy <!-- illustrative: not verified as live 17LIVE copy -->
-- `No one's live here right now — check out Trending.` — illustrative empty state <!-- illustrative: not verified as live 17LIVE copy -->
-
-## 11. Brand Narrative
-
-17LIVE was founded in **June 2015 in Taiwan** by **Jeffrey Huang** (黃立成), a musician-entrepreneur, as a live-streaming app built around the idea that broadcasting should be **interactive and intimate** — not a one-way feed but a real-time room where fans shape the show through chat and virtual gifts ([en.wikipedia.org/wiki/17LIVE](https://en.wikipedia.org/wiki/17LIVE)). The name "17" (read "one-seven", and a homophone play in Mandarin) became shorthand for going live. After early leadership transitions — Joseph Phua (co-founder of Paktor) became CEO following a 2017 merger, and Alex Lien became Global CEO in 2023 — the company grew into an international entertainment platform headquartered across Japan, Taiwan, and beyond.
-
-The design language is the product-surface expression of that interactive-intimacy thesis. The dark stage exists so the LIVER's video is the hero and the late-night, in-your-hand viewing feels right; the hot pink is the color of every act of connection — going live, following, sending a gift, joining a fan club — because the platform's entire economy and emotion run on those moments. The high motion budget (flying gifts, floating hearts, level-up bursts) is not decoration; it is the visible feedback loop that makes a fan feel *seen* by a LIVER, which is the product.
-
-By April 2022, 17LIVE reported roughly **60 million registered users across 154 countries**, around **46,000 contracted artists**, and over **2.3 million monthly active users**, ranking among the largest live-broadcasting platforms in the world; it is publicly listed on the Singapore Exchange (SGX: VT1). Revenue flows through virtual gifting, monthly fan-club subscriptions, pay-per-view ticketed events, and live-commerce (HandsUp / OrderPally). ([en.wikipedia.org/wiki/17LIVE](https://en.wikipedia.org/wiki/17LIVE)) <!-- source: Wikipedia via WebFetch 2026-05-19; metrics not independently audited -->
-
-## 12. Principles
-
-1. **Dark stage, lit content.** The UI is a darkened theater so the LIVER's video and the pink actions carry the light. *UI implication:* Default surfaces to `#121212`/`#1C1C1E`; keep overlay chrome edge-anchored and minimal; never use a light streaming surface.
-
-2. **Pink is connection.** The signature pink marks every act of social connection and transaction. *UI implication:* Apply `#FF4F6E` to GO LIVE, follow, gift, and primary CTA; keep neutral chrome neutral so pink always reads as "a moment of connection."
-
-3. **Reactions are the product.** Gifts, hearts, and level-ups are the visible loop that makes a fan feel seen. *UI implication:* Spend the motion budget here — top-layer gift animations, floating reactions — while keeping navigation motion quiet. The reaction layer is the highest z-index.
-
-4. **Money moves; be trustworthy.** Coins, top-ups, and gifting involve real money and a creator's livelihood. *UI implication:* Show exact balances and amounts; never use spend-pressure dark patterns; keep transaction flows clear, with safety/report flows calm and serious.
-
-5. **Two-plus languages, all native.** Japanese and Traditional Chinese lead; copy is authored per market. *UI implication:* Use the locale-aware CJK font stack; route microcopy through locale bundles; never Simplified on TW surfaces.
-
-6. **Friendly geometry.** Pills, circular avatars, soft cards signal a social, human platform. *UI implication:* Buttons 16–24px radius; avatars 50%; cards ~12px. Avoid sharp enterprise corners.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by publicly described 17LIVE user segments (JP/TW livestream fans and LIVERs), not individual people.*
-
-**さくら (Sakura), 23, Tokyo.** A devoted fan who follows three LIVERs and tunes in nightly after work. Belongs to a paid fan club, sends mid-tier gifts during special streams, and treats the chat community as a real social circle. Cares that her gift visibly registers — the animation and the LIVER's reaction are the payoff.
-
-**阿哲 (A-Zhe), 27, Taipei.** A part-time LIVER who streams gaming and talk content several evenings a week, building toward full-time. Watches his ranking and fan-club growth closely, optimizes his GO LIVE schedule, and values clear earnings/analytics. The pink GO LIVE button is the most important pixel in his day.
-
-**Kevin, 19, Kaohsiung.** A casual viewer who discovers streams through the explore feed, drops in for a few minutes, occasionally sends a free heart, and rarely spends. Browses on mobile in short sessions; the discover grid and quick swipe-between-streams are his whole experience.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no live streams in category)** | One `rgba(255,255,255,0.7)` line + a CTA to explore Trending. No illustration required; keep it encouraging. |
-| **Empty (no messages / followers)** | Friendly one-liner + suggested action (discover LIVERs). |
-| **Loading (discover grid)** | Dark skeleton tiles (`#1C1C1E`) at 12px radius matching final thumbnails; subtle shimmer. No spinner takeover. |
-| **Loading (stream connecting)** | Centered spinner over a dark scrim with `Connecting…`; preserves the dark stage. |
-| **Loading (inline — send gift)** | Gift button holds width; brief in-button spinner; on success, trigger the gift animation. |
-| **Error (stream failed to load)** | Blameless one-liner over dark scrim + retry in `#FF4F6E`. Never a raw error code alone. |
-| **Error (insufficient coins)** | Clear, non-shaming prompt with exact balance + a top-up action; never pressure language. |
-| **Success (follow)** | Toggle flips to "Following", brief pink confirmation; optional toast `You're now following <LIVER>!`. |
-| **Success (gift sent)** | Top-layer gift animation plays over the stream; chat shows the gift event. The animation IS the confirmation. |
-| **Skeleton** | `#1C1C1E` blocks at exact card dimensions; numeric placeholders render as `—`, never `0`. |
-| **Disabled (button)** | Faded fill + `rgba(255,255,255,0.3)` text; geometry preserved. |
-
-## 15. Motion & Easing
-
-17LIVE has a **bifurcated motion philosophy**: lavish and celebratory on reactions, quick and quiet on navigation. This is the rare brand where overshoot is welcome — but only in the reaction layer.
-
-**Durations:**
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, reduce-motion fallback |
-| `motion-fast` | 150ms | Hover/press, tab switch, chrome transitions |
-| `motion-standard` | 250ms | Sheets, modals, panel slides |
-| `motion-slow` | 400ms | Stream-switch transitions |
-| `motion-reaction` | 600–1500ms | Gift animations, floating hearts, level-up bursts |
-
-**Easings:**
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Navigation, sheets, chrome — quiet and platform-native |
-| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things appearing |
-| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reaction layer ONLY — gift pops, heart bursts, level-up |
-
-**Spring stance.** Unlike utility brands, 17LIVE **embraces overshoot — but quarantines it to the reaction layer.** A sent gift should pop, scale-bounce, and celebrate; a tab switch should not. Navigation, sheets, and form chrome use the standard non-bouncy easings. The rule: spring lives where the social/emotional payoff lives (gifts, hearts, follows, level-ups); everything structural stays calm.
-
-**Signature motions.**
-1. **Gift send.** On send, a gift graphic enters with `ease-spring` over `motion-reaction`, scales up, drifts, and fades — playing in the top z-index layer above all chrome. Premium gifts trigger full-screen gradient effects.
-2. **Floating hearts.** Tapping the like control spawns hearts that float up and fade over `motion-reaction` with slight random drift — continuous, ambient live energy.
-3. **Follow toggle.** Flips to "Following" with a brief pink pulse over `motion-fast` — a small celebratory beat, not a full spring.
-4. **Stream switch (swipe).** On mobile, swiping between streams transitions over `motion-slow / ease-standard` — smooth, not bouncy, to keep orientation.
-
-**Reduce motion.** Under `prefers-reduced-motion: reduce`, gift/heart/level-up animations collapse to a static confirmation (the gift still registers in chat, but without the bounce); navigation motion goes instant. The reaction *event* is never lost — only its theatrics.
-
-<!--
-OmD v0.1 Sources — 17live
-Created: 2026-05-19
-
-Tier 1 (attempted): live computed-style inspection of 17.live was NOT completed — WebFetch surfaced
-only the tagline "Live Streaming 直播互動娛樂平台" and the Playwright MCP session redirected to
-injected ad interstitials, blocking a clean DOM read this pass. primary_color #FF4F6E is the
-creation-brief-provided value and matches 17LIVE's known hot-pink brand identity, but exact
-production hexes and the dark-surface palette in §2 are NOT live-verified — they are well-grounded
-approximations from live-streaming-app conventions + the brand's known dark+pink identity. Flagged
-for a future omd:add-reference UPDATE pass with a working browser.
-
-Tier 2 (philosophy/founders):
-- en.wikipedia.org/wiki/17LIVE (WebFetch 2026-05-19) — founded June 2015 Taiwan by Jeffrey Huang;
-  Joseph Phua CEO post-2017 merger; Alex Lien Global CEO 2023; ~60M registered users / 154 countries
-  (Apr 2022); ~46k contracted artists; 2.3M+ MAU; SGX-listed (VT1); revenue via virtual gifting,
-  fan-club subs, ticketed events, live-commerce (HandsUp/OrderPally); "LIVER" = streamer.
-  Metrics not independently audited.
-
-Illustrative (not verified as live copy): all CTA/social/empty/error strings beyond the tagline,
-type scale, semantic + accent hexes, font stack (inferred from JP/TW live-streaming conventions).
-Marked inline. Personas fictional (§13).
--->
-
----
-
-**Verified:** 2026-05-19
-**Tier 1 sources:** https://17.live — live inspect NOT completed (browser redirect); tagline "Live Streaming 直播互動娛樂平台" (WebFetch). primary `#FF4F6E` is brief-provided and matches 17LIVE's hot-pink identity; dark-surface palette and other hexes are grounded approximations pending live re-inspection.
-**Tier 2 sources:** styles.refero.design / getdesign.md — not checked this pass (browser session unreliable).
-**Tier 2 (Philosophy/founders):** Wikipedia (17LIVE — Jeffrey Huang / June 2015 Taiwan / SGX VT1 / 60M users 154 countries / LIVER terminology / virtual-gift economy).
-**Style ref:** `pinkoi` (TW consumer tone, adapted dark). **Conflicts unresolved:** production hexes beyond primary not live-verified this pass (browser unreliable) — flagged for UPDATE.
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ff4f6e` measures 3.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-follow`.** Text `#ffffff` on `#ff4f6e` measures 3.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-live`.** Text `#ffffff` on `#ff4f6e` measures 3.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

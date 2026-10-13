@@ -1,71 +1,154 @@
 ---
-id: bigin
 name: Bigin
-display_name_kr: 빅인
-country: KR
-category: marketing
-homepage: "https://www.bigin.io"
-primary_color: "#006fff"
-logo:
-  type: favicon
-  slug: "https://www.bigin.io/favicon.ico"
-verified: "2026-06-26"
-added: "2026-06-26"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = live CTA electric blue (#006fff); inline text links sit on a slightly deeper #0066cc. Hero band is a deep navy (#0b1335) with white type. Feature surfaces ladder through tinted blues (#f4f9ff -> #f1f5fd -> #e1f1ff) plus one mint accent (#dbf4eb / #7edbb9). Everything is SpoqaHanSansNeo at weight 700."
-  colors:
-    primary: "#006fff"
-    link: "#0066cc"
-    navy: "#0b1335"
-    ink: "#000000"
-    heading: "#3d4046"
-    body: "#53585f"
-    muted: "#7e8696"
-    faint: "#b2c0cb"
-    canvas: "#ffffff"
-    surface-blue: "#f4f9ff"
-    surface-tint: "#f1f5fd"
-    accent-surface: "#e1f1ff"
-    mint: "#dbf4eb"
-    mint-border: "#7edbb9"
-    hairline: "#e8eaee"
-  typography:
-    family: { display: "SpoqaHanSansNeo", body: "SpoqaHanSansNeo" }
-    display-hero: { size: 56, weight: 700, lineHeight: 1.3, use: "Hero headline on navy band, Spoqa Han Sans Neo Bold" }
-    section:      { size: 40, weight: 700, lineHeight: 1.4, use: "Section / feature titles" }
-    plan-title:   { size: 32, weight: 700, use: "Pricing comparison heading" }
-    subhead:      { size: 24, weight: 700, lineHeight: 1.5, use: "Feature subheads in slate #3d4046" }
-    eyebrow:      { size: 20, weight: 700, use: "Section eyebrow category label in muted #7e8696" }
-    body:         { size: 16, weight: 400, lineHeight: 1.3, use: "Body copy and inline links" }
-    nav:          { size: 14, weight: 700, use: "Nav links and pill button labels" }
-    link-arrow:   { size: 18, weight: 500, use: "Arrow more-links in #0066cc" }
-  spacing: { xs: 4, sm: 8, base: 16, card: 26, lg: 40, section: 48 }
-  rounded: { sm: 8, md: 20, lg: 24, xl: 32, full: 9999 }
-  shadow:
-    cta-glow: "rgba(0,104,255,0.4) 0px 4px 16px -4px"
-    cta-glow-tight: "rgba(0,104,255,0.4) 2px 2px 8px 0px"
-    card-ambient: "rgba(0,0,0,0.04) 0px 5px 51px 0px"
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#006fff", fg: "#ffffff", radius: "20px", padding: "10px 15px", height: "40px", font: "14px / 700", shadow: "rgba(0,104,255,0.4) 2px 2px 8px", use: "Header 상담 신청 CTA, electric-blue pill" }
-    button-cta-lift: { type: button, bg: "#006fff", fg: "#ffffff", radius: "24px", padding: "0 16px", height: "58px", font: "18px / 700", shadow: "rgba(0,104,255,0.4) 0px 4px 16px -4px", use: "Hero / pricing 상담 신청하기 lift CTA" }
-    button-connect: { type: button, bg: "#006fff", fg: "#ffffff", radius: "8px", height: "36px", shadow: "rgba(0,111,255,0.4) 0px 4px 16px -4px", use: "Inline 연동 connect chip, the one square-ish blue button" }
-    nav-link: { type: tab, fg: "#b2c0cb", active: "text #3d4046", font: "14px / 700", use: "Top nav item; muted #7e8696 on inner pages, slate on active" }
-    feature-card: { type: card, bg: "#ffffff", border: "1px solid #e8eaee", radius: "20px", padding: "40px", shadow: "rgba(0,0,0,0.04) 0px 5px 51px", use: "Elevated white feature card" }
-    tinted-card: { type: card, bg: "#f4f9ff", border: "1px solid rgba(0,0,0,0.05)", radius: "20px", padding: "48px", use: "Light-blue section container" }
-    accent-card: { type: card, bg: "#e1f1ff", radius: "32px", padding: "28px 57px 48px 77px", use: "Blue accent feature block carrying the new tag" }
-    mint-card: { type: card, bg: "#dbf4eb", border: "1px solid #7edbb9", radius: "20px", use: "Mint integration card / callout" }
-    eyebrow-label: { type: badge, fg: "#7e8696", font: "20px / 700", use: "Section eyebrow category label (캠페인, 자동화)" }
-    inline-link: { type: listItem, fg: "#0066cc", font: "16px / 400", use: "Inline body / footer text link" }
-  components_harvested: true
+colors:
+  primary: '#006fff'
+  link: '#0066cc'
+  navy: '#0b1335'
+  ink: '#000000'
+  heading: '#3d4046'
+  body: '#53585f'
+  muted: '#7e8696'
+  faint: '#b2c0cb'
+  canvas: '#ffffff'
+  surface-blue: '#f4f9ff'
+  surface-tint: '#f1f5fd'
+  accent-surface: '#e1f1ff'
+  mint: '#dbf4eb'
+  mint-border: '#7edbb9'
+  hairline: '#e8eaee'
+typography:
+  display-hero:
+    fontSize: 56px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Hero headline on navy band, Spoqa Han Sans Neo Bold
+  section:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Section / feature titles
+  plan-title:
+    fontSize: 32px
+    fontWeight: 700
+    use: Pricing comparison heading
+  subhead:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: 'Feature subheads in slate #3d4046'
+  eyebrow:
+    fontSize: 20px
+    fontWeight: 700
+    use: 'Section eyebrow category label in muted #7e8696'
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.3
+    use: Body copy and inline links
+  nav:
+    fontSize: 14px
+    fontWeight: 700
+    use: Nav links and pill button labels
+  link-arrow:
+    fontSize: 18px
+    fontWeight: 500
+    use: 'Arrow more-links in #0066cc'
+rounded:
+  sm: 8px
+  md: 20px
+  lg: 24px
+  xl: 32px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  base: 16
+  card: 26
+  lg: 40
+  section: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#006fff'
+    textColor: '#ffffff'
+    rounded: 20px
+    padding: 10px 15px
+    height: 40px
+    typography: 14px / 700
+    shadow: rgba(0,104,255,0.4) 2px 2px 8px
+    use: Header 상담 신청 CTA, electric-blue pill
+  button-cta-lift:
+    type: button
+    backgroundColor: '#006fff'
+    textColor: '#ffffff'
+    rounded: 24px
+    padding: 0 16px
+    height: 58px
+    typography: 18px / 700
+    shadow: rgba(0,104,255,0.4) 0px 4px 16px -4px
+    use: Hero / pricing 상담 신청하기 lift CTA
+  button-connect:
+    type: button
+    backgroundColor: '#006fff'
+    textColor: '#ffffff'
+    rounded: 8px
+    height: 36px
+    shadow: rgba(0,111,255,0.4) 0px 4px 16px -4px
+    use: Inline 연동 connect chip, the one square-ish blue button
+  nav-link:
+    type: tab
+    textColor: '#b2c0cb'
+    active: 'text #3d4046'
+    typography: 14px / 700
+    use: 'Top nav item; muted #7e8696 on inner pages, slate on active'
+  feature-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #e8eaee'
+    rounded: 20px
+    padding: 40px
+    shadow: rgba(0,0,0,0.04) 0px 5px 51px
+    use: Elevated white feature card
+  tinted-card:
+    type: card
+    backgroundColor: '#f4f9ff'
+    border: 1px solid rgba(0,0,0,0.05)
+    rounded: 20px
+    padding: 48px
+    use: Light-blue section container
+  accent-card:
+    type: card
+    backgroundColor: '#e1f1ff'
+    rounded: 32px
+    padding: 28px 57px 48px 77px
+    use: Blue accent feature block carrying the new tag
+  mint-card:
+    type: card
+    backgroundColor: '#dbf4eb'
+    border: '1px solid #7edbb9'
+    rounded: 20px
+    use: Mint integration card / callout
+  eyebrow-label:
+    type: badge
+    textColor: '#7e8696'
+    typography: 20px / 700
+    use: Section eyebrow category label (캠페인, 자동화)
+  inline-link:
+    type: listItem
+    textColor: '#0066cc'
+    typography: 16px / 400
+    use: Inline body / footer text link
+fonts:
+  roles:
+    display: SpoqaHanSansNeo
+    body: SpoqaHanSansNeo
 ---
 
 # Design System Inspiration of Bigin
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Bigin (빅인) is a Korean MarTech product — a full-funnel CRM marketing-automation platform built by Biginsight (빅인사이트) — and its marketing site reads like a confident SaaS dashboard turned outward: clean white canvas, one electric-blue action color, and a single dramatic dark band where the product narrative peaks. The page opens on a deep navy hero (`#0b1335`) with white display type, then drops into an airy white (`#ffffff`) editorial flow where feature stories sit inside soft blue-tinted cards. The single saturated accent is an electric blue (`#006fff`) that is reserved almost exclusively for the "상담 신청" (request consultation) call-to-action and a handful of connect/convert chips, so the eye is trained to read that one blue as "the next step." Inline text links use a slightly deeper, more legible blue (`#0066cc`).
 
@@ -83,7 +166,7 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 - Blue-tinted CTA glow shadow (`rgba(0,104,255,0.4)`) instead of neutral elevation
 - Slate text ladder: `#000000` -> `#3d4046` -> `#53585f` -> `#7e8696` -> faint nav `#b2c0cb`
 
-## Primary tasks
+### Primary tasks
 
 - Book a consultation instead of starting a trial alone
 - Compare plans on the pricing page before choosing one
@@ -91,7 +174,33 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 - Run personalized, behavior-based messaging campaigns at scale
 - Check that the data integrations fit an existing stack
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Bigin (빅인) is the MarTech product of **Biginsight (주식회사 빅인사이트 / Biginsight Inc.)**, a Seoul-based company that, per its own company page, was founded in **May 2015** as **(주)어플리켓 (Applicat)** and rebranded to **(주)Biginsight** in **October 2018**. The product line evolved from a deep-learning web-analytics tool ("Bigin", 2018-04) into an AI marketing-automation solution (2019-05) and a big-data AI analytics platform (2019-12), then matured through **Bigin 3.0** (2021-05, with a global launch and Southeast-Asia expansion in 2021-12) to the current **Bigin 4.0** (2023-07).
+
+Along the way the company raised investment from **Crescendo Equity Partners** (2021-03), signed a **Mixpanel** partnership and MOUs with **Naver Cloud** and **제일기획 (Cheil)**, and acquired **(주)태거스 (Taggers)** and **(주)오피노마케팅 (Opinno Marketing)** in 2022. Recognition includes selection as an **APAC MarTech Startup TOP 10** by *MarTech Outlook*, a Minister of Science and ICT award at the Korea Internet Awards, **Korea AI Startup 100**, and a **TIPS** program selection — all listed on the brand-owned company timeline. The brand positions itself as "데이터로 MarTech 산업을 선도하는 빅인사이트" (Biginsight, leading the MarTech industry through data) and frames its product as "The Ultimate Guide to Full-funnel Marketing."
+
+What Bigin refuses, visible in its design: the heavy, intimidating chrome of legacy enterprise analytics, and the dark-pattern urgency of growth-hack marketing. What it embraces: a clean, rounded, mostly-flat interface; a single trustworthy electric blue; Bold Spoqa Han Sans Neo type that states capabilities plainly; and a consultative CTA ("상담 신청") that invites a conversation rather than forcing a signup.
+
+### Principles
+
+1. **Full-funnel, one place.** Bigin's promise is consolidating acquisition through loyalty into one solution. *UI implication:* group capabilities into clear feature bands; the hero asserts end-to-end coverage, not a single trick.
+2. **One action, one blue.** Electric blue (`#006fff`) means "do this." *UI implication:* reserve the saturated blue for the primary CTA and convert chips so the next step is never ambiguous; inline links use the deeper `#0066cc`.
+3. **Capable but unintimidating.** A data product should feel approachable. *UI implication:* soft 20px radius, pale blue tints, and whisper-soft shadows instead of heavy enterprise chrome.
+4. **Bold states it plainly.** Spoqa Han Sans Neo weight 700 carries the message. *UI implication:* build hierarchy with size, keep type confident and direct.
+5. **Consult, don't pressure.** The primary CTA invites a conversation ("상담 신청"). *UI implication:* low-pressure, advisory CTA language; no countdown-timer urgency.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Bigin user segments (Korean e-commerce marketers, growth leads, agency operators), not individual people.*
+
+**김도현, 33, 서울.** A growth marketer at a mid-size D2C brand who is tired of stitching together analytics, messaging, and ad tools. Chose Bigin to run "모든 마케팅 액션, 한 번에" from one solution, and values that the platform spans acquisition through retention.
+
+**이서연, 38, 경기.** A marketing team lead evaluating CRM-automation vendors. Reads the pricing comparison closely and books a "상담 신청" consultation rather than self-serving a trial — she wants to confirm the data integrations fit her stack before committing.
+
+**박준영, 41, 서울.** An agency operator managing campaigns for multiple e-commerce clients. Uses Bigin's audience and automation features to run personalized, behavior-based messaging at scale, and trusts the brand's MarTech track record (APAC TOP 10, Bigin 4.0).
+
+## Colors
 
 ### Primary
 - **Bigin Blue** (`#006fff`): Primary brand color and CTA background. The electric blue on the "상담 신청" pill and convert chips — the system's single "action" color.
@@ -114,7 +223,7 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 - **Mint Border** (`#7edbb9`): The green hairline stroke that outlines mint-themed integration cards.
 - **Hairline** (`#e8eaee`): Thin neutral border on white feature cards and dividers.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display & Body**: `SpoqaHanSansNeo` (Spoqa Han Sans Neo) — used for the entire interface, headlines through body. Bold (700) carries every heading, nav item, and button label; Regular (400) and Medium (500) carry body copy and arrow links.
@@ -138,7 +247,130 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 - **Hangul-first sizing**: body sits at a comfortable 16px, generous for hangul legibility in a marketing context.
 - **Slate, not pure black, for inner pages**: titles on the pricing and blog surfaces use `#3d4046` rather than `#000000`, softening the dense Bold type.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~8px
+- Scale: 4px, 8px, 16px, 26px, 40px, 48px
+- Notable: feature cards pad to 40px, tinted section containers to 48px, and a tighter 26px on compact item cards — generous, breathable rhythm typical of a SaaS marketing page
+
+### Grid & Container
+- Centered ~1200px content column
+- Deep-navy (`#0b1335`) hero band anchors the top with a 56px white headline
+- Feature stories alternate between white (`#ffffff`) and tinted-blue (`#f4f9ff`) full-width bands
+- Two-up and grid feature cards at 20px radius group related capabilities
+- Pricing uses a comparison table plus a closing navy CTA band
+
+### Whitespace Philosophy
+- **Breathing room over density**: despite being a data product, the marketing surface is airy, with large section padding (48px) and tall hero rhythm.
+- **Tint segmentation**: sections separate by background tint (`#f4f9ff`, `#f1f5fd`, `#e1f1ff`, mint `#dbf4eb`) rather than heavy borders or shadows.
+- **Rounded cadence**: the repeated 20px radius across cards, sections, and pills sets a soft, consistent horizontal rhythm.
+
+### Border Radius Scale
+- Small (8px): inline connect button, form fields
+- Medium (20px): cards, section containers, header pills — the workhorse
+- Large (24px): hero / pricing lift CTA
+- Extra (32px): the largest blue accent feature block
+- Full (9999px): pill/round decorative elements
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, nav collapses to a drawer |
+| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
+| Desktop | 1024-1440px | Full ~1200px layout, multi-column feature bands |
+
+#### Touch Targets
+- Primary CTA pill at 40px height; lift CTA at 58px for an unmistakable target
+- Nav items at ~40px height within the header
+- Connect chips at 36px height
+
+#### Collapsing Strategy
+- Hero: 56px Spoqa headline scales down on mobile, weight 700 maintained
+- Feature bands: multi-column grid -> stacked single column
+- Tinted/white alternating sections maintain full-width treatment
+- Nav: horizontal links -> hamburger drawer (icons-ic-drawer)
+
+#### Image Behavior
+- Product screenshots sit inside 20px-radius cards across breakpoints
+- The navy hero band retains its full-width treatment, reducing internal padding on mobile
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Most surfaces, tinted section blocks |
+| Tint (Level 1) | Pale blue background shift (`#f4f9ff` / `#f1f5fd` / `#e1f1ff`) | Card/section separation without elevation |
+| Hairline (Level 2) | `1px solid #e8eaee` border | White feature card outlines, dividers |
+| Ambient (Level 3) | `rgba(0,0,0,0.04) 0px 5px 51px` | Elevated white feature cards |
+| Glow (CTA) | `rgba(0,104,255,0.4) 0px 4px 16px -4px` | Blue primary CTA colored lift |
+
+**Shadow Philosophy**: Bigin is a near-flat system. Most cards rely on the pale-blue tint ladder and thin `#e8eaee` hairlines for separation; real elevation appears only as a whisper-soft ambient shadow (`rgba(0,0,0,0.04)`) on white feature cards. The one expressive shadow is the **blue-tinted CTA glow** (`rgba(0,104,255,0.4)`), which makes the electric-blue "상담 신청" pill feel lifted and clickable while staying on-brand — color, not neutral grey, does the lifting. The mint integration card adds depth through its `#7edbb9` border rather than a shadow.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.cta-glow`: `rgba(0,104,255,0.4) 0px 4px 16px -4px`
+- `shadow.cta-glow-tight`: `rgba(0,104,255,0.4) 2px 2px 8px 0px`
+- `shadow.card-ambient`: `rgba(0,0,0,0.04) 0px 5px 51px 0px`
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus |
+| `motion-standard` | 220ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and quiet — consistent with the clean, rounded aesthetic. The primary CTA responds to hover with a subtle lift of its blue glow (`rgba(0,104,255,0.4)`); feature cards fade in from below at `motion-standard / ease-enter` as the user scrolls the narrative. No bounce or spring — a B2B data product signals competence, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on three brand-owned surfaces:
+- https://www.bigin.io (homepage)
+- https://www.bigin.io/pricing (플랜 안내)
+- https://www.bigin.io/company (회사 소개)
+
+Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Raw samples):
+- Primary CTA "상담 신청" — bg rgb(0,111,255) #006fff / radius 20px (24px lift variant) / shadow rgba(0,104,255,0.4)
+- Hero band — bg rgb(11,19,53) #0b1335 / white H1 56px / weight 700 / Spoqa Han Sans Neo
+- Inline links — color rgb(0,102,204) #0066cc
+- Tint ladder — #f4f9ff / #f1f5fd / #e1f1ff section surfaces; mint #dbf4eb with #7edbb9 border
+- White feature card — bg #ffffff / 1px #e8eaee / radius 20px / shadow rgba(0,0,0,0.04) 0px 5px 51px
+
+Voice samples (§10) are verbatim from the live homepage and company page.
+
+Brand narrative (§11): Biginsight (빅인사이트 / 어플리켓 → Biginsight 2018) founded 2015; product
+timeline (Bigin 2018 → 3.0 2021 → 4.0 2023), investors (Crescendo Equity Partners, Mixpanel
+partnership), acquisitions (Taggers, Opinno Marketing 2022), and awards (APAC MarTech Startup TOP 10,
+Korea AI Startup 100, TIPS) are all read directly from the brand-owned company page
+(https://www.bigin.io/company) on 2026-06-26.
+
+Personas (§13) are fictional archetypes informed by publicly observable Bigin user segments
+(Korean e-commerce marketers, growth leads, agency operators). Names are illustrative; they do
+not refer to real people.
+
+Interpretive claims (e.g., "one action, one blue", "capable but unintimidating as a rejection of
+legacy enterprise chrome") are editorial readings connecting Bigin's observed design to its
+positioning, not directly sourced Bigin statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -233,45 +465,21 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 **Tier 2 sources:** getdesign.md/bigin — not listed (404); styles.refero.design — Bigin not indexed (KR brand)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~8px
-- Scale: 4px, 8px, 16px, 26px, 40px, 48px
-- Notable: feature cards pad to 40px, tinted section containers to 48px, and a tighter 26px on compact item cards — generous, breathable rhythm typical of a SaaS marketing page
+| State | Treatment |
+|---|---|
+| **Empty (no campaign data)** | White canvas. Single slate (`#3d4046`) line explaining no campaigns yet, with one blue (`#006fff`) CTA to create or connect. No clutter. |
+| **Empty (no integrations)** | Muted slate (`#7e8696`) line prompting a data connection, with a mint integration card (`#dbf4eb` / `#7edbb9`) offering connect chips. |
+| **Loading (dashboard fetch)** | Skeleton blocks at final card dimensions, 20px radius, on a `#f4f9ff` tinted surface — flat pulse consistent with the near-shadowless system. |
+| **Loading (report compute)** | Inline progress; previous values stay visible. |
+| **Error (sync/connection failed)** | Inline message in slate with a plain-language explanation and a retry. States what to do next, not just that something failed. |
+| **Error (form validation)** | Field-level message below the input; describes what's valid, not just "필수". |
+| **Success (consultation submitted)** | Brief inline confirmation in a calm tone; the team will follow up via sales@bigin.io. No celebratory emoji. |
+| **Skeleton** | `#f4f9ff` blocks at final dimensions, 20px radius, flat pulse. |
+| **Disabled** | Faint blue-grey (`#b2c0cb`) text on reduced-opacity surface; the blue CTA fades rather than turning grey to preserve brand read. |
 
-### Grid & Container
-- Centered ~1200px content column
-- Deep-navy (`#0b1335`) hero band anchors the top with a 56px white headline
-- Feature stories alternate between white (`#ffffff`) and tinted-blue (`#f4f9ff`) full-width bands
-- Two-up and grid feature cards at 20px radius group related capabilities
-- Pricing uses a comparison table plus a closing navy CTA band
-
-### Whitespace Philosophy
-- **Breathing room over density**: despite being a data product, the marketing surface is airy, with large section padding (48px) and tall hero rhythm.
-- **Tint segmentation**: sections separate by background tint (`#f4f9ff`, `#f1f5fd`, `#e1f1ff`, mint `#dbf4eb`) rather than heavy borders or shadows.
-- **Rounded cadence**: the repeated 20px radius across cards, sections, and pills sets a soft, consistent horizontal rhythm.
-
-### Border Radius Scale
-- Small (8px): inline connect button, form fields
-- Medium (20px): cards, section containers, header pills — the workhorse
-- Large (24px): hero / pricing lift CTA
-- Extra (32px): the largest blue accent feature block
-- Full (9999px): pill/round decorative elements
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Most surfaces, tinted section blocks |
-| Tint (Level 1) | Pale blue background shift (`#f4f9ff` / `#f1f5fd` / `#e1f1ff`) | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e8eaee` border | White feature card outlines, dividers |
-| Ambient (Level 3) | `rgba(0,0,0,0.04) 0px 5px 51px` | Elevated white feature cards |
-| Glow (CTA) | `rgba(0,104,255,0.4) 0px 4px 16px -4px` | Blue primary CTA colored lift |
-
-**Shadow Philosophy**: Bigin is a near-flat system. Most cards rely on the pale-blue tint ladder and thin `#e8eaee` hairlines for separation; real elevation appears only as a whisper-soft ambient shadow (`rgba(0,0,0,0.04)`) on white feature cards. The one expressive shadow is the **blue-tinted CTA glow** (`rgba(0,104,255,0.4)`), which makes the electric-blue "상담 신청" pill feel lifted and clickable while staying on-brand — color, not neutral grey, does the lifting. The mint integration card adds depth through its `#7edbb9` border rather than a shadow.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Spoqa Han Sans Neo at weight 700 for headlines, nav, and button labels — Bold is the brand voice
@@ -292,31 +500,27 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 - Use neutral grey shadows under the CTA — the lift is always blue-tinted
 - Set body copy in Bold — only headings/nav/buttons are 700; body relaxes to 400
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, nav collapses to a drawer |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full ~1200px layout, multi-column feature bands |
+Bigin's voice is **direct, capability-forward, and confidently consultative** — a MarTech expert who frames marketing as a discipline you should run end-to-end, not a feature you bolt on. The hero line "고객 획득부터 충성고객 확보까지 마케팅 전략은 선택이 아닌 필수입니다." ("From customer acquisition to loyalty — marketing strategy is a necessity, not a choice") sets the register: declarative, full-funnel, and slightly imperative. Copy speaks to growth-minded operators and treats the reader as someone ready to consolidate their stack ("모든 마케팅 액션, 한 번에 집행하세요" — run every marketing action in one place).
 
-### Touch Targets
-- Primary CTA pill at 40px height; lift CTA at 58px for an unmistakable target
-- Nav items at ~40px height within the header
-- Connect chips at 36px height
+| Context | Tone |
+|---|---|
+| Hero headlines | Declarative, full-funnel. "고객 획득부터 충성고객 확보까지…" Confident, mission-framed. |
+| Feature titles | Capability-forward. "모든 마케팅 액션, 한 번에 집행하세요", "원하는 모든 유형을 하나의 솔루션에서". |
+| Eyebrow labels | Terse category words. "캠페인", "자동화 new". |
+| CTAs | Consultative, low-pressure. "상담 신청", "상담 신청하기", "브랜드 메시지 자세히 보기 →". |
+| Company / about | Authority-framed. "데이터로 MarTech 산업을 선도하는 빅인사이트". |
 
-### Collapsing Strategy
-- Hero: 56px Spoqa headline scales down on mobile, weight 700 maintained
-- Feature bands: multi-column grid -> stacked single column
-- Tinted/white alternating sections maintain full-width treatment
-- Nav: horizontal links -> hamburger drawer (icons-ic-drawer)
+**Voice samples (verbatim from live surfaces):**
+- "고객 획득부터 충성고객 확보까지  마케팅 전략은 선택이 아닌 필수입니다." — hero headline. *(verified live 2026-06-26)*
+- "모든 마케팅 액션, 한 번에 집행하세요" — feature heading. *(verified live 2026-06-26)*
+- "새로운 기능으로 더 강력해진 Bigin 4.0" — product-update heading. *(verified live 2026-06-26)*
+- "데이터로 MarTech 산업을 선도하는 빅인사이트" — company page positioning. *(verified live 2026-06-26)*
 
-### Image Behavior
-- Product screenshots sit inside 20px-radius cards across breakpoints
-- The navy hero band retains its full-width treatment, reducing internal padding on mobile
+**Forbidden register**: hype without substance, undefined buzzwords left unexplained, exclamation-heavy urgency, and any tone that treats marketing as a one-click trick rather than a strategy.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Bigin Blue (`#006fff`)
@@ -349,114 +553,10 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Bigin's voice is **direct, capability-forward, and confidently consultative** — a MarTech expert who frames marketing as a discipline you should run end-to-end, not a feature you bolt on. The hero line "고객 획득부터 충성고객 확보까지 마케팅 전략은 선택이 아닌 필수입니다." ("From customer acquisition to loyalty — marketing strategy is a necessity, not a choice") sets the register: declarative, full-funnel, and slightly imperative. Copy speaks to growth-minded operators and treats the reader as someone ready to consolidate their stack ("모든 마케팅 액션, 한 번에 집행하세요" — run every marketing action in one place).
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Declarative, full-funnel. "고객 획득부터 충성고객 확보까지…" Confident, mission-framed. |
-| Feature titles | Capability-forward. "모든 마케팅 액션, 한 번에 집행하세요", "원하는 모든 유형을 하나의 솔루션에서". |
-| Eyebrow labels | Terse category words. "캠페인", "자동화 new". |
-| CTAs | Consultative, low-pressure. "상담 신청", "상담 신청하기", "브랜드 메시지 자세히 보기 →". |
-| Company / about | Authority-framed. "데이터로 MarTech 산업을 선도하는 빅인사이트". |
-
-**Voice samples (verbatim from live surfaces):**
-- "고객 획득부터 충성고객 확보까지  마케팅 전략은 선택이 아닌 필수입니다." — hero headline. *(verified live 2026-06-26)*
-- "모든 마케팅 액션, 한 번에 집행하세요" — feature heading. *(verified live 2026-06-26)*
-- "새로운 기능으로 더 강력해진 Bigin 4.0" — product-update heading. *(verified live 2026-06-26)*
-- "데이터로 MarTech 산업을 선도하는 빅인사이트" — company page positioning. *(verified live 2026-06-26)*
-
-**Forbidden register**: hype without substance, undefined buzzwords left unexplained, exclamation-heavy urgency, and any tone that treats marketing as a one-click trick rather than a strategy.
-
-## 11. Brand Narrative
-
-Bigin (빅인) is the MarTech product of **Biginsight (주식회사 빅인사이트 / Biginsight Inc.)**, a Seoul-based company that, per its own company page, was founded in **May 2015** as **(주)어플리켓 (Applicat)** and rebranded to **(주)Biginsight** in **October 2018**. The product line evolved from a deep-learning web-analytics tool ("Bigin", 2018-04) into an AI marketing-automation solution (2019-05) and a big-data AI analytics platform (2019-12), then matured through **Bigin 3.0** (2021-05, with a global launch and Southeast-Asia expansion in 2021-12) to the current **Bigin 4.0** (2023-07).
-
-Along the way the company raised investment from **Crescendo Equity Partners** (2021-03), signed a **Mixpanel** partnership and MOUs with **Naver Cloud** and **제일기획 (Cheil)**, and acquired **(주)태거스 (Taggers)** and **(주)오피노마케팅 (Opinno Marketing)** in 2022. Recognition includes selection as an **APAC MarTech Startup TOP 10** by *MarTech Outlook*, a Minister of Science and ICT award at the Korea Internet Awards, **Korea AI Startup 100**, and a **TIPS** program selection — all listed on the brand-owned company timeline. The brand positions itself as "데이터로 MarTech 산업을 선도하는 빅인사이트" (Biginsight, leading the MarTech industry through data) and frames its product as "The Ultimate Guide to Full-funnel Marketing."
-
-What Bigin refuses, visible in its design: the heavy, intimidating chrome of legacy enterprise analytics, and the dark-pattern urgency of growth-hack marketing. What it embraces: a clean, rounded, mostly-flat interface; a single trustworthy electric blue; Bold Spoqa Han Sans Neo type that states capabilities plainly; and a consultative CTA ("상담 신청") that invites a conversation rather than forcing a signup.
-
-## 12. Principles
-
-1. **Full-funnel, one place.** Bigin's promise is consolidating acquisition through loyalty into one solution. *UI implication:* group capabilities into clear feature bands; the hero asserts end-to-end coverage, not a single trick.
-2. **One action, one blue.** Electric blue (`#006fff`) means "do this." *UI implication:* reserve the saturated blue for the primary CTA and convert chips so the next step is never ambiguous; inline links use the deeper `#0066cc`.
-3. **Capable but unintimidating.** A data product should feel approachable. *UI implication:* soft 20px radius, pale blue tints, and whisper-soft shadows instead of heavy enterprise chrome.
-4. **Bold states it plainly.** Spoqa Han Sans Neo weight 700 carries the message. *UI implication:* build hierarchy with size, keep type confident and direct.
-5. **Consult, don't pressure.** The primary CTA invites a conversation ("상담 신청"). *UI implication:* low-pressure, advisory CTA language; no countdown-timer urgency.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Bigin user segments (Korean e-commerce marketers, growth leads, agency operators), not individual people.*
-
-**김도현, 33, 서울.** A growth marketer at a mid-size D2C brand who is tired of stitching together analytics, messaging, and ad tools. Chose Bigin to run "모든 마케팅 액션, 한 번에" from one solution, and values that the platform spans acquisition through retention.
-
-**이서연, 38, 경기.** A marketing team lead evaluating CRM-automation vendors. Reads the pricing comparison closely and books a "상담 신청" consultation rather than self-serving a trial — she wants to confirm the data integrations fit her stack before committing.
-
-**박준영, 41, 서울.** An agency operator managing campaigns for multiple e-commerce clients. Uses Bigin's audience and automation features to run personalized, behavior-based messaging at scale, and trusts the brand's MarTech track record (APAC TOP 10, Bigin 4.0).
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no campaign data)** | White canvas. Single slate (`#3d4046`) line explaining no campaigns yet, with one blue (`#006fff`) CTA to create or connect. No clutter. |
-| **Empty (no integrations)** | Muted slate (`#7e8696`) line prompting a data connection, with a mint integration card (`#dbf4eb` / `#7edbb9`) offering connect chips. |
-| **Loading (dashboard fetch)** | Skeleton blocks at final card dimensions, 20px radius, on a `#f4f9ff` tinted surface — flat pulse consistent with the near-shadowless system. |
-| **Loading (report compute)** | Inline progress; previous values stay visible. |
-| **Error (sync/connection failed)** | Inline message in slate with a plain-language explanation and a retry. States what to do next, not just that something failed. |
-| **Error (form validation)** | Field-level message below the input; describes what's valid, not just "필수". |
-| **Success (consultation submitted)** | Brief inline confirmation in a calm tone; the team will follow up via sales@bigin.io. No celebratory emoji. |
-| **Skeleton** | `#f4f9ff` blocks at final dimensions, 20px radius, flat pulse. |
-| **Disabled** | Faint blue-grey (`#b2c0cb`) text on reduced-opacity surface; the blue CTA fades rather than turning grey to preserve brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the clean, rounded aesthetic. The primary CTA responds to hover with a subtle lift of its blue glow (`rgba(0,104,255,0.4)`); feature cards fade in from below at `motion-standard / ease-enter` as the user scrolls the narrative. No bounce or spring — a B2B data product signals competence, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on three brand-owned surfaces:
-- https://www.bigin.io (homepage)
-- https://www.bigin.io/pricing (플랜 안내)
-- https://www.bigin.io/company (회사 소개)
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Raw samples):
-- Primary CTA "상담 신청" — bg rgb(0,111,255) #006fff / radius 20px (24px lift variant) / shadow rgba(0,104,255,0.4)
-- Hero band — bg rgb(11,19,53) #0b1335 / white H1 56px / weight 700 / Spoqa Han Sans Neo
-- Inline links — color rgb(0,102,204) #0066cc
-- Tint ladder — #f4f9ff / #f1f5fd / #e1f1ff section surfaces; mint #dbf4eb with #7edbb9 border
-- White feature card — bg #ffffff / 1px #e8eaee / radius 20px / shadow rgba(0,0,0,0.04) 0px 5px 51px
-
-Voice samples (§10) are verbatim from the live homepage and company page.
-
-Brand narrative (§11): Biginsight (빅인사이트 / 어플리켓 → Biginsight 2018) founded 2015; product
-timeline (Bigin 2018 → 3.0 2021 → 4.0 2023), investors (Crescendo Equity Partners, Mixpanel
-partnership), acquisitions (Taggers, Opinno Marketing 2022), and awards (APAC MarTech Startup TOP 10,
-Korea AI Startup 100, TIPS) are all read directly from the brand-owned company page
-(https://www.bigin.io/company) on 2026-06-26.
-
-Personas (§13) are fictional archetypes informed by publicly observable Bigin user segments
-(Korean e-commerce marketers, growth leads, agency operators). Names are illustrative; they do
-not refer to real people.
-
-Interpretive claims (e.g., "one action, one blue", "capable but unintimidating as a rejection of
-legacy enterprise chrome") are editorial readings connecting Bigin's observed design to its
-positioning, not directly sourced Bigin statements.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#006fff` measures 4.45:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-cta-lift`.** Text `#ffffff` on `#006fff` measures 4.45:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-connect`.** Text `#ffffff` on `#006fff` measures 4.45:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

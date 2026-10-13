@@ -1,70 +1,171 @@
 ---
-id: fastcampus
 name: Fastcampus
-country: KR
-category: education
-homepage: "https://fastcampus.co.kr"
-primary_color: "#fc1c49"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=fastcampus.co.kr&sz=256"
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#fc1c49"
-    primary-darken: "#c9032a"
-    primary-renewal: "#d60039"
-    primary-low: "#ffdad8"
-    error: "#c5213b"
-    yellow: "#ffeb3b"
-    yellow-low: "#fff9c4"
-    yellow-deep: "#f57f17"
-    orange: "#f8930f"
-    pink: "#e91e63"
-    pink-low: "#fce4ec"
-    green: "#43a047"
-    blue: "#3b83ff"
-    blue-low: "#ebf3ff"
-    surface: "#f5f5f6"
-    divider: "#e7e7e8"
-    border-light: "#cfd0d1"
-    disabled-text: "#a0a2a3"
-    muted: "#747678"
-    heading: "#252729"
-    label: "#171b1f"
-    white: "#ffffff"
-  typography:
-    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
-    banner:  { size: 40, weight: 700, lineHeight: 1.2, use: "Home carousel two-line headline" }
-    h1:      { size: 34, weight: 700, lineHeight: 1.3, use: "Category / course page title" }
-    h2:      { size: 26, weight: 700, lineHeight: 1.35, use: "Rail group labels" }
-    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Default nav link, paragraph copy" }
-    gnb-compact: { size: 12, weight: 600, lineHeight: 1.4, use: "Secondary compact GNB items" }
-    button:  { size: 14, weight: 600, lineHeight: 1.0, use: "Category-pill carousel label" }
-    rank:    { size: 12, weight: 500, lineHeight: 1.4, use: "Rank badge corner overlay" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 48 }
-  rounded: { sm: 4, md: 4, lg: 19, full: 9999 }
-  components:
-    pill-selected: { type: tab, bg: "#252729", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Active category pill" }
-    pill-unselected: { type: tab, bg: "#f5f5f6", fg: "#747678", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Inactive category pill" }
-    button-primary: { type: button, bg: "#fc1c49", fg: "#ffffff", radius: 4, padding: "12px 24px", font: "14px/600 Pretendard Variable", use: "Enrolment CTA (hover #c9032a)" }
-    button-tinted: { type: button, bg: "#ffdad8", fg: "#fc1c49", radius: 4, use: "Sale-tag fills, hover scrim" }
-    card: { type: card, bg: "#ffffff", radius: 4, use: "Course card, top-rounded 4px 4px 0 0" }
-    rank-badge: { type: badge, bg: "#171b1f", fg: "#ffffff", radius: 4, font: "12px/500 Pretendard Variable", use: "1위 / 2위 / 3위 corner overlay" }
-    tag-free: { type: badge, bg: "#fff9c4", fg: "#f57f17", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "0원 / 무료 promo tag" }
-    tag-discount: { type: badge, bg: "#ffdad8", fg: "#fc1c49", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "Discount sale flag" }
-    tag-blue: { type: badge, bg: "#ebf3ff", fg: "#3b83ff", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "Dev/data category tag" }
-    tag-pink: { type: badge, bg: "#fce4ec", fg: "#e91e63", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "Design/creative category tag" }
-    input: { type: input, bg: "#ffffff", fg: "#171b1f", radius: 4, padding: "0 12px", font: "14px/400 Pretendard Variable", use: "Search field (1px #cfd0d1, focus #fc1c49)" }
-  components_harvested: true
+colors:
+  primary: '#fc1c49'
+  primary-darken: '#c9032a'
+  primary-renewal: '#d60039'
+  primary-low: '#ffdad8'
+  error: '#c5213b'
+  yellow: '#ffeb3b'
+  yellow-low: '#fff9c4'
+  yellow-deep: '#f57f17'
+  orange: '#f8930f'
+  pink: '#e91e63'
+  pink-low: '#fce4ec'
+  green: '#43a047'
+  blue: '#3b83ff'
+  blue-low: '#ebf3ff'
+  surface: '#f5f5f6'
+  divider: '#e7e7e8'
+  border-light: '#cfd0d1'
+  disabled-text: '#a0a2a3'
+  muted: '#747678'
+  heading: '#252729'
+  label: '#171b1f'
+  white: '#ffffff'
+typography:
+  banner:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Home carousel two-line headline
+  h1:
+    fontSize: 34px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Category / course page title
+  h2:
+    fontSize: 26px
+    fontWeight: 700
+    lineHeight: 1.35
+    use: Rail group labels
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Default nav link, paragraph copy
+  gnb-compact:
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Secondary compact GNB items
+  button:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1
+    use: Category-pill carousel label
+  rank:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Rank badge corner overlay
+rounded:
+  sm: 4px
+  md: 4px
+  lg: 19px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  section: 48
+components:
+  pill-selected:
+    type: tab
+    backgroundColor: '#252729'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 12px 16px
+    typography: 14px/600 Pretendard Variable
+    use: Active category pill
+  pill-unselected:
+    type: tab
+    backgroundColor: '#f5f5f6'
+    textColor: '#747678'
+    rounded: 4px
+    padding: 12px 16px
+    typography: 14px/600 Pretendard Variable
+    use: Inactive category pill
+  button-primary:
+    type: button
+    backgroundColor: '#fc1c49'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 12px 24px
+    typography: 14px/600 Pretendard Variable
+    use: 'Enrolment CTA (hover #c9032a)'
+  button-tinted:
+    type: button
+    backgroundColor: '#ffdad8'
+    textColor: '#fc1c49'
+    rounded: 4px
+    use: Sale-tag fills, hover scrim
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    use: Course card, top-rounded 4px 4px 0 0
+  rank-badge:
+    type: badge
+    backgroundColor: '#171b1f'
+    textColor: '#ffffff'
+    rounded: 4px
+    typography: 12px/500 Pretendard Variable
+    use: 1위 / 2위 / 3위 corner overlay
+  tag-free:
+    type: badge
+    backgroundColor: '#fff9c4'
+    textColor: '#f57f17'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/600 Pretendard Variable
+    use: 0원 / 무료 promo tag
+  tag-discount:
+    type: badge
+    backgroundColor: '#ffdad8'
+    textColor: '#fc1c49'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/600 Pretendard Variable
+    use: Discount sale flag
+  tag-blue:
+    type: badge
+    backgroundColor: '#ebf3ff'
+    textColor: '#3b83ff'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/600 Pretendard Variable
+    use: Dev/data category tag
+  tag-pink:
+    type: badge
+    backgroundColor: '#fce4ec'
+    textColor: '#e91e63'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/600 Pretendard Variable
+    use: Design/creative category tag
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#171b1f'
+    rounded: 4px
+    padding: 0 12px
+    typography: 14px/400 Pretendard Variable
+    use: 'Search field (1px #cfd0d1, focus #fc1c49)'
+fonts:
+  roles:
+    sans: Pretendard Variable
+    mono: Pretendard Variable
 ---
 
 # Design System Inspiration of Fastcampus
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Fastcampus (패스트캠퍼스) is the design language of a **Korean adult-upskilling marketplace that competes on density, momentum, and rich-color play** — a deliberately louder register than Inflearn's calm-mint catalog or Classum's institutional blue chrome. Where Inflearn whispers "lifetime career, no pressure" with a single mint accent on a white page, Fastcampus shouts **"this cohort starts soon, the discount expires Friday"** through a full Material-style palette — yellow `#ffeb3b`, red `#fc1c49`, orange `#f8930f`, blue `#3b83ff`, green `#43a047`, pink `#e91e63` — each color used decisively per surface band so the catalog scrolls like a programmed market rather than a quiet library. The 103 `--fds-color-*` and `--c-primary-*` CSS variables on `:root` of `fastcampus.co.kr` reveal the underlying engine: a private internal "Fastcampus Design System" (the `fds-` prefix) with full **10-shade ramps per hue (50/100/200/300/400/500/600/700/800/900)** plus semantic role tokens (`--fds-semantic-primary-primary = #fc1c49`, `--fds-semantic-label-primary = #171b1f`).
 
@@ -83,7 +184,7 @@ Typography is **Pretendard Variable** (the variable-weight version, not static P
 - Zero box-shadow on the category-pill or rank-badge layer (depth is color contrast, not elevation)
 - GNB nav links sit at 16px / 400 default + 12px / 600 (smaller-bolder) for `커뮤니티` / `기업교육` secondary links — an inverted-density signature versus Inflearn's flat 16px/600 nav
 
-## Primary tasks
+### Primary tasks
 
 - Browse courses in a field outside your own work.
 - Search for a specific course from the top navigation.
@@ -91,7 +192,48 @@ Typography is **Pretendard Variable** (the variable-weight version, not static P
 - Check when a cohort starts and when its discount ends.
 - Enrol in a course and pay for it.
 
-## 2. Color Palette & Roles
+### Iconography & Imagery
+
+- **Icon set**: 24×24 stroke icons (1.5-2px stroke) for GNB and inline actions; stroke color follows text-context (`#171b1f` default, `#fc1c49` when paired with a primary surface).
+- **Course thumbnail style**: 16:9 photographic or illustrative (instructor portrait + course-title typography composite is the dominant convention — "강사 얼굴 + 굵은 타이포" layout). Aspect ratio is standardized but art direction is loud and varied (gradients, gradient meshes, vector illustration, photographic portraits).
+- **Banner illustrations**: Full-bleed gradient backgrounds (multi-color gradient or solid hue band) with white or dark headline overlay. Frequent multi-hue gradient (yellow → orange → pink) on AI-creative rails.
+- **Rank-badge overlays**: Strict text-only on dark-pill (`#171b1f` `4px 0` corner) — no medal icon, no star, no flame. The number itself does the work.
+
+### Brand Narrative
+
+Fastcampus was founded in **2014** under the parent company **Day1Company** (data based on public Korean tech-press coverage of Day1Company / 데이원컴퍼니, the umbrella that operates Fastcampus, Colosso, RealClass, and adjacent brands). The founding observation was that **Korean adult upskilling had been a fragmented offline market — weekend classroom academies, public-institute lectures, and book-and-DVD self-study** — and that working professionals were willing to pay premium prices for short-format, instructor-led, project-based online courses if the production value matched the price.
+
+Fastcampus's bet was that **the difference between a free YouTube tutorial and a paid course is project structure, instructor accountability, and cohort timing** — not just video quality. The platform brand name itself frames the proposition: *fast + campus*, a compressed academic experience for adults who cannot take a semester off. By 2026, Day1Company operates Fastcampus as the flagship **adult-upskilling marketplace covering IT, design, business, finance, language, and lifestyle**, with adjacent brands handling specialized tiers (Colosso for high-end masterclasses; RealClass for hobby/language).
+
+The visual evolution from the early-2010s blue-and-white directory page to the current rich-color Material-style catalog is itself the signal: Fastcampus made the deliberate choice to **look like a programmed market** (multi-hue rails, rank badges, enrolment counts) rather than a calm catalog (Inflearn's choice) or an institutional LMS (Classum's choice). The two competitors share a country, an audience overlap, and Pretendard typography; Fastcampus distinguishes by *commerce energy*.
+
+*(Founder, exact founding-month, and headcount details are not exhaustively verified from public English-language sources at OmD attribution fidelity; the narrative above is anchored to publicly observable brand artifacts — site copy, course catalog structure, and parent-company branding. UPDATE pass recommended on `tech.day1company.io` if/when that domain comes back online.)*
+
+### Principles
+
+1. **Time is part of the offer.** Cohort start dates, discount end dates, and seat counts are first-class UI content — not legal fine print. *UI implication:* every primary CTA may carry a deadline or seat-count badge; design tokens must support a "time pressure" surface (countdown text in `--c-primary`, deadline pill in `--fds-color-orange-200`).
+
+2. **Rich color, per-band.** The home page assigns one accent hue per content rail — yellow for "0원 / 사전알림", orange for early-bird discount, blue for dev/data, pink for design/creative, red for primary brand commerce. *UI implication:* never mix two accent hues in one card; the rail-level hue is the spatial wayfinding.
+
+3. **Rank is a number, not a story.** "1위 / 1,940+" lives in a corner badge — no editorialized adjective. *UI implication:* if a tile says "최고의", the rank badge has failed. Use raw rank + raw count, let the number speak.
+
+4. **4px everywhere, top-rounded on cards.** A single radius vocabulary plus the `4px 4px 0 0` card-with-thumbnail convention. *UI implication:* introducing a full-pill radius on a CTA is a tonal mistake — Fastcampus reads as "structured market," not "social feed."
+
+5. **Casual-polite, not formal.** `~해요 / ~하기 / ~만나자` for product surfaces; `~합니다` reserved for legal / refund / receipt screens. *UI implication:* avoid `~하시기 바랍니다` and `~하실 수 있습니다` in CTA / banner copy.
+
+### Personas
+
+*(Personas inferred from observable surface targeting on `/` and `/category_online_all`; not from a published Fastcampus persona doc.)*
+
+- **The 20s Self-Funded Upskiller.** 22–28, recent grad or early-career, paying out of pocket for a single-cohort bootcamp-style course (AI / data / design). Sensitive to deadline + discount; the orange-band "early-bird 25%" rail is the most-clicked acquisition surface for this persona. Buys 1-2 premium courses per year.
+
+- **The B2B Sponsored Learner.** 28–38, mid-career, sent by the employer via the **기업교육 (corporate-training)** track. Comes via GNB compact secondary link; values certificate, syllabus, and live-session schedule; less price-sensitive, more time-sensitive (must complete by fiscal year-end).
+
+- **The Career-Pivot IC.** 30–40, established IC considering a category jump (e.g., marketer → product, engineer → ML). Buys roadmap-style course bundles; reads instructor credentials and project deliverables carefully; rank badges and enrolment counts are decision shortcuts.
+
+- **The Hobbyist / Adjacent-Function Curious.** 25–45, browsing outside core category (engineer learning design, designer learning a bit of code, marketer learning analytics). Drawn to the design/creative pink rail and drawing/illustration sub-category; price-elastic; uses the free-class yellow tag heavily.
+
+## Colors
 
 ### Primary (commerce-red)
 
@@ -146,7 +288,7 @@ Designers picking from Fastcampus should treat the FDS hue scales as an official
 - Yellow and orange shades cohabit on the same fold (free-class lemon + early-bird amber) — readers should treat them as **two adjacent accent slots**, not as a primary/secondary brand-color duo.
 - `--swiper-theme-color = #007aff` appears in the var dump — this is the Swiper.js library default, not a Fastcampus token. Do not adopt.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary** (`--font-base`): `"Pretendard Variable", pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`
@@ -176,7 +318,55 @@ Designers picking from Fastcampus should treat the FDS hue scales as an official
 - **Banner copy is two-line by default.** 40px / 700 with a deliberate mid-headline break (`\n`) is the brand cadence — designers reproducing the look should plan headlines around natural Korean two-clause splits, not one-line tagline drama.
 - Korean punctuation: straight quotes in UI; honorific `~님` reserved for instructor-facing surfaces; casual-polite `~해요 / ~하기` dominates the home carousel copy ("신청하세요", "만나자", "쓸 수 있는").
 
-## 4. Component Stylings
+## Layout
+
+### Layout & Spacing
+
+Fastcampus does not expose a `--fds-space-*` token namespace at `:root` — spacing lives inside CSS module classes (`GNBDesktop-module-scss-module__q8MgGW__*`, `MainBannerCarousel-module-scss-module__*`). Observed rhythm from raw geometry:
+
+| Inferred token | Value | Typical use |
+|---|---|---|
+| space-2 | 4-6px | Tag chip padding-y, rank badge inset |
+| space-3 | 8px | Inline icon gap |
+| space-4 | 12px | Category-pill padding-y, button-inner gutter |
+| space-5 | 16px | Category-pill padding-x, card metadata gap |
+| space-6 | 24px | Rail-tile gap, section-internal block gap |
+| space-8 | 32px | Section-block separator |
+| space-10 | 48-64px | Major section divider, footer column gap |
+
+Home page width is full-bleed banner + ~1280-1440px content container. Course rails use horizontal scroll-snap on viewports < 1280px and a fixed 4-5 column grid above. Density is **commerce-dense**: above-the-fold contains banner carousel (96px headline block) + category-pill carousel (40px row) + top-3 rank tiles (~327px tall) = the user sees 3 layered acquisition surfaces in the first scroll, where Inflearn shows 1 banner + 6 tiles flat. This is the *programmed-market* feel — Fastcampus assumes the user is here to enrol this week, not to browse for a quarter.
+
+## Motion & Easing
+
+### Motion
+
+Motion data was not exhaustively captured in this pass. Observable from raw class names and CSS-module patterns:
+- Banner carousel uses **Swiper.js** (`--swiper-theme-color` exposed at `:root`) — default Swiper transitions (300ms ease) on slide change, manual + auto-advance.
+- Category-pill carousel: horizontal scroll-snap, no animated transitions on tap (instant active-state swap).
+- Hover on category pill: background fade `200ms ease` (inferred — Swiper / module default).
+- Card hover: thumbnail micro-scale (1.0 → 1.02) `200ms ease-out` (inferred — common Korean-marketplace convention; not directly captured).
+- Page transitions: SSR / Next.js — full-page navigation, no client-side route animation.
+
+**Motion tokens not exposed at `:root`** — Fastcampus does not publish `--fds-motion-*` variables. Designers reproducing the look should adopt Swiper defaults (300ms slide, 200ms hover) and respect `prefers-reduced-motion: reduce`. Flagged for UPDATE pass.
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 150ms | Hover bg fade, focus ring appear |
+| `motion-base` | 200ms | Card thumbnail scale, category-pill bg, button color |
+| `motion-slow` | 300ms | Banner carousel slide (Swiper default), modal open |
+| `easing-default` | `ease` | All hover / focus transitions |
+| `easing-emphasized` | `cubic-bezier(0.4, 0, 0.2, 1)` | Modal / drawer enter |
+| `easing-decelerate` | `cubic-bezier(0, 0, 0.2, 1)` | Skeleton shimmer, page-content fade-in |
+
+**Motion rules**:
+- Banner carousel auto-advances (Swiper default 5s) — Fastcampus accepts the convention; this is a deliberate departure from Inflearn ("no carousel auto-advance"). Time pressure is part of the brand.
+- Card hover micro-scale (1.0 → 1.02) is the only ambient motion outside the carousel.
+- No parallax. No scroll-triggered hero animation.
+- Respect `prefers-reduced-motion: reduce` — fall back to instant transitions, keep color fades only, and stop carousel auto-advance.
+
+**Motion tokens are inferred** — `--fds-motion-*` is not exposed at `:root`. UPDATE pass recommended on course-detail / cart pages where toast / modal / drawer interactions would expose canonical durations.
+
+## Components
 
 ### Buttons
 
@@ -342,8 +532,38 @@ Designers picking from Fastcampus should treat the FDS hue scales as an official
 - Font: 12px / 600 / Pretendard Variable
 - Use: Design / creative category tags.
 
+### States
 
-## 16. Do's and Don'ts
+- **Hover (category pill)**: `#f5f5f6 → #e7e7e8` (inferred — neutral ladder one step down).
+- **Hover (primary CTA)**: `#fc1c49 → #c9032a` (`--c-primary-darken`).
+- **Active / Pressed (CTA)**: `#c9032a` solid; tinted ring `rgba(237, 35, 75, 0.12)` 4px offset.
+- **Focus**: 2px outline `#fc1c49` at 2px offset on keyboard focus; input border swaps to `#fc1c49` (inferred from primary semantic token).
+- **Disabled**: `#e7e7e8` background, `#a0a2a3` text, `cursor: not-allowed` (inferred from neutral ladder).
+- **Loading**: Inline spinner replaces CTA label; primary red CTA remains red, label swaps to icon (Swiper / FDS module convention).
+- **Empty**: Center-aligned illustration + headline (`아직 수강 중인 강의가 없어요`) + outlined primary CTA (`강의 둘러보기`).
+- **Error — Validation**: 14px text below offending field in `#fc1c49` (primary red doubles as inline-error in adult-upskilling commerce context — distinct from system error red `#c5213b`); field border swaps to `#fc1c49`.
+- **Error — Network**: Inline banner (`연결을 확인해 주세요. 다시 시도해주세요.`) + outlined `다시 시도` button.
+- **Success — Enrolment**: One-line confirmation in `#43a047` (`--fds-color-green-600`), no toast theatre.
+- **Skeleton — Card**: `#e7e7e8` blocks for thumbnail (16:9) + 2 text lines; shimmer 1.5s linear (inferred — Mantine / FDS default).
+
+### States Catalog
+
+| Category | Treatment |
+|---|---|
+| **Empty — My Courses** | Center-aligned illustration + `아직 수강 중인 강의가 없어요`; outlined CTA `강의 둘러보기` linking to `/category_online_all`. |
+| **Empty — Wishlist** | `찜한 강의가 아직 없어요. 마음에 드는 강의를 담아두세요.` + outlined CTA. |
+| **Empty — Search results** | `'<query>'에 대한 결과가 없어요.` + 3 category-pill suggestions in unselected (`#f5f5f6`) state. |
+| **Loading — page** | Skeleton blocks `#e7e7e8` for rail tiles (3-5 tiles per row, 16:9 thumbnail + 2 text lines), shimmer 1.5s linear. |
+| **Loading — submit** | Inline 16px spinner replaces CTA label; CTA bg remains `#fc1c49`; pointer disabled. |
+| **Error — Network** | Inline banner `연결을 확인해 주세요. 다시 시도해주세요.` + outlined `다시 시도` button. |
+| **Error — Validation** | 14px `#fc1c49` text below field; field border `#fc1c49`. |
+| **Error — Payment** | Modal with specific cause line + `다른 결제 수단으로 시도하기` primary red CTA. |
+| **Success — Enrolment** | Inline `수강신청이 완료되었어요.` in `#43a047`; `내 강의실로 가기` primary CTA. |
+| **Skeleton — Card** | `#e7e7e8` block for thumbnail (16:9, `4px 4px 0 0`) + 2 text lines; shimmer 1.5s linear. |
+| **Disabled — Form** | `#e7e7e8` bg, `#a0a2a3` text, `cursor: not-allowed`; tooltip on hover explaining what's missing. |
+| **Time-Pressure — Countdown** | Inline `#fc1c49` countdown text (`3일 21:14:02 남음`) paired with `--fds-color-orange-200` deadline pill on enrolment CTAs. |
+
+## Do's and Don'ts
 
 ### Do
 - Pin the signature commerce-red #fc1c49 (--c-primary / --fds-semantic-primary-primary) to enrolment CTAs, sale-price highlights and limited-time banners, using #c9032a (--c-primary-darken) for the pressed/hover state
@@ -379,69 +599,7 @@ Designers picking from Fastcampus should treat the FDS hue scales as an official
 
 **Inferred-but-not-live-captured tokens** (flagged for follow-up UPDATE on a course-detail / cart / payment surface): primary CTA labelled fill (only category-pill geometry captured live; inferred from semantic-primary token + category-pill measurements), input focus state, disabled state, exact tag chip alpha values, GNB sticky bg on scroll-down vs scroll-up, footer spacing tokens, motion durations.
 
-## 5. Layout & Spacing
-
-Fastcampus does not expose a `--fds-space-*` token namespace at `:root` — spacing lives inside CSS module classes (`GNBDesktop-module-scss-module__q8MgGW__*`, `MainBannerCarousel-module-scss-module__*`). Observed rhythm from raw geometry:
-
-| Inferred token | Value | Typical use |
-|---|---|---|
-| space-2 | 4-6px | Tag chip padding-y, rank badge inset |
-| space-3 | 8px | Inline icon gap |
-| space-4 | 12px | Category-pill padding-y, button-inner gutter |
-| space-5 | 16px | Category-pill padding-x, card metadata gap |
-| space-6 | 24px | Rail-tile gap, section-internal block gap |
-| space-8 | 32px | Section-block separator |
-| space-10 | 48-64px | Major section divider, footer column gap |
-
-Home page width is full-bleed banner + ~1280-1440px content container. Course rails use horizontal scroll-snap on viewports < 1280px and a fixed 4-5 column grid above. Density is **commerce-dense**: above-the-fold contains banner carousel (96px headline block) + category-pill carousel (40px row) + top-3 rank tiles (~327px tall) = the user sees 3 layered acquisition surfaces in the first scroll, where Inflearn shows 1 banner + 6 tiles flat. This is the *programmed-market* feel — Fastcampus assumes the user is here to enrol this week, not to browse for a quarter.
-
-## 6. Iconography & Imagery
-
-- **Icon set**: 24×24 stroke icons (1.5-2px stroke) for GNB and inline actions; stroke color follows text-context (`#171b1f` default, `#fc1c49` when paired with a primary surface).
-- **Course thumbnail style**: 16:9 photographic or illustrative (instructor portrait + course-title typography composite is the dominant convention — "강사 얼굴 + 굵은 타이포" layout). Aspect ratio is standardized but art direction is loud and varied (gradients, gradient meshes, vector illustration, photographic portraits).
-- **Banner illustrations**: Full-bleed gradient backgrounds (multi-color gradient or solid hue band) with white or dark headline overlay. Frequent multi-hue gradient (yellow → orange → pink) on AI-creative rails.
-- **Rank-badge overlays**: Strict text-only on dark-pill (`#171b1f` `4px 0` corner) — no medal icon, no star, no flame. The number itself does the work.
-
-## 7. Motion
-
-Motion data was not exhaustively captured in this pass. Observable from raw class names and CSS-module patterns:
-- Banner carousel uses **Swiper.js** (`--swiper-theme-color` exposed at `:root`) — default Swiper transitions (300ms ease) on slide change, manual + auto-advance.
-- Category-pill carousel: horizontal scroll-snap, no animated transitions on tap (instant active-state swap).
-- Hover on category pill: background fade `200ms ease` (inferred — Swiper / module default).
-- Card hover: thumbnail micro-scale (1.0 → 1.02) `200ms ease-out` (inferred — common Korean-marketplace convention; not directly captured).
-- Page transitions: SSR / Next.js — full-page navigation, no client-side route animation.
-
-**Motion tokens not exposed at `:root`** — Fastcampus does not publish `--fds-motion-*` variables. Designers reproducing the look should adopt Swiper defaults (300ms slide, 200ms hover) and respect `prefers-reduced-motion: reduce`. Flagged for UPDATE pass.
-
-## 8. States
-
-- **Hover (category pill)**: `#f5f5f6 → #e7e7e8` (inferred — neutral ladder one step down).
-- **Hover (primary CTA)**: `#fc1c49 → #c9032a` (`--c-primary-darken`).
-- **Active / Pressed (CTA)**: `#c9032a` solid; tinted ring `rgba(237, 35, 75, 0.12)` 4px offset.
-- **Focus**: 2px outline `#fc1c49` at 2px offset on keyboard focus; input border swaps to `#fc1c49` (inferred from primary semantic token).
-- **Disabled**: `#e7e7e8` background, `#a0a2a3` text, `cursor: not-allowed` (inferred from neutral ladder).
-- **Loading**: Inline spinner replaces CTA label; primary red CTA remains red, label swaps to icon (Swiper / FDS module convention).
-- **Empty**: Center-aligned illustration + headline (`아직 수강 중인 강의가 없어요`) + outlined primary CTA (`강의 둘러보기`).
-- **Error — Validation**: 14px text below offending field in `#fc1c49` (primary red doubles as inline-error in adult-upskilling commerce context — distinct from system error red `#c5213b`); field border swaps to `#fc1c49`.
-- **Error — Network**: Inline banner (`연결을 확인해 주세요. 다시 시도해주세요.`) + outlined `다시 시도` button.
-- **Success — Enrolment**: One-line confirmation in `#43a047` (`--fds-color-green-600`), no toast theatre.
-- **Skeleton — Card**: `#e7e7e8` blocks for thumbnail (16:9) + 2 text lines; shimmer 1.5s linear (inferred — Mantine / FDS default).
-
-## 9. Accessibility & Internationalization
-
-- **Korean is the primary language.** Some technology course titles carry English terms ("React", "Next.js", "AI", "Codex"). No `/en/` mirror as of capture.
-- **Pretendard Variable** supports the full Hangul block plus extended Latin; English text reads naturally without a separate Latin font.
-- **Color contrast**:
-  - Heading `#171b1f` on `#FFFFFF` = 16.5:1 (AAA).
-  - Body `#747678` on `#FFFFFF` = 4.5:1 (AA for normal text).
-  - Muted caption `#a0a2a3` on `#FFFFFF` = 2.8:1 — **fails AA**; correctly reserved for non-essential caption (rank-3 sublabel, enrolment-count footnote).
-  - Primary `#fc1c49` on `#FFFFFF` = 4.0:1 — **borderline AA for normal text** (passes for ≥18pt large text). Fastcampus correctly uses white-on-red for CTAs (white on `#fc1c49` = 5.3:1, AA) and limits red-on-white to large-text headlines.
-  - Category-pill selected `#FFFFFF` on `#000` = 21:1 (AAA).
-- **Keyboard nav**: Visible 2px primary-red outline on Tab navigation (inferred from `--c-primary` semantic).
-- **Screen reader**: Carousel arrows carry `aria-label` (`이전 배너`, `다음 배너`, `배너 목록` observed in raw samples). Rank badge text is in-DOM (not background-image).
-- **Density caveat**: The 12px / 500 rank-badge font sits at the lower bound of Korean readability — passes per Hangul x-height but reviewers should validate at 100% zoom on small viewports.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Fastcampus speaks like **the senior friend who heard the workshop fills up by Friday and texts you "go now"** — energetic, time-aware, casual-polite. Where Inflearn says "부담없이 시작하기" (start without pressure), Fastcampus says "**0원 사전 알림 신청하세요!**" (sign up for the free-tier alert!) and "**최대 25% 할인!**" (up to 25% off!) — the verb is still on the learner's side, but the timing pressure is honestly named. The brand assumes the user is here because the cohort or the discount is closing soon, and the microcopy reflects that.
 
@@ -466,72 +624,28 @@ Korean is the dominant register; English appears in technology course titles whe
 - (Sale): "여름 인텐시브, 21일까지 25% 할인. 결제 후 7일 이내 환불 가능해요."
 - (Empty Wishlist): "찜한 강의가 아직 없어요. 분야부터 골라볼까요?"
 
-## 11. Brand Narrative
+## Governance
 
-Fastcampus was founded in **2014** under the parent company **Day1Company** (data based on public Korean tech-press coverage of Day1Company / 데이원컴퍼니, the umbrella that operates Fastcampus, Colosso, RealClass, and adjacent brands). The founding observation was that **Korean adult upskilling had been a fragmented offline market — weekend classroom academies, public-institute lectures, and book-and-DVD self-study** — and that working professionals were willing to pay premium prices for short-format, instructor-led, project-based online courses if the production value matched the price.
+### Accessibility & Internationalization
 
-Fastcampus's bet was that **the difference between a free YouTube tutorial and a paid course is project structure, instructor accountability, and cohort timing** — not just video quality. The platform brand name itself frames the proposition: *fast + campus*, a compressed academic experience for adults who cannot take a semester off. By 2026, Day1Company operates Fastcampus as the flagship **adult-upskilling marketplace covering IT, design, business, finance, language, and lifestyle**, with adjacent brands handling specialized tiers (Colosso for high-end masterclasses; RealClass for hobby/language).
+- **Korean is the primary language.** Some technology course titles carry English terms ("React", "Next.js", "AI", "Codex"). No `/en/` mirror as of capture.
+- **Pretendard Variable** supports the full Hangul block plus extended Latin; English text reads naturally without a separate Latin font.
+- **Color contrast**:
+  - Heading `#171b1f` on `#FFFFFF` = 16.5:1 (AAA).
+  - Body `#747678` on `#FFFFFF` = 4.5:1 (AA for normal text).
+  - Muted caption `#a0a2a3` on `#FFFFFF` = 2.8:1 — **fails AA**; correctly reserved for non-essential caption (rank-3 sublabel, enrolment-count footnote).
+  - Primary `#fc1c49` on `#FFFFFF` = 4.0:1 — **borderline AA for normal text** (passes for ≥18pt large text). Fastcampus correctly uses white-on-red for CTAs (white on `#fc1c49` = 5.3:1, AA) and limits red-on-white to large-text headlines.
+  - Category-pill selected `#FFFFFF` on `#000` = 21:1 (AAA).
+- **Keyboard nav**: Visible 2px primary-red outline on Tab navigation (inferred from `--c-primary` semantic).
+- **Screen reader**: Carousel arrows carry `aria-label` (`이전 배너`, `다음 배너`, `배너 목록` observed in raw samples). Rank badge text is in-DOM (not background-image).
+- **Density caveat**: The 12px / 500 rank-badge font sits at the lower bound of Korean readability — passes per Hangul x-height but reviewers should validate at 100% zoom on small viewports.
 
-The visual evolution from the early-2010s blue-and-white directory page to the current rich-color Material-style catalog is itself the signal: Fastcampus made the deliberate choice to **look like a programmed market** (multi-hue rails, rank badges, enrolment counts) rather than a calm catalog (Inflearn's choice) or an institutional LMS (Classum's choice). The two competitors share a country, an audience overlap, and Pretendard typography; Fastcampus distinguishes by *commerce energy*.
+### Known Gaps
 
-*(Founder, exact founding-month, and headcount details are not exhaustively verified from public English-language sources at OmD attribution fidelity; the narrative above is anchored to publicly observable brand artifacts — site copy, course catalog structure, and parent-company branding. UPDATE pass recommended on `tech.day1company.io` if/when that domain comes back online.)*
-
-## 12. Principles
-
-1. **Time is part of the offer.** Cohort start dates, discount end dates, and seat counts are first-class UI content — not legal fine print. *UI implication:* every primary CTA may carry a deadline or seat-count badge; design tokens must support a "time pressure" surface (countdown text in `--c-primary`, deadline pill in `--fds-color-orange-200`).
-
-2. **Rich color, per-band.** The home page assigns one accent hue per content rail — yellow for "0원 / 사전알림", orange for early-bird discount, blue for dev/data, pink for design/creative, red for primary brand commerce. *UI implication:* never mix two accent hues in one card; the rail-level hue is the spatial wayfinding.
-
-3. **Rank is a number, not a story.** "1위 / 1,940+" lives in a corner badge — no editorialized adjective. *UI implication:* if a tile says "최고의", the rank badge has failed. Use raw rank + raw count, let the number speak.
-
-4. **4px everywhere, top-rounded on cards.** A single radius vocabulary plus the `4px 4px 0 0` card-with-thumbnail convention. *UI implication:* introducing a full-pill radius on a CTA is a tonal mistake — Fastcampus reads as "structured market," not "social feed."
-
-5. **Casual-polite, not formal.** `~해요 / ~하기 / ~만나자` for product surfaces; `~합니다` reserved for legal / refund / receipt screens. *UI implication:* avoid `~하시기 바랍니다` and `~하실 수 있습니다` in CTA / banner copy.
-
-## 13. Personas
-
-*(Personas inferred from observable surface targeting on `/` and `/category_online_all`; not from a published Fastcampus persona doc.)*
-
-- **The 20s Self-Funded Upskiller.** 22–28, recent grad or early-career, paying out of pocket for a single-cohort bootcamp-style course (AI / data / design). Sensitive to deadline + discount; the orange-band "early-bird 25%" rail is the most-clicked acquisition surface for this persona. Buys 1-2 premium courses per year.
-
-- **The B2B Sponsored Learner.** 28–38, mid-career, sent by the employer via the **기업교육 (corporate-training)** track. Comes via GNB compact secondary link; values certificate, syllabus, and live-session schedule; less price-sensitive, more time-sensitive (must complete by fiscal year-end).
-
-- **The Career-Pivot IC.** 30–40, established IC considering a category jump (e.g., marketer → product, engineer → ML). Buys roadmap-style course bundles; reads instructor credentials and project deliverables carefully; rank badges and enrolment counts are decision shortcuts.
-
-- **The Hobbyist / Adjacent-Function Curious.** 25–45, browsing outside core category (engineer learning design, designer learning a bit of code, marketer learning analytics). Drawn to the design/creative pink rail and drawing/illustration sub-category; price-elastic; uses the free-class yellow tag heavily.
-
-## 14. States Catalog
-
-| Category | Treatment |
-|---|---|
-| **Empty — My Courses** | Center-aligned illustration + `아직 수강 중인 강의가 없어요`; outlined CTA `강의 둘러보기` linking to `/category_online_all`. |
-| **Empty — Wishlist** | `찜한 강의가 아직 없어요. 마음에 드는 강의를 담아두세요.` + outlined CTA. |
-| **Empty — Search results** | `'<query>'에 대한 결과가 없어요.` + 3 category-pill suggestions in unselected (`#f5f5f6`) state. |
-| **Loading — page** | Skeleton blocks `#e7e7e8` for rail tiles (3-5 tiles per row, 16:9 thumbnail + 2 text lines), shimmer 1.5s linear. |
-| **Loading — submit** | Inline 16px spinner replaces CTA label; CTA bg remains `#fc1c49`; pointer disabled. |
-| **Error — Network** | Inline banner `연결을 확인해 주세요. 다시 시도해주세요.` + outlined `다시 시도` button. |
-| **Error — Validation** | 14px `#fc1c49` text below field; field border `#fc1c49`. |
-| **Error — Payment** | Modal with specific cause line + `다른 결제 수단으로 시도하기` primary red CTA. |
-| **Success — Enrolment** | Inline `수강신청이 완료되었어요.` in `#43a047`; `내 강의실로 가기` primary CTA. |
-| **Skeleton — Card** | `#e7e7e8` block for thumbnail (16:9, `4px 4px 0 0`) + 2 text lines; shimmer 1.5s linear. |
-| **Disabled — Form** | `#e7e7e8` bg, `#a0a2a3` text, `cursor: not-allowed`; tooltip on hover explaining what's missing. |
-| **Time-Pressure — Countdown** | Inline `#fc1c49` countdown text (`3일 21:14:02 남음`) paired with `--fds-color-orange-200` deadline pill on enrolment CTAs. |
-
-## 15. Motion & Easing
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover bg fade, focus ring appear |
-| `motion-base` | 200ms | Card thumbnail scale, category-pill bg, button color |
-| `motion-slow` | 300ms | Banner carousel slide (Swiper default), modal open |
-| `easing-default` | `ease` | All hover / focus transitions |
-| `easing-emphasized` | `cubic-bezier(0.4, 0, 0.2, 1)` | Modal / drawer enter |
-| `easing-decelerate` | `cubic-bezier(0, 0, 0.2, 1)` | Skeleton shimmer, page-content fade-in |
-
-**Motion rules**:
-- Banner carousel auto-advances (Swiper default 5s) — Fastcampus accepts the convention; this is a deliberate departure from Inflearn ("no carousel auto-advance"). Time pressure is part of the brand.
-- Card hover micro-scale (1.0 → 1.02) is the only ambient motion outside the carousel.
-- No parallax. No scroll-triggered hero animation.
-- Respect `prefers-reduced-motion: reduce` — fall back to instant transitions, keep color fades only, and stop carousel auto-advance.
-
-**Motion tokens are inferred** — `--fds-motion-*` is not exposed at `:root`. UPDATE pass recommended on course-detail / cart pages where toast / modal / drawer interactions would expose canonical durations.
+- **Contrast, `pill-unselected`.** Text `#747678` on `#f5f5f6` measures 4.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-primary`.** Text `#ffffff` on `#fc1c49` measures 3.89:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-tinted`.** Text `#fc1c49` on `#ffdad8` measures 3.01:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tag-free`.** Text `#f57f17` on `#fff9c4` measures 2.47:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tag-discount`.** Text `#fc1c49` on `#ffdad8` measures 3.01:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tag-blue`.** Text `#3b83ff` on `#ebf3ff` measures 3.20:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tag-pink`.** Text `#e91e63` on `#fce4ec` measures 3.61:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

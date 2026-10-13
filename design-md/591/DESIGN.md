@@ -1,66 +1,165 @@
 ---
-id: "591"
-name: "591"
-country: TW
-category: consumer-tech
-homepage: "https://www.591.com.tw/"
-primary_color: "#ff8000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=591.com.tw&sz=128"
-verified: "2026-06-22"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-22"
-  note: "primary = 591 orange (#ff8000) — search CTA, active tab, brand accent across all surfaces. Canvas white (#ffffff). Body text warm grey (#4a4a4a). Muted greys (#999999, #666666). Red price color (#e60012). Link blue (#337ab7). Tinted surfaces (#f5f5f5, #f2f8ff, #fff7e6)."
-  colors:
-    primary: "#ff8000"
-    canvas: "#ffffff"
-    surface: "#f5f5f5"
-    surface-blue: "#f2f8ff"
-    surface-warm: "#fff7e6"
-    ink: "#333333"
-    body: "#4a4a4a"
-    muted: "#666666"
-    muted-light: "#999999"
-    on-primary: "#ffffff"
-    price-red: "#e60012"
-    link: "#337ab7"
-    border: "#e6e6e6"
-    dark-overlay: "#262626"
-  typography:
-    family: { display: "Arial, 微軟正黑體, Microsoft JhengHei, sans-serif", body: "Arial, 微軟正黑體, Microsoft JhengHei, sans-serif" }
-    hero-title:  { size: 50, weight: 700, use: "App download section hero headline, orange accent" }
-    nav-tab:     { size: 16, weight: 700, lineHeight: 1.31, use: "Primary navigation tab labels (租屋/中古屋/新建案)" }
-    search-btn:  { size: 20, weight: 700, use: "Search CTA label in hero search bar" }
-    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "Standard body text, nav links, listing meta" }
-    body-lg:     { size: 16, weight: 400, lineHeight: 1.5, use: "Listing page body, filter labels" }
-    price:       { size: 16, weight: 700, use: "Rental price display in listing cards, red color" }
-    caption:     { size: 13, weight: 400, use: "Small labels, tags, secondary metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 48 }
-  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
-  shadow:
-    none: "none"
-    card: "none"
-  components:
-    button-search: { type: button, bg: "#ff8000", fg: "#ffffff", radius: "0px 2px 2px 0px", height: "55px", font: "20px / 700", use: "Primary search CTA button on homepage hero" }
-    button-search-rent: { type: button, bg: "#ff8000", fg: "#ffffff", radius: "0px 4px 4px 0px", padding: "5px 16px", height: "44px", font: "16px / 400", use: "Search button on rental listing page" }
-    tab-active: { type: tab, bg: "#ff8000", fg: "#ffffff", radius: "2px", padding: "0px 14px", height: "30px", font: "16px / 700", active: "bg #ff8000 text #ffffff", use: "Active property type tab (租屋/中古屋/新建案)" }
-    tab-inactive: { type: tab, bg: "transparent", fg: "#dddddd", radius: "2px", padding: "0px 14px", height: "30px", font: "16px / 700", use: "Inactive navigation tab in hero search area" }
-    input-search: { type: input, bg: "#ffffff", fg: "#333333", radius: "2px", height: "55px", border: "0px", font: "16px / 400", use: "Main property search input field on homepage" }
-    input-filter: { type: input, bg: "#ffffff", fg: "#000000", radius: "2px", padding: "4px 12px", height: "27px", border: "1px solid #e6e6e6", font: "13px / 400", use: "Filter range inputs (price, area, floor)" }
-    card-listing: { type: card, bg: "#ffffff", fg: "#000000", radius: "0px", use: "Rental listing item card, flat no-shadow, full-width row" }
-    card-image: { type: card, bg: "#d8d8d8", fg: "#000000", radius: "8px 8px 0px 0px", use: "Listing photo container, top-rounded corners" }
-    badge-tag: { type: badge, bg: "#fff7e6", fg: "#ff8000", radius: "2px", font: "13px / 400", use: "Feature tags and property type labels" }
-    badge-price: { type: badge, bg: "transparent", fg: "#e60012", radius: "0px", font: "16px / 700", use: "Rental price display in listing cards" }
-    nav-item: { type: tab, fg: "#4a4a4a", font: "14px / 400", use: "Main navigation items (首頁/新建案/中古屋/租屋)", active: "color #ff8000 on active page" }
-  components_harvested: true
+name: '591'
+colors:
+  primary: '#ff8000'
+  canvas: '#ffffff'
+  surface: '#f5f5f5'
+  surface-blue: '#f2f8ff'
+  surface-warm: '#fff7e6'
+  ink: '#333333'
+  body: '#4a4a4a'
+  muted: '#666666'
+  muted-light: '#999999'
+  on-primary: '#ffffff'
+  price-red: '#e60012'
+  link: '#337ab7'
+  border: '#e6e6e6'
+  dark-overlay: '#262626'
+typography:
+  hero-title:
+    fontSize: 50px
+    fontWeight: 700
+    use: App download section hero headline, orange accent
+  nav-tab:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.31
+    use: Primary navigation tab labels (租屋/中古屋/新建案)
+  search-btn:
+    fontSize: 20px
+    fontWeight: 700
+    use: Search CTA label in hero search bar
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard body text, nav links, listing meta
+  body-lg:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Listing page body, filter labels
+  price:
+    fontSize: 16px
+    fontWeight: 700
+    use: Rental price display in listing cards, red color
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    use: Small labels, tags, secondary metadata
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 32
+  section: 48
+components:
+  button-search:
+    type: button
+    backgroundColor: '#ff8000'
+    textColor: '#ffffff'
+    rounded: 0px 2px 2px 0px
+    height: 55px
+    typography: 20px / 700
+    use: Primary search CTA button on homepage hero
+  button-search-rent:
+    type: button
+    backgroundColor: '#ff8000'
+    textColor: '#ffffff'
+    rounded: 0px 4px 4px 0px
+    padding: 5px 16px
+    height: 44px
+    typography: 16px / 400
+    use: Search button on rental listing page
+  tab-active:
+    type: tab
+    backgroundColor: '#ff8000'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 0px 14px
+    height: 30px
+    typography: 16px / 700
+    active: 'bg #ff8000 text #ffffff'
+    use: Active property type tab (租屋/中古屋/新建案)
+  tab-inactive:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#dddddd'
+    rounded: 2px
+    padding: 0px 14px
+    height: 30px
+    typography: 16px / 700
+    use: Inactive navigation tab in hero search area
+  input-search:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    rounded: 2px
+    height: 55px
+    border: 0px
+    typography: 16px / 400
+    use: Main property search input field on homepage
+  input-filter:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 2px
+    padding: 4px 12px
+    height: 27px
+    border: '1px solid #e6e6e6'
+    typography: 13px / 400
+    use: Filter range inputs (price, area, floor)
+  card-listing:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 0px
+    use: Rental listing item card, flat no-shadow, full-width row
+  card-image:
+    type: card
+    backgroundColor: '#d8d8d8'
+    textColor: '#000000'
+    rounded: 8px 8px 0px 0px
+    use: Listing photo container, top-rounded corners
+  badge-tag:
+    type: badge
+    backgroundColor: '#fff7e6'
+    textColor: '#ff8000'
+    rounded: 2px
+    typography: 13px / 400
+    use: Feature tags and property type labels
+  badge-price:
+    type: badge
+    backgroundColor: transparent
+    textColor: '#e60012'
+    rounded: 0px
+    typography: 16px / 700
+    use: Rental price display in listing cards
+  nav-item:
+    type: tab
+    textColor: '#4a4a4a'
+    typography: 14px / 400
+    use: Main navigation items (首頁/新建案/中古屋/租屋)
+    active: 'color #ff8000 on active page'
+fonts:
+  roles:
+    display: Arial, 微軟正黑體, Microsoft JhengHei, sans-serif
+    body: Arial, 微軟正黑體, Microsoft JhengHei, sans-serif
 ---
 
 # Design System Inspiration of 591
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 591房屋交易網 (591 Fang Wu — Taiwan's dominant property marketplace) is a dense, information-first real-estate platform where practical utility overrides aesthetic refinement. The canvas is pure white (`#ffffff`) with warm grey text (`#4a4a4a`) and a single unmistakable brand accent: **591 orange** (`#ff8000`). This orange is not a trendy brand refresh — it is the operational color of one of Taiwan's most trafficked sites, applied consistently to every primary action: the search button, the active tab, the app-download headline. Everything else is deliberate neutral: flat white listing cards, thin `#e6e6e6` hairlines, and no drop shadows anywhere.
 
@@ -78,7 +177,7 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 - Link blue (`#337ab7`) for interactive anchors and supplementary actions
 - Warm grey text ladder (`#333333` → `#4a4a4a` → `#666666` → `#999999`)
 
-## Primary tasks
+### Primary tasks
 
 - Search for an apartment to rent near an MRT station
 - Filter listings by price range, area, and floor
@@ -86,7 +185,33 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 - List a rental unit to reach a wide tenant pool
 - Switch between rentals, resale homes, and new build listings
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+591 (五九一) was established by **Addcn Technology** (台灣數字科技股份有限公司) in **2001**, making it one of Taiwan's oldest surviving internet businesses. The name "591" is a memorable numeric sequence for Taiwanese users and has no semantic meaning in Mandarin — the brand operates purely on recognition built over two decades of market dominance. What began as a classified property listing board evolved into Taiwan's definitive real-estate marketplace, hosting rental listings, resale homes, new construction projects, land, commercial properties, and interior design services under one roof.
+
+The brand's market position is built on coverage breadth and verifiable data: 實價登錄 (Actual Price Registration) integration — Taiwan's mandated government price transparency system — makes 591 the authoritative source for what properties actually transacted at, not just asking prices. This data trust layer is the product's deepest moat and is prominently featured in the title ("租屋買屋實價登錄資訊平台"). The platform serves renters looking for monthly accommodation, buyers researching market prices before committing, and landlords/agents reaching the largest possible tenant pool.
+
+The design system reflects this positioning: no-frills, high-density, data-first. 591 has never attempted a Western-style "clean" redesign — its flat, information-packed interface is not aesthetic laziness but deliberate alignment with how experienced property-seekers in Taiwan actually use the product.
+
+### Principles
+
+1. **Data over decoration.** 591's value is real-estate data — listings, prices, transaction records. *UI implication:* maximize information density per screen; never sacrifice a data field for visual breathing room.
+2. **Orange signals action, nothing else.** The brand orange (`#ff8000`) appears only where the user must act. *UI implication:* reserve for search buttons, active tabs, and primary brand moments; no decorative orange borders or backgrounds.
+3. **Red is price.** Rental and sale prices render in `#e60012` red by convention. *UI implication:* never use red for error states or warnings — it would conflict with the price-reading pattern Taiwanese users have built over 20+ years.
+4. **Speed through familiarity.** The system uses standard web conventions (system fonts, Bootstrap-era link blue `#337ab7`, conventional hairline borders) deliberately to minimize cognitive load for returning users. *UI implication:* resist novel interaction patterns; legible convention > design innovation.
+5. **Coverage is credibility.** Scale numbers are prominently displayed ("8萬筆租屋", "32萬筆中古屋"). *UI implication:* quantified scope claims should remain visible in key surfaces; they are trust signals, not marketing copy.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable 591 user segments (Taiwan property seekers), not individual people.*
+
+**林宜蓉, 26, 台北市.** A recent graduate searching for her first apartment rental near Xinyi MRT. Visits 591 daily, filters by price range and floor, scans red price numbers first, then feature tags (近捷運, 可開伙). Knows the interface inside out; any navigation change would disrupt her established scan pattern.
+
+**王建明, 38, 新北市.** A homeowner considering a resale purchase. Uses 591's 實價登錄 data to research what similar units transacted at before negotiating. Relies on the price transparency data to negotiate confidently; trusts 591 over agent-provided comparables.
+
+**陳美如, 52, 台中市.** A landlord listing a rental unit. Uses 591 because "everyone searches here." Focused on the listing creation flow and inquiry call volume. Values the phone call count metrics prominently shown on listings.
+
+## Colors
 
 ### Primary
 - **591 Orange** (`#ff8000`): The single brand action color. Applied to the homepage search button, active property-type tabs, pagination bullets, and app-download section headlines. All primary interactive signals point here.
@@ -110,7 +235,7 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 - **Orange Active** (`#ff8000`): Active nav tab indicator, active search button fill.
 - **Border** (`#e6e6e6`): Thin hairlines for inputs, table rows, card separators.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display & Body**: `Arial, 微軟正黑體, "Microsoft JhengHei", sans-serif` — a system font stack prioritizing the standard Windows/macOS CJK font. No web font loading overhead; guaranteed legibility across Taiwan's dominant Windows user base.
@@ -133,7 +258,115 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 - **Red for value**: Price text in `#e60012` red is a culturally specific signal in the Taiwan/HK property market — buyers scan for red numbers, not highlighted cards.
 - **Size restraint**: The system uses only 13px–20px — a tight range that maximizes information density at readable sizes.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px–8px micro rhythm
+- Scale: 4, 8, 12, 16, 20, 24, 32, 48px
+- Listing card internal padding: 12px–16px
+- Section separators: full-width `#e6e6e6` 1px hairlines
+
+### Grid & Container
+- Full-width navigation bar with centered content at max ~1200px
+- Homepage: centered search box with category tabs above, listing cards below
+- Listing pages: two-column layout (filter sidebar + results list)
+- Category tabs arranged as horizontal pill-row within a dark hero banner (on homepage)
+
+### Whitespace Philosophy
+- **Density over breathing room**: 591 is an information product — listing rows are compact (264–300px tall for full card with image), not airy.
+- **Flat segmentation**: Sections separated by thin `#e6e6e6` hairlines and background tint shifts (`#f5f5f5`, `#f2f8ff`), never shadows.
+- **Consistent tab height**: Navigation tabs and filter rows are 30–44px, creating a predictable rhythm for power users who scan frequently.
+
+### Border Radius Scale
+- Extra small (2px): inputs, tags, tabs — dominant micro-UI radius
+- Small (4px): secondary buttons, filter buttons
+- Medium (8px): listing photo container top corners only
+- Full (50%): circular navigation arrow buttons
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, simplified nav, listing images above metadata |
+| Tablet | 768–1024px | 2-column listing, compressed filter sidebar |
+| Desktop | 1024px+ | Full sidebar + 1-column listing list, centered 1200px max |
+
+#### Touch Targets
+- Search button at 55px height on desktop (44px on listing page) — comfortable desktop click target
+- Nav tabs at 30px height on homepage hero — designed for mouse, not touch-first
+- Filter inputs at 27px — compact for desktop power users
+
+#### Collapsing Strategy
+- Category tabs remain visible but may collapse to scroll on mobile
+- Filter sidebar collapses to modal/drawer on mobile
+- Listing cards maintain full-width on mobile with thumbnail on left
+- Search input + button remain paired, compressing on narrower viewports
+
+#### Image Behavior
+- Listing photo containers maintain 8px top radius at all breakpoints
+- Image placeholder (`#d8d8d8`) used when photos unavailable — consistent neutral fill
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | All listing cards, inputs, buttons, nav |
+| Hairline (Level 1) | `1px solid #e6e6e6` | Card rows, filter separators, input borders |
+| Tint (Level 2) | `#f5f5f5` or `#f2f8ff` background | Highlighted listings, filter panel, section alternation |
+| Dark Overlay | `rgba(0,0,0,0.8)` | Navigation carousel overlays, modal backgrounds |
+
+**Shadow Philosophy**: 591 is an entirely shadow-free system. Live inspection found `box-shadow: none` across all listing cards, navigation elements, inputs, and buttons. Depth is communicated exclusively through flat background tints and hairline borders — a pragmatic choice that keeps the dense listing interface fast-loading and visually uncluttered. This matches the broader pattern of legacy Taiwanese web products that prioritize information density over UI polish.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+- `shadow.card`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+**Motion rules**: 591's motion vocabulary is minimal and functional — consistent with a 25-year-old marketplace that prioritizes reliability over delight. Carousel image transitions use linear easing for predictable pacing; dropdown filters open and close cleanly. There are no spring animations, no bounce effects — this is a product for efficiency-oriented property seekers, not an experiential app. Under `prefers-reduced-motion: reduce`, all transitions should collapse to instant; the product remains fully operational without any animation.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-22) via playwright getComputedStyle:
+- www.591.com.tw homepage: title "591房屋交易網 | 租屋買屋實價登錄資訊平台"
+- Body: font-family Arial,微軟正黑體,"Microsoft JhengHei",sans-serif; color rgb(74,74,74)=#4a4a4a; font-size 14px; line-height 21px
+- Active tab "租屋": bg rgb(255,128,0)=#ff8000; color rgb(255,255,255); radius 2px; 16px/700
+- Inactive tabs: color rgb(221,221,221)=#dddddd; bg transparent; 16px/700
+- Search button "搜尋": bg rgb(255,128,0)=#ff8000; color rgb(255,255,255); 20px/700; height 55px; radius 0px 2px 2px 0px
+- Search input: bg rgb(255,255,255); color rgb(153,153,153)=#999999; height 55px; radius 2px
+- Hero H3 "立即與有興趣的屋主、經紀人、建商聯繫": color rgb(255,128,0); font-size 50px; font-weight 700
+- Hero H3 "超過8萬筆租屋、32萬筆中古屋、5000筆新建案": color rgb(255,128,0); font-size 50px; font-weight 700
+- BG freq top: rgb(255,255,255)×45, rgb(0,0,0)×9, rgb(245,245,245)×9, rgb(38,38,38)×9, rgb(255,128,0)×5, rgb(22,158,113)×2
+- FG freq top: rgb(153,153,153)×681, rgb(74,74,74)×628, rgb(255,255,255)×171, rgb(51,122,183)×141, rgb(51,51,51)×105
+
+rent.591.com.tw:
+- Body: font-family Arial,微軟正黑體,"Microsoft JhengHei"; font-size 16px
+- Search btn "搜尋": bg rgb(255,128,0); color white; radius 0px 4px 4px 0px; padding 5px 16px; height 44px; 16px/400
+- Secondary button "社區找房": bg rgb(255,255,255); color rgb(51,51,51); radius 4px; padding 5px 16px; height 44px; 14px/400
+- Nav active "租屋": color rgb(255,128,0)=#ff8000
+- Input: bg rgb(255,255,255); color rgb(51,51,51); radius 4px 0 0 4px; 0 0 0 16px padding; height 44px
+- Filter input: bg white; border 1px solid rgb(230,230,230)=#e6e6e6; radius 2px; padding 4px 12px; height 27px
+- Listing card items: bg rgb(255,255,255); radius 0px; shadow none
+- BG freq: rgb(255,255,255)×507, rgb(242,248,255)×152 (#f2f8ff), rgba(0,0,0,0.8)×51, rgb(255,247,230)×22 (#fff7e6)
+- FG freq: rgb(0,0,0)×2742, rgb(51,51,51)×878, rgb(102,102,102)×283, rgb(255,255,255)×264, rgb(80,120,179)×152, rgb(240,24,0)×130
+
+Voice samples are verbatim from live homepage inspect (title, H3 elements).
+Brand narrative (Addcn Technology, 2001 founding, 實價登錄) from publicly observable site content.
+Personas are fictional archetypes informed by publicly observable user segments; names are illustrative.
+Interpretive claims (e.g., "conventions over design innovation") are editorial readings connecting observed design to product positioning.
+-->
+
+## Components
 
 ### Buttons
 
@@ -244,43 +477,22 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 **Tier 2 sources:** getdesign.md/591 (not found) | styles.refero.design/?q=591 (not found)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px–8px micro rhythm
-- Scale: 4, 8, 12, 16, 20, 24, 32, 48px
-- Listing card internal padding: 12px–16px
-- Section separators: full-width `#e6e6e6` 1px hairlines
+| State | Treatment |
+|---|---|
+| **Empty (no search results)** | White canvas, single `#4a4a4a` message at body size explaining criteria. Practical next steps (widen radius, lower price floor) listed as text links in `#337ab7`. |
+| **Empty (saved listings, none yet)** | Muted `#999999` instruction line, link to begin searching. No illustration. |
+| **Loading (listing results)** | Skeleton rows on `#f5f5f5` surface at final card height (~265px). Grey placeholder image area where photo loads. Flat — no shimmer animation consistent with the shadowless system. |
+| **Loading (map view)** | `#d8d8d8` tile placeholder until map tiles render; orange loading indicator matching brand. |
+| **Error (search failed / timeout)** | Inline orange-bordered message with plain Traditional Chinese explanation and retry link in `#337ab7`. |
+| **Error (form validation)** | Field-level red (`#e60012`) message below input — reuses the price-red deliberately as "attention required" signal without introducing a new color. |
+| **Success (inquiry sent)** | Brief inline `#333333` confirmation, link to "我的詢問" listing; no celebratory state. |
+| **Skeleton** | `#f5f5f5` blocks at final card dimensions, zero radius on body blocks, 8px radius on photo placeholder top. |
+| **Disabled** | `#999999` muted-light text on standard surface; orange elements reduce to `#f5f5f5` fill to signal unavailability while preserving layout. |
+| **Active / Selected filter** | `#ff8000` border or text on filter pill; `#fff7e6` warm-tint background on selected option. |
 
-### Grid & Container
-- Full-width navigation bar with centered content at max ~1200px
-- Homepage: centered search box with category tabs above, listing cards below
-- Listing pages: two-column layout (filter sidebar + results list)
-- Category tabs arranged as horizontal pill-row within a dark hero banner (on homepage)
-
-### Whitespace Philosophy
-- **Density over breathing room**: 591 is an information product — listing rows are compact (264–300px tall for full card with image), not airy.
-- **Flat segmentation**: Sections separated by thin `#e6e6e6` hairlines and background tint shifts (`#f5f5f5`, `#f2f8ff`), never shadows.
-- **Consistent tab height**: Navigation tabs and filter rows are 30–44px, creating a predictable rhythm for power users who scan frequently.
-
-### Border Radius Scale
-- Extra small (2px): inputs, tags, tabs — dominant micro-UI radius
-- Small (4px): secondary buttons, filter buttons
-- Medium (8px): listing photo container top corners only
-- Full (50%): circular navigation arrow buttons
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | All listing cards, inputs, buttons, nav |
-| Hairline (Level 1) | `1px solid #e6e6e6` | Card rows, filter separators, input borders |
-| Tint (Level 2) | `#f5f5f5` or `#f2f8ff` background | Highlighted listings, filter panel, section alternation |
-| Dark Overlay | `rgba(0,0,0,0.8)` | Navigation carousel overlays, modal backgrounds |
-
-**Shadow Philosophy**: 591 is an entirely shadow-free system. Live inspection found `box-shadow: none` across all listing cards, navigation elements, inputs, and buttons. Depth is communicated exclusively through flat background tints and hairline borders — a pragmatic choice that keeps the dense listing interface fast-loading and visually uncluttered. This matches the broader pattern of legacy Taiwanese web products that prioritize information density over UI polish.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use 591 orange (`#ff8000`) exclusively for the primary search action and active navigation states
@@ -301,31 +513,26 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 - Mix multiple accent colors — orange and red have distinct roles; a third accent would confuse the action hierarchy
 - Use light-weight typography for navigation tabs — 700 weight is needed for scanability across 8+ category options
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, simplified nav, listing images above metadata |
-| Tablet | 768–1024px | 2-column listing, compressed filter sidebar |
-| Desktop | 1024px+ | Full sidebar + 1-column listing list, centered 1200px max |
+591's voice is **direct, efficient, and trustworthy** — a marketplace that speaks the language of practical property seekers in Taiwan. The brand does not aspire to editorial sophistication; it speaks plainly in 繁體中文 (Traditional Chinese) about what matters: location, price, size, type. Headlines are utilitarian calls to action ("立即與有興趣的屋主、經紀人、建商聯繫"), scale claims are stated as facts ("超過8萬筆租屋、32萬筆中古屋"), and feature descriptions stay concrete and scan-friendly.
 
-### Touch Targets
-- Search button at 55px height on desktop (44px on listing page) — comfortable desktop click target
-- Nav tabs at 30px height on homepage hero — designed for mouse, not touch-first
-- Filter inputs at 27px — compact for desktop power users
+| Context | Tone |
+|---|---|
+| Site title / hero | Factual, scope-asserting. "台灣第一房屋網路平台" — market leader claim, stated plainly. |
+| Category labels | Minimal and categorical: "租屋", "中古屋", "新建案", "土地", "店面", "辦公", "廠房" |
+| Search CTA | Single word command: "搜尋" — no softening, no embellishment |
+| Feature counts | Numbers-first: "超過8萬筆租屋、32萬筆中古屋、5000筆新建案" — scope through raw numbers |
+| App download | Benefit-then-action: "在線VR、影片賞屋，助您找房更方便" — practical value, formal 您 register |
 
-### Collapsing Strategy
-- Category tabs remain visible but may collapse to scroll on mobile
-- Filter sidebar collapses to modal/drawer on mobile
-- Listing cards maintain full-width on mobile with thumbnail on left
-- Search input + button remain paired, compressing on narrower viewports
+**Voice samples (live homepage 2026-06-22):**
+- "591房屋交易網 | 租屋買屋實價登錄資訊平台" — page title (utility + authority register). *(verified live 2026-06-22)*
+- "立即與有興趣的屋主、經紀人、建商聯繫" — app-download CTA (direct action, formal 您-implied). *(verified live 2026-06-22)*
+- "超過8萬筆租屋、32萬筆中古屋、5000筆新建案" — scale claim (factual, numbers-first). *(verified live 2026-06-22)*
 
-### Image Behavior
-- Listing photo containers maintain 8px top radius at all breakpoints
-- Image placeholder (`#d8d8d8`) used when photos unavailable — consistent neutral fill
+**Forbidden register**: casual/playful tone, excessive emoji or exclamation, vague aspirational copy ("find your dream home"), English-first UI copy, misleading availability claims.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action / brand: 591 Orange (`#ff8000`)
@@ -355,103 +562,12 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-591's voice is **direct, efficient, and trustworthy** — a marketplace that speaks the language of practical property seekers in Taiwan. The brand does not aspire to editorial sophistication; it speaks plainly in 繁體中文 (Traditional Chinese) about what matters: location, price, size, type. Headlines are utilitarian calls to action ("立即與有興趣的屋主、經紀人、建商聯繫"), scale claims are stated as facts ("超過8萬筆租屋、32萬筆中古屋"), and feature descriptions stay concrete and scan-friendly.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Site title / hero | Factual, scope-asserting. "台灣第一房屋網路平台" — market leader claim, stated plainly. |
-| Category labels | Minimal and categorical: "租屋", "中古屋", "新建案", "土地", "店面", "辦公", "廠房" |
-| Search CTA | Single word command: "搜尋" — no softening, no embellishment |
-| Feature counts | Numbers-first: "超過8萬筆租屋、32萬筆中古屋、5000筆新建案" — scope through raw numbers |
-| App download | Benefit-then-action: "在線VR、影片賞屋，助您找房更方便" — practical value, formal 您 register |
-
-**Voice samples (live homepage 2026-06-22):**
-- "591房屋交易網 | 租屋買屋實價登錄資訊平台" — page title (utility + authority register). *(verified live 2026-06-22)*
-- "立即與有興趣的屋主、經紀人、建商聯繫" — app-download CTA (direct action, formal 您-implied). *(verified live 2026-06-22)*
-- "超過8萬筆租屋、32萬筆中古屋、5000筆新建案" — scale claim (factual, numbers-first). *(verified live 2026-06-22)*
-
-**Forbidden register**: casual/playful tone, excessive emoji or exclamation, vague aspirational copy ("find your dream home"), English-first UI copy, misleading availability claims.
-
-## 11. Brand Narrative
-
-591 (五九一) was established by **Addcn Technology** (台灣數字科技股份有限公司) in **2001**, making it one of Taiwan's oldest surviving internet businesses. The name "591" is a memorable numeric sequence for Taiwanese users and has no semantic meaning in Mandarin — the brand operates purely on recognition built over two decades of market dominance. What began as a classified property listing board evolved into Taiwan's definitive real-estate marketplace, hosting rental listings, resale homes, new construction projects, land, commercial properties, and interior design services under one roof.
-
-The brand's market position is built on coverage breadth and verifiable data: 實價登錄 (Actual Price Registration) integration — Taiwan's mandated government price transparency system — makes 591 the authoritative source for what properties actually transacted at, not just asking prices. This data trust layer is the product's deepest moat and is prominently featured in the title ("租屋買屋實價登錄資訊平台"). The platform serves renters looking for monthly accommodation, buyers researching market prices before committing, and landlords/agents reaching the largest possible tenant pool.
-
-The design system reflects this positioning: no-frills, high-density, data-first. 591 has never attempted a Western-style "clean" redesign — its flat, information-packed interface is not aesthetic laziness but deliberate alignment with how experienced property-seekers in Taiwan actually use the product.
-
-## 12. Principles
-
-1. **Data over decoration.** 591's value is real-estate data — listings, prices, transaction records. *UI implication:* maximize information density per screen; never sacrifice a data field for visual breathing room.
-2. **Orange signals action, nothing else.** The brand orange (`#ff8000`) appears only where the user must act. *UI implication:* reserve for search buttons, active tabs, and primary brand moments; no decorative orange borders or backgrounds.
-3. **Red is price.** Rental and sale prices render in `#e60012` red by convention. *UI implication:* never use red for error states or warnings — it would conflict with the price-reading pattern Taiwanese users have built over 20+ years.
-4. **Speed through familiarity.** The system uses standard web conventions (system fonts, Bootstrap-era link blue `#337ab7`, conventional hairline borders) deliberately to minimize cognitive load for returning users. *UI implication:* resist novel interaction patterns; legible convention > design innovation.
-5. **Coverage is credibility.** Scale numbers are prominently displayed ("8萬筆租屋", "32萬筆中古屋"). *UI implication:* quantified scope claims should remain visible in key surfaces; they are trust signals, not marketing copy.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable 591 user segments (Taiwan property seekers), not individual people.*
-
-**林宜蓉, 26, 台北市.** A recent graduate searching for her first apartment rental near Xinyi MRT. Visits 591 daily, filters by price range and floor, scans red price numbers first, then feature tags (近捷運, 可開伙). Knows the interface inside out; any navigation change would disrupt her established scan pattern.
-
-**王建明, 38, 新北市.** A homeowner considering a resale purchase. Uses 591's 實價登錄 data to research what similar units transacted at before negotiating. Relies on the price transparency data to negotiate confidently; trusts 591 over agent-provided comparables.
-
-**陳美如, 52, 台中市.** A landlord listing a rental unit. Uses 591 because "everyone searches here." Focused on the listing creation flow and inquiry call volume. Values the phone call count metrics prominently shown on listings.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no search results)** | White canvas, single `#4a4a4a` message at body size explaining criteria. Practical next steps (widen radius, lower price floor) listed as text links in `#337ab7`. |
-| **Empty (saved listings, none yet)** | Muted `#999999` instruction line, link to begin searching. No illustration. |
-| **Loading (listing results)** | Skeleton rows on `#f5f5f5` surface at final card height (~265px). Grey placeholder image area where photo loads. Flat — no shimmer animation consistent with the shadowless system. |
-| **Loading (map view)** | `#d8d8d8` tile placeholder until map tiles render; orange loading indicator matching brand. |
-| **Error (search failed / timeout)** | Inline orange-bordered message with plain Traditional Chinese explanation and retry link in `#337ab7`. |
-| **Error (form validation)** | Field-level red (`#e60012`) message below input — reuses the price-red deliberately as "attention required" signal without introducing a new color. |
-| **Success (inquiry sent)** | Brief inline `#333333` confirmation, link to "我的詢問" listing; no celebratory state. |
-| **Skeleton** | `#f5f5f5` blocks at final card dimensions, zero radius on body blocks, 8px radius on photo placeholder top. |
-| **Disabled** | `#999999` muted-light text on standard surface; orange elements reduce to `#f5f5f5` fill to signal unavailability while preserving layout. |
-| **Active / Selected filter** | `#ff8000` border or text on filter pill; `#fff7e6` warm-tint background on selected option. |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-**Motion rules**: 591's motion vocabulary is minimal and functional — consistent with a 25-year-old marketplace that prioritizes reliability over delight. Carousel image transitions use linear easing for predictable pacing; dropdown filters open and close cleanly. There are no spring animations, no bounce effects — this is a product for efficiency-oriented property seekers, not an experiential app. Under `prefers-reduced-motion: reduce`, all transitions should collapse to instant; the product remains fully operational without any animation.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle:
-- www.591.com.tw homepage: title "591房屋交易網 | 租屋買屋實價登錄資訊平台"
-- Body: font-family Arial,微軟正黑體,"Microsoft JhengHei",sans-serif; color rgb(74,74,74)=#4a4a4a; font-size 14px; line-height 21px
-- Active tab "租屋": bg rgb(255,128,0)=#ff8000; color rgb(255,255,255); radius 2px; 16px/700
-- Inactive tabs: color rgb(221,221,221)=#dddddd; bg transparent; 16px/700
-- Search button "搜尋": bg rgb(255,128,0)=#ff8000; color rgb(255,255,255); 20px/700; height 55px; radius 0px 2px 2px 0px
-- Search input: bg rgb(255,255,255); color rgb(153,153,153)=#999999; height 55px; radius 2px
-- Hero H3 "立即與有興趣的屋主、經紀人、建商聯繫": color rgb(255,128,0); font-size 50px; font-weight 700
-- Hero H3 "超過8萬筆租屋、32萬筆中古屋、5000筆新建案": color rgb(255,128,0); font-size 50px; font-weight 700
-- BG freq top: rgb(255,255,255)×45, rgb(0,0,0)×9, rgb(245,245,245)×9, rgb(38,38,38)×9, rgb(255,128,0)×5, rgb(22,158,113)×2
-- FG freq top: rgb(153,153,153)×681, rgb(74,74,74)×628, rgb(255,255,255)×171, rgb(51,122,183)×141, rgb(51,51,51)×105
-
-rent.591.com.tw:
-- Body: font-family Arial,微軟正黑體,"Microsoft JhengHei"; font-size 16px
-- Search btn "搜尋": bg rgb(255,128,0); color white; radius 0px 4px 4px 0px; padding 5px 16px; height 44px; 16px/400
-- Secondary button "社區找房": bg rgb(255,255,255); color rgb(51,51,51); radius 4px; padding 5px 16px; height 44px; 14px/400
-- Nav active "租屋": color rgb(255,128,0)=#ff8000
-- Input: bg rgb(255,255,255); color rgb(51,51,51); radius 4px 0 0 4px; 0 0 0 16px padding; height 44px
-- Filter input: bg white; border 1px solid rgb(230,230,230)=#e6e6e6; radius 2px; padding 4px 12px; height 27px
-- Listing card items: bg rgb(255,255,255); radius 0px; shadow none
-- BG freq: rgb(255,255,255)×507, rgb(242,248,255)×152 (#f2f8ff), rgba(0,0,0,0.8)×51, rgb(255,247,230)×22 (#fff7e6)
-- FG freq: rgb(0,0,0)×2742, rgb(51,51,51)×878, rgb(102,102,102)×283, rgb(255,255,255)×264, rgb(80,120,179)×152, rgb(240,24,0)×130
-
-Voice samples are verbatim from live homepage inspect (title, H3 elements).
-Brand narrative (Addcn Technology, 2001 founding, 實價登錄) from publicly observable site content.
-Personas are fictional archetypes informed by publicly observable user segments; names are illustrative.
-Interpretive claims (e.g., "conventions over design innovation") are editorial readings connecting observed design to product positioning.
--->
+- **Contrast, `button-search`.** Text `#ffffff` on `#ff8000` measures 2.52:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-search-rent`.** Text `#ffffff` on `#ff8000` measures 2.52:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tab-active`.** Text `#ffffff` on `#ff8000` measures 2.52:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-tag`.** Text `#ff8000` on `#fff7e6` measures 2.36:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-price`.** Text `#e60012` on `#00000000` measures 4.37:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
