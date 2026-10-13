@@ -142,7 +142,7 @@ export function collectCanonicalClaimPaths(tokens) {
  * every other gate reads. This is a fallback and not a replacement: where the
  * prose line exists it still wins, so no existing reference changes.
  */
-function extractTier1Urls(markdown, verificationV2) {
+export function extractTier1Urls(markdown, verificationV2) {
   const line = markdown.match(/^\*\*Tier 1 sources:\*\*\s*(.+)$/m)?.[1] ?? "";
   const fromProse = line.match(/https?:\/\/[^\s,)]+/g) ?? [];
   if (fromProse.length > 0) return fromProse;

@@ -1,9 +1,68 @@
+---
+name: Serendie
+colors:
+  canvas: '#ffffff'
+  on-primary: '#ffffff'
+  on-tertiary: '#073165'
+  primary: '#0a69cf'
+  primary-hover: '#024288'
+  secondary: '#0650a0'
+  surface-dim: '#efeeeb'
+  surface-dimmest: '#afaeaa'
+  tertiary: '#eff2fc'
+typography:
+  body:
+    lineHeight: 1.6
+    fontSize: 14px
+    use: Observed system token body-medium (expanded).
+    fontWeight: 400
+  display:
+    lineHeight: 1.6
+    fontSize: 64px
+    use: Observed system token display-medium (expanded).
+    fontWeight: 400
+  heading:
+    lineHeight: 1.6
+    fontSize: 32px
+    use: Observed system token headline-large (expanded).
+    fontWeight: 400
+  label:
+    lineHeight: 1
+    fontSize: 13px
+    use: Observed system token label-large (expanded).
+    fontWeight: 400
+  title:
+    lineHeight: 1.6
+    fontSize: 18px
+    use: Observed system token title-large (expanded).
+    fontWeight: 700
+rounded:
+  action: 9999px
+components:
+  theme-action:
+    backgroundColor: '#0650a0'
+    textColor: '#ffffff'
+    typography: 16px / 400 / Roboto
+    hover: '#024288'
+    padding: 0px 12px 0px 16px
+    pressed: '#024288'
+    rounded: 9999px
+    type: button
+    use: Observed KONJO-theme action on the design-system home only.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    jp: Noto Sans JP
+    mono: Noto Sans Mono
+    ui: Roboto
+---
+
 # Serendie Design System
 
-<!-- design-md:section experience -->
-## 1. Experience
+## Overview
 
-<!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
 ### Visual Theme & Atmosphere
@@ -35,9 +94,7 @@ Three, stated on the About page:
 ### Personas
 
 Not asserted. The documentation addresses designers and developers by role, but no persona research is published and none is invented here.
-<!-- design-md:claim-end -->
 
-<!-- design-md:claim primary-tasks kind=user-outcomes count=5 lang=en -->
 ### Primary tasks
 
 - Read a design token from the published three-tier set
@@ -49,27 +106,8 @@ Not asserted. The documentation addresses designers and developers by role, but 
 - Follow the design or development track under Get Started
 
 - Sync tokens between Figma and code
-<!-- design-md:claim-end -->
 
-<!-- design-md:section foundations -->
-## 2. Foundations
-
-<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
-### Semantic tokens
-
-- **color.canvas**: `#ffffff`
-- **color.on-primary**: `#ffffff`
-- **color.on-tertiary**: `#073165`
-- **color.primary**: `#0a69cf`
-- **color.primary-hover**: `#024288`
-- **color.secondary**: `#0650a0`
-- **color.surface-dim**: `#efeeeb`
-- **color.surface-dimmest**: `#afaeaa`
-- **color.tertiary**: `#eff2fc`
-- **radius.action**: `9999px`
-- **radius.default**: `9999px`
-
-### Color Palette & Roles
+## Colors
 
 Observed as CSS custom properties on the live site under the `--web-system-color-*` namespace, which is the layer a consumer binds to.
 
@@ -87,36 +125,7 @@ Observed as CSS custom properties on the live site under the `--web-system-color
 
 A further data-visualisation ramp is published under `mvShape-*` (`#428cfe`, `#bfcefc`, `#f84258`, `#f2dbc0`, `#aeead5` and others). It is recorded here as observed but is not a UI role set.
 
-### Depth & Elevation
-
-Four published shadow levels, as `drop-shadow` filters:
-
-- level 1 — `0px 1px 2px 0px #0000004D`
-- level 2 — `0px 1px 4px 0px #00000033`
-- level 3 — `0px 2px 8px 0px #00000033`
-- level 4 — `0px 4px 12px 0px #00000033`
-
-Elevation is expressed as a filter rather than a box-shadow, and the opacity drops from 30% at level 1 to 20% for levels 2–4 while the blur grows.
-
-### Motion & Easing
-
-Not measured. No motion tokens appear in the observed custom-property set, and none are asserted.
-<!-- design-md:claim-end -->
-
-<!-- design-md:section typography-assets -->
-## 3. Typography & Assets
-
-### Type roles
-
-| Role | Usage | Family | Size | Weight | Line height |
-|---|---|---|---|---|---|
-| display | declared type role: display |  | 64px | 400 | 1.6 |
-| heading | declared type role: heading |  | 32px | 400 | 1.6 |
-| title | declared type role: title |  | 18px | 700 | 1.6 |
-| body | declared type role: body | Roboto | 14px | 400 | 1.6 |
-| label | declared type role: label |  | 13px | 400 | 1 |
-
-### Typography Rules
+## Typography
 
 First-party, from the typography foundation page: 「Serendieブランドは、欧文フォント「Roboto」、和文フォント「Noto Sans JP」を採用しています。Serendie Design Systemにおいてもそれを踏襲しつつ、等幅フォント「Noto Sans Mono」を追加しています」 — the Serendie brand adopts **Roboto** for Latin and **Noto Sans JP** for Japanese, and the design system adds **Noto Sans Mono**. All three are open source and free for commercial use. The page records an update date of 2024/11/1.
 
@@ -136,10 +145,36 @@ The system publishes a paired compact/expanded scale. Expanded values, observed 
 
 Weight is binary in the reference layer: 400 regular, 700 bold. Line-height is a named scale — none 1, tight 1.4, normal 1.6, relaxed 1.8.
 
-<!-- design-md:section components-states -->
-## 4. Components & States
+## Layout
 
-### Component Stylings
+Spacing is a published scale rather than ad-hoc values: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80px, named none through sixExtraLarge. The typographic scale is paired compact/expanded, which is the system's mechanism for density rather than a separate spacing mode.
+
+### Responsive Behavior
+
+Not measured in this pass. The system publishes a compact/expanded typographic pairing which implies a density switch, but no breakpoint values were observed and none are asserted here.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `spacing`: `[0,4,8,12,16,20,24,32,40,48,64,80]`
+
+## Elevation & Depth
+
+Four published shadow levels, as `drop-shadow` filters:
+
+- level 1 — `0px 1px 2px 0px #0000004D`
+- level 2 — `0px 1px 4px 0px #00000033`
+- level 3 — `0px 2px 8px 0px #00000033`
+- level 4 — `0px 4px 12px 0px #00000033`
+
+Elevation is expressed as a filter rather than a box-shadow, and the opacity drops from 30% at level 1 to 20% for levels 2–4 while the blur grows.
+
+## Motion & Easing
+
+Not measured. No motion tokens appear in the observed custom-property set, and none are asserted.
+
+## Components
 
 Measured on the design-system home in the default KONJO theme, with the pointer parked between reads so a sticky hover could not be recorded as another state.
 
@@ -153,61 +188,38 @@ Only one component is recorded with measured values. The documentation site publ
 
 Measured for the theme action only: rest `#0650a0` → hover `#024288`, with pressed matching hover. Focus was not separately distinguishable from hover in the observed component, and no focus-ring value is asserted. The button documentation page carries a 状態 section that was not transcribed in this pass.
 
-<!-- design-md:section layout-platforms -->
-## 5. Layout & Platforms
-
-### Layout Principles
-
-Spacing is a published scale rather than ad-hoc values: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80px, named none through sixExtraLarge. The typographic scale is paired compact/expanded, which is the system's mechanism for density rather than a separate spacing mode.
-
-### Responsive Behavior
-
-Not measured in this pass. The system publishes a compact/expanded typographic pairing which implies a density switch, but no breakpoint values were observed and none are asserted here.
-
-<!-- design-md:section content-locales -->
-## 6. Content & Locales
-
-### Voice & Tone
-
-The documentation writes to practitioners in plain Japanese and states its own limits — it names what the system is for, and where a business domain should keep its own components instead. It does not market itself.
-
-<!-- design-md:section governance -->
-## 7. Governance
-
-<!-- design-md:claim authority kind=evidence-backed-reconstruction lang=en -->
-### Authority
-
-This document is an evidence-backed reconstruction, not authority for an unrelated target project.
-<!-- design-md:claim-end -->
-
-<!-- design-md:claim application-priority order=prompt-fact,repository-fact,system-contract,reference-inspiration lang=en -->
-### Application priority
-
-1. Direct user instructions for the requested scope.
-2. Repository facts.
-3. This system contract.
-4. Reference inspiration.
-<!-- design-md:claim-end -->
-
-<!-- design-md:claim unknowns policy=absent-at-smallest-unresolved-boundary lang=en -->
-### Unknowns
-
-Omit only the smallest unresolved value or group. Do not replace it with a plausible default.
-<!-- design-md:claim-end -->
-
-<!-- design-md:claim changes policy=review-record-validate-before-adoption lang=en -->
-### Changes
-
-Record, review, and validate changes before adoption.
-<!-- design-md:claim-end -->
-
-### Do's and Don'ts
+## Do's and Don'ts
 
 - **Do** bind to the `--web-system-*` layer. The reference and system tiers exist so that the binding layer can be re-themed without touching consumers.
 - **Do** treat the five themes as the brand's own range, not as decoration — they are named for Japanese traditional colours (KONJO 紺青, ASAGI 浅葱, KURIKAWA 栗皮, SUMIRE 菫, TSUTSUJI 躑躅), with a dark variant of KONJO.
 - **Don't** read this reference as Mitsubishi Electric's corporate identity. Serendie is one platform brand inside the company, and business domains layer their own visual identity on top of this system.
 - **Don't** assume a square action. Every observed action in the default theme is fully rounded.
 
-### Agent Prompt Guide
+## Voice & Tone
+
+The documentation writes to practitioners in plain Japanese and states its own limits — it names what the system is for, and where a business domain should keep its own components instead. It does not market itself.
+
+## Agent Prompt Guide
 
 Ask for "Serendie, default KONJO theme": deep blue `#0650a0` actions, fully-rounded pills at 40px, white surfaces with `#eff2fc` tinted panels, `#073165` text on tint, Roboto with Noto Sans JP for Japanese. Say "expanded scale" for the 64/43/32/18/16/14/13 ramp. If a brief needs a different accent, say "custom theme over Serendie" rather than changing the token values — re-theming is how this system is meant to be adapted.
+
+## Governance
+
+### Authority
+
+This document is an evidence-backed reconstruction, not authority for an unrelated target project.
+
+### Application priority
+
+1. Direct user instructions for the requested scope.
+2. Repository facts.
+3. This system contract.
+4. Reference inspiration.
+
+### Unknowns
+
+Omit only the smallest unresolved value or group. Do not replace it with a plausible default.
+
+### Changes
+
+Record, review, and validate changes before adoption.

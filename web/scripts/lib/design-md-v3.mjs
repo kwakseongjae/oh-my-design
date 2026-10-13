@@ -168,6 +168,9 @@ export const SECTION_MAP = {
 
 /** Keyword placement for the long tail of hand-written H2s; first match wins. Order matters. */
 const SECTION_RULES = [
+  // Core v2 governance and experience H3s (natively authored references, e.g. serendie).
+  [/^(Authority|Application priority|Unknowns|Changes)$/, "Governance"],
+  [/^Scope$/, "Overview"],
   [/^(Do's and Don'ts|Patterns & Anti-Patterns|Anti-Patterns|What This System Refuses)/i, "Do's and Don'ts"],
   [/(Agent Prompt|AI Design Prompts|Reference Examples)/i, "Agent Prompt Guide"],
   [/(Verification|Source|Reference Scope|Reference Assets|Reference URLs|References & Boundaries|Evidence Limits|Implementation|Usage Guidelines|UI Guidelines|Token Reference|Notes on Adaptation)/i, "Governance"],

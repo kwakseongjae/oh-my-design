@@ -1,0 +1,627 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "added": "2026-09-21",
+    "category": "saas",
+    "country": "JP",
+    "ds": {
+      "description": "Mitsubishi Electric DX Innovation Center's public design system for the Serendie platform brand: a three-tier token set (reference, system, web-system), a themeable UI library, and Figma/code token sync.",
+      "name": "Serendie Design System",
+      "type": "system",
+      "url": "https://serendie.design/"
+    },
+    "homepage": "https://www.mitsubishielectric.co.jp/serendie/",
+    "id": "serendie",
+    "logo": {
+      "slug": "serendie.design",
+      "type": "favicon"
+    },
+    "name": "Serendie",
+    "primary_color": "#0A69CF",
+    "verified": "2026-09-21"
+  },
+  "tokens": {
+    "components_harvested": true,
+    "extracted": "2026-09-21",
+    "source": "live-extract"
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "checked": "2026-09-21",
+    "claims": {
+      "colors.canvas": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.on-primary": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.on-tertiary": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.primary": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.primary-hover": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.secondary": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.surface-dim": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.surface-dimmest": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "colors.tertiary": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "components.theme-action.backgroundColor": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.textColor": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.typography": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.hover": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.padding": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.pressed": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.rounded": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.type": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "components.theme-action.use": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "rounded.action": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-button-doc",
+        "surface_id": "button-doc"
+      },
+      "spacing.0": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.1": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.10": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.11": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.2": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.3": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.4": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.5": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.6": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.7": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.8": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "spacing.9": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.body.lineHeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.body.fontSize": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.body.use": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.body.fontWeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.display.lineHeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.display.fontSize": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.display.use": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.display.fontWeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "fonts.roles.jp": {
+        "captured": "2026-09-21",
+        "method": "official-doc",
+        "source_id": "serendie-typography-doc",
+        "surface_id": "typography-doc"
+      },
+      "fonts.roles.mono": {
+        "captured": "2026-09-21",
+        "method": "official-doc",
+        "source_id": "serendie-typography-doc",
+        "surface_id": "typography-doc"
+      },
+      "fonts.roles.ui": {
+        "captured": "2026-09-21",
+        "method": "official-doc",
+        "source_id": "serendie-typography-doc",
+        "surface_id": "typography-doc"
+      },
+      "typography.heading.lineHeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.heading.fontSize": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.heading.use": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.heading.fontWeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.label.lineHeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.label.fontSize": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.label.use": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.label.fontWeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.title.lineHeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.title.fontSize": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.title.use": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      },
+      "typography.title.fontWeight": {
+        "captured": "2026-09-21",
+        "method": "computed-style",
+        "source_id": "serendie-live",
+        "surface_id": "home"
+      }
+    },
+    "conflicts": [],
+    "schema": 2,
+    "sources": [
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-live",
+        "kind": "product-surface",
+        "url": "https://serendie.design/"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-color-doc",
+        "kind": "official-doc",
+        "url": "https://serendie.design/foundations/color"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-typography-doc",
+        "kind": "official-doc",
+        "url": "https://serendie.design/foundations/typography"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-button-doc",
+        "kind": "official-doc",
+        "url": "https://serendie.design/components/button"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-tokens-doc",
+        "kind": "official-doc",
+        "url": "https://serendie.design/foundations/design-tokens"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-about-doc",
+        "kind": "official-doc",
+        "url": "https://serendie.design/about"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "serendie-github",
+        "kind": "official-doc",
+        "url": "https://github.com/serendie"
+      },
+      {
+        "captured": "2026-09-21",
+        "id": "melco-serendie-platform",
+        "kind": "product-surface",
+        "url": "https://www.mitsubishielectric.co.jp/serendie/"
+      }
+    ],
+    "surfaces": [
+      {
+        "id": "home",
+        "inspected": "2026-09-21",
+        "kind": "design-system",
+        "url": "https://serendie.design/"
+      },
+      {
+        "id": "color-doc",
+        "inspected": "2026-09-21",
+        "kind": "design-system",
+        "url": "https://serendie.design/foundations/color"
+      },
+      {
+        "id": "typography-doc",
+        "inspected": "2026-09-21",
+        "kind": "design-system",
+        "url": "https://serendie.design/foundations/typography"
+      },
+      {
+        "id": "button-doc",
+        "inspected": "2026-09-21",
+        "kind": "design-system",
+        "url": "https://serendie.design/components/button"
+      },
+      {
+        "id": "tokens-doc",
+        "inspected": "2026-09-21",
+        "kind": "design-system",
+        "url": "https://serendie.design/foundations/design-tokens"
+      },
+      {
+        "id": "about-doc",
+        "inspected": "2026-09-21",
+        "kind": "design-system",
+        "url": "https://serendie.design/about"
+      },
+      {
+        "id": "platform",
+        "inspected": "2026-09-21",
+        "kind": "marketing",
+        "url": "https://www.mitsubishielectric.co.jp/serendie/"
+      }
+    ]
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 12,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 5,
+      "extension-component-property": 4,
+      "orphaned-tokens": 3
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.theme-action.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.theme-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.theme-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.theme-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-hover",
+        "message": "'primary-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.surface-dimmest",
+        "message": "'surface-dimmest' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-[object Object]",
+    "omdType": "object",
+    "sourceSha256": "13f004b5f1270e373e1cdc743efca83f49c4daeafb5961324f55e86b9c5269bb",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "spacing",
+        "value": [
+          0,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          32,
+          40,
+          48,
+          64,
+          80
+        ]
+      }
+    ],
+    "numeric": [
+      "rounded.action",
+      "typography.body.fontSize",
+      "typography.display.fontSize",
+      "typography.heading.fontSize",
+      "typography.label.fontSize",
+      "typography.title.fontSize"
+    ],
+    "danglingClaims": [
+      "spacing.0",
+      "spacing.1",
+      "spacing.10",
+      "spacing.11",
+      "spacing.2",
+      "spacing.3",
+      "spacing.4",
+      "spacing.5",
+      "spacing.6",
+      "spacing.7",
+      "spacing.8",
+      "spacing.9"
+    ],
+    "order": {
+      "": [
+        "added",
+        "category",
+        "country",
+        "ds",
+        "homepage",
+        "id",
+        "logo",
+        "name",
+        "omd",
+        "primary_color",
+        "tokens",
+        "verification_v2",
+        "verified"
+      ],
+      "omd": [
+        "schema"
+      ],
+      "tokens": [
+        "colors",
+        "components",
+        "components_harvested",
+        "extracted",
+        "rounded",
+        "source",
+        "spacing",
+        "typography"
+      ],
+      "tokens.typography": [
+        "body",
+        "display",
+        "family",
+        "heading",
+        "label",
+        "title"
+      ]
+    },
+    "source": "core-v2-native"
+  }
+}
