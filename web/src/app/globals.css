@@ -16,7 +16,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--sq-f-en);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -58,114 +58,67 @@
 }
 
 /*
- * oh-my-design Design System
- * —————————————————————————
- * Primary: Violet-Blue (#7c5cfc)
- * Neutral: Cool zinc with slight violet tint
- * Radius: 0.625rem (10px) — friendly but professional
- * Philosophy: We build design tools, so our own site must be impeccable.
+ * oh-my-design product tokens — concept A "Square / 네모 / 方塊" (rebrand
+ * 2026-10-13, branch feat/rebrand-a; proposed in
+ * docs/research/2026-10-13-rebrand/DESIGN.md.patch, not yet applied).
+ *
+ * Until round 2 these were a violet-blue system (#7c5cfc, 10px radius) that
+ * every page body still read, so the catalog, item page, docs, blog and the
+ * consent banner looked unchanged after the landing moved. They are now
+ * aliases of the --sq-* values in styles/brand-a.css — no new value is
+ * introduced here, only the shadcn names pointed at the brand ones:
+ *   primary = ink (gamboge is never text on paper, 2.0:1, so it cannot be
+ *   the colour behind `text-primary` links); gamboge stays a fill used by
+ *   the brand components directly. Radius 0: the site's own chrome is
+ *   square; a reference's claimed radii are inline styles and unaffected.
  */
 
 :root {
-  /* Violet-blue primary */
-  --primary: oklch(0.55 0.22 275);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: var(--sq-ink);
+  --primary-foreground: var(--sq-paper);
 
-  /* Surfaces — warm white with very subtle violet undertone */
-  --background: oklch(0.99 0.002 275);
-  --foreground: oklch(0.13 0.02 275);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.13 0.02 275);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.02 275);
+  --background: var(--sq-paper);
+  --foreground: var(--sq-ink);
+  --card: var(--sq-paper);
+  --card-foreground: var(--sq-ink);
+  --popover: var(--sq-paper);
+  --popover-foreground: var(--sq-ink);
 
-  /* Secondary — violet-tinted gray */
-  --secondary: oklch(0.965 0.005 275);
-  --secondary-foreground: oklch(0.2 0.02 275);
+  --secondary: var(--sq-cell);
+  --secondary-foreground: var(--sq-ink);
+  --muted: var(--sq-cell);
+  --muted-foreground: var(--sq-ink-2);
+  --accent: var(--sq-cell);
+  --accent-foreground: var(--sq-ink);
 
-  /* Muted — slightly violet */
-  --muted: oklch(0.96 0.005 275);
-  --muted-foreground: oklch(0.5 0.015 275);
-
-  /* Accent — lighter violet */
-  --accent: oklch(0.955 0.01 275);
-  --accent-foreground: oklch(0.2 0.02 275);
-
-  /* Destructive */
   --destructive: oklch(0.58 0.22 25);
 
-  /* Borders — violet-tinted for cohesion */
-  --border: oklch(0.91 0.008 275);
-  --input: oklch(0.91 0.008 275);
-  --ring: oklch(0.55 0.22 275);
+  --border: var(--sq-guide);
+  --input: var(--sq-guide);
+  --ring: var(--sq-focus);
 
-  /* Charts — violet-blue spectrum */
-  --chart-1: oklch(0.55 0.22 275);
-  --chart-2: oklch(0.6 0.18 260);
-  --chart-3: oklch(0.65 0.15 290);
-  --chart-4: oklch(0.55 0.15 240);
-  --chart-5: oklch(0.7 0.12 310);
+  --chart-1: var(--sq-gamboge);
+  --chart-2: var(--sq-ink);
+  --chart-3: var(--sq-ink-2);
+  --chart-4: var(--sq-guide);
+  --chart-5: var(--sq-focus);
 
-  --radius: 0.625rem;
+  --radius: var(--sq-radius);
 
-  --sidebar: oklch(0.985 0.003 275);
-  --sidebar-foreground: oklch(0.13 0.02 275);
-  --sidebar-primary: oklch(0.55 0.22 275);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.96 0.008 275);
-  --sidebar-accent-foreground: oklch(0.2 0.02 275);
-  --sidebar-border: oklch(0.91 0.008 275);
-  --sidebar-ring: oklch(0.55 0.22 275);
+  --sidebar: var(--sq-paper);
+  --sidebar-foreground: var(--sq-ink);
+  --sidebar-primary: var(--sq-ink);
+  --sidebar-primary-foreground: var(--sq-paper);
+  --sidebar-accent: var(--sq-cell);
+  --sidebar-accent-foreground: var(--sq-ink);
+  --sidebar-border: var(--sq-guide);
+  --sidebar-ring: var(--sq-focus);
 }
 
+/* .dark needs no block of its own: brand-a.css redefines every --sq-* value
+   under .dark and the aliases above follow. Only destructive changes. */
 .dark {
-  /* Primary stays vibrant in dark */
-  --primary: oklch(0.7 0.2 275);
-  --primary-foreground: oklch(0.1 0.02 275);
-
-  /* Surfaces — deep with violet undertone */
-  --background: oklch(0.1 0.015 275);
-  --foreground: oklch(0.95 0.005 275);
-  --card: oklch(0.14 0.015 275);
-  --card-foreground: oklch(0.95 0.005 275);
-  --popover: oklch(0.14 0.015 275);
-  --popover-foreground: oklch(0.95 0.005 275);
-
-  /* Secondary */
-  --secondary: oklch(0.2 0.015 275);
-  --secondary-foreground: oklch(0.95 0.005 275);
-
-  /* Muted */
-  --muted: oklch(0.2 0.015 275);
-  --muted-foreground: oklch(0.6 0.015 275);
-
-  /* Accent */
-  --accent: oklch(0.2 0.02 275);
-  --accent-foreground: oklch(0.95 0.005 275);
-
-  /* Destructive */
   --destructive: oklch(0.65 0.2 22);
-
-  /* Borders */
-  --border: oklch(0.22 0.015 275);
-  --input: oklch(0.25 0.015 275);
-  --ring: oklch(0.7 0.2 275);
-
-  /* Charts */
-  --chart-1: oklch(0.7 0.2 275);
-  --chart-2: oklch(0.65 0.18 260);
-  --chart-3: oklch(0.6 0.15 290);
-  --chart-4: oklch(0.7 0.15 240);
-  --chart-5: oklch(0.65 0.12 310);
-
-  --sidebar: oklch(0.12 0.015 275);
-  --sidebar-foreground: oklch(0.95 0.005 275);
-  --sidebar-primary: oklch(0.7 0.2 275);
-  --sidebar-primary-foreground: oklch(0.1 0.02 275);
-  --sidebar-accent: oklch(0.2 0.02 275);
-  --sidebar-accent-foreground: oklch(0.95 0.005 275);
-  --sidebar-border: oklch(0.22 0.015 275);
-  --sidebar-ring: oklch(0.6 0.15 275);
 }
 
 /*

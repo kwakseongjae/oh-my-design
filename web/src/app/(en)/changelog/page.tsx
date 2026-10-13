@@ -9,6 +9,7 @@
  */
 
 import { SiteHeaderA } from "@/components/brand-a/site-header";
+import { SiteFooterA } from "@/components/brand-a/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
@@ -65,7 +66,7 @@ export default function ChangelogIndexPage() {
 
       <SiteHeaderA />
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-8">
+      <section id="main" className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-8">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground mb-6"
@@ -147,6 +148,7 @@ export default function ChangelogIndexPage() {
           . Older releases (0.1.x) are kept for archaeology — public flow is the same as 1.x.
         </div>
       </section>
+      <SiteFooterA />
     </div>
   );
 }

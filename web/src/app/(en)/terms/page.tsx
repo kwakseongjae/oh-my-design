@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
+import { SiteFooterA } from "@/components/brand-a/site-footer";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -29,7 +30,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeaderA />
 
-      <article className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24">
+      <article id="main" className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24">
         <Link
           href="/"
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -120,6 +121,7 @@ export default function TermsPage() {
           </p>
         </Section>
       </article>
+      <SiteFooterA />
     </div>
   );
 }

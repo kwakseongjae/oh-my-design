@@ -5,6 +5,7 @@
  */
 
 import { SiteHeaderA } from "@/components/brand-a/site-header";
+import { SiteFooterA } from "@/components/brand-a/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, FileCode, ExternalLink } from "lucide-react";
@@ -111,7 +112,7 @@ export default function WhatIsDesignMdPage() {
 
       <SiteHeaderA />
 
-      <article className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24">
+      <article id="main" className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground mb-6"
@@ -338,6 +339,7 @@ export default function WhatIsDesignMdPage() {
           </div>
         </div>
       </article>
+      <SiteFooterA />
     </div>
   );
 }

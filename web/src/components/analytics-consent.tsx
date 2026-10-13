@@ -52,7 +52,11 @@ const CONSENT_COPY: Record<ConsentLocale, {
 };
 
 function consentLocale(pathname: string): ConsentLocale {
-  const routeLocale = pathname.match(/^\/docs\/(en|ko|ja|zh-cn|zh-tw)(?:\/|$)/)?.[1];
+  const routeLocale = pathname.match(/^\/docs\/(en|ko|ja|zh-cn|zh-tw)(?:\/|$)/)?.[1]
+    // Landing roots (/ko, /ja, /zh-tw) and the Korean legal pages pick the copy
+    // only; the consent decision below never depends on the language shown.
+    ?? pathname.match(/^\/(ko|ja|zh-tw)(?:\/|$)/)?.[1]
+    ?? (/^\/(?:privacy|terms)\/ko(?:\/|$)/.test(pathname) ? "ko" : undefined);
   return (routeLocale as ConsentLocale | undefined) ?? "en";
 }
 
@@ -152,26 +156,40 @@ export function AnalyticsConsent() {
 
   if (!showBanner) return null;
 
+  // Concept A (rebrand round 2): a square card in the bottom-left corner from
+  // 640px up, a slim bar on phones. Either way the hero's first screen —
+  // headline, search, keyboard — stays visible. Presentation only: the
+  // geo / stored-choice / accept / decline logic above is unchanged.
+  const loc = consentLocale(pathname);
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[60] flex justify-center p-3 sm:p-4">
-      <div className="flex w-full max-w-2xl flex-col gap-3 rounded-xl border border-border bg-card/95 p-4 shadow-lg backdrop-blur sm:flex-row sm:items-center">
-        <p className="flex-1 text-xs leading-relaxed text-muted-foreground">
-          {copy.body}{" "}
-          <Link href={privacyHref} className="underline underline-offset-2 hover:text-foreground">
+    <div
+      role="region"
+      aria-label={copy.details}
+      lang={loc === "zh-tw" ? "zh-Hant-TW" : loc === "zh-cn" ? "zh-Hans" : loc}
+      className="fixed inset-x-0 bottom-0 z-[60] sm:inset-x-auto sm:bottom-4 sm:left-4 sm:w-[340px]"
+    >
+      <div className="flex items-center gap-3 border-t-2 border-[var(--sq-ink)] bg-[var(--sq-paper)] px-4 py-2.5 text-[var(--sq-ink)] sm:flex-col sm:items-stretch sm:gap-3 sm:border-2 sm:p-4 sm:shadow-[6px_6px_0_0_var(--sq-guide)]">
+        <p className="min-w-0 flex-1 text-[11.5px] leading-snug text-[var(--sq-ink-2)] sm:text-xs sm:leading-relaxed">
+          <span className="line-clamp-2 sm:line-clamp-none">{copy.body}</span>{" "}
+          <Link
+            href={privacyHref}
+            className="font-semibold text-[var(--sq-ink)] underline decoration-[var(--sq-gamboge)] decoration-2 underline-offset-2"
+          >
             {copy.details}
           </Link>
-          .
         </p>
-        <div className="flex shrink-0 gap-2">
+        <div className="flex shrink-0 gap-2 sm:justify-end">
           <button
+            type="button"
             onClick={decline}
-            className="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="min-h-9 border border-[var(--sq-guide)] px-3 text-xs font-semibold text-[var(--sq-ink-2)] transition-colors hover:border-[var(--sq-ink)] hover:text-[var(--sq-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]"
           >
             {copy.decline}
           </button>
           <button
+            type="button"
             onClick={accept}
-            className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            className="min-h-9 bg-[var(--sq-gamboge)] px-3 text-xs font-bold text-[var(--sq-on-gamboge)] transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]"
           >
             {copy.accept}
           </button>
