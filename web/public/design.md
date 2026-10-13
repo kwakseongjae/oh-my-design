@@ -32,7 +32,7 @@ There is a second, louder identity used only on the `/v2` landing variant (`web/
 
 - Install or update oh-my-design for a supported coding agent, establish a reviewed project design system, and apply it without inventing facts that evidence has not established.
 
-- Move from Home to Builder, select a reference, inspect the exact projection, and hand DESIGN.md and the first prompt to the intended project terminal and coding-agent chat.
+- Move from Home to a reference page, inspect the reference, and hand DESIGN.md and the first prompt to the intended project terminal and coding-agent chat.
 <!-- design-md:claim-end -->
 
 ### Design direction
@@ -45,7 +45,7 @@ There is a second, louder identity used only on the `/v2` landing variant (`web/
 
 ### Principles
 
-- Treat Builder as the user-facing preview; use reference detail routes for catalog and evidence diagnostics.
+- Treat the reference detail page as the user-facing preview and hand-off surface.
 
 - Omit a value not established by evidence only at its smallest field or item boundary while preserving every verified sibling and the canonical source.
 
@@ -61,7 +61,7 @@ There is a second, louder identity used only on the `/v2` landing variant (`web/
 
 - Do not collapse useful reference content into Partial or warning chrome when evidence is missing for only one field.
 
-- Do not treat the reference detail route as the primary acceptance surface for a Builder task.
+- Do not accept site work on a redirect-only route such as /builder or /reference/[id]; verify it on the reference detail page.
 
 - Do not auto-promote ambient or inferred preference-log observations into the project design system.
 

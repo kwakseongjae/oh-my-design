@@ -22,7 +22,7 @@ npx oh-my-design-cli@latest doctor
 
 Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 27 個を読み込みます。導入後に Cursor を再起動し、自然言語で依頼するか `/omd-init` を明示的に呼び出してください。OmD のサブエージェント定義と起動 hooks は Cursor には導入しません。
 
-旧 Cursor で `--cursor-rule-only`（rule + カタログ互換モード）を使う場合は、https://oh-my-design.kr/builder から `DESIGN.md` をプロジェクトルートへダウンロードするか、Cursor に次のように依頼します。
+旧 Cursor で `--cursor-rule-only`（rule + カタログ互換モード）を使う場合は、https://oh-my-design.kr/design-systems/<id> のリファレンスページ（原文は https://oh-my-design.kr/<id>/design.md）から `DESIGN.md` をプロジェクトルートへダウンロードするか、Cursor に次のように依頼します。
 
 ```text
 Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md
@@ -35,7 +35,7 @@ for this product using confirmed values only. Keep unknown facts absent.
 
 - `DESIGN.md` がプロジェクトの正本です。
 - 不明な参照値をもっともらしい fallback で埋めません。
-- Builder が視覚リファレンス選択とプレビューの主経路です。
+- ユーザーは Home → `/design-systems/[id]` のリファレンスページで内容を確認し、DESIGN.md をコピー・ダウンロードします。
 - 実際の製品ルートと状態を確認して完了です。
 
 Docs: https://oh-my-design.kr/docs/ja

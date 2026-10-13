@@ -14,7 +14,7 @@ export interface LandingCopy {
   skillsHref: string;
   privacyHref: string;
   termsHref: string;
-  nav: { catalog: string; docs: string; builder: string; github: string; switchLabel: string; switchHref: string; switchText: string };
+  nav: { catalog: string; docs: string; github: string; switchLabel: string; switchHref: string; switchText: string };
   eyebrow: (n: { refs: number; countries: number }) => string;
   /** h1 split so the verified count can carry the proof mark. */
   h1: { before: string; after: string };
@@ -40,8 +40,6 @@ export interface LandingCopy {
     fontNote: (font: string) => string;
     noCanvas: string;
     open: (name: string) => string;
-    /** Secondary link under the preview card, into /builder. */
-    customize: string;
     chooser: string;
   };
   how: { heading: string; steps: { title: string; body: string }[] };
@@ -51,7 +49,7 @@ export interface LandingCopy {
     tagline: string;
     product: string;
     project: string;
-    links: { catalog: string; builder: string; docs: string; what: string; faq: string; changelog: string; alternatives: string; privacy: string; terms: string; issues: string; license: string };
+    links: { catalog: string; docs: string; what: string; faq: string; changelog: string; alternatives: string; privacy: string; terms: string; issues: string; license: string };
     provisional: string;
   };
 }
@@ -66,7 +64,6 @@ export const EN: LandingCopy = {
   nav: {
     catalog: "Catalog",
     docs: "Docs",
-    builder: "Customize",
     github: "GitHub",
     switchLabel: "한국어로 보기",
     switchHref: "/ko",
@@ -109,14 +106,13 @@ export const EN: LandingCopy = {
     fontNote: (font) => `Set in this page's typeface. ${font} is not loaded here.`,
     noCanvas: "No canvas color in this reference; shown on the page ground.",
     open: (name) => `Open ${name}`,
-    customize: "Customize",
     chooser: "Preview a brand",
   },
   how: {
     heading: "How it works",
     steps: [
       { title: "Pick a reference", body: "Search the catalog or start from the most selected. Verified references show the evidence behind each value." },
-      { title: "Open its page", body: "See the colors, type, components and evidence. To change color, type or components first, customize it." },
+      { title: "Open its page", body: "See the colors, type, components and evidence on one page." },
       { title: "Hand DESIGN.md to your agent", body: "Copy or download the file and give it to Claude Code, Codex, Cursor or OpenCode with the first prompt from the same page." },
     ],
   },
@@ -145,7 +141,6 @@ export const EN: LandingCopy = {
     project: "Project",
     links: {
       catalog: "Catalog",
-      builder: "Customize",
       docs: "Docs",
       what: "What is DESIGN.md",
       faq: "FAQ",
@@ -170,7 +165,6 @@ export const KO: LandingCopy = {
   nav: {
     catalog: "카탈로그",
     docs: "문서",
-    builder: "커스터마이즈",
     github: "GitHub",
     switchLabel: "View in English",
     switchHref: "/",
@@ -213,14 +207,13 @@ export const KO: LandingCopy = {
     fontNote: (font) => `${font} 글꼴은 불러오지 않아 이 페이지 글꼴로 표시합니다.`,
     noCanvas: "이 레퍼런스에는 배경색 값이 없어 페이지 바탕 위에 보여 줍니다.",
     open: (name) => `${name} 열기`,
-    customize: "커스터마이즈",
     chooser: "미리 볼 브랜드",
   },
   how: {
     heading: "이렇게 씁니다",
     steps: [
       { title: "레퍼런스 고르기", body: "검색하거나 많이 고른 순에서 시작하세요. 검증 레퍼런스는 값마다 근거를 보여 줍니다." },
-      { title: "레퍼런스 페이지 열기", body: "색, 글꼴, 컴포넌트와 근거를 확인하세요. 색이나 글꼴, 컴포넌트를 먼저 바꾸고 싶다면 커스터마이즈하면 됩니다." },
+      { title: "레퍼런스 페이지 열기", body: "색, 글꼴, 컴포넌트와 근거를 한 페이지에서 확인하세요." },
       { title: "에이전트에게 DESIGN.md 넘기기", body: "파일을 복사하거나 내려받아 Claude Code, Codex, Cursor, OpenCode에 넣으세요. 같은 페이지의 첫 프롬프트도 함께 쓰면 됩니다." },
     ],
   },
@@ -249,7 +242,6 @@ export const KO: LandingCopy = {
     project: "프로젝트",
     links: {
       catalog: "카탈로그",
-      builder: "커스터마이즈",
       docs: "문서",
       what: "DESIGN.md란",
       faq: "FAQ",

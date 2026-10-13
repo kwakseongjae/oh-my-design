@@ -33,7 +33,6 @@ export interface BlogChrome {
   footerTagline: string;
   footerProduct: string;
   footerResources: string;
-  footerBuilder: string;
   footerReferences: string;
   footerDocs: string;
 }
@@ -58,7 +57,6 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
     footerTagline: "AI 코딩 에이전트를 위한 DESIGN.md 하네스.",
     footerProduct: "제품",
     footerResources: "리소스",
-    footerBuilder: "빌더",
     footerReferences: "레퍼런스",
     footerDocs: "문서",
   },
@@ -81,7 +79,6 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
     footerTagline: "The DESIGN.md harness for AI coding agents.",
     footerProduct: "Product",
     footerResources: "Resources",
-    footerBuilder: "Builder",
     footerReferences: "References",
     footerDocs: "Docs",
   },

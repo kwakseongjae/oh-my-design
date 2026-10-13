@@ -125,7 +125,7 @@ describe("localized CLI docs", () => {
     }
   });
 
-  it("does not inherit English case-study or builder copy into translated locales", () => {
+  it("does not inherit English case-study or catalog copy into translated locales", () => {
     for (const locale of DOC_LOCALES.filter((item) => item !== "en")) {
       expect(CLI_DOCS[locale].showcase.prompt).not.toBe(CLI_DOCS.en.showcase.prompt);
       expect(CLI_DOCS[locale].showcase.verification).not.toEqual(
@@ -140,8 +140,8 @@ describe("localized CLI docs", () => {
       expect(CLI_DOCS[locale].showcase.productCase.videoSummary).not.toBe(
         CLI_DOCS.en.showcase.productCase.videoSummary,
       );
-      expect(CLI_DOCS[locale].ai.builderTitle).not.toBe(
-        CLI_DOCS.en.ai.builderTitle,
+      expect(CLI_DOCS[locale].ai.catalogTitle).not.toBe(
+        CLI_DOCS.en.ai.catalogTitle,
       );
       expect(CLI_DOCS[locale].ui.pipeline).not.toBe(CLI_DOCS.en.ui.pipeline);
       expect(CLI_DOCS[locale].demo.title).not.toBe(CLI_DOCS.en.demo.title);

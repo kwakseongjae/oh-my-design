@@ -247,11 +247,11 @@ const COLOR_COLLECTIONS: readonly Collection[] = COLOR_FAMILIES.map((family) => 
     titleEn: `${label} Design System References`,
     introKr: [
       `${label}을 대표색으로 사용하는 실제 기업 DESIGN.md를 모았습니다. 색상 이름의 인상으로 고른 목록이 아니라 canonical primary color의 hue를 같은 규칙으로 분류한 결과입니다.`,
-      "각 레퍼런스의 품질 상태와 원문을 확인한 뒤, 같은 색상 컨셉이 적용된 Builder 목록으로 바로 이동할 수 있습니다.",
+      "각 레퍼런스의 품질 상태와 원문을 확인한 뒤 DESIGN.md를 바로 복사하거나 내려받을 수 있습니다.",
     ],
     introEn: [
       `Real-company DESIGN.md references whose canonical primary color falls in the ${label.toLowerCase()} hue family. The set is derived from one deterministic color rule, not visual guesswork.`,
-      "Inspect each reference and its quality status, then open the same color concept directly in the Builder.",
+      "Inspect each reference and its quality status, then copy or download its DESIGN.md.",
     ],
     select: (registry: readonly RefEntry[]) =>
       registry.filter((entry) => colorFamilyForHex(entry.primaryColor) === family),

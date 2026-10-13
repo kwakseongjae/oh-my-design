@@ -11,8 +11,9 @@ import type { LandingBrand } from "./data";
  * "Most selected" list + the one brand preview card.
  *
  * Rows open the reference's item page (/design-systems/<id>, IA decision D2,
- * 2026-10-01); /ko rows do the same until Korean detail pages exist. The card's
- * secondary "Customize" link goes straight to /builder. Pointing at or focusing
+ * 2026-10-01); /ko rows do the same until Korean detail pages exist. The card
+ * has one action, the same item page (the builder and its "Customize" link were
+ * removed on 2026-10-13). Pointing at or focusing
  * a row recolors the preview; the chips under the card do the same on touch
  * screens, where there is no hover.
  *
@@ -22,13 +23,11 @@ import type { LandingBrand } from "./data";
  */
 
 export const detailHref = (id: string) => `/design-systems/${encodeURIComponent(id)}`;
-export const builderHref = (id: string) => `/builder?step=customize&ref=${encodeURIComponent(id)}`;
 
 /**
  * Row and card links prefetch on intent (pointer over, focus, touch start)
- * rather than on entering the viewport. Viewport prefetch of the builder pulled
- * ~1 MB of route JS into every home visit; the same rule keeps ten detail pages
- * from loading at once.
+ * rather than on entering the viewport, so ten detail pages never load at
+ * once on a home visit.
  */
 function useIntentPrefetch() {
   const router = useRouter();
@@ -212,16 +211,6 @@ function PreviewCard({
           >
             <span className="truncate">{copy.preview.open(nameOf(brand))}</span>
             <span aria-hidden="true">→</span>
-          </Link>
-          <Link
-            href={builderHref(brand.id)}
-            prefetch={false}
-            onMouseEnter={() => prefetch(builderHref(brand.id))}
-            onFocus={() => prefetch(builderHref(brand.id))}
-            onTouchStart={() => prefetch(builderHref(brand.id))}
-            className="flex shrink-0 items-center rounded-tag border border-ink px-3 py-2.5 text-sm font-semibold text-ink hover:bg-paper-2"
-          >
-            {copy.preview.customize}
           </Link>
         </div>
       </div>

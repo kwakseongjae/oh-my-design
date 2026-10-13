@@ -22,7 +22,7 @@ npx oh-my-design-cli@latest doctor
 
 Cursor 2.4+ 会从 `.cursor/skills/` 加载 27 个兼容 OmD Agent Skills。安装后重启 Cursor，用自然语言提出需求，或直接调用 `/omd-init`。OmD 子代理定义与启动 hooks 不会安装到 Cursor。
 
-旧版 Cursor 使用 `--cursor-rule-only`（rule + 目录兼容模式）时，请从 https://oh-my-design.kr/builder 下载 `DESIGN.md` 到项目根目录，或向 Cursor 明确提出：
+旧版 Cursor 使用 `--cursor-rule-only`（rule + 目录兼容模式）时，请从 https://oh-my-design.kr/design-systems/<id> 参考页面（原文位于 https://oh-my-design.kr/<id>/design.md）下载 `DESIGN.md` 到项目根目录，或向 Cursor 明确提出：
 
 ```text
 Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md
@@ -35,7 +35,7 @@ for this product using confirmed values only. Keep unknown facts absent.
 
 - `DESIGN.md` 是项目设计真源。
 - 未知参考值保持缺省，不用看似合理的 fallback 代替。
-- Builder 是视觉参考选择和预览的主路径。
+- 用户从 Home 进入 `/design-systems/[id]` 参考页面查看内容，并复制或下载 DESIGN.md。
 - 验证真实产品路由与状态后才算完成。
 
 Docs: https://oh-my-design.kr/docs/zh-cn
