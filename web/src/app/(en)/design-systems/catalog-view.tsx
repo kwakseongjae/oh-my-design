@@ -333,7 +333,8 @@ function CollectionFilteredGrid({
           <p>
             <b>{collection.titleEn}</b>
             <span className="sq-mono">{base.length} references</span>
-            <Link href="/design-systems" scroll={false}>× Show all</Link>
+            {/* A plain anchor: the next/link soft navigation back to the bare path did not leave ?collection= (also broken on production before round 2). */}
+            <a href="/design-systems">× Show all</a>
           </p>
           <p className="sq-arch-coll-intro">{collection.introEn0}</p>
         </div>
