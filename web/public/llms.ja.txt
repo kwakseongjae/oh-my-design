@@ -1,6 +1,6 @@
 # oh-my-design
 
-> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode には28の製品スキルと20のエージェント定義のフルバンドルを、Cursor 2.4+ には互換 Agent Skills 27 個と小さなプロジェクト rule、ローカルカタログを導入します。品質グレード付き DESIGN.md 521件は verified_v2 299件、partial 109件、legacy 113件で、公開デモには verified_v2 を使います。
+> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode には28の製品スキルと20のエージェント定義のフルバンドルを、Cursor 2.4+ には互換 Agent Skills 29 個と小さなプロジェクト rule、ローカルカタログを導入します。品質グレード付き DESIGN.md 521件は verified_v2 299件、partial 109件、legacy 113件で、公開デモには verified_v2 を使います。
 
 ## モデル
 
@@ -20,7 +20,7 @@ npx oh-my-design-cli@latest doctor
 差分を説明して、DESIGN.md を書く前に確認してください。
 ```
 
-Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 27 個を読み込みます。導入後に Cursor を再起動し、自然言語で依頼するか `/omd-init` を明示的に呼び出してください。OmD のサブエージェント定義と起動 hooks は Cursor には導入しません。
+Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 29 個を読み込みます。導入後に Cursor を再起動し、自然言語で依頼するか `/omd-init` を明示的に呼び出してください。OmD のサブエージェント定義と起動 hooks は Cursor には導入しません。
 
 旧 Cursor で `--cursor-rule-only`（rule + カタログ互換モード）を使う場合は、https://oh-my-design.kr/builder から `DESIGN.md` をプロジェクトルートへダウンロードするか、Cursor に次のように依頼します。
 
