@@ -36,3 +36,13 @@ AGENTS.md "Product surface ownership"는 구현 시 퍼널 Home → `/design-sys
 | Q4 | 계측: Vercel Speed Insights 켜져 있는지 확인 → 아니면 GA4 복구 |
 | Q5 | 로캘 순서 ko → ja → zh-tw 승인 |
 | 추가 | 트렌드 조사: shadcn DESIGN.md 스킬 포스트(X 10/10), Kailash ui-skills 목록(X 9/22) + 셰이더 오픈소스 실험(`~/Desktop/projects/tf-shaders`, shader-landing 스킬) 반영 |
+
+## 2026-10-13 규격·폰트 결정 (근거: `docs/research/2026-10-13-format/FORMAT-LANDSCAPE.md`)
+
+| # | 결정 |
+|---|---|
+| F1 | 형식: **B(Google frontmatter + Google 섹션 순서)도 허용 — "업계 규격에 더 맞다면"**. 판정은 실증으로: shadcn 스킬 end-to-end에서 frontmatter vs 섹션 내 fenced YAML 추출 비교 후 확정 (Claude) |
+| F2 | **대체 폰트 허용** — 이름표 단 대체 층(브랜드 사실 / 실측 권장 대체 "not the brand face" / 문자 체계별 안전 기본값). shadcn 폰트 레지스트리는 Google Fonts만 받으므로 대체는 Google Fonts 서체 우선(KR: Noto Sans KR 등) 명시. AGENTS.md 문구는 "이름표 없는 대체 금지"로 개정(별도 커밋, 전후 비교 제시) |
+| F3 | 검사 기준(Claude 판단): **`@google/design.md lint` 오류 0개가 게이트**. 경고는 파일별 사이드카에 기록하고 게이트하지 않음. 실측 브랜드 값의 대비 경고(예: toss 3.71:1)는 숨기지 않고 "Known Gaps" H3에 사실로 기록 |
+| F4 | **새 형식 전환 진행** — legacy 518 → 새 형식 직행(Core v2 경유 안 함). 품질 등급 299/109/113·evidence-integrity 모션 수 불변, 레지스트리 출력은 형식 차이만(값 변화 없음) 비교기로 검증. 출시 GO는 별도 |
+| F5 | CJK 조판(Claude 추천, 오너 "추천으로"): **구조화 + 산문 병행** — frontmatter 네임스페이스 키 `typesetting:`(문자 체계별 word-break/line-break/폰트 스택/구두점 처리; Google lint는 오타형이 아닌 커스텀 키에 침묵) + "CJK Typesetting" 산문 섹션 |
