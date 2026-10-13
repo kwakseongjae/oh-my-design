@@ -1,65 +1,145 @@
 ---
-id: taiwanmobile
 name: Taiwan Mobile
-display_name_kr: 台灣大哥大
-country: TW
-category: consumer-tech
-homepage: "https://www.taiwanmobile.com"
-primary_color: "#ff6700"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=taiwanmobile.com&sz=128"
-verified: "2026-06-22"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-22"
-  note: "primary = live CTA orange #ff6700 (confirmed in buttons, CSS intercept, corp brand page); teal #024d58 is digital-life category accent; myfone sub-brand shares #ff6700 orange + indigo #2d2d6c"
-  colors:
-    primary: "#ff6700"
-    primary-hover: "#f45100"
-    primary-alt: "#ff8f08"
-    brand-indigo: "#2d2d6c"
-    teal-accent: "#024d58"
-    ink: "#2d3033"
-    secondary: "#515a68"
-    muted: "#838d9c"
-    canvas: "#ffffff"
-    surface: "#f5f7f8"
-    card-bg: "#e3e7ee"
-    dark-bar: "#1e2022"
-    on-primary: "#ffffff"
-    green-accent: "#0eaa7d"
-    pink-accent: "#ce2874"
-  typography:
-    family: { display: "Poppins", body: "Noto Sans TC", fallback: "system-ui, -apple-system, Segoe UI, Roboto" }
-    hero:    { size: 48, weight: 500, lineHeight: 1.25, use: "Hero banner headline (carousel)" }
-    section: { size: 34, weight: 500, lineHeight: 1.35, use: "Section headings (plan finder, features)" }
-    nav:     { size: 15, weight: 400, lineHeight: 1.50, use: "Top navigation links" }
-    body:    { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text, Noto Sans TC" }
-    label:   { size: 14, weight: 400, lineHeight: 1.50, use: "UI labels, button text" }
-    caption: { size: 12, weight: 400, lineHeight: 1.50, use: "Metadata, fine print" }
-  spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 40, xxl: 60, section: 80, hero: 120 }
-  rounded: { sm: 8, md: 20, lg: 40, full: 9999 }
-  shadow:
-    none: "none"
-    soft: "0 2px 8px rgba(0,0,0,0.08)"
-  components:
-    button-primary: { type: button, bg: "#ff6700", fg: "#ffffff", radius: "40px", height: "45px", padding: "8px 24px", font: "18px / 400 Poppins", states: "hover #f45100", use: "Primary plan CTA — '搭手機', '搭光纖'" }
-    button-outline: { type: button, bg: "transparent", fg: "#838d9c", radius: "40px", height: "45px", padding: "8px 24px", font: "18px / 400 Poppins", use: "Inactive plan tab (搭商品 / 搭光纖 / 單門號)" }
-    button-login: { type: button, bg: "transparent", fg: "#ffffff", radius: "50px", height: "37px", padding: "12px 16px", font: "14px / 400 Poppins", use: "Login pill in dark nav band" }
-    button-white: { type: button, bg: "#ffffff", fg: "#515a68", radius: "40px", height: "44px", padding: "0 16px", font: "15px / 400 Poppins", use: "Dialog dismiss / secondary action '我知道了'" }
-    card-picture: { type: card, bg: "#e3e7ee", radius: "20px", use: "Picture product card, 280×280–520×520px, no shadow" }
-    card-surface: { type: card, bg: "#f5f7f8", radius: "20px", use: "Content card on default surface" }
-    badge-orange: { type: badge, bg: "#ff6700", fg: "#ffffff", radius: "9999px", font: "12px / 400 Poppins", use: "Promotional / highlight tag" }
-    nav-tab: { type: tab, fg: "#ffffff", font: "15px / 400 Poppins", use: "Top nav category (個人/家庭/企業)", active: "text #ff6700 on active highlight" }
-    dialog-cookie: { type: dialog, bg: "#ffffff", radius: "20px", shadow: "0 2px 8px rgba(0,0,0,0.08)", use: "Cookie notice / info overlay" }
-  components_harvested: true
+colors:
+  primary: '#ff6700'
+  primary-hover: '#f45100'
+  primary-alt: '#ff8f08'
+  brand-indigo: '#2d2d6c'
+  teal-accent: '#024d58'
+  ink: '#2d3033'
+  secondary: '#515a68'
+  muted: '#838d9c'
+  canvas: '#ffffff'
+  surface: '#f5f7f8'
+  card-bg: '#e3e7ee'
+  dark-bar: '#1e2022'
+  on-primary: '#ffffff'
+  green-accent: '#0eaa7d'
+  pink-accent: '#ce2874'
+typography:
+  hero:
+    fontSize: 48px
+    fontWeight: 500
+    lineHeight: 1.25
+    use: Hero banner headline (carousel)
+  section:
+    fontSize: 34px
+    fontWeight: 500
+    lineHeight: 1.35
+    use: Section headings (plan finder, features)
+  nav:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Top navigation links
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard body text, Noto Sans TC
+  label:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: UI labels, button text
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Metadata, fine print
+rounded:
+  sm: 8px
+  md: 20px
+  lg: 40px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 16
+  lg: 24
+  xl: 40
+  xxl: 60
+  section: 80
+  hero: 120
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ff6700'
+    textColor: '#ffffff'
+    rounded: 40px
+    height: 45px
+    padding: 8px 24px
+    typography: 18px / 400 Poppins
+    states: 'hover #f45100'
+    use: Primary plan CTA — '搭手機', '搭光纖'
+  button-outline:
+    type: button
+    backgroundColor: transparent
+    textColor: '#838d9c'
+    rounded: 40px
+    height: 45px
+    padding: 8px 24px
+    typography: 18px / 400 Poppins
+    use: Inactive plan tab (搭商品 / 搭光纖 / 單門號)
+  button-login:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 50px
+    height: 37px
+    padding: 12px 16px
+    typography: 14px / 400 Poppins
+    use: Login pill in dark nav band
+  button-white:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#515a68'
+    rounded: 40px
+    height: 44px
+    padding: 0 16px
+    typography: 15px / 400 Poppins
+    use: Dialog dismiss / secondary action '我知道了'
+  card-picture:
+    type: card
+    backgroundColor: '#e3e7ee'
+    rounded: 20px
+    use: Picture product card, 280×280–520×520px, no shadow
+  card-surface:
+    type: card
+    backgroundColor: '#f5f7f8'
+    rounded: 20px
+    use: Content card on default surface
+  badge-orange:
+    type: badge
+    backgroundColor: '#ff6700'
+    textColor: '#ffffff'
+    rounded: 9999px
+    typography: 12px / 400 Poppins
+    use: Promotional / highlight tag
+  nav-tab:
+    type: tab
+    textColor: '#ffffff'
+    typography: 15px / 400 Poppins
+    use: Top nav category (個人/家庭/企業)
+    active: 'text #ff6700 on active highlight'
+  dialog-cookie:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 20px
+    shadow: 0 2px 8px rgba(0,0,0,0.08)
+    use: Cookie notice / info overlay
+fonts:
+  roles:
+    display: Poppins
+    body: Noto Sans TC
+    fallback: system-ui, -apple-system, Segoe UI, Roboto
 ---
 
 # Design System Inspiration of Taiwan Mobile
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Taiwan Mobile (台灣大哥大) is Taiwan's largest telecom carrier, and its digital presence communicates bold accessibility through a clean, modern consumer-tech aesthetic. The primary brand color is a confident **vibrant orange** (`#ff6700` — 活力橘), splashed across call-to-action buttons, section headings, and the "Planet Possible" multi-color logo — a signal of energy, openness, and everyday possibility. The canvas is predominantly white (`#ffffff`) layered over a cool light-grey surface (`#f5f7f8`) that keeps the page feeling airy despite the density of telecom plans and product listings.
 
@@ -76,7 +156,7 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 - Multi-color "Planet Possible" logo (orange, indigo, pink, green) reflecting group identity
 - Corporate sub-site uses electric blue `#0081cc` nav — distinct from consumer orange system
 
-## Primary tasks
+### Primary tasks
 
 - Find a telecom plan that fits what you need
 - Search by handset first, then pick the plan
@@ -84,7 +164,37 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 - Switch plans when a better deal comes around
 - Ask the AI assistant about a billing question
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Taiwan Mobile (台灣大哥大) was founded in **1997** as one of Taiwan's first mobile telecoms licensees, growing to become the island's largest carrier with the national "5G Taiwan Team" (5G台灣隊) positioning — a platform for Taiwan's digital transformation. The brand has undergone a landmark **2020 rebrand** under the "Open Possible 能所不能" platform: the classic 12-sided circular logo evolved into "Planet Possible," a multi-color sphere incorporating the brand palette of all group entities (orange for telecom energy, indigo for digital unity, pink for momo e-commerce, green for sustainability).
+
+The company sits at the convergence of Taiwan's telecom, media, and e-commerce markets. Its subsidiaries include **myfone** (digital-first telecom storefront), **momo** (Taiwan's largest e-commerce platform), **MyVideo** (OTT streaming), and **OP** (lifestyle rewards app). This group breadth explains the colorful "Planet Possible" logo — the visual merger of multiple consumer digital brands into one identity.
+
+What Taiwan Mobile refuses to be: an austere, technical-only carrier. The pivot to "digital life" (數位生活) — streaming bundles, gaming services, international roaming packages — positions the brand as a **lifestyle enabler**, not merely a pipe. The orange-led color system, pill-forward geometry, and bilingual Poppins + Noto typography all communicate accessibility, modernity, and everyday consumer relevance.
+
+The carrier won the **2024 Brand of Excellence Award** for telecom (品牌卓越獎) and is Taiwan's first telecom to operate an integrated 5G + fiber + media + e-commerce platform under one roof.
+
+### Principles
+
+1. **Open every possibility.** 能所不能 is not marketing speak — it is a design directive. Every service should feel reachable within one tap. *UI implication:* prominent orange CTAs, horizontal pill tabs rather than buried menu trees, search-first plan discovery.
+2. **One system, many identities.** The Taiwan Mobile group runs telecoms, streaming, e-commerce, and smart home under one brand umbrella. *UI implication:* the multi-color "Planet Possible" logo and varied accent palette (teal, indigo, pink) acknowledge sub-brand diversity while orange anchors the parent brand.
+3. **Consumer-grade simplicity.** Telecom is inherently complex (5G, roaming, bundle pricing). The design simplifies without dumbing down. *UI implication:* pill-tab plan selector over dropdown menus; benefit-first plan names over technical specs.
+4. **Bilingual by default.** Taiwan is Mandarin-primary but globally connected. *UI implication:* every plan has a Chinese name AND an English descriptor; typography handles both scripts with equal visual grace.
+5. **Energy without aggression.** Orange is confident, not alarmist. *UI implication:* the orange is reserved for "do this" moments only — it never appears as a warning or error color.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Taiwan Mobile user segments (Taiwanese telecom customers, digital lifestyle consumers), not individual people.*
+
+**陳靜雯, 28, 台北.** Young professional juggling Netflix, Disney+, and HBO Max subscriptions across three devices. Chose Taiwan Mobile's "影音多享組" because one bill covers all streaming. Values the myfone interface for comparing plan prices quickly; has never visited a physical store.
+
+**林大偉, 42, 台中.** Family plan holder with 4 SIM cards across the family. Upgrades every 2–3 years when a flagship model launch coincides with a good plan. Uses "搭手機" flow exclusively — always searches by handset first, plan second. Appreciates that Taiwan Mobile is the "5G Taiwan Team" national standard-bearer.
+
+**蔡小玲, 22, 高雄.** Student on a budget, uses a prepaid card (預付卡). Watches MyVideo for free bundled streaming. Switches between plans every semester based on whatever deal is running. Engages heavily with "OP 響樂生活" points for free 7-Eleven coffee.
+
+**鄭建宏, 55, 花蓮.** Small business owner who recently subscribed to a 5G fixed wireless access (FWA) plan for his shop. Found Taiwan Mobile through a local franchise store; primary interaction is the "我要問小麥" AI chat for billing questions. Values reliability of coverage over plan features.
+
+## Colors
 
 ### Primary
 - **Vibrant Orange** (`#ff6700`): The 活力橘 (vibrant orange) brand primary. Appears on primary CTA buttons ("搭手機"), active nav links ("Apple 方案"), section headings on brand pages, footer brand text, and the main logo. Dominant interactive color.
@@ -109,7 +219,7 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 - **Muted** (`#838d9c`): Inactive nav tabs, placeholder text, tertiary metadata.
 - **Muted Light** (`#b5bdc9`): Footer links and lowest-emphasis text (from `twm-footer.css`).
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display / UI Latin**: `Poppins` — modern geometric sans. Used for hero headlines, section titles, navigation, and button labels.
@@ -133,7 +243,125 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 - **Medium weight dominates**: Weight 500 for headings rather than heavy bold — accessible, scan-friendly for plan comparison.
 - **Bilingual fluency**: Plan names run English-first (e.g. "Apple 方案", "OP 響樂生活"); UI labels are Mandarin-first.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px (Tailwind custom scale)
+- Scale (from `global-variables.css`): s9=4px, s8=8px, s7=16px, s6=24px, s5=40px, s4=60px, s3=80px, s2=120px, s1=160px
+- Notable: The 60px and 80px stops power generous section padding; the 16px/24px duo covers card internal rhythm.
+
+### Grid & Container
+- Full-width hero carousel with overlay text centered
+- Plan tab selector as a horizontal pill group below the hero
+- Product cards in a horizontal swiper (280px square tiles)
+- Feature sections alternate between white and `#f5f7f8` surface backgrounds
+- Max content width: ~1440px viewport with centered content blocks
+
+### Whitespace Philosophy
+- **Surface-over-shadow**: depth comes from alternating `#ffffff` and `#f5f7f8` band backgrounds rather than card shadows
+- **Generous hero**: carousel banners run full-viewport-width, creating an immersive first impression before narrowing to structured plan content
+- **Breathing pill row**: plan tabs are generously padded (8px 24px) with 40px radius, making each option feel tappable and inviting
+
+### Border Radius Scale
+- None (0px): notification bar, full-bleed sections
+- Small (8px): inner elements, chips
+- Medium (20px): product cards, picture cards — the dominant card shape
+- Large (40–50px): plan tabs, login pills, secondary buttons
+- Full (9999px): promo badges
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero compresses, plan tabs scroll horizontally, cards stack |
+| Tablet | 640-1024px | 2-column card grid, moderate padding |
+| Desktop | 1024-1440px | Full carousel, multi-column plan grid, centered hero |
+| Large | >1440px | Max-width constrained center, generous lateral margins |
+
+#### Touch Targets
+- Plan tab buttons at 45px height with 24px horizontal padding — generous tap area
+- Login pill at 37px height, still comfortably tappable
+- Product cards at 280px — thumbnail-first browsing optimized for touch
+
+#### Collapsing Strategy
+- Hero carousel: full-viewport → compressed height on mobile, text overlays scale
+- Plan tab row: horizontal scroll on narrow viewports; orange active tab maintains prominence
+- Product cards: horizontal swiper adapts to viewport width; maintains 20px radius
+- Dark notification bar: persists across breakpoints, stays at top
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Navigation, plan tabs, most UI elements |
+| Tint (Level 1) | `#f5f7f8` background shift | Section separation, card surfaces |
+| Card Mist (Level 2) | `#e3e7ee` background | Product picture cards |
+| Subtle (Level 3) | `0 2px 8px rgba(0,0,0,0.08)` | Cookie overlay, modals |
+
+**Shadow Philosophy**: Taiwan Mobile's consumer-tech surface is nearly shadowless — flat, fast, and scan-optimized for users comparing telecom plans. When elevation is needed (dialogs, overlays), a minimal `rgba(0,0,0,0.08)` ambient shadow appears. Depth is communicated through background alternation (white → surface-grey → card-mist), matching the clean, mobile-native aesthetics expected in Taiwan's competitive telecom retail market.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+- `shadow.soft`: `0 2px 8px rgba(0,0,0,0.08)`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover state on orange CTAs, tab active switch |
+| `motion-standard` | 200ms | Sheet, dialog reveal, card expand |
+| `motion-slow` | 320ms | Hero carousel transition, page-level navigation |
+| `motion-carousel` | 400ms | Plan/product carousel auto-advance |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — plan drawer, dialog |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, tab switch |
+
+**Motion rules**: Carousel-driven design (the hero is a swiper) means motion is primarily horizontal — product slides sweep laterally using `ease-standard` at `motion-carousel` duration. Orange interactive elements respond to hover with a fast `120ms` background darken from `#ff6700` → `#f45100`. Dialogs fade-and-scale in at `motion-standard / ease-enter`. Under `prefers-reduced-motion: reduce`, all carousel auto-advance stops and all transitions collapse to instant; the product remains fully navigable.
+
+**Signature motion**: The "Planet Possible" logo sphere in motion on campaign materials rotates gently, echoing the original "spinning ball" heritage of the 台灣大哥大 brand. On the live web UI, this expresses as the horizontal carousel sweep — the brand in motion, orbiting possibilities.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on https://www.taiwanmobile.com:
+- Document title: "台灣大哥大 | 給你美好數位生活的各種可能，大可飆速、大可響樂、大可回饋、大可永續，台灣大 大可能"
+- Hero H1 "多樣資費任你選 跨平台暢看" — Poppins 48px / weight 500 / color rgb(0,0,0)
+- Section H2 "今天想找什麼電信方案呢？" — 34px / 500 / rgb(45,48,51)
+- Primary CTA "搭手機" — bg rgb(255,103,0) #ff6700 / radius 40px / 18px Poppins / white text
+- Login pill "登入" — transparent bg / white text / radius 50px / 14px
+- Nav header — white #ffffff / 72px height / Poppins 15px / rgb(45,48,51)
+- Picture cards — bg rgb(227,231,238) / radius 20px / no shadow
+
+Second surface: https://corp.taiwanmobile.com/company-profile/brand-concept.html
+- Brand philosophy: "Open Possible 能所不能" confirmed
+- Orange #ff6700 confirmed in brand heading color
+- Corporate nav rgb(0,129,204) = #0081cc
+
+Third surface: https://www.myfone.com.tw (myfone sub-brand)
+- Button pills "搭門號"/"買空機" bg white / orange text #ff6700 / radius 30px
+- myfone bg frequency: rgb(45,45,108) #2d2d6c indigo ×41, rgb(255,103,0) orange ×35
+
+Brand narrative: Taiwan Mobile founded 1997; 2020 "Open Possible" rebrand and Planet Possible logo confirmed from corp.taiwanmobile.com/esg/rebranding.html.
+
+Personas are fictional archetypes informed by public Taiwan Mobile product categories (prepaid, family plans, 5G FWA, streaming bundles, myfone digital store). Names are illustrative; do not refer to real people.
+
+Voice samples §10 are verbatim from the live homepage document title and section headings (verified live 2026-06-22).
+
+Interpretive claims (e.g., "pill-forward as accessibility signal", "flat depth as mobile-native telecom") are editorial readings connecting observed design to brand positioning, not direct TWM statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -227,44 +455,22 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 **Tier 2 sources:** getdesign.md/taiwanmobile — not found; styles.refero.design/?q=taiwan+mobile — no relevant results
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px (Tailwind custom scale)
-- Scale (from `global-variables.css`): s9=4px, s8=8px, s7=16px, s6=24px, s5=40px, s4=60px, s3=80px, s2=120px, s1=160px
-- Notable: The 60px and 80px stops power generous section padding; the 16px/24px duo covers card internal rhythm.
+| State | Treatment |
+|---|---|
+| **Empty (plan search, no results)** | White canvas with `#f5f7f8` surface. Ink text (`#2d3033`) at body size: "目前無符合條件的方案。" One orange CTA to reset filters. No illustration. |
+| **Empty (myfone cart, none added)** | Warm illustration or simple icon, muted text (`#838d9c`): "購物車是空的。" Orange CTA to browse products. |
+| **Loading (plan results)** | Skeleton cards at `#e3e7ee` card-mist background with 20px radius, same dimensions as live product cards. Flat shimmer — consistent with shadow-free system. |
+| **Loading (page first paint)** | Surface-grey `#f5f7f8` base with skeleton blocks for hero carousel and plan tab row. Orange tab placeholder maintains spatial presence. |
+| **Error (plan lookup failed)** | Inline message in Ink (`#2d3033`) with plain description and orange retry CTA. Never generic "發生錯誤" alone — provides next step. |
+| **Error (form validation)** | Field-level message in a warm warning tone below the input; describes what is valid. Orange or amber border highlight. |
+| **Success (plan application submitted)** | Brief confirmation on `#f5f7f8` surface, plain Mandarin sentence. Orange checkmark icon. Next-step link to SIM delivery tracking. No emoji. |
+| **Skeleton** | `#e3e7ee` blocks at final card dimensions, 20px radius, flat-fade pulse. |
+| **Disabled** | Muted grey `#838d9c` text with reduced opacity surfaces. Orange actions fade to semi-transparent orange rather than switching to grey to preserve brand read. |
+| **Offline / Coverage Error** | Full-page fallback with "大哥大" mascot/icon and plain message: "請確認您的網路連線。" Orange retry CTA. |
 
-### Grid & Container
-- Full-width hero carousel with overlay text centered
-- Plan tab selector as a horizontal pill group below the hero
-- Product cards in a horizontal swiper (280px square tiles)
-- Feature sections alternate between white and `#f5f7f8` surface backgrounds
-- Max content width: ~1440px viewport with centered content blocks
-
-### Whitespace Philosophy
-- **Surface-over-shadow**: depth comes from alternating `#ffffff` and `#f5f7f8` band backgrounds rather than card shadows
-- **Generous hero**: carousel banners run full-viewport-width, creating an immersive first impression before narrowing to structured plan content
-- **Breathing pill row**: plan tabs are generously padded (8px 24px) with 40px radius, making each option feel tappable and inviting
-
-### Border Radius Scale
-- None (0px): notification bar, full-bleed sections
-- Small (8px): inner elements, chips
-- Medium (20px): product cards, picture cards — the dominant card shape
-- Large (40–50px): plan tabs, login pills, secondary buttons
-- Full (9999px): promo badges
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Navigation, plan tabs, most UI elements |
-| Tint (Level 1) | `#f5f7f8` background shift | Section separation, card surfaces |
-| Card Mist (Level 2) | `#e3e7ee` background | Product picture cards |
-| Subtle (Level 3) | `0 2px 8px rgba(0,0,0,0.08)` | Cookie overlay, modals |
-
-**Shadow Philosophy**: Taiwan Mobile's consumer-tech surface is nearly shadowless — flat, fast, and scan-optimized for users comparing telecom plans. When elevation is needed (dialogs, overlays), a minimal `rgba(0,0,0,0.08)` ambient shadow appears. Depth is communicated through background alternation (white → surface-grey → card-mist), matching the clean, mobile-native aesthetics expected in Taiwan's competitive telecom retail market.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#ff6700` orange exclusively for primary CTAs and active interactive states
@@ -282,28 +488,26 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 - Mix the teal `#024d58` or indigo `#2d2d6c` accents into primary UI elements — they are category-specific accents
 - Set Poppins at a light weight (300) for headlines — Taiwan Mobile is weight 500 medium
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero compresses, plan tabs scroll horizontally, cards stack |
-| Tablet | 640-1024px | 2-column card grid, moderate padding |
-| Desktop | 1024-1440px | Full carousel, multi-column plan grid, centered hero |
-| Large | >1440px | Max-width constrained center, generous lateral margins |
+Taiwan Mobile's brand voice is **optimistic, energetic, and human-centered** — captured by the tagline *"Open Possible 能所不能"* (Enabling the impossible, opening every possibility). Copy treats users as empowered digital citizens, not passive telecoms customers. The interface speaks in short, inviting Chinese phrases — "今天想找什麼電信方案呢？" (What telecom plan are you looking for today?) — conversational and forward-looking rather than formal or corporate.
 
-### Touch Targets
-- Plan tab buttons at 45px height with 24px horizontal padding — generous tap area
-- Login pill at 37px height, still comfortably tappable
-- Product cards at 280px — thumbnail-first browsing optimized for touch
+| Context | Tone |
+|---|---|
+| Hero / campaign | Bold, aspirational. "大可飆速、大可響樂、大可回饋、大可永續" — repetition of 大可 (dà kě / Taiwan Mobile's shorthand "it's possible") creates a branded cadence. |
+| Plan naming | Descriptive and benefit-led: "影音多享組", "好速成双", "獨門方案". Functional, not hype. |
+| CTAs | Action-oriented and simple. "搭手機", "立即加購", "了解更多". |
+| Service / support | Accessible, warm. "我要問小麥" (Ask Xiaomai, the AI assistant) — brand-named, friendly. |
+| Corporate / ESG | Mission-driven and earnest. "為你的世界打開無限可能" — serious about openness as a social value. |
 
-### Collapsing Strategy
-- Hero carousel: full-viewport → compressed height on mobile, text overlays scale
-- Plan tab row: horizontal scroll on narrow viewports; orange active tab maintains prominence
-- Product cards: horizontal swiper adapts to viewport width; maintains 20px radius
-- Dark notification bar: persists across breakpoints, stays at top
+**Voice samples (verbatim from live site, 2026-06-22):**
+- "台灣大 大可能" — homepage tagline (brand-coded repetition). *(verified live 2026-06-22)*
+- "今天想找什麼電信方案呢？" — section prompt heading. *(verified live 2026-06-22)*
+- "給你美好數位生活的各種可能" — page subtitle meta description. *(verified live 2026-06-22)*
 
-## 9. Agent Prompt Guide
+**Forbidden register**: impersonal corporate speak, coverage-first fear marketing, jargon-heavy plan descriptions without plain-language benefit framing.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Vibrant Orange (`#ff6700`)
@@ -335,119 +539,9 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Taiwan Mobile's brand voice is **optimistic, energetic, and human-centered** — captured by the tagline *"Open Possible 能所不能"* (Enabling the impossible, opening every possibility). Copy treats users as empowered digital citizens, not passive telecoms customers. The interface speaks in short, inviting Chinese phrases — "今天想找什麼電信方案呢？" (What telecom plan are you looking for today?) — conversational and forward-looking rather than formal or corporate.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero / campaign | Bold, aspirational. "大可飆速、大可響樂、大可回饋、大可永續" — repetition of 大可 (dà kě / Taiwan Mobile's shorthand "it's possible") creates a branded cadence. |
-| Plan naming | Descriptive and benefit-led: "影音多享組", "好速成双", "獨門方案". Functional, not hype. |
-| CTAs | Action-oriented and simple. "搭手機", "立即加購", "了解更多". |
-| Service / support | Accessible, warm. "我要問小麥" (Ask Xiaomai, the AI assistant) — brand-named, friendly. |
-| Corporate / ESG | Mission-driven and earnest. "為你的世界打開無限可能" — serious about openness as a social value. |
-
-**Voice samples (verbatim from live site, 2026-06-22):**
-- "台灣大 大可能" — homepage tagline (brand-coded repetition). *(verified live 2026-06-22)*
-- "今天想找什麼電信方案呢？" — section prompt heading. *(verified live 2026-06-22)*
-- "給你美好數位生活的各種可能" — page subtitle meta description. *(verified live 2026-06-22)*
-
-**Forbidden register**: impersonal corporate speak, coverage-first fear marketing, jargon-heavy plan descriptions without plain-language benefit framing.
-
-## 11. Brand Narrative
-
-Taiwan Mobile (台灣大哥大) was founded in **1997** as one of Taiwan's first mobile telecoms licensees, growing to become the island's largest carrier with the national "5G Taiwan Team" (5G台灣隊) positioning — a platform for Taiwan's digital transformation. The brand has undergone a landmark **2020 rebrand** under the "Open Possible 能所不能" platform: the classic 12-sided circular logo evolved into "Planet Possible," a multi-color sphere incorporating the brand palette of all group entities (orange for telecom energy, indigo for digital unity, pink for momo e-commerce, green for sustainability).
-
-The company sits at the convergence of Taiwan's telecom, media, and e-commerce markets. Its subsidiaries include **myfone** (digital-first telecom storefront), **momo** (Taiwan's largest e-commerce platform), **MyVideo** (OTT streaming), and **OP** (lifestyle rewards app). This group breadth explains the colorful "Planet Possible" logo — the visual merger of multiple consumer digital brands into one identity.
-
-What Taiwan Mobile refuses to be: an austere, technical-only carrier. The pivot to "digital life" (數位生活) — streaming bundles, gaming services, international roaming packages — positions the brand as a **lifestyle enabler**, not merely a pipe. The orange-led color system, pill-forward geometry, and bilingual Poppins + Noto typography all communicate accessibility, modernity, and everyday consumer relevance.
-
-The carrier won the **2024 Brand of Excellence Award** for telecom (品牌卓越獎) and is Taiwan's first telecom to operate an integrated 5G + fiber + media + e-commerce platform under one roof.
-
-## 12. Principles
-
-1. **Open every possibility.** 能所不能 is not marketing speak — it is a design directive. Every service should feel reachable within one tap. *UI implication:* prominent orange CTAs, horizontal pill tabs rather than buried menu trees, search-first plan discovery.
-2. **One system, many identities.** The Taiwan Mobile group runs telecoms, streaming, e-commerce, and smart home under one brand umbrella. *UI implication:* the multi-color "Planet Possible" logo and varied accent palette (teal, indigo, pink) acknowledge sub-brand diversity while orange anchors the parent brand.
-3. **Consumer-grade simplicity.** Telecom is inherently complex (5G, roaming, bundle pricing). The design simplifies without dumbing down. *UI implication:* pill-tab plan selector over dropdown menus; benefit-first plan names over technical specs.
-4. **Bilingual by default.** Taiwan is Mandarin-primary but globally connected. *UI implication:* every plan has a Chinese name AND an English descriptor; typography handles both scripts with equal visual grace.
-5. **Energy without aggression.** Orange is confident, not alarmist. *UI implication:* the orange is reserved for "do this" moments only — it never appears as a warning or error color.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Taiwan Mobile user segments (Taiwanese telecom customers, digital lifestyle consumers), not individual people.*
-
-**陳靜雯, 28, 台北.** Young professional juggling Netflix, Disney+, and HBO Max subscriptions across three devices. Chose Taiwan Mobile's "影音多享組" because one bill covers all streaming. Values the myfone interface for comparing plan prices quickly; has never visited a physical store.
-
-**林大偉, 42, 台中.** Family plan holder with 4 SIM cards across the family. Upgrades every 2–3 years when a flagship model launch coincides with a good plan. Uses "搭手機" flow exclusively — always searches by handset first, plan second. Appreciates that Taiwan Mobile is the "5G Taiwan Team" national standard-bearer.
-
-**蔡小玲, 22, 高雄.** Student on a budget, uses a prepaid card (預付卡). Watches MyVideo for free bundled streaming. Switches between plans every semester based on whatever deal is running. Engages heavily with "OP 響樂生活" points for free 7-Eleven coffee.
-
-**鄭建宏, 55, 花蓮.** Small business owner who recently subscribed to a 5G fixed wireless access (FWA) plan for his shop. Found Taiwan Mobile through a local franchise store; primary interaction is the "我要問小麥" AI chat for billing questions. Values reliability of coverage over plan features.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (plan search, no results)** | White canvas with `#f5f7f8` surface. Ink text (`#2d3033`) at body size: "目前無符合條件的方案。" One orange CTA to reset filters. No illustration. |
-| **Empty (myfone cart, none added)** | Warm illustration or simple icon, muted text (`#838d9c`): "購物車是空的。" Orange CTA to browse products. |
-| **Loading (plan results)** | Skeleton cards at `#e3e7ee` card-mist background with 20px radius, same dimensions as live product cards. Flat shimmer — consistent with shadow-free system. |
-| **Loading (page first paint)** | Surface-grey `#f5f7f8` base with skeleton blocks for hero carousel and plan tab row. Orange tab placeholder maintains spatial presence. |
-| **Error (plan lookup failed)** | Inline message in Ink (`#2d3033`) with plain description and orange retry CTA. Never generic "發生錯誤" alone — provides next step. |
-| **Error (form validation)** | Field-level message in a warm warning tone below the input; describes what is valid. Orange or amber border highlight. |
-| **Success (plan application submitted)** | Brief confirmation on `#f5f7f8` surface, plain Mandarin sentence. Orange checkmark icon. Next-step link to SIM delivery tracking. No emoji. |
-| **Skeleton** | `#e3e7ee` blocks at final card dimensions, 20px radius, flat-fade pulse. |
-| **Disabled** | Muted grey `#838d9c` text with reduced opacity surfaces. Orange actions fade to semi-transparent orange rather than switching to grey to preserve brand read. |
-| **Offline / Coverage Error** | Full-page fallback with "大哥大" mascot/icon and plain message: "請確認您的網路連線。" Orange retry CTA. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover state on orange CTAs, tab active switch |
-| `motion-standard` | 200ms | Sheet, dialog reveal, card expand |
-| `motion-slow` | 320ms | Hero carousel transition, page-level navigation |
-| `motion-carousel` | 400ms | Plan/product carousel auto-advance |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — plan drawer, dialog |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, tab switch |
-
-**Motion rules**: Carousel-driven design (the hero is a swiper) means motion is primarily horizontal — product slides sweep laterally using `ease-standard` at `motion-carousel` duration. Orange interactive elements respond to hover with a fast `120ms` background darken from `#ff6700` → `#f45100`. Dialogs fade-and-scale in at `motion-standard / ease-enter`. Under `prefers-reduced-motion: reduce`, all carousel auto-advance stops and all transitions collapse to instant; the product remains fully navigable.
-
-**Signature motion**: The "Planet Possible" logo sphere in motion on campaign materials rotates gently, echoing the original "spinning ball" heritage of the 台灣大哥大 brand. On the live web UI, this expresses as the horizontal carousel sweep — the brand in motion, orbiting possibilities.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on https://www.taiwanmobile.com:
-- Document title: "台灣大哥大 | 給你美好數位生活的各種可能，大可飆速、大可響樂、大可回饋、大可永續，台灣大 大可能"
-- Hero H1 "多樣資費任你選 跨平台暢看" — Poppins 48px / weight 500 / color rgb(0,0,0)
-- Section H2 "今天想找什麼電信方案呢？" — 34px / 500 / rgb(45,48,51)
-- Primary CTA "搭手機" — bg rgb(255,103,0) #ff6700 / radius 40px / 18px Poppins / white text
-- Login pill "登入" — transparent bg / white text / radius 50px / 14px
-- Nav header — white #ffffff / 72px height / Poppins 15px / rgb(45,48,51)
-- Picture cards — bg rgb(227,231,238) / radius 20px / no shadow
-
-Second surface: https://corp.taiwanmobile.com/company-profile/brand-concept.html
-- Brand philosophy: "Open Possible 能所不能" confirmed
-- Orange #ff6700 confirmed in brand heading color
-- Corporate nav rgb(0,129,204) = #0081cc
-
-Third surface: https://www.myfone.com.tw (myfone sub-brand)
-- Button pills "搭門號"/"買空機" bg white / orange text #ff6700 / radius 30px
-- myfone bg frequency: rgb(45,45,108) #2d2d6c indigo ×41, rgb(255,103,0) orange ×35
-
-Brand narrative: Taiwan Mobile founded 1997; 2020 "Open Possible" rebrand and Planet Possible logo confirmed from corp.taiwanmobile.com/esg/rebranding.html.
-
-Personas are fictional archetypes informed by public Taiwan Mobile product categories (prepaid, family plans, 5G FWA, streaming bundles, myfone digital store). Names are illustrative; do not refer to real people.
-
-Voice samples §10 are verbatim from the live homepage document title and section headings (verified live 2026-06-22).
-
-Interpretive claims (e.g., "pill-forward as accessibility signal", "flat depth as mobile-native telecom") are editorial readings connecting observed design to brand positioning, not direct TWM statements.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ff6700` measures 2.92:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-orange`.** Text `#ffffff` on `#ff6700` measures 2.92:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

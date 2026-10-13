@@ -1,275 +1,231 @@
 ---
-id: kmong
 name: Kmong
-country: KR
-category: consumer-tech
-homepage: "https://kmong.com"
-primary_color: "#92fa72"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=kmong.com&sz=128"
-verified: "2026-07-13"
-added: "2026-06-09"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: marketplace-home, kind: public-marketplace, url: "https://kmong.com/", inspected: "2026-07-13" }
-    - { id: marketplace-category, kind: public-marketplace, url: "https://kmong.com/category/1", inspected: "2026-07-13" }
-  sources:
-    - { id: home-capture, kind: product-surface, url: "https://kmong.com/", captured: "2026-07-13" }
-    - { id: category-capture, kind: product-surface, url: "https://kmong.com/category/1", captured: "2026-07-13" }
-    - { id: company-context, kind: official-doc, url: "https://company.kmong.com/", captured: "2026-07-13" }
-    - { id: font-design, kind: official-doc, url: "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md", captured: "2026-07-13" }
-    - { id: font-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.canvas": &home { surface_id: marketplace-home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.ink": *home
-    "tokens.colors.heading": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.hairline": *home
-    "tokens.colors.control-border": *home
-    "tokens.colors.primary": *home
-    "tokens.colors.on-primary": *home
-    "tokens.colors.header-action": *home
-    "tokens.colors.on-header-action": *home
-    "tokens.colors.category-surface": &category { surface_id: marketplace-category, source_id: category-capture, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.category-border": *category
-    "tokens.typography.family.ui": *home
-    "tokens.typography.marketplace-body.size": *home
-    "tokens.typography.marketplace-body.weight": *home
-    "tokens.typography.marketplace-body.lineHeight": *home
-    "tokens.typography.marketplace-body.use": *home
-    "tokens.typography.header-action.size": *home
-    "tokens.typography.header-action.weight": *home
-    "tokens.typography.header-action.lineHeight": *home
-    "tokens.typography.header-action.use": *home
-    "tokens.typography.hero.size": *home
-    "tokens.typography.hero.weight": *home
-    "tokens.typography.hero.lineHeight": *home
-    "tokens.typography.hero.use": *home
-    "tokens.typography.search.size": *home
-    "tokens.typography.search.weight": *home
-    "tokens.typography.search.lineHeight": *home
-    "tokens.typography.search.use": *home
-    "tokens.typography.category-heading.size": *category
-    "tokens.typography.category-heading.weight": *category
-    "tokens.typography.category-heading.lineHeight": *category
-    "tokens.typography.category-heading.use": *category
-    "tokens.spacing.xxs": *home
-    "tokens.spacing.sm": *home
-    "tokens.spacing.md": *home
-    "tokens.spacing.base": *home
-    "tokens.spacing.lg": *home
-    "tokens.spacing.xl": *home
-    "tokens.spacing.xxl": *category
-    "tokens.rounded.square": *home
-    "tokens.rounded.primary-cta": *home
-    "tokens.rounded.control": *home
-    "tokens.rounded.category-panel": *category
-    "tokens.rounded.home-search": *home
-    "tokens.rounded.category-search": *category
-    "tokens.shadow.home-search": *home
-    "tokens.shadow.category-search": *category
-    "tokens.components.home-primary-cta.type": *home
-    "tokens.components.home-primary-cta.bg": *home
-    "tokens.components.home-primary-cta.fg": *home
-    "tokens.components.home-primary-cta.radius": *home
-    "tokens.components.home-primary-cta.padding": *home
-    "tokens.components.home-primary-cta.height": *home
-    "tokens.components.home-primary-cta.font": *home
-    "tokens.components.home-primary-cta.states": *home
-    "tokens.components.home-primary-cta.use": *home
-    "tokens.components.header-action.type": *home
-    "tokens.components.header-action.bg": *home
-    "tokens.components.header-action.fg": *home
-    "tokens.components.header-action.radius": *home
-    "tokens.components.header-action.height": *home
-    "tokens.components.header-action.font": *home
-    "tokens.components.header-action.states": *home
-    "tokens.components.header-action.use": *home
-    "tokens.components.home-search.type": *home
-    "tokens.components.home-search.bg": *home
-    "tokens.components.home-search.fg": *home
-    "tokens.components.home-search.border": *home
-    "tokens.components.home-search.radius": *home
-    "tokens.components.home-search.padding": *home
-    "tokens.components.home-search.height": *home
-    "tokens.components.home-search.font": *home
-    "tokens.components.home-search.states": *home
-    "tokens.components.home-search.use": *home
-    "tokens.components.home-outline-cta.type": *home
-    "tokens.components.home-outline-cta.bg": *home
-    "tokens.components.home-outline-cta.fg": *home
-    "tokens.components.home-outline-cta.border": *home
-    "tokens.components.home-outline-cta.radius": *home
-    "tokens.components.home-outline-cta.padding": *home
-    "tokens.components.home-outline-cta.height": *home
-    "tokens.components.home-outline-cta.font": *home
-    "tokens.components.home-outline-cta.states": *home
-    "tokens.components.home-outline-cta.use": *home
-    "tokens.components.category-filter-control.type": *category
-    "tokens.components.category-filter-control.bg": *category
-    "tokens.components.category-filter-control.fg": *category
-    "tokens.components.category-filter-control.border": *category
-    "tokens.components.category-filter-control.radius": *category
-    "tokens.components.category-filter-control.padding": *category
-    "tokens.components.category-filter-control.height": *category
-    "tokens.components.category-filter-control.font": *category
-    "tokens.components.category-filter-control.states": *category
-    "tokens.components.category-filter-control.use": *category
-    "tokens.components.category-panel.type": *category
-    "tokens.components.category-panel.bg": *category
-    "tokens.components.category-panel.radius": *category
-    "tokens.components.category-panel.padding": *category
-    "tokens.components.category-panel.use": *category
-    "tokens.components.header-text-link.type": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-text-link.bg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-text-link.fg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.header-text-link.radius": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-text-link.padding": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-text-link.height": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-text-link.font": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.header-text-link.states": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.header-text-link.use": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.type": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.bg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.fg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.radius": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.padding": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.height": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.font": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.states": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.keyword-chip.use": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.type": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.bg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.fg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.border": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.radius": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.padding": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.height": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.font": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.states": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.section-outline-link.use": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"42\"]", captured: "2026-07-13" }
-    "tokens.components.caption-tile.type": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"66\"]", captured: "2026-07-13" }
-    "tokens.components.caption-tile.bg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"66\"]", captured: "2026-07-13" }
-    "tokens.components.caption-tile.fg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.caption-tile.radius": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"66\"]", captured: "2026-07-13" }
-    "tokens.components.caption-tile.size": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"66\"]", captured: "2026-07-13" }
-    "tokens.components.caption-tile.font": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.caption-tile.states": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"66\"]", captured: "2026-07-13" }
-    "tokens.components.caption-tile.use": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"66\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.type": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.bg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.fg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::p", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.radius": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.padding": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.height": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.font": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::p", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.states": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-nav-link.use": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.category-link-card.type": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.category-link-card.bg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.category-link-card.fg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::h3", captured: "2026-07-13" }
-    "tokens.components.category-link-card.border": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.category-link-card.radius": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.category-link-card.padding": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.category-link-card.size": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.category-link-card.font": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::h3", captured: "2026-07-13" }
-    "tokens.components.category-link-card.states": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.category-link-card.use": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::li", captured: "2026-07-13" }
-    "tokens.components.pagination-button.type": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.bg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.fg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.radius": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.size": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.selected": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"140\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.states": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.pagination-button.use": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"141\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.type": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.bg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.fg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.radius": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.padding": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.font": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.states": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.use": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"149\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.type": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.bg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.fg": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.border": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.radius": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.padding": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.height": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.font": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.states": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.outline-link-button.use": { surface_id: marketplace-category, source_id: category-capture, method: computed-style, selector: "surface-3::[data-omd-capture=\"147\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.type": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.bg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.fg": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.radius": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.padding": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.font": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.states": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-    "tokens.components.inline-text-link.use": { surface_id: marketplace-home, source_id: home-capture, method: computed-style, selector: "home::[data-omd-capture=\"146\"]", captured: "2026-07-13" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Only selector-backed values from the supplied public marketplace capture are tokens. Home and category observations remain route-local; no logged-in, checkout, support-doc, or interaction state is inferred."
-  colors:
-    canvas: "#ffffff"
-    ink: "#000000"
-    heading: "#212224"
-    muted: "#555969"
-    hairline: "#f2f3f7"
-    control-border: "#c8cad2"
-    primary: "#92fa72"
-    on-primary: "#212224"
-    header-action: "#212224"
-    on-header-action: "#ffffff"
-    category-surface: "#fafafc"
-    category-border: "#e4e5ed"
-  typography:
-    family: { ui: "Pretendard" }
-    marketplace-body: { size: 16, weight: 400, lineHeight: 1.50, use: "Repeated public marketplace body, card, and list sample" }
-    header-action: { size: 14, weight: 500, lineHeight: 1.43, use: "Public home/category header action" }
-    hero: { size: 40, weight: 700, lineHeight: 1.30, use: "Public home headline" }
-    search: { size: 20, weight: 400, lineHeight: 1.40, use: "Public home search input" }
-    category-heading: { size: 36, weight: 700, lineHeight: 1.22, use: "Public category-page heading sample" }
-  spacing: { xxs: 2, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
-  rounded: { square: 0, primary-cta: 4, control: 8, category-panel: 12, home-search: 36, category-search: 24 }
-  shadow:
-    home-search: "rgba(0,0,0,0.1) 0px 0px 20px 0px"
-    category-search: "rgba(0,0,0,0.06) 0px 0px 8px 0px"
-  components:
-    home-primary-cta: { type: button, bg: "#92fa72", fg: "#212224", radius: "4px", padding: "0px 24px", height: "52px", font: "16px / 500 Pretendard", states: "default only; no interaction state captured", use: "Public home CTA, selector home::[data-omd-capture=143]" }
-    header-action: { type: button, bg: "#212224", fg: "#ffffff", radius: "8px", height: "36px", font: "14px / 500 Pretendard", states: "default only; no interaction state captured", use: "Public marketplace header action, selector home::[data-omd-capture=6]" }
-    home-search: { type: input, bg: "#ffffff", fg: "#212224", border: "1px solid #c8cad2", radius: "36px", padding: "0px 32px", height: "64px", font: "20px / 400 Pretendard", states: "default only; no interaction state captured", use: "Public home search shell/input, selectors home::form and home::[data-omd-capture=7]" }
-    home-outline-cta: { type: button, bg: "#ffffff", fg: "#212224", border: "1px solid #c8cad2", radius: "8px", padding: "0px 24px", height: "52px", font: "16px / 500 Pretendard", states: "default only; no interaction state captured", use: "Public home outlined CTA, selector home::[data-omd-capture=145]" }
-    category-filter-control: { type: button, bg: "#ffffff", fg: "#212224", border: "1px solid #e4e5ed", radius: "8px", padding: "0px 12px", height: "36px", font: "14px / 400 Pretendard", states: "default only; no interaction state captured", use: "Public category filter control, selector surface-3::[data-omd-capture=93]" }
-    category-panel: { type: card, bg: "#fafafc", radius: "12px", padding: "32px 24px", use: "Public category-page panel, selector surface-3::article; its text sits in child elements and the 16px / 400 it computes is the inherited body type, so no font is declared (corrected 2026-09-30)" }
-    header-text-link: { type: tab, bg: "transparent", fg: "#212224", radius: "0px", padding: "0px", height: "36px", font: "14px / 500 Pretendard", states: "three per capture at rest on both home captures and on category; no state frame in the bundle", use: "Header text link and link-styled buttons (home captures 3-5), home::[data-omd-capture=\"4\"]; colour and font are the child label p.font-medium.typo-14 (line height 20px); the control itself computes the 16px / 400 body type" }
-    keyword-chip: { type: button, bg: "#f2f3f7", fg: "#212224", radius: "9999px", padding: "0px 16px", height: "36px", font: "14px / 400 Pretendard", states: "ten per home capture at rest (captures 9-18 on home); no state frame in the bundle", use: "Rounded chip on home, home::[data-omd-capture=\"9\"]; colour and font are the child label p (line height 21px)" }
-    section-outline-link: { type: button, bg: "transparent", fg: "#212224", border: "1px #c8cad2", radius: "4px", padding: "0px 20px", height: "42px", font: "16px / 400 Pretendard", states: "twelve per home capture at rest (even captures 42-64 on home); no state frame in the bundle", use: "Outlined link, 214 px wide, home::[data-omd-capture=\"42\"]; colour and font are the child label p.typo-16 (line height 23px)" }
-    caption-tile: { type: card, bg: "transparent", fg: "#212224", radius: "0px", size: "143px x 138px", font: "15px / 500 Pretendard", states: "twelve per home capture at rest (captures 66-77 on home); no state frame in the bundle", use: "Home tile with a centred caption, home::[data-omd-capture=\"66\"]; colour and font are the caption p (line height 20px)" }
-    category-nav-link: { type: tab, bg: "transparent", fg: "#212224", radius: "0px", padding: "0px", height: "48px", font: "16px / 500 Pretendard", states: "nine captured at rest on category (captures 10-18); no state frame in the bundle", use: "Category-page navigation link, surface-3::[data-omd-capture=\"10\"]; colour and font are the child label p (line height 24px)" }
-    category-link-card: { type: card, bg: "#ffffff", fg: "#212224", border: "1px #e4e5ed", radius: "12px", padding: "16px 12px", size: "218px x 70px", font: "14px / 700 Pretendard", states: "five captured at rest on category; no state frame in the bundle", use: "Bordered link card on category: the list item holds the background, border and radius, the link inside it (surface-3::[data-omd-capture=\"20\"]) the padding, and its h3 the label (line height 20px)" }
-    pagination-button: { type: button, bg: "transparent", fg: "#9a9ba7", radius: "8px", size: "32px x 36px", selected: "bg #212224", states: "four page buttons captured at rest on category (captures 141-144); the current page (capture 140, class cursor-default) computes bg #212224; captures 139 and 145 are disabled and give no rest value; no state frame in the bundle", use: "Category pagination button, surface-3::[data-omd-capture=\"141\"]; the colour comes from the button class text-gray-500; no label font is declared because the digit has no element of its own in the dump" }
-    footer-link: { type: button, bg: "transparent", fg: "#727585", radius: "0px", padding: "0px", font: "14px / 400 Pretendard", states: "17 captured at rest on category (captures 149-165); no state frame in the bundle", use: "Footer text link on category, surface-3::[data-omd-capture=\"149\"]; its child p computes the same colour and type (line height 21px)" }
-    outline-link-button: { type: button, bg: "#ffffff", fg: "#212224", border: "1px #c8cad2", radius: "8px", padding: "0px 16px", height: "40px", font: "14px / 700 Pretendard", states: "two captured at rest on category (captures 147 and 148); no state frame in the bundle", use: "Outlined link button (role link) on category, surface-3::[data-omd-capture=\"147\"]; line height 14px as computed on the control" }
-    inline-text-link: { type: button, bg: "transparent", fg: "#4b94fa", radius: "0px", padding: "0px", font: "16px / 400 Pretendard", states: "nine per home capture at rest (captures 146-154 on home); no state frame in the bundle", use: "Blue text link (classes text-blue-500 and underline) inside the 390 px home articles, home::[data-omd-capture=\"146\"]; line height 24px" }
-  components_harvested: true
+colors:
+  canvas: '#ffffff'
+  ink: '#000000'
+  heading: '#212224'
+  muted: '#555969'
+  hairline: '#f2f3f7'
+  control-border: '#c8cad2'
+  primary: '#92fa72'
+  on-primary: '#212224'
+  header-action: '#212224'
+  on-header-action: '#ffffff'
+  category-surface: '#fafafc'
+  category-border: '#e4e5ed'
+typography:
+  marketplace-body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Repeated public marketplace body, card, and list sample
+  header-action:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.43
+    use: Public home/category header action
+  hero:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Public home headline
+  search:
+    fontSize: 20px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Public home search input
+  category-heading:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.22
+    use: Public category-page heading sample
+rounded:
+  square: 0px
+  primary-cta: 4px
+  control: 8px
+  category-panel: 12px
+  home-search: 36px
+  category-search: 24px
+spacing:
+  xxs: 2
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 32
+components:
+  home-primary-cta:
+    type: button
+    backgroundColor: '#92fa72'
+    textColor: '#212224'
+    rounded: 4px
+    padding: 0px 24px
+    height: 52px
+    typography: 16px / 500 Pretendard
+    states: default only; no interaction state captured
+    use: Public home CTA, selector home::[data-omd-capture=143]
+  header-action:
+    type: button
+    backgroundColor: '#212224'
+    textColor: '#ffffff'
+    rounded: 8px
+    height: 36px
+    typography: 14px / 500 Pretendard
+    states: default only; no interaction state captured
+    use: Public marketplace header action, selector home::[data-omd-capture=6]
+  home-search:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#212224'
+    border: '1px solid #c8cad2'
+    rounded: 36px
+    padding: 0px 32px
+    height: 64px
+    typography: 20px / 400 Pretendard
+    states: default only; no interaction state captured
+    use: Public home search shell/input, selectors home::form and home::[data-omd-capture=7]
+  home-outline-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#212224'
+    border: '1px solid #c8cad2'
+    rounded: 8px
+    padding: 0px 24px
+    height: 52px
+    typography: 16px / 500 Pretendard
+    states: default only; no interaction state captured
+    use: Public home outlined CTA, selector home::[data-omd-capture=145]
+  category-filter-control:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#212224'
+    border: '1px solid #e4e5ed'
+    rounded: 8px
+    padding: 0px 12px
+    height: 36px
+    typography: 14px / 400 Pretendard
+    states: default only; no interaction state captured
+    use: Public category filter control, selector surface-3::[data-omd-capture=93]
+  category-panel:
+    type: card
+    backgroundColor: '#fafafc'
+    rounded: 12px
+    padding: 32px 24px
+    use: Public category-page panel, selector surface-3::article; its text sits in child elements and the 16px / 400 it computes is the inherited body type, so no font is declared (corrected 2026-09-30)
+  header-text-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#212224'
+    rounded: 0px
+    padding: 0px
+    height: 36px
+    typography: 14px / 500 Pretendard
+    states: three per capture at rest on both home captures and on category; no state frame in the bundle
+    use: Header text link and link-styled buttons (home captures 3-5), home::[data-omd-capture="4"]; colour and font are the child label p.font-medium.typo-14 (line height 20px); the control itself computes the 16px / 400 body type
+  keyword-chip:
+    type: button
+    backgroundColor: '#f2f3f7'
+    textColor: '#212224'
+    rounded: 9999px
+    padding: 0px 16px
+    height: 36px
+    typography: 14px / 400 Pretendard
+    states: ten per home capture at rest (captures 9-18 on home); no state frame in the bundle
+    use: Rounded chip on home, home::[data-omd-capture="9"]; colour and font are the child label p (line height 21px)
+  section-outline-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#212224'
+    border: '1px #c8cad2'
+    rounded: 4px
+    padding: 0px 20px
+    height: 42px
+    typography: 16px / 400 Pretendard
+    states: twelve per home capture at rest (even captures 42-64 on home); no state frame in the bundle
+    use: Outlined link, 214 px wide, home::[data-omd-capture="42"]; colour and font are the child label p.typo-16 (line height 23px)
+  caption-tile:
+    type: card
+    backgroundColor: transparent
+    textColor: '#212224'
+    rounded: 0px
+    size: 143px x 138px
+    typography: 15px / 500 Pretendard
+    states: twelve per home capture at rest (captures 66-77 on home); no state frame in the bundle
+    use: Home tile with a centred caption, home::[data-omd-capture="66"]; colour and font are the caption p (line height 20px)
+  category-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#212224'
+    rounded: 0px
+    padding: 0px
+    height: 48px
+    typography: 16px / 500 Pretendard
+    states: nine captured at rest on category (captures 10-18); no state frame in the bundle
+    use: Category-page navigation link, surface-3::[data-omd-capture="10"]; colour and font are the child label p (line height 24px)
+  category-link-card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#212224'
+    border: '1px #e4e5ed'
+    rounded: 12px
+    padding: 16px 12px
+    size: 218px x 70px
+    typography: 14px / 700 Pretendard
+    states: five captured at rest on category; no state frame in the bundle
+    use: 'Bordered link card on category: the list item holds the background, border and radius, the link inside it (surface-3::[data-omd-capture="20"]) the padding, and its h3 the label (line height 20px)'
+  pagination-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#9a9ba7'
+    rounded: 8px
+    size: 32px x 36px
+    selected: 'bg #212224'
+    states: 'four page buttons captured at rest on category (captures 141-144); the current page (capture 140, class cursor-default) computes bg #212224; captures 139 and 145 are disabled and give no rest value; no state frame in the bundle'
+    use: Category pagination button, surface-3::[data-omd-capture="141"]; the colour comes from the button class text-gray-500; no label font is declared because the digit has no element of its own in the dump
+  footer-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#727585'
+    rounded: 0px
+    padding: 0px
+    typography: 14px / 400 Pretendard
+    states: 17 captured at rest on category (captures 149-165); no state frame in the bundle
+    use: Footer text link on category, surface-3::[data-omd-capture="149"]; its child p computes the same colour and type (line height 21px)
+  outline-link-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#212224'
+    border: '1px #c8cad2'
+    rounded: 8px
+    padding: 0px 16px
+    height: 40px
+    typography: 14px / 700 Pretendard
+    states: two captured at rest on category (captures 147 and 148); no state frame in the bundle
+    use: Outlined link button (role link) on category, surface-3::[data-omd-capture="147"]; line height 14px as computed on the control
+  inline-text-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#4b94fa'
+    rounded: 0px
+    padding: 0px
+    typography: 16px / 400 Pretendard
+    states: nine per home capture at rest (captures 146-154 on home); no state frame in the bundle
+    use: Blue text link (classes text-blue-500 and underline) inside the 390 px home articles, home::[data-omd-capture="146"]; line height 24px
+fonts:
+  roles:
+    ui: Pretendard
 ---
 
 # Design System Inspiration of Kmong (크몽)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Kmong is a Korean expert-services marketplace: its public home lets people find and commission specialists, while the official company site describes an escrow-protected transaction model and company-oriented services such as corporate-card payment and tax-invoice issuance. The public marketplace surface is deliberately direct: white space, dark `#212224` headings, a large searchable entry point, and a lime `#92FA72` action that stands apart from a compact dark header action. Kmong’s company site also records a 2025 logo-rebrand story, so the current expression should be treated as a living marketplace identity rather than an inherited generic green UI. This reference separates the public marketplace evidence from company/corporate context; neither is treated as a substitute for a signed-in workflow or documentation chrome.
 
-## Primary tasks
+### Primary tasks
 
 - Find and commission a specialist for a piece of work
 - Search the marketplace for the expert you need
@@ -277,7 +233,27 @@ Kmong is a Korean expert-services marketplace: its public home lets people find 
 - Request work by chat and pay through escrow
 - Commission work as a company and pay by corporate card
 
-## 2. Color & Surface Evidence
+### Brand Narrative
+
+Kmong’s official company site presents the service as an expert platform where a request can be made by chat and protected through escrow payment, with distinct support for company transactions such as corporate cards and tax invoices. Its public home exposes the marketplace side of that proposition: specialist listings, reviews, and a search-led path into discovery. The company site also publishes a 2025 logo-rebrand item, indicating an actively maintained visual identity. These facts establish the product and its current public expression; no unobserved seller, contract, or post-purchase experience is inferred here.
+
+### Principles
+
+1. **Start with expert discovery.** The large public search field is the most explicit route into the marketplace. *UI implication:* keep a verified search treatment route-local rather than inventing a global command surface.
+2. **Make the next action legible.** The public home’s lime CTA contrasts with the dark header action. *UI implication:* preserve their separate size, colour, and radius values.
+3. **Keep transaction trust concrete.** Escrow protection and company-payment support come from official company context. *UI implication:* do not fabricate trust badges, validation states, or checkout affordances from that narrative alone.
+
+### Stakeholder Groups
+
+*Source-grounded groups, not fictional personas.*
+
+- **Clients commissioning expert work:** the public marketplace exposes specialist listings, reviews, and search-led discovery for this group.
+- **Experts offering services:** Kmong’s marketplace model depends on expert service listings; no seller-console UI is claimed from this public capture.
+- **Companies commissioning external work:** the official company site identifies corporate transaction support, including corporate-card payment and tax-invoice issuance; this is business context, not a captured enterprise product UI.
+
+## Colors
+
+### Color & Surface Evidence
 
 - `#FFFFFF` — observed public home/category canvas, search shell, and outlined controls.
 - `#000000` — frequent body and card text in the supplied public capture.
@@ -289,7 +265,7 @@ Kmong is a Korean expert-services marketplace: its public home lets people find 
 - `#92FA72` — observed home primary-CTA background; it is not assumed to be every primary action on every route.
 - `#FAFAFC` — observed category-page panel surface only.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -308,7 +284,37 @@ Kmong is a Korean expert-services marketplace: its public home lets people find 
 | Repeated body/card/list sample | Pretendard | 16px | 400 | 24px | Home and category routes |
 | Header action | Pretendard | 14px | 500 | 20px | Public marketplace header |
 
-## 4. Components
+## Layout
+
+### Layout & Responsive Evidence
+
+- The supplied capture covers public 1440×900 home and category routes. It establishes a 628px × 64px home-search shell and a 500px × 50px category-search shell, not a breakpoint system.
+- The public category page includes a 1,168px × 184px `#FAFAFC` panel with `32px 24px` padding. It is a route-local observation, not a universal card layout.
+- No mobile, signed-in, checkout, seller, help-centre, or documentation-chrome route was supplied as product evidence. Their layout contracts are intentionally absent.
+
+### Responsive Behavior
+
+Only desktop-sized public capture evidence was supplied. No breakpoint, touch-target, mobile navigation, or image-ratio rule is recorded.
+
+## Elevation & Depth
+
+- Home search shell: `rgba(0,0,0,0.1) 0px 0px 20px 0px`.
+- Category search shell: `rgba(0,0,0,0.06) 0px 0px 8px 0px`.
+
+No general card, popover, modal, or hover-elevation ladder is claimed.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.home-search`: `rgba(0,0,0,0.1) 0px 0px 20px 0px`
+- `shadow.category-search`: `rgba(0,0,0,0.06) 0px 0px 8px 0px`
+
+## Motion & Easing
+
+No reusable duration, easing, or motion rule is recorded. Public utility class names and static elements do not establish a motion contract without interaction provenance.
+
+## Components
 
 ### Home primary CTA
 
@@ -490,20 +496,11 @@ The bundle holds no `::state-*` frame on any of its three captures, so no pointe
 
 The older universal 4px input/card rule, 76px header, card-shadow system, Biz/Best/promo badge variants, generic gig-card treatment, and all reusable interaction/state/motion assertions were rolled back: they are not established by the supplied 2026 multi-surface capture.
 
-## 5. Layout & Responsive Evidence
+### States
 
-- The supplied capture covers public 1440×900 home and category routes. It establishes a 628px × 64px home-search shell and a 500px × 50px category-search shell, not a breakpoint system.
-- The public category page includes a 1,168px × 184px `#FAFAFC` panel with `32px 24px` padding. It is a route-local observation, not a universal card layout.
-- No mobile, signed-in, checkout, seller, help-centre, or documentation-chrome route was supplied as product evidence. Their layout contracts are intentionally absent.
+No reusable empty, loading, error, success, disabled, validation, or skeleton treatment is recorded. The bundle has zero interaction records and no `::state-*` frame, so no pointer state is declared; this records missing samples, not missing states. The category pagination marks its current page with bg `#212224` (see Pagination button), and two pagination controls were captured with `disabled: true`; their look is not declared.
 
-## 6. Depth & Elevation
-
-- Home search shell: `rgba(0,0,0,0.1) 0px 0px 20px 0px`.
-- Category search shell: `rgba(0,0,0,0.06) 0px 0px 8px 0px`.
-
-No general card, popover, modal, or hover-elevation ladder is claimed.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -519,43 +516,22 @@ No general card, popover, modal, or hover-elevation ladder is claimed.
 - Do not infer hover, focus, disabled, error, modal, or responsive styles from utility class names.
 - Do not apply the category panel or filters to marketing, support, or signed-in flows without evidence.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-Only desktop-sized public capture evidence was supplied. No breakpoint, touch-target, mobile navigation, or image-ratio rule is recorded.
+The official homepage frames the service around finding capable experts and protecting a transaction until work is received; the company site presents the same marketplace as a place where individuals and companies can commission work with practical payment and document support. The observable public tone is therefore direct, reassuring, and task-oriented. This is source-grounded service framing, not a claim that every internal or support message uses one fixed voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 - Recreate the **public home CTA** as a 52px-tall, 4px-radius button with `#92FA72` background, `#212224` label, `0px 24px` padding, and 16px/500 Pretendard.
 - Recreate the **public home search** as a 64px white shell with a `#C8CAD2` 1px border, 36px radius, `0px 32px` shell padding, and a 20px/400 Pretendard input.
 - Recreate the **public category filter** as a 36px white control with `#E4E5ED` border, 8px radius, `0px 12px` padding, and 14px/400 Pretendard.
 - Do not generate an interaction or state variant unless new selector-and-interaction evidence establishes it.
 
-## 10. Voice & Tone
+## Governance
 
-The official homepage frames the service around finding capable experts and protecting a transaction until work is received; the company site presents the same marketplace as a place where individuals and companies can commission work with practical payment and document support. The observable public tone is therefore direct, reassuring, and task-oriented. This is source-grounded service framing, not a claim that every internal or support message uses one fixed voice.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Kmong’s official company site presents the service as an expert platform where a request can be made by chat and protected through escrow payment, with distinct support for company transactions such as corporate cards and tax invoices. Its public home exposes the marketplace side of that proposition: specialist listings, reviews, and a search-led path into discovery. The company site also publishes a 2025 logo-rebrand item, indicating an actively maintained visual identity. These facts establish the product and its current public expression; no unobserved seller, contract, or post-purchase experience is inferred here.
-
-## 12. Principles
-
-1. **Start with expert discovery.** The large public search field is the most explicit route into the marketplace. *UI implication:* keep a verified search treatment route-local rather than inventing a global command surface.
-2. **Make the next action legible.** The public home’s lime CTA contrasts with the dark header action. *UI implication:* preserve their separate size, colour, and radius values.
-3. **Keep transaction trust concrete.** Escrow protection and company-payment support come from official company context. *UI implication:* do not fabricate trust badges, validation states, or checkout affordances from that narrative alone.
-
-## 13. Stakeholder Groups
-
-*Source-grounded groups, not fictional personas.*
-
-- **Clients commissioning expert work:** the public marketplace exposes specialist listings, reviews, and search-led discovery for this group.
-- **Experts offering services:** Kmong’s marketplace model depends on expert service listings; no seller-console UI is claimed from this public capture.
-- **Companies commissioning external work:** the official company site identifies corporate transaction support, including corporate-card payment and tax-invoice issuance; this is business context, not a captured enterprise product UI.
-
-## 14. States
-
-No reusable empty, loading, error, success, disabled, validation, or skeleton treatment is recorded. The bundle has zero interaction records and no `::state-*` frame, so no pointer state is declared; this records missing samples, not missing states. The category pagination marks its current page with bg `#212224` (see Pagination button), and two pagination controls were captured with `disabled: true`; their look is not declared.
-
-## 15. Motion & Easing
-
-No reusable duration, easing, or motion rule is recorded. Public utility class names and static elements do not establish a motion contract without interaction provenance.
+- **Contrast, `header-text-link`.** Text `#212224` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `section-outline-link`.** Text `#212224` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `caption-tile`.** Text `#212224` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `category-nav-link`.** Text `#212224` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

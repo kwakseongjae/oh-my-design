@@ -1,66 +1,144 @@
 ---
-id: composio
 name: Composio
-country: US
-category: backend-devops
-homepage: "https://composio.dev"
-primary_color: "#6366f1"
-logo:
-  type: github
-  slug: composiohq
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary_color field (#6366f1) is an indigo approximation; the live DS brand is Composio Cobalt #0007cd. Dark-canvas system: many roles use white-opacity (rgba) borders/text — only stated 6-digit hexes promoted to colors; opacity variants live in shadow/note context."
-  colors:
-    primary: "#0007cd"
-    brand: "#0007cd"
-    accent-cyan: "#00ffff"
-    accent-signal: "#0089ff"
-    accent-ocean: "#0096ff"
-    canvas: "#0f0f0f"
-    surface: "#000000"
-    hairline: "#2c2c2c"
-    foreground: "#ffffff"
-    muted: "#444444"
-    on-primary: "#ffffff"
-    light-border: "#e0e0e0"
-  typography:
-    family: { sans: "abcDiatype", mono: "JetBrains Mono" }
-    display-hero:   { size: 64, weight: 400, lineHeight: 0.87, use: "Massive compressed hero headings" }
-    section:        { size: 48, weight: 400, lineHeight: 1.00, use: "Major feature section titles" }
-    subheading-lg:  { size: 40, weight: 400, lineHeight: 1.00, use: "Secondary section markers" }
-    subheading:     { size: 28, weight: 400, lineHeight: 1.20, use: "Card titles, feature names" }
-    card-title:     { size: 24, weight: 500, lineHeight: 1.20, use: "Medium-emphasis card headings" }
-    feature-label:  { size: 20, weight: 500, lineHeight: 1.20, use: "Smaller card titles, labels" }
-    body-lg:        { size: 18, weight: 400, lineHeight: 1.20, use: "Intro paragraphs" }
-    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Body text, nav links, buttons" }
-    body-sm:        { size: 15, weight: 400, lineHeight: 1.63, use: "Longer-form body text" }
-    caption:        { size: 14, weight: 400, lineHeight: 1.63, use: "Descriptions, metadata" }
-    label:          { size: 13, weight: 500, lineHeight: 1.50, use: "UI labels, badges" }
-    overline:       { size: 12, weight: 500, lineHeight: 1.00, tracking: 0.3, use: "Uppercase overline labels" }
-    code:           { size: 16, weight: 400, lineHeight: 1.50, tracking: -0.32, use: "Inline code, terminal output (JetBrains Mono)" }
-    code-sm:        { size: 14, weight: 400, lineHeight: 1.50, tracking: -0.28, use: "Code snippets, technical labels (JetBrains Mono)" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
-  rounded: { sm: 2, md: 4, lg: 37, full: 9999 }
-  shadow:
-    brutalist: "rgba(0,0,0,0.15) 4px 4px 0px 0px"
-    floating: "rgba(0,0,0,0.5) 0px 8px 32px"
-    glow-cyan: "rgba(0,255,255,0.12) radial halo"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#ffffff", fg: "#0f0f0f", radius: 4, padding: "8px 24px", use: "White fill, near-black text, no border" }
-    button-cyan: { type: button, radius: 4, use: "Electric cyan 12% bg, 1px ocean blue #0096ff border, glow-from-within" }
-    button-ghost: { type: button, radius: 4, padding: "10px", use: "Transparent fill, 1px signal blue #0089ff or charcoal #2c2c2c border" }
-    card: { type: card, bg: "#000000", radius: 4, use: "Pure black surface, white-opacity 4-12% border, optional brutalist shadow" }
-    code-block: { type: card, bg: "#000000", radius: 4, use: "JetBrains Mono, white-opacity 10% border, syntax-highlighted" }
+colors:
+  primary: '#0007cd'
+  brand: '#0007cd'
+  accent-cyan: '#00ffff'
+  accent-signal: '#0089ff'
+  accent-ocean: '#0096ff'
+  canvas: '#0f0f0f'
+  surface: '#000000'
+  hairline: '#2c2c2c'
+  foreground: '#ffffff'
+  muted: '#444444'
+  on-primary: '#ffffff'
+  light-border: '#e0e0e0'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 400
+    lineHeight: 0.87
+    use: Massive compressed hero headings
+  section:
+    fontSize: 48px
+    fontWeight: 400
+    lineHeight: 1
+    use: Major feature section titles
+  subheading-lg:
+    fontSize: 40px
+    fontWeight: 400
+    lineHeight: 1
+    use: Secondary section markers
+  subheading:
+    fontSize: 28px
+    fontWeight: 400
+    lineHeight: 1.2
+    use: Card titles, feature names
+  card-title:
+    fontSize: 24px
+    fontWeight: 500
+    lineHeight: 1.2
+    use: Medium-emphasis card headings
+  feature-label:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.2
+    use: Smaller card titles, labels
+  body-lg:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.2
+    use: Intro paragraphs
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body text, nav links, buttons
+  body-sm:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.63
+    use: Longer-form body text
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.63
+    use: Descriptions, metadata
+  label:
+    fontSize: 13px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: UI labels, badges
+  overline:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: 0.3px
+    use: Uppercase overline labels
+  code:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-0.32px'
+    use: Inline code, terminal output (JetBrains Mono)
+  code-sm:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-0.28px'
+    use: Code snippets, technical labels (JetBrains Mono)
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 37px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 16
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 40
+  section: 80
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#0f0f0f'
+    rounded: 4px
+    padding: 8px 24px
+    use: White fill, near-black text, no border
+  button-cyan:
+    type: button
+    rounded: 4px
+    use: 'Electric cyan 12% bg, 1px ocean blue #0096ff border, glow-from-within'
+  button-ghost:
+    type: button
+    rounded: 4px
+    padding: 10px
+    use: 'Transparent fill, 1px signal blue #0089ff or charcoal #2c2c2c border'
+  card:
+    type: card
+    backgroundColor: '#000000'
+    rounded: 4px
+    use: Pure black surface, white-opacity 4-12% border, optional brutalist shadow
+  code-block:
+    type: card
+    backgroundColor: '#000000'
+    rounded: 4px
+    use: JetBrains Mono, white-opacity 10% border, syntax-highlighted
+fonts:
+  roles:
+    sans: abcDiatype
+    mono: JetBrains Mono
 ---
 
 # Design System Inspiration of Composio
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Composio's interface is a nocturnal command center — a dense, developer-focused darkness punctuated by electric cyan and deep cobalt signals. The entire experience is built on an almost-pure-black canvas (`#0f0f0f`) where content floats within barely-visible containment borders, creating the feeling of a high-tech control panel rather than a traditional marketing page. It's a site that whispers authority to developers who live in dark terminals.
 
@@ -77,7 +155,7 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - Monochrome hierarchy with color used only at the highest-signal moments
 - Developer-terminal aesthetic that bridges marketing and documentation
 
-## Primary tasks
+### Primary tasks
 
 - Connect a tool like Slack or Notion to an agent instead of building the integration
 - Check per-call pricing and which tools already handle OAuth
@@ -85,7 +163,29 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - Debug a failed tool call from its stack trace and error code
 - Copy a working code example out of the documentation
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Composio was founded **2023** in San Francisco by **Soham Ganatra (CEO)** and **Karan Vaidya (CTO)** — both **IIT Bombay** graduates who first met at a **Physics Olympiad camp** before becoming roommates in college ([Tracxn — Composio profile](https://tracxn.com/d/companies/composio/), [Entrackr — Composio Series A](https://entrackr.com/2024/11/composio-raises-25-mn-in-series-a-led-by-lightspeed/)). The platform provides pre-built integrations — **200+ tools and APIs** that LLM agents can call — and powers agent infrastructure for **100K+ developers and 200+ companies** including **Glean, April, OpenNote, and Altera**. Funding total **~$29M**: **$4M seed (2024)** led by **Together Fund** with **Elevation Capital** + angels **Gokul Rajaram, Sohum Mazumdar (Rubrik), Dharmesh Shah (HubSpot)**, then **$25M Series A (Nov 2024)** led by **Lightspeed Venture Partners** ([Lightspeed announcement](https://lsvp.com/stories/composio-series-a/), [Entrackr](https://entrackr.com/2024/11/composio-raises-25-mn-in-series-a-led-by-lightspeed/)). The brand voice — terminal-aesthetic UPPERCASE, monospace typography, electric-cyan accent — signals "infrastructure for builders" rather than "consumer chatbot wrapper." What Composio refuses: consumer-AI hype framing, magic-wand metaphors, abstraction that hides the actual tool call.
+
+### Principles
+
+1. **Terminal aesthetic is the register.** UPPERCASE CTAs + JetBrains Mono for technical content. *UI implication:* don't soften with sentence-case marketing; the brand feels like a CLI.
+2. **Integration count is the headline.** *UI implication:* hero modules show "200+ tools" or live integration grid, not vague claims.
+3. **Code-first documentation.** *UI implication:* every concept page leads with a copy-paste code example.
+4. **Electric Cyan glows are decorative depth.** *UI implication:* radial-gradient cyan glows behind cards, never solid cyan fills on chrome.
+5. **Two fonts, strict roles.** abcDiatype for marketing, JetBrains Mono for technical. *UI implication:* never mix; pick the surface and commit.
+
+### Personas
+
+*Personas are fictional archetypes informed by Composio user segments (AI engineers, agent platform builders, indie developers shipping agent products), not individual people.*
+
+**Akira Yamamoto, 34, Tokyo.** AI engineer building a Slack agent at a B2B SaaS. Composio for the Slack/Notion/GitHub integrations he'd otherwise build himself.
+
+**Priya Krishnan, 28, Bengaluru.** Indie developer shipping a personal-assistant agent. Cares about per-call pricing + which tools have OAuth flows handled.
+
+**Marcus Webb, 41, San Francisco.** Platform engineer at AI startup. Evaluating Composio vs building integration layer in-house. Latency + observability are the deciding factors.
+
+## Colors
 
 ### Primary
 - **Composio Cobalt** (`#0007cd`): The core brand color — a deep, saturated blue used sparingly for high-priority interactive elements and brand moments. It anchors the identity with quiet intensity.
@@ -120,7 +220,7 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - **Blue-to-Black Fade**: Linear gradients from Composio Cobalt (`#0007cd`) fading into Void Black (`#0f0f0f`), used in hero backgrounds and section transitions.
 - **White Fog**: Bottom-of-page gradient transitioning from dark to a diffused white/gray, creating an atmospheric "horizon line" effect near the footer.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `abcDiatype`, with fallbacks: `abcDiatype Fallback, ui-sans-serif, system-ui, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji`
@@ -158,7 +258,105 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - **Negative letter-spacing on code**: JetBrains Mono uses negative letter-spacing (-0.28px to -0.98px) for dense, compact code blocks that feel like a real IDE.
 - **Uppercase is earned**: The `uppercase` + `letter-spacing` treatment is reserved exclusively for tiny overline labels and technical tags — never for headings.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 1px, 2px, 4px, 6px, 8px, 10px, 12px, 14px, 16px, 18px, 20px, 24px, 30px, 32px, 40px
+- Component padding: typically 10px (buttons) to 24px (CTA buttons horizontal)
+- Section padding: generous vertical spacing (estimated 80-120px between major sections)
+- Card internal padding: approximately 24-32px
+
+### Grid & Container
+- Max container width: approximately 1200px, centered
+- Content sections use single-column or 2-3 column grids for feature cards
+- Hero: centered single-column with maximum impact
+- Feature sections: asymmetric layouts mixing text blocks with product screenshots
+
+### Whitespace Philosophy
+- **Breathing room between sections**: Large vertical gaps create distinct "chapters" in the page scroll.
+- **Dense within components**: Cards and text blocks are internally compact (tight line-heights, minimal internal padding), creating focused information nodes.
+- **Contrast-driven separation**: Rather than relying solely on whitespace, Composio uses border opacity differences and subtle background shifts to delineate content zones.
+
+### Border Radius Scale
+- Nearly squared (2px): Inline code spans, small tags, pre blocks — the sharpest treatment, conveying technical precision
+- Subtly rounded (4px): Content cards, images, standard containers — the workhorse radius
+- Pill-shaped (37px): Select buttons and badges — creates a softer, more approachable feel for key CTAs
+- Full round (9999px+): Circular elements, avatar-like containers, decorative dots
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, hamburger nav, full-width cards, reduced section padding, hero text scales down to ~28-40px |
+| Tablet | 768-1024px | 2-column grid for cards, condensed nav, slightly reduced hero text |
+| Desktop | 1024-1440px | Full multi-column layout, expanded nav with all links visible, large hero typography (64px) |
+| Large Desktop | >1440px | Max-width container centered, generous horizontal margins |
+
+#### Touch Targets
+- Minimum touch target: 44x44px for all interactive elements
+- Buttons use comfortable padding (8px 24px minimum) ensuring adequate touch area
+- Nav links spaced with sufficient gap for thumb navigation
+
+#### Collapsing Strategy
+- **Navigation**: Full horizontal nav on desktop collapses to hamburger on mobile
+- **Feature grids**: 3-column → 2-column → single-column stacking
+- **Hero text**: 64px → 40px → 28px progressive scaling
+- **Section padding**: Reduces proportionally but maintains generous vertical rhythm
+- **Cards**: Stack vertically on mobile with full-width treatment
+- **Code blocks**: Horizontal scroll on smaller viewports rather than wrapping
+
+#### Image Behavior
+- Product screenshots scale proportionally within their containers
+- Dark-themed images maintain contrast on the dark background at all sizes
+- Gradient glow effects scale with container size
+- No visible art direction changes between breakpoints — same crops, proportional scaling
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, no border | Page background, inline text |
+| Contained (Level 1) | Border Mist 04-08, no shadow | Background groupings, subtle sections |
+| Card (Level 2) | Border Mist 10-12, no shadow | Standard content cards, code blocks |
+| Brutalist (Level 3) | Hard offset shadow (`4px 4px`, 15% black) | Select interactive cards, distinctive feature highlights |
+| Floating (Level 4) | Soft diffuse shadow (`0px 8px 32px`, 50% black) | Modals, overlays, deeply elevated content |
+
+**Shadow Philosophy**: Composio uses shadows sparingly and with deliberate contrast. The hard-offset brutalist shadow is the signature — it breaks the sleek darkness with a raw, almost retro-computing feel. The soft diffuse shadow is reserved for truly floating elements. Most depth is communicated through border opacity gradations rather than shadows.
+
+### Decorative Depth
+- **Cyan Glow Halos**: Radial gradient halos using Electric Cyan at low opacity behind feature cards and images. Creates a "screen glow" effect as if the UI elements are emitting light.
+- **Blue-Black Gradient Washes**: Linear gradients from Composio Cobalt to Void Black used as section backgrounds, adding subtle color temperature shifts.
+- **White Fog Horizon**: A gradient from dark to diffused white/gray at the bottom of the page, creating an atmospheric "dawn" effect before the footer.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.brutalist`: `rgba(0,0,0,0.15) 4px 4px 0px 0px`
+- `shadow.floating`: `rgba(0,0,0,0.5) 0px 8px 32px`
+- `shadow.glow-cyan`: `rgba(0,255,255,0.12) radial halo`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Easings: terminal-precise. **Glow pulses** never animate on input fields (would distract). `prefers-reduced-motion: reduce` removes glow pulse (becomes static).
+
+---
+
+**Verified:** 2026-05-08 (B2 loop)
+**Tier 1 sources:** https://composio.dev (live DOM via playwright — UPPERCASE CTAs `#fff` / `#000` / 0px radius / 6×8 padding / 33px / 14px·400)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** composio.dev homepage; composio.dev/pricing.
+**Tier 2 (Founders/Funding):** Tracxn, Entrackr, Lightspeed Venture Partners blog.
+**Style ref:** `stripe` (engineering tone). **Conflicts unresolved:** none.
+
+## Components
 
 ### Buttons
 
@@ -249,50 +447,23 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - Used as a section divider/brand statement
 - Stark white on black
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 2px, 4px, 6px, 8px, 10px, 12px, 14px, 16px, 18px, 20px, 24px, 30px, 32px, 40px
-- Component padding: typically 10px (buttons) to 24px (CTA buttons horizontal)
-- Section padding: generous vertical spacing (estimated 80-120px between major sections)
-- Card internal padding: approximately 24-32px
+| State | Treatment |
+|---|---|
+| **Empty (no agents)** | UPPERCASE CTA "CREATE FIRST AGENT" + integration grid preview |
+| **Empty (no integrations)** | "BROWSE 200+ INTEGRATIONS" with searchable grid |
+| **Loading (integration installing)** | OAuth flow with provider-specific UI; progress visible |
+| **Loading (agent running)** | Per-step trace with tool calls visible |
+| **Error (tool failed)** | Full stack trace + provider error code + retry button |
+| **Error (auth)** | "RECONNECT [Tool]" with OAuth re-trigger |
+| **Success (integration installed)** | Cyan glow pulse on integration card; toast "INSTALLED" |
+| **Success (agent run)** | Trace expanded showing all tool calls + final output |
+| **Skeleton (integration grid)** | Dark cards with subtle cyan border |
+| **Disabled (rate limit)** | 0.5 opacity + "UPGRADE" CTA |
+| **Loading (model inference)** | Per-token streaming visible alongside tool-call trace |
 
-### Grid & Container
-- Max container width: approximately 1200px, centered
-- Content sections use single-column or 2-3 column grids for feature cards
-- Hero: centered single-column with maximum impact
-- Feature sections: asymmetric layouts mixing text blocks with product screenshots
-
-### Whitespace Philosophy
-- **Breathing room between sections**: Large vertical gaps create distinct "chapters" in the page scroll.
-- **Dense within components**: Cards and text blocks are internally compact (tight line-heights, minimal internal padding), creating focused information nodes.
-- **Contrast-driven separation**: Rather than relying solely on whitespace, Composio uses border opacity differences and subtle background shifts to delineate content zones.
-
-### Border Radius Scale
-- Nearly squared (2px): Inline code spans, small tags, pre blocks — the sharpest treatment, conveying technical precision
-- Subtly rounded (4px): Content cards, images, standard containers — the workhorse radius
-- Pill-shaped (37px): Select buttons and badges — creates a softer, more approachable feel for key CTAs
-- Full round (9999px+): Circular elements, avatar-like containers, decorative dots
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, inline text |
-| Contained (Level 1) | Border Mist 04-08, no shadow | Background groupings, subtle sections |
-| Card (Level 2) | Border Mist 10-12, no shadow | Standard content cards, code blocks |
-| Brutalist (Level 3) | Hard offset shadow (`4px 4px`, 15% black) | Select interactive cards, distinctive feature highlights |
-| Floating (Level 4) | Soft diffuse shadow (`0px 8px 32px`, 50% black) | Modals, overlays, deeply elevated content |
-
-**Shadow Philosophy**: Composio uses shadows sparingly and with deliberate contrast. The hard-offset brutalist shadow is the signature — it breaks the sleek darkness with a raw, almost retro-computing feel. The soft diffuse shadow is reserved for truly floating elements. Most depth is communicated through border opacity gradations rather than shadows.
-
-### Decorative Depth
-- **Cyan Glow Halos**: Radial gradient halos using Electric Cyan at low opacity behind feature cards and images. Creates a "screen glow" effect as if the UI elements are emitting light.
-- **Blue-Black Gradient Washes**: Linear gradients from Composio Cobalt to Void Black used as section backgrounds, adding subtle color temperature shifts.
-- **White Fog Horizon**: A gradient from dark to diffused white/gray at the bottom of the page, creating an atmospheric "dawn" effect before the footer.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Void Black (`#0f0f0f`) as the primary page background — never pure white for main surfaces
@@ -317,36 +488,23 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - Don't use decorative serif or handwritten fonts — the entire identity is geometric sans + monospace
 - Don't skip the monospace font for technical content — JetBrains Mono is not decorative, it's a credibility signal
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, hamburger nav, full-width cards, reduced section padding, hero text scales down to ~28-40px |
-| Tablet | 768-1024px | 2-column grid for cards, condensed nav, slightly reduced hero text |
-| Desktop | 1024-1440px | Full multi-column layout, expanded nav with all links visible, large hero typography (64px) |
-| Large Desktop | >1440px | Max-width container centered, generous horizontal margins |
+Composio's voice is **terminal-confident and technically precise.** Marketing copy reads like a developer changelog — capability statements, no hype. Hero CTAs use uppercase ("GET STARTED", "ADD TO MY AGENT", "TRY IT OUT") which on most brands would feel aggressive but on Composio reads as "command line aesthetic" — the brand register intentionally borrows terminal vocabulary to signal "this is for developers building agent infrastructure."
 
-### Touch Targets
-- Minimum touch target: 44x44px for all interactive elements
-- Buttons use comfortable padding (8px 24px minimum) ensuring adequate touch area
-- Nav links spaced with sufficient gap for thumb navigation
+| Context | Tone |
+|---|---|
+| CTA | UPPERCASE imperative. "GET STARTED", "ADD TO MY AGENT", "TRY IT OUT" |
+| Marketing | Capability + integration list. "X tools, Y agents, Z protocols" |
+| Documentation | Code-block-first; minimal prose between examples |
+| Error | Stack-trace-acceptable. Technical users want the actual error |
 
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav on desktop collapses to hamburger on mobile
-- **Feature grids**: 3-column → 2-column → single-column stacking
-- **Hero text**: 64px → 40px → 28px progressive scaling
-- **Section padding**: Reduces proportionally but maintains generous vertical rhythm
-- **Cards**: Stack vertically on mobile with full-width treatment
-- **Code blocks**: Horizontal scroll on smaller viewports rather than wrapping
+**Voice samples**
+- Marketing CTA: *"GET STARTED FOR FREE"* / *"ADD TO MY AGENT"* <!-- verified: composio.dev homepage 2026-05 -->
 
-### Image Behavior
-- Product screenshots scale proportionally within their containers
-- Dark-themed images maintain contrast on the dark background at all sizes
-- Gradient glow effects scale with container size
-- No visible art direction changes between breakpoints — same crops, proportional scaling
+**Forbidden phrases.** Consumer-AI hype ("magic", "AI revolution"). Apology theatre. Excessive emoji.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: "Pure White (#ffffff)"
@@ -373,75 +531,3 @@ When refining existing screens generated with this design system:
 4. Describe the desired "feel" alongside specific measurements — "compressed and authoritative heading at 48px with line-height 1.0"
 5. For glow effects, specify "Electric Cyan at 12% opacity as a radial gradient behind the element"
 6. Always specify which font — abcDiatype for marketing, JetBrains Mono for technical/code content
-
-## 10. Voice & Tone
-
-Composio's voice is **terminal-confident and technically precise.** Marketing copy reads like a developer changelog — capability statements, no hype. Hero CTAs use uppercase ("GET STARTED", "ADD TO MY AGENT", "TRY IT OUT") which on most brands would feel aggressive but on Composio reads as "command line aesthetic" — the brand register intentionally borrows terminal vocabulary to signal "this is for developers building agent infrastructure."
-
-| Context | Tone |
-|---|---|
-| CTA | UPPERCASE imperative. "GET STARTED", "ADD TO MY AGENT", "TRY IT OUT" |
-| Marketing | Capability + integration list. "X tools, Y agents, Z protocols" |
-| Documentation | Code-block-first; minimal prose between examples |
-| Error | Stack-trace-acceptable. Technical users want the actual error |
-
-**Voice samples**
-- Marketing CTA: *"GET STARTED FOR FREE"* / *"ADD TO MY AGENT"* <!-- verified: composio.dev homepage 2026-05 -->
-
-**Forbidden phrases.** Consumer-AI hype ("magic", "AI revolution"). Apology theatre. Excessive emoji.
-
-## 11. Brand Narrative
-
-Composio was founded **2023** in San Francisco by **Soham Ganatra (CEO)** and **Karan Vaidya (CTO)** — both **IIT Bombay** graduates who first met at a **Physics Olympiad camp** before becoming roommates in college ([Tracxn — Composio profile](https://tracxn.com/d/companies/composio/), [Entrackr — Composio Series A](https://entrackr.com/2024/11/composio-raises-25-mn-in-series-a-led-by-lightspeed/)). The platform provides pre-built integrations — **200+ tools and APIs** that LLM agents can call — and powers agent infrastructure for **100K+ developers and 200+ companies** including **Glean, April, OpenNote, and Altera**. Funding total **~$29M**: **$4M seed (2024)** led by **Together Fund** with **Elevation Capital** + angels **Gokul Rajaram, Sohum Mazumdar (Rubrik), Dharmesh Shah (HubSpot)**, then **$25M Series A (Nov 2024)** led by **Lightspeed Venture Partners** ([Lightspeed announcement](https://lsvp.com/stories/composio-series-a/), [Entrackr](https://entrackr.com/2024/11/composio-raises-25-mn-in-series-a-led-by-lightspeed/)). The brand voice — terminal-aesthetic UPPERCASE, monospace typography, electric-cyan accent — signals "infrastructure for builders" rather than "consumer chatbot wrapper." What Composio refuses: consumer-AI hype framing, magic-wand metaphors, abstraction that hides the actual tool call.
-
-## 12. Principles
-
-1. **Terminal aesthetic is the register.** UPPERCASE CTAs + JetBrains Mono for technical content. *UI implication:* don't soften with sentence-case marketing; the brand feels like a CLI.
-2. **Integration count is the headline.** *UI implication:* hero modules show "200+ tools" or live integration grid, not vague claims.
-3. **Code-first documentation.** *UI implication:* every concept page leads with a copy-paste code example.
-4. **Electric Cyan glows are decorative depth.** *UI implication:* radial-gradient cyan glows behind cards, never solid cyan fills on chrome.
-5. **Two fonts, strict roles.** abcDiatype for marketing, JetBrains Mono for technical. *UI implication:* never mix; pick the surface and commit.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Composio user segments (AI engineers, agent platform builders, indie developers shipping agent products), not individual people.*
-
-**Akira Yamamoto, 34, Tokyo.** AI engineer building a Slack agent at a B2B SaaS. Composio for the Slack/Notion/GitHub integrations he'd otherwise build himself.
-
-**Priya Krishnan, 28, Bengaluru.** Indie developer shipping a personal-assistant agent. Cares about per-call pricing + which tools have OAuth flows handled.
-
-**Marcus Webb, 41, San Francisco.** Platform engineer at AI startup. Evaluating Composio vs building integration layer in-house. Latency + observability are the deciding factors.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no agents)** | UPPERCASE CTA "CREATE FIRST AGENT" + integration grid preview |
-| **Empty (no integrations)** | "BROWSE 200+ INTEGRATIONS" with searchable grid |
-| **Loading (integration installing)** | OAuth flow with provider-specific UI; progress visible |
-| **Loading (agent running)** | Per-step trace with tool calls visible |
-| **Error (tool failed)** | Full stack trace + provider error code + retry button |
-| **Error (auth)** | "RECONNECT [Tool]" with OAuth re-trigger |
-| **Success (integration installed)** | Cyan glow pulse on integration card; toast "INSTALLED" |
-| **Success (agent run)** | Trace expanded showing all tool calls + final output |
-| **Skeleton (integration grid)** | Dark cards with subtle cyan border |
-| **Disabled (rate limit)** | 0.5 opacity + "UPGRADE" CTA |
-| **Loading (model inference)** | Per-token streaming visible alongside tool-call trace |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Easings: terminal-precise. **Glow pulses** never animate on input fields (would distract). `prefers-reduced-motion: reduce` removes glow pulse (becomes static).
-
----
-
-**Verified:** 2026-05-08 (B2 loop)
-**Tier 1 sources:** https://composio.dev (live DOM via playwright — UPPERCASE CTAs `#fff` / `#000` / 0px radius / 6×8 padding / 33px / 14px·400)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** composio.dev homepage; composio.dev/pricing.
-**Tier 2 (Founders/Funding):** Tracxn, Entrackr, Lightspeed Venture Partners blog.
-**Style ref:** `stripe` (engineering tone). **Conflicts unresolved:** none.

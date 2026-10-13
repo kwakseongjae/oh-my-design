@@ -1,215 +1,167 @@
 ---
-id: samsung
 name: Samsung
-display_name_kr: 삼성전자
-country: KR
-category: consumer-tech
-homepage: "https://www.samsung.com/sec/"
-primary_color: "#000000"
-logo:
-  type: simpleicons
-  slug: samsung
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Samsung One UI Design System
-  url: "https://developer.samsung.com/one-ui"
-  type: system
-  description: Samsung's official platform design guidance. Its component and color rules are a separate evidence domain from the captured Samsung Korea public web surfaces.
-verification_v2:
-  schema: 2
-  checked: "2026-09-29"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.samsung.com/sec/", inspected: "2026-07-13" }
-    - { id: ai-products, kind: public-product, url: "https://www.samsung.com/sec/ai-products/", inspected: "2026-07-13" }
-    - { id: brand-identity, kind: official-doc, url: "https://www.samsung.com/sec/about-us/brand-identity/", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.samsung.com/sec/", captured: "2026-07-13" }
-    - { id: samsung-component-index, kind: official-doc, url: "https://developer.samsung.com/one-ui/", captured: "2026-09-19" }
-    - { id: ai-live, kind: product-surface, url: "https://www.samsung.com/sec/ai-products/", captured: "2026-07-13" }
-    - { id: brand-live, kind: product-surface, url: "https://www.samsung.com/sec/about-us/brand-identity/", captured: "2026-07-13" }
-    - { id: one-ui-color, kind: official-doc, url: "https://developer.samsung.com/one-ui/color/system.html", captured: "2026-07-13" }
-    - { id: samsungone-font, kind: official-doc, url: "https://developer.samsung.com/design-system/font", captured: "2026-07-13" }
-    - { id: sharp-sans-brand, kind: official-doc, url: "https://www.samsung.com/bd/about-us/brand-identity/color-and-typo/", captured: "2026-07-13" }
-    - { id: brand-story, kind: official-doc, url: "https://www.samsung.com/sec/about-us/brand-identity/brand-story/", captured: "2026-07-13" }
-    - { id: samsung-probe, kind: product-surface, url: "https://www.samsung.com/sec/", captured: "2026-09-29" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.surface": &ai { surface_id: ai-products, source_id: ai-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.foreground": *ai
-    "tokens.colors.muted": *home
-    "tokens.colors.border": *home
-    "tokens.colors.carousel-arrow": *home
-    "tokens.colors.one-ui-primary": &oneui { surface_id: brand-identity, source_id: one-ui-color, method: official-doc, captured: "2026-07-13" }
-    "tokens.colors.gnb-active": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.nv00-gnb-v4__l0-menu-link 모바일 at :hover, :active and :focus-visible", captured: "2026-09-29" }
-    "tokens.typography.family.display": &sharp { surface_id: home, source_id: home-live, method: fontfaceset-and-computed-style, captured: "2026-07-13" }
-    "tokens.typography.family.ui": &ui { surface_id: home, source_id: home-live, method: fontfaceset-and-computed-style, captured: "2026-07-13" }
-    "tokens.typography.display.size": *sharp
-    "tokens.typography.display.weight": *sharp
-    "tokens.typography.display.lineHeight": *sharp
-    "tokens.typography.display.use": *sharp
-    "tokens.typography.body.size": *ai
-    "tokens.typography.body.weight": *ai
-    "tokens.typography.body.lineHeight": *ai
-    "tokens.typography.body.use": *ai
-    "tokens.typography.action.size": *home
-    "tokens.typography.action.weight": *home
-    "tokens.typography.action.lineHeight": *home
-    "tokens.typography.action.use": *home
-    "tokens.spacing.nav-inline": *home
-    "tokens.spacing.action-inline": *home
-    "tokens.spacing.card-inset": *ai
-    "tokens.rounded.sharp": *ai
-    "tokens.rounded.pill": *home
-    "tokens.rounded.chip": *ai
-    "tokens.shadow.flat": *ai
-    "tokens.components.ai-product-tabs.type": *ai
-    "tokens.components.ai-product-tabs.fg": *ai
-    "tokens.components.ai-product-tabs.radius": *ai
-    "tokens.components.ai-product-tabs.padding": *ai
-    "tokens.components.ai-product-tabs.font": *ai
-    "tokens.components.ai-product-tabs.states": *ai
-    "tokens.components.ai-product-tabs.use": *ai
-    "tokens.components.contained-cta.type": &sContainedCta { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"26\"]", captured: "2026-07-13" }
-    "tokens.components.contained-cta.bg": *sContainedCta
-    "tokens.components.contained-cta.fg": *sContainedCta
-    "tokens.components.contained-cta.border": *sContainedCta
-    "tokens.components.contained-cta.radius": *sContainedCta
-    "tokens.components.contained-cta.padding": *sContainedCta
-    "tokens.components.contained-cta.height": *sContainedCta
-    "tokens.components.contained-cta.font": *sContainedCta
-    "tokens.components.contained-cta.focus": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.cta.cta-ntrns-fild at :focus-visible, Tab stop 41", captured: "2026-09-29" }
-    "tokens.components.contained-cta.states": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.cta.cta-ntrns-fild, first of 39", captured: "2026-09-29" }
-    "tokens.components.contained-cta.use": *sContainedCta
-    "tokens.components.outlined-cta.type": &sOutlinedCta { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.outlined-cta.bg": *sOutlinedCta
-    "tokens.components.outlined-cta.fg": *sOutlinedCta
-    "tokens.components.outlined-cta.border": *sOutlinedCta
-    "tokens.components.outlined-cta.radius": *sOutlinedCta
-    "tokens.components.outlined-cta.padding": *sOutlinedCta
-    "tokens.components.outlined-cta.height": *sOutlinedCta
-    "tokens.components.outlined-cta.font": *sOutlinedCta
-    "tokens.components.outlined-cta.hover": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.cta.cta-outl at :hover", captured: "2026-09-29" }
-    "tokens.components.outlined-cta.pressed": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.cta.cta-outl at :active", captured: "2026-09-29" }
-    "tokens.components.outlined-cta.focus": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.cta.cta-outl at :focus-visible, Tab stop 36", captured: "2026-09-29" }
-    "tokens.components.outlined-cta.states": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.cta.cta-outl, first of six", captured: "2026-09-29" }
-    "tokens.components.outlined-cta.use": *sOutlinedCta
-    "tokens.components.underlined-cta.type": &sUnderlinedCta { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-13" }
-    "tokens.components.underlined-cta.bg": *sUnderlinedCta
-    "tokens.components.underlined-cta.fg": *sUnderlinedCta
-    "tokens.components.underlined-cta.padding": *sUnderlinedCta
-    "tokens.components.underlined-cta.height": *sUnderlinedCta
-    "tokens.components.underlined-cta.font": *sUnderlinedCta
-    "tokens.components.underlined-cta.pressed": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.cta.cta-undr at :active", captured: "2026-09-29" }
-    "tokens.components.underlined-cta.focus": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.cta.cta-undr at :focus-visible, Tab stop 35", captured: "2026-09-29" }
-    "tokens.components.underlined-cta.states": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.cta.cta-undr, first of five", captured: "2026-09-29" }
-    "tokens.components.underlined-cta.use": *sUnderlinedCta
-    "tokens.components.gnb-link.type": &sGnbLink { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.gnb-link.bg": *sGnbLink
-    "tokens.components.gnb-link.fg": *sGnbLink
-    "tokens.components.gnb-link.padding": *sGnbLink
-    "tokens.components.gnb-link.height": *sGnbLink
-    "tokens.components.gnb-link.font": *sGnbLink
-    "tokens.components.gnb-link.hover": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.nv00-gnb-v4__l0-menu-link 모바일 at :hover", captured: "2026-09-29" }
-    "tokens.components.gnb-link.pressed": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.nv00-gnb-v4__l0-menu-link 모바일 at :active", captured: "2026-09-29" }
-    "tokens.components.gnb-link.focus": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.nv00-gnb-v4__l0-menu-link 모바일 at :focus-visible, Tab stop 5", captured: "2026-09-29" }
-    "tokens.components.gnb-link.states": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.nv00-gnb-v4__l0-menu-link 모바일", captured: "2026-09-29" }
-    "tokens.components.gnb-link.use": *sGnbLink
-    "tokens.components.search-trigger.type": &sSearchTrigger { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.search__btn, mouse-pass rest with the header scrolled", captured: "2026-09-29" }
-    "tokens.components.search-trigger.bg": *sSearchTrigger
-    "tokens.components.search-trigger.border": *sSearchTrigger
-    "tokens.components.search-trigger.radius": *sSearchTrigger
-    "tokens.components.search-trigger.padding": *sSearchTrigger
-    "tokens.components.search-trigger.size": *sSearchTrigger
-    "tokens.components.search-trigger.hover": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.search__btn at :hover", captured: "2026-09-29" }
-    "tokens.components.search-trigger.pressed": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.search__btn at :active", captured: "2026-09-29" }
-    "tokens.components.search-trigger.focus": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "button.search__btn at :focus-visible, Tab stop 31", captured: "2026-09-29" }
-    "tokens.components.search-trigger.states": *sSearchTrigger
-    "tokens.components.search-trigger.use": *sSearchTrigger
-    "tokens.components.product-tile.type": &sProductTile { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"25\"]", captured: "2026-07-13" }
-    "tokens.components.product-tile.bg": *sProductTile
-    "tokens.components.product-tile.fg": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.clickable Galaxy S26 Ultra, h2 label", captured: "2026-09-29" }
-    "tokens.components.product-tile.size": *sProductTile
-    "tokens.components.product-tile.font": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.clickable Galaxy S26 Ultra, h2 label", captured: "2026-09-29" }
-    "tokens.components.product-tile.hover": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.clickable at :hover", captured: "2026-09-29" }
-    "tokens.components.product-tile.pressed": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.clickable at :active", captured: "2026-09-29" }
-    "tokens.components.product-tile.focus": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.clickable at :focus-visible, Tab stop 40", captured: "2026-09-29" }
-    "tokens.components.product-tile.states": { surface_id: home, source_id: samsung-probe, method: live-state-probe, selector: "a.clickable Galaxy S26 Ultra", captured: "2026-09-29" }
-    "tokens.components.product-tile.use": *sProductTile
-    "tokens.components.product-media-card.type": &sMediaCard { surface_id: ai-products, source_id: ai-live, method: computed-style, selector: "surface-2::div.showcase-card-tab-card__img-wrap", captured: "2026-07-13" }
-    "tokens.components.product-media-card.bg": *sMediaCard
-    "tokens.components.product-media-card.radius": *sMediaCard
-    "tokens.components.product-media-card.size": *sMediaCard
-    "tokens.components.product-media-card.states": *sMediaCard
-    "tokens.components.product-media-card.use": *sMediaCard
-    "tokens.components.white-contained-cta.type": &sWhiteCta { surface_id: brand-identity, source_id: brand-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"28\"]", captured: "2026-07-13" }
-    "tokens.components.white-contained-cta.bg": *sWhiteCta
-    "tokens.components.white-contained-cta.fg": *sWhiteCta
-    "tokens.components.white-contained-cta.radius": *sWhiteCta
-    "tokens.components.white-contained-cta.padding": *sWhiteCta
-    "tokens.components.white-contained-cta.height": *sWhiteCta
-    "tokens.components.white-contained-cta.font": *sWhiteCta
-    "tokens.components.white-contained-cta.states": *sWhiteCta
-    "tokens.components.white-contained-cta.use": *sWhiteCta
-    "tokens.components.icon-label-cta.type": &sIconLabelCta { surface_id: ai-products, source_id: ai-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"46\"]", captured: "2026-07-13" }
-    "tokens.components.icon-label-cta.bg": *sIconLabelCta
-    "tokens.components.icon-label-cta.fg": *sIconLabelCta
-    "tokens.components.icon-label-cta.radius": *sIconLabelCta
-    "tokens.components.icon-label-cta.padding": *sIconLabelCta
-    "tokens.components.icon-label-cta.height": *sIconLabelCta
-    "tokens.components.icon-label-cta.font": *sIconLabelCta
-    "tokens.components.icon-label-cta.states": *sIconLabelCta
-    "tokens.components.icon-label-cta.use": *sIconLabelCta
-    "tokens.components.brand-lnb-link.type": &sBrandLnb { surface_id: brand-identity, source_id: brand-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"20\"]", captured: "2026-07-13" }
-    "tokens.components.brand-lnb-link.bg": *sBrandLnb
-    "tokens.components.brand-lnb-link.fg": *sBrandLnb
-    "tokens.components.brand-lnb-link.padding": *sBrandLnb
-    "tokens.components.brand-lnb-link.height": *sBrandLnb
-    "tokens.components.brand-lnb-link.font": *sBrandLnb
-    "tokens.components.brand-lnb-link.states": *sBrandLnb
-    "tokens.components.brand-lnb-link.use": *sBrandLnb
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  colors:
-    primary: "#000000"
-    canvas: "#ffffff"
-    surface: "#f7f7f7"
-    foreground: "#000000"
-    muted: "#707070"
-    border: "#dddddd"
-    carousel-arrow: "#007aff"
-    one-ui-primary: "#0381fe"
-    gnb-active: "#006bea"
-  typography:
-    family: { display: "Samsung Sharp Sans", ui: "SamsungOneKorean" }
-    display: { size: 24, weight: 700, lineHeight: 32, use: "Observed product-card heading on the AI products surface" }
-    body: { size: 16, weight: 400, lineHeight: 21.2798, use: "Observed product-card body on the AI products surface" }
-    action: { size: 14, weight: 700, lineHeight: 19, use: "Observed contained CTA label on the Samsung Korea homepage" }
-  spacing: { nav-inline: 12, action-inline: 24, card-inset: 32 }
-  rounded: { sharp: 0, pill: 20, chip: 40 }
-  shadow:
-    flat: "none"
-  components:
-    ai-product-tabs: { type: tab, fg: "#000000", radius: 0, padding: "4px 0px", font: "18px/700 SamsungOneKorean", states: "selected / tab-selected observed", use: "AI products `tab__item-title`; selector surface-2::[data-omd-capture=\"25\"]" }
-    contained-cta: { type: button, bg: "#000000", fg: "#ffffff", border: "1px solid #000000", radius: "20px", padding: "10px 24px 9px", height: "40px", font: "14px / 700 / SamsungOneKorean", focus: "outline 2px dotted #000000", states: "default captured 2026-07-13 (36 homepage occurrences); on 2026-09-29 hover and pressed matched :hover and :active and left fill, border and label at rest (transition: all 0s), so no hover or pressed value is declared; the probed first instance sits in a product tile's 구매하기 row, which stays at opacity 0 until the tile is hovered, pressed or focused (see product-tile), so its visibility is the tile's reveal, not a state of the pill; keyboard focus (Tab, :focus-visible matched) draws an authored 2px dotted #000000 outline at 0px offset", use: "Samsung Korea homepage contained CTA (button.cta.cta-ntrns-fild, 구매하기)" }
-    outlined-cta: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #000000", radius: "20px", padding: "10px 24px 9px", height: "40px", font: "14px / 700 / SamsungOneKorean", hover: "bg #000000, fg #ffffff", pressed: "bg #000000, fg #ffffff", focus: "outline 2px dotted #000000", states: "default captured 2026-07-13 (six homepage occurrences); hover and pressed measured 2026-09-29 with :hover and :active matched: the button inverts to bg #000000 and fg #ffffff (transition: background-color, border-color, color 0.2s linear, read after it ended); keyboard focus draws an authored 2px dotted #000000 outline at 0px offset and keeps the transparent fill", use: "Samsung Korea homepage outlined CTA (button.cta.cta-outl)" }
-    underlined-cta: { type: button, bg: "transparent", fg: "#000000", padding: "0px 0px 2px", height: "21px", font: "14px / 700 / SamsungOneKorean", pressed: "fg rgba(0, 0, 0, 0.7)", focus: "outline 2px dotted #000000, 1px offset", states: "default captured 2026-07-13; the underline is a 1px #000000 ::after bar, not text-decoration; pressed fg rgba(0, 0, 0, 0.7) in the 2026-07-13 capture (home::[data-omd-capture=\"23\"]::state-pressed) and again on 2026-09-29 with :active matched, while the bar stays #000000; hover matched :hover on 2026-09-29 and left every compared property at rest, so no hover value is declared; keyboard focus draws an authored 2px dotted #000000 outline at 1px offset", use: "Samsung Korea homepage text CTA (a.cta.cta-undr, 더 알아보기)" }
-    gnb-link: { type: tab, bg: "transparent", fg: "#000000", padding: "14px 12px", height: "47px", font: "16px / 700 / SamsungOneKorean", hover: "fg #006bea, 2px #006bea bar via ::before", pressed: "fg #006bea, 2px #006bea bar via ::before", focus: "fg #006bea, 2px #006bea bar, outline 2px dotted #000000 at 1px offset", states: "default captured 2026-07-13 on all three surfaces; pressed fg #006bea on every sampled navigation link in that capture (11 main and 3 utility links on each surface; hover was not sampled then); hover and pressed measured 2026-09-29 with :hover and :active matched: fg #006bea and a 2px #006bea ::before bar going from opacity 0 to 1, and they also open the white mega-menu panel (an ancestor pseudo, the menu list's ::after, from 1440 x 0 at opacity 0 to 1440 x 406 at opacity 1); keyboard focus (Tab stop 5) shows the same blue text and bar plus an authored 2px dotted #000000 outline at 1px offset and does not open the panel; the blue text and bar stayed after focus moved to the next item, which suggests a script-applied current-item state (a lead, not a finding)", use: "Samsung Korea global navigation link (a.nv00-gnb-v4__l0-menu-link, e.g. 모바일)" }
-    search-trigger: { type: button, bg: "#f7f7f7", border: "1px solid #f7f7f7", radius: "40px", padding: "9px", size: "36px x 36px", hover: "bg rgba(247, 247, 247, 0.3), border 1px rgba(0, 0, 0, 0.3)", pressed: "bg rgba(247, 247, 247, 0.3), border 1px rgba(0, 0, 0, 0.3)", focus: "outline 2px dotted #000000", states: "rest as read on the homepage with the header scrolled (2026-09-29) and as captured 2026-07-13 on the AI-products and brand-identity pages; at the homepage page top the same button reads bg rgba(247, 247, 247, 0.3) with a 1px rgba(0, 0, 0, 0.2) border; hover and pressed measured 2026-09-29 on the scrolled header with :hover and :active matched (border-color transition 0.5s, read after it ended), and the inner keyword text turns from #757575 to #000000; keyboard focus draws an authored 2px dotted #000000 outline at 0px offset; the 2026-07-13 pressed frames on the AI-products and brand-identity pages kept bg #f7f7f7, so no pressed value is asserted for those pages", use: "Samsung Korea header search trigger (button.search__btn); the search input opens in a fixed layer behind a click and was not measured" }
-    product-tile: { type: card, bg: "transparent", fg: "#000000", size: "342px x 342px", font: "24px / 700", hover: "image scale(1.05); opacity 0→1 on the 구매하기 CTA row", pressed: "image scale(1.05); opacity 0→1 on the 구매하기 CTA row", focus: "outline 2px dotted #000000 at 1px offset; image scale(1.05); opacity 0→1 on the 구매하기 CTA row", states: "default captured 2026-07-13 (home captures 25, 27 and 29, each 342 x 342); hover, pressed and keyboard focus measured 2026-09-29 with :hover, :active and :focus-visible matched: the tile image scales to 1.05 and the tile's 구매하기 CTA row (div.cta-line, 366 x 40) fades from opacity 0 to 1, so the contained CTA inside it stays invisible until the tile is hovered or focused; nothing recolours; focus adds an authored 2px dotted #000000 outline at 1px offset; fg and font are the h2 title label, not the anchor (16px / 400 / SamsungOneKorean)", use: "Samsung Korea homepage product tile link (a.clickable, e.g. Galaxy S26 Ultra)" }
-    product-media-card: { type: card, bg: "#ffffff", radius: "20px", size: "330px x 330px", states: "default captured 2026-07-13 (12 occurrences on the AI-products page; a 684px-square variant also occurs); no pointer-state sample", use: "AI-products media wrapper (div.showcase-card-tab-card__img-wrap); not a general commerce-card template" }
-    white-contained-cta: { type: button, bg: "#ffffff", fg: "#000000", radius: "20px", padding: "10px 24px 11px", height: "40px", font: "14px / 700 / SamsungOneKorean", states: "default captured 2026-07-13 on four brand-identity CTAs; no pointer-state sample", use: "Brand-identity page white contained CTA (a.cta.cta--contained.cta--white), tracking -0.28px" }
-    icon-label-cta: { type: button, bg: "transparent", fg: "#000000", radius: "0px", padding: "10px 0px 11px", height: "40px", font: "14px / 700 / SamsungOneKorean", states: "default captured 2026-07-13 on six AI-products CTAs; no pointer-state sample", use: "AI-products black label CTA with an icon (a.cta.cta--icon.cta--label.cta--black)" }
-    brand-lnb-link: { type: tab, bg: "transparent", fg: "#000000", padding: "0px 32px", height: "46px", font: "14px / 400 / SamsungOneKorean", states: "default captured 2026-07-13; one link (surface-3::[data-omd-capture=\"20\"]) has hover, pressed and focus frames at fg #555555, but no sibling link has a state frame and #555555 occurs nowhere at rest, so no state value is declared", use: "Brand-identity page local navigation link (a.explore-lnb__link), tracking -0.28px" }
-  components_harvested: true
+colors:
+  primary: '#000000'
+  canvas: '#ffffff'
+  surface: '#f7f7f7'
+  foreground: '#000000'
+  muted: '#707070'
+  border: '#dddddd'
+  carousel-arrow: '#007aff'
+  one-ui-primary: '#0381fe'
+  gnb-active: '#006bea'
+typography:
+  display:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 32
+    use: Observed product-card heading on the AI products surface
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 21.2798
+    use: Observed product-card body on the AI products surface
+  action:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 19
+    use: Observed contained CTA label on the Samsung Korea homepage
+rounded:
+  sharp: 0px
+  pill: 20px
+  chip: 40px
+spacing:
+  nav-inline: 12
+  action-inline: 24
+  card-inset: 32
+components:
+  ai-product-tabs:
+    type: tab
+    textColor: '#000000'
+    rounded: 0px
+    padding: 4px 0px
+    typography: 18px/700 SamsungOneKorean
+    states: selected / tab-selected observed
+    use: AI products `tab__item-title`; selector surface-2::[data-omd-capture="25"]
+  contained-cta:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    border: '1px solid #000000'
+    rounded: 20px
+    padding: 10px 24px 9px
+    height: 40px
+    typography: 14px / 700 / SamsungOneKorean
+    focus: 'outline 2px dotted #000000'
+    states: 'default captured 2026-07-13 (36 homepage occurrences); on 2026-09-29 hover and pressed matched :hover and :active and left fill, border and label at rest (transition: all 0s), so no hover or pressed value is declared; the probed first instance sits in a product tile''s 구매하기 row, which stays at opacity 0 until the tile is hovered, pressed or focused (see product-tile), so its visibility is the tile''s reveal, not a state of the pill; keyboard focus (Tab, :focus-visible matched) draws an authored 2px dotted #000000 outline at 0px offset'
+    use: Samsung Korea homepage contained CTA (button.cta.cta-ntrns-fild, 구매하기)
+  outlined-cta:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    border: '1px solid #000000'
+    rounded: 20px
+    padding: 10px 24px 9px
+    height: 40px
+    typography: 14px / 700 / SamsungOneKorean
+    hover: 'bg #000000, fg #ffffff'
+    pressed: 'bg #000000, fg #ffffff'
+    focus: 'outline 2px dotted #000000'
+    states: 'default captured 2026-07-13 (six homepage occurrences); hover and pressed measured 2026-09-29 with :hover and :active matched: the button inverts to bg #000000 and fg #ffffff (transition: background-color, border-color, color 0.2s linear, read after it ended); keyboard focus draws an authored 2px dotted #000000 outline at 0px offset and keeps the transparent fill'
+    use: Samsung Korea homepage outlined CTA (button.cta.cta-outl)
+  underlined-cta:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    padding: 0px 0px 2px
+    height: 21px
+    typography: 14px / 700 / SamsungOneKorean
+    pressed: fg rgba(0, 0, 0, 0.7)
+    focus: 'outline 2px dotted #000000, 1px offset'
+    states: 'default captured 2026-07-13; the underline is a 1px #000000 ::after bar, not text-decoration; pressed fg rgba(0, 0, 0, 0.7) in the 2026-07-13 capture (home::[data-omd-capture="23"]::state-pressed) and again on 2026-09-29 with :active matched, while the bar stays #000000; hover matched :hover on 2026-09-29 and left every compared property at rest, so no hover value is declared; keyboard focus draws an authored 2px dotted #000000 outline at 1px offset'
+    use: Samsung Korea homepage text CTA (a.cta.cta-undr, 더 알아보기)
+  gnb-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    padding: 14px 12px
+    height: 47px
+    typography: 16px / 700 / SamsungOneKorean
+    hover: 'fg #006bea, 2px #006bea bar via ::before'
+    pressed: 'fg #006bea, 2px #006bea bar via ::before'
+    focus: 'fg #006bea, 2px #006bea bar, outline 2px dotted #000000 at 1px offset'
+    states: 'default captured 2026-07-13 on all three surfaces; pressed fg #006bea on every sampled navigation link in that capture (11 main and 3 utility links on each surface; hover was not sampled then); hover and pressed measured 2026-09-29 with :hover and :active matched: fg #006bea and a 2px #006bea ::before bar going from opacity 0 to 1, and they also open the white mega-menu panel (an ancestor pseudo, the menu list''s ::after, from 1440 x 0 at opacity 0 to 1440 x 406 at opacity 1); keyboard focus (Tab stop 5) shows the same blue text and bar plus an authored 2px dotted #000000 outline at 1px offset and does not open the panel; the blue text and bar stayed after focus moved to the next item, which suggests a script-applied current-item state (a lead, not a finding)'
+    use: Samsung Korea global navigation link (a.nv00-gnb-v4__l0-menu-link, e.g. 모바일)
+  search-trigger:
+    type: button
+    backgroundColor: '#f7f7f7'
+    border: '1px solid #f7f7f7'
+    rounded: 40px
+    padding: 9px
+    size: 36px x 36px
+    hover: bg rgba(247, 247, 247, 0.3), border 1px rgba(0, 0, 0, 0.3)
+    pressed: bg rgba(247, 247, 247, 0.3), border 1px rgba(0, 0, 0, 0.3)
+    focus: 'outline 2px dotted #000000'
+    states: 'rest as read on the homepage with the header scrolled (2026-09-29) and as captured 2026-07-13 on the AI-products and brand-identity pages; at the homepage page top the same button reads bg rgba(247, 247, 247, 0.3) with a 1px rgba(0, 0, 0, 0.2) border; hover and pressed measured 2026-09-29 on the scrolled header with :hover and :active matched (border-color transition 0.5s, read after it ended), and the inner keyword text turns from #757575 to #000000; keyboard focus draws an authored 2px dotted #000000 outline at 0px offset; the 2026-07-13 pressed frames on the AI-products and brand-identity pages kept bg #f7f7f7, so no pressed value is asserted for those pages'
+    use: Samsung Korea header search trigger (button.search__btn); the search input opens in a fixed layer behind a click and was not measured
+  product-tile:
+    type: card
+    backgroundColor: transparent
+    textColor: '#000000'
+    size: 342px x 342px
+    typography: 24px / 700
+    hover: image scale(1.05); opacity 0→1 on the 구매하기 CTA row
+    pressed: image scale(1.05); opacity 0→1 on the 구매하기 CTA row
+    focus: 'outline 2px dotted #000000 at 1px offset; image scale(1.05); opacity 0→1 on the 구매하기 CTA row'
+    states: 'default captured 2026-07-13 (home captures 25, 27 and 29, each 342 x 342); hover, pressed and keyboard focus measured 2026-09-29 with :hover, :active and :focus-visible matched: the tile image scales to 1.05 and the tile''s 구매하기 CTA row (div.cta-line, 366 x 40) fades from opacity 0 to 1, so the contained CTA inside it stays invisible until the tile is hovered or focused; nothing recolours; focus adds an authored 2px dotted #000000 outline at 1px offset; fg and font are the h2 title label, not the anchor (16px / 400 / SamsungOneKorean)'
+    use: Samsung Korea homepage product tile link (a.clickable, e.g. Galaxy S26 Ultra)
+  product-media-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 20px
+    size: 330px x 330px
+    states: default captured 2026-07-13 (12 occurrences on the AI-products page; a 684px-square variant also occurs); no pointer-state sample
+    use: AI-products media wrapper (div.showcase-card-tab-card__img-wrap); not a general commerce-card template
+  white-contained-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 20px
+    padding: 10px 24px 11px
+    height: 40px
+    typography: 14px / 700 / SamsungOneKorean
+    states: default captured 2026-07-13 on four brand-identity CTAs; no pointer-state sample
+    use: Brand-identity page white contained CTA (a.cta.cta--contained.cta--white), tracking -0.28px
+  icon-label-cta:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 10px 0px 11px
+    height: 40px
+    typography: 14px / 700 / SamsungOneKorean
+    states: default captured 2026-07-13 on six AI-products CTAs; no pointer-state sample
+    use: AI-products black label CTA with an icon (a.cta.cta--icon.cta--label.cta--black)
+  brand-lnb-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    padding: 0px 32px
+    height: 46px
+    typography: 14px / 400 / SamsungOneKorean
+    states: 'default captured 2026-07-13; one link (surface-3::[data-omd-capture="20"]) has hover, pressed and focus frames at fg #555555, but no sibling link has a state frame and #555555 occurs nowhere at rest, so no state value is declared'
+    use: Brand-identity page local navigation link (a.explore-lnb__link), tracking -0.28px
+fonts:
+  roles:
+    display: Samsung Sharp Sans
+    ui: SamsungOneKorean
 ---
 
 # Design System Inspiration of Samsung
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Samsung Electronics presents consumer devices, services, and its Galaxy ecosystem across a broad public web estate. Its Korean public commerce and AI-product pages use a quiet product frame: white or pale-gray surfaces, black typography, contained black calls to action, and large device imagery. Samsung’s official brand story frames this product work within human-driven innovation and describes its expression as bold, genuine, contemporary, and playful; the captured commerce treatment is one restrained application of that wider identity rather than a substitute for it. The official One UI system is a separate platform domain, designed for comfortable and responsive experiences across Galaxy devices. This reference therefore preserves the observed public-web grammar while keeping One UI’s documented blue and component guidance separate from web-commerce claims. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/) · [One UI overview](https://developer.samsung.com/one-ui/index.html)
 
@@ -224,12 +176,31 @@ The supplied 2026-07-13 evidence covers a Korean homepage, an AI-products page, 
 - Keyboard focus is an authored `outline: 2px dotted #000000` on every probed control (2026-09-29), not the browser's ring
 - Navigation blue `#006bea` appears only as the global-navigation hover, press and focus colour
 
-## Primary tasks
+### Primary tasks
 
 - Browse consumer devices and services across the public site
 - See what each AI product does by moving between their tabs
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Samsung’s official Korean brand story dates the company’s story to 1969 and states a purpose of creating human-driven innovations that overcome barriers for a better world. It also describes people and their concerns as central to what Samsung creates, and names values around people, excellence, change, integrity, and co-prosperity. This provides context for the consumer-device and service ecosystem; it does not prove a specific public-web token. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/)
+
+The current design expression spans more than the captured commerce pages. Samsung’s brand material treats color, typography, logo, and sound as distinct visual/experiential assets, while One UI documents a platform system for phones, tablets, wearables, earbuds, and PCs. This reference retains those domains separately so a marketplace CTA is not presented as a native One UI control. [Brand identity](https://www.samsung.com/sec/about-us/brand-identity/) · [One UI overview](https://developer.samsung.com/one-ui/index.html)
+
+### Principles
+
+1. **Put people and tasks first.** Samsung’s brand story and One UI guidance both center human experience and focused tasks. *UI implication:* state the action clearly and avoid decorative flow interruptions.
+2. **Use a connected typographic voice.** Samsung positions SamsungOne as a localized, universal family. *UI implication:* preserve the observed SamsungOneKorean UI role; do not substitute a system face as if it were SamsungOne.
+3. **Keep surface domains distinct.** The public Korean web and One UI are both official but have different evidence and component contexts. *UI implication:* use `#0381fe` only when implementing the documented One UI platform context, not as a generic Samsung-commerce action color.
+4. **Retain observed component boundaries.** The 2026-07-13 capture and the 2026-09-29 probe have exact evidence for the CTA, navigation, search-trigger, product-tile, media-card, and selected-tab treatments only. *UI implication:* leave unobserved variants absent instead of filling them from a generic Samsung pattern.
+
+### Personas
+
+No first-party audience research suitable for named personas was collected in this packet. Do not invent demographic personas.
+
+Samsung Korea public-web and Galaxy platform audiences may be added only with a Samsung first-party audience or product-research source.
+
+## Colors
 
 ### Captured Korean public web surfaces
 - **Primary action and foreground** (`#000000`): observed on the homepage contained CTA and across the AI-product card/title treatments.
@@ -243,7 +214,7 @@ The supplied 2026-07-13 evidence covers a Korean homepage, an AI-products page, 
 ### One UI documentation boundary
 - **One UI primary** (`#0381fe`): Samsung’s official One UI color guidance assigns it to floating action buttons and sliders. It belongs to the platform design-system source, not to the captured Korean commerce CTA. [Color system and usage](https://developer.samsung.com/one-ui/color/system.html)
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -257,7 +228,31 @@ The supplied 2026-07-13 evidence covers a Korean homepage, an AI-products page, 
 
 **System/unresolved.** Dotum, Apple SD Gothic Neo, Arial, and `sans-serif` occur only as fallbacks in the captured computed stacks. No runtime availability authorizes their use as Samsung substitutes. Additional locales, native One UI font behavior, and all uncaptured pages remain unresolved.
 
-## 4. Component Stylings
+## Layout
+
+The one captured desktop viewport repeatedly exposes 12px navigation insets, 24px horizontal CTA padding, and a 32px product-card text inset. Treat these as local, observed spacing values rather than a complete Samsung grid scale. The capture does not compare breakpoints, measure a checkout layout, or establish a universal product-listing grid.
+
+### Responsive Behavior
+
+No viewport comparison was included in the supplied artifact. The values above describe the captured desktop surfaces only; no Samsung-specific mobile navigation, grid collapse, touch target, or breakpoint geometry is asserted.
+
+## Elevation & Depth
+
+Representative contained CTAs, AI-product cards, tabs, and menu structures in the artifact report `box-shadow: none`. Hierarchy in these observed surfaces comes from product imagery, white versus `#f7f7f7` planes, typography, and borders. No modal, tooltip, or floating-panel elevation is claimed.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+The artifact records state and interaction kinds, not timing curves or transition durations. One UI documentation includes a separate motion section, but no motion token is promoted here without a matching captured surface/value. Preserve reduced-motion and accessibility requirements in an implementation without presenting them as measured Samsung commerce motion.
+
+The 2026-09-29 probe read the computed transitions of six homepage controls: the outlined CTA animates `background-color, border-color, color` over 0.2s linear, the search trigger animates `border-color` over 0.5s `cubic-bezier(0.35, 0, 0.36, 1)`, and the other four switch instantly (`transition: all 0s`). These are observed values, not a motion token.
+
+## Components
 
 ### Homepage calls to action
 
@@ -383,15 +378,21 @@ file are a source id and a token name, not classes on a capture. None of the eig
 components above carries a measured value here. (Corrected 2026-09-29: this paragraph said the
 tab was captured on a Samsung developer page; it was captured on `https://www.samsung.com/sec/ai-products/`.)
 
-## 5. Layout Principles
+### States
 
-The one captured desktop viewport repeatedly exposes 12px navigation insets, 24px horizontal CTA padding, and a 32px product-card text inset. Treat these as local, observed spacing values rather than a complete Samsung grid scale. The capture does not compare breakpoints, measure a checkout layout, or establish a universal product-listing grid.
+| State | Captured evidence boundary |
+|---|---|
+| Selected tab | AI-products `tab__item-title` records `selected` and `tab-selected`; color/padding/type are retained in §4. |
+| Keyboard focus | Authored `outline: 2px dotted #000000` on all six controls probed on 2026-09-29 (0px offset on the CTA buttons and the search trigger, 1px on the links and the tile); the navigation link also turns `#006bea`, and the product tile also fades in its 구매하기 row. |
+| Hover / pressed | The outlined CTA inverts to `#000000` / `#ffffff`; the navigation link turns `#006bea` with a 2px bar and opens the white mega-menu panel; the search trigger turns bg `rgba(247, 247, 247, 0.3)` with a 1px `rgba(0, 0, 0, 0.3)` border; the product-tile image scales to 1.05 and its 구매하기 row fades in (opacity 0 → 1); the contained CTA itself does not respond. |
+| Pressed text CTA | The underlined CTA goes to fg `rgba(0, 0, 0, 0.7)` (2026-07-13 and 2026-09-29); hover leaves it at rest. |
+| Pressed search control | AI-products and brand-identity search controls record `pressed` in 2026-07-13 frames that kept `#f7f7f7`; no pressed value is asserted for those pages. |
+| Disabled carousel arrow | Homepage carousel arrows record `disabled`; no opacity or disabled-button rule is asserted. |
+| Expanded menu | Brand-identity navigation records `expanded` / `menu-open`; panel geometry and shadow were not promoted. |
 
-## 6. Depth & Elevation
+No current capture evidence supports universal loading, empty, form-error, success, skeleton, or modal-state rules.
 
-Representative contained CTAs, AI-product cards, tabs, and menu structures in the artifact report `box-shadow: none`. Hierarchy in these observed surfaces comes from product imagery, white versus `#f7f7f7` planes, typography, and borders. No modal, tooltip, or floating-panel elevation is claimed.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the contained homepage CTA only with the measured black/white, 20px-corner, 40px-high treatment.
@@ -407,11 +408,11 @@ Representative contained CTAs, AI-product cards, tabs, and menu structures in th
 - Do not treat the brand-identity documentation page as native Galaxy-app evidence.
 - Do not use navigation blue `#006bea` as a rest or fill colour; it marks hover, press and focus on navigation only.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-No viewport comparison was included in the supplied artifact. The values above describe the captured desktop surfaces only; no Samsung-specific mobile navigation, grid collapse, touch target, or breakpoint geometry is asserted.
+Samsung’s official brand story calls its expression bold, genuine, contemporary, and playful. On the captured Korean public surfaces, that broader tone becomes direct category and action language rather than a claim about every channel or locale. Use concise, specific labels that name the product or action; do not invent marketing superlatives, price claims, or product benefits. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/)
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick reference
 - Homepage contained CTA: `#000000` background, `#ffffff` text, 1px black border, 20px radius, 10px 24px 9px padding, 40px height, SamsungOneKorean 14px/700.
@@ -423,45 +424,13 @@ No viewport comparison was included in the supplied artifact. The values above d
 ### Boundary-aware prompt
 - "Create a Korean public-web CTA using Samsung’s captured homepage treatment: black background, white text, 20px radius, 40px height, 10px 24px 9px padding, and SamsungOneKorean 14px/700. Do not use One UI blue. The contained CTA does not change on hover; draw keyboard focus as a 2px dotted black outline."
 
-## 10. Voice & Tone
+## Governance
 
-Samsung’s official brand story calls its expression bold, genuine, contemporary, and playful. On the captured Korean public surfaces, that broader tone becomes direct category and action language rather than a claim about every channel or locale. Use concise, specific labels that name the product or action; do not invent marketing superlatives, price claims, or product benefits. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/)
+### Known Gaps
 
-## 11. Brand Narrative
-
-Samsung’s official Korean brand story dates the company’s story to 1969 and states a purpose of creating human-driven innovations that overcome barriers for a better world. It also describes people and their concerns as central to what Samsung creates, and names values around people, excellence, change, integrity, and co-prosperity. This provides context for the consumer-device and service ecosystem; it does not prove a specific public-web token. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/)
-
-The current design expression spans more than the captured commerce pages. Samsung’s brand material treats color, typography, logo, and sound as distinct visual/experiential assets, while One UI documents a platform system for phones, tablets, wearables, earbuds, and PCs. This reference retains those domains separately so a marketplace CTA is not presented as a native One UI control. [Brand identity](https://www.samsung.com/sec/about-us/brand-identity/) · [One UI overview](https://developer.samsung.com/one-ui/index.html)
-
-## 12. Principles
-
-1. **Put people and tasks first.** Samsung’s brand story and One UI guidance both center human experience and focused tasks. *UI implication:* state the action clearly and avoid decorative flow interruptions.
-2. **Use a connected typographic voice.** Samsung positions SamsungOne as a localized, universal family. *UI implication:* preserve the observed SamsungOneKorean UI role; do not substitute a system face as if it were SamsungOne.
-3. **Keep surface domains distinct.** The public Korean web and One UI are both official but have different evidence and component contexts. *UI implication:* use `#0381fe` only when implementing the documented One UI platform context, not as a generic Samsung-commerce action color.
-4. **Retain observed component boundaries.** The 2026-07-13 capture and the 2026-09-29 probe have exact evidence for the CTA, navigation, search-trigger, product-tile, media-card, and selected-tab treatments only. *UI implication:* leave unobserved variants absent instead of filling them from a generic Samsung pattern.
-
-## 13. Personas
-
-No first-party audience research suitable for named personas was collected in this packet. Do not invent demographic personas.
-
-Samsung Korea public-web and Galaxy platform audiences may be added only with a Samsung first-party audience or product-research source.
-
-## 14. States
-
-| State | Captured evidence boundary |
-|---|---|
-| Selected tab | AI-products `tab__item-title` records `selected` and `tab-selected`; color/padding/type are retained in §4. |
-| Keyboard focus | Authored `outline: 2px dotted #000000` on all six controls probed on 2026-09-29 (0px offset on the CTA buttons and the search trigger, 1px on the links and the tile); the navigation link also turns `#006bea`, and the product tile also fades in its 구매하기 row. |
-| Hover / pressed | The outlined CTA inverts to `#000000` / `#ffffff`; the navigation link turns `#006bea` with a 2px bar and opens the white mega-menu panel; the search trigger turns bg `rgba(247, 247, 247, 0.3)` with a 1px `rgba(0, 0, 0, 0.3)` border; the product-tile image scales to 1.05 and its 구매하기 row fades in (opacity 0 → 1); the contained CTA itself does not respond. |
-| Pressed text CTA | The underlined CTA goes to fg `rgba(0, 0, 0, 0.7)` (2026-07-13 and 2026-09-29); hover leaves it at rest. |
-| Pressed search control | AI-products and brand-identity search controls record `pressed` in 2026-07-13 frames that kept `#f7f7f7`; no pressed value is asserted for those pages. |
-| Disabled carousel arrow | Homepage carousel arrows record `disabled`; no opacity or disabled-button rule is asserted. |
-| Expanded menu | Brand-identity navigation records `expanded` / `menu-open`; panel geometry and shadow were not promoted. |
-
-No current capture evidence supports universal loading, empty, form-error, success, skeleton, or modal-state rules.
-
-## 15. Motion & Easing
-
-The artifact records state and interaction kinds, not timing curves or transition durations. One UI documentation includes a separate motion section, but no motion token is promoted here without a matching captured surface/value. Preserve reduced-motion and accessibility requirements in an implementation without presenting them as measured Samsung commerce motion.
-
-The 2026-09-29 probe read the computed transitions of six homepage controls: the outlined CTA animates `background-color, border-color, color` over 0.2s linear, the search trigger animates `border-color` over 0.5s `cubic-bezier(0.35, 0, 0.36, 1)`, and the other four switch instantly (`transition: all 0s`). These are observed values, not a motion token.
+- **Contrast, `outlined-cta`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `underlined-cta`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `gnb-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `product-tile`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `icon-label-cta`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `brand-lnb-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

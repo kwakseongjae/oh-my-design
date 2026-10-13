@@ -1,64 +1,134 @@
 ---
-id: moze
 name: MOZE
-country: TW
-category: fintech
-homepage: "https://moze.app/"
-primary_color: "#ff367c"
-logo:
-  type: favicon
-  slug: "https://framerusercontent.com/images/DoQvcMSfFqFHJHne39zr96KczM.png"
-verified: "2026-06-17"
-added: "2026-06-17"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "Dark editorial finance app. Canvas near-black #0d0d12; action = pink→periwinkle gradient (#ff367c → #6e86ff). primary_color = brand pink #ff367c (gradient terminus + logo). Display = Poppins; CJK body falls back to system sans-serif (no embedded CJK webfont — Traditional-Chinese rendered via platform 蘋方/思源 stack). White body text is rgba(255,255,255,0.87) live; tokens carry solid #ffffff (translucency noted in prose)."
-  colors:
-    primary: "#ff367c"
-    primary-blue: "#6e86ff"
-    violet: "#a963ff"
-    accent-periwinkle: "#8897e3"
-    accent-orange: "#f58327"
-    accent-gold: "#f0c732"
-    accent-green: "#4dff64"
-    accent-lavender: "#bba2e0"
-    canvas: "#0d0d12"
-    black: "#000000"
-    panel: "#1a1d31"
-    panel-raised: "#323648"
-    on-dark: "#ffffff"
-    body: "#d0d0d0"
-    muted: "#7b7c8c"
-  typography:
-    family: { display: "Poppins", body: "system sans-serif (CJK fallback)" }
-    display-hero: { size: 52, weight: 400, lineHeight: 1.4, tracking: -2.08, use: "Hero / section headlines, Poppins" }
-    section:      { size: 32, weight: 400, lineHeight: 1.4, use: "Sub-section heads (H3), Poppins" }
-    plan-name:    { size: 24, weight: 400, lineHeight: 1.3, use: "Pricing plan title (H4), Poppins" }
-    body:         { size: 18, weight: 400, lineHeight: 1.5, use: "Lead / inline body copy, system sans" }
-    nav:          { size: 12, weight: 400, lineHeight: 1.3, use: "Top-nav link, system sans" }
-    button:       { size: 12, weight: 400, lineHeight: 1.3, use: "Pill CTA label, system sans" }
-  spacing: { xs: 1, sm: 2, base: 12, md: 20, lg: 32, section: 64 }
-  rounded: { sm: 8, md: 20, lg: 40, full: 999 }
-  shadow:
-    glow-cta: "rgba(255,89,0,0.7) -12px 0px 21px -3px, rgb(255,56,132) -7px 0px 10px -5px"
-    glow-card: "rgba(255,128,176,0.28) 0px -4px 32px 0px, rgba(87,95,255,0.25) 0px 0px 32px 0px"
-  components:
-    cta-gradient: { type: button, fg: "#ffffff", radius: "999px", padding: "12px 20px", height: "41px", font: "12px / 400 system-sans", bg: "#ff367c", states: "pink→periwinkle gradient 274deg #6e86ff→#ff367c; orange/pink glow shadow", use: "Primary download CTA (立即免費下載 / 立即下載)" }
-    cta-outline: { type: button, fg: "#ffffff", radius: "999px", padding: "1px", height: "43px", border: "1px gradient ring (orange #f58327 radial)", use: "Secondary pill CTA (查看完整教學)" }
-    nav-link: { type: tab, fg: "#ffffff", font: "12px / 400 system-sans", padding: "2px 0px", height: "30px", use: "Top-nav item (定價方案 / 教學文件 / 常見問題)", active: "white #ffffff on dark" }
-    plan-card-free: { type: card, bg: "#323648", radius: "20px", padding: "32px", use: "Free pricing tier card (基本版 $0)" }
-    plan-card-pro: { type: card, bg: "#1a1d31", radius: "20px", padding: "32px", border: "1px gradient ring (pink #ff367c → violet #a963ff)", use: "Highlighted pro tier card (專業版 + AI), pink/blue glow shadow" }
-    feature-card: { type: card, bg: "#1a1d31", radius: "20px", padding: "32px", use: "Feature / screenshot panel on canvas" }
-    badge-accent: { type: badge, bg: "#ff367c", fg: "#ffffff", radius: "999px", font: "12px / 400 system-sans", use: "Highlight / emphasis pill (solid pink)" }
-    inline-link: { type: listItem, fg: "#bba2e0", font: "18px / 400 system-sans", use: "Inline lavender text link (這裡)" }
-  components_harvested: true
+colors:
+  primary: '#ff367c'
+  primary-blue: '#6e86ff'
+  violet: '#a963ff'
+  accent-periwinkle: '#8897e3'
+  accent-orange: '#f58327'
+  accent-gold: '#f0c732'
+  accent-green: '#4dff64'
+  accent-lavender: '#bba2e0'
+  canvas: '#0d0d12'
+  black: '#000000'
+  panel: '#1a1d31'
+  panel-raised: '#323648'
+  on-dark: '#ffffff'
+  body: '#d0d0d0'
+  muted: '#7b7c8c'
+typography:
+  display-hero:
+    fontSize: 52px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: '-2.08px'
+    use: Hero / section headlines, Poppins
+  section:
+    fontSize: 32px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Sub-section heads (H3), Poppins
+  plan-name:
+    fontSize: 24px
+    fontWeight: 400
+    lineHeight: 1.3
+    use: Pricing plan title (H4), Poppins
+  body:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Lead / inline body copy, system sans
+  nav:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.3
+    use: Top-nav link, system sans
+  button:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.3
+    use: Pill CTA label, system sans
+rounded:
+  sm: 8px
+  md: 20px
+  lg: 40px
+  full: 999px
+spacing:
+  xs: 1
+  sm: 2
+  base: 12
+  md: 20
+  lg: 32
+  section: 64
+components:
+  cta-gradient:
+    type: button
+    textColor: '#ffffff'
+    rounded: 999px
+    padding: 12px 20px
+    height: 41px
+    typography: 12px / 400 system-sans
+    backgroundColor: '#ff367c'
+    states: 'pink→periwinkle gradient 274deg #6e86ff→#ff367c; orange/pink glow shadow'
+    use: Primary download CTA (立即免費下載 / 立即下載)
+  cta-outline:
+    type: button
+    textColor: '#ffffff'
+    rounded: 999px
+    padding: 1px
+    height: 43px
+    border: '1px gradient ring (orange #f58327 radial)'
+    use: Secondary pill CTA (查看完整教學)
+  nav-link:
+    type: tab
+    textColor: '#ffffff'
+    typography: 12px / 400 system-sans
+    padding: 2px 0px
+    height: 30px
+    use: Top-nav item (定價方案 / 教學文件 / 常見問題)
+    active: 'white #ffffff on dark'
+  plan-card-free:
+    type: card
+    backgroundColor: '#323648'
+    rounded: 20px
+    padding: 32px
+    use: Free pricing tier card (基本版 $0)
+  plan-card-pro:
+    type: card
+    backgroundColor: '#1a1d31'
+    rounded: 20px
+    padding: 32px
+    border: '1px gradient ring (pink #ff367c → violet #a963ff)'
+    use: Highlighted pro tier card (專業版 + AI), pink/blue glow shadow
+  feature-card:
+    type: card
+    backgroundColor: '#1a1d31'
+    rounded: 20px
+    padding: 32px
+    use: Feature / screenshot panel on canvas
+  badge-accent:
+    type: badge
+    backgroundColor: '#ff367c'
+    textColor: '#ffffff'
+    rounded: 999px
+    typography: 12px / 400 system-sans
+    use: Highlight / emphasis pill (solid pink)
+  inline-link:
+    type: listItem
+    textColor: '#bba2e0'
+    typography: 18px / 400 system-sans
+    use: Inline lavender text link (這裡)
+fonts:
+  roles:
+    display: Poppins
+    body: system sans-serif (CJK fallback)
 ---
 
 # Design System Inspiration of MOZE
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 MOZE (摩斯, "最美記帳 App") is Taiwan's design-forward personal-finance and expense-tracking app, and its marketing site is built as a dark, cinematic, almost-luxury product showcase rather than a utilitarian tool page. The canvas is a near-black blue-tinted ink (`#0d0d12`) layered over true black (`#000000`), so the whole surface reads like a high-end gadget unboxing in a dimmed room. Against that darkness the brand stages a single, unmistakable signature: a vivid pink-to-periwinkle gradient (`#ff367c` → `#6e86ff`) that runs through the primary download CTA, the highlighted pricing tier, and the triangular "M" app icon itself. The atmosphere is premium-but-playful — the restraint of a black canvas paired with the energy of a saturated neon gradient.
 
@@ -75,7 +145,7 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 - White-at-87%-opacity ink (`rgba(255,255,255,0.87)`) for headings; grey ladder `#d0d0d0` → `#7b7c8c` for secondary text
 - Multi-hue accent set (orange `#f58327`, gold `#f0c732`, green `#4dff64`, violet `#a963ff`, periwinkle `#8897e3`) reserved for charts/data-viz, never chrome
 
-## Primary tasks
+### Primary tasks
 
 - Log an expense as an everyday ritual
 - See a whole financial picture in charts and budgets
@@ -83,7 +153,33 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 - Compare the free and paid tiers before subscribing
 - Separate personal spending from business spending
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+MOZE (摩斯) is a Taiwan-made personal-finance and expense-tracking app, widely cited in the local press and App Store reviews as "最美記帳 App" — "the most beautiful bookkeeping app." Its founding premise, legible in both the product and the marketing site, is that managing money should be an elegant, even pleasurable, daily ritual rather than a tedious obligation. The site's framing — "記帳，是理財的第一步" ("bookkeeping is the first step of financial management") — positions the humble act of logging an expense as the entry point to a larger journey of financial control.
+
+The product matured into a full multi-currency, budget, and data-visualization platform: refined charts, flexible categories, cross-device sync (including Apple Watch, surfaced explicitly on the homepage), and an AI-assisted logging tier (專業版 + AI). The brand leans into a premium, dark-mode-first aesthetic precisely because its differentiator is *beauty and data clarity* — it competes not on being free or fast, but on being the bookkeeping app you actually want to open.
+
+What MOZE refuses, visible in its design: the spreadsheet-grey utilitarianism of legacy expense trackers, and the cluttered ad-driven free apps that treat finance data as a commodity. What it embraces: a cinematic dark canvas, a singular neon pink-to-periwinkle gradient identity, generous glow and refined Poppins display type, and a respect for Traditional-Chinese readers by letting the platform's own type render hanzi cleanly.
+
+### Principles
+
+1. **Beauty is a feature.** MOZE's entire premise is that a beautiful tool gets used. *UI implication:* invest in the dark canvas, the gradient, and the glow — visual craft is not decoration, it is the product's reason to exist.
+2. **One gradient, one action.** The pink→periwinkle blend (`#ff367c` → `#6e86ff`) means "do this." *UI implication:* reserve the signature gradient for the primary CTA and the highlighted tier so the next step is unambiguous.
+3. **Elevate with light, not weight.** *UI implication:* use colored ambient glow for emphasis on the dark canvas; avoid grey drop shadows and heavy borders.
+4. **Respect the reader's language.** *UI implication:* let the system CJK face render Traditional-Chinese body cleanly; use Poppins only where Latin display earns it.
+5. **Data deserves clarity and color.** *UI implication:* reserve the orange/gold/green accent set for charts and data-viz, keeping the chrome calm so the numbers can speak.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable MOZE user segments (design-conscious Taiwanese savers, iOS power users, budget-tracking professionals), not individual people.*
+
+**林雅婷, 28, 台北.** A design-conscious office worker who tried three free budget apps and abandoned them for being ugly. Chose MOZE because it looks like it belongs on her iPhone home screen, and logging an expense feels pleasant rather than punishing.
+
+**陳冠宇, 34, 新竹.** An engineer who manages multiple currencies and credit cards. Uses MOZE's charts and budgets to see his financial picture at a glance, and values the Apple Watch quick-entry. Pays for the Pro tier because the data-visualization is worth it.
+
+**黃詩涵, 41, 高雄.** A small-business owner who wants a calm, beautiful way to separate personal and business spending. Trusts MOZE's restrained, non-ad-driven interface and appreciates that the Traditional-Chinese text renders crisply on her devices.
+
+## Colors
 
 ### Primary & Brand Gradient
 - **MOZE Pink** (`#ff367c`): Primary brand color and the gradient's terminus. Appears as a solid emphasis fill and the warm end of the signature CTA/Pro-card gradient. The system's single "action" hue.
@@ -108,7 +204,7 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 - **Gold** (`#f0c732`): Yellow data-visualization accent (chart series, rating stars).
 - **Green** (`#4dff64`): Positive / income data-viz highlight (a vivid lime).
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display**: `Poppins` (with `Poppins Placeholder` fallback) — all Latin headlines, hero text, pricing numerals. A geometric rounded sans giving the brand its friendly-premium Latin voice.
@@ -132,7 +228,129 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 - **Single display weight**: headlines run at weight 400 (regular) and rely on size + white@87% contrast rather than bold weight for hierarchy.
 - **Soft white, not pure white**: heading ink is `rgba(255,255,255,0.87)`, never `#ffffff` at full opacity — a premium, low-glare near-white on the dark canvas.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px, with a coarse jump to 12/20/32 for component padding
+- Scale: 1px, 2px, 12px, 20px, 32px, 64px
+- Notable: pricing cards use a uniform 32px internal padding; section rhythm runs to 64px
+
+### Grid & Container
+- Centered single-column hero anchored by the 52px Poppins headline
+- Pricing: three equal-width plan cards (~377-379px) in a row, 20px radius, the middle "Pro + AI" card visually elevated with a gradient ring + glow
+- Feature sections alternate full-width dark bands with centered screenshot/feature cards
+- Generous dark negative space between sections — the canvas does the separating
+
+### Whitespace Philosophy
+- **Dark room, spotlit content**: the near-black canvas (`#0d0d12`) lets a single glowing CTA or card command attention.
+- **Glow as grouping**: related emphasis (Pro card, primary CTA) is grouped by colored ambient light rather than borders.
+- **Pill rhythm**: every interactive affordance is a 999px pill, creating a consistent rounded cadence.
+
+### Border Radius Scale
+- Small (8px): inner chips, small containers
+- Medium (20px): cards, feature panels, plan cards — the workhorse
+- Large (40px): larger rounded containers / carousel controls
+- Full (999px): all CTAs and badges
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, plan cards stack vertically |
+| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
+| Desktop | 1024-1440px | Full layout, 3-up pricing row, centered hero |
+
+#### Touch Targets
+- Primary CTA pill at 41px height, full 999px radius — an unmistakable tap target
+- Outline CTA at 43px height
+- Nav items at 30px height with generous spacing on the dark bar
+
+#### Collapsing Strategy
+- Hero: 52px Poppins headline scales down on mobile, weight 400 maintained
+- Pricing: three-card row → stacked single column, the Pro card retains its gradient ring + glow
+- Feature bands: multi-column → stacked, screenshots scale within 20px-radius cards
+- Dark canvas treatment is preserved at every breakpoint
+
+#### Image Behavior
+- App screenshots and device mockups sit inside 20px-radius panels on the dark canvas
+- Brand gradient glows simplify but persist on mobile
+- The triangular "M" logo scales cleanly as a vector-like PNG mark
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow on `#0d0d12` canvas | Page background, body text |
+| Panel (Level 1) | `#1a1d31` / `#323648` surface shift | Card / plan separation by tone |
+| Glow CTA (Level 2) | `rgba(255,89,0,0.7) -12px 0px 21px -3px, rgb(255,56,132) -7px 0px 10px -5px` | Primary download pill |
+| Glow Card (Level 3) | `rgba(255,128,176,0.28) 0px -4px 32px 0px, rgba(87,95,255,0.25) 0px 0px 32px 0px` | Highlighted Pro plan card |
+
+**Shadow Philosophy**: MOZE elevates with **colored light, not grey shadow**. There are no neutral drop shadows; instead, the primary CTA emits a warm orange-and-pink halo and the featured pricing card floats on a pink/blue ambient glow that echoes the brand gradient. On a near-black canvas this reads as neon signage in a dark room — depth that is simultaneously brand atmosphere. Lower-priority panels separate purely by surface tone (`#1a1d31` vs `#323648`), reserving glow exclusively for the things the user should act on.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.glow-cta`: `rgba(255,89,0,0.7) -12px 0px 21px -3px, rgb(255,56,132) -7px 0px 10px -5px`
+- `shadow.glow-card`: `rgba(255,128,176,0.28) 0px -4px 32px 0px, rgba(87,95,255,0.25) 0px 0px 32px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 240ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 360ms | Page-level transitions, hero reveal, glow swell |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, glow fade-in |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is smooth and premium — consistent with the cinematic dark aesthetic. The signature gesture is a slow **glow swell**: the CTA and Pro-card ambient glow gently breathe/intensify on hover at `motion-slow`, reinforcing the "neon in a dark room" identity. Cards and chart data fade in from below at `motion-standard / ease-enter`. No bounce or spring — a finance product signals steadiness and elegance, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the glow holds steady; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on two brand-owned surfaces:
+- https://moze.app/ (homepage): hero H2 "用最優雅的方式簡化你的財務旅程" — Poppins 52px / 400 / rgba(255,255,255,0.87);
+  canvas bg rgb(13,13,18) #0d0d12; primary CTA "立即免費下載" radius 999px / padding 12px 20px / height 41px /
+  gradient linear-gradient(274deg, rgb(110,134,255) → rgb(255,54,124)) / glow shadow rgba(255,89,0,0.7) -12px 0px 21px -3px, rgb(255,56,132) -7px 0px 10px -5px;
+  nav links 12px white; feature/section H3 32px Poppins; accents rgb(245,131,39) #f58327, rgb(247,206,54) #f7ce36, rgb(77,255,100) #4dff64, rgb(136,151,227) #8897e3.
+- https://moze.app/pricing (pricing page): plan H2 prices 52px Poppins -2.08px tracking; plan name H4 24px Poppins;
+  Free card bg rgb(50,54,72) #323648 / radius 20px / padding 32px; Pro card bg rgb(26,29,49) #1a1d31 / radius 20px /
+  gradient ring linear-gradient(150deg, rgb(255,54,124) → rgb(169,99,255)) and 274deg #6e86ff→#ff367c /
+  glow shadow rgba(255,128,176,0.28) 0px -4px 32px 0px, rgba(87,95,255,0.25) 0px 0px 32px 0px.
+
+Token-level claims (§1-9) are sourced from this live inspection. Full raw samples in web/references/moze/.verification.md.
+
+Typography note: the site declares a plain `sans-serif` body stack with no embedded CJK webfont; Traditional-Chinese
+renders via the platform face (蘋方 / PingFang on Apple, 思源黑體 / Noto Sans CJK elsewhere). Poppins (with "Poppins
+Placeholder") and Inter are the only embedded Latin webfonts observed.
+
+Voice samples (§10) are verbatim from the live homepage and pricing page.
+
+Brand narrative (§11): MOZE (摩斯) is a Taiwan-made personal-finance / expense-tracking app widely described as
+"最美記帳 App." The tiering (基本版 / 專業版 / 專業版 + AI), multi-currency, charts, Apple Watch support, and AI logging
+are stated on the live homepage and pricing page. Broader characterizations are editorial readings of the observed
+product positioning, not directly quoted MOZE corporate statements.
+
+Personas (§13) are fictional archetypes informed by publicly observable MOZE user segments (design-conscious
+Taiwanese savers, iOS power users). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "beauty is a feature", "one gradient, one action", "elevate with light not weight")
+are editorial readings connecting MOZE's observed design to its positioning, not directly sourced MOZE statements.
+-->
+</content>
+</invoke>
+
+## Components
 
 ### Buttons
 
@@ -204,42 +422,21 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 **Tier 2 sources:** getdesign.md/moze — not listed (TW brand, Western catalog under-covers); styles.refero.design/?q=moze — not listed
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px, with a coarse jump to 12/20/32 for component padding
-- Scale: 1px, 2px, 12px, 20px, 32px, 64px
-- Notable: pricing cards use a uniform 32px internal padding; section rhythm runs to 64px
+| State | Treatment |
+|---|---|
+| **Empty (no transactions yet)** | Dark `#0d0d12` canvas. Single white@87% line inviting the first entry, with one pink-gradient CTA. No clutter — the emptiness feels intentional, like a fresh ledger. |
+| **Empty (no budget set)** | Muted Grey (`#7b7c8c`) single line explaining no budget yet, plus a path to create one. Calm, non-judgmental. |
+| **Loading (chart/data fetch)** | Skeleton blocks on `#1a1d31` panels at final dimensions, 20px radius. Subtle gradient shimmer consistent with the glow language. |
+| **Loading (sync across devices)** | Inline progress with previous values visible; the dark canvas keeps focus on existing data. |
+| **Error (sync failed)** | Inline message in white@87% with a plain-language explanation and retry. No generic alert dump — states the next step. |
+| **Error (input validation)** | Field-level message below the input in a warm accent tone; describes what's valid, not just "必填". |
+| **Success (entry saved)** | Brief inline confirmation in calm tone; the new row appears immediately. No celebratory emoji — the data updating is the confirmation. |
+| **Skeleton** | `#1a1d31` blocks at final dimensions, 20px radius, soft glow-tinted pulse. |
+| **Disabled** | Muted Grey (`#7b7c8c`) text on reduced-opacity surface; gradient actions fade rather than turn flat-grey, preserving the brand read. |
 
-### Grid & Container
-- Centered single-column hero anchored by the 52px Poppins headline
-- Pricing: three equal-width plan cards (~377-379px) in a row, 20px radius, the middle "Pro + AI" card visually elevated with a gradient ring + glow
-- Feature sections alternate full-width dark bands with centered screenshot/feature cards
-- Generous dark negative space between sections — the canvas does the separating
-
-### Whitespace Philosophy
-- **Dark room, spotlit content**: the near-black canvas (`#0d0d12`) lets a single glowing CTA or card command attention.
-- **Glow as grouping**: related emphasis (Pro card, primary CTA) is grouped by colored ambient light rather than borders.
-- **Pill rhythm**: every interactive affordance is a 999px pill, creating a consistent rounded cadence.
-
-### Border Radius Scale
-- Small (8px): inner chips, small containers
-- Medium (20px): cards, feature panels, plan cards — the workhorse
-- Large (40px): larger rounded containers / carousel controls
-- Full (999px): all CTAs and badges
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow on `#0d0d12` canvas | Page background, body text |
-| Panel (Level 1) | `#1a1d31` / `#323648` surface shift | Card / plan separation by tone |
-| Glow CTA (Level 2) | `rgba(255,89,0,0.7) -12px 0px 21px -3px, rgb(255,56,132) -7px 0px 10px -5px` | Primary download pill |
-| Glow Card (Level 3) | `rgba(255,128,176,0.28) 0px -4px 32px 0px, rgba(87,95,255,0.25) 0px 0px 32px 0px` | Highlighted Pro plan card |
-
-**Shadow Philosophy**: MOZE elevates with **colored light, not grey shadow**. There are no neutral drop shadows; instead, the primary CTA emits a warm orange-and-pink halo and the featured pricing card floats on a pink/blue ambient glow that echoes the brand gradient. On a near-black canvas this reads as neon signage in a dark room — depth that is simultaneously brand atmosphere. Lower-priority panels separate purely by surface tone (`#1a1d31` vs `#323648`), reserving glow exclusively for the things the user should act on.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the near-black blue-ink canvas (`#0d0d12`) as the base — MOZE is dark-mode-first
@@ -261,32 +458,26 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 - Use the orange/gold/green accents as button or link colors — they're data-viz / chart hues
 - Use heavy bold display weight — MOZE headlines stay at weight 400 and rely on size + glow
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, plan cards stack vertically |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, 3-up pricing row, centered hero |
+MOZE's voice is **elegant, aspirational, and quietly confident** — it frames bookkeeping (記帳) not as a chore but as the graceful first step toward financial well-being. The hero line "用最優雅的方式簡化你的財務旅程" ("Simplify your financial journey in the most elegant way") sets the register: refined, journey-framed, never gimmicky or guilt-driven. Copy treats the user as someone with taste who wants their money tools to be as beautiful as the rest of their device.
 
-### Touch Targets
-- Primary CTA pill at 41px height, full 999px radius — an unmistakable tap target
-- Outline CTA at 43px height
-- Nav items at 30px height with generous spacing on the dark bar
+| Context | Tone |
+|---|---|
+| Hero headlines | Aspirational, elegance-framed. "用最優雅的方式簡化你的財務旅程." Confident, never hype. |
+| Feature heads | Calm and descriptive. "跨越裝置的財務掌控", "全面的記帳體驗，持續進化中". |
+| Pricing | Plain and honest. "投資你的財務健康" framing tiers as 基本版 / 專業版 / 專業版 + AI. |
+| CTAs | Direct, low-pressure. "立即免費下載", "查看完整教學". |
+| Testimonials | Warm, human. "真實用戶，真心推薦" (real users, sincere recommendations). |
 
-### Collapsing Strategy
-- Hero: 52px Poppins headline scales down on mobile, weight 400 maintained
-- Pricing: three-card row → stacked single column, the Pro card retains its gradient ring + glow
-- Feature bands: multi-column → stacked, screenshots scale within 20px-radius cards
-- Dark canvas treatment is preserved at every breakpoint
+**Voice samples (verbatim from live surfaces):**
+- "用最優雅的方式簡化你的財務旅程" — hero headline (elegance + journey framing). *(verified live 2026-06-17, moze.app)*
+- "記帳，是理財的第一步" — section headline ("bookkeeping is the first step of money management"). *(verified live 2026-06-17, moze.app)*
+- "投資你的財務健康" — pricing page headline ("invest in your financial health"). *(verified live 2026-06-17, moze.app/pricing)*
 
-### Image Behavior
-- App screenshots and device mockups sit inside 20px-radius panels on the dark canvas
-- Brand gradient glows simplify but persist on mobile
-- The triangular "M" logo scales cleanly as a vector-like PNG mark
+**Forbidden register**: guilt-based budgeting pressure, aggressive sales urgency, jargon-heavy finance-speak left undefined, exclamation-heavy hype.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action: MOZE Pink (`#ff367c`) → Periwinkle (`#6e86ff`) gradient
@@ -316,116 +507,9 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-MOZE's voice is **elegant, aspirational, and quietly confident** — it frames bookkeeping (記帳) not as a chore but as the graceful first step toward financial well-being. The hero line "用最優雅的方式簡化你的財務旅程" ("Simplify your financial journey in the most elegant way") sets the register: refined, journey-framed, never gimmicky or guilt-driven. Copy treats the user as someone with taste who wants their money tools to be as beautiful as the rest of their device.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Aspirational, elegance-framed. "用最優雅的方式簡化你的財務旅程." Confident, never hype. |
-| Feature heads | Calm and descriptive. "跨越裝置的財務掌控", "全面的記帳體驗，持續進化中". |
-| Pricing | Plain and honest. "投資你的財務健康" framing tiers as 基本版 / 專業版 / 專業版 + AI. |
-| CTAs | Direct, low-pressure. "立即免費下載", "查看完整教學". |
-| Testimonials | Warm, human. "真實用戶，真心推薦" (real users, sincere recommendations). |
-
-**Voice samples (verbatim from live surfaces):**
-- "用最優雅的方式簡化你的財務旅程" — hero headline (elegance + journey framing). *(verified live 2026-06-17, moze.app)*
-- "記帳，是理財的第一步" — section headline ("bookkeeping is the first step of money management"). *(verified live 2026-06-17, moze.app)*
-- "投資你的財務健康" — pricing page headline ("invest in your financial health"). *(verified live 2026-06-17, moze.app/pricing)*
-
-**Forbidden register**: guilt-based budgeting pressure, aggressive sales urgency, jargon-heavy finance-speak left undefined, exclamation-heavy hype.
-
-## 11. Brand Narrative
-
-MOZE (摩斯) is a Taiwan-made personal-finance and expense-tracking app, widely cited in the local press and App Store reviews as "最美記帳 App" — "the most beautiful bookkeeping app." Its founding premise, legible in both the product and the marketing site, is that managing money should be an elegant, even pleasurable, daily ritual rather than a tedious obligation. The site's framing — "記帳，是理財的第一步" ("bookkeeping is the first step of financial management") — positions the humble act of logging an expense as the entry point to a larger journey of financial control.
-
-The product matured into a full multi-currency, budget, and data-visualization platform: refined charts, flexible categories, cross-device sync (including Apple Watch, surfaced explicitly on the homepage), and an AI-assisted logging tier (專業版 + AI). The brand leans into a premium, dark-mode-first aesthetic precisely because its differentiator is *beauty and data clarity* — it competes not on being free or fast, but on being the bookkeeping app you actually want to open.
-
-What MOZE refuses, visible in its design: the spreadsheet-grey utilitarianism of legacy expense trackers, and the cluttered ad-driven free apps that treat finance data as a commodity. What it embraces: a cinematic dark canvas, a singular neon pink-to-periwinkle gradient identity, generous glow and refined Poppins display type, and a respect for Traditional-Chinese readers by letting the platform's own type render hanzi cleanly.
-
-## 12. Principles
-
-1. **Beauty is a feature.** MOZE's entire premise is that a beautiful tool gets used. *UI implication:* invest in the dark canvas, the gradient, and the glow — visual craft is not decoration, it is the product's reason to exist.
-2. **One gradient, one action.** The pink→periwinkle blend (`#ff367c` → `#6e86ff`) means "do this." *UI implication:* reserve the signature gradient for the primary CTA and the highlighted tier so the next step is unambiguous.
-3. **Elevate with light, not weight.** *UI implication:* use colored ambient glow for emphasis on the dark canvas; avoid grey drop shadows and heavy borders.
-4. **Respect the reader's language.** *UI implication:* let the system CJK face render Traditional-Chinese body cleanly; use Poppins only where Latin display earns it.
-5. **Data deserves clarity and color.** *UI implication:* reserve the orange/gold/green accent set for charts and data-viz, keeping the chrome calm so the numbers can speak.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable MOZE user segments (design-conscious Taiwanese savers, iOS power users, budget-tracking professionals), not individual people.*
-
-**林雅婷, 28, 台北.** A design-conscious office worker who tried three free budget apps and abandoned them for being ugly. Chose MOZE because it looks like it belongs on her iPhone home screen, and logging an expense feels pleasant rather than punishing.
-
-**陳冠宇, 34, 新竹.** An engineer who manages multiple currencies and credit cards. Uses MOZE's charts and budgets to see his financial picture at a glance, and values the Apple Watch quick-entry. Pays for the Pro tier because the data-visualization is worth it.
-
-**黃詩涵, 41, 高雄.** A small-business owner who wants a calm, beautiful way to separate personal and business spending. Trusts MOZE's restrained, non-ad-driven interface and appreciates that the Traditional-Chinese text renders crisply on her devices.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no transactions yet)** | Dark `#0d0d12` canvas. Single white@87% line inviting the first entry, with one pink-gradient CTA. No clutter — the emptiness feels intentional, like a fresh ledger. |
-| **Empty (no budget set)** | Muted Grey (`#7b7c8c`) single line explaining no budget yet, plus a path to create one. Calm, non-judgmental. |
-| **Loading (chart/data fetch)** | Skeleton blocks on `#1a1d31` panels at final dimensions, 20px radius. Subtle gradient shimmer consistent with the glow language. |
-| **Loading (sync across devices)** | Inline progress with previous values visible; the dark canvas keeps focus on existing data. |
-| **Error (sync failed)** | Inline message in white@87% with a plain-language explanation and retry. No generic alert dump — states the next step. |
-| **Error (input validation)** | Field-level message below the input in a warm accent tone; describes what's valid, not just "必填". |
-| **Success (entry saved)** | Brief inline confirmation in calm tone; the new row appears immediately. No celebratory emoji — the data updating is the confirmation. |
-| **Skeleton** | `#1a1d31` blocks at final dimensions, 20px radius, soft glow-tinted pulse. |
-| **Disabled** | Muted Grey (`#7b7c8c`) text on reduced-opacity surface; gradient actions fade rather than turn flat-grey, preserving the brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 240ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, hero reveal, glow swell |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, glow fade-in |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is smooth and premium — consistent with the cinematic dark aesthetic. The signature gesture is a slow **glow swell**: the CTA and Pro-card ambient glow gently breathe/intensify on hover at `motion-slow`, reinforcing the "neon in a dark room" identity. Cards and chart data fade in from below at `motion-standard / ease-enter`. No bounce or spring — a finance product signals steadiness and elegance, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the glow holds steady; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on two brand-owned surfaces:
-- https://moze.app/ (homepage): hero H2 "用最優雅的方式簡化你的財務旅程" — Poppins 52px / 400 / rgba(255,255,255,0.87);
-  canvas bg rgb(13,13,18) #0d0d12; primary CTA "立即免費下載" radius 999px / padding 12px 20px / height 41px /
-  gradient linear-gradient(274deg, rgb(110,134,255) → rgb(255,54,124)) / glow shadow rgba(255,89,0,0.7) -12px 0px 21px -3px, rgb(255,56,132) -7px 0px 10px -5px;
-  nav links 12px white; feature/section H3 32px Poppins; accents rgb(245,131,39) #f58327, rgb(247,206,54) #f7ce36, rgb(77,255,100) #4dff64, rgb(136,151,227) #8897e3.
-- https://moze.app/pricing (pricing page): plan H2 prices 52px Poppins -2.08px tracking; plan name H4 24px Poppins;
-  Free card bg rgb(50,54,72) #323648 / radius 20px / padding 32px; Pro card bg rgb(26,29,49) #1a1d31 / radius 20px /
-  gradient ring linear-gradient(150deg, rgb(255,54,124) → rgb(169,99,255)) and 274deg #6e86ff→#ff367c /
-  glow shadow rgba(255,128,176,0.28) 0px -4px 32px 0px, rgba(87,95,255,0.25) 0px 0px 32px 0px.
-
-Token-level claims (§1-9) are sourced from this live inspection. Full raw samples in web/references/moze/.verification.md.
-
-Typography note: the site declares a plain `sans-serif` body stack with no embedded CJK webfont; Traditional-Chinese
-renders via the platform face (蘋方 / PingFang on Apple, 思源黑體 / Noto Sans CJK elsewhere). Poppins (with "Poppins
-Placeholder") and Inter are the only embedded Latin webfonts observed.
-
-Voice samples (§10) are verbatim from the live homepage and pricing page.
-
-Brand narrative (§11): MOZE (摩斯) is a Taiwan-made personal-finance / expense-tracking app widely described as
-"最美記帳 App." The tiering (基本版 / 專業版 / 專業版 + AI), multi-currency, charts, Apple Watch support, and AI logging
-are stated on the live homepage and pricing page. Broader characterizations are editorial readings of the observed
-product positioning, not directly quoted MOZE corporate statements.
-
-Personas (§13) are fictional archetypes informed by publicly observable MOZE user segments (design-conscious
-Taiwanese savers, iOS power users). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "beauty is a feature", "one gradient, one action", "elevate with light not weight")
-are editorial readings connecting MOZE's observed design to its positioning, not directly sourced MOZE statements.
--->
-</content>
-</invoke>
+- **Contrast, `cta-gradient`.** Text `#ffffff` on `#ff367c` measures 3.46:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-accent`.** Text `#ffffff` on `#ff367c` measures 3.46:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

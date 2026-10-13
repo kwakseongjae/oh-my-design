@@ -1,241 +1,190 @@
 ---
-id: channeltalk
 name: Channel Talk
-country: KR
-category: saas
-homepage: "https://channel.io"
-primary_color: "#242428"
-logo:
-  type: github
-  slug: channel-io
-verified: "2026-07-12"
-omd: "0.1"
-ds:
-  name: Bezier
-  url: "https://github.com/channel-io/bezier-react"
-  type: system
-  description: Channel Talk's open-source product design system and component implementation. It is retained as official product-system context, not used to overwrite current public marketing tokens.
-  og_image: "https://opengraph.githubassets.com/d5fd6836ec938de2c8399cf28b2ceabc49104fbbf86e937f9e89983f1b50d638/channel-io/bezier-react"
-verification_v2:
-  schema: 2
-  checked: "2026-09-29"
-  surfaces:
-    - { id: home, kind: marketing-product, url: "https://channel.io/kr", inspected: "2026-07-12" }
-    - { id: home-states, kind: marketing-product, url: "https://channel.io/kr", inspected: "2026-09-17" }
-    - { id: us, kind: marketing-product, url: "https://channel.io/us", inspected: "2026-07-12" }
-    - { id: updates, kind: product-doc, url: "https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997", inspected: "2026-07-12" }
-    - { id: help, kind: product-doc, url: "https://docs.channel.io/help/en/articles/94f34984", inspected: "2026-07-12" }
-    - { id: rebrand, kind: official-history, url: "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113", inspected: "2026-07-12" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://channel.io/kr", captured: "2026-07-12" }
-    - { id: home-states, kind: product-surface, url: "https://channel.io/kr", captured: "2026-09-17" }
-    - { id: us-live, kind: product-surface, url: "https://channel.io/us", captured: "2026-07-12" }
-    - { id: updates-live, kind: official-doc, url: "https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997", captured: "2026-07-12" }
-    - { id: help-live, kind: official-doc, url: "https://docs.channel.io/help/en/articles/94f34984", captured: "2026-07-12" }
-    - { id: rebrand-official, kind: official-doc, url: "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113", captured: "2026-07-12" }
-    - { id: bezier-official, kind: official-doc, url: "https://github.com/channel-io/bezier-react", captured: "2026-07-12" }
-    - { id: channeltalk-component-index, kind: official-doc, url: "https://github.com/channel-io/bezier-react/blob/main/packages/bezier-react/src/index.ts", captured: "2026-09-19" }
-    - { id: channeltalk-probe, kind: product-surface, url: "https://channel.io/kr", captured: "2026-09-29" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-12" }
-    "tokens.colors.canvas": *home_evidence
-    "tokens.colors.surface": *home_evidence
-    "tokens.colors.foreground": *home_evidence
-    "tokens.colors.secondary": *home_evidence
-    "tokens.colors.dark-surface": *home_evidence
-    "tokens.colors.hairline": *home_evidence
-    "tokens.colors.on-primary": *home_evidence
-    "tokens.typography.family.ui": *home_evidence
-    "tokens.typography.family.marketing": *home_evidence
-    "tokens.typography.family.docs": &docs_evidence { surface_id: updates, source_id: updates-live, method: live-inspect, captured: "2026-07-12" }
-    "tokens.typography.marketing-heading.size": *home_evidence
-    "tokens.typography.marketing-heading.weight": *home_evidence
-    "tokens.typography.marketing-heading.lineHeight": *home_evidence
-    "tokens.typography.marketing-heading.tracking": *home_evidence
-    "tokens.typography.marketing-heading.use": *home_evidence
-    "tokens.typography.marketing-body.size": *home_evidence
-    "tokens.typography.marketing-body.weight": *home_evidence
-    "tokens.typography.marketing-body.lineHeight": *home_evidence
-    "tokens.typography.marketing-body.tracking": *home_evidence
-    "tokens.typography.marketing-body.use": *home_evidence
-    "tokens.typography.marketing-tab.size": *home_evidence
-    "tokens.typography.marketing-tab.weight": *home_evidence
-    "tokens.typography.marketing-tab.lineHeight": *home_evidence
-    "tokens.typography.marketing-tab.tracking": *home_evidence
-    "tokens.typography.marketing-tab.use": *home_evidence
-    "tokens.typography.docs-body.size": *docs_evidence
-    "tokens.typography.docs-body.weight": *docs_evidence
-    "tokens.typography.docs-body.lineHeight": *docs_evidence
-    "tokens.typography.docs-body.tracking": *docs_evidence
-    "tokens.typography.docs-body.use": *docs_evidence
-    "tokens.spacing.xs": *home_evidence
-    "tokens.spacing.sm": *home_evidence
-    "tokens.spacing.md": *home_evidence
-    "tokens.spacing.lg": *home_evidence
-    "tokens.spacing.xl": *home_evidence
-    "tokens.rounded.control": *docs_evidence
-    "tokens.rounded.utility": *docs_evidence
-    "tokens.rounded.card": *home_evidence
-    "tokens.rounded.full": *home_evidence
-    "tokens.shadow.flat": *home_evidence
-    "tokens.components.marketing-primary.type": *home_evidence
-    "tokens.components.marketing-primary.hover": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button.Hero-styled__CtaButton-sc-f575346f-9 무료로 시작하기 at :hover", captured: "2026-09-29" }
-    "tokens.components.marketing-primary.pressed": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button.Hero-styled__CtaButton-sc-f575346f-9 무료로 시작하기 at :active", captured: "2026-09-29" }
-    "tokens.components.marketing-primary.focus": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button.Hero-styled__CtaButton-sc-f575346f-9 at :focus-visible, Tab stop 6", captured: "2026-09-29" }
-    "tokens.components.marketing-primary.bg": *home_evidence
-    "tokens.components.marketing-primary.fg": *home_evidence
-    "tokens.components.marketing-primary.radius": *home_evidence
-    "tokens.components.marketing-primary.padding": *home_evidence
-    "tokens.components.marketing-primary.font": *home_evidence
-    "tokens.components.marketing-primary.states": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button.Hero-styled__CtaButton-sc-f575346f-9 무료로 시작하기 (hero)", captured: "2026-09-29" }
-    "tokens.components.marketing-primary.use": *home_evidence
-    "tokens.components.marketing-outline.type": *home_evidence
-    "tokens.components.marketing-outline.bg": *home_evidence
-    "tokens.components.marketing-outline.fg": *home_evidence
-    "tokens.components.marketing-outline.border": *home_evidence
-    "tokens.components.marketing-outline.radius": *home_evidence
-    "tokens.components.marketing-outline.padding": *home_evidence
-    "tokens.components.marketing-outline.font": *home_evidence
-    "tokens.components.marketing-outline.hover": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.SectionHeader-styled__OutlineButton-sc-5af82035-7 자세히 보기 (first of three) at :hover", captured: "2026-09-29" }
-    "tokens.components.marketing-outline.pressed": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.SectionHeader-styled__OutlineButton-sc-5af82035-7 자세히 보기 (first of three) at :active", captured: "2026-09-29" }
-    "tokens.components.marketing-outline.focus": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.SectionHeader-styled__OutlineButton-sc-5af82035-7 at :focus-visible, Tab stop 13", captured: "2026-09-29" }
-    "tokens.components.marketing-outline.states": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.SectionHeader-styled__OutlineButton-sc-5af82035-7 자세히 보기", captured: "2026-09-29" }
-    "tokens.components.marketing-outline.use": *home_evidence
-    "tokens.components.marketing-card.type": *home_evidence
-    "tokens.components.marketing-card.bg": *home_evidence
-    "tokens.components.marketing-card.border": *home_evidence
-    "tokens.components.marketing-card.radius": *home_evidence
-    "tokens.components.marketing-card.padding": *home_evidence
-    "tokens.components.marketing-card.use": *home_evidence
-    "tokens.components.marketing-tab.type": *home_evidence
-    "tokens.components.marketing-tab.bg": *home_evidence
-    "tokens.components.marketing-tab.fg": *home_evidence
-    "tokens.components.marketing-tab.radius": *home_evidence
-    "tokens.components.marketing-tab.padding": *home_evidence
-    "tokens.components.marketing-tab.font": *home_evidence
-    "tokens.components.marketing-tab.selected": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button#customer-case-tab-라이프스타일 (selected), label span.CustomerCaseSection-styled__TabText", captured: "2026-09-29" }
-    "tokens.components.marketing-tab.hover": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button#customer-case-tab-패션 and #customer-case-tab-라이프스타일 at :hover", captured: "2026-09-29" }
-    "tokens.components.marketing-tab.pressed": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button#customer-case-tab-패션 and #customer-case-tab-라이프스타일 at :active", captured: "2026-09-29" }
-    "tokens.components.marketing-tab.focus": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "button#customer-case-tab-라이프스타일 at :focus-visible, Tab stop 14", captured: "2026-09-29" }
-    "tokens.components.marketing-tab.states": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "CustomerCaseSection tablist, roving tabindex; 패션 tabIndex -1", captured: "2026-09-29" }
-    "tokens.components.marketing-tab.use": *home_evidence
-    "tokens.components.docs-icon-button.type": *docs_evidence
-    "tokens.components.docs-icon-button.bg": *docs_evidence
-    "tokens.components.docs-icon-button.fg": *docs_evidence
-    "tokens.components.docs-icon-button.radius": *docs_evidence
-    "tokens.components.docs-icon-button.hover": { surface_id: updates, source_id: channeltalk-probe, method: live-state-probe, selector: "button.b-1oeNI.b-r4Bne (first sidebar chevron) at :hover", captured: "2026-09-29" }
-    "tokens.components.docs-icon-button.pressed": { surface_id: updates, source_id: channeltalk-probe, method: live-state-probe, selector: "button.b-1oeNI.b-r4Bne (first sidebar chevron) at :active", captured: "2026-09-29" }
-    "tokens.components.docs-icon-button.focus": { surface_id: updates, source_id: channeltalk-probe, method: live-state-probe, selector: "button.b-1oeNI.b-r4Bne at :focus-visible, Tab stop 5", captured: "2026-09-29" }
-    "tokens.components.docs-icon-button.states": { surface_id: updates, source_id: channeltalk-probe, method: live-state-probe, selector: "button.b-1oeNI.b-r4Bne (first of three)", captured: "2026-09-29" }
-    "tokens.components.docs-icon-button.use": *docs_evidence
-    "tokens.components.header-cta.type": &ctHeaderCta { surface_id: home, source_id: home-live, method: live-inspect, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-07-12" }
-    "tokens.components.header-cta.bg": *ctHeaderCta
-    "tokens.components.header-cta.fg": *ctHeaderCta
-    "tokens.components.header-cta.radius": *ctHeaderCta
-    "tokens.components.header-cta.padding": *ctHeaderCta
-    "tokens.components.header-cta.size": *ctHeaderCta
-    "tokens.components.header-cta.font": *ctHeaderCta
-    "tokens.components.header-cta.hover": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.Header-styled__CTAButton-sc-8458131e-13 무료로 시작하기 at :hover", captured: "2026-09-29" }
-    "tokens.components.header-cta.pressed": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.Header-styled__CTAButton-sc-8458131e-13 무료로 시작하기 at :active", captured: "2026-09-29" }
-    "tokens.components.header-cta.states": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.Header-styled__CTAButton-sc-8458131e-13 무료로 시작하기, no href attribute, not reached in 81 Tab presses", captured: "2026-09-29" }
-    "tokens.components.header-cta.use": *ctHeaderCta
-    "tokens.components.nav-link.type": &ctNav { surface_id: home, source_id: home-live, method: live-inspect, selector: "home::[data-omd-capture=\"1\"] to [data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.nav-link.bg": *ctNav
-    "tokens.components.nav-link.fg": *ctNav
-    "tokens.components.nav-link.radius": *ctNav
-    "tokens.components.nav-link.padding": *ctNav
-    "tokens.components.nav-link.height": *ctNav
-    "tokens.components.nav-link.font": *ctNav
-    "tokens.components.nav-link.hover": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.NavItem-styled__Trigger-sc-a57ddd15-1 가격 안내 at :hover", captured: "2026-09-29" }
-    "tokens.components.nav-link.pressed": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.NavItem-styled__Trigger-sc-a57ddd15-1 가격 안내 at :active", captured: "2026-09-29" }
-    "tokens.components.nav-link.focus": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.NavItem-styled__Trigger-sc-a57ddd15-1 가격 안내 at :focus-visible, Tab stop 4", captured: "2026-09-29" }
-    "tokens.components.nav-link.states": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "a.NavItem-styled__Trigger-sc-a57ddd15-1 가격 안내", captured: "2026-09-29" }
-    "tokens.components.nav-link.use": *ctNav
-    "tokens.components.header-login-link.type": &ctLogin { surface_id: home, source_id: home-live, method: live-inspect, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.header-login-link.bg": *ctLogin
-    "tokens.components.header-login-link.fg": *ctLogin
-    "tokens.components.header-login-link.radius": *ctLogin
-    "tokens.components.header-login-link.padding": *ctLogin
-    "tokens.components.header-login-link.height": *ctLogin
-    "tokens.components.header-login-link.font": *ctLogin
-    "tokens.components.header-login-link.states": { surface_id: home, source_id: channeltalk-probe, method: live-state-probe, selector: "survey raw/channeltalk-survey-home.json: header 로그인 anchor without href", captured: "2026-09-29" }
-    "tokens.components.header-login-link.use": *ctLogin
-    "tokens.components.marketing-band-cta.type": &ctBand { surface_id: home, source_id: home-live, method: live-inspect, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-07-12" }
-    "tokens.components.marketing-band-cta.bg": *ctBand
-    "tokens.components.marketing-band-cta.fg": *ctBand
-    "tokens.components.marketing-band-cta.radius": *ctBand
-    "tokens.components.marketing-band-cta.padding": *ctBand
-    "tokens.components.marketing-band-cta.size": *ctBand
-    "tokens.components.marketing-band-cta.font": *ctBand
-    "tokens.components.marketing-band-cta.states": *ctBand
-    "tokens.components.marketing-band-cta.use": *ctBand
-    "tokens.components.customer-case-carousel-nav.type": &ctCarousel { surface_id: home, source_id: home-live, method: live-inspect, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-07-12" }
-    "tokens.components.customer-case-carousel-nav.bg": *ctCarousel
-    "tokens.components.customer-case-carousel-nav.fg": *ctCarousel
-    "tokens.components.customer-case-carousel-nav.radius": *ctCarousel
-    "tokens.components.customer-case-carousel-nav.padding": *ctCarousel
-    "tokens.components.customer-case-carousel-nav.size": *ctCarousel
-    "tokens.components.customer-case-carousel-nav.states": *ctCarousel
-    "tokens.components.customer-case-carousel-nav.use": *ctCarousel
-    "tokens.components.demo-input.type": &ctDemo { surface_id: home, source_id: home-live, method: live-inspect, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-12" }
-    "tokens.components.demo-input.bg": *ctDemo
-    "tokens.components.demo-input.fg": *ctDemo
-    "tokens.components.demo-input.padding": *ctDemo
-    "tokens.components.demo-input.size": *ctDemo
-    "tokens.components.demo-input.font": *ctDemo
-    "tokens.components.demo-input.states": *ctDemo
-    "tokens.components.demo-input.use": *ctDemo
-    "tokens.components.docs-search-button.type": &ctDocsSearch { surface_id: updates, source_id: updates-live, method: live-inspect, selector: "surface-3::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.docs-search-button.bg": *ctDocsSearch
-    "tokens.components.docs-search-button.fg": *ctDocsSearch
-    "tokens.components.docs-search-button.radius": *ctDocsSearch
-    "tokens.components.docs-search-button.padding": *ctDocsSearch
-    "tokens.components.docs-search-button.size": *ctDocsSearch
-    "tokens.components.docs-search-button.states": *ctDocsSearch
-    "tokens.components.docs-search-button.use": *ctDocsSearch
-tokens:
-  source: reconciled
-  extracted: "2026-07-12"
-  note: "Five current first-party surfaces. Marketing and product-doc domains are intentionally separate. Legacy universal Cobalt, BildV5, generic form, synthetic state, and inferred motion claims are not promoted."
-  colors:
-    primary: "#242428"
-    canvas: "#ffffff"
-    surface: "#f7f6f3"
-    foreground: "#000000"
-    secondary: "#716f6d"
-    dark-surface: "#3a3530"
-    hairline: "#e4e4e5"
-    on-primary: "#ffffff"
-  typography:
-    family: { ui: "Pretendard", marketing: "Pretendard", docs: "Inter" }
-    marketing-heading: { size: 44, weight: 600, lineHeight: 1.41, tracking: -0.88, use: "Large current marketing headings" }
-    marketing-body: { size: 18, weight: 400, lineHeight: 1.56, tracking: -0.18, use: "Current marketing body and action copy" }
-    marketing-tab: { size: 16, weight: 600, lineHeight: 1.56, tracking: -0.16, use: "Interactive marketing category tabs" }
-    docs-body: { size: 17, weight: 400, lineHeight: 1.59, tracking: -0.1, use: "English product documentation body" }
-  spacing: { xs: 4, sm: 6, md: 10, lg: 20, xl: 30 }
-  rounded: { control: 6, utility: 8, card: 35, full: 9999 }
-  shadow:
-    flat: "none"
-  components_harvested: true
-  components:
-    marketing-primary: { type: button, bg: "#242428", fg: "#ffffff", radius: "9999px", padding: "10px 22px", font: "18px / 400", hover: "opacity 1 → 0.85 (bg unchanged)", pressed: "opacity 1 → 0.85 (bg unchanged)", focus: "no focus indication in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) — measured 2026-09-29", states: "default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the hero 무료로 시작하기 button (156px x 48px, Tab 6), never activated; hover equals pressed; the #3a3a3f promoted here on 2026-09-17 belongs to the sticky-header link (header-cta), whose 43px height and 9px 14px padding that re-verify reproduced", use: "Primary signup and conversion action on current KR/US marketing" }
-    marketing-outline: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #242428", radius: "9999px", padding: "10px 22px", font: "18px / 400", hover: "bg rgba(0, 0, 0, 0.04)", pressed: "bg rgba(0, 0, 0, 0.04)", focus: "no focus indication in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) — measured 2026-09-29", states: "default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the first SectionHeader 자세히 보기 pill (127px x 50px, Tab 13); hover equals pressed; the computed radius is 1368.71px, a pill", use: "Secondary marketing conversion action" }
-    marketing-card: { type: card, bg: "#f7f6f3", border: "1px solid #e4e4e5", radius: "35px", padding: "30px 35px", use: "Current KR/US marketing information card" }
-    marketing-tab: { type: tab, bg: "transparent", fg: "#716f6d", radius: "9999px", padding: "6px 35px", font: "16px / 600", selected: "fg #ffffff (the dark pill behind the label is drawn by another element, not compared)", hover: "no change in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) on both 패션 and the selected 라이프스타일 — measured 2026-09-29", pressed: "no change in the compared scope (same scope, both tabs) — measured 2026-09-29", focus: "no focus indication in the compared scope (same scope) on the selected tab (Tab 14) — measured 2026-09-29", states: "selected and tab-selected observed in six safe expansions 2026-07-12; hover and pressed measured 2026-09-29 on 패션 and 라이프스타일; keyboard focus measured on the selected tab only: the tablist uses a roving tabindex, 패션 is tabIndex -1 and was not reached by Tab, so its focus is unmeasured", use: "Interactive category switcher on current marketing (KR home; the US page read 6px 20px padding on 2026-07-12)" }
-    docs-icon-button: { type: button, bg: "transparent", fg: "rgba(0,0,0,0.85)", radius: "6px", hover: "bg rgba(28, 28, 28, 0.08); fg rgba(0, 0, 0, 0.6) → rgba(0, 0, 0, 0.85) on the svg icon", pressed: "bg rgba(28, 28, 28, 0.08); fg rgba(0, 0, 0, 0.6) → rgba(0, 0, 0, 0.85) on the svg icon", focus: "outline 3px rgba(97, 87, 234, 0.3), offset 0 (authored ring) — measured 2026-09-29", states: "default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the first sidebar chevron (20px x 20px, Tab 5); pressed equals hover; the July pressed frames were alpha-0 transition frames with no value", use: "Compact icon action in product documentation" }
-    header-cta: { type: button, bg: "#242428", fg: "#ffffff", radius: "999px", padding: "9px 14px", size: "127px x 43px", font: "16px / 600", hover: "bg #3a3a3f", pressed: "bg #3a3a3f", states: "default captured 2026-07-12 on home, us and the rebrand page; hover and pressed measured 2026-09-29, the same #3a3a3f the 2026-09-17 re-verify read on this link; keyboard focus unmeasured: the link has no href attribute, so Tab never reaches it", use: "Sticky-header 무료로 시작하기 link at home::[data-omd-capture=\"7\"]" }
-    nav-link: { type: tab, bg: "transparent", fg: "#000000", radius: "999px", padding: "6px 12px", height: "37px", font: "16px / 400", hover: "bg rgba(36, 36, 40, 0.05)", pressed: "bg rgba(36, 36, 40, 0.05)", focus: "outline 2px #242428, offset 2px (authored ring); bg rgba(36, 36, 40, 0.05) — measured 2026-09-29", states: "default captured 2026-07-12 on five header triggers; hover, pressed and keyboard focus measured 2026-09-29 on 가격 안내 (Tab 4), the only one with an href; the other four are anchors without href that Tab skips, so their focus is unmeasured", use: "Header navigation trigger at home::[data-omd-capture=\"1\"] to [data-omd-capture=\"5\"]" }
-    header-login-link: { type: button, bg: "transparent", fg: "#000000", radius: "999px", padding: "6px 12px", height: "37px", font: "16px / 400", states: "default captured 2026-07-12 on home, us and the rebrand page; not probed: on 2026-09-29 it had no href attribute, so Tab never reaches it", use: "Header 로그인 control at home::[data-omd-capture=\"6\"]" }
-    marketing-band-cta: { type: button, bg: "#242428", fg: "#ffffff", radius: "1368.71px", padding: "10px 22px", size: "125px x 48px", font: "18px / 400", states: "default captured 2026-07-12 (six occurrences on home and us); the computed radius makes it a pill; not probed", use: "Dark 자세히 보기 pill in the section intro band at home::[data-omd-capture=\"9\"]" }
-    customer-case-carousel-nav: { type: button, bg: "rgba(255, 255, 255, 0.2)", fg: "#ffffff", radius: "9999px", padding: "0px", size: "48px x 48px", states: "default captured 2026-07-12 (four occurrences on home and us); not probed", use: "Translucent carousel arrow over the dark customer-case media at home::[data-omd-capture=\"23\"]" }
-    demo-input: { type: input, bg: "transparent", fg: "#0a0b0b", padding: "0px 4px", size: "428px x 27px", font: "17px / 400", states: "default captured 2026-07-12 on home and us; not probed; its submit button was captured disabled, so no value is taken from it", use: "Marketing demo prompt input (role=combobox) at home::[data-omd-capture=\"10\"]" }
-    docs-search-button: { type: button, bg: "rgba(0, 0, 0, 0.05)", fg: "rgba(0, 0, 0, 0.85)", radius: "12px", padding: "11px 14px", size: "250px x 44px", states: "default captured 2026-07-12 on both documentation pages; not probed", use: "Documentation header search trigger at surface-3::[data-omd-capture=\"1\"]" }
+colors:
+  primary: '#242428'
+  canvas: '#ffffff'
+  surface: '#f7f6f3'
+  foreground: '#000000'
+  secondary: '#716f6d'
+  dark-surface: '#3a3530'
+  hairline: '#e4e4e5'
+  on-primary: '#ffffff'
+typography:
+  marketing-heading:
+    fontSize: 44px
+    fontWeight: 600
+    lineHeight: 1.41
+    letterSpacing: '-0.88px'
+    use: Large current marketing headings
+  marketing-body:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.56
+    letterSpacing: '-0.18px'
+    use: Current marketing body and action copy
+  marketing-tab:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.56
+    letterSpacing: '-0.16px'
+    use: Interactive marketing category tabs
+  docs-body:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 1.59
+    letterSpacing: '-0.1px'
+    use: English product documentation body
+rounded:
+  control: 6px
+  utility: 8px
+  card: 35px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 6
+  md: 10
+  lg: 20
+  xl: 30
+components:
+  marketing-primary:
+    type: button
+    backgroundColor: '#242428'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 10px 22px
+    typography: 18px / 400
+    hover: opacity 1 → 0.85 (bg unchanged)
+    pressed: opacity 1 → 0.85 (bg unchanged)
+    focus: no focus indication in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) — measured 2026-09-29
+    states: 'default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the hero 무료로 시작하기 button (156px x 48px, Tab 6), never activated; hover equals pressed; the #3a3a3f promoted here on 2026-09-17 belongs to the sticky-header link (header-cta), whose 43px height and 9px 14px padding that re-verify reproduced'
+    use: Primary signup and conversion action on current KR/US marketing
+  marketing-outline:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    border: '1px solid #242428'
+    rounded: 9999px
+    padding: 10px 22px
+    typography: 18px / 400
+    hover: bg rgba(0, 0, 0, 0.04)
+    pressed: bg rgba(0, 0, 0, 0.04)
+    focus: no focus indication in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) — measured 2026-09-29
+    states: default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the first SectionHeader 자세히 보기 pill (127px x 50px, Tab 13); hover equals pressed; the computed radius is 1368.71px, a pill
+    use: Secondary marketing conversion action
+  marketing-card:
+    type: card
+    backgroundColor: '#f7f6f3'
+    border: '1px solid #e4e4e5'
+    rounded: 35px
+    padding: 30px 35px
+    use: Current KR/US marketing information card
+  marketing-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#716f6d'
+    rounded: 9999px
+    padding: 6px 35px
+    typography: 16px / 600
+    selected: 'fg #ffffff (the dark pill behind the label is drawn by another element, not compared)'
+    hover: no change in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) on both 패션 and the selected 라이프스타일 — measured 2026-09-29
+    pressed: no change in the compared scope (same scope, both tabs) — measured 2026-09-29
+    focus: no focus indication in the compared scope (same scope) on the selected tab (Tab 14) — measured 2026-09-29
+    states: 'selected and tab-selected observed in six safe expansions 2026-07-12; hover and pressed measured 2026-09-29 on 패션 and 라이프스타일; keyboard focus measured on the selected tab only: the tablist uses a roving tabindex, 패션 is tabIndex -1 and was not reached by Tab, so its focus is unmeasured'
+    use: Interactive category switcher on current marketing (KR home; the US page read 6px 20px padding on 2026-07-12)
+  docs-icon-button:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(0,0,0,0.85)
+    rounded: 6px
+    hover: bg rgba(28, 28, 28, 0.08); fg rgba(0, 0, 0, 0.6) → rgba(0, 0, 0, 0.85) on the svg icon
+    pressed: bg rgba(28, 28, 28, 0.08); fg rgba(0, 0, 0, 0.6) → rgba(0, 0, 0, 0.85) on the svg icon
+    focus: outline 3px rgba(97, 87, 234, 0.3), offset 0 (authored ring) — measured 2026-09-29
+    states: default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the first sidebar chevron (20px x 20px, Tab 5); pressed equals hover; the July pressed frames were alpha-0 transition frames with no value
+    use: Compact icon action in product documentation
+  header-cta:
+    type: button
+    backgroundColor: '#242428'
+    textColor: '#ffffff'
+    rounded: 999px
+    padding: 9px 14px
+    size: 127px x 43px
+    typography: 16px / 600
+    hover: 'bg #3a3a3f'
+    pressed: 'bg #3a3a3f'
+    states: 'default captured 2026-07-12 on home, us and the rebrand page; hover and pressed measured 2026-09-29, the same #3a3a3f the 2026-09-17 re-verify read on this link; keyboard focus unmeasured: the link has no href attribute, so Tab never reaches it'
+    use: Sticky-header 무료로 시작하기 link at home::[data-omd-capture="7"]
+  nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 999px
+    padding: 6px 12px
+    height: 37px
+    typography: 16px / 400
+    hover: bg rgba(36, 36, 40, 0.05)
+    pressed: bg rgba(36, 36, 40, 0.05)
+    focus: 'outline 2px #242428, offset 2px (authored ring); bg rgba(36, 36, 40, 0.05) — measured 2026-09-29'
+    states: default captured 2026-07-12 on five header triggers; hover, pressed and keyboard focus measured 2026-09-29 on 가격 안내 (Tab 4), the only one with an href; the other four are anchors without href that Tab skips, so their focus is unmeasured
+    use: Header navigation trigger at home::[data-omd-capture="1"] to [data-omd-capture="5"]
+  header-login-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 999px
+    padding: 6px 12px
+    height: 37px
+    typography: 16px / 400
+    states: 'default captured 2026-07-12 on home, us and the rebrand page; not probed: on 2026-09-29 it had no href attribute, so Tab never reaches it'
+    use: Header 로그인 control at home::[data-omd-capture="6"]
+  marketing-band-cta:
+    type: button
+    backgroundColor: '#242428'
+    textColor: '#ffffff'
+    rounded: 1368.71px
+    padding: 10px 22px
+    size: 125px x 48px
+    typography: 18px / 400
+    states: default captured 2026-07-12 (six occurrences on home and us); the computed radius makes it a pill; not probed
+    use: Dark 자세히 보기 pill in the section intro band at home::[data-omd-capture="9"]
+  customer-case-carousel-nav:
+    type: button
+    backgroundColor: rgba(255, 255, 255, 0.2)
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 0px
+    size: 48px x 48px
+    states: default captured 2026-07-12 (four occurrences on home and us); not probed
+    use: Translucent carousel arrow over the dark customer-case media at home::[data-omd-capture="23"]
+  demo-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#0a0b0b'
+    padding: 0px 4px
+    size: 428px x 27px
+    typography: 17px / 400
+    states: default captured 2026-07-12 on home and us; not probed; its submit button was captured disabled, so no value is taken from it
+    use: Marketing demo prompt input (role=combobox) at home::[data-omd-capture="10"]
+  docs-search-button:
+    type: button
+    backgroundColor: rgba(0, 0, 0, 0.05)
+    textColor: rgba(0, 0, 0, 0.85)
+    rounded: 12px
+    padding: 11px 14px
+    size: 250px x 44px
+    states: default captured 2026-07-12 on both documentation pages; not probed
+    use: Documentation header search trigger at surface-3::[data-omd-capture="1"]
+fonts:
+  roles:
+    ui: Pretendard
+    marketing: Pretendard
+    docs: Inter
 ---
 
 # Design System Inspiration of Channel Talk
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Channel Talk is a customer-service platform that joins live chat, team inbox, calls, marketing, workflows, and AI assistance around one ongoing customer relationship. Its public identity has evolved from a bright SaaS-accent story toward a warmer editorial system: current Korean and US pages pair black type with cream `#f7f6f3`, dark charcoal `#242428` conversion controls, generous photography, and rounded 35px information cards. The result feels conversational and human despite the product's operational depth. Official rebrand writing explains that this warmth is intentional—Channel Talk wanted a clearer, more authentic expression of its customer-first culture rather than a generic software identity.
 
@@ -249,14 +198,34 @@ The product-documentation domain is visually related but technically separate. M
 - Measured 2026-09-29: the hero CTA fades to opacity 0.85 on hover and press while the sticky-header CTA darkens to `#3a3a3f`; only the header nav link and the docs chevron draw a focus ring
 - Public Bezier implementation retained as product-system context, not substituted for uninspected app UI
 
-## Primary tasks
+### Primary tasks
 
 - Answer a customer in live chat from the team inbox
 - Review the conversations a support team has handled
 - Configure a customer channel using the product documentation
 - Judge whether the platform fits an ongoing customer workflow
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Channel Talk presents customer communication as a durable operating capability rather than a support widget. Official rebrand material describes the visual change as a way to express the company's identity and culture more honestly, while official product updates show the platform continuing to combine messaging operations with AI-assisted service. The public Bezier repository is a separate but complementary signal: Channel has invested in reusable product primitives, even though this reference does not use that repository to fabricate current private-app values. Across these sources, the company consistently frames conversation as the place where support, sales, and long-term customer understanding meet. The visual move toward warmer editorial surfaces supports that human relationship, while the operational product story remains structured around inboxes, configuration, documentation, and AI-assisted work. Reuse should therefore strengthen continuity between people and tools, not flatten every surface into one marketing style.
+
+### Principles
+
+1. **The customer is the answer.** Start from a real conversation or task rather than feature spectacle.
+2. **Warmth supports operational clarity.** Editorial cream, photography, and rounded cards humanize a complex service platform.
+3. **Evidence domains stay separate.** Marketing, documentation, Bezier, and private product surfaces cannot silently overwrite one another.
+4. **AI should remove routine work.** Describe assistance in terms of what people can focus on next, without inventing outcomes.
+
+### Personas
+
+Public product material supports task contexts, not verified biographical personas:
+- A support lead reviewing conversations and adopting current AI-assisted operations.
+- A frontline agent using product documentation to configure or troubleshoot a customer channel.
+- A growth or commerce operator evaluating whether Channel Talk fits an ongoing customer relationship workflow.
+
+Project-specific names, ages, company sizes, locations, and quantitative goals are intentionally unspecified and must come from the product brief rather than this public reference.
+
+## Colors
 
 ### Current marketing roles
 - **Primary / conversion** (`#242428`): repeated filled signup and conversion controls.
@@ -269,7 +238,7 @@ The product-documentation domain is visually related but technically separate. M
 
 Bezier's historical Cobalt `#329BE7` is not promoted as a universal current primary: it was not the conversion color on the five captured public surfaces. Authenticated Inbox status colors remain unresolved.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence boundary
 
@@ -294,7 +263,39 @@ Bezier's historical Cobalt `#329BE7` is not promoted as a universal current prim
 | Article heading | Docs | 24px | 700 | 34px | -0.5px |
 | Article body | Docs | 17px | 400 | 27px | -0.1px |
 
-## 4. Component Stylings
+## Layout
+
+- Marketing uses wide centered sections with strong vertical breaks and generous 30–45px internal spacing.
+- Editorial cards use large 35px corners; documentation controls remain compact at 6–8px.
+- Do not transfer marketing's full-pill geometry to uninspected product controls.
+- Preserve the separation between marketing composition and documentation density.
+
+### Responsive Behavior
+
+The public marketing system retains full-pill controls and rounded editorial cards while reducing horizontal section padding and tab padding on narrower layouts. Exact private-product breakpoints and mobile-native behavior are unresolved and should not be inferred from the marketing site.
+
+## Elevation & Depth
+
+Current promoted surfaces are flat. Marketing cards use background, border, radius, and photography for separation; no reusable shadow token was established. Documentation overlays and authenticated product elevation remain unresolved.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No reusable current duration or easing token was established by this capture. The six tab expansions prove state change, not a universal animation specification; motion values remain absent. The 2026-09-29 probe read transition declarations on the marketing and documentation controls; none is promoted as a motion token.
+
+---
+
+**Verified:** 2026-07-12 (omd:migrate)
+**Tier 1 sources:** https://channel.io/kr ; https://channel.io/us ; https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997 ; https://docs.channel.io/help/en/articles/94f34984 ; https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113 ; https://github.com/channel-io/bezier-react
+**Tier 2 attempts:** getdesign.md/channeltalk and styles.refero.design search; unavailable as positive evidence
+**Conflicts unresolved:** none
+
+## Components
 
 ### Current verified components
 
@@ -394,18 +395,11 @@ so the prefix is how the package marks its alpha track, in the repository's own 
 supported for updates and may be removed in the next major version." Both tracks are published;
 neither should be read as the package's current recommended surface.
 
-## 5. Layout Principles
+### States
 
-- Marketing uses wide centered sections with strong vertical breaks and generous 30–45px internal spacing.
-- Editorial cards use large 35px corners; documentation controls remain compact at 6–8px.
-- Do not transfer marketing's full-pill geometry to uninspected product controls.
-- Preserve the separation between marketing composition and documentation density.
+The July capture safely observed the marketing tab's selected state; its documentation "pressed" frames were transition frames with no value. The 2026-09-29 live state probe measured hover, pressed and keyboard focus on five controls — the hero CTA (opacity 0.85; no focus change), the outline pill (`rgba(0, 0, 0, 0.04)`; no focus change), the selected customer-case tab (no change in any state), the 가격 안내 nav link (`rgba(36, 36, 40, 0.05)`; a 2px `#242428` outline) and the docs chevron (`rgba(28, 28, 28, 0.08)`; a 3px `rgba(97, 87, 234, 0.3)` outline) — and hover and pressed on two more: the header CTA (`#3a3a3f`) and the unselected 패션 tab (no change). Their keyboard focus is unmeasured because Tab never reaches them. No canonical empty, loading, error, success, disabled, or authenticated Inbox state is promoted.
 
-## 6. Depth & Elevation
-
-Current promoted surfaces are flat. Marketing cards use background, border, radius, and photography for separation; no reusable shadow token was established. Documentation overlays and authenticated product elevation remain unresolved.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use current surface-local evidence and label marketing versus documentation roles.
@@ -418,49 +412,23 @@ Current promoted surfaces are flat. Marketing cards use background, border, radi
 - Do not generate Inbox components or semantic states from generic SaaS conventions.
 - Do not give the hero CTA the header link's `#3a3a3f` hover; the hero fades to opacity 0.85.
 
-## 8. Responsive Behavior
-
-The public marketing system retains full-pill controls and rounded editorial cards while reducing horizontal section padding and tab padding on narrower layouts. Exact private-product breakpoints and mobile-native behavior are unresolved and should not be inferred from the marketing site.
-
-## 9. Agent Prompt Guide
-
-> Build a warm, editorial customer-conversation surface using a white and cream canvas, black text, charcoal full-pill conversion actions, Pretendard marketing typography, and 35px bordered cards. Use the Inter documentation scale only for documentation-like surfaces. Do not add Cobalt product controls, inbox states, product inputs, or dialogs unless a current product source is supplied.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Official Channel Talk writing centers customers, conversations, and practical operational improvement. The tone is direct and optimistic rather than ceremonial: explain what a team can do, why it improves a customer relationship, and where AI removes routine work. Product updates should name the affected workflow, the person who benefits, and the next available action. Support guidance should stay calm and procedural, while brand stories may be warmer and more reflective. Avoid unsupported performance numbers, excessive futurism, and generic “all-in-one revolution” language.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Channel Talk presents customer communication as a durable operating capability rather than a support widget. Official rebrand material describes the visual change as a way to express the company's identity and culture more honestly, while official product updates show the platform continuing to combine messaging operations with AI-assisted service. The public Bezier repository is a separate but complementary signal: Channel has invested in reusable product primitives, even though this reference does not use that repository to fabricate current private-app values. Across these sources, the company consistently frames conversation as the place where support, sales, and long-term customer understanding meet. The visual move toward warmer editorial surfaces supports that human relationship, while the operational product story remains structured around inboxes, configuration, documentation, and AI-assisted work. Reuse should therefore strengthen continuity between people and tools, not flatten every surface into one marketing style.
+> Build a warm, editorial customer-conversation surface using a white and cream canvas, black text, charcoal full-pill conversion actions, Pretendard marketing typography, and 35px bordered cards. Use the Inter documentation scale only for documentation-like surfaces. Do not add Cobalt product controls, inbox states, product inputs, or dialogs unless a current product source is supplied.
 
-## 12. Principles
+## Governance
 
-1. **The customer is the answer.** Start from a real conversation or task rather than feature spectacle.
-2. **Warmth supports operational clarity.** Editorial cream, photography, and rounded cards humanize a complex service platform.
-3. **Evidence domains stay separate.** Marketing, documentation, Bezier, and private product surfaces cannot silently overwrite one another.
-4. **AI should remove routine work.** Describe assistance in terms of what people can focus on next, without inventing outcomes.
+### Known Gaps
 
-## 13. Personas
-
-Public product material supports task contexts, not verified biographical personas:
-- A support lead reviewing conversations and adopting current AI-assisted operations.
-- A frontline agent using product documentation to configure or troubleshoot a customer channel.
-- A growth or commerce operator evaluating whether Channel Talk fits an ongoing customer relationship workflow.
-
-Project-specific names, ages, company sizes, locations, and quantitative goals are intentionally unspecified and must come from the product brief rather than this public reference.
-
-## 14. States
-
-The July capture safely observed the marketing tab's selected state; its documentation "pressed" frames were transition frames with no value. The 2026-09-29 live state probe measured hover, pressed and keyboard focus on five controls — the hero CTA (opacity 0.85; no focus change), the outline pill (`rgba(0, 0, 0, 0.04)`; no focus change), the selected customer-case tab (no change in any state), the 가격 안내 nav link (`rgba(36, 36, 40, 0.05)`; a 2px `#242428` outline) and the docs chevron (`rgba(28, 28, 28, 0.08)`; a 3px `rgba(97, 87, 234, 0.3)` outline) — and hover and pressed on two more: the header CTA (`#3a3a3f`) and the unselected 패션 tab (no change). Their keyboard focus is unmeasured because Tab never reaches them. No canonical empty, loading, error, success, disabled, or authenticated Inbox state is promoted.
-
-## 15. Motion & Easing
-
-No reusable current duration or easing token was established by this capture. The six tab expansions prove state change, not a universal animation specification; motion values remain absent. The 2026-09-29 probe read transition declarations on the marketing and documentation controls; none is promoted as a motion token.
-
----
-
-**Verified:** 2026-07-12 (omd:migrate)
-**Tier 1 sources:** https://channel.io/kr ; https://channel.io/us ; https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997 ; https://docs.channel.io/help/en/articles/94f34984 ; https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113 ; https://github.com/channel-io/bezier-react
-**Tier 2 attempts:** getdesign.md/channeltalk and styles.refero.design search; unavailable as positive evidence
-**Conflicts unresolved:** none
+- **Contrast, `marketing-outline`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `marketing-tab`.** Text `#716f6d` on `#00000000` measures 4.20:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `docs-icon-button`.** Text `#000000d9` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-login-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `customer-case-carousel-nav`.** Text `#ffffff` on `#ffffff33` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `demo-input`.** Text `#0a0b0b` on `#00000000` measures 1.07:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `docs-search-button`.** Text `#000000d9` on `#0000000d` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

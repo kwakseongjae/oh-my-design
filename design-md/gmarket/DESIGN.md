@@ -1,77 +1,181 @@
 ---
-id: gmarket
 name: Gmarket
-display_name_kr: 지마켓
-country: KR
-category: ecommerce
-homepage: "https://www.gmarket.co.kr"
-primary_color: "#ffd200"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=gmarket.co.kr&sz=256"
-verified: "2026-05-15"
-omd: "0.1"
-ds:
-  name: Gmarket Sans
-  url: "https://corp.gmarket.com/fonts/"
-  type: brand
-  description: "Gmarket's SIL OFL brand typeface — 3 weights, TTF/OTF, 11,172 KR glyphs. First-party font artifact from a 25-year-old open marketplace; backing 247 :root CSS vars + Smile Yellow #ffd200 + Club/Event/Service sub-systems on the storefront."
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#da120d"
-    brand: "#da120d"
-    error: "#ef2b2a"
-    canvas: "#ffffff"
-    surface: "#ffffff"
-    foreground: "#222222"
-    muted: "#757575"
-    on-primary: "#ffffff"
-    hairline: "#e0e0e0"
-    success: "#00c400"
-    accent-smile: "#ffd200"
-    accent-stardelivery: "#7130f3"
-    accent-connect: "#00c3a0"
-    club-navy: "#002041"
-    club-blue: "#497cff"
-    event-bf: "#f1266d"
-    event-bs: "#fd4e28"
-    event-bsd: "#7b00e7"
-  typography:
-    family: { sans: "Gmarket Sans", mono: "system-ui" }
-    section-hero:  { size: 28, weight: 700, lineHeight: 1.2, use: "Hero module section H2" }
-    section-compact: { size: 24, weight: 700, lineHeight: 1.2, use: "Compact module H2" }
-    card-title:    { size: 18.72, weight: 700, lineHeight: 1.3, use: "Card H3 heading" }
-    body:          { size: 16, weight: 400, lineHeight: 1.5, use: "Body, card title, primary nav" }
-    body-strong:   { size: 16, weight: 700, lineHeight: 1.4, use: "Price emphasis, strong body" }
-    secondary:     { size: 14, weight: 400, lineHeight: 1.4, use: "Secondary nav, filter/utility" }
-    utility:       { size: 13.3333, weight: 400, lineHeight: 1.4, use: "Utility text, tooltip, swiper label" }
-    meta:          { size: 12, weight: 400, lineHeight: 1.4, use: "Meta text, footer notices, micro-badge" }
-    price-modifier: { size: 11, weight: 500, lineHeight: 1.4, use: "Price-modifier label 쿠폰적용가" }
-  spacing: { micro: 4, sm: 8, md: 16, lg: 24, module: 64 }
-  rounded: { sm: 3, md: 4, lg: 20, full: 9999 }
-  shadow:
-    none: "none"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#da120d", fg: "#ffffff", radius: "4px", padding: "14px 24px", font: "16px / 700", use: "Highest-intent purchase CTA, one per surface" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#222222", border: "1px solid #e0e0e0", radius: "3px", font: "14px / 400", use: "Chrome-utility actions, footer button" }
-    button-pill: { type: button, bg: "#ffffff", fg: "#666666", border: "1px solid #e0e0e0", radius: "20px", font: "16px / 400", states: "active fg #222222", use: "Home module entry pills, GNB sub-category chips" }
-    input-search: { type: input, bg: "#ffffff", fg: "#222222", border: "2px solid #222222", radius: "0px", height: "44px", font: "16px / 400", use: "Header search field, signature dark-stroked" }
-    input-filter: { type: input, bg: "#ffffff", border: "1px solid #e0e0e0", radius: "3px", font: "14px / 400", use: "Filter / sort refinement strip" }
-    card-product: { type: card, bg: "#ffffff", radius: "6px", shadow: "none", padding: "8px 0", use: "Home / bestsellers product card; title #222222, price #da120d 700, separation via gutter not shadow" }
-    badge-discount: { type: badge, bg: "#fff5f5", fg: "#da120d", radius: "3px", font: "12px / 700", use: "Discount-rate badge, percentage-off" }
-    badge-club: { type: badge, bg: "#002041", fg: "#ffd200", radius: "4px", font: "11px / 700", use: "Smile Club loyalty badge" }
-    chip-delivery: { type: badge, bg: "#ffd200", fg: "#222222", radius: "3px", padding: "2px 6px", font: "11px / 500", use: "스마일배송 yellow chip; 무료배송 gray #f5f5f5, StarDelivery purple #7130f3 w/ white text" }
-    nav-anchor: { type: tab, fg: "#222222", padding: "17px 0px 20px", font: "16px / 400", active: "current fg #da120d, 2px bottom border #222222 on hover", use: "GNB top primary anchor" }
-    layer-recent: { type: dialog, bg: "#ffffff", border: "1px solid #e0e0e0", shadow: "none", use: "Recent-products layer; title 16px/700 #222222" }
-    banner-event: { type: card, bg: "#f1266d", fg: "#ffffff", use: "BF/BS/BSD full-bleed event-week module; BS #fd4e28, BSD #7b00e7" }
+colors:
+  primary: '#da120d'
+  brand: '#da120d'
+  error: '#ef2b2a'
+  canvas: '#ffffff'
+  surface: '#ffffff'
+  foreground: '#222222'
+  muted: '#757575'
+  on-primary: '#ffffff'
+  hairline: '#e0e0e0'
+  success: '#00c400'
+  accent-smile: '#ffd200'
+  accent-stardelivery: '#7130f3'
+  accent-connect: '#00c3a0'
+  club-navy: '#002041'
+  club-blue: '#497cff'
+  event-bf: '#f1266d'
+  event-bs: '#fd4e28'
+  event-bsd: '#7b00e7'
+typography:
+  section-hero:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Hero module section H2
+  section-compact:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Compact module H2
+  card-title:
+    fontSize: 18.72px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Card H3 heading
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body, card title, primary nav
+  body-strong:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Price emphasis, strong body
+  secondary:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Secondary nav, filter/utility
+  utility:
+    fontSize: 13.3333px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Utility text, tooltip, swiper label
+  meta:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Meta text, footer notices, micro-badge
+  price-modifier:
+    fontSize: 11px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Price-modifier label 쿠폰적용가
+rounded:
+  sm: 3px
+  md: 4px
+  lg: 20px
+  full: 9999px
+spacing:
+  micro: 4
+  sm: 8
+  md: 16
+  lg: 24
+  module: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#da120d'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 14px 24px
+    typography: 16px / 700
+    use: Highest-intent purchase CTA, one per surface
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#222222'
+    border: '1px solid #e0e0e0'
+    rounded: 3px
+    typography: 14px / 400
+    use: Chrome-utility actions, footer button
+  button-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#666666'
+    border: '1px solid #e0e0e0'
+    rounded: 20px
+    typography: 16px / 400
+    states: 'active fg #222222'
+    use: Home module entry pills, GNB sub-category chips
+  input-search:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#222222'
+    border: '2px solid #222222'
+    rounded: 0px
+    height: 44px
+    typography: 16px / 400
+    use: Header search field, signature dark-stroked
+  input-filter:
+    type: input
+    backgroundColor: '#ffffff'
+    border: '1px solid #e0e0e0'
+    rounded: 3px
+    typography: 14px / 400
+    use: Filter / sort refinement strip
+  card-product:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 6px
+    shadow: none
+    padding: 8px 0
+    use: 'Home / bestsellers product card; title #222222, price #da120d 700, separation via gutter not shadow'
+  badge-discount:
+    type: badge
+    backgroundColor: '#fff5f5'
+    textColor: '#da120d'
+    rounded: 3px
+    typography: 12px / 700
+    use: Discount-rate badge, percentage-off
+  badge-club:
+    type: badge
+    backgroundColor: '#002041'
+    textColor: '#ffd200'
+    rounded: 4px
+    typography: 11px / 700
+    use: Smile Club loyalty badge
+  chip-delivery:
+    type: badge
+    backgroundColor: '#ffd200'
+    textColor: '#222222'
+    rounded: 3px
+    padding: 2px 6px
+    typography: 11px / 500
+    use: '스마일배송 yellow chip; 무료배송 gray #f5f5f5, StarDelivery purple #7130f3 w/ white text'
+  nav-anchor:
+    type: tab
+    textColor: '#222222'
+    padding: 17px 0px 20px
+    typography: 16px / 400
+    active: 'current fg #da120d, 2px bottom border #222222 on hover'
+    use: GNB top primary anchor
+  layer-recent:
+    type: dialog
+    backgroundColor: '#ffffff'
+    border: '1px solid #e0e0e0'
+    shadow: none
+    use: 'Recent-products layer; title 16px/700 #222222'
+  banner-event:
+    type: card
+    backgroundColor: '#f1266d'
+    textColor: '#ffffff'
+    use: 'BF/BS/BSD full-bleed event-week module; BS #fd4e28, BSD #7b00e7'
+fonts:
+  roles:
+    sans: Gmarket Sans
+    mono: system-ui
 ---
 
 # Design System Inspiration of Gmarket (지마켓)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Gmarket is what a quarter-century-old Korean open-market looks like after Shinsegae's 2021 acquisition: a department-store conglomerate has bought a Y2K-era trading floor and is mid-renovation, but the floor is still open and the deals are still moving. The home page is unapologetically dense — a 1200px fixed canvas (`--minWidth: 1200px`), white surface, ink-near-black text (`#222222`), and a single, surgical brand asset: **Gmarket Red** `#da120d`, deployed almost exclusively on price (`쿠폰적용가`, `52%`, the final-card-discount line). There is no gradient, no hero video, no marketing flourish. The atmosphere is **"전단지가 잘 정돈된 백화점 1층"** — a leaflet, organized — where every pixel of vertical real estate is a chance to surface another deal, and the visual job of design is to keep that density legible.
 
@@ -89,7 +193,7 @@ The token system, captured live from `:root`, is **enormous** — 247 CSS custom
 - **BEM-flavored naming** — `button__category-all`, `text__title`, `box__layer-title`, `list-item--recent` — the production code is more disciplined than the rendered density suggests
 - **Density over hierarchy** — page is 10+ stacked category modules deep; users scan visual rhythm (red price + thumbnail), not headings
 
-## Primary tasks
+### Primary tasks
 
 - Find a deal you did not know you wanted
 - Open several product cards and finish one purchase
@@ -97,7 +201,53 @@ The token system, captured live from `:root`, is **enormous** — 247 CSS custom
 - Check the delivery chip and coupon badges on a product card
 - Pay with SmilePay and shop members-only Club pricing
 
-## 2. Color Palette & Roles
+### Iconography & Imagery
+
+- **CSS Sprites** — Gmarket has not migrated to SVG / icon-font for chrome icons. Production class system: `sprite`, `sprite__common`, `sprite__common--before`, `sprite__common--after`. Icons are positioned slivers of a master PNG, sized via `--spriteSize: 100% 100%`. This is a legacy choice — performance-fine, but inaccessible to recoloring at runtime.
+- **Product thumbnails** — 1:1 square dominant; 16:9 banner cards for category-feature modules
+- **Banner imagery** — promotional photography, large-typography overlays in Gmarket Sans, typically text + product + offer; brand stays out of the way
+- **No illustration system** observed in chrome — Gmarket is a photo-first marketplace; illustrations appear only in onboarding / empty-states (not captured this pass)
+
+### Brand Narrative
+
+Gmarket (지마켓) was founded as **2000** as an open-market predecessor of Korean e-commerce — among the first generations of platforms that let any individual seller post a product to a national catalog. eBay acquired the platform in 2009 and ran it as eBay Korea, alongside Auction (founded 1998, the older sibling). In **2021, Shinsegae Group (신세계그룹)** — the conglomerate behind E-Mart, the Shinsegae Department Store, and Starbucks Korea — acquired the eBay Korea business unit, bringing Gmarket and Auction under the Shinsegae Universe umbrella, alongside SSG.com and E-Mart Mall. The 2024–2026 chrome reflects this transition: the home page now surfaces "신세계 유니버스 클럽 전용" modules, the **Club Smile** color sub-system maps to Shinsegae's loyalty programme, and an "이마트몰" (E-Mart Mall) section ships fresh groceries inside the Gmarket interface.
+
+Gmarket's positioning slogan, observed on the corporate site as factual context: **"지금부터의 마켓"** ("the market from-now-onward"). The narrative argues that 25 years of marketplace experience is being relaunched as a Shinsegae-integrated commerce floor — Auction for the auction-hunters, Gmarket for the open-market regulars, SSG.com for the premium-vertical, all stitched together with SmilePay (single wallet), StarDelivery (premium delivery), and Smile Club (loyalty + members-only pricing).
+
+Service portfolio (per `corp.gmarket.com`, captured 2026-05-15): **Gmarket** (open market, since 2000), **Auction** (since 1998), **SmilePay** (wallet), **StarDelivery** (premium delivery), **Smile Club** (Shinsegae Universe loyalty), **G마켓Pay** (payment integration). HQ city, current CEO, headcount, and total funding not captured this pass (corporate site does not surface them on the analyzed page) — flagged for UPDATE.
+
+*(Founder name and 1999/2000 founding-team specifics from earlier eBay-Korea era have evolved through three ownership transitions — eBay Korea → Shinsegae acquisition 2021 — and any "founder quote" attribution must verify against multiple ownership-era sources. Not included here without that verification.)*
+
+### Design Principles (analyst-derived from observed patterns)
+
+1. **Density is the service.** Gmarket users come to scan, not to read. The chrome optimizes scroll efficiency — vertical stacks of category modules, repeating thumbnail-price-chip rhythm — because finding the deal you didn't know you wanted is the value proposition.
+   *UI implication*: do not introduce hierarchy that breaks scan rhythm; do not pad sections to "breathe" at the expense of card count per fold.
+
+2. **Red is for price, not personality.** Gmarket Red `#da120d` is reserved almost exclusively for numerical price-discount tokens. The brand does not flood it as a generic primary fill in observed chrome.
+   *UI implication*: when porting Gmarket's palette to a new surface, treat red as a *semantic-price asset* (like Bunjang's), not a brand-button color.
+
+3. **Service-name accuracy over copy-craft.** "스마일배송" / "안전결제" / "도착보장" / "쿠폰적용가" are first-class typographic citizens. The brand does not abbreviate or rebrand them for casual surfaces.
+   *UI implication*: in any localized port, render Korean service-names exactly; do not translate "스마일배송" to "Smile Delivery" in Korean chrome.
+
+4. **Sub-brand color systems beat a flat palette.** Club Smile (5×3 navy/blue/gray), Event (BF/BS/BSD), and three single-token service accents map color directly to revenue programs.
+   *UI implication*: when extending Gmarket's palette, add named sub-systems for each commercial program, not generic "tertiary" tokens.
+
+5. **Legacy is not debt — it's discipline.** CSS sprites, fixed-1200px canvas, BEM naming — these are deliberate (cost / stability / muscle-memory for the seller community), not unmaintained.
+   *UI implication*: do not propose "modernization" without surfacing the operational cost of breaking 25-year-old seller workflows. The mobile flagship at `m.gmarket.co.kr` is where modern responsive lives.
+
+### Personas (analyst inference — illustrative, verify before adoption)
+
+> *Disclaimer: Gmarket does not publish official user personas. The four archetypes below are inferred from observed surface design and Korean-marketplace context. Treat as illustrative analyst fiction for porting decisions, not as ground-truth.*
+
+1. **The 40-something household manager** — primary buyer for the family. Comes for staples (생필품 / 식품 / 세제), comes back for the Smile Club coupon. Scans the home grid by category, opens 4–6 product cards per visit, completes one purchase per session. Values: price accuracy, delivery reliability (스마일배송), coupon-stack legibility.
+
+2. **The deal-hunting 30-something** — knows the platform inside out. Bookmarks the bestsellers page, sorts by 가격 / 인기 / 신상품, uses keyboard shortcuts. Comes daily during 슈퍼딜 / 빅스마일데이 events. Values: countdown timers, "마감임박" badges, transparent card-discount math.
+
+3. **The 50+ open-market regular** — Gmarket-since-Y2K. Trusts the brand because it predates current Korean e-commerce. Less mobile-fluent — uses `www.gmarket.co.kr` on desktop, prefers the fixed-1200px canvas because it's predictable. Values: large enough text (won't tolerate < 14px), Korean service-names (won't tolerate Latin abbreviations), call-center hotline visibility.
+
+4. **The Shinsegae Universe loyalty member** — newer cohort, post-2021 acquisition. Discovered Gmarket through SSG.com cross-sell or E-Mart. Engages with the Club Smile modules, uses SmilePay as the default wallet. Values: members-only pricing, cross-app continuity (Green-Connect-Blue program), unified loyalty across Shinsegae brands.
+
+## Colors
 
 All values captured 2026-05-15 from production `:root` CSS custom properties via `getComputedStyle(document.documentElement)` on `https://www.gmarket.co.kr/` and `https://corners.gmarket.co.kr/Bestsellers`. Token names preserve Gmarket's own casing (PascalCase-Hyphen, e.g. `--Red-600`, `--Club-Navy-Main`).
 
@@ -152,7 +302,7 @@ A 10-stop ladder, semantically aligned with Material's named stops but with Gmar
 - Footer / footer-area tint: `--Gray-100 #f5f5f5`
 - Section-divider tint: `--Gray-50 #fafafa`
 
-## 3. Typography
+## Typography
 
 Gmarket runs a two-tier typography model: a **first-party display face** for set-piece moments and a **conventional Korean system stack** for body density.
 
@@ -185,7 +335,76 @@ Two production weights dominate: **400** (body / nav / meta) and **700** (headin
 ### Line-height
 Largely default-browser (1.2–1.5 depending on element). Gmarket does not enforce a strict line-height token system on the home/bestsellers surfaces.
 
-## 4. Components
+## Layout
+
+### Layout & Spacing
+
+Gmarket's flagship runs a **fixed-1200px desktop canvas** (`--minWidth: 1200px`). This is a deliberate legacy decision — the 2000-founded marketplace has not committed to fluid responsive on `www.`; the mobile flagship lives at `m.gmarket.co.kr` as a separate surface. Below 1200px, the desktop site horizontal-scrolls rather than reflowing.
+
+#### Grid
+- **Outer max-width**: 1200px, centered, no bleed
+- **Module spacing**: ~48–64px vertical between category modules (H2 → first card row → repeat)
+- **Card grid**: 2-up on narrow modules, 4-up on standard modules, 5-up on bestsellers-page rank grid
+- **Card gutter**: 8–16px horizontal, 16–24px vertical
+- **Inner card padding**: 8px around content, thumbnail flush
+- **GNB strip height**: ~50–60px sticky, white background
+
+#### Spacing Scale (inferred from observed padding/margin frequencies)
+Gmarket does not expose `--space-*` tokens. Observed paddings cluster at:
+- `4px` — micro (chip vertical)
+- `8px` — small (card inner)
+- `12–16px` — medium (button horizontal, list-item padding)
+- `20–24px` — large (section internal gap)
+- `48–64px` — module vertical break
+
+#### Page Anatomy (home, top-to-bottom)
+1. Top utility bar — mypage / cart / global / lang (12–13px utility text)
+2. Main header — wordmark + search + cart icon
+3. GNB — 전체카테고리 / 베스트 / 신상마켓 / 슈퍼딜 / 알뜰쇼핑 / 브랜드데이 / G마켓Pay / 골프 / 라이브
+4. Hero swiper banner (Swiper.js, `--swiper-theme-color: #007aff`)
+5. Vertical category modules ×10 (each = H2 + grid)
+6. Footer — seller-services + legal + corp links + 신세계그룹 family-site row
+
+## Elevation & Depth
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+### Motion & Interaction
+
+Motion tokens **not directly captured** in single-pass CDP. Observed motion patterns:
+- **Swiper.js carousel** on hero banner — paged horizontal swipe (default Swiper timing, ~300ms)
+- **Sticky GNB** — fixed on scroll, no transform animation
+- **Hover affordances** — primarily underline + color shift on text-link; observed `cursor: pointer` on most clickable elements without elaborate transition
+- **No view-transition / scroll-driven animation** observed in chrome
+
+Flagged for UPDATE: capture explicit `transition` and `animation` shorthand frequencies, capture hover/focus states.
+
+Motion tokens **partially captured** — the chrome relies on Swiper.js defaults and CSS-transition shorthand rather than a public token system.
+
+### Observed
+- **Swiper carousel** — `--swiper-theme-color: #007aff` (Swiper.js library color, not a Gmarket brand token), default ~300ms slide duration
+- **Sticky GNB** — `position: sticky` with no transform animation
+- **Sprite-icon hover** — typically `transition: background-position 0.1s` (inferred from sprite pattern)
+
+### Not Captured (UPDATE targets)
+- Modal / layer open-close timing
+- Toast / snackbar duration
+- Scroll-driven animation
+- Reduced-motion handling
+
+### Motion Rules (analyst recommendation for ports, not lifted)
+- Carousels should default ~300ms
+- Hover responses should be ≤150ms
+- Layer / modal transitions should be 200–250ms with ease-out
+- Respect `prefers-reduced-motion: reduce` — disable swiper auto-advance, eliminate non-essential transitions
+
+## Components
 
 All values from live CDP inspect on 2026-05-15. Where a state was not directly observed (hover / pressed / focus / disabled), the value is marked `(Inferred)`. Schema: one field per bullet.
 
@@ -336,128 +555,7 @@ All values from live CDP inspect on 2026-05-15. Where a state was not directly o
 - Primary CTA flooded-red variant inferred (not observed in 272 sampled chrome elements; commerce-detail-page surfaces not captured this pass — flagged for UPDATE)
 - Hover / pressed / focus / disabled states not directly captured — single-pass CDP only
 
-## 5. Layout & Spacing
-
-Gmarket's flagship runs a **fixed-1200px desktop canvas** (`--minWidth: 1200px`). This is a deliberate legacy decision — the 2000-founded marketplace has not committed to fluid responsive on `www.`; the mobile flagship lives at `m.gmarket.co.kr` as a separate surface. Below 1200px, the desktop site horizontal-scrolls rather than reflowing.
-
-### Grid
-- **Outer max-width**: 1200px, centered, no bleed
-- **Module spacing**: ~48–64px vertical between category modules (H2 → first card row → repeat)
-- **Card grid**: 2-up on narrow modules, 4-up on standard modules, 5-up on bestsellers-page rank grid
-- **Card gutter**: 8–16px horizontal, 16–24px vertical
-- **Inner card padding**: 8px around content, thumbnail flush
-- **GNB strip height**: ~50–60px sticky, white background
-
-### Spacing Scale (inferred from observed padding/margin frequencies)
-Gmarket does not expose `--space-*` tokens. Observed paddings cluster at:
-- `4px` — micro (chip vertical)
-- `8px` — small (card inner)
-- `12–16px` — medium (button horizontal, list-item padding)
-- `20–24px` — large (section internal gap)
-- `48–64px` — module vertical break
-
-### Page Anatomy (home, top-to-bottom)
-1. Top utility bar — mypage / cart / global / lang (12–13px utility text)
-2. Main header — wordmark + search + cart icon
-3. GNB — 전체카테고리 / 베스트 / 신상마켓 / 슈퍼딜 / 알뜰쇼핑 / 브랜드데이 / G마켓Pay / 골프 / 라이브
-4. Hero swiper banner (Swiper.js, `--swiper-theme-color: #007aff`)
-5. Vertical category modules ×10 (each = H2 + grid)
-6. Footer — seller-services + legal + corp links + 신세계그룹 family-site row
-
-## 6. Iconography & Imagery
-
-- **CSS Sprites** — Gmarket has not migrated to SVG / icon-font for chrome icons. Production class system: `sprite`, `sprite__common`, `sprite__common--before`, `sprite__common--after`. Icons are positioned slivers of a master PNG, sized via `--spriteSize: 100% 100%`. This is a legacy choice — performance-fine, but inaccessible to recoloring at runtime.
-- **Product thumbnails** — 1:1 square dominant; 16:9 banner cards for category-feature modules
-- **Banner imagery** — promotional photography, large-typography overlays in Gmarket Sans, typically text + product + offer; brand stays out of the way
-- **No illustration system** observed in chrome — Gmarket is a photo-first marketplace; illustrations appear only in onboarding / empty-states (not captured this pass)
-
-## 7. Motion & Interaction
-
-Motion tokens **not directly captured** in single-pass CDP. Observed motion patterns:
-- **Swiper.js carousel** on hero banner — paged horizontal swipe (default Swiper timing, ~300ms)
-- **Sticky GNB** — fixed on scroll, no transform animation
-- **Hover affordances** — primarily underline + color shift on text-link; observed `cursor: pointer` on most clickable elements without elaborate transition
-- **No view-transition / scroll-driven animation** observed in chrome
-
-Flagged for UPDATE: capture explicit `transition` and `animation` shorthand frequencies, capture hover/focus states.
-
-## 8. Accessibility & States
-
-Gmarket's flagship has **observable a11y debt** — surfaced here factually, not editorialized.
-
-- **H1 image-replacement** — the wordmark `<h1>` carries `font-size: 0px`; logo is a sprite background-image. Screen readers receive the text "G마켓" via inner span, but visually-rendered alt-text is absent. Acceptable pattern, but text-color falls back to `--Gray-500 #9e9e9e` in some sampled cases (image hides this).
-- **Color contrast on price-red on white** — `#da120d` on `#ffffff` = 5.5:1 — passes WCAG AA for normal text (4.5:1) and AAA for large text (7:1+). Strong.
-- **`--Smile-Yellow #ffd200` on `#ffffff`** — 1.6:1 — fails WCAG AA. Used as background fill with dark text, not on white as foreground. Risk only if reused inverted.
-- **Fixed-1200px canvas** — fails WCAG 1.4.10 Reflow (320px reflow requirement). Mitigated only by the separate `m.gmarket.co.kr` mobile surface.
-- **Sprite-driven icons** — no `aria-label` consistently observed on `button__layer-close`, `button__tooltip`, swiper next/prev. Mixed: `<button>` carries text "닫기" in some cases, sprite-only in others.
-- **State coverage** — visible focus rings inconsistent; default-browser focus outline observed on `<a>`, custom focus rarely surfaced. Disabled state not directly captured.
-
-Captured floor: focus rings + disabled states are an UPDATE-pass target.
-
-## 9. Content Voice (analyst paraphrase — no verbatim Gmarket copy)
-
-Gmarket's chrome voice is **transactional and time-pressured**. It speaks in numeric specificity (price, discount %, time-remaining) and in service-naming (스마일배송 / 안전결제 / 도착보장 / 카드혜택가). It does not advertise brand personality from the chrome — the chrome is the deal. Brand voice lives in event-week landing banners and in the corporate site (`corp.gmarket.com`), where positioning copy reads aspirational ("Korea's e-commerce benchmark", "We Connect", "지금부터의 마켓").
-
-**Voice traits (analyst paraphrase, not lifted)**:
-- Specific over evocative — "쿠폰적용가 7,840원" beats "Great deal"
-- Compound service nouns — "스마일배송", "최종카드혜택가", "감정완료" — Korean marketplace argot, dense
-- Numeric urgency — countdown, stock-low, "마감임박" are first-class typographic citizens
-- Brand restraint — "G마켓" rarely speaks in first-person; the user does the verb
-
-**Do**: lead with price, name the service plainly, let the number do the work
-**Don't**: invent a brand voice from chrome — Gmarket's chrome is a venue, not a personality
-
-## 10. Voice & Tone (illustrative — OmD fresh derivations, not Gmarket copy)
-
-Three voice samples illustrating the analyst paraphrase above. **These are fresh derivations for ports — not Gmarket marketing copy. Verify before adoption.**
-
-- *"오늘 가격, 오늘 도착."* — six syllables, two facts, no adjective
-- *"쿠폰 적용 시 22% 더."* — price-context as headline; the verb is invisible
-- *"이 가격, 이번 주만."* — temporal scarcity without exclamation
-
-**Do**: specificity, service-name accuracy, price-first
-**Don't**: emotional adjectives ("amazing", "최고의"), abstract brand-claims, hero-tagline gestures in card chrome
-
-## 11. Brand Narrative
-
-Gmarket (지마켓) was founded as **2000** as an open-market predecessor of Korean e-commerce — among the first generations of platforms that let any individual seller post a product to a national catalog. eBay acquired the platform in 2009 and ran it as eBay Korea, alongside Auction (founded 1998, the older sibling). In **2021, Shinsegae Group (신세계그룹)** — the conglomerate behind E-Mart, the Shinsegae Department Store, and Starbucks Korea — acquired the eBay Korea business unit, bringing Gmarket and Auction under the Shinsegae Universe umbrella, alongside SSG.com and E-Mart Mall. The 2024–2026 chrome reflects this transition: the home page now surfaces "신세계 유니버스 클럽 전용" modules, the **Club Smile** color sub-system maps to Shinsegae's loyalty programme, and an "이마트몰" (E-Mart Mall) section ships fresh groceries inside the Gmarket interface.
-
-Gmarket's positioning slogan, observed on the corporate site as factual context: **"지금부터의 마켓"** ("the market from-now-onward"). The narrative argues that 25 years of marketplace experience is being relaunched as a Shinsegae-integrated commerce floor — Auction for the auction-hunters, Gmarket for the open-market regulars, SSG.com for the premium-vertical, all stitched together with SmilePay (single wallet), StarDelivery (premium delivery), and Smile Club (loyalty + members-only pricing).
-
-Service portfolio (per `corp.gmarket.com`, captured 2026-05-15): **Gmarket** (open market, since 2000), **Auction** (since 1998), **SmilePay** (wallet), **StarDelivery** (premium delivery), **Smile Club** (Shinsegae Universe loyalty), **G마켓Pay** (payment integration). HQ city, current CEO, headcount, and total funding not captured this pass (corporate site does not surface them on the analyzed page) — flagged for UPDATE.
-
-*(Founder name and 1999/2000 founding-team specifics from earlier eBay-Korea era have evolved through three ownership transitions — eBay Korea → Shinsegae acquisition 2021 — and any "founder quote" attribution must verify against multiple ownership-era sources. Not included here without that verification.)*
-
-## 12. Design Principles (analyst-derived from observed patterns)
-
-1. **Density is the service.** Gmarket users come to scan, not to read. The chrome optimizes scroll efficiency — vertical stacks of category modules, repeating thumbnail-price-chip rhythm — because finding the deal you didn't know you wanted is the value proposition.
-   *UI implication*: do not introduce hierarchy that breaks scan rhythm; do not pad sections to "breathe" at the expense of card count per fold.
-
-2. **Red is for price, not personality.** Gmarket Red `#da120d` is reserved almost exclusively for numerical price-discount tokens. The brand does not flood it as a generic primary fill in observed chrome.
-   *UI implication*: when porting Gmarket's palette to a new surface, treat red as a *semantic-price asset* (like Bunjang's), not a brand-button color.
-
-3. **Service-name accuracy over copy-craft.** "스마일배송" / "안전결제" / "도착보장" / "쿠폰적용가" are first-class typographic citizens. The brand does not abbreviate or rebrand them for casual surfaces.
-   *UI implication*: in any localized port, render Korean service-names exactly; do not translate "스마일배송" to "Smile Delivery" in Korean chrome.
-
-4. **Sub-brand color systems beat a flat palette.** Club Smile (5×3 navy/blue/gray), Event (BF/BS/BSD), and three single-token service accents map color directly to revenue programs.
-   *UI implication*: when extending Gmarket's palette, add named sub-systems for each commercial program, not generic "tertiary" tokens.
-
-5. **Legacy is not debt — it's discipline.** CSS sprites, fixed-1200px canvas, BEM naming — these are deliberate (cost / stability / muscle-memory for the seller community), not unmaintained.
-   *UI implication*: do not propose "modernization" without surfacing the operational cost of breaking 25-year-old seller workflows. The mobile flagship at `m.gmarket.co.kr` is where modern responsive lives.
-
-## 13. Personas (analyst inference — illustrative, verify before adoption)
-
-> *Disclaimer: Gmarket does not publish official user personas. The four archetypes below are inferred from observed surface design and Korean-marketplace context. Treat as illustrative analyst fiction for porting decisions, not as ground-truth.*
-
-1. **The 40-something household manager** — primary buyer for the family. Comes for staples (생필품 / 식품 / 세제), comes back for the Smile Club coupon. Scans the home grid by category, opens 4–6 product cards per visit, completes one purchase per session. Values: price accuracy, delivery reliability (스마일배송), coupon-stack legibility.
-
-2. **The deal-hunting 30-something** — knows the platform inside out. Bookmarks the bestsellers page, sorts by 가격 / 인기 / 신상품, uses keyboard shortcuts. Comes daily during 슈퍼딜 / 빅스마일데이 events. Values: countdown timers, "마감임박" badges, transparent card-discount math.
-
-3. **The 50+ open-market regular** — Gmarket-since-Y2K. Trusts the brand because it predates current Korean e-commerce. Less mobile-fluent — uses `www.gmarket.co.kr` on desktop, prefers the fixed-1200px canvas because it's predictable. Values: large enough text (won't tolerate < 14px), Korean service-names (won't tolerate Latin abbreviations), call-center hotline visibility.
-
-4. **The Shinsegae Universe loyalty member** — newer cohort, post-2021 acquisition. Discovered Gmarket through SSG.com cross-sell or E-Mart. Engages with the Club Smile modules, uses SmilePay as the default wallet. Values: members-only pricing, cross-app continuity (Green-Connect-Blue program), unified loyalty across Shinsegae brands.
-
-## 14. States
+### States
 
 | State | Surface | Token / pattern |
 |---|---|---|
@@ -474,29 +572,7 @@ Service portfolio (per `corp.gmarket.com`, captured 2026-05-15): **Gmarket** (op
 | **Promotional / Event-week** | Surface swaps to `--Event-bf-main` / `--Event-bs-main` / `--Event-bsd-main` fills with `#ffffff` text |
 | **Loyalty (Smile Club)** | Module backgrounds shift to `--Club-Navy-Main #002041`, accent `#ffd200` text |
 
-## 15. Motion & Easing
-
-Motion tokens **partially captured** — the chrome relies on Swiper.js defaults and CSS-transition shorthand rather than a public token system.
-
-### Observed
-- **Swiper carousel** — `--swiper-theme-color: #007aff` (Swiper.js library color, not a Gmarket brand token), default ~300ms slide duration
-- **Sticky GNB** — `position: sticky` with no transform animation
-- **Sprite-icon hover** — typically `transition: background-position 0.1s` (inferred from sprite pattern)
-
-### Not Captured (UPDATE targets)
-- Modal / layer open-close timing
-- Toast / snackbar duration
-- Scroll-driven animation
-- Reduced-motion handling
-
-### Motion Rules (analyst recommendation for ports, not lifted)
-- Carousels should default ~300ms
-- Hover responses should be ≤150ms
-- Layer / modal transitions should be 200–250ms with ease-out
-- Respect `prefers-reduced-motion: reduce` — disable swiper auto-advance, eliminate non-essential transitions
-
-
-## 16. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Reserve Gmarket Red #da120d (--Red-600) for numeric price-discount strings, percentage-off, and strike-through context — treat it as a semantic-price asset, not a generic CTA fill
@@ -540,3 +616,48 @@ Motion tokens **partially captured** — the chrome relies on Swiper.js defaults
 - §10 voice samples are OmD-original illustrative reconstructions; explicitly marked "fresh derivations for ports — not Gmarket marketing copy"
 - §13 personas explicitly marked analyst inference, with disclaimer
 - Token CSS values reproduced under analytical fair-use as factual public-CSS observations
+
+## Voice & Tone
+
+### Content Voice (analyst paraphrase — no verbatim Gmarket copy)
+
+Gmarket's chrome voice is **transactional and time-pressured**. It speaks in numeric specificity (price, discount %, time-remaining) and in service-naming (스마일배송 / 안전결제 / 도착보장 / 카드혜택가). It does not advertise brand personality from the chrome — the chrome is the deal. Brand voice lives in event-week landing banners and in the corporate site (`corp.gmarket.com`), where positioning copy reads aspirational ("Korea's e-commerce benchmark", "We Connect", "지금부터의 마켓").
+
+**Voice traits (analyst paraphrase, not lifted)**:
+- Specific over evocative — "쿠폰적용가 7,840원" beats "Great deal"
+- Compound service nouns — "스마일배송", "최종카드혜택가", "감정완료" — Korean marketplace argot, dense
+- Numeric urgency — countdown, stock-low, "마감임박" are first-class typographic citizens
+- Brand restraint — "G마켓" rarely speaks in first-person; the user does the verb
+
+**Do**: lead with price, name the service plainly, let the number do the work
+**Don't**: invent a brand voice from chrome — Gmarket's chrome is a venue, not a personality
+
+### Voice & Tone (illustrative — OmD fresh derivations, not Gmarket copy)
+
+Three voice samples illustrating the analyst paraphrase above. **These are fresh derivations for ports — not Gmarket marketing copy. Verify before adoption.**
+
+- *"오늘 가격, 오늘 도착."* — six syllables, two facts, no adjective
+- *"쿠폰 적용 시 22% 더."* — price-context as headline; the verb is invisible
+- *"이 가격, 이번 주만."* — temporal scarcity without exclamation
+
+**Do**: specificity, service-name accuracy, price-first
+**Don't**: emotional adjectives ("amazing", "최고의"), abstract brand-claims, hero-tagline gestures in card chrome
+
+## Governance
+
+### Accessibility & States
+
+Gmarket's flagship has **observable a11y debt** — surfaced here factually, not editorialized.
+
+- **H1 image-replacement** — the wordmark `<h1>` carries `font-size: 0px`; logo is a sprite background-image. Screen readers receive the text "G마켓" via inner span, but visually-rendered alt-text is absent. Acceptable pattern, but text-color falls back to `--Gray-500 #9e9e9e` in some sampled cases (image hides this).
+- **Color contrast on price-red on white** — `#da120d` on `#ffffff` = 5.5:1 — passes WCAG AA for normal text (4.5:1) and AAA for large text (7:1+). Strong.
+- **`--Smile-Yellow #ffd200` on `#ffffff`** — 1.6:1 — fails WCAG AA. Used as background fill with dark text, not on white as foreground. Risk only if reused inverted.
+- **Fixed-1200px canvas** — fails WCAG 1.4.10 Reflow (320px reflow requirement). Mitigated only by the separate `m.gmarket.co.kr` mobile surface.
+- **Sprite-driven icons** — no `aria-label` consistently observed on `button__layer-close`, `button__tooltip`, swiper next/prev. Mixed: `<button>` carries text "닫기" in some cases, sprite-only in others.
+- **State coverage** — visible focus rings inconsistent; default-browser focus outline observed on `<a>`, custom focus rarely surfaced. Disabled state not directly captured.
+
+Captured floor: focus rings + disabled states are an UPDATE-pass target.
+
+### Known Gaps
+
+- **Contrast, `banner-event`.** Text `#ffffff` on `#f1266d` measures 4.01:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

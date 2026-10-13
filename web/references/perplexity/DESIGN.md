@@ -1,82 +1,220 @@
 ---
-id: perplexity
 name: Perplexity
-country: US
-category: ai
-homepage: "https://www.perplexity.ai"
-primary_color: "#20808D"
-logo:
-  type: simpleicons
-  slug: "perplexity"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#20808d"
-    primary-hover: "#1a6873"
-    primary-deep: "#13343b"
-    primary-tint: "#e5f2f2"
-    teal-on-dark: "#34b4c4"
-    ink: "#091717"
-    canvas: "#fbfaf4"
-    surface: "#fcfcf9"
-    surface-white: "#ffffff"
-    body: "#2e3a3a"
-    muted: "#5c6a6a"
-    placeholder: "#8a9494"
-    hairline: "#e4e4dc"
-    hairline-soft: "#efefe9"
-    dark-canvas: "#0d1117"
-    dark-surface: "#161b22"
-    dark-line: "#2a2f37"
-    ink-inverse: "#f2f2ed"
-    success: "#1f9d6b"
-    error: "#e0524a"
-    warning: "#d9923a"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "FK Grotesk", mono: "Berkeley Mono" }
-    display-hero: { size: 48, weight: 500, lineHeight: 1.08, tracking: -0.02, use: "Landing hero" }
-    display:      { size: 36, weight: 500, lineHeight: 1.17, tracking: -0.02, use: "Marketing section headers" }
-    heading-lg:   { size: 28, weight: 600, lineHeight: 1.29, tracking: -0.01, use: "Thread title, page headers" }
-    heading:      { size: 22, weight: 600, lineHeight: 1.36, tracking: -0.01, use: "Answer section headers, modal titles" }
-    subtitle:     { size: 18, weight: 600, lineHeight: 1.44, use: "Source group labels, card headings" }
-    answer-body:  { size: 16, weight: 400, lineHeight: 1.63, use: "Generated answer text, reading-first leading" }
-    body:         { size: 15, weight: 400, lineHeight: 1.60, use: "UI descriptions, settings" }
-    label:        { size: 14, weight: 500, lineHeight: 1.43, use: "Buttons, tabs, chips" }
-    caption:      { size: 13, weight: 400, lineHeight: 1.38, use: "Metadata, source domains, timestamps" }
-    mono:         { size: 13, weight: 400, lineHeight: 1.54, use: "Code, model IDs" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 6, md: 10, lg: 16, full: 9999 }
-  shadow:
-    ambient: "rgba(9,23,23,0.06) 0px 1px 3px"
-    standard: "rgba(9,23,23,0.08) 0px 2px 8px"
-    elevated: "rgba(9,23,23,0.20) 0px 16px 48px"
-  components:
-    button-primary: { type: button, bg: "#20808d", fg: "#ffffff", radius: 10, padding: "0 18px", font: "14px / 500", use: "Ask / submit primary CTA" }
-    button-secondary: { type: button, bg: "#fcfcf9", fg: "#091717", radius: 10, padding: "0 18px", font: "14px / 500", use: "Secondary action, 1px #e4e4dc border" }
-    button-ghost: { type: button, bg: "#efefe9", fg: "#5c6a6a", radius: 8, padding: "0 12px", font: "14px / 500", use: "Toolbar actions (Share, Sources, More)" }
-    pill: { type: badge, bg: "#ffffff", fg: "#2e3a3a", radius: 9999, padding: "6px 14px", font: "13px / 500", use: "Focus mode / filter selector", active: "#20808d border, #13343b text, #e5f2f2 bg" }
-    composer: { type: input, bg: "#ffffff", fg: "#091717", radius: 16, padding: "16px 18px", font: "16px / 400", use: "The Ask box, 1px #e4e4dc border, focus #20808d ring" }
-    text-field: { type: input, bg: "#ffffff", fg: "#091717", radius: 10, padding: "10px 14px", font: "15px / 400", use: "Standard text field, 1px #e4e4dc border" }
-    answer-card: { type: card, bg: "#fcfcf9", radius: 12, padding: "20px 24px", use: "Generated answer block, 1px #efefe9 border, editorial flat" }
-    source-card: { type: card, bg: "#ffffff", radius: 10, padding: "12px 14px", use: "Cited source card, 1px #e4e4dc border" }
-    citation-chip: { type: badge, bg: "#e5f2f2", fg: "#13343b", radius: 6, padding: "1px 6px", font: "11px / 600", use: "Inline source reference" }
-    badge-pro: { type: badge, bg: "#13343b", fg: "#ffffff", radius: 6, padding: "2px 8px", font: "11px / 600", use: "PRO / model labels" }
-    badge-status: { type: badge, bg: "#e5f2f2", fg: "#20808d", radius: 6, padding: "2px 8px", font: "11px / 600", use: "New / Beta / focus-mode labels" }
-    tab: { type: tab, fg: "#5c6a6a", font: "14px / 500", use: "Home / Discover / Spaces / Library", active: "#091717 text, 2px bottom border #20808d" }
-    toast: { type: toast, bg: "#091717", fg: "#f2f2ed", radius: 10, padding: "12px 16px", font: "14px / 400", use: "Copied / Shared transient confirmations" }
-    dialog: { type: dialog, bg: "#fbfaf4", fg: "#091717", radius: 16, padding: "28px", use: "Sign-in, settings, share, upgrade modal" }
-    toggle: { type: toggle, bg: "#20808d", radius: 9999, use: "Settings switch, #ffffff thumb" }
-  components_harvested: true
+colors:
+  primary: '#20808d'
+  primary-hover: '#1a6873'
+  primary-deep: '#13343b'
+  primary-tint: '#e5f2f2'
+  teal-on-dark: '#34b4c4'
+  ink: '#091717'
+  canvas: '#fbfaf4'
+  surface: '#fcfcf9'
+  surface-white: '#ffffff'
+  body: '#2e3a3a'
+  muted: '#5c6a6a'
+  placeholder: '#8a9494'
+  hairline: '#e4e4dc'
+  hairline-soft: '#efefe9'
+  dark-canvas: '#0d1117'
+  dark-surface: '#161b22'
+  dark-line: '#2a2f37'
+  ink-inverse: '#f2f2ed'
+  success: '#1f9d6b'
+  error: '#e0524a'
+  warning: '#d9923a'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 500
+    lineHeight: 1.08
+    letterSpacing: '-0.02px'
+    use: Landing hero
+  display:
+    fontSize: 36px
+    fontWeight: 500
+    lineHeight: 1.17
+    letterSpacing: '-0.02px'
+    use: Marketing section headers
+  heading-lg:
+    fontSize: 28px
+    fontWeight: 600
+    lineHeight: 1.29
+    letterSpacing: '-0.01px'
+    use: Thread title, page headers
+  heading:
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.36
+    letterSpacing: '-0.01px'
+    use: Answer section headers, modal titles
+  subtitle:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.44
+    use: Source group labels, card headings
+  answer-body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.63
+    use: Generated answer text, reading-first leading
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: UI descriptions, settings
+  label:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.43
+    use: Buttons, tabs, chips
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.38
+    use: Metadata, source domains, timestamps
+  mono:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.54
+    use: Code, model IDs
+rounded:
+  sm: 6px
+  md: 10px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#20808d'
+    textColor: '#ffffff'
+    rounded: 10px
+    padding: 0 18px
+    typography: 14px / 500
+    use: Ask / submit primary CTA
+  button-secondary:
+    type: button
+    backgroundColor: '#fcfcf9'
+    textColor: '#091717'
+    rounded: 10px
+    padding: 0 18px
+    typography: 14px / 500
+    use: 'Secondary action, 1px #e4e4dc border'
+  button-ghost:
+    type: button
+    backgroundColor: '#efefe9'
+    textColor: '#5c6a6a'
+    rounded: 8px
+    padding: 0 12px
+    typography: 14px / 500
+    use: Toolbar actions (Share, Sources, More)
+  pill:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#2e3a3a'
+    rounded: 9999px
+    padding: 6px 14px
+    typography: 13px / 500
+    use: Focus mode / filter selector
+    active: '#20808d border, #13343b text, #e5f2f2 bg'
+  composer:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#091717'
+    rounded: 16px
+    padding: 16px 18px
+    typography: 16px / 400
+    use: 'The Ask box, 1px #e4e4dc border, focus #20808d ring'
+  text-field:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#091717'
+    rounded: 10px
+    padding: 10px 14px
+    typography: 15px / 400
+    use: 'Standard text field, 1px #e4e4dc border'
+  answer-card:
+    type: card
+    backgroundColor: '#fcfcf9'
+    rounded: 12px
+    padding: 20px 24px
+    use: 'Generated answer block, 1px #efefe9 border, editorial flat'
+  source-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 10px
+    padding: 12px 14px
+    use: 'Cited source card, 1px #e4e4dc border'
+  citation-chip:
+    type: badge
+    backgroundColor: '#e5f2f2'
+    textColor: '#13343b'
+    rounded: 6px
+    padding: 1px 6px
+    typography: 11px / 600
+    use: Inline source reference
+  badge-pro:
+    type: badge
+    backgroundColor: '#13343b'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 2px 8px
+    typography: 11px / 600
+    use: PRO / model labels
+  badge-status:
+    type: badge
+    backgroundColor: '#e5f2f2'
+    textColor: '#20808d'
+    rounded: 6px
+    padding: 2px 8px
+    typography: 11px / 600
+    use: New / Beta / focus-mode labels
+  tab:
+    type: tab
+    textColor: '#5c6a6a'
+    typography: 14px / 500
+    use: Home / Discover / Spaces / Library
+    active: '#091717 text, 2px bottom border #20808d'
+  toast:
+    type: toast
+    backgroundColor: '#091717'
+    textColor: '#f2f2ed'
+    rounded: 10px
+    padding: 12px 16px
+    typography: 14px / 400
+    use: Copied / Shared transient confirmations
+  dialog:
+    type: dialog
+    backgroundColor: '#fbfaf4'
+    textColor: '#091717'
+    rounded: 16px
+    padding: 28px
+    use: Sign-in, settings, share, upgrade modal
+  toggle:
+    type: toggle
+    backgroundColor: '#20808d'
+    rounded: 9999px
+    use: 'Settings switch, #ffffff thumb'
+fonts:
+  roles:
+    sans: FK Grotesk
+    mono: Berkeley Mono
 ---
 
 # Design System Inspiration of Perplexity
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Perplexity is an AI answer engine, and its design is built around a single idea: get out of the way of the answer. Where most AI products lean on neon gradients, glassmorphism, and a cold sci-fi chrome, Perplexity went the opposite direction — a calm, editorial, almost Scandinavian aesthetic where the interface dissolves and the text takes the stage. The brand was crafted by studio **Smith & Diction**, who described the brief as "creating an invisible brand": the product is a reading experience, so the chrome should feel like good paper and good ink, not a dashboard.
 
@@ -93,7 +231,7 @@ Typographically the brand runs on **FK Grotesk** and **FK Display** (Florian Kar
 - First-class dark mode built on the same teal, on a near-black `#0D1117`-family canvas
 - Generous radii (8–12px) and soft, low-contrast borders for a paper-soft feel
 
-## Primary tasks
+### Primary tasks
 
 - Ask a question and get an answer with citations
 - Click through a citation to verify a claim
@@ -101,7 +239,36 @@ Typographically the brand runs on **FK Grotesk** and **FK Display** (Florian Kar
 - Share an answer thread from the thread toolbar
 - Read the Discover feed as a morning news habit
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Perplexity AI was founded in **2022** by Aravind Srinivas, Denis Yarats, Johnny Ho, and Andy Konwinski as an "answer engine" — a search product that responds in synthesized, cited prose instead of ten blue links. The thesis was that the future of search is a conversation that always shows its work. That single conviction — **answers with citations** — drives every design decision.
+
+When the brand identity needed to mature past a developer prototype, Perplexity worked with Philadelphia studio **Smith & Diction**, who framed the work as building "an invisible brand." The logic: Perplexity is a reading and thinking tool, so the most respectful design recedes. They reached for an editorial, Scandinavian-leaning system — warm paper grounds, a precise grotesque type family (**FK Grotesk / FK Display**), and a single muted teal (`#20808D`) chosen specifically because it was *not* the saturated cyan of the AI gold rush. The teal reads a little like terminal phosphor and a little like a peacock — technical and natural at once.
+
+What Perplexity refuses is instructive: no gradient meshes, no glassmorphic dashboards, no neon "AI" sheen, no mascot. In a category sprinting toward maximal sci-fi spectacle, Perplexity bet on the opposite — calm, literacy, and trust. The interface should feel like the best version of reading a really good article, where the answer is the design and the chrome is just good paper and good ink.
+
+### Principles
+
+1. **The answer is the hero.** Every pixel of chrome exists to deliver the user to the text faster and then disappear. If a UI element competes with the answer for attention, it's wrong.
+2. **Always show your work.** No claim without a path to its source. Citations are a first-class, typographic part of the answer, not an afterthought panel.
+3. **Calm over spectacle.** Warm paper, muted teal, quiet grays. The brand earns trust by *not* shouting in a category that shouts.
+4. **One accent, used with discipline.** Teal `#20808D` means action or citation. It never decorates. Restraint makes the teal legible as a signal.
+5. **Read like print.** Answer text gets a constrained measure and generous leading. The product is text; it should typeset like a magazine, not a form.
+6. **Paper-flat depth.** Separation comes from warm borders and surface temperature, not drop shadows. Elevation is reserved for things that truly float.
+7. **Dark mode is not an afterthought.** Many users read at night; the dark theme is designed in parallel with the same teal logic, not bolted on.
+8. **Invisible brand.** The strongest identity here is the one you stop noticing — the brand succeeds when the user only remembers the answer.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described knowledge-worker and researcher segments, not individual people.*
+
+**Maya, 29, San Francisco.** Product manager who replaced her default search engine with Perplexity six months ago. Uses it 15+ times a day for quick fact-finding, competitive research, and drafting. She trusts it specifically *because* every answer shows sources — she clicks through to verify the ones that matter. Reads in dark mode all day. Gets irritated by any AI tool that sounds confident without proof.
+
+**Daniel, 44, Boston.** Academic researcher in public health. Uses Perplexity's Academic focus to scan literature and find primary sources fast, then follows citations into the actual papers. Values the muted, distraction-free reading surface — it lets him stay in long research sessions without eye strain. Skeptical of "AI magic" language; the citation rail is what keeps him on the product.
+
+**Priya, 23, London.** Graduate student and heavy Discover-feed reader. Treats Perplexity as both a research tool and a morning news habit. Loves the editorial card layout and the clean type — says it "feels like a magazine that answers back." Switches between web, academic, and writing focus modes constantly. Shares answer threads with classmates.
+
+## Colors
 
 ### Primary
 - **True Turquoise / Peacock** (`#20808D`): The brand teal. Primary interactive accent — the submit/answer button, active links, focus rings, source highlights, the answer cursor. The single hue allowed to carry brand voice.
@@ -139,7 +306,7 @@ Typographically the brand runs on **FK Grotesk** and **FK Display** (Florian Kar
 Citation chips and source pills cycle through a restrained set so users can distinguish references at a glance without a rainbow:
 - **Source Teal** (`#20808D`), **Source Slate** (`#4B5A66`), **Source Plum** (`#6E5A86`), **Source Clay** (`#A86A4B`). All muted, all sitting quietly under the text.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display / Wordmark**: `"FK Display", "FK Grotesk", Georgia, serif-fallback` — used for the logotype and the largest hero moments only.
@@ -169,7 +336,110 @@ Citation chips and source pills cycle through a restrained set so users can dist
 - **Three weights**: 400 (body), 500 (labels/display), 600 (headings). No black, no thin — the grotesque carries authority at mid-weights.
 - **Inline citations are typographic**: Source numbers `[1]` render as superscript teal tokens inside the answer flow, part of the type system rather than separate UI.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px
+- Common values: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64px
+- Reading column gets generous vertical rhythm (24–32px between answer blocks)
+
+### Grid & Container
+- Centered single reading column, max-width ~768px for answer/thread content (a magazine measure)
+- Marketing pages: 1200px max container with 24px gutters
+- Three-zone app shell: collapsible left rail (nav/library), centered content column, optional right rail (sources/related)
+- Discover feed: responsive 1–3 column masonry of story cards
+
+### Whitespace Philosophy
+- **The answer breathes**: Generated text gets a constrained measure (~68ch) and ~1.6 leading so it reads like an article, never a wall.
+- **Quiet chrome**: Toolbars and nav sit in muted ink grays so they recede; only the teal and the answer text earn the user's eye.
+- **Source rails are calm**: Citations live in a horizontal scroll above or beside the answer, never crowding the prose.
+
+### Border Radius Scale
+- Small (6px): chips, citation tokens, badges
+- Standard (10px): buttons, inputs, source cards
+- Comfortable (12px): answer/feed cards
+- Large (16px): composer well, modals
+- Pill (9999px): focus-mode pills, toggles
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, left rail becomes a drawer, composer docks to bottom |
+| Tablet | 640–1024px | Reading column + collapsible left rail, source rail moves above answer |
+| Desktop | 1024–1440px | Three-zone shell, source rail can sit right |
+| Wide | >1440px | Centered content caps at ~768px reading width, rails widen |
+
+#### Touch Targets
+- Buttons: 44px primary, 36px ghost — comfortable thumb targets on mobile
+- Composer submit: 40px circular/rounded target, always reachable
+- Source cards: full-width tappable rows on mobile
+
+#### Collapsing Strategy
+- Left navigation rail collapses to icon-only, then to a hamburger drawer on mobile
+- Source rail: right-side on desktop → horizontal scroll strip above the answer on mobile
+- Related questions: sidebar list on desktop → stacked chips below the answer on mobile
+- Composer: inline on desktop, sticky-bottom with safe-area inset on mobile
+
+#### Image Behavior
+- Source favicons: fixed 16px
+- Discover story images: 16:9, full-bleed card tops, lazy-loaded
+- Generated/answer images: responsive, max content-width, rounded 10px
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow, warm border only | Answer cards, page surfaces — the editorial default |
+| Subtle (1) | `0 1px 2px rgba(9,23,23,0.05)` | Source cards, inputs at rest |
+| Standard (2) | `0 2px 8px rgba(9,23,23,0.08)` | Hovered source cards, popovers |
+| Elevated (3) | `0 4px 16px rgba(9,23,23,0.12)` | Dropdowns, menus, toasts |
+| Modal (4) | `0 16px 48px rgba(9,23,23,0.20)` | Dialogs, command palette |
+
+**Shadow Philosophy**: Perplexity is paper-flat by default. Most separation comes from warm, low-contrast borders and the temperature shift between Paper (`#FBFAF4`) and Paper Raised (`#FCFCF9`), not from drop shadows. Shadows are reserved for genuinely floating layers, and they're tinted with the ink color (`rgba(9,23,23,…)`) rather than pure black, keeping the whole surface warm. The brand's restraint is the point — depth is a tool, not decoration.
+
+### Blur Effects
+- Source popovers and the command palette use a light backdrop blur (`blur(8px)`) over a translucent scrim
+- The sticky composer applies a subtle blur as content scrolls beneath it
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.ambient`: `rgba(9,23,23,0.06) 0px 1px 3px`
+- `shadow.standard`: `rgba(9,23,23,0.08) 0px 2px 8px`
+- `shadow.elevated`: `rgba(9,23,23,0.20) 0px 16px 48px`
+
+## Motion & Easing
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, focus-pill selection |
+| `motion-fast` | 120ms | Hover, focus rings, button press |
+| `motion-standard` | 220ms | Card hover-lift, popover open, tab switch |
+| `motion-slow` | 360ms | Modal/dialog entrance, drawer slide |
+| `motion-stream` | per-token | Answer streaming cadence — tokens appear as generated, the brand's signature motion |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — popovers, toasts, source cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, leaving elements |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — hover lifts, tab content |
+| `ease-cursor` | `steps / linear` | The teal answer cursor blink — mechanical, terminal-like, intentional |
+
+**Signature motions.**
+
+1. **Answer streaming.** The defining motion. Generated text appears token-by-token in reading order, trailed by a teal block cursor (`#20808D`). Sources resolve and fade in slightly ahead of the text that cites them, so citations are "ready" by the time you read past them. Never reveal a full answer in one flash — the streaming *is* the brand telling you it's thinking and sourcing in real time.
+2. **Source-card lift.** On hover, a source card raises with `motion-standard / ease-standard`, its border warming from `#E4E4DC` to teal `#20808D`. A quiet, confident invitation to click through.
+3. **Citation popover.** Hovering an inline `[1]` opens a source preview with `motion-fast / ease-enter` and a light backdrop blur — fast, so it feels like the source was always there.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, streaming collapses to a single fade-in of the completed answer, the cursor blink stops, and all `motion-*` tokens drop to `motion-instant`. The product stays fully usable — just static.
+
+## Components
 
 ### Buttons
 
@@ -339,51 +609,25 @@ The composer is the signature surface — a large rounded well where the user ty
 - Radius: 9999px
 - Use: Settings (e.g. AI Profile, dark mode, auto-suggestions)
 
-
 **Tier 1 sources:** https://www.perplexity.ai (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px
-- Common values: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64px
-- Reading column gets generous vertical rhythm (24–32px between answer blocks)
+| State | Treatment |
+|---|---|
+| **Empty (new thread)** | Centered composer on Paper, "Ask anything…" placeholder, a few suggested-prompt pills below in `#FCFCF9` with `#E4E4DC` borders. Inviting, never apologetic. |
+| **Empty (library)** | Single line of `#5C6A6A` body (`Start a thread to see it here.`) — no illustration. |
+| **Loading (generating answer)** | Teal `#20808D` shimmer cursor pulses where text will appear; source cards fade in first, then the answer streams token-by-token. Skeleton lines in `#EFEFE9`. |
+| **Streaming** | Answer text writes in left-to-right; a teal block cursor (`#20808D`) trails the last token. Citations pop in as their sources resolve. |
+| **Error (query failed)** | Inline notice card: `#E0524A` left border, `Couldn't complete that. Try again.` in `#091717`, a teal retry button. No mascot, no `Oops`. |
+| **Error (source unreachable)** | Source card dims to 50% with a `#8A9494` "Unavailable" label; the answer continues with remaining sources. |
+| **Success (copied/shared)** | Dark toast (`#091717` bg, `#F2F2ED` text) bottom-center, 3s, `Copied to clipboard`. |
+| **Focus mode active** | Selected pill flips to `#E5F2F2` bg / `#20808D` border / `#13343B` text; others stay quiet white. |
+| **Skeleton** | `#EFEFE9` (light) / `#1C2128` (dark) blocks at final dimensions, 1.2s shimmer with low-opacity highlight, rounded to component radius. |
+| **Disabled** | Buttons drop to 40% opacity; inputs keep `#E4E4DC` border and `#8A9494` text so geometry stays stable. |
+| **Hover (source card)** | Border shifts to `#20808D`, card lifts to `0 2px 8px rgba(9,23,23,0.08)`. |
 
-### Grid & Container
-- Centered single reading column, max-width ~768px for answer/thread content (a magazine measure)
-- Marketing pages: 1200px max container with 24px gutters
-- Three-zone app shell: collapsible left rail (nav/library), centered content column, optional right rail (sources/related)
-- Discover feed: responsive 1–3 column masonry of story cards
-
-### Whitespace Philosophy
-- **The answer breathes**: Generated text gets a constrained measure (~68ch) and ~1.6 leading so it reads like an article, never a wall.
-- **Quiet chrome**: Toolbars and nav sit in muted ink grays so they recede; only the teal and the answer text earn the user's eye.
-- **Source rails are calm**: Citations live in a horizontal scroll above or beside the answer, never crowding the prose.
-
-### Border Radius Scale
-- Small (6px): chips, citation tokens, badges
-- Standard (10px): buttons, inputs, source cards
-- Comfortable (12px): answer/feed cards
-- Large (16px): composer well, modals
-- Pill (9999px): focus-mode pills, toggles
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow, warm border only | Answer cards, page surfaces — the editorial default |
-| Subtle (1) | `0 1px 2px rgba(9,23,23,0.05)` | Source cards, inputs at rest |
-| Standard (2) | `0 2px 8px rgba(9,23,23,0.08)` | Hovered source cards, popovers |
-| Elevated (3) | `0 4px 16px rgba(9,23,23,0.12)` | Dropdowns, menus, toasts |
-| Modal (4) | `0 16px 48px rgba(9,23,23,0.20)` | Dialogs, command palette |
-
-**Shadow Philosophy**: Perplexity is paper-flat by default. Most separation comes from warm, low-contrast borders and the temperature shift between Paper (`#FBFAF4`) and Paper Raised (`#FCFCF9`), not from drop shadows. Shadows are reserved for genuinely floating layers, and they're tinted with the ink color (`rgba(9,23,23,…)`) rather than pure black, keeping the whole surface warm. The brand's restraint is the point — depth is a tool, not decoration.
-
-### Blur Effects
-- Source popovers and the command palette use a light backdrop blur (`blur(8px)`) over a translucent scrim
-- The sticky composer applies a subtle blur as content scrolls beneath it
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Peacock teal (`#20808D`) as the single accent — buttons, links, focus rings, active states
@@ -404,33 +648,23 @@ The composer is the signature surface — a large rounded well where the user ty
 - Don't use `#000000` text or `#FFFFFF` page backgrounds in light mode
 - Don't let the brand teal decorate non-interactive elements — it signals action and citation
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, left rail becomes a drawer, composer docks to bottom |
-| Tablet | 640–1024px | Reading column + collapsible left rail, source rail moves above answer |
-| Desktop | 1024–1440px | Three-zone shell, source rail can sit right |
-| Wide | >1440px | Centered content caps at ~768px reading width, rails widen |
+Perplexity speaks like a sharp, well-read research assistant: direct, neutral, citation-obsessed, and allergic to hype. The product's core promise is trust, so the copy never overclaims — it answers, then shows its sources. Sentences are clean and declarative. There's a quiet curiosity to the brand voice (the tagline lineage is literally "Where knowledge begins"), but it stays understated; Perplexity would rather be right than clever.
 
-### Touch Targets
-- Buttons: 44px primary, 36px ghost — comfortable thumb targets on mobile
-- Composer submit: 40px circular/rounded target, always reachable
-- Source cards: full-width tappable rows on mobile
+| Context | Tone |
+|---|---|
+| Composer placeholder | Open invitation: `Ask anything…` |
+| CTAs | Plain verbs: `Ask`, `Search`, `Sources`, `Rewrite`, `Share` |
+| Answers | Neutral, structured, citation-backed. Confident but hedged when evidence is thin (`Based on available sources…`). |
+| Empty states | Curious and inviting, never apologetic (`Start a thread to see it here.`). |
+| Errors | Plain and actionable (`Couldn't reach that source. Try again.`). No `Oops`, no cute mascots. |
+| Marketing | Editorial, restrained, idea-led. Lets whitespace and the wordmark carry weight. |
+| Upgrade prompts | Value-first, low-pressure (`Pro gives you more sources and stronger models.`). |
 
-### Collapsing Strategy
-- Left navigation rail collapses to icon-only, then to a hamburger drawer on mobile
-- Source rail: right-side on desktop → horizontal scroll strip above the answer on mobile
-- Related questions: sidebar list on desktop → stacked chips below the answer on mobile
-- Composer: inline on desktop, sticky-bottom with safe-area inset on mobile
+**Forbidden phrases.** No `Oops`, no `magic`, no `revolutionary`, no exclamation-stacked hype, no emoji in answers. Never present a synthesized claim without a path to its source — unsourced confidence is the one thing the brand will not do.
 
-### Image Behavior
-- Source favicons: fixed 16px
-- Discover story images: 16:9, full-bleed card tops, lazy-loaded
-- Generated/answer images: responsive, max content-width, rounded 10px
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary accent: Peacock Teal (`#20808D`)
@@ -464,91 +698,8 @@ The composer is the signature surface — a large rounded well where the user ty
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Perplexity speaks like a sharp, well-read research assistant: direct, neutral, citation-obsessed, and allergic to hype. The product's core promise is trust, so the copy never overclaims — it answers, then shows its sources. Sentences are clean and declarative. There's a quiet curiosity to the brand voice (the tagline lineage is literally "Where knowledge begins"), but it stays understated; Perplexity would rather be right than clever.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Composer placeholder | Open invitation: `Ask anything…` |
-| CTAs | Plain verbs: `Ask`, `Search`, `Sources`, `Rewrite`, `Share` |
-| Answers | Neutral, structured, citation-backed. Confident but hedged when evidence is thin (`Based on available sources…`). |
-| Empty states | Curious and inviting, never apologetic (`Start a thread to see it here.`). |
-| Errors | Plain and actionable (`Couldn't reach that source. Try again.`). No `Oops`, no cute mascots. |
-| Marketing | Editorial, restrained, idea-led. Lets whitespace and the wordmark carry weight. |
-| Upgrade prompts | Value-first, low-pressure (`Pro gives you more sources and stronger models.`). |
-
-**Forbidden phrases.** No `Oops`, no `magic`, no `revolutionary`, no exclamation-stacked hype, no emoji in answers. Never present a synthesized claim without a path to its source — unsourced confidence is the one thing the brand will not do.
-
-## 11. Brand Narrative
-
-Perplexity AI was founded in **2022** by Aravind Srinivas, Denis Yarats, Johnny Ho, and Andy Konwinski as an "answer engine" — a search product that responds in synthesized, cited prose instead of ten blue links. The thesis was that the future of search is a conversation that always shows its work. That single conviction — **answers with citations** — drives every design decision.
-
-When the brand identity needed to mature past a developer prototype, Perplexity worked with Philadelphia studio **Smith & Diction**, who framed the work as building "an invisible brand." The logic: Perplexity is a reading and thinking tool, so the most respectful design recedes. They reached for an editorial, Scandinavian-leaning system — warm paper grounds, a precise grotesque type family (**FK Grotesk / FK Display**), and a single muted teal (`#20808D`) chosen specifically because it was *not* the saturated cyan of the AI gold rush. The teal reads a little like terminal phosphor and a little like a peacock — technical and natural at once.
-
-What Perplexity refuses is instructive: no gradient meshes, no glassmorphic dashboards, no neon "AI" sheen, no mascot. In a category sprinting toward maximal sci-fi spectacle, Perplexity bet on the opposite — calm, literacy, and trust. The interface should feel like the best version of reading a really good article, where the answer is the design and the chrome is just good paper and good ink.
-
-## 12. Principles
-
-1. **The answer is the hero.** Every pixel of chrome exists to deliver the user to the text faster and then disappear. If a UI element competes with the answer for attention, it's wrong.
-2. **Always show your work.** No claim without a path to its source. Citations are a first-class, typographic part of the answer, not an afterthought panel.
-3. **Calm over spectacle.** Warm paper, muted teal, quiet grays. The brand earns trust by *not* shouting in a category that shouts.
-4. **One accent, used with discipline.** Teal `#20808D` means action or citation. It never decorates. Restraint makes the teal legible as a signal.
-5. **Read like print.** Answer text gets a constrained measure and generous leading. The product is text; it should typeset like a magazine, not a form.
-6. **Paper-flat depth.** Separation comes from warm borders and surface temperature, not drop shadows. Elevation is reserved for things that truly float.
-7. **Dark mode is not an afterthought.** Many users read at night; the dark theme is designed in parallel with the same teal logic, not bolted on.
-8. **Invisible brand.** The strongest identity here is the one you stop noticing — the brand succeeds when the user only remembers the answer.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described knowledge-worker and researcher segments, not individual people.*
-
-**Maya, 29, San Francisco.** Product manager who replaced her default search engine with Perplexity six months ago. Uses it 15+ times a day for quick fact-finding, competitive research, and drafting. She trusts it specifically *because* every answer shows sources — she clicks through to verify the ones that matter. Reads in dark mode all day. Gets irritated by any AI tool that sounds confident without proof.
-
-**Daniel, 44, Boston.** Academic researcher in public health. Uses Perplexity's Academic focus to scan literature and find primary sources fast, then follows citations into the actual papers. Values the muted, distraction-free reading surface — it lets him stay in long research sessions without eye strain. Skeptical of "AI magic" language; the citation rail is what keeps him on the product.
-
-**Priya, 23, London.** Graduate student and heavy Discover-feed reader. Treats Perplexity as both a research tool and a morning news habit. Loves the editorial card layout and the clean type — says it "feels like a magazine that answers back." Switches between web, academic, and writing focus modes constantly. Shares answer threads with classmates.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (new thread)** | Centered composer on Paper, "Ask anything…" placeholder, a few suggested-prompt pills below in `#FCFCF9` with `#E4E4DC` borders. Inviting, never apologetic. |
-| **Empty (library)** | Single line of `#5C6A6A` body (`Start a thread to see it here.`) — no illustration. |
-| **Loading (generating answer)** | Teal `#20808D` shimmer cursor pulses where text will appear; source cards fade in first, then the answer streams token-by-token. Skeleton lines in `#EFEFE9`. |
-| **Streaming** | Answer text writes in left-to-right; a teal block cursor (`#20808D`) trails the last token. Citations pop in as their sources resolve. |
-| **Error (query failed)** | Inline notice card: `#E0524A` left border, `Couldn't complete that. Try again.` in `#091717`, a teal retry button. No mascot, no `Oops`. |
-| **Error (source unreachable)** | Source card dims to 50% with a `#8A9494` "Unavailable" label; the answer continues with remaining sources. |
-| **Success (copied/shared)** | Dark toast (`#091717` bg, `#F2F2ED` text) bottom-center, 3s, `Copied to clipboard`. |
-| **Focus mode active** | Selected pill flips to `#E5F2F2` bg / `#20808D` border / `#13343B` text; others stay quiet white. |
-| **Skeleton** | `#EFEFE9` (light) / `#1C2128` (dark) blocks at final dimensions, 1.2s shimmer with low-opacity highlight, rounded to component radius. |
-| **Disabled** | Buttons drop to 40% opacity; inputs keep `#E4E4DC` border and `#8A9494` text so geometry stays stable. |
-| **Hover (source card)** | Border shifts to `#20808D`, card lifts to `0 2px 8px rgba(9,23,23,0.08)`. |
-
-## 15. Motion & Easing
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, focus-pill selection |
-| `motion-fast` | 120ms | Hover, focus rings, button press |
-| `motion-standard` | 220ms | Card hover-lift, popover open, tab switch |
-| `motion-slow` | 360ms | Modal/dialog entrance, drawer slide |
-| `motion-stream` | per-token | Answer streaming cadence — tokens appear as generated, the brand's signature motion |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — popovers, toasts, source cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, leaving elements |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — hover lifts, tab content |
-| `ease-cursor` | `steps / linear` | The teal answer cursor blink — mechanical, terminal-like, intentional |
-
-**Signature motions.**
-
-1. **Answer streaming.** The defining motion. Generated text appears token-by-token in reading order, trailed by a teal block cursor (`#20808D`). Sources resolve and fade in slightly ahead of the text that cites them, so citations are "ready" by the time you read past them. Never reveal a full answer in one flash — the streaming *is* the brand telling you it's thinking and sourcing in real time.
-2. **Source-card lift.** On hover, a source card raises with `motion-standard / ease-standard`, its border warming from `#E4E4DC` to teal `#20808D`. A quiet, confident invitation to click through.
-3. **Citation popover.** Hovering an inline `[1]` opens a source preview with `motion-fast / ease-enter` and a light backdrop blur — fast, so it feels like the source was always there.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, streaming collapses to a single fade-in of the completed answer, the cursor blink stops, and all `motion-*` tokens drop to `motion-instant`. The product stays fully usable — just static.
+- **Contrast, `badge-status`.** Text `#20808d` on `#e5f2f2` measures 4.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,0 +1,1682 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "baemin",
+    "name": "Baemin",
+    "country": "KR",
+    "category": "consumer-tech",
+    "homepage": "https://www.baemin.com",
+    "primary_color": "#0cefd3",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.baemin.com/favicon.ico"
+    },
+    "verified": "2026-07-12",
+    "ds": {
+      "name": "Woowa Font Catalog",
+      "url": "https://www.woowahan.com/fonts",
+      "type": "brand",
+      "description": "Official Baemin brand-font distribution; current web UI use is verified separately from declared brand assets."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-11",
+    "note": "Baemin 2.0 officially confirms BAEMINWORK/WORK as the app typeface. Exact type metrics remain surface-local: baemin.com, Woowa corporate UI, and the official font catalog are measured separately.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-29",
+    "surfaces": [
+      {
+        "id": "baemin-home",
+        "kind": "marketing",
+        "url": "https://www.baemin.com/",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "woowa-home",
+        "kind": "corporate",
+        "url": "https://www.woowahan.com/",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "font-catalog",
+        "kind": "design-system",
+        "url": "https://www.woowahan.com/fonts",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "font-license",
+        "kind": "design-system",
+        "url": "https://www.woowahan.com/fonts/license",
+        "inspected": "2026-07-11"
+      },
+      {
+        "id": "baemin-app-rebrand",
+        "kind": "product",
+        "url": "https://www.woowahan.com/report/detail/975?page=1",
+        "inspected": "2026-07-12"
+      }
+    ],
+    "sources": [
+      {
+        "id": "baemin-live",
+        "kind": "product-surface",
+        "url": "https://www.baemin.com/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "woowa-live",
+        "kind": "product-surface",
+        "url": "https://www.woowahan.com/",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "font-catalog-live",
+        "kind": "official-doc",
+        "url": "https://www.woowahan.com/fonts",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "font-license-live",
+        "kind": "license",
+        "url": "https://www.woowahan.com/fonts/license",
+        "captured": "2026-07-11"
+      },
+      {
+        "id": "baemin-rebrand-official",
+        "kind": "official-doc",
+        "url": "https://www.woowahan.com/report/detail/975?page=1",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "baemin-probe",
+        "kind": "product-surface",
+        "url": "https://www.baemin.com/",
+        "captured": "2026-09-29"
+      }
+    ],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.canvas": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.foreground": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.baemin-dark": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.baemin-panel": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.corporate-foreground": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.corporate-muted": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.corporate-surface": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.corporate-disabled": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.corporate-border": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "colors.on-dark": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "baemin-app-rebrand",
+        "source_id": "baemin-rebrand-official",
+        "method": "official-doc",
+        "captured": "2026-07-12"
+      },
+      "typography.baemin-hero.fontSize": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-hero.fontWeight": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-hero.lineHeight": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-heading.fontSize": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-heading.fontWeight": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "prose:typography.baemin-heading.lineHeight": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-button.fontSize": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-button.fontWeight": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.baemin-button.lineHeight": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-heading.fontSize": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-heading.fontWeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-heading.lineHeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-heading.letterSpacing": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-card-title.fontSize": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-card-title.fontWeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-card-title.lineHeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-card-title.letterSpacing": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-body.fontSize": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-body.fontWeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-body.lineHeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-body.letterSpacing": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-label.fontSize": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-label.fontWeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-label.lineHeight": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.corporate-label.letterSpacing": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.catalog-title.fontSize": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.catalog-title.fontWeight": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.catalog-title.lineHeight": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "typography.catalog-title.letterSpacing": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.xs": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.sm": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.md": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.lg": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.xl": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.xxl": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "spacing.section": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.corporate-control": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.download-card": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.media-control": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "rounded.circle": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.pressed": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "hero button App Store에서 배달의민족 앱 다운로드 :active",
+        "captured": "2026-09-29"
+      },
+      "components.app-download-card.type": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.backgroundColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.textColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.rounded": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.height": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.padding": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.typography": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-card.hover": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "hero button App Store에서 배달의민족 앱 다운로드 :hover",
+        "captured": "2026-09-29"
+      },
+      "components.app-download-card.states": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "hero button App Store에서 배달의민족 앱 다운로드",
+        "captured": "2026-09-29"
+      },
+      "components.app-download-card.use": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.type": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.backgroundColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.textColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.height": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.typography": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.hover": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"3\"]::state-hover",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.pressed": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"3\"]::state-pressed",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-nav-link.states": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "header link 라이더 모집",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-nav-link.use": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.type": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.backgroundColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.textColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.rounded": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.height": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.padding": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.typography": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.states": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-light.use": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.type": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.backgroundColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.textColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.border": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.rounded": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.height": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.padding": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.typography": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.states": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-more-overlay.use": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.type": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.backgroundColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.textColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.border": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.rounded": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.height": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.padding": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.typography": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.states": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-site-selector.use": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.type": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.backgroundColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.textColor": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.rounded": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.height": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.states": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.woowa-carousel-control.use": {
+        "surface_id": "woowa-home",
+        "source_id": "woowa-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.type": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.backgroundColor": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.textColor": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.height": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.typography": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.states": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.font-download.use": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.type": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.backgroundColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.textColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.rounded": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.padding": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.size": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.typography": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.hover": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"2\"]::state-hover",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.pressed": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style-state-sample",
+        "selector": "home::[data-omd-capture=\"2\"]::state-pressed",
+        "captured": "2026-07-11"
+      },
+      "components.app-download-qr.states": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "hero button QR 코드로 배달의민족 앱 다운로드",
+        "captured": "2026-09-29"
+      },
+      "components.app-download-qr.use": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-11"
+      },
+      "components.baemin-gift-pill.type": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.backgroundColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.textColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.rounded": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.padding": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.height": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.typography": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.hover": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.pressed": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.states": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-gift-pill.use": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "bottom-section link 기업용 상품권 구매하기",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.type": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.backgroundColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.textColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.height": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.typography": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.hover": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.pressed": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.states": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-link.use": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 배민외식업광장",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.type": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.backgroundColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.textColor": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.height": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.typography": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.hover": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.pressed": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.states": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.baemin-footer-legal-link.use": {
+        "surface_id": "baemin-home",
+        "source_id": "baemin-probe",
+        "method": "live-state-probe",
+        "selector": "footer link 개인정보처리방침",
+        "captured": "2026-09-29"
+      },
+      "components.catalog-fill-button.type": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.backgroundColor": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.textColor": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.rounded": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.padding": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.height": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.typography": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.states": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.use": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.type": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.backgroundColor": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.textColor": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.rounded": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.padding": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.height": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.typography": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.states": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      },
+      "components.catalog-pill-button.use": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-live",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-11"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 66,
+      "infos": 2
+    },
+    "byRule": {
+      "extension-component-property": 53,
+      "contrast-ratio": 3,
+      "orphaned-tokens": 10
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-card.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-card.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-nav-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-nav-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-nav-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-nav-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-nav-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-light.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-light.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-light.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-overlay.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-overlay.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-overlay.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-more-overlay.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-site-selector.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-site-selector.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-site-selector.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-site-selector.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-carousel-control.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-carousel-control.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.woowa-carousel-control.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.font-download.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.font-download.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.font-download.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-qr.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-qr.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-qr.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-qr.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-download-qr.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-gift-pill.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-gift-pill.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-gift-pill.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-gift-pill.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-gift-pill.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-legal-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-legal-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-legal-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-legal-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.baemin-footer-legal-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-fill-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-fill-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-fill-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-pill-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-pill-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-pill-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.woowa-carousel-control",
+        "message": "textColor (#000000) on backgroundColor (#00000066) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.font-download",
+        "message": "textColor (#232324) on backgroundColor (#00000000) has contrast ratio 1.34:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.catalog-pill-button",
+        "message": "textColor (#a6a7a9) on backgroundColor (#f3f4f5) has contrast ratio 2.19:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.baemin-dark",
+        "message": "'baemin-dark' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.baemin-panel",
+        "message": "'baemin-panel' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-foreground",
+        "message": "'corporate-foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-muted",
+        "message": "'corporate-muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-surface",
+        "message": "'corporate-surface' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-disabled",
+        "message": "'corporate-disabled' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-border",
+        "message": "'corporate-border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.on-dark",
+        "message": "'on-dark' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "1245d6bc852430dfd1dea36e4f42736747e89c0781981220ec2a1e6535ac33b6",
+    "overlay": "overlay.yaml",
+    "prose": [
+      {
+        "path": "typography.baemin-heading.lineHeight",
+        "value": "normal"
+      }
+    ],
+    "numeric": [
+      "typography.baemin-hero.fontSize",
+      "typography.baemin-heading.fontSize",
+      "typography.baemin-button.fontSize",
+      "typography.corporate-heading.fontSize",
+      "typography.corporate-card-title.fontSize",
+      "typography.corporate-body.fontSize",
+      "typography.corporate-label.fontSize",
+      "typography.catalog-title.fontSize",
+      "rounded.corporate-control",
+      "rounded.download-card",
+      "rounded.media-control",
+      "rounded.circle"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "baemin-hero",
+        "baemin-heading",
+        "baemin-button",
+        "corporate-heading",
+        "corporate-card-title",
+        "corporate-body",
+        "corporate-label",
+        "catalog-title"
+      ]
+    }
+  }
+}

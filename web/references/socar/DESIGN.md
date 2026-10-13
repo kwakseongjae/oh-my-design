@@ -1,225 +1,174 @@
 ---
-id: socar
 name: SOCAR
-country: KR
-category: consumer-tech
-homepage: "https://www.socar.kr"
-primary_color: "#0078ff"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=socar.kr&sz=256"
-verified: "2026-07-12"
-omd: "0.1"
-ds:
-  name: SOCAR Design
-  url: "https://design.socar.kr/"
-  type: system
-  description: SOCAR's design system hub — Space Frame, SOCAR Blue, Sandoll Gothic Neo2 + Avenir typography, and mobility-flow component patterns.
-  og_image: "https://design.socar.kr/og.jpg"
-verification_v2:
-  schema: 2
-  checked: "2026-09-29"
-  surfaces:
-    - { id: home, kind: marketing-product, url: "https://www.socar.kr/", inspected: "2026-07-12" }
-    - { id: service, kind: product-directory, url: "https://www.socar.kr/service", inspected: "2026-07-12" }
-    - { id: guide, kind: product-guide, url: "https://www.socar.kr/guide", inspected: "2026-07-12" }
-    - { id: brand, kind: brand-center, url: "https://design.socar.kr/", inspected: "2026-07-12" }
-    - { id: fare, kind: product-guide, url: "https://www.socar.kr/fare", inspected: "2026-07-12" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.socar.kr/", captured: "2026-07-12" }
-    - { id: socar-component-index, kind: official-doc, url: "https://design.socar.kr/", captured: "2026-09-19" }
-    - { id: service-live, kind: product-surface, url: "https://www.socar.kr/service", captured: "2026-07-12" }
-    - { id: guide-live, kind: product-surface, url: "https://www.socar.kr/guide", captured: "2026-07-12" }
-    - { id: brand-live, kind: brand-asset, url: "https://design.socar.kr/", captured: "2026-07-12" }
-    - { id: fare-live, kind: product-surface, url: "https://www.socar.kr/fare", captured: "2026-07-12" }
-    - { id: socar-probe-home, kind: product-surface, url: "https://www.socar.kr/", captured: "2026-09-29" }
-    - { id: socar-probe-guide, kind: product-surface, url: "https://www.socar.kr/guide", captured: "2026-09-29" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &guide_evidence { surface_id: guide, source_id: guide-live, method: live-inspect, captured: "2026-07-12" }
-    "tokens.colors.canvas": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-12" }
-    "tokens.colors.foreground": *home_evidence
-    "tokens.colors.secondary": *home_evidence
-    "tokens.colors.muted": *home_evidence
-    "tokens.colors.on-primary": *guide_evidence
-    "tokens.colors.surface": *home_evidence
-    "tokens.colors.hairline": *home_evidence
-    "tokens.typography.family.product": *home_evidence
-    "tokens.typography.family.brand-center": &brand_evidence { surface_id: brand, source_id: brand-live, method: live-inspect, captured: "2026-07-12" }
-    "tokens.typography.h1.size": *home_evidence
-    "tokens.typography.h1.weight": *home_evidence
-    "tokens.typography.h1.lineHeight": *home_evidence
-    "tokens.typography.h1.use": *home_evidence
-    "tokens.typography.h2.size": *home_evidence
-    "tokens.typography.h2.weight": *home_evidence
-    "tokens.typography.h2.lineHeight": *home_evidence
-    "tokens.typography.h2.use": *home_evidence
-    "tokens.typography.body.size": *home_evidence
-    "tokens.typography.body.weight": *home_evidence
-    "tokens.typography.body.lineHeight": *home_evidence
-    "tokens.typography.body.use": *home_evidence
-    "tokens.typography.caption.size": *home_evidence
-    "tokens.typography.caption.weight": *home_evidence
-    "tokens.typography.caption.lineHeight": *home_evidence
-    "tokens.typography.caption.use": *home_evidence
-    "tokens.spacing.xs": *home_evidence
-    "tokens.spacing.sm": *home_evidence
-    "tokens.spacing.md": *home_evidence
-    "tokens.spacing.base": *home_evidence
-    "tokens.spacing.lg": *home_evidence
-    "tokens.rounded.sm": *home_evidence
-    "tokens.rounded.action": *guide_evidence
-    "tokens.rounded.card": *home_evidence
-    "tokens.rounded.full": *home_evidence
-    "tokens.shadow.flat": *home_evidence
-    "tokens.shadow.floating": *home_evidence
-    "tokens.components.primary-action.type": *guide_evidence
-    "tokens.components.primary-action.bg": *guide_evidence
-    "tokens.components.primary-action.fg": *guide_evidence
-    "tokens.components.primary-action.radius": *guide_evidence
-    "tokens.components.primary-action.padding": *guide_evidence
-    "tokens.components.primary-action.font": *guide_evidence
-    "tokens.components.primary-action.hover": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "a 웹에서 예약하기 at :hover", captured: "2026-09-29" }
-    "tokens.components.primary-action.pressed": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "a 웹에서 예약하기 at :active", captured: "2026-09-29" }
-    "tokens.components.primary-action.focus": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "a 웹에서 예약하기 at :focus-visible, Tab stop 17", captured: "2026-09-29" }
-    "tokens.components.primary-action.states": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "a 웹에서 예약하기 (href /rentacar)", captured: "2026-09-29" }
-    "tokens.components.primary-action.use": *guide_evidence
-    "tokens.components.search-action.type": *home_evidence
-    "tokens.components.search-action.bg": *home_evidence
-    "tokens.components.search-action.fg": *home_evidence
-    "tokens.components.search-action.radius": *home_evidence
-    "tokens.components.search-action.padding": *home_evidence
-    "tokens.components.search-action.font": *home_evidence
-    "tokens.components.search-action.disabled": *home_evidence
-    "tokens.components.search-action.states": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "button 검색 (disabled=true)", captured: "2026-09-29" }
-    "tokens.components.search-action.use": *home_evidence
-    "tokens.components.region-list.type": *home_evidence
-    "tokens.components.region-list.bg": *home_evidence
-    "tokens.components.region-list.fg": *home_evidence
-    "tokens.components.region-list.radius": *home_evidence
-    "tokens.components.region-list.padding": *home_evidence
-    "tokens.components.region-list.use": *home_evidence
-    "tokens.components.floating-control.type": *home_evidence
-    "tokens.components.floating-control.bg": *home_evidence
-    "tokens.components.floating-control.fg": *home_evidence
-    "tokens.components.floating-control.radius": *home_evidence
-    "tokens.components.floating-control.padding": *home_evidence
-    "tokens.components.floating-control.font": *home_evidence
-    "tokens.components.floating-control.hover": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "button 맨 위로 at :hover", captured: "2026-09-29" }
-    "tokens.components.floating-control.pressed": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "button 맨 위로 at :active", captured: "2026-09-29" }
-    "tokens.components.floating-control.focus": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "button 맨 위로 at :focus-visible, Tab stop 18", captured: "2026-09-29" }
-    "tokens.components.floating-control.states": { surface_id: guide, source_id: socar-probe-guide, method: live-state-probe, selector: "button 맨 위로 in div.tw-fixed", captured: "2026-09-29" }
-    "tokens.components.floating-control.use": *home_evidence
-    "tokens.components.nav-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.nav-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.nav-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.nav-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.nav-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.nav-link.hover": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-title2 예약하기 at :hover", captured: "2026-09-29" }
-    "tokens.components.nav-link.pressed": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-title2 예약하기 at :active", captured: "2026-09-29" }
-    "tokens.components.nav-link.focus": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-title2 예약하기 at :focus-visible, Tab stop 2", captured: "2026-09-29" }
-    "tokens.components.nav-link.states": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-title2 예약하기", captured: "2026-09-29" }
-    "tokens.components.nav-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.search-input.hover": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "input 대여 장소 검색 at :hover", captured: "2026-09-29" }
-    "tokens.components.search-input.pressed": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "input 대여 장소 검색 at :active, wrapper div.tw-group/input-wrapper", captured: "2026-09-29" }
-    "tokens.components.search-input.focus": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "input 대여 장소 검색 at :focus-visible, Tab stop 9, wrapper div.tw-group/input-wrapper", captured: "2026-09-29" }
-    "tokens.components.search-input.states": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "input 대여 장소 검색", captured: "2026-09-29" }
-    "tokens.components.search-input.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.border": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.time-range-chip.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::h3", captured: "2026-07-12" }
-    "tokens.components.location-tile.border": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::h3", captured: "2026-07-12" }
-    "tokens.components.location-tile.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.location-tile.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-12" }
-    "tokens.components.jeju-entry-tile.type": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.bg": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.fg": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.border": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.radius": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.padding": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.size": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.font": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.hover": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 at :hover", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.pressed": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 at :active", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.states": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.jeju-entry-tile.use": { surface_id: home, source_id: socar-probe-home, method: live-state-probe, selector: "a.tw-flex 제주에서 빌리기 (href /jeju)", captured: "2026-09-29" }
-    "tokens.components.row-button.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.row-button.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.row-button.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.row-button.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.row-button.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.row-button.pressed": { surface_id: guide, source_id: guide-live, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"8\"]::state-pressed", captured: "2026-07-12" }
-    "tokens.components.row-button.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.row-button.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"58\"]", captured: "2026-07-12" }
-    "tokens.components.footer-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"73\"]", captured: "2026-07-12" }
-    "tokens.components.footer-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"73\"]", captured: "2026-07-12" }
-    "tokens.components.footer-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"73\"]", captured: "2026-07-12" }
-    "tokens.components.footer-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"73\"]", captured: "2026-07-12" }
-    "tokens.components.footer-link.hover": { surface_id: service, source_id: service-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"21\"]::state-hover", captured: "2026-07-12" }
-    "tokens.components.footer-link.pressed": { surface_id: service, source_id: service-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"21\"]::state-pressed", captured: "2026-07-12" }
-    "tokens.components.footer-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"73\"]", captured: "2026-07-12" }
-    "tokens.components.footer-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"73\"]", captured: "2026-07-12" }
-tokens:
-  source: reconciled
-  extracted: "2026-07-12"
-  note: "Five current first-party surfaces. Product web uses loaded Pretendard; the brand center separately loads IBM Plex Sans KR. swiper-icons is declared-only."
-  colors:
-    primary: "#0078ff"
-    canvas: "#ffffff"
-    foreground: "#354153"
-    secondary: "#697383"
-    muted: "#b4bbcb"
-    on-primary: "#ffffff"
-    surface: "#f2f3f8"
-    hairline: "#e5e8ef"
-  typography:
-    family: { product: "Pretendard", brand-center: "IBM Plex Sans KR" }
-    h1: { size: 26, weight: 700, lineHeight: 1.38, use: "Large current product heading" }
-    h2: { size: 22, weight: 700, lineHeight: 1.36, use: "Section heading" }
-    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Product body and list text" }
-    caption: { size: 14, weight: 400, lineHeight: 1.57, use: "Supporting product copy" }
-  spacing: { xs: 4, sm: 10, md: 14, base: 16, lg: 20 }
-  rounded: { sm: 4, action: 14, card: 12, full: 48 }
-  shadow:
-    flat: "none"
-    floating: "rgba(38,47,60,0.04) 0px 0px 6px, rgba(38,47,60,0.04) 0px 3px 2px, rgba(38,47,60,0.08) 0px 2px 8px"
-  components_harvested: true
-  components:
-    primary-action: { type: button, bg: "#0078ff", fg: "#ffffff", radius: "14px", padding: "16px 22px", font: "16px / 600", hover: "no visible change (measured 2026-09-29)", pressed: "transform scale(0.92); overlay ::after rgba(242,243,248,0.66) over the full box; bg stays #0078ff", focus: "outline browser default ring (outline-style auto), not brand — measured 2026-09-29", states: "default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the /guide 웹에서 예약하기 link (real :hover, :active and Tab to :focus-visible, three reads); transition all 0.1s ease-in-out", use: "Prominent guide/product action" }
-    search-action: { type: button, bg: "#f2f3f8", fg: "#b4bbcb", radius: "12px", padding: "12px 18px", font: "14px / 600", disabled: "#f2f3f8", states: "disabled appearance captured 2026-07-12; re-read 2026-09-29 as a genuinely disabled control (disabled=true, cursor not-allowed), so its hover and pressed reads are its disabled rendering, not states, and it takes no keyboard focus; the enabled look needs a completed booking form", use: "Home search action before required values are complete" }
-    region-list: { type: listItem, bg: "#f9f9fb", fg: "#354153", radius: "12px", padding: "24px 16px", use: "Home region or destination collection item" }
-    floating-control: { type: button, bg: "#ffffff", fg: "#354153", radius: "48px", padding: "11px", font: "14px / 600", hover: "no visible change (measured 2026-09-29 on /guide)", pressed: "overlay ::after rgba(20,26,36,0.06); transform scale(0.95)", focus: "outline browser default ring (outline-style auto), not brand — measured 2026-09-29 on /guide", states: "default captured 2026-07-12 on home, service, guide and fare; the pressed overlay was first read 2026-09-16; hover, pressed and keyboard focus measured 2026-09-29 on /guide, because on home the button's fixed wrapper stays at opacity 0, and the button reads inert with pointer-events none, until the page scrolls; transition all 0.1s ease-in-out", use: "Floating circular navigation/control button" }
-    nav-link: { type: tab, bg: "transparent", fg: "#354153", padding: "0px", font: "16px / 600 / Pretendard", hover: "fg #0078ff", pressed: "fg #0078ff", focus: "outline browser default ring (outline-style auto), not brand — measured 2026-09-29", states: "hover and pressed state samples captured 2026-07-12 on the header links of home, service, guide and fare (22 frames, all #0078ff); re-measured 2026-09-29 on 예약하기 with real :hover and :active; keyboard focus measured 2026-09-29 (Tab 2)", use: "Header navigation link (예약하기, 쏘카 서비스, 블로그)" }
-    search-input: { type: input, bg: "transparent", fg: "#354153", radius: "0px", padding: "0px", height: "24px", font: "16px / 400 / Pretendard", hover: "no visible change (measured 2026-09-29)", pressed: "border 1px #99ceff on the wrapper div two levels up (the press focuses the field)", focus: "border 1px #e5e8ef → 1px #99ceff on the wrapper div two levels up; no outline on the input — measured 2026-09-29", states: "default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 (Tab 9); focusing the field opens a place layer (제주예약, 닫기)", use: "Home booking-strip place field 대여 장소 검색; the visible box is its wrapper (bg #ffffff, 1px solid #e5e8ef)" }
-    time-range-chip: { type: button, bg: "#ffffff", border: "1px solid #e5e8ef", radius: "14px", padding: "0px 12px", height: "48px", states: "default captured 2026-07-12 (343px wide on home); no state sample; its label element was not captured, so no text colour or type is declared", use: "Home booking-strip date-time chip (오늘 09:50 ~ 13:50)" }
-    location-tile: { type: card, bg: "#ffffff", fg: "#354153", border: "1px solid #e5e8ef", radius: "14px", padding: "20px", size: "300px x 90px", font: "16px / 600 / Pretendard (city-name h3)", states: "default captured 2026-07-12 (14 tiles at 300px x 90px, 24 at 300px x 66px); the July hover and pressed frames drift the border by 1-5 channel units with no sibling agreement (transition frames), so no hover or pressed value is declared", use: "Home city and airport entry tile (the Location / Region Card in the prose)" }
-    jeju-entry-tile: { type: card, bg: "#f9f9fb", fg: "#354153", border: "1px solid #e5e8ef", radius: "16px", padding: "20px", size: "618px x 90px", font: "16px / 600 / Pretendard (label span)", hover: "no visible change (measured 2026-09-29)", pressed: "no visible change (measured 2026-09-29)", states: "rest, hover and pressed measured 2026-09-29 (probe tool plus a cross-check over all seven descendants); keyboard focus UNMEASURED: 300 Tab presses never reached it because the place layer traps the walk", use: "Home 제주에서 빌리기 entry tile (link to /jeju); the July capture has no 618px-wide tile" }
-    row-button: { type: button, bg: "transparent", radius: "0px", padding: "14px 16px", height: "52px", pressed: "bg rgba(20,26,36,0.06); radius 0px → 14px", states: "default captured 2026-07-12 (18 rows on home, guide and fare); pressed frames on guide and fare agree 12 of 12; hover and focus not sampled; the label span was not captured, so no text colour or type is declared", use: "Full-width list row button (1248px x 52px) on home, guide and fare" }
-    footer-link: { type: tab, bg: "transparent", fg: "#697383", font: "14px / 400 / Pretendard", hover: "fg #354153", pressed: "fg #354153", states: "default captured 2026-07-12 (56 links on home, service, guide and fare); hover and pressed frames on four links on service and fare all read #354153; focus not sampled", use: "Footer link in secondary text" }
+colors:
+  primary: '#0078ff'
+  canvas: '#ffffff'
+  foreground: '#354153'
+  secondary: '#697383'
+  muted: '#b4bbcb'
+  on-primary: '#ffffff'
+  surface: '#f2f3f8'
+  hairline: '#e5e8ef'
+typography:
+  h1:
+    fontSize: 26px
+    fontWeight: 700
+    lineHeight: 1.38
+    use: Large current product heading
+  h2:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.36
+    use: Section heading
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Product body and list text
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.57
+    use: Supporting product copy
+rounded:
+  sm: 4px
+  action: 14px
+  card: 12px
+  full: 48px
+spacing:
+  xs: 4
+  sm: 10
+  md: 14
+  base: 16
+  lg: 20
+components:
+  primary-action:
+    type: button
+    backgroundColor: '#0078ff'
+    textColor: '#ffffff'
+    rounded: 14px
+    padding: 16px 22px
+    typography: 16px / 600
+    hover: no visible change (measured 2026-09-29)
+    pressed: 'transform scale(0.92); overlay ::after rgba(242,243,248,0.66) over the full box; bg stays #0078ff'
+    focus: outline browser default ring (outline-style auto), not brand — measured 2026-09-29
+    states: default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the /guide 웹에서 예약하기 link (real :hover, :active and Tab to :focus-visible, three reads); transition all 0.1s ease-in-out
+    use: Prominent guide/product action
+  search-action:
+    type: button
+    backgroundColor: '#f2f3f8'
+    textColor: '#b4bbcb'
+    rounded: 12px
+    padding: 12px 18px
+    typography: 14px / 600
+    disabled: '#f2f3f8'
+    states: disabled appearance captured 2026-07-12; re-read 2026-09-29 as a genuinely disabled control (disabled=true, cursor not-allowed), so its hover and pressed reads are its disabled rendering, not states, and it takes no keyboard focus; the enabled look needs a completed booking form
+    use: Home search action before required values are complete
+  region-list:
+    type: listItem
+    backgroundColor: '#f9f9fb'
+    textColor: '#354153'
+    rounded: 12px
+    padding: 24px 16px
+    use: Home region or destination collection item
+  floating-control:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#354153'
+    rounded: 48px
+    padding: 11px
+    typography: 14px / 600
+    hover: no visible change (measured 2026-09-29 on /guide)
+    pressed: overlay ::after rgba(20,26,36,0.06); transform scale(0.95)
+    focus: outline browser default ring (outline-style auto), not brand — measured 2026-09-29 on /guide
+    states: default captured 2026-07-12 on home, service, guide and fare; the pressed overlay was first read 2026-09-16; hover, pressed and keyboard focus measured 2026-09-29 on /guide, because on home the button's fixed wrapper stays at opacity 0, and the button reads inert with pointer-events none, until the page scrolls; transition all 0.1s ease-in-out
+    use: Floating circular navigation/control button
+  nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#354153'
+    padding: 0px
+    typography: 16px / 600 / Pretendard
+    hover: 'fg #0078ff'
+    pressed: 'fg #0078ff'
+    focus: outline browser default ring (outline-style auto), not brand — measured 2026-09-29
+    states: 'hover and pressed state samples captured 2026-07-12 on the header links of home, service, guide and fare (22 frames, all #0078ff); re-measured 2026-09-29 on 예약하기 with real :hover and :active; keyboard focus measured 2026-09-29 (Tab 2)'
+    use: Header navigation link (예약하기, 쏘카 서비스, 블로그)
+  search-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#354153'
+    rounded: 0px
+    padding: 0px
+    height: 24px
+    typography: 16px / 400 / Pretendard
+    hover: no visible change (measured 2026-09-29)
+    pressed: 'border 1px #99ceff on the wrapper div two levels up (the press focuses the field)'
+    focus: 'border 1px #e5e8ef → 1px #99ceff on the wrapper div two levels up; no outline on the input — measured 2026-09-29'
+    states: default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 (Tab 9); focusing the field opens a place layer (제주예약, 닫기)
+    use: 'Home booking-strip place field 대여 장소 검색; the visible box is its wrapper (bg #ffffff, 1px solid #e5e8ef)'
+  time-range-chip:
+    type: button
+    backgroundColor: '#ffffff'
+    border: '1px solid #e5e8ef'
+    rounded: 14px
+    padding: 0px 12px
+    height: 48px
+    states: default captured 2026-07-12 (343px wide on home); no state sample; its label element was not captured, so no text colour or type is declared
+    use: Home booking-strip date-time chip (오늘 09:50 ~ 13:50)
+  location-tile:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#354153'
+    border: '1px solid #e5e8ef'
+    rounded: 14px
+    padding: 20px
+    size: 300px x 90px
+    typography: 16px / 600 / Pretendard (city-name h3)
+    states: default captured 2026-07-12 (14 tiles at 300px x 90px, 24 at 300px x 66px); the July hover and pressed frames drift the border by 1-5 channel units with no sibling agreement (transition frames), so no hover or pressed value is declared
+    use: Home city and airport entry tile (the Location / Region Card in the prose)
+  jeju-entry-tile:
+    type: card
+    backgroundColor: '#f9f9fb'
+    textColor: '#354153'
+    border: '1px solid #e5e8ef'
+    rounded: 16px
+    padding: 20px
+    size: 618px x 90px
+    typography: 16px / 600 / Pretendard (label span)
+    hover: no visible change (measured 2026-09-29)
+    pressed: no visible change (measured 2026-09-29)
+    states: 'rest, hover and pressed measured 2026-09-29 (probe tool plus a cross-check over all seven descendants); keyboard focus UNMEASURED: 300 Tab presses never reached it because the place layer traps the walk'
+    use: Home 제주에서 빌리기 entry tile (link to /jeju); the July capture has no 618px-wide tile
+  row-button:
+    type: button
+    backgroundColor: transparent
+    rounded: 0px
+    padding: 14px 16px
+    height: 52px
+    pressed: bg rgba(20,26,36,0.06); radius 0px → 14px
+    states: default captured 2026-07-12 (18 rows on home, guide and fare); pressed frames on guide and fare agree 12 of 12; hover and focus not sampled; the label span was not captured, so no text colour or type is declared
+    use: Full-width list row button (1248px x 52px) on home, guide and fare
+  footer-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#697383'
+    typography: 14px / 400 / Pretendard
+    hover: 'fg #354153'
+    pressed: 'fg #354153'
+    states: 'default captured 2026-07-12 (56 links on home, service, guide and fare); hover and pressed frames on four links on service and fare all read #354153; focus not sampled'
+    use: Footer link in secondary text
+fonts:
+  roles:
+    product: Pretendard
+    brand-center: IBM Plex Sans KR
 ---
 
 # Design System Inspiration of SOCAR
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 SOCAR (쏘카) is Korea's dominant car-sharing platform, and its web surface reads exactly like the product it sells: clean, calm, gently confident — a service that wants to disappear out of the user's way the moment a car has to be reserved. The site opens on pure white, runs body text in **Pretendard** (the de-facto Korean web sans), and keeps the entire chrome in a soft cool-grey palette anchored by `#354153` for body text and `#e5e8ef` for borders. Nothing about the home page asks for attention except the action you came for: pick a time, pick a location, see a car.
 
@@ -240,7 +189,7 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 - The rebrand color is "SOCAR Blue" reserved for the brand symbol and primary CTAs ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)); web chrome itself is intentionally achromatic
 - App download badges and the SOCAR Space Frame symbol are the only places the brand blue appears prominently on the public home
 
-## Primary tasks
+### Primary tasks
 
 - Pick a time and a location, then see a car
 - Pick a city tile to start planning a trip
@@ -248,7 +197,54 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 - Confirm a reservation and check its timeline, vehicle and fare
 - Read the insurance terms and FAQ before booking
 
-## 2. Color Palette & Roles
+### Iconography & Illustration
+
+- **Symbol-first brand mark.** The SOCAR Space Frame — a trapezoidal symbol sitting beneath the wordmark — is the primary brand asset. Described in official brand materials as *"a vessel that carries new experiences, freedom of movement, and life expansion"* ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)).
+- **No editorial illustration on the public home.** The site uses photography for travel-content cards and a small set of UI glyphs (search, location pin, calendar) — no illustrated empty states, no character mascots.
+- **Icon weight reads light-medium.** UI icons appear as monoline glyphs sized roughly to the body text (~16–18px), in the same `#354153` color as body copy — never used as decoration.
+- **Brand symbol stays blue.** When the Space Frame appears, it appears in SOCAR Blue. App-store badges follow the platform-specified treatment.
+
+### Imagery & Photography
+
+- **Editorial / lifestyle photography** for the travel-content cards ("5월 드라이브 코스 추천", "부산·경남·울산 봄 축제"): wide-aspect, naturally-lit, location-forward — roads, beaches, cherry blossoms, urban districts. No people in the foreground; no model-driven imagery.
+- **Vehicle photography** (in the booking flow, not on the home itself) follows standard automotive product treatment: 3/4 front angle, clean studio background, color-accurate.
+- **Card crop:** rounded to 16px to match the card radius; never bleed-cropped.
+- **No stock-photo register.** Imagery reads like commissioned location work, not the generic stock vocabulary common in Korean SaaS pages.
+
+### Brand Narrative
+
+SOCAR was founded in **2011** in Jeju as Korea's first car-sharing service and has since become the country's dominant car-sharing platform, with the rebrand to its current identity rolling out from **2024** ([abocado.kr 리브랜딩 케이스](https://abocado.kr/brand_news/news_detail?no=52)). The rebrand reframed the company from *"car-sharing service"* to *"car-sharing that transforms everyday life and mobility throughout the city"* — a deliberate broadening of scope from a transactional product to an everyday-life platform.
+
+The rebrand is design's load-bearing artifact. The previous identity leaned playful and consumer-app; the new identity replaced that with the **SOCAR Space Frame** symbol — a trapezoid below the wordmark, intended as *"a vessel that carries new experiences, freedom of movement, and life expansion"* — and substituted **SOCAR Blue** for the previous palette, chosen *"to convey gravity and seriousness"* ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)). The supporting palette is intentionally achromatic so the blue does the brand-flagging work.
+
+In parallel, SOCAR has been publishing the **SOCAR FRAME** design system since 2020 ([SOCAR Tech Blog, FRAME #1](https://tech.socarcorp.kr/design/2020/06/23/socar-design-system-01.html)) — the internal cross-platform component library, recently relaunched as **FRAME 2.0** with an explicit design-code integration stack ([SOCAR Tech Blog, FRAME 2.0 web, 2026](https://tech.socarcorp.kr/fe/2026/02/23/socar-frame2-web.html)). FRAME is the engineering substrate; the rebrand is the brand vocabulary that sits on top of it. They share the same underlying restraint: clear naming, repeatable rules, one decision per artifact.
+
+What SOCAR refuses: the playful consumer-app vocabulary of its earlier identity (bright accents, illustrated states), the institutional-blue gravity of legacy car rental brands (Avis, Hertz, Lotte Rent-a-Car), and the gamified booking flows common in Southeast-Asian super-apps. What it embraces: a calm achromatic chrome with a single load-bearing brand color, mobile-first sizing on every surface, and a public site that opens directly on the form you came to fill out.
+
+### Principles
+
+1. **Service over spectacle.** The home page opens with a booking form, not a marketing video. If the user came to reserve a car, the reservation form is the hero. Anything else is below it.
+2. **Achromatic chrome, branded action.** Only the brand symbol, app badges, and primary booking CTA carry SOCAR Blue. Everything else is `#354153` text on white. The brand color is reserved for the moment it matters.
+3. **Mobile-first sizing on every surface.** Hero headings cap at 26px even on desktop. SOCAR is an app-first company; the web is a slightly-relaxed mobile surface, not an inflated desktop poster.
+4. **Pretendard, not a custom face.** The web does not run a bespoke variable font. Brand documents specify Sandoll Gothic Neo2 + Avenir for the printed identity; web operationalizes that as Pretendard. The decision is honest, not aspirational.
+5. **One shadow, one radius scale.** Cards use a single soft black shadow. Radii live on the 12 / 14 / 16 ladder. No multi-layer chromatic stacks, no pill experiments — visual restraint is the trust signal.
+6. **Body text is `#354153`, not black.** A cool grey-blue softens the chrome and signals "we are not a bank, we are not a government form".
+7. **Brand vocabulary is a service contract.** *"소유를 줄여 삶의 여유를 더한다"* is not a tagline pasted over a hero — it is the company's contract with the user. Every surface should make ownership feel smaller and ease feel larger.
+8. **FRAME is the substrate.** Designers do not improvise components for the public surface. If a button is needed, FRAME is the source of truth — naming and behavior pulled from the documented library, not freestyled.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Korean car-sharing user segments, not individual people.*
+
+**민호 (Minho), 29, Seoul.** Software engineer renting a car for a Jeju trip with friends. Opens SOCAR app first, switches to web only because his friend is coordinating the booking on a laptop. Expects the web surface to mirror the app's reservation flow exactly — same fields in the same order. If the web booking funnel diverges from the app's, he loses confidence in the brand's internal consistency.
+
+**지영 (Jiyoung), 34, Bundang.** Mother of two, no second car at home. Books a 4-hour SOCAR every other Saturday for Costco runs and family errands. Never uses the marketing content; goes straight from app icon to "예약" to "결제". Cares deeply that the time-window picker confirms exactly what she selected — she has been burned by overlapping reservations on legacy rental sites.
+
+**대훈 (Daehoon), 42, Busan.** Small business owner. Uses SOCAR Business for client visits when his own car is in the shop. Reads the FAQ and insurance terms before each booking — values that SOCAR publishes its insurance coverage in plain Korean rather than hiding it in a PDF. Considers the calm achromatic chrome a sign that the company "is serious".
+
+**서연 (Seoyeon), 23, Daegu.** University student. SOCAR was her first car-rental experience — she had never used a legacy car-rental brand. Treats SOCAR Blue as "the color of borrowed cars" the way an older generation treats yellow as "the color of taxis". Heavy user of weekend short rentals (4–6 hours). Notices immediately when other mobility brands lean into a similar achromatic-plus-blue palette and reads it as imitation.
+
+## Colors
 
 ### Primary (Brand)
 - **SOCAR Blue / current action** (`#0078ff`): repeated live text/border color and filled guide action across current product surfaces.
@@ -270,7 +266,7 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 - **Success / Confirmation**: Reserved for booking-success states inside the product. Not visible on the public home.
 - **Warning / Alert / Danger**: Reserved for in-app states (insurance reminders, late-return alerts). The marketing home avoids semantic colors entirely.
 
-## 3. Typography Rules
+## Typography
 
 ### Font evidence boundary
 
@@ -308,7 +304,109 @@ Specimen availability is evaluated independently for brand and live web surfaces
 - **Letter-spacing left at `normal`.** No tracking adjustments on Korean text — Pretendard's metrics are trusted as shipped.
 - **Color, not weight, separates levels.** All hierarchy ends up the same `#354153` cool-grey. Differentiation comes from size and weight, never from a darker heading color.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- No published numeric scale on the public home. Inspected paddings cluster at **12px / 18px / 20px / 30px**, which reads as an 8–4 hybrid grid (8 / 12 / 16 / 20 / 24 / 30) rather than a strict 8-multiple.
+- Card padding: **20px**.
+- Input padding: **12px 18px**.
+- Footer padding: **30px**.
+
+### Grid & Container
+- Single-column hero with the booking strip centered.
+- City / airport tiles in a responsive grid (likely 6-up at desktop, collapsing to 3-up tablet, 2-up mobile based on visible breakpoints).
+- Article cards in a responsive horizontal-scroll row.
+- Generous side gutters at desktop — content rarely runs to viewport edges.
+
+### Whitespace Philosophy
+- **Calm chrome, busy form.** The booking strip is the densest UI on the page; everything around it intentionally backs off so the form is the obvious next action.
+- **Soft separation.** Sections are delineated by spacing and small heading shifts, not by colored bands or rules. The page has one background (`#ffffff`) until the footer.
+- **The shadow is the border.** Article cards use a 4px-blur drop shadow in place of a border — visual containment without visual weight.
+
+### Border Radius Scale
+- **12px** — inputs, search button, smallest interactive surfaces
+- **14px** — booking chips, city/airport tiles
+- **16px** — content / article cards
+- **20px+** — reserved for full-bleed promotional units (not verified on home, but consistent with rebrand asset templates)
+- No pill (`9999px`) and no sharp-corner (`0`) primary components observed.
+
+## Elevation & Depth
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+- `shadow.floating`: `rgba(38,47,60,0.04) 0px 0px 6px, rgba(38,47,60,0.04) 0px 3px 2px, rgba(38,47,60,0.08) 0px 2px 8px`
+
+## Motion & Easing
+
+The public home page is mostly static — SOCAR earns its trust through restraint rather than kinetic flourish. The motion vocabulary below is the principled extension of FRAME's documented practice into SOCAR Blue brand-tier surfaces; specific token values are not published on the public site and are reasoned from observed behavior.
+
+Measured on 2026-09-29 (computed `transition`, not tokens): the primary action, the floating button and the search button run `all 0.1s ease-in-out`; the nav link, the 제주 tile and the place field have no transition (`all 0s`). The list rows' class list names a 200ms transform transition (class evidence only). The tables below remain reasoned values, not measurements.
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle states, selection commits |
+| `motion-fast` | 150ms | Hover, focus, button press overlay |
+| `motion-standard` | 240ms | Bottom-sheet rise, card expand, tab switch — the default |
+| `motion-slow` | 360ms | Reservation-success transition, the only screen that earns extra weight |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.0, 0.0, 1)` | Things arriving — bottom sheets, drop-downs |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — collapsibles, tab content |
+
+**Signature motions.**
+
+1. **Booking-confirmed.** When a reservation is confirmed, the confirmation screen does *not* cross-fade from the form. It pushes in from the right at `motion-standard / ease-enter`, the form fades behind it. The completion is a destination, not a state change.
+2. **Time-window selection.** Picking a date or time slides the chip's content up/in (`motion-fast`) rather than cross-fading — the user must see the value change to trust it.
+3. **Card hover.** Article cards on desktop lift their shadow from `4px 8px` to roughly `8px 16px` at `motion-fast`. No translate, no scale — only shadow depth. The motion reads as "available", not "playful".
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant` and pushes become instant swaps. Booking remains fully usable.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+§10 Voice & Tone — derived from the rebrand tagline ("소유를 줄여 삶의 여유를 더한다"),
+the SOCAR home headline ("차가 필요할 땐, 쏘카"), and convention shared with peer
+Korean mobility/fintech surfaces (Toss, Kakao Mobility). Direct quote sourced
+from https://abocado.kr/brand_news/news_detail?no=52.
+
+§11 Brand Narrative — sourced primarily from the abocado.kr rebrand case
+study (SOCAR Blue, SOCAR Space Frame, "vessel that carries new experiences",
+Sandoll Gothic Neo2 + Avenir, "소유를 줄여 삶의 여유를 더한다"), with the
+SOCAR Tech Blog FRAME series providing the engineering-substrate context.
+Founding year (2011, Jeju) is widely-documented public history; exact founding
+month not asserted here.
+
+§12 Principles — interpretive editorial readings connecting the rebrand's
+stated intent (gravity / seriousness / achromatic supporting palette) to the
+verified web tokens (achromatic chrome, SOCAR Blue reserved for brand-tier
+action, Pretendard substitution, single-shadow / mid-radius geometry).
+
+§13 Personas — fictional archetypes informed by publicly observable Korean
+car-sharing user segments (urban app-first users, family weekend renters,
+small-business renters, student first-time renters). Names are illustrative;
+they do not refer to real people.
+
+§14 States — the inline form-validation, skeleton, and money-event patterns
+follow Korean mobility/fintech-app convention. The "money-moving events are
+never reduced to a toast" rule mirrors the same principle documented in the
+Toss reference and is asserted as a reasoned design-system claim, not a
+directly-quoted SOCAR policy.
+
+§15 Motion & Easing — token values are reasoned from observed page behavior
+plus standard FRAME-tier conventions, not published SOCAR tokens. Treat as
+inference until cross-checked against the internal SOCAR Frame 2.0 motion
+documentation.
+-->
+
+## Components
 
 ### Buttons
 
@@ -480,113 +578,14 @@ No roster is recorded because there is nothing to enumerate. The absence is the 
 publishes brand assets and naming rules at this address, not a component library, and the `ds`
 type says otherwise.
 
-## 5. Layout Principles
-
-### Spacing System
-- No published numeric scale on the public home. Inspected paddings cluster at **12px / 18px / 20px / 30px**, which reads as an 8–4 hybrid grid (8 / 12 / 16 / 20 / 24 / 30) rather than a strict 8-multiple.
-- Card padding: **20px**.
-- Input padding: **12px 18px**.
-- Footer padding: **30px**.
-
-### Grid & Container
-- Single-column hero with the booking strip centered.
-- City / airport tiles in a responsive grid (likely 6-up at desktop, collapsing to 3-up tablet, 2-up mobile based on visible breakpoints).
-- Article cards in a responsive horizontal-scroll row.
-- Generous side gutters at desktop — content rarely runs to viewport edges.
-
-### Whitespace Philosophy
-- **Calm chrome, busy form.** The booking strip is the densest UI on the page; everything around it intentionally backs off so the form is the obvious next action.
-- **Soft separation.** Sections are delineated by spacing and small heading shifts, not by colored bands or rules. The page has one background (`#ffffff`) until the footer.
-- **The shadow is the border.** Article cards use a 4px-blur drop shadow in place of a border — visual containment without visual weight.
-
-### Border Radius Scale
-- **12px** — inputs, search button, smallest interactive surfaces
-- **14px** — booking chips, city/airport tiles
-- **16px** — content / article cards
-- **20px+** — reserved for full-bleed promotional units (not verified on home, but consistent with rebrand asset templates)
-- No pill (`9999px`) and no sharp-corner (`0`) primary components observed.
-
-## 6. Iconography & Illustration
-
-- **Symbol-first brand mark.** The SOCAR Space Frame — a trapezoidal symbol sitting beneath the wordmark — is the primary brand asset. Described in official brand materials as *"a vessel that carries new experiences, freedom of movement, and life expansion"* ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)).
-- **No editorial illustration on the public home.** The site uses photography for travel-content cards and a small set of UI glyphs (search, location pin, calendar) — no illustrated empty states, no character mascots.
-- **Icon weight reads light-medium.** UI icons appear as monoline glyphs sized roughly to the body text (~16–18px), in the same `#354153` color as body copy — never used as decoration.
-- **Brand symbol stays blue.** When the Space Frame appears, it appears in SOCAR Blue. App-store badges follow the platform-specified treatment.
-
-## 7. Imagery & Photography
-
-- **Editorial / lifestyle photography** for the travel-content cards ("5월 드라이브 코스 추천", "부산·경남·울산 봄 축제"): wide-aspect, naturally-lit, location-forward — roads, beaches, cherry blossoms, urban districts. No people in the foreground; no model-driven imagery.
-- **Vehicle photography** (in the booking flow, not on the home itself) follows standard automotive product treatment: 3/4 front angle, clean studio background, color-accurate.
-- **Card crop:** rounded to 16px to match the card radius; never bleed-cropped.
-- **No stock-photo register.** Imagery reads like commissioned location work, not the generic stock vocabulary common in Korean SaaS pages.
-
-## 8. Patterns
+### Patterns
 
 - **Hero = booking form.** The page's main interaction lives above the fold as a horizontal strip of pickers (place, date-time, car-class). Marketing copy is secondary. The pattern is: *if you came here to book, the booking form is here.*
 - **Article cards as soft promotion.** Below the booking strip, travel-content cards run horizontally — the secondary surface that converts non-intending visitors into trip-planners.
 - **Region tiles as exploration.** "어디로 떠날까요?" exposes the catalog as a grid of city tiles — a familiar Korean e-commerce pattern (Coupang, Kakao) applied to mobility.
 - **Footer as utility.** The footer carries terms, customer service phone, regulatory text, and app download badges. It is informational, not promotional — no email capture, no banner CTAs.
 
-## 9. Accessibility
-
-- **Text contrast.** Body `#354153` on `#ffffff` measures ~9.4:1 — well above WCAG AAA for body text.
-- **Placeholder contrast.** `#b4bbcb` on `#ffffff` measures ~2.5:1 — below WCAG AA for normal text. Acceptable for placeholder/disabled treatment only; care needed if the same color is reused for active text.
-- **Focus states** (measured 2026-09-29 after real Tab presses): the home place field turns its wrapper border `#99ceff`; the header nav link, the guide primary action and the floating button show the browser's default ring (`#005fcc`, outline-style auto). No authored focus outline was found, and a pale `#99ceff` border on a white field is a weak cue. Region tiles and everything after the place field were not reached, because focusing the field opens a place layer that traps the Tab walk.
-- **Korean as primary script.** All copy is set in Pretendard, which carries an explicit Korean glyph set — no fallback flicker, no width mismatch.
-- **Touch targets.** Search button at 12px 18px padding plus 14px-font line height clears the 44×44px iOS recommendation. City tiles at 20px padding clear it comfortably.
-- **Motion / reduced motion.** Not directly verified — should be added to the SOCAR Frame docs review before a strict claim is made.
-
----
-
-## 10. Voice & Tone
-
-SOCAR speaks like a service that has done this hundreds of millions of times and would rather get you to the car than make a moment of it. Calm Korean, short sentences, zero hedging — *"차가 필요할 땐, 쏘카"* ("When you need a car, SOCAR"), full stop. The tagline of the rebrand is *"소유를 줄여 삶의 여유를 더한다"* — *"reduce ownership, add life's ease"* ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)). Both register the same posture: SOCAR is not selling adventure; it is removing friction from a thing you were going to do anyway.
-
-| Context | Tone |
-|---|---|
-| Headlines | Declarative Korean. Short. Service-confirmation register, not marketing register. *"차가 필요할 땐, 쏘카"*, *"어디로 떠날까요?"* |
-| Booking CTAs | Imperative verb form — `예약하기`, `검색`, `찾기`. Never `Get started`, never `Start your journey`. |
-| Travel-content cards | One-line topical headlines ("5월 드라이브 코스 추천 2026 | 봄 당일치기 명소") — useful, dated, specific. No clickbait stacking. |
-| Empty / error states | Should follow Korean fintech-app convention: explain the cause in one line, offer one action, never `오류가 발생했습니다`. |
-| Legal / terms | Formal Korean `합니다` endings, regulator-readable. Same pattern as other Korean mobility platforms. |
-| Customer-service surfaces | Direct, warm but procedural. Phone number visible in the footer. |
-
-**Forbidden phrases.** *"Revolutionary"*, *"Game-changer"*, *"새로운 경험을 시작하세요"* as marketing decoration without an action attached, exclamation marks on routine CTAs, emoji on transactional surfaces (booking, payment, return). Travel-content cards may carry editorial color; the booking funnel may not.
-
-## 11. Brand Narrative
-
-SOCAR was founded in **2011** in Jeju as Korea's first car-sharing service and has since become the country's dominant car-sharing platform, with the rebrand to its current identity rolling out from **2024** ([abocado.kr 리브랜딩 케이스](https://abocado.kr/brand_news/news_detail?no=52)). The rebrand reframed the company from *"car-sharing service"* to *"car-sharing that transforms everyday life and mobility throughout the city"* — a deliberate broadening of scope from a transactional product to an everyday-life platform.
-
-The rebrand is design's load-bearing artifact. The previous identity leaned playful and consumer-app; the new identity replaced that with the **SOCAR Space Frame** symbol — a trapezoid below the wordmark, intended as *"a vessel that carries new experiences, freedom of movement, and life expansion"* — and substituted **SOCAR Blue** for the previous palette, chosen *"to convey gravity and seriousness"* ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)). The supporting palette is intentionally achromatic so the blue does the brand-flagging work.
-
-In parallel, SOCAR has been publishing the **SOCAR FRAME** design system since 2020 ([SOCAR Tech Blog, FRAME #1](https://tech.socarcorp.kr/design/2020/06/23/socar-design-system-01.html)) — the internal cross-platform component library, recently relaunched as **FRAME 2.0** with an explicit design-code integration stack ([SOCAR Tech Blog, FRAME 2.0 web, 2026](https://tech.socarcorp.kr/fe/2026/02/23/socar-frame2-web.html)). FRAME is the engineering substrate; the rebrand is the brand vocabulary that sits on top of it. They share the same underlying restraint: clear naming, repeatable rules, one decision per artifact.
-
-What SOCAR refuses: the playful consumer-app vocabulary of its earlier identity (bright accents, illustrated states), the institutional-blue gravity of legacy car rental brands (Avis, Hertz, Lotte Rent-a-Car), and the gamified booking flows common in Southeast-Asian super-apps. What it embraces: a calm achromatic chrome with a single load-bearing brand color, mobile-first sizing on every surface, and a public site that opens directly on the form you came to fill out.
-
-## 12. Principles
-
-1. **Service over spectacle.** The home page opens with a booking form, not a marketing video. If the user came to reserve a car, the reservation form is the hero. Anything else is below it.
-2. **Achromatic chrome, branded action.** Only the brand symbol, app badges, and primary booking CTA carry SOCAR Blue. Everything else is `#354153` text on white. The brand color is reserved for the moment it matters.
-3. **Mobile-first sizing on every surface.** Hero headings cap at 26px even on desktop. SOCAR is an app-first company; the web is a slightly-relaxed mobile surface, not an inflated desktop poster.
-4. **Pretendard, not a custom face.** The web does not run a bespoke variable font. Brand documents specify Sandoll Gothic Neo2 + Avenir for the printed identity; web operationalizes that as Pretendard. The decision is honest, not aspirational.
-5. **One shadow, one radius scale.** Cards use a single soft black shadow. Radii live on the 12 / 14 / 16 ladder. No multi-layer chromatic stacks, no pill experiments — visual restraint is the trust signal.
-6. **Body text is `#354153`, not black.** A cool grey-blue softens the chrome and signals "we are not a bank, we are not a government form".
-7. **Brand vocabulary is a service contract.** *"소유를 줄여 삶의 여유를 더한다"* is not a tagline pasted over a hero — it is the company's contract with the user. Every surface should make ownership feel smaller and ease feel larger.
-8. **FRAME is the substrate.** Designers do not improvise components for the public surface. If a button is needed, FRAME is the source of truth — naming and behavior pulled from the documented library, not freestyled.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Korean car-sharing user segments, not individual people.*
-
-**민호 (Minho), 29, Seoul.** Software engineer renting a car for a Jeju trip with friends. Opens SOCAR app first, switches to web only because his friend is coordinating the booking on a laptop. Expects the web surface to mirror the app's reservation flow exactly — same fields in the same order. If the web booking funnel diverges from the app's, he loses confidence in the brand's internal consistency.
-
-**지영 (Jiyoung), 34, Bundang.** Mother of two, no second car at home. Books a 4-hour SOCAR every other Saturday for Costco runs and family errands. Never uses the marketing content; goes straight from app icon to "예약" to "결제". Cares deeply that the time-window picker confirms exactly what she selected — she has been burned by overlapping reservations on legacy rental sites.
-
-**대훈 (Daehoon), 42, Busan.** Small business owner. Uses SOCAR Business for client visits when his own car is in the shop. Reads the FAQ and insurance terms before each booking — values that SOCAR publishes its insurance coverage in plain Korean rather than hiding it in a PDF. Considers the calm achromatic chrome a sign that the company "is serious".
-
-**서연 (Seoyeon), 23, Daegu.** University student. SOCAR was her first car-rental experience — she had never used a legacy car-rental brand. Treats SOCAR Blue as "the color of borrowed cars" the way an older generation treats yellow as "the color of taxis". Heavy user of weekend short rentals (4–6 hours). Notices immediately when other mobility brands lean into a similar achromatic-plus-blue palette and reads it as imitation.
-
-## 14. States
+### States
 
 | State | Treatment |
 |---|---|
@@ -605,74 +604,7 @@ What SOCAR refuses: the playful consumer-app vocabulary of its earlier identity 
 | **Disabled (CTA, form incomplete)** | Search button drops to `#f2f3f8` background with `#b4bbcb` label — the verified default disabled state on the home. The geometry stays stable; only the color contrast changes. |
 | **No connectivity** | Top-bar banner: *"인터넷 연결을 확인해 주세요"*. Last-known content stays visible. Critical actions (confirm reservation) are blocked until connectivity returns. |
 
-## 15. Motion & Easing
-
-The public home page is mostly static — SOCAR earns its trust through restraint rather than kinetic flourish. The motion vocabulary below is the principled extension of FRAME's documented practice into SOCAR Blue brand-tier surfaces; specific token values are not published on the public site and are reasoned from observed behavior.
-
-Measured on 2026-09-29 (computed `transition`, not tokens): the primary action, the floating button and the search button run `all 0.1s ease-in-out`; the nav link, the 제주 tile and the place field have no transition (`all 0s`). The list rows' class list names a 200ms transform transition (class evidence only). The tables below remain reasoned values, not measurements.
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle states, selection commits |
-| `motion-fast` | 150ms | Hover, focus, button press overlay |
-| `motion-standard` | 240ms | Bottom-sheet rise, card expand, tab switch — the default |
-| `motion-slow` | 360ms | Reservation-success transition, the only screen that earns extra weight |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.0, 0.0, 1)` | Things arriving — bottom sheets, drop-downs |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — collapsibles, tab content |
-
-**Signature motions.**
-
-1. **Booking-confirmed.** When a reservation is confirmed, the confirmation screen does *not* cross-fade from the form. It pushes in from the right at `motion-standard / ease-enter`, the form fades behind it. The completion is a destination, not a state change.
-2. **Time-window selection.** Picking a date or time slides the chip's content up/in (`motion-fast`) rather than cross-fading — the user must see the value change to trust it.
-3. **Card hover.** Article cards on desktop lift their shadow from `4px 8px` to roughly `8px 16px` at `motion-fast`. No translate, no scale — only shadow depth. The motion reads as "available", not "playful".
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant` and pushes become instant swaps. Booking remains fully usable.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-§10 Voice & Tone — derived from the rebrand tagline ("소유를 줄여 삶의 여유를 더한다"),
-the SOCAR home headline ("차가 필요할 땐, 쏘카"), and convention shared with peer
-Korean mobility/fintech surfaces (Toss, Kakao Mobility). Direct quote sourced
-from https://abocado.kr/brand_news/news_detail?no=52.
-
-§11 Brand Narrative — sourced primarily from the abocado.kr rebrand case
-study (SOCAR Blue, SOCAR Space Frame, "vessel that carries new experiences",
-Sandoll Gothic Neo2 + Avenir, "소유를 줄여 삶의 여유를 더한다"), with the
-SOCAR Tech Blog FRAME series providing the engineering-substrate context.
-Founding year (2011, Jeju) is widely-documented public history; exact founding
-month not asserted here.
-
-§12 Principles — interpretive editorial readings connecting the rebrand's
-stated intent (gravity / seriousness / achromatic supporting palette) to the
-verified web tokens (achromatic chrome, SOCAR Blue reserved for brand-tier
-action, Pretendard substitution, single-shadow / mid-radius geometry).
-
-§13 Personas — fictional archetypes informed by publicly observable Korean
-car-sharing user segments (urban app-first users, family weekend renters,
-small-business renters, student first-time renters). Names are illustrative;
-they do not refer to real people.
-
-§14 States — the inline form-validation, skeleton, and money-event patterns
-follow Korean mobility/fintech-app convention. The "money-moving events are
-never reduced to a toast" rule mirrors the same principle documented in the
-Toss reference and is asserted as a reasoned design-system claim, not a
-directly-quoted SOCAR policy.
-
-§15 Motion & Easing — token values are reasoned from observed page behavior
-plus standard FRAME-tier conventions, not published SOCAR tokens. Treat as
-inference until cross-checked against the internal SOCAR Frame 2.0 motion
-documentation.
--->
-
-## 16. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Set all body and heading text in cool blue-grey #354153 on pure white #ffffff, never true black, to signal a calm service rather than a bank or government form
@@ -689,3 +621,39 @@ documentation.
 - Swap Pretendard for a bespoke web display face or add letter-spacing to Korean text; the type voice comes from disciplined sizing with tracking left at normal
 - Revive the pre-2024 playful consumer-app vocabulary — bright accents, illustrated empty states, or character mascots — that the rebrand deliberately retired
 - Write generic error copy like '검색 결과가 없습니다' or '문제가 발생했습니다', or put exclamation marks and emoji on booking, payment, or return surfaces
+
+## Voice & Tone
+
+SOCAR speaks like a service that has done this hundreds of millions of times and would rather get you to the car than make a moment of it. Calm Korean, short sentences, zero hedging — *"차가 필요할 땐, 쏘카"* ("When you need a car, SOCAR"), full stop. The tagline of the rebrand is *"소유를 줄여 삶의 여유를 더한다"* — *"reduce ownership, add life's ease"* ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)). Both register the same posture: SOCAR is not selling adventure; it is removing friction from a thing you were going to do anyway.
+
+| Context | Tone |
+|---|---|
+| Headlines | Declarative Korean. Short. Service-confirmation register, not marketing register. *"차가 필요할 땐, 쏘카"*, *"어디로 떠날까요?"* |
+| Booking CTAs | Imperative verb form — `예약하기`, `검색`, `찾기`. Never `Get started`, never `Start your journey`. |
+| Travel-content cards | One-line topical headlines ("5월 드라이브 코스 추천 2026 | 봄 당일치기 명소") — useful, dated, specific. No clickbait stacking. |
+| Empty / error states | Should follow Korean fintech-app convention: explain the cause in one line, offer one action, never `오류가 발생했습니다`. |
+| Legal / terms | Formal Korean `합니다` endings, regulator-readable. Same pattern as other Korean mobility platforms. |
+| Customer-service surfaces | Direct, warm but procedural. Phone number visible in the footer. |
+
+**Forbidden phrases.** *"Revolutionary"*, *"Game-changer"*, *"새로운 경험을 시작하세요"* as marketing decoration without an action attached, exclamation marks on routine CTAs, emoji on transactional surfaces (booking, payment, return). Travel-content cards may carry editorial color; the booking funnel may not.
+
+## Governance
+
+### Accessibility
+
+- **Text contrast.** Body `#354153` on `#ffffff` measures ~9.4:1 — well above WCAG AAA for body text.
+- **Placeholder contrast.** `#b4bbcb` on `#ffffff` measures ~2.5:1 — below WCAG AA for normal text. Acceptable for placeholder/disabled treatment only; care needed if the same color is reused for active text.
+- **Focus states** (measured 2026-09-29 after real Tab presses): the home place field turns its wrapper border `#99ceff`; the header nav link, the guide primary action and the floating button show the browser's default ring (`#005fcc`, outline-style auto). No authored focus outline was found, and a pale `#99ceff` border on a white field is a weak cue. Region tiles and everything after the place field were not reached, because focusing the field opens a place layer that traps the Tab walk.
+- **Korean as primary script.** All copy is set in Pretendard, which carries an explicit Korean glyph set — no fallback flicker, no width mismatch.
+- **Touch targets.** Search button at 12px 18px padding plus 14px-font line height clears the 44×44px iOS recommendation. City tiles at 20px padding clear it comfortably.
+- **Motion / reduced motion.** Not directly verified — should be added to the SOCAR Frame docs review before a strict claim is made.
+
+---
+
+### Known Gaps
+
+- **Contrast, `primary-action`.** Text `#ffffff` on `#0078ff` measures 4.09:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-action`.** Text `#b4bbcb` on `#f2f3f8` measures 1.74:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-link`.** Text `#354153` on `#00000000` measures 2.03:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-input`.** Text `#354153` on `#00000000` measures 2.03:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-link`.** Text `#697383` on `#00000000` measures 4.38:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

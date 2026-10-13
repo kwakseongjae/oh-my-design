@@ -1,0 +1,1555 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "shiftup",
+    "name": "Shift Up",
+    "display_name_kr": "시프트업",
+    "country": "KR",
+    "category": "consumer-tech",
+    "homepage": "https://shiftup.co.kr",
+    "primary_color": "#569a43",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=shiftup.co.kr&sz=128"
+    },
+    "verified": "2026-09-30",
+    "added": "2026-06-17"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-09-30",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-30",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "corporate",
+        "url": "https://shiftup.co.kr/",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-2",
+        "kind": "corporate",
+        "url": "https://shiftup.co.kr/games/games.php",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-3",
+        "kind": "corporate",
+        "url": "https://shiftup.co.kr/recruit/recruit.php?searchkey=&category=0",
+        "inspected": "2026-09-30"
+      }
+    ],
+    "sources": [
+      {
+        "id": "surface-home",
+        "kind": "product-surface",
+        "url": "https://shiftup.co.kr/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-2",
+        "kind": "product-surface",
+        "url": "https://shiftup.co.kr/games/games.php",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-3",
+        "kind": "product-surface",
+        "url": "https://shiftup.co.kr/recruit/recruit.php?searchkey=&category=0",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-probe-home",
+        "kind": "product-surface",
+        "url": "https://shiftup.co.kr/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-probe-games",
+        "kind": "product-surface",
+        "url": "https://shiftup.co.kr/games/games.php",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-probe-recruit",
+        "kind": "product-surface",
+        "url": "https://shiftup.co.kr/recruit/recruit.php?searchkey=&category=0",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-about",
+        "kind": "official-doc",
+        "url": "https://shiftup.co.kr/about/about.php",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-culture",
+        "kind": "official-doc",
+        "url": "https://shiftup.co.kr/recruit/culture.php",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-news",
+        "kind": "official-doc",
+        "url": "https://shiftup.co.kr/news/news.php",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "shiftup-governance",
+        "kind": "official-doc",
+        "url": "https://shiftup.co.kr/ir/governance.php",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "pretendard-license",
+        "kind": "license",
+        "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "roboto-condensed-license",
+        "kind": "license",
+        "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/robotocondensed/OFL.txt",
+        "captured": "2026-09-30"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"35\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.ink": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h4",
+        "captured": "2026-09-30"
+      },
+      "colors.white": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "colors.body": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "colors.surface": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.hairline": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "fonts.roles.body": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.display-xl.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display-xl.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display-xl.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display-xl.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.display.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.list-head.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.list-head.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.list-head.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.list-head.letterSpacing": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.list-head.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h3",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.letterSpacing": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.card-title.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.game-title.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.game-title.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.game-title.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.game-title.letterSpacing": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.game-title.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.news-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.news-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.news-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.news-title.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.news-title.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h4",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.fontSize": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.fontWeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.lineHeight": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.letterSpacing": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.lead.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::p",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.letterSpacing": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.tab.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.slider-tab.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "typography.slider-tab.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "typography.slider-tab.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "typography.slider-tab.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "typography.slider-tab.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "typography.link.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.link.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.nav-y": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.nav-x": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.tab-y": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.tab-x": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.field-x": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.field-inset": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "rounded.none": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "rounded.arrow": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.textColor": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.slick-prev Previous and button.slick-next Next (90 x 90, rest bg rgb(86, 154, 67), ::after icon colour rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 255, 255) and ::after colour -> rgb(86, 154, 67); focus (Tabs #60 and #62) no change on the control; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.size": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.hover": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.slick-prev Previous and button.slick-next Next (90 x 90, rest bg rgb(86, 154, 67), ::after icon colour rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 255, 255) and ::after colour -> rgb(86, 154, 67); focus (Tabs #60 and #62) no change on the control; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.pressed": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.slick-prev Previous and button.slick-next Next (90 x 90, rest bg rgb(86, 154, 67), ::after icon colour rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 255, 255) and ::after colour -> rgb(86, 154, 67); focus (Tabs #60 and #62) no change on the control; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.states": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "button.slick-prev Previous and button.slick-next Next (90 x 90, rest bg rgb(86, 154, 67), ::after icon colour rgb(255, 255, 255)): hover and pressed bg -> rgb(255, 255, 255) and ::after colour -> rgb(86, 154, 67); focus (Tabs #60 and #62) no change on the control; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.slider-arrow.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.type": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"27\"]",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "shiftup-probe-games",
+        "method": "live-state-probe",
+        "selector": "a.more_btn 프로젝트 소개 and 채용 지원 (180 x 60, label in a child em at rgb(255, 255, 255)): hover and pressed ::before grows 0 x 56px -> 352 x 56px and the em label -> rgb(0, 0, 0); focus (Tabs #59 and #60) only the browser ring; transition all 0.4s linear",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.border": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"27\"]",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"27\"]",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.height": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"27\"]",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.size": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"27\"]",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.hover": {
+        "surface_id": "surface-2",
+        "source_id": "shiftup-probe-games",
+        "method": "live-state-probe",
+        "selector": "a.more_btn 프로젝트 소개 and 채용 지원 (180 x 60, label in a child em at rgb(255, 255, 255)): hover and pressed ::before grows 0 x 56px -> 352 x 56px and the em label -> rgb(0, 0, 0); focus (Tabs #59 and #60) only the browser ring; transition all 0.4s linear",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "shiftup-probe-games",
+        "method": "live-state-probe",
+        "selector": "a.more_btn 프로젝트 소개 and 채용 지원 (180 x 60, label in a child em at rgb(255, 255, 255)): hover and pressed ::before grows 0 x 56px -> 352 x 56px and the em label -> rgb(0, 0, 0); focus (Tabs #59 and #60) only the browser ring; transition all 0.4s linear",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.states": {
+        "surface_id": "surface-2",
+        "source_id": "shiftup-probe-games",
+        "method": "live-state-probe",
+        "selector": "a.more_btn 프로젝트 소개 and 채용 지원 (180 x 60, label in a child em at rgb(255, 255, 255)): hover and pressed ::before grows 0 x 56px -> 352 x 56px and the em label -> rgb(0, 0, 0); focus (Tabs #59 and #60) only the browser ring; transition all 0.4s linear",
+        "captured": "2026-09-30"
+      },
+      "components.outline-link.use": {
+        "surface_id": "surface-2",
+        "source_id": "surface-surface-2",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"27\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.hover": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "a GAMES in the header (87 x 90.6, rest fg rgb(255, 255, 255)): hover and pressed fg -> rgb(0, 0, 0) and ::after grows 0 x 3px -> 87 x 3px; focus (Tab #5) only the browser ring; on the recruit page the same item rests at rgb(0, 0, 0) and hover grows only the ::after bar; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.pressed": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "a GAMES in the header (87 x 90.6, rest fg rgb(255, 255, 255)): hover and pressed fg -> rgb(0, 0, 0) and ::after grows 0 x 3px -> 87 x 3px; focus (Tab #5) only the browser ring; on the recruit page the same item rests at rgb(0, 0, 0) and hover grows only the ::after bar; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.states": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "a GAMES in the header (87 x 90.6, rest fg rgb(255, 255, 255)): hover and pressed fg -> rgb(0, 0, 0) and ::after grows 0 x 3px -> 87 x 3px; focus (Tab #5) only the browser ring; on the recruit page the same item rests at rgb(0, 0, 0) and hover grows only the ::after bar; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.nav-item.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"4\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.border": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.typography": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.padding": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.selected": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"35\"]",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.hover": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "a.cat_item 사업 (313 x 56.6, rest fg rgb(119, 119, 119)): hover and pressed fg -> rgb(86, 154, 67), ::before grows 0 x 2px -> 313 x 2px, ::after colour rgba(119, 119, 119, 0.5) -> rgb(86, 154, 67); selected 전체 no change on hover or pressed; focus (Tabs #71 and #77) only the browser ring; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.pressed": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "a.cat_item 사업 (313 x 56.6, rest fg rgb(119, 119, 119)): hover and pressed fg -> rgb(86, 154, 67), ::before grows 0 x 2px -> 313 x 2px, ::after colour rgba(119, 119, 119, 0.5) -> rgb(86, 154, 67); selected 전체 no change on hover or pressed; focus (Tabs #71 and #77) only the browser ring; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.states": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "a.cat_item 사업 (313 x 56.6, rest fg rgb(119, 119, 119)): hover and pressed fg -> rgb(86, 154, 67), ::before grows 0 x 2px -> 313 x 2px, ::after colour rgba(119, 119, 119, 0.5) -> rgb(86, 154, 67); selected 전체 no change on hover or pressed; focus (Tabs #71 and #77) only the browser ring; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.category-tab.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"36\"]",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"30\"]",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"30\"]",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.typography": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"30\"]",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"30\"]",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.selected": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"31\"]",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.hover": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "a 채용안내 (59.4 x 70, rest fg rgb(255, 255, 255)): hover and pressed fg -> rgb(86, 154, 67); selected 채용공고 (rest rgb(86, 154, 67)) no change; focus (Tabs #62 and #63) only the browser ring; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.pressed": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "a 채용안내 (59.4 x 70, rest fg rgb(255, 255, 255)): hover and pressed fg -> rgb(86, 154, 67); selected 채용공고 (rest rgb(86, 154, 67)) no change; focus (Tabs #62 and #63) only the browser ring; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.states": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "a 채용안내 (59.4 x 70, rest fg rgb(255, 255, 255)): hover and pressed fg -> rgb(86, 154, 67); selected 채용공고 (rest rgb(86, 154, 67)) no change; focus (Tabs #62 and #63) only the browser ring; transition all 0.3s linear",
+        "captured": "2026-09-30"
+      },
+      "components.sub-nav-tab.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"30\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.backgroundColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.rounded": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.padding": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.typography": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.states": {
+        "surface_id": "surface-3",
+        "source_id": "shiftup-probe-recruit",
+        "method": "live-state-probe",
+        "selector": "input.search_input placeholder 검색어를 입력해주세요. (375 x 60, rest bg rgb(244, 244, 244), fg rgb(0, 0, 0)): hover, pressed and focus (Tab #69) no change across self and 3 ancestor levels; transition all 0s",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"33\"]",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.padding": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.selected": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.slider-tab.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::#slick-slide00",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.hover": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.privacy 개인정보처리방침 (107 x 25.6, rest fg rgb(86, 154, 67)): hover and pressed ::before background-position 100% 50% -> 0px 50% (300% x 2px); focus (Tab #79) only the browser ring; transition all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.pressed": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.privacy 개인정보처리방침 (107 x 25.6, rest fg rgb(86, 154, 67)): hover and pressed ::before background-position 100% 50% -> 0px 50% (300% x 2px); focus (Tab #79) only the browser ring; transition all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.states": {
+        "surface_id": "home",
+        "source_id": "shiftup-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.privacy 개인정보처리방침 (107 x 25.6, rest fg rgb(86, 154, 67)): hover and pressed ::before background-position 100% 50% -> 0px 50% (300% x 2px); focus (Tab #79) only the browser ring; transition all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)",
+        "captured": "2026-09-30"
+      },
+      "components.footer-legal-link.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"52\"]",
+        "captured": "2026-09-30"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 58,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 12,
+      "extension-component-property": 41,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 4
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-xl.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.list-head.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.card-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.game-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.news-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.lead.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.tab.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.slider-tab.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.link.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-arrow.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-arrow.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-arrow.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-arrow.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-arrow.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.outline-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.outline-link.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.outline-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.outline-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.outline-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.outline-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-item.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-item.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.category-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sub-nav-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sub-nav-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sub-nav-tab.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sub-nav-tab.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sub-nav-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.sub-nav-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slider-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-legal-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-legal-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-legal-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-legal-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-legal-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.slider-arrow",
+        "message": "textColor (#ffffff) on backgroundColor (#569a43) has contrast ratio 3.44:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.white",
+        "message": "'white' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "4c0efcc7353168b2263de9299435e4806dab35d66b1894eb32118666eee0ebfa",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display-xl.fontSize",
+      "typography.display.fontSize",
+      "typography.list-head.fontSize",
+      "typography.list-head.letterSpacing",
+      "typography.card-title.fontSize",
+      "typography.card-title.letterSpacing",
+      "typography.game-title.fontSize",
+      "typography.game-title.letterSpacing",
+      "typography.news-title.fontSize",
+      "typography.news-title.letterSpacing",
+      "typography.lead.fontSize",
+      "typography.lead.letterSpacing",
+      "typography.nav.fontSize",
+      "typography.nav.letterSpacing",
+      "typography.tab.fontSize",
+      "typography.tab.letterSpacing",
+      "typography.body.fontSize",
+      "typography.slider-tab.fontSize",
+      "typography.slider-tab.letterSpacing",
+      "typography.link.fontSize",
+      "typography.link.letterSpacing",
+      "rounded.none",
+      "rounded.arrow"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-xl",
+        "display",
+        "list-head",
+        "card-title",
+        "game-title",
+        "news-title",
+        "lead",
+        "nav",
+        "tab",
+        "body",
+        "slider-tab",
+        "link"
+      ]
+    }
+  }
+}

@@ -1,62 +1,136 @@
 ---
-id: renault
 name: Renault
-country: FR
-category: automotive
-homepage: "https://www.renault.com"
-primary_color: "#ffcc00"
-logo:
-  type: simpleicons
-  slug: renault
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    yellow: "#efdf00"
-    black: "#000000"
-    white: "#ffffff"
-    soft-yellow: "#f8eb4c"
-    blue: "#1883fd"
-    warm-gray: "#d9d9d6"
-    charcoal: "#222222"
-    pale-silver: "#f2f2f2"
-    border-gray: "#d1d1d1"
-    success: "#8dc572"
-    error: "#be6464"
-    warning: "#f0ad4e"
-    info: "#337ab7"
-  typography:
-    family: { sans: "NouvelR", mono: "NouvelR" }
-    hero-title:    { size: 56, weight: 700, lineHeight: 0.95, use: "Hero titles, all-caps model names" }
-    section:       { size: 40, weight: 700, lineHeight: 0.95, use: "PromoCard section headings" }
-    card-heading:  { size: 32, weight: 700, lineHeight: 0.95, use: "Medium card headings" }
-    subheading:    { size: 24, weight: 700, lineHeight: 0.95, use: "Section sub-titles" }
-    body:          { size: 14, weight: 400, lineHeight: 1.40, use: "Paragraph and descriptive content" }
-    button:        { size: 14.4, weight: 700, lineHeight: 1.00, tracking: 0.144, use: "Primary button text" }
-    nav-link:      { size: 13, weight: 700, lineHeight: 1.50, use: "Navigation and footer links" }
-    caption:       { size: 12.8, weight: 400, lineHeight: 1.10, use: "Small descriptive text" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
-  rounded: { sm: 2, md: 3, lg: 4, full: 9999 }
-  shadow:
-    soft: "rgba(0,0,0,0.2) 0px 4px 8px"
-    medium: "rgba(0,0,0,0.2) 0px 0px 18px"
-    deep: "rgba(0,0,0,0.15) 0px 40px 80px"
-  components:
-    button-super-primary: { type: button, bg: "#efdf00", fg: "#000000", radius: 0, padding: "10px 15px", font: "16/700", use: "Highest-emphasis CTA, 1px #efdf00 border, 46px min" }
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 0, padding: "10px 15px", font: "16/700", use: "Default action; inverted #ffffff bg on dark" }
-    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 0, padding: "10px 15px", font: "16/700", use: "Transparent outline, 1px white border on dark" }
-    text-link: { type: button, bg: "transparent", fg: "#000000", use: "Inline link, hover shifts to #1883fd" }
-    promo-card-light: { type: card, bg: "#ffffff", fg: "#000000", radius: 0, use: "Editorial card, full-bleed photo, dark gradient overlay" }
-    promo-card-dark: { type: card, bg: "#000000", fg: "#ffffff", radius: 0, use: "Cinematic alternative-mode card" }
-    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "6px 35px 6px 15px", font: "12.8/400", use: "Pill search input, 1px #d1d1d1 border" }
-  components_harvested: true
+colors:
+  yellow: '#efdf00'
+  black: '#000000'
+  white: '#ffffff'
+  soft-yellow: '#f8eb4c'
+  blue: '#1883fd'
+  warm-gray: '#d9d9d6'
+  charcoal: '#222222'
+  pale-silver: '#f2f2f2'
+  border-gray: '#d1d1d1'
+  success: '#8dc572'
+  error: '#be6464'
+  warning: '#f0ad4e'
+  info: '#337ab7'
+typography:
+  hero-title:
+    fontSize: 56px
+    fontWeight: 700
+    lineHeight: 0.95
+    use: Hero titles, all-caps model names
+  section:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 0.95
+    use: PromoCard section headings
+  card-heading:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 0.95
+    use: Medium card headings
+  subheading:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 0.95
+    use: Section sub-titles
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Paragraph and descriptive content
+  button:
+    fontSize: 14.4px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: 0.144px
+    use: Primary button text
+  nav-link:
+    fontSize: 13px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Navigation and footer links
+  caption:
+    fontSize: 12.8px
+    fontWeight: 400
+    lineHeight: 1.1
+    use: Small descriptive text
+rounded:
+  sm: 2px
+  md: 3px
+  lg: 4px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 40
+  section: 80
+components:
+  button-super-primary:
+    type: button
+    backgroundColor: '#efdf00'
+    textColor: '#000000'
+    rounded: 0px
+    padding: 10px 15px
+    typography: 16/700
+    use: 'Highest-emphasis CTA, 1px #efdf00 border, 46px min'
+  button-primary:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 10px 15px
+    typography: 16/700
+    use: 'Default action; inverted #ffffff bg on dark'
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 10px 15px
+    typography: 16/700
+    use: Transparent outline, 1px white border on dark
+  text-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#000000'
+    use: 'Inline link, hover shifts to #1883fd'
+  promo-card-light:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 0px
+    use: Editorial card, full-bleed photo, dark gradient overlay
+  promo-card-dark:
+    type: card
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 0px
+    use: Cinematic alternative-mode card
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 9999px
+    padding: 6px 35px 6px 15px
+    typography: 12.8/400
+    use: 'Pill search input, 1px #d1d1d1 border'
+fonts:
+  roles:
+    sans: NouvelR
+    mono: NouvelR
 ---
 
 # Design System Inspiration of Renault
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Renault's website is a vibrant digital showroom that balances French automotive elegance with bold, forward-leaning energy — a departure from the monochromatic austerity of German or Italian luxury brands. The page opens with a full-screen hero that washes the viewport in a sweeping aurora gradient — ribbons of magenta, violet, and teal bleeding across the frame behind a dramatically lit vehicle. This chromatic expressiveness is the site's signature: while the interface structure is disciplined (NouvelR typography, black-and-white CTA framework, zero-radius buttons), the content is alive with color — gradient washes on hero slides, saturated vehicle photography, and splashes of Renault Yellow (`#EFDF00`) on accent CTAs. The effect is a showroom that feels energized rather than hushed.
 
@@ -75,13 +149,35 @@ Typography is unified under NouvelR — a proprietary geometric sans-serif desig
 - PrimeReact (21 components) + Element Plus (19 components) powering interactive elements
 - Link hover state in Renault Blue (`#1883FD`) — the sole chromatic interaction color
 
-## Primary tasks
+### Primary tasks
 
 - Browse the vehicle range and compare model prices
 - Configure a car, then buy or reserve it
 - Explore the E-Tech electric range and its technology
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Renault was founded **1899** in **Boulogne-Billancourt, France** by three brothers — **Louis Renault**, **Marcel Renault**, and **Fernand Renault** — with the **Renault Voiturette 1CV** sold December 1898 ([Renault — Wikipedia](https://en.wikipedia.org/wiki/Renault)). Iconic French automaker. The **Renault-Nissan Alliance** was founded **1999**; **Mitsubishi joined September 2017** after Nissan acquired a controlling stake (1 year prior), forming the **Renault-Nissan-Mitsubishi Alliance** ([Renault-Nissan-Mitsubishi Alliance — Wikipedia](https://en.wikipedia.org/wiki/Renault%E2%80%93Nissan%E2%80%93Mitsubishi_Alliance)). The **2021+ "Renaulution" rebrand** under CEO **Luca de Meo** introduced **a new geometric "diamond" logo** (announced March 2021, fleet-wide rollout completed by 2024) — **the 9th iteration of the diamond shape since 1925**, designed as two intertwined black lines evoking the popular 1972 design ([Renault Group — A Renaulution for the diamond](https://www.renaultgroup.com/en/magazine/our-group-news/a-renaulution-for-the-diamond/), [Design Week — new geometric logo](https://www.designweek.co.uk/issues/15-21-march-2021/renault-new-logo/)). Renault Yellow as a signature accent + chess-board section alternation as visual rhythm.
+
+### Principles
+
+1. **One Renault Yellow per screen.** *UI implication:* if yellow appears more than once in CTAs, hierarchy collapses.
+2. **Chessboard alternation.** Light ↔ dark section rhythm. *UI implication:* never flat sequences.
+3. **0px sharp radius.** *UI implication:* don't round corners — French precision.
+4. **Photography drives.** *UI implication:* hero modules photo-first.
+5. **Sustainability narrative.** *UI implication:* EV + recycling references in product surfaces.
+
+### Personas
+
+*Personas are fictional archetypes informed by Renault user segments (French/EU mass-market buyers, EV early adopters, fleet managers), not individual people.*
+
+**Sophie Martin, 38, Lyon.** Family car buyer. Mégane E-Tech EV.
+
+**Henrik Müller, 45, Berlin.** Fleet manager evaluating EV transition.
+
+**Sofia Russo, 32, Milan.** First-time car buyer. Clio E-Tech for city driving.
+
+## Colors
 
 ### Primary
 - **Renault Yellow** (`#EFDF00`): The brand's signature Pantone — a vivid, saturated yellow used for super-primary CTAs and the highest-priority action buttons. Appears as `--CtaLink-background-color` on `.is-cta-super-primary` class. Carries the energy of the diamond logo
@@ -116,7 +212,7 @@ Typography is unified under NouvelR — a proprietary geometric sans-serif desig
 - **PromoCard Overlay**: `linear-gradient(rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%)` — applied to card tops to ensure heading text legibility over photography
 - No flat CSS gradients on surfaces — depth comes from photographic treatment and the black/white alternation
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **NouvelR**: The sole typeface. A proprietary geometric sans-serif designed by Black[Foundry] for Renault's 2021+ rebrand. Features a distinctive "radical r" with a 28-degree terminal cut matching the diamond logo angle. Available in 6 weights (Light to Extrabold), supports 6 writing systems. Fallback: `sans-serif`. Declared as `"NouvelR, sans-serif"` in CSS
@@ -151,7 +247,115 @@ Typography is unified under NouvelR — a proprietary geometric sans-serif desig
 - **28-degree radical r**: The typeface's signature detail — the lowercase "r" terminal is cut at precisely 28 degrees to mirror the angles of the Renault diamond logo, embedding brand identity into every word
 - **Capitalize transform on captions**: Some caption text uses `text-transform: capitalize` for editorial labeling, while micro text uses `lowercase` — a deliberate inversion for hierarchy signaling
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- **Base unit**: 8px (detected system base)
+- **Scale**: 1px, 4px, 5px, 6px, 6.25px, 8px, 10px, 12px, 13px, 15px, 16px, 20px, 24px, 32px, 40px
+- **Button padding**: 10px 15px — consistent across all button variants
+- **Section padding**: Generous vertical spacing (40–80px) between major content blocks
+- **Card gaps**: 16–24px between grid items
+- **Minimum interactive size**: 46px (minWidth and minHeight on all buttons)
+
+### Grid & Container
+- **Max width**: 1440px (largest defined breakpoint)
+- **Hero**: Full-bleed, edge-to-edge, viewport-height
+- **PromoCard grid**: 2-up and 3-up layouts with mixed card sizes
+- **Vehicle range**: Horizontal scrollable card row or grid
+- **Footer**: Multi-column layout on white background
+
+### Whitespace Philosophy
+Renault uses whitespace moderately — more generously than Ferrari but less extremely than Tesla. The card-based layout means content is organized into defined containers rather than floating in void. The visual breathing room comes primarily from the large card formats and the full-bleed hero carousel, which gives each vehicle its own cinematic moment. Between sections, spacing is consistent (32–40px) creating a rhythmic scroll experience. The alternation between light and dark sections also creates perceived whitespace — the mode switch itself acts as a visual separator.
+
+### Border Radius Scale
+| Value | Context |
+|-------|---------|
+| 0px | All buttons, PromoCards, most containers — the zero-radius default |
+| 2px | Small UI elements (region controls) |
+| 3px | Content panels (div, tabpanel) |
+| 4px | Labels and tag elements |
+| 46px | Pill-shaped elements (search input, filter chips) |
+| 50px | Full pill for search/input fields |
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile Small | ≤425px | Single-column, full-width cards, hero text scales to ~32px, stacked CTAs, hamburger nav |
+| Mobile | 426–640px | Single-column, slightly larger cards, hero text at 32–40px |
+| Tablet Small | 641–768px | 2-column PromoCard grid begins, hero maintains full-width |
+| Tablet | 769–896px | Full 2-column layout, vehicle range shows 2–3 cards |
+| Desktop Small | 897–1024px | Navigation fully expanded, hero at 56px, 2-up card grid |
+| Desktop | 1025–1280px | Full layout, 3-up card grid, generous whitespace |
+| Large Desktop | 1281–1440px | Maximum content width, centered container, hero at full cinematic scale |
+
+#### Touch Targets
+- All buttons: minimum 46×46px (`minWidth: 46px, minHeight: 46px`) — exceeds WCAG AAA 44×44px requirement
+- Search input pill: adequate touch target with 50px border-radius creating a large tappable area
+- Navigation links: NouvelR 13px with adequate spacing between items
+- Carousel navigation: large arrow targets at viewport edges
+
+#### Collapsing Strategy
+- **Navigation**: Full horizontal nav collapses to Renault diamond logo + hamburger menu on mobile
+- **Hero carousel**: Full-width at all breakpoints, headline scales from 56px (desktop) to ~32px (mobile)
+- **PromoCard grid**: 3-up → 2-up → single-column as viewport narrows
+- **Vehicle range**: Horizontal scroll maintained at all sizes, visible cards reduce
+- **CTA pairs**: Side-by-side buttons stack vertically on mobile
+- **Footer**: Multi-column collapses to single-column accordion on mobile
+
+#### Image Behavior
+- Hero images: full-bleed at all breakpoints with `object-fit: cover`
+- PromoCard images: responsive within card containers, gradient overlay scales proportionally
+- Vehicle images: transparent-background renders scale proportionally within grid cells
+- Art direction: mobile may crop to tighter vehicle views, reducing environmental context
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Level 0 (Flat) | No shadow | Default for PromoCards, buttons, most containers |
+| Level 1 (Soft) | `rgba(0,0,0,0.2) 0px 4px 8px` | Card hover states, subtle lift effect |
+| Level 2 (Medium) | `rgba(0,0,0,0.2) 0px 0px 18px` | Floating UI elements, dropdown menus |
+| Level 3 (Layered) | `rgba(0,0,0,0) 0px 2px 4px, rgba(50,50,93,0.1) 0px 7px 14px` | Compound shadow for elevated cards and modals |
+| Level 4 (Deep) | `rgba(0,0,0,0.15) 0px 40px 80px` | Large floating panels, configurator overlays |
+| Level 5 (Directional) | `rgba(0,0,0,0.2) 5px 5px 8px` | Offset directional shadow for specific components |
+| Level 6 (Ambient) | `rgb(199,197,199) 0px 0px 12px 2px` | Ambient glow effect for highlighted elements |
+
+### Shadow Philosophy
+Renault uses a richer shadow system than Ferrari or Tesla — seven distinct shadow tokens reflecting a more layered, dimensional interface. The shadows progress from subtle 4px hover lifts to dramatic 80px deep panels. The compound shadow (Level 3) with its dual-layer approach (a tight dark shadow plus a wider purple-tinted one from `rgba(50,50,93,0.1)`) is particularly refined — it creates a photorealistic floating effect. The ambient glow (Level 6) in warm gray adds a unique touch that connects to Renault's warmer color personality.
+
+### Decorative Depth
+- **Hero aurora gradients**: The primary decorative depth element — vivid color gradients create atmospheric depth behind vehicle imagery
+- **PromoCard overlays**: `linear-gradient(rgba(0,0,0,0.6) → transparent)` creates depth within cards through transparency
+- **No blur effects** on UI elements — depth is communicated through shadow and color contrast
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.soft`: `rgba(0,0,0,0.2) 0px 4px 8px`
+- `shadow.medium`: `rgba(0,0,0,0.2) 0px 0px 18px`
+- `shadow.deep`: `rgba(0,0,0,0.15) 0px 40px 80px`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` disables auto-play.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 48 — Apple-tier)
+**Tier 1 sources:** https://renaultgroup.com/en home + /en/group (live DOM via playwright — Primary `#000` Black **100px full-pill** / 19×24 / **64px** / **14px·700 ALL CAPS** + Inverse `#fff` 100px (canvas-aware) + carousel 100% circular 40×40 + nav `#fff` 16px·700 ALL CAPS).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/Alliance/logo):** Wikipedia (Renault + RNM Alliance), Renault Group magazine (Renaulution diamond), Design Week / Autocar / It's Nice That (2021 logo rebrand).
+**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier mistake reverted (significant — every Primary geometry value was wrong):** Radius 0px→**100px**, padding 24→**19×24**, height 72→**64**, font 16px·400→**14px·700 ALL CAPS**. §4 material correction.
+
+## Components
 
 ### Buttons
 Renault's buttons are sharp-edged rectangles with zero border-radius — the industrial precision of a pressed metal body panel.
@@ -233,57 +437,23 @@ Renault's buttons are sharp-edged rectangles with zero border-radius — the ind
 - Dot indicators for slide position
 - Navigation arrows at edges
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- **Base unit**: 8px (detected system base)
-- **Scale**: 1px, 4px, 5px, 6px, 6.25px, 8px, 10px, 12px, 13px, 15px, 16px, 20px, 24px, 32px, 40px
-- **Button padding**: 10px 15px — consistent across all button variants
-- **Section padding**: Generous vertical spacing (40–80px) between major content blocks
-- **Card gaps**: 16–24px between grid items
-- **Minimum interactive size**: 46px (minWidth and minHeight on all buttons)
+| State | Treatment |
+|---|---|
+| **Empty (configurator)** | "Configurez votre Renault" |
+| **Empty (no saved)** | Model selector |
+| **Loading (config)** | Real-time 3D rendering |
+| **Loading (price)** | Per-option update |
+| **Error (incompatible)** | Specific constraint |
+| **Error (no inventory)** | "Délai de livraison: N mois" |
+| **Success (saved)** | Configuration ID |
+| **Success (booked)** | Dealer confirmation |
+| **Skeleton (model list)** | 0px placeholders |
+| **Disabled (option locked)** | Tooltip |
+| **Loading (long render)** | Persistent progress |
 
-### Grid & Container
-- **Max width**: 1440px (largest defined breakpoint)
-- **Hero**: Full-bleed, edge-to-edge, viewport-height
-- **PromoCard grid**: 2-up and 3-up layouts with mixed card sizes
-- **Vehicle range**: Horizontal scrollable card row or grid
-- **Footer**: Multi-column layout on white background
-
-### Whitespace Philosophy
-Renault uses whitespace moderately — more generously than Ferrari but less extremely than Tesla. The card-based layout means content is organized into defined containers rather than floating in void. The visual breathing room comes primarily from the large card formats and the full-bleed hero carousel, which gives each vehicle its own cinematic moment. Between sections, spacing is consistent (32–40px) creating a rhythmic scroll experience. The alternation between light and dark sections also creates perceived whitespace — the mode switch itself acts as a visual separator.
-
-### Border Radius Scale
-| Value | Context |
-|-------|---------|
-| 0px | All buttons, PromoCards, most containers — the zero-radius default |
-| 2px | Small UI elements (region controls) |
-| 3px | Content panels (div, tabpanel) |
-| 4px | Labels and tag elements |
-| 46px | Pill-shaped elements (search input, filter chips) |
-| 50px | Full pill for search/input fields |
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Flat) | No shadow | Default for PromoCards, buttons, most containers |
-| Level 1 (Soft) | `rgba(0,0,0,0.2) 0px 4px 8px` | Card hover states, subtle lift effect |
-| Level 2 (Medium) | `rgba(0,0,0,0.2) 0px 0px 18px` | Floating UI elements, dropdown menus |
-| Level 3 (Layered) | `rgba(0,0,0,0) 0px 2px 4px, rgba(50,50,93,0.1) 0px 7px 14px` | Compound shadow for elevated cards and modals |
-| Level 4 (Deep) | `rgba(0,0,0,0.15) 0px 40px 80px` | Large floating panels, configurator overlays |
-| Level 5 (Directional) | `rgba(0,0,0,0.2) 5px 5px 8px` | Offset directional shadow for specific components |
-| Level 6 (Ambient) | `rgb(199,197,199) 0px 0px 12px 2px` | Ambient glow effect for highlighted elements |
-
-### Shadow Philosophy
-Renault uses a richer shadow system than Ferrari or Tesla — seven distinct shadow tokens reflecting a more layered, dimensional interface. The shadows progress from subtle 4px hover lifts to dramatic 80px deep panels. The compound shadow (Level 3) with its dual-layer approach (a tight dark shadow plus a wider purple-tinted one from `rgba(50,50,93,0.1)`) is particularly refined — it creates a photorealistic floating effect. The ambient glow (Level 6) in warm gray adds a unique touch that connects to Renault's warmer color personality.
-
-### Decorative Depth
-- **Hero aurora gradients**: The primary decorative depth element — vivid color gradients create atmospheric depth behind vehicle imagery
-- **PromoCard overlays**: `linear-gradient(rgba(0,0,0,0.6) → transparent)` creates depth within cards through transparency
-- **No blur effects** on UI elements — depth is communicated through shadow and color contrast
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Renault Yellow (`#EFDF00`) exclusively for super-primary CTAs — it carries the full weight of the diamond logo's identity
@@ -309,40 +479,23 @@ Renault uses a richer shadow system than Ferrari or Tesla — seven distinct sha
 - Create rounded-pill buttons — pill shapes are reserved for inputs, never for action elements
 - Use flat CSS gradients on UI surfaces — the only gradients should be the photographic hero auroras and the text-legibility overlays
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | ≤425px | Single-column, full-width cards, hero text scales to ~32px, stacked CTAs, hamburger nav |
-| Mobile | 426–640px | Single-column, slightly larger cards, hero text at 32–40px |
-| Tablet Small | 641–768px | 2-column PromoCard grid begins, hero maintains full-width |
-| Tablet | 769–896px | Full 2-column layout, vehicle range shows 2–3 cards |
-| Desktop Small | 897–1024px | Navigation fully expanded, hero at 56px, 2-up card grid |
-| Desktop | 1025–1280px | Full layout, 3-up card grid, generous whitespace |
-| Large Desktop | 1281–1440px | Maximum content width, centered container, hero at full cinematic scale |
+Renault's voice is **French-popular-mobility and accessible-design.** Pivot 2021+ to "accessible mobility" + Renault Yellow signature. Marketing copy emphasizes "voitures pour tous" with French aesthetic restraint.
 
-### Touch Targets
-- All buttons: minimum 46×46px (`minWidth: 46px, minHeight: 46px`) — exceeds WCAG AAA 44×44px requirement
-- Search input pill: adequate touch target with 50px border-radius creating a large tappable area
-- Navigation links: NouvelR 13px with adequate spacing between items
-- Carousel navigation: large arrow targets at viewport edges
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Découvrir", "Configurer", "Réserver" |
+| Marketing | Photography + concise headlines |
+| Documentation | Specs + sustainability reporting |
+| Error | Polite French. "Une erreur s'est produite." |
 
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav collapses to Renault diamond logo + hamburger menu on mobile
-- **Hero carousel**: Full-width at all breakpoints, headline scales from 56px (desktop) to ~32px (mobile)
-- **PromoCard grid**: 3-up → 2-up → single-column as viewport narrows
-- **Vehicle range**: Horizontal scroll maintained at all sizes, visible cards reduce
-- **CTA pairs**: Side-by-side buttons stack vertically on mobile
-- **Footer**: Multi-column collapses to single-column accordion on mobile
+**Voice samples**
+- Marketing CTA pattern: *"더 알아보기"* / *"Découvrir"* <!-- verified: renaultgroup.com 2026-05 -->
 
-### Image Behavior
-- Hero images: full-bleed at all breakpoints with `object-fit: cover`
-- PromoCard images: responsive within card containers, gradient overlay scales proportionally
-- Vehicle images: transparent-background renders scale proportionally within grid cells
-- Art direction: mobile may crop to tighter vehicle views, reducing environmental context
+**Forbidden phrases.** "Revolutionary mobility". Aggressive PSA-comparison framing.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA (Super): "Renault Yellow (#EFDF00)"
@@ -372,73 +525,8 @@ When refining existing screens generated with this design system:
 5. Always check whether a section should be light or dark — the chessboard alternation is a core pattern
 6. Reserve Renault Yellow for ONE button per screen — if yellow appears in more than one CTA, the hierarchy collapses
 
-## 10. Voice & Tone
+## Governance
 
-Renault's voice is **French-popular-mobility and accessible-design.** Pivot 2021+ to "accessible mobility" + Renault Yellow signature. Marketing copy emphasizes "voitures pour tous" with French aesthetic restraint.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Découvrir", "Configurer", "Réserver" |
-| Marketing | Photography + concise headlines |
-| Documentation | Specs + sustainability reporting |
-| Error | Polite French. "Une erreur s'est produite." |
-
-**Voice samples**
-- Marketing CTA pattern: *"더 알아보기"* / *"Découvrir"* <!-- verified: renaultgroup.com 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary mobility". Aggressive PSA-comparison framing.
-
-## 11. Brand Narrative
-
-Renault was founded **1899** in **Boulogne-Billancourt, France** by three brothers — **Louis Renault**, **Marcel Renault**, and **Fernand Renault** — with the **Renault Voiturette 1CV** sold December 1898 ([Renault — Wikipedia](https://en.wikipedia.org/wiki/Renault)). Iconic French automaker. The **Renault-Nissan Alliance** was founded **1999**; **Mitsubishi joined September 2017** after Nissan acquired a controlling stake (1 year prior), forming the **Renault-Nissan-Mitsubishi Alliance** ([Renault-Nissan-Mitsubishi Alliance — Wikipedia](https://en.wikipedia.org/wiki/Renault%E2%80%93Nissan%E2%80%93Mitsubishi_Alliance)). The **2021+ "Renaulution" rebrand** under CEO **Luca de Meo** introduced **a new geometric "diamond" logo** (announced March 2021, fleet-wide rollout completed by 2024) — **the 9th iteration of the diamond shape since 1925**, designed as two intertwined black lines evoking the popular 1972 design ([Renault Group — A Renaulution for the diamond](https://www.renaultgroup.com/en/magazine/our-group-news/a-renaulution-for-the-diamond/), [Design Week — new geometric logo](https://www.designweek.co.uk/issues/15-21-march-2021/renault-new-logo/)). Renault Yellow as a signature accent + chess-board section alternation as visual rhythm.
-
-## 12. Principles
-
-1. **One Renault Yellow per screen.** *UI implication:* if yellow appears more than once in CTAs, hierarchy collapses.
-2. **Chessboard alternation.** Light ↔ dark section rhythm. *UI implication:* never flat sequences.
-3. **0px sharp radius.** *UI implication:* don't round corners — French precision.
-4. **Photography drives.** *UI implication:* hero modules photo-first.
-5. **Sustainability narrative.** *UI implication:* EV + recycling references in product surfaces.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Renault user segments (French/EU mass-market buyers, EV early adopters, fleet managers), not individual people.*
-
-**Sophie Martin, 38, Lyon.** Family car buyer. Mégane E-Tech EV.
-
-**Henrik Müller, 45, Berlin.** Fleet manager evaluating EV transition.
-
-**Sofia Russo, 32, Milan.** First-time car buyer. Clio E-Tech for city driving.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (configurator)** | "Configurez votre Renault" |
-| **Empty (no saved)** | Model selector |
-| **Loading (config)** | Real-time 3D rendering |
-| **Loading (price)** | Per-option update |
-| **Error (incompatible)** | Specific constraint |
-| **Error (no inventory)** | "Délai de livraison: N mois" |
-| **Success (saved)** | Configuration ID |
-| **Success (booked)** | Dealer confirmation |
-| **Skeleton (model list)** | 0px placeholders |
-| **Disabled (option locked)** | Tooltip |
-| **Loading (long render)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` disables auto-play.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 48 — Apple-tier)
-**Tier 1 sources:** https://renaultgroup.com/en home + /en/group (live DOM via playwright — Primary `#000` Black **100px full-pill** / 19×24 / **64px** / **14px·700 ALL CAPS** + Inverse `#fff` 100px (canvas-aware) + carousel 100% circular 40×40 + nav `#fff` 16px·700 ALL CAPS).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/Alliance/logo):** Wikipedia (Renault + RNM Alliance), Renault Group magazine (Renaulution diamond), Design Week / Autocar / It's Nice That (2021 logo rebrand).
-**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier mistake reverted (significant — every Primary geometry value was wrong):** Radius 0px→**100px**, padding 24→**19×24**, height 72→**64**, font 16px·400→**14px·700 ALL CAPS**. §4 material correction.
+- **Contrast, `text-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

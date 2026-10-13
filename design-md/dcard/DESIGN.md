@@ -1,77 +1,174 @@
 ---
-id: dcard
 name: Dcard
-country: TW
-category: consumer-tech
-homepage: "https://www.dcard.tw"
-primary_color: "#0086ff"
-logo:
-  type: github
-  slug: Dcard
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "text colors ship as black-with-opacity (rgba); only 6-digit hexes promoted to colors — foreground uses #000000 (bg-dark) as the solid grounded base."
-  colors:
-    primary: "#3397cf"
-    primary-hover: "#5ab0db"
-    secondary: "#006aa6"
-    brand: "#00324e"
-    canvas: "#f2f2f2"
-    surface: "#ffffff"
-    foreground: "#000000"
-    on-primary: "#ffffff"
-    hint: "#e7f3f9"
-    premium: "#ffc51b"
-    premium-hover: "#ffd558"
-    success: "#49bd69"
-    danger: "#ea5c5c"
-    warning: "#f0a955"
-    special: "#f0b941"
-    topic: "#bf8ff0"
-    snackbar: "#2c2c2c"
-    sidebar-hover: "#032133"
-    disabled: "#e0e0e0"
-    hairline: "#cacaca"
-    gender-female: "#cb3a6b"
-    gender-male: "#1c7fac"
-  typography:
-    family: { sans: "Roboto" }
-    headline-1:  { size: 32, weight: 500, lineHeight: 1.31, use: "Top headline tier (mobile 30px)" }
-    headline-2:  { size: 28, weight: 500, lineHeight: 1.43, use: "Second headline tier" }
-    headline-3:  { size: 24, weight: 500, lineHeight: 1.17, use: "Third headline tier" }
-    headline-4:  { size: 20, weight: 500, lineHeight: 1.4, use: "Smallest headline tier" }
-    title:       { size: 18, weight: 600, lineHeight: 1.39, use: "Section headers in modals/editors (only 600 tier)" }
-    subtitle:    { size: 16, weight: 500, lineHeight: 1.38, use: "Subtitle 1" }
-    body:        { size: 16, weight: 400, lineHeight: 1.38, use: "Body 1, standard reading" }
-    body-sm:     { size: 14, weight: 400, lineHeight: 1.43, use: "Body 2" }
-    caption:     { size: 12, weight: 500, lineHeight: 1.42, use: "Caption — bumps to 500 for small-size legibility" }
-    caption-sm:  { size: 10, weight: 500, lineHeight: 1.6, use: "Caption 2, smallest" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 20, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, full: 9999 }
-  shadow:
-    level-1: "Material elevation level 1 — subtle card lift"
-    level-5: "Material elevation level 5 — modals, popovers"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#3397cf", fg: "#ffffff", radius: 8, padding: "8px 20px", font: "14/500", use: "Hero Download App CTA" }
-    button-secondary: { type: button, bg: "#006aa6", fg: "#ffffff", radius: 4, padding: "8px 20px", font: "14/500", use: "Search submit, joined to input" }
-    button-counter: { type: button, radius: 8, padding: "1px 14px", font: "14/500", use: "Like / comment counters" }
-    button-disabled: { type: button, bg: "#e0e0e0", radius: 8, use: "Inactive button state" }
-    search-input: { type: input, bg: "#ffffff", radius: 4, padding: "8px 12px", use: "Header search, 1px #cacaca border, joined to submit" }
-    post-card: { type: card, bg: "#ffffff", radius: 4, padding: "20px", use: "Main feed post card on #f2f2f2 gray bg, contrast handles separation" }
-    forum-card: { type: card, bg: "#ffffff", radius: 4, padding: "16px", use: "Forum directory card, 146x110px" }
-    topic-chip: { type: badge, bg: "#bf8ff0", fg: "#ffffff", radius: 4, padding: "4px 8px", font: "12/500", use: "Topic tags — lavender accent" }
-    sponsor-chip: { type: badge, bg: "#f0b941", fg: "#ffffff", radius: 4, padding: "4px 8px", use: "Sponsored / special-promotion chips" }
-    feed-tabs: { type: tab, radius: 4, use: "All / Following switcher, 48px header", active: "underline indicator + #000000 text" }
-    snackbar: { type: toast, bg: "#2c2c2c", fg: "#ffffff", radius: 4, use: "Toast notification, 250px wide" }
+colors:
+  primary: '#3397cf'
+  primary-hover: '#5ab0db'
+  secondary: '#006aa6'
+  brand: '#00324e'
+  canvas: '#f2f2f2'
+  surface: '#ffffff'
+  foreground: '#000000'
+  on-primary: '#ffffff'
+  hint: '#e7f3f9'
+  premium: '#ffc51b'
+  premium-hover: '#ffd558'
+  success: '#49bd69'
+  danger: '#ea5c5c'
+  warning: '#f0a955'
+  special: '#f0b941'
+  topic: '#bf8ff0'
+  snackbar: '#2c2c2c'
+  sidebar-hover: '#032133'
+  disabled: '#e0e0e0'
+  hairline: '#cacaca'
+  gender-female: '#cb3a6b'
+  gender-male: '#1c7fac'
+typography:
+  headline-1:
+    fontSize: 32px
+    fontWeight: 500
+    lineHeight: 1.31
+    use: Top headline tier (mobile 30px)
+  headline-2:
+    fontSize: 28px
+    fontWeight: 500
+    lineHeight: 1.43
+    use: Second headline tier
+  headline-3:
+    fontSize: 24px
+    fontWeight: 500
+    lineHeight: 1.17
+    use: Third headline tier
+  headline-4:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Smallest headline tier
+  title:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.39
+    use: Section headers in modals/editors (only 600 tier)
+  subtitle:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.38
+    use: Subtitle 1
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.38
+    use: Body 1, standard reading
+  body-sm:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Body 2
+  caption:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.42
+    use: Caption — bumps to 500 for small-size legibility
+  caption-sm:
+    fontSize: 10px
+    fontWeight: 500
+    lineHeight: 1.6
+    use: Caption 2, smallest
+rounded:
+  sm: 4px
+  md: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 16
+  base: 16
+  lg: 20
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#3397cf'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 8px 20px
+    typography: 14/500
+    use: Hero Download App CTA
+  button-secondary:
+    type: button
+    backgroundColor: '#006aa6'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 20px
+    typography: 14/500
+    use: Search submit, joined to input
+  button-counter:
+    type: button
+    rounded: 8px
+    padding: 1px 14px
+    typography: 14/500
+    use: Like / comment counters
+  button-disabled:
+    type: button
+    backgroundColor: '#e0e0e0'
+    rounded: 8px
+    use: Inactive button state
+  search-input:
+    type: input
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 12px
+    use: 'Header search, 1px #cacaca border, joined to submit'
+  post-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    padding: 20px
+    use: 'Main feed post card on #f2f2f2 gray bg, contrast handles separation'
+  forum-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    padding: 16px
+    use: Forum directory card, 146x110px
+  topic-chip:
+    type: badge
+    backgroundColor: '#bf8ff0'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 4px 8px
+    typography: 12/500
+    use: Topic tags — lavender accent
+  sponsor-chip:
+    type: badge
+    backgroundColor: '#f0b941'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 4px 8px
+    use: Sponsored / special-promotion chips
+  feed-tabs:
+    type: tab
+    rounded: 4px
+    use: All / Following switcher, 48px header
+    active: 'underline indicator + #000000 text'
+  snackbar:
+    type: toast
+    backgroundColor: '#2c2c2c'
+    textColor: '#ffffff'
+    rounded: 4px
+    use: Toast notification, 250px wide
+fonts:
+  roles:
+    sans: Roboto
 ---
 
 # Design System Inspiration of Dcard
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Dcard is Taiwan's largest anonymous social platform — and its design system is an exemplar of **Material Design adapted for East-Asian forum culture**. The page chrome is wrapped in a deep teal-navy (`#00324e`) header bar that frames a **clean light-gray content surface** (`#f2f2f2`), inside which posts sit on **pure white cards** (`#ffffff`). This editorial framing — dark exterior, clean interior — distinguishes Dcard from the all-light Western social platforms (Reddit, Facebook) and the all-dark gamer-chic alternatives. It feels closer to a curated digital magazine than an open feed.
 
@@ -92,7 +189,7 @@ What truly distinguishes Dcard is the **breadth of its semantic token system**. 
 - **Topic purple** (`#bf8ff0`) for cross-cutting interest groups
 - 8px border-radius is the default (buttons, cards, chips); `--vars-max-page-width: 1280px` with 728px main content + 300px aside
 
-## Primary tasks
+### Primary tasks
 
 - Read forum threads late at night without posting.
 - Post anonymously while your school and forum still show.
@@ -100,7 +197,47 @@ What truly distinguishes Dcard is the **breadth of its semantic token system**. 
 - Read salary-transparency threads and interview-prep AMAs in the work forums.
 - Cross-reference forum threads before buying a product.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Dcard began on **2011-12-16 at National Taiwan University** as a late-night "card-match" experiment: every midnight the app surfaces one profile to another, and the two students get 24 hours to decide whether to connect. The **`D`** in the name stands for *Destiny*. The founding premise was narrow — bored college students, the specific hour of 00:00, a single random pairing — and the product's entire structure flows from that origin. Dcard is built on the presumption that **online belonging in Taiwan is school-anchored and time-scoped**, not interest-anchored and always-on like Reddit or Facebook. ([en.wikipedia.org/wiki/Dcard](https://en.wikipedia.org/wiki/Dcard) — founding facts)
+
+From that single-feature card-match, Dcard expanded into **topic forums** in 2012 — `女孩`, `男生`, `感情`, `心情`, `時事`, and dozens more — each moderated by volunteers drawn from the community. The company, Dcard Taiwan Ltd., was formally established in Taipei in **October 2015**, and by November 2022 the platform had **over 6 million members and 18 million monthly unique visitors** — a platform-scale audience inside a 23-million-person country. ([en.wikipedia.org/wiki/Dcard](https://en.wikipedia.org/wiki/Dcard)) <!-- source: Wikipedia via WebFetch 2026-04; not re-verified against live Dcard data. -->
+
+The design language reflects three things the product must hold simultaneously. **One**, it must stay school-coded enough that a 21-year-old in Kaohsiung or Taipei doesn't feel like they're using a corporate social network — hence Material Design's restrained medium-weight typography rather than the bold-700 display type of commerce or news apps. **Two**, it must frame user content without competing with it — hence the dark-navy chrome (`#00324e`) + light-gray content area (`#f2f2f2`) + white post cards: the product is the frame, the posts are the picture. **Three**, it must surface *identity-under-anonymity* gracefully — the same user posts anonymously but is labeled by their school and gender forum affiliation, which is why Dcard invests in gender-coded author chips (`--color-gender-female: #cb3a6b`, `--color-gender-male: #1c7fac`) as first-class design tokens where other platforms would treat gender as metadata.
+
+What Dcard refuses: the open-graph identity of Facebook (school-verified but anonymous-posting is the point), the karma-and-moderation-wars culture of Reddit (Taiwan forum culture is softer, more mutual), the full-dark aesthetic of gamer or crypto platforms (Dcard is a well-lit reading space), and the heavy illustration style of consumer super-apps (the content is the illustration).
+
+The Dcard Tech Blog publishes under the tagline **"Binding Generations. Breaking Limitations. Building with Passion."** ([medium.com/dcardlab](https://medium.com/dcardlab)), which frames the brand's own ambition for its engineering — not a user-facing slogan, but the clearest first-person statement the company makes in public.
+
+### Principles
+
+1. **The product is the frame, posts are the picture.** Every surface outside a post body is deliberately subdued — muted chrome, no decorative illustration, no brand mascots in the reading flow. Dcard earns attention only where attention is required (auth, composition, notifications). *UI implication:* No illustrations on post-list screens. No brand color inside the content area. The `#f2f2f2` content bg + `#ffffff` post card is the canonical composition; any UI that breaks that contrast must justify itself.
+
+2. **Medium is the new bold.** Weight 500 is the highest weight Dcard UI uses for headlines; weight 600 is reserved for the `Title` tier (modal headers and editor labels); weight 700 is **forbidden** on product surfaces. Hierarchy is built through size, opacity, and vertical rhythm — not by making things fatter. *UI implication:* Headlines `font-weight: 500`. Never upgrade an H2 to 700 for emphasis; instead increase size from 28px → 32px or use the 85%-black text color instead of the 50%-black metadata color.
+
+3. **Identity tokens are semantic, not decorative.** `--color-gender-female` and `--color-gender-male` exist because anonymous posting in a school-anchored community needs *some* axis of identity, and gender is the axis Dcard's community inherited from its origin forums. These tokens are never to be recycled as brand accent colors. *UI implication:* Use gender colors only on author chips and gender-forum headers. A danger toast must use `--color-state-danger`, never `--color-gender-female`, even if the pinks are similar.
+
+4. **Gold is a subscription, not a highlight.** `--color-dcard-premium: #ffc51b` is reserved exclusively for subscription, paid, or verified-premium surfaces. Using it as a generic warning or "featured" accent devalues a finite economic signal. *UI implication:* Warnings use `--color-state-reminder` (`#f0a955`, orange). Featured-without-payment content uses topic lavender (`--color-bg-topic: #bf8ff0`). Premium gold appears only behind a paid wall.
+
+5. **8px is tactile.** Every Dcard button, card, chip, and input uses 8px border-radius. This single radius token does the work of communicating "soft product, safe space" across the entire UI. 4px reads as utility/enterprise; 16px reads as playful/commerce; pill-shaped reads as iOS-native. Dcard sits at 8px. *UI implication:* `border-radius: 8px` is the default. Pills are for toggles only. Sharp corners are for nothing.
+
+6. **Shadows are for floating, not for separating.** Post cards in the feed sit flat — the `#f2f2f2` content bg separates them from the `#ffffff` card surface via contrast. Shadows are reserved for UI that genuinely floats above the surface (dropdowns, modals, toasts). *UI implication:* No default shadow on feed cards. Use `--shadow-level-2` only for dropdowns and elevated cards. `--shadow-level-5` only for full-screen dialogs.
+
+7. **Traditional Chinese first, English second.** The font stack starts with Roboto (Latin/numerals) and layers on `PingFang TC`, `黑體-繁`, `Heiti TC`, `微軟正黑體`. Simplified Chinese characters are never acceptable on TW surfaces — the distinction is culturally load-bearing, not cosmetic. *UI implication:* Every `font-family` declaration includes the TC fallback stack. String tables use `網路` not `网络`, `影片` not `视频`, `資料` not `数据`. Hardcoded `font-family: sans-serif` is a bug.
+
+8. **Anonymity requires generous metadata.** The author is anonymous, but the context isn't. Every post surfaces school name + forum + timestamp + gender chip (if the forum warrants it). That metadata cluster is why a Dcard feed feels informative rather than chaotic — you know *where* and *when* without knowing *who*. *UI implication:* Every post-card component must render the school-forum-time triplet with consistent typography (12px weight 500 `--color-text-secondary`). Never hide it for density; never elaborate it with icons.
+
+### Personas
+
+*Personas are fictional archetypes informed by publicly described Dcard user segments (Taiwanese college students and recent graduates, 2022 figure of 6M+ members reported by Wikipedia), not individual people.*
+
+**宥廷 (You-Ting), 20, Taipei.** Second-year university student. Opens Dcard late at night on her phone — after class, before sleep — and reads the `女孩` and `感情` forums for an hour without posting. Comments anonymously maybe once a week, posts original content twice a semester. Treats Dcard as a quieter alternative to Threads or IG comments. Will not install another forum app — Dcard is the forum app.
+
+**Kytu, 24, Hsinchu.** Recent engineering grad, first tech job at a semiconductor firm. Uses Dcard primarily on the `工作` and `科技業` forums for salary-transparency threads and interview-prep AMAs. Posts about work experiences under a throwaway-feel chip (still anonymous, but wants the school-verified credibility tag). Would never tag himself identifiably. Reads the Dcard Tech Blog on Medium for engineering posts and recognizes Kytu Lin's byline.
+
+**小柔 (Xiao-Rou), 22, Taichung.** Third-year undergrad, active in the `美妝` and `購物` forums. Cross-references Dcard threads before any skincare purchase — treats the forum as peer-verified product reviews. Clicks into `Good Choice` when a thread recommends a product that's listed. Strong preference for Traditional Chinese interface; if a brand website is Simplified-Chinese-only she won't buy.
+
+## Colors
 
 Dcard exposes its color system via CSS custom properties on `:root`. All values below are extracted directly.
 
@@ -163,7 +300,7 @@ A reflection of Dcard's posting culture, where many forums (女孩 / 男生 / �
 - **Crop Mask** (`#000000b3`): `--color-crop-mask`. Modal/crop UI backdrop.
 - **Brand Sponsor Hovered** (`#fcd46d`): `--color-brand-sponsor-hovered`. Sponsored content highlight.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Stack
 ```
@@ -196,7 +333,192 @@ Roboto leads (Material Design convention), with full Traditional Chinese fallbac
 - **Mobile sizes step down by ~20%** for headlines but stay identical for body and below.
 - **Line-heights are generous** (1.3–1.4× ratio for body, ~1.4× for headlines) — supports CJK glyph density.
 
-## 4. Component Stylings
+## Layout
+
+### Page Structure
+- **Max page width**: `--vars-max-page-width: 1280px`
+- **Three-column layout**:
+  - Left sider (forum nav): `208px` (`--vars-my-page-sider-width`)
+  - Main content (post list): `728px` (`--vars-min-post-list-section-width`)
+  - Right aside (widgets/ads): `300px` (`--vars-forum-aside-section-width`)
+- Sections gap: `--vars-forum-sections-gap: 12px`
+
+### Spacing
+- **Header padding**: `20px`
+- **Post entry padding**: `20px`
+- **Post view padding**: `20px` vertical, `24px` horizontal
+- **Post list section padding**: `20px` vertical, `24px` horizontal
+- **Columns item horizontal**: `24px`
+- Content title height: `60px` (`--vars-my-page-content-title-height`)
+
+### Density
+Dcard is **medium-density**. Posts are visually distinct (white card on gray bg), but the 728px main column packs efficiently — title + preview + thumbnail + actions in a single horizontal row at desktop sizes. Not as dense as Pinkoi commerce, not as airy as Medium articles.
+
+### Responsive Behavior
+
+#### Breakpoints (inferred from mobile-specific tokens)
+Dcard provides explicit mobile typography sizes via `--typography-*-font-size-mobile` tokens, indicating a clear breakpoint at the tablet/mobile boundary (typically 768px in Material conventions).
+
+| Width | Behavior |
+|---|---|
+| Desktop `>1280px` | Centered max-width container, three-column layout (208 / 728 / 300) |
+| Desktop `1024–1280px` | Three-column compresses, asides may collapse |
+| Tablet `768–1024px` | Right aside hidden, two-column (sider + main) |
+| Mobile `<768px` | Single column. Headlines step down: H1 32px → 30px, H2 28px → 24px, H3 24px → 20px |
+
+#### Touch & Mobile
+- Bottom navigation height token: `--vars-bottom-navigation-height: 0px` on web (used in app webviews)
+- Safe area inset: `--safe-area-inset-bottom: 0px` (notch handling)
+- Forum hero image: `--vars-forum-hero-image-height: 243px`
+
+#### Media Caps
+- `--vars-max-post-media-vh: 60vh` — embedded videos/images cap at 60% viewport height
+- Cover image: `width: 100%`, `object-fit: cover`, `height: 100%` (`--mixins-cover-image-*`)
+
+#### Text Truncation
+- Single-line ellipsis: `--mixins-ellipsis-overflow: hidden; --mixins-ellipsis-text-overflow: ellipsis; --mixins-ellipsis-white-space: nowrap`
+- Multi-line clamp: `--mixins-multi-ellipsis-display: -webkit-box`, `--mixins-multi-ellipsis--webkit-box-orient: vertical`, `--mixins-multi-ellipsis--webkit-line-clamp: 1`
+- Line-clamp value can be customized per component
+
+## Elevation & Depth
+
+Dcard uses a **Material Design-style 5-level shadow system**, all keyed off black with low alpha for soft, neutral elevation.
+
+| Level | Token | Value | Use |
+|---|---|---|---|
+| 1 | `--shadow-level-1` | `0px 1px 6px -2px #00000052` | Subtle lift (chips, hover cards) |
+| 2 | `--shadow-level-2` | `0px 2px 8px -1px #0003` | Default card, dropdown |
+| 3 | `--shadow-level-3` | `0px 3px 12px #0000002e` | Elevated card, popover |
+| 4 | `--shadow-level-4` | `0px 4px 16px #00000029` | Modal, sticky bar |
+| 5 | `--shadow-level-5` | `0px 6px 24px #0000001f` | Highest elevation: dialogs, full-screen overlays |
+
+Note: Most post cards on the feed sit **flat without shadow** — the content area (`#f2f2f2`) provides separation against white cards via contrast. Shadows are reserved for genuinely floating elements.
+
+### Z-Index
+- Header is sticky and sits above content
+- Modals use `--color-bg-spotlight` backdrop
+- Sign-up overlay (`--color-bg-sign-up-overlay`) sits above all chrome
+- Toast/snackbar at the highest level
+
+### Animation
+- Easing: `--animations-bezier: cubic-bezier(.4, 0, .2, 1)` — Material Design standard easing curve
+- Short duration: `--animations-short-duration: .15s` (hover, press)
+- Medium duration: `--animations-medium-duration: .3s` (page transitions, accordions)
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.level-1`: `Material elevation level 1 — subtle card lift`
+- `shadow.level-5`: `Material elevation level 5 — modals, popovers`
+
+## Motion & Easing
+
+Dcard's motion system is Material-Design-standard. The entire runtime design token layer ships with exactly three motion tokens — `--animations-bezier`, `--animations-short-duration`, `--animations-medium-duration` — which is the whole point: restraint.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox state, counter increments |
+| `motion-short` (`--animations-short-duration`) | 150ms | Hover, press, small reveals, icon color transitions |
+| `motion-medium` (`--animations-medium-duration`) | 300ms | Accordion expand, dropdown open, tab switch, page transitions |
+| `motion-long` | 500ms | Emphasized transitions only — sign-up overlay entrance, first-load shimmer fade-out |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` (`--animations-bezier`) | `cubic-bezier(0.4, 0, 0.2, 1)` | The default. Material Design standard. Used for 95%+ of Dcard's motion. |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets rising, toasts entering, modals appearing |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, pops, toast departures |
+
+**Spring stance.** Spring / overshoot easing is **forbidden** on Dcard product surfaces. Rationale: Dcard is a reading platform for a community that uses it late at night, often to discuss sensitive topics (`感情`, `心情`, `工作壓力`). Kinetic overshoot on a card-flip or button-press contradicts the platform's emotional register. The community's culture is *quiet*; the motion design matches. The only place where Dcard's original card-match origin might have licensed overshoot — the midnight match reveal — sits inside a specific ritual surface, not the general UI; treat it as a legacy product moment, not a reusable motion token.
+
+**Signature motions.**
+
+1. **Feed card tap.** On press, card background transitions from `#ffffff` to a very subtle `--color-bg-base-3` tint over `motion-short / ease-standard`. No scale, no shadow pulse. The user's finger is the feedback, not the animation.
+
+2. **Sign-up overlay entrance.** The backdrop fades from `rgba(0,0,0,0)` to `--color-bg-sign-up-overlay` (`#000000b3`) over `motion-long / ease-enter` while the centered card slides from `y+20px` to its final position over `motion-medium / ease-enter`. Coordinated, not simultaneous — the backdrop lands first.
+
+3. **Infinite-scroll reveal.** Newly-loaded cards fade in with `opacity 0 → 1` over `motion-medium / ease-standard`. No slide — the feed is already scrolled, cards just materialize in place. A slide-in would read as "new content arrived" (social-feed paradigm); Dcard treats it as "your next page of reading" (forum paradigm).
+
+4. **Sidebar forum-switch.** Selected forum item's left-indicator bar (2px) animates its height from collapsed to full over `motion-short / ease-standard`; the old selection's indicator collapses over the same duration. No color fade on the text — the indicator does the work.
+
+**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Shimmer skeletons become static `#f2f2f2` blocks. Card fade-ins become immediate opacity-1. Sign-up overlay appears without coordinated entrance — just present. No exceptions.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+Augmented: 2026-04-20
+
+⚠️ SOURCING CAVEAT: Dcard publishes almost no public brand-philosophy
+documentation. The company is a college-community forum platform, not a
+design-forward brand. Most of the Philosophy layer above is INFERRED from
+three sources:
+
+1. The base DESIGN.md §1–9 (UI patterns extracted from `:root` CSS variables
+   via Playwright MCP runtime recon on 2026-04-17). This is the most
+   authoritative source for what the product actually does; it is NOT the
+   same as the company's self-stated philosophy.
+
+2. Wikipedia's Dcard entry (https://en.wikipedia.org/wiki/Dcard), fetched
+   2026-04-20. Used for founding year (2011-12-16), founding location
+   (National Taiwan University, NOT NCCU as a common misconception),
+   founder name (Kytu Lin / 林裕欽), the "D = Destiny" name origin, and
+   the 6M members / 18M monthly UV figure from November 2022. None of these
+   have been re-verified against primary Dcard sources.
+
+3. The Dcard Tech Blog (https://medium.com/dcardlab), fetched 2026-04-20.
+   Confirms the tagline "Binding Generations. Breaking Limitations. Building
+   with Passion." as Dcard's clearest first-person public brand statement.
+   The blog lists Kytu Lin as one of four editors, confirming he remains
+   publicly associated with the engineering org.
+
+Direct verification of live Dcard microcopy was NOT possible:
+WebFetch against dcard.tw / about.dcard.tw / dcard.tw/service/about all
+returned HTTP 403 (Cloudflare bot challenge, consistent with the base
+recon's note that only Playwright MCP successfully passes the challenge).
+Re-running this augmentation with Playwright MCP would allow direct voice
+sample verification; that was out of scope for this pass.
+
+Voice samples in §10:
+- `下載 App`, `登入`, `註冊` — verified via base DESIGN.md §4 header recon
+  (Playwright, 2026-04-17).
+- `Binding Generations. Breaking Limitations. Building with Passion.` —
+  cited from medium.com/dcardlab masthead, fetched 2026-04-20.
+- `還沒有文章`, `這篇文章已被刪除`, `搜尋 Dcard` — ILLUSTRATIVE only.
+  These follow Traditional-Chinese UI conventions observed in the base
+  recon's component catalog, but were not confirmed as live Dcard strings.
+  Do not present these to the brand owner as verbatim Dcard copy.
+
+Interpretive claims (editorial readings, not documented Dcard statements):
+- "The D in Dcard stands for Destiny" is from Wikipedia and treated as fact.
+- "Taiwan forum culture is softer, more mutual" (§11 what-Dcard-refuses
+  section) is an editorial reading of the product's tone, not a sourced
+  Dcard statement.
+- All §12 Principles are derived from observable UI patterns (8px radius,
+  weight-500 defaults, gender color tokens, shadow-reserved-for-floating);
+  they are not quotations from a Dcard design-principles document, which
+  does not publicly exist.
+- §13 Personas are fictional archetypes. Any resemblance to specific
+  Dcard users is unintended.
+
+NCCU vs NTU note: the augmentation brief suggested NCCU (National Chengchi
+University) as the founding site, but Wikipedia attributes the founding to
+National Taiwan University (NTU). This narrative uses NTU per Wikipedia; if
+a more authoritative source (Dcard press page, founder interview) confirms
+NCCU, §11 should be corrected.
+-->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 21 — Apple-tier)
+**Tier 1 sources:** https://dcard.tw/f (live DOM — `#3397cf` Dcard Blue 8px / 14×1 / 32px / 14px·500 Download App + Sign in CTAs); https://about.dcard.tw/ (corporate nav — same `#3397cf` accent text, 200+ token `:root` system).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Wikipedia (Dcard — Kytu Lin / 林裕欽 / NTU 2011-12-16 founding / D=Destiny / 6M+ members Nov 2022); medium.com/dcardlab masthead.
+**Style ref:** `pinkoi` (TW Asian marketplace tone). **Conflicts unresolved:** none. NCCU/NTU founding origin remains a noted editorial-only research gap (NTU per Wikipedia is canonical here).
+
+## Components
 
 ### Buttons
 
@@ -322,53 +644,24 @@ Roboto leads (Material Design convention), with full Traditional Chinese fallbac
 - Left Sider (forum nav): 208px width (`--vars-my-page-sider-width`), light bg, icon + text rows
 - Right Aside (widgets/ads): 300px width (`--vars-forum-aside-section-width`), 10px gap (`--vars-forum-aside-section-gap`)
 
-## 5. Layout Principles
+### States
 
-### Page Structure
-- **Max page width**: `--vars-max-page-width: 1280px`
-- **Three-column layout**:
-  - Left sider (forum nav): `208px` (`--vars-my-page-sider-width`)
-  - Main content (post list): `728px` (`--vars-min-post-list-section-width`)
-  - Right aside (widgets/ads): `300px` (`--vars-forum-aside-section-width`)
-- Sections gap: `--vars-forum-sections-gap: 12px`
+| State | Treatment |
+|---|---|
+| **Empty (new forum subscribed)** | Single paragraph of `--color-text-secondary` (`#00000080`) body text explaining what the forum covers + one CTA button in `--color-dcard-primary` bg to compose the first post. No illustration. Example pattern: `還沒有文章 · 成為第一個發文的人`. |
+| **Empty (search no results)** | Single line of `--color-text-secondary` 14px caption — `找不到符合的文章`. No suggested searches, no autocomplete spam. The user refines the query themselves. |
+| **Loading (feed first paint)** | Shimmer skeleton using `--color-bg-shimmer-bg` (`#f2f2f2`) → `--color-bg-shimmer-fg` (`#fafafa`) linear gradient. Card-shaped blocks matching final layout. Duration: `--animations-medium-duration` (300ms) shimmer cycle. |
+| **Loading (infinite scroll)** | Centered spinner at bottom of feed, 24px, `--color-dcard-primary` stroke. No full-screen block; existing cards remain interactive. |
+| **Error (inline form field)** | 1px border replaced with `--color-state-danger` (`#ea5c5c`), error caption below in `--color-state-danger` 12px weight 500. One actionable sentence. |
+| **Error (toast)** | Snackbar: bg `--color-bg-snackbar` (`#2c2c2c`), white 14px weight 400 text, 3s auto-dismiss. Bottom of screen with 20px safe-area inset. No icon, no illustration. |
+| **Error (post deleted)** | Full card replaced with single line `這篇文章已被刪除` in `--color-text-secondary` 14px, centered. Card chrome (radius, padding) preserved so feed rhythm is intact. |
+| **Success (post published)** | Snackbar in `--color-bg-snackbar` with white text `文章已發布` + secondary action link `查看文章` in `--color-dcard-primary`. 4s auto-dismiss. |
+| **Success (upvote/heart)** | Inline icon color transitions from `--color-icon-button` (`rgba(0,0,0,0.7)`) to `--color-state-danger` (heart) or `--color-dcard-primary` (upvote) over `--animations-short-duration` (150ms). Counter number increments without animation. |
+| **Disabled (button)** | bg `--color-bg-btn-disabled` (`#e0e0e0`), text `--color-text-secondary` (`#00000080`). No opacity reduction — the swatch change is the signal. |
+| **Skeleton (post body)** | Three shimmer lines at 100% / 90% / 70% width, 14px line height, 8px gap. `--animations-bezier` easing on the shimmer gradient. |
+| **Sign-up overlay (anonymous scroll wall)** | Full-page backdrop `--color-bg-sign-up-overlay` (`#000000b3`). Centered card, `--shadow-level-5`, 8px radius. One headline (`--typography-headline-3` weight 500), one subhead (`--typography-body-2`), two buttons: ghost `Sign in` + primary `Sign up`. Triggers after ~2 scroll lengths of anonymous browsing. |
 
-### Spacing
-- **Header padding**: `20px`
-- **Post entry padding**: `20px`
-- **Post view padding**: `20px` vertical, `24px` horizontal
-- **Post list section padding**: `20px` vertical, `24px` horizontal
-- **Columns item horizontal**: `24px`
-- Content title height: `60px` (`--vars-my-page-content-title-height`)
-
-### Density
-Dcard is **medium-density**. Posts are visually distinct (white card on gray bg), but the 728px main column packs efficiently — title + preview + thumbnail + actions in a single horizontal row at desktop sizes. Not as dense as Pinkoi commerce, not as airy as Medium articles.
-
-## 6. Depth & Elevation
-
-Dcard uses a **Material Design-style 5-level shadow system**, all keyed off black with low alpha for soft, neutral elevation.
-
-| Level | Token | Value | Use |
-|---|---|---|---|
-| 1 | `--shadow-level-1` | `0px 1px 6px -2px #00000052` | Subtle lift (chips, hover cards) |
-| 2 | `--shadow-level-2` | `0px 2px 8px -1px #0003` | Default card, dropdown |
-| 3 | `--shadow-level-3` | `0px 3px 12px #0000002e` | Elevated card, popover |
-| 4 | `--shadow-level-4` | `0px 4px 16px #00000029` | Modal, sticky bar |
-| 5 | `--shadow-level-5` | `0px 6px 24px #0000001f` | Highest elevation: dialogs, full-screen overlays |
-
-Note: Most post cards on the feed sit **flat without shadow** — the content area (`#f2f2f2`) provides separation against white cards via contrast. Shadows are reserved for genuinely floating elements.
-
-### Z-Index
-- Header is sticky and sits above content
-- Modals use `--color-bg-spotlight` backdrop
-- Sign-up overlay (`--color-bg-sign-up-overlay`) sits above all chrome
-- Toast/snackbar at the highest level
-
-### Animation
-- Easing: `--animations-bezier: cubic-bezier(.4, 0, .2, 1)` — Material Design standard easing curve
-- Short duration: `--animations-short-duration: .15s` (hover, press)
-- Medium duration: `--animations-medium-duration: .3s` (page transitions, accordions)
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 - **DO** use weight 500 (medium) for headlines. Dcard never goes weight 700 — Material Design convention.
 - **DON'T** use weight 700 except in legacy or one-off display contexts.
@@ -387,33 +680,33 @@ Note: Most post cards on the feed sit **flat without shadow** — the content ar
 - **DO** use Material easing `cubic-bezier(.4, 0, .2, 1)` with `.15s` for hover/press and `.3s` for page transitions.
 - **DON'T** use bouncy/elastic easing — Dcard's motion is restrained and platform-native.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints (inferred from mobile-specific tokens)
-Dcard provides explicit mobile typography sizes via `--typography-*-font-size-mobile` tokens, indicating a clear breakpoint at the tablet/mobile boundary (typically 768px in Material conventions).
+Dcard speaks like an older classmate on a university BBS — familiar, low-volume, Traditional-Chinese-native, with just enough informality to feel like peer conversation rather than an editorial voice. The default register is casual-polite Traditional Chinese (using `你` rather than `您`, but never colloquial internet slang on system surfaces). The platform's anonymity premise means the UI itself rarely uses the brand's first person; Dcard the product mostly *frames* user-generated content and stays out of the way. English strings exist on login/download flows for international visitors but are secondary — Traditional Chinese is the first-class voice.
 
-| Width | Behavior |
+| Context | Tone |
 |---|---|
-| Desktop `>1280px` | Centered max-width container, three-column layout (208 / 728 / 300) |
-| Desktop `1024–1280px` | Three-column compresses, asides may collapse |
-| Tablet `768–1024px` | Right aside hidden, two-column (sider + main) |
-| Mobile `<768px` | Single column. Headlines step down: H1 32px → 30px, H2 28px → 24px, H3 24px → 20px |
+| CTAs | Short Traditional Chinese verb form. `登入`, `註冊`, `發文`, `下載 App`. English fallback on international flows: `Sign in`, `Sign up`. |
+| Forum names (brand surface) | Single Traditional Chinese noun — `女孩`, `男生`, `心情`, `工作`, `感情`, `時事`. Never bilingual labels; the forum name IS the space. |
+| Post-card metadata | Time + school/forum + anonymized author. Formatted as `B站大學 · 3 小時前` pattern. No decorative punctuation. |
+| Empty states | Single-sentence explanation + one action. Blameless — never implies the user did something wrong. |
+| Error messages | State the condition, never apologize with `不好意思` openers. Actionable single sentence. |
+| Sign-up overlay | Aspirational-but-brief one-liner about finding your people. Avoids FOMO-framing ("Don't miss out"). |
+| Comments / reactions | Counter numbers without units — just `584`, `179`, `12` with an icon. The icon is the unit. |
+| Legal / policy | Formal `您` register + `敬啟` / `謹此` patterns. Single exception to the casual default. |
 
-### Touch & Mobile
-- Bottom navigation height token: `--vars-bottom-navigation-height: 0px` on web (used in app webviews)
-- Safe area inset: `--safe-area-inset-bottom: 0px` (notch handling)
-- Forum hero image: `--vars-forum-hero-image-height: 243px`
+**Forbidden phrases.** `不好意思，系統發生錯誤` (generic apology opener), `很抱歉` on non-destructive failures, emoji in system-generated surfaces (emoji is *user* territory, not UI-chrome territory — exception: user-authored post content and sticker reactions), exclamation-mark-as-emphasis on buttons (`立即下載！` is wrong — `下載 App` is right), marketing adjectives `最佳`, `極致`, `革命性`, Simplified Chinese characters in TW surfaces (`网络` → always `網路`; `视频` → always `影片`). No cartoon illustrations on error screens — Dcard is a text-first forum, not an app mascot brand.
 
-### Media Caps
-- `--vars-max-post-media-vh: 60vh` — embedded videos/images cap at 60% viewport height
-- Cover image: `width: 100%`, `object-fit: cover`, `height: 100%` (`--mixins-cover-image-*`)
+**Voice samples.**
 
-### Text Truncation
-- Single-line ellipsis: `--mixins-ellipsis-overflow: hidden; --mixins-ellipsis-text-overflow: ellipsis; --mixins-ellipsis-white-space: nowrap`
-- Multi-line clamp: `--mixins-multi-ellipsis-display: -webkit-box`, `--mixins-multi-ellipsis--webkit-box-orient: vertical`, `--mixins-multi-ellipsis--webkit-line-clamp: 1`
-- Line-clamp value can be customized per component
+- `下載 App` — primary CTA on the right of the desktop header. <!-- verified: https://www.dcard.tw/f via live Playwright recon 2026-04 (base DESIGN.md §1 confirms this CTA) -->
+- `登入` / `註冊` — header auth links, Traditional Chinese verbs, no punctuation. <!-- verified: https://www.dcard.tw/f via live Playwright recon 2026-04 (base DESIGN.md §4 confirms auth chrome) -->
+- `Binding Generations. Breaking Limitations. Building with Passion.` — public tagline on the engineering publication, the clearest first-person brand statement Dcard publishes. <!-- cited: https://medium.com/dcardlab masthead, fetched 2026-04 -->
+- `還沒有文章` — illustrative empty-state pattern for a forum the user has just joined. Three characters, stated not apologized. <!-- illustrative: not verified as live Dcard copy; follows Traditional-Chinese UI convention observed in §14 pattern -->
+- `這篇文章已被刪除` — illustrative post-removed state, factual single sentence, no blame. <!-- illustrative: not verified as live Dcard copy -->
+- `搜尋 Dcard` — illustrative search input placeholder. Verb + brand; matches base DESIGN.md §4 header recon which confirms the search input component without quoting its placeholder. <!-- illustrative: not verified as live Dcard copy -->
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: `--color-dcard-primary` (`#3397cf`); hover `#5ab0db`
@@ -450,192 +743,10 @@ Dcard provides explicit mobile typography sizes via `--typography-*-font-size-mo
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Dcard speaks like an older classmate on a university BBS — familiar, low-volume, Traditional-Chinese-native, with just enough informality to feel like peer conversation rather than an editorial voice. The default register is casual-polite Traditional Chinese (using `你` rather than `您`, but never colloquial internet slang on system surfaces). The platform's anonymity premise means the UI itself rarely uses the brand's first person; Dcard the product mostly *frames* user-generated content and stays out of the way. English strings exist on login/download flows for international visitors but are secondary — Traditional Chinese is the first-class voice.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Short Traditional Chinese verb form. `登入`, `註冊`, `發文`, `下載 App`. English fallback on international flows: `Sign in`, `Sign up`. |
-| Forum names (brand surface) | Single Traditional Chinese noun — `女孩`, `男生`, `心情`, `工作`, `感情`, `時事`. Never bilingual labels; the forum name IS the space. |
-| Post-card metadata | Time + school/forum + anonymized author. Formatted as `B站大學 · 3 小時前` pattern. No decorative punctuation. |
-| Empty states | Single-sentence explanation + one action. Blameless — never implies the user did something wrong. |
-| Error messages | State the condition, never apologize with `不好意思` openers. Actionable single sentence. |
-| Sign-up overlay | Aspirational-but-brief one-liner about finding your people. Avoids FOMO-framing ("Don't miss out"). |
-| Comments / reactions | Counter numbers without units — just `584`, `179`, `12` with an icon. The icon is the unit. |
-| Legal / policy | Formal `您` register + `敬啟` / `謹此` patterns. Single exception to the casual default. |
-
-**Forbidden phrases.** `不好意思，系統發生錯誤` (generic apology opener), `很抱歉` on non-destructive failures, emoji in system-generated surfaces (emoji is *user* territory, not UI-chrome territory — exception: user-authored post content and sticker reactions), exclamation-mark-as-emphasis on buttons (`立即下載！` is wrong — `下載 App` is right), marketing adjectives `最佳`, `極致`, `革命性`, Simplified Chinese characters in TW surfaces (`网络` → always `網路`; `视频` → always `影片`). No cartoon illustrations on error screens — Dcard is a text-first forum, not an app mascot brand.
-
-**Voice samples.**
-
-- `下載 App` — primary CTA on the right of the desktop header. <!-- verified: https://www.dcard.tw/f via live Playwright recon 2026-04 (base DESIGN.md §1 confirms this CTA) -->
-- `登入` / `註冊` — header auth links, Traditional Chinese verbs, no punctuation. <!-- verified: https://www.dcard.tw/f via live Playwright recon 2026-04 (base DESIGN.md §4 confirms auth chrome) -->
-- `Binding Generations. Breaking Limitations. Building with Passion.` — public tagline on the engineering publication, the clearest first-person brand statement Dcard publishes. <!-- cited: https://medium.com/dcardlab masthead, fetched 2026-04 -->
-- `還沒有文章` — illustrative empty-state pattern for a forum the user has just joined. Three characters, stated not apologized. <!-- illustrative: not verified as live Dcard copy; follows Traditional-Chinese UI convention observed in §14 pattern -->
-- `這篇文章已被刪除` — illustrative post-removed state, factual single sentence, no blame. <!-- illustrative: not verified as live Dcard copy -->
-- `搜尋 Dcard` — illustrative search input placeholder. Verb + brand; matches base DESIGN.md §4 header recon which confirms the search input component without quoting its placeholder. <!-- illustrative: not verified as live Dcard copy -->
-
-## 11. Brand Narrative
-
-Dcard began on **2011-12-16 at National Taiwan University** as a late-night "card-match" experiment: every midnight the app surfaces one profile to another, and the two students get 24 hours to decide whether to connect. The **`D`** in the name stands for *Destiny*. The founding premise was narrow — bored college students, the specific hour of 00:00, a single random pairing — and the product's entire structure flows from that origin. Dcard is built on the presumption that **online belonging in Taiwan is school-anchored and time-scoped**, not interest-anchored and always-on like Reddit or Facebook. ([en.wikipedia.org/wiki/Dcard](https://en.wikipedia.org/wiki/Dcard) — founding facts)
-
-From that single-feature card-match, Dcard expanded into **topic forums** in 2012 — `女孩`, `男生`, `感情`, `心情`, `時事`, and dozens more — each moderated by volunteers drawn from the community. The company, Dcard Taiwan Ltd., was formally established in Taipei in **October 2015**, and by November 2022 the platform had **over 6 million members and 18 million monthly unique visitors** — a platform-scale audience inside a 23-million-person country. ([en.wikipedia.org/wiki/Dcard](https://en.wikipedia.org/wiki/Dcard)) <!-- source: Wikipedia via WebFetch 2026-04; not re-verified against live Dcard data. -->
-
-The design language reflects three things the product must hold simultaneously. **One**, it must stay school-coded enough that a 21-year-old in Kaohsiung or Taipei doesn't feel like they're using a corporate social network — hence Material Design's restrained medium-weight typography rather than the bold-700 display type of commerce or news apps. **Two**, it must frame user content without competing with it — hence the dark-navy chrome (`#00324e`) + light-gray content area (`#f2f2f2`) + white post cards: the product is the frame, the posts are the picture. **Three**, it must surface *identity-under-anonymity* gracefully — the same user posts anonymously but is labeled by their school and gender forum affiliation, which is why Dcard invests in gender-coded author chips (`--color-gender-female: #cb3a6b`, `--color-gender-male: #1c7fac`) as first-class design tokens where other platforms would treat gender as metadata.
-
-What Dcard refuses: the open-graph identity of Facebook (school-verified but anonymous-posting is the point), the karma-and-moderation-wars culture of Reddit (Taiwan forum culture is softer, more mutual), the full-dark aesthetic of gamer or crypto platforms (Dcard is a well-lit reading space), and the heavy illustration style of consumer super-apps (the content is the illustration).
-
-The Dcard Tech Blog publishes under the tagline **"Binding Generations. Breaking Limitations. Building with Passion."** ([medium.com/dcardlab](https://medium.com/dcardlab)), which frames the brand's own ambition for its engineering — not a user-facing slogan, but the clearest first-person statement the company makes in public.
-
-## 12. Principles
-
-1. **The product is the frame, posts are the picture.** Every surface outside a post body is deliberately subdued — muted chrome, no decorative illustration, no brand mascots in the reading flow. Dcard earns attention only where attention is required (auth, composition, notifications). *UI implication:* No illustrations on post-list screens. No brand color inside the content area. The `#f2f2f2` content bg + `#ffffff` post card is the canonical composition; any UI that breaks that contrast must justify itself.
-
-2. **Medium is the new bold.** Weight 500 is the highest weight Dcard UI uses for headlines; weight 600 is reserved for the `Title` tier (modal headers and editor labels); weight 700 is **forbidden** on product surfaces. Hierarchy is built through size, opacity, and vertical rhythm — not by making things fatter. *UI implication:* Headlines `font-weight: 500`. Never upgrade an H2 to 700 for emphasis; instead increase size from 28px → 32px or use the 85%-black text color instead of the 50%-black metadata color.
-
-3. **Identity tokens are semantic, not decorative.** `--color-gender-female` and `--color-gender-male` exist because anonymous posting in a school-anchored community needs *some* axis of identity, and gender is the axis Dcard's community inherited from its origin forums. These tokens are never to be recycled as brand accent colors. *UI implication:* Use gender colors only on author chips and gender-forum headers. A danger toast must use `--color-state-danger`, never `--color-gender-female`, even if the pinks are similar.
-
-4. **Gold is a subscription, not a highlight.** `--color-dcard-premium: #ffc51b` is reserved exclusively for subscription, paid, or verified-premium surfaces. Using it as a generic warning or "featured" accent devalues a finite economic signal. *UI implication:* Warnings use `--color-state-reminder` (`#f0a955`, orange). Featured-without-payment content uses topic lavender (`--color-bg-topic: #bf8ff0`). Premium gold appears only behind a paid wall.
-
-5. **8px is tactile.** Every Dcard button, card, chip, and input uses 8px border-radius. This single radius token does the work of communicating "soft product, safe space" across the entire UI. 4px reads as utility/enterprise; 16px reads as playful/commerce; pill-shaped reads as iOS-native. Dcard sits at 8px. *UI implication:* `border-radius: 8px` is the default. Pills are for toggles only. Sharp corners are for nothing.
-
-6. **Shadows are for floating, not for separating.** Post cards in the feed sit flat — the `#f2f2f2` content bg separates them from the `#ffffff` card surface via contrast. Shadows are reserved for UI that genuinely floats above the surface (dropdowns, modals, toasts). *UI implication:* No default shadow on feed cards. Use `--shadow-level-2` only for dropdowns and elevated cards. `--shadow-level-5` only for full-screen dialogs.
-
-7. **Traditional Chinese first, English second.** The font stack starts with Roboto (Latin/numerals) and layers on `PingFang TC`, `黑體-繁`, `Heiti TC`, `微軟正黑體`. Simplified Chinese characters are never acceptable on TW surfaces — the distinction is culturally load-bearing, not cosmetic. *UI implication:* Every `font-family` declaration includes the TC fallback stack. String tables use `網路` not `网络`, `影片` not `视频`, `資料` not `数据`. Hardcoded `font-family: sans-serif` is a bug.
-
-8. **Anonymity requires generous metadata.** The author is anonymous, but the context isn't. Every post surfaces school name + forum + timestamp + gender chip (if the forum warrants it). That metadata cluster is why a Dcard feed feels informative rather than chaotic — you know *where* and *when* without knowing *who*. *UI implication:* Every post-card component must render the school-forum-time triplet with consistent typography (12px weight 500 `--color-text-secondary`). Never hide it for density; never elaborate it with icons.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by publicly described Dcard user segments (Taiwanese college students and recent graduates, 2022 figure of 6M+ members reported by Wikipedia), not individual people.*
-
-**宥廷 (You-Ting), 20, Taipei.** Second-year university student. Opens Dcard late at night on her phone — after class, before sleep — and reads the `女孩` and `感情` forums for an hour without posting. Comments anonymously maybe once a week, posts original content twice a semester. Treats Dcard as a quieter alternative to Threads or IG comments. Will not install another forum app — Dcard is the forum app.
-
-**Kytu, 24, Hsinchu.** Recent engineering grad, first tech job at a semiconductor firm. Uses Dcard primarily on the `工作` and `科技業` forums for salary-transparency threads and interview-prep AMAs. Posts about work experiences under a throwaway-feel chip (still anonymous, but wants the school-verified credibility tag). Would never tag himself identifiably. Reads the Dcard Tech Blog on Medium for engineering posts and recognizes Kytu Lin's byline.
-
-**小柔 (Xiao-Rou), 22, Taichung.** Third-year undergrad, active in the `美妝` and `購物` forums. Cross-references Dcard threads before any skincare purchase — treats the forum as peer-verified product reviews. Clicks into `Good Choice` when a thread recommends a product that's listed. Strong preference for Traditional Chinese interface; if a brand website is Simplified-Chinese-only she won't buy.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (new forum subscribed)** | Single paragraph of `--color-text-secondary` (`#00000080`) body text explaining what the forum covers + one CTA button in `--color-dcard-primary` bg to compose the first post. No illustration. Example pattern: `還沒有文章 · 成為第一個發文的人`. |
-| **Empty (search no results)** | Single line of `--color-text-secondary` 14px caption — `找不到符合的文章`. No suggested searches, no autocomplete spam. The user refines the query themselves. |
-| **Loading (feed first paint)** | Shimmer skeleton using `--color-bg-shimmer-bg` (`#f2f2f2`) → `--color-bg-shimmer-fg` (`#fafafa`) linear gradient. Card-shaped blocks matching final layout. Duration: `--animations-medium-duration` (300ms) shimmer cycle. |
-| **Loading (infinite scroll)** | Centered spinner at bottom of feed, 24px, `--color-dcard-primary` stroke. No full-screen block; existing cards remain interactive. |
-| **Error (inline form field)** | 1px border replaced with `--color-state-danger` (`#ea5c5c`), error caption below in `--color-state-danger` 12px weight 500. One actionable sentence. |
-| **Error (toast)** | Snackbar: bg `--color-bg-snackbar` (`#2c2c2c`), white 14px weight 400 text, 3s auto-dismiss. Bottom of screen with 20px safe-area inset. No icon, no illustration. |
-| **Error (post deleted)** | Full card replaced with single line `這篇文章已被刪除` in `--color-text-secondary` 14px, centered. Card chrome (radius, padding) preserved so feed rhythm is intact. |
-| **Success (post published)** | Snackbar in `--color-bg-snackbar` with white text `文章已發布` + secondary action link `查看文章` in `--color-dcard-primary`. 4s auto-dismiss. |
-| **Success (upvote/heart)** | Inline icon color transitions from `--color-icon-button` (`rgba(0,0,0,0.7)`) to `--color-state-danger` (heart) or `--color-dcard-primary` (upvote) over `--animations-short-duration` (150ms). Counter number increments without animation. |
-| **Disabled (button)** | bg `--color-bg-btn-disabled` (`#e0e0e0`), text `--color-text-secondary` (`#00000080`). No opacity reduction — the swatch change is the signal. |
-| **Skeleton (post body)** | Three shimmer lines at 100% / 90% / 70% width, 14px line height, 8px gap. `--animations-bezier` easing on the shimmer gradient. |
-| **Sign-up overlay (anonymous scroll wall)** | Full-page backdrop `--color-bg-sign-up-overlay` (`#000000b3`). Centered card, `--shadow-level-5`, 8px radius. One headline (`--typography-headline-3` weight 500), one subhead (`--typography-body-2`), two buttons: ghost `Sign in` + primary `Sign up`. Triggers after ~2 scroll lengths of anonymous browsing. |
-
-## 15. Motion & Easing
-
-Dcard's motion system is Material-Design-standard. The entire runtime design token layer ships with exactly three motion tokens — `--animations-bezier`, `--animations-short-duration`, `--animations-medium-duration` — which is the whole point: restraint.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox state, counter increments |
-| `motion-short` (`--animations-short-duration`) | 150ms | Hover, press, small reveals, icon color transitions |
-| `motion-medium` (`--animations-medium-duration`) | 300ms | Accordion expand, dropdown open, tab switch, page transitions |
-| `motion-long` | 500ms | Emphasized transitions only — sign-up overlay entrance, first-load shimmer fade-out |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` (`--animations-bezier`) | `cubic-bezier(0.4, 0, 0.2, 1)` | The default. Material Design standard. Used for 95%+ of Dcard's motion. |
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets rising, toasts entering, modals appearing |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, pops, toast departures |
-
-**Spring stance.** Spring / overshoot easing is **forbidden** on Dcard product surfaces. Rationale: Dcard is a reading platform for a community that uses it late at night, often to discuss sensitive topics (`感情`, `心情`, `工作壓力`). Kinetic overshoot on a card-flip or button-press contradicts the platform's emotional register. The community's culture is *quiet*; the motion design matches. The only place where Dcard's original card-match origin might have licensed overshoot — the midnight match reveal — sits inside a specific ritual surface, not the general UI; treat it as a legacy product moment, not a reusable motion token.
-
-**Signature motions.**
-
-1. **Feed card tap.** On press, card background transitions from `#ffffff` to a very subtle `--color-bg-base-3` tint over `motion-short / ease-standard`. No scale, no shadow pulse. The user's finger is the feedback, not the animation.
-
-2. **Sign-up overlay entrance.** The backdrop fades from `rgba(0,0,0,0)` to `--color-bg-sign-up-overlay` (`#000000b3`) over `motion-long / ease-enter` while the centered card slides from `y+20px` to its final position over `motion-medium / ease-enter`. Coordinated, not simultaneous — the backdrop lands first.
-
-3. **Infinite-scroll reveal.** Newly-loaded cards fade in with `opacity 0 → 1` over `motion-medium / ease-standard`. No slide — the feed is already scrolled, cards just materialize in place. A slide-in would read as "new content arrived" (social-feed paradigm); Dcard treats it as "your next page of reading" (forum paradigm).
-
-4. **Sidebar forum-switch.** Selected forum item's left-indicator bar (2px) animates its height from collapsed to full over `motion-short / ease-standard`; the old selection's indicator collapses over the same duration. No color fade on the text — the indicator does the work.
-
-**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Shimmer skeletons become static `#f2f2f2` blocks. Card fade-ins become immediate opacity-1. Sign-up overlay appears without coordinated entrance — just present. No exceptions.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-Augmented: 2026-04-20
-
-⚠️ SOURCING CAVEAT: Dcard publishes almost no public brand-philosophy
-documentation. The company is a college-community forum platform, not a
-design-forward brand. Most of the Philosophy layer above is INFERRED from
-three sources:
-
-1. The base DESIGN.md §1–9 (UI patterns extracted from `:root` CSS variables
-   via Playwright MCP runtime recon on 2026-04-17). This is the most
-   authoritative source for what the product actually does; it is NOT the
-   same as the company's self-stated philosophy.
-
-2. Wikipedia's Dcard entry (https://en.wikipedia.org/wiki/Dcard), fetched
-   2026-04-20. Used for founding year (2011-12-16), founding location
-   (National Taiwan University, NOT NCCU as a common misconception),
-   founder name (Kytu Lin / 林裕欽), the "D = Destiny" name origin, and
-   the 6M members / 18M monthly UV figure from November 2022. None of these
-   have been re-verified against primary Dcard sources.
-
-3. The Dcard Tech Blog (https://medium.com/dcardlab), fetched 2026-04-20.
-   Confirms the tagline "Binding Generations. Breaking Limitations. Building
-   with Passion." as Dcard's clearest first-person public brand statement.
-   The blog lists Kytu Lin as one of four editors, confirming he remains
-   publicly associated with the engineering org.
-
-Direct verification of live Dcard microcopy was NOT possible:
-WebFetch against dcard.tw / about.dcard.tw / dcard.tw/service/about all
-returned HTTP 403 (Cloudflare bot challenge, consistent with the base
-recon's note that only Playwright MCP successfully passes the challenge).
-Re-running this augmentation with Playwright MCP would allow direct voice
-sample verification; that was out of scope for this pass.
-
-Voice samples in §10:
-- `下載 App`, `登入`, `註冊` — verified via base DESIGN.md §4 header recon
-  (Playwright, 2026-04-17).
-- `Binding Generations. Breaking Limitations. Building with Passion.` —
-  cited from medium.com/dcardlab masthead, fetched 2026-04-20.
-- `還沒有文章`, `這篇文章已被刪除`, `搜尋 Dcard` — ILLUSTRATIVE only.
-  These follow Traditional-Chinese UI conventions observed in the base
-  recon's component catalog, but were not confirmed as live Dcard strings.
-  Do not present these to the brand owner as verbatim Dcard copy.
-
-Interpretive claims (editorial readings, not documented Dcard statements):
-- "The D in Dcard stands for Destiny" is from Wikipedia and treated as fact.
-- "Taiwan forum culture is softer, more mutual" (§11 what-Dcard-refuses
-  section) is an editorial reading of the product's tone, not a sourced
-  Dcard statement.
-- All §12 Principles are derived from observable UI patterns (8px radius,
-  weight-500 defaults, gender color tokens, shadow-reserved-for-floating);
-  they are not quotations from a Dcard design-principles document, which
-  does not publicly exist.
-- §13 Personas are fictional archetypes. Any resemblance to specific
-  Dcard users is unintended.
-
-NCCU vs NTU note: the augmentation brief suggested NCCU (National Chengchi
-University) as the founding site, but Wikipedia attributes the founding to
-National Taiwan University (NTU). This narrative uses NTU per Wikipedia; if
-a more authoritative source (Dcard press page, founder interview) confirms
-NCCU, §11 should be corrected.
--->
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 21 — Apple-tier)
-**Tier 1 sources:** https://dcard.tw/f (live DOM — `#3397cf` Dcard Blue 8px / 14×1 / 32px / 14px·500 Download App + Sign in CTAs); https://about.dcard.tw/ (corporate nav — same `#3397cf` accent text, 200+ token `:root` system).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders):** Wikipedia (Dcard — Kytu Lin / 林裕欽 / NTU 2011-12-16 founding / D=Destiny / 6M+ members Nov 2022); medium.com/dcardlab masthead.
-**Style ref:** `pinkoi` (TW Asian marketplace tone). **Conflicts unresolved:** none. NCCU/NTU founding origin remains a noted editorial-only research gap (NTU per Wikipedia is canonical here).
-
+- **Contrast, `button-primary`.** Text `#ffffff` on `#3397cf` measures 3.25:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `topic-chip`.** Text `#ffffff` on `#bf8ff0` measures 2.50:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `sponsor-chip`.** Text `#ffffff` on `#f0b941` measures 1.79:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

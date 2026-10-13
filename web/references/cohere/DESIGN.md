@@ -1,118 +1,76 @@
 ---
-id: cohere
 name: Cohere
-country: US
-category: ai
-homepage: "https://cohere.com"
-primary_color: "#17171c"
-logo:
-  type: github
-  slug: cohere-ai
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Cohere Newsroom
-  url: "https://cohere.com/newsroom"
-  type: brand
-  description: Cohere's official newsroom and press-kit entry point.
-  og_image: "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/0750efbc3db33b1a67bc77575525b076f0137f26-1200x630.jpg?w=1200&h=630"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://cohere.com/ko", inspected: "2026-07-13" }
-    - { id: pricing, kind: product-pricing, url: "https://cohere.com/ko/pricing", inspected: "2026-07-13" }
-    - { id: products, kind: product-marketing, url: "https://cohere.com/ko/products", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://cohere.com/ko", captured: "2026-07-13" }
-    - { id: pricing-live, kind: product-surface, url: "https://cohere.com/ko/pricing", captured: "2026-07-13" }
-    - { id: products-live, kind: product-surface, url: "https://cohere.com/ko/products", captured: "2026-07-13" }
-    - { id: cohere-about, kind: official-doc, url: "https://cohere.com/about", captured: "2026-07-13" }
-    - { id: cohere-careers, kind: official-doc, url: "https://cohere.com/careers", captured: "2026-07-13" }
-    - { id: lineto-unica77, kind: license, url: "https://lineto.com/api/front/font-families/393/document?index=1", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &all { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.colors.canvas": *all
-    "tokens.colors.foreground": *all
-    "tokens.colors.foreground-soft": *all
-    "tokens.colors.muted": *all
-    "tokens.colors.inverse": *all
-    "tokens.colors.border": *all
-    "tokens.colors.border-dark": *all
-    "tokens.typography.family.ui": *all
-    "tokens.typography.family.display": *all
-    "tokens.typography.family.mono": *all
-    "tokens.typography.display.size": *all
-    "tokens.typography.display.weight": *all
-    "tokens.typography.display.lineHeight": *all
-    "tokens.typography.display.tracking": *all
-    "tokens.typography.display.use": *all
-    "tokens.typography.heading.size": *all
-    "tokens.typography.heading.weight": *all
-    "tokens.typography.heading.lineHeight": *all
-    "tokens.typography.heading.tracking": *all
-    "tokens.typography.heading.use": *all
-    "tokens.typography.body.size": *all
-    "tokens.typography.body.weight": *all
-    "tokens.typography.body.lineHeight": *all
-    "tokens.typography.body.use": *all
-    "tokens.typography.label.size": *all
-    "tokens.typography.label.weight": *all
-    "tokens.typography.label.lineHeight": *all
-    "tokens.typography.label.tracking": *all
-    "tokens.typography.label.use": *all
-    "tokens.spacing.xs": *all
-    "tokens.spacing.sm": *all
-    "tokens.spacing.md": *all
-    "tokens.spacing.lg": *all
-    "tokens.spacing.xl": *all
-    "tokens.spacing.xxl": *all
-    "tokens.spacing.xxxl": *all
-    "tokens.rounded.control": *all
-    "tokens.rounded.dialog": *all
-    "tokens.rounded.media": *all
-    "tokens.rounded.pill": *all
-    "tokens.components.pricing-tab.type": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
-    "tokens.components.pricing-tab.fg": *pricing
-    "tokens.components.pricing-tab.radius": *pricing
-    "tokens.components.pricing-tab.padding": *pricing
-    "tokens.components.pricing-tab.font": *pricing
-    "tokens.components.pricing-tab.states": *pricing
-    "tokens.components.pricing-tab.use": *pricing
-    "tokens.components.marketing-media-card.type": *all
-    "tokens.components.marketing-media-card.radius": *all
-    "tokens.components.marketing-media-card.use": *all
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Only selector-backed observations from Cohere's public Korean marketing, pricing, and products routes are tokens. The capture contains no documentation chrome or authenticated product UI; declared-only font assets remain outside typography tokens."
-  colors:
-    primary: "#17171c"
-    canvas: "#ffffff"
-    foreground: "#000000"
-    foreground-soft: "#212121"
-    muted: "#75758a"
-    inverse: "#fafafa"
-    border: "#e5e7eb"
-    border-dark: "#525260"
-  typography:
-    family: { ui: "Unica77 Cohere Web", display: "CohereText", mono: "CohereMono" }
-    display: { size: 72, weight: 400, lineHeight: 1, tracking: -1.44, use: "Observed public h1 on the supplied routes" }
-    heading: { size: 48, weight: 400, lineHeight: 1.2, tracking: -0.48, use: "Observed public h3 on the supplied routes" }
-    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Repeated public navigation, body, and action text" }
-    label: { size: 14, weight: 400, lineHeight: 1.4, tracking: 0.28, use: "Observed CohereMono label text" }
-  spacing: { xs: 6, sm: 8, md: 12, lg: 16, xl: 24, xxl: 36, xxxl: 40 }
-  rounded: { control: 4, dialog: 8, media: 22, pill: 9999 }
-  components:
-    pricing-tab: { type: tab, fg: "#212121", radius: 0, padding: "4px 0px", font: "16px/400 Unica77 Cohere Web", states: "selected only", use: "Observed selected public pricing tab" }
-    marketing-media-card: { type: card, radius: 22, use: "Observed home marketing-card container; no fill, border, or state is promoted" }
-  components_harvested: true
+colors:
+  primary: '#17171c'
+  canvas: '#ffffff'
+  foreground: '#000000'
+  foreground-soft: '#212121'
+  muted: '#75758a'
+  inverse: '#fafafa'
+  border: '#e5e7eb'
+  border-dark: '#525260'
+typography:
+  display:
+    fontSize: 72px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: '-1.44px'
+    use: Observed public h1 on the supplied routes
+  heading:
+    fontSize: 48px
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: '-0.48px'
+    use: Observed public h3 on the supplied routes
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Repeated public navigation, body, and action text
+  label:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: 0.28px
+    use: Observed CohereMono label text
+rounded:
+  control: 4px
+  dialog: 8px
+  media: 22px
+  pill: 9999px
+spacing:
+  xs: 6
+  sm: 8
+  md: 12
+  lg: 16
+  xl: 24
+  xxl: 36
+  xxxl: 40
+components:
+  pricing-tab:
+    type: tab
+    textColor: '#212121'
+    rounded: 0px
+    padding: 4px 0px
+    typography: 16px/400 Unica77 Cohere Web
+    states: selected only
+    use: Observed selected public pricing tab
+  marketing-media-card:
+    type: card
+    rounded: 22px
+    use: Observed home marketing-card container; no fill, border, or state is promoted
+fonts:
+  roles:
+    ui: Unica77 Cohere Web
+    display: CohereText
+    mono: CohereMono
 ---
 
 # Design System Inspiration of Cohere
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Cohere is an enterprise AI company that builds foundation models and end-to-end AI products for business use. Its official About page frames the work around improving human wellbeing by helping organizations scale innovation, productivity, and progress; its 2025 North launch extends that proposition into an agentic workplace product grounded in enterprise data. On the three supplied public Korean routes, that business-first posture appears as a quiet, high-contrast interface: white canvases, black and charcoal text, occasional inverse panels, and rounded pill actions. The capture records CohereText only for a small display tier, while the loaded Unica77 Cohere Web family carries the repeated navigation, body, card, input, tab, and action rhythm. The result is restrained rather than decorative: large editorial headlines introduce practical enterprise product and pricing content.
 
@@ -126,14 +84,31 @@ This is a public-surface reference, not a claim about signed-in product UI or do
 - A 22px rounded home marketing-card container, without a claim of a universal card recipe.
 - No hover, pressed, focus, menu, dialog, toast, or error state token: the capture recorded no interactions.
 
-## Primary tasks
+### Primary tasks
 
 - Find out what Cohere's enterprise AI products do
 - Read the public product and pricing pages before committing
 - Check how Cohere deploys privately inside a company's own infrastructure
 - Learn what North does with a company's enterprise data
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Cohere says it was founded in Toronto in 2019 to scale intelligence in service of humanity. Its official About page identifies co-founders Aidan Gomez, Nick Frosst, and Ivan Zhang, and describes a current enterprise focus on helping teams improve judgment, accelerate execution, and extend what they can achieve. The same source places the 2025 launch of North in that evolution: a turnkey workplace platform using agentic capabilities and retrieval with enterprise data.
+
+The company’s current public positioning centers on private, secure, customizable deployment across a customer’s infrastructure. That narrative explains the sober public presentation more reliably than the older snapshot’s unsupported claims about an all-purpose visual color story.
+
+### Principles
+
+1. **Scale intelligence to serve people.** *UI implication:* connect public product messaging to human and organizational outcomes rather than novelty alone.
+2. **Keep control with the enterprise.** *UI implication:* make security, deployment, and customization legible in public information architecture.
+3. **Support momentum.** *UI implication:* make a next action visible without relying on unobserved interaction effects.
+4. **Make room for autonomy and openness.** *UI implication:* prefer direct explanatory content and clear choice boundaries over opaque system behavior.
+
+### Personas
+
+The official public sources identify enterprises, teams, workforces, and customers as the intended stakeholder groups, including organizations that need secure, private, and customizable AI deployment. They do not provide validated individual user personas. This reference intentionally does not fabricate named personas or behavioral metrics from that broad audience evidence.
+
+## Colors
 
 ### Observed public-route values
 
@@ -150,7 +125,7 @@ This is a public-surface reference, not a claim about signed-in product UI or do
 
 The artifact does not provide a selector-backed blue, purple, green, gradient, focus-ring, or error-color role for these routes. Those older claims are omitted rather than generalized from class names, asset names, or an adjacent surface.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -174,7 +149,32 @@ The artifact does not provide a selector-backed blue, purple, green, gradient, f
 | Secondary body | Unica77 Cohere Web | 14px | 400 | 19.6px | repeated public body text |
 | Technical label | CohereMono | 14px | 400 | 19.6px | 0.28px tracking on observed label text |
 
-## 4. Component Stylings
+## Layout
+
+The capture shows 6px, 8px, 12px, 16px, 24px, 36px, and 40px spacing values. These are observed clusters rather than a documented Cohere spacing specification. Public actions use 12px vertical padding; the captured navigation has 16px vertical and 40px horizontal padding at the 1440px viewport. Treat route-specific card and section geometry as local until a selector-backed measurement establishes it.
+
+The home media-card container is 22px rounded, while a captured route-local dialog is 8px and compact controls can be 4px. Do not flatten that into a claim that every Cohere card, image, dialog, or form uses one radius.
+
+### Responsive Behavior
+
+The supplied capture is at 1440x900. It establishes desktop computed values only. The navigation class indicates responsive padding rules and the home media card includes responsive dimensions, but no smaller-viewport render or interaction was supplied; mobile breakpoints, collapsed navigation, and touch behavior therefore remain unclaimed.
+
+## Elevation & Depth
+
+Most observed public controls are shadow-free. The capture also records a route-local floating control and dialog with a 0px 2px 8px rgba(0, 0, 0, 0.15) shadow. It is route-local chrome, not a general Cohere elevation token.
+
+## Motion & Easing
+
+The supplied public capture contains transition-related class names on actions and a floating control, but no measured transition duration, easing value, reduced-motion behavior, or before/after interaction observation. No motion token is asserted.
+
+---
+
+**Verified:** 2026-07-13
+**Tier 1 sources:** supplied capture of https://cohere.com/ko, https://cohere.com/ko/pricing, and https://cohere.com/ko/products; official context at https://cohere.com/about and https://cohere.com/careers; Unica77 source/license context at https://lineto.com/api/front/font-families/393/document?index=1 and https://lineto.com/information/legal/legal/lineto-eula.
+**Tier 2 sources:** https://getdesign.md/cohere/design-md (independent high-level analysis); https://styles.refero.design/?q=Cohere (attempted; built-in web open returned an internal error, so no positive or negative Refero assertion is made).
+**Conflicts unresolved:** none
+
+## Components
 
 ### Public actions
 
@@ -220,17 +220,11 @@ The artifact does not provide a selector-backed blue, purple, green, gradient, f
 
 The supplied capture records no component hover, pressed, focus, expanded, dialog-open, toast, validation, or generic disabled treatment. A disabled 4px icon control is a route-local observation and is not promoted as an action variant.
 
-## 5. Layout Principles
+### States
 
-The capture shows 6px, 8px, 12px, 16px, 24px, 36px, and 40px spacing values. These are observed clusters rather than a documented Cohere spacing specification. Public actions use 12px vertical padding; the captured navigation has 16px vertical and 40px horizontal padding at the 1440px viewport. Treat route-specific card and section geometry as local until a selector-backed measurement establishes it.
+No loading, empty, error, success, skeleton, or validation state was captured on the three supplied public routes. The only recorded stateful component evidence is a selected pricing tab and one disabled 4px-radius icon control. Do not extrapolate those observations into a general application-state system.
 
-The home media-card container is 22px rounded, while a captured route-local dialog is 8px and compact controls can be 4px. Do not flatten that into a claim that every Cohere card, image, dialog, or form uses one radius.
-
-## 6. Depth & Elevation
-
-Most observed public controls are shadow-free. The capture also records a route-local floating control and dialog with a 0px 2px 8px rgba(0, 0, 0, 0.15) shadow. It is route-local chrome, not a general Cohere elevation token.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -246,18 +240,7 @@ Most observed public controls are shadow-free. The capture also records a route-
 - Do not invent hover, pressed, focus, error, dialog, toast, or accordion-expanded variants from class names.
 - Do not generalize the floating dialog’s 8px/shadow treatment into product cards or primary actions.
 
-## 8. Responsive Behavior
-
-The supplied capture is at 1440x900. It establishes desktop computed values only. The navigation class indicates responsive padding rules and the home media card includes responsive dimensions, but no smaller-viewport render or interaction was supplied; mobile breakpoints, collapsed navigation, and touch behavior therefore remain unclaimed.
-
-## 9. Agent Prompt Guide
-
-- Build a public marketing CTA with #17171c background, #ffffff text, 9999px radius, 12px 24px padding, and 16px / 400 Unica77 Cohere Web only when the licensed font is available.
-- Build the inverse counterpart only for a dark public section: #ffffff background, #17171c text, and the same observed pill geometry.
-- Use CohereText 72px / 400 / 72px for an observed public h1 treatment, not as a claim about the authenticated product.
-- Keep a pricing tab route-local: #212121 text, 0px radius, 4px vertical padding; selected is the only captured state.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Cohere’s official public voice is practical, enterprise-oriented, and human-purposeful. The About page describes foundation models and AI solutions that turn everyday effort into impact, while the public homepage leads with control over data and infrastructure. Careers names Momentum, Openness, and Autonomy as company values. These are official messaging and culture evidence, not a claim about every product microcopy string.
 
@@ -273,34 +256,9 @@ Cohere’s official public voice is practical, enterprise-oriented, and human-pu
 - “Where enterprise AI meets real-world purpose” (official About page).
 - “Join the mission to scale intelligence” (official Careers page).
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Cohere says it was founded in Toronto in 2019 to scale intelligence in service of humanity. Its official About page identifies co-founders Aidan Gomez, Nick Frosst, and Ivan Zhang, and describes a current enterprise focus on helping teams improve judgment, accelerate execution, and extend what they can achieve. The same source places the 2025 launch of North in that evolution: a turnkey workplace platform using agentic capabilities and retrieval with enterprise data.
-
-The company’s current public positioning centers on private, secure, customizable deployment across a customer’s infrastructure. That narrative explains the sober public presentation more reliably than the older snapshot’s unsupported claims about an all-purpose visual color story.
-
-## 12. Principles
-
-1. **Scale intelligence to serve people.** *UI implication:* connect public product messaging to human and organizational outcomes rather than novelty alone.
-2. **Keep control with the enterprise.** *UI implication:* make security, deployment, and customization legible in public information architecture.
-3. **Support momentum.** *UI implication:* make a next action visible without relying on unobserved interaction effects.
-4. **Make room for autonomy and openness.** *UI implication:* prefer direct explanatory content and clear choice boundaries over opaque system behavior.
-
-## 13. Personas
-
-The official public sources identify enterprises, teams, workforces, and customers as the intended stakeholder groups, including organizations that need secure, private, and customizable AI deployment. They do not provide validated individual user personas. This reference intentionally does not fabricate named personas or behavioral metrics from that broad audience evidence.
-
-## 14. States
-
-No loading, empty, error, success, skeleton, or validation state was captured on the three supplied public routes. The only recorded stateful component evidence is a selected pricing tab and one disabled 4px-radius icon control. Do not extrapolate those observations into a general application-state system.
-
-## 15. Motion & Easing
-
-The supplied public capture contains transition-related class names on actions and a floating control, but no measured transition duration, easing value, reduced-motion behavior, or before/after interaction observation. No motion token is asserted.
-
----
-
-**Verified:** 2026-07-13
-**Tier 1 sources:** supplied capture of https://cohere.com/ko, https://cohere.com/ko/pricing, and https://cohere.com/ko/products; official context at https://cohere.com/about and https://cohere.com/careers; Unica77 source/license context at https://lineto.com/api/front/font-families/393/document?index=1 and https://lineto.com/information/legal/legal/lineto-eula.
-**Tier 2 sources:** https://getdesign.md/cohere/design-md (independent high-level analysis); https://styles.refero.design/?q=Cohere (attempted; built-in web open returned an internal error, so no positive or negative Refero assertion is made).
-**Conflicts unresolved:** none
+- Build a public marketing CTA with #17171c background, #ffffff text, 9999px radius, 12px 24px padding, and 16px / 400 Unica77 Cohere Web only when the licensed font is available.
+- Build the inverse counterpart only for a dark public section: #ffffff background, #17171c text, and the same observed pill geometry.
+- Use CohereText 72px / 400 / 72px for an observed public h1 treatment, not as a claim about the authenticated product.
+- Keep a pricing tab route-local: #212121 text, 0px radius, 4px vertical padding; selected is the only captured state.

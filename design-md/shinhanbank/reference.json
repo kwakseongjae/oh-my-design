@@ -1,0 +1,1258 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "shinhanbank",
+    "name": "Shinhan Bank",
+    "display_name_kr": "신한은행",
+    "country": "KR",
+    "category": "fintech",
+    "homepage": "https://bank.shinhan.com",
+    "primary_color": "#0046ff",
+    "logo": {
+      "type": "github",
+      "slug": "Shinhan-Bank"
+    },
+    "verified": "2026-07-13",
+    "added": "2026-06-22"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Official CI, corporate-marketing, and internet-banking observations remain separate; the packet contains no authenticated SOL banking surface or interaction snapshots.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "internet-banking",
+        "kind": "product-surface",
+        "url": "https://bank.shinhan.com/index.jsp#010800000000",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "group-corporate",
+        "kind": "corporate-marketing",
+        "url": "https://www.shinhangroup.com/kr/main",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "shinhan-public",
+        "kind": "public-marketing",
+        "url": "https://www.shinhan.com/index.jsp",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "group-ci",
+        "kind": "brand-guideline",
+        "url": "https://shinhangroup.com/kr/about/identity/ci",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "group-typeface",
+        "kind": "brand-asset",
+        "url": "https://shinhangroup.com/kr/about/identity/typeface",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "banking-live",
+        "kind": "product-surface",
+        "url": "https://bank.shinhan.com/index.jsp#010800000000",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "group-live",
+        "kind": "product-surface",
+        "url": "https://www.shinhangroup.com/kr/main",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "shinhan-live",
+        "kind": "product-surface",
+        "url": "https://www.shinhan.com/index.jsp",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-ci",
+        "kind": "brand-asset",
+        "url": "https://shinhangroup.com/kr/about/identity/ci",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-typeface",
+        "kind": "brand-asset",
+        "url": "https://shinhangroup.com/kr/about/identity/typeface",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-history",
+        "kind": "official-doc",
+        "url": "https://shinhangroup.com/kr/about/group/history1",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-mission",
+        "kind": "official-doc",
+        "url": "https://shinhangroup.com/kr/about/group/mission",
+        "captured": "2026-07-13"
+      }
+    ],
+    "claims": {
+      "colors.brand-primary": {
+        "surface_id": "group-ci",
+        "source_id": "official-ci",
+        "method": "official-brand-guideline",
+        "captured": "2026-07-13"
+      },
+      "colors.group-live-blue": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.group-ink": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.group-surface": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-dark": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.banking-text": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.banking": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.banking-body.fontSize": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.banking-body.fontWeight": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.banking-body.lineHeight": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.banking-body.letterSpacing": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.banking-body.use": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.group": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.group-action.fontSize": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.group-action.fontWeight": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.group-action.lineHeight": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.group-action.letterSpacing": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.group-action.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.brand": {
+        "surface_id": "group-typeface",
+        "source_id": "official-typeface",
+        "method": "computed-style-and-official-brand-asset",
+        "captured": "2026-07-13"
+      },
+      "typography.brand-hero.fontSize": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.brand-hero.fontWeight": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:typography.brand-hero.lineHeight": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.brand-hero.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.group-action-inline": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.group-action-leading": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.group-selector-inline": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.group-action": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.group-selector": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.type": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.backgroundColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.textColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.border": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.rounded": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.padding": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.height": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.typography": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.states": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-outline-action.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"13\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.type": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.backgroundColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.textColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.border": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.rounded": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.padding": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.height": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.typography": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.states": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-download-action.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"26\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.type": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.backgroundColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.textColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.rounded": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.padding": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.height": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.typography": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.states": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.family-site-selector.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"40\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.type": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.backgroundColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.textColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.rounded": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.padding": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.height": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.typography": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.states": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-gnb-link.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"1\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.type": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.backgroundColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.textColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.rounded": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.padding": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.height": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.typography": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.states": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-header-selector.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.type": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.backgroundColor": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.rounded": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.padding": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.size": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.states": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.group-round-link.use": {
+        "surface_id": "group-corporate",
+        "source_id": "group-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.type": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.backgroundColor": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.textColor": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.height": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.typography": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.states": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-text-link.use": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.type": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.backgroundColor": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.textColor": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.padding": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.height": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.typography": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.states": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-more-link.use": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"29\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.type": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.backgroundColor": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.rounded": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.padding": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.size": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.states": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-page-top.use": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"55\"]",
+        "captured": "2026-07-13"
+      },
+      "components.banking-menu-cell.type": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::#wq_uuid_1101",
+        "captured": "2026-07-13"
+      },
+      "components.banking-menu-cell.backgroundColor": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::#wq_uuid_1101",
+        "captured": "2026-07-13"
+      },
+      "components.banking-menu-cell.border": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::#wq_uuid_1101",
+        "captured": "2026-07-13"
+      },
+      "components.banking-menu-cell.size": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::#wq_uuid_1101",
+        "captured": "2026-07-13"
+      },
+      "components.banking-menu-cell.states": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::#wq_uuid_1101",
+        "captured": "2026-07-13"
+      },
+      "components.banking-menu-cell.use": {
+        "surface_id": "internet-banking",
+        "source_id": "banking-live",
+        "method": "computed-style",
+        "selector": "home::#wq_uuid_1101",
+        "captured": "2026-07-13"
+      },
+      "components.recommendation-card.type": {
+        "surface_id": "shinhan-public",
+        "source_id": "shinhan-live",
+        "method": "computed-style",
+        "selector": "surface-3::#grp_prod1",
+        "captured": "2026-07-13"
+      },
+      "components.recommendation-card.backgroundColor": {
+        "surface_id": "shinhan-public",
+        "source_id": "shinhan-live",
+        "method": "computed-style",
+        "selector": "surface-3::#grp_prod1",
+        "captured": "2026-07-13"
+      },
+      "components.recommendation-card.padding": {
+        "surface_id": "shinhan-public",
+        "source_id": "shinhan-live",
+        "method": "computed-style",
+        "selector": "surface-3::#grp_prod1",
+        "captured": "2026-07-13"
+      },
+      "components.recommendation-card.size": {
+        "surface_id": "shinhan-public",
+        "source_id": "shinhan-live",
+        "method": "computed-style",
+        "selector": "surface-3::#grp_prod1",
+        "captured": "2026-07-13"
+      },
+      "components.recommendation-card.states": {
+        "surface_id": "shinhan-public",
+        "source_id": "shinhan-live",
+        "method": "computed-style",
+        "selector": "surface-3::#grp_prod1",
+        "captured": "2026-07-13"
+      },
+      "components.recommendation-card.use": {
+        "surface_id": "shinhan-public",
+        "source_id": "shinhan-live",
+        "method": "computed-style",
+        "selector": "surface-3::#grp_prod1",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 50,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 36,
+      "missing-primary": 1,
+      "contrast-ratio": 3,
+      "orphaned-tokens": 7
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.banking-body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.group-action.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.brand-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-outline-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-outline-action.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-outline-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-outline-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-download-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-download-action.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-download-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-download-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.family-site-selector.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.family-site-selector.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.family-site-selector.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-gnb-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-gnb-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-gnb-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-header-selector.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-header-selector.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-header-selector.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-round-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-round-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.group-round-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-text-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-text-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-text-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-more-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-more-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-more-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-page-top.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-page-top.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-page-top.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-menu-cell.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-menu-cell.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-menu-cell.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.banking-menu-cell.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.recommendation-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.recommendation-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.recommendation-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.group-download-action",
+        "message": "textColor (#ffffff) on backgroundColor (#ffffff33) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.banking-text-link",
+        "message": "textColor (#2d71c4) on backgroundColor (#00000000) has contrast ratio 4.27:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.banking-more-link",
+        "message": "textColor (#666666) on backgroundColor (#00000000) has contrast ratio 3.66:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.brand-primary",
+        "message": "'brand-primary' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.group-live-blue",
+        "message": "'group-live-blue' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.group-ink",
+        "message": "'group-ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.group-surface",
+        "message": "'group-surface' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.on-dark",
+        "message": "'on-dark' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.banking-text",
+        "message": "'banking-text' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "b8a5e38afc84e3257be91cb03b2bd9d16f1f4febfd373fb267552e5b67ca63d1",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "typography.brand-hero.lineHeight",
+        "value": "normal"
+      }
+    ],
+    "numeric": [
+      "typography.banking-body.fontSize",
+      "typography.group-action.fontSize",
+      "typography.brand-hero.fontSize",
+      "rounded.group-action",
+      "rounded.group-selector"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "banking-body",
+        "group-action",
+        "brand-hero"
+      ],
+      "tokens.typography.brand-hero": [
+        "size",
+        "weight",
+        "lineHeight",
+        "use"
+      ]
+    }
+  }
+}

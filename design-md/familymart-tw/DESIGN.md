@@ -1,89 +1,52 @@
 ---
-id: familymart-tw
 name: 全家便利商店
-country: TW
-category: ecommerce
-homepage: "https://www.family.com.tw/Marketing/"
-primary_color: "#00b347"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=family.com.tw&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-14"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.family.com.tw/Marketing/ko", inspected: "2026-07-13" }
-    - { id: convenience, kind: product-information, url: "https://www.family.com.tw/Marketing/zh/Convenience", inspected: "2026-07-13" }
-    - { id: map, kind: store-service, url: "https://www.family.com.tw/Marketing/zh/Map", inspected: "2026-07-13" }
-  sources:
-    - { id: familymart-home-live, kind: product-surface, url: "https://www.family.com.tw/Marketing/ko", captured: "2026-07-13" }
-    - { id: familymart-convenience-live, kind: product-surface, url: "https://www.family.com.tw/Marketing/zh/Convenience", captured: "2026-07-13" }
-    - { id: familymart-map-live, kind: product-surface, url: "https://www.family.com.tw/Marketing/zh/Map", captured: "2026-07-13" }
-    - { id: familymart-company-info, kind: official-doc, url: "https://www.family.com.tw/web_enterprise/page/information.aspx", captured: "2026-07-14" }
-    - { id: familymart-vision, kind: official-doc, url: "https://www.family.com.tw/web_enterprise/page/business.aspx", captured: "2026-07-14" }
-    - { id: familymart-franchise, kind: official-doc, url: "https://www.family.com.tw/Web_Franchise/page/advantage.aspx", captured: "2026-07-14" }
-  conflicts: []
-  claims:
-    "tokens.colors.brand-green": &live { surface_id: home, source_id: familymart-home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.canvas": *live
-    "tokens.colors.ink": *live
-    "tokens.colors.navigation": *live
-    "tokens.colors.utility-surface": *live
-    "tokens.colors.card-title": *live
-    "tokens.typography.body.size": *live
-    "tokens.typography.body.weight": *live
-    "tokens.typography.body.lineHeight": *live
-    "tokens.typography.body.use": *live
-    "tokens.typography.navigation.size": *live
-    "tokens.typography.navigation.weight": *live
-    "tokens.typography.navigation.lineHeight": *live
-    "tokens.typography.navigation.use": *live
-    "tokens.typography.card-title.size": *live
-    "tokens.typography.card-title.weight": *live
-    "tokens.typography.card-title.lineHeight": *live
-    "tokens.typography.card-title.use": *live
-    "tokens.spacing.xs": *live
-    "tokens.spacing.sm": *live
-    "tokens.spacing.md": *live
-    "tokens.spacing.lg": *live
-    "tokens.rounded.square": *live
-    "tokens.rounded.compact": *live
-    "tokens.shadow.flat": *live
-    "tokens.components.current-section-nav-row.type": *live
-    "tokens.components.current-section-nav-row.bg": *live
-    "tokens.components.current-section-nav-row.fg": *live
-    "tokens.components.current-section-nav-row.radius": *live
-    "tokens.components.current-section-nav-row.height": *live
-    "tokens.components.current-section-nav-row.font": *live
-    "tokens.components.current-section-nav-row.use": *live
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  colors:
-    brand-green: "#00b347"
-    canvas: "#ffffff"
-    ink: "#212529"
-    navigation: "#7a7a7a"
-    utility-surface: "#f2f2f2"
-    card-title: "#68b5ac"
-  typography:
-    body: { size: 14, weight: 400, lineHeight: 1.5, use: "Observed public-route body and text navigation" }
-    navigation: { size: 14, weight: 700, lineHeight: 1.5, use: "Observed main navigation list-item label" }
-    card-title: { size: 16, weight: 700, lineHeight: 1.2, use: "Observed content-card title" }
-  spacing: { xs: 3, sm: 5, md: 10, lg: 15 }
-  rounded: { square: 0, compact: 3 }
-  shadow:
-    flat: "none"
-  components:
-    current-section-nav-row: { type: listItem, bg: "#00b347", fg: "#212529", radius: 0, height: 51, font: "14px/700", use: "Static current-section navigation row at home::li.main-menu__menu--active" }
-  components_harvested: true
+colors:
+  brand-green: '#00b347'
+  canvas: '#ffffff'
+  ink: '#212529'
+  navigation: '#7a7a7a'
+  utility-surface: '#f2f2f2'
+  card-title: '#68b5ac'
+typography:
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Observed public-route body and text navigation
+  navigation:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Observed main navigation list-item label
+  card-title:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Observed content-card title
+rounded:
+  square: 0px
+  compact: 3px
+spacing:
+  xs: 3
+  sm: 5
+  md: 10
+  lg: 15
+components:
+  current-section-nav-row:
+    type: listItem
+    backgroundColor: '#00b347'
+    textColor: '#212529'
+    rounded: 0px
+    height: 51
+    typography: 14px/700
+    use: Static current-section navigation row at home::li.main-menu__menu--active
 ---
 
 # Design System Inspiration of 全家便利商店
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Taiwan FamilyMart (全家便利商店) is a convenience-retail business that began with its first Taipei shop in 1988 and has developed a nationwide store, supply-chain, fresh-food, and digital-service network. Its own corporate history frames the current period as digital transformation: a customer-needs-led OMO platform that links physical stores with data-driven services. On the three supplied public routes, that practical “always nearby” role appears as a white, information-dense utility surface with a narrow green brand signal, dark functional text, quiet gray navigation, compact three-pixel controls, and teal content-card headings. The page does not turn green into a dominant canvas; it uses the measured `#00b347` most visibly as a small current-section marker and utility accent. That restrained treatment lets store information, service categories, and promotional imagery carry the page’s changing content while the shell remains familiar.
 
@@ -97,13 +60,41 @@ The visual record is deliberately scoped. It describes the captured public marke
 - Zero- and three-pixel corners dominate the measured public routes; no elevation token was observed.
 - The card-title accent is teal `#68b5ac`, separating content emphasis from the navigation green.
 
-## Primary tasks
+### Primary tasks
 
 - Find the nearest store using the store-map route.
 - Browse the changing convenience, food, and store offerings.
 - Check which promotions are currently running on the home page.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+FamilyMart Taiwan says it opened its first Taipei store in 1988, grew from one store into a network embedded in daily routines, and built its business with employees, franchisees, customers, suppliers, and cross-industry partners. Its official history explicitly labels 2021–2026 as a period of digital transformation. [Company information](https://www.family.com.tw/web_enterprise/page/information.aspx)
+
+The company describes its current direction as a customer-needs-led OMO, data-driven retail platform that connects stores and digital channels, with an aim of making cross-industry convenience part of everyday life. It also states an ESG direction of a fair, mutually beneficial sustainable ecosystem. These are corporate narrative facts, not UI or typography specifications. [Brand vision](https://www.family.com.tw/web_enterprise/page/business.aspx)
+
+Its franchise material presents the lasting brand idea as “全家就是你家” and describes a mix of community retail, supply-chain capability, fresh food, and varied store formats. This reference does not attribute an unverified executive quotation or translate that idea into unobserved product behavior. [Franchise advantage](https://www.family.com.tw/Web_Franchise/page/advantage.aspx)
+
+### Principles
+
+1. **Start from customer need.**
+   *UI implication:* Make the immediate store/service task legible before secondary promotion; do not claim unobserved flows.
+2. **Connect physical and digital convenience.**
+   *UI implication:* Keep route context and service wayfinding explicit; verify any OMO interaction separately.
+3. **Grow with a broad stakeholder network.**
+   *UI implication:* Distinguish customer-facing service information from partner, corporate, and franchise content rather than collapsing the domains.
+4. **Evolve with social and environmental change.**
+   *UI implication:* Treat sustainability and service evolution as content context, not as license to invent status, success, or motion patterns.
+
+### Personas
+
+These are service-context archetypes derived from FamilyMart Taiwan’s stated stakeholder and convenience-service framing; they are not research-validated personas or demographic claims.
+
+- **Nearby customer:** Needs a clear, quick route to store, product, or service information.
+- **Franchise operator:** Needs operating and support information distinct from consumer-facing marketing.
+- **Partner or supplier:** Encounters corporate and ecosystem context rather than a consumer transaction flow.
+- **Service explorer:** Uses public route navigation to understand changing convenience, food, and store offerings.
+
+## Colors
 
 ### Observed public-route palette
 
@@ -116,7 +107,7 @@ The visual record is deliberately scoped. It describes the captured public marke
 
 Other measured siblings—including `#007bff`, `#444444`, `#737373`, `#8c8c8c`, `#28a745`, and `#36ad1b`—are kept in the raw proof but omitted from tokens because their role is not resolved at a smaller boundary.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -136,7 +127,28 @@ Other measured siblings—including `#007bff`, `#444444`, `#737373`, `#8c8c8c`, 
 | Main navigation list item | 14px | 700 | 21px | `main-menu__menu` row only |
 | Content-card title | 16px | 700 | 19.2px | `card__title` only |
 
-## 4. Component Stylings
+## Layout
+
+- Use the measured 3/5/10/15px values only as a compact public-route rhythm; the packet does not establish a universal grid.
+- Keep the green accent local to an explicitly current navigation row or measured utility treatment rather than flooding the canvas.
+- Use the measured teal only for content-card-title emphasis until a wider product-surface role is observed.
+- The three routes were captured at 1440×900. Do not derive mobile columns, touch targets, carousel behavior, or breakpoints from this packet.
+
+## Elevation & Depth
+
+The supplied component and element samples report `box-shadow: none`. The reference therefore has only the flat shadow token; it does not claim that dialogs, menus, maps, or other unobserved layers are shadowless.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No duration, easing, transition, loading, carousel, or menu-motion value is established by the supplied evidence. The capture has `interactionCount: 0`; motion tokens and motion rules are therefore omitted rather than filled with a generic convenience-retail default.
+
+## Components
 
 ### List item
 
@@ -160,84 +172,7 @@ The bundle measures a compact `dropbtn-more__btn` button (`#f2f2f2` fill, `#00b3
 **Tier 2 sources:** attempted https://getdesign.md/familymart-tw; attempted https://styles.refero.design/?q=FamilyMart%20Taiwan
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
-
-- Use the measured 3/5/10/15px values only as a compact public-route rhythm; the packet does not establish a universal grid.
-- Keep the green accent local to an explicitly current navigation row or measured utility treatment rather than flooding the canvas.
-- Use the measured teal only for content-card-title emphasis until a wider product-surface role is observed.
-- The three routes were captured at 1440×900. Do not derive mobile columns, touch targets, carousel behavior, or breakpoints from this packet.
-
-## 6. Depth & Elevation
-
-The supplied component and element samples report `box-shadow: none`. The reference therefore has only the flat shadow token; it does not claim that dialogs, menus, maps, or other unobserved layers are shadowless.
-
-## 7. Do's and Don'ts
-
-### Do
-
-- Keep public information surfaces white and dense enough for store/service discovery.
-- Use dark functional text, restrained gray navigation, and the locally measured green cue in their observed roles.
-- Preserve the sharp-to-compact 0px/3px corner distinction.
-- Treat route-selected navigation as a static context marker unless interaction evidence is captured.
-
-### Don't
-
-- Do not invent a green filled CTA, hover recipe, or universal active state from this capture.
-- Do not substitute a system font for the unresolved computed family or label it a FamilyMart typeface.
-- Do not transfer corporate vision language into a component specification.
-- Do not infer authenticated purchase, account, or native-app behavior from the public routes.
-
-## 8. Accessibility Notes
-
-- Keep the observed dark-on-white informational baseline; evaluate any new green text or fill against its actual foreground/background pairing.
-- Preserve visible route context without treating a class name as proof of keyboard focus.
-- The supplied evidence contains no keyboard, screen-reader, contrast-audit, error, or responsive test. Those requirements remain unverified rather than assumed.
-
-## 9. Implementation Notes
-
-Use the machine-readable token block as the canonical source for the measured public-route values. `current-section-nav-row` is intentionally the sole component token: it is a high-confidence collector `listItem` with a named class, source surface, selector, and default geometry. The `components_harvested: true` marker records an honestly capped harvest, not a claim that every public component was observed.
-
-## 10. Voice & Tone
-
-The first-party vision frames the service around customer needs, convenience, shared growth, and a cross-industry convenience-life platform. For public service copy, that supports a practical, nearby, and action-oriented register—not a claim about an unpublished editorial style guide. [Brand vision](https://www.family.com.tw/web_enterprise/page/business.aspx)
-
-| Do | Don't |
-|---|---|
-| Name the immediate service or store task. | Replace the task with abstract technology language. |
-| Keep actions short and locally useful. | Promise unavailable real-time capability. |
-| Connect convenience to a clear next step. | Invent a branded slogan or quote. |
-
-Observed public-route voice samples: utility navigation labels, a convenience-information route, and a store-map route. Their exact strings are not tokenized or generalized as a copy system.
-
-## 11. Brand Narrative
-
-FamilyMart Taiwan says it opened its first Taipei store in 1988, grew from one store into a network embedded in daily routines, and built its business with employees, franchisees, customers, suppliers, and cross-industry partners. Its official history explicitly labels 2021–2026 as a period of digital transformation. [Company information](https://www.family.com.tw/web_enterprise/page/information.aspx)
-
-The company describes its current direction as a customer-needs-led OMO, data-driven retail platform that connects stores and digital channels, with an aim of making cross-industry convenience part of everyday life. It also states an ESG direction of a fair, mutually beneficial sustainable ecosystem. These are corporate narrative facts, not UI or typography specifications. [Brand vision](https://www.family.com.tw/web_enterprise/page/business.aspx)
-
-Its franchise material presents the lasting brand idea as “全家就是你家” and describes a mix of community retail, supply-chain capability, fresh food, and varied store formats. This reference does not attribute an unverified executive quotation or translate that idea into unobserved product behavior. [Franchise advantage](https://www.family.com.tw/Web_Franchise/page/advantage.aspx)
-
-## 12. Principles
-
-1. **Start from customer need.**
-   *UI implication:* Make the immediate store/service task legible before secondary promotion; do not claim unobserved flows.
-2. **Connect physical and digital convenience.**
-   *UI implication:* Keep route context and service wayfinding explicit; verify any OMO interaction separately.
-3. **Grow with a broad stakeholder network.**
-   *UI implication:* Distinguish customer-facing service information from partner, corporate, and franchise content rather than collapsing the domains.
-4. **Evolve with social and environmental change.**
-   *UI implication:* Treat sustainability and service evolution as content context, not as license to invent status, success, or motion patterns.
-
-## 13. Personas
-
-These are service-context archetypes derived from FamilyMart Taiwan’s stated stakeholder and convenience-service framing; they are not research-validated personas or demographic claims.
-
-- **Nearby customer:** Needs a clear, quick route to store, product, or service information.
-- **Franchise operator:** Needs operating and support information distinct from consumer-facing marketing.
-- **Partner or supplier:** Encounters corporate and ecosystem context rather than a consumer transaction flow.
-- **Service explorer:** Uses public route navigation to understand changing convenience, food, and store offerings.
-
-## 14. States
+### States
 
 The supplied evidence establishes no branded state system. The following state boundaries are retained so they are not silently replaced with generic FamilyMart-looking UI.
 
@@ -255,6 +190,42 @@ The supplied evidence establishes no branded state system. The following state b
 | Focus | Not observed | `interactionCount: 0`; omitted. |
 | Pressed | Not observed | `interactionCount: 0`; omitted. |
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-No duration, easing, transition, loading, carousel, or menu-motion value is established by the supplied evidence. The capture has `interactionCount: 0`; motion tokens and motion rules are therefore omitted rather than filled with a generic convenience-retail default.
+### Do
+
+- Keep public information surfaces white and dense enough for store/service discovery.
+- Use dark functional text, restrained gray navigation, and the locally measured green cue in their observed roles.
+- Preserve the sharp-to-compact 0px/3px corner distinction.
+- Treat route-selected navigation as a static context marker unless interaction evidence is captured.
+
+### Don't
+
+- Do not invent a green filled CTA, hover recipe, or universal active state from this capture.
+- Do not substitute a system font for the unresolved computed family or label it a FamilyMart typeface.
+- Do not transfer corporate vision language into a component specification.
+- Do not infer authenticated purchase, account, or native-app behavior from the public routes.
+
+## Voice & Tone
+
+The first-party vision frames the service around customer needs, convenience, shared growth, and a cross-industry convenience-life platform. For public service copy, that supports a practical, nearby, and action-oriented register—not a claim about an unpublished editorial style guide. [Brand vision](https://www.family.com.tw/web_enterprise/page/business.aspx)
+
+| Do | Don't |
+|---|---|
+| Name the immediate service or store task. | Replace the task with abstract technology language. |
+| Keep actions short and locally useful. | Promise unavailable real-time capability. |
+| Connect convenience to a clear next step. | Invent a branded slogan or quote. |
+
+Observed public-route voice samples: utility navigation labels, a convenience-information route, and a store-map route. Their exact strings are not tokenized or generalized as a copy system.
+
+## Governance
+
+### Accessibility Notes
+
+- Keep the observed dark-on-white informational baseline; evaluate any new green text or fill against its actual foreground/background pairing.
+- Preserve visible route context without treating a class name as proof of keyboard focus.
+- The supplied evidence contains no keyboard, screen-reader, contrast-audit, error, or responsive test. Those requirements remain unverified rather than assumed.
+
+### Implementation Notes
+
+Use the machine-readable token block as the canonical source for the measured public-route values. `current-section-nav-row` is intentionally the sole component token: it is a high-confidence collector `listItem` with a named class, source surface, selector, and default geometry. The `components_harvested: true` marker records an honestly capped harvest, not a claim that every public component was observed.

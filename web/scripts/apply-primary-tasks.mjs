@@ -24,6 +24,7 @@
  *
  *   tasks.json:  { "<id>": ["task one", "task two"], ... }
  */
+import { refuseV3Target } from "./lib/legacy-writer-guard.mjs";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -47,6 +48,7 @@ for (const [id, items] of Object.entries(tasks)) {
     skipped += 1; continue;
   }
   const raw = readFileSync(file, "utf8");
+  refuseV3Target(raw, id, "apply-primary-tasks");
   const block = `## Primary tasks\n\n${items.map((t) => `- ${String(t).trim()}`).join("\n")}\n`;
 
   let next;

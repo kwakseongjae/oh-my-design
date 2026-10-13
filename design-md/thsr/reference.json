@@ -1,0 +1,375 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "thsr",
+    "name": "Taiwan High Speed Rail",
+    "display_name_kr": "台灣高鐵",
+    "country": "TW",
+    "category": "consumer-tech",
+    "homepage": "https://www.thsrc.com.tw/",
+    "primary_color": "#ca4f0f",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=thsrc.com.tw&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Machine tokens are selector-backed observations from the supplied three-route public THSR capture. Corporate identity, mission, and declared-only fonts are retained as separate context or asset evidence; no unobserved state or fallback face is promoted.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-product-web",
+        "url": "https://www.thsrc.com.tw/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "article-46de4c5f",
+        "kind": "public-product-web",
+        "url": "https://www.thsrc.com.tw/ArticleContent/46de4c5f-7c2e-4583-bd4c-0f5d67fbb9b8",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "article-743c51ac",
+        "kind": "public-product-web",
+        "url": "https://www.thsrc.com.tw/ArticleContent/743c51ac-124d-4b1a-a57b-1fd820848032",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "product-home",
+        "kind": "product-surface",
+        "url": "https://www.thsrc.com.tw/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "product-article-46de4c5f",
+        "kind": "product-surface",
+        "url": "https://www.thsrc.com.tw/ArticleContent/46de4c5f-7c2e-4583-bd4c-0f5d67fbb9b8",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "product-article-743c51ac",
+        "kind": "product-surface",
+        "url": "https://www.thsrc.com.tw/ArticleContent/743c51ac-124d-4b1a-a57b-1fd820848032",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "corporate-identity",
+        "kind": "brand-asset",
+        "url": "https://www.thsrc.com.tw/ArticleContent/605d1cb2-2d98-4d73-9586-7e8363ee44e3",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "sustainability-mission",
+        "kind": "official-doc",
+        "url": "https://www.thsrc.com.tw/corp/9012aea2-04b9-45f4-b3a4-8bcb6782f735",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "annual-report",
+        "kind": "official-doc",
+        "url": "https://www.thsrc.com.tw/Corp/e5d9a893-ea05-4ff7-80e6-cc71c46d2fb4/assets/d3d47001-95a2-457e-aeef-22b2e1cb45cd.pdf",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.body": {
+        "surface_id": "article-743c51ac",
+        "source_id": "product-article-743c51ac",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-primary": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style-and-FontFaceSet",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "article-743c51ac",
+        "source_id": "product-article-743c51ac",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "article-743c51ac",
+        "source_id": "product-article-743c51ac",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "article-743c51ac",
+        "source_id": "product-article-743c51ac",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "article-743c51ac",
+        "source_id": "product-article-743c51ac",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontSize": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontWeight": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.lineHeight": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.use": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "spacing.control-vertical": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.control-horizontal": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.dialog-inset": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.action": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.dialog": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.none": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.type": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.textColor": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.rounded": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.padding": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.height": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.typography": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.states": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "collector-interaction-summary",
+        "captured": "2026-07-13"
+      },
+      "components.public-booking-action.use": {
+        "surface_id": "home",
+        "source_id": "product-home",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 8,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 2,
+      "extension-component-property": 3,
+      "orphaned-tokens": 3
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section-heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-booking-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-booking-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-booking-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "5c8a997148d4656884d116c45cf987de464af8f8ad18b2219be49c0100d6667d",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.none",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.section-heading.fontSize",
+      "rounded.square",
+      "rounded.action",
+      "rounded.dialog"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "section-heading"
+      ]
+    }
+  }
+}

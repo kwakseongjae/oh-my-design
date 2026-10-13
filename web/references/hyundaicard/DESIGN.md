@@ -1,221 +1,200 @@
 ---
-id: "hyundaicard"
-name: "Hyundai Card"
-country: KR
-category: fintech
-homepage: "https://www.hyundaicard.com"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://newsroom.hyundaicard.com/images/favicon.ico"
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Hyundai Card Design Library
-  url: "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en"
-  type: brand
-  description: A Hyundai Card cultural space, not a public component design-system specification.
-verification_v2:
-  schema: 2
-  checked: "2026-09-29"
-  surfaces:
-    - { id: home, kind: product, url: "https://www.hyundaicard.com/index.jsp", inspected: "2026-07-13" }
-    - { id: corporate-ceh, kind: corporate-information, url: "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc", inspected: "2026-07-13" }
-    - { id: corporate-ckh, kind: corporate-information, url: "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc", inspected: "2026-07-13" }
-  sources:
-    - { id: collector-home, kind: product-surface, url: "https://www.hyundaicard.com/index.jsp", captured: "2026-07-13" }
-    - { id: collector-ceh, kind: product-surface, url: "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc", captured: "2026-07-13" }
-    - { id: collector-ckh, kind: product-surface, url: "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc", captured: "2026-07-13" }
-    - { id: youandi-official, kind: official-doc, url: "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en", captured: "2026-07-13" }
-    - { id: hyundaicard-probe-home, kind: product-surface, url: "https://www.hyundaicard.com/index.jsp", captured: "2026-09-29" }
-    - { id: hyundaicard-probe-ceh, kind: product-surface, url: "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc", captured: "2026-09-29" }
-  claims:
-    "tokens.colors.ink": &home { surface_id: home, source_id: collector-home, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.canvas": *home
-    "tokens.colors.inverse": &corporate { surface_id: corporate-ceh, source_id: collector-ceh, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.link-product": *home
-    "tokens.colors.link-corporate": *corporate
-    "tokens.typography.family.sans": &font { surface_id: home, source_id: collector-home, method: computed-style-fontfaceset-source, captured: "2026-07-13" }
-    "tokens.typography.hero.size": *font
-    "tokens.typography.hero.weight": *font
-    "tokens.typography.hero.lineHeight": *font
-    "tokens.typography.hero.use": *font
-    "tokens.typography.corporate-hero.size": *corporate
-    "tokens.typography.corporate-hero.weight": *corporate
-    "tokens.typography.corporate-hero.lineHeight": *corporate
-    "tokens.typography.corporate-hero.use": *corporate
-    "tokens.typography.nav.size": *font
-    "tokens.typography.nav.weight": *font
-    "tokens.typography.nav.lineHeight": *font
-    "tokens.typography.nav.use": *font
-    "tokens.typography.card-title.size": *home
-    "tokens.typography.card-title.weight": *home
-    "tokens.typography.card-title.lineHeight": *home
-    "tokens.typography.card-title.use": *home
-    "tokens.spacing.nav-inline": *font
-    "tokens.spacing.corporate-action-inline": *corporate
-    "tokens.rounded.corporate-outline-action": *corporate
-    "tokens.rounded.carousel-control": *home
-    "tokens.shadow.flat": *home
-    "tokens.components.product-card-link.type": *home
-    "tokens.components.product-card-link.fg": *home
-    "tokens.components.product-card-link.font": *home
-    "tokens.components.product-card-link.use": *home
-    "tokens.components.product-card-link.bg": *home
-    "tokens.components.product-card-link.radius": *home
-    "tokens.components.product-card-link.size": *home
-    "tokens.components.product-card-link.hover": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.card_link the Red at :hover (parent li transform)", captured: "2026-09-29" }
-    "tokens.components.product-card-link.pressed": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.card_link the Red at :active", captured: "2026-09-29" }
-    "tokens.components.product-card-link.focus": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.card_link at :focus-visible, Tab stop 227", captured: "2026-09-29" }
-    "tokens.components.product-card-link.states": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.card_link the Red", captured: "2026-09-29" }
-    "tokens.components.second-level-nav-link.type": &hcNav { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.second-level-nav-link.bg": *hcNav
-    "tokens.components.second-level-nav-link.fg": *hcNav
-    "tokens.components.second-level-nav-link.radius": *hcNav
-    "tokens.components.second-level-nav-link.padding": *hcNav
-    "tokens.components.second-level-nav-link.height": *hcNav
-    "tokens.components.second-level-nav-link.font": *hcNav
-    "tokens.components.second-level-nav-link.hover": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#pcMenu02.btn_dep2 카드 at :hover", captured: "2026-09-29" }
-    "tokens.components.second-level-nav-link.pressed": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#pcMenu02.btn_dep2 카드 at :active", captured: "2026-09-29" }
-    "tokens.components.second-level-nav-link.focus": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#pcMenu02.btn_dep2 at :focus-visible, Tab stop 26", captured: "2026-09-29" }
-    "tokens.components.second-level-nav-link.states": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#pcMenu02.btn_dep2 카드", captured: "2026-09-29" }
-    "tokens.components.second-level-nav-link.use": *hcNav
-    "tokens.components.product-detail-link.type": &hcDetail { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::[data-omd-capture=\"54\"]", captured: "2026-07-13" }
-    "tokens.components.product-detail-link.bg": *hcDetail
-    "tokens.components.product-detail-link.fg": *hcDetail
-    "tokens.components.product-detail-link.radius": *hcDetail
-    "tokens.components.product-detail-link.padding": *hcDetail
-    "tokens.components.product-detail-link.height": *hcDetail
-    "tokens.components.product-detail-link.font": *hcDetail
-    "tokens.components.product-detail-link.hover": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.p1_b_1.fc_m_link 전체보기 at :hover", captured: "2026-09-29" }
-    "tokens.components.product-detail-link.pressed": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.p1_b_1.fc_m_link 전체보기 at :active", captured: "2026-09-29" }
-    "tokens.components.product-detail-link.focus": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.p1_b_1.fc_m_link at :focus-visible, Tab stop 226", captured: "2026-09-29" }
-    "tokens.components.product-detail-link.states": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a.p1_b_1.fc_m_link 전체보기", captured: "2026-09-29" }
-    "tokens.components.product-detail-link.use": *hcDetail
-    "tokens.components.search-open.type": &hcSearch { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::[data-omd-capture=\"12\"]", captured: "2026-07-13" }
-    "tokens.components.search-open.bg": *hcSearch
-    "tokens.components.search-open.fg": *hcSearch
-    "tokens.components.search-open.radius": *hcSearch
-    "tokens.components.search-open.size": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#btnSearchOpen at page top and after scroll", captured: "2026-09-29" }
-    "tokens.components.search-open.hover": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#btnSearchOpen at :hover", captured: "2026-09-29" }
-    "tokens.components.search-open.pressed": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#btnSearchOpen at :active", captured: "2026-09-29" }
-    "tokens.components.search-open.focus": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#btnSearchOpen at :focus-visible, Tab stop 160", captured: "2026-09-29" }
-    "tokens.components.search-open.states": { surface_id: home, source_id: hyundaicard-probe-home, method: live-state-probe, selector: "a#btnSearchOpen 검색 영역 열기", captured: "2026-09-29" }
-    "tokens.components.search-open.use": *hcSearch
-    "tokens.components.corporate-outline-action.type": &hcCorpOutline { surface_id: corporate-ceh, source_id: collector-ceh, method: computed-style, selector: "surface-2::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-outline-action.bg": *hcCorpOutline
-    "tokens.components.corporate-outline-action.fg": *hcCorpOutline
-    "tokens.components.corporate-outline-action.border": *hcCorpOutline
-    "tokens.components.corporate-outline-action.radius": *hcCorpOutline
-    "tokens.components.corporate-outline-action.padding": *hcCorpOutline
-    "tokens.components.corporate-outline-action.height": *hcCorpOutline
-    "tokens.components.corporate-outline-action.font": *hcCorpOutline
-    "tokens.components.corporate-outline-action.hover": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type03 Go to Company Overview at :hover (mouse-only re-run)", captured: "2026-09-29" }
-    "tokens.components.corporate-outline-action.pressed": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type03 Go to Company Overview at :active (mouse-only re-run)", captured: "2026-09-29" }
-    "tokens.components.corporate-outline-action.focus": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type03 at :focus-visible, Tab stop 12", captured: "2026-09-29" }
-    "tokens.components.corporate-outline-action.states": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type03 Go to Company Overview", captured: "2026-09-29" }
-    "tokens.components.corporate-outline-action.use": *hcCorpOutline
-    "tokens.components.corporate-text-link.type": &hcCorpLink { surface_id: corporate-ceh, source_id: collector-ceh, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-text-link.bg": *hcCorpLink
-    "tokens.components.corporate-text-link.fg": *hcCorpLink
-    "tokens.components.corporate-text-link.radius": *hcCorpLink
-    "tokens.components.corporate-text-link.padding": *hcCorpLink
-    "tokens.components.corporate-text-link.height": *hcCorpLink
-    "tokens.components.corporate-text-link.font": *hcCorpLink
-    "tokens.components.corporate-text-link.hover": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type04 Go to Recruitment Homepage at :hover", captured: "2026-09-29" }
-    "tokens.components.corporate-text-link.pressed": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type04 Go to Recruitment Homepage at :active", captured: "2026-09-29" }
-    "tokens.components.corporate-text-link.focus": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type04 at :focus-visible, Tab stop 20", captured: "2026-09-29" }
-    "tokens.components.corporate-text-link.states": { surface_id: corporate-ceh, source_id: hyundaicard-probe-ceh, method: live-state-probe, selector: "a.btn_type04 Go to Recruitment Homepage", captured: "2026-09-29" }
-    "tokens.components.corporate-text-link.use": *hcCorpLink
-    "tokens.components.utility-link.type": &hcUtil { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.utility-link.bg": *hcUtil
-    "tokens.components.utility-link.fg": *hcUtil
-    "tokens.components.utility-link.radius": *hcUtil
-    "tokens.components.utility-link.padding": *hcUtil
-    "tokens.components.utility-link.height": *hcUtil
-    "tokens.components.utility-link.font": *hcUtil
-    "tokens.components.utility-link.states": *hcUtil
-    "tokens.components.utility-link.use": *hcUtil
-    "tokens.components.corporate-menu-link.type": &hcCorpMenu { surface_id: corporate-ceh, source_id: collector-ceh, method: computed-style, selector: "surface-2::[data-omd-capture=\"7\"]", captured: "2026-07-13" }
-    "tokens.components.corporate-menu-link.bg": *hcCorpMenu
-    "tokens.components.corporate-menu-link.fg": *hcCorpMenu
-    "tokens.components.corporate-menu-link.radius": *hcCorpMenu
-    "tokens.components.corporate-menu-link.padding": *hcCorpMenu
-    "tokens.components.corporate-menu-link.height": *hcCorpMenu
-    "tokens.components.corporate-menu-link.font": *hcCorpMenu
-    "tokens.components.corporate-menu-link.states": *hcCorpMenu
-    "tokens.components.corporate-menu-link.use": *hcCorpMenu
-    "tokens.components.carousel-pause-control.type": &hcPause { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-07-13" }
-    "tokens.components.carousel-pause-control.bg": *hcPause
-    "tokens.components.carousel-pause-control.radius": *hcPause
-    "tokens.components.carousel-pause-control.size": *hcPause
-    "tokens.components.carousel-pause-control.states": *hcPause
-    "tokens.components.carousel-pause-control.use": *hcPause
-    "tokens.components.login-filled-button.type": &hcLogin { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::[data-omd-capture=\"98\"]", captured: "2026-07-13" }
-    "tokens.components.login-filled-button.bg": *hcLogin
-    "tokens.components.login-filled-button.radius": *hcLogin
-    "tokens.components.login-filled-button.padding": *hcLogin
-    "tokens.components.login-filled-button.size": *hcLogin
-    "tokens.components.login-filled-button.states": *hcLogin
-    "tokens.components.login-filled-button.use": *hcLogin
-    "tokens.components.quick-menu-box.type": &hcQuick { surface_id: home, source_id: collector-home, method: computed-style, selector: "home::article (class sec_quick_menu)", captured: "2026-07-13" }
-    "tokens.components.quick-menu-box.bg": *hcQuick
-    "tokens.components.quick-menu-box.border": *hcQuick
-    "tokens.components.quick-menu-box.radius": *hcQuick
-    "tokens.components.quick-menu-box.size": *hcQuick
-    "tokens.components.quick-menu-box.states": *hcQuick
-    "tokens.components.quick-menu-box.use": *hcQuick
-  conflicts: []
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  note: "Current product home and corporate-information surfaces are separate from DIVE, marketing, and unobserved interaction states."
-  colors:
-    ink: "#000000"
-    canvas: "#ffffff"
-    inverse: "#ffffff"
-    link-product: "#0070f0"
-    link-corporate: "#1e75d6"
-  typography:
-    family: { sans: "YouandiNewKr" }
-    hero: { size: 40, weight: 600, lineHeight: 52, use: "Product-home h2 headings" }
-    corporate-hero: { size: 54, weight: 700, lineHeight: 80, use: "Corporate-information h2 headings on the two captured routes" }
-    nav: { size: 18, weight: 500, lineHeight: 26, use: "Product-home second-level navigation links" }
-    card-title: { size: 16, weight: 500, lineHeight: 22, use: "Product-card title labels" }
-  spacing:
-    nav-inline: 20
-    corporate-action-inline: 29
-  rounded:
-    corporate-outline-action: 3
-    carousel-control: 5
-  shadow:
-    flat: "none"
-  components:
-    product-card-link: { type: card, bg: "transparent", fg: "#000000", radius: "0px", size: "146px x 160px", font: "16px / 500 / 22px platform system stack (label span.card_name; the anchor's own font is 16px / 400)", hover: "transform (parent li) translateY(-12px); the anchor itself unchanged", pressed: "transform (parent li) translateY(-12px); outline auto 2px #005fcc, offset -3px (the site's :focus rule also draws on mouse press)", focus: "outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default)", states: "default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the lineup card 'the Red' (real :hover, :active, and Tab to :focus-visible)", use: "Product-home card link; transparent, borderless default" }
-    second-level-nav-link: { type: tab, bg: "transparent", fg: "#000000", radius: "0px", padding: "0px 20px", height: "80px", font: "18px / 500 / 26px / YouandiNewKr", hover: "::before 2px #000000 bar across the link width; fg and bg unchanged; the fixed header (div#header) drops its rgba(0,0,0,0.08) 0px 2px 4px 0px shadow while the mega-menu is open", pressed: "::before 2px #000000 bar; outline auto 2px #005fcc, offset -3px (the site's :focus rule also draws on mouse press)", focus: "outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default); ::before 2px #000000 bar", states: "default captured 2026-07-13 (header links 1 to 7); hover, pressed and keyboard focus measured 2026-09-29 on 카드 (real :hover, :active, and Tab to :focus-visible)", use: "Product-home header second-level link (Account, 카드, 혜택, 금융, 컬처, 고객 지원, Apple Pay)" }
-    product-detail-link: { type: tab, bg: "transparent", fg: "#0070f0", radius: "0px", padding: "0px", height: "20px", font: "16px / 700 / platform system stack", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "outline auto 2px #005fcc, offset -3px (the site's :focus rule also draws on mouse press)", focus: "outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default)", states: "default captured 2026-07-13 (four 전체보기 links); hover, pressed and keyboard focus measured 2026-09-29 on the first", use: "Product-home 전체보기 detail link, the colors.link-product role" }
-    search-open: { type: button, bg: "transparent", fg: "rgba(0,0,0,0.48)", radius: "0px", size: "30px x 30px (24px x 24px once the header shrinks on scroll)", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "outline auto 2px #005fcc, offset -3px (the site's :focus rule also draws on mouse press)", focus: "outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default)", states: "default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29; the glyph is a background image; the search layer it opens was not opened", use: "Header search opener (검색 영역 열기); no text input exists until it opens" }
-    corporate-outline-action: { type: button, bg: "transparent", fg: "#ffffff", border: "1px rgba(255,255,255,0.6)", radius: "3px", padding: "0px 29px", height: "48px", font: "16px / 400 / 46px / platform system stack", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline auto 1px #005fcc, offset 1px (consistent with the browser default; not a brand token)", states: "default captured 2026-07-13 on the English (ceh) and Korean (ckh) corporate routes; hover, pressed and keyboard focus measured 2026-09-29 on the English route only (Go to Company Overview, in an auto-advancing hero)", use: "Corporate-information hero outline action; corporate routes only" }
-    corporate-text-link: { type: tab, bg: "transparent", fg: "#1e75d6", radius: "0px", padding: "0px", height: "16px", font: "13px / 400 / platform system stack", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline auto 1px #005fcc, offset 1px (consistent with the browser default; not a brand token)", states: "default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the English route (Go to Recruitment Homepage); a 12px arrow image follows the label", use: "Corporate-information text link, the colors.link-corporate role" }
-    utility-link: { type: tab, bg: "transparent", fg: "#5c5c5c", radius: "0px", padding: "2px 6px", height: "24px", font: "14px / 400 / 20px / platform system stack", states: "default captured 2026-07-13; the 2026-09-29 survey reads the same four links; no pointer-state sample", use: "Product-home header utility link (법인, 가맹점, 소비자보호 포털, 상품공시실)" }
-    corporate-menu-link: { type: tab, bg: "transparent", fg: "#959595", radius: "0px", padding: "0px 0px 0px 28px", height: "42px", font: "14px / 400 / 18px / YouandiNewKr", states: "default captured 2026-07-13 on the English corporate route; the 2026-09-29 survey reads the same four links; no pointer-state sample", use: "Corporate-information top menu link (About Us, Investor Relations, Ethics, Careers)" }
-    carousel-pause-control: { type: button, bg: "#000000", radius: "5px", size: "20px x 10px", states: "default captured 2026-07-13; the 2026-09-29 survey labels it 일시정지; no pointer-state sample", use: "Product-home hero carousel pause control; the rounded.carousel-control radius" }
-    login-filled-button: { type: button, bg: "#000000", radius: "8px", padding: "17px 4px", size: "280px x 56px", states: "default captured 2026-07-13; deliberately not hovered, pressed or focused on 2026-09-29 because it belongs to the login widget", use: "Product-home login widget action (간편번호 등록); the anchor's own text colour equals its fill and the visible label was not read, so no text colour is declared" }
-    quick-menu-box: { type: card, bg: "transparent", border: "1px #858585", radius: "8px", size: "280px x 78px", states: "default captured 2026-07-13; no pointer-state sample", use: "Product-home quick-menu box beside the login widget (상담·문의 …)" }
-  components_harvested: true
+name: Hyundai Card
+colors:
+  ink: '#000000'
+  canvas: '#ffffff'
+  inverse: '#ffffff'
+  link-product: '#0070f0'
+  link-corporate: '#1e75d6'
+typography:
+  hero:
+    fontSize: 40px
+    fontWeight: 600
+    lineHeight: 52
+    use: Product-home h2 headings
+  corporate-hero:
+    fontSize: 54px
+    fontWeight: 700
+    lineHeight: 80
+    use: Corporate-information h2 headings on the two captured routes
+  nav:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 26
+    use: Product-home second-level navigation links
+  card-title:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 22
+    use: Product-card title labels
+rounded:
+  corporate-outline-action: 3px
+  carousel-control: 5px
+spacing:
+  nav-inline: 20
+  corporate-action-inline: 29
+components:
+  product-card-link:
+    type: card
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    size: 146px x 160px
+    typography: 16px / 500 / 22px platform system stack (label span.card_name; the anchor's own font is 16px / 400)
+    hover: transform (parent li) translateY(-12px); the anchor itself unchanged
+    pressed: 'transform (parent li) translateY(-12px); outline auto 2px #005fcc, offset -3px (the site''s :focus rule also draws on mouse press)'
+    focus: 'outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default)'
+    states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the lineup card 'the Red' (real :hover, :active, and Tab to :focus-visible)
+    use: Product-home card link; transparent, borderless default
+  second-level-nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#000000'
+    rounded: 0px
+    padding: 0px 20px
+    height: 80px
+    typography: 18px / 500 / 26px / YouandiNewKr
+    hover: '::before 2px #000000 bar across the link width; fg and bg unchanged; the fixed header (div#header) drops its rgba(0,0,0,0.08) 0px 2px 4px 0px shadow while the mega-menu is open'
+    pressed: '::before 2px #000000 bar; outline auto 2px #005fcc, offset -3px (the site''s :focus rule also draws on mouse press)'
+    focus: 'outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default); ::before 2px #000000 bar'
+    states: default captured 2026-07-13 (header links 1 to 7); hover, pressed and keyboard focus measured 2026-09-29 on 카드 (real :hover, :active, and Tab to :focus-visible)
+    use: Product-home header second-level link (Account, 카드, 혜택, 금융, 컬처, 고객 지원, Apple Pay)
+  product-detail-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#0070f0'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 16px / 700 / platform system stack
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: 'outline auto 2px #005fcc, offset -3px (the site''s :focus rule also draws on mouse press)'
+    focus: 'outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default)'
+    states: default captured 2026-07-13 (four 전체보기 links); hover, pressed and keyboard focus measured 2026-09-29 on the first
+    use: Product-home 전체보기 detail link, the colors.link-product role
+  search-open:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(0,0,0,0.48)
+    rounded: 0px
+    size: 30px x 30px (24px x 24px once the header shrinks on scroll)
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: 'outline auto 2px #005fcc, offset -3px (the site''s :focus rule also draws on mouse press)'
+    focus: 'outline auto 2px #005fcc, offset -3px (drawn by a site :focus rule, not the browser default)'
+    states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29; the glyph is a background image; the search layer it opens was not opened
+    use: Header search opener (검색 영역 열기); no text input exists until it opens
+  corporate-outline-action:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    border: 1px rgba(255,255,255,0.6)
+    rounded: 3px
+    padding: 0px 29px
+    height: 48px
+    typography: 16px / 400 / 46px / platform system stack
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: 'outline auto 1px #005fcc, offset 1px (consistent with the browser default; not a brand token)'
+    states: default captured 2026-07-13 on the English (ceh) and Korean (ckh) corporate routes; hover, pressed and keyboard focus measured 2026-09-29 on the English route only (Go to Company Overview, in an auto-advancing hero)
+    use: Corporate-information hero outline action; corporate routes only
+  corporate-text-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#1e75d6'
+    rounded: 0px
+    padding: 0px
+    height: 16px
+    typography: 13px / 400 / platform system stack
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: 'outline auto 1px #005fcc, offset 1px (consistent with the browser default; not a brand token)'
+    states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the English route (Go to Recruitment Homepage); a 12px arrow image follows the label
+    use: Corporate-information text link, the colors.link-corporate role
+  utility-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#5c5c5c'
+    rounded: 0px
+    padding: 2px 6px
+    height: 24px
+    typography: 14px / 400 / 20px / platform system stack
+    states: default captured 2026-07-13; the 2026-09-29 survey reads the same four links; no pointer-state sample
+    use: Product-home header utility link (법인, 가맹점, 소비자보호 포털, 상품공시실)
+  corporate-menu-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#959595'
+    rounded: 0px
+    padding: 0px 0px 0px 28px
+    height: 42px
+    typography: 14px / 400 / 18px / YouandiNewKr
+    states: default captured 2026-07-13 on the English corporate route; the 2026-09-29 survey reads the same four links; no pointer-state sample
+    use: Corporate-information top menu link (About Us, Investor Relations, Ethics, Careers)
+  carousel-pause-control:
+    type: button
+    backgroundColor: '#000000'
+    rounded: 5px
+    size: 20px x 10px
+    states: default captured 2026-07-13; the 2026-09-29 survey labels it 일시정지; no pointer-state sample
+    use: Product-home hero carousel pause control; the rounded.carousel-control radius
+  login-filled-button:
+    type: button
+    backgroundColor: '#000000'
+    rounded: 8px
+    padding: 17px 4px
+    size: 280px x 56px
+    states: default captured 2026-07-13; deliberately not hovered, pressed or focused on 2026-09-29 because it belongs to the login widget
+    use: Product-home login widget action (간편번호 등록); the anchor's own text colour equals its fill and the visible label was not read, so no text colour is declared
+  quick-menu-box:
+    type: card
+    backgroundColor: transparent
+    border: '1px #858585'
+    rounded: 8px
+    size: 280px x 78px
+    states: default captured 2026-07-13; no pointer-state sample
+    use: Product-home quick-menu box beside the login widget (상담·문의 …)
+fonts:
+  roles:
+    sans: YouandiNewKr
 ---
+
 # Design System Inspiration of Hyundai Card
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Hyundai Card is a Korean credit-card company whose identity reaches beyond payment products into card design, cultural programming, and branded libraries. Its most recognizable visual asset is Youandi: the company introduced the proprietary typeface in 2003, then renewed it as YouandiNew for contemporary digital media. Hyundai Card’s own account places the card plate’s proportions inside the letterforms, treating type as a carrier of brand identity rather than as a decorative layer. That history is visible on the current captured product home, where loaded YouandiNewKr leads product headings and navigation, while the corporate-information routes use a larger white-on-dark display treatment. The live product routes are not a uniform monochrome system: black and white form the common base, but their product and corporate links use distinct blue values. DIVE, the Design Library, and other cultural/marketing surfaces are meaningful brand context, but were not used to fill product tokens in this reference.
 
-## Primary tasks
+### Primary tasks
 
 - Find a card product from the Hyundai Card home page
 - Read company information on the Hyundai Card corporate pages
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Hyundai Card pairs credit-card products with a long-running cultural and design program. Its official company overview describes a current move toward a technology-company identity while continuing the cultural work expressed through libraries, performance programs, branded spaces, card plates, and Youandi. That makes the company’s visual story broader than one web page or one card campaign.
+
+Youandi is the clearest continuity thread. Hyundai Card developed the first version in 2003; its official account says the original letterforms drew from the physical shape and proportions of a card. The 2021 YouandiNew renewal rebuilt that asset for evolving digital media, expanded its range, and added variable-font capability. The current web capture corroborates that the newer family is not merely historical: `YouandiNewKr` is loaded and visible on current product and corporate headings.
+
+### Principles
+
+1. **Build identity into useful assets.** Youandi is presented as a brand asset used in product branding and official documents.
+   *UI implication:* preserve the verified family distinction instead of approximating it with a system font.
+2. **Let the product and the cultural program remain distinct evidence domains.** The company’s libraries and DIVE expand brand context, but they are not product-component documentation.
+   *UI implication:* do not transfer their colors or patterns into payment-product tokens without direct proof.
+3. **Use surface-local rules.** The current product home and corporate-information routes intentionally expose different link and inverse-action treatments.
+   *UI implication:* name a component’s source surface before reusing its geometry or colors.
+
+### Personas
+
+These are service-context archetypes, not claims about private user research.
+
+- **Card product visitor** — needs a product route whose navigation, cards, and links remain clear without relying on cultural-site styling.
+- **Corporate-information reader** — encounters a high-contrast informational hero and outline action on Hyundai Card’s company pages.
+- **Culture-program visitor** — may meet DIVE or a Hyundai Card library; that context can inform brand understanding but must not be mistaken for payment-product UI evidence.
+
+## Colors
 
 The three supplied current captures share black text and white page fields. Two blue link treatments are surface-specific, so neither is promoted as a universal brand primary.
 
@@ -231,7 +210,7 @@ The prior DIVE-only red and green content tags are omitted: they were not observ
 
 Keyboard focus draws a third blue, `#005fcc` (`rgb(0, 95, 204)`), as an `outline-style: auto` ring on every control probed on 2026-09-29 (§14). It is not a palette role: on the product home it comes from a site `:focus` rule, and on the corporate route it is consistent with the browser default.
 
-## 3. Typography Rules
+## Typography
 
 **Official product-use.** Hyundai Card says that it has used Youandi for product branding and official company documents since 2003; the 2021 renewal, YouandiNew, was designed for digital environments, readability, Korean/English balance, and variable-font use. The official account describes it as a proprietary corporate typeface, not a public web-font distribution or open-license announcement.
 
@@ -243,7 +222,39 @@ Keyboard focus draws a third blue, `#005fcc` (`rgb(0, 95, 204)`), as an `outline
 
 **License boundary.** The official font history establishes Hyundai Card’s ownership and internal product/document use. No public redistribution license or browser-consumable licensing terms were found in the official sources consulted; do not infer permission to ship the font outside its supplied Hyundai Card sources.
 
-## 4. Component Stylings
+## Layout
+
+The captured product home establishes hierarchy through a 40px YouandiNewKr heading, 18px second-level navigation, and transparent product-card links rather than a documented card-container recipe. Corporate-information routes use a separate 54px inverse hero and compact 3px outline action. Treat those as surface-specific compositions; there is no captured evidence for a shared responsive grid, spacing scale, or universal card treatment.
+
+### Responsive Behavior
+
+The supplied evidence is desktop-only at 1440×900. It establishes typography and default component values on the listed routes, not a responsive contract. Preserve the surface split and remeasure at target breakpoints before assigning mobile dimensions, stacking behavior, or touch states.
+
+## Elevation & Depth
+
+The captured representatives report `box-shadow: none`. This supports a flat default for the retained components only. It does not establish that Hyundai Card never uses shadows, gradients, or elevation on other product, marketing, or native-app surfaces.
+
+One measured cue stands in for elevation: on hover, a product-home lineup card's list item moves up 12px (`translateY(-12px)`, measured 2026-09-29). It is a transform, not a shadow.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No transition duration, easing curve, or motion state was observed in the 2026-07-13 capture. The 2026-09-29 probe read one motion cue: on hover, a product-home lineup card's list item moves up 12px (`translateY(-12px)`); the timing of that move was not read. The probed controls' own transitions compute `0s`. Do not derive a duration or easing scale from this; retain it as unresolved until it is measured.
+
+---
+**Verified:** 2026-07-13 · states re-measured 2026-09-29 (live probe of the product home and the English corporate route)
+**Tier 1 sources:** https://www.hyundaicard.com/index.jsp (current product home, supplied computed-style capture), https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc and https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc (current corporate-information routes, supplied capture), https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en (official Youandi/YouandiNew history and product-use context), https://img.hyundaicard.com/about/common/en/pageView.hc?id=ceabi0201_01 (official company overview), https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en (official cultural/design context; not token evidence)
+**Tier 2 sources:** https://getdesign.md/hyundaicard (attempted; built-in fetch path rejected the direct URL and search yielded no importable record), https://styles.refero.design/?q=Hyundai%20Card (attempted; built-in fetch path rejected the direct URL and search yielded no importable record). No Tier 2 values were promoted.
+**Resolution note:** Prior DIVE-only palette, Noto Sans KR body, 26px heading, 24px/48px pill, category tags, and interaction guidance were removed because this packet did not corroborate them on current product/corporate routes.
+**Conflicts unresolved:** none
+**Proof:** see .verification.md (## Proof — Tier 1 live inspect)
+
+## Components
 
 Rest values come from the 2026-07-13 capture unless marked. Hover, pressed and keyboard focus come from a live probe on 2026-09-29 (real `:hover`, `:active`, and Tab to `:focus-visible`) on the product home and on the English corporate route `ceh`, which is the `corporate-ceh` surface declared here; the Korean twin `ckh` was not probed.
 
@@ -342,74 +353,7 @@ Rest values come from the 2026-07-13 capture unless marked. Hover, pressed and k
 
 No disabled, error, menu, dialog, or toast state is included. The 2026-07-13 collector reported zero interaction expansions and zero observed states; the hover, pressed and focus values above come from the 2026-09-29 probe.
 
-## 5. Layout Principles
-
-The captured product home establishes hierarchy through a 40px YouandiNewKr heading, 18px second-level navigation, and transparent product-card links rather than a documented card-container recipe. Corporate-information routes use a separate 54px inverse hero and compact 3px outline action. Treat those as surface-specific compositions; there is no captured evidence for a shared responsive grid, spacing scale, or universal card treatment.
-
-## 6. Depth & Elevation
-
-The captured representatives report `box-shadow: none`. This supports a flat default for the retained components only. It does not establish that Hyundai Card never uses shadows, gradients, or elevation on other product, marketing, or native-app surfaces.
-
-One measured cue stands in for elevation: on hover, a product-home lineup card's list item moves up 12px (`translateY(-12px)`, measured 2026-09-29). It is a transform, not a shadow.
-
-## 7. Do's and Don'ts
-
-### Do
-
-- Use YouandiNewKr only when it is licensed and actually available from Hyundai Card-controlled sources.
-- Preserve the product/corporate split: black-and-white foundation, product link #0070F0, corporate link #1E75D6.
-- Keep the observed product navigation and card links transparent and borderless.
-- Use the 3px corporate outline action only for the corporate-information context from which it was measured.
-
-### Don't
-
-- Treat DIVE tag colors or Design Library visuals as current payment-product tokens.
-- Replace unavailable YouandiNewKr with a system face while labeling it Youandi.
-- Generalize the corporate white outline action into a product-home primary button.
-- Invent interaction states, motion, a spacing scale, or component variants absent from the capture and the 2026-09-29 probe.
-
-## 8. Responsive Behavior
-
-The supplied evidence is desktop-only at 1440×900. It establishes typography and default component values on the listed routes, not a responsive contract. Preserve the surface split and remeasure at target breakpoints before assigning mobile dimensions, stacking behavior, or touch states.
-
-## 9. Agent Prompt Guide
-
-When using the verified current Hyundai Card web cues, prompt for a restrained black-and-white base with surface-local blue links, not a generic monochrome luxury system. Use licensed YouandiNewKr for verified display/nav moments only; otherwise keep the observed platform stack honestly labeled. On a product-home composition, use transparent 18px/500 YouandiNewKr second-level links with 20px inline padding and transparent product-card links. Do not import DIVE category tags, a 48px pill, Noto Sans KR, or any invented state behavior. Keep the 54px inverse corporate hero and 3px white outline action confined to corporate-information-like contexts. The measured interaction cues (2026-09-29) are small and physical: a 2px black `::before` bar on a hovered second-level link and a 12px lift on a hovered lineup card.
-
-## 10. Voice & Tone
-
-The official materials frame Hyundai Card as a financial company that has deliberately built a wider culture-and-design practice through its branded spaces, card plates, and typeface. The usable voice is therefore precise, design-literate, and concrete rather than “luxury” by default.
-
-| Do | Don't |
-| --- | --- |
-| Describe a specific product, design choice, or cultural program plainly. | Claim an unmeasured visual rule as a universal brand mandate. |
-| Let Youandi’s card-derived construction carry a factual brand story. | Use vague premium language in place of evidence. |
-| Keep product and cultural surfaces named and separated. | Fold DIVE or library material into payment-product UI claims. |
-
-## 11. Brand Narrative
-
-Hyundai Card pairs credit-card products with a long-running cultural and design program. Its official company overview describes a current move toward a technology-company identity while continuing the cultural work expressed through libraries, performance programs, branded spaces, card plates, and Youandi. That makes the company’s visual story broader than one web page or one card campaign.
-
-Youandi is the clearest continuity thread. Hyundai Card developed the first version in 2003; its official account says the original letterforms drew from the physical shape and proportions of a card. The 2021 YouandiNew renewal rebuilt that asset for evolving digital media, expanded its range, and added variable-font capability. The current web capture corroborates that the newer family is not merely historical: `YouandiNewKr` is loaded and visible on current product and corporate headings.
-
-## 12. Principles
-
-1. **Build identity into useful assets.** Youandi is presented as a brand asset used in product branding and official documents.
-   *UI implication:* preserve the verified family distinction instead of approximating it with a system font.
-2. **Let the product and the cultural program remain distinct evidence domains.** The company’s libraries and DIVE expand brand context, but they are not product-component documentation.
-   *UI implication:* do not transfer their colors or patterns into payment-product tokens without direct proof.
-3. **Use surface-local rules.** The current product home and corporate-information routes intentionally expose different link and inverse-action treatments.
-   *UI implication:* name a component’s source surface before reusing its geometry or colors.
-
-## 13. Personas
-
-These are service-context archetypes, not claims about private user research.
-
-- **Card product visitor** — needs a product route whose navigation, cards, and links remain clear without relying on cultural-site styling.
-- **Corporate-information reader** — encounters a high-contrast informational hero and outline action on Hyundai Card’s company pages.
-- **Culture-program visitor** — may meet DIVE or a Hyundai Card library; that context can inform brand understanding but must not be mistaken for payment-product UI evidence.
-
-## 14. States
+### States
 
 The 2026-07-13 packet captured default styles only (`interactionCount: 0`, `interactionKinds: 0`, `observedStates: 0`). A live probe on 2026-09-29 measured hover, pressed and keyboard focus on six controls: four on the product home (the second-level link 카드, the lineup card 'the Red', 전체보기, the search opener) and two on the English corporate route (Go to Company Overview, Go to Recruitment Homepage). No state token is published; the values sit on the §4 components.
 
@@ -428,14 +372,41 @@ The 2026-07-13 packet captured default styles only (`interactionCount: 0`, `inte
 | Empty | Not observed |
 | Skeleton | Not observed |
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-No transition duration, easing curve, or motion state was observed in the 2026-07-13 capture. The 2026-09-29 probe read one motion cue: on hover, a product-home lineup card's list item moves up 12px (`translateY(-12px)`); the timing of that move was not read. The probed controls' own transitions compute `0s`. Do not derive a duration or easing scale from this; retain it as unresolved until it is measured.
+### Do
 
----
-**Verified:** 2026-07-13 · states re-measured 2026-09-29 (live probe of the product home and the English corporate route)
-**Tier 1 sources:** https://www.hyundaicard.com/index.jsp (current product home, supplied computed-style capture), https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc and https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc (current corporate-information routes, supplied capture), https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en (official Youandi/YouandiNew history and product-use context), https://img.hyundaicard.com/about/common/en/pageView.hc?id=ceabi0201_01 (official company overview), https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en (official cultural/design context; not token evidence)
-**Tier 2 sources:** https://getdesign.md/hyundaicard (attempted; built-in fetch path rejected the direct URL and search yielded no importable record), https://styles.refero.design/?q=Hyundai%20Card (attempted; built-in fetch path rejected the direct URL and search yielded no importable record). No Tier 2 values were promoted.
-**Resolution note:** Prior DIVE-only palette, Noto Sans KR body, 26px heading, 24px/48px pill, category tags, and interaction guidance were removed because this packet did not corroborate them on current product/corporate routes.
-**Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof — Tier 1 live inspect)
+- Use YouandiNewKr only when it is licensed and actually available from Hyundai Card-controlled sources.
+- Preserve the product/corporate split: black-and-white foundation, product link #0070F0, corporate link #1E75D6.
+- Keep the observed product navigation and card links transparent and borderless.
+- Use the 3px corporate outline action only for the corporate-information context from which it was measured.
+
+### Don't
+
+- Treat DIVE tag colors or Design Library visuals as current payment-product tokens.
+- Replace unavailable YouandiNewKr with a system face while labeling it Youandi.
+- Generalize the corporate white outline action into a product-home primary button.
+- Invent interaction states, motion, a spacing scale, or component variants absent from the capture and the 2026-09-29 probe.
+
+## Voice & Tone
+
+The official materials frame Hyundai Card as a financial company that has deliberately built a wider culture-and-design practice through its branded spaces, card plates, and typeface. The usable voice is therefore precise, design-literate, and concrete rather than “luxury” by default.
+
+| Do | Don't |
+| --- | --- |
+| Describe a specific product, design choice, or cultural program plainly. | Claim an unmeasured visual rule as a universal brand mandate. |
+| Let Youandi’s card-derived construction carry a factual brand story. | Use vague premium language in place of evidence. |
+| Keep product and cultural surfaces named and separated. | Fold DIVE or library material into payment-product UI claims. |
+
+## Agent Prompt Guide
+
+When using the verified current Hyundai Card web cues, prompt for a restrained black-and-white base with surface-local blue links, not a generic monochrome luxury system. Use licensed YouandiNewKr for verified display/nav moments only; otherwise keep the observed platform stack honestly labeled. On a product-home composition, use transparent 18px/500 YouandiNewKr second-level links with 20px inline padding and transparent product-card links. Do not import DIVE category tags, a 48px pill, Noto Sans KR, or any invented state behavior. Keep the 54px inverse corporate hero and 3px white outline action confined to corporate-information-like contexts. The measured interaction cues (2026-09-29) are small and physical: a 2px black `::before` bar on a hovered second-level link and a 12px lift on a hovered lineup card.
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `product-card-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `second-level-nav-link`.** Text `#000000` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-open`.** Text `#0000007a` on `#00000000` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `utility-link`.** Text `#5c5c5c` on `#00000000` measures 3.14:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

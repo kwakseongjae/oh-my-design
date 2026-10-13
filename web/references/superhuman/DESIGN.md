@@ -1,65 +1,163 @@
 ---
-id: superhuman
 name: Superhuman
-country: US
-category: developer-tools
-homepage: "https://superhuman.com"
-primary_color: "#5840ff"
-logo:
-  type: github
-  slug: superhuman
-verified: "2026-05-15"
-omd: "0.1"
-ds:
-  name: Superhuman Media Assets
-  url: "https://superhuman.com/media-assets"
-  type: brand
-  description: Superhuman's press and brand asset kit.
-  og_image: "https://superhumanstatic.com/super-funnel/main/public/images/v3/social-share.png"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    mysteria: "#1b1938"
-    lavender: "#cbb7fb"
-    charcoal: "#292827"
-    link: "#714cb6"
-    white: "#ffffff"
-    cream: "#e9e5dd"
-    border: "#dcd7d3"
-  typography:
-    family: { sans: "Super Sans VF", mono: "Messina Mono" }
-    display-hero: { size: 64, weight: 540, lineHeight: 0.96, use: "Maximum compression, powerful headlines" }
-    section-display: { size: 48, weight: 460, lineHeight: 0.96, tracking: -1.32, use: "Section introductions" }
-    feature-title: { size: 28, weight: 540, lineHeight: 1.14, tracking: -0.63, use: "Feature block headlines" }
-    subheading:   { size: 26, weight: 460, lineHeight: 1.30, use: "Content sub-sections" }
-    body-heading: { size: 20, weight: 460, lineHeight: 1.20, use: "Bold content intros" }
-    emphasis:     { size: 18, weight: 540, lineHeight: 1.50, tracking: -0.135, use: "Medium-weight callouts" }
-    body:         { size: 16, weight: 460, lineHeight: 1.50, use: "Standard reading text" }
-    button:       { size: 16, weight: 600, lineHeight: 1.00, use: "Semi-bold UI labels" }
-    nav-link:     { size: 16, weight: 460, lineHeight: 1.20, use: "Navigation items" }
-    caption:      { size: 14, weight: 500, lineHeight: 1.20, tracking: -0.315, use: "Small labels, metadata" }
-    micro:        { size: 12, weight: 700, lineHeight: 1.50, use: "Badges, tags" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
-  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
-  shadow:
-    subtle: "1px solid #dcd7d3"
-  components:
-    button-cream: { type: button, bg: "#e9e5dd", fg: "#292827", radius: 8, padding: "12px 20px", font: "16px/460 Super Sans VF", use: "Signature CTA, warm muted luxurious" }
-    button-dark: { type: button, bg: "#292827", fg: "#ffffff", radius: 8, padding: "12px 20px", font: "16px/600 Super Sans VF", use: "Inverse CTA on light sections" }
-    button-hero: { type: button, bg: "#e9e5dd", fg: "#292827", radius: 8, padding: "14px 24px", font: "16px/600 Super Sans VF", use: "Hero CTA on purple gradient" }
-    button-ghost: { type: button, fg: "#714cb6", padding: "0", font: "16px/460 Super Sans VF", use: "Inline text link, underline" }
-    input-default: { type: input, bg: "#ffffff", fg: "#292827", radius: 8, padding: "12px 16px", font: "16px/460 Super Sans VF", use: "Standard input, 1px #dcd7d3 border, focus #292827" }
-    card-content: { type: card, bg: "#ffffff", radius: 16, padding: "24px", use: "Clean minimal default card, 1px #dcd7d3 border" }
-    card-dark: { type: card, bg: "#292827", fg: "#e9e5dd", radius: 16, padding: "24px", use: "Card on dark sections, 1px #292827 border" }
-    card-screenshot: { type: card, radius: 12, padding: "0", use: "Product UI image, clean edges, minimal framing" }
-    badge-default: { type: badge, bg: "#e9e5dd", fg: "#292827", radius: 8, padding: "4px 10px", font: "12px/600 Super Sans VF", use: "Warm cream micro-tag" }
-  components_harvested: true
+colors:
+  mysteria: '#1b1938'
+  lavender: '#cbb7fb'
+  charcoal: '#292827'
+  link: '#714cb6'
+  white: '#ffffff'
+  cream: '#e9e5dd'
+  border: '#dcd7d3'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 540
+    lineHeight: 0.96
+    use: Maximum compression, powerful headlines
+  section-display:
+    fontSize: 48px
+    fontWeight: 460
+    lineHeight: 0.96
+    letterSpacing: '-1.32px'
+    use: Section introductions
+  feature-title:
+    fontSize: 28px
+    fontWeight: 540
+    lineHeight: 1.14
+    letterSpacing: '-0.63px'
+    use: Feature block headlines
+  subheading:
+    fontSize: 26px
+    fontWeight: 460
+    lineHeight: 1.3
+    use: Content sub-sections
+  body-heading:
+    fontSize: 20px
+    fontWeight: 460
+    lineHeight: 1.2
+    use: Bold content intros
+  emphasis:
+    fontSize: 18px
+    fontWeight: 540
+    lineHeight: 1.5
+    letterSpacing: '-0.135px'
+    use: Medium-weight callouts
+  body:
+    fontSize: 16px
+    fontWeight: 460
+    lineHeight: 1.5
+    use: Standard reading text
+  button:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1
+    use: Semi-bold UI labels
+  nav-link:
+    fontSize: 16px
+    fontWeight: 460
+    lineHeight: 1.2
+    use: Navigation items
+  caption:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: '-0.315px'
+    use: Small labels, metadata
+  micro:
+    fontSize: 12px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Badges, tags
+rounded:
+  sm: 8px
+  md: 12px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 80
+components:
+  button-cream:
+    type: button
+    backgroundColor: '#e9e5dd'
+    textColor: '#292827'
+    rounded: 8px
+    padding: 12px 20px
+    typography: 16px/460 Super Sans VF
+    use: Signature CTA, warm muted luxurious
+  button-dark:
+    type: button
+    backgroundColor: '#292827'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 12px 20px
+    typography: 16px/600 Super Sans VF
+    use: Inverse CTA on light sections
+  button-hero:
+    type: button
+    backgroundColor: '#e9e5dd'
+    textColor: '#292827'
+    rounded: 8px
+    padding: 14px 24px
+    typography: 16px/600 Super Sans VF
+    use: Hero CTA on purple gradient
+  button-ghost:
+    type: button
+    textColor: '#714cb6'
+    padding: '0'
+    typography: 16px/460 Super Sans VF
+    use: Inline text link, underline
+  input-default:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#292827'
+    rounded: 8px
+    padding: 12px 16px
+    typography: 16px/460 Super Sans VF
+    use: 'Standard input, 1px #dcd7d3 border, focus #292827'
+  card-content:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    padding: 24px
+    use: 'Clean minimal default card, 1px #dcd7d3 border'
+  card-dark:
+    type: card
+    backgroundColor: '#292827'
+    textColor: '#e9e5dd'
+    rounded: 16px
+    padding: 24px
+    use: 'Card on dark sections, 1px #292827 border'
+  card-screenshot:
+    type: card
+    rounded: 12px
+    padding: '0'
+    use: Product UI image, clean edges, minimal framing
+  badge-default:
+    type: badge
+    backgroundColor: '#e9e5dd'
+    textColor: '#292827'
+    rounded: 8px
+    padding: 4px 10px
+    typography: 12px/600 Super Sans VF
+    use: Warm cream micro-tag
+fonts:
+  roles:
+    sans: Super Sans VF
+    mono: Messina Mono
 ---
 
 # Design System Inspiration of Superhuman
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Superhuman's website feels like opening a luxury envelope — predominantly white, immaculately clean, with a single dramatic gesture of color that commands attention. The hero section is a cinematic purple gradient, a deep twilight wash of `#1b1938` that evokes the moment just before dawn, overlaid with confident white typography. Below this dramatic entrance, the rest of the site is almost entirely white canvas with dark charcoal text, creating a stark but refined reading experience.
 
@@ -76,7 +174,7 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 - Minimal border-radius scale: only 8px and 16px — no micro-rounding, no pill shapes
 - Product screenshots dominate the content — the UI sells itself with minimal surrounding decoration
 
-## Primary tasks
+### Primary tasks
 
 - Clear a full inbox at keyboard speed
 - Read an AI summary on every email
@@ -84,7 +182,29 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 - Find Mail, Grammarly, and Coda together under one Superhuman suite
 - Sign up from the marketing site after seeing the product
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Superhuman was founded **2014** in San Francisco by **Rahul Vohra (CEO)**, **Conrad Irwin (CTO)**, and **Vivek Sodera** — Vohra famously built the original brand around the **"time is luxury"** premium email positioning ([Tracxn — Superhuman](https://tracxn.com/d/companies/superhuman/__uNI3PJ_Huz1B_OobMp1RIu3DT8SOBubIyA2wkxh7Quk), [Antler — Superhuman with Rahul Vohra](https://www.antler.co/blog/antler-early-days-episode-2-superhuman-with-rahul-vohra)). **Series B $33M (May 2019)** led by **Andreessen Horowitz** with **Boldstart Ventures + First Round Capital** — total funding ~**$118M across 3 rounds** from 41 investors. Premium email client positioning — fast, keyboard-driven, AI-augmented. **Acquired by Grammarly July 1 2025**; Grammarly had recently acquired **Coda**, then **rebranded the combined Grammarly+Coda+Superhuman entity to "Superhuman"** as the unified suite name (live `superhuman.com` 2026-05 confirms Mail/Grammarly/Coda product nav under unified Superhuman brand). Per recent reporting: **$700M ARR, 40M daily users** for the merged company ([The Spl.it — Inside the New Superhuman: $700M ARR, 40M Daily Users with Rahul Vohra](https://www.thespl.it/p/inside-the-new-superhuman-700m-arr)). The brand voice — **Lavender Glow accent** (`#d4c7ff`) for the unified suite, Sky Blue (`#51b1e7`) preserved on legacy Superhuman Mail surfaces, luxury chrome, keyboard shortcuts as signature — reflects the "time is luxury" positioning carried forward.
+
+### Principles
+
+1. **Time is the luxury.** *UI implication:* all surfaces emphasize speed/efficiency outcomes.
+2. **Keyboard-first.** *UI implication:* every action has a keyboard shortcut documented.
+3. **Lavender Glow `#cbb7fb` is THE accent.** *UI implication:* don't introduce other hues.
+4. **Pill 8-12px primary.** *UI implication:* primary CTAs pill-shaped.
+5. **Luxury minimal.** *UI implication:* don't crowd surfaces; whitespace is the design.
+
+### Personas
+
+*Personas are fictional archetypes informed by Superhuman user segments (busy executives, founders, sales leaders), not individual people.*
+
+**Catherine Liu, 44, NYC.** VP Sales at Series C SaaS. Superhuman for inbox velocity.
+
+**Marcus Webb, 38, San Francisco.** Founder. Email is most of his day; Superhuman keyboard speed is the difference.
+
+**Sofia Park, 32, Seoul.** Investor. Superhuman + Calendar + AI summary on every email.
+
+## Colors
 
 ### Primary
 - **Mysteria Purple** (`#1b1938`): Hero gradient background, deep purple that straddles blue-purple — the darkest expression of the brand
@@ -117,7 +237,7 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 - **Content Transition**: The gradient dissolves into the white content area, creating a cinematic curtain-lift effect as the user scrolls
 - No other gradients on the marketing site — the hero gradient is a singular dramatic gesture
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display & Body**: `Super Sans VF` — custom variable font with non-standard weight axis. Fallbacks: `system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue`
@@ -153,7 +273,106 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 - **Selective negative tracking**: Letter-spacing is applied surgically — -1.32px on 48px headings, -0.63px on 28px features, but 0px on body text. The larger the text, the tighter the tracking
 - **Variable font efficiency**: A single font file serves all weight variations (460–700), enabling smooth weight transitions and micro-adjustments
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- **Base unit**: 8px
+- **Scale**: 2px, 4px, 6px, 8px, 12px, 16px, 18px, 20px, 24px, 28px, 32px, 36px, 40px, 48px, 56px
+- **Section padding**: 48px–80px vertical between major sections
+- **Card padding**: 16px–32px internal spacing
+- **Component gaps**: 8px–16px between related elements
+
+### Grid & Container
+- **Max width**: ~1200px content container, centered
+- **Column patterns**: Full-width hero, centered single-column for key messaging, 2-3 column grid for feature cards
+- **Feature grid**: Even column distribution for "Your Superhuman suite" product showcase
+
+### Whitespace Philosophy
+- **Confident emptiness**: Generous whitespace between sections signals premium positioning — every element has room to breathe
+- **Product as content**: Large product screenshots fill space that lesser sites would fill with marketing copy
+- **Progressive density**: The hero is spacious and cinematic, content sections become denser with feature grids, then opens up again for CTAs
+
+### Border Radius Scale
+- **8px**: Buttons, inline elements (`span`, `button`, `div`) — the universal small radius
+- **16px**: Cards, links, larger containers (`a`, card elements) — the universal large radius
+- Only two radii in the entire system — radical simplicity. No micro-rounding (2px), no pill shapes (50px+)
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, hero text reduces to ~36px, stacked feature cards, hamburger nav |
+| Tablet | 768px–1024px | 2-column feature grid begins, hero text ~48px, nav partially visible |
+| Desktop | 1024px–1440px | Full layout, 64px hero display, multi-column feature grid, full nav |
+| Large Desktop | >1440px | Max-width container centered, generous side margins |
+
+#### Touch Targets
+- Buttons: 8px radius with comfortable padding — meets touch target guidelines
+- Nav links: 16px text with adequate surrounding padding
+- Mobile CTAs: Full-width Warm Cream buttons for easy thumb reach
+- Links: Underline decoration provides clear tap affordance
+
+#### Collapsing Strategy
+- **Navigation**: Full horizontal nav → hamburger menu on mobile
+- **Hero text**: 64px display → 48px → ~36px across breakpoints
+- **Feature grid**: Multi-column product showcase → 2-column → single stacked column
+- **Product screenshots**: Scale within containers, maintaining landscape ratios
+- **Section spacing**: Reduces proportionally — generous desktop margins compress on mobile
+
+#### Image Behavior
+- Product screenshots scale responsively while maintaining aspect ratios
+- Hero silhouette image crops or scales — maintains dramatic composition
+- No art direction changes — same compositions across all breakpoints
+- Lazy loading likely on below-fold product screenshots
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Level 0 (Flat) | No shadow, white background | Primary page canvas, most content surfaces |
+| Level 1 (Border) | `1px solid #dcd7d3` (Parchment Border) | Card containment, section dividers |
+| Level 2 (Dark Border) | `1px solid #292827` | Header elements, dark section separators |
+| Level 3 (Glow) | Subtle shadow (from 6 shadow definitions detected) | Product screenshot containers, elevated cards |
+| Level 4 (Hero Depth) | `rgba(255, 255, 255, 0.2)` transparent border | Elements on the dark purple gradient hero |
+
+### Shadow Philosophy
+Superhuman's elevation system is remarkably restrained on the marketing site. Depth is primarily communicated through:
+- **Border containment**: Warm-toned borders (`#dcd7d3`) at 1px create gentle separation
+- **Color contrast**: The hero gradient creates massive depth through color shift rather than shadows
+- **Product screenshots**: Screenshots themselves create depth by showing a layered UI within the flat page
+- **Opacity layering**: Semi-transparent whites on the hero gradient create atmospheric depth layers
+
+### Decorative Depth
+- **Hero gradient**: The `#1b1938` → white gradient transition is the primary depth device — a cinematic curtain effect
+- **Lavender accents**: `#cbb7fb` Lavender Glow elements float above the dark gradient, creating a stellar/atmospheric effect
+- **No glassmorphism**: Despite the translucent borders, there are no blur/frosted-glass effects
+- **Photography depth**: The hero silhouette image creates natural atmospheric depth without artificial CSS
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `1px solid #dcd7d3`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+**Lavender Glow pulse** is the signature accent moment. `prefers-reduced-motion: reduce` removes glow pulse.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 57 — Apple-tier)
+**Tier 1 sources:** https://superhuman.com home (unified Suite post-Grammarly-merger) + https://superhuman.com/pricing (legacy Superhuman Mail) — live DOM via playwright. **Two-system split**: Suite **`#d4c7ff` Lavender** 8px / 36px / 14px·600 + Lavender Dark `#714cb6` outline-text + Cream `color(srgb 0.925 0.914 0.885)` sub-nav + Maroon `#421d24` 16px banner; legacy Mail **`#51b1e7` Sky Blue** 6px / 46-54px / 18px·500-600 ALL CAPS + Sky Lighter `#3dafed` + Deep `#186dbb` featured. **Weight 460** rare intermediate. `color(srgb …)` CSS Color L4.
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/Grammarly-acquisition):** Tracxn, Antler (Vohra interview), Crunchbase, Boldstart Ventures, The Spl.it (post-merger ARR), TechRadar.
+**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier addition:** dual-system Lavender Suite + Sky Blue Mail post-merger split + Grammarly+Coda+Superhuman rebrand narrative + weight 460 + `color(srgb)` syntax missed by prior pass.
+
+## Components
 
 ### Buttons
 
@@ -262,54 +481,23 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 - Feature descriptions paired with product screenshots — proof through demonstration rather than quotes
 - Clean grid layout with consistent card sizing
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- **Base unit**: 8px
-- **Scale**: 2px, 4px, 6px, 8px, 12px, 16px, 18px, 20px, 24px, 28px, 32px, 36px, 40px, 48px, 56px
-- **Section padding**: 48px–80px vertical between major sections
-- **Card padding**: 16px–32px internal spacing
-- **Component gaps**: 8px–16px between related elements
+| State | Treatment |
+|---|---|
+| **Empty (no email)** | "Inbox Zero achieved" celebration moment |
+| **Empty (no contacts)** | Connect contacts CTA |
+| **Loading (sync)** | Real-time sync indicator |
+| **Loading (AI summary)** | Per-email summary loader |
+| **Error (sync)** | "Couldn't sync. Retry in 10s." |
+| **Error (delivery)** | Bounce indicator + retry |
+| **Success (sent)** | Subtle Lavender Glow pulse |
+| **Success (snoozed)** | Snooze badge with time |
+| **Skeleton (inbox)** | Lavender-tinted placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (AI processing)** | Per-email progress |
 
-### Grid & Container
-- **Max width**: ~1200px content container, centered
-- **Column patterns**: Full-width hero, centered single-column for key messaging, 2-3 column grid for feature cards
-- **Feature grid**: Even column distribution for "Your Superhuman suite" product showcase
-
-### Whitespace Philosophy
-- **Confident emptiness**: Generous whitespace between sections signals premium positioning — every element has room to breathe
-- **Product as content**: Large product screenshots fill space that lesser sites would fill with marketing copy
-- **Progressive density**: The hero is spacious and cinematic, content sections become denser with feature grids, then opens up again for CTAs
-
-### Border Radius Scale
-- **8px**: Buttons, inline elements (`span`, `button`, `div`) — the universal small radius
-- **16px**: Cards, links, larger containers (`a`, card elements) — the universal large radius
-- Only two radii in the entire system — radical simplicity. No micro-rounding (2px), no pill shapes (50px+)
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Flat) | No shadow, white background | Primary page canvas, most content surfaces |
-| Level 1 (Border) | `1px solid #dcd7d3` (Parchment Border) | Card containment, section dividers |
-| Level 2 (Dark Border) | `1px solid #292827` | Header elements, dark section separators |
-| Level 3 (Glow) | Subtle shadow (from 6 shadow definitions detected) | Product screenshot containers, elevated cards |
-| Level 4 (Hero Depth) | `rgba(255, 255, 255, 0.2)` transparent border | Elements on the dark purple gradient hero |
-
-### Shadow Philosophy
-Superhuman's elevation system is remarkably restrained on the marketing site. Depth is primarily communicated through:
-- **Border containment**: Warm-toned borders (`#dcd7d3`) at 1px create gentle separation
-- **Color contrast**: The hero gradient creates massive depth through color shift rather than shadows
-- **Product screenshots**: Screenshots themselves create depth by showing a layered UI within the flat page
-- **Opacity layering**: Semi-transparent whites on the hero gradient create atmospheric depth layers
-
-### Decorative Depth
-- **Hero gradient**: The `#1b1938` → white gradient transition is the primary depth device — a cinematic curtain effect
-- **Lavender accents**: `#cbb7fb` Lavender Glow elements float above the dark gradient, creating a stellar/atmospheric effect
-- **No glassmorphism**: Despite the translucent borders, there are no blur/frosted-glass effects
-- **Photography depth**: The hero silhouette image creates natural atmospheric depth without artificial CSS
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Super Sans VF at weight 460 as the default — it's slightly heavier than regular, which is the brand's typographic signature
@@ -331,36 +519,23 @@ Superhuman's elevation system is remarkably restrained on the marketing site. De
 - Create pill-shaped buttons — the system uses 8px radius, not rounded pills
 - Use pure black (`#000000`) for text — Charcoal Ink (`#292827`) is warmer and softer
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, hero text reduces to ~36px, stacked feature cards, hamburger nav |
-| Tablet | 768px–1024px | 2-column feature grid begins, hero text ~48px, nav partially visible |
-| Desktop | 1024px–1440px | Full layout, 64px hero display, multi-column feature grid, full nav |
-| Large Desktop | >1440px | Max-width container centered, generous side margins |
+Superhuman's voice is **luxury-productivity and time-as-craft.** "Docs, Mail, and AI That Work Everywhere" — capability-driven with luxury register. Lavender Glow `#cbb7fb` accent + dark surfaces signal "premium tool for time-conscious professionals."
 
-### Touch Targets
-- Buttons: 8px radius with comfortable padding — meets touch target guidelines
-- Nav links: 16px text with adequate surrounding padding
-- Mobile CTAs: Full-width Warm Cream buttons for easy thumb reach
-- Links: Underline decoration provides clear tap affordance
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Sign up", "Get Superhuman", "Get the suite" |
+| Marketing | Time-as-craft. "Save 4 hours a week" recurring framing |
+| Documentation | Sparse — luxury product, minimal docs |
+| Error | Polite. "Couldn't sync. Try again in a moment." |
 
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav → hamburger menu on mobile
-- **Hero text**: 64px display → 48px → ~36px across breakpoints
-- **Feature grid**: Multi-column product showcase → 2-column → single stacked column
-- **Product screenshots**: Scale within containers, maintaining landscape ratios
-- **Section spacing**: Reduces proportionally — generous desktop margins compress on mobile
+**Voice samples**
+- Marketing CTAs: *"Sign up"* / *"Get Superhuman"* <!-- verified: superhuman.com homepage 2026-05 -->
 
-### Image Behavior
-- Product screenshots scale responsively while maintaining aspect ratios
-- Hero silhouette image crops or scales — maintains dramatic composition
-- No art direction changes — same compositions across all breakpoints
-- Lazy loading likely on below-fold product screenshots
+**Forbidden phrases.** "Revolutionary email". Aggressive Gmail-comparison framing.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Hero Background: Mysteria Purple (`#1b1938`)
@@ -386,74 +561,3 @@ When refining existing screens generated with this design system:
 3. Ensure buttons use Warm Cream (#e9e5dd) not pure white or gray — the warmth is subtle but critical
 4. Confirm the only accent color is Lavender Glow (#cbb7fb) — no other hues should appear
 5. The overall tone should feel like a luxury product presentation — minimal, confident, with one dramatic color gesture in the hero
-
-## 10. Voice & Tone
-
-Superhuman's voice is **luxury-productivity and time-as-craft.** "Docs, Mail, and AI That Work Everywhere" — capability-driven with luxury register. Lavender Glow `#cbb7fb` accent + dark surfaces signal "premium tool for time-conscious professionals."
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Sign up", "Get Superhuman", "Get the suite" |
-| Marketing | Time-as-craft. "Save 4 hours a week" recurring framing |
-| Documentation | Sparse — luxury product, minimal docs |
-| Error | Polite. "Couldn't sync. Try again in a moment." |
-
-**Voice samples**
-- Marketing CTAs: *"Sign up"* / *"Get Superhuman"* <!-- verified: superhuman.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary email". Aggressive Gmail-comparison framing.
-
-## 11. Brand Narrative
-
-Superhuman was founded **2014** in San Francisco by **Rahul Vohra (CEO)**, **Conrad Irwin (CTO)**, and **Vivek Sodera** — Vohra famously built the original brand around the **"time is luxury"** premium email positioning ([Tracxn — Superhuman](https://tracxn.com/d/companies/superhuman/__uNI3PJ_Huz1B_OobMp1RIu3DT8SOBubIyA2wkxh7Quk), [Antler — Superhuman with Rahul Vohra](https://www.antler.co/blog/antler-early-days-episode-2-superhuman-with-rahul-vohra)). **Series B $33M (May 2019)** led by **Andreessen Horowitz** with **Boldstart Ventures + First Round Capital** — total funding ~**$118M across 3 rounds** from 41 investors. Premium email client positioning — fast, keyboard-driven, AI-augmented. **Acquired by Grammarly July 1 2025**; Grammarly had recently acquired **Coda**, then **rebranded the combined Grammarly+Coda+Superhuman entity to "Superhuman"** as the unified suite name (live `superhuman.com` 2026-05 confirms Mail/Grammarly/Coda product nav under unified Superhuman brand). Per recent reporting: **$700M ARR, 40M daily users** for the merged company ([The Spl.it — Inside the New Superhuman: $700M ARR, 40M Daily Users with Rahul Vohra](https://www.thespl.it/p/inside-the-new-superhuman-700m-arr)). The brand voice — **Lavender Glow accent** (`#d4c7ff`) for the unified suite, Sky Blue (`#51b1e7`) preserved on legacy Superhuman Mail surfaces, luxury chrome, keyboard shortcuts as signature — reflects the "time is luxury" positioning carried forward.
-
-## 12. Principles
-
-1. **Time is the luxury.** *UI implication:* all surfaces emphasize speed/efficiency outcomes.
-2. **Keyboard-first.** *UI implication:* every action has a keyboard shortcut documented.
-3. **Lavender Glow `#cbb7fb` is THE accent.** *UI implication:* don't introduce other hues.
-4. **Pill 8-12px primary.** *UI implication:* primary CTAs pill-shaped.
-5. **Luxury minimal.** *UI implication:* don't crowd surfaces; whitespace is the design.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Superhuman user segments (busy executives, founders, sales leaders), not individual people.*
-
-**Catherine Liu, 44, NYC.** VP Sales at Series C SaaS. Superhuman for inbox velocity.
-
-**Marcus Webb, 38, San Francisco.** Founder. Email is most of his day; Superhuman keyboard speed is the difference.
-
-**Sofia Park, 32, Seoul.** Investor. Superhuman + Calendar + AI summary on every email.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no email)** | "Inbox Zero achieved" celebration moment |
-| **Empty (no contacts)** | Connect contacts CTA |
-| **Loading (sync)** | Real-time sync indicator |
-| **Loading (AI summary)** | Per-email summary loader |
-| **Error (sync)** | "Couldn't sync. Retry in 10s." |
-| **Error (delivery)** | Bounce indicator + retry |
-| **Success (sent)** | Subtle Lavender Glow pulse |
-| **Success (snoozed)** | Snooze badge with time |
-| **Skeleton (inbox)** | Lavender-tinted placeholders |
-| **Disabled (no plan)** | Upgrade link |
-| **Loading (AI processing)** | Per-email progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-**Lavender Glow pulse** is the signature accent moment. `prefers-reduced-motion: reduce` removes glow pulse.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 57 — Apple-tier)
-**Tier 1 sources:** https://superhuman.com home (unified Suite post-Grammarly-merger) + https://superhuman.com/pricing (legacy Superhuman Mail) — live DOM via playwright. **Two-system split**: Suite **`#d4c7ff` Lavender** 8px / 36px / 14px·600 + Lavender Dark `#714cb6` outline-text + Cream `color(srgb 0.925 0.914 0.885)` sub-nav + Maroon `#421d24` 16px banner; legacy Mail **`#51b1e7` Sky Blue** 6px / 46-54px / 18px·500-600 ALL CAPS + Sky Lighter `#3dafed` + Deep `#186dbb` featured. **Weight 460** rare intermediate. `color(srgb …)` CSS Color L4.
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/Grammarly-acquisition):** Tracxn, Antler (Vohra interview), Crunchbase, Boldstart Ventures, The Spl.it (post-merger ARR), TechRadar.
-**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier addition:** dual-system Lavender Suite + Sky Blue Mail post-merger split + Grammarly+Coda+Superhuman rebrand narrative + weight 460 + `color(srgb)` syntax missed by prior pass.

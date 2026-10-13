@@ -14,6 +14,8 @@ import {
   type CoreConsumerContractAdmission,
 } from "./core-consumer-contract";
 import { verifyCanonicalCorePackage } from "./core-canonical-verifier.server";
+// DESIGN.md v3 (spec/design-md-v3.md §12.2): the runtime twin of web/scripts/lib/reference-source.mjs.
+import { parseV3, projectLegacyMarkdown } from "../../../scripts/lib/design-md-v3.mjs";
 
 const REGISTRY_BY_ID: ReadonlyMap<string, RefEntry> = new Map(
   REGISTRY.map((entry) => [entry.id, entry]),
@@ -23,6 +25,14 @@ export interface LoadedReference {
   readonly entry: RefEntry;
   readonly quality: ReferenceQualityEntry;
   readonly markdown: string;
+  /**
+   * The legacy-shaped source the AST and the legacy detail adapter read. For a DESIGN.md v3 file it
+   * is the frontmatter projected from the v3 tokens and reference.json, in front of the v3 body;
+   * `markdown` stays the portable file users copy. Otherwise identical to `markdown`.
+   */
+  readonly legacyMarkdown: string;
+  /** On-disk dialect of the canonical file. */
+  readonly sourceFormat: "legacy" | "core-v2" | "v3";
   /** Legacy/frontmatter AST. Null once the active canonical bytes are Core v2. */
   readonly ast: ReferenceAst | null;
   readonly format: "legacy" | "core-v2";
@@ -72,6 +82,13 @@ export function loadReference(id: string, projectRoot = process.cwd()): LoadedRe
   if (!existsSync(canonicalPath)) return null;
   const canonicalMarkdown = readFileSync(canonicalPath, "utf8");
   const canonicalIsCore = isCoreV2Document(canonicalMarkdown);
+  const canonicalIsV3 = !canonicalIsCore && parseV3(canonicalMarkdown) !== null;
+  let canonicalLegacy = canonicalMarkdown;
+  if (canonicalIsV3) {
+    const sidecarPath = join(projectRoot, "references", entry.id, "reference.json");
+    if (!existsSync(sidecarPath)) throw new Error(`DESIGN.md v3 for ${id} has no reference.json`);
+    canonicalLegacy = projectLegacyMarkdown(canonicalMarkdown, JSON.parse(readFileSync(sidecarPath, "utf8")));
+  }
 
   // The preview swaps only the served body. A legacy canonical is normalised
   // for legacy consumers, but the active-document adapter never attaches that
@@ -85,6 +102,8 @@ export function loadReference(id: string, projectRoot = process.cwd()): LoadedRe
     entry,
     quality,
     markdown,
+    legacyMarkdown: migratedPath ? markdown : canonicalLegacy,
+    sourceFormat: canonicalIsCore ? "core-v2" : canonicalIsV3 ? "v3" : "legacy",
     format,
     coreTransport: format === "core-v2"
       ? loadCoreConsumerContract(dirname(activePath), markdown, verifyCanonicalCorePackage)
@@ -95,7 +114,7 @@ export function loadReference(id: string, projectRoot = process.cwd()): LoadedRe
       : normalizeReference({
           entry,
           quality,
-          markdown: canonicalMarkdown,
+          markdown: canonicalLegacy,
           verificationV2: REFERENCE_VERIFICATION_BY_ID[id],
         }),
   };

@@ -1,70 +1,151 @@
 ---
-id: raycast
 name: Raycast
-country: US
-category: developer-tools
-homepage: "https://www.raycast.com"
-primary_color: "#ff6363"
-logo:
-  type: simpleicons
-  slug: raycast
-verified: "2026-05-15"
-omd: "0.1"
-ds:
-  name: Raycast Brand
-  url: "https://www.raycast.com/templates/brand-guidelines"
-  type: brand
-  description: Raycast's brand guidelines with colors, logos, and asset kit.
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    background: "#07080a"
-    surface: "#101111"
-    card: "#1b1c1e"
-    white: "#ffffff"
-    accent: "#ff6363"
-    body: "#f9f9f9"
-    secondary: "#cecece"
-    silver: "#c0c0c0"
-    link: "#9c9c9d"
-    dim: "#6a6b6c"
-    dark-gray: "#434345"
-    border: "#2f3031"
-    button-fg: "#18191a"
-    key-start: "#121212"
-    key-end: "#0d0d0d"
-  typography:
-    family: { sans: "Inter", mono: "GeistMono" }
-    display-hero: { size: 64, weight: 600, lineHeight: 1.10, tracking: 0, use: "Hero display" }
-    section:      { size: 56, weight: 400, lineHeight: 1.17, tracking: 0.2, use: "Section display" }
-    heading:      { size: 24, weight: 500, tracking: 0.2, use: "Section heading" }
-    card-heading: { size: 22, weight: 400, lineHeight: 1.15, tracking: 0, use: "Card heading" }
-    body:         { size: 16, weight: 500, lineHeight: 1.60, tracking: 0.2, use: "Primary body text" }
-    button:       { size: 16, weight: 600, lineHeight: 1.15, tracking: 0.3, use: "Button label" }
-    caption:      { size: 14, weight: 500, lineHeight: 1.14, tracking: 0.2, use: "Small labels, metadata" }
-    code:         { size: 14, weight: 500, lineHeight: 1.60, tracking: 0.3, use: "Code blocks (GeistMono)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
-  rounded: { sm: 6, md: 8, lg: 12, full: 9999 }
-  shadow:
-    subtle: "rgba(0,0,0,0.28) 0px 1.189px 2.377px"
-    button-inset: "rgba(255,255,255,0.1) 0px 1px 0px 0px inset"
-    warm-glow: "rgba(215,201,175,0.05) 0px 0px 20px 5px"
-  components:
-    button-primary: { type: button, bg: "transparent", fg: "#ffffff", radius: 9999, padding: "10px 16px", font: "16/600", use: "Primary pill button, inset white highlight" }
-    button-cta: { type: button, fg: "#18191a", radius: 9999, padding: "10px 16px", use: "Hero Download CTA, translucent white fill" }
-    button-ghost: { type: button, bg: "transparent", fg: "#6a6b6c", radius: 9999, padding: "10px 16px", use: "Tertiary action, gray text brightens on hover" }
-    input: { type: input, bg: "#07080a", fg: "#f9f9f9", radius: 8, padding: "10px 12px", use: "Form input on dark, blue focus glow" }
-    card: { type: card, bg: "#101111", fg: "#ffffff", radius: 12, padding: "16px", use: "Default dark card, faint white border" }
-    card-feature: { type: card, bg: "#101111", radius: 20, padding: "24px", use: "Hero/feature card with warm glow" }
-    badge: { type: badge, bg: "#1b1c1e", fg: "#ffffff", radius: 6, padding: "0 6px", font: "14/500", use: "Categorization badge" }
-    nav-top: { type: tab, bg: "#07080a", fg: "#9c9c9d", font: "16/500", use: "Top nav links, white on hover", active: "white text on hover, underline" }
-  components_harvested: true
+colors:
+  background: '#07080a'
+  surface: '#101111'
+  card: '#1b1c1e'
+  white: '#ffffff'
+  accent: '#ff6363'
+  body: '#f9f9f9'
+  secondary: '#cecece'
+  silver: '#c0c0c0'
+  link: '#9c9c9d'
+  dim: '#6a6b6c'
+  dark-gray: '#434345'
+  border: '#2f3031'
+  button-fg: '#18191a'
+  key-start: '#121212'
+  key-end: '#0d0d0d'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: 0px
+    use: Hero display
+  section:
+    fontSize: 56px
+    fontWeight: 400
+    lineHeight: 1.17
+    letterSpacing: 0.2px
+    use: Section display
+  heading:
+    fontSize: 24px
+    fontWeight: 500
+    letterSpacing: 0.2px
+    use: Section heading
+  card-heading:
+    fontSize: 22px
+    fontWeight: 400
+    lineHeight: 1.15
+    letterSpacing: 0px
+    use: Card heading
+  body:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.6
+    letterSpacing: 0.2px
+    use: Primary body text
+  button:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: 0.3px
+    use: Button label
+  caption:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.14
+    letterSpacing: 0.2px
+    use: Small labels, metadata
+  code:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.6
+    letterSpacing: 0.3px
+    use: Code blocks (GeistMono)
+rounded:
+  sm: 6px
+  md: 8px
+  lg: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 40
+  section: 80
+components:
+  button-primary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 10px 16px
+    typography: 16/600
+    use: Primary pill button, inset white highlight
+  button-cta:
+    type: button
+    textColor: '#18191a'
+    rounded: 9999px
+    padding: 10px 16px
+    use: Hero Download CTA, translucent white fill
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#6a6b6c'
+    rounded: 9999px
+    padding: 10px 16px
+    use: Tertiary action, gray text brightens on hover
+  input:
+    type: input
+    backgroundColor: '#07080a'
+    textColor: '#f9f9f9'
+    rounded: 8px
+    padding: 10px 12px
+    use: Form input on dark, blue focus glow
+  card:
+    type: card
+    backgroundColor: '#101111'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 16px
+    use: Default dark card, faint white border
+  card-feature:
+    type: card
+    backgroundColor: '#101111'
+    rounded: 20px
+    padding: 24px
+    use: Hero/feature card with warm glow
+  badge:
+    type: badge
+    backgroundColor: '#1b1c1e'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 0 6px
+    typography: 14/500
+    use: Categorization badge
+  nav-top:
+    type: tab
+    backgroundColor: '#07080a'
+    textColor: '#9c9c9d'
+    typography: 16/500
+    use: Top nav links, white on hover
+    active: white text on hover, underline
+fonts:
+  roles:
+    sans: Inter
+    mono: GeistMono
 ---
 
 # Design System Inspiration of Raycast
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Raycast's marketing site feels like the dark interior of a precision instrument — a Swiss watch case carved from obsidian. The background isn't just dark, it's an almost-black blue-tint (`#07080a`) that creates a sense of being inside a macOS native application rather than a website. Every surface, every border, every shadow is calibrated to evoke the feeling of a high-performance desktop utility: fast, minimal, trustworthy.
 
@@ -81,14 +162,36 @@ Inter is used everywhere — headings, body, buttons, captions — with extensiv
 - Subtle rgba white borders (0.06–0.1 opacity) for containment on dark surfaces
 - Keyboard shortcut styling with gradient key caps and heavy shadows
 
-## Primary tasks
+### Primary tasks
 
 - Launch anything from one window instead of Spotlight.
 - Browse the extension store and install an extension.
 - Run an AI command from inside Raycast.
 - Upgrade to Pro to unlock the AI features.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Raycast was founded **2020** out of **London** by ex-Facebook engineers **Thomas Paul Mann (CEO)** and **Petr Nikolaev (CTO)** — they **met working at Facebook on the same team**, sharing frustration with the clunky productivity tools they used and a desire to build a better Spotlight ([TechCrunch — Raycast $30M Series B 2024-09](https://techcrunch.com/2024/09/25/raycast-raises-30m-to-bring-its-mac-productivity-app-to-windows-and-ios/), [Ness Labs — Thomas Paul Mann interview](https://nesslabs.com/raycast-featured-tool)). Funding ladder: **first round March 18 2020** (seed) → **$15M Series A (November 2021)** led by **Accel + Coatue** ([TechCrunch — Raycast $15M 2021-11](https://techcrunch.com/2021/11/30/developer-productivity-tools-startup-raycast-raises-15m-from-accel-and-coatue/)) → **$30M / €27M Series B (Sept 25 2024)** to expand from Mac to Windows + iOS ([EU-Startups — Raycast €27M Series B 2024-09](https://www.eu-startups.com/2024/09/london-based-raycast-raises-e27-million-series-b-to-help-ios-and-windows-enhance-productivity/)) → **total $47.8M across 4 rounds from 20 investors** including **Accel, Y Combinator, Atomico** ([Tracxn — Raycast](https://tracxn.com/d/companies/raycast/__VNiI9rqA4HFcosfhPf0QoAIcecG3jJRlMCseC8jQeOw)). Mac-native productivity tool — Spotlight replacement that grew into a platform for extensions. Strong adoption among engineers, designers, and prosumers. Brand voice — keyboard-first, prosumer-aesthetic — reflects the product positioning.
+
+### Principles
+
+1. **Keyboard is the interface.** *UI implication:* every action has a keyboard shortcut documented inline.
+2. **Inter with OpenType features.** `calt`, `kern`, `liga`, `ss03`. *UI implication:* don't substitute system fonts.
+3. **Hover via opacity, not color swap.** *UI implication:* preserve opacity-transition pattern.
+4. **Dark prosumer canvas.** *UI implication:* default to dark theme; light theme as secondary.
+5. **Extensions are first-class.** *UI implication:* Store + Extension nav has main-nav placement.
+
+### Personas
+
+*Personas are fictional archetypes informed by Raycast user segments (Mac power users, engineers, prosumer designers), not individual people.*
+
+**Sergey Volkov, 36, Berlin.** Senior engineer, Raycast as Spotlight replacement + AI commands.
+
+**Sofia Park, 31, Seoul.** Product designer with 30+ extensions installed.
+
+**Marcus Webb, 41, San Francisco.** Engineering manager. Raycast Pro subscriber for AI features.
+
+## Colors
 
 ### Primary
 - **Near-Black Blue** (`#07080a`): Primary page background — the foundational void with a subtle blue-cold undertone
@@ -130,7 +233,7 @@ Inter is used everywhere — headings, body, buttons, captions — with extensiv
 - **Keyboard Key Gradient**: Linear gradient from `#121212` (top) to `#0d0d0d` (bottom) — simulates physical key depth
 - **Warm Glow**: `rgba(215, 201, 175, 0.05)` radial spread — subtle warm ambient glow behind featured elements
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Inter` — humanist sans-serif, used everywhere. Fallbacks: `Inter Fallback`, system sans-serif
@@ -165,7 +268,114 @@ Inter is used everywhere — headings, body, buttons, captions — with extensiv
 - **Display restraint**: Hero text at 64px/600 is confident but not oversized — Raycast avoids typographic spectacle in favor of functional elegance
 - **OpenType everywhere**: `ss03` (stylistic set 3) is enabled globally across Inter, giving the typeface a slightly more geometric, tool-like quality
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- **Base unit**: 8px
+- **Scale**: 1px, 2px, 3px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 40px
+- **Section padding**: 80px–120px vertical between major sections
+- **Card padding**: 16px–32px internal spacing
+- **Component gaps**: 8px–16px between related elements
+
+### Grid & Container
+- **Max width**: ~1200px container (breakpoint at 1204px), centered
+- **Column patterns**: Single-column hero, 2–3 column feature grids, full-width showcase sections
+- **App showcase**: Product UI presented in centered window frames
+
+### Whitespace Philosophy
+- **Dramatic negative space**: Sections float in vast dark void, creating cinematic pacing between features
+- **Dense product, sparse marketing**: The product UI screenshots are information-dense, but the surrounding marketing copy uses minimal text with generous spacing
+- **Vertical rhythm**: Consistent 24px–32px gaps between elements within sections
+
+### Border Radius Scale
+- **2px–3px**: Micro-elements, code spans, tiny indicators
+- **4px–5px**: Keyboard keys, small interactive elements
+- **6px**: Buttons, badges, tags — the workhorse radius
+- **8px**: Input fields, inline components
+- **9px–11px**: Images, medium containers
+- **12px**: Standard cards, product screenshots
+- **16px**: Large cards, feature sections
+- **20px**: Hero cards, prominent containers
+- **86px+**: Pill buttons, nav CTAs — full pill shape
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <600px | Single column, stacked cards, hamburger nav, hero text reduces to ~40px |
+| Small Tablet | 600px–768px | 2-column grid begins, nav partially visible |
+| Tablet | 768px–1024px | 2–3 column features, nav expanding, screenshots scale |
+| Desktop | 1024px–1200px | Full layout, all nav links visible, 64px hero display |
+| Large Desktop | >1200px | Max-width container centered, generous side margins |
+
+#### Touch Targets
+- Pill buttons: 86px radius with 20px padding — well above 44px minimum
+- Secondary buttons: 8px padding minimum, but border provides visual target expansion
+- Nav links: 16px text with surrounding padding for accessible touch targets
+
+#### Collapsing Strategy
+- **Navigation**: Full horizontal nav → hamburger at mobile with slide-out menu
+- **Hero**: 64px display → 48px → 36px across breakpoints
+- **Feature grids**: 3-column → 2-column → single-column stack
+- **Product screenshots**: Scale within containers, maintaining macOS window chrome proportions
+- **Keyboard shortcut displays**: Simplify or hide on mobile where keyboard shortcuts are irrelevant
+
+#### Image Behavior
+- Product screenshots scale responsively within fixed-ratio containers
+- Hero diagonal stripe pattern scales proportionally
+- macOS window chrome rounded corners maintained at all sizes
+- No lazy-loading artifacts — images are critical to the product narrative
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Level 0 (Void) | No shadow, `#07080a` surface | Page background |
+| Level 1 (Subtle) | `rgba(0, 0, 0, 0.28) 0px 1.189px 2.377px` | Minimal lift, inline elements |
+| Level 2 (Ring) | `rgb(27, 28, 30) 0px 0px 0px 1px` outer + `rgb(7, 8, 10) 0px 0px 0px 1px inset` inner | Card containment, double-ring technique |
+| Level 3 (Button) | `rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset` + `rgba(255, 255, 255, 0.25) 0px 0px 0px 1px` + `rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset` | macOS-native button press — white highlight top, dark inset bottom |
+| Level 4 (Key) | 5-layer shadow stack with inset press effects | Keyboard shortcut key caps — physical 3D appearance |
+| Level 5 (Floating) | `rgba(0, 0, 0, 0.5) 0px 0px 0px 2px` + `rgba(255, 255, 255, 0.19) 0px 0px 14px` + insets | Command palette, floating panels — heavy depth with glow |
+
+### Shadow Philosophy
+Raycast's shadow system is the most macOS-native on the web. Multi-layer shadows combine:
+- **Outer rings** for containment (replacing traditional borders)
+- **Inset top highlights** (`rgba(255, 255, 255, 0.05–0.25)`) simulating light source from above
+- **Inset bottom darks** (`rgba(0, 0, 0, 0.2)`) simulating shadow underneath
+- The effect is physical: elements feel like glass or brushed metal, not flat rectangles
+
+### Decorative Depth
+- **Warm glow**: `rgba(215, 201, 175, 0.05) 0px 0px 20px 5px` behind featured elements — a subtle warm aura on the cold dark canvas
+- **Blue info glow**: `rgba(0, 153, 255, 0.15)` for interactive state emphasis
+- **Red danger glow**: `rgba(255, 99, 99, 0.15)` for error/destructive state emphasis
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `rgba(0,0,0,0.28) 0px 1.189px 2.377px`
+- `shadow.button-inset`: `rgba(255,255,255,0.1) 0px 1px 0px 0px inset`
+- `shadow.warm-glow`: `rgba(215,201,175,0.05) 0px 0px 20px 5px`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; minimal bounce. **Hover via opacity 0.6** is signature. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 47 — Apple-tier)
+**Tier 1 sources:** https://raycast.com home + /pro (live DOM via playwright — Primary **`#e6e6e6` Light Gray** + Charcoal `#2f3031` text 8px / 36px / 14px·**500**; banner-pill `#130d0e` Deep Black 1000px / 30px (top promo); newsletter inline 4px variant; dark-canvas Outline `rgba(255,255,255,0.05)` 12px on /pro).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** TechCrunch (2021-11 $15M Accel+Coatue + 2024-09 $30M Series B), EU-Startups (€27M Series B), TechFundingNews, Ness Labs (Mann interview), Tracxn ($47.8M total / 20 investors).
+**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured nav-link mid-gray (`#9c9c9d`) — canonical Primary is **`#e6e6e6` Light Gray** 8px (the brand-defining download CTA, missed entirely).
+
+## Components
 
 ### Buttons
 
@@ -270,60 +480,23 @@ Inter is used everywhere — headings, body, buttons, captions — with extensiv
 - Mobile: hamburger, dark theme preserved
 - Sticky: Fixed at top with subtle border separator
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- **Base unit**: 8px
-- **Scale**: 1px, 2px, 3px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 40px
-- **Section padding**: 80px–120px vertical between major sections
-- **Card padding**: 16px–32px internal spacing
-- **Component gaps**: 8px–16px between related elements
+| State | Treatment |
+|---|---|
+| **Empty (no extensions)** | "Browse the Store" CTA + featured grid |
+| **Empty (search)** | "No commands found. Try different keywords." |
+| **Loading (extension loading)** | Subtle skeleton with maintained dimensions |
+| **Loading (AI command)** | Per-token streaming inline |
+| **Error (extension)** | Specific error + reload extension button |
+| **Error (auth)** | Specific cause + re-auth flow |
+| **Success (executed)** | Implicit; result appears |
+| **Success (extension installed)** | Subtle check + immediately available |
+| **Skeleton (results)** | Dark-tone placeholders |
+| **Disabled (no Pro)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
 
-### Grid & Container
-- **Max width**: ~1200px container (breakpoint at 1204px), centered
-- **Column patterns**: Single-column hero, 2–3 column feature grids, full-width showcase sections
-- **App showcase**: Product UI presented in centered window frames
-
-### Whitespace Philosophy
-- **Dramatic negative space**: Sections float in vast dark void, creating cinematic pacing between features
-- **Dense product, sparse marketing**: The product UI screenshots are information-dense, but the surrounding marketing copy uses minimal text with generous spacing
-- **Vertical rhythm**: Consistent 24px–32px gaps between elements within sections
-
-### Border Radius Scale
-- **2px–3px**: Micro-elements, code spans, tiny indicators
-- **4px–5px**: Keyboard keys, small interactive elements
-- **6px**: Buttons, badges, tags — the workhorse radius
-- **8px**: Input fields, inline components
-- **9px–11px**: Images, medium containers
-- **12px**: Standard cards, product screenshots
-- **16px**: Large cards, feature sections
-- **20px**: Hero cards, prominent containers
-- **86px+**: Pill buttons, nav CTAs — full pill shape
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Void) | No shadow, `#07080a` surface | Page background |
-| Level 1 (Subtle) | `rgba(0, 0, 0, 0.28) 0px 1.189px 2.377px` | Minimal lift, inline elements |
-| Level 2 (Ring) | `rgb(27, 28, 30) 0px 0px 0px 1px` outer + `rgb(7, 8, 10) 0px 0px 0px 1px inset` inner | Card containment, double-ring technique |
-| Level 3 (Button) | `rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset` + `rgba(255, 255, 255, 0.25) 0px 0px 0px 1px` + `rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset` | macOS-native button press — white highlight top, dark inset bottom |
-| Level 4 (Key) | 5-layer shadow stack with inset press effects | Keyboard shortcut key caps — physical 3D appearance |
-| Level 5 (Floating) | `rgba(0, 0, 0, 0.5) 0px 0px 0px 2px` + `rgba(255, 255, 255, 0.19) 0px 0px 14px` + insets | Command palette, floating panels — heavy depth with glow |
-
-### Shadow Philosophy
-Raycast's shadow system is the most macOS-native on the web. Multi-layer shadows combine:
-- **Outer rings** for containment (replacing traditional borders)
-- **Inset top highlights** (`rgba(255, 255, 255, 0.05–0.25)`) simulating light source from above
-- **Inset bottom darks** (`rgba(0, 0, 0, 0.2)`) simulating shadow underneath
-- The effect is physical: elements feel like glass or brushed metal, not flat rectangles
-
-### Decorative Depth
-- **Warm glow**: `rgba(215, 201, 175, 0.05) 0px 0px 20px 5px` behind featured elements — a subtle warm aura on the cold dark canvas
-- **Blue info glow**: `rgba(0, 153, 255, 0.15)` for interactive state emphasis
-- **Red danger glow**: `rgba(255, 99, 99, 0.15)` for error/destructive state emphasis
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#07080a` (not pure black) as the background — the blue-cold tint is essential to the Raycast feel
@@ -346,36 +519,23 @@ Raycast's shadow system is the most macOS-native on the web. Multi-layer shadows
 - Apply heavy drop shadows without inset companions — shadows always come in pairs (outer + inset)
 - Use decorative elements, gradients, or colorful backgrounds — the dark void is the stage, content is the performer
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single column, stacked cards, hamburger nav, hero text reduces to ~40px |
-| Small Tablet | 600px–768px | 2-column grid begins, nav partially visible |
-| Tablet | 768px–1024px | 2–3 column features, nav expanding, screenshots scale |
-| Desktop | 1024px–1200px | Full layout, all nav links visible, 64px hero display |
-| Large Desktop | >1200px | Max-width container centered, generous side margins |
+Raycast's voice is **prosumer-confident and keyboard-first.** "Your shortcut to everything" — concise, capability-driven, never marketing-fluff. Dark prosumer canvas + warm gradients signal "Mac native, designed for power users."
 
-### Touch Targets
-- Pill buttons: 86px radius with 20px padding — well above 44px minimum
-- Secondary buttons: 8px padding minimum, but border provides visual target expansion
-- Nav links: 16px text with surrounding padding for accessible touch targets
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Download", "Sign up", "Get started" |
+| Marketing | Capability-list. "Spotlight on steroids" framing |
+| Documentation | Keyboard-shortcut-heavy, code-block-friendly |
+| Error | Specific. "Extension failed to load. Check console for details." |
 
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav → hamburger at mobile with slide-out menu
-- **Hero**: 64px display → 48px → 36px across breakpoints
-- **Feature grids**: 3-column → 2-column → single-column stack
-- **Product screenshots**: Scale within containers, maintaining macOS window chrome proportions
-- **Keyboard shortcut displays**: Simplify or hide on mobile where keyboard shortcuts are irrelevant
+**Voice samples**
+- Tagline: *"Your shortcut to everything"* <!-- verified: raycast.com homepage 2026-05 -->
 
-### Image Behavior
-- Product screenshots scale responsively within fixed-ratio containers
-- Hero diagonal stripe pattern scales proportionally
-- macOS window chrome rounded corners maintained at all sizes
-- No lazy-loading artifacts — images are critical to the product narrative
+**Forbidden phrases.** "Revolutionary launcher". Aggressive Spotlight-comparison framing.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary Background: Near-Black Blue (`#07080a`)
@@ -401,73 +561,8 @@ When refining existing screens generated with this design system:
 4. Confirm Inter has OpenType features `calt`, `kern`, `liga`, `ss03` enabled
 5. Test that hover states use opacity transitions (0.6) not color swaps — this is a core interaction pattern
 
-## 10. Voice & Tone
+## Governance
 
-Raycast's voice is **prosumer-confident and keyboard-first.** "Your shortcut to everything" — concise, capability-driven, never marketing-fluff. Dark prosumer canvas + warm gradients signal "Mac native, designed for power users."
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Download", "Sign up", "Get started" |
-| Marketing | Capability-list. "Spotlight on steroids" framing |
-| Documentation | Keyboard-shortcut-heavy, code-block-friendly |
-| Error | Specific. "Extension failed to load. Check console for details." |
-
-**Voice samples**
-- Tagline: *"Your shortcut to everything"* <!-- verified: raycast.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary launcher". Aggressive Spotlight-comparison framing.
-
-## 11. Brand Narrative
-
-Raycast was founded **2020** out of **London** by ex-Facebook engineers **Thomas Paul Mann (CEO)** and **Petr Nikolaev (CTO)** — they **met working at Facebook on the same team**, sharing frustration with the clunky productivity tools they used and a desire to build a better Spotlight ([TechCrunch — Raycast $30M Series B 2024-09](https://techcrunch.com/2024/09/25/raycast-raises-30m-to-bring-its-mac-productivity-app-to-windows-and-ios/), [Ness Labs — Thomas Paul Mann interview](https://nesslabs.com/raycast-featured-tool)). Funding ladder: **first round March 18 2020** (seed) → **$15M Series A (November 2021)** led by **Accel + Coatue** ([TechCrunch — Raycast $15M 2021-11](https://techcrunch.com/2021/11/30/developer-productivity-tools-startup-raycast-raises-15m-from-accel-and-coatue/)) → **$30M / €27M Series B (Sept 25 2024)** to expand from Mac to Windows + iOS ([EU-Startups — Raycast €27M Series B 2024-09](https://www.eu-startups.com/2024/09/london-based-raycast-raises-e27-million-series-b-to-help-ios-and-windows-enhance-productivity/)) → **total $47.8M across 4 rounds from 20 investors** including **Accel, Y Combinator, Atomico** ([Tracxn — Raycast](https://tracxn.com/d/companies/raycast/__VNiI9rqA4HFcosfhPf0QoAIcecG3jJRlMCseC8jQeOw)). Mac-native productivity tool — Spotlight replacement that grew into a platform for extensions. Strong adoption among engineers, designers, and prosumers. Brand voice — keyboard-first, prosumer-aesthetic — reflects the product positioning.
-
-## 12. Principles
-
-1. **Keyboard is the interface.** *UI implication:* every action has a keyboard shortcut documented inline.
-2. **Inter with OpenType features.** `calt`, `kern`, `liga`, `ss03`. *UI implication:* don't substitute system fonts.
-3. **Hover via opacity, not color swap.** *UI implication:* preserve opacity-transition pattern.
-4. **Dark prosumer canvas.** *UI implication:* default to dark theme; light theme as secondary.
-5. **Extensions are first-class.** *UI implication:* Store + Extension nav has main-nav placement.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Raycast user segments (Mac power users, engineers, prosumer designers), not individual people.*
-
-**Sergey Volkov, 36, Berlin.** Senior engineer, Raycast as Spotlight replacement + AI commands.
-
-**Sofia Park, 31, Seoul.** Product designer with 30+ extensions installed.
-
-**Marcus Webb, 41, San Francisco.** Engineering manager. Raycast Pro subscriber for AI features.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no extensions)** | "Browse the Store" CTA + featured grid |
-| **Empty (search)** | "No commands found. Try different keywords." |
-| **Loading (extension loading)** | Subtle skeleton with maintained dimensions |
-| **Loading (AI command)** | Per-token streaming inline |
-| **Error (extension)** | Specific error + reload extension button |
-| **Error (auth)** | Specific cause + re-auth flow |
-| **Success (executed)** | Implicit; result appears |
-| **Success (extension installed)** | Subtle check + immediately available |
-| **Skeleton (results)** | Dark-tone placeholders |
-| **Disabled (no Pro)** | Upgrade link |
-| **Loading (long task)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; minimal bounce. **Hover via opacity 0.6** is signature. `prefers-reduced-motion: reduce` removes hover transitions.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 47 — Apple-tier)
-**Tier 1 sources:** https://raycast.com home + /pro (live DOM via playwright — Primary **`#e6e6e6` Light Gray** + Charcoal `#2f3031` text 8px / 36px / 14px·**500**; banner-pill `#130d0e` Deep Black 1000px / 30px (top promo); newsletter inline 4px variant; dark-canvas Outline `rgba(255,255,255,0.05)` 12px on /pro).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** TechCrunch (2021-11 $15M Accel+Coatue + 2024-09 $30M Series B), EU-Startups (€27M Series B), TechFundingNews, Ness Labs (Mann interview), Tracxn ($47.8M total / 20 investors).
-**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured nav-link mid-gray (`#9c9c9d`) — canonical Primary is **`#e6e6e6` Light Gray** 8px (the brand-defining download CTA, missed entirely).
+- **Contrast, `button-ghost`.** Text `#6a6b6c` on `#00000000` measures 3.93:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

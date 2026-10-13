@@ -1,0 +1,1077 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "kakaopage",
+    "name": "KakaoPage",
+    "display_name_kr": "카카오페이지",
+    "country": "KR",
+    "category": "consumer-tech",
+    "homepage": "https://page.kakao.com",
+    "primary_color": "#ffd618",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=page.kakao.com&sz=128"
+    },
+    "verified": "2026-09-30",
+    "added": "2026-06-22"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-09-30",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-30",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-web",
+        "url": "https://page.kakao.com/",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-2",
+        "kind": "product-web",
+        "url": "https://page.kakao.com/menu/10010/",
+        "inspected": "2026-09-30"
+      },
+      {
+        "id": "surface-3",
+        "kind": "product-web",
+        "url": "https://page.kakao.com/content/57668776/",
+        "inspected": "2026-09-30"
+      }
+    ],
+    "sources": [
+      {
+        "id": "surface-home",
+        "kind": "product-surface",
+        "url": "https://page.kakao.com/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-2",
+        "kind": "product-surface",
+        "url": "https://page.kakao.com/menu/10010/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-surface-3",
+        "kind": "product-surface",
+        "url": "https://page.kakao.com/content/57668776/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "kakaopage-probe-content",
+        "kind": "product-surface",
+        "url": "https://page.kakao.com/content/57668776/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "kakaocorp-service",
+        "kind": "official-doc",
+        "url": "https://www.kakaocorp.com/page/service/service/KakaoPage",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "notice",
+        "kind": "official-doc",
+        "url": "https://page.kakao.com/notice/",
+        "captured": "2026-09-30"
+      },
+      {
+        "id": "pretendard-license",
+        "kind": "license",
+        "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
+        "captured": "2026-09-30"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (272 x 56, own fill transparent) -> ancestor level 2 div.flex.items-center, bg rgb(255, 214, 24)",
+        "captured": "2026-09-30"
+      },
+      "colors.ink": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "colors.cta-label": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-09-30"
+      },
+      "colors.on-media": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::span",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::body",
+        "captured": "2026-09-30"
+      },
+      "typography.section-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.section-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.section-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.section-title.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.cover-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::span",
+        "captured": "2026-09-30"
+      },
+      "typography.cover-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::span",
+        "captured": "2026-09-30"
+      },
+      "typography.cover-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::span",
+        "captured": "2026-09-30"
+      },
+      "typography.cover-title.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::span",
+        "captured": "2026-09-30"
+      },
+      "typography.cta.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.cta.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.cta.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.cta.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.small-heading.fontSize": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.small-heading.fontWeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.small-heading.lineHeight": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.small-heading.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::h2",
+        "captured": "2026-09-30"
+      },
+      "typography.search.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.search.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.search.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.search.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.footer-link.fontSize": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.footer-link.fontWeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.footer-link.lineHeight": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-09-30"
+      },
+      "typography.footer-link.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.menu-gap": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "spacing.chip-x": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.chip-gap": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "spacing.cta-x": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "rounded.md": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.main-menu-item.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.padding": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.typography": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.states": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.primary-cta.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"12\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button-lg.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"43\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button-lg.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"43\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button-lg.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"43\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button-lg.size": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"43\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button-lg.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"43\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button-lg.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"43\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button.size": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-09-30"
+      },
+      "components.carousel-button.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"61\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.backgroundColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.rounded": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.padding": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.height": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.states": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.reaction-chip.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::[data-omd-capture=\"47\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.textColor": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.height": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.typography": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.states": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.search-input.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"6\"]",
+        "captured": "2026-09-30"
+      },
+      "components.cover-card.type": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div",
+        "captured": "2026-09-30"
+      },
+      "components.cover-card.rounded": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div",
+        "captured": "2026-09-30"
+      },
+      "components.cover-card.size": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div",
+        "captured": "2026-09-30"
+      },
+      "components.cover-card.use": {
+        "surface_id": "home",
+        "source_id": "surface-home",
+        "method": "computed-style",
+        "selector": "home::div",
+        "captured": "2026-09-30"
+      },
+      "components.content-row.type": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "components.content-row.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "components.content-row.size": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "components.content-row.typography": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "components.content-row.use": {
+        "surface_id": "surface-3",
+        "source_id": "surface-surface-3",
+        "method": "computed-style",
+        "selector": "surface-3::li",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.type": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.backgroundColor": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.textColor": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.size": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.typography": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.hover": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.pressed": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.states": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      },
+      "components.first-episode-cta.use": {
+        "surface_id": "surface-3",
+        "source_id": "kakaopage-probe-content",
+        "method": "live-state-probe",
+        "selector": "button 첫 화 보기 (fill painted by ancestor level 2 div.flex.items-center)",
+        "captured": "2026-09-30"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 42,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 7,
+      "extension-component-property": 27,
+      "contrast-ratio": 3,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.cover-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.cta.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.small-heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.search.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.footer-link.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.main-menu-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.main-menu-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.main-menu-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-button-lg.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-button-lg.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-button-lg.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.reaction-chip.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.reaction-chip.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.reaction-chip.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cover-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cover-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.content-row.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.content-row.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.first-episode-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.first-episode-cta.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.first-episode-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.first-episode-cta.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.first-episode-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.main-menu-item",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.reaction-chip",
+        "message": "textColor (#000000) on backgroundColor (#0000000d) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.search-input",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.cta-label",
+        "message": "'cta-label' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.on-media",
+        "message": "'on-media' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "8505de44b83b0bff2de1cf7073e14359b8fc29049653f48b5d82e629822ee7e9",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.section-title.fontSize",
+      "typography.cover-title.fontSize",
+      "typography.cta.fontSize",
+      "typography.small-heading.fontSize",
+      "typography.search.fontSize",
+      "typography.footer-link.fontSize",
+      "rounded.md"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ]
+    }
+  }
+}

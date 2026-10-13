@@ -1,0 +1,411 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "framer",
+    "name": "Framer",
+    "country": "US",
+    "category": "design-tools",
+    "homepage": "https://www.framer.com",
+    "primary_color": "#0055ff",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "framer"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Framer Brand Guidelines",
+      "url": "https://www.framer.com/brand?page=1",
+      "type": "brand",
+      "description": "Official mark, color, and trademark-use guidance.",
+      "og_image": "https://framerusercontent.com/assets/MFmOCFlEnwFAS9IP2HbUEH68axo.jpg"
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "marketing",
+        "url": "https://www.framer.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "surface-2",
+        "kind": "community",
+        "url": "https://www.framer.com/community/marketplace/components/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "surface-3",
+        "kind": "marketing",
+        "url": "https://www.framer.com/pricing",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.framer.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "marketplace-live",
+        "kind": "product-surface",
+        "url": "https://www.framer.com/community/marketplace/components/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "pricing-live",
+        "kind": "product-surface",
+        "url": "https://www.framer.com/pricing",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "brand-guidelines",
+        "kind": "brand-asset",
+        "url": "https://www.framer.com/brand?page=1",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "inter-license",
+        "kind": "license",
+        "url": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.marketplace-surface": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.accent": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.public-body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.public-body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.public-body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.public-body.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.public-body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.compact-x": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.menu-inset": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.compact": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.menu": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.category-card": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.marketplace-menu": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.type": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.padding": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.typography": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.states": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "interaction-capture",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-filter.use": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-category.type": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-category.backgroundColor": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-category.textColor": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-category.rounded": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.marketplace-category.use": {
+        "surface_id": "surface-2",
+        "source_id": "marketplace-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 12,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 1,
+      "extension-component-property": 5,
+      "missing-primary": 1,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.public-body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-filter.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-filter.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-filter.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-category.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketplace-category.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.marketplace-surface",
+        "message": "'marketplace-surface' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent",
+        "message": "'accent' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "dcfbc054f87b69d1c9872cd365880320e320971af1462c1ce05f827b9ece539c",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.marketplace-menu",
+        "value": "rgba(0,0,0,0.08) 0px 3px 6px 0px"
+      }
+    ],
+    "numeric": [
+      "typography.public-body.fontSize",
+      "typography.public-body.letterSpacing",
+      "rounded.compact",
+      "rounded.menu",
+      "rounded.category-card"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "components_harvested",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "public-body"
+      ]
+    }
+  }
+}

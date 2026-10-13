@@ -5,6 +5,19 @@ import { join } from "node:path";
 // dependency in the test tree (js-yaml has no bundled types, so importing it directly
 // was the only tsc error in this project).
 import { SOURCE_TTLS, evaluateReferenceQuality, parseReferenceFrontmatter } from "../scripts/lib/reference-quality.mjs";
+import { readReferenceSource } from "../scripts/lib/reference-source.mjs";
+
+/**
+ * The legacy-shaped source the pipeline evaluates, or null for an adopted Core v2 canonical
+ * (counted separately below, as before). A DESIGN.md v3 file is read through the shared adapter,
+ * which projects its frontmatter from reference.json; a file that does not parse now fails the
+ * test instead of silently dropping out of the counts it defends.
+ */
+function catalogSource(refsDir: string, id: string): string | null {
+  const raw = readFileSync(join(refsDir, id, "DESIGN.md"), "utf8");
+  if (raw.includes("<!-- design-md:section ")) return null;
+  return readReferenceSource(join(refsDir, id)).markdown;
+}
 
 /**
  * Guards against making the catalog look verified without making it truer.
@@ -75,9 +88,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     for (const id of readdirSync(refsDir)) {
       const design = join(refsDir, id, "DESIGN.md");
       if (!existsSync(design)) continue;
-      const markdown = readFileSync(design, "utf8");
-      let front: any;
-      try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+      const markdown = catalogSource(refsDir, id);
+      if (markdown === null) continue;
+      const front: any = parseReferenceFrontmatter(markdown, design);
       const v2 = front?.verification_v2;
       if (!v2?.checked || !Array.isArray(v2.sources)) continue;
       for (const source of v2.sources) {
@@ -108,9 +121,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     for (const id of readdirSync(refsDir)) {
       const design = join(refsDir, id, "DESIGN.md");
       if (!existsSync(design)) continue;
-      const markdown = readFileSync(design, "utf8");
-      let front: any;
-      try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+      const markdown = catalogSource(refsDir, id);
+      if (markdown === null) continue;
+      const front: any = parseReferenceFrontmatter(markdown, design);
       const verification = join(refsDir, id, ".verification.md");
       const result = evaluateReferenceQuality({
         id,
@@ -188,9 +201,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     for (const id of readdirSync(refsDir)) {
       const design = join(refsDir, id, "DESIGN.md");
       if (!existsSync(design)) continue;
-      const markdown = readFileSync(design, "utf8");
-      let front: any;
-      try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+      const markdown = catalogSource(refsDir, id);
+      if (markdown === null) continue;
+      const front: any = parseReferenceFrontmatter(markdown, design);
       const verification = join(refsDir, id, ".verification.md");
       const result = evaluateReferenceQuality({
         id,
@@ -222,8 +235,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     const frontOf = (id: string) => {
       const design = join(refsDir, id, "DESIGN.md");
       if (!existsSync(design)) return null;
-      try { return parseReferenceFrontmatter(readFileSync(design, "utf8"), design) as any; }
-      catch { return null; }
+      const markdown = catalogSource(refsDir, id);
+      return markdown === null ? null : parseReferenceFrontmatter(markdown, design) as any;
     };
     /** The newest `captured` date across a reference's verification_v2 sources. */
     const latestCapture = (id: string) => {
@@ -237,9 +250,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       for (const id of readdirSync(refsDir)) {
         const design = join(refsDir, id, "DESIGN.md");
         if (!existsSync(design)) continue;
-        const markdown = readFileSync(design, "utf8");
-        let front: any;
-        try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+        const markdown = catalogSource(refsDir, id);
+        if (markdown === null) continue;
+        const front: any = parseReferenceFrontmatter(markdown, design);
         const verification = join(refsDir, id, ".verification.md");
         const result = evaluateReferenceQuality({
           id, markdown, frontmatter: front,
@@ -255,9 +268,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       for (const id of readdirSync(refsDir)) {
         const design = join(refsDir, id, "DESIGN.md");
         if (!existsSync(design)) continue;
-        const markdown = readFileSync(design, "utf8");
-        let front: any;
-        try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+        const markdown = catalogSource(refsDir, id);
+        if (markdown === null) continue;
+        const front: any = parseReferenceFrontmatter(markdown, design);
         const verification = join(refsDir, id, ".verification.md");
         const result = evaluateReferenceQuality({
           id,

@@ -1,0 +1,61 @@
+# Reviewed overlay for the baemin conversion. Every fact below is restated from the canonical
+# web/references/baemin/DESIGN.md (sections 3 and 4); nothing is new evidence.
+fonts:
+  faces:
+    BAEMINWORK:
+      name: WORK
+      scripts: [hangul]
+      evidence: [official-product-use]
+      surface: app
+      source: https://www.woowahan.com/report/detail/975?page=1
+      distribution: unresolved
+    Hanna:
+      evidence: [official-distributed-asset]
+      source: https://www.woowahan.com/fonts
+      distribution: public
+      licence: https://www.woowahan.com/fonts/license
+    Jua:
+      evidence: [official-distributed-asset]
+      source: https://www.woowahan.com/fonts
+      distribution: public
+      licence: https://www.woowahan.com/fonts/license
+    Dohyeon:
+      evidence: [official-distributed-asset]
+      source: https://www.woowahan.com/fonts
+      distribution: public
+      licence: https://www.woowahan.com/fonts/license
+    Euljiro:
+      evidence: [official-distributed-asset]
+      source: https://www.woowahan.com/fonts
+      distribution: public
+      licence: https://www.woowahan.com/fonts/license
+    Kkubulim:
+      evidence: [official-distributed-asset]
+      source: https://www.woowahan.com/fonts
+      distribution: public
+      licence: https://www.woowahan.com/fonts/license
+    Pretendard Variable:
+      evidence: [live-surface-use]
+      surface: woowa-corporate, font-catalog
+  safeDefaults:
+    hangul: [Noto Sans KR]
+typesetting:
+  hangul:
+    tracking:
+      baemin-web: normal
+      woowa-corporate:
+        emMin: -0.03
+        emMax: -0.0067
+prose:
+  typography: |
+    ### Brand face, substitute, safe default
+
+    - **Brand face:** WORK (`BAEMINWORK`), the official Baemin app typeface. No authorized browser-loadable WORK file is confirmed, so its distribution is unresolved.
+    - **Substitute:** none chosen. No measured comparison against an open-licence face exists yet.
+    - **Safe default (not the brand face):** Noto Sans KR for Hangul, when a project must install a face. Label it as a fallback; never present it as WORK. The downloadable Baemin catalog faces (Hanna, Jua, Dohyeon, Euljiro, Kkubulim) are display assets, not stand-ins for WORK.
+  cjk: |
+    Tracking is surface-specific. baemin.com renders its measured roles with `normal` tracking. Woowa corporate and font-catalog roles use negative tracking from -0.32px to -1.2px at 14px to 48px, which is -0.0067em to -0.03em of the font size (tracking divided by size). No word-break, line-break, or punctuation rule is verified, so none is declared.
+  knownGaps:
+    - "**Native app type scale.** Exact native-app type sizes and weights for WORK are unresolved; the measured roles are web surfaces."
+    - "**Font file.** No authorized browser-loadable WORK specimen is confirmed, and no substitute has been measured."
+    - "**Keyboard focus.** baemin.com controls measured on 2026-09-29 show no focus-visible indicator (outline none, nothing else changes). This is the measured behaviour, recorded rather than corrected."

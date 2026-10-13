@@ -1,70 +1,152 @@
 ---
-id: accupass
 name: Accupass
-country: TW
-category: consumer-tech
-homepage: "https://www.accupass.com"
-primary_color: "#00aaf5"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=accupass.com&sz=128"
-verified: "2026-06-10"
-added: "2026-06-10"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-10"
-  note: "Blue family is intentionally multi-step: #00aaf5 (category/service accent), #0088d2 (active nav/brand), #2ab3fc (header CTA), #009ce6 (More pill), register CTA runs a #3e97d3→#1074cc gradient. Pink #ff93c2 is the secondary accent for offline-event tags and notices."
-  colors:
-    primary: "#00aaf5"
-    brand: "#0088d2"
-    cta-header: "#2ab3fc"
-    cta-pill: "#009ce6"
-    gradient-start: "#3e97d3"
-    gradient-end: "#1074cc"
-    link-organizer: "#2ea3f2"
-    accent-pink: "#ff93c2"
-    pink-surface: "#ffeef3"
-    canvas: "#ffffff"
-    surface: "#f8fbff"
-    ink: "#212121"
-    heading: "#333333"
-    body: "#757575"
-    muted: "#959ba1"
-    faint: "#b5bac1"
-    hairline: "#d8dde4"
-    footer-dark: "#1a1f23"
-    footer-subtitle: "#6d7278"
-    on-dark: "#f5faff"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Noto Sans", fallback: "Microsoft JhengHei" }
-    event-title: { size: 32, weight: 600, lineHeight: 1.50, use: "Event detail H1" }
-    section:     { size: 23, weight: 600, lineHeight: 1.50, use: "Homepage section H2 (Weekly recommend, Popular Events)" }
-    footer-head: { size: 18, weight: 300, lineHeight: 1.33, use: "Footer column subtitles" }
-    body:        { size: 14, weight: 400, lineHeight: 1.50, use: "Default body, nav, buttons, tags" }
-    body-lg:     { size: 16, weight: 400, lineHeight: 1.50, use: "Event meta rows, calendar link" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, xl: 24, xxl: 48 }
-  rounded: { xs: 3, sm: 4, md: 8, lg: 16, pill: 22, full: 100 }
-  shadow:
-    card: "rgba(0,0,0,0.1) 0px 2px 8px 0px"
-    tag-tinted: "rgba(0,170,245,0.3) 0px 2px 4px 0px"
-  components:
-    button-create-event: { type: button, bg: "#2ab3fc", fg: "#ffffff", radius: "3px", padding: "6px 11px", height: "31px", font: "14px / 400 Noto Sans", use: "Header 'Create Event' CTA — organizer entry point" }
-    button-register: { type: button, bg: "#1074cc", fg: "#ffffff", radius: "4px", padding: "16px", height: "50px", font: "14px / 600 Noto Sans", use: "Event-page 'Register Now' — rendered as linear-gradient #3e97d3 → #1074cc" }
-    button-more: { type: button, bg: "#009ce6", fg: "#ffffff", radius: "22px", padding: "12px 48px", height: "38px", font: "14px / 700 Noto Sans", use: "Section 'More' pill on homepage" }
-    button-service: { type: button, bg: "#00aaf5", fg: "#f5faff", radius: "8px", padding: "8px", height: "36px", font: "14px / 400 Noto Sans", use: "Footer 'Ask ACCUPASS' support button" }
-    badge-category-blue: { type: badge, bg: "#00aaf5", fg: "#ffffff", radius: "4px", padding: "4px 16px", font: "14px / 400 Noto Sans", shadow: "rgba(0,170,245,0.3) 0px 2px 4px", use: "Event category tag (Learning)" }
-    badge-category-pink: { type: badge, bg: "#ff93c2", fg: "#ffffff", radius: "4px", padding: "4px 16px", font: "14px / 400 Noto Sans", use: "Event type tag (Offline Event)" }
-    badge-keyword-chip: { type: badge, fg: "#959ba1", border: "1px solid #d8dde4", radius: "100px", padding: "8px 16px", font: "14px / 400 Noto Sans", use: "Outlined keyword chips on event page (設計系統, UIUX)" }
-    card-event: { type: card, bg: "#ffffff", radius: "16px", shadow: "rgba(0,0,0,0.1) 0px 2px 8px", use: "Homepage event card; image caps top corners 16px 16px 0 0" }
-    nav-tab: { type: tab, active: "text #0088d2", disabled: "#b5bac1 label", font: "14px / 600 Noto Sans", use: "Homepage channel tabs (Featured Events / Learning / Art / Experience)" }
-  components_harvested: true
+colors:
+  primary: '#00aaf5'
+  brand: '#0088d2'
+  cta-header: '#2ab3fc'
+  cta-pill: '#009ce6'
+  gradient-start: '#3e97d3'
+  gradient-end: '#1074cc'
+  link-organizer: '#2ea3f2'
+  accent-pink: '#ff93c2'
+  pink-surface: '#ffeef3'
+  canvas: '#ffffff'
+  surface: '#f8fbff'
+  ink: '#212121'
+  heading: '#333333'
+  body: '#757575'
+  muted: '#959ba1'
+  faint: '#b5bac1'
+  hairline: '#d8dde4'
+  footer-dark: '#1a1f23'
+  footer-subtitle: '#6d7278'
+  on-dark: '#f5faff'
+  on-primary: '#ffffff'
+typography:
+  event-title:
+    fontSize: 32px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Event detail H1
+  section:
+    fontSize: 23px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Homepage section H2 (Weekly recommend, Popular Events)
+  footer-head:
+    fontSize: 18px
+    fontWeight: 300
+    lineHeight: 1.33
+    use: Footer column subtitles
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Default body, nav, buttons, tags
+  body-lg:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Event meta rows, calendar link
+rounded:
+  xs: 3px
+  sm: 4px
+  md: 8px
+  lg: 16px
+  pill: 22px
+  full: 100px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  xl: 24
+  xxl: 48
+components:
+  button-create-event:
+    type: button
+    backgroundColor: '#2ab3fc'
+    textColor: '#ffffff'
+    rounded: 3px
+    padding: 6px 11px
+    height: 31px
+    typography: 14px / 400 Noto Sans
+    use: Header 'Create Event' CTA — organizer entry point
+  button-register:
+    type: button
+    backgroundColor: '#1074cc'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 16px
+    height: 50px
+    typography: 14px / 600 Noto Sans
+    use: 'Event-page ''Register Now'' — rendered as linear-gradient #3e97d3 → #1074cc'
+  button-more:
+    type: button
+    backgroundColor: '#009ce6'
+    textColor: '#ffffff'
+    rounded: 22px
+    padding: 12px 48px
+    height: 38px
+    typography: 14px / 700 Noto Sans
+    use: Section 'More' pill on homepage
+  button-service:
+    type: button
+    backgroundColor: '#00aaf5'
+    textColor: '#f5faff'
+    rounded: 8px
+    padding: 8px
+    height: 36px
+    typography: 14px / 400 Noto Sans
+    use: Footer 'Ask ACCUPASS' support button
+  badge-category-blue:
+    type: badge
+    backgroundColor: '#00aaf5'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 4px 16px
+    typography: 14px / 400 Noto Sans
+    shadow: rgba(0,170,245,0.3) 0px 2px 4px
+    use: Event category tag (Learning)
+  badge-category-pink:
+    type: badge
+    backgroundColor: '#ff93c2'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 4px 16px
+    typography: 14px / 400 Noto Sans
+    use: Event type tag (Offline Event)
+  badge-keyword-chip:
+    type: badge
+    textColor: '#959ba1'
+    border: '1px solid #d8dde4'
+    rounded: 100px
+    padding: 8px 16px
+    typography: 14px / 400 Noto Sans
+    use: Outlined keyword chips on event page (設計系統, UIUX)
+  card-event:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    shadow: rgba(0,0,0,0.1) 0px 2px 8px
+    use: Homepage event card; image caps top corners 16px 16px 0 0
+  nav-tab:
+    type: tab
+    active: 'text #0088d2'
+    disabled: '#b5bac1 label'
+    typography: 14px / 600 Noto Sans
+    use: Homepage channel tabs (Featured Events / Learning / Art / Experience)
+fonts:
+  roles:
+    sans: Noto Sans
+    fallback: Microsoft JhengHei
 ---
 
 # Design System Inspiration of Accupass
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Accupass (活動通) is Taiwan's largest event-discovery and ticketing platform, and its design reads as a bright, busy, optimistic marketplace rather than a polished brand statement. The interface lives on a pure white canvas (`#ffffff`) with the faintest blue-tinted wash (`#f8fbff`) behind content bands, and every accent comes from a family of sky blues — the brand blue `#0088d2` on active navigation, a lighter `#2ab3fc` on the header's "Create Event" button, `#009ce6` on section pills, and the vivid `#00aaf5` on category tags and the "Ask ACCUPASS" service button. The blues are not one token but a gradient of enthusiasm: the closer an element sits to the act of joining an event, the more saturated and luminous the blue becomes, peaking in the event page's registration CTA, which runs an actual `#3e97d3` → `#1074cc` gradient.
 
@@ -82,7 +164,7 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 - Mixed radius vocabulary: 3-4px utility, 16px cards, 22-100px pills
 - Near-black footer (`#1a1f23`) with icy `#f5faff` link text closing every page
 
-## Primary tasks
+### Primary tasks
 
 - Browse events by channel and by area of Taiwan
 - Find free family events with the search chips
@@ -90,7 +172,35 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 - Register for an event and keep the ticket in the app
 - Create an event and publish it as its organizer
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Accupass (活動通) is operated by **Accuvally Inc. (盈科泛利股份有限公司)**, founded by **謝耀輝 (Yao-Hui Hsieh)** and his university classmate **羅子文 (Tzu-Wen Lo)**. The pair left engineering careers (Hsieh had been a Foxconn software engineer in Shenzhen) to start a restaurant-reservation service, AccuSeats, in 2009 — then pivoted into events, launching **Accupass in Taiwan in 2012** and a sister platform, 活動行, in China in 2013. The company's stated mission is to **「壯大亞洲活動生態圈」 (grow the Asian event ecosystem)** — positioning events as a "third space" of life beyond home and work, and Accupass as the infrastructure that connects organizers to audiences across the region.
+
+The company's defining story is survival. After raising roughly NT$200M and expanding aggressively across Chinese cities, Accuvally nearly went bankrupt — founder interviews (今周刊, 換日線, 104掌聲) recount Hsieh contemplating declaring bankruptcy on his own birthday before cutting the company back to its Taiwan core and rebuilding it into the island's dominant event platform. Hsieh's own framing — that every industry needs people with long-term thinking rather than quick-money instincts — explains the product's unglamorous steadiness: a dense, reliable catalog that serves hundreds of thousands of events rather than a flashy brand reinvention.
+
+That history is legible in the design. What Accupass refuses: scarcity theatrics, luxury polish, and the winner-take-all hero aesthetics of Western ticketing brands. What it embraces: marketplace density, a cheerfully stepped blue system that guides users from browsing to registering, a playful pink for the offline moments that are the product's whole point, and an editorial voice (ACCUPASS 生活誌) that treats going out — learning, art, experience — as everyday self-improvement rather than special-occasion consumption.
+
+### Principles
+
+1. **Discovery is the product.** The catalog, not any single event, is what Accupass sells. *UI implication:* optimize for cards-per-screen and scanning rhythm; every section ends with a "More" pill because there is always more.
+2. **Saturation tracks commitment.** The blue family steps up as the user approaches registration. *UI implication:* wayfinding gets `#0088d2`, mid-funnel CTAs get `#2ab3fc`/`#009ce6`, and only the register action gets the `#3e97d3` → `#1074cc` gradient.
+3. **Serve both sides of the stage.** Attendees and organizers are co-equal users. *UI implication:* "Create Event" lives permanently in the global header at the same visual weight as discovery; organizer tooling copy stays as polished as attendee copy.
+4. **Cheerful, not premium.** Events are everyday joy, not luxury goods. *UI implication:* tinted glowing tag shadows, bubblegum pink accents, and emoji-friendly editorial — warmth beats restraint.
+5. **Long-term steadiness over trend-chasing.** The company survived by becoming infrastructure. *UI implication:* conservative type scale, predictable card recipes, and no redesign-of-the-week — reliability is the brand.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Accupass user segments (Taiwanese event-goers and event organizers), not individual people.*
+
+**林佳穎, 27, 台北.** A UX designer who checks Accupass weekly for design workshops and tech meetups. Scans the Learning channel on her commute, taps into an event page, and decides within thirty seconds based on the title, date, and organizer name. Values that registration is two taps and the ticket lives in the app.
+
+**陳威廷, 34, 桃園.** A weekend father hunting 親子 (family) activities. Finds free children's events through blog listicles and the search chips. Cares about location filters and price visibility on the card itself — he will not tap through to discover an event is in Taipei.
+
+**張雅婷, 31, 台中.** Community manager at a SaaS startup who runs monthly meetups through the organizer dashboard. Reads Organizer Academy posts for conversion tips, lives by the attendee-list export, and chose Accupass because her audience already has the app installed.
+
+**黃柏勳, 42, 台北.** An arts organization producer selling ticketed exhibitions and lectures. Needs reliable ticketing, QR check-in that doesn't fail at the door, and a page that renders his long Traditional Chinese event description cleanly.
+
+## Colors
 
 ### Blue Family (Primary System)
 - **Accu Blue** (`#00aaf5`): The most vivid blue — category tags, "Ask ACCUPASS" service button, "Add To Calendar" links. The platform's signature accent.
@@ -123,7 +233,7 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 - **Card Shadow** (`rgba(0,0,0,0.1) 0px 2px 8px`): Event cards.
 - **Tinted Tag Shadow** (`rgba(0,170,245,0.3) 0px 2px 4px` / `rgba(255,147,194,0.3) 0px 2px 4px`): Category tags glow with their own fill color.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Noto Sans` (served as a Next.js optimized webfont)
@@ -147,7 +257,131 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 - **Light footer counterpoint**: footer subtitles run at weight 300 — the only light text in the system, calming the page's exit.
 - **CJK-safe stack**: every weight choice renders predictably in Microsoft JhengHei, so Chinese and English mix freely in the same card.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px
+- Observed scale: 4px, 8px, 12px, 16px, 24px, 48px
+- Tag padding is consistently `4px 16px`; chips `8px 16px`; the register CTA uses an even 16px; the "More" pill stretches to `12px 48px` for a wide tap target
+
+### Grid & Container
+- Homepage is a vertical stack of horizontally scrolling card carousels and card grids, each introduced by a 23px H2 and closed by a centered "More" pill
+- Event cards hold a fixed recipe: cover image (top corners 16px), date line, title, location/price metadata
+- Event detail pages run a two-column desktop layout: content left, sticky registration/organizer module right
+- Area and channel tabs sit directly under the global header, doubling as the primary information architecture
+
+### Whitespace Philosophy
+- **Marketplace density**: Accupass optimizes for how many events fit on screen before scrolling, not for air. Sections are separated by modest vertical gaps and the faint `#f8fbff` wash rather than dramatic spacing.
+- **Cards carry the structure**: because every unit is a shadowed 16px-radius card, the layout stays legible even at high density — the shadow does the separating, not the whitespace.
+- **Footer as a hard stop**: the page always terminates in the near-black `#1a1f23` footer block, a strong horizon line under the airy white catalog.
+
+### Border Radius Scale
+- Tight (3-4px): header CTA, category tags, register CTA — utility actions
+- Medium (8px): service buttons, notice banners
+- Large (16px): event cards, notice pills — the workhorse radius
+- Pill (22px / 36px / 100px): "More" buttons, carousel arrows, keyword chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single-column card lists, sticky bottom register bar, tabs scroll horizontally |
+| Tablet | 640-1024px | 2-3 column card grids, condensed header |
+| Desktop | 1024px+ | Full card carousels, two-column event detail with sticky right rail |
+
+#### Touch Targets
+- Keyword chips at 39px height with `8px 16px` padding — comfortably tappable
+- Register CTA at 50px height — the largest target on the platform, as befits its job
+- Carousel arrows at 40px circles
+- Category tags are display-only metadata at 29px; tap targets route through the parent card
+
+#### Collapsing Strategy
+- Card carousels become vertical lists or horizontal swipe rows on mobile
+- The event detail right rail (registration/organizer) collapses into a fixed bottom action bar
+- Channel and area tabs remain at the top as horizontally scrollable rows
+- The dense footer columns stack vertically while keeping the `#1a1f23` block treatment
+
+#### Image Behavior
+- Event cover images are the card's visual anchor — fixed aspect ratio, top corners rounded to match the 16px card
+- Banner carousel images run full-bleed with translucent `rgba(0, 0, 0, 0.1)` arrow circles overlaid
+- Images never carry their own shadows; the card shadow does the work
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page canvas, text, tabs, outlined chips |
+| Tint (Level 1) | `#f8fbff` / `#ffeef3` background shift | Section bands, notice banners |
+| Card (Level 2) | `rgba(0,0,0,0.1) 0px 2px 8px` | Event cards — the standard elevation |
+| Glow (accent) | `rgba(0,170,245,0.3) 0px 2px 4px` (fill-tinted) | Category tags — chips glow their own color |
+
+**Shadow Philosophy**: Accupass keeps elevation light and literal — one soft neutral shadow level for cards, and that's essentially the whole z-axis. The memorable exception is the tinted micro-shadow under category tags: a blue tag casts a blue shadow (`rgba(0,170,245,0.3)`), a pink tag casts a pink one. It is a small, cheap, characterful trick that makes the tag system feel alive without adding visual weight. Navigation and headers stay shadowless; the dark footer provides closure through contrast rather than depth.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `rgba(0,0,0,0.1) 0px 2px 8px 0px`
+- `shadow.tag-tinted`: `rgba(0,170,245,0.3) 0px 2px 4px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Tab switches, chip hover, button press feedback |
+| `motion-standard` | 240ms | Card hover lift, carousel slide steps, dropdown reveal |
+| `motion-slow` | 400ms | Banner carousel auto-advance transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Default for hovers, tabs, reveals |
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Cards and sheets arriving |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+
+**Motion rules**: Motion at Accupass is carousel-first — the hero banner and card rows slide horizontally at a steady, unhurried pace, and that sideways rhythm is the platform's signature movement. Card hover adds a subtle shadow deepen/lift at `motion-standard`; tags and chips respond at `motion-fast` with opacity shifts. No bounce or spring anywhere — a ticketing platform's motion must read as dependable, and playful energy is delegated to color (pink, glowing tags) rather than physics. Under `prefers-reduced-motion: reduce`, carousels stop auto-advancing and become manually navigable, and hover lifts collapse to instant state changes.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on
+https://www.accupass.com and https://www.accupass.com/event/2605092145291488451008:
+all token-level claims in §1-9 (blue family #0088d2/#2ab3fc/#009ce6/#00aaf5,
+register gradient #3e97d3→#1074cc, pink #ff93c2, card 16px radius +
+rgba(0,0,0,0.1) 0 2px 8px shadow, tinted tag shadows, Noto Sans/Microsoft
+JhengHei stack, 23px/600 section H2, 32px/600 event H1, footer #1a1f23).
+
+Voice samples (§10): blog tagline and post titles fetched verbatim from
+https://blog.accupass.com (2026-06-10); homepage section headings observed live.
+
+Brand narrative (§11): founding facts (謝耀輝 + 羅子文, AccuSeats 2009,
+Accupass Taiwan 2012, 活動行 China 2013, operator Accuvally Inc.
+盈科泛利股份有限公司, mission 壯大亞洲活動生態圈, near-bankruptcy and Taiwan
+refocus) are drawn from public founder interviews and press:
+- https://crossing.cw.com.tw/article/15332 (換日線 founder interview)
+- https://www.businesstoday.com.tw/article/category/154687/post/201912120034
+  (今周刊 — bankruptcy-contemplation story)
+- https://blog.104.com.tw/104bravo-accupass-founder/ (104掌聲 profile)
+- https://meet.bnext.com.tw/articles/view/41647 (Meet創業小聚)
+These were surfaced via web search in this turn; the narrative paraphrases
+rather than quotes, except Hsieh's long-term-thinking sentiment, which is
+paraphrased from the 換日線/104 interviews.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Accupass user segments (attendees, family event-goers, meetup organizers,
+arts producers). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "saturation tracks commitment", "marketplace
+density as a survival-shaped aesthetic") are editorial readings connecting
+observed design to the company's public history, not sourced Accupass
+statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -266,42 +500,22 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 **Tier 2 sources:** none available (getdesign.md/accupass — 404 "No designs found"; styles.refero.design/?q=accupass — no matching results)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px
-- Observed scale: 4px, 8px, 12px, 16px, 24px, 48px
-- Tag padding is consistently `4px 16px`; chips `8px 16px`; the register CTA uses an even 16px; the "More" pill stretches to `12px 48px` for a wide tap target
+| State | Treatment |
+|---|---|
+| **Empty (no search results)** | White canvas, single `#757575` line stating no events match, with suggested keyword chips (`#d8dde4` outline pills) to broaden the search. No illustration clutter. |
+| **Empty (no saved events)** | Muted `#959ba1` one-liner plus a `#009ce6` More-style pill routing back to Popular Events. |
+| **Loading (card grids)** | Skeleton cards at final dimensions — 16px radius blocks with the image area and two text bars, soft pulse on `#f8fbff`. |
+| **Loading (event page)** | Title and meta-row skeletons; the register module renders last so the gradient CTA never flashes unstyled. |
+| **Error (registration failed)** | Inline message above the CTA in plain language stating the cause (sold out, session expired) and the next step. The gradient button stays visible; the error never replaces it. |
+| **Error (page load)** | Friendly full-page message with a retry action and a link back to the homepage catalog. |
+| **Success (registration complete)** | Confirmation view with ticket/QR access front and center and "Add To Calendar" (`#00aaf5`) as the immediate next action. |
+| **Success (event created)** | Organizer redirected to the event dashboard with a quiet inline confirmation — the published page itself is the reward. |
+| **Skeleton** | `#f8fbff`-tinted blocks at final card dimensions, 16px radius, gentle pulse — never spinner-only screens in the catalog. |
+| **Disabled (sold out)** | Register CTA desaturates to a flat grey with explicit "已售完 / Sold Out" label; category tags keep their color so the event remains identifiable. |
 
-### Grid & Container
-- Homepage is a vertical stack of horizontally scrolling card carousels and card grids, each introduced by a 23px H2 and closed by a centered "More" pill
-- Event cards hold a fixed recipe: cover image (top corners 16px), date line, title, location/price metadata
-- Event detail pages run a two-column desktop layout: content left, sticky registration/organizer module right
-- Area and channel tabs sit directly under the global header, doubling as the primary information architecture
-
-### Whitespace Philosophy
-- **Marketplace density**: Accupass optimizes for how many events fit on screen before scrolling, not for air. Sections are separated by modest vertical gaps and the faint `#f8fbff` wash rather than dramatic spacing.
-- **Cards carry the structure**: because every unit is a shadowed 16px-radius card, the layout stays legible even at high density — the shadow does the separating, not the whitespace.
-- **Footer as a hard stop**: the page always terminates in the near-black `#1a1f23` footer block, a strong horizon line under the airy white catalog.
-
-### Border Radius Scale
-- Tight (3-4px): header CTA, category tags, register CTA — utility actions
-- Medium (8px): service buttons, notice banners
-- Large (16px): event cards, notice pills — the workhorse radius
-- Pill (22px / 36px / 100px): "More" buttons, carousel arrows, keyword chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page canvas, text, tabs, outlined chips |
-| Tint (Level 1) | `#f8fbff` / `#ffeef3` background shift | Section bands, notice banners |
-| Card (Level 2) | `rgba(0,0,0,0.1) 0px 2px 8px` | Event cards — the standard elevation |
-| Glow (accent) | `rgba(0,170,245,0.3) 0px 2px 4px` (fill-tinted) | Category tags — chips glow their own color |
-
-**Shadow Philosophy**: Accupass keeps elevation light and literal — one soft neutral shadow level for cards, and that's essentially the whole z-axis. The memorable exception is the tinted micro-shadow under category tags: a blue tag casts a blue shadow (`rgba(0,170,245,0.3)`), a pink tag casts a pink one. It is a small, cheap, characterful trick that makes the tag system feel alive without adding visual weight. Navigation and headers stay shadowless; the dark footer provides closure through contrast rather than depth.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use the blue family directionally — `#0088d2` for wayfinding/active states, `#2ab3fc`/`#009ce6` for mid-level CTAs, and reserve the `#3e97d3` → `#1074cc` gradient for the registration moment
@@ -323,33 +537,27 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 - Introduce a second warm accent beyond pink `#ff93c2`
 - Make the footer white — the dark block is the page's structural full stop
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single-column card lists, sticky bottom register bar, tabs scroll horizontally |
-| Tablet | 640-1024px | 2-3 column card grids, condensed header |
-| Desktop | 1024px+ | Full card carousels, two-column event detail with sticky right rail |
+Accupass speaks like an enthusiastic local friend who always knows what's happening this weekend — **upbeat, practical, and exploratory**. The blog's tagline 「與你一同『探索』生活的更多可能」("exploring more of life's possibilities with you") is the register in one line: the platform sells discovery, not tickets. Platform UI copy stays terse and functional ("Create Event", "Register Now", "Ask ACCUPASS"), while editorial surfaces loosen up with emoji, exclamation marks, and listicle energy. The voice splits cleanly by audience: attendee-facing copy is playful and seasonal; organizer-facing copy (Organizer Academy) is pragmatic and conversion-minded.
 
-### Touch Targets
-- Keyword chips at 39px height with `8px 16px` padding — comfortably tappable
-- Register CTA at 50px height — the largest target on the platform, as befits its job
-- Carousel arrows at 40px circles
-- Category tags are display-only metadata at 29px; tap targets route through the parent card
+| Context | Tone |
+|---|---|
+| Platform UI / buttons | Terse, functional imperatives. "Create Event", "Register Now", "Add To Calendar". |
+| Section headings | Plain catalog labels. "Weekly recommend", "Popular Events", "Event News". |
+| Blog (attendee) | Playful listicle energy — seasonal hooks, 攻略 (strategy-guide) framing, emoji allowed. |
+| Blog (organizer) | Practical growth advice — "必學" (must-learn), conversion and tooling tips. |
+| Notices / help | Friendly and direct: "How to Collect Tickets?" as a pink pill, not buried legalese. |
 
-### Collapsing Strategy
-- Card carousels become vertical lists or horizontal swipe rows on mobile
-- The event detail right rail (registration/organizer) collapses into a fixed bottom action bar
-- Channel and area tabs remain at the top as horizontally scrollable rows
-- The dense footer columns stack vertically while keeping the `#1a1f23` block treatment
+**Voice samples:**
+- 「與你一同『探索』生活的更多可能」 — blog tagline (discovery-framed). *(verified on blog.accupass.com, 2026-06-10)*
+- "GPT-5.5 攻略：活動主辦方必學！用 AI 快速打造高轉換活動頁" — organizer-facing blog title (pragmatic, trend-surfing). *(verified on blog.accupass.com, 2026-06-10)*
+- "2026 兒童節省錢攻略｜全台 10 處免費親子景點大集合！" — attendee-facing blog title (seasonal listicle). *(verified on blog.accupass.com, 2026-06-10)*
+- "Weekly recommend" / "Popular Events" — homepage section headings (plain catalog voice). *(verified live 2026-06-10)*
 
-### Image Behavior
-- Event cover images are the card's visual anchor — fixed aspect ratio, top corners rounded to match the 16px card
-- Banner carousel images run full-bleed with translucent `rgba(0, 0, 0, 0.1)` arrow circles overlaid
-- Images never carry their own shadows; the card shadow does the work
+**Forbidden register**: corporate solemnity, luxury-brand minimal-speak, FOMO-style countdown pressure on editorial surfaces, and untranslated jargon in attendee copy.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Signature accent / service: Accu Blue (`#00aaf5`)
@@ -382,121 +590,12 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Accupass speaks like an enthusiastic local friend who always knows what's happening this weekend — **upbeat, practical, and exploratory**. The blog's tagline 「與你一同『探索』生活的更多可能」("exploring more of life's possibilities with you") is the register in one line: the platform sells discovery, not tickets. Platform UI copy stays terse and functional ("Create Event", "Register Now", "Ask ACCUPASS"), while editorial surfaces loosen up with emoji, exclamation marks, and listicle energy. The voice splits cleanly by audience: attendee-facing copy is playful and seasonal; organizer-facing copy (Organizer Academy) is pragmatic and conversion-minded.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Platform UI / buttons | Terse, functional imperatives. "Create Event", "Register Now", "Add To Calendar". |
-| Section headings | Plain catalog labels. "Weekly recommend", "Popular Events", "Event News". |
-| Blog (attendee) | Playful listicle energy — seasonal hooks, 攻略 (strategy-guide) framing, emoji allowed. |
-| Blog (organizer) | Practical growth advice — "必學" (must-learn), conversion and tooling tips. |
-| Notices / help | Friendly and direct: "How to Collect Tickets?" as a pink pill, not buried legalese. |
-
-**Voice samples:**
-- 「與你一同『探索』生活的更多可能」 — blog tagline (discovery-framed). *(verified on blog.accupass.com, 2026-06-10)*
-- "GPT-5.5 攻略：活動主辦方必學！用 AI 快速打造高轉換活動頁" — organizer-facing blog title (pragmatic, trend-surfing). *(verified on blog.accupass.com, 2026-06-10)*
-- "2026 兒童節省錢攻略｜全台 10 處免費親子景點大集合！" — attendee-facing blog title (seasonal listicle). *(verified on blog.accupass.com, 2026-06-10)*
-- "Weekly recommend" / "Popular Events" — homepage section headings (plain catalog voice). *(verified live 2026-06-10)*
-
-**Forbidden register**: corporate solemnity, luxury-brand minimal-speak, FOMO-style countdown pressure on editorial surfaces, and untranslated jargon in attendee copy.
-
-## 11. Brand Narrative
-
-Accupass (活動通) is operated by **Accuvally Inc. (盈科泛利股份有限公司)**, founded by **謝耀輝 (Yao-Hui Hsieh)** and his university classmate **羅子文 (Tzu-Wen Lo)**. The pair left engineering careers (Hsieh had been a Foxconn software engineer in Shenzhen) to start a restaurant-reservation service, AccuSeats, in 2009 — then pivoted into events, launching **Accupass in Taiwan in 2012** and a sister platform, 活動行, in China in 2013. The company's stated mission is to **「壯大亞洲活動生態圈」 (grow the Asian event ecosystem)** — positioning events as a "third space" of life beyond home and work, and Accupass as the infrastructure that connects organizers to audiences across the region.
-
-The company's defining story is survival. After raising roughly NT$200M and expanding aggressively across Chinese cities, Accuvally nearly went bankrupt — founder interviews (今周刊, 換日線, 104掌聲) recount Hsieh contemplating declaring bankruptcy on his own birthday before cutting the company back to its Taiwan core and rebuilding it into the island's dominant event platform. Hsieh's own framing — that every industry needs people with long-term thinking rather than quick-money instincts — explains the product's unglamorous steadiness: a dense, reliable catalog that serves hundreds of thousands of events rather than a flashy brand reinvention.
-
-That history is legible in the design. What Accupass refuses: scarcity theatrics, luxury polish, and the winner-take-all hero aesthetics of Western ticketing brands. What it embraces: marketplace density, a cheerfully stepped blue system that guides users from browsing to registering, a playful pink for the offline moments that are the product's whole point, and an editorial voice (ACCUPASS 生活誌) that treats going out — learning, art, experience — as everyday self-improvement rather than special-occasion consumption.
-
-## 12. Principles
-
-1. **Discovery is the product.** The catalog, not any single event, is what Accupass sells. *UI implication:* optimize for cards-per-screen and scanning rhythm; every section ends with a "More" pill because there is always more.
-2. **Saturation tracks commitment.** The blue family steps up as the user approaches registration. *UI implication:* wayfinding gets `#0088d2`, mid-funnel CTAs get `#2ab3fc`/`#009ce6`, and only the register action gets the `#3e97d3` → `#1074cc` gradient.
-3. **Serve both sides of the stage.** Attendees and organizers are co-equal users. *UI implication:* "Create Event" lives permanently in the global header at the same visual weight as discovery; organizer tooling copy stays as polished as attendee copy.
-4. **Cheerful, not premium.** Events are everyday joy, not luxury goods. *UI implication:* tinted glowing tag shadows, bubblegum pink accents, and emoji-friendly editorial — warmth beats restraint.
-5. **Long-term steadiness over trend-chasing.** The company survived by becoming infrastructure. *UI implication:* conservative type scale, predictable card recipes, and no redesign-of-the-week — reliability is the brand.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Accupass user segments (Taiwanese event-goers and event organizers), not individual people.*
-
-**林佳穎, 27, 台北.** A UX designer who checks Accupass weekly for design workshops and tech meetups. Scans the Learning channel on her commute, taps into an event page, and decides within thirty seconds based on the title, date, and organizer name. Values that registration is two taps and the ticket lives in the app.
-
-**陳威廷, 34, 桃園.** A weekend father hunting 親子 (family) activities. Finds free children's events through blog listicles and the search chips. Cares about location filters and price visibility on the card itself — he will not tap through to discover an event is in Taipei.
-
-**張雅婷, 31, 台中.** Community manager at a SaaS startup who runs monthly meetups through the organizer dashboard. Reads Organizer Academy posts for conversion tips, lives by the attendee-list export, and chose Accupass because her audience already has the app installed.
-
-**黃柏勳, 42, 台北.** An arts organization producer selling ticketed exhibitions and lectures. Needs reliable ticketing, QR check-in that doesn't fail at the door, and a page that renders his long Traditional Chinese event description cleanly.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no search results)** | White canvas, single `#757575` line stating no events match, with suggested keyword chips (`#d8dde4` outline pills) to broaden the search. No illustration clutter. |
-| **Empty (no saved events)** | Muted `#959ba1` one-liner plus a `#009ce6` More-style pill routing back to Popular Events. |
-| **Loading (card grids)** | Skeleton cards at final dimensions — 16px radius blocks with the image area and two text bars, soft pulse on `#f8fbff`. |
-| **Loading (event page)** | Title and meta-row skeletons; the register module renders last so the gradient CTA never flashes unstyled. |
-| **Error (registration failed)** | Inline message above the CTA in plain language stating the cause (sold out, session expired) and the next step. The gradient button stays visible; the error never replaces it. |
-| **Error (page load)** | Friendly full-page message with a retry action and a link back to the homepage catalog. |
-| **Success (registration complete)** | Confirmation view with ticket/QR access front and center and "Add To Calendar" (`#00aaf5`) as the immediate next action. |
-| **Success (event created)** | Organizer redirected to the event dashboard with a quiet inline confirmation — the published page itself is the reward. |
-| **Skeleton** | `#f8fbff`-tinted blocks at final card dimensions, 16px radius, gentle pulse — never spinner-only screens in the catalog. |
-| **Disabled (sold out)** | Register CTA desaturates to a flat grey with explicit "已售完 / Sold Out" label; category tags keep their color so the event remains identifiable. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Tab switches, chip hover, button press feedback |
-| `motion-standard` | 240ms | Card hover lift, carousel slide steps, dropdown reveal |
-| `motion-slow` | 400ms | Banner carousel auto-advance transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Default for hovers, tabs, reveals |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Cards and sheets arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Motion rules**: Motion at Accupass is carousel-first — the hero banner and card rows slide horizontally at a steady, unhurried pace, and that sideways rhythm is the platform's signature movement. Card hover adds a subtle shadow deepen/lift at `motion-standard`; tags and chips respond at `motion-fast` with opacity shifts. No bounce or spring anywhere — a ticketing platform's motion must read as dependable, and playful energy is delegated to color (pink, glowing tags) rather than physics. Under `prefers-reduced-motion: reduce`, carousels stop auto-advancing and become manually navigable, and hover lifts collapse to instant state changes.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on
-https://www.accupass.com and https://www.accupass.com/event/2605092145291488451008:
-all token-level claims in §1-9 (blue family #0088d2/#2ab3fc/#009ce6/#00aaf5,
-register gradient #3e97d3→#1074cc, pink #ff93c2, card 16px radius +
-rgba(0,0,0,0.1) 0 2px 8px shadow, tinted tag shadows, Noto Sans/Microsoft
-JhengHei stack, 23px/600 section H2, 32px/600 event H1, footer #1a1f23).
-
-Voice samples (§10): blog tagline and post titles fetched verbatim from
-https://blog.accupass.com (2026-06-10); homepage section headings observed live.
-
-Brand narrative (§11): founding facts (謝耀輝 + 羅子文, AccuSeats 2009,
-Accupass Taiwan 2012, 活動行 China 2013, operator Accuvally Inc.
-盈科泛利股份有限公司, mission 壯大亞洲活動生態圈, near-bankruptcy and Taiwan
-refocus) are drawn from public founder interviews and press:
-- https://crossing.cw.com.tw/article/15332 (換日線 founder interview)
-- https://www.businesstoday.com.tw/article/category/154687/post/201912120034
-  (今周刊 — bankruptcy-contemplation story)
-- https://blog.104.com.tw/104bravo-accupass-founder/ (104掌聲 profile)
-- https://meet.bnext.com.tw/articles/view/41647 (Meet創業小聚)
-These were surfaced via web search in this turn; the narrative paraphrases
-rather than quotes, except Hsieh's long-term-thinking sentiment, which is
-paraphrased from the 換日線/104 interviews.
-
-Personas (§13) are fictional archetypes informed by publicly observable
-Accupass user segments (attendees, family event-goers, meetup organizers,
-arts producers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "saturation tracks commitment", "marketplace
-density as a survival-shaped aesthetic") are editorial readings connecting
-observed design to the company's public history, not sourced Accupass
-statements.
--->
+- **Contrast, `button-create-event`.** Text `#ffffff` on `#2ab3fc` measures 2.35:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-more`.** Text `#ffffff` on `#009ce6` measures 3.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-service`.** Text `#f5faff` on `#00aaf5` measures 2.48:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-category-blue`.** Text `#ffffff` on `#00aaf5` measures 2.60:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-category-pink`.** Text `#ffffff` on `#ff93c2` measures 2.06:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

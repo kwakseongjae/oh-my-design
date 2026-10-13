@@ -1,65 +1,117 @@
 ---
-id: jobkorea
-name: "JobKorea"
-country: KR
-category: consumer-tech
-homepage: "https://www.jobkorea.co.kr"
-primary_color: "#083ccc"
-logo:
-  type: favicon
-  slug: "https://www.jobkorea.co.kr/display/images/favicon.png"
-verified: "2026-06-03"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#083ccc"
-    primary-hover: "#012ca2"
-    primary-500: "#1b55f6"
-    primary-400: "#4c7afb"
-    primary-50: "#f0f2fa"
-    point-orange: "#ff6d12"
-    text: "#1a1a1e"
-    text-secondary: "#292c32"
-    text-tertiary: "#575f6c"
-    placeholder: "#949ba8"
-    border: "#e6e8ea"
-    canvas: "#f6f7f8"
-    error: "#fc3b3b"
-    success: "#0dbc7c"
-    white: "#ffffff"
-  typography:
-    family: { sans: "Pretendard", fallback: "Apple SD Gothic Neo, Malgun Gothic, sans-serif" }
-    display: { size: 48, weight: 700, lineHeight: 1.33, tracking: -0.5, use: "Display 1" }
-    h1:      { size: 32, weight: 700, lineHeight: 1.31, tracking: -0.5, use: "H1 heading" }
-    h4:      { size: 20, weight: 600, lineHeight: 1.4, use: "H4 sub-heading" }
-    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Body 2 reading text" }
-    caption: { size: 13, weight: 400, lineHeight: 1.38, use: "Caption 1" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 10, lg: 16, full: 9999 }
-  shadow:
-    card: "rgba(0,0,0,0.06) 0px 2px 8px"
-  components:
-    button-primary: { type: button, bg: "#083ccc", fg: "#ffffff", radius: 10, padding: "0 16px", font: "16px weight 700", use: "Primary CTA, 48px tall, hover #012ca2" }
-    chip-selected: { type: badge, bg: "#f0f2fa", fg: "#083ccc", use: "Selected chip / brand-tinted pill tag fill" }
-    badge-urgent: { type: badge, fg: "#ff6d12", use: "Urgency badge, deadline label" }
-    input: { type: input, bg: "#ffffff", fg: "#1a1a1e", border: "#e6e8ea", use: "Default input, gray border" }
-    card: { type: card, bg: "#ffffff", border: "#e6e8ea", use: "Job-listing card surface, subtle elevation" }
-    badge-error: { type: badge, fg: "#fc3b3b", use: "Form error / destructive indicator" }
-    badge-success: { type: badge, fg: "#0dbc7c", use: "Application success / offer received" }
-  components_harvested: true
+name: JobKorea
+colors:
+  primary: '#083ccc'
+  primary-hover: '#012ca2'
+  primary-500: '#1b55f6'
+  primary-400: '#4c7afb'
+  primary-50: '#f0f2fa'
+  point-orange: '#ff6d12'
+  text: '#1a1a1e'
+  text-secondary: '#292c32'
+  text-tertiary: '#575f6c'
+  placeholder: '#949ba8'
+  border: '#e6e8ea'
+  canvas: '#f6f7f8'
+  error: '#fc3b3b'
+  success: '#0dbc7c'
+  white: '#ffffff'
+typography:
+  display:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: '-0.5px'
+    use: Display 1
+  h1:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.31
+    letterSpacing: '-0.5px'
+    use: H1 heading
+  h4:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: H4 sub-heading
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body 2 reading text
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.38
+    use: Caption 1
+rounded:
+  sm: 4px
+  md: 10px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#083ccc'
+    textColor: '#ffffff'
+    rounded: 10px
+    padding: 0 16px
+    typography: 16px weight 700
+    use: 'Primary CTA, 48px tall, hover #012ca2'
+  chip-selected:
+    type: badge
+    backgroundColor: '#f0f2fa'
+    textColor: '#083ccc'
+    use: Selected chip / brand-tinted pill tag fill
+  badge-urgent:
+    type: badge
+    textColor: '#ff6d12'
+    use: Urgency badge, deadline label
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1a1a1e'
+    border: '#e6e8ea'
+    use: Default input, gray border
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '#e6e8ea'
+    use: Job-listing card surface, subtle elevation
+  badge-error:
+    type: badge
+    textColor: '#fc3b3b'
+    use: Form error / destructive indicator
+  badge-success:
+    type: badge
+    textColor: '#0dbc7c'
+    use: Application success / offer received
+fonts:
+  roles:
+    sans: Pretendard
+    fallback: Apple SD Gothic Neo, Malgun Gothic, sans-serif
 ---
 
 # JobKorea
 
 South Korea's leading AI career platform connecting 9+ million active job seekers with employers through personalized matching, salary intelligence, and community-driven career guidance.
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 JobKorea's visual language is confident and data-forward — the UI is built around a deep royal blue (`#083ccc`, JK Blue 600) that signals authority and trust in a crowded recruitment market. Surfaces stay crisp white with an understated gray-scale hierarchy (`#f6f7f8` background through `#1a1a1e` near-black) so that job listings and CTA buttons read at a glance without fatigue. An accent orange (`#ff6d12`, AM Orange 500) is reserved sparingly for urgency cues — deadline badges, highlighted pay rates — creating a clear urgency hierarchy without overwhelming the functional tone. Since the 2023 "Dreammark" brand refresh the product has leaned into a more youthful, mobile-first energy with pill-radius search bars (border-radius: 999px), gradient-glowing AI search inputs, and subtle card elevation — moving away from its legacy portal feel toward a modern career-management platform.
 
-## Primary tasks
+### Primary tasks
 
 - Find postings matched to you instead of scanning every listing
 - Compare salary and application ratios on a job card before applying
@@ -67,7 +119,45 @@ JobKorea's visual language is confident and data-forward — the UI is built aro
 - Prepare a resume and cover letter from templates and examples
 - Post a job and review the applicants who apply
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+JobKorea was established in 1996 and launched its employment portal in 1998 as one of Korea's first dedicated online job boards. Over nearly three decades it grew into the nation's largest HR platform — now part of the Worxphere group — hosting 9.32 million active resumes and connecting approximately one million monthly active job seekers with employers across every industry and region.
+
+In 2023, JobKorea unveiled its "Dreammark" brand identity, created by branding agency Sodiumpartners. The refresh moved the platform's narrative from a utilitarian job-listing site toward a personalized career manager, with a bold JK Blue identity system and a new brand mascot "Jobko" that embodies the mission: guiding people toward jobs that fit their real selves. The company articulates its purpose as making "people's dreams become jobs, and companies' jobs become dreams," with a social-responsibility dimension — donating 100 KRW per submitted resume and per job posting to welfare programs for people with disabilities and economically marginalized youth.
+
+Today, Worxphere operates JobKorea alongside AlbaMon (part-time), GameJob, NineHire (ATS), and JobPlanet (employer reviews), building toward a full-stack AI HR tech platform. The platform has ranked #1 in Korean employment portal brand power (K-BPI) for three consecutive years (2023–2025), and its AI-powered "LOOP AI" recommendation engine now powers the core job-discovery experience on both web and mobile.
+
+### Principles
+
+1. **Personalization over volume.** JobKorea surfaces fewer, better-matched opportunities rather than an overwhelming list. *UI implication:* The default job feed shows AI-ranked picks, not raw chronological listings; chip filters and saved preferences shape what the user sees from the first visit.*
+
+2. **Transparency builds trust.** Salary data, recruiter view counts, application-to-hire ratios, and company reviews are surfaced inline on job cards — not behind a paywall. *UI implication:* Job cards include a salary indicator and a "N명 지원" (N applied) count next to the title.*
+
+3. **Speed respects the user.** A resume can be submitted in two taps from a job card; the full application flow targets under 60 seconds. *UI implication:* Destructive or multi-step actions require confirmation, but forward-direction actions — apply, save, share — are single-tap with immediate feedback.*
+
+4. **Data earns the right to advise.** JobKorea uses behavioral signals (viewed jobs, resume completeness, location) before making AI recommendations, never cold. *UI implication:* Empty states prompt profile completion rather than showing random content; progress indicators show how close the user is to unlocking personalized matches.*
+
+5. **Inclusive access.** The platform serves job seekers at every career stage — new graduates, mid-career transitioners, seniors, and part-timers — with differentiated content lanes rather than a one-size feed. *UI implication:* Specialized channels (IT, Design, Senior, Startup) are surfaced in persistent GNB tabs and not buried in filter menus.*
+
+### Personas
+
+*Illustrative — not based on published JobKorea research.*
+
+**신입 취준생 (First-time Graduate)** — 24, finishes university in February, applying to large conglomerates and IT firms. Checks the app daily on commute; motivated by application counters and peer benchmarks. Needs resume templates, accepted cover letter examples, and aptitude test prep links within one tap.
+
+*Illustrative — not based on published JobKorea research.*
+
+**경력 이직자 (Mid-Career Switcher)** — 33, 8 years in marketing, wants to move from agency to in-house. Has a complete profile but is selective; visits weekly, not daily. Values salary benchmarking, company culture reviews, and recruiter contact over raw listing volume.
+
+*Illustrative — not based on published JobKorea research.*
+
+**채용담당자 (HR Manager)** — 40, in-house recruiter at a 300-person tech company. Uses the employer dashboard to post jobs, review applicants, and send messages. Needs fast bulk-action tools, applicant status tracking, and analytics on listing performance.
+
+*Illustrative — not based on published JobKorea research.*
+
+**긱 워커 (Gig / Part-time Seeker)** — 28, freelancer top-up income via AlbaMon integration. Wants quick-apply shifts near their location, hourly rate transparency, and immediate availability confirmation.
+
+## Colors
 
 - **JK Blue 600 (Primary):** `#083ccc` — primary CTAs, active states, links, focus rings
 - **JK Blue 500:** `#1b55f6` — hover surfaces, secondary brand tint
@@ -84,7 +174,7 @@ JobKorea's visual language is confident and data-forward — the UI is built aro
 - **Green 500 (Success):** `#0dbc7c` — application success, offer received
 - **Base White:** `#ffffff` — card surfaces, modal backgrounds
 
-## 3. Typography Rules
+## Typography
 
 JobKorea's UI type is set exclusively in **Pretendard**, with Korean fallbacks to Apple SD Gothic Neo and Malgun Gothic. The type scale is named by variant with an embedded px size.
 
@@ -107,7 +197,51 @@ JobKorea's UI type is set exclusively in **Pretendard**, with Korean fallbacks t
 
 Heading tokens carry `letter-spacing: -0.5` for tighter display. Body and caption tokens use `letter-spacing: 0`.
 
-## 4. Component Stylings
+## Layout
+
+JobKorea uses a single max-width content container of **1024px** on desktop, centering all content with full-bleed section backgrounds. The page has two primary breakpoints: mobile-first (≤600px) and desktop (≥1024px), with no intermediate tablet breakpoint declared. Job listing grids use CSS grid or flex with 8px base spacing unit (multiples: 4, 8, 12, 16, 20, 24, 32, 40, 48px). Navigation is sticky with a white background and bottom divider. The GNB maintains a fixed height and collapses into a hamburger on mobile.
+
+### Responsive Behavior
+
+JobKorea is a mobile-first Next.js application (React server components). Below 600px the layout shifts to single-column with full-width cards; the search bar transitions from 600px fixed-width to fluid 100%. Navigation collapses from a full horizontal GNB to a bottom tab bar on mobile. The 1024px container clamps on desktop. Font sizes scale down one step at mobile: Display tokens are avoided; H3 (24px) is the largest practical heading. Button heights prefer the 48px variant on desktop, 40px on mobile for comfortable touch targets.
+
+## Elevation & Depth
+
+JobKorea's elevation system has four named shadow levels:
+
+- **List shadow** (subtle rows): `0 4px 8px rgba(0,0,0,0.02)` — used on list items
+- **Secondary shadow** (card rest): `0 4px 16px rgba(0,0,0,0.07)` — default card state
+- **Default shadow** (interactive card): `0 4px 16px rgba(0,0,0,0.12)` — hovered cards, modals
+- **Up shadow** (bottom sheet): `0 -2px 12px rgba(0,0,0,0.12)` — bottom sheet, sticky CTAs
+- **Button Big shadow**: `0 0 12px rgba(0,0,0,0.20)` — large floating action buttons
+
+Modals use a `rgba(0,0,0,0.6)` dimmer overlay. Tooltips use `#1a1a1ed9` (85% near-black) background.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `rgba(0,0,0,0.06) 0px 2px 8px`
+
+## Motion & Easing
+
+**Duration scale:**
+- 150ms — micro interactions (button press ripple, checkbox check, tab underline shift)
+- 200ms — component state changes (card hover elevation, input focus ring)
+- 300ms — panel transitions (filter drawer slide, dropdown open)
+- 6s — AI search gradient animation (continuous loop, `ease-in-out`)
+
+**Easing:**
+- Standard: `cubic-bezier(0.4, 0, 0.2, 1)` (Material "standard" / ease-in-out) — used for virtually all UI transitions
+- Decelerate: `cubic-bezier(0, 0, 0.2, 1)` — elements entering the screen (drawer slide-in, toast appear)
+
+**Rules:**
+- All color, background-color, border-color, box-shadow, opacity, and transform transitions use the standard easing
+- The AI search bar gradient (`animation: gradient-flow-dynamic 6s ease-in-out infinite`) is the only always-on animation; all other motion is user-triggered
+- Respect `prefers-reduced-motion`: disable the gradient animation and reduce all durations to ≤50ms
+- Skeleton shimmers use a CSS `animation: shimmer` keyframe (opacity 0.4→1→0.4), 1.5s linear infinite
+
+## Components
 
 ### Buttons
 
@@ -222,23 +356,18 @@ Heading tokens carry `letter-spacing: -0.5` for tighter display. Body and captio
 **Tier 2 sources:** getdesign.md/jobkorea — NOT LISTED (no data). refero — no results for JobKorea.
 **Conflicts unresolved:** The 2023 Sodiumpartners rebrand narrative describes "JOBKOREA Black" as the primary brand color, but the live CSS token system (`data-brand-theme=jk`) clearly maps `--themecolor-brand-primary` to `--color-jkblue-600` (#083ccc). The deep blue is used for all primary buttons and interactive states in the current production build; the near-black (#1a1a1e) functions as the primary text color, not the brand color.
 
-## 5. Layout Principles
+### States
 
-JobKorea uses a single max-width content container of **1024px** on desktop, centering all content with full-bleed section backgrounds. The page has two primary breakpoints: mobile-first (≤600px) and desktop (≥1024px), with no intermediate tablet breakpoint declared. Job listing grids use CSS grid or flex with 8px base spacing unit (multiples: 4, 8, 12, 16, 20, 24, 32, 40, 48px). Navigation is sticky with a white background and bottom divider. The GNB maintains a fixed height and collapses into a hamburger on mobile.
+- **Empty (no results):** Illustrated character (Jobko mascot) with headline "맞는 공고가 없어요" + sub-copy suggesting filter adjustment and a ghost CTA to reset filters; never a blank white box
+- **Loading skeleton:** Cards render as gray shimmer blocks matching the exact height and border-radius of the real card (radius 10px, height ~120px); page background remains `#f6f7f8`
+- **Error — network:** Inline banner alert with Red 50 (`#fbf5f5`) background, red border, and retry button; page content beneath is not unmounted
+- **Error — form validation:** Input border shifts to `#f11e1e`, an error message in Red 500 (`#fc3b3b`) at 13px appears below the field; focus moves to the first error field
+- **Success — application submitted:** Full-bleed success toast (Green 500 `#0dbc7c` left-border snackbar) with "지원 완료!" message; job card gains a "지원완료" gray badge and the apply button becomes disabled
+- **Skeleton (list):** Job listing rows show as stacked shimmer bars (title 16px height, company 12px height) with 8px gap; no spinner overlay
+- **Disabled:** Buttons use Gray 200 background (`#d5d8dc`) with Gray 500 text (`#949ba8`); inputs use Gray 50 background (`#f6f7f8`) with normal border; cursor: not-allowed
+- **Hover (card):** Card elevates from flat border to `0 4px 16px rgba(0,0,0,0.12)` shadow; transition 200ms cubic-bezier(0.4, 0, 0.2, 1)
 
-## 6. Depth & Elevation
-
-JobKorea's elevation system has four named shadow levels:
-
-- **List shadow** (subtle rows): `0 4px 8px rgba(0,0,0,0.02)` — used on list items
-- **Secondary shadow** (card rest): `0 4px 16px rgba(0,0,0,0.07)` — default card state
-- **Default shadow** (interactive card): `0 4px 16px rgba(0,0,0,0.12)` — hovered cards, modals
-- **Up shadow** (bottom sheet): `0 -2px 12px rgba(0,0,0,0.12)` — bottom sheet, sticky CTAs
-- **Button Big shadow**: `0 0 12px rgba(0,0,0,0.20)` — large floating action buttons
-
-Modals use a `rgba(0,0,0,0.6)` dimmer overlay. Tooltips use `#1a1a1ed9` (85% near-black) background.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use JK Blue 600 (`#083ccc`) for all primary interactive elements — buttons, active tabs, checked states
@@ -257,23 +386,7 @@ Modals use a `rgba(0,0,0,0.6)` dimmer overlay. Tooltips use `#1a1a1ed9` (85% nea
 - Don't stack more than two elevation levels in the same scroll context (list + modal is fine; list + card + modal is not)
 - Don't use the gray-950 near-black (#1a1a1e) as a button background except for the "inverse" button variant
 
-## 8. Responsive Behavior
-
-JobKorea is a mobile-first Next.js application (React server components). Below 600px the layout shifts to single-column with full-width cards; the search bar transitions from 600px fixed-width to fluid 100%. Navigation collapses from a full horizontal GNB to a bottom tab bar on mobile. The 1024px container clamps on desktop. Font sizes scale down one step at mobile: Display tokens are avoided; H3 (24px) is the largest practical heading. Button heights prefer the 48px variant on desktop, 40px on mobile for comfortable touch targets.
-
-## 9. Agent Prompt Guide
-
-When building JobKorea-style UI:
-- Scaffold the layout with a max-width 1024px centered container, background `#f6f7f8`
-- Primary button: background `#083ccc`, text `#ffffff`, height 48px, border-radius 10px, font-weight 700, font-size 16px (Pretendard)
-- Secondary button: border 1px solid `#d5d8dc`, background `#ffffff`, same radius/height
-- Input field: border 1px solid `#e6e8ea`, background `#ffffff`, height 52px, radius 10px, 16px padding, placeholder color `#949ba8`
-- Search pill: background `#f6f7f8`, radius 999px, height 48px
-- Card: background `#ffffff`, border 1px solid `#e6e8ea`, radius 10px, padding 16px, shadow `0 4px 16px rgba(0,0,0,0.12)` on hover
-- Body text: `#1a1a1e` (primary), `#575f6c` (secondary), `#949ba8` (placeholder)
-- Error text/border: `#fc3b3b`; Success: `#0dbc7c`; Urgency badge: `#ff6d12` background
-
-## 10. Voice & Tone
+## Voice & Tone
 
 JobKorea's voice is **direct, encouraging, and data-grounded** — it speaks like a well-informed career advisor who respects the user's time.
 
@@ -289,69 +402,14 @@ Voice samples (illustrative):
 - *"딱 맞는 공고 3개가 생겼어요. 한번 확인해볼까요?"*
 - *"이력서를 업데이트하면 채용담당자에게 더 잘 보여요. 5분이면 충분해요."*
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-JobKorea was established in 1996 and launched its employment portal in 1998 as one of Korea's first dedicated online job boards. Over nearly three decades it grew into the nation's largest HR platform — now part of the Worxphere group — hosting 9.32 million active resumes and connecting approximately one million monthly active job seekers with employers across every industry and region.
-
-In 2023, JobKorea unveiled its "Dreammark" brand identity, created by branding agency Sodiumpartners. The refresh moved the platform's narrative from a utilitarian job-listing site toward a personalized career manager, with a bold JK Blue identity system and a new brand mascot "Jobko" that embodies the mission: guiding people toward jobs that fit their real selves. The company articulates its purpose as making "people's dreams become jobs, and companies' jobs become dreams," with a social-responsibility dimension — donating 100 KRW per submitted resume and per job posting to welfare programs for people with disabilities and economically marginalized youth.
-
-Today, Worxphere operates JobKorea alongside AlbaMon (part-time), GameJob, NineHire (ATS), and JobPlanet (employer reviews), building toward a full-stack AI HR tech platform. The platform has ranked #1 in Korean employment portal brand power (K-BPI) for three consecutive years (2023–2025), and its AI-powered "LOOP AI" recommendation engine now powers the core job-discovery experience on both web and mobile.
-
-## 12. Principles
-
-1. **Personalization over volume.** JobKorea surfaces fewer, better-matched opportunities rather than an overwhelming list. *UI implication:* The default job feed shows AI-ranked picks, not raw chronological listings; chip filters and saved preferences shape what the user sees from the first visit.*
-
-2. **Transparency builds trust.** Salary data, recruiter view counts, application-to-hire ratios, and company reviews are surfaced inline on job cards — not behind a paywall. *UI implication:* Job cards include a salary indicator and a "N명 지원" (N applied) count next to the title.*
-
-3. **Speed respects the user.** A resume can be submitted in two taps from a job card; the full application flow targets under 60 seconds. *UI implication:* Destructive or multi-step actions require confirmation, but forward-direction actions — apply, save, share — are single-tap with immediate feedback.*
-
-4. **Data earns the right to advise.** JobKorea uses behavioral signals (viewed jobs, resume completeness, location) before making AI recommendations, never cold. *UI implication:* Empty states prompt profile completion rather than showing random content; progress indicators show how close the user is to unlocking personalized matches.*
-
-5. **Inclusive access.** The platform serves job seekers at every career stage — new graduates, mid-career transitioners, seniors, and part-timers — with differentiated content lanes rather than a one-size feed. *UI implication:* Specialized channels (IT, Design, Senior, Startup) are surfaced in persistent GNB tabs and not buried in filter menus.*
-
-## 13. Personas
-
-*Illustrative — not based on published JobKorea research.*
-
-**신입 취준생 (First-time Graduate)** — 24, finishes university in February, applying to large conglomerates and IT firms. Checks the app daily on commute; motivated by application counters and peer benchmarks. Needs resume templates, accepted cover letter examples, and aptitude test prep links within one tap.
-
-*Illustrative — not based on published JobKorea research.*
-
-**경력 이직자 (Mid-Career Switcher)** — 33, 8 years in marketing, wants to move from agency to in-house. Has a complete profile but is selective; visits weekly, not daily. Values salary benchmarking, company culture reviews, and recruiter contact over raw listing volume.
-
-*Illustrative — not based on published JobKorea research.*
-
-**채용담당자 (HR Manager)** — 40, in-house recruiter at a 300-person tech company. Uses the employer dashboard to post jobs, review applicants, and send messages. Needs fast bulk-action tools, applicant status tracking, and analytics on listing performance.
-
-*Illustrative — not based on published JobKorea research.*
-
-**긱 워커 (Gig / Part-time Seeker)** — 28, freelancer top-up income via AlbaMon integration. Wants quick-apply shifts near their location, hourly rate transparency, and immediate availability confirmation.
-
-## 14. States
-
-- **Empty (no results):** Illustrated character (Jobko mascot) with headline "맞는 공고가 없어요" + sub-copy suggesting filter adjustment and a ghost CTA to reset filters; never a blank white box
-- **Loading skeleton:** Cards render as gray shimmer blocks matching the exact height and border-radius of the real card (radius 10px, height ~120px); page background remains `#f6f7f8`
-- **Error — network:** Inline banner alert with Red 50 (`#fbf5f5`) background, red border, and retry button; page content beneath is not unmounted
-- **Error — form validation:** Input border shifts to `#f11e1e`, an error message in Red 500 (`#fc3b3b`) at 13px appears below the field; focus moves to the first error field
-- **Success — application submitted:** Full-bleed success toast (Green 500 `#0dbc7c` left-border snackbar) with "지원 완료!" message; job card gains a "지원완료" gray badge and the apply button becomes disabled
-- **Skeleton (list):** Job listing rows show as stacked shimmer bars (title 16px height, company 12px height) with 8px gap; no spinner overlay
-- **Disabled:** Buttons use Gray 200 background (`#d5d8dc`) with Gray 500 text (`#949ba8`); inputs use Gray 50 background (`#f6f7f8`) with normal border; cursor: not-allowed
-- **Hover (card):** Card elevates from flat border to `0 4px 16px rgba(0,0,0,0.12)` shadow; transition 200ms cubic-bezier(0.4, 0, 0.2, 1)
-
-## 15. Motion & Easing
-
-**Duration scale:**
-- 150ms — micro interactions (button press ripple, checkbox check, tab underline shift)
-- 200ms — component state changes (card hover elevation, input focus ring)
-- 300ms — panel transitions (filter drawer slide, dropdown open)
-- 6s — AI search gradient animation (continuous loop, `ease-in-out`)
-
-**Easing:**
-- Standard: `cubic-bezier(0.4, 0, 0.2, 1)` (Material "standard" / ease-in-out) — used for virtually all UI transitions
-- Decelerate: `cubic-bezier(0, 0, 0.2, 1)` — elements entering the screen (drawer slide-in, toast appear)
-
-**Rules:**
-- All color, background-color, border-color, box-shadow, opacity, and transform transitions use the standard easing
-- The AI search bar gradient (`animation: gradient-flow-dynamic 6s ease-in-out infinite`) is the only always-on animation; all other motion is user-triggered
-- Respect `prefers-reduced-motion`: disable the gradient animation and reduce all durations to ≤50ms
-- Skeleton shimmers use a CSS `animation: shimmer` keyframe (opacity 0.4→1→0.4), 1.5s linear infinite
+When building JobKorea-style UI:
+- Scaffold the layout with a max-width 1024px centered container, background `#f6f7f8`
+- Primary button: background `#083ccc`, text `#ffffff`, height 48px, border-radius 10px, font-weight 700, font-size 16px (Pretendard)
+- Secondary button: border 1px solid `#d5d8dc`, background `#ffffff`, same radius/height
+- Input field: border 1px solid `#e6e8ea`, background `#ffffff`, height 52px, radius 10px, 16px padding, placeholder color `#949ba8`
+- Search pill: background `#f6f7f8`, radius 999px, height 48px
+- Card: background `#ffffff`, border 1px solid `#e6e8ea`, radius 10px, padding 16px, shadow `0 4px 16px rgba(0,0,0,0.12)` on hover
+- Body text: `#1a1a1e` (primary), `#575f6c` (secondary), `#949ba8` (placeholder)
+- Error text/border: `#fc3b3b`; Success: `#0dbc7c`; Urgency badge: `#ff6d12` background

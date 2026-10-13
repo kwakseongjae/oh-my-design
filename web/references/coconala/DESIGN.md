@@ -1,114 +1,79 @@
 ---
-id: coconala
 name: coconala
-country: JP
-category: consumer-tech
-homepage: "https://coconala.com"
-primary_color: "#00A38D"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=coconala.com&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    brand: "#00a38d"
-    brand-hover: "#00866e"
-    brand-press: "#006650"
-    foreground: "#202a2e"
-    text-secondary: "#4d656d"
-    label: "#333333"
-    link: "#0977e5"
-    canvas: "#ffffff"
-    surface: "#f3f4f5"
-    surface-strong: "#e7eaeb"
-    border: "#ced4d6"
-    green-200: "#7ac9bb"
-    blue-500: "#0098ff"
-    orange-500: "#ff9900"
-    red-500: "#ff3b30"
-  typography:
-    family: { sans: "Hiragino Kaku Gothic ProN" }
-    body: { size: 14, weight: 400, use: "system Japanese stack — Hiragino Kaku Gothic ProN, Meiryo, Helvetica Neue" }
-  rounded: { sm: 4, md: 6 }
-  components:
-    button-login: { type: "button", bg: "transparent", fg: "#00a38d", border: "#00a38d", radius: 4, height: "32px", padding: "1px 12px", font: "11px / 600", hover: "rgba(0,163,141,0.04)", pressed: "rgba(0,163,141,0.12)", focus: "rgba(0,163,141,0.12)", use: "ログイン in the header — green label with a 50% green border; hover tints the fill 4%, press and focus 12%." }
-    button-signup: { type: "button", bg: "#00a38d", fg: "#ffffff", border: "#00a38d", radius: 4, height: "32px", padding: "1px 12px", font: "11px / 600", hover: "#00866e", pressed: "#006650", focus: "#006650", use: "会員登録 in the header — the green fill stepping --green-400 → --green-600 → --green-800." }
-    tile-category: { type: "button", bg: "transparent", fg: "#333333", radius: 0, height: "108px", font: "14px / 300", hover: "opacity 0.7", pressed: "fg #363636", use: "One of 19 category tiles (デザイン制作 here) — icon and #333333 label; hover fades the tile to 70% opacity." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://coconala.com/", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://coconala.com/", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://coconala.com/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: company, kind: official-doc, url: "https://coconala.co.jp/company/", captured: "2026-09-26" }
-    - { id: message, kind: official-doc, url: "https://coconala.co.jp/company/message/", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.blue-500: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.brand-press: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.green-200: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.label: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.link: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.orange-500: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.red-500: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.text-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-login.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-login.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-signup.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.tile-category.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.body.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  brand: '#00a38d'
+  brand-hover: '#00866e'
+  brand-press: '#006650'
+  foreground: '#202a2e'
+  text-secondary: '#4d656d'
+  label: '#333333'
+  link: '#0977e5'
+  canvas: '#ffffff'
+  surface: '#f3f4f5'
+  surface-strong: '#e7eaeb'
+  border: '#ced4d6'
+  green-200: '#7ac9bb'
+  blue-500: '#0098ff'
+  orange-500: '#ff9900'
+  red-500: '#ff3b30'
+typography:
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    use: system Japanese stack — Hiragino Kaku Gothic ProN, Meiryo, Helvetica Neue
+rounded:
+  sm: 4px
+  md: 6px
+components:
+  button-login:
+    type: button
+    backgroundColor: transparent
+    textColor: '#00a38d'
+    border: '#00a38d'
+    rounded: 4px
+    height: 32px
+    padding: 1px 12px
+    typography: 11px / 600
+    hover: rgba(0,163,141,0.04)
+    pressed: rgba(0,163,141,0.12)
+    focus: rgba(0,163,141,0.12)
+    use: ログイン in the header — green label with a 50% green border; hover tints the fill 4%, press and focus 12%.
+  button-signup:
+    type: button
+    backgroundColor: '#00a38d'
+    textColor: '#ffffff'
+    border: '#00a38d'
+    rounded: 4px
+    height: 32px
+    padding: 1px 12px
+    typography: 11px / 600
+    hover: '#00866e'
+    pressed: '#006650'
+    focus: '#006650'
+    use: 会員登録 in the header — the green fill stepping --green-400 → --green-600 → --green-800.
+  tile-category:
+    type: button
+    backgroundColor: transparent
+    textColor: '#333333'
+    rounded: 0px
+    height: 108px
+    typography: 14px / 300
+    hover: opacity 0.7
+    pressed: 'fg #363636'
+    use: 'One of 19 category tiles (デザイン制作 here) — icon and #333333 label; hover fades the tile to 70% opacity.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: Hiragino Kaku Gothic ProN
 ---
+
 # Design System Inspiration of coconala
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 coconala (ココナラ) is a skills marketplace where individuals sell services — illustration, design,
 web work, video, marketing, consulting, fortune-telling, counselling and lessons. It is run by
@@ -131,11 +96,27 @@ What makes it worth reading:
 - **A blue-grey neutral ramp.** Its greys lean blue (`#202a2e`, `#4d656d`, `#ced4d6`) rather than
   pure grey.
 
-### Primary tasks
+#### Primary tasks
 - Search and browse services by category.
 - Sign up or log in.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+coconala's vision is for each person to live their own story, made practical as a marketplace for
+individual skills. The interface is a calm frame of blue-greys around one green action colour; the
+colour comes from the sellers' work and the promotions.
+
+### Principles
+
+- **One action colour.** Green, stepped along its own ramp.
+- **Neutrals with a hue.** Blue-leaning greys.
+- **A palette as infrastructure.** Nineteen named ramps with alpha variants.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `coconala.com`: 336 root custom properties, of which Tailwind's
 `--tw-*` (51) and Swiper's variable are excluded. The rest are first-party colour ramps and alpha
@@ -161,7 +142,7 @@ variants.
 **Link** `#0977e5` (`--blue-700`, the tile anchors' colour) · **Blue 500** `#0098ff` ·
 **Orange 500** `#ff9900` · **Red 500** `#ff3b30`.
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -173,7 +154,28 @@ font is an icon font.
 
 Body and links 14px/400; tile labels 14px/300; header buttons 11px/600.
 
-## 4. Component Stylings
+## Layout
+
+- A header with a combined category-and-keyword search, a second navigation row, an orange coupon
+  banner, a three-up promotional carousel and a grid of category tiles.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+Flat; the carousel's arrow buttons sit on white with a `#ced4d6` border.
+
+## Motion & Easing
+
+Not measured.
+
+---
+
+**Tier 1 sources:** https://coconala.com/ (live homepage — 336 root custom properties read via `getComputedStyle`, Tailwind and Swiper excluded; three components measured at rest, hover, pressed and focus, the header inside nested shadow roots, captured 2026-09-26); https://coconala.com/zz-this-does-not-exist (nonsense-path control — HTTP 404, read 2026-09-26); https://coconala.co.jp/company/ (会社概要 — 株式会社ココナラ, coconala Inc., founded 2012-01-04, Sakuragaokacho, Shibuya, Tokyo, read 2026-09-26); https://coconala.co.jp/company/message/ (代表挨拶 — the vision 「一人ひとりが『自分のストーリー』を生きていく世の中をつくる」, read 2026-09-26)
+
+## Components
 
 Measured on the home page. The header lives inside web components (`before-login-header`) with
 buttons in nested shadow roots; focus was read under a real Tab key, and a hover counted only when
@@ -190,16 +192,12 @@ buttons in nested shadow roots; focus was read under a real Tab key, and a hover
 
 4px on header buttons, 6px on the search field, 5–8px on the bottom sign-up bar buttons.
 
-## 5. Layout Principles
+### States
 
-- A header with a combined category-and-keyword search, a second navigation row, an orange coupon
-  banner, a three-up promotional carousel and a grid of category tiles.
+Hover: the sign-up fill darkens to `#00866e`; the log-in button tints 4%; tiles fade to 70%. Press:
+`#006650` and a 12% tint. Focus: the pressed fill plus the browser's ring.
 
-## 6. Depth & Elevation
-
-Flat; the carousel's arrow buttons sit on white with a `#ced4d6` border.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#00a38d` for actions, with `#00866e` hover and `#006650` press.
@@ -211,11 +209,11 @@ Flat; the carousel's arrow buttons sit on white with a `#ced4d6` border.
 - Don't use pure grey neutrals.
 - Don't count Tailwind variables as coconala tokens.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#00a38d` green · `#00866e` hover · `#006650` press · `#202a2e` ink · `#4d656d` secondary ·
@@ -226,35 +224,9 @@ Flat; the carousel's arrow buttons sit on white with a `#ced4d6` border.
 - "An outline twin: green label and 50% green border, filling to 4% green on hover and 12% on
   press."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as authored voice.
+### Known Gaps
 
-## 11. Brand Narrative
-
-coconala's vision is for each person to live their own story, made practical as a marketplace for
-individual skills. The interface is a calm frame of blue-greys around one green action colour; the
-colour comes from the sellers' work and the promotions.
-
-## 12. Principles
-
-- **One action colour.** Green, stepped along its own ramp.
-- **Neutrals with a hue.** Blue-leaning greys.
-- **A palette as infrastructure.** Nineteen named ramps with alpha variants.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Hover: the sign-up fill darkens to `#00866e`; the log-in button tints 4%; tiles fade to 70%. Press:
-`#006650` and a 12% tint. Focus: the pressed fill plus the browser's ring.
-
-## 15. Motion & Easing
-
-Not measured.
-
----
-
-**Tier 1 sources:** https://coconala.com/ (live homepage — 336 root custom properties read via `getComputedStyle`, Tailwind and Swiper excluded; three components measured at rest, hover, pressed and focus, the header inside nested shadow roots, captured 2026-09-26); https://coconala.com/zz-this-does-not-exist (nonsense-path control — HTTP 404, read 2026-09-26); https://coconala.co.jp/company/ (会社概要 — 株式会社ココナラ, coconala Inc., founded 2012-01-04, Sakuragaokacho, Shibuya, Tokyo, read 2026-09-26); https://coconala.co.jp/company/message/ (代表挨拶 — the vision 「一人ひとりが『自分のストーリー』を生きていく世の中をつくる」, read 2026-09-26)
+- **Contrast, `button-signup`.** Text `#ffffff` on `#00a38d` measures 3.17:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tile-category`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

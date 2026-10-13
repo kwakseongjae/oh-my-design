@@ -1,65 +1,145 @@
 ---
-id: cuboai
 name: Cubo Ai
-country: TW
-category: consumer-tech
-homepage: "https://us.getcubo.com/"
-primary_color: "#5be3d3"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=getcubo.com&sz=128"
-verified: "2026-06-17"
-added: "2026-06-17"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "primary = live teal CTA pill (#5be3d3); deeper teal (#24cdb9) carries headings/accents. Warm parent-friendly accents: coral (#ff8784), amber (#ffb516), sky (#4cc3e5). Text is soft charcoal (#4b4b4b), never pure black for body. museo-sans-rounded throughout, headings weight 600."
-  colors:
-    primary: "#5be3d3"
-    primary-deep: "#24cdb9"
-    mint-tint: "#bbefe9"
-    mint-faint: "#e9f4f3"
-    coral: "#ff8784"
-    amber: "#ffb516"
-    amber-soft: "#ffcf68"
-    sky: "#4cc3e5"
-    ink: "#4b4b4b"
-    ink-soft: "#6d6d6d"
-    muted: "#9a9a9a"
-    canvas: "#ffffff"
-    surface: "#ebebef"
-    surface-deep: "#dddddd"
-    hairline: "#dedede"
-    on-primary: "#4b4b4b"
-  typography:
-    family: { display: "museo-sans-rounded", body: "museo-sans-rounded" }
-    display-hero: { size: 40, weight: 600, lineHeight: 1.20, use: "Page H1 (product / About hero), Museo Sans Rounded SemiBold" }
-    section:      { size: 32, weight: 600, lineHeight: 1.20, use: "Section titles, Museo Sans Rounded SemiBold" }
-    subsection:   { size: 24, weight: 600, lineHeight: 1.20, use: "Card / feature heads" }
-    label:        { size: 18, weight: 600, lineHeight: 1.20, use: "Feature pill labels (Safety/Sleep/Health/Memories)" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text, charcoal" }
-    button:       { size: 20, weight: 700, lineHeight: 1.20, use: "Primary CTA label (Bold)" }
-    button-sm:    { size: 14, weight: 600, lineHeight: 1.20, use: "Compact add-to-cart label" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 25, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 12, lg: 50, full: 9999 }
-  shadow:
-    soft: "rgba(0,0,0,0.08) 0px 4px 6px 0px"
-  components:
-    button-primary: { type: button, bg: "#5be3d3", fg: "#4b4b4b", radius: "50px", padding: "12px 20px", height: "48px", font: "20px / 700 museo-sans-rounded", use: "Primary teal CTA pill (Go to Shop / Checkout)" }
-    button-add: { type: button, bg: "#5be3d3", fg: "#4b4b4b", radius: "50px", padding: "5px 8px", height: "28px", font: "14px / 600 museo-sans-rounded", shadow: "rgba(0,0,0,0.08) 0px 4px 6px", use: "Compact add-to-cart quantity button" }
-    input-pill: { type: input, bg: "#ffffff", fg: "#4b4b4b", radius: "50px", padding: "16px 20px", height: "52px", font: "16px museo-sans-rounded", use: "Newsletter / form pill input, placeholder #4b4b4b" }
-    feature-pill: { type: badge, bg: "#24cdb9", fg: "#ffffff", radius: "9999px", font: "18px / 600 museo-sans-rounded", use: "Feature category pill (Safety / Sleep / Health / Memories)" }
-    card-surface: { type: card, bg: "#ebebef", fg: "#4b4b4b", radius: "12px", use: "Grey product / content card surface" }
-    card-canvas: { type: card, bg: "#ffffff", fg: "#4b4b4b", radius: "12px", use: "White feature card, 1px #dedede hairline" }
-    nav-link: { type: tab, fg: "#6d6d6d", font: "16px / 400 museo-sans-rounded", active: "teal #24cdb9 text on active", use: "Top nav / footer link" }
-    country-row: { type: listItem, bg: "#ffffff", fg: "#4b4b4b", height: "38px", padding: "10px 25px 10px 20px", font: "16px museo-sans-rounded", use: "Region selector dropdown row" }
-  components_harvested: true
+colors:
+  primary: '#5be3d3'
+  primary-deep: '#24cdb9'
+  mint-tint: '#bbefe9'
+  mint-faint: '#e9f4f3'
+  coral: '#ff8784'
+  amber: '#ffb516'
+  amber-soft: '#ffcf68'
+  sky: '#4cc3e5'
+  ink: '#4b4b4b'
+  ink-soft: '#6d6d6d'
+  muted: '#9a9a9a'
+  canvas: '#ffffff'
+  surface: '#ebebef'
+  surface-deep: '#dddddd'
+  hairline: '#dedede'
+  on-primary: '#4b4b4b'
+typography:
+  display-hero:
+    fontSize: 40px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Page H1 (product / About hero), Museo Sans Rounded SemiBold
+  section:
+    fontSize: 32px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Section titles, Museo Sans Rounded SemiBold
+  subsection:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Card / feature heads
+  label:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Feature pill labels (Safety/Sleep/Health/Memories)
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text, charcoal
+  button:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Primary CTA label (Bold)
+  button-sm:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Compact add-to-cart label
+rounded:
+  sm: 4px
+  md: 12px
+  lg: 50px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 25
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#5be3d3'
+    textColor: '#4b4b4b'
+    rounded: 50px
+    padding: 12px 20px
+    height: 48px
+    typography: 20px / 700 museo-sans-rounded
+    use: Primary teal CTA pill (Go to Shop / Checkout)
+  button-add:
+    type: button
+    backgroundColor: '#5be3d3'
+    textColor: '#4b4b4b'
+    rounded: 50px
+    padding: 5px 8px
+    height: 28px
+    typography: 14px / 600 museo-sans-rounded
+    shadow: rgba(0,0,0,0.08) 0px 4px 6px
+    use: Compact add-to-cart quantity button
+  input-pill:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#4b4b4b'
+    rounded: 50px
+    padding: 16px 20px
+    height: 52px
+    typography: 16px museo-sans-rounded
+    use: 'Newsletter / form pill input, placeholder #4b4b4b'
+  feature-pill:
+    type: badge
+    backgroundColor: '#24cdb9'
+    textColor: '#ffffff'
+    rounded: 9999px
+    typography: 18px / 600 museo-sans-rounded
+    use: Feature category pill (Safety / Sleep / Health / Memories)
+  card-surface:
+    type: card
+    backgroundColor: '#ebebef'
+    textColor: '#4b4b4b'
+    rounded: 12px
+    use: Grey product / content card surface
+  card-canvas:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#4b4b4b'
+    rounded: 12px
+    use: 'White feature card, 1px #dedede hairline'
+  nav-link:
+    type: tab
+    textColor: '#6d6d6d'
+    typography: 16px / 400 museo-sans-rounded
+    active: 'teal #24cdb9 text on active'
+    use: Top nav / footer link
+  country-row:
+    type: listItem
+    backgroundColor: '#ffffff'
+    textColor: '#4b4b4b'
+    height: 38px
+    padding: 10px 25px 10px 20px
+    typography: 16px museo-sans-rounded
+    use: Region selector dropdown row
+fonts:
+  roles:
+    display: museo-sans-rounded
+    body: museo-sans-rounded
 ---
 
 # Design System Inspiration of Cubo Ai
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Cubo Ai (built by Taiwan's Cubo brand) is an AI smart baby monitor — a bird-shaped camera plus sleep sensor — and its storefront is engineered to lower the heart rate of an anxious new parent. The canvas is pure white (`#ffffff`) broken up by soft, cool-grey surfaces (`#ebebef`) and faint mint tints (`#e9f4f3`), so the page reads as airy and calm rather than busy or salesy. Text sits in a warm soft charcoal (`#4b4b4b`) — deliberately never pure black for body copy — which keeps the long-form reassurance ("we know parents deserve better") gentle instead of clinical. The single saturated brand color is a fresh aqua teal (`#5be3d3`), reserved almost entirely for the call-to-action pill, training the eye to read that one mint-teal capsule as "the safe next step."
 
@@ -77,7 +157,7 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 - Near-flat depth: tinted `#ebebef` surfaces + `#dedede` hairlines, only a soft shadow on small controls
 - Warm nursery accents — coral (`#ff8784`), amber (`#ffb516`), sky (`#4cc3e5`)
 
-## Primary tasks
+### Primary tasks
 
 - Compare the monitor's safety features before deciding to buy
 - Browse the features by category - safety, sleep, health, memories
@@ -85,7 +165,33 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 - Switch the store to your own country or region
 - Read what the brand promises parents on its About page
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Cubo Ai is the smart-baby-monitor brand built by **Cubo** (parent company Yun Yun AI Baby Camera Co., headquartered in **Taiwan**), an award-winning hardware company whose signature product is a **bird-shaped AI camera paired with a sleep sensor pad**. The founding premise, stated plainly on the About page, is that "parents deserve better" — that the legacy baby-monitor category had left worried new parents with grainy video and constant false alarms instead of genuine peace of mind. Cubo's answer was to put proactive AI (covered-face and rollover detection, danger-zone alerts, true cry detection, sleep analytics) behind a soft, friendly industrial design that doesn't look like surveillance equipment.
+
+The brand frames "Parenthood is an exploration" as its emotional thesis: the product exists to support parents through an uncertain journey, not to police them. The About page surfaces hard outcome numbers — hundreds of millions of hours of sleep monitored and hundreds of thousands of families served across more than a hundred-plus countries — as evidence of trust earned at scale, while the design language stays soft and reassuring rather than boastful.
+
+What Cubo Ai refuses, visible in its design: the cold, alarm-coded aesthetic of security cameras (no hard reds, no surveillance-grid imagery), and the dark-pattern urgency of fear-driven baby-safety marketing. What it embraces: a rounded, bird-shaped hardware form echoed in Museo Sans Rounded typography; a single calming teal; warm nursery accents (coral, amber, sky); and copy that decodes a stressful domain into reassurance.
+
+### Principles
+
+1. **Reduce anxiety, don't manufacture it.** A safety product that scares parents has failed at its job. *UI implication:* lead with reassurance and peace of mind; avoid alarm-coded reds and fear framing; keep the teal calm, not urgent.
+2. **Softness is trust.** The rounded device, rounded type, and pill geometry all signal a product that is gentle, not clinical. *UI implication:* favor capsule shapes (50px CTA/input radius), rounded letterforms, and soft charcoal text over hard black.
+3. **One action, one color.** Teal (`#5be3d3`) means "do this." *UI implication:* reserve the saturated teal exclusively for the primary CTA so the next step is never ambiguous.
+4. **Calm and near-flat.** Clean, uncluttered surfaces beat decorative depth. *UI implication:* separate with tint and hairlines; reserve shadow for the smallest controls only.
+5. **Warmth in the accents.** The supporting palette is a nursery, not a gadget rack. *UI implication:* use coral, amber, and sky for feature iconography and highlights to keep the product human.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Cubo Ai user segments (first-time parents, anxious caregivers, dual-income households), not individual people.*
+
+**Emily Carter, 32, Austin.** A first-time mother in the fourth-trimester fog. Distrusts grainy legacy monitors and constant false alarms; wants to glance at her phone and feel calm, not interrogate a feed. Chose Cubo Ai because the storefront felt reassuring rather than alarmist, and the bird-shaped camera "looked like it belonged in a nursery."
+
+**Daniel Lin, 38, Taipei.** A dual-income dad evaluating safety features (covered-face, rollover, danger-zone) before buying. Appreciates that the product explains how each feature reduces worry instead of listing scary scenarios. Trusts a hometown Taiwanese hardware brand that pairs real AI with a soft, parent-friendly design.
+
+**Priya Nair, 29, London.** A returning-to-work mother who relies on sleep analytics and auto-captured photo memories. Wants a calm interface she can scan at 3 a.m. without being jolted by harsh colors. Values the warm, rounded tone and the single clear teal action.
+
+## Colors
 
 ### Primary
 - **Cubo Teal** (`#5be3d3`): Primary brand color and CTA background. The fresh aqua-mint on every "Go to Shop" / "Checkout" pill — the system's single "action" color.
@@ -113,7 +219,7 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 - **Ink Soft** (`#6d6d6d`): Secondary copy, nav, sub-heads.
 - **Muted** (`#9a9a9a`): Tertiary text, captions, metadata.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display & Body**: `museo-sans-rounded` (with `sans-serif` and `Corbel` / `Corbel Bold` fallbacks) — a single rounded humanist sans used for headlines, labels, body, and buttons alike. SemiBold (600) at display sizes, Regular (400) for body, Bold (700) for the CTA.
@@ -136,7 +242,127 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 - **Rounded as brand DNA**: The circular terminals of Museo Sans Rounded deliberately rhyme with the rounded, bird-shaped camera — softness is the typographic signature.
 - **Charcoal over black**: Text is `#4b4b4b`, never `#000000` for body, to keep the long reassurance copy gentle.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px
+- Scale: 4px, 8px, 12px, 16px, 20px, 25px, 48px, 64px
+- Notable: Region rows use an asymmetric 10px 25px 10px 20px padding; CTA pills use 12px 20px; pill inputs use a generous 16px 20px for a comfortable tap target
+
+### Grid & Container
+- Centered single-column heroes anchored by a 40px Museo Sans Rounded H1
+- Feature categories arranged as a row of full-round teal pills (Safety / Sleep / Health / Memories)
+- Product / About sections alternate white (`#ffffff`) and tinted grey (`#ebebef`) full-width bands
+- Cards use a 12px radius and group related features, specs, and comparison rows
+
+### Whitespace Philosophy
+- **Calm over density**: a hardware storefront that resists clutter — generous vertical rhythm keeps an anxious parent's eye relaxed.
+- **Flat segmentation**: sections separate by background tint (`#ebebef` vs `#ffffff`) and hairlines, not by heavy elevation.
+- **Pill rhythm**: the repeated 50px-radius capsule (CTA, inputs, chips) sets a consistent rounded cadence across the page.
+
+### Border Radius Scale
+- Small (4px): inner media wells, small containers
+- Medium (12px): cards and content containers — the workhorse
+- Large (50px): CTA pills and pill inputs
+- Full (9999px): feature-category chips, soft circular badges
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero H1 compresses, feature pills wrap |
+| Tablet | 640-1024px | Moderate padding, 2-up feature / product cards |
+| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+
+#### Touch Targets
+- Primary CTA pill at 48px height, full pill for an unmistakable target
+- Pill inputs at 52px height with 16px 20px padding — comfortably tappable
+- Region rows at 38px height with generous horizontal padding
+- Feature chips spaced for touch in the pill row
+
+#### Collapsing Strategy
+- Hero: 40px Museo Sans Rounded H1 scales down on mobile, weight 600 maintained
+- Feature pill row: horizontal wrap on narrow viewports
+- Product / feature bands: multi-column → stacked single column
+- Tinted / white alternating sections maintain full-width treatment
+
+#### Image Behavior
+- Product and lifestyle photography sits on white or tinted-grey wells, minimal shadow
+- Cards maintain a 12px radius across breakpoints
+- Device close-ups keep their soft, rounded framing consistent with the brand geometry
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
+| Tint (Level 1) | `#ebebef` background shift | Card / section separation without elevation |
+| Hairline (Level 2) | `1px solid #dedede` border | White card outlines, dividers |
+| Soft (Level 3) | `rgba(0,0,0,0.08) 0px 4px 6px` | Small floating controls (compact add button) |
+
+**Shadow Philosophy**: Cubo Ai is a near-flat system. Live inspection found `box-shadow: none` across the hero, nav, headings, and most cards; the only shadow observed is a soft `rgba(0,0,0,0.08) 0px 4px 6px` on the small add-to-cart control. Depth and grouping are carried almost entirely by flat tinted surfaces (`#ebebef`, `#dddddd`) and thin `#dedede` hairlines. This keeps the storefront calm and modern — the opposite of heavy, alarm-coded security-camera marketing. When emphasis is needed, the system reaches for color (teal `#5be3d3`, coral `#ff8784`, amber `#ffb516`), never elevation.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.soft`: `rgba(0,0,0,0.08) 0px 4px 6px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 220ms | Card / section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, chips |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is gentle and functional — consistent with the calm, near-flat aesthetic. Pill chips and CTAs respond to press with a subtle scale/opacity shift; feature cards fade-in from below at `motion-standard / ease-enter`. No harsh bounce or jolt — a baby-monitor brand signals steadiness and reassurance, not playful surprise. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on 3 brand-owned surfaces:
+- https://us.getcubo.com/ (homepage)
+- https://us.getcubo.com/products/cuboai-smart-baby-monitor (product page "CuboAi Smart Baby Monitor 3")
+- https://us.getcubo.com/pages/cuboai-about-us (About Us brand/mission page)
+
+Observed values backing §1-9 tokens:
+- Primary CTA "Go to Shop"/"Checkout": bg rgb(91,227,211) #5be3d3 / color rgb(75,75,75) #4b4b4b / radius 50px / padding 12px 20px / 20px weight 700 / museo-sans-rounded
+- Compact "Add": bg #5be3d3 / radius 50px / padding 5px 8px / 14px weight 600 / shadow rgba(0,0,0,0.08) 0px 4px 6px
+- Feature pills (Safety/Sleep/Health/Memories): deep teal rgb(36,206,185) #24cdb9 / white text / 18px weight 600
+- H1 40px / H2 32px / H3 24px all weight 600, color rgb(75,75,75), museo-sans-rounded
+- Pill inputs (About page newsletter): white bg / radius 50px / padding 16px 20px / 52px height / 16px
+- Surfaces: rgb(235,235,239) #ebebef, rgb(221,221,221) #dddddd; hairline rgb(222,222,222) #dedede
+- Warm accents: coral rgb(255,135,132) #ff8784, amber rgb(255,181,22) #ffb516, amber-soft rgb(255,207,104) #ffcf68, sky rgb(76,195,229) #4cc3e5, mint rgb(187,239,233) #bbefe9, mint-faint rgb(233,244,243) #e9f4f3
+- box-shadow: none across hero/nav/headings/most cards (near-flat system); soft shadow only on small add control
+
+Voice samples (§10) are verbatim from the live brand surfaces (homepage/product feature heading, About Us hero and headings).
+
+Brand narrative (§11): Cubo Ai is the smart-baby-monitor brand by Cubo (Yun Yun AI Baby Camera Co.),
+a Taiwan-based hardware company; signature bird-shaped AI camera + sleep sensor. The "parents deserve better"
+and "Parenthood is an exploration" framing and the outcome statistics are stated on the live About Us page;
+broader company facts are general public knowledge, not directly quoted beyond the About page.
+
+Personas (§13) are fictional archetypes informed by publicly observable Cubo Ai user segments
+(first-time parents, anxious caregivers). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "rounded type echoes the bird-shaped device", "reduce anxiety, don't manufacture it"
+as a rejection of alarm-coded security marketing) are editorial readings connecting Cubo Ai's observed design
+to its parent-first positioning, not directly sourced Cubo statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -217,42 +443,21 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 **Tier 2 sources:** getdesign.md/cuboai — no coverage ("No designs found"); styles.refero.design/?q=cubo — no matching Cubo Ai entry (generic gallery results only)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 12px, 16px, 20px, 25px, 48px, 64px
-- Notable: Region rows use an asymmetric 10px 25px 10px 20px padding; CTA pills use 12px 20px; pill inputs use a generous 16px 20px for a comfortable tap target
+| State | Treatment |
+|---|---|
+| **Empty (no recorded events)** | White canvas. Single Soft Charcoal (`#4b4b4b`) line at body size in a calm tone explaining nothing has been recorded yet, with one teal CTA. No alarm imagery. |
+| **Empty (saved memories, none yet)** | Muted (`#9a9a9a`) single line: nothing saved yet, plus a gentle path forward. Reassuring, never empty-scary. |
+| **Loading (feed / results fetch)** | Skeleton blocks on `#ebebef` tinted surface at final card dimensions, 12px radius. Flat pulse consistent with the near-flat system — no harsh shimmer. |
+| **Loading (in-place refresh)** | Subtle inline progress in teal; previous content stays visible. Never blank the safety feed during refresh. |
+| **Error (connection lost)** | Inline message in Soft Charcoal with a plain-language explanation and a retry. Calm, not alarmist — states what to do next, no scary red banner. |
+| **Error (form validation)** | Field-level message below the pill input in a warm tone; describes what's valid, not just "Required". |
+| **Success (order placed / setup complete)** | Brief inline confirmation in a calm tone with teal accent; next-step detail linked immediately below. No loud celebration. |
+| **Skeleton** | `#ebebef` blocks at final dimensions, 12px radius, flat pulse. |
+| **Disabled** | Muted (`#9a9a9a`) text on reduced-opacity surface; teal actions fade rather than turn grey to preserve brand read. |
 
-### Grid & Container
-- Centered single-column heroes anchored by a 40px Museo Sans Rounded H1
-- Feature categories arranged as a row of full-round teal pills (Safety / Sleep / Health / Memories)
-- Product / About sections alternate white (`#ffffff`) and tinted grey (`#ebebef`) full-width bands
-- Cards use a 12px radius and group related features, specs, and comparison rows
-
-### Whitespace Philosophy
-- **Calm over density**: a hardware storefront that resists clutter — generous vertical rhythm keeps an anxious parent's eye relaxed.
-- **Flat segmentation**: sections separate by background tint (`#ebebef` vs `#ffffff`) and hairlines, not by heavy elevation.
-- **Pill rhythm**: the repeated 50px-radius capsule (CTA, inputs, chips) sets a consistent rounded cadence across the page.
-
-### Border Radius Scale
-- Small (4px): inner media wells, small containers
-- Medium (12px): cards and content containers — the workhorse
-- Large (50px): CTA pills and pill inputs
-- Full (9999px): feature-category chips, soft circular badges
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#ebebef` background shift | Card / section separation without elevation |
-| Hairline (Level 2) | `1px solid #dedede` border | White card outlines, dividers |
-| Soft (Level 3) | `rgba(0,0,0,0.08) 0px 4px 6px` | Small floating controls (compact add button) |
-
-**Shadow Philosophy**: Cubo Ai is a near-flat system. Live inspection found `box-shadow: none` across the hero, nav, headings, and most cards; the only shadow observed is a soft `rgba(0,0,0,0.08) 0px 4px 6px` on the small add-to-cart control. Depth and grouping are carried almost entirely by flat tinted surfaces (`#ebebef`, `#dddddd`) and thin `#dedede` hairlines. This keeps the storefront calm and modern — the opposite of heavy, alarm-coded security-camera marketing. When emphasis is needed, the system reaches for color (teal `#5be3d3`, coral `#ff8784`, amber `#ffb516`), never elevation.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Museo Sans Rounded for everything — the rounded family is the brand's voice
@@ -274,33 +479,26 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 - Set headlines in a heavy black weight — SemiBold (600) keeps them friendly
 - Introduce a second saturated brand hue to compete with teal
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero H1 compresses, feature pills wrap |
-| Tablet | 640-1024px | Moderate padding, 2-up feature / product cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+Cubo Ai's voice is **calm, reassuring, and parent-first** — it speaks to an exhausted, worried new parent and lowers the temperature rather than raising urgency. The About-page line "Parenthood is an exploration." and "We know parents deserve better" set the register: empathetic, mission-framed, never fear-based. Even though the product is a safety device, the copy avoids alarm language; it frames the monitor as a source of peace of mind, not a catalog of dangers.
 
-### Touch Targets
-- Primary CTA pill at 48px height, full pill for an unmistakable target
-- Pill inputs at 52px height with 16px 20px padding — comfortably tappable
-- Region rows at 38px height with generous horizontal padding
-- Feature chips spaced for touch in the pill row
+| Context | Tone |
+|---|---|
+| Hero headlines | Warm, declarative. "CuboAi Smart Baby Monitor 3", "Why choose CuboAi?". Confident, never hype. |
+| Feature labels | Plain, single-word categories. "Safety", "Sleep", "Health", "Memories". |
+| CTAs | Direct, low-pressure. "Go to Shop", "Checkout", "Add". |
+| Mission / About copy | Empathetic and human. "Parenthood is an exploration.", "We know parents deserve better". |
+| Feature descriptions | Benefit-first, reassurance-led. Explains how the feature reduces parental worry. |
 
-### Collapsing Strategy
-- Hero: 40px Museo Sans Rounded H1 scales down on mobile, weight 600 maintained
-- Feature pill row: horizontal wrap on narrow viewports
-- Product / feature bands: multi-column → stacked single column
-- Tinted / white alternating sections maintain full-width treatment
+**Voice samples (verbatim from live brand surfaces):**
+- "Our parenting-focused features reduce parental [stress/anxiety]" — homepage + product section heading (reassurance-framed). *(verified live 2026-06-17)*
+- "Parenthood is an exploration." — About Us hero (empathetic mission line). *(verified live 2026-06-17)*
+- "We know parents deserve better" — About Us section heading (advocacy register). *(verified live 2026-06-17)*
 
-### Image Behavior
-- Product and lifestyle photography sits on white or tinted-grey wells, minimal shadow
-- Cards maintain a 12px radius across breakpoints
-- Device close-ups keep their soft, rounded framing consistent with the brand geometry
+**Forbidden register**: fear-based danger framing, alarm-coded urgency, undefined technical jargon, exclamation-heavy hype, anything that increases rather than reduces a new parent's anxiety.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Cubo Teal (`#5be3d3`)
@@ -330,114 +528,8 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Cubo Ai's voice is **calm, reassuring, and parent-first** — it speaks to an exhausted, worried new parent and lowers the temperature rather than raising urgency. The About-page line "Parenthood is an exploration." and "We know parents deserve better" set the register: empathetic, mission-framed, never fear-based. Even though the product is a safety device, the copy avoids alarm language; it frames the monitor as a source of peace of mind, not a catalog of dangers.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Warm, declarative. "CuboAi Smart Baby Monitor 3", "Why choose CuboAi?". Confident, never hype. |
-| Feature labels | Plain, single-word categories. "Safety", "Sleep", "Health", "Memories". |
-| CTAs | Direct, low-pressure. "Go to Shop", "Checkout", "Add". |
-| Mission / About copy | Empathetic and human. "Parenthood is an exploration.", "We know parents deserve better". |
-| Feature descriptions | Benefit-first, reassurance-led. Explains how the feature reduces parental worry. |
-
-**Voice samples (verbatim from live brand surfaces):**
-- "Our parenting-focused features reduce parental [stress/anxiety]" — homepage + product section heading (reassurance-framed). *(verified live 2026-06-17)*
-- "Parenthood is an exploration." — About Us hero (empathetic mission line). *(verified live 2026-06-17)*
-- "We know parents deserve better" — About Us section heading (advocacy register). *(verified live 2026-06-17)*
-
-**Forbidden register**: fear-based danger framing, alarm-coded urgency, undefined technical jargon, exclamation-heavy hype, anything that increases rather than reduces a new parent's anxiety.
-
-## 11. Brand Narrative
-
-Cubo Ai is the smart-baby-monitor brand built by **Cubo** (parent company Yun Yun AI Baby Camera Co., headquartered in **Taiwan**), an award-winning hardware company whose signature product is a **bird-shaped AI camera paired with a sleep sensor pad**. The founding premise, stated plainly on the About page, is that "parents deserve better" — that the legacy baby-monitor category had left worried new parents with grainy video and constant false alarms instead of genuine peace of mind. Cubo's answer was to put proactive AI (covered-face and rollover detection, danger-zone alerts, true cry detection, sleep analytics) behind a soft, friendly industrial design that doesn't look like surveillance equipment.
-
-The brand frames "Parenthood is an exploration" as its emotional thesis: the product exists to support parents through an uncertain journey, not to police them. The About page surfaces hard outcome numbers — hundreds of millions of hours of sleep monitored and hundreds of thousands of families served across more than a hundred-plus countries — as evidence of trust earned at scale, while the design language stays soft and reassuring rather than boastful.
-
-What Cubo Ai refuses, visible in its design: the cold, alarm-coded aesthetic of security cameras (no hard reds, no surveillance-grid imagery), and the dark-pattern urgency of fear-driven baby-safety marketing. What it embraces: a rounded, bird-shaped hardware form echoed in Museo Sans Rounded typography; a single calming teal; warm nursery accents (coral, amber, sky); and copy that decodes a stressful domain into reassurance.
-
-## 12. Principles
-
-1. **Reduce anxiety, don't manufacture it.** A safety product that scares parents has failed at its job. *UI implication:* lead with reassurance and peace of mind; avoid alarm-coded reds and fear framing; keep the teal calm, not urgent.
-2. **Softness is trust.** The rounded device, rounded type, and pill geometry all signal a product that is gentle, not clinical. *UI implication:* favor capsule shapes (50px CTA/input radius), rounded letterforms, and soft charcoal text over hard black.
-3. **One action, one color.** Teal (`#5be3d3`) means "do this." *UI implication:* reserve the saturated teal exclusively for the primary CTA so the next step is never ambiguous.
-4. **Calm and near-flat.** Clean, uncluttered surfaces beat decorative depth. *UI implication:* separate with tint and hairlines; reserve shadow for the smallest controls only.
-5. **Warmth in the accents.** The supporting palette is a nursery, not a gadget rack. *UI implication:* use coral, amber, and sky for feature iconography and highlights to keep the product human.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Cubo Ai user segments (first-time parents, anxious caregivers, dual-income households), not individual people.*
-
-**Emily Carter, 32, Austin.** A first-time mother in the fourth-trimester fog. Distrusts grainy legacy monitors and constant false alarms; wants to glance at her phone and feel calm, not interrogate a feed. Chose Cubo Ai because the storefront felt reassuring rather than alarmist, and the bird-shaped camera "looked like it belonged in a nursery."
-
-**Daniel Lin, 38, Taipei.** A dual-income dad evaluating safety features (covered-face, rollover, danger-zone) before buying. Appreciates that the product explains how each feature reduces worry instead of listing scary scenarios. Trusts a hometown Taiwanese hardware brand that pairs real AI with a soft, parent-friendly design.
-
-**Priya Nair, 29, London.** A returning-to-work mother who relies on sleep analytics and auto-captured photo memories. Wants a calm interface she can scan at 3 a.m. without being jolted by harsh colors. Values the warm, rounded tone and the single clear teal action.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no recorded events)** | White canvas. Single Soft Charcoal (`#4b4b4b`) line at body size in a calm tone explaining nothing has been recorded yet, with one teal CTA. No alarm imagery. |
-| **Empty (saved memories, none yet)** | Muted (`#9a9a9a`) single line: nothing saved yet, plus a gentle path forward. Reassuring, never empty-scary. |
-| **Loading (feed / results fetch)** | Skeleton blocks on `#ebebef` tinted surface at final card dimensions, 12px radius. Flat pulse consistent with the near-flat system — no harsh shimmer. |
-| **Loading (in-place refresh)** | Subtle inline progress in teal; previous content stays visible. Never blank the safety feed during refresh. |
-| **Error (connection lost)** | Inline message in Soft Charcoal with a plain-language explanation and a retry. Calm, not alarmist — states what to do next, no scary red banner. |
-| **Error (form validation)** | Field-level message below the pill input in a warm tone; describes what's valid, not just "Required". |
-| **Success (order placed / setup complete)** | Brief inline confirmation in a calm tone with teal accent; next-step detail linked immediately below. No loud celebration. |
-| **Skeleton** | `#ebebef` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | Muted (`#9a9a9a`) text on reduced-opacity surface; teal actions fade rather than turn grey to preserve brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 220ms | Card / section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, chips |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is gentle and functional — consistent with the calm, near-flat aesthetic. Pill chips and CTAs respond to press with a subtle scale/opacity shift; feature cards fade-in from below at `motion-standard / ease-enter`. No harsh bounce or jolt — a baby-monitor brand signals steadiness and reassurance, not playful surprise. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on 3 brand-owned surfaces:
-- https://us.getcubo.com/ (homepage)
-- https://us.getcubo.com/products/cuboai-smart-baby-monitor (product page "CuboAi Smart Baby Monitor 3")
-- https://us.getcubo.com/pages/cuboai-about-us (About Us brand/mission page)
-
-Observed values backing §1-9 tokens:
-- Primary CTA "Go to Shop"/"Checkout": bg rgb(91,227,211) #5be3d3 / color rgb(75,75,75) #4b4b4b / radius 50px / padding 12px 20px / 20px weight 700 / museo-sans-rounded
-- Compact "Add": bg #5be3d3 / radius 50px / padding 5px 8px / 14px weight 600 / shadow rgba(0,0,0,0.08) 0px 4px 6px
-- Feature pills (Safety/Sleep/Health/Memories): deep teal rgb(36,206,185) #24cdb9 / white text / 18px weight 600
-- H1 40px / H2 32px / H3 24px all weight 600, color rgb(75,75,75), museo-sans-rounded
-- Pill inputs (About page newsletter): white bg / radius 50px / padding 16px 20px / 52px height / 16px
-- Surfaces: rgb(235,235,239) #ebebef, rgb(221,221,221) #dddddd; hairline rgb(222,222,222) #dedede
-- Warm accents: coral rgb(255,135,132) #ff8784, amber rgb(255,181,22) #ffb516, amber-soft rgb(255,207,104) #ffcf68, sky rgb(76,195,229) #4cc3e5, mint rgb(187,239,233) #bbefe9, mint-faint rgb(233,244,243) #e9f4f3
-- box-shadow: none across hero/nav/headings/most cards (near-flat system); soft shadow only on small add control
-
-Voice samples (§10) are verbatim from the live brand surfaces (homepage/product feature heading, About Us hero and headings).
-
-Brand narrative (§11): Cubo Ai is the smart-baby-monitor brand by Cubo (Yun Yun AI Baby Camera Co.),
-a Taiwan-based hardware company; signature bird-shaped AI camera + sleep sensor. The "parents deserve better"
-and "Parenthood is an exploration" framing and the outcome statistics are stated on the live About Us page;
-broader company facts are general public knowledge, not directly quoted beyond the About page.
-
-Personas (§13) are fictional archetypes informed by publicly observable Cubo Ai user segments
-(first-time parents, anxious caregivers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "rounded type echoes the bird-shaped device", "reduce anxiety, don't manufacture it"
-as a rejection of alarm-coded security marketing) are editorial readings connecting Cubo Ai's observed design
-to its parent-first positioning, not directly sourced Cubo statements.
--->
+- **Contrast, `feature-pill`.** Text `#ffffff` on `#24cdb9` measures 2.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

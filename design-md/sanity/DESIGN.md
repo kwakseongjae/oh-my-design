@@ -1,138 +1,98 @@
 ---
-id: sanity
 name: Sanity
-country: US
-category: backend-devops
-homepage: "https://www.sanity.io"
-primary_color: "#ff5500"
-logo:
-  type: simpleicons
-  slug: sanity
-verified: "2026-07-13"
-omd: "0.1"
-ds:
-  name: Sanity UI
-  url: "https://www.sanity.io/ui"
-  type: system
-  description: Sanity's accessible React toolkit for building apps with design tokens.
-  og_image: "https://cdn.sanity.io/images/mos42crl/production/f378d0067c1406f4e3d3ed6874cd715c72f52d2c-1920x1080.png"
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  colors:
-    brand-srgb-approx: "#ff5500"
-    canvas: "#ffffff"
-    foreground: "#0b0b0b"
-    surface: "#212121"
-    surface-subtle: "#ededed"
-    on-dark: "#ffffff"
-    muted: "#b9b9b9"
-    divider: "#d6d6d6"
-    focus-blue: "#0052ef"
-  typography:
-    family: { sans: "Waldenburg-75357948a2b6a39b", mono: "IBM Plex Mono-eea356736565d76d" }
-    display-hero: { size: 112, weight: 400, lineHeight: 112, tracking: -4.48, use: "Home H1" }
-    section: { size: 48, weight: 400, lineHeight: 51.84, tracking: -1.68, use: "Home section heading" }
-    body: { size: 15, weight: 400, lineHeight: 22.5, tracking: -0.15, use: "Repeated body and input text" }
-    control: { size: 13, weight: 400, lineHeight: 16.9, use: "Compact action labels" }
-  spacing: { xs: 4, sm: 8, md: 12, lg: 24, xl: 32 }
-  rounded: { input: 3, control: 99999 }
-  components:
-    button-brand: { type: button, fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with P3-orange text", use: "P3 orange pill; home + pricing surfaces" , pressed: "#b9b9b9"}
-    button-inverse: { type: button, bg: "#0b0b0b", fg: "#ffffff", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with white text", use: "Compact inverse pill" , pressed: "#ededed"}
-    button-light: { type: button, bg: "#ededed", fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "light-gray fill with near-black text", pressed: "light-gray fill with near-black text", use: "Compact light pill" }
-    input-text: { type: input, bg: "#0b0b0b", fg: "#b9b9b9", radius: 3, padding: "8px 12px", font: "15px/400 Waldenburg-75357948a2b6a39b", focus: "P3-orange border, #212121 fill, white text", use: "Home textarea" }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-19"
-  surfaces:
-    - { id: home, url: "https://www.sanity.io/", inspected: "2026-07-13" }
-    - { id: surface-2, url: "https://www.sanity.io/pricing", inspected: "2026-07-13" }
-    - { id: surface-3, url: "https://www.sanity.io/pricing?ref=navbar", inspected: "2026-07-13" }
-  sources:
-    - { id: home, url: "https://www.sanity.io/", kind: product-surface, captured: "2026-07-13" }
-    - { id: sanity-component-index, kind: official-doc, url: "https://www.sanity.io/ui/docs", captured: "2026-09-19" }
-    - { id: pricing, url: "https://www.sanity.io/pricing", kind: product-surface, captured: "2026-07-13" }
-    - { id: pricing-navbar, url: "https://www.sanity.io/pricing?ref=navbar", kind: product-surface, captured: "2026-07-13" }
-  claims:
-    "tokens.colors.brand-srgb-approx": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.canvas": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.foreground": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.surface": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.surface-subtle": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.on-dark": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.muted": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.divider": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.colors.focus-blue": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.family.sans": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.family.mono": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.display-hero.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.display-hero.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.display-hero.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.display-hero.tracking": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.display-hero.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.section.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.section.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.section.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.section.tracking": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.section.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.body.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.body.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.body.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.body.tracking": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.body.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.control.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.control.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.control.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.typography.control.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.rounded.input": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.rounded.control": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.spacing.xs": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.spacing.sm": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.spacing.md": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.spacing.lg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.spacing.xl": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.pressed": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-brand.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.pressed": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-inverse.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.pressed": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.button-light.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.focus": { surface_id: home, source_id: home, captured: "2026-07-13" }
-    "tokens.components.input-text.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
-  conflicts: []
+colors:
+  brand-srgb-approx: '#ff5500'
+  canvas: '#ffffff'
+  foreground: '#0b0b0b'
+  surface: '#212121'
+  surface-subtle: '#ededed'
+  on-dark: '#ffffff'
+  muted: '#b9b9b9'
+  divider: '#d6d6d6'
+  focus-blue: '#0052ef'
+typography:
+  display-hero:
+    fontSize: 112px
+    fontWeight: 400
+    lineHeight: 112
+    letterSpacing: '-4.48px'
+    use: Home H1
+  section:
+    fontSize: 48px
+    fontWeight: 400
+    lineHeight: 51.84
+    letterSpacing: '-1.68px'
+    use: Home section heading
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 22.5
+    letterSpacing: '-0.15px'
+    use: Repeated body and input text
+  control:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 16.9
+    use: Compact action labels
+rounded:
+  input: 3px
+  control: 99999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  lg: 24
+  xl: 32
+components:
+  button-brand:
+    type: button
+    textColor: '#0b0b0b'
+    rounded: 99999px
+    padding: 4px 12px
+    typography: 13px/400 IBM Plex Mono-eea356736565d76d
+    hover: near-black fill with P3-orange text
+    use: P3 orange pill; home + pricing surfaces
+    pressed: '#b9b9b9'
+  button-inverse:
+    type: button
+    backgroundColor: '#0b0b0b'
+    textColor: '#ffffff'
+    rounded: 99999px
+    padding: 4px 12px
+    typography: 13px/400 IBM Plex Mono-eea356736565d76d
+    hover: near-black fill with white text
+    use: Compact inverse pill
+    pressed: '#ededed'
+  button-light:
+    type: button
+    backgroundColor: '#ededed'
+    textColor: '#0b0b0b'
+    rounded: 99999px
+    padding: 4px 12px
+    typography: 13px/400 IBM Plex Mono-eea356736565d76d
+    hover: light-gray fill with near-black text
+    pressed: light-gray fill with near-black text
+    use: Compact light pill
+  input-text:
+    type: input
+    backgroundColor: '#0b0b0b'
+    textColor: '#b9b9b9'
+    rounded: 3px
+    padding: 8px 12px
+    typography: 15px/400 Waldenburg-75357948a2b6a39b
+    focus: 'P3-orange border, #212121 fill, white text'
+    use: Home textarea
+fonts:
+  roles:
+    sans: Waldenburg-75357948a2b6a39b
+    mono: IBM Plex Mono-eea356736565d76d
 ---
 
 # Design System Inspiration of Sanity
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Sanity is a configurable backend and content platform for teams building content-driven websites, apps, and AI experiences. Its current positioning is the Content Operating System: structured content, an extensible Studio, and APIs/automation that let organizations shape the content workflow around their own business. The public site makes that engineering posture tangible with a deliberately spare mix of editorial-sized Waldenburg type, compact IBM Plex Mono controls, and hard-edged light/dark panels rather than a decorative CMS aesthetic.
 
@@ -145,13 +105,28 @@ The observed marketing surface uses a white base (`#ffffff`) and near-black fore
 - Small, exact spacing increments: 4px/8px/12px recur in controls; 24px/32px appear in hero actions
 - Light/dark inversion is an observed hover treatment for the P3-orange action, not a general rule for every control
 
-## Primary tasks
+### Primary tasks
 
 - Build a content-driven website or app on a configurable backend
 - Shape the content workflow around how your own business runs
 - Open the pricing page from the home navigation to compare plans
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Sanity describes the current platform as a Content Operating System rather than a conventional CMS: a structured content foundation with a configurable Studio, APIs/SDKs, automation, and AI-oriented tools. The first-party 2025 platform launch describes Content Lake, Studio, custom content applications, automation, an AI agent, Media Library, Canvas, and Dashboard as parts of that connected direction. This narrative describes product scope and evolution; it does not turn the marketing-site controls in §4 into Studio application components.
+
+### Principles
+
+1. **Structured content, configurable workflow.** *UI implication:* public messaging emphasizes adapting content systems to how an organization works.
+2. **Developer affordances remain visible.** *UI implication:* retain the editorial/technical typography contrast when reproducing observed marketing controls.
+3. **Accessibility and composability in Sanity UI.** *UI implication:* Sanity UI is an official React toolkit, but its documentation chrome is not a source for the marketing component measurements here.
+4. **Evidence-domain discipline.** *UI implication:* reuse only listed P3, inverse, light-pill, textarea, and dialog variants; leave other components absent.
+
+### Personas
+
+No fictional personas are asserted. First-party public navigation identifies developers, content editors, product owners, and business leaders as relevant audiences; this reference does not infer demographics, locations, jobs, or workflows beyond those published groups.
+
+## Colors
 
 ### Brand Action
 - **Sanity Orange (live P3)** (`color(display-p3 1 0.3333 0)`): Observed as background and border on home and pricing action pills. The hex `#ff5500` is an sRGB approximation retained for token consumers; it is not a replacement for the P3 source value.
@@ -168,7 +143,7 @@ The observed marketing surface uses a white base (`#ffffff`) and near-black fore
 - **Blue** (`#0052ef`): Observed as a border/background in the captured surfaces; its exact component assignment is not generalized here.
 - The focused home textarea uses the P3-orange border. No error/success palette is promoted because this capture did not observe those states.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Live product/marketing sans:** `Waldenburg-75357948a2b6a39b` is both computed and loaded (832 observed uses across body, headings, buttons, inputs, and dialogs). The current evidence exposes no browser-loadable source URL, so the family is preserved by its delivered family name only; no substitute is authorized.
@@ -192,7 +167,34 @@ The observed marketing surface uses a white base (`#ffffff`) and near-black fore
 - **Tracking is evidence-bound**: The capture shows increasingly negative tracking at the observed 24px, 48px, 72px, and 112px sizes. It does not establish a global OpenType-feature policy.
 - **No fallback substitution**: a loaded but source-less Waldenburg delivery is still a live family fact; external implementations must label it unavailable rather than silently render Inter or a system font as Waldenburg.
 
-## 4. Component Stylings
+## Layout
+
+The retained spacing observations are 4px, 8px, 12px, 24px, and 32px. They occur in the selector-bound controls documented in §4; they do not establish a global scale, grid, content width, gutter, or card layout. The retained radii are 3px for the home textarea and 99999px for the observed compact and hero action pills. No other radius scale is canonical.
+
+### Responsive Behavior
+
+This packet contains desktop `1440×900` captures only. No breakpoint, collapse, mobile type, gutter, touch-target, or responsive component claim is retained. A future responsive capture must establish those values independently.
+
+## Elevation & Depth
+
+The only retained elevation observation is the pricing dialog: `rgba(0, 0, 0, 0.1) 0px 10px 15px -3px` and `rgba(0, 0, 0, 0.1) 0px 4px 6px -4px`, alongside its `#ffffff` surface and `#d6d6d6` border. No general shadow scale, overlay, focus ring, card elevation, or depth philosophy is promoted from this packet.
+
+## Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| Motion tokens | Not measured in the supplied capture |
+
+No duration, easing, or reduced-motion rule is promoted without a measured source.
+
+---
+
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.sanity.io/ · https://www.sanity.io/pricing · https://www.sanity.io/ui · https://www.sanity.io/blog/why-the-age-of-cms-is-over
+**Tier 2 sources:** https://getdesign.md/sanity/design-md · https://styles.refero.design/?q=Sanity (direct built-in access unavailable; no indexed result observed)
+**Conflicts unresolved:** none
+
+## Components
 
 ### Actions
 
@@ -277,15 +279,14 @@ pill; home + pricing surfaces". That is the company's website, a separate eviden
 the Sanity UI documentation, and no capture carries a `@sanity/ui` class. None of the 36 above
 carries a measured value here.
 
-## 5. Layout Principles
+### States
 
-The retained spacing observations are 4px, 8px, 12px, 24px, and 32px. They occur in the selector-bound controls documented in §4; they do not establish a global scale, grid, content width, gutter, or card layout. The retained radii are 3px for the home textarea and 99999px for the observed compact and hero action pills. No other radius scale is canonical.
+| State | Treatment |
+|---|---|
+| Product empty/loading/error/success states | Not captured on an authenticated Sanity product surface; no state recipe is claimed. |
+| Marketing interaction states | Only the §4 hover, pressed, focus, and dialog-open observations are retained. |
 
-## 6. Depth & Elevation
-
-The only retained elevation observation is the pricing dialog: `rgba(0, 0, 0, 0.1) 0px 10px 15px -3px` and `rgba(0, 0, 0, 0.1) 0px 4px 6px -4px`, alongside its `#ffffff` surface and `#d6d6d6` border. No general shadow scale, overlay, focus ring, card elevation, or depth philosophy is promoted from this packet.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Preserve `color(display-p3 1 0.3333 0)` as the source value for the observed orange actions; use `#ff5500` only where an sRGB hex is technically required.
@@ -300,11 +301,23 @@ The only retained elevation observation is the pricing dialog: `rgba(0, 0, 0, 0.
 - Don't treat the pricing dialog or marketing controls as Sanity Studio application components.
 - Don't generalize `#0052ef`, cards, responsive breakpoints, or unobserved error/success states from this capture.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-This packet contains desktop `1440×900` captures only. No breakpoint, collapse, mobile type, gutter, touch-target, or responsive component claim is retained. A future responsive capture must establish those values independently.
+Sanity's voice is **content-platform-confident and developer-warm.** "The Content Operating System for the AI era" — confident enterprise positioning with developer-friendly chrome. Mixed type system + flat-no-shadow signals "premium content tooling."
 
-## 9. Agent Prompt Guide
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Talk to sales", "Start free" |
+| Marketing | Capability-list. Studio + Dataset + Content Lake naming |
+| Documentation | Deep, code-block-heavy, GROQ-aware |
+| Error | Specific. "Schema validation failed at field X." |
+
+**Voice samples**
+- Tagline: *"The Content Operating System for the AI era"* <!-- verified: sanity.io homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary CMS". Aggressive WordPress-comparison framing.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 ```
@@ -337,56 +350,3 @@ Blue:            #0052ef (observed, role not generalized)
 2. Keep the P3 orange in P3-capable output; disclose the hex approximation when using it.
 3. Keep Waldenburg and IBM Plex Mono distinct and do not substitute a system or declared-only family.
 4. Add only a listed interaction state to its matching component variant.
-
-## 10. Voice & Tone
-
-Sanity's voice is **content-platform-confident and developer-warm.** "The Content Operating System for the AI era" — confident enterprise positioning with developer-friendly chrome. Mixed type system + flat-no-shadow signals "premium content tooling."
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get started", "Talk to sales", "Start free" |
-| Marketing | Capability-list. Studio + Dataset + Content Lake naming |
-| Documentation | Deep, code-block-heavy, GROQ-aware |
-| Error | Specific. "Schema validation failed at field X." |
-
-**Voice samples**
-- Tagline: *"The Content Operating System for the AI era"* <!-- verified: sanity.io homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary CMS". Aggressive WordPress-comparison framing.
-
-## 11. Brand Narrative
-
-Sanity describes the current platform as a Content Operating System rather than a conventional CMS: a structured content foundation with a configurable Studio, APIs/SDKs, automation, and AI-oriented tools. The first-party 2025 platform launch describes Content Lake, Studio, custom content applications, automation, an AI agent, Media Library, Canvas, and Dashboard as parts of that connected direction. This narrative describes product scope and evolution; it does not turn the marketing-site controls in §4 into Studio application components.
-
-## 12. Principles
-
-1. **Structured content, configurable workflow.** *UI implication:* public messaging emphasizes adapting content systems to how an organization works.
-2. **Developer affordances remain visible.** *UI implication:* retain the editorial/technical typography contrast when reproducing observed marketing controls.
-3. **Accessibility and composability in Sanity UI.** *UI implication:* Sanity UI is an official React toolkit, but its documentation chrome is not a source for the marketing component measurements here.
-4. **Evidence-domain discipline.** *UI implication:* reuse only listed P3, inverse, light-pill, textarea, and dialog variants; leave other components absent.
-
-## 13. Personas
-
-No fictional personas are asserted. First-party public navigation identifies developers, content editors, product owners, and business leaders as relevant audiences; this reference does not infer demographics, locations, jobs, or workflows beyond those published groups.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| Product empty/loading/error/success states | Not captured on an authenticated Sanity product surface; no state recipe is claimed. |
-| Marketing interaction states | Only the §4 hover, pressed, focus, and dialog-open observations are retained. |
-
-## 15. Motion & Easing
-
-| Token | Value | Use |
-|---|---|---|
-| Motion tokens | Not measured in the supplied capture |
-
-No duration, easing, or reduced-motion rule is promoted without a measured source.
-
----
-
-**Verified:** 2026-07-13
-**Tier 1 sources:** https://www.sanity.io/ · https://www.sanity.io/pricing · https://www.sanity.io/ui · https://www.sanity.io/blog/why-the-age-of-cms-is-over
-**Tier 2 sources:** https://getdesign.md/sanity/design-md · https://styles.refero.design/?q=Sanity (direct built-in access unavailable; no indexed result observed)
-**Conflicts unresolved:** none

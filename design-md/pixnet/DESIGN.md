@@ -1,62 +1,110 @@
 ---
-id: pixnet
 name: PIXNET
-country: TW
-category: consumer-tech
-homepage: "https://www.pixnet.net"
-primary_color: "#ff7200"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=www.pixnet.net&sz=128"
-verified: "2026-06-08"
-added: "2026-06-08"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-08"
-  note: "primary = live PIXNET orange #ff7200 (login CTA + 68 DOM uses); secondary accent = warm red #ff432b; body type is Noto Serif TC — a serif, unusual for a content platform"
-  colors:
-    primary: "#ff7200"
-    primary-deep: "#e85f00"
-    accent-red: "#ff432b"
-    accent-tint: "#fcdfda"
-    canvas: "#ffffff"
-    surface-muted: "#f4f4f4"
-    heading: "#423e3c"
-    body: "#423e3c"
-    label: "#575451"
-    muted: "#817f7d"
-    muted-2: "#969492"
-    on-primary: "#ffffff"
-    hairline: "#eaeae9"
-    border-soft: "#c0bfbe"
-    ink: "#000000"
-  typography:
-    family: { serif: "Noto Serif TC", sans: "system-ui" }
-    heading-lg: { size: 18, weight: 700, lineHeight: 1.33, tracking: 0.5, use: "Section / channel headings, nav emphasis" }
-    heading:    { size: 16, weight: 700, lineHeight: 1.50, tracking: 1.2, use: "Card titles, tag labels, h1/h2 inline" }
-    body:       { size: 16, weight: 400, lineHeight: 1.50, tracking: 1.2, use: "Standard reading text, article copy" }
-    body-sm:    { size: 14, weight: 400, lineHeight: 1.43, use: "Meta, captions, secondary lines" }
-    button:     { size: 14, weight: 500, lineHeight: 1.00, use: "Primary CTA label (login)" }
-    nav:        { size: 16, weight: 400, lineHeight: 1.50, use: "Header nav links, footer links" }
-    caption:    { size: 13, weight: 400, use: "Timestamps, counts, fine print" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
-  shadow:
-    ambient: "rgba(66,62,60,0.08) 0px 2px 8px"
-    standard: "rgba(66,62,60,0.12) 0px 4px 16px"
-    elevated: "rgba(66,62,60,0.16) 0px 8px 28px"
-  components:
-    button-primary: { type: button, bg: "#ff7200", fg: "#ffffff", radius: 6, font: "weight 500, 36px tall", use: "Primary CTA (login)" }
-    button-ghost: { type: button, bg: "#ffffff", fg: "#423e3c", radius: 6, use: "Secondary action, 1px #eaeae9 hairline border" }
-    tag-pill: { type: badge, bg: "#ffffff", fg: "#423e3c", radius: 6, font: "weight 700", use: "Tag / channel label, hairline border" }
-    card: { type: card, bg: "#ffffff", radius: 6, use: "Article/content card, hairline #eaeae9 border, low warm shadow" }
-  components_harvested: true
+colors:
+  primary: '#ff7200'
+  primary-deep: '#e85f00'
+  accent-red: '#ff432b'
+  accent-tint: '#fcdfda'
+  canvas: '#ffffff'
+  surface-muted: '#f4f4f4'
+  heading: '#423e3c'
+  body: '#423e3c'
+  label: '#575451'
+  muted: '#817f7d'
+  muted-2: '#969492'
+  on-primary: '#ffffff'
+  hairline: '#eaeae9'
+  border-soft: '#c0bfbe'
+  ink: '#000000'
+typography:
+  heading-lg:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: 0.5px
+    use: Section / channel headings, nav emphasis
+  heading:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 1.2px
+    use: Card titles, tag labels, h1/h2 inline
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 1.2px
+    use: Standard reading text, article copy
+  body-sm:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Meta, captions, secondary lines
+  button:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1
+    use: Primary CTA label (login)
+  nav:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Header nav links, footer links
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    use: Timestamps, counts, fine print
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ff7200'
+    textColor: '#ffffff'
+    rounded: 6px
+    typography: weight 500, 36px tall
+    use: Primary CTA (login)
+  button-ghost:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#423e3c'
+    rounded: 6px
+    use: 'Secondary action, 1px #eaeae9 hairline border'
+  tag-pill:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#423e3c'
+    rounded: 6px
+    typography: weight 700
+    use: Tag / channel label, hairline border
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 6px
+    use: 'Article/content card, hairline #eaeae9 border, low warm shadow'
+fonts:
+  roles:
+    serif: Noto Serif TC
+    sans: system-ui
 ---
 
 # Design System Inspiration of PIXNET
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 PIXNET (痞客邦) is Taiwan's largest home-grown blogging and content platform, and its design reads exactly like what it is — a warm, editorial, reader-first publishing home rather than a slick venture-funded app. The live homepage opens on a clean white canvas (`#ffffff`) with warm near-black text (`#423e3c`) — not pure black, but a soft brown-charcoal that gives every paragraph the feeling of ink on paper. The single loud color in the entire system is PIXNET orange (`#ff7200`), reserved almost exclusively for the login CTA and a handful of brand moments. Everything else is a quiet ladder of warm grays. The result is a platform that feels approachable, lived-in, and unmistakably Taiwanese-blog in heritage: content is the hero, chrome recedes.
 
@@ -74,7 +122,7 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - 6px border-radius on buttons and tags — soft but not pill-shaped
 - White canvas with a `#f4f4f4` muted surface for footer / secondary zones
 
-## Primary tasks
+### Primary tasks
 
 - Research a restaurant or a trip through real personal accounts.
 - Publish a long-form article and build an audience for it.
@@ -82,7 +130,37 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - Search for a topic and try other keywords when nothing matches.
 - Join the creator program to reach an established Taiwanese audience.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+PIXNET (痞客邦) is one of Taiwan's oldest and largest user-generated content and blogging platforms, a cornerstone of the Traditional-Chinese-language web. Originating in the mid-2000s out of Taiwan's blogging boom, it grew into the country's dominant home for personal blogs, lifestyle writing, travel and food reviews, parenting diaries, and creator communities. For a generation of Taiwanese internet users, "PIXNET" is synonymous with "blog" — the place where independent writers built audiences and where readers went to research a restaurant, a trip, or a product through real, long-form personal accounts.
+
+That heritage explains the design. The serif typeface, the warm ink text, the editorial density, and the rationed accent color all express a platform built around *reading* and *writing* rather than around a swipe-driven feed. PIXNET's identity is the long-tail of authentic creator content — millions of articles accumulated over nearly two decades — and the interface treats that content as the product. The modern homepage layers in trending hashtags, short video, and creator-economy features ("社群影響力" / social influence, "大試用時代" / a product-trial program), but the underlying posture remains: a Taiwanese life and creative-culture platform where everyday people publish and everyday people read.
+
+What PIXNET embraces: warmth, locality, long-form authenticity, and a creator-first community. What it avoids: the cold institutional aesthetics of enterprise software, English-first global-startup polish, and the visual hype that would betray its homey, decades-deep blogging roots.
+
+### Principles
+
+1. **Content is the product.** The interface recedes so that articles, photos, and creator voices are the focus. Chrome is thin; hairlines do the structuring.
+2. **Read like paper.** The Noto Serif TC body, warm ink, and comfortable line-height make the platform feel like reading, not scrolling — honoring its blogging heritage.
+3. **Warmth over sterility.** Every neutral leans warm; the accent is a friendly orange. Nothing is cold, corporate, or clinical.
+4. **Local first.** PIXNET is built for Taiwanese readers and creators in Traditional Chinese. Typography, tracking, and tone all respect that context.
+5. **One loud color, used sparingly.** Orange (`#ff7200`) marks action and energy precisely because it is rare. Restraint makes it legible as "the brand."
+6. **Support the creator.** The system exists to help bloggers publish, grow, and be discovered — the design is in service of that community.
+7. **Density with dignity.** A content-rich homepage stays calm through hairline structure and consistent type, never feeling cluttered.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable PIXNET user segments (lifestyle bloggers, travel/food creators, parenting writers, and Taiwanese readers researching real experiences), not individual people.*
+
+**Hsiao-Ming Chen, 38, Taichung.** A food and travel blogger who has published on PIXNET for over a decade. He measures a platform by how well it showcases his long-form reviews and photo sets. The serif type and clean reading layout feel like home; he would resent a redesign that turned his careful articles into a feed of disposable cards.
+
+**Yu-Ting Lin, 29, Taipei.** A reader planning a weekend trip. She comes to PIXNET specifically to read real, detailed personal accounts — not sponsored listicles. She trusts the platform because the writing feels human and the interface stays out of the way. The warm, readable serif signals "real person wrote this."
+
+**Mei-Ling Wu, 34, Kaohsiung.** A parenting blogger documenting daily life with two kids. She values the supportive creator community and the encouraging, neighborly tone. She wants publishing tools that respect Traditional Chinese typography and make her posts look as warm as they read.
+
+**Chih-Hao Yang, 26, Hsinchu.** A new short-video creator exploring PIXNET's "社群影響力" creator program. He is drawn by the chance to reach an established Taiwanese audience. He appreciates that the brand feels local and authentic rather than a copy of a Western platform.
+
+## Colors
 
 ### Primary
 - **PIXNET Orange** (`#ff7200`): The brand anchor. Used for the primary CTA (the `登入` / login button fill), brand accents, and active/hot markers. A saturated, energetic orange that is the single loud note in an otherwise warm-neutral system. Verified live as the login button background and the most-used non-neutral color (68 DOM occurrences).
@@ -112,7 +190,7 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - The hairline `#eaeae9` does the structural heavy lifting; shadows stay subtle and warm.
 - Red (`#ff432b`) signals hot/trending/emphasis — never a primary action.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `"Noto Serif TC"`, with fallback `"Noto Serif TC Fallback"`, then system serif. A Traditional Chinese serif used across the entire interface — body, headings, nav, and most UI text.
@@ -137,7 +215,110 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - **Positive tracking on Chinese text.** A small positive letter-spacing (0.5–1.2px) is applied to Traditional Chinese text for breathing room and readability — the opposite of the negative tracking used by Latin-display systems.
 - **Two weights, mostly.** 400 (regular) for reading, 700 (bold) for emphasis, with 500 reserved for the CTA label. There is no light/thin display weight — the serif already carries the personality.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px (with a 4px sub-step)
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Component padding is compact (8px 12px on buttons/tags), reflecting a dense, content-rich homepage
+
+### Grid & Container
+- Wide multi-column homepage grid — channel rows, trending tags, and content cards
+- Content thumbnails dominate; chrome is thin so the grid reads as a magazine of articles
+- Header bar at ~73px, full-width white, sticky
+- Footer on `#f4f4f4` muted surface, full-width
+
+### Whitespace Philosophy
+- **Editorial density.** PIXNET is a publishing home, so the homepage packs many content entries per screen, separated by hairlines rather than large gaps. Whitespace is purposeful and moderate, not luxurious.
+- **Hairlines over gaps.** Structure is communicated by `#eaeae9` dividers and borders, letting more content fit without feeling cramped.
+- **Reading column comfort.** Inside articles, the serif body at 16px / 24px line-height with positive tracking gives a comfortable, paper-like reading measure.
+
+### Border Radius Scale
+- Sharp (0px): content thumbnails / imagery, so pictures read edge-to-edge
+- Small (4px): subtle rounding on minor chips
+- Standard (6px): buttons, tags, inputs, interactive cards — the workhorse
+- Large (12px): featured modules and larger containers
+- Full (9999px): avatar circles and round icon buttons only
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single/two-column content stack, collapsed nav, larger touch targets |
+| Tablet | 640–1024px | 2–3 column content grid, condensed header |
+| Desktop | 1024–1280px | Full multi-column magazine grid |
+| Large Desktop | >1280px | Centered max-width content with wider gutters |
+
+#### Touch Targets
+- Buttons / tags at 36px height with 8px 12px padding — comfortable for tap
+- Nav links spaced for thumb reach on mobile
+- Round icon buttons use full radius for clear tap affordance
+
+#### Collapsing Strategy
+- Header: full horizontal nav → hamburger / condensed search on mobile
+- Content grid: multi-column magazine → 2-column → single column stack
+- Trending tag row: wraps or becomes horizontally scrollable on narrow screens
+- Footer (`#f4f4f4`): link columns stack vertically on mobile
+- Typography: 18px channel heads → 16px on mobile; body stays 16px for readability
+
+#### Image Behavior
+- Content thumbnails stay sharp-cornered (0px) and fill their cells edge-to-edge
+- Cover images crop responsively while preserving the serif caption beneath
+- Avatars remain circular (full radius) at all sizes
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, hairline border only | Page background, inline content, most cards |
+| Ambient (Level 1) | `rgba(66,62,60,0.08) 0px 2px 8px` | Subtle hover lift on cards |
+| Standard (Level 2) | `rgba(66,62,60,0.12) 0px 4px 16px` | Hovered content cards, dropdowns |
+| Elevated (Level 3) | `rgba(66,62,60,0.16) 0px 8px 28px` | Modals, menus, floating panels |
+| Focus Ring | `2px solid #ff7200` outline | Keyboard focus on interactive elements |
+
+**Shadow Philosophy**: PIXNET communicates depth primarily through its hairline border system (`#eaeae9`) and surface contrast (white cards on white/`#f4f4f4`), not through dramatic shadows. When shadow is used, it is warm-tinted — built on the brand ink `rgba(66,62,60,...)` rather than neutral black — so even elevation stays on the warm, editorial side of the palette. This keeps the homepage calm and reading-focused: cards lift gently on hover but nothing floats aggressively.
+
+### Decorative Depth
+- `#f4f4f4` muted surface separates the footer and secondary zones from the white content area without a border
+- `#fcdfda` peach washes mark featured/sponsored modules
+- `#423e3c` dark feature panels create contrast-based depth for editorial highlights
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.ambient`: `rgba(66,62,60,0.08) 0px 2px 8px`
+- `shadow.standard`: `rgba(66,62,60,0.12) 0px 4px 16px`
+- `shadow.elevated`: `rgba(66,62,60,0.16) 0px 8px 28px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, selection, focus rings |
+| `motion-fast` | 150ms | Hover lifts, button press, tag hover |
+| `motion-standard` | 220ms | Dropdowns, menus, card expand |
+| `motion-slow` | 320ms | Page-level transitions, modal reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — menus, dropdowns, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Signature motions.**
+
+1. **Card hover lift.** Content cards lift gently on hover using `motion-fast / ease-standard` — a small shadow grow (`rgba(66,62,60,0.12)`) and border deepen to `#c0bfbe`. Calm, never bouncy, in keeping with a reading-focused home.
+2. **Tag / nav hover.** Trending tags and nav links transition color toward `#575451` and/or reveal an orange underline over `motion-fast`.
+3. **Menu reveal.** Dropdowns and account menus arrive with `motion-standard / ease-enter`, a short fade-and-rise.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; hovers become immediate color changes. Reading is never gated on animation.
+
+## Components
 
 ### Buttons
 
@@ -210,51 +391,25 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 **Method:** getComputedStyle on body, h1, login button, tag pills, nav links, header, footer; lab() values resolved to #hex via canvas; top-15 DOM color frequency sampled.
 **`.verification.md`:** `web/references/pixnet/.verification.md`
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px (with a 4px sub-step)
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Component padding is compact (8px 12px on buttons/tags), reflecting a dense, content-rich homepage
+| State | Treatment |
+|---|---|
+| **Empty (no posts yet)** | White canvas, single warm-ink (`#423e3c`) line in Noto Serif TC 16px: an encouraging prompt to write the first article. One orange CTA (`#ff7200`). No cold "No data" wording. |
+| **Empty (search no results)** | Muted-gray (`#817f7d`) single line in Traditional Chinese suggesting alternate keywords; search field stays visible. |
+| **Loading (feed first paint)** | Skeleton blocks at card dimensions in hairline `#eaeae9`, gentle warm shimmer. Thumbnails skeleton sharp-cornered to match. |
+| **Loading (in-place refresh)** | Subtle orange (`#ff7200`) progress hint; previous content stays visible. |
+| **Error (load failed)** | Inline warm-toned banner, `#ff432b`-adjacent accent, plain Traditional-Chinese explanation plus a retry link. No generic "Something went wrong." |
+| **Error (form validation)** | Field-level, warm-red border with a short serif message describing what is invalid. |
+| **Success (post published)** | Brief confirmation toast in warm ink, friendly past-tense Chinese phrasing. No exclamation overload. |
+| **Disabled** | Reduced opacity on surface and text together; orange CTA becomes a faded warm orange, not switched to gray. |
+| **Hot / trending** | Orange (`#ff7200`) or red (`#ff432b`) marker / numeral flags the trending item. |
 
-### Grid & Container
-- Wide multi-column homepage grid — channel rows, trending tags, and content cards
-- Content thumbnails dominate; chrome is thin so the grid reads as a magazine of articles
-- Header bar at ~73px, full-width white, sticky
-- Footer on `#f4f4f4` muted surface, full-width
+## Do's and Don'ts
 
-### Whitespace Philosophy
-- **Editorial density.** PIXNET is a publishing home, so the homepage packs many content entries per screen, separated by hairlines rather than large gaps. Whitespace is purposeful and moderate, not luxurious.
-- **Hairlines over gaps.** Structure is communicated by `#eaeae9` dividers and borders, letting more content fit without feeling cramped.
-- **Reading column comfort.** Inside articles, the serif body at 16px / 24px line-height with positive tracking gives a comfortable, paper-like reading measure.
+### Do's and Don'ts (Component-level)
 
-### Border Radius Scale
-- Sharp (0px): content thumbnails / imagery, so pictures read edge-to-edge
-- Small (4px): subtle rounding on minor chips
-- Standard (6px): buttons, tags, inputs, interactive cards — the workhorse
-- Large (12px): featured modules and larger containers
-- Full (9999px): avatar circles and round icon buttons only
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, hairline border only | Page background, inline content, most cards |
-| Ambient (Level 1) | `rgba(66,62,60,0.08) 0px 2px 8px` | Subtle hover lift on cards |
-| Standard (Level 2) | `rgba(66,62,60,0.12) 0px 4px 16px` | Hovered content cards, dropdowns |
-| Elevated (Level 3) | `rgba(66,62,60,0.16) 0px 8px 28px` | Modals, menus, floating panels |
-| Focus Ring | `2px solid #ff7200` outline | Keyboard focus on interactive elements |
-
-**Shadow Philosophy**: PIXNET communicates depth primarily through its hairline border system (`#eaeae9`) and surface contrast (white cards on white/`#f4f4f4`), not through dramatic shadows. When shadow is used, it is warm-tinted — built on the brand ink `rgba(66,62,60,...)` rather than neutral black — so even elevation stays on the warm, editorial side of the palette. This keeps the homepage calm and reading-focused: cards lift gently on hover but nothing floats aggressively.
-
-### Decorative Depth
-- `#f4f4f4` muted surface separates the footer and secondary zones from the white content area without a border
-- `#fcdfda` peach washes mark featured/sponsored modules
-- `#423e3c` dark feature panels create contrast-based depth for editorial highlights
-
-## 7. Do's and Don'ts (Component-level)
-
-### Do
+#### Do
 - Use Noto Serif TC for all UI and reading text — the serif IS the brand
 - Use `#423e3c` warm ink for text instead of pure black
 - Reserve PIXNET orange (`#ff7200`) for the primary CTA and brand/hot moments only
@@ -263,7 +418,7 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - Keep button/tag radius at 6px — soft but not pill
 - Use weight (400 vs 700) as the main hierarchy lever, not large size jumps
 
-### Don't
+#### Don't
 - Don't substitute a sans-serif for the body face — it erases PIXNET's identity
 - Don't flood layouts with orange — it is a rationed accent, not a fill
 - Don't use pure black (`#000000`) for reading text — warm ink `#423e3c` is the voice
@@ -272,34 +427,40 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - Don't pill-shape buttons or tags — 6px is the considered radius
 - Don't apply negative tracking to Chinese text — it harms readability
 
-## 8. Responsive Behavior
+### Do
+- Commit fully to Noto Serif TC across the interface — it defines PIXNET
+- Keep text in warm ink `#423e3c`; reserve `#000000` for rare contrast needs
+- Treat PIXNET orange `#ff7200` as a precious, rationed CTA / brand color
+- Lean on `#eaeae9` hairlines and `#f4f4f4` muted surfaces for structure
+- Keep the mood warm, local, and creator-supportive in copy and color
+- Use 6px radius on buttons/tags and sharp corners on imagery
+- Let content density stay calm via consistent type and hairline dividers
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single/two-column content stack, collapsed nav, larger touch targets |
-| Tablet | 640–1024px | 2–3 column content grid, condensed header |
-| Desktop | 1024–1280px | Full multi-column magazine grid |
-| Large Desktop | >1280px | Centered max-width content with wider gutters |
+### Don't
+- Don't swap in a sans-serif body face — it destroys the brand read
+- Don't flood the UI with orange or introduce cold corporate blue
+- Don't use pure black or negative tracking on Traditional Chinese text
+- Don't add heavy gray/black shadows — elevation is subtle and warm
+- Don't pill-shape buttons or tags
+- Don't adopt English-first, hype-startup tone — PIXNET is homey and Taiwanese
+- Don't bury content under heavy chrome — the reader and creator come first
 
-### Touch Targets
-- Buttons / tags at 36px height with 8px 12px padding — comfortable for tap
-- Nav links spaced for thumb reach on mobile
-- Round icon buttons use full radius for clear tap affordance
+## Voice & Tone
 
-### Collapsing Strategy
-- Header: full horizontal nav → hamburger / condensed search on mobile
-- Content grid: multi-column magazine → 2-column → single column stack
-- Trending tag row: wraps or becomes horizontally scrollable on narrow screens
-- Footer (`#f4f4f4`): link columns stack vertically on mobile
-- Typography: 18px channel heads → 16px on mobile; body stays 16px for readability
+PIXNET's voice is that of a warm, encouraging community host for Taiwanese creators and readers — friendly, everyday, and culturally local, without corporate stiffness. The homepage title reads 「痞客邦PIXNET-掌握最新熱門話題貼文、短影音，讓生活充滿靈感！」("PIXNET — catch the latest trending posts and short videos, fill life with inspiration!"), which captures the register: upbeat, life-centered, inclusive. The platform positions itself as 「台灣人的生活文創平台」("a life and creative-culture platform for Taiwanese people"). Copy is in Traditional Chinese, conversational, and oriented around lifestyle verticals — 旅遊 (travel), 美食 (food), 影視 (film/TV), 親子 (parenting), 寵物 (pets).
 
-### Image Behavior
-- Content thumbnails stay sharp-cornered (0px) and fill their cells edge-to-edge
-- Cover images crop responsively while preserving the serif caption beneath
-- Avatars remain circular (full radius) at all sizes
+| Context | Tone |
+|---|---|
+| Homepage / hero | Warm, life-inspiring. "Fill life with inspiration." Inclusive of all readers and creators. |
+| Channel labels | Plain, category-clear: 旅遊 / 美食 / 影視 / 親子. Everyday vocabulary. |
+| Creator-facing | Encouraging and supportive — PIXNET is a home for bloggers to publish and grow. |
+| CTAs | Direct and friendly: 登入 (login), 註冊 (sign up), 寫文章 (write). |
+| Trending / hot | Energetic, of-the-moment: 熱門 (hot), trending hashtags. |
+| Community / help | Patient, neighborly, respectful of long-time bloggers. |
 
-## 9. Agent Prompt Guide
+**Tone anchors.** Lifestyle-warm, locally Taiwanese, creator-supportive, inclusive. Avoid cold corporate jargon, English-first phrasing, and hype-startup superlatives — PIXNET's strength is its homey, long-running community feel.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: PIXNET Orange (`#ff7200`)
@@ -332,107 +493,8 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-PIXNET's voice is that of a warm, encouraging community host for Taiwanese creators and readers — friendly, everyday, and culturally local, without corporate stiffness. The homepage title reads 「痞客邦PIXNET-掌握最新熱門話題貼文、短影音，讓生活充滿靈感！」("PIXNET — catch the latest trending posts and short videos, fill life with inspiration!"), which captures the register: upbeat, life-centered, inclusive. The platform positions itself as 「台灣人的生活文創平台」("a life and creative-culture platform for Taiwanese people"). Copy is in Traditional Chinese, conversational, and oriented around lifestyle verticals — 旅遊 (travel), 美食 (food), 影視 (film/TV), 親子 (parenting), 寵物 (pets).
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Homepage / hero | Warm, life-inspiring. "Fill life with inspiration." Inclusive of all readers and creators. |
-| Channel labels | Plain, category-clear: 旅遊 / 美食 / 影視 / 親子. Everyday vocabulary. |
-| Creator-facing | Encouraging and supportive — PIXNET is a home for bloggers to publish and grow. |
-| CTAs | Direct and friendly: 登入 (login), 註冊 (sign up), 寫文章 (write). |
-| Trending / hot | Energetic, of-the-moment: 熱門 (hot), trending hashtags. |
-| Community / help | Patient, neighborly, respectful of long-time bloggers. |
-
-**Tone anchors.** Lifestyle-warm, locally Taiwanese, creator-supportive, inclusive. Avoid cold corporate jargon, English-first phrasing, and hype-startup superlatives — PIXNET's strength is its homey, long-running community feel.
-
-## 11. Brand Narrative
-
-PIXNET (痞客邦) is one of Taiwan's oldest and largest user-generated content and blogging platforms, a cornerstone of the Traditional-Chinese-language web. Originating in the mid-2000s out of Taiwan's blogging boom, it grew into the country's dominant home for personal blogs, lifestyle writing, travel and food reviews, parenting diaries, and creator communities. For a generation of Taiwanese internet users, "PIXNET" is synonymous with "blog" — the place where independent writers built audiences and where readers went to research a restaurant, a trip, or a product through real, long-form personal accounts.
-
-That heritage explains the design. The serif typeface, the warm ink text, the editorial density, and the rationed accent color all express a platform built around *reading* and *writing* rather than around a swipe-driven feed. PIXNET's identity is the long-tail of authentic creator content — millions of articles accumulated over nearly two decades — and the interface treats that content as the product. The modern homepage layers in trending hashtags, short video, and creator-economy features ("社群影響力" / social influence, "大試用時代" / a product-trial program), but the underlying posture remains: a Taiwanese life and creative-culture platform where everyday people publish and everyday people read.
-
-What PIXNET embraces: warmth, locality, long-form authenticity, and a creator-first community. What it avoids: the cold institutional aesthetics of enterprise software, English-first global-startup polish, and the visual hype that would betray its homey, decades-deep blogging roots.
-
-## 12. Principles
-
-1. **Content is the product.** The interface recedes so that articles, photos, and creator voices are the focus. Chrome is thin; hairlines do the structuring.
-2. **Read like paper.** The Noto Serif TC body, warm ink, and comfortable line-height make the platform feel like reading, not scrolling — honoring its blogging heritage.
-3. **Warmth over sterility.** Every neutral leans warm; the accent is a friendly orange. Nothing is cold, corporate, or clinical.
-4. **Local first.** PIXNET is built for Taiwanese readers and creators in Traditional Chinese. Typography, tracking, and tone all respect that context.
-5. **One loud color, used sparingly.** Orange (`#ff7200`) marks action and energy precisely because it is rare. Restraint makes it legible as "the brand."
-6. **Support the creator.** The system exists to help bloggers publish, grow, and be discovered — the design is in service of that community.
-7. **Density with dignity.** A content-rich homepage stays calm through hairline structure and consistent type, never feeling cluttered.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable PIXNET user segments (lifestyle bloggers, travel/food creators, parenting writers, and Taiwanese readers researching real experiences), not individual people.*
-
-**Hsiao-Ming Chen, 38, Taichung.** A food and travel blogger who has published on PIXNET for over a decade. He measures a platform by how well it showcases his long-form reviews and photo sets. The serif type and clean reading layout feel like home; he would resent a redesign that turned his careful articles into a feed of disposable cards.
-
-**Yu-Ting Lin, 29, Taipei.** A reader planning a weekend trip. She comes to PIXNET specifically to read real, detailed personal accounts — not sponsored listicles. She trusts the platform because the writing feels human and the interface stays out of the way. The warm, readable serif signals "real person wrote this."
-
-**Mei-Ling Wu, 34, Kaohsiung.** A parenting blogger documenting daily life with two kids. She values the supportive creator community and the encouraging, neighborly tone. She wants publishing tools that respect Traditional Chinese typography and make her posts look as warm as they read.
-
-**Chih-Hao Yang, 26, Hsinchu.** A new short-video creator exploring PIXNET's "社群影響力" creator program. He is drawn by the chance to reach an established Taiwanese audience. He appreciates that the brand feels local and authentic rather than a copy of a Western platform.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no posts yet)** | White canvas, single warm-ink (`#423e3c`) line in Noto Serif TC 16px: an encouraging prompt to write the first article. One orange CTA (`#ff7200`). No cold "No data" wording. |
-| **Empty (search no results)** | Muted-gray (`#817f7d`) single line in Traditional Chinese suggesting alternate keywords; search field stays visible. |
-| **Loading (feed first paint)** | Skeleton blocks at card dimensions in hairline `#eaeae9`, gentle warm shimmer. Thumbnails skeleton sharp-cornered to match. |
-| **Loading (in-place refresh)** | Subtle orange (`#ff7200`) progress hint; previous content stays visible. |
-| **Error (load failed)** | Inline warm-toned banner, `#ff432b`-adjacent accent, plain Traditional-Chinese explanation plus a retry link. No generic "Something went wrong." |
-| **Error (form validation)** | Field-level, warm-red border with a short serif message describing what is invalid. |
-| **Success (post published)** | Brief confirmation toast in warm ink, friendly past-tense Chinese phrasing. No exclamation overload. |
-| **Disabled** | Reduced opacity on surface and text together; orange CTA becomes a faded warm orange, not switched to gray. |
-| **Hot / trending** | Orange (`#ff7200`) or red (`#ff432b`) marker / numeral flags the trending item. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | State commits, selection, focus rings |
-| `motion-fast` | 150ms | Hover lifts, button press, tag hover |
-| `motion-standard` | 220ms | Dropdowns, menus, card expand |
-| `motion-slow` | 320ms | Page-level transitions, modal reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — menus, dropdowns, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Signature motions.**
-
-1. **Card hover lift.** Content cards lift gently on hover using `motion-fast / ease-standard` — a small shadow grow (`rgba(66,62,60,0.12)`) and border deepen to `#c0bfbe`. Calm, never bouncy, in keeping with a reading-focused home.
-2. **Tag / nav hover.** Trending tags and nav links transition color toward `#575451` and/or reveal an orange underline over `motion-fast`.
-3. **Menu reveal.** Dropdowns and account menus arrive with `motion-standard / ease-enter`, a short fade-and-rise.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; hovers become immediate color changes. Reading is never gated on animation.
-
-## 16. Do's and Don'ts
-
-### Do
-- Commit fully to Noto Serif TC across the interface — it defines PIXNET
-- Keep text in warm ink `#423e3c`; reserve `#000000` for rare contrast needs
-- Treat PIXNET orange `#ff7200` as a precious, rationed CTA / brand color
-- Lean on `#eaeae9` hairlines and `#f4f4f4` muted surfaces for structure
-- Keep the mood warm, local, and creator-supportive in copy and color
-- Use 6px radius on buttons/tags and sharp corners on imagery
-- Let content density stay calm via consistent type and hairline dividers
-
-### Don't
-- Don't swap in a sans-serif body face — it destroys the brand read
-- Don't flood the UI with orange or introduce cold corporate blue
-- Don't use pure black or negative tracking on Traditional Chinese text
-- Don't add heavy gray/black shadows — elevation is subtle and warm
-- Don't pill-shape buttons or tags
-- Don't adopt English-first, hype-startup tone — PIXNET is homey and Taiwanese
-- Don't bury content under heavy chrome — the reader and creator come first
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ff7200` measures 2.74:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

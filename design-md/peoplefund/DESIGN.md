@@ -1,65 +1,156 @@
 ---
-id: peoplefund
 name: PeopleFund
-display_name_kr: 피플펀드
-country: KR
-category: fintech
-homepage: "https://peoplefund.co.kr/"
-primary_color: "#ffc32d"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=peoplefund.co.kr&sz=128"
-verified: "2026-07-02"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live brand amber (#ffc32d) on status badges (NOTICE/HOT/NEW/마감임박); confirmed via Tailwind class bg-[#FFC32D] and bgFreq ×13. Canvas white (#ffffff). Body bg soft grey (#f6f6f6). Secondary charcoal (#2e303b) for nav/UI text. Footer dark blue-grey (#263238). Site has rebranded from PeopleFund to 크플 (Cple) at cple.co.kr; peoplefund.co.kr redirects there."
-  colors:
-    primary: "#ffc32d"
-    canvas: "#ffffff"
-    surface: "#f6f6f6"
-    surface-alt: "#f5f5f5"
-    ink: "#000000"
-    ink-secondary: "#2e2e2e"
-    charcoal: "#2e303b"
-    muted: "#6a6a6a"
-    muted-light: "#90a4af"
-    hairline: "#d0d8dc"
-    on-primary: "#000000"
-    footer-bg: "#263238"
-    error: "#ff4d4f"
-    success: "#37c94d"
-    accent-blue: "#2054ae"
-  typography:
-    family: { sans: "Pretendard", fallback: "Lato, \"Noto Sans KR\", sans-serif" }
-    section:    { size: 29, weight: 600, lineHeight: 1.31, tracking: -0.4, use: "Section headings H2, Pretendard SemiBold" }
-    subsection: { size: 23, weight: 600, lineHeight: 1.39, tracking: -0.3, use: "Sub-section headings H3" }
-    card-head:  { size: 19, weight: 600, lineHeight: 1.37, tracking: -0.3, use: "Card headings H4" }
-    body:       { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body copy" }
-    nav:        { size: 16, weight: 500, lineHeight: 1.00, use: "Nav link labels" }
-    button:     { size: 15, weight: 600, lineHeight: 1.00, use: "Primary CTA button label" }
-    button-nav: { size: 16, weight: 400, lineHeight: 1.00, use: "Nav action buttons (signup/login)" }
-  spacing: { xs: 3, sm: 6, md: 12, base: 20, lg: 32, xl: 48, section: 64 }
-  rounded: { none: 0, sm: 10, md: 16, pill: 30, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-cta: { type: button, bg: "#ffffff", fg: "#000000", radius: "0px", height: "46px", padding: "0px", font: "15px / 600 Pretendard", use: "Primary 'View Products' CTA on hero sections" }
-    button-nav-outline: { type: button, bg: "#ffffff", fg: "#2e303b", border: "1px solid #d0d8dc", radius: "10px", height: "50px", padding: "0px 20px", font: "16px / 400 Pretendard", use: "Nav action buttons — 투자회원가입, 로그인" }
-    button-dark-pill: { type: button, bg: "rgba(0,0,0,0.2)", fg: "#000000", border: "1px solid rgba(255,255,255,0.2)", radius: "30px", height: "58px", padding: "17px 32px", font: "16px / 400 Pretendard", use: "Phone/FAQ contact pill buttons on dark hero section" }
-    badge-status: { type: badge, bg: "#ffc32d", fg: "#000000", radius: "0px", padding: "3px 6px", font: "12px / 600 Pretendard", use: "Investment status labels — NOTICE, HOT, NEW, 마감임박" }
-    badge-progress: { type: badge, bg: "#2054ae", fg: "#ffffff", radius: "4px", font: "12px / 400 Pretendard", use: "Progress / percent-funded status on invest cards" }
-    card-product: { type: card, bg: "#ffffff", fg: "#000000", radius: "8px", use: "Investment product cards on product listing page" }
-    card-feature: { type: card, bg: "#f6f6f6", fg: "#000000", radius: "8px", use: "Feature highlight cards on homepage sections" }
-    nav-link: { type: tab, fg: "#2e303b", font: "16px / 500 Pretendard", use: "Top nav items — 투자, 대출, 이용안내", active: "text #000000 bold on active" }
-    input-default: { type: input, bg: "#ffffff", fg: "#000000", border: "1px solid #d0d8dc", radius: "10px", font: "16px / 400 Pretendard", use: "Standard form input fields" }
-  components_harvested: true
+colors:
+  primary: '#ffc32d'
+  canvas: '#ffffff'
+  surface: '#f6f6f6'
+  surface-alt: '#f5f5f5'
+  ink: '#000000'
+  ink-secondary: '#2e2e2e'
+  charcoal: '#2e303b'
+  muted: '#6a6a6a'
+  muted-light: '#90a4af'
+  hairline: '#d0d8dc'
+  on-primary: '#000000'
+  footer-bg: '#263238'
+  error: '#ff4d4f'
+  success: '#37c94d'
+  accent-blue: '#2054ae'
+typography:
+  section:
+    fontSize: 29px
+    fontWeight: 600
+    lineHeight: 1.31
+    letterSpacing: '-0.4px'
+    use: Section headings H2, Pretendard SemiBold
+  subsection:
+    fontSize: 23px
+    fontWeight: 600
+    lineHeight: 1.39
+    letterSpacing: '-0.3px'
+    use: Sub-section headings H3
+  card-head:
+    fontSize: 19px
+    fontWeight: 600
+    lineHeight: 1.37
+    letterSpacing: '-0.3px'
+    use: Card headings H4
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard body copy
+  nav:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1
+    use: Nav link labels
+  button:
+    fontSize: 15px
+    fontWeight: 600
+    lineHeight: 1
+    use: Primary CTA button label
+  button-nav:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1
+    use: Nav action buttons (signup/login)
+rounded:
+  none: 0px
+  sm: 10px
+  md: 16px
+  pill: 30px
+  full: 9999px
+spacing:
+  xs: 3
+  sm: 6
+  md: 12
+  base: 20
+  lg: 32
+  xl: 48
+  section: 64
+components:
+  button-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 0px
+    height: 46px
+    padding: 0px
+    typography: 15px / 600 Pretendard
+    use: Primary 'View Products' CTA on hero sections
+  button-nav-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#2e303b'
+    border: '1px solid #d0d8dc'
+    rounded: 10px
+    height: 50px
+    padding: 0px 20px
+    typography: 16px / 400 Pretendard
+    use: Nav action buttons — 투자회원가입, 로그인
+  button-dark-pill:
+    type: button
+    backgroundColor: rgba(0,0,0,0.2)
+    textColor: '#000000'
+    border: 1px solid rgba(255,255,255,0.2)
+    rounded: 30px
+    height: 58px
+    padding: 17px 32px
+    typography: 16px / 400 Pretendard
+    use: Phone/FAQ contact pill buttons on dark hero section
+  badge-status:
+    type: badge
+    backgroundColor: '#ffc32d'
+    textColor: '#000000'
+    rounded: 0px
+    padding: 3px 6px
+    typography: 12px / 600 Pretendard
+    use: Investment status labels — NOTICE, HOT, NEW, 마감임박
+  badge-progress:
+    type: badge
+    backgroundColor: '#2054ae'
+    textColor: '#ffffff'
+    rounded: 4px
+    typography: 12px / 400 Pretendard
+    use: Progress / percent-funded status on invest cards
+  card-product:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 8px
+    use: Investment product cards on product listing page
+  card-feature:
+    type: card
+    backgroundColor: '#f6f6f6'
+    textColor: '#000000'
+    rounded: 8px
+    use: Feature highlight cards on homepage sections
+  nav-link:
+    type: tab
+    textColor: '#2e303b'
+    typography: 16px / 500 Pretendard
+    use: Top nav items — 투자, 대출, 이용안내
+    active: 'text #000000 bold on active'
+  input-default:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: '1px solid #d0d8dc'
+    rounded: 10px
+    typography: 16px / 400 Pretendard
+    use: Standard form input fields
+fonts:
+  roles:
+    sans: Pretendard
+    fallback: Lato, "Noto Sans KR", sans-serif
 ---
 
 # Design System Inspiration of PeopleFund
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 PeopleFund (피플펀드), now rebranded as 크플 (Cple), is Korea's online P2P real-estate lending and investment platform, and its design system reads as a confident, minimal financial product with a single bold accent: the brand amber `#ffc32d`. The canvas is pure white (`#ffffff`) with a soft cool-grey body background (`#f6f6f6`) segmenting content into breathable zones. Text is set in near-pure black (`#000000`) — not a warmed navy or charcoal — projecting directness and legibility over refinement. The amber appears almost exclusively on status badges (NOTICE, HOT, NEW, 마감임박) where it punches through the monochromatic field to signal urgency and brand identity simultaneously.
 
@@ -78,7 +169,7 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 - Dark blue-grey footer (`#263238`) — grounding anchor
 - Primary CTA "상품 보러가기": white button, black text, zero radius — deliberately un-styled
 
-## Primary tasks
+### Primary tasks
 
 - Compare listings by return rate and collateral before investing
 - Act on a near-closing product before it fills up
@@ -86,7 +177,35 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 - Place an investment and move on to the portfolio
 - Borrow short-term bridge financing against a commercial property
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+PeopleFund (피플펀드) was founded in **2015** by **김대윤 (Kim Dae-yoon, CEO)** as a marketplace lending platform connecting individual investors with property-secured borrowers — a model Korea permitted under its P2P lending regulatory framework. The founding thesis addressed a Korean market inefficiency: retail investors had almost no access to mid-yield instruments between bank deposits (1-2%) and equity risk, while qualified borrowers were underserved by banks with rigid scoring. PeopleFund proposed a middle path: real-estate-collateralized loans, transparently listed, directly matchable online.
+
+The company rebranded to **크플 (Cple)** — 크라우드펀딩 플랫폼 (Crowdfunding Platform) — reflecting its ambition to be the defining Korean online investment finance brand, claiming the position of "대한민국 최상위 온투금융" (Korea's Top Online Finance). This rebrand surfaced in 2024-2025 with the new `cple.co.kr` domain, though `peoplefund.co.kr` continues to redirect there. The brand's parent company is **PFCT (피에프씨테크놀로지스 / PFC Technologies)**.
+
+PeopleFund has received recognition including a **2019 국무총리 표창** (Prime Minister's Commendation), coverage from **Bloomberg** and **CNBC**, awards at the **IFLR APAC Awards**, and investment from international firms including **CLSA Capital Partners**. This institutional recognition is surfaced prominently on the homepage as social proof — appropriate for a platform asking retail investors to commit capital to property loans.
+
+What PeopleFund refuses, visible in its design: the glossy over-promise of neo-bank apps, the lifestyle marketing of mainstream consumer fintech, and the heavy regulatory-compliance aesthetic of old banking. What it embraces: a data-dense, scannable product board, a single amber urgency signal, and the confidence to let the numbers speak.
+
+### Principles
+
+1. **Returns over rhetoric.** The product listings lead with funded percentages and product codes, not marketing copy. *UI implication:* investment card layout prioritizes data fields — funding %, status badge, product ID — before descriptive text.
+2. **Single accent, maximum signal.** Amber `#ffc32d` appears only on status labels. *UI implication:* do not add a second accent color; the amber's power comes from its singularity. Every new use dilutes the urgency signal.
+3. **Flat and fast.** No shadows, no depth tricks. *UI implication:* separate content zones with tint (`#f6f6f6`) and hairlines (`#d0d8dc`); avoid elevation layers that add visual noise without adding meaning.
+4. **Pretendard all the way.** A single font across all levels signals system coherence. *UI implication:* do not introduce a second typeface; vary weight (400 body, 600 heading/CTA) to create hierarchy.
+5. **Credibility through specificity.** Awards, partner logos, return rates, and product percentages anchor trust. *UI implication:* always prefer a specific number ("95.1% 마감임박") over a generic quality claim.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable PeopleFund user segments (Korean retail investors, property-secured borrowers), not individual people.*
+
+**박준혁, 38, 서울 강남.** A salaried professional with 2,000만원 in savings looking for yield beyond 2% bank deposits. Compares PeopleFund listings by annual return rate and collateral-to-loan ratio before committing. The amber "마감임박" badge triggers action — he doesn't want to miss a 10%+ product. Trusts the platform because of the Prime Minister's Commendation badge on the homepage; distrusts anything that looks too slick.
+
+**이민정, 44, 인천.** A small business owner who borrowed through PeopleFund for short-term bridge financing on a commercial property. Values the faster approval relative to banks and appreciates seeing her own product listed transparently on the platform — she knows exactly who is funding her loan.
+
+**최동현, 29, 부산.** A first-time P2P investor who downloaded the app after seeing the Bloomberg mention. Starts with 100만원 on a 6-month product. The clean, data-board UI made him trust the platform more than a more "designed" competitor that felt more like a lifestyle brand. He wants a spreadsheet, not a mood board.
+
+## Colors
 
 ### Primary
 - **Brand Amber** (`#ffc32d`): The single saturated brand accent. Deployed exclusively on status badges (NOTICE, HOT, NEW, 마감임박) to signal urgency on investment listings. Confirmed in Tailwind source class `bg-[#FFC32D]`.
@@ -111,7 +230,7 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 - **Success Green** (`#37c94d`): Success / completion states on transaction-level feedback.
 - **Progress Blue** (`#2054ae`): Accent for funded-percentage progress bars on investment cards. A secondary accent outside the amber primary.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Pretendard`, with fallback `Lato, "Noto Sans KR", sans-serif`
@@ -135,7 +254,113 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 - **Tight tracking at display sizes**: -0.4px at 29px, -0.3px at 23px and 19px. Headlines compress but not dramatically — a measured, professional cadence.
 - **400 for body and nav action buttons**: The split between 600 (heading/CTA) and 400 (body/nav-action) is the system's primary hierarchy signal.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px
+- Scale: 3px, 6px, 12px, 20px, 32px, 48px, 64px
+- Notable: Card horizontal padding 20px; section vertical gap 48–64px; tight body padding reflecting dense investment-data presentation
+
+### Grid & Container
+- Centered single-column hero with investment product carousel as the anchor
+- Product listing section: horizontal scrolling card row (visible on homepage)
+- Feature sections: 3-up grid (three attraction points)
+- Full-width dark sections (`#000000` bg) for "Contact us" callouts with white text H3 headings
+- White sections alternate with `#f6f6f6` tinted sections for separation
+
+### Whitespace Philosophy
+- **Data density over breathing room**: the product serves investors who want to scan multiple investment options; the layout is relatively dense with information
+- **Flat separation**: `#f6f6f6` vs `#ffffff` bands do all separation work, no shadow elevation
+- **Single accent per screen**: the amber `#ffc32d` on status badges is the only saturated color; everything else is white, grey, black, and charcoal — so the amber always reads immediately
+
+### Border Radius Scale
+- Zero (0px): Primary CTA buttons — deliberately raw and un-styled
+- Small (10px): Nav outline action buttons, form inputs
+- Medium (8px): Cards and containers — the workhorse
+- Pill (30px): Contact/phone/FAQ pill buttons in the dark hero section
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, product carousel becomes single-item; reduced section padding |
+| Tablet | 768-1024px | 2-up investment card rows; moderate padding |
+| Desktop | 1024px+ | Full layout; horizontal product carousel; 3-up feature grid |
+
+#### Touch Targets
+- Product "상품 보러가기" buttons: 46px height — comfortable for tap
+- Nav action buttons: 50px height with 20px horizontal padding — generously tappable
+- Contact pill buttons: 58px height — large hit area for phone number tap
+
+#### Collapsing Strategy
+- Hero investment carousel: multi-card horizontal scroll → single centered card on mobile
+- H2 headings maintain 29px on mobile (size scale is conservative enough to not compress further)
+- Feature 3-up grid → stacked single column on mobile
+- Footer: multi-column links collapse to stacked single column
+
+#### Image Behavior
+- Investment product images carry no shadow at any size — consistent with flat system
+- Cards maintain 8px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, no border | Most surfaces — pure flat system |
+| Tint (Level 1) | `#f6f6f6` background shift | Card/section separation without elevation |
+| Hairline (Level 2) | `1px solid #d0d8dc` border | Outline buttons, form inputs, white card edges on grey background |
+
+**Shadow Philosophy**: PeopleFund is a flat, near-shadowless system. Live DOM inspection found `box-shadow: none` across all visible elements. Depth and grouping come from tinted background bands (`#f6f6f6`) and thin `#d0d8dc` hairline borders. This is a deliberate choice for a P2P investment platform: flat UIs load faster on mobile and avoid the "bank software" heaviness that can reduce trust perception in the crowdfunding-adjacent segment. The amber badge does the hierarchy work that shadows would otherwise do.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 100ms | Hover, button press |
+| `motion-standard` | 200ms | Card reveal, dropdown, tooltip |
+| `motion-slow` | 300ms | Page-level section transition |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, panels |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and minimal — appropriate for a P2P investment platform where the user is making financial decisions, not consuming entertainment. Product cards fade into view at `motion-standard / ease-enter` as the list loads. The amber status badge does not animate — static signals are trusted signals; a pulsing badge would feel like manipulation on a financial platform. No spring or bounce anywhere. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the platform remains fully usable and data-accessible.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://peoplefund.co.kr/ → https://www.cple.co.kr/ and https://www.cple.co.kr/product/invest:
+- Homepage title: "크플 - 대한민국 최상위 온투금융(투자, 대출)"
+- Section headings: "폭풍성장 크플", "세 가지 매력 포인트", "대한민국을 대표하는 크플", "크플과 함께하는"
+- Status badges (Tailwind class bg-[#FFC32D]): NOTICE, 마감임박, HOT, NEW
+- Products listed: "서울시 양천구 21548호" 94.7% 마감임박, "평택시 독곡동 21577호" 95.1% 마감임박
+- H2 29px/600/-0.4px, H3 23px/600/-0.3px, H4 19px/600/-0.3px: all confirmed live
+- footer: "회사소개", "뉴스룸", "투자사 소개" nav links
+- Recognition on homepage: "2019 국무총리 표창", "CLSA Capital Partners", "블룸버그", "CNBC", "IFLR APAC AWARDS"
+
+blog.pfct.co.kr metadata (2026-07-02): Organization name "피에프씨테크놀로지스(PFC Technologies)" / "피플펀드 PeopleFund"; blog title "PFCT 공식블로그 '피플로그'"; description "보통 사람을 위한 보통이 아닌 금융, 피플펀드 공식 블로그 '피플로그' 입니다." These are brand-owned first-party sources.
+
+Brand narrative: PeopleFund founded 2015 as Korean P2P lending platform; CEO 김대윤. Rebrand to 크플 (Cple) / PFCT (PFC Technologies) publicly visible on sites. These are documented public facts about the company.
+
+Personas (§13) are fictional archetypes informed by publicly observable PeopleFund user segments (Korean retail P2P investors, property-secured borrowers). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "single accent maximum signal", "flat and fast as a rejection of banking software heaviness") are editorial readings connecting PeopleFund's observed design to its positioning, not directly sourced PeopleFund statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -223,42 +448,22 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 **Tier 2 sources:** getdesign.md/peoplefund — not found; styles.refero.design/?q=peoplefund — not found (KR brand, typical Tier-2 gap)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px
-- Scale: 3px, 6px, 12px, 20px, 32px, 48px, 64px
-- Notable: Card horizontal padding 20px; section vertical gap 48–64px; tight body padding reflecting dense investment-data presentation
+| State | Treatment |
+|---|---|
+| **Empty (no invest products matching filter)** | White canvas. Charcoal (`#2e303b`) single line at body size explaining no matching products. No illustration. One plain CTA to reset filter. |
+| **Empty (portfolio, no investments yet)** | Muted grey (`#6a6a6a`) text: first-investment prompt with link to product list. Direct, no celebratory onboarding art. |
+| **Loading (product list fetch)** | Skeleton white cards on `#f6f6f6` background at product card dimensions, 8px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
+| **Loading (portfolio calculation)** | Inline data refreshes with previous values staying visible; spinner next to the yield figure. |
+| **Error (investment failed)** | Inline error message with Error Red (`#ff4d4f`) accent. Plain Korean: states what failed and what to do next. No generic "오류가 발생했습니다" alone. |
+| **Error (form validation)** | Field-level message below the input. Describes the specific violation and the valid format. |
+| **Error (product sold out / 모집완료)** | Status badge changes to "모집완료" (closed). Product card dims. No amber badge — the urgency color retires when the window closes. |
+| **Success (investment placed)** | Brief inline confirmation in calm tone. Success Green (`#37c94d`) accent. Next step (view portfolio) linked immediately below. No celebratory animation. |
+| **Skeleton** | `#f6f6f6` blocks at final card dimensions, 8px radius, flat pulse consistent with shadowless system. |
+| **Disabled** | Muted grey (`#6a6a6a`) text and reduced-opacity surface; amber status signals disappear on disabled products. |
 
-### Grid & Container
-- Centered single-column hero with investment product carousel as the anchor
-- Product listing section: horizontal scrolling card row (visible on homepage)
-- Feature sections: 3-up grid (three attraction points)
-- Full-width dark sections (`#000000` bg) for "Contact us" callouts with white text H3 headings
-- White sections alternate with `#f6f6f6` tinted sections for separation
-
-### Whitespace Philosophy
-- **Data density over breathing room**: the product serves investors who want to scan multiple investment options; the layout is relatively dense with information
-- **Flat separation**: `#f6f6f6` vs `#ffffff` bands do all separation work, no shadow elevation
-- **Single accent per screen**: the amber `#ffc32d` on status badges is the only saturated color; everything else is white, grey, black, and charcoal — so the amber always reads immediately
-
-### Border Radius Scale
-- Zero (0px): Primary CTA buttons — deliberately raw and un-styled
-- Small (10px): Nav outline action buttons, form inputs
-- Medium (8px): Cards and containers — the workhorse
-- Pill (30px): Contact/phone/FAQ pill buttons in the dark hero section
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Most surfaces — pure flat system |
-| Tint (Level 1) | `#f6f6f6` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #d0d8dc` border | Outline buttons, form inputs, white card edges on grey background |
-
-**Shadow Philosophy**: PeopleFund is a flat, near-shadowless system. Live DOM inspection found `box-shadow: none` across all visible elements. Depth and grouping come from tinted background bands (`#f6f6f6`) and thin `#d0d8dc` hairline borders. This is a deliberate choice for a P2P investment platform: flat UIs load faster on mobile and avoid the "bank software" heaviness that can reduce trust perception in the crowdfunding-adjacent segment. The amber badge does the hierarchy work that shadows would otherwise do.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Pretendard SemiBold (weight 600) for all headings — it is the single heading anchor
@@ -278,31 +483,27 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 - Use light font weights (300 or below) for headings — SemiBold (600) is the minimum heading weight
 - Use warm-tinted greys for text — `#000000` and `#2e303b` are the text colors; keep them cool and direct
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, product carousel becomes single-item; reduced section padding |
-| Tablet | 768-1024px | 2-up investment card rows; moderate padding |
-| Desktop | 1024px+ | Full layout; horizontal product carousel; 3-up feature grid |
+PeopleFund's voice is **direct, data-forward, and quietly ambitious** — a platform that speaks to investors as rational adults who want yields and returns, not lifestyle aspirations. The homepage title "크플 - 대한민국 최상위 온투금융(투자, 대출)" (크플 - Korea's Top Online Investment Finance) sets the register: declarative, superlative in claim but specific in domain. The section headline "폭풍성장 크플" ("Storm-growth Cple") reads as bold shorthand for performance, not hype. Copy is dense and numeric — funding percentages (95.1%), product codes (21548호), annualized return rates — because the user is here to decide whether to commit capital.
 
-### Touch Targets
-- Product "상품 보러가기" buttons: 46px height — comfortable for tap
-- Nav action buttons: 50px height with 20px horizontal padding — generously tappable
-- Contact pill buttons: 58px height — large hit area for phone number tap
+| Context | Tone |
+|---|---|
+| Hero / section headings | Bold and declarative. "폭풍성장", "세 가지 매력 포인트." Confident without adjective-stacking. |
+| Investment product labels | Data-first: percentage funded, product ID, status (마감임박 / 모집중). |
+| Status badges | Single-word urgency. NOTICE · HOT · NEW · 마감임박. Amber background does the emphasis work. |
+| CTAs | Plain imperatives. "상품 보러가기" (View Products). No exclamation marks. |
+| Feature descriptions | Benefit-summarized: "손쉬운 투자", "높은 수익률", "다채로운 상품" — three-word benefit anchors. |
+| Contact / support | Direct. "고민하지 말고 물어보세요" (Don't hesitate, just ask) — approachable but not casual. |
 
-### Collapsing Strategy
-- Hero investment carousel: multi-card horizontal scroll → single centered card on mobile
-- H2 headings maintain 29px on mobile (size scale is conservative enough to not compress further)
-- Feature 3-up grid → stacked single column on mobile
-- Footer: multi-column links collapse to stacked single column
+**Voice samples (verbatim from live homepage):**
+- "크플 - 대한민국 최상위 온투금융(투자, 대출)" — page title (domain authority claim). *(verified live 2026-07-02)*
+- "폭풍성장 크플" — section heading (performance claim, colloquial strength). *(verified live 2026-07-02)*
+- "세 가지 매력 포인트" — feature section heading (structured promise). *(verified live 2026-07-02)*
 
-### Image Behavior
-- Investment product images carry no shadow at any size — consistent with flat system
-- Cards maintain 8px radius across breakpoints
+**Forbidden register**: vague lifestyle marketing ("unlock your financial future"), undifferentiated safety claims without numbers, exclamation-mark-driven urgency, cute mascot language. The amber badge handles urgency — copy stays numeric and factual.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Brand accent / status: PeopleFund Amber (`#ffc32d`)
@@ -334,106 +535,8 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-PeopleFund's voice is **direct, data-forward, and quietly ambitious** — a platform that speaks to investors as rational adults who want yields and returns, not lifestyle aspirations. The homepage title "크플 - 대한민국 최상위 온투금융(투자, 대출)" (크플 - Korea's Top Online Investment Finance) sets the register: declarative, superlative in claim but specific in domain. The section headline "폭풍성장 크플" ("Storm-growth Cple") reads as bold shorthand for performance, not hype. Copy is dense and numeric — funding percentages (95.1%), product codes (21548호), annualized return rates — because the user is here to decide whether to commit capital.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero / section headings | Bold and declarative. "폭풍성장", "세 가지 매력 포인트." Confident without adjective-stacking. |
-| Investment product labels | Data-first: percentage funded, product ID, status (마감임박 / 모집중). |
-| Status badges | Single-word urgency. NOTICE · HOT · NEW · 마감임박. Amber background does the emphasis work. |
-| CTAs | Plain imperatives. "상품 보러가기" (View Products). No exclamation marks. |
-| Feature descriptions | Benefit-summarized: "손쉬운 투자", "높은 수익률", "다채로운 상품" — three-word benefit anchors. |
-| Contact / support | Direct. "고민하지 말고 물어보세요" (Don't hesitate, just ask) — approachable but not casual. |
-
-**Voice samples (verbatim from live homepage):**
-- "크플 - 대한민국 최상위 온투금융(투자, 대출)" — page title (domain authority claim). *(verified live 2026-07-02)*
-- "폭풍성장 크플" — section heading (performance claim, colloquial strength). *(verified live 2026-07-02)*
-- "세 가지 매력 포인트" — feature section heading (structured promise). *(verified live 2026-07-02)*
-
-**Forbidden register**: vague lifestyle marketing ("unlock your financial future"), undifferentiated safety claims without numbers, exclamation-mark-driven urgency, cute mascot language. The amber badge handles urgency — copy stays numeric and factual.
-
-## 11. Brand Narrative
-
-PeopleFund (피플펀드) was founded in **2015** by **김대윤 (Kim Dae-yoon, CEO)** as a marketplace lending platform connecting individual investors with property-secured borrowers — a model Korea permitted under its P2P lending regulatory framework. The founding thesis addressed a Korean market inefficiency: retail investors had almost no access to mid-yield instruments between bank deposits (1-2%) and equity risk, while qualified borrowers were underserved by banks with rigid scoring. PeopleFund proposed a middle path: real-estate-collateralized loans, transparently listed, directly matchable online.
-
-The company rebranded to **크플 (Cple)** — 크라우드펀딩 플랫폼 (Crowdfunding Platform) — reflecting its ambition to be the defining Korean online investment finance brand, claiming the position of "대한민국 최상위 온투금융" (Korea's Top Online Finance). This rebrand surfaced in 2024-2025 with the new `cple.co.kr` domain, though `peoplefund.co.kr` continues to redirect there. The brand's parent company is **PFCT (피에프씨테크놀로지스 / PFC Technologies)**.
-
-PeopleFund has received recognition including a **2019 국무총리 표창** (Prime Minister's Commendation), coverage from **Bloomberg** and **CNBC**, awards at the **IFLR APAC Awards**, and investment from international firms including **CLSA Capital Partners**. This institutional recognition is surfaced prominently on the homepage as social proof — appropriate for a platform asking retail investors to commit capital to property loans.
-
-What PeopleFund refuses, visible in its design: the glossy over-promise of neo-bank apps, the lifestyle marketing of mainstream consumer fintech, and the heavy regulatory-compliance aesthetic of old banking. What it embraces: a data-dense, scannable product board, a single amber urgency signal, and the confidence to let the numbers speak.
-
-## 12. Principles
-
-1. **Returns over rhetoric.** The product listings lead with funded percentages and product codes, not marketing copy. *UI implication:* investment card layout prioritizes data fields — funding %, status badge, product ID — before descriptive text.
-2. **Single accent, maximum signal.** Amber `#ffc32d` appears only on status labels. *UI implication:* do not add a second accent color; the amber's power comes from its singularity. Every new use dilutes the urgency signal.
-3. **Flat and fast.** No shadows, no depth tricks. *UI implication:* separate content zones with tint (`#f6f6f6`) and hairlines (`#d0d8dc`); avoid elevation layers that add visual noise without adding meaning.
-4. **Pretendard all the way.** A single font across all levels signals system coherence. *UI implication:* do not introduce a second typeface; vary weight (400 body, 600 heading/CTA) to create hierarchy.
-5. **Credibility through specificity.** Awards, partner logos, return rates, and product percentages anchor trust. *UI implication:* always prefer a specific number ("95.1% 마감임박") over a generic quality claim.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable PeopleFund user segments (Korean retail investors, property-secured borrowers), not individual people.*
-
-**박준혁, 38, 서울 강남.** A salaried professional with 2,000만원 in savings looking for yield beyond 2% bank deposits. Compares PeopleFund listings by annual return rate and collateral-to-loan ratio before committing. The amber "마감임박" badge triggers action — he doesn't want to miss a 10%+ product. Trusts the platform because of the Prime Minister's Commendation badge on the homepage; distrusts anything that looks too slick.
-
-**이민정, 44, 인천.** A small business owner who borrowed through PeopleFund for short-term bridge financing on a commercial property. Values the faster approval relative to banks and appreciates seeing her own product listed transparently on the platform — she knows exactly who is funding her loan.
-
-**최동현, 29, 부산.** A first-time P2P investor who downloaded the app after seeing the Bloomberg mention. Starts with 100만원 on a 6-month product. The clean, data-board UI made him trust the platform more than a more "designed" competitor that felt more like a lifestyle brand. He wants a spreadsheet, not a mood board.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no invest products matching filter)** | White canvas. Charcoal (`#2e303b`) single line at body size explaining no matching products. No illustration. One plain CTA to reset filter. |
-| **Empty (portfolio, no investments yet)** | Muted grey (`#6a6a6a`) text: first-investment prompt with link to product list. Direct, no celebratory onboarding art. |
-| **Loading (product list fetch)** | Skeleton white cards on `#f6f6f6` background at product card dimensions, 8px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (portfolio calculation)** | Inline data refreshes with previous values staying visible; spinner next to the yield figure. |
-| **Error (investment failed)** | Inline error message with Error Red (`#ff4d4f`) accent. Plain Korean: states what failed and what to do next. No generic "오류가 발생했습니다" alone. |
-| **Error (form validation)** | Field-level message below the input. Describes the specific violation and the valid format. |
-| **Error (product sold out / 모집완료)** | Status badge changes to "모집완료" (closed). Product card dims. No amber badge — the urgency color retires when the window closes. |
-| **Success (investment placed)** | Brief inline confirmation in calm tone. Success Green (`#37c94d`) accent. Next step (view portfolio) linked immediately below. No celebratory animation. |
-| **Skeleton** | `#f6f6f6` blocks at final card dimensions, 8px radius, flat pulse consistent with shadowless system. |
-| **Disabled** | Muted grey (`#6a6a6a`) text and reduced-opacity surface; amber status signals disappear on disabled products. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Hover, button press |
-| `motion-standard` | 200ms | Card reveal, dropdown, tooltip |
-| `motion-slow` | 300ms | Page-level section transition |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and minimal — appropriate for a P2P investment platform where the user is making financial decisions, not consuming entertainment. Product cards fade into view at `motion-standard / ease-enter` as the list loads. The amber status badge does not animate — static signals are trusted signals; a pulsing badge would feel like manipulation on a financial platform. No spring or bounce anywhere. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the platform remains fully usable and data-accessible.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://peoplefund.co.kr/ → https://www.cple.co.kr/ and https://www.cple.co.kr/product/invest:
-- Homepage title: "크플 - 대한민국 최상위 온투금융(투자, 대출)"
-- Section headings: "폭풍성장 크플", "세 가지 매력 포인트", "대한민국을 대표하는 크플", "크플과 함께하는"
-- Status badges (Tailwind class bg-[#FFC32D]): NOTICE, 마감임박, HOT, NEW
-- Products listed: "서울시 양천구 21548호" 94.7% 마감임박, "평택시 독곡동 21577호" 95.1% 마감임박
-- H2 29px/600/-0.4px, H3 23px/600/-0.3px, H4 19px/600/-0.3px: all confirmed live
-- footer: "회사소개", "뉴스룸", "투자사 소개" nav links
-- Recognition on homepage: "2019 국무총리 표창", "CLSA Capital Partners", "블룸버그", "CNBC", "IFLR APAC AWARDS"
-
-blog.pfct.co.kr metadata (2026-07-02): Organization name "피에프씨테크놀로지스(PFC Technologies)" / "피플펀드 PeopleFund"; blog title "PFCT 공식블로그 '피플로그'"; description "보통 사람을 위한 보통이 아닌 금융, 피플펀드 공식 블로그 '피플로그' 입니다." These are brand-owned first-party sources.
-
-Brand narrative: PeopleFund founded 2015 as Korean P2P lending platform; CEO 김대윤. Rebrand to 크플 (Cple) / PFCT (PFC Technologies) publicly visible on sites. These are documented public facts about the company.
-
-Personas (§13) are fictional archetypes informed by publicly observable PeopleFund user segments (Korean retail P2P investors, property-secured borrowers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "single accent maximum signal", "flat and fast as a rejection of banking software heaviness") are editorial readings connecting PeopleFund's observed design to its positioning, not directly sourced PeopleFund statements.
--->
+- **Contrast, `button-dark-pill`.** Text `#000000` on `#00000033` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

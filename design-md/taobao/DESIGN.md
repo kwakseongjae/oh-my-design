@@ -1,108 +1,68 @@
 ---
-id: taobao
 name: Taobao
-country: CN
-category: ecommerce
-homepage: "https://www.taobao.com"
-primary_color: "#FF5000"
-logo:
-  type: simpleicons
-  slug: taobao
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "Taobao PC tokens (--tbpc-*)"
-  url: "https://www.taobao.com/"
-  type: system
-  description: "28 --tbpc-* custom properties resolving identically on www.taobao.com and world.taobao.com: one orange theme colour aliased three ways, a gold second theme, a four-step grey text ramp, three surfaces and a border/divider pair, each published as a hex and again as a black-alpha variant."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    brand: "#ff5000"
-    gold: "#b88449"
-    brand-wash: "#fff1eb"
-    brand-border: "#ffd5c2"
-    foreground: "#1f1f1f"
-    secondary: "#7a7a7a"
-    tertiary: "#999999"
-    disabled: "#cccccc"
-    border: "#d6d6d6"
-    divider: "#ebebeb"
-    canvas: "#ffffff"
-    surface-1: "#f5f5f5"
-    surface-2: "#f7f7f7"
-    surface-3: "#fafafa"
-  typography:
-    body: { size: 14, use: "The default size for nearly everything — nav, card titles, category links" }
-    small: { size: 12, use: "Prices, tags, secondary metadata under a card" }
-    lead: { size: 16, use: "Search field and the two theme-orange buttons" }
-    title: { size: 20, use: "The few section headings on the page" }
-  rounded: { sm: 4, md: 8, lg: 12 }
-  components:
-    button-search: { type: "button", bg: "#ff5000", fg: "#ffffff", radius: 8, font: "16px / 500", hover: "#ff5000", pressed: "#ff5000", focus: "#ff5000", use: "The search submit, 72×36. Measured at rest, hover, pressed and focus: all four are byte-identical — the button has no state styling at all." }
-    button-login: { type: "button", bg: "#ff5000", fg: "#ffffff", radius: 12, font: "16px / 900", hover: "#ff5000", pressed: "#ff5000", focus: "#ff5000", use: "The sign-in call to action, 224×48 at weight 900 — the single heaviest text on the page. Also identical across all four states." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.taobao.com/", inspected: "2026-09-22" }
-    - { id: world, kind: product-surface, url: "https://world.taobao.com/", inspected: "2026-09-22" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.taobao.com/", captured: "2026-09-22" }
-    - { id: world-live, kind: product-surface, url: "https://world.taobao.com/", captured: "2026-09-22" }
-    - { id: alibaba-business, kind: official-doc, url: "https://www.alibabagroup.com/en-US/about-alibaba-businesses-1744508703945523200", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.gold: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-wash: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.tertiary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.divider: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-1: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-2: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-3: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.lead.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.title.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.title.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-search.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-search.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+colors:
+  brand: '#ff5000'
+  gold: '#b88449'
+  brand-wash: '#fff1eb'
+  brand-border: '#ffd5c2'
+  foreground: '#1f1f1f'
+  secondary: '#7a7a7a'
+  tertiary: '#999999'
+  disabled: '#cccccc'
+  border: '#d6d6d6'
+  divider: '#ebebeb'
+  canvas: '#ffffff'
+  surface-1: '#f5f5f5'
+  surface-2: '#f7f7f7'
+  surface-3: '#fafafa'
+typography:
+  body:
+    fontSize: 14px
+    use: The default size for nearly everything — nav, card titles, category links
+  small:
+    fontSize: 12px
+    use: Prices, tags, secondary metadata under a card
+  lead:
+    fontSize: 16px
+    use: Search field and the two theme-orange buttons
+  title:
+    fontSize: 20px
+    use: The few section headings on the page
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 12px
+components:
+  button-search:
+    type: button
+    backgroundColor: '#ff5000'
+    textColor: '#ffffff'
+    rounded: 8px
+    typography: 16px / 500
+    hover: '#ff5000'
+    pressed: '#ff5000'
+    focus: '#ff5000'
+    use: 'The search submit, 72×36. Measured at rest, hover, pressed and focus: all four are byte-identical — the button has no state styling at all.'
+  button-login:
+    type: button
+    backgroundColor: '#ff5000'
+    textColor: '#ffffff'
+    rounded: 12px
+    typography: 16px / 900
+    hover: '#ff5000'
+    pressed: '#ff5000'
+    focus: '#ff5000'
+    use: The sign-in call to action, 224×48 at weight 900 — the single heaviest text on the page. Also identical across all four states.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
+
 # Design System Inspiration of Taobao (淘宝)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Taobao is Alibaba's consumer marketplace, launched in 2003 — the name means "search for
 treasures" — and Alibaba describes it as China's leading retail e-commerce platform, a place
@@ -125,11 +85,30 @@ same fill, same text, same border, same shadow, same filter, same transform. A `
 all` is declared and there is nothing for it to transition. Taobao puts its energy into
 density of merchandise, not into feedback on chrome.
 
-### Primary tasks
+#### Primary tasks
 - Search the marketplace, or enter one of the dozens of category channels listed on the page.
 - Sign in, which is what the largest control on the surface is for.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Alibaba launched Taobao in 2003 as a consumer-to-consumer marketplace; the name, "search for
+treasures", describes a surface built for browsing rather than for finding one known item.
+Alibaba's own business description places it as China's leading retail e-commerce platform
+and as the entry point to Tmall flagship stores, Tmall Supermarket and the secondhand channel
+Xianyu. The interface reflects the C2C origin: an enormous, flat, text-dense directory with a
+single orange accent, closer to a printed catalogue index than to a curated storefront.
+
+### Principles
+
+- **One colour does every job.** Action, price and brand are the same `#ff5000`.
+- **Publish the alpha twin.** Every role exists opaque and at alpha, for flat versus imagery.
+- **Chrome recedes; merchandise does not.** Five percent of luminance separates the surfaces.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 with `getComputedStyle` on `www.taobao.com`. All 28 custom properties on
 the document element carry the **`--tbpc-`** prefix — Taobao PC. Nothing else is declared at
@@ -173,7 +152,7 @@ Four steps, darkest to lightest, each with a black-alpha twin:
 - **Border** (`#d6d6d6`) — `--tbpc-border-color`; twin `rgba(0,0,0,.16)`.
 - **Divider** (`#ebebeb`) — `--tbpc-divider-color`; twin `rgba(0,0,0,.08)`.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 
@@ -195,7 +174,36 @@ Four sizes, measured across 116 text-bearing elements:
 Weights: 400 on 99 elements, 600 on 10, 500 on 6, 700 on one — and **900** on exactly one,
 the sign-in button. That single control is heavier than every heading.
 
-## 4. Component Stylings
+## Layout
+
+- **One accent, everything else grey.** `#ff5000` is the entire colour budget.
+- **Recessed surfaces are nearly invisible** — `#f5f5f5`, `#f7f7f7` and `#fafafa` separate
+  blocks by a few percent of luminance, letting product photography supply the contrast.
+- **Every colour ships twice**, opaque and as black-at-alpha, because half the page sits on
+  merchandise images where an opaque grey would band.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only. A `--tbpc-layout-page-margin-*` group and a
+`--tbpc-split-main-width` do exist in Taobao's stylesheets, but the only surface serving them
+rendered no content and reported the viewport width back as a token value, so no spacing
+scale is recorded.
+
+## Elevation & Depth
+
+**No shadow was observed** on either measured control, and no shadow token exists among the
+28 properties. Separation is done with `#ebebeb` dividers and `#d6d6d6` borders.
+
+## Motion & Easing
+
+`transition: all` is set on both controls, with no duration or easing token anywhere in the
+28 properties — and, since no state changes, nothing animates.
+
+---
+
+**Tier 1 sources:** https://www.taobao.com/ (live product surface — 28 `--tbpc-*` custom properties read via `getComputedStyle`, both orange controls measured at rest, hover, pressed and focus, 2026-09-22); https://world.taobao.com/ (Taobao's traditional-Chinese surface — returned the same 28 property names with byte-identical values, cross-confirming that the set is brand-wide rather than page-local, 2026-09-22); https://www.alibabagroup.com/en-US/about-alibaba-businesses-1744508703945523200 (Alibaba Group's own business page — launch year, name meaning and marketplace position; not cited for tokens)
+
+## Components
 
 Both controls were measured with focus read for **every** control before the mouse moved at
 all. Reading focus per-control between mouse actions is not enough: one `mousedown` anywhere
@@ -228,20 +236,15 @@ Three steps observed in the rendered page: **4px** is the default and by far the
 (10 elements — cards, inputs, tags), **8px** is the search submit, **12px** the sign-in
 button. A single 100px pill and a single 20px chip also appear; neither is a scale step.
 
-## 5. Layout Principles
+### States
 
-- **One accent, everything else grey.** `#ff5000` is the entire colour budget.
-- **Recessed surfaces are nearly invisible** — `#f5f5f5`, `#f7f7f7` and `#fafafa` separate
-  blocks by a few percent of luminance, letting product photography supply the contrast.
-- **Every colour ships twice**, opaque and as black-at-alpha, because half the page sits on
-  merchandise images where an opaque grey would band.
+**Measured and empty.** Rest, hover, pressed and focus were captured on both controls and
+every property matched across all four. `:hover` matched true during the hover reading, so the
+states were live, not missed. `:focus-visible` matched true on both while `outline-style`
+remained `none` — focus is recognised and draws nothing. This is recorded as an observation
+about Taobao's desktop home, not as an absence of evidence.
 
-## 6. Depth & Elevation
-
-**No shadow was observed** on either measured control, and no shadow token exists among the
-28 properties. Separation is done with `#ebebeb` dividers and `#d6d6d6` borders.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#ff5000` for the action *and* the price — Taobao makes no distinction.
@@ -256,14 +259,12 @@ button. A single 100px pill and a single 20px chip also appear; neither is a sca
   renders nothing — that is a measurement of Taobao, not a pattern to reuse.
 - Don't treat `PingFang SC` as a brand face. It is the OS.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only. A `--tbpc-layout-page-margin-*` group and a
-`--tbpc-split-main-width` do exist in Taobao's stylesheets, but the only surface serving them
-rendered no content and reported the viewport width back as a token value, so no spacing
-scale is recorded.
+Not assessed as copy. The measured page is 2,157 characters, nearly all of them category
+names and product titles rather than authored interface voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#ff5000` brand, price and action · `#b88449` gold · `#1f1f1f` text · `#7a7a7a` secondary ·
@@ -275,43 +276,9 @@ surfaces · `#d6d6d6` border · `#ebebeb` divider · `#fff1eb` wash · `#ffd5c2`
   hover change."
 - "A 48px sign-in button: `#ff5000`, 12px radius, 16px at weight 900."
 
-## 10. Voice & Tone
+## Governance
 
-Not assessed as copy. The measured page is 2,157 characters, nearly all of them category
-names and product titles rather than authored interface voice.
+### Known Gaps
 
-## 11. Brand Narrative
-
-Alibaba launched Taobao in 2003 as a consumer-to-consumer marketplace; the name, "search for
-treasures", describes a surface built for browsing rather than for finding one known item.
-Alibaba's own business description places it as China's leading retail e-commerce platform
-and as the entry point to Tmall flagship stores, Tmall Supermarket and the secondhand channel
-Xianyu. The interface reflects the C2C origin: an enormous, flat, text-dense directory with a
-single orange accent, closer to a printed catalogue index than to a curated storefront.
-
-## 12. Principles
-
-- **One colour does every job.** Action, price and brand are the same `#ff5000`.
-- **Publish the alpha twin.** Every role exists opaque and at alpha, for flat versus imagery.
-- **Chrome recedes; merchandise does not.** Five percent of luminance separates the surfaces.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-**Measured and empty.** Rest, hover, pressed and focus were captured on both controls and
-every property matched across all four. `:hover` matched true during the hover reading, so the
-states were live, not missed. `:focus-visible` matched true on both while `outline-style`
-remained `none` — focus is recognised and draws nothing. This is recorded as an observation
-about Taobao's desktop home, not as an absence of evidence.
-
-## 15. Motion & Easing
-
-`transition: all` is set on both controls, with no duration or easing token anywhere in the
-28 properties — and, since no state changes, nothing animates.
-
----
-
-**Tier 1 sources:** https://www.taobao.com/ (live product surface — 28 `--tbpc-*` custom properties read via `getComputedStyle`, both orange controls measured at rest, hover, pressed and focus, 2026-09-22); https://world.taobao.com/ (Taobao's traditional-Chinese surface — returned the same 28 property names with byte-identical values, cross-confirming that the set is brand-wide rather than page-local, 2026-09-22); https://www.alibabagroup.com/en-US/about-alibaba-businesses-1744508703945523200 (Alibaba Group's own business page — launch year, name meaning and marketplace position; not cited for tokens)
+- **Contrast, `button-search`.** Text `#ffffff` on `#ff5000` measures 3.28:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-login`.** Text `#ffffff` on `#ff5000` measures 3.28:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,0 +1,1478 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "hyundaicard",
+    "name": "Hyundai Card",
+    "country": "KR",
+    "category": "fintech",
+    "homepage": "https://www.hyundaicard.com",
+    "primary_color": "#000000",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://newsroom.hyundaicard.com/images/favicon.ico"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Hyundai Card Design Library",
+      "url": "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en",
+      "type": "brand",
+      "description": "A Hyundai Card cultural space, not a public component design-system specification."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Current product home and corporate-information surfaces are separate from DIVE, marketing, and unobserved interaction states.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-29",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product",
+        "url": "https://www.hyundaicard.com/index.jsp",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "corporate-ceh",
+        "kind": "corporate-information",
+        "url": "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "corporate-ckh",
+        "kind": "corporate-information",
+        "url": "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "collector-home",
+        "kind": "product-surface",
+        "url": "https://www.hyundaicard.com/index.jsp",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "collector-ceh",
+        "kind": "product-surface",
+        "url": "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "collector-ckh",
+        "kind": "product-surface",
+        "url": "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "youandi-official",
+        "kind": "official-doc",
+        "url": "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "hyundaicard-probe-home",
+        "kind": "product-surface",
+        "url": "https://www.hyundaicard.com/index.jsp",
+        "captured": "2026-09-29"
+      },
+      {
+        "id": "hyundaicard-probe-ceh",
+        "kind": "product-surface",
+        "url": "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc",
+        "captured": "2026-09-29"
+      }
+    ],
+    "claims": {
+      "colors.ink": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.inverse": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.link-product": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.link-corporate": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.hero.fontSize": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.hero.fontWeight": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.hero.lineHeight": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.hero.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.corporate-hero.fontSize": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.corporate-hero.fontWeight": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.corporate-hero.lineHeight": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.corporate-hero.use": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.nav-inline": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "spacing.corporate-action-inline": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.corporate-outline-action": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.carousel-control": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.flat": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.textColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.typography": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.size": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.product-card-link.hover": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.card_link the Red at :hover (parent li transform)",
+        "captured": "2026-09-29"
+      },
+      "components.product-card-link.pressed": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.card_link the Red at :active",
+        "captured": "2026-09-29"
+      },
+      "components.product-card-link.focus": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.card_link at :focus-visible, Tab stop 227",
+        "captured": "2026-09-29"
+      },
+      "components.product-card-link.states": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.card_link the Red",
+        "captured": "2026-09-29"
+      },
+      "components.second-level-nav-link.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.textColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.padding": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.height": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.typography": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.second-level-nav-link.hover": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#pcMenu02.btn_dep2 카드 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.second-level-nav-link.pressed": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#pcMenu02.btn_dep2 카드 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.second-level-nav-link.focus": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#pcMenu02.btn_dep2 at :focus-visible, Tab stop 26",
+        "captured": "2026-09-29"
+      },
+      "components.second-level-nav-link.states": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#pcMenu02.btn_dep2 카드",
+        "captured": "2026-09-29"
+      },
+      "components.second-level-nav-link.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"2\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.textColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.padding": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.height": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.typography": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.product-detail-link.hover": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.p1_b_1.fc_m_link 전체보기 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.product-detail-link.pressed": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.p1_b_1.fc_m_link 전체보기 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.product-detail-link.focus": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.p1_b_1.fc_m_link at :focus-visible, Tab stop 226",
+        "captured": "2026-09-29"
+      },
+      "components.product-detail-link.states": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a.p1_b_1.fc_m_link 전체보기",
+        "captured": "2026-09-29"
+      },
+      "components.product-detail-link.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"54\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-open.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-open.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-open.textColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-open.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-open.size": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#btnSearchOpen at page top and after scroll",
+        "captured": "2026-09-29"
+      },
+      "components.search-open.hover": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#btnSearchOpen at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.search-open.pressed": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#btnSearchOpen at :active",
+        "captured": "2026-09-29"
+      },
+      "components.search-open.focus": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#btnSearchOpen at :focus-visible, Tab stop 160",
+        "captured": "2026-09-29"
+      },
+      "components.search-open.states": {
+        "surface_id": "home",
+        "source_id": "hyundaicard-probe-home",
+        "method": "live-state-probe",
+        "selector": "a#btnSearchOpen 검색 영역 열기",
+        "captured": "2026-09-29"
+      },
+      "components.search-open.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"12\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.type": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.backgroundColor": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.textColor": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.border": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.rounded": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.padding": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.height": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.typography": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-outline-action.hover": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type03 Go to Company Overview at :hover (mouse-only re-run)",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-outline-action.pressed": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type03 Go to Company Overview at :active (mouse-only re-run)",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-outline-action.focus": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type03 at :focus-visible, Tab stop 12",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-outline-action.states": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type03 Go to Company Overview",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-outline-action.use": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"11\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.type": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.backgroundColor": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.textColor": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.rounded": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.padding": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.height": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.typography": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-text-link.hover": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type04 Go to Recruitment Homepage at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-text-link.pressed": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type04 Go to Recruitment Homepage at :active",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-text-link.focus": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type04 at :focus-visible, Tab stop 20",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-text-link.states": {
+        "surface_id": "corporate-ceh",
+        "source_id": "hyundaicard-probe-ceh",
+        "method": "live-state-probe",
+        "selector": "a.btn_type04 Go to Recruitment Homepage",
+        "captured": "2026-09-29"
+      },
+      "components.corporate-text-link.use": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.textColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.padding": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.height": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.typography": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.states": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.utility-link.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.type": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.backgroundColor": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.textColor": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.rounded": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.padding": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.height": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.typography": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.states": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-menu-link.use": {
+        "surface_id": "corporate-ceh",
+        "source_id": "collector-ceh",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.carousel-pause-control.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.carousel-pause-control.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.carousel-pause-control.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.carousel-pause-control.size": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.carousel-pause-control.states": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.carousel-pause-control.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"53\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.padding": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.size": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.states": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.login-filled-button.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"98\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.type": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.border": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.rounded": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.size": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.states": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      },
+      "components.quick-menu-box.use": {
+        "surface_id": "home",
+        "source_id": "collector-home",
+        "method": "computed-style",
+        "selector": "home::article (class sec_quick_menu)",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 67,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 4,
+      "extension-component-property": 53,
+      "missing-primary": 1,
+      "contrast-ratio": 4,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.corporate-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.card-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-card-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-card-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-card-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-card-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-card-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-card-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.second-level-nav-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.second-level-nav-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.second-level-nav-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.second-level-nav-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.second-level-nav-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.second-level-nav-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-detail-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-detail-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-detail-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-detail-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-detail-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-detail-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-open.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-open.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-open.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-open.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-open.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-open.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-outline-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-text-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-text-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-text-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-text-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-text-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-text-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.utility-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.utility-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.utility-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-menu-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-menu-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-menu-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-pause-control.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-pause-control.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.carousel-pause-control.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-filled-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-filled-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-filled-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-menu-box.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-menu-box.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-menu-box.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-menu-box.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.product-card-link",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.second-level-nav-link",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.search-open",
+        "message": "textColor (#0000007a) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.utility-link",
+        "message": "textColor (#5c5c5c) on backgroundColor (#00000000) has contrast ratio 3.14:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.inverse",
+        "message": "'inverse' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link-product",
+        "message": "'link-product' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link-corporate",
+        "message": "'link-corporate' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "e71f837b91f4ec6552db935e9e64acc8bca89f859cddc4604653f3caeb116693",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.flat",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.hero.fontSize",
+      "typography.corporate-hero.fontSize",
+      "typography.nav.fontSize",
+      "typography.card-title.fontSize",
+      "rounded.corporate-outline-action",
+      "rounded.carousel-control"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "hero",
+        "corporate-hero",
+        "nav",
+        "card-title"
+      ]
+    }
+  }
+}

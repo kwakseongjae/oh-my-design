@@ -280,7 +280,11 @@ run-scoped temporary path에 `graph.draft.json`을 만든다. root `DESIGN.md`,
 **엄격 규칙 (위반 = regression)**:
 
 1. **Single-write Core v2**: 새 생성·합성·refresh는 레퍼런스의 frontmatter나
-   13/15/16-section heading을 복사하지 않는다. agent가 작성하는 것은 schema-valid
+   13/15/16-section heading을 복사하지 않는다. 카탈로그 레퍼런스는 DESIGN.md v3
+   (`spec/design-md-v3.md`: Google frontmatter에 토큰, `## Overview`·`## Colors` 같은
+   Google section 이름, 증거는 설치되지 않는 `reference.json`)일 수도 있다. v3
+   frontmatter의 토큰 값도 아래 2번의 evidence-only inspiration일 뿐이며, 그 frontmatter나
+   section 구조를 프로젝트 DESIGN.md로 복사하지 않는다. agent가 작성하는 것은 schema-valid
    graph draft뿐이다. `experience`, `foundations`, `typography-assets`,
    `components-states`, `layout-platforms`, `content-locales`, `governance`의 고정
    section anchor와 H2, 그리고 일곱 `design-md:claim` 선언과 모든

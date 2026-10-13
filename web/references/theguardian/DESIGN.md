@@ -1,113 +1,67 @@
 ---
-id: theguardian
 name: The Guardian
-country: UK
-category: consumer-tech
-homepage: "https://www.theguardian.com"
-primary_color: "#052962"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=theguardian.com&sz=128"
-verified: "2026-09-23"
-added: "2026-09-23"
-omd: "0.1"
-ds:
-  name: "Source"
-  url: "https://theguardian.design/"
-  type: system
-  description: "The Guardian's digital design system, documenting colour (core and special palettes), typography presets for web and apps, a 4px spacing system, grids, iconography and brand assets. On theguardian.com it surfaces as about 560 component-scoped colour tokens — one custom property per component per colour role (--masthead-nav-background, --article-link-text, --section-border-opinion) — built on Source's brand ramp and the news pillar colours."
-tokens:
-  source: live-extract
-  extracted: "2026-09-23"
-  colors:
-    primary: "#052962"
-    brand-dark: "#041f4a"
-    brand-deepest: "#001536"
-    brand-bright: "#0077b6"
-    brand-muted: "#506991"
-    brand-pale: "#c1d8fc"
-    link: "#c70000"
-    highlight: "#ffe500"
-    foreground: "#121212"
-    text-secondary: "#707070"
-    news-border: "#333333"
-    canvas: "#ffffff"
-    surface: "#f6f6f6"
-    surface-muted: "#ededed"
-    line: "#dcdcdc"
-    line-strong: "#bababa"
-    opinion: "#c74600"
-    opinion-bright: "#e05e00"
-    culture: "#866d50"
-    lifestyle: "#bb3b80"
-    sport-deep: "#005689"
-  typography:
-    family: { display: "Guardian Headline", sans: "Guardian Text Sans" }
-    nav: { size: 17, use: "pillar navigation and utility links, 700" }
-  rounded: { sm: 12, lg: 40, pill: 1000 }
-  components:
-    link-pillar: { type: "button", bg: "transparent", fg: "#ffffff", height: "64px", padding: "4px 0 4px 4px", font: "17px / 700", hover: "transparent", focus: "ring 0 0 0 3px #0077b6", use: "Pillar and utility links on the navy masthead (News, Opinion, Sport, Sign in). Hover changes nothing; focus draws a 3px brand-blue ring as a box-shadow." }
-    button-masthead: { type: "button", bg: "transparent", fg: "#ffffff", hover: "transparent", focus: "ring 0 0 0 3px #0077b6", use: "Masthead buttons — Show more and the Edition switcher. The same: no hover change, the same 3px #0077b6 ring on focus." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-23"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.theguardian.com/uk", inspected: "2026-09-23" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.theguardian.com/uk", captured: "2026-09-23" }
-    - { id: control-404, kind: product-surface, url: "https://www.theguardian.com/zz-this-does-not-exist", captured: "2026-09-23" }
-    - { id: source-ds, kind: official-doc, url: "https://theguardian.design/", captured: "2026-09-23" }
-    - { id: fonts-readme, kind: official-doc, url: "https://raw.githubusercontent.com/guardian/fonts/main/README.md", captured: "2026-09-23" }
-  conflicts: []
-  claims:
-    tokens.colors.brand-bright: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.brand-dark: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.brand-deepest: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.brand-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.brand-pale: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.culture: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.highlight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.lifestyle: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.line: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.line-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.link: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.news-border: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.opinion: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.opinion-bright: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.sport-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.surface-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.colors.text-secondary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.components.button-masthead.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-masthead.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-masthead.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-masthead.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-masthead.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.button-masthead.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.components.link-pillar.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-23" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.rounded.pill: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.family.display: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.nav.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
-    tokens.typography.nav.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-23" }
+colors:
+  primary: '#052962'
+  brand-dark: '#041f4a'
+  brand-deepest: '#001536'
+  brand-bright: '#0077b6'
+  brand-muted: '#506991'
+  brand-pale: '#c1d8fc'
+  link: '#c70000'
+  highlight: '#ffe500'
+  foreground: '#121212'
+  text-secondary: '#707070'
+  news-border: '#333333'
+  canvas: '#ffffff'
+  surface: '#f6f6f6'
+  surface-muted: '#ededed'
+  line: '#dcdcdc'
+  line-strong: '#bababa'
+  opinion: '#c74600'
+  opinion-bright: '#e05e00'
+  culture: '#866d50'
+  lifestyle: '#bb3b80'
+  sport-deep: '#005689'
+typography:
+  nav:
+    fontSize: 17px
+    use: pillar navigation and utility links, 700
+rounded:
+  sm: 12px
+  lg: 40px
+  pill: 1000px
+components:
+  link-pillar:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    height: 64px
+    padding: 4px 0 4px 4px
+    typography: 17px / 700
+    hover: transparent
+    focus: 'ring 0 0 0 3px #0077b6'
+    use: Pillar and utility links on the navy masthead (News, Opinion, Sport, Sign in). Hover changes nothing; focus draws a 3px brand-blue ring as a box-shadow.
+  button-masthead:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    hover: transparent
+    focus: 'ring 0 0 0 3px #0077b6'
+    use: 'Masthead buttons — Show more and the Edition switcher. The same: no hover change, the same 3px #0077b6 ring on focus.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    display: Guardian Headline
+    sans: Guardian Text Sans
 ---
+
 # Design System Inspiration of The Guardian
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 The Guardian is a British news organisation. Its current look dates from January 2018, when the paper left the Berliner format it had
 used since 2005 for a tabloid, and redesigned print and digital together. As its executive creative
@@ -133,11 +87,32 @@ What makes it worth reading:
 - **Pillars are colour.** A reader knows the section before reading its name.
 - **One focus ring everywhere** — 3px of brand blue, drawn as a box-shadow.
 
-### Primary tasks
+#### Primary tasks
 - Read the day's stories; move between pillars and sections.
 - Sign in; subscribe or support; search.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+The Guardian redesigned itself around a format change and kept its identity in type rather than in
+colour: four typefaces drawn for it and licensed to no one else, a black headline masthead, and a
+navy digital masthead from its Source palette. Colour does the navigation — each pillar has its own,
+so a reader knows opinion from sport at a glance — while red marks links and a single yellow
+highlights whatever deserves a second look.
+
+Underneath, the site is generated from one palette declaration per component, hundreds of them, all
+drawn from Source. It is a system built for a newsroom that ships a new kind of module most weeks.
+
+### Principles
+
+- **Type is the brand.** Four bespoke faces carry the identity.
+- **Colour is wayfinding.** Pillars, not decoration.
+- **One ring for focus.** 3px of brand blue on every control.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `theguardian.com/uk`: **557 custom properties** on the root,
 about 560 across all stylesheets, in 238 prefixes. Every one is the Guardian's own — a check against
@@ -187,7 +162,7 @@ Source's core palette, matched on the live page:
 From `--article-section-title-*` and `--section-border-*`. Sport also has a darker competition tone,
 **Sport Deep** `#005689` (`--sport-competition-text`).
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -208,7 +183,31 @@ All four are recorded in the narrative; the two that render on the front are the
 Masthead links set 17px at 700. Source publishes typography presets for web and apps; the front's
 full size census was not taken.
 
-## 4. Component Stylings
+## Layout
+
+Source's spacing system uses a 4px increment — because common screen sizes are divisible by four —
+with 40px between containers and 24px (default) or 16px (compact) within one.
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+Flat. The rendered page has one box-shadow at rest, a hairline `rgba(0,0,0,0.1) 0 0 0 1px`. The only
+other shadow is the focus ring.
+
+## Motion & Easing
+
+Not measured. No motion token is published among the custom properties.
+
+---
+
+**Tier 1 sources:** https://www.theguardian.com/uk (live UK front — 557 root custom properties read via `getComputedStyle`, all Guardian-authored; controls measured at rest, hover, pressed and focus after rejecting consent; GH Guardian Headline and GuardianTextSans confirmed loaded, captured 2026-09-23); https://theguardian.design/ (Source, the Guardian's design system — core palette brand.100–800 matched to the live tokens, "four bespoke typefaces", 4px spacing; its nonsense-path control /zz-this-does-not-exist returns a real 404, read 2026-09-23); https://raw.githubusercontent.com/guardian/fonts/main/README.md (the Guardian's font repository — the faces are owned by Commercial Type and licensed only for Guardian websites and apps, read 2026-09-23)
+
+**Regional sources:** https://www.creativereview.co.uk/guardian-tabloid-redesign/ (Creative Review — "Goodbye Berliner, hello tabloid: Alex Breuer on the Guardian's redesign"); https://www.itsnicethat.com/news/theguardian-graphicdesign-150118 (It's Nice That — "The Guardian unveils redesign across print and online")
+
+## Components
 
 Two components, every state on its own page load, focus read before the mouse moved. The delegated
 probe rejected the consent banner ("No, thank you") before measuring; the independent re-measure
@@ -236,17 +235,12 @@ component styles, reusing `brand.500`. It is never the browser's `auto` ring.
 Mostly circles and pills: `50%` ×70, `100%` ×15, 40px ×14, 12px ×5, 1000px (the search pill), 3px.
 Every pixel value is a multiple of 4.
 
-## 5. Layout Principles
+### States
 
-Source's spacing system uses a 4px increment — because common screen sizes are divisible by four —
-with 40px between containers and 24px (default) or 16px (compact) within one.
+Two components. Hover: no change on masthead links or buttons. Focus: a 3px `#0077b6` box-shadow
+ring on both. No disabled state was observed.
 
-## 6. Depth & Elevation
-
-Flat. The rendered page has one box-shadow at rest, a hairline `rgba(0,0,0,0.1) 0 0 0 1px`. The only
-other shadow is the focus ring.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Put navigation on navy `#052962` and text on white in `#121212`.
@@ -261,11 +255,11 @@ other shadow is the focus ring.
 - Don't add hover colour to masthead links — they have none.
 - Don't count the per-component token list as "used on this page"; it is emitted everywhere.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice. 21,210 characters on the measured front.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#052962` masthead navy · `#041f4a` top bar · `#0077b6` focus / sport · `#121212` ink ·
@@ -277,43 +271,3 @@ other shadow is the focus ring.
   `0 0 0 3px #0077b6`; no hover change."
 - "An opinion story card: title in `#c74600`, a `#e05e00` rule above, body `#121212` in Guardian
   Text Sans."
-
-## 10. Voice & Tone
-
-Not assessed as authored voice. 21,210 characters on the measured front.
-
-## 11. Brand Narrative
-
-The Guardian redesigned itself around a format change and kept its identity in type rather than in
-colour: four typefaces drawn for it and licensed to no one else, a black headline masthead, and a
-navy digital masthead from its Source palette. Colour does the navigation — each pillar has its own,
-so a reader knows opinion from sport at a glance — while red marks links and a single yellow
-highlights whatever deserves a second look.
-
-Underneath, the site is generated from one palette declaration per component, hundreds of them, all
-drawn from Source. It is a system built for a newsroom that ships a new kind of module most weeks.
-
-## 12. Principles
-
-- **Type is the brand.** Four bespoke faces carry the identity.
-- **Colour is wayfinding.** Pillars, not decoration.
-- **One ring for focus.** 3px of brand blue on every control.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Two components. Hover: no change on masthead links or buttons. Focus: a 3px `#0077b6` box-shadow
-ring on both. No disabled state was observed.
-
-## 15. Motion & Easing
-
-Not measured. No motion token is published among the custom properties.
-
----
-
-**Tier 1 sources:** https://www.theguardian.com/uk (live UK front — 557 root custom properties read via `getComputedStyle`, all Guardian-authored; controls measured at rest, hover, pressed and focus after rejecting consent; GH Guardian Headline and GuardianTextSans confirmed loaded, captured 2026-09-23); https://theguardian.design/ (Source, the Guardian's design system — core palette brand.100–800 matched to the live tokens, "four bespoke typefaces", 4px spacing; its nonsense-path control /zz-this-does-not-exist returns a real 404, read 2026-09-23); https://raw.githubusercontent.com/guardian/fonts/main/README.md (the Guardian's font repository — the faces are owned by Commercial Type and licensed only for Guardian websites and apps, read 2026-09-23)
-
-**Regional sources:** https://www.creativereview.co.uk/guardian-tabloid-redesign/ (Creative Review — "Goodbye Berliner, hello tabloid: Alex Breuer on the Guardian's redesign"); https://www.itsnicethat.com/news/theguardian-graphicdesign-150118 (It's Nice That — "The Guardian unveils redesign across print and online")

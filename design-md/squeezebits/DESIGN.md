@@ -1,70 +1,141 @@
 ---
-id: squeezebits
 name: SqueezeBits
-display_name_kr: 스퀴즈비츠
-country: KR
-category: ai
-homepage: "https://www.squeezebits.com/"
-primary_color: "#cc5a16"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=squeezebits.com&sz=128"
-verified: "2026-07-02"
-added: "2026-07-02"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "Two-surface system. primary = flagship marketing brand orange (#cc5a16 — banner / wordmark / View-more); primary-bright = brighter blog CTA-fill orange (#ee781f). Homepage is a dark immersive surface (Pretendard, near-black #060211/#050311/#000000). Blog is a light zinc surface (IBM Plex Sans headings, #09090b ink). Flat, shadowless."
-  colors:
-    primary: "#cc5a16"
-    primary-bright: "#ee781f"
-    ink: "#09090b"
-    ink-strong: "#020a0f"
-    slate: "#1f2937"
-    nav: "#2c2925"
-    body: "#52525b"
-    muted: "#71717a"
-    tab-muted: "#646470"
-    faint: "#d9d9d9"
-    canvas: "#ffffff"
-    surface: "#f4f4f5"
-    surface-warm: "#f8f6f1"
-    surface-gray: "#f9fafb"
-    hairline: "#e4e4e7"
-    black: "#000000"
-    night: "#060211"
-    night-alt: "#050311"
-  typography:
-    family: { display: "Pretendard", heading: "IBM Plex Sans", body: "Pretendard" }
-    hero:       { size: 92, weight: 400, use: "Homepage hero headline (Unlock the Potential of AI), Pretendard" }
-    section:    { size: 56, weight: 600, use: "Homepage section titles (Squeeze / Benchmark / Why SqueezeBits?), Pretendard" }
-    subhead:    { size: 32, weight: 600, use: "Homepage benefit subheads (Maximize Inference Speed), Pretendard" }
-    blog-hero:  { size: 48, weight: 600, lineHeight: 1.0, use: "Blog hero H1, IBM Plex Sans" }
-    blog-h2:    { size: 32, weight: 600, lineHeight: 1.25, use: "Blog featured post title, IBM Plex Sans" }
-    card-title: { size: 22, weight: 600, lineHeight: 1.375, use: "Blog post card title, IBM Plex Sans" }
-    nav:        { size: 15, weight: 560, use: "Blog product nav links, IBM Plex Sans" }
-    button:     { size: 16, weight: 500, use: "Subscribe button label" }
-    caption:    { size: 14, weight: 500, use: "Category tabs, metadata" }
-    body:       { size: 16, weight: 400, use: "Body reading text, Pretendard" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-subscribe: { type: button, bg: "#ee781f", fg: "#ffffff", radius: "6px", padding: "8px 16px", font: "16px / 500 IBM Plex Sans", use: "Blog primary CTA (Subscribe)" }
-    button-viewmore: { type: button, fg: "#cc5a16", font: "18px / 600 Pretendard", use: "Homepage inline View-more link CTA, 4px underline gap" }
-    announcement-banner: { type: card, bg: "#cc5a16", fg: "#000000", padding: "0px 16px", height: "48px", use: "Top full-width announcement bar" }
-    article-card: { type: card, bg: "#ffffff", border: "1px solid #e4e4e7", radius: "6px", use: "Blog post card, flat (no shadow)" }
-    category-tab: { type: tab, fg: "#646470", active: "text #09090b", use: "Blog category filter tabs (Tech Insight / Product)" }
-    search-input: { type: input, bg: "#ffffff", border: "1px solid #e4e4e7", radius: "6px", padding: "4px 12px", font: "14px / 400", use: "Blog search input" }
-    seeall-pill: { type: badge, bg: "#f4f4f5", fg: "#020a0f", radius: "6px", padding: "6px 14px", font: "14px / 600", use: "See-All / more-link pill" }
-  components_harvested: true
+colors:
+  primary: '#cc5a16'
+  primary-bright: '#ee781f'
+  ink: '#09090b'
+  ink-strong: '#020a0f'
+  slate: '#1f2937'
+  nav: '#2c2925'
+  body: '#52525b'
+  muted: '#71717a'
+  tab-muted: '#646470'
+  faint: '#d9d9d9'
+  canvas: '#ffffff'
+  surface: '#f4f4f5'
+  surface-warm: '#f8f6f1'
+  surface-gray: '#f9fafb'
+  hairline: '#e4e4e7'
+  black: '#000000'
+  night: '#060211'
+  night-alt: '#050311'
+typography:
+  hero:
+    fontSize: 92px
+    fontWeight: 400
+    use: Homepage hero headline (Unlock the Potential of AI), Pretendard
+  section:
+    fontSize: 56px
+    fontWeight: 600
+    use: Homepage section titles (Squeeze / Benchmark / Why SqueezeBits?), Pretendard
+  subhead:
+    fontSize: 32px
+    fontWeight: 600
+    use: Homepage benefit subheads (Maximize Inference Speed), Pretendard
+  blog-hero:
+    fontSize: 48px
+    fontWeight: 600
+    lineHeight: 1
+    use: Blog hero H1, IBM Plex Sans
+  blog-h2:
+    fontSize: 32px
+    fontWeight: 600
+    lineHeight: 1.25
+    use: Blog featured post title, IBM Plex Sans
+  card-title:
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.375
+    use: Blog post card title, IBM Plex Sans
+  nav:
+    fontSize: 15px
+    fontWeight: 560
+    use: Blog product nav links, IBM Plex Sans
+  button:
+    fontSize: 16px
+    fontWeight: 500
+    use: Subscribe button label
+  caption:
+    fontSize: 14px
+    fontWeight: 500
+    use: Category tabs, metadata
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    use: Body reading text, Pretendard
+rounded:
+  sm: 6px
+  md: 8px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+components:
+  button-subscribe:
+    type: button
+    backgroundColor: '#ee781f'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 8px 16px
+    typography: 16px / 500 IBM Plex Sans
+    use: Blog primary CTA (Subscribe)
+  button-viewmore:
+    type: button
+    textColor: '#cc5a16'
+    typography: 18px / 600 Pretendard
+    use: Homepage inline View-more link CTA, 4px underline gap
+  announcement-banner:
+    type: card
+    backgroundColor: '#cc5a16'
+    textColor: '#000000'
+    padding: 0px 16px
+    height: 48px
+    use: Top full-width announcement bar
+  article-card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #e4e4e7'
+    rounded: 6px
+    use: Blog post card, flat (no shadow)
+  category-tab:
+    type: tab
+    textColor: '#646470'
+    active: 'text #09090b'
+    use: Blog category filter tabs (Tech Insight / Product)
+  search-input:
+    type: input
+    backgroundColor: '#ffffff'
+    border: '1px solid #e4e4e7'
+    rounded: 6px
+    padding: 4px 12px
+    typography: 14px / 400
+    use: Blog search input
+  seeall-pill:
+    type: badge
+    backgroundColor: '#f4f4f5'
+    textColor: '#020a0f'
+    rounded: 6px
+    padding: 6px 14px
+    typography: 14px / 600
+    use: See-All / more-link pill
+fonts:
+  roles:
+    display: Pretendard
+    heading: IBM Plex Sans
+    body: Pretendard
 ---
 
 # Design System Inspiration of SqueezeBits
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 SqueezeBits (스퀴즈비츠) is a Korean deep-tech AI company whose product is efficiency itself — model quantization, compression, and inference optimization (OwLite, Fits on Chips, Yetter, RoBoost). Its design language runs on two deliberately different surfaces. The flagship marketing homepage is a dark, immersive stage: near-black indigo sections (`#060211`, `#050311`) and pure black (`#000000`) backdrops carry an enormous 92px Pretendard hero ("Unlock the Potential of AI") in white (`#ffffff`), while a single saturated brand orange (`#cc5a16`) burns through as the one accent — the top announcement banner fill, the word "SqueezeBits" set in orange inside section titles, and every "View more" link. The effect is a GPU-in-a-dark-datacenter mood: quiet, technical, and confident, with orange as the heat signature.
 
@@ -82,7 +153,7 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 - Slate section heads on light homepage bands (`#1f2937`); faint grey (`#d9d9d9`) for muted copy on the dark stage
 - Small, orderly radii — 6px blog chrome, 8px homepage controls; no pills, no heavy rounding
 
-## Primary tasks
+### Primary tasks
 
 - Read reproducible benchmarks before deciding how to cut serving cost
 - Evaluate a quantization toolchain on its accuracy and latency curve
@@ -90,7 +161,35 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 - Subscribe to the blog to follow new posts
 - Open the View more link under a product block to read its detail
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+SqueezeBits (스퀴즈비츠) is a Korean AI systems company built around a single thesis: the potential of AI is unlocked not by bigger models but by running them efficiently. Its name is the thesis — squeezing bits, i.e. quantization and compression, so that large models "fit on chips." The product line makes the mission literal: **OwLite** (quantization-centered model optimization with QAT to restore near-original accuracy), **Fits on Chips** (a serving-framework research tool that tunes lightweight models to specific GPU/NPU hardware), **Yetter** (an integrated full-stack inference engine and GenAI API service combining OwLite and Fits on Chips), and **RoBoost** (a Physical-AI synthetic-data generation platform for robotics and autonomous driving).
+
+The company's stated promise on its homepage — "Deploy your AI with maximal efficiency on CPU, GPU, or NPU" — positions it at the systems layer between models and silicon. Its engineering blog reinforces the identity: deep, reproducible write-ups on vLLM, SGLang, Intel Gaudi, Qualcomm NPUs, disaggregated inference, and techniques like GraLoRA and vocabulary trimming. This is a company that publishes benchmarks, not brochures.
+
+In 2026 SqueezeBits announced it is **joining Rebellions**, the Korean NPU/AI-accelerator company — a natural pairing of a model-efficiency team with a chip maker, and the reason the site's top banner reads "SqueezeBits is joining Rebellions!" What the design refuses is telling: no institutional-SaaS gloss, no shadow-stacked cards, no second accent color competing with the orange heat signature. What it embraces is a dark, instrument-panel homepage and a light, research-grade blog — both flat, both fast, both engineered.
+
+### Principles
+
+1. **Efficiency is the product — and the aesthetic.** The brand sells fewer wasted cycles; the UI wastes none either. *UI implication:* flat, shadow-free surfaces, small orderly radii, one accent color — nothing renders that doesn't inform.
+2. **Numbers over adjectives.** Trust is earned with measured outcomes (3.1× faster, 70% cheaper), not superlatives. *UI implication:* lead callouts and benefit heads with figures; reserve prose for the mechanism.
+3. **One accent, marking the action.** The orange (`#cc5a16` / `#ee781f`) is the single heat signature. *UI implication:* use orange only for the brand word, the next action, or a live banner — never as decoration.
+4. **Two surfaces, one discipline.** A dark immersive marketing stage and a light editorial blog can differ in mood but share the same flat, precise grammar. *UI implication:* keep type roles fixed (Pretendard display / IBM Plex Sans headlines) and depth flat across both.
+5. **Engineer as first-class reader.** The blog treats ML engineers as peers with reproducible benchmarks. *UI implication:* long-form legibility, IBM Plex Sans headings, zinc ink, generous reading width — documentation is a design surface.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable SqueezeBits audiences (ML systems engineers, inference-infra teams, hardware/NPU partners), not individual people.*
+
+**민준, 34, 서울.** An inference-infrastructure engineer at a Korean AI startup deciding how to cut serving cost on B200 GPUs. Reads the SqueezeBits blog for reproducible vLLM/quantization benchmarks and trusts the brand because it publishes numbers, not slogans.
+
+**Aisha, 29, Toronto.** An ML engineer evaluating quantization toolchains. Cares that OwLite's QAT restores accuracy to near-original and that the docs show the accuracy/latency trade curve. Would dismiss a vendor whose site was all adjectives and no figures.
+
+**Dr. Park, 45, 대전.** A hardware partner at an NPU company assessing full-stack optimization fit. Values that Fits on Chips models the hardware's cost-performance curve explicitly, and reads the "joining Rebellions" news as strategic alignment.
+
+**Leo, 38, Berlin.** A robotics lead exploring synthetic training data. Interested in RoBoost's physics-grounded validation and the promise of higher usable-data yield per GPU-hour; skims the blog's Physical-AI posts before booking a call.
+
+## Colors
 
 ### Brand
 - **Brand Orange** (`#cc5a16`): The flagship brand accent on the homepage — announcement-banner fill, the orange "SqueezeBits" wordmark inside section titles, and every "View more" inline CTA. The system's single "heat" color and the `primary_color`.
@@ -118,7 +217,7 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 - **Surface Warm** (`#f8f6f1`): Warm cream surface for occasional soft blocks on the blog.
 - **Hairline** (`#e4e4e7`): Zinc-200 thin borders, dividers, card outlines, and input strokes — the primary separation device given the shadow-free system.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display (homepage)**: `Pretendard` (with `Pretendard Fallback`) — drives the 92px hero and the 56px section titles, and is the document default / body font on the homepage.
@@ -146,7 +245,120 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 - **Variable-weight fingerprint**: Blog nav lands at an unusual 560, language toggles at 540 — the system leans on IBM Plex Sans's variable axis for fine-grained UI weight rather than jumping between named weights.
 - **Normal tracking**: Unlike letter-spaced display systems, SqueezeBits keeps tracking at normal across sizes; scale and weight do the hierarchy work.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px
+- Notable: Blog chrome uses tight paddings (8px 16px buttons, 6px 14px pills, 4px 12px inputs); the homepage breathes with tall full-viewport hero bands (700–1060px)
+
+### Grid & Container
+- Homepage: full-bleed vertical scroll of alternating dark (`#060211`/`#050311`/`#000000`) and light (`#f9fafb`) product bands, each anchored by a 56px section title and a "View more" link
+- Blog: centered content column with a sticky top nav, a category-tab row, a featured hero post, then a responsive grid of hairline-outlined article cards
+- Trusted-by logo strip and product blocks (Yetter / RoBoost / OwLite / Fits on Chips) stack vertically down the homepage
+
+### Whitespace Philosophy
+- **Immersive dark, editorial light**: the homepage uses large empty dark space to make the orange accent and white hero pop; the blog uses calm white space for long-form reading.
+- **Flat segmentation**: sections separate by background (dark band vs `#f9fafb` light band on the homepage; `#ffffff` vs `#f4f4f5` on the blog) and `#e4e4e7` hairlines — never by shadow.
+
+### Border Radius Scale
+- Small (6px): blog buttons, inputs, pills, cards, nav items — the workhorse
+- Medium (8px): homepage menu / control buttons
+- Large (16px): larger containers when used
+- Full (9999px): reserved for the rare avatar / circular control
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Homepage hero scales down from 92px; blog grid collapses to a single column; nav becomes a hamburger (8px-radius menu button) |
+| Tablet | 640–1024px | 2-up article cards on the blog; moderate homepage band padding |
+| Desktop | 1024–1440px | Full layout; multi-column blog card grid; full-viewport homepage bands |
+
+#### Touch Targets
+- Subscribe button at 36px height with 8px 16px padding
+- Nav items at 38px height with 0px 10px padding
+- Category tabs and pills sized with 6px 14px padding for comfortable tapping
+
+#### Collapsing Strategy
+- Homepage: 92px hero compresses on mobile; alternating dark/light bands maintain full-width treatment
+- Blog: featured hero post stays full-width; the article grid reflows multi-column → single column
+- Sticky nav condenses product links into a menu on narrow viewports
+
+#### Image Behavior
+- Blog post-card thumbnails sit inside 6px-radius, hairline-outlined cards with no shadow at any size
+- Homepage product visuals sit directly on the dark stage without framing chrome
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page backgrounds, hero, nav, most surfaces |
+| Tint (Level 1) | `#f4f4f5` / `#f8f6f1` / `#f9fafb` background shift | Card / section separation without elevation |
+| Hairline (Level 2) | `1px solid #e4e4e7` border | Blog card outlines, dividers, input strokes |
+| Contrast (Level 3) | Dark stage (`#060211` / `#050311` / `#000000`) vs light | Homepage section depth by background inversion |
+
+**Shadow Philosophy**: SqueezeBits is a shadow-free system on both surfaces — live inspection returned `box-shadow: none` across heroes, nav, article cards, buttons, and inputs. Depth is communicated by background inversion (the near-black homepage stage against light bands) and by flat tint plus `#e4e4e7` hairlines on the blog. When emphasis is needed the system reaches for the orange accent (`#cc5a16` / `#ee781f`) or the dark stage, never elevation — a clean, fast, engineered look that matches a company selling efficiency.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, link/tab press, focus |
+| `motion-standard` | 220ms | Card / section reveal, dropdown, sheet |
+| `motion-slow` | 360ms | Homepage scroll-triggered hero and band reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sections, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and restrained, matching the flat, engineered aesthetic. The homepage uses scroll-triggered reveals as content enters the dark stage (`motion-slow / ease-enter`), with the orange accent settling last as the focal point. Blog interactions are quiet — hover and tab changes at `motion-fast`, card and section reveals at `motion-standard / ease-enter`. No bounce or spring: a company selling deterministic efficiency signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the scroll reveals resolve immediately; the site remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on two surfaces:
+- https://www.squeezebits.com/ — dark marketing homepage: Pretendard hero 92px/400 white;
+  56px/600 section titles; brand orange #cc5a16 on banner/wordmark/"View more"; near-black
+  indigo stage #060211/#050311/#000000; light band #f9fafb; slate section head #1f2937;
+  box-shadow none throughout.
+- https://blog.squeezebits.com/ — official Tech blog: IBM Plex Sans headlines 48/32/22px @600;
+  zinc ink #09090b, #52525b, #71717a; #ee781f Subscribe button; #f4f4f5 pill; #e4e4e7 hairline;
+  #2c2925 nav @560; box-shadow none.
+
+Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Raw samples).
+
+Voice samples (§10) are verbatim from the live homepage (hero subline, product copy, announcement banner).
+
+Brand narrative (§11): product line (OwLite, Fits on Chips, Yetter, RoBoost) and mission
+("Deploy your AI with maximal efficiency on CPU, GPU, or NPU") are quoted/paraphrased from the
+live homepage; the "joining Rebellions" fact is from the live top-banner announcement. SqueezeBits
+is a Korean AI model-optimization/quantization company; broader company details are general public
+knowledge, not directly quoted from a verified SqueezeBits statement in this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable SqueezeBits audiences
+(ML systems engineers, inference-infra teams, hardware/NPU partners). Names are illustrative;
+they do not refer to real people.
+
+Interpretive claims (e.g., "efficiency is the product and the aesthetic", "one accent as heat
+signature") are editorial readings connecting SqueezeBits' observed design to its positioning,
+not directly sourced SqueezeBits statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -226,40 +438,21 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 **Tier 2 sources:** getdesign.md/squeezebits — 0 DESIGN.md files (not listed); styles.refero.design/?q=squeezebits — not listed (generic/trending results only)
 **Conflicts unresolved:** none (two-surface orange split `#cc5a16` homepage / `#ee781f` blog documented as intentional in `.verification.md` conflict matrix)
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px
-- Notable: Blog chrome uses tight paddings (8px 16px buttons, 6px 14px pills, 4px 12px inputs); the homepage breathes with tall full-viewport hero bands (700–1060px)
+| State | Treatment |
+|---|---|
+| **Empty (blog search, no results)** | White (`#ffffff`) canvas. Single Ink (`#09090b`) line at body size explaining no posts match, with a path back to all categories. No illustration. |
+| **Empty (category, none yet)** | Muted (`#71717a`) single line stating the category is empty, plus a link to "See All". Calm, factual. |
+| **Loading (blog list fetch)** | Skeleton cards on the white canvas at final dimensions, 6px radius, `#e4e4e7` hairline. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
+| **Loading (homepage section reveal)** | Content fades in on scroll into the dark stage; the orange accent appears last so the eye lands on it. |
+| **Error (fetch failed)** | Inline message in Ink (`#09090b`) with a plain-language explanation and a retry — never a bare "오류가 발생했습니다". States what to do next. |
+| **Error (subscribe / form validation)** | Field-level message below the input in a clear tone; describes what is valid, not just "required". |
+| **Success (subscribed)** | Brief inline confirmation in a calm tone near the Subscribe button; no celebratory emoji. |
+| **Skeleton** | `#f4f4f5` blocks at final dimensions, 6px radius, flat pulse. |
+| **Disabled** | Faint Grey (`#d9d9d9`) text on reduced-opacity surface; the orange action fades rather than switching to grey, to preserve the brand read. |
 
-### Grid & Container
-- Homepage: full-bleed vertical scroll of alternating dark (`#060211`/`#050311`/`#000000`) and light (`#f9fafb`) product bands, each anchored by a 56px section title and a "View more" link
-- Blog: centered content column with a sticky top nav, a category-tab row, a featured hero post, then a responsive grid of hairline-outlined article cards
-- Trusted-by logo strip and product blocks (Yetter / RoBoost / OwLite / Fits on Chips) stack vertically down the homepage
-
-### Whitespace Philosophy
-- **Immersive dark, editorial light**: the homepage uses large empty dark space to make the orange accent and white hero pop; the blog uses calm white space for long-form reading.
-- **Flat segmentation**: sections separate by background (dark band vs `#f9fafb` light band on the homepage; `#ffffff` vs `#f4f4f5` on the blog) and `#e4e4e7` hairlines — never by shadow.
-
-### Border Radius Scale
-- Small (6px): blog buttons, inputs, pills, cards, nav items — the workhorse
-- Medium (8px): homepage menu / control buttons
-- Large (16px): larger containers when used
-- Full (9999px): reserved for the rare avatar / circular control
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page backgrounds, hero, nav, most surfaces |
-| Tint (Level 1) | `#f4f4f5` / `#f8f6f1` / `#f9fafb` background shift | Card / section separation without elevation |
-| Hairline (Level 2) | `1px solid #e4e4e7` border | Blog card outlines, dividers, input strokes |
-| Contrast (Level 3) | Dark stage (`#060211` / `#050311` / `#000000`) vs light | Homepage section depth by background inversion |
-
-**Shadow Philosophy**: SqueezeBits is a shadow-free system on both surfaces — live inspection returned `box-shadow: none` across heroes, nav, article cards, buttons, and inputs. Depth is communicated by background inversion (the near-black homepage stage against light bands) and by flat tint plus `#e4e4e7` hairlines on the blog. When emphasis is needed the system reaches for the orange accent (`#cc5a16` / `#ee781f`) or the dark stage, never elevation — a clean, fast, engineered look that matches a company selling efficiency.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use a single brand orange as the only accent — `#cc5a16` on dark marketing surfaces, `#ee781f` as the blog CTA fill
@@ -279,30 +472,27 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 - Spread the orange across many elements — it marks the single next action or the brand word only
 - Letter-space the display type — SqueezeBits tracks at normal and lets weight/scale do the work
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Homepage hero scales down from 92px; blog grid collapses to a single column; nav becomes a hamburger (8px-radius menu button) |
-| Tablet | 640–1024px | 2-up article cards on the blog; moderate homepage band padding |
-| Desktop | 1024–1440px | Full layout; multi-column blog card grid; full-viewport homepage bands |
+SqueezeBits speaks like a systems engineer who measures everything — precise, benefit-first, and quietly confident about performance numbers. The homepage register is direct and technical: "Deploy your AI with maximal efficiency on CPU, GPU, or NPU," "Do you need optimization?", "Maximize Inference Speed." Copy leads with a concrete capability or a measurable outcome (3.1× faster inference, 70% cost reduction) rather than adjectives. The blog voice is even more peer-to-peer — reference-implementation-grade write-ups on vLLM, Intel Gaudi, Qualcomm NPU, and quantization-aware training, addressed to ML engineers as equals.
 
-### Touch Targets
-- Subscribe button at 36px height with 8px 16px padding
-- Nav items at 38px height with 0px 10px padding
-- Category tabs and pills sized with 6px 14px padding for comfortable tapping
+| Context | Tone |
+|---|---|
+| Homepage hero | Declarative, aspirational-but-technical. "Unlock the Potential of AI." |
+| Product blocks | Question + capability. "Do you need optimization?" then a precise one-liner on what the product does. |
+| Benefit callouts | Numbers-first. "3.1× faster inference", "70% cost reduction", "near-original accuracy via QAT". |
+| Blog posts | Engineer-to-engineer. Benchmarks, architecture, hardware specifics; examples precede conclusions. |
+| CTAs | Plain and low-pressure. "View more", "Subscribe". |
+| Announcements | Factual, unhyped. "SqueezeBits is joining Rebellions! Read more." |
 
-### Collapsing Strategy
-- Homepage: 92px hero compresses on mobile; alternating dark/light bands maintain full-width treatment
-- Blog: featured hero post stays full-width; the article grid reflows multi-column → single column
-- Sticky nav condenses product links into a menu on narrow viewports
+**Voice samples (verbatim from live surfaces):**
+- "Deploy your AI with maximal efficiency on CPU, GPU, or NPU" — homepage hero subline (capability, hardware-specific). *(verified live 2026-07-02)*
+- "OwLite is SqueezeBits' core AI model optimization solution. Centered around industry-leading Quantization technology..." — homepage product copy (technical, precise). *(verified live 2026-07-02)*
+- "SqueezeBits is joining Rebellions! Read more" — top announcement banner (factual, unhyped). *(verified live 2026-07-02)*
 
-### Image Behavior
-- Blog post-card thumbnails sit inside 6px-radius, hairline-outlined cards with no shadow at any size
-- Homepage product visuals sit directly on the dark stage without framing chrome
+**Forbidden register**: vague hype ("revolutionary", "game-changing"), marketing superlatives untethered from a number, consumer-app exclamation stacking, and undefined jargon presented without a concrete benefit. If a claim can carry a measured figure, it should.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Brand accent (marketing): Brand Orange (`#cc5a16`)
@@ -335,115 +525,8 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-SqueezeBits speaks like a systems engineer who measures everything — precise, benefit-first, and quietly confident about performance numbers. The homepage register is direct and technical: "Deploy your AI with maximal efficiency on CPU, GPU, or NPU," "Do you need optimization?", "Maximize Inference Speed." Copy leads with a concrete capability or a measurable outcome (3.1× faster inference, 70% cost reduction) rather than adjectives. The blog voice is even more peer-to-peer — reference-implementation-grade write-ups on vLLM, Intel Gaudi, Qualcomm NPU, and quantization-aware training, addressed to ML engineers as equals.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Homepage hero | Declarative, aspirational-but-technical. "Unlock the Potential of AI." |
-| Product blocks | Question + capability. "Do you need optimization?" then a precise one-liner on what the product does. |
-| Benefit callouts | Numbers-first. "3.1× faster inference", "70% cost reduction", "near-original accuracy via QAT". |
-| Blog posts | Engineer-to-engineer. Benchmarks, architecture, hardware specifics; examples precede conclusions. |
-| CTAs | Plain and low-pressure. "View more", "Subscribe". |
-| Announcements | Factual, unhyped. "SqueezeBits is joining Rebellions! Read more." |
-
-**Voice samples (verbatim from live surfaces):**
-- "Deploy your AI with maximal efficiency on CPU, GPU, or NPU" — homepage hero subline (capability, hardware-specific). *(verified live 2026-07-02)*
-- "OwLite is SqueezeBits' core AI model optimization solution. Centered around industry-leading Quantization technology..." — homepage product copy (technical, precise). *(verified live 2026-07-02)*
-- "SqueezeBits is joining Rebellions! Read more" — top announcement banner (factual, unhyped). *(verified live 2026-07-02)*
-
-**Forbidden register**: vague hype ("revolutionary", "game-changing"), marketing superlatives untethered from a number, consumer-app exclamation stacking, and undefined jargon presented without a concrete benefit. If a claim can carry a measured figure, it should.
-
-## 11. Brand Narrative
-
-SqueezeBits (스퀴즈비츠) is a Korean AI systems company built around a single thesis: the potential of AI is unlocked not by bigger models but by running them efficiently. Its name is the thesis — squeezing bits, i.e. quantization and compression, so that large models "fit on chips." The product line makes the mission literal: **OwLite** (quantization-centered model optimization with QAT to restore near-original accuracy), **Fits on Chips** (a serving-framework research tool that tunes lightweight models to specific GPU/NPU hardware), **Yetter** (an integrated full-stack inference engine and GenAI API service combining OwLite and Fits on Chips), and **RoBoost** (a Physical-AI synthetic-data generation platform for robotics and autonomous driving).
-
-The company's stated promise on its homepage — "Deploy your AI with maximal efficiency on CPU, GPU, or NPU" — positions it at the systems layer between models and silicon. Its engineering blog reinforces the identity: deep, reproducible write-ups on vLLM, SGLang, Intel Gaudi, Qualcomm NPUs, disaggregated inference, and techniques like GraLoRA and vocabulary trimming. This is a company that publishes benchmarks, not brochures.
-
-In 2026 SqueezeBits announced it is **joining Rebellions**, the Korean NPU/AI-accelerator company — a natural pairing of a model-efficiency team with a chip maker, and the reason the site's top banner reads "SqueezeBits is joining Rebellions!" What the design refuses is telling: no institutional-SaaS gloss, no shadow-stacked cards, no second accent color competing with the orange heat signature. What it embraces is a dark, instrument-panel homepage and a light, research-grade blog — both flat, both fast, both engineered.
-
-## 12. Principles
-
-1. **Efficiency is the product — and the aesthetic.** The brand sells fewer wasted cycles; the UI wastes none either. *UI implication:* flat, shadow-free surfaces, small orderly radii, one accent color — nothing renders that doesn't inform.
-2. **Numbers over adjectives.** Trust is earned with measured outcomes (3.1× faster, 70% cheaper), not superlatives. *UI implication:* lead callouts and benefit heads with figures; reserve prose for the mechanism.
-3. **One accent, marking the action.** The orange (`#cc5a16` / `#ee781f`) is the single heat signature. *UI implication:* use orange only for the brand word, the next action, or a live banner — never as decoration.
-4. **Two surfaces, one discipline.** A dark immersive marketing stage and a light editorial blog can differ in mood but share the same flat, precise grammar. *UI implication:* keep type roles fixed (Pretendard display / IBM Plex Sans headlines) and depth flat across both.
-5. **Engineer as first-class reader.** The blog treats ML engineers as peers with reproducible benchmarks. *UI implication:* long-form legibility, IBM Plex Sans headings, zinc ink, generous reading width — documentation is a design surface.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable SqueezeBits audiences (ML systems engineers, inference-infra teams, hardware/NPU partners), not individual people.*
-
-**민준, 34, 서울.** An inference-infrastructure engineer at a Korean AI startup deciding how to cut serving cost on B200 GPUs. Reads the SqueezeBits blog for reproducible vLLM/quantization benchmarks and trusts the brand because it publishes numbers, not slogans.
-
-**Aisha, 29, Toronto.** An ML engineer evaluating quantization toolchains. Cares that OwLite's QAT restores accuracy to near-original and that the docs show the accuracy/latency trade curve. Would dismiss a vendor whose site was all adjectives and no figures.
-
-**Dr. Park, 45, 대전.** A hardware partner at an NPU company assessing full-stack optimization fit. Values that Fits on Chips models the hardware's cost-performance curve explicitly, and reads the "joining Rebellions" news as strategic alignment.
-
-**Leo, 38, Berlin.** A robotics lead exploring synthetic training data. Interested in RoBoost's physics-grounded validation and the promise of higher usable-data yield per GPU-hour; skims the blog's Physical-AI posts before booking a call.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (blog search, no results)** | White (`#ffffff`) canvas. Single Ink (`#09090b`) line at body size explaining no posts match, with a path back to all categories. No illustration. |
-| **Empty (category, none yet)** | Muted (`#71717a`) single line stating the category is empty, plus a link to "See All". Calm, factual. |
-| **Loading (blog list fetch)** | Skeleton cards on the white canvas at final dimensions, 6px radius, `#e4e4e7` hairline. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (homepage section reveal)** | Content fades in on scroll into the dark stage; the orange accent appears last so the eye lands on it. |
-| **Error (fetch failed)** | Inline message in Ink (`#09090b`) with a plain-language explanation and a retry — never a bare "오류가 발생했습니다". States what to do next. |
-| **Error (subscribe / form validation)** | Field-level message below the input in a clear tone; describes what is valid, not just "required". |
-| **Success (subscribed)** | Brief inline confirmation in a calm tone near the Subscribe button; no celebratory emoji. |
-| **Skeleton** | `#f4f4f5` blocks at final dimensions, 6px radius, flat pulse. |
-| **Disabled** | Faint Grey (`#d9d9d9`) text on reduced-opacity surface; the orange action fades rather than switching to grey, to preserve the brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, link/tab press, focus |
-| `motion-standard` | 220ms | Card / section reveal, dropdown, sheet |
-| `motion-slow` | 360ms | Homepage scroll-triggered hero and band reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sections, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and restrained, matching the flat, engineered aesthetic. The homepage uses scroll-triggered reveals as content enters the dark stage (`motion-slow / ease-enter`), with the orange accent settling last as the focal point. Blog interactions are quiet — hover and tab changes at `motion-fast`, card and section reveals at `motion-standard / ease-enter`. No bounce or spring: a company selling deterministic efficiency signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the scroll reveals resolve immediately; the site remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on two surfaces:
-- https://www.squeezebits.com/ — dark marketing homepage: Pretendard hero 92px/400 white;
-  56px/600 section titles; brand orange #cc5a16 on banner/wordmark/"View more"; near-black
-  indigo stage #060211/#050311/#000000; light band #f9fafb; slate section head #1f2937;
-  box-shadow none throughout.
-- https://blog.squeezebits.com/ — official Tech blog: IBM Plex Sans headlines 48/32/22px @600;
-  zinc ink #09090b, #52525b, #71717a; #ee781f Subscribe button; #f4f4f5 pill; #e4e4e7 hairline;
-  #2c2925 nav @560; box-shadow none.
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Raw samples).
-
-Voice samples (§10) are verbatim from the live homepage (hero subline, product copy, announcement banner).
-
-Brand narrative (§11): product line (OwLite, Fits on Chips, Yetter, RoBoost) and mission
-("Deploy your AI with maximal efficiency on CPU, GPU, or NPU") are quoted/paraphrased from the
-live homepage; the "joining Rebellions" fact is from the live top-banner announcement. SqueezeBits
-is a Korean AI model-optimization/quantization company; broader company details are general public
-knowledge, not directly quoted from a verified SqueezeBits statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable SqueezeBits audiences
-(ML systems engineers, inference-infra teams, hardware/NPU partners). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "efficiency is the product and the aesthetic", "one accent as heat
-signature") are editorial readings connecting SqueezeBits' observed design to its positioning,
-not directly sourced SqueezeBits statements.
--->
+- **Contrast, `button-subscribe`.** Text `#ffffff` on `#ee781f` measures 2.86:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

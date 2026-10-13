@@ -1,0 +1,435 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "country": "US",
+    "category": "ai",
+    "homepage": "https://elevenlabs.io",
+    "primary_color": "#000000",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "elevenlabs"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "ElevenLabs Brand",
+      "url": "https://elevenlabs.io/brand",
+      "type": "brand",
+      "description": "Official logo, symbol, naming, and platform-brand guidance.",
+      "og_image": "https://elevenlabs.io/cover.png"
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Selector-backed values come only from supplied public marketing, editorial, and pricing captures. Official brand, documentation, policy, authenticated-product, and declared-font evidence remain separate.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "marketing",
+        "url": "https://elevenlabs.io/",
+        "inspected": "2026-07-12"
+      },
+      {
+        "id": "customer-story",
+        "kind": "editorial",
+        "url": "https://elevenlabs.io/blog/clay-scales-content-production-and-agility-with-elevencreative",
+        "inspected": "2026-07-12"
+      },
+      {
+        "id": "pricing",
+        "kind": "marketing-pricing",
+        "url": "https://elevenlabs.io/pricing",
+        "inspected": "2026-07-12"
+      }
+    ],
+    "sources": [
+      {
+        "id": "public-capture",
+        "kind": "product-surface",
+        "url": "https://elevenlabs.io/",
+        "captured": "2026-07-12"
+      },
+      {
+        "id": "official-about",
+        "kind": "official-doc",
+        "url": "https://elevenlabs.io/about",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-brand",
+        "kind": "brand-asset",
+        "url": "https://elevenlabs.io/brand",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-docs",
+        "kind": "official-doc",
+        "url": "https://elevenlabs.io/docs/overview/intro",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "official-safety",
+        "kind": "official-doc",
+        "url": "https://elevenlabs.io/safety",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.surface": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.hairline": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "colors.on-primary": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.display.use": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.control.fontSize": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.control.fontWeight": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.control.lineHeight": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "typography.control.use": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.lg": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xl": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "spacing.xxl": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.sm": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.md": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.lg": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "rounded.full": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.public-selected-tab.type": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.public-selected-tab.rounded": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.public-selected-tab.padding": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.public-selected-tab.typography": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.public-selected-tab.states": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      },
+      "components.public-selected-tab.use": {
+        "surface_id": "home",
+        "source_id": "public-capture",
+        "method": "live-inspect",
+        "captured": "2026-07-12"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 10,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 3,
+      "orphaned-tokens": 4
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.control.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-selected-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-selected-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.public-selected-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "181285ff9b07b0d338056f8ac5a4001d959dbea53b365793f8add3edf4c2f38d",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.body.fontSize",
+      "typography.control.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg",
+      "rounded.full",
+      "components.public-selected-tab.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "body",
+        "control"
+      ]
+    }
+  }
+}

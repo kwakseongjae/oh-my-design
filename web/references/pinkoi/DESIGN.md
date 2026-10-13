@@ -1,75 +1,159 @@
 ---
-id: pinkoi
 name: Pinkoi
-country: TW
-category: consumer-tech
-homepage: "https://www.pinkoi.com"
-primary_color: "#ff595a"
-logo:
-  type: github
-  slug: pinkoi
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "primary = §2 Mid Teal #10567b (--primary/--login base); purchase-exclusive CTA = coral #f16c5d"
-  colors:
-    primary: "#10567b"
-    primary-hover: "#064162"
-    primary-active: "#003354"
-    link: "#2e90b7"
-    canvas: "#f7f7f8"
-    surface: "#ffffff"
-    surface-hover: "#eeeeef"
-    border-light: "#e5e5e6"
-    border-mid: "#d3d3d5"
-    heading: "#39393e"
-    text-secondary: "#515156"
-    muted: "#66666a"
-    subtle: "#7c7c80"
-    faint: "#929295"
-    disabled: "#a8a8ab"
-    ink: "#202026"
-    purchase: "#f16c5d"
-    purchase-hover: "#e56051"
-    purchase-active: "#da5648"
-    error: "#e63349"
-    error-hover: "#d72136"
-    success: "#2cac97"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Helvetica Neue", cjk: "PingFang TC" }
-    section-heading: { size: 22, weight: 700, use: "Section headings — weight-driven hierarchy" }
-    card-title:      { size: 18, weight: 700, use: "Card titles, mid headings" }
-    subhead:         { size: 16, weight: 500, use: "Subheadings, stronger labels" }
-    body:            { size: 14, weight: 400, use: "Body, button text default, breadcrumbs" }
-    meta:            { size: 13, weight: 400, use: "Inline metadata, secondary text" }
-    badge:           { size: 12, weight: 400, use: "Badge text, small labels, breadcrumbs" }
-    caption:         { size: 11, weight: 400, use: "Captions, timestamps" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
-  shadow:
-    soft: "rgba(32,32,38,0.12) 0px 2px 4px"
-    edge: "rgba(32,32,38,0.2) 0px 1px 1px"
-    modal: "rgba(32,32,38,0.4) 0px 8px 24px"
-  components:
-    button-primary: { type: button, bg: "#10567b", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Primary CTA, 1px #10567b border" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#39393e", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Cancel / neutral CTA, 1px #a8a8ab border" }
-    button-purchase: { type: button, bg: "#f16c5d", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Add to Cart / Buy Now (conversion-exclusive coral)" }
-    button-danger: { type: button, bg: "#e63349", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Destructive actions" }
-    button-success: { type: button, bg: "#2cac97", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Confirmations, follow" }
-    input: { type: input, bg: "#ffffff", fg: "#39393e", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Standard text input, 1px #d3d3d5 border" }
-    product-card: { type: card, bg: "#ffffff", radius: 4, use: "6-column commerce product grid, image-led" }
-    card: { type: card, bg: "#ffffff", radius: 4, padding: "16px", use: "Generic content card, 1px #d3d3d5 border" }
-    card-badge: { type: badge, bg: "#10567b", fg: "#ffffff", radius: 2, padding: "1px 4px", font: "12px / 400", use: "Inline product card badge" }
-    discount-badge: { type: badge, bg: "#e63349", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "12px / 700", use: "Discount ribbon on product image" }
-  components_harvested: true
+colors:
+  primary: '#10567b'
+  primary-hover: '#064162'
+  primary-active: '#003354'
+  link: '#2e90b7'
+  canvas: '#f7f7f8'
+  surface: '#ffffff'
+  surface-hover: '#eeeeef'
+  border-light: '#e5e5e6'
+  border-mid: '#d3d3d5'
+  heading: '#39393e'
+  text-secondary: '#515156'
+  muted: '#66666a'
+  subtle: '#7c7c80'
+  faint: '#929295'
+  disabled: '#a8a8ab'
+  ink: '#202026'
+  purchase: '#f16c5d'
+  purchase-hover: '#e56051'
+  purchase-active: '#da5648'
+  error: '#e63349'
+  error-hover: '#d72136'
+  success: '#2cac97'
+  on-primary: '#ffffff'
+typography:
+  section-heading:
+    fontSize: 22px
+    fontWeight: 700
+    use: Section headings — weight-driven hierarchy
+  card-title:
+    fontSize: 18px
+    fontWeight: 700
+    use: Card titles, mid headings
+  subhead:
+    fontSize: 16px
+    fontWeight: 500
+    use: Subheadings, stronger labels
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    use: Body, button text default, breadcrumbs
+  meta:
+    fontSize: 13px
+    fontWeight: 400
+    use: Inline metadata, secondary text
+  badge:
+    fontSize: 12px
+    fontWeight: 400
+    use: Badge text, small labels, breadcrumbs
+  caption:
+    fontSize: 11px
+    fontWeight: 400
+    use: Captions, timestamps
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#10567b'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: 'Primary CTA, 1px #10567b border'
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#39393e'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: 'Cancel / neutral CTA, 1px #a8a8ab border'
+  button-purchase:
+    type: button
+    backgroundColor: '#f16c5d'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: Add to Cart / Buy Now (conversion-exclusive coral)
+  button-danger:
+    type: button
+    backgroundColor: '#e63349'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: Destructive actions
+  button-success:
+    type: button
+    backgroundColor: '#2cac97'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: Confirmations, follow
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#39393e'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 400
+    use: 'Standard text input, 1px #d3d3d5 border'
+  product-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    use: 6-column commerce product grid, image-led
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    padding: 16px
+    use: 'Generic content card, 1px #d3d3d5 border'
+  card-badge:
+    type: badge
+    backgroundColor: '#10567b'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 1px 4px
+    typography: 12px / 400
+    use: Inline product card badge
+  discount-badge:
+    type: badge
+    backgroundColor: '#e63349'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 2px 6px
+    typography: 12px / 700
+    use: Discount ribbon on product image
+fonts:
+  roles:
+    sans: Helvetica Neue
+    cjk: PingFang TC
 ---
 
 # Design System Inspiration of Pinkoi
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Pinkoi is Asia's cross-border design marketplace, and its system reflects exactly that — a busy, multi-cultural commerce surface that prioritizes density, legibility, and conversion over minimalist whitespace. The page opens on a near-white canvas (`#f7f7f8` for grouped sections, `#ffffff` for primary surfaces) with dark slate text (`#39393e`) and a confident **teal-navy primary** (`#10567b`) that anchors actions like Login and primary CTAs. This isn't a "designer-chic" pastel palette as the brand name might suggest — the actual product surface is engineered for high-density browsing across Taiwan, Japan, Hong Kong, mainland China, and Thailand.
 
@@ -89,7 +173,7 @@ What gives Pinkoi its quietly distinctive feel is its **flat semantic button sys
 - High-density grid: 6-column product layout (`16.66%` each) with `12px` total horizontal margin per card
 - 12-step neutral gray scale from `#f7f7f8` → `#202026` for surfaces, borders, and text hierarchy
 
-## Primary tasks
+### Primary tasks
 
 - Browse across several categories in one session to find an aesthetic.
 - Read a shop's about page before buying from it the first time.
@@ -97,7 +181,38 @@ What gives Pinkoi its quietly distinctive feel is its **flat semantic button sys
 - Add a maker's item to the cart from its product page.
 - Place an order and see the estimated ship date for each shop.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Pinkoi was founded in **Taipei in 2011** by **Peter Yen (顏君庭)**, **Mike Lee (李讓)**, and **Maibelle Lin (林怡君)** — three Taiwanese engineers and designers who had watched Asian design culture thrive in craft fairs and boutique storefronts while remaining absent from global e-commerce ([en.pinkoi.com/about](https://en.pinkoi.com/about), [en.pinkoi.com/about/team](https://en.pinkoi.com/about/team)). Peter had spent four years at Yahoo in Sunnyvale leading the Yahoo Answers engineering team; weekends in San Francisco craft fairs seeded the question that became Pinkoi: *why can a potter in Taichung or a leather-worker in Kyoto only sell within a fifty-kilometre radius when the internet exists?* The thesis: build the infrastructure that lets an Asian independent designer sell to a buyer in Tokyo, Hong Kong, Bangkok, or São Paulo without building their own logistics stack, payment layer, or translation pipeline.
+
+The site's mission framing is explicit: *"Pinkoi believes that design has a transformative power that can permeate every aspect of our lives. Embracing great design can bring us closer to our ideal lifestyles"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). This translates into a refusal — Pinkoi is **not** a generic marketplace competing on SKU count or price. Peter has stated the position plainly: *"E-commerce companies that sell standard products are playing a game of capital, but that's not our game. Pinkoi sells non-standard products"* ([cherubic.com](https://cherubic.com/blog/founder-interview-pinkoi/)). And: *"While the saying 'money talks' may be true in some places, at Pinkoi our decisions are primarily based on providing users with a good experience"* ([cherubic.com](https://cherubic.com/blog/founder-interview-pinkoi/)). Every designer is vetted; every listing is the work of a small maker; the review system is treated as non-negotiable infrastructure, not a line-item to optimize away.
+
+**Founder backgrounds**: Peter Yen — 7 years Silicon Valley, **4 years as Senior Engineer Lead Yahoo Global HQ Social Search Group** ([Taiwan Panorama — Peter Yen and Pinkoi](https://www.taiwan-panorama.com/en/Articles/Details?Guid=3fb71a67-3e23-4723-8700-115a9afe9a71&CatId=7&postname=Peter+Yen+and+Pinkoi-Connecting+Designers+with+Consumers)); **Maibelle Lin** — senior designer at multiple Silicon Valley startups (interaction + UI/UX); **Mike Lee** — National Chiao Tung University civil engineering grad, founded multiple websites/online services prior to Pinkoi. Initial bootstrap: **NT$500,000 raised** between the three; Yen worked from a **7-square-meter study in his home** with Lee on backend and Lin on visual design. **2015 funding round: $9M from Sequoia Capital India + GMO Venture Partners** alongside **English-site launch** ([TechCrunch — Pinkoi $9M 2015-09](https://techcrunch.com/2015/09/30/pinkoi/), [Tracxn — Pinkoi](https://tracxn.com/d/companies/pinkoi/__LQaag4M-ow4XbNs2JjI2lfTj0h0L6XEX2Kv8O8jCk1s/founders-and-board-of-directors)). What Pinkoi has become is a design-commerce platform serving **5 primary markets (Taiwan, Hong Kong, Japan, mainland China, Thailand)** with ~6.25M members, 50,000+ active shops across 77 countries, and 95% cross-border sales share <!-- source: en.pinkoi.com/about as of 2026-04; metrics surfaced by Pinkoi, not independently audited -->. The logo is *"designed using circular arcs and acute angles, conveying the brand's core values of diversity, inclusion and respect for the unique"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). The design language reflected in §1–§9 — high-density 6-column grids, bold-heavy Helvetica Neue + locale stacks, coral coral reserved for a single `--purchase` moment per page, flat matched-border buttons, conservative 4px radii — is the product-surface expression of that thesis: clarity and density serve the designer's work, and the chrome stays out of the way so the object can do the talking.
+
+### Principles
+
+1. **The designer is the voice.** Pinkoi's chrome is the frame; the product and shop copy is the picture. Shop owners author their own listings in their own register; Pinkoi does not homogenize tone across shops. *UI implication:* Shop-owned surfaces (listing description, shop bio, designer story) use body text with minimal chrome. Pinkoi-owned chrome (nav, cart, checkout) uses the tight bold-heavy system. Do not style shop content with site chrome type scale — it will flatten the variance that is the product.
+2. **Coral is finite.** `#f16c5d` (`--purchase`) appears on one button per page — the conversion moment. Spending it elsewhere dilutes the one signal users have learned to trust. *UI implication:* A product page has exactly one coral button (Add to Cart or Buy Now). A category page has zero. A checkout page has exactly one (Place Order). Never two coral buttons on the same viewport.
+3. **Density is the browse feature.** Pinkoi users cross 6+ categories per session looking for a specific aesthetic, not a specific product. Whitespace hostile to scanning is anti-feature. *UI implication:* Product grid desktop default is 6 columns (`calc(16.66667% - 12px)`). Do not space product cards like a SaaS dashboard. Vertical rhythm between sections is generous (`64px 0`); within sections, micro-padding (`5px 10px` → `9px 14px`).
+4. **Locale is infrastructure, not a language toggle.** Every surface ships through 5 font stacks (TC / SC / JP / TH / default). Copy is authored per locale, not translated from English. *UI implication:* Do not use `font-family: 'Helvetica Neue'` alone. Always use the full 5-stack fallback chain from §3. Microcopy strings should route through the locale bundle; do not inline English.
+5. **Errors are field-local, blameless, and actionable.** Pinkoi's error convention leans heavily on the required-asterisk (`.s-required:after { color: #e63349 }`) plus an inline field-level message. Global error banners are a last resort. *UI implication:* Form error state sets `1px solid #e63349` border + `box-shadow: inset 0 0 0 1px #e63349` (doubled red) on the invalid input. Error text lives directly beneath the field in 12px `#e63349`. Do not show a dialog. Do not block the page.
+6. **Bold is for structure, not buttons.** Weight 700 carries the visual hierarchy (headlines, prices, badges) — but button labels are weight 400. A button's weight comes from the matched bg+border combo, not its text. *UI implication:* `.m-br-button .text { font-weight: 400 }` is load-bearing. Never render a button label in weight 700 — it breaks the color-does-the-work principle and flattens the hierarchy that weight 700 establishes elsewhere.
+7. **Shadows are evidence of history, not a depth system.** The primary `.m-br-button` system is flat. The skeuomorphic colored-glow shadow (pink / lime / gray recipes in §6) is **legacy specialty control territory** — favorite hearts, follow-shop — not a system-wide pattern. *UI implication:* When introducing a new component, default to flat + matched `1px solid` border. Do not use the legacy `0 .2em .2em -.1em <color>, 0 .3em <color>, 0 .5em .5em -.1em rgba(32,32,38,.12)` recipe on anything but the existing `.m-button-{pink,gray,green,unfav}` classes.
+8. **Metrics are the designer's, not Pinkoi's.** The product lists the shop owner's rating, the shop owner's sales count, the shop owner's reviews — Pinkoi's own platform metrics (MAU, GMV) are absent from customer surfaces. *UI implication:* Card badges, product pages, and shop pages expose shop-level trust signals (rating stars, review count, "ships from <city>"). Do not add platform-level badges like "Trending on Pinkoi" unless they reinforce a shop-level claim.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Pinkoi user segments (Taiwan / Hong Kong / Japan cross-border design buyers), not individual people.*
+
+**Yi-Chen (怡蓁), 29, Taipei.** Product designer, opens Pinkoi 3–4 evenings a week to browse ceramics and stationery, averaging NT$1,200–NT$3,000 per basket twice a month. Re-visits the same 8–10 shops by name before exploring new ones, treating the wishlist as a curated mood board rather than a shopping list.
+
+**Wing-Lam, 34, Hong Kong.** Architect and wishlist-first buyer; discovers Pinkoi via Instagram posts of Japanese stationery shops she cannot reach otherwise, and reads every shop's "about" page before a first-time purchase. Toggles the site between Traditional Chinese and English by shop origin, and will abandon a cart if shipping logistics feel opaque.
+
+**Haruto (陽翔), 42, Tokyo.** Mid-career art director sourcing Taiwanese and Thai ceramics and leather goods that rarely reach Japanese department stores; evaluates photography, dimensions, and materials carefully before adding to cart. Low session frequency (~4x/month) but high basket value (¥15,000+), desktop-only, unlikely to use promotions.
+
+**Ploy, 26, Bangkok.** Early-career graphic designer and lurker-turned-seller — opened her own shop eighteen months ago, still browses daily as a buyer, and uses the platform bilingually (Thai + English). Bookmarks shops whose packaging and photography she admires as craft references, and engages heavily with Pinkoi Zine editorial.
+
+## Colors
 
 ### Primary
 - **Mid Teal** (`#10567b`): `--primary` and `--login` button **base** background. The default brand action color.
@@ -148,7 +263,7 @@ What gives Pinkoi its quietly distinctive feel is its **flat semantic button sys
 - **Shadow Modal** (`rgba(32,32,38,.4)`): Stronger overlay shadow for modals and popovers.
 - **Shadow Tooltip** (`hsla(240,2%,41%,.8)`): Tooltip outer glow.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Stack (Locale-Aware)
 Pinkoi runs **per-language font stacks**. Always lead with `Helvetica Neue, Helvetica, Arial`, then append the user's locale stack:
@@ -192,7 +307,192 @@ Pinkoi's heading hierarchy is unusual: most `<h1>`, `<h2>`, `<h3>` render at **1
 - **`text-decoration: line-through`** for `.oprice` (original price before discount), in muted gray (`#a8a8ab` or `#bfbfc1`).
 - **Numerals are not tabularized** by default — Pinkoi's product prices flow with prose.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing Scale
+Pinkoi works in a **5–10px micro-scale** for component padding and a coarser **24px+ rhythm** for section spacing:
+
+| Common Padding Values | Use |
+|---|---|
+| `0` (15 uses) | Reset, tight columns |
+| `2px`, `3px` | Badge insets, icon padding |
+| `5px 10px` | Default tight button/cell |
+| `4px 10px`, `6px 10px`, `8px 12px`, `9px 14px` | Button size variants S → M → L |
+| `14px 0`, `64px 0` | Vertical section rhythm |
+
+### Grid
+- 6-column product grid is the dominant pattern (`16.66667%` per card)
+- Container max-widths via media queries — content centers on wider viewports
+- Negative margins on container (`margin: 0 -6px`) to pull edge cards flush
+
+### Density
+Pinkoi is a **high-density** system. Whitespace is rationed; products, prices, badges, and CTAs are stacked tightly to maximize browsable inventory. Don't space components like a SaaS dashboard.
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Range | Key Changes |
+|---|---|---|
+| Mobile | `<767px` | 2-column product grid, stacked nav, full-width CTAs |
+| Mobile (alt) | `<768px` | Some surfaces use 768px as the cutoff |
+| Tablet | `768px–1037px` | 3–4 column product grid, condensed nav |
+| Desktop | `1037px–1200px` | 5–6 column product grid, full nav |
+| Wide | `>1200px` | 6-column grid with side margins |
+| Extra Wide | `>1248px` | Centered max-width container |
+
+#### Touch Targets
+- Buttons use `5px 10px` to `9px 14px` padding scale — adequate but compact
+- Card tap targets cover the entire `.m-card-product` area
+- Mobile nav typically expands to a full-screen drawer
+
+#### Collapsing Strategy
+- 6-column product grid → 4 → 3 → 2 columns on shrinking width
+- Horizontal sticky nav → hamburger drawer below 768px
+- Multi-column footer → stacked sections below 768px
+- Filter sidebar → bottom sheet on mobile
+- Inline price + action → stacked below thumbnail on mobile
+
+#### Image Behavior
+- Product images dominate cards — minimum 190px square
+- Hover states may swap to alternate angle on desktop only (no hover on mobile)
+- WebP/lazy-load standard practice (CDN: `cdn02.pinkoi.com`)
+- Card aspect ratio preserved across breakpoints
+
+## Elevation & Depth
+
+Pinkoi has a **two-track shadow philosophy**: the modern button/card system stays mostly flat, while a small set of legacy specialty controls retain a skeuomorphic colored-underglow recipe.
+
+### Modern Surface Shadows (the default)
+- **Card discount badge** — `1px 1px 2px 0 rgba(32,32,38,.2)` (subtle lift over product image)
+- **Outline focus** — `box-shadow: 0 0 0 1px #d3d3d5` (border-as-shadow, often on focused inputs)
+- **Inline error** — `box-shadow: inset 0 0 0 1px #e63349` (red inset for invalid form fields)
+- **Single-pixel solid bottom** — `0 1px #515156` ("button depth"), `0 1px #d3d3d5` (subtle bottom edge)
+- **Tooltip glow** — `0 0 2px hsla(240,2%,41%,.8)`
+- **Modal/dialog** — `0 0 4px rgba(32,32,38,.4)`
+- **Row divider** — `0 1px 1px 0 rgba(32,32,38,.2)`
+
+The primary `.m-br-button` system has **no shadow at all** — its visual weight comes from the matched bg+border combo, not elevation.
+
+### Legacy Skeuomorphic Shadows (specialty controls only)
+A small set of older button classes — `.m-button-pink`, `.m-button-gray`, `.m-button-green`, `.m-button-unfav` — apply a layered colored shadow on `:hover`. These are typically used for favorite/follow-shop heart buttons, not primary CTAs.
+
+Pattern: `0 .2em .2em -.1em <BRAND_MID>, 0 .3em <BRAND_DARK>, 0 .5em .5em -.1em rgba(32,32,38,.12)`
+
+| Class | Hover bg | Mid shadow | Dark shadow |
+|---|---|---|---|
+| `.m-button-pink` | `#ff6299` | `#c83166` | `#a32252` |
+| `.m-button-green` | `#7ec527` | `#65a40e` | `#4d9200` |
+| `.m-button-gray` | `#8e9a9f` | `#66666a` | `#535c5f` |
+| `.m-button-unfav` | (transparent) | `#d3d3d5` | `#d3d3d5` |
+
+Treat this as a **legacy accent**, not a system-wide pattern. Don't generalize it to the main button system.
+
+### Z-Index Hierarchy
+- Sticky header sits above content
+- Dropdown menus above sticky header
+- Modal overlay above all chrome
+- Toast notifications above modals
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.soft`: `rgba(32,32,38,0.12) 0px 2px 4px`
+- `shadow.edge`: `rgba(32,32,38,0.2) 0px 1px 1px`
+- `shadow.modal`: `rgba(32,32,38,0.4) 0px 8px 24px`
+
+## Motion & Easing
+
+**Durations** (named tokens, extending the `transition: border .1s, color .1s, background .1s` convention already present in `.m-br-button`):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, radio state changes, reduce-motion fallback |
+| `motion-fast` | 100ms | Hover / focus transitions on buttons, links, cards (matches the production `.1s` already in `.m-br-button`) |
+| `motion-standard` | 200ms | Dropdown reveals, tooltip fades, cart-count updates |
+| `motion-slow` | 300ms | Modal open, filter sidebar slide, image lightbox |
+| `motion-page` | 250ms | Route transitions + top progress bar fade |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — modals, dropdowns, toasts |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things dismissing |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — accordion, filter expand |
+
+**Spring / overshoot stance.** **Forbidden.** Pinkoi is a commerce surface populated by handmade designer goods whose value proposition is craftsmanship and restraint; bouncy UI motion reads as a consumer-app tic that fights the product. The closest peer brands (Asian design marketplaces, curated commerce) universally avoid spring; applying it would code Pinkoi closer to a flash-sale app than a curated marketplace. No `cubic-bezier` with y > 1, no overshoot on add-to-cart confirmations, no bouncy modal entries. Where a brand like Toss licenses spring for money-moved checkmarks, Pinkoi does not — the commerce confirmation in §14 is a dedicated screen, and a static checkmark at 300ms `ease-enter` is the whole effect.
+
+**Signature motions.**
+
+1. **Button state transitions.** `transition: border .1s, color .1s, background .1s` (production CSS, literal). Hover/active state changes on all `.m-br-button` variants are simultaneous color + border interpolations at 100ms with `ease-standard`.
+2. **Card hover (desktop only).** Product card scales imperceptibly (1.0 → 1.02) over 200ms `ease-standard`, or swaps to an alternate product image. No shadow change — the flat chrome is the brand. Mobile: no hover, no tap-highlight on the card (taps route directly to product page).
+3. **Discount-ribbon entry.** When a discount badge renders on a product card, the `0 1px 1px 0 rgba(32,32,38,.2)` shadow fades in over 200ms. The badge itself does not rotate, bounce, or shimmer — it is a static anchor, not an attention grab.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. No exceptions. Hover color transitions still apply (they are not motion per the spec — they are state changes). Modal slide-ins become instant opacity toggles; route-transition progress bar is hidden entirely.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-20):
+- https://en.pinkoi.com/about — mission ("Design the way you are."; "Pinkoi believes that
+  design has a transformative power…"), founding year (Taipei 2011), market list
+  (Shanghai, Hong Kong, Tokyo, Bangkok), logo rationale (circular arcs + acute
+  angles → diversity / inclusion / respect for the unique), partnership CTA
+  ("Let's work together.", "Pinkoi loves collaborating with people…").
+- https://en.pinkoi.com — header positioning ("Asia's cross-border design marketplace"),
+  nav labels, seller CTA ("Sell on Pinkoi"), newsletter footer ("Stay up to date
+  on the latest designs"), © 2026 Pinkoi footer line.
+- https://en.pinkoi.com/about/team — founder names & titles: Peter Yen (顏君庭) Co-Founder/CEO,
+  Mike Lee (李讓) Co-Founder/CPTO, Maibelle Lin (林怡君) Co-Founder. "Be a Pinkoist" invitation.
+
+Cited (interview / press — not live product surface):
+- https://www.taiwan-panorama.com/en/Articles/Details?Guid=3fb71a67-3e23-4723-8700-115a9afe9a71
+  — Peter Yen on Asia-number-one design-platform ambition, designer livelihood thesis.
+- https://cherubic.com/blog/founder-interview-pinkoi/
+  — Peter Yen direct quotes: "E-commerce companies that sell standard products are
+  playing a game of capital, but that's not our game. Pinkoi sells non-standard products."
+  "While the saying 'money talks' may be true in some places, at Pinkoi our decisions
+  are primarily based on providing users with a good experience."
+  "If we abandoned the review system, Pinkoi would lose its advantage."
+- Pinkoi founding / background: three co-founders, Peter Yen's Yahoo Sunnyvale background
+  + SF craft-fair origin story — cross-confirmed via Taiwan Panorama + TechCrunch 2015
+  + SME Business Review profile.
+
+Carried from base DESIGN.md (sections 1–9) — token-level claims:
+- Coral #f16c5d reserved for `--purchase`; flat matched-border button system;
+  locale font stacks (5); 4px default radius; weight 700 bold-heavy structure;
+  6-column product grid; `transition: border .1s, color .1s, background .1s`.
+  These were extracted from production CSS bundles (`cdn02.pinkoi.com/media/dist/`)
+  during base reference creation and re-verified via Playwright on 2026-04-17.
+
+Metrics used (6.25M members, 50k+ shops, 95% cross-border, 150 countries):
+- Surfaced on en.pinkoi.com/about as of 2026-04; Pinkoi-published, not independently audited.
+  Marked with `<!-- source: en.pinkoi.com/about as of 2026-04; metrics surfaced by Pinkoi,
+  not independently audited -->` inline.
+
+Interpretive / editorial claims (not documented Pinkoi statements):
+- "Coral is finite" framing as a principle — inferred from the exclusive `--purchase`
+  variant naming + CSS-exclusive hex usage observed during base reference creation.
+- Persona behaviors (session frequency, basket range, browse patterns) — fictional
+  archetypes informed by publicly described Pinkoi user segments and Asian cross-border
+  design-commerce conventions, not individual people. Disclaimer present in §13.
+- Spring-forbidden stance — editorial reading; Pinkoi does not publicly declare a motion
+  policy. Rationale tied to the brand's curated-commerce positioning, not a Pinkoi statement.
+
+Illustrative voice samples in §10 are explicitly marked; they are placeholders showing
+tonal intent, not strings observed on the live Pinkoi surface.
+-->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 44 — Apple-tier)
+**Tier 1 sources:** https://en.pinkoi.com home + /about/team (live DOM via playwright — Search button **`#10567b`** Pinkoi Teal **split-radius `0px 8px 8px 0px`** (search-box trailing geometry) / 8×20 / 40px; **Country pills 100px** active `#fff8f7` Coral Tint / inactive `#eeeeef` Cool Gray / 14px·500; Outline Secondary `#fff` 4px / 40-52px / 14-16px·400-500; Charcoal text `#39393e` warm-cast).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Wikipedia (Pinkoi), Taiwan Panorama (Peter Yen Yahoo origin), LinkedIn (Peter Yen), TechCrunch (2015-09 $9M Sequoia India + GMO Venture Partners), Tracxn, en.pinkoi.com/about + /about/team, blog.google (Pinkoi case study).
+**Style ref:** `pinkoi` (self / TW Asian retained).
+**Conflicts unresolved:** none. **Earlier addition:** split-radius search trailing + 100px country pills + Coral Tint active state + 3-fill discipline missed by prior pass.
+
+## Components
 
 ### Buttons
 
@@ -337,63 +637,25 @@ Pinkoi's heading hierarchy is unusual: most `<h1>`, `<h2>`, `<h3>` render at **1
 - Logo references `pinkoi_logo_2019.svg` — circular arcs + acute angles per brand identity refresh
 - Navigation links remain weight 400 (lighter than headlines) for scannability
 
-## 5. Layout Principles
+### States
 
-### Spacing Scale
-Pinkoi works in a **5–10px micro-scale** for component padding and a coarser **24px+ rhythm** for section spacing:
-
-| Common Padding Values | Use |
+| State | Treatment |
 |---|---|
-| `0` (15 uses) | Reset, tight columns |
-| `2px`, `3px` | Badge insets, icon padding |
-| `5px 10px` | Default tight button/cell |
-| `4px 10px`, `6px 10px`, `8px 12px`, `9px 14px` | Button size variants S → M → L |
-| `14px 0`, `64px 0` | Vertical section rhythm |
+| **Empty (wishlist, first visit)** | One-line `#66666a` body explanation of *why* the list is empty, plus one secondary button (`--secondary` variant — white bg, `1px solid #a8a8ab`, `#39393e` text) suggesting browsing a category. Never `No items`. Never an illustration. |
+| **Empty (search no-results)** | Single `#66666a` caption explaining the zero-match in the user's own query terms, plus 3–5 suggested alternate category chips. Never terminal `No results found.` |
+| **Empty (cart)** | `#39393e` heading at 16px weight 700, one-line body describing next step, single `--primary` button linking to the last-browsed category. No promotional banner injection — an empty cart is not an upsell moment. |
+| **Loading (first paint, product grid)** | Skeleton blocks at `#f7f7f8` (surface-soft) with 4px radius matching final card radius. Image areas are fixed-aspect skeletons; price and title areas are 14px-tall gray bars. Shimmer = 1.2s `linear-gradient` with 8% white highlight. No spinner. |
+| **Loading (inline action — add to cart)** | Coral button stays in place at `#f16c5d` bg, text swaps to a 3-dot animation in white. Button width does not change — prevents layout shift and double-tap. |
+| **Loading (route transition)** | Top-of-page 2px progress bar in `#2e90b7` (brand mid-teal), no overlay, previous page content stays visible. |
+| **Error (form field)** | Input border switches to `1px solid #e63349` plus `box-shadow: inset 0 0 0 1px #e63349` for the doubled-red effect. Helper text below in `#e63349` 12px weight 400. Required-field label gets `*` in `#e63349` via `.s-required:after`. |
+| **Error (inline banner — shop or shipping issue)** | Thin horizontal banner, `#e63349` left border (3px), `#f7f7f8` background, `#39393e` body text. One action link on the right. Not a modal. |
+| **Error (checkout — payment declined)** | Reserved escalated state: full-width `#e63349` border-left card at checkout top, one sentence describing the decline in blameless language, single retry button in `--primary`. Do not show a generic `Something went wrong`. |
+| **Success (add-to-cart)** | Toast at top-right, `#39393e` bg, white 14px weight 400 text, 3s auto-dismiss. Single sentence: confirms the item added, offers View Cart action in `#2e90b7` link color. No checkmark animation; no sound. |
+| **Success (order placed)** | Dedicated confirmation screen — not a toast. Order number in 20px weight 700, shop(s) notified list, estimated ship date per shop. `--secondary` button `Continue Browsing`, `--primary` button `View Order`. Never a coral button here — the purchase moment is past. |
+| **Skeleton** | `#f0f0f0` blocks at exact product-card dimensions (1:1 image, 2-line title, designer-name line, price). Shimmer 1.2s with 8% white highlight. Price placeholder renders as `—` per currency locale (`NT$ —` / `JP¥ —` / `USD $ —`) — never `$0`. Designer-name placeholder stays blank, never "Loading…" — a made-up designer name would be misleading on a craftsmanship-first marketplace. |
+| **Disabled** | Button opacity per default browser disabled treatment; border stays visible so geometry is stable. Disabled form inputs keep their `#d3d3d5` border — no grey-out wash — so re-enabled fields do not shift. |
 
-### Grid
-- 6-column product grid is the dominant pattern (`16.66667%` per card)
-- Container max-widths via media queries — content centers on wider viewports
-- Negative margins on container (`margin: 0 -6px`) to pull edge cards flush
-
-### Density
-Pinkoi is a **high-density** system. Whitespace is rationed; products, prices, badges, and CTAs are stacked tightly to maximize browsable inventory. Don't space components like a SaaS dashboard.
-
-## 6. Depth & Elevation
-
-Pinkoi has a **two-track shadow philosophy**: the modern button/card system stays mostly flat, while a small set of legacy specialty controls retain a skeuomorphic colored-underglow recipe.
-
-### Modern Surface Shadows (the default)
-- **Card discount badge** — `1px 1px 2px 0 rgba(32,32,38,.2)` (subtle lift over product image)
-- **Outline focus** — `box-shadow: 0 0 0 1px #d3d3d5` (border-as-shadow, often on focused inputs)
-- **Inline error** — `box-shadow: inset 0 0 0 1px #e63349` (red inset for invalid form fields)
-- **Single-pixel solid bottom** — `0 1px #515156` ("button depth"), `0 1px #d3d3d5` (subtle bottom edge)
-- **Tooltip glow** — `0 0 2px hsla(240,2%,41%,.8)`
-- **Modal/dialog** — `0 0 4px rgba(32,32,38,.4)`
-- **Row divider** — `0 1px 1px 0 rgba(32,32,38,.2)`
-
-The primary `.m-br-button` system has **no shadow at all** — its visual weight comes from the matched bg+border combo, not elevation.
-
-### Legacy Skeuomorphic Shadows (specialty controls only)
-A small set of older button classes — `.m-button-pink`, `.m-button-gray`, `.m-button-green`, `.m-button-unfav` — apply a layered colored shadow on `:hover`. These are typically used for favorite/follow-shop heart buttons, not primary CTAs.
-
-Pattern: `0 .2em .2em -.1em <BRAND_MID>, 0 .3em <BRAND_DARK>, 0 .5em .5em -.1em rgba(32,32,38,.12)`
-
-| Class | Hover bg | Mid shadow | Dark shadow |
-|---|---|---|---|
-| `.m-button-pink` | `#ff6299` | `#c83166` | `#a32252` |
-| `.m-button-green` | `#7ec527` | `#65a40e` | `#4d9200` |
-| `.m-button-gray` | `#8e9a9f` | `#66666a` | `#535c5f` |
-| `.m-button-unfav` | (transparent) | `#d3d3d5` | `#d3d3d5` |
-
-Treat this as a **legacy accent**, not a system-wide pattern. Don't generalize it to the main button system.
-
-### Z-Index Hierarchy
-- Sticky header sits above content
-- Dropdown menus above sticky header
-- Modal overlay above all chrome
-- Toast notifications above modals
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 - **DO** use weight 700 for headlines, CTAs, prices, and badges. Bold is the brand's voice.
 - **DON'T** apply weight 300 — Pinkoi never goes "airy thin." Headlines are confident and dense.
@@ -410,37 +672,37 @@ Treat this as a **legacy accent**, not a system-wide pattern. Don't generalize i
 - **DO** treat `#e63349` (and its hover/active siblings) as the **error/destructive red** — use it for form validation, danger buttons, required-field asterisks, and warnings.
 - **DON'T** confuse the error red with a sale-price color — discount badges use the asymmetric-corner ribbon style, not red text.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Range | Key Changes |
-|---|---|---|
-| Mobile | `<767px` | 2-column product grid, stacked nav, full-width CTAs |
-| Mobile (alt) | `<768px` | Some surfaces use 768px as the cutoff |
-| Tablet | `768px–1037px` | 3–4 column product grid, condensed nav |
-| Desktop | `1037px–1200px` | 5–6 column product grid, full nav |
-| Wide | `>1200px` | 6-column grid with side margins |
-| Extra Wide | `>1248px` | Centered max-width container |
+Pinkoi speaks like a well-travelled friend recommending a designer they met at a craft fair: warm, specific, and quietly proud of the maker behind every product. The voice is **curatorial, bilingual, and commerce-forward** — English, Traditional Chinese, Japanese, Simplified Chinese, and Thai all render as first-class (never translated "to English" but authored for each locale, served via the per-language font stack in §3). Sentences avoid hype; they frame objects through the designer's intent. The house tagline "Design the way you are" is declarative, not aspirational — it says *your* taste is already valid, Pinkoi's job is to surface it. No em-dash-heavy marketing voice, no "game-changer" vocabulary, no purple-prose product poetry. Shop copy, on the other hand, is **the designer's voice** — Pinkoi deliberately lets shop owners write listings in their own register, because a ceramicist from Kyoto should not sound like a leather-worker from Taipei.
 
-### Touch Targets
-- Buttons use `5px 10px` to `9px 14px` padding scale — adequate but compact
-- Card tap targets cover the entire `.m-card-product` area
-- Mobile nav typically expands to a full-screen drawer
+| Context | Tone |
+|---|---|
+| Primary CTAs | Short, verb-led, bilingual-parallel (`Sign In / Register`, `Sell on Pinkoi`, `Add to Cart`). Title-case in English, no trailing punctuation. |
+| Purchase CTAs (coral `--purchase` button only) | Imperative + concrete object: `Add to Cart`, `Buy Now`. Never generic `Continue` or `Submit`. |
+| Product listings (shop-authored) | Designer's own voice preserved. Pinkoi does not normalize tone across shops — variance is the feature. |
+| Empty states (browsing / wishlist) | One-line explanation of *why* it is empty, plus one suggested next action. Never `No results`. |
+| Error messages (form validation) | Field-specific + blameless. Asterisk-marked required field labels (`.s-required:after { content: "*" }`) carry most of the work; error lines stay short. |
+| Success (add-to-cart, wishlist) | Confirmation of what happened, plus immediate next step (View Cart / Continue Browsing). Never celebratory. |
+| Editorial / Pinkoi Zine | Longer-form, essayistic. Designer interviews use direct quotation. Contrast with terse storefront chrome is intentional. |
+| Founder / corporate ("About") | First-person-plural, plain, slightly formal. `Pinkoi believes…`, `Pinkoi strives…`. |
+| Onboarding / seller recruitment | Invitational (`Be a Pinkoist`, `Let's work together`). No countdown urgency, no "limited time" manipulation. |
 
-### Collapsing Strategy
-- 6-column product grid → 4 → 3 → 2 columns on shrinking width
-- Horizontal sticky nav → hamburger drawer below 768px
-- Multi-column footer → stacked sections below 768px
-- Filter sidebar → bottom sheet on mobile
-- Inline price + action → stacked below thumbnail on mobile
+**Forbidden phrases.** `World-class`, `amazing finds`, `curated for you` (overused across competitors), `Oops!`, `Something went wrong` without a reason, `No items found.` (too terminal — always give a path forward). In Traditional Chinese surfaces avoid `獨家優惠`, `超值` and other aggressive-discount vocabulary; Pinkoi's discount layer is the asymmetric ribbon badge (§4), not shouty copy. No emoji on money or checkout screens. No exclamation marks in error messages. No approximate prices on any surface — listings show exact amounts in the shop currency.
 
-### Image Behavior
-- Product images dominate cards — minimum 190px square
-- Hover states may swap to alternate angle on desktop only (no hover on mobile)
-- WebP/lazy-load standard practice (CDN: `cdn02.pinkoi.com`)
-- Card aspect ratio preserved across breakpoints
+**Voice samples.**
 
-## 9. Agent Prompt Guide
+- `"Design the way you are."` — brand line, homepage hero <!-- verified: https://en.pinkoi.com/about, 2026-04 -->
+- `"Asia's cross-border design marketplace"` — site header positioning <!-- verified: https://en.pinkoi.com, 2026-04 -->
+- `"Sell on Pinkoi"` — designer-recruitment CTA, header + footer <!-- verified: https://en.pinkoi.com, 2026-04 -->
+- `"Be a Pinkoist"` — brand-community invitation, about page <!-- cited: https://en.pinkoi.com/about/team -->
+- `"Let's work together."` / `"Pinkoi loves collaborating with people. We can't wait to turn your good ideas into great realities."` — partnership CTA <!-- verified: https://en.pinkoi.com/about, 2026-04 -->
+- `"Stay up to date on the latest designs"` — newsletter footer <!-- verified: https://en.pinkoi.com, 2026-04 -->
+- `"Pinkoi believes that design has a transformative power that can permeate every aspect of our lives."` — about-page lead paragraph <!-- verified: https://en.pinkoi.com/about, 2026-04 -->
+- Empty wishlist (illustrative): `"No favorites yet — tap the heart on anything you love and it will live here."` <!-- illustrative: not verified as live Pinkoi copy -->
+- Form error (illustrative): `"Please enter a valid email so the shop can reach you about your order."` <!-- illustrative: not verified as live Pinkoi copy -->
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA bg: Mid Teal (`#10567b`); hover `#064162`; active `#003354`
@@ -475,173 +737,11 @@ Treat this as a **legacy accent**, not a system-wide pattern. Don't generalize i
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Pinkoi speaks like a well-travelled friend recommending a designer they met at a craft fair: warm, specific, and quietly proud of the maker behind every product. The voice is **curatorial, bilingual, and commerce-forward** — English, Traditional Chinese, Japanese, Simplified Chinese, and Thai all render as first-class (never translated "to English" but authored for each locale, served via the per-language font stack in §3). Sentences avoid hype; they frame objects through the designer's intent. The house tagline "Design the way you are" is declarative, not aspirational — it says *your* taste is already valid, Pinkoi's job is to surface it. No em-dash-heavy marketing voice, no "game-changer" vocabulary, no purple-prose product poetry. Shop copy, on the other hand, is **the designer's voice** — Pinkoi deliberately lets shop owners write listings in their own register, because a ceramicist from Kyoto should not sound like a leather-worker from Taipei.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Primary CTAs | Short, verb-led, bilingual-parallel (`Sign In / Register`, `Sell on Pinkoi`, `Add to Cart`). Title-case in English, no trailing punctuation. |
-| Purchase CTAs (coral `--purchase` button only) | Imperative + concrete object: `Add to Cart`, `Buy Now`. Never generic `Continue` or `Submit`. |
-| Product listings (shop-authored) | Designer's own voice preserved. Pinkoi does not normalize tone across shops — variance is the feature. |
-| Empty states (browsing / wishlist) | One-line explanation of *why* it is empty, plus one suggested next action. Never `No results`. |
-| Error messages (form validation) | Field-specific + blameless. Asterisk-marked required field labels (`.s-required:after { content: "*" }`) carry most of the work; error lines stay short. |
-| Success (add-to-cart, wishlist) | Confirmation of what happened, plus immediate next step (View Cart / Continue Browsing). Never celebratory. |
-| Editorial / Pinkoi Zine | Longer-form, essayistic. Designer interviews use direct quotation. Contrast with terse storefront chrome is intentional. |
-| Founder / corporate ("About") | First-person-plural, plain, slightly formal. `Pinkoi believes…`, `Pinkoi strives…`. |
-| Onboarding / seller recruitment | Invitational (`Be a Pinkoist`, `Let's work together`). No countdown urgency, no "limited time" manipulation. |
-
-**Forbidden phrases.** `World-class`, `amazing finds`, `curated for you` (overused across competitors), `Oops!`, `Something went wrong` without a reason, `No items found.` (too terminal — always give a path forward). In Traditional Chinese surfaces avoid `獨家優惠`, `超值` and other aggressive-discount vocabulary; Pinkoi's discount layer is the asymmetric ribbon badge (§4), not shouty copy. No emoji on money or checkout screens. No exclamation marks in error messages. No approximate prices on any surface — listings show exact amounts in the shop currency.
-
-**Voice samples.**
-
-- `"Design the way you are."` — brand line, homepage hero <!-- verified: https://en.pinkoi.com/about, 2026-04 -->
-- `"Asia's cross-border design marketplace"` — site header positioning <!-- verified: https://en.pinkoi.com, 2026-04 -->
-- `"Sell on Pinkoi"` — designer-recruitment CTA, header + footer <!-- verified: https://en.pinkoi.com, 2026-04 -->
-- `"Be a Pinkoist"` — brand-community invitation, about page <!-- cited: https://en.pinkoi.com/about/team -->
-- `"Let's work together."` / `"Pinkoi loves collaborating with people. We can't wait to turn your good ideas into great realities."` — partnership CTA <!-- verified: https://en.pinkoi.com/about, 2026-04 -->
-- `"Stay up to date on the latest designs"` — newsletter footer <!-- verified: https://en.pinkoi.com, 2026-04 -->
-- `"Pinkoi believes that design has a transformative power that can permeate every aspect of our lives."` — about-page lead paragraph <!-- verified: https://en.pinkoi.com/about, 2026-04 -->
-- Empty wishlist (illustrative): `"No favorites yet — tap the heart on anything you love and it will live here."` <!-- illustrative: not verified as live Pinkoi copy -->
-- Form error (illustrative): `"Please enter a valid email so the shop can reach you about your order."` <!-- illustrative: not verified as live Pinkoi copy -->
-
-## 11. Brand Narrative
-
-Pinkoi was founded in **Taipei in 2011** by **Peter Yen (顏君庭)**, **Mike Lee (李讓)**, and **Maibelle Lin (林怡君)** — three Taiwanese engineers and designers who had watched Asian design culture thrive in craft fairs and boutique storefronts while remaining absent from global e-commerce ([en.pinkoi.com/about](https://en.pinkoi.com/about), [en.pinkoi.com/about/team](https://en.pinkoi.com/about/team)). Peter had spent four years at Yahoo in Sunnyvale leading the Yahoo Answers engineering team; weekends in San Francisco craft fairs seeded the question that became Pinkoi: *why can a potter in Taichung or a leather-worker in Kyoto only sell within a fifty-kilometre radius when the internet exists?* The thesis: build the infrastructure that lets an Asian independent designer sell to a buyer in Tokyo, Hong Kong, Bangkok, or São Paulo without building their own logistics stack, payment layer, or translation pipeline.
-
-The site's mission framing is explicit: *"Pinkoi believes that design has a transformative power that can permeate every aspect of our lives. Embracing great design can bring us closer to our ideal lifestyles"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). This translates into a refusal — Pinkoi is **not** a generic marketplace competing on SKU count or price. Peter has stated the position plainly: *"E-commerce companies that sell standard products are playing a game of capital, but that's not our game. Pinkoi sells non-standard products"* ([cherubic.com](https://cherubic.com/blog/founder-interview-pinkoi/)). And: *"While the saying 'money talks' may be true in some places, at Pinkoi our decisions are primarily based on providing users with a good experience"* ([cherubic.com](https://cherubic.com/blog/founder-interview-pinkoi/)). Every designer is vetted; every listing is the work of a small maker; the review system is treated as non-negotiable infrastructure, not a line-item to optimize away.
-
-**Founder backgrounds**: Peter Yen — 7 years Silicon Valley, **4 years as Senior Engineer Lead Yahoo Global HQ Social Search Group** ([Taiwan Panorama — Peter Yen and Pinkoi](https://www.taiwan-panorama.com/en/Articles/Details?Guid=3fb71a67-3e23-4723-8700-115a9afe9a71&CatId=7&postname=Peter+Yen+and+Pinkoi-Connecting+Designers+with+Consumers)); **Maibelle Lin** — senior designer at multiple Silicon Valley startups (interaction + UI/UX); **Mike Lee** — National Chiao Tung University civil engineering grad, founded multiple websites/online services prior to Pinkoi. Initial bootstrap: **NT$500,000 raised** between the three; Yen worked from a **7-square-meter study in his home** with Lee on backend and Lin on visual design. **2015 funding round: $9M from Sequoia Capital India + GMO Venture Partners** alongside **English-site launch** ([TechCrunch — Pinkoi $9M 2015-09](https://techcrunch.com/2015/09/30/pinkoi/), [Tracxn — Pinkoi](https://tracxn.com/d/companies/pinkoi/__LQaag4M-ow4XbNs2JjI2lfTj0h0L6XEX2Kv8O8jCk1s/founders-and-board-of-directors)). What Pinkoi has become is a design-commerce platform serving **5 primary markets (Taiwan, Hong Kong, Japan, mainland China, Thailand)** with ~6.25M members, 50,000+ active shops across 77 countries, and 95% cross-border sales share <!-- source: en.pinkoi.com/about as of 2026-04; metrics surfaced by Pinkoi, not independently audited -->. The logo is *"designed using circular arcs and acute angles, conveying the brand's core values of diversity, inclusion and respect for the unique"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). The design language reflected in §1–§9 — high-density 6-column grids, bold-heavy Helvetica Neue + locale stacks, coral coral reserved for a single `--purchase` moment per page, flat matched-border buttons, conservative 4px radii — is the product-surface expression of that thesis: clarity and density serve the designer's work, and the chrome stays out of the way so the object can do the talking.
-
-## 12. Principles
-
-1. **The designer is the voice.** Pinkoi's chrome is the frame; the product and shop copy is the picture. Shop owners author their own listings in their own register; Pinkoi does not homogenize tone across shops. *UI implication:* Shop-owned surfaces (listing description, shop bio, designer story) use body text with minimal chrome. Pinkoi-owned chrome (nav, cart, checkout) uses the tight bold-heavy system. Do not style shop content with site chrome type scale — it will flatten the variance that is the product.
-2. **Coral is finite.** `#f16c5d` (`--purchase`) appears on one button per page — the conversion moment. Spending it elsewhere dilutes the one signal users have learned to trust. *UI implication:* A product page has exactly one coral button (Add to Cart or Buy Now). A category page has zero. A checkout page has exactly one (Place Order). Never two coral buttons on the same viewport.
-3. **Density is the browse feature.** Pinkoi users cross 6+ categories per session looking for a specific aesthetic, not a specific product. Whitespace hostile to scanning is anti-feature. *UI implication:* Product grid desktop default is 6 columns (`calc(16.66667% - 12px)`). Do not space product cards like a SaaS dashboard. Vertical rhythm between sections is generous (`64px 0`); within sections, micro-padding (`5px 10px` → `9px 14px`).
-4. **Locale is infrastructure, not a language toggle.** Every surface ships through 5 font stacks (TC / SC / JP / TH / default). Copy is authored per locale, not translated from English. *UI implication:* Do not use `font-family: 'Helvetica Neue'` alone. Always use the full 5-stack fallback chain from §3. Microcopy strings should route through the locale bundle; do not inline English.
-5. **Errors are field-local, blameless, and actionable.** Pinkoi's error convention leans heavily on the required-asterisk (`.s-required:after { color: #e63349 }`) plus an inline field-level message. Global error banners are a last resort. *UI implication:* Form error state sets `1px solid #e63349` border + `box-shadow: inset 0 0 0 1px #e63349` (doubled red) on the invalid input. Error text lives directly beneath the field in 12px `#e63349`. Do not show a dialog. Do not block the page.
-6. **Bold is for structure, not buttons.** Weight 700 carries the visual hierarchy (headlines, prices, badges) — but button labels are weight 400. A button's weight comes from the matched bg+border combo, not its text. *UI implication:* `.m-br-button .text { font-weight: 400 }` is load-bearing. Never render a button label in weight 700 — it breaks the color-does-the-work principle and flattens the hierarchy that weight 700 establishes elsewhere.
-7. **Shadows are evidence of history, not a depth system.** The primary `.m-br-button` system is flat. The skeuomorphic colored-glow shadow (pink / lime / gray recipes in §6) is **legacy specialty control territory** — favorite hearts, follow-shop — not a system-wide pattern. *UI implication:* When introducing a new component, default to flat + matched `1px solid` border. Do not use the legacy `0 .2em .2em -.1em <color>, 0 .3em <color>, 0 .5em .5em -.1em rgba(32,32,38,.12)` recipe on anything but the existing `.m-button-{pink,gray,green,unfav}` classes.
-8. **Metrics are the designer's, not Pinkoi's.** The product lists the shop owner's rating, the shop owner's sales count, the shop owner's reviews — Pinkoi's own platform metrics (MAU, GMV) are absent from customer surfaces. *UI implication:* Card badges, product pages, and shop pages expose shop-level trust signals (rating stars, review count, "ships from <city>"). Do not add platform-level badges like "Trending on Pinkoi" unless they reinforce a shop-level claim.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Pinkoi user segments (Taiwan / Hong Kong / Japan cross-border design buyers), not individual people.*
-
-**Yi-Chen (怡蓁), 29, Taipei.** Product designer, opens Pinkoi 3–4 evenings a week to browse ceramics and stationery, averaging NT$1,200–NT$3,000 per basket twice a month. Re-visits the same 8–10 shops by name before exploring new ones, treating the wishlist as a curated mood board rather than a shopping list.
-
-**Wing-Lam, 34, Hong Kong.** Architect and wishlist-first buyer; discovers Pinkoi via Instagram posts of Japanese stationery shops she cannot reach otherwise, and reads every shop's "about" page before a first-time purchase. Toggles the site between Traditional Chinese and English by shop origin, and will abandon a cart if shipping logistics feel opaque.
-
-**Haruto (陽翔), 42, Tokyo.** Mid-career art director sourcing Taiwanese and Thai ceramics and leather goods that rarely reach Japanese department stores; evaluates photography, dimensions, and materials carefully before adding to cart. Low session frequency (~4x/month) but high basket value (¥15,000+), desktop-only, unlikely to use promotions.
-
-**Ploy, 26, Bangkok.** Early-career graphic designer and lurker-turned-seller — opened her own shop eighteen months ago, still browses daily as a buyer, and uses the platform bilingually (Thai + English). Bookmarks shops whose packaging and photography she admires as craft references, and engages heavily with Pinkoi Zine editorial.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (wishlist, first visit)** | One-line `#66666a` body explanation of *why* the list is empty, plus one secondary button (`--secondary` variant — white bg, `1px solid #a8a8ab`, `#39393e` text) suggesting browsing a category. Never `No items`. Never an illustration. |
-| **Empty (search no-results)** | Single `#66666a` caption explaining the zero-match in the user's own query terms, plus 3–5 suggested alternate category chips. Never terminal `No results found.` |
-| **Empty (cart)** | `#39393e` heading at 16px weight 700, one-line body describing next step, single `--primary` button linking to the last-browsed category. No promotional banner injection — an empty cart is not an upsell moment. |
-| **Loading (first paint, product grid)** | Skeleton blocks at `#f7f7f8` (surface-soft) with 4px radius matching final card radius. Image areas are fixed-aspect skeletons; price and title areas are 14px-tall gray bars. Shimmer = 1.2s `linear-gradient` with 8% white highlight. No spinner. |
-| **Loading (inline action — add to cart)** | Coral button stays in place at `#f16c5d` bg, text swaps to a 3-dot animation in white. Button width does not change — prevents layout shift and double-tap. |
-| **Loading (route transition)** | Top-of-page 2px progress bar in `#2e90b7` (brand mid-teal), no overlay, previous page content stays visible. |
-| **Error (form field)** | Input border switches to `1px solid #e63349` plus `box-shadow: inset 0 0 0 1px #e63349` for the doubled-red effect. Helper text below in `#e63349` 12px weight 400. Required-field label gets `*` in `#e63349` via `.s-required:after`. |
-| **Error (inline banner — shop or shipping issue)** | Thin horizontal banner, `#e63349` left border (3px), `#f7f7f8` background, `#39393e` body text. One action link on the right. Not a modal. |
-| **Error (checkout — payment declined)** | Reserved escalated state: full-width `#e63349` border-left card at checkout top, one sentence describing the decline in blameless language, single retry button in `--primary`. Do not show a generic `Something went wrong`. |
-| **Success (add-to-cart)** | Toast at top-right, `#39393e` bg, white 14px weight 400 text, 3s auto-dismiss. Single sentence: confirms the item added, offers View Cart action in `#2e90b7` link color. No checkmark animation; no sound. |
-| **Success (order placed)** | Dedicated confirmation screen — not a toast. Order number in 20px weight 700, shop(s) notified list, estimated ship date per shop. `--secondary` button `Continue Browsing`, `--primary` button `View Order`. Never a coral button here — the purchase moment is past. |
-| **Skeleton** | `#f0f0f0` blocks at exact product-card dimensions (1:1 image, 2-line title, designer-name line, price). Shimmer 1.2s with 8% white highlight. Price placeholder renders as `—` per currency locale (`NT$ —` / `JP¥ —` / `USD $ —`) — never `$0`. Designer-name placeholder stays blank, never "Loading…" — a made-up designer name would be misleading on a craftsmanship-first marketplace. |
-| **Disabled** | Button opacity per default browser disabled treatment; border stays visible so geometry is stable. Disabled form inputs keep their `#d3d3d5` border — no grey-out wash — so re-enabled fields do not shift. |
-
-## 15. Motion & Easing
-
-**Durations** (named tokens, extending the `transition: border .1s, color .1s, background .1s` convention already present in `.m-br-button`):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, radio state changes, reduce-motion fallback |
-| `motion-fast` | 100ms | Hover / focus transitions on buttons, links, cards (matches the production `.1s` already in `.m-br-button`) |
-| `motion-standard` | 200ms | Dropdown reveals, tooltip fades, cart-count updates |
-| `motion-slow` | 300ms | Modal open, filter sidebar slide, image lightbox |
-| `motion-page` | 250ms | Route transitions + top progress bar fade |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — modals, dropdowns, toasts |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things dismissing |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — accordion, filter expand |
-
-**Spring / overshoot stance.** **Forbidden.** Pinkoi is a commerce surface populated by handmade designer goods whose value proposition is craftsmanship and restraint; bouncy UI motion reads as a consumer-app tic that fights the product. The closest peer brands (Asian design marketplaces, curated commerce) universally avoid spring; applying it would code Pinkoi closer to a flash-sale app than a curated marketplace. No `cubic-bezier` with y > 1, no overshoot on add-to-cart confirmations, no bouncy modal entries. Where a brand like Toss licenses spring for money-moved checkmarks, Pinkoi does not — the commerce confirmation in §14 is a dedicated screen, and a static checkmark at 300ms `ease-enter` is the whole effect.
-
-**Signature motions.**
-
-1. **Button state transitions.** `transition: border .1s, color .1s, background .1s` (production CSS, literal). Hover/active state changes on all `.m-br-button` variants are simultaneous color + border interpolations at 100ms with `ease-standard`.
-2. **Card hover (desktop only).** Product card scales imperceptibly (1.0 → 1.02) over 200ms `ease-standard`, or swaps to an alternate product image. No shadow change — the flat chrome is the brand. Mobile: no hover, no tap-highlight on the card (taps route directly to product page).
-3. **Discount-ribbon entry.** When a discount badge renders on a product card, the `0 1px 1px 0 rgba(32,32,38,.2)` shadow fades in over 200ms. The badge itself does not rotate, bounce, or shimmer — it is a static anchor, not an attention grab.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. No exceptions. Hover color transitions still apply (they are not motion per the spec — they are state changes). Modal slide-ins become instant opacity toggles; route-transition progress bar is hidden entirely.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Direct verification via WebFetch (2026-04-20):
-- https://en.pinkoi.com/about — mission ("Design the way you are."; "Pinkoi believes that
-  design has a transformative power…"), founding year (Taipei 2011), market list
-  (Shanghai, Hong Kong, Tokyo, Bangkok), logo rationale (circular arcs + acute
-  angles → diversity / inclusion / respect for the unique), partnership CTA
-  ("Let's work together.", "Pinkoi loves collaborating with people…").
-- https://en.pinkoi.com — header positioning ("Asia's cross-border design marketplace"),
-  nav labels, seller CTA ("Sell on Pinkoi"), newsletter footer ("Stay up to date
-  on the latest designs"), © 2026 Pinkoi footer line.
-- https://en.pinkoi.com/about/team — founder names & titles: Peter Yen (顏君庭) Co-Founder/CEO,
-  Mike Lee (李讓) Co-Founder/CPTO, Maibelle Lin (林怡君) Co-Founder. "Be a Pinkoist" invitation.
-
-Cited (interview / press — not live product surface):
-- https://www.taiwan-panorama.com/en/Articles/Details?Guid=3fb71a67-3e23-4723-8700-115a9afe9a71
-  — Peter Yen on Asia-number-one design-platform ambition, designer livelihood thesis.
-- https://cherubic.com/blog/founder-interview-pinkoi/
-  — Peter Yen direct quotes: "E-commerce companies that sell standard products are
-  playing a game of capital, but that's not our game. Pinkoi sells non-standard products."
-  "While the saying 'money talks' may be true in some places, at Pinkoi our decisions
-  are primarily based on providing users with a good experience."
-  "If we abandoned the review system, Pinkoi would lose its advantage."
-- Pinkoi founding / background: three co-founders, Peter Yen's Yahoo Sunnyvale background
-  + SF craft-fair origin story — cross-confirmed via Taiwan Panorama + TechCrunch 2015
-  + SME Business Review profile.
-
-Carried from base DESIGN.md (sections 1–9) — token-level claims:
-- Coral #f16c5d reserved for `--purchase`; flat matched-border button system;
-  locale font stacks (5); 4px default radius; weight 700 bold-heavy structure;
-  6-column product grid; `transition: border .1s, color .1s, background .1s`.
-  These were extracted from production CSS bundles (`cdn02.pinkoi.com/media/dist/`)
-  during base reference creation and re-verified via Playwright on 2026-04-17.
-
-Metrics used (6.25M members, 50k+ shops, 95% cross-border, 150 countries):
-- Surfaced on en.pinkoi.com/about as of 2026-04; Pinkoi-published, not independently audited.
-  Marked with `<!-- source: en.pinkoi.com/about as of 2026-04; metrics surfaced by Pinkoi,
-  not independently audited -->` inline.
-
-Interpretive / editorial claims (not documented Pinkoi statements):
-- "Coral is finite" framing as a principle — inferred from the exclusive `--purchase`
-  variant naming + CSS-exclusive hex usage observed during base reference creation.
-- Persona behaviors (session frequency, basket range, browse patterns) — fictional
-  archetypes informed by publicly described Pinkoi user segments and Asian cross-border
-  design-commerce conventions, not individual people. Disclaimer present in §13.
-- Spring-forbidden stance — editorial reading; Pinkoi does not publicly declare a motion
-  policy. Rationale tied to the brand's curated-commerce positioning, not a Pinkoi statement.
-
-Illustrative voice samples in §10 are explicitly marked; they are placeholders showing
-tonal intent, not strings observed on the live Pinkoi surface.
--->
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 44 — Apple-tier)
-**Tier 1 sources:** https://en.pinkoi.com home + /about/team (live DOM via playwright — Search button **`#10567b`** Pinkoi Teal **split-radius `0px 8px 8px 0px`** (search-box trailing geometry) / 8×20 / 40px; **Country pills 100px** active `#fff8f7` Coral Tint / inactive `#eeeeef` Cool Gray / 14px·500; Outline Secondary `#fff` 4px / 40-52px / 14-16px·400-500; Charcoal text `#39393e` warm-cast).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** Wikipedia (Pinkoi), Taiwan Panorama (Peter Yen Yahoo origin), LinkedIn (Peter Yen), TechCrunch (2015-09 $9M Sequoia India + GMO Venture Partners), Tracxn, en.pinkoi.com/about + /about/team, blog.google (Pinkoi case study).
-**Style ref:** `pinkoi` (self / TW Asian retained).
-**Conflicts unresolved:** none. **Earlier addition:** split-radius search trailing + 100px country pills + Coral Tint active state + 3-fill discipline missed by prior pass.
-
+- **Contrast, `button-purchase`.** Text `#ffffff` on `#f16c5d` measures 2.98:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-danger`.** Text `#ffffff` on `#e63349` measures 4.26:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-success`.** Text `#ffffff` on `#2cac97` measures 2.82:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `discount-badge`.** Text `#ffffff` on `#e63349` measures 4.26:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

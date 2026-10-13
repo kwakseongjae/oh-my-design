@@ -1,0 +1,389 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "ferrari",
+    "name": "Ferrari",
+    "country": "IT",
+    "category": "automotive",
+    "homepage": "https://www.ferrari.com",
+    "primary_color": "#da291c",
+    "logo": {
+      "type": "simpleicons",
+      "slug": "ferrari"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Three supplied public Ferrari surfaces were reconciled. Marketing and racing web components are retained only at their observed selector/surface boundary; no authenticated product UI, responsive behavior, semantic status palette, or unobserved interaction variant is inferred.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-brand",
+        "url": "https://www.ferrari.com/en-EN",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "car-range",
+        "kind": "public-product",
+        "url": "https://www.ferrari.com/en-EN/auto/car-range",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "formula1",
+        "kind": "public-racing",
+        "url": "https://www.ferrari.com/en-EN/formula1",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.ferrari.com/en-EN",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "car-range-live",
+        "kind": "product-surface",
+        "url": "https://www.ferrari.com/en-EN/auto/car-range",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "formula1-live",
+        "kind": "product-surface",
+        "url": "https://www.ferrari.com/en-EN/formula1",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ferrari-sans-asset",
+        "kind": "brand-asset",
+        "url": "https://www.ferrari.com/etc.clientlibs/ferrari-fcom/clientlibs/clientlib-site/resources/fonts/Ferrari-SansRegular.woff2?v=1",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ferrari-font-context",
+        "kind": "official-doc",
+        "url": "https://www.ferrari.com/en-EN/formula1/articles/the-sf-24-is-here",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ferrari-legal",
+        "kind": "license",
+        "url": "https://www.ferrari.com/en-US/legal",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ferrari-about",
+        "kind": "official-doc",
+        "url": "https://www.ferrari.com/en-EN/corporate/about-us",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ferrari-history",
+        "kind": "official-doc",
+        "url": "https://www.ferrari.com/en-EN/history",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "ferrari-design",
+        "kind": "official-doc",
+        "url": "https://www.ferrari.com/en-EN/magazine/articles/new-language-of-ferrari-design",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-primary": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.chrome": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.primary-action.fontSize": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.primary-action.fontWeight": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.primary-action.lineHeight": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.primary-action.use": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consent-action.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consent-action.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consent-action.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consent-action.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.consent-action.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.nav-y": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.consent-y": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.primary-inset": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.sharp": {
+        "surface_id": "car-range",
+        "source_id": "car-range-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.consent": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.racing-media-card.type": {
+        "surface_id": "formula1",
+        "source_id": "formula1-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.racing-media-card.backgroundColor": {
+        "surface_id": "formula1",
+        "source_id": "formula1-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.racing-media-card.textColor": {
+        "surface_id": "formula1",
+        "source_id": "formula1-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.racing-media-card.rounded": {
+        "surface_id": "formula1",
+        "source_id": "formula1-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.racing-media-card.shadow": {
+        "surface_id": "formula1",
+        "source_id": "formula1-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.racing-media-card.use": {
+        "surface_id": "formula1",
+        "source_id": "formula1-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 8,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 3,
+      "orphaned-tokens": 2
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.primary-action.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.consent-action.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.racing-media-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.racing-media-card.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.racing-media-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "a43ee45376da8c9e2f2a57bb348008a031f4f9760645bb46654a5f230aa48787",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.nav.fontSize",
+      "typography.nav.letterSpacing",
+      "typography.primary-action.fontSize",
+      "typography.consent-action.fontSize",
+      "typography.consent-action.letterSpacing",
+      "rounded.sharp",
+      "rounded.consent"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "nav",
+        "primary-action",
+        "consent-action"
+      ]
+    }
+  }
+}

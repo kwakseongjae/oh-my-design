@@ -1,84 +1,262 @@
 ---
-id: kintone
 name: kintone
-country: JP
-category: productivity
-homepage: "https://kintone.cybozu.co.jp"
-primary_color: "#ef3f24"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=kintone.cybozu.co.jp&sz=128"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#ef3f24"
-    primary-hover: "#d63b22"
-    brand: "#ef3f24"
-    canvas: "#ffffff"
-    foreground: "#333333"
-    muted: "#666666"
-    on-primary: "#ffffff"
-    surface: "#f5f5f5"
-    hairline: "#dddddd"
-    body: "#555555"
-    placeholder: "#999999"
-    accent-green: "#3fa862"
-    accent-cerulean: "#00afec"
-    accent-aloe: "#00afaa"
-    accent-sunshine: "#ffba00"
-    error: "#e74c3c"
-    success: "#3fa862"
-    warning: "#ffba00"
-    info: "#00afec"
-  typography:
-    family: { sans: "Meiryo", mono: "SFMono-Regular" }
-    display-hero:  { size: 40, weight: 700, lineHeight: 1.3, tracking: "0.02em", use: "Marketing hero みんな、つくれる" }
-    display-large: { size: 32, weight: 700, lineHeight: 1.35, tracking: "0.02em", use: "Section titles, landing headers" }
-    heading-1:     { size: 24, weight: 700, lineHeight: 1.4, use: "Page titles, app names" }
-    heading-2:     { size: 20, weight: 700, lineHeight: 1.45, use: "Card headers, form section titles" }
-    heading-3:     { size: 18, weight: 700, lineHeight: 1.5, use: "Sub-sections, field group labels" }
-    subtitle:      { size: 16, weight: 700, lineHeight: 1.5, use: "List headers, dialog titles" }
-    body-large:    { size: 16, weight: 400, lineHeight: 1.7, use: "Intro copy, descriptions" }
-    body:          { size: 14, weight: 400, lineHeight: 1.7, use: "Standard UI text, record fields" }
-    body-small:    { size: 13, weight: 400, lineHeight: 1.65, use: "Secondary info, table cells" }
-    caption:       { size: 12, weight: 400, lineHeight: 1.6, use: "Field hints, timestamps, fine print" }
-    label:         { size: 13, weight: 700, lineHeight: 1.5, use: "Form field labels above inputs" }
-    button:        { size: 14, weight: 700, lineHeight: 1.0, tracking: "0.02em", use: "CTA and action button text" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
-  shadow:
-    subtle: "0 1px 3px rgba(0,0,0,0.08)"
-    raised: "0 4px 12px rgba(0,0,0,0.12)"
-    elevated: "0 4px 12px rgba(0,0,0,0.18)"
-    modal: "0 8px 24px rgba(0,0,0,0.20)"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#ef3f24", fg: "#ffffff", radius: "4px", padding: "10px 24px", font: "14px / 700", hover: "#d63b22", active: "#c0341e", disabled: "bg #f5b3aa fg #ffffff", use: "Primary CTA 無料ではじめる / 保存" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#ef3f24", border: "1px solid #ef3f24", radius: "4px", padding: "10px 24px", font: "14px / 700", hover: "#fff0ee", use: "Secondary action paired with primary" }
-    button-neutral: { type: button, bg: "#ffffff", fg: "#555555", border: "1px solid #dddddd", radius: "4px", padding: "10px 20px", font: "14px / 700", hover: "bg #f5f5f5 border #bbbbbb", use: "Cancel, close, back キャンセル" }
-    button-text: { type: button, bg: "transparent", fg: "#00afec", radius: "4px", padding: "8px 12px", font: "14px / 700", hover: "underline + #f5f5f5", use: "Inline link-style actions in tables/toolbars" }
-    button-danger: { type: button, bg: "#e74c3c", fg: "#ffffff", radius: "4px", padding: "10px 24px", font: "14px / 700", hover: "#d63b22", use: "Destructive confirmation 削除する" }
-    input-text: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #dddddd", radius: "4px", padding: "8px 10px", font: "14px / 400", focus: "border #00afec + 0 0 0 2px rgba(0,175,236,0.15) ring", disabled: "bg #f5f5f5 fg #999999", use: "Single-line record fields, search" }
-    input-error: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #e74c3c", radius: "4px", use: "Validation failure with inline message" }
-    card: { type: card, bg: "#ffffff", border: "1px solid #dddddd", radius: "6px", padding: "20px", shadow: "0 1px 3px rgba(0,0,0,0.08)", use: "Record cards, dashboard widgets, settings panels" }
-    card-tile: { type: card, bg: "#ffffff", radius: "8px", padding: "16px", shadow: "0 1px 3px rgba(0,0,0,0.08)", hover: "0 4px 12px rgba(0,0,0,0.12)", use: "Signature app launcher tile" }
-    badge-neutral: { type: badge, bg: "#f5f5f5", fg: "#555555", border: "1px solid #dddddd", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Neutral status / category tag" }
-    badge-success: { type: badge, bg: "#e7f5ed", fg: "#3fa862", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Success status pill" }
-    badge-info: { type: badge, bg: "#e6f7fd", fg: "#00afec", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Info status pill" }
-    badge-danger: { type: badge, bg: "#fdeeee", fg: "#e74c3c", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Danger status pill" }
-    tab-underline: { type: tab, fg: "#666666", border: "1px solid #dddddd bottom", font: "14px / 700", padding: "10px 16px", hover: "#333333", active: "#ef3f24 text + 2px bottom border #ef3f24", use: "Record detail tabs, settings nav" }
-    toast: { type: toast, bg: "#333333", fg: "#ffffff", radius: "4px", padding: "12px 16px", shadow: "0 4px 12px rgba(0,0,0,0.18)", font: "13px / 400", use: "Auto-dismissing confirmation 保存しました" }
-    dialog: { type: dialog, bg: "#ffffff", radius: "8px", padding: "24px", shadow: "0 8px 24px rgba(0,0,0,0.20)", use: "Confirmation dialogs, settings, backdrop rgba(0,0,0,0.5)" }
-    toggle: { type: toggle, bg: "#dddddd", radius: "9999px", active: "#3fa862 track white thumb", use: "Enable/disable settings 通知をオン" }
+colors:
+  primary: '#ef3f24'
+  primary-hover: '#d63b22'
+  brand: '#ef3f24'
+  canvas: '#ffffff'
+  foreground: '#333333'
+  muted: '#666666'
+  on-primary: '#ffffff'
+  surface: '#f5f5f5'
+  hairline: '#dddddd'
+  body: '#555555'
+  placeholder: '#999999'
+  accent-green: '#3fa862'
+  accent-cerulean: '#00afec'
+  accent-aloe: '#00afaa'
+  accent-sunshine: '#ffba00'
+  error: '#e74c3c'
+  success: '#3fa862'
+  warning: '#ffba00'
+  info: '#00afec'
+typography:
+  display-hero:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: 0.02em
+    use: Marketing hero みんな、つくれる
+  display-large:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.35
+    letterSpacing: 0.02em
+    use: Section titles, landing headers
+  heading-1:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Page titles, app names
+  heading-2:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.45
+    use: Card headers, form section titles
+  heading-3:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Sub-sections, field group labels
+  subtitle:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: List headers, dialog titles
+  body-large:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.7
+    use: Intro copy, descriptions
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.7
+    use: Standard UI text, record fields
+  body-small:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.65
+    use: Secondary info, table cells
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: Field hints, timestamps, fine print
+  label:
+    fontSize: 13px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Form field labels above inputs
+  button:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: 0.02em
+    use: CTA and action button text
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 32
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ef3f24'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 10px 24px
+    typography: 14px / 700
+    hover: '#d63b22'
+    active: '#c0341e'
+    disabled: 'bg #f5b3aa fg #ffffff'
+    use: Primary CTA 無料ではじめる / 保存
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#ef3f24'
+    border: '1px solid #ef3f24'
+    rounded: 4px
+    padding: 10px 24px
+    typography: 14px / 700
+    hover: '#fff0ee'
+    use: Secondary action paired with primary
+  button-neutral:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#555555'
+    border: '1px solid #dddddd'
+    rounded: 4px
+    padding: 10px 20px
+    typography: 14px / 700
+    hover: 'bg #f5f5f5 border #bbbbbb'
+    use: Cancel, close, back キャンセル
+  button-text:
+    type: button
+    backgroundColor: transparent
+    textColor: '#00afec'
+    rounded: 4px
+    padding: 8px 12px
+    typography: 14px / 700
+    hover: 'underline + #f5f5f5'
+    use: Inline link-style actions in tables/toolbars
+  button-danger:
+    type: button
+    backgroundColor: '#e74c3c'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 10px 24px
+    typography: 14px / 700
+    hover: '#d63b22'
+    use: Destructive confirmation 削除する
+  input-text:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #dddddd'
+    rounded: 4px
+    padding: 8px 10px
+    typography: 14px / 400
+    focus: 'border #00afec + 0 0 0 2px rgba(0,175,236,0.15) ring'
+    disabled: 'bg #f5f5f5 fg #999999'
+    use: Single-line record fields, search
+  input-error:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #e74c3c'
+    rounded: 4px
+    use: Validation failure with inline message
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #dddddd'
+    rounded: 6px
+    padding: 20px
+    shadow: 0 1px 3px rgba(0,0,0,0.08)
+    use: Record cards, dashboard widgets, settings panels
+  card-tile:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    padding: 16px
+    shadow: 0 1px 3px rgba(0,0,0,0.08)
+    hover: 0 4px 12px rgba(0,0,0,0.12)
+    use: Signature app launcher tile
+  badge-neutral:
+    type: badge
+    backgroundColor: '#f5f5f5'
+    textColor: '#555555'
+    border: '1px solid #dddddd'
+    rounded: 12px
+    padding: 2px 10px
+    typography: 12px / 700
+    use: Neutral status / category tag
+  badge-success:
+    type: badge
+    backgroundColor: '#e7f5ed'
+    textColor: '#3fa862'
+    rounded: 12px
+    padding: 2px 10px
+    typography: 12px / 700
+    use: Success status pill
+  badge-info:
+    type: badge
+    backgroundColor: '#e6f7fd'
+    textColor: '#00afec'
+    rounded: 12px
+    padding: 2px 10px
+    typography: 12px / 700
+    use: Info status pill
+  badge-danger:
+    type: badge
+    backgroundColor: '#fdeeee'
+    textColor: '#e74c3c'
+    rounded: 12px
+    padding: 2px 10px
+    typography: 12px / 700
+    use: Danger status pill
+  tab-underline:
+    type: tab
+    textColor: '#666666'
+    border: '1px solid #dddddd bottom'
+    typography: 14px / 700
+    padding: 10px 16px
+    hover: '#333333'
+    active: '#ef3f24 text + 2px bottom border #ef3f24'
+    use: Record detail tabs, settings nav
+  toast:
+    type: toast
+    backgroundColor: '#333333'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 12px 16px
+    shadow: 0 4px 12px rgba(0,0,0,0.18)
+    typography: 13px / 400
+    use: Auto-dismissing confirmation 保存しました
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    padding: 24px
+    shadow: 0 8px 24px rgba(0,0,0,0.20)
+    use: Confirmation dialogs, settings, backdrop rgba(0,0,0,0.5)
+  toggle:
+    type: toggle
+    backgroundColor: '#dddddd'
+    rounded: 9999px
+    active: '#3fa862 track white thumb'
+    use: Enable/disable settings 通知をオン
+fonts:
+  roles:
+    sans: Meiryo
+    mono: SFMono-Regular
 ---
 
 # Design System Inspiration of kintone (キントーン)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 kintone is Cybozu's no-code/low-code work platform — the tool a non-engineer reaches for when they want to turn a messy spreadsheet and an email thread into a real business application. Its design language reflects that mission: approachable, friendly, and unintimidating, but grounded enough that a sales team, a city government office, or a manufacturing floor all trust it with their daily operations. The marketing site opens on a generous white canvas (`#ffffff`) with near-black text (`#333333`) and a single, unmistakable accent: **KIN Red** (`#ef3f24`), a warm vermilion that is closer to Japanese-flag red than to alarm red. The whole atmosphere says "everyone can build this" — the literal tagline is **みんな、つくれる** ("Everyone can create").
 
@@ -95,7 +273,7 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 - Generous whitespace and large friendly CTAs — "anyone can do this" reassurance
 - Restrained, mostly flat depth — light cards over heavy shadows
 
-## Primary tasks
+### Primary tasks
 
 - Build an app yourself by dragging fields onto a form
 - Change a field when the work it tracks changes
@@ -104,7 +282,40 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 - Color-code apps so the launcher reads at a glance
 - Digitize a paper-based process a whole team can use
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+kintone is the flagship work platform of **Cybozu, Inc. (サイボウズ株式会社)**, a Tokyo-based software company founded in **1997** that built its name on Japanese groupware — Cybozu Office and Garoon — before launching kintone in **2011** as a no-code/low-code platform for building business applications. Cybozu's corporate mission is **"チームワークあふれる社会を創る"** ("Create a society overflowing with teamwork"), and kintone is the product expression of that mission: give every team — not just engineers — the power to turn their own messy, spreadsheet-and-email workflows into real, shared applications.
+
+The founding insight behind kintone is a rejection of the idea that building software must be the exclusive territory of IT departments and vendors. In a Japanese business culture historically dependent on Excel attachments emailed around an office and SIer (system integrator) contracts for any custom tool, kintone's pitch was radical: **みんな、つくれる** — the sales lead, the HR coordinator, the factory floor manager can each assemble the app they need by dragging fields onto a form. No code, no procurement cycle, no waiting on IT.
+
+That democratizing thesis is why the brand looks the way it does. The warm KIN Red is approachable and energetic, not the cold institutional blue of legacy enterprise IT. The playful secondary palette and rounded app-tile motif make software construction feel like assembling building blocks. The friendly mascot and the plain, jargon-free voice all reinforce a single message: this is for everyone, and you can do it. kintone has grown into a platform used by tens of thousands of organizations across Japan and internationally (Cybozu operates kintone in the US and Southeast Asia as well), spanning local governments, manufacturers, retailers, and small businesses.
+
+What kintone refuses: the gatekept, IT-only aesthetic of legacy enterprise software; the cold blue palette that signals "for engineers"; dense, intimidating interfaces that assume technical literacy. What it embraces: warmth, modularity, plain language, and the conviction that the people closest to the work are the ones who should be able to build the tools for it.
+
+### Principles
+
+1. **Everyone can create.** The entire design exists to make a non-engineer feel capable. If a screen would intimidate a first-time builder, it is wrong. Plain verbs, visible next steps, no jargon.
+2. **Red is welcome, not alarm.** KIN Red is the friendly, energetic brand hero — used for primary actions and brand moments. Error/destructive states are deliberately a different, cooler red so the brand color never feels like a scolding.
+3. **Modularity is the metaphor.** Apps are built from fields; the launcher is a grid of tiles; categories are color-coded blocks. The visual language mirrors the product's "assemble it yourself" reality.
+4. **Borders before shadows.** Structure comes from `#dddddd` rules and color blocks, not heavy elevation. The product is flat and calm because it is a daily work surface, not a demo.
+5. **Open chrome, dense work.** Marketing and onboarding are spacious and reassuring; record lists and tables are tight and scannable. Density follows commitment — beginners get room, power users get data.
+6. **Japanese-first legibility.** Typography, line-height, and font stacks assume kanji/kana render first. Generous 1.7 line-height for body is non-negotiable. Latin is a co-citizen, never the default.
+7. **Two weights, plain faces.** 400 and 700 in a humanist gothic stack. No exotic display type — legibility for long field labels and dense records wins over branded letterforms.
+8. **Warmth without hype.** The mascot, the soft red, the encouraging copy add warmth; superlatives and revolution-talk are banned. Confidence is shown by being easy, not by shouting.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described kintone user segments (non-technical business builders, SMB operations, local government, Cybozu's "teamwork" positioning), not individual people.*
+
+**田中さん (Tanaka-san), 42, Nagoya.** Operations manager at a 60-person auto-parts manufacturer. Not an engineer — lives in Excel and email. Tanaka built the company's defect-tracking app himself in kintone over a weekend after his IT vendor quoted three months and a large fee. Values that he could drag fields onto a form and see a working record list immediately. Distrusts anything that looks like it needs a developer. Reads Japanese only; English UI is invisible to him. Measures the tool by how fast he can change a field when the factory floor's needs shift.
+
+**佐藤さん (Sato-san), 35, Tokyo.** HR coordinator at a mid-size services firm. Uses kintone to run the employee onboarding workflow — process management with approval steps. Cares deeply about status pills and notifications being unambiguous, because a stuck approval means a new hire can't get a laptop. Appreciates the friendly tone; it makes a tedious task feel less bureaucratic. Would be annoyed by any redesign that made the record list less scannable.
+
+**Maria Santos, 29, Manila.** Operations analyst at a regional retail chain using kintone (Southeast Asia). Builds inventory and store-visit apps. Works in English but on a Japanese-rooted product; values that the UI is clean and translates cleanly. Color-codes her apps with the secondary palette so the launcher reads at a glance. Treats kintone as the lightweight middle ground between a rigid ERP and a chaotic spreadsheet.
+
+**市役所の山本さん (Yamamoto-san, city hall), 51, regional Japan.** Public-sector administrator digitizing a paper-based resident-request process. Risk-averse, needs reliability and an interface his whole (non-technical, mixed-age) team can use without training. The "everyone can create" promise is exactly why kintone won over a custom SIer build. Wants warmth and clarity over flashiness; the calm, bordered, flat UI reassures him.
+
+## Colors
 
 ### Primary
 - **KIN Red** (`#ef3f24`): The brand primary. Pantone 485, CMYK 0/100/95/0, RGB 239/63/36. Logo, primary CTAs, key links, brand moments, the default app header theme. Warm vermilion — energetic and friendly, never an "error red."
@@ -141,7 +352,7 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 - **Header Surface**: `#ef3f24` (default theme) — the product header bar; admins may re-theme.
 - **Overlay Scrim**: `rgba(0,0,0,0.5)`. Modal/dialog backdrops.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary (JP UI)**: `"メイリオ", Meiryo, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Noto Sans JP", sans-serif`
@@ -172,7 +383,113 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 - **Labels are bold, fields are regular**: Form field labels are 13px/700; the values entered into them are 14px/400. This bold-label/regular-value rhythm is the backbone of every kintone record.
 - **No all-caps for Japanese**: Latin UI labels may use sentence case; Japanese never uses letter-spacing tricks meant for Latin.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px (UI), 8px scaling for layout
+- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 64px
+- Form field vertical rhythm: 16px between fields, 24px between sections
+- Marketing section padding: 64px+ top/bottom on desktop
+
+### Grid & Container
+- Marketing max content width: ~1080px, centered
+- Product app view: fluid full-width with a fixed top header bar (default `#ef3f24`)
+- App launcher: responsive tile grid, ~4-6 columns desktop collapsing to 2 on mobile
+- Record editor: single-column form, optional 2-column field groups on wide screens
+- Tables: full-width, horizontal scroll when columns exceed viewport
+
+### Whitespace Philosophy
+- **Reassuring openness**: The marketing site leaves large margins around CTAs and illustrations — the "anyone can do this" promise reads as visual calm, not density.
+- **Dense where work happens**: Inside the product, record lists and tables tighten up (8px cell padding) because power users scan hundreds of rows; the chrome around them stays roomy.
+- **Grouped by function**: Form sections are separated by 24px gaps and light `#f5f5f5` section fills so a 40-field app still parses as discrete blocks.
+
+### Border Radius Scale
+- Compact (4px): Buttons, inputs, pills-base, flat sections
+- Standard (6px): Cards, panels, dialogs base
+- Comfortable (8px): App tiles, modals, featured containers
+- Pill (9999px): Toggles, status pills, avatar chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <600px | Single column, 2-col tile grid, stacked CTAs, collapsed nav |
+| Tablet | 600-960px | 3-4 col tile grid, 2-col form groups, side margins |
+| Desktop | 960-1280px | Full layout, 4-6 col launcher, fixed header |
+| Large Desktop | >1280px | Centered ~1080px marketing content with wide margins |
+
+#### Touch Targets
+- Buttons: minimum 40px tall (10px vertical padding + 14px text)
+- Table row tap targets: minimum 44px on mobile
+- App tiles: large square targets, ~88px+ on mobile
+- Form inputs: 36-40px height
+
+#### Collapsing Strategy
+- Marketing 3-column feature grids → 2 → single column stacked
+- App launcher tiles reflow from 6 columns to 2
+- Record editor 2-column field groups collapse to single column
+- Data tables gain horizontal scroll rather than hiding columns
+- Top header bar shrinks; secondary nav moves into a hamburger menu
+- Hero type scales 40px → 28px on mobile, weight 700 retained
+
+#### Image Behavior
+- Mascot/illustration spots scale down and may drop on mobile to save vertical space
+- Customer logos render in a responsive wrapping row, grayscale at rest
+- App icons keep their rounded-square frame at all sizes (24px in lists, 48px+ in launcher)
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, form sections, table rows |
+| Subtle (Level 1) | `0 1px 3px rgba(0,0,0,0.08)` | Cards, app tiles at rest, widgets |
+| Raised (Level 2) | `0 4px 12px rgba(0,0,0,0.12)` | Hovered tiles, dropdowns, popovers |
+| Elevated (Level 3) | `0 4px 12px rgba(0,0,0,0.18)` | Toasts, floating action panels |
+| Modal (Level 4) | `0 8px 24px rgba(0,0,0,0.20)` | Dialogs, full modals |
+
+**Shadow Philosophy**: kintone stays mostly flat. It is a work tool, not a showcase — shadows exist to signal "this is liftable/clickable" (tiles, dropdowns) or "this is on top" (modals, toasts), never for decoration. All shadows are neutral black at low opacity; there are no colored or multi-layer atmospheric shadows. The strongest depth cue in the product is actually the header color block and border lines, not elevation. Borders (`#dddddd`) do most of the structural work that shadows do elsewhere.
+
+### Blur Effects
+- Modal backdrops use a flat `rgba(0,0,0,0.5)` scrim, not a blur — keeping the work context lightly visible behind a dialog.
+- The product header stays opaque; no scroll-triggered translucency.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `0 1px 3px rgba(0,0,0,0.08)`
+- `shadow.raised`: `0 4px 12px rgba(0,0,0,0.12)`
+- `shadow.elevated`: `0 4px 12px rgba(0,0,0,0.18)`
+- `shadow.modal`: `0 8px 24px rgba(0,0,0,0.20)`
+
+## Motion & Easing
+
+**Durations** (named, not raw milliseconds):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Checkbox/toggle state commit, selection ticks |
+| `motion-fast` | 150ms | Hover, focus, button press, tooltip reveal |
+| `motion-standard` | 250ms | The default — dropdown open, dialog fade-in, tab switch |
+| `motion-slow` | 350ms | Modal entrance, page-level panel transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — dialogs, dropdowns, toasts |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals, closes |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tab content, expanding sections |
+
+**Signature motions.**
+
+1. **App tile lift.** On hover, a launcher tile raises its shadow from `0 1px 3px rgba(0,0,0,0.08)` to `0 4px 12px rgba(0,0,0,0.12)` over `motion-fast / ease-standard` with a 1-2px translateY. The block-lifts-toward-you cue reinforces the "tap to open / pick this up" modularity metaphor.
+2. **Dialog entrance.** Modals fade and scale from 98% over `motion-slow / ease-enter`, with the backdrop scrim fading `rgba(0,0,0,0)` → `rgba(0,0,0,0.5)` in sync. Dismissal uses `motion-fast / ease-exit` — leaving is quicker than arriving.
+3. **Toast slide.** Confirmation toasts slide up from `y+12px` and fade in over `motion-standard / ease-enter`, hold, then fade out via `ease-exit`. No bounce — kintone's motion is calm and unfussy, matching a work tool.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Slides and scales become instant fades. The product stays fully usable; nothing depends on animation to be understood.
+
+## Components
 
 ### Buttons
 
@@ -376,49 +693,23 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 **Tier 2 sources:** kintone Help (theme/header color docs — default red header theme, admin re-theming); community font references (Meiryo default UI font, Hiragino/Noto Sans JP fallbacks)
 **Notes:** Neutral gray scale and component geometry (radii, padding, shadows) are derived from the live kintone product UI and marketing site; named brand hues and primary red are sourced directly from the official Brand Guidelines.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px (UI), 8px scaling for layout
-- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 64px
-- Form field vertical rhythm: 16px between fields, 24px between sections
-- Marketing section padding: 64px+ top/bottom on desktop
+| State | Treatment |
+|---|---|
+| **Empty (no records yet)** | Friendly single line in `#666666` body text explaining the app is empty, plus one encouraging primary action ("レコードを追加" — Add a record) as a red CTA. Beginner-oriented, never a bare "No data". Often a light illustration/mascot spot. |
+| **Empty (filtered, zero results)** | Single `#999999` caption ("条件に一致するレコードがありません" — No records match). No CTA; user adjusts the filter. Filter summary stays visible above. |
+| **Loading (first paint)** | Neutral skeleton blocks at `#f5f5f5` matching the final table/form layout. Subtle 1.2s shimmer. No spinner overlay blocking the page. |
+| **Loading (in-place refresh)** | Small inline spinner near the action; existing content stays visible with previous values. The record list never blanks during a refresh. |
+| **Error (field validation)** | `#e74c3c` 1px border on the input, error text below in `#e74c3c` 12px. One actionable sentence describing what to fix (必須項目です → 〜を入力してください). |
+| **Error (save failed)** | Inline banner above the form: `#fdeeee` background, `#e74c3c` left border, plain-language cause + retry. Never a generic "エラーが発生しました" alone. |
+| **Success (saved)** | Brief `#333333` toast ("保存しました"), 3s auto-dismiss, no emoji. For persistent confirmation, a `#e7f5ed` / `#3fa862` inline banner. |
+| **Success (workflow advanced)** | Status pill updates to the next process color (e.g. info `#00afec` → success `#3fa862`), with a notification to the next assignee. |
+| **Skeleton** | `#f5f5f5` blocks at exact final dimensions, component radius preserved (4px fields, 6px cards). Gentle shimmer. |
+| **Disabled** | Buttons drop to a faded tint (primary → `#f5b3aa`); inputs go `#f5f5f5` bg with `#999999` text but keep their `#dddddd` border so geometry is stable when re-enabled. |
+| **Permission-restricted** | Field or app appears greyed with a `#999999` lock note explaining access is limited — never a silent disappearance, so the user understands the rule. |
 
-### Grid & Container
-- Marketing max content width: ~1080px, centered
-- Product app view: fluid full-width with a fixed top header bar (default `#ef3f24`)
-- App launcher: responsive tile grid, ~4-6 columns desktop collapsing to 2 on mobile
-- Record editor: single-column form, optional 2-column field groups on wide screens
-- Tables: full-width, horizontal scroll when columns exceed viewport
-
-### Whitespace Philosophy
-- **Reassuring openness**: The marketing site leaves large margins around CTAs and illustrations — the "anyone can do this" promise reads as visual calm, not density.
-- **Dense where work happens**: Inside the product, record lists and tables tighten up (8px cell padding) because power users scan hundreds of rows; the chrome around them stays roomy.
-- **Grouped by function**: Form sections are separated by 24px gaps and light `#f5f5f5` section fills so a 40-field app still parses as discrete blocks.
-
-### Border Radius Scale
-- Compact (4px): Buttons, inputs, pills-base, flat sections
-- Standard (6px): Cards, panels, dialogs base
-- Comfortable (8px): App tiles, modals, featured containers
-- Pill (9999px): Toggles, status pills, avatar chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, form sections, table rows |
-| Subtle (Level 1) | `0 1px 3px rgba(0,0,0,0.08)` | Cards, app tiles at rest, widgets |
-| Raised (Level 2) | `0 4px 12px rgba(0,0,0,0.12)` | Hovered tiles, dropdowns, popovers |
-| Elevated (Level 3) | `0 4px 12px rgba(0,0,0,0.18)` | Toasts, floating action panels |
-| Modal (Level 4) | `0 8px 24px rgba(0,0,0,0.20)` | Dialogs, full modals |
-
-**Shadow Philosophy**: kintone stays mostly flat. It is a work tool, not a showcase — shadows exist to signal "this is liftable/clickable" (tiles, dropdowns) or "this is on top" (modals, toasts), never for decoration. All shadows are neutral black at low opacity; there are no colored or multi-layer atmospheric shadows. The strongest depth cue in the product is actually the header color block and border lines, not elevation. Borders (`#dddddd`) do most of the structural work that shadows do elsewhere.
-
-### Blur Effects
-- Modal backdrops use a flat `rgba(0,0,0,0.5)` scrim, not a blur — keeping the work context lightly visible behind a dialog.
-- The product header stays opaque; no scroll-triggered translucency.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use KIN Red (`#ef3f24`) for the primary CTA and brand moments — it is the one hero color
@@ -439,36 +730,23 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 - Don't crowd the marketing CTAs — openness is the "anyone can build this" signal
 - Don't use all four secondary hues at once on a single surface — pick one or two for color-coding
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single column, 2-col tile grid, stacked CTAs, collapsed nav |
-| Tablet | 600-960px | 3-4 col tile grid, 2-col form groups, side margins |
-| Desktop | 960-1280px | Full layout, 4-6 col launcher, fixed header |
-| Large Desktop | >1280px | Centered ~1080px marketing content with wide margins |
+kintone speaks like an encouraging colleague who genuinely believes you can build the thing yourself — warm, plain-spoken, and free of engineering jargon. The flagship tagline **みんな、つくれる** ("Everyone can create") sets the entire register: empowering, inclusive, never condescending. Japanese is the primary voice (kintone is a Cybozu domestic-first product); English strings on global surfaces are clean translations, not the source. Sentences are short. Buttons use plain verbs (つくる "create", はじめる "start", 保存 "save"). There is gentle warmth — a friendly mascot, soft exclamation — but never hype.
 
-### Touch Targets
-- Buttons: minimum 40px tall (10px vertical padding + 14px text)
-- Table row tap targets: minimum 44px on mobile
-- App tiles: large square targets, ~88px+ on mobile
-- Form inputs: 36-40px height
+| Context | Tone |
+|---|---|
+| Marketing hero | Empowering, inclusive — みんな、つくれる. One idea, large and calm. |
+| CTAs | Plain imperative verbs (無料ではじめる, アプリを作る, 試してみる). |
+| Success messages | Brief past-tense confirmation (保存しました, 更新しました). No emoji. |
+| Error messages | Specific, blameless, actionable. Tell the user what to fix, not "an error occurred". |
+| Onboarding / empty states | Encouraging — explain the next step a beginner should take, one action. |
+| Field hints / help | Concrete and example-driven; assumes a non-engineer reader. |
+| Enterprise / IR pages | More formal Japanese business register (です・ます), same calm warmth. |
 
-### Collapsing Strategy
-- Marketing 3-column feature grids → 2 → single column stacked
-- App launcher tiles reflow from 6 columns to 2
-- Record editor 2-column field groups collapse to single column
-- Data tables gain horizontal scroll rather than hiding columns
-- Top header bar shrinks; secondary nav moves into a hamburger menu
-- Hero type scales 40px → 28px on mobile, weight 700 retained
+**Forbidden phrases.** Heavy engineering jargon on user-facing surfaces (the whole point is no-code). Hype superlatives ("革命的", "revolutionary"). Blame-shifting error copy ("操作が正しくありません" without guidance). English-first phrasing that ignores the Japanese primary. Treating the brand red as a scolding/error color in copy or UI.
 
-### Image Behavior
-- Mascot/illustration spots scale down and may drop on mobile to save vertical space
-- Customer logos render in a responsive wrapping row, grayscale at rest
-- App icons keep their rounded-square frame at all sizes (24px in lists, 48px+ in launcher)
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: KIN Red (`#ef3f24`)
@@ -503,93 +781,13 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-kintone speaks like an encouraging colleague who genuinely believes you can build the thing yourself — warm, plain-spoken, and free of engineering jargon. The flagship tagline **みんな、つくれる** ("Everyone can create") sets the entire register: empowering, inclusive, never condescending. Japanese is the primary voice (kintone is a Cybozu domestic-first product); English strings on global surfaces are clean translations, not the source. Sentences are short. Buttons use plain verbs (つくる "create", はじめる "start", 保存 "save"). There is gentle warmth — a friendly mascot, soft exclamation — but never hype.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Marketing hero | Empowering, inclusive — みんな、つくれる. One idea, large and calm. |
-| CTAs | Plain imperative verbs (無料ではじめる, アプリを作る, 試してみる). |
-| Success messages | Brief past-tense confirmation (保存しました, 更新しました). No emoji. |
-| Error messages | Specific, blameless, actionable. Tell the user what to fix, not "an error occurred". |
-| Onboarding / empty states | Encouraging — explain the next step a beginner should take, one action. |
-| Field hints / help | Concrete and example-driven; assumes a non-engineer reader. |
-| Enterprise / IR pages | More formal Japanese business register (です・ます), same calm warmth. |
-
-**Forbidden phrases.** Heavy engineering jargon on user-facing surfaces (the whole point is no-code). Hype superlatives ("革命的", "revolutionary"). Blame-shifting error copy ("操作が正しくありません" without guidance). English-first phrasing that ignores the Japanese primary. Treating the brand red as a scolding/error color in copy or UI.
-
-## 11. Brand Narrative
-
-kintone is the flagship work platform of **Cybozu, Inc. (サイボウズ株式会社)**, a Tokyo-based software company founded in **1997** that built its name on Japanese groupware — Cybozu Office and Garoon — before launching kintone in **2011** as a no-code/low-code platform for building business applications. Cybozu's corporate mission is **"チームワークあふれる社会を創る"** ("Create a society overflowing with teamwork"), and kintone is the product expression of that mission: give every team — not just engineers — the power to turn their own messy, spreadsheet-and-email workflows into real, shared applications.
-
-The founding insight behind kintone is a rejection of the idea that building software must be the exclusive territory of IT departments and vendors. In a Japanese business culture historically dependent on Excel attachments emailed around an office and SIer (system integrator) contracts for any custom tool, kintone's pitch was radical: **みんな、つくれる** — the sales lead, the HR coordinator, the factory floor manager can each assemble the app they need by dragging fields onto a form. No code, no procurement cycle, no waiting on IT.
-
-That democratizing thesis is why the brand looks the way it does. The warm KIN Red is approachable and energetic, not the cold institutional blue of legacy enterprise IT. The playful secondary palette and rounded app-tile motif make software construction feel like assembling building blocks. The friendly mascot and the plain, jargon-free voice all reinforce a single message: this is for everyone, and you can do it. kintone has grown into a platform used by tens of thousands of organizations across Japan and internationally (Cybozu operates kintone in the US and Southeast Asia as well), spanning local governments, manufacturers, retailers, and small businesses.
-
-What kintone refuses: the gatekept, IT-only aesthetic of legacy enterprise software; the cold blue palette that signals "for engineers"; dense, intimidating interfaces that assume technical literacy. What it embraces: warmth, modularity, plain language, and the conviction that the people closest to the work are the ones who should be able to build the tools for it.
-
-## 12. Principles
-
-1. **Everyone can create.** The entire design exists to make a non-engineer feel capable. If a screen would intimidate a first-time builder, it is wrong. Plain verbs, visible next steps, no jargon.
-2. **Red is welcome, not alarm.** KIN Red is the friendly, energetic brand hero — used for primary actions and brand moments. Error/destructive states are deliberately a different, cooler red so the brand color never feels like a scolding.
-3. **Modularity is the metaphor.** Apps are built from fields; the launcher is a grid of tiles; categories are color-coded blocks. The visual language mirrors the product's "assemble it yourself" reality.
-4. **Borders before shadows.** Structure comes from `#dddddd` rules and color blocks, not heavy elevation. The product is flat and calm because it is a daily work surface, not a demo.
-5. **Open chrome, dense work.** Marketing and onboarding are spacious and reassuring; record lists and tables are tight and scannable. Density follows commitment — beginners get room, power users get data.
-6. **Japanese-first legibility.** Typography, line-height, and font stacks assume kanji/kana render first. Generous 1.7 line-height for body is non-negotiable. Latin is a co-citizen, never the default.
-7. **Two weights, plain faces.** 400 and 700 in a humanist gothic stack. No exotic display type — legibility for long field labels and dense records wins over branded letterforms.
-8. **Warmth without hype.** The mascot, the soft red, the encouraging copy add warmth; superlatives and revolution-talk are banned. Confidence is shown by being easy, not by shouting.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described kintone user segments (non-technical business builders, SMB operations, local government, Cybozu's "teamwork" positioning), not individual people.*
-
-**田中さん (Tanaka-san), 42, Nagoya.** Operations manager at a 60-person auto-parts manufacturer. Not an engineer — lives in Excel and email. Tanaka built the company's defect-tracking app himself in kintone over a weekend after his IT vendor quoted three months and a large fee. Values that he could drag fields onto a form and see a working record list immediately. Distrusts anything that looks like it needs a developer. Reads Japanese only; English UI is invisible to him. Measures the tool by how fast he can change a field when the factory floor's needs shift.
-
-**佐藤さん (Sato-san), 35, Tokyo.** HR coordinator at a mid-size services firm. Uses kintone to run the employee onboarding workflow — process management with approval steps. Cares deeply about status pills and notifications being unambiguous, because a stuck approval means a new hire can't get a laptop. Appreciates the friendly tone; it makes a tedious task feel less bureaucratic. Would be annoyed by any redesign that made the record list less scannable.
-
-**Maria Santos, 29, Manila.** Operations analyst at a regional retail chain using kintone (Southeast Asia). Builds inventory and store-visit apps. Works in English but on a Japanese-rooted product; values that the UI is clean and translates cleanly. Color-codes her apps with the secondary palette so the launcher reads at a glance. Treats kintone as the lightweight middle ground between a rigid ERP and a chaotic spreadsheet.
-
-**市役所の山本さん (Yamamoto-san, city hall), 51, regional Japan.** Public-sector administrator digitizing a paper-based resident-request process. Risk-averse, needs reliability and an interface his whole (non-technical, mixed-age) team can use without training. The "everyone can create" promise is exactly why kintone won over a custom SIer build. Wants warmth and clarity over flashiness; the calm, bordered, flat UI reassures him.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no records yet)** | Friendly single line in `#666666` body text explaining the app is empty, plus one encouraging primary action ("レコードを追加" — Add a record) as a red CTA. Beginner-oriented, never a bare "No data". Often a light illustration/mascot spot. |
-| **Empty (filtered, zero results)** | Single `#999999` caption ("条件に一致するレコードがありません" — No records match). No CTA; user adjusts the filter. Filter summary stays visible above. |
-| **Loading (first paint)** | Neutral skeleton blocks at `#f5f5f5` matching the final table/form layout. Subtle 1.2s shimmer. No spinner overlay blocking the page. |
-| **Loading (in-place refresh)** | Small inline spinner near the action; existing content stays visible with previous values. The record list never blanks during a refresh. |
-| **Error (field validation)** | `#e74c3c` 1px border on the input, error text below in `#e74c3c` 12px. One actionable sentence describing what to fix (必須項目です → 〜を入力してください). |
-| **Error (save failed)** | Inline banner above the form: `#fdeeee` background, `#e74c3c` left border, plain-language cause + retry. Never a generic "エラーが発生しました" alone. |
-| **Success (saved)** | Brief `#333333` toast ("保存しました"), 3s auto-dismiss, no emoji. For persistent confirmation, a `#e7f5ed` / `#3fa862` inline banner. |
-| **Success (workflow advanced)** | Status pill updates to the next process color (e.g. info `#00afec` → success `#3fa862`), with a notification to the next assignee. |
-| **Skeleton** | `#f5f5f5` blocks at exact final dimensions, component radius preserved (4px fields, 6px cards). Gentle shimmer. |
-| **Disabled** | Buttons drop to a faded tint (primary → `#f5b3aa`); inputs go `#f5f5f5` bg with `#999999` text but keep their `#dddddd` border so geometry is stable when re-enabled. |
-| **Permission-restricted** | Field or app appears greyed with a `#999999` lock note explaining access is limited — never a silent disappearance, so the user understands the rule. |
-
-## 15. Motion & Easing
-
-**Durations** (named, not raw milliseconds):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Checkbox/toggle state commit, selection ticks |
-| `motion-fast` | 150ms | Hover, focus, button press, tooltip reveal |
-| `motion-standard` | 250ms | The default — dropdown open, dialog fade-in, tab switch |
-| `motion-slow` | 350ms | Modal entrance, page-level panel transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — dialogs, dropdowns, toasts |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals, closes |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tab content, expanding sections |
-
-**Signature motions.**
-
-1. **App tile lift.** On hover, a launcher tile raises its shadow from `0 1px 3px rgba(0,0,0,0.08)` to `0 4px 12px rgba(0,0,0,0.12)` over `motion-fast / ease-standard` with a 1-2px translateY. The block-lifts-toward-you cue reinforces the "tap to open / pick this up" modularity metaphor.
-2. **Dialog entrance.** Modals fade and scale from 98% over `motion-slow / ease-enter`, with the backdrop scrim fading `rgba(0,0,0,0)` → `rgba(0,0,0,0.5)` in sync. Dismissal uses `motion-fast / ease-exit` — leaving is quicker than arriving.
-3. **Toast slide.** Confirmation toasts slide up from `y+12px` and fade in over `motion-standard / ease-enter`, hold, then fade out via `ease-exit`. No bounce — kintone's motion is calm and unfussy, matching a work tool.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Slides and scales become instant fades. The product stays fully usable; nothing depends on animation to be understood.
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ef3f24` measures 3.88:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-outline`.** Text `#ef3f24` on `#ffffff` measures 3.88:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-danger`.** Text `#ffffff` on `#e74c3c` measures 3.82:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-success`.** Text `#3fa862` on `#e7f5ed` measures 2.67:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-info`.** Text `#00afec` on `#e6f7fd` measures 2.29:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-danger`.** Text `#e74c3c` on `#fdeeee` measures 3.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,0 +1,445 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "intuit",
+    "name": "Intuit QuickBooks",
+    "country": "US",
+    "category": "fintech",
+    "homepage": "https://design.intuit.com/quickbooks/brand/",
+    "primary_color": "#0d333f",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=intuit.com&sz=128"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "QuickBooks Design",
+      "url": "https://design.intuit.com/quickbooks/brand/",
+      "type": "brand",
+      "description": "Official QuickBooks brand hub covering visual foundations, product expression, resources, and accessibility; it is distinct from an authenticated QuickBooks application specification."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "components_harvested": true,
+    "note": "Machine tokens are limited to selector-backed values in the supplied three-surface capture. The QuickBooks brand hub, product-expression route, and authentication route are separate evidence domains; no interaction state was captured."
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-13",
+    "surfaces": [
+      {
+        "id": "brand-hub",
+        "kind": "official-brand-hub",
+        "url": "https://design.intuit.com/quickbooks/brand/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "product-expression",
+        "kind": "official-product-expression",
+        "url": "https://design.intuit.com/quickbooks/product/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "sign-in",
+        "kind": "public-authentication",
+        "url": "https://federation.intuit.com/as/authorization.oauth2?scope=openid+profile+email&response_type=code&redirect_uri=https%3A%2F%2Fpartnerauth.platform.intuit.com%2Fexternal_partner%2Fintuit_eiam%2Fcallback&client_id=9d678f82-f00e-4e8f-875e-484cac84cbc1&state=awb.228bcc57-93dd-4b7c-8691-6e252452f1e8",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "brand-hub-capture",
+        "kind": "official-doc",
+        "url": "https://design.intuit.com/quickbooks/brand/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "product-expression-capture",
+        "kind": "product-surface",
+        "url": "https://design.intuit.com/quickbooks/product/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "sign-in-capture",
+        "kind": "product-surface",
+        "url": "https://federation.intuit.com/as/authorization.oauth2?scope=openid+profile+email&response_type=code&redirect_uri=https%3A%2F%2Fpartnerauth.platform.intuit.com%2Fexternal_partner%2Fintuit_eiam%2Fcallback&client_id=9d678f82-f00e-4e8f-875e-484cac84cbc1&state=awb.228bcc57-93dd-4b7c-8691-6e252452f1e8",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "avenir-font-asset",
+        "kind": "brand-asset",
+        "url": "https://lib.intuitcdn.net/fonts/AvenirNext/3.0/AvenirNextforINTUIT-Regular.1.woff2",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "quickbooks-type-guidance",
+        "kind": "official-doc",
+        "url": "https://design.intuit.com/quickbooks/brand/design-foundations/type/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "intuit-origins",
+        "kind": "official-doc",
+        "url": "https://www.intuit.com/company/origins/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "intuit-values",
+        "kind": "official-doc",
+        "url": "https://www.intuit.com/company/operating-values/",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.dark-action": {
+        "surface_id": "product-expression",
+        "source_id": "product-expression-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.ink": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "product-expression",
+        "source_id": "product-expression-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "product-expression",
+        "source_id": "product-expression-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.brand-link": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "brand-hub",
+        "source_id": "avenir-font-asset",
+        "method": "computed-style-plus-fontfaceset-source",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontSize": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.fontWeight": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.lineHeight": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.nav.use": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.tile-text-bottom": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.secondary-action-x": {
+        "surface_id": "product-expression",
+        "source_id": "product-expression-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.global-nav-y": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.secondary-action": {
+        "surface_id": "product-expression",
+        "source_id": "product-expression-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.flat": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.type": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.backgroundColor": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.textColor": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.rounded": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.padding": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.height": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.typography": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.states": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.global-nav-tab.use": {
+        "surface_id": "brand-hub",
+        "source_id": "brand-hub-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 13,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 3,
+      "missing-primary": 1,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.global-nav-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.global-nav-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.global-nav-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.global-nav-tab",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.dark-action",
+        "message": "'dark-action' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.brand-link",
+        "message": "'brand-link' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "309a5a67c2f13c8b1414f233e82448ed2da67b3a6006000e629c3731f2fafbfd",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.flat",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.body.fontSize",
+      "typography.nav.fontSize",
+      "rounded.square",
+      "rounded.secondary-action"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "components_harvested",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "body",
+        "nav"
+      ]
+    }
+  }
+}

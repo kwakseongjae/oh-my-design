@@ -12,7 +12,7 @@ describe("reference evolution artifact", () => {
     expect(body).toContain("# Toss Reference Evolution");
     expect(body).toContain("Previous snapshot");
     expect(body).toContain("Verified v2");
-    expect(body).toContain("81/81 claims");
+    expect(body).toContain("207/207 claims"); // 81 + 126 official-doc and capture claims added 2026-10-14 (TOSS-VERIFY.md)
   });
 
   it("does not synthesize an artifact for an uncurated reference", async () => {

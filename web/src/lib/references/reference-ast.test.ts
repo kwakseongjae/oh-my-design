@@ -17,6 +17,7 @@ import {
   selectPrimaryColor,
   selectUiFont,
 } from "./normalize";
+import { readReferenceSource } from "../../../scripts/lib/reference-source.mjs";
 
 const REFS_DIR = join(process.cwd(), "references");
 
@@ -24,7 +25,8 @@ function loadReference(id: string) {
   const entry = REGISTRY.find((candidate) => candidate.id === id);
   const quality = REFERENCE_QUALITY_BY_ID[id];
   if (!entry || !quality) throw new Error(`fixture ${id} is not registered`);
-  const markdown = readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf8");
+  // Through the shared reader: a DESIGN.md v3 file is normalised from the legacy shape it projects.
+  const markdown = readReferenceSource(join(REFS_DIR, id)).markdown;
   return normalizeReference({ entry, quality, markdown });
 }
 
@@ -96,7 +98,8 @@ describe("Reference AST normalization", () => {
     });
     expect(selectCanvas(ast)?.value).toBe("#f5f5f7");
     expect(selectForeground(ast)?.value).toBe("#1d1d1f");
-    expect(ast.document.sections.some((section) => section.number === "1")).toBe(true);
+    // Legacy files number §1; DESIGN.md v3 opens with an unnumbered `## Overview`.
+    expect(ast.document.sections.some((section) => section.number === "1" || section.title === "Overview")).toBe(true);
   });
 
   it("keeps Baemin's verified metrics and components with official WORK family", () => {

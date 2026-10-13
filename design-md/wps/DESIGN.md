@@ -1,162 +1,117 @@
 ---
-id: wps
 name: WPS Office
-country: CN
-category: productivity
-homepage: "https://www.wps.cn"
-primary_color: "#1F69E0"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=wps.cn&sz=128"
-verified: "2026-09-22"
-added: "2026-09-22"
-omd: "0.1"
-ds:
-  name: "Kingsoft KD tokens (--kd-*) + WPS page tokens (--wps-*)"
-  url: "https://www.wps.cn/"
-  type: system
-  description: "439 custom properties on the product surface: 293 --kd-* forming Kingsoft's portable system — a ten-step brand ramp, five semantic families each with normal/hover/pressed/light, alpha ladders for text and rules, a seven-step radius scale, an eight-step type scale with a stated line-height rule and a z-index scale — plus 146 --wps-* that theme it and carry this page's own layout constants."
-tokens:
-  source: live-extract
-  extracted: "2026-09-22"
-  colors:
-    brand: "#1f69e0"
-    brand-hover: "#458bfa"
-    brand-pressed: "#1e5fc7"
-    brand-light: "#edf4ff"
-    brand-deep: "#0a306c"
-    danger: "#dd3332"
-    danger-hover: "#c42e2d"
-    danger-pressed: "#b02928"
-    success: "#418f1f"
-    warning: "#e2651a"
-    ai: "#8350f2"
-    ai-hover: "#9c75f0"
-    ai-pressed: "#682aef"
-    ai-light: "#f4effd"
-    foreground: "#0d0d0d"
-    canvas: "#ffffff"
-    surface: "#f5f5f5"
-    surface-base: "#eeeeee"
-    frame: "#e6e6e6"
-  typography:
-    micro: { size: 10, use: "--kd-font-size-extra-small; the smallest published step" }
-    small: { size: 12, use: "--kd-font-size-small; metadata and fine print" }
-    base: { size: 14, use: "--kd-font-size-base; the system default and the dropdown label" }
-    medium: { size: 16, use: "--kd-font-size-middle; the header nav items" }
-    large: { size: 18, use: "--kd-font-size-large; all three hero buttons" }
-    xlarge: { size: 20, use: "--kd-font-size-extra-large" }
-    xxlarge: { size: 24, use: "--kd-font-size-xx-large" }
-    xxxlarge: { size: 28, use: "--kd-font-size-xxx-large" }
-    hero: { size: 62, use: "--wps-font-size-hero; the landing headline, page-level not system" }
-  rounded: { none: 0, xs: 2, sm: 4, md: 6, lg: 8, xl: 12, circle: 999 }
-  components:
-    button-primary: { type: "button", bg: "#dd3332", fg: "#ffffff", radius: 40, padding: "0 15px", font: "18px / 600", hover: "#c42e2d", pressed: "#b02928", focus: "#dd3332", use: "立即下载 (Download now) — the headline call to action, 193×54. Painted from the error ramp, not the brand ramp. Focus matches :focus-visible and changes nothing." }
-    button-secondary: { type: "button", bg: "transparent", fg: "rgba(13,13,13,.9)", border: "1px solid rgba(13,13,13,.48)", radius: 40, padding: "0 15px", font: "18px / 600", hover: "rgba(13,13,13,.06)", pressed: "rgba(13,13,13,.1)", focus: "transparent", use: "在线使用 (Use online) — the outline twin of the headline button, same 193×54 and same 40px radius. Every value is a named token: the border is line-heavy, the hover and pressed fills are bg-hover and bg-pressed." }
-    button-ghost: { type: "button", bg: "transparent", fg: "rgba(13,13,13,.9)", radius: 6, padding: "0 11px", font: "16px / 400", hover: "rgba(13,13,13,.06)", pressed: "rgba(13,13,13,.06)", focus: "transparent", use: "Header nav item (产品), 72×30. Hover and pressed are the same 6% wash — the nav does not deepen on press." }
-    button-light: { type: "button", bg: "transparent", fg: "rgba(13,13,13,.66)", radius: 6, padding: "0 11px 0 15px", font: "14px / 400", hover: "rgba(13,13,13,.9)", pressed: "rgba(13,13,13,.06)", focus: "transparent", use: "更多下载 (More downloads) dropdown trigger, 100×32. The only control that moves its label rather than its fill on hover: text-secondary to text-primary, then a 6% wash on press." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-22"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.wps.cn/", inspected: "2026-09-22" }
-    - { id: kdocs, kind: product-surface, url: "https://www.kdocs.cn/", inspected: "2026-09-22" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.wps.cn/", captured: "2026-09-22" }
-    - { id: kdocs-live, kind: product-surface, url: "https://www.kdocs.cn/", captured: "2026-09-22" }
-    - { id: about-us, kind: official-doc, url: "https://www.wps.com/about-us/", captured: "2026-09-22" }
-  conflicts: []
-  claims:
-    tokens.colors.ai: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.ai-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.ai-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.ai-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-deep: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-light: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.brand-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.danger: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.danger-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.danger-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.frame: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.success: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.surface-base: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.warning: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.components.button-ghost.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-ghost.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-light.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.rounded.circle: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.none: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.rounded.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.base.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.hero.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.hero.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.large.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.large.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.medium.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.medium.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.micro.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.small.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xlarge.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xlarge.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xxlarge.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xxlarge.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xxxlarge.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.xxxlarge.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
+colors:
+  brand: '#1f69e0'
+  brand-hover: '#458bfa'
+  brand-pressed: '#1e5fc7'
+  brand-light: '#edf4ff'
+  brand-deep: '#0a306c'
+  danger: '#dd3332'
+  danger-hover: '#c42e2d'
+  danger-pressed: '#b02928'
+  success: '#418f1f'
+  warning: '#e2651a'
+  ai: '#8350f2'
+  ai-hover: '#9c75f0'
+  ai-pressed: '#682aef'
+  ai-light: '#f4effd'
+  foreground: '#0d0d0d'
+  canvas: '#ffffff'
+  surface: '#f5f5f5'
+  surface-base: '#eeeeee'
+  frame: '#e6e6e6'
+typography:
+  micro:
+    fontSize: 10px
+    use: '--kd-font-size-extra-small; the smallest published step'
+  small:
+    fontSize: 12px
+    use: '--kd-font-size-small; metadata and fine print'
+  base:
+    fontSize: 14px
+    use: '--kd-font-size-base; the system default and the dropdown label'
+  medium:
+    fontSize: 16px
+    use: '--kd-font-size-middle; the header nav items'
+  large:
+    fontSize: 18px
+    use: '--kd-font-size-large; all three hero buttons'
+  xlarge:
+    fontSize: 20px
+    use: '--kd-font-size-extra-large'
+  xxlarge:
+    fontSize: 24px
+    use: '--kd-font-size-xx-large'
+  xxxlarge:
+    fontSize: 28px
+    use: '--kd-font-size-xxx-large'
+  hero:
+    fontSize: 62px
+    use: '--wps-font-size-hero; the landing headline, page-level not system'
+rounded:
+  none: 0px
+  xs: 2px
+  sm: 4px
+  md: 6px
+  lg: 8px
+  xl: 12px
+  circle: 999px
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#dd3332'
+    textColor: '#ffffff'
+    rounded: 40px
+    padding: 0 15px
+    typography: 18px / 600
+    hover: '#c42e2d'
+    pressed: '#b02928'
+    focus: '#dd3332'
+    use: 立即下载 (Download now) — the headline call to action, 193×54. Painted from the error ramp, not the brand ramp. Focus matches :focus-visible and changes nothing.
+  button-secondary:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(13,13,13,.9)
+    border: 1px solid rgba(13,13,13,.48)
+    rounded: 40px
+    padding: 0 15px
+    typography: 18px / 600
+    hover: rgba(13,13,13,.06)
+    pressed: rgba(13,13,13,.1)
+    focus: transparent
+    use: '在线使用 (Use online) — the outline twin of the headline button, same 193×54 and same 40px radius. Every value is a named token: the border is line-heavy, the hover and pressed fills are bg-hover and bg-pressed.'
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(13,13,13,.9)
+    rounded: 6px
+    padding: 0 11px
+    typography: 16px / 400
+    hover: rgba(13,13,13,.06)
+    pressed: rgba(13,13,13,.06)
+    focus: transparent
+    use: Header nav item (产品), 72×30. Hover and pressed are the same 6% wash — the nav does not deepen on press.
+  button-light:
+    type: button
+    backgroundColor: transparent
+    textColor: rgba(13,13,13,.66)
+    rounded: 6px
+    padding: 0 11px 0 15px
+    typography: 14px / 400
+    hover: rgba(13,13,13,.9)
+    pressed: rgba(13,13,13,.06)
+    focus: transparent
+    use: '更多下载 (More downloads) dropdown trigger, 100×32. The only control that moves its label rather than its fill on hover: text-secondary to text-primary, then a 6% wash on press.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
+
 # Design System Inspiration of WPS Office (金山办公)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 WPS Office is Kingsoft's office suite — Writer, Spreadsheet, Presentation and PDF — and by
 its own account it was founded in 1988, employs over 3,000 people, and serves more than 600
@@ -177,11 +132,33 @@ first is recorded here as a system.
 **The headline button is red, not blue.** `#dd3332` is the error colour, and it fills the
 largest call to action on the page. The brand blue sits on the button beside it.
 
-### Primary tasks
+#### Primary tasks
 - Download the desktop suite, or open the documents in the browser.
 - Reach the product, pricing and enterprise pages from one header.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Kingsoft Office describes itself as founded in 1988, with over 3,000 employees, more than 600
+million monthly active users, distribution in over 220 countries and regions, support for 46
+languages, over 200,000 enterprise customers, and a place on the Forbes Global 2000. WPS
+Office is the suite; 金山文档 (kdocs.cn) is the collaborative cloud half of it.
+
+The interface matches a company that ships the same product into many markets at once: a
+system of ramps and alpha ladders that themes cleanly, a font stack that names Korean system
+faces before Latin fallbacks, and a landing page whose own constants are kept in a separate
+namespace from the system they sit on.
+
+### Principles
+
+- **Publish the ramp, not the colour.** Ten brand steps as raw `r,g,b`, composable at alpha.
+- **One ink, eight opacities.** Text and rules are the same `#0d0d0d` at different alphas.
+- **Separate what travels from what does not.** `--kd-*` versus `--wps-*`.
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured 2026-09-22 with `getComputedStyle` on `www.wps.cn`.
 
@@ -228,7 +205,7 @@ consumer that flattens them to grey hex loses the compositing over the page's gr
 `background-base`, and **Frame** (`#e6e6e6`) is `background-frame` — three steps of grey for
 plate, page and chrome.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 
@@ -258,7 +235,39 @@ two — a census of the rendered text found 400 on 29 elements, 600 on 7, and on
 Rendered sizes on the landing surface: 14px (19 elements) · 16px (11) · 18px (4) · 48px (2) ·
 32px (1).
 
-## 4. Component Stylings
+## Layout
+
+- **Two token layers, and they are not the same thing.** `--kd-*` travels; `--wps-*` is this
+  page. Taking `--wps-hero-wps-cover-crop-height` as a design token would be a mistake.
+- **Neutrals are one ink at eight opacities**, four for text and four for rules.
+- **The error colour carries the primary action**, with the brand blue beside it.
+
+### Responsive Behavior
+
+Not measured at a second width, but the token set states its intent: `--wps-*` publishes
+`-compact` and `-mobile` variants for every hero size, letter-spacing and line-height
+(hero 62 → 40 compact → 38 mobile), plus `--wps-container-padding-x` 60 → 40 → 24px. The
+breakpoints themselves were not observed.
+
+## Elevation & Depth
+
+**No shadow was observed** on any of the five measured controls, and no `--kd-shadow-*` token
+exists. Separation comes from the rule ladder and from the three background greys. There is a
+full z-index scale instead — `float` 10 · `mask` 999 · `dialog` 1000 · `reminder` 1020 ·
+`popover` 1030 · `popupmenu` 1040 · `tip` 1050 — so stacking is systematised where elevation
+is not.
+
+## Motion & Easing
+
+Two durations are published and both were observed: `--wps-transition-duration` is `0.3s`, and
+every measured `kdv-button` computes `transition: 0.1s`. There is no easing token. The buttons
+move faster than the page does.
+
+---
+
+**Tier 1 sources:** https://www.wps.cn/ (live product surface — 439 custom properties read via `getComputedStyle`, of which 293 are `--kd-*` and 146 `--wps-*`; five `kdv-button` controls measured at rest, hover, pressed and focus, 2026-09-22); https://www.kdocs.cn/ (金山文档 / WPS Docs — a second Kingsoft-owned Chinese product surface, 2026-09-22); https://www.wps.com/about-us/ (Kingsoft Office's own About page — founding year, headcount, monthly active users, market reach; not cited for tokens)
+
+## Components
 
 Five controls were measured, all `kdv-button` — Kingsoft's own component class. Focus was read
 for every control before the mouse moved at all, with each control pinned by element handle.
@@ -315,84 +324,7 @@ A seven-step scale: `none` 0 · `extra-small` 2 · `small` 4 · `middle` 6 · `l
 40px hero pills (5), 4px (3) and 8px (1) — so the buttons at 40px are a page decision, not a
 scale step.
 
-## 5. Layout Principles
-
-- **Two token layers, and they are not the same thing.** `--kd-*` travels; `--wps-*` is this
-  page. Taking `--wps-hero-wps-cover-crop-height` as a design token would be a mistake.
-- **Neutrals are one ink at eight opacities**, four for text and four for rules.
-- **The error colour carries the primary action**, with the brand blue beside it.
-
-## 6. Depth & Elevation
-
-**No shadow was observed** on any of the five measured controls, and no `--kd-shadow-*` token
-exists. Separation comes from the rule ladder and from the three background greys. There is a
-full z-index scale instead — `float` 10 · `mask` 999 · `dialog` 1000 · `reminder` 1020 ·
-`popover` 1030 · `popupmenu` 1040 · `tip` 1050 — so stacking is systematised where elevation
-is not.
-
-## 7. Do's and Don'ts
-
-### Do
-- Compose neutrals from `#0d0d0d` at the published alphas rather than picking greys.
-- Use the `ai` family (`#8350f2` → `#682aef`) for AI surfaces; it is a first-class family here,
-  not an accent someone borrowed.
-- Follow the line-height rule — `size + 8px` below 18px, `size + 12px` at and above it.
-
-### Don't
-- Don't treat `--wps-*` layout constants as portable tokens; most of them are this page's.
-- Don't copy the focus behaviour. All five controls suppress the browser's ring and draw
-  nothing in its place — that is a measurement of WPS, not a recommendation.
-- Don't read `#1e5fc7` as the brand's resting blue. It is the ramp's **pressed** step that the
-  page happens to use; `--kd-color-brand-normal` is `#1f69e0`.
-
-## 8. Responsive Behavior
-
-Not measured at a second width, but the token set states its intent: `--wps-*` publishes
-`-compact` and `-mobile` variants for every hero size, letter-spacing and line-height
-(hero 62 → 40 compact → 38 mobile), plus `--wps-container-padding-x` 60 → 40 → 24px. The
-breakpoints themselves were not observed.
-
-## 9. Agent Prompt Guide
-
-### Quick Color Reference
-`#1f69e0` brand · `#458bfa` hover · `#1e5fc7` pressed and page blue · `#dd3332` danger ·
-`#c42e2d`/`#b02928` its hover and press · `#8350f2` AI · `#418f1f` success · `#e2651a` warning ·
-`#0d0d0d` ink at .9/.66/.46/.27 · rules at .06/.12/.24/.48 · `#ffffff`/`#f5f5f5`/`#eeeeee`/`#e6e6e6`
-
-### Example Component Prompts
-- "A 54px download pill: `#dd3332` fill, `#ffffff` 18px/600 label, 40px radius, hover
-  `#c42e2d`, press `#b02928`, no shadow."
-- "Its outline twin: transparent, `1px solid rgba(13,13,13,.48)`, `rgba(13,13,13,.9)` label,
-  hover fill `rgba(13,13,13,.06)`, press `rgba(13,13,13,.1)`."
-
-## 10. Voice & Tone
-
-Not assessed as copy. The measured landing surface carries 307 characters of body text —
-a headline, two buttons and a nav.
-
-## 11. Brand Narrative
-
-Kingsoft Office describes itself as founded in 1988, with over 3,000 employees, more than 600
-million monthly active users, distribution in over 220 countries and regions, support for 46
-languages, over 200,000 enterprise customers, and a place on the Forbes Global 2000. WPS
-Office is the suite; 金山文档 (kdocs.cn) is the collaborative cloud half of it.
-
-The interface matches a company that ships the same product into many markets at once: a
-system of ramps and alpha ladders that themes cleanly, a font stack that names Korean system
-faces before Latin fallbacks, and a landing page whose own constants are kept in a separate
-namespace from the system they sit on.
-
-## 12. Principles
-
-- **Publish the ramp, not the colour.** Ten brand steps as raw `r,g,b`, composable at alpha.
-- **One ink, eight opacities.** Text and rules are the same `#0d0d0d` at different alphas.
-- **Separate what travels from what does not.** `--kd-*` versus `--wps-*`.
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
+### States
 
 Four components carry measured hover, pressed and focus. Hover and pressed differ on two of
 them (secondary `.06` → `.1`; light moves the label, then washes) and are identical on the
@@ -407,12 +339,43 @@ Hover and pressed on the blue hero button are **unmeasured, not absent** — it 
 another layer inside the carousel, and two separate attempts reported a timeout rather than a
 value.
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-Two durations are published and both were observed: `--wps-transition-duration` is `0.3s`, and
-every measured `kdv-button` computes `transition: 0.1s`. There is no easing token. The buttons
-move faster than the page does.
+### Do
+- Compose neutrals from `#0d0d0d` at the published alphas rather than picking greys.
+- Use the `ai` family (`#8350f2` → `#682aef`) for AI surfaces; it is a first-class family here,
+  not an accent someone borrowed.
+- Follow the line-height rule — `size + 8px` below 18px, `size + 12px` at and above it.
 
----
+### Don't
+- Don't treat `--wps-*` layout constants as portable tokens; most of them are this page's.
+- Don't copy the focus behaviour. All five controls suppress the browser's ring and draw
+  nothing in its place — that is a measurement of WPS, not a recommendation.
+- Don't read `#1e5fc7` as the brand's resting blue. It is the ramp's **pressed** step that the
+  page happens to use; `--kd-color-brand-normal` is `#1f69e0`.
 
-**Tier 1 sources:** https://www.wps.cn/ (live product surface — 439 custom properties read via `getComputedStyle`, of which 293 are `--kd-*` and 146 `--wps-*`; five `kdv-button` controls measured at rest, hover, pressed and focus, 2026-09-22); https://www.kdocs.cn/ (金山文档 / WPS Docs — a second Kingsoft-owned Chinese product surface, 2026-09-22); https://www.wps.com/about-us/ (Kingsoft Office's own About page — founding year, headcount, monthly active users, market reach; not cited for tokens)
+## Voice & Tone
+
+Not assessed as copy. The measured landing surface carries 307 characters of body text —
+a headline, two buttons and a nav.
+
+## Agent Prompt Guide
+
+### Quick Color Reference
+`#1f69e0` brand · `#458bfa` hover · `#1e5fc7` pressed and page blue · `#dd3332` danger ·
+`#c42e2d`/`#b02928` its hover and press · `#8350f2` AI · `#418f1f` success · `#e2651a` warning ·
+`#0d0d0d` ink at .9/.66/.46/.27 · rules at .06/.12/.24/.48 · `#ffffff`/`#f5f5f5`/`#eeeeee`/`#e6e6e6`
+
+### Example Component Prompts
+- "A 54px download pill: `#dd3332` fill, `#ffffff` 18px/600 label, 40px radius, hover
+  `#c42e2d`, press `#b02928`, no shadow."
+- "Its outline twin: transparent, `1px solid rgba(13,13,13,.48)`, `rgba(13,13,13,.9)` label,
+  hover fill `rgba(13,13,13,.06)`, press `rgba(13,13,13,.1)`."
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `button-secondary`.** Text `#0d0d0de6` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-ghost`.** Text `#0d0d0de6` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-light`.** Text `#0d0d0da8` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,191 +1,148 @@
 ---
-id: upbit
 name: Upbit
-country: KR
-category: fintech
-homepage: "https://upbit.com"
-primary_color: "#0062df"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=upbit.com&sz=256"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: marketing-home, kind: marketing, url: "https://www.upbit.com/home", inspected: "2026-07-13" }
-    - { id: exchange, kind: product, url: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC", inspected: "2026-07-13" }
-    - { id: support-notice, kind: support, url: "https://www.upbit.com/service_center/notice", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.upbit.com/home", captured: "2026-07-13" }
-    - { id: exchange-live, kind: product-surface, url: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC", captured: "2026-07-13" }
-    - { id: notice-live, kind: product-surface, url: "https://www.upbit.com/service_center/notice", captured: "2026-07-13" }
-    - { id: developer-center, kind: official-doc, url: "https://global-docs.upbit.com/", captured: "2026-07-13" }
-    - { id: sdk-license, kind: license, url: "https://docs.upbit.com/kr/page/upbit_developer_sdk_license", captured: "2026-07-13" }
-    - { id: roboto-license, kind: license, url: "https://github.com/googlefonts/roboto-2/blob/main/LICENSE", captured: "2026-07-13" }
-    - { id: noto-license, kind: license, url: "https://notofonts.github.io/noto-docs/website/use/", captured: "2026-07-13" }
-  claims:
-    "tokens.colors.accent": &exchange { surface_id: exchange, source_id: exchange-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.accent-deep": &home { surface_id: marketing-home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.rise": *exchange
-    "tokens.colors.fall": *exchange
-    "tokens.colors.ink": *exchange
-    "tokens.colors.body": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.border": *exchange
-    "tokens.colors.surface": *exchange
-    "tokens.colors.canvas": *home
-    "tokens.colors.control": *exchange
-    "tokens.colors.disabled": &notice { surface_id: support-notice, source_id: notice-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.dense.size": *exchange
-    "tokens.typography.dense.weight": *exchange
-    "tokens.typography.dense.lineHeight": *exchange
-    "tokens.typography.dense.use": *exchange
-    "tokens.spacing.control-inline": *exchange
-    "tokens.rounded.square": *exchange
-    "tokens.rounded.control": *exchange
-    "tokens.components.quick-fill.type": *exchange
-    "tokens.components.quick-fill.bg": *exchange
-    "tokens.components.quick-fill.fg": *exchange
-    "tokens.components.quick-fill.border": *exchange
-    "tokens.components.quick-fill.radius": *exchange
-    "tokens.components.quick-fill.padding": *exchange
-    "tokens.components.quick-fill.height": *exchange
-    "tokens.components.quick-fill.font": *exchange
-    "tokens.components.quick-fill.use": *exchange
-    "tokens.components.quick-fill.states": *exchange
-    "tokens.components.home-header-link.type": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.bg": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.fg": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.radius": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.padding": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.height": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.font": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.hover": { surface_id: marketing-home, source_id: home-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"1\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.home-header-link.pressed": { surface_id: marketing-home, source_id: home-live, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"1\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.home-header-link.states": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.home-header-link.use": { surface_id: marketing-home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.type": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.bg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.fg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.radius": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.padding": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.height": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.font": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.hover": { surface_id: exchange, source_id: exchange-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"2\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.pressed": { surface_id: exchange, source_id: exchange-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"2\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.states": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.dark-header-link.use": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.type": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.bg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.fg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.border": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.radius": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.padding": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.height": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.font": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.selected": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.states": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.exchange-panel-tab.use": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.type": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.bg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.fg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.border": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.radius": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.padding": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.height": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.font": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.selected": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"131\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.states": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.order-side-tab.use": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"132\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.type": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.bg": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.fg": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.border": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.radius": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.padding": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.size": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.font": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.selected": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"48\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.states": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-page-button.use": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"49\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.type": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.bg": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.fg": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.radius": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.padding": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.height": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.font": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.states": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.notice-search-input.use": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.type": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.bg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.fg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.radius": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.padding": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.height": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.font": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.states": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.order-form-input.use": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"135\"]", captured: "2026-07-13" }
-    "tokens.components.notice-panel.type": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.notice-panel.bg": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.notice-panel.radius": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.notice-panel.padding": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.notice-panel.shadow": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.notice-panel.states": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.notice-panel.use": { surface_id: support-notice, source_id: notice-live, method: computed-style, selector: "surface-3::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.type": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.bg": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.radius": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.padding": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.shadow": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.states": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-    "tokens.components.exchange-panel.use": { surface_id: exchange, source_id: exchange-live, method: computed-style, selector: "surface-2::article", captured: "2026-07-13" }
-  conflicts: []
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "Observed public marketing, exchange, and service-center surfaces only; no authenticated application or documentation-chrome token is inferred."
-  colors:
-    accent: "#0062df"
-    accent-deep: "#003597"
-    rise: "#dd3c44"
-    fall: "#1375ec"
-    ink: "#1a2434"
-    body: "#333333"
-    muted: "#565d6a"
-    border: "#d6d8db"
-    surface: "#ffffff"
-    canvas: "#e9ecf1"
-    control: "#f4f5f7"
-    disabled: "#8e929b"
-  typography:
-    body: { size: 14, weight: 400, lineHeight: "21px", use: "Observed public home/list body text" }
-    dense: { size: 12, weight: 400, lineHeight: "normal", use: "Observed exchange labels and quick-fill control text" }
-  spacing: { control-inline: 8 }
-  rounded: { square: 0, control: 4 }
-  components_harvested: true
-  components:
-    quick-fill: { type: button, bg: "#ffffff", fg: "#1a2434", border: "1px solid #d6d8db", radius: "4px", padding: "0px 8px 1px", height: "28px", font: "12px / 400", states: "default captured; the capture holds no state frame for this element", use: "Exchange percentage quick-fill link; surface-2::[data-omd-capture=\"139\"]" }
-    home-header-link: { type: tab, bg: "transparent", fg: "#1a2434", radius: "0px", padding: "0px", height: "22px", font: "15px / 400 / 22px", hover: "font 15px / 500", pressed: "font 15px / 500", states: "rest, hover, and pressed sampled on the home header links (capture 1-5; 1-4 carry text, 5 is an 84 x 24 link without text). Every hover and pressed frame records weight 500 against rest 400, and weight is the only dumped property that moves; the siblings agree. Focus is not declared from the bundle: the collector presses before it focuses, which suppresses :focus-visible", use: "Public home header navigation link (a.css-h3yhvr) at home::[data-omd-capture=\"1\"]" }
-    dark-header-link: { type: tab, bg: "transparent", fg: "rgba(255, 255, 255, 0.6)", radius: "0px", padding: "0px", height: "22px", font: "15px / 400 / 22px", hover: "font 15px / 500", pressed: "font 15px / 500", states: "same class as the home header link; rest, hover, and pressed sampled on the exchange header (capture 2-5) and the notice header (surface-3 capture 1-5). Every hover and pressed frame records weight 500 against rest 400, the only dumped property that moves; the siblings agree. Focus is not declared from the bundle: the collector presses before it focuses, which suppresses :focus-visible", use: "Exchange and service-centre header navigation link (a.css-h3yhvr) at surface-2::[data-omd-capture=\"2\"]; white at 60% alpha implies a dark header bar, whose fill was not sampled on this element" }
-    exchange-panel-tab: { type: tab, bg: "transparent", fg: "#333333", border: "0px 0px 1px #dddddd", radius: "0px", padding: "0px", height: "45px", font: "16px / 500 / 45px", selected: "fg #0062df, border 0px 0px 3px #0062df, 16px / 700", states: "rest (capture 16) and the active tab (capture 15, class tab__item__link--active) captured; the capture holds no pointer-state frame for either", use: "Exchange panel tab (a.tab__item__link) at surface-2::[data-omd-capture=\"16\"]; the border is bottom-only" }
-    order-side-tab: { type: tab, bg: "transparent", fg: "#333333", border: "0px 0px 1px #d4d6dc", radius: "0px", padding: "0px", height: "45px", font: "16px / 500 / 42px", selected: "fg #dd3c44, border 0px 0px 3px #dd3c44, 16px / 700", states: "rest (capture 132) and the selected buy side (capture 131, inside li.tabB__buy.on) captured; only the buy side was captured selected, so no selected colour is recorded for the other side; no pointer-state frame", use: "Exchange order-form side tab (a.tabB__button) at surface-2::[data-omd-capture=\"132\"]; the border is bottom-only" }
-    notice-page-button: { type: button, bg: "#ffffff", fg: "#1a2434", border: "1px #d6d8db", radius: "0px", padding: "0px", size: "28px x 28px", font: "12px / 400", selected: "bg #0062df, fg #ffffff, border 1px #0062df", states: "rest on the page buttons (button.css-10yd3aw, 11 occurrences) and the current page (capture 48, button.css-1arrn0x) captured; no pointer-state frame", use: "Service-centre notice pagination button at surface-3::[data-omd-capture=\"49\"]" }
-    notice-search-input: { type: input, bg: "transparent", fg: "#1a2434", radius: "0px", padding: "0px", height: "42px", font: "14px / 400 / Arial", states: "default captured; no state frame", use: "Service-centre notice search field (input.css-1sxigs) at surface-3::[data-omd-capture=\"24\"]; transparent and borderless, its wrapper was not sampled, and it resolves to the system family Arial rather than the Roboto stack" }
-    order-form-input: { type: input, bg: "transparent", fg: "#1a2434", radius: "0px", padding: "0px", height: "38px", font: "14px / 400 / Arial", states: "default captured; no state frame", use: "Exchange order-form text field (input[type=text].css-1r6ulzr, three occurrences) at surface-2::[data-omd-capture=\"135\"]; transparent and borderless, its wrapper was not sampled, and it resolves to the system family Arial" }
-    notice-panel: { type: card, bg: "#ffffff", radius: "0px", padding: "60px 45px 45px", shadow: "rgb(222, 225, 231) 2px 2px 4px 0px", states: "non-interactive container", use: "Service-centre notice panel (article.css-mzy1sz) at surface-3::article" }
-    exchange-panel: { type: card, bg: "#ffffff", radius: "0px", padding: "0px", shadow: "none", states: "non-interactive container", use: "Exchange white data panel (article) at surface-2::article; six article panels, 400 to 990px wide, compute the same fill, radius, padding, and shadow" }
+colors:
+  accent: '#0062df'
+  accent-deep: '#003597'
+  rise: '#dd3c44'
+  fall: '#1375ec'
+  ink: '#1a2434'
+  body: '#333333'
+  muted: '#565d6a'
+  border: '#d6d8db'
+  surface: '#ffffff'
+  canvas: '#e9ecf1'
+  control: '#f4f5f7'
+  disabled: '#8e929b'
+typography:
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 21px
+    use: Observed public home/list body text
+  dense:
+    fontSize: 12px
+    fontWeight: 400
+    use: Observed exchange labels and quick-fill control text
+rounded:
+  square: 0px
+  control: 4px
+spacing:
+  control-inline: 8
+components:
+  quick-fill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1a2434'
+    border: '1px solid #d6d8db'
+    rounded: 4px
+    padding: 0px 8px 1px
+    height: 28px
+    typography: 12px / 400
+    states: default captured; the capture holds no state frame for this element
+    use: Exchange percentage quick-fill link; surface-2::[data-omd-capture="139"]
+  home-header-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#1a2434'
+    rounded: 0px
+    padding: 0px
+    height: 22px
+    typography: 15px / 400 / 22px
+    hover: font 15px / 500
+    pressed: font 15px / 500
+    states: 'rest, hover, and pressed sampled on the home header links (capture 1-5; 1-4 carry text, 5 is an 84 x 24 link without text). Every hover and pressed frame records weight 500 against rest 400, and weight is the only dumped property that moves; the siblings agree. Focus is not declared from the bundle: the collector presses before it focuses, which suppresses :focus-visible'
+    use: Public home header navigation link (a.css-h3yhvr) at home::[data-omd-capture="1"]
+  dark-header-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: rgba(255, 255, 255, 0.6)
+    rounded: 0px
+    padding: 0px
+    height: 22px
+    typography: 15px / 400 / 22px
+    hover: font 15px / 500
+    pressed: font 15px / 500
+    states: 'same class as the home header link; rest, hover, and pressed sampled on the exchange header (capture 2-5) and the notice header (surface-3 capture 1-5). Every hover and pressed frame records weight 500 against rest 400, the only dumped property that moves; the siblings agree. Focus is not declared from the bundle: the collector presses before it focuses, which suppresses :focus-visible'
+    use: Exchange and service-centre header navigation link (a.css-h3yhvr) at surface-2::[data-omd-capture="2"]; white at 60% alpha implies a dark header bar, whose fill was not sampled on this element
+  exchange-panel-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#333333'
+    border: '0px 0px 1px #dddddd'
+    rounded: 0px
+    padding: 0px
+    height: 45px
+    typography: 16px / 500 / 45px
+    selected: 'fg #0062df, border 0px 0px 3px #0062df, 16px / 700'
+    states: rest (capture 16) and the active tab (capture 15, class tab__item__link--active) captured; the capture holds no pointer-state frame for either
+    use: Exchange panel tab (a.tab__item__link) at surface-2::[data-omd-capture="16"]; the border is bottom-only
+  order-side-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#333333'
+    border: '0px 0px 1px #d4d6dc'
+    rounded: 0px
+    padding: 0px
+    height: 45px
+    typography: 16px / 500 / 42px
+    selected: 'fg #dd3c44, border 0px 0px 3px #dd3c44, 16px / 700'
+    states: rest (capture 132) and the selected buy side (capture 131, inside li.tabB__buy.on) captured; only the buy side was captured selected, so no selected colour is recorded for the other side; no pointer-state frame
+    use: Exchange order-form side tab (a.tabB__button) at surface-2::[data-omd-capture="132"]; the border is bottom-only
+  notice-page-button:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1a2434'
+    border: '1px #d6d8db'
+    rounded: 0px
+    padding: 0px
+    size: 28px x 28px
+    typography: 12px / 400
+    selected: 'bg #0062df, fg #ffffff, border 1px #0062df'
+    states: rest on the page buttons (button.css-10yd3aw, 11 occurrences) and the current page (capture 48, button.css-1arrn0x) captured; no pointer-state frame
+    use: Service-centre notice pagination button at surface-3::[data-omd-capture="49"]
+  notice-search-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#1a2434'
+    rounded: 0px
+    padding: 0px
+    height: 42px
+    typography: 14px / 400 / Arial
+    states: default captured; no state frame
+    use: Service-centre notice search field (input.css-1sxigs) at surface-3::[data-omd-capture="24"]; transparent and borderless, its wrapper was not sampled, and it resolves to the system family Arial rather than the Roboto stack
+  order-form-input:
+    type: input
+    backgroundColor: transparent
+    textColor: '#1a2434'
+    rounded: 0px
+    padding: 0px
+    height: 38px
+    typography: 14px / 400 / Arial
+    states: default captured; no state frame
+    use: Exchange order-form text field (input[type=text].css-1r6ulzr, three occurrences) at surface-2::[data-omd-capture="135"]; transparent and borderless, its wrapper was not sampled, and it resolves to the system family Arial
+  notice-panel:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 0px
+    padding: 60px 45px 45px
+    shadow: rgb(222, 225, 231) 2px 2px 4px 0px
+    states: non-interactive container
+    use: Service-centre notice panel (article.css-mzy1sz) at surface-3::article
+  exchange-panel:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 0px
+    padding: 0px
+    shadow: none
+    states: non-interactive container
+    use: Exchange white data panel (article) at surface-2::article; six article panels, 400 to 990px wide, compute the same fill, radius, padding, and shadow
 ---
 
 # Upbit — Design Reference
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Upbit is a digital-asset service operated by Dunamu. Its public web surface makes market information the visual priority: the reverified exchange page exposes trading-oriented controls and dense data regions, while the home and service-center notice pages retain the same light, low-radius treatment around them. The current Developer Center describes APIs for prices, order books, trading, balances, deposits, withdrawals, and real-time streaming; that public product framing helps explain why compact numeric controls and restrained surface colors dominate the captured pages. The observable identity is not a universal visual system: it is a disciplined public-web layer in which blue is used for actions and down-market data, red for up-market data, and white panels sit on a pale gray canvas. This record keeps that exchange, marketing, support, documentation, and authenticated-product boundary explicit.
 
@@ -193,7 +150,7 @@ Upbit is a digital-asset service operated by Dunamu. Its public web surface make
 - **Geometry:** the repeated raw radii are 0px and 4px. Every retained component except the 4px quick-fill control computes a 0px radius (§4).
 - **State evidence:** the bundle's `interactions[]` record is empty (no dialog, tab, menu, or form-error record), but the bundle does hold pointer-state frames: the header navigation links record weight 500 on hover and on press on all three surfaces (§4). No other element has a state frame. Focus, disabled, validation, menu, modal, toast, and transition claims are omitted. Corrected 2026-09-29: the July text read `interactionCount: 0` as the absence of any state evidence.
 
-## Primary tasks
+### Primary tasks
 
 - Follow market prices and data on the exchange page.
 - Set up a trade from the exchange's dense controls.
@@ -201,7 +158,35 @@ Upbit is a digital-asset service operated by Dunamu. Its public web surface make
 - Tell a rising market from a falling one by colour.
 - Check announcements on the service centre notice page.
 
-## 2. Color & surface roles
+### Imagery & illustration
+
+The supplied evidence is a computed-style/component capture and does not establish a reusable image, illustration, crop, overlay, or asset-licence rule. The public marketing surface remains separate from the exchange UI; neither is used to infer an authenticated-product image system.
+
+### Iconography
+
+No named icon family, stroke specification, icon-size scale, or reusable icon component is established in the retained evidence. Coin symbols, glyphs, and asset files are intentionally not promoted from incidental page content.
+
+### Brand Narrative
+
+The official Developer Center identifies Upbit as a Dunamu service and presents market-data, exchange, and real-time APIs for strategic trading. Its Korean reference footer identifies Dunamu and a registered virtual-asset-business number. A 2022 Dunamu/Upbit conference report records the then-current statement that Upbit would focus on regulation compliance and investor protections; it is retained as dated corporate context, not as proof of a present visual token or product workflow.
+
+No first-party history, rebrand, or public brand-system source was found in the supplied collector evidence. This reference therefore does not create an origin story or infer a private product strategy.
+
+### Principles
+
+The following are evidence-bounded reference implications, not quoted Upbit principles.
+
+1. **Keep market data local to its surface.** The red `#DD3C44` and blue `#1375EC` observations come from the exchange only. *UI implication:* do not reuse them as universal marketing, error, or success tokens.
+2. **Keep controls compact only where measured.** The retained quick-fill control is 28px high with a 4px radius. *UI implication:* do not extrapolate that geometry into navigation, forms, or authenticated trading flows.
+3. **Keep domains separate.** Marketing home, exchange, support notice, Developer Center, SDK licence, and unobserved authenticated product each have different evidence roles. *UI implication:* do not combine them into a fictional public design system.
+
+### Personas
+
+No first-party user research, audience segmentation, or persona material was collected for this update. No fictional names, demographics, jobs, or motivations are supplied.
+
+## Colors
+
+### Color & surface roles
 
 The following values are live computed observations, not a published Upbit token set.
 
@@ -219,9 +204,11 @@ The following values are live computed observations, not a published Upbit token
 
 The exchange-only red/blue pair is documented as a local market display observation. It is not generalized into an accessibility, locale, or cross-market rule without a first-party specification.
 
-## 3. Typography & font evidence
+## Typography
 
-### Evidence classes
+### Typography & font evidence
+
+#### Evidence classes
 
 - **Live computed system use:** visible public text resolves most often to `Roboto, "Noto Sans KR", sans-serif, AppleSDGothicNeo-Regular, "Malgun Gothic", Dotum, sans-serif`; the collector classifies `Roboto` as a **system** family with high confidence and 744 visible uses. Its `FontFaceSet` record also lists Google-hosted Roboto sources. This verifies a current resolved public runtime family, not an Upbit-owned brand typeface, so no `tokens.typography.family` is promoted.
 - **Declared-only assets:** `Noto Sans KR` has 128 listed source URLs but zero visible uses in the supplied bundle; `Droid Sans`, `Roboto Condensed`, and the TradingView-bundled `EuclidCircular` are likewise declared with zero visible uses. They are not UI-family tokens and must not be substituted into specimens.
@@ -229,14 +216,34 @@ The exchange-only red/blue pair is documented as a local market display observat
 - **Official font/licence context:** the Google Fonts Roboto repository carries Apache License 2.0; Noto’s official documentation says Noto fonts use SIL OFL 1.1. These third-party font licences do not grant rights to Upbit marks, UI assets, or an Upbit brand font.
 - **Upbit licence boundary:** the Upbit Developer SDK licence applies to the SDK materials, says it is not an open-source licence, and expressly does not grant rights to Dunamu trademarks, logos, names, or brands. It is not a font licence or a public design-system specification.
 
-### Measured public text roles
+#### Measured public text roles
 
 | Role | Resolved family | Size | Weight | Line height | Surface |
 |---|---|---:|---:|---:|---|
 | Public list body | Roboto system stack | 14px | 400 | 21px | home, exchange, notice |
 | Dense exchange/control text | Roboto system stack | 12px | 400 | normal | exchange |
 
-## 4. Components
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.dense.lineHeight`: `normal`
+
+## Elevation & Depth
+
+### Elevation
+
+The retained exchange quick-fill sample and the exchange data panels compute `box-shadow: none`; the service-centre notice panel carries `rgb(222, 225, 231) 2px 2px 4px 0px` (`#DEE1E7`, §4). No general elevation scale is claimed from one shadowed container.
+
+## Motion & Easing
+
+### Motion
+
+No duration, easing, transition, data-update animation, scroll behavior, or interactive sequence was captured. Static CSS classes and one rendered default do not establish a motion contract.
+
+No motion or easing values were captured. Preserve this absence instead of assigning default durations or curves.
+
+## Components
 
 ### Exchange quick-fill control
 
@@ -331,59 +338,11 @@ The components below were transcribed on 2026-09-29 from the same 2026-07-13 bun
 
 The prior prose-derived token block, 2025 date stamp, broad navigation/hero/table component inventory, motion timings, contrast results, persona profiles, and behavioral state catalogue were not supported by the supplied 2026 collector and are removed rather than refreshed by assumption.
 
-## 5. Elevation
-
-The retained exchange quick-fill sample and the exchange data panels compute `box-shadow: none`; the service-centre notice panel carries `rgb(222, 225, 231) 2px 2px 4px 0px` (`#DEE1E7`, §4). No general elevation scale is claimed from one shadowed container.
-
-## 6. Imagery & illustration
-
-The supplied evidence is a computed-style/component capture and does not establish a reusable image, illustration, crop, overlay, or asset-licence rule. The public marketing surface remains separate from the exchange UI; neither is used to infer an authenticated-product image system.
-
-## 7. Iconography
-
-No named icon family, stroke specification, icon-size scale, or reusable icon component is established in the retained evidence. Coin symbols, glyphs, and asset files are intentionally not promoted from incidental page content.
-
-## 8. Motion
-
-No duration, easing, transition, data-update animation, scroll behavior, or interactive sequence was captured. Static CSS classes and one rendered default do not establish a motion contract.
-
-## 9. Accessibility & locale
-
-- The public capture supplies color and geometry values, not an accessibility audit; contrast, keyboard support, focus indication, and target-size conformance are not claimed here.
-- The current public text stack includes Korean-capable fallback families, but the capture does not establish a locale typography policy or cross-market color convention.
-- Implementations should provide accessible states without presenting those states as observed Upbit behavior.
-
-## 10. Voice & Tone
-
-No first-party voice or editorial guideline was collected. The public Korean product, support, and Developer Center surfaces show different functional registers, but this evidence is insufficient to prescribe a reusable brand voice. Avoid inventing customer promises, urgency claims, or copied copy under the Upbit name.
-
-## 11. Brand Narrative
-
-The official Developer Center identifies Upbit as a Dunamu service and presents market-data, exchange, and real-time APIs for strategic trading. Its Korean reference footer identifies Dunamu and a registered virtual-asset-business number. A 2022 Dunamu/Upbit conference report records the then-current statement that Upbit would focus on regulation compliance and investor protections; it is retained as dated corporate context, not as proof of a present visual token or product workflow.
-
-No first-party history, rebrand, or public brand-system source was found in the supplied collector evidence. This reference therefore does not create an origin story or infer a private product strategy.
-
-## 12. Principles
-
-The following are evidence-bounded reference implications, not quoted Upbit principles.
-
-1. **Keep market data local to its surface.** The red `#DD3C44` and blue `#1375EC` observations come from the exchange only. *UI implication:* do not reuse them as universal marketing, error, or success tokens.
-2. **Keep controls compact only where measured.** The retained quick-fill control is 28px high with a 4px radius. *UI implication:* do not extrapolate that geometry into navigation, forms, or authenticated trading flows.
-3. **Keep domains separate.** Marketing home, exchange, support notice, Developer Center, SDK licence, and unobserved authenticated product each have different evidence roles. *UI implication:* do not combine them into a fictional public design system.
-
-## 13. Personas
-
-No first-party user research, audience segmentation, or persona material was collected for this update. No fictional names, demographics, jobs, or motivations are supplied.
-
-## 14. States
+### States
 
 Pointer states are documented only for the header navigation links: hover and pressed both record weight 500 against 400 at rest, on all three surfaces (§4). The selected exchange tab, the selected buy tab, and the current notice page are DOM variants captured at rest. No loading, empty, success, error, disabled, focus, validation, menu, dialog, toast, or tab-transition state is documented; focus is not declared from the bundle because the collector presses before it focuses. Corrected 2026-09-29: the July text treated the empty `interactions[]` record as the absence of every state sample.
 
-## 15. Motion & Easing
-
-No motion or easing values were captured. Preserve this absence instead of assigning default durations or curves.
-
-## 16. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -400,3 +359,23 @@ No motion or easing values were captured. Preserve this absence instead of assig
 - Invent hover, focus, pressed, disabled, validation, menu, dialog, toast, state-transition, motion, or accessibility behavior from static markup.
 - Treat the Upbit Developer SDK licence as a licence for UI assets, fonts, logos, or brand use.
 - Infer a documented public design system from the absence of a discovered design-system URL.
+
+## Voice & Tone
+
+No first-party voice or editorial guideline was collected. The public Korean product, support, and Developer Center surfaces show different functional registers, but this evidence is insufficient to prescribe a reusable brand voice. Avoid inventing customer promises, urgency claims, or copied copy under the Upbit name.
+
+## Governance
+
+### Accessibility & locale
+
+- The public capture supplies color and geometry values, not an accessibility audit; contrast, keyboard support, focus indication, and target-size conformance are not claimed here.
+- The current public text stack includes Korean-capable fallback families, but the capture does not establish a locale typography policy or cross-market color convention.
+- Implementations should provide accessible states without presenting those states as observed Upbit behavior.
+
+### Known Gaps
+
+- **Contrast, `home-header-link`.** Text `#1a2434` on `#00000000` measures 1.35:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `exchange-panel-tab`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `order-side-tab`.** Text `#333333` on `#00000000` measures 1.66:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `notice-search-input`.** Text `#1a2434` on `#00000000` measures 1.35:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `order-form-input`.** Text `#1a2434` on `#00000000` measures 1.35:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

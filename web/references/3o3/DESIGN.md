@@ -1,235 +1,189 @@
 ---
-id: 3o3
 name: 3o3
-display_name_kr: 삼쩜삼
-country: KR
-category: fintech
-homepage: "https://3o3.co.kr"
-primary_color: "#fbbd41"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=app.3o3.co.kr&sz=256"
-verified: "2026-09-30"
-added: "2026-06-10"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.3o3.co.kr/", inspected: "2026-09-30" }
-    - { id: surface-3, kind: marketing, url: "https://blog.3o3.co.kr/", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://www.3o3.co.kr/", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://blog.3o3.co.kr/", captured: "2026-09-30" }
-    - { id: brand-color-typeface, kind: official-doc, url: "https://brand.3o3.co.kr/color-typeface", captured: "2026-09-30" }
-    - { id: brand-logo, kind: official-doc, url: "https://brand.3o3.co.kr/brand-logo", captured: "2026-09-30" }
-    - { id: corporate-home, kind: official-doc, url: "https://jobisnvillains.com/", captured: "2026-09-30" }
-    - { id: app-entry, kind: official-doc, url: "https://app.3o3.co.kr/", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &c1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.colors.on-primary": *c1
-    "tokens.colors.action-hover": &c1h { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]::state-hover", captured: "2026-09-30" }
-    "tokens.colors.action-blue": &c4 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
-    "tokens.colors.slate": &c2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
-    "tokens.colors.canvas": &hbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.ink": &hp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
-    "tokens.colors.blog-ink": &bbody { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::body", captured: "2026-09-30" }
-    "tokens.colors.heading": &bh2 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h2", captured: "2026-09-30" }
-    "tokens.colors.body-sub": &btag { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"30\"]", captured: "2026-09-30" }
-    "tokens.colors.muted": &bdiv { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::div", captured: "2026-09-30" }
-    "tokens.colors.faint": &bmeta { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::footer", captured: "2026-09-30" }
-    "tokens.colors.tag-grey": *bdiv
-    "tokens.colors.selected": &btagon { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"29\"]", captured: "2026-09-30" }
-    "tokens.colors.surface": &bspan { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::span", captured: "2026-09-30" }
-    "tokens.colors.tint-blue": *bspan
-    "tokens.colors.outline": *btag
-    "tokens.colors.placeholder": &bimg { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::img", captured: "2026-09-30" }
-    "tokens.typography.family.funnel": *c1
-    "tokens.typography.featured-title.size": *bh2
-    "tokens.typography.featured-title.weight": *bh2
-    "tokens.typography.featured-title.lineHeight": *bh2
-    "tokens.typography.featured-title.use": *bh2
-    "tokens.typography.card-title.size": *bh2
-    "tokens.typography.card-title.weight": *bh2
-    "tokens.typography.card-title.lineHeight": *bh2
-    "tokens.typography.card-title.use": *bh2
-    "tokens.typography.card-title-sm.size": *bh2
-    "tokens.typography.card-title-sm.weight": *bh2
-    "tokens.typography.card-title-sm.lineHeight": *bh2
-    "tokens.typography.card-title-sm.use": *bh2
-    "tokens.typography.cta.size": *c1
-    "tokens.typography.cta.weight": *c1
-    "tokens.typography.cta.lineHeight": *c1
-    "tokens.typography.cta.use": *c1
-    "tokens.typography.body.size": *bbody
-    "tokens.typography.body.weight": *bbody
-    "tokens.typography.body.lineHeight": *bbody
-    "tokens.typography.body.use": *bbody
-    "tokens.typography.excerpt.size": *bdiv
-    "tokens.typography.excerpt.weight": *bdiv
-    "tokens.typography.excerpt.lineHeight": *bdiv
-    "tokens.typography.excerpt.use": *bdiv
-    "tokens.typography.nav.size": &bnav { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.typography.nav.weight": *bnav
-    "tokens.typography.nav.lineHeight": *bnav
-    "tokens.typography.nav.use": *bnav
-    "tokens.typography.disclosure.size": *hp
-    "tokens.typography.disclosure.weight": *hp
-    "tokens.typography.disclosure.lineHeight": *hp
-    "tokens.typography.disclosure.use": *hp
-    "tokens.typography.tag.size": *btag
-    "tokens.typography.tag.weight": *btag
-    "tokens.typography.tag.lineHeight": *btag
-    "tokens.typography.tag.use": *btag
-    "tokens.typography.chip.size": *bspan
-    "tokens.typography.chip.weight": *bspan
-    "tokens.typography.chip.lineHeight": *bspan
-    "tokens.typography.chip.tracking": *bspan
-    "tokens.typography.chip.use": *bspan
-    "tokens.typography.tag-list.size": *bdiv
-    "tokens.typography.tag-list.weight": *bdiv
-    "tokens.typography.tag-list.lineHeight": *bdiv
-    "tokens.typography.tag-list.tracking": *bdiv
-    "tokens.typography.tag-list.use": *bdiv
-    "tokens.spacing.tag-y": *btag
-    "tokens.spacing.tag-x": *btag
-    "tokens.spacing.chip-y": *bspan
-    "tokens.spacing.chip-x": *bspan
-    "tokens.spacing.more-y": &bmore { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-09-30" }
-    "tokens.spacing.more-x": *bmore
-    "tokens.rounded.cta": *c1
-    "tokens.rounded.image-sm": *bimg
-    "tokens.rounded.image": *bimg
-    "tokens.rounded.tag": *btag
-    "tokens.rounded.chip": *bspan
-    "tokens.rounded.pill": *bmore
-    "tokens.components.refund-cta.type": *c1
-    "tokens.components.refund-cta.bg": *c1
-    "tokens.components.refund-cta.fg": *c1
-    "tokens.components.refund-cta.radius": *c1
-    "tokens.components.refund-cta.height": *c1
-    "tokens.components.refund-cta.width": *c1
-    "tokens.components.refund-cta.font": *c1
-    "tokens.components.refund-cta.hover": *c1h
-    "tokens.components.refund-cta.pressed": &c1p { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.refund-cta.states": *c1h
-    "tokens.components.refund-cta.use": *c1
-    "tokens.components.eligibility-cta.type": *c2
-    "tokens.components.eligibility-cta.bg": *c2
-    "tokens.components.eligibility-cta.fg": *c2
-    "tokens.components.eligibility-cta.radius": *c2
-    "tokens.components.eligibility-cta.height": *c2
-    "tokens.components.eligibility-cta.width": *c2
-    "tokens.components.eligibility-cta.font": *c2
-    "tokens.components.eligibility-cta.hover": &c2h { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.eligibility-cta.pressed": &c2p { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.eligibility-cta.states": *c2h
-    "tokens.components.eligibility-cta.use": *c2
-    "tokens.components.secure-cta.type": *c4
-    "tokens.components.secure-cta.bg": *c4
-    "tokens.components.secure-cta.fg": *c4
-    "tokens.components.secure-cta.radius": *c4
-    "tokens.components.secure-cta.height": *c4
-    "tokens.components.secure-cta.width": *c4
-    "tokens.components.secure-cta.font": *c4
-    "tokens.components.secure-cta.hover": &c4h { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.secure-cta.pressed": &c4p { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.secure-cta.states": *c4h
-    "tokens.components.secure-cta.use": *c4
-    "tokens.components.topic-filter.type": *btag
-    "tokens.components.topic-filter.bg": *btag
-    "tokens.components.topic-filter.fg": *btag
-    "tokens.components.topic-filter.border": *btag
-    "tokens.components.topic-filter.radius": *btag
-    "tokens.components.topic-filter.padding": *btag
-    "tokens.components.topic-filter.height": *btag
-    "tokens.components.topic-filter.font": *btag
-    "tokens.components.topic-filter.selected": *btagon
-    "tokens.components.topic-filter.states": *btag
-    "tokens.components.topic-filter.use": *btag
-    "tokens.components.category-chip.type": *bspan
-    "tokens.components.category-chip.bg": *bspan
-    "tokens.components.category-chip.fg": *bspan
-    "tokens.components.category-chip.radius": *bspan
-    "tokens.components.category-chip.padding": *bspan
-    "tokens.components.category-chip.height": *bspan
-    "tokens.components.category-chip.font": *bspan
-    "tokens.components.category-chip.use": *bspan
-    "tokens.components.category-chip-grey.type": *bspan
-    "tokens.components.category-chip-grey.bg": *bspan
-    "tokens.components.category-chip-grey.fg": *bspan
-    "tokens.components.category-chip-grey.radius": *bspan
-    "tokens.components.category-chip-grey.padding": *bspan
-    "tokens.components.category-chip-grey.height": *bspan
-    "tokens.components.category-chip-grey.font": *bspan
-    "tokens.components.category-chip-grey.use": *bspan
-    "tokens.components.post-card.type": *bimg
-    "tokens.components.post-card.bg": *bimg
-    "tokens.components.post-card.fg": *bh2
-    "tokens.components.post-card.radius": *bimg
-    "tokens.components.post-card.use": *bimg
-    "tokens.components.load-more.type": *bmore
-    "tokens.components.load-more.bg": *bmore
-    "tokens.components.load-more.fg": *bmore
-    "tokens.components.load-more.radius": *bmore
-    "tokens.components.load-more.padding": *bmore
-    "tokens.components.load-more.height": *bmore
-    "tokens.components.load-more.font": *bmore
-    "tokens.components.load-more.states": *bmore
-    "tokens.components.load-more.use": *bmore
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    primary: "#fbbd41"
-    on-primary: "#000000"
-    action-hover: "#237af2"
-    action-blue: "#3e79ff"
-    slate: "#2f3943"
-    canvas: "#ffffff"
-    ink: "#000000"
-    blog-ink: "#15171a"
-    heading: "#2b2f34"
-    body-sub: "#606a76"
-    muted: "#788391"
-    faint: "#a4acb4"
-    tag-grey: "#979797"
-    selected: "#141618"
-    surface: "#f5f6f8"
-    tint-blue: "#f3f8ff"
-    outline: "#dadee3"
-    placeholder: "#f1f1f1"
-  typography:
-    family: { funnel: "Noto Sans KR" }
-    featured-title: { size: 33, weight: 700, lineHeight: 1.5, use: "White post titles over the blog's lead slider (h2.post-card-title, 792px slides); declared Noto Sans KR stack" }
-    card-title: { size: 24, weight: 700, lineHeight: 1.4, use: "Post titles on the blog's 380px cards, #2b2f34" }
-    card-title-sm: { size: 20, weight: 700, lineHeight: 1.4, use: "Post titles on the blog's 240px cards, #2b2f34" }
-    cta: { size: 18, weight: 500, lineHeight: 1.22, use: "Call-to-action labels on the homepage, Noto Sans KR" }
-    body: { size: 16, weight: 400, lineHeight: 1.6, use: "Blog body text, #15171a" }
-    excerpt: { size: 16, weight: 400, lineHeight: 1.5, use: "Post excerpts on blog cards (div.post-card-excerpt), #788391" }
-    nav: { size: 15, weight: 400, lineHeight: 1.5, use: "Blog header links (테크, 컬처, 뉴스룸, 라이브러리), #606a76; the computed stack is Poppins, sans-serif, but the labels are Korean, which Poppins does not cover, so they render in the fallback face" }
-    disclosure: { size: 14, weight: 400, lineHeight: 1.43, use: "Paragraph copy and the disclosure block on the homepage, Noto Sans KR, #000000" }
-    tag: { size: 14, weight: 700, lineHeight: 1.5, use: "Topic-filter button labels on the blog (button.btn-tag)" }
-    chip: { size: 14, weight: 700, lineHeight: 1.0, tracking: -0.07, use: "Category chip labels on blog cards (span.post-card-primary-tag)" }
-    tag-list: { size: 14, weight: 600, lineHeight: 1.0, tracking: -0.07, use: "Tag line above blog post titles (div.post-card-tags), #979797" }
-  spacing: { tag-y: 11, tag-x: 20, chip-y: 5, chip-x: 10, more-y: 16, more-x: 32 }
-  rounded: { cta: 7, image-sm: 16, image: 24, tag: 24, chip: 36, pill: 100 }
-  components:
-    refund-cta: { type: button, bg: "#fbbd41", fg: "#000000", radius: "7px", height: "61px", width: "361px", font: "18px / 500 / 22px Noto Sans KR", hover: "bg #237af2, fg #ffffff", pressed: "bg #e29929, fg #000000", states: "hover and pressed read from settled frames: the hover frame of every homepage action reads the same #237af2 fill with white text (sibling agreement across captures 0-4) and equals the page's own #lp-pom-button :hover rules; the pressed frames equal its :active rules; focus is not declared, because the collector's focus frames only repeat the pressed values", use: "Primary refund action, three of the five homepage calls-to-action (내 환급금 조회하기 at home::[data-omd-capture=\"1\"], 지금 찾으러 가기, 지금 환급 신청하기), 361 x 61, each linking to app.3o3.co.kr" }
-    eligibility-cta: { type: button, bg: "#2f3943", fg: "#ffffff", radius: "7px", height: "61px", width: "361px", font: "18px / 500 / 22px Noto Sans KR", hover: "bg #237af2, fg #ffffff", pressed: "bg #1e2c3c, fg #ffffff", states: "hover and pressed from settled frames that equal the page's own :hover and :active rules; focus not declared", use: "대상자 여부 확인하기 on the homepage at home::[data-omd-capture=\"2\"], 361 x 61" }
-    secure-cta: { type: button, bg: "#3e79ff", fg: "#ffffff", radius: "7px", height: "61px", width: "361px", font: "18px / 500 / 22px Noto Sans KR", hover: "bg #237af2, fg #ffffff", pressed: "bg #2756e6, fg #ffffff", states: "hover and pressed from settled frames that equal the page's own :hover and :active rules; focus not declared", use: "안전하게 환급 신청하기 on the homepage at home::[data-omd-capture=\"4\"], 361 x 61" }
-    topic-filter: { type: tab, bg: "#ffffff", fg: "#606a76", border: "1px solid #dadee3", radius: "24px", padding: "11px 20px", height: "45px", font: "14px / 700 / 21px", selected: "bg #141618, fg #ffffff, border 1px solid #dadee3 (button.btn-tag.active, capture 29)", states: "selected variant read from rest values (capture 29 against capture 30 and its seven siblings); no pointer frame was recorded", use: "Topic filter buttons above the blog's post list (button.btn-tag) at surface-3::[data-omd-capture=\"30\"], 66 x 45" }
-    category-chip: { type: badge, bg: "#f3f8ff", fg: "#2f3943", radius: "36px", padding: "5px 10px", height: "24px", font: "14px / 700 / 14px, letter-spacing -0.07px", use: "Primary-tag chip on the blog's 380px post cards (span.post-card-primary-tag), 56 x 24" }
-    category-chip-grey: { type: badge, bg: "#f5f6f8", fg: "#2f3943", radius: "77px", padding: "4px 12px", height: "22px", font: "14px / 700 / 14px, letter-spacing -0.07px", use: "Primary-tag chip on the blog's 240px cards, 84 x 22; the featured slider uses the same fill at 13px / 700 with 3px 9px padding, 30px tall, 49px radius" }
-    post-card: { type: card, bg: "transparent", fg: "#2b2f34", radius: "24px", use: "Blog post card: image (img.post-card-image) on a #f1f1f1 placeholder fill with a 24px radius at 380px and 792px wide and 16px at 240px wide, then tag line #979797, title #2b2f34, excerpt #788391 and meta #a4acb4; no border or shadow" }
-    load-more: { type: button, bg: "#f5f6f8", fg: "#15171a", radius: "100px", padding: "16px 32px", height: "56px", font: "16px / 400 / 25.6px", states: "rest only; no state frame was recorded", use: "Pill button below the blog's post list at surface-3::[data-omd-capture=\"62\"], 256 x 56; its label sits in a child that was not captured" }
-  components_harvested: true
+colors:
+  primary: '#fbbd41'
+  on-primary: '#000000'
+  action-hover: '#237af2'
+  action-blue: '#3e79ff'
+  slate: '#2f3943'
+  canvas: '#ffffff'
+  ink: '#000000'
+  blog-ink: '#15171a'
+  heading: '#2b2f34'
+  body-sub: '#606a76'
+  muted: '#788391'
+  faint: '#a4acb4'
+  tag-grey: '#979797'
+  selected: '#141618'
+  surface: '#f5f6f8'
+  tint-blue: '#f3f8ff'
+  outline: '#dadee3'
+  placeholder: '#f1f1f1'
+typography:
+  featured-title:
+    fontSize: 33px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: White post titles over the blog's lead slider (h2.post-card-title, 792px slides); declared Noto Sans KR stack
+  card-title:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: 'Post titles on the blog''s 380px cards, #2b2f34'
+  card-title-sm:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: 'Post titles on the blog''s 240px cards, #2b2f34'
+  cta:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 1.22
+    use: Call-to-action labels on the homepage, Noto Sans KR
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: 'Blog body text, #15171a'
+  excerpt:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: 'Post excerpts on blog cards (div.post-card-excerpt), #788391'
+  nav:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: 'Blog header links (테크, 컬처, 뉴스룸, 라이브러리), #606a76; the computed stack is Poppins, sans-serif, but the labels are Korean, which Poppins does not cover, so they render in the fallback face'
+  disclosure:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: 'Paragraph copy and the disclosure block on the homepage, Noto Sans KR, #000000'
+  tag:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Topic-filter button labels on the blog (button.btn-tag)
+  chip:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: '-0.07px'
+    use: Category chip labels on blog cards (span.post-card-primary-tag)
+  tag-list:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: '-0.07px'
+    use: 'Tag line above blog post titles (div.post-card-tags), #979797'
+rounded:
+  cta: 7px
+  image-sm: 16px
+  image: 24px
+  tag: 24px
+  chip: 36px
+  pill: 100px
+spacing:
+  tag-y: 11
+  tag-x: 20
+  chip-y: 5
+  chip-x: 10
+  more-y: 16
+  more-x: 32
+components:
+  refund-cta:
+    type: button
+    backgroundColor: '#fbbd41'
+    textColor: '#000000'
+    rounded: 7px
+    height: 61px
+    width: 361px
+    typography: 18px / 500 / 22px Noto Sans KR
+    hover: 'bg #237af2, fg #ffffff'
+    pressed: 'bg #e29929, fg #000000'
+    states: 'hover and pressed read from settled frames: the hover frame of every homepage action reads the same #237af2 fill with white text (sibling agreement across captures 0-4) and equals the page''s own #lp-pom-button :hover rules; the pressed frames equal its :active rules; focus is not declared, because the collector''s focus frames only repeat the pressed values'
+    use: Primary refund action, three of the five homepage calls-to-action (내 환급금 조회하기 at home::[data-omd-capture="1"], 지금 찾으러 가기, 지금 환급 신청하기), 361 x 61, each linking to app.3o3.co.kr
+  eligibility-cta:
+    type: button
+    backgroundColor: '#2f3943'
+    textColor: '#ffffff'
+    rounded: 7px
+    height: 61px
+    width: 361px
+    typography: 18px / 500 / 22px Noto Sans KR
+    hover: 'bg #237af2, fg #ffffff'
+    pressed: 'bg #1e2c3c, fg #ffffff'
+    states: hover and pressed from settled frames that equal the page's own :hover and :active rules; focus not declared
+    use: 대상자 여부 확인하기 on the homepage at home::[data-omd-capture="2"], 361 x 61
+  secure-cta:
+    type: button
+    backgroundColor: '#3e79ff'
+    textColor: '#ffffff'
+    rounded: 7px
+    height: 61px
+    width: 361px
+    typography: 18px / 500 / 22px Noto Sans KR
+    hover: 'bg #237af2, fg #ffffff'
+    pressed: 'bg #2756e6, fg #ffffff'
+    states: hover and pressed from settled frames that equal the page's own :hover and :active rules; focus not declared
+    use: 안전하게 환급 신청하기 on the homepage at home::[data-omd-capture="4"], 361 x 61
+  topic-filter:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#606a76'
+    border: '1px solid #dadee3'
+    rounded: 24px
+    padding: 11px 20px
+    height: 45px
+    typography: 14px / 700 / 21px
+    selected: 'bg #141618, fg #ffffff, border 1px solid #dadee3 (button.btn-tag.active, capture 29)'
+    states: selected variant read from rest values (capture 29 against capture 30 and its seven siblings); no pointer frame was recorded
+    use: Topic filter buttons above the blog's post list (button.btn-tag) at surface-3::[data-omd-capture="30"], 66 x 45
+  category-chip:
+    type: badge
+    backgroundColor: '#f3f8ff'
+    textColor: '#2f3943'
+    rounded: 36px
+    padding: 5px 10px
+    height: 24px
+    typography: 14px / 700 / 14px, letter-spacing -0.07px
+    use: Primary-tag chip on the blog's 380px post cards (span.post-card-primary-tag), 56 x 24
+  category-chip-grey:
+    type: badge
+    backgroundColor: '#f5f6f8'
+    textColor: '#2f3943'
+    rounded: 77px
+    padding: 4px 12px
+    height: 22px
+    typography: 14px / 700 / 14px, letter-spacing -0.07px
+    use: Primary-tag chip on the blog's 240px cards, 84 x 22; the featured slider uses the same fill at 13px / 700 with 3px 9px padding, 30px tall, 49px radius
+  post-card:
+    type: card
+    backgroundColor: transparent
+    textColor: '#2b2f34'
+    rounded: 24px
+    use: 'Blog post card: image (img.post-card-image) on a #f1f1f1 placeholder fill with a 24px radius at 380px and 792px wide and 16px at 240px wide, then tag line #979797, title #2b2f34, excerpt #788391 and meta #a4acb4; no border or shadow'
+  load-more:
+    type: button
+    backgroundColor: '#f5f6f8'
+    textColor: '#15171a'
+    rounded: 100px
+    padding: 16px 32px
+    height: 56px
+    typography: 16px / 400 / 25.6px
+    states: rest only; no state frame was recorded
+    use: Pill button below the blog's post list at surface-3::[data-omd-capture="62"], 256 x 56; its label sits in a child that was not captured
+fonts:
+  roles:
+    funnel: Noto Sans KR
 ---
 
 # Design System Inspiration of 3o3 (삼쩜삼)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 삼쩜삼 (3o3) is the tax-refund service of 자비스앤빌런즈 (Jobis & Villains), a company founded in August 2015 whose first product, launched that December, was 자비스 (Jarvis), an AI bookkeeping service. 삼쩜삼 followed in May 2020 as a service that calculates and files 종합소득세 refunds. The company's own timeline then records a mobile app (December 2021), 삼쩜삼 마이비즈 for sole proprietors (May 2022), VAT filing (January 2023), selection as a pre-unicorn (예비유니콘) by the Ministry of SMEs and Startups (June 2023) and, in July 2025, 24 million cumulative members and more than 2 trillion won in cumulative filed refunds. The name reads "three point three" in Korean, and the domain spells it 3o3. The brand is widening its promise: the operator's site says the service is growing "Tax 기반 서비스를 넘어" into a platform that finds customers' hidden rights and money — everyday refunds such as hospital bills and insurance, and a platform for partner tax accountants — and the homepage title now calls it a "생활 밀착 환급·혜택 플랫폼".
 
@@ -247,7 +201,7 @@ No captured element on either page carries a shadow. Radius follows the componen
 - Pill chips and a 24px-radius filter row; selection shown by a `#141618` fill
 - Flat surfaces throughout — no box-shadow on any captured element
 
-## Primary tasks
+### Primary tasks
 
 - Look up how much refund you may be owed (내 환급금 조회하기)
 - Check whether you are eligible before applying (대상자 여부 확인하기)
@@ -255,7 +209,33 @@ No captured element on either page carries a shadow. Radius follows the componen
 - See how the estimated refund is calculated (예상 환급액을 계산하는 기준)
 - Read tax and money articles on the official blog
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+삼쩜삼 is operated by (주)자비스앤빌런즈, founded in August 2015. Its first act was 자비스, an AI bookkeeping service launched in December 2015 that passed 5,000 business members in May 2018. Its second act, launched in May 2020, was 삼쩜삼, a service that calculates and files 종합소득세 refunds; the company records reaching break-even the following month. From there the timeline on jobisnvillains.com reads as steady expansion: a mobile app in December 2021, the acquisition of the part-time scheduling and pay app 하우머치 in August 2022, 삼쩜삼 마이비즈 for sole proprietors in May 2022, VAT filing in January 2023, ISMS certification in March 2023 and a pre-unicorn selection in June 2023. By July 2025 the platform counted 24 million cumulative members and more than 2 trillion won in cumulative filed refunds. The app entry names the chief executive, 김범섭, in its statutory footer.
+
+The mission is written as three wishes — that everyone may enjoy more wealth, save more time and find more of their rights ("더 많은 부", "더 많은 시간", "더 많은 권리") — and the current direction is to move beyond tax into a platform that finds customers' hidden rights and money quickly and in full. The brand centre governs how that looks: one representative colour, SZS Blue; Poppins for English and Pretendard for Korean; and logo rules that forbid changes to size, shape, colour or effects.
+
+### Principles
+
+These are editorial readings of what the captured surfaces and first-party pages show.
+
+1. **Lead with the outcome.** Every homepage action names a result (조회하기, 찾으러 가기, 신청하기). *UI implication:* put the refund look-up behind one tall, repeated action rather than opening with a form.
+2. **Every figure carries its basis.** The app entry states the cohort (7,208,747 filers, 2020.05.01–2026.04.01) and the conditions behind its average of 288,635원. *UI implication:* a refund number and its basis line are one unit.
+3. **Reassurance at the point of action.** "안전하게" sits inside a button label. *UI implication:* trust copy belongs on the action, not on a separate page.
+4. **One governed identity colour, practical action colours.** The brand centre mandates SZS Blue for identity; the landing uses yellow, slate and blue for its actions. *UI implication:* keep the logo's blue untouched and let action colours serve the task.
+5. **Flat surfaces.** No shadow appears on either captured page. *UI implication:* separate with fills, not elevation.
+
+### Personas
+
+*The personas below are fictional archetypes drawn from the audiences the brand names (freelancers, sole proprietors and everyday refund seekers); they are not real people.*
+
+**박지훈, 27, 서울.** A delivery rider and part-time editor with several small income sources. He has never used an accountant; he taps 내 환급금 조회하기 after seeing a friend's result and reads the basis line before believing the number.
+
+**이서연, 34, 성남.** A freelance designer who files 종합소득세 every May. She values that the service states its scope plainly — tax help and reports, not a tax agent's representation.
+
+**최민수, 45, 대구.** A small academy owner who came in through the sole-proprietor services. The statutory footer — business registration number, named chief executive, exact cohort figures — is what persuades him.
+
+## Colors
 
 Every token below was read by the deterministic collector on 2026-09-30 from the homepage (www.3o3.co.kr) and the official blog (blog.3o3.co.kr). The two are separate surfaces, and each value names the one it came from.
 
@@ -289,7 +269,7 @@ Every token below was read by the deterministic collector on 2026-09-30 from the
 - **SZS Blue**: The brand centre's colour page reads "SZS Blue는 삼쩜삼을 대표하는 색상입니다. 일관된 표현을 위해 브랜드 색상은 반드시 준수하여 사용합니다." and shows the palette as swatch images. The June 2026 record pixel-sampled those images as `#0c64e6` (SZS Blue), `#023266` (deep navy), `#fea800` (amber) and `#f3f9ff` (sky tint); they were not re-sampled this session. No captured element on the homepage or the blog renders SZS Blue as an action fill, a selected state or an accent, so under the catalogue rule of 2026-09-30 it stays here as the brand's identity colour and is not a machine token. The blog's featured-slider wrapper computes `color: rgb(12, 101, 229)` (`#0c65e5`), one step from the swatch value, but none of its captured visible children (tag line `#979797`, chip label `#2f3943`, title `#ffffff`) uses it.
 - The logotype, symbol and combined logo are published for download on the brand centre's logo page; the artwork was not measured.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Live surface use**: `Noto Sans KR` on the homepage — body, paragraphs and every action label — loaded as woff2 subsets from `fonts.ub-assets.com`, the font host of the Unbounce page builder. `Arial` appears only on the close control of an Unbounce overlay and is not a brand face.
@@ -320,7 +300,57 @@ Every token below was read by the deterministic collector on 2026-09-30 from the
 - **Normal tracking, except the small labels**: headings and body compute `letter-spacing: normal`; only the blog's chips and tag lines tighten to -0.07px.
 - **Two type contexts, two sources**: the landing ships Noto Sans KR through its page builder; the brand's own faces, Poppins and Pretendard, live on the brand centre, the app entry and the operator's site.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Observed values: 11px / 20px inside topic filters, 5px / 10px inside chips, 16px / 32px inside the load-more pill
+- The landing positions its blocks absolutely (the Unbounce model), so its spacing is set by coordinates rather than a padding scale; the actions carry 0px padding and centre their labels
+
+### Grid & Container
+- Homepage: one centred column of image and text bands, with each action 361px wide
+- Blog: a 792px lead slider, then post cards at 380px and 240px wide
+
+### Whitespace Philosophy
+- **Pitch, then act**: on the landing each persuasion band ends in a full-width action, and the action repeats down the page.
+- **Quiet reading on the blog**: white canvas, grey text ladder, and colour held to chips and the selected filter.
+
+### Border Radius Scale
+- 7px: landing actions
+- 16px: small blog images
+- 24px: large blog images and topic filters
+- Full pill (36px, 49px, 77px, 100px): chips and the load-more button
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440 × 900 desktop layout was captured. The homepage's page source carries a second set of positions and sizes for every action (150px-wide variants), which Unbounce uses for its mobile layout; they were not rendered in this capture.
+
+#### Touch Targets
+- Landing actions: 361 × 61
+- Blog topic filters: 45px tall
+- Blog load-more pill: 256 × 56
+- Blog slider arrows: 20 × 20, below a comfortable touch size
+
+#### Collapsing Strategy
+Not captured below desktop width; no collapse behaviour is claimed.
+
+#### Image Behavior
+Blog images sit in rounded frames (16px or 24px) over a `#f1f1f1` placeholder.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | `box-shadow: none` | Every captured action, chip, filter, card and image on both surfaces |
+| Tint | `#f5f6f8`, `#f3f8ff`, `#f1f1f1` fills | Chips, the load-more pill and image placeholders |
+
+**Shadow Philosophy**: the captured surfaces use no shadows. Separation comes from fills and from the colour of the actions themselves.
+
+## Motion & Easing
+
+Motion was not measured. The collector records computed styles and settled state frames, not durations or easing curves. The June record's duration and easing table (three durations and two cubic-bezier curves) had no source and was removed; its one measured value, a transition on the brand centre's menu, belongs to the brand-resource site, was not re-measured and is not carried forward.
+
+## Components
 
 ### Buttons
 
@@ -419,36 +449,18 @@ State note: hover and pressed come from settled collector frames that agree acro
 **Tier 2 sources:** not attempted on 2026-09-30 (the June 2026 record found no getdesign.md or refero entry); no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Observed values: 11px / 20px inside topic filters, 5px / 10px inside chips, 16px / 32px inside the load-more pill
-- The landing positions its blocks absolutely (the Unbounce model), so its spacing is set by coordinates rather than a padding scale; the actions carry 0px padding and centre their labels
+| State | Observed treatment |
+|---|---|
+| **Hover (homepage actions)** | All five actions fill `#237af2` with `#ffffff` text. |
+| **Pressed (homepage actions)** | Yellow `#e29929` with black text; slate `#1e2c3c`; blue `#2756e6`. |
+| **Selected (blog topic filter)** | `#141618` fill, `#ffffff` text, 1px `#dadee3` border. |
+| **Disabled (blog slider arrow)** | The first arrow of the lead slider carries `slick-disabled` at rest. |
 
-### Grid & Container
-- Homepage: one centred column of image and text bands, with each action 361px wide
-- Blog: a 792px lead slider, then post cards at 380px and 240px wide
+Focus was not measured (the collector's focus frames repeat the pressed values), and no empty, loading, error or success screen was captured, so none is described.
 
-### Whitespace Philosophy
-- **Pitch, then act**: on the landing each persuasion band ends in a full-width action, and the action repeats down the page.
-- **Quiet reading on the blog**: white canvas, grey text ladder, and colour held to chips and the selected filter.
-
-### Border Radius Scale
-- 7px: landing actions
-- 16px: small blog images
-- 24px: large blog images and topic filters
-- Full pill (36px, 49px, 77px, 100px): chips and the load-more button
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | `box-shadow: none` | Every captured action, chip, filter, card and image on both surfaces |
-| Tint | `#f5f6f8`, `#f3f8ff`, `#f1f1f1` fills | Chips, the load-more pill and image placeholders |
-
-**Shadow Philosophy**: the captured surfaces use no shadows. Separation comes from fills and from the colour of the actions themselves.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use yellow `#fbbd41` with black text for the main refund action
@@ -466,47 +478,7 @@ State note: hover and pressed come from settled collector frames that agree acro
 - Don't mix English and Korean faces against the brand rule (Poppins for English, Pretendard for Korean)
 - Don't show a refund figure without its basis; the app entry prints the cohort and conditions next to its average
 
-## 8. Responsive Behavior
-
-### Breakpoints
-Only the 1440 × 900 desktop layout was captured. The homepage's page source carries a second set of positions and sizes for every action (150px-wide variants), which Unbounce uses for its mobile layout; they were not rendered in this capture.
-
-### Touch Targets
-- Landing actions: 361 × 61
-- Blog topic filters: 45px tall
-- Blog load-more pill: 256 × 56
-- Blog slider arrows: 20 × 20, below a comfortable touch size
-
-### Collapsing Strategy
-Not captured below desktop width; no collapse behaviour is claimed.
-
-### Image Behavior
-Blog images sit in rounded frames (16px or 24px) over a `#f1f1f1` placeholder.
-
-## 9. Agent Prompt Guide
-
-### Quick Color Reference
-- Primary action: `#fbbd41` with `#000000` text
-- Hover on any action: `#237af2` with `#ffffff` text
-- Pressed: `#e29929` (yellow), `#1e2c3c` (slate), `#2756e6` (blue)
-- Secondary actions: `#2f3943`, `#3e79ff`
-- Blog text: `#15171a`, `#2b2f34`, `#606a76`, `#788391`, `#a4acb4`, `#979797`
-- Blog fills: `#f5f6f8`, `#f3f8ff`, `#f1f1f1`; selected filter `#141618`; filter border `#dadee3`
-- Identity colour, not a UI fill: SZS Blue (June 2026 swatch sample `#0c64e6`)
-
-### Example Component Prompts
-- "Create a refund landing band: white background, headline and supporting copy, then a 361 × 61 action with a `#fbbd41` fill, `#000000` label '내 환급금 조회하기', 18px / 500 Noto Sans KR, 7px radius, no shadow; on hover the fill becomes `#237af2` with white text, on press `#e29929`."
-- "Add an eligibility action below it: `#2f3943` fill, white label '대상자 여부 확인하기', same size and radius; hover `#237af2`, pressed `#1e2c3c`."
-- "Build a blog index: a row of topic filters (white, `#606a76` 14px / 700 labels, 1px `#dadee3` border, 24px radius, 11px 20px padding; the selected one `#141618` with white text), then post cards with 24px-radius images on `#f1f1f1`, a pill chip in `#f3f8ff` with `#2f3943` text, a `#2b2f34` 24px / 700 title and a `#788391` excerpt."
-
-### Iteration Guide
-1. Decide the surface first: conversion landing (yellow, slate, blue actions) or editorial blog (grey ladder, chips, filters)
-2. The primary action is yellow; every action shares the `#237af2` hover
-3. Keep everything flat
-4. Actions are 61px tall with a 7px radius; blog controls are pills or 24px
-5. Pair every refund figure with its basis line
-
-## 10. Voice & Tone
+## Voice & Tone
 
 삼쩜삼's voice is friendly, money-minded and reassuring. It frames a tax chore as finding money that is already yours, keeps its calls-to-action short and immediate, and prints the conditions behind every figure.
 
@@ -529,43 +501,32 @@ Blog images sit in rounded frames (16px or 24px) over a `#f1f1f1` placeholder.
 
 **Forbidden register**: fear-based penalty scaremongering; refund figures without their basis; officialese in user-facing flows; hiding the service's scope or fee.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-삼쩜삼 is operated by (주)자비스앤빌런즈, founded in August 2015. Its first act was 자비스, an AI bookkeeping service launched in December 2015 that passed 5,000 business members in May 2018. Its second act, launched in May 2020, was 삼쩜삼, a service that calculates and files 종합소득세 refunds; the company records reaching break-even the following month. From there the timeline on jobisnvillains.com reads as steady expansion: a mobile app in December 2021, the acquisition of the part-time scheduling and pay app 하우머치 in August 2022, 삼쩜삼 마이비즈 for sole proprietors in May 2022, VAT filing in January 2023, ISMS certification in March 2023 and a pre-unicorn selection in June 2023. By July 2025 the platform counted 24 million cumulative members and more than 2 trillion won in cumulative filed refunds. The app entry names the chief executive, 김범섭, in its statutory footer.
+### Quick Color Reference
+- Primary action: `#fbbd41` with `#000000` text
+- Hover on any action: `#237af2` with `#ffffff` text
+- Pressed: `#e29929` (yellow), `#1e2c3c` (slate), `#2756e6` (blue)
+- Secondary actions: `#2f3943`, `#3e79ff`
+- Blog text: `#15171a`, `#2b2f34`, `#606a76`, `#788391`, `#a4acb4`, `#979797`
+- Blog fills: `#f5f6f8`, `#f3f8ff`, `#f1f1f1`; selected filter `#141618`; filter border `#dadee3`
+- Identity colour, not a UI fill: SZS Blue (June 2026 swatch sample `#0c64e6`)
 
-The mission is written as three wishes — that everyone may enjoy more wealth, save more time and find more of their rights ("더 많은 부", "더 많은 시간", "더 많은 권리") — and the current direction is to move beyond tax into a platform that finds customers' hidden rights and money quickly and in full. The brand centre governs how that looks: one representative colour, SZS Blue; Poppins for English and Pretendard for Korean; and logo rules that forbid changes to size, shape, colour or effects.
+### Example Component Prompts
+- "Create a refund landing band: white background, headline and supporting copy, then a 361 × 61 action with a `#fbbd41` fill, `#000000` label '내 환급금 조회하기', 18px / 500 Noto Sans KR, 7px radius, no shadow; on hover the fill becomes `#237af2` with white text, on press `#e29929`."
+- "Add an eligibility action below it: `#2f3943` fill, white label '대상자 여부 확인하기', same size and radius; hover `#237af2`, pressed `#1e2c3c`."
+- "Build a blog index: a row of topic filters (white, `#606a76` 14px / 700 labels, 1px `#dadee3` border, 24px radius, 11px 20px padding; the selected one `#141618` with white text), then post cards with 24px-radius images on `#f1f1f1`, a pill chip in `#f3f8ff` with `#2f3943` text, a `#2b2f34` 24px / 700 title and a `#788391` excerpt."
 
-## 12. Principles
+### Iteration Guide
+1. Decide the surface first: conversion landing (yellow, slate, blue actions) or editorial blog (grey ladder, chips, filters)
+2. The primary action is yellow; every action shares the `#237af2` hover
+3. Keep everything flat
+4. Actions are 61px tall with a 7px radius; blog controls are pills or 24px
+5. Pair every refund figure with its basis line
 
-These are editorial readings of what the captured surfaces and first-party pages show.
+## Governance
 
-1. **Lead with the outcome.** Every homepage action names a result (조회하기, 찾으러 가기, 신청하기). *UI implication:* put the refund look-up behind one tall, repeated action rather than opening with a form.
-2. **Every figure carries its basis.** The app entry states the cohort (7,208,747 filers, 2020.05.01–2026.04.01) and the conditions behind its average of 288,635원. *UI implication:* a refund number and its basis line are one unit.
-3. **Reassurance at the point of action.** "안전하게" sits inside a button label. *UI implication:* trust copy belongs on the action, not on a separate page.
-4. **One governed identity colour, practical action colours.** The brand centre mandates SZS Blue for identity; the landing uses yellow, slate and blue for its actions. *UI implication:* keep the logo's blue untouched and let action colours serve the task.
-5. **Flat surfaces.** No shadow appears on either captured page. *UI implication:* separate with fills, not elevation.
+### Known Gaps
 
-## 13. Personas
-
-*The personas below are fictional archetypes drawn from the audiences the brand names (freelancers, sole proprietors and everyday refund seekers); they are not real people.*
-
-**박지훈, 27, 서울.** A delivery rider and part-time editor with several small income sources. He has never used an accountant; he taps 내 환급금 조회하기 after seeing a friend's result and reads the basis line before believing the number.
-
-**이서연, 34, 성남.** A freelance designer who files 종합소득세 every May. She values that the service states its scope plainly — tax help and reports, not a tax agent's representation.
-
-**최민수, 45, 대구.** A small academy owner who came in through the sole-proprietor services. The statutory footer — business registration number, named chief executive, exact cohort figures — is what persuades him.
-
-## 14. States
-
-| State | Observed treatment |
-|---|---|
-| **Hover (homepage actions)** | All five actions fill `#237af2` with `#ffffff` text. |
-| **Pressed (homepage actions)** | Yellow `#e29929` with black text; slate `#1e2c3c`; blue `#2756e6`. |
-| **Selected (blog topic filter)** | `#141618` fill, `#ffffff` text, 1px `#dadee3` border. |
-| **Disabled (blog slider arrow)** | The first arrow of the lead slider carries `slick-disabled` at rest. |
-
-Focus was not measured (the collector's focus frames repeat the pressed values), and no empty, loading, error or success screen was captured, so none is described.
-
-## 15. Motion & Easing
-
-Motion was not measured. The collector records computed styles and settled state frames, not durations or easing curves. The June record's duration and easing table (three durations and two cubic-bezier curves) had no source and was removed; its one measured value, a transition on the brand centre's menu, belongs to the brand-resource site, was not re-measured and is not carried forward.
+- **Contrast, `secure-cta`.** Text `#ffffff` on `#3e79ff` measures 3.90:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `post-card`.** Text `#2b2f34` on `#00000000` measures 1.56:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

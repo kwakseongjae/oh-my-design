@@ -1,202 +1,158 @@
 ---
-id: likelion
 name: LikeLion
-display_name_kr: 멋쟁이사자처럼
-country: KR
-category: education
-homepage: "https://likelion.net/"
-primary_color: "#ff6000"
-logo:
-  type: favicon
-  slug: "https://likelion.net/img/favicon.png"
-verified: "2026-07-13"
-added: "2026-07-02"
-ds:
-  name: LikeLion Design System
-  url: "https://designsystem.likelion.net/"
-  type: system
-  description: Official public documentation surface. The supplied capture covers its documentation chrome, not component-story tokens.
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-29"
-  surfaces:
-    - { id: home, kind: marketing-course-catalog, url: "https://likelion.net/", inspected: "2026-07-13" }
-    - { id: docs, kind: documentation-chrome, url: "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs", inspected: "2026-07-13" }
-    - { id: catalog, kind: course-catalog, url: "https://likelion.net/catalog", inspected: "2026-09-29" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://likelion.net/", captured: "2026-07-13" }
-    - { id: likelion-component-index, kind: official-doc, url: "https://designsystem.likelion.net/index.json", captured: "2026-09-19" }
-    - { id: docs-live, kind: official-doc, url: "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs", captured: "2026-07-13" }
-    - { id: history-context, kind: official-doc, url: "https://k-digital.likelion.net/364c521d-31d4-425e-a281-7d056ce3f8a6", captured: "2026-07-13" }
-    - { id: b2b-context, kind: official-doc, url: "https://likelion.net/b2b", captured: "2026-07-13" }
-    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
-    - { id: likelion-probe-home, kind: product-surface, url: "https://likelion.net/", captured: "2026-09-29" }
-    - { id: likelion-probe-catalog, kind: product-surface, url: "https://likelion.net/catalog", captured: "2026-09-29" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.foreground": *home
-    "tokens.colors.muted": *home
-    "tokens.colors.muted-secondary": *home
-    "tokens.colors.hairline": *home
-    "tokens.colors.promo": *home
-    "tokens.colors.nav-border": *home
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.section-heading.size": *home
-    "tokens.typography.section-heading.weight": *home
-    "tokens.typography.section-heading.lineHeight": *home
-    "tokens.typography.section-heading.use": *home
-    "tokens.typography.search.size": *home
-    "tokens.typography.search.weight": *home
-    "tokens.typography.search.lineHeight": *home
-    "tokens.typography.search.use": *home
-    "tokens.rounded.promo": *home
-    "tokens.shadow.none": *home
-    "tokens.components.promo-tile.type": *home
-    "tokens.components.promo-tile.bg": *home
-    "tokens.components.promo-tile.fg": *home
-    "tokens.components.promo-tile.radius": *home
-    "tokens.components.promo-tile.padding": *home
-    "tokens.components.promo-tile.font": *home
-    "tokens.components.promo-tile.hover": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.HomeCTACard_EducationCard__sH9lX BUSINESS at :hover", captured: "2026-09-29" }
-    "tokens.components.promo-tile.pressed": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.HomeCTACard_EducationCard__sH9lX BUSINESS at :active", captured: "2026-09-29" }
-    "tokens.components.promo-tile.focus": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.HomeCTACard_EducationCard__sH9lX at :focus-visible, Tab stop 10", captured: "2026-09-29" }
-    "tokens.components.promo-tile.states": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.HomeCTACard_EducationCard__sH9lX BUSINESS (/b2b)", captured: "2026-09-29" }
-    "tokens.components.promo-tile.use": *home
-    "tokens.components.account-pill.type": *home
-    "tokens.components.account-pill.fg": *home
-    "tokens.components.account-pill.border": *home
-    "tokens.components.account-pill.radius": *home
-    "tokens.components.account-pill.padding": *home
-    "tokens.components.account-pill.bg": *home
-    "tokens.components.account-pill.font": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "button 로그인/회원가입, label span.text-sm.font-semibold", captured: "2026-09-29" }
-    "tokens.components.account-pill.hover": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "button 로그인/회원가입 at :hover", captured: "2026-09-29" }
-    "tokens.components.account-pill.pressed": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "button 로그인/회원가입 at :active", captured: "2026-09-29" }
-    "tokens.components.account-pill.focus": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "button 로그인/회원가입 at :focus-visible, Tab stop 7", captured: "2026-09-29" }
-    "tokens.components.account-pill.states": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "button 로그인/회원가입", captured: "2026-09-29" }
-    "tokens.components.account-pill.use": *home
-    "tokens.components.course-search.pressed": *home
-    "tokens.components.course-search.focus": *home
-    "tokens.components.course-search.type": *home
-    "tokens.components.course-search.fg": *home
-    "tokens.components.course-search.font": *home
-    "tokens.components.course-search.states": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "find {tag: input}: 0 candidates on https://likelion.net/ and /catalog", captured: "2026-09-29" }
-    "tokens.components.course-search.use": *home
-    "tokens.components.nav-link.type": &llNav { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.nav-link.bg": *llNav
-    "tokens.components.nav-link.fg": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.relative.flex 전체강의, label span.text-[15px].font-semibold", captured: "2026-09-29" }
-    "tokens.components.nav-link.radius": *llNav
-    "tokens.components.nav-link.padding": *llNav
-    "tokens.components.nav-link.height": *llNav
-    "tokens.components.nav-link.font": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.relative.flex 전체강의, label span.text-[15px].font-semibold", captured: "2026-09-29" }
-    "tokens.components.nav-link.hover": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.relative.flex 전체강의 at :hover", captured: "2026-09-29" }
-    "tokens.components.nav-link.pressed": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.relative.flex 전체강의 at :active", captured: "2026-09-29" }
-    "tokens.components.nav-link.focus": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.relative.flex 전체강의 at :focus-visible, Tab stop 2", captured: "2026-09-29" }
-    "tokens.components.nav-link.states": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.relative.flex 전체강의", captured: "2026-09-29" }
-    "tokens.components.nav-link.use": *llNav
-    "tokens.components.section-detail-link.type": &llDetail { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-07-13" }
-    "tokens.components.section-detail-link.bg": *llDetail
-    "tokens.components.section-detail-link.fg": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.flex.items-center 자세히 보기, label span.mr-1.text-sm", captured: "2026-09-29" }
-    "tokens.components.section-detail-link.padding": *llDetail
-    "tokens.components.section-detail-link.height": *llDetail
-    "tokens.components.section-detail-link.font": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.flex.items-center 자세히 보기, label span.mr-1.text-sm", captured: "2026-09-29" }
-    "tokens.components.section-detail-link.hover": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.flex.items-center 자세히 보기 at :hover", captured: "2026-09-29" }
-    "tokens.components.section-detail-link.pressed": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.flex.items-center 자세히 보기 at :active", captured: "2026-09-29" }
-    "tokens.components.section-detail-link.focus": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.flex.items-center 자세히 보기 at :focus-visible, Tab stop 8", captured: "2026-09-29" }
-    "tokens.components.section-detail-link.states": { surface_id: home, source_id: likelion-probe-home, method: live-state-probe, selector: "a.flex.items-center 자세히 보기 (first, /catalog)", captured: "2026-09-29" }
-    "tokens.components.section-detail-link.use": *llDetail
-    "tokens.components.tile-detail-button.type": &llTileBtn { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-07-13" }
-    "tokens.components.tile-detail-button.bg": *llTileBtn
-    "tokens.components.tile-detail-button.fg": *llTileBtn
-    "tokens.components.tile-detail-button.padding": *llTileBtn
-    "tokens.components.tile-detail-button.height": *llTileBtn
-    "tokens.components.tile-detail-button.font": *llTileBtn
-    "tokens.components.tile-detail-button.states": *llTileBtn
-    "tokens.components.tile-detail-button.use": *llTileBtn
-    "tokens.components.footer-link.type": &llFooter { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.bg": *llFooter
-    "tokens.components.footer-link.fg": *llFooter
-    "tokens.components.footer-link.height": *llFooter
-    "tokens.components.footer-link.font": *llFooter
-    "tokens.components.footer-link.states": *llFooter
-    "tokens.components.footer-link.use": *llFooter
-    "tokens.components.social-icon-link.type": &llSocial { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"28\"]", captured: "2026-07-13" }
-    "tokens.components.social-icon-link.bg": *llSocial
-    "tokens.components.social-icon-link.size": *llSocial
-    "tokens.components.social-icon-link.states": *llSocial
-    "tokens.components.social-icon-link.use": *llSocial
-    "tokens.components.filter-pill.type": &llPill { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li (class border border-secondary)", captured: "2026-07-13" }
-    "tokens.components.filter-pill.bg": *llPill
-    "tokens.components.filter-pill.fg": *llPill
-    "tokens.components.filter-pill.border": *llPill
-    "tokens.components.filter-pill.radius": *llPill
-    "tokens.components.filter-pill.padding": *llPill
-    "tokens.components.filter-pill.height": *llPill
-    "tokens.components.filter-pill.font": *llPill
-    "tokens.components.filter-pill.selected": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li (class bg-inverse text-white)", captured: "2026-07-13" }
-    "tokens.components.filter-pill.states": *llPill
-    "tokens.components.filter-pill.use": *llPill
-    "tokens.components.section-tab.type": &llTab { surface_id: home, source_id: home-live, method: computed-style, selector: "home::li (class flex-1 cursor-pointer whitespace-nowrap)", captured: "2026-07-13" }
-    "tokens.components.section-tab.bg": *llTab
-    "tokens.components.section-tab.fg": *llTab
-    "tokens.components.section-tab.radius": *llTab
-    "tokens.components.section-tab.padding": *llTab
-    "tokens.components.section-tab.height": *llTab
-    "tokens.components.section-tab.font": *llTab
-    "tokens.components.section-tab.states": *llTab
-    "tokens.components.section-tab.use": *llTab
-    "tokens.components.category-button.type": &llCat { surface_id: catalog, source_id: likelion-probe-catalog, method: live-state-probe, selector: "button.flex.w-[84px] 프로그래밍", captured: "2026-09-29" }
-    "tokens.components.category-button.bg": *llCat
-    "tokens.components.category-button.fg": *llCat
-    "tokens.components.category-button.radius": *llCat
-    "tokens.components.category-button.padding": *llCat
-    "tokens.components.category-button.size": *llCat
-    "tokens.components.category-button.font": *llCat
-    "tokens.components.category-button.hover": { surface_id: catalog, source_id: likelion-probe-catalog, method: live-state-probe, selector: "button.flex.w-[84px] 프로그래밍 at :hover", captured: "2026-09-29" }
-    "tokens.components.category-button.pressed": { surface_id: catalog, source_id: likelion-probe-catalog, method: live-state-probe, selector: "button.flex.w-[84px] 프로그래밍 at :active", captured: "2026-09-29" }
-    "tokens.components.category-button.focus": { surface_id: catalog, source_id: likelion-probe-catalog, method: live-state-probe, selector: "button.flex.w-[84px] at :focus-visible, Tab stop 10", captured: "2026-09-29" }
-    "tokens.components.category-button.states": *llCat
-    "tokens.components.category-button.use": *llCat
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  components_harvested: true
-  colors:
-    primary: "#ff6000"
-    foreground: "#222222"
-    muted: "#a3a3a3"
-    muted-secondary: "#737373"
-    hairline: "#e5e5e5"
-    promo: "#fcf4ee"
-    nav-border: "#d4d4d4"
-  typography:
-    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Observed home body copy; the computed Pretendard Variable face is unresolved, so no UI-family token is assigned." }
-    section-heading: { size: 32, weight: 700, lineHeight: 1.5, use: "Observed home course-section heading." }
-    search: { size: 20, weight: 600, lineHeight: 1.2, use: "Observed home course-search input (2026-07-13; the input was absent on 2026-09-29)." }
-  spacing: {}
-  rounded: { promo: 16 }
-  shadow: { none: "none" }
-  components:
-    promo-tile: { type: button, bg: "#fcf4ee", fg: "#222222", radius: "16px", padding: "40px", font: "16px / 400 / unresolved computed stack", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)", states: "default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the BUSINESS tile (real :hover, :active, and Tab to :focus-visible); transition 0s", use: "home::[data-omd-capture=\"13\"] clickable warm promotional tile; 310px rendered height." }
-    account-pill: { type: button, bg: "transparent", fg: "#222222", border: "1px solid #d4d4d4", radius: "9999px", padding: "10px 16px", font: "14px / 600 (label span; the button's own font is 16px / 400)", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)", states: "default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 (the mouse release was swallowed, so no login flow opened)", use: "home::[data-omd-capture=\"6\"] 로그인/회원가입 control; 43px rendered height; low-confidence collector classification." }
-    course-search: { type: input, fg: "#ff6000", font: "20px / 600 / unresolved computed stack", pressed: "border-color #2563eb (border-width 0, nothing drawn; 2026-07-13 pseudo-state sample)", focus: "border-color #2563eb (border-width 0, nothing drawn; 2026-07-13 pseudo-state sample)", states: "default plus focus and pressed pseudo-state samples captured 2026-07-13 only; the input was absent from https://likelion.net/ and /catalog on 2026-09-29, so nothing was re-measured", use: "home::[data-omd-capture=\"7\"] course-search input observed 2026-07-13; no complete interaction or result state was captured." }
-    nav-link: { type: tab, bg: "transparent", fg: "#262626", radius: "0px", padding: "20px 16px", height: "63px", font: "15px / 600 (label span; the anchor's own computed style is #222222 16px / 400)", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)", states: "default captured 2026-07-13 (전체강의; four more header links at padding 20px 12px); hover, pressed and keyboard focus measured 2026-09-29 on 전체강의", use: "Header course-navigation link (전체강의, 부트캠프국비지원, AI교육, 기업교육, AX 해커톤)" }
-    section-detail-link: { type: tab, bg: "transparent", fg: "#a3a3a3", padding: "0px", height: "24px", font: "16px / 500 (label span; the anchor's own computed style is #222222 16px / 400)", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)", states: "default captured 2026-07-13 (two links); hover, pressed and keyboard focus measured 2026-09-29 on the first", use: "Section-heading 자세히 보기 link (to /catalog and the bootcamp site)" }
-    tile-detail-button: { type: button, bg: "transparent", fg: "#a3a3a3", padding: "0px", height: "21px", font: "16px / 600", states: "default captured 2026-07-13 and present in the 2026-09-29 survey; nested inside each promo-tile anchor; no pointer-state sample", use: "자세히 보기 label button inside each promo tile" }
-    footer-link: { type: tab, bg: "transparent", fg: "#222222", height: "16px", font: "14px / 600 / 21px", states: "default captured 2026-07-13 (11 links); the 2026-09-29 survey reads the same style; no pointer-state sample", use: "Footer column link (전체 강의, 국비지원 부트캠프, AI교육, 기업교육, AX 해커톤 … in the 2026-09-29 survey)" }
-    social-icon-link: { type: button, bg: "transparent", size: "24px x 24px", states: "default captured 2026-07-13 (five icon links); no pointer-state sample", use: "Footer social icon link (Instagram, YouTube, a Kakao channel, Brunch and Facebook in the 2026-09-29 survey); icon colour not read" }
-    filter-pill: { type: tab, bg: "transparent", fg: "#222222", border: "1px #e5e5e5", radius: "9999px", padding: "8px 12px", height: "42px", font: "16px / 400", selected: "bg #1e1e1e fg #ffffff, no border (40px tall)", states: "default and selected captured 2026-07-13 (one selected and four unselected list items); no pointer-state sample; the 2026-09-29 survey did not list them", use: "Home course-list filter pill (li)" }
-    section-tab: { type: tab, bg: "rgba(255,243,235,0.1)", fg: "#222222", radius: "12px", padding: "12px 16px", height: "48px", font: "16px / 400", states: "default captured 2026-07-13 (three list items, 257px wide); no pointer-state sample; the 2026-09-29 survey did not list them", use: "Home three-way tab row (li); its labels were not captured" }
-    category-button: { type: button, bg: "transparent", fg: "#737373", radius: "0px", padding: "0px", size: "96px x 96px", font: "16px / 400 (label; the button's own colour is #222222)", hover: "no change among the compared properties (measured 2026-09-29)", pressed: "no change among the compared properties (measured 2026-09-29)", focus: "outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)", states: "measured 2026-09-29 only, on /catalog (a surface added to this reference that day); an image sits above the label", use: "Course-catalog category button (프로그래밍 …)" }
+colors:
+  primary: '#ff6000'
+  foreground: '#222222'
+  muted: '#a3a3a3'
+  muted-secondary: '#737373'
+  hairline: '#e5e5e5'
+  promo: '#fcf4ee'
+  nav-border: '#d4d4d4'
+typography:
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Observed home body copy; the computed Pretendard Variable face is unresolved, so no UI-family token is assigned.
+  section-heading:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Observed home course-section heading.
+  search:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.2
+    use: Observed home course-search input (2026-07-13; the input was absent on 2026-09-29).
+rounded:
+  promo: 16px
+components:
+  promo-tile:
+    type: button
+    backgroundColor: '#fcf4ee'
+    textColor: '#222222'
+    rounded: 16px
+    padding: 40px
+    typography: 16px / 400 / unresolved computed stack
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)
+    states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the BUSINESS tile (real :hover, :active, and Tab to :focus-visible); transition 0s
+    use: home::[data-omd-capture="13"] clickable warm promotional tile; 310px rendered height.
+  account-pill:
+    type: button
+    backgroundColor: transparent
+    textColor: '#222222'
+    border: '1px solid #d4d4d4'
+    rounded: 9999px
+    padding: 10px 16px
+    typography: 14px / 600 (label span; the button's own font is 16px / 400)
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)
+    states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 (the mouse release was swallowed, so no login flow opened)
+    use: home::[data-omd-capture="6"] 로그인/회원가입 control; 43px rendered height; low-confidence collector classification.
+  course-search:
+    type: input
+    textColor: '#ff6000'
+    typography: 20px / 600 / unresolved computed stack
+    pressed: 'border-color #2563eb (border-width 0, nothing drawn; 2026-07-13 pseudo-state sample)'
+    focus: 'border-color #2563eb (border-width 0, nothing drawn; 2026-07-13 pseudo-state sample)'
+    states: default plus focus and pressed pseudo-state samples captured 2026-07-13 only; the input was absent from https://likelion.net/ and /catalog on 2026-09-29, so nothing was re-measured
+    use: home::[data-omd-capture="7"] course-search input observed 2026-07-13; no complete interaction or result state was captured.
+  nav-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#262626'
+    rounded: 0px
+    padding: 20px 16px
+    height: 63px
+    typography: '15px / 600 (label span; the anchor''s own computed style is #222222 16px / 400)'
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)
+    states: default captured 2026-07-13 (전체강의; four more header links at padding 20px 12px); hover, pressed and keyboard focus measured 2026-09-29 on 전체강의
+    use: Header course-navigation link (전체강의, 부트캠프국비지원, AI교육, 기업교육, AX 해커톤)
+  section-detail-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#a3a3a3'
+    padding: 0px
+    height: 24px
+    typography: '16px / 500 (label span; the anchor''s own computed style is #222222 16px / 400)'
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)
+    states: default captured 2026-07-13 (two links); hover, pressed and keyboard focus measured 2026-09-29 on the first
+    use: Section-heading 자세히 보기 link (to /catalog and the bootcamp site)
+  tile-detail-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#a3a3a3'
+    padding: 0px
+    height: 21px
+    typography: 16px / 600
+    states: default captured 2026-07-13 and present in the 2026-09-29 survey; nested inside each promo-tile anchor; no pointer-state sample
+    use: 자세히 보기 label button inside each promo tile
+  footer-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#222222'
+    height: 16px
+    typography: 14px / 600 / 21px
+    states: default captured 2026-07-13 (11 links); the 2026-09-29 survey reads the same style; no pointer-state sample
+    use: Footer column link (전체 강의, 국비지원 부트캠프, AI교육, 기업교육, AX 해커톤 … in the 2026-09-29 survey)
+  social-icon-link:
+    type: button
+    backgroundColor: transparent
+    size: 24px x 24px
+    states: default captured 2026-07-13 (five icon links); no pointer-state sample
+    use: Footer social icon link (Instagram, YouTube, a Kakao channel, Brunch and Facebook in the 2026-09-29 survey); icon colour not read
+  filter-pill:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#222222'
+    border: '1px #e5e5e5'
+    rounded: 9999px
+    padding: 8px 12px
+    height: 42px
+    typography: 16px / 400
+    selected: 'bg #1e1e1e fg #ffffff, no border (40px tall)'
+    states: default and selected captured 2026-07-13 (one selected and four unselected list items); no pointer-state sample; the 2026-09-29 survey did not list them
+    use: Home course-list filter pill (li)
+  section-tab:
+    type: tab
+    backgroundColor: rgba(255,243,235,0.1)
+    textColor: '#222222'
+    rounded: 12px
+    padding: 12px 16px
+    height: 48px
+    typography: 16px / 400
+    states: default captured 2026-07-13 (three list items, 257px wide); no pointer-state sample; the 2026-09-29 survey did not list them
+    use: Home three-way tab row (li); its labels were not captured
+  category-button:
+    type: button
+    backgroundColor: transparent
+    textColor: '#737373'
+    rounded: 0px
+    padding: 0px
+    size: 96px x 96px
+    typography: '16px / 400 (label; the button''s own colour is #222222)'
+    hover: no change among the compared properties (measured 2026-09-29)
+    pressed: no change among the compared properties (measured 2026-09-29)
+    focus: outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)
+    states: measured 2026-09-29 only, on /catalog (a surface added to this reference that day); an image sits above the label
+    use: Course-catalog category button (프로그래밍 …)
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
 
 # Design System Inspiration of LikeLion
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 LikeLion (멋쟁이사자처럼) is a Korean programming-education brand whose public home surface currently groups course discovery, K-Digital Training bootcamps, AI education, and business education. Its official history page traces the brand to 2013 and the “HACK YOUR LIFE!” idea of turning an individual’s idea into something they can make; its current business page frames learning around practical problems, mentoring, and shared experience. The supplied desktop homepage translates that welcoming, action-oriented positioning into a restrained field of `#222222` copy and `#e5e5e5` hairlines, with `#ff6000` concentrated in the search/attention treatment and `#fcf4ee` warming a large promotional tile. The public design-system URL is retained as official documentation, but this collector run reached its Storybook documentation chrome rather than component stories; it is not used to fill in a generic component library. On 2026-09-29 the homepage no longer carried the course-search input (§4).
 
@@ -210,13 +166,34 @@ The reference deliberately keeps the two domains distinct. Homepage measurements
 - The verified geometry is local: a 16px promo tile, a 9999px navigation-account pill, 9999px filter pills and a 12px-radius tab row.
 - The observed marketing computed face is unresolved; a loaded Pretendard observation on documentation chrome is not promoted to a homepage UI-family token.
 
-## Primary tasks
+### Primary tasks
 
 - Browse courses, bootcamps, and AI education in one place
 - Search the homepage for a course to take (the July 2026 search input; absent on 2026-09-29)
 - Weigh up a business education program for a team
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+LikeLion’s official history page describes an online/offline programming-education brand that began in 2013 around the value of realizing one’s own idea. It presents “HACK YOUR LIFE!” as the through-line, then describes a move into a commercial corporation and additional education initiatives. The current public home surface shows the present offer as a mix of courses, bootcamps, AI education, and business education; the business surface describes AX learning as problem-led, mentored, and collaborative. [Official history](https://k-digital.likelion.net/364c521d-31d4-425e-a281-7d056ce3f8a6) · [Business education](https://likelion.net/b2b)
+
+The orange-and-warm-neutral homepage is a separately observed public course-marketing expression of that educational role. It should not be read as proof of a single interface across the learner product, business program, or documentation site.
+
+### Principles
+
+1. **Make ideas buildable.** The official history frames programming as a means to realize an individual idea. *UI implication:* describe a learning path in concrete terms; do not manufacture product features or outcomes.
+2. **Start from practical problems.** The business surface says its AI learning begins with members’ work problems. *UI implication:* lead educational copy with the task or problem being addressed.
+3. **Learn through repetition and sharing.** The published process names repeated problem solving and experience sharing. *UI implication:* where learning progress is evidenced, make the next activity and shared context legible.
+4. **Keep domains honest.** Homepage, business education, and documentation serve different contexts. *UI implication:* do not carry a token or component from one domain into another without direct evidence.
+
+### Personas
+
+The first-party sources in this pass establish learner and organisation-facing education contexts, but do not supply enough persona research to support invented demographic archetypes.
+
+- **Individual learners:** public course and bootcamp visitors. Task, constraints, and needs are not established without user-provided research.
+- **Organisation learning teams:** business/AX education decision-makers and participants. Task, constraints, and needs are not established without user-provided research.
+- **Documentation readers:** public Storybook/documentation visitors. Task and component-story evidence are not established here.
+
+## Colors
 
 ### Observed homepage roles
 
@@ -232,7 +209,7 @@ The reference deliberately keeps the two domains distinct. Homepage measurements
 
 The supplied homepage evidence does not establish a filled orange CTA, orange hover color, semantic success/error palette, a neutral scale, or a general canvas token. Two component-level values are not palette roles: the selected filter pill's `#1e1e1e` fill (2026-07-13) and the header link label `#262626` (2026-09-29). Documentation-chrome values such as `#6b7583`, `#4e5967`, `#f3f4f6`, and `#e5e7ea` are not marketed as LikeLion product tokens here.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -253,7 +230,29 @@ The supplied homepage evidence does not establish a filled orange CTA, orange ho
 
 Do not substitute a system font and call it Pretendard. The exact marketing computed family remains unresolved until matching FontFaceSet/source evidence is captured on that surface.
 
-## 4. Component Stylings
+## Layout
+
+The supplied home surface is a 1440×900 desktop capture. Its reliable layout observations are local: the course-search input rendered 731px wide in the 2026-07-13 capture (it was absent on 2026-09-29), the promo tile rendered 310px high with 40px padding, and the account pill rendered 43px high. No public mobile viewport, course-grid rule, carousel behavior, sticky header behavior, or breakpoint was captured, so none is specified.
+
+### Responsive Behavior
+
+No mobile viewport or responsive transition was captured. Touch-target, grid, menu-collapse, carousel-scroll, and breakpoint rules require a public responsive observation before they can be specified.
+
+## Elevation & Depth
+
+Representative homepage and documentation-chrome samples report `box-shadow: none`. The observed promo tile is distinguished by `#fcf4ee`, type, and a 16px radius rather than an elevation value. No global shadow scale or overlay treatment is established.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+No motion, transition, or user-flow state was supplied for the homepage. Selector-backed public motion evidence is required before any is specified. The five controls probed on 2026-09-29 compute `transition: all 0s`.
+
+## Components
 
 Rest values below come from the supplied `home` desktop capture of `https://likelion.net/` (2026-07-13) unless marked. Hover, pressed and keyboard focus come from a live probe on 2026-09-29 (real `:hover`, `:active`, and Tab to `:focus-visible`) on the homepage and on `/catalog`, which is added as its own surface for the one control measured there. On the five probed controls, hover and press change nothing among the compared properties, and keyboard focus removes the browser ring (`outline-style: none`) with no other visible indication among the compared properties; these are dated measured absences, not tokens. The embedded third-party chat widget is excluded. Documentation-chrome controls are excluded, and the course-search focus/pressed rows are July pseudo-state samples, not a product-state contract.
 
@@ -379,78 +378,7 @@ is the separate `docs` surface, and only its documentation chrome was captured. 
 above carries a measured value here. (Corrected 2026-09-29; this note previously placed the
 §4 captures on the Storybook host.)
 
-## 5. Layout Principles
-
-The supplied home surface is a 1440×900 desktop capture. Its reliable layout observations are local: the course-search input rendered 731px wide in the 2026-07-13 capture (it was absent on 2026-09-29), the promo tile rendered 310px high with 40px padding, and the account pill rendered 43px high. No public mobile viewport, course-grid rule, carousel behavior, sticky header behavior, or breakpoint was captured, so none is specified.
-
-## 6. Depth & Elevation
-
-Representative homepage and documentation-chrome samples report `box-shadow: none`. The observed promo tile is distinguished by `#fcf4ee`, type, and a 16px radius rather than an elevation value. No global shadow scale or overlay treatment is established.
-
-## 7. Do's and Don'ts
-
-### Do
-
-- Keep the observed homepage scope separate from documentation chrome and official narrative sources.
-- Use `#ff6000` only for the observed attention/search treatment unless another component has its own selector-backed evidence.
-- Preserve the warm promo tile’s `#fcf4ee`, 16px radius, and 40px padding only in its captured homepage context.
-- Treat `Pretendard Variable` on the homepage as unresolved until exact loaded-face/source corroboration exists.
-
-### Don't
-
-- Do not turn the public Storybook’s documentation controls into LikeLion product components.
-- Do not recreate historical ActionButton, chip, tab, tag, toast, dialog, hover, disabled, or error variants without current selector and state provenance.
-- Do not label Gotham, HeirofLight, Noto Sans Mono, Nunito Sans, or slick as a live UI family.
-- Do not derive a semantic palette, breakpoint, or motion system from this two-surface desktop bundle.
-
-## 8. Responsive Behavior
-
-No mobile viewport or responsive transition was captured. Touch-target, grid, menu-collapse, carousel-scroll, and breakpoint rules require a public responsive observation before they can be specified.
-
-## 9. Agent Prompt Guide
-
-### Verified prompt boundary
-
-“Recreate only the observed LikeLion desktop homepage elements: `#222222` foreground with `#e5e5e5` hairlines, a warm `#fcf4ee` promotional tile with 16px radius and 40px padding, the outlined login pill, and rounded filter pills (`#1e1e1e` fill when selected). Add the `#ff6000` 20px/600 course-search input only when recreating the July 2026 homepage; it was absent on 2026-09-29. Do not add an orange CTA, Storybook component set, mobile layout, semantic states, or a Pretendard substitution.”
-
-## 10. Voice & Tone
-
-LikeLion’s official materials are practical, encouraging, and learning-oriented. The history page’s “HACK YOUR LIFE!” framing pairs self-directed making with programming education; the current business page describes learning through repeated problem solving, experience sharing, and a shift from AI as a tool to AI as a collaborator. These are brand and educational-context sources, not homepage microcopy rules.
-
-| Do | Don't |
-|---|---|
-| State the learner’s practical next step plainly. | Attribute unobserved error, enrollment, or support copy to the product. |
-| Connect technical learning to a problem the learner or team can work on. | Convert corporate-training language into a visual token. |
-| Keep the distinction between public course, business, and documentation surfaces. | Invent urgency, guarantees, or personal outcomes. |
-
-**Source-grounded samples.**
-
-- “HACK YOUR LIFE!” — official history-page slogan. <!-- verified: k-digital.likelion.net 2026-07-13 -->
-- “문제 해결 반복 및 경험 공유” — official business-education process label. <!-- verified: likelion.net/b2b 2026-07-13 -->
-- “AI = 동료” — official business-education process label. <!-- verified: likelion.net/b2b 2026-07-13 -->
-
-## 11. Brand Narrative
-
-LikeLion’s official history page describes an online/offline programming-education brand that began in 2013 around the value of realizing one’s own idea. It presents “HACK YOUR LIFE!” as the through-line, then describes a move into a commercial corporation and additional education initiatives. The current public home surface shows the present offer as a mix of courses, bootcamps, AI education, and business education; the business surface describes AX learning as problem-led, mentored, and collaborative. [Official history](https://k-digital.likelion.net/364c521d-31d4-425e-a281-7d056ce3f8a6) · [Business education](https://likelion.net/b2b)
-
-The orange-and-warm-neutral homepage is a separately observed public course-marketing expression of that educational role. It should not be read as proof of a single interface across the learner product, business program, or documentation site.
-
-## 12. Principles
-
-1. **Make ideas buildable.** The official history frames programming as a means to realize an individual idea. *UI implication:* describe a learning path in concrete terms; do not manufacture product features or outcomes.
-2. **Start from practical problems.** The business surface says its AI learning begins with members’ work problems. *UI implication:* lead educational copy with the task or problem being addressed.
-3. **Learn through repetition and sharing.** The published process names repeated problem solving and experience sharing. *UI implication:* where learning progress is evidenced, make the next activity and shared context legible.
-4. **Keep domains honest.** Homepage, business education, and documentation serve different contexts. *UI implication:* do not carry a token or component from one domain into another without direct evidence.
-
-## 13. Personas
-
-The first-party sources in this pass establish learner and organisation-facing education contexts, but do not supply enough persona research to support invented demographic archetypes.
-
-- **Individual learners:** public course and bootcamp visitors. Task, constraints, and needs are not established without user-provided research.
-- **Organisation learning teams:** business/AX education decision-makers and participants. Task, constraints, and needs are not established without user-provided research.
-- **Documentation readers:** public Storybook/documentation visitors. Task and component-story evidence are not established here.
-
-## 14. States
+### States
 
 No course-product empty, loading, success, disabled, or error state was captured. The only recorded interaction is a form-error sample on documentation chrome, which is not promoted to the course surface.
 
@@ -468,6 +396,50 @@ No course-product empty, loading, success, disabled, or error state was captured
 
 The 2026-09-29 probe read hover, pressed and keyboard focus on the promo tile, the account pill, the header link, the section detail link and the `/catalog` category button. These are recorded on each component as dated measured absences, not as tokens.
 
-## 15. Motion & Easing
+## Do's and Don'ts
 
-No motion, transition, or user-flow state was supplied for the homepage. Selector-backed public motion evidence is required before any is specified. The five controls probed on 2026-09-29 compute `transition: all 0s`.
+### Do
+
+- Keep the observed homepage scope separate from documentation chrome and official narrative sources.
+- Use `#ff6000` only for the observed attention/search treatment unless another component has its own selector-backed evidence.
+- Preserve the warm promo tile’s `#fcf4ee`, 16px radius, and 40px padding only in its captured homepage context.
+- Treat `Pretendard Variable` on the homepage as unresolved until exact loaded-face/source corroboration exists.
+
+### Don't
+
+- Do not turn the public Storybook’s documentation controls into LikeLion product components.
+- Do not recreate historical ActionButton, chip, tab, tag, toast, dialog, hover, disabled, or error variants without current selector and state provenance.
+- Do not label Gotham, HeirofLight, Noto Sans Mono, Nunito Sans, or slick as a live UI family.
+- Do not derive a semantic palette, breakpoint, or motion system from this two-surface desktop bundle.
+
+## Voice & Tone
+
+LikeLion’s official materials are practical, encouraging, and learning-oriented. The history page’s “HACK YOUR LIFE!” framing pairs self-directed making with programming education; the current business page describes learning through repeated problem solving, experience sharing, and a shift from AI as a tool to AI as a collaborator. These are brand and educational-context sources, not homepage microcopy rules.
+
+| Do | Don't |
+|---|---|
+| State the learner’s practical next step plainly. | Attribute unobserved error, enrollment, or support copy to the product. |
+| Connect technical learning to a problem the learner or team can work on. | Convert corporate-training language into a visual token. |
+| Keep the distinction between public course, business, and documentation surfaces. | Invent urgency, guarantees, or personal outcomes. |
+
+**Source-grounded samples.**
+
+- “HACK YOUR LIFE!” — official history-page slogan. <!-- verified: k-digital.likelion.net 2026-07-13 -->
+- “문제 해결 반복 및 경험 공유” — official business-education process label. <!-- verified: likelion.net/b2b 2026-07-13 -->
+- “AI = 동료” — official business-education process label. <!-- verified: likelion.net/b2b 2026-07-13 -->
+
+## Agent Prompt Guide
+
+### Verified prompt boundary
+
+“Recreate only the observed LikeLion desktop homepage elements: `#222222` foreground with `#e5e5e5` hairlines, a warm `#fcf4ee` promotional tile with 16px radius and 40px padding, the outlined login pill, and rounded filter pills (`#1e1e1e` fill when selected). Add the `#ff6000` 20px/600 course-search input only when recreating the July 2026 homepage; it was absent on 2026-09-29. Do not add an orange CTA, Storybook component set, mobile layout, semantic states, or a Pretendard substitution.”
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `account-pill`.** Text `#222222` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `nav-link`.** Text `#262626` on `#00000000` measures 1.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-link`.** Text `#222222` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `filter-pill`.** Text `#222222` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `category-button`.** Text `#737373` on `#00000000` measures 4.43:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

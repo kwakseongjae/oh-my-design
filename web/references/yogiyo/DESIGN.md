@@ -1,70 +1,170 @@
 ---
-id: yogiyo
 name: Yogiyo
-country: KR
-category: consumer-tech
-homepage: "https://www.yogiyo.co.kr"
-primary_color: "#FA0050"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=yogiyo.co.kr&sz=128"
-verified: "2026-05-27"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#fa0050"
-    primary-deep: "#e00048"
-    canvas: "#ffffff"
-    surface: "#f5f5f7"
-    surface-strong: "#ececef"
-    heading: "#1a1a1a"
-    text-strong: "#333333"
-    body: "#666666"
-    text-secondary: "#999999"
-    text-tertiary: "#bbbbbb"
-    border: "#dddddd"
-    divider: "#ececef"
-    rating: "#ffb300"
-    success: "#21c17a"
-    warning: "#ff8a00"
-    error: "#f5444c"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Pretendard", mono: "Pretendard" }
-    hero:        { size: 28, weight: 700, lineHeight: 1.3, use: "Event/promo banners, onboarding" }
-    section:     { size: 20, weight: 700, lineHeight: 1.35, use: "Row headers" }
-    restaurant:  { size: 16, weight: 600, lineHeight: 1.4, use: "Restaurant card title" }
-    menu:        { size: 15, weight: 500, lineHeight: 1.4, use: "Menu item title" }
-    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "Descriptions, address" }
-    label:       { size: 16, weight: 600, lineHeight: 1.4, use: "Button labels (주문하기)" }
-    caption:     { size: 12, weight: 400, lineHeight: 1.4, use: "Delivery time, review count, fine print" }
-    price:       { size: 19, weight: 700, lineHeight: 1.2, use: "Item/cart total — tabular numerals" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 6, md: 12, lg: 16, full: 999 }
-  shadow:
-    card: "0px 2px 8px rgba(0,0,0,0.06)"
-    elevated: "0px 2px 12px rgba(0,0,0,0.08)"
-    toast: "0px 4px 12px rgba(0,0,0,0.16)"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#fa0050", fg: "#ffffff", radius: 12, padding: "14px 20px", font: "16/600", use: "주문하기, 결제하기 — full-width sticky CTA" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#fa0050", radius: 12, padding: "14px 20px", font: "16/600", use: "쿠폰 받기, 메뉴 더보기" }
-    button-neutral: { type: button, bg: "#f5f5f7", fg: "#333333", radius: 12, padding: "14px 20px", font: "16/600", use: "취소, 닫기" }
-    search-field: { type: input, bg: "#f5f5f7", fg: "#333333", radius: 12, padding: "14px 16px", font: "16/400", use: "음식, 가게 검색" }
-    restaurant-card: { type: card, bg: "#ffffff", radius: 16, padding: "16px", use: "Browse workhorse — photo, name, rating, ETA" }
-    category-tile: { type: card, bg: "#f5f5f7", radius: 12, padding: "12px", use: "치킨/피자/한식 grid tiles" }
-    discount-badge: { type: badge, bg: "#fa0050", fg: "#ffffff", radius: 6, padding: "2px 6px", font: "11/700", use: "할인/쿠폰 promotion flag" }
-    filter-chip: { type: badge, bg: "#f5f5f7", fg: "#666666", radius: 999, padding: "6px 14px", font: "13/500", use: "빠른배달/무료배달/별점순 filters" }
-    top-tab: { type: tab, fg: "#999999", font: "15/600", active: "#fa0050 text + 2px bottom underline #fa0050", use: "배달/포장/요편의점 switcher" }
-    bottom-tab: { type: tab, fg: "#bbbbbb", font: "11/500", active: "#fa0050 icon + label", use: "홈/검색/찜/주문내역/MY" }
-    snackbar: { type: toast, bg: "#1a1a1a", fg: "#ffffff", radius: 12, padding: "12px 16px", font: "14/500", use: "Transient feedback, 3s auto-dismiss" }
+colors:
+  primary: '#fa0050'
+  primary-deep: '#e00048'
+  canvas: '#ffffff'
+  surface: '#f5f5f7'
+  surface-strong: '#ececef'
+  heading: '#1a1a1a'
+  text-strong: '#333333'
+  body: '#666666'
+  text-secondary: '#999999'
+  text-tertiary: '#bbbbbb'
+  border: '#dddddd'
+  divider: '#ececef'
+  rating: '#ffb300'
+  success: '#21c17a'
+  warning: '#ff8a00'
+  error: '#f5444c'
+  on-primary: '#ffffff'
+typography:
+  hero:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Event/promo banners, onboarding
+  section:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.35
+    use: Row headers
+  restaurant:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Restaurant card title
+  menu:
+    fontSize: 15px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Menu item title
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Descriptions, address
+  label:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Button labels (주문하기)
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Delivery time, review count, fine print
+  price:
+    fontSize: 19px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Item/cart total — tabular numerals
+rounded:
+  sm: 6px
+  md: 12px
+  lg: 16px
+  full: 999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#fa0050'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 14px 20px
+    typography: 16/600
+    use: 주문하기, 결제하기 — full-width sticky CTA
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#fa0050'
+    rounded: 12px
+    padding: 14px 20px
+    typography: 16/600
+    use: 쿠폰 받기, 메뉴 더보기
+  button-neutral:
+    type: button
+    backgroundColor: '#f5f5f7'
+    textColor: '#333333'
+    rounded: 12px
+    padding: 14px 20px
+    typography: 16/600
+    use: 취소, 닫기
+  search-field:
+    type: input
+    backgroundColor: '#f5f5f7'
+    textColor: '#333333'
+    rounded: 12px
+    padding: 14px 16px
+    typography: 16/400
+    use: 음식, 가게 검색
+  restaurant-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    padding: 16px
+    use: Browse workhorse — photo, name, rating, ETA
+  category-tile:
+    type: card
+    backgroundColor: '#f5f5f7'
+    rounded: 12px
+    padding: 12px
+    use: 치킨/피자/한식 grid tiles
+  discount-badge:
+    type: badge
+    backgroundColor: '#fa0050'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 2px 6px
+    typography: 11/700
+    use: 할인/쿠폰 promotion flag
+  filter-chip:
+    type: badge
+    backgroundColor: '#f5f5f7'
+    textColor: '#666666'
+    rounded: 999px
+    padding: 6px 14px
+    typography: 13/500
+    use: 빠른배달/무료배달/별점순 filters
+  top-tab:
+    type: tab
+    textColor: '#999999'
+    typography: 15/600
+    active: '#fa0050 text + 2px bottom underline #fa0050'
+    use: 배달/포장/요편의점 switcher
+  bottom-tab:
+    type: tab
+    textColor: '#bbbbbb'
+    typography: 11/500
+    active: '#fa0050 icon + label'
+    use: 홈/검색/찜/주문내역/MY
+  snackbar:
+    type: toast
+    backgroundColor: '#1a1a1a'
+    textColor: '#ffffff'
+    rounded: 12px
+    padding: 12px 16px
+    typography: 14/500
+    use: Transient feedback, 3s auto-dismiss
+fonts:
+  roles:
+    sans: Pretendard
+    mono: Pretendard
 ---
 
 # Design System Inspiration of Yogiyo (요기요)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Yogiyo is Korea's iconic red-logo food-delivery app — the red mark you see on every street, in every neighborhood, the one that became shorthand for "let's order in." Its visual identity is built on a single hot, joyful **red-pink `#FA0050`** that floods CTAs, the active state, and the brand mark, set against a bright white canvas with clean black-and-gray text. Where other delivery apps lean playful-cartoonish or coldly utilitarian, Yogiyo aims for *appetite plus joy*: the red reads warm and energetic, almost magenta, the color of craving and fun rather than alarm. The brand explicitly frames itself around delivering "joy to everyday life," and the design's job is to make the gap between "I'm hungry" and "it's on the way" feel quick, easy, and a little delightful.
 
@@ -81,7 +181,7 @@ Typography is the modern Korean product stack — **Pretendard**-led with Apple 
 - Joyful, appetite-led tone — quick and a little delightful, not cartoonish or cold
 - Numbers (price, delivery fee, min order, ETA, rating) as first-class tabular typography
 
-## Primary tasks
+### Primary tasks
 
 - Browse restaurants by category like chicken, pizza, or Korean
 - Compare rating, delivery time, minimum order, and fee
@@ -89,7 +189,34 @@ Typography is the modern Korean product stack — **Pretendard**-led with Apple 
 - Add menu items to the cart and place the order
 - Follow the order status from cooking through to delivery
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Yogiyo (요기요) launched in **2012** and became one of Korea's two defining food-delivery apps, its red mark a fixture of Korean street and screen life. Long operated under the global **Delivery Hero** group (alongside the later acquisition that consolidated the market), Yogiyo built its identity around the simple, joyful promise of getting good food to your door fast. A brand renewal swapped the English "Yogiyo" wordmark for the Korean `요기요`, leaning into Hangul-first communication, rounded friendly forms, and a positioning as a *lifestyle platform that delivers joy to everyday life* — not merely a transaction utility.
+
+The design follows the joy thesis directly. The hot red-pink `#FA0050` is the color of craving and fun; bright food photography does the selling; the chrome stays soft, rounded, and out of the way so the path from hunger to order is fast and pleasant. A more recent UI renewal pushed personalization hard — "the AI app that knows you best" — surfacing tailored recommendation rows and simplified category icons to shorten the distance between opening the app and tapping `주문하기`.
+
+What Yogiyo refuses: the cold, spreadsheet-like utility of a pure logistics tool, and the over-cute cartoonishness that would undercut appetite. It sits in the warm middle — joyful and appetizing, but clean and quick — where the red means "go" and the food does the talking.
+
+### Principles
+
+1. **Food photos carry the craving.** Imagery supplies color and appetite; chrome whispers. *UI implication:* bright photos on rounded cards over a white canvas; the UI stays calm so the food pops.
+2. **Red is forward motion.** `#FA0050` marks the next step and the deal. *UI implication:* one red CTA per screen, plus the 할인 badge and active state — never a background flood.
+3. **Numbers decide.** Ordering is a constant small-number calculation. *UI implication:* rating, delivery time, min order, and fee are high-contrast, tabular, glanceable on every card.
+4. **Speed is the promise.** The shortest path from hungry to ordered wins. *UI implication:* personalized recommendations up top, a persistent sticky cart bar, no superfluous steps.
+5. **Joyful, not cute.** The brand delivers joy but stays clean and trustworthy. *UI implication:* warm `해요체`, soft rounded forms, no cartoon overload; trust features (안심센터/클린리뷰) visible.
+6. **Korean-first.** The Hangul `요기요` wordmark is intentional. *UI implication:* lead with Korean copy; English is romanization/brand only.
+
+### Personas
+
+*Personas are fictional archetypes informed by publicly described Korean food-delivery user segments, not individual people.*
+
+**예진 (Ye-jin), 26, Seoul.** Orders 2–3 times a week, often 1인분 dinners after work. Decides by rating, delivery time, and 무료배달 filter in seconds. Loves the recommendation row that "just knows" what she wants. Taps the red 주문하기 and tracks the rider.
+
+**상철 (Sang-cheol), 41, Incheon.** Orders family dinners on weekends. Browses by category (치킨/피자/한식), compares min-order and delivery fees, hunts for 할인/쿠폰 badges. Trusts 클린리뷰 to weed out fake ratings.
+
+**다현 (Da-hyun), 22, Daegu.** Student, budget-conscious. Filters hard for 무료배달 and discounts, reads reviews carefully. The red deal badges are what catch her eye first; speed and price decide the order.
+
+## Colors
 
 Yogiyo red-pink `#FA0050` is the brief-provided/widely-recognized brand color (dark-pink/red). The live site (WebFetch 2026-05-27) confirmed the red-led, category-organized, trust-forward layout but did not expose a token doc; product grays/blacks below follow modern Korean app conventions. Treat product hexes as conventional, the red as the verified anchor.
 
@@ -121,7 +248,7 @@ Yogiyo red-pink `#FA0050` is the brief-provided/widely-recognized brand color (d
 - **Warning** (`#FF8A00`): Closing-soon, wait-time advisories.
 - **Error** (`#F5444C`): Payment failure, sold-out, destructive actions.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif`
@@ -147,7 +274,131 @@ Yogiyo red-pink `#FA0050` is the brief-provided/widely-recognized brand color (d
 - **Sentence-case, no all-caps** — Korean-first, friendly and appetizing.
 - **Glanceable cards** — the most decision-relevant numbers (rating, delivery time, min order, delivery fee) are high-contrast on each restaurant card.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4, 8, 12, 16, 20, 24, 32
+- Card padding: 16px; card-to-card gap: 12px; section gap: 24px
+
+### Grid & Container
+- Browse: vertical stack of full-width restaurant cards + a category-tile grid up top
+- Mobile-first single column; web mirrors in a centered ~1024px column
+- Sticky bottom cart bar on the menu screen
+
+### Whitespace Philosophy
+- **Food photos carry the craving.** Bright imagery supplies color; chrome stays calm and rounded.
+- **Decision density.** Restaurant cards pack the decision-relevant numbers (rating, time, min order, fee) high-contrast and scannable.
+- **One clear path forward.** Open → category/recommendation → restaurant → cart → order; the red CTA marks the next step at every stage.
+
+### Border Radius Scale
+- Compact (6px): 할인 badges
+- Comfortable (12px): buttons, inputs, category tiles
+- Large (16px): restaurant + cart cards
+- Pill (999px): filter chips
+- Circle (50%): category icons, avatars
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile (Primary) | <768px | Single-column cards, category-tile grid, bottom tab + sticky cart bar |
+| Tablet | 768–1024px | 2-up card grid, condensed nav |
+| Desktop (Web) | >1024px | Centered ~1024px column, restaurant list + detail |
+
+#### Touch Targets
+- Primary CTA: ~52px tall
+- Restaurant card: full-width tap, min 88px height
+- Category tiles: 64–80px tap targets
+- Filter chips: min 44px height
+
+#### Collapsing Strategy
+- Sticky cart bar pins to the bottom across sizes
+- Category grid reflows columns by width
+- Menu detail → bottom sheet for options on mobile
+
+#### Image Behavior
+- Restaurant/food photos: `object-fit: cover`, 16px radius, lazy-loaded
+- Category icons: consistent 40–48px
+- Menu thumbnails: square, rounded
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow | Category tiles, list rows |
+| Subtle (1) | `0px 2px 8px rgba(0,0,0,0.06)` | Restaurant cards |
+| Card (2) | `0px 2px 12px rgba(0,0,0,0.08)` | Cart / receipt cards |
+| Sticky Bar (2) | `0px -2px 12px rgba(0,0,0,0.06)` | Bottom cart CTA bar |
+| Floating (3) | `0px 4px 12px rgba(0,0,0,0.16)` | Toasts, floating filters |
+
+**Shadow philosophy.** Soft, neutral, single-layer shadows give the rounded cards a gentle "tappable" lift on the bright canvas — appetizing, not clinical. No colored shadows. The sticky cart bar casts an upward shadow to read as floating above the menu list.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `0px 2px 8px rgba(0,0,0,0.06)`
+- `shadow.elevated`: `0px 2px 12px rgba(0,0,0,0.08)`
+- `shadow.toast`: `0px 4px 12px rgba(0,0,0,0.16)`
+
+## Motion & Easing
+
+Yogiyo's motion is friendly and snappy — quick, satisfying feedback that matches the "fast and a little delightful" promise, without bouncing into cartoon territory.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle/chip flips |
+| `motion-fast` | 150ms | Hover, press, cart-badge increment, chip select |
+| `motion-standard` | 250ms | Card expand, sheet open, tab switch |
+| `motion-slow` | 400ms | Banner crossfade, page-to-detail transition |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, toasts appearing |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-pop` | `cubic-bezier(0.34, 1.4, 0.64, 1)` | Reserved — add-to-cart confirmation only |
+
+**Signature motions.**
+1. **Add-to-cart pop.** When an item is added, the cart badge increments with a brief 1.15 scale-pop (`ease-pop`) in `#FA0050` — the one licensed bounce, a small reward for moving forward.
+2. **Sticky cart bar reveal.** The bottom order bar slides up from `y+40px` with `motion-standard / ease-enter` the moment the cart has an item; dismissal (empty cart) slides down with `ease-exit`.
+3. **Order-status timeline.** The 조리중 → 배달중 → 완료 progress advances with a calm fill animation over `motion-standard / ease-standard` — reassuring, never jumpy.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, pops and slides collapse to instant opacity/position changes; shimmer skeletons become static `#F5F5F7`. No exceptions.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 (UI tokens, §1–9): yogiyo.co.kr live WebFetch 2026-05-27 — red-led
+brand, category-organized browse (치킨/피자/한식/일식/1인분), trust features
+(안심센터/클린리뷰), 24시간 연중무휴 messaging, Korean-first CTAs. Yogiyo red
+`#FA0050` is the brief-provided / widely-recognized brand color. No public
+token doc surfaced; all §4 component values + product grays are CONVENTIONAL
+(modern Korean app norms), flagged in the §4 footer; red is the one verified
+anchor.
+
+Tier 2 (founding/narrative): Yogiyo launched 2012, operated under the global
+Delivery Hero group; brand renewal swapped the English wordmark for Hangul
+`요기요` and positioned as a joy-delivering lifestyle platform (SAM Seoul
+branding case). A 2024 UI renewal pushed "the AI app that knows you best"
+personalization (designcompass.org / Money Today coverage). General industry
+knowledge for the rest.
+
+Voice samples: `안심센터`, `클린리뷰` verified live. `장바구니에 담았어요`,
+`라이더님이 출발했어요`, `요기요가 추천해요`, `주문에 실패했어요...` are
+ILLUSTRATIVE patterns following Yogiyo's `해요체` register and joy/speed
+positioning; not confirmed verbatim.
+
+Personas (§13) are fictional archetypes. Any resemblance to specific users is
+unintended.
+-->
+
+## Components
 
 Yogiyo publishes no public component spec; geometry below follows the live red-led, category-organized layout (WebFetch 2026-05-27) + modern Korean app conventions. Treat as conventional, red as the verified anchor.
 
@@ -301,43 +552,23 @@ Yogiyo publishes no public component spec; geometry below follows the live red-l
 **Tier 2 sources:** getdesign.md/yogiyo — not checked. styles.refero.design — not checked. Brand-strategy context (SAM Seoul branding case; 2024 "AI app that knows you best" UI renewal) from brand search.
 **Conflicts unresolved:** No live computed-style token inspection (no public token doc surfaced); all §4 component values flagged conventional with the red `#FA0050` as the one verified anchor. A future UPDATE pass with browser inspection should re-confirm component geometry.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4, 8, 12, 16, 20, 24, 32
-- Card padding: 16px; card-to-card gap: 12px; section gap: 24px
+| State | Treatment |
+|---|---|
+| **Empty (no favorites)** | Single `#999999` warm line (`아직 찜한 가게가 없어요`) + one red CTA (`맛집 둘러보기`). No clutter. |
+| **Empty (search no results)** | `#999999` caption (`검색 결과가 없어요`) + a suggestion to change filters. |
+| **Empty (no restaurants in area)** | `#999999` line (`주변에 주문 가능한 가게가 없어요`); offer address change. |
+| **Loading (browse first paint)** | Restaurant-card skeleton blocks at `#F5F5F7` with shimmer toward `#ECECEF`, layout-matched. |
+| **Loading (placing order)** | Sticky CTA shows an inline spinner; button width preserved; no double-submit. |
+| **Error (order failed)** | Snackbar `#1A1A1A` white text (`주문에 실패했어요. 다시 시도해 주세요`), 3s. |
+| **Error (inline field)** | Input border `#F5444C`, caption below `#F5444C` 12px, one actionable sentence. |
+| **Success (added to cart)** | Snackbar (`장바구니에 담았어요`); cart badge increments in `#FA0050`. |
+| **Success (order placed)** | Confirmation surface — `#21C17A` checkmark, order summary + ETA, status timeline (조리중 → 배달중), single `확인`. |
+| **Skeleton** | `#F5F5F7` blocks at exact card dimensions, 16px radius, ~1.2s shimmer to `#ECECEF`. |
+| **Disabled (CTA)** | Red button → bg `#F5F5F7`, text `#BBBBBB`. Geometry unchanged. |
 
-### Grid & Container
-- Browse: vertical stack of full-width restaurant cards + a category-tile grid up top
-- Mobile-first single column; web mirrors in a centered ~1024px column
-- Sticky bottom cart bar on the menu screen
-
-### Whitespace Philosophy
-- **Food photos carry the craving.** Bright imagery supplies color; chrome stays calm and rounded.
-- **Decision density.** Restaurant cards pack the decision-relevant numbers (rating, time, min order, fee) high-contrast and scannable.
-- **One clear path forward.** Open → category/recommendation → restaurant → cart → order; the red CTA marks the next step at every stage.
-
-### Border Radius Scale
-- Compact (6px): 할인 badges
-- Comfortable (12px): buttons, inputs, category tiles
-- Large (16px): restaurant + cart cards
-- Pill (999px): filter chips
-- Circle (50%): category icons, avatars
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow | Category tiles, list rows |
-| Subtle (1) | `0px 2px 8px rgba(0,0,0,0.06)` | Restaurant cards |
-| Card (2) | `0px 2px 12px rgba(0,0,0,0.08)` | Cart / receipt cards |
-| Sticky Bar (2) | `0px -2px 12px rgba(0,0,0,0.06)` | Bottom cart CTA bar |
-| Floating (3) | `0px 4px 12px rgba(0,0,0,0.16)` | Toasts, floating filters |
-
-**Shadow philosophy.** Soft, neutral, single-layer shadows give the rounded cards a gentle "tappable" lift on the bright canvas — appetizing, not clinical. No colored shadows. The sticky cart bar casts an upward shadow to read as floating above the menu list.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#FA0050` for the single primary CTA, active state, and 할인 badge — energetic and sparing
@@ -353,32 +584,29 @@ Yogiyo publishes no public component spec; geometry below follows the live red-l
 - Don't introduce a second saturated brand hue competing with the red
 - Don't make the order path more than the necessary steps — speed is the promise
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile (Primary) | <768px | Single-column cards, category-tile grid, bottom tab + sticky cart bar |
-| Tablet | 768–1024px | 2-up card grid, condensed nav |
-| Desktop (Web) | >1024px | Centered ~1024px column, restaurant list + detail |
+Yogiyo speaks like a cheerful friend who knows exactly what you're craving — warm, upbeat, and a little fun, but quick to the point because you're hungry. The default register is soft-polite `해요체` (`장바구니에 담았어요`, `곧 도착해요`), friendly and bright. Korean is the unquestioned primary voice — the brand deliberately leads with the Hangul `요기요` wordmark. The copy is appetite-and-joy oriented, matched to the brand's "delivering joy to everyday life" thesis: it's never cold ("주문 처리 중") and never pushy, just quick, warm, and helpful.
 
-### Touch Targets
-- Primary CTA: ~52px tall
-- Restaurant card: full-width tap, min 88px height
-- Category tiles: 64–80px tap targets
-- Filter chips: min 44px height
+| Context | Tone |
+|---|---|
+| CTAs | Short Korean verb (`주문하기`, `장바구니 담기`, `결제하기`). |
+| Recommendation rows | Friendly, personal (`요기요가 추천해요`, `단골 맛집`, `이런 메뉴 어때요?`). |
+| Success toasts | Past-tense single sentence, soft ending (`장바구니에 담았어요`). No emoji on system chrome. |
+| Status updates | Reassuring present (`사장님이 조리하고 있어요`, `라이더님이 출발했어요`). |
+| Error messages | Blameless, specific, one action (`지금은 주문할 수 없어요. 영업시간을 확인해 주세요`). Never `오류가 발생했습니다`. |
+| Empty states | Warm + one action (`아직 찜한 가게가 없어요`). |
+| Legal / payment | Formal `합니다` register — the single exception. |
 
-### Collapsing Strategy
-- Sticky cart bar pins to the bottom across sizes
-- Category grid reflows columns by width
-- Menu detail → bottom sheet for options on mobile
+**Forbidden phrases.** `오류가 발생했습니다` (generic error), cold operational jargon (`주문 처리 중`), exclamation-as-pressure on CTAs, marketing superlatives stacked on chrome (`최고의 맛집!`), English-first strings on Korean surfaces, emoji on system-generated toasts.
 
-### Image Behavior
-- Restaurant/food photos: `object-fit: cover`, 16px radius, lazy-loaded
-- Category icons: consistent 40–48px
-- Menu thumbnails: square, rounded
+**Voice samples.**
+- `안심센터` — trust-feature label. <!-- verified: yogiyo.co.kr via WebFetch 2026-05-27 -->
+- `클린리뷰` — review-integrity feature label. <!-- verified: yogiyo.co.kr via WebFetch 2026-05-27 -->
+- `장바구니에 담았어요` — illustrative add-to-cart toast. <!-- illustrative: follows Yogiyo's `해요체` register; not verified verbatim -->
+- `라이더님이 출발했어요` — illustrative delivery-status copy. <!-- illustrative: not verified as live copy -->
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA / active / 할인: Yogiyo Red `#FA0050` (pressed `#E00048`)
@@ -402,122 +630,10 @@ Yogiyo publishes no public component spec; geometry below follows the live red-l
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Yogiyo speaks like a cheerful friend who knows exactly what you're craving — warm, upbeat, and a little fun, but quick to the point because you're hungry. The default register is soft-polite `해요체` (`장바구니에 담았어요`, `곧 도착해요`), friendly and bright. Korean is the unquestioned primary voice — the brand deliberately leads with the Hangul `요기요` wordmark. The copy is appetite-and-joy oriented, matched to the brand's "delivering joy to everyday life" thesis: it's never cold ("주문 처리 중") and never pushy, just quick, warm, and helpful.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Short Korean verb (`주문하기`, `장바구니 담기`, `결제하기`). |
-| Recommendation rows | Friendly, personal (`요기요가 추천해요`, `단골 맛집`, `이런 메뉴 어때요?`). |
-| Success toasts | Past-tense single sentence, soft ending (`장바구니에 담았어요`). No emoji on system chrome. |
-| Status updates | Reassuring present (`사장님이 조리하고 있어요`, `라이더님이 출발했어요`). |
-| Error messages | Blameless, specific, one action (`지금은 주문할 수 없어요. 영업시간을 확인해 주세요`). Never `오류가 발생했습니다`. |
-| Empty states | Warm + one action (`아직 찜한 가게가 없어요`). |
-| Legal / payment | Formal `합니다` register — the single exception. |
-
-**Forbidden phrases.** `오류가 발생했습니다` (generic error), cold operational jargon (`주문 처리 중`), exclamation-as-pressure on CTAs, marketing superlatives stacked on chrome (`최고의 맛집!`), English-first strings on Korean surfaces, emoji on system-generated toasts.
-
-**Voice samples.**
-- `안심센터` — trust-feature label. <!-- verified: yogiyo.co.kr via WebFetch 2026-05-27 -->
-- `클린리뷰` — review-integrity feature label. <!-- verified: yogiyo.co.kr via WebFetch 2026-05-27 -->
-- `장바구니에 담았어요` — illustrative add-to-cart toast. <!-- illustrative: follows Yogiyo's `해요체` register; not verified verbatim -->
-- `라이더님이 출발했어요` — illustrative delivery-status copy. <!-- illustrative: not verified as live copy -->
-
-## 11. Brand Narrative
-
-Yogiyo (요기요) launched in **2012** and became one of Korea's two defining food-delivery apps, its red mark a fixture of Korean street and screen life. Long operated under the global **Delivery Hero** group (alongside the later acquisition that consolidated the market), Yogiyo built its identity around the simple, joyful promise of getting good food to your door fast. A brand renewal swapped the English "Yogiyo" wordmark for the Korean `요기요`, leaning into Hangul-first communication, rounded friendly forms, and a positioning as a *lifestyle platform that delivers joy to everyday life* — not merely a transaction utility.
-
-The design follows the joy thesis directly. The hot red-pink `#FA0050` is the color of craving and fun; bright food photography does the selling; the chrome stays soft, rounded, and out of the way so the path from hunger to order is fast and pleasant. A more recent UI renewal pushed personalization hard — "the AI app that knows you best" — surfacing tailored recommendation rows and simplified category icons to shorten the distance between opening the app and tapping `주문하기`.
-
-What Yogiyo refuses: the cold, spreadsheet-like utility of a pure logistics tool, and the over-cute cartoonishness that would undercut appetite. It sits in the warm middle — joyful and appetizing, but clean and quick — where the red means "go" and the food does the talking.
-
-## 12. Principles
-
-1. **Food photos carry the craving.** Imagery supplies color and appetite; chrome whispers. *UI implication:* bright photos on rounded cards over a white canvas; the UI stays calm so the food pops.
-2. **Red is forward motion.** `#FA0050` marks the next step and the deal. *UI implication:* one red CTA per screen, plus the 할인 badge and active state — never a background flood.
-3. **Numbers decide.** Ordering is a constant small-number calculation. *UI implication:* rating, delivery time, min order, and fee are high-contrast, tabular, glanceable on every card.
-4. **Speed is the promise.** The shortest path from hungry to ordered wins. *UI implication:* personalized recommendations up top, a persistent sticky cart bar, no superfluous steps.
-5. **Joyful, not cute.** The brand delivers joy but stays clean and trustworthy. *UI implication:* warm `해요체`, soft rounded forms, no cartoon overload; trust features (안심센터/클린리뷰) visible.
-6. **Korean-first.** The Hangul `요기요` wordmark is intentional. *UI implication:* lead with Korean copy; English is romanization/brand only.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by publicly described Korean food-delivery user segments, not individual people.*
-
-**예진 (Ye-jin), 26, Seoul.** Orders 2–3 times a week, often 1인분 dinners after work. Decides by rating, delivery time, and 무료배달 filter in seconds. Loves the recommendation row that "just knows" what she wants. Taps the red 주문하기 and tracks the rider.
-
-**상철 (Sang-cheol), 41, Incheon.** Orders family dinners on weekends. Browses by category (치킨/피자/한식), compares min-order and delivery fees, hunts for 할인/쿠폰 badges. Trusts 클린리뷰 to weed out fake ratings.
-
-**다현 (Da-hyun), 22, Daegu.** Student, budget-conscious. Filters hard for 무료배달 and discounts, reads reviews carefully. The red deal badges are what catch her eye first; speed and price decide the order.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no favorites)** | Single `#999999` warm line (`아직 찜한 가게가 없어요`) + one red CTA (`맛집 둘러보기`). No clutter. |
-| **Empty (search no results)** | `#999999` caption (`검색 결과가 없어요`) + a suggestion to change filters. |
-| **Empty (no restaurants in area)** | `#999999` line (`주변에 주문 가능한 가게가 없어요`); offer address change. |
-| **Loading (browse first paint)** | Restaurant-card skeleton blocks at `#F5F5F7` with shimmer toward `#ECECEF`, layout-matched. |
-| **Loading (placing order)** | Sticky CTA shows an inline spinner; button width preserved; no double-submit. |
-| **Error (order failed)** | Snackbar `#1A1A1A` white text (`주문에 실패했어요. 다시 시도해 주세요`), 3s. |
-| **Error (inline field)** | Input border `#F5444C`, caption below `#F5444C` 12px, one actionable sentence. |
-| **Success (added to cart)** | Snackbar (`장바구니에 담았어요`); cart badge increments in `#FA0050`. |
-| **Success (order placed)** | Confirmation surface — `#21C17A` checkmark, order summary + ETA, status timeline (조리중 → 배달중), single `확인`. |
-| **Skeleton** | `#F5F5F7` blocks at exact card dimensions, 16px radius, ~1.2s shimmer to `#ECECEF`. |
-| **Disabled (CTA)** | Red button → bg `#F5F5F7`, text `#BBBBBB`. Geometry unchanged. |
-
-## 15. Motion & Easing
-
-Yogiyo's motion is friendly and snappy — quick, satisfying feedback that matches the "fast and a little delightful" promise, without bouncing into cartoon territory.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle/chip flips |
-| `motion-fast` | 150ms | Hover, press, cart-badge increment, chip select |
-| `motion-standard` | 250ms | Card expand, sheet open, tab switch |
-| `motion-slow` | 400ms | Banner crossfade, page-to-detail transition |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, toasts appearing |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-pop` | `cubic-bezier(0.34, 1.4, 0.64, 1)` | Reserved — add-to-cart confirmation only |
-
-**Signature motions.**
-1. **Add-to-cart pop.** When an item is added, the cart badge increments with a brief 1.15 scale-pop (`ease-pop`) in `#FA0050` — the one licensed bounce, a small reward for moving forward.
-2. **Sticky cart bar reveal.** The bottom order bar slides up from `y+40px` with `motion-standard / ease-enter` the moment the cart has an item; dismissal (empty cart) slides down with `ease-exit`.
-3. **Order-status timeline.** The 조리중 → 배달중 → 완료 progress advances with a calm fill animation over `motion-standard / ease-standard` — reassuring, never jumpy.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, pops and slides collapse to instant opacity/position changes; shimmer skeletons become static `#F5F5F7`. No exceptions.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 (UI tokens, §1–9): yogiyo.co.kr live WebFetch 2026-05-27 — red-led
-brand, category-organized browse (치킨/피자/한식/일식/1인분), trust features
-(안심센터/클린리뷰), 24시간 연중무휴 messaging, Korean-first CTAs. Yogiyo red
-`#FA0050` is the brief-provided / widely-recognized brand color. No public
-token doc surfaced; all §4 component values + product grays are CONVENTIONAL
-(modern Korean app norms), flagged in the §4 footer; red is the one verified
-anchor.
-
-Tier 2 (founding/narrative): Yogiyo launched 2012, operated under the global
-Delivery Hero group; brand renewal swapped the English wordmark for Hangul
-`요기요` and positioned as a joy-delivering lifestyle platform (SAM Seoul
-branding case). A 2024 UI renewal pushed "the AI app that knows you best"
-personalization (designcompass.org / Money Today coverage). General industry
-knowledge for the rest.
-
-Voice samples: `안심센터`, `클린리뷰` verified live. `장바구니에 담았어요`,
-`라이더님이 출발했어요`, `요기요가 추천해요`, `주문에 실패했어요...` are
-ILLUSTRATIVE patterns following Yogiyo's `해요체` register and joy/speed
-positioning; not confirmed verbatim.
-
-Personas (§13) are fictional archetypes. Any resemblance to specific users is
-unintended.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#fa0050` measures 4.05:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-outline`.** Text `#fa0050` on `#ffffff` measures 4.05:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `discount-badge`.** Text `#ffffff` on `#fa0050` measures 4.05:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

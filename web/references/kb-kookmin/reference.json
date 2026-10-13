@@ -1,0 +1,1653 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "kb-kookmin",
+    "name": "KB국민은행",
+    "country": "KR",
+    "category": "fintech",
+    "homepage": "https://www.kbstar.com/",
+    "primary_color": "#ffcc00",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=kbstar.com&sz=128"
+    },
+    "verified": "2026-07-13"
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Only selector-backed public KB국민은행 product-web values are tokens. KB Financial Group CI, font, history, and value materials are retained as separate brand-context evidence; no fallback family or unobserved interaction is promoted.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-07-14",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-product-web",
+        "url": "https://www.kbstar.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "online-banking",
+        "kind": "public-product-web",
+        "url": "https://obank.kbstar.com/quics?page=C018702",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "home-repeat",
+        "kind": "duplicate-public-product-web",
+        "url": "https://www.kbstar.com/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.kbstar.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "online-banking-live",
+        "kind": "product-surface",
+        "url": "https://obank.kbstar.com/quics?page=C018702",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "kb-bank-ci",
+        "kind": "brand-asset",
+        "url": "https://omoney.kbstar.com/quics?page=C017667",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "kbfg-ci",
+        "kind": "brand-asset",
+        "url": "https://www.kbfg.com/kor/about/corporate/ci.htm",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "kbfg-font",
+        "kind": "brand-asset",
+        "url": "https://www.kbfg.com/kor/about/corporate/font.htm",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "kbfg-history",
+        "kind": "official-doc",
+        "url": "https://www.kbfg.com/eng/about/group/history/merge.htm",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "kbfg-values",
+        "kind": "official-doc",
+        "url": "https://www.kbfg.com/kor/about/group/value.htm",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "kbfg-annual-report-2024",
+        "kind": "official-doc",
+        "url": "https://www.kbfg.com/common/jsp/fileDownUtil.jsp?filepath=%2Fdata%2Fannual_report%2F2024+KB_ar_full+version.pdf",
+        "captured": "2026-07-14"
+      }
+    ],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground-strong": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.header-accent": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.link": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-heading.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "typography.online-selected-item.fontSize": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "typography.online-selected-item.fontWeight": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "typography.online-selected-item.lineHeight": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "typography.online-selected-item.use": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "spacing.inline-link-left": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.inline-link-right": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.outline-link-inline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.toggle-inline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-outline-list-item.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-backed-computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.home-inline-list-item.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.online-selected-list-item.type": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-provenance-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "components.online-selected-list-item.rounded": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "components.online-selected-list-item.padding": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "components.online-selected-list-item.height": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-backed-computed-style-and-aria-selected",
+        "captured": "2026-07-13"
+      },
+      "components.online-selected-list-item.states": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "static-aria-state-only",
+        "captured": "2026-07-13"
+      },
+      "components.online-selected-list-item.use": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "selector-provenance",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-menu-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"7\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.home-quick-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"23\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.shadow": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.cert-shortcut-card.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"22\"]",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"39\"]",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::li",
+        "captured": "2026-07-13"
+      },
+      "components.service-card.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"39\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.section-more-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"34\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.quick-service-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"45\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.app-service-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"60\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.size": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.ui-toggle-button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"59\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-select-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"81\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.top-banner-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.type": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.backgroundColor": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.textColor": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.border": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.rounded": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.padding": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.height": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.typography": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.selected": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"15\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.states": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-section-tab.use": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"16\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-product-row.type": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"18\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-product-row.border": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::li",
+        "captured": "2026-07-13"
+      },
+      "components.online-product-row.padding": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"18\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-product-row.height": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"18\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-product-row.states": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"18\"]",
+        "captured": "2026-07-13"
+      },
+      "components.online-product-row.use": {
+        "surface_id": "online-banking",
+        "source_id": "online-banking-live",
+        "method": "computed-style",
+        "selector": "surface-2::[data-omd-capture=\"18\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.states": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      },
+      "components.footer-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "selector": "home::[data-omd-capture=\"64\"]",
+        "captured": "2026-07-13"
+      }
+    },
+    "conflicts": []
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 72,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 55,
+      "missing-primary": 1,
+      "contrast-ratio": 6,
+      "orphaned-tokens": 7
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section-heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.online-selected-item.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-outline-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-outline-list-item.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-outline-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-inline-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-inline-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-selected-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-selected-list-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-selected-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-menu-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-menu-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-menu-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-quick-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-quick-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-quick-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cert-shortcut-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cert-shortcut-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cert-shortcut-card.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cert-shortcut-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cert-shortcut-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-card.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-card.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.service-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.section-more-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.section-more-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.section-more-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-service-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-service-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-service-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-service-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-service-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.app-service-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.ui-toggle-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.ui-toggle-button.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.ui-toggle-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.ui-toggle-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-select-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-select-link.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-select-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-select-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.top-banner-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.top-banner-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.top-banner-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-section-tab.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-section-tab.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-section-tab.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-section-tab.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-section-tab.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-product-row.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-product-row.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-product-row.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.online-product-row.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.header-menu-link",
+        "message": "textColor (#434343) on backgroundColor (#00000000) has contrast ratio 2.12:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.home-quick-link",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.quick-service-link",
+        "message": "textColor (#333333) on backgroundColor (#00000000) has contrast ratio 1.66:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.app-service-link",
+        "message": "textColor (#333333) on backgroundColor (#00000000) has contrast ratio 1.66:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.footer-select-link",
+        "message": "textColor (#5a5a5a) on backgroundColor (#00000000) has contrast ratio 3.04:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.online-section-tab",
+        "message": "textColor (#777777) on backgroundColor (#f1efe9) has contrast ratio 3.89:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground-strong",
+        "message": "'foreground-strong' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.header-accent",
+        "message": "'header-accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "2fa40a73d0727c0f3540c722ed7721868c7acb4b425565ea92f699008eb45dba",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.none",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.section-heading.fontSize",
+      "typography.online-selected-item.fontSize",
+      "rounded.square"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ]
+    }
+  }
+}

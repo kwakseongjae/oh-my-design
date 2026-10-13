@@ -40,6 +40,7 @@
  *   node scripts/apply-measured-palette.mjs <id> [<id> ...]           # dry-run (권장)
  *   node scripts/apply-measured-palette.mjs <id> --write              # 본문까지 함께 고칠 때만
  */
+import { refuseV3Target } from "./lib/legacy-writer-guard.mjs";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -93,6 +94,7 @@ for (const id of ids) {
   const file = join(REFS, id, "DESIGN.md");
   if (!existsSync(file)) { console.log(`\n### ${id} — 없음`); continue; }
   const raw = readFileSync(file, "utf8");
+  refuseV3Target(raw, id, "apply-measured-palette");
   const front = yaml.load(raw.match(/^---\n([\s\S]*?)\n---/)[1], { schema: yaml.JSON_SCHEMA });
   const declared = Object.entries(front.tokens?.colors ?? {})
     .filter(([, v]) => typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v))

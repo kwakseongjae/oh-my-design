@@ -28,41 +28,19 @@ const VALID_COUNTRIES = new Set(['KR','US','JP','TW','CN','UK','DE','FR','IT','F
 const VALID_LOGO_TYPES = new Set(['favicon','simpleicons','github']);
 const VALID_DS_TYPES = new Set(['system','brand']);
 
+/**
+ * Full YAML (JSON_SCHEMA, so dates stay strings). The earlier hand-rolled one-level parser did not
+ * unescape YAML quoting, which a projected v3 source (js-yaml dump: `'Adobe''s'`) depends on; every
+ * legacy frontmatter already parses as strict YAML (scripts/design-md-v3/dry-run.mjs), and the
+ * registry output was checked byte-identical across the switch.
+ */
 function parseFrontmatter(md, filePath) {
   if (!md.startsWith('---')) throw new Error(`${filePath}: no frontmatter`);
   const end = md.indexOf('\n---', 4);
   if (end === -1) throw new Error(`${filePath}: unterminated frontmatter`);
-  const yaml = md.slice(4, end);
-  const fm = {};
-  let currentKey = null;
-  for (const rawLine of yaml.split('\n')) {
-    const line = rawLine.replace(/\r$/, '');
-    if (!line.trim()) continue;
-    if (/^\s+/.test(line) && currentKey) {
-      const m = line.trim().match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
-      if (m) {
-        fm[currentKey] = fm[currentKey] || {};
-        fm[currentKey][m[1]] = stripQuotes(m[2]);
-      }
-      continue;
-    }
-    const m = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
-    if (m) {
-      currentKey = m[1];
-      const value = m[2];
-      if (value === '') fm[currentKey] = {};
-      else fm[currentKey] = stripQuotes(value);
-    }
-  }
+  const fm = yaml.load(md.slice(4, end), { schema: yaml.JSON_SCHEMA });
+  if (!fm || typeof fm !== 'object' || Array.isArray(fm)) throw new Error(`${filePath}: frontmatter is not a mapping`);
   return fm;
-}
-
-function stripQuotes(s) {
-  s = s.trim();
-  if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) {
-    return s.slice(1, -1);
-  }
-  return s;
 }
 
 function fail(file, msg) {

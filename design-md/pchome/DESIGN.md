@@ -1,66 +1,129 @@
 ---
-id: pchome
 name: PChome
-country: TW
-category: ecommerce
-homepage: "https://www.pchome.com.tw"
-primary_color: "#ea1717"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=pchome.com.tw&sz=128"
-verified: "2026-06-08"
-added: "2026-06-08"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-08"
-  note: "primary = live 24h price/accent red rgb(234,23,23) → #ea1717; portal hero CTA red #fe3b52 is a softer variant. Body text is #2b2b2b on a #f2f2f2 commerce canvas."
-  colors:
-    primary: "#ea1717"
-    primary-soft: "#fe3b52"
-    primary-coral: "#fd7777"
-    canvas: "#f2f2f2"
-    surface: "#ffffff"
-    heading: "#000000"
-    body: "#2b2b2b"
-    body-muted: "#666666"
-    label-muted: "#969696"
-    link: "#0090eb"
-    link-deep: "#008ae0"
-    navy: "#0e4f77"
-    navy-deep: "#084567"
-    success: "#0bb677"
-    amber: "#fed796"
-    hairline: "#e5e5e5"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Noto Sans TC", display: "Montserrat", fallback: "Microsoft JhengHei" }
-    feature-title:  { size: 28, weight: 700, lineHeight: 1.23, tracking: 0, use: "Editorial / feature card titles on hero carousels" }
-    section-title:  { size: 22, weight: 700, lineHeight: 1.23, tracking: 0, use: "Secondary headlines, section heads" }
-    price-lg:       { size: 24, weight: 700, lineHeight: 1.2, tracking: 0, use: "Hero / featured product price" }
-    price:          { size: 18, weight: 600, lineHeight: 1.3, tracking: 0, use: "Product card price in red #ea1717" }
-    body:           { size: 16, weight: 400, lineHeight: 1.5, tracking: 0, use: "Standard reading text, product titles" }
-    label:          { size: 14, weight: 400, lineHeight: 1.4, tracking: 0, use: "Tab labels, metadata, secondary nav" }
-    caption:        { size: 13, weight: 400, lineHeight: 1.4, tracking: 0, use: "Fine print, spec rows, timestamps" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
-  shadow:
-    ambient: "rgba(0,0,0,0.06) 0px 1px 4px"
-    card: "rgba(0,0,0,0.1) 0px 2px 8px"
-    elevated: "rgba(1,47,73,0.1) 0px 8px 24px"
-  components:
-    button-primary: { type: button, bg: "#ea1717", fg: "#ffffff", radius: 4, font: "weight 700", use: "Add to cart / Buy now" }
-    button-soft: { type: button, bg: "#fe3b52", fg: "#ffffff", radius: 9999, use: "Portal hero CTA / banner actions" }
-    card: { type: card, bg: "#ffffff", radius: 8, use: "Dense product grid card, soft card shadow" }
-    price-tag: { type: badge, fg: "#ea1717", font: "18px weight 600", use: "Product price, strike-through #969696 for list price" }
-    badge-promo: { type: badge, bg: "#ea1717", fg: "#ffffff", radius: 4, use: "P幣 / 折扣 promo flags" }
-    tab-bar: { type: tab, bg: "#f2f2f2", fg: "#000000", font: "16px weight 400", use: "Category switcher", active: "black active text" }
-  components_harvested: true
+colors:
+  primary: '#ea1717'
+  primary-soft: '#fe3b52'
+  primary-coral: '#fd7777'
+  canvas: '#f2f2f2'
+  surface: '#ffffff'
+  heading: '#000000'
+  body: '#2b2b2b'
+  body-muted: '#666666'
+  label-muted: '#969696'
+  link: '#0090eb'
+  link-deep: '#008ae0'
+  navy: '#0e4f77'
+  navy-deep: '#084567'
+  success: '#0bb677'
+  amber: '#fed796'
+  hairline: '#e5e5e5'
+  on-primary: '#ffffff'
+typography:
+  feature-title:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.23
+    letterSpacing: 0px
+    use: Editorial / feature card titles on hero carousels
+  section-title:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.23
+    letterSpacing: 0px
+    use: Secondary headlines, section heads
+  price-lg:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: 0px
+    use: Hero / featured product price
+  price:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: 0px
+    use: 'Product card price in red #ea1717'
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Standard reading text, product titles
+  label:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: 0px
+    use: Tab labels, metadata, secondary nav
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: 0px
+    use: Fine print, spec rows, timestamps
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ea1717'
+    textColor: '#ffffff'
+    rounded: 4px
+    typography: weight 700
+    use: Add to cart / Buy now
+  button-soft:
+    type: button
+    backgroundColor: '#fe3b52'
+    textColor: '#ffffff'
+    rounded: 9999px
+    use: Portal hero CTA / banner actions
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    use: Dense product grid card, soft card shadow
+  price-tag:
+    type: badge
+    textColor: '#ea1717'
+    typography: 18px weight 600
+    use: 'Product price, strike-through #969696 for list price'
+  badge-promo:
+    type: badge
+    backgroundColor: '#ea1717'
+    textColor: '#ffffff'
+    rounded: 4px
+    use: P幣 / 折扣 promo flags
+  tab-bar:
+    type: tab
+    backgroundColor: '#f2f2f2'
+    textColor: '#000000'
+    typography: 16px weight 400
+    use: Category switcher
+    active: black active text
+fonts:
+  roles:
+    sans: Noto Sans TC
+    display: Montserrat
+    fallback: Microsoft JhengHei
 ---
 
 # Design System Inspiration of PChome
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 PChome 24h is Taiwan's archetypal high-density marketplace, and its design reflects a single, unwavering priority: get as much shoppable inventory in front of the eye as possible, as fast as possible. Where Western boutique commerce leans on whitespace and one-product-per-screen storytelling, PChome opens on a light gray canvas (`#f2f2f2`) tiled edge-to-edge with white product cards (`#ffffff`), promo banners, credit-card offers, and flash-deal countdowns. The atmosphere is busy, urgent, and transactional in the best Taiwanese-e-commerce tradition — a digital department store where the brand red (`#ea1717`) is the heartbeat, pulsing on every price, every discount flag, and every "buy now" button.
 
@@ -78,7 +141,7 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 - Conservative 4px–8px radius; promo badges and prices, not rounding, carry the visual energy
 - Countdown timers, P幣 (P-coin) rebate flags, and strike-through list prices as native commerce ornament
 
-## Primary tasks
+### Primary tasks
 
 - Scan a dense grid of deals for price and rebate
 - Compare a red sale price against the crossed-out list price
@@ -86,7 +149,38 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 - Order household goods that arrive the next day
 - Search for one specific product instead of browsing the grid
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+PChome Online (網路家庭) was founded in **1998** by **Jan Hung-tze (詹宏志)**, a prominent Taiwanese publisher, writer, and internet pioneer. The name traces to PChome magazine, and the company grew from a portal into one of Taiwan's defining internet groups. Its flagship **PChome 24h購物** popularized the promise that gives it its name: delivery within 24 hours across Taiwan — a logistics commitment that became a core brand identity in a market where speed and reliability win loyalty.
+
+The company sits at the center of Taiwan's e-commerce landscape alongside rivals like Shopee, Momo, and Yahoo奇摩購物. Its design reflects that competitive, value-driven market: a department-store density of inventory, aggressive promotional layering (credit-card tie-ins, P幣 rebate points, flash deals), and a brand red that signals price and savings at a glance. The portal heritage (news, email, services at `www.pchome.com.tw`) still frames the commerce engine, giving PChome the feel of a full digital ecosystem rather than a single-purpose store.
+
+What PChome embraces: speed (24h delivery as identity), density (maximal shoppable surface), and value-signaling through red prices and stacked rebates. What it avoids: the sparse, one-product-per-screen aesthetic of Western DTC — in the Taiwanese market, abundance and visible savings build trust, not minimalism.
+
+### Principles
+
+1. **The price is the hero.** Every card resolves to a red `#ea1717` price. Nothing should out-shout it.
+2. **Density is service.** Showing more inventory faster respects a deal-hunting shopper's time. Whitespace is rationed, not lavished.
+3. **Speed is the promise.** 24h delivery is the brand. Surface it relentlessly.
+4. **Red means value.** Reserve `#ea1717` for price, action, and savings — never dilute it onto navigation.
+5. **Numbers over adjectives.** Quantify the benefit: percentage off, rebate amount, delivery hours.
+6. **Two-weight clarity.** In a crowded field, hierarchy comes from 400 vs 700 and color, not from typographic subtlety.
+7. **The card is the unit.** White cards on a gray canvas — a tileable, scannable, infinitely-stackable building block.
+8. **Traditional Chinese first.** Render for the Taiwanese reader; give numerals a Latin face for crisp prices.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable PChome user segments (Taiwanese deal-hunting shoppers, 3C enthusiasts, household buyers, loyalty members), not individual people.*
+
+**Lin Yi-chen (林宜蓁), 34, Taipei.** Office worker who shops PChome 24h on her commute. Trusts the 24h到貨 promise — orders household goods knowing they arrive next day. Scans for the red price and the P幣 rebate before anything else. Would abandon a redesign that added whitespace at the cost of seeing fewer deals per screen.
+
+**Chen Wei (陳威), 27, Taichung.** 3C enthusiast who lives in the electronics category. Reads spec-dense product titles fast, compares strike-through list prices against red sale prices, and stacks credit-card promos. Values the density — he can compare ten laptops at a glance.
+
+**Auntie Wu (吳阿姨), 58, Kaohsiung.** Household buyer who shops by category rail and big tappable promo tiles. The large 28px headlines and clear red prices make the site legible without reading glasses. Loyal to PChome for the reliable delivery and the P幣 points she accumulates.
+
+**Kevin Hsu (許凱文), 41, Hsinchu.** Operations manager who orders office supplies in bulk. Uses the search bar as his primary tool, trusts the 24h logistics, and appreciates that prices, stock status (green `#0bb677`), and delivery windows are all stated as plain facts.
+
+## Colors
 
 ### Primary
 - **PChome Red** (`#ea1717`): The brand anchor. Live-extracted as the dominant accent on 24h (202 element occurrences) and the literal color of every product price. Drives CTAs, promo badges, and price emphasis.
@@ -117,7 +211,7 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 ### On-Color
 - **On-Primary White** (`#ffffff`): Text on red CTAs, promo badges, and dark navy bars.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Noto Sans TC`, fallback `微軟正黑體` / `Microsoft JhengHei`, then `文泉驛正黑` / `WenQuanYi Zen Hei`
@@ -144,7 +238,104 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 - **Numerals get a Latin face**: `Montserrat` / `Roboto` render prices and countdown digits, giving numbers tabular crispness against the CJK body.
 - **No light display weights**: Unlike boutique brands, PChome never goes below 400. Density demands legibility at weight, not elegance at lightness.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Dense at the card level (8px internal gutters), generous between major sections
+
+### Grid & Container
+- Full-bleed marketplace grid — content extends edge to edge, not centered in a narrow column
+- Product grids: 4–6 columns on desktop, collapsing to 2 on mobile
+- Left rail for category taxonomy; main column for grids; right rail for promos
+- Promo strips run horizontally as fixed-height (93px) tiles above the fold
+
+### Whitespace Philosophy
+- **Density as a feature**: PChome deliberately maximizes shoppable surface area. Whitespace is rationed — it exists to separate cards, not to create drama.
+- **Cards as the unit**: Every piece of content is a card on the `#f2f2f2` canvas. The gray background is the negative space; white cards are the figure.
+- **Above-the-fold maximalism**: Flash deals, credit-card offers, editorial headlines, and category entry points all compete above the fold. This is intentional — it signals a full department store, not a curated boutique.
+
+### Border Radius Scale
+- Small (4px): buttons, badges, promo flags
+- Standard (8px): product cards, banner tiles, promo tiles
+- Large (16px): occasional rounded feature containers
+- The system stays conservative; energy comes from red and density, not rounding
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | 2-column product grid, collapsed left rail, sticky search |
+| Tablet | 640–1024px | 3–4 column grid, drawer category nav |
+| Desktop | 1024–1440px | 4–6 column grid, left taxonomy rail + right promo rail |
+| Wide | >1440px | Full-width grid, more columns, persistent rails |
+
+#### Touch Targets
+- Promo tiles at 93px height — comfortably tappable
+- Category tabs at 52px height
+- Buttons with 8px vertical padding minimum
+- Product cards are entirely tappable surfaces
+
+#### Collapsing Strategy
+- Left category rail → hamburger drawer on mobile
+- Multi-rail desktop layout → single scrolling column
+- Product grid: 6 → 4 → 3 → 2 columns
+- Search bar stays sticky and dominant at all sizes — it is the primary mobile nav
+- Promo strips become horizontally swipeable carousels on mobile
+
+#### Image Behavior
+- Product thumbnails maintain square aspect ratio across breakpoints
+- Hero / editorial banners crop to maintain headline legibility (white 28px/700 over imagery)
+- Cards keep 8px radius at all sizes
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow | Canvas, inline text, flat tab bars |
+| Ambient (1) | `rgba(0,0,0,0.06) 0px 1px 4px` | Subtle card lift, hover hint |
+| Card (2) | `rgba(0,0,0,0.1) 0px 2px 8px` | Standard product cards, promo tiles |
+| Elevated (3) | `rgba(1,47,73,0.1) 0px 8px 24px` | Dropdowns, mega-menu, modals |
+
+**Shadow Philosophy**: Elevation at PChome is functional and restrained — soft neutral shadows that lift white cards off the `#f2f2f2` canvas just enough to read as discrete, tappable units. The elevated tier picks up a faint navy tint (`rgba(1,47,73,0.1)`) echoing the header chrome, but depth is never decorative. In a layout this dense, heavy shadows would create visual noise; the system relies on the canvas/card figure-ground contrast and the red accent to do the hierarchy work instead.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.ambient`: `rgba(0,0,0,0.06) 0px 1px 4px`
+- `shadow.card`: `rgba(0,0,0,0.1) 0px 2px 8px`
+- `shadow.elevated`: `rgba(1,47,73,0.1) 0px 8px 24px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection, focus, cart-badge increment |
+| `motion-fast` | 150ms | Hover lift on cards, button press |
+| `motion-standard` | 250ms | Dropdowns, drawers, modal open |
+| `motion-slow` | 400ms | Carousel slide, banner transition |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Most transitions |
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Drawers, dropdowns arriving |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+
+**Signature motions.**
+
+1. **Card hover lift.** Product cards lift on hover with `motion-fast` and the card shadow deepens from ambient to `rgba(0,0,0,0.1) 0px 2px 8px` — a subtle invitation to click.
+2. **Countdown tick.** Flash-deal timers tick per second with no animation flourish — `motion-instant`, purely functional urgency.
+3. **Promo carousel.** Above-the-fold banner and promo strips auto-advance on a slow timer using `motion-slow / ease-standard` horizontal slide.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, carousels freeze, hover lifts collapse to instant, and the countdown updates without transition. The marketplace remains fully shoppable.
+
+## Components
 
 ### Buttons
 
@@ -229,42 +420,20 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 **Method:** playwright getComputedStyle on live DOM — body, headings, buttons, price nodes, and full color-frequency sweep across ~5000 elements.
 **`.verification.md`:** `web/references/pchome/.verification.md`
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Dense at the card level (8px internal gutters), generous between major sections
+| State | Treatment |
+|---|---|
+| **Empty (cart)** | White canvas, gray `#969696` line "購物車是空的" (your cart is empty), one red `#ea1717` CTA back to shopping. No illustration drama. |
+| **Empty (search)** | Muted `#666666` "找不到符合的商品" with the query echoed and category suggestions below. |
+| **Loading (grid)** | Skeleton cards at final dimensions in `#e5e5e5`, gentle shimmer. Price bars sized to typical price width. |
+| **Error (out of stock)** | Card dims; red `#ea1717` "已售完" (sold out) flag replaces the buy button. |
+| **Success (added to cart)** | Brief toast / inline confirm with green `#0bb677` check and item count; cart badge increments. |
+| **Promo active** | Red `#ea1717` badge + amber `#fed796` P幣 chip; countdown timer in white-on-red for limited deals. |
+| **Disabled** | Reduced opacity on the red button; never recolored to gray — the brand red stays readable as faded red. |
+| **Price drop** | List price in `#969696` line-through beside the new red `#ea1717` price; savings stated as a number. |
 
-### Grid & Container
-- Full-bleed marketplace grid — content extends edge to edge, not centered in a narrow column
-- Product grids: 4–6 columns on desktop, collapsing to 2 on mobile
-- Left rail for category taxonomy; main column for grids; right rail for promos
-- Promo strips run horizontally as fixed-height (93px) tiles above the fold
-
-### Whitespace Philosophy
-- **Density as a feature**: PChome deliberately maximizes shoppable surface area. Whitespace is rationed — it exists to separate cards, not to create drama.
-- **Cards as the unit**: Every piece of content is a card on the `#f2f2f2` canvas. The gray background is the negative space; white cards are the figure.
-- **Above-the-fold maximalism**: Flash deals, credit-card offers, editorial headlines, and category entry points all compete above the fold. This is intentional — it signals a full department store, not a curated boutique.
-
-### Border Radius Scale
-- Small (4px): buttons, badges, promo flags
-- Standard (8px): product cards, banner tiles, promo tiles
-- Large (16px): occasional rounded feature containers
-- The system stays conservative; energy comes from red and density, not rounding
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow | Canvas, inline text, flat tab bars |
-| Ambient (1) | `rgba(0,0,0,0.06) 0px 1px 4px` | Subtle card lift, hover hint |
-| Card (2) | `rgba(0,0,0,0.1) 0px 2px 8px` | Standard product cards, promo tiles |
-| Elevated (3) | `rgba(1,47,73,0.1) 0px 8px 24px` | Dropdowns, mega-menu, modals |
-
-**Shadow Philosophy**: Elevation at PChome is functional and restrained — soft neutral shadows that lift white cards off the `#f2f2f2` canvas just enough to read as discrete, tappable units. The elevated tier picks up a faint navy tint (`rgba(1,47,73,0.1)`) echoing the header chrome, but depth is never decorative. In a layout this dense, heavy shadows would create visual noise; the system relies on the canvas/card figure-ground contrast and the red accent to do the hierarchy work instead.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use brand red `#ea1717` for every price, primary CTA, and promo badge
@@ -286,35 +455,36 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 - Don't make shadows heavy or colored beyond the faint navy elevated tint
 - Don't let any single element out-shout the price — red price is the visual climax of every card
 
-## 8. Responsive Behavior
+### Do
+- Treat the red `#ea1717` price as the climax of every card and let savings be visible
+- Keep the dense, full-width, card-on-gray-canvas marketplace grid
+- Use the two-weight (400/700) rhythm and let red carry hierarchy
+- Surface the 24h delivery promise and P幣 rebate prominently
+- Render numerals in `Montserrat`/`Roboto` and CJK in `Noto Sans TC`
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | 2-column product grid, collapsed left rail, sticky search |
-| Tablet | 640–1024px | 3–4 column grid, drawer category nav |
-| Desktop | 1024–1440px | 4–6 column grid, left taxonomy rail + right promo rail |
-| Wide | >1440px | Full-width grid, more columns, persistent rails |
+### Don't
+- Don't dilute the brand red onto navigation or non-action elements
+- Don't trade shoppable density for decorative whitespace
+- Don't use light display weights or large pill radii
+- Don't bury the price, the discount percentage, or the delivery window
+- Don't use blue for buy actions — blue is links only
 
-### Touch Targets
-- Promo tiles at 93px height — comfortably tappable
-- Category tabs at 52px height
-- Buttons with 8px vertical padding minimum
-- Product cards are entirely tappable surfaces
+## Voice & Tone
 
-### Collapsing Strategy
-- Left category rail → hamburger drawer on mobile
-- Multi-rail desktop layout → single scrolling column
-- Product grid: 6 → 4 → 3 → 2 columns
-- Search bar stays sticky and dominant at all sizes — it is the primary mobile nav
-- Promo strips become horizontally swipeable carousels on mobile
+PChome's voice is the brisk, value-forward register of a Taiwanese hypermarket flyer — direct, deal-driven, and benefit-first. Copy leads with the offer: 折扣 (discount), 限時 (limited time), 24h到貨 (24-hour delivery), P幣回饋 (P-coin rebate). The site tagline 每天一起變更好 ("getting better together, every day") sets a warm, communal tone over the transactional core. Button labels are imperative and concrete (加入購物車 / 立即購買 / 結帳), never coy. Numbers do the talking — price, percentage off, delivery hours, rebate amount.
 
-### Image Behavior
-- Product thumbnails maintain square aspect ratio across breakpoints
-- Hero / editorial banners crop to maintain headline legibility (white 28px/700 over imagery)
-- Cards keep 8px radius at all sizes
+| Context | Tone |
+|---|---|
+| Product titles | Spec-dense, keyword-front-loaded for search and scanning |
+| Prices / promos | Pure number + benefit. "$3,999", "8% P幣回饋", "限時下殺" |
+| CTAs | Direct imperatives: 加入購物車, 立即購買, 結帳 |
+| Delivery promise | Concrete and repeated: 24h到貨, 隔日配 |
+| Editorial / portal | Newsier, headline-driven, Traditional-Chinese broadsheet register |
+| Membership / rebate | Warm, loyalty-flavored — P幣, 會員, 點數 framed as belonging |
 
-## 9. Agent Prompt Guide
+**Forbidden register.** Vague boutique poetry ("elevate your lifestyle"), unquantified hype with no number attached, and anything that buries the price or the delivery promise. PChome's reader wants the deal stated plainly.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA / price: PChome Red (`#ea1717`)
@@ -345,103 +515,8 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-PChome's voice is the brisk, value-forward register of a Taiwanese hypermarket flyer — direct, deal-driven, and benefit-first. Copy leads with the offer: 折扣 (discount), 限時 (limited time), 24h到貨 (24-hour delivery), P幣回饋 (P-coin rebate). The site tagline 每天一起變更好 ("getting better together, every day") sets a warm, communal tone over the transactional core. Button labels are imperative and concrete (加入購物車 / 立即購買 / 結帳), never coy. Numbers do the talking — price, percentage off, delivery hours, rebate amount.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Product titles | Spec-dense, keyword-front-loaded for search and scanning |
-| Prices / promos | Pure number + benefit. "$3,999", "8% P幣回饋", "限時下殺" |
-| CTAs | Direct imperatives: 加入購物車, 立即購買, 結帳 |
-| Delivery promise | Concrete and repeated: 24h到貨, 隔日配 |
-| Editorial / portal | Newsier, headline-driven, Traditional-Chinese broadsheet register |
-| Membership / rebate | Warm, loyalty-flavored — P幣, 會員, 點數 framed as belonging |
-
-**Forbidden register.** Vague boutique poetry ("elevate your lifestyle"), unquantified hype with no number attached, and anything that buries the price or the delivery promise. PChome's reader wants the deal stated plainly.
-
-## 11. Brand Narrative
-
-PChome Online (網路家庭) was founded in **1998** by **Jan Hung-tze (詹宏志)**, a prominent Taiwanese publisher, writer, and internet pioneer. The name traces to PChome magazine, and the company grew from a portal into one of Taiwan's defining internet groups. Its flagship **PChome 24h購物** popularized the promise that gives it its name: delivery within 24 hours across Taiwan — a logistics commitment that became a core brand identity in a market where speed and reliability win loyalty.
-
-The company sits at the center of Taiwan's e-commerce landscape alongside rivals like Shopee, Momo, and Yahoo奇摩購物. Its design reflects that competitive, value-driven market: a department-store density of inventory, aggressive promotional layering (credit-card tie-ins, P幣 rebate points, flash deals), and a brand red that signals price and savings at a glance. The portal heritage (news, email, services at `www.pchome.com.tw`) still frames the commerce engine, giving PChome the feel of a full digital ecosystem rather than a single-purpose store.
-
-What PChome embraces: speed (24h delivery as identity), density (maximal shoppable surface), and value-signaling through red prices and stacked rebates. What it avoids: the sparse, one-product-per-screen aesthetic of Western DTC — in the Taiwanese market, abundance and visible savings build trust, not minimalism.
-
-## 12. Principles
-
-1. **The price is the hero.** Every card resolves to a red `#ea1717` price. Nothing should out-shout it.
-2. **Density is service.** Showing more inventory faster respects a deal-hunting shopper's time. Whitespace is rationed, not lavished.
-3. **Speed is the promise.** 24h delivery is the brand. Surface it relentlessly.
-4. **Red means value.** Reserve `#ea1717` for price, action, and savings — never dilute it onto navigation.
-5. **Numbers over adjectives.** Quantify the benefit: percentage off, rebate amount, delivery hours.
-6. **Two-weight clarity.** In a crowded field, hierarchy comes from 400 vs 700 and color, not from typographic subtlety.
-7. **The card is the unit.** White cards on a gray canvas — a tileable, scannable, infinitely-stackable building block.
-8. **Traditional Chinese first.** Render for the Taiwanese reader; give numerals a Latin face for crisp prices.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable PChome user segments (Taiwanese deal-hunting shoppers, 3C enthusiasts, household buyers, loyalty members), not individual people.*
-
-**Lin Yi-chen (林宜蓁), 34, Taipei.** Office worker who shops PChome 24h on her commute. Trusts the 24h到貨 promise — orders household goods knowing they arrive next day. Scans for the red price and the P幣 rebate before anything else. Would abandon a redesign that added whitespace at the cost of seeing fewer deals per screen.
-
-**Chen Wei (陳威), 27, Taichung.** 3C enthusiast who lives in the electronics category. Reads spec-dense product titles fast, compares strike-through list prices against red sale prices, and stacks credit-card promos. Values the density — he can compare ten laptops at a glance.
-
-**Auntie Wu (吳阿姨), 58, Kaohsiung.** Household buyer who shops by category rail and big tappable promo tiles. The large 28px headlines and clear red prices make the site legible without reading glasses. Loyal to PChome for the reliable delivery and the P幣 points she accumulates.
-
-**Kevin Hsu (許凱文), 41, Hsinchu.** Operations manager who orders office supplies in bulk. Uses the search bar as his primary tool, trusts the 24h logistics, and appreciates that prices, stock status (green `#0bb677`), and delivery windows are all stated as plain facts.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (cart)** | White canvas, gray `#969696` line "購物車是空的" (your cart is empty), one red `#ea1717` CTA back to shopping. No illustration drama. |
-| **Empty (search)** | Muted `#666666` "找不到符合的商品" with the query echoed and category suggestions below. |
-| **Loading (grid)** | Skeleton cards at final dimensions in `#e5e5e5`, gentle shimmer. Price bars sized to typical price width. |
-| **Error (out of stock)** | Card dims; red `#ea1717` "已售完" (sold out) flag replaces the buy button. |
-| **Success (added to cart)** | Brief toast / inline confirm with green `#0bb677` check and item count; cart badge increments. |
-| **Promo active** | Red `#ea1717` badge + amber `#fed796` P幣 chip; countdown timer in white-on-red for limited deals. |
-| **Disabled** | Reduced opacity on the red button; never recolored to gray — the brand red stays readable as faded red. |
-| **Price drop** | List price in `#969696` line-through beside the new red `#ea1717` price; savings stated as a number. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection, focus, cart-badge increment |
-| `motion-fast` | 150ms | Hover lift on cards, button press |
-| `motion-standard` | 250ms | Dropdowns, drawers, modal open |
-| `motion-slow` | 400ms | Carousel slide, banner transition |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Most transitions |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Drawers, dropdowns arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Signature motions.**
-
-1. **Card hover lift.** Product cards lift on hover with `motion-fast` and the card shadow deepens from ambient to `rgba(0,0,0,0.1) 0px 2px 8px` — a subtle invitation to click.
-2. **Countdown tick.** Flash-deal timers tick per second with no animation flourish — `motion-instant`, purely functional urgency.
-3. **Promo carousel.** Above-the-fold banner and promo strips auto-advance on a slow timer using `motion-slow / ease-standard` horizontal slide.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, carousels freeze, hover lifts collapse to instant, and the countdown updates without transition. The marketplace remains fully shoppable.
-
-## 16. Do's and Don'ts
-
-### Do
-- Treat the red `#ea1717` price as the climax of every card and let savings be visible
-- Keep the dense, full-width, card-on-gray-canvas marketplace grid
-- Use the two-weight (400/700) rhythm and let red carry hierarchy
-- Surface the 24h delivery promise and P幣 rebate prominently
-- Render numerals in `Montserrat`/`Roboto` and CJK in `Noto Sans TC`
-
-### Don't
-- Don't dilute the brand red onto navigation or non-action elements
-- Don't trade shoppable density for decorative whitespace
-- Don't use light display weights or large pill radii
-- Don't bury the price, the discount percentage, or the delivery window
-- Don't use blue for buy actions — blue is links only
+- **Contrast, `button-soft`.** Text `#ffffff` on `#fe3b52` measures 3.52:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

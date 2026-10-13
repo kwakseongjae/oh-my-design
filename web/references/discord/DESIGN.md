@@ -1,78 +1,206 @@
 ---
-id: discord
 name: Discord
-country: US
-category: consumer-tech
-homepage: "https://discord.com"
-primary_color: "#5865F2"
-logo:
-  type: simpleicons
-  slug: "discord"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#5865F2"
-    primary-hover: "#4752C4"
-    primary-active: "#3C45A5"
-    green: "#57F287"
-    yellow: "#FEE75C"
-    fuchsia: "#EB459E"
-    red: "#ED4245"
-    surface-tertiary: "#1E1F22"
-    surface-secondary: "#2B2D31"
-    surface-primary: "#313338"
-    surface-floating: "#111214"
-    text-normal: "#DBDEE1"
-    heading: "#F2F3F5"
-    muted: "#949BA4"
-    interactive: "#B5BAC1"
-    link: "#00A8FC"
-    grey-secondary: "#4E5058"
-    message-box: "#383A40"
-    on-primary: "#FFFFFF"
-  typography:
-    family: { sans: "gg sans", mono: "gg mono" }
-    hero:    { size: 56, weight: 800, lineHeight: 1.1, tracking: -0.02, use: "Marketing hero headline" }
-    display-lg: { size: 32, weight: 700, lineHeight: 1.25, tracking: -0.01, use: "Modal titles, big moments" }
-    h1:      { size: 24, weight: 700, lineHeight: 1.25, use: "Section headers" }
-    h2:      { size: 20, weight: 600, lineHeight: 1.30, use: "Sub-sections, settings groups" }
-    channel: { size: 16, weight: 600, lineHeight: 1.25, use: "Channel/server headers" }
-    body-lg: { size: 16, weight: 400, lineHeight: 1.375, use: "Message text, descriptions" }
-    body:    { size: 14, weight: 400, lineHeight: 1.29, use: "Standard UI text, list items" }
-    label:   { size: 12, weight: 600, lineHeight: 1.33, tracking: 0.02, use: "Section labels UPPERCASE" }
-    caption: { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, helper text" }
-    code:    { size: 14, weight: 400, lineHeight: 1.29, use: "Inline code, code blocks (gg mono)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 40 }
-  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
-  shadow:
-    floating: "0 4px 8px rgba(0,0,0,0.24)"
-    modal: "0 8px 16px rgba(0,0,0,0.24)"
-    high: "0 12px 32px rgba(0,0,0,0.36)"
-  components:
-    button-primary: { type: button, bg: "#5865F2", fg: "#FFFFFF", radius: 8, padding: "2px 16px", font: "14px/500 gg sans", use: "Primary action — Send, Confirm, Join" }
-    button-secondary: { type: button, bg: "#4E5058", fg: "#FFFFFF", radius: 8, padding: "2px 16px", font: "14px/500 gg sans", use: "Neutral secondary action" }
-    button-link: { type: button, bg: "transparent", fg: "#FFFFFF", padding: "2px 4px", font: "14px/500 gg sans", use: "Tertiary action, subtle cancel" }
-    input: { type: input, bg: "#1E1F22", fg: "#DBDEE1", radius: 4, padding: "10px 12px", font: "16px/400 gg sans", use: "Settings forms, search, login" }
-    message-box: { type: input, bg: "#383A40", fg: "#DBDEE1", radius: 8, padding: "11px 16px", font: "16px/400 gg sans", use: "Chat composer" }
-    embed-card: { type: card, bg: "#2B2D31", radius: 4, padding: "16px", use: "Rich link previews, bot responses (4px left accent)" }
-    settings-card: { type: card, bg: "#2B2D31", radius: 8, padding: "16px 20px", use: "Grouped settings rows" }
-    modal: { type: dialog, bg: "#313338", radius: 8, padding: "16px", use: "Confirmation dialogs, server settings" }
-    mention-badge: { type: badge, bg: "#ED4245", fg: "#FFFFFF", radius: 9999, padding: "0 4px", font: "12px/700 gg sans", use: "Unread mention counter" }
-    nitro-badge: { type: badge, bg: "#5865F2", fg: "#FFFFFF", radius: 4, font: "12px/600 gg sans", use: "Nitro / boosted badge" }
-    settings-tab: { type: tab, bg: "transparent", fg: "#B5BAC1", radius: 4, padding: "6px 10px", font: "16px/500 gg sans", active: "bg #404249, text #FFFFFF", use: "Settings sidebar item" }
-    tooltip: { type: card, bg: "#111214", fg: "#F2F3F5", radius: 8, padding: "8px 12px", font: "14px/600 gg sans", use: "Hover hints on icons" }
-    toast: { type: toast, bg: "#111214", fg: "#DBDEE1", radius: 8, padding: "12px 16px", use: "Transient confirmations (4px left status accent)" }
-    toggle: { type: toggle, bg: "#57F287", radius: 9999, use: "Boolean settings — track green on, #80848E off" }
-  components_harvested: true
+colors:
+  primary: '#5865F2'
+  primary-hover: '#4752C4'
+  primary-active: '#3C45A5'
+  green: '#57F287'
+  yellow: '#FEE75C'
+  fuchsia: '#EB459E'
+  red: '#ED4245'
+  surface-tertiary: '#1E1F22'
+  surface-secondary: '#2B2D31'
+  surface-primary: '#313338'
+  surface-floating: '#111214'
+  text-normal: '#DBDEE1'
+  heading: '#F2F3F5'
+  muted: '#949BA4'
+  interactive: '#B5BAC1'
+  link: '#00A8FC'
+  grey-secondary: '#4E5058'
+  message-box: '#383A40'
+  on-primary: '#FFFFFF'
+typography:
+  hero:
+    fontSize: 56px
+    fontWeight: 800
+    lineHeight: 1.1
+    letterSpacing: '-0.02px'
+    use: Marketing hero headline
+  display-lg:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: '-0.01px'
+    use: Modal titles, big moments
+  h1:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.25
+    use: Section headers
+  h2:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.3
+    use: Sub-sections, settings groups
+  channel:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.25
+    use: Channel/server headers
+  body-lg:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.375
+    use: Message text, descriptions
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.29
+    use: Standard UI text, list items
+  label:
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.33
+    letterSpacing: 0.02px
+    use: Section labels UPPERCASE
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    use: Timestamps, helper text
+  code:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.29
+    use: Inline code, code blocks (gg mono)
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 32
+  section: 40
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#5865F2'
+    textColor: '#FFFFFF'
+    rounded: 8px
+    padding: 2px 16px
+    typography: 14px/500 gg sans
+    use: Primary action — Send, Confirm, Join
+  button-secondary:
+    type: button
+    backgroundColor: '#4E5058'
+    textColor: '#FFFFFF'
+    rounded: 8px
+    padding: 2px 16px
+    typography: 14px/500 gg sans
+    use: Neutral secondary action
+  button-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#FFFFFF'
+    padding: 2px 4px
+    typography: 14px/500 gg sans
+    use: Tertiary action, subtle cancel
+  input:
+    type: input
+    backgroundColor: '#1E1F22'
+    textColor: '#DBDEE1'
+    rounded: 4px
+    padding: 10px 12px
+    typography: 16px/400 gg sans
+    use: Settings forms, search, login
+  message-box:
+    type: input
+    backgroundColor: '#383A40'
+    textColor: '#DBDEE1'
+    rounded: 8px
+    padding: 11px 16px
+    typography: 16px/400 gg sans
+    use: Chat composer
+  embed-card:
+    type: card
+    backgroundColor: '#2B2D31'
+    rounded: 4px
+    padding: 16px
+    use: Rich link previews, bot responses (4px left accent)
+  settings-card:
+    type: card
+    backgroundColor: '#2B2D31'
+    rounded: 8px
+    padding: 16px 20px
+    use: Grouped settings rows
+  modal:
+    type: dialog
+    backgroundColor: '#313338'
+    rounded: 8px
+    padding: 16px
+    use: Confirmation dialogs, server settings
+  mention-badge:
+    type: badge
+    backgroundColor: '#ED4245'
+    textColor: '#FFFFFF'
+    rounded: 9999px
+    padding: 0 4px
+    typography: 12px/700 gg sans
+    use: Unread mention counter
+  nitro-badge:
+    type: badge
+    backgroundColor: '#5865F2'
+    textColor: '#FFFFFF'
+    rounded: 4px
+    typography: 12px/600 gg sans
+    use: Nitro / boosted badge
+  settings-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#B5BAC1'
+    rounded: 4px
+    padding: 6px 10px
+    typography: 16px/500 gg sans
+    active: 'bg #404249, text #FFFFFF'
+    use: Settings sidebar item
+  tooltip:
+    type: card
+    backgroundColor: '#111214'
+    textColor: '#F2F3F5'
+    rounded: 8px
+    padding: 8px 12px
+    typography: 14px/600 gg sans
+    use: Hover hints on icons
+  toast:
+    type: toast
+    backgroundColor: '#111214'
+    textColor: '#DBDEE1'
+    rounded: 8px
+    padding: 12px 16px
+    use: Transient confirmations (4px left status accent)
+  toggle:
+    type: toggle
+    backgroundColor: '#57F287'
+    rounded: 9999px
+    use: 'Boolean settings — track green on, #80848E off'
+fonts:
+  roles:
+    sans: gg sans
+    mono: gg mono
 ---
 
 # Design System Inspiration of Discord
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Discord is the place where communities hang out, and its interface is built to feel like a clubhouse, not an enterprise tool. The product UI lives almost entirely in dark mode by default — deep slate-navy surfaces (`#313338` chat, `#2B2D31` channel sidebar, `#1E1F22` server rail) layered like physical panels, with one electric accent doing all the talking: **Blurple** (`#5865F2`). Blurple is a portmanteau of "blue" and "purple," and that in-between quality is the whole personality — friendly but not corporate, energetic but not aggressive. It is the most-tapped color in the app and the single most recognizable thing about the brand.
 
@@ -89,7 +217,7 @@ The 2021 rebrand brightened the original Blurple (`#7289DA`) into the more satur
 - Generous rounded corners (4px–8px–16px scale) and pill buttons
 - Mascot-driven personality (Wumpus, Clyde) and conversational copy
 
-## Primary tasks
+### Primary tasks
 
 - Type a message into the composer and send it to a channel.
 - Spot which server has unread mentions and triage by color.
@@ -97,7 +225,38 @@ The 2021 rebrand brightened the original Blurple (`#7289DA`) into the more satur
 - Moderate a large community through roles, permissions, and audit logs.
 - Get through a server's rules and verification as a new member.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Discord was founded in **2015** by **Jason Citron** and **Stan Vishnevskiy**, born out of the frustration that existing voice-chat tools (Skype, TeamSpeak, Ventrilo) were clunky for gaming with friends. The original wedge was simple: low-latency voice chat that just worked while you played. From there it grew into "your place to talk" — a platform of community-run **servers** organized into **channels** for text, voice, and video.
+
+The brand's central metaphor is the *clubhouse*: a place that's yours and your friends', persistent, low-pressure, drop-in. The product design encodes this — the three-panel shell is a literal building (rail of buildings → rooms inside → the room you're in), and the dark, focused UI keeps the spotlight on conversation. The mascot **Clyde** (and the rounded logo built from his face) gives the whole system its friendly geometry; **Wumpus**, the wide-eyed blob, is the marketing heart.
+
+The **2021 rebrand** was a pivotal design moment. Discord broadened from "for gamers" to "for everyone — communities of any kind," and the visual system grew up with it: the new brighter Blurple (`#5865F2`), the proprietary **gg sans** typeface replacing licensed fonts, a five-color palette, and a more illustration-forward marketing language. The rebrand kept the playfulness but added range — the system could now be loud and inviting on the landing page and calm and focused in the app.
+
+What Discord refuses: the sterile minimalism of enterprise chat (Slack's neutrality, Teams' corporate gray), and the attention-hungry feed mechanics of social media. There is no algorithmic feed, no like-count dopamine loop. The design's job is to make a *room feel alive* without making it feel like a product trying to capture you. Blurple is friendly, not urgent; the dark surfaces are a place to settle in, not a dashboard to monitor.
+
+### Principles
+
+1. **The conversation is the product.** Chrome recedes (dark layered surfaces) so the message column is always the brightest, most legible thing on screen.
+2. **One accent, used sparingly.** Blurple marks the primary action and live state. Overusing it would dilute the one color the brand owns. Status uses its own fixed semantic colors.
+3. **Depth by layering, not shadow.** Three surface shades build a sense of physical panels. Reserve shadows for true overlays.
+4. **Soft on the eyes.** Long chat sessions demand soft white text and muted contrast steps — never pure-white walls of text.
+5. **Playful where you explore, plain where it counts.** Personality (Wumpus, jokes, lowercase warmth) lives on discovery and community surfaces; safety, billing, and destructive flows are direct and calm.
+6. **Rounded everywhere.** From gg sans's terminals to server squircles to pill CTAs, the friendly curve is the through-line. Sharp corners feel off-brand.
+7. **Status has fixed meaning.** Green = online/success, Yellow = idle, Red = DND/error, Grey = offline. These never get reassigned for decoration.
+8. **Communities, not feeds.** No infinite scroll of strangers, no engagement bait. The design serves the room the user chose to be in.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Discord user segments, not individual people.*
+
+**Maya, 19, Austin TX.** College sophomore who runs a 400-member server for her art community. Lives in dark mode, switches between five servers a day, and treats Discord as her primary social home — more than Instagram. She notices when a server icon's mention badge turns red and triages by color. She expects new features to feel native and unobtrusive; an intrusive popup gets dismissed in half a second. Heavy emoji and custom-sticker user; personality matters as much as function.
+
+**Devon, 27, Seattle.** Backend engineer who uses Discord for three things: a gaming friend group, two open-source project servers, and a hobby mechanical-keyboard community. Values low-latency voice above all (it's why he came), keeps notifications tightly tuned, and reads code blocks in `gg mono` daily. Skeptical of feature bloat — he wants the clubhouse to stay a clubhouse, not become a platform that monetizes his attention. Will pay for Nitro for the quality-of-life perks, not the flex.
+
+**Priya, 34, London.** Community manager who administers a 12,000-member server for a creator. Lives in moderation tools, audit logs, and role/permission settings. For her the playful tone must never leak into safety and moderation surfaces — she needs clear, unambiguous controls. Cares about onboarding flows (rules screens, verification) being legible to brand-new members. Uses the desktop app on a wide monitor with all four panels open.
+
+## Colors
 
 ### Primary
 - **Blurple** (`#5865F2`): Primary interactive color — CTAs, links, mentions, active channel, selected state, focus rings. The workhorse of every actionable element.
@@ -138,7 +297,7 @@ The 2021 rebrand brightened the original Blurple (`#7289DA`) into the more satur
 - **Border Strong** (`#1E1F22`): Channel/server separators, input outlines on dark.
 - **Input Background** (`#1E1F22`): Message box and form input fill on dark.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `"gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif`
@@ -169,7 +328,144 @@ gg sans ships in six weights: 300 (Light), 400 (Normal), 500 (Medium), 600 (Semi
 - **Weight, not size, for emphasis**: Usernames and headers lean on 600/700 weight rather than dramatically larger sizes — the chat stays dense and readable.
 - **Rounded warmth**: gg sans's rounded terminals carry the brand's friendliness into every line of text without extra ornament.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px
+- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px
+- Message vertical rhythm: 16px group gap, tight 2px within a grouped message run
+- Sidebar item spacing: 2px between channels, 8px between channel categories
+
+### Grid & Container (Product)
+- **Three-panel shell**: Server rail (72px fixed) → Channel sidebar (240px) → Main content (flex) → optional Member list (240px)
+- Server rail icons: 48px rounded-squircle, 8px gap
+- Content max readability width is not capped — chat fills available space, messages left-aligned full-bleed
+
+### Grid & Container (Marketing)
+- Centered content, max-width ~1260px
+- Generous vertical section padding (80–120px)
+- Alternating Blurple / white / off-white full-bleed bands
+
+### Whitespace Philosophy
+- **Density where it counts**: Chat is information-dense (you want to see history); settings and onboarding are spacious and calm.
+- **Panels as physical layers**: The three surface shades create depth without shadows — the eye reads `#1E1F22` < `#2B2D31` < `#313338` as receding-to-near.
+- **Marketing breathes loud**: Big type, big illustrations, big Blurple fields — the opposite of the focused product.
+
+### Border Radius Scale
+- Tight (4px): Inputs, embeds, channel items, small chips
+- Standard (8px): Buttons, modals, cards, tooltips
+- Squircle (16px): Server icons, avatars (hover morphs circle→squircle)
+- Pill (9999px): Status dots, mention badges, marketing CTAs, toggles
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single panel at a time; swipe between server rail, channels, chat, members |
+| Tablet | 768–1024px | Two panels visible; member list collapses to a toggle |
+| Desktop | >1024px | Full three/four-panel shell |
+
+#### Touch Targets
+- Mobile rows and buttons: minimum 44px tall
+- Server icons: 48px tap target with 8px spacing
+- Message action buttons appear on long-press (mobile) / hover (desktop)
+
+#### Collapsing Strategy
+- Member list (240px) is the first to collapse on narrowing
+- Channel sidebar becomes a swipe-in drawer on mobile
+- Marketing layout reflows multi-column feature grids to single column under 768px
+- Modals become full-screen sheets on mobile
+
+#### Image & Media Behavior
+- Avatars: 32px (message), 40px (member list), 80px+ (profile) — always circular
+- Server icons: 48px squircle, fall back to initials on `#5865F2` if no image
+- Inline media: max-width constrained, click to expand to lightbox
+- Illustrations (marketing): SVG, scale fluidly, Wumpus and friends anchor each section
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Base (Level 0) | Surface color only (`#313338`) | Main chat, page background |
+| Layer (Level 1) | Adjacent darker surface (`#2B2D31`) | Sidebars, cards — depth via color, not shadow |
+| Floating (Level 2) | `0 4px 8px rgba(0,0,0,0.24)` on `#111214` | Tooltips, popouts, context menus |
+| Modal (Level 3) | `0 8px 16px rgba(0,0,0,0.24)` on `#313338` | Dialogs, settings overlays |
+| High (Level 4) | `0 12px 32px rgba(0,0,0,0.36)` | Full-screen modals, image lightbox |
+
+**Shadow Philosophy**: In dark mode, Discord communicates elevation primarily through *surface color stepping* rather than shadow — a floating panel is darker (`#111214`) than the surface it sits on (`#313338`), which reads as lifted. Shadows are reserved for true overlays (menus, modals) and are soft, pure-black, low-opacity. Marketing surfaces use slightly more playful drop shadows and a faint Blurple glow on hovered CTAs.
+
+### Blur & Overlay
+- Modal scrim: `rgba(0,0,0,0.85)` behind dialogs
+- Streamer-mode / spoiler blur: heavy gaussian blur revealed on click
+- No frosted-glass chrome in the core product — surfaces are opaque for performance and clarity
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.floating`: `0 4px 8px rgba(0,0,0,0.24)`
+- `shadow.modal`: `0 8px 16px rgba(0,0,0,0.24)`
+- `shadow.high`: `0 12px 32px rgba(0,0,0,0.36)`
+
+## Motion & Easing
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Theme toggles, immediate state flips |
+| `motion-fast` | 100ms | Hover reveals, tooltip show, icon color change, message action toolbar |
+| `motion-standard` | 200ms | The default — popouts, dropdowns, tab switches, badge pop |
+| `motion-emphasis` | 300ms | Modal open, settings page transitions, panel slides |
+| `motion-page` | 350ms | Mobile panel swipes, full-screen sheet presentation |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — popouts, tooltips, modals |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals, closing menus |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — accordions, tab content |
+| `ease-bounce` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Playful overshoot — server-icon squircle morph, mention-badge pop, emoji reactions |
+
+**Signature motions.**
+
+1. **Squircle morph.** Hovering or selecting a server icon morphs its border-radius from a full circle to a 16px squircle over `motion-standard / ease-bounce`. A white pill simultaneously grows on the left rail edge (4px idle → 40px active). This is the single most recognizable Discord micro-interaction.
+2. **Mention badge pop.** A new unread mention scales the red badge from 0 → 1.0 with a slight overshoot (`ease-bounce`, `motion-standard`). Reactions and emoji additions use the same bounce.
+3. **Message action toolbar.** On row hover, the react/reply/more toolbar fades and slides 4px into place over `motion-fast / ease-enter` — fast enough to feel instant, smooth enough to feel intentional.
+4. **Popout & modal.** Context menus and popouts scale from `0.95 → 1.0` with opacity `0 → 1` over `motion-standard / ease-enter`; modals additionally fade in a `rgba(0,0,0,0.85)` scrim. Dismissals use `motion-fast / ease-exit`.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, bounce easings collapse to `ease-standard`, slides become fades, and the squircle morph becomes an instant radius change. The app stays fully usable.
+
+<!--
+OmD v0.1 Sources
+
+Direct verification (2026-06-06):
+- WebFetch https://discord.com — confirms dark-mode-first product surface, Blurple
+  brand accent, playful/community marketing voice ("group chat that's all fun &
+  games", "find your friends on discord"), mascot references (Wumpus, Clyde, Nelly),
+  filled borderless button approach, rounded UI.
+- WebSearch (Discord branding / color sources: discord.com/branding,
+  color-name.com, mobbin.com, colorxs.com) — confirms Blurple #5865F2 (2021 rebrand
+  from legacy #7289DA), five-color palette Green #57F287 / Yellow #FEE75C /
+  Fuchsia #EB459E / Red #ED4245, custom rounded sans-serif (gg sans), Clyde logo.
+
+Token-level product surface values (#1E1F22 / #2B2D31 / #313338 surfaces,
+#DBDEE1 text, status greens/reds, message-box #383A40, hover rgba(78,80,88,*))
+reflect Discord's widely-documented dark-theme design tokens and are standard
+across the public Discord client; treated as authoritative for this reference.
+
+gg sans, gg mono, and the Ginto display family are Discord's publicly-known
+proprietary type choices introduced/used post-2021 rebrand.
+
+Personas (§13) are fictional archetypes informed by publicly described Discord
+user segments. Any resemblance to specific individuals is unintended.
+
+Interpretive claims (e.g., "depth by layering, not shadow", clubhouse metaphor)
+are editorial readings of the design, not documented Discord statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -360,56 +656,26 @@ Discord buttons are filled, borderless, and pill-to-rounded. Default height is 3
 - Radius: 9999px (pill track, ~40px wide × 24px tall)
 - Use: Boolean settings (notifications, privacy switches)
 
-
 **Tier 1 sources:** https://discord.com (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px
-- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px
-- Message vertical rhythm: 16px group gap, tight 2px within a grouped message run
-- Sidebar item spacing: 2px between channels, 8px between channel categories
+| State | Treatment |
+|---|---|
+| **Empty (no messages)** | Wumpus illustration centered, friendly one-liner in `#949BA4` ("This is the start of the #channel channel."), no hard CTA — the message box invites the first message. |
+| **Empty (no friends/DMs)** | Larger Wumpus illustration, headline in `#F2F3F5`, single Blurple "Add Friend" button. Warm, inviting copy. |
+| **Loading (first paint)** | Skeleton blocks in `#3A3C42` matching message-row layout (avatar circle + text bars). Subtle shimmer. Server rail and sidebars paint first. |
+| **Loading (sending message)** | Message appears immediately in a dimmed `opacity: 0.6` state; resolves to full opacity on server ack. Fails to a red retry affordance. |
+| **Error (inline field)** | `#FA777C` 1px border on input, helper text below in `#FA777C` 12px. One clear sentence. |
+| **Error (connection)** | Top banner in `#F0B232` (reconnecting) or `#F23F43` (offline) with white text, spans the chat width, auto-clears on reconnect. |
+| **Error (action failed)** | Toast on `#111214`, `#DBDEE1` text, red left accent, plain copy ("Couldn't send. Try again."). No jokes. |
+| **Success (friend added / settings saved)** | Brief toast or inline green flash; a "Saved" pill in `#23A55A`. Settings pages show a sticky "Careful — you have unsaved changes!" bar in `#1E1F22` until saved. |
+| **Presence states** | Online `#23A55A`, Idle `#F0B232` (crescent), DND `#F23F43` (minus bar), Offline `#80848E`, Streaming `#593695` (purple). Dot has a `#2B2D31` ring against the surface. |
+| **Disabled** | Buttons drop to `opacity: 0.5`, no hover, `cursor: not-allowed`. Inputs keep border geometry, text greys to `#87898C`. |
+| **Hover (message row)** | Row bg shifts to `rgba(78,80,88,0.3)`, action toolbar (react, reply, more) fades in top-right over `motion-fast`. |
+| **Spoiler / NSFW** | Content covered by heavy blur + `#202225` overlay, revealed on click. Streamer mode auto-blurs sensitive UI. |
 
-### Grid & Container (Product)
-- **Three-panel shell**: Server rail (72px fixed) → Channel sidebar (240px) → Main content (flex) → optional Member list (240px)
-- Server rail icons: 48px rounded-squircle, 8px gap
-- Content max readability width is not capped — chat fills available space, messages left-aligned full-bleed
-
-### Grid & Container (Marketing)
-- Centered content, max-width ~1260px
-- Generous vertical section padding (80–120px)
-- Alternating Blurple / white / off-white full-bleed bands
-
-### Whitespace Philosophy
-- **Density where it counts**: Chat is information-dense (you want to see history); settings and onboarding are spacious and calm.
-- **Panels as physical layers**: The three surface shades create depth without shadows — the eye reads `#1E1F22` < `#2B2D31` < `#313338` as receding-to-near.
-- **Marketing breathes loud**: Big type, big illustrations, big Blurple fields — the opposite of the focused product.
-
-### Border Radius Scale
-- Tight (4px): Inputs, embeds, channel items, small chips
-- Standard (8px): Buttons, modals, cards, tooltips
-- Squircle (16px): Server icons, avatars (hover morphs circle→squircle)
-- Pill (9999px): Status dots, mention badges, marketing CTAs, toggles
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Base (Level 0) | Surface color only (`#313338`) | Main chat, page background |
-| Layer (Level 1) | Adjacent darker surface (`#2B2D31`) | Sidebars, cards — depth via color, not shadow |
-| Floating (Level 2) | `0 4px 8px rgba(0,0,0,0.24)` on `#111214` | Tooltips, popouts, context menus |
-| Modal (Level 3) | `0 8px 16px rgba(0,0,0,0.24)` on `#313338` | Dialogs, settings overlays |
-| High (Level 4) | `0 12px 32px rgba(0,0,0,0.36)` | Full-screen modals, image lightbox |
-
-**Shadow Philosophy**: In dark mode, Discord communicates elevation primarily through *surface color stepping* rather than shadow — a floating panel is darker (`#111214`) than the surface it sits on (`#313338`), which reads as lifted. Shadows are reserved for true overlays (menus, modals) and are soft, pure-black, low-opacity. Marketing surfaces use slightly more playful drop shadows and a faint Blurple glow on hovered CTAs.
-
-### Blur & Overlay
-- Modal scrim: `rgba(0,0,0,0.85)` behind dialogs
-- Streamer-mode / spoiler blur: heavy gaussian blur revealed on click
-- No frosted-glass chrome in the core product — surfaces are opaque for performance and clarity
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Blurple (`#5865F2`) for the single primary action and all interactive accents
@@ -430,33 +696,24 @@ Discord buttons are filled, borderless, and pill-to-rounded. Default height is 3
 - Don't crowd the chat with chrome — keep the three-panel shell clean
 - Don't recolor status dots arbitrarily — green/yellow/red/grey are fixed semantics
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single panel at a time; swipe between server rail, channels, chat, members |
-| Tablet | 768–1024px | Two panels visible; member list collapses to a toggle |
-| Desktop | >1024px | Full three/four-panel shell |
+Discord writes like the friend who runs the group chat — casual, warm, lowercase-comfortable, in on the joke, but never confusing when it matters. The brand voice leans playful ("Group chat that's all fun & games," "hop in when you're free, no need to call") and leans on its mascots (Wumpus, Clyde, Nelly) for personality. But the voice is situational: it gets out of the way in safety, billing, and destructive flows, where copy turns plain and direct.
 
-### Touch Targets
-- Mobile rows and buttons: minimum 44px tall
-- Server icons: 48px tap target with 8px spacing
-- Message action buttons appear on long-press (mobile) / hover (desktop)
+| Context | Tone |
+|---|---|
+| Marketing headlines | Playful, lowercase-leaning, community-first ("imagine a place...") |
+| CTAs | Short, inviting verbs ("Open Discord", "Join", "Add Friend", "Send") |
+| Empty states | Friendly + Wumpus illustration + one suggested action ("It's quiet here... for now.") |
+| Success messages | Light, brief, occasionally cheeky ("Friend request sent!") |
+| Error messages | Plain and specific — playful tone drops ("Something went wrong. Try again.") |
+| Safety / Trust & Safety | Direct, serious, no jokes — clarity over personality |
+| Billing / Nitro | Clear value framing, gentle excitement, never pressure |
+| Notifications | Concise, scannable, who-did-what-where |
 
-### Collapsing Strategy
-- Member list (240px) is the first to collapse on narrowing
-- Channel sidebar becomes a swipe-in drawer on mobile
-- Marketing layout reflows multi-column feature grids to single column under 768px
-- Modals become full-screen sheets on mobile
+**Forbidden in serious flows.** No memes, no Wumpus, no exclamation-stacking in safety, account-security, payment-failure, or moderation copy. The playful voice is a feature of discovery and community surfaces, not of consequence surfaces.
 
-### Image & Media Behavior
-- Avatars: 32px (message), 40px (member list), 80px+ (profile) — always circular
-- Server icons: 48px squircle, fall back to initials on `#5865F2` if no image
-- Inline media: max-width constrained, click to expand to lightbox
-- Illustrations (marketing): SVG, scale fluidly, Wumpus and friends anchor each section
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Blurple (`#5865F2`)
@@ -489,124 +746,8 @@ Discord buttons are filled, borderless, and pill-to-rounded. Default height is 3
 6. Depth via surface stepping, not shadow — overlays get soft black low-opacity shadows.
 7. Marketing surfaces flip to bright Blurple/white with big pill CTAs and Wumpus illustration.
 
-## 10. Voice & Tone
+## Governance
 
-Discord writes like the friend who runs the group chat — casual, warm, lowercase-comfortable, in on the joke, but never confusing when it matters. The brand voice leans playful ("Group chat that's all fun & games," "hop in when you're free, no need to call") and leans on its mascots (Wumpus, Clyde, Nelly) for personality. But the voice is situational: it gets out of the way in safety, billing, and destructive flows, where copy turns plain and direct.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Marketing headlines | Playful, lowercase-leaning, community-first ("imagine a place...") |
-| CTAs | Short, inviting verbs ("Open Discord", "Join", "Add Friend", "Send") |
-| Empty states | Friendly + Wumpus illustration + one suggested action ("It's quiet here... for now.") |
-| Success messages | Light, brief, occasionally cheeky ("Friend request sent!") |
-| Error messages | Plain and specific — playful tone drops ("Something went wrong. Try again.") |
-| Safety / Trust & Safety | Direct, serious, no jokes — clarity over personality |
-| Billing / Nitro | Clear value framing, gentle excitement, never pressure |
-| Notifications | Concise, scannable, who-did-what-where |
-
-**Forbidden in serious flows.** No memes, no Wumpus, no exclamation-stacking in safety, account-security, payment-failure, or moderation copy. The playful voice is a feature of discovery and community surfaces, not of consequence surfaces.
-
-## 11. Brand Narrative
-
-Discord was founded in **2015** by **Jason Citron** and **Stan Vishnevskiy**, born out of the frustration that existing voice-chat tools (Skype, TeamSpeak, Ventrilo) were clunky for gaming with friends. The original wedge was simple: low-latency voice chat that just worked while you played. From there it grew into "your place to talk" — a platform of community-run **servers** organized into **channels** for text, voice, and video.
-
-The brand's central metaphor is the *clubhouse*: a place that's yours and your friends', persistent, low-pressure, drop-in. The product design encodes this — the three-panel shell is a literal building (rail of buildings → rooms inside → the room you're in), and the dark, focused UI keeps the spotlight on conversation. The mascot **Clyde** (and the rounded logo built from his face) gives the whole system its friendly geometry; **Wumpus**, the wide-eyed blob, is the marketing heart.
-
-The **2021 rebrand** was a pivotal design moment. Discord broadened from "for gamers" to "for everyone — communities of any kind," and the visual system grew up with it: the new brighter Blurple (`#5865F2`), the proprietary **gg sans** typeface replacing licensed fonts, a five-color palette, and a more illustration-forward marketing language. The rebrand kept the playfulness but added range — the system could now be loud and inviting on the landing page and calm and focused in the app.
-
-What Discord refuses: the sterile minimalism of enterprise chat (Slack's neutrality, Teams' corporate gray), and the attention-hungry feed mechanics of social media. There is no algorithmic feed, no like-count dopamine loop. The design's job is to make a *room feel alive* without making it feel like a product trying to capture you. Blurple is friendly, not urgent; the dark surfaces are a place to settle in, not a dashboard to monitor.
-
-## 12. Principles
-
-1. **The conversation is the product.** Chrome recedes (dark layered surfaces) so the message column is always the brightest, most legible thing on screen.
-2. **One accent, used sparingly.** Blurple marks the primary action and live state. Overusing it would dilute the one color the brand owns. Status uses its own fixed semantic colors.
-3. **Depth by layering, not shadow.** Three surface shades build a sense of physical panels. Reserve shadows for true overlays.
-4. **Soft on the eyes.** Long chat sessions demand soft white text and muted contrast steps — never pure-white walls of text.
-5. **Playful where you explore, plain where it counts.** Personality (Wumpus, jokes, lowercase warmth) lives on discovery and community surfaces; safety, billing, and destructive flows are direct and calm.
-6. **Rounded everywhere.** From gg sans's terminals to server squircles to pill CTAs, the friendly curve is the through-line. Sharp corners feel off-brand.
-7. **Status has fixed meaning.** Green = online/success, Yellow = idle, Red = DND/error, Grey = offline. These never get reassigned for decoration.
-8. **Communities, not feeds.** No infinite scroll of strangers, no engagement bait. The design serves the room the user chose to be in.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Discord user segments, not individual people.*
-
-**Maya, 19, Austin TX.** College sophomore who runs a 400-member server for her art community. Lives in dark mode, switches between five servers a day, and treats Discord as her primary social home — more than Instagram. She notices when a server icon's mention badge turns red and triages by color. She expects new features to feel native and unobtrusive; an intrusive popup gets dismissed in half a second. Heavy emoji and custom-sticker user; personality matters as much as function.
-
-**Devon, 27, Seattle.** Backend engineer who uses Discord for three things: a gaming friend group, two open-source project servers, and a hobby mechanical-keyboard community. Values low-latency voice above all (it's why he came), keeps notifications tightly tuned, and reads code blocks in `gg mono` daily. Skeptical of feature bloat — he wants the clubhouse to stay a clubhouse, not become a platform that monetizes his attention. Will pay for Nitro for the quality-of-life perks, not the flex.
-
-**Priya, 34, London.** Community manager who administers a 12,000-member server for a creator. Lives in moderation tools, audit logs, and role/permission settings. For her the playful tone must never leak into safety and moderation surfaces — she needs clear, unambiguous controls. Cares about onboarding flows (rules screens, verification) being legible to brand-new members. Uses the desktop app on a wide monitor with all four panels open.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no messages)** | Wumpus illustration centered, friendly one-liner in `#949BA4` ("This is the start of the #channel channel."), no hard CTA — the message box invites the first message. |
-| **Empty (no friends/DMs)** | Larger Wumpus illustration, headline in `#F2F3F5`, single Blurple "Add Friend" button. Warm, inviting copy. |
-| **Loading (first paint)** | Skeleton blocks in `#3A3C42` matching message-row layout (avatar circle + text bars). Subtle shimmer. Server rail and sidebars paint first. |
-| **Loading (sending message)** | Message appears immediately in a dimmed `opacity: 0.6` state; resolves to full opacity on server ack. Fails to a red retry affordance. |
-| **Error (inline field)** | `#FA777C` 1px border on input, helper text below in `#FA777C` 12px. One clear sentence. |
-| **Error (connection)** | Top banner in `#F0B232` (reconnecting) or `#F23F43` (offline) with white text, spans the chat width, auto-clears on reconnect. |
-| **Error (action failed)** | Toast on `#111214`, `#DBDEE1` text, red left accent, plain copy ("Couldn't send. Try again."). No jokes. |
-| **Success (friend added / settings saved)** | Brief toast or inline green flash; a "Saved" pill in `#23A55A`. Settings pages show a sticky "Careful — you have unsaved changes!" bar in `#1E1F22` until saved. |
-| **Presence states** | Online `#23A55A`, Idle `#F0B232` (crescent), DND `#F23F43` (minus bar), Offline `#80848E`, Streaming `#593695` (purple). Dot has a `#2B2D31` ring against the surface. |
-| **Disabled** | Buttons drop to `opacity: 0.5`, no hover, `cursor: not-allowed`. Inputs keep border geometry, text greys to `#87898C`. |
-| **Hover (message row)** | Row bg shifts to `rgba(78,80,88,0.3)`, action toolbar (react, reply, more) fades in top-right over `motion-fast`. |
-| **Spoiler / NSFW** | Content covered by heavy blur + `#202225` overlay, revealed on click. Streamer mode auto-blurs sensitive UI. |
-
-## 15. Motion & Easing
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Theme toggles, immediate state flips |
-| `motion-fast` | 100ms | Hover reveals, tooltip show, icon color change, message action toolbar |
-| `motion-standard` | 200ms | The default — popouts, dropdowns, tab switches, badge pop |
-| `motion-emphasis` | 300ms | Modal open, settings page transitions, panel slides |
-| `motion-page` | 350ms | Mobile panel swipes, full-screen sheet presentation |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — popouts, tooltips, modals |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals, closing menus |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — accordions, tab content |
-| `ease-bounce` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Playful overshoot — server-icon squircle morph, mention-badge pop, emoji reactions |
-
-**Signature motions.**
-
-1. **Squircle morph.** Hovering or selecting a server icon morphs its border-radius from a full circle to a 16px squircle over `motion-standard / ease-bounce`. A white pill simultaneously grows on the left rail edge (4px idle → 40px active). This is the single most recognizable Discord micro-interaction.
-2. **Mention badge pop.** A new unread mention scales the red badge from 0 → 1.0 with a slight overshoot (`ease-bounce`, `motion-standard`). Reactions and emoji additions use the same bounce.
-3. **Message action toolbar.** On row hover, the react/reply/more toolbar fades and slides 4px into place over `motion-fast / ease-enter` — fast enough to feel instant, smooth enough to feel intentional.
-4. **Popout & modal.** Context menus and popouts scale from `0.95 → 1.0` with opacity `0 → 1` over `motion-standard / ease-enter`; modals additionally fade in a `rgba(0,0,0,0.85)` scrim. Dismissals use `motion-fast / ease-exit`.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, bounce easings collapse to `ease-standard`, slides become fades, and the squircle morph becomes an instant radius change. The app stays fully usable.
-
-<!--
-OmD v0.1 Sources
-
-Direct verification (2026-06-06):
-- WebFetch https://discord.com — confirms dark-mode-first product surface, Blurple
-  brand accent, playful/community marketing voice ("group chat that's all fun &
-  games", "find your friends on discord"), mascot references (Wumpus, Clyde, Nelly),
-  filled borderless button approach, rounded UI.
-- WebSearch (Discord branding / color sources: discord.com/branding,
-  color-name.com, mobbin.com, colorxs.com) — confirms Blurple #5865F2 (2021 rebrand
-  from legacy #7289DA), five-color palette Green #57F287 / Yellow #FEE75C /
-  Fuchsia #EB459E / Red #ED4245, custom rounded sans-serif (gg sans), Clyde logo.
-
-Token-level product surface values (#1E1F22 / #2B2D31 / #313338 surfaces,
-#DBDEE1 text, status greens/reds, message-box #383A40, hover rgba(78,80,88,*))
-reflect Discord's widely-documented dark-theme design tokens and are standard
-across the public Discord client; treated as authoritative for this reference.
-
-gg sans, gg mono, and the Ginto display family are Discord's publicly-known
-proprietary type choices introduced/used post-2021 rebrand.
-
-Personas (§13) are fictional archetypes informed by publicly described Discord
-user segments. Any resemblance to specific individuals is unintended.
-
-Interpretive claims (e.g., "depth by layering, not shadow", clubhouse metaphor)
-are editorial readings of the design, not documented Discord statements.
--->
+- **Contrast, `mention-badge`.** Text `#ffffff` on `#ed4245` measures 3.84:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

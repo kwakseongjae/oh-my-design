@@ -1,67 +1,169 @@
 ---
-id: sionic
 name: SIONIC AI
-display_name_kr: 사이오닉에이아이
-country: KR
-category: ai
-homepage: "https://www.sionic.ai/"
-primary_color: "#007ff5"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=sionic.ai&sz=128"
-verified: "2026-07-02"
-added: "2026-07-02"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live section-eyebrow / outlined-CTA electric blue (#007ff5); hero primary CTA is a dark graphite pill (#3b4043) with a white-pill and blue-outline companion. Near-shadowless flat system; body/heading text pure black (#000000) on white (#ffffff); Pretendard throughout with a global -0.5px tracking."
-  colors:
-    primary: "#007ff5"
-    primary-tint: "#e7f3ff"
-    primary-wash: "#f5faff"
-    ink: "#000000"
-    canvas: "#ffffff"
-    cta-dark: "#3b4043"
-    dark-surface: "#282a2b"
-    nav: "#334155"
-    muted: "#7a8287"
-    muted-alt: "#596066"
-    surface: "#eceff1"
-    hairline: "#e2e8f0"
-    border: "#cdd1d5"
-    on-dark: "#f9fafb"
-  typography:
-    family: { sans: "Pretendard" }
-    hero:        { size: 44, weight: 700, lineHeight: 1.50, tracking: -0.5, use: "Product-page hero headline (STORM Platform)" }
-    display:     { size: 36, weight: 700, lineHeight: 1.30, tracking: -0.5, use: "Closing section CTA headline (Ready to transform)" }
-    section:     { size: 32, weight: 700, lineHeight: 1.50, tracking: -0.5, use: "Feature section titles (Optimized for RAG)" }
-    subsection:  { size: 28, weight: 700, lineHeight: 1.50, tracking: -0.5, use: "Use-case sub-heads" }
-    card-title:  { size: 24, weight: 700, lineHeight: 1.33, tracking: -0.5, use: "Feature card / news titles" }
-    eyebrow:     { size: 16, weight: 700, lineHeight: 1.50, tracking: -0.5, use: "Blue section eyebrow label" }
-    body:        { size: 16, weight: 400, lineHeight: 1.50, tracking: -0.5, use: "Standard reading text, Pretendard" }
-    button:      { size: 16, weight: 700, lineHeight: 1.50, tracking: -0.5, use: "Pill button label" }
-    footer:      { size: 14, weight: 500, lineHeight: 1.50, tracking: 0.35, use: "Footer links, small positive tracking" }
-  spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 30, section: 48 }
-  rounded: { sm: 8, md: 20, lg: 30, pill: 90, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary-dark: { type: button, bg: "#3b4043", fg: "#ffffff", radius: "90px", padding: "16px 30px", height: "56px", font: "16px / 700 Pretendard", use: "Primary dark graphite pill CTA (Learn More)" }
-    button-white-pill: { type: button, bg: "#ffffff", fg: "#000000", radius: "90px", padding: "16px 30px", height: "56px", font: "16px / 700 Pretendard", use: "White pill CTA on dark hero (See STORM PARSE in Action)" }
-    button-outline-blue: { type: button, bg: "#ffffff", fg: "#007ff5", border: "1px solid #007ff5", radius: "90px", padding: "16px 24px", height: "58px", font: "16px / 700 Pretendard", use: "Blue outlined product CTA (Explore STORM PLATFORM)" }
-    button-contact: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #000000", radius: "8px", height: "38px", font: "15px / 700 Pretendard", use: "Nav contact button (Contact us)" }
-    contact-sales-cta: { type: button, bg: "#ffffff", fg: "#000000", radius: "90px", padding: "20px 32px", height: "70px", font: "20px / 700 Pretendard", use: "Large closing Contact Sales CTA" }
-    card-feature: { type: card, bg: "#ffffff", border: "1px solid #eceff1", radius: "30px", padding: "24px 28px", font: "16px / 500 Pretendard", use: "Feature / use-case card, 30px rounded, hairline border, no shadow" }
-    card-blue-tint: { type: card, bg: "#e7f3ff", radius: "20px", use: "Blue-tint highlight surface panel" }
-    usecase-tab: { type: tab, active: "text #ffffff on #000000 fill", fg: "#7a8287", bg: "#eceff1", use: "Use-case selector strip; active tab black fill white text, inactive grey" }
-    footer-link: { type: listItem, fg: "#7a8287", font: "14px / 500 Pretendard", use: "Footer navigation link" }
-  components_harvested: true
+colors:
+  primary: '#007ff5'
+  primary-tint: '#e7f3ff'
+  primary-wash: '#f5faff'
+  ink: '#000000'
+  canvas: '#ffffff'
+  cta-dark: '#3b4043'
+  dark-surface: '#282a2b'
+  nav: '#334155'
+  muted: '#7a8287'
+  muted-alt: '#596066'
+  surface: '#eceff1'
+  hairline: '#e2e8f0'
+  border: '#cdd1d5'
+  on-dark: '#f9fafb'
+typography:
+  hero:
+    fontSize: 44px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: Product-page hero headline (STORM Platform)
+  display:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: '-0.5px'
+    use: Closing section CTA headline (Ready to transform)
+  section:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: Feature section titles (Optimized for RAG)
+  subsection:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: Use-case sub-heads
+  card-title:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: '-0.5px'
+    use: Feature card / news titles
+  eyebrow:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: Blue section eyebrow label
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: Standard reading text, Pretendard
+  button:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.5px'
+    use: Pill button label
+  footer:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: 0.35px
+    use: Footer links, small positive tracking
+rounded:
+  sm: 8px
+  md: 20px
+  lg: 30px
+  pill: 90px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 16
+  lg: 24
+  xl: 30
+  section: 48
+components:
+  button-primary-dark:
+    type: button
+    backgroundColor: '#3b4043'
+    textColor: '#ffffff'
+    rounded: 90px
+    padding: 16px 30px
+    height: 56px
+    typography: 16px / 700 Pretendard
+    use: Primary dark graphite pill CTA (Learn More)
+  button-white-pill:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 90px
+    padding: 16px 30px
+    height: 56px
+    typography: 16px / 700 Pretendard
+    use: White pill CTA on dark hero (See STORM PARSE in Action)
+  button-outline-blue:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#007ff5'
+    border: '1px solid #007ff5'
+    rounded: 90px
+    padding: 16px 24px
+    height: 58px
+    typography: 16px / 700 Pretendard
+    use: Blue outlined product CTA (Explore STORM PLATFORM)
+  button-contact:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    border: '1px solid #000000'
+    rounded: 8px
+    height: 38px
+    typography: 15px / 700 Pretendard
+    use: Nav contact button (Contact us)
+  contact-sales-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 90px
+    padding: 20px 32px
+    height: 70px
+    typography: 20px / 700 Pretendard
+    use: Large closing Contact Sales CTA
+  card-feature:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #eceff1'
+    rounded: 30px
+    padding: 24px 28px
+    typography: 16px / 500 Pretendard
+    use: Feature / use-case card, 30px rounded, hairline border, no shadow
+  card-blue-tint:
+    type: card
+    backgroundColor: '#e7f3ff'
+    rounded: 20px
+    use: Blue-tint highlight surface panel
+  usecase-tab:
+    type: tab
+    active: 'text #ffffff on #000000 fill'
+    textColor: '#7a8287'
+    backgroundColor: '#eceff1'
+    use: Use-case selector strip; active tab black fill white text, inactive grey
+  footer-link:
+    type: listItem
+    textColor: '#7a8287'
+    typography: 14px / 500 Pretendard
+    use: Footer navigation link
+fonts:
+  roles:
+    sans: Pretendard
 ---
 
 # Design System Inspiration of SIONIC AI
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 SIONIC AI (사이오닉에이아이) is a Korean enterprise-AI company whose homepage reads like a confident B2B infrastructure product — clean, engineered, and quietly technical rather than flashy. The canvas is pure white (`#ffffff`) alternating with dramatic near-black sections (`#282a2b`), and text sits in unapologetic pure black (`#000000`) instead of a softened navy — a high-contrast, no-nonsense posture that suits a company selling "hallucination-free" RAG infrastructure. The single saturated brand accent is an electric blue (`#007ff5`) reserved almost exclusively for section eyebrows ("STORM PLATFORM", "USE CASE", "NEWS"), key highlight words ("Optimized for RAG", "No Experts Needed"), and the blue outlined product CTA. The eye is trained to read that one blue as "this is the important part."
 
@@ -79,14 +181,40 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 - Pill-and-rounded geometry — 90px CTA pills, 30px cards, asymmetric tab corners
 - A dark graphite primary pill (`#3b4043`) as the workhorse CTA, with white-pill and blue-outline companions
 
-## Primary tasks
+### Primary tasks
 
 - Design and deploy an AI agent without writing code
 - Ask a question and get an answer grounded in your own company data
 - Turn messy internal documents into data a RAG system can use
 - Integrate the Parse and Retrieval APIs into an existing product
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+SIONIC AI (사이오닉에이아이) is a Korean enterprise-AI company building **STORM**, a hands-on generative-AI platform that lets a company's own business experts design and deploy AI agents with no coding required. Its stated vision, printed on the company page, is **"AI for All Companies"**: SIONIC "aims not only to advance artificial intelligence technology but also to increase accessibility and usability so that all companies can freely utilize AI." The positioning is explicitly *AI-Native* — building "a link that can easily and cost-effectively connect AI to users' daily lives and work areas" to lead the era "where AI technology naturally integrates into work" ([company/vision, www.sionic.ai/en/company](https://www.sionic.ai/en/company)).
+
+The strategy the company states is **Enterprise Specialization**: "solutions that allow users to design AI in various corporate environments without restrictions, enabling even non-experts to easily and quickly operate, manage, and control it." That belief — that the domain experts inside a company, not just ML specialists, should be the ones building the agents — shapes the whole product surface: a no-code interface, pre-built templates, flexible deployment (on-premise, private cloud, or SaaS), and a data engine that turns "messy, unstructured data into clean, meaningful information." The RAG system is pitched as grounding "every answer in your own company data, eliminating hallucinations." SIONIC's leadership is listed publicly: **Sukhyun Ko (CEO)**, **Woomyoung Park (CDO)**, **Sihyeung Han (CSO)**, and **Dukhyun Kim (HOD)**, and the company describes a track record across finance, media, manufacturing, and the public sector.
+
+What SIONIC refuses, visible in its design: the intimidating, specialist-gated framing of much enterprise AI, and decorative flash. What it embraces: high-contrast black-on-white clarity, a single trustworthy electric blue, bold Pretendard headlines that speak plainly, and a flat, engineered, near-shadowless surface — the visual equivalent of "reliable, hallucination-free" infrastructure you can count on.
+
+### Principles
+
+1. **AI for everyone in the company.** SIONIC's stated vision is accessibility — non-experts, not just ML engineers, should build agents. *UI implication:* no-code, template-first flows; plain-language labels; never gate capability behind specialist jargon.
+2. **Grounded, not hallucinated.** The product promise is answers grounded in the customer's own data. *UI implication:* surface sources and grounding; design states that make provenance and trust visible.
+3. **One accent, one signal.** Electric blue (`#007ff5`) means "this matters." *UI implication:* reserve the saturated blue for eyebrows, highlight words, and the primary outlined action so attention is never ambiguous.
+4. **Flat and engineered.** High-contrast, near-shadowless clarity signals reliable infrastructure. *UI implication:* separate with tint and hairlines, not elevation; keep surfaces clean and fast.
+5. **Bold where it states, calm where it explains.** *UI implication:* weight-700 Pretendard headlines that assert outcomes; weight-400 body that explains capability without hype.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable SIONIC AI user segments (enterprise buyers adopting generative AI, non-technical domain experts, ML platform engineers), not individual people.*
+
+**김도현, 41, 서울.** A digital-transformation lead at a mid-size manufacturer evaluating on-premise generative AI. Cares about deployment flexibility and data security; chose to trial STORM because it offered on-premise and private-cloud options, not SaaS-only. Trusts the "hallucination-free, grounded in your own data" framing.
+
+**이하늘, 33, 판교.** A non-technical operations manager tasked with building an internal support chatbot. Has never written code; values the no-code template interface that lets her design and deploy an agent herself without waiting on the ML team.
+
+**Park Woojin, 29, Seoul.** A platform engineer integrating STORM APIs (Parse, Retrieval) into an existing product. Reads the docs and the tech blog for reference implementations; cares that the parsing engine reliably turns messy documents into RAG-ready data.
+
+## Colors
 
 ### Primary
 - **SIONIC Blue** (`#007ff5`): The single saturated brand accent. Section eyebrow labels, highlight words, active links, and the blue outlined product CTA. The system's one "look here" color.
@@ -111,7 +239,7 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 - **Hairline** (`#e2e8f0`): The default thin border (Tailwind slate-200) on nav and container edges.
 - **Border Grey** (`#cdd1d5`): A slightly stronger grey border used on segmented/card outlines.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Sans (all roles)**: `Pretendard` (with `Pretendard Fallback`) — the single family for headlines, UI, and body. Bold (700) for display, medium (500) for footer/labels, regular (400) for body.
@@ -139,7 +267,120 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 - **Bold display, quiet body**: display is always heavy (700); body stays at a calm 16px / 24px for dense, readable enterprise copy.
 - **Blue is a typographic tool**: `#007ff5` is applied to eyebrows and highlight words as a color accent within otherwise-black headlines.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 8px, 16px, 24px, 30px, 48px
+- Notable: button padding lands at 16px 30px (pill CTAs), cards at 24px 28px, and the large closing CTA at 20px 32px — generous, tappable hit areas
+
+### Grid & Container
+- Centered single-column hero with a heavy 44px Pretendard headline as the anchor
+- Full-width dramatic dark sections (`#282a2b`) for the hero and feature reveals, alternating with white bands
+- Use-case selector as a horizontal tab strip with asymmetric rounded end-corners
+- Feature and news content in 30px-rounded cards with `#eceff1` hairline borders, grid-arranged
+
+### Whitespace Philosophy
+- **Breathing, high-contrast bands**: white sections alternate with near-black (`#282a2b`) bands, creating a dramatic light/dark cadence without introducing new colors.
+- **Flat segmentation**: sections separate by background tint (`#eceff1`, `#e7f3ff`, `#f5faff`) and hairlines (`#e2e8f0`, `#cdd1d5`), not by shadow.
+- **Rounded rhythm**: the repeated 30px card radius and 90px pill CTA create a consistent soft-cornered cadence across the page.
+
+### Border Radius Scale
+- Small (8px): the nav "Contact us" button, small containers
+- Medium (20px): blue-tint highlight panels
+- Large (30px): feature / use-case cards — the workhorse card radius
+- Pill (90px): primary CTAs
+- Full (9999px): carousel arrow buttons, round controls
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, cards stack, tab strip scrolls |
+| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
+| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature and news grids |
+
+#### Touch Targets
+- Pill CTAs at 56-58px height with 16px 30px padding — comfortably tappable
+- Large closing CTA at 70px height for an unmistakable target
+- Use-case tabs at 108px height give a generous hit area
+- Nav "Contact us" button at 38px with an 8px radius
+
+#### Collapsing Strategy
+- Hero: 44px Pretendard headline scales down on mobile, weight 700 maintained
+- Use-case tab strip: horizontal scroll on narrow viewports
+- Feature / news cards: multi-column grid → stacked single column
+- Dark (`#282a2b`) and white alternating bands maintain full-width treatment
+
+#### Image Behavior
+- Product screenshots and diagrams carry no shadow at any size, consistent with the flat system
+- Cards maintain the 30px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
+| Tint (Level 1) | `#eceff1` / `#e7f3ff` / `#f5faff` background shift | Card, tab, and section separation without elevation |
+| Hairline (Level 2) | `1px solid #e2e8f0` or `#cdd1d5` border | Card outlines, nav edge, dividers |
+| Contrast (Level 3) | Near-black `#282a2b` section against white | Hero / immersive band separation |
+
+**Shadow Philosophy**: SIONIC is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, buttons, and cards (the single `.CtaButton` shadow declaration resolved to a fully transparent value). Depth and grouping are communicated entirely through flat tinted surfaces (`#eceff1`, `#e7f3ff`, `#f5faff`), thin hairlines (`#e2e8f0`, `#cdd1d5`), and dramatic light/dark band contrast (`#ffffff` vs `#282a2b`). This is a deliberate modern-flat, engineering-forward choice — it keeps the enterprise-AI UI feeling clean, fast, and precise. When emphasis is needed, the system reaches for the electric blue (`#007ff5`) or a dark fill, never elevation.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, tab select, focus |
+| `motion-standard` | 200ms | Card / section reveal, tab-panel switch, dropdown |
+| `motion-slow` | 320ms | Page-level transitions, hero / dark-band reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, panels, tab content |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and quiet — consistent with the flat, engineered aesthetic. Pill CTAs respond to press with a subtle scale/opacity shift; use-case tab panels and feature cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — an enterprise-AI infrastructure product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on
+https://www.sionic.ai/ and https://www.sionic.ai/en/platform — all token-level
+claims (§1-9) are sourced from this live inspection (see web/references/sionic/.verification.md
+"## Proof — Tier 1 live inspect" for the raw computed-style samples).
+
+Voice samples (§10) are verbatim from the live homepage (hero headline + subhead,
+feature card titles) and the company/vision page (/en/company).
+
+Brand narrative (§11) quotes the live company/vision page (www.sionic.ai/en/company):
+"AI for All Companies", the accessibility/usability vision, the "Enterprise
+Specialization" strategy, and the publicly listed leadership (Sukhyun Ko CEO,
+Woomyoung Park CDO, Sihyeung Han CSO, Dukhyun Kim HOD). These are direct reads of
+the company's own stated positioning as displayed on that page in this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable SIONIC AI
+user segments (enterprise AI buyers, non-technical domain experts, platform
+engineers). Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "flat and engineered as the visual equivalent of reliable
+infrastructure", "one accent, one signal") are editorial readings connecting SIONIC's
+observed design to its stated positioning, not directly sourced SIONIC statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -239,43 +480,21 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 **Tier 2 sources:** getdesign.md/sionic (HTTP 200, 0 DESIGN.md files — not listed); styles.refero.design/?q=sionic (no SIONIC match — default gallery only)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 16px, 24px, 30px, 48px
-- Notable: button padding lands at 16px 30px (pill CTAs), cards at 24px 28px, and the large closing CTA at 20px 32px — generous, tappable hit areas
+| State | Treatment |
+|---|---|
+| **Empty (no agents yet)** | White canvas. Single Ink Black (`#000000`) line explaining nothing is built yet, with one blue outlined CTA (`#007ff5`) to create the first agent from a template. No illustration clutter. |
+| **Empty (no results)** | Muted Grey (`#7a8287`) single line stating no matching results, with a path back to adjust the query. Calm and plain. |
+| **Loading (agent build / data parse)** | Skeleton blocks on `#eceff1` tinted surface at final card dimensions, 30px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
+| **Loading (in-place refresh)** | Subtle blue (`#007ff5`) progress indicator; previous content stays visible with previous values. |
+| **Error (parse / retrieval failed)** | Inline message in Ink Black with a plain-language explanation of what failed and the next step. No bare "오류가 발생했습니다" — state what to do. |
+| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "required". |
+| **Success (agent deployed)** | Brief inline confirmation in a calm tone; next-step detail (endpoint, test link) linked immediately below. No celebratory emoji. |
+| **Skeleton** | `#eceff1` blocks at final dimensions, 30px radius, flat pulse. |
+| **Disabled** | Muted Grey (`#7a8287`) text on a reduced-opacity surface; blue actions fade rather than turn a different color to preserve the single-accent read. |
 
-### Grid & Container
-- Centered single-column hero with a heavy 44px Pretendard headline as the anchor
-- Full-width dramatic dark sections (`#282a2b`) for the hero and feature reveals, alternating with white bands
-- Use-case selector as a horizontal tab strip with asymmetric rounded end-corners
-- Feature and news content in 30px-rounded cards with `#eceff1` hairline borders, grid-arranged
-
-### Whitespace Philosophy
-- **Breathing, high-contrast bands**: white sections alternate with near-black (`#282a2b`) bands, creating a dramatic light/dark cadence without introducing new colors.
-- **Flat segmentation**: sections separate by background tint (`#eceff1`, `#e7f3ff`, `#f5faff`) and hairlines (`#e2e8f0`, `#cdd1d5`), not by shadow.
-- **Rounded rhythm**: the repeated 30px card radius and 90px pill CTA create a consistent soft-cornered cadence across the page.
-
-### Border Radius Scale
-- Small (8px): the nav "Contact us" button, small containers
-- Medium (20px): blue-tint highlight panels
-- Large (30px): feature / use-case cards — the workhorse card radius
-- Pill (90px): primary CTAs
-- Full (9999px): carousel arrow buttons, round controls
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#eceff1` / `#e7f3ff` / `#f5faff` background shift | Card, tab, and section separation without elevation |
-| Hairline (Level 2) | `1px solid #e2e8f0` or `#cdd1d5` border | Card outlines, nav edge, dividers |
-| Contrast (Level 3) | Near-black `#282a2b` section against white | Hero / immersive band separation |
-
-**Shadow Philosophy**: SIONIC is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, buttons, and cards (the single `.CtaButton` shadow declaration resolved to a fully transparent value). Depth and grouping are communicated entirely through flat tinted surfaces (`#eceff1`, `#e7f3ff`, `#f5faff`), thin hairlines (`#e2e8f0`, `#cdd1d5`), and dramatic light/dark band contrast (`#ffffff` vs `#282a2b`). This is a deliberate modern-flat, engineering-forward choice — it keeps the enterprise-AI UI feeling clean, fast, and precise. When emphasis is needed, the system reaches for the electric blue (`#007ff5`) or a dark fill, never elevation.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Set everything in Pretendard with a global `-0.5px` letter-spacing — it's the typographic DNA
@@ -296,32 +515,27 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 - Set headlines in a light weight — display is always bold (700)
 - Add positive letter-spacing to headlines — the global tracking is a tight `-0.5px` (only footer links go positive)
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, cards stack, tab strip scrolls |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature and news grids |
+SIONIC AI's voice is **plain, confident, and enterprise-practical** — it sells generative-AI infrastructure to businesses by promising concrete outcomes ("real-world results", "hallucination-free answers") rather than hype. The hero line "The Power of AI for Every Business" sets the register: inclusive, benefit-first, and declarative. Copy repeatedly frames AI as something *every* company and *non-technical* teams can operate, decoding an intimidating domain into approachable, no-code capability.
 
-### Touch Targets
-- Pill CTAs at 56-58px height with 16px 30px padding — comfortably tappable
-- Large closing CTA at 70px height for an unmistakable target
-- Use-case tabs at 108px height give a generous hit area
-- Nav "Contact us" button at 38px with an 8px radius
+| Context | Tone |
+|---|---|
+| Hero headlines | Declarative, benefit-first. "The Power of AI for Every Business." Confident, not hype. |
+| Feature titles | Outcome-named. "Reliable, Hallucination-Free Answers", "A Data Engine for High-Accuracy AI". |
+| Product / capability copy | Plain-English, empowerment-framed. "anyone can design and deploy powerful AI agents." |
+| CTAs | Direct, low-friction. "Explore STORM PLATFORM", "See STORM PARSE in Action", "Contact Sales". |
+| Company / vision | Mission-framed, inclusive. "AI for All Companies", "Enabling all companies to prepare for the AI era". |
 
-### Collapsing Strategy
-- Hero: 44px Pretendard headline scales down on mobile, weight 700 maintained
-- Use-case tab strip: horizontal scroll on narrow viewports
-- Feature / news cards: multi-column grid → stacked single column
-- Dark (`#282a2b`) and white alternating bands maintain full-width treatment
+**Voice samples (verbatim from live surfaces):**
+- "The Power of AI for Every Business" — homepage hero headline. *(verified live 2026-07-02)*
+- "We turn AI-native potential into real-world results." — homepage hero subhead. *(verified live 2026-07-02)*
+- "Reliable, Hallucination-Free Answers" — feature card title (grounded-RAG promise). *(verified live 2026-07-02)*
+- "AI for All Companies" — company vision statement. *(verified live 2026-07-02)*
 
-### Image Behavior
-- Product screenshots and diagrams carry no shadow at any size, consistent with the flat system
-- Cards maintain the 30px radius across breakpoints
+**Forbidden register**: undefined AI jargon left unexplained, fear-based or breathless hype, exclamation-heavy marketing, and anything that implies AI is only for specialists — the brand's whole framing is accessibility for non-experts.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary accent / eyebrow / outline CTA: SIONIC Blue (`#007ff5`)
@@ -354,108 +568,9 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-SIONIC AI's voice is **plain, confident, and enterprise-practical** — it sells generative-AI infrastructure to businesses by promising concrete outcomes ("real-world results", "hallucination-free answers") rather than hype. The hero line "The Power of AI for Every Business" sets the register: inclusive, benefit-first, and declarative. Copy repeatedly frames AI as something *every* company and *non-technical* teams can operate, decoding an intimidating domain into approachable, no-code capability.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Declarative, benefit-first. "The Power of AI for Every Business." Confident, not hype. |
-| Feature titles | Outcome-named. "Reliable, Hallucination-Free Answers", "A Data Engine for High-Accuracy AI". |
-| Product / capability copy | Plain-English, empowerment-framed. "anyone can design and deploy powerful AI agents." |
-| CTAs | Direct, low-friction. "Explore STORM PLATFORM", "See STORM PARSE in Action", "Contact Sales". |
-| Company / vision | Mission-framed, inclusive. "AI for All Companies", "Enabling all companies to prepare for the AI era". |
-
-**Voice samples (verbatim from live surfaces):**
-- "The Power of AI for Every Business" — homepage hero headline. *(verified live 2026-07-02)*
-- "We turn AI-native potential into real-world results." — homepage hero subhead. *(verified live 2026-07-02)*
-- "Reliable, Hallucination-Free Answers" — feature card title (grounded-RAG promise). *(verified live 2026-07-02)*
-- "AI for All Companies" — company vision statement. *(verified live 2026-07-02)*
-
-**Forbidden register**: undefined AI jargon left unexplained, fear-based or breathless hype, exclamation-heavy marketing, and anything that implies AI is only for specialists — the brand's whole framing is accessibility for non-experts.
-
-## 11. Brand Narrative
-
-SIONIC AI (사이오닉에이아이) is a Korean enterprise-AI company building **STORM**, a hands-on generative-AI platform that lets a company's own business experts design and deploy AI agents with no coding required. Its stated vision, printed on the company page, is **"AI for All Companies"**: SIONIC "aims not only to advance artificial intelligence technology but also to increase accessibility and usability so that all companies can freely utilize AI." The positioning is explicitly *AI-Native* — building "a link that can easily and cost-effectively connect AI to users' daily lives and work areas" to lead the era "where AI technology naturally integrates into work" ([company/vision, www.sionic.ai/en/company](https://www.sionic.ai/en/company)).
-
-The strategy the company states is **Enterprise Specialization**: "solutions that allow users to design AI in various corporate environments without restrictions, enabling even non-experts to easily and quickly operate, manage, and control it." That belief — that the domain experts inside a company, not just ML specialists, should be the ones building the agents — shapes the whole product surface: a no-code interface, pre-built templates, flexible deployment (on-premise, private cloud, or SaaS), and a data engine that turns "messy, unstructured data into clean, meaningful information." The RAG system is pitched as grounding "every answer in your own company data, eliminating hallucinations." SIONIC's leadership is listed publicly: **Sukhyun Ko (CEO)**, **Woomyoung Park (CDO)**, **Sihyeung Han (CSO)**, and **Dukhyun Kim (HOD)**, and the company describes a track record across finance, media, manufacturing, and the public sector.
-
-What SIONIC refuses, visible in its design: the intimidating, specialist-gated framing of much enterprise AI, and decorative flash. What it embraces: high-contrast black-on-white clarity, a single trustworthy electric blue, bold Pretendard headlines that speak plainly, and a flat, engineered, near-shadowless surface — the visual equivalent of "reliable, hallucination-free" infrastructure you can count on.
-
-## 12. Principles
-
-1. **AI for everyone in the company.** SIONIC's stated vision is accessibility — non-experts, not just ML engineers, should build agents. *UI implication:* no-code, template-first flows; plain-language labels; never gate capability behind specialist jargon.
-2. **Grounded, not hallucinated.** The product promise is answers grounded in the customer's own data. *UI implication:* surface sources and grounding; design states that make provenance and trust visible.
-3. **One accent, one signal.** Electric blue (`#007ff5`) means "this matters." *UI implication:* reserve the saturated blue for eyebrows, highlight words, and the primary outlined action so attention is never ambiguous.
-4. **Flat and engineered.** High-contrast, near-shadowless clarity signals reliable infrastructure. *UI implication:* separate with tint and hairlines, not elevation; keep surfaces clean and fast.
-5. **Bold where it states, calm where it explains.** *UI implication:* weight-700 Pretendard headlines that assert outcomes; weight-400 body that explains capability without hype.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable SIONIC AI user segments (enterprise buyers adopting generative AI, non-technical domain experts, ML platform engineers), not individual people.*
-
-**김도현, 41, 서울.** A digital-transformation lead at a mid-size manufacturer evaluating on-premise generative AI. Cares about deployment flexibility and data security; chose to trial STORM because it offered on-premise and private-cloud options, not SaaS-only. Trusts the "hallucination-free, grounded in your own data" framing.
-
-**이하늘, 33, 판교.** A non-technical operations manager tasked with building an internal support chatbot. Has never written code; values the no-code template interface that lets her design and deploy an agent herself without waiting on the ML team.
-
-**Park Woojin, 29, Seoul.** A platform engineer integrating STORM APIs (Parse, Retrieval) into an existing product. Reads the docs and the tech blog for reference implementations; cares that the parsing engine reliably turns messy documents into RAG-ready data.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no agents yet)** | White canvas. Single Ink Black (`#000000`) line explaining nothing is built yet, with one blue outlined CTA (`#007ff5`) to create the first agent from a template. No illustration clutter. |
-| **Empty (no results)** | Muted Grey (`#7a8287`) single line stating no matching results, with a path back to adjust the query. Calm and plain. |
-| **Loading (agent build / data parse)** | Skeleton blocks on `#eceff1` tinted surface at final card dimensions, 30px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Subtle blue (`#007ff5`) progress indicator; previous content stays visible with previous values. |
-| **Error (parse / retrieval failed)** | Inline message in Ink Black with a plain-language explanation of what failed and the next step. No bare "오류가 발생했습니다" — state what to do. |
-| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "required". |
-| **Success (agent deployed)** | Brief inline confirmation in a calm tone; next-step detail (endpoint, test link) linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#eceff1` blocks at final dimensions, 30px radius, flat pulse. |
-| **Disabled** | Muted Grey (`#7a8287`) text on a reduced-opacity surface; blue actions fade rather than turn a different color to preserve the single-accent read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, tab select, focus |
-| `motion-standard` | 200ms | Card / section reveal, tab-panel switch, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero / dark-band reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, panels, tab content |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, engineered aesthetic. Pill CTAs respond to press with a subtle scale/opacity shift; use-case tab panels and feature cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — an enterprise-AI infrastructure product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on
-https://www.sionic.ai/ and https://www.sionic.ai/en/platform — all token-level
-claims (§1-9) are sourced from this live inspection (see web/references/sionic/.verification.md
-"## Proof — Tier 1 live inspect" for the raw computed-style samples).
-
-Voice samples (§10) are verbatim from the live homepage (hero headline + subhead,
-feature card titles) and the company/vision page (/en/company).
-
-Brand narrative (§11) quotes the live company/vision page (www.sionic.ai/en/company):
-"AI for All Companies", the accessibility/usability vision, the "Enterprise
-Specialization" strategy, and the publicly listed leadership (Sukhyun Ko CEO,
-Woomyoung Park CDO, Sihyeung Han CSO, Dukhyun Kim HOD). These are direct reads of
-the company's own stated positioning as displayed on that page in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable SIONIC AI
-user segments (enterprise AI buyers, non-technical domain experts, platform
-engineers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "flat and engineered as the visual equivalent of reliable
-infrastructure", "one accent, one signal") are editorial readings connecting SIONIC's
-observed design to its stated positioning, not directly sourced SIONIC statements.
--->
+- **Contrast, `button-outline-blue`.** Text `#007ff5` on `#ffffff` measures 3.92:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `usecase-tab`.** Text `#7a8287` on `#eceff1` measures 3.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

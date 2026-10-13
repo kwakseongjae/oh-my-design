@@ -1,0 +1,439 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "palantir",
+    "name": "Palantir Blueprint",
+    "country": "US",
+    "category": "developer-tools",
+    "homepage": "https://blueprintjs.com/",
+    "primary_color": "#2d72d2",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=blueprintjs.com&sz=128"
+    },
+    "verified": "2026-07-14",
+    "ds": {
+      "name": "Blueprint",
+      "url": "https://blueprintjs.com/docs/",
+      "type": "system",
+      "description": "Palantir's open-source React UI toolkit for complex, data-dense desktop web interfaces."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-14",
+    "note": "Machine tokens are limited to the supplied Blueprint landing and documentation capture. The operating-system stack is not a named Blueprint UI family; declared icon fonts, Palantir corporate material, and repository context remain separate evidence domains.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "public-product",
+        "url": "https://blueprintjs.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "docs",
+        "kind": "official-documentation",
+        "url": "https://blueprintjs.com/docs/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://blueprintjs.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "palantir-component-index",
+        "kind": "official-doc",
+        "url": "https://blueprintjs.com/docs/",
+        "captured": "2026-09-19"
+      },
+      {
+        "id": "docs-live",
+        "kind": "official-doc",
+        "url": "https://blueprintjs.com/docs/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "blueprint-repository",
+        "kind": "official-doc",
+        "url": "https://github.com/palantir/blueprint",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "blueprint-license",
+        "kind": "license",
+        "url": "https://github.com/palantir/blueprint/blob/develop/LICENSE",
+        "captured": "2026-07-14"
+      },
+      {
+        "id": "palantir-values",
+        "kind": "official-doc",
+        "url": "https://www.palantir.com/careers/infrastructure",
+        "captured": "2026-07-14"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.dark-canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.on-primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.landing-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.landing-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.landing-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.landing-title.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.link": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-title.fontSize": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-title.fontWeight": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-title.lineHeight": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-title.use": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-body.fontSize": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-body.fontWeight": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-body.lineHeight": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.docs-body.use": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.sharp": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.round": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "prose:shadow.docs-card": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.type": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.backgroundColor": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.textColor": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.rounded": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.padding": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.height": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.shadow": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.typography": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.docs-welcome-card.use": {
+        "surface_id": "docs",
+        "source_id": "docs-live",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 11,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 3,
+      "orphaned-tokens": 5
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.landing-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.docs-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.docs-body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.docs-welcome-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.docs-welcome-card.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.docs-welcome-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.dark-canvas",
+        "message": "'dark-canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "c64c4b154a458bcb94eca6e2f4691fb2c9239eba8906fc597f0dae95c3893790",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.docs-card",
+        "value": "rgba(0, 0, 0, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 0px 5px 0px"
+      }
+    ],
+    "numeric": [
+      "typography.landing-title.fontSize",
+      "typography.docs-title.fontSize",
+      "typography.docs-body.fontSize",
+      "rounded.sharp",
+      "rounded.control",
+      "rounded.round",
+      "components.docs-welcome-card.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ]
+    }
+  }
+}

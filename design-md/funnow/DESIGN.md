@@ -1,62 +1,136 @@
 ---
-id: funnow
 name: FunNow
-country: TW
-category: consumer-tech
-homepage: "https://www.myfunnow.com"
-primary_color: "#ff5537"
-logo:
-  type: favicon
-  slug: "https://cdn.myfunnow.com/web/images/funnow_favicon.svg"
-verified: "2026-06-10"
-added: "2026-06-10"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-10"
-  note: "primary = live CTA / urgency orange-red (#ff5537, matches the official favicon SVG fill); teal #4dcbcb is the secondary outline accent; flash-sale tags run indigo #5a69eb. Vuetify/Material chrome — flat v-cards, 4px radius everywhere."
-  colors:
-    primary: "#ff5537"
-    teal: "#4dcbcb"
-    flash-indigo: "#5a69eb"
-    amber: "#ffb107"
-    ink: "#252729"
-    ink-pure: "#000000"
-    muted: "#a7a7a9"
-    canvas: "#f4f4f5"
-    surface: "#ffffff"
-    tint-peach: "#ffd8d1"
-    tint-blush: "#ffeeeb"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Helvetica Neue", tc: "PingFang TC, Microsoft JhengHei" }
-    display-hero: { size: 36, weight: 500, lineHeight: 1.22, use: "Hero H1 headline on homepage" }
-    page-title:   { size: 24, weight: 700, lineHeight: 1.50, use: "Category / listing page H1" }
-    section:      { size: 18, weight: 400, lineHeight: 1.50, use: "Category page H2 intro" }
-    subtitle:     { size: 17, weight: 400, lineHeight: 1.41, use: "Hero H2 subtitle, section heads, filter tabs" }
-    body:         { size: 15, weight: 400, lineHeight: 1.50, use: "Standard reading text, header buttons" }
-    button:       { size: 14, weight: 400, lineHeight: 1.00, use: "Primary CTA / control labels" }
-    badge:        { size: 12, weight: 500, lineHeight: 1.30, use: "Urgency and flash-sale tags" }
-  spacing: { xs: 2, sm: 8, md: 12, base: 16 }
-  rounded: { sm: 4, md: 5 }
-  shadow:
-    flat: "none"
-    raised: "Material elevation stack rgba(0,0,0,0.2) / rgba(0,0,0,0.14) on raised search CTA only"
-  components:
-    button-primary: { type: button, bg: "#ff5537", fg: "#ffffff", radius: "4px", padding: "0px 16px", height: "40px", font: "14px / 400", use: "Search submit / primary CTA — the single solid-fill button on the page" }
-    button-outline-teal: { type: button, fg: "#4dcbcb", border: "1px solid #4dcbcb", radius: "4px", padding: "0px 8px", height: "36px", font: "15px / 400", use: "Download App header CTA, outlined teal" }
-    button-text: { type: button, fg: "#000000", radius: "4px", padding: "0px 8px", height: "36px", font: "15px / 400", use: "Login / Sign Up quiet header action" }
-    badge-available-now: { type: badge, bg: "#ff5537", fg: "#ffffff", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "'Available now' urgency tag on product cards" }
-    badge-flash-sale: { type: badge, bg: "#5a69eb", fg: "#ffffff", radius: "4px", padding: "0px 8px", font: "12px / 400", use: "'Flash Sales Now' / timed-deal countdown tag" }
-    card-product: { type: card, bg: "#ffffff", radius: "4px", use: "Flat v-card product tile sitting on the #f4f4f5 canvas, image-led, no shadow" }
-    tab-filter: { type: tab, fg: "#252729", active: "text #ff5537", height: "48px", font: "17px / 400", use: "Category scope tabs (All / Beitou Hot Spring Hotel / ...)" }
-    input-search: { type: input, fg: "#000000", radius: "0px", padding: "8px 16px", height: "40px", font: "16px / 400", use: "Hero search field inside the white booking toolbar" }
-  components_harvested: true
+colors:
+  primary: '#ff5537'
+  teal: '#4dcbcb'
+  flash-indigo: '#5a69eb'
+  amber: '#ffb107'
+  ink: '#252729'
+  ink-pure: '#000000'
+  muted: '#a7a7a9'
+  canvas: '#f4f4f5'
+  surface: '#ffffff'
+  tint-peach: '#ffd8d1'
+  tint-blush: '#ffeeeb'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 36px
+    fontWeight: 500
+    lineHeight: 1.22
+    use: Hero H1 headline on homepage
+  page-title:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Category / listing page H1
+  section:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Category page H2 intro
+  subtitle:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 1.41
+    use: Hero H2 subtitle, section heads, filter tabs
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text, header buttons
+  button:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1
+    use: Primary CTA / control labels
+  badge:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.3
+    use: Urgency and flash-sale tags
+rounded:
+  sm: 4px
+  md: 5px
+spacing:
+  xs: 2
+  sm: 8
+  md: 12
+  base: 16
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ff5537'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0px 16px
+    height: 40px
+    typography: 14px / 400
+    use: Search submit / primary CTA — the single solid-fill button on the page
+  button-outline-teal:
+    type: button
+    textColor: '#4dcbcb'
+    border: '1px solid #4dcbcb'
+    rounded: 4px
+    padding: 0px 8px
+    height: 36px
+    typography: 15px / 400
+    use: Download App header CTA, outlined teal
+  button-text:
+    type: button
+    textColor: '#000000'
+    rounded: 4px
+    padding: 0px 8px
+    height: 36px
+    typography: 15px / 400
+    use: Login / Sign Up quiet header action
+  badge-available-now:
+    type: badge
+    backgroundColor: '#ff5537'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px / 500
+    use: '''Available now'' urgency tag on product cards'
+  badge-flash-sale:
+    type: badge
+    backgroundColor: '#5a69eb'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0px 8px
+    typography: 12px / 400
+    use: '''Flash Sales Now'' / timed-deal countdown tag'
+  card-product:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    use: 'Flat v-card product tile sitting on the #f4f4f5 canvas, image-led, no shadow'
+  tab-filter:
+    type: tab
+    textColor: '#252729'
+    active: 'text #ff5537'
+    height: 48px
+    typography: 17px / 400
+    use: Category scope tabs (All / Beitou Hot Spring Hotel / ...)
+  input-search:
+    type: input
+    textColor: '#000000'
+    rounded: 0px
+    padding: 8px 16px
+    height: 40px
+    typography: 16px / 400
+    use: Hero search field inside the white booking toolbar
+fonts:
+  roles:
+    sans: Helvetica Neue
+    tc: PingFang TC, Microsoft JhengHei
 ---
 
 # Design System Inspiration of FunNow
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 FunNow is Taiwan's on-demand "go out tonight" booking platform, and its web surface looks exactly like what it is: a fast, inventory-dense marketplace built on Material Design plumbing. The page sits on a cool light-grey canvas (`#f4f4f5`) with flat white product cards (`#ffffff`) stacked edge to edge — no drop shadows, no decorative depth — so hundreds of restaurant, hot-spring, and massage listings scan like a clean catalog. Text is a near-black charcoal (`#252729`) over the Material 87%-black default, and every interactive element shares one conservative 4px corner radius. The framework is visibly Vuetify (`v-card--flat` tiles, Material ripple buttons), which gives the product a utilitarian, app-like crispness rather than an editorial mood.
 
@@ -74,7 +148,7 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 - Photography-led cards: imagery carries the appetite appeal, chrome stays neutral
 - Time-anchored microcopy ("Available now", "Book For 06:00") baked into the component system
 
-## Primary tasks
+### Primary tasks
 
 - Book a restaurant, bar, or spa in Taipei within a few clicks
 - Filter to what is available now and book in a minute
@@ -82,7 +156,35 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 - Reserve a same-day hot-spring room without phoning the venue
 - Pick another time when the slot you wanted is taken
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+FunNow was founded in **Taipei in November 2015** by **TK Chen (陳庭寬)** and co-founders under the company Zoek (the "© Zoek" still in the site footer). Chen, a former ING investment analyst who had lived in the Netherlands, took a yield-management insight personal: the moment a plane takes off, an empty seat is worth nothing — and across Asia's cities the same was true of the 8pm massage slot, the un-booked hot-spring room, the empty bar table. FunNow positioned itself as 亞洲首款主打「最後一分鐘」的預訂平台 — Asia's first booking platform built around the last minute — with the tagline **"Last minute unlimited"**.
+
+The model is urban spontaneity as infrastructure: 即時預訂都會享樂的第一選擇 ("the first choice for instant booking of urban pleasures"), spanning restaurants, bars, massage & spa, hotels and motels, hot springs, and activities — bookable in a few taps for *right now*, with dynamic off-peak pricing that fills merchants' dead hours ("尖峰有優惠，離峰更划算！"). The company raised a **$5M Series A in 2018** and a **$15M Series B in 2021** (both covered by TechCrunch), expanded to Hong Kong, Malaysia, Japan and Southeast Asia, and in **September 2023 merged with Eatigo**, one of SEA's largest O2O booking platforms, forming the FunNow Group.
+
+What FunNow refuses: the plan-ahead solemnity of traditional OTAs, phone-call reservations and queues ("免排隊、免打電話"), and any UI ornamentation that slows the catalog down. What it embraces: a flat, fast Material marketplace where photography sells the experience, an orange-red mark that always means "you can have this now", and a stated mission of 隨心所欲享受生活 — letting people enjoy life on their own terms through simple, reliable booking.
+
+### Principles
+
+1. **Now is the product.** The platform's entire reason to exist is the last minute. *UI implication:* surface real-time availability ("Available now") and time-stamped deals ("06:00 Flash Sale") as first-class card elements; default the booking flow to "Now".
+2. **One color means go.** Orange-red `#ff5537` is rationed to bookable/act-now moments. *UI implication:* one solid orange element per view; deals get indigo, secondary actions get teal outline — never blur the jobs.
+3. **Catalog speed over chrome.** Spontaneous users decide in seconds. *UI implication:* flat cards, 4px radii, dense grids, no shadows or decorative depth that slows scanning.
+4. **Photography sells, UI serves.** The experience photo is the persuasion layer. *UI implication:* image-led tiles with thin neutral chrome; text over photos rides a scrim, not a styled panel.
+5. **Off-peak is a win, not a discount bin.** Dynamic pricing reframes empty hours as smart deals. *UI implication:* deal tags read energetic and positive (indigo + exclamatory copy), never apologetic clearance styling.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable FunNow user segments (urban last-minute bookers in Taiwan and SEA, deal-driven diners, merchant partners), not individual people.*
+
+**林佳穎, 27, 台北.** A marketing exec whose plans start at 7pm when the group chat decides tonight is the night. Opens FunNow for a bar or late-night hot spring, filters by "Now", and books in under a minute. Trusts the "Available now" tag literally — if it lies once, she's gone.
+
+**Marcus Tan, 33, Kuala Lumpur.** A deal-savvy foodie who plans dinner around flash sales. Watches the indigo timed-deal tags, compares off-peak prices, and treats FunNow as a game he wins. Came via the Eatigo merger and expects the same discount clarity.
+
+**張媽媽 & family, 45, 宜蘭.** Weekend spontaneity with kids: a same-day Jiaoxi hot-spring room without phone calls. Values real reviews and refund clarity over aesthetics; books the family slot from the sofa at 10am for 1pm.
+
+**Kenji, 38, Okinawa restaurant owner.** A merchant using FunNow Booking to fill weekday-afternoon dead hours. Cares about the dashboard ("Help you stay on top"), upfront deposits cutting no-shows, and Reserve with Google traffic — the B2B face of the same urgency engine.
+
+## Colors
 
 ### Primary
 - **FunNow Orange-Red** (`#ff5537`): The brand mark color (official favicon SVG fill) and the system's single solid action color — search CTA, "Available now" urgency tags, active tab text, price/link accents, merchant CTAs.
@@ -104,7 +206,7 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 - **Peach Tint** (`#ffd8d1`): Soft orange-red tint for promotional highlight surfaces.
 - **Blush Tint** (`#ffeeeb`): Lightest orange-red tint, used as a subtle brand-warm background wash.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary stack**: `"Helvetica Neue", Helvetica, Tahoma, Arial` with Traditional Chinese fallbacks `"PingFang TC", "Microsoft JhengHei", PMingLiU` (and WenQuanYi for Linux). Latin-first, TC-ready — no custom webfont.
@@ -127,7 +229,109 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 - **Modest display sizes**: even the hero tops out at 36px — the photography and inventory density are the visual event, not the type.
 - **Compact body for scanning**: 15px/1.5 keeps long listing pages dense but legible.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px Material grid
+- Observed scale: 2px, 8px, 12px, 16px (button paddings 0 8px / 0 12px / 0 16px, badge 2px 8px, input 8px 16px)
+- Component heights are the real rhythm: 36px header buttons, 40px toolbar controls and inputs, 48px filter tabs
+
+### Grid & Container
+- Full-width white toolbar over a centered content column on the `#f4f4f5` canvas
+- Hero: headline + booking parameter bar (Category/Now/Date/Time/Pax) + search field — the booking funnel IS the hero
+- Inventory below as horizontal carousels ("Top Brands", "Trending Themes") and vertical card lists
+- Category pages: title + intro, horizontally scrollable filter tab bar, then the card grid
+
+### Whitespace Philosophy
+- **Density over air**: this is a marketplace — cards pack tightly so a screen shows maximum bookable inventory.
+- **Canvas does the separating**: the grey `#f4f4f5` gutter between flat white cards replaces borders and shadows.
+- **Chrome stays thin**: a single 64px-class toolbar and slim tab bars; vertical space is spent on listings, not branding.
+
+### Border Radius Scale
+- Standard (4px): buttons, cards, badges, dialogs — the universal Material radius
+- Slightly relaxed (5px): CTAs on the events/merchant surfaces
+- No pills, no large rounding anywhere in the core product
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <600px | Single-column cards, booking bar collapses, app-download banner prominent |
+| Tablet | 600–960px | 2-up card grids, condensed toolbar |
+| Desktop | 960–1440px | Full toolbar with city selector + booking parameters, multi-column carousels |
+
+#### Touch Targets
+- 40px toolbar controls and 48px filter tabs — comfortably tappable
+- Card tiles are full-surface tap targets linking to the booking flow
+- Header actions at 36px height with ripple feedback
+
+#### Collapsing Strategy
+- The booking parameter bar (Category/Now/Date/Time/Pax) folds into stacked sheet pickers on mobile
+- Carousels keep horizontal scroll at every width — inventory rows never stack into long verticals
+- The web experience funnels mobile users toward the app (teal Download App CTA persists)
+
+#### Image Behavior
+- Card photos crop to fixed tile ratios; text sits on a bottom scrim where overlaid
+- Tags ("Available now", flash sale) stay pinned to consistent card corners at all sizes
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Product tiles (`v-card--flat`), canvas, tab bars |
+| Raised (Level 1) | Material elevation stack `rgba(0,0,0,0.2)` / `rgba(0,0,0,0.14)` layers | Raised search CTA, city-selector button ripple chrome |
+| Overlay | `rgba(0,0,0,0.4)` scrim | Image overlays / gradient bottoms on photo cards |
+
+**Shadow Philosophy**: FunNow inverts the usual Material habit — the framework ships elevation, but the product flattens it. Listing tiles are explicitly `v-card--flat`; separation comes from the grey canvas showing between white cards. The only elevation that survives is the default Material button shadow on a handful of raised controls. Photography supplies all perceived depth: cards are image-led, and a 40%-black scrim carries text over photos. Keeping chrome flat makes the orange urgency tags and indigo deal tags the highest-contrast objects on screen, which is exactly the booking-funnel priority.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+- `shadow.raised`: `Material elevation stack rgba(0,0,0,0.2) / rgba(0,0,0,0.14) on raised search CTA only`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+**Motion rules**: FunNow inherits Material motion and keeps it functional — ripple on every tap, fast tab transitions, carousels that snap. Urgency elements may pulse subtly (flash-sale countdowns), but listing tiles never animate on scroll: catalog scanning speed outranks delight. No spring or bounce — the energy lives in the copy and color, not in physics. Under `prefers-reduced-motion: reduce`, ripples and pulses collapse to instant state changes; the booking flow remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on
+https://www.myfunnow.com/en, https://www.myfunnow.com/en/regions/1/categories/10265,
+and https://www.events.myfunnow.com/booking-en — source for all token-level claims
+(§1–9: #ff5537 CTA/tags, #4dcbcb outline, #5a69eb flash tags, #f4f4f5 canvas,
+flat v-card tiles, 4px radii, Helvetica Neue + PingFang TC stack).
+
+Voice samples (§10) are verbatim from the live homepage (hero H1/H2, section heading,
+2026-06-10) and from https://www.events.myfunnow.com/whyfunnow-zh (official brand page,
+fetched 2026-06-10: "線上一鍵預訂，線下即刻出發！", "尖峰有優惠，離峰更划算！",
+"Last minute unlimited", "亞洲首款主打「最後一分鐘」的預訂平台",
+mission "我們希望讓你透過簡單、可靠的預訂，隨興成行，達到隨心所欲享受生活的願景。").
+
+Brand narrative (§11) facts: founded November 2015 in Taipei; co-founder/CEO TK Chen
+(陳庭寬), ex-ING investment analyst, company Zoek; $5M Series A (TechCrunch, 2018-08-12);
+$15M Series B (TechCrunch, 2021-11-08); merger with Eatigo (TechCrunch, 2023-09-11);
+expansion to HK/Malaysia/Japan/SEA (Meet Global / bnext coverage). The empty-seat
+yield insight is from published founder-story coverage (Meet Global), paraphrased.
+
+Personas (§13) are fictional archetypes informed by publicly observable FunNow user
+segments. Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "traffic-light accent economy", "the framework ships
+elevation but the product flattens it", "off-peak as a win not a discount bin") are
+editorial readings connecting FunNow's observed design and stated positioning,
+not directly sourced FunNow statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -219,40 +423,21 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 **Tier 2 sources:** none available (getdesign.md/funnow → 404 "No designs found"; styles.refero.design/?q=funnow → not listed, search returned unrelated brands only)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px Material grid
-- Observed scale: 2px, 8px, 12px, 16px (button paddings 0 8px / 0 12px / 0 16px, badge 2px 8px, input 8px 16px)
-- Component heights are the real rhythm: 36px header buttons, 40px toolbar controls and inputs, 48px filter tabs
+| State | Treatment |
+|---|---|
+| **Empty (no results in filter)** | White card area on `#f4f4f5` canvas, one Ink (`#252729`) line stating no venues match this time/category, plus a text-button suggestion to switch to "Now" or clear filters. No illustration clutter. |
+| **Empty (no flash sales running)** | Muted (`#a7a7a9`) single line; next scheduled sale time shown if known — time-anchored even when empty. |
+| **Loading (listing fetch)** | Flat skeleton tiles at final card dimensions (4px radius) on the grey canvas — no shimmer theatrics, consistent with the shadowless catalog. |
+| **Loading (availability check)** | Inline spinner replacing the orange CTA label; card stays in place, previous price visible. |
+| **Error (booking failed)** | Inline message above the CTA in plain language: what failed (slot taken / payment) and the next action (pick another time). Never a bare "Error occurred". |
+| **Error (slot just sold out)** | The honest marketplace case: tag flips from "Available now" to a muted sold-out state, with nearest alternative times offered immediately. |
+| **Success (booking confirmed)** | Confirmation screen with time, venue, and party size restated — the reservation is the receipt. Calm, factual; the excitement already happened. |
+| **Skeleton** | `#ffffff` blocks at final tile dimensions on `#f4f4f5`, 4px radius, flat pulse. |
+| **Disabled** | Muted grey (`#a7a7a9`) labels on flat surfaces; orange CTAs fade in opacity rather than turning grey, preserving the "go" color's meaning. |
 
-### Grid & Container
-- Full-width white toolbar over a centered content column on the `#f4f4f5` canvas
-- Hero: headline + booking parameter bar (Category/Now/Date/Time/Pax) + search field — the booking funnel IS the hero
-- Inventory below as horizontal carousels ("Top Brands", "Trending Themes") and vertical card lists
-- Category pages: title + intro, horizontally scrollable filter tab bar, then the card grid
-
-### Whitespace Philosophy
-- **Density over air**: this is a marketplace — cards pack tightly so a screen shows maximum bookable inventory.
-- **Canvas does the separating**: the grey `#f4f4f5` gutter between flat white cards replaces borders and shadows.
-- **Chrome stays thin**: a single 64px-class toolbar and slim tab bars; vertical space is spent on listings, not branding.
-
-### Border Radius Scale
-- Standard (4px): buttons, cards, badges, dialogs — the universal Material radius
-- Slightly relaxed (5px): CTAs on the events/merchant surfaces
-- No pills, no large rounding anywhere in the core product
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Product tiles (`v-card--flat`), canvas, tab bars |
-| Raised (Level 1) | Material elevation stack `rgba(0,0,0,0.2)` / `rgba(0,0,0,0.14)` layers | Raised search CTA, city-selector button ripple chrome |
-| Overlay | `rgba(0,0,0,0.4)` scrim | Image overlays / gradient bottoms on photo cards |
-
-**Shadow Philosophy**: FunNow inverts the usual Material habit — the framework ships elevation, but the product flattens it. Listing tiles are explicitly `v-card--flat`; separation comes from the grey canvas showing between white cards. The only elevation that survives is the default Material button shadow on a handful of raised controls. Photography supplies all perceived depth: cards are image-led, and a 40%-black scrim carries text over photos. Keeping chrome flat makes the orange urgency tags and indigo deal tags the highest-contrast objects on screen, which is exactly the booking-funnel priority.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Reserve solid `#ff5537` fills for "book/act now" moments — one solid button per view
@@ -271,30 +456,29 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 - Mix the deal color and the availability color — indigo and orange-red have separate jobs
 - Dress up empty space — density is a feature of a spontaneity marketplace
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single-column cards, booking bar collapses, app-download banner prominent |
-| Tablet | 600–960px | 2-up card grids, condensed toolbar |
-| Desktop | 960–1440px | Full toolbar with city selector + booking parameters, multi-column carousels |
+FunNow's voice is **spontaneous, friendly, and deal-smart** — a fun-loving local friend who knows where you can get in *tonight* and what it should cost. Copy is short, imperative, and time-anchored: the product speaks in "now" ("Available now", "Book For 06:00"). In Traditional Chinese the register is upbeat and benefit-led, comfortable with exclamation marks ("線上一鍵預訂，線下即刻出發！") in a way the system's Western peers are not — energy is part of the brand. English copy stays casual and second-person: "Enjoy your life the way you want."
 
-### Touch Targets
-- 40px toolbar controls and 48px filter tabs — comfortably tappable
-- Card tiles are full-surface tap targets linking to the booking flow
-- Header actions at 36px height with ripple feedback
+| Context | Tone |
+|---|---|
+| Hero headlines | Invitation to act tonight. "Explore & book your fun activities in Taipei｜Taoyuan now". |
+| Subtitles / mission lines | Lifestyle permission. "Enjoy your life the way you want." |
+| Urgency tags | Telegraphic, time-stamped. "Available now", "06:00 Flash Sale", "Book For 06:00". |
+| Deal copy (TC) | Energetic, benefit-first, exclamatory. "尖峰有優惠，離峰更划算！" |
+| Merchant surfaces | Confident B2B plain talk. "Help you stay on top", "Grow with Us". |
+| Help / FAQ | Practical and procedural — booking, refund, and arrival mechanics. |
 
-### Collapsing Strategy
-- The booking parameter bar (Category/Now/Date/Time/Pax) folds into stacked sheet pickers on mobile
-- Carousels keep horizontal scroll at every width — inventory rows never stack into long verticals
-- The web experience funnels mobile users toward the app (teal Download App CTA persists)
+**Voice samples (verbatim):**
+- "Explore & book your fun activities in Taipei｜Taoyuan now" — homepage hero H1 *(verified live 2026-06-10)*
+- "Enjoy your life the way you want." — homepage hero H2 *(verified live 2026-06-10)*
+- "Book motel & hotel, massage & spa, restaurants & bars and more in Taipei within a few clicks!" — homepage section heading *(verified live 2026-06-10)*
+- "線上一鍵預訂，線下即刻出發！" ("One-click booking online, head out instantly offline!") — official Why FunNow page *(fetched 2026-06-10)*
+- "尖峰有優惠，離峰更划算！" ("Deals at peak, even better off-peak!") — official Why FunNow page *(fetched 2026-06-10)*
 
-### Image Behavior
-- Card photos crop to fixed tile ratios; text sits on a bottom scrim where overlaid
-- Tags ("Available now", flash sale) stay pinned to consistent card corners at all sizes
+**Forbidden register**: luxury-travel formality, slow "plan your itinerary" OTA language, guilt or FOMO-shaming, jargon about inventory/yield (that's merchant-side vocabulary only).
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA / urgency: FunNow Orange-Red (`#ff5537`)
@@ -324,105 +508,9 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-FunNow's voice is **spontaneous, friendly, and deal-smart** — a fun-loving local friend who knows where you can get in *tonight* and what it should cost. Copy is short, imperative, and time-anchored: the product speaks in "now" ("Available now", "Book For 06:00"). In Traditional Chinese the register is upbeat and benefit-led, comfortable with exclamation marks ("線上一鍵預訂，線下即刻出發！") in a way the system's Western peers are not — energy is part of the brand. English copy stays casual and second-person: "Enjoy your life the way you want."
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Invitation to act tonight. "Explore & book your fun activities in Taipei｜Taoyuan now". |
-| Subtitles / mission lines | Lifestyle permission. "Enjoy your life the way you want." |
-| Urgency tags | Telegraphic, time-stamped. "Available now", "06:00 Flash Sale", "Book For 06:00". |
-| Deal copy (TC) | Energetic, benefit-first, exclamatory. "尖峰有優惠，離峰更划算！" |
-| Merchant surfaces | Confident B2B plain talk. "Help you stay on top", "Grow with Us". |
-| Help / FAQ | Practical and procedural — booking, refund, and arrival mechanics. |
-
-**Voice samples (verbatim):**
-- "Explore & book your fun activities in Taipei｜Taoyuan now" — homepage hero H1 *(verified live 2026-06-10)*
-- "Enjoy your life the way you want." — homepage hero H2 *(verified live 2026-06-10)*
-- "Book motel & hotel, massage & spa, restaurants & bars and more in Taipei within a few clicks!" — homepage section heading *(verified live 2026-06-10)*
-- "線上一鍵預訂，線下即刻出發！" ("One-click booking online, head out instantly offline!") — official Why FunNow page *(fetched 2026-06-10)*
-- "尖峰有優惠，離峰更划算！" ("Deals at peak, even better off-peak!") — official Why FunNow page *(fetched 2026-06-10)*
-
-**Forbidden register**: luxury-travel formality, slow "plan your itinerary" OTA language, guilt or FOMO-shaming, jargon about inventory/yield (that's merchant-side vocabulary only).
-
-## 11. Brand Narrative
-
-FunNow was founded in **Taipei in November 2015** by **TK Chen (陳庭寬)** and co-founders under the company Zoek (the "© Zoek" still in the site footer). Chen, a former ING investment analyst who had lived in the Netherlands, took a yield-management insight personal: the moment a plane takes off, an empty seat is worth nothing — and across Asia's cities the same was true of the 8pm massage slot, the un-booked hot-spring room, the empty bar table. FunNow positioned itself as 亞洲首款主打「最後一分鐘」的預訂平台 — Asia's first booking platform built around the last minute — with the tagline **"Last minute unlimited"**.
-
-The model is urban spontaneity as infrastructure: 即時預訂都會享樂的第一選擇 ("the first choice for instant booking of urban pleasures"), spanning restaurants, bars, massage & spa, hotels and motels, hot springs, and activities — bookable in a few taps for *right now*, with dynamic off-peak pricing that fills merchants' dead hours ("尖峰有優惠，離峰更划算！"). The company raised a **$5M Series A in 2018** and a **$15M Series B in 2021** (both covered by TechCrunch), expanded to Hong Kong, Malaysia, Japan and Southeast Asia, and in **September 2023 merged with Eatigo**, one of SEA's largest O2O booking platforms, forming the FunNow Group.
-
-What FunNow refuses: the plan-ahead solemnity of traditional OTAs, phone-call reservations and queues ("免排隊、免打電話"), and any UI ornamentation that slows the catalog down. What it embraces: a flat, fast Material marketplace where photography sells the experience, an orange-red mark that always means "you can have this now", and a stated mission of 隨心所欲享受生活 — letting people enjoy life on their own terms through simple, reliable booking.
-
-## 12. Principles
-
-1. **Now is the product.** The platform's entire reason to exist is the last minute. *UI implication:* surface real-time availability ("Available now") and time-stamped deals ("06:00 Flash Sale") as first-class card elements; default the booking flow to "Now".
-2. **One color means go.** Orange-red `#ff5537` is rationed to bookable/act-now moments. *UI implication:* one solid orange element per view; deals get indigo, secondary actions get teal outline — never blur the jobs.
-3. **Catalog speed over chrome.** Spontaneous users decide in seconds. *UI implication:* flat cards, 4px radii, dense grids, no shadows or decorative depth that slows scanning.
-4. **Photography sells, UI serves.** The experience photo is the persuasion layer. *UI implication:* image-led tiles with thin neutral chrome; text over photos rides a scrim, not a styled panel.
-5. **Off-peak is a win, not a discount bin.** Dynamic pricing reframes empty hours as smart deals. *UI implication:* deal tags read energetic and positive (indigo + exclamatory copy), never apologetic clearance styling.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable FunNow user segments (urban last-minute bookers in Taiwan and SEA, deal-driven diners, merchant partners), not individual people.*
-
-**林佳穎, 27, 台北.** A marketing exec whose plans start at 7pm when the group chat decides tonight is the night. Opens FunNow for a bar or late-night hot spring, filters by "Now", and books in under a minute. Trusts the "Available now" tag literally — if it lies once, she's gone.
-
-**Marcus Tan, 33, Kuala Lumpur.** A deal-savvy foodie who plans dinner around flash sales. Watches the indigo timed-deal tags, compares off-peak prices, and treats FunNow as a game he wins. Came via the Eatigo merger and expects the same discount clarity.
-
-**張媽媽 & family, 45, 宜蘭.** Weekend spontaneity with kids: a same-day Jiaoxi hot-spring room without phone calls. Values real reviews and refund clarity over aesthetics; books the family slot from the sofa at 10am for 1pm.
-
-**Kenji, 38, Okinawa restaurant owner.** A merchant using FunNow Booking to fill weekday-afternoon dead hours. Cares about the dashboard ("Help you stay on top"), upfront deposits cutting no-shows, and Reserve with Google traffic — the B2B face of the same urgency engine.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no results in filter)** | White card area on `#f4f4f5` canvas, one Ink (`#252729`) line stating no venues match this time/category, plus a text-button suggestion to switch to "Now" or clear filters. No illustration clutter. |
-| **Empty (no flash sales running)** | Muted (`#a7a7a9`) single line; next scheduled sale time shown if known — time-anchored even when empty. |
-| **Loading (listing fetch)** | Flat skeleton tiles at final card dimensions (4px radius) on the grey canvas — no shimmer theatrics, consistent with the shadowless catalog. |
-| **Loading (availability check)** | Inline spinner replacing the orange CTA label; card stays in place, previous price visible. |
-| **Error (booking failed)** | Inline message above the CTA in plain language: what failed (slot taken / payment) and the next action (pick another time). Never a bare "Error occurred". |
-| **Error (slot just sold out)** | The honest marketplace case: tag flips from "Available now" to a muted sold-out state, with nearest alternative times offered immediately. |
-| **Success (booking confirmed)** | Confirmation screen with time, venue, and party size restated — the reservation is the receipt. Calm, factual; the excitement already happened. |
-| **Skeleton** | `#ffffff` blocks at final tile dimensions on `#f4f4f5`, 4px radius, flat pulse. |
-| **Disabled** | Muted grey (`#a7a7a9`) labels on flat surfaces; orange CTAs fade in opacity rather than turning grey, preserving the "go" color's meaning. |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-**Motion rules**: FunNow inherits Material motion and keeps it functional — ripple on every tap, fast tab transitions, carousels that snap. Urgency elements may pulse subtly (flash-sale countdowns), but listing tiles never animate on scroll: catalog scanning speed outranks delight. No spring or bounce — the energy lives in the copy and color, not in physics. Under `prefers-reduced-motion: reduce`, ripples and pulses collapse to instant state changes; the booking flow remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on
-https://www.myfunnow.com/en, https://www.myfunnow.com/en/regions/1/categories/10265,
-and https://www.events.myfunnow.com/booking-en — source for all token-level claims
-(§1–9: #ff5537 CTA/tags, #4dcbcb outline, #5a69eb flash tags, #f4f4f5 canvas,
-flat v-card tiles, 4px radii, Helvetica Neue + PingFang TC stack).
-
-Voice samples (§10) are verbatim from the live homepage (hero H1/H2, section heading,
-2026-06-10) and from https://www.events.myfunnow.com/whyfunnow-zh (official brand page,
-fetched 2026-06-10: "線上一鍵預訂，線下即刻出發！", "尖峰有優惠，離峰更划算！",
-"Last minute unlimited", "亞洲首款主打「最後一分鐘」的預訂平台",
-mission "我們希望讓你透過簡單、可靠的預訂，隨興成行，達到隨心所欲享受生活的願景。").
-
-Brand narrative (§11) facts: founded November 2015 in Taipei; co-founder/CEO TK Chen
-(陳庭寬), ex-ING investment analyst, company Zoek; $5M Series A (TechCrunch, 2018-08-12);
-$15M Series B (TechCrunch, 2021-11-08); merger with Eatigo (TechCrunch, 2023-09-11);
-expansion to HK/Malaysia/Japan/SEA (Meet Global / bnext coverage). The empty-seat
-yield insight is from published founder-story coverage (Meet Global), paraphrased.
-
-Personas (§13) are fictional archetypes informed by publicly observable FunNow user
-segments. Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "traffic-light accent economy", "the framework ships
-elevation but the product flattens it", "off-peak as a win not a discount bin") are
-editorial readings connecting FunNow's observed design and stated positioning,
-not directly sourced FunNow statements.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ff5537` measures 3.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-available-now`.** Text `#ffffff` on `#ff5537` measures 3.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

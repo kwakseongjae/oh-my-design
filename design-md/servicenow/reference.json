@@ -1,0 +1,603 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "servicenow",
+    "name": "ServiceNow Horizon",
+    "country": "US",
+    "category": "saas",
+    "homepage": "https://horizon.servicenow.com/",
+    "primary_color": "#102c40",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=horizon.servicenow.com&sz=128"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Horizon Design System",
+      "url": "https://horizon.servicenow.com/",
+      "type": "system",
+      "description": "ServiceNow's source of truth for experience design across the Now Platform."
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Machine tokens are limited to the supplied Horizon home, about, and Workspace components capture. The capture contains no interaction records; only observed default component geometry is represented.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-19",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "design-system-home",
+        "url": "https://horizon.servicenow.com/",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "about-horizon",
+        "kind": "design-system-about",
+        "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "workspace-components",
+        "kind": "design-system-components",
+        "url": "https://horizon.servicenow.com/workspace/components",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "horizon-home-capture",
+        "kind": "product-surface",
+        "url": "https://horizon.servicenow.com/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "servicenow-component-index",
+        "kind": "official-doc",
+        "url": "https://horizon.servicenow.com/workspace/components",
+        "captured": "2026-09-19"
+      },
+      {
+        "id": "horizon-about-capture",
+        "kind": "product-surface",
+        "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "horizon-components-capture",
+        "kind": "official-doc",
+        "url": "https://horizon.servicenow.com/workspace/components",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "horizon-about-doc",
+        "kind": "official-doc",
+        "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "horizon-principles-doc",
+        "kind": "official-doc",
+        "url": "https://horizon.servicenow.com/getting-started/principles",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "horizon-whats-new-doc",
+        "kind": "official-doc",
+        "url": "https://horizon.servicenow.com/getting-started/whats-new",
+        "captured": "2026-07-13"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.navy": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.ink": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.content-ink": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.border-subtle": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "colors.link-teal": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style-fontfaceset-and-source-url",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontSize": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style-fontfaceset-and-source-url",
+        "captured": "2026-07-13"
+      },
+      "typography.display.fontWeight": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style-fontfaceset-and-source-url",
+        "captured": "2026-07-13"
+      },
+      "typography.display.lineHeight": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style-fontfaceset-and-source-url",
+        "captured": "2026-07-13"
+      },
+      "typography.display.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style-fontfaceset-and-source-url",
+        "captured": "2026-07-13"
+      },
+      "typography.display.use": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style-fontfaceset-and-source-url",
+        "captured": "2026-07-13"
+      },
+      "typography.section-title.fontSize": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-title.fontWeight": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-title.lineHeight": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-title.letterSpacing": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.section-title.use": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "about-horizon",
+        "source_id": "horizon-about-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.square": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.card": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "rounded.control": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.type": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.backgroundColor": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.textColor": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.rounded": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.height": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.typography": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.workspace-page-link.use": {
+        "surface_id": "workspace-components",
+        "source_id": "horizon-components-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.type": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.textColor": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.border": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.rounded": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.padding": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.height": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.typography": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.states": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.primary-action.use": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.type": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.textColor": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.rounded": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.padding": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.height": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.typography": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.states": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      },
+      "components.nav-trigger.use": {
+        "surface_id": "home",
+        "source_id": "horizon-home-capture",
+        "method": "computed-style",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 19,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 9,
+      "missing-primary": 1,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.workspace-page-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.workspace-page-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-trigger.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-trigger.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-trigger.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.navy",
+        "message": "'navy' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.content-ink",
+        "message": "'content-ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border-subtle",
+        "message": "'border-subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link-teal",
+        "message": "'link-teal' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "37d723f46691f345955e730ec1d0c0681fcc948e6ba35eec79553f38edf25b93",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.display.fontSize",
+      "typography.display.letterSpacing",
+      "typography.section-title.fontSize",
+      "typography.section-title.letterSpacing",
+      "typography.body.fontSize",
+      "rounded.square",
+      "rounded.card",
+      "rounded.control"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "components_harvested",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "display",
+        "section-title",
+        "body"
+      ]
+    }
+  }
+}

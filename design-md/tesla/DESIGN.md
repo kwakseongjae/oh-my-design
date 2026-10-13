@@ -1,127 +1,92 @@
 ---
-id: tesla
 name: Tesla
-country: US
-category: automotive
-homepage: "https://www.tesla.com"
-primary_color: "#3e6ae1"
-logo:
-  type: simpleicons
-  slug: tesla
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: support, url: "https://www.tesla.com/support/getting-started-with-your-vehicle", inspected: "2026-07-13" }
-    - { id: surface-2, kind: marketing, url: "https://www.tesla.com/model3?lang=en", inspected: "2026-07-13" }
-    - { id: surface-3, kind: documentation, url: "https://www.tesla.com/ownersmanual/", inspected: "2026-07-13" }
-  sources:
-    - { id: support-live, kind: official-doc, url: "https://www.tesla.com/support/getting-started-with-your-vehicle", captured: "2026-07-13" }
-    - { id: model3-live, kind: product-surface, url: "https://www.tesla.com/model3?lang=en", captured: "2026-07-13" }
-    - { id: manual-live, kind: official-doc, url: "https://www.tesla.com/ownersmanual/", captured: "2026-07-13" }
-    - { id: universal-text-asset, kind: brand-asset, url: "https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/text/Universal-Sans-Text-Regular.woff2", captured: "2026-07-13" }
-    - { id: universal-display-asset, kind: brand-asset, url: "https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/display/Universal-Sans-Display-Regular.woff2", captured: "2026-07-13" }
-    - { id: tesla-legal, kind: license, url: "https://www.tesla.com/legal/terms", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.primary": &model3 { surface_id: surface-2, source_id: model3-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.canvas": *model3
-    "tokens.colors.surface": *model3
-    "tokens.colors.foreground": *model3
-    "tokens.colors.body": *model3
-    "tokens.colors.muted": *model3
-    "tokens.colors.on-primary": *model3
-    "tokens.typography.family.ui": *model3
-    "tokens.typography.family.display": *model3
-    "tokens.spacing.unit": *model3
-    "tokens.spacing.gap": *model3
-    "tokens.spacing.nav-x": *model3
-    "tokens.spacing.card-x": *model3
-    "tokens.spacing.card-y": *model3
-    "tokens.spacing.card-bottom": *model3
-    "tokens.spacing.section": *model3
-    "tokens.rounded.control": *model3
-    "tokens.rounded.tab": *model3
-    "tokens.rounded.card": *model3
-    "tokens.shadow.carousel-navigation": *model3
-    "tokens.components.primary-cta.pressed": *model3
-    "tokens.components.primary-cta.type": *model3
-    "tokens.components.primary-cta.bg": *model3
-    "tokens.components.primary-cta.fg": *model3
-    "tokens.components.primary-cta.radius": *model3
-    "tokens.components.primary-cta.padding": *model3
-    "tokens.components.primary-cta.font": *model3
-    "tokens.components.primary-cta.states": *model3
-    "tokens.components.primary-cta.use": *model3
-    "tokens.components.high-contrast-cta.focus": *model3
-    "tokens.components.high-contrast-cta.type": *model3
-    "tokens.components.high-contrast-cta.bg": *model3
-    "tokens.components.high-contrast-cta.fg": *model3
-    "tokens.components.high-contrast-cta.radius": *model3
-    "tokens.components.high-contrast-cta.padding": *model3
-    "tokens.components.high-contrast-cta.font": *model3
-    "tokens.components.high-contrast-cta.states": *model3
-    "tokens.components.high-contrast-cta.use": *model3
-    "tokens.components.info-card.type": *model3
-    "tokens.components.info-card.bg": *model3
-    "tokens.components.info-card.fg": *model3
-    "tokens.components.info-card.radius": *model3
-    "tokens.components.info-card.padding": *model3
-    "tokens.components.info-card.use": *model3
-    "tokens.components.carousel-dot.focus": *model3
-    "tokens.components.carousel-dot.type": *model3
-    "tokens.components.carousel-dot.bg": *model3
-    "tokens.components.carousel-dot.fg": *model3
-    "tokens.components.carousel-dot.radius": *model3
-    "tokens.components.carousel-dot.padding": *model3
-    "tokens.components.carousel-dot.states": *model3
-    "tokens.components.carousel-dot.use": *model3
-    "tokens.components.mode-tab.type": *model3
-    "tokens.components.mode-tab.fg": *model3
-    "tokens.components.mode-tab.radius": *model3
-    "tokens.components.mode-tab.padding": *model3
-    "tokens.components.mode-tab.states": *model3
-    "tokens.components.mode-tab.use": *model3
-    "tokens.components.carousel-navigation.type": *model3
-    "tokens.components.carousel-navigation.bg": *model3
-    "tokens.components.carousel-navigation.fg": *model3
-    "tokens.components.carousel-navigation.radius": *model3
-    "tokens.components.carousel-navigation.padding": *model3
-    "tokens.components.carousel-navigation.shadow": *model3
-    "tokens.components.carousel-navigation.states": *model3
-    "tokens.components.carousel-navigation.use": *model3
-tokens:
-  source: reconciled
-  extracted: "2026-07-13"
-  components_harvested: true
-  colors:
-    primary: "#3e6ae1"
-    canvas: "#ffffff"
-    surface: "#f4f4f4"
-    foreground: "#171a20"
-    body: "#393c41"
-    muted: "#5c5e62"
-    on-primary: "#ffffff"
-  typography:
-    family: { ui: "Universal Sans Text", display: "Universal Sans Display" }
-  spacing: { unit: 4, gap: 8, nav-x: 16, card-x: 24, card-y: 32, card-bottom: 48, section: 64 }
-  rounded: { control: 4, tab: 8, card: 8 }
-  shadow:
-    carousel-navigation: "rgba(0, 0, 0, 0.25) 0px 4px 4px 0px"
-  components:
-    primary-cta: { type: button, bg: "#3e6ae1", fg: "#ffffff", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "pressed and focus computed snapshots", use: "Model 3 marketing CTA" , pressed: "#3e6ae0"}
-    high-contrast-cta: { type: button, bg: "#ffffff", fg: "#393c41", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "focus computed snapshot", use: "Paired Model 3 marketing CTA" , focus: "#fefefe"}
-    info-card: { type: card, bg: "#f4f4f4", fg: "#393c41", radius: "8px", padding: "0px 24px", use: "Filled information card on Model 3 marketing page" }
-    carousel-dot: { type: tab, bg: "#ffffff", fg: "#d0d1d2", radius: "8px", padding: "4px", states: "default and focus computed snapshots", use: "Model 3 carousel dot" , focus: "#d8d9d9"}
-    mode-tab: { type: tab, fg: "#171a20", radius: "4px", padding: "4px 8px", states: "default, pressed, and focus computed snapshots", use: "Model 3 carousel mode tab" }
-    carousel-navigation: { type: button, bg: "rgba(255, 255, 255, 0.75)", fg: "#393c41", radius: "4px", padding: "4px", shadow: "rgba(0, 0, 0, 0.25) 0px 4px 4px 0px", states: "default, pressed, and focus computed snapshots", use: "Inline Model 3 carousel arrow" }
+colors:
+  primary: '#3e6ae1'
+  canvas: '#ffffff'
+  surface: '#f4f4f4'
+  foreground: '#171a20'
+  body: '#393c41'
+  muted: '#5c5e62'
+  on-primary: '#ffffff'
+rounded:
+  control: 4px
+  tab: 8px
+  card: 8px
+spacing:
+  unit: 4
+  gap: 8
+  nav-x: 16
+  card-x: 24
+  card-y: 32
+  card-bottom: 48
+  section: 64
+components:
+  primary-cta:
+    type: button
+    backgroundColor: '#3e6ae1'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 4px
+    typography: 14px / 500 / Universal Sans Text
+    states: pressed and focus computed snapshots
+    use: Model 3 marketing CTA
+    pressed: '#3e6ae0'
+  high-contrast-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#393c41'
+    rounded: 4px
+    padding: 4px
+    typography: 14px / 500 / Universal Sans Text
+    states: focus computed snapshot
+    use: Paired Model 3 marketing CTA
+    focus: '#fefefe'
+  info-card:
+    type: card
+    backgroundColor: '#f4f4f4'
+    textColor: '#393c41'
+    rounded: 8px
+    padding: 0px 24px
+    use: Filled information card on Model 3 marketing page
+  carousel-dot:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#d0d1d2'
+    rounded: 8px
+    padding: 4px
+    states: default and focus computed snapshots
+    use: Model 3 carousel dot
+    focus: '#d8d9d9'
+  mode-tab:
+    type: tab
+    textColor: '#171a20'
+    rounded: 4px
+    padding: 4px 8px
+    states: default, pressed, and focus computed snapshots
+    use: Model 3 carousel mode tab
+  carousel-navigation:
+    type: button
+    backgroundColor: rgba(255, 255, 255, 0.75)
+    textColor: '#393c41'
+    rounded: 4px
+    padding: 4px
+    shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    states: default, pressed, and focus computed snapshots
+    use: Inline Model 3 carousel arrow
+omitted:
+  - section: typography
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    ui: Universal Sans Text
+    display: Universal Sans Display
 ---
 
 # Tesla — Design Reference
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Tesla makes electric vehicles, charging, solar, and energy-storage products; its current public story extends that work toward what it calls sustainable abundance. On the captured Model 3 marketing page, that ambition is expressed through a largely neutral, image-led interface rather than a dense automotive dashboard: `#3e6ae1` appears on a primary call to action, while white, charcoal, and near-black carry most of the UI. Universal Sans Display creates the large product hierarchy and Universal Sans Text handles controls and supporting copy. This reference separates that marketing language from the supplied support page and owners-manual chrome: the latter do not authorize marketing tokens, while the former does not describe an authenticated vehicle, account, or in-car product interface.
 
@@ -129,14 +94,31 @@ Tesla makes electric vehicles, charging, solar, and energy-storage products; its
 - **Restrained UI color:** the verified marketing palette is blue plus neutrals, not a general semantic-status palette.
 - **Distinct source domains:** support and documentation were captured, but their local typography and browser-like chrome are not promoted into the Model 3 system.
 
-## Primary tasks
+### Primary tasks
 
 - Read a Model 3 page that leads with the vehicle
 - See more of the Model 3 by paging through its carousel
 - Look up support for getting started with your vehicle
 - Read the owner's manual for a vehicle online
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Tesla’s official About page presents an integrated ecosystem of solar generation, batteries, and electric vehicles, and describes the systems as designed to scale. Master Plan Part IV, published by the Tesla team in 2025, positions the next chapter around sustainable abundance and links hardware, software, manufacturing, autonomy, mobility, energy, and robotics. Those first-party sources provide the product and strategic context for the sparse, product-led public marketing surface captured here. They do not establish unobserved history, vehicle-interface patterns, or claims about individual founders.
+
+### Principles
+
+1. **Unconstrained sustainability.** Master Plan Part IV describes this as Tesla’s north star. *Reference UI implication:* make the product and its physical outcome legible before adding decorative interface layers.
+2. **Innovation removes constraints.** Tesla’s strategy source links progress to solving battery and scale constraints. *Reference UI implication:* use precise hierarchy and measured controls to explain a technical choice.
+3. **Technology solves tangible problems.** The plan connects energy storage, transport, and autonomy to concrete outcomes. *Reference UI implication:* connect an interface claim to an observable product or task, rather than an abstract flourish.
+4. **Greater access drives greater growth.** The source ties scale and availability to its broader purpose. *Reference UI implication:* do not turn this marketing reference into an exclusionary premium-only visual language.
+
+The UI implications are this reference’s interpretation of Tesla’s published strategy, not Tesla design-system rules.
+
+### Personas
+
+No fictional personas are asserted. Tesla’s official public context addresses people considering electric vehicles, solar generation, and battery storage, while the Model 3 evidence is a vehicle-marketing surface. Support and owners-manual visitors are separate audiences with separate chrome; the capture does not justify collapsing them into the Model 3 marketing system.
+
+## Colors
 
 ### Observed Model 3 marketing roles
 
@@ -149,7 +131,7 @@ Tesla makes electric vehicles, charging, solar, and energy-storage products; its
 
 The capture also records local transparent and translucent fills, including `rgba(255, 255, 255, 0.75)` on carousel arrows. No success, warning, error, dark-mode, or account-product color role is inferred.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -171,7 +153,36 @@ The capture also records local transparent and translucent fills, including `rgb
 | CTA label | Universal Sans Text | 14px | 500 | 16.8px | `.tds-btn--primary` |
 | Mode tab | Universal Sans Text | 17px | 500 | 20px | `.tds-tab` |
 
-## 4. Components
+## Layout
+
+The supplied evidence is a 1440×900 desktop capture. On the Model 3 page, 4px and 8px recur in control padding and gaps; 16px is the product-navigation horizontal padding; filled-card shells use 24px horizontal padding; their nested content uses 32px top and 48px bottom padding. A 64px section margin is also observed. These are observed local measurements, not a public design-token release or a responsive specification.
+
+### Responsive Behavior
+
+Only a 1440×900 desktop capture was supplied. It records a desktop Model 3 header and carousel but does not establish Tesla’s mobile navigation, breakpoints, touch targets, reflow rules, or responsive image behavior.
+
+## Elevation & Depth
+
+The filled information cards report no box shadow. The captured inline carousel arrow is the exception: `rgba(0, 0, 0, 0.25) 0px 4px 4px 0px`. Its focus and pressed snapshots replace that with an inset outline. No global elevation scale, overlay system, or modal shadow is asserted.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.carousel-navigation`: `rgba(0, 0, 0, 0.25) 0px 4px 4px 0px`
+
+## Motion & Easing
+
+The bundle reports `interactionCount: 0`. It contains no measured transition duration, easing curve, reduced-motion behavior, or recorded carousel interaction. Pseudo-state computed snapshots do not establish a motion system.
+
+---
+
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.tesla.com/model3?lang=en` (captured public vehicle marketing), `https://www.tesla.com/support/getting-started-with-your-vehicle` (captured support), `https://www.tesla.com/ownersmanual/` (captured documentation chrome), `https://www.tesla.com/en_GB/about?redirect=no` (official context), `https://www.tesla.com/en_sa/master-plan-part-4` (official strategy), `https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/text/Universal-Sans-Text-Regular.woff2` and `https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/display/Universal-Sans-Display-Regular.woff2` (official font assets), `https://www.tesla.com/legal/terms` (legal boundary; not a font licence)
+**Tier 2 sources:** `https://getdesign.md/tesla` (Tesla record; broad direction only), `https://styles.refero.design/?q=tesla` and `https://styles.refero.design/style/7266b546-2fb0-465c-acd6-79001c39829a` (Tesla record; cross-check only)
+**Conflicts unresolved:** none
+
+## Components
 
 All values in this section come from the captured Model 3 marketing surface (`surface-2`). The collector reports `interactionCount: 0`; focus and pressed rows below are computed pseudo-state snapshots, not evidence of transitions, menu behavior, or a complete accessibility contract.
 
@@ -246,15 +257,11 @@ All values in this section come from the captured Model 3 marketing surface (`su
 - Padding: `0px 24px`
 - Use: `surface-2::div.tcl-info-card.tcl-info-card--filled`; nested content is `32px 0px 48px`
 
-## 5. Layout Principles
+### States
 
-The supplied evidence is a 1440×900 desktop capture. On the Model 3 page, 4px and 8px recur in control padding and gaps; 16px is the product-navigation horizontal padding; filled-card shells use 24px horizontal padding; their nested content uses 32px top and 48px bottom padding. A 64px section margin is also observed. These are observed local measurements, not a public design-token release or a responsive specification.
+The only state evidence is the collector’s computed pseudo-state output for the captured Model 3 CTA, carousel dot, mode tab, and carousel arrow. It includes focus and pressed samples documented in §4. No authenticated empty, loading, success, error, disabled, order-flow, or vehicle-control state was supplied, so none is invented here.
 
-## 6. Depth & Elevation
-
-The filled information cards report no box shadow. The captured inline carousel arrow is the exception: `rgba(0, 0, 0, 0.25) 0px 4px 4px 0px`. Its focus and pressed snapshots replace that with an inset outline. No global elevation scale, overlay system, or modal shadow is asserted.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -270,15 +277,7 @@ The filled information cards report no box shadow. The captured inline carousel 
 - Do not present Times from the owners-manual capture as a Tesla brand or documentation font.
 - Do not infer hover motion, breakpoints, dialog behavior, or semantic status colors from this bundle.
 
-## 8. Responsive Behavior
-
-Only a 1440×900 desktop capture was supplied. It records a desktop Model 3 header and carousel but does not establish Tesla’s mobile navigation, breakpoints, touch targets, reflow rules, or responsive image behavior.
-
-## 9. Agent Prompt Guide
-
-Use this reference for a Tesla-like public vehicle-marketing panel, not for a Tesla product clone: a neutral image-led composition, one `#3e6ae1` primary action, a white paired action, 4px control corners, and 8px filled information cards. Keep support documentation, owners-manual chrome, and unavailable fonts outside the implementation unless the target work carries its own evidence and licence.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Tesla’s official about page frames the company through energy, batteries, electric vehicles, safety, and scale; Master Plan Part IV extends that frame to “sustainable abundance.” That is a useful public positioning direction: concrete physical systems and direct claims of purpose. It is not evidence for a complete product-microcopy or error-message system.
 
@@ -295,34 +294,12 @@ Tesla’s official about page frames the company through energy, batteries, elec
 - *“Innovation removes constraints.”* — Master Plan Part IV.
 - *“Technology solves tangible problems.”* — Master Plan Part IV.
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-Tesla’s official About page presents an integrated ecosystem of solar generation, batteries, and electric vehicles, and describes the systems as designed to scale. Master Plan Part IV, published by the Tesla team in 2025, positions the next chapter around sustainable abundance and links hardware, software, manufacturing, autonomy, mobility, energy, and robotics. Those first-party sources provide the product and strategic context for the sparse, product-led public marketing surface captured here. They do not establish unobserved history, vehicle-interface patterns, or claims about individual founders.
+Use this reference for a Tesla-like public vehicle-marketing panel, not for a Tesla product clone: a neutral image-led composition, one `#3e6ae1` primary action, a white paired action, 4px control corners, and 8px filled information cards. Keep support documentation, owners-manual chrome, and unavailable fonts outside the implementation unless the target work carries its own evidence and licence.
 
-## 12. Principles
+## Governance
 
-1. **Unconstrained sustainability.** Master Plan Part IV describes this as Tesla’s north star. *Reference UI implication:* make the product and its physical outcome legible before adding decorative interface layers.
-2. **Innovation removes constraints.** Tesla’s strategy source links progress to solving battery and scale constraints. *Reference UI implication:* use precise hierarchy and measured controls to explain a technical choice.
-3. **Technology solves tangible problems.** The plan connects energy storage, transport, and autonomy to concrete outcomes. *Reference UI implication:* connect an interface claim to an observable product or task, rather than an abstract flourish.
-4. **Greater access drives greater growth.** The source ties scale and availability to its broader purpose. *Reference UI implication:* do not turn this marketing reference into an exclusionary premium-only visual language.
+### Known Gaps
 
-The UI implications are this reference’s interpretation of Tesla’s published strategy, not Tesla design-system rules.
-
-## 13. Personas
-
-No fictional personas are asserted. Tesla’s official public context addresses people considering electric vehicles, solar generation, and battery storage, while the Model 3 evidence is a vehicle-marketing surface. Support and owners-manual visitors are separate audiences with separate chrome; the capture does not justify collapsing them into the Model 3 marketing system.
-
-## 14. States
-
-The only state evidence is the collector’s computed pseudo-state output for the captured Model 3 CTA, carousel dot, mode tab, and carousel arrow. It includes focus and pressed samples documented in §4. No authenticated empty, loading, success, error, disabled, order-flow, or vehicle-control state was supplied, so none is invented here.
-
-## 15. Motion & Easing
-
-The bundle reports `interactionCount: 0`. It contains no measured transition duration, easing curve, reduced-motion behavior, or recorded carousel interaction. Pseudo-state computed snapshots do not establish a motion system.
-
----
-
-**Verified:** 2026-07-13
-**Tier 1 sources:** `https://www.tesla.com/model3?lang=en` (captured public vehicle marketing), `https://www.tesla.com/support/getting-started-with-your-vehicle` (captured support), `https://www.tesla.com/ownersmanual/` (captured documentation chrome), `https://www.tesla.com/en_GB/about?redirect=no` (official context), `https://www.tesla.com/en_sa/master-plan-part-4` (official strategy), `https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/text/Universal-Sans-Text-Regular.woff2` and `https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/display/Universal-Sans-Display-Regular.woff2` (official font assets), `https://www.tesla.com/legal/terms` (legal boundary; not a font licence)
-**Tier 2 sources:** `https://getdesign.md/tesla` (Tesla record; broad direction only), `https://styles.refero.design/?q=tesla` and `https://styles.refero.design/style/7266b546-2fb0-465c-acd6-79001c39829a` (Tesla record; cross-check only)
-**Conflicts unresolved:** none
+- **Contrast, `carousel-dot`.** Text `#d0d1d2` on `#ffffff` measures 1.53:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

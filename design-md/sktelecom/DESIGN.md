@@ -1,195 +1,158 @@
 ---
-id: sktelecom
 name: SK텔레콤
-display_name_kr: SK텔레콤
-country: KR
-category: consumer-tech
-homepage: https://www.sktelecom.com/
-primary_color: "#3a46cd"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=sktelecom.com&sz=128"
-verified: "2026-07-13"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-07-13"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.sktelecom.com/", inspected: "2026-07-13" }
-    - { id: brand, kind: official-doc, url: "https://www.sktelecom.com/view/introduce/brand.do", inspected: "2026-07-13" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.sktelecom.com/", captured: "2026-07-13" }
-    - { id: brand-live, kind: official-doc, url: "https://www.sktelecom.com/view/introduce/brand.do", captured: "2026-07-13" }
-    - { id: skt-sans-regular, kind: brand-asset, url: "https://www.sktelecom.com/fonts/SKTSans-Regular.woff2", captured: "2026-07-13" }
-    - { id: ai-company-vision, kind: official-doc, url: "https://news.sktelecom.com/182728", captured: "2026-07-13" }
-    - { id: t-brand-renewal, kind: official-doc, url: "https://news.sktelecom.com/182844", captured: "2026-07-13" }
-    - { id: current-company-facts, kind: official-doc, url: "https://news.sktelecom.com/223776", captured: "2026-07-13" }
-  conflicts: []
-  claims:
-    "tokens.colors.brand-link": &brand { surface_id: brand, source_id: brand-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.foreground": *brand
-    "tokens.colors.strong": *brand
-    "tokens.colors.muted": *brand
-    "tokens.colors.hairline": *brand
-    "tokens.colors.action-fill": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
-    "tokens.colors.on-action": *home
-    "tokens.typography.family.ui": &font { surface_id: home, source_id: home-live, method: computed-style-fontfaceset-source, captured: "2026-07-13" }
-    "tokens.typography.family.display": *font
-    "tokens.typography.body.size": *home
-    "tokens.typography.body.weight": *home
-    "tokens.typography.body.lineHeight": *home
-    "tokens.typography.body.use": *home
-    "tokens.typography.navigation.size": *brand
-    "tokens.typography.navigation.weight": *brand
-    "tokens.typography.navigation.lineHeight": *brand
-    "tokens.typography.navigation.use": *brand
-    "tokens.typography.display.size": *font
-    "tokens.typography.display.weight": *font
-    "tokens.typography.display.lineHeight": *font
-    "tokens.typography.display.use": *font
-    "tokens.spacing.xs": *home
-    "tokens.spacing.sm": *brand
-    "tokens.spacing.md": *brand
-    "tokens.spacing.lg": *brand
-    "tokens.spacing.xl": *brand
-    "tokens.rounded.square": *brand
-    "tokens.rounded.media-tile": *home
-    "tokens.shadow.flat": *brand
-    "tokens.components.brand-current-link.type": *brand
-    "tokens.components.brand-current-link.fg": *brand
-    "tokens.components.brand-current-link.padding": *brand
-    "tokens.components.brand-current-link.font": *brand
-    "tokens.components.brand-current-link.use": *brand
-    "tokens.components.resource-download.type": *brand
-    "tokens.components.resource-download.bg": *brand
-    "tokens.components.resource-download.fg": *brand
-    "tokens.components.resource-download.border": *brand
-    "tokens.components.resource-download.radius": *brand
-    "tokens.components.resource-download.padding": *brand
-    "tokens.components.resource-download.font": *brand
-    "tokens.components.resource-download.use": *brand
-    "tokens.components.resource-download.states": { surface_id: brand, source_id: brand-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"13\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.outline-title-link.type": *brand
-    "tokens.components.outline-title-link.bg": *brand
-    "tokens.components.outline-title-link.fg": *brand
-    "tokens.components.outline-title-link.border": *brand
-    "tokens.components.outline-title-link.radius": *brand
-    "tokens.components.outline-title-link.padding": *brand
-    "tokens.components.outline-title-link.height": *brand
-    "tokens.components.outline-title-link.font": *brand
-    "tokens.components.outline-title-link.use": *brand
-    "tokens.components.top-action.type": *home
-    "tokens.components.top-action.bg": *home
-    "tokens.components.top-action.fg": *home
-    "tokens.components.top-action.radius": *home
-    "tokens.components.top-action.padding": *home
-    "tokens.components.top-action.height": *home
-    "tokens.components.top-action.font": *home
-    "tokens.components.top-action.states": *home
-    "tokens.components.top-action.use": *home
-    "tokens.components.brand-section-link.type": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.bg": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.fg": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.radius": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.padding": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.height": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.font": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.selected": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.hover": { surface_id: brand, source_id: brand-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"2\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.pressed": { surface_id: brand, source_id: brand-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"2\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.states": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.brand-section-link.use": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.type": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.bg": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.fg": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.radius": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.padding": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.height": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.font": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.selected": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"11\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.hover": { surface_id: brand, source_id: brand-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"8\"]::state-hover", captured: "2026-07-13" }
-    "tokens.components.lnb-link.pressed": { surface_id: brand, source_id: brand-live, method: computed-style-state-sample, selector: "surface-2::[data-omd-capture=\"8\"]::state-pressed", captured: "2026-07-13" }
-    "tokens.components.lnb-link.states": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.lnb-link.use": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"8\"]", captured: "2026-07-13" }
-    "tokens.components.intro-tile.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.intro-tile.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.intro-tile.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.intro-tile.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.intro-tile.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.intro-tile.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.size": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::p", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.newsroom-card.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-menu-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.type": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.bg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.fg": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.radius": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.padding": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.height": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.font": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.states": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.footer-link.use": { surface_id: home, source_id: home-live, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.type": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.bg": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.fg": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::p", captured: "2026-07-13" }
-    "tokens.components.content-row.border": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.radius": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.padding": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.size": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.font": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::p", captured: "2026-07-13" }
-    "tokens.components.content-row.states": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-    "tokens.components.content-row.use": { surface_id: brand, source_id: brand-live, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-07-13" }
-tokens:
-  source: live-extract
-  extracted: "2026-07-13"
-  note: "Only selector-backed values from the supplied SK텔레콤 home and brand page are tokens. Corporate/brand narrative, T brand renewal, font asset delivery, and unobserved interaction behavior remain separate evidence domains."
-  colors:
-    brand-link: "#3a46cd"
-    foreground: "#1a2232"
-    strong: "#3a404e"
-    muted: "#595e6b"
-    hairline: "#d0d1d3"
-    action-fill: "#727887"
-    on-action: "#ffffff"
-  typography:
-    family: { ui: "SKT Sans Text", display: "SKT Sans Display" }
-    body: { size: 15, weight: 600, lineHeight: 27, use: "Repeated public page body text" }
-    navigation: { size: 16, weight: 600, lineHeight: 20, use: "Brand-page navigation links" }
-    display: { size: 24, weight: 700, lineHeight: 38.4, use: "Observed SKT Sans Display body-heading treatment; not a complete type scale" }
-  spacing: { xs: 6, sm: 12, md: 16, lg: 24, xl: 40 }
-  rounded: { square: 0, media-tile: 16 }
-  shadow: { flat: "none" }
-  components:
-    brand-current-link: { type: listItem, fg: "#3a46cd", padding: "0px", font: "16px / 600 / SKT Sans Text", use: "Static current-page link in the brand-page local navigation (a.depth2-link depth2-brand is-active at surface-2::[data-omd-capture=\"11\"], 168 x 20 px); it is the selected state of lnb-link. Corrected 2026-09-30: padding is 0px; the July value 0px 12px belongs to the section links (brand-section-link)" }
-    resource-download: { type: listItem, bg: "transparent", fg: "#1a2232", border: "1px solid #727887", radius: 0, padding: "11px 24px", font: "13px / 600 / SKT Sans Text", states: "default captured on both download links (surface-2 captures 13 and 14). Their hover and pressed frames record bg rgba(74, 80, 143, 0.027) and their focus frames rgba(74, 80, 143, 0.16), two points on one line from transparent, with text colours that differ by one unit between the two links, so they are transition frames and no state value is declared", use: "Public brand-page download link" }
-    outline-title-link: { type: listItem, bg: "transparent", fg: "#595e6b", border: "1px solid #d0d1d3", radius: 0, padding: "6px 12px 6px 16px", height: 34, font: "12px / 600 / SKT Sans Text", use: "Public footer/title link" }
-    top-action: { type: button, bg: "#727887", fg: "#ffffff", radius: 0, padding: "1px 6px", height: 58, font: "10px / 700 / SKT Sans Text", states: "default observed; the capture holds no state frame for this control, so no hover, focus, pressed, disabled, or error state is retained. Corrected 2026-09-30: the July text derived this from interaction count 0, which counts dialog, tab and menu expansions, not pointer-state frames", use: "Public desktop/tablet top action" }
-    brand-section-link: { type: tab, bg: "transparent", fg: "#595e6b", radius: "0px", padding: "0px 12px", height: "74px", font: "16px / 600 / SKT Sans Text", selected: "fg #3a46cd, 16px / 700", hover: "fg #3a46cd, 16px / 700", pressed: "fg #3a46cd, 16px / 700", states: "rest sampled on five section links (captures 2-6). The link with class is-active (capture 1, the current section on this route) computes #3a46cd and 700; no aria-selected is recorded, so that pairing rests on the class name. Capture 2's hover and pressed frames record exactly those values (rgb(58, 70, 205), 700). Captures 3-6 record 700 in every frame, but their colours lie on the line from the rest #595e6b toward #3a46cd, so they are transition frames: the weight change is settled on all five links, the colour on the one that finished. Focus is not declared from the bundle", use: "Brand-page header section link (a.sub-depth1-link) at surface-2::[data-omd-capture=\"2\"]; 59-90 px wide, line height 20px" }
-    lnb-link: { type: tab, bg: "transparent", fg: "#727887", radius: "0px", padding: "0px", height: "20px", font: "16px / 600 / SKT Sans Text", selected: "fg #3a46cd", hover: "fg #3a46cd", pressed: "fg #3a46cd", states: "rest sampled on four local-navigation links (captures 8, 9, 10, 12). Every hover and pressed frame of all four records rgb(58, 70, 205) with weight 600 in every frame, exactly the rest colour of the is-active link (capture 11), so the value is settled. Their focus frames record the same colour; focus is not declared from the bundle", use: "Brand-page local navigation (LNB) link (a.depth2-link) at surface-2::[data-omd-capture=\"8\"]; 168 px wide, line height 20px" }
-    intro-tile: { type: card, radius: "16px", size: "260px wide, 114-228px tall", font: "20px / 700 / SKT Sans Text", states: "13 tiles captured at rest. Each records a pressed frame in which the anchor's own colour moves from rgb(0, 0, 238) to rgb(255, 0, 0), Chromium's default link and active-link colours; the tile text is set by child p elements, so that colour never renders and no pressed value is declared", use: "Home service tile (a.item intro-imgNN-target) at home::[data-omd-capture=\"0\"]. The font is the child p.title (20px / 700 / 26px; one tile 18px / 700 / 27px); p.desc is 13px / 600 / 20.8px, tracking -0.13px. The labels compute #ffffff on most tiles, #1a2232 on two (item-safety, item-investor) and #3a46cd on one (item-adot), so no single text colour is declared" }
-    newsroom-card: { type: card, fg: "#1a2232", radius: "0px", size: "311px x 271px", font: "14px / 500 / SKT Sans Text", states: "eight cards captured at rest (captures 13-20: four a.newsroom-link, four a.news-link, 248-271 px tall). Their pressed frames move only the anchor's default link colour (rgb(0, 0, 238) to rgb(255, 0, 0)), which the child text does not use, so no pressed value is declared", use: "Home newsroom card (a.newsroom-link) at home::[data-omd-capture=\"13\"]; text colour and font are the child p.text (295 px wide, line height 22.4px)" }
-    footer-menu-link: { type: button, bg: "transparent", fg: "#3a404e", radius: "0px", padding: "0px", height: "20px", font: "14px / 500 / SKT Sans Text", states: "rest captured on home (captures 21-23) and on the brand page (captures 52-54). The home links' hover and pressed frames all record rgb(23, 26, 32), which lies on the line from the rest #3a404e to #000000 (58, 64, 78 x 0.404 = 23.43, 25.86, 31.51, rounding to 23, 26, 32), so it is treated as a transition frame and no hover or pressed value is declared", use: "Footer menu link (first footer row) at home::[data-omd-capture=\"21\"]; 51-89 px wide, line height 20px, tracking -0.56px" }
-    footer-link: { type: button, bg: "transparent", fg: "#727887", radius: "0px", padding: "0px", height: "20px", font: "12px / 600 / SKT Sans Text", states: "default captured on both surfaces; no state frame. The first link (a.link strong, capture 31) computes #3a404e at the same size and weight", use: "Footer policy-row link (a.link) at home::[data-omd-capture=\"32\"] (also captures 33-38 and brand-page captures 62-69); tracking -0.48px" }
-    content-row: { type: button, bg: "transparent", fg: "#3a404e", border: "1px #ecedef", radius: "0px", padding: "24px 24px 0px 0px", size: "850px wide", font: "15px / 600 / SKT Sans Text", states: "37 rows captured at rest on the brand page; 15 carry the top border and 24px top padding, 22 have neither (0px 24px 0px 0px). No state frame", use: "Brand-page content row (button.content) at surface-2::[data-omd-capture=\"18\"]. The root computes the inherited body text (#000000, 10px / 400 / 11.5px); text colour and font are the child title p.tit (599 px wide, line height 27px), matched by top offset" }
-  components_harvested: true
+colors:
+  brand-link: '#3a46cd'
+  foreground: '#1a2232'
+  strong: '#3a404e'
+  muted: '#595e6b'
+  hairline: '#d0d1d3'
+  action-fill: '#727887'
+  on-action: '#ffffff'
+typography:
+  body:
+    fontSize: 15px
+    fontWeight: 600
+    lineHeight: 27
+    use: Repeated public page body text
+  navigation:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 20
+    use: Brand-page navigation links
+  display:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 38.4
+    use: Observed SKT Sans Display body-heading treatment; not a complete type scale
+rounded:
+  square: 0px
+  media-tile: 16px
+spacing:
+  xs: 6
+  sm: 12
+  md: 16
+  lg: 24
+  xl: 40
+components:
+  brand-current-link:
+    type: listItem
+    textColor: '#3a46cd'
+    padding: 0px
+    typography: 16px / 600 / SKT Sans Text
+    use: 'Static current-page link in the brand-page local navigation (a.depth2-link depth2-brand is-active at surface-2::[data-omd-capture="11"], 168 x 20 px); it is the selected state of lnb-link. Corrected 2026-09-30: padding is 0px; the July value 0px 12px belongs to the section links (brand-section-link)'
+  resource-download:
+    type: listItem
+    backgroundColor: transparent
+    textColor: '#1a2232'
+    border: '1px solid #727887'
+    rounded: 0px
+    padding: 11px 24px
+    typography: 13px / 600 / SKT Sans Text
+    states: default captured on both download links (surface-2 captures 13 and 14). Their hover and pressed frames record bg rgba(74, 80, 143, 0.027) and their focus frames rgba(74, 80, 143, 0.16), two points on one line from transparent, with text colours that differ by one unit between the two links, so they are transition frames and no state value is declared
+    use: Public brand-page download link
+  outline-title-link:
+    type: listItem
+    backgroundColor: transparent
+    textColor: '#595e6b'
+    border: '1px solid #d0d1d3'
+    rounded: 0px
+    padding: 6px 12px 6px 16px
+    height: 34
+    typography: 12px / 600 / SKT Sans Text
+    use: Public footer/title link
+  top-action:
+    type: button
+    backgroundColor: '#727887'
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 1px 6px
+    height: 58
+    typography: 10px / 700 / SKT Sans Text
+    states: 'default observed; the capture holds no state frame for this control, so no hover, focus, pressed, disabled, or error state is retained. Corrected 2026-09-30: the July text derived this from interaction count 0, which counts dialog, tab and menu expansions, not pointer-state frames'
+    use: Public desktop/tablet top action
+  brand-section-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#595e6b'
+    rounded: 0px
+    padding: 0px 12px
+    height: 74px
+    typography: 16px / 600 / SKT Sans Text
+    selected: 'fg #3a46cd, 16px / 700'
+    hover: 'fg #3a46cd, 16px / 700'
+    pressed: 'fg #3a46cd, 16px / 700'
+    states: 'rest sampled on five section links (captures 2-6). The link with class is-active (capture 1, the current section on this route) computes #3a46cd and 700; no aria-selected is recorded, so that pairing rests on the class name. Capture 2''s hover and pressed frames record exactly those values (rgb(58, 70, 205), 700). Captures 3-6 record 700 in every frame, but their colours lie on the line from the rest #595e6b toward #3a46cd, so they are transition frames: the weight change is settled on all five links, the colour on the one that finished. Focus is not declared from the bundle'
+    use: Brand-page header section link (a.sub-depth1-link) at surface-2::[data-omd-capture="2"]; 59-90 px wide, line height 20px
+  lnb-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#727887'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 16px / 600 / SKT Sans Text
+    selected: 'fg #3a46cd'
+    hover: 'fg #3a46cd'
+    pressed: 'fg #3a46cd'
+    states: rest sampled on four local-navigation links (captures 8, 9, 10, 12). Every hover and pressed frame of all four records rgb(58, 70, 205) with weight 600 in every frame, exactly the rest colour of the is-active link (capture 11), so the value is settled. Their focus frames record the same colour; focus is not declared from the bundle
+    use: Brand-page local navigation (LNB) link (a.depth2-link) at surface-2::[data-omd-capture="8"]; 168 px wide, line height 20px
+  intro-tile:
+    type: card
+    rounded: 16px
+    size: 260px wide, 114-228px tall
+    typography: 20px / 700 / SKT Sans Text
+    states: 13 tiles captured at rest. Each records a pressed frame in which the anchor's own colour moves from rgb(0, 0, 238) to rgb(255, 0, 0), Chromium's default link and active-link colours; the tile text is set by child p elements, so that colour never renders and no pressed value is declared
+    use: 'Home service tile (a.item intro-imgNN-target) at home::[data-omd-capture="0"]. The font is the child p.title (20px / 700 / 26px; one tile 18px / 700 / 27px); p.desc is 13px / 600 / 20.8px, tracking -0.13px. The labels compute #ffffff on most tiles, #1a2232 on two (item-safety, item-investor) and #3a46cd on one (item-adot), so no single text colour is declared'
+  newsroom-card:
+    type: card
+    textColor: '#1a2232'
+    rounded: 0px
+    size: 311px x 271px
+    typography: 14px / 500 / SKT Sans Text
+    states: 'eight cards captured at rest (captures 13-20: four a.newsroom-link, four a.news-link, 248-271 px tall). Their pressed frames move only the anchor''s default link colour (rgb(0, 0, 238) to rgb(255, 0, 0)), which the child text does not use, so no pressed value is declared'
+    use: Home newsroom card (a.newsroom-link) at home::[data-omd-capture="13"]; text colour and font are the child p.text (295 px wide, line height 22.4px)
+  footer-menu-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#3a404e'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 14px / 500 / SKT Sans Text
+    states: 'rest captured on home (captures 21-23) and on the brand page (captures 52-54). The home links'' hover and pressed frames all record rgb(23, 26, 32), which lies on the line from the rest #3a404e to #000000 (58, 64, 78 x 0.404 = 23.43, 25.86, 31.51, rounding to 23, 26, 32), so it is treated as a transition frame and no hover or pressed value is declared'
+    use: Footer menu link (first footer row) at home::[data-omd-capture="21"]; 51-89 px wide, line height 20px, tracking -0.56px
+  footer-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#727887'
+    rounded: 0px
+    padding: 0px
+    height: 20px
+    typography: 12px / 600 / SKT Sans Text
+    states: 'default captured on both surfaces; no state frame. The first link (a.link strong, capture 31) computes #3a404e at the same size and weight'
+    use: Footer policy-row link (a.link) at home::[data-omd-capture="32"] (also captures 33-38 and brand-page captures 62-69); tracking -0.48px
+  content-row:
+    type: button
+    backgroundColor: transparent
+    textColor: '#3a404e'
+    border: '1px #ecedef'
+    rounded: 0px
+    padding: 24px 24px 0px 0px
+    size: 850px wide
+    typography: 15px / 600 / SKT Sans Text
+    states: 37 rows captured at rest on the brand page; 15 carry the top border and 24px top padding, 22 have neither (0px 24px 0px 0px). No state frame
+    use: Brand-page content row (button.content) at surface-2::[data-omd-capture="18"]. The root computes the inherited body text (#000000, 10px / 400 / 11.5px); text colour and font are the child title p.tit (599 px wide, line height 27px), matched by top offset
+fonts:
+  roles:
+    ui: SKT Sans Text
+    display: SKT Sans Display
 ---
 
 # Design System Inspiration of SK텔레콤
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 SK텔레콤 is a Korean connectivity and consumer-technology company whose public ecosystem joins telecommunications with AI services and infrastructure. Its current corporate expression is less about a single consumer-app shell than a clear transition from the legacy meaning of “Telecom” toward Technology, Tomorrow, and Together: the company’s 2022 T-brand renewal describes the T form as an open door to the future, while its AI Company vision frames technology and services around benefiting customers. On the two supplied public surfaces, that forward-looking story resolves into an orderly, typographic corporate interface: loaded SKT Sans families, white or transparent fields, square controls, cool charcoal neutrals, and a saturated blue current-link treatment. The current company facts describe a continuing move toward an AI-infrastructure and full-stack AI-provider role; that strategic evolution is brand context, not a license to turn AI campaign visuals into web tokens.
 
@@ -200,13 +163,49 @@ SK텔레콤 is a Korean connectivity and consumer-technology company whose publi
 - Captured actions are square (`0px` radius); 16px rounding is confined to observed media-tile links.
 - The retained values describe the public home and brand-information page only, not T world, A., native apps, advertising, or a general SK텔레콤 product design system.
 
-## Primary tasks
+### Primary tasks
 
 - Read where the company is heading beyond telecom
 - Look up what the renewed T brand stands for
 - Download a published brand resource from the brand page
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+SK텔레콤’s current story begins with connectivity but is explicitly moving beyond a telecommunications-only frame. In its 2022 vision announcement, the company described its direction as becoming an AI Company that benefits customers through technology and services. The associated T/B brand renewal gives that turn a visible motif: “OPEN,” represented by an open-door form and a redefinition of T through Technology, Tomorrow, and Together.
+
+That shift remains active rather than historical. A 2026 official fact sheet describes SK텔레콤 as advancing toward an AI-infrastructure architect and full-stack AI provider, joining technology, infrastructure, and services while redesigning products around customers. The two captured public pages should be read as corporate and brand-information surfaces within that broader evolution; they do not document the UI systems of each consumer service.
+
+### Principles
+
+1. **Make technology useful to customers.** SK텔레콤’s AI Company vision explicitly links technology and services with customer benefit.
+   *UI implication:* explain the user outcome beside a technical feature; do not let a technical label do all the work.
+
+2. **Keep the future open and legible.** The 2022 renewal uses “OPEN” and an open door as its design motif.
+   *UI implication:* use clear pathways and named actions, while treating this as narrative guidance rather than a measured layout rule.
+
+3. **Connect infrastructure, services, and society without conflating their surfaces.** The current fact sheet spans customer AI, national AI infrastructure, and continued internal transformation.
+   *UI implication:* preserve source-domain labels; a corporate infrastructure claim does not supply a consumer-product token.
+
+4. **Pair innovation with responsibility.** The current fact sheet places “DO THE GOOD AI” in SK텔레콤’s ESG context.
+   *UI implication:* when communicating AI, state the applicable benefit, boundary, or responsibility instead of using generic assurance language.
+
+### Personas
+
+The following are stakeholder archetypes derived from official strategy descriptions, not research-backed individual personas or claims about a specific app’s users.
+
+#### Connected customer
+
+Someone choosing or using SK텔레콤 services and looking for a clear benefit from connectivity or AI-enabled support. Use direct explanations and avoid making infrastructure terminology the only way to understand a task.
+
+#### Enterprise or industry collaborator
+
+An organization evaluating AI infrastructure, transformation, or service capabilities. Keep product/service claims, architecture information, and partnership context distinct from consumer-interface guidance.
+
+#### Korean AI ecosystem stakeholder
+
+A public, institutional, or industry participant concerned with the wider AI-infrastructure and sovereign-AI agenda described by SK텔레콤. Communicate scope and responsibility precisely; this is not evidence for a consumer-screen persona.
+
+## Colors
 
 | Role | Value | Usage and evidence boundary |
 | --- | --- | --- |
@@ -220,7 +219,7 @@ SK텔레콤 is a Korean connectivity and consumer-technology company whose publi
 
 T Blue and T Red are named in SK텔레콤’s 2022 renewal story as brand colors, but the supplied computed-style evidence does not establish their official palette values or product roles. This reference therefore does not manufacture a T Blue hex or use a corporate color story to overwrite the measured public-link values above.
 
-## 3. Typography Rules
+## Typography
 
 ### Evidence classes
 
@@ -241,7 +240,29 @@ T Blue and T Red are named in SK텔레콤’s 2022 renewal story as brand colors
 | Display treatment | SKT Sans Display | 24px | 700 | 38.4px | Six visible public body-heading observations only. |
 | Larger display sample | SKT Sans Display | 48px | 700 | 48px | One `h3` observation only; not promoted to a global token. |
 
-## 4. Component Stylings
+## Layout
+
+The supplied desktop captures (1440×900) use spacing clusters of 6, 12, 16, 24, and 40px. On the brand page, 24px and 40px recur around content controls and information groups; they are measured spacing values, not proof of a complete modular grid. The current-page navigation uses compact 16px text with 12px inline padding, while resource links expand horizontally through 11px × 24px padding. Preserve this contrast between dense navigation and spacious resource actions rather than inventing a mobile grid or a universal card layout.
+
+### Responsive Behavior
+
+The only supplied viewport is 1440×900. It establishes the listed desktop public-page values and does not establish a mobile type scale, breakpoints, stacking, touch target, or responsive component contract. Re-measure the actual target surface before assigning those values.
+
+## Elevation & Depth
+
+All retained component representatives report `box-shadow: none`. That supports a flat treatment for these public brand-page links and top action. It does not establish that SK텔레콤 product, marketing, retail, native-app, or campaign interfaces never use shadow, gradients, imagery, or elevation.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+No duration, easing, transition, or animation token is retained. The supplied public-page capture has no interaction records, so motion behavior is unresolved at the smallest group boundary rather than approximated with a generic corporate motion scale.
+
+## Components
 
 ### Brand navigation link
 
@@ -369,15 +390,11 @@ The LNB title above these links (`p.lnb-title`) computes `#3A46CD`, 26px / 700 /
 **Tier 2 sources:** https://getdesign.md/sktelecom (attempted; no usable response) | https://styles.refero.design/?q=SK%20Telecom (attempted; no usable response)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-The supplied desktop captures (1440×900) use spacing clusters of 6, 12, 16, 24, and 40px. On the brand page, 24px and 40px recur around content controls and information groups; they are measured spacing values, not proof of a complete modular grid. The current-page navigation uses compact 16px text with 12px inline padding, while resource links expand horizontally through 11px × 24px padding. Preserve this contrast between dense navigation and spacious resource actions rather than inventing a mobile grid or a universal card layout.
+Pointer states are declared only where the 2026-07-13 bundle holds a settled frame. The brand LNB links and brand section links turn `#3A46CD` on hover and pressed (the section links also move to weight 700), and the current-page link of each list is its selected state (§4). Every other state frame is listed in `.verification.md` with the reason it is not declared: transition frames (section-link colours on four links, the footer menu links, the download links), Chromium's default link colours on container anchors, and focus frames, which are never declared from a bundle. The bundle records no dialog, tab, menu, toast or form interaction, and no selector-backed loading, empty, error, success, disabled or validation state. Corrected 2026-09-30: the July text said no component-state matrix could be retained because the bundle has zero interaction expansions; that count does not cover pointer-state frames, of which the bundle holds 62.
 
-## 6. Depth & Elevation
-
-All retained component representatives report `box-shadow: none`. That supports a flat treatment for these public brand-page links and top action. It does not establish that SK텔레콤 product, marketing, retail, native-app, or campaign interfaces never use shadow, gradients, imagery, or elevation.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 
@@ -393,15 +410,7 @@ All retained component representatives report `box-shadow: none`. That supports 
 - Generalize the 58px desktop/tablet top action into a mobile primary button.
 - Invent responsive breakpoints, input states, dialogs, toast behavior, timing, easing, or component variants from static captures.
 
-## 8. Responsive Behavior
-
-The only supplied viewport is 1440×900. It establishes the listed desktop public-page values and does not establish a mobile type scale, breakpoints, stacking, touch target, or responsive component contract. Re-measure the actual target surface before assigning those values.
-
-## 9. Agent Prompt Guide
-
-For a public SK텔레콤 corporate-information composition, use the verified language narrowly: a typographic, flat, square-cornered frame; SKT Sans Text for available compact body/navigation copy; SKT Sans Display for the observed display treatment; dark charcoal links; and a saturated `#3A46CD` current-page navigation cue. Use transparent resource links with 1px neutral outlines and a `#727887`/white top action only in their measured desktop/tablet contexts. Keep the T-brand “open door” and AI Company material as narrative direction rather than color-token instructions. Do not present fallback fonts, unmeasured T Blue/T Red values, or unobserved app controls as SK텔레콤 facts.
-
-## 10. Voice & Tone
+## Voice & Tone
 
 Official material frames SK텔레콤’s current direction around technology and services that benefit customers, an “OPEN” motif, and a transition toward AI infrastructure and services. The usable voice is forward-looking, useful, and direct; it should explain a concrete benefit or next step rather than rely on empty futurism.
 
@@ -417,46 +426,17 @@ Illustrative tone samples (characterization, not source copy):
 - “Explore the technology and information behind the next step.”
 - “See how this service can make a customer task clearer.”
 
-## 11. Brand Narrative
+## Agent Prompt Guide
 
-SK텔레콤’s current story begins with connectivity but is explicitly moving beyond a telecommunications-only frame. In its 2022 vision announcement, the company described its direction as becoming an AI Company that benefits customers through technology and services. The associated T/B brand renewal gives that turn a visible motif: “OPEN,” represented by an open-door form and a redefinition of T through Technology, Tomorrow, and Together.
+For a public SK텔레콤 corporate-information composition, use the verified language narrowly: a typographic, flat, square-cornered frame; SKT Sans Text for available compact body/navigation copy; SKT Sans Display for the observed display treatment; dark charcoal links; and a saturated `#3A46CD` current-page navigation cue. Use transparent resource links with 1px neutral outlines and a `#727887`/white top action only in their measured desktop/tablet contexts. Keep the T-brand “open door” and AI Company material as narrative direction rather than color-token instructions. Do not present fallback fonts, unmeasured T Blue/T Red values, or unobserved app controls as SK텔레콤 facts.
 
-That shift remains active rather than historical. A 2026 official fact sheet describes SK텔레콤 as advancing toward an AI-infrastructure architect and full-stack AI provider, joining technology, infrastructure, and services while redesigning products around customers. The two captured public pages should be read as corporate and brand-information surfaces within that broader evolution; they do not document the UI systems of each consumer service.
+## Governance
 
-## 12. Principles
+### Known Gaps
 
-1. **Make technology useful to customers.** SK텔레콤’s AI Company vision explicitly links technology and services with customer benefit.
-   *UI implication:* explain the user outcome beside a technical feature; do not let a technical label do all the work.
-
-2. **Keep the future open and legible.** The 2022 renewal uses “OPEN” and an open door as its design motif.
-   *UI implication:* use clear pathways and named actions, while treating this as narrative guidance rather than a measured layout rule.
-
-3. **Connect infrastructure, services, and society without conflating their surfaces.** The current fact sheet spans customer AI, national AI infrastructure, and continued internal transformation.
-   *UI implication:* preserve source-domain labels; a corporate infrastructure claim does not supply a consumer-product token.
-
-4. **Pair innovation with responsibility.** The current fact sheet places “DO THE GOOD AI” in SK텔레콤’s ESG context.
-   *UI implication:* when communicating AI, state the applicable benefit, boundary, or responsibility instead of using generic assurance language.
-
-## 13. Personas
-
-The following are stakeholder archetypes derived from official strategy descriptions, not research-backed individual personas or claims about a specific app’s users.
-
-### Connected customer
-
-Someone choosing or using SK텔레콤 services and looking for a clear benefit from connectivity or AI-enabled support. Use direct explanations and avoid making infrastructure terminology the only way to understand a task.
-
-### Enterprise or industry collaborator
-
-An organization evaluating AI infrastructure, transformation, or service capabilities. Keep product/service claims, architecture information, and partnership context distinct from consumer-interface guidance.
-
-### Korean AI ecosystem stakeholder
-
-A public, institutional, or industry participant concerned with the wider AI-infrastructure and sovereign-AI agenda described by SK텔레콤. Communicate scope and responsibility precisely; this is not evidence for a consumer-screen persona.
-
-## 14. States
-
-Pointer states are declared only where the 2026-07-13 bundle holds a settled frame. The brand LNB links and brand section links turn `#3A46CD` on hover and pressed (the section links also move to weight 700), and the current-page link of each list is its selected state (§4). Every other state frame is listed in `.verification.md` with the reason it is not declared: transition frames (section-link colours on four links, the footer menu links, the download links), Chromium's default link colours on container anchors, and focus frames, which are never declared from a bundle. The bundle records no dialog, tab, menu, toast or form interaction, and no selector-backed loading, empty, error, success, disabled or validation state. Corrected 2026-09-30: the July text said no component-state matrix could be retained because the bundle has zero interaction expansions; that count does not cover pointer-state frames, of which the bundle holds 62.
-
-## 15. Motion & Easing
-
-No duration, easing, transition, or animation token is retained. The supplied public-page capture has no interaction records, so motion behavior is unresolved at the smallest group boundary rather than approximated with a generic corporate motion scale.
+- **Contrast, `resource-download`.** Text `#1a2232` on `#00000000` measures 1.32:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `outline-title-link`.** Text `#595e6b` on `#00000000` measures 3.24:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `top-action`.** Text `#ffffff` on `#727887` measures 4.42:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `brand-section-link`.** Text `#595e6b` on `#00000000` measures 3.24:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `footer-menu-link`.** Text `#3a404e` on `#00000000` measures 2.02:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `content-row`.** Text `#3a404e` on `#00000000` measures 2.02:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

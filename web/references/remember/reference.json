@@ -1,0 +1,1615 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "remember",
+    "name": "Remember",
+    "country": "KR",
+    "category": "productivity",
+    "homepage": "https://www.rememberapp.co.kr",
+    "primary_color": "#000000",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png"
+    },
+    "verified": "2026-07-13",
+    "ds": {
+      "name": "Remember UI",
+      "url": "https://dramancompany.github.io/remember-ui/",
+      "type": "system",
+      "description": "Public Remember UI Storybook deployment.",
+      "og_image": "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png"
+    }
+  },
+  "tokens": {
+    "source": "reconciled",
+    "extracted": "2026-07-13",
+    "note": "Selector-backed career-product and corporate-marketing observations remain separate. No authenticated product, documentation chrome, or source-uncorroborated corporate display face is made a shared token.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-09-29",
+    "surfaces": [
+      {
+        "id": "career-postings",
+        "kind": "product",
+        "url": "https://career.rememberapp.co.kr/job/postings",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "career-postings-repeat",
+        "kind": "product",
+        "url": "https://career.rememberapp.co.kr/job/postings",
+        "inspected": "2026-07-13"
+      },
+      {
+        "id": "corporate-home",
+        "kind": "marketing",
+        "url": "https://corp.remember.co.kr/",
+        "inspected": "2026-07-13"
+      }
+    ],
+    "sources": [
+      {
+        "id": "career-postings-live",
+        "kind": "product-surface",
+        "url": "https://career.rememberapp.co.kr/job/postings",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "remember-component-index",
+        "kind": "official-doc",
+        "url": "https://dramancompany.github.io/remember-ui/",
+        "captured": "2026-09-19"
+      },
+      {
+        "id": "corporate-home-live",
+        "kind": "product-surface",
+        "url": "https://corp.remember.co.kr/",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "company-context",
+        "kind": "official-doc",
+        "url": "https://corp.remember.co.kr/company",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "brand-guideline",
+        "kind": "brand-asset",
+        "url": "https://static.rememberapp.co.kr/brand/brand_guideline_logo.pdf",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "pretendard-license",
+        "kind": "license",
+        "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+        "captured": "2026-07-13"
+      },
+      {
+        "id": "remember-probe",
+        "kind": "product-surface",
+        "url": "https://career.rememberapp.co.kr/job/postings",
+        "captured": "2026-09-29"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.action-black": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.surface": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.foreground": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.input-surface": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.muted": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.hairline": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "colors.corporate-orange": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "fonts.roles.ui": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.lineHeight": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.body.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontSize": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.fontWeight": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.lineHeight": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.heading.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.fontSize": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.fontWeight": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.lineHeight": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "typography.card-title.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xs": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.sm": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.md": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.lg": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "spacing.xl": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.sm": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.md": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "rounded.lg": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.border": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.typography": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-outline-dialog-button.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.fWHJNX 기업 서비스 at :hover, ::before",
+        "captured": "2026-09-29"
+      },
+      "components.career-outline-dialog-button.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.fWHJNX 기업 서비스 at :active, ::before",
+        "captured": "2026-09-29"
+      },
+      "components.career-outline-dialog-button.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.fWHJNX at :focus-visible, Tab stop 10",
+        "captured": "2026-09-29"
+      },
+      "components.career-outline-dialog-button.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.fWHJNX 기업 서비스, aria-expanded false",
+        "captured": "2026-09-29"
+      },
+      "components.career-outline-dialog-button.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-job-list-item.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-job-list-item.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-job-list-item.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-job-list-item.typography": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-job-list-item.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "captured": "2026-07-13"
+      },
+      "components.career-job-list-item.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "li.sc-3c9cd5df-0 > a.sc-567718ed-0 (first curated posting, second load) at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.career-job-list-item.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "li.sc-3c9cd5df-0 > a.sc-567718ed-0 (second load) at :active",
+        "captured": "2026-09-29"
+      },
+      "components.career-job-list-item.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "a.sc-567718ed-0 at :focus-visible, Tab stop 75 (second load)",
+        "captured": "2026-09-29"
+      },
+      "components.career-job-list-item.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "li.sc-3c9cd5df-0 > a.sc-567718ed-0, title label div.sc-3c9cd5df-6",
+        "captured": "2026-09-29"
+      },
+      "components.filled-auth-control.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.typography": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-613fcc33-3 로그인 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.filled-auth-control.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-613fcc33-3 로그인 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.filled-auth-control.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-613fcc33-3 로그인 at :focus-visible, Tab stop 8",
+        "captured": "2026-09-29"
+      },
+      "components.filled-auth-control.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-613fcc33-3 로그인",
+        "captured": "2026-09-29"
+      },
+      "components.filled-auth-control.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"8\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.typography": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.white-header-control.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.dHAHdk 회원가입 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.white-header-control.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.dHAHdk 회원가입 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.white-header-control.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.dHAHdk 회원가입 at :focus-visible, Tab stop 9",
+        "captured": "2026-09-29"
+      },
+      "components.white-header-control.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.dHAHdk 회원가입",
+        "captured": "2026-09-29"
+      },
+      "components.white-header-control.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"9\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.typography": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-input.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "section#topSearchBar input at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.search-input.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "section#topSearchBar input at :active",
+        "captured": "2026-09-29"
+      },
+      "components.search-input.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "section#topSearchBar input at :focus-visible, Tab stop 25",
+        "captured": "2026-09-29"
+      },
+      "components.search-input.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "section#topSearchBar input",
+        "captured": "2026-09-29"
+      },
+      "components.search-input.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button 직무, visible label div.sc-db17a579-0",
+        "captured": "2026-09-29"
+      },
+      "components.filter-control.border": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.filter-control.typography": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button 직무, visible label div.sc-db17a579-0",
+        "captured": "2026-09-29"
+      },
+      "components.filter-control.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-31c2a97b-0 직무 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.filter-control.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-31c2a97b-0 직무 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.filter-control.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-31c2a97b-0 직무 at :focus-visible, Tab stop 153",
+        "captured": "2026-09-29"
+      },
+      "components.filter-control.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-31c2a97b-0 직무",
+        "captured": "2026-09-29"
+      },
+      "components.filter-control.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"129\"] through [data-omd-capture=\"134\"]",
+        "captured": "2026-07-13"
+      },
+      "components.header-nav-link.type": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.padding": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.size": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.typography": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.selected": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "a 채용공고 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "a 채용공고 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "a 채용공고 at :focus-visible, Tab stop 2",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.header-nav-link.use": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "nav a.sc-613fcc33-2 채용공고, rest at page top",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-submit.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-submit.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button 검색, visible label div.sc-db17a579-0",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-submit.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-submit.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.search-submit.typography": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button 검색, visible label div.sc-db17a579-0",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.hover": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.lnGUHB 검색 at :hover",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.pressed": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.lnGUHB 검색 at :active",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.focus": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.lnGUHB 검색 at :focus-visible, Tab stop 26",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.states": {
+        "surface_id": "career-postings",
+        "source_id": "remember-probe",
+        "method": "live-state-probe",
+        "selector": "button.sc-88df8ec2-0.lnGUHB 검색",
+        "captured": "2026-09-29"
+      },
+      "components.search-submit.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"21\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.rounded": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.typography": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-1\"] menu link",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.shadow": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.states": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-header-dialog.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-interaction-capture=\"dialog-0-0\"]",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.type": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.backgroundColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.textColor": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.padding": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.size": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.states": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.career-card-icon-button.use": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-live",
+        "method": "live-inspect",
+        "selector": "career-postings::[data-omd-capture=\"89\"] (100 occurrences)",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.type": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.backgroundColor": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.textColor": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.typography": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.hover": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"]::state-hover (same on 18-20)",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.pressed": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"]::state-pressed (same on 18-20)",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.states": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      },
+      "components.corporate-footer-link.use": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-live",
+        "method": "live-inspect",
+        "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
+        "captured": "2026-07-13"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 77,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 63,
+      "missing-primary": 1,
+      "contrast-ratio": 4,
+      "orphaned-tokens": 6
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.card-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-outline-dialog-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-job-list-item.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-job-list-item.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-job-list-item.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-job-list-item.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-job-list-item.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-job-list-item.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filled-auth-control.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filled-auth-control.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filled-auth-control.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filled-auth-control.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filled-auth-control.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filled-auth-control.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.white-header-control.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.white-header-control.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.white-header-control.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.white-header-control.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.white-header-control.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.white-header-control.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-input.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-control.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.selected",
+        "message": "'selected' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-nav-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-header-dialog.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-header-dialog.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-header-dialog.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-header-dialog.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-card-icon-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-card-icon-button.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.career-card-icon-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-footer-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-footer-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-footer-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-footer-link.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-footer-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "missing-primary",
+        "path": "colors",
+        "message": "No 'primary' color defined. The agent will auto-generate key colors, reducing your control over the palette."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.search-input",
+        "message": "textColor (#808080) on backgroundColor (#f2f2f2) has contrast ratio 3.53:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.filter-control",
+        "message": "textColor (#000000) on backgroundColor (#00000000) has contrast ratio 1.00:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.career-card-icon-button",
+        "message": "textColor (#222222) on backgroundColor (#00000000) has contrast ratio 1.32:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.corporate-footer-link",
+        "message": "textColor (#4c4e52) on backgroundColor (#00000000) has contrast ratio 2.52:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.action-black",
+        "message": "'action-black' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.input-surface",
+        "message": "'input-surface' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.corporate-orange",
+        "message": "'corporate-orange' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "37364e8907ac8b08d18ea6de78d05ef22ec4fec942cfa40be89e1cd37482583d",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.heading.fontSize",
+      "typography.card-title.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "body",
+        "heading",
+        "card-title"
+      ]
+    }
+  }
+}

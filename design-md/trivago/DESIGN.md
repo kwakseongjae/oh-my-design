@@ -1,112 +1,69 @@
 ---
-id: trivago
 name: trivago
-country: DE
-category: consumer-tech
-homepage: "https://www.trivago.de"
-primary_color: "#0079C2"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=trivago.com&sz=128"
-verified: "2026-09-26"
-added: "2026-09-26"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-09-26"
-  colors:
-    primary: "#0079c2"
-    primary-hovered: "#4dbeff"
-    primary-pressed: "#00578b"
-    primary-emphasis: "#24a3ec"
-    highlight-subdued: "#bde7ff"
-    revenue: "#0a850e"
-    revenue-hovered: "#6dce70"
-    revenue-pressed: "#075f0a"
-    critical: "#e22851"
-    critical-pressed: "#b4183a"
-    warning: "#e27423"
-    notice: "#ffcc31"
-    decorative-blue: "#78daff"
-    decorative-orange: "#ff932c"
-    decorative-pink: "#ff9dde"
-    foreground: "#171717"
-    text-strong: "#4d4d4c"
-    text-subdued: "#6c6c6b"
-    border-neutral: "#8d8d8b"
-    canvas: "#ffffff"
-    surface-subdued: "#f2f2f1"
-    disabled: "#d9d8d6"
-  typography:
-    button: { size: 16, weight: 700, use: "search button; system font stack" }
-  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
-  components:
-    button-search: { type: "button", bg: "#0079c2", fg: "#ffffff", radius: 8, height: "44px", padding: "12px 32px", font: "16px / 700", focus: "outline 1px dotted #4d4d4c", use: "Suchen — the primary blue search button (--action-primary-default); hover and press could not be measured; the tokens declare hovered #4dbeff and pressed #00578b." }
-    button-header: { type: "button", bg: "#ffffff", fg: "#171717", radius: 8, height: "36px", padding: "8px 16px", font: "14px / 700", focus: "outline 2px solid #0079c2", use: "Einloggen in the header — white with #171717 text; focus drops the border for a 2px blue outline. Hover not measured." }
-  components_harvested: true
-verification_v2:
-  schema: 2
-  checked: "2026-09-26"
-  surfaces:
-    - { id: home, kind: product-surface, url: "https://www.trivago.de/", inspected: "2026-09-26" }
-  sources:
-    - { id: home-live, kind: product-surface, url: "https://www.trivago.de/", captured: "2026-09-26" }
-    - { id: control-404, kind: product-surface, url: "https://www.trivago.de/zz-this-does-not-exist", captured: "2026-09-26" }
-    - { id: company, kind: official-doc, url: "https://company.trivago.com/", captured: "2026-09-26" }
-    - { id: legal, kind: official-doc, url: "https://www.trivago.com/en-US/sl/legal-information", captured: "2026-09-26" }
-  conflicts: []
-  claims:
-    tokens.colors.border-neutral: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.critical: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.critical-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.decorative-blue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.decorative-orange: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.decorative-pink: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.highlight-subdued: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.notice: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-emphasis: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.primary-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.revenue: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.revenue-hovered: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.revenue-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.surface-subdued: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.text-strong: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.text-subdued: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.colors.warning: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.components.button-header.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-header.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.button-search.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.rounded.full: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
-    tokens.typography.button.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-26" }
+colors:
+  primary: '#0079c2'
+  primary-hovered: '#4dbeff'
+  primary-pressed: '#00578b'
+  primary-emphasis: '#24a3ec'
+  highlight-subdued: '#bde7ff'
+  revenue: '#0a850e'
+  revenue-hovered: '#6dce70'
+  revenue-pressed: '#075f0a'
+  critical: '#e22851'
+  critical-pressed: '#b4183a'
+  warning: '#e27423'
+  notice: '#ffcc31'
+  decorative-blue: '#78daff'
+  decorative-orange: '#ff932c'
+  decorative-pink: '#ff9dde'
+  foreground: '#171717'
+  text-strong: '#4d4d4c'
+  text-subdued: '#6c6c6b'
+  border-neutral: '#8d8d8b'
+  canvas: '#ffffff'
+  surface-subdued: '#f2f2f1'
+  disabled: '#d9d8d6'
+typography:
+  button:
+    fontSize: 16px
+    fontWeight: 700
+    use: search button; system font stack
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 16px
+  full: 9999px
+components:
+  button-search:
+    type: button
+    backgroundColor: '#0079c2'
+    textColor: '#ffffff'
+    rounded: 8px
+    height: 44px
+    padding: 12px 32px
+    typography: 16px / 700
+    focus: 'outline 1px dotted #4d4d4c'
+    use: 'Suchen — the primary blue search button (--action-primary-default); hover and press could not be measured; the tokens declare hovered #4dbeff and pressed #00578b.'
+  button-header:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#171717'
+    rounded: 8px
+    height: 36px
+    padding: 8px 16px
+    typography: 14px / 700
+    focus: 'outline 2px solid #0079c2'
+    use: 'Einloggen in the header — white with #171717 text; focus drops the border for a 2px blue outline. Hover not measured.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
+
 # Design System Inspiration of trivago
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 trivago's mission: "When travelers are searching for a hotel, we want the obvious choice to be
 trivago." It was "founded in 2005 in Dusseldorf, Germany" with "a simple idea: use technology to
@@ -128,11 +85,27 @@ What makes it worth reading:
 - **A 10px root scale.** Radii and borders are declared in rem on a 10px base (`--radius-8` `0.8rem`
   renders 8px).
 
-### Primary tasks
+#### Primary tasks
 - Search hotels by destination, dates and guests.
 - Compare prices across booking sites; log in.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+A Düsseldorf company that bootstrapped hotel search into a NASDAQ-listed brand. The product is a
+comparison tool, and it looks like one: white, dense, system-set, with blue for searching and green
+for the deal.
+
+### Principles
+
+- **The obvious choice for hotel search.** Its mission.
+- **Actions named by meaning.** Revenue is an action.
+- **Simplify hotel search.**
+
+### Personas
+
+Not researched. No persona claim is made from a UI capture.
+
+## Colors
 
 Measured with `getComputedStyle` on `trivago.de`: 511 root custom properties — `--size-*` 129,
 `--space-*` 66, `--border-*` 62, `--type-*` 59, `--surface-*` 51, `--text-*` 31, `--action-*` 24,
@@ -159,7 +132,7 @@ Measured with `getComputedStyle` on `trivago.de`: 511 root custom properties —
 - **Text strong** (`#4d4d4c`) · **Text subdued** (`#6c6c6b`) · **Border neutral** (`#8d8d8b`).
 - **Canvas** (`#ffffff`) · **Surface subdued** (`#f2f2f1`) · **Disabled** (`#d9d8d6`).
 
-## 3. Typography Rules
+## Typography
 
 ### Font family
 
@@ -170,7 +143,28 @@ Sans", …`. No brand typeface is loaded on this surface; none is claimed.
 
 Search button 16px/700; header buttons 14px/700.
 
-## 4. Component Stylings
+## Layout
+
+- A slim header, a hero search bar (destination, dates, guests, search), and a partner-logo row
+  ("Unsere Partner und über 100 weitere").
+
+### Responsive Behavior
+
+**Not measured.** Desktop 1440×1000 only.
+
+## Elevation & Depth
+
+Flat; surfaces and borders separate content.
+
+## Motion & Easing
+
+Not measured.
+
+---
+
+**Tier 1 sources:** https://www.trivago.de/ (live homepage — 511 root custom properties read via `getComputedStyle`; two components measured at rest and focus, captured 2026-09-26); https://www.trivago.de/zz-this-does-not-exist (nonsense-path control — HTTP 200 rendering the homepage, a catch-all; noted, read 2026-09-26); https://company.trivago.com/ (company site — mission, founded 2005 in Düsseldorf, NASDAQ listing, 650+ team members, read 2026-09-26); https://www.trivago.com/en-US/sl/legal-information (legal information — trivago N.V., Kesselstrasse 5–7, 40221 Düsseldorf, read 2026-09-26)
+
+## Components
 
 Measured with focus under a real Tab key. **Hover and pressed could not be measured**: an overlay
 intercepted the pointer on every load. They are omitted, not recorded as "no change".
@@ -184,16 +178,12 @@ intercepted the pointer on every load. They are omitted, not recorded as "no cha
 
 `--radius-4` / `-8` / `-16` / `-circle` → 4px, 8px, 16px, full.
 
-## 5. Layout Principles
+### States
 
-- A slim header, a hero search bar (destination, dates, guests, search), and a partner-logo row
-  ("Unsere Partner und über 100 weitere").
+Focus: dotted or 2px blue outlines. Hover and pressed: not measured on the live page; declared in
+tokens (`--action-primary-hovered` `#4dbeff`, `-pressed` `#00578b`).
 
-## 6. Depth & Elevation
-
-Flat; surfaces and borders separate content.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use trivago blue `#0079c2` for search and links, and green `#0a850e` for deal actions.
@@ -205,11 +195,11 @@ Flat; surfaces and borders separate content.
 - Don't use revenue green for navigation.
 - Don't use decorative colours for text.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-**Not measured.** Desktop 1440×1000 only.
+Not assessed as authored voice.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 `#0079c2` trivago blue · `#00578b` pressed · `#0a850e` revenue green · `#e22851` critical ·
@@ -218,36 +208,3 @@ Flat; surfaces and borders separate content.
 ### Example Component Prompts
 - "A 44px `#0079c2` search button, white 16px/700 system font, 8px radius."
 - "A white 36px header button with `#171717` text and a 2px `#0079c2` focus outline."
-
-## 10. Voice & Tone
-
-Not assessed as authored voice.
-
-## 11. Brand Narrative
-
-A Düsseldorf company that bootstrapped hotel search into a NASDAQ-listed brand. The product is a
-comparison tool, and it looks like one: white, dense, system-set, with blue for searching and green
-for the deal.
-
-## 12. Principles
-
-- **The obvious choice for hotel search.** Its mission.
-- **Actions named by meaning.** Revenue is an action.
-- **Simplify hotel search.**
-
-## 13. Personas
-
-Not researched. No persona claim is made from a UI capture.
-
-## 14. States
-
-Focus: dotted or 2px blue outlines. Hover and pressed: not measured on the live page; declared in
-tokens (`--action-primary-hovered` `#4dbeff`, `-pressed` `#00578b`).
-
-## 15. Motion & Easing
-
-Not measured.
-
----
-
-**Tier 1 sources:** https://www.trivago.de/ (live homepage — 511 root custom properties read via `getComputedStyle`; two components measured at rest and focus, captured 2026-09-26); https://www.trivago.de/zz-this-does-not-exist (nonsense-path control — HTTP 200 rendering the homepage, a catch-all; noted, read 2026-09-26); https://company.trivago.com/ (company site — mission, founded 2005 in Düsseldorf, NASDAQ listing, 650+ team members, read 2026-09-26); https://www.trivago.com/en-US/sl/legal-information (legal information — trivago N.V., Kesselstrasse 5–7, 40221 Düsseldorf, read 2026-09-26)

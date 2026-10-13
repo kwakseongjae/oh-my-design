@@ -1,64 +1,148 @@
 ---
-id: nrise
 name: NRISE (WIPPY)
-display_name_kr: 엔라이즈 (위피)
-country: KR
-category: consumer-tech
-homepage: "https://www.nrise.net/"
-primary_color: "#ff0056"
-logo:
-  type: favicon
-  slug: "https://opening-attachments.greetinghr.com/20230601/02c9543a-74ed-4592-853f-17b2adc07c5d/nrise_logo_launchericon2.png"
-verified: "2026-07-02"
-added: "2026-07-02"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live WIPPY product CTA pink (#ff0056); the system is otherwise monochrome — a dark ink ladder (#222222 headings, #000000 pure black, #212529/#212126 deep neutrals) on white (#ffffff). Near-shadowless flat surfaces."
-  colors:
-    primary: "#ff0056"
-    ink: "#222222"
-    ink-pure: "#000000"
-    ink-nav: "#212429"
-    neutral-900: "#212529"
-    neutral-850: "#212126"
-    section-dark: "#111111"
-    canvas: "#ffffff"
-    surface: "#fafafa"
-    muted: "#767676"
-    muted-alt: "#8c8c8c"
-    on-dark: "#ffffff"
-  typography:
-    family: { sans: "Pretendard" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.50, use: "WIPPY hero headline, Pretendard Bold" }
-    section:      { size: 38, weight: 700, lineHeight: 1.35, use: "Corporate section titles (NRISE가 세상에 전하는 가치)" }
-    section-sm:   { size: 36, weight: 700, lineHeight: 1.33, use: "Product section titles on the career/WIPPY surface" }
-    subheading:   { size: 23, weight: 700, lineHeight: 1.35, use: "Card / feature subheads" }
-    logo:         { size: 20, weight: 700, lineHeight: 1.50, use: "Corporate logotype in the nav" }
-    eyebrow:      { size: 19, weight: 400, lineHeight: 1.50, use: "Section eyebrow labels (MISSION, HISTORY, NEWS)" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Body copy, news items, CTA labels" }
-    nav:          { size: 14, weight: 600, lineHeight: 1.50, use: "Top-nav item labels" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { xs: 4, sm: 8, md: 10, lg: 12, xl: 24, pill: 30, jumbo: 48 }
-  shadow:
-    none: "none"
-    floating: "rgba(0,0,0,0.04) 0px 1px 2px 0px, rgba(0,0,0,0.06) 0px 8px 24px"
-  components:
-    cta-wippy:    { type: button, bg: "#ff0056", fg: "#ffffff", radius: "30px", padding: "8px 16px", height: "40px", font: "16px / 700", use: "WIPPY product CTA (더 알아보기) — the single signature pink action" }
-    cta-dark-pill: { type: button, bg: "#000000", fg: "#ffffff", radius: "30px", padding: "8px 16px", height: "40px", font: "16px / 700", use: "Second-product CTA (더 알아보기) on the corporate home" }
-    cta-solid:    { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "10.5px 24px", height: "48px", font: "16px / 400", use: "WIPPY career primary button (바로가기)" }
-    nav-item:     { type: button, bg: "#ffffff", fg: "#212429", radius: "4px", padding: "5.5px 12px", height: "32px", font: "14px / 600", active: "bg #222222 fg #ffffff", use: "Top-nav item; active item fills dark" }
-    floating-top: { type: button, bg: "#212529", fg: "#ffffff", radius: "24px", height: "48px", shadow: "rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.06) 0px 8px 24px", use: "Scroll-to-top floating action button" }
-    news-card:    { type: card, bg: "#ffffff", radius: "10px", use: "News/press list card on white canvas" }
-    dark-card:    { type: card, bg: "#212126", fg: "#ffffff", radius: "12px", use: "Dark product feature card on the WIPPY surface" }
-    eyebrow-tag:  { type: badge, fg: "#767676", font: "19px / 400", use: "Section eyebrow label (MISSION, HISTORY, NEWS)" }
-  components_harvested: true
+colors:
+  primary: '#ff0056'
+  ink: '#222222'
+  ink-pure: '#000000'
+  ink-nav: '#212429'
+  neutral-900: '#212529'
+  neutral-850: '#212126'
+  section-dark: '#111111'
+  canvas: '#ffffff'
+  surface: '#fafafa'
+  muted: '#767676'
+  muted-alt: '#8c8c8c'
+  on-dark: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: WIPPY hero headline, Pretendard Bold
+  section:
+    fontSize: 38px
+    fontWeight: 700
+    lineHeight: 1.35
+    use: Corporate section titles (NRISE가 세상에 전하는 가치)
+  section-sm:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.33
+    use: Product section titles on the career/WIPPY surface
+  subheading:
+    fontSize: 23px
+    fontWeight: 700
+    lineHeight: 1.35
+    use: Card / feature subheads
+  logo:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Corporate logotype in the nav
+  eyebrow:
+    fontSize: 19px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Section eyebrow labels (MISSION, HISTORY, NEWS)
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body copy, news items, CTA labels
+  nav:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Top-nav item labels
+rounded:
+  xs: 4px
+  sm: 8px
+  md: 10px
+  lg: 12px
+  xl: 24px
+  pill: 30px
+  jumbo: 48px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  cta-wippy:
+    type: button
+    backgroundColor: '#ff0056'
+    textColor: '#ffffff'
+    rounded: 30px
+    padding: 8px 16px
+    height: 40px
+    typography: 16px / 700
+    use: WIPPY product CTA (더 알아보기) — the single signature pink action
+  cta-dark-pill:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 30px
+    padding: 8px 16px
+    height: 40px
+    typography: 16px / 700
+    use: Second-product CTA (더 알아보기) on the corporate home
+  cta-solid:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 10.5px 24px
+    height: 48px
+    typography: 16px / 400
+    use: WIPPY career primary button (바로가기)
+  nav-item:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#212429'
+    rounded: 4px
+    padding: 5.5px 12px
+    height: 32px
+    typography: 14px / 600
+    active: 'bg #222222 fg #ffffff'
+    use: Top-nav item; active item fills dark
+  floating-top:
+    type: button
+    backgroundColor: '#212529'
+    textColor: '#ffffff'
+    rounded: 24px
+    height: 48px
+    shadow: rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.06) 0px 8px 24px
+    use: Scroll-to-top floating action button
+  news-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 10px
+    use: News/press list card on white canvas
+  dark-card:
+    type: card
+    backgroundColor: '#212126'
+    textColor: '#ffffff'
+    rounded: 12px
+    use: Dark product feature card on the WIPPY surface
+  eyebrow-tag:
+    type: badge
+    textColor: '#767676'
+    typography: 19px / 400
+    use: Section eyebrow label (MISSION, HISTORY, NEWS)
+fonts:
+  roles:
+    sans: Pretendard
 ---
 
 # Design System Inspiration of NRISE (WIPPY)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 NRISE (엔라이즈) is the Korean consumer-tech company behind WIPPY (위피), a No.1-positioned social-discovery app, and 콰트 (Quat), a habit-forming health product. Its web surfaces read as confident, editorial, and almost aggressively monochrome — a near-black-on-white system where a single saturated pink is the only chromatic event on the page. The canvas is pure white (`#ffffff`) with occasional soft-grey blocks (`#fafafa`); text and headings sit in a warm near-black ink (`#222222`) rather than pure black for display, while body copy defaults to true black (`#000000`). The effect is clean, high-contrast, and product-forward: the design gets out of the way so the app screenshots and the one pink CTA can do the talking.
 
@@ -76,14 +160,42 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 - Pill geometry on the corporate home (30px CTAs) vs a sharper 8px solid button on the product surface
 - Quiet 14px / weight 600 nav labels in near-black nav ink (`#212429`)
 
-## Primary tasks
+### Primary tasks
 
 - Express who you are and discover other people
 - Meet neighborhood friends who share your interests
 - Check how the service handles safety before joining
 - Build healthier daily habits with the studio's second product
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+NRISE (엔라이즈) is a Korean consumer-tech studio that builds mobile products around two human needs: connection and healthy routine. Its flagship is **WIPPY (위피)**, positioned on its own surface as Korea's No.1 social-discovery service — "나를 표현하고 상대를 발견하는 공간" (a space to express yourself and discover others) and "같은 관심사를 가진 동네 친구와의 만남" (meeting neighborhood friends who share your interests). Its second product line, **콰트 (Quat)**, sits under the mission "건강한 습관을 형성하여 삶의 변화를 제공합니다" (forming healthy habits to deliver life change). Together the two products express the company's stated umbrella value: "NRISE가 세상에 전하는 가치."
+
+The company frames its work in emotional-benefit terms rather than technical ones. Where the corporate mission talks about "편안한 만남" (comfortable connection) delivering "일상의 행복" (everyday happiness), WIPPY's product surface foregrounds safety as a first-class value — "더 나은 연결을 위해 안전을 최우선의 가치로" — a deliberate stance for a social-discovery category that often carries trust concerns. A press item observed on the homepage ("콰트·위피 눈부신 활약…엔라이즈, 2년 연속 흑자 달성", dated 2026.04.08) points to a business narrative of two-consecutive-years profitability driven by both products.
+
+What NRISE refuses, visible in its design: the busy, shadow-stacked chrome and multi-color palettes of legacy portals, and the dark-pattern urgency common to engagement-driven social apps. What it embraces: a flat, fast, monochrome canvas; a single trustworthy pink reserved for the one action that matters; bold Pretendard headlines that speak plainly; and copy that frames the product around human feeling and safety rather than metrics.
+
+*(Company facts above beyond the live homepage/career surfaces — e.g. the exact founding year and leadership — are not asserted here; the narrative is anchored to verbatim, live-observed positioning and the dated press headline.)*
+
+### Principles
+
+1. **One action, one color.** Pink (`#ff0056`) means "do this." *UI implication:* reserve the saturated pink exclusively for the primary WIPPY CTA so the next step is never ambiguous on an otherwise monochrome screen.
+2. **Feeling before features.** The brand sells everyday happiness and healthy habits, not specs. *UI implication:* lead sections with emotional-benefit headlines; let product screenshots carry the detail.
+3. **Safety is a design value.** For a social-discovery product, trust is a feature. *UI implication:* surface safety and control copy prominently and calmly; never bury it.
+4. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* no shadows; separate with white, grey, and dark blocks; keep the page light and quick to scan.
+5. **Bold, single-voice type.** Pretendard 700 headlines carry the whole hierarchy. *UI implication:* use size and the bold/regular split for structure — never reach for a second typeface or a light display weight.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable NRISE/WIPPY user segments (young Korean adults seeking new connections, users building healthy routines), not individual people.*
+
+**김하늘, 26, 서울.** A young professional new to a neighborhood who uses WIPPY to meet people with shared interests. Values that the app feels safe and expressive rather than transactional. Chose WIPPY because it presented itself as a space to "express and discover," not a numbers game.
+
+**정우진, 31, 경기.** A user who came for social discovery and stayed for the studio's habit product, 콰트. Appreciates the plain, warm tone and the single clear CTA on every screen — he always knows what the next step is.
+
+**이서연, 24, 부산.** Safety-conscious first-time user of a social-discovery app. Reassured by WIPPY's explicit "안전을 최우선의 가치로" messaging and the calm, non-pushy interface. Distrusts apps that feel urgent or cluttered.
+
+## Colors
 
 ### Primary
 - **WIPPY Pink** (`#ff0056`): The single saturated brand accent and primary CTA background. A hot magenta-pink used almost exclusively for the WIPPY product call-to-action — the system's one "action" color.
@@ -105,7 +217,7 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 ### On-Dark
 - **On Dark** (`#ffffff`): White text and icons placed on any of the dark neutral or pink surfaces.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Sans**: `Pretendard` (with `-apple-system`, `system-ui`, `Apple SD Gothic Neo`, `Noto Sans KR`, `Malgun Gothic` fallbacks) — the single family for the entire system, from display to body.
@@ -129,7 +241,119 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 - **Comfortable leading**: Body and hero run at a generous 1.5 line-height for hangul legibility; section titles tighten only slightly (~1.33–1.35).
 - **Latin eyebrows over hangul body**: Uppercase Latin labels ("MISSION", "HISTORY") in muted grey introduce hangul content blocks — a deliberate editorial device.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Notable: Button padding lands at 8px 16px (home pills) and 10.5px 24px (product solid button); section rhythm is generous and vertical
+
+### Grid & Container
+- Centered single-column marketing layout with an editorial eyebrow → headline → content cadence per section
+- Corporate home alternates white (`#ffffff`) and soft-grey (`#fafafa`) full-width bands; the WIPPY surface introduces full-width dark blocks
+- News/press items sit in a list of white cards at 10px radius
+- Feature content on the product surface uses dark cards (`#212126`) at 12px radius
+
+### Whitespace Philosophy
+- **Editorial spacing over density**: generous vertical rhythm between sections; each block breathes around its eyebrow-and-headline pair.
+- **Flat segmentation**: sections separate by background shift (white ↔ `#fafafa` ↔ dark blocks), not by shadow or heavy borders.
+- **Single-accent focus**: with only one saturated color, the pink CTA is the visual anchor of any screen it appears on.
+
+### Border Radius Scale
+- Extra-small (4px): nav item buttons
+- Small (8px): the product-surface solid button
+- Medium (10px): white news/list cards
+- Large (12px): dark feature cards
+- XL (24px): the floating scroll-to-top action
+- Pill (30px): the home-page CTA pills
+- Jumbo (48px): large pill/avatar-scale rounding
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, CTAs full-width |
+| Tablet | 640-1024px | Moderate padding, 2-up feature blocks |
+| Desktop | 1024-1440px | Full layout, centered editorial columns, dark feature bands |
+
+#### Touch Targets
+- Home CTA pills at 40px height, full pill for an unmistakable tap target
+- Product solid button at 48px height with 24px horizontal padding
+- Nav items at 32px height, spaced within the header
+- Floating scroll-to-top at 48px, comfortably tappable
+
+#### Collapsing Strategy
+- Hero: 48px WIPPY / 38px corporate headlines scale down on mobile, weight 700 maintained
+- Feature bands: multi-column → stacked single column
+- White ↔ grey ↔ dark alternating sections maintain full-width treatment
+- Eyebrow → headline → content stacks vertically at all sizes
+
+#### Image Behavior
+- App screenshots and product illustrations carry no shadow at any size, consistent with the flat system
+- Cards maintain 10–12px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, headings, nav, section CTAs, cards — the default |
+| Tint (Level 1) | `#fafafa` / dark block background shift | Section separation without elevation |
+| Floating (Level 2) | `rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.06) 0px 8px 24px` | The single floating scroll-to-top button |
+
+**Shadow Philosophy**: NRISE is a near-shadowless, flat system. Live inspection returned `box-shadow: none` across the hero, nav, headings, cards, and section CTAs on both surfaces — the only element carrying a shadow is the floating scroll-to-top button, which uses a soft two-layer drop. Depth and grouping are otherwise communicated entirely through flat surfaces: white (`#ffffff`), soft grey (`#fafafa`), and the dark neutral ladder (`#212529`, `#212126`, `#111111`). When emphasis is needed the system reaches for the pink `#ff0056` CTA or a dark block, never elevation.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+- `shadow.floating`: `rgba(0,0,0,0.04) 0px 1px 2px 0px, rgba(0,0,0,0.06) 0px 8px 24px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus |
+| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, CTAs |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and quiet — consistent with the flat, fast aesthetic. CTAs respond to press with a subtle scale/opacity shift; content fades in from below at `motion-standard / ease-enter`; the floating scroll-to-top eases in on scroll. No bounce or spring — a trust-forward social product signals steadiness, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on two surfaces:
+- https://www.nrise.net/ — corporate home: nav, mission/history/news sections, pink & dark CTAs
+- https://career.nrise.net/ko/wippy — WIPPY product/career surface: hero, feature sections, primary button, floating TOP action
+
+Token-level claims (§1-9) are sourced from this live inspection (see web/references/nrise/.verification.md Proof block for raw computed-style samples).
+
+Voice samples (§10) are verbatim from the live surfaces (corporate mission line, WIPPY hero, WIPPY safety value).
+
+Brand narrative (§11): NRISE (엔라이즈) operates WIPPY (위피, social discovery) and 콰트 (Quat, healthy-habit).
+Positioning quotes are verbatim from the live homepage/career surfaces; the profitability note references the
+dated press headline observed on the homepage ("엔라이즈, 2년 연속 흑자 달성", 2026.04.08). Founding year and
+leadership are deliberately NOT asserted — not verified from a first-party statement in this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable WIPPY/NRISE user segments. Names are
+illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "one action, one color", "flat and fast as a rejection of legacy portal chrome") are
+editorial readings connecting NRISE's observed design to its positioning, not directly sourced NRISE statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -205,44 +429,21 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 **Tier 2 sources:** getdesign.md/nrise (0 files — not covered) ; styles.refero.design/?q=nrise & ?q=wippy (generic grid only — no brand-specific match)
 **Conflicts unresolved:** none (Tier 2 empty for this KR brand; all values Tier 1 live-inspected)
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: Button padding lands at 8px 16px (home pills) and 10.5px 24px (product solid button); section rhythm is generous and vertical
+| State | Treatment |
+|---|---|
+| **Empty (no matches / no results)** | White canvas. A single near-black (`#222222`) line explaining there's nothing yet, with one pink (`#ff0056`) CTA to take the next step. No clutter. |
+| **Empty (saved/list, none yet)** | Muted grey (`#767676`) single line: nothing saved yet, plus a calm path back. Honest, low-pressure. |
+| **Loading (content fetch)** | Skeleton blocks at final card dimensions on `#ffffff` / `#fafafa`, 10–12px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
+| **Loading (action in progress)** | Inline progress on the button; the pink CTA keeps its color while disabled-pending, previous content stays visible. |
+| **Error (fetch failed)** | Inline message in near-black (`#222222`) with a plain-language explanation and a retry. No bare "오류가 발생했습니다" — states what to do next. |
+| **Error (form validation)** | Field-level message below the input; describes what's valid, not just "필수". |
+| **Success (action complete)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
+| **Skeleton** | `#fafafa` blocks at final dimensions, 10–12px radius, flat pulse. |
+| **Disabled** | Muted grey (`#8c8c8c`) text on a reduced-opacity surface; the pink action fades rather than turning grey, to preserve the brand read. |
 
-### Grid & Container
-- Centered single-column marketing layout with an editorial eyebrow → headline → content cadence per section
-- Corporate home alternates white (`#ffffff`) and soft-grey (`#fafafa`) full-width bands; the WIPPY surface introduces full-width dark blocks
-- News/press items sit in a list of white cards at 10px radius
-- Feature content on the product surface uses dark cards (`#212126`) at 12px radius
-
-### Whitespace Philosophy
-- **Editorial spacing over density**: generous vertical rhythm between sections; each block breathes around its eyebrow-and-headline pair.
-- **Flat segmentation**: sections separate by background shift (white ↔ `#fafafa` ↔ dark blocks), not by shadow or heavy borders.
-- **Single-accent focus**: with only one saturated color, the pink CTA is the visual anchor of any screen it appears on.
-
-### Border Radius Scale
-- Extra-small (4px): nav item buttons
-- Small (8px): the product-surface solid button
-- Medium (10px): white news/list cards
-- Large (12px): dark feature cards
-- XL (24px): the floating scroll-to-top action
-- Pill (30px): the home-page CTA pills
-- Jumbo (48px): large pill/avatar-scale rounding
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, headings, nav, section CTAs, cards — the default |
-| Tint (Level 1) | `#fafafa` / dark block background shift | Section separation without elevation |
-| Floating (Level 2) | `rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.06) 0px 8px 24px` | The single floating scroll-to-top button |
-
-**Shadow Philosophy**: NRISE is a near-shadowless, flat system. Live inspection returned `box-shadow: none` across the hero, nav, headings, cards, and section CTAs on both surfaces — the only element carrying a shadow is the floating scroll-to-top button, which uses a soft two-layer drop. Depth and grouping are otherwise communicated entirely through flat surfaces: white (`#ffffff`), soft grey (`#fafafa`), and the dark neutral ladder (`#212529`, `#212126`, `#111111`). When emphasis is needed the system reaches for the pink `#ff0056` CTA or a dark block, never elevation.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Set every headline in Pretendard weight 700 — it's the entire display voice
@@ -264,32 +465,26 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 - Over-tint surfaces with color — the neutrals are strictly greyscale
 - Bury the CTA in decoration — the one pink pill should read as the obvious next step
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, CTAs full-width |
-| Tablet | 640-1024px | Moderate padding, 2-up feature blocks |
-| Desktop | 1024-1440px | Full layout, centered editorial columns, dark feature bands |
+NRISE's voice is **warm, human, and reassuring** — a Korean consumer brand that frames technology in terms of everyday feeling rather than features. The corporate mission lines speak in the register of emotional benefit: comfortable connection and healthy habits, not KPIs. WIPPY's product copy is confident and safety-forward, positioning the app as a trustworthy space to be yourself. Copy is plain, declarative Korean, low on jargon and free of hype punctuation.
 
-### Touch Targets
-- Home CTA pills at 40px height, full pill for an unmistakable tap target
-- Product solid button at 48px height with 24px horizontal padding
-- Nav items at 32px height, spaced within the header
-- Floating scroll-to-top at 48px, comfortably tappable
+| Context | Tone |
+|---|---|
+| Corporate mission | Emotional-benefit framing. "편안한 만남을 통해 일상의 행복을 전달합니다." Warm, human. |
+| Product headlines (WIPPY) | Confident, category-leading. "위피, 소셜 디스커버리 1위 서비스." Direct, not boastful. |
+| Feature descriptions | Benefit-first, plain. Explains what the user gets, not the mechanism. |
+| Trust / safety copy | Calm, principled. "더 나은 연결을 위해 안전을 최우선의 가치로." States the value plainly. |
+| Press / news | Factual, understated. Chronological headlines with dates. |
 
-### Collapsing Strategy
-- Hero: 48px WIPPY / 38px corporate headlines scale down on mobile, weight 700 maintained
-- Feature bands: multi-column → stacked single column
-- White ↔ grey ↔ dark alternating sections maintain full-width treatment
-- Eyebrow → headline → content stacks vertically at all sizes
+**Voice samples (verbatim from live surfaces):**
+- "편안한 만남을 통해 일상의 행복을 전달합니다" — corporate mission (comfortable connection → everyday happiness). *(verified live 2026-07-02)*
+- "위피, 소셜 디스커버리 1위 서비스" — WIPPY product hero (category-leading positioning). *(verified live 2026-07-02)*
+- "더 나은 연결을 위해 안전을 최우선의 가치로" — WIPPY safety value (safety as the top priority for better connection). *(verified live 2026-07-02)*
 
-### Image Behavior
-- App screenshots and product illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain 10–12px radius across breakpoints
+**Forbidden register**: hype punctuation and superlative stacking, fear- or urgency-based dark patterns, undefined jargon, anything that frames a social app as a numbers game rather than human connection.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: WIPPY Pink (`#ff0056`)
@@ -319,106 +514,8 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-NRISE's voice is **warm, human, and reassuring** — a Korean consumer brand that frames technology in terms of everyday feeling rather than features. The corporate mission lines speak in the register of emotional benefit: comfortable connection and healthy habits, not KPIs. WIPPY's product copy is confident and safety-forward, positioning the app as a trustworthy space to be yourself. Copy is plain, declarative Korean, low on jargon and free of hype punctuation.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Corporate mission | Emotional-benefit framing. "편안한 만남을 통해 일상의 행복을 전달합니다." Warm, human. |
-| Product headlines (WIPPY) | Confident, category-leading. "위피, 소셜 디스커버리 1위 서비스." Direct, not boastful. |
-| Feature descriptions | Benefit-first, plain. Explains what the user gets, not the mechanism. |
-| Trust / safety copy | Calm, principled. "더 나은 연결을 위해 안전을 최우선의 가치로." States the value plainly. |
-| Press / news | Factual, understated. Chronological headlines with dates. |
-
-**Voice samples (verbatim from live surfaces):**
-- "편안한 만남을 통해 일상의 행복을 전달합니다" — corporate mission (comfortable connection → everyday happiness). *(verified live 2026-07-02)*
-- "위피, 소셜 디스커버리 1위 서비스" — WIPPY product hero (category-leading positioning). *(verified live 2026-07-02)*
-- "더 나은 연결을 위해 안전을 최우선의 가치로" — WIPPY safety value (safety as the top priority for better connection). *(verified live 2026-07-02)*
-
-**Forbidden register**: hype punctuation and superlative stacking, fear- or urgency-based dark patterns, undefined jargon, anything that frames a social app as a numbers game rather than human connection.
-
-## 11. Brand Narrative
-
-NRISE (엔라이즈) is a Korean consumer-tech studio that builds mobile products around two human needs: connection and healthy routine. Its flagship is **WIPPY (위피)**, positioned on its own surface as Korea's No.1 social-discovery service — "나를 표현하고 상대를 발견하는 공간" (a space to express yourself and discover others) and "같은 관심사를 가진 동네 친구와의 만남" (meeting neighborhood friends who share your interests). Its second product line, **콰트 (Quat)**, sits under the mission "건강한 습관을 형성하여 삶의 변화를 제공합니다" (forming healthy habits to deliver life change). Together the two products express the company's stated umbrella value: "NRISE가 세상에 전하는 가치."
-
-The company frames its work in emotional-benefit terms rather than technical ones. Where the corporate mission talks about "편안한 만남" (comfortable connection) delivering "일상의 행복" (everyday happiness), WIPPY's product surface foregrounds safety as a first-class value — "더 나은 연결을 위해 안전을 최우선의 가치로" — a deliberate stance for a social-discovery category that often carries trust concerns. A press item observed on the homepage ("콰트·위피 눈부신 활약…엔라이즈, 2년 연속 흑자 달성", dated 2026.04.08) points to a business narrative of two-consecutive-years profitability driven by both products.
-
-What NRISE refuses, visible in its design: the busy, shadow-stacked chrome and multi-color palettes of legacy portals, and the dark-pattern urgency common to engagement-driven social apps. What it embraces: a flat, fast, monochrome canvas; a single trustworthy pink reserved for the one action that matters; bold Pretendard headlines that speak plainly; and copy that frames the product around human feeling and safety rather than metrics.
-
-*(Company facts above beyond the live homepage/career surfaces — e.g. the exact founding year and leadership — are not asserted here; the narrative is anchored to verbatim, live-observed positioning and the dated press headline.)*
-
-## 12. Principles
-
-1. **One action, one color.** Pink (`#ff0056`) means "do this." *UI implication:* reserve the saturated pink exclusively for the primary WIPPY CTA so the next step is never ambiguous on an otherwise monochrome screen.
-2. **Feeling before features.** The brand sells everyday happiness and healthy habits, not specs. *UI implication:* lead sections with emotional-benefit headlines; let product screenshots carry the detail.
-3. **Safety is a design value.** For a social-discovery product, trust is a feature. *UI implication:* surface safety and control copy prominently and calmly; never bury it.
-4. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* no shadows; separate with white, grey, and dark blocks; keep the page light and quick to scan.
-5. **Bold, single-voice type.** Pretendard 700 headlines carry the whole hierarchy. *UI implication:* use size and the bold/regular split for structure — never reach for a second typeface or a light display weight.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable NRISE/WIPPY user segments (young Korean adults seeking new connections, users building healthy routines), not individual people.*
-
-**김하늘, 26, 서울.** A young professional new to a neighborhood who uses WIPPY to meet people with shared interests. Values that the app feels safe and expressive rather than transactional. Chose WIPPY because it presented itself as a space to "express and discover," not a numbers game.
-
-**정우진, 31, 경기.** A user who came for social discovery and stayed for the studio's habit product, 콰트. Appreciates the plain, warm tone and the single clear CTA on every screen — he always knows what the next step is.
-
-**이서연, 24, 부산.** Safety-conscious first-time user of a social-discovery app. Reassured by WIPPY's explicit "안전을 최우선의 가치로" messaging and the calm, non-pushy interface. Distrusts apps that feel urgent or cluttered.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no matches / no results)** | White canvas. A single near-black (`#222222`) line explaining there's nothing yet, with one pink (`#ff0056`) CTA to take the next step. No clutter. |
-| **Empty (saved/list, none yet)** | Muted grey (`#767676`) single line: nothing saved yet, plus a calm path back. Honest, low-pressure. |
-| **Loading (content fetch)** | Skeleton blocks at final card dimensions on `#ffffff` / `#fafafa`, 10–12px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (action in progress)** | Inline progress on the button; the pink CTA keeps its color while disabled-pending, previous content stays visible. |
-| **Error (fetch failed)** | Inline message in near-black (`#222222`) with a plain-language explanation and a retry. No bare "오류가 발생했습니다" — states what to do next. |
-| **Error (form validation)** | Field-level message below the input; describes what's valid, not just "필수". |
-| **Success (action complete)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#fafafa` blocks at final dimensions, 10–12px radius, flat pulse. |
-| **Disabled** | Muted grey (`#8c8c8c`) text on a reduced-opacity surface; the pink action fades rather than turning grey, to preserve the brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, CTAs |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, fast aesthetic. CTAs respond to press with a subtle scale/opacity shift; content fades in from below at `motion-standard / ease-enter`; the floating scroll-to-top eases in on scroll. No bounce or spring — a trust-forward social product signals steadiness, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on two surfaces:
-- https://www.nrise.net/ — corporate home: nav, mission/history/news sections, pink & dark CTAs
-- https://career.nrise.net/ko/wippy — WIPPY product/career surface: hero, feature sections, primary button, floating TOP action
-
-Token-level claims (§1-9) are sourced from this live inspection (see web/references/nrise/.verification.md Proof block for raw computed-style samples).
-
-Voice samples (§10) are verbatim from the live surfaces (corporate mission line, WIPPY hero, WIPPY safety value).
-
-Brand narrative (§11): NRISE (엔라이즈) operates WIPPY (위피, social discovery) and 콰트 (Quat, healthy-habit).
-Positioning quotes are verbatim from the live homepage/career surfaces; the profitability note references the
-dated press headline observed on the homepage ("엔라이즈, 2년 연속 흑자 달성", 2026.04.08). Founding year and
-leadership are deliberately NOT asserted — not verified from a first-party statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable WIPPY/NRISE user segments. Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one color", "flat and fast as a rejection of legacy portal chrome") are
-editorial readings connecting NRISE's observed design to its positioning, not directly sourced NRISE statements.
--->
+- **Contrast, `cta-wippy`.** Text `#ffffff` on `#ff0056` measures 3.90:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

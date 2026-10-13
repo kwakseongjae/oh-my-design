@@ -1,287 +1,235 @@
 ---
-id: goorm
 name: goorm
-display_name_kr: 구름
-country: KR
-category: education
-homepage: "https://goorm.co"
-primary_color: "#2a72e5"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=goorm.co&sz=128"
-verified: "2026-09-30"
-added: "2026-06-26"
-omd: "0.1"
-verification_v2:
-  schema: 2
-  checked: "2026-09-30"
-  surfaces:
-    - { id: home, kind: marketing, url: "https://www.goorm.io/", inspected: "2026-09-30" }
-    - { id: surface-2, kind: marketing-product, url: "https://www.goorm.io/solution/ai-dev", inspected: "2026-09-30" }
-    - { id: surface-3, kind: product-web, url: "https://edu.goorm.io/", inspected: "2026-09-30" }
-  sources:
-    - { id: surface-home, kind: product-surface, url: "https://www.goorm.io/", captured: "2026-09-30" }
-    - { id: surface-surface-2, kind: product-surface, url: "https://www.goorm.io/solution/ai-dev", captured: "2026-09-30" }
-    - { id: surface-surface-3, kind: product-surface, url: "https://edu.goorm.io/", captured: "2026-09-30" }
-    - { id: brand-guideline, kind: official-doc, url: "https://www.goorm.io/resources/brands", captured: "2026-09-30" }
-    - { id: goorm-sans, kind: license, url: "https://www.goorm.io/resources/fonts", captured: "2026-09-30" }
-    - { id: vapor-ui, kind: official-doc, url: "https://vapor-ui.goorm.io/", captured: "2026-09-30" }
-    - { id: arkain-symbol, kind: official-doc, url: "https://blog.goorm.io/arkain-brand-symbol-design/", captured: "2026-09-30" }
-    - { id: brand-award-news, kind: official-doc, url: "https://blog.goorm.io/brand-of-the-year-2025/", captured: "2026-09-30" }
-  conflicts: []
-  claims:
-    "tokens.colors.ink": &gbody { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
-    "tokens.colors.canvas": *gbody
-    "tokens.colors.text-secondary": &etab { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"15\"]", captured: "2026-09-30" }
-    "tokens.colors.text-muted": &eacct { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
-    "tokens.colors.text-tertiary": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"20\"]", captured: "2026-09-30" }
-    "tokens.colors.primary": &gdemo { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
-    "tokens.colors.anchor": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"16\"]", captured: "2026-09-30" }
-    "tokens.colors.link": &efam0 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
-    "tokens.colors.surface": &gstory { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::article", captured: "2026-09-30" }
-    "tokens.colors.hairline": *gstory
-    "tokens.colors.border-strong": &gout { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.colors.on-primary": &gcta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
-    "tokens.colors.edu-ink": &elink { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
-    "tokens.colors.edu-body": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::div", captured: "2026-09-30" }
-    "tokens.typography.family.sans": *gbody
-    "tokens.typography.family.product": &ebody { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::body", captured: "2026-09-30" }
-    "tokens.typography.display.size": &gh2 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
-    "tokens.typography.display.weight": *gh2
-    "tokens.typography.display.lineHeight": *gh2
-    "tokens.typography.display.tracking": *gh2
-    "tokens.typography.display.use": *gh2
-    "tokens.typography.nav.size": &gnav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.typography.nav.weight": *gnav
-    "tokens.typography.nav.lineHeight": *gnav
-    "tokens.typography.nav.use": *gnav
-    "tokens.typography.button.size": *gcta
-    "tokens.typography.button.weight": *gcta
-    "tokens.typography.button.lineHeight": *gcta
-    "tokens.typography.button.tracking": *gcta
-    "tokens.typography.button.use": *gcta
-    "tokens.typography.button-lg.size": &ghero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
-    "tokens.typography.button-lg.weight": *ghero
-    "tokens.typography.button-lg.lineHeight": *ghero
-    "tokens.typography.button-lg.tracking": *ghero
-    "tokens.typography.button-lg.use": *ghero
-    "tokens.typography.body.size": *gbody
-    "tokens.typography.body.weight": *gbody
-    "tokens.typography.body.use": *gbody
-    "tokens.typography.card-title.size": &gstitle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-09-30" }
-    "tokens.typography.card-title.weight": *gstitle
-    "tokens.typography.card-title.lineHeight": *gstitle
-    "tokens.typography.card-title.tracking": *gstitle
-    "tokens.typography.card-title.use": *gstitle
-    "tokens.typography.edu-body.size": *ebody
-    "tokens.typography.edu-body.weight": *ebody
-    "tokens.typography.edu-body.lineHeight": *ebody
-    "tokens.typography.edu-body.tracking": *ebody
-    "tokens.typography.edu-body.use": *ebody
-    "tokens.typography.edu-section.size": &eh3 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h3", captured: "2026-09-30" }
-    "tokens.typography.edu-section.weight": *eh3
-    "tokens.typography.edu-section.lineHeight": *eh3
-    "tokens.typography.edu-section.tracking": *eh3
-    "tokens.typography.edu-section.use": *eh3
-    "tokens.spacing.nav-y": *gnav
-    "tokens.spacing.nav-x": *gnav
-    "tokens.spacing.cta-x": *gcta
-    "tokens.spacing.cta-lg-x": *ghero
-    "tokens.spacing.card": *gstory
-    "tokens.spacing.menu": &gmenu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-09-30" }
-    "tokens.rounded.sm": &ecar { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"98\"]", captured: "2026-09-30" }
-    "tokens.rounded.md": *gcta
-    "tokens.shadow.inset-strong": *gout
-    "tokens.shadow.menu": *gmenu
-    "tokens.shadow.raised-sm": *ecar
-    "tokens.components.header-nav-button.type": *gnav
-    "tokens.components.header-nav-button.bg": *gnav
-    "tokens.components.header-nav-button.fg": *gnav
-    "tokens.components.header-nav-button.radius": *gnav
-    "tokens.components.header-nav-button.padding": *gnav
-    "tokens.components.header-nav-button.height": *gnav
-    "tokens.components.header-nav-button.font": *gnav
-    "tokens.components.header-nav-button.states": *gnav
-    "tokens.components.header-nav-button.use": *gnav
-    "tokens.components.header-cta.type": *gcta
-    "tokens.components.header-cta.bg": *gcta
-    "tokens.components.header-cta.fg": *gcta
-    "tokens.components.header-cta.radius": *gcta
-    "tokens.components.header-cta.padding": *gcta
-    "tokens.components.header-cta.height": *gcta
-    "tokens.components.header-cta.font": *gcta
-    "tokens.components.header-cta.states": *gcta
-    "tokens.components.header-cta.use": *gcta
-    "tokens.components.hero-cta.type": *ghero
-    "tokens.components.hero-cta.bg": *ghero
-    "tokens.components.hero-cta.fg": *ghero
-    "tokens.components.hero-cta.radius": *ghero
-    "tokens.components.hero-cta.padding": *ghero
-    "tokens.components.hero-cta.height": *ghero
-    "tokens.components.hero-cta.font": *ghero
-    "tokens.components.hero-cta.states": *ghero
-    "tokens.components.hero-cta.use": *ghero
-    "tokens.components.outline-cta.type": *gout
-    "tokens.components.outline-cta.bg": *gout
-    "tokens.components.outline-cta.fg": *gout
-    "tokens.components.outline-cta.radius": *gout
-    "tokens.components.outline-cta.padding": *gout
-    "tokens.components.outline-cta.height": *gout
-    "tokens.components.outline-cta.font": *gout
-    "tokens.components.outline-cta.shadow": *gout
-    "tokens.components.outline-cta.states": *gout
-    "tokens.components.outline-cta.use": *gout
-    "tokens.components.neutral-icon-button.type": &gicon { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
-    "tokens.components.neutral-icon-button.bg": *gicon
-    "tokens.components.neutral-icon-button.radius": *gicon
-    "tokens.components.neutral-icon-button.size": *gicon
-    "tokens.components.neutral-icon-button.states": *gicon
-    "tokens.components.neutral-icon-button.use": *gicon
-    "tokens.components.product-demo-primary.type": *gdemo
-    "tokens.components.product-demo-primary.bg": *gdemo
-    "tokens.components.product-demo-primary.radius": *gdemo
-    "tokens.components.product-demo-primary.padding": *gdemo
-    "tokens.components.product-demo-primary.height": *gdemo
-    "tokens.components.product-demo-primary.states": *gdemo
-    "tokens.components.product-demo-primary.use": *gdemo
-    "tokens.components.product-demo-navbar-button.type": &gdnav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
-    "tokens.components.product-demo-navbar-button.bg": *gdnav
-    "tokens.components.product-demo-navbar-button.radius": *gdnav
-    "tokens.components.product-demo-navbar-button.size": *gdnav
-    "tokens.components.product-demo-navbar-button.hover": { surface_id: home, source_id: surface-home, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"11\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.product-demo-navbar-button.pressed": { surface_id: home, source_id: surface-home, method: computed-style-state-sample, selector: "home::[data-omd-capture=\"11\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.product-demo-navbar-button.states": *gdnav
-    "tokens.components.product-demo-navbar-button.use": *gdnav
-    "tokens.components.customer-story-card.type": *gstory
-    "tokens.components.customer-story-card.bg": *gstory
-    "tokens.components.customer-story-card.border": *gstory
-    "tokens.components.customer-story-card.radius": *gstory
-    "tokens.components.customer-story-card.padding": *gstory
-    "tokens.components.customer-story-card.size": *gstory
-    "tokens.components.customer-story-card.use": *gstory
-    "tokens.components.patent-card.type": *gstory
-    "tokens.components.patent-card.bg": *gstory
-    "tokens.components.patent-card.border": *gstory
-    "tokens.components.patent-card.radius": *gstory
-    "tokens.components.patent-card.padding": *gstory
-    "tokens.components.patent-card.size": *gstory
-    "tokens.components.patent-card.use": *gstory
-    "tokens.components.dropdown-menu.type": *gmenu
-    "tokens.components.dropdown-menu.bg": *gmenu
-    "tokens.components.dropdown-menu.border": *gmenu
-    "tokens.components.dropdown-menu.radius": *gmenu
-    "tokens.components.dropdown-menu.padding": *gmenu
-    "tokens.components.dropdown-menu.shadow": *gmenu
-    "tokens.components.dropdown-menu.use": *gmenu
-    "tokens.components.edu-primary-button.type": &ebtn { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
-    "tokens.components.edu-primary-button.bg": *ebtn
-    "tokens.components.edu-primary-button.fg": *ebtn
-    "tokens.components.edu-primary-button.radius": *ebtn
-    "tokens.components.edu-primary-button.padding": *ebtn
-    "tokens.components.edu-primary-button.height": *ebtn
-    "tokens.components.edu-primary-button.font": *ebtn
-    "tokens.components.edu-primary-button.states": *ebtn
-    "tokens.components.edu-primary-button.use": *ebtn
-    "tokens.components.edu-search-input.type": &einput { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
-    "tokens.components.edu-search-input.bg": *einput
-    "tokens.components.edu-search-input.fg": *einput
-    "tokens.components.edu-search-input.radius": *einput
-    "tokens.components.edu-search-input.padding": *einput
-    "tokens.components.edu-search-input.height": *einput
-    "tokens.components.edu-search-input.font": *einput
-    "tokens.components.edu-search-input.states": *einput
-    "tokens.components.edu-search-input.use": *einput
-    "tokens.components.edu-header-link.type": *elink
-    "tokens.components.edu-header-link.bg": *elink
-    "tokens.components.edu-header-link.fg": *elink
-    "tokens.components.edu-header-link.height": *elink
-    "tokens.components.edu-header-link.font": *elink
-    "tokens.components.edu-header-link.hover": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"11\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.edu-header-link.pressed": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"11\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.edu-header-link.states": *elink
-    "tokens.components.edu-header-link.use": *elink
-    "tokens.components.edu-course-tab.type": *etab
-    "tokens.components.edu-course-tab.bg": *etab
-    "tokens.components.edu-course-tab.fg": *etab
-    "tokens.components.edu-course-tab.border": *etab
-    "tokens.components.edu-course-tab.padding": *etab
-    "tokens.components.edu-course-tab.height": *etab
-    "tokens.components.edu-course-tab.font": *etab
-    "tokens.components.edu-course-tab.selected": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"14\"]", captured: "2026-09-30" }
-    "tokens.components.edu-course-tab.states": *etab
-    "tokens.components.edu-course-tab.use": *etab
-    "tokens.components.family-bar-link.type": &efam { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
-    "tokens.components.family-bar-link.bg": *efam
-    "tokens.components.family-bar-link.fg": *efam
-    "tokens.components.family-bar-link.font": *efam
-    "tokens.components.family-bar-link.selected": *efam0
-    "tokens.components.family-bar-link.states": *efam
-    "tokens.components.family-bar-link.use": *efam
-    "tokens.components.family-bar-account-link.type": *eacct
-    "tokens.components.family-bar-account-link.bg": *eacct
-    "tokens.components.family-bar-account-link.fg": *eacct
-    "tokens.components.family-bar-account-link.font": *eacct
-    "tokens.components.family-bar-account-link.hover": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"4\"]::state-hover", captured: "2026-09-30" }
-    "tokens.components.family-bar-account-link.pressed": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style-state-sample, selector: "surface-3::[data-omd-capture=\"4\"]::state-pressed", captured: "2026-09-30" }
-    "tokens.components.family-bar-account-link.states": *eacct
-    "tokens.components.family-bar-account-link.use": *eacct
-tokens:
-  source: reconciled
-  extracted: "2026-09-30"
-  colors:
-    ink: "#262626"
-    text-secondary: "#4c4c4c"
-    text-muted: "#5d5d5d"
-    text-tertiary: "#393939"
-    primary: "#2a72e5"
-    anchor: "#0957c8"
-    link: "#0043b3"
-    canvas: "#ffffff"
-    surface: "#f7f7f7"
-    hairline: "#e1e1e1"
-    border-strong: "#c6c6c6"
-    on-primary: "#ffffff"
-    edu-ink: "#2b2d36"
-    edu-body: "#3e404c"
-  typography:
-    family: { sans: "Pretendard", product: "Pretendard Variable" }
-    display: { size: 48, weight: 500, lineHeight: 1.29, tracking: -0.4, use: "Arkain page headline (h2)" }
-    nav: { size: 14, weight: 600, lineHeight: 1.71, use: "Global navigation item on www.goorm.io" }
-    button: { size: 14, weight: 500, lineHeight: 1.57, tracking: -0.1, use: "Header action label" }
-    button-lg: { size: 16, weight: 500, lineHeight: 1.5, tracking: -0.1, use: "Hero action label" }
-    body: { size: 16, weight: 400, use: "Marketing body text (line height computes normal)" }
-    card-title: { size: 20, weight: 500, lineHeight: 1.5, tracking: -0.2, use: "Customer story card title" }
-    edu-body: { size: 14, weight: 400, lineHeight: 1.5, tracking: -0.096, use: "goormEDU body text" }
-    edu-section: { size: 24, weight: 700, lineHeight: 1.5, tracking: -0.3, use: "goormEDU section heading (h3)" }
-  spacing: { nav-y: 8, nav-x: 12, cta-x: 16, cta-lg-x: 24, card: 24, menu: 4 }
-  rounded: { sm: 3, md: 8 }
-  shadow:
-    inset-strong: "rgb(198, 198, 198) 0px 0px 0px 1px inset"
-    menu: "color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px"
-    raised-sm: "rgba(0, 0, 0, 0.2) 0px 1px 3px 0px"
-  components:
-    header-nav-button: { type: tab, bg: "transparent", fg: "#262626", radius: "8px", padding: "8px 12px", height: "40px", font: "14px / 600 / 24px Pretendard", states: "hover and pressed frames read background oklab(0 0 0 / 0), still transparent although the class names hover:bg-v-gray-40, so they are treated as transition frames and no hover value is declared; the menu triggers open a captured menu", use: "Global navigation item on www.goorm.io (비즈니스 and 리소스 open menus; 채용 and 공지사항 are links) at home::[data-omd-capture=\"1\"], 100 x 40; the Arkain page repeats the same values" }
-    header-cta: { type: button, bg: "#262626", fg: "#ffffff", radius: "8px", padding: "0px 16px", height: "40px", font: "14px / 500 / 22px Pretendard", states: "rest on home and the Arkain page (capture 7 on each); no state frame", use: "Header 도입 문의하기 action at home::[data-omd-capture=\"7\"], 107 x 40" }
-    hero-cta: { type: button, bg: "#262626", fg: "#ffffff", radius: "8px", padding: "0px 24px", height: "48px", font: "16px / 500 / 24px Pretendard", states: "rest only; no state frame", use: "Hero action at home::[data-omd-capture=\"9\"], 134 x 48; the Arkain page renders the same values on an a role=button (surface-2 capture 8)" }
-    outline-cta: { type: button, bg: "#ffffff", fg: "#262626", radius: "8px", padding: "0px 24px", height: "48px", font: "16px / 500 / 24px Pretendard", shadow: "rgb(198, 198, 198) 0px 0px 0px 1px inset", states: "rest only; no state frame", use: "Secondary hero action on the Arkain page at surface-2::[data-omd-capture=\"9\"], 148 x 48; its edge is a 1px inset shadow, not a border" }
-    neutral-icon-button: { type: button, bg: "#e1e1e1", radius: "8px", size: "40px x 40px", states: "rest on two sibling buttons (capture 10, 11); no state frame", use: "Icon-only carousel buttons on the Arkain page at surface-2::[data-omd-capture=\"10\"]" }
-    product-demo-primary: { type: button, bg: "#2a72e5", radius: "8px", padding: "0px 16px", height: "40px", states: "one element; its hover and pressed frames both read #1e5dcc, but with no sibling to agree the value is not declared as a state", use: "Primary button inside the in-page product demo on www.goorm.io at home::[data-omd-capture=\"13\"], 84 x 40; its label sits in a child that was not captured, so no text colour is claimed" }
-    product-demo-navbar-button: { type: button, bg: "transparent", radius: "8px", size: "32px x 32px", hover: "bg #f0f0f0", pressed: "bg #f0f0f0", states: "rest, hover and pressed; four sibling buttons (capture 11, 17, 18, 19) all read #f0f0f0 in both frames; focus is not declared from the capture", use: "Icon button in the product demo's navigation bar at home::[data-omd-capture=\"11\"]" }
-    customer-story-card: { type: card, bg: "#f7f7f7", border: "1px solid #e1e1e1", radius: "8px", padding: "24px", size: "352px x 420px", use: "Customer story card (article.customer-story-card) on home and the Arkain page; title 20px / 500 / 30px #262626, description 16px / 500 / 24px #5d5d5d, footer divided by a 1px #e1e1e1 top border" }
-    patent-card: { type: card, bg: "#f7f7f7", border: "1px solid #e1e1e1", radius: "8px", padding: "24px", size: "369px x 130px", use: "Patent card (article.patent-card) on home, eight captured; title 16px / 500 / 24px #262626" }
-    dropdown-menu: { type: card, bg: "#ffffff", border: "1px solid #e1e1e1", radius: "8px", padding: "4px", shadow: "color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px", use: "Menu panel (role=menu) opened by the collector from a header trigger (interaction capture menu-0-0), 160 wide; its items are 14px / 400 / 22px with 8px radius and 4px 8px padding" }
-    edu-primary-button: { type: button, bg: "#393939", fg: "#ffffff", radius: "8px", padding: "0px 24px", height: "48px", font: "16px / 500 / 24px Pretendard Variable", states: "rest captured; the pressed frame adds only a transparent zero-size box-shadow, a transition frame, so no pressed value is declared; no hover frame; focus is not declared from the capture", use: "Vapor UI button on edu.goorm.io at surface-3::[data-omd-capture=\"17\"], 133 x 48" }
-    edu-search-input: { type: input, bg: "#f7f7fa", fg: "#2b2d36", radius: "8px", padding: "0px 32px 0px 0px", height: "32px", font: "14px / 400 / 22px Pretendard Variable", states: "rest only; no state frame", use: "Header search field on edu.goorm.io (Vapor UI input) at surface-3::[data-omd-capture=\"7\"], 347 x 32" }
-    edu-header-link: { type: tab, bg: "transparent", fg: "#2b2d36", height: "36px", font: "16px / 500 / 24px Pretendard Variable", hover: "fg #1d6ce0", pressed: "fg #1d6ce0", states: "rest, hover and pressed; siblings (capture 11, 12 and the smaller capture 8) all read #1d6ce0 in both frames; focus is not declared from the capture", use: "Primary header link on edu.goorm.io at surface-3::[data-omd-capture=\"11\"], 55 x 36" }
-    edu-course-tab: { type: tab, bg: "transparent", fg: "#4c4c4c", border: "2px solid transparent (bottom only)", padding: "14px 4px 12px", height: "50px", font: "16px / 400 / 24px Pretendard Variable", selected: "fg #2a72e5, weight 500, 2px bottom border #2a72e5 (capture 14)", states: "selected variant read from rest values (capture 14 against 15); no pointer frame", use: "Course category tab on edu.goorm.io at surface-3::[data-omd-capture=\"15\"], 100 x 50" }
-    family-bar-link: { type: tab, bg: "transparent", fg: "#262626", font: "12px / 400 / 18px Pretendard Variable", selected: "fg #0043b3, weight 700 on the current service (capture 0)", states: "selected variant read from rest values (capture 0 against 1-3); no pointer frame", use: "goorm family-service switcher at the top of edu.goorm.io at surface-3::[data-omd-capture=\"1\"]" }
-    family-bar-account-link: { type: button, bg: "transparent", fg: "#5d5d5d", font: "12px / 400 / 20px Pretendard Variable", hover: "fg #0043b3", pressed: "fg #0043b3", states: "rest, hover and pressed; both links (capture 4, 5) read #0043b3 in both frames; focus is not declared from the capture", use: "Account links at the right end of the family bar on edu.goorm.io at surface-3::[data-omd-capture=\"4\"]; styles were read without following the links" }
-  components_harvested: true
+colors:
+  ink: '#262626'
+  text-secondary: '#4c4c4c'
+  text-muted: '#5d5d5d'
+  text-tertiary: '#393939'
+  primary: '#2a72e5'
+  anchor: '#0957c8'
+  link: '#0043b3'
+  canvas: '#ffffff'
+  surface: '#f7f7f7'
+  hairline: '#e1e1e1'
+  border-strong: '#c6c6c6'
+  on-primary: '#ffffff'
+  edu-ink: '#2b2d36'
+  edu-body: '#3e404c'
+typography:
+  display:
+    fontSize: 48px
+    fontWeight: 500
+    lineHeight: 1.29
+    letterSpacing: '-0.4px'
+    use: Arkain page headline (h2)
+  nav:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1.71
+    use: Global navigation item on www.goorm.io
+  button:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.57
+    letterSpacing: '-0.1px'
+    use: Header action label
+  button-lg:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: '-0.1px'
+    use: Hero action label
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    use: Marketing body text (line height computes normal)
+  card-title:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: '-0.2px'
+    use: Customer story card title
+  edu-body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '-0.096px'
+    use: goormEDU body text
+  edu-section:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.3px'
+    use: goormEDU section heading (h3)
+rounded:
+  sm: 3px
+  md: 8px
+spacing:
+  nav-y: 8
+  nav-x: 12
+  cta-x: 16
+  cta-lg-x: 24
+  card: 24
+  menu: 4
+components:
+  header-nav-button:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#262626'
+    rounded: 8px
+    padding: 8px 12px
+    height: 40px
+    typography: 14px / 600 / 24px Pretendard
+    states: hover and pressed frames read background oklab(0 0 0 / 0), still transparent although the class names hover:bg-v-gray-40, so they are treated as transition frames and no hover value is declared; the menu triggers open a captured menu
+    use: Global navigation item on www.goorm.io (비즈니스 and 리소스 open menus; 채용 and 공지사항 are links) at home::[data-omd-capture="1"], 100 x 40; the Arkain page repeats the same values
+  header-cta:
+    type: button
+    backgroundColor: '#262626'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0px 16px
+    height: 40px
+    typography: 14px / 500 / 22px Pretendard
+    states: rest on home and the Arkain page (capture 7 on each); no state frame
+    use: Header 도입 문의하기 action at home::[data-omd-capture="7"], 107 x 40
+  hero-cta:
+    type: button
+    backgroundColor: '#262626'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0px 24px
+    height: 48px
+    typography: 16px / 500 / 24px Pretendard
+    states: rest only; no state frame
+    use: Hero action at home::[data-omd-capture="9"], 134 x 48; the Arkain page renders the same values on an a role=button (surface-2 capture 8)
+  outline-cta:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#262626'
+    rounded: 8px
+    padding: 0px 24px
+    height: 48px
+    typography: 16px / 500 / 24px Pretendard
+    shadow: rgb(198, 198, 198) 0px 0px 0px 1px inset
+    states: rest only; no state frame
+    use: Secondary hero action on the Arkain page at surface-2::[data-omd-capture="9"], 148 x 48; its edge is a 1px inset shadow, not a border
+  neutral-icon-button:
+    type: button
+    backgroundColor: '#e1e1e1'
+    rounded: 8px
+    size: 40px x 40px
+    states: rest on two sibling buttons (capture 10, 11); no state frame
+    use: Icon-only carousel buttons on the Arkain page at surface-2::[data-omd-capture="10"]
+  product-demo-primary:
+    type: button
+    backgroundColor: '#2a72e5'
+    rounded: 8px
+    padding: 0px 16px
+    height: 40px
+    states: 'one element; its hover and pressed frames both read #1e5dcc, but with no sibling to agree the value is not declared as a state'
+    use: Primary button inside the in-page product demo on www.goorm.io at home::[data-omd-capture="13"], 84 x 40; its label sits in a child that was not captured, so no text colour is claimed
+  product-demo-navbar-button:
+    type: button
+    backgroundColor: transparent
+    rounded: 8px
+    size: 32px x 32px
+    hover: 'bg #f0f0f0'
+    pressed: 'bg #f0f0f0'
+    states: 'rest, hover and pressed; four sibling buttons (capture 11, 17, 18, 19) all read #f0f0f0 in both frames; focus is not declared from the capture'
+    use: Icon button in the product demo's navigation bar at home::[data-omd-capture="11"]
+  customer-story-card:
+    type: card
+    backgroundColor: '#f7f7f7'
+    border: '1px solid #e1e1e1'
+    rounded: 8px
+    padding: 24px
+    size: 352px x 420px
+    use: 'Customer story card (article.customer-story-card) on home and the Arkain page; title 20px / 500 / 30px #262626, description 16px / 500 / 24px #5d5d5d, footer divided by a 1px #e1e1e1 top border'
+  patent-card:
+    type: card
+    backgroundColor: '#f7f7f7'
+    border: '1px solid #e1e1e1'
+    rounded: 8px
+    padding: 24px
+    size: 369px x 130px
+    use: 'Patent card (article.patent-card) on home, eight captured; title 16px / 500 / 24px #262626'
+  dropdown-menu:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #e1e1e1'
+    rounded: 8px
+    padding: 4px
+    shadow: color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px
+    use: Menu panel (role=menu) opened by the collector from a header trigger (interaction capture menu-0-0), 160 wide; its items are 14px / 400 / 22px with 8px radius and 4px 8px padding
+  edu-primary-button:
+    type: button
+    backgroundColor: '#393939'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0px 24px
+    height: 48px
+    typography: 16px / 500 / 24px Pretendard Variable
+    states: rest captured; the pressed frame adds only a transparent zero-size box-shadow, a transition frame, so no pressed value is declared; no hover frame; focus is not declared from the capture
+    use: Vapor UI button on edu.goorm.io at surface-3::[data-omd-capture="17"], 133 x 48
+  edu-search-input:
+    type: input
+    backgroundColor: '#f7f7fa'
+    textColor: '#2b2d36'
+    rounded: 8px
+    padding: 0px 32px 0px 0px
+    height: 32px
+    typography: 14px / 400 / 22px Pretendard Variable
+    states: rest only; no state frame
+    use: Header search field on edu.goorm.io (Vapor UI input) at surface-3::[data-omd-capture="7"], 347 x 32
+  edu-header-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#2b2d36'
+    height: 36px
+    typography: 16px / 500 / 24px Pretendard Variable
+    hover: 'fg #1d6ce0'
+    pressed: 'fg #1d6ce0'
+    states: 'rest, hover and pressed; siblings (capture 11, 12 and the smaller capture 8) all read #1d6ce0 in both frames; focus is not declared from the capture'
+    use: Primary header link on edu.goorm.io at surface-3::[data-omd-capture="11"], 55 x 36
+  edu-course-tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#4c4c4c'
+    border: 2px solid transparent (bottom only)
+    padding: 14px 4px 12px
+    height: 50px
+    typography: 16px / 400 / 24px Pretendard Variable
+    selected: 'fg #2a72e5, weight 500, 2px bottom border #2a72e5 (capture 14)'
+    states: selected variant read from rest values (capture 14 against 15); no pointer frame
+    use: Course category tab on edu.goorm.io at surface-3::[data-omd-capture="15"], 100 x 50
+  family-bar-link:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#262626'
+    typography: 12px / 400 / 18px Pretendard Variable
+    selected: 'fg #0043b3, weight 700 on the current service (capture 0)'
+    states: selected variant read from rest values (capture 0 against 1-3); no pointer frame
+    use: goorm family-service switcher at the top of edu.goorm.io at surface-3::[data-omd-capture="1"]
+  family-bar-account-link:
+    type: button
+    backgroundColor: transparent
+    textColor: '#5d5d5d'
+    typography: 12px / 400 / 20px Pretendard Variable
+    hover: 'fg #0043b3'
+    pressed: 'fg #0043b3'
+    states: 'rest, hover and pressed; both links (capture 4, 5) read #0043b3 in both frames; focus is not declared from the capture'
+    use: Account links at the right end of the family bar on edu.goorm.io at surface-3::[data-omd-capture="4"]; styles were read without following the links
+fonts:
+  roles:
+    sans: Pretendard
+    product: Pretendard Variable
 ---
 
 # Design System Inspiration of goorm
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 goorm (구름, Korean for "cloud") is a Korean AI and software education and developer-tools company, goorm Inc. ((주)구름), based in Pangyo. Its brand guideline treats the name as one lowercase word taken from 구름, the cloud its services run in. The public site now leads with "Superpowers, for everyone" and describes the company as backing enterprise AX — AI transformation — with technology and execution, across three platforms: goormEDU, a learning-experience platform with AI tutoring that runs in the cloud; Devth, for AI talent; and Arkain, a cloud development environment. Arkain is the newest chapter of the company's IDE line: goorm's BX team writes that goormIDE outgrew the "IDE" category as the market turned AI-native and was redefined as Arkain for a global audience, with a symbol built on the initial "a" drawn as a bold gradient line. The education side remains the company's public face — in 2025 goorm reported winning the coding-education category of Korea's consumer-voted Brand of the Year for a second year.
 
@@ -299,7 +247,7 @@ goormEDU is the older product chrome under the same roof and already runs goorm'
 - Vapor UI (goorm's design system) in production on goormEDU
 - A brand typeface, 구름 산스, published under the SIL Open Font License but not used on the captured pages
 
-## Primary tasks
+### Primary tasks
 
 - Learn to code in the browser without local setup (goormEDU)
 - Compare courses by category and start one
@@ -307,7 +255,34 @@ goormEDU is the older product chrome under the same roof and already runs goorm'
 - Work in a cloud development environment (Arkain)
 - Ask for an enterprise AX training or tooling consultation (도입 문의하기)
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+goorm takes its name from 구름, the cloud: its guideline asks that the name always be written as a single lowercase word, and that goorm's official services be referred to as 구름 or goorm. The company's first identity was the cloud IDE; its product family has since grown into education (goormEDU, goormLEVEL, the KDT bootcamps behind its 2025 Brand of the Year win), hiring and talent (Devth), and cloud development (Arkain).
+
+The Arkain story, told by goorm's BX team in April 2026, shows how the brand is evolving. As the market reorganised around AI-native tooling, goormIDE prepared to become a platform covering development through operations, and the word "IDE" became a ceiling. The product was redefined as Arkain for a global market, and the team rejected metaphor-heavy symbols in favour of an initial "a" — a mark that anyone, in any language, identifies quickly — drawn as a bold gradient line under the concept of an experience that "connects smoothly into one".
+
+The company's own design infrastructure is public too. Vapor UI, presented on its documentation site as "구름 디자인 시스템 3.0", ships in production on goormEDU; 구름 산스 and 구름 산스 코드 are released as open-source typefaces tuned for long hours of reading code. What goorm refuses, visible in the captured pages: the intimidating chrome of legacy developer tooling. What it embraces: dark, quiet actions, flat hairline cards and one blue kept for the product itself.
+
+### Principles
+
+1. **Anyone can develop.** The blog's sign-off is the mission. *UI implication:* plain labels and low-friction flows; never gate understanding behind jargon.
+2. **Quiet chrome, blue for the product.** *UI implication:* marketing actions in `#262626`; `#2a72e5` for the product's own primary and selected states.
+3. **Flat and precise.** *UI implication:* `#f7f7f7` cards with `#e1e1e1` hairlines and no shadow; inset strokes for outlines.
+4. **One corner.** *UI implication:* 8px on actions, cards, menus and fields.
+5. **Identification over metaphor.** From the Arkain symbol work. *UI implication:* marks and icons should be recognisable at a glance across languages.
+6. **A shared system.** *UI implication:* build product surfaces from Vapor UI components rather than one-off styles.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable goorm user segments (coding learners and bootcamp students, enterprise training buyers, developers using cloud environments), not individual people.*
+
+**한지우, 22, 대전.** A computer-science student taking goormEDU courses. Values that the environment runs in the browser with nothing to install before the first lesson.
+
+**박도현, 38, 판교.** An HR lead evaluating AX training and AI-talent assessments for his company. Wants a calm page, a clear 도입 문의하기, and proof from customer stories.
+
+**이서연, 29, 서울.** A backend developer trying Arkain as a cloud development environment. Expects precise, quiet tooling UI with an obvious primary action.
+
+## Colors
 
 Every token below was read by the deterministic collector on 2026-09-30 from www.goorm.io, its Arkain page, and edu.goorm.io.
 
@@ -334,7 +309,7 @@ Every token below was read by the deterministic collector on 2026-09-30 from www
 ### Not carried forward
 - The Partial record's Vapor documentation palette — semantic tints `#c6e6ff`, `#bbecd7`, `#ffd8d7`, `#ffd9c8`, success `#058765`, danger `#da3944` and a faint `#a3a3a3` text grey — came from the documentation site in June 2026. None was observed on the three captured product and marketing pages, so none is a token here.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Marketing site, live use**: `Pretendard`, self-hosted through next/font under the family name `pretendard` (`/_next/static/media/ff840cfebfb63b0c-s.p.woff2`); 665 observed uses on www.goorm.io and the Arkain page.
@@ -361,7 +336,76 @@ Every token below was read by the deterministic collector on 2026-09-30 from www
 - **Bold where the catalogue needs scanning**: goormEDU's section heads step up to 700.
 - **Slight negative tracking** on titles and labels (-0.4px to -0.1px); goormEDU applies -0.096px to all body text.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Navigation items: 8px vertical, 12px horizontal
+- Actions: 16px horizontal at 40px height, 24px at 48px height
+- Cards: 24px padding
+- Menus: 4px inner padding around 4px 8px items
+
+### Grid & Container
+- www.goorm.io stacks full-width sections; customer stories run as a 1140px row of 352px cards.
+- The Arkain page's use-case carousel expands one 1012px card while the others collapse to 20px edges.
+- goormEDU uses a wide catalogue grid of 212px course cards under a two-row header (family bar, then header with search).
+
+### Whitespace Philosophy
+- **Calm density**: generous section rhythm on marketing pages, tight inside controls.
+- **Flat segmentation**: cards separate by the `#f7f7f7` fill and `#e1e1e1` hairlines rather than elevation.
+
+### Border Radius Scale
+- 3px: small raised carousel buttons on goormEDU
+- 8px: actions, cards, menus, menu items, the search field — the working corner
+
+### Responsive Behavior
+
+#### Breakpoints
+Only the 1440 × 900 desktop viewport was captured. goormEDU's header links carry `d-none d-md-flex`, which hides them below a medium breakpoint; no other breakpoint was measured.
+
+#### Touch Targets
+- Navigation items and header actions: 40px tall
+- Hero, outline and goormEDU actions: 48px tall
+- goormEDU search field: 32px tall
+
+#### Collapsing Strategy
+- Not measured beyond the `d-none d-md-flex` header links.
+
+#### Image Behavior
+- Use-case screenshots on the Arkain page sit flat inside `#f7f7f7` cards, without shadows.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | No shadow | Page, cards, navigation, actions |
+| Hairline | 1px solid `#e1e1e1` | Card and menu borders |
+| Inset stroke | `rgb(198, 198, 198) 0px 0px 0px 1px inset` | Outline action edge |
+| Raised small | `rgba(0, 0, 0, 0.2) 0px 1px 3px 0px` | goormEDU 40 × 40 carousel buttons |
+| Menu | `color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px` | Dropdown menu panel |
+
+**Shadow Philosophy**: goorm's pages are flat; cards carry no shadow at all. Edges are drawn as hairlines or inset strokes, and outer shadows are kept for things that float above the page — the dropdown menu and goormEDU's small carousel buttons.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.inset-strong`: `rgb(198, 198, 198) 0px 0px 0px 1px inset`
+- `shadow.menu`: `color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px`
+- `shadow.raised-sm`: `rgba(0, 0, 0, 0.2) 0px 1px 3px 0px`
+
+## Motion & Easing
+
+The collector reads computed style, not animation, so no duration or easing is measured. Several frames caught controls mid-transition — the global navigation's hover fill had not yet left transparent, and a goormEDU tab's focus border was at alpha 0.004 — which shows transitions exist without timing them. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
+
+<!--
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/goorm.json (capturedAt 2026-09-30), deterministic collector, 1440x900, logged out: www.goorm.io (goorm.co redirects there), www.goorm.io/solution/ai-dev, edu.goorm.io.
+- §1, §3, §11 context: www.goorm.io/resources/brands, www.goorm.io/resources/fonts, vapor-ui.goorm.io (nonsense-path control 404), blog.goorm.io/arkain-brand-symbol-design/ (2026-04-21), blog.goorm.io/brand-of-the-year-2025/ (2025-09-03). All opened 2026-09-30.
+- ide.goorm.io now redirects to www.goorm.io, so no separate IDE landing page was captured; the IDE itself is behind sign-in and was not visited.
+- Personas are fictional archetypes. Interpretive readings are editorial.
+-->
+
+## Components
 
 ### Navigation
 
@@ -525,40 +569,23 @@ Every token below was read by the deterministic collector on 2026-09-30 from www
 **Tier 2 sources:** getdesign.md/goorm (HTTP 200; the served page contains no occurrence of the name) and styles.refero.design/?q=goorm (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Navigation items: 8px vertical, 12px horizontal
-- Actions: 16px horizontal at 40px height, 24px at 48px height
-- Cards: 24px padding
-- Menus: 4px inner padding around 4px 8px items
+Only these states were observed on the three captured pages; nothing else is specified here.
 
-### Grid & Container
-- www.goorm.io stacks full-width sections; customer stories run as a 1140px row of 352px cards.
-- The Arkain page's use-case carousel expands one 1012px card while the others collapse to 20px edges.
-- goormEDU uses a wide catalogue grid of 212px course cards under a two-row header (family bar, then header with search).
+| State | Observation |
+|---|---|
+| **Hover and pressed (goormEDU header links)** | Text `#2b2d36` → `#1d6ce0` on sibling links. |
+| **Hover and pressed (family-bar account links)** | Text `#5d5d5d` → `#0043b3`. |
+| **Hover and pressed (product demo navigation buttons)** | Background transparent → `#f0f0f0` on four siblings. |
+| **Selected (goormEDU course tab)** | Text `#2a72e5` at 500 with a 2px `#2a72e5` underline. |
+| **Selected (family-service bar)** | Current service in `#0043b3` at 700. |
+| **Menu open** | Header menu triggers open a white, 8px-radius menu with a 1px `#e1e1e1` border and `color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px` shadow. |
+| **Transition frames (not declared)** | Global navigation hover (`oklab(0 0 0 / 0)`), goormEDU button pressed (transparent zero-size shadow), a goormEDU tab focus frame at alpha 0.004. |
 
-### Whitespace Philosophy
-- **Calm density**: generous section rhythm on marketing pages, tight inside controls.
-- **Flat segmentation**: cards separate by the `#f7f7f7` fill and `#e1e1e1` hairlines rather than elevation.
+Focus rings, error, empty, loading and success treatments were not captured and are not described.
 
-### Border Radius Scale
-- 3px: small raised carousel buttons on goormEDU
-- 8px: actions, cards, menus, menu items, the search field — the working corner
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | No shadow | Page, cards, navigation, actions |
-| Hairline | 1px solid `#e1e1e1` | Card and menu borders |
-| Inset stroke | `rgb(198, 198, 198) 0px 0px 0px 1px inset` | Outline action edge |
-| Raised small | `rgba(0, 0, 0, 0.2) 0px 1px 3px 0px` | goormEDU 40 × 40 carousel buttons |
-| Menu | `color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px` | Dropdown menu panel |
-
-**Shadow Philosophy**: goorm's pages are flat; cards carry no shadow at all. Edges are drawn as hairlines or inset strokes, and outer shadows are kept for things that float above the page — the dropdown menu and goormEDU's small carousel buttons.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#262626` for text and for the main marketing action fill, with white labels
@@ -577,23 +604,28 @@ Every token below was read by the deterministic collector on 2026-09-30 from www
 - Don't invent hover colours for controls that recorded none
 - Don't capitalise or restyle the goorm wordmark — the guideline forbids changing its weight, proportion, colour, case or font
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-Only the 1440 × 900 desktop viewport was captured. goormEDU's header links carry `d-none d-md-flex`, which hides them below a medium breakpoint; no other breakpoint was measured.
+goorm's voice is **encouraging, plain-spoken and growth-oriented** — a company that lowers the barrier to building software rather than gatekeeping it. The marketing site pairs an ambitious English line, "Superpowers, for everyone", with plain Korean about enterprise AX, and the blog signs off with "ANYONE CAN DEVELOP". Copy treats the reader as a capable learner or a business partner, not a lead to pressure.
 
-### Touch Targets
-- Navigation items and header actions: 40px tall
-- Hero, outline and goormEDU actions: 48px tall
-- goormEDU search field: 32px tall
+| Context | Tone |
+|---|---|
+| Hero | Aspirational but grounded. "Superpowers, for everyone." |
+| Business copy | Concrete and partnership-framed. "기업의 AX 전환을 기술과 실행으로 뒷받침하고, 비즈니스의 성공을 이끄는 AX 생태계를 만들어갑니다." |
+| Navigation | Plain nouns. "비즈니스", "리소스", "채용", "공지사항". |
+| CTAs | Direct and low-pressure. "도입 문의하기". |
+| Education | Inclusive. "모두를 위한 맞춤형 IT교육". |
+| Brand writing | Reasoned and first-person-plural; the Arkain symbol post explains each decision. |
 
-### Collapsing Strategy
-- Not measured beyond the `d-none d-md-flex` header links.
+**Voice samples (verbatim, opened 2026-09-30):**
+- "goorm - Superpowers, for everyone" — www.goorm.io page title.
+- "구름EDU - 모두를 위한 맞춤형 IT교육" — goormEDU page title.
+- "goorm은 단일 단어이며, 항상 소문자로 표기합니다." — brand guideline.
+- "ANYONE CAN DEVELOP" — official blog sign-off.
 
-### Image Behavior
-- Use-case screenshots on the Arkain page sit flat inside `#f7f7f7` cards, without shadows.
+**Forbidden register**: gatekeeping developer-speak, fear-based "you'll fall behind" urgency, unexplained jargon, exclamation-heavy hype.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Text and dark action fill: `#262626`; labels on it: `#ffffff`
@@ -618,78 +650,12 @@ Only the 1440 × 900 desktop viewport was captured. goormEDU's header links carr
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-goorm's voice is **encouraging, plain-spoken and growth-oriented** — a company that lowers the barrier to building software rather than gatekeeping it. The marketing site pairs an ambitious English line, "Superpowers, for everyone", with plain Korean about enterprise AX, and the blog signs off with "ANYONE CAN DEVELOP". Copy treats the reader as a capable learner or a business partner, not a lead to pressure.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero | Aspirational but grounded. "Superpowers, for everyone." |
-| Business copy | Concrete and partnership-framed. "기업의 AX 전환을 기술과 실행으로 뒷받침하고, 비즈니스의 성공을 이끄는 AX 생태계를 만들어갑니다." |
-| Navigation | Plain nouns. "비즈니스", "리소스", "채용", "공지사항". |
-| CTAs | Direct and low-pressure. "도입 문의하기". |
-| Education | Inclusive. "모두를 위한 맞춤형 IT교육". |
-| Brand writing | Reasoned and first-person-plural; the Arkain symbol post explains each decision. |
-
-**Voice samples (verbatim, opened 2026-09-30):**
-- "goorm - Superpowers, for everyone" — www.goorm.io page title.
-- "구름EDU - 모두를 위한 맞춤형 IT교육" — goormEDU page title.
-- "goorm은 단일 단어이며, 항상 소문자로 표기합니다." — brand guideline.
-- "ANYONE CAN DEVELOP" — official blog sign-off.
-
-**Forbidden register**: gatekeeping developer-speak, fear-based "you'll fall behind" urgency, unexplained jargon, exclamation-heavy hype.
-
-## 11. Brand Narrative
-
-goorm takes its name from 구름, the cloud: its guideline asks that the name always be written as a single lowercase word, and that goorm's official services be referred to as 구름 or goorm. The company's first identity was the cloud IDE; its product family has since grown into education (goormEDU, goormLEVEL, the KDT bootcamps behind its 2025 Brand of the Year win), hiring and talent (Devth), and cloud development (Arkain).
-
-The Arkain story, told by goorm's BX team in April 2026, shows how the brand is evolving. As the market reorganised around AI-native tooling, goormIDE prepared to become a platform covering development through operations, and the word "IDE" became a ceiling. The product was redefined as Arkain for a global market, and the team rejected metaphor-heavy symbols in favour of an initial "a" — a mark that anyone, in any language, identifies quickly — drawn as a bold gradient line under the concept of an experience that "connects smoothly into one".
-
-The company's own design infrastructure is public too. Vapor UI, presented on its documentation site as "구름 디자인 시스템 3.0", ships in production on goormEDU; 구름 산스 and 구름 산스 코드 are released as open-source typefaces tuned for long hours of reading code. What goorm refuses, visible in the captured pages: the intimidating chrome of legacy developer tooling. What it embraces: dark, quiet actions, flat hairline cards and one blue kept for the product itself.
-
-## 12. Principles
-
-1. **Anyone can develop.** The blog's sign-off is the mission. *UI implication:* plain labels and low-friction flows; never gate understanding behind jargon.
-2. **Quiet chrome, blue for the product.** *UI implication:* marketing actions in `#262626`; `#2a72e5` for the product's own primary and selected states.
-3. **Flat and precise.** *UI implication:* `#f7f7f7` cards with `#e1e1e1` hairlines and no shadow; inset strokes for outlines.
-4. **One corner.** *UI implication:* 8px on actions, cards, menus and fields.
-5. **Identification over metaphor.** From the Arkain symbol work. *UI implication:* marks and icons should be recognisable at a glance across languages.
-6. **A shared system.** *UI implication:* build product surfaces from Vapor UI components rather than one-off styles.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable goorm user segments (coding learners and bootcamp students, enterprise training buyers, developers using cloud environments), not individual people.*
-
-**한지우, 22, 대전.** A computer-science student taking goormEDU courses. Values that the environment runs in the browser with nothing to install before the first lesson.
-
-**박도현, 38, 판교.** An HR lead evaluating AX training and AI-talent assessments for his company. Wants a calm page, a clear 도입 문의하기, and proof from customer stories.
-
-**이서연, 29, 서울.** A backend developer trying Arkain as a cloud development environment. Expects precise, quiet tooling UI with an obvious primary action.
-
-## 14. States
-
-Only these states were observed on the three captured pages; nothing else is specified here.
-
-| State | Observation |
-|---|---|
-| **Hover and pressed (goormEDU header links)** | Text `#2b2d36` → `#1d6ce0` on sibling links. |
-| **Hover and pressed (family-bar account links)** | Text `#5d5d5d` → `#0043b3`. |
-| **Hover and pressed (product demo navigation buttons)** | Background transparent → `#f0f0f0` on four siblings. |
-| **Selected (goormEDU course tab)** | Text `#2a72e5` at 500 with a 2px `#2a72e5` underline. |
-| **Selected (family-service bar)** | Current service in `#0043b3` at 700. |
-| **Menu open** | Header menu triggers open a white, 8px-radius menu with a 1px `#e1e1e1` border and `color(srgb 0 0 0 / 0.2) 0px 4px 10px 0px` shadow. |
-| **Transition frames (not declared)** | Global navigation hover (`oklab(0 0 0 / 0)`), goormEDU button pressed (transparent zero-size shadow), a goormEDU tab focus frame at alpha 0.004. |
-
-Focus rings, error, empty, loading and success treatments were not captured and are not described.
-
-## 15. Motion & Easing
-
-The collector reads computed style, not animation, so no duration or easing is measured. Several frames caught controls mid-transition — the global navigation's hover fill had not yet left transparent, and a goormEDU tab's focus border was at alpha 0.004 — which shows transitions exist without timing them. Treat motion as unspecified rather than borrowing values, and honour `prefers-reduced-motion` in any build.
-
-<!--
-Sources — 2026-09-30 promotion to Verified v2
-- Tokens and §4: artifacts/reference-evidence/goorm.json (capturedAt 2026-09-30), deterministic collector, 1440x900, logged out: www.goorm.io (goorm.co redirects there), www.goorm.io/solution/ai-dev, edu.goorm.io.
-- §1, §3, §11 context: www.goorm.io/resources/brands, www.goorm.io/resources/fonts, vapor-ui.goorm.io (nonsense-path control 404), blog.goorm.io/arkain-brand-symbol-design/ (2026-04-21), blog.goorm.io/brand-of-the-year-2025/ (2025-09-03). All opened 2026-09-30.
-- ide.goorm.io now redirects to www.goorm.io, so no separate IDE landing page was captured; the IDE itself is behind sign-in and was not visited.
-- Personas are fictional archetypes. Interpretive readings are editorial.
--->
+- **Contrast, `header-nav-button`.** Text `#262626` on `#00000000` measures 1.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `edu-header-link`.** Text `#2b2d36` on `#00000000` measures 1.53:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `edu-course-tab`.** Text `#4c4c4c` on `#00000000` measures 2.45:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `family-bar-link`.** Text `#262626` on `#00000000` measures 1.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `family-bar-account-link`.** Text `#5d5d5d` on `#00000000` measures 3.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

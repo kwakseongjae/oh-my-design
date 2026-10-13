@@ -1,76 +1,176 @@
 ---
-id: omnichat
 name: Omnichat
-country: TW
-category: marketing
-homepage: "https://www.omnichat.ai"
-primary_color: "#006aff"
-logo:
-  type: favicon
-  slug: "https://www.omnichat.ai/wp-content/uploads/webiconlogo.png"
-verified: "2026-06-10"
-added: "2026-06-10"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-10"
-  note: "primary = header CTA / featured-card blue (#006aff); action CTAs use lighter #408fff; deep navy-blue #0202a6 for section headings; signature aurora gradient (#ac9cff/#8e4dff/#69dfb2/#379afd) clipped into hero text on black."
-  colors:
-    primary: "#006aff"
-    action: "#408fff"
-    deep: "#0202a6"
-    gradient-base: "#3337f6"
-    gradient-sky: "#379afd"
-    gradient-mint: "#69dfb2"
-    gradient-lavender: "#ac9cff"
-    gradient-violet: "#8e4dff"
-    heading-sky: "#4e97ff"
-    heading-sky-soft: "#75adfc"
-    hero-sub: "#8ca8cf"
-    ink: "#333333"
-    ink-strong: "#2e2e2e"
-    ink-heading: "#3d3d3d"
-    muted: "#666666"
-    icon-grey: "#69727d"
-    canvas: "#ffffff"
-    surface: "#f8f9fa"
-    surface-alt: "#f9f9f9"
-    tint-blue: "#ecf4ff"
-    tint-blue-deep: "#d9e8ff"
-    hero-dark: "#000000"
-    input-border: "#c5c5c5"
-    menu-accent: "#cc3366"
-  typography:
-    family: { display: "Outfit", zh: "Noto Sans HK" }
-    display-hero: { size: 52, weight: 500, lineHeight: 1.23, tracking: 1.4, use: "Hero headline, aurora-gradient-clipped Outfit on black" }
-    display-xl:   { size: 46, weight: 500, lineHeight: 1.40, tracking: 1, use: "Major section headlines on dark bands" }
-    section:      { size: 40, weight: 500, lineHeight: 1.60, tracking: 1, use: "Section titles (deep blue or ink)" }
-    feature:      { size: 34, weight: 500, lineHeight: 1.40, tracking: 1, use: "Feature / case-study headings" }
-    card-head:    { size: 26, weight: 500, lineHeight: 1.30, tracking: 1, use: "Card and capability heads" }
-    plan-head:    { size: 24, weight: 500, tracking: 1, use: "Pricing plan names" }
-    nav:          { size: 17, weight: 400, use: "Top navigation items" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Body copy, buttons, badges" }
-    menu-item:    { size: 14, weight: 500, use: "Mega-menu dropdown links" }
-  spacing: { xs: 3, sm: 8, md: 10, base: 16, lg: 20, xl: 27, xxl: 36 }
-  rounded: { sm: 5, md: 10, lg: 20, full: 99 }
-  shadow:
-    card: "rgba(0,0,0,0.06) 3px 3px 15px 0px"
-    panel: "rgba(0,0,0,0.15) 0px 3px 7px 0px"
-  components:
-    button-primary: { type: button, bg: "#006aff", fg: "#ffffff", border: "1px solid #006aff", radius: "13px 13px 0px", height: "32px", font: "16px / 500", use: "Header 專家諮詢 CTA — notched bottom-right corner" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#006aff", border: "1px solid #006aff", radius: "13px 13px 0px", height: "32px", font: "16px / 500", use: "Header 免費試用 secondary CTA, same notched geometry" }
-    button-gradient: { type: button, bg: "#3337f6", fg: "#ffffff", radius: "10px", height: "44px", padding: "10px", font: "16px / 500", states: "animated 270deg gradient #3337f6 → #379afd → #69dfb2", use: "Hero 專家諮詢 CTA on black" }
-    button-action: { type: button, bg: "#408fff", fg: "#ffffff", radius: "0px 24px", height: "45px", padding: "8px 20px 11px", font: "16px / 500", use: "聯絡專人 / 送出資料 ribbon CTA — opposing corners rounded" }
-    segment-toggle: { type: tab, fg: "#408fff", active: "bg #408fff + text #ffffff", radius: "99px", height: "36px", font: "16px / 500", use: "Pricing product switcher pill (線上對話商務 / OMO / Social CDP)" }
-    input-default: { type: input, bg: "#f9f9f9", fg: "#3d3d3d", border: "1px solid #c5c5c5", radius: "8px", height: "44px", padding: "8px 16px", font: "16px / 400", use: "Lead-form text field" }
-    card-pricing: { type: card, bg: "#ffffff", border: "2px solid #006aff", radius: "20px", padding: "36px 26px", shadow: "rgba(0,0,0,0.06) 3px 3px 15px", use: "Featured plan card; non-featured plans carry an invisible 2px #ffffff border" }
-    badge-popular: { type: badge, bg: "#006aff", fg: "#ffffff", radius: "5px", padding: "1px 32px", height: "28px", font: "16px / 400", use: "最受歡迎 plan ribbon" }
-  components_harvested: true
+colors:
+  primary: '#006aff'
+  action: '#408fff'
+  deep: '#0202a6'
+  gradient-base: '#3337f6'
+  gradient-sky: '#379afd'
+  gradient-mint: '#69dfb2'
+  gradient-lavender: '#ac9cff'
+  gradient-violet: '#8e4dff'
+  heading-sky: '#4e97ff'
+  heading-sky-soft: '#75adfc'
+  hero-sub: '#8ca8cf'
+  ink: '#333333'
+  ink-strong: '#2e2e2e'
+  ink-heading: '#3d3d3d'
+  muted: '#666666'
+  icon-grey: '#69727d'
+  canvas: '#ffffff'
+  surface: '#f8f9fa'
+  surface-alt: '#f9f9f9'
+  tint-blue: '#ecf4ff'
+  tint-blue-deep: '#d9e8ff'
+  hero-dark: '#000000'
+  input-border: '#c5c5c5'
+  menu-accent: '#cc3366'
+typography:
+  display-hero:
+    fontSize: 52px
+    fontWeight: 500
+    lineHeight: 1.23
+    letterSpacing: 1.4px
+    use: Hero headline, aurora-gradient-clipped Outfit on black
+  display-xl:
+    fontSize: 46px
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: 1px
+    use: Major section headlines on dark bands
+  section:
+    fontSize: 40px
+    fontWeight: 500
+    lineHeight: 1.6
+    letterSpacing: 1px
+    use: Section titles (deep blue or ink)
+  feature:
+    fontSize: 34px
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: 1px
+    use: Feature / case-study headings
+  card-head:
+    fontSize: 26px
+    fontWeight: 500
+    lineHeight: 1.3
+    letterSpacing: 1px
+    use: Card and capability heads
+  plan-head:
+    fontSize: 24px
+    fontWeight: 500
+    letterSpacing: 1px
+    use: Pricing plan names
+  nav:
+    fontSize: 17px
+    fontWeight: 400
+    use: Top navigation items
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body copy, buttons, badges
+  menu-item:
+    fontSize: 14px
+    fontWeight: 500
+    use: Mega-menu dropdown links
+rounded:
+  sm: 5px
+  md: 10px
+  lg: 20px
+  full: 99px
+spacing:
+  xs: 3
+  sm: 8
+  md: 10
+  base: 16
+  lg: 20
+  xl: 27
+  xxl: 36
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#006aff'
+    textColor: '#ffffff'
+    border: '1px solid #006aff'
+    rounded: 13px 13px 0px
+    height: 32px
+    typography: 16px / 500
+    use: Header 專家諮詢 CTA — notched bottom-right corner
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#006aff'
+    border: '1px solid #006aff'
+    rounded: 13px 13px 0px
+    height: 32px
+    typography: 16px / 500
+    use: Header 免費試用 secondary CTA, same notched geometry
+  button-gradient:
+    type: button
+    backgroundColor: '#3337f6'
+    textColor: '#ffffff'
+    rounded: 10px
+    height: 44px
+    padding: 10px
+    typography: 16px / 500
+    states: 'animated 270deg gradient #3337f6 → #379afd → #69dfb2'
+    use: Hero 專家諮詢 CTA on black
+  button-action:
+    type: button
+    backgroundColor: '#408fff'
+    textColor: '#ffffff'
+    rounded: 0px 24px
+    height: 45px
+    padding: 8px 20px 11px
+    typography: 16px / 500
+    use: 聯絡專人 / 送出資料 ribbon CTA — opposing corners rounded
+  segment-toggle:
+    type: tab
+    textColor: '#408fff'
+    active: 'bg #408fff + text #ffffff'
+    rounded: 99px
+    height: 36px
+    typography: 16px / 500
+    use: Pricing product switcher pill (線上對話商務 / OMO / Social CDP)
+  input-default:
+    type: input
+    backgroundColor: '#f9f9f9'
+    textColor: '#3d3d3d'
+    border: '1px solid #c5c5c5'
+    rounded: 8px
+    height: 44px
+    padding: 8px 16px
+    typography: 16px / 400
+    use: Lead-form text field
+  card-pricing:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '2px solid #006aff'
+    rounded: 20px
+    padding: 36px 26px
+    shadow: rgba(0,0,0,0.06) 3px 3px 15px
+    use: 'Featured plan card; non-featured plans carry an invisible 2px #ffffff border'
+  badge-popular:
+    type: badge
+    backgroundColor: '#006aff'
+    textColor: '#ffffff'
+    rounded: 5px
+    padding: 1px 32px
+    height: 28px
+    typography: 16px / 400
+    use: 最受歡迎 plan ribbon
+fonts:
+  roles:
+    display: Outfit
+    zh: Noto Sans HK
 ---
 
 # Design System Inspiration of Omnichat
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Omnichat is Taiwan and Hong Kong's leading omnichannel chat-commerce platform, and its zh-TW marketing surface reads like a confident AI-era SaaS pitch deck: a pure black (`#000000`) hero stage where the headline itself glows in an animated aurora gradient — lavender (`#ac9cff`) through violet (`#8e4dff`), mint (`#69dfb2`) and sky blue (`#379afd`) — clipped directly into the Outfit letterforms. Below that cinematic opening, the page settles onto a white (`#ffffff`) and soft-grey (`#f8f9fa`) canvas with periodic light-blue tint bands (`#ecf4ff`), so the dark AI theatre and the bright commercial sections alternate in clean cycles.
 
@@ -88,7 +188,7 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 - Feather shadows (`rgba(0,0,0,0.06) 3px 3px 15px`) on 20px-radius pricing cards
 - Heading color as hierarchy: deep blue for trust claims, sky blue for AI features, ink for plain content
 
-## Primary tasks
+### Primary tasks
 
 - Sell to customers inside chat threads on LINE and WhatsApp
 - Send a segmented LINE campaign and check its open rate
@@ -96,7 +196,33 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 - Read a case study before deciding on the platform
 - Book a demo or talk to a specialist instead of buying online
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Omnichat was founded in **2017 by Alan Chan** in Hong Kong, beginning — as the company's own about page tells it — with a single rented coworking desk where Chan coded the first MVP of a website chat tool that quickly attracted hundreds of e-commerce businesses. The founding insight was that in Asia's mobile-first markets, commerce doesn't happen on web forms — it happens inside chat threads on LINE, WhatsApp, Facebook Messenger, Instagram and WeChat. Omnichat unified those channels into one conversational commerce platform, and Taiwan became its largest market: the zh-TW surface leads the brand, LINE 官方帳號 sits first in the platform menu, and Taiwanese retail names (信義房屋, à la sha, 博士助聽器) headline its case studies.
+
+The company states its mission plainly: "Omnichat 讓品牌與顧客保持緊密連結互動，以提升品牌的轉換率為使命" — keep brands and customers tightly connected, with raising conversion rate as the mission. Founder Alan Chan compresses it further: "Omnichat 的目標永遠只有一個，就是提高品牌的轉換率" (Omnichat has only ever had one goal: raising brands' conversion rates). Backed by a US$1.8M Pre-A round in 2022 and consecutive years of ~300% ARR growth, the platform now serves 5,000+ companies across Taiwan, Hong Kong, Malaysia, Singapore, Thailand and Indonesia as an official WhatsApp Business Solution Provider and authorized partner of Meta and LINE — partner logos the design treats as first-class trust assets. The 2025-era reinvention as an "Agentic AI customer experience platform" (Omni AI) put the black-stage aurora hero at the front of the brand.
+
+What Omnichat refuses: faceless automation. The company's stated belief — "Omnichat 相信有溫度的顧客體驗，是品牌成功的關鍵" (warm customer experience is the key to brand success) — explains the design's character: a friendly rounded wordmark, open positive-tracked headings, consultative CTAs that offer a human expert, and chat bubbles as the recurring visual motif. The aesthetic says AI infrastructure; the voice says there's a person on the other end of the conversation.
+
+### Principles
+
+1. **Conversion is the only scoreboard.** Every surface ties capability to 轉換率. *UI implication:* every section ends in a measurable next step (試用, 諮詢, 報價); decorative sections without a CTA are off-brand.
+2. **Conversation is the interface.** Commerce happens in chat threads, so chat is the hero artifact. *UI implication:* show real LINE/WhatsApp-style bubbles and threads in product mockups; the logo's speech-bubble motif echoes through rounded, asymmetric shapes.
+3. **Warmth over automation theatre.** "有溫度的顧客體驗" is the stated belief. *UI implication:* medium weights, open tracking, consultative CTA language ("專家諮詢" not "立即購買"), and human-team imagery beside AI features.
+4. **Prove it with partners and numbers.** Official Meta/LINE/WhatsApp partnership and 5,000+ clients carry the trust load. *UI implication:* partner logos and quantified case-study metrics are first-class design elements, placed early and styled prominently.
+5. **One drama per page.** The black aurora hero is the spectacle; everything after is calm white shelf. *UI implication:* reserve gradient and black bands for the opening statement and one AI showcase; keep pricing and content sections flat, tinted, and quiet.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Omnichat customer segments (Taiwanese omnichannel retailers, e-commerce marketing teams, customer-service leads), not individual people.*
+
+**林佳穎, 34, 台北.** E-commerce marketing manager at a mid-size apparel brand running LINE OA, Instagram and a Shopline store. Lives in broadcast open-rate dashboards; chose Omnichat because segmented LINE pushes lifted open rates past 50% without raising message costs. Wants every new AI feature explained as a campaign she can ship this quarter.
+
+**陳俊宏, 41, 台中.** Retail operations director for a 60-store chain rolling out OMO member binding. Cares about 門市 staff adoption more than features — the platform must let a store clerk pick up a web chat without training. Trusts Omnichat because case studies name brands his scale, with numbers attached.
+
+**黃以涵, 28, 高雄.** Customer-service team lead at a beauty D2C brand drowning in repeated FAQs across five channels. Evaluates AI agents by how gracefully they hand off to her human team. The "專家諮詢" button — a person, not a paywall — is exactly the vendor relationship she wants.
+
+## Colors
 
 ### Primary
 - **Omnichat Blue** (`#006aff`): Primary brand action color — header CTA fill and outline, featured pricing-card border, the 最受歡迎 badge. The chrome-level "do this" blue.
@@ -134,7 +260,7 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 ### Accent (menu-only)
 - **Menu Accent** (`#cc3366`): Raspberry-pink link color inside the mega-menu dropdowns (platform/product lists). It lives only in the opened navigation panels — never on buttons or body copy — acting as a hidden wayfinding accent inside an otherwise all-blue system.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display / Latin**: `Outfit` — geometric rounded sans for all headings and English display text.
@@ -162,7 +288,129 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 - **Color is the type hierarchy**: The same 40px/500 heading switches between deep blue (`#0202a6`) for trust claims, ink (`#2e2e2e`) for questions, and sky (`#75adfc`) on dark — meaning is encoded in hue, not weight.
 - **Two scripts, one voice**: Outfit's geometric rounds and Noto Sans HK's clean strokes are matched in optical weight so bilingual lines feel uniform.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: ~4px with measured stops at 3px, 8px, 10px, 16px, 20px, 27px, 36px
+- Notable: pricing cards run asymmetric 36px 26px padding with a deep 130px bottom reserve for the anchored CTA; panels use 27px
+
+### Grid & Container
+- Full-bleed alternating bands: black hero → white/`#f8f9fa` content → black AI showcase → `#ecf4ff` pricing tint
+- Centered single-column hero with a single inline question field ("你想從哪裡著手?")
+- Pricing: 4-up equal-width plan cards (288px) under a centered 99px segmented pill
+- Case studies: logo-led cards with 了解完整案例 link CTAs in repeating rows
+
+### Whitespace Philosophy
+- **Stage vs. shelf**: black bands are theatrical and sparse (one headline, one CTA); white bands are denser, shelf-like product sections. The contrast in density is intentional rhythm.
+- **Tint as chapter break**: `#ecf4ff` and `#d9e8ff` bands mark commercial chapters (pricing, lead capture) without needing rules or borders.
+- **Soft separation**: shadows are feather-light; most separation comes from background alternation.
+
+### Border Radius Scale
+- Small (5px): badges, dropdown bottoms
+- Medium (8–10px): inputs, gradient/deep buttons
+- Notch (13px 13px 0px): header CTAs, tab panels (inverted)
+- Large (20px): pricing cards
+- Ribbon (0px 24px): action CTAs — opposing corners only
+- Full (99px): segmented pills
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, hero text scales down, plan cards stack |
+| Tablet | 768–1024px | 2-up plan cards, condensed nav |
+| Desktop | 1024–1440px | Full 4-up pricing, mega-menu navigation |
+
+#### Touch Targets
+- Action ribbon CTAs at 45px height with 20px side padding
+- Segmented pill options at 36px inside a generously padded track
+- Form fields at 44px height
+- Nav rows at 60px with dropdown items at 42px
+
+#### Collapsing Strategy
+- Hero: 52px aurora headline compresses while keeping gradient clip and +letter-spacing
+- Pricing: 4-up cards → stacked column, featured card keeps its `#006aff` border and badge
+- Mega-menu: hover dropdowns → accordion drawer
+- Black showcase bands keep full-bleed treatment with reduced internal padding
+
+#### Image Behavior
+- Product UI mockups (chat threads, dashboards) sit directly on band backgrounds without frames
+- Client logos render monochrome on white cards in case-study rows
+- Cards maintain 20px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Bands, hero, nav, badges |
+| Tint (Level 1) | `#f8f9fa` / `#ecf4ff` background shift | Section and chapter separation |
+| Feather (Level 2) | `rgba(0,0,0,0.06) 3px 3px 15px` | Pricing cards — barely-there lift |
+| Panel (Level 3) | `rgba(0,0,0,0.15) 0px 3px 7px` | Tab content panels, dropdown sheets |
+
+**Shadow Philosophy**: Omnichat keeps elevation nearly invisible. The two measured shadows are a feather-soft 6%-alpha card lift and a slightly firmer 15%-alpha panel drop — both tight and neutral. Drama is delegated entirely to the black bands and the aurora gradient; surfaces themselves stay calm and flat so the conversational UI mockups inside them (chat bubbles, LINE/WhatsApp threads) carry the visual interest. When the system wants emphasis it changes the background color of a whole band, never the z-axis of a single card.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `rgba(0,0,0,0.06) 3px 3px 15px 0px`
+- `shadow.panel`: `rgba(0,0,0,0.15) 0px 3px 7px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 150ms | Hover, pill toggle, focus |
+| `motion-standard` | 250ms | Card reveal, dropdown sheets, tab panels |
+| `motion-slow` | 400ms | Band transitions, hero entrance |
+| `motion-ambient` | 6–10s | Aurora gradient sweep on hero text and CTA |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, panels, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-ambient` | `linear` | The looping aurora gradient |
+
+**Motion rules**: The aurora gradient is the brand's only continuous motion — a slow linear 270° sweep across the hero headline and gradient CTA, ambient like the AI it represents. Everything else is quick and functional: dropdown mega-menus slide down with `motion-standard / ease-enter`, the pricing pill slides its active state, chat-bubble mockups may type in once on scroll-into-view. No bounce, no spring — the product sells reliability to retailers. Under `prefers-reduced-motion: reduce`, the aurora freezes to a static gradient and all transitions collapse to instant; nothing functional is lost.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on
+https://www.omnichat.ai/tw/ and https://www.omnichat.ai/tw/pricing/:
+- All token-level claims in §1–9 (colors, Outfit/Noto Sans HK, weight 500 +
+  positive tracking, notched/ribbon radii, aurora gradient stops, shadows)
+  are sourced from this live inspection. Raw samples in .verification.md.
+
+Voice samples (§10) are verbatim from the live zh-TW homepage and pricing
+page (hero H1, H2s, pricing subtitle), plus the about page mission line.
+
+Brand narrative (§11): founding (2017, Alan Chan, coworking-desk MVP origin),
+mission/belief statements, and the founder quote are from
+https://www.omnichat.ai/tw/about/ (fetched 2026-06-10). Funding (US$1.8M
+Pre-A, April 2022) and ~300% YoY ARR growth are from the company's PR
+(en.prnasia.com release, surfaced via web search 2026-06-10). Official
+WhatsApp BSP / Meta / LINE partner status is stated on the live homepage.
+Market list (TW/HK/MY/SG/TH/ID) is from the about page. Omnichat is
+HK-founded; it is catalogued country: TW as Taiwan is its lead market and
+the zh-TW surface is the brand's primary storefront.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Omnichat customer segments (Taiwanese retail/e-commerce teams). Names are
+illustrative; they do not refer to real people.
+
+States (§14) and Motion (§15) are design-system extrapolations consistent
+with the observed live aesthetic (flat surfaces, feather shadows, single
+ambient gradient), marked here as editorial/illustrative rather than
+documented Omnichat product specs.
+-->
+
+## Components
 
 ### Buttons
 
@@ -273,43 +521,22 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 **Tier 2 sources:** none available (getdesign.md/omnichat → 404 "No designs found"; styles.refero.design/?q=omnichat → not listed)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: ~4px with measured stops at 3px, 8px, 10px, 16px, 20px, 27px, 36px
-- Notable: pricing cards run asymmetric 36px 26px padding with a deep 130px bottom reserve for the anchored CTA; panels use 27px
+| State | Treatment |
+|---|---|
+| **Empty (no conversations yet)** | White canvas, single Ink (`#333333`) line explaining the channel isn't connected, with one Action Blue (`#408fff`) ribbon CTA to connect LINE/WhatsApp. Chat-bubble illustration kept minimal. |
+| **Empty (no campaign results)** | Muted (`#666666`) single line on `#f8f9fa`; CTA offers a template, not a blank editor. |
+| **Loading (dashboard)** | Skeleton blocks on `#f8f9fa` at final dimensions, 20px radius for cards; flat pulse, no shimmer drama — consistent with the feather-shadow system. |
+| **Loading (AI generating)** | The one permitted spectacle: aurora-gradient progress treatment on the generating element, echoing the hero gradient. |
+| **Error (channel disconnected)** | Inline banner with plain-language cause and a reconnect action; never just "發生錯誤". Deep tone, no red flooding. |
+| **Error (form validation)** | Field-level message below the `#c5c5c5`-bordered input; states what a valid value looks like. |
+| **Success (campaign sent)** | Calm inline confirmation with the sent count — a number, in brand fashion. No confetti. |
+| **Success (form submitted)** | Confirmation replaces the form body; next step (專人將與您聯繫) stated explicitly. |
+| **Skeleton** | `#f8f9fa` blocks, 20px radius on cards, 99px on pill placeholders; flat pulse. |
+| **Disabled** | Buttons drop to reduced-opacity blue rather than grey, preserving the blue-only action language; text at `#69727d`. |
 
-### Grid & Container
-- Full-bleed alternating bands: black hero → white/`#f8f9fa` content → black AI showcase → `#ecf4ff` pricing tint
-- Centered single-column hero with a single inline question field ("你想從哪裡著手?")
-- Pricing: 4-up equal-width plan cards (288px) under a centered 99px segmented pill
-- Case studies: logo-led cards with 了解完整案例 link CTAs in repeating rows
-
-### Whitespace Philosophy
-- **Stage vs. shelf**: black bands are theatrical and sparse (one headline, one CTA); white bands are denser, shelf-like product sections. The contrast in density is intentional rhythm.
-- **Tint as chapter break**: `#ecf4ff` and `#d9e8ff` bands mark commercial chapters (pricing, lead capture) without needing rules or borders.
-- **Soft separation**: shadows are feather-light; most separation comes from background alternation.
-
-### Border Radius Scale
-- Small (5px): badges, dropdown bottoms
-- Medium (8–10px): inputs, gradient/deep buttons
-- Notch (13px 13px 0px): header CTAs, tab panels (inverted)
-- Large (20px): pricing cards
-- Ribbon (0px 24px): action CTAs — opposing corners only
-- Full (99px): segmented pills
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Bands, hero, nav, badges |
-| Tint (Level 1) | `#f8f9fa` / `#ecf4ff` background shift | Section and chapter separation |
-| Feather (Level 2) | `rgba(0,0,0,0.06) 3px 3px 15px` | Pricing cards — barely-there lift |
-| Panel (Level 3) | `rgba(0,0,0,0.15) 0px 3px 7px` | Tab content panels, dropdown sheets |
-
-**Shadow Philosophy**: Omnichat keeps elevation nearly invisible. The two measured shadows are a feather-soft 6%-alpha card lift and a slightly firmer 15%-alpha panel drop — both tight and neutral. Drama is delegated entirely to the black bands and the aurora gradient; surfaces themselves stay calm and flat so the conversational UI mockups inside them (chat bubbles, LINE/WhatsApp threads) carry the visual interest. When the system wants emphasis it changes the background color of a whole band, never the z-axis of a single card.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Stage hero statements on pure black (`#000000`) with the aurora gradient (`#ac9cff` → `#8e4dff` → `#69dfb2` → `#379afd`) clipped into the headline text
@@ -331,33 +558,29 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 - Use grey hairline dividers between sections — switch the band background instead
 - Mix a second blue system into chrome — `#006aff` and `#408fff` have fixed, separate jobs
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, hero text scales down, plan cards stack |
-| Tablet | 768–1024px | 2-up plan cards, condensed nav |
-| Desktop | 1024–1440px | Full 4-up pricing, mega-menu navigation |
+Omnichat's voice is **confident, conversion-obsessed, and warmly pragmatic** — a sales engineer who genuinely believes conversation is commerce. Every headline ties technology to a business outcome: AI is never demoed for its own sake, it "賦能客服、行銷、銷售轉換" (empowers service, marketing, and sales conversion). Numbers do the persuading — 5,000+ clients, 50% open rates, 轉換率 (conversion rate) appears in nearly every section — while the register stays polite Taiwanese business Mandarin with English product nouns (Omni AI, Social CDP, OMO) left untranslated as badges of category leadership.
 
-### Touch Targets
-- Action ribbon CTAs at 45px height with 20px side padding
-- Segmented pill options at 36px inside a generously padded track
-- Form fields at 44px height
-- Nav rows at 60px with dropdown items at 42px
+| Context | Tone |
+|---|---|
+| Hero headlines | Platform-scale declarations. "AI 全通路顧客體驗平台" — category first, capability second. |
+| Feature heads | Outcome verbs: 打造, 賦能, 轉換, 加速. Tech term + business result in one line. |
+| CTAs | Consultative, low-friction: "免費試用", "專家諮詢", "聯絡專人", "預約示範" — talk to a human, not "Buy now". |
+| Trust claims | Quantified and partner-anchored: "深受全球 5,000+ 客戶信賴", "LINE、WhatsApp、Meta 官方合作夥伴". |
+| Case studies | Client name + metric + mechanism: "信義房屋…締造精準受眾推播 50% 超高開封率". |
+| Pricing | Friendly imperative with one exclamation allowed: "選擇最適合您的方案，優化客戶服務，提升銷售業績！" |
 
-### Collapsing Strategy
-- Hero: 52px aurora headline compresses while keeping gradient clip and +letter-spacing
-- Pricing: 4-up cards → stacked column, featured card keeps its `#006aff` border and badge
-- Mega-menu: hover dropdowns → accordion drawer
-- Black showcase bands keep full-bleed treatment with reduced internal padding
+**Voice samples (verbatim from live zh-TW surfaces):**
+- "AI 全通路顧客體驗平台 全方位賦能客服、行銷、銷售轉換" — hero H1 *(verified live 2026-06-10)*
+- "全渠道 AI 對話商務平台 深受全球 5,000+ 客戶信賴" — homepage H2 *(verified live 2026-06-10)*
+- "為何 Omnichat 是最好的選擇？" — homepage H2 *(verified live 2026-06-10)*
+- "選擇最適合您的方案，優化客戶服務，提升銷售業績！" — pricing subtitle *(verified live 2026-06-10)*
+- "Omnichat 讓品牌與顧客保持緊密連結互動，以提升品牌的轉換率為使命。" — about page mission *(fetched 2026-06-10)*
 
-### Image Behavior
-- Product UI mockups (chat threads, dashboards) sit directly on band backgrounds without frames
-- Client logos render monochrome on white cards in case-study rows
-- Cards maintain 20px radius across breakpoints
+**Forbidden register**: vague AI mysticism without a metric, hard-sell urgency ("限時搶購"), untranslated jargon walls, and cold enterprise stiffness — the brand believes "有溫度的顧客體驗" (warm customer experience) and its copy must feel like a helpful consultant, not a vending machine.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary chrome CTA: Omnichat Blue (`#006aff`)
@@ -390,118 +613,8 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Omnichat's voice is **confident, conversion-obsessed, and warmly pragmatic** — a sales engineer who genuinely believes conversation is commerce. Every headline ties technology to a business outcome: AI is never demoed for its own sake, it "賦能客服、行銷、銷售轉換" (empowers service, marketing, and sales conversion). Numbers do the persuading — 5,000+ clients, 50% open rates, 轉換率 (conversion rate) appears in nearly every section — while the register stays polite Taiwanese business Mandarin with English product nouns (Omni AI, Social CDP, OMO) left untranslated as badges of category leadership.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Platform-scale declarations. "AI 全通路顧客體驗平台" — category first, capability second. |
-| Feature heads | Outcome verbs: 打造, 賦能, 轉換, 加速. Tech term + business result in one line. |
-| CTAs | Consultative, low-friction: "免費試用", "專家諮詢", "聯絡專人", "預約示範" — talk to a human, not "Buy now". |
-| Trust claims | Quantified and partner-anchored: "深受全球 5,000+ 客戶信賴", "LINE、WhatsApp、Meta 官方合作夥伴". |
-| Case studies | Client name + metric + mechanism: "信義房屋…締造精準受眾推播 50% 超高開封率". |
-| Pricing | Friendly imperative with one exclamation allowed: "選擇最適合您的方案，優化客戶服務，提升銷售業績！" |
-
-**Voice samples (verbatim from live zh-TW surfaces):**
-- "AI 全通路顧客體驗平台 全方位賦能客服、行銷、銷售轉換" — hero H1 *(verified live 2026-06-10)*
-- "全渠道 AI 對話商務平台 深受全球 5,000+ 客戶信賴" — homepage H2 *(verified live 2026-06-10)*
-- "為何 Omnichat 是最好的選擇？" — homepage H2 *(verified live 2026-06-10)*
-- "選擇最適合您的方案，優化客戶服務，提升銷售業績！" — pricing subtitle *(verified live 2026-06-10)*
-- "Omnichat 讓品牌與顧客保持緊密連結互動，以提升品牌的轉換率為使命。" — about page mission *(fetched 2026-06-10)*
-
-**Forbidden register**: vague AI mysticism without a metric, hard-sell urgency ("限時搶購"), untranslated jargon walls, and cold enterprise stiffness — the brand believes "有溫度的顧客體驗" (warm customer experience) and its copy must feel like a helpful consultant, not a vending machine.
-
-## 11. Brand Narrative
-
-Omnichat was founded in **2017 by Alan Chan** in Hong Kong, beginning — as the company's own about page tells it — with a single rented coworking desk where Chan coded the first MVP of a website chat tool that quickly attracted hundreds of e-commerce businesses. The founding insight was that in Asia's mobile-first markets, commerce doesn't happen on web forms — it happens inside chat threads on LINE, WhatsApp, Facebook Messenger, Instagram and WeChat. Omnichat unified those channels into one conversational commerce platform, and Taiwan became its largest market: the zh-TW surface leads the brand, LINE 官方帳號 sits first in the platform menu, and Taiwanese retail names (信義房屋, à la sha, 博士助聽器) headline its case studies.
-
-The company states its mission plainly: "Omnichat 讓品牌與顧客保持緊密連結互動，以提升品牌的轉換率為使命" — keep brands and customers tightly connected, with raising conversion rate as the mission. Founder Alan Chan compresses it further: "Omnichat 的目標永遠只有一個，就是提高品牌的轉換率" (Omnichat has only ever had one goal: raising brands' conversion rates). Backed by a US$1.8M Pre-A round in 2022 and consecutive years of ~300% ARR growth, the platform now serves 5,000+ companies across Taiwan, Hong Kong, Malaysia, Singapore, Thailand and Indonesia as an official WhatsApp Business Solution Provider and authorized partner of Meta and LINE — partner logos the design treats as first-class trust assets. The 2025-era reinvention as an "Agentic AI customer experience platform" (Omni AI) put the black-stage aurora hero at the front of the brand.
-
-What Omnichat refuses: faceless automation. The company's stated belief — "Omnichat 相信有溫度的顧客體驗，是品牌成功的關鍵" (warm customer experience is the key to brand success) — explains the design's character: a friendly rounded wordmark, open positive-tracked headings, consultative CTAs that offer a human expert, and chat bubbles as the recurring visual motif. The aesthetic says AI infrastructure; the voice says there's a person on the other end of the conversation.
-
-## 12. Principles
-
-1. **Conversion is the only scoreboard.** Every surface ties capability to 轉換率. *UI implication:* every section ends in a measurable next step (試用, 諮詢, 報價); decorative sections without a CTA are off-brand.
-2. **Conversation is the interface.** Commerce happens in chat threads, so chat is the hero artifact. *UI implication:* show real LINE/WhatsApp-style bubbles and threads in product mockups; the logo's speech-bubble motif echoes through rounded, asymmetric shapes.
-3. **Warmth over automation theatre.** "有溫度的顧客體驗" is the stated belief. *UI implication:* medium weights, open tracking, consultative CTA language ("專家諮詢" not "立即購買"), and human-team imagery beside AI features.
-4. **Prove it with partners and numbers.** Official Meta/LINE/WhatsApp partnership and 5,000+ clients carry the trust load. *UI implication:* partner logos and quantified case-study metrics are first-class design elements, placed early and styled prominently.
-5. **One drama per page.** The black aurora hero is the spectacle; everything after is calm white shelf. *UI implication:* reserve gradient and black bands for the opening statement and one AI showcase; keep pricing and content sections flat, tinted, and quiet.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Omnichat customer segments (Taiwanese omnichannel retailers, e-commerce marketing teams, customer-service leads), not individual people.*
-
-**林佳穎, 34, 台北.** E-commerce marketing manager at a mid-size apparel brand running LINE OA, Instagram and a Shopline store. Lives in broadcast open-rate dashboards; chose Omnichat because segmented LINE pushes lifted open rates past 50% without raising message costs. Wants every new AI feature explained as a campaign she can ship this quarter.
-
-**陳俊宏, 41, 台中.** Retail operations director for a 60-store chain rolling out OMO member binding. Cares about 門市 staff adoption more than features — the platform must let a store clerk pick up a web chat without training. Trusts Omnichat because case studies name brands his scale, with numbers attached.
-
-**黃以涵, 28, 高雄.** Customer-service team lead at a beauty D2C brand drowning in repeated FAQs across five channels. Evaluates AI agents by how gracefully they hand off to her human team. The "專家諮詢" button — a person, not a paywall — is exactly the vendor relationship she wants.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no conversations yet)** | White canvas, single Ink (`#333333`) line explaining the channel isn't connected, with one Action Blue (`#408fff`) ribbon CTA to connect LINE/WhatsApp. Chat-bubble illustration kept minimal. |
-| **Empty (no campaign results)** | Muted (`#666666`) single line on `#f8f9fa`; CTA offers a template, not a blank editor. |
-| **Loading (dashboard)** | Skeleton blocks on `#f8f9fa` at final dimensions, 20px radius for cards; flat pulse, no shimmer drama — consistent with the feather-shadow system. |
-| **Loading (AI generating)** | The one permitted spectacle: aurora-gradient progress treatment on the generating element, echoing the hero gradient. |
-| **Error (channel disconnected)** | Inline banner with plain-language cause and a reconnect action; never just "發生錯誤". Deep tone, no red flooding. |
-| **Error (form validation)** | Field-level message below the `#c5c5c5`-bordered input; states what a valid value looks like. |
-| **Success (campaign sent)** | Calm inline confirmation with the sent count — a number, in brand fashion. No confetti. |
-| **Success (form submitted)** | Confirmation replaces the form body; next step (專人將與您聯繫) stated explicitly. |
-| **Skeleton** | `#f8f9fa` blocks, 20px radius on cards, 99px on pill placeholders; flat pulse. |
-| **Disabled** | Buttons drop to reduced-opacity blue rather than grey, preserving the blue-only action language; text at `#69727d`. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover, pill toggle, focus |
-| `motion-standard` | 250ms | Card reveal, dropdown sheets, tab panels |
-| `motion-slow` | 400ms | Band transitions, hero entrance |
-| `motion-ambient` | 6–10s | Aurora gradient sweep on hero text and CTA |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, panels, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-ambient` | `linear` | The looping aurora gradient |
-
-**Motion rules**: The aurora gradient is the brand's only continuous motion — a slow linear 270° sweep across the hero headline and gradient CTA, ambient like the AI it represents. Everything else is quick and functional: dropdown mega-menus slide down with `motion-standard / ease-enter`, the pricing pill slides its active state, chat-bubble mockups may type in once on scroll-into-view. No bounce, no spring — the product sells reliability to retailers. Under `prefers-reduced-motion: reduce`, the aurora freezes to a static gradient and all transitions collapse to instant; nothing functional is lost.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-10) via playwright getComputedStyle on
-https://www.omnichat.ai/tw/ and https://www.omnichat.ai/tw/pricing/:
-- All token-level claims in §1–9 (colors, Outfit/Noto Sans HK, weight 500 +
-  positive tracking, notched/ribbon radii, aurora gradient stops, shadows)
-  are sourced from this live inspection. Raw samples in .verification.md.
-
-Voice samples (§10) are verbatim from the live zh-TW homepage and pricing
-page (hero H1, H2s, pricing subtitle), plus the about page mission line.
-
-Brand narrative (§11): founding (2017, Alan Chan, coworking-desk MVP origin),
-mission/belief statements, and the founder quote are from
-https://www.omnichat.ai/tw/about/ (fetched 2026-06-10). Funding (US$1.8M
-Pre-A, April 2022) and ~300% YoY ARR growth are from the company's PR
-(en.prnasia.com release, surfaced via web search 2026-06-10). Official
-WhatsApp BSP / Meta / LINE partner status is stated on the live homepage.
-Market list (TW/HK/MY/SG/TH/ID) is from the about page. Omnichat is
-HK-founded; it is catalogued country: TW as Taiwan is its lead market and
-the zh-TW surface is the brand's primary storefront.
-
-Personas (§13) are fictional archetypes informed by publicly observable
-Omnichat customer segments (Taiwanese retail/e-commerce teams). Names are
-illustrative; they do not refer to real people.
-
-States (§14) and Motion (§15) are design-system extrapolations consistent
-with the observed live aesthetic (flat surfaces, feather shadows, single
-ambient gradient), marked here as editorial/illustrative rather than
-documented Omnichat product specs.
--->
+- **Contrast, `button-action`.** Text `#ffffff` on `#408fff` measures 3.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

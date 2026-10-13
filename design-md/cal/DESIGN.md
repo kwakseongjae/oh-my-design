@@ -1,72 +1,203 @@
 ---
-id: cal
 name: Cal.com
-country: US
-category: productivity
-homepage: "https://cal.com"
-primary_color: "#111827"
-logo:
-  type: simpleicons
-  slug: caldotcom
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary = prose Charcoal #242424 (signature near-black CTA/heading); primary_color frontmatter #111827 is a catalog approximation. Brand is intentionally grayscale — no accent color."
-  colors:
-    primary: "#242424"
-    primary-hover: "#111111"
-    brand: "#242424"
-    canvas: "#ffffff"
-    foreground: "#242424"
-    deep-text: "#111111"
-    muted: "#898989"
-    on-primary: "#ffffff"
-    surface-alt: "#f5f5f5"
-    link: "#0099ff"
-    link-default: "#0000ee"
-    black: "#000000"
-    focus-ring: "#3b82f6"
-  typography:
-    family: { sans: "Cal Sans", body: "Inter", mono: "Roboto Mono" }
-    display-hero:     { size: 64, weight: 600, lineHeight: 1.10, tracking: 0, use: "Cal Sans hero, maximum impact, tight default spacing" }
-    section-heading:  { size: 48, weight: 600, lineHeight: 1.10, tracking: 0, use: "Cal Sans large section titles" }
-    feature-heading:  { size: 24, weight: 600, lineHeight: 1.30, tracking: 0, use: "Cal Sans feature block headlines" }
-    subheading:       { size: 20, weight: 600, lineHeight: 1.20, tracking: 0.2, use: "Cal Sans sub-head, positive spacing at smaller size" }
-    subheading-alt:   { size: 20, weight: 600, lineHeight: 1.50, tracking: 0, use: "Cal Sans relaxed line-height variant" }
-    card-title:       { size: 16, weight: 600, lineHeight: 1.10, tracking: 0, use: "Cal Sans smallest usage, card titles" }
-    caption-label:    { size: 12, weight: 600, lineHeight: 1.50, tracking: 0, use: "Cal Sans small labels" }
-    body-light:       { size: 18, weight: 300, lineHeight: 1.30, tracking: -0.2, use: "Cal Sans UI Light body intro text" }
-    body-light-std:   { size: 16, weight: 300, lineHeight: 1.50, tracking: -0.2, use: "Cal Sans UI Light body text" }
-    caption-light:    { size: 14, weight: 300, lineHeight: 1.40, tracking: -0.2, use: "Cal Sans UI Light captions and descriptions" }
-    ui-label:         { size: 16, weight: 600, lineHeight: 1.00, tracking: 0, use: "Inter UI buttons and nav labels" }
-    caption-inter:    { size: 14, weight: 500, lineHeight: 1.14, tracking: 0, use: "Inter small UI text" }
-    micro:            { size: 12, weight: 500, lineHeight: 1.00, tracking: 0, use: "Inter smallest text" }
-    code:             { size: 14, weight: 600, lineHeight: 1.00, tracking: 0, use: "Roboto Mono code snippets, technical text" }
-    body-matter:      { size: 14, weight: 400, lineHeight: 1.14, tracking: 0, use: "Matter Regular alternate body text (product UI)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 28, section: 80, section-lg: 96 }
-  rounded: { xs: 2, sm: 4, base: 6, md: 8, lg: 12, xl: 16, full: 9999 }
-  shadow:
-    inset: "rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset"
-    soft: "rgba(34,42,53,0.05) 0px 4px 8px"
-    ring-soft: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px"
-    inset-highlight: "rgba(255,255,255,0.15) 0px 2px 0px inset"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#242424", fg: "#ffffff", radius: "8px", padding: "12px 20px", font: "16px / 600", hover: "opacity 0.7", use: "Signature CTA — maximally dark on white" }
-    button-ghost: { type: button, bg: "#ffffff", fg: "#242424", radius: "8px", padding: "12px 20px", shadow: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px", font: "16px / 600", use: "Secondary CTA with shadow-ring border (no CSS border)" }
-    button-pill: { type: button, bg: "#242424", fg: "#ffffff", radius: "9999px", padding: "8px 16px", use: "Rounded pill-shaped actions" }
-    input: { type: input, bg: "#ffffff", fg: "#242424", border: "1px solid rgb(118,118,118)", radius: "8px", padding: "8px 12px", focus: "--framer-focus-outline", use: "Text input / select" }
-    card: { type: card, bg: "#ffffff", radius: "8px", padding: "16px 24px", shadow: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px", use: "Standard card; ring shadow as border" }
-    badge-pill: { type: badge, bg: "#242424", fg: "#ffffff", radius: "9999px", padding: "4px 10px", font: "12px / 600", use: "Pill-shaped badges and tags" }
-    badge-default: { type: badge, bg: "#f5f5f5", fg: "#242424", radius: "8px", padding: "4px 8px", font: "12px / 600", use: "Default badge" }
-    nav: { type: tab, bg: "white/transparent", fg: "#111111", use: "Sticky top nav, Cal Sans links, dark primary CTA" }
+colors:
+  primary: '#242424'
+  primary-hover: '#111111'
+  brand: '#242424'
+  canvas: '#ffffff'
+  foreground: '#242424'
+  deep-text: '#111111'
+  muted: '#898989'
+  on-primary: '#ffffff'
+  surface-alt: '#f5f5f5'
+  link: '#0099ff'
+  link-default: '#0000ee'
+  black: '#000000'
+  focus-ring: '#3b82f6'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: 0px
+    use: Cal Sans hero, maximum impact, tight default spacing
+  section-heading:
+    fontSize: 48px
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: 0px
+    use: Cal Sans large section titles
+  feature-heading:
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: 0px
+    use: Cal Sans feature block headlines
+  subheading:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: 0.2px
+    use: Cal Sans sub-head, positive spacing at smaller size
+  subheading-alt:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Cal Sans relaxed line-height variant
+  card-title:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: 0px
+    use: Cal Sans smallest usage, card titles
+  caption-label:
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: 0px
+    use: Cal Sans small labels
+  body-light:
+    fontSize: 18px
+    fontWeight: 300
+    lineHeight: 1.3
+    letterSpacing: '-0.2px'
+    use: Cal Sans UI Light body intro text
+  body-light-std:
+    fontSize: 16px
+    fontWeight: 300
+    lineHeight: 1.5
+    letterSpacing: '-0.2px'
+    use: Cal Sans UI Light body text
+  caption-light:
+    fontSize: 14px
+    fontWeight: 300
+    lineHeight: 1.4
+    letterSpacing: '-0.2px'
+    use: Cal Sans UI Light captions and descriptions
+  ui-label:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: 0px
+    use: Inter UI buttons and nav labels
+  caption-inter:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.14
+    letterSpacing: 0px
+    use: Inter small UI text
+  micro:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: 0px
+    use: Inter smallest text
+  code:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: 0px
+    use: Roboto Mono code snippets, technical text
+  body-matter:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.14
+    letterSpacing: 0px
+    use: Matter Regular alternate body text (product UI)
+rounded:
+  xs: 2px
+  sm: 4px
+  base: 6px
+  md: 8px
+  lg: 12px
+  xl: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 28
+  section: 80
+  section-lg: 96
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#242424'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 12px 20px
+    typography: 16px / 600
+    hover: opacity 0.7
+    use: Signature CTA — maximally dark on white
+  button-ghost:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#242424'
+    rounded: 8px
+    padding: 12px 20px
+    shadow: rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px
+    typography: 16px / 600
+    use: Secondary CTA with shadow-ring border (no CSS border)
+  button-pill:
+    type: button
+    backgroundColor: '#242424'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 8px 16px
+    use: Rounded pill-shaped actions
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#242424'
+    border: 1px solid rgb(118,118,118)
+    rounded: 8px
+    padding: 8px 12px
+    focus: '--framer-focus-outline'
+    use: Text input / select
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    padding: 16px 24px
+    shadow: rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px
+    use: Standard card; ring shadow as border
+  badge-pill:
+    type: badge
+    backgroundColor: '#242424'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 4px 10px
+    typography: 12px / 600
+    use: Pill-shaped badges and tags
+  badge-default:
+    type: badge
+    backgroundColor: '#f5f5f5'
+    textColor: '#242424'
+    rounded: 8px
+    padding: 4px 8px
+    typography: 12px / 600
+    use: Default badge
+  nav:
+    type: tab
+    backgroundColor: white/transparent
+    textColor: '#111111'
+    use: Sticky top nav, Cal Sans links, dark primary CTA
+fonts:
+  roles:
+    sans: Cal Sans
+    body: Inter
+    mono: Roboto Mono
 ---
 
 # Design System Inspiration of Cal.com
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Cal.com's website is a masterclass in monochromatic restraint — a grayscale world where boldness comes not from color but from the sheer confidence of black text on white space. Inspired by Uber's minimal aesthetic, the palette is deliberately stripped of hue: near-black headings (`#242424`), mid-gray secondary text (`#898989`), and pure white surfaces. Color is treated as a foreign substance — when it appears (a rare blue link, a green trust badge), it feels like a controlled accent in an otherwise black-and-white photograph.
 
@@ -84,7 +215,7 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 - Product screenshots as primary visual content — the scheduling UI sells itself
 - Built on Framer platform
 
-## Primary tasks
+### Primary tasks
 
 - Book a time on a page that is mostly calendar
 - Create your first event type from a starter template
@@ -92,7 +223,31 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 - Reconnect a calendar after its permissions were revoked
 - Embed a booking widget inside a proposal document
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Cal.com was founded **January 1, 2021** (initially as **Calendso**) by **Peer Richelsen** and **Bailey Pumfleet** — the latter only **18 years old at founding** ([GetLatka — 18-year-old raises $32M](https://blog.getlatka.com/18-year-old-raises-32m-to-build-opensource-version-of-calendly/), [Cal.com History](https://businessmodelcanvastemplate.com/blogs/brief-history/cal-com-brief-history)) — as the open-source alternative to Calendly. First version launched **April 30, 2021**, rose from **#1 Product of the Day → Week → Month on Product Hunt** ([Product Hunt Stories](https://www.producthunt.com/stories/how-this-open-source-calendly-alternative-rocketed-to-product-of-the-day)). The founding observation: scheduling tools had become essential infrastructure but the dominant player was closed-source. **AGPL-licensed + hosted SaaS.** Funding: **Seed $7.4M** (OSS Capital lead + Chad Hurley/YouTube co-founder + angels), **Series A $25M (May 2022)** (Seven Seven Six lead + Obvious Ventures), **$32M total** ([Startup Intros](https://startupintros.com/orgs/cal-com)). Cal.ai + Cal.et AI-driven scheduling shipped post-Series A.
+
+What Cal.com refuses: lock-in pricing, opaque feature gating, lifestyle marketing imagery.
+
+### Principles
+
+1. **Open by default.** Source, roadmap, pricing — all public. *UI implication:* "View source" / "Roadmap" links in footer.
+2. **Calendar over UI.** *UI implication:* booking page = mostly calendar widget, minimal nav.
+3. **Embed-first thinking.** *UI implication:* design tokens are CSS variables (overridable by host).
+4. **Monochrome confidence.** No accent color at all. *UI implication:* don't introduce a brand accent; calendar widget provides the only color.
+5. **Section spacing is the visual rhythm.** *UI implication:* never cramp; whitespace is the design.
+
+### Personas
+
+*Personas are fictional archetypes informed by Cal.com user segments (developers, sales teams, contractors), not individual people.*
+
+**Henrik Sondergaard, 36, Copenhagen.** Engineering manager. Self-hosts Cal.com on team's infra.
+
+**Priya Krishnan, 29, Bengaluru.** Independent consultant. Hosted plan, 4 meeting types.
+
+**Marco Bianchi, 44, Milan.** Sales lead. Embeds Cal.com booking widgets in proposal docs. Cares about Salesforce integration.
+
+## Colors
 
 ### Primary
 - **Charcoal** (`#242424`): Primary heading and button text — Cal.com's signature near-black, warmer than pure black
@@ -125,7 +280,7 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 - No gradients on the marketing site — the design is fully flat and monochrome
 - Depth is achieved entirely through shadows, not color transitions
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display**: `Cal Sans` — custom geometric sans-serif by Mark Davis. Open-source, available on Google Fonts and GitHub. Extremely tight default letter-spacing designed for large headlines. Has 6 character variants (Cc, j, t, u, 0, 1)
@@ -162,7 +317,121 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 - **Weight 600 dominance**: Nearly all Cal Sans usage is at weight 600 (semi-bold) — the font was designed to perform at this weight
 - **Negative tracking on light text**: Cal Sans UI Light uses -0.2px to -0.28px letter-spacing, subtly tightening the already-compact letterforms
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- **Base unit**: 8px
+- **Scale**: 1px, 2px, 3px, 4px, 6px, 8px, 12px, 16px, 20px, 24px, 28px, 80px, 96px
+- **Section padding**: 80px–96px vertical between major sections (generous)
+- **Card padding**: 12px–24px internal
+- **Component gaps**: 4px–8px between related elements
+- **Notable jump**: From 28px to 80px — a deliberate gap emphasizing the section-level spacing tier
+
+### Grid & Container
+- **Max width**: ~1200px content container, centered
+- **Column patterns**: Full-width hero, centered text blocks, 2-3 column feature grids
+- **Feature showcase**: Product screenshots flanked by description text
+- **Breakpoints**: 98px, 640px, 768px, 810px, 1024px, 1199px — Framer-generated
+
+### Whitespace Philosophy
+- **Lavish section spacing**: 80px–96px between sections creates a breathable, premium feel
+- **Product-first content**: Screenshots dominate the visual space — minimal surrounding decoration
+- **Centered headlines**: Cal Sans headings centered with generous margins above and below
+
+### Border Radius Scale
+- **2px**: Subtle rounding on inline elements
+- **4px**: Small UI components
+- **6px–7px**: Buttons, small cards, images
+- **8px**: Standard interactive elements — buttons, inputs, images
+- **12px**: Medium containers — links, larger cards, images
+- **16px**: Large section containers
+- **29px**: Special rounded elements
+- **100px**: Large rounding — nearly circular on small elements
+- **1000px**: Very large rounding
+- **9999px**: Full pill shape — badges, links
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero text ~36px, stacked features, hamburger nav |
+| Tablet Small | 640px–768px | 2-column begins for some elements |
+| Tablet | 768px–810px | Layout adjustments, fuller grid |
+| Tablet Large | 810px–1024px | Multi-column feature grids |
+| Desktop | 1024px–1199px | Full layout, expanded navigation |
+| Large Desktop | >1199px | Max-width container, centered content |
+
+#### Touch Targets
+- Buttons: 8px radius with comfortable padding (10px+ vertical)
+- Nav links: Dark text with adequate spacing
+- Mobile CTAs: Full-width dark buttons for easy thumb access
+- Pill badges: 9999px radius creates large, tappable targets
+
+#### Collapsing Strategy
+- **Navigation**: Full horizontal nav → hamburger on mobile
+- **Hero**: 64px Cal Sans display → ~36px on mobile
+- **Feature grids**: Multi-column → 2-column → single stacked column
+- **Product screenshots**: Scale within containers, maintaining aspect ratios
+- **Section spacing**: Reduces from 80px–96px to ~48px on mobile
+
+#### Image Behavior
+- Product screenshots scale responsively
+- Trust logos reflow to multi-row grid on mobile
+- No art direction changes — same compositions at all sizes
+- Images use 7px–12px border-radius for consistent rounded corners
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Level 0 (Flat) | No shadow | Page canvas, basic text containers |
+| Level 1 (Inset) | `rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset` | Pressed/recessed elements, input wells |
+| Level 2 (Ring + Soft) | `rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px` | Cards, containers — the workhorse shadow |
+| Level 3 (Ring + Soft Alt) | `rgba(36,36,36,0.7) 0px 1px 5px -4px, rgba(36,36,36,0.05) 0px 4px 8px` | Alt card elevation without ring border |
+| Level 4 (Inset Highlight) | `rgba(255,255,255,0.15) 0px 2px 0px inset` or `rgb(255,255,255) 0px 2px 0px inset` | Button inner highlight — 3D pressed effect |
+| Level 5 (Soft Only) | `rgba(34,42,53,0.05) 0px 4px 8px` | Subtle ambient shadow |
+
+### Shadow Philosophy
+Cal.com's shadow system is the most sophisticated element of the design — 11 shadow definitions using a multi-layered compositing technique:
+- **Ring borders**: `0px 0px 0px 1px` shadows act as borders, avoiding CSS `border` entirely. This creates hairline containment without affecting layout
+- **Diffused soft shadows**: `0px 4px 8px` at 5% opacity add gentle ambient depth
+- **Sharp contact shadows**: `0px 1px 5px -4px` at 70% opacity create tight bottom-edge shadows for grounding
+- **Inset highlights**: White inset shadows at the top of buttons create a subtle 3D bevel
+- Shadows are composed in comma-separated stacks — each surface gets 2-3 layered shadow definitions working together
+
+### Decorative Depth
+- No gradients or glow effects
+- All depth comes from the sophisticated shadow compositing system
+- The overall effect is subtle but precise — surfaces feel like physical cards sitting on a table
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.inset`: `rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset`
+- `shadow.soft`: `rgba(34,42,53,0.05) 0px 4px 8px`
+- `shadow.ring-soft`: `rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px`
+- `shadow.inset-highlight`: `rgba(255,255,255,0.15) 0px 2px 0px inset`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes calendar grid fade-in.
+
+---
+
+**Verified:** 2026-05-08 (B1 loop)
+**Tier 1 sources:** https://cal.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 39px / 13.92px·500; Cream `#f3f2ed` Secondary)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** cal.com homepage; founders Peer Richelsen, Bailey Pumfleet; GitHub roadmap.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.
+
+## Components
 
 ### Buttons
 
@@ -277,64 +546,23 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 - **Aspect ratios**: Wide landscape for product UI screenshots
 - **No decorative imagery**: No illustrations, photos, or abstract graphics — pure product + typography
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- **Base unit**: 8px
-- **Scale**: 1px, 2px, 3px, 4px, 6px, 8px, 12px, 16px, 20px, 24px, 28px, 80px, 96px
-- **Section padding**: 80px–96px vertical between major sections (generous)
-- **Card padding**: 12px–24px internal
-- **Component gaps**: 4px–8px between related elements
-- **Notable jump**: From 28px to 80px — a deliberate gap emphasizing the section-level spacing tier
+| State | Treatment |
+|---|---|
+| **Empty (no bookings)** | "Your bookings will appear here." Single line, centered, no illustration |
+| **Empty (no event types)** | CTA "Create your first event type" + 3 starter templates |
+| **Loading (calendar fetching)** | Skeleton calendar grid `#f5f5f5` blocks |
+| **Loading (booking submitting)** | CTA inline spinner, button label "Booking..." |
+| **Error (no available times)** | "No available times in next 30 days." |
+| **Error (timezone)** | Banner top of page. "Times shown in your timezone (Asia/Seoul)" |
+| **Success (booked)** | Full-page confirmation with calendar invite preview |
+| **Success (rescheduled)** | Same pattern, copy adjusts |
+| **Skeleton** | Vertical rows of `#f5f5f5` rectangles, exact dimensions |
+| **Disabled (slot)** | 0.3 opacity, cursor-not-allowed, tooltip "Already booked" |
+| **Loading (calendar sync)** | Inline chip in nav header |
 
-### Grid & Container
-- **Max width**: ~1200px content container, centered
-- **Column patterns**: Full-width hero, centered text blocks, 2-3 column feature grids
-- **Feature showcase**: Product screenshots flanked by description text
-- **Breakpoints**: 98px, 640px, 768px, 810px, 1024px, 1199px — Framer-generated
-
-### Whitespace Philosophy
-- **Lavish section spacing**: 80px–96px between sections creates a breathable, premium feel
-- **Product-first content**: Screenshots dominate the visual space — minimal surrounding decoration
-- **Centered headlines**: Cal Sans headings centered with generous margins above and below
-
-### Border Radius Scale
-- **2px**: Subtle rounding on inline elements
-- **4px**: Small UI components
-- **6px–7px**: Buttons, small cards, images
-- **8px**: Standard interactive elements — buttons, inputs, images
-- **12px**: Medium containers — links, larger cards, images
-- **16px**: Large section containers
-- **29px**: Special rounded elements
-- **100px**: Large rounding — nearly circular on small elements
-- **1000px**: Very large rounding
-- **9999px**: Full pill shape — badges, links
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Flat) | No shadow | Page canvas, basic text containers |
-| Level 1 (Inset) | `rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset` | Pressed/recessed elements, input wells |
-| Level 2 (Ring + Soft) | `rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px` | Cards, containers — the workhorse shadow |
-| Level 3 (Ring + Soft Alt) | `rgba(36,36,36,0.7) 0px 1px 5px -4px, rgba(36,36,36,0.05) 0px 4px 8px` | Alt card elevation without ring border |
-| Level 4 (Inset Highlight) | `rgba(255,255,255,0.15) 0px 2px 0px inset` or `rgb(255,255,255) 0px 2px 0px inset` | Button inner highlight — 3D pressed effect |
-| Level 5 (Soft Only) | `rgba(34,42,53,0.05) 0px 4px 8px` | Subtle ambient shadow |
-
-### Shadow Philosophy
-Cal.com's shadow system is the most sophisticated element of the design — 11 shadow definitions using a multi-layered compositing technique:
-- **Ring borders**: `0px 0px 0px 1px` shadows act as borders, avoiding CSS `border` entirely. This creates hairline containment without affecting layout
-- **Diffused soft shadows**: `0px 4px 8px` at 5% opacity add gentle ambient depth
-- **Sharp contact shadows**: `0px 1px 5px -4px` at 70% opacity create tight bottom-edge shadows for grounding
-- **Inset highlights**: White inset shadows at the top of buttons create a subtle 3D bevel
-- Shadows are composed in comma-separated stacks — each surface gets 2-3 layered shadow definitions working together
-
-### Decorative Depth
-- No gradients or glow effects
-- All depth comes from the sophisticated shadow compositing system
-- The overall effect is subtle but precise — surfaces feel like physical cards sitting on a table
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Cal Sans exclusively for headings (24px+) and never for body text — it's a display font with tight default spacing
@@ -356,38 +584,24 @@ Cal.com's shadow system is the most sophisticated element of the design — 11 s
 - Mix Cal Sans weights — the font is designed for weight 600, other weights break the intended character
 - Reduce section spacing below 48px — the generous whitespace is core to the premium monochrome aesthetic
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero text ~36px, stacked features, hamburger nav |
-| Tablet Small | 640px–768px | 2-column begins for some elements |
-| Tablet | 768px–810px | Layout adjustments, fuller grid |
-| Tablet Large | 810px–1024px | Multi-column feature grids |
-| Desktop | 1024px–1199px | Full layout, expanded navigation |
-| Large Desktop | >1199px | Max-width container, centered content |
+Cal.com's voice is **engineer-direct and developer-warm.** Marketing copy reads like documentation that happens to be on a marketing page — capability statements, no hype. Open-source-first positioning shapes the register: "the open source Calendly alternative" is the original tagline, and the voice still carries that "we built this because the proprietary one was bad" engineer credibility.
 
-### Touch Targets
-- Buttons: 8px radius with comfortable padding (10px+ vertical)
-- Nav links: Dark text with adequate spacing
-- Mobile CTAs: Full-width dark buttons for easy thumb access
-- Pill badges: 9999px radius creates large, tappable targets
+| Context | Tone |
+|---|---|
+| CTA | Verb-first. "Get started", "Book a demo", "Sign in with Google" |
+| Empty (no bookings) | Quiet. "Your bookings will appear here." |
+| Error | Specific + actionable. "Calendar permissions revoked. Reconnect Google Calendar." |
+| Documentation | Imperative, code-block heavy |
+| Marketing | Capability-list, monochrome typography |
 
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav → hamburger on mobile
-- **Hero**: 64px Cal Sans display → ~36px on mobile
-- **Feature grids**: Multi-column → 2-column → single stacked column
-- **Product screenshots**: Scale within containers, maintaining aspect ratios
-- **Section spacing**: Reduces from 80px–96px to ~48px on mobile
+**Voice samples**
+- Marketing CTA: *"Get started"* <!-- verified: cal.com homepage 2026-05 -->
 
-### Image Behavior
-- Product screenshots scale responsively
-- Trust logos reflow to multi-row grid on mobile
-- No art direction changes — same compositions at all sizes
-- Images use 7px–12px border-radius for consistent rounded corners
+**Forbidden phrases.** "Revolutionary scheduling", "the future of calendars", emoji in chrome.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary Text: Charcoal (`#242424`)
@@ -412,77 +626,3 @@ When refining existing screens generated with this design system:
 3. Ensure card elevation uses the multi-layered shadow stack, not CSS borders
 4. Confirm section spacing is generous (80px+) — if sections feel cramped, add more space
 5. The overall tone should feel like a clean, professional scheduling tool — monochrome confidence without any decorative flourishes
-
-## 10. Voice & Tone
-
-Cal.com's voice is **engineer-direct and developer-warm.** Marketing copy reads like documentation that happens to be on a marketing page — capability statements, no hype. Open-source-first positioning shapes the register: "the open source Calendly alternative" is the original tagline, and the voice still carries that "we built this because the proprietary one was bad" engineer credibility.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb-first. "Get started", "Book a demo", "Sign in with Google" |
-| Empty (no bookings) | Quiet. "Your bookings will appear here." |
-| Error | Specific + actionable. "Calendar permissions revoked. Reconnect Google Calendar." |
-| Documentation | Imperative, code-block heavy |
-| Marketing | Capability-list, monochrome typography |
-
-**Voice samples**
-- Marketing CTA: *"Get started"* <!-- verified: cal.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary scheduling", "the future of calendars", emoji in chrome.
-
-## 11. Brand Narrative
-
-Cal.com was founded **January 1, 2021** (initially as **Calendso**) by **Peer Richelsen** and **Bailey Pumfleet** — the latter only **18 years old at founding** ([GetLatka — 18-year-old raises $32M](https://blog.getlatka.com/18-year-old-raises-32m-to-build-opensource-version-of-calendly/), [Cal.com History](https://businessmodelcanvastemplate.com/blogs/brief-history/cal-com-brief-history)) — as the open-source alternative to Calendly. First version launched **April 30, 2021**, rose from **#1 Product of the Day → Week → Month on Product Hunt** ([Product Hunt Stories](https://www.producthunt.com/stories/how-this-open-source-calendly-alternative-rocketed-to-product-of-the-day)). The founding observation: scheduling tools had become essential infrastructure but the dominant player was closed-source. **AGPL-licensed + hosted SaaS.** Funding: **Seed $7.4M** (OSS Capital lead + Chad Hurley/YouTube co-founder + angels), **Series A $25M (May 2022)** (Seven Seven Six lead + Obvious Ventures), **$32M total** ([Startup Intros](https://startupintros.com/orgs/cal-com)). Cal.ai + Cal.et AI-driven scheduling shipped post-Series A.
-
-What Cal.com refuses: lock-in pricing, opaque feature gating, lifestyle marketing imagery.
-
-## 12. Principles
-
-1. **Open by default.** Source, roadmap, pricing — all public. *UI implication:* "View source" / "Roadmap" links in footer.
-2. **Calendar over UI.** *UI implication:* booking page = mostly calendar widget, minimal nav.
-3. **Embed-first thinking.** *UI implication:* design tokens are CSS variables (overridable by host).
-4. **Monochrome confidence.** No accent color at all. *UI implication:* don't introduce a brand accent; calendar widget provides the only color.
-5. **Section spacing is the visual rhythm.** *UI implication:* never cramp; whitespace is the design.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Cal.com user segments (developers, sales teams, contractors), not individual people.*
-
-**Henrik Sondergaard, 36, Copenhagen.** Engineering manager. Self-hosts Cal.com on team's infra.
-
-**Priya Krishnan, 29, Bengaluru.** Independent consultant. Hosted plan, 4 meeting types.
-
-**Marco Bianchi, 44, Milan.** Sales lead. Embeds Cal.com booking widgets in proposal docs. Cares about Salesforce integration.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no bookings)** | "Your bookings will appear here." Single line, centered, no illustration |
-| **Empty (no event types)** | CTA "Create your first event type" + 3 starter templates |
-| **Loading (calendar fetching)** | Skeleton calendar grid `#f5f5f5` blocks |
-| **Loading (booking submitting)** | CTA inline spinner, button label "Booking..." |
-| **Error (no available times)** | "No available times in next 30 days." |
-| **Error (timezone)** | Banner top of page. "Times shown in your timezone (Asia/Seoul)" |
-| **Success (booked)** | Full-page confirmation with calendar invite preview |
-| **Success (rescheduled)** | Same pattern, copy adjusts |
-| **Skeleton** | Vertical rows of `#f5f5f5` rectangles, exact dimensions |
-| **Disabled (slot)** | 0.3 opacity, cursor-not-allowed, tooltip "Already booked" |
-| **Loading (calendar sync)** | Inline chip in nav header |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes calendar grid fade-in.
-
----
-
-**Verified:** 2026-05-08 (B1 loop)
-**Tier 1 sources:** https://cal.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 39px / 13.92px·500; Cream `#f3f2ed` Secondary)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** cal.com homepage; founders Peer Richelsen, Bailey Pumfleet; GitHub roadmap.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.

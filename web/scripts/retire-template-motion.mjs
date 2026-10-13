@@ -29,7 +29,7 @@
 import { existsSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isCoreV2Markdown } from "./lib/reference-source.mjs";
+import { isCoreV2Markdown, isV3Markdown } from "./lib/reference-source.mjs";
 import yaml from "js-yaml";
 
 const WEB = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -78,6 +78,8 @@ export function retire(id) {
   // an adopted canonical would silently un-adopt the reference. The motion table
   // for an adopted reference has to be retired in its package instead.
   if (isCoreV2Markdown(raw)) return { id, ok: false, reason: "adopted-core-v2" };
+  // Same reasoning for DESIGN.md v3: this tool rewrites OmD 0.1 text, so it reports instead of writing.
+  if (isV3Markdown(raw)) return { id, ok: false, reason: "design-md-v3" };
   const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
   if (!fm) return { id, ok: false, reason: "no-frontmatter" };
   let front; try { front = yaml.load(fm[1], { schema: yaml.JSON_SCHEMA }); } catch { return { id, ok: false, reason: "bad-yaml" }; }

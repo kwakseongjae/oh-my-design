@@ -1,82 +1,224 @@
 ---
-id: starbucks
 name: Starbucks
-country: US
-category: consumer-tech
-homepage: "https://www.starbucks.com"
-primary_color: "#00704A"
-logo:
-  type: simpleicons
-  slug: "starbucks"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#00704A"
-    accent-green: "#00a862"
-    deep-forest: "#1e3932"
-    warm-white: "#f1f8f4"
-    white: "#fafafa"
-    cream: "#ede9e1"
-    latte: "#d4e9e2"
-    gold: "#cba258"
-    berry: "#c44d58"
-    success: "#00754a"
-    error: "#e75b52"
-    black: "#000000"
-    charcoal: "#1e1e1e"
-    body: "#4a4a4a"
-    secondary: "#6b6b6b"
-    disabled: "#8c8c8c"
-    border: "#d4d4d4"
-    light-gray: "#e8e8e8"
-    bg-gray: "#f2f0eb"
-  typography:
-    family: { sans: "SoDo Sans", mono: "SoDo Sans" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.08, tracking: -0.5, use: "Campaign hero headlines (Pike/Lander)" }
-    display-lg:   { size: 36, weight: 700, lineHeight: 1.22, tracking: -0.25, use: "Page titles, section openers" }
-    heading-1:    { size: 28, weight: 700, lineHeight: 1.29, use: "Major section headings" }
-    heading-2:    { size: 22, weight: 600, lineHeight: 1.36, use: "Card headings, sub-sections" }
-    heading-3:    { size: 18, weight: 600, lineHeight: 1.44, use: "List headers, menu item names" }
-    subtitle:     { size: 16, weight: 600, lineHeight: 1.50, use: "Navigation, emphasized labels" }
-    body-lg:      { size: 16, weight: 400, lineHeight: 1.63, use: "Descriptions, product copy" }
-    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.50, tracking: 0.2, use: "Metadata, fine print, legal" }
-    button:       { size: 14, weight: 600, lineHeight: 1.0, tracking: 0.3, use: "Button labels" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 4, md: 16, lg: 20, full: 9999 }
-  shadow:
-    subtle: "0 2px 8px rgba(30,57,50,0.08)"
-    standard: "0 4px 16px rgba(30,57,50,0.12)"
-    elevated: "0 6px 20px rgba(30,57,50,0.25)"
-    modal: "0 12px 40px rgba(30,57,50,0.24)"
-  components:
-    button-primary: { type: button, bg: "#00704A", fg: "#ffffff", radius: 9999, padding: "12px 24px", font: "14px/600 SoDo Sans", use: "Primary CTA pill, hover #1e3932" }
-    button-secondary: { type: button, fg: "#00704A", radius: 9999, padding: "12px 24px", font: "14px/600 SoDo Sans", use: "Outlined green pill, 1px #00704A border" }
-    button-tertiary: { type: button, fg: "#00704A", padding: "8px 12px", font: "14px/600 SoDo Sans", use: "Low-emphasis inline action, underline on hover" }
-    button-dark: { type: button, bg: "#fafafa", fg: "#00704A", radius: 9999, padding: "12px 24px", font: "14px/600 SoDo Sans", use: "Primary CTA on deep-forest or photo dark section" }
-    button-gold: { type: button, bg: "#cba258", fg: "#1e3932", radius: 9999, padding: "12px 24px", font: "14px/700 SoDo Sans", use: "Rewards/loyalty CTA" }
-    input-text: { type: input, fg: "#1e1e1e", radius: 4, padding: "14px 16px", font: "16px/400 SoDo Sans", use: "Standard form input, 1px #8c8c8c border, focus 2px #00704A" }
-    input-search: { type: input, bg: "#f2f0eb", radius: 9999, padding: "12px 20px", font: "16px/400 SoDo Sans", use: "Store locator, menu search pill" }
-    card-product: { type: card, radius: 16, padding: "16px", use: "Menu item, product, promo tile, 1px #e8e8e8 border, top full-bleed image" }
-    card-editorial: { type: card, bg: "#f1f8f4", radius: 20, padding: "32px", use: "Story blocks, campaign features, flat warm surface" }
-    card-rewards: { type: card, fg: "#ffffff", radius: 16, padding: "24px", use: "Loyalty balance, star count, green-to-forest gradient" }
-    badge-status: { type: badge, bg: "#00704A", fg: "#ffffff", radius: 9999, padding: "4px 12px", font: "11px/700 SoDo Sans", use: "NEW, LIMITED TIME, uppercase" }
-    badge-gold: { type: badge, bg: "#cba258", fg: "#1e3932", radius: 9999, padding: "4px 12px", font: "11px/700 SoDo Sans", use: "Star earnings, member-exclusive" }
-    badge-subtle: { type: badge, bg: "#d4e9e2", fg: "#00704A", radius: 9999, padding: "4px 12px", font: "11px/600 SoDo Sans", use: "Category labels, dietary tags" }
-    toast-default: { type: toast, bg: "#1e3932", fg: "#ffffff", radius: 8, padding: "14px 18px", font: "14px/600 SoDo Sans", use: "Transient confirmation" }
-    toast-success: { type: toast, bg: "#d4e9e2", fg: "#00704A", radius: 8, padding: "12px 16px", use: "Persistent success banner, 4px #00704A left border" }
-    dialog-modal: { type: dialog, fg: "#1e1e1e", radius: 16, padding: "32px", use: "Confirmation, store selection, green-tinted scrim" }
-    toggle-switch: { type: toggle, bg: "#00704A", radius: 9999, use: "Preference settings, #d4d4d4 off, #ffffff thumb" }
-  components_harvested: true
+colors:
+  primary: '#00704A'
+  accent-green: '#00a862'
+  deep-forest: '#1e3932'
+  warm-white: '#f1f8f4'
+  white: '#fafafa'
+  cream: '#ede9e1'
+  latte: '#d4e9e2'
+  gold: '#cba258'
+  berry: '#c44d58'
+  success: '#00754a'
+  error: '#e75b52'
+  black: '#000000'
+  charcoal: '#1e1e1e'
+  body: '#4a4a4a'
+  secondary: '#6b6b6b'
+  disabled: '#8c8c8c'
+  border: '#d4d4d4'
+  light-gray: '#e8e8e8'
+  bg-gray: '#f2f0eb'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.08
+    letterSpacing: '-0.5px'
+    use: Campaign hero headlines (Pike/Lander)
+  display-lg:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.22
+    letterSpacing: '-0.25px'
+    use: Page titles, section openers
+  heading-1:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.29
+    use: Major section headings
+  heading-2:
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.36
+    use: Card headings, sub-sections
+  heading-3:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.44
+    use: List headers, menu item names
+  subtitle:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: Navigation, emphasized labels
+  body-lg:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.63
+    use: Descriptions, product copy
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.57
+    use: Standard reading text
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0.2px
+    use: Metadata, fine print, legal
+  button:
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: 0.3px
+    use: Button labels
+rounded:
+  sm: 4px
+  md: 16px
+  lg: 20px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 96
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#00704A'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 12px 24px
+    typography: 14px/600 SoDo Sans
+    use: 'Primary CTA pill, hover #1e3932'
+  button-secondary:
+    type: button
+    textColor: '#00704A'
+    rounded: 9999px
+    padding: 12px 24px
+    typography: 14px/600 SoDo Sans
+    use: 'Outlined green pill, 1px #00704A border'
+  button-tertiary:
+    type: button
+    textColor: '#00704A'
+    padding: 8px 12px
+    typography: 14px/600 SoDo Sans
+    use: Low-emphasis inline action, underline on hover
+  button-dark:
+    type: button
+    backgroundColor: '#fafafa'
+    textColor: '#00704A'
+    rounded: 9999px
+    padding: 12px 24px
+    typography: 14px/600 SoDo Sans
+    use: Primary CTA on deep-forest or photo dark section
+  button-gold:
+    type: button
+    backgroundColor: '#cba258'
+    textColor: '#1e3932'
+    rounded: 9999px
+    padding: 12px 24px
+    typography: 14px/700 SoDo Sans
+    use: Rewards/loyalty CTA
+  input-text:
+    type: input
+    textColor: '#1e1e1e'
+    rounded: 4px
+    padding: 14px 16px
+    typography: 16px/400 SoDo Sans
+    use: 'Standard form input, 1px #8c8c8c border, focus 2px #00704A'
+  input-search:
+    type: input
+    backgroundColor: '#f2f0eb'
+    rounded: 9999px
+    padding: 12px 20px
+    typography: 16px/400 SoDo Sans
+    use: Store locator, menu search pill
+  card-product:
+    type: card
+    rounded: 16px
+    padding: 16px
+    use: 'Menu item, product, promo tile, 1px #e8e8e8 border, top full-bleed image'
+  card-editorial:
+    type: card
+    backgroundColor: '#f1f8f4'
+    rounded: 20px
+    padding: 32px
+    use: Story blocks, campaign features, flat warm surface
+  card-rewards:
+    type: card
+    textColor: '#ffffff'
+    rounded: 16px
+    padding: 24px
+    use: Loyalty balance, star count, green-to-forest gradient
+  badge-status:
+    type: badge
+    backgroundColor: '#00704A'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 4px 12px
+    typography: 11px/700 SoDo Sans
+    use: NEW, LIMITED TIME, uppercase
+  badge-gold:
+    type: badge
+    backgroundColor: '#cba258'
+    textColor: '#1e3932'
+    rounded: 9999px
+    padding: 4px 12px
+    typography: 11px/700 SoDo Sans
+    use: Star earnings, member-exclusive
+  badge-subtle:
+    type: badge
+    backgroundColor: '#d4e9e2'
+    textColor: '#00704A'
+    rounded: 9999px
+    padding: 4px 12px
+    typography: 11px/600 SoDo Sans
+    use: Category labels, dietary tags
+  toast-default:
+    type: toast
+    backgroundColor: '#1e3932'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 14px 18px
+    typography: 14px/600 SoDo Sans
+    use: Transient confirmation
+  toast-success:
+    type: toast
+    backgroundColor: '#d4e9e2'
+    textColor: '#00704A'
+    rounded: 8px
+    padding: 12px 16px
+    use: 'Persistent success banner, 4px #00704A left border'
+  dialog-modal:
+    type: dialog
+    textColor: '#1e1e1e'
+    rounded: 16px
+    padding: 32px
+    use: Confirmation, store selection, green-tinted scrim
+  toggle-switch:
+    type: toggle
+    backgroundColor: '#00704A'
+    rounded: 9999px
+    use: 'Preference settings, #d4d4d4 off, #ffffff thumb'
+fonts:
+  roles:
+    sans: SoDo Sans
+    mono: SoDo Sans
 ---
 
 # Design System Inspiration of Starbucks
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Starbucks is the world's most recognizable coffee brand, and its digital surfaces translate the warmth of a "third place" — neither home nor work — into a calm, generous, premium-feeling interface. The defining gesture is the **House Green (`#00704A`)**: a deep, confident emerald that has become so iconic it functions as a category-defining color the way Tiffany blue defines luxury jewelry. It is never bright or playful; it is the green of a well-worn apron, of forest canopy, of something that has been doing the same thing well for fifty years.
 
@@ -95,14 +237,45 @@ What defines Starbucks visually is **warmth disciplined by restraint**: a single
 - Generous whitespace and large touch targets — premium, unhurried, approachable
 - Accent Spring Green (`#00a862`) and deep forest (`#1e3932`) for layering within the green family
 
-## Primary tasks
+### Primary tasks
 
 - Order ahead through the app and skip the line at pickup
 - Find a store with seating and wifi near the next meeting
 - Check how many Stars remain before the next free drink
 - Browse the menu for new seasonal drinks between visits
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Starbucks was founded in **1971 in Seattle's Pike Place Market** — the Pike typeface and SoDo Sans both carry the company's home geography in their names. The original store sold coffee beans; the modern company was shaped by **Howard Schultz**, who returned from a trip to Italy convinced that America needed the espresso bar as a social institution. From that came the brand's central idea: the **"third place"** — a welcoming space between home and work where anyone can sit, connect, and feel at home over a cup of coffee.
+
+The visual identity has refined steadily toward that idea. The **Siren** — the twin-tailed mermaid — anchors the logo, rendered in House Green; over successive redesigns she shed her surrounding wordmark ring to become a confident, standalone mark, signaling a brand so recognizable it no longer needs to spell its name. The green itself has become cultural shorthand for "coffee" the way few colors own a category.
+
+Digitally, Starbucks runs one of the most successful loyalty programs in retail — **Starbucks Rewards** — whose stars, gold tier, and mobile order-ahead reshaped how the entire quick-service industry thinks about app-driven loyalty. The design system therefore carries two jobs at once: express the warm, premium, crafted third-place feeling, and power a high-frequency transactional app where ordering must be fast, clear, and rewarding.
+
+What Starbucks refuses: the cold efficiency of pure-tech interfaces, discount-retail crowding, and trend-chasing. It chooses warmth, restraint, generous space, and a single iconic green held steady across decades.
+
+### Principles
+
+1. **One green, held steady.** House Green `#00704a` is the brand. It carries primary action, identity, and accent. Foreign hues dilute fifty years of equity — resist them.
+2. **Warmth over clinical.** Surfaces are warm off-whites; shadows and scrims are green-tinted; type is humanist. Nothing reads cold or sterile. The interface should feel like the inside of the cup.
+3. **Photography leads, UI serves.** The product is the desire. Layouts are built around appetizing imagery; chrome recedes so the coffee can be wanted.
+4. **Pills everywhere.** The fully-rounded shape is a brand signature. Buttons, badges, chips, search, toggles — round them. Sharp corners feel like a different company.
+5. **Premium is space.** Generous whitespace is not wasted; it is the signal of craft and quality. When in doubt, add room, not content.
+6. **Reward generously.** Loyalty surfaces (gold `#cba258`, stars, tiers) celebrate the customer. The tone of Rewards is "you've earned this", never transactional.
+7. **Crafted, not templated.** Three proprietary typefaces with distinct jobs, art-directed photography, and warm palette layering make every surface feel made, not assembled.
+8. **Fast where it counts.** Behind the warmth is a high-frequency ordering app. Order, pay, and reward flows must be unambiguous and quick — warmth never costs clarity at checkout.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Starbucks customer segments, not individual people.*
+
+**Maya, 26, Chicago.** Marketing coordinator who order-aheads a venti oat milk latte five mornings a week on her commute. Lives in the app's Order tab; expects her favorites to be one tap away and her stars to update instantly. Knows exactly how many stars until her next free drink. If mobile order-ahead is slow or her usual store isn't pre-selected, she's annoyed before 9am. The app is a daily ritual utility for her, not a place to browse.
+
+**David, 41, Austin.** Works from coffee shops two or three days a week — Starbucks is his rotating office. Uses the store locator constantly to find a location with seating and wifi near his next meeting. Values the "third place" promise literally. Browses the menu occasionally for new seasonal drinks, reads the story/editorial content, and appreciates that the brand feels consistent and warm wherever he is.
+
+**Priya, 19, Seattle.** College student and Rewards power-user who games the program — Double Star Days, app-exclusive offers, personalized challenges. Treats Stars like a points game and screenshots her gold tier. Highly responsive to celebratory, generous loyalty copy; turned off by anything that feels like a cold corporate upsell. Discovers limited-time drinks through the app and social, then orders ahead to skip the line.
+
+## Colors
 
 ### Primary
 - **House Green** (`#00704A`): The brand. Primary CTAs, links, active states, brand mark, the apron green. The single most important color in the system.
@@ -139,7 +312,7 @@ What defines Starbucks visually is **warmth disciplined by restraint**: a single
 - **Overlay Scrim**: `rgba(30,57,50,0.6)`. Green-tinted modal backdrop (never neutral black — the scrim carries brand).
 - **Photo Gradient**: `linear-gradient(rgba(0,0,0,0) 0%, rgba(30,57,50,0.7) 100%)`. Text-legibility gradient over hero photography.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `"SoDo Sans", "Helvetica Neue", Helvetica, Arial, sans-serif` — proprietary humanist sans, the UI workhorse (body, labels, buttons, navigation).
@@ -170,7 +343,137 @@ What defines Starbucks visually is **warmth disciplined by restraint**: a single
 - **Restrained weights**: 400 body, 600 emphasis/buttons, 700 headings. Avoid thin (300) and black (900) weights in product UI.
 - **Sentence case default**: Headlines and body are sentence case; all-caps reserved for small nav CTAs and legal labels with added letter-spacing.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px; primary rhythm on 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- Section vertical padding: 64–96px on desktop — generous, unhurried
+- Card content padding: 16–32px
+
+### Grid & Container
+- Max content width: 1280px, centered
+- Desktop grid: 12 columns, 24px gutters
+- Horizontal page padding: 24px mobile, 48px desktop
+- Product grids: 2 cols mobile → 3 cols tablet → 4 cols desktop
+
+### Whitespace Philosophy
+- **Premium = space**: Generous margins around photography and CTAs signal craft and quality. Crowding reads as discount.
+- **Photography-led**: Layouts are built around large appetizing imagery; copy and CTAs sit in the negative space the photo leaves.
+- **Alternating warmth**: Sections alternate between warm white (`#f1f8f4`) and pure-ish white (`#fafafa`) to create rhythm without hard dividers.
+
+### Border Radius Scale
+- Pill (9999px): Buttons, badges, search fields, toggles, chips — the signature shape
+- Comfortable (16px): Standard cards, modals, image containers
+- Large (20px): Feature/editorial cards
+- Compact (4-8px): Text inputs, toasts, inline banners
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single-column, full-width photos, hamburger nav, sticky bottom CTA |
+| Tablet | 768–1024px | 2–3 column product grids, expanded nav |
+| Desktop | >1024px | 4-column grids, full top nav, 1280px max content width |
+
+#### Touch Targets
+- Buttons: minimum 44px height (48px preferred on mobile)
+- Nav and list items: minimum 48px tap height
+- Icon buttons: 44×44px minimum hit area
+
+#### Collapsing Strategy
+- Top nav collapses to a hamburger menu + persistent siren logo and "Sign in" on mobile
+- Multi-column footer stacks into accordion sections on mobile
+- Product grids reflow 4 → 3 → 2 → 1 columns down the breakpoints
+- Sticky bottom "Order now" CTA bar appears on mobile menu/product flows
+
+#### Image Behavior
+- Hero photography: full-bleed, art-directed crops per breakpoint, bottom green gradient for text legibility
+- Product images: square (1:1) within rounded cards, lazy-loaded
+- Siren logo: scales 32–48px, always circular, never recolored off House Green
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow | Page sections, warm flat editorial cards |
+| Subtle (1) | `0 2px 8px rgba(30,57,50,0.08)` | Product cards, list items |
+| Standard (2) | `0 4px 16px rgba(30,57,50,0.12)` | Hover-raised cards, sticky nav on scroll |
+| Elevated (3) | `0 6px 20px rgba(30,57,50,0.25)` | Toasts, dropdowns, popovers |
+| Modal (4) | `0 12px 40px rgba(30,57,50,0.24)` | Dialogs, bottom sheets |
+
+**Shadow Philosophy**: Shadows are tinted with the deep-forest green (`rgba(30,57,50,...)`) rather than pure black. This keeps elevation feeling warm and on-brand — even depth carries the green. Elevation is used sparingly; the primary tools for hierarchy are whitespace, warm surface layering, and photography, not heavy shadows.
+
+### Blur Effects
+- Sticky nav applies a subtle backdrop blur (`backdrop-filter: blur(8px)`) with a translucent white background on scroll.
+- Photographic hero overlays use a bottom-up green gradient rather than blur for text legibility.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `0 2px 8px rgba(30,57,50,0.08)`
+- `shadow.standard`: `0 4px 16px rgba(30,57,50,0.12)`
+- `shadow.elevated`: `0 6px 20px rgba(30,57,50,0.25)`
+- `shadow.modal`: `0 12px 40px rgba(30,57,50,0.24)`
+
+## Motion & Easing
+
+**Durations** (named):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Checkbox/toggle state, reduced-motion fallback |
+| `motion-fast` | 150ms | Hover, focus, button press, small reveals |
+| `motion-standard` | 250ms | Default — card hover-raise, dropdown, tab switch |
+| `motion-emphasis` | 400ms | Modal entrance, Rewards star earn, success moments |
+| `motion-page` | 350ms | Route/screen transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — modals, toasts, sheets |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — hovers, tabs, expand/collapse |
+| `ease-celebrate` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reserved for Rewards / stars-earned — a small joyful overshoot. Nowhere else. |
+
+**Signature motions.**
+
+1. **Card hover-raise.** Product cards lift on hover — `transform: translateY(-4px)` with shadow growing from Level 1 to Level 2 over `motion-standard / ease-standard`. Warm, gentle, premium.
+2. **Stars earned.** When stars are awarded, the gold star scales in with `ease-celebrate` overshoot over `motion-emphasis`, and the count rolls up. This is the one place playful spring motion is licensed — loyalty should feel rewarding.
+3. **Add-to-order.** The cart badge increments with a brief scale pulse (`scale 1 → 1.2 → 1` over `motion-fast`) so the action is felt, paired with the confirmation toast.
+4. **Modal & sheet entrance.** Modals fade + scale from 0.96 with `ease-enter` over `motion-emphasis`, green-tinted scrim fading in synchronously. Dismissal is faster via `ease-exit`.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; the celebratory star earn becomes a simple fade. The app stays warm and usable, just less kinetic.
+
+<!--
+OmD v0.1 Sources — Starbucks
+
+Token grounding:
+- Primary House Green #00704A confirmed via multiple brand-color references and
+  Starbucks Creative Expression (creative.starbucks.com).
+- Typography (SoDo Sans primary, Lander serif, Pike condensed) confirmed via
+  creative.starbucks.com/typography and brand-guide summaries.
+- Accent Spring Green (#00a862), Deep Forest / House Black-Green (#1e3932),
+  warm whites, and Rewards gold (#cba258) are widely documented Starbucks
+  palette values used across web and app surfaces.
+
+Web search (2026-06-06):
+- creative.starbucks.com/typography/ (typefaces)
+- usbrandcolors.com/starbucks-colors, brandpalettes.com, colorswall.com/color/00704a
+  (hex confirmation for #00704A)
+- mobbin.com/colors/brand/starbucks (palette + UI references)
+
+Component geometry (pill buttons 9999px radius, 16px cards, green-tinted shadows)
+and interaction patterns are editorial readings of Starbucks' live web/app
+surfaces and Rewards program design language, not verbatim spec-doc claims.
+
+Personas (§13) are fictional archetypes informed by publicly described
+Starbucks customer segments. Any resemblance to specific individuals is unintended.
+-->
+
+## Components
 
 ### Buttons
 
@@ -362,51 +665,25 @@ The signature Starbucks button is a **fully-rounded pill** (`border-radius: 9999
 - Radius: 9999px
 - Use: Preference settings, notification opt-ins
 
-
 **Tier 1 sources:** https://www.starbucks.com (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px; primary rhythm on 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
-- Section vertical padding: 64–96px on desktop — generous, unhurried
-- Card content padding: 16–32px
+| State | Treatment |
+|---|---|
+| **Empty (no orders)** | Warm single line of `#4a4a4a` body copy ("No orders yet — let's find your favorite") plus a green pill CTA. Encouraging, never blank. |
+| **Empty (search)** | `#6b6b6b` caption ("We couldn't find that — try a different search"), gentle and specific. No illustration of failure. |
+| **Loading (first paint)** | Skeleton blocks at `#f2f0eb` (warm gray) matching final layout; product images as rounded skeleton tiles. Subtle 1.2s shimmer. |
+| **Loading (action)** | In-button spinner in white on the green pill; button width preserved, label hidden, no double-submit. |
+| **Error (inline field)** | 2px `#e75b52` border on input, helper text below in `#e75b52`, one specific actionable sentence. |
+| **Error (toast)** | `#1e3932` background, white 14px text, 8px radius, 3s auto-dismiss, bottom of screen. Warm phrasing. |
+| **Error (blocking)** | Reserved for outage/network. Centered warm message in `#1e1e1e` 18px weight 600, green pill retry button below. |
+| **Success (added to order)** | `#1e3932` toast ("Added to your order") + cart badge count increments with a brief scale pulse. |
+| **Success (stars earned)** | Celebratory moment — gold `#cba258` star animates in, "+25 Stars" counts up, Rewards card balance updates. This is intentionally delightful. |
+| **Disabled** | Button background `#d4d4d4`, text `#8c8c8c`. Inputs keep `#d4d4d4` border so geometry stays stable if re-enabled. |
+| **Selected (store/option)** | 2px `#00704a` border + `#f1f8f4` fill + green check icon. Clear, warm affirmation of choice. |
 
-### Grid & Container
-- Max content width: 1280px, centered
-- Desktop grid: 12 columns, 24px gutters
-- Horizontal page padding: 24px mobile, 48px desktop
-- Product grids: 2 cols mobile → 3 cols tablet → 4 cols desktop
-
-### Whitespace Philosophy
-- **Premium = space**: Generous margins around photography and CTAs signal craft and quality. Crowding reads as discount.
-- **Photography-led**: Layouts are built around large appetizing imagery; copy and CTAs sit in the negative space the photo leaves.
-- **Alternating warmth**: Sections alternate between warm white (`#f1f8f4`) and pure-ish white (`#fafafa`) to create rhythm without hard dividers.
-
-### Border Radius Scale
-- Pill (9999px): Buttons, badges, search fields, toggles, chips — the signature shape
-- Comfortable (16px): Standard cards, modals, image containers
-- Large (20px): Feature/editorial cards
-- Compact (4-8px): Text inputs, toasts, inline banners
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow | Page sections, warm flat editorial cards |
-| Subtle (1) | `0 2px 8px rgba(30,57,50,0.08)` | Product cards, list items |
-| Standard (2) | `0 4px 16px rgba(30,57,50,0.12)` | Hover-raised cards, sticky nav on scroll |
-| Elevated (3) | `0 6px 20px rgba(30,57,50,0.25)` | Toasts, dropdowns, popovers |
-| Modal (4) | `0 12px 40px rgba(30,57,50,0.24)` | Dialogs, bottom sheets |
-
-**Shadow Philosophy**: Shadows are tinted with the deep-forest green (`rgba(30,57,50,...)`) rather than pure black. This keeps elevation feeling warm and on-brand — even depth carries the green. Elevation is used sparingly; the primary tools for hierarchy are whitespace, warm surface layering, and photography, not heavy shadows.
-
-### Blur Effects
-- Sticky nav applies a subtle backdrop blur (`backdrop-filter: blur(8px)`) with a translucent white background on scroll.
-- Photographic hero overlays use a bottom-up green gradient rather than blur for text legibility.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use House Green (`#00704a`) as the singular primary action and brand color
@@ -428,32 +705,23 @@ The signature Starbucks button is a **fully-rounded pill** (`border-radius: 9999
 - Don't use tight line-height on body copy — the brand is unhurried (1.5+)
 - Don't mix all three typefaces inside a single component
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single-column, full-width photos, hamburger nav, sticky bottom CTA |
-| Tablet | 768–1024px | 2–3 column product grids, expanded nav |
-| Desktop | >1024px | 4-column grids, full top nav, 1280px max content width |
+Starbucks speaks like a warm, knowledgeable barista who genuinely wants your day to be better — friendly, welcoming, never corporate, never pushy. Copy is conversational and human ("Let's get you to your nearest store"), uses contractions, and leads with the customer's moment rather than the product spec. It celebrates ritual and small joys. It is inclusive and warm without being saccharine.
 
-### Touch Targets
-- Buttons: minimum 44px height (48px preferred on mobile)
-- Nav and list items: minimum 48px tap height
-- Icon buttons: 44×44px minimum hit area
+| Context | Tone |
+|---|---|
+| CTAs | Inviting, action-forward ("Order now", "Join now", "Find a store") |
+| Success messages | Warm, affirming ("Your order's on the way", "You've earned 25 Stars") |
+| Error messages | Gentle, specific, never blaming ("We couldn't find that store — try another zip code") |
+| Onboarding | Welcoming second-person, one idea per screen, celebrates joining |
+| Rewards | Celebratory, generous, makes the customer feel rewarded ("Treat yourself — you've earned it") |
+| Empty states | Encouraging, suggests a next step ("No orders yet — let's find your favorite") |
+| Legal / disclosure | Plain, clear, respectful — never hidden, never dense legalese where avoidable |
 
-### Collapsing Strategy
-- Top nav collapses to a hamburger menu + persistent siren logo and "Sign in" on mobile
-- Multi-column footer stacks into accordion sections on mobile
-- Product grids reflow 4 → 3 → 2 → 1 columns down the breakpoints
-- Sticky bottom "Order now" CTA bar appears on mobile menu/product flows
+**Forbidden phrases.** Avoid cold corporate language ("Submit", "Error occurred", "Invalid input"), pushy hard-sell ("Buy now or miss out"), and anything that breaks the warm-third-place feeling. Prefer "Order" over "Purchase", "Join" over "Register", "We couldn't…" over "Failure".
 
-### Image Behavior
-- Hero photography: full-bleed, art-directed crops per breakpoint, bottom green gradient for text legibility
-- Product images: square (1:1) within rounded cards, lazy-loaded
-- Siren logo: scales 32–48px, always circular, never recolored off House Green
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: House Green (`#00704a`)
@@ -484,121 +752,3 @@ The signature Starbucks button is a **fully-rounded pill** (`border-radius: 9999
 5. SoDo Sans for UI; Lander serif and Pike condensed only for hero/editorial/wayfinding
 6. Gold `#cba258` belongs to Rewards only
 7. Be generous with whitespace — premium reads as space; let photography lead
-
-## 10. Voice & Tone
-
-Starbucks speaks like a warm, knowledgeable barista who genuinely wants your day to be better — friendly, welcoming, never corporate, never pushy. Copy is conversational and human ("Let's get you to your nearest store"), uses contractions, and leads with the customer's moment rather than the product spec. It celebrates ritual and small joys. It is inclusive and warm without being saccharine.
-
-| Context | Tone |
-|---|---|
-| CTAs | Inviting, action-forward ("Order now", "Join now", "Find a store") |
-| Success messages | Warm, affirming ("Your order's on the way", "You've earned 25 Stars") |
-| Error messages | Gentle, specific, never blaming ("We couldn't find that store — try another zip code") |
-| Onboarding | Welcoming second-person, one idea per screen, celebrates joining |
-| Rewards | Celebratory, generous, makes the customer feel rewarded ("Treat yourself — you've earned it") |
-| Empty states | Encouraging, suggests a next step ("No orders yet — let's find your favorite") |
-| Legal / disclosure | Plain, clear, respectful — never hidden, never dense legalese where avoidable |
-
-**Forbidden phrases.** Avoid cold corporate language ("Submit", "Error occurred", "Invalid input"), pushy hard-sell ("Buy now or miss out"), and anything that breaks the warm-third-place feeling. Prefer "Order" over "Purchase", "Join" over "Register", "We couldn't…" over "Failure".
-
-## 11. Brand Narrative
-
-Starbucks was founded in **1971 in Seattle's Pike Place Market** — the Pike typeface and SoDo Sans both carry the company's home geography in their names. The original store sold coffee beans; the modern company was shaped by **Howard Schultz**, who returned from a trip to Italy convinced that America needed the espresso bar as a social institution. From that came the brand's central idea: the **"third place"** — a welcoming space between home and work where anyone can sit, connect, and feel at home over a cup of coffee.
-
-The visual identity has refined steadily toward that idea. The **Siren** — the twin-tailed mermaid — anchors the logo, rendered in House Green; over successive redesigns she shed her surrounding wordmark ring to become a confident, standalone mark, signaling a brand so recognizable it no longer needs to spell its name. The green itself has become cultural shorthand for "coffee" the way few colors own a category.
-
-Digitally, Starbucks runs one of the most successful loyalty programs in retail — **Starbucks Rewards** — whose stars, gold tier, and mobile order-ahead reshaped how the entire quick-service industry thinks about app-driven loyalty. The design system therefore carries two jobs at once: express the warm, premium, crafted third-place feeling, and power a high-frequency transactional app where ordering must be fast, clear, and rewarding.
-
-What Starbucks refuses: the cold efficiency of pure-tech interfaces, discount-retail crowding, and trend-chasing. It chooses warmth, restraint, generous space, and a single iconic green held steady across decades.
-
-## 12. Principles
-
-1. **One green, held steady.** House Green `#00704a` is the brand. It carries primary action, identity, and accent. Foreign hues dilute fifty years of equity — resist them.
-2. **Warmth over clinical.** Surfaces are warm off-whites; shadows and scrims are green-tinted; type is humanist. Nothing reads cold or sterile. The interface should feel like the inside of the cup.
-3. **Photography leads, UI serves.** The product is the desire. Layouts are built around appetizing imagery; chrome recedes so the coffee can be wanted.
-4. **Pills everywhere.** The fully-rounded shape is a brand signature. Buttons, badges, chips, search, toggles — round them. Sharp corners feel like a different company.
-5. **Premium is space.** Generous whitespace is not wasted; it is the signal of craft and quality. When in doubt, add room, not content.
-6. **Reward generously.** Loyalty surfaces (gold `#cba258`, stars, tiers) celebrate the customer. The tone of Rewards is "you've earned this", never transactional.
-7. **Crafted, not templated.** Three proprietary typefaces with distinct jobs, art-directed photography, and warm palette layering make every surface feel made, not assembled.
-8. **Fast where it counts.** Behind the warmth is a high-frequency ordering app. Order, pay, and reward flows must be unambiguous and quick — warmth never costs clarity at checkout.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Starbucks customer segments, not individual people.*
-
-**Maya, 26, Chicago.** Marketing coordinator who order-aheads a venti oat milk latte five mornings a week on her commute. Lives in the app's Order tab; expects her favorites to be one tap away and her stars to update instantly. Knows exactly how many stars until her next free drink. If mobile order-ahead is slow or her usual store isn't pre-selected, she's annoyed before 9am. The app is a daily ritual utility for her, not a place to browse.
-
-**David, 41, Austin.** Works from coffee shops two or three days a week — Starbucks is his rotating office. Uses the store locator constantly to find a location with seating and wifi near his next meeting. Values the "third place" promise literally. Browses the menu occasionally for new seasonal drinks, reads the story/editorial content, and appreciates that the brand feels consistent and warm wherever he is.
-
-**Priya, 19, Seattle.** College student and Rewards power-user who games the program — Double Star Days, app-exclusive offers, personalized challenges. Treats Stars like a points game and screenshots her gold tier. Highly responsive to celebratory, generous loyalty copy; turned off by anything that feels like a cold corporate upsell. Discovers limited-time drinks through the app and social, then orders ahead to skip the line.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no orders)** | Warm single line of `#4a4a4a` body copy ("No orders yet — let's find your favorite") plus a green pill CTA. Encouraging, never blank. |
-| **Empty (search)** | `#6b6b6b` caption ("We couldn't find that — try a different search"), gentle and specific. No illustration of failure. |
-| **Loading (first paint)** | Skeleton blocks at `#f2f0eb` (warm gray) matching final layout; product images as rounded skeleton tiles. Subtle 1.2s shimmer. |
-| **Loading (action)** | In-button spinner in white on the green pill; button width preserved, label hidden, no double-submit. |
-| **Error (inline field)** | 2px `#e75b52` border on input, helper text below in `#e75b52`, one specific actionable sentence. |
-| **Error (toast)** | `#1e3932` background, white 14px text, 8px radius, 3s auto-dismiss, bottom of screen. Warm phrasing. |
-| **Error (blocking)** | Reserved for outage/network. Centered warm message in `#1e1e1e` 18px weight 600, green pill retry button below. |
-| **Success (added to order)** | `#1e3932` toast ("Added to your order") + cart badge count increments with a brief scale pulse. |
-| **Success (stars earned)** | Celebratory moment — gold `#cba258` star animates in, "+25 Stars" counts up, Rewards card balance updates. This is intentionally delightful. |
-| **Disabled** | Button background `#d4d4d4`, text `#8c8c8c`. Inputs keep `#d4d4d4` border so geometry stays stable if re-enabled. |
-| **Selected (store/option)** | 2px `#00704a` border + `#f1f8f4` fill + green check icon. Clear, warm affirmation of choice. |
-
-## 15. Motion & Easing
-
-**Durations** (named):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Checkbox/toggle state, reduced-motion fallback |
-| `motion-fast` | 150ms | Hover, focus, button press, small reveals |
-| `motion-standard` | 250ms | Default — card hover-raise, dropdown, tab switch |
-| `motion-emphasis` | 400ms | Modal entrance, Rewards star earn, success moments |
-| `motion-page` | 350ms | Route/screen transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — modals, toasts, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way — hovers, tabs, expand/collapse |
-| `ease-celebrate` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reserved for Rewards / stars-earned — a small joyful overshoot. Nowhere else. |
-
-**Signature motions.**
-
-1. **Card hover-raise.** Product cards lift on hover — `transform: translateY(-4px)` with shadow growing from Level 1 to Level 2 over `motion-standard / ease-standard`. Warm, gentle, premium.
-2. **Stars earned.** When stars are awarded, the gold star scales in with `ease-celebrate` overshoot over `motion-emphasis`, and the count rolls up. This is the one place playful spring motion is licensed — loyalty should feel rewarding.
-3. **Add-to-order.** The cart badge increments with a brief scale pulse (`scale 1 → 1.2 → 1` over `motion-fast`) so the action is felt, paired with the confirmation toast.
-4. **Modal & sheet entrance.** Modals fade + scale from 0.96 with `ease-enter` over `motion-emphasis`, green-tinted scrim fading in synchronously. Dismissal is faster via `ease-exit`.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant`; the celebratory star earn becomes a simple fade. The app stays warm and usable, just less kinetic.
-
-<!--
-OmD v0.1 Sources — Starbucks
-
-Token grounding:
-- Primary House Green #00704A confirmed via multiple brand-color references and
-  Starbucks Creative Expression (creative.starbucks.com).
-- Typography (SoDo Sans primary, Lander serif, Pike condensed) confirmed via
-  creative.starbucks.com/typography and brand-guide summaries.
-- Accent Spring Green (#00a862), Deep Forest / House Black-Green (#1e3932),
-  warm whites, and Rewards gold (#cba258) are widely documented Starbucks
-  palette values used across web and app surfaces.
-
-Web search (2026-06-06):
-- creative.starbucks.com/typography/ (typefaces)
-- usbrandcolors.com/starbucks-colors, brandpalettes.com, colorswall.com/color/00704a
-  (hex confirmation for #00704A)
-- mobbin.com/colors/brand/starbucks (palette + UI references)
-
-Component geometry (pill buttons 9999px radius, 16px cards, green-tinted shadows)
-and interaction patterns are editorial readings of Starbucks' live web/app
-surfaces and Rewards program design language, not verbatim spec-doc claims.
-
-Personas (§13) are fictional archetypes informed by publicly described
-Starbucks customer segments. Any resemblance to specific individuals is unintended.
--->
