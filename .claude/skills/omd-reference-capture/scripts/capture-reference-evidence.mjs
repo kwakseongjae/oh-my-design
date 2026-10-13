@@ -162190,19 +162190,61 @@ function classifyCapturedElement(element2) {
   if (/card|panel|tile|surface/.test(cls) || tag === "article") return "card";
   return "unknown";
 }
+var FILLED_BUTTON_MIN_HEIGHT = 28;
+var FILLED_BUTTON_MAX_HEIGHT = 72;
+var FILLED_BUTTON_MAX_WIDTH = 480;
+function isFilledButtonLike(element2) {
+  return element2.coveredByMedia === false && element2.textLength > 0 && element2.rect.height >= FILLED_BUTTON_MIN_HEIGHT && element2.rect.height <= FILLED_BUTTON_MAX_HEIGHT && element2.rect.width <= FILLED_BUTTON_MAX_WIDTH && resolveElementFill(element2.style) !== null;
+}
+function classifyEvidenceElement(element2) {
+  const type4 = classifyCapturedElement(element2);
+  if (type4 !== "unknown") return type4;
+  const interactive = element2.tagName.toLowerCase() === "a" || element2.coveredByMedia !== void 0;
+  return interactive && isFilledButtonLike(element2) ? "button" : type4;
+}
 function roleForElement(element2) {
   const tag = element2.tagName.toLowerCase();
   if (/^h[1-6]$/.test(tag)) return tag;
-  const component = classifyCapturedElement(element2);
+  const component = classifyEvidenceElement(element2);
   if (component !== "unknown") return component;
   return tag === "p" ? "body" : "text";
 }
+function gradientToken(value2) {
+  const stops = [...value2.matchAll(/rgba?\([^)]*\)|#[0-9a-f]{3}(?:[0-9a-f]{3})?\b/gi)].map((match) => normalizeCapturedColor(match[0])).filter((stop) => stop !== null);
+  return stops.length ? `gradient(${stops.join(">")})` : "gradient";
+}
+function resolveElementFill(style) {
+  const own = normalizeCapturedColor(style.backgroundColor);
+  if (own) return { value: own, painted: false, gradient: false };
+  const painted = style.paintedBackgroundColor ? normalizeCapturedColor(style.paintedBackgroundColor) : null;
+  if (painted) return { value: painted, painted: true, gradient: false };
+  if (style.paintedBackgroundImage) return { value: gradientToken(style.paintedBackgroundImage), painted: true, gradient: true };
+  return null;
+}
+var LINK_DEFAULT_COLORS = /* @__PURE__ */ new Set(["#0000ee", "#ff0000", "#551a8b"]);
+function isLinkDefaultColor(value2) {
+  return typeof value2 === "string" && LINK_DEFAULT_COLORS.has(normalizeCapturedColor(value2) ?? "");
+}
+function isLinkDefaultOnlyChange(tagName, before, after) {
+  const rest = before;
+  const next = after;
+  if (tagName.toLowerCase() !== "a" || !isLinkDefaultColor(rest.color) || !isLinkDefaultColor(next.color)) return false;
+  let changed = false;
+  for (const key of /* @__PURE__ */ new Set([...Object.keys(rest), ...Object.keys(next)])) {
+    if (JSON.stringify(rest[key]) === JSON.stringify(next[key])) continue;
+    if (!["color", "borderColor", "labelColor"].includes(key) || !isLinkDefaultColor(rest[key]) || !isLinkDefaultColor(next[key])) return false;
+    changed = true;
+  }
+  return changed;
+}
 function stableStyleFingerprint(element2) {
   const style = element2.style;
+  const linkDefault = element2.tagName.toLowerCase() === "a" && isLinkDefaultColor(style.color);
+  const label = linkDefault && style.labelColor && !isLinkDefaultColor(style.labelColor) ? normalizeCapturedColor(style.labelColor) : null;
   return [
-    normalizeCapturedColor(style.backgroundColor) ?? "transparent",
-    normalizeCapturedColor(style.color) ?? "unknown",
-    normalizeCapturedColor(style.borderColor) ?? "none",
+    resolveElementFill(style)?.value ?? "transparent",
+    linkDefault ? label ?? "link-default" : normalizeCapturedColor(style.color) ?? "unknown",
+    linkDefault && isLinkDefaultColor(style.borderColor) ? "link-default" : normalizeCapturedColor(style.borderColor) ?? "none",
     style.borderRadius,
     style.padding,
     Math.round(element2.rect.height),
@@ -162274,17 +162316,18 @@ function aggregateReferenceEvidence(input) {
   const elements = input.surfaces.flatMap((surface) => surface.elements);
   const colorMap = /* @__PURE__ */ new Map();
   for (const element2 of elements) {
+    const fill2 = resolveElementFill(element2.style);
     const values = [
-      ["background", element2.style.backgroundColor],
-      ["text", element2.style.color],
-      ["border", element2.style.borderColor]
+      ["background", fill2 && !fill2.gradient ? fill2.value : null, fill2?.painted ?? false],
+      ["text", normalizeCapturedColor(element2.style.color), false],
+      ["border", normalizeCapturedColor(element2.style.borderColor), false]
     ];
-    for (const [property, raw] of values) {
-      const value2 = normalizeCapturedColor(raw);
+    for (const [property, value2, painted] of values) {
       if (!value2) continue;
       const key = `${property}:${value2}`;
-      const item = colorMap.get(key) ?? { value: value2, property, count: 0, surfaces: /* @__PURE__ */ new Set() };
+      const item = colorMap.get(key) ?? { value: value2, property, count: 0, painted: 0, surfaces: /* @__PURE__ */ new Set() };
       item.count += 1;
+      if (painted) item.painted += 1;
       item.surfaces.add(element2.surfaceId);
       colorMap.set(key, item);
     }
@@ -162294,7 +162337,8 @@ function aggregateReferenceEvidence(input) {
     property: item.property,
     occurrences: item.count,
     surfaces: [...item.surfaces].sort(),
-    confidence: confidence(item.count, item.surfaces.size)
+    confidence: confidence(item.count, item.surfaces.size),
+    ...item.painted ? { paintedOccurrences: item.painted } : {}
   })).sort((a, b) => b.occurrences - a.occurrences);
   const typeMap = /* @__PURE__ */ new Map();
   for (const element2 of elements.filter((item) => item.textLength > 0)) {
@@ -162306,19 +162350,30 @@ function aggregateReferenceEvidence(input) {
     typeMap.set(key, item);
   }
   const typography = [...typeMap.values()].map(({ count, ...item }) => ({ ...item, occurrences: count })).sort((a, b) => b.occurrences - a.occurrences);
+  const bySelector = new Map(elements.map((element2) => [element2.selector, element2]));
+  const linkDefaultState = (element2, state) => {
+    const restSelector = element2.selector.split("::state-")[0];
+    const rest = bySelector.get(restSelector);
+    const frame = bySelector.get(`${restSelector}::state-${state}`);
+    if (!rest || !frame || frame.stateChanges) return false;
+    return isLinkDefaultOnlyChange(frame.tagName, rest.style, frame.style);
+  };
   const componentMap = /* @__PURE__ */ new Map();
   for (const element2 of elements) {
-    const type4 = classifyCapturedElement(element2);
+    const type4 = classifyEvidenceElement(element2);
     if (type4 === "unknown") continue;
     const fingerprint = stableStyleFingerprint(element2);
     const key = `${type4}:${fingerprint}`;
-    const item = componentMap.get(key) ?? { type: type4, fingerprint, elements: [], surfaces: /* @__PURE__ */ new Set(), states: /* @__PURE__ */ new Set() };
+    const item = componentMap.get(key) ?? { type: type4, fingerprint, elements: [], painted: 0, surfaces: /* @__PURE__ */ new Set(), states: /* @__PURE__ */ new Set() };
     item.elements.push(element2);
+    if (resolveElementFill(element2.style)?.painted) item.painted += 1;
     item.surfaces.add(element2.surfaceId);
     if (element2.disabled) item.states.add("disabled");
     if (element2.ariaSelected === "true") item.states.add("selected");
     if (element2.ariaChecked !== null) item.states.add(element2.ariaChecked === "true" ? "checked" : "unchecked");
-    for (const state of input.stateEvidence?.[element2.selector] ?? []) item.states.add(state);
+    for (const state of input.stateEvidence?.[element2.selector] ?? []) {
+      if (!linkDefaultState(element2, state)) item.states.add(state);
+    }
     componentMap.set(key, item);
   }
   const components = [...componentMap.values()].map((item) => ({
@@ -162328,6 +162383,7 @@ function aggregateReferenceEvidence(input) {
     surfaces: [...item.surfaces].sort(),
     states: [...item.states].sort(),
     confidence: confidence(item.elements.length, item.surfaces.size, item.states.size > 0),
+    ...item.painted ? { paintedOccurrences: item.painted } : {},
     representative: item.elements[0]
   })).sort((a, b) => b.occurrences - a.occurrences);
   const spacing = clusterPixelValues(elements.flatMap((element2) => [element2.style.padding, element2.style.margin, element2.style.gap]));
@@ -162369,6 +162425,21 @@ function aggregateReferenceEvidence(input) {
 
 // web/src/lib/references/capture-policy.ts
 init_esm_shims();
+function dedupeRouteUrls(urls) {
+  const seen = /* @__PURE__ */ new Set();
+  const routes = [];
+  for (const url of urls) {
+    let href = url;
+    try {
+      href = new URL(url).href;
+    } catch {
+    }
+    if (seen.has(href)) continue;
+    seen.add(href);
+    routes.push(href);
+  }
+  return routes;
+}
 function isUnsafeCaptureSurface(value2) {
   try {
     const url = new URL(value2);
@@ -162411,6 +162482,8 @@ var maxRoutes = Number(option("--max-routes") ?? (!Array.isArray(routeEntry) ? r
 if (!Number.isInteger(maxRoutes) || maxRoutes < 1 || maxRoutes > 8) throw new Error(`invalid --max-routes: ${maxRoutes}`);
 var captureExpandedInteractions = !process.argv.includes("--no-interactions");
 var capturePseudoStates = !process.argv.includes("--baseline-only");
+var RENDER_WAIT_MS = Number(option("--render-wait-ms") ?? "10000");
+if (!Number.isFinite(RENDER_WAIT_MS) || RENDER_WAIT_MS < 0) throw new Error(`invalid --render-wait-ms: ${RENDER_WAIT_MS}`);
 if (!Array.isArray(configuredRoutes) || configuredRoutes.some((value2) => typeof value2 !== "string" || !/^https?:\/\//.test(value2))) {
   throw new Error(`invalid capture routes for ${referenceId}`);
 }
@@ -162449,19 +162522,23 @@ function fontSources(css, cssUrl) {
   }
   return results;
 }
+var CONSENT_REJECT_SELECTORS = [
+  "#onetrust-reject-all-handler",
+  "#reject-all",
+  "#CybotCookiebotDialogBodyButtonDecline",
+  "button[data-testid='uc-deny-all-button']",
+  ".didomi-continue-without-agreeing",
+  "#didomi-notice-disagree-button"
+];
+var CONSENT_REJECT_WORDS = /^(reject all|reject|decline all|decline|only necessary|necessary only|use necessary only|essential only|only essential|deny all|deny|refuse|모두 거부|거부|필수(만| 항목만| 쿠키만) (허용|동의)(하기)?|拒否する|すべて拒否)$/i;
 async function dismissObstructions(page2) {
   await page2.keyboard.press("Escape").catch(() => {
   });
   const selectors2 = [
+    ...CONSENT_REJECT_SELECTORS,
     '[aria-label*="close" i]',
     '[aria-label*="dismiss" i]',
-    '[aria-label*="\uB2EB\uAE30"]',
-    'button:has-text("Accept")',
-    'button:has-text("I agree")',
-    'button:has-text("\uB3D9\uC758")',
-    'button:has-text("\uBAA8\uB450 \uB3D9\uC758")',
-    '[id*="cookie" i] button',
-    '[class*="cookie" i] button'
+    '[aria-label*="\uB2EB\uAE30"]'
   ];
   for (const selector of selectors2) {
     const locator2 = page2.locator(selector).first();
@@ -162470,6 +162547,41 @@ async function dismissObstructions(page2) {
       });
     }
   }
+  const rejectByText = page2.locator("button, a[role='button'], [role='button']").filter({ hasText: CONSENT_REJECT_WORDS }).first();
+  if (await rejectByText.isVisible({ timeout: 150 }).catch(() => false)) {
+    await rejectByText.click({ timeout: 500 }).catch(() => {
+    });
+  }
+}
+var RENDER_MIN_NODES = 20;
+async function visibleRenderCount(page2) {
+  return page2.evaluate(() => {
+    const interactive = "a[href], button, input, select, textarea, [role='button'], [role='link'], [tabindex]";
+    let count = 0;
+    for (const element2 of Array.from(document.body?.querySelectorAll("*") ?? [])) {
+      const htmlElement = element2;
+      const hasOwnText = Array.from(htmlElement.childNodes).some((node) => node.nodeType === 3 && (node.textContent ?? "").trim().length > 0);
+      if (!hasOwnText && !htmlElement.matches(interactive)) continue;
+      const rect = htmlElement.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) continue;
+      const style = getComputedStyle(htmlElement);
+      if (style.visibility === "hidden" || style.display === "none" || Number(style.opacity) === 0) continue;
+      count += 1;
+    }
+    return count;
+  }).catch(() => 0);
+}
+async function waitForRender(page2) {
+  const startedAt = Date.now();
+  let previous = -1;
+  let last = 0;
+  while (Date.now() - startedAt < RENDER_WAIT_MS) {
+    last = await visibleRenderCount(page2);
+    if (last >= RENDER_MIN_NODES && last === previous) return;
+    previous = last;
+    await page2.waitForTimeout(500);
+  }
+  console.error(`[reference-evidence] ${page2.url()}: render wait hit the ${RENDER_WAIT_MS}ms cap (last visible count ${last}); capturing as is`);
 }
 async function discoverRoutes(page2, baseUrl) {
   const links = await page2.evaluate(() => [...document.querySelectorAll("a[href]")].map((anchor) => anchor.href));
@@ -162495,7 +162607,132 @@ async function discoverRoutes(page2, baseUrl) {
   const publicDesignSystemUrls = unique.filter((url) => /design-system|components|storybook|styleguide|\.design(?:\/|$)/i.test(url)).slice(0, 20);
   return { routes, fontOrLicenseUrls, publicDesignSystemUrls };
 }
+async function installPaintResolver(page2) {
+  await page2.evaluate(() => {
+    const host = window;
+    if (host.__omdPaint) return;
+    const COVER = 0.85;
+    const SLACK = 0.15;
+    const UP = 3;
+    const MAX_NODES = 200;
+    const GRADIENT = /(?:repeating-)?(?:linear|radial|conic)-gradient\(/i;
+    const MEDIA = /^(?:img|picture|video|canvas|iframe|object|embed)$/;
+    const SKIP = /^(?:svg|script|style|template|noscript)$/;
+    const CONTROL = 'button,a,input,select,textarea,[role="button"],[role="tab"],[role="switch"],[tabindex]';
+    const alpha = (value2) => {
+      const raw = value2.trim().toLowerCase();
+      if (!raw || raw === "transparent") return 0;
+      const rgba = raw.match(/^rgba?\(([^)]*)\)$/);
+      const last = rgba ? rgba[1].split(/[\s,/]+/).filter(Boolean)[3] : raw.match(/\/\s*([\d.]+%?)\s*\)$/)?.[1];
+      if (last === void 0) return 1;
+      return last.endsWith("%") ? Number(last.slice(0, -1)) / 100 : Number(last);
+    };
+    const gradientOf = (style) => GRADIENT.test(style.backgroundImage) && !/url\(/i.test(style.backgroundImage) ? style.backgroundImage : void 0;
+    const fillOf = (style) => {
+      const color = alpha(style.backgroundColor) > 0 ? style.backgroundColor : void 0;
+      const image = gradientOf(style);
+      return color || image ? { ...color ? { color } : {}, ...image ? { image } : {} } : null;
+    };
+    const parentOf = (node) => node.parentElement ?? (node.getRootNode().host ?? null);
+    const childrenOf = (node) => [...node.children, ...node.shadowRoot ? [...node.shadowRoot.children] : []];
+    const label = (node) => {
+      const className = node.className;
+      const first = typeof className === "string" ? className.trim().split(/\s+/)[0] ?? "" : "";
+      return `${node.tagName.toLowerCase()}${first ? `.${first.slice(0, 48)}` : ""}`;
+    };
+    const targets = /* @__PURE__ */ new Map();
+    const inspectFill = (element2, key) => {
+      const own = getComputedStyle(element2);
+      if (/url\(/i.test(own.backgroundImage)) return { painted: null, coveredByMedia: true };
+      const transparent = alpha(own.backgroundColor) === 0 && own.backgroundImage === "none";
+      const box = element2.getBoundingClientRect();
+      const area = box.width * box.height;
+      if (area <= 0) return { painted: null, coveredByMedia: false };
+      let found = null;
+      const queue = childrenOf(element2);
+      for (let index = 0; index < queue.length && index < MAX_NODES; index++) {
+        const node = queue[index];
+        const tag = node.tagName.toLowerCase();
+        if (SKIP.test(tag)) continue;
+        const rect = node.getBoundingClientRect();
+        const width = Math.min(rect.right, box.right) - Math.max(rect.left, box.left);
+        const height = Math.min(rect.bottom, box.bottom) - Math.max(rect.top, box.top);
+        if (width <= 0 || height <= 0 || width * height / area < COVER) {
+          if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
+          continue;
+        }
+        const style = getComputedStyle(node);
+        if (style.display === "none" || Number(style.opacity) === 0) continue;
+        if (node.matches(CONTROL)) continue;
+        if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
+        if (style.visibility !== "visible") continue;
+        if (MEDIA.test(tag) || /url\(/i.test(style.backgroundImage)) return { painted: null, coveredByMedia: true };
+        const fill2 = found || !transparent ? null : fillOf(style);
+        if (fill2) found = { node, fill: fill2, by: `descendant:${label(node)}` };
+      }
+      if (!transparent) return { painted: null, coveredByMedia: false };
+      if (!found) {
+        let node = parentOf(element2);
+        for (let level = 1; level <= UP && node && node !== document.body && node !== document.documentElement; level++, node = parentOf(node)) {
+          if (node.matches(CONTROL)) break;
+          const rect = node.getBoundingClientRect();
+          const dx = box.width * SLACK;
+          const dy = box.height * SLACK;
+          if (Math.abs(rect.left - box.left) > dx || Math.abs(rect.right - box.right) > dx || Math.abs(rect.top - box.top) > dy || Math.abs(rect.bottom - box.bottom) > dy) continue;
+          const style = getComputedStyle(node);
+          if (/url\(/i.test(style.backgroundImage)) return { painted: null, coveredByMedia: false };
+          const fill2 = fillOf(style);
+          if (fill2) {
+            found = { node, fill: fill2, by: `ancestor:${level}` };
+            break;
+          }
+        }
+      }
+      if (!found) return { painted: null, coveredByMedia: false };
+      if (key !== void 0) targets.set(key, { node: found.node, by: found.by });
+      return { painted: { ...found.fill, by: found.by }, coveredByMedia: false };
+    };
+    const resolve2 = (element2, key) => inspectFill(element2, key).painted;
+    const LINK_DEFAULT = /^rgb\((?:0, 0, 238|255, 0, 0|85, 26, 139)\)$/;
+    const holdsText = (node) => [...node.childNodes].some((child) => child.nodeType === 3 && (child.textContent ?? "").trim().length > 0);
+    const linkLabelColor = (element2) => {
+      if (element2.tagName !== "A" || !LINK_DEFAULT.test(getComputedStyle(element2).color) || holdsText(element2)) return void 0;
+      const queue = childrenOf(element2);
+      for (let index = 0; index < queue.length && index < MAX_NODES; index++) {
+        const node = queue[index];
+        if (SKIP.test(node.tagName.toLowerCase())) continue;
+        if (holdsText(node)) {
+          const style = getComputedStyle(node);
+          if (style.display !== "none" && style.visibility === "visible") return style.color;
+        }
+        if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
+      }
+      return void 0;
+    };
+    const inspect = (element2, key) => {
+      const labelColor = linkLabelColor(element2);
+      return { ...inspectFill(element2, key), ...labelColor ? { labelColor } : {} };
+    };
+    const read = (element2, key) => {
+      const target2 = key === null ? void 0 : targets.get(key);
+      if (!target2?.node.isConnected) return resolve2(element2);
+      const style = getComputedStyle(target2.node);
+      const image = gradientOf(style);
+      return { color: style.backgroundColor, ...image ? { image } : {}, by: target2.by };
+    };
+    host.__omdPaint = { inspect, resolve: resolve2, read, label: linkLabelColor };
+  });
+}
+function paintedStyle(painted) {
+  if (!painted) return {};
+  return {
+    ...painted.color ? { paintedBackgroundColor: painted.color } : {},
+    ...painted.image ? { paintedBackgroundImage: painted.image } : {},
+    paintedBy: painted.by
+  };
+}
 async function captureElements(page2, surfaceId) {
+  await installPaintResolver(page2);
   const raw = await page2.evaluate(() => {
     const selectors2 = [
       "body",
@@ -162542,7 +162779,11 @@ async function captureElements(page2, surfaceId) {
         return id || (testId ? `[data-testid="${CSS.escape(testId)}"]` : element2.tagName.toLowerCase());
       })();
       if (interactive) html.setAttribute("data-omd-capture", String(interactiveIndex - 1));
+      const paint = window.__omdPaint;
+      const inspected = interactive ? paint?.inspect(element2, String(interactiveIndex - 1)) : void 0;
       return {
+        painted: inspected?.painted ?? null,
+        labelColor: inspected?.labelColor,
         selector,
         tagName: element2.tagName.toLowerCase(),
         role: element2.getAttribute("role"),
@@ -162553,6 +162794,7 @@ async function captureElements(page2, surfaceId) {
         ariaChecked: element2.getAttribute("aria-checked"),
         disabled: element2.disabled === true || element2.getAttribute("aria-disabled") === "true",
         textLength: (element2.textContent ?? "").trim().length,
+        coveredByMedia: inspected?.coveredByMedia,
         rect: { width: Math.round(rect.width), height: Math.round(rect.height), top: Math.round(rect.top + window.scrollY) },
         style: {
           color: style.color,
@@ -162573,18 +162815,29 @@ async function captureElements(page2, surfaceId) {
       };
     });
   });
-  return raw.map((element2) => ({ ...element2, surfaceId, selector: `${surfaceId}::${element2.selector}` }));
+  return raw.map(({ painted, labelColor, ...element2 }) => ({
+    ...element2,
+    style: { ...element2.style, ...paintedStyle(painted), ...labelColor ? { labelColor } : {} },
+    surfaceId,
+    selector: `${surfaceId}::${element2.selector}`
+  }));
 }
+var STATE_READ_TIMEOUT_MS = 2e3;
 async function captureStates(page2, surfaceId, elements) {
   const result2 = {};
   const captured = [];
   const interactive = elements.filter((element2) => element2.selector.includes("[data-omd-capture=")).slice(0, 24);
+  await installPaintResolver(page2).catch(() => {
+  });
   for (const element2 of interactive) {
     const domSelector = element2.selector.split("::")[1];
     const locator2 = page2.locator(domSelector).first();
     const read = () => locator2.evaluate((node) => {
       const style = getComputedStyle(node);
+      const paint = window.__omdPaint;
       return {
+        painted: paint?.read(node, node.getAttribute("data-omd-capture")) ?? null,
+        labelColor: paint?.label(node),
         color: style.color,
         backgroundColor: style.backgroundColor,
         borderColor: style.borderColor,
@@ -162599,18 +162852,23 @@ async function captureStates(page2, surfaceId, elements) {
         fontWeight: style.fontWeight,
         lineHeight: style.lineHeight,
         letterSpacing: style.letterSpacing,
-        transform: style.transform
+        transform: style.transform,
+        opacity: style.opacity
       };
-    }).catch(() => null);
+    }, void 0, { timeout: STATE_READ_TIMEOUT_MS }).catch(() => null);
     const base = await read();
+    if (!base) continue;
     const states = [];
     const capture = (state, value2) => {
-      if (!base || !value2 || JSON.stringify(value2) === JSON.stringify(base)) return;
+      if (!value2 || JSON.stringify(value2) === JSON.stringify(base)) return;
+      if (isLinkDefaultOnlyChange(element2.tagName, base, value2)) return;
       states.push(state);
-      const { transform: transform2, ...style } = value2;
+      const stateChanges = Object.keys(value2).filter((key) => JSON.stringify(value2[key]) !== JSON.stringify(base[key]));
+      const { transform: transform2, opacity, painted, labelColor, ...style } = value2;
       void transform2;
+      void opacity;
       const selector = `${element2.selector}::state-${state}`;
-      captured.push({ ...element2, selector, style });
+      captured.push({ ...element2, selector, stateChanges, style: { ...style, ...paintedStyle(painted), ...labelColor ? { labelColor } : {} } });
       result2[selector] = [state];
     };
     await locator2.hover({ timeout: 500 }).catch(() => {
@@ -162633,6 +162891,8 @@ async function captureStates(page2, surfaceId, elements) {
   return { states: result2, elements: captured };
 }
 async function captureInteractionTargets(page2, surfaceId, phase, targetSelector) {
+  await installPaintResolver(page2).catch(() => {
+  });
   const raw = await page2.evaluate(({ phase: phase2, targetSelector: targetSelector2 }) => {
     const visible = (element2) => {
       const rect = element2.getBoundingClientRect();
@@ -162663,13 +162923,18 @@ async function captureInteractionTargets(page2, surfaceId, phase, targetSelector
         candidates.push(element2);
       }
     }
+    const paint = window.__omdPaint;
+    const interactive = 'button,a,input,select,textarea,[role="button"],[role="tab"],[role="switch"],[tabindex]';
     return candidates.slice(0, 120).map((element2, index) => {
       const html = element2;
       const value2 = `${phase2}-${index}`;
       html.setAttribute("data-omd-interaction-capture", value2);
       const rect = element2.getBoundingClientRect();
       const style = getComputedStyle(element2);
+      const inspected = element2.matches(interactive) ? paint?.inspect(element2) : void 0;
       return {
+        painted: inspected?.painted ?? null,
+        labelColor: inspected?.labelColor,
         selector: `[data-omd-interaction-capture="${value2}"]`,
         tagName: element2.tagName.toLowerCase(),
         role: element2.getAttribute("role"),
@@ -162680,6 +162945,7 @@ async function captureInteractionTargets(page2, surfaceId, phase, targetSelector
         ariaChecked: element2.getAttribute("aria-checked"),
         disabled: element2.disabled === true || element2.getAttribute("aria-disabled") === "true",
         textLength: (element2.textContent ?? "").trim().length,
+        coveredByMedia: inspected?.coveredByMedia,
         rect: { width: Math.round(rect.width), height: Math.round(rect.height), top: Math.round(rect.top + window.scrollY) },
         style: {
           color: style.color,
@@ -162700,8 +162966,9 @@ async function captureInteractionTargets(page2, surfaceId, phase, targetSelector
       };
     });
   }, { phase, targetSelector });
-  return raw.map((element2) => ({
+  return raw.map(({ painted, labelColor, ...element2 }) => ({
     ...element2,
+    style: { ...element2.style, ...paintedStyle(painted), ...labelColor ? { labelColor } : {} },
     surfaceId,
     selector: `${surfaceId}::${element2.selector}`
   }));
@@ -162832,21 +163099,37 @@ async function documentFonts(page2) {
     return fonts;
   });
 }
+var STEP_BUDGET_MS = Number(option("--step-budget-ms") ?? "90000");
+var ROUTE_BUDGET_MS = Number(option("--route-budget-ms") ?? "300000");
+var TOTAL_BUDGET_MS = Number(option("--total-budget-ms") ?? "900000");
+var StepTimeout = class extends Error {
+};
+function withTimeout(work, ms, label) {
+  work.catch(() => {
+  });
+  let timer;
+  const expiry = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new StepTimeout(label)), ms);
+  });
+  return Promise.race([work, expiry]).finally(() => clearTimeout(timer));
+}
 var browser = await chromium.launch({ executablePath: chromePath, headless: true, args: ["--disable-http2"] });
 var context2 = await browser.newContext({
   userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124 Safari/537.36",
   viewport: { width: 1440, height: 900 }
 });
-var page = await context2.newPage();
 var cssByUrl = /* @__PURE__ */ new Map();
-page.on("response", async (response2) => {
+async function collectCss(response2) {
   const contentType = response2.headers()["content-type"] ?? "";
   if (!contentType.includes("css") && !/\.css(?:\?|$)/.test(response2.url())) return;
   try {
     cssByUrl.set(response2.url(), await response2.text());
   } catch {
   }
-});
+}
+var page = await context2.newPage();
+page.on("response", collectCss);
+var skippedRoutes = [];
 var capturedAt = (/* @__PURE__ */ new Date()).toISOString();
 var surfaces = [];
 var allFaces = [];
@@ -162856,23 +163139,96 @@ var discovery = { routes: [], fontOrLicenseUrls: [], publicDesignSystemUrls: [] 
 await page.goto(homepage, { waitUntil: "domcontentloaded", timeout: 45e3 });
 await page.waitForTimeout(1200);
 await dismissObstructions(page);
+await waitForRender(page);
 discovery = await discoverRoutes(page, homepage);
-var routeUrls = [homepage, ...explicitRoutes, ...configuredRoutes, ...discovery.routes].filter((url, index, list) => list.indexOf(url) === index).slice(0, maxRoutes * 3);
-for (const [index, url] of routeUrls.entries()) {
-  if (surfaces.length >= maxRoutes) break;
+var routeUrls = dedupeRouteUrls([homepage, ...explicitRoutes, ...configuredRoutes, ...discovery.routes]).slice(0, maxRoutes * 3);
+var runStartedAt = Date.now();
+var currentStep = "navigate";
+async function captureRoute(index, url) {
+  currentStep = "navigate";
   if (index > 0) {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45e3 }).catch(() => null);
     await page.waitForTimeout(900);
     await dismissObstructions(page);
+    currentStep = "render-wait";
+    await waitForRender(page);
   }
   const currentUrl = new URL(page.url());
-  if (isUnsafeCaptureSurface(currentUrl.href)) continue;
+  if (isUnsafeCaptureSurface(currentUrl.href)) return null;
+  if (surfaces.some((surface) => surface.url === currentUrl.href)) return null;
   const surfaceId = surfaces.length === 0 ? "home" : `surface-${surfaces.length + 1}`;
-  const capturedSurfaceUrl = currentUrl.href;
-  const baselineElements = await captureElements(page, surfaceId);
-  const pseudoStates = capturePseudoStates ? await captureStates(page, surfaceId, baselineElements) : { elements: [], states: {} };
-  const expanded = captureExpandedInteractions ? await captureInteractions(page, surfaceId) : { elements: [], states: {}, interactions: [] };
-  if (isUnsafeCaptureSurface(page.url())) continue;
+  currentStep = "elements";
+  const baselineElements = await withTimeout(captureElements(page, surfaceId), STEP_BUDGET_MS, "elements");
+  if (baselineElements.length === 0) {
+    skippedRoutes.push({ url: currentUrl.href, reason: "0 elements captured (empty surface not counted)" });
+    console.error(`[reference-evidence] ${currentUrl.href}: 0 elements captured; skipped as an empty surface`);
+    return null;
+  }
+  const unmeasured = [];
+  let pseudoStates = { elements: [], states: {} };
+  if (capturePseudoStates) {
+    currentStep = "pseudo-states";
+    try {
+      pseudoStates = await withTimeout(captureStates(page, surfaceId, baselineElements), STEP_BUDGET_MS, "pseudo-states");
+    } catch (error) {
+      if (!(error instanceof StepTimeout)) throw error;
+      unmeasured.push("pseudo-states");
+      await replacePage(currentUrl.href);
+    }
+  }
+  let expanded = { elements: [], states: {}, interactions: [] };
+  if (captureExpandedInteractions && unmeasured.length === 0) {
+    currentStep = "interactions";
+    try {
+      expanded = await withTimeout(captureInteractions(page, surfaceId), STEP_BUDGET_MS, "interactions");
+    } catch (error) {
+      if (!(error instanceof StepTimeout)) throw error;
+      unmeasured.push("interactions");
+      await replacePage(currentUrl.href);
+    }
+  } else if (captureExpandedInteractions) {
+    unmeasured.push("interactions (skipped after the stalled pseudo-state pass)");
+  }
+  if (isUnsafeCaptureSurface(page.url())) return null;
+  currentStep = "fonts";
+  const faces = await withTimeout(documentFonts(page), 2e4, "fonts").catch(() => []);
+  for (const pass of unmeasured) {
+    const why = pass.includes("skipped") ? "" : ` (no result within ${STEP_BUDGET_MS}ms)`;
+    console.error(`[reference-evidence] ${currentUrl.href}: ${pass} unmeasured${why}; rest values kept`);
+  }
+  return { surfaceId, capturedSurfaceUrl: currentUrl.href, baselineElements, pseudoStates, expanded, faces };
+}
+async function replacePage(url) {
+  await withTimeout(page.close(), 1e4, "page.close").catch(() => {
+  });
+  page = await context2.newPage();
+  page.on("response", collectCss);
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45e3 }).catch(() => null);
+  await page.waitForTimeout(900);
+  await dismissObstructions(page);
+  await waitForRender(page);
+}
+for (const [index, url] of routeUrls.entries()) {
+  if (surfaces.length >= maxRoutes) break;
+  if (Date.now() - runStartedAt > TOTAL_BUDGET_MS) {
+    skippedRoutes.push({ url, reason: `total budget ${TOTAL_BUDGET_MS}ms spent before this route` });
+    continue;
+  }
+  let captured;
+  try {
+    captured = await withTimeout(captureRoute(index, url), ROUTE_BUDGET_MS, url);
+  } catch (error) {
+    if (!(error instanceof StepTimeout)) throw error;
+    skippedRoutes.push({ url, reason: `no result within ${ROUTE_BUDGET_MS}ms (stuck at: ${currentStep})` });
+    console.error(`[reference-evidence] skipped ${url}: stuck at ${currentStep} past ${ROUTE_BUDGET_MS}ms; replacing the page`);
+    await withTimeout(page.close(), 1e4, "page.close").catch(() => {
+    });
+    page = await context2.newPage();
+    page.on("response", collectCss);
+    continue;
+  }
+  if (!captured) continue;
+  const { surfaceId, capturedSurfaceUrl, baselineElements, pseudoStates, expanded, faces } = captured;
   for (const [selector, values] of Object.entries(pseudoStates.states)) {
     stateEvidence[selector] = [.../* @__PURE__ */ new Set([...stateEvidence[selector] ?? [], ...values])];
   }
@@ -162881,10 +163237,16 @@ for (const [index, url] of routeUrls.entries()) {
   }
   interactionEvidence.push(...expanded.interactions);
   const elements = [...baselineElements, ...pseudoStates.elements, ...expanded.elements];
+  if (elements.length === 0) {
+    skippedRoutes.push({ url: capturedSurfaceUrl, reason: "0 elements captured (empty surface not counted)" });
+    continue;
+  }
   surfaces.push({ id: surfaceId, url: capturedSurfaceUrl, viewport: "1440x900", elements });
-  allFaces.push(...await documentFonts(page));
+  allFaces.push(...faces);
 }
-await browser.close();
+await withTimeout(browser.close(), 15e3, "browser.close").catch(() => {
+  console.error("[reference-evidence] browser.close did not finish in 15s; exiting after the bundle is written");
+});
 for (const [cssUrl, css] of cssByUrl) allFaces.push(...fontSources(css, cssUrl));
 var mergedFaces = /* @__PURE__ */ new Map();
 for (const face of allFaces) {
@@ -162928,6 +163290,8 @@ else {
     console.log(`  font ${font.family}: ${font.status}/${font.confidence} \xB7 usage ${font.usageCount} \xB7 ${font.roles.join(", ") || "not observed"}`);
   }
 }
+for (const skipped of skippedRoutes) console.error(`[reference-evidence] skipped route ${skipped.url}: ${skipped.reason}`);
+process.exit(0);
 /*! Bundled license information:
 
 playwright-core/lib/utilsBundle.js:
