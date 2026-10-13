@@ -12,11 +12,12 @@
 
 import { NextResponse, type NextRequest } from "next/server";
 import { resolveBlogHostRouting } from "@/lib/blog/host-routing";
+import { LOCALE_COOKIE, LOCALE_PATH_ALIASES, landingRedirectFor } from "@/lib/i18n/site-locales";
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host") ?? request.nextUrl.host;
   const action = resolveBlogHostRouting(host, request.nextUrl.pathname);
-  if (!action) return NextResponse.next();
+  if (!action) return localeRouting(request);
 
   const url = request.nextUrl.clone();
   url.pathname = action.pathname;
@@ -32,6 +33,33 @@ export function proxy(request: NextRequest) {
   // 308 rather than the 307 default: /blog/<slug> on this host is a permanent
   // duplicate of /<slug>, and crawlers should consolidate on the bare path.
   return NextResponse.redirect(url, 308);
+}
+
+/**
+ * Landing locales (src/lib/i18n/site-locales.ts). Two jobs, both on the main
+ * host only: alternate spellings (/zh-TW, /en …) 308 to the canonical
+ * landing, and `/` follows an explicit switcher choice stored in a cookie.
+ * Accept-Language is never consulted, so crawlers always see x-default.
+ */
+function localeRouting(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const alias = LOCALE_PATH_ALIASES[pathname];
+  if (alias) {
+    const url = request.nextUrl.clone();
+    url.pathname = alias;
+    const res = NextResponse.redirect(url, 308);
+    // Typing /en is a choice of English; remember it so `/` stops redirecting.
+    if (alias === "/") res.cookies.set(LOCALE_COOKIE, "en", { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
+    return res;
+  }
+  const to = landingRedirectFor(pathname, request.cookies.get(LOCALE_COOKIE)?.value);
+  if (to) {
+    const url = request.nextUrl.clone();
+    url.pathname = to;
+    // 307: the destination depends on this visitor's cookie; never cache it.
+    return NextResponse.redirect(url, 307);
+  }
+  return NextResponse.next();
 }
 
 export const config = {

@@ -5,29 +5,27 @@ import { ENGLISH_REFERENCE_IDS } from "@/lib/references/editorial";
 import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 import { getAllPosts } from "@/lib/blog/posts";
 import { BLOG_ON_SUBDOMAIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
+import { LANDING_LANGUAGE_ALTERNATES, SITE_LOCALES, SITE_LOCALE_META } from "@/lib/i18n/site-locales";
 
 const siteUrl = "https://oh-my-design.kr";
+
+const LANDING_ALTERNATES_ABS: Record<string, string> = Object.fromEntries(
+  Object.entries(LANDING_LANGUAGE_ALTERNATES).map(([lang, path]) => [lang, path === "/" ? siteUrl : `${siteUrl}${path}`]),
+);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    // Home and its Korean twin name each other as hreflang alternates, here
-    // and in each page's <head>.
-    {
-      url: siteUrl,
+    // The four landing locales name each other (and x-default) as hreflang
+    // alternates, here as xhtml:link and in each page's <head>.
+    ...SITE_LOCALES.map((l) => ({
+      url: SITE_LOCALE_META[l].path === "/" ? siteUrl : `${siteUrl}${SITE_LOCALE_META[l].path}`,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1,
-      alternates: { languages: { en: siteUrl, ko: `${siteUrl}/ko` } },
-    },
-    {
-      url: `${siteUrl}/ko`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.95,
-      alternates: { languages: { en: siteUrl, ko: `${siteUrl}/ko` } },
-    },
+      changeFrequency: "weekly" as const,
+      priority: l === "en" ? 1 : 0.95,
+      alternates: { languages: LANDING_ALTERNATES_ABS },
+    })),
     {
       url: `${siteUrl}/design-systems`,
       lastModified: now,

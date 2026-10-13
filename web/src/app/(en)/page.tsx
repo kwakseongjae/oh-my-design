@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import { LandingPage } from "@/components/landing/landing-page";
+import { LandingA } from "@/components/brand-a/landing";
+import { landingMetadata } from "@/components/brand-a/metadata";
 
 /**
- * Home (English). The Korean twin is /ko; each names the other as an
- * hreflang alternate. `openGraph` is deliberately not set here — setting it
- * would replace the root layout's object, share image included.
+ * Home (English, x-default). Its twins are /ko, /ja and /zh-tw; all four name
+ * each other as hreflang alternates (src/lib/i18n/site-locales.ts). Every
+ * number on the page is resolved from generated data at build time.
  */
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-    languages: { en: "/", ko: "/ko", "x-default": "/" },
-  },
-};
-
-// The "most selected" list reads the live select counter; re-render hourly.
-export const revalidate = 3600;
+export const metadata: Metadata = landingMetadata("en");
 
 export default function HomePage() {
-  return <LandingPage locale="en" />;
+  return <LandingA locale="en" />;
 }

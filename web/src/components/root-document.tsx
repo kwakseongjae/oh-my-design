@@ -10,8 +10,8 @@ import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
 import pkg from "../../../package.json" with { type: "json" };
 
 /**
- * The <html> document both root layouts render. The site has two root layouts
- * — app/(en) and app/(ko) — only because a root layout is the one place that
+ * The <html> document every root layout renders. The site has one root layout
+ * per language — app/(en), (ko), (ja), (zh-tw) — because a root layout is the one place that
  * can set <html lang>. Theme, analytics, consent and the site JSON-LD live
  * here so the two cannot drift.
  */
@@ -85,7 +85,7 @@ export function RootDocument({
   className,
   children,
 }: Readonly<{
-  lang: "en" | "ko";
+  lang: "en" | "ko" | "ja" | "zh-Hant-TW";
   className: string;
   children: React.ReactNode;
 }>) {
