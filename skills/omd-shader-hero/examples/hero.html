@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- Filled by scripts/tokens.mjs --write from DESIGN.md. Every color below is a brand token; nothing is invented here. -->
-<style id="hero-vars">:root{--hero-c0:#0b1026;--hero-c1:#ff6b3d;--hero-c2:#7b5cff;--hero-c3:#ffb547;--hero-c4:#0b1026;--hero-text:#ffffff;--hero-scrim:#0b1026;--hero-scrim-a:0.45;}</style>
-<script type="application/json" id="hero-tokens">{"stops":["#0b1026","#ff6b3d","#7b5cff","#ffb547","#0b1026"],"text":"#ffffff","scrim":"#0b1026","scrimAlpha":0.45,"source":"examples/DESIGN.example.md"}</script>
+<style id="hero-vars">:root{--hero-c0:#0b1026;--hero-c1:#ff6b3d;--hero-text:#ffffff;--hero-scrim:#0b1026;--hero-scrim-a:1;}</style>
+<script type="application/json" id="hero-tokens">{"stops":["#0b1026","#ff6b3d"],"text":"#ffffff","scrim":"#0b1026","scrimAlpha":1,"source":"examples/DESIGN.example.md"}</script>
 <style>
   /* Background on html, never body: a body background paints over a fixed/negative-z scene (tf-shaders pitfall). */
   html { background: var(--hero-c0); }
@@ -18,26 +18,25 @@
   :lang(ko) { font-synthesis: none; }
 
   .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; isolation: isolate; }
-  /* Poster: the same stops as CSS gradients. It is the no-WebGL2 path and the first paint before the shader. */
+  /* Poster: the same two inks as a CSS halftone (dots of the brand ink, denser toward two corners).
+     It is the no-WebGL2 path and the first paint before the shader. */
   .hero-poster, .hero-scene { position: absolute; inset: 0; z-index: -2; }
-  .hero-poster {
-    background:
-      radial-gradient(60% 70% at 18% 82%, var(--hero-c1) 0%, transparent 62%),
-      radial-gradient(55% 65% at 85% 20%, var(--hero-c2) 0%, transparent 60%),
-      radial-gradient(45% 50% at 78% 88%, var(--hero-c3) 0%, transparent 58%),
-      var(--hero-c0);
+  .hero-poster { background: var(--hero-c0); }
+  .hero-poster::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle, var(--hero-c1) 1.2px, transparent 1.6px) 0 0 / 6px 6px;
+    -webkit-mask: radial-gradient(70% 80% at 12% 90%, #000 0%, transparent 70%), radial-gradient(60% 70% at 92% 8%, #000 0%, transparent 65%);
+            mask: radial-gradient(70% 80% at 12% 90%, #000 0%, transparent 70%), radial-gradient(60% 70% at 92% 8%, #000 0%, transparent 65%);
   }
   .hero-scene { z-index: -1; opacity: 0; transition: opacity 600ms cubic-bezier(.22,1,.36,1); }
   .hero-scene.is-ready { opacity: 1; }
 
   .hero-copy { position: relative; max-width: min(72rem, 100% - 32px); padding: 0 16px; text-align: center; }
-  /* Scrim: flat at the alpha tokens.mjs computed for 4.5:1 across the copy box, fading only outside it. */
+  /* Knockout: an opaque base-ink panel behind the whole copy box, hard-edged like a print cut-out.
+     No translucent scrim and no feather: either would mix base over brand dots into mud. */
   .hero-copy::before {
-    content: ""; position: absolute; inset: -30% -18%; z-index: -1; pointer-events: none;
-    background: radial-gradient(closest-side,
-      color-mix(in srgb, var(--hero-scrim) calc(var(--hero-scrim-a) * 100%), transparent) 60%,
-      color-mix(in srgb, var(--hero-scrim) calc(var(--hero-scrim-a) * 50%), transparent) 80%,
-      transparent 100%);
+    content: ""; position: absolute; inset: -2rem -2.5rem; z-index: -1; pointer-events: none;
+    background: color-mix(in srgb, var(--hero-scrim) calc(var(--hero-scrim-a) * 100%), transparent);
   }
   .hero h1 {
     margin: 0; font-weight: 700;
@@ -52,13 +51,13 @@
     border-radius: 0; /* radius comes from DESIGN.md radius tokens; the fixture defines none */ background: var(--hero-text); color: var(--hero-c0); font-weight: 600; text-decoration: none;
   }
   .hero a:focus-visible { outline: 2px solid var(--hero-text); outline-offset: 3px; }
-  .hero small { position: absolute; left: 16px; bottom: 16px; font-size: 0.75rem; opacity: .8; }
+  .hero small { position: absolute; left: 16px; bottom: 16px; font-size: 0.75rem; padding: .2rem .45rem; background: var(--hero-c0); } /* small text gets its own knockout too */
 </style>
 </head>
 <body>
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-poster" aria-hidden="true"></div>
-  <div class="hero-scene" aria-hidden="true" data-speed="0.35" data-distortion="0.8"></div>
+  <div class="hero-scene" aria-hidden="true" data-speed="0.3" data-px="3"></div>
   <div class="hero-copy">
     <h1 id="hero-title">해가 뜨기 전, 가장 조용한 1분</h1>
     <p>새벽은 아침 루틴을 하루 1분부터 쌓게 돕는 앱입니다.</p>
@@ -71,31 +70,31 @@
 // Pinned per-file ESM builds of Paper Shaders (Apache-2.0, https://github.com/paper-design/shaders).
 // Imported from the CDN, not vendored. Paper has no telemetry (its only fetch() reads a local blob's type).
 import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shader-mount.js/+esm';
-import { meshGradientFragmentShader } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shaders/mesh-gradient.js/+esm';
+import { ditheringFragmentShader } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shaders/dithering.js/+esm';
 
 const tokens = JSON.parse(document.getElementById('hero-tokens').textContent);
 document.querySelector('[data-token-source]').textContent = tokens.source;
 const el = document.querySelector('.hero-scene');
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).concat(1);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const speed = reduce ? 0 : +el.dataset.speed;          // param 1: how fast the field drifts (0 = still)
-const distortion = +el.dataset.distortion;             // param 2: how far the color spots warp (0..1)
+const speed = reduce ? 0 : +el.dataset.speed;          // param 1: how fast the warp field drifts (0 = still)
+const px = +el.dataset.px;                             // param 2: dither cell size in CSS px (2 fine .. 6 coarse print)
 const STILL_FRAME = 8000;                              // the composition reduced-motion users get
+const [back, front] = tokens.stops;                    // base ink + exactly one brand ink: no blends, no mud
 
 let mount = null;
 const gl2 = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
 if (gl2) {
   try {
-    mount = new ShaderMount(el, meshGradientFragmentShader, {
-      u_colors: tokens.stops.map(hex),
-      u_colorsCount: tokens.stops.length,
-      u_distortion: distortion,
-      u_swirl: 0.1,
-      u_grainMixer: 0,
-      u_grainOverlay: 0,    // the overlay grain mixes in black/white, which are not brand tokens
-      // object sizing (Paper's defaultObjectSizing, fit=cover for full-bleed)
-      u_fit: 2, u_scale: 1, u_rotation: 0, u_offsetX: 0, u_offsetY: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
-    }, undefined, speed, STILL_FRAME, 1, 1920 * 1080); // minPixelRatio 1, cap at ~2.1MP: a soft field gains nothing from 2x
+    mount = new ShaderMount(el, ditheringFragmentShader, {
+      u_colorBack: hex(back),
+      u_colorFront: hex(front),
+      u_shape: 2,           // DitheringShapes.warp: slow folds of brand light
+      u_type: 3,            // DitheringTypes['4x4']: ordered Bayer dots, the print look
+      u_pxSize: px,
+      // pattern sizing (Paper's defaultPatternSizing)
+      u_fit: 0, u_scale: 1, u_rotation: 0, u_offsetX: 0, u_offsetY: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
+    }, undefined, speed, STILL_FRAME, 1, 1920 * 1080); // minPixelRatio 1: the dither cell size is the resolution
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-ready')));
   } catch { mount = null; }
 }

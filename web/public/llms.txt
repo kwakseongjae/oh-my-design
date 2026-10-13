@@ -80,8 +80,8 @@ Landing + media (5):
 - **omd:showcase** — Deterministic scroll demo video from a rendered page (single or side-by-side comparison), H.264 / GIF via ffmpeg.
 
 Single-effect shader skills (2):
-- **omd:shader-hero** — One full-bleed WebGL2 hero scene from DESIGN.md colors only (Paper Shaders mesh gradient, ~6.5 KiB gzip): token script refuses to invent a palette, computes a contrast-safe scrim, CSS poster fallback, reduced-motion still, real-GPU verify script that measures contrast across the timeline.
-- **omd:cjk-type-shader** — 먹 번짐 (ink bleed) behind a large Korean/Japanese/Chinese headline: the heading stays real, selectable text from the first frame; a distance field of the browser's own glyph layout drives the bleed; two parameters (bleed, duration), static fallback, reduced-motion still.
+- **omd:shader-hero** — One full-bleed WebGL2 hero in two DESIGN.md inks (base + one brand color) as a slowly folding ordered-dither field (Paper Shaders, ~7 KiB gzip): no blends so no mud, copy on a hard-edged base-ink knockout (≥4.5:1 measured across the timeline), token script refuses to invent a palette, CSS halftone poster fallback, reduced-motion still.
+- **omd:cjk-type-shader** — 먹 번짐: a large Korean/Japanese/Chinese headline that reads as sumi ink on hanji. The heading stays real, selectable text; a WebGL2 layer traced from the browser's own glyph layout adds wet→dry bloom, ink pooling at rims and stroke ends, fiber show-through and feathering at a few edges; two parameters (bleed, duration), procedural paper, static fallback, reduced-motion still.
 
 Localization + review layer (7):
 - **omd:orchestrator** — Coordinates multi-agent writing/review workflows with a revision cap and handoff log.

@@ -13,11 +13,15 @@
   /* Brand tokens. In a real project these come from DESIGN.md (omd-apply), not from this file. */
   :root {
     --paper: #f3eee4;
-    --ink: #1b1915;
+    --ink: #3a3530;   /* sumi grey-black: the shader pools darker ink on top of it */
     --ink-soft: #5d574d;
   }
   /* Page background on html, not body (tf-shaders pitfall: a body background paints over -z layers). */
-  html { background: var(--paper); color: var(--ink); }
+  html {
+    color: var(--ink);
+    /* hanji: a procedural fiber/grain texture (SVG turbulence, ~400 bytes), no image request */
+    background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .26 0 0 0 0 .2 0 0 0 -1.8 1.05'/%3E%3C/filter%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .42 0 0 0 0 .3 0 0 0 -1.4 .9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.12'/%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.10'/%3E%3C/svg%3E");
+  }
   body {
     margin: 0;
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
@@ -36,7 +40,7 @@
     text-wrap: balance;
   }
   .ink > .ink-layer {            /* injected by inkBleed(); aria-hidden, never receives pointer events */
-    position: absolute; z-index: 0; pointer-events: none;
+    position: absolute; z-index: 2; pointer-events: none;   /* over the text: it inks the glyphs, never replaces them */
   }
   .ink > .ink-text { position: relative; z-index: 1; }
   /* No-WebGL2 fallback: a still, quiet wash. The heading is already complete without it. */
@@ -94,24 +98,29 @@
 import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shader-mount.js/+esm';
 
 // ---------------------------------------------------------------------------
-// Fragment shader: ink bleeding out of the real glyphs into hanji paper.
-// u_glyphs.r is a distance field of the heading's own glyph shapes: 0 on a stroke, 1 at
-// MAX_EM away. The wet front walks out to `reach` em from every stroke at the same rate, paper
-// grain and fibers make that front ragged, and as it dries the front leaves a darker tide line
-// — the way real ink settles on paper.
+// Fragment shader: sumi ink on hanji, drawn OVER the real DOM text (which is already in ink).
+// u_glyphs is traced from the browser's own layout of the heading:
+//   r = distance outside the glyphs (0 on a stroke .. 1 at OUT_EM)
+//   g = distance inside the glyphs  (0 at the edge .. 1 at IN_EM deep)
+//   b = local ink coverage (blurred mask): low inside = a stroke end or convex corner
+// Wet: the strokes are glossy-dark with a soft bloom around them that shrinks as the ink dries.
+// Dry: ink pooled darker at the stroke rim and at ends/corners, paper fibers showing through the
+// middle of thick strokes, and capillary feathering along fibers at a few edges, never all of them.
 // ---------------------------------------------------------------------------
-const MAX_EM = 0.6;
+const OUT_EM = 0.4, IN_EM = 0.12;
 const FRAG = `#version 300 es
 precision highp float;
 uniform float u_time;
 uniform mediump vec2 u_resolution; // must match the precision in Paper's vertex shader
 uniform sampler2D u_glyphs;
-uniform vec4 u_ink;       // rgb ink color, a = max opacity of the wash
-uniform vec2 u_boxEm;     // overlay box size in em, keeps noise scale tied to the type size
-uniform float u_bleed;    // 0..1 how far the ink travels (param 1)
-uniform float u_duration; // seconds until the ink has dried (param 2)
+uniform vec4 u_ink;       // rgb = text ink, a = overall strength
+uniform vec4 u_paper;     // rgb = paper color (for fibers showing through dry strokes)
+uniform vec2 u_boxEm;     // overlay box size in em: noise scale follows the type size
+uniform float u_bleed;    // 0..1 how far the capillary feathering reaches (param 1)
+uniform float u_duration; // seconds from wet to dry (param 2)
 out vec4 fragColor;
-const float MAX_EM = ${MAX_EM.toFixed(2)};
+const float OUT_EM = ${OUT_EM.toFixed(2)};
+const float IN_EM = ${IN_EM.toFixed(2)};
 
 float hash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 float vnoise(vec2 p) {
@@ -119,36 +128,54 @@ float vnoise(vec2 p) {
   vec2 u = f * f * (3. - 2. * f);
   return mix(mix(hash(i), hash(i + vec2(1, 0)), u.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), u.x), u.y);
 }
-float fbm(vec2 p) { float a = .5, s = 0.; for (int i = 0; i < 4; i++) { s += a * vnoise(p); p = p * 2.03 + 17.1; a *= .5; } return s; }
-// Hanji fibers: short strands in a few random directions (stretched, ridged noise).
+// Hanji fibers: thin strands in three directions (stretched value noise, ridged).
 float fibers(vec2 p) {
   float f = 0.;
   for (int i = 0; i < 3; i++) {
-    float a = float(i) * 2.17 + .6;
+    float a = float(i) * 2.09 + .4;
     vec2 q = mat2(cos(a), sin(a), -sin(a), cos(a)) * p;
-    q.x *= .32;
-    f = max(f, smoothstep(.74, .92, vnoise(q * 6. + float(i) * 9.3)));
+    q.x *= .22;
+    float n = vnoise(q * 7. + float(i) * 13.7);
+    float strand = 1. - abs(n - .5) * 6.;   // a ridge where the noise crosses .5
+    f = max(f, strand * smoothstep(.6, .8, vnoise(q * 1.7 + 5.3 * float(i)))); // keep only a few strands
   }
-  return f;
+  return clamp(f, 0., 1.);
 }
 void main() {
   vec2 uv = vec2(gl_FragCoord.x / u_resolution.x, 1. - gl_FragCoord.y / u_resolution.y);
-  float d = texture(u_glyphs, uv).r * MAX_EM;  // em from the nearest stroke
-  vec2 p = uv * u_boxEm;                       // em space
+  vec3 g = texture(u_glyphs, uv).rgb;
+  float dOut = g.r * OUT_EM, dIn = g.g * IN_EM, cov = g.b;
+  float inside = 1. - smoothstep(.0, .006, dOut);
+  vec2 p = uv * u_boxEm;
   float t = clamp(u_time / u_duration, 0., 1.);
-  float s = 1. - pow(1. - t, 3.);              // fast wetting, slow creep
-  float reach = u_bleed * .24 * s + .004;      // em the ink has travelled (<= .24em + fibers)
-  float grain = fbm(p * 9.);
-  float fib = fibers(p * 3.);
-  // capillary front: grain makes it ragged, fibers pull thin fingers ahead of it
-  float x = d - (grain - .5) * .09 * s - fib * .08 * s;
-  float wet = 1. - smoothstep(reach - .012, reach + .012, x);
-  float tide = wet * smoothstep(reach - .045, reach - .004, x);
-  float soak = 1. - clamp(x / max(reach, 1e-3), 0., 1.); // darker close to the stroke
-  float dry = smoothstep(.6, 1., t);
-  float a = wet * (.08 + .18 * soak) * mix(1., .65, dry) + tide * mix(.06, .34, dry);
-  a *= (.8 + .4 * grain) * u_ink.a;
-  fragColor = vec4(u_ink.rgb * a, a);
+  float wet = 1. - smoothstep(.15, 1., t);           // 1 = just inked, 0 = dry
+  float dry = 1. - wet;
+  float fib = fibers(p * 2.2);
+  float grain = vnoise(p * 38.) * .6 + vnoise(p * 90.) * .4;
+  float where = smoothstep(.6, .9, vnoise(p * 1.1 + 3.1));  // only some edges feather
+
+  // outside the strokes ------------------------------------------------------
+  float reach = u_bleed * .12 * smoothstep(0., .6, t) * where;
+  float finger = fib * (1. - smoothstep(0., reach * (.35 + .65 * fib) + 1e-4, dOut));
+  float nijimi = 1. - smoothstep(0., .012 + .022 * where * smoothstep(0., .5, t), dOut - (grain - .5) * .012);
+  float bloomR = .045 * (.5 + u_bleed) * smoothstep(0., .12, t) * wet;
+  float bloom = exp(-dOut / max(bloomR, 1e-3)) * wet * .22 * (1. - smoothstep(.06, .15, dOut)); // gone well inside the layer
+  float outA = (1. - inside) * clamp(finger * .32 * (1. - dOut / .14) + nijimi * .4 + bloom, 0., 1.);
+
+  // inside the strokes ---------------------------------------------------------
+  float rim = 1. - smoothstep(0., .014, dIn);                 // ink collects at the edge as it dries
+  float ends = smoothstep(.78, .5, cov);                     // stroke ends and convex corners
+  float pool = (rim * .55 + ends * .75) * (.35 + .65 * dry);
+  float gloss = wet * .55;                                   // wet ink reads darker overall
+  float darkA = inside * clamp(pool + gloss, 0., .85);
+  float kasure = inside * smoothstep(.025, .08, dIn) * smoothstep(.5, .9, grain * .7 + fib * .5) * dry * .32;
+
+  // composite: paper fibers over dark ink, both over the DOM text --------------
+  vec3 inkDark = u_ink.rgb * .25;
+  float aK = clamp(darkA + outA, 0., 1.) * u_ink.a;
+  float aP = kasure * u_ink.a;
+  vec3 col = u_paper.rgb * aP + inkDark * aK * (1. - aP);
+  fragColor = vec4(col, aP + aK * (1. - aP));
 }`;
 
 const hasWebGL2 = (() => {
@@ -181,20 +208,32 @@ function edt1d(f, n, d, v, z) {
   }
   for (let q = 0, j = 0; q < n; q++) { while (z[j + 1] < q) j++; const r = v[j]; d[q] = (q - r) * (q - r) + f[r]; }
 }
-function distanceField(alpha, w, h) {
+// Distance to the nearest ink pixel (inside=false) or to the nearest paper pixel (inside=true).
+function distanceField(alpha, w, h, inside = false) {
   const INF = 1e20, grid = new Float64Array(w * h), n = Math.max(w, h);
-  for (let i = 0; i < w * h; i++) grid[i] = alpha[i] > 127 ? 0 : INF;
+  for (let i = 0; i < w * h; i++) grid[i] = (alpha[i] > 127) !== inside ? 0 : INF;
   const f = new Float64Array(n), d = new Float64Array(n), v = new Int32Array(n), z = new Float64Array(n + 1);
   for (let x = 0; x < w; x++) { for (let y = 0; y < h; y++) f[y] = grid[y * w + x]; edt1d(f, h, d, v, z); for (let y = 0; y < h; y++) grid[y * w + x] = d[y]; }
   for (let y = 0; y < h; y++) { for (let x = 0; x < w; x++) f[x] = grid[y * w + x]; edt1d(f, w, d, v, z); for (let x = 0; x < w; x++) grid[y * w + x] = Math.sqrt(d[x]); }
   return grid;
+}
+// Separable box blur, run twice (close enough to a Gaussian for a coverage estimate).
+function blur(src, w, h, r) {
+  let a = Float32Array.from(src, (v) => v / 255), b = new Float32Array(w * h);
+  for (let pass = 0; pass < 2; pass++) {
+    for (let y = 0; y < h; y++) { let acc = 0; for (let x = -r; x <= r; x++) acc += a[y * w + Math.min(w - 1, Math.max(0, x))];
+      for (let x = 0; x < w; x++) { b[y * w + x] = acc / (2 * r + 1); acc += a[y * w + Math.min(w - 1, x + r + 1)] - a[y * w + Math.max(0, x - r)]; } }
+    for (let x = 0; x < w; x++) { let acc = 0; for (let y = -r; y <= r; y++) acc += b[Math.min(h - 1, Math.max(0, y)) * w + x];
+      for (let y = 0; y < h; y++) { a[y * w + x] = acc / (2 * r + 1); acc += b[Math.min(h - 1, y + r + 1) * w + x] - b[Math.max(0, y - r) * w + x]; } }
+  }
+  return a;
 }
 
 // Trace the heading's glyphs exactly where the browser laid them out (per grapheme, via Range),
 // then turn that mask into a distance field. Half resolution is plenty: the field is smooth.
 async function glyphField(el, pad) {
   const box = el.getBoundingClientRect();
-  const SCALE = 0.5;
+  const SCALE = parseFloat(getComputedStyle(el).fontSize) > 64 ? 0.5 : 1;
   const w = Math.ceil((box.width + pad * 2) * SCALE), h = Math.ceil((box.height + pad * 2) * SCALE);
   const cv = document.createElement('canvas');
   cv.width = w; cv.height = h;
@@ -232,11 +271,14 @@ async function glyphField(el, pad) {
   const px = ctx.getImageData(0, 0, w, h);
   const alpha = new Uint8Array(w * h);
   for (let i = 0; i < w * h; i++) alpha[i] = px.data[i * 4 + 3];
-  const dist = distanceField(alpha, w, h);
-  const maxPx = MAX_EM * em * SCALE;
+  const out = distanceField(alpha, w, h), inn = distanceField(alpha, w, h, true);
+  const cov = blur(alpha, w, h, Math.max(1, Math.round(0.07 * em * SCALE)));
+  const outPx = OUT_EM * em * SCALE, inPx = IN_EM * em * SCALE;
   for (let i = 0; i < w * h; i++) {
-    const v = Math.min(255, Math.round((dist[i] / maxPx) * 255));
-    px.data[i * 4] = px.data[i * 4 + 1] = px.data[i * 4 + 2] = v; px.data[i * 4 + 3] = 255;
+    px.data[i * 4] = Math.min(255, Math.round((out[i] / outPx) * 255));
+    px.data[i * 4 + 1] = Math.min(255, Math.round((inn[i] / inPx) * 255));
+    px.data[i * 4 + 2] = Math.round(cov[i] * 255);
+    px.data[i * 4 + 3] = 255;
   }
   ctx.putImageData(px, 0, 0);
   const img = new Image();
@@ -249,7 +291,7 @@ async function inkBleed(el, { bleed = 0.7, duration = 2.6 } = {}) {
   prepare(el);
   if (!hasWebGL2) { el.classList.add('ink-static'); return null; }
   const em = parseFloat(getComputedStyle(el).fontSize);
-  const pad = Math.round(em * (0.14 + 0.26 * bleed)); // covers reach + fiber fingers, nothing more
+  const pad = Math.round(em * (0.12 + 0.2 * bleed)); // covers bloom + feathering, nothing more
   const layer = document.createElement('div');
   layer.className = 'ink-layer';
   layer.setAttribute('aria-hidden', 'true');
@@ -258,12 +300,14 @@ async function inkBleed(el, { bleed = 0.7, duration = 2.6 } = {}) {
 
   let field = await glyphField(el, pad);
   const [r, g, b] = parseColor(getComputedStyle(el).color);
+  const paper = parseColor(getComputedStyle(document.documentElement).backgroundColor);
   const still = reduceMotion.matches;
   let mount;
   try {
     mount = new ShaderMount(layer, FRAG, {
       u_glyphs: field.img,
       u_ink: [r, g, b, 1],
+      u_paper: [...paper, 1],
       u_boxEm: [field.w / field.em, field.h / field.em],
       u_bleed: bleed,
       u_duration: duration,

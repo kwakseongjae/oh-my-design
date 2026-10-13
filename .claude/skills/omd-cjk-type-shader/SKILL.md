@@ -1,47 +1,54 @@
 ---
 name: omd:cjk-type-shader
-description: "One effect, done well: 먹 번짐 (ink bleed) behind a large Korean, Japanese or Chinese display headline. The heading stays real, selectable DOM text from the first frame; a WebGL2 shader behind it lets ink seep out of the actual glyph shapes into paper, with fiber-ragged edges and a tide line as it dries, then stops. Two parameters (bleed, duration), ~5 KiB gzip of library JS, static fallback, prefers-reduced-motion, real-GPU verification script. Use for a CJK hero/launch headline, brand title, campaign line or section opener that should feel hand-inked. Triggers: '먹 번짐', '잉크 번짐', '한글 타이포 셰이더', '제목에 셰이더', '墨のにじみ', '筆文字っぽく', '墨跡暈開', 'CJK headline shader', 'ink bleed text effect', 'Hangul shader'. Not for body text, buttons, or Latin-only headlines. Full-page shader backgrounds → omd-shader-hero. Korean typesetting rules → hangul. Brand tokens → omd-apply."
+description: "One effect, done well: 먹 번짐 — a large Korean, Japanese or Chinese display headline that reads as sumi ink printed on hanji. The heading stays real, selectable DOM text in ink color from the first frame; a WebGL2 layer over it adds what real ink does: a wet, glossy stroke with a soft bloom that shrinks as it dries, ink pooling darker at stroke rims, ends and corners, paper fibers showing through thick strokes, and capillary feathering along fibers at a few edges only. Two parameters (bleed, duration), ~5 KiB gzip of library JS, procedural paper texture, static fallback, prefers-reduced-motion, real-GPU verification script. Use for a CJK hero/launch headline, brand title, campaign line or section opener that should feel like a printed calligraphy poster. Triggers: '먹 번짐', '잉크 번짐', '한지 느낌 제목', '한글 타이포 셰이더', '제목에 셰이더', '墨のにじみ', '和紙', '筆文字っぽく', '墨跡暈開', '宣紙', 'CJK headline shader', 'sumi ink text effect', 'ink bleed text', 'Hangul shader'. Not for body text, buttons, or Latin-only headlines. Full-page shader backgrounds → omd-shader-hero. Korean typesetting rules → hangul. Brand tokens → omd-apply."
 argument-hint: "<selector or file of the CJK headline> [bleed 0..1] [duration seconds]"
 user-invocable: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 
 
-# omd-cjk-type-shader — 먹 번짐 (ink bleed) for CJK display type
+# omd-cjk-type-shader — 먹 번짐: CJK display type as sumi ink on hanji
 
-Ink soaking into paper is the one image Korean, Japanese and Chinese writing share. This skill puts that moment behind a big CJK headline: the type is already there, crisp and readable, and ink seeps out of the strokes into the paper around it, feathered by the paper's fibers, and dries with a darker edge. It plays once when the heading enters the viewport, then the render loop stops.
+Ink soaking into paper is the one image Korean, Japanese and Chinese writing share. This skill makes a big CJK headline read like it was printed or brushed in sumi on hanji. On a fast skim it should look like a calligraphy poster, not a filter.
 
-The effect is built from **the browser's own layout of the real heading**: every grapheme is traced where the browser put it, turned into a distance field, and the shader spreads ink outward from that field. Line wrapping, `keep-all`, font swaps and resizes are re-traced, so the bleed always hugs the glyphs the reader actually sees.
+How it works. The heading is ordinary DOM text in the ink color, readable and selectable from the first frame. The skill traces every grapheme where the browser laid it out and builds three fields from that mask: distance outside the strokes, distance inside them, and local ink coverage. A WebGL2 layer drawn **over** the text then adds only what real ink does:
+- **wet → dry:** the stroke starts glossy-dark with a soft bloom around it, and the bloom shrinks back as the ink dries;
+- **pooling:** ink collects darker along the stroke rim and at stroke ends and convex corners (low local coverage);
+- **kasure:** paper fibers show through the middle of thick strokes once dry;
+- **nijimi:** capillary feathering runs along a few paper fibers at some edges, chosen by low-frequency noise, never as an even ring around every glyph;
+- **paper:** a procedural hanji texture (SVG turbulence, no image) on the page.
+
+It plays once when the heading enters the viewport, then the render loop stops. Line wrapping, `keep-all`, font swaps and resizes are re-traced.
 
 Working example: [`examples/demo.html`](./examples/demo.html) (single file, Korean + Japanese + Traditional Chinese). Proof: [`scripts/verify.mjs`](./scripts/verify.mjs).
 
 ## 1. When to use / when not
 
 Use when:
-- a Korean, Japanese or Chinese **display** headline (≥ 40px; hero, launch title, campaign line, section opener) should feel hand-inked, calligraphic or "printed on hanji / washi / 宣紙";
-- the brand's ink color and paper color are known (DESIGN.md foreground/canvas, or the heading's computed `color` and the page background).
+- a Korean, Japanese or Chinese **display** headline (≥ 40px; hero, launch title, campaign line, section opener) should feel inked, calligraphic, "printed on hanji / washi / 宣紙";
+- the brand's ink and paper colors are known (DESIGN.md foreground/canvas, or the heading's computed `color` and the page background).
 
 Don't use for:
-- body text, labels, buttons, nav, anything below ~32px (the wash would smear legibility);
-- Latin-only headlines (it works, but the cultural point is gone; reach for a different effect);
+- body text, labels, buttons, nav, anything below ~32px (pooling and feathering need stroke width to read);
+- Latin-only headlines (it works, but the cultural point is gone);
 - more than one or two headings per page. Boldness in one place (tf-shaders rule);
-- dark-on-dark or light ink on dark paper without checking: the wash is the ink color at ≤ 34% opacity, so it needs a paper that ink reads on.
+- light text on dark paper. The effect darkens ink, so it needs a paper that ink reads on.
 
 ## 2. The effect and its two parameters
 
 | Param | Range | Default | What it does |
 |---|---|---|---|
-| `bleed` | 0–1 | 0.7 | How far the ink travels: up to `0.24em × bleed` from every stroke, plus fiber fingers. 0.5 = a soft halo, 0.8 = a wet brush, above 0.9 the counters fill. |
-| `duration` | s | 2.6 | Time from first contact to dry. The front moves fast and then creeps (cubic ease-out), and the tide line darkens over the last 40%. Under 1.5s it reads as a glow, over 4s as a loading state. |
+| `bleed` | 0–1 | 0.7 | How far the capillary feathering travels along fibers (up to `0.12em × bleed`, at the edges noise picks) and how big the wet bloom gets. 0.4 = barely there, 0.8 = a wet brush. |
+| `duration` | s | 2.6 | Time from wet to dry. The bloom peaks early and shrinks; pooling and fiber show-through come in as it dries. Under 1.5s it reads as a flash, over 4s as a loading state. |
 
-Everything else is fixed on purpose: ink color = the heading's computed `color`, wash opacity ≤ 0.26, tide line ≤ 0.36, paper grain and fibers scaled in em so the texture matches the type size. One signature, not a control panel.
+Everything else is fixed on purpose. Ink = the heading's computed `color`, darkened to 25% for pools; paper = the page background color. Text ink should be a sumi grey-black, not pure black (the demo uses `#3a3530` on `#f3eee4`, about 10:1), so the darker pools have room to show. One signature, not a control panel.
 
 ## 3. The contract that keeps text text
 
-- The heading is a normal `<h1>`/`<h2>` with its real text. `inkBleed()` wraps the text in `.ink-text` (z-index 1) and inserts an `aria-hidden="true"`, `pointer-events: none` layer behind it (z-index 0). The canvas is decoration. It never replaces, covers or re-draws the glyphs.
+- The heading is a normal `<h1>`/`<h2>` with its real text. `inkBleed()` wraps the text in `.ink-text` and inserts an `aria-hidden="true"`, `pointer-events: none` layer over it (z-index 2). The layer only darkens, lightens or extends what is already there. It never replaces or re-draws the glyphs, and with the layer removed the heading is still complete.
 - **The headline paints on the first frame.** No `opacity: 0`, no clip, no wait for the shader. tf-shaders measured LCP going to 7.8s when hero copy waited for a shader.
 - Selection, copy, find-in-page, translation, screen readers and SEO see plain text. `verify.mjs` checks that selecting the heading returns its full text in every pass.
-- Leave clear space around the heading (the demo uses `margin-bottom: 0.4em`). The wash extends up to ~0.3em past the glyphs, and it must not tint neighbouring text.
+- Leave ~0.4em of clear space around the heading (the demo uses `margin-bottom: 0.4em`). Feathering and bloom extend up to ~0.3em past the glyphs.
 - Never draw CJK headlines with a canvas/`Text` shader component. Canvas text loses selection, accessibility, indexing and correct CJK shaping (tf-shaders "Don't" list).
 
 ## 4. CJK typesetting (applies before the shader)
@@ -80,14 +87,15 @@ From `/hangul` (HG rules) for Korean; ja/zh scoped separately so Korean rules do
 The effect needs a custom fragment shader and one texture, which is exactly what `ShaderMount` is, at 1/130th of the WebGPU runtime's weight and with twice the browser reach. The demo imports Paper from jsDelivr (pinned, per-file build) and does not vendor it, so no NOTICE copy is needed. If you vendor Paper's files, copy its `NOTICE` alongside. If a project already ships `shaders`, this effect still runs on Paper. Don't load both runtimes on one page.
 
 Budget for one heading:
-- **JS:** 5.0–5.3 KiB gzip library + 4.4 KiB gzip of effect code (shader, distance transform, tracing; measured unminified with comments).
-- **GPU:** one quad, one texture lookup and 7 value-noise calls per pixel, over the heading box plus a 0.3em pad, `minPixelRatio: 1`, capped at 1920×1080 px. It runs for `duration` and then `setSpeed(0)` stops the rAF loop. Paper also pauses it offscreen and in hidden tabs.
-- **CPU:** one Euclidean distance transform at half resolution per layout change (font swap, resize, re-wrap), debounced 120ms.
+- **JS:** 5.0–5.3 KiB gzip library + 5.3 KiB gzip of effect code (shader, two distance transforms, coverage blur, tracing; measured unminified with comments).
+- **GPU:** one quad, one texture lookup and 7 value-noise calls per pixel, over the heading box plus a ≤0.32em pad, `minPixelRatio: 1`, capped at 1920×1080 px. It runs for `duration` and then `setSpeed(0)` stops the rAF loop. Paper also pauses it offscreen and in hidden tabs.
+- **CPU:** per layout change (font swap, resize, re-wrap; debounced 120ms), two Euclidean distance transforms (outside and inside the strokes) and one separable box blur, at half resolution above 64px type.
+- **Paper texture:** an inline SVG `feTurbulence` data URI on `html` (~600 bytes), no image request.
 - **Fonts are the real cost.** CJK faces are large. Load only the display weight, as unicode-range slices.
 
 ## 6. Fallback and reduced motion
 
-- **No WebGL2** (probe `canvas.getContext('webgl2')` before mounting; `ShaderMount` throws if it can't get a context or link the program): no layer is inserted, the heading gets `.ink-static`, which adds a quiet CSS `text-shadow` wash. The heading is complete without it. `verify.mjs` forces this path by stubbing `getContext`.
+- **No WebGL2** (probe `canvas.getContext('webgl2')` before mounting; `ShaderMount` throws if it can't get a context or link the program): no layer is inserted, the heading gets `.ink-static` (a faint CSS `text-shadow`). The heading is already in ink on textured paper, so it is complete without the shader. `verify.mjs` forces this path by stubbing `getContext`.
 - **`prefers-reduced-motion: reduce`:** mount at the dried frame with speed 0. The reader gets the final inked state as one still frame, with no motion and no rAF loop.
 - **Shader compile failure** (one happened while building this: a precision mismatch with Paper's vertex shader) takes the same `.ink-static` path. In your own GLSL, declare `uniform mediump vec2 u_resolution;`, because the precision must match Paper's vertex shader.
 
@@ -107,7 +115,7 @@ It launches headless Chromium with `--enable-gpu --ignore-gpu-blocklist --use-an
 - proves rendering with pixels: shader-on vs shader-off inside the heading box, and first frame vs dried frame;
 - checks that the selected text equals the heading text, the layer is `aria-hidden` + `pointer-events: none`, reduced motion is still, and no-WebGL leaves no canvas.
 
-Measured on 2026-10-13 (headless Chromium 149, `ANGLE Metal Renderer: Apple M5 Pro`, not SwiftShader): 29.7% of heading-box pixels changed by the shader, start ≠ dry, all checks passed. Look at the frames anyway: a misaligned field (wrong baseline) shows as a wash offset under the strokes, and only your eyes catch that.
+Measured on 2026-10-13 (headless Chromium 149, `ANGLE Metal Renderer: Apple M5 Pro`, not SwiftShader): 10.2% of heading-box pixels changed by the shader, wet ≠ dry (5.9% differ), all checks passed. Look at the frames anyway, at full size: a misaligned field (wrong baseline) shows as pooling offset from the strokes, and a feathering setting that is too strong reads as fur. Only your eyes catch those.
 
 ## 8. Next.js / React port
 
@@ -123,4 +131,6 @@ The budget-first framing, the fallback-is-design rule, the first-frame-LCP rule,
 - Don't animate syllable by syllable, and don't split Hangul into per-character spans for a reveal.
 - Don't run the loop forever. A dried ink effect costs nothing; a looping one drains batteries.
 - Don't put two runtimes (Paper + `shaders`) on one page for one heading.
-- Don't set `bleed` so high that counters fill (ㅁ, ㅇ, 口, 日 turn into blots). Check the dried frame at your real font size.
+- Don't feather every edge or draw a uniform halo. An even ring around each glyph reads as a sticker, not ink; feathering belongs to a few edges.
+- Don't use pure black text ink. Pools need a darker value to show, and sumi is grey-black anyway.
+- Don't push `bleed` until the fibers read as fur. Check the dried frame at your real font size.

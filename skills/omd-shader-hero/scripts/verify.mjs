@@ -4,7 +4,7 @@
 //   - playwright-core with a fresh Playwright Chromium (never the user's own Chrome profile)
 //   - GPU flags first (ANGLE/Metal on macOS) and an honest report of the renderer that drew
 //   - measured contrast: hide the copy, sample the scene behind it across the whole timeline,
-//     and compare against the text color (sub copy needs 4.5:1, the display headline 3:1)
+//     and compare against the text color (4.5:1 for the headline and the sub copy alike)
 //
 //   node verify.mjs <hero.html|url> <outDir> [--frames 48] [--seconds 12] [--headed]
 //
@@ -138,7 +138,7 @@ report.checks = {
   animates: (gpu.animates ?? 0) > 0.01,
   headlineVisibleAtLoad: gpu.headlineOpacityAtLoad === '1',
   contrastSubcopy: report.passes.every((p) => p.worstContrast.subcopy >= 4.5),
-  contrastHeadline: report.passes.every((p) => p.worstContrast.headline >= 3),
+  contrastHeadline: report.passes.every((p) => p.worstContrast.headline >= 4.5), // 4.5 even though the display size would allow 3
   reducedMotionStill: still.mode === 'still',
   noWebGLPoster: nogl.mode === 'poster' && nogl.canvases === 0,
   softwareRenderer: /swiftshader|llvmpipe|software/i.test(gpu.renderer || ''),

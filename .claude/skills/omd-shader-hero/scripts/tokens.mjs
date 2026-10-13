@@ -77,27 +77,27 @@ const lightest = [...pool, ...brand].sort((a, b) => lightness(b) - lightness(a))
 const scheme = opt('scheme') ?? 'dark';
 const base = scheme === 'dark' ? darkest : lightest;
 
-// Up to 3 distinct brand colors, most saturated first; near-duplicates (hover shades) collapse.
-const picks = [];
-for (const c of [...brand].sort((a, b) => sat(b.hex) - sat(a.hex))) {
-  if (picks.length >= 3) break;
-  if (picks.every((p) => dist(p.hex, c.hex) > 0.12) && dist(c.hex, base.hex) > 0.12) picks.push(c);
-}
-// Base twice: it holds the field's quiet zones, so text has somewhere calm to sit.
-const stops = [base, ...picks, base].map(({ role, hex }) => ({ role, hex }));
+// Exactly one brand color dithered against the base: two flat inks, no blending, so two hues can
+// never mix into mud. Prefer the role named primary/brand; else the most saturated brand color.
+const ranked = [...brand].filter((c) => dist(c.hex, base.hex) > 0.12)
+  .sort((a, b) => (has(b.role, ['primary', 'brand']) - has(a.role, ['primary', 'brand'])) || sat(b.hex) - sat(a.hex));
+if (!ranked.length) { console.error('Every brand color is too close to the base to dither against it.'); process.exit(3); }
+const front = ranked[0];
+const stops = [base, front].map(({ role, hex }) => ({ role, hex }));
 
 // ---------- text + contrast ----------
-// The mesh is a weighted blend of the stops, so every pixel lies inside their hull. Check every stop
-// and every pairwise midpoint; the worst one is the frame the text must survive.
+// A dither pixel is either the base or the brand ink; the scrim then mixes base over it. Check both
+// inks and their midpoint (anti-aliased dot edges); the worst one is what the text must survive.
 const samples = [];
 for (let i = 0; i < stops.length; i++) for (let j = i; j < stops.length; j++) samples.push(mix(stops[i].hex, stops[j].hex, 0.5));
 const candidates = (scheme === 'dark' ? [...inks, ...neutrals, ...brand].filter((c) => lightness(c) > 0.5) : [...inks, ...neutrals].filter((c) => lightness(c) < 0.2));
 if (!candidates.length) candidates.push(scheme === 'dark' ? lightest : darkest);
 const worstOf = (t, sc = null, a = 0) => Math.min(...samples.map((s) => contrast(t, sc ? mix(s, sc, a) : s)));
 const text = candidates.map((c) => ({ ...c, worst: worstOf(c.hex) })).sort((a, b) => b.worst - a.worst)[0];
-// Scrim: the base color behind the copy block, at the lowest alpha that clears 4.5:1 (body/sub copy).
-let alpha = 0;
-while (alpha < 0.95 && worstOf(text.hex, base.hex, alpha) < 4.5) alpha = +(alpha + 0.05).toFixed(2);
+// Knockout, not scrim: a translucent base layer over brand-ink dots would mix the two hues into
+// exactly the mud this skill exists to avoid. The copy sits on an opaque base-ink panel whose edge
+// feathers into the field, so the text is measured against the base ink itself.
+const alpha = 1;
 const after = worstOf(text.hex, base.hex, alpha);
 
 const out = {
@@ -111,7 +111,7 @@ const out = {
   excluded: excluded.map((c) => c.role),
   read: all.map((c) => `${c.role} ${c.hex} (${c.source})`),
 };
-if (after < 4.5) out.warning = 'Even a 95% scrim cannot reach 4.5:1 with these tokens. Use a larger headline (3:1) and keep sub copy off the scene.';
+if (after < 4.5) out.warning = 'The text token does not reach 4.5:1 even on the base ink. Pick another text token in DESIGN.md before using this hero.';
 
 if (opt('write')) {
   const target = opt('write');
