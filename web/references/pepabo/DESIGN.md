@@ -1,77 +1,179 @@
 ---
-id: pepabo
 name: GMO Pepabo (Inhouse)
-country: JP
-category: saas
-homepage: "https://pepabo.com/"
-primary_color: "#1f7ccc"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=pepabo.com&sz=128"
-verified: "2026-06-17"
-added: "2026-06-17"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-17"
-  note: "Inhouse is a neutral multi-brand prototype: components render on the 'pepper' base flavor (black/grey, brand-swappable). primary = Pepper Blue 600 #1f7ccc (informative/interactive intention); interactive link on live sites is #0a62ad / #005bac. Brand mint #30f4c5 is the pepabo flavor key accent. Component bg #000000 / text #393c41 are the neutral pepper defaults, designed to be overwritten per brand Flavor."
-  colors:
-    primary: "#1f7ccc"
-    primary-strong: "#0a62ad"
-    primary-bright: "#3e93de"
-    link: "#005bac"
-    ink: "#393c41"
-    ink-strong: "#1f2124"
-    body: "#585c63"
-    muted: "#767b85"
-    faint: "#9297a1"
-    hairline: "#dee0e3"
-    surface: "#edeef0"
-    surface-soft: "#f7f8fa"
-    canvas: "#ffffff"
-    on-primary: "#ffffff"
-    brand-mint: "#30f4c5"
-    brand-mint-deep: "#0e7365"
-    positive: "#1dc487"
-    notice: "#debf43"
-    negative: "#cc1f24"
-    negative-strong: "#b50b11"
-    attention: "#db7d42"
-    ink-black: "#000000"
-  typography:
-    family: { sans: "Open Sans", cjk: "Noto Sans JP", kerning: "YakuHanJP", mono: "Roboto Mono" }
-    xxxl:   { size: 32, weight: 700, lineHeight: 1.25, use: "Largest display heading (XXXL)" }
-    xxl:    { size: 28, weight: 700, lineHeight: 1.29, use: "Page / section heading (XXL)" }
-    xl:     { size: 24, weight: 700, lineHeight: 1.33, use: "Subsection heading (XL)" }
-    l:      { size: 21, weight: 700, lineHeight: 1.14, use: "Card / brand title (L)" }
-    m:      { size: 16, weight: 400, lineHeight: 1.50, use: "Body baseline (M), normal density 24px" }
-    s:      { size: 14, weight: 400, lineHeight: 1.43, use: "Dense UI text / small button (S)" }
-    xs:     { size: 12, weight: 400, lineHeight: 1.33, use: "Caption, small button label (XS)" }
-    xxs:    { size: 11, weight: 400, lineHeight: 1.45, use: "Fine print, smallest label (XXS)" }
-  spacing: { xxs: 4, xs: 8, sm: 12, base: 16, md: 24, lg: 32, xl: 48, xxl: 64 }
-  rounded: { sm: 4, pill: 20, full: 9999 }
-  shadow:
-    flat: "none"
-    level1: "rgba(0,0,0,0.12) 0px -0.1px 1px 0px, rgba(0,0,0,0.12) 0px 1px 2px 0px"
-    level2: "rgba(0,0,0,0.12) 0px 0px 4px 0px, rgba(0,0,0,0.12) 0px 4px 6px -2px"
-  components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", height: "40px", font: "16px / 400 Open Sans", shadow: "level1", use: "Neutral pepper primary action (保存); brand flavor overwrites bg" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#585c63", border: "1px solid #585c63", radius: "4px", height: "40px", font: "16px / 400 Open Sans", use: "Secondary/outlined action on neutral flavor" }
-    button-pill: { type: button, bg: "#000000", fg: "#ffffff", radius: "20px", height: "32px", font: "16px / 400 Open Sans", use: "Rounded pill button variant (icon / compact)" }
-    button-small: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", height: "24px", font: "12px / 400 Open Sans", use: "Small (XS) button size" }
-    textfield: { type: input, bg: "#ffffff", fg: "#393c41", radius: "4px", padding: "8px 16px", height: "40px", font: "16px / 400 Open Sans", use: "Default Textfield; border drawn via inset, focus blue #1f7ccc" }
-    textfield-filled: { type: input, bg: "#edeef0", fg: "#393c41", radius: "4px 4px 0px 0px", padding: "8px 16px", height: "40px", font: "16px / 400 Open Sans", use: "Filled / underline Textfield variant" }
-    card: { type: card, bg: "#ffffff", radius: "4px", shadow: "level1", use: "Elevated content card, 1px #dee0e3 hairline option" }
-    nav-link: { type: tab, fg: "#585c63", font: "16px / 400 Open Sans", radius: "4px", active: "text #393c41 weight 700", use: "Top App Bar / sidebar nav item" }
-    badge-positive: { type: badge, bg: "#30f4c5", fg: "#0e7365", radius: "4px", font: "14px / 400 Open Sans", use: "Brand mint status pill (e.g. 無料診断中)" }
-    badge-negative: { type: badge, bg: "#cc1f24", fg: "#ffffff", radius: "4px", font: "12px / 400 Open Sans", use: "Negative / error intention badge" }
-    avatar: { type: avatar, radius: "9999px", use: "Circular user avatar (Avatar component)" }
-  components_harvested: true
+colors:
+  primary: '#1f7ccc'
+  primary-strong: '#0a62ad'
+  primary-bright: '#3e93de'
+  link: '#005bac'
+  ink: '#393c41'
+  ink-strong: '#1f2124'
+  body: '#585c63'
+  muted: '#767b85'
+  faint: '#9297a1'
+  hairline: '#dee0e3'
+  surface: '#edeef0'
+  surface-soft: '#f7f8fa'
+  canvas: '#ffffff'
+  on-primary: '#ffffff'
+  brand-mint: '#30f4c5'
+  brand-mint-deep: '#0e7365'
+  positive: '#1dc487'
+  notice: '#debf43'
+  negative: '#cc1f24'
+  negative-strong: '#b50b11'
+  attention: '#db7d42'
+  ink-black: '#000000'
+typography:
+  xxxl:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.25
+    use: Largest display heading (XXXL)
+  xxl:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.29
+    use: Page / section heading (XXL)
+  xl:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.33
+    use: Subsection heading (XL)
+  l:
+    fontSize: 21px
+    fontWeight: 700
+    lineHeight: 1.14
+    use: Card / brand title (L)
+  m:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body baseline (M), normal density 24px
+  s:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Dense UI text / small button (S)
+  xs:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    use: Caption, small button label (XS)
+  xxs:
+    fontSize: 11px
+    fontWeight: 400
+    lineHeight: 1.45
+    use: Fine print, smallest label (XXS)
+rounded:
+  sm: 4px
+  pill: 20px
+  full: 9999px
+spacing:
+  xxs: 4
+  xs: 8
+  sm: 12
+  base: 16
+  md: 24
+  lg: 32
+  xl: 48
+  xxl: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 4px
+    height: 40px
+    typography: 16px / 400 Open Sans
+    shadow: level1
+    use: Neutral pepper primary action (保存); brand flavor overwrites bg
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#585c63'
+    border: '1px solid #585c63'
+    rounded: 4px
+    height: 40px
+    typography: 16px / 400 Open Sans
+    use: Secondary/outlined action on neutral flavor
+  button-pill:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 20px
+    height: 32px
+    typography: 16px / 400 Open Sans
+    use: Rounded pill button variant (icon / compact)
+  button-small:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 4px
+    height: 24px
+    typography: 12px / 400 Open Sans
+    use: Small (XS) button size
+  textfield:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#393c41'
+    rounded: 4px
+    padding: 8px 16px
+    height: 40px
+    typography: 16px / 400 Open Sans
+    use: 'Default Textfield; border drawn via inset, focus blue #1f7ccc'
+  textfield-filled:
+    type: input
+    backgroundColor: '#edeef0'
+    textColor: '#393c41'
+    rounded: 4px 4px 0px 0px
+    padding: 8px 16px
+    height: 40px
+    typography: 16px / 400 Open Sans
+    use: Filled / underline Textfield variant
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 4px
+    shadow: level1
+    use: 'Elevated content card, 1px #dee0e3 hairline option'
+  nav-link:
+    type: tab
+    textColor: '#585c63'
+    typography: 16px / 400 Open Sans
+    rounded: 4px
+    active: 'text #393c41 weight 700'
+    use: Top App Bar / sidebar nav item
+  badge-positive:
+    type: badge
+    backgroundColor: '#30f4c5'
+    textColor: '#0e7365'
+    rounded: 4px
+    typography: 14px / 400 Open Sans
+    use: Brand mint status pill (e.g. 無料診断中)
+  badge-negative:
+    type: badge
+    backgroundColor: '#cc1f24'
+    textColor: '#ffffff'
+    rounded: 4px
+    typography: 12px / 400 Open Sans
+    use: Negative / error intention badge
+  avatar:
+    type: avatar
+    rounded: 9999px
+    use: Circular user avatar (Avatar component)
+fonts:
+  roles:
+    sans: Open Sans
+    cjk: Noto Sans JP
+    kerning: YakuHanJP
+    mono: Roboto Mono
 ---
 
 # Design System Inspiration of GMO Pepabo (Inhouse)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 GMO Pepabo's Inhouse is one of the few openly published Japanese design systems, and its defining trait is **deliberate neutrality**. Inhouse is not a single visual identity — it is a generic, trend-resistant *prototype* engineered to be overwritten. The brand-swappable layer is called a **Flavor**: a collection of design tokens (Color, Sizing, Icon, Typography, Elevation) that any Pepabo service (minne, SUZURI, hosting/lolipop, color me shop) can swap in to repaint the same components in its own identity. Inhouse itself ships a base "pepper" flavor that is intentionally restrained — near-black ink (`#393c41`) on a clean white canvas (`#ffffff`), with grey scaffolding — so that nothing in the foundation fights a brand's chosen palette.
 
@@ -90,14 +192,42 @@ The typography is unmistakably Japanese-product: the stack is **`YakuHanJP`, `No
 - Two-level elevation (`rgba(0,0,0,0.12)`) over a mostly-flat surface model
 - Brand mint `#30f4c5` as the pepabo flavor key accent
 
-## Primary tasks
+### Primary tasks
 
 - Reuse a shared component instead of rebuilding a button
 - Repaint the same components with a brand Flavor
 - Call the shared token functions from product code
 - Read the engineering blog for candid trade-off reasoning
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+GMO Pepabo (GMOペパボ株式会社), founded in **2003** in Fukuoka and headquartered in Tokyo as part of the GMO Internet Group, runs a portfolio of **creator and commerce services** — the handmade marketplace **minne**, the print-on-demand platform **SUZURI**, rental hosting (**lolipop!**, **ヘテムル**), domains (**ムームードメイン**), and the EC builder **カラーミーショップ**. Across that portfolio sat a recurring problem: every service rebuilt the same foundational UI from scratch, duplicating effort and drifting apart visually.
+
+Inhouse is Pepabo's answer. Publicly documented since **2021** (announced on the Pepabo Tech Portal, "ペパボのデザインシステムのドキュメントを公開します"), it consolidates the duplicated foundation into one shared, generalizable system — and crucially, makes it **multi-brand by construction**. Rather than impose one look, Inhouse stays a neutral prototype and exposes brand-swappable **Flavors** (Color, Sizing, Icon, Typography, Elevation) so minne and SUZURI can wear their own identities over identical, accessible components. The stated motivation is to free designers from foundational busywork so they can focus on differentiated, strategic design.
+
+What Inhouse refuses, visible in its design: a single imposed brand identity (the foundation is deliberately generic and trend-resistant), and rigid rule-enforcement (it positions itself as an *enabler*, a "convenient constraint," not a gatekeeper). What it embraces: a two-tier token system that keeps the core neutral while semantics carry meaning, Japanese-first typography (Noto Sans JP + YakuHanJP), a strict 4px grid, and "environmental honesty" — design that adapts naturally to the user's OS, browser, and media rather than fighting it.
+
+### Principles
+
+*Stated Inhouse principles, paraphrased from the published "About" documentation.*
+
+1. **Enabler, not enforcer.** Inhouse is "a convenient constraint" that frees creativity rather than policing it. *UI implication:* offer sensible defaults and tokens, but let services extend and override; never hard-block a valid brand need.
+2. **A living system.** The system is continuously updated as services push new use cases back into it. *UI implication:* treat components as evolving; design for extension points, not frozen specs.
+3. **Neutral prototype.** Deliberately generic and trend-resistant so any brand can customize it. *UI implication:* keep the base flavor achromatic and quiet; carry brand color only through the Flavor layer.
+4. **Typography-first.** Text drives communication and accessibility. *UI implication:* invest in the type scale and 4px-grid line-heights (Japanese-first); let typography, not decoration, structure the page.
+5. **Environmental honesty.** Design adapts naturally to OS, browser, and media. *UI implication:* respect platform conventions and system fonts in the fallback stack; don't override what the environment does well.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Inhouse user segments (Pepabo product designers and engineers building across multiple service brands), not individual people.*
+
+**佐藤 美咲, 32, 福岡.** A product designer on minne. Reaches for Inhouse components so she can spend her time on minne's maker-celebrating identity instead of rebuilding buttons. Values that the minne Flavor repaints the same accessible components without forking them.
+
+**田中 健, 29, 東京.** A front-end engineer on SUZURI. Uses the `@pepabo-inhouse` packages and Sass token functions directly; cares that `get-semantic-color($intention)` stays stable so SUZURI's theme survives upgrades. Appreciates that the system is an enabler, not a wall.
+
+**山本 涼, 38, 東京.** A design-systems lead maintaining Inhouse itself. Guards the neutrality of the base flavor — pushes back on any PR that bakes a single brand's hue into the foundation. Reads the engineering blog culture of candid trade-off discussion as the team's real spec.
+
+## Colors
 
 ### Primary / Interactive (Pepper Blue — Informative)
 - **Pepper Blue 600** (`#1f7ccc`): Primary interactive color and the system's informative intention — links, focus, primary affordances.
@@ -129,7 +259,7 @@ The typography is unmistakably Japanese-product: the stack is **`YakuHanJP`, `No
 - **Brand Mint Deep** (`#0e7365`): The deep teal companion used for mint-on-light text and emphasis.
 - **On Primary** (`#ffffff`): Text/icons on filled color and black buttons.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Latin**: `Open Sans` — the default sans for Latin glyphs.
@@ -157,7 +287,126 @@ The typography is unmistakably Japanese-product: the stack is **`YakuHanJP`, `No
 - **Japanese-first kerning**: YakuHanJP is layered solely to tighten Japanese punctuation; the system treats Japanese legibility as a first-class concern (typography-first is a stated principle).
 - **16px baseline**: M = 16px is the document default and the reading size; headings step up to 700 weight, body stays 400.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px (sizing tokens are 4px-grid aligned)
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Notable: input/button padding lands on 8px/16px; line-heights snap to the same 4px grid for type-to-layout alignment
+
+### Grid & Container
+- Documentation chrome: a fixed left sidebar nav (App Bar) + centered prose column on `design.pepabo.com`
+- Components demonstrated in neutral cards on a white canvas so the base flavor never competes with content
+- Corporate `pepabo.com`: full-bleed black hero band, then white content sections with the mint accent
+
+### Whitespace Philosophy
+- **Calm neutrality**: the base flavor is intentionally quiet so brands can layer identity on top — whitespace carries structure, not decoration.
+- **Grid-locked rhythm**: 4px sizing grid + 4px-multiple line-heights keep vertical rhythm consistent across densities.
+- **Density options**: comfort / normal / dense line-heights let the same component breathe or compact depending on context.
+
+### Border Radius Scale
+- Small (4px): buttons, inputs, cards — the workhorse
+- Pill (20px): rounded pill button variant
+- Full (9999px): avatars, full-round chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, sidebar nav collapses to a top App Bar / drawer |
+| Tablet | 768-1024px | Moderate padding, 2-up component grids |
+| Desktop | >1024px | Fixed left sidebar + centered content column |
+
+#### Touch Targets
+- Medium controls at 40px height (button / textfield) meet comfortable tap sizing
+- Small (24px) and S (32px) sizes reserved for dense, pointer-led contexts
+- App Bar items at ~40–48px row height
+
+#### Collapsing Strategy
+- Documentation sidebar (Foundation / Inhouse / Components) collapses into a drawer on mobile
+- Component demos reflow from multi-column grids to single column
+- Type scale steps down with viewport but stays on the 4px grid
+- Corporate black hero maintains full-bleed treatment, reduces internal padding
+
+#### Image Behavior
+- Icons come from the Icon flavor (swappable per brand), rendered as inline SVG
+- Avatars stay circular (9999px) at all sizes
+- Cards keep the 4px radius across breakpoints
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | `none` | Most surfaces, inline content |
+| Level 1 | `rgba(0,0,0,0.12) 0px -0.1px 1px 0px, rgba(0,0,0,0.12) 0px 1px 2px 0px` | Buttons, resting cards — soft 1px lift |
+| Level 2 | `rgba(0,0,0,0.12) 0px 0px 4px 0px, rgba(0,0,0,0.12) 0px 4px 6px -2px` | Raised cards, menus, popovers |
+
+**Shadow Philosophy**: Inhouse keeps elevation deliberately shallow. The elevation flavor exposes a small set of `get-elevation-box-shadow($level)` tokens built on a uniform `rgba(0,0,0,0.12)` tint, so shadows read as a gentle, neutral lift rather than dramatic depth. A faint `-0.1px` top offset on level 1 gives buttons a barely-there top edge. Because the system is brand-neutral, shadows stay achromatic (pure black at low alpha) — any chromatic depth is a brand Flavor's choice, never baked into the foundation. Most surfaces sit flat; elevation is reserved for genuinely floating UI.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+- `shadow.level1`: `rgba(0,0,0,0.12) 0px -0.1px 1px 0px, rgba(0,0,0,0.12) 0px 1px 2px 0px`
+- `shadow.level2`: `rgba(0,0,0,0.12) 0px 0px 4px 0px, rgba(0,0,0,0.12) 0px 4px 6px -2px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, focus, button press |
+| `motion-standard` | 200ms | Menu, popover, card/section reveal |
+| `motion-slow` | 320ms | Page-level transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — menus, sheets, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is functional and restrained, matching the shallow-elevation, neutral aesthetic — a system meant to disappear behind each brand's identity should not impose a strong motion personality. Elevation changes (level 1 → 2) pair with a brief `motion-standard / ease-enter` lift; interactive controls respond to press with a subtle opacity/scale shift. No bounce or spring in the foundation — any expressive motion is a brand Flavor's choice. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the UI stays fully functional (environmental honesty).
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle on 5 surfaces:
+- https://design.pepabo.com/inhouse/ — DS home: font stack "Open Sans","Noto Sans JP",apple-system,...; nav text rgb(57,60,65)=#393c41 / rgb(88,92,99)=#585c63; link rgb(10,98,173)=#0a62ad; H1 21px/700
+- https://design.pepabo.com/inhouse/flavors/color/ — Pepper primitive ramps captured from rendered SVG swatches: gray f7f8fa..1f2124, blue f5faff..002647 (600=#1f7ccc), green f5fffb..003d27 (600=#1dc487), yellow ..debf43.., red fffafa..540003 (600=#cc1f24, 700=#b50b11), orange ..db7d42.. ; token API get-primitive-color / get-semantic-color / get-implication-color
+- https://design.pepabo.com/inhouse/components/button/ — primary btn bg #000000 / fg #ffffff / radius 4px / h 40px / shadow rgba(0,0,0,0.12) 0px 1px 2px; outlined #585c63 border/text; pill radius 20px h32; sizes 24/32/40px (12/14/16px)
+- https://design.pepabo.com/inhouse/components/textfield/ — input bg #ffffff (filled #edeef0) / text #393c41 / radius 4px / padding 8px 16px / h 40px; sizes 32/40/48px
+- https://design.pepabo.com/inhouse/flavors/elevation/ — level1 rgba(0,0,0,0.12) 0px -0.1px 1px, 0px 1px 2px; level2 0px 0px 4px, 0px 4px 6px -2px
+- https://pepabo.com/ — corporate: body text #393c41 (×640), link #005bac/#0a62ad/#1f7acc, brand mint #30f4c5/#0e7365, hero H2 "人類のアウトプットを増やす" white on black canvas
+
+Token-level claims (§1-9) are sourced from this live inspection plus the published flavor docs.
+
+Voice samples (§10) are verbatim from live surfaces (corporate hero mission, DS nav vocabulary, token function signatures).
+
+Brand narrative (§11): GMO Pepabo founded 2003 (GMO Internet Group), services minne/SUZURI/lolipop/
+ムームードメイン/カラーミーショップ; Inhouse documentation publicly opened 2021 (tech.pepabo.com
+"ペパボのデザインシステムのドキュメントを公開します"). These are publicly documented facts; specific
+details beyond the live docs are general public knowledge, not directly quoted Pepabo statements.
+
+Principles (§12) paraphrase the published Inhouse "About" page (enabler-not-enforcer / living system /
+neutral prototype / typography-first / environmental honesty).
+
+Personas (§13) are fictional archetypes informed by publicly observable Inhouse user segments (Pepabo
+product designers and engineers). Names are illustrative; they do not refer to real people.
+
+Motion tokens (§15) are illustrative conventions consistent with the system's shallow-elevation,
+neutral aesthetic; the public docs expose elevation tokens but not a published duration/easing scale,
+so these are editorial defaults, not directly sourced Inhouse motion tokens.
+
+Interpretive claims (e.g., "neutral so brands can overwrite it", "elevation stays achromatic by design")
+are editorial readings connecting Inhouse's observed design and stated principles to its multi-brand goal.
+-->
+
+## Components
 
 ### Buttons
 
@@ -269,39 +518,21 @@ Size scale (height / font / padding): Small 32px / 14px / 4px 12px · Medium 40p
 **Tier 2 sources:** getdesign.md/pepabo — 404 (no Pepabo entry); styles.refero.design/?q=pepabo — no brand-specific match (generic gallery only)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px (sizing tokens are 4px-grid aligned)
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: input/button padding lands on 8px/16px; line-heights snap to the same 4px grid for type-to-layout alignment
+| State | Treatment |
+|---|---|
+| **Empty (list / collection)** | White canvas, single near-black `#393c41` line explaining there is nothing yet, with one interactive `#1f7ccc` action. Calm, no clutter. |
+| **Empty (search, no results)** | Muted `#767b85` single line stating no matches; the query/filters stay visible above so the user can adjust scope. |
+| **Loading (content fetch)** | Skeleton blocks on `#edeef0` surface at final dimensions, 4px radius. Shallow/flat pulse consistent with the low-elevation system. |
+| **Loading (in-place refresh)** | Thin `#1f7ccc` interactive-blue progress indicator; previous content stays visible. |
+| **Error (request failed)** | Negative intention: `#cc1f24` accent with a plain-language explanation and a retry — states what to do next, not just that something broke. |
+| **Error (form validation)** | Field-level message below the Textfield in the negative tone; describes what is valid, not only "必須". |
+| **Success (saved / submitted)** | Positive intention `#1dc487`; brief inline confirmation, next-step detail linked below. No celebratory emoji. |
+| **Skeleton** | `#edeef0` blocks at final dimensions, 4px radius, flat pulse (shallow elevation). |
+| **Disabled** | Faint `#9297a1` text on a reduced-emphasis surface; interactive controls fade rather than change hue, preserving the token read. |
 
-### Grid & Container
-- Documentation chrome: a fixed left sidebar nav (App Bar) + centered prose column on `design.pepabo.com`
-- Components demonstrated in neutral cards on a white canvas so the base flavor never competes with content
-- Corporate `pepabo.com`: full-bleed black hero band, then white content sections with the mint accent
-
-### Whitespace Philosophy
-- **Calm neutrality**: the base flavor is intentionally quiet so brands can layer identity on top — whitespace carries structure, not decoration.
-- **Grid-locked rhythm**: 4px sizing grid + 4px-multiple line-heights keep vertical rhythm consistent across densities.
-- **Density options**: comfort / normal / dense line-heights let the same component breathe or compact depending on context.
-
-### Border Radius Scale
-- Small (4px): buttons, inputs, cards — the workhorse
-- Pill (20px): rounded pill button variant
-- Full (9999px): avatars, full-round chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | `none` | Most surfaces, inline content |
-| Level 1 | `rgba(0,0,0,0.12) 0px -0.1px 1px 0px, rgba(0,0,0,0.12) 0px 1px 2px 0px` | Buttons, resting cards — soft 1px lift |
-| Level 2 | `rgba(0,0,0,0.12) 0px 0px 4px 0px, rgba(0,0,0,0.12) 0px 4px 6px -2px` | Raised cards, menus, popovers |
-
-**Shadow Philosophy**: Inhouse keeps elevation deliberately shallow. The elevation flavor exposes a small set of `get-elevation-box-shadow($level)` tokens built on a uniform `rgba(0,0,0,0.12)` tint, so shadows read as a gentle, neutral lift rather than dramatic depth. A faint `-0.1px` top offset on level 1 gives buttons a barely-there top edge. Because the system is brand-neutral, shadows stay achromatic (pure black at low alpha) — any chromatic depth is a brand Flavor's choice, never baked into the foundation. Most surfaces sit flat; elevation is reserved for genuinely floating UI.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Treat Inhouse as a neutral prototype — layer brand identity through a Flavor, not by hacking the base
@@ -323,32 +554,26 @@ Size scale (height / font / padding): Small 32px / 14px / 4px 12px · Medium 40p
 - Use a Latin-only font stack for Japanese text — Noto Sans JP + YakuHanJP carry CJK
 - Treat the system as a rulebook — it is an enabler ("a convenient constraint"), not an enforcer
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, sidebar nav collapses to a top App Bar / drawer |
-| Tablet | 768-1024px | Moderate padding, 2-up component grids |
-| Desktop | >1024px | Fixed left sidebar + centered content column |
+Inhouse's voice — visible in its own documentation and engineering writing — is **collegial, pragmatic, and quietly principled**. It frames the design system as a teammate's tool, not a corporate mandate: the foundation is described as "a convenient constraint" (便利な制約) and an *enabler, not an enforcer*. Copy is plain, technical when it needs to be (Sass function signatures shown inline), and humble about trade-offs. The corporate mission line "人類のアウトプットを増やす" ("Increase humanity's output") sets the register: ambitious in scope, plainly stated, never hyped.
 
-### Touch Targets
-- Medium controls at 40px height (button / textfield) meet comfortable tap sizing
-- Small (24px) and S (32px) sizes reserved for dense, pointer-led contexts
-- App Bar items at ~40–48px row height
+| Context | Tone |
+|---|---|
+| Design-system docs | Collegial and instructive. Explains the *why* (neutral prototype) before the *how* (token functions). |
+| Engineering blog (tech.pepabo.com) | Peer-to-peer, candid about trade-offs and iteration; shares reasoning openly. |
+| Component reference | Terse, factual: token name, value, usage. No marketing. |
+| Corporate / mission | Declarative and broad. "人類のアウトプットを増やす." Confident, not boastful. |
+| Brand surfaces (minne/SUZURI) | Warm, maker-friendly, creator-celebrating — the flavor layer carries this, not Inhouse itself. |
 
-### Collapsing Strategy
-- Documentation sidebar (Foundation / Inhouse / Components) collapses into a drawer on mobile
-- Component demos reflow from multi-column grids to single column
-- Type scale steps down with viewport but stays on the 4px grid
-- Corporate black hero maintains full-bleed treatment, reduces internal padding
+**Voice samples (verbatim from live surfaces):**
+- "人類のアウトプットを増やす" — corporate mission, pepabo.com hero. *(verified live 2026-06-17)*
+- "Inhouse" / "Foundation" / "Flavors" / "Components" — the documentation's own structural vocabulary. *(verified live 2026-06-17, design.pepabo.com nav)*
+- "get-primitive-color($name, $level)" / "get-semantic-color($intention, $level)" — the token API shown inline as the canonical access pattern. *(verified live 2026-06-17, color flavor page)*
 
-### Image Behavior
-- Icons come from the Icon flavor (swappable per brand), rendered as inline SVG
-- Avatars stay circular (9999px) at all sizes
-- Cards keep the 4px radius across breakpoints
+**Forbidden register**: rigid rule-enforcement language, hype/superlatives, brand-specific color baked into neutral foundation copy, jargon left unexplained to non-designers on the engineering blog.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Interactive / primary: Pepper Blue 600 (`#1f7ccc`); strong link `#0a62ad` / `#005bac`
@@ -377,117 +602,8 @@ Size scale (height / font / padding): Small 32px / 14px / 4px 12px · Medium 40p
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Inhouse's voice — visible in its own documentation and engineering writing — is **collegial, pragmatic, and quietly principled**. It frames the design system as a teammate's tool, not a corporate mandate: the foundation is described as "a convenient constraint" (便利な制約) and an *enabler, not an enforcer*. Copy is plain, technical when it needs to be (Sass function signatures shown inline), and humble about trade-offs. The corporate mission line "人類のアウトプットを増やす" ("Increase humanity's output") sets the register: ambitious in scope, plainly stated, never hyped.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Design-system docs | Collegial and instructive. Explains the *why* (neutral prototype) before the *how* (token functions). |
-| Engineering blog (tech.pepabo.com) | Peer-to-peer, candid about trade-offs and iteration; shares reasoning openly. |
-| Component reference | Terse, factual: token name, value, usage. No marketing. |
-| Corporate / mission | Declarative and broad. "人類のアウトプットを増やす." Confident, not boastful. |
-| Brand surfaces (minne/SUZURI) | Warm, maker-friendly, creator-celebrating — the flavor layer carries this, not Inhouse itself. |
-
-**Voice samples (verbatim from live surfaces):**
-- "人類のアウトプットを増やす" — corporate mission, pepabo.com hero. *(verified live 2026-06-17)*
-- "Inhouse" / "Foundation" / "Flavors" / "Components" — the documentation's own structural vocabulary. *(verified live 2026-06-17, design.pepabo.com nav)*
-- "get-primitive-color($name, $level)" / "get-semantic-color($intention, $level)" — the token API shown inline as the canonical access pattern. *(verified live 2026-06-17, color flavor page)*
-
-**Forbidden register**: rigid rule-enforcement language, hype/superlatives, brand-specific color baked into neutral foundation copy, jargon left unexplained to non-designers on the engineering blog.
-
-## 11. Brand Narrative
-
-GMO Pepabo (GMOペパボ株式会社), founded in **2003** in Fukuoka and headquartered in Tokyo as part of the GMO Internet Group, runs a portfolio of **creator and commerce services** — the handmade marketplace **minne**, the print-on-demand platform **SUZURI**, rental hosting (**lolipop!**, **ヘテムル**), domains (**ムームードメイン**), and the EC builder **カラーミーショップ**. Across that portfolio sat a recurring problem: every service rebuilt the same foundational UI from scratch, duplicating effort and drifting apart visually.
-
-Inhouse is Pepabo's answer. Publicly documented since **2021** (announced on the Pepabo Tech Portal, "ペパボのデザインシステムのドキュメントを公開します"), it consolidates the duplicated foundation into one shared, generalizable system — and crucially, makes it **multi-brand by construction**. Rather than impose one look, Inhouse stays a neutral prototype and exposes brand-swappable **Flavors** (Color, Sizing, Icon, Typography, Elevation) so minne and SUZURI can wear their own identities over identical, accessible components. The stated motivation is to free designers from foundational busywork so they can focus on differentiated, strategic design.
-
-What Inhouse refuses, visible in its design: a single imposed brand identity (the foundation is deliberately generic and trend-resistant), and rigid rule-enforcement (it positions itself as an *enabler*, a "convenient constraint," not a gatekeeper). What it embraces: a two-tier token system that keeps the core neutral while semantics carry meaning, Japanese-first typography (Noto Sans JP + YakuHanJP), a strict 4px grid, and "environmental honesty" — design that adapts naturally to the user's OS, browser, and media rather than fighting it.
-
-## 12. Principles
-
-*Stated Inhouse principles, paraphrased from the published "About" documentation.*
-
-1. **Enabler, not enforcer.** Inhouse is "a convenient constraint" that frees creativity rather than policing it. *UI implication:* offer sensible defaults and tokens, but let services extend and override; never hard-block a valid brand need.
-2. **A living system.** The system is continuously updated as services push new use cases back into it. *UI implication:* treat components as evolving; design for extension points, not frozen specs.
-3. **Neutral prototype.** Deliberately generic and trend-resistant so any brand can customize it. *UI implication:* keep the base flavor achromatic and quiet; carry brand color only through the Flavor layer.
-4. **Typography-first.** Text drives communication and accessibility. *UI implication:* invest in the type scale and 4px-grid line-heights (Japanese-first); let typography, not decoration, structure the page.
-5. **Environmental honesty.** Design adapts naturally to OS, browser, and media. *UI implication:* respect platform conventions and system fonts in the fallback stack; don't override what the environment does well.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Inhouse user segments (Pepabo product designers and engineers building across multiple service brands), not individual people.*
-
-**佐藤 美咲, 32, 福岡.** A product designer on minne. Reaches for Inhouse components so she can spend her time on minne's maker-celebrating identity instead of rebuilding buttons. Values that the minne Flavor repaints the same accessible components without forking them.
-
-**田中 健, 29, 東京.** A front-end engineer on SUZURI. Uses the `@pepabo-inhouse` packages and Sass token functions directly; cares that `get-semantic-color($intention)` stays stable so SUZURI's theme survives upgrades. Appreciates that the system is an enabler, not a wall.
-
-**山本 涼, 38, 東京.** A design-systems lead maintaining Inhouse itself. Guards the neutrality of the base flavor — pushes back on any PR that bakes a single brand's hue into the foundation. Reads the engineering blog culture of candid trade-off discussion as the team's real spec.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (list / collection)** | White canvas, single near-black `#393c41` line explaining there is nothing yet, with one interactive `#1f7ccc` action. Calm, no clutter. |
-| **Empty (search, no results)** | Muted `#767b85` single line stating no matches; the query/filters stay visible above so the user can adjust scope. |
-| **Loading (content fetch)** | Skeleton blocks on `#edeef0` surface at final dimensions, 4px radius. Shallow/flat pulse consistent with the low-elevation system. |
-| **Loading (in-place refresh)** | Thin `#1f7ccc` interactive-blue progress indicator; previous content stays visible. |
-| **Error (request failed)** | Negative intention: `#cc1f24` accent with a plain-language explanation and a retry — states what to do next, not just that something broke. |
-| **Error (form validation)** | Field-level message below the Textfield in the negative tone; describes what is valid, not only "必須". |
-| **Success (saved / submitted)** | Positive intention `#1dc487`; brief inline confirmation, next-step detail linked below. No celebratory emoji. |
-| **Skeleton** | `#edeef0` blocks at final dimensions, 4px radius, flat pulse (shallow elevation). |
-| **Disabled** | Faint `#9297a1` text on a reduced-emphasis surface; interactive controls fade rather than change hue, preserving the token read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, focus, button press |
-| `motion-standard` | 200ms | Menu, popover, card/section reveal |
-| `motion-slow` | 320ms | Page-level transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — menus, sheets, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and restrained, matching the shallow-elevation, neutral aesthetic — a system meant to disappear behind each brand's identity should not impose a strong motion personality. Elevation changes (level 1 → 2) pair with a brief `motion-standard / ease-enter` lift; interactive controls respond to press with a subtle opacity/scale shift. No bounce or spring in the foundation — any expressive motion is a brand Flavor's choice. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the UI stays fully functional (environmental honesty).
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle on 5 surfaces:
-- https://design.pepabo.com/inhouse/ — DS home: font stack "Open Sans","Noto Sans JP",apple-system,...; nav text rgb(57,60,65)=#393c41 / rgb(88,92,99)=#585c63; link rgb(10,98,173)=#0a62ad; H1 21px/700
-- https://design.pepabo.com/inhouse/flavors/color/ — Pepper primitive ramps captured from rendered SVG swatches: gray f7f8fa..1f2124, blue f5faff..002647 (600=#1f7ccc), green f5fffb..003d27 (600=#1dc487), yellow ..debf43.., red fffafa..540003 (600=#cc1f24, 700=#b50b11), orange ..db7d42.. ; token API get-primitive-color / get-semantic-color / get-implication-color
-- https://design.pepabo.com/inhouse/components/button/ — primary btn bg #000000 / fg #ffffff / radius 4px / h 40px / shadow rgba(0,0,0,0.12) 0px 1px 2px; outlined #585c63 border/text; pill radius 20px h32; sizes 24/32/40px (12/14/16px)
-- https://design.pepabo.com/inhouse/components/textfield/ — input bg #ffffff (filled #edeef0) / text #393c41 / radius 4px / padding 8px 16px / h 40px; sizes 32/40/48px
-- https://design.pepabo.com/inhouse/flavors/elevation/ — level1 rgba(0,0,0,0.12) 0px -0.1px 1px, 0px 1px 2px; level2 0px 0px 4px, 0px 4px 6px -2px
-- https://pepabo.com/ — corporate: body text #393c41 (×640), link #005bac/#0a62ad/#1f7acc, brand mint #30f4c5/#0e7365, hero H2 "人類のアウトプットを増やす" white on black canvas
-
-Token-level claims (§1-9) are sourced from this live inspection plus the published flavor docs.
-
-Voice samples (§10) are verbatim from live surfaces (corporate hero mission, DS nav vocabulary, token function signatures).
-
-Brand narrative (§11): GMO Pepabo founded 2003 (GMO Internet Group), services minne/SUZURI/lolipop/
-ムームードメイン/カラーミーショップ; Inhouse documentation publicly opened 2021 (tech.pepabo.com
-"ペパボのデザインシステムのドキュメントを公開します"). These are publicly documented facts; specific
-details beyond the live docs are general public knowledge, not directly quoted Pepabo statements.
-
-Principles (§12) paraphrase the published Inhouse "About" page (enabler-not-enforcer / living system /
-neutral prototype / typography-first / environmental honesty).
-
-Personas (§13) are fictional archetypes informed by publicly observable Inhouse user segments (Pepabo
-product designers and engineers). Names are illustrative; they do not refer to real people.
-
-Motion tokens (§15) are illustrative conventions consistent with the system's shallow-elevation,
-neutral aesthetic; the public docs expose elevation tokens but not a published duration/easing scale,
-so these are editorial defaults, not directly sourced Inhouse motion tokens.
-
-Interpretive claims (e.g., "neutral so brands can overwrite it", "elevation stays achromatic by design")
-are editorial readings connecting Inhouse's observed design and stated principles to its multi-brand goal.
--->
+- **Contrast, `badge-positive`.** Text `#0e7365` on `#30f4c5` measures 4.06:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

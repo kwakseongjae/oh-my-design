@@ -1,60 +1,163 @@
 ---
-id: octopusenergy
 name: Octopus Energy
-country: UK
-category: consumer-tech
-homepage: "https://octopus.energy"
-primary_color: "#f050f8"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=octopus.energy&sz=128"
-verified: "2026-06-23"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-23"
-  note: "primary = live CTA magenta (#f050f8); canvas = deep indigo (#100030); h1/h2 cyan (#60f0f8); nav ghost text (#f0ffff). Brand owns Chromatophore custom font."
-  colors:
-    primary: "#f050f8"
-    primary-border: "#f050f8"
-    canvas: "#100030"
-    canvas-alt: "#180048"
-    brand-accent: "#5840ff"
-    cyan: "#60f0f8"
-    foreground: "#f0ffff"
-    on-primary: "#100030"
-    muted: "#a49fc8"
-  typography:
-    family: { sans: "Chromatophore, helvetica, arial, sans-serif" }
-    display-hero: { size: 36, weight: 500, lineHeight: 1.5, use: "H1 hero headline — cyan on deep indigo" }
-    section:      { size: 36, weight: 500, lineHeight: 1.5, use: "H2 section headings — cyan" }
-    subsection:   { size: 28, weight: 500, lineHeight: 1.5, use: "H3 feature subheadings — foreground white" }
-    body:         { size: 18, weight: 400, lineHeight: 1.5, use: "Body paragraphs — foreground white" }
-    body-sm:      { size: 16, weight: 400, lineHeight: 1.5, use: "Nav links, captions — foreground white" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.5, use: "Fine-print trust indicators" }
-    button:       { size: 16, weight: 500, lineHeight: 1.11, use: "Button label — Chromatophore medium" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#f050f8", fg: "#100030", radius: "12px", padding: "12px 16px", font: "16px / 500 Chromatophore", border: "2px solid #f050f8", use: "Primary CTA — cookie accept, standard action" }
-    button-primary-lg: { type: button, bg: "#f050f8", fg: "#f0ffff", radius: "12px", padding: "16px 20px", font: "18px / 500 Chromatophore", border: "2px solid #f050f8", use: "Large primary CTA — Get a quote on tariffs page" }
-    button-outlined: { type: button, bg: "transparent", fg: "#f050f8", radius: "12px", padding: "12px 16px", font: "16px / 500 Chromatophore", border: "2px solid #f050f8", use: "Secondary outlined button — Fine tune / cookie secondary" }
-    button-ghost: { type: button, bg: "transparent", fg: "#f0ffff", radius: "12px", padding: "12px 16px", font: "16px / 500 Chromatophore", use: "Nav ghost link-buttons — Energy, Heat pumps, Log in" }
-    input-postcode-hero: { type: input, bg: "#ffffff", fg: "#000000", radius: "12px 0px 0px 12px", padding: "16px", font: "18px / 600 Arial", height: "60px", use: "Hero homepage postcode field — white bg / black text / Arial 600, left-rounded, attached to magenta Get-a-quote button on right" }
-    input-postcode-tariffs: { type: input, bg: "transparent", fg: "#f0ffff", radius: "0px", padding: "16px", font: "18px / 400 Chromatophore", border: "2px solid transparent", height: "60px", use: "Tariffs page full-width postcode input — transparent / #f0ffff text / Chromatophore 400 / no radius" }
-    button-hero-cta: { type: button, bg: "#f050f8", fg: "#f0ffff", radius: "0px 12px 12px 0px", padding: "16px 20px", font: "18px / 400 Chromatophore", border: "2px solid #f050f8", use: "Hero attached-CTA button — magenta, right-rounded, paired with hero postcode input" }
-    nav-link: { type: tab, fg: "#f0ffff", font: "16px / 500 Chromatophore", use: "Top nav item", active: "text #f0ffff on #180048 background" }
-    card-product: { type: card, bg: "#180048", fg: "#100030", radius: "12px", use: "Product feature card (Energy/Heat pumps/Solar) on deep indigo" }
-    badge-trust: { type: badge, bg: "#180048", fg: "#f0ffff", radius: "9999px", font: "12px / 400 Chromatophore", use: "Trust indicator pill — star ratings, awards" }
-    link-inline: { type: listItem, fg: "#60f0f8", font: "18px / 500 Chromatophore", use: "Inline body links and sub-nav anchor text" }
-  components_harvested: true
+colors:
+  primary: '#f050f8'
+  primary-border: '#f050f8'
+  canvas: '#100030'
+  canvas-alt: '#180048'
+  brand-accent: '#5840ff'
+  cyan: '#60f0f8'
+  foreground: '#f0ffff'
+  on-primary: '#100030'
+  muted: '#a49fc8'
+typography:
+  display-hero:
+    fontSize: 36px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: H1 hero headline — cyan on deep indigo
+  section:
+    fontSize: 36px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: H2 section headings — cyan
+  subsection:
+    fontSize: 28px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: H3 feature subheadings — foreground white
+  body:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body paragraphs — foreground white
+  body-sm:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Nav links, captions — foreground white
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Fine-print trust indicators
+  button:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.11
+    use: Button label — Chromatophore medium
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 20
+  xl: 24
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#f050f8'
+    textColor: '#100030'
+    rounded: 12px
+    padding: 12px 16px
+    typography: 16px / 500 Chromatophore
+    border: '2px solid #f050f8'
+    use: Primary CTA — cookie accept, standard action
+  button-primary-lg:
+    type: button
+    backgroundColor: '#f050f8'
+    textColor: '#f0ffff'
+    rounded: 12px
+    padding: 16px 20px
+    typography: 18px / 500 Chromatophore
+    border: '2px solid #f050f8'
+    use: Large primary CTA — Get a quote on tariffs page
+  button-outlined:
+    type: button
+    backgroundColor: transparent
+    textColor: '#f050f8'
+    rounded: 12px
+    padding: 12px 16px
+    typography: 16px / 500 Chromatophore
+    border: '2px solid #f050f8'
+    use: Secondary outlined button — Fine tune / cookie secondary
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#f0ffff'
+    rounded: 12px
+    padding: 12px 16px
+    typography: 16px / 500 Chromatophore
+    use: Nav ghost link-buttons — Energy, Heat pumps, Log in
+  input-postcode-hero:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 12px 0px 0px 12px
+    padding: 16px
+    typography: 18px / 600 Arial
+    height: 60px
+    use: Hero homepage postcode field — white bg / black text / Arial 600, left-rounded, attached to magenta Get-a-quote button on right
+  input-postcode-tariffs:
+    type: input
+    backgroundColor: transparent
+    textColor: '#f0ffff'
+    rounded: 0px
+    padding: 16px
+    typography: 18px / 400 Chromatophore
+    border: 2px solid transparent
+    height: 60px
+    use: 'Tariffs page full-width postcode input — transparent / #f0ffff text / Chromatophore 400 / no radius'
+  button-hero-cta:
+    type: button
+    backgroundColor: '#f050f8'
+    textColor: '#f0ffff'
+    rounded: 0px 12px 12px 0px
+    padding: 16px 20px
+    typography: 18px / 400 Chromatophore
+    border: '2px solid #f050f8'
+    use: Hero attached-CTA button — magenta, right-rounded, paired with hero postcode input
+  nav-link:
+    type: tab
+    textColor: '#f0ffff'
+    typography: 16px / 500 Chromatophore
+    use: Top nav item
+    active: 'text #f0ffff on #180048 background'
+  card-product:
+    type: card
+    backgroundColor: '#180048'
+    textColor: '#100030'
+    rounded: 12px
+    use: Product feature card (Energy/Heat pumps/Solar) on deep indigo
+  badge-trust:
+    type: badge
+    backgroundColor: '#180048'
+    textColor: '#f0ffff'
+    rounded: 9999px
+    typography: 12px / 400 Chromatophore
+    use: Trust indicator pill — star ratings, awards
+  link-inline:
+    type: listItem
+    textColor: '#60f0f8'
+    typography: 18px / 500 Chromatophore
+    use: Inline body links and sub-nav anchor text
+fonts:
+  roles:
+    sans: Chromatophore, helvetica, arial, sans-serif
 ---
 
 # Design System Inspiration of Octopus Energy
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Octopus Energy is the UK's most awarded energy supplier, and its digital presence makes an immediately striking and distinctive impression: a deep cosmic indigo (`#100030`) canvas saturated with electric magenta (`#f050f8`) and cyan (`#60f0f8`) — a palette that feels more like a rave-poster-turned-utility-brand than anything a traditional energy company would dare. This is fully intentional. Octopus has built an identity that positions clean energy as something exciting, modern, and even joyful, rather than the dull obligation of switching suppliers. The result is a screen that glows at you from the dark like a neon sign in a midnight sky.
 
@@ -72,7 +175,7 @@ What makes the system work is the disciplined three-color hierarchy: **deep indi
 - 12px border-radius on all interactive elements — rounded but not pill
 - Cookie-banner button system doubles as the primary component pattern
 
-## Primary tasks
+### Primary tasks
 
 - Get a quote for your home by entering a postcode
 - Compare fixed and flexible tariffs before choosing one
@@ -80,7 +183,35 @@ What makes the system work is the disciplined three-color hierarchy: **deep indi
 - Fix a failed payment from your account
 - Export excess solar power and get credited for it
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Octopus Energy was founded in **2015** by **Greg Jackson (CEO)** as a vertically-integrated energy retailer and technology company, built on the conviction that the UK energy market was broken — overpriced, opaque, and hostile to innovation. The company's proprietary Kraken platform (a cloud-based energy management system) powers Octopus's ability to offer smart tariffs, agile pricing, and direct-to-bill renewable energy at a scale that incumbents cannot match.
+
+The brand's defining move was refusing the norms of utility-brand communication: instead of institutional imagery and corporate language, Octopus built a brand around an octopus mascot called **Constantine**, a playful illustration character whose many arms hold products (energy, heat pumps, solar, EV charging) like a friendly multi-tasker. The deep indigo and magenta palette — far from any competitor's safe blues and greens — signals that this is a technology company wearing a utility's licence, not the other way around.
+
+By 2023-2024, Octopus Energy had become the UK's largest domestic energy supplier by customer numbers, with the Which? Recommended Provider status held for nine consecutive years. The Kraken platform has been licensed internationally (to E.ON, EDF, Origin Energy in Australia, and others), making the company's technology as significant a revenue stream as its retail energy business.
+
+What Octopus refuses: greenwashing without substance, the incumbent utility's "cheapest deal" race to the bottom, and the assumption that sustainability has to be dull. What it embraces: radical transparency on pricing, a brand that feels like a tech company, and the position that clean energy is a source of joy and pride for households — not just an obligation.
+
+### Principles
+
+1. **Technology over incumbency.** Octopus's Kraken platform is the product; the energy licence is the delivery mechanism. *UI implication:* the interface feels like a tech product — custom font, dark canvas, electric palette — not a utility bill.
+2. **Warmth in the unexpected place.** A grid-connected household energy company built a beloved mascot. *UI implication:* Constantine appears in hero illustrations; the brand earns affection through character, not just price.
+3. **Transparency as differentiation.** In a market famous for opaque pricing, Octopus publishes its tariff rates prominently and compares them to the price cap on its own homepage. *UI implication:* pricing copy is upfront, direct, and data-backed.
+4. **Clean energy as cause and commerce.** The brand never separates "cheap" from "green" — they are the same offer. *UI implication:* sustainability language is woven into product descriptions, not siloed in a CSR section.
+5. **One action, one color.** Magenta (`#f050f8`) means "do this now." *UI implication:* the CTA button stands as the only saturated warm hue on the deep indigo canvas — it cannot be missed.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable Octopus Energy user segments (UK households switching energy suppliers, early-adopter EV and solar homeowners, sustainability-conscious renters), not individual people.*
+
+**Sarah Thornton, 37, Manchester.** A dual-income household manager who switched to Octopus because a neighbour mentioned the 4.8-star rating. She doesn't care deeply about energy tariff mechanics — she wants the cheapest bill and no drama when something goes wrong. The postcode-to-quote funnel on the homepage converted her in under two minutes. She now uses the app primarily to track usage and has signed up for an Agile tariff after reading about EV overnight charging savings.
+
+**James Okafor, 44, Bristol.** A sustainability-oriented homeowner who installed solar panels through Octopus Solar and added a home battery. He chose Octopus because the Kraken technology means his excess solar export is automatically credited at market-rate, not a fixed export tariff. He is the kind of user who reads the blog and recommends Octopus to colleagues with EVs.
+
+**Priya Mehta, 28, London.** A renter in a flat who cannot control which supplier her landlord uses, but has bookmarked Octopus for when she moves. The brand's tone resonates with her; she follows the @OctopusEnergy account partly because Constantine the mascot makes energy content feel like something she actually wants to read.
+
+## Colors
 
 ### Primary Action
 - **Octopus Magenta** (`#f050f8`): The single primary action color — CTA button backgrounds, borders on outlined buttons. The brand's most saturated and eye-catching hue, inspired by the deep-water bioluminescent signature. Used only for action; never decorative.
@@ -96,7 +227,7 @@ What makes the system work is the disciplined three-color hierarchy: **deep indi
 - **Muted** (`#a49fc8`): Tertiary text and fine-print items on the dark canvas.
 - **On-primary** (`#100030`): Text color used on magenta buttons — the deep indigo as foreground ensures readable contrast.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Chromatophore` — Octopus Energy's custom typeface, named after octopus chromatophores (pigment cells). Fallback: `helvetica, arial, sans-serif`.
@@ -119,7 +250,104 @@ What makes the system work is the disciplined three-color hierarchy: **deep indi
 - **H1 = H2 in size**: The 36px heading scale does not differentiate H1 from H2 by size — context and color do the hierarchy work (cyan for main, white for sub).
 - **Line height 1.5 throughout**: A single, generous line-height ratio applies across all sizes — simplified and consistent.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 16px
+- Scale observed: 4px, 8px, 12px, 16px, 20px, 24px, 48px, 64px
+- Postcode input inner padding: 16px; button padding: 12–24px
+
+### Grid & Container
+- Centered single-column hero with the 36px cyan headline anchoring the top
+- 4-column product cards below (Energy / Heat pumps / Solar / EV) on desktop
+- Full-width dark sections; no container border — the indigo bleeds edge to edge
+- Max content width: approximately 1200px centered
+
+### Whitespace Philosophy
+- **Dark-canvas breathing room**: generous vertical padding between sections keeps the dark canvas from feeling claustrophobic
+- **Color as separator**: different tints of indigo (`#100030` vs `#180048`) create section breaks without any visible borders or shadows
+- **Illustration as content**: the Constantine octopus mascot fills hero space that other brands give to photography — character, not whitespace
+
+### Border Radius Scale
+- Standard (12px): all buttons, inputs, nav items — consistent and rounded
+- Card (12px): product feature cards match the button system
+- Full pill (9999px): trust indicator badges only
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, product cards stack |
+| Tablet | 640-1024px | 2-column product cards, moderate padding |
+| Desktop | 1024px+ | Full 4-column product grid, centered 1200px container |
+
+#### Touch Targets
+- Nav buttons at 46px height with 12px 16px padding — well within touch target guidelines
+- Large CTA buttons at 56px height on tariff pages — generous for mobile
+- Postcode input at 60px height for easy tap
+
+#### Collapsing Strategy
+- Hero headline stays at weight 500, scales down on mobile
+- 4-column product cards collapse to 2-up then single column
+- Sticky nav compresses to hamburger toggle at mobile
+- Dark background sections maintain full-width indigo treatment
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | `#100030` — base canvas | Page background |
+| Raised (Level 1) | `#180048` tint | Product cards, nav background |
+| Translucent (Sticky) | `rgba(16, 0, 48, 0.9)` + implied blur | Sticky top nav on scroll |
+
+**Shadow Philosophy**: Octopus Energy is a shadow-free system. Live inspection confirmed `box-shadow: none` across all major elements — buttons, cards, nav, and hero. Depth is handled entirely by background-color contrast between the two indigo tints (`#100030` vs `#180048`), creating a low-key depth that preserves the neon-on-dark aesthetic. Shadows would add a material realism that conflicts with the brand's otherworldly, bioluminescent feel.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+**Motion rules**: Motion supports the brand's energy and warmth without becoming frivolous. The Constantine mascot illustration may entrance with a gentle float-in on hero load. Button hover shows a subtle brightness shift on the magenta (`#f050f8` → slightly lighter); outlined buttons fill on hover. No spring or bounce — the brand is playful but its energy infrastructure must feel dependable. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; Constantine does not animate on load.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-23) via playwright getComputedStyle:
+- https://octopus.energy/ (homepage — title "Octopus Energy: The UK's most awarded energy supplier")
+- https://octopus.energy/tariffs/ (tariffs page — title "All our tariffs | Octopus Energy")
+
+Raw DOM observations (homepage):
+- body: font-family: Chromatophore, helvetica, arial, sans-serif; color: rgb(240, 255, 255) #f0ffff; font-size: 16px; bg: rgb(16, 0, 48) #100030
+- H1 "Join the UK's most popular energy supplier": font-size: 36px; font-weight: 500; line-height: 54px; color: rgb(96, 240, 248) #60f0f8
+- H2 "Everything you need for a cheaper, greener home & business": 36px / 500 / rgb(96,240,248) #60f0f8
+- H3 "Most homes could save with our fixed and flexible tariffs": 28px / 500 / rgb(240,255,255) #f0ffff
+- Button "That's cool" (primary): bg rgb(240,80,248) #f050f8; color rgb(16,0,48) #100030; radius 12px; padding 12px 16px; font 16px / 500
+- Button "Fine tune" (outlined): bg transparent; color rgb(240,80,248) #f050f8; radius 12px; border 2px solid rgb(240,80,248)
+- Button "Get a quote" (large primary, tariffs page): bg rgb(240,80,248) #f050f8; color rgb(240,255,255) #f0ffff; radius 12px; padding 16px 20px; height 56px
+- Nav links (Energy, Heat pumps, etc.): bg transparent; color rgb(240,255,255) #f0ffff; radius 12px; padding 12px 16px; font 16px / 500
+- Postcode input: color rgb(240,255,255); padding 16px; height 60px
+- Background frequency: rgb(24,0,72) #180048 ×16, rgb(16,0,48) #100030 ×14, rgb(240,80,248) #f050f8 ×9
+- Text frequency: rgb(240,255,255) #f0ffff ×1748, rgb(96,240,248) #60f0f8 ×547
+
+Brand narrative (§11): Octopus Energy founded 2015, CEO Greg Jackson, Kraken platform, Which? Recommended Provider 9 consecutive years, UK's largest domestic energy supplier — widely documented public facts.
+
+Personas (§13) are fictional archetypes informed by publicly observable Octopus Energy user segments. Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "technology company wearing a utility's licence", "Constantine earns affection through character") are editorial readings connecting observed design to positioning.
+
+Tier 2: getdesign.md/octopusenergy — 0 results. styles.refero.design — no Octopus Energy brand card found after search.
+-->
+
+## Components
 
 ### Buttons
 
@@ -226,40 +454,22 @@ There are two distinct postcode input surfaces on the site, and they are styled 
 **Tier 2 sources:** getdesign.md/octopusenergy — 0 results (not listed); styles.refero.design/?q=octopus+energy — no matching brand card found
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 16px
-- Scale observed: 4px, 8px, 12px, 16px, 20px, 24px, 48px, 64px
-- Postcode input inner padding: 16px; button padding: 12–24px
+| State | Treatment |
+|---|---|
+| **Empty (postcode, no input)** | Input field with placeholder text in muted `#a49fc8`; magenta CTA is present and enabled — the empty state is the default CTA state. |
+| **Loading (postcode quote fetch)** | Inline progress on the CTA; the deep indigo canvas stays visible. No full-page spinner — the quote funnel is fast. |
+| **Error (invalid postcode)** | Inline field-level message below the input. Plain-language: "Please enter a valid UK postcode." Magenta border on the input field. |
+| **Success (quote returned)** | Redirect to the quote flow with tariff cards on dark canvas. No celebratory toast — the product is the feedback. |
+| **Empty (account, no usage data)** | Friendly message with a Constantine illustration reference; single CTA to set up smart meter. Calm and on-brand. |
+| **Loading (account dashboard)** | Skeleton placeholder rows on `#180048` surface; flat pulse consistent with shadow-free system. |
+| **Error (payment failed)** | Inline banner with plain-language explanation; "Update payment details" as a magenta CTA. No jargon. |
+| **Success (payment taken)** | Confirmation email rather than in-app toast; app view shows updated balance. Understated. |
+| **Disabled** | Reduced opacity on magenta elements; `#a49fc8` muted text for inactive fields. Brand magenta fades, does not switch to grey. |
+| **Skeleton** | `#180048` blocks at final dimensions, flat colour pulse — no shimmer or shadow. |
 
-### Grid & Container
-- Centered single-column hero with the 36px cyan headline anchoring the top
-- 4-column product cards below (Energy / Heat pumps / Solar / EV) on desktop
-- Full-width dark sections; no container border — the indigo bleeds edge to edge
-- Max content width: approximately 1200px centered
-
-### Whitespace Philosophy
-- **Dark-canvas breathing room**: generous vertical padding between sections keeps the dark canvas from feeling claustrophobic
-- **Color as separator**: different tints of indigo (`#100030` vs `#180048`) create section breaks without any visible borders or shadows
-- **Illustration as content**: the Constantine octopus mascot fills hero space that other brands give to photography — character, not whitespace
-
-### Border Radius Scale
-- Standard (12px): all buttons, inputs, nav items — consistent and rounded
-- Card (12px): product feature cards match the button system
-- Full pill (9999px): trust indicator badges only
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | `#100030` — base canvas | Page background |
-| Raised (Level 1) | `#180048` tint | Product cards, nav background |
-| Translucent (Sticky) | `rgba(16, 0, 48, 0.9)` + implied blur | Sticky top nav on scroll |
-
-**Shadow Philosophy**: Octopus Energy is a shadow-free system. Live inspection confirmed `box-shadow: none` across all major elements — buttons, cards, nav, and hero. Depth is handled entirely by background-color contrast between the two indigo tints (`#100030` vs `#180048`), creating a low-key depth that preserves the neon-on-dark aesthetic. Shadows would add a material realism that conflicts with the brand's otherworldly, bioluminescent feel.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Chromatophore at weight 500 for all headings and buttons
@@ -281,27 +491,28 @@ There are two distinct postcode input surfaces on the site, and they are styled 
 - Mix cyan into interactive elements — cyan is for headings, magenta is for action
 - Use a secondary typeface — Chromatophore is the sole font across all surfaces
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, product cards stack |
-| Tablet | 640-1024px | 2-column product cards, moderate padding |
-| Desktop | 1024px+ | Full 4-column product grid, centered 1200px container |
+Octopus Energy's voice is **warm, direct, and cheeky** — the energy brand that doesn't talk like an energy brand. Where competitors use utility-grade corporate prose ("Switching is simple — just provide your account details"), Octopus uses the friendly confidence of a trusted friend who happens to know a lot about renewable energy. The homepage headline "Join the UK's most popular energy supplier" isn't a claim — it's a casual invitation. The brand's playfulness is genuine rather than performed; it flows from a founding mission (make clean energy affordable and accessible) rather than a marketing brief.
 
-### Touch Targets
-- Nav buttons at 46px height with 12px 16px padding — well within touch target guidelines
-- Large CTA buttons at 56px height on tariff pages — generous for mobile
-- Postcode input at 60px height for easy tap
+| Context | Tone |
+|---|---|
+| Hero headlines | Confident and welcoming. "Join the UK's most popular energy supplier." |
+| Tariff descriptions | Plain-language, benefit-first. "Most homes could save with our fixed and flexible tariffs." |
+| CTAs | Action-forward, friendly. "Get a quote", "That's cool", "change my tariff." |
+| Trust signals | Factual and proud. "Rated 4.8 stars for customer service from 815,906 reviews." |
+| Support / help | Warm and pragmatic. Explains without condescension. |
+| Sustainability | Earnest without preaching. States the mission, lets the numbers speak. |
 
-### Collapsing Strategy
-- Hero headline stays at weight 500, scales down on mobile
-- 4-column product cards collapse to 2-up then single column
-- Sticky nav compresses to hamburger toggle at mobile
-- Dark background sections maintain full-width indigo treatment
+**Voice samples (verbatim from live homepage):**
+- "Join the UK's most popular energy supplier" — H1 hero headline, welcoming not boastful. *(verified live 2026-06-23)*
+- "Everything you need for a cheaper, greener home & business" — H2 section heading, benefit-led. *(verified live 2026-06-23)*
+- "Great value energy for your home or business" — H2, plain and accessible. *(verified live 2026-06-23)*
+- "Our standard prices have always been cheaper than the price cap" — body copy, confident claim with data behind it. *(verified live 2026-06-23)*
 
-## 9. Agent Prompt Guide
+**Forbidden register**: corporate energy jargon, fear-of-missing-out pricing urgency, vague greenwashing ("we care about the planet"), defensive contract language foregrounded in user flows, and excessive exclamation points.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Octopus Magenta (`#f050f8`)
@@ -330,104 +541,10 @@ There are two distinct postcode input surfaces on the site, and they are styled 
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Octopus Energy's voice is **warm, direct, and cheeky** — the energy brand that doesn't talk like an energy brand. Where competitors use utility-grade corporate prose ("Switching is simple — just provide your account details"), Octopus uses the friendly confidence of a trusted friend who happens to know a lot about renewable energy. The homepage headline "Join the UK's most popular energy supplier" isn't a claim — it's a casual invitation. The brand's playfulness is genuine rather than performed; it flows from a founding mission (make clean energy affordable and accessible) rather than a marketing brief.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Confident and welcoming. "Join the UK's most popular energy supplier." |
-| Tariff descriptions | Plain-language, benefit-first. "Most homes could save with our fixed and flexible tariffs." |
-| CTAs | Action-forward, friendly. "Get a quote", "That's cool", "change my tariff." |
-| Trust signals | Factual and proud. "Rated 4.8 stars for customer service from 815,906 reviews." |
-| Support / help | Warm and pragmatic. Explains without condescension. |
-| Sustainability | Earnest without preaching. States the mission, lets the numbers speak. |
-
-**Voice samples (verbatim from live homepage):**
-- "Join the UK's most popular energy supplier" — H1 hero headline, welcoming not boastful. *(verified live 2026-06-23)*
-- "Everything you need for a cheaper, greener home & business" — H2 section heading, benefit-led. *(verified live 2026-06-23)*
-- "Great value energy for your home or business" — H2, plain and accessible. *(verified live 2026-06-23)*
-- "Our standard prices have always been cheaper than the price cap" — body copy, confident claim with data behind it. *(verified live 2026-06-23)*
-
-**Forbidden register**: corporate energy jargon, fear-of-missing-out pricing urgency, vague greenwashing ("we care about the planet"), defensive contract language foregrounded in user flows, and excessive exclamation points.
-
-## 11. Brand Narrative
-
-Octopus Energy was founded in **2015** by **Greg Jackson (CEO)** as a vertically-integrated energy retailer and technology company, built on the conviction that the UK energy market was broken — overpriced, opaque, and hostile to innovation. The company's proprietary Kraken platform (a cloud-based energy management system) powers Octopus's ability to offer smart tariffs, agile pricing, and direct-to-bill renewable energy at a scale that incumbents cannot match.
-
-The brand's defining move was refusing the norms of utility-brand communication: instead of institutional imagery and corporate language, Octopus built a brand around an octopus mascot called **Constantine**, a playful illustration character whose many arms hold products (energy, heat pumps, solar, EV charging) like a friendly multi-tasker. The deep indigo and magenta palette — far from any competitor's safe blues and greens — signals that this is a technology company wearing a utility's licence, not the other way around.
-
-By 2023-2024, Octopus Energy had become the UK's largest domestic energy supplier by customer numbers, with the Which? Recommended Provider status held for nine consecutive years. The Kraken platform has been licensed internationally (to E.ON, EDF, Origin Energy in Australia, and others), making the company's technology as significant a revenue stream as its retail energy business.
-
-What Octopus refuses: greenwashing without substance, the incumbent utility's "cheapest deal" race to the bottom, and the assumption that sustainability has to be dull. What it embraces: radical transparency on pricing, a brand that feels like a tech company, and the position that clean energy is a source of joy and pride for households — not just an obligation.
-
-## 12. Principles
-
-1. **Technology over incumbency.** Octopus's Kraken platform is the product; the energy licence is the delivery mechanism. *UI implication:* the interface feels like a tech product — custom font, dark canvas, electric palette — not a utility bill.
-2. **Warmth in the unexpected place.** A grid-connected household energy company built a beloved mascot. *UI implication:* Constantine appears in hero illustrations; the brand earns affection through character, not just price.
-3. **Transparency as differentiation.** In a market famous for opaque pricing, Octopus publishes its tariff rates prominently and compares them to the price cap on its own homepage. *UI implication:* pricing copy is upfront, direct, and data-backed.
-4. **Clean energy as cause and commerce.** The brand never separates "cheap" from "green" — they are the same offer. *UI implication:* sustainability language is woven into product descriptions, not siloed in a CSR section.
-5. **One action, one color.** Magenta (`#f050f8`) means "do this now." *UI implication:* the CTA button stands as the only saturated warm hue on the deep indigo canvas — it cannot be missed.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable Octopus Energy user segments (UK households switching energy suppliers, early-adopter EV and solar homeowners, sustainability-conscious renters), not individual people.*
-
-**Sarah Thornton, 37, Manchester.** A dual-income household manager who switched to Octopus because a neighbour mentioned the 4.8-star rating. She doesn't care deeply about energy tariff mechanics — she wants the cheapest bill and no drama when something goes wrong. The postcode-to-quote funnel on the homepage converted her in under two minutes. She now uses the app primarily to track usage and has signed up for an Agile tariff after reading about EV overnight charging savings.
-
-**James Okafor, 44, Bristol.** A sustainability-oriented homeowner who installed solar panels through Octopus Solar and added a home battery. He chose Octopus because the Kraken technology means his excess solar export is automatically credited at market-rate, not a fixed export tariff. He is the kind of user who reads the blog and recommends Octopus to colleagues with EVs.
-
-**Priya Mehta, 28, London.** A renter in a flat who cannot control which supplier her landlord uses, but has bookmarked Octopus for when she moves. The brand's tone resonates with her; she follows the @OctopusEnergy account partly because Constantine the mascot makes energy content feel like something she actually wants to read.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (postcode, no input)** | Input field with placeholder text in muted `#a49fc8`; magenta CTA is present and enabled — the empty state is the default CTA state. |
-| **Loading (postcode quote fetch)** | Inline progress on the CTA; the deep indigo canvas stays visible. No full-page spinner — the quote funnel is fast. |
-| **Error (invalid postcode)** | Inline field-level message below the input. Plain-language: "Please enter a valid UK postcode." Magenta border on the input field. |
-| **Success (quote returned)** | Redirect to the quote flow with tariff cards on dark canvas. No celebratory toast — the product is the feedback. |
-| **Empty (account, no usage data)** | Friendly message with a Constantine illustration reference; single CTA to set up smart meter. Calm and on-brand. |
-| **Loading (account dashboard)** | Skeleton placeholder rows on `#180048` surface; flat pulse consistent with shadow-free system. |
-| **Error (payment failed)** | Inline banner with plain-language explanation; "Update payment details" as a magenta CTA. No jargon. |
-| **Success (payment taken)** | Confirmation email rather than in-app toast; app view shows updated balance. Understated. |
-| **Disabled** | Reduced opacity on magenta elements; `#a49fc8` muted text for inactive fields. Brand magenta fades, does not switch to grey. |
-| **Skeleton** | `#180048` blocks at final dimensions, flat colour pulse — no shimmer or shadow. |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-**Motion rules**: Motion supports the brand's energy and warmth without becoming frivolous. The Constantine mascot illustration may entrance with a gentle float-in on hero load. Button hover shows a subtle brightness shift on the magenta (`#f050f8` → slightly lighter); outlined buttons fill on hover. No spring or bounce — the brand is playful but its energy infrastructure must feel dependable. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; Constantine does not animate on load.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-23) via playwright getComputedStyle:
-- https://octopus.energy/ (homepage — title "Octopus Energy: The UK's most awarded energy supplier")
-- https://octopus.energy/tariffs/ (tariffs page — title "All our tariffs | Octopus Energy")
-
-Raw DOM observations (homepage):
-- body: font-family: Chromatophore, helvetica, arial, sans-serif; color: rgb(240, 255, 255) #f0ffff; font-size: 16px; bg: rgb(16, 0, 48) #100030
-- H1 "Join the UK's most popular energy supplier": font-size: 36px; font-weight: 500; line-height: 54px; color: rgb(96, 240, 248) #60f0f8
-- H2 "Everything you need for a cheaper, greener home & business": 36px / 500 / rgb(96,240,248) #60f0f8
-- H3 "Most homes could save with our fixed and flexible tariffs": 28px / 500 / rgb(240,255,255) #f0ffff
-- Button "That's cool" (primary): bg rgb(240,80,248) #f050f8; color rgb(16,0,48) #100030; radius 12px; padding 12px 16px; font 16px / 500
-- Button "Fine tune" (outlined): bg transparent; color rgb(240,80,248) #f050f8; radius 12px; border 2px solid rgb(240,80,248)
-- Button "Get a quote" (large primary, tariffs page): bg rgb(240,80,248) #f050f8; color rgb(240,255,255) #f0ffff; radius 12px; padding 16px 20px; height 56px
-- Nav links (Energy, Heat pumps, etc.): bg transparent; color rgb(240,255,255) #f0ffff; radius 12px; padding 12px 16px; font 16px / 500
-- Postcode input: color rgb(240,255,255); padding 16px; height 60px
-- Background frequency: rgb(24,0,72) #180048 ×16, rgb(16,0,48) #100030 ×14, rgb(240,80,248) #f050f8 ×9
-- Text frequency: rgb(240,255,255) #f0ffff ×1748, rgb(96,240,248) #60f0f8 ×547
-
-Brand narrative (§11): Octopus Energy founded 2015, CEO Greg Jackson, Kraken platform, Which? Recommended Provider 9 consecutive years, UK's largest domestic energy supplier — widely documented public facts.
-
-Personas (§13) are fictional archetypes informed by publicly observable Octopus Energy user segments. Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "technology company wearing a utility's licence", "Constantine earns affection through character") are editorial readings connecting observed design to positioning.
-
-Tier 2: getdesign.md/octopusenergy — 0 results. styles.refero.design — no Octopus Energy brand card found after search.
--->
+- **Contrast, `button-primary-lg`.** Text `#f0ffff` on `#f050f8` measures 2.84:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-hero-cta`.** Text `#f0ffff` on `#f050f8` measures 2.84:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `card-product`.** Text `#100030` on `#180048` measures 1.06:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

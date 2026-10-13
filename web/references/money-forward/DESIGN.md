@@ -1,67 +1,128 @@
 ---
-id: money-forward
 name: Money Forward
-country: JP
-category: fintech
-homepage: "https://moneyforward.com"
-primary_color: "#3B7DE9"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=moneyforward.com&sz=128"
-verified: "2026-05-19"
-omd: "0.1"
-ds:
-  name: Money Forward Cloud UI
-  url: "https://github.com/moneyforward/cloud-react-ui"
-  type: system
-  description: Money Forward's open-source React component library and theme tokens for the Money Forward Cloud business suite — buttons, forms, and a typed styled-components theme published on GitHub.
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#3b7de9"
-    primary-hover: "#0054ac"
-    brand: "#3b7de9"
-    canvas: "#ffffff"
-    surface: "#ecf2fd"
-    foreground: "#333333"
-    muted: "#999999"
-    on-primary: "#ffffff"
-    hairline: "#d4d8dd"
-    error: "#d0021b"
-    success: "#65ab51"
-    warning-bg: "#fcf8e3"
-    warning-text: "#8a6d3b"
-    error-bg: "#ffeeeb"
-  typography:
-    family: { sans: "Noto Sans JP", mono: "Noto Sans JP" }
-    xSmall:     { size: 10, use: "Fine print, dense table footnotes" }
-    small:      { size: 12, use: "Captions, helper text" }
-    middle:     { size: 13, use: "Secondary labels, table cells" }
-    large:      { size: 14, weight: 400, use: "Body / button default" }
-    xlarge:     { size: 16, use: "Emphasized body" }
-    xxlarge:    { size: 18, weight: 700, use: "Subheadings" }
-    xxxLarge:   { size: 20, weight: 700, use: "Section headings" }
-    xxxxLarge:  { size: 24, weight: 700, use: "Page headings" }
-  spacing: [12, 16, 52]
-  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
-  shadow:
-    active: "0 0 2px rgba(212,216,221,0.3)"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "linear-gradient(to bottom,#3b7de9,#0054ac)", fg: "#ffffff", border: "1px solid rgba(0,0,0,0.15)", radius: "4px", height: "32px", padding: "0 12px", font: "14px / 400", states: "hover gradient flips, active 0 0 2px rgba(212,216,221,0.3)", use: "Single primary action per screen" }
-    button-default: { type: button, bg: "linear-gradient(to bottom,#ffffff,#ecf2fd)", fg: "#333333", border: "1px solid #d4d8dd", radius: "4px", font: "14px / 400", states: "hover gradient flips", use: "Secondary / cancel actions" }
-    button-danger: { type: button, bg: "linear-gradient(to bottom,#ffffff,#ecf2fd)", fg: "#d0021b", border: "1px solid #d4d8dd", radius: "4px", use: "Destructive actions, danger in text not fill" }
-    button-disabled: { type: button, bg: "#d4d8dd", fg: "#999999", border: "1px solid rgba(0,0,0,0.1)", radius: "4px", use: "Unavailable actions" }
-    block: { type: card, bg: "#ffffff", border: "1px solid #d4d8dd", radius: "4px", use: "Content panel / card container" }
-    input: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #d4d8dd", radius: "4px", focus: "border #3b7de9", use: "Form fields" }
-    notice-error: { type: card, bg: "#ffeeeb", fg: "#d0021b", radius: "4px", use: "Error / danger banner" }
-    notice-warning: { type: card, bg: "#fcf8e3", fg: "#8a6d3b", use: "Caution banner" }
+colors:
+  primary: '#3b7de9'
+  primary-hover: '#0054ac'
+  brand: '#3b7de9'
+  canvas: '#ffffff'
+  surface: '#ecf2fd'
+  foreground: '#333333'
+  muted: '#999999'
+  on-primary: '#ffffff'
+  hairline: '#d4d8dd'
+  error: '#d0021b'
+  success: '#65ab51'
+  warning-bg: '#fcf8e3'
+  warning-text: '#8a6d3b'
+  error-bg: '#ffeeeb'
+typography:
+  xSmall:
+    fontSize: 10px
+    use: Fine print, dense table footnotes
+  small:
+    fontSize: 12px
+    use: Captions, helper text
+  middle:
+    fontSize: 13px
+    use: Secondary labels, table cells
+  large:
+    fontSize: 14px
+    fontWeight: 400
+    use: Body / button default
+  xlarge:
+    fontSize: 16px
+    use: Emphasized body
+  xxlarge:
+    fontSize: 18px
+    fontWeight: 700
+    use: Subheadings
+  xxxLarge:
+    fontSize: 20px
+    fontWeight: 700
+    use: Section headings
+  xxxxLarge:
+    fontSize: 24px
+    fontWeight: 700
+    use: Page headings
+rounded:
+  sm: 4px
+  md: 4px
+  lg: 4px
+  full: 9999px
+components:
+  button-primary:
+    type: button
+    backgroundColor: linear-gradient(to bottom,#3b7de9,#0054ac)
+    textColor: '#ffffff'
+    border: 1px solid rgba(0,0,0,0.15)
+    rounded: 4px
+    height: 32px
+    padding: 0 12px
+    typography: 14px / 400
+    states: hover gradient flips, active 0 0 2px rgba(212,216,221,0.3)
+    use: Single primary action per screen
+  button-default:
+    type: button
+    backgroundColor: linear-gradient(to bottom,#ffffff,#ecf2fd)
+    textColor: '#333333'
+    border: '1px solid #d4d8dd'
+    rounded: 4px
+    typography: 14px / 400
+    states: hover gradient flips
+    use: Secondary / cancel actions
+  button-danger:
+    type: button
+    backgroundColor: linear-gradient(to bottom,#ffffff,#ecf2fd)
+    textColor: '#d0021b'
+    border: '1px solid #d4d8dd'
+    rounded: 4px
+    use: Destructive actions, danger in text not fill
+  button-disabled:
+    type: button
+    backgroundColor: '#d4d8dd'
+    textColor: '#999999'
+    border: 1px solid rgba(0,0,0,0.1)
+    rounded: 4px
+    use: Unavailable actions
+  block:
+    type: card
+    backgroundColor: '#ffffff'
+    border: '1px solid #d4d8dd'
+    rounded: 4px
+    use: Content panel / card container
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #d4d8dd'
+    rounded: 4px
+    focus: 'border #3b7de9'
+    use: Form fields
+  notice-error:
+    type: card
+    backgroundColor: '#ffeeeb'
+    textColor: '#d0021b'
+    rounded: 4px
+    use: Error / danger banner
+  notice-warning:
+    type: card
+    backgroundColor: '#fcf8e3'
+    textColor: '#8a6d3b'
+    use: Caution banner
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
+fonts:
+  roles:
+    sans: Noto Sans JP
+    mono: Noto Sans JP
 ---
 
 # Design System Inspiration of Money Forward
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Money Forward (マネーフォワード) is the Japanese fintech that started as a personal household-budgeting app (Money Forward ME) and grew into a full business platform — cloud accounting, invoicing, payroll, and expense tools (Money Forward Cloud) plus financial-institution products (Money Forward X). Its design language carries the central tension of all serious fintech: it must feel **trustworthy enough to hold your money and your books, yet light enough that a non-accountant can use it**. The answer SmartHR-adjacent peers reach for is restraint, and Money Forward Cloud reaches for it too — a calm white canvas, a confident **blue** primary, warm-gray neutrals, and a danger red held in reserve for the moments that actually matter (deleting a ledger entry, voiding an invoice).
 
@@ -81,14 +142,44 @@ Typography leads with **Noto Sans JP** — the explicit first choice in the them
 - Subtle gradients on buttons (white→solitude on default, royalBlue→cobalt on primary) for gentle dimensionality
 - Calm white + warm-gray (`solitude #ECF2FD`, `linkWater #D4D8DD`) surfaces — trustworthy, never flashy
 
-## Primary tasks
+### Primary tasks
 
 - See bank, credit card, and e-money accounts in one view
 - Work through the invoice and expense screens at month-end
 - Run payroll for staff inside the same cloud suite
 - Delete a ledger entry or void an invoice
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Money Forward, Inc. was founded in Japan with a deceptively simple idea: most people and most small businesses have a fragmented, anxious, opaque relationship with their own money. Bank balances, credit cards, e-money, and accounts live in separate silos; bookkeeping is a chore done in spreadsheets or on paper; and the cost of *not knowing where your money is* is paid in stress. Money Forward's founding product, **Money Forward ME**, attacked the consumer side — automatically aggregating accounts into one view so an individual could finally *see* their money (お金の見える化, "making money visible"). From there the company built **Money Forward Cloud** — accounting, invoicing, payroll, expenses for businesses — and **Money Forward X**, embedded-finance products for financial institutions. <!-- source: corp.moneyforward.com + moneyforward.com product structure, general public knowledge -->
+
+The design language flows from that mission of *visibility and forward motion*. **One**, money must always be shown exactly and clearly — hence the dense, legible type scale, the tabular discipline, the warm-gray-on-white calm that lets figures be the loudest thing on screen. **Two**, the product must feel trustworthy — hence the confident blue primary, the restraint in using danger red, the businesslike `4px` radius, and the absence of anything flashy or gimmicky around the user's finances. **Three**, it must feel *empowering*, not intimidating — hence plain-language copy and a UI that a small-business owner who is *not* an accountant can actually operate.
+
+Money Forward's design organization publishes openly: the corporate design site (`design.moneyforward.com`) articulates a **"User Focus"** stance — designing things that "move users' lives and the world forward," with explicit attention to accessibility for people with visual impairments — and the engineering org open-sourced the **Money Forward Cloud UI** component library (`cloud-react-ui`) on GitHub, where the blue-gradient primary, the curated palette, and the typed theme all live in public. The system is, like the company, methodical and trustworthy by design.
+
+### Principles
+
+1. **Make money visible, exactly.** Figures are the product; the UI exists to display them clearly. *UI implication:* Dense legible type, tabular alignment, warm-gray calm so amounts are the loudest element. Never approximate or decoratively obscure a number.
+
+2. **Trust through restraint.** A fintech that holds your books cannot be flashy. *UI implication:* Confident blue primary, danger red held in reserve, businesslike `4px` radius, gradients-not-gimmicks. Competence is the aesthetic.
+
+3. **Empower the non-expert.** Money Forward serves individuals and SME owners, not accountants. *UI implication:* Plain-language labels and helper copy; explain what a figure means; never hide behind jargon. A first-time user should be able to complete the task.
+
+4. **User Focus — move lives forward.** The stated design stance: design that improves the user's life and "moves the world forward." *UI implication:* Optimize for the user's actual goal (see my money, file this invoice), not for engagement metrics or visual flair. Accessibility (including for visual impairments) is part of this commitment.
+
+5. **One coherent product across many modules.** ME, Cloud, and X span very different surfaces. *UI implication:* The shared token theme + curated palette + `cloud-react-ui` components keep every module recognizably Money Forward. Don't fork the palette per team.
+
+### Personas
+
+*Personas are fictional archetypes informed by Money Forward's publicly-described user base (Japanese individuals and SME owners/finance staff), not real individuals.*
+
+**鈴木 大輔 (Daisuke Suzuki), 41, Tokyo.** Owner of a 12-person design studio. Uses Money Forward Cloud for accounting and invoicing because he is *not* an accountant and needs the software to be obvious. Lives in the invoice and expense screens at month-end. Trusts MF because the figures always reconcile and the danger actions are clearly gated.
+
+**伊藤 さやか (Sayaka Ito), 29, Fukuoka.** Salaried worker who uses Money Forward ME on her phone to aggregate her bank, credit card, and e-money into one view. Checks it on her commute. Wants her money *visible* and her future plannable; gets anxious when a finance app is cluttered or hides fees.
+
+**渡辺 経理 (Kei Watanabe), 35, Osaka.** Finance/accounting staffer at a mid-size company. Power user of Money Forward Cloud's payroll and expense modules. Cares about throughput, exact figures, and audit-trail clarity. Will tolerate a dense UI; will not tolerate an ambiguous one near money.
+
+## Colors
 
 Money Forward Cloud UI ships a hand-curated color object (plain English names) and maps it to component roles in a typed theme. Values below are transcribed from the open-source `cloud-react-ui` theme.
 
@@ -119,7 +210,7 @@ Money Forward Cloud UI ships a hand-curated color object (plain English names) a
 - **gainsboro** (`#D8D8D8`) / **silver** (`#BEBEBE`) / **darkGray** (`#AAAAAA`) / **veryRightGray** (`#CCCCCC`): Disabled / icon grays.
 - **rhino** (`#424954`) / **vulcan** (`#32373F`) / **stormGrey** (`#787E8D`) / **lightSlateGrey** (`#7C8291`): Dark neutral text/chrome.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Stack
 ```
@@ -148,7 +239,122 @@ Noto Sans JP is the explicit lead, backed by the full platform-native Japanese c
 - **Bold is for emphasis and headings**, not decoration.
 - Never hardcode a single Latin font — always carry the Noto Sans JP + native chain.
 
-## 4. Component Stylings
+## Layout
+
+### Density
+Money Forward Cloud is **high-density** — accounting and invoicing screens are tables, ledgers, and forms. The fine type scale (10–14px workhorse range) and tight `4px` radius reflect that: every pixel of vertical space matters when a screen lists 200 transactions. White Blocks with 1px `linkWater` borders carve the dense canvas into legible regions.
+
+### Spacing & Structure
+- App-shell: left navigation across Cloud modules + top header + dense main content
+- Blocks (`4px` radius, 1px border) group related fields/data
+- Light gray surfaces (`cloudGrey #EFF1F4`, `whiteSmoke #F7F7F7`) separate sections without heavy shadow
+- Forms and tables are the central artifacts
+
+### Responsive Behavior
+
+| Width | Behavior |
+|---|---|
+| Desktop | Full Cloud app shell: left module nav + header + wide dense tables shown in full |
+| Tablet | Left nav collapses; tables gain horizontal scroll or column priority |
+| Mobile | Single column; nav becomes a drawer; tables reflow toward stacked rows; ME (consumer) app is mobile-first |
+
+#### Touch & Mobile
+- Button sizes (28/32/42px) keep medium+ comfortably tappable; large (42px) clears touch minimums
+- Money Forward ME (the consumer budgeting app) is mobile-first; Cloud is desktop-first but responsive
+- Financial figures keep tabular alignment across breakpoints
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `spacing`: `[12,16,52]`
+
+## Elevation & Depth
+
+Elevation is **subtle and gradient-led** rather than shadow-heavy. The most distinctive depth cue is the **button gradient** (white→solitude default, royalBlue→cobalt primary), which gives controls gentle dimensionality without a drop shadow.
+
+- Buttons: gradient fill + 1px border; pressed state uses a faint `box-shadow: 0 0 2px rgba(212, 216, 221, 0.3)`
+- Blocks/cards: flat — 1px `linkWater` border + light gray page bg separates them
+- Modals/dropdowns: light shadow + scrim
+- Z-index governed by the theme's `zIndex` scale (e.g. backdrop `200`)
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.active`: `0 0 2px rgba(212,216,221,0.3)`
+
+## Motion & Easing
+
+Money Forward's motion is **restrained and confidence-building**. A product that touches taxes and ledgers earns trust through predictability; motion clarifies state, it does not entertain.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle/checkbox commits, selection |
+| `motion-fast` | 150ms | Button hover gradient flip, focus ring, small reveals |
+| `motion-standard` | 250ms | Dropdown open, accordion, tab switch |
+| `motion-modal` | 300ms | Modal/dialog enter-exit |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | The default |
+| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things arriving (dropdowns, modals) |
+| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Dismissals |
+
+**Spring stance.** Spring / overshoot easing is **forbidden** on Money Forward product surfaces. Bouncy motion undermines the calm-competence register a fintech needs. Confidence about money is the goal, not delight.
+
+**Signature motions.**
+1. **Primary button hover.** The blue gradient *flips* (`#3B7DE9`→`#0054AC` becomes `#0054AC`→`#3B7DE9`) over `motion-fast / ease-standard` — a subtle, dimensional press affordance, no scale or bounce.
+2. **Default button hover.** Same gradient-flip treatment on the white→solitude default button.
+3. **Modal enter.** Backdrop scrim fades in (`zIndex 200`) over `motion-modal / ease-enter`; dialog appears with opacity + slight translate. Controlled.
+4. **Row/expand reveal.** Table rows and accordions expand over `motion-standard / ease-enter`; data lands without layout jump.
+
+**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` collapse to `motion-instant`; gradient flips become immediate; modals appear without translate. Accessibility outranks polish.
+
+<!--
+OmD v0.1 Sources — Money Forward
+
+Tier 1 (official open-source DS + live, 2026-05-19):
+- github.com/moneyforward/cloud-react-ui src/theme/color.ts — the full curated palette
+  (royalBlue #3B7DE9, cobalt #0054AC, venetianRed #D0021B, nightRider #333333, nobel #999999,
+  linkWater #D4D8DD, solitude #ECF2FD, apple #65AB51, cornSilk #FCF8E3, etc.) transcribed
+  verbatim via gh api.
+- cloud-react-ui src/theme/theme.ts — button variants (primary gradient royalBlue→cobalt,
+  default white→solitude, danger venetianRed text, settings royalBlue, disabled linkWater),
+  4px radius, button sizes 28/32/42, block 4px radius + linkWater border. Verbatim.
+- cloud-react-ui src/theme/values.ts — font stack (Noto Sans JP-led + native JP chain),
+  text-size scale 10/12/13/14/16/18/20/24, text colors nightRider/nobel. Verbatim.
+- design.moneyforward.com (live inspect) — corporate design org; "User Focus" stance,
+  dominant accent observed on the corporate/design-org site is an orange #ED7100 (see note).
+
+Verified vs assumed:
+- VERIFIED: entire color palette, button variants, radius, type scale, font stack — all from
+  the open-source cloud-react-ui theme (authoritative Tier-1 DS for the Cloud product).
+- NOTE / CONFLICT: the brief supplied #316AD6 (blue). The closest VERIFIED token is royalBlue
+  #3B7DE9 (the primary-button gradient start), which is used as primary_color here. #316AD6 was
+  not found as a literal token. Separately, the MF *corporate/brand* design-org site
+  (design.moneyforward.com) leads with an ORANGE accent (#ED7100), reflecting a corporate brand
+  layer distinct from the Cloud *product* blue. This file documents the Cloud product DS (blue),
+  which is the surface most relevant to UI generation; the corporate-orange layer is noted here
+  for completeness.
+- INFERRED: input/notice component variants in §4 are reasonable mappings of verified tokens.
+  Motion tokens (§15) follow the theme's zIndex/gradient discipline but duration values are
+  illustrative. Voice samples marked illustrative are not verbatim live strings.
+- Personas (§13) are fictional archetypes of MF's described individual + SME user base.
+-->
+
+---
+
+**Verified:** 2026-05-19 (omd:add-reference — JP batch)
+**Tier 1 sources:** https://github.com/moneyforward/cloud-react-ui (open-source theme — royalBlue #3B7DE9 → cobalt #0054AC primary gradient, venetianRed #D0021B danger, nightRider #333333 text, linkWater #D4D8DD border, 4px radius, button sizes 28/32/42, Noto Sans JP font stack, 10–24px type scale); https://design.moneyforward.com (live — "User Focus" stance, corporate-orange #ED7100 brand layer).
+**Tier 2 sources:** getdesign.md / refero — not separately fetched (official open-source DS supersedes).
+**Conflicts unresolved:** Brief-supplied #316AD6 not found as a literal token; using verified Cloud-product primary royalBlue #3B7DE9. Corporate brand layer (design.moneyforward.com) uses orange #ED7100 — documented in source note, product-blue treated as canonical for UI generation.
+
+## Components
 
 ### Buttons
 
@@ -260,27 +466,22 @@ package. This reference has no `verification_v2` block and so no surface record 
 Several of the eight share a name with a published component. None is claimed as a rendered
 instance of one, and none of the 25 above carries a measured value here.
 
-## 5. Layout Principles
+### States
 
-### Density
-Money Forward Cloud is **high-density** — accounting and invoicing screens are tables, ledgers, and forms. The fine type scale (10–14px workhorse range) and tight `4px` radius reflect that: every pixel of vertical space matters when a screen lists 200 transactions. White Blocks with 1px `linkWater` borders carve the dense canvas into legible regions.
+| State | Treatment |
+|---|---|
+| **Empty (no transactions/data)** | White Block on light-gray page, one plain line (`#333333`) explaining what will appear, one blue-gradient primary to add the first record. No clutter. |
+| **Empty (filter no results)** | Calm single line in `dimGray #666666` (`該当するデータがありません` pattern); offer to clear the filter. |
+| **Loading (table/page)** | Skeleton rows in `whiteSmoke #F7F7F7` / `cloudGrey #EFF1F4` at final dimensions; no layout shift on data arrival. |
+| **Loading (inline action)** | In-button spinner; button keeps width and `4px` radius; label swaps to loading. |
+| **Error (field)** | Border swaps to `venetianRed #D0021B`; 12px helper text in `#D0021B`: cause + fix, one sentence. |
+| **Error (page/system)** | Error notice: bg `mistyRose #FFEEEB`, text `#D0021B`. States the condition plainly, offers retry. No apology-flood. |
+| **Success** | Quiet — success notice (text `apple #65AB51`) or inline `保存しました`. The correct ledger is the reward. |
+| **Disabled** | bg `linkWater #D4D8DD`, text `nobel #999999`, 1px `rgba(0,0,0,0.1)` border. Palette swap is the signal. |
+| **Skeleton** | Gray blocks at exact final size; never on already-known financial figures; respects reduced-motion. |
+| **Destructive confirm** | Modal with explicit consequence stated; the confirm action carries `venetianRed #D0021B`. Money actions are gated, never one-tap-destructive. |
 
-### Spacing & Structure
-- App-shell: left navigation across Cloud modules + top header + dense main content
-- Blocks (`4px` radius, 1px border) group related fields/data
-- Light gray surfaces (`cloudGrey #EFF1F4`, `whiteSmoke #F7F7F7`) separate sections without heavy shadow
-- Forms and tables are the central artifacts
-
-## 6. Depth & Elevation
-
-Elevation is **subtle and gradient-led** rather than shadow-heavy. The most distinctive depth cue is the **button gradient** (white→solitude default, royalBlue→cobalt primary), which gives controls gentle dimensionality without a drop shadow.
-
-- Buttons: gradient fill + 1px border; pressed state uses a faint `box-shadow: 0 0 2px rgba(212, 216, 221, 0.3)`
-- Blocks/cards: flat — 1px `linkWater` border + light gray page bg separates them
-- Modals/dropdowns: light shadow + scrim
-- Z-index governed by the theme's `zIndex` scale (e.g. backdrop `200`)
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 - **DO** use the blue gradient (`#3B7DE9` → `#0054AC`) for the one primary action per screen. **DON'T** make it a flat solid — the subtle gradient is the MF Cloud signature.
 - **DO** keep danger in the *text/icon* (`venetianRed #D0021B`) on a neutral button. **DON'T** use a solid red fill for delete unless it's a truly catastrophic confirmation — MF holds red in reserve.
@@ -291,20 +492,29 @@ Elevation is **subtle and gradient-led** rather than shadow-heavy. The most dist
 - **DO** respect the dense type scale (14px working default). **DON'T** inflate body to 16–18px — accounting tables need the density.
 - **DO** use gradients on buttons for gentle dimensionality. **DON'T** add drop shadows to flatten controls — the gradient is the depth.
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-| Width | Behavior |
+Money Forward's voice is **clear, reassuring, and quietly empowering** — the brand's stated design stance is "User Focus," delivering work that moves users' lives and the world *forward* (the name is the thesis). In a category where users are anxious about money, taxes, and bookkeeping, the copy's job is to make the user feel *capable*, not *audited*. It writes in standard polite Japanese (丁寧語), plain and concrete, avoiding both intimidating accounting jargon and false cheerfulness. Numbers are sacred — figures, dates, and amounts are always exact and never softened. The consumer ME app voice is a touch warmer and more personal ("your money, your future"); the Cloud/business voice is a touch more professional. Both stay calm.
+
+| Context | Tone |
 |---|---|
-| Desktop | Full Cloud app shell: left module nav + header + wide dense tables shown in full |
-| Tablet | Left nav collapses; tables gain horizontal scroll or column priority |
-| Mobile | Single column; nav becomes a drawer; tables reflow toward stacked rows; ME (consumer) app is mobile-first |
+| Buttons | Short JP verb — `保存`, `登録`, `次へ`. Imperative-polite, no exclamation. |
+| Form/field copy | Plain and concrete; explain what a figure means and what happens after submit. |
+| Money & dates | Always exact, always formatted (`¥`, comma-grouped, era/Gregorian dates). Never approximate. |
+| Empty states | Blameless; one line + one action. Never implies the user mismanaged anything. |
+| Errors | State cause + fix in one calm sentence; one polite acknowledgment max, no apology-flood. |
+| Success | Quiet confirmation (`保存しました`). The ledger being correct is the reward. |
+| Consumer (ME) | Slightly warmer, future-facing ("お金の見える化") — empowerment, not anxiety. |
+| Business (Cloud) | Slightly more formal/professional, efficiency-framed. |
 
-### Touch & Mobile
-- Button sizes (28/32/42px) keep medium+ comfortably tappable; large (42px) clears touch minimums
-- Money Forward ME (the consumer budgeting app) is mobile-first; Cloud is desktop-first but responsive
-- Financial figures keep tabular alignment across breakpoints
+**Forbidden patterns.** Hype superlatives (`業界No.1`, `革新的`), false cheer around money loss, exclamation-mark buttons, approximating any financial figure, emoji in product chrome, condescending "don't worry" copy that hides what's actually happening, and jargon walls that make a non-accountant feel excluded.
 
-## 9. Agent Prompt Guide
+**Voice samples.**
+- `保存` / `登録` — primary action verbs. <!-- illustrative: standard MF-register JP form verbs; not quoted from a specific live screen -->
+- "User Focus" — MF Design's stated stance: deliver designs that move users' lives and the world forward. <!-- verified: design.moneyforward.com positioning, WebFetch/live inspect 2026-05-19 -->
+- The corporate mission frames MF around making money / money-management approachable and moving users "forward." <!-- editorial paraphrase of corp.moneyforward.com positioning; not a verbatim quote -->
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary (gradient): `royalBlue #3B7DE9` → `cobalt #0054AC`
@@ -332,139 +542,8 @@ Elevation is **subtle and gradient-led** rather than shadow-heavy. The most dist
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Money Forward's voice is **clear, reassuring, and quietly empowering** — the brand's stated design stance is "User Focus," delivering work that moves users' lives and the world *forward* (the name is the thesis). In a category where users are anxious about money, taxes, and bookkeeping, the copy's job is to make the user feel *capable*, not *audited*. It writes in standard polite Japanese (丁寧語), plain and concrete, avoiding both intimidating accounting jargon and false cheerfulness. Numbers are sacred — figures, dates, and amounts are always exact and never softened. The consumer ME app voice is a touch warmer and more personal ("your money, your future"); the Cloud/business voice is a touch more professional. Both stay calm.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Buttons | Short JP verb — `保存`, `登録`, `次へ`. Imperative-polite, no exclamation. |
-| Form/field copy | Plain and concrete; explain what a figure means and what happens after submit. |
-| Money & dates | Always exact, always formatted (`¥`, comma-grouped, era/Gregorian dates). Never approximate. |
-| Empty states | Blameless; one line + one action. Never implies the user mismanaged anything. |
-| Errors | State cause + fix in one calm sentence; one polite acknowledgment max, no apology-flood. |
-| Success | Quiet confirmation (`保存しました`). The ledger being correct is the reward. |
-| Consumer (ME) | Slightly warmer, future-facing ("お金の見える化") — empowerment, not anxiety. |
-| Business (Cloud) | Slightly more formal/professional, efficiency-framed. |
-
-**Forbidden patterns.** Hype superlatives (`業界No.1`, `革新的`), false cheer around money loss, exclamation-mark buttons, approximating any financial figure, emoji in product chrome, condescending "don't worry" copy that hides what's actually happening, and jargon walls that make a non-accountant feel excluded.
-
-**Voice samples.**
-- `保存` / `登録` — primary action verbs. <!-- illustrative: standard MF-register JP form verbs; not quoted from a specific live screen -->
-- "User Focus" — MF Design's stated stance: deliver designs that move users' lives and the world forward. <!-- verified: design.moneyforward.com positioning, WebFetch/live inspect 2026-05-19 -->
-- The corporate mission frames MF around making money / money-management approachable and moving users "forward." <!-- editorial paraphrase of corp.moneyforward.com positioning; not a verbatim quote -->
-
-## 11. Brand Narrative
-
-Money Forward, Inc. was founded in Japan with a deceptively simple idea: most people and most small businesses have a fragmented, anxious, opaque relationship with their own money. Bank balances, credit cards, e-money, and accounts live in separate silos; bookkeeping is a chore done in spreadsheets or on paper; and the cost of *not knowing where your money is* is paid in stress. Money Forward's founding product, **Money Forward ME**, attacked the consumer side — automatically aggregating accounts into one view so an individual could finally *see* their money (お金の見える化, "making money visible"). From there the company built **Money Forward Cloud** — accounting, invoicing, payroll, expenses for businesses — and **Money Forward X**, embedded-finance products for financial institutions. <!-- source: corp.moneyforward.com + moneyforward.com product structure, general public knowledge -->
-
-The design language flows from that mission of *visibility and forward motion*. **One**, money must always be shown exactly and clearly — hence the dense, legible type scale, the tabular discipline, the warm-gray-on-white calm that lets figures be the loudest thing on screen. **Two**, the product must feel trustworthy — hence the confident blue primary, the restraint in using danger red, the businesslike `4px` radius, and the absence of anything flashy or gimmicky around the user's finances. **Three**, it must feel *empowering*, not intimidating — hence plain-language copy and a UI that a small-business owner who is *not* an accountant can actually operate.
-
-Money Forward's design organization publishes openly: the corporate design site (`design.moneyforward.com`) articulates a **"User Focus"** stance — designing things that "move users' lives and the world forward," with explicit attention to accessibility for people with visual impairments — and the engineering org open-sourced the **Money Forward Cloud UI** component library (`cloud-react-ui`) on GitHub, where the blue-gradient primary, the curated palette, and the typed theme all live in public. The system is, like the company, methodical and trustworthy by design.
-
-## 12. Principles
-
-1. **Make money visible, exactly.** Figures are the product; the UI exists to display them clearly. *UI implication:* Dense legible type, tabular alignment, warm-gray calm so amounts are the loudest element. Never approximate or decoratively obscure a number.
-
-2. **Trust through restraint.** A fintech that holds your books cannot be flashy. *UI implication:* Confident blue primary, danger red held in reserve, businesslike `4px` radius, gradients-not-gimmicks. Competence is the aesthetic.
-
-3. **Empower the non-expert.** Money Forward serves individuals and SME owners, not accountants. *UI implication:* Plain-language labels and helper copy; explain what a figure means; never hide behind jargon. A first-time user should be able to complete the task.
-
-4. **User Focus — move lives forward.** The stated design stance: design that improves the user's life and "moves the world forward." *UI implication:* Optimize for the user's actual goal (see my money, file this invoice), not for engagement metrics or visual flair. Accessibility (including for visual impairments) is part of this commitment.
-
-5. **One coherent product across many modules.** ME, Cloud, and X span very different surfaces. *UI implication:* The shared token theme + curated palette + `cloud-react-ui` components keep every module recognizably Money Forward. Don't fork the palette per team.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Money Forward's publicly-described user base (Japanese individuals and SME owners/finance staff), not real individuals.*
-
-**鈴木 大輔 (Daisuke Suzuki), 41, Tokyo.** Owner of a 12-person design studio. Uses Money Forward Cloud for accounting and invoicing because he is *not* an accountant and needs the software to be obvious. Lives in the invoice and expense screens at month-end. Trusts MF because the figures always reconcile and the danger actions are clearly gated.
-
-**伊藤 さやか (Sayaka Ito), 29, Fukuoka.** Salaried worker who uses Money Forward ME on her phone to aggregate her bank, credit card, and e-money into one view. Checks it on her commute. Wants her money *visible* and her future plannable; gets anxious when a finance app is cluttered or hides fees.
-
-**渡辺 経理 (Kei Watanabe), 35, Osaka.** Finance/accounting staffer at a mid-size company. Power user of Money Forward Cloud's payroll and expense modules. Cares about throughput, exact figures, and audit-trail clarity. Will tolerate a dense UI; will not tolerate an ambiguous one near money.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no transactions/data)** | White Block on light-gray page, one plain line (`#333333`) explaining what will appear, one blue-gradient primary to add the first record. No clutter. |
-| **Empty (filter no results)** | Calm single line in `dimGray #666666` (`該当するデータがありません` pattern); offer to clear the filter. |
-| **Loading (table/page)** | Skeleton rows in `whiteSmoke #F7F7F7` / `cloudGrey #EFF1F4` at final dimensions; no layout shift on data arrival. |
-| **Loading (inline action)** | In-button spinner; button keeps width and `4px` radius; label swaps to loading. |
-| **Error (field)** | Border swaps to `venetianRed #D0021B`; 12px helper text in `#D0021B`: cause + fix, one sentence. |
-| **Error (page/system)** | Error notice: bg `mistyRose #FFEEEB`, text `#D0021B`. States the condition plainly, offers retry. No apology-flood. |
-| **Success** | Quiet — success notice (text `apple #65AB51`) or inline `保存しました`. The correct ledger is the reward. |
-| **Disabled** | bg `linkWater #D4D8DD`, text `nobel #999999`, 1px `rgba(0,0,0,0.1)` border. Palette swap is the signal. |
-| **Skeleton** | Gray blocks at exact final size; never on already-known financial figures; respects reduced-motion. |
-| **Destructive confirm** | Modal with explicit consequence stated; the confirm action carries `venetianRed #D0021B`. Money actions are gated, never one-tap-destructive. |
-
-## 15. Motion & Easing
-
-Money Forward's motion is **restrained and confidence-building**. A product that touches taxes and ledgers earns trust through predictability; motion clarifies state, it does not entertain.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle/checkbox commits, selection |
-| `motion-fast` | 150ms | Button hover gradient flip, focus ring, small reveals |
-| `motion-standard` | 250ms | Dropdown open, accordion, tab switch |
-| `motion-modal` | 300ms | Modal/dialog enter-exit |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | The default |
-| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things arriving (dropdowns, modals) |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Dismissals |
-
-**Spring stance.** Spring / overshoot easing is **forbidden** on Money Forward product surfaces. Bouncy motion undermines the calm-competence register a fintech needs. Confidence about money is the goal, not delight.
-
-**Signature motions.**
-1. **Primary button hover.** The blue gradient *flips* (`#3B7DE9`→`#0054AC` becomes `#0054AC`→`#3B7DE9`) over `motion-fast / ease-standard` — a subtle, dimensional press affordance, no scale or bounce.
-2. **Default button hover.** Same gradient-flip treatment on the white→solitude default button.
-3. **Modal enter.** Backdrop scrim fades in (`zIndex 200`) over `motion-modal / ease-enter`; dialog appears with opacity + slight translate. Controlled.
-4. **Row/expand reveal.** Table rows and accordions expand over `motion-standard / ease-enter`; data lands without layout jump.
-
-**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` collapse to `motion-instant`; gradient flips become immediate; modals appear without translate. Accessibility outranks polish.
-
-<!--
-OmD v0.1 Sources — Money Forward
-
-Tier 1 (official open-source DS + live, 2026-05-19):
-- github.com/moneyforward/cloud-react-ui src/theme/color.ts — the full curated palette
-  (royalBlue #3B7DE9, cobalt #0054AC, venetianRed #D0021B, nightRider #333333, nobel #999999,
-  linkWater #D4D8DD, solitude #ECF2FD, apple #65AB51, cornSilk #FCF8E3, etc.) transcribed
-  verbatim via gh api.
-- cloud-react-ui src/theme/theme.ts — button variants (primary gradient royalBlue→cobalt,
-  default white→solitude, danger venetianRed text, settings royalBlue, disabled linkWater),
-  4px radius, button sizes 28/32/42, block 4px radius + linkWater border. Verbatim.
-- cloud-react-ui src/theme/values.ts — font stack (Noto Sans JP-led + native JP chain),
-  text-size scale 10/12/13/14/16/18/20/24, text colors nightRider/nobel. Verbatim.
-- design.moneyforward.com (live inspect) — corporate design org; "User Focus" stance,
-  dominant accent observed on the corporate/design-org site is an orange #ED7100 (see note).
-
-Verified vs assumed:
-- VERIFIED: entire color palette, button variants, radius, type scale, font stack — all from
-  the open-source cloud-react-ui theme (authoritative Tier-1 DS for the Cloud product).
-- NOTE / CONFLICT: the brief supplied #316AD6 (blue). The closest VERIFIED token is royalBlue
-  #3B7DE9 (the primary-button gradient start), which is used as primary_color here. #316AD6 was
-  not found as a literal token. Separately, the MF *corporate/brand* design-org site
-  (design.moneyforward.com) leads with an ORANGE accent (#ED7100), reflecting a corporate brand
-  layer distinct from the Cloud *product* blue. This file documents the Cloud product DS (blue),
-  which is the surface most relevant to UI generation; the corporate-orange layer is noted here
-  for completeness.
-- INFERRED: input/notice component variants in §4 are reasonable mappings of verified tokens.
-  Motion tokens (§15) follow the theme's zIndex/gradient discipline but duration values are
-  illustrative. Voice samples marked illustrative are not verbatim live strings.
-- Personas (§13) are fictional archetypes of MF's described individual + SME user base.
--->
-
----
-
-**Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** https://github.com/moneyforward/cloud-react-ui (open-source theme — royalBlue #3B7DE9 → cobalt #0054AC primary gradient, venetianRed #D0021B danger, nightRider #333333 text, linkWater #D4D8DD border, 4px radius, button sizes 28/32/42, Noto Sans JP font stack, 10–24px type scale); https://design.moneyforward.com (live — "User Focus" stance, corporate-orange #ED7100 brand layer).
-**Tier 2 sources:** getdesign.md / refero — not separately fetched (official open-source DS supersedes).
-**Conflicts unresolved:** Brief-supplied #316AD6 not found as a literal token; using verified Cloud-product primary royalBlue #3B7DE9. Corporate brand layer (design.moneyforward.com) uses orange #ED7100 — documented in source note, product-blue treated as canonical for UI generation.
+- **Contrast, `button-disabled`.** Text `#999999` on `#d4d8dd` measures 1.99:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

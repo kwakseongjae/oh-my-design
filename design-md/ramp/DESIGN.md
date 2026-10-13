@@ -1,83 +1,245 @@
 ---
-id: ramp
 name: Ramp
-country: US
-category: fintech
-homepage: "https://ramp.com"
-primary_color: "#E5FE54"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=ramp.com&sz=128"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#e5fe54"
-    lime-hover: "#d4ed3f"
-    lime-100: "#f4fcc9"
-    lime-50: "#fbfee8"
-    ink: "#1c1b17"
-    ink-700: "#3d3c37"
-    ink-600: "#56554f"
-    canvas: "#f7f7f5"
-    surface: "#ffffff"
-    grey-500: "#74726b"
-    grey-400: "#9c9a92"
-    grey-300: "#c9c7bf"
-    grey-200: "#e3e1da"
-    grey-100: "#efeee9"
-    success: "#1a7f4b"
-    error: "#d93f3f"
-    warning: "#e08a1e"
-    info: "#2f6fe0"
-    on-primary: "#1c1b17"
-  typography:
-    family: { sans: "Lausanne", serif: "Burgess", mono: "Lausanne Mono" }
-    display-hero:   { size: 72, weight: 400, lineHeight: 1.06, tracking: -0.02, use: "Marketing hero headlines (Burgess serif)" }
-    display-lg:     { size: 52, weight: 400, lineHeight: 1.12, tracking: -0.02, use: "Section openers, editorial (serif)" }
-    heading-1:      { size: 40, weight: 500, lineHeight: 1.15, tracking: -0.015, use: "Page titles in product" }
-    heading-2:      { size: 30, weight: 500, lineHeight: 1.27, tracking: -0.01, use: "Section headers" }
-    heading-3:      { size: 22, weight: 500, lineHeight: 1.36, tracking: -0.01, use: "Card titles, sub-sections" }
-    subtitle:       { size: 18, weight: 500, lineHeight: 1.44, use: "Navigation, list headers" }
-    body-lg:        { size: 17, weight: 400, lineHeight: 1.59, use: "Marketing body, descriptions" }
-    body:           { size: 15, weight: 400, lineHeight: 1.53, use: "Standard UI reading text" }
-    body-sm:        { size: 13, weight: 400, lineHeight: 1.46, use: "Secondary info, table cells" }
-    caption:        { size: 12, weight: 400, lineHeight: 1.33, tracking: 0.01, use: "Timestamps, fine print, labels" }
-    overline:       { size: 11, weight: 600, lineHeight: 1.27, tracking: 0.08, use: "Eyebrow labels, uppercase section tags" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
-  shadow:
-    ambient: "rgba(28,27,23,0.05) 0px 1px 2px"
-    standard: "rgba(28,27,23,0.18) 0px 8px 24px"
-    elevated: "rgba(28,27,23,0.18) 0px 12px 40px"
-  components:
-    button-primary: { type: button, bg: "#e5fe54", fg: "#1c1b17", radius: 8, padding: "0 20px", font: "15px / 500", use: "Primary CTA — Get started, Get a demo (44px)" }
-    button-ink: { type: button, bg: "#1c1b17", fg: "#ffffff", radius: 8, padding: "0 20px", font: "15px / 500", use: "Strong action on light surfaces, default product CTA" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#1c1b17", radius: 8, padding: "0 20px", font: "15px / 500", use: "Secondary action, 1px #c9c7bf border" }
-    button-ghost: { type: button, fg: "#3d3c37", radius: 8, padding: "0 12px", font: "15px / 500", use: "Low-emphasis inline (Cancel, Back)" }
-    button-danger: { type: button, bg: "#d93f3f", fg: "#ffffff", radius: 8, padding: "0 20px", font: "15px / 500", use: "Destructive confirmation" }
-    input: { type: input, bg: "#ffffff", fg: "#1c1b17", radius: 8, padding: "11px 14px", font: "15px / 400", use: "Standard form input, 1px #c9c7bf border, lime focus ring" }
-    input-filled: { type: input, bg: "#f7f7f5", fg: "#1c1b17", radius: 8, padding: "11px 14px", font: "15px / 400", use: "Dense forms, search bars" }
-    card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Workhorse surface — metrics, lists, panels, 1px #e3e1da border" }
-    card-savings: { type: card, bg: "#f4fcc9", radius: 12, padding: "24px", use: "Savings callout, lime-tinted, 1px #e5fe54 border" }
-    card-dark: { type: card, bg: "#1c1b17", fg: "#ffffff", radius: 16, padding: "32px", use: "Marketing feature card, lime accents pop on black" }
-    badge-lime: { type: badge, bg: "#e5fe54", fg: "#1c1b17", radius: 6, padding: "3px 8px", font: "12px / 600", use: "NEW / AI brand-emphasis tags" }
-    badge-success: { type: badge, fg: "#1a7f4b", radius: 6, padding: "3px 8px", font: "12px / 600", use: "Approved, reconciled, savings confirmed" }
-    badge-neutral: { type: badge, bg: "#efeee9", fg: "#56554f", radius: 6, padding: "3px 8px", font: "12px / 600", use: "Categories, metadata, default status" }
-    tab: { type: tab, fg: "#74726b", font: "15px / 500", use: "In-page section switching", active: "#1c1b17 text, 2px bottom border #1c1b17" }
-    segmented: { type: tab, bg: "#efeee9", radius: 8, padding: "6px 14px", font: "14px / 500", use: "View toggles (Month / Quarter / Year)", active: "#ffffff bg, #1c1b17 text" }
-    toast: { type: toast, bg: "#1c1b17", fg: "#ffffff", radius: 10, padding: "12px 16px", font: "14px / 500", use: "Transient confirmation, lime accent" }
-    dialog: { type: dialog, bg: "#ffffff", radius: 16, padding: "28px", use: "Confirmations, create-card flow, approval prompts" }
-    toggle: { type: toggle, bg: "#1c1b17", radius: 9999, use: "Boolean settings, white thumb, off #c9c7bf" }
-  components_harvested: true
+colors:
+  primary: '#e5fe54'
+  lime-hover: '#d4ed3f'
+  lime-100: '#f4fcc9'
+  lime-50: '#fbfee8'
+  ink: '#1c1b17'
+  ink-700: '#3d3c37'
+  ink-600: '#56554f'
+  canvas: '#f7f7f5'
+  surface: '#ffffff'
+  grey-500: '#74726b'
+  grey-400: '#9c9a92'
+  grey-300: '#c9c7bf'
+  grey-200: '#e3e1da'
+  grey-100: '#efeee9'
+  success: '#1a7f4b'
+  error: '#d93f3f'
+  warning: '#e08a1e'
+  info: '#2f6fe0'
+  on-primary: '#1c1b17'
+typography:
+  display-hero:
+    fontSize: 72px
+    fontWeight: 400
+    lineHeight: 1.06
+    letterSpacing: '-0.02px'
+    use: Marketing hero headlines (Burgess serif)
+  display-lg:
+    fontSize: 52px
+    fontWeight: 400
+    lineHeight: 1.12
+    letterSpacing: '-0.02px'
+    use: Section openers, editorial (serif)
+  heading-1:
+    fontSize: 40px
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: '-0.015px'
+    use: Page titles in product
+  heading-2:
+    fontSize: 30px
+    fontWeight: 500
+    lineHeight: 1.27
+    letterSpacing: '-0.01px'
+    use: Section headers
+  heading-3:
+    fontSize: 22px
+    fontWeight: 500
+    lineHeight: 1.36
+    letterSpacing: '-0.01px'
+    use: Card titles, sub-sections
+  subtitle:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 1.44
+    use: Navigation, list headers
+  body-lg:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 1.59
+    use: Marketing body, descriptions
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.53
+    use: Standard UI reading text
+  body-sm:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.46
+    use: Secondary info, table cells
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    letterSpacing: 0.01px
+    use: Timestamps, fine print, labels
+  overline:
+    fontSize: 11px
+    fontWeight: 600
+    lineHeight: 1.27
+    letterSpacing: 0.08px
+    use: Eyebrow labels, uppercase section tags
+rounded:
+  sm: 6px
+  md: 8px
+  lg: 16px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#e5fe54'
+    textColor: '#1c1b17'
+    rounded: 8px
+    padding: 0 20px
+    typography: 15px / 500
+    use: Primary CTA — Get started, Get a demo (44px)
+  button-ink:
+    type: button
+    backgroundColor: '#1c1b17'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0 20px
+    typography: 15px / 500
+    use: Strong action on light surfaces, default product CTA
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1c1b17'
+    rounded: 8px
+    padding: 0 20px
+    typography: 15px / 500
+    use: 'Secondary action, 1px #c9c7bf border'
+  button-ghost:
+    type: button
+    textColor: '#3d3c37'
+    rounded: 8px
+    padding: 0 12px
+    typography: 15px / 500
+    use: Low-emphasis inline (Cancel, Back)
+  button-danger:
+    type: button
+    backgroundColor: '#d93f3f'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 0 20px
+    typography: 15px / 500
+    use: Destructive confirmation
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1c1b17'
+    rounded: 8px
+    padding: 11px 14px
+    typography: 15px / 400
+    use: 'Standard form input, 1px #c9c7bf border, lime focus ring'
+  input-filled:
+    type: input
+    backgroundColor: '#f7f7f5'
+    textColor: '#1c1b17'
+    rounded: 8px
+    padding: 11px 14px
+    typography: 15px / 400
+    use: Dense forms, search bars
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 12px
+    padding: 24px
+    use: 'Workhorse surface — metrics, lists, panels, 1px #e3e1da border'
+  card-savings:
+    type: card
+    backgroundColor: '#f4fcc9'
+    rounded: 12px
+    padding: 24px
+    use: 'Savings callout, lime-tinted, 1px #e5fe54 border'
+  card-dark:
+    type: card
+    backgroundColor: '#1c1b17'
+    textColor: '#ffffff'
+    rounded: 16px
+    padding: 32px
+    use: Marketing feature card, lime accents pop on black
+  badge-lime:
+    type: badge
+    backgroundColor: '#e5fe54'
+    textColor: '#1c1b17'
+    rounded: 6px
+    padding: 3px 8px
+    typography: 12px / 600
+    use: NEW / AI brand-emphasis tags
+  badge-success:
+    type: badge
+    textColor: '#1a7f4b'
+    rounded: 6px
+    padding: 3px 8px
+    typography: 12px / 600
+    use: Approved, reconciled, savings confirmed
+  badge-neutral:
+    type: badge
+    backgroundColor: '#efeee9'
+    textColor: '#56554f'
+    rounded: 6px
+    padding: 3px 8px
+    typography: 12px / 600
+    use: Categories, metadata, default status
+  tab:
+    type: tab
+    textColor: '#74726b'
+    typography: 15px / 500
+    use: In-page section switching
+    active: '#1c1b17 text, 2px bottom border #1c1b17'
+  segmented:
+    type: tab
+    backgroundColor: '#efeee9'
+    rounded: 8px
+    padding: 6px 14px
+    typography: 14px / 500
+    use: View toggles (Month / Quarter / Year)
+    active: '#ffffff bg, #1c1b17 text'
+  toast:
+    type: toast
+    backgroundColor: '#1c1b17'
+    textColor: '#ffffff'
+    rounded: 10px
+    padding: 12px 16px
+    typography: 14px / 500
+    use: Transient confirmation, lime accent
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    padding: 28px
+    use: Confirmations, create-card flow, approval prompts
+  toggle:
+    type: toggle
+    backgroundColor: '#1c1b17'
+    rounded: 9999px
+    use: 'Boolean settings, white thumb, off #c9c7bf'
+fonts:
+  roles:
+    sans: Lausanne
+    serif: Burgess
+    mono: Lausanne Mono
 ---
 
 # Design System Inspiration of Ramp
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Ramp is the corporate-card and spend-management platform that made expense software feel like a premium productivity tool rather than an accounting chore. The brand's entire visual thesis is built on one audacious contrast: a near-black ink (`#1C1B17`) set against an electric lime-yellow (`#E5FE54`) so saturated it almost vibrates. This is not the cautious navy-and-grey of legacy fintech. It's confident, almost aggressive — a color that says "we move fast and we save you money," paired with typography that reads like an editorial business magazine.
 
@@ -94,7 +256,7 @@ The custom typeface stack is the brand's quiet engine. **Lausanne** (a clean, ne
 - Editorial Swiss layout: generous whitespace, tight tracking, asymmetric grids
 - Restrained color — black, off-white, lime, and a few muted neutrals; no rainbow palettes
 
-## Primary tasks
+### Primary tasks
 
 - Issue a first company card to start tracking spend.
 - Set spending limits on employee cards and freeze one.
@@ -102,7 +264,38 @@ The custom typeface stack is the brand's quiet engine. **Lausanne** (a clean, ne
 - Filter the transaction table and work an approval queue.
 - See how much the company saved this month.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Ramp was founded in 2019 by **Eric Glyman** and **Karim Atiyeh** (who had previously built and sold Paribus to Capital One). The founding insight inverted the entire corporate-card industry: every incumbent card issuer made more money when customers spent more, so their "rewards" quietly incentivized waste. Ramp built the opposite — a corporate card and spend-management platform whose explicit product goal is to help companies **spend less**. The brand promise is encoded in the name: Ramp helps you ramp *down* costs and ramp *up* efficiency.
+
+That contrarian thesis shapes the entire visual system. The electric lime `#E5FE54` is the color of "found money" — energetic, slightly disruptive, impossible to ignore — set against a serious editorial ink-and-serif foundation that signals Ramp is a rigorous financial tool, not a toy. The design rejects two clichés simultaneously: the cold navy institutionalism of legacy finance (Amex, Concur, SAP) and the rounded pastel friendliness of consumer fintech. Ramp occupies a distinct middle — premium, editorial, fast, and confident.
+
+Ramp grew explosively, becoming one of the fastest-growing SaaS companies in history and reaching a multi-billion-dollar valuation within a few years, backed by investors including Founders Fund, Stripe, Thrive Capital, and Sequoia. By 2024-2025 the brand leaned hard into AI — "Ramp Intelligence" — positioning itself as the platform where finance work gets automated away. The design absorbed this without changing its core: the lime still means action, the serif still means intelligence, and the numbers still tell the story.
+
+What Ramp refuses: the apologetic, dense, jargon-laden UX of legacy ERP/expense tools; the playful illustration-heavy style of consumer apps; and any design move that hides the dollar figure. In Ramp's world, the savings number is always the hero.
+
+### Principles
+
+1. **The number is the hero.** Dollar amounts saved or moved are the largest, most deliberate element on any screen. Never bury a financial figure in body text.
+2. **Lime is a signal, not a color.** `#E5FE54` appears only where it means "act here" or "value found." Used everywhere, it means nothing. Restraint is what makes it powerful.
+3. **Warm black, never cold.** The brand black is `#1C1B17`. Pure `#000000` reads as default and cheap; the warm ink reads as considered.
+4. **Serif for intelligence, sans for system.** Burgess carries the brand's editorial voice; Lausanne carries the functional product. Mixing them wrongly (serif in a table) breaks the system.
+5. **Flat is precise.** Prefer 1px borders to shadows. Depth is earned only by genuinely floating elements. Flatness communicates modernity and rigor.
+6. **Editorial whitespace on marketing, earned density in product.** Marketing breathes like a magazine; the app trusts power users with dense, tabular data.
+7. **State outcomes, don't sell them.** The copy assumes the product wins. It reports results ("75% faster") rather than persuading.
+8. **Contrast over decoration.** The brand's drama comes from lime-on-black contrast, not gradients, illustrations, or shadow stacks.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described corporate-spend-management user segments, not individual people.*
+
+**Maya, 34, San Francisco.** VP of Finance at a 200-person Series B startup. Lives in the Ramp dashboard during month-end close. Cares about one thing: closing the books faster with fewer manual reconciliations. She wants dense, scannable transaction tables, fast filtering, and clear approval queues. Editorial flourishes are wasted on her — but the "you saved $X this month" number genuinely lands, because she reports it to the CFO. Power user; keyboard shortcuts; impatient with latency.
+
+**Daniel, 41, Austin.** Operations lead at a fast-growing logistics company. Issues and manages dozens of employee cards. Needs to set spending limits, see who spent what, and freeze a card in two clicks. Doesn't think of himself as a "finance person" — he needs the UI to be obvious and the dangerous actions (freeze, revoke) to be clearly destructive-styled. Trusts the lime CTA to be the "right next step."
+
+**Priya, 29, New York.** Marketing manager who is just a *spender* on the platform — she submits receipts and requests card limits. Touches Ramp a few times a week, mostly on mobile. Wants the receipt-upload and reimbursement flow to be frictionless and fast. The brand's polish (serif headlines, clean cards) makes her trust that the expense process won't be a nightmare. Judges the whole product by how painless one receipt upload is.
+
+## Colors
 
 ### Primary
 - **Ramp Lime** (`#E5FE54`): The signature accent. Primary CTAs, savings highlights, active selection, hover fills, brand moments. Electric yellow-green — the single most recognizable Ramp asset. Used sparingly and only where it signals action or value.
@@ -139,7 +332,7 @@ The custom typeface stack is the brand's quiet engine. **Lausanne** (a clean, ne
 - **Border on Dark**: `rgba(255,255,255,0.12)`. Dividers on black hero/footer sections.
 - **Overlay Scrim**: `rgba(28,27,23,0.6)`. Modal backdrop — warm ink-tinted dark.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display/Headlines (serif)**: `"Burgess", "Times New Roman", Georgia, serif` — editorial display moments, hero headlines, large pull-quotes.
@@ -170,7 +363,140 @@ The custom typeface stack is the brand's quiet engine. **Lausanne** (a clean, ne
 - **Uppercase overlines**: Eyebrow/section labels use 11px uppercase Lausanne with 0.08em tracking — a recurring editorial signature.
 - **Restraint in weight**: Lausanne ships many weights; the UI uses 400 (body), 500 (headings/emphasis), and 600 (overlines, strong labels). Bold 700 is rare.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 128px
+- Section vertical rhythm: 96-128px between marketing sections (generous editorial breathing room)
+- Card internal padding: 24px standard, 32px for feature cards
+
+### Grid & Container
+- Max content width: 1200px (marketing), 1440px (product app shell)
+- Marketing: 12-column grid, 24px gutters, asymmetric editorial layouts encouraged
+- Product: persistent left sidebar (~240px) + fluid content area
+- Horizontal page padding: 24px mobile, 64px+ desktop
+
+### Whitespace Philosophy
+- **Editorial generosity**: Marketing pages use magazine-level whitespace — headlines breathe, sections are widely separated. The opposite of dense legacy fintech.
+- **Product density when earned**: Transaction tables and ledger views are dense and tabular; the app trusts power users with information.
+- **Numbers get room**: Large dollar figures are surrounded by deliberate negative space to land with impact.
+
+### Border Radius Scale
+- Compact (6px): Badges, small chips, inline tags
+- Standard (8px): Buttons, inputs, compact cards, segmented controls
+- Comfortable (12px): Standard cards, list containers
+- Large (16px): Modals, dark feature cards
+- Pill (9999px): Toggles, filter chips, avatar groups
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, stacked sections, 24px padding, hamburger nav |
+| Tablet | 640-1024px | 2-column grids, condensed sidebar, larger touch targets |
+| Desktop | 1024-1440px | Full 12-col grid, persistent sidebar, editorial layouts |
+| Wide | >1440px | Centered 1200-1440px max-width, expanded whitespace |
+
+#### Touch Targets
+- Buttons: minimum 44px height on touch devices
+- Table rows: minimum 48px row height for tap-friendly transaction lists
+- Nav/menu items: minimum 44px tap height
+
+#### Collapsing Strategy
+- Product sidebar collapses to icon-rail then off-canvas drawer on tablet/mobile
+- Multi-column dashboards stack to single column below 640px
+- Dense data tables become card-stacked rows on mobile (label-value pairs)
+- Sticky bottom CTA bar on mobile marketing pages
+
+#### Image Behavior
+- Card product shots and screenshots: full-width, maintain aspect ratio, rounded 12-16px corners
+- Customer logos: greyscale `#74726B`, uniform height (~28px), in a logo strip
+- Hero imagery often replaced by oversized typographic numerals rather than photos
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, 1px border | Page background, bordered cards, inputs |
+| Subtle (Level 1) | `0 1px 2px rgba(28,27,23,0.05)` | Standard cards, slight lift |
+| Standard (Level 2) | `0 4px 12px rgba(28,27,23,0.08)` | Dropdowns, popovers, hover-lifted cards |
+| Elevated (Level 3) | `0 8px 24px rgba(28,27,23,0.18)` | Dark feature cards, floating panels, toasts |
+| Modal (Level 4) | `0 12px 40px rgba(28,27,23,0.18)` | Dialogs, modals, command palette |
+
+**Shadow Philosophy**: Ramp shadows are warm (ink-tinted, never pure black) and restrained. On light surfaces, the brand prefers a crisp 1px border over a soft shadow — flatness reads as precision and modernity. Depth is reserved for genuinely floating elements. The drama in Ramp's design comes from color contrast (lime on black), not from elevation stacks.
+
+### Blur Effects
+- Sticky nav applies subtle backdrop blur (`backdrop-filter: blur(12px)`) with semi-opaque off-white on scroll.
+- Command palette / search overlays use a light backdrop blur over the scrim.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.ambient`: `rgba(28,27,23,0.05) 0px 1px 2px`
+- `shadow.standard`: `rgba(28,27,23,0.18) 0px 8px 24px`
+- `shadow.elevated`: `rgba(28,27,23,0.18) 0px 12px 40px`
+
+## Motion & Easing
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox state |
+| `motion-fast` | 120ms | Hover, focus rings, button press |
+| `motion-standard` | 220ms | Default — dropdowns, card hover-lift, tab switches |
+| `motion-slow` | 360ms | Emphasized — modal open, savings number count-up start |
+| `motion-page` | 300ms | Route transitions, sidebar navigation |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.16, 1, 0.3, 1)` | Things appearing — modals, dropdowns, toasts (soft decelerate) |
+| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Things leaving — dismissals, collapses |
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Two-way — hover-lift, tab content, accordions |
+| `ease-emphasis` | `cubic-bezier(0.22, 1, 0.36, 1)` | Savings number count-up, milestone reveals (smooth, confident) |
+
+**Signature motions.**
+
+1. **Savings count-up.** Dollar figures animate by counting up from a lower value to the final number over `motion-slow` with `ease-emphasis`. The number arriving is the emotional payoff — the single most important animation in the brand. Tabular numerals keep the layout stable during count-up.
+2. **Card hover-lift.** On hover, interactive cards lift with a `0 4px 12px rgba(28,27,23,0.08)` shadow and a 1px translateY over `motion-standard / ease-standard`. Subtle, premium, never bouncy.
+3. **Lime CTA press.** The primary lime button darkens to `#C7DF34` and scales to 0.98 over `motion-fast` — a crisp, tactile commit, no overshoot.
+4. **Modal entrance.** Modals scale from 0.96 to 1.0 and fade in over `motion-slow / ease-enter`, backdrop scrim fades `rgba(28,27,23,0)` → `rgba(28,27,23,0.6)` in sync.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The savings count-up snaps directly to the final figure; crossfades replace slides. Fully usable, just static.
+
+<!--
+OmD v0.1 Sources — Ramp
+
+Token grounding:
+- Brand lime/yellow-green #E5FE54: Ramp's signature accent, widely documented brand
+  asset and consistent with the catalog brief hint (#E5FE54-ish). Lime scale steps
+  (600/100/50) are interpolated for a usable system.
+- Brand black #1C1B17 (RGB 28,27,23): verified via brandcolorcode.com/ramp
+  (2026-06-06) as Ramp's listed brand black — a warm, slightly green-tinted near-black.
+- Typography Lausanne (sans) + Burgess (serif): verified via WebSearch / Fonts In Use
+  (fontsinuse.com "Ramp identity") — "Ramp uses Lausanne and Burgess fonts in their
+  visual identity, applied on the card, the website, the application, and videos."
+- Voice/tone: grounded in ramp.com marketing copy (WebFetch 2026-06-06) — metric-led,
+  outcome-driven, "close books 75% faster", AI-automation positioning.
+
+Founders (Eric Glyman, Karim Atiyeh, ex-Paribus/Capital One), 2019 founding, and
+investor list (Founders Fund, Stripe, Thrive, Sequoia) are widely documented public
+facts used for narrative context, not Ramp design-system statements.
+
+Neutral scale, semantic colors, component geometry (radii, paddings, heights),
+elevation tokens, and motion tokens are an internally consistent system synthesized
+to match Ramp's observable editorial-fintech aesthetic; exact in-app token values
+were not published by Ramp and should be treated as a faithful reconstruction.
+
+Personas (§13) are fictional archetypes informed by publicly described corporate
+spend-management user segments. Any resemblance to specific individuals is unintended.
+-->
+
+## Components
 
 ### Buttons
 
@@ -395,52 +721,27 @@ Size scale (height · font · radius): `small` 32px · 13px / 500 · 6px; `mediu
 - Note: "on" uses ink-black, not lime — lime is reserved for primary actions, not stateful settings.
 - Use: Boolean settings (auto-approve, notifications).
 
-
 **Tier 1 sources:** https://ramp.com (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 128px
-- Section vertical rhythm: 96-128px between marketing sections (generous editorial breathing room)
-- Card internal padding: 24px standard, 32px for feature cards
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | Single line of `#56554F` body text explaining the value, plus one primary action. ("No cards yet. Issue your first card to start tracking spend." + lime/ink CTA.) Never a cartoon illustration; a simple line icon at most. |
+| **Empty (filter cleared)** | One line of `#74726B` caption ("No transactions match these filters."). A ghost "Clear filters" link, no big button. |
+| **Loading (first paint)** | Skeleton blocks at `#EFEEE9` matching final layout. Financial figures render as `—` until resolved, never as skeleton bars. |
+| **Loading (refresh)** | Subtle top progress bar in lime `#E5FE54`. Content stays visible with prior values. Non-blocking. |
+| **Error (inline field)** | `#D93F3F` 1px border on input, helper text below in `#D93F3F` 13px. One actionable sentence. |
+| **Error (toast)** | Ink `#1C1B17` background, white 14px text, red `#D93F3F` left-bar accent, 4s auto-dismiss. |
+| **Error (screen-blocking)** | Reserved for outages. Off-white screen, centered `#1C1B17` 18px/500 message, ink retry button. No illustration. |
+| **Success (inline)** | Brief `#F4FCC9` (lime100) flash behind the updated row, 300ms fade. For routine confirmations like a saved setting. |
+| **Success (action confirmed)** | Toast with lime `#E5FE54` checkmark icon, ink background, white text. For card-created, receipt-matched. |
+| **Savings milestone** | Dedicated celebratory card — lime100 bg, oversized dollar figure (56px Lausanne 500), one line of context. The brand's signature positive moment. |
+| **Skeleton** | `#EFEEE9` blocks at exact final dimensions, 1.2s shimmer with 6% white highlight, rounded at component radius. Never on dollar figures (show `—`). |
+| **Disabled** | Buttons drop to `#EFEEE9` bg / `#9C9A92` text. Inputs keep their `#C9C7BF` border so geometry is stable if re-enabled. |
+| **Destructive confirm** | Red `#D93F3F` button required to confirm freeze/revoke/delete; the action is never the default-focused button in the dialog. |
 
-### Grid & Container
-- Max content width: 1200px (marketing), 1440px (product app shell)
-- Marketing: 12-column grid, 24px gutters, asymmetric editorial layouts encouraged
-- Product: persistent left sidebar (~240px) + fluid content area
-- Horizontal page padding: 24px mobile, 64px+ desktop
-
-### Whitespace Philosophy
-- **Editorial generosity**: Marketing pages use magazine-level whitespace — headlines breathe, sections are widely separated. The opposite of dense legacy fintech.
-- **Product density when earned**: Transaction tables and ledger views are dense and tabular; the app trusts power users with information.
-- **Numbers get room**: Large dollar figures are surrounded by deliberate negative space to land with impact.
-
-### Border Radius Scale
-- Compact (6px): Badges, small chips, inline tags
-- Standard (8px): Buttons, inputs, compact cards, segmented controls
-- Comfortable (12px): Standard cards, list containers
-- Large (16px): Modals, dark feature cards
-- Pill (9999px): Toggles, filter chips, avatar groups
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, 1px border | Page background, bordered cards, inputs |
-| Subtle (Level 1) | `0 1px 2px rgba(28,27,23,0.05)` | Standard cards, slight lift |
-| Standard (Level 2) | `0 4px 12px rgba(28,27,23,0.08)` | Dropdowns, popovers, hover-lifted cards |
-| Elevated (Level 3) | `0 8px 24px rgba(28,27,23,0.18)` | Dark feature cards, floating panels, toasts |
-| Modal (Level 4) | `0 12px 40px rgba(28,27,23,0.18)` | Dialogs, modals, command palette |
-
-**Shadow Philosophy**: Ramp shadows are warm (ink-tinted, never pure black) and restrained. On light surfaces, the brand prefers a crisp 1px border over a soft shadow — flatness reads as precision and modernity. Depth is reserved for genuinely floating elements. The drama in Ramp's design comes from color contrast (lime on black), not from elevation stacks.
-
-### Blur Effects
-- Sticky nav applies subtle backdrop blur (`backdrop-filter: blur(12px)`) with semi-opaque off-white on scroll.
-- Command palette / search overlays use a light backdrop blur over the scrim.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use lime `#E5FE54` only for primary CTAs and savings/value signals — keep it rare and intentional
@@ -460,33 +761,23 @@ Size scale (height · font · radius): `small` 32px · 13px / 500 · 6px; `mediu
 - Don't add heavy multi-layer shadows — Ramp's depth is flat and border-driven
 - Don't use the brand lime as a semantic "success" color — success is `#1A7F4B`
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked sections, 24px padding, hamburger nav |
-| Tablet | 640-1024px | 2-column grids, condensed sidebar, larger touch targets |
-| Desktop | 1024-1440px | Full 12-col grid, persistent sidebar, editorial layouts |
-| Wide | >1440px | Centered 1200-1440px max-width, expanded whitespace |
+Ramp speaks like a sharp, time-respecting finance operator: direct, metric-driven, confident, never fluffy. The brand sells time and money saved, so copy leads with numbers ("close books 75% faster", "save an average of 5%"). Sentences are short and declarative. No exclamation marks, no startup-cute. There's a dry confidence — the product is assumed to be obviously better, so the copy states outcomes rather than pleading.
 
-### Touch Targets
-- Buttons: minimum 44px height on touch devices
-- Table rows: minimum 48px row height for tap-friendly transaction lists
-- Nav/menu items: minimum 44px tap height
+| Context | Tone |
+|---|---|
+| CTAs | Imperative, two words ("Get started", "Get a demo", "Book a call"). |
+| Headlines | Outcome-led, often a number ("Save more. Close faster."). Serif, editorial. |
+| Success toasts | Past-tense, single clause ("Card created", "Receipt matched"). |
+| Error messages | Specific, blameless, actionable ("This card is over its monthly limit. Increase the limit or use another card."). |
+| Empty states | One line explaining the value, one action ("No transactions yet. Issue a card to get started."). |
+| Savings moments | Lead with the dollar figure, large and bold. The number is the message. |
+| Legal / compliance | Plain, precise, no jargon padding — but formal where regulation requires. |
 
-### Collapsing Strategy
-- Product sidebar collapses to icon-rail then off-canvas drawer on tablet/mobile
-- Multi-column dashboards stack to single column below 640px
-- Dense data tables become card-stacked rows on mobile (label-value pairs)
-- Sticky bottom CTA bar on mobile marketing pages
+**Forbidden tone.** No "Oops!", no exclamation-heavy enthusiasm, no vague "powerful, seamless, robust" filler adjectives. Never bury the number. Avoid hedging ("approximately", "up to" when an exact figure is known on the user's own data).
 
-### Image Behavior
-- Card product shots and screenshots: full-width, maintain aspect ratio, rounded 12-16px corners
-- Customer logos: greyscale `#74726B`, uniform height (~28px), in a logo strip
-- Hero imagery often replaced by oversized typographic numerals rather than photos
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Ramp Lime (`#E5FE54`) with ink text (`#1C1B17`)
@@ -519,124 +810,8 @@ Size scale (height · font · radius): `small` 32px · 13px / 500 · 6px; `mediu
 6. Section eyebrows: 11px uppercase Lausanne 600, 0.08em tracking
 7. Default radius 8px (controls), 12px (cards), 16px (modals/dark cards)
 
-## 10. Voice & Tone
+## Governance
 
-Ramp speaks like a sharp, time-respecting finance operator: direct, metric-driven, confident, never fluffy. The brand sells time and money saved, so copy leads with numbers ("close books 75% faster", "save an average of 5%"). Sentences are short and declarative. No exclamation marks, no startup-cute. There's a dry confidence — the product is assumed to be obviously better, so the copy states outcomes rather than pleading.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Imperative, two words ("Get started", "Get a demo", "Book a call"). |
-| Headlines | Outcome-led, often a number ("Save more. Close faster."). Serif, editorial. |
-| Success toasts | Past-tense, single clause ("Card created", "Receipt matched"). |
-| Error messages | Specific, blameless, actionable ("This card is over its monthly limit. Increase the limit or use another card."). |
-| Empty states | One line explaining the value, one action ("No transactions yet. Issue a card to get started."). |
-| Savings moments | Lead with the dollar figure, large and bold. The number is the message. |
-| Legal / compliance | Plain, precise, no jargon padding — but formal where regulation requires. |
-
-**Forbidden tone.** No "Oops!", no exclamation-heavy enthusiasm, no vague "powerful, seamless, robust" filler adjectives. Never bury the number. Avoid hedging ("approximately", "up to" when an exact figure is known on the user's own data).
-
-## 11. Brand Narrative
-
-Ramp was founded in 2019 by **Eric Glyman** and **Karim Atiyeh** (who had previously built and sold Paribus to Capital One). The founding insight inverted the entire corporate-card industry: every incumbent card issuer made more money when customers spent more, so their "rewards" quietly incentivized waste. Ramp built the opposite — a corporate card and spend-management platform whose explicit product goal is to help companies **spend less**. The brand promise is encoded in the name: Ramp helps you ramp *down* costs and ramp *up* efficiency.
-
-That contrarian thesis shapes the entire visual system. The electric lime `#E5FE54` is the color of "found money" — energetic, slightly disruptive, impossible to ignore — set against a serious editorial ink-and-serif foundation that signals Ramp is a rigorous financial tool, not a toy. The design rejects two clichés simultaneously: the cold navy institutionalism of legacy finance (Amex, Concur, SAP) and the rounded pastel friendliness of consumer fintech. Ramp occupies a distinct middle — premium, editorial, fast, and confident.
-
-Ramp grew explosively, becoming one of the fastest-growing SaaS companies in history and reaching a multi-billion-dollar valuation within a few years, backed by investors including Founders Fund, Stripe, Thrive Capital, and Sequoia. By 2024-2025 the brand leaned hard into AI — "Ramp Intelligence" — positioning itself as the platform where finance work gets automated away. The design absorbed this without changing its core: the lime still means action, the serif still means intelligence, and the numbers still tell the story.
-
-What Ramp refuses: the apologetic, dense, jargon-laden UX of legacy ERP/expense tools; the playful illustration-heavy style of consumer apps; and any design move that hides the dollar figure. In Ramp's world, the savings number is always the hero.
-
-## 12. Principles
-
-1. **The number is the hero.** Dollar amounts saved or moved are the largest, most deliberate element on any screen. Never bury a financial figure in body text.
-2. **Lime is a signal, not a color.** `#E5FE54` appears only where it means "act here" or "value found." Used everywhere, it means nothing. Restraint is what makes it powerful.
-3. **Warm black, never cold.** The brand black is `#1C1B17`. Pure `#000000` reads as default and cheap; the warm ink reads as considered.
-4. **Serif for intelligence, sans for system.** Burgess carries the brand's editorial voice; Lausanne carries the functional product. Mixing them wrongly (serif in a table) breaks the system.
-5. **Flat is precise.** Prefer 1px borders to shadows. Depth is earned only by genuinely floating elements. Flatness communicates modernity and rigor.
-6. **Editorial whitespace on marketing, earned density in product.** Marketing breathes like a magazine; the app trusts power users with dense, tabular data.
-7. **State outcomes, don't sell them.** The copy assumes the product wins. It reports results ("75% faster") rather than persuading.
-8. **Contrast over decoration.** The brand's drama comes from lime-on-black contrast, not gradients, illustrations, or shadow stacks.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described corporate-spend-management user segments, not individual people.*
-
-**Maya, 34, San Francisco.** VP of Finance at a 200-person Series B startup. Lives in the Ramp dashboard during month-end close. Cares about one thing: closing the books faster with fewer manual reconciliations. She wants dense, scannable transaction tables, fast filtering, and clear approval queues. Editorial flourishes are wasted on her — but the "you saved $X this month" number genuinely lands, because she reports it to the CFO. Power user; keyboard shortcuts; impatient with latency.
-
-**Daniel, 41, Austin.** Operations lead at a fast-growing logistics company. Issues and manages dozens of employee cards. Needs to set spending limits, see who spent what, and freeze a card in two clicks. Doesn't think of himself as a "finance person" — he needs the UI to be obvious and the dangerous actions (freeze, revoke) to be clearly destructive-styled. Trusts the lime CTA to be the "right next step."
-
-**Priya, 29, New York.** Marketing manager who is just a *spender* on the platform — she submits receipts and requests card limits. Touches Ramp a few times a week, mostly on mobile. Wants the receipt-upload and reimbursement flow to be frictionless and fast. The brand's polish (serif headlines, clean cards) makes her trust that the expense process won't be a nightmare. Judges the whole product by how painless one receipt upload is.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (first use)** | Single line of `#56554F` body text explaining the value, plus one primary action. ("No cards yet. Issue your first card to start tracking spend." + lime/ink CTA.) Never a cartoon illustration; a simple line icon at most. |
-| **Empty (filter cleared)** | One line of `#74726B` caption ("No transactions match these filters."). A ghost "Clear filters" link, no big button. |
-| **Loading (first paint)** | Skeleton blocks at `#EFEEE9` matching final layout. Financial figures render as `—` until resolved, never as skeleton bars. |
-| **Loading (refresh)** | Subtle top progress bar in lime `#E5FE54`. Content stays visible with prior values. Non-blocking. |
-| **Error (inline field)** | `#D93F3F` 1px border on input, helper text below in `#D93F3F` 13px. One actionable sentence. |
-| **Error (toast)** | Ink `#1C1B17` background, white 14px text, red `#D93F3F` left-bar accent, 4s auto-dismiss. |
-| **Error (screen-blocking)** | Reserved for outages. Off-white screen, centered `#1C1B17` 18px/500 message, ink retry button. No illustration. |
-| **Success (inline)** | Brief `#F4FCC9` (lime100) flash behind the updated row, 300ms fade. For routine confirmations like a saved setting. |
-| **Success (action confirmed)** | Toast with lime `#E5FE54` checkmark icon, ink background, white text. For card-created, receipt-matched. |
-| **Savings milestone** | Dedicated celebratory card — lime100 bg, oversized dollar figure (56px Lausanne 500), one line of context. The brand's signature positive moment. |
-| **Skeleton** | `#EFEEE9` blocks at exact final dimensions, 1.2s shimmer with 6% white highlight, rounded at component radius. Never on dollar figures (show `—`). |
-| **Disabled** | Buttons drop to `#EFEEE9` bg / `#9C9A92` text. Inputs keep their `#C9C7BF` border so geometry is stable if re-enabled. |
-| **Destructive confirm** | Red `#D93F3F` button required to confirm freeze/revoke/delete; the action is never the default-focused button in the dialog. |
-
-## 15. Motion & Easing
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox state |
-| `motion-fast` | 120ms | Hover, focus rings, button press |
-| `motion-standard` | 220ms | Default — dropdowns, card hover-lift, tab switches |
-| `motion-slow` | 360ms | Emphasized — modal open, savings number count-up start |
-| `motion-page` | 300ms | Route transitions, sidebar navigation |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.16, 1, 0.3, 1)` | Things appearing — modals, dropdowns, toasts (soft decelerate) |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Things leaving — dismissals, collapses |
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Two-way — hover-lift, tab content, accordions |
-| `ease-emphasis` | `cubic-bezier(0.22, 1, 0.36, 1)` | Savings number count-up, milestone reveals (smooth, confident) |
-
-**Signature motions.**
-
-1. **Savings count-up.** Dollar figures animate by counting up from a lower value to the final number over `motion-slow` with `ease-emphasis`. The number arriving is the emotional payoff — the single most important animation in the brand. Tabular numerals keep the layout stable during count-up.
-2. **Card hover-lift.** On hover, interactive cards lift with a `0 4px 12px rgba(28,27,23,0.08)` shadow and a 1px translateY over `motion-standard / ease-standard`. Subtle, premium, never bouncy.
-3. **Lime CTA press.** The primary lime button darkens to `#C7DF34` and scales to 0.98 over `motion-fast` — a crisp, tactile commit, no overshoot.
-4. **Modal entrance.** Modals scale from 0.96 to 1.0 and fade in over `motion-slow / ease-enter`, backdrop scrim fades `rgba(28,27,23,0)` → `rgba(28,27,23,0.6)` in sync.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The savings count-up snaps directly to the final figure; crossfades replace slides. Fully usable, just static.
-
-<!--
-OmD v0.1 Sources — Ramp
-
-Token grounding:
-- Brand lime/yellow-green #E5FE54: Ramp's signature accent, widely documented brand
-  asset and consistent with the catalog brief hint (#E5FE54-ish). Lime scale steps
-  (600/100/50) are interpolated for a usable system.
-- Brand black #1C1B17 (RGB 28,27,23): verified via brandcolorcode.com/ramp
-  (2026-06-06) as Ramp's listed brand black — a warm, slightly green-tinted near-black.
-- Typography Lausanne (sans) + Burgess (serif): verified via WebSearch / Fonts In Use
-  (fontsinuse.com "Ramp identity") — "Ramp uses Lausanne and Burgess fonts in their
-  visual identity, applied on the card, the website, the application, and videos."
-- Voice/tone: grounded in ramp.com marketing copy (WebFetch 2026-06-06) — metric-led,
-  outcome-driven, "close books 75% faster", AI-automation positioning.
-
-Founders (Eric Glyman, Karim Atiyeh, ex-Paribus/Capital One), 2019 founding, and
-investor list (Founders Fund, Stripe, Thrive, Sequoia) are widely documented public
-facts used for narrative context, not Ramp design-system statements.
-
-Neutral scale, semantic colors, component geometry (radii, paddings, heights),
-elevation tokens, and motion tokens are an internally consistent system synthesized
-to match Ramp's observable editorial-fintech aesthetic; exact in-app token values
-were not published by Ramp and should be treated as a faithful reconstruction.
-
-Personas (§13) are fictional archetypes informed by publicly described corporate
-spend-management user segments. Any resemblance to specific individuals is unintended.
--->
+- **Contrast, `button-danger`.** Text `#ffffff` on `#d93f3f` measures 4.44:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

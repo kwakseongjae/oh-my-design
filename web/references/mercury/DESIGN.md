@@ -1,72 +1,182 @@
 ---
-id: mercury
 name: Mercury
-country: US
-category: fintech
-homepage: "https://mercury.com"
-primary_color: "#5266eb"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=mercury.com&sz=128"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#5266eb"
-    primary-hover: "#4354c8"
-    primary-active: "#3442a6"
-    periwinkle: "#9cb4e8"
-    mist: "#cdddff"
-    canvas: "#171721"
-    canvas-elevated: "#1e1e2a"
-    canvas-light: "#fbfcfd"
-    surface: "#ededf3"
-    surface-secondary: "#f4f5f9"
-    surface-hover: "#dddde5"
-    ink-subdued: "#c3c3cc"
-    ink-disabled: "#70707d"
-    on-primary: "#ffffff"
-    error: "#d03275"
-    hairline: "#272735"
-  typography:
-    family: { sans: "Arcadia", mono: "Arcadia Mono" }
-    display-hero: { size: 65, weight: 360, lineHeight: 1.05, tracking: 0.42, use: "Marketing hero, Arcadia Display" }
-    display-lg:   { size: 48, weight: 360, lineHeight: 1.10, tracking: 0.42, use: "Section openers" }
-    heading-lg:   { size: 28, weight: 480, lineHeight: 1.25, use: "Feature titles, modal headers" }
-    heading:      { size: 22, weight: 480, lineHeight: 1.30, use: "Card headings, sub-sections" }
-    subtitle:     { size: 18, weight: 420, lineHeight: 1.40, use: "List headers, nav titles" }
-    body-lg:      { size: 17, weight: 400, lineHeight: 1.625, use: "Lead paragraphs" }
-    body:         { size: 15, weight: 400, lineHeight: 1.625, use: "Standard reading text" }
-    body-sm:      { size: 13, weight: 400, lineHeight: 1.50, use: "Secondary info, dense tables" }
-    caption:      { size: 12, weight: 420, lineHeight: 1.40, use: "Metadata, timestamps, labels" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 18, xl: 24, xxl: 28, section: 48 }
-  rounded: { sm: 4, md: 4, lg: 12, full: 9999 }
-  shadow:
-    card: "0px 1px 2px rgba(23,23,33,0.06)"
-    elevated: "0px 8px 32px rgba(0,0,0,0.4)"
-    dialog: "0px 16px 48px rgba(23,23,33,0.24)"
-  components:
-    button-primary: { type: button, bg: "#5266eb", fg: "#ffffff", radius: 4, padding: "10px 18px", font: "15px/480", use: "Single primary action Open Account" }
-    button-secondary: { type: button, bg: "#ededf3", fg: "#1e1e2a", radius: 4, padding: "10px 18px", font: "15px/480", use: "Secondary action" }
-    button-ghost: { type: button, bg: "transparent", fg: "#5266eb", radius: 4, padding: "10px 14px", font: "15px/420", use: "Inline low-emphasis Learn more" }
-    email-pill: { type: button, bg: "#5266eb", fg: "#ffffff", radius: 9999, padding: "0 20px", font: "15px/480", use: "Signature hero email-capture pill" }
-    input: { type: input, bg: "#fbfcfd", fg: "#1e1e2a", radius: 4, padding: "10px 12px", font: "15px/400", use: "Standard dashboard field" }
-    badge-neutral: { type: badge, bg: "#f4f5f9", fg: "#70707d", radius: 4, padding: "2px 8px", font: "12px/480", use: "Category/status metadata" }
-    badge-accent: { type: badge, fg: "#5266eb", radius: 4, padding: "2px 8px", font: "12px/480", use: "Highlighted status New/Active" }
-    card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Dashboard panels, balance cards" }
-    tab: { type: tab, bg: "transparent", fg: "#70707d", active: "2px bottom border #5266eb", font: "15px/480", use: "Dashboard section switching" }
-    toast: { type: toast, bg: "#1e1e2a", fg: "#ededf3", radius: 12, padding: "12px 16px", use: "Transient confirmation" }
-    dialog: { type: dialog, bg: "#ffffff", radius: 12, padding: "28px", use: "Confirmation/form modal" }
-    toggle: { type: toggle, bg: "#5266eb", radius: 9999, use: "Boolean settings, on=indigo off=#c3c3cc" }
-  components_harvested: true
+colors:
+  primary: '#5266eb'
+  primary-hover: '#4354c8'
+  primary-active: '#3442a6'
+  periwinkle: '#9cb4e8'
+  mist: '#cdddff'
+  canvas: '#171721'
+  canvas-elevated: '#1e1e2a'
+  canvas-light: '#fbfcfd'
+  surface: '#ededf3'
+  surface-secondary: '#f4f5f9'
+  surface-hover: '#dddde5'
+  ink-subdued: '#c3c3cc'
+  ink-disabled: '#70707d'
+  on-primary: '#ffffff'
+  error: '#d03275'
+  hairline: '#272735'
+typography:
+  display-hero:
+    fontSize: 65px
+    fontWeight: 360
+    lineHeight: 1.05
+    letterSpacing: 0.42px
+    use: Marketing hero, Arcadia Display
+  display-lg:
+    fontSize: 48px
+    fontWeight: 360
+    lineHeight: 1.1
+    letterSpacing: 0.42px
+    use: Section openers
+  heading-lg:
+    fontSize: 28px
+    fontWeight: 480
+    lineHeight: 1.25
+    use: Feature titles, modal headers
+  heading:
+    fontSize: 22px
+    fontWeight: 480
+    lineHeight: 1.3
+    use: Card headings, sub-sections
+  subtitle:
+    fontSize: 18px
+    fontWeight: 420
+    lineHeight: 1.4
+    use: List headers, nav titles
+  body-lg:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 1.625
+    use: Lead paragraphs
+  body:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.625
+    use: Standard reading text
+  body-sm:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Secondary info, dense tables
+  caption:
+    fontSize: 12px
+    fontWeight: 420
+    lineHeight: 1.4
+    use: Metadata, timestamps, labels
+rounded:
+  sm: 4px
+  md: 4px
+  lg: 12px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 18
+  xl: 24
+  xxl: 28
+  section: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#5266eb'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 10px 18px
+    typography: 15px/480
+    use: Single primary action Open Account
+  button-secondary:
+    type: button
+    backgroundColor: '#ededf3'
+    textColor: '#1e1e2a'
+    rounded: 4px
+    padding: 10px 18px
+    typography: 15px/480
+    use: Secondary action
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#5266eb'
+    rounded: 4px
+    padding: 10px 14px
+    typography: 15px/420
+    use: Inline low-emphasis Learn more
+  email-pill:
+    type: button
+    backgroundColor: '#5266eb'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 0 20px
+    typography: 15px/480
+    use: Signature hero email-capture pill
+  input:
+    type: input
+    backgroundColor: '#fbfcfd'
+    textColor: '#1e1e2a'
+    rounded: 4px
+    padding: 10px 12px
+    typography: 15px/400
+    use: Standard dashboard field
+  badge-neutral:
+    type: badge
+    backgroundColor: '#f4f5f9'
+    textColor: '#70707d'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/480
+    use: Category/status metadata
+  badge-accent:
+    type: badge
+    textColor: '#5266eb'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12px/480
+    use: Highlighted status New/Active
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 12px
+    padding: 24px
+    use: Dashboard panels, balance cards
+  tab:
+    type: tab
+    backgroundColor: transparent
+    textColor: '#70707d'
+    active: '2px bottom border #5266eb'
+    typography: 15px/480
+    use: Dashboard section switching
+  toast:
+    type: toast
+    backgroundColor: '#1e1e2a'
+    textColor: '#ededf3'
+    rounded: 12px
+    padding: 12px 16px
+    use: Transient confirmation
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 12px
+    padding: 28px
+    use: Confirmation/form modal
+  toggle:
+    type: toggle
+    backgroundColor: '#5266eb'
+    rounded: 9999px
+    use: Boolean settings, on=indigo off=#c3c3cc
+fonts:
+  roles:
+    sans: Arcadia
+    mono: Arcadia Mono
 ---
 
 # Design System Inspiration of Mercury
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Mercury is banking built for startups, and its interface carries the quiet confidence of software made by people who care about craft. The brand refuses the two dominant fintech clichés at once: it is neither the cold institutional navy of legacy banks nor the candy-bright gradients of consumer neobanks. Instead, Mercury occupies a refined, almost cinematic middle ground — deep indigo-black canvases (`#171721`), soft off-white ink (`#ededf3`) that reads as luminous rather than glaring, and a single disciplined indigo (`#5266eb`) reserved for the one action that matters on each screen.
 
@@ -83,7 +193,7 @@ The proprietary **Arcadia** and **Arcadia Display** typefaces are the brand's si
 - Refined periwinkle→mist gradient washes (`#9cb4e8` → `#cdddff`) behind product imagery
 - Generous 1.625 body line-height and deliberate letter-spacing on display type
 
-## Primary tasks
+### Primary tasks
 
 - Open a business bank account without visiting a branch
 - Check the company's runway and burn on opening the dashboard
@@ -91,7 +201,38 @@ The proprietary **Arcadia** and **Arcadia Display** typefaces are the brand's si
 - Send a transfer and confirm the exact amount and recipient
 - Export transaction data to hand to an accountant
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Mercury is banking built for startups, founded in 2017 by **Immad Akhund**, Max Tang, and Jason Zhang and launched publicly in 2019. The founding premise is a rejection: legacy business banking was built for an analog era — branch visits, faxed forms, opaque fees, interfaces that looked like they hadn't changed since the 1990s. Mercury's thesis is that the company building your bank account should have the same taste, speed, and respect for craft as the best software you use every day.
+
+That thesis shows up in the design. Where incumbent business banks signal trust through heavy, conservative navy and dense legalese, Mercury signals trust through restraint and refinement — a single disciplined indigo, a proprietary typeface, generous whitespace, and cinematic dark canvases that make the product feel like a premium object. The indigo `#5266eb` is deliberately not the institutional navy of legacy banks nor the playful blue of consumer apps; it sits in a considered middle, modern and software-native.
+
+Mercury grew into a full financial stack for startups — business checking and savings, treasury, corporate cards, bill pay, invoicing, and venture debt — serving tens of thousands of companies. The design's job across all of it is the same: make managing company money feel calm, fast, and well-made. The marketing surface is theatrical and editorial; the product surface is serene and dense. The brand lives in that contrast.
+
+What Mercury refuses: the institutional coldness of legacy business banking, the gamified brightness of consumer fintech, and the jargon-heavy condescension that assumes founders need hand-holding. It occupies a narrow, confident lane — refined, intelligent, and built by people who clearly sweat the details.
+
+### Principles
+
+1. **One action per surface.** Each marketing band and key product view has a single filled indigo CTA. Two primary actions means two surfaces. Secondary actions go ghost or outline.
+2. **Indigo is action, never decoration.** `#5266eb` appears only where the user acts — CTAs, links, focus, active states. Decoration is handled by neutral surfaces and periwinkle/mist washes.
+3. **Off-white over pure white.** Text on dark is `#ededf3`; this softness is a deliberate craft choice that signals care and reduces strain.
+4. **Restraint is the brand.** A tight 4px radius, a narrow cool neutral ramp, a single accent hue, one typeface family. Every removed element makes the product feel more considered.
+5. **Theatrical marketing, serene product.** Dramatic dark canvases and floating mockups sell; calm light dashboards serve. The two postures are intentional and never bleed into each other.
+6. **Numbers are typography.** Balances and amounts use tabular Arcadia figures with the same care as headlines — columns align, figures never inherit casual body styling.
+7. **Respect the founder.** Copy and UI assume an intelligent, busy operator. No hype, no condescension, no cute mascots — just speed and clarity.
+8. **Whitespace is a premium signal.** On marketing surfaces, generous negative space communicates confidence and quality more than any ornament could.
+
+### Personas
+
+*Personas below are fictional archetypes informed by Mercury's publicly described startup-customer segments, not individual people.*
+
+**Priya, 31, San Francisco.** Founder and CEO of a seed-stage SaaS company, four employees. Switched from a legacy big-bank business account after one too many branch visits and a wire that took three days. Opens Mercury daily to check runway, approve a corporate-card charge, and pay a contractor. Expects the dashboard to load instantly and show burn at a glance. Has impeccable taste in software and notices when a product is well-made — Mercury's craft is part of why she trusts it with the company's money.
+
+**Marcus, 38, Austin.** Operations lead at a 25-person hardware startup. Lives in bill pay, invoicing, and approvals. Needs multi-user roles, clear audit trails, and exportable transaction data for the accountant. Values that Mercury's interface is dense and efficient where it matters — he's moving real volume and doesn't want a toy. Reads everything; trusts specific, concrete copy over marketing adjectives.
+
+**Dana, 27, Remote.** Solo technical founder, pre-revenue, raising a pre-seed. Opened Mercury because the application was fast and didn't require a branch visit. Uses the corporate card and savings; watches every dollar. Drawn to the brand's confident, no-nonsense voice — it makes her feel like a real company. Will evangelize Mercury to other founders precisely because it looks and feels like a product made by people like her.
+
+## Colors
 
 ### Primary
 - **Indigo** (`#5266eb`): Primary brand and action color. CTA fills ("Open Account"), links, active states, focus rings. One filled CTA per band — never used decoratively.
@@ -126,7 +267,7 @@ The proprietary **Arcadia** and **Arcadia Display** typefaces are the brand's si
 ### Neutral Notes
 Mercury's neutral ramp is intentionally narrow and slightly cool. The dark end clusters around `#171721` / `#1e1e2a` / `#272735`; the mid greys are `#70707d` / `#c3c3cc`; the light end is `#dddde5` / `#ededf3` / `#f4f5f9` / `#fbfcfd`. There is no warm grey in the system — everything carries a faint blue undertone consistent with the indigo brand.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `"Arcadia", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif`
@@ -161,7 +302,138 @@ Arcadia ships in a tight custom set: **360, 400, 420, 480**. The hero of the sys
 - **Off-white, not white.** Text on dark canvases is `#ededf3`, never `#ffffff`, to soften contrast and reduce strain.
 - **Tabular figures for money.** Financial amounts in the dashboard use monospaced/tabular Arcadia figures so columns align.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- Marketing bands use generous vertical rhythm — 96px+ between sections
+- Product/dashboard uses tighter 16-24px panel gaps
+
+### Grid & Container
+- Marketing max-width: ~1200px centered
+- 12-column grid under the hood; content typically spans 8-10 columns centered
+- Generous side gutters on wide screens reinforce the editorial feel
+- Dashboard uses a left sidebar + fluid content region
+
+### Whitespace Philosophy
+- **Editorial spaciousness.** Marketing surfaces are deliberately airy — large headlines, single CTAs, lots of negative space around product imagery.
+- **One idea per band.** Each marketing section makes one point with one visual and at most one filled CTA.
+- **Dense where it counts.** The dashboard packs financial data efficiently; spaciousness is a marketing posture, density is a product necessity.
+
+### Border Radius Scale
+- Tight (4px): The workhorse — buttons, inputs, badges, most surfaces
+- Comfortable (12px): Cards, modals, toasts
+- Pill (40px): Email-capture / hero CTA pill, the deliberate exception
+- Circle (9999px): Toggles, avatars
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, stacked bands, hamburger nav, full-width CTAs |
+| Tablet | 640-1024px | 2-column product grids, condensed sidebar |
+| Desktop | 1024-1280px | Full marketing grid, persistent dashboard sidebar |
+| Wide | >1280px | Centered ~1200px container, generous gutters |
+
+#### Touch Targets
+- Buttons: ~40px tall minimum; pill CTA ~32-44px
+- List/transaction rows: ≥44px
+- Dashboard controls: comfortable 40px tap zones
+
+#### Collapsing Strategy
+- Dashboard sidebar collapses to an icon rail, then to a drawer on mobile
+- Multi-column marketing bands stack to single column
+- Hero headlines scale down (65px → ~36px) while preserving Display weight and tracking
+- Tables become horizontally scrollable or reflow to stacked rows on mobile
+
+#### Image Behavior
+- Product mockups maintain aspect ratio inside gradient-washed frames
+- Hero imagery scales fluidly; gradient glows resize with the viewport
+- Icons render at consistent 20-24px within their contexts
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | No shadow | Page background, inline elements, list rows |
+| Subtle (1) | `0px 1px 2px rgba(23,23,33,0.06)` | Light product cards, slight lift |
+| Standard (2) | `0px 4px 16px rgba(23,23,33,0.10)` | Dropdowns, popovers on light |
+| Elevated (3) | `0px 8px 32px rgba(0,0,0,0.4)` | Dark-canvas floating product mockups |
+| Modal (4) | `0px 16px 48px rgba(23,23,33,0.24)` | Dialogs, modals |
+
+**Shadow Philosophy:** On light product surfaces, Mercury keeps shadows whisper-soft and cool-tinted (indigo-black `rgba(23,23,33,...)` rather than pure black). On the dark marketing canvas, depth is dramatic — large, diffuse `rgba(0,0,0,0.4)` shadows make product cards appear to float, reinforcing the cinematic feel. Depth is theatrical in marketing, restrained in product.
+
+### Gradient & Light
+- Periwinkle→mist gradient washes (`#9cb4e8` → `#cdddff`) sit behind hero product imagery as soft radial or linear glows.
+- Subtle vignetting on the dark canvas focuses attention toward centered content.
+- Glass/blur is used sparingly on sticky nav over imagery.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `0px 1px 2px rgba(23,23,33,0.06)`
+- `shadow.elevated`: `0px 8px 32px rgba(0,0,0,0.4)`
+- `shadow.dialog`: `0px 16px 48px rgba(23,23,33,0.24)`
+
+## Motion & Easing
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox changes |
+| `motion-fast` | 150ms | Hover, focus rings, button press, small reveals |
+| `motion-standard` | 240ms | Default — dropdowns, popovers, tab content, card expand |
+| `motion-slow` | 360ms | Emphasized transitions — modals, success confirmations |
+| `motion-page` | 320ms | Route/view transitions |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.16, 1, 0.3, 1)` | Things appearing — modals, sheets, toasts (soft, refined deceleration) |
+| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Things leaving — dismissals |
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Two-way transitions — tabs, collapsibles |
+| `ease-glide` | `cubic-bezier(0.22, 0.61, 0.36, 1)` | Marketing parallax and gradient-glow drifts |
+
+**Signature motions.**
+
+1. **Floating product mockups.** On scroll into a marketing band, product cards rise ~24px and fade in with `motion-slow / ease-enter`, their drop-shadow deepening to reinforce the cinematic float. The gradient glow behind them drifts slowly with `ease-glide`.
+2. **Refined modal entrance.** Modals scale from 0.98 → 1.0 and fade in over `motion-standard / ease-enter`, with the scrim fading `rgba(23,23,33,0)` → `rgba(23,23,33,0.6)`. Exit is faster (`motion-fast / ease-exit`) — leaving feels lighter than arriving.
+3. **Money updates.** When a balance changes, figures cross-update without flicker — the new tabular value settles in over `motion-fast`. Money never bounces or springs; it resolves calmly.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`, parallax and gradient drift are disabled, and slides become fades. The product stays fully usable.
+
+<!--
+OmD v0.1 Sources
+
+Token grounding (verified 2026-06-06 via WebSearch + WebFetch):
+- Primary indigo #5266eb, accents periwinkle #9cb4e8 / mist #cdddff,
+  dark canvas #171721, off-white ink #ededf3, custom Arcadia 480 weight,
+  1.625 body line-height, 4px base radius, 40px hero pill — sourced from
+  shadcn.io/design/mercury (Mercury Design System token export) and
+  corroborating brand summaries (brandfetch.com/mercury.com,
+  blakecrosley.com/guides/design/mercury).
+- Arcadia / Arcadia Display proprietary typeface family confirmed across
+  multiple brand-design writeups of Mercury.
+
+Brand narrative facts (founding 2017 by Immad Akhund et al., public launch
+2019, startup-banking positioning) are widely documented public information.
+
+Personas (§13) are fictional archetypes informed by Mercury's publicly
+described startup-customer segments. Any resemblance to specific individuals
+is unintended.
+
+Interpretive claims (e.g., "indigo chosen as a considered middle between
+institutional navy and consumer blue") are editorial readings of the design,
+not documented Mercury statements. Some token values for components, motion,
+and states are reasoned extrapolations consistent with the verified core
+tokens where Mercury does not publish a formal public spec.
+-->
+
+## Components
 
 ### Buttons
 
@@ -350,52 +622,26 @@ Mercury's button system is disciplined: typically one filled (primary) CTA per s
 - Radius: 9999px
 - Use: Boolean settings
 
-
 **Tier 1 sources:** https://mercury.com (live production site, verified via live DOM getComputedStyle).
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
-- Marketing bands use generous vertical rhythm — 96px+ between sections
-- Product/dashboard uses tighter 16-24px panel gaps
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | One line of `#70707d` body text explaining why the view is empty, plus a single suggested action as a ghost or secondary button. No illustration clutter. |
+| **Empty (filtered)** | One line of `#70707d` caption ("No transactions match these filters"). No button — the user adjusts filters. |
+| **Loading (first paint)** | Skeleton blocks at `#f4f5f9` (light) / `#1e1e2a` (dark) matching final layout. Financial amounts render as `—` until resolved, never as skeleton bars. |
+| **Loading (refresh)** | Subtle inline indigo spinner; content stays visible with previous values. No blocking overlay. |
+| **Error (inline field)** | `#d03275` 1px border on the input, help text below in `#d03275` 12px weight 420. One actionable sentence. |
+| **Error (toast)** | `#1e1e2a` bg, `#ededf3` text, 12px radius, one specific sentence, auto-dismiss. |
+| **Error (blocking)** | Reserved for outage. Centered single line in emphasized ink, indigo retry button below. No illustration. |
+| **Success (inline)** | Brief faint indigo wash behind the updated element, ~300ms fade. Calm, never celebratory confetti. |
+| **Success (transfer sent)** | Confirmation panel/screen — checkmark, exact amount in tabular figures, recipient, timestamp, single primary action. Factual, not festive. |
+| **Disabled** | Button bg `#70707d`, text `#c3c3cc`. Inputs keep their `#c3c3cc` border so geometry is stable if re-enabled. |
+| **Focus** | 1px `#5266eb` border plus a 2px `rgba(82,102,235,0.2)` ring on all interactive elements. Always visible for accessibility. |
+| **Hover (row)** | Light `#dddde5` / dark `#272735` fill on interactive rows and list items. |
 
-### Grid & Container
-- Marketing max-width: ~1200px centered
-- 12-column grid under the hood; content typically spans 8-10 columns centered
-- Generous side gutters on wide screens reinforce the editorial feel
-- Dashboard uses a left sidebar + fluid content region
-
-### Whitespace Philosophy
-- **Editorial spaciousness.** Marketing surfaces are deliberately airy — large headlines, single CTAs, lots of negative space around product imagery.
-- **One idea per band.** Each marketing section makes one point with one visual and at most one filled CTA.
-- **Dense where it counts.** The dashboard packs financial data efficiently; spaciousness is a marketing posture, density is a product necessity.
-
-### Border Radius Scale
-- Tight (4px): The workhorse — buttons, inputs, badges, most surfaces
-- Comfortable (12px): Cards, modals, toasts
-- Pill (40px): Email-capture / hero CTA pill, the deliberate exception
-- Circle (9999px): Toggles, avatars
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow | Page background, inline elements, list rows |
-| Subtle (1) | `0px 1px 2px rgba(23,23,33,0.06)` | Light product cards, slight lift |
-| Standard (2) | `0px 4px 16px rgba(23,23,33,0.10)` | Dropdowns, popovers on light |
-| Elevated (3) | `0px 8px 32px rgba(0,0,0,0.4)` | Dark-canvas floating product mockups |
-| Modal (4) | `0px 16px 48px rgba(23,23,33,0.24)` | Dialogs, modals |
-
-**Shadow Philosophy:** On light product surfaces, Mercury keeps shadows whisper-soft and cool-tinted (indigo-black `rgba(23,23,33,...)` rather than pure black). On the dark marketing canvas, depth is dramatic — large, diffuse `rgba(0,0,0,0.4)` shadows make product cards appear to float, reinforcing the cinematic feel. Depth is theatrical in marketing, restrained in product.
-
-### Gradient & Light
-- Periwinkle→mist gradient washes (`#9cb4e8` → `#cdddff`) sit behind hero product imagery as soft radial or linear glows.
-- Subtle vignetting on the dark canvas focuses attention toward centered content.
-- Glass/blur is used sparingly on sticky nav over imagery.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use indigo `#5266eb` for the single primary action per section — links, focus rings, the one CTA
@@ -416,33 +662,23 @@ Mercury's button system is disciplined: typically one filled (primary) CTA per s
 - Don't use a saturated fire-red for errors — Mercury's error is rose `#d03275`
 - Don't crowd marketing surfaces — density is for the dashboard, not the homepage
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked bands, hamburger nav, full-width CTAs |
-| Tablet | 640-1024px | 2-column product grids, condensed sidebar |
-| Desktop | 1024-1280px | Full marketing grid, persistent dashboard sidebar |
-| Wide | >1280px | Centered ~1200px container, generous gutters |
+Mercury writes like a sharp, candid operator who has run a startup and respects that you have too. The voice is precise, dry, occasionally witty, never cute. No exclamation marks, no emoji on product surfaces, no startup-bro hype. Claims are concrete and specific. Sentences are short and confident. It assumes the reader is smart and busy.
 
-### Touch Targets
-- Buttons: ~40px tall minimum; pill CTA ~32-44px
-- List/transaction rows: ≥44px
-- Dashboard controls: comfortable 40px tap zones
+| Context | Tone |
+|---|---|
+| CTAs | Direct imperative — "Open Account", "Apply now", "Get started" |
+| Headlines | Declarative, confident, often a single bold claim ("Banking for startups") |
+| Body copy | Specific and concrete — names features, numbers, outcomes; avoids fluff |
+| Success | Calm and factual — "Transfer sent", "Account approved" |
+| Errors | Blameless, specific, actionable — names what went wrong and the fix |
+| Empty states | One line explaining the state plus one suggested action |
+| Legal / compliance | Plain-English where possible; formal only where regulation requires |
 
-### Collapsing Strategy
-- Dashboard sidebar collapses to an icon rail, then to a drawer on mobile
-- Multi-column marketing bands stack to single column
-- Hero headlines scale down (65px → ~36px) while preserving Display weight and tracking
-- Tables become horizontally scrollable or reflow to stacked rows on mobile
+**Forbidden moves.** No "Oops", no exclamation hype, no emoji in financial/product contexts, no vague "Something went wrong", no condescending hand-holding. Mercury never talks down to founders.
 
-### Image Behavior
-- Product mockups maintain aspect ratio inside gradient-washed frames
-- Hero imagery scales fluidly; gradient glows resize with the viewport
-- Icons render at consistent 20-24px within their contexts
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Indigo (`#5266eb`)
@@ -477,121 +713,10 @@ Mercury's button system is disciplined: typically one filled (primary) CTA per s
 6. Errors are rose `#d03275`, not fire-red. Neutrals are cool, never warm.
 7. Marketing breathes (96px band rhythm); dashboard is dense (16-24px gaps).
 
-## 10. Voice & Tone
+## Governance
 
-Mercury writes like a sharp, candid operator who has run a startup and respects that you have too. The voice is precise, dry, occasionally witty, never cute. No exclamation marks, no emoji on product surfaces, no startup-bro hype. Claims are concrete and specific. Sentences are short and confident. It assumes the reader is smart and busy.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Direct imperative — "Open Account", "Apply now", "Get started" |
-| Headlines | Declarative, confident, often a single bold claim ("Banking for startups") |
-| Body copy | Specific and concrete — names features, numbers, outcomes; avoids fluff |
-| Success | Calm and factual — "Transfer sent", "Account approved" |
-| Errors | Blameless, specific, actionable — names what went wrong and the fix |
-| Empty states | One line explaining the state plus one suggested action |
-| Legal / compliance | Plain-English where possible; formal only where regulation requires |
-
-**Forbidden moves.** No "Oops", no exclamation hype, no emoji in financial/product contexts, no vague "Something went wrong", no condescending hand-holding. Mercury never talks down to founders.
-
-## 11. Brand Narrative
-
-Mercury is banking built for startups, founded in 2017 by **Immad Akhund**, Max Tang, and Jason Zhang and launched publicly in 2019. The founding premise is a rejection: legacy business banking was built for an analog era — branch visits, faxed forms, opaque fees, interfaces that looked like they hadn't changed since the 1990s. Mercury's thesis is that the company building your bank account should have the same taste, speed, and respect for craft as the best software you use every day.
-
-That thesis shows up in the design. Where incumbent business banks signal trust through heavy, conservative navy and dense legalese, Mercury signals trust through restraint and refinement — a single disciplined indigo, a proprietary typeface, generous whitespace, and cinematic dark canvases that make the product feel like a premium object. The indigo `#5266eb` is deliberately not the institutional navy of legacy banks nor the playful blue of consumer apps; it sits in a considered middle, modern and software-native.
-
-Mercury grew into a full financial stack for startups — business checking and savings, treasury, corporate cards, bill pay, invoicing, and venture debt — serving tens of thousands of companies. The design's job across all of it is the same: make managing company money feel calm, fast, and well-made. The marketing surface is theatrical and editorial; the product surface is serene and dense. The brand lives in that contrast.
-
-What Mercury refuses: the institutional coldness of legacy business banking, the gamified brightness of consumer fintech, and the jargon-heavy condescension that assumes founders need hand-holding. It occupies a narrow, confident lane — refined, intelligent, and built by people who clearly sweat the details.
-
-## 12. Principles
-
-1. **One action per surface.** Each marketing band and key product view has a single filled indigo CTA. Two primary actions means two surfaces. Secondary actions go ghost or outline.
-2. **Indigo is action, never decoration.** `#5266eb` appears only where the user acts — CTAs, links, focus, active states. Decoration is handled by neutral surfaces and periwinkle/mist washes.
-3. **Off-white over pure white.** Text on dark is `#ededf3`; this softness is a deliberate craft choice that signals care and reduces strain.
-4. **Restraint is the brand.** A tight 4px radius, a narrow cool neutral ramp, a single accent hue, one typeface family. Every removed element makes the product feel more considered.
-5. **Theatrical marketing, serene product.** Dramatic dark canvases and floating mockups sell; calm light dashboards serve. The two postures are intentional and never bleed into each other.
-6. **Numbers are typography.** Balances and amounts use tabular Arcadia figures with the same care as headlines — columns align, figures never inherit casual body styling.
-7. **Respect the founder.** Copy and UI assume an intelligent, busy operator. No hype, no condescension, no cute mascots — just speed and clarity.
-8. **Whitespace is a premium signal.** On marketing surfaces, generous negative space communicates confidence and quality more than any ornament could.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by Mercury's publicly described startup-customer segments, not individual people.*
-
-**Priya, 31, San Francisco.** Founder and CEO of a seed-stage SaaS company, four employees. Switched from a legacy big-bank business account after one too many branch visits and a wire that took three days. Opens Mercury daily to check runway, approve a corporate-card charge, and pay a contractor. Expects the dashboard to load instantly and show burn at a glance. Has impeccable taste in software and notices when a product is well-made — Mercury's craft is part of why she trusts it with the company's money.
-
-**Marcus, 38, Austin.** Operations lead at a 25-person hardware startup. Lives in bill pay, invoicing, and approvals. Needs multi-user roles, clear audit trails, and exportable transaction data for the accountant. Values that Mercury's interface is dense and efficient where it matters — he's moving real volume and doesn't want a toy. Reads everything; trusts specific, concrete copy over marketing adjectives.
-
-**Dana, 27, Remote.** Solo technical founder, pre-revenue, raising a pre-seed. Opened Mercury because the application was fast and didn't require a branch visit. Uses the corporate card and savings; watches every dollar. Drawn to the brand's confident, no-nonsense voice — it makes her feel like a real company. Will evangelize Mercury to other founders precisely because it looks and feels like a product made by people like her.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (first use)** | One line of `#70707d` body text explaining why the view is empty, plus a single suggested action as a ghost or secondary button. No illustration clutter. |
-| **Empty (filtered)** | One line of `#70707d` caption ("No transactions match these filters"). No button — the user adjusts filters. |
-| **Loading (first paint)** | Skeleton blocks at `#f4f5f9` (light) / `#1e1e2a` (dark) matching final layout. Financial amounts render as `—` until resolved, never as skeleton bars. |
-| **Loading (refresh)** | Subtle inline indigo spinner; content stays visible with previous values. No blocking overlay. |
-| **Error (inline field)** | `#d03275` 1px border on the input, help text below in `#d03275` 12px weight 420. One actionable sentence. |
-| **Error (toast)** | `#1e1e2a` bg, `#ededf3` text, 12px radius, one specific sentence, auto-dismiss. |
-| **Error (blocking)** | Reserved for outage. Centered single line in emphasized ink, indigo retry button below. No illustration. |
-| **Success (inline)** | Brief faint indigo wash behind the updated element, ~300ms fade. Calm, never celebratory confetti. |
-| **Success (transfer sent)** | Confirmation panel/screen — checkmark, exact amount in tabular figures, recipient, timestamp, single primary action. Factual, not festive. |
-| **Disabled** | Button bg `#70707d`, text `#c3c3cc`. Inputs keep their `#c3c3cc` border so geometry is stable if re-enabled. |
-| **Focus** | 1px `#5266eb` border plus a 2px `rgba(82,102,235,0.2)` ring on all interactive elements. Always visible for accessibility. |
-| **Hover (row)** | Light `#dddde5` / dark `#272735` fill on interactive rows and list items. |
-
-## 15. Motion & Easing
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox changes |
-| `motion-fast` | 150ms | Hover, focus rings, button press, small reveals |
-| `motion-standard` | 240ms | Default — dropdowns, popovers, tab content, card expand |
-| `motion-slow` | 360ms | Emphasized transitions — modals, success confirmations |
-| `motion-page` | 320ms | Route/view transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.16, 1, 0.3, 1)` | Things appearing — modals, sheets, toasts (soft, refined deceleration) |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Things leaving — dismissals |
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Two-way transitions — tabs, collapsibles |
-| `ease-glide` | `cubic-bezier(0.22, 0.61, 0.36, 1)` | Marketing parallax and gradient-glow drifts |
-
-**Signature motions.**
-
-1. **Floating product mockups.** On scroll into a marketing band, product cards rise ~24px and fade in with `motion-slow / ease-enter`, their drop-shadow deepening to reinforce the cinematic float. The gradient glow behind them drifts slowly with `ease-glide`.
-2. **Refined modal entrance.** Modals scale from 0.98 → 1.0 and fade in over `motion-standard / ease-enter`, with the scrim fading `rgba(23,23,33,0)` → `rgba(23,23,33,0.6)`. Exit is faster (`motion-fast / ease-exit`) — leaving feels lighter than arriving.
-3. **Money updates.** When a balance changes, figures cross-update without flicker — the new tabular value settles in over `motion-fast`. Money never bounces or springs; it resolves calmly.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`, parallax and gradient drift are disabled, and slides become fades. The product stays fully usable.
-
-<!--
-OmD v0.1 Sources
-
-Token grounding (verified 2026-06-06 via WebSearch + WebFetch):
-- Primary indigo #5266eb, accents periwinkle #9cb4e8 / mist #cdddff,
-  dark canvas #171721, off-white ink #ededf3, custom Arcadia 480 weight,
-  1.625 body line-height, 4px base radius, 40px hero pill — sourced from
-  shadcn.io/design/mercury (Mercury Design System token export) and
-  corroborating brand summaries (brandfetch.com/mercury.com,
-  blakecrosley.com/guides/design/mercury).
-- Arcadia / Arcadia Display proprietary typeface family confirmed across
-  multiple brand-design writeups of Mercury.
-
-Brand narrative facts (founding 2017 by Immad Akhund et al., public launch
-2019, startup-banking positioning) are widely documented public information.
-
-Personas (§13) are fictional archetypes informed by Mercury's publicly
-described startup-customer segments. Any resemblance to specific individuals
-is unintended.
-
-Interpretive claims (e.g., "indigo chosen as a considered middle between
-institutional navy and consumer blue") are editorial readings of the design,
-not documented Mercury statements. Some token values for components, motion,
-and states are reasoned extrapolations consistent with the verified core
-tokens where Mercury does not publish a formal public spec.
--->
+- **Contrast, `button-ghost`.** Text `#5266eb` on `#00000000` measures 4.46:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-neutral`.** Text `#70707d` on `#f4f5f9` measures 4.48:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `tab`.** Text `#70707d` on `#00000000` measures 4.30:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

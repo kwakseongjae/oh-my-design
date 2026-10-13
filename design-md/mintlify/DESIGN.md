@@ -1,65 +1,157 @@
 ---
-id: mintlify
 name: Mintlify
-country: US
-category: productivity
-homepage: "https://mintlify.com"
-primary_color: "#0d9373"
-logo:
-  type: simpleicons
-  slug: mintlify
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    ink: "#0d0d0d"
-    canvas: "#ffffff"
-    brand: "#18e299"
-    brand-light: "#d4fae8"
-    brand-deep: "#0fa76e"
-    amber: "#c37d0d"
-    blue: "#3772cf"
-    error: "#d45656"
-    gray-700: "#333333"
-    gray-500: "#666666"
-    gray-400: "#888888"
-    border: "#e5e5e5"
-    surface: "#f5f5f5"
-    surface-tint: "#fafafa"
-  typography:
-    family: { sans: "Inter", mono: "Geist Mono" }
-    display-hero: { size: 64, weight: 600, lineHeight: 1.15, tracking: -1.28, use: "Hero headlines" }
-    section:      { size: 40, weight: 600, lineHeight: 1.10, tracking: -0.8, use: "Feature section titles" }
-    subheading:   { size: 24, weight: 500, lineHeight: 1.30, tracking: -0.24, use: "Card headings, sub-sections" }
-    card-title:   { size: 20, weight: 600, lineHeight: 1.30, tracking: -0.2, use: "Feature card titles" }
-    body-lg:      { size: 18, weight: 400, lineHeight: 1.50, use: "Hero descriptions, intros" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    body-medium:  { size: 16, weight: 500, lineHeight: 1.50, use: "Navigation, emphasized text" }
-    button:       { size: 15, weight: 500, lineHeight: 1.50, use: "Button labels" }
-    link:         { size: 14, weight: 500, lineHeight: 1.50, use: "Navigation links, small CTAs" }
-    label:        { size: 13, weight: 500, lineHeight: 1.50, tracking: 0.65, use: "Uppercase section labels" }
-    mono-code:    { size: 12, weight: 500, lineHeight: 1.50, tracking: 0.6, use: "Uppercase technical labels, Geist Mono" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 8, md: 16, lg: 24, full: 9999 }
-  shadow:
-    card: "rgba(0,0,0,0.03) 0px 2px 4px"
-    button: "rgba(0,0,0,0.06) 0px 1px 2px"
-  components:
-    button-primary: { type: button, bg: "#0d0d0d", fg: "#ffffff", radius: 9999, padding: "8px 24px", font: "15px/500", use: "Primary CTA Get Started" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#0d0d0d", radius: 9999, padding: "4.5px 12px", font: "15px/500", use: "Secondary action Request Demo" }
-    button-nav: { type: button, bg: "transparent", fg: "#0d0d0d", radius: 8, padding: "5px 6px", use: "Navigation items, icon buttons" }
-    button-accent: { type: button, bg: "#18e299", fg: "#0d0d0d", radius: 9999, padding: "8px 24px", use: "Special promotional CTAs" }
-    card: { type: card, bg: "#ffffff", radius: 16, padding: "24px", use: "Standard card, border-led" }
-    card-featured: { type: card, bg: "#ffffff", radius: 24, padding: "32px", use: "Featured card" }
-    input: { type: input, bg: "#ffffff", fg: "#0d0d0d", radius: 9999, padding: "0px 12px", use: "Email input, pill matching buttons" }
-  components_harvested: true
+colors:
+  ink: '#0d0d0d'
+  canvas: '#ffffff'
+  brand: '#18e299'
+  brand-light: '#d4fae8'
+  brand-deep: '#0fa76e'
+  amber: '#c37d0d'
+  blue: '#3772cf'
+  error: '#d45656'
+  gray-700: '#333333'
+  gray-500: '#666666'
+  gray-400: '#888888'
+  border: '#e5e5e5'
+  surface: '#f5f5f5'
+  surface-tint: '#fafafa'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: '-1.28px'
+    use: Hero headlines
+  section:
+    fontSize: 40px
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: '-0.8px'
+    use: Feature section titles
+  subheading:
+    fontSize: 24px
+    fontWeight: 500
+    lineHeight: 1.3
+    letterSpacing: '-0.24px'
+    use: Card headings, sub-sections
+  card-title:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: '-0.2px'
+    use: Feature card titles
+  body-lg:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Hero descriptions, intros
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+  body-medium:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Navigation, emphasized text
+  button:
+    fontSize: 15px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Button labels
+  link:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Navigation links, small CTAs
+  label:
+    fontSize: 13px
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: 0.65px
+    use: Uppercase section labels
+  mono-code:
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: 0.6px
+    use: Uppercase technical labels, Geist Mono
+rounded:
+  sm: 8px
+  md: 16px
+  lg: 24px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#0d0d0d'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 8px 24px
+    typography: 15px/500
+    use: Primary CTA Get Started
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#0d0d0d'
+    rounded: 9999px
+    padding: 4.5px 12px
+    typography: 15px/500
+    use: Secondary action Request Demo
+  button-nav:
+    type: button
+    backgroundColor: transparent
+    textColor: '#0d0d0d'
+    rounded: 8px
+    padding: 5px 6px
+    use: Navigation items, icon buttons
+  button-accent:
+    type: button
+    backgroundColor: '#18e299'
+    textColor: '#0d0d0d'
+    rounded: 9999px
+    padding: 8px 24px
+    use: Special promotional CTAs
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 16px
+    padding: 24px
+    use: Standard card, border-led
+  card-featured:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 24px
+    padding: 32px
+    use: Featured card
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#0d0d0d'
+    rounded: 9999px
+    padding: 0px 12px
+    use: Email input, pill matching buttons
+fonts:
+  roles:
+    sans: Inter
+    mono: Geist Mono
 ---
 
 # Design System Inspiration of Mintlify
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Mintlify's website is a study in documentation-as-product design — a white, airy, information-rich surface that treats clarity as its highest aesthetic value. The page opens with a luminous white (`#ffffff`) background, near-black (`#0d0d0d`) text, and a signature green brand accent (`#18E299`) that signals freshness and intelligence without dominating the palette. The overall mood is calm, confident, and engineered for legibility — a design system that whispers "we care about your developer experience" in every pixel.
 
@@ -77,7 +169,7 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - 8px base spacing system with generous section padding (48px–96px)
 - Clean white canvas — no gray backgrounds, no color sections, depth through borders and whitespace alone
 
-### Do's and Don'ts
+#### Do's and Don'ts
 
 - **DO** keep the canvas white (`#ffffff`) and let depth come from 5% opacity borders + whitespace alone. No gray sections.
 - **DON'T** introduce filled background sections to break up content — Mintlify's visual rhythm comes from whitespace, not color blocks.
@@ -92,14 +184,53 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - **DO** use Geist Mono ONLY for code labels, tracked-out, uppercase, ~12px — the terminal voice should remain a minority.
 - **DON'T** use mono fonts for body or UI labels — Inter handles all non-code text.
 
-## Primary tasks
+### Primary tasks
 
 - Connect a repository and publish a documentation site
 - Fix a failed build reported at a specific line
 - Publish an API reference portal from an OpenAPI spec
 - Search a published docs site with AI search
 
-## 2. Color Palette & Roles
+### Dark Mode
+
+#### Color Inversions
+- **Background**: `#0d0d0d` (near-black)
+- **Text Primary**: `#ededed` (near-white)
+- **Text Secondary**: `#a0a0a0` (muted gray)
+- **Brand Green**: `#18E299` (unchanged — the green works on both backgrounds)
+- **Border**: `rgba(255,255,255,0.08)` (white at 8% opacity)
+- **Card Background**: `#141414` (slightly lighter than page)
+- **Shadow**: `rgba(0,0,0,0.4) 0px 2px 4px` (stronger shadow for contrast)
+
+#### Key Adjustments
+- Buttons invert: white background dark text becomes dark background light text
+- Badge backgrounds shift to deeper tones with lighter text
+- Focus ring remains brand green
+- Hero gradient shifts to dark-tinted green atmospheric wash
+
+### Brand Narrative
+
+Mintlify was founded by **Han Wang (CEO)** and **Hahnbee Lee** — Cornell classmates who built the company through **Y Combinator's Winter 2022 (W22)** batch ([Y Combinator — Mintlify](https://www.ycombinator.com/companies/mintlify), [Mintlify blog — Our journey through Y Combinator](https://www.mintlify.com/blog/ycombinator)). Funding ladder: **$2.8M seed (2022)** with Bain Capital Ventures + YC → **$18M Series A (Sept 2024)** led by **Andreessen Horowitz** with Bain Capital Ventures + YC bringing total to ~$21M ([Mintlify blog — Series A](https://www.mintlify.com/blog/series-a), [TechCrunch — Mintlify next-gen docs platform](https://techcrunch.com/2024/09/05/mintlify-is-building-a-next-gen-platform-for-writing-software-docs/)) → continuing rounds bringing **total ~$67M** with **a16z, Salesforce Ventures, Bain Capital Ventures, YC, DST Global** ([Tracxn — Mintlify](https://tracxn.com/d/companies/mintlify/__4H1JwQrPEEjkuME5kKnugS51A3fazz3eCPVzsiIl9gs)). The platform serves **100M+ developers/year and powers documentation for 18,000+ companies** including **Anthropic, Cursor, PayPal, Coinbase**. The brand voice tracks the founder positioning: "documentation is product, not afterthought." Their own docs serve as the marketing site, demonstrating what customers get. Strong adoption among API-first SaaS companies.
+
+### Principles
+
+1. **Documentation is product.** *UI implication:* their own docs ARE the marketing surface.
+2. **White throughout, no gray sections.** *UI implication:* separation via borders + whitespace.
+3. **Pill nav 9999px.** *UI implication:* primary nav uses fully-pill chrome.
+4. **Generous section padding (64-96px desktop).** *UI implication:* never cramp; whitespace is the design.
+5. **Mint accent reserved for CTA.** *UI implication:* don't use mint for chrome; only for primary actions.
+
+### Personas
+
+*Personas are fictional archetypes informed by Mintlify user segments (DevRel engineers, technical writers, API documentation owners), not individual people.*
+
+**Sarah Lin, 30, San Francisco.** DevRel engineer at Series B SaaS. Migrated docs to Mintlify; cares about MDX components + AI search.
+
+**Marcus Chen, 38, NYC.** Tech writer at fintech. Owns the public API docs portal. Mintlify integrations with OpenAPI specs.
+
+**Priya Krishnan, 27, Bengaluru.** Indie SaaS founder. Free-tier Mintlify for early-stage product docs.
+
+## Colors
 
 ### Primary
 - **Near Black** (`#0d0d0d`): Primary text, headings, dark surfaces. Not pure black — the micro-softness improves reading comfort.
@@ -138,7 +269,7 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - **Button Shadow** (`rgba(0,0,0,0.06) 0px 1px 2px`): Micro-shadow for button depth.
 - **No heavy shadows**: Mintlify relies on borders, not shadows, for depth.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Inter`, with fallback: `Inter Fallback, system-ui, -apple-system, sans-serif`
@@ -172,7 +303,104 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - **Uppercase as hierarchy signal**: Section labels and technical tags use uppercase + positive tracking (0.6px–0.65px) as a clear visual delimiter between content types.
 - **Three weights**: 400 (body/reading), 500 (UI/navigation/emphasis), 600 (headings/titles). No bold (700) in the system.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 2px, 4px, 5px, 6px, 7px, 8px, 10px, 12px, 16px, 24px, 32px, 48px, 64px
+- Section padding: 48px–96px vertical
+- Card padding: 24px–32px
+- Component gaps: 8px–16px
+
+### Grid & Container
+- Max content width: approximately 1200px
+- Hero: centered single-column with generous top padding (96px+)
+- Feature sections: 2–3 column CSS Grid for cards
+- Full-width sections with contained content
+- Consistent horizontal padding: 24px (mobile) to 32px (desktop)
+
+### Whitespace Philosophy
+- **Documentation-grade breathing room**: Every element has generous surrounding whitespace. Mintlify sells documentation, so the marketing page itself demonstrates reading comfort.
+- **Sections as chapters**: Each feature section is a self-contained unit with 48px–96px vertical padding, creating clear "chapter breaks."
+- **Content density is low**: Unlike developer tools that pack the page, Mintlify uses 1–2 key messages per section with supporting imagery.
+
+### Border Radius Scale
+- Small (4px): Inline code, small tags, tooltips
+- Medium (8px): Nav buttons, transparent buttons, small containers
+- Standard (16px): Cards, content containers, image wrappers
+- Large (24px): Featured cards, hero containers, section panels
+- Full Pill (9999px): Buttons, inputs, badges, pills — the signature shape
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | Single column, stacked layout, hamburger nav |
+| Tablet | 768–1024px | Two-column grids begin, expanded padding |
+| Desktop | >1024px | Full layout, 3-column grids, maximum content width |
+
+#### Touch Targets
+- Buttons with full-pill shape have comfortable 8px+ vertical padding
+- Navigation links spaced with adequate 16px+ gaps
+- Mobile menu provides full-width tap targets
+
+#### Collapsing Strategy
+- Hero: 64px → 40px headline, maintains tight tracking proportionally
+- Navigation: horizontal links + CTA → hamburger menu at 768px
+- Feature cards: 3-column → 2-column → single column stacked
+- Section spacing: 96px → 48px on mobile
+- Footer: multi-column → stacked single column
+- Trust bar: grid → horizontal scroll or stacked
+
+#### Image Behavior
+- Product screenshots maintain aspect ratio with responsive containers
+- Hero gradient simplifies on mobile
+- Full-width sections maintain edge-to-edge treatment
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, no border | Page background, text blocks |
+| Subtle Border (Level 1) | `1px solid rgba(0,0,0,0.05)` | Standard card borders, dividers |
+| Medium Border (Level 1b) | `1px solid rgba(0,0,0,0.08)` | Interactive elements, input borders |
+| Ambient Shadow (Level 2) | `rgba(0,0,0,0.03) 0px 2px 4px` | Cards with subtle lift |
+| Button Shadow (Level 2b) | `rgba(0,0,0,0.06) 0px 1px 2px` | Button micro-depth |
+| Focus Ring (Accessibility) | `1px solid #18E299` outline | Focused inputs, active interactive elements |
+
+**Shadow Philosophy**: Mintlify barely uses shadows. The depth system is almost entirely border-driven — ultra-subtle 5% opacity borders create separation without visual weight. When shadows appear, they're atmospheric whispers (`0.03 opacity, 2px blur, 4px spread`) that add the barest sense of lift. This restraint keeps the page feeling flat and paper-like — appropriate for a documentation company whose product is about clarity and readability.
+
+### Decorative Depth
+- Hero gradient: atmospheric green-white cloud gradient behind hero content
+- No background color alternation — white on white throughout
+- Depth comes from border opacity variation (5% → 8%) and whitespace
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.card`: `rgba(0,0,0,0.03) 0px 2px 4px`
+- `shadow.button`: `rgba(0,0,0,0.06) 0px 1px 2px`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 37 — Apple-tier)
+**Tier 1 sources:** https://mintlify.com home + /pricing (live DOM via playwright — Primary `lab(100 0 0)` White 9999px / 34-40px / 4.5-7×12-24 / 15-16px·500 + Mintlify Near-Black `lab(2.42579 -0.165291 -0.470081)` (`#0a0d10` w/ blue cast) inverse for featured tier; Translucent ghost `lab(100 0 0 / 0.05)`; 60px announcement banner sub-pill. **`lab()` color-space canonical** — joins Cursor + Lovable in modern AI-tooling DS pattern).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Y Combinator (Mintlify W22), LinkedIn (Han Wang, Hahnbee Lee Cornell), Mintlify blog (YC + Series A), TechCrunch (2024-09 a16z $18M), Tracxn ($67M total), AIbase.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Mintlify Near-Black inverse + pricing-hero 40px/7×24 + lab() token convention + 60px banner sub-pill missed by prior pass.
+
+## Components
 
 ### Buttons
 
@@ -287,97 +515,39 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - Email input with pill styling
 - Brand green accent on CTAs
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 4px, 5px, 6px, 7px, 8px, 10px, 12px, 16px, 24px, 32px, 48px, 64px
-- Section padding: 48px–96px vertical
-- Card padding: 24px–32px
-- Component gaps: 8px–16px
+| State | Treatment |
+|---|---|
+| **Empty (no docs)** | "Connect your repo" CTA + template gallery |
+| **Empty (search)** | "No results. Try different keywords." |
+| **Loading (build)** | Inline build progress + log link |
+| **Loading (AI search)** | Two-phase: retrieving → answering |
+| **Error (build)** | Specific MDX/frontmatter error + line number |
+| **Error (deploy)** | Domain verification status |
+| **Success (deploy)** | Live URL copy + analytics preview |
+| **Success (search match)** | Highlighted snippet + page link |
+| **Skeleton (page list)** | White rows with subtle border |
+| **Disabled (insufficient plan)** | Upgrade link |
+| **Loading (large build)** | Persistent progress with file count |
 
-### Grid & Container
-- Max content width: approximately 1200px
-- Hero: centered single-column with generous top padding (96px+)
-- Feature sections: 2–3 column CSS Grid for cards
-- Full-width sections with contained content
-- Consistent horizontal padding: 24px (mobile) to 32px (desktop)
+## Voice & Tone
 
-### Whitespace Philosophy
-- **Documentation-grade breathing room**: Every element has generous surrounding whitespace. Mintlify sells documentation, so the marketing page itself demonstrates reading comfort.
-- **Sections as chapters**: Each feature section is a self-contained unit with 48px–96px vertical padding, creating clear "chapter breaks."
-- **Content density is low**: Unlike developer tools that pack the page, Mintlify uses 1–2 key messages per section with supporting imagery.
+Mintlify's voice is **documentation-as-product and developer-warm.** "The Intelligent Knowledge Platform" (homepage 2026-05) — positions documentation infrastructure as the brand. Copy is approachable but technical, with strong open-source-aware register.
 
-### Border Radius Scale
-- Small (4px): Inline code, small tags, tooltips
-- Medium (8px): Nav buttons, transparent buttons, small containers
-- Standard (16px): Cards, content containers, image wrappers
-- Large (24px): Featured cards, hero containers, section panels
-- Full Pill (9999px): Buttons, inputs, badges, pills — the signature shape
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Sign up free", "Talk to sales" |
+| Marketing | Customer-driven. Mintlify-built docs as social proof |
+| Documentation | Meta — Mintlify's docs are the product showcase |
+| Error | Specific. "Build failed: invalid frontmatter at line 12" |
 
-## 6. Depth & Elevation
+**Voice samples**
+- Tagline: *"The Intelligent Knowledge Platform"* <!-- verified: mintlify.com homepage 2026-05 -->
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, text blocks |
-| Subtle Border (Level 1) | `1px solid rgba(0,0,0,0.05)` | Standard card borders, dividers |
-| Medium Border (Level 1b) | `1px solid rgba(0,0,0,0.08)` | Interactive elements, input borders |
-| Ambient Shadow (Level 2) | `rgba(0,0,0,0.03) 0px 2px 4px` | Cards with subtle lift |
-| Button Shadow (Level 2b) | `rgba(0,0,0,0.06) 0px 1px 2px` | Button micro-depth |
-| Focus Ring (Accessibility) | `1px solid #18E299` outline | Focused inputs, active interactive elements |
+**Forbidden phrases.** "Revolutionary docs platform". "AI-powered" without specifics.
 
-**Shadow Philosophy**: Mintlify barely uses shadows. The depth system is almost entirely border-driven — ultra-subtle 5% opacity borders create separation without visual weight. When shadows appear, they're atmospheric whispers (`0.03 opacity, 2px blur, 4px spread`) that add the barest sense of lift. This restraint keeps the page feeling flat and paper-like — appropriate for a documentation company whose product is about clarity and readability.
-
-### Decorative Depth
-- Hero gradient: atmospheric green-white cloud gradient behind hero content
-- No background color alternation — white on white throughout
-- Depth comes from border opacity variation (5% → 8%) and whitespace
-
-## 7. Dark Mode
-
-### Color Inversions
-- **Background**: `#0d0d0d` (near-black)
-- **Text Primary**: `#ededed` (near-white)
-- **Text Secondary**: `#a0a0a0` (muted gray)
-- **Brand Green**: `#18E299` (unchanged — the green works on both backgrounds)
-- **Border**: `rgba(255,255,255,0.08)` (white at 8% opacity)
-- **Card Background**: `#141414` (slightly lighter than page)
-- **Shadow**: `rgba(0,0,0,0.4) 0px 2px 4px` (stronger shadow for contrast)
-
-### Key Adjustments
-- Buttons invert: white background dark text becomes dark background light text
-- Badge backgrounds shift to deeper tones with lighter text
-- Focus ring remains brand green
-- Hero gradient shifts to dark-tinted green atmospheric wash
-
-## 8. Responsive Behavior
-
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, stacked layout, hamburger nav |
-| Tablet | 768–1024px | Two-column grids begin, expanded padding |
-| Desktop | >1024px | Full layout, 3-column grids, maximum content width |
-
-### Touch Targets
-- Buttons with full-pill shape have comfortable 8px+ vertical padding
-- Navigation links spaced with adequate 16px+ gaps
-- Mobile menu provides full-width tap targets
-
-### Collapsing Strategy
-- Hero: 64px → 40px headline, maintains tight tracking proportionally
-- Navigation: horizontal links + CTA → hamburger menu at 768px
-- Feature cards: 3-column → 2-column → single column stacked
-- Section spacing: 96px → 48px on mobile
-- Footer: multi-column → stacked single column
-- Trust bar: grid → horizontal scroll or stacked
-
-### Image Behavior
-- Product screenshots maintain aspect ratio with responsive containers
-- Hero gradient simplifies on mobile
-- Full-width sections maintain edge-to-edge treatment
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: Near Black (`#0d0d0d`)
@@ -406,73 +576,8 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 7. Section padding is generous: 64px–96px on desktop, 48px on mobile
 8. No gray background sections — white throughout, separation through borders and whitespace
 
-## 10. Voice & Tone
+## Governance
 
-Mintlify's voice is **documentation-as-product and developer-warm.** "The Intelligent Knowledge Platform" (homepage 2026-05) — positions documentation infrastructure as the brand. Copy is approachable but technical, with strong open-source-aware register.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get started", "Sign up free", "Talk to sales" |
-| Marketing | Customer-driven. Mintlify-built docs as social proof |
-| Documentation | Meta — Mintlify's docs are the product showcase |
-| Error | Specific. "Build failed: invalid frontmatter at line 12" |
-
-**Voice samples**
-- Tagline: *"The Intelligent Knowledge Platform"* <!-- verified: mintlify.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary docs platform". "AI-powered" without specifics.
-
-## 11. Brand Narrative
-
-Mintlify was founded by **Han Wang (CEO)** and **Hahnbee Lee** — Cornell classmates who built the company through **Y Combinator's Winter 2022 (W22)** batch ([Y Combinator — Mintlify](https://www.ycombinator.com/companies/mintlify), [Mintlify blog — Our journey through Y Combinator](https://www.mintlify.com/blog/ycombinator)). Funding ladder: **$2.8M seed (2022)** with Bain Capital Ventures + YC → **$18M Series A (Sept 2024)** led by **Andreessen Horowitz** with Bain Capital Ventures + YC bringing total to ~$21M ([Mintlify blog — Series A](https://www.mintlify.com/blog/series-a), [TechCrunch — Mintlify next-gen docs platform](https://techcrunch.com/2024/09/05/mintlify-is-building-a-next-gen-platform-for-writing-software-docs/)) → continuing rounds bringing **total ~$67M** with **a16z, Salesforce Ventures, Bain Capital Ventures, YC, DST Global** ([Tracxn — Mintlify](https://tracxn.com/d/companies/mintlify/__4H1JwQrPEEjkuME5kKnugS51A3fazz3eCPVzsiIl9gs)). The platform serves **100M+ developers/year and powers documentation for 18,000+ companies** including **Anthropic, Cursor, PayPal, Coinbase**. The brand voice tracks the founder positioning: "documentation is product, not afterthought." Their own docs serve as the marketing site, demonstrating what customers get. Strong adoption among API-first SaaS companies.
-
-## 12. Principles
-
-1. **Documentation is product.** *UI implication:* their own docs ARE the marketing surface.
-2. **White throughout, no gray sections.** *UI implication:* separation via borders + whitespace.
-3. **Pill nav 9999px.** *UI implication:* primary nav uses fully-pill chrome.
-4. **Generous section padding (64-96px desktop).** *UI implication:* never cramp; whitespace is the design.
-5. **Mint accent reserved for CTA.** *UI implication:* don't use mint for chrome; only for primary actions.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Mintlify user segments (DevRel engineers, technical writers, API documentation owners), not individual people.*
-
-**Sarah Lin, 30, San Francisco.** DevRel engineer at Series B SaaS. Migrated docs to Mintlify; cares about MDX components + AI search.
-
-**Marcus Chen, 38, NYC.** Tech writer at fintech. Owns the public API docs portal. Mintlify integrations with OpenAPI specs.
-
-**Priya Krishnan, 27, Bengaluru.** Indie SaaS founder. Free-tier Mintlify for early-stage product docs.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no docs)** | "Connect your repo" CTA + template gallery |
-| **Empty (search)** | "No results. Try different keywords." |
-| **Loading (build)** | Inline build progress + log link |
-| **Loading (AI search)** | Two-phase: retrieving → answering |
-| **Error (build)** | Specific MDX/frontmatter error + line number |
-| **Error (deploy)** | Domain verification status |
-| **Success (deploy)** | Live URL copy + analytics preview |
-| **Success (search match)** | Highlighted snippet + page link |
-| **Skeleton (page list)** | White rows with subtle border |
-| **Disabled (insufficient plan)** | Upgrade link |
-| **Loading (large build)** | Persistent progress with file count |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 37 — Apple-tier)
-**Tier 1 sources:** https://mintlify.com home + /pricing (live DOM via playwright — Primary `lab(100 0 0)` White 9999px / 34-40px / 4.5-7×12-24 / 15-16px·500 + Mintlify Near-Black `lab(2.42579 -0.165291 -0.470081)` (`#0a0d10` w/ blue cast) inverse for featured tier; Translucent ghost `lab(100 0 0 / 0.05)`; 60px announcement banner sub-pill. **`lab()` color-space canonical** — joins Cursor + Lovable in modern AI-tooling DS pattern).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** Y Combinator (Mintlify W22), LinkedIn (Han Wang, Hahnbee Lee Cornell), Mintlify blog (YC + Series A), TechCrunch (2024-09 a16z $18M), Tracxn ($67M total), AIbase.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Mintlify Near-Black inverse + pricing-hero 40px/7×24 + lab() token convention + 60px banner sub-pill missed by prior pass.
+- **Contrast, `button-nav`.** Text `#0d0d0d` on `#00000000` measures 1.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

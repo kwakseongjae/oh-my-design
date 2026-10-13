@@ -1,63 +1,106 @@
 ---
-id: opencode.ai
 name: OpenCode AI
-country: US
-category: ai
-homepage: "https://opencode.ai"
-primary_color: "#000000"
-logo:
-  type: github
-  slug: opencode-ai
-verified: "2026-05-15"
-omd: "0.1"
-ds:
-  name: OpenCode Brand
-  url: "https://opencode.ai/brand"
-  type: brand
-  description: OpenCode's terminal-oriented logo and brand assets.
-  og_image: "https://opencode.ai/social-share.png"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#201d1d"
-    canvas: "#fdfcfc"
-    foreground: "#201d1d"
-    on-primary: "#fdfcfc"
-    muted: "#9a9898"
-    surface: "#302c2c"
-    surface-light: "#f1eeee"
-    hairline: "#646262"
-    body: "#424245"
-    accent: "#007aff"
-    accent-hover: "#0056b3"
-    accent-active: "#004085"
-    error: "#ff3b30"
-    success: "#30d158"
-    warning: "#ff9f0a"
-  typography:
-    family: { sans: "Berkeley Mono", mono: "Berkeley Mono" }
-    heading-1:   { size: 38, weight: 700, lineHeight: 1.50, use: "Hero headlines, page titles" }
-    heading-2:   { size: 16, weight: 700, lineHeight: 1.50, use: "Section titles, bold emphasis" }
-    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text, paragraphs" }
-    body-medium: { size: 16, weight: 500, lineHeight: 1.50, use: "Links, button text, nav items" }
-    body-tight:  { size: 16, weight: 500, lineHeight: 1.00, use: "Compact labels, tab items" }
-    caption:     { size: 14, weight: 400, lineHeight: 2.00, use: "Footnotes, metadata, small labels" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 4, md: 4, lg: 6, full: 9999 }
-  shadow:
-    flat: "none"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#201d1d", fg: "#fdfcfc", radius: "4px", padding: "4px 20px", font: "16px / 500", border: "1px solid #646262", use: "Primary CTAs, main actions" }
-    input-email: { type: input, bg: "#f1eeee", fg: "#201d1d", border: "1px solid rgba(15,0,0,0.12)", radius: "6px", padding: "20px", use: "Form fields, email capture" }
-    link-default: { type: badge, fg: "#201d1d", font: "16px / 500", states: "underline 1px", use: "Primary text links in body content" }
-    tab-nav: { type: tab, font: "16px / 500", active: "2px bottom border #9a9898", use: "Section switching, content filtering" }
+colors:
+  primary: '#201d1d'
+  canvas: '#fdfcfc'
+  foreground: '#201d1d'
+  on-primary: '#fdfcfc'
+  muted: '#9a9898'
+  surface: '#302c2c'
+  surface-light: '#f1eeee'
+  hairline: '#646262'
+  body: '#424245'
+  accent: '#007aff'
+  accent-hover: '#0056b3'
+  accent-active: '#004085'
+  error: '#ff3b30'
+  success: '#30d158'
+  warning: '#ff9f0a'
+typography:
+  heading-1:
+    fontSize: 38px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Hero headlines, page titles
+  heading-2:
+    fontSize: 16px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Section titles, bold emphasis
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard body text, paragraphs
+  body-medium:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Links, button text, nav items
+  body-tight:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1
+    use: Compact labels, tab items
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 2
+    use: Footnotes, metadata, small labels
+rounded:
+  sm: 4px
+  md: 4px
+  lg: 6px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 96
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#201d1d'
+    textColor: '#fdfcfc'
+    rounded: 4px
+    padding: 4px 20px
+    typography: 16px / 500
+    border: '1px solid #646262'
+    use: Primary CTAs, main actions
+  input-email:
+    type: input
+    backgroundColor: '#f1eeee'
+    textColor: '#201d1d'
+    border: 1px solid rgba(15,0,0,0.12)
+    rounded: 6px
+    padding: 20px
+    use: Form fields, email capture
+  link-default:
+    type: badge
+    textColor: '#201d1d'
+    typography: 16px / 500
+    states: underline 1px
+    use: Primary text links in body content
+  tab-nav:
+    type: tab
+    typography: 16px / 500
+    active: '2px bottom border #9a9898'
+    use: Section switching, content filtering
+fonts:
+  roles:
+    sans: Berkeley Mono
+    mono: Berkeley Mono
 ---
 
 # Design System Inspiration of OpenCode
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 OpenCode's website embodies a terminal-native, monospace-first aesthetic that reflects its identity as an open source AI coding agent. The entire visual system is built on a stark dark-on-light contrast using a near-black background (`#201d1d`) with warm off-white text (`#fdfcfc`). This isn't a generic dark theme -- it's a warm, slightly reddish-brown dark that feels like a sophisticated terminal emulator rather than a cold IDE. The warm undertone in both the darks and lights (notice the subtle red channel in `#201d1d` -- rgb(32, 29, 29)) creates a cohesive, lived-in quality.
 
@@ -77,7 +120,7 @@ The color system is deliberately minimal. The primary palette consists of just t
 - Single button variant: dark background, light text, tight vertical padding (4px 20px)
 - Underlined links as default link style, reinforcing the text-centric identity
 
-### Do's and Don'ts
+#### Do's and Don'ts
 
 - **DO** use Berkeley Mono everywhere — headings, body, buttons, navigation, labels. The single-font system IS the brand.
 - **DON'T** introduce a sans-serif or serif voice — even for "marketing" copy. Mixing voices breaks OpenCode's terminal-native identity.
@@ -91,14 +134,36 @@ The color system is deliberately minimal. The primary palette consists of just t
 - **DO** underline links by default — text-centric identity reinforces "everything is code."
 - **DON'T** use color-only link styling without underline — accessibility AND identity benefit from the underline.
 
-## Primary tasks
+### Primary tasks
 
 - Install the coding agent with the command shown on the homepage
 - Run the agent from a terminal, desktop, web, or mobile frontend
 - Self-host the agent to keep your work private
 - Compare the agent against other AI coding tools before adopting it
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+OpenCode is the **open-source AI coding agent** built by **SST (Serverless Stack)** team — designed for terminal-first workflows ([opencode.ai](https://opencode.ai/), [GitHub: sst/opencode](https://github.com/sst/opencode)). Created by **Dax Raad** alongside SST co-founders **Jay (Frank's partner from University of Waterloo, Anomaly co-founder)** and **Frank Wang (CTO)**, with **Adam Elmore** ([Tech Funding News — OpenCode background story](https://techfundingnews.com/opencode-the-background-story-on-the-most-popular-open-source-coding-agent-in-the-world/), [Baseten — Conversation with Dax](https://www.baseten.co/blog/building-ai-agents-open-code-and-open-source-a-conversation-with-dax/)). **SST origin**: Jay + Frank met **first week at University of Waterloo**, launched **Anomaly** (Jay CEO / Frank CTO) → in **2021 took Serverless Stack (SST) through Y Combinator** raising **$1M post-demo-day** with backing from founders of **PayPal, LinkedIn, Yelp, YouTube** — SST grew to **25,000 GitHub stars** and turned profitable in 2025. **OpenCode launched June 19 2024** built from day one as a **server-client architecture** to connect to any frontend (terminal, desktop, web, mobile). Reached **650,000 monthly active users in 5 months** — one of the fastest adoption curves in developer tooling. Dax Raad is also creator of **Zen** (commerce-tech tool, Tier 1 confirms "Zen 알아보기" CTA on opencode.ai homepage cross-promotes Zen). Position: serious developer tool that respects CLI heritage while integrating LLM capabilities.
+
+### Principles
+
+1. **OSS by default.** *UI implication:* GitHub link prominent; self-hosted-first.
+2. **Warm dark canvas.** Borders `rgba(15,0,0,0.12)` warm transparent. *UI implication:* preserve warmth.
+3. **4px sharp radius.** *UI implication:* never round more.
+4. **8px grid.** *UI implication:* preserve 8px spacing; 4px fine adjustments only.
+5. **CLI install is the marketing.** *UI implication:* hero shows actual install command.
+
+### Personas
+
+*Personas are fictional archetypes informed by OpenCode user segments (terminal-first developers, OSS-enthusiast engineers, indie SaaS), not individual people.*
+
+**Sergey Volkov, 35, Berlin.** Senior engineer. OpenCode as terminal-native Cursor alternative.
+
+**Sofia Russo, 28, Milan.** Indie developer. Self-hosts OpenCode for privacy.
+
+**Marcus Chen, 41, San Francisco.** Engineering manager. Evaluates OpenCode + Claude vs Cursor.
+
+## Colors
 
 ### Primary
 - **OpenCode Dark** (`#201d1d`): Primary background, button fills, link text. A warm near-black with subtle reddish-brown warmth -- rgb(32, 29, 29).
@@ -133,7 +198,7 @@ The color system is deliberately minimal. The primary palette consists of just t
 - **Border Tab** (`#9a9898`): Tab underline border, 2px solid bottom.
 - **Border Outline** (`#646262`): 1px solid outline border for containers.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Universal**: `Berkeley Mono`, with fallbacks: `IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace`
@@ -155,7 +220,101 @@ The color system is deliberately minimal. The primary palette consists of just t
 - **Generous line-height**: 1.50 as the standard line-height gives text room to breathe within the monospace grid. The relaxed 2.00 line-height on captions creates clear visual separation.
 - **Tight for interaction**: Interactive elements (tabs, compact labels) use 1.00 line-height for dense, clickable targets.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Fine scale: 1px, 2px, 4px (sub-8px for borders and micro-adjustments)
+- Standard scale: 8px, 12px, 16px, 20px, 24px
+- Extended scale: 32px, 40px, 48px, 64px, 80px, 96px
+- The system follows a clean 4/8px grid with consistent doubling
+
+### Grid & Container
+- Max content width: approximately 800-900px (narrow, reading-optimized)
+- Single-column layout as the primary pattern
+- Centered content with generous horizontal margins
+- Hero section: full-width dark terminal element
+- Feature sections: single-column text blocks
+- Footer: multi-column link grid
+
+### Whitespace Philosophy
+- **Monospace rhythm**: The fixed-width nature of Berkeley Mono creates a natural vertical grid. Line-heights of 1.50 and 2.00 maintain consistent rhythm.
+- **Narrow and focused**: Content is constrained to a narrow column, creating generous side margins that focus attention on the text.
+- **Sections through spacing**: No decorative dividers. Sections are separated by generous vertical spacing (48-96px) rather than borders or background changes.
+
+### Border Radius Scale
+- Micro (4px): Default for all elements -- buttons, containers, badges
+- Input (6px): Form inputs get slightly more roundness
+- The entire system uses just two radius values, reinforcing the utilitarian aesthetic
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, reduced padding, heading scales down |
+| Tablet | 640-1024px | Content width expands, slight padding increase |
+| Desktop | >1024px | Full content width (~800-900px centered), maximum whitespace |
+
+#### Touch Targets
+- Buttons with 4px 20px padding provide adequate horizontal touch area
+- Input fields with 20px padding ensure comfortable mobile typing
+- Tab items at 16px with tight line-height may need mobile adaptation
+
+#### Collapsing Strategy
+- Hero heading: 38px → 28px → 24px on smaller screens
+- Navigation: horizontal links → hamburger/drawer on mobile
+- Feature lists: maintain single-column, reduce horizontal padding
+- Terminal hero: maintain full-width, reduce internal padding
+- Footer columns: multi-column → stacked single column
+- Section spacing: 96px → 64px → 48px on mobile
+
+#### Image Behavior
+- Terminal screenshots maintain aspect ratio and border treatment
+- Full-width elements scale proportionally
+- Monospace type maintains readability at all sizes due to fixed-width nature
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, no border | Default state for most elements |
+| Border Subtle (Level 1) | `1px solid rgba(15, 0, 0, 0.12)` | Section dividers, input borders, horizontal rules |
+| Border Tab (Level 2) | `2px solid #9a9898` bottom only | Active tab indicator |
+| Border Outline (Level 3) | `1px solid #646262` | Container outlines, elevated elements |
+
+**Shadow Philosophy**: OpenCode's depth system is intentionally flat. There are no box-shadows in the extracted tokens -- zero shadow values were detected. Depth is communicated exclusively through border treatments and background color shifts. This flatness is consistent with the terminal aesthetic: terminals don't have shadows, and neither does OpenCode. The three border levels (transparent warm, tab indicator, solid outline) create sufficient visual hierarchy without any elevation illusion.
+
+### Decorative Depth
+- Background color shifts between `#201d1d` and `#302c2c` create subtle surface differentiation
+- Transparent borders at 12% opacity provide barely-visible structure
+- The warm reddish tint in border colors (`rgba(15, 0, 0, 0.12)`) ties borders to the overall warm dark palette
+- No gradients, no blurs, no ambient effects -- pure flat terminal aesthetic
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.flat`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 43 — Apple-tier)
+**Tier 1 sources:** https://opencode.ai home + /docs (live DOM via playwright — Primary **`#201d1d` Coffee Charcoal** 4px / 40-42px / 8×16×8×10 asym (icon-spacing) / 16px·**500**; Inverse `#fdfcfc` Soft White 4px (Zen cross-promo); install-snippet text-only tabs color-state; doc sidebar `#f8f7f7` active. **Warm-cast color discipline** — no pure black/white anywhere).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/SST):** opencode.ai/about, GitHub sst/opencode, Tech Funding News (OpenCode background), Baseten (Dax conversation), Codacy blog.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Zen cross-promo Inverse Primary + install-snippet tab system + warm-cast discipline missed by prior pass.
+
+## Components
 
 ### Buttons
 
@@ -236,97 +395,59 @@ The color system is deliberately minimal. The primary palette consists of just t
 - 6px radius -- the roundest element in the system
 - Newsletter/waitlist pattern
 
-## 5. Layout Principles
+### Interaction & Motion
 
-### Spacing System
-- Base unit: 8px
-- Fine scale: 1px, 2px, 4px (sub-8px for borders and micro-adjustments)
-- Standard scale: 8px, 12px, 16px, 20px, 24px
-- Extended scale: 32px, 40px, 48px, 64px, 80px, 96px
-- The system follows a clean 4/8px grid with consistent doubling
-
-### Grid & Container
-- Max content width: approximately 800-900px (narrow, reading-optimized)
-- Single-column layout as the primary pattern
-- Centered content with generous horizontal margins
-- Hero section: full-width dark terminal element
-- Feature sections: single-column text blocks
-- Footer: multi-column link grid
-
-### Whitespace Philosophy
-- **Monospace rhythm**: The fixed-width nature of Berkeley Mono creates a natural vertical grid. Line-heights of 1.50 and 2.00 maintain consistent rhythm.
-- **Narrow and focused**: Content is constrained to a narrow column, creating generous side margins that focus attention on the text.
-- **Sections through spacing**: No decorative dividers. Sections are separated by generous vertical spacing (48-96px) rather than borders or background changes.
-
-### Border Radius Scale
-- Micro (4px): Default for all elements -- buttons, containers, badges
-- Input (6px): Form inputs get slightly more roundness
-- The entire system uses just two radius values, reinforcing the utilitarian aesthetic
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Default state for most elements |
-| Border Subtle (Level 1) | `1px solid rgba(15, 0, 0, 0.12)` | Section dividers, input borders, horizontal rules |
-| Border Tab (Level 2) | `2px solid #9a9898` bottom only | Active tab indicator |
-| Border Outline (Level 3) | `1px solid #646262` | Container outlines, elevated elements |
-
-**Shadow Philosophy**: OpenCode's depth system is intentionally flat. There are no box-shadows in the extracted tokens -- zero shadow values were detected. Depth is communicated exclusively through border treatments and background color shifts. This flatness is consistent with the terminal aesthetic: terminals don't have shadows, and neither does OpenCode. The three border levels (transparent warm, tab indicator, solid outline) create sufficient visual hierarchy without any elevation illusion.
-
-### Decorative Depth
-- Background color shifts between `#201d1d` and `#302c2c` create subtle surface differentiation
-- Transparent borders at 12% opacity provide barely-visible structure
-- The warm reddish tint in border colors (`rgba(15, 0, 0, 0.12)`) ties borders to the overall warm dark palette
-- No gradients, no blurs, no ambient effects -- pure flat terminal aesthetic
-
-## 7. Interaction & Motion
-
-### Hover States
+#### Hover States
 - Links: color shift from default to accent blue (`#007aff`) or underline style change
 - Buttons: subtle background lightening or border emphasis
 - Accent blue provides a three-stage hover sequence: `#007aff` → `#0056b3` → `#004085` (default → hover → active)
 - Danger red: `#ff3b30` → `#d70015` → `#a50011`
 - Warning orange: `#ff9f0a` → `#cc7f08` → `#995f06`
 
-### Focus States
+#### Focus States
 - Border-based focus: increased border opacity or solid border color
 - No shadow-based focus rings -- consistent with the flat, no-shadow aesthetic
 - Keyboard focus likely uses outline or border color shift to accent blue
 
-### Transitions
+#### Transitions
 - Minimal transitions expected -- terminal-inspired interfaces favor instant state changes
 - Color transitions: 100-150ms for subtle state feedback
 - No scale, rotate, or complex transform animations
 
-## 8. Responsive Behavior
+### States
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, reduced padding, heading scales down |
-| Tablet | 640-1024px | Content width expands, slight padding increase |
-| Desktop | >1024px | Full content width (~800-900px centered), maximum whitespace |
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Open a folder" CTA |
+| **Empty (no chat)** | "Try `opencode chat`" CLI snippet |
+| **Loading (model)** | Per-token streaming |
+| **Loading (file applying)** | Diff view with applying state |
+| **Error (model)** | Specific provider error |
+| **Error (apply)** | Diff stays visible + retry |
+| **Success (changes)** | File pulse on changed files |
+| **Success (commit)** | Multi-file diff success summary |
+| **Skeleton (file tree)** | Warm dark placeholders |
+| **Disabled (no model configured)** | Setup link |
+| **Loading (long agent)** | Persistent progress |
 
-### Touch Targets
-- Buttons with 4px 20px padding provide adequate horizontal touch area
-- Input fields with 20px padding ensure comfortable mobile typing
-- Tab items at 16px with tight line-height may need mobile adaptation
+## Voice & Tone
 
-### Collapsing Strategy
-- Hero heading: 38px → 28px → 24px on smaller screens
-- Navigation: horizontal links → hamburger/drawer on mobile
-- Feature lists: maintain single-column, reduce horizontal padding
-- Terminal hero: maintain full-width, reduce internal padding
-- Footer columns: multi-column → stacked single column
-- Section spacing: 96px → 64px → 48px on mobile
+OpenCode's voice is **OSS-AI-coding-direct and CLI-fluent.** "오픈 소스 AI 코딩 에이전트" — open-source AI coding agent positioning. Warm dark canvas + 4px sharp radius signal "premium developer tool with OSS heritage."
 
-### Image Behavior
-- Terminal screenshots maintain aspect ratio and border treatment
-- Full-width elements scale proportionally
-- Monospace type maintains readability at all sizes due to fixed-width nature
+| Context | Tone |
+|---|---|
+| CTA | Verb. "다운로드", "문서 읽기", "Try it" |
+| Marketing | CLI-first. `curl -fsSL https://opencode.ai/install | sh` as hero |
+| Documentation | Code-block-heavy, terminal-output-rich |
+| Error | Specific. "Model not configured. Run `opencode setup`." |
 
-## 9. Agent Prompt Guide
+**Voice samples**
+- Marketing CTAs: *"다운로드"* / *"문서 읽기"* <!-- verified: opencode.ai homepage 2026-05 -->
+- Hero install snippet: *"curl -fsSL https://opencode.ai/install | sh"* <!-- verified: opencode.ai homepage -->
+
+**Forbidden phrases.** "Revolutionary AI coding". Generic Cursor-comparison framing.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Page background: `#201d1d` (warm near-black)
@@ -357,75 +478,3 @@ The color system is deliberately minimal. The primary palette consists of just t
 6. Three-stage interaction: default → hover (darkened) → active (deeply darkened) for all semantic colors.
 7. Borders use `rgba(15, 0, 0, 0.12)` -- a warm transparent dark, not neutral gray. This ties borders to the warm palette.
 8. Spacing follows an 8px grid: 8, 16, 24, 32, 40, 48, 64, 80, 96px. Use 4px for fine adjustments only.
-
-## 10. Voice & Tone
-
-OpenCode's voice is **OSS-AI-coding-direct and CLI-fluent.** "오픈 소스 AI 코딩 에이전트" — open-source AI coding agent positioning. Warm dark canvas + 4px sharp radius signal "premium developer tool with OSS heritage."
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "다운로드", "문서 읽기", "Try it" |
-| Marketing | CLI-first. `curl -fsSL https://opencode.ai/install | sh` as hero |
-| Documentation | Code-block-heavy, terminal-output-rich |
-| Error | Specific. "Model not configured. Run `opencode setup`." |
-
-**Voice samples**
-- Marketing CTAs: *"다운로드"* / *"문서 읽기"* <!-- verified: opencode.ai homepage 2026-05 -->
-- Hero install snippet: *"curl -fsSL https://opencode.ai/install | sh"* <!-- verified: opencode.ai homepage -->
-
-**Forbidden phrases.** "Revolutionary AI coding". Generic Cursor-comparison framing.
-
-## 11. Brand Narrative
-
-OpenCode is the **open-source AI coding agent** built by **SST (Serverless Stack)** team — designed for terminal-first workflows ([opencode.ai](https://opencode.ai/), [GitHub: sst/opencode](https://github.com/sst/opencode)). Created by **Dax Raad** alongside SST co-founders **Jay (Frank's partner from University of Waterloo, Anomaly co-founder)** and **Frank Wang (CTO)**, with **Adam Elmore** ([Tech Funding News — OpenCode background story](https://techfundingnews.com/opencode-the-background-story-on-the-most-popular-open-source-coding-agent-in-the-world/), [Baseten — Conversation with Dax](https://www.baseten.co/blog/building-ai-agents-open-code-and-open-source-a-conversation-with-dax/)). **SST origin**: Jay + Frank met **first week at University of Waterloo**, launched **Anomaly** (Jay CEO / Frank CTO) → in **2021 took Serverless Stack (SST) through Y Combinator** raising **$1M post-demo-day** with backing from founders of **PayPal, LinkedIn, Yelp, YouTube** — SST grew to **25,000 GitHub stars** and turned profitable in 2025. **OpenCode launched June 19 2024** built from day one as a **server-client architecture** to connect to any frontend (terminal, desktop, web, mobile). Reached **650,000 monthly active users in 5 months** — one of the fastest adoption curves in developer tooling. Dax Raad is also creator of **Zen** (commerce-tech tool, Tier 1 confirms "Zen 알아보기" CTA on opencode.ai homepage cross-promotes Zen). Position: serious developer tool that respects CLI heritage while integrating LLM capabilities.
-
-## 12. Principles
-
-1. **OSS by default.** *UI implication:* GitHub link prominent; self-hosted-first.
-2. **Warm dark canvas.** Borders `rgba(15,0,0,0.12)` warm transparent. *UI implication:* preserve warmth.
-3. **4px sharp radius.** *UI implication:* never round more.
-4. **8px grid.** *UI implication:* preserve 8px spacing; 4px fine adjustments only.
-5. **CLI install is the marketing.** *UI implication:* hero shows actual install command.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by OpenCode user segments (terminal-first developers, OSS-enthusiast engineers, indie SaaS), not individual people.*
-
-**Sergey Volkov, 35, Berlin.** Senior engineer. OpenCode as terminal-native Cursor alternative.
-
-**Sofia Russo, 28, Milan.** Indie developer. Self-hosts OpenCode for privacy.
-
-**Marcus Chen, 41, San Francisco.** Engineering manager. Evaluates OpenCode + Claude vs Cursor.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no projects)** | "Open a folder" CTA |
-| **Empty (no chat)** | "Try `opencode chat`" CLI snippet |
-| **Loading (model)** | Per-token streaming |
-| **Loading (file applying)** | Diff view with applying state |
-| **Error (model)** | Specific provider error |
-| **Error (apply)** | Diff stays visible + retry |
-| **Success (changes)** | File pulse on changed files |
-| **Success (commit)** | Multi-file diff success summary |
-| **Skeleton (file tree)** | Warm dark placeholders |
-| **Disabled (no model configured)** | Setup link |
-| **Loading (long agent)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 43 — Apple-tier)
-**Tier 1 sources:** https://opencode.ai home + /docs (live DOM via playwright — Primary **`#201d1d` Coffee Charcoal** 4px / 40-42px / 8×16×8×10 asym (icon-spacing) / 16px·**500**; Inverse `#fdfcfc` Soft White 4px (Zen cross-promo); install-snippet text-only tabs color-state; doc sidebar `#f8f7f7` active. **Warm-cast color discipline** — no pure black/white anywhere).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/SST):** opencode.ai/about, GitHub sst/opencode, Tech Funding News (OpenCode background), Baseten (Dax conversation), Codacy blog.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Zen cross-promo Inverse Primary + install-snippet tab system + warm-cast discipline missed by prior pass.
