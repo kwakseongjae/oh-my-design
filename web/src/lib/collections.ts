@@ -24,7 +24,7 @@ import {
   COLOR_FAMILY_LABELS,
   colorFamilyForHex,
   type ColorFamily,
-} from "@/lib/builder/color-family";
+} from "@/lib/color-family";
 
 export interface Collection {
   slug: string;

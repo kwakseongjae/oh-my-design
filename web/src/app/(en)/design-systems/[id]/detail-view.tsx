@@ -15,10 +15,11 @@
  *
  * Since 2026-10-01 (IA decision D2) this is the catalog's item page: landing
  * rows and search open it, and its `#use` block holds every hand-off —
- * Copy / Download / raw DESIGN.md, the install command, the first prompt and
- * "Customize" into /builder. Each action has exactly one placement on the
- * page, so `ds_export`, `act_*` (surface=ref_detail) and `ds_open_in_builder`
- * keep meaning one control each.
+ * Copy / Download / raw DESIGN.md, the install command and the first prompt.
+ * Each action has exactly one placement on the page, so `ds_export` and
+ * `act_*` (surface=ref_detail) keep meaning one control each. The builder's
+ * "Customize" link left with the builder (owner decision 2026-10-13); old
+ * /builder?ref=<id> links 308 to this block.
  */
 
 import { useEffect, useState, useSyncExternalStore } from "react";
@@ -34,7 +35,6 @@ import {
   Eye,
   Moon,
   Sun,
-  SlidersHorizontal,
 } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { InstallCta } from "@/components/install-cta";
@@ -46,7 +46,6 @@ import {
   trackDetailView,
   trackExternalClick,
   trackMdViewToggle,
-  trackOpenInBuilder,
   trackRawMdOpen,
 } from "@/lib/design-systems/analytics";
 import type { DesignSystemInfo } from "@/lib/design-systems";
@@ -485,10 +484,8 @@ export function DetailView({
 /**
  * `#use` — the hand-off block. Composes the page's existing actions rather than
  * re-implementing them: copy/download come from DetailView (ds_export +
- * act_handoff), the install command and first prompt are <InstallCta>
- * (act_install_copy / act_prompt_copy, surface=ref_detail), and Customize is
- * the same /builder deep link the header used to carry (ds_open_in_builder,
- * then bld_open {entry_step: customize} on arrival).
+ * act_handoff), and the install command and first prompt are <InstallCta>
+ * (act_install_copy / act_prompt_copy, surface=ref_detail).
  */
 function UseSection({
   refId,
@@ -514,24 +511,13 @@ function UseSection({
       aria-labelledby="use-heading"
       className="mt-4 scroll-mt-28 rounded-xl border border-border/60 bg-card/40 p-4 dark:border-border dark:bg-card/60"
     >
-      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-        <div className="min-w-0">
-          <h2 id="use-heading" className="text-sm font-semibold text-foreground">
-            Use the {name} DESIGN.md
-          </h2>
-          <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground">
-            Put the file at your project root and give your coding agent the first prompt. To
-            change color, type or components first, customize it.
-          </p>
-        </div>
-        <Link
-          href={`/builder?step=customize&ref=${refId}`}
-          onClick={() => trackOpenInBuilder(refId)}
-          className={secondary}
-        >
-          <SlidersHorizontal className="h-3.5 w-3.5" />
-          Customize <span aria-hidden="true">→</span>
-        </Link>
+      <div className="min-w-0">
+        <h2 id="use-heading" className="text-sm font-semibold text-foreground">
+          Use the {name} DESIGN.md
+        </h2>
+        <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground">
+          Put the file at your project root and give your coding agent the first prompt.
+        </p>
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -572,8 +558,8 @@ function UseSection({
 
 /**
  * Compact brand chip for the header — logo + name on a primary-tinted tile.
- * Mirrors the visual rhythm from the builder's OfficialSourceLogo / directory
- * CardBrandLogo so header identity stays consistent across surfaces.
+ * Mirrors the visual rhythm of the directory's CardBrandLogo so header
+ * identity stays consistent across surfaces.
  */
 function BrandChip({
   refId,

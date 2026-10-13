@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { COLOR_FAMILIES, colorFamilyForHex } from "@/lib/builder/color-family";
+import { COLOR_FAMILIES, colorFamilyForHex } from "@/lib/color-family";
 import { COLLECTIONS_BY_SLUG, colorCollectionSlug, getCollectionEntries } from "./collections";
 
 describe("color collections", () => {

@@ -43,14 +43,16 @@ const nextConfig: NextConfig = {
       },
       // Curation quiz + result pages removed (2026-06-23) — the share/viral
       // hypothesis was falsified (0 shares/28d). 301 the indexed URLs to the
-      // builder / directory so no link equity is lost.
-      { source: "/curation", destination: "/builder", permanent: true },
+      // directory so no link equity is lost. (Both pointed at /builder until
+      // the builder was removed on 2026-10-13; they go straight to the catalog
+      // now rather than chaining through the /builder redirect.)
+      { source: "/curation", destination: "/design-systems", permanent: true },
       { source: "/result/:typeCode", destination: "/design-systems", permanent: true },
       // Site pruning (2026-10-01, docs/REDESIGN_DECISIONS_2026-10-01.md R4).
       // Deleted pages that still drew human traffic over the prior 30 days
       // go to the closest surviving surface. /playground (404 in prod) and
       // /qa-references (noindex) had none and are left to 404.
-      { source: "/font-playground", destination: "/builder", permanent: true },
+      { source: "/font-playground", destination: "/design-systems", permanent: true },
       { source: "/presets", destination: "/docs/en/skills", permanent: true },
       { source: "/benchmarks", destination: "/docs/en/showcase", permanent: true },
       // Merged pages (same decision). Each old URL lands on the content it
@@ -62,6 +64,9 @@ const nextConfig: NextConfig = {
       { source: "/alternatives/:slug", destination: "/alternatives#:slug", permanent: true },
       { source: "/cli", destination: "/docs/en", permanent: true },
       { source: "/docs/connector", destination: "/docs/en/ai", permanent: true },
+      // /builder itself is not here: it is a Route Handler
+      // (src/app/builder/route.ts) because an unknown ref must reach the
+      // catalog, which a config rule cannot check. A rule here would shadow it.
       // The bare-preview diagnostic route (decision D4, same document). It was
       // noindex with its canonical already on the detail page, and drew one
       // human request in 30 days.

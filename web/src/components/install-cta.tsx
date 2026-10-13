@@ -24,22 +24,20 @@ import { AlertCircle, Check, Copy, Sparkles, Terminal } from "lucide-react";
 import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT, SKILL_COUNT } from "@/lib/catalog-count";
 import { copyText } from "@/lib/clipboard";
-import {
-  firstPromptFor,
-  stripBuilderProvenance,
-} from "@/lib/core/builder-prompt";
 
 export const INSTALL_CMD = "npx oh-my-design-cli@latest";
 
-export type InstallCtaSource = "hero" | "ref_detail" | "collection" | "builder" | "docs" | "cli";
+export type InstallCtaSource = "hero" | "ref_detail" | "collection" | "docs" | "cli";
 
-export { firstPromptFor };
+/** Per-brand first prompt — the sentence a user pastes into their agent. */
+export function firstPromptFor(brandName: string): string {
+  return `Set up our design system — ${brandName}-style.`;
+}
 
 export function InstallCta({
   source,
   reference,
   brandName,
-  prompt,
   variant = "block",
 }: {
   source: InstallCtaSource;
@@ -47,12 +45,6 @@ export function InstallCta({
   reference?: string;
   /** Display name for the per-brand first prompt. Omit to hide that button. */
   brandName?: string;
-  /**
-   * Full first-prompt override (builder preview: composed from the live
-   * config so customizations survive the handoff). Falls back to the
-   * generic firstPromptFor(brandName). GA4 prompt_copy is unchanged.
-   */
-  prompt?: string;
   variant?: "bar" | "block" | "inline";
 }) {
   const [copyState, setCopyState] = useState<{
@@ -104,10 +96,7 @@ export function InstallCta({
     </button>
   );
 
-  const promptText = prompt ?? (brandName ? firstPromptFor(brandName) : null);
-  // Copy carries the full prompt (incl. builder-config provenance URL);
-  // the visible label drops the URL and is width-capped so the pill stays short.
-  const promptDisplay = promptText ? stripBuilderProvenance(promptText) : null;
+  const promptText = brandName ? firstPromptFor(brandName) : null;
 
   const promptBtn = promptText ? (
     <button
@@ -117,7 +106,7 @@ export function InstallCta({
       aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
     >
       <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" />
-      <span className="truncate">&ldquo;{promptDisplay}&rdquo;</span>
+      <span className="truncate">&ldquo;{promptText}&rdquo;</span>
       {copyState?.kind === "prompt" && copyState.status === "copied" ? (
         <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
       ) : copyState?.kind === "prompt" && copyState.status === "failed" ? (

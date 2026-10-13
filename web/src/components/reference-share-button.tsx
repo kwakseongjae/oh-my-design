@@ -32,7 +32,7 @@ export function ReferenceShareButton({
   compact = false,
 }: {
   reference: string;
-  location: "builder" | "ref_detail" | "evolution";
+  location: "ref_detail" | "evolution";
   compact?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
