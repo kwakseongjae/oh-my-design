@@ -18,7 +18,9 @@ export function logoUrl(ref: LogoRef | null | undefined, color?: string): string
   if (!ref) return null;
   const { type, slug } = ref;
   if (type === "github") return `https://github.com/${slug}.png?size=64`;
-  if (type === "favicon") return slug;
+  // A favicon slug must be an absolute URL; a bare host (serendie: "serendie.design") would resolve
+  // relative to the page and 404. Treat it as no primary logo so callers go to the homepage proxy.
+  if (type === "favicon") return /^https?:\/\//.test(slug) ? slug : null;
   // simpleicons
   const c = color ? color.replace("#", "") : "white";
   return `https://cdn.simpleicons.org/${slug}/${c}`;

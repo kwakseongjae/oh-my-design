@@ -504,7 +504,7 @@ function BrandChip({
   const primaryUrl = logoUrl(logo, "111111");
   const fallbackUrl = logoFallbackUrl(logo);
   const [stage, setStage] = useState<0 | 1 | 2>(0);
-  const src = stage === 0 ? primaryUrl : stage === 1 ? fallbackUrl : null;
+  const src = stage === 0 ? (primaryUrl ?? fallbackUrl) : stage === 1 ? fallbackUrl : null;
   const raster = isRasterLogo(logo);
 
   return (

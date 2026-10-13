@@ -61,7 +61,7 @@ export function BrandNameplateLogo({
   // Dark logo on the light neutral chip; "card" surfaces invert it in dark mode.
   const primaryUrl = logoUrl(logo, "111111");
   const fallbackUrl = logoFallbackUrl(logo);
-  const src = stage === 0 ? primaryUrl : stage === 1 ? fallbackUrl : null;
+  const src = stage === 0 ? (primaryUrl ?? fallbackUrl) : stage === 1 ? fallbackUrl : null;
   const raster = isRasterLogo(logo);
 
   const chip =
