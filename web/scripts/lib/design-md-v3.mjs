@@ -164,7 +164,18 @@ export const SECTION_MAP = {
   Layout: ["Layout", "merge"],
   "Elevation & Depth": ["Elevation & Depth", "merge"],
   Components: ["Components", "merge"],
+  // v3 names map to themselves, so a v3-shaped body re-converts unchanged (the v3 writer path).
+  Overview: ["Overview", "merge"],
+  Colors: ["Colors", "merge"],
+  Shapes: ["Shapes", "merge"],
+  "CJK Typesetting": ["CJK Typesetting", "merge"],
+  Governance: ["Governance", "merge"],
 };
+
+/** Remove generated "Values kept in prose" blocks so a re-conversion regenerates them once. */
+export function stripGeneratedProse(body) {
+  return body.replace(/\n### Values kept in prose\n[\s\S]*?(?=\n#{2,3} |$(?![\s\S]))/g, "");
+}
 
 /** Keyword placement for the long tail of hand-written H2s; first match wins. Order matters. */
 const SECTION_RULES = [
@@ -331,8 +342,9 @@ export function convertFrontmatter(fm, overlay = {}, sourceText = "") {
     claimPaths: CLAIM_GRAMMAR,
     ...(verification !== undefined ? { verification_v2: verification } : {}),
     migration: {
-      from: omd === undefined ? "omd-unknown" : `omd-${omd}`,
-      ...(omd !== undefined && typeof omd !== "string" ? { omdType: typeof omd } : {}),
+      from: omd === undefined ? "omd-unknown" : typeof omd === "string" ? `omd-${omd}` : "omd-nonstring",
+      // A non-string `omd` (serendie's catalog frontmatter declares `omd: { schema: 1 }`) is kept as is.
+      ...(omd !== undefined && typeof omd !== "string" ? { omd } : {}),
       sourceSha256: null,
       overlay: null,
       prose,
@@ -468,7 +480,8 @@ export function projectLegacyFrontmatter(v3, sidecar = {}) {
   const fm = { ...catalog };
   if (!("name" in fm)) fm.name = v3.name;
   const from = typeof mig.from === "string" && mig.from.startsWith("omd-") ? mig.from.slice(4) : undefined;
-  if (from !== undefined && from !== "unknown") fm.omd = mig.omdType === "number" ? Number(from) : from;
+  if (mig.omd !== undefined) fm.omd = mig.omd;
+  else if (from !== undefined && from !== "unknown") fm.omd = from;
   if (sidecar.verification_v2 !== undefined) {
     const v2 = { ...sidecar.verification_v2 };
     if (isMap(v2.claims)) {

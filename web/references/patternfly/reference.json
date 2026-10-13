@@ -400,8 +400,8 @@
     ]
   },
   "migration": {
-    "from": "omd-0.1",
-    "omdType": "number",
+    "from": "omd-nonstring",
+    "omd": 0.1,
     "sourceSha256": "7497bb02317200ac1ab9457fa43be782995f2670eae7fbc5ddf9f291e1300ea9",
     "overlay": null,
     "prose": [],

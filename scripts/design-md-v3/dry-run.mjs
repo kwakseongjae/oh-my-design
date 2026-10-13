@@ -5,7 +5,7 @@
 // with key order preserved. Also lints every converted file with Google's linter (0 errors gate).
 // Writes nothing under web/references.
 //
-//   node scripts/design-md-v3/dry-run.mjs [--ids a,b,c] [--json out.json]
+//   node scripts/design-md-v3/dry-run.mjs [--ids a,b,c] [--json out.json] [--refs <legacy references dir>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
@@ -21,7 +21,7 @@ const yaml = require('js-yaml');
 const args = process.argv.slice(2);
 const idsArg = args.includes('--ids') ? args[args.indexOf('--ids') + 1].split(',') : null;
 const jsonOut = args.includes('--json') ? args[args.indexOf('--json') + 1] : null;
-const dir = path.join(root, 'web/references');
+const dir = args.includes('--refs') ? path.resolve(args[args.indexOf('--refs') + 1]) : path.join(root, 'web/references');
 
 const loadFm = (text, schema) => yaml.load(splitFrontmatter(text).fmText, { schema });
 const result = { total: 0, exact: 0, comparatorOk: 0, comparatorFailures: [], claims: 0, orderExact: 0, lintErrors: 0, failures: [], lintFailures: [], errorsByRule: {} };
