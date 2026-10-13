@@ -112,7 +112,7 @@ export default function WhatIsDesignMdPage() {
 
       <SiteHeaderA />
 
-      <article id="main" className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24">
+      <article id="main" className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24 [overflow-wrap:anywhere]">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground mb-6"

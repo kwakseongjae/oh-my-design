@@ -13,10 +13,17 @@ import { SiteFooterA } from "@/components/brand-a/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { defaultUrlTransform } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getChangelog } from "@/lib/changelog";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
+
+/** CHANGELOG.md links repo files relatively (e.g. `MIGRATION.md`); on the site those resolve to 404, so point them at GitHub. */
+const REPO_BLOB = "https://github.com/kwakseongjae/oh-my-design/blob/main/";
+function repoUrl(url: string): string {
+  if (/^([a-z][a-z0-9+.-]*:|#|\/)/i.test(url)) return defaultUrlTransform(url);
+  return REPO_BLOB + url.replace(/^\.\//, "");
+}
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -82,14 +89,14 @@ export default function ChangelogIndexPage() {
         >
           Release history
         </h1>
-        <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
+        <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed [overflow-wrap:anywhere]">
           User-facing changes to <code className="font-mono text-[13px]">oh-my-design-cli</code>{" "}
           and the bundled skill / agent files. Upgrade with{" "}
           <code className="font-mono text-[13px]">npx oh-my-design-cli@latest install-skills</code>.
         </p>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 pb-24">
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 pb-24 [overflow-wrap:anywhere]">
         <nav aria-label="Releases" className="mb-12 flex flex-wrap gap-2">
           {entries.map((e) => (
             <a
@@ -120,7 +127,7 @@ export default function ChangelogIndexPage() {
               {e.headline && (
                 <p className="mt-2 text-lg font-semibold tracking-tight leading-snug">{e.headline}</p>
               )}
-              <div className="prose prose-sm dark:prose-invert mt-5 max-w-none
+              <div className="prose prose-sm dark:prose-invert mt-5 max-w-none [&_pre]:overflow-x-auto [&_pre]:max-w-full
                 prose-headings:font-semibold prose-headings:tracking-tight
                 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3
                 prose-p:leading-relaxed prose-p:text-muted-foreground
@@ -129,7 +136,7 @@ export default function ChangelogIndexPage() {
                 prose-code:text-[0.9em] prose-code:font-mono prose-code:text-primary prose-code:before:content-none prose-code:after:content-none prose-code:bg-foreground/[0.05] prose-code:rounded prose-code:px-1 prose-code:py-0.5
                 prose-pre:rounded-xl prose-pre:border prose-pre:border-border/60
                 prose-a:text-foreground prose-a:underline prose-a:underline-offset-4">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{e.body}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} urlTransform={repoUrl}>{e.body}</ReactMarkdown>
               </div>
             </li>
           ))}
