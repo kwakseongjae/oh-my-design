@@ -59,14 +59,14 @@ describe.skipIf(!LEGACY_ROOT)("DESIGN.md v3 runtime parity", () => {
     }
     const byField: Record<string, number> = {};
     for (const d of diffs) byField[d.split(": ")[1]] = (byField[d.split(": ")[1]] ?? 0) + 1;
-    console.log(JSON.stringify({ compared, diffs: diffs.length, byField }));
+    process.stdout.write(`${JSON.stringify({ compared, diffs: diffs.length, byField })}\n`);
     // Reported, not failed: `ast.parity` is the diagnostic comparison between the AST and the
     // retired regex detail adapter, which scans the raw frontmatter text and the legacy section
     // order — neither survives conversion byte for byte, and no rendered value comes from it. The
     // regex `accent` is a first-match prose heuristic over the whole document, so it moves when v3
     // regroups sections (11 references on the full catalog, listed by this test).
     const reportedOnly = /: (ast\.parity|detail\.accent|tokens\.identity\.accent)$/;
-    console.log(JSON.stringify({ accentMoved: diffs.filter((d) => d.endsWith(": detail.accent")).map((d) => d.split(":")[0]) }));
+    process.stdout.write(`${JSON.stringify({ accentMoved: diffs.filter((d) => d.endsWith(": detail.accent")).map((d) => d.split(":")[0]) })}\n`);
     expect(diffs.filter((d) => !reportedOnly.test(d)).slice(0, 60)).toEqual([]);
   });
 });
