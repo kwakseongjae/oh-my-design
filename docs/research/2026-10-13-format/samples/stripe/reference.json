@@ -1,4 +1,5 @@
 {
+  "format": "3.0.0",
   "catalog": {
     "id": "stripe",
     "name": "Stripe",
@@ -160,7 +161,7 @@
         "method": "live-inspect",
         "captured": "2026-07-13"
       },
-      "prose:typography.body.lineHeight": {
+      "typography.body.lineHeight": {
         "surface_id": "docs-home",
         "source_id": "docs-home-live",
         "method": "live-inspect",
@@ -184,7 +185,7 @@
         "method": "live-inspect",
         "captured": "2026-07-13"
       },
-      "prose:typography.heading.lineHeight": {
+      "typography.heading.lineHeight": {
         "surface_id": "docs-api",
         "source_id": "docs-api-live",
         "method": "live-inspect",
@@ -208,7 +209,7 @@
         "method": "live-inspect",
         "captured": "2026-07-13"
       },
-      "prose:typography.control.lineHeight": {
+      "typography.control.lineHeight": {
         "surface_id": "docs-home",
         "source_id": "docs-home-live",
         "method": "live-inspect",
@@ -620,6 +621,30 @@
     "from": "omd-0.1",
     "sourceSha256": "7b37a2705badb58c1173a1b019218ad817fee919b06d59800ac001fe5409015d",
     "overlay": "overlay.yaml",
-    "prose": []
+    "prose": [],
+    "numeric": [
+      "typography.body.fontSize",
+      "typography.heading.fontSize",
+      "typography.control.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg",
+      "components.docs-search-prompt.rounded",
+      "components.docs-secondary-action.rounded",
+      "components.docs-content-tab.rounded"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components",
+        "components_harvested"
+      ]
+    }
   }
 }

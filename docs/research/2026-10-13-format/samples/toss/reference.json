@@ -1,4 +1,5 @@
 {
+  "format": "3.0.0",
   "catalog": {
     "id": "toss",
     "name": "Toss",
@@ -82,6 +83,18 @@
         "kind": "design-system",
         "url": "https://developers-apps-in-toss.toss.im/design/prepare/design",
         "inspected": "2026-09-17"
+      },
+      {
+        "id": "tds-foundation-colors",
+        "kind": "design-system",
+        "url": "https://tossmini-docs.toss.im/tds-mobile/foundation/colors/",
+        "inspected": "2026-10-13"
+      },
+      {
+        "id": "tds-foundation-typography",
+        "kind": "design-system",
+        "url": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+        "inspected": "2026-10-13"
       }
     ],
     "sources": [
@@ -144,6 +157,18 @@
         "kind": "official-doc",
         "url": "https://developers-apps-in-toss.toss.im/llms.txt",
         "captured": "2026-09-17"
+      },
+      {
+        "id": "tds-colors-doc",
+        "kind": "official-doc",
+        "url": "https://tossmini-docs.toss.im/tds-mobile/foundation/colors/",
+        "captured": "2026-10-13"
+      },
+      {
+        "id": "tds-typography-doc",
+        "kind": "official-doc",
+        "url": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+        "captured": "2026-10-13"
       }
     ],
     "claims": {
@@ -237,7 +262,7 @@
         "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
-      "prose:typography.h1.lineHeight": {
+      "typography.h1.lineHeight": {
         "surface_id": "tds-button",
         "source_id": "tds-button-live",
         "method": "computed-style-and-official-doc",
@@ -255,7 +280,7 @@
         "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
-      "prose:typography.h2.lineHeight": {
+      "typography.h2.lineHeight": {
         "surface_id": "tds-button",
         "source_id": "tds-button-live",
         "method": "computed-style-and-official-doc",
@@ -273,7 +298,7 @@
         "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
-      "prose:typography.h3.lineHeight": {
+      "typography.h3.lineHeight": {
         "surface_id": "tds-button",
         "source_id": "tds-button-live",
         "method": "computed-style-and-official-doc",
@@ -291,7 +316,7 @@
         "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
-      "prose:typography.h4.lineHeight": {
+      "typography.h4.lineHeight": {
         "surface_id": "tds-button",
         "source_id": "tds-button-live",
         "method": "computed-style-and-official-doc",
@@ -309,7 +334,7 @@
         "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
-      "prose:typography.body.lineHeight": {
+      "typography.body.lineHeight": {
         "surface_id": "tds-button",
         "source_id": "tds-button-live",
         "method": "computed-style-and-official-doc",
@@ -327,7 +352,7 @@
         "method": "computed-style-and-official-doc",
         "captured": "2026-07-11"
       },
-      "prose:typography.body-small.lineHeight": {
+      "typography.body-small.lineHeight": {
         "surface_id": "tds-button",
         "source_id": "tds-button-live",
         "method": "computed-style-and-official-doc",
@@ -632,6 +657,726 @@
         "source_id": "toss-live",
         "method": "computed-style",
         "captured": "2026-07-11"
+      },
+      "colors.grey50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.grey900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.blue900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.red900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.orange900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.yellow900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.green900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.teal900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple50": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple100": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple200": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple300": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple400": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple500": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple600": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple700": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple800": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "colors.purple900": {
+        "surface_id": "tds-foundation-colors",
+        "source_id": "tds-colors-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t1.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t1.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st1.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st1.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st2.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st2.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st3.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st3.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t2.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t2.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st4.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st4.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st5.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st5.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st6.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st6.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t3.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t3.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st7.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st7.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t4.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t4.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st8.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st8.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st9.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st9.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t5.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t5.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st10.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st10.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t6.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t6.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st11.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st11.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t7.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.t7.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st12.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st12.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st13.fontSize": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
+      },
+      "typography.st13.lineHeight": {
+        "surface_id": "tds-foundation-typography",
+        "source_id": "tds-typography-doc",
+        "method": "official-doc",
+        "captured": "2026-10-13"
       }
     },
     "conflicts": []
@@ -640,13 +1385,13 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 30,
+      "warnings": 110,
       "infos": 2
     },
     "byRule": {
       "extension-component-property": 20,
       "contrast-ratio": 1,
-      "orphaned-tokens": 9
+      "orphaned-tokens": 89
     },
     "findings": [
       {
@@ -828,6 +1573,486 @@
         "rule": "orphaned-tokens",
         "path": "colors.danger",
         "message": "'danger' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey50",
+        "message": "'grey50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey100",
+        "message": "'grey100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey200",
+        "message": "'grey200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey300",
+        "message": "'grey300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey400",
+        "message": "'grey400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey500",
+        "message": "'grey500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey600",
+        "message": "'grey600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey700",
+        "message": "'grey700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey800",
+        "message": "'grey800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.grey900",
+        "message": "'grey900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue50",
+        "message": "'blue50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue100",
+        "message": "'blue100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue200",
+        "message": "'blue200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue300",
+        "message": "'blue300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue400",
+        "message": "'blue400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue500",
+        "message": "'blue500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue600",
+        "message": "'blue600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue700",
+        "message": "'blue700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue800",
+        "message": "'blue800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.blue900",
+        "message": "'blue900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red50",
+        "message": "'red50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red100",
+        "message": "'red100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red200",
+        "message": "'red200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red300",
+        "message": "'red300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red400",
+        "message": "'red400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red500",
+        "message": "'red500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red600",
+        "message": "'red600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red700",
+        "message": "'red700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red800",
+        "message": "'red800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.red900",
+        "message": "'red900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange50",
+        "message": "'orange50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange100",
+        "message": "'orange100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange200",
+        "message": "'orange200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange300",
+        "message": "'orange300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange400",
+        "message": "'orange400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange500",
+        "message": "'orange500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange600",
+        "message": "'orange600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange700",
+        "message": "'orange700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange800",
+        "message": "'orange800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.orange900",
+        "message": "'orange900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow50",
+        "message": "'yellow50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow100",
+        "message": "'yellow100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow200",
+        "message": "'yellow200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow300",
+        "message": "'yellow300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow400",
+        "message": "'yellow400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow500",
+        "message": "'yellow500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow600",
+        "message": "'yellow600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow700",
+        "message": "'yellow700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow800",
+        "message": "'yellow800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.yellow900",
+        "message": "'yellow900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green50",
+        "message": "'green50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green100",
+        "message": "'green100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green200",
+        "message": "'green200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green300",
+        "message": "'green300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green400",
+        "message": "'green400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green500",
+        "message": "'green500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green600",
+        "message": "'green600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green700",
+        "message": "'green700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green800",
+        "message": "'green800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.green900",
+        "message": "'green900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal50",
+        "message": "'teal50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal100",
+        "message": "'teal100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal200",
+        "message": "'teal200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal300",
+        "message": "'teal300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal400",
+        "message": "'teal400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal500",
+        "message": "'teal500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal600",
+        "message": "'teal600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal700",
+        "message": "'teal700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal800",
+        "message": "'teal800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.teal900",
+        "message": "'teal900' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple50",
+        "message": "'purple50' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple100",
+        "message": "'purple100' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple200",
+        "message": "'purple200' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple300",
+        "message": "'purple300' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple400",
+        "message": "'purple400' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple500",
+        "message": "'purple500' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple600",
+        "message": "'purple600' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple700",
+        "message": "'purple700' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple800",
+        "message": "'purple800' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.purple900",
+        "message": "'purple900' is defined but never referenced by any component."
       }
     ]
   },
@@ -835,6 +2060,183 @@
     "from": "omd-0.1",
     "sourceSha256": "3e76a5d808be28a36e799f254a1131694fc2efe845333a247a2347472ada02b5",
     "overlay": "overlay.yaml",
-    "prose": []
+    "prose": [],
+    "numeric": [
+      "typography.h1.fontSize",
+      "typography.h2.fontSize",
+      "typography.h3.fontSize",
+      "typography.h4.fontSize",
+      "typography.body.fontSize",
+      "typography.body-small.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.button-small",
+      "rounded.button-medium",
+      "rounded.button-large",
+      "rounded.button-xlarge"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "verification_v2.claims": [
+        "tokens.colors.primary",
+        "tokens.colors.primary-hover",
+        "tokens.colors.canvas",
+        "tokens.colors.foreground",
+        "tokens.colors.body",
+        "tokens.colors.muted",
+        "tokens.colors.surface",
+        "tokens.colors.border",
+        "tokens.colors.on-primary",
+        "tokens.colors.weak-background",
+        "tokens.colors.weak-foreground",
+        "tokens.colors.danger",
+        "tokens.typography.family.sans",
+        "tokens.typography.h1.size",
+        "tokens.typography.h1.weight",
+        "tokens.typography.h1.lineHeight",
+        "tokens.typography.h2.size",
+        "tokens.typography.h2.weight",
+        "tokens.typography.h2.lineHeight",
+        "tokens.typography.h3.size",
+        "tokens.typography.h3.weight",
+        "tokens.typography.h3.lineHeight",
+        "tokens.typography.h4.size",
+        "tokens.typography.h4.weight",
+        "tokens.typography.h4.lineHeight",
+        "tokens.typography.body.size",
+        "tokens.typography.body.weight",
+        "tokens.typography.body.lineHeight",
+        "tokens.typography.body-small.size",
+        "tokens.typography.body-small.weight",
+        "tokens.typography.body-small.lineHeight",
+        "tokens.spacing.xs",
+        "tokens.spacing.sm",
+        "tokens.spacing.md",
+        "tokens.spacing.lg",
+        "tokens.spacing.xl",
+        "tokens.spacing.xxl",
+        "tokens.rounded.sm",
+        "tokens.rounded.md",
+        "tokens.rounded.button-small",
+        "tokens.rounded.button-medium",
+        "tokens.rounded.button-large",
+        "tokens.rounded.button-xlarge",
+        "tokens.components.tds-button.type",
+        "tokens.components.tds-button.pressed",
+        "tokens.components.tds-button.focus",
+        "tokens.components.tds-button.bg",
+        "tokens.components.tds-button.fg",
+        "tokens.components.tds-button.radius",
+        "tokens.components.tds-button.height",
+        "tokens.components.tds-button.padding",
+        "tokens.components.tds-button.font",
+        "tokens.components.tds-button.states",
+        "tokens.components.tds-button.use",
+        "tokens.components.text-field.type",
+        "tokens.components.text-field.states",
+        "tokens.components.text-field.use",
+        "tokens.components.badge.type",
+        "tokens.components.badge.states",
+        "tokens.components.badge.use",
+        "tokens.components.agreement.type",
+        "tokens.components.agreement.states",
+        "tokens.components.agreement.use",
+        "tokens.components.marketing-primary.type",
+        "tokens.components.marketing-primary.bg",
+        "tokens.components.marketing-primary.fg",
+        "tokens.components.marketing-primary.radius",
+        "tokens.components.marketing-primary.height",
+        "tokens.components.marketing-primary.padding",
+        "tokens.components.marketing-primary.font",
+        "tokens.components.marketing-primary.states",
+        "tokens.components.marketing-primary.use",
+        "tokens.components.marketing-dark.type",
+        "tokens.components.marketing-dark.bg",
+        "tokens.components.marketing-dark.fg",
+        "tokens.components.marketing-dark.radius",
+        "tokens.components.marketing-dark.height",
+        "tokens.components.marketing-dark.padding",
+        "tokens.components.marketing-dark.font",
+        "tokens.components.marketing-dark.states",
+        "tokens.components.marketing-dark.use"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.colors": [
+        "primary",
+        "primary-hover",
+        "canvas",
+        "foreground",
+        "body",
+        "muted",
+        "surface",
+        "border",
+        "on-primary",
+        "weak-background",
+        "weak-foreground",
+        "danger"
+      ],
+      "tokens.typography": [
+        "family",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "body",
+        "body-small"
+      ],
+      "tokens.typography.h1": [
+        "size",
+        "weight",
+        "lineHeight"
+      ],
+      "tokens.typography.h2": [
+        "size",
+        "weight",
+        "lineHeight"
+      ],
+      "tokens.typography.h3": [
+        "size",
+        "weight",
+        "lineHeight"
+      ],
+      "tokens.typography.h4": [
+        "size",
+        "weight",
+        "lineHeight"
+      ],
+      "tokens.typography.body": [
+        "size",
+        "weight",
+        "lineHeight"
+      ],
+      "tokens.typography.body-small": [
+        "size",
+        "weight",
+        "lineHeight"
+      ]
+    }
   }
 }

@@ -376,7 +376,9 @@ The table below keeps measurements tied to the surfaces where they were observed
 
 ### Values kept in prose
 
-- `baemin-heading` line height: `normal` (a computed CSS keyword that the token grammar cannot carry).
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `typography.baemin-heading.lineHeight`: `normal`
 
 ## Layout
 

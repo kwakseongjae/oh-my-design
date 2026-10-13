@@ -1,4 +1,5 @@
 {
+  "format": "3.0.0",
   "catalog": {
     "id": "baemin",
     "name": "Baemin",
@@ -183,7 +184,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.baemin-hero.lineHeight": {
+      "typography.baemin-hero.lineHeight": {
         "surface_id": "baemin-home",
         "source_id": "baemin-live",
         "method": "computed-style",
@@ -219,7 +220,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.baemin-button.lineHeight": {
+      "typography.baemin-button.lineHeight": {
         "surface_id": "baemin-home",
         "source_id": "baemin-live",
         "method": "computed-style",
@@ -237,7 +238,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.corporate-heading.lineHeight": {
+      "typography.corporate-heading.lineHeight": {
         "surface_id": "woowa-home",
         "source_id": "woowa-live",
         "method": "computed-style",
@@ -261,7 +262,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.corporate-card-title.lineHeight": {
+      "typography.corporate-card-title.lineHeight": {
         "surface_id": "woowa-home",
         "source_id": "woowa-live",
         "method": "computed-style",
@@ -285,7 +286,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.corporate-body.lineHeight": {
+      "typography.corporate-body.lineHeight": {
         "surface_id": "woowa-home",
         "source_id": "woowa-live",
         "method": "computed-style",
@@ -309,7 +310,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.corporate-label.lineHeight": {
+      "typography.corporate-label.lineHeight": {
         "surface_id": "woowa-home",
         "source_id": "woowa-live",
         "method": "computed-style",
@@ -333,7 +334,7 @@
         "method": "computed-style",
         "captured": "2026-07-11"
       },
-      "prose:typography.catalog-title.lineHeight": {
+      "typography.catalog-title.lineHeight": {
         "surface_id": "font-catalog",
         "source_id": "font-catalog-live",
         "method": "computed-style",
@@ -1624,6 +1625,58 @@
         "path": "typography.baemin-heading.lineHeight",
         "value": "normal"
       }
-    ]
+    ],
+    "numeric": [
+      "typography.baemin-hero.fontSize",
+      "typography.baemin-heading.fontSize",
+      "typography.baemin-button.fontSize",
+      "typography.corporate-heading.fontSize",
+      "typography.corporate-card-title.fontSize",
+      "typography.corporate-body.fontSize",
+      "typography.corporate-label.fontSize",
+      "typography.catalog-title.fontSize",
+      "rounded.corporate-control",
+      "rounded.download-card",
+      "rounded.media-control",
+      "rounded.circle"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "omd",
+        "ds",
+        "verification_v2",
+        "tokens"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "components_harvested",
+        "components"
+      ],
+      "tokens.typography": [
+        "family",
+        "baemin-hero",
+        "baemin-heading",
+        "baemin-button",
+        "corporate-heading",
+        "corporate-card-title",
+        "corporate-body",
+        "corporate-label",
+        "catalog-title"
+      ]
+    }
   }
 }
