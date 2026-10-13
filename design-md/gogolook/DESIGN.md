@@ -14,7 +14,7 @@ ds:
   name: Whoscall Brand Guidelines
   url: "https://whoscall.com/en/brand"
   type: brand
-  description: Whoscall's official brand page — logo, the documented brand green #0CD25F, and usage guidelines.
+  description: "Whoscall's official brand page — logo, the documented brand green #0CD25F, and usage guidelines."
 tokens:
   source: prose-derived
   extracted: "2026-06-09"
