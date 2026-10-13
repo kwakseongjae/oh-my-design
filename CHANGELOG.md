@@ -6,6 +6,18 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 ---
 
+## 2.0.3 — 2026-10-13
+
+**Two single-effect shader skills, a deeper Korean catalog, and a website whose reference page is now the place you take a DESIGN.md from. Patch release — no change to the installer's file ownership rules.**
+
+- **`omd-cjk-type-shader` (new)** — 먹 번짐: a large Korean, Japanese or Chinese headline that reads as sumi ink on hanji. The heading stays real, selectable text in ink color from the first frame; a WebGL2 layer traced from the browser's own glyph layout adds a wet stroke that dries, pooling at stroke rims and ends, paper fibers and a little capillary feathering. Two parameters (bleed, duration), ~5 KiB gzip of library JS, a static fallback, `prefers-reduced-motion`, and a real-GPU `verify.mjs` that checks the text stays selectable in every pass.
+- **`omd-shader-hero` (new)** — one full-bleed launch hero in exactly two inks from the project's DESIGN.md (the base color and one brand color) as a slowly folding ordered-dither field. It refuses to invent a palette, ships a CSS halftone poster for no-WebGL, respects `prefers-reduced-motion`, and its `verify.mjs` fails if the headline or sub copy drops below 4.5:1 at any point in the timeline.
+- Both skills install on Claude Code, Codex, OpenCode and Cursor, and `doctor` now expects them. Counts read 30 skills / 29 Cursor Agent Skills across the READMEs, `llms.txt` (five locales) and the docs.
+- **Catalog: 299 references at `verified_v2`** (2.0.2 shipped 227) out of 521 — mostly Korean references re-captured live, plus kakaopay re-sourced entirely from kakaopay.com. The capture collector now refuses cookie consent instead of accepting it, waits for SPA pages to render, budgets each step instead of hanging, and records the fill a transparent control paints on a child or ancestor.
+- **Website: the builder is gone; the reference page is the item page.** `/builder?ref=<id>` and `/reference/<id>` redirect (308) to `/design-systems/<id>`, whose new `#use` block holds the DESIGN.md (copy or download), the install command and a first prompt. Docs, `llms.txt` and FAQ no longer point at Builder or Customize. Earlier on main: a catalog-first landing page, five low-demand pages removed with permanent redirects, and client bundles that no longer import the reference registry.
+
+---
+
 ## 2.0.2 — 2026-09-27
 
 **A larger, better-evidenced reference catalog and a more honest DESIGN.md Core v2. Patch release — no change to the installer's file ownership rules. 2.0.1 was never published to npm; this release includes everything listed under 2.0.1.**
