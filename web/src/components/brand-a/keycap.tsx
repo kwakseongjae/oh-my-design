@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { CapData } from "@/lib/landing-a/types";
+import "./keys.css";
 
 /** WCAG relative luminance contrast. */
 function lum(h: string) {
@@ -25,7 +26,9 @@ export function glyphClass(g: string) {
 }
 
 /** CSS keycap (region keys + mini keys). Colour, radius and legend weight only from claimed tokens. */
-export function CssKeycap({ d }: { d: CapData }) {
+export type KeycapFace = Pick<CapData, "g" | "gLang" | "c" | "hex" | "rv" | "w">;
+
+export function CssKeycap({ d }: { d: KeycapFace }) {
   const style: Record<string, string | number> = {};
   if (d.hex) {
     style["--c"] = d.hex;

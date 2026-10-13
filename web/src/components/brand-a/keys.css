@@ -1,0 +1,23 @@
+/* CSS keycaps (region keys, mini keys, archive chips, item-page hero). Moved out of
+   landing.css in rebrand round 2 so the archive and the item page share them; imported
+   by keycap.tsx. Colour, radius and legend weight come only from claimed tokens. */
+.sq-key{--d:9px;--r:8px;--w:700;--c:var(--sq-cap-n);--side:color-mix(in srgb,var(--c) 64%,#000);--on:#15161a;grid-column:span 4;position:relative;display:block;aspect-ratio:1/1.06;container-type:inline-size;outline:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.sq-key.sq-blank{--c:var(--sq-cap-n);--side:var(--sq-cap-n-side);cursor:default}
+.sq-kc{position:absolute;left:0;right:0;top:0;bottom:var(--d);border-radius:var(--r);background:color-mix(in srgb,var(--c) 86%,#000);box-shadow:0 var(--d) 0 0 var(--side),0 calc(var(--d) + 6px) 12px -3px var(--sq-drop);transition:transform .09s cubic-bezier(.3,.7,.4,1),box-shadow .09s cubic-bezier(.3,.7,.4,1)}
+.sq-kt{position:absolute;inset:5% 8% 13%;border-radius:max(0px,calc(var(--r) * .82));display:grid;place-items:center;color:var(--on);background:radial-gradient(120% 90% at 50% 30%,color-mix(in srgb,var(--c) 82%,#fff) 0%,var(--c) 58%,color-mix(in srgb,var(--c) 92%,#000) 100%);box-shadow:inset 0 2px 2px color-mix(in srgb,#fff 38%,transparent),inset 0 -3px 5px color-mix(in srgb,#000 16%,transparent)}
+.sq-lg{font-size:42cqw;line-height:1;font-weight:var(--w);font-family:var(--sq-f-ko);letter-spacing:0;transform:translateY(-2%)}
+.sq-lg:lang(ja){font-family:var(--sq-f-ja)}
+.sq-lg:lang(zh-Hant){font-family:var(--sq-f-tc)}
+.sq-lg:lang(en){font-family:var(--sq-f-latin),sans-serif}
+.sq-lg.sq-lat{font-size:36cqw}
+.sq-lg.sq-dg{font-size:24cqw;letter-spacing:-.02em}
+.sq-kcc{position:absolute;left:9%;top:7%;font:650 9px/1 var(--sq-f-latin),sans-serif;letter-spacing:.03em;color:var(--on);opacity:.62}
+.sq-key.sq-is-down .sq-kc,.sq-key:active .sq-kc{transform:translateY(calc(var(--d) * .75));box-shadow:0 calc(var(--d) * .25) 0 0 var(--side),0 calc(var(--d) * .25 + 3px) 6px -2px var(--sq-drop)}
+@media (hover:hover) {
+  .sq-key:not(.sq-blank):hover .sq-kc{transform:translateY(calc(var(--d) * .75));box-shadow:0 calc(var(--d) * .25) 0 0 var(--side),0 calc(var(--d) * .25 + 3px) 6px -2px var(--sq-drop)}
+}
+.sq-key:focus-visible .sq-kc{transform:translateY(calc(var(--d) * .75));box-shadow:0 calc(var(--d) * .25) 0 0 var(--side),0 0 0 3px var(--sq-focus)}
+.sq-key.sq-sel .sq-kt::after{content:"";position:absolute;left:30%;right:30%;bottom:9%;height:3px;border-radius:2px;background:currentColor;opacity:.55}
+@media (prefers-reduced-motion:reduce) {
+  .sq-kc{transition:none}
+}

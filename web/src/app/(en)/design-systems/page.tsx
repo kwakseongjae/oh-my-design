@@ -15,7 +15,8 @@ import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { SITE_ORIGIN } from "@/lib/site";
 import { COLLECTIONS, getCollectionEntries } from "@/lib/collections";
 import { REFERENCE_QUALITY, REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
-import { CatalogView, type CatalogCollection, type CatalogStats } from "./catalog-view";
+import { capData } from "@/lib/landing-a/data.server";
+import { CatalogView, type CatalogCollection, type CatalogStats, type CatalogSystem } from "./catalog-view";
 
 /**
  * Depth *within the verified tier*, which is where the claim needs qualifying.
@@ -43,6 +44,19 @@ const STATS: CatalogStats = {
 
 export default function DesignSystemsPage() {
   const systems = getAllDesignSystems();
+  // Concept A keycap chip per card. capData() reads the same resolvers as the
+  // landing (lib/landing-a/resolve.ts), so a cap is coloured only by a claimed
+  // token of a verified reference; everything else is a blank cap. Built here
+  // so the client view never imports the registry.
+  const catalog: CatalogSystem[] = systems.map((ds) => {
+    const cap = capData(ds.refId);
+    return {
+      ...ds,
+      country: cap?.c ?? "",
+      native: cap && cap.n !== ds.name ? cap.n : null,
+      cap: cap ? { g: cap.g, gLang: cap.gLang, c: cap.c, hex: cap.hex, rv: cap.rv, w: cap.w } : null,
+    };
+  });
   const collections: CatalogCollection[] = COLLECTIONS.map((c) => ({
     slug: c.slug,
     titleEn: c.titleEn,
@@ -75,7 +89,7 @@ export default function DesignSystemsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <CatalogView systems={systems} collections={collections} stats={STATS} />
+      <CatalogView systems={catalog} collections={collections} stats={STATS} />
     </>
   );
 }
