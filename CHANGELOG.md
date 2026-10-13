@@ -16,6 +16,8 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 - **Catalog: 299 references at `verified_v2`** (2.0.2 shipped 227) out of 521 — mostly Korean references re-captured live, plus kakaopay re-sourced entirely from kakaopay.com. The capture collector now refuses cookie consent instead of accepting it, waits for SPA pages to render, budgets each step instead of hanging, and records the fill a transparent control paints on a child or ancestor.
 - **Website: the builder is gone; the reference page is the item page.** `/builder?ref=<id>` and `/reference/<id>` redirect (308) to `/design-systems/<id>`, whose new `#use` block holds the DESIGN.md (copy or download), the install command and a first prompt. Docs, `llms.txt` and FAQ no longer point at Builder or Customize. Earlier on main: a catalog-first landing page, five low-demand pages removed with permanent redirects, and client bundles that no longer import the reference registry.
 
+- **Release gate waiver** — 2.0.3 ships on an explicit owner instruction to publish (2026-10-14). `npm run gate:quality:strict` is BLOCKED in the same state as 2.0.2: `landing/stripe`, `landing/toss`, `landing/karrot` fail landing integrity (the D4 exclusion), `autopilot/stripe` and `autopilot/toss` are unverified (no generation receipt), `autopilot/karrot` is review-pending. The gated skills (`omd-landing`, `omd-autopilot`, `omd-art-director`) and checkers are byte-identical to 2.0.2, so this release changes nothing the gate measures. The receipt regeneration promised in 2.0.2 is still owed.
+
 ---
 
 ## 2.0.2 — 2026-09-27
