@@ -113,7 +113,7 @@ export const EN = {
       },
       "stNone": "no state values in source",
       "dflt": "not in source · default",
-      "subF": "{f}: not loaded here, shown in the page font (substitute, not the brand face).",
+      "subF": "{f}: not loaded here, so the screen uses the page font. That is not the brand face, and no measured substitute is chosen.",
       "disp": "Display face: {d}.",
       "otherDomain": "different source domain from the button"
     }
