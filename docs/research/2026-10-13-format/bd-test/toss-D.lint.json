@@ -1,0 +1,68 @@
+{
+  "findings": [
+    {
+      "severity": "warning",
+      "path": "components.tds-button-xlarge",
+      "message": "textColor (#ffffff) on backgroundColor (#3182f6) has contrast ratio 3.71:1, below WCAG AA minimum of 4.5:1.",
+      "rule": "contrast-ratio"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.primary-hover",
+      "message": "'primary-hover' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.canvas",
+      "message": "'canvas' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.foreground",
+      "message": "'foreground' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.body",
+      "message": "'body' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.muted",
+      "message": "'muted' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.border",
+      "message": "'border' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.danger",
+      "message": "'danger' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "info",
+      "message": "Design system defines 12 colors, 6 typography scales, 7 rounding levels, 6 components.",
+      "rule": "token-summary"
+    },
+    {
+      "severity": "info",
+      "path": "omitted.spacing",
+      "message": "spacing intentionally omitted — no spacing tokens will be validated",
+      "rule": "declared-omission"
+    }
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 8,
+    "infos": 2
+  }
+}

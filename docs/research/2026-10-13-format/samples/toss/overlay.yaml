@@ -1,0 +1,42 @@
+# Reviewed overlay for the toss conversion. Source bytes: the hash-checked legacy segments held in
+# web/references/toss/.omd/system/graph.json (extensions["dev.oh-my-design.migration"]), which is what
+# the pipeline reads today. Every fact below is restated from that source or from the Core v2
+# projection web/references/toss/DESIGN.md; nothing is new evidence.
+description: Toss product (TDS Mobile) and toss.im marketing surfaces, kept separate. Values are limited to current computed styles and current official TDS documentation; unresolved values are omitted.
+typography:
+  h1:
+    fontFamily: "Toss Product Sans, sans-serif"
+  h2:
+    fontFamily: "Toss Product Sans, sans-serif"
+  h3:
+    fontFamily: "Toss Product Sans, sans-serif"
+  h4:
+    fontFamily: "Toss Product Sans, sans-serif"
+  body:
+    fontFamily: "Toss Product Sans, sans-serif"
+  body-small:
+    fontFamily: "Toss Product Sans, sans-serif"
+fonts:
+  faces:
+    Toss Product Sans:
+      scripts: [hangul, latin]
+      evidence: [official-product-use, live-surface-use]
+      distribution: none-asserted
+    Tossface:
+      evidence: [declared-only]
+  safeDefaults:
+    hangul: [Noto Sans KR]
+    latin: [Noto Sans]
+prose:
+  typography: |
+    ### Brand face, substitute, safe default
+
+    - **Brand face:** Toss Product Sans. No general redistribution right is asserted by the current official sources, so most adopters cannot install it.
+    - **Substitute:** none chosen. No measured comparison against an open-licence face exists yet, so no face is named as a substitute.
+    - **Safe default (not the brand face):** Noto Sans KR for Hangul and Noto Sans for Latin, when a project must install a face. Label it as a fallback; never present it as Toss Product Sans.
+  cjk: |
+    Toss Product Sans was designed with Korean text, numbers, and symbols as one problem, which is why it is the family for Hangul and Latin alike. The current evidence does not verify a word-break, line-break, punctuation-compression, or tracking rule for TDS, so none is declared here.
+  knownGaps:
+    - "**Elevation and motion.** No shadow, duration, or easing value is verified as a product token."
+    - "**Font licence.** Public redistribution and licence terms for Toss Product Sans are unresolved; no substitute has been measured."
+    - "**Coverage.** Four of 43 published TDS components are measured; marketing CTA hover states were not captured."

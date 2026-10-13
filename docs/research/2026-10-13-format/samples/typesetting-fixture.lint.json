@@ -1,0 +1,26 @@
+{
+  "findings": [
+    {
+      "severity": "info",
+      "message": "Design system defines 1 color, 1 typography scale.",
+      "rule": "token-summary"
+    },
+    {
+      "severity": "info",
+      "path": "spacing",
+      "message": "No 'spacing' section defined. Layout spacing will fall back to agent defaults.",
+      "rule": "missing-sections"
+    },
+    {
+      "severity": "info",
+      "path": "rounded",
+      "message": "No 'rounded' section defined. Corner rounding will fall back to agent defaults.",
+      "rule": "missing-sections"
+    }
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "infos": 3
+  }
+}

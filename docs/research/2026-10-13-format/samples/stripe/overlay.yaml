@@ -1,0 +1,23 @@
+# Reviewed overlay for the stripe conversion. Every fact below is restated from the canonical
+# web/references/stripe/DESIGN.md (section 3); nothing is new evidence.
+fonts:
+  faces:
+    Söhne:
+      evidence: [official-distributed-asset]
+      source: https://klim.co.nz/fonts/soehne/
+      note: Klim lists Stripe in its separate "Söhne in use" showcase and describes WOFF2/web licensing. Foundry and brand context only; not evidence that the captured Docs routes load Söhne.
+    Source Code Pro:
+      evidence: [unresolved]
+      licence: OFL
+      source: https://github.com/adobe-fonts/source-code-pro/blob/release/LICENSE.md
+      note: Four computed occurrences with no matching loaded FontFace or source URL; the repository establishes the OFL status, not Stripe deployment.
+prose:
+  typography: |
+    ### Brand face, substitute, safe default
+
+    - **UI face:** the captured Docs routes use an operating-system stack beginning `-apple-system`; there is no named Stripe UI family to substitute.
+    - **Substitute:** none chosen, because the measured face is already the system stack.
+    - Söhne is foundry context only and Source Code Pro is unresolved; neither is a Docs UI face.
+  knownGaps:
+    - "**No named primary.** The Docs evidence does not establish a single primary brand color, so no `primary` token is declared."
+    - "**Coverage.** Only Docs home, Payments, and the API reference were captured; marketing, Dashboard, and checkout are not covered."
