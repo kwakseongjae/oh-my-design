@@ -1,51 +1,102 @@
 ---
-id: x.ai
 name: xAI
-country: US
-category: ai
-homepage: "https://x.ai"
-primary_color: "#000000"
-logo:
-  type: simpleicons
-  slug: x
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    text-primary: "#ffffff"
-    canvas: "#1f2228"
-    ring-blue: "#3b82f6"
-    surface-elevated: "#26292f"
-    surface-hover: "#2a2d33"
-    border-default: "#2c2f35"
-    border-strong: "#3a3d42"
-    inverse-near-black: "#0a0a0a"
-  typography:
-    family: { sans: "universalSans", mono: "GeistMono" }
-    display-hero: { size: 320, weight: 300, lineHeight: 1.50, use: "GeistMono, extreme display" }
-    section:      { size: 30, weight: 400, lineHeight: 1.20, use: "universalSans, section heading" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "universalSans, body" }
-    button:       { size: 14, weight: 400, lineHeight: 1.43, tracking: 1.4, use: "GeistMono, uppercase button" }
-    caption:      { size: 14, weight: 400, lineHeight: 1.50, use: "universalSans, label/caption" }
-    small:        { size: 12, weight: 400, lineHeight: 1.50, use: "universalSans, meta" }
-  spacing: { xs: 4, sm: 8, base: 24, lg: 48 }
-  rounded: { sm: 0, md: 0, lg: 4, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#ffffff", fg: "#1f2228", radius: 0, padding: "12px 24px", font: "14px/400 GeistMono", use: "Primary CTA, uppercase 1.4px tracking, hover 0.9 white" }
-    button-ghost: { type: button, fg: "#ffffff", radius: 0, padding: "12px 24px", font: "14px/400 GeistMono", use: "Secondary, 1px rgba(255,255,255,0.2) border" }
-    card: { type: card, radius: 0, padding: "24px", use: "Container, 1px rgba(255,255,255,0.1) border, no shadow, hover border 0.2" }
-    badge-mono: { type: badge, fg: "#ffffff", radius: 0, padding: "4px 8px", font: "12px GeistMono", use: "Monospace tag, 1px rgba(255,255,255,0.2) border" }
-    input-default: { type: input, fg: "#ffffff", radius: 0, padding: "8px 12px", font: "16px universalSans", use: "Form input, 1px rgba(255,255,255,0.2), focus blue ring, placeholder 0.3" }
-  components_harvested: true
+colors:
+  text-primary: '#ffffff'
+  canvas: '#1f2228'
+  ring-blue: '#3b82f6'
+  surface-elevated: '#26292f'
+  surface-hover: '#2a2d33'
+  border-default: '#2c2f35'
+  border-strong: '#3a3d42'
+  inverse-near-black: '#0a0a0a'
+typography:
+  display-hero:
+    fontSize: 320px
+    fontWeight: 300
+    lineHeight: 1.5
+    use: GeistMono, extreme display
+  section:
+    fontSize: 30px
+    fontWeight: 400
+    lineHeight: 1.2
+    use: universalSans, section heading
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: universalSans, body
+  button:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    letterSpacing: 1.4px
+    use: GeistMono, uppercase button
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: universalSans, label/caption
+  small:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: universalSans, meta
+rounded:
+  sm: 0px
+  md: 0px
+  lg: 4px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  base: 24
+  lg: 48
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1f2228'
+    rounded: 0px
+    padding: 12px 24px
+    typography: 14px/400 GeistMono
+    use: Primary CTA, uppercase 1.4px tracking, hover 0.9 white
+  button-ghost:
+    type: button
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 12px 24px
+    typography: 14px/400 GeistMono
+    use: Secondary, 1px rgba(255,255,255,0.2) border
+  card:
+    type: card
+    rounded: 0px
+    padding: 24px
+    use: Container, 1px rgba(255,255,255,0.1) border, no shadow, hover border 0.2
+  badge-mono:
+    type: badge
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 4px 8px
+    typography: 12px GeistMono
+    use: Monospace tag, 1px rgba(255,255,255,0.2) border
+  input-default:
+    type: input
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 8px 12px
+    typography: 16px universalSans
+    use: Form input, 1px rgba(255,255,255,0.2), focus blue ring, placeholder 0.3
+fonts:
+  roles:
+    sans: universalSans
+    mono: GeistMono
 ---
 
 # Design System Inspiration of xAI
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 xAI's website is a masterclass in dark-first, monospace-driven brutalist minimalism -- a design system that feels like it was built by engineers who understand that restraint is the ultimate form of sophistication. The entire experience is anchored to an almost-black background (`#1f2228`) with pure white text (`#ffffff`), creating a high-contrast, terminal-inspired aesthetic that signals deep technical credibility. There are no gradients, no decorative illustrations, no color accents competing for attention. This is a site that communicates through absence.
 
@@ -63,13 +114,41 @@ The spacing system operates on an 8px base grid with values concentrated at the 
 - Heroicons SVG icon system -- minimal, functional
 - Tailwind CSS with arbitrary values -- utility-first engineering approach
 
-## Primary tasks
+### Primary tasks
 
 - Try Grok from the site's primary call to action.
 - Read an announcement about a new model release.
 - View the API documentation linked from the site.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+xAI was **founded March 2023** by **Elon Musk** with a team of AI researchers from **DeepMind, OpenAI**, and other leading labs in Palo Alto. Positioned as the "anti-OpenAI" — **Grok unveiled 2023-11-04** (integrated with X), **Grok-1 open-sourced 2024-03-17**, **Grok-1.5 (128k context) 2024-03-29**, **Grok 3 2025-02-17**, **Grok 4 + 4 Heavy 2025-07-09**. **Funding trajectory**: $134.7M Dec 2023 → **$6B Series B @ $24B (May 2024)** → **$6B Series C @ $50B (Dec 2024)** → **$20B Series E @ $230B** → **SpaceX all-stock acquisition valuing xAI at $250B** (combined entity ~$1.25T). **Colossus supercomputer** (>100k GPUs) built in Memphis, Tennessee in 122 days, fully operational Dec 2024; **Colossus 2** expansion underway. The brand identity — pure black canvas, thin 14px·400 sans, monochromatic white-on-black discipline, 9999px pill chrome — signals serious research lab while Grok product carries a separately irreverent voice. <!-- citations: Wikipedia (xAI), Britannica Money, Sacra, Wikipedia (Grok chatbot) -->
+
+**Sources:**
+- [xAI (company) — Wikipedia](https://en.wikipedia.org/wiki/XAI_(company))
+- [Grok (chatbot) — Wikipedia](https://en.wikipedia.org/wiki/Grok_(chatbot))
+- [Britannica Money — xAI](https://www.britannica.com/money/xAI)
+- [Sacra — xAI revenue, valuation & funding](https://sacra.com/c/xai/)
+
+### Principles
+
+1. **Pure black canvas.** *UI implication:* `#000` everywhere; no warm dark substitutes.
+2. **White-on-dark monochrome.** *UI implication:* resist color unless function-critical.
+3. **Generous section padding (48-96px).** *UI implication:* never cramp; whitespace is the design.
+4. **Two-brand voice split.** xAI corporate = research; Grok product = irreverent.
+5. **Pill chrome 9999px.** *UI implication:* CTAs and badges pill-shaped.
+
+### Personas
+
+*Personas are fictional archetypes informed by xAI / Grok user segments (X platform power users, AI researchers, contrarian-tech-conservative subscribers), not individual people.*
+
+**Marcus Webb, 38, Austin.** X Premium subscriber. Grok daily.
+
+**Sergey Volkov, 35, Berlin.** AI researcher. Reads xAI corporate model releases.
+
+**Sofia Park, 30, Seoul.** Curious early-adopter. Tried Grok via X integration.
+
+## Colors
 
 ### Primary
 - **Pure White** (`#ffffff`): The singular text color, link color, and all foreground elements. In xAI's system, white is not a background -- it is the voice.
@@ -103,7 +182,7 @@ The rgba overlays above resolve to these effective hex values when composited on
 ### Focus Ring (explicit hex from Tailwind)
 - **Ring Blue** (`#3b82f6`): The Tailwind default focus color (`rgb(59, 130, 246)`) used for keyboard accessibility — only chromatic accent in the otherwise monochrome system.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Display / Buttons**: `GeistMono`, with fallback: `ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New`
@@ -127,7 +206,106 @@ The rgba overlays above resolve to these effective hex values when composited on
 - **Sans-serif for reading**: universalSans at 16px/1.5 provides excellent readability for body content, creating a clean contrast against the monospace display elements.
 - **Two-font clarity**: The system uses exactly two typefaces with clear roles -- monospace for impact and interaction, sans-serif for information and reading. No overlap, no ambiguity.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 8px, 24px, 48px
+- The scale is deliberately sparse -- xAI avoids granular spacing distinctions, preferring large jumps that create clear visual hierarchy through whitespace alone
+
+### Grid & Container
+- Max content width: approximately 1200px
+- Hero: full-viewport height with massive centered monospace headline
+- Feature sections: simple vertical stacking with generous section padding (48px-96px)
+- Two-column layouts for feature descriptions at desktop
+- Full-width dark sections maintain the single dark background throughout
+
+### Whitespace Philosophy
+- **Extreme generosity**: xAI uses vast amounts of whitespace. The 320px headline with 48px+ surrounding padding creates a sense of emptiness that is itself a design statement -- the content is so important it needs room to breathe.
+- **Vertical rhythm over horizontal density**: Content stacks vertically with large gaps between sections rather than packing horizontally. This creates a scroll-driven experience that feels deliberate and cinematic.
+- **No visual noise**: The absence of decorative elements, borders between sections, and color variety means whitespace is the primary structural tool.
+
+### Breakpoints
+- 2000px, 1536px, 1280px, 1024px, 1000px, 768px, 640px
+- Tailwind responsive modifiers drive breakpoint behavior
+
+### Border Radius Scale
+- Sharp (0px): Primary treatment for buttons, cards, inputs -- the default
+- Subtle (4px): Occasional softening on secondary containers
+- The near-zero radius philosophy is core to the brand's brutalist identity
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline scales dramatically down |
+| Small Tablet | 640-768px | Slight increase in padding |
+| Tablet | 768-1024px | Two-column layouts begin, heading sizes increase |
+| Desktop | 1024-1280px | Full layout, generous whitespace |
+| Large | 1280-1536px | Wider containers, more breathing room |
+| Extra Large | 1536-2000px | Maximum content width, centered |
+| Ultra | >2000px | Content stays centered, extreme margins |
+
+#### Touch Targets
+- Buttons use 12px 24px padding for comfortable touch
+- Navigation links spaced with 24px gaps
+- Minimum tap target: 44px height
+- Mobile: full-width buttons for easy thumb reach
+
+#### Collapsing Strategy
+- Hero: 320px monospace headline scales down dramatically (to ~48px-64px on mobile)
+- Navigation: horizontal links collapse to hamburger menu
+- Feature sections: two-column to single-column stacking
+- Section padding: 96px -> 48px -> 24px across breakpoints
+- Massive display type is the first thing to resize -- it must remain impactful but not overflow
+
+#### Image Behavior
+- Minimal imagery -- the site relies on typography and whitespace
+- Any product screenshots maintain sharp corners
+- Full-width media scales proportionally with viewport
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, no border | Page background, body content |
+| Surface (Level 1) | `rgba(255,255,255,0.03)` background | Subtle card surfaces |
+| Bordered (Level 2) | `1px solid rgba(255,255,255,0.1)` border | Cards, containers, dividers |
+| Active (Level 3) | `1px solid rgba(255,255,255,0.2)` border | Hover states, active elements |
+| Focus (Accessibility) | `ring` with `rgb(59,130,246)/0.5` | Keyboard focus indicator |
+
+**Elevation Philosophy**: xAI rejects the conventional shadow-based elevation system entirely. There are no box-shadows anywhere on the site. Instead, depth is communicated through three mechanisms: (1) opacity-based borders that brighten on interaction, creating a sense of elements "activating" rather than lifting; (2) extremely subtle background opacity shifts (`0.03` to `0.08`) that create barely-perceptible surface differentiation; and (3) the massive scale contrast between the 320px display type and 16px body text, which creates typographic depth. This is elevation through contrast and opacity, not through simulated light and shadow.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce — research register. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-09 (Apple-tier full migration)
+**Tier 1 sources:** https://x.ai/, https://x.ai/api (live DOM via playwright)
+- **Outline Primary** transparent / `#fff` / 9999px / 38px / 8×16 / 14px·400 (Try Grok / Read announcement / Sign up now / Explore more — canonical home variant)
+- **Inverse Primary** `#fff` / `rgb(10,10,10)` `#0a0a0a` near-black / 9999px / 38px / 8×16 / 14px·400 (Grok 4.3 API / View docs — /api hero variant)
+- **Compact ghost CTA** transparent / `#fff` / 9999px / 34px / 6×14 / 14px·400 (Use now / Build now / Read)
+- **Top nav** transparent / `rgba(255,255,255,0.5)` translucent / 0px / 28px / 6×12 / 14px·400 (Grok / API / Company / Colossus / Careers)
+- All weight **400** — never bold; pure monochrome white-on-black-`#000`-canvas
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** Wikipedia (xAI), Wikipedia (Grok chatbot), Britannica Money, Sacra.
+**Style ref:** `claude` (research minimalism). **Conflicts unresolved:** none.
+
+## Components
 
 ### Buttons
 
@@ -190,47 +368,23 @@ The rgba overlays above resolve to these effective hex values when composited on
 - Placeholder: `rgba(255, 255, 255, 0.3)`
 - Label: `rgba(255, 255, 255, 0.7)`, universalSans 14px
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 24px, 48px
-- The scale is deliberately sparse -- xAI avoids granular spacing distinctions, preferring large jumps that create clear visual hierarchy through whitespace alone
+| State | Treatment |
+|---|---|
+| **Empty (no chat)** | Grok prompt with example queries |
+| **Empty (no API keys)** | "Generate API key" |
+| **Loading (model)** | Per-token streaming |
+| **Loading (image)** | Generation progress |
+| **Error (rate limit)** | "Rate limit. Try again in 30s." |
+| **Error (model)** | Specific cause |
+| **Success (response)** | Inline + share/copy |
+| **Success (deployed)** | Endpoint URL |
+| **Skeleton** | Pure-black placeholders with thin white borders |
+| **Disabled (no Premium)** | Upgrade to X Premium link |
+| **Loading (long task)** | Persistent progress |
 
-### Grid & Container
-- Max content width: approximately 1200px
-- Hero: full-viewport height with massive centered monospace headline
-- Feature sections: simple vertical stacking with generous section padding (48px-96px)
-- Two-column layouts for feature descriptions at desktop
-- Full-width dark sections maintain the single dark background throughout
-
-### Whitespace Philosophy
-- **Extreme generosity**: xAI uses vast amounts of whitespace. The 320px headline with 48px+ surrounding padding creates a sense of emptiness that is itself a design statement -- the content is so important it needs room to breathe.
-- **Vertical rhythm over horizontal density**: Content stacks vertically with large gaps between sections rather than packing horizontally. This creates a scroll-driven experience that feels deliberate and cinematic.
-- **No visual noise**: The absence of decorative elements, borders between sections, and color variety means whitespace is the primary structural tool.
-
-### Breakpoints
-- 2000px, 1536px, 1280px, 1024px, 1000px, 768px, 640px
-- Tailwind responsive modifiers drive breakpoint behavior
-
-### Border Radius Scale
-- Sharp (0px): Primary treatment for buttons, cards, inputs -- the default
-- Subtle (4px): Occasional softening on secondary containers
-- The near-zero radius philosophy is core to the brand's brutalist identity
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, body content |
-| Surface (Level 1) | `rgba(255,255,255,0.03)` background | Subtle card surfaces |
-| Bordered (Level 2) | `1px solid rgba(255,255,255,0.1)` border | Cards, containers, dividers |
-| Active (Level 3) | `1px solid rgba(255,255,255,0.2)` border | Hover states, active elements |
-| Focus (Accessibility) | `ring` with `rgb(59,130,246)/0.5` | Keyboard focus indicator |
-
-**Elevation Philosophy**: xAI rejects the conventional shadow-based elevation system entirely. There are no box-shadows anywhere on the site. Instead, depth is communicated through three mechanisms: (1) opacity-based borders that brighten on interaction, creating a sense of elements "activating" rather than lifting; (2) extremely subtle background opacity shifts (`0.03` to `0.08`) that create barely-perceptible surface differentiation; and (3) the massive scale contrast between the 320px display type and 16px body text, which creates typographic depth. This is elevation through contrast and opacity, not through simulated light and shadow.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `#1f2228` as the universal background -- never pure black `#000000`
@@ -252,38 +406,24 @@ The rgba overlays above resolve to these effective hex values when composited on
 - Don't use proportional fonts for buttons -- GeistMono uppercase is mandatory
 - Don't use colored status indicators unless absolutely necessary -- keep everything in the white/dark spectrum
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline scales dramatically down |
-| Small Tablet | 640-768px | Slight increase in padding |
-| Tablet | 768-1024px | Two-column layouts begin, heading sizes increase |
-| Desktop | 1024-1280px | Full layout, generous whitespace |
-| Large | 1280-1536px | Wider containers, more breathing room |
-| Extra Large | 1536-2000px | Maximum content width, centered |
-| Ultra | >2000px | Content stays centered, extreme margins |
+xAI's voice is **research-oriented and Grok-irreverent.** "Understand the Universe" — Musk's mission framing for xAI. Pure white-on-dark monochrome signals "research lab"; Grok's irreverent tone in product surfaces (vs. xAI corporate's research register) creates a deliberate split.
 
-### Touch Targets
-- Buttons use 12px 24px padding for comfortable touch
-- Navigation links spaced with 24px gaps
-- Minimum tap target: 44px height
-- Mobile: full-width buttons for easy thumb reach
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Try Grok", "Read announcement", "Use now" |
+| Marketing | Research-positioned. Mathematical curiosity framing |
+| Grok product | Irreverent. "Memes are valid input" energy |
+| Error | Specific. "Rate limit. Try again in 30s." |
 
-### Collapsing Strategy
-- Hero: 320px monospace headline scales down dramatically (to ~48px-64px on mobile)
-- Navigation: horizontal links collapse to hamburger menu
-- Feature sections: two-column to single-column stacking
-- Section padding: 96px -> 48px -> 24px across breakpoints
-- Massive display type is the first thing to resize -- it must remain impactful but not overflow
+**Voice samples**
+- xAI CTAs: *"Try Grok"*, *"Read announcement"*, *"Use now"* <!-- verified: x.ai homepage 2026-05 -->
+- Tagline: *"Understand the Universe"* <!-- verified: x.ai homepage -->
 
-### Image Behavior
-- Minimal imagery -- the site relies on typography and whitespace
-- Any product screenshots maintain sharp corners
-- Full-width media scales proportionally with viewport
+**Forbidden phrases.** Generic "AI revolution" framing on xAI corporate. Inverse: corporate-stiff voice on Grok product (would break the brand split).
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Background: Dark (`#1f2228`)
@@ -316,86 +456,3 @@ The rgba overlays above resolve to these effective hex values when composited on
 8. Body text at 16px universalSans with 1.5 line-height for comfortable reading
 9. Generous section padding (48px-96px) -- let content breathe in the darkness
 10. The monochromatic white-on-dark palette is absolute -- resist adding color unless critical for function
-
-## 10. Voice & Tone
-
-xAI's voice is **research-oriented and Grok-irreverent.** "Understand the Universe" — Musk's mission framing for xAI. Pure white-on-dark monochrome signals "research lab"; Grok's irreverent tone in product surfaces (vs. xAI corporate's research register) creates a deliberate split.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Try Grok", "Read announcement", "Use now" |
-| Marketing | Research-positioned. Mathematical curiosity framing |
-| Grok product | Irreverent. "Memes are valid input" energy |
-| Error | Specific. "Rate limit. Try again in 30s." |
-
-**Voice samples**
-- xAI CTAs: *"Try Grok"*, *"Read announcement"*, *"Use now"* <!-- verified: x.ai homepage 2026-05 -->
-- Tagline: *"Understand the Universe"* <!-- verified: x.ai homepage -->
-
-**Forbidden phrases.** Generic "AI revolution" framing on xAI corporate. Inverse: corporate-stiff voice on Grok product (would break the brand split).
-
-## 11. Brand Narrative
-
-xAI was **founded March 2023** by **Elon Musk** with a team of AI researchers from **DeepMind, OpenAI**, and other leading labs in Palo Alto. Positioned as the "anti-OpenAI" — **Grok unveiled 2023-11-04** (integrated with X), **Grok-1 open-sourced 2024-03-17**, **Grok-1.5 (128k context) 2024-03-29**, **Grok 3 2025-02-17**, **Grok 4 + 4 Heavy 2025-07-09**. **Funding trajectory**: $134.7M Dec 2023 → **$6B Series B @ $24B (May 2024)** → **$6B Series C @ $50B (Dec 2024)** → **$20B Series E @ $230B** → **SpaceX all-stock acquisition valuing xAI at $250B** (combined entity ~$1.25T). **Colossus supercomputer** (>100k GPUs) built in Memphis, Tennessee in 122 days, fully operational Dec 2024; **Colossus 2** expansion underway. The brand identity — pure black canvas, thin 14px·400 sans, monochromatic white-on-black discipline, 9999px pill chrome — signals serious research lab while Grok product carries a separately irreverent voice. <!-- citations: Wikipedia (xAI), Britannica Money, Sacra, Wikipedia (Grok chatbot) -->
-
-**Sources:**
-- [xAI (company) — Wikipedia](https://en.wikipedia.org/wiki/XAI_(company))
-- [Grok (chatbot) — Wikipedia](https://en.wikipedia.org/wiki/Grok_(chatbot))
-- [Britannica Money — xAI](https://www.britannica.com/money/xAI)
-- [Sacra — xAI revenue, valuation & funding](https://sacra.com/c/xai/)
-
-## 12. Principles
-
-1. **Pure black canvas.** *UI implication:* `#000` everywhere; no warm dark substitutes.
-2. **White-on-dark monochrome.** *UI implication:* resist color unless function-critical.
-3. **Generous section padding (48-96px).** *UI implication:* never cramp; whitespace is the design.
-4. **Two-brand voice split.** xAI corporate = research; Grok product = irreverent.
-5. **Pill chrome 9999px.** *UI implication:* CTAs and badges pill-shaped.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by xAI / Grok user segments (X platform power users, AI researchers, contrarian-tech-conservative subscribers), not individual people.*
-
-**Marcus Webb, 38, Austin.** X Premium subscriber. Grok daily.
-
-**Sergey Volkov, 35, Berlin.** AI researcher. Reads xAI corporate model releases.
-
-**Sofia Park, 30, Seoul.** Curious early-adopter. Tried Grok via X integration.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no chat)** | Grok prompt with example queries |
-| **Empty (no API keys)** | "Generate API key" |
-| **Loading (model)** | Per-token streaming |
-| **Loading (image)** | Generation progress |
-| **Error (rate limit)** | "Rate limit. Try again in 30s." |
-| **Error (model)** | Specific cause |
-| **Success (response)** | Inline + share/copy |
-| **Success (deployed)** | Endpoint URL |
-| **Skeleton** | Pure-black placeholders with thin white borders |
-| **Disabled (no Premium)** | Upgrade to X Premium link |
-| **Loading (long task)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce — research register. `prefers-reduced-motion: reduce` removes hover transitions.
-
----
-
-**Verified:** 2026-05-09 (Apple-tier full migration)
-**Tier 1 sources:** https://x.ai/, https://x.ai/api (live DOM via playwright)
-- **Outline Primary** transparent / `#fff` / 9999px / 38px / 8×16 / 14px·400 (Try Grok / Read announcement / Sign up now / Explore more — canonical home variant)
-- **Inverse Primary** `#fff` / `rgb(10,10,10)` `#0a0a0a` near-black / 9999px / 38px / 8×16 / 14px·400 (Grok 4.3 API / View docs — /api hero variant)
-- **Compact ghost CTA** transparent / `#fff` / 9999px / 34px / 6×14 / 14px·400 (Use now / Build now / Read)
-- **Top nav** transparent / `rgba(255,255,255,0.5)` translucent / 0px / 28px / 6×12 / 14px·400 (Grok / API / Company / Colossus / Careers)
-- All weight **400** — never bold; pure monochrome white-on-black-`#000`-canvas
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** Wikipedia (xAI), Wikipedia (Grok chatbot), Britannica Money, Sacra.
-**Style ref:** `claude` (research minimalism). **Conflicts unresolved:** none.

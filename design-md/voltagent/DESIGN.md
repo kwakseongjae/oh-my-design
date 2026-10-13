@@ -1,64 +1,136 @@
 ---
-id: voltagent
 name: VoltAgent
-country: US
-category: ai
-homepage: "https://voltagent.dev"
-primary_color: "#22c55e"
-logo:
-  type: github
-  slug: VoltAgent
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#00d992"
-    mint: "#2fd6a1"
-    emerald: "#10b981"
-    purple: "#818cf8"
-    cobalt: "#306cce"
-    canvas: "#050507"
-    surface: "#101010"
-    border: "#3d3a39"
-    text: "#f2f2f2"
-    on-primary: "#ffffff"
-    body: "#b8b3b0"
-    muted: "#8b949e"
-    success: "#008b00"
-    warning: "#ffba00"
-    danger: "#fb565b"
-    info: "#4cb3d4"
-  typography:
-    family: { sans: "system-ui", mono: "SFMono-Regular" }
-    display:     { size: 60, weight: 400, lineHeight: 1.00, tracking: -0.65, use: "Hero, compressed blocks" }
-    section:     { size: 36, weight: 400, lineHeight: 1.11, tracking: -0.9, use: "Section headings" }
-    subheading:  { size: 24, weight: 700, lineHeight: 1.33, tracking: -0.6, use: "Bold emphasis sub-heads" }
-    overline:    { size: 20, weight: 600, lineHeight: 1.40, tracking: 0.5, use: "Uppercase section labels" }
-    feature:     { size: 20, weight: 500, lineHeight: 1.40, use: "Card headings, feature names" }
-    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Body, nav links, buttons" }
-    caption:     { size: 14, weight: 400, lineHeight: 1.43, use: "Descriptions, metadata, badges" }
-    micro:       { size: 12, weight: 400, lineHeight: 1.33, use: "Smallest sans text" }
-    code:        { size: 14, weight: 400, lineHeight: 1.43, use: "Inline code, terminal output" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
-  shadow:
-    haze: "rgba(92,88,85,0.2) 0px 0px 15px"
-    dramatic: "rgba(0,0,0,0.7) 0px 20px 60px"
-  components:
-    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 6, padding: "12px 16px", use: "Default interactive; 1px #3d3a39 border" }
-    button-primary: { type: button, bg: "#101010", fg: "#2fd6a1", radius: 6, padding: "12px 16px", use: "Powered-on CTA; mint text on dark, mint outline" }
-    button-container: { type: button, bg: "#101010", fg: "#f2f2f2", radius: 8, padding: "20px", use: "Card-like button for larger surfaces; 3px #3d3a39 border" }
-    card: { type: card, bg: "#101010", fg: "#f2f2f2", radius: 8, use: "Content card; 1px #3d3a39 border, 2px #00d992 if active; haze shadow" }
-    input: { type: input, bg: "#101010", fg: "#f2f2f2", use: "Inferred; #3d3a39 border, mint focus ring" }
-    nav: { type: tab, bg: "#050507", fg: "#f2f2f2", font: "14px/500", use: "Sticky top nav; links shift green on hover" }
-  components_harvested: true
+colors:
+  primary: '#00d992'
+  mint: '#2fd6a1'
+  emerald: '#10b981'
+  purple: '#818cf8'
+  cobalt: '#306cce'
+  canvas: '#050507'
+  surface: '#101010'
+  border: '#3d3a39'
+  text: '#f2f2f2'
+  on-primary: '#ffffff'
+  body: '#b8b3b0'
+  muted: '#8b949e'
+  success: '#008b00'
+  warning: '#ffba00'
+  danger: '#fb565b'
+  info: '#4cb3d4'
+typography:
+  display:
+    fontSize: 60px
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: '-0.65px'
+    use: Hero, compressed blocks
+  section:
+    fontSize: 36px
+    fontWeight: 400
+    lineHeight: 1.11
+    letterSpacing: '-0.9px'
+    use: Section headings
+  subheading:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: '-0.6px'
+    use: Bold emphasis sub-heads
+  overline:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: 0.5px
+    use: Uppercase section labels
+  feature:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Card headings, feature names
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Body, nav links, buttons
+  caption:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Descriptions, metadata, badges
+  micro:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    use: Smallest sans text
+  code:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    use: Inline code, terminal output
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 12px 16px
+    use: 'Default interactive; 1px #3d3a39 border'
+  button-primary:
+    type: button
+    backgroundColor: '#101010'
+    textColor: '#2fd6a1'
+    rounded: 6px
+    padding: 12px 16px
+    use: Powered-on CTA; mint text on dark, mint outline
+  button-container:
+    type: button
+    backgroundColor: '#101010'
+    textColor: '#f2f2f2'
+    rounded: 8px
+    padding: 20px
+    use: 'Card-like button for larger surfaces; 3px #3d3a39 border'
+  card:
+    type: card
+    backgroundColor: '#101010'
+    textColor: '#f2f2f2'
+    rounded: 8px
+    use: 'Content card; 1px #3d3a39 border, 2px #00d992 if active; haze shadow'
+  input:
+    type: input
+    backgroundColor: '#101010'
+    textColor: '#f2f2f2'
+    use: 'Inferred; #3d3a39 border, mint focus ring'
+  nav:
+    type: tab
+    backgroundColor: '#050507'
+    textColor: '#f2f2f2'
+    typography: 14px/500
+    use: Sticky top nav; links shift green on hover
+fonts:
+  roles:
+    sans: system-ui
+    mono: SFMono-Regular
 ---
 
 # Design System Inspiration of VoltAgent
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 VoltAgent's interface is a deep-space command terminal for the AI age — a developer-facing darkness built on near-pure-black surfaces (`#050507`) where the only interruption is the electric pulse of emerald green energy. The entire experience evokes the feeling of staring into a high-powered IDE at 2am: dark, focused, and alive with purpose. This is not a friendly SaaS landing page — it's an engineering platform that announces itself through code snippets, architectural diagrams, and raw technical confidence.
 
@@ -75,7 +147,7 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - Developer-terminal aesthetic where code snippets ARE the hero content
 - Green glow effects (`drop-shadow`, border accents) that make UI elements feel electrically alive
 
-## Primary tasks
+### Primary tasks
 
 - Copy the install command and start a new project
 - Build an agent with memory, RAG, tools, and guardrails
@@ -83,7 +155,29 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - Migrate an existing agent project for stronger type safety
 - Read real TypeScript snippets before adopting the framework
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+VoltAgent is the **open-source TypeScript AI agent framework** — a 2024-launched project providing memory, RAG, guardrails, tools, MCP, voice, and workflow primitives in one type-safe package, with **n8n-style observability** as the differentiator ([VoltAgent — voltagent.dev](https://voltagent.dev/), [GitHub: VoltAgent/voltagent](https://github.com/VoltAgent/voltagent), [Product Hunt — VoltAgent OSS AI Agent Framework](https://www.producthunt.com/products/voltagent-opensource-ai-agent-framework)). **MIT-licensed**. Founder: **Omer Aplak** (referenced across VoltAgent's GitHub org and community). **GitHub: ~8.7K stars** (live header confirms "Thank you! 8.7K" badge 2026-05). **Business model**: open-core — core framework always remains OSS; advanced enterprise features on the **observability side (VoltOps)** are monetized. The team also maintains the **getdesign.md ecosystem** (collection of DESIGN.md files for AI agents to reference — also referenced throughout this oh-my-design migration project). **Integrations confirmed**: Qdrant (vector DB), Hugging Face (`huggingface.co/voltagent`). Position: developer-first, type-safe, OSS-default.
+
+### Principles
+
+1. **TypeScript-first.** *UI implication:* every code snippet shows .ts not .py.
+2. **Open source heritage.** *UI implication:* GitHub link prominent on landing.
+3. **Slow subtle animations.** Marquee 25-80s. *UI implication:* avoid fast/aggressive motion.
+4. **Three fonts.** system-ui / Inter / SFMono-Regular. *UI implication:* don't substitute.
+5. **Glow pulses gently.** *UI implication:* preserve subtle glow accent on hero.
+
+### Personas
+
+*Personas are fictional archetypes informed by VoltAgent user segments (TS-first developers, AI agent builders, indie SaaS), not individual people.*
+
+**Sofia Russo, 30, Milan.** Indie SaaS founder. VoltAgent for typed agent infrastructure.
+
+**Marcus Chen, 35, San Francisco.** Senior TypeScript engineer. Migrated from LangChain JS for type safety.
+
+**Priya Krishnan, 27, Bengaluru.** AI engineer at startup. VoltOps for agent observability.
+
+## Colors
 
 ### Primary
 - **Emerald Signal Green** (`#00d992`): The core brand energy — used for accent borders, glow effects, and the highest-signal interactive moments. This is the "power-on" indicator of the entire interface.
@@ -125,7 +219,7 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - **Warm Ambient Haze**: `rgba(92, 88, 85, 0.2) 0px 0px 15px` — a warm-toned diffused shadow that creates a soft atmospheric glow around elevated cards, visible at the edges without sharp boundaries.
 - **Deep Dramatic Elevation**: `rgba(0, 0, 0, 0.7) 0px 20px 60px` with `rgba(148, 163, 184, 0.1) 0px 0px 0px 1px inset` — a heavy, dramatic downward shadow paired with a faint inset slate ring for the most prominent floating elements.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary (Headings)**: `system-ui`, with fallbacks: `-apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol`
@@ -159,7 +253,115 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - **Uppercase is earned and wide**: When uppercase appears, it's always paired with generous letter-spacing (0.45px–2.52px), transforming dense words into spaced-out overline labels. This treatment is never applied to headings.
 - **OpenType by default**: Both system-ui and Inter enable `"calt"` and `"rlig"` features, ensuring contextual character adjustments and ligature rendering throughout.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 2px, 4px, 5px, 6px, 6.4px, 8px, 12px, 16px, 20px, 24px, 28px, 32px, 40px, 48px, 64px
+- Button padding: 12px 16px (standard), 20px (container-button)
+- Card internal padding: approximately 24–32px
+- Section vertical spacing: generous (estimated 64–96px between major sections)
+- Component gap: 16–24px between sibling cards/elements
+
+### Grid & Container
+- Max container width: approximately 1280–1440px, centered
+- Hero: centered single-column with maximum breathing room
+- Feature sections: alternating asymmetric layouts (code left / text right, then reversed)
+- Logo marquee: full-width horizontal scroll, breaking the container constraint
+- Card grids: 2–3 column for feature showcases
+- Integration grid: responsive multi-column for partner/integration icons
+
+### Whitespace Philosophy
+- **Cinematic breathing room between sections**: Massive vertical gaps create a "scroll-through-chapters" experience — each section feels like a new scene.
+- **Dense within components**: Cards and code blocks are internally compact, with tight line-heights and controlled padding. Information is concentrated, not spread thin.
+- **Border-defined separation**: Rather than relying solely on whitespace, VoltAgent uses the Warm Charcoal border system (`#3d3a39`) to delineate content zones. The border IS the whitespace signal.
+- **Hero-first hierarchy**: The top of the page commands the most space — the "AI Agent Engineering Platform" headline and npm command get maximum vertical runway before the first content section appears.
+
+### Border Radius Scale
+- Nearly squared (4px): Small inline elements, SVG containers, code spans — the sharpest treatment, conveying technical precision
+- Subtly rounded (6px): Buttons, links, clipboard actions — the workhorse radius for interactive elements
+- Code-specific (6.4px): Code blocks, `pre` elements, clipboard copy targets — a deliberate micro-distinction from standard 6px
+- Comfortably rounded (8px): Content cards, feature containers, emphasized buttons — the standard containment radius
+- Pill-shaped (9999px): Tags, badges, status indicators, pill-shaped navigation elements — the roundest treatment for small categorical labels
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Small Mobile | <420px | Minimum layout, stacked everything, reduced hero text to ~24px |
+| Mobile | 420–767px | Single column, hamburger nav, full-width cards, hero text ~36px |
+| Tablet | 768–1024px | 2-column grids begin, condensed nav, medium hero text |
+| Desktop | 1025–1440px | Full multi-column layout, expanded nav with dropdowns, large hero (60px) |
+| Large Desktop | >1440px | Max-width container centered (est. 1280–1440px), generous horizontal margins |
+
+*23 breakpoints detected in total, ranging from 360px to 1992px — indicating a fluid, heavily responsive grid system rather than fixed breakpoint snapping.*
+
+#### Touch Targets
+- Buttons use comfortable padding (12px 16px minimum) ensuring adequate touch area
+- Navigation links spaced with sufficient gap for thumb navigation
+- Interactive card surfaces are large enough to serve as full touch targets
+- Minimum recommended touch target: 44x44px
+
+#### Collapsing Strategy
+- **Navigation**: Full horizontal nav with dropdowns collapses to hamburger menu on mobile
+- **Feature grids**: 3-column → 2-column → single-column vertical stacking
+- **Hero text**: 60px → 36px → 24px progressive scaling with maintained compression ratios
+- **Logo marquee**: Adjusts scroll speed and item sizing; maintains infinite loop
+- **Code blocks**: Horizontal scroll on smaller viewports rather than wrapping — preserving code readability
+- **Section padding**: Reduces proportionally but maintains generous vertical rhythm between chapters
+- **Cards**: Stack vertically on mobile with full-width treatment and maintained internal padding
+
+#### Image Behavior
+- Dark-themed screenshots and diagrams scale proportionally within containers
+- Agent flow diagrams simplify or scroll horizontally on narrow viewports
+- Dot-pattern decorative backgrounds scale with viewport
+- No visible art direction changes between breakpoints — same crops, proportional scaling
+- Lazy loading for below-fold images (Docusaurus default behavior)
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow, no border | Page background (`#050507`), inline text |
+| Contained (Level 1) | `1px solid #3d3a39`, no shadow | Standard cards, nav bar, code blocks |
+| Emphasized (Level 2) | `3px solid #3d3a39`, no shadow | Large interactive buttons, emphasized containers |
+| Accent (Level 3) | `2px solid #00d992`, no shadow | Active/highlighted feature cards, selected states |
+| Ambient Glow (Level 4) | `rgba(92, 88, 85, 0.2) 0px 0px 15px` | Elevated cards, hover states, soft atmospheric lift |
+| Dramatic Float (Level 5) | `rgba(0, 0, 0, 0.7) 0px 20px 60px` + `rgba(148, 163, 184, 0.1) 1px inset` | Hero feature showcase, modals, maximum-elevation content |
+
+**Shadow Philosophy**: VoltAgent communicates depth primarily through **border weight and color**, not shadows. The standard `1px solid #3d3a39` border IS the elevation — adding a `3px` border weight or switching to green (`#00d992`) communicates importance more than adding shadow does. When shadows do appear, they're either warm and diffused (Level 4) or cinematic and dramatic (Level 5) — never medium or generic.
+
+### Decorative Depth
+- **Green Signal Glow**: The VoltAgent bolt logo pulses with a `drop-shadow` animation cycling between 2px and 8px blur radius in Emerald Signal Green. This is the most distinctive decorative element — it makes the logo feel "powered on."
+- **Warm Charcoal Containment Lines**: The warm tone of `#3d3a39` borders creates a subtle visual warmth against the cool black, as if the cards are faintly heated from within.
+- **Dashed Workflow Lines**: `1px dashed rgba(79, 93, 117, 0.4)` creates a blueprint-like aesthetic for architecture diagrams, visually distinct from solid content borders.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.haze`: `rgba(92,88,85,0.2) 0px 0px 15px`
+- `shadow.dramatic`: `rgba(0,0,0,0.7) 0px 20px 60px`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce. **Slow subtle motion is the register.** `prefers-reduced-motion: reduce` removes marquee + glow.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 61 — Apple-tier)
+**Tier 1 sources:** https://voltagent.dev home + /docs (live DOM via playwright — Hero Primary `transparent` ghost + `#eeeeee` Off-White text 6px / 54px / 12×16 / 18px·**700**; Header Compact ghost 6px / 34px / 14px·500; **Brand accent `#2fd6a1` Voltage Green** (active states); Search variant `#00d992` Voltage Green Lighter; **Active Tab `#101010` Charcoal + Voltage Green text 0px** (terminal/IDE aesthetic); GitHub Star badge 9999px).
+**Tier 2 sources:** styles.refero.design / getdesign.md — directory-only (note: VoltAgent maintains the getdesign.md ecosystem).
+**Tier 2 (Philosophy):** voltagent.dev homepage, GitHub VoltAgent/voltagent (README/CONSOLE.md, MIT-license), Product Hunt, Medium (Gowtham), Qdrant integration, Hugging Face.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Voltage Green `#2fd6a1` brand accent + sharp-tab `#101010` Charcoal active state + search-variant lighter green `#00d992` + Star badge full-pill missed by prior pass.
+
+## Components
 
 ### Buttons
 
@@ -249,56 +451,23 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - Star count and contributor metrics prominently displayed
 - Warm social proof: Discord, X, Reddit, LinkedIn, YouTube links in footer
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 4px, 5px, 6px, 6.4px, 8px, 12px, 16px, 20px, 24px, 28px, 32px, 40px, 48px, 64px
-- Button padding: 12px 16px (standard), 20px (container-button)
-- Card internal padding: approximately 24–32px
-- Section vertical spacing: generous (estimated 64–96px between major sections)
-- Component gap: 16–24px between sibling cards/elements
+| State | Treatment |
+|---|---|
+| **Empty (no agents)** | "Create first agent" CTA |
+| **Empty (no projects)** | "Try VoltOps" link |
+| **Loading (agent run)** | Per-step trace visible |
+| **Loading (compile)** | TypeScript checking indicator |
+| **Error (type)** | Inline TS error with line:column |
+| **Error (runtime)** | Stack trace visible |
+| **Success (agent ran)** | Result + trace expanded |
+| **Success (deployed)** | Endpoint visible |
+| **Skeleton (agent list)** | 6px placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
 
-### Grid & Container
-- Max container width: approximately 1280–1440px, centered
-- Hero: centered single-column with maximum breathing room
-- Feature sections: alternating asymmetric layouts (code left / text right, then reversed)
-- Logo marquee: full-width horizontal scroll, breaking the container constraint
-- Card grids: 2–3 column for feature showcases
-- Integration grid: responsive multi-column for partner/integration icons
-
-### Whitespace Philosophy
-- **Cinematic breathing room between sections**: Massive vertical gaps create a "scroll-through-chapters" experience — each section feels like a new scene.
-- **Dense within components**: Cards and code blocks are internally compact, with tight line-heights and controlled padding. Information is concentrated, not spread thin.
-- **Border-defined separation**: Rather than relying solely on whitespace, VoltAgent uses the Warm Charcoal border system (`#3d3a39`) to delineate content zones. The border IS the whitespace signal.
-- **Hero-first hierarchy**: The top of the page commands the most space — the "AI Agent Engineering Platform" headline and npm command get maximum vertical runway before the first content section appears.
-
-### Border Radius Scale
-- Nearly squared (4px): Small inline elements, SVG containers, code spans — the sharpest treatment, conveying technical precision
-- Subtly rounded (6px): Buttons, links, clipboard actions — the workhorse radius for interactive elements
-- Code-specific (6.4px): Code blocks, `pre` elements, clipboard copy targets — a deliberate micro-distinction from standard 6px
-- Comfortably rounded (8px): Content cards, feature containers, emphasized buttons — the standard containment radius
-- Pill-shaped (9999px): Tags, badges, status indicators, pill-shaped navigation elements — the roundest treatment for small categorical labels
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background (`#050507`), inline text |
-| Contained (Level 1) | `1px solid #3d3a39`, no shadow | Standard cards, nav bar, code blocks |
-| Emphasized (Level 2) | `3px solid #3d3a39`, no shadow | Large interactive buttons, emphasized containers |
-| Accent (Level 3) | `2px solid #00d992`, no shadow | Active/highlighted feature cards, selected states |
-| Ambient Glow (Level 4) | `rgba(92, 88, 85, 0.2) 0px 0px 15px` | Elevated cards, hover states, soft atmospheric lift |
-| Dramatic Float (Level 5) | `rgba(0, 0, 0, 0.7) 0px 20px 60px` + `rgba(148, 163, 184, 0.1) 1px inset` | Hero feature showcase, modals, maximum-elevation content |
-
-**Shadow Philosophy**: VoltAgent communicates depth primarily through **border weight and color**, not shadows. The standard `1px solid #3d3a39` border IS the elevation — adding a `3px` border weight or switching to green (`#00d992`) communicates importance more than adding shadow does. When shadows do appear, they're either warm and diffused (Level 4) or cinematic and dramatic (Level 5) — never medium or generic.
-
-### Decorative Depth
-- **Green Signal Glow**: The VoltAgent bolt logo pulses with a `drop-shadow` animation cycling between 2px and 8px blur radius in Emerald Signal Green. This is the most distinctive decorative element — it makes the logo feel "powered on."
-- **Warm Charcoal Containment Lines**: The warm tone of `#3d3a39` borders creates a subtle visual warmth against the cool black, as if the cards are faintly heated from within.
-- **Dashed Workflow Lines**: `1px dashed rgba(79, 93, 117, 0.4)` creates a blueprint-like aesthetic for architecture diagrams, visually distinct from solid content borders.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Abyss Black (`#050507`) as the landing page background and Carbon Surface (`#101010`) for all contained elements — the two-shade dark system is essential
@@ -324,42 +493,23 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - Don't skip the warm-gray border system — cards without `#3d3a39` borders lose their containment and float ambiguously on the dark canvas
 - Don't animate aggressively — animations are slow and subtle (25–100s durations for marquee, gentle glow pulses). Fast motion contradicts the "engineering precision" atmosphere
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Small Mobile | <420px | Minimum layout, stacked everything, reduced hero text to ~24px |
-| Mobile | 420–767px | Single column, hamburger nav, full-width cards, hero text ~36px |
-| Tablet | 768–1024px | 2-column grids begin, condensed nav, medium hero text |
-| Desktop | 1025–1440px | Full multi-column layout, expanded nav with dropdowns, large hero (60px) |
-| Large Desktop | >1440px | Max-width container centered (est. 1280–1440px), generous horizontal margins |
+VoltAgent's voice is **TypeScript-AI-framework and developer-honest.** "Open Source TypeScript AI Agent Framework" — capability-driven, OSS-positioned. Marketing emphasizes the developer-tools-team behind getdesign.md / DESIGN.md ecosystem.
 
-*23 breakpoints detected in total, ranging from 360px to 1992px — indicating a fluid, heavily responsive grid system rather than fixed breakpoint snapping.*
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get Started", "Try VoltOps", "View on GitHub" |
+| Marketing | Code-first. Real TypeScript snippets in marketing |
+| Documentation | Type-aware, framework-deep |
+| Error | Stack-trace-friendly |
 
-### Touch Targets
-- Buttons use comfortable padding (12px 16px minimum) ensuring adequate touch area
-- Navigation links spaced with sufficient gap for thumb navigation
-- Interactive card surfaces are large enough to serve as full touch targets
-- Minimum recommended touch target: 44x44px
+**Voice samples**
+- Marketing CTA: *"Get Started"* / *"Try VoltOps"* <!-- verified: voltagent.dev homepage 2026-05 -->
 
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav with dropdowns collapses to hamburger menu on mobile
-- **Feature grids**: 3-column → 2-column → single-column vertical stacking
-- **Hero text**: 60px → 36px → 24px progressive scaling with maintained compression ratios
-- **Logo marquee**: Adjusts scroll speed and item sizing; maintains infinite loop
-- **Code blocks**: Horizontal scroll on smaller viewports rather than wrapping — preserving code readability
-- **Section padding**: Reduces proportionally but maintains generous vertical rhythm between chapters
-- **Cards**: Stack vertically on mobile with full-width treatment and maintained internal padding
+**Forbidden phrases.** "Revolutionary AI framework". Generic LangChain-comparison framing.
 
-### Image Behavior
-- Dark-themed screenshots and diagrams scale proportionally within containers
-- Agent flow diagrams simplify or scroll horizontally on narrow viewports
-- Dot-pattern decorative backgrounds scale with viewport
-- No visible art direction changes between breakpoints — same crops, proportional scaling
-- Lazy loading for below-fold images (Docusaurus default behavior)
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Brand Accent: "Emerald Signal Green (#00d992)"
@@ -387,74 +537,3 @@ When refining existing screens generated with this design system:
 5. For glow effects, specify "Emerald Signal Green (#00d992) as a drop-shadow with 2–8px blur radius"
 6. Always specify which font — system-ui for headings, Inter for body/UI, SFMono-Regular for code
 7. Keep animations slow and subtle — marquee scrolls at 25–80s, glow pulses gently
-
-## 10. Voice & Tone
-
-VoltAgent's voice is **TypeScript-AI-framework and developer-honest.** "Open Source TypeScript AI Agent Framework" — capability-driven, OSS-positioned. Marketing emphasizes the developer-tools-team behind getdesign.md / DESIGN.md ecosystem.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get Started", "Try VoltOps", "View on GitHub" |
-| Marketing | Code-first. Real TypeScript snippets in marketing |
-| Documentation | Type-aware, framework-deep |
-| Error | Stack-trace-friendly |
-
-**Voice samples**
-- Marketing CTA: *"Get Started"* / *"Try VoltOps"* <!-- verified: voltagent.dev homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary AI framework". Generic LangChain-comparison framing.
-
-## 11. Brand Narrative
-
-VoltAgent is the **open-source TypeScript AI agent framework** — a 2024-launched project providing memory, RAG, guardrails, tools, MCP, voice, and workflow primitives in one type-safe package, with **n8n-style observability** as the differentiator ([VoltAgent — voltagent.dev](https://voltagent.dev/), [GitHub: VoltAgent/voltagent](https://github.com/VoltAgent/voltagent), [Product Hunt — VoltAgent OSS AI Agent Framework](https://www.producthunt.com/products/voltagent-opensource-ai-agent-framework)). **MIT-licensed**. Founder: **Omer Aplak** (referenced across VoltAgent's GitHub org and community). **GitHub: ~8.7K stars** (live header confirms "Thank you! 8.7K" badge 2026-05). **Business model**: open-core — core framework always remains OSS; advanced enterprise features on the **observability side (VoltOps)** are monetized. The team also maintains the **getdesign.md ecosystem** (collection of DESIGN.md files for AI agents to reference — also referenced throughout this oh-my-design migration project). **Integrations confirmed**: Qdrant (vector DB), Hugging Face (`huggingface.co/voltagent`). Position: developer-first, type-safe, OSS-default.
-
-## 12. Principles
-
-1. **TypeScript-first.** *UI implication:* every code snippet shows .ts not .py.
-2. **Open source heritage.** *UI implication:* GitHub link prominent on landing.
-3. **Slow subtle animations.** Marquee 25-80s. *UI implication:* avoid fast/aggressive motion.
-4. **Three fonts.** system-ui / Inter / SFMono-Regular. *UI implication:* don't substitute.
-5. **Glow pulses gently.** *UI implication:* preserve subtle glow accent on hero.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by VoltAgent user segments (TS-first developers, AI agent builders, indie SaaS), not individual people.*
-
-**Sofia Russo, 30, Milan.** Indie SaaS founder. VoltAgent for typed agent infrastructure.
-
-**Marcus Chen, 35, San Francisco.** Senior TypeScript engineer. Migrated from LangChain JS for type safety.
-
-**Priya Krishnan, 27, Bengaluru.** AI engineer at startup. VoltOps for agent observability.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no agents)** | "Create first agent" CTA |
-| **Empty (no projects)** | "Try VoltOps" link |
-| **Loading (agent run)** | Per-step trace visible |
-| **Loading (compile)** | TypeScript checking indicator |
-| **Error (type)** | Inline TS error with line:column |
-| **Error (runtime)** | Stack trace visible |
-| **Success (agent ran)** | Result + trace expanded |
-| **Success (deployed)** | Endpoint visible |
-| **Skeleton (agent list)** | 6px placeholders |
-| **Disabled (no plan)** | Upgrade link |
-| **Loading (long task)** | Persistent progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce. **Slow subtle motion is the register.** `prefers-reduced-motion: reduce` removes marquee + glow.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 61 — Apple-tier)
-**Tier 1 sources:** https://voltagent.dev home + /docs (live DOM via playwright — Hero Primary `transparent` ghost + `#eeeeee` Off-White text 6px / 54px / 12×16 / 18px·**700**; Header Compact ghost 6px / 34px / 14px·500; **Brand accent `#2fd6a1` Voltage Green** (active states); Search variant `#00d992` Voltage Green Lighter; **Active Tab `#101010` Charcoal + Voltage Green text 0px** (terminal/IDE aesthetic); GitHub Star badge 9999px).
-**Tier 2 sources:** styles.refero.design / getdesign.md — directory-only (note: VoltAgent maintains the getdesign.md ecosystem).
-**Tier 2 (Philosophy):** voltagent.dev homepage, GitHub VoltAgent/voltagent (README/CONSOLE.md, MIT-license), Product Hunt, Medium (Gowtham), Qdrant integration, Hugging Face.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Voltage Green `#2fd6a1` brand accent + sharp-tab `#101010` Charcoal active state + search-variant lighter green `#00d992` + Star badge full-pill missed by prior pass.

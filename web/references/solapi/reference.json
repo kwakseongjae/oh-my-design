@@ -1,0 +1,422 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "solapi",
+    "name": "SOLAPI",
+    "display_name_kr": "솔라피",
+    "country": "KR",
+    "category": "developer-tools",
+    "homepage": "https://solapi.com",
+    "primary_color": "#4541ff",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=solapi.com&sz=128"
+    },
+    "verified": "2026-06-26",
+    "added": "2026-06-26"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-06-26",
+    "note": "primary = live CTA indigo (#4541ff, rgb 69 65 255) used for every action button and link; appears as an 8% tint surface and a 20%-alpha brand-glow shadow. Two heading-grey eras coexist: legacy marketing greys (#333333 / #222222 / #828282) and a newer slate ladder (#111827 / #64748b) on the developers + pricing surfaces.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 52,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 10,
+      "extension-component-property": 28,
+      "contrast-ratio": 1,
+      "orphaned-tokens": 13
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.headline.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.subsection.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body-lg.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.button.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.caption.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.code.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.states",
+        "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-outline.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-outline.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-pill-outline.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-ghost-outline.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-ghost-outline.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-ghost-outline.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input-search.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input-search.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input-search.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-pricing.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-pricing.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-pricing.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-pricing.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-feature.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-feature.shadow",
+        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-feature.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.active",
+        "message": "'active' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.code-block.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.code-block.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.badge-success.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.badge-success.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.badge-success.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "contrast-ratio",
+        "path": "components.badge-success",
+        "message": "textColor (#28c840) on backgroundColor (#ffffff) has contrast ratio 2.23:1, below WCAG AA minimum of 4.5:1."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-light",
+        "message": "'primary-light' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.heading",
+        "message": "'heading' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.slate-ink",
+        "message": "'slate-ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.slate-muted",
+        "message": "'slate-muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link",
+        "message": "'link' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.success",
+        "message": "'success' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.input-bg",
+        "message": "'input-bg' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border-slate",
+        "message": "'border-slate' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.code-ink",
+        "message": "'code-ink' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "10f0c99cd8e36801cf20b4b81714273febed66d4765d7213f4eed553b195bee8",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.subtle",
+        "value": "rgba(0,0,0,0.05) 0px 1px 2px 0px"
+      },
+      {
+        "path": "shadow.card",
+        "value": "rgba(0,0,0,0.1) 0px 0px 16px 0px"
+      },
+      {
+        "path": "shadow.elevated",
+        "value": "rgba(0,0,0,0.1) 0px 8px 32px 0px"
+      },
+      {
+        "path": "shadow.brand-glow",
+        "value": "rgba(69,65,255,0.2) 0px 0px 20px 0px"
+      }
+    ],
+    "numeric": [
+      "typography.display-hero.fontSize",
+      "typography.display.fontSize",
+      "typography.headline.fontSize",
+      "typography.title.fontSize",
+      "typography.subsection.fontSize",
+      "typography.body-lg.fontSize",
+      "typography.body.fontSize",
+      "typography.button.fontSize",
+      "typography.caption.fontSize",
+      "typography.code.fontSize",
+      "rounded.xs",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.base",
+      "rounded.card",
+      "rounded.pill",
+      "rounded.full"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-hero",
+        "display",
+        "headline",
+        "title",
+        "subsection",
+        "body-lg",
+        "body",
+        "button",
+        "caption",
+        "code"
+      ]
+    }
+  }
+}

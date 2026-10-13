@@ -1,0 +1,276 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "speeda",
+    "name": "SPEEDA (Uzabase)",
+    "country": "JP",
+    "category": "saas",
+    "homepage": "https://jp.ub-speeda.com/",
+    "primary_color": "#e60f3d",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=jp.ub-speeda.com&sz=128"
+    },
+    "verified": "2026-06-17",
+    "added": "2026-06-17"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-06-17",
+    "note": "primary = live primary-CTA crimson (#e60f3d); deep variant (#d30030) is the soft-tint trial CTA text; bright accent crimson (#f72a48) carries inline text emphasis (240 occurrences live). Ink is a soft near-black (#191919), never pure black for body. Near-shadowless, hairline-separated, fully-pill CTAs.",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 32,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 5,
+      "extension-component-property": 16,
+      "orphaned-tokens": 11
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.display-hero.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.section.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.nav.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.button.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cta-primary.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cta-primary.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cta-trial.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cta-trial.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.active",
+        "message": "'active' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-feature.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.card-feature.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input-text.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input-text.border",
+        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.input-text.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.badge-accent.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.badge-accent.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-deep",
+        "message": "'primary-deep' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.accent",
+        "message": "'accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.tint",
+        "message": "'tint' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink-strong",
+        "message": "'ink-strong' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.body",
+        "message": "'body' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.faint",
+        "message": "'faint' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.surface-alt",
+        "message": "'surface-alt' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hairline",
+        "message": "'hairline' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "231087f7fb26feb86e691ada19e3e8b0900aa209c2f24b5810db932cc7e286cc",
+    "overlay": null,
+    "prose": [
+      {
+        "path": "shadow.none",
+        "value": "none"
+      }
+    ],
+    "numeric": [
+      "typography.display-hero.fontSize",
+      "typography.display-hero.letterSpacing",
+      "typography.section.fontSize",
+      "typography.body.fontSize",
+      "typography.nav.fontSize",
+      "typography.button.fontSize",
+      "rounded.sm",
+      "rounded.md",
+      "rounded.lg",
+      "rounded.full"
+    ],
+    "order": {
+      "tokens": [
+        "source",
+        "extracted",
+        "note",
+        "colors",
+        "typography",
+        "spacing",
+        "rounded",
+        "shadow",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "display-hero",
+        "section",
+        "body",
+        "nav",
+        "button"
+      ]
+    }
+  }
+}

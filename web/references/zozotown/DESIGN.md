@@ -1,73 +1,210 @@
 ---
-id: zozotown
 name: ZOZOTOWN
-country: JP
-category: ecommerce
-homepage: "https://zozo.jp"
-primary_color: "#000000"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=zozo.jp&sz=128"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#000000"
-    canvas: "#ffffff"
-    accent-red: "#e60012"
-    body: "#333333"
-    sub: "#666666"
-    muted: "#999999"
-    hairline: "#cccccc"
-    surface: "#f5f5f5"
-    surface-subtle: "#fafafa"
-    border: "#e5e5e5"
-    border-strong: "#dddddd"
-    success: "#2e9c4f"
-    caution: "#f5a623"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Hiragino Kaku Gothic ProN", mono: "Helvetica Neue" }
-    page-title:  { size: 24, weight: 700, lineHeight: 1.4, tracking: 0.02, use: "Top-level section / landing headers" }
-    section:     { size: 20, weight: 700, lineHeight: 1.4, tracking: 0.02, use: "Category and module titles" }
-    subheading:  { size: 17, weight: 700, lineHeight: 1.5, tracking: 0.02, use: "Card group headers, feature titles" }
-    brand-name:  { size: 13, weight: 700, lineHeight: 1.4, tracking: 0.04, use: "Product-card brand label" }
-    item-title:  { size: 13, weight: 400, lineHeight: 1.5, use: "Product name, 2-line clamp" }
-    price:       { size: 15, weight: 700, lineHeight: 1.3, use: "Price — black/red, tabular numerals" }
-    body:        { size: 14, weight: 400, lineHeight: 1.7, use: "Descriptions, reviews, long copy" }
-    caption:     { size: 12, weight: 400, lineHeight: 1.5, use: "Metadata, timestamps, fine print" }
-    micro:       { size: 11, weight: 400, lineHeight: 1.4, use: "Tab labels, tag chips, footnotes" }
-    badge:       { size: 11, weight: 700, lineHeight: 1.2, tracking: 0.02, use: "SALE / NEW / 残りわずか badges" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
-  shadow:
-    toast: "rgba(0,0,0,0.85) background, no elevation shadow"
-    modal-scrim: "rgba(0,0,0,0.6)"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "14px 24px", font: "15/700", use: "カートに入れる, 購入手続きへ, ログイン" }
-    button-reverse: { type: button, bg: "#ffffff", fg: "#000000", radius: 4, padding: "14px 24px", font: "15/700", use: "お気に入り登録, 続けて買い物" }
-    button-sale: { type: button, bg: "#e60012", fg: "#ffffff", radius: 4, padding: "14px 24px", font: "15/700", use: "タイムセール, 今すぐ購入 — urgency only" }
-    button-disabled: { type: button, bg: "#cccccc", fg: "#ffffff", radius: 4, use: "Out-of-stock / unavailable (在庫なし)" }
-    product-card: { type: card, bg: "#ffffff", radius: 0, use: "Photography-led grid unit, 3:4 portrait, gap-separated" }
-    badge-sale: { type: badge, bg: "#e60012", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "11/700", use: "SALE overlay top-left of image" }
-    badge-new: { type: badge, bg: "#000000", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "11/700", use: "NEW / NEW ARRIVAL overlay" }
-    badge-lowstock: { type: badge, bg: "#ffffff", fg: "#e60012", radius: 2, padding: "2px 6px", font: "11/700", use: "残りわずか — red border outline" }
-    badge-preorder: { type: badge, bg: "#666666", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "11/700", use: "予約 pre-order flag" }
-    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 4, padding: "12px 14px", font: "15/400", use: "Form field — neutral black focus, #cccccc default border" }
-    bottom-tab: { type: tab, bg: "#ffffff", fg: "#999999", font: "11/400", active: "#000000 icon + label", use: "ホーム/カテゴリー/お気に入り/カート/マイページ" }
-    filter-tab: { type: tab, bg: "#ffffff", fg: "#666666", font: "14/700", active: "#000000 text + 2px bottom underline #000000", use: "新着/人気/価格が安い in-page switcher" }
-    toast: { type: toast, fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14/400", use: "Transient bottom-anchored confirmation" }
-    bottom-sheet: { type: dialog, bg: "#ffffff", radius: 12, padding: "20px", use: "Size/color/filter/sort — dominant mobile overlay" }
-    modal: { type: dialog, bg: "#ffffff", radius: 8, padding: "24px", use: "Confirmations, login prompts" }
+colors:
+  primary: '#000000'
+  canvas: '#ffffff'
+  accent-red: '#e60012'
+  body: '#333333'
+  sub: '#666666'
+  muted: '#999999'
+  hairline: '#cccccc'
+  surface: '#f5f5f5'
+  surface-subtle: '#fafafa'
+  border: '#e5e5e5'
+  border-strong: '#dddddd'
+  success: '#2e9c4f'
+  caution: '#f5a623'
+  on-primary: '#ffffff'
+typography:
+  page-title:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: 0.02px
+    use: Top-level section / landing headers
+  section:
+    fontSize: 20px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: 0.02px
+    use: Category and module titles
+  subheading:
+    fontSize: 17px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 0.02px
+    use: Card group headers, feature titles
+  brand-name:
+    fontSize: 13px
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: 0.04px
+    use: Product-card brand label
+  item-title:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Product name, 2-line clamp
+  price:
+    fontSize: 15px
+    fontWeight: 700
+    lineHeight: 1.3
+    use: Price — black/red, tabular numerals
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.7
+    use: Descriptions, reviews, long copy
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Metadata, timestamps, fine print
+  micro:
+    fontSize: 11px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Tab labels, tag chips, footnotes
+  badge:
+    fontSize: 11px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: 0.02px
+    use: SALE / NEW / 残りわずか badges
+rounded:
+  sm: 2px
+  md: 4px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 14px 24px
+    typography: 15/700
+    use: カートに入れる, 購入手続きへ, ログイン
+  button-reverse:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 4px
+    padding: 14px 24px
+    typography: 15/700
+    use: お気に入り登録, 続けて買い物
+  button-sale:
+    type: button
+    backgroundColor: '#e60012'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 14px 24px
+    typography: 15/700
+    use: タイムセール, 今すぐ購入 — urgency only
+  button-disabled:
+    type: button
+    backgroundColor: '#cccccc'
+    textColor: '#ffffff'
+    rounded: 4px
+    use: Out-of-stock / unavailable (在庫なし)
+  product-card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 0px
+    use: Photography-led grid unit, 3:4 portrait, gap-separated
+  badge-sale:
+    type: badge
+    backgroundColor: '#e60012'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 2px 6px
+    typography: 11/700
+    use: SALE overlay top-left of image
+  badge-new:
+    type: badge
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 2px 6px
+    typography: 11/700
+    use: NEW / NEW ARRIVAL overlay
+  badge-lowstock:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#e60012'
+    rounded: 2px
+    padding: 2px 6px
+    typography: 11/700
+    use: 残りわずか — red border outline
+  badge-preorder:
+    type: badge
+    backgroundColor: '#666666'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 2px 6px
+    typography: 11/700
+    use: 予約 pre-order flag
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#000000'
+    rounded: 4px
+    padding: 12px 14px
+    typography: 15/400
+    use: 'Form field — neutral black focus, #cccccc default border'
+  bottom-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#999999'
+    typography: 11/400
+    active: '#000000 icon + label'
+    use: ホーム/カテゴリー/お気に入り/カート/マイページ
+  filter-tab:
+    type: tab
+    backgroundColor: '#ffffff'
+    textColor: '#666666'
+    typography: 14/700
+    active: '#000000 text + 2px bottom underline #000000'
+    use: 新着/人気/価格が安い in-page switcher
+  toast:
+    type: toast
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 12px 16px
+    typography: 14/400
+    use: Transient bottom-anchored confirmation
+  bottom-sheet:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 12px
+    padding: 20px
+    use: Size/color/filter/sort — dominant mobile overlay
+  modal:
+    type: dialog
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    padding: 24px
+    use: Confirmations, login prompts
+fonts:
+  roles:
+    sans: Hiragino Kaku Gothic ProN
+    mono: Helvetica Neue
 ---
 
 # Design System Inspiration of ZOZOTOWN
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 ZOZOTOWN is Japan's largest fashion commerce platform — a marketplace of 7,000+ brands operated by ZOZO, Inc. (formerly Start Today). Its design language is uncompromisingly editorial: a near-monochrome system of pure black (`#000000`) and pure white (`#ffffff`) that gets out of the way and lets garment photography carry every screen. Where Western fashion retailers reach for serif elegance or pastel mood-boarding, ZOZOTOWN reads like a Japanese fashion magazine spread — dense grids of product imagery, hairline dividers, tightly-set Gothic (sans-serif) type, and a single warm-red accent (`#e60012`) reserved almost entirely for price and SALE signaling.
 
@@ -85,7 +222,7 @@ What defines ZOZOTOWN visually is its restraint paired with information density.
 - Minimal radius (0–4px), minimal shadow — flat, photographic, neutral
 - `be unique, be equal.` — the parent ZOZO ethos of equal-but-different, expressed as a neutral canvas that flatters every brand equally
 
-## Primary tasks
+### Primary tasks
 
 - Search the catalog by brand, item, or keyword.
 - Save items to favorites to catch restocks and sales.
@@ -93,7 +230,36 @@ What defines ZOZOTOWN visually is its restraint paired with information density.
 - Add an item to the cart and proceed to checkout.
 - Check a sale price against the struck-through original price.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+ZOZOTOWN launched in **2004**, operated by **Start Today Co., Ltd.**, the company founded by **Yusaku Maezawa (前澤友作)** — an entrepreneur who started by selling imported CDs and records by mail order before pivoting to fashion. The company rebranded to **ZOZO, Inc. (株式会社ZOZO)** in 2018, and in the same year **Yahoo! Japan (now LY Corporation / Z Holdings)** acquired a majority stake. Today ZOZOTOWN is Japan's dominant fashion marketplace — **7,000+ brands** under one roof — and the parent operates adjacent ventures including the **WEAR** styling app and **ZOZOSUIT / ZOZOMAT** body-measurement technology.
+
+The design's job follows directly from the business model: ZOZOTOWN is a *marketplace*, not a single label. It must flatter thousands of competing brands equally and neutrally. A loud house style would fight the merchandise. So the system became a frame — black-and-white, Gothic, flat, photographic — engineered to make every brand from streetwear to luxury look good on the same grid. This is the design expression of ZOZO's corporate slogan **`be unique, be equal.`** ("みんな違うけど、みんな一緒" — everyone different, everyone the same): the parent ZOZO logo arranges a circle, triangle, and square of *different shapes but equal area*, and the storefront mirrors that ethic — every brand gets an identical, neutral, equal-weight cell.
+
+What ZOZOTOWN refuses: the boutique minimalism of a single-brand DTC site (too much whitespace, too few products), the chromatic chaos of a bargain marketplace (too many colors, too much noise), and the heritage-luxury serif register (wrong audience). It occupies the contemporary-mass-fashion middle: dense and efficient like a department store, but neutral and editorial like a fashion magazine.
+
+### Principles
+
+1. **The clothes are the color.** Chrome is black-and-white so the only chroma on screen comes from photography. Any UI color that isn't price/sale red is a tax on the merchandise.
+2. **Equal frames for unequal brands.** Every product, from streetwear to luxury, gets an identical neutral cell. The grid does not play favorites — `be unique, be equal.` rendered as layout.
+3. **Density is a feature.** A 7,000-brand catalog rewards seeing more per screen. Tight 8px grids and small type are deliberate; "breathing room" that shows fewer products is a loss, not a refinement.
+4. **Flat, like a printed page.** Product cards have no shadows and no borders — they sit flush, separated by gap and hairline. Elevation is reserved for things that genuinely float.
+5. **Red means money.** `#e60012` appears only on price, sale, discount, error, and urgency. It is the system's one loud signal; spending it elsewhere makes it mean nothing.
+6. **Gothic, never Mincho.** Sans-serif is contemporary and mass; serif would signal heritage luxury. The typeface choice is a positioning statement.
+7. **Search is the navigation.** With thousands of brands, the search field — not a menu tree — is the primary wayfinding tool, and it gets prime real estate in the black header.
+8. **Mobile is the canon.** The 375px app/web experience is the source of truth; desktop is the wider mirror, not a separate design.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Japanese fashion-ecommerce user segments, not individual people.*
+
+**Yuki (ユキ), 24, Tokyo.** Works in retail, shops ZOZOTOWN on her commute most evenings. Follows 30+ brands and relies on the お気に入り (favorites) feed to catch restocks and sales. Scans by photography first, reads the brand name second, checks the price third — a sub-second loop she repeats hundreds of times per session. Expects the 2-column grid to load instantly and infinite-scroll without jank. Buys most heavily during タイムセール.
+
+**Haruto (ハルト), 29, Osaka.** Streetwear collector, cross-references ZOZOTOWN with the WEAR app to see how items are styled on real people before buying. Cares about exact sizing and reads size-review data closely. Distrusts marketing copy and trusts photography + community reviews. Will abandon a purchase if the size chart or stock status is unclear. Pays attention to ZOZO points and coupons.
+
+**Mei (メイ), 35, Nagoya.** Working parent, shops efficiently and infrequently but with intent. Uses search and category filters to go straight to a known need (kids' outerwear, a specific brand). Values fast next-day delivery and clear return terms over discovery. Reads the red price as the most important number on any card. Has no patience for a cluttered or slow checkout.
+
+## Colors
 
 ### Primary
 - **ZOZO Black** (`#000000`): The primary brand and UI color. Global header background, primary button fills, headings, body text, icon strokes. The matte frame around all imagery.
@@ -123,7 +289,7 @@ What defines ZOZOTOWN visually is its restraint paired with information density.
 - **Link Underline Black** (`#000000`): Inline links are black with an underline rather than a colored hue — neutrality over chroma.
 - **Coupon / Point Red** (`#e60012`): ZOZO points, coupons, and member-benefit callouts reuse the sale red.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary (JP-first system stack)**: `"Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", "Meiryo", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif`
@@ -155,7 +321,149 @@ What defines ZOZOTOWN visually is its restraint paired with information density.
 - **Yen always prefixed, comma-separated.** `¥12,800` — currency symbol leads, thousands separated, no decimals (yen has no minor unit).
 - **Small by default.** Product metadata sits at 11–13px. Density is the point; the photography is the headline.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px
+- Horizontal page padding: 16px (mobile), 24–40px (desktop)
+- Product grid gap: 8px (mobile), 16px (desktop) — tight, magazine-like
+- Card internal stack gap: 4–6px between brand / title / price
+
+### Grid & Container
+- Design baseline: 375px mobile width
+- Product grid: 2 columns (mobile) → 3 (tablet) → 4–5 (desktop)
+- Max content width: ~1200px, centered on desktop
+- Imagery: 3:4 portrait aspect, full-bleed within each cell
+- Home page: stacked full-width modules (hero banner, ranking rail, category tiles, recommendation grids)
+
+### Whitespace Philosophy
+- **Photography is the headline.** Chrome is suppressed so the only color and visual weight comes from garments. Whitespace exists to frame imagery, not to decorate.
+- **Density with rhythm.** Grids are tight (8px gaps) but absolutely consistent, so high product counts read as ordered, not crowded.
+- **Hairlines over boxes.** Content is separated by 1px `#e5e5e5` rules and `#f5f5f5` bands rather than bordered cards — keeps the page light and editorial.
+- **Edge-to-edge on mobile.** Heroes and product images bleed to the screen edge; only text content respects the 16px gutter.
+
+### Border Radius Scale
+- Sharp (0px): Product images, cards, banded sections, badges sit near-square
+- Subtle (2px): SALE / status badges
+- Standard (4px): Buttons, inputs, search field, toasts
+- Comfortable (8px): Centered modals
+- Sheet (12px): Bottom-sheet top corners
+- Pill (9999px): Filter chips, count dots, sheet handle
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile (Primary) | <768px | 2-column grid, black header + fixed bottom tab bar, edge-to-edge imagery |
+| Tablet | 768–1024px | 3-column grid, tab bar may convert to top nav, wider gutters |
+| Desktop | 1024–1280px | 4-column grid, top horizontal nav, hover affordances, 1200px max container |
+| Large Desktop | >1280px | 5-column grid possible, centered content, generous side margins |
+
+#### Touch Targets
+- Primary buttons: 48px min-height, full-width on mobile
+- Bottom tab items: 56px bar height + safe-area inset
+- Save heart / icon controls: 44×44px tap target minimum
+- Filter chips: 32–36px height
+
+#### Collapsing Strategy
+- Bottom tab bar (mobile) → top horizontal nav (desktop)
+- Bottom sheet (mobile filter/size) → side panel or inline dropdown (desktop)
+- 2-col grid → 4–5-col grid as width grows; image aspect ratio held at 3:4
+- Search field expands from header icon to persistent bar on desktop
+- Sticky CTA bar ("カートに入れる") pins to bottom on product detail (mobile)
+
+#### Image Behavior
+- Product images: 3:4 portrait, lazy-loaded, full-bleed within grid cell
+- Hero banners: full-width, swipeable carousel on mobile
+- Brand logos: monochrome, capped at 24–32px height in chrome
+- Imagery always carries the color; UI never tints over photography
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, product cards, grid — the default |
+| Hairline (Level 1) | 1px `#e5e5e5` border / divider | List separation, module edges |
+| Subtle (Level 2) | `0 1px 3px rgba(0,0,0,0.08)` | Sticky header on scroll, raised chips |
+| Standard (Level 3) | `0 2px 8px rgba(0,0,0,0.12)` | Dropdowns, popovers, floating buttons |
+| Overlay (Level 4) | `0 -2px 12px rgba(0,0,0,0.12)` | Bottom sheets (upward shadow), modals |
+
+**Shadow Philosophy**: ZOZOTOWN is fundamentally flat. Depth comes from the black/white contrast of the chrome and from photography, not from drop shadows. Where most cards in other systems lift off the page, ZOZOTOWN product cards sit flush — separated by grid gap and hairline rules. Shadows appear only on genuinely floating elements (sticky header after scroll, sheets, dropdowns) and are always neutral black at low opacity. No colored shadows, no multi-layer elevation. Flatness is the editorial signature: a magazine page has no drop shadows, and neither does ZOZOTOWN.
+
+### Blur & Sticky
+- Global black header is sticky; gains a subtle Level-2 shadow once the user scrolls past the hero.
+- Bottom tab bar is fixed and opaque white — never translucent — so it reads as a stable shelf.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.toast`: `rgba(0,0,0,0.85) background, no elevation shadow`
+- `shadow.modal-scrim`: `rgba(0,0,0,0.6)`
+
+## Motion & Easing
+
+**Durations** (named):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Tab switches, favorite toggle commit, count updates |
+| `motion-fast` | 150ms | Hover, press overlays, chip selection, heart fill |
+| `motion-standard` | 250ms | Bottom-sheet open, dropdown, toast in/out, tab underline slide |
+| `motion-slow` | 350ms | Page transitions, hero carousel slide, sheet dismiss |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets rising, toasts appearing, dropdowns opening |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, sheet close, toast fade-out |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tab underline, accordion |
+
+**Signature motions.**
+
+1. **Favorite heart.** Tapping the heart on a product image fills it (`motion-fast / ease-standard`) with a small 1.0→1.2→1.0 scale pop. The single moment of playfulness in an otherwise restrained system — fashion shopping is emotional, and the save is the emotional act.
+2. **Bottom-sheet selection.** Size/color/filter sheets rise from `y+40px` with `motion-standard / ease-enter` and a synchronized scrim fade to `rgba(0,0,0,0.6)`. Dismissal uses `motion-fast / ease-exit` — leaving is lighter than arriving.
+3. **Add-to-cart toast.** Confirmation slides up above the tab bar (`motion-standard / ease-enter`), holds 2s, fades out (`ease-exit`). The cart count dot ticks instantly in `#e60012`.
+4. **Infinite scroll.** New product rows fade in from `y+8px` over `motion-fast` as they enter — subtle, never sliding sideways, so the grid's top-down reading order is preserved.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; the heart pop becomes a simple fill. The store stays fully functional with zero kinetic flourish.
+
+<!--
+OmD v0.1 Sources — ZOZOTOWN
+
+Token & philosophy layer grounded via web research (2026-06-06):
+- zozo.jp — Japan's largest fashion marketplace; black/white editorial monochrome
+  storefront with single red price/SALE accent; JP Gothic system type; mobile-first
+  grid of product cards. (Live DOM token extraction unavailable in this environment;
+  homepage WebFetch timed out — values reflect the observed monochrome editorial
+  system plus standard JP-ecommerce conventions.)
+- corp.zozo.com/en/service — ZOZO, Inc. positioning: 7,000+ brand fashion marketplace.
+- cdnlogo.com / worldvectorlogo / seeklogo — ZOZOTOWN wordmark distributed only in
+  black/white, confirming the monochrome brand mark (primary #000000).
+- note.com/zoooom (ZOZONEWS) — ZOZO corporate-logo rationale: ○△▢ mark of equal area
+  but different shape; slogan `be unique, be equal.` ("みんな違うけど、みんな一緒").
+- brand-yurai.net — ZOZOTOWN name origin: 想像(SOZO)・創造(SOZO) が行き交う街(TOWN).
+
+Colors: Primary #000000 grounded in black wordmark + black site chrome. Accent
+#e60012 grounded in Japanese-standard commerce red used for ZOZOTOWN price/SALE
+signaling. Neutral/surface greys reflect the observed monochrome editorial system.
+
+Brand facts: ZOZOTOWN launched 2004 by Start Today (founder Yusaku Maezawa);
+rebranded to ZOZO, Inc. in 2018; Yahoo! Japan / Z Holdings took a majority stake
+in 2018; sibling products WEAR, ZOZOSUIT/ZOZOMAT. These are widely documented
+public facts.
+
+Personas (§13) are fictional archetypes informed by publicly described Japanese
+fashion-ecommerce user segments; not real individuals.
+
+Interpretive claims (e.g., "the storefront is a neutral frame expressing
+be unique, be equal.") are editorial readings of the design, not sourced ZOZO
+statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -330,53 +638,24 @@ Small, square-ish, high-contrast overlays on product imagery.
 **Tier 2 sources:** cdnlogo.com / worldvectorlogo / seeklogo (ZOZOTOWN wordmark distributed as black/white only — confirms monochrome brand mark); note.com/zoooom (ZOZO corporate-logo rationale — `be unique, be equal.`, ○△▢ equal-area mark).
 **Color grounding:** Primary `#000000` grounded in the black wordmark + black site chrome. Accent `#e60012` grounded in the Japanese-standard commerce red used for ZOZOTOWN price/SALE signaling. Live DOM token extraction was unavailable in this environment; neutral and surface values reflect the observed monochrome editorial system and standard JP-ecommerce conventions.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px
-- Horizontal page padding: 16px (mobile), 24–40px (desktop)
-- Product grid gap: 8px (mobile), 16px (desktop) — tight, magazine-like
-- Card internal stack gap: 4–6px between brand / title / price
+| State | Treatment |
+|---|---|
+| **Empty (favorites)** | Centered single line in `#666666` 14px (`お気に入りアイテムがありません`) plus a black CTA to browse. No illustration clutter — a quiet prompt to start shopping. |
+| **Empty (search no results)** | `#666666` 14px line (`該当する商品が見つかりませんでした`) with suggested adjustments (remove filter, broaden keyword). Filter summary stays visible above. |
+| **Empty (cart)** | `#666666` message + black "買い物を続ける" button. Recently-viewed rail shown below to re-engage. |
+| **Loading (grid first paint)** | Skeleton cards at `#f5f5f5` matching the 3:4 image + 3 text-line layout. Subtle shimmer. Grid geometry stable so cards don't jump on load. |
+| **Loading (infinite scroll)** | Spinner in `#999999` at the grid foot; existing products stay in place. No full-page block. |
+| **Error (inline field)** | `#e60012` 1px border on the input + `#e60012` 12px help text below, one polite actionable sentence. |
+| **Error (network/system)** | Centered `#333333` 14px message + black "再読み込み" retry button. No blame, no bare error code. |
+| **Sale / Price-drop** | Price flips to `#e60012`, original price struck through in `#999999`, discount % shown in `#e60012` bold, SALE badge over the image. The most visually loaded state in the system. |
+| **Low stock** | `残りわずか` badge — white bg, `#e60012` border + text. Urgency without alarm. |
+| **Out of stock** | Image desaturated slightly; CTA becomes disabled `#cccccc`; `在庫なし` / `再入荷リクエスト` offered instead. |
+| **Success (added to cart/favorites)** | `rgba(0,0,0,0.85)` toast, white text, 2s auto-dismiss, anchored above the bottom tab bar. Cart count dot increments in `#e60012`. |
+| **Skeleton** | `#f5f5f5` blocks at exact final dimensions, 1.2s shimmer. Never shown over real photography — only before it loads. |
 
-### Grid & Container
-- Design baseline: 375px mobile width
-- Product grid: 2 columns (mobile) → 3 (tablet) → 4–5 (desktop)
-- Max content width: ~1200px, centered on desktop
-- Imagery: 3:4 portrait aspect, full-bleed within each cell
-- Home page: stacked full-width modules (hero banner, ranking rail, category tiles, recommendation grids)
-
-### Whitespace Philosophy
-- **Photography is the headline.** Chrome is suppressed so the only color and visual weight comes from garments. Whitespace exists to frame imagery, not to decorate.
-- **Density with rhythm.** Grids are tight (8px gaps) but absolutely consistent, so high product counts read as ordered, not crowded.
-- **Hairlines over boxes.** Content is separated by 1px `#e5e5e5` rules and `#f5f5f5` bands rather than bordered cards — keeps the page light and editorial.
-- **Edge-to-edge on mobile.** Heroes and product images bleed to the screen edge; only text content respects the 16px gutter.
-
-### Border Radius Scale
-- Sharp (0px): Product images, cards, banded sections, badges sit near-square
-- Subtle (2px): SALE / status badges
-- Standard (4px): Buttons, inputs, search field, toasts
-- Comfortable (8px): Centered modals
-- Sheet (12px): Bottom-sheet top corners
-- Pill (9999px): Filter chips, count dots, sheet handle
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, product cards, grid — the default |
-| Hairline (Level 1) | 1px `#e5e5e5` border / divider | List separation, module edges |
-| Subtle (Level 2) | `0 1px 3px rgba(0,0,0,0.08)` | Sticky header on scroll, raised chips |
-| Standard (Level 3) | `0 2px 8px rgba(0,0,0,0.12)` | Dropdowns, popovers, floating buttons |
-| Overlay (Level 4) | `0 -2px 12px rgba(0,0,0,0.12)` | Bottom sheets (upward shadow), modals |
-
-**Shadow Philosophy**: ZOZOTOWN is fundamentally flat. Depth comes from the black/white contrast of the chrome and from photography, not from drop shadows. Where most cards in other systems lift off the page, ZOZOTOWN product cards sit flush — separated by grid gap and hairline rules. Shadows appear only on genuinely floating elements (sticky header after scroll, sheets, dropdowns) and are always neutral black at low opacity. No colored shadows, no multi-layer elevation. Flatness is the editorial signature: a magazine page has no drop shadows, and neither does ZOZOTOWN.
-
-### Blur & Sticky
-- Global black header is sticky; gains a subtle Level-2 shadow once the user scrolls past the hero.
-- Bottom tab bar is fixed and opaque white — never translucent — so it reads as a stable shelf.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Keep the canvas black-and-white so garment photography is the only color
@@ -399,36 +678,24 @@ Small, square-ish, high-contrast overlays on product imagery.
 - Don't round prices or use decimals — yen is whole-number, comma-separated
 - Don't widen grid gaps for "breathing room" — density is the brand; add a screen instead
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile (Primary) | <768px | 2-column grid, black header + fixed bottom tab bar, edge-to-edge imagery |
-| Tablet | 768–1024px | 3-column grid, tab bar may convert to top nav, wider gutters |
-| Desktop | 1024–1280px | 4-column grid, top horizontal nav, hover affordances, 1200px max container |
-| Large Desktop | >1280px | 5-column grid possible, centered content, generous side margins |
+ZOZOTOWN speaks like a knowledgeable Japanese fashion floor staff member: polite, efficient, and quietly enthusiastic, never pushy. Japanese is the primary and native voice; copy uses standard polite form (です・ます調) with occasional casual energy on campaign banners. The tone is functional first — the catalog is enormous, so copy prioritizes clarity (brand, item, size, price, delivery) over personality. Personality lives in the curation and the photography, not in adjectives.
 
-### Touch Targets
-- Primary buttons: 48px min-height, full-width on mobile
-- Bottom tab items: 56px bar height + safe-area inset
-- Save heart / icon controls: 44×44px tap target minimum
-- Filter chips: 32–36px height
+| Context | Tone |
+|---|---|
+| CTAs | Short, action-first Japanese verbs (`カートに入れる`, `購入手続きへ`, `お気に入り登録`) |
+| Product titles | Neutral, descriptive — brand + item + key attribute. No marketing adjectives. |
+| Sale / campaign banners | Energetic, urgency-forward (`タイムセール開催中`, `最大70%OFF`). Red and bold. |
+| Success toasts | Brief, polite past-tense (`カートに入れました`, `お気に入りに追加しました`) |
+| Error messages | Specific and polite — what went wrong + what to do. Never a bare `エラー`. |
+| Shipping / logistics | Factual and reassuring (`最短翌日お届け`, `送料`). Precision builds trust. |
+| Member / points copy | Warm but concrete (`ZOZOポイント`, `クーポン`) — benefits stated in numbers. |
+| Reviews / sizing | Encouraging, community-toned — `WEAR` styling and size reviews. |
 
-### Collapsing Strategy
-- Bottom tab bar (mobile) → top horizontal nav (desktop)
-- Bottom sheet (mobile filter/size) → side panel or inline dropdown (desktop)
-- 2-col grid → 4–5-col grid as width grows; image aspect ratio held at 3:4
-- Search field expands from header icon to persistent bar on desktop
-- Sticky CTA bar ("カートに入れる") pins to bottom on product detail (mobile)
+**Forbidden moves.** No exaggerated hype in product titles. No colored-text gimmicks beyond the sale red. No Western-style ALL-CAPS shouting on Japanese copy. No emoji in transactional/checkout flows. Prices are never rounded or approximated — exact yen, always.
 
-### Image Behavior
-- Product images: 3:4 portrait, lazy-loaded, full-bleed within grid cell
-- Hero banners: full-width, swipeable carousel on mobile
-- Brand logos: monochrome, capped at 24–32px height in chrome
-- Imagery always carries the color; UI never tints over photography
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary / Header / CTA: ZOZO Black (`#000000`)
@@ -462,125 +729,9 @@ Small, square-ish, high-contrast overlays on product imagery.
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-ZOZOTOWN speaks like a knowledgeable Japanese fashion floor staff member: polite, efficient, and quietly enthusiastic, never pushy. Japanese is the primary and native voice; copy uses standard polite form (です・ます調) with occasional casual energy on campaign banners. The tone is functional first — the catalog is enormous, so copy prioritizes clarity (brand, item, size, price, delivery) over personality. Personality lives in the curation and the photography, not in adjectives.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Short, action-first Japanese verbs (`カートに入れる`, `購入手続きへ`, `お気に入り登録`) |
-| Product titles | Neutral, descriptive — brand + item + key attribute. No marketing adjectives. |
-| Sale / campaign banners | Energetic, urgency-forward (`タイムセール開催中`, `最大70%OFF`). Red and bold. |
-| Success toasts | Brief, polite past-tense (`カートに入れました`, `お気に入りに追加しました`) |
-| Error messages | Specific and polite — what went wrong + what to do. Never a bare `エラー`. |
-| Shipping / logistics | Factual and reassuring (`最短翌日お届け`, `送料`). Precision builds trust. |
-| Member / points copy | Warm but concrete (`ZOZOポイント`, `クーポン`) — benefits stated in numbers. |
-| Reviews / sizing | Encouraging, community-toned — `WEAR` styling and size reviews. |
-
-**Forbidden moves.** No exaggerated hype in product titles. No colored-text gimmicks beyond the sale red. No Western-style ALL-CAPS shouting on Japanese copy. No emoji in transactional/checkout flows. Prices are never rounded or approximated — exact yen, always.
-
-## 11. Brand Narrative
-
-ZOZOTOWN launched in **2004**, operated by **Start Today Co., Ltd.**, the company founded by **Yusaku Maezawa (前澤友作)** — an entrepreneur who started by selling imported CDs and records by mail order before pivoting to fashion. The company rebranded to **ZOZO, Inc. (株式会社ZOZO)** in 2018, and in the same year **Yahoo! Japan (now LY Corporation / Z Holdings)** acquired a majority stake. Today ZOZOTOWN is Japan's dominant fashion marketplace — **7,000+ brands** under one roof — and the parent operates adjacent ventures including the **WEAR** styling app and **ZOZOSUIT / ZOZOMAT** body-measurement technology.
-
-The design's job follows directly from the business model: ZOZOTOWN is a *marketplace*, not a single label. It must flatter thousands of competing brands equally and neutrally. A loud house style would fight the merchandise. So the system became a frame — black-and-white, Gothic, flat, photographic — engineered to make every brand from streetwear to luxury look good on the same grid. This is the design expression of ZOZO's corporate slogan **`be unique, be equal.`** ("みんな違うけど、みんな一緒" — everyone different, everyone the same): the parent ZOZO logo arranges a circle, triangle, and square of *different shapes but equal area*, and the storefront mirrors that ethic — every brand gets an identical, neutral, equal-weight cell.
-
-What ZOZOTOWN refuses: the boutique minimalism of a single-brand DTC site (too much whitespace, too few products), the chromatic chaos of a bargain marketplace (too many colors, too much noise), and the heritage-luxury serif register (wrong audience). It occupies the contemporary-mass-fashion middle: dense and efficient like a department store, but neutral and editorial like a fashion magazine.
-
-## 12. Principles
-
-1. **The clothes are the color.** Chrome is black-and-white so the only chroma on screen comes from photography. Any UI color that isn't price/sale red is a tax on the merchandise.
-2. **Equal frames for unequal brands.** Every product, from streetwear to luxury, gets an identical neutral cell. The grid does not play favorites — `be unique, be equal.` rendered as layout.
-3. **Density is a feature.** A 7,000-brand catalog rewards seeing more per screen. Tight 8px grids and small type are deliberate; "breathing room" that shows fewer products is a loss, not a refinement.
-4. **Flat, like a printed page.** Product cards have no shadows and no borders — they sit flush, separated by gap and hairline. Elevation is reserved for things that genuinely float.
-5. **Red means money.** `#e60012` appears only on price, sale, discount, error, and urgency. It is the system's one loud signal; spending it elsewhere makes it mean nothing.
-6. **Gothic, never Mincho.** Sans-serif is contemporary and mass; serif would signal heritage luxury. The typeface choice is a positioning statement.
-7. **Search is the navigation.** With thousands of brands, the search field — not a menu tree — is the primary wayfinding tool, and it gets prime real estate in the black header.
-8. **Mobile is the canon.** The 375px app/web experience is the source of truth; desktop is the wider mirror, not a separate design.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Japanese fashion-ecommerce user segments, not individual people.*
-
-**Yuki (ユキ), 24, Tokyo.** Works in retail, shops ZOZOTOWN on her commute most evenings. Follows 30+ brands and relies on the お気に入り (favorites) feed to catch restocks and sales. Scans by photography first, reads the brand name second, checks the price third — a sub-second loop she repeats hundreds of times per session. Expects the 2-column grid to load instantly and infinite-scroll without jank. Buys most heavily during タイムセール.
-
-**Haruto (ハルト), 29, Osaka.** Streetwear collector, cross-references ZOZOTOWN with the WEAR app to see how items are styled on real people before buying. Cares about exact sizing and reads size-review data closely. Distrusts marketing copy and trusts photography + community reviews. Will abandon a purchase if the size chart or stock status is unclear. Pays attention to ZOZO points and coupons.
-
-**Mei (メイ), 35, Nagoya.** Working parent, shops efficiently and infrequently but with intent. Uses search and category filters to go straight to a known need (kids' outerwear, a specific brand). Values fast next-day delivery and clear return terms over discovery. Reads the red price as the most important number on any card. Has no patience for a cluttered or slow checkout.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (favorites)** | Centered single line in `#666666` 14px (`お気に入りアイテムがありません`) plus a black CTA to browse. No illustration clutter — a quiet prompt to start shopping. |
-| **Empty (search no results)** | `#666666` 14px line (`該当する商品が見つかりませんでした`) with suggested adjustments (remove filter, broaden keyword). Filter summary stays visible above. |
-| **Empty (cart)** | `#666666` message + black "買い物を続ける" button. Recently-viewed rail shown below to re-engage. |
-| **Loading (grid first paint)** | Skeleton cards at `#f5f5f5` matching the 3:4 image + 3 text-line layout. Subtle shimmer. Grid geometry stable so cards don't jump on load. |
-| **Loading (infinite scroll)** | Spinner in `#999999` at the grid foot; existing products stay in place. No full-page block. |
-| **Error (inline field)** | `#e60012` 1px border on the input + `#e60012` 12px help text below, one polite actionable sentence. |
-| **Error (network/system)** | Centered `#333333` 14px message + black "再読み込み" retry button. No blame, no bare error code. |
-| **Sale / Price-drop** | Price flips to `#e60012`, original price struck through in `#999999`, discount % shown in `#e60012` bold, SALE badge over the image. The most visually loaded state in the system. |
-| **Low stock** | `残りわずか` badge — white bg, `#e60012` border + text. Urgency without alarm. |
-| **Out of stock** | Image desaturated slightly; CTA becomes disabled `#cccccc`; `在庫なし` / `再入荷リクエスト` offered instead. |
-| **Success (added to cart/favorites)** | `rgba(0,0,0,0.85)` toast, white text, 2s auto-dismiss, anchored above the bottom tab bar. Cart count dot increments in `#e60012`. |
-| **Skeleton** | `#f5f5f5` blocks at exact final dimensions, 1.2s shimmer. Never shown over real photography — only before it loads. |
-
-## 15. Motion & Easing
-
-**Durations** (named):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Tab switches, favorite toggle commit, count updates |
-| `motion-fast` | 150ms | Hover, press overlays, chip selection, heart fill |
-| `motion-standard` | 250ms | Bottom-sheet open, dropdown, toast in/out, tab underline slide |
-| `motion-slow` | 350ms | Page transitions, hero carousel slide, sheet dismiss |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets rising, toasts appearing, dropdowns opening |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, sheet close, toast fade-out |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tab underline, accordion |
-
-**Signature motions.**
-
-1. **Favorite heart.** Tapping the heart on a product image fills it (`motion-fast / ease-standard`) with a small 1.0→1.2→1.0 scale pop. The single moment of playfulness in an otherwise restrained system — fashion shopping is emotional, and the save is the emotional act.
-2. **Bottom-sheet selection.** Size/color/filter sheets rise from `y+40px` with `motion-standard / ease-enter` and a synchronized scrim fade to `rgba(0,0,0,0.6)`. Dismissal uses `motion-fast / ease-exit` — leaving is lighter than arriving.
-3. **Add-to-cart toast.** Confirmation slides up above the tab bar (`motion-standard / ease-enter`), holds 2s, fades out (`ease-exit`). The cart count dot ticks instantly in `#e60012`.
-4. **Infinite scroll.** New product rows fade in from `y+8px` over `motion-fast` as they enter — subtle, never sliding sideways, so the grid's top-down reading order is preserved.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; the heart pop becomes a simple fill. The store stays fully functional with zero kinetic flourish.
-
-<!--
-OmD v0.1 Sources — ZOZOTOWN
-
-Token & philosophy layer grounded via web research (2026-06-06):
-- zozo.jp — Japan's largest fashion marketplace; black/white editorial monochrome
-  storefront with single red price/SALE accent; JP Gothic system type; mobile-first
-  grid of product cards. (Live DOM token extraction unavailable in this environment;
-  homepage WebFetch timed out — values reflect the observed monochrome editorial
-  system plus standard JP-ecommerce conventions.)
-- corp.zozo.com/en/service — ZOZO, Inc. positioning: 7,000+ brand fashion marketplace.
-- cdnlogo.com / worldvectorlogo / seeklogo — ZOZOTOWN wordmark distributed only in
-  black/white, confirming the monochrome brand mark (primary #000000).
-- note.com/zoooom (ZOZONEWS) — ZOZO corporate-logo rationale: ○△▢ mark of equal area
-  but different shape; slogan `be unique, be equal.` ("みんな違うけど、みんな一緒").
-- brand-yurai.net — ZOZOTOWN name origin: 想像(SOZO)・創造(SOZO) が行き交う街(TOWN).
-
-Colors: Primary #000000 grounded in black wordmark + black site chrome. Accent
-#e60012 grounded in Japanese-standard commerce red used for ZOZOTOWN price/SALE
-signaling. Neutral/surface greys reflect the observed monochrome editorial system.
-
-Brand facts: ZOZOTOWN launched 2004 by Start Today (founder Yusaku Maezawa);
-rebranded to ZOZO, Inc. in 2018; Yahoo! Japan / Z Holdings took a majority stake
-in 2018; sibling products WEAR, ZOZOSUIT/ZOZOMAT. These are widely documented
-public facts.
-
-Personas (§13) are fictional archetypes informed by publicly described Japanese
-fashion-ecommerce user segments; not real individuals.
-
-Interpretive claims (e.g., "the storefront is a neutral frame expressing
-be unique, be equal.") are editorial readings of the design, not sourced ZOZO
-statements.
--->
+- **Contrast, `button-disabled`.** Text `#ffffff` on `#cccccc` measures 1.61:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `bottom-tab`.** Text `#999999` on `#ffffff` measures 2.85:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,63 +1,142 @@
 ---
-id: shopline
 name: SHOPLINE
-country: TW
-category: ecommerce
-homepage: "https://shopline.tw"
-primary_color: "#356dff"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=shopline.tw&sz=128"
-verified: "2026-06-08"
-added: "2026-06-08"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-08"
-  note: "primary = live CTA blue (#356dff); ink = navy text/dark-section (#00142d); shadows are neutral soft-gray, alpha kept in shadow strings only"
-  colors:
-    primary: "#356dff"
-    primary-ink: "#ffffff"
-    ink: "#00142d"
-    canvas: "#ffffff"
-    surface-tint: "#edf4fd"
-    surface-mist: "#f2f7fc"
-    dark-section: "#00142d"
-    heading: "#00142d"
-    body: "#00142d"
-    on-dark: "#ffffff"
-    cta-black: "#000000"
-    hairline: "#d6d6d6"
-  typography:
-    family: { sans: "Noto Sans TC", fallback: "-apple-system, system-ui, Segoe UI, Roboto" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.33, tracking: 0, use: "Hero headline (h1), white-on-navy" }
-    section:      { size: 40, weight: 700, lineHeight: 1.37, tracking: 0, use: "Section titles (h2)" }
-    subheading:   { size: 24, weight: 700, lineHeight: 1.40, use: "Card / feature heads" }
-    cta-lg:       { size: 18, weight: 700, lineHeight: 1.00, use: "Primary pill CTA label" }
-    cta-sm:       { size: 14, weight: 700, lineHeight: 1.00, use: "Nav header CTA label" }
-    nav:          { size: 16, weight: 400, lineHeight: 1.50, use: "Top navigation links" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    caption:      { size: 13, weight: 400, lineHeight: 1.85, use: "Small descriptions, metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
-  rounded: { sm: 3, md: 6, lg: 9, pill: 30, full: 9999 }
-  shadow:
-    soft: "rgba(200,200,200,0.27) 2px 2px 6px 0px"
-    card: "rgba(0,0,0,0.08) 0px 8px 16px 0px"
-    float: "rgba(0,0,0,0.08) 0px 4px 24px 0px"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "#356dff", fg: "#ffffff", radius: "30px", height: "45px", padding: "0 24px", font: "18px / 700", use: "Primary marketing CTA" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#356dff", border: "1px solid #356dff", radius: "30px", height: "45px", font: "18px / 700", use: "Secondary action beside primary" }
-    button-dark: { type: button, bg: "#00142d", fg: "#ffffff", radius: "30px", height: "44px", padding: "8px 24px", font: "16px / 700", use: "High-emphasis booking/conversion CTA" }
-    button-nav: { type: button, bg: "#000000", fg: "#ffffff", radius: "30px", height: "38px", padding: "0 24px", font: "14px / 700", use: "Always-visible free-trial CTA in sticky nav" }
-    card: { type: card, bg: "#ffffff", radius: "8px", shadow: "rgba(0,0,0,0.08) 0px 8px 16px 0px", use: "Standard elevated card; elevation from soft shadow not hairlines" }
-    input: { type: input, bg: "#ffffff", fg: "#00142d", border: "1px solid #d6d6d6", radius: "6px", focus: "#356dff blue ring/border", use: "Form input" }
-    section-band: { type: card, bg: "#edf4fd", use: "Light-blue wash band (#edf4fd / #f2f7fc) alternating with white; navy #00142d for immersive sections" }
+colors:
+  primary: '#356dff'
+  primary-ink: '#ffffff'
+  ink: '#00142d'
+  canvas: '#ffffff'
+  surface-tint: '#edf4fd'
+  surface-mist: '#f2f7fc'
+  dark-section: '#00142d'
+  heading: '#00142d'
+  body: '#00142d'
+  on-dark: '#ffffff'
+  cta-black: '#000000'
+  hairline: '#d6d6d6'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: 0px
+    use: Hero headline (h1), white-on-navy
+  section:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.37
+    letterSpacing: 0px
+    use: Section titles (h2)
+  subheading:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.4
+    use: Card / feature heads
+  cta-lg:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1
+    use: Primary pill CTA label
+  cta-sm:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1
+    use: Nav header CTA label
+  nav:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Top navigation links
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard reading text
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.85
+    use: Small descriptions, metadata
+rounded:
+  sm: 3px
+  md: 6px
+  lg: 9px
+  pill: 30px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 80
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#356dff'
+    textColor: '#ffffff'
+    rounded: 30px
+    height: 45px
+    padding: 0 24px
+    typography: 18px / 700
+    use: Primary marketing CTA
+  button-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#356dff'
+    border: '1px solid #356dff'
+    rounded: 30px
+    height: 45px
+    typography: 18px / 700
+    use: Secondary action beside primary
+  button-dark:
+    type: button
+    backgroundColor: '#00142d'
+    textColor: '#ffffff'
+    rounded: 30px
+    height: 44px
+    padding: 8px 24px
+    typography: 16px / 700
+    use: High-emphasis booking/conversion CTA
+  button-nav:
+    type: button
+    backgroundColor: '#000000'
+    textColor: '#ffffff'
+    rounded: 30px
+    height: 38px
+    padding: 0 24px
+    typography: 14px / 700
+    use: Always-visible free-trial CTA in sticky nav
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 8px
+    shadow: rgba(0,0,0,0.08) 0px 8px 16px 0px
+    use: Standard elevated card; elevation from soft shadow not hairlines
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#00142d'
+    border: '1px solid #d6d6d6'
+    rounded: 6px
+    focus: '#356dff blue ring/border'
+    use: Form input
+  section-band:
+    type: card
+    backgroundColor: '#edf4fd'
+    use: 'Light-blue wash band (#edf4fd / #f2f7fc) alternating with white; navy #00142d for immersive sections'
+fonts:
+  roles:
+    sans: Noto Sans TC
+    fallback: '-apple-system, system-ui, Segoe UI, Roboto'
 ---
 
 # Design System Inspiration of SHOPLINE
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 SHOPLINE presents itself as a bright, optimistic, merchant-friendly commerce platform built for the Taiwan and Hong Kong markets — its homepage opens on a clean white canvas (`#ffffff`) with a confident, saturated royal blue (`#356dff`) doing almost all of the brand work. Where Stripe whispers in light-weight type, SHOPLINE speaks in bold weight-700 Traditional-Chinese headlines, fully-rounded pill buttons, and gentle light-blue section washes. The atmosphere is approachable SaaS-for-shopkeepers: trustworthy enough that a small business owner believes their store and money are safe, friendly enough that a first-time entrepreneur feels invited in. The tagline "全方位零售整合專家" (all-in-one retail integration expert) sets the register — capable, comprehensive, but never intimidating.
 
@@ -74,7 +153,7 @@ The color story is two-note and disciplined: SHOPLINE Blue (`#356dff`) as the si
 - Soft, neutral, low-alpha shadows (`rgba(0,0,0,0.08)`) — airy, not heavy
 - Bright white canvas (`#ffffff`) as the default ground; navy as the dramatic counterpoint
 
-## Primary tasks
+### Primary tasks
 
 - Open an online store and run it without technical setup
 - Add the first product to a store with nothing in it
@@ -82,7 +161,39 @@ The color story is two-note and disciplined: SHOPLINE Blue (`#356dff`) as the si
 - Manage hundreds of product listings in Traditional Chinese
 - Keep stock in sync between the online store and the shop floor
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+SHOPLINE is a commerce / online-store SaaS platform serving the Greater China region, with a strong presence in **Taiwan (台灣)** and **Hong Kong (香港)** and across Southeast Asia. It gives merchants — from solo creators to established brands — an all-in-one toolkit to open and run an online store: storefront building, product and inventory management, payments, marketing, and increasingly omni-channel (online + physical retail, social commerce) integration. The Taiwan-facing brand promise, "全方位零售整合專家" (all-in-one retail integration expert) and "完整開店功能讓你的生意不斷成長" (complete store-opening features to keep your business growing), positions SHOPLINE as the partner that handles the technical complexity so the merchant can focus on selling.
+
+What SHOPLINE embraces: accessibility for first-time店主, breadth of features under one roof, and a bright, trustworthy, friendly design language. What it rejects: the intimidating, developer-first or enterprise-procurement feel of platforms built for engineers — SHOPLINE's audience is shopkeepers, not staff engineers, and the design reflects that through bold legible type, friendly pill shapes, and a single calm blue.
+
+The design system encodes this positioning directly: weight-700 Noto Sans TC for maximum legibility across merchant content in 繁體中文, fully-rounded pill buttons that read as friendly and approachable, a single confident blue (`#356dff`) that signals trust, and soft airy shadows that keep the experience light rather than heavy. Light-blue washes and navy immersive bands give the long marketing page rhythm without ever introducing a competing color.
+
+*Note: brand-history specifics beyond the publicly observable TW/HK commerce-SaaS positioning are not independently verified here; claims above are grounded in the live zh-TW homepage and regional brand-owned sources.*
+
+### Principles
+
+1. **Legibility before personality.** A free, ubiquitous CJK font (Noto Sans TC) at bold weight 700 means merchant-supplied product names and marketing copy are always perfectly readable. The brand's personality lives in color and shape, not exotic letterforms.
+2. **One blue, used decisively.** A single accent (`#356dff`) carries every CTA, link, and highlight. Restraint reads as trustworthy; a rainbow of accents would read as cheap.
+3. **Friendly geometry.** The 30px pill is a deliberate emotional choice — rounded shapes feel approachable and safe to a small-business owner trusting the platform with their livelihood.
+4. **Airy, never heavy.** Soft 0.08-alpha shadows and pale tints keep the interface light. Heaviness would feel like enterprise software; lightness feels attainable.
+5. **Bands give rhythm.** Alternating white / light-blue / navy sections turn a long sales page into a scannable, paced experience.
+6. **Navy, not black, for text.** Ink navy (`#00142d`) is softer and warmer than pure black, reinforcing the friendly-but-trustworthy register.
+7. **Merchant-first, not engineer-first.** Every design decision favors the non-technical store owner: clear CTAs, big readable type, no intimidating density.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable SHOPLINE user segments (first-time online sellers, established TW/HK retail brands, social-commerce sellers, omni-channel merchants), not individual people.*
+
+**陳怡君 (Chen Yi-Chun), 29, Taipei.** Runs a handmade-accessories side business on Instagram and wants a real online store. Not technical. Chose SHOPLINE because the free trial let her open a storefront in an afternoon and the bold, clear Chinese interface never made her feel lost. The friendly pill buttons and "免費試用" everywhere lowered her fear of committing.
+
+**Marcus Wong, 41, Hong Kong.** Operations lead at an established apparel brand expanding from physical retail into omni-channel. Values SHOPLINE's integration breadth — inventory synced across online and in-store. Trusts the calm, professional blue-and-navy design as a signal that the platform is serious infrastructure, not a toy.
+
+**林家豪 (Lin Chia-Hao), 34, Taichung.** Sells specialty coffee equipment and runs marketing campaigns himself. Reads SHOPLINE's blog (blog.shopline.tw) for e-commerce how-tos. Appreciates that the dashboard's readable weight-700 headings and generous spacing make managing hundreds of SKUs in 繁體中文 painless.
+
+**Priya Nair, 27, Singapore.** Social-commerce seller scaling a beauty brand across Southeast Asia. Picked SHOPLINE for its regional reach and the approachable onboarding. The bright, trustworthy visual language reassured her customers at checkout.
+
+## Colors
 
 ### Primary
 - **SHOPLINE Blue** (`#356dff`): The primary brand color. Fills primary CTA buttons, colors outlined-button text and borders, and marks links and interactive accents. A saturated royal blue that reads energetic and trustworthy.
@@ -111,7 +222,7 @@ The color story is two-note and disciplined: SHOPLINE Blue (`#356dff`) as the si
 - **Float Shadow** (`rgba(0,0,0,0.08)`): Same alpha, wider blur (24px) for floating/popover elements.
 - **Soft Shadow** (`rgba(200,200,200,0.27)`): A tiny offset gray shadow for low-lift chips and small elements.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary**: `Noto Sans TC`, with fallback stack `-apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
@@ -138,7 +249,109 @@ The color story is two-note and disciplined: SHOPLINE Blue (`#356dff`) as the si
 - **Generous CJK line-height**: Body runs at 1.5 and captions at ~1.85 line-height, giving dense Chinese characters room to breathe and stay legible.
 - **Legibility over personality**: The deliberate choice of Noto Sans TC means the brand personality lives in color, shape (pills), and weight — never in exotic letterforms.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, with ~80px between major marketing sections
+- Generous vertical rhythm between bands keeps the long homepage scannable
+
+### Grid & Container
+- Centered single-column hero with large bold headline and a pair of pill CTAs
+- Feature sections use 2–3 column card grids on light-blue washes
+- Full-bleed navy sections for immersive hero/feature moments
+- Comfortable max content width with generous side gutters
+
+### Whitespace Philosophy
+- **Airy and calm**: Low-alpha shadows and pale tints keep the page feeling light, never heavy or dense.
+- **Banded rhythm**: White / light-blue / navy bands alternate down the page, giving a clear visual cadence that helps a long sales page stay legible.
+- **Breathing room for CJK**: Generous line-height and padding give Traditional-Chinese text room, since dense characters need more air than Latin.
+
+### Border Radius Scale
+- Pill (30px): every button — the defining shape
+- Small (3px): tags, inline chips
+- Standard (6px–8px): cards, inputs
+- Large (9px): larger panels
+- Full (50% / 9999): avatars, circular icon chips
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, reduced heading sizes, stacked cards, hamburger nav |
+| Tablet | 640–1024px | 2-column grids, moderate padding |
+| Desktop | 1024–1280px | Full layout, 3-column feature grids |
+| Large Desktop | >1280px | Centered content with generous side gutters |
+
+#### Touch Targets
+- Pill CTAs are 38px–45px tall — comfortably tappable
+- Nav links at 16px with generous spacing
+- Header free-trial pill always reachable in the sticky nav
+
+#### Collapsing Strategy
+- Hero: 48px headline scales down on mobile, weight 700 maintained
+- Navigation: horizontal links → hamburger toggle, header CTA pill persists
+- Feature cards: 3-column → 2-column → single stacked column
+- Navy/tinted bands keep full-bleed treatment, reduce internal padding on mobile
+- Section spacing compresses (~80px → ~40px) on mobile
+
+#### Image Behavior
+- Product/dashboard screenshots maintain soft card shadow at all sizes
+- Cards keep consistent 8px radius
+- Pill buttons keep 30px radius regardless of width
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, section bands, inline text |
+| Low-lift (Level 1) | `rgba(200,200,200,0.27) 2px 2px 6px 0px` | Chips, small floating tags |
+| Card (Level 2) | `rgba(0,0,0,0.08) 0px 8px 16px 0px` | Standard feature cards, panels |
+| Float (Level 3) | `rgba(0,0,0,0.08) 0px 4px 24px 0px` | Popovers, floating CTAs, dropdowns |
+| Focus ring | `#356dff` border/ring | Keyboard focus, active inputs |
+
+**Shadow Philosophy**: SHOPLINE keeps elevation deliberately gentle. Shadows are neutral (gray/black at only 0.08 alpha), never tinted or dramatic. The intent is an airy, trustworthy, low-friction feel — depth exists to lift interactive cards just enough to read as tappable, never to create heavy visual drama. Where Stripe makes shadows a branded chromatic signature, SHOPLINE deliberately makes them recede, letting the blue accent and pill shapes carry the brand.
+
+### Decorative Depth
+- Navy (`#00142d`) full-bleed sections create depth through color contrast rather than shadow
+- Light-blue washes (`#edf4fd`, `#f2f7fc`) provide subtle layering between bands
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.soft`: `rgba(200,200,200,0.27) 2px 2px 6px 0px`
+- `shadow.card`: `rgba(0,0,0,0.08) 0px 8px 16px 0px`
+- `shadow.float`: `rgba(0,0,0,0.08) 0px 4px 24px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection ticks, focus rings |
+| `motion-fast` | 150ms | Hover, button press, pill state changes |
+| `motion-standard` | 250ms | Dropdowns, modals, card reveals |
+| `motion-slow` | 400ms | Section reveals on scroll, hero transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, cards, sheets |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Character.** Motion is smooth, gentle, and reassuring — in keeping with the airy, friendly atmosphere. Hover states on pill buttons lift subtly (soft shadow grows, slight darken of the blue). Scroll-reveal on marketing bands fades content in gently. No aggressive springs or bounces that would undercut the trustworthy register.
+
+**Signature motions.**
+1. **Pill hover.** Primary blue pills darken slightly and the soft card shadow grows on hover — a gentle invitation to tap.
+2. **Band scroll-reveal.** As each white/tinted/navy section enters the viewport, its content fades and rises a few pixels using `motion-standard / ease-enter`.
+3. **Reduce motion.** Under `prefers-reduced-motion: reduce`, reveals become instant and hover transitions collapse to `motion-instant`. The interface stays fully functional and calm.
+
+## Components
 
 ### Buttons
 
@@ -216,48 +429,19 @@ All SHOPLINE buttons share one geometry: a **30px fully-rounded pill** with weig
 **Country sources:** https://shopline.tw (official TW site, zh-TW), https://blog.shopline.tw (official TW blog), https://shopline.hk (HK regional sibling), Apple App Store TW listing
 **`.verification.md`:** `web/references/shopline/.verification.md`
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, with ~80px between major marketing sections
-- Generous vertical rhythm between bands keeps the long homepage scannable
+| State | Treatment |
+|---|---|
+| **Empty (store, no products)** | White canvas. A single encouraging line in ink navy (`#00142d`) at 18px Noto Sans TC weight 700, plus one blue pill CTA ("新增商品" / add product). Friendly, action-oriented — not a dead end. |
+| **Empty (orders, none yet)** | Light line at 16px `#00142d`: "尚無訂單" (no orders yet), with guidance toward sharing the store. Encouraging, never discouraging. |
+| **Loading** | Soft skeleton blocks in hairline gray (`#d6d6d6`) at final dimensions, gentle shimmer. Keeps the airy feel. |
+| **Error (form validation)** | Field-level message below the input describing what's invalid, in a warm tone. Border shifts to an error color; the blue focus ring is the calm default. |
+| **Error (action failed)** | Inline banner with plain-language explanation and a retry CTA. No cold error codes for merchant-facing flows. |
+| **Success (saved / published)** | Brief confirmation, often a toast with the blue accent. Sentence-case, encouraging ("商品已上架" / product is live). |
+| **Disabled** | Reduced opacity on the pill; blue actions fade rather than turn gray, preserving the brand read. |
 
-### Grid & Container
-- Centered single-column hero with large bold headline and a pair of pill CTAs
-- Feature sections use 2–3 column card grids on light-blue washes
-- Full-bleed navy sections for immersive hero/feature moments
-- Comfortable max content width with generous side gutters
-
-### Whitespace Philosophy
-- **Airy and calm**: Low-alpha shadows and pale tints keep the page feeling light, never heavy or dense.
-- **Banded rhythm**: White / light-blue / navy bands alternate down the page, giving a clear visual cadence that helps a long sales page stay legible.
-- **Breathing room for CJK**: Generous line-height and padding give Traditional-Chinese text room, since dense characters need more air than Latin.
-
-### Border Radius Scale
-- Pill (30px): every button — the defining shape
-- Small (3px): tags, inline chips
-- Standard (6px–8px): cards, inputs
-- Large (9px): larger panels
-- Full (50% / 9999): avatars, circular icon chips
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, section bands, inline text |
-| Low-lift (Level 1) | `rgba(200,200,200,0.27) 2px 2px 6px 0px` | Chips, small floating tags |
-| Card (Level 2) | `rgba(0,0,0,0.08) 0px 8px 16px 0px` | Standard feature cards, panels |
-| Float (Level 3) | `rgba(0,0,0,0.08) 0px 4px 24px 0px` | Popovers, floating CTAs, dropdowns |
-| Focus ring | `#356dff` border/ring | Keyboard focus, active inputs |
-
-**Shadow Philosophy**: SHOPLINE keeps elevation deliberately gentle. Shadows are neutral (gray/black at only 0.08 alpha), never tinted or dramatic. The intent is an airy, trustworthy, low-friction feel — depth exists to lift interactive cards just enough to read as tappable, never to create heavy visual drama. Where Stripe makes shadows a branded chromatic signature, SHOPLINE deliberately makes them recede, letting the blue accent and pill shapes carry the brand.
-
-### Decorative Depth
-- Navy (`#00142d`) full-bleed sections create depth through color contrast rather than shadow
-- Light-blue washes (`#edf4fd`, `#f2f7fc`) provide subtle layering between bands
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use `Noto Sans TC` at weight 700 for every headline and CTA — bold legibility is the voice
@@ -278,34 +462,38 @@ All SHOPLINE buttons share one geometry: a **30px fully-rounded pill** with weig
 - Don't apply negative letter-spacing to Chinese text — CJK glyphs use normal tracking
 - Don't crowd CJK type — dense Traditional-Chinese needs breathing room
 
-## 8. Responsive Behavior
+### Do
+- Lead with bold weight-700 Noto Sans TC headlines and a single SHOPLINE Blue (`#356dff`) accent
+- Make every button a friendly 30px pill
+- Use ink navy (`#00142d`) for text and dark sections; band the page with `#edf4fd` / `#f2f7fc`
+- Keep shadows soft and neutral (`rgba(0,0,0,0.08)`); keep the page airy
+- Write merchant-first, encouraging copy with direct CTAs ("免費試用", "了解所有方案")
+- Give Traditional-Chinese text generous line-height and normal tracking
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, reduced heading sizes, stacked cards, hamburger nav |
-| Tablet | 640–1024px | 2-column grids, moderate padding |
-| Desktop | 1024–1280px | Full layout, 3-column feature grids |
-| Large Desktop | >1280px | Centered content with generous side gutters |
+### Don't
+- Don't use thin/light headline weights — SHOPLINE is bold (700)
+- Don't use sharp or small-radius buttons — pills only
+- Don't add a second brand hue or use heavy/tinted shadows
+- Don't use pure black for text (`#00142d` instead) — the black pill nav CTA is the sole exception
+- Don't crowd CJK type or apply negative letter-spacing
+- Don't adopt cold enterprise/developer-first tone — the audience is shopkeepers
 
-### Touch Targets
-- Pill CTAs are 38px–45px tall — comfortably tappable
-- Nav links at 16px with generous spacing
-- Header free-trial pill always reachable in the sticky nav
+## Voice & Tone
 
-### Collapsing Strategy
-- Hero: 48px headline scales down on mobile, weight 700 maintained
-- Navigation: horizontal links → hamburger toggle, header CTA pill persists
-- Feature cards: 3-column → 2-column → single stacked column
-- Navy/tinted bands keep full-bleed treatment, reduce internal padding on mobile
-- Section spacing compresses (~80px → ~40px) on mobile
+SHOPLINE's voice (in 繁體中文) is encouraging, practical, and merchant-empowering — it speaks to small-business owners and aspiring entrepreneurs as capable partners, not as targets. The positioning line "全方位零售整合專家" (all-in-one retail integration expert) and copy like "讓你的生意不斷成長" (keep your business growing) set a tone that is confident about the platform's breadth while staying warm and accessible. CTAs are direct and action-oriented: "免費試用" (free trial), "了解所有方案" (see all plans), "立即預約 GO!" (book now). The voice avoids hype-laden superlatives in favor of concrete capability and reassurance.
 
-### Image Behavior
-- Product/dashboard screenshots maintain soft card shadow at all sizes
-- Cards keep consistent 8px radius
-- Pill buttons keep 30px radius regardless of width
+| Context | Tone |
+|---|---|
+| Hero headlines | Confident, comprehensive. "全方位…專家" — capable without arrogance. |
+| Feature descriptions | Practical, benefit-led. Concrete merchant outcomes, not abstract promises. |
+| CTAs | Direct imperatives. "免費試用", "了解所有方案", "立即預約". |
+| Pricing / plans | Transparent, reassuring. Emphasis on free trial and flexible scale. |
+| Support / help | Patient, plain-language, merchant-first. |
+| Marketing / blog | Educational — how-to-open-a-store guidance, e-commerce know-how. |
 
-## 9. Agent Prompt Guide
+**Forbidden register.** Cold enterprise jargon that alienates small merchants; hype superlatives that undercut trust; anything that makes a first-time店主 feel the platform is "too advanced" for them. The brand wins by feeling attainable.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: SHOPLINE Blue (`#356dff`)
@@ -335,105 +523,9 @@ All SHOPLINE buttons share one geometry: a **30px fully-rounded pill** with weig
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-SHOPLINE's voice (in 繁體中文) is encouraging, practical, and merchant-empowering — it speaks to small-business owners and aspiring entrepreneurs as capable partners, not as targets. The positioning line "全方位零售整合專家" (all-in-one retail integration expert) and copy like "讓你的生意不斷成長" (keep your business growing) set a tone that is confident about the platform's breadth while staying warm and accessible. CTAs are direct and action-oriented: "免費試用" (free trial), "了解所有方案" (see all plans), "立即預約 GO!" (book now). The voice avoids hype-laden superlatives in favor of concrete capability and reassurance.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Confident, comprehensive. "全方位…專家" — capable without arrogance. |
-| Feature descriptions | Practical, benefit-led. Concrete merchant outcomes, not abstract promises. |
-| CTAs | Direct imperatives. "免費試用", "了解所有方案", "立即預約". |
-| Pricing / plans | Transparent, reassuring. Emphasis on free trial and flexible scale. |
-| Support / help | Patient, plain-language, merchant-first. |
-| Marketing / blog | Educational — how-to-open-a-store guidance, e-commerce know-how. |
-
-**Forbidden register.** Cold enterprise jargon that alienates small merchants; hype superlatives that undercut trust; anything that makes a first-time店主 feel the platform is "too advanced" for them. The brand wins by feeling attainable.
-
-## 11. Brand Narrative
-
-SHOPLINE is a commerce / online-store SaaS platform serving the Greater China region, with a strong presence in **Taiwan (台灣)** and **Hong Kong (香港)** and across Southeast Asia. It gives merchants — from solo creators to established brands — an all-in-one toolkit to open and run an online store: storefront building, product and inventory management, payments, marketing, and increasingly omni-channel (online + physical retail, social commerce) integration. The Taiwan-facing brand promise, "全方位零售整合專家" (all-in-one retail integration expert) and "完整開店功能讓你的生意不斷成長" (complete store-opening features to keep your business growing), positions SHOPLINE as the partner that handles the technical complexity so the merchant can focus on selling.
-
-What SHOPLINE embraces: accessibility for first-time店主, breadth of features under one roof, and a bright, trustworthy, friendly design language. What it rejects: the intimidating, developer-first or enterprise-procurement feel of platforms built for engineers — SHOPLINE's audience is shopkeepers, not staff engineers, and the design reflects that through bold legible type, friendly pill shapes, and a single calm blue.
-
-The design system encodes this positioning directly: weight-700 Noto Sans TC for maximum legibility across merchant content in 繁體中文, fully-rounded pill buttons that read as friendly and approachable, a single confident blue (`#356dff`) that signals trust, and soft airy shadows that keep the experience light rather than heavy. Light-blue washes and navy immersive bands give the long marketing page rhythm without ever introducing a competing color.
-
-*Note: brand-history specifics beyond the publicly observable TW/HK commerce-SaaS positioning are not independently verified here; claims above are grounded in the live zh-TW homepage and regional brand-owned sources.*
-
-## 12. Principles
-
-1. **Legibility before personality.** A free, ubiquitous CJK font (Noto Sans TC) at bold weight 700 means merchant-supplied product names and marketing copy are always perfectly readable. The brand's personality lives in color and shape, not exotic letterforms.
-2. **One blue, used decisively.** A single accent (`#356dff`) carries every CTA, link, and highlight. Restraint reads as trustworthy; a rainbow of accents would read as cheap.
-3. **Friendly geometry.** The 30px pill is a deliberate emotional choice — rounded shapes feel approachable and safe to a small-business owner trusting the platform with their livelihood.
-4. **Airy, never heavy.** Soft 0.08-alpha shadows and pale tints keep the interface light. Heaviness would feel like enterprise software; lightness feels attainable.
-5. **Bands give rhythm.** Alternating white / light-blue / navy sections turn a long sales page into a scannable, paced experience.
-6. **Navy, not black, for text.** Ink navy (`#00142d`) is softer and warmer than pure black, reinforcing the friendly-but-trustworthy register.
-7. **Merchant-first, not engineer-first.** Every design decision favors the non-technical store owner: clear CTAs, big readable type, no intimidating density.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable SHOPLINE user segments (first-time online sellers, established TW/HK retail brands, social-commerce sellers, omni-channel merchants), not individual people.*
-
-**陳怡君 (Chen Yi-Chun), 29, Taipei.** Runs a handmade-accessories side business on Instagram and wants a real online store. Not technical. Chose SHOPLINE because the free trial let her open a storefront in an afternoon and the bold, clear Chinese interface never made her feel lost. The friendly pill buttons and "免費試用" everywhere lowered her fear of committing.
-
-**Marcus Wong, 41, Hong Kong.** Operations lead at an established apparel brand expanding from physical retail into omni-channel. Values SHOPLINE's integration breadth — inventory synced across online and in-store. Trusts the calm, professional blue-and-navy design as a signal that the platform is serious infrastructure, not a toy.
-
-**林家豪 (Lin Chia-Hao), 34, Taichung.** Sells specialty coffee equipment and runs marketing campaigns himself. Reads SHOPLINE's blog (blog.shopline.tw) for e-commerce how-tos. Appreciates that the dashboard's readable weight-700 headings and generous spacing make managing hundreds of SKUs in 繁體中文 painless.
-
-**Priya Nair, 27, Singapore.** Social-commerce seller scaling a beauty brand across Southeast Asia. Picked SHOPLINE for its regional reach and the approachable onboarding. The bright, trustworthy visual language reassured her customers at checkout.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (store, no products)** | White canvas. A single encouraging line in ink navy (`#00142d`) at 18px Noto Sans TC weight 700, plus one blue pill CTA ("新增商品" / add product). Friendly, action-oriented — not a dead end. |
-| **Empty (orders, none yet)** | Light line at 16px `#00142d`: "尚無訂單" (no orders yet), with guidance toward sharing the store. Encouraging, never discouraging. |
-| **Loading** | Soft skeleton blocks in hairline gray (`#d6d6d6`) at final dimensions, gentle shimmer. Keeps the airy feel. |
-| **Error (form validation)** | Field-level message below the input describing what's invalid, in a warm tone. Border shifts to an error color; the blue focus ring is the calm default. |
-| **Error (action failed)** | Inline banner with plain-language explanation and a retry CTA. No cold error codes for merchant-facing flows. |
-| **Success (saved / published)** | Brief confirmation, often a toast with the blue accent. Sentence-case, encouraging ("商品已上架" / product is live). |
-| **Disabled** | Reduced opacity on the pill; blue actions fade rather than turn gray, preserving the brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection ticks, focus rings |
-| `motion-fast` | 150ms | Hover, button press, pill state changes |
-| `motion-standard` | 250ms | Dropdowns, modals, card reveals |
-| `motion-slow` | 400ms | Section reveals on scroll, hero transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, cards, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Character.** Motion is smooth, gentle, and reassuring — in keeping with the airy, friendly atmosphere. Hover states on pill buttons lift subtly (soft shadow grows, slight darken of the blue). Scroll-reveal on marketing bands fades content in gently. No aggressive springs or bounces that would undercut the trustworthy register.
-
-**Signature motions.**
-1. **Pill hover.** Primary blue pills darken slightly and the soft card shadow grows on hover — a gentle invitation to tap.
-2. **Band scroll-reveal.** As each white/tinted/navy section enters the viewport, its content fades and rises a few pixels using `motion-standard / ease-enter`.
-3. **Reduce motion.** Under `prefers-reduced-motion: reduce`, reveals become instant and hover transitions collapse to `motion-instant`. The interface stays fully functional and calm.
-
-## 16. Do's and Don'ts
-
-### Do
-- Lead with bold weight-700 Noto Sans TC headlines and a single SHOPLINE Blue (`#356dff`) accent
-- Make every button a friendly 30px pill
-- Use ink navy (`#00142d`) for text and dark sections; band the page with `#edf4fd` / `#f2f7fc`
-- Keep shadows soft and neutral (`rgba(0,0,0,0.08)`); keep the page airy
-- Write merchant-first, encouraging copy with direct CTAs ("免費試用", "了解所有方案")
-- Give Traditional-Chinese text generous line-height and normal tracking
-
-### Don't
-- Don't use thin/light headline weights — SHOPLINE is bold (700)
-- Don't use sharp or small-radius buttons — pills only
-- Don't add a second brand hue or use heavy/tinted shadows
-- Don't use pure black for text (`#00142d` instead) — the black pill nav CTA is the sole exception
-- Don't crowd CJK type or apply negative letter-spacing
-- Don't adopt cold enterprise/developer-first tone — the audience is shopkeepers
+- **Contrast, `button-primary`.** Text `#ffffff` on `#356dff` measures 4.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-outline`.** Text `#356dff` on `#ffffff` measures 4.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

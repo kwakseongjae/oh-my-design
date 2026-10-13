@@ -1,73 +1,176 @@
 ---
-id: solapi
 name: SOLAPI
-display_name_kr: 솔라피
-country: KR
-category: developer-tools
-homepage: "https://solapi.com"
-primary_color: "#4541ff"
-logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=solapi.com&sz=128"
-verified: "2026-06-26"
-added: "2026-06-26"
-omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = live CTA indigo (#4541ff, rgb 69 65 255) used for every action button and link; appears as an 8% tint surface and a 20%-alpha brand-glow shadow. Two heading-grey eras coexist: legacy marketing greys (#333333 / #222222 / #828282) and a newer slate ladder (#111827 / #64748b) on the developers + pricing surfaces."
-  colors:
-    primary: "#4541ff"
-    primary-light: "#a788ff"
-    ink: "#222222"
-    heading: "#333333"
-    slate-ink: "#111827"
-    muted: "#828282"
-    slate-muted: "#64748b"
-    link: "#2563eb"
-    success: "#28c840"
-    canvas: "#ffffff"
-    surface: "#f8fafc"
-    input-bg: "#f9f9f9"
-    hairline: "#e5e8eb"
-    border-slate: "#e2e8f0"
-    code-ink: "#24292f"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "Pretendard", mono: "Monaco" }
-    display-hero: { size: 64, weight: 800, lineHeight: 1.18, use: "Homepage hero headline, Pretendard ExtraBold" }
-    display:      { size: 52, weight: 800, lineHeight: 1.20, use: "Section marketing headlines" }
-    headline:     { size: 48, weight: 700, lineHeight: 1.20, use: "Developers section heads" }
-    title:        { size: 28, weight: 600, lineHeight: 1.30, use: "Pricing table / sub-section titles" }
-    subsection:   { size: 20, weight: 600, lineHeight: 1.30, use: "Feature card heads" }
-    body-lg:      { size: 18, weight: 400, lineHeight: 1.55, use: "Lead paragraph / problem statements" }
-    body:         { size: 16, weight: 400, lineHeight: 1.55, use: "Standard reading + nav links" }
-    button:       { size: 14, weight: 700, lineHeight: 1.00, use: "Header CTA / nav button label" }
-    caption:      { size: 13, weight: 400, lineHeight: 1.40, use: "Footer, fine print, utility links" }
-    code:         { size: 14, weight: 400, lineHeight: 1.60, use: "SDK snippets, Monaco/Menlo mono" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 28, xl: 32, xxl: 48, section: 64 }
-  rounded: { xs: 5, sm: 6, md: 8, base: 12, card: 20, pill: 100, full: 9999 }
-  shadow:
-    subtle: "rgba(0,0,0,0.05) 0px 1px 2px 0px"
-    card: "rgba(0,0,0,0.1) 0px 0px 16px 0px"
-    elevated: "rgba(0,0,0,0.1) 0px 8px 32px 0px"
-    brand-glow: "rgba(69,65,255,0.2) 0px 0px 20px 0px"
-  components:
-    button-primary: { type: button, bg: "#4541ff", fg: "#ffffff", border: "1px solid #4541ff", radius: "8px", padding: "14px 32px", height: "50px", font: "17px / 600", states: "header variant radius 5px · developers variant radius 12px", use: "Primary CTA — 시작하기 / 솔라피 가입하기 / 시작하기 →" }
-    button-pill-outline: { type: button, bg: "#ffffff", fg: "#4541ff", border: "1px solid #4541ff", radius: "100px", padding: "16px 32px", font: "16px / 800", use: "Enterprise-inquiry pill — 도입 문의하기" }
-    button-ghost-outline: { type: button, bg: "#ffffff", fg: "#111827", border: "1px solid #e2e8f0", radius: "8px", padding: "14px 32px", font: "17px / 600", use: "Secondary CTA — 데모 체험하기" }
-    input-search: { type: input, bg: "#f9f9f9", fg: "#222222", border: "1px solid #e5e8eb", radius: "14px", padding: "12px 44px", height: "45px", font: "16px / 400", use: "Pricing / docs search field" }
-    card-pricing: { type: card, bg: "#f8fafc", fg: "#111827", border: "1px solid #e2e8f0", radius: "10px", shadow: "rgba(0,0,0,0.1) 0px 0px 16px 0px", use: "Pricing + discount-table linked card" }
-    card-feature: { type: card, bg: "#ffffff", radius: "20px", shadow: "rgba(69,65,255,0.2) 0px 0px 20px 0px", use: "Feature card, 20px workhorse radius + brand-glow" }
-    nav-link: { type: tab, fg: "#222222", font: "16px / 400", active: "text #4541ff on active", use: "Top nav item — 가이드 / SDK / API" }
-    code-block: { type: card, bg: "#ffffff", fg: "#24292f", radius: "12px", font: "14px / 400 Monaco", use: "Developers SDK snippet panel" }
-    badge-success: { type: badge, bg: "#ffffff", fg: "#28c840", border: "1px solid #e2e8f0", radius: "6px", font: "13px / 700", use: "Status / success indicator pill" }
-  components_harvested: true
+colors:
+  primary: '#4541ff'
+  primary-light: '#a788ff'
+  ink: '#222222'
+  heading: '#333333'
+  slate-ink: '#111827'
+  muted: '#828282'
+  slate-muted: '#64748b'
+  link: '#2563eb'
+  success: '#28c840'
+  canvas: '#ffffff'
+  surface: '#f8fafc'
+  input-bg: '#f9f9f9'
+  hairline: '#e5e8eb'
+  border-slate: '#e2e8f0'
+  code-ink: '#24292f'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 64px
+    fontWeight: 800
+    lineHeight: 1.18
+    use: Homepage hero headline, Pretendard ExtraBold
+  display:
+    fontSize: 52px
+    fontWeight: 800
+    lineHeight: 1.2
+    use: Section marketing headlines
+  headline:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Developers section heads
+  title:
+    fontSize: 28px
+    fontWeight: 600
+    lineHeight: 1.3
+    use: Pricing table / sub-section titles
+  subsection:
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.3
+    use: Feature card heads
+  body-lg:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.55
+    use: Lead paragraph / problem statements
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.55
+    use: Standard reading + nav links
+  button:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1
+    use: Header CTA / nav button label
+  caption:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Footer, fine print, utility links
+  code:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: SDK snippets, Monaco/Menlo mono
+rounded:
+  xs: 5px
+  sm: 6px
+  md: 8px
+  base: 12px
+  card: 20px
+  pill: 100px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 28
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#4541ff'
+    textColor: '#ffffff'
+    border: '1px solid #4541ff'
+    rounded: 8px
+    padding: 14px 32px
+    height: 50px
+    typography: 17px / 600
+    states: header variant radius 5px · developers variant radius 12px
+    use: Primary CTA — 시작하기 / 솔라피 가입하기 / 시작하기 →
+  button-pill-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#4541ff'
+    border: '1px solid #4541ff'
+    rounded: 100px
+    padding: 16px 32px
+    typography: 16px / 800
+    use: Enterprise-inquiry pill — 도입 문의하기
+  button-ghost-outline:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#111827'
+    border: '1px solid #e2e8f0'
+    rounded: 8px
+    padding: 14px 32px
+    typography: 17px / 600
+    use: Secondary CTA — 데모 체험하기
+  input-search:
+    type: input
+    backgroundColor: '#f9f9f9'
+    textColor: '#222222'
+    border: '1px solid #e5e8eb'
+    rounded: 14px
+    padding: 12px 44px
+    height: 45px
+    typography: 16px / 400
+    use: Pricing / docs search field
+  card-pricing:
+    type: card
+    backgroundColor: '#f8fafc'
+    textColor: '#111827'
+    border: '1px solid #e2e8f0'
+    rounded: 10px
+    shadow: rgba(0,0,0,0.1) 0px 0px 16px 0px
+    use: Pricing + discount-table linked card
+  card-feature:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 20px
+    shadow: rgba(69,65,255,0.2) 0px 0px 20px 0px
+    use: Feature card, 20px workhorse radius + brand-glow
+  nav-link:
+    type: tab
+    textColor: '#222222'
+    typography: 16px / 400
+    active: 'text #4541ff on active'
+    use: Top nav item — 가이드 / SDK / API
+  code-block:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#24292f'
+    rounded: 12px
+    typography: 14px / 400 Monaco
+    use: Developers SDK snippet panel
+  badge-success:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#28c840'
+    border: '1px solid #e2e8f0'
+    rounded: 6px
+    typography: 13px / 700
+    use: Status / success indicator pill
+fonts:
+  roles:
+    sans: Pretendard
+    mono: Monaco
 ---
 
 # Design System Inspiration of SOLAPI
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 SOLAPI (솔라피) is a Korean cloud-messaging API platform — the infrastructure layer that lets developers send SMS, KakaoTalk 알림톡, Naver, and RCS messages and automate CRM flows from a few lines of code. Its design reflects that dual identity: a clean, confident consumer-marketing surface on the homepage and a calmer, slate-toned developer surface on `/developers` and `/pricing`. The canvas is pure white (`#ffffff`) throughout, and the entire system is unified by a single, unusually saturated indigo — SOLAPI Indigo (`#4541ff`) — which carries every primary call-to-action, every active nav link, and even reappears as an 8%-tint feature surface and a 20%-alpha brand-glow shadow. The effect is a product that feels engineered and trustworthy without resorting to the heavy navy-and-grey chrome of legacy enterprise telecom.
 
@@ -85,7 +188,7 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 - Status green (`#28c840`) and a light-purple accent (`#a788ff`) used sparingly for emphasis
 - White (`#ffffff`) page canvas and on-indigo button text throughout
 
-## Primary tasks
+### Primary tasks
 
 - Send SMS, KakaoTalk and RCS messages through one integration
 - Copy a ready-to-run SDK example and finish the integration
@@ -93,7 +196,33 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 - Compare plain rate tables before choosing how to send
 - Retry a failed send from a plain-language cause
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+SOLAPI (솔라피) is operated by **솔라피(주)** (SOLAPI Inc.), led by CEO **최대성 (Choi Dae-sung)**, headquartered in Seocho-gu, Seoul (강남대로 359), with the homepage footer carrying a "© 2008 ~" lineage — placing the company's messaging-platform roots among the earliest Korean SMS-API providers. The product is a developer-first cloud-messaging API: a single integration that sends SMS/LMS/MMS, KakaoTalk 알림톡·친구톡, Naver, and the third-generation RCS message format, layered with automation and CRM tooling. Its stated promise — "반나절 만에 끝내는 편리한 API연동" ("convenient API integration finished in half a day") — frames the entire brand around reducing developer integration time.
+
+SOLAPI sits in a uniquely Korean market problem: businesses need to reach customers across a fragmented landscape of channels (SMS for universality, KakaoTalk 알림톡 for transactional trust, RCS for rich media), each with its own carrier rules and pricing. SOLAPI's premise is to collapse that fragmentation behind one API and one dashboard — and increasingly behind AI-assisted integration ("AI와 함께하는 쉽고 빠른 메시지 발송", with AI that "대신 코딩해드려요" — writes the integration code for you).
+
+What the design refuses, and what it embraces, both follow from this: it rejects the heavy navy-and-grey chrome of legacy telecom and the dark-pattern urgency of marketing-spam tooling. It embraces a clean white canvas, a single trustworthy indigo, heavy Pretendard headlines that speak plainly, and a developer surface (Monaco code panels, blue doc links, slate surfaces) that signals "this was built by engineers, for engineers."
+
+### Principles
+
+1. **One action, one colour.** Indigo (`#4541ff`) means "do this." *UI implication:* reserve the saturated indigo for the single primary CTA so the next step is never ambiguous; the secondary is always a quiet outline.
+2. **Remove integration friction.** The brand's promise is "half a day" to integrate. *UI implication:* the developer surface foregrounds copy-ready Monaco code and AI assistance over marketing prose.
+3. **Calm capability over hype.** Messaging infrastructure must read as reliable. *UI implication:* declarative headlines, no exclamation-heavy urgency, soft ambient depth instead of loud shadows.
+4. **Two surfaces, one system.** Marketing persuades; the developer surface informs. *UI implication:* the warm grey ladder lives on marketing, the cool slate ladder on docs — but indigo, Pretendard, and the radius scale unify both.
+5. **Heavy where it persuades, plain where it informs.** *UI implication:* Pretendard ExtraBold (800) for marketing display; weight 700 and 400 for the technical surface; mono only for code.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly observable SOLAPI user segments (Korean backend developers, growth/CRM marketers, and product teams integrating messaging), not individual people.*
+
+**김도현, 30, 서울.** A backend developer at a mid-size commerce startup wiring up order-confirmation 알림톡 and shipping SMS. Chose SOLAPI because the SDK example on `/developers` was copy-ready and the "half a day" integration promise held. Values that the docs read like they were written by engineers.
+
+**이서연, 34, 판교.** A growth/CRM marketer automating re-engagement campaigns across SMS and KakaoTalk. Doesn't write code but lives in the dashboard and pricing page. Appreciates the plain rate tables and that the interface doesn't pressure her with countdowns or upsell modals.
+
+**박준영, 41, 대전.** A CTO at a B2B SaaS company evaluating messaging vendors. Clicks "도입 문의하기" for an enterprise quote. Trusts the brand partly because the design reads as steady infrastructure — one calm indigo, no hype — rather than a flashy growth tool.
+
+## Colors
 
 ### Primary
 - **SOLAPI Indigo** (`#4541ff`): The primary brand colour. Fills every primary CTA, colours every link and active nav item, and reappears as an 8% tint and a 20%-alpha glow shadow. A vivid blue-violet that anchors the entire system.
@@ -121,7 +250,7 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 - **Success Green** (`#28c840`): Status, confirmation, and success indicators.
 - **On Primary** (`#ffffff`): White label text on every indigo button and dark fill.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Sans (primary)**: `Pretendard, sans-serif` — the document default for every headline, body, nav, and button label.
@@ -148,7 +277,129 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 - **Heading greys, never black**: Display text uses `#333333` (marketing) or `#111827` (developer), never `#000000`, keeping the page warm and approachable.
 - **Mono only for code**: The Monaco stack appears exclusively inside SDK snippet panels — code is visually quarantined from prose.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px / 8px
+- Scale: 4px, 8px, 12px, 16px, 28px, 32px, 48px, 64px
+- Notable: CTA buttons land on a generous 14px × 32px padding; the enterprise pill widens to 16px × 32px for an unmistakable hit area
+
+### Grid & Container
+- Centered single-column hero anchored by the 64px ExtraBold headline
+- Marketing sections alternate white bands with full-bleed indigo "solution" sections (white text on `#4541ff`)
+- Pricing renders as a stacked sequence of slate cards (`#f8fafc`) with linked detail rows
+- Developer surface pairs a prose column with Monaco code panels side-by-side
+
+### Whitespace Philosophy
+- **Airy marketing, dense docs**: the homepage breathes with large vertical rhythm; the pricing and developer surfaces pack more information per screen
+- **Colour for emphasis, not borders**: separation comes from indigo fills, slate surfaces, and light shadows rather than heavy rules
+- **One action per view**: the saturated indigo CTA is never crowded by a second equally-loud button — the secondary is always a quiet outline
+
+### Border Radius Scale
+- Extra-small (5px): compact header buttons
+- Small (6px): badges, small chips
+- Medium (8px): primary/secondary buttons
+- Base (12px): developer CTAs, code panels
+- Card (20px): the workhorse feature-card radius
+- Pill (100px): the enterprise-inquiry button
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, hero headline compresses, code panels stack below prose |
+| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
+| Desktop | 1024-1440px | Full layout, centered hero, side-by-side prose + code |
+
+#### Touch Targets
+- Hero CTAs at 50–53px height with 14–16px × 32px padding — comfortably tappable
+- Header CTA compact at 36px height for the persistent nav bar
+- Search field at 45px height with generous 12px × 44px padding
+
+#### Collapsing Strategy
+- Hero: 64px ExtraBold headline scales down on mobile, weight 800 maintained
+- Developer surface: prose + Monaco code panels stack vertically on narrow viewports
+- Feature cards: multi-column → single column, 20px radius preserved
+- Full-bleed indigo "solution" sections keep their treatment, padding reduces
+
+#### Image Behavior
+- Product screenshots sit inside 20px-radius cards with the soft ambient shadow
+- Code panels keep Monaco treatment and may horizontally scroll on mobile
+- Brand-glow cards retain the indigo halo at all sizes
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Page background, inline text, most marketing copy |
+| Subtle (Level 1) | `rgba(0,0,0,0.05) 0px 1px 2px 0px` | Inputs, small chips |
+| Card (Level 2) | `rgba(0,0,0,0.1) 0px 0px 16px 0px` | Standard cards, pricing tables — the workhorse |
+| Brand Glow (Level 3) | `rgba(69,65,255,0.2) 0px 0px 20px 0px` | Hero feature cards — indigo-tinted ambient glow |
+| Elevated (Level 4) | `rgba(0,0,0,0.1) 0px 8px 32px 0px` | Floating panels, hover-lifted cards |
+
+**Shadow Philosophy**: SOLAPI keeps elevation deliberately light. The dominant shadow is a soft, evenly-spread `rgba(0,0,0,0.1) 0px 0px 16px` ambient halo (observed on dozens of cards) rather than a hard directional drop. The one expressive move is the brand-glow — `rgba(69,65,255,0.2) 0px 0px 20px` — which tints elevation with the indigo brand colour so a hero feature card appears to emit a faint violet light. Depth is never used to crowd or stack; the system prefers flat colour fields and a single soft halo.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `rgba(0,0,0,0.05) 0px 1px 2px 0px`
+- `shadow.card`: `rgba(0,0,0,0.1) 0px 0px 16px 0px`
+- `shadow.elevated`: `rgba(0,0,0,0.1) 0px 8px 32px 0px`
+- `shadow.brand-glow`: `rgba(69,65,255,0.2) 0px 0px 20px 0px`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus |
+| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Motion rules**: Motion is quiet and functional, consistent with the calm, infrastructure register. Buttons respond to hover/press with a subtle opacity or shadow shift; feature cards fade-in from below at `motion-standard / ease-enter`; the indigo brand-glow may intensify slightly on hover. No bounce or spring — messaging infrastructure signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the glow holds static; the product remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on three brand-owned surfaces:
+- https://solapi.com/ (homepage) — hero H1 64px/800 #333333, CTA #4541ff, body Pretendard #222222
+- https://solapi.com/developers — hero H1 64px/700 #111827, indigo CTA radius 12px, Monaco code #24292f
+- https://solapi.com/pricing — slate cards #f8fafc, doc links #2563eb, search input #f9f9f9
+Plus https://github.com/solapi (official GitHub org, confirmed live 200).
+
+Token-level claims (§1-9) are sourced from this live inspection.
+
+Voice samples (§10) are verbatim from the live homepage (hero H1, section headline),
+the developers surface (hero H1, section H2), and the meta description.
+
+Brand narrative (§11): 솔라피(주) (SOLAPI Inc.), CEO 최대성, Seoul HQ, "© 2008 ~"
+lineage and service scope (SMS/LMS/MMS, KakaoTalk 알림톡·친구톡, Naver, RCS, automation/CRM)
+are taken from the live homepage footer and meta description (verified 2026-06-26).
+SOLAPI is widely documented as a Korean cloud-messaging API platform; details beyond the
+footer/meta are general public knowledge, not directly quoted from a verified statement
+in this turn.
+
+Personas (§13) are fictional archetypes informed by publicly observable SOLAPI user
+segments (Korean backend developers, CRM marketers, product teams). Names are illustrative;
+they do not refer to real people.
+
+Interpretive claims (e.g., "one action, one colour", "two surfaces, one system", the
+warm-vs-slate grey-era reading) are editorial readings connecting SOLAPI's observed design
+to its positioning, not directly sourced SOLAPI statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -259,45 +510,21 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 **Tier 2 sources:** getdesign.md/solapi (SPA shell — no static token data); styles.refero.design (searched "solapi" — not listed)
 **Conflicts unresolved:** none
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px / 8px
-- Scale: 4px, 8px, 12px, 16px, 28px, 32px, 48px, 64px
-- Notable: CTA buttons land on a generous 14px × 32px padding; the enterprise pill widens to 16px × 32px for an unmistakable hit area
+| State | Treatment |
+|---|---|
+| **Empty (no messages / no data)** | White canvas with a single line in Slate Ink (`#111827`) explaining the empty state, plus one indigo CTA to send a first message. No clutter. |
+| **Empty (search no results)** | Muted (`#828282`) single line on the `#f9f9f9` field context; filter stays visible so the query can be adjusted. |
+| **Loading (dashboard / table)** | Skeleton rows at final card dimensions on `#f8fafc` surface, 20px radius, soft ambient pulse consistent with the light-shadow system. |
+| **Loading (code/SDK action)** | Inline progress within the developer panel; previous code stays visible. |
+| **Error (send failed)** | Inline message in Slate Ink with a plain-language cause and a retry — never a bare "오류가 발생했습니다". States the next step. |
+| **Error (form validation)** | Field-level message below the `#f9f9f9` input; describes what is valid, not just "필수". |
+| **Success (message sent)** | Brief inline confirmation; the success indicator uses green (`#28c840`). No celebratory emoji — calm acknowledgement. |
+| **Skeleton** | `#f8fafc` blocks at final dimensions, 20px radius, soft pulse. |
+| **Disabled** | Reduced-opacity surface; indigo actions fade rather than turn grey to preserve the brand read. |
 
-### Grid & Container
-- Centered single-column hero anchored by the 64px ExtraBold headline
-- Marketing sections alternate white bands with full-bleed indigo "solution" sections (white text on `#4541ff`)
-- Pricing renders as a stacked sequence of slate cards (`#f8fafc`) with linked detail rows
-- Developer surface pairs a prose column with Monaco code panels side-by-side
-
-### Whitespace Philosophy
-- **Airy marketing, dense docs**: the homepage breathes with large vertical rhythm; the pricing and developer surfaces pack more information per screen
-- **Colour for emphasis, not borders**: separation comes from indigo fills, slate surfaces, and light shadows rather than heavy rules
-- **One action per view**: the saturated indigo CTA is never crowded by a second equally-loud button — the secondary is always a quiet outline
-
-### Border Radius Scale
-- Extra-small (5px): compact header buttons
-- Small (6px): badges, small chips
-- Medium (8px): primary/secondary buttons
-- Base (12px): developer CTAs, code panels
-- Card (20px): the workhorse feature-card radius
-- Pill (100px): the enterprise-inquiry button
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most marketing copy |
-| Subtle (Level 1) | `rgba(0,0,0,0.05) 0px 1px 2px 0px` | Inputs, small chips |
-| Card (Level 2) | `rgba(0,0,0,0.1) 0px 0px 16px 0px` | Standard cards, pricing tables — the workhorse |
-| Brand Glow (Level 3) | `rgba(69,65,255,0.2) 0px 0px 20px 0px` | Hero feature cards — indigo-tinted ambient glow |
-| Elevated (Level 4) | `rgba(0,0,0,0.1) 0px 8px 32px 0px` | Floating panels, hover-lifted cards |
-
-**Shadow Philosophy**: SOLAPI keeps elevation deliberately light. The dominant shadow is a soft, evenly-spread `rgba(0,0,0,0.1) 0px 0px 16px` ambient halo (observed on dozens of cards) rather than a hard directional drop. The one expressive move is the brand-glow — `rgba(69,65,255,0.2) 0px 0px 20px` — which tints elevation with the indigo brand colour so a hero feature card appears to emit a faint violet light. Depth is never used to crowd or stack; the system prefers flat colour fields and a single soft halo.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Reserve indigo (`#4541ff`) for the single primary action — keep it the one "do this" colour
@@ -319,32 +546,28 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 - Don't pill-shape ordinary buttons — the 100px radius is reserved for the enterprise CTA
 - Don't let the indigo glow leak onto ordinary cards — it dilutes the hero emphasis
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, code panels stack below prose |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, side-by-side prose + code |
+SOLAPI's voice is **plain, capable, and developer-respectful** — it sells messaging infrastructure by promising to remove friction, not by hyping it. The homepage hero "메시지를 보내고, 고객을 남기다. 모든 과정은 자동으로." ("Send the message, keep the customer. Every step automated.") sets the register: outcome-first, calm, declarative. On the developer surface the tone shifts to peer-to-peer engineering candor — "개발자의 시간을 아껴드려요" ("We save developers' time") — treating the reader as a builder who values their hours.
 
-### Touch Targets
-- Hero CTAs at 50–53px height with 14–16px × 32px padding — comfortably tappable
-- Header CTA compact at 36px height for the persistent nav bar
-- Search field at 45px height with generous 12px × 44px padding
+| Context | Tone |
+|---|---|
+| Hero headlines | Outcome-first, declarative. "메시지를 보내고, 고객을 남기다." Calm confidence, no hype. |
+| Developer surface | Peer engineering candor. "개발자의 시간을 아껴드려요", "AI와 함께하는 쉽고 빠른 메시지 발송". |
+| Feature / problem framing | Empathetic problem statements. "반복되는 메시지 발송 업무를 자동화하고 싶다." |
+| CTAs | Direct, low-pressure. "시작하기", "데모 체험하기", "도입 문의하기". |
+| Pricing / docs | Precise and factual. Rate limits, standard unit prices, webhooks stated plainly. |
 
-### Collapsing Strategy
-- Hero: 64px ExtraBold headline scales down on mobile, weight 800 maintained
-- Developer surface: prose + Monaco code panels stack vertically on narrow viewports
-- Feature cards: multi-column → single column, 20px radius preserved
-- Full-bleed indigo "solution" sections keep their treatment, padding reduces
+**Voice samples (verbatim from live surfaces):**
+- "메시지를 보내고, 고객을 남기다. 모든 과정은 자동으로." — homepage hero H1. *(verified live 2026-06-26)*
+- "잘나가는 브랜드는 왜 SOLAPI를 쓸까요?" — homepage section headline. *(verified live 2026-06-26)*
+- "AI와 함께하는 쉽고 빠른 메시지 발송" — developers hero H1. *(verified live 2026-06-26)*
+- "개발자의 시간을 아껴드려요" — developers section H2. *(verified live 2026-06-26)*
+- "반나절 만에 끝내는 편리한 API연동과 문자, 카카오, 네이버, RCS등 모든 종류의 메시지 발송 및 자동화 CRM." — meta description. *(verified live 2026-06-26)*
 
-### Image Behavior
-- Product screenshots sit inside 20px-radius cards with the soft ambient shadow
-- Code panels keep Monaco treatment and may horizontally scroll on mobile
-- Brand-glow cards retain the indigo halo at all sizes
+**Forbidden register**: aggressive sales urgency, undefined jargon left unexplained, exclamation-heavy hype, and superlatives that over-promise reliability. The brand sells calm capability, not adrenaline.
 
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA: SOLAPI Indigo (`#4541ff`)
@@ -379,113 +602,8 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-SOLAPI's voice is **plain, capable, and developer-respectful** — it sells messaging infrastructure by promising to remove friction, not by hyping it. The homepage hero "메시지를 보내고, 고객을 남기다. 모든 과정은 자동으로." ("Send the message, keep the customer. Every step automated.") sets the register: outcome-first, calm, declarative. On the developer surface the tone shifts to peer-to-peer engineering candor — "개발자의 시간을 아껴드려요" ("We save developers' time") — treating the reader as a builder who values their hours.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Outcome-first, declarative. "메시지를 보내고, 고객을 남기다." Calm confidence, no hype. |
-| Developer surface | Peer engineering candor. "개발자의 시간을 아껴드려요", "AI와 함께하는 쉽고 빠른 메시지 발송". |
-| Feature / problem framing | Empathetic problem statements. "반복되는 메시지 발송 업무를 자동화하고 싶다." |
-| CTAs | Direct, low-pressure. "시작하기", "데모 체험하기", "도입 문의하기". |
-| Pricing / docs | Precise and factual. Rate limits, standard unit prices, webhooks stated plainly. |
-
-**Voice samples (verbatim from live surfaces):**
-- "메시지를 보내고, 고객을 남기다. 모든 과정은 자동으로." — homepage hero H1. *(verified live 2026-06-26)*
-- "잘나가는 브랜드는 왜 SOLAPI를 쓸까요?" — homepage section headline. *(verified live 2026-06-26)*
-- "AI와 함께하는 쉽고 빠른 메시지 발송" — developers hero H1. *(verified live 2026-06-26)*
-- "개발자의 시간을 아껴드려요" — developers section H2. *(verified live 2026-06-26)*
-- "반나절 만에 끝내는 편리한 API연동과 문자, 카카오, 네이버, RCS등 모든 종류의 메시지 발송 및 자동화 CRM." — meta description. *(verified live 2026-06-26)*
-
-**Forbidden register**: aggressive sales urgency, undefined jargon left unexplained, exclamation-heavy hype, and superlatives that over-promise reliability. The brand sells calm capability, not adrenaline.
-
-## 11. Brand Narrative
-
-SOLAPI (솔라피) is operated by **솔라피(주)** (SOLAPI Inc.), led by CEO **최대성 (Choi Dae-sung)**, headquartered in Seocho-gu, Seoul (강남대로 359), with the homepage footer carrying a "© 2008 ~" lineage — placing the company's messaging-platform roots among the earliest Korean SMS-API providers. The product is a developer-first cloud-messaging API: a single integration that sends SMS/LMS/MMS, KakaoTalk 알림톡·친구톡, Naver, and the third-generation RCS message format, layered with automation and CRM tooling. Its stated promise — "반나절 만에 끝내는 편리한 API연동" ("convenient API integration finished in half a day") — frames the entire brand around reducing developer integration time.
-
-SOLAPI sits in a uniquely Korean market problem: businesses need to reach customers across a fragmented landscape of channels (SMS for universality, KakaoTalk 알림톡 for transactional trust, RCS for rich media), each with its own carrier rules and pricing. SOLAPI's premise is to collapse that fragmentation behind one API and one dashboard — and increasingly behind AI-assisted integration ("AI와 함께하는 쉽고 빠른 메시지 발송", with AI that "대신 코딩해드려요" — writes the integration code for you).
-
-What the design refuses, and what it embraces, both follow from this: it rejects the heavy navy-and-grey chrome of legacy telecom and the dark-pattern urgency of marketing-spam tooling. It embraces a clean white canvas, a single trustworthy indigo, heavy Pretendard headlines that speak plainly, and a developer surface (Monaco code panels, blue doc links, slate surfaces) that signals "this was built by engineers, for engineers."
-
-## 12. Principles
-
-1. **One action, one colour.** Indigo (`#4541ff`) means "do this." *UI implication:* reserve the saturated indigo for the single primary CTA so the next step is never ambiguous; the secondary is always a quiet outline.
-2. **Remove integration friction.** The brand's promise is "half a day" to integrate. *UI implication:* the developer surface foregrounds copy-ready Monaco code and AI assistance over marketing prose.
-3. **Calm capability over hype.** Messaging infrastructure must read as reliable. *UI implication:* declarative headlines, no exclamation-heavy urgency, soft ambient depth instead of loud shadows.
-4. **Two surfaces, one system.** Marketing persuades; the developer surface informs. *UI implication:* the warm grey ladder lives on marketing, the cool slate ladder on docs — but indigo, Pretendard, and the radius scale unify both.
-5. **Heavy where it persuades, plain where it informs.** *UI implication:* Pretendard ExtraBold (800) for marketing display; weight 700 and 400 for the technical surface; mono only for code.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly observable SOLAPI user segments (Korean backend developers, growth/CRM marketers, and product teams integrating messaging), not individual people.*
-
-**김도현, 30, 서울.** A backend developer at a mid-size commerce startup wiring up order-confirmation 알림톡 and shipping SMS. Chose SOLAPI because the SDK example on `/developers` was copy-ready and the "half a day" integration promise held. Values that the docs read like they were written by engineers.
-
-**이서연, 34, 판교.** A growth/CRM marketer automating re-engagement campaigns across SMS and KakaoTalk. Doesn't write code but lives in the dashboard and pricing page. Appreciates the plain rate tables and that the interface doesn't pressure her with countdowns or upsell modals.
-
-**박준영, 41, 대전.** A CTO at a B2B SaaS company evaluating messaging vendors. Clicks "도입 문의하기" for an enterprise quote. Trusts the brand partly because the design reads as steady infrastructure — one calm indigo, no hype — rather than a flashy growth tool.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no messages / no data)** | White canvas with a single line in Slate Ink (`#111827`) explaining the empty state, plus one indigo CTA to send a first message. No clutter. |
-| **Empty (search no results)** | Muted (`#828282`) single line on the `#f9f9f9` field context; filter stays visible so the query can be adjusted. |
-| **Loading (dashboard / table)** | Skeleton rows at final card dimensions on `#f8fafc` surface, 20px radius, soft ambient pulse consistent with the light-shadow system. |
-| **Loading (code/SDK action)** | Inline progress within the developer panel; previous code stays visible. |
-| **Error (send failed)** | Inline message in Slate Ink with a plain-language cause and a retry — never a bare "오류가 발생했습니다". States the next step. |
-| **Error (form validation)** | Field-level message below the `#f9f9f9` input; describes what is valid, not just "필수". |
-| **Success (message sent)** | Brief inline confirmation; the success indicator uses green (`#28c840`). No celebratory emoji — calm acknowledgement. |
-| **Skeleton** | `#f8fafc` blocks at final dimensions, 20px radius, soft pulse. |
-| **Disabled** | Reduced-opacity surface; indigo actions fade rather than turn grey to preserve the brand read. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is quiet and functional, consistent with the calm, infrastructure register. Buttons respond to hover/press with a subtle opacity or shadow shift; feature cards fade-in from below at `motion-standard / ease-enter`; the indigo brand-glow may intensify slightly on hover. No bounce or spring — messaging infrastructure signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the glow holds static; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on three brand-owned surfaces:
-- https://solapi.com/ (homepage) — hero H1 64px/800 #333333, CTA #4541ff, body Pretendard #222222
-- https://solapi.com/developers — hero H1 64px/700 #111827, indigo CTA radius 12px, Monaco code #24292f
-- https://solapi.com/pricing — slate cards #f8fafc, doc links #2563eb, search input #f9f9f9
-Plus https://github.com/solapi (official GitHub org, confirmed live 200).
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) are verbatim from the live homepage (hero H1, section headline),
-the developers surface (hero H1, section H2), and the meta description.
-
-Brand narrative (§11): 솔라피(주) (SOLAPI Inc.), CEO 최대성, Seoul HQ, "© 2008 ~"
-lineage and service scope (SMS/LMS/MMS, KakaoTalk 알림톡·친구톡, Naver, RCS, automation/CRM)
-are taken from the live homepage footer and meta description (verified 2026-06-26).
-SOLAPI is widely documented as a Korean cloud-messaging API platform; details beyond the
-footer/meta are general public knowledge, not directly quoted from a verified statement
-in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable SOLAPI user
-segments (Korean backend developers, CRM marketers, product teams). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one colour", "two surfaces, one system", the
-warm-vs-slate grey-era reading) are editorial readings connecting SOLAPI's observed design
-to its positioning, not directly sourced SOLAPI statements.
--->
+- **Contrast, `badge-success`.** Text `#28c840` on `#ffffff` measures 2.23:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

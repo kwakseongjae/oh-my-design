@@ -1,84 +1,242 @@
 ---
-id: retool
 name: Retool
-country: US
-category: developer-tools
-homepage: "https://retool.com"
-primary_color: "#3C3C3C"
-logo:
-  type: simpleicons
-  slug: "retool"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    cod-gray: "#1a1a1a"
-    ink-black: "#0e0e0e"
-    green-white: "#e9ebdf"
-    white: "#ffffff"
-    burnt-sienna: "#e0613a"
-    burnt-sienna-hover: "#c94f2c"
-    cornflower: "#6e8be0"
-    smalt-blue: "#4e7c82"
-    action-primary: "#3c3c3c"
-    success: "#2fa86a"
-    error: "#e5484d"
-    warning: "#e0a23a"
-    panel: "#232323"
-    border-dark: "#2e2e2e"
-    muted: "#6b6b6b"
-    caption: "#8a8a8a"
-    body-dark: "#b4b4b4"
-    strong-dark: "#d6d6d6"
-    light-100: "#f4f5ef"
-    light-200: "#dcded2"
-    light-border: "#cacbbf"
-  typography:
-    family: { sans: "Inter", mono: "IBM Plex Mono" }
-    display-hero: { size: 56, weight: 700, lineHeight: 1.07, tracking: -0.02em, use: "Marketing hero headlines" }
-    display:      { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.02em, use: "Section headers" }
-    h1:           { size: 30, weight: 600, lineHeight: 1.27, tracking: -0.01em, use: "Page titles" }
-    h2:           { size: 22, weight: 600, lineHeight: 1.36, tracking: -0.01em, use: "Card / feature titles" }
-    h3:           { size: 18, weight: 600, lineHeight: 1.44, use: "Sub-sections, panel headers" }
-    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard UI text" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Metadata, table headers" }
-    label:        { size: 11, weight: 600, lineHeight: 1.45, tracking: 0.06em, use: "Uppercase eyebrows, column heads" }
-    code:         { size: 13, weight: 400, lineHeight: 1.54, use: "Query editor, values, keys (IBM Plex Mono)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
-  shadow:
-    subtle: "0px 1px 2px rgba(14,14,14,0.06)"
-    standard: "0px 4px 12px rgba(14,14,14,0.24)"
-    elevated: "0px 8px 24px rgba(14,14,14,0.40)"
-    modal: "0px 16px 48px rgba(14,14,14,0.50)"
-  components:
-    button-primary: { type: button, bg: "#3c3c3c", fg: "#ffffff", radius: 6, padding: "0 16px", font: "14/500", use: "Default primary action on light (Save, Run)" }
-    button-accent: { type: button, bg: "#e0613a", fg: "#ffffff", radius: 6, padding: "0 18px", font: "15/600", use: "Top-of-funnel CTA (Start for free)" }
-    button-secondary: { type: button, bg: "transparent", fg: "#d6d6d6", radius: 6, padding: "0 16px", font: "14/500", use: "Outline secondary, 1px #3c3c3c border on dark" }
-    button-ghost: { type: button, bg: "transparent", fg: "#b4b4b4", radius: 6, padding: "0 10px", font: "14/500", use: "Toolbar/inline tertiary actions" }
-    button-destructive: { type: button, bg: "#e5484d", fg: "#ffffff", radius: 6, padding: "0 16px", font: "14/500", use: "Delete query, destructive confirmation" }
-    input-light: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: 6, padding: "8px 12px", font: "14/400", use: "Standard form input on light, #e0613a focus" }
-    input-dark: { type: input, bg: "#1a1a1a", fg: "#ffffff", radius: 6, padding: "8px 12px", font: "14/400", use: "Inspector/builder forms on dark canvas" }
-    code-editor: { type: input, bg: "#0e0e0e", fg: "#d6d6d6", radius: 6, padding: "12px", font: "13/400", use: "SQL/JS query editor, 1px #2e2e2e border" }
-    card: { type: card, bg: "#ffffff", fg: "#1a1a1a", radius: 8, padding: "20px", use: "Marketing feature cards, 1px #cacbbf border" }
-    panel-dark: { type: card, bg: "#232323", fg: "#d6d6d6", radius: 8, padding: "16px", use: "Inspector, component tray, 1px #2e2e2e border" }
-    badge-success: { type: badge, bg: "rgba(47,168,106,0.14)", fg: "#2fa86a", radius: 4, padding: "2px 8px", font: "12/600", use: "Deployed, Connected, Passing" }
-    badge-error: { type: badge, bg: "rgba(229,72,77,0.14)", fg: "#e5484d", radius: 4, padding: "2px 8px", font: "12/600", use: "Failed, Disconnected" }
-    badge-warning: { type: badge, bg: "rgba(224,162,58,0.14)", fg: "#e0a23a", radius: 4, padding: "2px 8px", font: "12/600", use: "Unsaved, Deprecated" }
-    badge-neutral: { type: badge, bg: "#2e2e2e", fg: "#b4b4b4", radius: 4, padding: "2px 8px", font: "12/500", use: "Environment tags, version labels" }
-    tab: { type: tab, fg: "#8a8a8a", font: "14/500", padding: "10px 14px", use: "Builder panels (Query/State/Logs)", active: "#ffffff text + 2px #e0613a bottom indicator" }
-    toast: { type: toast, bg: "#232323", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14/400", use: "Query/save confirmation, leading status dot" }
-    dialog: { type: dialog, bg: "#1a1a1a", fg: "#b4b4b4", radius: 10, padding: "24px", use: "Confirmations, resource setup, 1px #2e2e2e border" }
-    toggle: { type: toggle, bg: "#3c3c3c", fg: "#ffffff", radius: 9999, use: "Feature flags, env switches; on=#e0613a, white thumb" }
-  components_harvested: true
+colors:
+  cod-gray: '#1a1a1a'
+  ink-black: '#0e0e0e'
+  green-white: '#e9ebdf'
+  white: '#ffffff'
+  burnt-sienna: '#e0613a'
+  burnt-sienna-hover: '#c94f2c'
+  cornflower: '#6e8be0'
+  smalt-blue: '#4e7c82'
+  action-primary: '#3c3c3c'
+  success: '#2fa86a'
+  error: '#e5484d'
+  warning: '#e0a23a'
+  panel: '#232323'
+  border-dark: '#2e2e2e'
+  muted: '#6b6b6b'
+  caption: '#8a8a8a'
+  body-dark: '#b4b4b4'
+  strong-dark: '#d6d6d6'
+  light-100: '#f4f5ef'
+  light-200: '#dcded2'
+  light-border: '#cacbbf'
+typography:
+  display-hero:
+    fontSize: 56px
+    fontWeight: 700
+    lineHeight: 1.07
+    letterSpacing: '-0.02em'
+    use: Marketing hero headlines
+  display:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: '-0.02em'
+    use: Section headers
+  h1:
+    fontSize: 30px
+    fontWeight: 600
+    lineHeight: 1.27
+    letterSpacing: '-0.01em'
+    use: Page titles
+  h2:
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.36
+    letterSpacing: '-0.01em'
+    use: Card / feature titles
+  h3:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.44
+    use: Sub-sections, panel headers
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.57
+    use: Standard UI text
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.33
+    use: Metadata, table headers
+  label:
+    fontSize: 11px
+    fontWeight: 600
+    lineHeight: 1.45
+    letterSpacing: 0.06em
+    use: Uppercase eyebrows, column heads
+  code:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.54
+    use: Query editor, values, keys (IBM Plex Mono)
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 8px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#3c3c3c'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 0 16px
+    typography: 14/500
+    use: Default primary action on light (Save, Run)
+  button-accent:
+    type: button
+    backgroundColor: '#e0613a'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 0 18px
+    typography: 15/600
+    use: Top-of-funnel CTA (Start for free)
+  button-secondary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#d6d6d6'
+    rounded: 6px
+    padding: 0 16px
+    typography: 14/500
+    use: 'Outline secondary, 1px #3c3c3c border on dark'
+  button-ghost:
+    type: button
+    backgroundColor: transparent
+    textColor: '#b4b4b4'
+    rounded: 6px
+    padding: 0 10px
+    typography: 14/500
+    use: Toolbar/inline tertiary actions
+  button-destructive:
+    type: button
+    backgroundColor: '#e5484d'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 0 16px
+    typography: 14/500
+    use: Delete query, destructive confirmation
+  input-light:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1a1a1a'
+    rounded: 6px
+    padding: 8px 12px
+    typography: 14/400
+    use: 'Standard form input on light, #e0613a focus'
+  input-dark:
+    type: input
+    backgroundColor: '#1a1a1a'
+    textColor: '#ffffff'
+    rounded: 6px
+    padding: 8px 12px
+    typography: 14/400
+    use: Inspector/builder forms on dark canvas
+  code-editor:
+    type: input
+    backgroundColor: '#0e0e0e'
+    textColor: '#d6d6d6'
+    rounded: 6px
+    padding: 12px
+    typography: 13/400
+    use: 'SQL/JS query editor, 1px #2e2e2e border'
+  card:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#1a1a1a'
+    rounded: 8px
+    padding: 20px
+    use: 'Marketing feature cards, 1px #cacbbf border'
+  panel-dark:
+    type: card
+    backgroundColor: '#232323'
+    textColor: '#d6d6d6'
+    rounded: 8px
+    padding: 16px
+    use: 'Inspector, component tray, 1px #2e2e2e border'
+  badge-success:
+    type: badge
+    backgroundColor: rgba(47,168,106,0.14)
+    textColor: '#2fa86a'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12/600
+    use: Deployed, Connected, Passing
+  badge-error:
+    type: badge
+    backgroundColor: rgba(229,72,77,0.14)
+    textColor: '#e5484d'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12/600
+    use: Failed, Disconnected
+  badge-warning:
+    type: badge
+    backgroundColor: rgba(224,162,58,0.14)
+    textColor: '#e0a23a'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12/600
+    use: Unsaved, Deprecated
+  badge-neutral:
+    type: badge
+    backgroundColor: '#2e2e2e'
+    textColor: '#b4b4b4'
+    rounded: 4px
+    padding: 2px 8px
+    typography: 12/500
+    use: Environment tags, version labels
+  tab:
+    type: tab
+    textColor: '#8a8a8a'
+    typography: 14/500
+    padding: 10px 14px
+    use: Builder panels (Query/State/Logs)
+    active: '#ffffff text + 2px #e0613a bottom indicator'
+  toast:
+    type: toast
+    backgroundColor: '#232323'
+    textColor: '#ffffff'
+    rounded: 8px
+    padding: 12px 16px
+    typography: 14/400
+    use: Query/save confirmation, leading status dot
+  dialog:
+    type: dialog
+    backgroundColor: '#1a1a1a'
+    textColor: '#b4b4b4'
+    rounded: 10px
+    padding: 24px
+    use: 'Confirmations, resource setup, 1px #2e2e2e border'
+  toggle:
+    type: toggle
+    backgroundColor: '#3c3c3c'
+    textColor: '#ffffff'
+    rounded: 9999px
+    use: Feature flags, env switches; on=#e0613a, white thumb
+fonts:
+  roles:
+    sans: Inter
+    mono: IBM Plex Mono
 ---
 
 # Design System Inspiration of Retool
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Retool is the platform for building internal tools fast — the admin panels, dashboards, and operational apps that companies used to hand-code for months. Its visual identity is unapologetically built *for developers*, and that audience defines everything: the brand site reads like a well-organized IDE, not a consumer landing page. The dominant atmosphere is **dark, structural, and instrumented** — near-black canvases (`#0E0E0E`–`#1A1A1A`), crisp 1px hairline grids, and a single warm accent that punches through the monochrome like a syntax-highlight keyword.
 
@@ -95,14 +253,45 @@ The palette is a study in restraint: a deep neutral foundation (the "Cod Gray" n
 - Tight 1px borders and low-radius geometry — structural, not soft
 - Restrained editorial accent set (orange, teal, periwinkle) — terminal-theme energy, not SaaS gradients
 
-## Primary tasks
+### Primary tasks
 
 - Build an internal admin panel instead of hand-coding it
 - Wire a database and an API into a table-and-form screen
 - Run a query and read the rows it returns
 - Check governance, access control, and audit logs before adopting it
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Retool was founded in **2017 by David Hsu** (with co-founder Snir Kodesh) on a sharp observation: every company builds the same internal tools — admin panels, customer-support dashboards, inventory managers, ops consoles — and every company wastes enormous engineering time hand-coding them from scratch. These tools are essential but rarely differentiating; they don't deserve months of bespoke React and CRUD plumbing. Retool's thesis was to make that work *assembly* instead of *construction*: a library of pre-built components (tables, forms, charts, buttons) that snap onto a grid and wire directly to any database or API.
+
+The company went through Y Combinator (2017) and grew into one of the defining developer-productivity platforms, reaching a multi-billion-dollar valuation with customers spanning startups to large enterprises. The product expanded from internal-app building into workflows, a database, and AI-assisted app generation — but the core remains: drag components onto a canvas, connect a data source, ship.
+
+The design system flows directly from this identity. Retool *looks like the tool it is*. The dark, gridded, panel-bounded aesthetic isn't a style choice layered on top — it's the literal interface of the app builder, promoted to brand language. The component-tray-and-inspector layout you see on the marketing site is the product. The monospace-for-values convention is how the product displays data. The restraint — one accent, low radii, drawn edges — communicates *engineering seriousness*: this is infrastructure you'll trust with production operations.
+
+What Retool refuses: the bubbly gradient-heavy aesthetic of consumer-facing SaaS, the illustration-led "fun" of no-code toys (Retool is *low-code for developers*, a crucial distinction), and any visual that implies the tool is a black box. The grid is visible because builders want to see the structure. The brand sells competence and control to people who could build it themselves — and choose Retool because it's faster.
+
+### Principles
+
+1. **The product is the brand.** Marketing surfaces render real builder UI — component trays, grids, inspectors. The aesthetic is downstream of the tool, never decoration bolted on.
+2. **Show the grid.** Structure is visible — hairline borders, aligned columns, snap guides. Builders trust what they can see the bones of. Order over ornament.
+3. **One accent, spent carefully.** Burnt Sienna marks the single most important action or highlight. Everywhere else is neutral. Spread the accent and it stops meaning "here."
+4. **Labels in sans, values in mono.** The typographic split between describing and being-data is load-bearing. A number in monospace reads as a real value; in sans it reads as decoration.
+5. **Edges are drawn, not blurred.** On dark, elevation comes from 1px borders and background-value steps, not shadow. The IDE logic: panels are bounded by lines.
+6. **Density is a feature, not a flaw.** Tool surfaces pack information. A developer wants more on screen, aligned and scannable — not generous padding that hides the data.
+7. **Plainspoken over hype.** Copy names the capability. No magic, no exclamation points. The audience can smell marketing fluff and discounts you for it.
+8. **Low radius, structural geometry.** 6px controls, 8px cards. Rounded-but-not-soft. The shape language says "engineered," not "friendly."
+
+### Personas
+
+*Personas below are fictional archetypes informed by Retool's publicly described developer-platform audience, not individual people.*
+
+**Marcus, 31, San Francisco.** Full-stack engineer at a 200-person fintech. Tasked with building an internal ops dashboard for the support team — refund approvals, account lookups, transaction reversals. Could build it in React, but it would eat two sprints he doesn't have. Reaches for Retool to wire Postgres + Stripe API to a table-and-form UI in an afternoon. Values: speed, real data binding, the ability to drop into raw JS when a component's defaults don't cut it. Lives in the query editor.
+
+**Priya, 38, Austin.** Engineering manager / platform lead. Owns the decision of *whether* the org adopts Retool. Cares about governance — SSO, role-based access, audit logs, self-hosting for compliance. Wants her team to stop one-off-coding internal tools and standardize on a platform. Reads the security page before the features page. Will champion Retool internally only if it survives a SOC 2 conversation.
+
+**Dev, 26, remote.** Operations engineer at a logistics startup, more scripts-and-SQL than frontend. Not a React person, but very comfortable with data and APIs. Retool lets him build the warehouse-ops tool himself instead of waiting in the eng backlog. Values: not having to learn a frontend framework, the visual grid that makes layout obvious, monospace tables that feel like the SQL console he already lives in.
+
+## Colors
 
 ### Primary
 - **Cod Gray** (`#1A1A1A`): The signature dark surface — page canvas, app builder background, nav bars. Near-black with a neutral undertone.
@@ -153,7 +342,7 @@ The palette is a study in restraint: a deep neutral foundation (the "Cod Gray" n
 - **Overlay Scrim**: `rgba(14,14,14,0.64)`. Modal/dialog backdrop over the dark canvas.
 - **Accent Glow**: `rgba(224,97,58,0.20)`. Subtle focus halo around accented elements.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **UI / Prose**: `"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif` — a neutral grotesque with excellent legibility at small sizes and tabular figure support. Retool's product and marketing favor a clean grotesque of this class.
@@ -185,7 +374,141 @@ The palette is a study in restraint: a deep neutral foundation (the "Cod Gray" n
 - **Three working weights.** 400 (body), 500 (subtle emphasis / nav), 600 (headings). 700 reserved for marketing display only.
 - **Uppercase eyebrows.** Small 11px uppercase labels with `0.06em` tracking mark section starts and table column headers — a developer-doc convention.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 4px (developer-grid precision)
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- UI density: builder panels use tight 8–12px gaps; marketing uses generous 64–96px section rhythm
+- Horizontal page padding: 24px mobile, 48–64px desktop, max-width container 1200px
+
+### Grid & Container
+- Marketing: 12-column grid, 1200px max content width, 24px gutters
+- Product builder: 3-zone layout — component tray (left ~240px), canvas (fluid 12-col app grid), inspector (right ~300px)
+- The app-grid metaphor (snap-to-grid component placement) is the visual DNA reused in marketing mockups
+
+### Whitespace Philosophy
+- **Dense where it's a tool, airy where it's a pitch.** Product surfaces pack information; marketing surfaces breathe. The brand holds both registers deliberately.
+- **The grid is visible.** Unlike consumer apps that hide structure, Retool *shows* its grid — hairline borders, snap guides, and aligned columns are part of the aesthetic, not noise.
+- **Alignment over decoration.** Order comes from rigorous left-alignment and column rhythm, not from ornament.
+
+### Border Radius Scale
+- Sharp (4px): Badges, tags, table corners
+- Standard (6px): Buttons, inputs, ghost controls
+- Comfortable (8px): Cards, panels, toasts
+- Large (10px): Modals, dialogs
+- Pill (9999px): Toggles, status pills
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <640px | Single column, 24px padding, nav collapses to drawer |
+| Tablet | 640–1024px | 2-col feature grids, condensed builder preview |
+| Desktop | 1024–1440px | Full 12-col, 3-zone builder layout |
+| Wide | >1440px | 1200px centered content, expanded canvas |
+
+#### Touch / Click Targets
+- Buttons: 36px standard, 40px accent CTA, 32px ghost/icon
+- Table rows: 36px height (dense), 44px on touch devices
+- Min interactive target on touch: 44×44px
+
+#### Collapsing Strategy
+- Builder's 3-zone layout collapses to tabbed panels on tablet/mobile (the product is desktop-first by nature)
+- Marketing hero mockups scale down and crop the inspector panel first
+- Nav: full horizontal bar → hamburger drawer below 640px
+- Tables become horizontally scrollable with a sticky first column rather than reflowing
+
+#### Image / Asset Behavior
+- Product screenshots and app-builder mockups are the hero imagery — rendered on dark, framed with a 1px `#2E2E2E` border
+- Integration/resource logos: 24–32px monochrome or full-color on neutral tiles
+- Code blocks: full-width within content column, never reflowed
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow; 1px border defines edges | Panels, cards on dark, table cells |
+| Subtle (Level 1) | `0px 1px 2px rgba(14,14,14,0.06)` | Light-surface cards, raised tiles |
+| Standard (Level 2) | `0px 4px 12px rgba(14,14,14,0.24)` | Dropdowns, popovers, context menus |
+| Elevated (Level 3) | `0px 8px 24px rgba(14,14,14,0.40)` | Toasts, floating panels |
+| Modal (Level 4) | `0px 16px 48px rgba(14,14,14,0.50)` | Dialogs, command palette |
+
+**Shadow Philosophy**: On dark surfaces, Retool defines elevation primarily through **1px borders and background-value steps** (`#1A1A1A` → `#232323` → `#2E2E2E`), not shadow — shadows are nearly invisible on near-black anyway. Shadows return on light surfaces and for true overlays. The aesthetic is structural: edges are drawn, not blurred. This is the visual logic of an IDE, where panels are bounded by lines.
+
+### Blur Effects
+- Command palette and floating menus use a subtle `backdrop-filter: blur(8px)` over a `rgba(14,14,14,0.64)` scrim
+- Sticky nav applies a faint blur on scroll over the dark canvas
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.subtle`: `0px 1px 2px rgba(14,14,14,0.06)`
+- `shadow.standard`: `0px 4px 12px rgba(14,14,14,0.24)`
+- `shadow.elevated`: `0px 8px 24px rgba(14,14,14,0.40)`
+- `shadow.modal`: `0px 16px 48px rgba(14,14,14,0.50)`
+
+## Motion & Easing
+
+**Durations** (named):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox, immediate state |
+| `motion-fast` | 120ms | Hover, focus ring, button press, tab indicator slide |
+| `motion-standard` | 200ms | The default — panel reveal, dropdown open, accordion |
+| `motion-slow` | 320ms | Modal entry, side-panel slide-in, route transitions |
+| `motion-data` | 240ms | Table row insert/update, query-result paint-in |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.16, 1, 0.3, 1)` | Things appearing — panels, dropdowns, modals (a confident, settled ease-out) |
+| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Things leaving — dismissals, collapses |
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Two-way — tab content, accordion, hover transitions |
+| `ease-linear` | `linear` | Spinners, shimmer sweeps, progress bars |
+
+**Signature motions.**
+
+1. **Panel slide-in.** Inspector and side panels enter from the edge with `motion-standard / ease-enter` — a single decisive slide, no bounce. Tooling motion is functional, never playful; overshoot would undermine the engineering tone.
+2. **Tab indicator.** The 2px `#E0613A` underline slides horizontally between tabs over `motion-fast / ease-standard`, tracking the active panel. Crisp and immediate.
+3. **Query-result paint.** When a query resolves, table rows fade-and-rise 8px into place over `motion-data / ease-enter`, staggered subtly so a result set feels like it *lands* rather than flickers. Values never cross-fade between states.
+4. **Shimmer skeleton.** Loading skeletons use a `linear` 1.2s left-to-right sweep with an 8% white highlight over `#232323` blocks. The only continuously-animated element on the canvas.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; slides become instant swaps, shimmer becomes a static `#232323` block. The tool stays fully usable.
+
+<!--
+OmD v0.1 Sources — Retool
+
+Tier 1 (direct):
+- retool.com (live brand site, WebFetch 2026-06-06): dark-first developer aesthetic,
+  warm orange/Burnt Sienna accent CTAs, app-builder layout language (component tray +
+  canvas + inspector), copy register ("Build how you want. Ship on a platform you can
+  trust", "Start for free", "Book a demo"), verb-forward enterprise voice.
+- mobbin.com/colors/brand/retool (via WebSearch summary): documented brand palette names
+  — Green White #E9EBDF (primary neutral), Cod Gray, Smalt Blue, Burnt Sienna, Cornflower,
+  White. Foundation of neutrals + pops of teal/orange/periwinkle.
+- docs.retool.com/apps/guides/presentation-styling/themes (via WebSearch): confirms theme
+  + typography controls (font family/size/weight, custom font URLs) — developers commonly
+  pair IBM Plex Sans / Roboto, informing the Inter+IBM Plex Mono stack choice.
+
+Reconstruction note: Retool publishes no public design-token catalog. Component geometry
+(radii, heights, spacing, shadows) and the dark-theme neutral ramp are reconstructed from
+the live product/marketing UI plus standard developer-tool conventions. Accent and semantic
+tier hex values are calibrated to the documented brand palette names (Burnt Sienna #E0613A,
+Cornflower #6E8BE0, Smalt Blue #4E7C82, Green White #E9EBDF).
+
+Personas (§13) are fictional archetypes informed by Retool's publicly described developer
+audience (engineers, eng managers, ops engineers building internal tools). Any resemblance
+to specific individuals is unintended.
+
+Interpretive claims (e.g., "the product is the brand", "show the grid") are editorial
+readings of Retool's design, not documented company statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -407,48 +730,24 @@ The signature Retool surface. Tables are dense, mono-valued, and grid-lined.
 **Tier 1 sources:** https://retool.com (live brand site — dark-first developer aesthetic, Burnt Sienna accent CTAs, app-builder layout language, "Start for free" / "Book a demo" copy), https://docs.retool.com/apps/guides/presentation-styling/themes (theme + typography controls), https://mobbin.com/colors/brand/retool (palette names: Green White `#E9EBDF`, Cod Gray, Smalt Blue, Burnt Sienna, Cornflower, White). · https://retool.com (live production site)
 **Note:** Retool ships no public token catalog; component geometry (radii, heights, spacing) is reconstructed from the live product/marketing UI and standard developer-tool conventions. Hex values for accent/semantic tiers are calibrated to the documented brand palette names.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 4px (developer-grid precision)
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
-- UI density: builder panels use tight 8–12px gaps; marketing uses generous 64–96px section rhythm
-- Horizontal page padding: 24px mobile, 48–64px desktop, max-width container 1200px
+| State | Treatment |
+|---|---|
+| **Empty (no data)** | `#8A8A8A` body line explaining the state ("No rows returned"), plus a ghost or accent action to add/connect data. Dense, no illustration — a tooling empty state, not a consumer one. |
+| **Empty (no resources)** | Centered card on dark with a "Connect a resource" accent button (`#E0613A`) and one line of helper text in `#8A8A8A`. |
+| **Loading (query running)** | Inline spinner in the panel header, `#E0613A` tint. Table shows a 1.2s shimmer over `#232323` skeleton rows. Run button shows inline spinner, label preserved. |
+| **Loading (page)** | Skeleton blocks at `#232323` on the dark canvas matching final layout, 8% white shimmer sweep. |
+| **Success (query)** | Toast: `#232323` bg, leading `#2FA86A` dot, "Query ran successfully" 14px white, 3s auto-dismiss. |
+| **Success (deploy)** | Status badge flips to `rgba(47,168,106,0.14)` / `#2FA86A` "Deployed", optional confirmation toast. |
+| **Error (query failed)** | Inline error panel below the editor: `rgba(229,72,77,0.14)` bg, `#E5484D` left border, monospace error text naming the failure. Actionable, never generic. |
+| **Error (validation)** | Field border `#E5484D`, helper text `#E5484D` 13px below — one sentence, names the fix. |
+| **Warning (unsaved)** | Amber badge `rgba(224,162,58,0.14)` / `#E0A23A` "Unsaved changes" in the toolbar; Save button gains accent emphasis. |
+| **Disabled** | 40% opacity, no pointer events. Borders retained so geometry stays stable. |
+| **Selected (table row / component)** | 2px `#E0613A` left border + `rgba(224,97,58,0.12)` fill. The single consistent use of accent for selection across the builder. |
+| **Focus** | 1px `#E0613A` outline + 2px `rgba(224,97,58,0.20)` ring on all interactive elements. |
 
-### Grid & Container
-- Marketing: 12-column grid, 1200px max content width, 24px gutters
-- Product builder: 3-zone layout — component tray (left ~240px), canvas (fluid 12-col app grid), inspector (right ~300px)
-- The app-grid metaphor (snap-to-grid component placement) is the visual DNA reused in marketing mockups
-
-### Whitespace Philosophy
-- **Dense where it's a tool, airy where it's a pitch.** Product surfaces pack information; marketing surfaces breathe. The brand holds both registers deliberately.
-- **The grid is visible.** Unlike consumer apps that hide structure, Retool *shows* its grid — hairline borders, snap guides, and aligned columns are part of the aesthetic, not noise.
-- **Alignment over decoration.** Order comes from rigorous left-alignment and column rhythm, not from ornament.
-
-### Border Radius Scale
-- Sharp (4px): Badges, tags, table corners
-- Standard (6px): Buttons, inputs, ghost controls
-- Comfortable (8px): Cards, panels, toasts
-- Large (10px): Modals, dialogs
-- Pill (9999px): Toggles, status pills
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow; 1px border defines edges | Panels, cards on dark, table cells |
-| Subtle (Level 1) | `0px 1px 2px rgba(14,14,14,0.06)` | Light-surface cards, raised tiles |
-| Standard (Level 2) | `0px 4px 12px rgba(14,14,14,0.24)` | Dropdowns, popovers, context menus |
-| Elevated (Level 3) | `0px 8px 24px rgba(14,14,14,0.40)` | Toasts, floating panels |
-| Modal (Level 4) | `0px 16px 48px rgba(14,14,14,0.50)` | Dialogs, command palette |
-
-**Shadow Philosophy**: On dark surfaces, Retool defines elevation primarily through **1px borders and background-value steps** (`#1A1A1A` → `#232323` → `#2E2E2E`), not shadow — shadows are nearly invisible on near-black anyway. Shadows return on light surfaces and for true overlays. The aesthetic is structural: edges are drawn, not blurred. This is the visual logic of an IDE, where panels are bounded by lines.
-
-### Blur Effects
-- Command palette and floating menus use a subtle `backdrop-filter: blur(8px)` over a `rgba(14,14,14,0.64)` scrim
-- Sticky nav applies a faint blur on scroll over the dark canvas
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Default to the dark canvas (`#1A1A1A`) for product/tool surfaces; use Green White (`#E9EBDF`) for marketing/light
@@ -468,33 +767,23 @@ The signature Retool surface. Tables are dense, mono-valued, and grid-lined.
 - Don't rely on shadow for elevation on dark; use background-value steps + borders
 - Don't mix proportional and tabular figures in the same table column
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, 24px padding, nav collapses to drawer |
-| Tablet | 640–1024px | 2-col feature grids, condensed builder preview |
-| Desktop | 1024–1440px | Full 12-col, 3-zone builder layout |
-| Wide | >1440px | 1200px centered content, expanded canvas |
+Retool talks to engineers like a senior colleague — direct, technically precise, allergic to fluff. Copy assumes the reader knows what an API, a query, and a deploy are. It sells *leverage*, not magic: the promise is "build the thing your team needs in hours instead of months," stated plainly. Marketing leads with verbs (Build, Ship, Connect, Govern) and grounds claims in capability, not adjectives. There is confidence without hype — enterprise-grade trust language ("a platform you can trust", "governance", "security") sits alongside builder energy ("Start for free").
 
-### Touch / Click Targets
-- Buttons: 36px standard, 40px accent CTA, 32px ghost/icon
-- Table rows: 36px height (dense), 44px on touch devices
-- Min interactive target on touch: 44×44px
+| Context | Tone |
+|---|---|
+| CTAs | Imperative, two words max ("Start for free", "Book a demo", "Get started") |
+| Headlines | Capability-forward, plainspoken ("Build internal tools, remarkably fast") |
+| Feature copy | Concrete and technical — names the integration, the protocol, the action |
+| Success messages | Terse confirmations ("Query ran successfully", "Deployed to production") |
+| Error messages | Specific and actionable — names the failing resource and the fix. Never "Something went wrong." |
+| Docs voice | Second-person, step-numbered, code-sample-first |
+| Enterprise/sales | Trust and governance language — SOC 2, SSO, audit logs, access control |
 
-### Collapsing Strategy
-- Builder's 3-zone layout collapses to tabbed panels on tablet/mobile (the product is desktop-first by nature)
-- Marketing hero mockups scale down and crop the inspector panel first
-- Nav: full horizontal bar → hamburger drawer below 640px
-- Tables become horizontally scrollable with a sticky first column rather than reflowing
+**Forbidden moves.** No exclamation-point hype, no "magical"/"effortless"/"revolutionary" filler, no cutesy mascot voice, no apology theater ("Oops! Something broke"). Errors name the resource and the next step. The reader is a builder, not a consumer to be delighted.
 
-### Image / Asset Behavior
-- Product screenshots and app-builder mockups are the hero imagery — rendered on dark, framed with a 1px `#2E2E2E` border
-- Integration/resource logos: 24–32px monochrome or full-color on neutral tiles
-- Code blocks: full-width within content column, never reflowed
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Dark canvas: Cod Gray (`#1A1A1A`)
@@ -529,124 +818,12 @@ The signature Retool surface. Tables are dense, mono-valued, and grid-lined.
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Retool talks to engineers like a senior colleague — direct, technically precise, allergic to fluff. Copy assumes the reader knows what an API, a query, and a deploy are. It sells *leverage*, not magic: the promise is "build the thing your team needs in hours instead of months," stated plainly. Marketing leads with verbs (Build, Ship, Connect, Govern) and grounds claims in capability, not adjectives. There is confidence without hype — enterprise-grade trust language ("a platform you can trust", "governance", "security") sits alongside builder energy ("Start for free").
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTAs | Imperative, two words max ("Start for free", "Book a demo", "Get started") |
-| Headlines | Capability-forward, plainspoken ("Build internal tools, remarkably fast") |
-| Feature copy | Concrete and technical — names the integration, the protocol, the action |
-| Success messages | Terse confirmations ("Query ran successfully", "Deployed to production") |
-| Error messages | Specific and actionable — names the failing resource and the fix. Never "Something went wrong." |
-| Docs voice | Second-person, step-numbered, code-sample-first |
-| Enterprise/sales | Trust and governance language — SOC 2, SSO, audit logs, access control |
-
-**Forbidden moves.** No exclamation-point hype, no "magical"/"effortless"/"revolutionary" filler, no cutesy mascot voice, no apology theater ("Oops! Something broke"). Errors name the resource and the next step. The reader is a builder, not a consumer to be delighted.
-
-## 11. Brand Narrative
-
-Retool was founded in **2017 by David Hsu** (with co-founder Snir Kodesh) on a sharp observation: every company builds the same internal tools — admin panels, customer-support dashboards, inventory managers, ops consoles — and every company wastes enormous engineering time hand-coding them from scratch. These tools are essential but rarely differentiating; they don't deserve months of bespoke React and CRUD plumbing. Retool's thesis was to make that work *assembly* instead of *construction*: a library of pre-built components (tables, forms, charts, buttons) that snap onto a grid and wire directly to any database or API.
-
-The company went through Y Combinator (2017) and grew into one of the defining developer-productivity platforms, reaching a multi-billion-dollar valuation with customers spanning startups to large enterprises. The product expanded from internal-app building into workflows, a database, and AI-assisted app generation — but the core remains: drag components onto a canvas, connect a data source, ship.
-
-The design system flows directly from this identity. Retool *looks like the tool it is*. The dark, gridded, panel-bounded aesthetic isn't a style choice layered on top — it's the literal interface of the app builder, promoted to brand language. The component-tray-and-inspector layout you see on the marketing site is the product. The monospace-for-values convention is how the product displays data. The restraint — one accent, low radii, drawn edges — communicates *engineering seriousness*: this is infrastructure you'll trust with production operations.
-
-What Retool refuses: the bubbly gradient-heavy aesthetic of consumer-facing SaaS, the illustration-led "fun" of no-code toys (Retool is *low-code for developers*, a crucial distinction), and any visual that implies the tool is a black box. The grid is visible because builders want to see the structure. The brand sells competence and control to people who could build it themselves — and choose Retool because it's faster.
-
-## 12. Principles
-
-1. **The product is the brand.** Marketing surfaces render real builder UI — component trays, grids, inspectors. The aesthetic is downstream of the tool, never decoration bolted on.
-2. **Show the grid.** Structure is visible — hairline borders, aligned columns, snap guides. Builders trust what they can see the bones of. Order over ornament.
-3. **One accent, spent carefully.** Burnt Sienna marks the single most important action or highlight. Everywhere else is neutral. Spread the accent and it stops meaning "here."
-4. **Labels in sans, values in mono.** The typographic split between describing and being-data is load-bearing. A number in monospace reads as a real value; in sans it reads as decoration.
-5. **Edges are drawn, not blurred.** On dark, elevation comes from 1px borders and background-value steps, not shadow. The IDE logic: panels are bounded by lines.
-6. **Density is a feature, not a flaw.** Tool surfaces pack information. A developer wants more on screen, aligned and scannable — not generous padding that hides the data.
-7. **Plainspoken over hype.** Copy names the capability. No magic, no exclamation points. The audience can smell marketing fluff and discounts you for it.
-8. **Low radius, structural geometry.** 6px controls, 8px cards. Rounded-but-not-soft. The shape language says "engineered," not "friendly."
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by Retool's publicly described developer-platform audience, not individual people.*
-
-**Marcus, 31, San Francisco.** Full-stack engineer at a 200-person fintech. Tasked with building an internal ops dashboard for the support team — refund approvals, account lookups, transaction reversals. Could build it in React, but it would eat two sprints he doesn't have. Reaches for Retool to wire Postgres + Stripe API to a table-and-form UI in an afternoon. Values: speed, real data binding, the ability to drop into raw JS when a component's defaults don't cut it. Lives in the query editor.
-
-**Priya, 38, Austin.** Engineering manager / platform lead. Owns the decision of *whether* the org adopts Retool. Cares about governance — SSO, role-based access, audit logs, self-hosting for compliance. Wants her team to stop one-off-coding internal tools and standardize on a platform. Reads the security page before the features page. Will champion Retool internally only if it survives a SOC 2 conversation.
-
-**Dev, 26, remote.** Operations engineer at a logistics startup, more scripts-and-SQL than frontend. Not a React person, but very comfortable with data and APIs. Retool lets him build the warehouse-ops tool himself instead of waiting in the eng backlog. Values: not having to learn a frontend framework, the visual grid that makes layout obvious, monospace tables that feel like the SQL console he already lives in.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no data)** | `#8A8A8A` body line explaining the state ("No rows returned"), plus a ghost or accent action to add/connect data. Dense, no illustration — a tooling empty state, not a consumer one. |
-| **Empty (no resources)** | Centered card on dark with a "Connect a resource" accent button (`#E0613A`) and one line of helper text in `#8A8A8A`. |
-| **Loading (query running)** | Inline spinner in the panel header, `#E0613A` tint. Table shows a 1.2s shimmer over `#232323` skeleton rows. Run button shows inline spinner, label preserved. |
-| **Loading (page)** | Skeleton blocks at `#232323` on the dark canvas matching final layout, 8% white shimmer sweep. |
-| **Success (query)** | Toast: `#232323` bg, leading `#2FA86A` dot, "Query ran successfully" 14px white, 3s auto-dismiss. |
-| **Success (deploy)** | Status badge flips to `rgba(47,168,106,0.14)` / `#2FA86A` "Deployed", optional confirmation toast. |
-| **Error (query failed)** | Inline error panel below the editor: `rgba(229,72,77,0.14)` bg, `#E5484D` left border, monospace error text naming the failure. Actionable, never generic. |
-| **Error (validation)** | Field border `#E5484D`, helper text `#E5484D` 13px below — one sentence, names the fix. |
-| **Warning (unsaved)** | Amber badge `rgba(224,162,58,0.14)` / `#E0A23A` "Unsaved changes" in the toolbar; Save button gains accent emphasis. |
-| **Disabled** | 40% opacity, no pointer events. Borders retained so geometry stays stable. |
-| **Selected (table row / component)** | 2px `#E0613A` left border + `rgba(224,97,58,0.12)` fill. The single consistent use of accent for selection across the builder. |
-| **Focus** | 1px `#E0613A` outline + 2px `rgba(224,97,58,0.20)` ring on all interactive elements. |
-
-## 15. Motion & Easing
-
-**Durations** (named):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox, immediate state |
-| `motion-fast` | 120ms | Hover, focus ring, button press, tab indicator slide |
-| `motion-standard` | 200ms | The default — panel reveal, dropdown open, accordion |
-| `motion-slow` | 320ms | Modal entry, side-panel slide-in, route transitions |
-| `motion-data` | 240ms | Table row insert/update, query-result paint-in |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.16, 1, 0.3, 1)` | Things appearing — panels, dropdowns, modals (a confident, settled ease-out) |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Things leaving — dismissals, collapses |
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Two-way — tab content, accordion, hover transitions |
-| `ease-linear` | `linear` | Spinners, shimmer sweeps, progress bars |
-
-**Signature motions.**
-
-1. **Panel slide-in.** Inspector and side panels enter from the edge with `motion-standard / ease-enter` — a single decisive slide, no bounce. Tooling motion is functional, never playful; overshoot would undermine the engineering tone.
-2. **Tab indicator.** The 2px `#E0613A` underline slides horizontally between tabs over `motion-fast / ease-standard`, tracking the active panel. Crisp and immediate.
-3. **Query-result paint.** When a query resolves, table rows fade-and-rise 8px into place over `motion-data / ease-enter`, staggered subtly so a result set feels like it *lands* rather than flickers. Values never cross-fade between states.
-4. **Shimmer skeleton.** Loading skeletons use a `linear` 1.2s left-to-right sweep with an 8% white highlight over `#232323` blocks. The only continuously-animated element on the canvas.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; slides become instant swaps, shimmer becomes a static `#232323` block. The tool stays fully usable.
-
-<!--
-OmD v0.1 Sources — Retool
-
-Tier 1 (direct):
-- retool.com (live brand site, WebFetch 2026-06-06): dark-first developer aesthetic,
-  warm orange/Burnt Sienna accent CTAs, app-builder layout language (component tray +
-  canvas + inspector), copy register ("Build how you want. Ship on a platform you can
-  trust", "Start for free", "Book a demo"), verb-forward enterprise voice.
-- mobbin.com/colors/brand/retool (via WebSearch summary): documented brand palette names
-  — Green White #E9EBDF (primary neutral), Cod Gray, Smalt Blue, Burnt Sienna, Cornflower,
-  White. Foundation of neutrals + pops of teal/orange/periwinkle.
-- docs.retool.com/apps/guides/presentation-styling/themes (via WebSearch): confirms theme
-  + typography controls (font family/size/weight, custom font URLs) — developers commonly
-  pair IBM Plex Sans / Roboto, informing the Inter+IBM Plex Mono stack choice.
-
-Reconstruction note: Retool publishes no public design-token catalog. Component geometry
-(radii, heights, spacing, shadows) and the dark-theme neutral ramp are reconstructed from
-the live product/marketing UI plus standard developer-tool conventions. Accent and semantic
-tier hex values are calibrated to the documented brand palette names (Burnt Sienna #E0613A,
-Cornflower #6E8BE0, Smalt Blue #4E7C82, Green White #E9EBDF).
-
-Personas (§13) are fictional archetypes informed by Retool's publicly described developer
-audience (engineers, eng managers, ops engineers building internal tools). Any resemblance
-to specific individuals is unintended.
-
-Interpretive claims (e.g., "the product is the brand", "show the grid") are editorial
-readings of Retool's design, not documented company statements.
--->
+- **Contrast, `button-accent`.** Text `#ffffff` on `#e0613a` measures 3.54:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-destructive`.** Text `#ffffff` on `#e5484d` measures 3.91:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-success`.** Text `#2fa86a` on `#2fa86a24` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-error`.** Text `#e5484d` on `#e5484d24` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `badge-warning`.** Text `#e0a23a` on `#e0a23a24` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

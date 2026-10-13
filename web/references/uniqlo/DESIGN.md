@@ -1,66 +1,154 @@
 ---
-id: uniqlo
 name: Uniqlo
-country: JP
-category: ecommerce
-homepage: "https://www.uniqlo.com"
-primary_color: "#ed1d24"
-logo:
-  type: simpleicons
-  slug: "uniqlo"
-verified: "2026-06-06"
-added: "2026-06-06"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    primary: "#ed1d24"
-    primary-hover: "#c8161c"
-    canvas: "#ffffff"
-    heading: "#1a1a1a"
-    body: "#333333"
-    secondary: "#666666"
-    muted: "#999999"
-    error: "#d0021b"
-    success: "#1a8917"
-    info: "#0070c9"
-    gray-50: "#f5f5f5"
-    gray-100: "#eeeeee"
-    gray-300: "#cccccc"
-    border: "#e0e0e0"
-    border-strong: "#1a1a1a"
-    on-primary: "#ffffff"
-  typography:
-    family: { sans: "TT Commons Pro", mono: "Helvetica Neue" }
-    display-hero: { size: 48, weight: 700, lineHeight: 1.10, tracking: -0.5, use: "Campaign headlines, hero" }
-    display-lg:   { size: 36, weight: 700, lineHeight: 1.15, tracking: -0.3, use: "Feature section heads" }
-    heading-1:    { size: 28, weight: 700, lineHeight: 1.20, use: "Page titles, category heads" }
-    heading-2:    { size: 22, weight: 700, lineHeight: 1.25, use: "Sub-section titles" }
-    subtitle:     { size: 16, weight: 600, lineHeight: 1.40, use: "Product names in tiles" }
-    body:         { size: 14, weight: 400, lineHeight: 1.50, use: "Standard catalog text" }
-    price:        { size: 18, weight: 700, lineHeight: 1.20, use: "Product price, tabular numerals" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.40, use: "Metadata, fine print" }
-    label:        { size: 11, weight: 700, lineHeight: 1.20, tracking: 0.5, use: "Uppercase tags NEW/SALE" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 2, md: 2, lg: 4, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#ed1d24", fg: "#ffffff", radius: 2, padding: "14px 24px", font: "15px/700", use: "Primary CTA ADD TO CART; hover #c8161c" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#1a1a1a", radius: 2, padding: "14px 24px", use: "Outlined; 1px #1a1a1a border, hover inverts to #1a1a1a" }
-    button-solid-black: { type: button, bg: "#1a1a1a", fg: "#ffffff", radius: 2, padding: "14px 24px", use: "Neutral strong action; hover #333333" }
-    button-disabled: { type: button, bg: "#eeeeee", fg: "#999999", radius: 2, use: "Unavailable action" }
-    product-tile: { type: card, bg: "#ffffff", radius: 0, padding: "8px", use: "Atomic product tile, grid-gutter separated, no shadow" }
-    input: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: 2, padding: "12px 14px", font: "14px", use: "Text input; 1px #cccccc border, focus #1a1a1a" }
-    size-chip: { type: badge, bg: "#ffffff", fg: "#1a1a1a", radius: 2, padding: "8px 14px", use: "Size selector; 1px #cccccc border, selected 2px #1a1a1a" }
-    sale-flag: { type: badge, bg: "#ed1d24", fg: "#ffffff", radius: 0, padding: "2px 6px", font: "11px/700", use: "SALE/LIMITED uppercase flag" }
-  components_harvested: true
+colors:
+  primary: '#ed1d24'
+  primary-hover: '#c8161c'
+  canvas: '#ffffff'
+  heading: '#1a1a1a'
+  body: '#333333'
+  secondary: '#666666'
+  muted: '#999999'
+  error: '#d0021b'
+  success: '#1a8917'
+  info: '#0070c9'
+  gray-50: '#f5f5f5'
+  gray-100: '#eeeeee'
+  gray-300: '#cccccc'
+  border: '#e0e0e0'
+  border-strong: '#1a1a1a'
+  on-primary: '#ffffff'
+typography:
+  display-hero:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: '-0.5px'
+    use: Campaign headlines, hero
+  display-lg:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: '-0.3px'
+    use: Feature section heads
+  heading-1:
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Page titles, category heads
+  heading-2:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.25
+    use: Sub-section titles
+  subtitle:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Product names in tiles
+  body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard catalog text
+  price:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: Product price, tabular numerals
+  caption:
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
+    use: Metadata, fine print
+  label:
+    fontSize: 11px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: 0.5px
+    use: Uppercase tags NEW/SALE
+rounded:
+  sm: 2px
+  md: 2px
+  lg: 4px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 12
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 64
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#ed1d24'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 14px 24px
+    typography: 15px/700
+    use: 'Primary CTA ADD TO CART; hover #c8161c'
+  button-secondary:
+    type: button
+    backgroundColor: '#ffffff'
+    textColor: '#1a1a1a'
+    rounded: 2px
+    padding: 14px 24px
+    use: 'Outlined; 1px #1a1a1a border, hover inverts to #1a1a1a'
+  button-solid-black:
+    type: button
+    backgroundColor: '#1a1a1a'
+    textColor: '#ffffff'
+    rounded: 2px
+    padding: 14px 24px
+    use: 'Neutral strong action; hover #333333'
+  button-disabled:
+    type: button
+    backgroundColor: '#eeeeee'
+    textColor: '#999999'
+    rounded: 2px
+    use: Unavailable action
+  product-tile:
+    type: card
+    backgroundColor: '#ffffff'
+    rounded: 0px
+    padding: 8px
+    use: Atomic product tile, grid-gutter separated, no shadow
+  input:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1a1a1a'
+    rounded: 2px
+    padding: 12px 14px
+    typography: 14px
+    use: 'Text input; 1px #cccccc border, focus #1a1a1a'
+  size-chip:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#1a1a1a'
+    rounded: 2px
+    padding: 8px 14px
+    use: 'Size selector; 1px #cccccc border, selected 2px #1a1a1a'
+  sale-flag:
+    type: badge
+    backgroundColor: '#ed1d24'
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 2px 6px
+    typography: 11px/700
+    use: SALE/LIMITED uppercase flag
+fonts:
+  roles:
+    sans: TT Commons Pro
+    mono: Helvetica Neue
 ---
 
 # Design System Inspiration of Uniqlo (ユニクロ)
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Uniqlo is the global apparel brand of Japan's Fast Retailing, and its design language is the visual translation of one idea: **LifeWear** -- simple, high-quality, everyday clothing "Made for All." The interface mirrors the product philosophy with almost literal fidelity. Where the clothing is engineering disguised as plainness, the website is a precise, gridded, near-monochrome canvas where a single saturated red (`#ed1d24`) does all the talking. The page opens on pure white (`#ffffff`) with near-black text (`#1a1a1a`), and the only chromatic event on most screens is the Uniqlo red -- in the logo, in price tags, in sale flags, in the primary CTA. Color is rationed like a scarce resource, which makes every red mark read as a deliberate signal rather than decoration.
 
@@ -78,7 +166,7 @@ What defines Uniqlo visually is **catalog rigor**: dense, evenly-spaced grids of
 - Flat, shadowless surfaces -- depth comes from grid and whitespace, not elevation
 - Bilingual-native typography -- Japanese and Latin set with equal care, neither subordinate
 
-## Primary tasks
+### Primary tasks
 
 - Scan a category grid where every tile is structured alike.
 - Read why a fabric is warm or breathable before buying.
@@ -87,7 +175,40 @@ What defines Uniqlo visually is **catalog rigor**: dense, evenly-spaced grids of
 - Compare a sale price against the original struck-through price.
 - Place an order and see it confirmed with an order number.
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+Uniqlo (ユニクロ) is the flagship brand of **Fast Retailing**, founded by **Tadashi Yanai (柳井正)**, who opened the first "Unique Clothing Warehouse" store in **Hiroshima in 1984** (the contracted name "Uni-Qlo" came from a registration typo that stuck). Yanai inherited his father's roadside men's tailoring business and reimagined it as something radical for Japanese retail: a self-service, warehouse-style store selling well-made basics at honest prices, free of the formality and markup of department-store fashion.
+
+The brand's modern identity dates to **2006**, when Yanai commissioned designer **Kashiwa Sato** to create the global visual system: the red square logo with its white katakana-inspired wordmark, deliberately evoking the Japanese flag (Hinomaru) to signal a Japanese brand thinking globally from the start. That same year Uniqlo opened its New York and London flagships, and the red-and-white system has been unchanged since.
+
+The organizing philosophy is **LifeWear** -- articulated by Yanai as "simple, high-quality, everyday clothing designed to improve everyone's life." LifeWear is explicitly **"Made for All"**: clothing engineered to transcend age, gender, ethnicity, and trend. Uniqlo's competitive position is the inverse of fast fashion -- not chasing micro-trends, but perfecting timeless basics through textile engineering (HEATTECH thermal base layers, AIRism breathable fabric, Ultra Light Down). The product is innovation disguised as plainness, and the design system performs the same trick: it looks like a plain catalog, but every grid measure, every rationed red mark, and every hard corner is deliberate.
+
+What Uniqlo refuses: the aspirational fantasy of luxury fashion, the disposable trend-churn of fast fashion, the visual chaos of overcrowded retail. What it embraces: Japanese retail clarity, honest pricing, function-first storytelling, and an order so consistent it reads as trust. The red square is a flag planted on that idea.
+
+### Principles
+
+1. **Ration the red.** `#ed1d24` is the only saturated color in the system, so every appearance is a signal -- brand, CTA, price, error. Decorative red dilutes the signal and is forbidden. If red competes with red on a screen, one of them is wrong.
+2. **Product as hero, chrome as silence.** The garment gets the space and the light; navigation, filters, and labels recede to small black-on-white. The UI's job is to disappear so the product can be judged honestly.
+3. **Order is the aesthetic.** A strict, even, repeating grid is not boring -- it is the brand. Predictability communicates reliability and scale. Editorial asymmetry belongs to luxury fashion; Uniqlo is infrastructure.
+4. **Hard corners, always.** The red-square logo's geometry governs the whole system. Radius stays at 0-2px. Pills and soft cards contradict the brand's planted-flag rectangularity.
+5. **Price is headline-class.** A price set in 700-weight tabular numerals at subtitle size respects the customer's reason for being there. Demoting the price to fine print is a betrayal of an honest-value brand.
+6. **Flat over deep.** Depth comes from grid and whitespace, not elevation. Shadows appear only when something genuinely floats. A flat catalog says "no tricks" -- which is the product promise.
+7. **Bilingual by birth.** Japanese and Latin are co-equal, set with equal care. Localized markets inherit the same hierarchy; no script is a second-class fallback. The brand was global from its 2006 rebrand onward.
+8. **Honesty over urgency.** Sales are labeled plainly with real prices; there is no manufactured scarcity. The voice describes what clothing *does*, not the life it promises. LifeWear is a utility claim, and the UI keeps that promise.
+
+### Personas
+
+*Personas below are fictional archetypes informed by publicly described Uniqlo customer segments (value-conscious everyday shoppers, function-first buyers, global basics-wardrobe builders), not individual people.*
+
+**Aiko Tanaka, 34, Tokyo.** Working mother, shops Uniqlo online during her commute. Buys HEATTECH for the whole family every autumn and AIRism in summer. Reads fabric descriptions carefully -- she trusts Uniqlo precisely because the site explains *why* a fabric is warm or breathable rather than just calling it "cozy." Expects the size chart to be accurate and the price to be exactly what the tag says. Annoyed by any retailer that buries the real price under fake "was/now" theater. Reads the site in Japanese; the Hiragino type and clean grid feel like home.
+
+**Marcus Hale, 41, Chicago.** Software manager who has standardized his wardrobe on Uniqlo basics -- the same Supima T-shirt and chino in multiple colors. Values the strict grid: he can scan a category page in seconds because every tile is identical in structure. Does not want to be sold a lifestyle; wants to find the gray crewneck, confirm it's in stock in M, and check out in under a minute. The flat, shadowless, no-nonsense UI is exactly why he shops here instead of trend-chasing competitors.
+
+**Priya Nair, 27, London.** Design-conscious shopper who appreciates Uniqlo as "Muji for clothes" -- minimal, honest, well-engineered. Follows the LifeWear collaborations (the brand's restraint makes the occasional designer collab feel meaningful). Notices and respects the typography and the rationed red. Would immediately distrust a redesign that added gradients, shadows, or a second accent color -- to her the flatness *is* the credibility.
+
+**Mr. Sato, 58, Osaka.** Long-time customer since the warehouse-store days. Buys reliable basics -- socks, undershirts, the same down vest -- and values that Uniqlo's pricing and product names are plain and consistent year to year. Uses the website occasionally but mostly to check store stock. The clear, large price and the "FIND IN STORE" button matter more to him than any campaign imagery.
+
+## Colors
 
 ### Primary
 - **Uniqlo Red** (`#ed1d24`): The brand color. Pantone 485 C, RGB(237,29,36), CMYK(1,99,97,0). Logo background, primary CTA, sale/price flags, active states, error emphasis. Unchanged since the 2006 Kashiwa Sato rebrand. This is the *only* saturated hue in the entire system.
@@ -124,7 +245,7 @@ What defines Uniqlo visually is **catalog rigor**: dense, evenly-spaced grids of
 - **Border Strong** (`#1a1a1a`): Emphasized outlines -- outlined "secondary" buttons, selected swatches, active filter chips.
 - **Overlay Scrim** (`rgba(0,0,0,0.5)`): Modal/drawer backdrop. Neutral black, no tint.
 
-## 3. Typography Rules
+## Typography
 
 ### Font Family
 - **Primary (Latin/web)**: `"TT Commons Pro", "Helvetica Neue", Helvetica, Arial, sans-serif`
@@ -160,7 +281,143 @@ The system is a clean geometric sans with even stroke weight and open counters -
 - **Bilingual parity.** Japanese (Hiragino) and Latin (TT Commons Pro) are weighted to sit harmoniously on the same line; neither script is treated as the fallback. Localized scripts inherit the same hierarchy.
 - **Tight tracking on display only.** Negative letter-spacing appears at 36px+ to tighten campaign headlines; body and UI text use normal tracking.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
+- Product-tile internal text spacing: tight 8-12px
+- Section spacing: generous 48-64px between content blocks
+- Grid gutters: 8-16px on mobile, 16-24px on desktop
+
+### Grid & Container
+- Max content width: ~1280px (centered, with side margins on large screens)
+- Product grid: 2 columns mobile, 3 columns tablet, 4 columns desktop (sometimes 3-up for larger imagery)
+- Even gutters, no per-tile borders -- whitespace is the divider
+- Hero banners: full-bleed edge-to-edge, often with overlaid red/white typography
+- The grid is **strict and repeating** -- the catalog reads as a uniform module system, deliberately un-editorial
+
+### Whitespace Philosophy
+- **Product as hero, chrome as silence.** The garment photo gets the space; navigation, filters, and labels recede to small black-on-white. Whitespace exists to isolate each product so it can be judged on its own.
+- **Even rhythm over drama.** Unlike luxury fashion's asymmetric editorial layouts, Uniqlo uses an even, predictable grid. The lack of layout surprise *is* the brand -- order, reliability, scale.
+- **Generous between, tight within.** Big gaps between sections (48-64px); tight, efficient spacing inside a tile (8-12px). The macro feels calm; the micro feels dense and practical.
+
+### Border Radius Scale
+- Sharp (0px): Product images, swatches, tags, hero banners -- the default
+- Minimal (2px): Buttons, inputs, chips -- a barely-there softening for tap affordance
+- Nothing above 2px. No pills, no rounded cards. Hard corners are the brand's geometry.
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile | <768px | 2-column product grid, full-width CTAs, hamburger nav, sticky add-to-cart bar |
+| Tablet | 768-1024px | 3-column grid, condensed top nav, side filter drawer |
+| Desktop | 1024-1440px | 4-column grid, full horizontal nav with mega-menu, inline filters |
+| Large Desktop | >1440px | Centered ~1280px content, generous side margins, larger hero imagery |
+
+#### Touch Targets
+- Buttons: ~48px height, full-width on mobile
+- Size/color chips: minimum 40x40px tap area
+- Nav and utility icons: ~44px tap target with padding
+- Product tiles: entire tile is tappable
+
+#### Collapsing Strategy
+- Top nav: full horizontal mega-menu → hamburger drawer on mobile
+- Filters: inline filter bar → bottom-sheet / side-drawer on mobile
+- Product grid: 4-up → 3-up → 2-up (never 1-up — pairs preserve catalog scanning)
+- Add-to-cart: inline button → sticky bottom bar on mobile PDP
+- Hero typography: 48px → 28px, maintaining 700 weight and red/white contrast
+
+#### Image Behavior
+- Garment photos maintain 3:4 portrait aspect at all breakpoints
+- Hero banners go full-bleed edge-to-edge; text reflows but stays high-contrast
+- Lazy-loaded grid images fade in over a `#f5f5f5` placeholder
+- Zoom on PDP: pinch/hover magnify, image stays sharp on white
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Product tiles, grid, page background — the default |
+| Border (Level 1) | `1px solid #e0e0e0` | Separation where needed — nav bottom edge, input outlines |
+| Subtle (Level 2) | `0px 1px 3px rgba(0,0,0,0.08)` | Dropdowns, sticky add-to-cart bar |
+| Floating (Level 3) | `0px 2px 8px rgba(0,0,0,0.12)` | Mega-menu, mini-cart drawer, popovers |
+| Modal (Level 4) | `0px 4px 16px rgba(0,0,0,0.16)` + scrim `rgba(0,0,0,0.5)` | Size guide, quick-view, dialogs |
+
+**Shadow Philosophy**: Uniqlo is fundamentally a **flat, shadowless system**. Depth is communicated through the grid, whitespace, and hard borders -- not elevation. The product grid has zero shadow; tiles separate by gutter alone. Shadows appear *only* on truly floating UI (menus, drawers, modals) and even then they are minimal, neutral black, single-layer. There are no brand-tinted shadows, no multi-layer depth stacks, no glassmorphism. The aesthetic is print-catalog flatness: everything sits on the same plane until it explicitly floats above the page. This restraint reinforces the "honest, no-tricks" product positioning -- the clothing isn't dramatized, and neither is the UI.
+
+### No Blur
+- Sticky nav uses a solid white background, not backdrop blur
+- Modal scrims are flat black at 50% opacity, no blur on the underlying content
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection states, swatch picks, focus |
+| `motion-fast` | 150ms | Hover image swap, button hover, chip selection |
+| `motion-standard` | 250ms | Drawer slide, mini-cart, dropdown, mega-menu reveal |
+| `motion-slow` | 350ms | Modal/quick-view open, page-level transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Arriving — drawers, menus, modals |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals — closing drawers, toasts |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — accordions, tabs |
+
+**Explicitly restrained.** No spring, no bounce, no overshoot. Motion is functional and brief, matching the no-tricks product positioning. Nothing animates just to delight; transitions exist to clarify spatial relationships (where the cart drawer came from, what a filter did).
+
+**Signature motions.**
+
+1. **Product image swap.** On hover (desktop) or as a secondary thumbnail (mobile), the tile's primary photo cross-fades to an alternate garment view over `motion-fast`. The tile never lifts or casts a shadow -- the image *changes*, the geometry stays flat.
+2. **Mini-cart drawer.** "Add to cart" slides a drawer in from the right edge over `motion-standard / ease-enter`, with a synchronized `rgba(0,0,0,0.5)` scrim fade. Dismissal slides back over `motion-fast / ease-exit`.
+3. **Mega-menu reveal.** Hovering a top-nav category drops a full-width white panel over `motion-standard`. The panel appears flat against the page (1px `#e0e0e0` separator), not floating with heavy shadow.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Image swaps become instant cuts, drawers appear without sliding. The catalog stays fully functional; nothing is gated behind animation.
+
+<!--
+OmD v0.1 Sources — Uniqlo
+
+Token-level verification:
+- Uniqlo Red #ed1d24 (Pantone 485 C, RGB 237/29/36, CMYK 1/99/97/0) — brandpalettes.com/uniqlo-colors,
+  color-name.com/uniqlo-red.color, brandyhq.com/brand-guidelines/uniqlo. Palette unchanged since 2006.
+- Palette is intentionally minimal: "official colors of Uniqlo are Uniqlo red and white."
+- Web typeface TT Commons Pro confirmed via Fonts In Use (fontsinuse.com/uses/73945/uniqlo-website)
+  and TypeType (typetype.org/font-in-use/uniqlo). Japanese text in Hiragino Kaku Gothic.
+  Helvetica Neue / Arial retained only as historical/fallback stack.
+- Logo: red square + white katakana-inspired wordmark designed by Kashiwa Sato (2006),
+  evoking the Japanese flag (Hinomaru) — widely documented brand history.
+
+Brand narrative facts (widely documented):
+- Fast Retailing founder/CEO Tadashi Yanai; first "Unique Clothing Warehouse" store Hiroshima 1984.
+- LifeWear philosophy "simple, high-quality clothing designed to improve everyone's life";
+  "Made for All" positioning (uniqlo.com LifeWear content, Wallpaper*, Fast Retailing materials).
+- HEATTECH / AIRism / Ultra Light Down as signature textile-technology product lines.
+
+Hint correction: brief suggested #FF0000-ish red + Helvetica. Corrected to verified #ed1d24
+(Pantone 485 C) and TT Commons Pro / Hiragino Kaku Gothic. Brand-red and UI-red are the same value
+by design.
+
+Personas (§13) are fictional archetypes informed by publicly described Uniqlo customer segments,
+not real individuals.
+
+Interpretive claims (e.g., "ration the red", "hard corners inherited from the red-square logo",
+"flat catalog says no tricks") are editorial readings connecting Uniqlo's stated LifeWear philosophy
+to its visual system, not directly sourced Uniqlo statements.
+-->
+
+## Components
 
 ### Buttons
 
@@ -327,49 +584,25 @@ The product tile is the atomic unit of the entire site -- the design system exis
 **Tier 2 sources:** brandpalettes.com/uniqlo-colors (Uniqlo Red `#ed1d24`, Pantone 485 C, RGB 237/29/36 — unchanged since 2006); color-name.com (`#ED1D24`); brandyhq.com (`#ed1d24`, `#ffffff` palette).
 **Conflicts resolved:** Hint suggested `#FF0000`-ish + Helvetica; corrected to verified `#ed1d24` (Pantone 485 C) and TT Commons Pro / Hiragino (Helvetica Neue retained only as historical fallback). Brand-red and UI-red are intentionally the same value.
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Product-tile internal text spacing: tight 8-12px
-- Section spacing: generous 48-64px between content blocks
-- Grid gutters: 8-16px on mobile, 16-24px on desktop
+| State | Treatment |
+|---|---|
+| **Empty (cart)** | White canvas, single near-black line at 16px: "Your cart is empty." One red primary CTA: "CONTINUE SHOPPING". No illustration, no upsell theater. |
+| **Empty (search no results)** | Gray (`#666666`) single line: "No items found." Suggested categories listed below as plain text links. Filter summary stays visible so the user can widen scope. |
+| **Empty (wishlist)** | Plain line "Your wishlist is empty." plus a link to "Browse new arrivals". Honest about the empty state. |
+| **Loading (grid first paint)** | Skeleton tiles at exact final dimensions, `#f5f5f5` base with 1.2s shimmer. Image blocks at 3:4, name/price as short bars. Prices never skeleton wider than a real price. |
+| **Loading (in-place refresh)** | Subtle red 2px progress bar at top of the listing; previous tiles stay visible. No blocking overlay. |
+| **Error (form validation)** | Field-level. `#ed1d24` border on the input, 12px `#ed1d24` helper text below stating exactly what is wrong ("Enter a valid postal code"). Never just "Invalid". |
+| **Error (out of stock)** | Size chip shows `#cccccc` text with a diagonal strike; PDP swaps "ADD TO CART" for a `#1a1a1a` "GET STOCK ALERT" or "FIND IN STORE" secondary button. |
+| **Error (page-level)** | White screen, single near-black line at 18px stating what failed, red retry button below. No illustration. |
+| **Success (added to cart)** | Brief `#1a1a1a` toast, white 14px text: "Added to cart." Mini-cart drawer slides in from right showing the item. No exclamation, no emoji. |
+| **Success (order placed)** | Dedicated confirmation screen: green (`#1a8917`) check, order number in tabular numerals, item summary, single "CONTINUE SHOPPING" button. |
+| **Skeleton** | `#f5f5f5` blocks at final dimensions, 1.2s neutral shimmer, hard corners matching the flat grid. |
+| **Disabled** | Button becomes `#eeeeee` bg with `#999999` text; geometry unchanged so re-enabling is stable. Inputs keep their `#cccccc` border. |
+| **Sale** | Original price `#999999` strikethrough, sale price `#ed1d24` 700 weight, "LIMITED OFFER" / "SALE" flag in red. Always shows the real numbers. |
 
-### Grid & Container
-- Max content width: ~1280px (centered, with side margins on large screens)
-- Product grid: 2 columns mobile, 3 columns tablet, 4 columns desktop (sometimes 3-up for larger imagery)
-- Even gutters, no per-tile borders -- whitespace is the divider
-- Hero banners: full-bleed edge-to-edge, often with overlaid red/white typography
-- The grid is **strict and repeating** -- the catalog reads as a uniform module system, deliberately un-editorial
-
-### Whitespace Philosophy
-- **Product as hero, chrome as silence.** The garment photo gets the space; navigation, filters, and labels recede to small black-on-white. Whitespace exists to isolate each product so it can be judged on its own.
-- **Even rhythm over drama.** Unlike luxury fashion's asymmetric editorial layouts, Uniqlo uses an even, predictable grid. The lack of layout surprise *is* the brand -- order, reliability, scale.
-- **Generous between, tight within.** Big gaps between sections (48-64px); tight, efficient spacing inside a tile (8-12px). The macro feels calm; the micro feels dense and practical.
-
-### Border Radius Scale
-- Sharp (0px): Product images, swatches, tags, hero banners -- the default
-- Minimal (2px): Buttons, inputs, chips -- a barely-there softening for tap affordance
-- Nothing above 2px. No pills, no rounded cards. Hard corners are the brand's geometry.
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Product tiles, grid, page background — the default |
-| Border (Level 1) | `1px solid #e0e0e0` | Separation where needed — nav bottom edge, input outlines |
-| Subtle (Level 2) | `0px 1px 3px rgba(0,0,0,0.08)` | Dropdowns, sticky add-to-cart bar |
-| Floating (Level 3) | `0px 2px 8px rgba(0,0,0,0.12)` | Mega-menu, mini-cart drawer, popovers |
-| Modal (Level 4) | `0px 4px 16px rgba(0,0,0,0.16)` + scrim `rgba(0,0,0,0.5)` | Size guide, quick-view, dialogs |
-
-**Shadow Philosophy**: Uniqlo is fundamentally a **flat, shadowless system**. Depth is communicated through the grid, whitespace, and hard borders -- not elevation. The product grid has zero shadow; tiles separate by gutter alone. Shadows appear *only* on truly floating UI (menus, drawers, modals) and even then they are minimal, neutral black, single-layer. There are no brand-tinted shadows, no multi-layer depth stacks, no glassmorphism. The aesthetic is print-catalog flatness: everything sits on the same plane until it explicitly floats above the page. This restraint reinforces the "honest, no-tricks" product positioning -- the clothing isn't dramatized, and neither is the UI.
-
-### No Blur
-- Sticky nav uses a solid white background, not backdrop blur
-- Modal scrims are flat black at 50% opacity, no blur on the underlying content
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Uniqlo Red (`#ed1d24`) only for brand, primary CTA, prices/sale, and errors -- ration it
@@ -391,36 +624,24 @@ The product tile is the atomic unit of the entire site -- the design system exis
 - Don't use light font weights -- the system is 400 / 600 / 700 only
 - Don't dramatize -- no gradients, no glass, no editorial asymmetry; order is the aesthetic
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | 2-column product grid, full-width CTAs, hamburger nav, sticky add-to-cart bar |
-| Tablet | 768-1024px | 3-column grid, condensed top nav, side filter drawer |
-| Desktop | 1024-1440px | 4-column grid, full horizontal nav with mega-menu, inline filters |
-| Large Desktop | >1440px | Centered ~1280px content, generous side margins, larger hero imagery |
+Uniqlo's voice is plain, functional, and quietly confident -- the verbal equivalent of a well-made white T-shirt. It describes what a garment *does* (fabric technology, fit, care) before how it makes you *feel*. There is no hype, no seasonal urgency theater beyond honest sale labeling, no aspirational lifestyle fantasy. The register is the same in Japanese and in every localized market: clear, respectful, practical. The brand line -- **"LifeWear"** and **"Made for All"** -- sets the tone: clothing as a universal daily utility, not a status signal.
 
-### Touch Targets
-- Buttons: ~48px height, full-width on mobile
-- Size/color chips: minimum 40x40px tap area
-- Nav and utility icons: ~44px tap target with padding
-- Product tiles: entire tile is tappable
+| Context | Tone |
+|---|---|
+| Product names | Descriptive and functional. "Ultra Light Down Jacket", "AIRism Cotton Crew Neck T-Shirt", "HEATTECH". The technology *is* the name. |
+| Product descriptions | Plain, benefit-first. "Lightweight warmth that packs into its own pouch." Never "Elevate your winter wardrobe." |
+| CTAs | Direct imperatives, often uppercase. "ADD TO CART", "FIND IN STORE", "CHECKOUT" (カートに入れる). |
+| Sale labels | Honest and specific. "LIMITED OFFER", "¥1,990", a struck original price. Never fake countdown pressure. |
+| LifeWear / brand copy | Calm, almost philosophical. "Simple made better." "Clothing that makes your life better." Earnest, not grandiose. |
+| Fabric / technology | Educational. Explains HEATTECH/AIRism/Ultra Light Down like a spec sheet a customer can trust. |
+| Empty / error states | Practical and blameless. "This item is sold out in your size." plus an alternative, never an apology theater. |
+| Legal / care | Formal, precise — care instructions and policy read like clear documentation. |
 
-### Collapsing Strategy
-- Top nav: full horizontal mega-menu → hamburger drawer on mobile
-- Filters: inline filter bar → bottom-sheet / side-drawer on mobile
-- Product grid: 4-up → 3-up → 2-up (never 1-up — pairs preserve catalog scanning)
-- Add-to-cart: inline button → sticky bottom bar on mobile PDP
-- Hero typography: 48px → 28px, maintaining 700 weight and red/white contrast
+**Forbidden phrases.** "Revolutionary", "must-have", "game-changer", aspirational lifestyle fantasy ("live your best life"), false scarcity ("only 2 left — hurry!"), exclamation-stacked hype. Uniqlo sells utility honestly; manufactured urgency contradicts the LifeWear thesis.
 
-### Image Behavior
-- Garment photos maintain 3:4 portrait aspect at all breakpoints
-- Hero banners go full-bleed edge-to-edge; text reflows but stays high-contrast
-- Lazy-loaded grid images fade in over a `#f5f5f5` placeholder
-- Zoom on PDP: pinch/hover magnify, image stays sharp on white
-
-## 9. Agent Prompt Guide
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary CTA / Brand: Uniqlo Red (`#ed1d24`)
@@ -456,129 +677,10 @@ The product tile is the atomic unit of the entire site -- the design system exis
 
 ---
 
-## 10. Voice & Tone
+## Governance
 
-Uniqlo's voice is plain, functional, and quietly confident -- the verbal equivalent of a well-made white T-shirt. It describes what a garment *does* (fabric technology, fit, care) before how it makes you *feel*. There is no hype, no seasonal urgency theater beyond honest sale labeling, no aspirational lifestyle fantasy. The register is the same in Japanese and in every localized market: clear, respectful, practical. The brand line -- **"LifeWear"** and **"Made for All"** -- sets the tone: clothing as a universal daily utility, not a status signal.
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| Product names | Descriptive and functional. "Ultra Light Down Jacket", "AIRism Cotton Crew Neck T-Shirt", "HEATTECH". The technology *is* the name. |
-| Product descriptions | Plain, benefit-first. "Lightweight warmth that packs into its own pouch." Never "Elevate your winter wardrobe." |
-| CTAs | Direct imperatives, often uppercase. "ADD TO CART", "FIND IN STORE", "CHECKOUT" (カートに入れる). |
-| Sale labels | Honest and specific. "LIMITED OFFER", "¥1,990", a struck original price. Never fake countdown pressure. |
-| LifeWear / brand copy | Calm, almost philosophical. "Simple made better." "Clothing that makes your life better." Earnest, not grandiose. |
-| Fabric / technology | Educational. Explains HEATTECH/AIRism/Ultra Light Down like a spec sheet a customer can trust. |
-| Empty / error states | Practical and blameless. "This item is sold out in your size." plus an alternative, never an apology theater. |
-| Legal / care | Formal, precise — care instructions and policy read like clear documentation. |
-
-**Forbidden phrases.** "Revolutionary", "must-have", "game-changer", aspirational lifestyle fantasy ("live your best life"), false scarcity ("only 2 left — hurry!"), exclamation-stacked hype. Uniqlo sells utility honestly; manufactured urgency contradicts the LifeWear thesis.
-
-## 11. Brand Narrative
-
-Uniqlo (ユニクロ) is the flagship brand of **Fast Retailing**, founded by **Tadashi Yanai (柳井正)**, who opened the first "Unique Clothing Warehouse" store in **Hiroshima in 1984** (the contracted name "Uni-Qlo" came from a registration typo that stuck). Yanai inherited his father's roadside men's tailoring business and reimagined it as something radical for Japanese retail: a self-service, warehouse-style store selling well-made basics at honest prices, free of the formality and markup of department-store fashion.
-
-The brand's modern identity dates to **2006**, when Yanai commissioned designer **Kashiwa Sato** to create the global visual system: the red square logo with its white katakana-inspired wordmark, deliberately evoking the Japanese flag (Hinomaru) to signal a Japanese brand thinking globally from the start. That same year Uniqlo opened its New York and London flagships, and the red-and-white system has been unchanged since.
-
-The organizing philosophy is **LifeWear** -- articulated by Yanai as "simple, high-quality, everyday clothing designed to improve everyone's life." LifeWear is explicitly **"Made for All"**: clothing engineered to transcend age, gender, ethnicity, and trend. Uniqlo's competitive position is the inverse of fast fashion -- not chasing micro-trends, but perfecting timeless basics through textile engineering (HEATTECH thermal base layers, AIRism breathable fabric, Ultra Light Down). The product is innovation disguised as plainness, and the design system performs the same trick: it looks like a plain catalog, but every grid measure, every rationed red mark, and every hard corner is deliberate.
-
-What Uniqlo refuses: the aspirational fantasy of luxury fashion, the disposable trend-churn of fast fashion, the visual chaos of overcrowded retail. What it embraces: Japanese retail clarity, honest pricing, function-first storytelling, and an order so consistent it reads as trust. The red square is a flag planted on that idea.
-
-## 12. Principles
-
-1. **Ration the red.** `#ed1d24` is the only saturated color in the system, so every appearance is a signal -- brand, CTA, price, error. Decorative red dilutes the signal and is forbidden. If red competes with red on a screen, one of them is wrong.
-2. **Product as hero, chrome as silence.** The garment gets the space and the light; navigation, filters, and labels recede to small black-on-white. The UI's job is to disappear so the product can be judged honestly.
-3. **Order is the aesthetic.** A strict, even, repeating grid is not boring -- it is the brand. Predictability communicates reliability and scale. Editorial asymmetry belongs to luxury fashion; Uniqlo is infrastructure.
-4. **Hard corners, always.** The red-square logo's geometry governs the whole system. Radius stays at 0-2px. Pills and soft cards contradict the brand's planted-flag rectangularity.
-5. **Price is headline-class.** A price set in 700-weight tabular numerals at subtitle size respects the customer's reason for being there. Demoting the price to fine print is a betrayal of an honest-value brand.
-6. **Flat over deep.** Depth comes from grid and whitespace, not elevation. Shadows appear only when something genuinely floats. A flat catalog says "no tricks" -- which is the product promise.
-7. **Bilingual by birth.** Japanese and Latin are co-equal, set with equal care. Localized markets inherit the same hierarchy; no script is a second-class fallback. The brand was global from its 2006 rebrand onward.
-8. **Honesty over urgency.** Sales are labeled plainly with real prices; there is no manufactured scarcity. The voice describes what clothing *does*, not the life it promises. LifeWear is a utility claim, and the UI keeps that promise.
-
-## 13. Personas
-
-*Personas below are fictional archetypes informed by publicly described Uniqlo customer segments (value-conscious everyday shoppers, function-first buyers, global basics-wardrobe builders), not individual people.*
-
-**Aiko Tanaka, 34, Tokyo.** Working mother, shops Uniqlo online during her commute. Buys HEATTECH for the whole family every autumn and AIRism in summer. Reads fabric descriptions carefully -- she trusts Uniqlo precisely because the site explains *why* a fabric is warm or breathable rather than just calling it "cozy." Expects the size chart to be accurate and the price to be exactly what the tag says. Annoyed by any retailer that buries the real price under fake "was/now" theater. Reads the site in Japanese; the Hiragino type and clean grid feel like home.
-
-**Marcus Hale, 41, Chicago.** Software manager who has standardized his wardrobe on Uniqlo basics -- the same Supima T-shirt and chino in multiple colors. Values the strict grid: he can scan a category page in seconds because every tile is identical in structure. Does not want to be sold a lifestyle; wants to find the gray crewneck, confirm it's in stock in M, and check out in under a minute. The flat, shadowless, no-nonsense UI is exactly why he shops here instead of trend-chasing competitors.
-
-**Priya Nair, 27, London.** Design-conscious shopper who appreciates Uniqlo as "Muji for clothes" -- minimal, honest, well-engineered. Follows the LifeWear collaborations (the brand's restraint makes the occasional designer collab feel meaningful). Notices and respects the typography and the rationed red. Would immediately distrust a redesign that added gradients, shadows, or a second accent color -- to her the flatness *is* the credibility.
-
-**Mr. Sato, 58, Osaka.** Long-time customer since the warehouse-store days. Buys reliable basics -- socks, undershirts, the same down vest -- and values that Uniqlo's pricing and product names are plain and consistent year to year. Uses the website occasionally but mostly to check store stock. The clear, large price and the "FIND IN STORE" button matter more to him than any campaign imagery.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (cart)** | White canvas, single near-black line at 16px: "Your cart is empty." One red primary CTA: "CONTINUE SHOPPING". No illustration, no upsell theater. |
-| **Empty (search no results)** | Gray (`#666666`) single line: "No items found." Suggested categories listed below as plain text links. Filter summary stays visible so the user can widen scope. |
-| **Empty (wishlist)** | Plain line "Your wishlist is empty." plus a link to "Browse new arrivals". Honest about the empty state. |
-| **Loading (grid first paint)** | Skeleton tiles at exact final dimensions, `#f5f5f5` base with 1.2s shimmer. Image blocks at 3:4, name/price as short bars. Prices never skeleton wider than a real price. |
-| **Loading (in-place refresh)** | Subtle red 2px progress bar at top of the listing; previous tiles stay visible. No blocking overlay. |
-| **Error (form validation)** | Field-level. `#ed1d24` border on the input, 12px `#ed1d24` helper text below stating exactly what is wrong ("Enter a valid postal code"). Never just "Invalid". |
-| **Error (out of stock)** | Size chip shows `#cccccc` text with a diagonal strike; PDP swaps "ADD TO CART" for a `#1a1a1a` "GET STOCK ALERT" or "FIND IN STORE" secondary button. |
-| **Error (page-level)** | White screen, single near-black line at 18px stating what failed, red retry button below. No illustration. |
-| **Success (added to cart)** | Brief `#1a1a1a` toast, white 14px text: "Added to cart." Mini-cart drawer slides in from right showing the item. No exclamation, no emoji. |
-| **Success (order placed)** | Dedicated confirmation screen: green (`#1a8917`) check, order number in tabular numerals, item summary, single "CONTINUE SHOPPING" button. |
-| **Skeleton** | `#f5f5f5` blocks at final dimensions, 1.2s neutral shimmer, hard corners matching the flat grid. |
-| **Disabled** | Button becomes `#eeeeee` bg with `#999999` text; geometry unchanged so re-enabling is stable. Inputs keep their `#cccccc` border. |
-| **Sale** | Original price `#999999` strikethrough, sale price `#ed1d24` 700 weight, "LIMITED OFFER" / "SALE" flag in red. Always shows the real numbers. |
-
-## 15. Motion & Easing
-
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection states, swatch picks, focus |
-| `motion-fast` | 150ms | Hover image swap, button hover, chip selection |
-| `motion-standard` | 250ms | Drawer slide, mini-cart, dropdown, mega-menu reveal |
-| `motion-slow` | 350ms | Modal/quick-view open, page-level transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Arriving — drawers, menus, modals |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals — closing drawers, toasts |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — accordions, tabs |
-
-**Explicitly restrained.** No spring, no bounce, no overshoot. Motion is functional and brief, matching the no-tricks product positioning. Nothing animates just to delight; transitions exist to clarify spatial relationships (where the cart drawer came from, what a filter did).
-
-**Signature motions.**
-
-1. **Product image swap.** On hover (desktop) or as a secondary thumbnail (mobile), the tile's primary photo cross-fades to an alternate garment view over `motion-fast`. The tile never lifts or casts a shadow -- the image *changes*, the geometry stays flat.
-2. **Mini-cart drawer.** "Add to cart" slides a drawer in from the right edge over `motion-standard / ease-enter`, with a synchronized `rgba(0,0,0,0.5)` scrim fade. Dismissal slides back over `motion-fast / ease-exit`.
-3. **Mega-menu reveal.** Hovering a top-nav category drops a full-width white panel over `motion-standard`. The panel appears flat against the page (1px `#e0e0e0` separator), not floating with heavy shadow.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Image swaps become instant cuts, drawers appear without sliding. The catalog stays fully functional; nothing is gated behind animation.
-
-<!--
-OmD v0.1 Sources — Uniqlo
-
-Token-level verification:
-- Uniqlo Red #ed1d24 (Pantone 485 C, RGB 237/29/36, CMYK 1/99/97/0) — brandpalettes.com/uniqlo-colors,
-  color-name.com/uniqlo-red.color, brandyhq.com/brand-guidelines/uniqlo. Palette unchanged since 2006.
-- Palette is intentionally minimal: "official colors of Uniqlo are Uniqlo red and white."
-- Web typeface TT Commons Pro confirmed via Fonts In Use (fontsinuse.com/uses/73945/uniqlo-website)
-  and TypeType (typetype.org/font-in-use/uniqlo). Japanese text in Hiragino Kaku Gothic.
-  Helvetica Neue / Arial retained only as historical/fallback stack.
-- Logo: red square + white katakana-inspired wordmark designed by Kashiwa Sato (2006),
-  evoking the Japanese flag (Hinomaru) — widely documented brand history.
-
-Brand narrative facts (widely documented):
-- Fast Retailing founder/CEO Tadashi Yanai; first "Unique Clothing Warehouse" store Hiroshima 1984.
-- LifeWear philosophy "simple, high-quality clothing designed to improve everyone's life";
-  "Made for All" positioning (uniqlo.com LifeWear content, Wallpaper*, Fast Retailing materials).
-- HEATTECH / AIRism / Ultra Light Down as signature textile-technology product lines.
-
-Hint correction: brief suggested #FF0000-ish red + Helvetica. Corrected to verified #ed1d24
-(Pantone 485 C) and TT Commons Pro / Hiragino Kaku Gothic. Brand-red and UI-red are the same value
-by design.
-
-Personas (§13) are fictional archetypes informed by publicly described Uniqlo customer segments,
-not real individuals.
-
-Interpretive claims (e.g., "ration the red", "hard corners inherited from the red-square logo",
-"flat catalog says no tricks") are editorial readings connecting Uniqlo's stated LifeWear philosophy
-to its visual system, not directly sourced Uniqlo statements.
--->
+- **Contrast, `button-primary`.** Text `#ffffff` on `#ed1d24` measures 4.37:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-disabled`.** Text `#999999` on `#eeeeee` measures 2.46:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `sale-flag`.** Text `#ffffff` on `#ed1d24` measures 4.37:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

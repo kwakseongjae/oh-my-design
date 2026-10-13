@@ -1,66 +1,137 @@
 ---
-id: revolut
 name: Revolut
-country: UK
-category: fintech
-homepage: "https://www.revolut.com"
-primary_color: "#0075eb"
-logo:
-  type: simpleicons
-  slug: revolut
-verified: "2026-05-15"
-omd: "0.1"
-tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    dark: "#191c1f"
-    white: "#ffffff"
-    light-surface: "#f4f4f4"
-    black: "#000000"
-    blue: "#494fdf"
-    action-blue: "#4f55f1"
-    blue-text: "#376cd5"
-    danger: "#e23b4a"
-    deep-pink: "#e61e49"
-    warning: "#ec7e00"
-    yellow: "#b09000"
-    teal: "#00a87e"
-    light-green: "#428619"
-    green-text: "#006400"
-    light-blue: "#007bc2"
-    brown: "#936d62"
-    red-text: "#8b0000"
-    mid-slate: "#505a63"
-    cool-gray: "#8d969e"
-    gray-tone: "#c9c9cd"
-  typography:
-    family: { sans: "Inter", mono: "Inter" }
-    display-mega: { size: 136, weight: 500, lineHeight: 1.00, tracking: -2.72, use: "Stadium-scale hero (Aeonik Pro)" }
-    display-hero: { size: 80, weight: 500, lineHeight: 1.00, tracking: -0.8, use: "Primary hero (Aeonik Pro)" }
-    section:      { size: 48, weight: 500, lineHeight: 1.21, tracking: -0.48, use: "Feature sections (Aeonik Pro)" }
-    card-title:   { size: 32, weight: 500, lineHeight: 1.19, tracking: -0.32, use: "Card headings (Aeonik Pro)" }
-    nav:          { size: 20, weight: 500, lineHeight: 1.40, use: "Navigation, buttons (Aeonik Pro)" }
-    body-lg:      { size: 18, weight: 400, lineHeight: 1.56, tracking: -0.09, use: "Introductions (Inter)" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, tracking: 0.24, use: "Standard reading (Inter)" }
-    body-semibold: { size: 16, weight: 600, lineHeight: 1.50, tracking: 0.16, use: "Emphasized body (Inter)" }
-  spacing: { xs: 4, sm: 8, md: 14, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
-  rounded: { sm: 12, md: 20, lg: 20, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#191c1f", fg: "#ffffff", radius: 9999, padding: "14px 32px", use: "Primary dark pill, hover opacity 0.85" }
-    button-secondary: { type: button, bg: "#f4f4f4", fg: "#000000", radius: 9999, padding: "14px 34px", use: "Secondary light pill" }
-    button-outlined: { type: button, bg: "transparent", fg: "#191c1f", radius: 9999, padding: "14px 32px", use: "Outlined pill, 2px solid #191c1f border" }
-    button-ghost: { type: button, bg: "rgba(244,244,244,0.1)", fg: "#f4f4f4", radius: 9999, padding: "14px 32px", use: "Ghost on dark, 2px solid #f4f4f4 border" }
-    card: { type: card, radius: 20, use: "Feature card, flat, no shadow, dark/light alternation" }
-    nav-top: { type: tab, fg: "#191c1f", font: "20/500", use: "Clean header, pill CTAs right-aligned" }
-  components_harvested: true
+colors:
+  dark: '#191c1f'
+  white: '#ffffff'
+  light-surface: '#f4f4f4'
+  black: '#000000'
+  blue: '#494fdf'
+  action-blue: '#4f55f1'
+  blue-text: '#376cd5'
+  danger: '#e23b4a'
+  deep-pink: '#e61e49'
+  warning: '#ec7e00'
+  yellow: '#b09000'
+  teal: '#00a87e'
+  light-green: '#428619'
+  green-text: '#006400'
+  light-blue: '#007bc2'
+  brown: '#936d62'
+  red-text: '#8b0000'
+  mid-slate: '#505a63'
+  cool-gray: '#8d969e'
+  gray-tone: '#c9c9cd'
+typography:
+  display-mega:
+    fontSize: 136px
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: '-2.72px'
+    use: Stadium-scale hero (Aeonik Pro)
+  display-hero:
+    fontSize: 80px
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: '-0.8px'
+    use: Primary hero (Aeonik Pro)
+  section:
+    fontSize: 48px
+    fontWeight: 500
+    lineHeight: 1.21
+    letterSpacing: '-0.48px'
+    use: Feature sections (Aeonik Pro)
+  card-title:
+    fontSize: 32px
+    fontWeight: 500
+    lineHeight: 1.19
+    letterSpacing: '-0.32px'
+    use: Card headings (Aeonik Pro)
+  nav:
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 1.4
+    use: Navigation, buttons (Aeonik Pro)
+  body-lg:
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.56
+    letterSpacing: '-0.09px'
+    use: Introductions (Inter)
+  body:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0.24px
+    use: Standard reading (Inter)
+  body-semibold:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: 0.16px
+    use: Emphasized body (Inter)
+rounded:
+  sm: 12px
+  md: 20px
+  lg: 20px
+  full: 9999px
+spacing:
+  xs: 4
+  sm: 8
+  md: 14
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 48
+  section: 80
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#191c1f'
+    textColor: '#ffffff'
+    rounded: 9999px
+    padding: 14px 32px
+    use: Primary dark pill, hover opacity 0.85
+  button-secondary:
+    type: button
+    backgroundColor: '#f4f4f4'
+    textColor: '#000000'
+    rounded: 9999px
+    padding: 14px 34px
+    use: Secondary light pill
+  button-outlined:
+    type: button
+    backgroundColor: transparent
+    textColor: '#191c1f'
+    rounded: 9999px
+    padding: 14px 32px
+    use: 'Outlined pill, 2px solid #191c1f border'
+  button-ghost:
+    type: button
+    backgroundColor: rgba(244,244,244,0.1)
+    textColor: '#f4f4f4'
+    rounded: 9999px
+    padding: 14px 32px
+    use: 'Ghost on dark, 2px solid #f4f4f4 border'
+  card:
+    type: card
+    rounded: 20px
+    use: Feature card, flat, no shadow, dark/light alternation
+  nav-top:
+    type: tab
+    textColor: '#191c1f'
+    typography: 20/500
+    use: Clean header, pill CTAs right-aligned
+fonts:
+  roles:
+    sans: Inter
+    mono: Inter
 ---
 
 # Design System Inspiration of Revolut
 
-## 1. Visual Theme & Atmosphere
+## Overview
+
+### Visual Theme & Atmosphere
 
 Revolut's website is fintech confidence distilled into pixels — a design system that communicates "your money is in capable hands" through massive typography, generous whitespace, and a disciplined neutral palette. The visual language is built on Aeonik Pro, a geometric grotesque that creates billboard-scale headlines at 136px with weight 500 and aggressive negative tracking (-2.72px). This isn't subtle branding; it's fintech at stadium scale.
 
@@ -77,14 +148,36 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 - Zero shadows detected — depth through color contrast only
 - Tight display line-heights (1.00) with relaxed body (1.50–1.56)
 
-## Primary tasks
+### Primary tasks
 
 - Hold and spend several currencies while travelling every month
 - Invoice clients from a business account that earns in two currencies
 - Buy stocks or crypto in the same app that holds the money
 - Top up by bank transfer after a payment fails for lack of funds
 
-## 2. Color Palette & Roles
+### Brand Narrative
+
+**Revolut Ltd was incorporated December 2013** by **Nikolay "Nik" Storonsky (CEO)** with **Vlad Yatsenko (CTO)** joining shortly after; the consumer product **launched 2015** at **Level39 fintech accelerator, Canary Wharf, London** ([Revolut — Wikipedia](https://en.wikipedia.org/wiki/Revolut), [Nik Storonsky — Wikipedia](https://en.wikipedia.org/wiki/Nik_Storonsky)). Storonsky was **the company's first investor (£300,000 of his own savings)**. **Yatsenko**: graduated with honors, worked at **Comarch (Krakow programmer)** → **UBS (London senior software developer 2010)** → brief stints at **Deutsche Bank + Credit Suisse** through 2014. Storonsky and Yatsenko are **both immigrants** ([The Vertical — immigrant founders Revolut](https://thevertical.la/development/who-are-the-immigrant-founders-behind-revolut-the-45-billion-neobank-eyeing-u-s-expansion/)). Originally a multi-currency travel card → expanded to full neobank with stocks, crypto, lending, insurance. **Valuation timeline**: $45B secondary share sale 2024 → **$75B November 2025** ([City AM — Revolut $75B](https://www.cityam.com/revolut-inside-nik-storonskys-75bn-fintech-empire-still-hunting-for-its-crown/)). **IPO timeline**: per Bloomberg April 20 2026 interview, Storonsky stated **~2 years from IPO with U.S. listing preferred**. The brand voice — bold, multi-segment, flat-design — tracks the product's evolution from single-card to financial super-app.
+
+### Principles
+
+1. **Multi-segment first-class.** Personal / Business / Kids & Teens. *UI implication:* segment nav at top level.
+2. **Pill chrome 16px+.** *UI implication:* primary actions and nav use 16px pill.
+3. **Zero shadows.** *UI implication:* depth via background contrast, never shadow.
+4. **Near-black `#0e1318` + white marketing.** *UI implication:* marketing chrome stays achromatic.
+5. **Semantic colors only in product.** *UI implication:* charts + status use semantic; marketing stays neutral.
+
+### Personas
+
+*Personas are fictional archetypes informed by Revolut user segments (multi-currency travelers, freelancers, EU SMB, Gen Z), not individual people.*
+
+**Catherine Liu, 32, London.** UK-based consultant traveling EU monthly. Multi-currency wallet + travel insurance.
+
+**Marcus Müller, 38, Berlin.** Freelancer with EUR/USD income streams. Revolut Business for invoicing.
+
+**Sofia Park, 18, Seoul.** Teens account holder traveling for university applications.
+
+## Colors
 
 ### Primary
 - **Revolut Dark** (`#191c1f`): Primary dark surface, button background, near-black text
@@ -113,7 +206,7 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 - **Cool Gray** (`#8d969e`): Muted text, tertiary
 - **Gray Tone** (`#c9c9cd`): `--rui-color-grey-tone-20`, borders/dividers
 
-## 3. Typography Rules
+## Typography
 
 ### Font Families
 - **Display**: `Aeonik Pro` — geometric grotesque, no detected fallbacks
@@ -141,7 +234,62 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 - **Billboard tracking**: -2.72px at 136px is extremely compressed — text designed to be read at a glance, like airport signage.
 - **Positive tracking on body**: Inter uses +0.16px to +0.24px, creating airy, well-spaced reading text that contrasts with the compressed headings.
 
-## 4. Component Stylings
+## Layout
+
+### Spacing System
+- Base unit: 8px
+- Scale: 4px, 6px, 8px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 80px, 88px, 120px
+- Large section spacing: 80px–120px
+
+### Border Radius Scale
+- Standard (12px): Navigation, small buttons
+- Card (20px): Feature cards
+- Pill (9999px): All buttons
+
+### Responsive Behavior
+
+#### Breakpoints
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile Small | <400px | Compact, single column |
+| Mobile | 400–720px | Standard mobile |
+| Tablet | 720–1024px | 2-column layouts |
+| Desktop | 1024–1280px | Standard desktop |
+| Large | 1280–1920px | Full layout |
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (Level 0) | No shadow | Everything — Revolut uses zero shadows |
+| Focus | `0 0 0 0.125rem` ring | Accessibility focus |
+
+**Shadow Philosophy**: Revolut uses ZERO shadows. Depth comes entirely from the dark/light section contrast and the generous whitespace between elements.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.none`: `none`
+
+## Motion & Easing
+
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
+Standard cubic-bezier; no bounce — fintech register. `prefers-reduced-motion: reduce` disables price pulse.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 51 — Apple-tier)
+**Tier 1 sources:** https://revolut.com/en-US home + /en-US/business (live DOM via playwright — **all-pill 9999px** chrome with canvas-aware Charcoal/Light pair: **Charcoal `#191c1f`** Primary (consumer light canvas) + **Light Surface `#f4f4f4`** Inverse (Business dark canvas + feature cards) + Translucent `rgba(244,244,244,0.10)` on-dark hover, all 9999px / 42px / 10×24 / 16px·**500**).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/valuation/IPO):** Wikipedia (Revolut + Nik Storonsky), Huxley (Yatsenko Ukrainian billionaire bio), The Vertical (immigrant founders narrative), City AM ($75B Nov 2025), MoneyWeek, Bloomberg Billionaires, FinTech Magazine.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Charcoal `#191c1f` Primary + Light Surface `#f4f4f4` Inverse + canvas-aware pair + translucent variant missed by prior pass (which captured 38px segment-nav only — canonical is 42px Primary).
+
+## Components
 
 ### Buttons
 
@@ -184,28 +332,23 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 - Clean header, hamburger toggle at 12px radius
 - Pill CTAs right-aligned
 
-## 5. Layout Principles
+### States
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 6px, 8px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 80px, 88px, 120px
-- Large section spacing: 80px–120px
+| State | Treatment |
+|---|---|
+| **Empty (no transactions)** | "Top up to start" CTA |
+| **Empty (no investments)** | "Browse stocks/crypto" link |
+| **Loading (price feed)** | Last cached + stale indicator |
+| **Loading (KYC)** | Persistent badge with progress |
+| **Error (KYC)** | Specific reason + remediation |
+| **Error (payment)** | Receipt-style failure + retry |
+| **Success (transaction)** | Receipt with full details + emoji-free confirmation |
+| **Success (deposit)** | Confirmation + when funds available |
+| **Skeleton (account list)** | Pill placeholders |
+| **Disabled (no funds)** | Top up inline link |
+| **Loading (long action)** | Multi-step progress |
 
-### Border Radius Scale
-- Standard (12px): Navigation, small buttons
-- Card (20px): Feature cards
-- Pill (9999px): All buttons
-
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Everything — Revolut uses zero shadows |
-| Focus | `0 0 0 0.125rem` ring | Accessibility focus |
-
-**Shadow Philosophy**: Revolut uses ZERO shadows. Depth comes entirely from the dark/light section contrast and the generous whitespace between elements.
-
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
 - Use Aeonik Pro weight 500 for all display headings
@@ -220,18 +363,24 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 - Don't use small buttons — the generous padding is intentional
 - Don't apply semantic colors to marketing surfaces — they're for the product
 
-## 8. Responsive Behavior
+## Voice & Tone
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <400px | Compact, single column |
-| Mobile | 400–720px | Standard mobile |
-| Tablet | 720–1024px | 2-column layouts |
-| Desktop | 1024–1280px | Standard desktop |
-| Large | 1280–1920px | Full layout |
+Revolut's voice is **fintech-bold and segment-aware.** "Banking & Beyond" — confident, multi-segment positioning (Personal / Business / Kids & Teens). Pill chrome (9999px) signals "modern fintech" while flat-no-shadow design signals "no-nonsense banking."
 
-## 9. Agent Prompt Guide
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try Revolut", "Sign up" |
+| Marketing | Segment-targeted. Personal vs Business vs Teens copy distinct |
+| Onboarding | KYC-aware. Plain-language compliance |
+| Error | Specific. "Insufficient funds. Top up via bank transfer." |
+
+**Voice samples**
+- Tagline: *"Banking & Beyond"* <!-- verified: revolut.com homepage 2026-05 -->
+- Segment nav: *"Personal / Business / Kids & Teens"* <!-- verified: revolut.com homepage -->
+
+**Forbidden phrases.** "Revolutionary fintech". Aggressive crypto-bro framing.
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Dark: Revolut Dark (`#191c1f`)
@@ -251,74 +400,9 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 3. Zero shadows — flat is the Revolut identity
 4. Near-black + white for marketing, semantic colors for product
 
-## 10. Voice & Tone
+## Governance
 
-Revolut's voice is **fintech-bold and segment-aware.** "Banking & Beyond" — confident, multi-segment positioning (Personal / Business / Kids & Teens). Pill chrome (9999px) signals "modern fintech" while flat-no-shadow design signals "no-nonsense banking."
+### Known Gaps
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Get started", "Try Revolut", "Sign up" |
-| Marketing | Segment-targeted. Personal vs Business vs Teens copy distinct |
-| Onboarding | KYC-aware. Plain-language compliance |
-| Error | Specific. "Insufficient funds. Top up via bank transfer." |
-
-**Voice samples**
-- Tagline: *"Banking & Beyond"* <!-- verified: revolut.com homepage 2026-05 -->
-- Segment nav: *"Personal / Business / Kids & Teens"* <!-- verified: revolut.com homepage -->
-
-**Forbidden phrases.** "Revolutionary fintech". Aggressive crypto-bro framing.
-
-## 11. Brand Narrative
-
-**Revolut Ltd was incorporated December 2013** by **Nikolay "Nik" Storonsky (CEO)** with **Vlad Yatsenko (CTO)** joining shortly after; the consumer product **launched 2015** at **Level39 fintech accelerator, Canary Wharf, London** ([Revolut — Wikipedia](https://en.wikipedia.org/wiki/Revolut), [Nik Storonsky — Wikipedia](https://en.wikipedia.org/wiki/Nik_Storonsky)). Storonsky was **the company's first investor (£300,000 of his own savings)**. **Yatsenko**: graduated with honors, worked at **Comarch (Krakow programmer)** → **UBS (London senior software developer 2010)** → brief stints at **Deutsche Bank + Credit Suisse** through 2014. Storonsky and Yatsenko are **both immigrants** ([The Vertical — immigrant founders Revolut](https://thevertical.la/development/who-are-the-immigrant-founders-behind-revolut-the-45-billion-neobank-eyeing-u-s-expansion/)). Originally a multi-currency travel card → expanded to full neobank with stocks, crypto, lending, insurance. **Valuation timeline**: $45B secondary share sale 2024 → **$75B November 2025** ([City AM — Revolut $75B](https://www.cityam.com/revolut-inside-nik-storonskys-75bn-fintech-empire-still-hunting-for-its-crown/)). **IPO timeline**: per Bloomberg April 20 2026 interview, Storonsky stated **~2 years from IPO with U.S. listing preferred**. The brand voice — bold, multi-segment, flat-design — tracks the product's evolution from single-card to financial super-app.
-
-## 12. Principles
-
-1. **Multi-segment first-class.** Personal / Business / Kids & Teens. *UI implication:* segment nav at top level.
-2. **Pill chrome 16px+.** *UI implication:* primary actions and nav use 16px pill.
-3. **Zero shadows.** *UI implication:* depth via background contrast, never shadow.
-4. **Near-black `#0e1318` + white marketing.** *UI implication:* marketing chrome stays achromatic.
-5. **Semantic colors only in product.** *UI implication:* charts + status use semantic; marketing stays neutral.
-
-## 13. Personas
-
-*Personas are fictional archetypes informed by Revolut user segments (multi-currency travelers, freelancers, EU SMB, Gen Z), not individual people.*
-
-**Catherine Liu, 32, London.** UK-based consultant traveling EU monthly. Multi-currency wallet + travel insurance.
-
-**Marcus Müller, 38, Berlin.** Freelancer with EUR/USD income streams. Revolut Business for invoicing.
-
-**Sofia Park, 18, Seoul.** Teens account holder traveling for university applications.
-
-## 14. States
-
-| State | Treatment |
-|---|---|
-| **Empty (no transactions)** | "Top up to start" CTA |
-| **Empty (no investments)** | "Browse stocks/crypto" link |
-| **Loading (price feed)** | Last cached + stale indicator |
-| **Loading (KYC)** | Persistent badge with progress |
-| **Error (KYC)** | Specific reason + remediation |
-| **Error (payment)** | Receipt-style failure + retry |
-| **Success (transaction)** | Receipt with full details + emoji-free confirmation |
-| **Success (deposit)** | Confirmation + when funds available |
-| **Skeleton (account list)** | Pill placeholders |
-| **Disabled (no funds)** | Top up inline link |
-| **Loading (long action)** | Multi-step progress |
-
-## 15. Motion & Easing
-
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-Standard cubic-bezier; no bounce — fintech register. `prefers-reduced-motion: reduce` disables price pulse.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 51 — Apple-tier)
-**Tier 1 sources:** https://revolut.com/en-US home + /en-US/business (live DOM via playwright — **all-pill 9999px** chrome with canvas-aware Charcoal/Light pair: **Charcoal `#191c1f`** Primary (consumer light canvas) + **Light Surface `#f4f4f4`** Inverse (Business dark canvas + feature cards) + Translucent `rgba(244,244,244,0.10)` on-dark hover, all 9999px / 42px / 10×24 / 16px·**500**).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/valuation/IPO):** Wikipedia (Revolut + Nik Storonsky), Huxley (Yatsenko Ukrainian billionaire bio), The Vertical (immigrant founders narrative), City AM ($75B Nov 2025), MoneyWeek, Bloomberg Billionaires, FinTech Magazine.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Charcoal `#191c1f` Primary + Light Surface `#f4f4f4` Inverse + canvas-aware pair + translucent variant missed by prior pass (which captured 38px segment-nav only — canonical is 42px Primary).
+- **Contrast, `button-outlined`.** Text `#191c1f` on `#00000000` measures 1.23:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-ghost`.** Text `#f4f4f4` on `#f4f4f41a` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
