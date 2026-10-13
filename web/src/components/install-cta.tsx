@@ -87,9 +87,9 @@ export function InstallCta({
       <Terminal className="h-3.5 w-3.5 shrink-0" />
       <span className="truncate">{INSTALL_CMD}</span>
       {copyState?.kind === "install" && copyState.status === "copied" ? (
-        <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
+        <Check className="h-3.5 w-3.5 shrink-0" />
       ) : copyState?.kind === "install" && copyState.status === "failed" ? (
-        <AlertCircle className="h-3.5 w-3.5 shrink-0 text-red-400" />
+        <AlertCircle className="h-3.5 w-3.5 shrink-0" />
       ) : (
         <Copy className="h-3.5 w-3.5 shrink-0 opacity-60" />
       )}
@@ -108,9 +108,9 @@ export function InstallCta({
       <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" />
       <span className="truncate">&ldquo;{promptText}&rdquo;</span>
       {copyState?.kind === "prompt" && copyState.status === "copied" ? (
-        <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
+        <Check className="h-3.5 w-3.5 shrink-0 text-[color:var(--sq-ok)]" />
       ) : copyState?.kind === "prompt" && copyState.status === "failed" ? (
-        <AlertCircle className="h-3.5 w-3.5 shrink-0 text-red-400" />
+        <AlertCircle className="h-3.5 w-3.5 shrink-0 text-[color:var(--sq-err)]" />
       ) : (
         <Copy className="h-3.5 w-3.5 shrink-0 opacity-60" />
       )}

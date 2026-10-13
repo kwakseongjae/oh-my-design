@@ -7,13 +7,14 @@
 import type { FontInfo, FontLicense } from "@/lib/font-registry";
 import { resolveRuntimeFont } from "@/lib/fonts/runtime-family";
 
-const LICENSE_STYLES: Record<FontLicense, { bg: string; color: string; label: string }> = {
-  OFL:                  { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · OFL" },
-  "Apache 2.0":         { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · Apache 2.0" },
-  Proprietary:          { bg: "rgba(245, 158, 11, 0.12)", color: "#b45309", label: "Commercial" },
-  "Brand-proprietary":  { bg: "rgba(239, 68, 68, 0.12)",  color: "#b91c1c", label: "Brand-only" },
-  System:               { bg: "rgba(107, 114, 128, 0.12)", color: "#4b5563", label: "System" },
-  Mixed:                { bg: "rgba(99, 102, 241, 0.12)", color: "#4338ca", label: "Mixed" },
+/** Concept A chips (styles/brand-a.css `.sq-chip-*`): status colour as text + outline, light and dark from --sq-* tokens. */
+const LICENSE_STYLES: Record<FontLicense, { chip: string; label: string }> = {
+  OFL:                  { chip: "sq-chip-ok", label: "Open · OFL" },
+  "Apache 2.0":         { chip: "sq-chip-ok", label: "Open · Apache 2.0" },
+  Proprietary:          { chip: "sq-chip-warn", label: "Commercial" },
+  "Brand-proprietary":  { chip: "sq-chip-err", label: "Brand-only" },
+  System:               { chip: "sq-chip-muted", label: "System" },
+  Mixed:                { chip: "sq-chip-mixed", label: "Mixed" },
 };
 
 const ROLE_LABELS: Record<string, string> = {
@@ -92,17 +93,14 @@ export function FontCard({
           {font.name}
         </div>
         <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-          <span
-            className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium"
-            style={{ background: license.bg, color: license.color }}
-          >
+          <span className={`sq-chip ${license.chip}`}>
             {license.label}
           </span>
           {!font.installable && font.license === "System" && (
             <span className="text-[10px] text-muted-foreground">no install needed</span>
           )}
         </div>
-        <div className={`mt-2 text-[10px] leading-snug ${runtimeUnavailable ? "text-amber-700 dark:text-amber-400" : "text-muted-foreground"}`}>
+        <div className={`mt-2 text-[10px] leading-snug ${runtimeUnavailable ? "text-[color:var(--sq-warn)]" : "text-muted-foreground"}`}>
           {runtimeLabel}
         </div>
       </div>
