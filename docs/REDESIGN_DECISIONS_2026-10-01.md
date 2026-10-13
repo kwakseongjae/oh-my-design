@@ -46,3 +46,13 @@ AGENTS.md "Product surface ownership"는 구현 시 퍼널 Home → `/design-sys
 | F3 | 검사 기준(Claude 판단): **`@google/design.md lint` 오류 0개가 게이트**. 경고는 파일별 사이드카에 기록하고 게이트하지 않음. 실측 브랜드 값의 대비 경고(예: toss 3.71:1)는 숨기지 않고 "Known Gaps" H3에 사실로 기록 |
 | F4 | **새 형식 전환 진행** — legacy 518 → 새 형식 직행(Core v2 경유 안 함). 품질 등급 299/109/113·evidence-integrity 모션 수 불변, 레지스트리 출력은 형식 차이만(값 변화 없음) 비교기로 검증. 출시 GO는 별도 |
 | F5 | CJK 조판(Claude 추천, 오너 "추천으로"): **구조화 + 산문 병행** — frontmatter 네임스페이스 키 `typesetting:`(문자 체계별 word-break/line-break/폰트 스택/구두점 처리; Google lint는 오타형이 아닌 커스텀 키에 침묵) + "CJK Typesetting" 산문 섹션 |
+
+## 2026-10-13 밤 오너 결정
+
+| # | 결정 |
+|---|---|
+| G1 | 리브랜딩(A 네모): 합격점 — **구현 진행하되 오너 최종 검수 전까지 main 반영 금지** (브랜치·프리뷰만) |
+| G2 | 새 형식 v3 스펙 **승인**. 토스 샘플은 Claude가 자체 검증 — 토스 디자인 시스템(https://developers-apps-in-toss.toss.im/design/components) 기준으로 맞춰도 됨 |
+| G3 | AGENTS.md 폰트 규칙 개정("이름표 없는 대체 금지") **승인** |
+| G4 | builder 제거(`feat/ia-item-page`) main 반영 **승인** |
+| G5 | 먹 번짐 셰이더 스킬 출시(main + npm 패치) **승인** |
