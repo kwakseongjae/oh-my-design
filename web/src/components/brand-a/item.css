@@ -75,6 +75,8 @@
 .sq-item-md{min-width:0}
 .sq-md-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;max-width:72ch;margin-bottom:24px}
 .sq-md-w{font-size:15px}
+/* Korean page: one line saying the body is the canonical English file. */
+.sq-md-note{max-width:72ch;margin:-12px 0 24px;font-size:15px;line-height:1.6;color:var(--sq-ink-2)}
 .sq-item-pv{min-width:0}
 .sq-item-pv-in{position:sticky;top:calc(var(--sq-header-h) + 16px);max-height:calc(100vh - var(--sq-header-h) - 16px);overflow:auto}
 /* wide: one reading column, preview below it */
@@ -153,3 +155,8 @@
 /* narrow phones: the preview header name (text-5xl) must not push the page sideways (kakaobank @320) */
 @media (max-width:420px){.sq-item-pv-in .text-5xl{font-size:clamp(28px,9vw,48px);overflow-wrap:anywhere;min-width:0}}
 @media (max-width:359px){.sq-item-pv-in .grid{grid-template-columns:minmax(0,1fr)}.sq-item-pv-in .grid>*{min-width:0}}
+/* Korean item page (/ko/design-systems/<id>): Hangul headings need more leading than
+   the Latin 1.04 / 1.25 when they wrap (hangul HG-5). Same sizes as the English page. */
+:lang(ko) .sq-ih h1{line-height:1.3;letter-spacing:-0.02em;font-size:clamp(36px,4.6vw,66px)}
+@media (max-width:360px){:lang(ko) .sq-ih h1{font-size:32px}}
+:lang(ko) :is(.sq-use,.sq-evi,.sq-md-head,.sq-rel) h2{line-height:1.32}

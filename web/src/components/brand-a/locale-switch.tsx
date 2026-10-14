@@ -45,7 +45,7 @@ export interface LocaleSwitchText {
   langNames: Record<SiteLocale, string>;
 }
 
-export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale | null; t: LocaleSwitchText; origin?: string }) {
+export function LocaleSwitch({ current, t, origin = "", hrefs }: { current: SiteLocale | null; t: LocaleSwitchText; origin?: string; /** Per-locale targets for a page with translated twins (the item page); landings otherwise. */ hrefs?: Partial<Record<SiteLocale, string>> }) {
   const dlg = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const list = useRef<HTMLUListElement>(null);
@@ -150,7 +150,7 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
               return (
                 <li key={l}>
                   <a
-                    href={`${origin}${m.path}`}
+                    href={`${origin}${hrefs?.[l] ?? m.path}`}
                     hrefLang={m.hreflang}
                     aria-current={on ? "page" : undefined}
                     onClick={(e) => {

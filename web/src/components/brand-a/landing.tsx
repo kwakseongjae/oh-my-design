@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getLandingData } from "@/lib/landing-a/data.server";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
 import { LOCALE_SWITCH_KEY, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { fmt, getCopy } from "./copy";
 import { CliPanel } from "./cli-panel";
 import { GenUI } from "./gen-ui";
@@ -54,9 +55,10 @@ export function LandingA({ locale }: { locale: SiteLocale }) {
               <p className="sq-lede">{rich(f(c.hero.lede))}</p>
               <SearchBox
                 labels={{ label: c.hero.searchLabel, ph: c.hero.searchPh, empty: c.hero.searchEmpty, hint: c.hero.searchHint, status: c.status }}
+                locale={locale}
               />
               <div className="sq-hero-acts">
-                <Link className="sq-cta" href="/design-systems" prefetch={false}>{c.hero.browse}</Link>
+                <Link className="sq-cta" href={catalogPathFor(locale)} prefetch={false}>{c.hero.browse}</Link>
                 <a className="sq-cta-q" href="#reference">{c.hero.how}</a>
               </div>
             </div>

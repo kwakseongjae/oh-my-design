@@ -13,7 +13,12 @@ export const metadata: Metadata = {
   title: TITLE,
   description:
     `Browse all ${REFERENCE_COUNT} quality-graded company DESIGN.md references. Evidence status, source links, and exports for AI coding agents.`,
-  alternates: { canonical: "/design-systems" },
+  // The Korean archive (/ko/design-systems) is this page's twin. Item and
+  // evolution pages set their own alternates, so this applies to the index only.
+  alternates: {
+    canonical: "/design-systems",
+    languages: { en: "/design-systems", ko: "/ko/design-systems", "x-default": "/design-systems" },
+  },
   openGraph: {
     title: TITLE,
     description:

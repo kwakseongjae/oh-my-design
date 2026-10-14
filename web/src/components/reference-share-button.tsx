@@ -4,6 +4,9 @@ import { useState } from "react";
 import { Check, Share2 } from "lucide-react";
 import { referenceSharePath } from "@/lib/references/editorial";
 import { trackReferenceShare } from "@/lib/design-systems/analytics";
+import { ITEM_EN, type ShareLabels } from "@/components/brand-a/copy/item";
+
+const EN_LABELS: ShareLabels = ITEM_EN.shareLabels;
 
 async function writeClipboardWithFallback(text: string): Promise<boolean> {
   if (navigator.clipboard?.writeText) {
@@ -30,13 +33,19 @@ export function ReferenceShareButton({
   reference,
   location,
   compact = false,
+  labels = EN_LABELS,
+  path: pathOverride,
 }: {
   reference: string;
   location: "ref_detail" | "evolution";
   compact?: boolean;
+  /** Button text in the page's language; English by default. */
+  labels?: ShareLabels;
+  /** Path to copy instead of the default English share path (the Korean page shares itself). */
+  path?: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const path = referenceSharePath(reference);
+  const path = pathOverride ?? referenceSharePath(reference);
   const artifact = path.endsWith("/evolution") ? "evolution" : "detail";
 
   async function copyShareLink() {
@@ -52,13 +61,13 @@ export function ReferenceShareButton({
     <button
       type="button"
       onClick={copyShareLink}
-      aria-label={copied ? "Share link copied" : "Copy share link"}
+      aria-label={copied ? labels.ariaCopied : labels.aria}
       className={`inline-flex items-center justify-center gap-1.5 rounded-lg border border-border/60 bg-card/50 font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 ${
         compact ? "h-8 px-2.5 text-xs" : "px-3 py-2 text-xs"
       }`}
     >
       {copied ? <Check className="h-3.5 w-3.5 text-primary" /> : <Share2 className="h-3.5 w-3.5" />}
-      <span className={compact ? "hidden sm:inline" : ""}>{copied ? "Copied" : "Share"}</span>
+      <span className={compact ? "hidden sm:inline" : ""}>{copied ? labels.copied : labels.share}</span>
     </button>
   );
 }

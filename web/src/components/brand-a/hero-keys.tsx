@@ -4,6 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import type { LogoCap } from "@/lib/landing-a/types";
 import { LOCALE_SWITCH_KEY, type SiteLocale } from "@/lib/i18n/site-locales";
 import heroCaps from "@/data/hero-caps.json";
+import { detailHrefFor } from "@/lib/i18n/ko-detail";
+
+/* Every hero cap is a verified reference (data.server.ts getHeroCaps), and every
+   verified reference has a Korean page, so /ko caps open /ko/design-systems/<id>. */
+const capHref = (locale: SiteLocale, id: string) => detailHrefFor(locale, id, true);
 
 /* Arrival from the language picker (locale-switch.tsx SWITCH_KEY): the locale we came
    from, read once and cleared. Stale (> 60 s) or mismatched notes are ignored. */
@@ -236,7 +241,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
             reduce: () => reduce.matches,
             onHover: (d: { id: string } | null) => showName(d ? d.id : null),
             onOpen: (d: { id: string }) => {
-              window.location.href = `/design-systems/${encodeURIComponent(d.id)}`;
+              window.location.href = capHref(locale, d.id);
             },
           }) as K3;
           state.current = "ready";
@@ -294,7 +299,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
         {shown.map((c) => (
           <li key={c.id}>
             <a
-              href={`/design-systems/${encodeURIComponent(c.id)}`}
+              href={capHref(locale, c.id)}
               lang={c.nLang}
               onFocus={() => {
                 if (k3.current) {

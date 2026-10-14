@@ -6,12 +6,20 @@ import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 import { getAllPosts } from "@/lib/blog/posts";
 import { BLOG_ON_SUBDOMAIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
 import { LANDING_LANGUAGE_ALTERNATES, SITE_LOCALES, SITE_LOCALE_META } from "@/lib/i18n/site-locales";
+import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
+import { KO_CATALOG_PATH, koDetailPath } from "@/lib/i18n/ko-detail";
 
 const siteUrl = "https://oh-my-design.kr";
 
 const LANDING_ALTERNATES_ABS: Record<string, string> = Object.fromEntries(
   Object.entries(LANDING_LANGUAGE_ALTERNATES).map(([lang, path]) => [lang, path === "/" ? siteUrl : `${siteUrl}${path}`]),
 );
+
+const ARCHIVE_ALTERNATES: Record<string, string> = {
+  en: `${siteUrl}/design-systems`,
+  ko: `${siteUrl}${KO_CATALOG_PATH}`,
+  "x-default": `${siteUrl}/design-systems`,
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -31,6 +39,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
+      alternates: { languages: ARCHIVE_ALTERNATES },
+    },
+    {
+      url: `${siteUrl}${KO_CATALOG_PATH}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.88,
+      alternates: { languages: ARCHIVE_ALTERNATES },
     },
     {
       url: `${siteUrl}/faq`,
@@ -101,17 +117,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Honest per-reference lastModified and priority from computed quality. A raw
   // frontmatter date cannot promote trust or crawl priority by itself.
-  const referenceRoutes: MetadataRoute.Sitemap = REGISTRY.map(
+  // A reference with a Korean page (lib/i18n/ko-detail.ts) lists both URLs, each
+  // naming the pair (and x-default → English) as xhtml:link alternates, matching
+  // the hreflang in both pages' <head>. Others keep a single English entry.
+  const referenceRoutes: MetadataRoute.Sitemap = REGISTRY.flatMap(
     ({ id }) => {
       const quality = REFERENCE_QUALITY_BY_ID[id];
       const modified = quality?.tokensExtractedAt ?? quality?.verifiedAt;
       const priority = quality?.status === "verified_v2" ? 0.85 : quality?.status === "partial" ? 0.75 : 0.6;
-      return {
-        url: `${siteUrl}/design-systems/${id}`,
+      const en = `${siteUrl}/design-systems/${id}`;
+      const base = {
         lastModified: modified ? new Date(modified) : now,
         changeFrequency: quality?.status === "legacy_snapshot" ? "yearly" as const : "monthly" as const,
         priority,
       };
+      if (!hasKoDetailId(id)) return [{ url: en, ...base }];
+      const ko = `${siteUrl}${koDetailPath(id)}`;
+      const alternates = { languages: { en, ko, "x-default": en } };
+      return [
+        { url: en, ...base, alternates },
+        { url: ko, ...base, alternates },
+      ];
     },
   );
 

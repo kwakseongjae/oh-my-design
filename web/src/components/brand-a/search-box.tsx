@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type { SearchEntry } from "@/lib/landing-a/types";
+import { detailHrefFor, hasKoDetailShort } from "@/lib/i18n/ko-detail";
 
 /**
  * In-page typeahead over every reference (id, name, displayName). The index is
@@ -41,7 +42,9 @@ function search(all: SearchEntry[], q: string): SearchEntry[] {
   return hits.slice(0, 8).map((h) => h.r);
 }
 
-export function SearchBox({ labels }: { labels: { label: string; ph: string; empty: string; hint: string; status: { v: string; p: string; l: string } } }) {
+export function SearchBox({ labels, locale = "en" }: { labels: { label: string; ph: string; empty: string; hint: string; status: { v: string; p: string; l: string } }; locale?: string }) {
+  // On /ko a result opens its Korean page when it has one (lib/i18n/ko-detail.ts), else the English page.
+  const hrefOf = (r: SearchEntry) => detailHrefFor(locale, r.i, hasKoDetailShort(r.c, r.s));
   const [all, setAll] = useState<SearchEntry[] | null>(null);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
@@ -62,7 +65,7 @@ export function SearchBox({ labels }: { labels: { label: string; ph: string; emp
     if (!all) loadIndex().then(setAll);
   };
   const go = (r: SearchEntry) => {
-    window.location.href = `/design-systems/${encodeURIComponent(r.i)}`;
+    window.location.href = hrefOf(r);
   };
   const shown = open && q.trim().length > 0;
 
@@ -130,7 +133,7 @@ export function SearchBox({ labels }: { labels: { label: string; ph: string; emp
               const gl = CJK.test(g) ? (CC_LANG[r.c] ?? "en") : "en";
               return (
                 <li key={r.i} id={`qo-${uid}-${i}`} role="option" aria-selected={i === active}>
-                  <a href={`/design-systems/${encodeURIComponent(r.i)}`} tabIndex={-1}>
+                  <a href={hrefOf(r)} tabIndex={-1}>
                     <span className="sq-qg" lang={gl} aria-hidden="true">{g}</span>
                     <span className="sq-qn">
                       <span lang={CJK.test(nat) ? (CC_LANG[r.c] ?? "en") : "en"}>{nat}</span>
