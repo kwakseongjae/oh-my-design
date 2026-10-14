@@ -3,6 +3,20 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ▶ 2026-10-14 · 계측 기반 (성장 계획 P0/5) — 브랜치 `feat/growth-metrics`, main 미반영
+
+- **주간 스냅샷 자동화.** `.github/workflows/growth-snapshot.yml`이 월요일 03:23 UTC와 수동 실행 때 돈다.
+  - 공개 지표(GitHub 별·포크, npm, skills.sh)는 공개 고아 브랜치 `growth-data`의 `metrics-public.jsonl`에 쌓는다. 3줄로 시드했다.
+  - 비공개 지표(트래픽·클론·리퍼러, DAU/WAU/MAU)는 별도 비공개 레포에만 쓴다. 레포 변수 `METRICS_REPO`와 시크릿 `METRICS_REPO_TOKEN`이 둘 다 있어야 수집한다. 없으면 수집하지 않고 notice만 남긴다.
+  - 레포가 공개라 브랜치·로그·아티팩트가 모두 공개다. 그래서 레코드는 출력하지 않고(`--quiet`) 아티팩트도 쓰지 않는다.
+- **오너 대기.**
+  - 비공개 레포 생성(예: `kwakseongjae/oh-my-design-metrics`, README로 초기화)
+  - PAT 2개: 그 레포 Contents RW, 이 레포 Administration read
+  - Actions 시크릿 `METRICS_REPO_TOKEN`, `GH_TRAFFIC_TOKEN`, `OMD_KV_REST_API_URL`, `OMD_KV_REST_API_TOKEN`
+  - 로컬 `data/growth/metrics.jsonl`(3줄, 비공개 지표 포함)을 비공개 레포에 시드. `data/growth/`는 이제 gitignore 대상이다.
+- **Vercel Web Analytics 재도입.** `@vercel/analytics` 2.0.1, `web/src/components/vercel-analytics.tsx`. Pro 플랜은 1K 이벤트당 $0.03이다. 리퍼러와 상위 페이지는 대시보드나 `/v1/query/web-analytics/visits/aggregate?by=referrerHostname`으로 본다. 개인정보 처리방침(en/ko)을 갱신했다.
+- **GA4 복구.** `scripts/analytics/RESTORE-2026-10.md`. 코드는 수정할 필요가 없고(엔드포인트 최신 확인), GCP 프로젝트·키·권한은 오너가 처리한다.
+
 ## ▶ 2026-09-29 · 성장 전략 결정 17개 → 병렬 실행 착수 (521 · 227)
 
 - **문서.**
