@@ -85,3 +85,19 @@ body:has(.sq-root-page){background:var(--sq-paper)}
 .sq-xlink-on:hover{color:var(--sq-paper)}
 /* 320-379px: the wordmark yields to the tools (language, blog/docs links, theme), which were clipped; the mark and the link label stay */
 @media (max-width:379px){.sq-brand span{display:none}.sq-tools{gap:6px}}
+/* round 4 (restraint): one language control at every width (the select), no header rule, one nav size */
+.sq-root .sq-loc{display:none}
+.sq-root .sq-loc-sel{display:block}
+.sq-top{border-bottom-color:transparent}
+.sq-loc-sel select,.sq-theme{border-color:transparent;background-color:transparent}
+.sq-loc-sel select{font-size:15px;font-weight:550;color:var(--sq-ink-2)}
+.sq-foot{border-top:0}
+/* Logo (logo.tsx): app icon + live text. Light/dark icon swap follows next-themes .dark on <html>. */
+.sq-brand{gap:10px}
+.sq-logo-icon{width:32px;height:32px;flex-shrink:0;display:block}
+.sq-logo-d{display:none}
+.dark .sq-logo-l{display:none}
+.dark .sq-logo-d{display:block}
+.sq-logo-text{font-family:var(--sq-f-latin),sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em}
+.sq-foot-brand .sq-logo-icon{width:40px;height:40px}
+@media (max-width:640px){.sq-brand{gap:8px}.sq-brand .sq-logo-icon{width:28px;height:28px}.sq-logo-text{font-size:16px}}

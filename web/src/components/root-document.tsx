@@ -37,7 +37,7 @@ const SITE_JSON_LD = {
       "@type": "Organization",
       name: "oh-my-design",
       url: siteUrl,
-      logo: `${siteUrl}/logo.png`,
+      logo: `${siteUrl}/icons/app-icon-512.png`,
       sameAs: [
         "https://github.com/kwakseongjae/oh-my-design",
         "https://www.npmjs.com/package/oh-my-design-cli",

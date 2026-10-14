@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { getCopy } from "./copy";
 import { LocaleSwitch } from "./locale-switch";
-import { Mark } from "./mark";
+import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import "./chrome.css";
 
@@ -57,8 +57,7 @@ export function SiteHeaderA({
       <a className="sq-skip" href={skipTo}>{t.skip}</a>
       <div className="sq-wrap sq-bar">
         <Link className="sq-brand" href={`${origin}${meta.path}`} prefetch={false} aria-label="oh-my-design">
-          <Mark />
-          <span lang="en">oh-my-design</span>
+          <Logo />
         </Link>
         <nav className="sq-menu" aria-label="Main">{links}</nav>
         <div className="sq-tools">

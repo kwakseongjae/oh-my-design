@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SITE_LOCALES, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { getCopy } from "./copy";
-import { Mark } from "./mark";
+import { Logo } from "./logo";
 import { GITHUB_URL } from "./site-header";
 import "./chrome.css";
 
@@ -26,7 +26,7 @@ export function SiteFooterA({
     <footer className="sq-root sq-foot" lang={meta.htmlLang}>
       <div className="sq-wrap sq-foot-in">
         <div className="sq-foot-brand">
-          <Mark />
+          <Logo wordmark={false} />
           <p>
             <b lang="en">oh-my-design</b>
             <span>{c.foot.tag}</span>
@@ -52,7 +52,7 @@ export function SiteFooterA({
           ))}
         </nav>
         <p className="sq-legal">
-          {c.foot.legal}{" "}
+          {c.foot.legal} {c.foot.marks}{" "}
           <Link href={o(locale === "ko" ? "/privacy/ko" : "/privacy")} prefetch={false}>Privacy</Link>
           {" · "}
           <Link href={o(locale === "ko" ? "/terms/ko" : "/terms")} prefetch={false}>Terms</Link>

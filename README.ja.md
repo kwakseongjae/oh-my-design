@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kwakseongjae/oh-my-design/main/.github/assets/logo-bg.png" width="480" alt="oh-my-design" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/brand/banner-dark.svg">
+    <img alt="oh my design" src="docs/brand/banner.svg" width="640">
+  </picture>
 </p>
 
 <h1 align="center">oh-my-design</h1>
