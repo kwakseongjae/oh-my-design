@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restrained fixture</title>
+<!-- omd-restraint self-test: this page must PASS every rule at 1440x900 and 390x844.
+     One focal object, one copy stack, one primary + one quiet action, one accent, no lines,
+     and a single colour-field section so no screen reads as thin. -->
+<style>
+  :root { --ground: #f5f4f2; --ink: #141414; --muted: #4a4a4a; --accent: #1f5eff; --field: #1c1c1c; --paper: #f5f4f2; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--ground); color: var(--ink); font: 400 18px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; justify-content: space-between; align-items: center; height: 80px; padding: 0 48px; font-size: 16px; }
+  header a { color: var(--ink); text-decoration: none; }
+  header nav a { margin-left: 28px; }
+  .hero { min-height: calc(100vh - 80px); display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; padding: 0 48px 64px; }
+  h1 { font-size: 104px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; }
+  .lede { margin-top: 28px; max-width: 26ch; color: var(--muted); }
+  .actions { margin-top: 40px; display: flex; gap: 12px; align-items: center; }
+  .btn { font-size: 16px; padding: 14px 24px; border-radius: 999px; text-decoration: none; }
+  .primary { background: var(--accent); color: #fff; }
+  .quiet { color: var(--ink); }
+  .visual svg { display: block; width: 100%; height: auto; }
+  .field { background: var(--field); color: var(--paper); min-height: 90vh; padding: 34vh 48px 12vh; }
+  .field p.statement { font-size: 44px; line-height: 1.15; max-width: 18ch; font-weight: 500; }
+  .field p.note { margin-top: 24px; max-width: 46ch; color: #c9c9c9; }
+  @media (max-width: 700px) {
+    header { padding: 0 20px; }
+    header nav a { margin-left: 18px; }
+    .hero { grid-template-columns: 1fr; gap: 32px; padding: 32px 20px 48px; align-items: start; }
+    h1 { font-size: 64px; }
+    .field { padding: 30vh 20px 10vh; }
+    .field p.statement { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <a href="#">Atlas</a>
+    <nav><a href="#">Work</a><a href="#">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Say less.</h1>
+        <p class="lede">One line on what this is and who it is for.</p>
+        <div class="actions">
+          <a class="btn primary" href="#">Start a project</a>
+          <a class="btn quiet" href="#">See the work</a>
+        </div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="280" cy="280" r="270" fill="#dcd8d1"/>
+          <rect x="190" y="190" width="180" height="180" fill="#141414"/>
+        </svg>
+      </div>
+    </section>
+    <section class="field">
+      <p class="statement">Everything else was cut so this could be large.</p>
+      <p class="note">The rest of the page carries its full content at a readable size, on a field of its own, so the quiet first screen does not read as an unfinished one.</p>
+    </section>
+  </main>
+</body>
+</html>

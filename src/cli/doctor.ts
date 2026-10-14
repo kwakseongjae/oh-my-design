@@ -81,6 +81,7 @@ export const REQUIRED_PRODUCT_SKILLS = [
   'omd-orchestrator',
   'omd-reference-capture',
   'omd-remember',
+  'omd-restraint',
   'omd-setup',
   'omd-shader-hero',
   'omd-showcase',
