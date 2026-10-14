@@ -40,15 +40,16 @@ export function mount(host, o) {
     kick();
   }
 
-  /* real keyboard rows: consistent pitch, QWERTY-like row stagger, a wide key closing the last row (world units) */
-  const PITCH = 1.24, WIDE = 2.2;
-  function slots(n, isNarrow, WIDE) {
-    const rows = isNarrow ? [3, 3, 1] : [5, 5, 4, 2], stag = isNarrow ? [0, 0.3, 0.6] : [0, 0.3, 0.55, 0.8], out = [];
-    let k = 0;
-    rows.forEach((cnt, r) => {
-      let i = 0;
-      for (; i < cnt && k < n; i++, k++) out.push({ x: (stag[r] + i) * PITCH, z: r * PITCH, hw: 0.5 });
-      if (r === rows.length - 1) out.push({ x: (stag[r] + i - 1) * PITCH + 0.5 + (PITCH - 1) + WIDE / 2, z: r * PITCH, hw: WIDE / 2 });
+  /* real keyboard rows (round 4): each cap names its row (d.row desktop, d.mrow phone);
+     consistent pitch, QWERTY-like stagger, wordmarks on wide (2.2u) caps (world units) */
+  const PITCH = 1.24, GAP = PITCH - 1;
+  function slots(list, isNarrow) {
+    const stag = isNarrow ? [0, 0.3, 0.6, 0.9] : [0, 0.3, 0.55, 0.8], rows = [], out = new Array(list.length);
+    list.forEach((d, i) => { const r = Math.max(0, (isNarrow ? d.mrow : d.row) ?? 0); (rows[r] ??= []).push(i); });
+    rows.forEach((idx, r) => {
+      if (!idx) return;
+      let x = (stag[r] ?? 0) * PITCH;
+      idx.forEach((i) => { const w = list[i].wide || 1; out[i] = { x: x + w / 2, z: r * PITCH, hw: w / 2 }; x += w + GAP; });
     });
     return out;
   }
@@ -57,11 +58,11 @@ export function mount(host, o) {
     W = Math.max(1, r.width); Hh = Math.max(1, r.height);
     renderer.setSize(W, Hh, false);
     const z = o.zone(), zw = z.x1 - z.x0, zh = z.y1 - z.y0;
-    const last = caps[caps.length - 1], sl = slots(caps.length - 1, narrow, (last && last.userData.d.wide) || 2.2);
+    const sl = slots(caps.map((g) => g.userData.d), narrow);
     let minx = 1e9, maxx = -1e9, maxz = 0;
     sl.forEach((s) => { minx = Math.min(minx, s.x - s.hw); maxx = Math.max(maxx, s.x + s.hw); maxz = Math.max(maxz, s.z); });
     const spanX = maxx - minx + (narrow ? 1.0 : 0.4), spanZ = maxz + (narrow ? 1.9 : 1.5);
-    const capPx = THREE.MathUtils.clamp(Math.min(zw / spanX, zh / spanZ), narrow ? 50 : 60, narrow ? 92 : 112);
+    const capPx = THREE.MathUtils.clamp(Math.min(zw / spanX, zh / spanZ), narrow ? 50 : 60, narrow ? 104 : 150);
     capPxV = capPx;
     const cx = (z.x0 + z.x1) / 2, cy = (z.y0 + z.y1) / 2;
     const VW = 2 * Math.max(cx, W - cx), VH = 2 * Math.max(cy, Hh - cy);
@@ -80,7 +81,7 @@ export function mount(host, o) {
   function setCaps(list, isNarrow) {
     caps.forEach((g) => { scene.remove(g, g.userData.sh, g.userData.pool); disposeCap(g); });
     narrow = isNarrow;
-    const all = list.concat(o.more ? [o.more(list.length)] : []);
+    const all = list;
     caps = all.map((d) => {
       const g = makeCap(d, look, blob, maxAniso), u = g.userData;
       u.lift = 0.26;
@@ -155,7 +156,8 @@ export function mount(host, o) {
   function setHover(g) {
     if (g === hover) return;
     hover = g; canvas.style.cursor = g ? "pointer" : "";
-    if (g) { sel = g; o.onHover(g.userData.d); }
+    if (g) sel = g;
+    o.onHover(g ? g.userData.d : null);
     kick();
   }
   canvas.addEventListener("pointermove", (e) => { if (e.pointerType === "mouse") setHover(pick(e)); });
@@ -176,7 +178,7 @@ export function mount(host, o) {
     const v = new THREE.Vector3();
     return caps.map((g) => {
       const u = g.userData, top = u.skin.geometry.boundingBox.max.y * g.scale.y * u.body.scale.y;
-      const pts = [[0, 0.36], [0.36, 0], [-0.36, 0], [0, -0.3], [0.26, 0.26], [-0.26, 0.26]].map(([dx, dz]) => {
+      const pts = [[0, 0.38], [0.38, 0], [-0.38, 0], [0, -0.34], [0.38, 0.2], [-0.38, 0.2]].map(([dx, dz]) => {
         v.set(g.position.x + dx * (u.d.wide || 1), g.position.y + top - 0.02, g.position.z + dz).project(camera);
         return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * Hh];
       });

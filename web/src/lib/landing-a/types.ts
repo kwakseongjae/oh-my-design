@@ -37,6 +37,27 @@ export interface CapData {
   readonly wk: string | null;
 }
 
+/** A hero cap engraved with a genuine logo (picks.ts HERO_LOGOS). */
+export interface LogoCap {
+  readonly id: string;
+  /** Display name (native where the registry has one). */
+  readonly n: string;
+  readonly nLang: string;
+  /** /brand-svg/<id>/<variant>.svg */
+  readonly src: string;
+  /** viewBox width / height */
+  readonly ratio: number;
+  /** wide (2u) cap for a wordmark */
+  readonly wide: boolean;
+  /** the colour the cap reads as: claimed primary, or its pale tint */
+  readonly hex: string;
+  /** claimed radius token px (cap softness), or null */
+  readonly rv: number | null;
+  /** keyboard row on desktop / phone (-1 = not shown on phone) */
+  readonly row: number;
+  readonly mrow: number;
+}
+
 export interface GenSpec extends ResolvedSlots {
   readonly id: string;
   readonly cc: string;
@@ -55,8 +76,7 @@ export interface GenSpec extends ResolvedSlots {
 
 export interface LandingData {
   readonly facts: LandingFacts;
-  readonly hero: readonly CapData[];
-  readonly regions: Readonly<Record<RegionCC, readonly CapData[]>>;
+  readonly hero: readonly LogoCap[];
   readonly gen: readonly GenSpec[];
 }
 

@@ -3,9 +3,11 @@ import { REFERENCE_QUALITY_BY_ID, REFERENCE_QUALITY_COUNTS } from "@/data/refere
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
 import { SKILL_COUNT } from "@/data/catalog-meta.generated";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
-import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON, HERO_IDS, REGION_IDS, REGION_ORDER } from "./picks";
+import fs from "node:fs";
+import path from "node:path";
+import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON, HERO_LOGOS, HERO_ROWS } from "./picks";
 import { CJK_RE, glyphOf, keycapTraits, nativeName, resolveSlots, type TokensLike } from "./resolve";
-import type { CapData, GenSpec, LandingData, LandingFacts, RegionCC } from "./types";
+import type { CapData, GenSpec, LandingData, LandingFacts, LogoCap } from "./types";
 
 /**
  * Build-time loader for the landing. Reads the generated registry, quality
@@ -85,55 +87,45 @@ export function capData(id: string): CapData | null {
   };
 }
 
-/** Verified refs with a claimed colour and a native name, by region — the refill pool. */
-function pool(cc: string, exclude: Set<string>): string[] {
-  return REGISTRY.filter((r) => r.country === cc && !exclude.has(r.id) && isVerified(r.id))
-    .map((r) => capData(r.id)!)
-    .filter((d) => d.hex && d.n !== REGISTRY_BY_ID[d.id].name)
-    .map((d) => d.id);
+
+/** A pale tint of a claimed colour (`k` of it over white). Decoration for the cap body only; never shown as a token. */
+export function paleOf(hex: string, k = 0.16): string {
+  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return "#" + c.map((v) => Math.round(255 - (255 - v) * k).toString(16).padStart(2, "0")).join("");
 }
 
-/** Hero caps, interleaved by the locale's region order. A curated id that no longer has a claimed colour is replaced from its region. */
-export function getHeroCaps(locale: SiteLocale): CapData[] {
-  const picked = new Set<string>();
-  const by: Record<string, CapData[]> = {};
-  for (const id of HERO_IDS) {
-    const r = REGISTRY_BY_ID[id];
-    let d = r && isVerified(id) ? capData(id) : null;
-    if (!d?.hex) {
-      const cc = r?.country ?? "KR";
-      const alt = pool(cc, new Set([...picked, ...HERO_IDS]))[0];
-      d = alt ? capData(alt) : null;
-    }
+function viewBoxRatio(src: string): number {
+  const svg = fs.readFileSync(path.join(process.cwd(), "public", src), "utf8");
+  const vb = svg.match(/viewBox="([^"]+)"/)?.[1].trim().split(/[\s,]+/).map(Number);
+  return vb && vb[3] > 0 ? vb[2] / vb[3] : 1;
+}
+
+/**
+ * Hero caps (round 4): verified references engraved with their genuine logo (picks.ts
+ * HERO_LOGOS). A pick that stops being verified or loses its claimed colour is dropped,
+ * never refilled with a glyph cap or a guessed colour.
+ */
+export function getHeroLogos(): LogoCap[] {
+  const rowOf = (rows: readonly (readonly string[])[], id: string) => rows.findIndex((r) => r.includes(id));
+  const out: LogoCap[] = [];
+  for (const p of HERO_LOGOS) {
+    if (!isVerified(p.id)) continue;
+    const d = capData(p.id);
     if (!d?.hex) continue;
-    picked.add(d.id);
-    (by[d.c] ??= []).push(d);
-  }
-  const out: CapData[] = [];
-  let more = true;
-  while (more) {
-    more = false;
-    for (const c of REGION_ORDER[locale]) {
-      const q = by[c];
-      if (q?.length) {
-        out.push(q.shift()!);
-        more = true;
-      }
-    }
-  }
-  return out;
-}
-
-export function getRegions(): Record<RegionCC, CapData[]> {
-  const out = {} as Record<RegionCC, CapData[]>;
-  for (const cc of ["KR", "JP", "TW"] as const) {
-    const list = REGION_IDS[cc].map((id) => (isVerified(id) ? capData(id) : null)).filter((d): d is CapData => !!d);
-    const used = new Set(list.map((d) => d.id));
-    for (const id of pool(cc, used)) {
-      if (list.length >= 4) break;
-      list.push(capData(id)!);
-    }
-    out[cc] = list.slice(0, 4);
+    const src = `/brand-svg/${p.id}/${p.v}.svg`;
+    const ratio = viewBoxRatio(src);
+    out.push({
+      id: p.id,
+      n: d.n,
+      nLang: d.nLang,
+      src,
+      ratio,
+      wide: p.v !== "symbol" && ratio > 1.6,
+      hex: p.cap === "pale" ? paleOf(d.hex) : d.hex,
+      rv: d.rv,
+      row: rowOf(HERO_ROWS.wide, p.id),
+      mrow: rowOf(HERO_ROWS.narrow, p.id),
+    });
   }
   return out;
 }
@@ -163,11 +155,10 @@ export function genSpec(id: string): GenSpec | null {
   };
 }
 
-export function getLandingData(locale: SiteLocale): LandingData {
+export function getLandingData(_locale?: SiteLocale): LandingData {
   return {
     facts: getFacts(),
-    hero: getHeroCaps(locale),
-    regions: getRegions(),
+    hero: getHeroLogos(),
     gen: GEN_UI_IDS.map(genSpec).filter((s): s is GenSpec => !!s),
   };
 }

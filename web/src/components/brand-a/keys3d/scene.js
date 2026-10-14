@@ -1,7 +1,7 @@
 /* Scene, lights and jelly materials (prototype round 4; see main.js). */
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
-import { capGeometry, decalGeometry, legendTexture, blobTexture, H } from "./geo.js";
+import { capGeometry, decalGeometry, legendTexture, logoTexture, blobTexture, H } from "./geo.js";
 
 export function makeRenderer(canvas, narrow) {
   const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
@@ -75,7 +75,7 @@ export function makeCap(d, look, blob, maxAniso) {
     color: col, roughness: 0.5, metalness: 0,
     emissive: col, emissiveIntensity: look.glow, envMapIntensity: 0.6
   });
-  const tex = legendTexture(d.g, d.fam, d.w || 700, d.on, maxAniso, d.wide || 1);
+  const tex = d.img ? logoTexture(d.img, lumOf(col) < 0.45, maxAniso, d.wide || 1, !d.wide) : legendTexture(d.g, d.fam, d.w || 700, d.on, maxAniso, d.wide || 1);
   const legM = new THREE.MeshPhysicalMaterial({
     map: tex, transparent: true, depthWrite: false, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.1,
     bumpMap: tex, bumpScale: 0.3, polygonOffset: true, polygonOffsetFactor: -2

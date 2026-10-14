@@ -82,6 +82,40 @@ export function legendTexture(glyph, family, weight, color, maxAniso, wide = 1) 
   return tex;
 }
 
+/* Logo texture (round 4): the genuine SVG, rasterised at high resolution, trimmed of
+ * transparent margin only, and centred in the decal. Colours are the file's own; the
+ * only addition is the same faint inset edge the glyph legends carry. Box fractions are
+ * of the decal (70% of the cap top): a symbol ≤ 80% square, a wordmark ≤ 86% × 50%, which
+ * keeps the colour-calibration probes (main.js probe()) on bare cap. */
+export function logoTexture(img, dark, maxAniso, wide = 1, symbol = true) {
+  const S = 1024, SW = Math.round(S * wide);
+  const R = 2048, iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  const k = R / Math.max(iw, ih), tw = Math.max(1, Math.round(iw * k)), th = Math.max(1, Math.round(ih * k));
+  const tmp = document.createElement("canvas");
+  tmp.width = tw; tmp.height = th;
+  const t = tmp.getContext("2d", { willReadFrequently: true });
+  t.drawImage(img, 0, 0, tw, th);
+  const a = t.getImageData(0, 0, tw, th).data;
+  let x0 = tw, y0 = th, x1 = -1, y1 = -1;
+  for (let y = 0; y < th; y++) for (let x = 0; x < tw; x++) {
+    if (a[(y * tw + x) * 4 + 3] > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  }
+  if (x1 < 0) { x0 = 0; y0 = 0; x1 = tw - 1; y1 = th - 1; }
+  const cw = x1 - x0 + 1, ch = y1 - y0 + 1;
+  const bw = symbol ? S * 0.8 : SW * 0.86, bh = symbol ? S * 0.8 : S * 0.5;
+  const f = Math.min(bw / cw, bh / ch), dw = cw * f, dh = ch * f;
+  const cv = document.createElement("canvas");
+  cv.width = SW; cv.height = S;
+  const x = cv.getContext("2d");
+  x.shadowColor = dark ? "rgba(255,255,255,.22)" : "rgba(0,0,0,.22)";   // faint inset edge
+  x.shadowBlur = 6; x.shadowOffsetY = dark ? -3 : 4;
+  x.drawImage(tmp, x0, y0, cw, ch, (SW - dw) / 2, (S - dh) / 2, dw, dh);
+  const tex = new THREE.CanvasTexture(cv);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = maxAniso;
+  return tex;
+}
+
 /* Soft radial blob for contact shadows and tinted light pools. */
 export function blobTexture() {
   const S = 128, cv = document.createElement("canvas");

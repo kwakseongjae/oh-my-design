@@ -6,6 +6,7 @@ import type { GenSpec } from "@/lib/landing-a/types";
 import type { BrandCopy } from "./copy";
 import { glyph, lines, methodKey, missingLabels, states, tips, vars, type TipRow } from "./gen-render";
 import { onColor } from "./keycap";
+import "./gen-ui.css";
 
 /**
  * Scan → generate (port of the prototype's round-5 genui5.js).
@@ -378,8 +379,7 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
             </span>
             <span className="sq-g5-caret" aria-hidden="true" />
           </div>
-          <div className="sq-g5-stage">
-            <span className="sq-g5-label">{t.sample.label}</span>
+          <div className="sq-g5-stage" role="group" aria-label={t.sample.label}>
             <div className={`sq-scr${sk?.has(0) ? " sq-sk" : ""}`} tabIndex={0} style={{ ...(cssVars as CSSProperties), fontFamily: screenFont }} {...tipProps(0)}>
               <div className="sq-scr-in">
                 <p className={cls("sq-e sq-e-h", ["head"], 1)} tabIndex={0} {...tipProps(1)}>
@@ -436,6 +436,16 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
               </span>
             ) : null}
             <span className="sq-face">{face}</span>
+            <button
+              type="button"
+              className="sq-gen-replay"
+              onClick={() => {
+                touched.current = true;
+                play();
+              }}
+            >
+              {t.replay}
+            </button>
           </div>
           {tip ? (
             <div className="sq-g5-tip" role="tooltip" ref={tipEl} style={{ top: tip.top, left: tip.left }} lang="en">
@@ -458,26 +468,6 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
             </div>
           ) : null}
         </div>
-      </div>
-      <div className="sq-g5-foot">
-        <dl className="sq-gen-stats">
-          {[s.stats.claims, s.stats.sf, `${s.stats.src} · ${s.stats.t1}`, s.stats.chk, s.stats.next].map((v, i) => (
-            <div key={i}>
-              <dt>{v}</dt>
-              <dd>{t.stats[i]}</dd>
-            </div>
-          ))}
-        </dl>
-        <button
-          type="button"
-          className="sq-gen-replay"
-          onClick={() => {
-            touched.current = true;
-            play();
-          }}
-        >
-          {t.replay}
-        </button>
       </div>
     </div>
   );

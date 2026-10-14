@@ -1,0 +1,182 @@
+{
+ "schema_version": 3,
+ "generated_at": "2026-06-02",
+ "note": "Subset of the brand-svg collection (branch feat/brand-svg-gallery, schema v3) used by the landing hero keycaps. Only the variant each cap engraves is kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference.",
+ "count": 9,
+ "records": [
+  {
+   "id": "channeltalk",
+   "name": "Channel Talk",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/channeltalk/symbol.svg",
+     "source": "Official site (channel.io)",
+     "source_url": "https://channel.io",
+     "license": "brand-asset-official",
+     "license_url": "https://channel.io",
+     "attribution": "Channel Corp.",
+     "usage_note": "공식 사이트 심볼(말풍선 마크) · 식별용",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
+   "id": "class101",
+   "name": "Class101",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/class101/symbol.svg",
+     "source": "Official site (class101.net)",
+     "source_url": "https://class101.net",
+     "license": "brand-asset-official",
+     "license_url": "https://class101.net",
+     "attribution": "Class101 Inc.",
+     "usage_note": "공식 심볼 · 식별용",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
+   "id": "kakaobank",
+   "name": "KakaoBank",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/kakaobank/symbol.svg",
+     "source": "Official site (kakaobank.com)",
+     "source_url": "https://www.kakaobank.com",
+     "license": "brand-asset-official",
+     "license_url": "https://www.kakaobank.com",
+     "attribution": "KakaoBank Corp.",
+     "usage_note": "공식 사이트 심볼(B 마크) · 식별용",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
+   "id": "kream",
+   "name": "KREAM",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/kream/wordmark.svg",
+     "source": "Official site (kream.co.kr)",
+     "source_url": "https://kream.co.kr",
+     "license": "brand-asset-official",
+     "license_url": "https://kream.co.kr",
+     "usage_note": "공식 사이트 헤더 inline SVG · 식별용"
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "kurly",
+   "name": "Kurly",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/kurly/wordmark.svg",
+     "source": "Official site (kurly.com)",
+     "source_url": "https://www.kurly.com",
+     "license": "brand-asset-official",
+     "license_url": "https://www.kurly.com",
+     "usage_note": "공식 사이트 헤더 SVG 추출 · 식별용"
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "socar",
+   "name": "SOCAR",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/socar/combined.svg",
+     "source": "Official site (socar.kr)",
+     "source_url": "https://www.socar.kr",
+     "license": "brand-asset-official",
+     "license_url": "https://www.socar.kr",
+     "attribution": "SOCAR",
+     "usage_note": "공식 시그니처(심볼+워드마크) · 식별용",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "toss",
+   "name": "Toss",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/toss/wordmark.svg",
+     "source": "Official site (toss.im)",
+     "source_url": "https://toss.im",
+     "license": "brand-asset-official",
+     "license_url": "https://toss.im",
+     "usage_note": "공식 사이트 헤더 inline SVG 추출 · 식별용 · 상표 비바리퍼블리카"
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "upbit",
+   "name": "Upbit",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "low",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/upbit/wordmark.svg",
+     "source": "Wikimedia Commons",
+     "source_url": "https://commons.wikimedia.org/wiki/File%3AUPbit%20Logo.svg",
+     "license": "PD",
+     "license_url": "https://commons.wikimedia.org/wiki/File%3AUPbit%20Logo.svg",
+     "attribution": "UPbit",
+     "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "yanolja",
+   "name": "Yanolja",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/yanolja/combined.svg",
+     "source": "Official site (yanoljagroup.com)",
+     "source_url": "https://www.yanoljagroup.com",
+     "license": "brand-asset-official",
+     "license_url": "https://www.yanoljagroup.com",
+     "attribution": "Yanolja",
+     "usage_note": "공식 시그니처(심볼+워드마크) · 식별용",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "combined"
+  }
+ ]
+}
