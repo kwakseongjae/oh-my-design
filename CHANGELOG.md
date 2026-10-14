@@ -6,6 +6,13 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 ---
 
+## Unreleased
+
+- **Skill names for `npx skills` / skills.sh are hyphen case.** The 15 skills whose source frontmatter still said `name: omd:<x>` now say `name: omd-<x>`, matching their folders, so `npx skills add kwakseongjae/oh-my-design --skill omd-feel` resolves (the skills CLI matches `--skill` exactly). The repo's own installed copies in `.claude/skills` and `.agents/skills` are listed in `skills-lock.json` so the skills CLI stops offering each skill a second time under its `omd:` name; discovery goes from 54 entries to 31. **Nothing changes for `omd install-skills` users:** the installer has always derived the installed name from the folder, so Claude Code and Codex still get `omd:feel` (and `/omd:feel` keeps working) and OpenCode and Cursor still get `omd-feel`. Anyone who installed one of the 15 through `npx skills` under the old name will see it reported as deleted upstream on `npx skills update`; reinstall it with `--skill omd-<x>` (same folder).
+- **Share images render on X, Facebook and Slack.** Reference and blog cards moved from `/api/og/...` (disallowed by robots.txt, which those fetchers obey) to `/og/...`; the old URLs 308 to the new ones.
+
+---
+
 ## 2.0.3 — 2026-10-13
 
 **Two single-effect shader skills, a deeper Korean catalog, and a website whose reference page is now the place you take a DESIGN.md from. Patch release — no change to the installer's file ownership rules.**
