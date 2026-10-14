@@ -1,30 +1,32 @@
 "use client";
 
 /**
- * Design Systems directory (the archive index) — client half, concept A
- * (rebrand round 2): manuscript-grid hero, keycap brand chips, region keycaps,
- * tier filter, search, and the collection filter.
+ * Design Systems directory (the archive index) — client half, concept A,
+ * restraint pass (rebrand round 4, 2026-10-14): a plain title, one search
+ * field, one filter row (region · tier · collections menu) and the list.
  *
  * All catalog data arrives as props from the server page.tsx: importing the
  * registry or the quality table here would put a separate ~530 KB gz copy of
  * them into this route's client bundle (lib/client-registry-boundary.test.ts).
  *
- * What did not change: the server renders the complete, unfiltered list (the
- * Suspense fallback below), `?collection=<slug>` filters it exactly as before
- * (the old /collections/<slug> URLs 308 here), and the JSON-LD stays in
- * page.tsx. Region, tier and search are client-only refinements on top.
+ * What did not change: the server renders every reference as a link (the
+ * Suspense fallback below — entries past the first page carry `hidden`, so
+ * they stay in the HTML for crawlers), `?collection=<slug>` filters it exactly
+ * as before (the old /collections/<slug> URLs 308 here), and the JSON-LD stays
+ * in page.tsx. Region, tier and search are client-only refinements on top.
+ *
+ * Tier counts live only inside the tier filter (RESTRAINT.md R10: one place
+ * per fact); the "what verified does not mean" qualifier appears when the
+ * reader actually narrows to the verified tier.
  */
 
 import { Suspense, useDeferredValue, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useHotRefs } from "@/lib/hot-refs";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
-import { isNewAdded } from "@/lib/new-refs";
-import { StatusBadge } from "@/components/status-badge";
 import { CssKeycap, type KeycapFace } from "@/components/brand-a/keycap";
 import { trackCollectionOpen } from "@/lib/collections/analytics";
-import { trackDetailOpen, trackExternalClick } from "@/lib/design-systems/analytics";
+import { trackDetailOpen } from "@/lib/design-systems/analytics";
 import type { ColorFamily } from "@/lib/color-family";
 import type { DesignSystemInfo } from "@/lib/design-systems";
 import "@/components/brand-a/archive.css";
@@ -58,16 +60,20 @@ export interface CatalogSystem extends DesignSystemInfo {
 type Region = "all" | "KR" | "JP" | "TW";
 type Tier = "all" | DesignSystemInfo["qualityStatus"];
 
-/** Input-method legends, as on the landing's region keys: 한 (Hangul), あ (kana), ㄅ (Zhuyin). */
-const REGIONS: { id: Region; g: string; lang: string; label: string }[] = [
-  { id: "all", g: "All", lang: "en", label: "All regions" },
-  { id: "KR", g: "한", lang: "ko", label: "Korea" },
-  { id: "JP", g: "あ", lang: "ja", label: "Japan" },
-  { id: "TW", g: "ㄅ", lang: "zh-Hant", label: "Taiwan" },
+/** How many cards one page (and each "Show more") reveals. */
+const PAGE = 24;
+
+const REGIONS: { id: Region; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "KR", label: "Korea" },
+  { id: "JP", label: "Japan" },
+  { id: "TW", label: "Taiwan" },
 ];
 
+const TIERS: Tier[] = ["all", "verified_v2", "partial", "legacy_snapshot"];
+
 const TIER_LABEL: Record<DesignSystemInfo["qualityStatus"], string> = {
-  verified_v2: "Verified v2",
+  verified_v2: "Verified",
   partial: "Partial",
   legacy_snapshot: "Legacy",
 };
@@ -81,31 +87,76 @@ export function CatalogView({
   collections: CatalogCollection[];
   stats: CatalogStats;
 }) {
-  const hotRefs = useHotRefs(5);
+  return (
+    <div className="sq-root sq-arch">
+      <section className="sq-wrap sq-arch-hero">
+        <h1>Design systems</h1>
+        <p className="sq-arch-lede">
+          All {REFERENCE_COUNT} real-company DESIGN.md references. Trust is computed from evidence, never from a
+          date stamp.
+        </p>
+      </section>
+      {/* useSearchParams needs a Suspense boundary on a prerendered page; the
+          fallback (no collection) is also the SSR output. */}
+      <Suspense fallback={<Archive systems={systems} collections={collections} stats={stats} slug={null} />}>
+        <ArchiveFromParams systems={systems} collections={collections} stats={stats} />
+      </Suspense>
+    </div>
+  );
+}
+
+function ArchiveFromParams(props: { systems: CatalogSystem[]; collections: CatalogCollection[]; stats: CatalogStats }) {
+  const slug = useSearchParams().get("collection");
+  return <Archive {...props} slug={slug} />;
+}
+
+function Archive({
+  systems,
+  collections,
+  stats,
+  slug,
+}: {
+  systems: CatalogSystem[];
+  collections: CatalogCollection[];
+  stats: CatalogStats;
+  slug: string | null;
+}) {
   const [region, setRegion] = useState<Region>("all");
   const [tier, setTier] = useState<Tier>("all");
   const [query, setQuery] = useState("");
   const q = useDeferredValue(query.trim().toLowerCase());
 
-  const regionCount = useMemo(() => {
-    const out: Record<string, number> = { all: systems.length };
-    for (const s of systems) out[s.country] = (out[s.country] ?? 0) + 1;
-    return out;
-  }, [systems]);
+  const collection = slug ? collections.find((c) => c.slug === slug) : undefined;
+  const base = useMemo(() => {
+    if (!collection) return systems;
+    const ids = new Set(collection.ids);
+    return systems.filter((ds) => ids.has(ds.refId));
+  }, [systems, collection]);
 
-  const refine = useMemo(() => {
-    return (list: CatalogSystem[]) =>
-      list.filter(
-        (s) =>
-          (region === "all" || s.country === region) &&
-          (tier === "all" || s.qualityStatus === tier) &&
-          (!q ||
-            s.name.toLowerCase().includes(q) ||
-            s.refId.toLowerCase().includes(q) ||
-            (s.native?.toLowerCase().includes(q) ?? false) ||
-            s.description.toLowerCase().includes(q)),
-      );
-  }, [region, tier, q]);
+  const matchQ = (s: CatalogSystem) =>
+    !q ||
+    s.name.toLowerCase().includes(q) ||
+    s.refId.toLowerCase().includes(q) ||
+    (s.native?.toLowerCase().includes(q) ?? false) ||
+    s.description.toLowerCase().includes(q);
+  const matchR = (s: CatalogSystem) => region === "all" || s.country === region;
+  const matchT = (s: CatalogSystem) => tier === "all" || s.qualityStatus === tier;
+
+  // Facet counts: each filter counts what the *other* filters leave.
+  const regionCount: Record<string, number> = { all: 0 };
+  const tierCount: Record<string, number> = { all: 0 };
+  for (const s of base) {
+    if (!matchQ(s)) continue;
+    if (matchT(s)) {
+      regionCount.all++;
+      regionCount[s.country] = (regionCount[s.country] ?? 0) + 1;
+    }
+    if (matchR(s)) {
+      tierCount.all++;
+      tierCount[s.qualityStatus] = (tierCount[s.qualityStatus] ?? 0) + 1;
+    }
+  }
+  const shown = base.filter((s) => matchQ(s) && matchR(s) && matchT(s));
 
   const refined = region !== "all" || tier !== "all" || q !== "";
   const reset = () => {
@@ -113,45 +164,13 @@ export function CatalogView({
     setTier("all");
     setQuery("");
   };
+  // A new filter starts again at page one.
+  const sig = `${slug ?? ""}|${region}|${tier}|${q}`;
+  const wholeVerified = tier === "verified_v2" && region === "all" && !q && !collection;
 
   return (
-    <div className="sq-arch">
-      <section className="sq-root sq-arch-hero">
-        <div className="sq-wrap">
-          <p className="sq-kick">Archive</p>
-          <h1>Design Systems</h1>
-          <p className="sq-arch-lede">
-            Browse all {REFERENCE_COUNT} real-company DESIGN.md references. Trust is computed from evidence,
-            freshness, and conflicts — never inferred from a date stamp.
-          </p>
-          <dl className="sq-arch-stats">
-            <div className="sq-v">
-              <dt>Verified v2</dt>
-              <dd>{stats.verified}</dd>
-            </div>
-            <div>
-              <dt>Partial</dt>
-              <dd>{stats.partial}</dd>
-            </div>
-            <div>
-              <dt>Legacy snapshots</dt>
-              <dd>{stats.legacy}</dd>
-            </div>
-          </dl>
-          {/*
-            * Qualifying the counts above, because "Verified v2" does not mean what a
-            * reader reasonably hears. It means the evidence graph is complete — not
-            * that there is a button documented. Same register, so it reads as a
-            * qualification of the tier, not a new metric.
-            */}
-          <p className="sq-arch-note">
-            of the verified: {stats.verifiedInteractive} carry interactive components ·{" "}
-            {stats.verifiedStateful} record per-state values
-          </p>
-        </div>
-      </section>
-
-      <section className="sq-root sq-wrap sq-arch-tools" aria-label="Filter the archive">
+    <>
+      <section className="sq-wrap sq-arch-tools" aria-label="Filter the archive">
         <label className="sq-arch-search">
           <span className="sq-sr">Search design systems</span>
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -168,188 +187,140 @@ export function CatalogView({
           />
         </label>
 
-        <div className="sq-arch-row">
-          <span className="sq-arch-lab" id="arch-region">Region</span>
-          <div className="sq-rchips" role="group" aria-labelledby="arch-region">
+        <div className="sq-arch-filters">
+          <div className="sq-seg" role="group" aria-label="Region">
             {REGIONS.map((r) => (
-              <button
-                key={r.id}
-                type="button"
-                className="sq-rchip"
-                aria-pressed={region === r.id}
-                aria-label={`${r.label} (${regionCount[r.id] ?? 0})`}
-                onClick={() => setRegion(r.id)}
-              >
-                <span className="sq-rchip-cap" aria-hidden="true">
-                  <span className={r.id === "all" ? "sq-lat" : undefined} lang={r.lang}>{r.g}</span>
-                </span>
-                <span className="sq-rchip-n" aria-hidden="true">{regionCount[r.id] ?? 0}</span>
+              <button key={r.id} type="button" aria-pressed={region === r.id} onClick={() => setRegion(r.id)}>
+                {r.label} <span className="sq-n">{regionCount[r.id] ?? 0}</span>
               </button>
             ))}
           </div>
-        </div>
-
-        <div className="sq-arch-row">
-          <span className="sq-arch-lab" id="arch-tier">Tier</span>
-          <div className="sq-seg" role="group" aria-labelledby="arch-tier">
-            {(["all", "verified_v2", "partial", "legacy_snapshot"] as Tier[]).map((t) => (
+          <div className="sq-seg" role="group" aria-label="Tier">
+            {TIERS.map((t) => (
               <button key={t} type="button" aria-pressed={tier === t} onClick={() => setTier(t)}>
-                {t === "all" ? "All" : TIER_LABEL[t]}
+                {t === "all" ? "Any tier" : TIER_LABEL[t]} <span className="sq-n">{tierCount[t] ?? 0}</span>
               </button>
             ))}
           </div>
-        </div>
-
-        <div className="sq-arch-row sq-arch-cols">
-          <span className="sq-arch-lab">Collections</span>
           {/*
-            * The former /collections/<slug> pages are now this filter; their
-            * URLs 308 to /design-systems?collection=<slug> (next.config.ts).
+            * The former /collections/<slug> pages are this menu; their URLs 308 to
+            * /design-systems?collection=<slug> (next.config.ts). Links, not a
+            * <select>, so every collection URL stays crawlable.
             */}
-          <Suspense fallback={<CollectionChips collections={collections} active={null} />}>
-            <ActiveCollectionChips collections={collections} />
-          </Suspense>
+          <CollectionMenu collections={collections} active={collection ?? null} />
         </div>
       </section>
 
       <section className="sq-wrap sq-arch-list">
-        {/* useSearchParams needs a Suspense boundary on a prerendered page;
-            the fallback is the unfiltered grid, which is also the SSR output. */}
-        <Suspense fallback={<SystemGrid systems={refine(systems)} hotRefs={hotRefs} />}>
-          <CollectionFilteredGrid
-            systems={systems}
-            collections={collections}
-            hotRefs={hotRefs}
-            refine={refine}
-            refined={refined}
-            onReset={reset}
-          />
-        </Suspense>
+        {collection ? (
+          <div className="sq-arch-coll">
+            <p>
+              <b>{collection.titleEn}</b>
+              {/* A plain anchor: the next/link soft navigation back to the bare path did not leave ?collection=. */}
+              <a href="/design-systems">Show all</a>
+            </p>
+            <p className="sq-arch-coll-intro">{collection.introEn0}</p>
+          </div>
+        ) : null}
+        <p className="sq-arch-count" role="status" aria-live="polite">
+          {shown.length === base.length ? `${base.length} references` : `${shown.length} of ${base.length} references`}
+          {wholeVerified
+            ? ` · ${stats.verifiedInteractive} carry interactive components, ${stats.verifiedStateful} record per-state values`
+            : ""}
+          {refined ? (
+            <button type="button" onClick={reset}>
+              Clear filters
+            </button>
+          ) : null}
+        </p>
+        {shown.length > 0 ? (
+          <PagedGrid key={sig} systems={shown} />
+        ) : (
+          <p className="sq-arch-empty">No reference matches these filters.</p>
+        )}
       </section>
-    </div>
+    </>
   );
 }
 
-function ActiveCollectionChips({ collections }: { collections: CatalogCollection[] }) {
-  const active = useSearchParams().get("collection");
-  return <CollectionChips collections={collections} active={active} />;
-}
-
-function CollectionChips({ collections, active }: { collections: CatalogCollection[]; active: string | null }) {
+function CollectionMenu({ collections, active }: { collections: CatalogCollection[]; active: CatalogCollection | null }) {
   return (
-    <div className="sq-cchips">
-      {collections.map((c) => (
-        <Link
-          key={c.slug}
-          href={`/design-systems?collection=${c.slug}`}
-          scroll={false}
-          aria-current={active === c.slug ? "true" : undefined}
-          onClick={() => trackCollectionOpen({ slug: c.slug, origin: "directory", colorFamily: c.colorFamily })}
-        >
-          {c.titleEn}
-        </Link>
-      ))}
-    </div>
+    <details className="sq-coll">
+      <summary>{active ? active.titleEn : "Collections"}</summary>
+      <div className="sq-coll-menu">
+        {collections.map((c) => (
+          <Link
+            key={c.slug}
+            href={`/design-systems?collection=${c.slug}`}
+            scroll={false}
+            aria-current={active?.slug === c.slug ? "true" : undefined}
+            onClick={(e) => {
+              trackCollectionOpen({ slug: c.slug, origin: "directory", colorFamily: c.colorFamily });
+              e.currentTarget.closest("details")?.removeAttribute("open");
+            }}
+          >
+            {c.titleEn}
+          </Link>
+        ))}
+      </div>
+    </details>
   );
 }
 
-function SystemGrid({ systems, hotRefs }: { systems: CatalogSystem[]; hotRefs: Set<string> }) {
+/**
+ * Every match is rendered as a link; those past the current page carry
+ * `hidden`, so the full list stays in the HTML without 100 phone screens of
+ * cards. Keyed by the filter signature, so a new filter resets to page one.
+ */
+function PagedGrid({ systems }: { systems: CatalogSystem[] }) {
+  const [limit, setLimit] = useState(PAGE);
+  const left = systems.length - limit;
   return (
-    <ul className="sq-agrid">
-      {systems.map((ds) => (
-        <ArchiveCard key={ds.refId} ds={ds} hot={hotRefs.has(ds.refId)} />
-      ))}
-    </ul>
+    <>
+      <ul className="sq-agrid">
+        {systems.map((ds, i) => (
+          <ArchiveCard key={ds.refId} ds={ds} hidden={i >= limit} />
+        ))}
+      </ul>
+      {left > 0 ? (
+        <div className="sq-arch-more">
+          <button type="button" onClick={() => setLimit((n) => n + PAGE)}>
+            Show {Math.min(PAGE, left)} more
+          </button>
+          <span>{left} left</span>
+        </div>
+      ) : null}
+    </>
   );
 }
 
-function ArchiveCard({ ds, hot }: { ds: CatalogSystem; hot: boolean }) {
-  const typeLabel = ds.type === "system" ? "Design System" : ds.type === "brand" ? "Brand Guide" : "Reference";
-  const tierClass = ds.qualityStatus === "verified_v2" ? "sq-t-v" : ds.qualityStatus === "partial" ? "sq-t-p" : "sq-t-l";
+function ArchiveCard({ ds, hidden }: { ds: CatalogSystem; hidden: boolean }) {
   return (
-    <li className="sq-ac">
+    <li className="sq-ac" hidden={hidden}>
       <Link
         href={`/design-systems/${ds.refId}`}
         className="sq-ac-link"
         onClick={() => trackDetailOpen({ reference: ds.refId, source: "directory" })}
       >
-        <span className="sq-ac-cap">
+        {/* Brand colour is content, not chrome (RESTRAINT.md R7). */}
+        <span className="sq-ac-cap" data-content-object="">
           {ds.cap ? <CssKeycap d={ds.cap} /> : null}
         </span>
         <span className="sq-ac-body">
-          <span className="sq-ac-top">
-            <span className={`sq-tier ${tierClass}`} title={ds.verifiedAt ? `Last checked ${ds.verifiedAt}` : "No checked date"}>
-              {TIER_LABEL[ds.qualityStatus]}
-            </span>
-            {hot && <StatusBadge kind="hot" />}
-            {isNewAdded(ds.added) && <StatusBadge kind="new" />}
+          <span className="sq-ac-name">
+            {ds.name}
+            {ds.qualityStatus === "verified_v2" ? (
+              <span className="sq-ac-v" title={ds.verifiedAt ? `Verified · checked ${ds.verifiedAt}` : "Verified"}>
+                <span className="sq-sr"> (verified)</span>
+              </span>
+            ) : null}
           </span>
-          <span className="sq-ac-name">{ds.name}</span>
-          <span className="sq-ac-meta">
+          <span className="sq-ac-desc">
             {ds.native ? <span lang={ds.cap?.gLang ?? undefined}>{ds.native} · </span> : null}
-            {typeLabel} · <span className="sq-mono">{ds.refId}</span>
+            {ds.description}
           </span>
-          <span className="sq-ac-desc">{ds.description}</span>
         </span>
       </Link>
-      <a
-        className="sq-ac-ext"
-        href={ds.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackExternalClick(ds.refId)}
-        aria-label={`${ds.name} ${ds.type === "reference" ? "brand" : "official"} site (opens in a new tab)`}
-      >
-        {ds.type === "reference" ? "Brand site" : "Official site"} ↗
-      </a>
     </li>
-  );
-}
-
-function CollectionFilteredGrid({
-  systems,
-  collections,
-  hotRefs,
-  refine,
-  refined,
-  onReset,
-}: {
-  systems: CatalogSystem[];
-  collections: CatalogCollection[];
-  hotRefs: Set<string>;
-  refine: (list: CatalogSystem[]) => CatalogSystem[];
-  refined: boolean;
-  onReset: () => void;
-}) {
-  const slug = useSearchParams().get("collection");
-  const collection = slug ? collections.find((c) => c.slug === slug) : undefined;
-  const base = collection ? systems.filter((ds) => new Set(collection.ids).has(ds.refId)) : systems;
-  const shown = refine(base);
-
-  return (
-    <>
-      {collection ? (
-        <div className="sq-arch-coll">
-          <p>
-            <b>{collection.titleEn}</b>
-            <span className="sq-mono">{base.length} references</span>
-            {/* A plain anchor: the next/link soft navigation back to the bare path did not leave ?collection= (also broken on production before round 2). */}
-            <a href="/design-systems">× Show all</a>
-          </p>
-          <p className="sq-arch-coll-intro">{collection.introEn0}</p>
-        </div>
-      ) : null}
-      <p className="sq-arch-count" role="status" aria-live="polite">
-        {shown.length === base.length ? `${base.length} references` : `${shown.length} of ${base.length} references`}
-        {refined ? (
-          <button type="button" onClick={onReset}>Clear filters</button>
-        ) : null}
-      </p>
-      {shown.length > 0 ? (
-        <SystemGrid systems={shown} hotRefs={hotRefs} />
-      ) : (
-        <p className="sq-arch-empty">No reference matches these filters.</p>
-      )}
-    </>
   );
 }
