@@ -5,16 +5,122 @@
  },
  "sets": {
   "default": {
-   "wide": [["kakaobank", "toss", "class101"], ["kurly", "kream", "channeltalk"], ["upbit", "socar"], ["yanolja"]],
-   "narrow": [["kakaobank", "class101", "channeltalk"], ["toss", "kurly"], ["kream"]]
+   "wide": [
+    [
+     "kakaobank",
+     "toss",
+     "class101"
+    ],
+    [
+     "kurly",
+     "kream",
+     "channeltalk"
+    ],
+    [
+     "upbit",
+     "socar"
+    ],
+    [
+     "yanolja"
+    ]
+   ],
+   "narrow": [
+    [
+     "kakaobank",
+     "class101",
+     "channeltalk"
+    ],
+    [
+     "toss",
+     "kurly"
+    ],
+    [
+     "kream"
+    ]
+   ]
   },
   "ja": {
-   "wide": [["kakaobank", "toss", "class101"], ["kurly", "kream", "channeltalk"], ["upbit", "socar", "toyota"], ["yanolja", "sakura-internet", "panasonic"]],
-   "narrow": [["kakaobank", "class101", "channeltalk"], ["toss", "kurly"], ["kream", "toyota", "sakura-internet"]]
+   "wide": [
+    [
+     "kakaobank",
+     "toss",
+     "class101"
+    ],
+    [
+     "kurly",
+     "kream",
+     "channeltalk"
+    ],
+    [
+     "upbit",
+     "socar",
+     "toyota"
+    ],
+    [
+     "yanolja",
+     "freee",
+     "sakura-internet"
+    ]
+   ],
+   "narrow": [
+    [
+     "kakaobank",
+     "class101",
+     "channeltalk"
+    ],
+    [
+     "toss",
+     "kurly"
+    ],
+    [
+     "kream",
+     "freee"
+    ],
+    [
+     "sakura-internet",
+     "toyota"
+    ]
+   ]
   },
   "zh-tw": {
-   "wide": [["kakaobank", "toss", "class101"], ["kurly", "kream", "channeltalk"], ["upbit", "socar", "eslite"], ["yanolja", "evaair", "familymart-tw"]],
-   "narrow": [["kakaobank", "class101", "channeltalk"], ["toss", "kurly"], ["kream", "eslite", "evaair"]]
+   "wide": [
+    [
+     "kakaobank",
+     "toss",
+     "class101"
+    ],
+    [
+     "kurly",
+     "kream",
+     "channeltalk"
+    ],
+    [
+     "upbit",
+     "socar",
+     "eslite"
+    ],
+    [
+     "yanolja",
+     "evaair",
+     "familymart-tw"
+    ]
+   ],
+   "narrow": [
+    [
+     "kakaobank",
+     "class101",
+     "channeltalk"
+    ],
+    [
+     "toss",
+     "kurly"
+    ],
+    [
+     "kream",
+     "eslite",
+     "evaair"
+    ]
+   ]
   }
  }
 }

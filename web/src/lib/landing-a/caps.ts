@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import manifest from "@/data/brand-svg.json";
 import heroCaps from "@/data/hero-caps.json";
+import edges from "@/data/brand-svg-edges.json";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import { contrast, legendOn } from "./contrast";
 import type { CapData, LogoCap } from "./types";
@@ -69,7 +70,14 @@ export function logoOf(id: string, prefer?: string): { src: string; variant: str
   return null;
 }
 
-const legible = (svg: string, on: string) => solidFills(svg).every((f) => contrast(f, on) >= 3);
+/* Silhouette colours (scripts/logo-edges.mjs → data/brand-svg-edges.json): the fills that
+   touch the cap. A fill inside the mark (Mercari's white m on its red box) is read against
+   the mark, not the cap. A logo with no entry falls back to every solid fill (fails closed). */
+const EDGES = (edges as { logos: Record<string, { edge: string[] }> }).logos;
+export function capFills(src: string, svg: string): string[] {
+  return EDGES[src]?.edge?.length ? EDGES[src].edge : solidFills(svg);
+}
+const legible = (src: string, svg: string, on: string) => capFills(src, svg).every((f) => contrast(f, on) >= 3);
 
 type CapSet = { wide: string[][]; narrow: string[][] };
 const SETS = heroCaps.sets as Record<string, CapSet>;
@@ -95,7 +103,7 @@ export function heroCapsFor(locale: SiteLocale | undefined, cap: (id: string) =>
     const logo = logoOf(id, VARIANTS[id]);
     // gradient or raster artwork has colours the 3:1 check cannot read: it goes on the pale tint only
     const unchecked = logo ? /url\(#|<image\b/.test(logo.svg) : false;
-    const capHex = logo ? (unchecked ? [paleOf(d.hex)] : [d.hex, paleOf(d.hex)]).find((h) => legible(logo.svg, h)) : undefined;
+    const capHex = logo ? (unchecked ? [paleOf(d.hex)] : [d.hex, paleOf(d.hex)]).find((h) => legible(logo.src, logo.svg, h)) : undefined;
     if (logo && capHex) {
       const ratio = viewBoxRatio(logo.svg);
       out.push({ ...base, kind: "logo", src: logo.src, ratio, wide: logo.variant !== "symbol" && ratio > 1.6, hex: capHex, on: legendOn(capHex) });

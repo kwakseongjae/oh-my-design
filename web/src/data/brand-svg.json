@@ -1,8 +1,8 @@
 {
  "schema_version": 3,
  "generated_at": "2026-06-02",
- "note": "Subset of the brand-svg collection (branch feat/brand-svg-gallery, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change.",
- "count": 11,
+ "note": "Subset of the brand-svg collection (branches feat/brand-svg-gallery and feat/brand-svg-jp, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change.",
+ "count": 16,
  "records": [
   {
    "id": "banksalad",
@@ -61,6 +61,52 @@
     }
    },
    "default_variant": "symbol"
+  },
+  {
+   "id": "coconala",
+   "name": "coconala",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/coconala/combined.svg",
+     "source": "Official site (coconala.com)",
+     "source_url": "https://d377jvr5bdab5d.cloudfront.net/_ccui/coconala-logo.DZW7uiIk.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official CDN asset used for identification only.",
+     "license_url": "https://d377jvr5bdab5d.cloudfront.net/_ccui/coconala-logo.DZW7uiIk.svg",
+     "attribution": "coconala Inc.",
+     "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Live header logo on coconala.com (coconala UI-kit CDN); favicon.svg shows the same prism mark (as an app icon).",
+     "risk_tier": "med",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "freee",
+   "name": "freee",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/freee/combined.svg",
+     "source": "Official site (freee.co.jp)",
+     "source_url": "https://www.freee.co.jp/static/1f4f72049d0c1690b533cb60cbe6468f/logo.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://www.freee.co.jp/static/1f4f72049d0c1690b533cb60cbe6468f/logo.svg",
+     "attribution": "freee K.K.",
+     "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Live header logo on www.freee.co.jp (swallow mark + freee logotype).",
+     "risk_tier": "med",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "combined"
   },
   {
    "id": "kakaobank",
@@ -136,6 +182,75 @@
     }
    },
    "default_variant": "wordmark"
+  },
+  {
+   "id": "mercari",
+   "name": "Mercari",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/mercari/symbol.svg",
+     "source": "Official site (jp.mercari.com)",
+     "source_url": "https://jp.mercari.com/",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official service-site asset used for identification only.",
+     "license_url": "https://jp.mercari.com/",
+     "attribution": "Mercari, Inc.",
+     "usage_note": "공식 서비스 사이트 헤더 로고의 심볼 요소(형상 무변경 추출) · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Inline header logo (data-testid=\"mercari-logo\") on jp.mercari.com, the Mercari marketplace. The three mark elements (red box, blue dot, white m), which have explicit fills, were kept byte-for-byte. The logotype elements are coloured by a CSS variable and were dropped, not recoloured. viewBox tightened. The same mark is the Mercari app icon.",
+     "risk_tier": "med",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
+   "id": "pixiv",
+   "name": "pixiv",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/pixiv/wordmark.svg",
+     "source": "Official CDN (s.pximg.net)",
+     "source_url": "https://s.pximg.net/soy/pixiv-web-next//_static/newLogo2025.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official CDN asset used for identification only.",
+     "license_url": "https://s.pximg.net/soy/pixiv-web-next//_static/newLogo2025.svg",
+     "attribution": "pixiv Inc.",
+     "usage_note": "공식 CDN 2025 신규 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Live header logo on www.pixiv.net; matches the new logo pixiv introduced from 2025-01-28 (file name newLogo2025).",
+     "risk_tier": "med",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "smarthr",
+   "name": "SmartHR",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/smarthr/combined.svg",
+     "source": "Official site (smarthr.jp)",
+     "source_url": "https://smarthr.jp/_astro/SmartHR_Logo.BP8K-tat.svg",
+     "license": "brand-asset-official",
+     "license_note": "SmartHR publishes a logo policy (developer.smarthr.jp/design/logo-policy.pdf); logo-use enquiries go to SmartHR. Identification use only.",
+     "license_url": "https://developer.smarthr.jp/design/logo-policy.pdf",
+     "attribution": "SmartHR, Inc.",
+     "usage_note": "공식 사이트 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Live header logo on smarthr.jp; same lockup as smarthr.design/images/logo_smarthr.svg (SmartHR Design System).",
+     "risk_tier": "med",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "combined"
   },
   {
    "id": "socar",

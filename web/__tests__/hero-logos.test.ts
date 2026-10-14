@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { capData, getHeroCaps, getLandingData } from "@/lib/landing-a/data.server";
-import { paleOf, solidFills, svgText } from "@/lib/landing-a/caps";
+import { capFills, paleOf, svgText } from "@/lib/landing-a/caps";
+import edges from "@/data/brand-svg-edges.json";
 import { contrast } from "@/lib/landing-a/contrast";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
@@ -26,22 +27,33 @@ describe("hero keycaps", () => {
     expect(getHeroCaps("ko").map((c) => c.id)).toEqual(caps.map((c) => c.id));
   });
 
-  it("ja / zh-tw add 2–3 native glyph caps of verified refs from that region, and keep the logo caps", () => {
+  it("ja / zh-tw keep the nine KR logo caps and add three verified caps from that region", () => {
+    const kr = getHeroCaps("en").map((c) => c.id);
     for (const [loc, cc] of [["ja", "JP"], ["zh-tw", "TW"]] as const) {
       const caps = getHeroCaps(loc);
-      const glyphs = caps.filter((c) => c.kind === "glyph");
-      expect(glyphs.length, loc).toBeGreaterThanOrEqual(2);
-      expect(glyphs.length, loc).toBeLessThanOrEqual(3);
-      expect(caps.filter((c) => c.kind === "logo").length, loc).toBe(9);
-      for (const g of glyphs) {
+      expect(kr.every((id) => caps.find((c) => c.id === id)?.kind === "logo"), loc).toBe(true);
+      const local = caps.filter((c) => !kr.includes(c.id));
+      expect(local.length, loc).toBe(3);
+      for (const g of local) {
         expect(REGISTRY_BY_ID[g.id].country, g.id).toBe(cc);
         expect(REFERENCE_QUALITY_BY_ID[g.id].status, g.id).toBe("verified_v2");
-        expect(/[぀-ヿ㐀-鿿]/.test(g.g), `${g.id} native glyph ${g.g}`).toBe(true);
         expect(g.row >= 0, `${g.id} shown on desktop`).toBe(true);
       }
-      expect(glyphs.filter((g) => g.mrow >= 0).length, `${loc} glyph caps on phone`).toBeGreaterThanOrEqual(2);
+      const glyphs = local.filter((c) => c.kind === "glyph");
+      for (const g of glyphs) expect(/[぀-ヿ㐀-鿿]/.test(g.g), `${g.id} native glyph ${g.g}`).toBe(true);
       expect(new Set(glyphs.map((g) => g.g)).size, `${loc} distinct glyphs`).toBe(glyphs.length);
+      expect(local.filter((g) => g.mrow >= 0).length, `${loc} local caps on phone`).toBeGreaterThanOrEqual(2);
     }
+  });
+
+  it("/ja: freee's official logo reads on its pale cap", () => {
+    const ja = getHeroCaps("ja");
+    expect(ja.find((c) => c.id === "freee")?.kind).toBe("logo");
+  });
+
+  it("every manifest variant has measured silhouette colours (run scripts/logo-edges.mjs after adding a logo)", () => {
+    const logos = (edges as { logos: Record<string, unknown> }).logos;
+    for (const r of manifest.records) for (const v of Object.values(r.variants)) expect(logos["/" + (v as { ref: string }).ref], (v as { ref: string }).ref).toBeTruthy();
   });
 
   it("every locale shows ≥ 8 caps on desktop and ≥ 5 on phone; every id in the data resolves", () => {
@@ -62,7 +74,7 @@ describe("hero keycaps", () => {
       const v = Object.values(rec.variants).find((x) => "/" + x.ref === c.src) as { source: string; license: string } | undefined;
       expect(v?.source && v.license, c.id).toBeTruthy();
       expect(rec.risk_tier, c.id).not.toBe("high");
-      for (const f of solidFills(svgText(c.src)!)) expect(contrast(f, c.hex), `${c.id} ${f} on ${c.hex}`).toBeGreaterThanOrEqual(3);
+      for (const f of capFills(c.src, svgText(c.src)!)) expect(contrast(f, c.hex), `${c.id} ${f} on ${c.hex}`).toBeGreaterThanOrEqual(3);
     }
   });
 
