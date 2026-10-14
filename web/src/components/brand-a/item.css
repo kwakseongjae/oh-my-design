@@ -150,3 +150,6 @@
   .sq-rel ul{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:360px){.sq-ih h1{font-size:32px}}
+/* narrow phones: the preview header name (text-5xl) must not push the page sideways (kakaobank @320) */
+@media (max-width:420px){.sq-item-pv-in .text-5xl{font-size:clamp(28px,9vw,48px);overflow-wrap:anywhere;min-width:0}}
+@media (max-width:359px){.sq-item-pv-in .grid{grid-template-columns:minmax(0,1fr)}.sq-item-pv-in .grid>*{min-width:0}}
