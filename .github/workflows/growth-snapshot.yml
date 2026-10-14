@@ -21,7 +21,9 @@ name: Growth Snapshot
 #                                  (GITHUB_TOKEN cannot be granted Administration, which the
 #                                  traffic endpoints require)
 #   secret   OMD_KV_REST_API_URL   Upstash REST URL of the production KV
-#   secret   OMD_KV_REST_API_TOKEN Upstash REST token (the read-only token is enough: PFCOUNT)
+#   secret   OMD_KV_REST_API_TOKEN Upstash REST token. The script only runs PFCOUNT, so the
+#                                  read-only token should do; confirm with one local
+#                                  pull-active.mjs run using it, else use the full token.
 
 on:
   schedule:
