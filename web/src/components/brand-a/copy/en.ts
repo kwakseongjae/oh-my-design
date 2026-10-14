@@ -34,7 +34,7 @@ export const EN = {
     "label": "Companies engraved on the keyboard. Each key opens its DESIGN.md."
   },
   "gen": {
-    "h2": "Watch a screen stream out of a DESIGN.md",
+    "h2": "From DESIGN.md to screen",
     "intro": "Pick a company. The same screen restyles from its file alone.",
     "replay": "Replay",
     "m": {
@@ -76,15 +76,33 @@ export const EN = {
     }
   },
   "use": {
-    "h2": "Hand it to your agent",
-    "p": "Copy a reference's DESIGN.md into your project root. Or install the skills and let your agent pick one.",
-    "skills": "{skills} skills ship with the CLI, including omd-init, omd-apply and omd-feel.",
+    "h2": "Start with the omd CLI",
+    "p": "One command installs the skills, the sub-agents and the reference catalog into Claude Code, Codex and OpenCode. This is what it printed in an empty project.",
+    "panel": "Terminal output",
+    "note": "Real output of oh-my-design-cli {ver}, run on {date} in an empty project.",
+    "gap": "{n} lines left out",
+    "skills": [
+      [
+        "omd-init",
+        "Sets up DESIGN.md from the closest real-company reference."
+      ],
+      [
+        "omd-apply",
+        "Applies your DESIGN.md to every UI change your agent makes."
+      ],
+      [
+        "omd-feel",
+        "Applies or audits 113 measured interface-feel rules."
+      ],
+      [
+        "omd-cjk-type-shader",
+        "Renders a CJK headline as sumi ink on hanji."
+      ]
+    ],
+    "all": "All {skills} skills on GitHub",
     "copy": "Copy",
     "copied": "Copied",
     "failed": "Copy failed"
-  },
-  "why": {
-    "statement": "A gallery shows what a site looks like. OmD records where each value came from, and leaves out what nobody measured."
   },
   "faq": {
     "h2": "Questions",

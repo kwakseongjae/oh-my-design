@@ -1,0 +1,49 @@
+{
+ "note": "Real terminal output of oh-my-design-cli 2.0.3 (npx, published package), captured 2026-10-14 in an empty project (package.json only), macOS. Lines are verbatim; `elided` marks lines left out (the per-file 'created' list of the install run). doctor ran with PLAYWRIGHT_BROWSERS_PATH pointed at an empty folder so no personal cache path is printed. Raw captures: docs/research/2026-10-13-rebrand/impl/r5/cli/.",
+ "version": "2.0.3",
+ "captured": "2026-10-14",
+ "runs": [
+  {
+   "cmd": "npx oh-my-design-cli@latest",
+   "lines": [
+    "┌  omd install-skills  (.)"
+   ],
+   "elided": 386,
+   "tail": [
+    "└  Done. 30 skills · 20 sub-agents · 4 hooks · 521 catalog refs ready (178 changed · 0 already current)."
+   ]
+  },
+  {
+   "cmd": "npx oh-my-design-cli@latest doctor",
+   "lines": [
+    "┌  omd doctor  (.)",
+    "│",
+    "◆  Claude Code  30 skills · 20 sub-agents · 521 references",
+    "│",
+    "◆  Codex  30 skills · 20 sub-agents · 521 references",
+    "│",
+    "◆  OpenCode  30 skills · 20 sub-agents · 521 references",
+    "│",
+    "◆  Render checks: Google Chrome channel — /Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "│",
+    "▲  Bundle installed, but this project has no DESIGN.md yet.",
+    "│",
+    "◇  Next ─────────────────────────────────────────────────────────────────────────────────╮",
+    "│                                                                                        │",
+    "│  Activate this project:                                                                │",
+    "│                                                                                        │",
+    "│    EN  Set up our design system — Toss-style, for a family meal-tracking app.          │",
+    "│    KR  토스 스타일로 가족 식단 공유 앱 디자인 시스템 잡아줘                                                  │",
+    "│                                                                                        │",
+    "│  Start a new agent session after install or upgrade so skills are reloaded.            │",
+    "│  Codex also requires the project to be trusted before project-local roles are loaded.  │",
+    "│                                                                                        │",
+    "├────────────────────────────────────────────────────────────────────────────────────────╯",
+    "│",
+    "└  One prompt away from activation."
+   ],
+   "elided": 0,
+   "tail": []
+  }
+ ]
+}

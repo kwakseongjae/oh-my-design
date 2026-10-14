@@ -325,9 +325,17 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
                 onClick={() => apply(x.id, true)}
                 onKeyDown={(e) => onPickKey(e, i)}
               >
+                {x.logo ? (
+                  /* genuine logo (brand-svg.json), never recoloured, on a white tile in both themes */
+                  <span className="sq-jk sq-jk-logo" aria-hidden="true">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={x.logo} alt="" width={22} height={22} loading="lazy" decoding="async" />
+                  </span>
+                ) : (
                 <span className={`sq-jk${/^\d/.test(g) ? " sq-dg" : ""}`} lang={/^\d/.test(g) || !/[぀-ヿ㐀-鿿가-힣]/.test(g) ? "en" : { KR: "ko", JP: "ja", TW: "zh-Hant" }[x.cc] ?? "en"} style={{ "--sw": pri, "--on": onColor(pri) } as CSSProperties} aria-hidden="true">
                   {g}
                 </span>
+                )}
                 <span lang={x.nLang}>{x.name}</span>
                 <small>{x.cc}</small>
               </button>

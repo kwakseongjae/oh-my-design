@@ -36,7 +36,7 @@ export const KO: BrandCopy = {
     "label": "키보드에 새긴 회사들. 키를 누르면 그 회사의 DESIGN.md가 열려요."
   },
   "gen": {
-    "h2": "DESIGN.md에서 화면이 흘러나오는 과정",
+    "h2": "DESIGN.md에서 화면까지의 여정",
     "intro": "회사를 고르면 같은 화면이 그 회사 파일만으로 다시 그려져요.",
     "replay": "다시 보기",
     "m": {
@@ -78,15 +78,33 @@ export const KO: BrandCopy = {
     }
   },
   "use": {
-    "h2": "에이전트에게 건네기",
-    "p": "레퍼런스의 DESIGN.md를 복사해 프로젝트 루트에 두세요. 스킬을 설치하면 에이전트가 직접 골라 줘요.",
-    "skills": "CLI에는 omd-init, omd-apply, omd-feel을 포함한 스킬 {skills}개가 들어 있어요.",
+    "h2": "omd CLI로 시작하기",
+    "p": "명령어 하나로 스킬, 서브에이전트, 레퍼런스 카탈로그가 Claude Code·Codex·OpenCode에 설치돼요. 아래는 빈 프로젝트에서 실제로 출력된 내용이에요.",
+    "panel": "터미널 출력",
+    "note": "oh-my-design-cli {ver}을 {date}에 빈 프로젝트에서 실행한 실제 출력이에요.",
+    "gap": "{n}줄 생략",
+    "skills": [
+      [
+        "omd-init",
+        "가장 가까운 실제 기업 레퍼런스로 DESIGN.md를 세팅해요."
+      ],
+      [
+        "omd-apply",
+        "에이전트가 UI를 고칠 때마다 DESIGN.md를 적용해요."
+      ],
+      [
+        "omd-feel",
+        "수치로 정리한 인터페이스 디테일 규칙 113개로 다듬거나 점검해요."
+      ],
+      [
+        "omd-cjk-type-shader",
+        "한중일 큰 제목을 한지에 번진 먹처럼 그려요."
+      ]
+    ],
+    "all": "스킬 {skills}개 모두 보기 (GitHub)",
     "copy": "복사",
     "copied": "복사했어요",
     "failed": "복사하지 못했어요"
-  },
-  "why": {
-    "statement": "갤러리는 사이트의 겉모습을 보여 줘요. OmD는 값 하나하나의 출처를 기록하고, 아무도 재지 않은 값은 적지 않아요."
   },
   "faq": {
     "h2": "자주 묻는 질문",

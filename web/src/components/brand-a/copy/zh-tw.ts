@@ -36,7 +36,7 @@ export const ZH_TW: BrandCopy = {
     "label": "刻在鍵盤上的企業。按下按鍵，就會打開它的 DESIGN.md。"
   },
   "gen": {
-    "h2": "看畫面從 DESIGN.md 裡流出來",
+    "h2": "從 DESIGN.md 到畫面的旅程",
     "intro": "選一家企業，同一個畫面就只用它的檔案重新繪製。",
     "replay": "重播",
     "m": {
@@ -78,15 +78,33 @@ export const ZH_TW: BrandCopy = {
     }
   },
   "use": {
-    "h2": "交給你的 AI 程式助理",
-    "p": "複製參考的 DESIGN.md，放到專案根目錄。安裝技能後，助理也能幫你挑選。",
-    "skills": "CLI 內含 {skills} 個技能，包括 omd-init、omd-apply 與 omd-feel。",
+    "h2": "從 omd CLI 開始",
+    "p": "一行指令，就把技能、子代理與參考資料庫裝進 Claude Code、Codex 和 OpenCode。下面是它在空專案裡實際印出的內容。",
+    "panel": "終端機輸出",
+    "note": "oh-my-design-cli {ver} 於 {date} 在空專案中執行的實際輸出。",
+    "gap": "省略 {n} 行",
+    "skills": [
+      [
+        "omd-init",
+        "從最接近的真實企業參考建立 DESIGN.md。"
+      ],
+      [
+        "omd-apply",
+        "助理每次修改 UI 時，都套用你的 DESIGN.md。"
+      ],
+      [
+        "omd-feel",
+        "用 113 條量化的介面細節規則來打磨或檢查。"
+      ],
+      [
+        "omd-cjk-type-shader",
+        "把中日韓大標題畫成在宣紙上暈開的墨跡。"
+      ]
+    ],
+    "all": "在 GitHub 查看全部 {skills} 個技能",
     "copy": "複製",
     "copied": "已複製",
     "failed": "無法複製"
-  },
-  "why": {
-    "statement": "圖庫讓你看到網站的樣子；OmD 記錄每個數值從哪裡來，沒有人量過的數值就不寫。"
   },
   "faq": {
     "h2": "常見問題",

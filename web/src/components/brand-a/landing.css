@@ -4,10 +4,14 @@
  * (h1 / 18 / 16), one accent (gamboge, on the main action only), no rules or eyebrows;
  * space separates sections. Gen-UI styles live in gen-ui.css.
  */
-/* Hero posters per theme: every locale shows the same logo keyboard, so one set.
-   --k3p desktop (1440), --k3pm phone (390). Rendered from the live scene (impl/r4/posters.mjs). */
+/* Hero posters per theme and cap set (data/hero-caps.json: default for en/ko, ja, zh-tw).
+   --k3p desktop (1440), --k3pm phone (390). Rendered from the live scene (scripts/hero-posters.mjs). */
 :root{--k3p:url(/brand-a/hero-logos-light.webp);--k3pm:url(/brand-a/hero-logos-light-m.webp)}
 .dark{--k3p:url(/brand-a/hero-logos-dark.webp);--k3pm:url(/brand-a/hero-logos-dark-m.webp)}
+.sq-k3[data-set="ja"]{--k3p:url(/brand-a/hero-logos-ja-light.webp);--k3pm:url(/brand-a/hero-logos-ja-light-m.webp)}
+.dark .sq-k3[data-set="ja"]{--k3p:url(/brand-a/hero-logos-ja-dark.webp);--k3pm:url(/brand-a/hero-logos-ja-dark-m.webp)}
+.sq-k3[data-set="zh-tw"]{--k3p:url(/brand-a/hero-logos-zh-tw-light.webp);--k3pm:url(/brand-a/hero-logos-zh-tw-light-m.webp)}
+.dark .sq-k3[data-set="zh-tw"]{--k3p:url(/brand-a/hero-logos-zh-tw-dark.webp);--k3pm:url(/brand-a/hero-logos-zh-tw-dark-m.webp)}
 
 :where(.sq-root) button,:where(.sq-root) select,:where(.sq-root) input{font:inherit;color:inherit}
 :where(.sq-root) code,:where(.sq-root) pre,:where(.sq-root) code[lang]{font-family:var(--sq-f-mono)}
@@ -64,29 +68,43 @@
 .sq-k3-ring.sq-on{opacity:1}
 .sq-k3-name{position:absolute;transform:translate(-50%,-100%);padding:5px 10px;background:var(--sq-ink);color:var(--sq-paper);font-size:14px;font-weight:650;white-space:nowrap;pointer-events:none}
 
-/* ---- sections: one idea each, separated by space ---- */
-.sq-sec{padding-top:168px}
+/* ---- sections (round 5): one boundary system — full-bleed sections alternate paper and
+   a quiet band (--sq-cell), each with the same padding top and bottom and one h2 at the
+   same size and place. No rules, eyebrows or numbers. Inside a band, panels that sit on
+   --sq-cell move to paper so they still read as panels. ---- */
+.sq-sec{padding-block:128px}
+.sq-band{background:var(--sq-cell)}
+.sq-band>*{--sq-cell:var(--sq-paper)}
 :where(.sq-root) h2{font-size:clamp(30px,3.4vw,48px);line-height:1.14;letter-spacing:-0.028em;font-weight:760;max-width:22em}
 :where(.sq-root) :lang(ko) h2{line-height:1.32;letter-spacing:-0.025em}
 :where(.sq-root) :lang(ja) h2,:where(.sq-root) :lang(zh-Hant) h2{line-height:1.35;font-weight:700;letter-spacing:.01em}
 .sq-intro{margin-top:16px;font-size:18px;color:var(--sq-ink-2);max-width:40em}
 #reference .sq-g5{margin-top:48px}
 
-.sq-use .sq-cmd{display:flex;align-items:stretch;margin-top:48px;max-width:760px;background:var(--sq-cell)}
-.sq-cmd code{flex:1;min-width:0;padding:22px 24px;font-size:clamp(17px,1.9vw,24px);font-weight:500;overflow-wrap:anywhere;line-height:1.35}
+/* the omd CLI: real output in one quiet panel, four published skills beside it */
+.sq-use-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:56px;margin-top:48px;align-items:start}
+.sq-term{min-width:0;background:var(--sq-cell)}
+.sq-term-cmd{display:flex;align-items:stretch}
+.sq-term-cmd code{flex:1;min-width:0;padding:14px 20px 4px;font-size:14px;font-weight:600;overflow-wrap:anywhere;line-height:1.5}
+.sq-term-main code{padding:20px 20px;font-size:clamp(16px,1.6vw,20px);font-weight:500}
+.sq-term-main{background:color-mix(in srgb,var(--sq-ink) 5%,transparent)}
+.sq-term-ps{color:var(--sq-ink-2)}
+.sq-term-out{margin:0;padding:8px 20px 12px;overflow-x:auto;font:400 12.5px/1.55 var(--sq-f-mono);color:var(--sq-ink);white-space:pre;tab-size:2}
+.sq-term-out code{font:inherit}
+.sq-term-gap{font-family:var(--sq-f-latin),sans-serif;font-size:13px;line-height:2;color:var(--sq-ink-2)}
+@media (min-width:901px){.sq-term-out{white-space:pre-wrap;overflow-wrap:anywhere}}
+.sq-term-note{padding:4px 20px 18px;font-size:13px;color:var(--sq-ink-2)}
+.sq-skills ul{list-style:none;display:grid;gap:28px}
+.sq-skills li a{font-size:18px;font-weight:700;text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:5px}
+.sq-skills li a:hover{text-decoration-color:currentColor}
+.sq-skills li p{margin-top:6px;font-size:16px;color:var(--sq-ink-2)}
 .sq-copy{all:unset;cursor:pointer;flex-shrink:0;padding:0 24px;font-size:16px;font-weight:700;display:flex;align-items:center}
 .sq-copy:hover{background:color-mix(in srgb,var(--sq-ink) 6%,transparent)}
 .sq-copy:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-3px}
 .sq-copy.sq-ok{color:var(--sq-ok)}
-.sq-skills-line{margin-top:20px;font-size:16px;color:var(--sq-ink-2)}
+.sq-skills-line{margin-top:36px;font-size:16px;color:var(--sq-ink-2)}
 .sq-skills-line a{text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:4px}
 .sq-skills-line a:hover{color:var(--sq-ink);text-decoration-color:currentColor}
-
-/* the page's one deliberate rest: one large statement */
-.sq-why{padding-top:200px;padding-bottom:40px}
-.sq-statement{font-size:clamp(28px,3.6vw,52px);line-height:1.25;letter-spacing:-0.025em;font-weight:720;max-width:20em}
-:where(.sq-root) :lang(ko) .sq-statement{line-height:1.4;word-break:keep-all}
-:where(.sq-root) :lang(ja) .sq-statement,:where(.sq-root) :lang(zh-Hant) .sq-statement{line-height:1.5;font-weight:700;letter-spacing:.01em}
 
 .sq-faq{margin-top:32px;max-width:860px}
 .sq-faq summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(0,1fr) 16px;gap:16px;align-items:center;padding:18px 0;font-size:18px;font-weight:650}
@@ -110,13 +128,14 @@
   .sq-k3.sq-poster{background-image:var(--k3pm)}
   .sq-k3.sq-poster:not(.sq-placed){background:none}
   .sq-sheet{min-height:300px}
-  .sq-sec{padding-top:104px}
+  .sq-sec{padding-block:88px}
   :where(.sq-root) h2{font-size:clamp(26px,7vw,34px)}
   .sq-intro{font-size:16px}
-  .sq-use .sq-cmd{margin-top:28px}
-  .sq-cmd code{padding:16px}
+  .sq-use-grid{grid-template-columns:1fr;gap:40px;margin-top:28px}
+  .sq-term-main code{padding:16px}
+  .sq-term-cmd code,.sq-term-out,.sq-term-note{padding-left:16px;padding-right:16px}
+  .sq-term-out{font-size:11.5px}
   .sq-copy{padding:0 16px}
-  .sq-why{padding-top:120px}
   .sq-faq summary{font-size:16px}
   .sq-faq details p{padding-right:0;font-size:15px}
 }

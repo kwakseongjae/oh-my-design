@@ -8,6 +8,8 @@
 .sq-g5-chip[aria-checked="true"]{border-color:var(--sq-ink);background:var(--sq-ink);color:var(--sq-paper)}
 .sq-g5-chip small{font:600 10.5px/1 var(--sq-f-latin),sans-serif;opacity:.6}
 .sq-jk{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:var(--sw);color:var(--on);font-size:15px;font-weight:760;line-height:1;box-shadow:inset 0 2px 2px color-mix(in srgb,#fff 40%,transparent),inset 0 -3px 0 color-mix(in srgb,#000 22%,transparent),0 2px 4px -1px rgba(0,0,0,.25)}
+.sq-jk-logo{background:#ffffff}
+.sq-jk-logo img{width:22px;height:22px;object-fit:contain;display:block}
 .sq-jk:lang(ja){font-family:var(--sq-f-ja)}
 .sq-jk:lang(zh-Hant){font-family:var(--sq-f-tc)}
 .sq-jk:lang(en){font-family:var(--sq-f-latin),sans-serif}
