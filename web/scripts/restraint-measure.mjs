@@ -21,7 +21,7 @@ const { chromium } = require("playwright-core");
 const sharp = require("sharp");
 
 const [base = "http://127.0.0.1:3480", out = "restraint.json", label = ""] = process.argv.slice(2);
-const ROUTES = ["/", "/ko", "/design-systems/toss", "/design-systems"];
+const ROUTES = ["/", "/ko", "/ja", "/zh-tw", "/design-systems/toss", "/design-systems"];
 const SIZES = [[1440, 900], [390, 844]];
 
 const browser = await chromium.launch({ headless: true, channel: "chromium", args: ["--use-angle=metal", "--enable-gpu", "--ignore-gpu-blocklist"] });
@@ -32,7 +32,7 @@ for (const route of ROUTES) for (const [w, h] of SIZES) {
   const p = await ctx.newPage();
   await p.goto(base.replace(/\/$/, "") + route, { waitUntil: "networkidle", timeout: 120000 });
   await p.evaluate(() => document.fonts.ready);
-  if (route === "/" || route === "/ko") await p.waitForSelector("#k3.sq-live", { timeout: 20000 }).catch(() => {});
+  if (["/", "/ko", "/ja", "/zh-tw"].includes(route)) await p.waitForSelector("#k3.sq-live", { timeout: 20000 }).catch(() => {});
   await p.waitForTimeout(1200);
   const m = await p.evaluate(() => {
     const VW = innerWidth, VH = innerHeight;
