@@ -141,6 +141,7 @@ export function DetailView({
 }) {
   const [mobileView, setMobileView] = useState<MobileView>("preview");
   const [copied, setCopied] = useState(false);
+  const [wide, setWide] = useState(false);
   const drawerRef = useRef<HTMLDetailsElement>(null);
 
   // Fire page-view analytics once per mount.
@@ -218,182 +219,162 @@ export function DetailView({
 
   return (
     <div className="sq-item">
-      {/* Reference bar. The site header (and its one theme control) comes from
-          design-systems/layout.tsx; this bar carries no second toggle. */}
-      <div className="sq-root sq-item-bar">
-        <div className="sq-wrap sq-item-bar-in">
-          <Link href="/design-systems" className="sq-crumb">
-            <span aria-hidden="true">←</span> Archive
-          </Link>
-          <span className="sq-crumb-sep" aria-hidden="true">/</span>
-          <BrandChip refId={detail.id} logo={logo} name={displayName} primary={detail.primary} />
-          <span className="sq-item-bar-act">
-            <ReferenceShareButton reference={detail.id} location="ref_detail" compact />
-            {/* Jump to the hand-off block. A plain anchor, no event: the
-                actions inside #use carry the analytics. */}
-            <a href="#use" className="sq-btn-primary">
-              Use DESIGN.md
-            </a>
-            {ds && (
-              <a href={ds.url} target="_blank" rel="noopener noreferrer" onClick={externalClick} className="sq-btn-ghost">
-                Official site <span aria-hidden="true">↗</span>
-              </a>
+      {/* First screen: who it is, the one-line summary, one main action and one
+          quiet one. The site header (and its one theme control) comes from
+          design-systems/layout.tsx. Restraint pass r4 (RESTRAINT.md §4). */}
+      <section className="sq-root sq-ih">
+        <div className="sq-wrap sq-ih-in">
+          <p className="sq-ih-kick">
+            <Link href="/design-systems" className="sq-crumb">
+              <span aria-hidden="true">←</span> Archive
+            </Link>
+            {/* The page's one tier mark. */}
+            <span className={`sq-tier ${tierClass}`}>{tierLabel}</span>
+          </p>
+          <div className="sq-ih-head">
+            {cap ? (
+              <span className="sq-item-cap">
+                <CssKeycap d={cap} />
+              </span>
+            ) : (
+              <BrandTile logo={logo} name={displayName} primary={detail.primary} />
             )}
-          </span>
-        </div>
-      </div>
-
-      <section className="sq-root sq-item-hero">
-        <div className="sq-wrap sq-item-hero-in">
-          <div className="sq-item-id">
-            <div className="sq-item-head">
-              {cap ? (
-                <span className="sq-item-cap">
-                  <CssKeycap d={cap} />
-                </span>
-              ) : null}
-              <div className="min-w-0">
-                <p className="sq-item-kick">
-                  <span className={`sq-tier ${tierClass}`}>{tierLabel}</span>
-                  <span className="sq-mono">{detail.id}</span>
-                </p>
-                {/* The page's one <h1>. ReferencePreview's brand name and the embedded
-                    DESIGN.md title are not headings at this level. */}
-                <h1>{name} design system</h1>
-              </div>
-            </div>
-
-            {/* Answer-first summary (#5) — the extractable lead Claude/Brave cite,
-                before the full DESIGN.md dump. The labeled facts below are the visible
-                backing for the page's FAQ structured data. */}
-            {summary && (
-              <>
-                <p className="sq-item-sum">{summary}</p>
-                {evidenceBoundary ? (
-                  <p className="sq-item-bound">
-                    <b>Evidence boundary:</b> {evidenceBoundary}
-                  </p>
-                ) : null}
-                <dl className="sq-item-facts">
-                  <div>
-                    <dt>Primary</dt>
-                    <dd>
-                      <span className="sq-item-sw" style={{ background: detail.primary }} aria-hidden="true" />
-                      {detail.primary}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Typography</dt>
-                    <dd>
-                      {detail.fontFamily}
-                      {detail.mono ? ` · ${detail.mono}` : ""}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Radius</dt>
-                    <dd>{detail.radius}</dd>
-                  </div>
-                </dl>
-              </>
-            )}
-
+            {/* The page's one <h1>. ReferencePreview's brand name and the embedded
+                DESIGN.md title are not headings at this level. */}
+            <h1>{name} design system</h1>
           </div>
-
-          <UseSection
-            refId={detail.id}
-            name={name}
-            promptBrand={displayName}
-            copied={copied}
-            onCopy={copyMd}
-            onDownload={downloadMd}
-          />
-            {summary && (
-              /* id + scroll margin: the landing's "verified" tier links here
-                 (/design-systems/toss#evidence) as its one real evidence example. */
-              <div id="evidence" className="sq-evi sq-item-evi">
-                <div className="sq-evi-head">
-                  <h2>Evidence snapshot</h2>
-                  <span className="sq-mono">{quality.status.replaceAll("_", " ")}</span>
-                </div>
-                <dl className="sq-evi-grid">
-                  <div>
-                    <dt>Claims grounded</dt>
-                    <dd>
-                      {quality.evidenceClaimCount}/{quality.claimCount} · {evidencePercent}%
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Sources</dt>
-                    <dd>
-                      {quality.surfaceCount} surfaces · {quality.sourceCount} sources
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>UI font basis</dt>
-                    <dd>{fontBasis ?? "unresolved"}</dd>
-                  </div>
-                  {/*
-                    * Interactive count, not just the total: 31 of 440 references carry
-                    * one component or none and nothing interactive — all verified_v2,
-                    * because that tier means the evidence graph is complete, not that
-                    * there is a button to look at.
-                    */}
-                  <div>
-                    <dt>Components</dt>
-                    <dd>
-                      {componentCount === 0 ? (
-                        "none documented"
-                      ) : (
-                        <>
-                          {componentCount} documented
-                          {" · "}
-                          {interactiveCount === 0
-                            ? "none interactive"
-                            : `${interactiveCount} interactive${statedCount > 0 ? `, ${statedCount} with states` : ""}`}
-                        </>
-                      )}
-                    </dd>
-                  </div>
-                </dl>
-                {(quality.reasonCodes.length > 0 || advisories.length > 0 || quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY)) && (
-                  <details className="sq-drawer" ref={drawerRef}>
-                    <summary>What the evidence does not cover</summary>
-                    {quality.reasonCodes.length > 0 && (
-                      <p className="sq-drawer-codes">
-                        Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
-                      </p>
-                    )}
-                    {advisories.length > 0 && (
-                      <div className="sq-drawer-sec">
-                        <p className="sq-drawer-lab">Not backed by evidence</p>
-                        <ul>
-                          {advisories.map((code) => (
-                            <li key={code}>
-                              {advisoryText(code)}
-                              {/* The measured share, where we have it — a bare "most were not
-                                  found" invites the reader to guess. */}
-                              {code.startsWith("palette_") && quality.paletteGrounding !== null && (
-                                <span className="sq-mono"> ({Math.round(quality.paletteGrounding * 100)}% found)</span>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY) && (
-                      <p className="sq-drawer-sec">
-                        The motion values in this reference were not observed in a capture — and neither
-                        were anyone&rsquo;s. No design system we checked publishes a duration or easing
-                        scale; Toss states outright that its component motion lives in the Figma UI Kit
-                        rather than in its documentation. Treat any exact curve here as a local default.
-                      </p>
-                    )}
-                  </details>
-                )}
-              </div>
-            )}
+          {/* Answer-first summary (#5) — the extractable lead Claude/Brave cite,
+              before the full DESIGN.md. */}
+          {summary ? <p className="sq-item-sum">{summary}</p> : null}
+          <div className="sq-ih-acts">
+            <button type="button" onClick={copyMd} className="sq-btn-primary sq-btn-lg">
+              {copied ? "Copied" : "Copy DESIGN.md"}
+            </button>
+            <button type="button" onClick={downloadMd} className="sq-btn-quiet">
+              Download
+            </button>
+            <span className="sr-only" role="status" aria-live="polite">
+              {copied ? "DESIGN.md copied" : ""}
+            </span>
+          </div>
         </div>
       </section>
+
+      <div className="sq-root sq-wrap sq-ib">
+        <UseSection
+          refId={detail.id}
+          name={name}
+          promptBrand={displayName}
+          ds={ds}
+          onExternal={externalClick}
+        />
+        {summary && (
+          /* id + scroll margin: the landing's "verified" tier links here
+             (/design-systems/toss#evidence) as its one real evidence example.
+             The spec values and the evidence snapshot are one quiet row. */
+          <section id="evidence" className="sq-evi" aria-labelledby="evi-heading">
+            <h2 id="evi-heading">Evidence</h2>
+            {evidenceBoundary ? (
+              <p className="sq-item-bound">
+                <b>Evidence boundary:</b> {evidenceBoundary}
+              </p>
+            ) : null}
+            <dl className="sq-evi-row">
+              <div>
+                <dt>Primary</dt>
+                <dd>
+                  <span className="sq-item-sw" style={{ background: detail.primary }} aria-hidden="true" />
+                  {detail.primary}
+                </dd>
+              </div>
+              <div>
+                <dt>Typography</dt>
+                <dd>
+                  {detail.fontFamily}
+                  {detail.mono ? ` · ${detail.mono}` : ""}
+                </dd>
+              </div>
+              <div>
+                <dt>Radius</dt>
+                <dd>{detail.radius}</dd>
+              </div>
+              <div>
+                <dt>Claims grounded</dt>
+                <dd>
+                  {quality.evidenceClaimCount}/{quality.claimCount} · {evidencePercent}%
+                </dd>
+              </div>
+              <div>
+                <dt>Sources</dt>
+                <dd>
+                  {quality.surfaceCount} surfaces · {quality.sourceCount} sources
+                </dd>
+              </div>
+              <div>
+                <dt>UI font basis</dt>
+                <dd>{fontBasis ?? "unresolved"}</dd>
+              </div>
+              {/*
+                * Interactive count, not just the total: 31 of 440 references carry
+                * one component or none and nothing interactive — all verified_v2,
+                * because that tier means the evidence graph is complete, not that
+                * there is a button to look at.
+                */}
+              <div>
+                <dt>Components</dt>
+                <dd>
+                  {componentCount === 0 ? (
+                    "none documented"
+                  ) : (
+                    <>
+                      {componentCount} documented
+                      {" · "}
+                      {interactiveCount === 0
+                        ? "none interactive"
+                        : `${interactiveCount} interactive${statedCount > 0 ? `, ${statedCount} with states` : ""}`}
+                    </>
+                  )}
+                </dd>
+              </div>
+            </dl>
+            {(quality.reasonCodes.length > 0 || advisories.length > 0 || quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY)) && (
+              <details className="sq-drawer" ref={drawerRef}>
+                <summary>What the evidence does not cover</summary>
+                {quality.reasonCodes.length > 0 && (
+                  <p className="sq-drawer-codes">
+                    Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
+                  </p>
+                )}
+                {advisories.length > 0 && (
+                  <div className="sq-drawer-sec">
+                    <p className="sq-drawer-lab">Not backed by evidence</p>
+                    <ul>
+                      {advisories.map((code) => (
+                        <li key={code}>
+                          {advisoryText(code)}
+                          {/* The measured share, where we have it — a bare "most were not
+                              found" invites the reader to guess. */}
+                          {code.startsWith("palette_") && quality.paletteGrounding !== null && (
+                            <span> ({Math.round(quality.paletteGrounding * 100)}% found)</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY) && (
+                  <p className="sq-drawer-sec">
+                    The motion values in this reference were not observed in a capture — and neither
+                    were anyone&rsquo;s. No design system we checked publishes a duration or easing
+                    scale; Toss states outright that its component motion lives in the Figma UI Kit
+                    rather than in its documentation. Treat any exact curve here as a local default.
+                  </p>
+                )}
+              </details>
+            )}
+          </section>
+        )}
+      </div>
 
       {/* Mobile pane toggle */}
       <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label="Show">
@@ -405,18 +386,24 @@ export function DetailView({
         </button>
       </div>
 
-      {/* Desktop: 2-col grid; Mobile: single-pane toggle */}
-      <div className="sq-wrap sq-item-body">
+      {/* Desktop: 2-col grid (or one wide reading column); Mobile: single-pane toggle */}
+      <div className={`sq-wrap sq-item-body${wide ? " sq-wide" : ""}`}>
         {/* Markdown pane — desktop visible always; mobile only when selected */}
-        <section className={`sq-item-md ${mobileView === "markdown" ? "" : "sq-m-hide"}`} aria-label="DESIGN.md">
-          <p className="sq-pane-lab">DESIGN.md</p>
-          <Markdown content={detail.designMd} demoteH1 />
+        <section className={`sq-item-md ${mobileView === "markdown" ? "" : "sq-m-hide"}`} aria-labelledby="md-heading">
+          <div className="sq-md-head">
+            <h2 id="md-heading">DESIGN.md</h2>
+            <button type="button" className="sq-btn-quiet sq-md-w" onClick={() => setWide((w) => !w)} aria-pressed={wide}>
+              {wide ? "Narrow text" : "Wide text"}
+            </button>
+          </div>
+          <div className="sq-md-body">
+            <Markdown content={detail.designMd} demoteH1 />
+          </div>
         </section>
 
         {/* Preview pane — desktop sticky; mobile only when selected */}
         <section className={`sq-item-pv ${mobileView === "preview" ? "" : "sq-m-hide"}`} aria-label="Preview">
           <div className="sq-item-pv-in">
-            <p className="sq-pane-lab">Preview</p>
             <ReferencePreview tokens={tokens} logo={logo} embedded />
           </div>
         </section>
@@ -426,77 +413,56 @@ export function DetailView({
 }
 
 /**
- * `#use` — the hand-off block and the page's primary action panel. Composes the
- * page's existing actions rather than re-implementing them: copy/download come
- * from DetailView (ds_export + act_handoff), and the install command and first
- * prompt are <InstallCta> (act_install_copy / act_prompt_copy, surface=ref_detail).
+ * `#use` — the hand-off block, just below the first screen. Copy and Download
+ * live in the first screen (ds_export); this block holds the install command
+ * and the first prompt (<InstallCta>, act_install_copy / act_prompt_copy,
+ * surface=ref_detail) and a quiet row with the raw file, the official site and
+ * share. Every action has exactly one placement on the page.
  */
 function UseSection({
   refId,
   name,
   promptBrand,
-  copied,
-  onCopy,
-  onDownload,
+  ds,
+  onExternal,
 }: {
   refId: string;
   name: string;
   /** Brand label for the first prompt — unchanged from the former sticky bar. */
   promptBrand: string;
-  copied: boolean;
-  onCopy: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onDownload: () => void;
+  ds: DesignSystemInfo | null;
+  onExternal: () => void;
 }) {
   return (
     <section id="use" aria-labelledby="use-heading" className="sq-use">
       <h2 id="use-heading">Use the {name} DESIGN.md</h2>
-      <p className="sq-use-sub">Put the file at your project root and give your coding agent the first prompt.</p>
-
-      <ol className="sq-steps">
-        <li>
-          <span className="sq-step-k" aria-hidden="true">1</span>
-          <span className="sq-step-b">
-            <span className="sq-step-t">Get the file</span>
-            <span className="sq-use-acts">
-              <button type="button" onClick={onCopy} className="sq-btn-primary">
-                {copied ? "Copied" : "Copy DESIGN.md"}
-              </button>
-              <button type="button" onClick={onDownload} className="sq-btn-ghost">
-                Download
-              </button>
-              {/* Raw twin — clean markdown URL agents can fetch directly. */}
-              <a
-                href={`/${refId}/design.md`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackRawMdOpen(refId)}
-                className="sq-btn-ghost"
-              >
-                Raw .md
-              </a>
-              <span className="sr-only" role="status" aria-live="polite">
-                {copied ? "DESIGN.md copied" : ""}
-              </span>
-            </span>
-          </span>
-        </li>
-      </ol>
+      <p className="sq-use-sub">Put the file at your project root, install the skills, and give your coding agent the first prompt.</p>
       <InstallCta variant="panel" source="ref_detail" reference={refId} brandName={promptBrand} />
+      <p className="sq-use-more">
+        {/* Raw twin — clean markdown URL agents can fetch directly. */}
+        <a href={`/${refId}/design.md`} target="_blank" rel="noopener noreferrer" onClick={() => trackRawMdOpen(refId)}>
+          Raw .md
+        </a>
+        {ds && (
+          <a href={ds.url} target="_blank" rel="noopener noreferrer" onClick={onExternal}>
+            Official site <span aria-hidden="true">↗</span>
+          </a>
+        )}
+        <ReferenceShareButton reference={refId} location="ref_detail" compact />
+      </p>
     </section>
   );
 }
 
 /**
- * Compact brand chip for the reference bar — logo + name on a primary-tinted
- * square tile.
+ * Brand tile for references without a keycap — the logo on a primary-tinted
+ * square. The name is the h1 beside it, so the tile carries no label of its own.
  */
-function BrandChip({
-  refId,
+function BrandTile({
   logo,
   name,
   primary,
 }: {
-  refId: string;
   logo: LogoRef | null;
   name: string;
   primary: string;
@@ -508,8 +474,7 @@ function BrandChip({
   const raster = isRasterLogo(logo);
 
   return (
-    <span className="sq-bchip">
-      <span className="sq-bchip-t" style={{ background: primary + "18" }}>
+    <span className="sq-bchip-t" style={{ background: primary + "18" }}>
         {src ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -522,11 +487,6 @@ function BrandChip({
         ) : (
           <span>{name.charAt(0).toUpperCase()}</span>
         )}
-      </span>
-      <span className="sq-bchip-n">
-        <b>{name}</b>
-        <span className="sq-mono">{refId}</span>
-      </span>
     </span>
   );
 }

@@ -124,47 +124,42 @@ export function InstallCta({
   );
 
   if (variant === "panel") {
-    // Concept A item page (#use): numbered steps, the command and the whole
-    // first prompt readable rather than truncated. Same buttons' handlers, so
+    // Concept A item page (#use): two plain rows, no step numbering (restraint
+    // pass r4) — the command and the whole first prompt readable rather than
+    // truncated. Same buttons' handlers, so
     // act_install_copy / act_prompt_copy keep meaning one control each.
     const mark = (kind: "install" | "prompt") =>
       copyState?.kind === kind ? (copyState.status === "copied" ? "Copied" : "Copy failed") : "Copy";
     return (
       <>
-      <ol className="sq-steps" start={2}>
-        <li>
-          <span className="sq-step-k" aria-hidden="true">2</span>
-          <span className="sq-step-b">
-            <span className="sq-step-t">Install the skills</span>
+      <div className="sq-hand">
+        <div className="sq-hand-row">
+          <p className="sq-hand-t">Install the skills</p>
+          <button
+            type="button"
+            className="sq-cmd"
+            onClick={(event) => copy("install", INSTALL_CMD, event.currentTarget)}
+            aria-label="Copy install command"
+          >
+            <code>{INSTALL_CMD}</code>
+            <span className="sq-cmd-c">{mark("install")}</span>
+          </button>
+        </div>
+        {promptText ? (
+          <div className="sq-hand-row">
+            <p className="sq-hand-t">Give your agent the first prompt</p>
             <button
               type="button"
-              className="sq-cmd"
-              onClick={(event) => copy("install", INSTALL_CMD, event.currentTarget)}
-              aria-label="Copy install command"
+              className="sq-cmd sq-cmd-p"
+              onClick={(event) => copy("prompt", promptText, event.currentTarget)}
+              aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
             >
-              <code>{INSTALL_CMD}</code>
-              <span className="sq-cmd-c">{mark("install")}</span>
+              <span>&ldquo;{promptText}&rdquo;</span>
+              <span className="sq-cmd-c">{mark("prompt")}</span>
             </button>
-          </span>
-        </li>
-        {promptText ? (
-          <li>
-            <span className="sq-step-k" aria-hidden="true">3</span>
-            <span className="sq-step-b">
-              <span className="sq-step-t">Give your agent the first prompt</span>
-              <button
-                type="button"
-                className="sq-cmd sq-cmd-p"
-                onClick={(event) => copy("prompt", promptText, event.currentTarget)}
-                aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
-              >
-                <span>&ldquo;{promptText}&rdquo;</span>
-                <span className="sq-cmd-c">{mark("prompt")}</span>
-              </button>
-            </span>
-          </li>
+          </div>
         ) : null}
-      </ol>
+      </div>
       {status}
       </>
     );
