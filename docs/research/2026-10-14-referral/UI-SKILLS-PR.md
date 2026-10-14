@@ -36,7 +36,7 @@ under the owner's GitHub account, and the main session confirms with the owner f
 | `omd-feel` | Interface-feel rules with numbers and sources. Inherits Jakub Krehel's make-interfaces-feel-better, which ui-skills already lists (`craft`, `interaction`, `visual`). Its 113 rules carry a provenance tier that sets enforcement. | **Yes** |
 | `omd-cjk-type-shader` | One shader effect for a CJK display headline; the text stays real DOM text; WebGL2 with static fallback and reduced-motion; English SKILL.md; Apache-2.0 dependency pinned. Nothing in the registry covers CJK typography. | **Yes** |
 | `omd-apply` | Applies a project `DESIGN.md` to UI work. Strong idea, but the SKILL.md is Korean-first, 433 lines, and routes to OmD's own specialist roles, so it reads as part of a harness rather than a standalone skill. | Optional, second PR |
-| `omd-restraint` | Not in `skills/` on any branch as of 2026-10-14. | No |
+| `omd-restraint` | Released in 2.0.4 (merged into this branch late on 2026-10-14). Measures "too busy": rules R1–R15 (one focal element ≥ 2× the next, ≤ 5 first-screen pieces, ≤ 4 type sizes, ≤ 2 hero CTAs, ≥ 65% first-screen empty area …) with an audit script. Fits `visual`/`craft`/`taste`, but its SKILL.md is Korean-first (112 Korean lines) and it is hours old with no outside use. | Optional; better as a follow-up once it has a run or two |
 | `hangul` | Untracked in the owner's checkout, not on `main`. Strongest CJK candidate; the weekly publisher audit picks it up once it ships. | Later |
 
 Risk to state honestly in the PR: `omd-feel/SKILL.md` mixes Korean and English (its `reference.md`
@@ -77,7 +77,7 @@ Append inside `registrySource` (they group by publisher; a new publisher goes at
   },
 ```
 
-Optional third entry (separate PR, only if the owner wants it):
+Optional entries (separate PR, only if the owner wants them):
 
 ```ts
   {
@@ -92,6 +92,20 @@ Optional third entry (separate PR, only if the owner wants it):
     topics: ["systems", "visual", "color"],
     description:
       "Read the project's DESIGN.md before any UI change and use only its tokens for components, color, type and spacing, treating unknown values as absent instead of inventing them.",
+  },
+  {
+    slug: "omd-restraint",
+    user: "kwakseongjae",
+    repo: "oh-my-design",
+    rawUrl:
+      "https://raw.githubusercontent.com/kwakseongjae/oh-my-design/main/skills/omd-restraint/SKILL.md",
+    githubUrl:
+      "https://github.com/kwakseongjae/oh-my-design/blob/main/skills/omd-restraint/SKILL.md",
+    files: ["references/benchmarks.md"],
+    name: "omd-restraint",
+    topics: ["visual", "craft", "taste"],
+    description:
+      "Audit or apply restraint as measured rules: one focal element at least twice the next, at most five first-screen pieces, four type sizes and two hero CTAs, one accent, and at least 65% empty first-screen area, each rule tagged by evidence grade.",
   },
 ```
 
