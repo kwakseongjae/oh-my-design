@@ -172,7 +172,7 @@ const check = program
   .command('check')
   .description('Run a bundled deterministic page check against rendered HTML (render integrity, landing-craft rules, text contrast).');
 
-function bundledToolAction(id: 'check:render' | 'check:landing' | 'check:contrast' | 'font:inline' | 'showcase' | 'setup:detect', path: string[]) {
+function bundledToolAction(id: 'check:render' | 'check:landing' | 'check:contrast' | 'check:restraint' | 'font:inline' | 'showcase' | 'setup:detect', path: string[]) {
   return async () => {
     const { passthroughArgs, runBundledTool } = await import('../src/cli/check.js');
     const code = runBundledTool(id, passthroughArgs(path));
@@ -203,6 +203,14 @@ check
   .allowUnknownOption()
   .allowExcessArguments()
   .action(bundledToolAction('check:contrast', ['check', 'contrast']));
+
+check
+  .command('restraint')
+  .description('Restraint rules R1–R13 (omd-restraint): focal ratio, first-screen pieces, type sizes, words, CTAs, accents, borders, empty share, thin screens, page length — at desktop and phone widths.')
+  .argument('<target>', 'URL or rendered HTML file (tool flags such as --json / --out / --kind / --exclude are passed through)')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('check:restraint', ['check', 'restraint']));
 
 const font = program
   .command('font')

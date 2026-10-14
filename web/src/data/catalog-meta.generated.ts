@@ -4,5 +4,5 @@
 // REFERENCE_COUNT = REGISTRY.length, emitted as a literal so client components can
 // print the count without bundling the 2 MB registry.
 export const REFERENCE_COUNT = 521;
-export const SKILL_COUNT = 30;
+export const SKILL_COUNT = 31;
 export const SUBAGENT_COUNT = 20;
