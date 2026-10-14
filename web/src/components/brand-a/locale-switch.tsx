@@ -106,6 +106,7 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
         className="sq-lp-btn"
         aria-haspopup="dialog"
         aria-expanded={open}
+        aria-label={cur ? `${cur.label} — ${t.lang}` : undefined}
         onClick={show}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -113,7 +114,6 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
           <path d="M1.8 8h12.4M8 1.6c-2 2.2-2 10.6 0 12.8M8 1.6c2 2.2 2 10.6 0 12.8" fill="none" stroke="currentColor" strokeWidth="1.3" />
         </svg>
         <span lang={cur?.htmlLang}>{cur ? cur.label : t.lang}</span>
-        {cur ? <span className="sq-sr">{` — ${t.lang}`}</span> : null}
       </button>
       <dialog
         ref={dlg}
