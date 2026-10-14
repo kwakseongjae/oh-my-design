@@ -33,6 +33,7 @@ function pageDescription(locale: DocsLocale, page: DocsPage): string {
     case "workflows": return dictionary.workflows.lead;
     case "demo": return dictionary.demo.lead;
     case "skills": return dictionary.skills.lead;
+    case "shadcn": return dictionary.shadcn.lead;
     case "anti-slop": return dictionary.antiSlop.lead;
     case "showcase": return dictionary.showcase.lead;
     case "troubleshooting": return dictionary.troubleshooting.lead;

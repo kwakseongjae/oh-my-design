@@ -8,6 +8,7 @@ export const DOC_PAGES = [
   "demo",
   "workflows",
   "skills",
+  "shadcn",
   "anti-slop",
   "showcase",
   "troubleshooting",

@@ -673,6 +673,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 - [Live demo runbook](https://oh-my-design.kr/docs/en/demo): 5-, 15-, and 30-minute truthful demo formats
 - [AI slop definition and comparisons](https://oh-my-design.kr/docs/en/anti-slop): observable criteria, before/after examples, and the OmD review direction
+- [OmD reference + shadcn skill](https://oh-my-design.kr/docs/en/shadcn): where to get a real DESIGN.md for shadcn's skill (`npx skills add shadcn/ui`), what carries over (tokens, Known Gaps, labelled font fallback) and the measured limits
 - [Documentation](https://oh-my-design.kr/docs/en): how the harness works in detail
 - [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references; each reference page copies or downloads its DESIGN.md and gives the install command and a first prompt
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)

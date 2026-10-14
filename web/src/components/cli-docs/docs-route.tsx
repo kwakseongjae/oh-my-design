@@ -26,6 +26,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CopyCode } from "./copy-code";
 import { DocsShell } from "./docs-shell";
 import { AntiSlopPage } from "./anti-slop-page";
+import { ShadcnRecipePage } from "./shadcn-recipe-page";
 
 type TocItem = { id: string; label: string };
 
@@ -57,6 +58,14 @@ export function getDocsToc(dictionary: CliDocsDictionary, page: DocsPage): TocIt
       return [
         ...dictionary.skills.groups.map((group, index) => ({ id: `skill-group-${index + 1}`, label: group.title })),
         { id: "skill-routing", label: dictionary.skills.routingTitle },
+      ];
+    case "shadcn":
+      return [
+        { id: "answer", label: dictionary.shadcn.answerTitle },
+        { id: "steps", label: dictionary.shadcn.stepsTitle },
+        { id: "carries", label: dictionary.shadcn.carryTitle },
+        { id: "limits", label: dictionary.shadcn.limitsTitle },
+        { id: "evidence", label: dictionary.shadcn.evidenceTitle },
       ];
     case "anti-slop":
       return [
@@ -96,6 +105,7 @@ export function CliDocsRoute({ locale, page }: { locale: DocsLocale; page: DocsP
       {page === "demo" && <DemoPage dictionary={dictionary} />}
       {page === "workflows" && <WorkflowsPage dictionary={dictionary} />}
       {page === "skills" && <SkillsPage dictionary={dictionary} />}
+      {page === "shadcn" && <ShadcnRecipePage dictionary={dictionary} />}
       {page === "anti-slop" && <AntiSlopPage dictionary={dictionary} />}
       {page === "showcase" && <ShowcasePage dictionary={dictionary} />}
       {page === "troubleshooting" && <TroubleshootingPage dictionary={dictionary} />}

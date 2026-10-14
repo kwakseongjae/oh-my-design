@@ -1,4 +1,5 @@
 import type { DocsLocale, DocsPage } from "@/lib/docs/locales";
+import { SHADCN_RECIPE, type ShadcnRecipeCopy } from "./docs-shadcn-recipe";
 
 export const CLI_INSTALL_COMMAND = "npx oh-my-design-cli@latest";
 export const CLI_DOCTOR_COMMAND = "npx oh-my-design-cli@latest doctor";
@@ -315,7 +316,14 @@ export interface CliDocsDictionary {
     catalogTitle: string;
     catalogBody: string;
   };
+  /** /docs/<locale>/shadcn — copy lives in ./docs-shadcn-recipe.ts. */
+  shadcn: ShadcnRecipeCopy;
 }
+
+/** A locale before the shadcn recipe (kept in its own file) is merged in. */
+type BaseDictionary = Omit<CliDocsDictionary, "nav" | "shadcn"> & {
+  nav: Record<Exclude<DocsPage, "shadcn">, string>;
+};
 
 const sharedSkillIds = {
   system: ["omd:init", "omd:apply", "omd:sync", "omd:update", "omd:setup", "omd:remember", "omd:learn", "omd:taste"],
@@ -325,7 +333,7 @@ const sharedSkillIds = {
   evidence: ["omd:reference-capture"],
 } as const;
 
-const en: CliDocsDictionary = {
+const en: BaseDictionary = {
   localeName: "English",
   metaDescription: "Install oh-my-design, give your AI coding agent quality-graded design context, and ship a real interface with auditable workflows.",
   ui: {
@@ -734,7 +742,7 @@ const en: CliDocsDictionary = {
   },
 };
 
-const ko: CliDocsDictionary = {
+const ko: BaseDictionary = {
   ...en,
   localeName: "한국어",
   metaDescription: "oh-my-design을 설치하고 AI 코딩 에이전트에 품질 등급이 표시된 디자인 맥락을 연결해 실제 화면을 만드는 방법을 안내합니다.",
@@ -1083,9 +1091,9 @@ const ko: CliDocsDictionary = {
 function translatedLocale(
   localeName: string,
   metaDescription: string,
-  nav: Record<DocsPage, string>,
-  patches: Pick<CliDocsDictionary, "ui" | "overview" | "gettingStarted" | "demo" | "workflows" | "skills" | "antiSlop" | "showcase" | "troubleshooting" | "ai">,
-): CliDocsDictionary {
+  nav: BaseDictionary["nav"],
+  patches: Pick<BaseDictionary, "ui" | "overview" | "gettingStarted" | "demo" | "workflows" | "skills" | "antiSlop" | "showcase" | "troubleshooting" | "ai">,
+): BaseDictionary {
   return { localeName, metaDescription, nav, ...patches };
 }
 
@@ -1780,10 +1788,15 @@ const zhTw = translatedLocale(
   },
 );
 
+function withRecipe(base: BaseDictionary, locale: DocsLocale): CliDocsDictionary {
+  const recipe = SHADCN_RECIPE[locale];
+  return { ...base, nav: { ...base.nav, shadcn: recipe.navLabel }, shadcn: recipe };
+}
+
 export const CLI_DOCS: Record<DocsLocale, CliDocsDictionary> = {
-  en,
-  ko,
-  ja,
-  "zh-cn": zhCn,
-  "zh-tw": zhTw,
+  en: withRecipe(en, "en"),
+  ko: withRecipe(ko, "ko"),
+  ja: withRecipe(ja, "ja"),
+  "zh-cn": withRecipe(zhCn, "zh-cn"),
+  "zh-tw": withRecipe(zhTw, "zh-tw"),
 };
