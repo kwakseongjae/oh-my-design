@@ -14,6 +14,9 @@ export const KO: BrandCopy = {
     "docs": "문서",
     "github": "GitHub",
     "lang": "언어",
+    "langTitle": "언어 선택",
+    "close": "닫기",
+    "langNames": {"en":"영어", "ko":"한국어", "ja":"일본어", "zh-tw":"중국어 번체"},
     "theme": "테마 바꾸기",
     "skip": "본문으로 건너뛰기"
   },

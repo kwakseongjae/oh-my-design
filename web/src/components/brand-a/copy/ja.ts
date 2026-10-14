@@ -14,6 +14,9 @@ export const JA: BrandCopy = {
     "docs": "ドキュメント",
     "github": "GitHub",
     "lang": "言語",
+    "langTitle": "言語を選ぶ",
+    "close": "閉じる",
+    "langNames": {"en":"英語", "ko":"韓国語", "ja":"日本語", "zh-tw":"繁体字中国語"},
     "theme": "テーマを切り替え",
     "skip": "本文へ移動"
   },

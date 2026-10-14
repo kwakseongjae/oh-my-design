@@ -14,6 +14,9 @@ export const ZH_TW: BrandCopy = {
     "docs": "文件",
     "github": "GitHub",
     "lang": "語言",
+    "langTitle": "選擇語言",
+    "close": "關閉",
+    "langNames": {"en":"英文", "ko":"韓文", "ja":"日文", "zh-tw":"繁體中文"},
     "theme": "切換主題",
     "skip": "跳到主要內容"
   },

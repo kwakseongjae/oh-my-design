@@ -45,6 +45,8 @@ export const LANDING_LANGUAGE_ALTERNATES: Readonly<Record<string, string>> = {
 
 /** Cookie holding an explicit locale choice from the switcher. */
 export const LOCALE_COOKIE = "omd-lang";
+/** sessionStorage note the language picker leaves for the next landing: {from, to, t}; the hero keyboard drops in the caps new to `to`. */
+export const LOCALE_SWITCH_KEY = "omd-loc-switch";
 
 export function isSiteLocale(v: string | null | undefined): v is SiteLocale {
   return !!v && (SITE_LOCALES as readonly string[]).includes(v);

@@ -12,6 +12,9 @@ export const EN = {
     "docs": "Docs",
     "github": "GitHub",
     "lang": "Language",
+    "langTitle": "Choose a language",
+    "close": "Close",
+    "langNames": {"en":"English", "ko":"Korean", "ja":"Japanese", "zh-tw":"Traditional Chinese"},
     "theme": "Switch theme",
     "skip": "Skip to content"
   },

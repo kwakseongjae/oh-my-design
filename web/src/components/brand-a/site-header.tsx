@@ -62,7 +62,7 @@ export function SiteHeaderA({
         <nav className="sq-menu" aria-label="Main">{links}</nav>
         <div className="sq-tools">
           {extra}
-          {locales ? <LocaleSwitch current={current} label={t.lang} origin={origin} /> : null}
+          {locales ? <LocaleSwitch current={current} t={t} origin={origin} /> : null}
           <ThemeToggle label={t.theme} />
         </div>
       </div>
