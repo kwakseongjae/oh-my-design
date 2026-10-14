@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ManageConsentButton } from "@/components/manage-consent-button";
 
-const UPDATED = "June 18, 2026";
+const UPDATED = "October 14, 2026";
 
 export const metadata: Metadata = {
   title: "Privacy — oh-my-design",
@@ -105,14 +105,21 @@ export default function PrivacyPage() {
             counters store only an event name and a reference ID — nothing about
             you.
           </p>
+          <p>
+            <strong className="font-medium text-foreground">Vercel Web Analytics</strong> counts page views
+            with the page, the referring site, country, and device type. It sets no
+            cookie and stores nothing in your browser; Vercel tells visits apart with
+            a hash of the request that it discards after 24 hours. Choosing Decline
+            turns it off as well.
+          </p>
         </Section>
 
         <Section title="Who processes the data">
           <p>
             We use <strong className="font-medium text-foreground">Google Analytics</strong> and{" "}
             <strong className="font-medium text-foreground">Mixpanel</strong> for analytics, plus{" "}
-            <strong className="font-medium text-foreground">Vercel</strong> and{" "}
-            <strong className="font-medium text-foreground">Upstash</strong> for hosting and counters, and{" "}
+            <strong className="font-medium text-foreground">Vercel</strong> (hosting and cookieless page-view analytics) and{" "}
+            <strong className="font-medium text-foreground">Upstash</strong> (counters), and{" "}
             <strong className="font-medium text-foreground">OpenRouter</strong> to compute embeddings for the connector&apos;s
             vibe search. We also use{" "}
             <strong className="font-medium text-foreground">Google Search Console</strong> to see aggregated, anonymized search

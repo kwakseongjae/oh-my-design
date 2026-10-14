@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ManageConsentButton } from "@/components/manage-consent-button";
 
-const UPDATED = "2026년 6월 18일";
+const UPDATED = "2026년 10월 14일";
 
 export const metadata: Metadata = {
   title: "개인정보 처리방침 — oh-my-design",
@@ -79,7 +79,9 @@ export default function PrivacyKoPage() {
           <p>이용 행태 이벤트(페이지·레퍼런스 조회, select/generate/download/copy),
             쿠키 및 브라우저 로컬스토리지 식별자. 동의 배너 노출 판단을 위한
             대략적 국가(EEA 여부 판별용)는 서버에서 일시적으로만 확인하며 저장하지
-            않습니다. IP 주소는 Mixpanel 및 자체 카운터에 저장하지 않습니다.</p>
+            않습니다. IP 주소는 Mixpanel 및 자체 카운터에 저장하지 않습니다.
+            Vercel Web Analytics는 페이지 조회 시 페이지 경로, 유입 경로(리퍼러),
+            국가, 기기 유형만 집계하며 쿠키나 브라우저 저장소를 쓰지 않습니다.</p>
         </Section>
 
         <Section n={3} title="개인정보의 처리 및 보유 기간">
@@ -94,7 +96,7 @@ export default function PrivacyKoPage() {
           <ul className="ml-4 list-disc space-y-1">
             <li>Google LLC (Google Analytics, Search Console) — 이용 통계 및 검색 성과 분석</li>
             <li>Mixpanel, Inc. — 제품 이용 행태 분석</li>
-            <li>Vercel, Inc. — 웹사이트 호스팅</li>
+            <li>Vercel, Inc. — 웹사이트 호스팅 및 쿠키 없는 페이지 조회 통계(Web Analytics)</li>
             <li>Upstash, Inc. — 인기 레퍼런스 집계(개인정보 미포함)</li>
             <li>OpenRouter, Inc. — 커넥터 vibe 검색용 임베딩 계산(검색어 미저장)</li>
           </ul>
@@ -132,6 +134,9 @@ export default function PrivacyKoPage() {
             저장을 거부할 수 있으며,{" "}
             <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">Google Analytics 옵트아웃 애드온</a>{" "}
             으로 분석 수집을 차단할 수 있습니다.</p>
+          <p>Vercel Web Analytics는 쿠키를 설치하지 않으며, 방문 구분에 쓰는 요청
+            해시는 Vercel이 24시간 후 폐기합니다. 배너에서 거부하면 이 집계도
+            중단됩니다.</p>
           <p>이미 동의하셨더라도 언제든{" "}
             <ManageConsentButton label="분석 동의 설정 다시 열기" />
             를 통해 철회(처리정지)할 수 있습니다.</p>
