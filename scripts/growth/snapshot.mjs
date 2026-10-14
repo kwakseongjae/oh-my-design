@@ -4,6 +4,16 @@
 //   node scripts/growth/snapshot.mjs             collect and append one line
 //   node scripts/growth/snapshot.mjs --dry-run   collect and print, write nothing
 //
+// Flags (used by CI)
+//   --public-only   collect only already-public sources (github repo stats, npm, skills_sh);
+//                   skip GitHub traffic and active users, and write no full record
+//   --quiet         do not print the record to stdout (public repo => public Actions logs)
+//   --strict        exit 3 after writing if any attempted source failed
+// Env
+//   GROWTH_METRICS_FILE  where the full record goes (default data/growth/metrics.jsonl).
+//                        Full records hold private stats: local file or a PRIVATE repo only.
+//   GROWTH_PUBLIC_FILE   also append the public projection (schema "public-1") here
+//
 // Run it at least once a week. GitHub keeps repo traffic (views, clones,
 // referrers) for only 14 days and then discards it, so a gap longer than two
 // weeks is unrecoverable. Each line stores the per-day buckets, so consecutive
@@ -12,15 +22,23 @@
 //
 // Sources. Each fails independently: its field becomes null, an entry is added
 // to `errors`, and the line is still appended. Exit code is non-zero only if the
-// append itself fails.
+// append itself fails (or, with --strict, exit 3 after writing when a source failed).
 //   github          gh api repos/<repo>              stars, forks, watchers, open issues
 //   github_traffic  gh api repos/<repo>/traffic/...  views, clones, popular referrers
 //   npm             api.npmjs.org point stats        last-week, last-month
 //   skills_sh       skills.sh repo page              per-skill installs + total (server-rendered)
 //   active          scripts/analytics/pull-active.mjs   Upstash DAU / WAU / MAU (complete UTC days)
 //
-// Needs: gh CLI logged in with push access to the repo (traffic API), and
-// OMD_KV_REST_API_URL + OMD_KV_REST_API_TOKEN in web/.env.local (active only).
+// Needs: gh CLI authenticated (GH_TOKEN env, or `gh auth login` locally). The traffic API
+// needs a token with repository Administration: read — a fine-grained PAT; an Actions
+// GITHUB_TOKEN cannot be granted that permission, so in CI repo stats work and traffic
+// fails cleanly until the GH_TRAFFIC_TOKEN secret exists. Active needs
+// OMD_KV_REST_API_URL + OMD_KV_REST_API_TOKEN in env or web/.env.local.
+//
+// CI: .github/workflows/growth-snapshot.yml runs this weekly. The public projection goes to
+// this repo's public `growth-data` branch; the full record goes to a separate private repo
+// only when METRICS_REPO + METRICS_REPO_TOKEN are configured, otherwise private sources are
+// not collected at all.
 // Side effect: pull-active.mjs refreshes the gitignored data/analytics/raw/active.json.
 // Secrets are never written: error notes are scrubbed of URLs, tokens and env values.
 //
@@ -41,9 +59,15 @@ const execFileP = promisify(execFile);
 const REPO = "kwakseongjae/oh-my-design";
 const PKG = "oh-my-design-cli";
 const SKILLS_URL = `https://skills.sh/${REPO}`;
-const OUT_FILE = path.join(repoRoot, "data", "growth", "metrics.jsonl");
+const OUT_FILE = process.env.GROWTH_METRICS_FILE
+  ? path.resolve(process.env.GROWTH_METRICS_FILE)
+  : path.join(repoRoot, "data", "growth", "metrics.jsonl");
 const UA = "oh-my-design-growth-snapshot/1";
 const DRY_RUN = process.argv.includes("--dry-run");
+const PUBLIC_ONLY = process.argv.includes("--public-only");
+const QUIET = process.argv.includes("--quiet");
+const STRICT = process.argv.includes("--strict");
+const PUBLIC_FILE = process.env.GROWTH_PUBLIC_FILE ? path.resolve(process.env.GROWTH_PUBLIC_FILE) : null;
 
 // ---------------------------------------------------------------- secret hygiene
 
@@ -142,9 +166,16 @@ async function gh(apiPath) {
       return JSON.parse(stdout);
     } catch (e) {
       if (e?.code === "ENOENT") throw new SourceError("gh CLI not found on PATH", { permanent: true });
-      const line = firstUsefulLine(e?.stderr) || e?.message || "unknown error";
+      const stderr = String(e?.stderr ?? "");
+      if (/gh auth login|not logged in/i.test(stderr) && !/HTTP \d{3}/.test(stderr)) {
+        throw new SourceError("gh is not authenticated: set GH_TOKEN (CI) or run `gh auth login` (local)", { permanent: true });
+      }
+      const line = firstUsefulLine(stderr) || e?.message || "unknown error";
       const status = Number(/HTTP (\d{3})/.exec(line)?.[1] ?? 0);
-      throw new SourceError(`gh api ${apiPath.replace(REPO, "<repo>")}: ${line}`, { permanent: isClientError(status) });
+      const hint = status === 403 && apiPath.includes("/traffic/")
+        ? " (traffic needs a token with repository Administration: read; add the GH_TRAFFIC_TOKEN secret)"
+        : "";
+      throw new SourceError(`gh api ${apiPath.replace(REPO, "<repo>")}: ${line}${hint}`, { permanent: isClientError(status) });
     }
   });
 }
@@ -297,6 +328,11 @@ async function pullActive() {
 
 // ---------------------------------------------------------------- run
 
+// Public sources are readable by anyone already (repo page, npm, skills.sh). Private sources
+// (GitHub traffic is admin-only; active users come from our own counter) must never reach a
+// public place: not the public growth-data branch, not a public Actions log, not an artifact.
+const PUBLIC_SOURCES = new Set(["github", "npm.last_week", "npm.last_month", "skills_sh"]);
+
 const sources = {
   github: githubRepo,
   "github_traffic.views": () => githubTraffic("views"),
@@ -308,10 +344,14 @@ const sources = {
   active: pullActive,
 };
 
+const active = PUBLIC_ONLY
+  ? Object.fromEntries(Object.entries(sources).filter(([name]) => PUBLIC_SOURCES.has(name)))
+  : sources;
+
 const errors = {};
 const results = Object.fromEntries(
   await Promise.all(
-    Object.entries(sources).map(async ([name, fn]) => {
+    Object.entries(active).map(async ([name, fn]) => {
       try {
         return [name, await fn()];
       } catch (e) {
@@ -322,49 +362,87 @@ const results = Object.fromEntries(
   ),
 );
 
+const sortedErrors = (keep) =>
+  Object.fromEntries(Object.entries(errors).filter(([k]) => keep(k)).sort(([a], [b]) => a.localeCompare(b)));
+
+const timestamp = new Date().toISOString();
+const npm = { package: PKG, last_week: results["npm.last_week"] ?? null, last_month: results["npm.last_month"] ?? null };
+
+/** Full record (schema 1): private sources included. Only for a local file or a private repo. */
 const record = {
-  timestamp: new Date().toISOString(),
+  timestamp,
   schema: 1,
-  github: results.github,
+  github: results.github ?? null,
   github_traffic: {
-    views: results["github_traffic.views"],
-    clones: results["github_traffic.clones"],
-    referrers: results["github_traffic.referrers"],
+    views: results["github_traffic.views"] ?? null,
+    clones: results["github_traffic.clones"] ?? null,
+    referrers: results["github_traffic.referrers"] ?? null,
   },
-  npm: { package: PKG, last_week: results["npm.last_week"], last_month: results["npm.last_month"] },
-  skills_sh: results.skills_sh,
-  active: results.active,
-  errors: Object.fromEntries(Object.entries(errors).sort(([a], [b]) => a.localeCompare(b))),
+  npm,
+  skills_sh: results.skills_sh ?? null,
+  active: results.active ?? null,
+  errors: sortedErrors(() => true),
+};
+
+/** Public projection: already-public sources only. Safe for the public growth-data branch. */
+const publicRecord = {
+  timestamp,
+  schema: "public-1",
+  github: results.github ?? null,
+  npm,
+  skills_sh: results.skills_sh ?? null,
+  errors: sortedErrors((k) => PUBLIC_SOURCES.has(k)),
 };
 
 const line = JSON.stringify(record);
+const publicLine = JSON.stringify(publicRecord);
 
 // Last line of defence: never write a record that contains a configured secret value.
-if (SECRETS.some((v) => line.includes(v))) {
+if (SECRETS.some((v) => line.includes(v) || publicLine.includes(v))) {
   console.error("refusing to write: a secret value appeared in the record");
   process.exit(1);
 }
 
 for (const name of Object.keys(sources)) {
-  console.error(errors[name] ? `  FAIL ${name}: ${errors[name]}` : `  ok   ${name}`);
+  if (!(name in active)) console.error(`  skip ${name} (private source, --public-only)`);
+  else console.error(errors[name] ? `  FAIL ${name}: ${errors[name]}` : `  ok   ${name}`);
 }
 
-if (DRY_RUN) {
-  console.error(`dry run: nothing written (would append to ${path.relative(repoRoot, OUT_FILE)})`);
-} else {
+/** Append one line, keeping one record per line even if the file lost its trailing newline. */
+function appendLine(file, text) {
+  const shown = path.relative(repoRoot, file);
   try {
-    mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-    // Guard against a hand-edited file that lacks a trailing newline: keep one record per line.
-    const needsNewline = existsSync(OUT_FILE) && (() => {
-      const buf = readFileSync(OUT_FILE);
+    mkdirSync(path.dirname(file), { recursive: true });
+    const needsNewline = existsSync(file) && (() => {
+      const buf = readFileSync(file);
       return buf.length > 0 && buf[buf.length - 1] !== 0x0a;
     })();
-    appendFileSync(OUT_FILE, (needsNewline ? "\n" : "") + line + "\n");
-    console.error(`appended 1 line to ${path.relative(repoRoot, OUT_FILE)}`);
+    appendFileSync(file, (needsNewline ? "\n" : "") + text + "\n");
+    console.error(`appended 1 line to ${shown}`);
   } catch (e) {
-    console.error(`FAILED to write ${path.relative(repoRoot, OUT_FILE)}: ${scrub(e?.message ?? e)}`);
+    console.error(`FAILED to write ${shown}: ${scrub(e?.message ?? e)}`);
     process.exit(1);
   }
 }
 
-console.log(line);
+// Targets. The full record goes to OUT_FILE unless --public-only (a full record with private
+// sources skipped would only be a degraded duplicate). The public projection goes to
+// GROWTH_PUBLIC_FILE when set.
+const targets = [];
+if (!PUBLIC_ONLY) targets.push([OUT_FILE, line]);
+if (PUBLIC_FILE) targets.push([PUBLIC_FILE, publicLine]);
+
+if (DRY_RUN) {
+  console.error(`dry run: nothing written (would append to ${targets.map(([f]) => path.relative(repoRoot, f)).join(", ") || "nothing"})`);
+} else {
+  for (const [file, text] of targets) appendLine(file, text);
+}
+
+// --quiet keeps the record out of stdout. CI uses it: Actions logs on a public repo are public.
+if (!QUIET) console.log(PUBLIC_ONLY ? publicLine : line);
+
+// --strict: exit 3 when any attempted source failed, AFTER writing, so partial results are kept.
+if (STRICT && Object.keys(errors).length > 0) {
+  console.error(`strict: ${Object.keys(errors).length} source(s) failed`);
+  process.exit(3);
+}
