@@ -1216,9 +1216,22 @@
           "verified_against": "Live header logo on about.mercari.com (corporate site, also on its press pages).",
           "risk_tier": "med",
           "source_tier": "official"
+        },
+        "symbol": {
+          "ref": "brand-svg/mercari/symbol.svg",
+          "source": "Official site (jp.mercari.com)",
+          "source_url": "https://jp.mercari.com/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official service-site asset used for identification only.",
+          "license_url": "https://jp.mercari.com/",
+          "attribution": "Mercari, Inc.",
+          "usage_note": "공식 서비스 사이트 헤더 로고의 심볼 요소(형상 무변경 추출) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Inline header logo (data-testid=\"mercari-logo\") on jp.mercari.com, the Mercari marketplace. The three mark elements (red box, blue dot, white m), which have explicit fills, were kept byte-for-byte. The logotype elements are coloured by a CSS variable and were dropped, not recoloured. viewBox tightened. The same mark is the Mercari app icon.",
+          "risk_tier": "med",
+          "source_tier": "official"
         }
       },
-      "default_variant": "wordmark"
+      "default_variant": "symbol"
     },
     {
       "id": "mixi",
