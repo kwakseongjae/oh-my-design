@@ -1,10 +1,10 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-06-02",
+  "generated_at": "2026-10-14",
   "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
-  "count": 47,
+  "count": 61,
   "counts": {
-    "available": 47,
+    "available": 61,
     "source_only": 0
   },
   "records": [
@@ -1045,6 +1045,354 @@
         }
       },
       "default_variant": "combined"
+    },
+    {
+      "id": "base",
+      "name": "BASE",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/base/symbol.svg",
+          "source": "Official site (thebase.com)",
+          "source_url": "https://thebase.com/static-asset/base-footer-logo.zwgoMNR-.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://thebase.com/static-asset/base-footer-logo.zwgoMNR-.svg",
+          "attribution": "BASE, Inc.",
+          "usage_note": "공식 사이트 푸터 단독 심볼(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Served standalone as the footer logo on thebase.com; same tent mark as the header lockup.",
+          "risk_tier": "med",
+          "source_tier": "official"
+        },
+        "combined": {
+          "ref": "brand-svg/base/combined.svg",
+          "source": "Official site (thebase.com)",
+          "source_url": "https://thebase.com/static-asset/base-header-logo-sm.Dy8cLu_s.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://thebase.com/static-asset/base-header-logo-sm.Dy8cLu_s.svg",
+          "attribution": "BASE, Inc.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on thebase.com.",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "coconala",
+      "name": "coconala",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/coconala/combined.svg",
+          "source": "Official site (coconala.com)",
+          "source_url": "https://d377jvr5bdab5d.cloudfront.net/_ccui/coconala-logo.DZW7uiIk.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official CDN asset used for identification only.",
+          "license_url": "https://d377jvr5bdab5d.cloudfront.net/_ccui/coconala-logo.DZW7uiIk.svg",
+          "attribution": "coconala Inc.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on coconala.com (coconala UI-kit CDN); favicon.svg shows the same prism mark (as an app icon).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "cybozu",
+      "name": "Cybozu",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "high",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/cybozu/combined.svg",
+          "source": "Official site (cybozu.co.jp)",
+          "source_url": "https://cybozu.co.jp/assets/img/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "Cybozu logo/trademark page: secondary use is licensed only after Cybozu review and a secondary-use agreement (二次利用同意書); use on websites requires an application.",
+          "license_url": "https://cybozu.co.jp/logotypes/",
+          "attribution": "Cybozu, Inc.",
+          "usage_note": "공식 로고(.svg) · 2차 이용은 사전 신청·심사 필요 · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Logo served on cybozu.co.jp, including its official ロゴの利用・商標 page (cybozu.co.jp/logotypes/).",
+          "risk_tier": "high",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "freee",
+      "name": "freee",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/freee/combined.svg",
+          "source": "Official site (freee.co.jp)",
+          "source_url": "https://www.freee.co.jp/static/1f4f72049d0c1690b533cb60cbe6468f/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.freee.co.jp/static/1f4f72049d0c1690b533cb60cbe6468f/logo.svg",
+          "attribution": "freee K.K.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on www.freee.co.jp (swallow mark + freee logotype).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "hatena",
+      "name": "Hatena",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/hatena/combined.svg",
+          "source": "Official site (hatena.co.jp)",
+          "source_url": "https://hatena.co.jp/_next/static/media/Hatena-logo.2e876sh5y3bs8.svg",
+          "license": "brand-asset-official",
+          "license_note": "No current public logo terms found on hatena.co.jp (the 2007 CC logo page is gone); identification use only.",
+          "license_url": "https://hatena.co.jp/_next/static/media/Hatena-logo.2e876sh5y3bs8.svg",
+          "attribution": "Hatena Co., Ltd.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on hatena.co.jp; favicon.svg uses the same dot mark.",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "line",
+      "name": "LINE",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "high",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/line/combined.svg",
+          "source": "Official logo guideline (line.me/ja/logo)",
+          "source_url": "https://line.me/static/logo/ai/LINE_Brand_icon_RGB.ai",
+          "license": "brand-asset-official",
+          "license_note": "LY Corp guideline: logo data may not be transformed or processed; animation/effects (scaling, rotation, decoration incl. shadow, outline, 3D) are prohibited; isolation zone must stay clear of other elements; TV/magazine/media use needs inquiry. A gallery grid or a 3D jelly keycap conflicts with these rules.",
+          "license_url": "https://line.me/ja/logo",
+          "attribution": "LY Corporation",
+          "usage_note": "공식 브랜드 아이콘(.ai→SVG 포맷 변환, 형상 무변경) · 변형·장식·효과 금지 · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Official BRAND ICON download on line.me/ja/logo (「LINEを表す際は、下記のブランドアイコンを使用することを原則とします」). Vector .ai (PDF, no embedded raster) converted page→SVG with pdftocairo; the icon paths were kept byte-for-byte and only the artboard background, caption text and colour chip removed, viewBox tightened to the icon.",
+          "risk_tier": "high",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "mercari",
+      "name": "Mercari",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/mercari/wordmark.svg",
+          "source": "Official site (about.mercari.com)",
+          "source_url": "https://about.mercari.com/images/common/mercari_logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official corporate-site asset used for identification only.",
+          "license_url": "https://about.mercari.com/images/common/mercari_logo.svg",
+          "attribution": "Mercari, Inc.",
+          "usage_note": "공식 기업 사이트 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on about.mercari.com (corporate site, also on its press pages).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "mixi",
+      "name": "MIXI",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/mixi/combined.svg",
+          "source": "Official site (mixi.co.jp)",
+          "source_url": "https://mixi.co.jp/app/themes/mixi/assets/img/logo-main.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official corporate-site asset used for identification only.",
+          "license_url": "https://mixi.co.jp/app/themes/mixi/assets/img/logo-main.svg",
+          "attribution": "MIXI, Inc.",
+          "usage_note": "공식 기업 사이트 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on mixi.co.jp (a white variant logo-main_black.svg is also served).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "pixiv",
+      "name": "pixiv",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/pixiv/wordmark.svg",
+          "source": "Official CDN (s.pximg.net)",
+          "source_url": "https://s.pximg.net/soy/pixiv-web-next//_static/newLogo2025.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official CDN asset used for identification only.",
+          "license_url": "https://s.pximg.net/soy/pixiv-web-next//_static/newLogo2025.svg",
+          "attribution": "pixiv Inc.",
+          "usage_note": "공식 CDN 2025 신규 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on www.pixiv.net; matches the new logo pixiv introduced from 2025-01-28 (file name newLogo2025).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "qiita",
+      "name": "Qiita",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/qiita/symbol.svg",
+          "source": "Official media kit (help.qiita.com)",
+          "source_url": "https://help.qiita.com/images/design_guideline/qiita-icon-ai.zip",
+          "license": "brand-asset-official",
+          "license_note": "Qiita media kit: free for non-commercial use (personal study, research, OSS, community talks); commercial use requires prior contact with Qiita Inc. Follow the guideline.",
+          "license_url": "https://help.qiita.com/ja/articles/others-brand-guideline",
+          "attribution": "Qiita Inc.",
+          "usage_note": "공식 미디어킷 아이콘(.ai→SVG 포맷 변환) · 비영리 자유/영리 사전 연락 · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Official media-kit qiita-icon.ai (PDF-compatible, no embedded raster), page 1 (green) converted with pdftocairo, no shape edits; colour #55C500 matches the kit PNG.",
+          "risk_tier": "med",
+          "source_tier": "official"
+        },
+        "wordmark": {
+          "ref": "brand-svg/qiita/wordmark.svg",
+          "source": "Official media kit (help.qiita.com)",
+          "source_url": "https://help.qiita.com/images/design_guideline/qiita-ai.zip",
+          "license": "brand-asset-official",
+          "license_note": "Qiita media kit: free for non-commercial use; commercial use requires prior contact with Qiita Inc.",
+          "license_url": "https://help.qiita.com/ja/articles/others-brand-guideline",
+          "attribution": "Qiita Inc.",
+          "usage_note": "공식 미디어킷 로고(.ai→SVG 포맷 변환) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Official media-kit qiita.ai (PDF-compatible, no embedded raster), page 1 converted with pdftocairo, no shape edits; matches kit logo.png.",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "sakura-internet",
+      "name": "SAKURA internet",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/sakura-internet/combined.svg",
+          "source": "Official site (sakura.ad.jp)",
+          "source_url": "https://www.sakura.ad.jp/assets/images/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.sakura.ad.jp/assets/images/logo.svg",
+          "attribution": "SAKURA internet Inc.",
+          "usage_note": "공식 사이트 로고(.svg, symbol 래퍼만 제거) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Official site logo; same mark as the corporate site id_mono.svg. The source wraps its paths in an unused <symbol>; the wrapper was removed (no path changes). 30th-anniversary variants deliberately not used.",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "smarthr",
+      "name": "SmartHR",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/smarthr/combined.svg",
+          "source": "Official site (smarthr.jp)",
+          "source_url": "https://smarthr.jp/_astro/SmartHR_Logo.BP8K-tat.svg",
+          "license": "brand-asset-official",
+          "license_note": "SmartHR publishes a logo policy (developer.smarthr.jp/design/logo-policy.pdf); logo-use enquiries go to SmartHR. Identification use only.",
+          "license_url": "https://developer.smarthr.jp/design/logo-policy.pdf",
+          "attribution": "SmartHR, Inc.",
+          "usage_note": "공식 사이트 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on smarthr.jp; same lockup as smarthr.design/images/logo_smarthr.svg (SmartHR Design System).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "softbank",
+      "name": "SoftBank",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/softbank/combined.svg",
+          "source": "Official site (softbank.jp)",
+          "source_url": "https://www.softbank.jp/site/set/data/top/img/shared/2026/logo-sb-black.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.softbank.jp/site/set/data/top/img/shared/2026/logo-sb-black.svg",
+          "attribution": "SoftBank Corp.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Live header logo on www.softbank.jp (2026 asset path; a white variant is also served).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "zenn",
+      "name": "Zenn",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/zenn/symbol.svg",
+          "source": "Official media kit (zenn.dev/mediakit)",
+          "source_url": "https://static.zenn.studio/images/mediakit/zenn-logo.zip",
+          "license": "brand-asset-official",
+          "license_note": "Zenn logo guideline: use the downloaded files; do not transform or decorate them; full colour by default; the logomark may be used alone (the logotype may not); keep clear space ≈ half the mark size.",
+          "license_url": "https://zenn.dev/mediakit",
+          "attribution": "Classmethod, Inc. (Zenn)",
+          "usage_note": "공식 미디어킷 로고마크(.svg) · 변형·장식 금지 · 식별용 · 상표는 각 권리자 소유",
+          "verified_against": "Official media-kit zenn-logo.zip → logo-only.svg (stored as published, svgo-optimised).",
+          "risk_tier": "med",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
     }
   ],
   "source_breakdown": {

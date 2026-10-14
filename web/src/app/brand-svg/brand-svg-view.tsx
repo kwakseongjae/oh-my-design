@@ -177,7 +177,7 @@ function BrandCard({ r }: { r: BrandSvgRecord }) {
 
 export function BrandSvgView({ manifest }: { manifest: BrandSvgManifest }) {
   const [q, setQ] = useState("");
-  const [region, setRegion] = useState<"all" | "KR" | "TW">("all");
+  const [region, setRegion] = useState<"all" | "KR" | "TW" | "JP">("all");
   const [onlySymbol, setOnlySymbol] = useState(false);
 
   const records = useMemo(() => {
@@ -227,7 +227,7 @@ export function BrandSvgView({ manifest }: { manifest: BrandSvgManifest }) {
           placeholder="Search brand…"
           className="h-9 w-48 rounded-lg border border-border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
         />
-        {(["all", "KR", "TW"] as const).map((rg) => (
+        {(["all", "KR", "TW", "JP"] as const).map((rg) => (
           <button
             key={rg}
             onClick={() => setRegion(rg)}
