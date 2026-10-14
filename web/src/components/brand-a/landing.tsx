@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getLandingData } from "@/lib/landing-a/data.server";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
-import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import { LOCALE_SWITCH_KEY, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { fmt, getCopy } from "./copy";
 import { CliPanel } from "./cli-panel";
 import { GenUI } from "./gen-ui";
@@ -12,7 +12,11 @@ import { SiteFooterA } from "./site-footer";
 import { SiteHeaderA } from "./site-header";
 import "./landing.css";
 
-const GH_SKILLS = "https://github.com/kwakseongjae/oh-my-design/tree/main/skills";
+/* Reduced motion keeps this locale's settled poster. Key shared with locale-switch.tsx. */
+const posterSwap = (locale: SiteLocale) =>
+  `try{var s=JSON.parse(sessionStorage.getItem(${JSON.stringify(LOCALE_SWITCH_KEY)})||"null"),k=document.getElementById("k3");if(s&&k&&s.to===${JSON.stringify(locale)}&&s.from&&s.from!==s.to&&Date.now()-s.t<60000&&!matchMedia("(prefers-reduced-motion: reduce)").matches){k.setAttribute("data-set",(s.from==="ja"||s.from==="zh-tw")?s.from:"default")}}catch(e){}`;
+
+const GH_SKILLS ="https://github.com/kwakseongjae/oh-my-design/tree/main/skills";
 
 /**
  * The concept-A landing, shared by /, /ko, /ja and /zh-tw. Round 4 (restraint,
@@ -40,7 +44,10 @@ export function LandingA({ locale }: { locale: SiteLocale }) {
       <main id="main">
         <div className="sq-hero-x" id="hero-x">
           {/* 3D host: poster until three.js mounts after idle (hero-keys.tsx) */}
-          <div className="sq-k3 sq-poster" id="k3" data-set={locale === "ja" || locale === "zh-tw" ? locale : "default"} aria-hidden="true" />
+          <div className="sq-k3 sq-poster" id="k3" data-set={locale === "ja" || locale === "zh-tw" ? locale : "default"} aria-hidden="true" suppressHydrationWarning />
+          {/* pre-hydration: arriving from the language picker, show the previous locale's
+              poster until the scene is live, so only the caps new here drop in (hero-keys.tsx) */}
+          <script dangerouslySetInnerHTML={{ __html: posterSwap(locale) }} />
           <section className="sq-wrap sq-hero">
             <div className="sq-hero-copy">
               <h1>{rich(c.hero.h1)}</h1>
@@ -53,7 +60,7 @@ export function LandingA({ locale }: { locale: SiteLocale }) {
                 <a className="sq-cta-q" href="#reference">{c.hero.how}</a>
               </div>
             </div>
-            <HeroKeys caps={data.hero} label={c.kb.label} />
+            <HeroKeys caps={data.hero} label={c.kb.label} locale={locale} />
           </section>
         </div>
 

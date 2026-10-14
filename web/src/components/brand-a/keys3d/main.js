@@ -79,6 +79,8 @@ export function mount(host, o) {
   }
 
   function setCaps(list, isNarrow) {
+    // a drop in flight survives a rebuild (theme or breakpoint change mid-fall)
+    const inFlight = new Map(caps.filter((g) => g.userData.dropAt != null).map((g) => [g.userData.d.id, g.userData]));
     caps.forEach((g) => { scene.remove(g, g.userData.sh, g.userData.pool); disposeCap(g); });
     narrow = isNarrow;
     const all = list;
@@ -87,6 +89,8 @@ export function mount(host, o) {
       u.lift = 0.26;
       const h = (d.id || '').split('').reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) >>> 0, 7);
       u.tilt.set(((h % 7) - 3) * 0.008, (((h >> 3) % 9) - 4) * 0.013, (((h >> 6) % 7) - 3) * 0.008);   // tiny per-cap set, varies the highlight
+      const f = inFlight.get(d.id);
+      if (f) { u.dropAt = f.dropAt; u.dy = f.dy; u.dvy = f.dvy; }
       scene.add(g, u.sh, u.pool);
       return g;
     });
@@ -100,14 +104,17 @@ export function mount(host, o) {
       const u = g.userData, b = still || calibrating ? 0 : Math.sin(time * 1.1 + u.phase);
       const act = g === hover || g === sel ? 1 : 0;
       u.up = (u.up || 0) + (act * 0.12 - (u.up || 0)) * (still ? 1 : 0.15);
-      const y = u.lift + 0.035 * b + u.up;                   // small individual float, no cluster sway
-      g.position.set(u.base.x, y, u.base.z);
+      // drop-in (round 6): height above the rest pose; a cap waiting for its turn is hidden
+      const dy = calibrating ? 0 : (u.dy || 0), wait = !calibrating && u.dropAt != null && clock < u.dropAt;
+      g.visible = u.sh.visible = u.pool.visible = !wait;
+      const y = u.lift + 0.035 * b + u.up + dy;              // small individual float, no cluster sway
+      g.position.set(u.base.x, y, u.base.z - dy * 0.22);     // falls from slightly up-screen too
       g.rotation.copy(u.tilt);
       const sy = 1 - u.sq, sxz = 1 / Math.sqrt(Math.max(0.3, sy));
       u.body.scale.set(sxz, sy, sxz);
       const wide = u.d.wide || 1, s = 1 + y * 0.6, f = s * (0.85 + 0.1 * sxz);
       u.sh.position.set(u.base.x + 0.06, 0.002, u.base.z + 0.08); u.sh.scale.set(f * (wide > 1 ? wide * 0.92 : 1), f, 1);
-      u.sh.material.opacity = look.blob * (1.25 - y * 0.8);
+      u.sh.material.opacity = Math.max(0, look.blob * (1.25 - y * 0.8));
       u.pool.position.set(u.base.x + 0.18, 0.003, u.base.z + 0.3); u.pool.scale.set(s * (wide > 1 ? wide * 0.9 : 1), s, 1);
     });
   }
@@ -116,8 +123,19 @@ export function mount(host, o) {
     let moving = false;
     const still = o.reduce();
     caps.forEach((g) => {
-      const u = g.userData, target = g === hover || g === sel ? 0.24 : 0;
-      if (still) { u.sq = target; u.v = 0; return; }
+      const u = g.userData;
+      let target = g === hover || g === sel ? 0.24 : 0;
+      if (still) { u.sq = target; u.v = 0; u.dy = 0; u.dropAt = null; return; }
+      if (u.dropAt != null && clock >= u.dropAt && dt > 0) {
+        // gravity; on contact: bounce with lost energy, a squash kick, neighbours jostle
+        u.dvy -= GRAV * dt; u.dy += u.dvy * dt;
+        if (u.dvy < -4) target = Math.max(-0.1, u.dvy * 0.006);   // stretch a little in free fall
+        if (u.dy <= 0) {
+          const s = -u.dvy; u.dy = 0;
+          if (s > 1.6) { u.dvy = s * 0.24; thud(g, s); } else { u.dvy = 0; u.dropAt = null; }
+        }
+      }
+      if (u.dropAt != null) moving = true;
       const a = 170 * (target - u.sq) - 11 * u.v;
       u.v += a * dt; u.sq += u.v * dt;
       if (Math.abs(u.v) > 1e-3 || Math.abs(target - u.sq) > 1e-3) moving = true;
@@ -132,13 +150,42 @@ export function mount(host, o) {
     near.forEach((g, i) => setTimeout(() => { if (g !== hover && g !== sel) g.userData.v += 3.4 - i * 0.6; }, i * 110));
   }
 
+  /* Drop-in (round 6): after a language switch, the caps that are new for this locale
+     fall onto the keyboard. World units: a cap is 1 wide; H0 high, GRAV pull → ~0.5 s fall,
+     two shrinking bounces, settle; under ~1.2 s with the stagger. */
+  const GRAV = 40, H0 = 5.5;
+  function thud(g, s) {
+    const u = g.userData, k = Math.min(1, s / 20);
+    u.v += 0.6 + 2.8 * k;                                   // squash on impact (spring does the rebound)
+    caps.forEach((n) => {
+      if (n === g || n.userData.dropAt != null) return;
+      const d = n.userData.base.distanceTo(u.base);
+      if (d > 1.9) return;
+      const f = (1 - d / 1.9) * k;
+      n.userData.v += 1.6 * f;                             // neighbours wobble…
+      n.userData.dropAt = clock; n.userData.dy = 0.0001; n.userData.dvy = 1.4 * f;   // …and hop a hair
+    });
+  }
+  function drop(ids, opt = {}) {
+    if (o.reduce() || !ids.length) return 0;
+    const t0 = clock + (opt.delay ?? 0.12), st = opt.stagger ?? 0.09;
+    let k = 0;
+    caps.forEach((g) => {
+      const u = g.userData;
+      if (!ids.includes(u.d.id)) return;
+      u.dropAt = t0 + st * k++; u.dy = opt.height ?? H0; u.dvy = 0;
+    });
+    kick();
+    return k;
+  }
+
   function frame(now) {
     raf = 0;
     const dt = Math.min(0.05, last ? (now - last) / 1000 : 0.016); last = now;
     const still = o.reduce();
     if (!still) clock += dt;
     step(dt);
-    if (!still && clock > nextRipple && !hover) { ripple(); nextRipple = clock + 3.2 + Math.random() * 2.5; }
+    if (!still && clock > nextRipple && !hover && !caps.some((g) => g.userData.dropAt != null)) { ripple(); nextRipple = clock + 3.2 + Math.random() * 2.5; }
     pose(clock);
     renderer.render(scene, camera);
     if (!still && visible && !document.hidden) raf = requestAnimationFrame(frame);
@@ -260,7 +307,7 @@ export function mount(host, o) {
     canvas.remove();
   }
   return {
-    setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
+    setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, drop, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
     capPx: () => capPxV,
     canvas, renderer,
     snapshot(type = "image/webp", q = 0.9) { renderer.render(scene, camera); return canvas.toDataURL(type, q); }

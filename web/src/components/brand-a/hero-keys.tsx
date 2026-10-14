@@ -2,6 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { LogoCap } from "@/lib/landing-a/types";
+import { LOCALE_SWITCH_KEY, type SiteLocale } from "@/lib/i18n/site-locales";
+import heroCaps from "@/data/hero-caps.json";
+
+/* Arrival from the language picker (locale-switch.tsx SWITCH_KEY): the locale we came
+   from, read once and cleared. Stale (> 60 s) or mismatched notes are ignored. */
+const SWITCH_KEY = LOCALE_SWITCH_KEY;
+function takeSwitch(locale: SiteLocale): SiteLocale | null {
+  try {
+    const raw = sessionStorage.getItem(SWITCH_KEY);
+    sessionStorage.removeItem(SWITCH_KEY);
+    const s = raw ? (JSON.parse(raw) as { from?: SiteLocale; to?: string; t?: number }) : null;
+    return s && s.to === locale && s.from && s.from !== locale && Date.now() - (s.t ?? 0) < 60000 ? s.from : null;
+  } catch {
+    return null;
+  }
+}
+/** ids on a locale's keyboard (data/hero-caps.json; en/ko share default) */
+function idsOf(l: SiteLocale): Set<string> {
+  const sets = heroCaps.sets as Record<string, { wide: string[][]; narrow: string[][] }>;
+  const s = sets[l] ?? sets.default;
+  return new Set([...s.wide.flat(), ...s.narrow.flat()]);
+}
+/** posters are per cap set */
+const setOf = (l: SiteLocale) => (l === "ja" || l === "zh-tw" ? l : "default");
 
 /**
  * Hero keyboard (round 4): jelly keycaps engraved with each company's genuine logo
@@ -21,6 +45,7 @@ interface K3 {
   capPx(): number;
   kick(): void;
   destroy(): void;
+  drop(ids: string[], opt?: { delay?: number; stagger?: number }): number;
 }
 
 /* glyph-cap faces by legend language (the page's own loaded faces) */
@@ -67,7 +92,7 @@ function loadLogo(src: string): Promise<HTMLImageElement | null> {
   return imgCache.get(src)!;
 }
 
-export function HeroKeys({ caps, label }: { caps: readonly LogoCap[]; label: string }) {
+export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; label: string; locale: SiteLocale }) {
   const [narrow, setNarrow] = useState(false);
   const shown = caps.filter((c) => (narrow ? c.mrow : c.row) >= 0);
   const [name, setName] = useState<{ n: string; lang: string; x: number; y: number } | null>(null);
@@ -179,6 +204,9 @@ export function HeroKeys({ caps, label }: { caps: readonly LogoCap[]; label: str
     if (!h) return;
     let cancelled = false;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+    const from = takeSwitch(locale);
+    // back to this locale's own poster (the inline swap showed the previous one)
+    const ownPoster = () => h.setAttribute("data-set", setOf(locale));
     const boot = () => {
       if (cancelled || state.current !== "idle") return;
       let ok = false;
@@ -190,6 +218,7 @@ export function HeroKeys({ caps, label }: { caps: readonly LogoCap[]; label: str
       }
       if (!ok || /[?&]k3=poster/.test(location.search)) {
         state.current = "fail";
+        ownPoster();
         return;
       }
       state.current = "loading";
@@ -211,11 +240,21 @@ export function HeroKeys({ caps, label }: { caps: readonly LogoCap[]; label: str
             },
           }) as K3;
           state.current = "ready";
-          requestAnimationFrame(() => h.classList.add("sq-live"));
+          requestAnimationFrame(() => {
+            h.classList.add("sq-live");
+            ownPoster();
+            // arrival from the picker: only the caps new to this locale fall in
+            if (from && !reduce.matches) {
+              const prev = idsOf(from);
+              const fresh = (list as { id: string }[]).map((d) => d.id).filter((id) => !prev.has(id));
+              k3.current?.drop(fresh, { delay: 0.28 });
+            }
+          });
         })
         .catch((e) => {
           console.warn("keys3d: poster fallback", e);
           state.current = "fail";
+          ownPoster();
         });
     };
     const go = () => ("requestIdleCallback" in window ? requestIdleCallback(boot, { timeout: 900 }) : setTimeout(boot, 200));
