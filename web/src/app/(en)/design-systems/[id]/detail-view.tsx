@@ -233,7 +233,7 @@ export function DetailView({
           </p>
           <div className="sq-ih-head">
             {cap ? (
-              <span className="sq-item-cap">
+              <span className="sq-item-cap" data-content-object>
                 <CssKeycap d={cap} />
               </span>
             ) : (
@@ -283,7 +283,7 @@ export function DetailView({
               <div>
                 <dt>Primary</dt>
                 <dd>
-                  <span className="sq-item-sw" style={{ background: detail.primary }} aria-hidden="true" />
+                  <span className="sq-item-sw" data-content-object style={{ background: detail.primary }} aria-hidden="true" />
                   {detail.primary}
                 </dd>
               </div>
