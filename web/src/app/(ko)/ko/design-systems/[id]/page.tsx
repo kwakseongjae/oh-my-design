@@ -15,9 +15,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { DetailView } from "@/app/(en)/design-systems/[id]/detail-view";
+// Chrome before the item view, so the item's CSS wins ties (see ../layout.tsx).
 import { SiteFooterA } from "@/components/brand-a/site-footer";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
+import { DetailView } from "@/app/(en)/design-systems/[id]/detail-view";
 import { ITEM_KO } from "@/components/brand-a/copy/item";
 import { extractTokens } from "@/lib/extract-tokens";
 import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
