@@ -1,10 +1,10 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 30-skill + 20-sub-agent bundle; Cursor receives 29 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 521 DESIGN.md references: 299 verified_v2, 109 partial, and 113 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 31-skill + 20-sub-agent bundle; Cursor receives 30 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 521 DESIGN.md references: 299 verified_v2, 109 partial, and 113 legacy. Use verified_v2 references for public demos.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor 2.4+ receives 29 compatible Agent Skills under `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 500+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
+`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor 2.4+ receives 30 compatible Agent Skills under `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 500+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
 
 The core installer runs no AI calls, ships no telemetry, and requires no API key, daemon, or MCP server. Your coding-agent session provides inference. The optional `claude-design` skill opens the user's logged-in claude.ai/design session in Chrome rather than calling an OmD API.
 
@@ -34,7 +34,7 @@ The CLI only installs and diagnoses. Product design work happens through natural
 
 ## Cursor path
 
-Cursor 2.4+ discovers the 29 compatible OmD Agent Skills from `.cursor/skills/`, alongside a small `.cursor/rules/omd-design.mdc` bootstrap and the shared `.claude/data` catalog. Restart Cursor after installation, then ask naturally or invoke `/omd-init` explicitly. OmD sub-agent definitions and activation hooks are not installed in Cursor.
+Cursor 2.4+ discovers the 30 compatible OmD Agent Skills from `.cursor/skills/`, alongside a small `.cursor/rules/omd-design.mdc` bootstrap and the shared `.claude/data` catalog. Restart Cursor after installation, then ask naturally or invoke `/omd-init` explicitly. OmD sub-agent definitions and activation hooks are not installed in Cursor.
 
 For older Cursor clients, `--cursor-rule-only` installs the rule + catalog compatibility mode without Agent Skills. There, create the project spec through one of these paths:
 
@@ -53,7 +53,7 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 30 skills (Claude Code, Codex, OpenCode)
+## The 31 skills (Claude Code, Codex, OpenCode)
 
 Core flow (10):
 - **omd:autopilot** — One-prompt autonomous product design: decides whether to reuse, establish, or refresh the design system, then builds and verifies the real surface.
@@ -92,8 +92,9 @@ Localization + review layer (7):
 - **omd:final-qa** — Read-only final-gate critic enforcing an 8-item rubric with a hard revision cap.
 - **omd:codex-image** — Channel-aware image materializer for `omd:gen-image` spec blocks (Codex native gen / asset fallback / user queue).
 
-Interface quality (2):
+Interface quality (3):
 - **omd:feel** — Applies and audits 113 provenance-graded HIG / Material / WCAG rules for motion, spacing, typography, and accessibility.
+- **omd:restraint** — Restraint as measurable rules: audits a rendered page at desktop and phone widths (one focal point, ≤ 5 first-screen pieces, ≤ 4 type sizes, ≤ 2 hero CTAs, one accent, empty share, thin screens, page length) and applies a cut → merge → enlarge → re-measure pass; every rule carries a measured / convention / heuristic grade.
 - **omd:slop-audit** — Finds clusters of context-free UI and copy defaults without guessing authorship, then separates slop, quality failures, and preference.
 
 Standalone (1):
@@ -686,7 +687,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 ```
 oh-my-design/
-├── skills/              # 30 shipped product skills (source of truth)
+├── skills/              # 31 shipped product skills (source of truth)
 ├── agents/              # 18 sub-agent definitions
 ├── web/references/      # 521 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus

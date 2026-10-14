@@ -140,6 +140,10 @@
       "source": "skills/omd-remember",
       "sourceType": "local"
     },
+    "omd-restraint": {
+      "source": "skills/omd-restraint",
+      "sourceType": "local"
+    },
     "omd-setup": {
       "source": "skills/omd-setup",
       "sourceType": "local"
