@@ -3,9 +3,8 @@ import { REFERENCE_QUALITY_BY_ID, REFERENCE_QUALITY_COUNTS } from "@/data/refere
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
 import { SKILL_COUNT } from "@/data/catalog-meta.generated";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
-import fs from "node:fs";
-import path from "node:path";
-import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON, HERO_LOGOS, HERO_ROWS } from "./picks";
+import { chipLogo, heroCapsFor } from "./caps";
+import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON } from "./picks";
 import { CJK_RE, glyphOf, keycapTraits, nativeName, resolveSlots, type TokensLike } from "./resolve";
 import type { CapData, GenSpec, LandingData, LandingFacts, LogoCap } from "./types";
 
@@ -88,46 +87,14 @@ export function capData(id: string): CapData | null {
 }
 
 
-/** A pale tint of a claimed colour (`k` of it over white). Decoration for the cap body only; never shown as a token. */
-export function paleOf(hex: string, k = 0.16): string {
-  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-  return "#" + c.map((v) => Math.round(255 - (255 - v) * k).toString(16).padStart(2, "0")).join("");
-}
-
-function viewBoxRatio(src: string): number {
-  const svg = fs.readFileSync(path.join(process.cwd(), "public", src), "utf8");
-  const vb = svg.match(/viewBox="([^"]+)"/)?.[1].trim().split(/[\s,]+/).map(Number);
-  return vb && vb[3] > 0 ? vb[2] / vb[3] : 1;
-}
-
 /**
- * Hero caps (round 4): verified references engraved with their genuine logo (picks.ts
- * HERO_LOGOS). A pick that stops being verified or loses its claimed colour is dropped,
- * never refilled with a glyph cap or a guessed colour.
+ * Hero caps (round 5): the per-locale cap set in data/hero-caps.json, resolved by caps.ts
+ * (logo cap when brand-svg.json holds a legible genuine logo, else glyph cap). Only
+ * verified references with a claimed colour qualify; one that fails is dropped, never
+ * refilled with a guessed colour.
  */
-export function getHeroLogos(): LogoCap[] {
-  const rowOf = (rows: readonly (readonly string[])[], id: string) => rows.findIndex((r) => r.includes(id));
-  const out: LogoCap[] = [];
-  for (const p of HERO_LOGOS) {
-    if (!isVerified(p.id)) continue;
-    const d = capData(p.id);
-    if (!d?.hex) continue;
-    const src = `/brand-svg/${p.id}/${p.v}.svg`;
-    const ratio = viewBoxRatio(src);
-    out.push({
-      id: p.id,
-      n: d.n,
-      nLang: d.nLang,
-      src,
-      ratio,
-      wide: p.v !== "symbol" && ratio > 1.6,
-      hex: p.cap === "pale" ? paleOf(d.hex) : d.hex,
-      rv: d.rv,
-      row: rowOf(HERO_ROWS.wide, p.id),
-      mrow: rowOf(HERO_ROWS.narrow, p.id),
-    });
-  }
-  return out;
+export function getHeroCaps(locale?: SiteLocale): LogoCap[] {
+  return heroCapsFor(locale, (id) => (isVerified(id) ? capData(id) : null));
 }
 
 export function genSpec(id: string): GenSpec | null {
@@ -143,6 +110,7 @@ export function genSpec(id: string): GenSpec | null {
     name,
     nLang: CJK_RE.test(name) ? (CC_LANG[r.country] ?? "en") : "en",
     alt: r.name,
+    logo: chipLogo(id),
     ...slots,
     stats: {
       claims: `${q.evidenceClaimCount}/${q.claimCount}`,
@@ -155,10 +123,10 @@ export function genSpec(id: string): GenSpec | null {
   };
 }
 
-export function getLandingData(_locale?: SiteLocale): LandingData {
+export function getLandingData(locale?: SiteLocale): LandingData {
   return {
     facts: getFacts(),
-    hero: getHeroLogos(),
+    hero: getHeroCaps(locale),
     gen: GEN_UI_IDS.map(genSpec).filter((s): s is GenSpec => !!s),
   };
 }

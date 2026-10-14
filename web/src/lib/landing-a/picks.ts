@@ -7,41 +7,19 @@
  * slot is refilled from the same region, never shown with a guessed value.
  */
 
+/* Round 5: the cap set moved to data/hero-caps.json (per locale) and brand/pale is now
+ * computed from the logo fills (lib/landing-a/caps.ts) — the same nine Korean logo caps,
+ * plus three native-glyph caps of verified JP refs on /ja and TW refs on /zh-tw until
+ * their genuine logos are stored. */
+
 /**
- * Hero keyboard (round 4): artisan caps engraved with each company's genuine logo
- * from web/src/data/brand-svg.json (subset of feat/brand-svg-gallery). Only verified
- * references with a claimed colour AND a stored logo qualify; that intersection is
- * Korean-only today (every TW logo is a legacy reference, no JP logo is stored).
- *
- * `cap`: "brand" = the cap is the claimed primary colour; "pale" = a pale tint of it,
- * used where the genuine logo would not read on the full colour. The logo is never
- * recoloured: __tests__/hero-logos.test.ts holds every solid fill at ≥ 3:1 against
- * the cap it sits on. Rows are keyboard rows; a wordmark takes a wide (2u) cap.
- *
- * Skipped (genuine colours < 3:1 on both the full and the pale cap, no official
- * reversed variant): karrot, banksalad, naver, nexon, wanted; kakaopay (only a
- * white-on-dark variant, illegible on its yellow); kakao (white counters on yellow).
+ * "From DESIGN.md to screen" picker (round 5): six verified companies. Chips show the
+ * genuine logo from brand-svg.json where one is stored (toss, karrot, kakaobank,
+ * banksalad, all with every sample-screen token resolved: 16/16, 17/17, 17/17, 18/18);
+ * line (JP) and 104 (TW) open their locales and stay glyph chips until a verified
+ * logo is stored for them. freee and apple (no stored logo) were swapped out.
  */
-export const HERO_LOGOS = [
-  { id: "kakaobank", v: "symbol", cap: "brand" },
-  { id: "toss", v: "wordmark", cap: "brand" },
-  { id: "class101", v: "symbol", cap: "brand" },
-  { id: "kurly", v: "wordmark", cap: "pale" },
-  { id: "kream", v: "wordmark", cap: "pale" },
-  { id: "channeltalk", v: "symbol", cap: "pale" },
-  { id: "upbit", v: "wordmark", cap: "pale" },
-  { id: "socar", v: "combined", cap: "pale" },
-  { id: "yanolja", v: "combined", cap: "brand" },
-] as const;
-
-/** Keyboard rows by id: desktop 9 caps, phone 6. */
-export const HERO_ROWS = {
-  wide: [["kakaobank", "toss", "class101"], ["kurly", "kream", "channeltalk"], ["upbit", "socar"], ["yanolja"]],
-  narrow: [["kakaobank", "class101", "channeltalk"], ["toss", "kurly"], ["kream"]],
-} as const;
-
-/** Gen-UI picker: one row of six verified companies (round 4 cut from 11; chosen by measured token coverage, NOTES round 5). */
-export const GEN_UI_IDS = ["toss", "karrot", "line", "freee", "104", "apple"] as const;
+export const GEN_UI_IDS = ["toss", "karrot", "kakaobank", "banksalad", "line", "104"] as const;
 
 /** Where a company's primary button is ambiguous, the component the reference names as its product button. */
 export const GEN_UI_PREFERRED_BUTTON: Readonly<Record<string, string>> = {

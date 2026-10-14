@@ -23,6 +23,21 @@ interface K3 {
   destroy(): void;
 }
 
+/* glyph-cap faces by legend language (the page's own loaded faces) */
+const FAM: Record<string, string> = {
+  ko: '"Wanted Sans Variable","Apple SD Gothic Neo","Noto Sans KR",sans-serif',
+  ja: 'var(--font-noto-jp),"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif',
+  "zh-Hant": 'var(--font-noto-tc),"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif',
+  en: '"Wanted Sans Variable","Wanted Sans",sans-serif',
+};
+
+/* canvas fonts can't read CSS variables: resolve them against the document */
+function resolveFamily(f: string) {
+  return f
+    .replace(/var\((--[\w-]+)\)/g, (_, v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim())
+    .replace(/^,+|,(?=,)/g, "");
+}
+
 const imgCache = new Map<string, Promise<HTMLImageElement | null>>();
 
 /** Load a logo SVG as an <img> with explicit pixel size (Safari/Firefox draw nothing for viewBox-only SVGs). */
@@ -96,11 +111,22 @@ export function HeroKeys({ caps, label }: { caps: readonly LogoCap[]; label: str
     return { x0: s.l + padX, x1: Math.min(W - 24, s.r + (W - s.r) * 0.5), y0: s.t + padY, y1: s.b - padY };
   };
 
+  /* logo caps load their SVG; glyph caps wait for their face (canvas can't fall back gracefully) */
   const capsFor = (list: readonly LogoCap[]) =>
-    Promise.all(list.map((c) => loadLogo(c.src))).then((imgs) =>
+    Promise.all(
+      list.map((c) => {
+        if (c.kind === "logo") return loadLogo(c.src);
+        const fam = resolveFamily(FAM[c.gLang] ?? FAM.en);
+        return document.fonts.load(`${c.w ?? 700} 100px ${fam}`, c.g).then(() => fam, () => fam);
+      }),
+    ).then((res) =>
       list
-        .map((c, i) => ({ id: c.id, hex: c.hex, rv: c.rv, row: c.row, mrow: c.mrow, wide: c.wide ? 2.2 : 1, img: imgs[i] }))
-        .filter((d) => d.img),
+        .map((c, i) => {
+          const base = { id: c.id, hex: c.hex, rv: c.rv, row: c.row, mrow: c.mrow, wide: c.wide ? 2.2 : 1 };
+          if (c.kind === "logo") return { ...base, img: res[i] as HTMLImageElement | null };
+          return { ...base, img: null, g: c.g, fam: res[i] as string, w: c.w ?? 700, on: c.on, glyph: true };
+        })
+        .filter((d) => d.img || "glyph" in d),
     );
 
   const showName = (id: string | null) => {

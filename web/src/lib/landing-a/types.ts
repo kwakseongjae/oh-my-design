@@ -37,14 +37,23 @@ export interface CapData {
   readonly wk: string | null;
 }
 
-/** A hero cap engraved with a genuine logo (picks.ts HERO_LOGOS). */
+/**
+ * A hero cap (data/hero-caps.json, resolved in caps.ts): engraved with the genuine logo
+ * when brand-svg.json has a legible one, else with the native first glyph.
+ */
 export interface LogoCap {
   readonly id: string;
+  readonly kind: "logo" | "glyph";
   /** Display name (native where the registry has one). */
   readonly n: string;
   readonly nLang: string;
-  /** /brand-svg/<id>/<variant>.svg */
+  /** /brand-svg/<id>/<variant>.svg (logo caps; "" for glyph caps) */
   readonly src: string;
+  /** glyph legend, its language, legend colour and claimed weight (glyph caps) */
+  readonly g: string;
+  readonly gLang: string;
+  readonly on: string;
+  readonly w: number | null;
   /** viewBox width / height */
   readonly ratio: number;
   /** wide (2u) cap for a wordmark */
@@ -64,6 +73,8 @@ export interface GenSpec extends ResolvedSlots {
   readonly name: string;
   readonly nLang: string;
   readonly alt: string;
+  /** genuine logo for the picker chip (brand-svg.json, symbol preferred), or null → glyph chip */
+  readonly logo: string | null;
   readonly stats: {
     readonly claims: string;
     readonly sf: number;

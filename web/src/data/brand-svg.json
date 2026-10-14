@@ -1,9 +1,27 @@
 {
  "schema_version": 3,
  "generated_at": "2026-06-02",
- "note": "Subset of the brand-svg collection (branch feat/brand-svg-gallery, schema v3) used by the landing hero keycaps. Only the variant each cap engraves is kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference.",
- "count": 9,
+ "note": "Subset of the brand-svg collection (branch feat/brand-svg-gallery, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change.",
+ "count": 11,
  "records": [
+  {
+   "id": "banksalad",
+   "name": "Banksalad",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/banksalad/symbol.svg",
+     "source": "Official site (banksalad.com)",
+     "source_url": "https://banksalad.com",
+     "license": "brand-asset-official",
+     "license_url": "https://banksalad.com",
+     "usage_note": "공식 CDN 심볼 마크 · 식별용"
+    }
+   },
+   "default_variant": "symbol"
+  },
   {
    "id": "channeltalk",
    "name": "Channel Talk",
@@ -59,6 +77,25 @@
      "license_url": "https://www.kakaobank.com",
      "attribution": "KakaoBank Corp.",
      "usage_note": "공식 사이트 심볼(B 마크) · 식별용",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
+   "id": "karrot",
+   "name": "Karrot",
+   "country": "KR",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/karrot/symbol.svg",
+     "source": "Official site (daangn.com)",
+     "source_url": "https://www.daangn.com",
+     "license": "brand-asset-official",
+     "license_url": "https://www.daangn.com",
+     "usage_note": "공식 심볼(당근 마크) · 식별용 · 상표 당근마켓",
      "source_tier": "official"
     }
    },
@@ -134,6 +171,16 @@
      "license": "brand-asset-official",
      "license_url": "https://toss.im",
      "usage_note": "공식 사이트 헤더 inline SVG 추출 · 식별용 · 상표 비바리퍼블리카"
+    },
+    "symbol": {
+     "ref": "brand-svg/toss/symbol.svg",
+     "source": "Official brand center (brand.toss.im)",
+     "source_url": "https://static.toss.im/logos/svg/logo-toss-symbol.svg",
+     "license": "brand-asset-official",
+     "license_url": "https://static.toss.im/logos/svg/logo-toss-symbol.svg",
+     "attribution": "Viva Republica (Toss) · 2026 New-Dimension CI",
+     "usage_note": "공식 심볼(2026 뉴디멘션 3D) · Toss가 벡터 미배포라 공식 래스터 기반 · 식별용",
+     "source_tier": "official"
     }
    },
    "default_variant": "wordmark"
