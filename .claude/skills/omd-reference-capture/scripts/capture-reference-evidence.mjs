@@ -19256,7 +19256,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
         var NODE_TYPE = /* @__PURE__ */ Symbol.for("yaml.node.type");
         var isAlias = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === ALIAS;
         var isDocument = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === DOC;
-        var isMap = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === MAP;
+        var isMap2 = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === MAP;
         var isPair = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === PAIR;
         var isScalar = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === SCALAR;
         var isSeq = (node) => !!node && typeof node === "object" && node[NODE_TYPE] === SEQ;
@@ -19292,7 +19292,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
         exports22.isAlias = isAlias;
         exports22.isCollection = isCollection;
         exports22.isDocument = isDocument;
-        exports22.isMap = isMap;
+        exports22.isMap = isMap2;
         exports22.isNode = isNode;
         exports22.isPair = isPair;
         exports22.isScalar = isScalar;
@@ -23289,9 +23289,9 @@ ${pointer}
         var blockMsg = "Block collections are not allowed within flow collections";
         var isBlock = (token) => token && (token.type === "block-map" || token.type === "block-seq");
         function resolveFlowCollection({ composeNode, composeEmptyNode }, ctx, fc, onError, tag) {
-          const isMap = fc.start.source === "{";
-          const fcName = isMap ? "flow map" : "flow sequence";
-          const NodeClass = tag?.nodeClass ?? (isMap ? YAMLMap.YAMLMap : YAMLSeq.YAMLSeq);
+          const isMap2 = fc.start.source === "{";
+          const fcName = isMap2 ? "flow map" : "flow sequence";
+          const NodeClass = tag?.nodeClass ?? (isMap2 ? YAMLMap.YAMLMap : YAMLSeq.YAMLSeq);
           const coll = new NodeClass(ctx.schema);
           coll.flow = true;
           const atRoot = ctx.atRoot;
@@ -23327,7 +23327,7 @@ ${pointer}
                 offset = props.end;
                 continue;
               }
-              if (!isMap && ctx.options.strict && utilContainsNewline.containsNewline(key))
+              if (!isMap2 && ctx.options.strict && utilContainsNewline.containsNewline(key))
                 onError(
                   key,
                   // checked by containsNewline()
@@ -23367,7 +23367,7 @@ ${pointer}
                 }
               }
             }
-            if (!isMap && !sep && !props.found) {
+            if (!isMap2 && !sep && !props.found) {
               const valueNode = value2 ? composeNode(ctx, value2, props, onError) : composeEmptyNode(ctx, props.end, sep, null, props, onError);
               coll.items.push(valueNode);
               offset = valueNode.range[2];
@@ -23390,7 +23390,7 @@ ${pointer}
                 startOnNewline: false
               });
               if (valueProps.found) {
-                if (!isMap && !props.found && ctx.options.strict) {
+                if (!isMap2 && !props.found && ctx.options.strict) {
                   if (sep)
                     for (const st of sep) {
                       if (st === valueProps.found)
@@ -23422,7 +23422,7 @@ ${pointer}
               const pair = new Pair.Pair(keyNode, valueNode);
               if (ctx.options.keepSourceTokens)
                 pair.srcToken = collItem;
-              if (isMap) {
+              if (isMap2) {
                 const map22 = coll;
                 if (utilMapIncludes.mapIncludes(ctx, map22.items, keyNode))
                   onError(keyStart, "DUPLICATE_KEY", "Map keys must be unique");
@@ -23438,7 +23438,7 @@ ${pointer}
               offset = valueNode ? valueNode.range[2] : valueProps.end;
             }
           }
-          const expectedEnd = isMap ? "}" : "]";
+          const expectedEnd = isMap2 ? "}" : "]";
           const [ce, ...ee] = fc.end;
           let cePos = offset;
           if (ce?.source === expectedEnd)
@@ -162081,6 +162081,125 @@ var {
   safeDump
 } = yaml3;
 
+// web/scripts/lib/design-md-v3.mjs
+init_esm_shims();
+var TYPO_INVERSE = { fontSize: "size", fontWeight: "weight", lineHeight: "lineHeight", letterSpacing: "tracking", fontFamily: "family", use: "use" };
+var COMPONENT_FORWARD = { bg: "backgroundColor", fg: "textColor", radius: "rounded", font: "typography" };
+var COMPONENT_INVERSE = Object.fromEntries(Object.entries(COMPONENT_FORWARD).map(([a, b]) => [b, a]));
+var GOOGLE_GROUPS = ["colors", "typography", "rounded", "spacing", "components"];
+var PX_RE = /^-?\d*\.?\d+px$/;
+function isMap(v) {
+  return v !== null && typeof v === "object" && !Array.isArray(v);
+}
+function* leaves(obj, prefix = []) {
+  for (const [k, v] of Object.entries(obj ?? {})) {
+    if (isMap(v) && Object.keys(v).length > 0) yield* leaves(v, [...prefix, k]);
+    else yield [[...prefix, k], v];
+  }
+}
+function splitPath(dotted) {
+  return dotted.split(".");
+}
+function setPath(obj, parts, value2) {
+  let o = obj;
+  for (const k of parts.slice(0, -1)) {
+    if (!isMap(o[k])) o[k] = {};
+    o = o[k];
+  }
+  o[parts.at(-1)] = value2;
+}
+function legacyPathOf(v3Path, aliases2 = {}) {
+  if (aliases2[v3Path]) return splitPath(aliases2[v3Path]);
+  const parts = splitPath(v3Path);
+  const [group, a, b, ...rest] = parts;
+  if (group === "fonts" && a === "roles") return b === void 0 ? ["typography", "family"] : ["typography", "family", b];
+  if (group === "typography" && b !== void 0) return ["typography", a, TYPO_INVERSE[b] ?? b, ...rest];
+  if (group === "components" && b !== void 0) return ["components", a, COMPONENT_INVERSE[b] ?? b, ...rest];
+  return parts;
+}
+function splitFrontmatter(text2) {
+  const src = text2.replace(/^﻿/, "");
+  if (!src.startsWith("---\n")) return null;
+  const end = src.indexOf("\n---\n", 4);
+  if (end < 0) return null;
+  return { fmText: src.slice(4, end + 1), body: src.slice(end + 5) };
+}
+var V3_GROUP_KEYS = ["colors", "typography", "rounded", "spacing", "components", "omitted"];
+var LEGACY_KEYS = ["tokens", "id", "verification_v2", "omd"];
+function isV3Frontmatter(fm) {
+  return isMap(fm) && typeof fm.name === "string" && V3_GROUP_KEYS.some((k) => k in fm) && !LEGACY_KEYS.some((k) => k in fm);
+}
+function parseV3(text2) {
+  const split = splitFrontmatter(text2);
+  if (!split) return null;
+  let fm;
+  try {
+    fm = yaml3.load(split.fmText, { schema: yaml3.JSON_SCHEMA });
+  } catch {
+    return null;
+  }
+  if (!isV3Frontmatter(fm)) return null;
+  return { frontmatter: fm, body: split.body };
+}
+function applyOrder(obj, order, prefix = []) {
+  if (!isMap(obj)) return obj;
+  const keys = order[prefix.join(".")];
+  const result2 = {};
+  const names = keys ? [...keys, ...Object.keys(obj).filter((k) => !keys.includes(k))] : Object.keys(obj);
+  for (const k of names) if (k in obj) result2[k] = applyOrder(obj[k], order, [...prefix, k]);
+  return result2;
+}
+function inverseValue(v3Path, value2, numeric) {
+  if (numeric.has(v3Path) && typeof value2 === "string" && PX_RE.test(value2)) return Number(value2.slice(0, -2));
+  return value2;
+}
+function projectLegacyFrontmatter(v3, sidecar = {}) {
+  const mig = sidecar.migration ?? {};
+  const numeric = new Set(mig.numeric ?? []);
+  const aliases2 = mig.aliases ?? {};
+  const tokens = {};
+  for (const [k, v] of Object.entries(sidecar.tokens ?? {})) tokens[k] = v;
+  for (const g of GOOGLE_GROUPS) {
+    if (!isMap(v3[g])) continue;
+    for (const [parts, value2] of leaves(v3[g], [g])) {
+      const p = parts.join(".");
+      setPath(tokens, legacyPathOf(p, aliases2), inverseValue(p, value2, numeric));
+    }
+  }
+  if (isMap(v3.fonts?.roles)) setPath(tokens, ["typography", "family"], { ...v3.fonts.roles });
+  for (const { path: path2, value: value2 } of mig.prose ?? []) setPath(tokens, legacyPathOf(path2, aliases2), value2);
+  for (const p of mig.emptyMaps ?? []) setPath(tokens, splitPath(p), {});
+  const catalog = sidecar.catalog ?? { name: v3.name };
+  const fm = { ...catalog };
+  if (!("name" in fm)) fm.name = v3.name;
+  const from = typeof mig.from === "string" && mig.from.startsWith("omd-") ? mig.from.slice(4) : void 0;
+  if (mig.omd !== void 0) fm.omd = mig.omd;
+  else if (from !== void 0 && from !== "unknown") fm.omd = from;
+  if (sidecar.verification_v2 !== void 0) {
+    const v2 = { ...sidecar.verification_v2 };
+    if (isMap(v2.claims)) {
+      const claims = {};
+      for (const [k, ev] of Object.entries(v2.claims)) {
+        const bare = k.startsWith("prose:") ? k.slice(6) : k;
+        claims[`tokens.${legacyPathOf(bare, aliases2).join(".")}`] = ev;
+      }
+      v2.claims = claims;
+    }
+    fm.verification_v2 = v2;
+  }
+  fm.tokens = tokens;
+  return applyOrder(fm, mig.order ?? {});
+}
+function projectLegacyMarkdown(v3Text, sidecar) {
+  const parsed = parseV3(v3Text);
+  if (!parsed) throw new Error("not a DESIGN.md v3 file");
+  const fm = projectLegacyFrontmatter(parsed.frontmatter, sidecar);
+  return `---
+${yaml3.dump(fm, { lineWidth: -1, noRefs: true })}---
+
+${parsed.body.replace(/^\n+/, "")}`;
+}
+
 // web/scripts/lib/reference-source.mjs
 var MIGRATION_EXTENSION = "dev.oh-my-design.migration";
 var CATALOG_EXTENSION = "dev.oh-my-design.catalog";
@@ -162088,9 +162207,24 @@ var CORE_MARKER = "<!-- design-md:section ";
 function isCoreV2Markdown(markdown2) {
   return markdown2.includes(CORE_MARKER);
 }
+function isV3Markdown(markdown2) {
+  return parseV3(markdown2) !== null;
+}
+function readReferenceSidecar(referenceDir) {
+  const sidecarPath = join(referenceDir, "reference.json");
+  if (!existsSync(sidecarPath)) return null;
+  return JSON.parse(readFileSync(sidecarPath, "utf8"));
+}
 function readReferenceSource(referenceDir) {
   const designPath2 = join(referenceDir, "DESIGN.md");
   const onDisk = readFileSync(designPath2, "utf8");
+  if (isV3Markdown(onDisk)) {
+    const sidecar = readReferenceSidecar(referenceDir);
+    if (!sidecar) {
+      throw new Error(`${designPath2}: DESIGN.md v3 without ${join(referenceDir, "reference.json")}. A catalog reference keeps its identity and evidence in the sidecar.`);
+    }
+    return { markdown: projectLegacyMarkdown(onDisk, sidecar), format: "v3", reconstructed: false, projected: true };
+  }
   if (!isCoreV2Markdown(onDisk)) {
     return { markdown: onDisk, format: "legacy", reconstructed: false, projected: false };
   }
