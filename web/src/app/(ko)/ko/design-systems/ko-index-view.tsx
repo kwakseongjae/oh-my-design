@@ -20,6 +20,8 @@ export interface KoRow {
   name: string;
   /** Registry name when it differs from `name` (searchable, shown small). */
   en: string | null;
+  /** Native and colloquial search aliases (lib/search-aliases.ts) — matched, never displayed. */
+  aliases: string[];
   kr: boolean;
   verified: boolean;
   /** The reference's own one-line description (English, as written). */
@@ -51,7 +53,12 @@ export function KoIndexView({ rows }: { rows: KoRow[] }) {
   const [query, setQuery] = useState("");
   const q = useDeferredValue(query.trim().toLowerCase());
   const matchQ = (r: KoRow) =>
-    !q || r.name.toLowerCase().includes(q) || r.id.includes(q) || (r.en?.toLowerCase().includes(q) ?? false);
+    !q ||
+    r.name.toLowerCase().includes(q) ||
+    r.id.includes(q) ||
+    (r.en?.toLowerCase().includes(q) ?? false) ||
+    // "토스" finds Toss although its registry names are Latin.
+    r.aliases.some((a) => a.toLowerCase().includes(q));
   const inGroup = (r: KoRow, g: Group) => g === "all" || (g === "kr" ? r.kr : !r.kr);
   const count = (g: Group) => rows.filter((r) => matchQ(r) && inGroup(r, g)).length;
   const shown = rows.filter((r) => matchQ(r) && inGroup(r, group));

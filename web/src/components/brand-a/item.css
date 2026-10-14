@@ -76,7 +76,7 @@
 .sq-md-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;max-width:72ch;margin-bottom:24px}
 .sq-md-w{font-size:15px}
 /* Korean page: one line saying the body is the canonical English file. */
-.sq-md-note{max-width:72ch;margin:-12px 0 24px;font-size:15px;line-height:1.6;color:var(--sq-ink-2)}
+.sq-md-note{max-width:72ch;margin:-12px 0 24px;font-size:15px;line-height:1.6;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
 .sq-item-pv{min-width:0}
 .sq-item-pv-in{position:sticky;top:calc(var(--sq-header-h) + 16px);max-height:calc(100vh - var(--sq-header-h) - 16px);overflow:auto}
 /* wide: one reading column, preview below it */

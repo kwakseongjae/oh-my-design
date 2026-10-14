@@ -13,6 +13,7 @@ import { getAllDesignSystems } from "@/lib/design-systems";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
+import { SEARCH_ALIASES } from "@/lib/search-aliases";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { keycapFace } from "@/lib/references/detail-loader.server";
 import { hasKoDetailId, koName } from "@/lib/i18n/ko-detail.server";
@@ -31,6 +32,7 @@ function rows(): KoRow[] {
         id: ds.refId,
         name,
         en: r?.name && r.name !== name ? r.name : null,
+        aliases: SEARCH_ALIASES[ds.refId] ?? [],
         kr: r?.country === "KR",
         verified: REFERENCE_QUALITY_BY_ID[ds.refId]?.status === "verified_v2",
         desc: ds.description,
