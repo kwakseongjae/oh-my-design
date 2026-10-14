@@ -55,7 +55,7 @@ const THRESHOLDS = {
   foldUnits: 5,             // R2  C  Nielsen 2011 / LC-54; tasteskill hero stack <= 4
   sizesFold: 4,             // R3  C  tasteskill v2: 2-3 sizes carry a page, 5 is the ceiling
   sizesPage: 6,             // R3  H  RESTRAINT.md; tasteskill.dev itself uses 18
-  headBodyDesktop: 4.0,     // R3  C  tasteskill 247-site median headline:body ~4.3
+  headBodyDesktop: 4.0,     // R3  M  tasteskill 247-site median headline:body ~4.3 (their measurement, not re-verified)
   headBodyPhone: 2.5,       // R3  H  tasteskill.dev 390 = 3.5, OmD r3 = 2.3
   headlineLines: 2,         // R4  C  tasteskill v2 copy budget (every headline <= 2 lines)
   ledeWords: 25,            // R4  C  tasteskill statement length ~25 words
@@ -451,7 +451,7 @@ function judge(v) {
     R9: ck(r9 <= T.eyebrows && f.microLabels.length + f.monoCaptions.length <= T.microLabels, `${f.eyebrows.length}e/${f.microLabels.length + f.monoCaptions.length}m/${f.repeatedBadges.length}r`, `0e/<= ${T.microLabels}m/0r`),
     R10: ck(!f.duplicates.length, f.duplicates.length, '0', true),
     'R11-empty': desk ? ck(v.firstTiles.emptyShare >= T.emptyShareDesktop, pct(v.firstTiles.emptyShare), `>= ${pct(T.emptyShareDesktop)}`) : info(pct(v.firstTiles.emptyShare)),
-    'R11-band': ck(band >= T.emptyBandVh, `${band.toFixed(2)}vh`, `>= ${T.emptyBandVh}vh`),
+    'R11-band': ck(band >= T.emptyBandVh, `${band.toFixed(3)}vh`, `>= ${T.emptyBandVh}vh`),
     R12: desk ? ck(thin.length <= T.thinScreensMax, thin.length, `<= ${T.thinScreensMax}`) : info(thin.length),
     R13: Number.isFinite(lenLimit) ? ck(v.lengthScreens <= lenLimit, v.lengthScreens, `<= ${lenLimit}`) : info(v.lengthScreens),
   };
@@ -463,7 +463,7 @@ const RULES = {
   R2: ['First-screen pieces', 'C'],
   'R3-fold': ['Type sizes on the first screen', 'C'],
   'R3-page': ['Type sizes on the page', 'H'],
-  'R3-ratio': ['Headline : body', 'C/H'],
+  'R3-ratio': ['Headline : body (desktop M / phone H)', 'M/H'],
   'R4-headline': ['Headline lines', 'C'],
   'R4-lede': ['Lede words / lines', 'C/H'],
   'R4-words': ['First-screen words', 'H'],

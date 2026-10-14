@@ -36,7 +36,7 @@ and it still fails several rules. The thresholds were **not** tuned to make it p
 | R9 eyebrows / micro+mono / badges | C | 1 / 17 / 0 | 1 / 9 / 0 | FAIL |
 | R10 said twice | H | 0 | 0 | PASS |
 | R11a empty share | H | 77% | 50% (info) | PASS |
-| R11b tallest empty band | C | 0.30vh | 0.25vh (just under; 211px needed) | FAIL |
+| R11b tallest empty band | C | 0.30vh | 0.246vh (208px; 211px needed) | FAIL |
 | R12 thin screens | C | 0 | 0 (info) | PASS |
 | R13 length | H | 10.2 screens | 14.1 screens | FAIL |
 
