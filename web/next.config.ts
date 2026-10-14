@@ -74,6 +74,12 @@ const nextConfig: NextConfig = {
       // The static twitter-image.png was retired with the stale share card;
       // already-posted cards keep resolving to the live one.
       { source: "/twitter-image.png", destination: "/og-image.png", permanent: true },
+      // Per-page share cards left /api/og/ on 2026-10-14: robots.txt disallows
+      // /api/ for every crawler, and Twitterbot, facebookexternalhit and
+      // Slackbot honour that, so posted links rendered without an image.
+      // Cards already cached under the old path keep resolving; the query
+      // string (?id=, ?slug=&locale=) is carried over by Next.
+      { source: "/api/og/:path*", destination: "/og/:path*", permanent: true },
       // The blog moved to its own host. Gated on the same flag as the canonical
       // URLs, so this stays off until the domain resolves — turning it on
       // before then would 301 every reader into a host that does not answer.

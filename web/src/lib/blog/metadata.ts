@@ -21,7 +21,7 @@ import { SITE_ORIGIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
 const SITE_NAME = "oh-my-design";
 
 function ogImageUrl(slug: string, locale: PostLocale): string {
-  return `${SITE_ORIGIN}/api/og/blog?slug=${encodeURIComponent(slug)}&locale=${locale}`;
+  return `${SITE_ORIGIN}/og/blog?slug=${encodeURIComponent(slug)}&locale=${locale}`;
 }
 
 function languageMap(

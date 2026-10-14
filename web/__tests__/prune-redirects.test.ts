@@ -18,6 +18,7 @@ const EXPECTED: Record<string, string> = {
   "/cli": "/docs/en",
   "/docs/connector": "/docs/en/ai",
   "/twitter-image.png": "/og-image.png",
+  "/api/og/:path*": "/og/:path*",
   "/reference/:id": "/design-systems/:id",
 };
 

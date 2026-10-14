@@ -150,13 +150,13 @@ export async function generateMetadata({
       url: path,
       type: "article",
       locale: "en_US",
-      images: [`/api/og/reference?id=${id}`],
+      images: [`/og/reference?id=${id}`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: desc,
-      images: [`/api/og/reference?id=${id}`],
+      images: [`/og/reference?id=${id}`],
     },
   };
 }

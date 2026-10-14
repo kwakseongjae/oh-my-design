@@ -18,6 +18,7 @@
  *   /sitemap.xml       → rewrite  /blog/sitemap.xml
  *   /robots.txt        → rewrite  /blog/robots.txt
  *   /_next/*, /api/*   → untouched
+ *   /og/*              → untouched                     (share-card images)
  *   /<anything>.<ext>  → untouched                     (public assets)
  *
  * Dotted paths pass through as assets unless they are in BLOG_OWNED_FILES —
@@ -59,7 +60,7 @@ export function isBlogHost(host: string | null | undefined): boolean {
 
 /** True for paths this module must not touch: framework, API, static assets. */
 function isPassThrough(pathname: string): boolean {
-  if (pathname.startsWith("/_next/") || pathname.startsWith("/api/")) return true;
+  if (pathname.startsWith("/_next/") || pathname.startsWith("/api/") || pathname.startsWith("/og/")) return true;
   const lastSegment = pathname.split("/").pop() ?? "";
   return /\.[a-z0-9]+$/i.test(lastSegment);
 }

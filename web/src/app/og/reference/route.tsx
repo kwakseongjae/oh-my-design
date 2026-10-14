@@ -4,6 +4,14 @@ import { loadReference } from "@/lib/references/repository.server";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
 import { projectActiveReference } from "@/lib/references/consumer-adapter";
 
+/**
+ * /og/reference?id=<id>[&artifact=evolution] — the share card for a catalog
+ * item page. It lived under /api/og/ until 2026-10-14; robots.txt disallows
+ * /api/ for every crawler and share-card fetchers (Twitterbot,
+ * facebookexternalhit, Slackbot) honour that, so the cards never rendered.
+ * next.config.ts 308s the old path here.
+ */
+
 export async function GET(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id") ?? "";
   const loaded = loadReference(id);

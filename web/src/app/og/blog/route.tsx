@@ -4,7 +4,8 @@ import { getPost } from "@/lib/blog/posts";
 import { isPostLocale } from "@/lib/blog/locales";
 
 /**
- * OG card for a blog post.
+ * OG card for a blog post, at /og/blog?slug=<slug>&locale=<locale>. Not under
+ * /api/: robots.txt disallows that prefix and share-card fetchers obey it.
  *
  * The canonical locale is Korean and none of the site's fonts carry Hangul, so
  * the font is fetched per-render as a Google Fonts subset — a few KB, and the

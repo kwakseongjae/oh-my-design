@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       url: path,
       type: "article",
       locale: "en_US",
-      images: [`/api/og/reference?id=${id}&artifact=evolution`],
+      images: [`/og/reference?id=${id}&artifact=evolution`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`/api/og/reference?id=${id}&artifact=evolution`],
+      images: [`/og/reference?id=${id}&artifact=evolution`],
     },
   };
 }
