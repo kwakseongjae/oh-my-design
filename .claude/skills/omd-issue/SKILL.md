@@ -3,6 +3,8 @@ name: omd:issue
 description: "oh-my-design 사용 중 불만·결함·아쉬운 점을 구조화된 GitHub 이슈로 접수하고, 쌓인 이슈를 배치로 처리한다. 사용자 모드('이슈 등록해줘', '이거 불편한데 신고할래', '버그 리포트', 'file an issue', '기능 요청')와 내부 도그푸딩 모드(스킬을 돌리다 미흡한 부분을 발견한 오케스트레이터·서브에이전트가 직접 접수) 둘 다 지원. '이슈 처리해줘', 'process feedback', '쌓인 피드백 정리'는 배치 처리 verb로 트리거."
 argument-hint: "[file|list|process [--dry-run]] — 기본 file"
 user-invocable: true
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

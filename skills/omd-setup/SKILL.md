@@ -3,6 +3,8 @@ name: omd-setup
 description: "Guided setup of the tools the design harness can use — image/video generation channels, browser, encoders. Detects what the user already has, explains pros/cons/costs, asks instead of instructing, and saves choices to .omd/config.json so every later design task reuses them. Trigger: 'omd setup', '도구 셋업', '이미지 생성 뭐 쓸 수 있어', 'configure media', '세팅해줘', 'what can you generate'."
 argument-hint: "[--redo] — 기존 설정을 무시하고 다시 문답"
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 # omd:setup — 가진 것을 찾고, 고르게 하고, 기억한다
