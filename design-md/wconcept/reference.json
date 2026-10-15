@@ -3,6 +3,7 @@
   "catalog": {
     "id": "wconcept",
     "name": "W Concept",
+    "display_name_kr": "W컨셉",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://www.wconcept.co.kr",

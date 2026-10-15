@@ -3,6 +3,7 @@
   "catalog": {
     "id": "zigzag",
     "name": "ZIGZAG",
+    "display_name_kr": "지그재그",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://zigzag.kr/",

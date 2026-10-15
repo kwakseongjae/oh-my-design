@@ -3,6 +3,7 @@
   "catalog": {
     "id": "mustit",
     "name": "MUSTIT",
+    "display_name_kr": "머스트잇",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://www.mustit.co.kr",

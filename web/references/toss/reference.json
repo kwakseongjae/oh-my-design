@@ -3,6 +3,7 @@
   "catalog": {
     "id": "toss",
     "name": "Toss",
+    "display_name_kr": "토스",
     "country": "KR",
     "category": "fintech",
     "homepage": "https://toss.im",

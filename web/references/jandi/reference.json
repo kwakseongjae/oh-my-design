@@ -3,6 +3,7 @@
   "catalog": {
     "id": "jandi",
     "name": "JANDI",
+    "display_name_kr": "잔디",
     "country": "KR",
     "category": "productivity",
     "homepage": "https://www.jandi.com",

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "spoon",
     "name": "Spoon",
+    "display_name_kr": "스푼",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.spooncast.net",
