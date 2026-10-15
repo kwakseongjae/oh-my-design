@@ -37,10 +37,17 @@ describe("Korean item page scope", () => {
 });
 
 describe("Korean item page metadata", () => {
-  it("titles toss with the registry name — the registry has no Korean displayName for it", async () => {
+  it("titles toss with its Korean displayName, taken from the H1 of its own DESIGN.md", async () => {
     const m = await generateMetadata(params("toss"));
-    expect(REGISTRY_BY_ID.toss.displayName).toBe("Toss");
-    expect(m.title).toBe("Toss 디자인 시스템 — DESIGN.md, 색상·타이포그래피");
+    expect(REGISTRY_BY_ID.toss.displayName).toBe("토스");
+    expect(m.title).toBe("토스 디자인 시스템 — DESIGN.md, 색상·타이포그래피");
+  });
+
+  it("titles with the registry name when the registry has no Korean displayName", async () => {
+    // banksalad: no Hangul brand name anywhere in its DESIGN.md, so none is recorded.
+    expect(REGISTRY_BY_ID.banksalad.displayName).toBe(REGISTRY_BY_ID.banksalad.name);
+    const m = await generateMetadata(params("banksalad"));
+    expect(m.title).toBe(`${REGISTRY_BY_ID.banksalad.name} 디자인 시스템 — DESIGN.md, 색상·타이포그래피`);
   });
 
   it("titles with the Korean displayName when the registry has one", async () => {
@@ -96,7 +103,7 @@ describe("Korean item page body", () => {
   });
 
   it("server-renders exactly one h1, '{표시명} 디자인 시스템', with Korean chrome and parseable JSON-LD", async () => {
-    for (const [id, name] of [["toss", "Toss"], ["tossbank", "토스뱅크"], ["stripe", "Stripe"]] as const) {
+    for (const [id, name] of [["toss", "토스"], ["tossbank", "토스뱅크"], ["stripe", "Stripe"]] as const) {
       const html = await render(id);
       const h1s = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/g) ?? [];
       expect(h1s).toHaveLength(1);

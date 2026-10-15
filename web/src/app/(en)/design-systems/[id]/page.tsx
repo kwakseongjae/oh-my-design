@@ -29,7 +29,7 @@ const SITE_URL = "https://oh-my-design.kr";
  * Display name for a reference id on this English page — the registry `name`
  * first, then `displayName`, then a title-cased id.
  *
- * `name` leads because 129 references carry a native-script `displayName`
+ * `name` leads because 170 references carry a native-script `displayName`
  * ("토스뱅크", "삼쩜삼") that read as mixed script inside an English title and
  * H1. The title, H1, breadcrumb and JSON-LD all read this one function so they
  * cannot name the brand differently.
