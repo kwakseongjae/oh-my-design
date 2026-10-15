@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI コーディングエージェントが、プロジェクト専用の DESIGN.md を基準に作業できる環境を整えます。</strong> ガイド付きインストールと doctor、31 の再利用可能なスキル、20 の専門ロール、品質評価済みの企業リファレンス 500 件以上を提供します。ローカルワークフローに別の API キーや MCP サーバーは不要です。
+  <strong>AI コーディングエージェントが、プロジェクト専用の DESIGN.md を基準に作業できる環境を整えます。</strong> ガイド付きインストールと doctor、10 の公開スキル、20 の専門ロール、品質評価済みの企業リファレンス 500 件以上を提供します。ローカルワークフローに別の API キーや MCP サーバーは不要です。
 </p>
 
 <p align="center">
@@ -147,7 +147,7 @@ Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 30 個を読み�
 
 ## パッケージの中身
 
-**31 スキル · 20 サブエージェント · 品質・根拠ステータス付きの 500 件以上のリファレンス · 起動 hooks** がフルバンドルです。Cursor には移植可能な 30 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
+**10 の公開スキル · 20 サブエージェント · 品質・根拠ステータス付きの 500 件以上のリファレンス · 起動 hooks。** インストーラーはフルバンドルの 31 スキルを書き込みます。公開スキル（`omd-init` / `omd-apply` / `omd-autopilot` / `omd-feel` / `omd-restraint` / `omd-slop-audit` / `omd-humanize` / `omd-landing` / `omd-shader-hero` / `omd-cjk-type-shader`）に、ワークフローが自ら呼び出す内部スキル（好みのループ、shim 同期、レビュー・執筆ロール、ライブキャプチャ、実験）が加わります。内部スキルもそのまま導入され動作し、一覧に出ないだけです。Cursor には移植可能な 30 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
 
 すべてのリファレンスは `oh-my-design.kr/<id>/design.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs/ja](https://oh-my-design.kr/docs/ja)**。
 

@@ -125,9 +125,9 @@ export const EN: LandingCopy = {
       { name: "omd:init", body: "Sets up a project DESIGN.md from the catalog reference that fits." },
       { name: "omd:apply", body: "Keeps everyday UI edits inside your DESIGN.md." },
       { name: "omd:autopilot", body: "Designs and builds a new surface from one prompt." },
-      { name: "omd:harness", body: "A guided run that stops for your review at each checkpoint." },
+      { name: "omd:restraint", body: "Measures \"too busy\" and cuts the page down to one focal point." },
       { name: "omd:feel", body: "Applies or audits interface detail with measured rules." },
-      { name: "omd:remember", body: "Records your corrections so the next change follows them." },
+      { name: "omd:slop-audit", body: "Finds template defaults that crowd out your product's own decisions." },
     ],
   },
   wall: {
@@ -226,9 +226,9 @@ export const KO: LandingCopy = {
       { name: "omd:init", body: "프로젝트에 맞는 카탈로그 레퍼런스로 DESIGN.md를 세팅합니다." },
       { name: "omd:apply", body: "평소 UI 수정이 DESIGN.md를 벗어나지 않게 합니다." },
       { name: "omd:autopilot", body: "프롬프트 하나로 새 화면을 설계하고 구현합니다." },
-      { name: "omd:harness", body: "단계마다 멈춰서 검토를 받는 안내형 디자인 작업입니다." },
+      { name: "omd:restraint", body: "복잡한 화면을 수치로 재고 초점 하나만 남기도록 덜어냅니다." },
       { name: "omd:feel", body: "수치로 정한 규칙으로 인터페이스 디테일을 적용하거나 점검합니다." },
-      { name: "omd:remember", body: "고쳐 준 내용을 기록해 다음 수정부터 반영합니다." },
+      { name: "omd:slop-audit", body: "제품의 결정 대신 들어간 템플릿 기본값을 찾아냅니다." },
     ],
   },
   wall: {

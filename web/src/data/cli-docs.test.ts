@@ -9,7 +9,7 @@ import {
 } from "@/lib/docs/locales";
 import { getDocsToc } from "@/components/cli-docs/docs-route";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
-import { SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { PUBLIC_SKILL_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 
 describe("localized CLI docs", () => {
   it("ships every requested locale with every page label", () => {
@@ -45,7 +45,10 @@ describe("localized CLI docs", () => {
     const documentedSkills = CLI_DOCS.en.skills.groups.flatMap((group) => group.skills);
 
     expect(documentedSkills).toContain("omd:autopilot");
-    expect(new Set(documentedSkills).size).toBe(SKILL_COUNT);
+    // The skills page lists only the public set (owner decision 2026-10-15);
+    // the overview still states the full bundle the installer writes.
+    expect(new Set(documentedSkills).size).toBe(PUBLIC_SKILL_COUNT);
+    expect(PUBLIC_SKILL_COUNT).toBeLessThan(SKILL_COUNT);
 
     for (const locale of DOC_LOCALES) {
       const dictionary = CLI_DOCS[locale];
@@ -56,13 +59,14 @@ describe("localized CLI docs", () => {
       );
 
       expect(overviewCounts, locale).toContain(String(SKILL_COUNT));
+      expect(overviewCounts, locale).toContain(String(PUBLIC_SKILL_COUNT));
       expect(overviewCounts, locale).toContain(String(SUBAGENT_COUNT));
       expect(overviewCounts, locale).toContain(String(cursorSkillCount));
-      expect(skillCounts, locale).toContain(String(SKILL_COUNT));
+      expect(skillCounts, locale).toContain(String(PUBLIC_SKILL_COUNT));
       expect(skillCounts, locale).toContain(String(SUBAGENT_COUNT));
       expect(cursorChannel?.body, locale).toContain(String(cursorSkillCount));
       expect(dictionary.showcase.previewStats.join(" "), locale).toContain(
-        String(SKILL_COUNT),
+        String(PUBLIC_SKILL_COUNT),
       );
       expect(dictionary.showcase.previewStats.join(" "), locale).toContain(
         String(SUBAGENT_COUNT),

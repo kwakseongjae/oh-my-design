@@ -64,7 +64,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "oh-my-design은 뭔가요?",
-        a: "oh-my-design(OmD)은 DESIGN.md 스펙과 그 스펙을 실제 제품 작업에 적용하는 워크플로 번들입니다. `npx oh-my-design-cli@latest`를 실행하면 사용 중인 도구를 감지해 " + SKILL_COUNT + "개 제품 스킬, " + SUBAGENT_COUNT + "개 전문 역할 정의, " + REFERENCE_COUNT + "개 레퍼런스 중 각 채널이 지원하는 구성을 설치합니다. /docs 페이지에서 결과별 사용법과 전체 파이프라인을 볼 수 있습니다.",
+        a: "oh-my-design(OmD)은 DESIGN.md 스펙과 그 스펙을 실제 제품 작업에 적용하는 워크플로 번들입니다. `npx oh-my-design-cli@latest`를 실행하면 사용 중인 도구를 감지해 " + SKILL_COUNT + "개 스킬, " + SUBAGENT_COUNT + "개 전문 역할 정의, " + REFERENCE_COUNT + "개 레퍼런스 중 각 채널이 지원하는 구성을 설치합니다. /docs 페이지에서 결과별 사용법과 전체 파이프라인을 볼 수 있습니다.",
       },
       {
         q: "일반 디자인 시스템과 뭐가 다른가요?",

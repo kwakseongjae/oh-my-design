@@ -53,52 +53,27 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 31 skills (Claude Code, Codex, OpenCode)
+## The 10 public skills
 
-Core flow (10):
-- **omd:autopilot** — One-prompt autonomous product design: decides whether to reuse, establish, or refresh the design system, then builds and verifies the real surface.
-- **omd:issue** — Files usage complaints and dogfood defects as structured GitHub issues, and drains the queue with a batch `process` verb.
-- **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
-- **omd:update** — Refreshes the existing installation without changing its scope, channels, or user-owned files, then verifies it with doctor.
-- **omd:init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
-- **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes match brand vibe to layout; wordmark-only logo, reveal safety net, container-inner consistency.
-- **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
-- **omd:learn** — Folds preferences into DESIGN.md by scope.
-- **omd:taste** — Renders your learned design taste in one view (applied / pending / held / unknown) from preferences + DESIGN.md.
-- **omd:sync** — Maintains shim files (CLAUDE.md / AGENTS.md / .cursor/rules) so every agent reads the same spec.
+These are the skills `npx skills add kwakseongjae/oh-my-design` lists, and each one also installs alone (`--skill <name>`). `npx oh-my-design-cli` installs the full 31-skill bundle: these ten plus the internal skills the workflows call on their own (preference loop, shim sync, review and writing roles, live capture, labs). Internal skills stay installed and keep working; they are just not listed.
 
-Live capture + assets (3):
-- **omd:reference-capture** — Live brand-site CDP/Playwright inspect → tokens + structure + fonts + screenshots + proof.
-- **omd:asset-fetch** — Free-license asset catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / SIL OFL display fonts). Handcrafted character SVG forbidden.
-- **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe previews, ratings, per-brand IP audit.
-
-Landing + media (5):
-- **omd:setup** — Detects the image/video generation channels, browser, and encoders this machine already has, explains cost and trade-offs, and records the choice in `.omd/config.json`.
-- **omd:landing** — Scroll-native one-page landing built from DESIGN.md plus the measured landing-craft codex (LC-n rules): concept, storyboard, assets, self-review loop.
-- **omd:aphrodite** — Maximum-craft one-page landing: the omd:landing structure plus finishing (typeface sourcing, grain, depth, color grading, scroll timeline) and top-grade assets, gated on passing every landing check.
-- **omd:media** — Brand-consistent asset sets (hero, section illustrations, icon sets, OG image) through whichever channel `omd:setup` recorded, with a provenance and cost ledger.
-- **omd:showcase** — Deterministic scroll demo video from a rendered page (single or side-by-side comparison), H.264 / GIF via ffmpeg.
-
-Single-effect shader skills (2):
-- **omd:shader-hero** — One full-bleed WebGL2 hero in two DESIGN.md inks (base + one brand color) as a slowly folding ordered-dither field (Paper Shaders, ~7 KiB gzip): no blends so no mud, copy on a hard-edged base-ink knockout (≥4.5:1 measured across the timeline), token script refuses to invent a palette, CSS halftone poster fallback, reduced-motion still.
-- **omd:cjk-type-shader** — 먹 번짐: a large Korean/Japanese/Chinese headline that reads as sumi ink on hanji. The heading stays real, selectable text; a WebGL2 layer traced from the browser's own glyph layout adds wet→dry bloom, ink pooling at rims and stroke ends, fiber show-through and feathering at a few edges; two parameters (bleed, duration), procedural paper, static fallback, reduced-motion still.
-
-Localization + review layer (7):
-- **omd:orchestrator** — Coordinates multi-agent writing/review workflows with a revision cap and handoff log.
-- **omd:kr-writer** — Korean long-form / blog writer with multiple voice presets (default toss-tech-design).
-- **omd:locale-adapter** — Adapts (not translates) Korean canonical content into EN / JP / ZH-TW with cultural reference swaps.
-- **omd:humanize** — Rewrites product and documentation copy for KO / EN / JA / ZH-CN / ZH-TW while preserving commands, facts, and evidence boundaries.
-- **omd:designer-review** — Visual + brand-consistency audit against DESIGN.md (typography, color budget, radius scale, states, responsiveness).
-- **omd:final-qa** — Read-only final-gate critic enforcing an 8-item rubric with a hard revision cap.
-- **omd:codex-image** — Channel-aware image materializer for `omd:gen-image` spec blocks (Codex native gen / asset fallback / user queue).
+The system (3):
+- **omd-init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
+- **omd-apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
+- **omd-autopilot** — One-prompt autonomous product design: decides whether to reuse, establish, or refresh the design system, then builds and verifies the real surface.
 
 Interface quality (3):
-- **omd:feel** — Applies and audits 113 provenance-graded HIG / Material / WCAG rules for motion, spacing, typography, and accessibility.
-- **omd:restraint** — Restraint as measurable rules: audits a rendered page at desktop and phone widths (one focal point, ≤ 5 first-screen pieces, ≤ 4 type sizes, ≤ 2 hero CTAs, one accent, empty share, thin screens, page length) and applies a cut → merge → enlarge → re-measure pass; every rule carries a measured / convention / heuristic grade.
-- **omd:slop-audit** — Finds clusters of context-free UI and copy defaults without guessing authorship, then separates slop, quality failures, and preference.
+- **omd-feel** — Applies and audits 113 provenance-graded HIG / Material / WCAG rules for motion, spacing, typography, and accessibility.
+- **omd-restraint** — Restraint as measurable rules: audits a rendered page at desktop and phone widths (one focal point, ≤ 5 first-screen pieces, ≤ 4 type sizes, ≤ 2 hero CTAs, one accent, empty share, thin screens, page length) and applies a cut → merge → enlarge → re-measure pass; every rule carries a measured / convention / heuristic grade.
+- **omd-slop-audit** — Finds clusters of context-free UI and copy defaults without guessing authorship, then separates slop, quality failures, and preference.
 
-Standalone (1):
-- **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.
+Copy (1):
+- **omd-humanize** — Rewrites product and documentation copy for KO / EN / JA / ZH-CN / ZH-TW while preserving commands, facts, and evidence boundaries.
+
+Surfaces (3):
+- **omd-landing** — Scroll-native one-page landing built from DESIGN.md plus the measured landing-craft codex (LC-n rules): concept, storyboard, assets, self-review loop.
+- **omd-shader-hero** — One full-bleed WebGL2 hero in two DESIGN.md inks (base + one brand color) as a slowly folding ordered-dither field (Paper Shaders, ~7 KiB gzip): no blends so no mud, copy on a hard-edged base-ink knockout (≥4.5:1 measured across the timeline), token script refuses to invent a palette, CSS halftone poster fallback, reduced-motion still.
+- **omd-cjk-type-shader** — 먹 번짐: a large Korean/Japanese/Chinese headline that reads as sumi ink on hanji. The heading stays real, selectable text; a WebGL2 layer traced from the browser's own glyph layout adds wet→dry bloom, ink pooling at rims and stroke ends, fiber show-through and feathering at a few edges; two parameters (bleed, duration), procedural paper, static fallback, reduced-motion still.
 
 ## The 20 sub-agents (Claude Code, Codex, OpenCode)
 
