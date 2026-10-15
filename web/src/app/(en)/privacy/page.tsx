@@ -145,9 +145,11 @@ export default function PrivacyPage() {
 
         <Section title="Your choices">
           <p>
-            In the EU, UK, and Switzerland we ask before turning analytics on —
-            you&apos;ll see a banner. Choose <strong className="font-medium text-foreground">Decline</strong> and no
-            analytics cookies or identifiers are set.
+            In the EU, UK, and Switzerland we ask before turning on cookie-based
+            analytics (Google Analytics and Mixpanel) — you&apos;ll see a banner.
+            Choose <strong className="font-medium text-foreground">Decline</strong> and no
+            analytics cookies or identifiers are set, and the cookieless page-view
+            count (Vercel Web Analytics) stops as well.
           </p>
           <p>
             Changed your mind, anywhere?{" "}
