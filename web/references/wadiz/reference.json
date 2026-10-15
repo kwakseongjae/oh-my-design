@@ -3,6 +3,7 @@
   "catalog": {
     "id": "wadiz",
     "name": "Wadiz",
+    "display_name_kr": "와디즈",
     "country": "KR",
     "category": "fintech",
     "homepage": "https://www.wadiz.kr",

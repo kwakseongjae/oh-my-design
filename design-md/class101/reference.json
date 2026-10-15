@@ -3,6 +3,7 @@
   "catalog": {
     "id": "class101",
     "name": "Class101",
+    "display_name_kr": "클래스101",
     "country": "KR",
     "category": "education",
     "homepage": "https://class101.net",

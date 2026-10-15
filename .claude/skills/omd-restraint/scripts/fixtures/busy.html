@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busy fixture</title>
+<!-- omd-restraint self-test: this page must FAIL on several independent rules at once, so one
+     threshold change cannot flip it: eyebrow pill, 4-line headline, many sizes, 4+ hero actions,
+     stat tiles, several accent hues, bordered cards on a grid backdrop, mono captions, a long page. -->
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #fff; color: #222; font: 400 15px/1.5 system-ui, sans-serif;
+    background-image: linear-gradient(#eee 1px, transparent 1px), linear-gradient(90deg, #eee 1px, transparent 1px); background-size: 32px 32px; }
+  header { display: flex; align-items: center; gap: 18px; padding: 14px 32px; font-size: 14px; border-bottom: 1px solid #ddd; }
+  header .lang button { font-size: 12px; border: 1px solid #ccc; background: #fff; }
+  .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; padding: 40px 32px; }
+  .pill { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; background: #f3e8ff; color: #7c3aed; padding: 4px 10px; border-radius: 999px; }
+  h1 { font-size: 50px; line-height: 1.1; max-width: 640px; margin-top: 12px; }
+  .lede { font-size: 17px; max-width: 560px; margin-top: 16px; }
+  .row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .row a, .row button { font-size: 14px; padding: 10px 16px; border-radius: 8px; border: 1px solid #ccc; background: #fff; color: #222; text-decoration: none; }
+  .row .p1 { background: #7c3aed; color: #fff; }
+  .row .p2 { background: #f97316; color: #fff; }
+  .search { margin-top: 14px; display: flex; gap: 8px; }
+  .search input { font-size: 14px; padding: 10px; width: 260px; border: 1px solid #ccc; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 22px; }
+  .stat { border: 1px solid #e5e5e5; padding: 12px; background: #fff; }
+  .stat b { display: block; font-size: 34px; color: #16a34a; }
+  .stat small { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #777; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { border: 1px solid #ddd; border-radius: 12px; padding: 14px; background: #fff; }
+  .card h3 { font-size: 19px; }
+  .card .idx { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #db2777; }
+  .card .tag { display: inline-block; font-size: 11px; background: #dcfce7; color: #166534; border-radius: 999px; padding: 2px 8px; }
+  .card p { font-size: 13px; color: #555; }
+  .list { padding: 40px 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .list .item { border: 1px solid #ddd; border-radius: 12px; padding: 20px; height: 260px; background: #fff; }
+  .list .item h4 { font-size: 21px; } .list .item span { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+  @media (max-width: 700px) { .hero { grid-template-columns: 1fr; padding: 20px 16px; } h1 { font-size: 34px; } .stats { grid-template-columns: 1fr 1fr; } .list { grid-template-columns: 1fr; } header { flex-wrap: wrap; } }
+</style>
+</head>
+<body>
+  <header>
+    <strong>Platformly</strong>
+    <nav><a href="#">Product</a> <a href="#">Solutions</a> <a href="#">Pricing</a> <a href="#">Docs</a> <a href="#">Blog</a> <a href="#">Changelog</a></nav>
+    <span class="lang"><button>EN</button><button>KO</button><button>JA</button></span>
+  </header>
+  <section class="hero">
+    <div>
+      <span class="pill">New · v2.0 released</span>
+      <h1>The all-in-one platform to build, ship, scale and monitor every product your team dreams of</h1>
+      <p class="lede">Trusted by 10,000+ teams in 150+ countries, Platformly unifies your roadmap, analytics, deployments, billing and support in one beautiful workspace with 300+ integrations and AI everywhere.</p>
+      <div class="row">
+        <a class="p1" href="#">Start free trial</a>
+        <a class="p2" href="#">Book a demo</a>
+        <a href="#">Watch video</a>
+        <button>Talk to sales</button>
+      </div>
+      <div class="search"><input placeholder="Search 500+ templates"><button>Search</button></div>
+      <div class="stats">
+        <div class="stat"><b>10k+</b><small>Teams</small></div>
+        <div class="stat"><b>99.9%</b><small>Uptime</small></div>
+        <div class="stat"><b>150+</b><small>Countries</small></div>
+        <div class="stat"><b>4.9</b><small>Rating</small></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card"><span class="idx">01 /</span> <span class="tag">Beta</span><h3>Roadmaps</h3><p>Plan everything.</p></div>
+      <div class="card"><span class="idx">02 /</span> <span class="tag">Beta</span><h3>Analytics</h3><p>Measure everything.</p></div>
+      <div class="card"><span class="idx">03 /</span> <span class="tag">Beta</span><h3>Deploys</h3><p>Ship everything.</p></div>
+      <div class="card"><span class="idx">04 /</span> <span class="tag">Beta</span><h3>Billing</h3><p>Charge everything.</p></div>
+      <div class="card"><span class="idx">05 /</span> <span class="tag">New</span><h3>Support</h3><p>Answer everything.</p></div>
+      <div class="card"><span class="idx">06 /</span> <span class="tag">New</span><h3>AI</h3><p>Automate everything.</p></div>
+    </div>
+  </section>
+  <section class="list" id="list"></section>
+  <script>
+    const list = document.getElementById('list');
+    for (let i = 1; i <= 30; i++) list.insertAdjacentHTML('beforeend', `<div class="item"><span>Feature ${i}</span><h4>Integration ${i}</h4><p>Connect your stack in minutes. <a href="#">Start free trial</a></p></div>`);
+  </script>
+</body>
+</html>

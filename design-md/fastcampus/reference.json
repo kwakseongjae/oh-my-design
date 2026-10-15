@@ -3,6 +3,7 @@
   "catalog": {
     "id": "fastcampus",
     "name": "Fastcampus",
+    "display_name_kr": "패스트캠퍼스",
     "country": "KR",
     "category": "education",
     "homepage": "https://fastcampus.co.kr",

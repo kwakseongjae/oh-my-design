@@ -3,6 +3,7 @@
   "catalog": {
     "id": "ridi",
     "name": "RIDI",
+    "display_name_kr": "리디",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://ridibooks.com",

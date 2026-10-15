@@ -3,6 +3,7 @@
   "catalog": {
     "id": "watcha",
     "name": "Watcha",
+    "display_name_kr": "왓챠",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://watcha.com",

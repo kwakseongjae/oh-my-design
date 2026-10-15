@@ -3,6 +3,7 @@
   "catalog": {
     "id": "lunit",
     "name": "Lunit",
+    "display_name_kr": "루닛",
     "country": "KR",
     "category": "healthcare",
     "homepage": "https://www.lunit.io",

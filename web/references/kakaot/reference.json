@@ -3,6 +3,7 @@
   "catalog": {
     "id": "kakaot",
     "name": "Kakao T",
+    "display_name_kr": "카카오 T",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.kakaomobility.com",

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "kmong",
     "name": "Kmong",
+    "display_name_kr": "크몽",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://kmong.com",

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "kakaobank",
     "name": "KakaoBank",
+    "display_name_kr": "카카오뱅크",
     "country": "KR",
     "category": "fintech",
     "homepage": "https://www.kakaobank.com",

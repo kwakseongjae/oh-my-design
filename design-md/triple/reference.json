@@ -3,6 +3,7 @@
   "catalog": {
     "id": "triple",
     "name": "Triple",
+    "display_name_kr": "트리플",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://triple.guide",

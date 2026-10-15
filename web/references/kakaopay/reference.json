@@ -3,6 +3,7 @@
   "catalog": {
     "id": "kakaopay",
     "name": "KakaoPay",
+    "display_name_kr": "카카오페이",
     "country": "KR",
     "category": "fintech",
     "homepage": "https://www.kakaopay.com",

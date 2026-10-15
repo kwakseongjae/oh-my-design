@@ -3,6 +3,7 @@
   "catalog": {
     "id": "catchtable",
     "name": "CatchTable",
+    "display_name_kr": "캐치테이블",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.catchtable.co.kr",
