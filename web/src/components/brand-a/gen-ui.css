@@ -132,3 +132,17 @@
    tile with clear space; no jelly bevel or shadow (LINE's guideline forbids decoration and effects). */
 .sq-jk.sq-jk-logo{background:#ffffff;box-shadow:none;padding:5px}
 .sq-jk-logo img{width:20px;height:20px;object-fit:contain;display:block}
+/* round 10 (Iris, B radius system): on the band tone the panes are white panels (28) with the
+   resting panel shadow; picker chips are pills, neutral (white, ink when selected: chips and tabs
+   stay neutral); the agent log is a control (14); the lit source line is the active step (tint). */
+.sq-g5-chip{border-radius:var(--sq-r-pill);background:var(--sq-paper);padding:5px 14px 5px 5px}
+.sq-g5-chip:hover{background:var(--sq-cell)}
+.sq-g5-chip[aria-checked="true"],.sq-g5-chip[aria-checked="true"]:hover{background:var(--sq-ink);color:var(--sq-paper)}
+.sq-g5-chip .sq-jk{border-radius:50%}
+.sq-g5-src{border-radius:var(--sq-r-panel);background:var(--sq-paper);box-shadow:var(--sq-shadow-panel);overflow:hidden}
+.sq-g5-file{padding:16px 20px 8px}
+.sq-g5-code li{padding-inline:20px}
+.sq-g5-agent{border-radius:var(--sq-r-ctl);background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}
+.sq-g5-stage{border-radius:var(--sq-r-panel);background:var(--sq-paper);box-shadow:var(--sq-shadow-panel)}
+.sq-g5-tip{border-radius:var(--sq-r-ctl)}
+.sq-gen-replay{border-bottom:0;padding:6px 14px;border-radius:var(--sq-r-pill);background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}

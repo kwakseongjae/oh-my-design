@@ -7,6 +7,8 @@
 //     shadow alone, each rendered over the paper and over black and matted (alpha = 1 − (A − B) / paper);
 //   - data/hero-drop.json: sprite boxes in CSS px of the poster, the sheet, the fall and bounce heights.
 //   The settled composite (base + shadows + caps) is diffed against the full poster and printed.
+// Round 10: #k3 sits in the hero stage, whose rounded corners and ring would clip the box and
+// read as opaque paper in every sprite matte; the capture squares the stage off (the page clips it again).
 // Headless playwright-core with GPU flags (not the owner's Chrome).
 //   node scripts/hero-posters.mjs <base-url> [default|ja|zh-tw ...]
 import { createRequire } from "node:module";
@@ -64,17 +66,21 @@ const report = {};
 for (const [route, set, name] of SETS) {
   const freshAll = freshOf(name);
   const entry = (drop.sets[name] = { fresh: freshAll });
-  for (const [w, h, dpr, sfx] of [[1440, 900, 1, ""], [1440, 900, 2, "@2x"], [390, 844, 2, "-m"]]) {
+  // round 10: the desktop viewport is 1440 wide (the box the page has at 1440) and tall enough to hold
+  // the whole stage, so shots never need fullPage (its viewport override re-lays the scene out mid-matte)
+  for (const [w, h, dpr, sfx] of [[1440, 1200, 1, ""], [1440, 1200, 2, "@2x"], [390, 844, 2, "-m"]]) {
     const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: dpr, colorScheme: "light", reducedMotion: "reduce" });
     await ctx.addInitScript(() => { try { localStorage.setItem("omd-consent", "denied"); } catch {} });
     const p = await ctx.newPage();
     await p.goto(base + route + "?k3fresh=1&k3dbg=1", { waitUntil: "networkidle", timeout: 180000 });
     await p.waitForSelector("#k3.sq-live", { timeout: 60000, state: "attached" });
     await p.waitForTimeout(2000);
-    await p.addStyleTag({ content: "body *{visibility:hidden!important} #k3,#k3 canvas{visibility:visible!important} .sq-k3-ring,.sq-k3-name,.sq-k3-drop{display:none!important}" });
+    await p.addStyleTag({ content: "body *{visibility:hidden!important} #k3,#k3 canvas{visibility:visible!important} .sq-k3-ring,.sq-k3-name,.sq-k3-drop{display:none!important} .sq-stage{border-radius:0!important;box-shadow:none!important}" });
     await p.waitForTimeout(400);
-    const box = await p.evaluate(() => { const r = document.getElementById("k3").getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY, width: r.width, height: r.height }; });
-    const shot = () => p.screenshot({ clip: box, fullPage: true });
+    // whole CSS px inside the box: a fractional edge row would sample the page beyond it (opaque in the matte)
+    const box = await p.evaluate(() => { const r = document.getElementById("k3").getBoundingClientRect(); const x = Math.ceil(r.left + scrollX), y = Math.ceil(r.top + scrollY); return { x, y, width: Math.floor(r.right + scrollX) - x, height: Math.floor(r.bottom + scrollY) - y }; });
+    await p.evaluate(() => scrollTo(0, 0));
+    const shot = () => p.screenshot({ clip: box });
     const full = await shot();
     await sharp(full).webp({ quality: 86 }).toFile(`${outdir}hero-logos${set}-light${sfx}.webp`);
     const narrow = w <= 900;
@@ -92,13 +98,20 @@ for (const [route, set, name] of SETS) {
       for (const id of fresh) {
         const got = {};
         for (const mode of ["cap", "shadow"]) {
-          await p.evaluate(([i, m, paper]) => { window.__k3.solo(i, m); window.__k3.floorTo(paper); window.__k3.renderNow(); }, [id, mode, PAPER]);
-          await frames(p);
-          const A = await raw(await shot());
-          await p.evaluate(() => { window.__k3.floorTo("#000000"); window.__k3.renderNow(); });
-          await frames(p);
-          const B = await raw(await shot());
-          got[mode] = matte(A, B);
+          // round 10: a late scene re-layout can redraw the whole keyboard between solo() and the
+          // shot; one cap's matte is never wider than half the box, so a wider one is retaken
+          for (let tries = 0; tries < 6; tries++) {
+            await p.evaluate(([i, m, paper]) => { window.__k3.solo(i, m); window.__k3.floorTo(paper); window.__k3.renderNow(); }, [id, mode, PAPER]);
+            await frames(p);
+            const A = await raw(await shot());
+            await p.evaluate(([i, m]) => { window.__k3.solo(i, m); window.__k3.floorTo("#000000"); window.__k3.renderNow(); }, [id, mode]);
+            await frames(p);
+            const B = await raw(await shot());
+            got[mode] = matte(A, B);
+            if (!got[mode] || got[mode].w < A.w * (mode === "cap" ? 0.5 : 0.7)) break;
+            console.log("  retake", id, mode, got[mode].w, "of", A.w);
+            await p.waitForTimeout(500);
+          }
         }
         sprites.push({ id, cap: got.cap, sh: got.shadow });
       }
