@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-22",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "corporate",
@@ -61,6 +61,12 @@
         "kind": "official-doc",
         "url": "https://nulab.com/ja/about/",
         "captured": "2026-09-22"
+      },
+      {
+        "id": "backlog-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://backlog.com/ja/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -760,6 +766,13 @@
         "source_id": "corp-live",
         "method": "computed-style",
         "captured": "2026-09-22"
+      },
+      "components.backlog-button-primary.height": {
+        "surface_id": "backlog",
+        "source_id": "backlog-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.button.button--sm.button--contained \"無料で試す（新しいタブで開く）\" (102 x 40) via probe-component-states.mjs --match #f27100 matched on radius, padding, font-size, fg; locale ja-JP",
+        "captured": "2026-10-16"
       }
     }
   },

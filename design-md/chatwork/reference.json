@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-22",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "product",
@@ -55,6 +55,12 @@
         "kind": "product-surface",
         "url": "https://www.kubell.com/",
         "captured": "2026-09-22"
+      },
+      {
+        "id": "product-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://go.chatwork.com/ja/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -412,6 +418,13 @@
         "source_id": "product-live",
         "method": "computed-style",
         "captured": "2026-09-22"
+      },
+      "components.button-cta.padding": {
+        "surface_id": "product",
+        "source_id": "product-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "span.typesquare_option \"無料登録して使う\" (444 x 60) via probe-component-states.mjs --match #f03748 matched on radius, font-size, height, fg; locale ja-JP",
+        "captured": "2026-10-16"
       }
     }
   },

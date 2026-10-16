@@ -95,6 +95,7 @@ components:
     pressed: '#0f83fd'
     focus: '#0f83fd'
     use: '今すぐはじめる — the filled pill. Hover, pressed and focus are the same #0f83fd fill and nothing else: the component sets outline-style none and supplies no replacement, so focus is indistinguishable from hover.'
+    padding: 9.6px 24px
   button-secondary:
     type: button
     backgroundColor: '#ffffff'

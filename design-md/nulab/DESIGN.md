@@ -107,6 +107,7 @@ components:
     pressed: '#bf5900'
     focus: '#cbc2e8'
     use: Backlog's filled action (無料で試す), 102×40 — orange, not the green the corporate token set assigns to Backlog.
+    height: 40px
   backlog-button-outlined:
     type: button
     backgroundColor: '#ffffff'

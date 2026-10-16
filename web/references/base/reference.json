@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -61,6 +61,12 @@
         "kind": "product-surface",
         "url": "https://binc.jp/about/history",
         "captured": "2026-09-22"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://thebase.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -592,6 +598,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-22"
+      },
+      "components.button-header-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.header-button.usersAdd.astro-blryxaq5 \"無料ではじめる\" (160 x 60) via probe-component-states.mjs --match #fc6589 matched on radius, font-size, height, fg; locale ja-JP",
+        "captured": "2026-10-16"
       }
     }
   },

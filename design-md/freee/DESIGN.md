@@ -45,6 +45,7 @@ components:
     use: Public header sign-up action only.
     pressed: '#2358d4'
     focus: '#2256ce'
+    height: 31px
   primary-action:
     type: button
     backgroundColor: '#2864f0'

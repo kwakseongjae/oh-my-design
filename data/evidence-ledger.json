@@ -3,12 +3,12 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 299,
-  "sources": 1921,
+  "sources": 1935,
   "sources_by_kind": {
     "brand-asset": 78,
     "license": 137,
-    "official-doc": 713,
-    "product-surface": 993
+    "official-doc": 714,
+    "product-surface": 1006
   },
   "references": {
     "104": {
@@ -366,7 +366,7 @@
       ]
     },
     "acer": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -379,6 +379,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.acer.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.acer.com"
         },
         {
@@ -714,7 +720,7 @@
       ]
     },
     "au": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -733,6 +739,12 @@
           "id": "mobile-capture",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.au.com"
+        },
+        {
+          "id": "mobile-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.au.com"
         },
         {
@@ -960,7 +972,7 @@
       ]
     },
     "base": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -973,6 +985,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "thebase.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "thebase.com"
         },
         {
@@ -1188,7 +1206,7 @@
       ]
     },
     "booth": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1213,6 +1231,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "booth.pm"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "booth.pm"
         }
       ]
@@ -1596,7 +1620,7 @@
       ]
     },
     "chatwork": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1609,6 +1633,12 @@
           "id": "product-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "go.chatwork.com"
+        },
+        {
+          "id": "product-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "go.chatwork.com"
         }
       ]
@@ -2220,7 +2250,7 @@
       ]
     },
     "crowdworks": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2233,6 +2263,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "crowdworks.jp"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "crowdworks.jp"
         },
         {
@@ -3534,7 +3570,7 @@
       ]
     },
     "freee": {
-      "checked": "2026-09-19",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3553,6 +3589,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "www.freee.co.jp"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.freee.co.jp"
         },
         {
@@ -4746,9 +4788,15 @@
       ]
     },
     "ikala": {
-      "checked": "2026-10-01",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "ikala.ai"
+        },
         {
           "id": "ikala-about",
           "kind": "official-doc",
@@ -6810,7 +6858,7 @@
       ]
     },
     "mercari": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6841,6 +6889,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "www.mercari.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.mercari.com"
         },
         {
@@ -8070,7 +8124,7 @@
       ]
     },
     "nulab": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -8083,6 +8137,12 @@
           "id": "backlog-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "backlog.com"
+        },
+        {
+          "id": "backlog-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "backlog.com"
         },
         {
@@ -8982,7 +9042,7 @@
       ]
     },
     "poya": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9001,6 +9061,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.poya.com.tw"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.poya.com.tw"
         },
         {
@@ -10026,9 +10092,15 @@
       ]
     },
     "serendie": {
-      "checked": "2026-09-21",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "button-doc-probe-2026-10-16",
+          "kind": "official-doc",
+          "captured": "2026-10-16",
+          "host": "serendie.design"
+        },
         {
           "id": "melco-serendie-platform",
           "kind": "product-surface",
@@ -12162,7 +12234,7 @@
       ]
     },
     "udn": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12205,6 +12277,12 @@
           "id": "politics-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "udn.com"
+        },
+        {
+          "id": "politics-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "udn.com"
         }
       ]
@@ -13206,13 +13284,19 @@
       ]
     },
     "zenn": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "zenn.dev"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "zenn.dev"
         },
         {

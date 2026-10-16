@@ -27,7 +27,7 @@
   },
   "claimPaths": "design-md-v3",
   "verification_v2": {
-    "checked": "2026-09-21",
+    "checked": "2026-10-16",
     "claims": {
       "colors.canvas": {
         "captured": "2026-09-21",
@@ -352,6 +352,20 @@
         "method": "computed-style",
         "source_id": "serendie-live",
         "surface_id": "home"
+      },
+      "components.theme-action.height": {
+        "surface_id": "button-doc",
+        "source_id": "button-doc-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.w_100%.ta_left.d_grid \"Konjo\" (150 x 40) via probe-component-states.mjs --match #0650a0 matched on radius, padding, font-size, fg; locale ja-JP",
+        "captured": "2026-10-16"
+      },
+      "components.theme-action.focus": {
+        "surface_id": "button-doc",
+        "source_id": "button-doc-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.w_100%.ta_left.d_grid \"Konjo\" (150 x 40) via probe-component-states.mjs --match #0650a0 matched on radius, padding, font-size, fg; locale ja-JP: focus outline #0353aa solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": [],
@@ -404,6 +418,12 @@
         "id": "melco-serendie-platform",
         "kind": "product-surface",
         "url": "https://www.mitsubishielectric.co.jp/serendie/"
+      },
+      {
+        "id": "button-doc-probe-2026-10-16",
+        "kind": "official-doc",
+        "url": "https://serendie.design/components/button",
+        "captured": "2026-10-16"
       }
     ],
     "surfaces": [
@@ -455,12 +475,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 12,
+      "warnings": 13,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
-      "extension-component-property": 4,
+      "extension-component-property": 5,
       "orphaned-tokens": 3
     },
     "findings": [
@@ -517,6 +537,12 @@
         "rule": "broken-ref",
         "path": "components.theme-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.theme-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

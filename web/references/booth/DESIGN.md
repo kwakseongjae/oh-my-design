@@ -37,6 +37,8 @@ components:
     typography: 14px / 600
     pressed: 'fg #0f6270'
     use: 'お知らせ一覧 — a teal link button with a hairline inset bottom; hover changes nothing, press and focus darken the label to #0f6270.'
+    padding: 4px 16px
+    focus: 'label #0f6270, browser default focus ring (outline auto) (+4 nested-layer changes) on :focus-visible'
   input-search:
     type: input
     backgroundColor: '#ebedf2'
@@ -176,6 +178,8 @@ matched; background-image, text-decoration and pseudo-elements were compared too
 
 Hover: no change on the measured link and field. Press and focus: the link darkens to `#0f6270`; the
 field turns white with a dark border.
+
+Live state probe, 2026-10-16 (`https://booth.pm/ja`), `link-notice`: focus — label #0f6270, browser default focus ring (outline auto) (+4 nested-layer changes).
 
 ## Do's and Don'ts
 

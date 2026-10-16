@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-22",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -49,6 +49,12 @@
         "kind": "product-surface",
         "url": "https://zenn.dev/",
         "captured": "2026-09-22"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://zenn.dev/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -688,6 +694,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-22"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.Button-module-scss-module__K3wmia__primary.Button-module-scss-module__K3wmia__baseStyle.Button-module-scss-module__K3wmia__large \"今すぐはじめる\" (162 x 44) via probe-component-states.mjs --match #3ea8ff matched on radius, font-size, height, fg; locale ja-JP",
+        "captured": "2026-10-16"
       }
     }
   },

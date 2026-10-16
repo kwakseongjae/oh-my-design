@@ -98,6 +98,7 @@ components:
     hover: layer rgba(0,0,0,0.1)
     pressed: layer rgba(0,0,0,0.1)
     use: 無料ではじめる — the wide call to action, 312×48. Hover and press lay a 10% black gradient over the orange (background-image); the fill value itself does not change. Focus shows the same layer and the browser's ring.
+    focus: background-image linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), browser default focus ring (outline auto) on :focus-visible
   button-signup:
     type: button
     backgroundColor: '#f26731'
@@ -393,6 +394,8 @@ and **nothing at all** on the email field.
 
 No disabled state was observed on a rendered control. `--text-color-disabled` `#cfd4da` exists
 in the set.
+
+Live state probe, 2026-10-16 (`https://crowdworks.jp/`), `button-cta`: focus — background-image linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), browser default focus ring (outline auto).
 
 ## Do's and Don'ts
 

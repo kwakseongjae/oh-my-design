@@ -49,6 +49,8 @@ components:
     rounded: 9999px
     type: button
     use: Observed KONJO-theme action on the design-system home only.
+    height: 40px
+    focus: 'outline #0353aa solid 2px on :focus-visible'
 omitted:
   - section: spacing
     reason: No verified values in current evidence.
@@ -187,6 +189,8 @@ Only one component is recorded with measured values. The documentation site publ
 ### States
 
 Measured for the theme action only: rest `#0650a0` → hover `#024288`, with pressed matching hover. Focus was not separately distinguishable from hover in the observed component, and no focus-ring value is asserted. The button documentation page carries a 状態 section that was not transcribed in this pass.
+
+Live state probe, 2026-10-16 (`https://serendie.design/components/button`), `theme-action`: focus — outline #0353aa solid 2px.
 
 ## Do's and Don'ts
 
