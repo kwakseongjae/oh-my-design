@@ -57,20 +57,18 @@ export const REFERENCE_QUALITY = [
     "nextReverifyAt": "2027-01-09",
     "renewedSourceCount": 1,
     "tokenSource": "live-extract",
-    "claimCount": 79,
-    "evidenceClaimCount": 79,
+    "claimCount": 83,
+    "evidenceClaimCount": 83,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
-    "sourceCount": 6,
+    "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 6,
     "componentCount": 6,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
