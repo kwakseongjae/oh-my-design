@@ -4,6 +4,7 @@ import { getLandingData } from "@/lib/landing-a/data.server";
 import { getRepoStars } from "@/lib/github-stars.server";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
 import { LOCALE_SWITCH_KEY, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { fmt, getCopy } from "./copy";
 import { CliPanel } from "./cli-panel";
 import { GenUI } from "./gen-ui";
@@ -71,7 +72,7 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
                 <CopyButton text={INSTALL} labels={c.use} className="sq-cmd-copy" />
               </div>
               <div className="sq-hero-acts">
-                <Link className="sq-cta" href="/design-systems" prefetch={false}>{c.hero.browse}</Link>
+                <Link className="sq-cta" href={catalogPathFor(locale)} prefetch={false}>{c.hero.browse}</Link>
                 <a className="sq-cta-q" href="#reference">{c.hero.how}</a>
               </div>
             </div>

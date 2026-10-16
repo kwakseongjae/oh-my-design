@@ -3,6 +3,7 @@
   "catalog": {
     "id": "wanted",
     "name": "Wanted",
+    "display_name_kr": "원티드",
     "country": "KR",
     "category": "productivity",
     "homepage": "https://www.wanted.co.kr",

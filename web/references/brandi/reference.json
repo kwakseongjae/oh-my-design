@@ -3,6 +3,7 @@
   "catalog": {
     "id": "brandi",
     "name": "Brandi",
+    "display_name_kr": "브랜디",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://www.brandi.co.kr",

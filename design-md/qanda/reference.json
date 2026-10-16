@@ -3,6 +3,7 @@
   "catalog": {
     "id": "qanda",
     "name": "QANDA",
+    "display_name_kr": "콴다",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://qanda.ai",

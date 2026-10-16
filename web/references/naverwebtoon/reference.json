@@ -3,6 +3,7 @@
   "catalog": {
     "id": "naverwebtoon",
     "name": "Naver Webtoon",
+    "display_name_kr": "네이버웹툰",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://comic.naver.com",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { getCopy } from "./copy";
 import { LocaleSwitch } from "./locale-switch";
 import { Logo } from "./logo";
@@ -34,7 +35,13 @@ export function SiteHeaderA({
   locales = true,
   skipTo = "#main",
   stars,
+  localeHrefs,
+  twins = false,
 }: {
+  /** Language-switch targets read from the page's hreflang alternates (a shared layout's header). */
+  twins?: boolean;
+  /** Language-switch targets when this page has translated twins (the item page). */
+  localeHrefs?: Partial<Record<SiteLocale, string>>;
   /** Skip-link target; the docs' main region is #docs-content. */
   skipTo?: string;
   locale?: SiteLocale;
@@ -53,7 +60,7 @@ export function SiteHeaderA({
   const skills = onLanding ? "#skills" : meta.path === "/" ? "/#skills" : `${meta.path}#skills`;
   const links = (
     <>
-      <Link href={`${origin}/design-systems`} prefetch={false}>{t.archive}</Link>
+      <Link href={`${origin}${catalogPathFor(locale)}`} prefetch={false}>{t.archive}</Link>
       <a href={onLanding ? skills : `${origin}${skills}`}>{t.skills}</a>
       <Link href={`${origin}${meta.docs}`} prefetch={false}>{t.docs}</Link>
     </>
@@ -68,7 +75,7 @@ export function SiteHeaderA({
         <nav className="sq-menu" aria-label="Main">{links}</nav>
         <div className="sq-tools">
           {extra}
-          {locales ? <LocaleSwitch current={current} t={t} origin={origin} /> : null}
+          {locales ? <LocaleSwitch current={current} t={t} origin={origin} hrefs={localeHrefs} twins={twins} /> : null}
           <StarPill stars={stars} label={t.github} />
         </div>
       </div>

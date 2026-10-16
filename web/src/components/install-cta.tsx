@@ -24,6 +24,9 @@ import { AlertCircle, Check, Copy, Sparkles, Terminal } from "lucide-react";
 import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT, SKILL_COUNT } from "@/lib/catalog-count";
 import { copyText } from "@/lib/clipboard";
+import { ITEM_EN, type InstallLabels } from "@/components/brand-a/copy/item";
+
+const DEFAULT_LABELS: InstallLabels = ITEM_EN.install;
 
 export const INSTALL_CMD = "npx oh-my-design-cli@latest";
 
@@ -39,7 +42,10 @@ export function InstallCta({
   reference,
   brandName,
   variant = "block",
+  labels,
 }: {
+  /** Panel-variant chrome and first prompt in the page's language; English by default. */
+  labels?: InstallLabels;
   source: InstallCtaSource;
   /** Reference id when a brand is in context (detail page). */
   reference?: string;
@@ -96,7 +102,8 @@ export function InstallCta({
     </button>
   );
 
-  const promptText = brandName ? firstPromptFor(brandName) : null;
+  const L = labels ?? DEFAULT_LABELS;
+  const promptText = brandName ? L.promptFor(brandName) : null;
 
   const promptBtn = promptText ? (
     <button
@@ -119,7 +126,7 @@ export function InstallCta({
 
   const status = (
     <span className="sr-only" role="status" aria-live="polite">
-      {copyState?.status === "copied" ? "Copied" : copyState?.status === "failed" ? "Copy failed" : ""}
+      {copyState?.status === "copied" ? L.copied : copyState?.status === "failed" ? L.failed : ""}
     </span>
   );
 
@@ -129,17 +136,17 @@ export function InstallCta({
     // truncated. Same buttons' handlers, so
     // act_install_copy / act_prompt_copy keep meaning one control each.
     const mark = (kind: "install" | "prompt") =>
-      copyState?.kind === kind ? (copyState.status === "copied" ? "Copied" : "Copy failed") : "Copy";
+      copyState?.kind === kind ? (copyState.status === "copied" ? L.copied : L.failed) : L.copy;
     return (
       <>
       <div className="sq-hand">
         <div className="sq-hand-row">
-          <p className="sq-hand-t">Install the skills</p>
+          <p className="sq-hand-t">{L.install}</p>
           <button
             type="button"
             className="sq-cmd"
             onClick={(event) => copy("install", INSTALL_CMD, event.currentTarget)}
-            aria-label="Copy install command"
+            aria-label={L.ariaInstall}
           >
             <code>{INSTALL_CMD}</code>
             <span className="sq-cmd-c">{mark("install")}</span>
@@ -147,12 +154,12 @@ export function InstallCta({
         </div>
         {promptText ? (
           <div className="sq-hand-row">
-            <p className="sq-hand-t">Give your agent the first prompt</p>
+            <p className="sq-hand-t">{L.prompt}</p>
             <button
               type="button"
               className="sq-cmd sq-cmd-p"
               onClick={(event) => copy("prompt", promptText, event.currentTarget)}
-              aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
+              aria-label={L.ariaPrompt(brandName ?? "")}
             >
               <span>&ldquo;{promptText}&rdquo;</span>
               <span className="sq-cmd-c">{mark("prompt")}</span>

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "myrealtrip",
     "name": "MyRealTrip",
+    "display_name_kr": "마이리얼트립",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.myrealtrip.com",

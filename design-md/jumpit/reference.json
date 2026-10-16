@@ -3,6 +3,7 @@
   "catalog": {
     "id": "jumpit",
     "name": "Jumpit",
+    "display_name_kr": "점핏",
     "country": "KR",
     "category": "productivity",
     "homepage": "https://www.jumpit.co.kr",

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "flo",
     "name": "FLO",
+    "display_name_kr": "플로",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.music-flo.com",

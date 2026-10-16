@@ -3,6 +3,7 @@
   "catalog": {
     "id": "coupang",
     "name": "Coupang",
+    "display_name_kr": "쿠팡",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://www.coupang.com",

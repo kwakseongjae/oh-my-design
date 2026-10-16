@@ -18,10 +18,10 @@ import { extractTokens } from "@/lib/extract-tokens";
 import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
 import { getLogoRef } from "@/lib/logos";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
-import { loadReference } from "@/lib/references/repository.server";
-import { projectActiveReference } from "@/lib/references/consumer-adapter";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
-import { capData } from "@/lib/landing-a/data.server";
+import { keycapFace, loadDetail, type LoadedDetail } from "@/lib/references/detail-loader.server";
+import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
+import { koDetailPath } from "@/lib/i18n/ko-detail";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -29,7 +29,7 @@ const SITE_URL = "https://oh-my-design.kr";
  * Display name for a reference id on this English page — the registry `name`
  * first, then `displayName`, then a title-cased id.
  *
- * `name` leads because 129 references carry a native-script `displayName`
+ * `name` leads because 170 references carry a native-script `displayName`
  * ("토스뱅크", "삼쩜삼") that read as mixed script inside an English title and
  * H1. The title, H1, breadcrumb and JSON-LD all read this one function so they
  * cannot name the brand differently.
@@ -54,7 +54,7 @@ function detailTitle(name: string): string {
  */
 function buildSummary(
   name: string,
-  detail: ReturnType<typeof loadDetail>,
+  detail: LoadedDetail | null,
 ): string {
   if (!detail) return "";
   const editorial = getReferenceEnglishEditorial(detail.id);
@@ -73,41 +73,6 @@ function buildSummary(
     ?.slice(0, 220)
     .trim();
   return [factsSentence, moodSentence].filter(Boolean).join(" ");
-}
-
-function loadDetail(id: string) {
-  const loaded = loadReference(id);
-  if (!loaded) return null;
-  const projection = projectActiveReference(loaded);
-  return {
-    ...projection.detail,
-    ...(projection.referenceAst ? { referenceAst: projection.referenceAst } : {}),
-    ...((basis) => (basis ? { coreFontBasis: basis } : {}))(coreFontBasis(loaded)),
-    referenceQuality: loaded.quality,
-    entry: loaded.entry,
-  };
-}
-
-/**
- * Where a Core v2 reference's UI font comes from.
- *
- * The evidence snapshot reads the font's provenance off `referenceAst`, which
- * `repository.server.ts` leaves null for a Core canonical — it serves the package
- * instead — so krds and serendie showed "UI font basis unresolved" while their
- * Fonts section rendered Pretendard GOV and Roboto correctly. The basis was
- * missing, not the font.
- *
- * It is not missing from the data. The projector attaches the declared family to
- * the body-shaped type role, so the Core contract carries it as a font role with
- * a `sourceClass` and evidence of its own. That is real provenance, read from the
- * package rather than substituted for it.
- */
-function coreFontBasis(loaded: ReturnType<typeof loadReference>) {
-  const transport = loaded?.coreTransport;
-  if (!transport || transport.status !== "verified") return null;
-  const role = transport.contract.fontRoles.find((entry) => typeof entry.metadata?.family === "string");
-  if (!role) return null;
-  return { family: String(role.metadata.family), sourceClass: role.sourceClass };
 }
 
 export async function generateStaticParams() {
@@ -141,7 +106,11 @@ export async function generateMetadata({
     // agents/crawlers can discover /<id>/design.md (handler: /r/[id]).
     alternates: {
       canonical: path,
-      languages: { en: path, "x-default": path },
+      // The Korean twin is named only where it exists (lib/i18n/ko-detail.ts);
+      // the Korean page names this one back, with x-default here.
+      languages: hasKoDetailId(id)
+        ? { en: path, ko: koDetailPath(id), "x-default": path }
+        : { en: path, "x-default": path },
       types: { "text/markdown": `/${id}/design.md` },
     },
     ...(editorial ? { keywords: [...editorial.keywords] } : {}),
@@ -308,11 +277,4 @@ function RelatedReferences({
       </div>
     </section>
   );
-}
-
-/** The item page's keycap: same resolver as the landing, so only a verified
- *  reference's claimed colour/radius/weight paints it (else a blank cap). */
-function keycapFace(id: string) {
-  const c = capData(id);
-  return c ? { g: c.g, gLang: c.gLang, c: c.c, hex: c.hex, rv: c.rv, w: c.w } : null;
 }

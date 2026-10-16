@@ -3,6 +3,7 @@
   "catalog": {
     "id": "karrot",
     "name": "Karrot",
+    "display_name_kr": "당근",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.karrotmarket.com",

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "nexon",
     "name": "Nexon",
+    "display_name_kr": "넥슨",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.nexon.com",

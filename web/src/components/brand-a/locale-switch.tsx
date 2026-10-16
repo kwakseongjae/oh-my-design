@@ -54,12 +54,15 @@ let warmed = false;
  * keyboard from cache. (hero-keys.tsx still copes with a prerendered page, should a
  * browser prerender on its own.)
  */
-function warm(current: SiteLocale | null, origin: string) {
+function warm(current: SiteLocale | null, origin: string, hrefs?: Partial<Record<SiteLocale, string>>) {
   if (warmed || typeof document === "undefined") return;
   warmed = true;
   const others = SITE_LOCALES.filter((l) => l !== current);
   // "/" is left out: src/proxy.ts may answer it with a cookie redirect that the click is about to change
-  const urls = others.filter((l) => SITE_LOCALE_META[l].path !== "/").map((l) => `${origin}${SITE_LOCALE_META[l].path}`);
+  // an item page's twins (hrefs) are warmed instead of the landings, and need no posters
+  const urls = hrefs
+    ? others.flatMap((l) => (hrefs[l] ? [`${origin}${hrefs[l]}`] : []))
+    : others.filter((l) => SITE_LOCALE_META[l].path !== "/").map((l) => `${origin}${SITE_LOCALE_META[l].path}`);
   try {
     if (!origin && HTMLScriptElement.supports?.("speculationrules")) {
       const s = document.createElement("script");
@@ -75,6 +78,7 @@ function warm(current: SiteLocale | null, origin: string) {
         document.head.appendChild(l);
       }
     }
+    if (hrefs) return;
     const phone = matchMedia("(max-width:900px)").matches;
     for (const l of new Set(others.map((x) => posterOf(x, phone)))) {
       const img = new Image();
@@ -86,7 +90,48 @@ function warm(current: SiteLocale | null, origin: string) {
   }
 }
 
-export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale | null; t: LocaleSwitchText; origin?: string }) {
+type Hrefs = Partial<Record<SiteLocale, string>>;
+
+/**
+ * The page's translated twins, read from its own <link rel="alternate" hreflang> tags —
+ * the metadata that already declares the pair (design-systems/[id]/page.tsx), so the
+ * switch can never point at a twin the page does not claim. Used by a shared layout
+ * header that cannot see its page's params. `current` is the twin whose path is this page.
+ */
+function twinsFromHead(): { hrefs: Hrefs; current: SiteLocale | null } | null {
+  const hrefs: Hrefs = {};
+  let current: SiteLocale | null = null;
+  for (const l of SITE_LOCALES) {
+    const el = document.head.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${SITE_LOCALE_META[l].hreflang}"]`);
+    if (!el) continue;
+    const u = new URL(el.href, location.href);
+    hrefs[l] = u.pathname;
+    if (u.pathname === location.pathname) current = l;
+  }
+  return Object.keys(hrefs).length > 1 ? { hrefs, current } : null;
+}
+
+export function LocaleSwitch({
+  current: currentProp,
+  t,
+  origin = "",
+  hrefs: hrefsProp,
+  twins = false,
+}: {
+  current: SiteLocale | null;
+  t: LocaleSwitchText;
+  origin?: string;
+  /** Per-locale targets for a page with translated twins (the item page); landings otherwise. */
+  hrefs?: Hrefs;
+  /** Take the twins from this page's hreflang alternates (a layout header that cannot see the page). */
+  twins?: boolean;
+}) {
+  const [found, setFound] = useState<{ hrefs: Hrefs; current: SiteLocale | null } | null>(null);
+  useEffect(() => {
+    if (twins && !hrefsProp) setFound(twinsFromHead());
+  }, [twins, hrefsProp]);
+  const hrefs = hrefsProp ?? found?.hrefs;
+  const current = currentProp ?? found?.current ?? null;
   const wrap = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const list = useRef<HTMLUListElement>(null);
@@ -95,7 +140,7 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
 
   const rows = () => [...(list.current?.querySelectorAll<HTMLAnchorElement>("a") ?? [])];
   const show = (at: "current" | "last" = "current") => {
-    warm(current, origin);
+    warm(current, origin, hrefs);
     focusOn.current = at;
     setOpen(true);
   };
@@ -171,8 +216,8 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
         aria-label={cur ? `${cur.label} — ${t.lang}` : undefined}
         onClick={() => (open ? hide(false) : show())}
         onKeyDown={onBtnKey}
-        onPointerEnter={() => warm(current, origin)}
-        onFocus={() => warm(current, origin)}
+        onPointerEnter={() => warm(current, origin, hrefs)}
+        onFocus={() => warm(current, origin, hrefs)}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" strokeWidth="1.3" />
@@ -192,7 +237,7 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
               <a
                 role="menuitem"
                 tabIndex={-1}
-                href={`${origin}${m.path}`}
+                href={`${origin}${hrefs?.[l] ?? m.path}`}
                 hrefLang={m.hreflang}
                 lang={m.htmlLang}
                 aria-current={on ? "page" : undefined}
@@ -202,7 +247,8 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
                     hide(true);
                     return;
                   }
-                  remember(l, current);
+                  // the drop-in note is for landings only; a twin item page has no keyboard
+                  if (!hrefs?.[l]) remember(l, current);
                 }}
               >
                 <span>{m.label}</span>

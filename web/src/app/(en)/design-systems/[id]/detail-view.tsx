@@ -46,6 +46,7 @@ import type { ReferenceDetailAstContract } from "@/lib/references/detail-project
 import type { ReferenceQualityEntry } from "@/data/reference-quality.generated";
 import { ReferenceShareButton } from "@/components/reference-share-button";
 import { CssKeycap, type KeycapFace } from "@/components/brand-a/keycap";
+import { ITEM_EN, ITEM_KO, type ItemLabels } from "@/components/brand-a/copy/item";
 import "@/components/brand-a/archive.css";
 import "@/components/brand-a/item.css";
 
@@ -92,20 +93,9 @@ type MobileView = "preview" | "markdown";
  * in the docs at all, they live inside the Figma UI Kit. That is a fact about the industry,
  * not a defect in a reference, so it is told once, below, as what it is.
  */
-const ADVISORY_LABEL: Record<string, string> = {
-  motion_value_unsourced: "Motion values here were not observed in any capture",
-  component_state_prose_only: "Component states are described in prose, not given per-state values",
-  component_noninteractive_only: "No interactive component is documented",
-  component_absent: "No components are documented",
-  token_value_self_declared_derived: "Some token values say they were derived rather than measured",
-  token_value_possibly_derived: "Some token values read as derived rather than measured",
-  palette_grounding_low: "Most declared colours were not found on the brand's live surface",
-  palette_contradicted:
-    "The declared palette is contradicted — a 2026-07 capture and a 2026-09 page report the same low figure, two months apart",
-};
-
-function advisoryText(code: string): string {
-  return ADVISORY_LABEL[code] ?? code.replaceAll("_", " ");
+// The labels live in components/brand-a/copy/item.ts (`advisory`), one map per page locale.
+function advisoryText(code: string, labels: Record<string, string>): string {
+  return labels[code] ?? code.replaceAll("_", " ");
 }
 
 /**
@@ -123,7 +113,13 @@ export function DetailView({
   ds,
   logo,
   cap,
+  locale = "en",
+  sharePath,
 }: {
+  /** Page chrome language. The DESIGN.md body and values are the same in every locale. */
+  locale?: "en" | "ko";
+  /** Path the share button copies; defaults to the English page. */
+  sharePath?: string;
   /** Brand name from the server page — the same string as the title and JSON-LD. */
   name: string;
   detail: Detail;
@@ -139,6 +135,7 @@ export function DetailView({
   /** Concept-A keycap from the landing resolvers (server); null = no cap. */
   cap?: KeycapFace | null;
 }) {
+  const t = locale === "ko" ? ITEM_KO : ITEM_EN;
   const [mobileView, setMobileView] = useState<MobileView>("preview");
   const [copied, setCopied] = useState(false);
   const [wide, setWide] = useState(false);
@@ -185,7 +182,7 @@ export function DetailView({
   const evidencePercent = Math.round(quality.evidenceCoverage * 100);
   const advisories = quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY);
   const tierClass = quality.status === "verified_v2" ? "sq-t-v" : quality.status === "partial" ? "sq-t-p" : "sq-t-l";
-  const tierLabel = quality.status === "verified_v2" ? "Verified v2" : quality.status === "partial" ? "Partial" : "Legacy snapshot";
+  const tierLabel = quality.status === "verified_v2" ? t.tier.v : quality.status === "partial" ? t.tier.p : t.tier.l;
 
   async function copyMd(event: React.MouseEvent<HTMLButtonElement>) {
     const ok = await copyText(detail.designMd, {
@@ -225,8 +222,8 @@ export function DetailView({
       <section className="sq-root sq-ih">
         <div className="sq-wrap sq-ih-in">
           <p className="sq-ih-kick">
-            <Link href="/design-systems" className="sq-crumb">
-              <span aria-hidden="true">←</span> Archive
+            <Link href={t.crumbHref} className="sq-crumb">
+              <span aria-hidden="true">←</span> {t.crumb}
             </Link>
             {/* The page's one tier mark. */}
             <span className={`sq-tier ${tierClass}`}>{tierLabel}</span>
@@ -241,20 +238,20 @@ export function DetailView({
             )}
             {/* The page's one <h1>. ReferencePreview's brand name and the embedded
                 DESIGN.md title are not headings at this level. */}
-            <h1>{name} design system</h1>
+            <h1>{t.h1(name)}</h1>
           </div>
           {/* Answer-first summary (#5) — the extractable lead Claude/Brave cite,
               before the full DESIGN.md. */}
           {summary ? <p className="sq-item-sum">{summary}</p> : null}
           <div className="sq-ih-acts">
             <button type="button" onClick={copyMd} className="sq-btn-primary sq-btn-lg">
-              {copied ? "Copied" : "Copy DESIGN.md"}
+              {copied ? t.copied : t.copyMd}
             </button>
             <button type="button" onClick={downloadMd} className="sq-btn-quiet">
-              Download
+              {t.download}
             </button>
             <span className="sr-only" role="status" aria-live="polite">
-              {copied ? "DESIGN.md copied" : ""}
+              {copied ? t.srCopied : ""}
             </span>
           </div>
         </div>
@@ -267,52 +264,53 @@ export function DetailView({
           promptBrand={displayName}
           ds={ds}
           onExternal={externalClick}
+          t={t}
+          sharePath={sharePath}
         />
-        {summary && (
+        {(summary || locale !== "en") && (
           /* id + scroll margin: the landing's "verified" tier links here
              (/design-systems/toss#evidence) as its one real evidence example.
              The spec values and the evidence snapshot are one quiet row. */
           <section id="evidence" className="sq-evi" aria-labelledby="evi-heading">
-            <h2 id="evi-heading">Evidence</h2>
+            <h2 id="evi-heading">{t.evidence}</h2>
             {evidenceBoundary ? (
               <p className="sq-item-bound">
-                <b>Evidence boundary:</b> {evidenceBoundary}
+                {/* The boundary is English editorial text on every page. */}
+                <b>{t.boundary}</b> <span lang="en">{evidenceBoundary}</span>
               </p>
             ) : null}
             <dl className="sq-evi-row">
               <div>
-                <dt>Primary</dt>
+                <dt>{t.dt.primary}</dt>
                 <dd>
                   <span className="sq-item-sw" data-content-object style={{ background: detail.primary }} aria-hidden="true" />
                   {detail.primary}
                 </dd>
               </div>
               <div>
-                <dt>Typography</dt>
-                <dd>
+                <dt>{t.dt.type}</dt>
+                <dd lang="en">
                   {detail.fontFamily}
                   {detail.mono ? ` · ${detail.mono}` : ""}
                 </dd>
               </div>
               <div>
-                <dt>Radius</dt>
+                <dt>{t.dt.radius}</dt>
                 <dd>{detail.radius}</dd>
               </div>
               <div>
-                <dt>Claims grounded</dt>
+                <dt>{t.dt.claims}</dt>
                 <dd>
                   {quality.evidenceClaimCount}/{quality.claimCount} · {evidencePercent}%
                 </dd>
               </div>
               <div>
-                <dt>Sources</dt>
-                <dd>
-                  {quality.surfaceCount} surfaces · {quality.sourceCount} sources
-                </dd>
+                <dt>{t.dt.sources}</dt>
+                <dd>{t.sources(quality.surfaceCount, quality.sourceCount)}</dd>
               </div>
               <div>
-                <dt>UI font basis</dt>
-                <dd>{fontBasis ?? "unresolved"}</dd>
+                <dt>{t.dt.fontBasis}</dt>
+                <dd>{fontBasis ? <span lang="en">{fontBasis}</span> : t.unresolved}</dd>
               </div>
               {/*
                 * Interactive count, not just the total: 31 of 440 references carry
@@ -321,17 +319,17 @@ export function DetailView({
                 * there is a button to look at.
                 */}
               <div>
-                <dt>Components</dt>
+                <dt>{t.dt.components}</dt>
                 <dd>
                   {componentCount === 0 ? (
-                    "none documented"
+                    t.compNone
                   ) : (
                     <>
-                      {componentCount} documented
+                      {t.compDocumented(componentCount)}
                       {" · "}
                       {interactiveCount === 0
-                        ? "none interactive"
-                        : `${interactiveCount} interactive${statedCount > 0 ? `, ${statedCount} with states` : ""}`}
+                        ? t.compNoInteractive
+                        : t.compInteractive(interactiveCount, statedCount)}
                     </>
                   )}
                 </dd>
@@ -339,23 +337,23 @@ export function DetailView({
             </dl>
             {(quality.reasonCodes.length > 0 || advisories.length > 0 || quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY)) && (
               <details className="sq-drawer" ref={drawerRef}>
-                <summary>What the evidence does not cover</summary>
+                <summary>{t.drawer}</summary>
                 {quality.reasonCodes.length > 0 && (
                   <p className="sq-drawer-codes">
-                    Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
+                    {t.needsWork} <span lang="en">{quality.reasonCodes.join(" · ").replaceAll("_", " ")}</span>
                   </p>
                 )}
                 {advisories.length > 0 && (
                   <div className="sq-drawer-sec">
-                    <p className="sq-drawer-lab">Not backed by evidence</p>
+                    <p className="sq-drawer-lab">{t.notBacked}</p>
                     <ul>
                       {advisories.map((code) => (
                         <li key={code}>
-                          {advisoryText(code)}
+                          {advisoryText(code, t.advisory)}
                           {/* The measured share, where we have it — a bare "most were not
                               found" invites the reader to guess. */}
                           {code.startsWith("palette_") && quality.paletteGrounding !== null && (
-                            <span> ({Math.round(quality.paletteGrounding * 100)}% found)</span>
+                            <span>{t.paletteFound(Math.round(quality.paletteGrounding * 100))}</span>
                           )}
                         </li>
                       ))}
@@ -363,12 +361,7 @@ export function DetailView({
                   </div>
                 )}
                 {quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY) && (
-                  <p className="sq-drawer-sec">
-                    The motion values in this reference were not observed in a capture — and neither
-                    were anyone&rsquo;s. No design system we checked publishes a duration or easing
-                    scale; Toss states outright that its component motion lives in the Figma UI Kit
-                    rather than in its documentation. Treat any exact curve here as a local default.
-                  </p>
+                  <p className="sq-drawer-sec">{t.motionNote}</p>
                 )}
               </details>
             )}
@@ -377,9 +370,9 @@ export function DetailView({
       </div>
 
       {/* Mobile pane toggle */}
-      <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label="Show">
+      <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label={t.show}>
         <button type="button" onClick={() => toggleMobileView("preview")} aria-pressed={mobileView === "preview"}>
-          Preview
+          {t.preview}
         </button>
         <button type="button" onClick={() => toggleMobileView("markdown")} aria-pressed={mobileView === "markdown"}>
           DESIGN.md
@@ -393,17 +386,20 @@ export function DetailView({
           <div className="sq-md-head">
             <h2 id="md-heading">DESIGN.md</h2>
             <button type="button" className="sq-btn-quiet sq-md-w" onClick={() => setWide((w) => !w)} aria-pressed={wide}>
-              {wide ? "Narrow text" : "Wide text"}
+              {wide ? t.narrow : t.wide}
             </button>
           </div>
-          <div className="sq-md-body">
+          {/* On a non-English page the body is still the canonical English file:
+              said once here, and marked lang="en" for screen readers. */}
+          {t.bodyNote ? <p className="sq-md-note">{t.bodyNote}</p> : null}
+          <div className="sq-md-body" lang="en">
             <Markdown content={detail.designMd} demoteH1 />
           </div>
         </section>
 
         {/* Preview pane — desktop sticky; mobile only when selected */}
-        <section className={`sq-item-pv ${mobileView === "preview" ? "" : "sq-m-hide"}`} aria-label="Preview">
-          <div className="sq-item-pv-in">
+        <section className={`sq-item-pv ${mobileView === "preview" ? "" : "sq-m-hide"}`} aria-label={t.preview}>
+          <div className="sq-item-pv-in" lang="en">
             <ReferencePreview tokens={tokens} logo={logo} embedded />
           </div>
         </section>
@@ -425,6 +421,8 @@ function UseSection({
   promptBrand,
   ds,
   onExternal,
+  t,
+  sharePath,
 }: {
   refId: string;
   name: string;
@@ -432,23 +430,25 @@ function UseSection({
   promptBrand: string;
   ds: DesignSystemInfo | null;
   onExternal: () => void;
+  t: ItemLabels;
+  sharePath?: string;
 }) {
   return (
     <section id="use" aria-labelledby="use-heading" className="sq-use">
-      <h2 id="use-heading">Use the {name} DESIGN.md</h2>
-      <p className="sq-use-sub">Put the file at your project root, install the skills, and give your coding agent the first prompt.</p>
-      <InstallCta variant="panel" source="ref_detail" reference={refId} brandName={promptBrand} />
+      <h2 id="use-heading">{t.useH2(name)}</h2>
+      <p className="sq-use-sub">{t.useSub}</p>
+      <InstallCta variant="panel" source="ref_detail" reference={refId} brandName={promptBrand} labels={t.install} />
       <p className="sq-use-more">
         {/* Raw twin — clean markdown URL agents can fetch directly. */}
         <a href={`/${refId}/design.md`} target="_blank" rel="noopener noreferrer" onClick={() => trackRawMdOpen(refId)}>
-          Raw .md
+          {t.rawMd}
         </a>
         {ds && (
           <a href={ds.url} target="_blank" rel="noopener noreferrer" onClick={onExternal}>
-            Official site <span aria-hidden="true">↗</span>
+            {t.official} <span aria-hidden="true">↗</span>
           </a>
         )}
-        <ReferenceShareButton reference={refId} location="ref_detail" compact />
+        <ReferenceShareButton reference={refId} location="ref_detail" compact labels={t.shareLabels} path={sharePath} />
       </p>
     </section>
   );

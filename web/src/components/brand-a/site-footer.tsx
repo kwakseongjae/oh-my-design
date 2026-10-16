@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE_LOCALES, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { getCopy } from "./copy";
 import { Logo } from "./logo";
 import { GITHUB_URL } from "./site-header";
@@ -33,7 +34,7 @@ export function SiteFooterA({
           </p>
         </div>
         <nav className="sq-foot-links" aria-label="Footer">
-          <Link href={o("/design-systems")} prefetch={false}>{c.nav.archive}</Link>
+          <Link href={o(catalogPathFor(locale))} prefetch={false}>{c.nav.archive}</Link>
           <Link href={o(meta.docs)} prefetch={false}>{c.nav.docs}</Link>
           <Link href={o("/what-is-design-md")} prefetch={false} lang="en">What is DESIGN.md?</Link>
           <Link href={o("/faq")} prefetch={false} lang="en">FAQ</Link>

@@ -3,6 +3,7 @@
   "catalog": {
     "id": "inflearn",
     "name": "Inflearn",
+    "display_name_kr": "인프런",
     "country": "KR",
     "category": "education",
     "homepage": "https://www.inflearn.com",

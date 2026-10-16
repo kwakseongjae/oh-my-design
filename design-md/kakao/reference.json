@@ -3,6 +3,7 @@
   "catalog": {
     "id": "kakao",
     "name": "Kakao",
+    "display_name_kr": "카카오",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.kakaocorp.com/page/",

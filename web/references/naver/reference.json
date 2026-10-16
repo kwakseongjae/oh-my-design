@@ -3,6 +3,7 @@
   "catalog": {
     "id": "naver",
     "name": "Naver",
+    "display_name_kr": "네이버",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.naver.com",

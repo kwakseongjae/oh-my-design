@@ -3,6 +3,7 @@
   "catalog": {
     "id": "socar",
     "name": "SOCAR",
+    "display_name_kr": "쏘카",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://www.socar.kr",

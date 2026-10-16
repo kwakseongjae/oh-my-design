@@ -3,6 +3,7 @@
   "catalog": {
     "id": "laftel",
     "name": "Laftel",
+    "display_name_kr": "라프텔",
     "country": "KR",
     "category": "consumer-tech",
     "homepage": "https://laftel.net",

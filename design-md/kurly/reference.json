@@ -3,6 +3,7 @@
   "catalog": {
     "id": "kurly",
     "name": "Kurly",
+    "display_name_kr": "컬리",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://www.kurly.com",

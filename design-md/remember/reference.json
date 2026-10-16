@@ -3,6 +3,7 @@
   "catalog": {
     "id": "remember",
     "name": "Remember",
+    "display_name_kr": "리멤버",
     "country": "KR",
     "category": "productivity",
     "homepage": "https://www.rememberapp.co.kr",

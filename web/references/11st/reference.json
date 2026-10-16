@@ -3,6 +3,7 @@
   "catalog": {
     "id": "11st",
     "name": "11st",
+    "display_name_kr": "11번가",
     "country": "KR",
     "category": "ecommerce",
     "homepage": "https://www.11st.co.kr/",
