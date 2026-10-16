@@ -129,6 +129,8 @@ async function main() {
     ...(wm ? { attribution: wm.attribution } : a.attribution ? { attribution: a.attribution } : {}),
     ...(a.usage ? { usage_note: a.usage } : {}),
     ...(a["source-tier"] ? { source_tier: a["source-tier"] } : wm ? { source_tier: "official" } : { source_tier: "official" }),
+    ...(a.risk ? { risk_tier: a.risk } : {}),
+    ...(a["verified-against"] ? { verified_against: a["verified-against"] } : {}),
   };
 
   manifest.records = manifest.records || [];

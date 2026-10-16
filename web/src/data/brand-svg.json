@@ -1,10 +1,10 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-14",
+  "generated_at": "2026-10-16",
   "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
-  "count": 61,
+  "count": 82,
   "counts": {
-    "available": 61,
+    "available": 82,
     "source_only": 0
   },
   "records": [
@@ -621,6 +621,29 @@
       "default_variant": "combined"
     },
     {
+      "id": "104",
+      "name": "104人力銀行",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/104/wordmark.svg",
+          "source": "Official corporate site (corp.104.com.tw)",
+          "source_url": "https://corp.104.com.tw/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://corp.104.com.tw/",
+          "attribution": "104 Corporation (一零四資訊科技)",
+          "usage_note": "공식 기업 사이트 헤더 로고(data-URI svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of 104 Corporation's corporate site, embedded as a data:image/svg+xml URI and decoded unchanged. www.104.com.tw returned 403, so the job-bank header itself was not compared; listed in BLOCKED.md."
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
       "id": "91app",
       "name": "91APP",
       "country": "TW",
@@ -780,6 +803,65 @@
           "license": "brand-asset-official",
           "license_url": "https://www.dcard.tw",
           "usage_note": "공식 사이트 .svg(흰색 변형) · 식별용"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "eslite",
+      "name": "誠品 eslite",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/eslite/combined.svg",
+          "source": "Official corporate site (eslitecorp.com)",
+          "source_url": "https://www.eslitecorp.com/eslite/img/themeImg/logo_b.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.eslitecorp.com/eslite/index.jsp",
+          "attribution": "eslite Corporation (誠品股份有限公司)",
+          "usage_note": "공식 기업 사이트 헤더 로고(.svg, 원본 그대로) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of eslite's official corporate site (title 'eslite誠品 | 官方網站'); white twin logo_w.svg on the same path. www.eslite.com returned 403 to curl, so the retail site could not be cross-checked. The block mark is not published alone, so no symbol was cut out."
+        },
+        "wordmark": {
+          "ref": "brand-svg/eslite/wordmark.svg",
+          "source": "Official corporate site (eslitecorp.com)",
+          "source_url": "https://www.eslitecorp.com/eslite/img/themeImg/logo_title_b.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.eslitecorp.com/eslite/index.jsp",
+          "attribution": "eslite Corporation (誠品股份有限公司)",
+          "usage_note": "공식 기업 사이트 워드마크(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Same corporate site, logo_title_b.svg (wordmark without the block mark)."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "familymart-tw",
+      "name": "全家便利商店 FamilyMart",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/familymart-tw/combined.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File:FamilyMart_Logo_(2016-).svg",
+          "license": "PD",
+          "license_note": "Commons: PD-textlogo; author FamilyMart Co.,Ltd., credited to the FamilyMart UNY Holdings IR library (archived 2016). Trademark of FamilyMart Co., Ltd.; Taiwan FamilyMart uses it under licence.",
+          "license_url": "https://commons.wikimedia.org/wiki/File:FamilyMart_Logo_(2016-).svg",
+          "attribution": "FamilyMart Co., Ltd.",
+          "usage_note": "Wikimedia Commons PD(텍스트 로고) · 원본 벡터 · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Compared with Taiwan FamilyMart's official header logo family.com.tw/Marketing/images/logo_pc_2024.png (raster): same stripes + FamilyMart wordmark; the TW header adds the tagline 全家就是你家 above it, which is not in this file. Neither family.com.tw nor family.co.jp publishes a vector (both serve PNG)."
         }
       },
       "default_variant": "combined"
@@ -987,6 +1069,29 @@
       "default_variant": "symbol"
     },
     {
+      "id": "poya",
+      "name": "寶雅 POYA",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/poya/wordmark.svg",
+          "source": "Official site (poya.com.tw)",
+          "source_url": "https://www.poya.com.tw/images/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.poya.com.tw/",
+          "attribution": "POYA International Co., Ltd.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of poya.com.tw (also used on poya.com.tw/about)."
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
       "id": "qnap",
       "name": "QNAP",
       "country": "TW",
@@ -1027,6 +1132,29 @@
       "default_variant": "wordmark"
     },
     {
+      "id": "thsr",
+      "name": "台灣高鐵 Taiwan High Speed Rail",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/thsr/combined.svg",
+          "source": "Official site (thsrc.com.tw)",
+          "source_url": "https://www.thsrc.com.tw/Common/assets/img/logo/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.thsrc.com.tw/",
+          "attribution": "Taiwan High Speed Rail Corporation",
+          "usage_note": "공식 사이트 헤더 로고(.svg, Illustrator export) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of thsrc.com.tw (Illustrator export)."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
       "id": "transcend",
       "name": "Transcend",
       "country": "TW",
@@ -1045,6 +1173,42 @@
         }
       },
       "default_variant": "combined"
+    },
+    {
+      "id": "udn",
+      "name": "聯合新聞網 udn",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/udn/symbol.svg",
+          "source": "Official site (udn.com)",
+          "source_url": "https://udn.com/static/img/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://udn.com/news/index",
+          "attribution": "United Daily News Group (聯合報系)",
+          "usage_note": "공식 사이트 심볼(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "udn.com header renders logo.svg beside logo_name.svg, and logo.svg also appears alone (25px) elsewhere on the page — the brand uses it as a standalone mark."
+        },
+        "wordmark": {
+          "ref": "brand-svg/udn/wordmark.svg",
+          "source": "Official site (udn.com)",
+          "source_url": "https://udn.com/static/img/logo_name.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://udn.com/news/index",
+          "attribution": "United Daily News Group (聯合報系)",
+          "usage_note": "공식 사이트 워드마크(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "udn.com header wordmark 聯合新聞網."
+        }
+      },
+      "default_variant": "symbol"
     },
     {
       "id": "base",
@@ -1083,6 +1247,76 @@
       "default_variant": "symbol"
     },
     {
+      "id": "booth",
+      "name": "BOOTH",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/booth/combined.svg",
+          "source": "Official site (booth.pm)",
+          "source_url": "https://asset.booth.pm/assets/booth_logo-cd38e1da31e93676b081bd8f0aca2805f758f514c8e95dc3f1a8aac5e58dffec.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://booth.pm/ja",
+          "attribution": "pixiv Inc. (BOOTH)",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of booth.pm served from BOOTH's asset CDN. No BOOTH press kit was found."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "caddi",
+      "name": "CADDi",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/caddi/combined.svg",
+          "dark_bg": true,
+          "source": "Official site (caddi.com)",
+          "source_url": "https://caddi.com/ja-jp/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://caddi.com/ja-jp/",
+          "attribution": "CADDi Inc.",
+          "usage_note": "공식 사이트 헤더 로고(인라인 svg, 흰색) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Inline header <svg> of caddi.com. Its fill was var(--color-text-primary); the live computed value there is #fff, written in. Paths unchanged. White, so dark_bg."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "chatwork",
+      "name": "Chatwork",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/chatwork/combined.svg",
+          "source": "Official site (go.chatwork.com)",
+          "source_url": "https://go.chatwork.com/ja/image/common/cw_logo_hz_color.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://go.chatwork.com/ja/",
+          "attribution": "kubell Co., Ltd. (Chatwork)",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "CSS background of .header-global__logo on go.chatwork.com (base.min.css). The petal mark is not published alone on the site."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
       "id": "coconala",
       "name": "coconala",
       "country": "JP",
@@ -1101,6 +1335,29 @@
           "verified_against": "Live header logo on coconala.com (coconala UI-kit CDN); favicon.svg shows the same prism mark (as an app icon).",
           "risk_tier": "med",
           "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "crowdworks",
+      "name": "CrowdWorks",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/crowdworks/combined.svg",
+          "source": "Official site (crowdworks.jp)",
+          "source_url": "https://crowdworks.jp/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://crowdworks.jp/",
+          "attribution": "CrowdWorks, Inc.",
+          "usage_note": "공식 사이트 헤더 로고(data-URI svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of crowdworks.jp, embedded as a data:image/svg+xml URI and decoded unchanged (the same arc + クラウドワークス mark as the corporate site's PNG)."
         }
       },
       "default_variant": "combined"
@@ -1127,6 +1384,29 @@
         }
       },
       "default_variant": "combined"
+    },
+    {
+      "id": "folio",
+      "name": "FOLIO",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/folio/wordmark.svg",
+          "source": "Official site (folio-sec.com)",
+          "source_url": "https://folio-sec.com/static/top/_next/static/media/logo.c6181782.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://folio-sec.com/",
+          "attribution": "FOLIO Co., Ltd.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of folio-sec.com (logo-white twin on the same path). No press kit found."
+        }
+      },
+      "default_variant": "wordmark"
     },
     {
       "id": "freee",
@@ -1198,6 +1478,29 @@
       "default_variant": "combined"
     },
     {
+      "id": "loglass",
+      "name": "Loglass",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "high",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/loglass/combined.svg",
+          "source": "Official site (loglass.jp) + press kit",
+          "source_url": "https://loglass.jp/images/logos/loglass_horizontal.svg",
+          "license": "brand-asset-official",
+          "license_note": "Loglass Corporate Logo Guideline (2026.2): the logo is Loglass's property; use the horizontal logo by default; do not recolour, distort, rotate, shadow, outline, or change the motif-to-text ratio; for media/web/print use, contact Loglass first.",
+          "license_url": "https://www.loglass.co.jp/press-kit",
+          "attribution": "Loglass Inc.",
+          "usage_note": "공식 가로형 로고(.svg) · 사용 전 문의 요청 · 변형 금지 · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "high",
+          "verified_against": "Matches the press-kit Loglass_logo.zip (contents.loglass.com/design/asset/Loglass_logo.zip) guideline: horizontal lockup, Loglass Blue #2352C8 / Loglass Black #171725. The guideline offers no standalone whale mark, so none was cut out. risk high because the guideline asks for contact before web use."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
       "id": "mercari",
       "name": "Mercari",
       "country": "JP",
@@ -1255,6 +1558,98 @@
         }
       },
       "default_variant": "combined"
+    },
+    {
+      "id": "newspicks",
+      "name": "NewsPicks",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/newspicks/combined.svg",
+          "source": "Official parent-company site (uzabase.com)",
+          "source_url": "https://www.uzabase.com/images/service/news-picks_logo_sp.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.uzabase.com/jp/",
+          "attribution": "Uzabase, Inc. (NewsPicks)",
+          "usage_note": "모회사 공식 사이트 서비스 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "NewsPicks service logo on its operator Uzabase's official site. newspicks.com's header shows only the NEWS PICKS wordmark (inline, currentColor), which matches the lettering of this lockup."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "nulab",
+      "name": "Nulab",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/nulab/wordmark.svg",
+          "source": "Official brand guidelines (nulab.com/logos)",
+          "source_url": "https://nulab.com/images/logo/nulab_logo_color.svg",
+          "license": "brand-asset-official",
+          "license_note": "Nulab brand guidelines: logos for development and marketing purposes only; do not use as your own, modify, integrate into your logo, animate, or change colours/dimensions; gray #BBBDBF variant allowed.",
+          "license_url": "https://nulab.com/logos/",
+          "attribution": "Nulab Inc.",
+          "usage_note": "공식 브랜드 가이드라인 로고(.svg) · 변형 금지 · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Logo shown on Nulab's own Brand guidelines page (nulab.com/logos/). The company favicon there is 'nu' in a rounded square — text in a box, so not stored as a symbol."
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "pairs",
+      "name": "Pairs",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/pairs/combined.svg",
+          "source": "Official site (pairs.lv)",
+          "source_url": "https://www.pairs.lv/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.pairs.lv/",
+          "attribution": "Eureka, Inc. (Pairs)",
+          "usage_note": "공식 사이트 로고(인라인 svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Inline <svg role=img> titled ペアーズ on pairs.lv (the compact header logo; a wide variant with 本命ならペアーズ also exists)."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "panasonic",
+      "name": "パナソニック Panasonic",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/panasonic/wordmark.svg",
+          "source": "Official site (panasonic.jp)",
+          "source_url": "https://panasonic.jp/etc.clientlibs/panasonic-aem-frontend/clientlibs/clientlib-site/resources/images/logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://panasonic.jp/",
+          "attribution": "Panasonic Holdings Corporation",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of panasonic.jp (black version as published there). holdings.panasonic (the registry homepage) returned 403 to curl, so it was not cross-checked; listed in BLOCKED.md."
+        }
+      },
+      "default_variant": "wordmark"
     },
     {
       "id": "pixiv",
@@ -1316,6 +1711,29 @@
       "default_variant": "symbol"
     },
     {
+      "id": "recruit",
+      "name": "リクルート Recruit",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/recruit/combined.svg",
+          "source": "Official site (recruit.co.jp)",
+          "source_url": "https://www.recruit.co.jp/_app/assets/others/recruit-brand-logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.recruit.co.jp/",
+          "attribution": "Recruit Co., Ltd.",
+          "usage_note": "공식 사이트 브랜드 로고(.svg) · 대용량(280 paths) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "recruit-brand-logo.svg on recruit.co.jp (same file is served on its error pages). Lockup includes 株式会社リクルート. Large (≈186 KB, 280 paths, gradient R) — kept as published, not simplified."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
       "id": "sakura-internet",
       "name": "SAKURA internet",
       "country": "JP",
@@ -1334,6 +1752,78 @@
           "verified_against": "Official site logo; same mark as the corporate site id_mono.svg. The source wraps its paths in an unused <symbol>; the wrapper was removed (no path changes). 30th-anniversary variants deliberately not used.",
           "risk_tier": "med",
           "source_tier": "official"
+        },
+        "symbol": {
+          "ref": "brand-svg/sakura-internet/symbol.svg",
+          "source": "Official corporate site (sakura.ad.jp/corporate)",
+          "source_url": "https://www.sakura.ad.jp/corporate/wp-content/themes/sakura-corporate/assets/images/favicon.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.sakura.ad.jp/corporate/",
+          "attribution": "SAKURA internet Inc.",
+          "usage_note": "공식 사이트 심볼(파비콘 .svg) · 흰 배경 사각형만 제거 · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "The brand's own SVG favicon: the same two petals (#f57 + #808088 at 40%) as the symbol in the stored combined logo and in id_mono.svg, used on its own. Only the full-canvas white background rect was removed; the two petal paths are unchanged."
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "serendie",
+      "name": "Serendie",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/serendie/combined.svg",
+          "source": "Official site (mitsubishielectric.co.jp/serendie)",
+          "source_url": "https://www.mitsubishielectric.co.jp/global/sharehouse/serendie/img/view-logo-sp.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.mitsubishielectric.co.jp/serendie/",
+          "attribution": "Mitsubishi Electric Corporation",
+          "usage_note": "공식 Serendie 페이지 히어로 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Hero logo on Mitsubishi Electric's official Serendie page (S curve with 'Serendie' set along it). Labelled combined because the lettering is part of the mark."
+        },
+        "wordmark": {
+          "ref": "brand-svg/serendie/wordmark.svg",
+          "source": "Official design system site (serendie.design)",
+          "source_url": "https://serendie.design/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://serendie.design/",
+          "attribution": "Mitsubishi Electric Corporation",
+          "usage_note": "공식 디자인시스템 사이트 헤더 워드마크(인라인 svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Inline header <svg> of serendie.design. Its colour came from a class token; the computed fill on the live page, rgb(7,49,101) = #073165, was written onto the root. Paths unchanged."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "smartbank",
+      "name": "SmartBank",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/smartbank/combined.svg",
+          "source": "Official site (smartbank.co.jp)",
+          "source_url": "https://smartbank.co.jp/common/header-logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://smartbank.co.jp/",
+          "attribution": "SmartBank, Inc.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of smartbank.co.jp. No press kit found; the slash mark is not published alone."
         }
       },
       "default_variant": "combined"
@@ -1385,6 +1875,53 @@
       "default_variant": "combined"
     },
     {
+      "id": "sony",
+      "name": "ソニー Sony",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/sony/wordmark.svg",
+          "dark_bg": true,
+          "source": "Official site (sony.co.jp)",
+          "source_url": "https://www.sony.co.jp/",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.sony.co.jp/",
+          "attribution": "Sony Group Corporation",
+          "usage_note": "공식 사이트 헤더 로고(인라인 svg, 흰색) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Inline header <svg> (title SONY) of www.sony.co.jp (ソニー株式会社), rendered with a fresh headless browser. White as published, so dark_bg. www.sony.com returned 403; listed in BLOCKED.md for cross-checking."
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "toyota",
+      "name": "トヨタ TOYOTA",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/toyota/wordmark.svg",
+          "source": "Official corporate site (global.toyota)",
+          "source_url": "https://global.toyota/pages/contents/image/globaltoyota_logo.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://global.toyota/jp/",
+          "attribution": "Toyota Motor Corporation",
+          "usage_note": "공식 기업 사이트 로고(.svg, 원본 그대로) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "CSS background of #main_logo on global.toyota (公式企業サイト), read from header_footer.css. The corporate site shows the TOYOTA wordmark only; no standalone emblem SVG was found on it."
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
       "id": "zenn",
       "name": "Zenn",
       "country": "JP",
@@ -1409,11 +1946,8 @@
     }
   ],
   "source_breakdown": {
-    "Wikimedia Commons": 16,
-    "Official site (daangn.com)": 1,
-    "Official site (toss.im)": 1,
-    "Pinkoi (official CDN)": 1,
-    "official-site-asset": 3,
-    "none": 2
+    "unit": "variants",
+    "official": 86,
+    "Wikimedia Commons": 16
   }
 }
