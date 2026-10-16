@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -92,6 +92,12 @@
         "kind": "official-doc",
         "url": "https://blog.goorm.io/brand-of-the-year-2025/",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.goorm.io/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1460,6 +1466,13 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"4\"]",
         "captured": "2026-09-30"
+      },
+      "components.header-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.button-rdwa1tj.button-rdwa1t5.interactions-13di4x97 \"도입 문의하기\" (107 x 40) via probe-component-states.mjs --match #262626 matched on radius, padding, font-size, height, fg; locale ko-KR: focus outline #262626 solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1467,12 +1480,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 83,
+      "warnings": 84,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 8,
-      "extension-component-property": 59,
+      "extension-component-property": 60,
       "contrast-ratio": 5,
       "orphaned-tokens": 11
     },
@@ -1560,6 +1573,12 @@
         "rule": "broken-ref",
         "path": "components.header-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

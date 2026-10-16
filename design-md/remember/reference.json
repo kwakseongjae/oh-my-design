@@ -29,7 +29,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "career-postings",
@@ -92,6 +92,12 @@
         "kind": "product-surface",
         "url": "https://career.rememberapp.co.kr/job/postings",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "career-postings-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://career.rememberapp.co.kr/job/postings",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1083,6 +1089,13 @@
         "method": "live-inspect",
         "selector": "corporate-home::[data-omd-capture=\"17\"] to [data-omd-capture=\"20\"]",
         "captured": "2026-07-13"
+      },
+      "components.filled-auth-control.height": {
+        "surface_id": "career-postings",
+        "source_id": "career-postings-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.sc-613fcc33-3.idWsvr \"로그인\" (36 x 32) via probe-component-states.mjs --match #000000 matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

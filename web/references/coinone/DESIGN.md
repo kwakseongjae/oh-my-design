@@ -114,6 +114,7 @@ components:
     typography: 15px / 700 / 19px pretendardCoinone
     states: default captured; no state frame on this element
     use: Exchange-home primary call to action at home::[data-omd-capture="15"], 90 x 49; capture 104 records the same fill, radius, padding and type with a 0px border at 186 x 47
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   home-secondary-cta:
     type: button
     backgroundColor: '#ffffff'
@@ -430,6 +431,8 @@ Legacy generic CTA, filter-chip, store-button, icon-button, trading-state, syste
 Pointer states measured in the 2026-07-13 bundle (§4): the exchange-home navigation links take background `rgba(23, 114, 248, 0.05)` on hover and press (seven links agree); the trading navigation icon button takes background `#F5F7F9` on hover and press (single element); the corporate brand-page link list turns from `#868E96` to `#495057` (nine links agree). The home sign-in and compact controls carry hover values from a 2026-09-16 live CSS inspection that the bundle cannot confirm (§4). Selected: the trading chart tab with class `is-active`. Focus is not declared (§8).
 
 No empty, loading, success, validation-error, network-error, skeleton, disabled, toast, or responsive state was captured. These states are intentionally not specified for Coinone in this reference.
+
+Live state probe, 2026-10-16 (`https://coinone.co.kr/`), `home-primary-cta`: focus — no visible change (measured 2026-10-16).
 
 ## Voice & Tone
 

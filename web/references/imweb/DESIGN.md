@@ -144,6 +144,8 @@ components:
     typography: 14px / 600 / 24px imweb Sans
     states: rest on all three surfaces; a focus frame was recorded but focus is not declared from the capture
     use: 무료로 시작하기 in the header at home::[data-omd-capture="8"], 112 x 40
+    pressed: 'bg #4b515b (:hover + :active)'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   hero-cta:
     type: button
     backgroundColor: '#15181e'
@@ -608,6 +610,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Transition frames (not declared)** | Template tab hover and pressed at `rgba(21, 24, 30, 0.26)` with text `#525459`, a tab focus frame at alpha 0.416 and a third clicked tab at alpha 0.886 — all mid-transition; header and plan action focus frames at `#171b21` and `#181b21`, not declared because focus is never taken from the capture. |
 
 Focus rings, error, empty, loading and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://imweb.me/`), `header-cta`: pressed — bg #4b515b; focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

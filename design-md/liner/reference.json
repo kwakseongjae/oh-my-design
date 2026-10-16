@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://liner.com/ko",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1511,6 +1517,27 @@
         "method": "computed-style",
         "selector": "home::div",
         "captured": "2026-09-30"
+      },
+      "components.primary-button.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.style_button__T_wTR.style_strong-brand__Kiv5F.style_large__cJpUe \"시작하기\" (84 x 40) via probe-component-states.mjs --match #2c783c matched on radius, font-size, height, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.primary-button.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.style_button__T_wTR.style_strong-brand__Kiv5F.style_large__cJpUe \"시작하기\" (84 x 40) via probe-component-states.mjs --match #2c783c matched on radius, font-size, height, fg; locale ko-KR: pressed bg #256a33 (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.primary-button.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.style_button__T_wTR.style_strong-brand__Kiv5F.style_large__cJpUe \"시작하기\" (84 x 40) via probe-component-states.mjs --match #2c783c matched on radius, font-size, height, fg; locale ko-KR: focus shadow #00a0f0 0px 0px 0px 1px inset on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1518,12 +1545,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 76,
+      "warnings": 78,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 16,
-      "extension-component-property": 48,
+      "extension-component-property": 50,
       "contrast-ratio": 4,
       "orphaned-tokens": 8
     },
@@ -1647,6 +1674,18 @@
         "rule": "broken-ref",
         "path": "components.primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

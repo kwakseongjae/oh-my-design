@@ -24,7 +24,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -81,6 +81,12 @@
         "kind": "official-doc",
         "url": "https://help.miricanvas.com/hc/ko/articles/56483608870681",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.miricanvas.com/ko",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1164,6 +1170,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"61\"]",
         "captured": "2026-07-13"
+      },
+      "components.primary-button.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.sc-7d206ab5-0.jbojQV.sc-ad20e594-0 \"회원가입\" (80 x 40) via probe-component-states.mjs --match #21afbf matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1171,12 +1184,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 63,
+      "warnings": 64,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
-      "extension-component-property": 45,
+      "extension-component-property": 46,
       "contrast-ratio": 8,
       "orphaned-tokens": 5
     },
@@ -1228,6 +1241,12 @@
         "rule": "broken-ref",
         "path": "components.primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

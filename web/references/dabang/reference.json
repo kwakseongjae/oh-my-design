@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "product-home",
@@ -86,6 +86,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "product-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.dabangapp.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1288,6 +1294,20 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"10\"]",
         "captured": "2026-07-13"
+      },
+      "components.footer-primary-button.pressed": {
+        "surface_id": "product-home",
+        "source_id": "product-home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.sc-wkuIW.hCkREO \"배너광고문의\" (98 x 30) via probe-component-states.mjs --match #326cf9 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.footer-primary-button.focus": {
+        "surface_id": "product-home",
+        "source_id": "product-home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.sc-wkuIW.hCkREO \"배너광고문의\" (98 x 30) via probe-component-states.mjs --match #326cf9 matched on radius, padding, font-size, height, fg; locale ko-KR: focus outline #ededed solid 1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1295,12 +1315,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 83,
+      "warnings": 85,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 71,
+      "extension-component-property": 73,
       "missing-primary": 1,
       "contrast-ratio": 2,
       "orphaned-tokens": 6
@@ -1695,6 +1715,18 @@
         "rule": "broken-ref",
         "path": "components.footer-primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-primary-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-primary-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

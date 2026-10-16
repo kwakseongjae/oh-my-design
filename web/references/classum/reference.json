@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -92,6 +92,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://business.classum.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1056,6 +1062,20 @@
         "method": "computed-style",
         "selector": "surface-3::div",
         "captured": "2026-07-13"
+      },
+      "components.nav-primary-action.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.primary-button.on-nav.t-hidden \"도입 문의\" (87 x 35) via probe-component-states.mjs --match #ff4438 matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.nav-primary-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.primary-button.on-nav.t-hidden \"도입 문의\" (87 x 35) via probe-component-states.mjs --match #ff4438 matched on radius, padding, font-size, fg; locale ko-KR: pressed background-image linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1063,12 +1083,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 57,
+      "warnings": 58,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 45,
+      "extension-component-property": 46,
       "contrast-ratio": 5,
       "orphaned-tokens": 4
     },
@@ -1108,6 +1128,12 @@
         "rule": "broken-ref",
         "path": "components.nav-primary-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-primary-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

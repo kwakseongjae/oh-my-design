@@ -30,7 +30,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "corporate-home",
@@ -93,6 +93,12 @@
         "kind": "license",
         "url": "https://github.com/spoqa/spoqa-han-sans",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "corporate-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.thepinkfongcompany.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -970,6 +976,27 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"26\"]",
         "captured": "2026-07-13"
+      },
+      "components.corporate-primary-action.height": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.ant-btn.css-1gn9ksx.ant-btn-round \"더핑크퐁컴퍼니 인재영입 페이지 바로가기 →\" (447 x 64) via probe-component-states.mjs --match #ff66af matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.corporate-primary-action.pressed": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.ant-btn.css-1gn9ksx.ant-btn-round \"더핑크퐁컴퍼니 인재영입 페이지 바로가기 →\" (447 x 64) via probe-component-states.mjs --match #ff66af matched on radius, padding, font-size, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.corporate-primary-action.focus": {
+        "surface_id": "corporate-home",
+        "source_id": "corporate-home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.ant-btn.css-1gn9ksx.ant-btn-round \"더핑크퐁컴퍼니 인재영입 페이지 바로가기 →\" (447 x 64) via probe-component-states.mjs --match #ff66af matched on radius, padding, font-size, fg; locale ko-KR: focus outline #ffe0ec solid 3px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -977,12 +1004,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 53,
+      "warnings": 55,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 39,
+      "extension-component-property": 41,
       "contrast-ratio": 8,
       "orphaned-tokens": 3
     },
@@ -1022,6 +1049,18 @@
         "rule": "broken-ref",
         "path": "components.corporate-primary-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-primary-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.corporate-primary-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

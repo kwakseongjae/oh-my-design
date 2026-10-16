@@ -43,6 +43,8 @@ components:
     typography: 15px / 600 Pretendard Variable
     states: default only; no interaction state captured
     use: Public marketing navigation CTA; home::[data-omd-capture=4]
+    height: 35px
+    pressed: background-image linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) (:hover + :active)
   nav-outline-light:
     type: button
     textColor: '#ff4438'
@@ -431,6 +433,8 @@ Pointer states: the bundle holds 10 state frames, all on the four home feature c
 | Hover | Not declared. Hover frames exist on the four home feature cards; their only change is a box-shadow moving from `none` to an alpha-0 colour. Corrected 2026-09-30: the interaction count covers expansions only. |
 | Focus | Not declared. Bundle focus frames are not a reliable focus-visible sample (corrected 2026-09-30). |
 | Pressed | Not declared. The pressed frames on the feature cards record a box-shadow of alpha 0.004, a transition frame (corrected 2026-09-30). |
+
+Live state probe, 2026-10-16 (`https://business.classum.com/`), `nav-primary-action`: pressed — background-image linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)).
 
 ## Do's and Don'ts
 

@@ -95,6 +95,8 @@ components:
     typography: 14px / 600 / 19.6px Pretendard
     states: 'probe on home: hover, pressed and focus (Tab #6) show no change; transition all 0s'
     use: 문의하기 in the header of every rtzr.ai page at home::[data-omd-capture="5"], 98 x 42
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   primary-cta:
     type: button
     backgroundColor: '#222222'
@@ -421,6 +423,8 @@ Only these states were observed; nothing else is specified here.
 | **Unmeasured** | Hover and pressed on the /pricing plan-card buttons (바로 무료 체험, 클라우드 도입 문의). |
 
 No authored focus style was observed on any probed control. Error, empty, loading and success states were not captured.
+
+Live state probe, 2026-10-16 (`https://www.rtzr.ai/`), `header-cta`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

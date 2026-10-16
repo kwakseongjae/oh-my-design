@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -86,6 +86,12 @@
         "kind": "brand-asset",
         "url": "https://hangeul.naver.com/fonts/search?f=nanum",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.megabox.co.kr/movie",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -976,6 +982,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"63\"]",
         "captured": "2026-07-13"
+      },
+      "components.movie-like-button.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.button.btn-like \"5.8k\" (72 x 36) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height; locale ko-KR: pressed bg #f2f4f8, label #351f67, outline #000000 dotted 1px (+2 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.movie-like-button.focus": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.button.btn-like \"5.8k\" (72 x 36) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height; locale ko-KR: focus outline #000000 dotted 1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -983,12 +1003,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 59,
+      "warnings": 61,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 48,
+      "extension-component-property": 50,
       "contrast-ratio": 6,
       "orphaned-tokens": 3
     },
@@ -1034,6 +1054,18 @@
         "rule": "broken-ref",
         "path": "components.movie-like-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.movie-like-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.movie-like-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

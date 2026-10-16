@@ -187,6 +187,8 @@ components:
     typography: 14px / 700 / 28px / -0.3px
     states: 'rest sampled (2026-07-11); the hover and pressed frames change only border-color, #d6d7da to #0cefd3, on a 0px border, so nothing visible changes and no state value is declared; focus not sampled'
     use: Woowa font catalog filled link button (.btn-fill)
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   catalog-pill-button:
     type: button
     backgroundColor: '#f3f4f5'
@@ -455,6 +457,8 @@ A real Tab walk reached six baemin.com controls: the App Store and QR buttons, t
 | Font catalog download | available, unavailable/disabled controls |
 | Font catalog filled button | default; its hover and pressed frames change nothing visible |
 | Other retained buttons | default only; missing states remain explicitly unclaimed |
+
+Live state probe, 2026-10-16 (`https://www.woowahan.com/fonts`), `catalog-fill-button`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

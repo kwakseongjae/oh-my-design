@@ -117,6 +117,7 @@ components:
     typography: 15px / 700 / 22px Pretendard
     states: 'probe on the course page: hover and pressed show no change across the button and three ancestor levels; focus (Tab #2) draws only the browser''s default ring, so no brand focus style is declared; it computes transition width 0.2s ease-in-out'
     use: 수강신청하기, the enrolment action of the course page at surface-3::[data-omd-capture="1"], 320 x 56
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   course-tab:
     type: tab
     textColor: '#858893'
@@ -518,6 +519,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Unmeasured** | Hover and pressed on the course tabs (covered by a fixed bar) and on 후기 자세히 보기 (:hover did not match). |
 
 Error, empty, loading and success states were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://spartaclub.kr/product/9`), `enroll-cta`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

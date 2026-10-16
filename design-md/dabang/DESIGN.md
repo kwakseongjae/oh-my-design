@@ -184,6 +184,8 @@ components:
     typography: 12px / 700 / 20px Pretendard Variable
     states: default on home (capture 73) and the FAQ route (capture 25); no state frame
     use: Footer button at home::[data-omd-capture="73"], 98 x 30
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: 'outline #ededed solid 1px on :focus-visible'
   support-faq-category-tab:
     type: tab
     backgroundColor: '#ffffff'
@@ -422,6 +424,8 @@ The earlier reference’s full semantic colour ramps, pink-as-global-brand-contr
 | Support FAQ category tab and row | Tab selected (class `active`): background `#222222`, text `#FFFFFF`; row default only |
 
 Corrected 2026-09-30: the July table listed default values only because no interaction expansion was retained; the capture's hover and pressed frames are measurements in their own right. Focus, disabled, error, empty, loading, success, skeleton, menu, dialog, and toast contracts remain unclaimed.
+
+Live state probe, 2026-10-16 (`https://www.dabangapp.com/`), `footer-primary-button`: pressed — no visible change (measured 2026-10-16); focus — outline #ededed solid 1px.
 
 ## Do's and Don'ts
 

@@ -70,6 +70,7 @@ components:
     typography: 16px / 600 / Pretendard Variable
     states: default captured; the bundle holds no pointer-state frame on any of its three surfaces
     use: Home CTA link at home::[data-omd-capture="11"]
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   shared-ink-pill:
     type: button
     backgroundColor: '#191919'
@@ -420,6 +421,8 @@ All components here are specified at rest; the pricing tab adds its measured sel
 ### States
 
 Only two public interaction facts were captured: the blog route emitted a `form-error` event for its email form (the re-captured input computes the same values as at rest), and pricing tabs expose transparent rest versus `#ffffff` selected states. The bundle holds no hover, pressed or focus frame on any surface. No visible error copy, loading treatment, success confirmation, disabled control, toast, or product-console state was captured. Those unobserved states are intentionally unspecified.
+
+Live state probe, 2026-10-16 (`https://www.datarize.ai/`), `action-ink-pill`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

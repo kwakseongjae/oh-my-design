@@ -99,6 +99,8 @@ components:
     typography: 12px / 400 / 18px Pretendard Variable
     states: rest on home, rankings and awards; no state frame
     use: 24px outline chip at the foot of each page (home::[data-omd-capture="106"], 49 x 24); the page text places 로그인 at this position
+    pressed: 'bg #f7f7f7 (:hover + :active)'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   footer-info-toggle:
     type: button
     backgroundColor: transparent
@@ -508,6 +510,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Notice layer** | A dismissible notice (`공지 닫기`) and banner (`배너 닫기`) sat over home at load; the collector closed them before measuring. |
 
 Focus rings, error, empty, loading and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.hwahae.co.kr/`), `footer-login-chip`: pressed — bg #f7f7f7; focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

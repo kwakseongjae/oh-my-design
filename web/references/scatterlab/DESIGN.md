@@ -96,6 +96,8 @@ components:
     shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px
     states: hover and pressed frames match rest in every compared property (the inline background overrides the hover:bg-primary/90 class); the class list also names a hover lift (hover:-translate-y-0.5) that the collector does not measure, so no state is declared
     use: 채용공고 in the blog header, linking to www.scatterlab.co.kr/ko/recruiting, at surface-3::[data-omd-capture="3"], 87 x 36
+    pressed: transform matrix(1, 0, 0, 1, 0, -2) (:hover + :active)
+    focus: 'shadow #ffffff 0px 0px 0px 0px, #09090b 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px on :focus-visible'
   blog-subscribe-button:
     type: button
     backgroundColor: '#000000'
@@ -417,6 +419,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Transition frames (not declared)** | The newsletter field's pressed and focus frames carry zero-width ring layers. |
 
 Focus rings, hover values, error, empty, loading and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://blog.scatterlab.co.kr/`), `blog-header-cta`: pressed — transform matrix(1, 0, 0, 1, 0, -2); focus — shadow #ffffff 0px 0px 0px 0px, #09090b 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px.
 
 ## Do's and Don'ts
 

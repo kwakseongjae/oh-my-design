@@ -138,6 +138,7 @@ components:
     pressed: 'bg #7164f8'
     states: 'hover and pressed settle on #7164f8 (transition all 0s; bundle frames and the probe agree); focus (Tab #6) shows no change'
     use: 'Large violet pill: 채용공고 확인하기 on /about-us at surface-2::[data-omd-capture="5"] (1180 x 54) and 더 이상 보지 않기 in the home notice dialog (365 x 54)'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   dialog-outline-button:
     type: button
     backgroundColor: '#ffffff'
@@ -595,6 +596,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Dialog open** | A notice dialog with a `rgba(0, 0, 0, 0.4)` backdrop covered home at capture. |
 
 Error, empty, loading and success states were not captured and are not described. The calculator pills were not reachable by the probe, so their states are unmeasured, not absent.
+
+Live state probe, 2026-10-16 (`https://finda.co.kr/about-us`), `pill-cta`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

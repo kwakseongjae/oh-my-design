@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -62,6 +62,12 @@
         "kind": "product-surface",
         "url": "https://www.tmapmobility.com/people/about",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.tmapmobility.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1395,6 +1401,20 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"70\"]",
         "captured": "2026-09-30"
+      },
+      "components.search-pill.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.ButtonContentSearch-module-scss-module__8jlcHW__btnSearch \"어디로 갈까요?\" (467 x 69) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.search-pill.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.ButtonContentSearch-module-scss-module__8jlcHW__btnSearch \"어디로 갈까요?\" (467 x 69) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1402,12 +1422,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 71,
+      "warnings": 73,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 12,
-      "extension-component-property": 43,
+      "extension-component-property": 45,
       "contrast-ratio": 6,
       "orphaned-tokens": 10
     },
@@ -1585,6 +1605,18 @@
         "rule": "broken-ref",
         "path": "components.search-pill.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-pill.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-pill.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

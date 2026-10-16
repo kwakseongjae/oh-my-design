@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "public-wts",
@@ -74,6 +74,12 @@
         "kind": "brand-asset",
         "url": "https://github.com/toss/tossface",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "public-wts-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.tossinvest.com/?focusedProductCode=A000660",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1063,6 +1069,20 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"13\"]",
         "captured": "2026-07-13"
+      },
+      "components.wts-primary-entry.pressed": {
+        "surface_id": "public-wts",
+        "source_id": "public-wts-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.tw1n-1hprh8p2h.tw1n-1hprh8p0.tw1n-1hprh8p41 \"로그인\" (60 x 32) via probe-component-states.mjs --match #3182f6 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed bg #2272eb, shadow none (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.wts-primary-entry.focus": {
+        "surface_id": "public-wts",
+        "source_id": "public-wts-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.tw1n-1hprh8p2h.tw1n-1hprh8p0.tw1n-1hprh8p41 \"로그인\" (60 x 32) via probe-component-states.mjs --match #3182f6 matched on radius, padding, font-size, height, fg; locale ko-KR: focus outline rgba(0, 12, 30, 0.8) solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1070,12 +1090,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 64,
+      "warnings": 66,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 48,
+      "extension-component-property": 50,
       "contrast-ratio": 9,
       "orphaned-tokens": 4
     },
@@ -1115,6 +1135,18 @@
         "rule": "broken-ref",
         "path": "components.wts-primary-entry.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.wts-primary-entry.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.wts-primary-entry.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

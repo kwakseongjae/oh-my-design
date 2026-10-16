@@ -70,6 +70,7 @@ components:
     typography: 10px / 700 / SKT Sans Text
     states: 'default observed; the capture holds no state frame for this control, so no hover, focus, pressed, disabled, or error state is retained. Corrected 2026-09-30: the July text derived this from interaction count 0, which counts dialog, tab and menu expansions, not pointer-state frames'
     use: Public desktop/tablet top action
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   brand-section-link:
     type: tab
     backgroundColor: transparent
@@ -393,6 +394,8 @@ The LNB title above these links (`p.lnb-title`) computes `#3A46CD`, 26px / 700 /
 ### States
 
 Pointer states are declared only where the 2026-07-13 bundle holds a settled frame. The brand LNB links and brand section links turn `#3A46CD` on hover and pressed (the section links also move to weight 700), and the current-page link of each list is its selected state (§4). Every other state frame is listed in `.verification.md` with the reason it is not declared: transition frames (section-link colours on four links, the footer menu links, the download links), Chromium's default link colours on container anchors, and focus frames, which are never declared from a bundle. The bundle records no dialog, tab, menu, toast or form interaction, and no selector-backed loading, empty, error, success, disabled or validation state. Corrected 2026-09-30: the July text said no component-state matrix could be retained because the bundle has zero interaction expansions; that count does not cover pointer-state frames, of which the bundle holds 62.
+
+Live state probe, 2026-10-16 (`https://www.sktelecom.com/`), `top-action`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

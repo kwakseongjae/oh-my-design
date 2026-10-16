@@ -139,6 +139,7 @@ components:
     pressed: shadow 0 2px 4px rgba(3, 199, 90, 0.24); overlay rgba(0, 0, 0, 0.06) via ::before
     states: 'default captured 2026-07-11 and the same on 2026-09-29; the fill is #03a94d, darker than brand green #03c75a, which tints only the shadow; hover and pressed measured 2026-09-29 with :hover and :active matched: shadow alpha 0.12 to 0.24 plus a rgba(0, 0, 0, 0.06) ::before overlay (transition: all 0s); keyboard focus draws only the browser default ring (outline auto), so no focus value is declared; no sign-in was attempted'
     use: Portal-home sign-in CTA (NAVER로그인, a.MyView-module__link_login); tracking -0.4px
+    height: 56px
   search-assembly:
     type: input
     backgroundColor: '#ffffff'

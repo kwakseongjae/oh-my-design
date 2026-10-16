@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -79,6 +79,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "new-products-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.kurly.com/collections/market-newproduct",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -646,6 +652,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"92\"]",
         "captured": "2026-07-13"
+      },
+      "components.product-list-control.height": {
+        "surface_id": "new-products",
+        "source_id": "new-products-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "div.kpds_126comag.kpds_126coma9.kpds_ldmw17oq \"\" (20 x 20) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []

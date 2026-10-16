@@ -59,6 +59,7 @@ components:
     typography: 14px / 500 / 20px Noto Sans
     states: rest on all six capture records (capture 10 on each); the bundle holds no state frame for any JANDI element
     use: Global navigation primary action (a) at home::[data-omd-capture="10"], 69 x 36; the same values repeat on surface-2 through surface-6
+    pressed: 'bg #00b46a, border #00b46a (:hover + :active)'
   header-outline-action:
     type: button
     backgroundColor: transparent
@@ -388,6 +389,8 @@ The previous legacy material asserted a `/ko/pricing` surface, pricing-card vari
 ### States
 
 No empty, loading, error, success, disabled, focus, or validation states were captured, and the bundle holds no `::state-*` frame for any element. The component appearances in §4 are static public-page observations, not behavioral state specifications.
+
+Live state probe, 2026-10-16 (`https://www.jandi.com/landing/kr`), `header-primary-action`: pressed — bg #00b46a, border #00b46a.
 
 ## Do's and Don'ts
 

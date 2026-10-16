@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -92,6 +92,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-3-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://spartaclub.kr/product/9",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1383,6 +1389,13 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"11\"]",
         "captured": "2026-09-30"
+      },
+      "components.enroll-cta.pressed": {
+        "surface_id": "surface-3",
+        "source_id": "surface-3-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.css-8inv5e \"수강신청하기\" (320 x 56) via probe-component-states.mjs --match #fa0030 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1390,12 +1403,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 67,
+      "warnings": 68,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 14,
-      "extension-component-property": 37,
+      "extension-component-property": 38,
       "contrast-ratio": 2,
       "orphaned-tokens": 14
     },
@@ -1501,6 +1514,12 @@
         "rule": "broken-ref",
         "path": "components.enroll-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.enroll-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

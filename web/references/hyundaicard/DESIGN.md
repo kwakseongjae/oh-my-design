@@ -145,6 +145,8 @@ components:
     size: 280px x 56px
     states: default captured 2026-07-13; deliberately not hovered, pressed or focused on 2026-09-29 because it belongs to the login widget
     use: Product-home login widget action (간편번호 등록); the anchor's own text colour equals its fill and the visible label was not read, so no text colour is declared
+    height: 56px
+    typography: 16px / 400
   quick-menu-box:
     type: card
     backgroundColor: transparent

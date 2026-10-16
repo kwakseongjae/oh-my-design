@@ -65,6 +65,7 @@ components:
     typography: 13px / 700
     states: default captured on both surfaces; the capture holds no state frame for this action
     use: 'About-page global navigation primary action (a, variant-invert) at surface-2::[data-omd-capture="9"]; on the dark home header it inverts to a #ffffff fill with #111111 text (home::[data-omd-capture="9"])'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   gnb-menu-button:
     type: button
     backgroundColor: transparent
@@ -339,6 +340,8 @@ The legacy `#1D1D1F`/graphite/pill-service-card claims conflict with the supplie
 ### States
 
 No loading, error, empty, disabled, or success state was captured for a Flex product workflow. The bundle's `interactions[]` record is empty, but it holds pointer-state frames for the About-page carousel arrows: hover and pressed both record `rgba(17, 17, 17, 0.12)` over the `rgba(17, 17, 17, 0.08)` rest (§4). The other state-like observations are surface-theme variants (dark versus light navigation), the accordion's collapsed and expanded variants, and static defaults in §4. Focus is not declared. Corrected 2026-09-29: the July text said the evidence reported zero interaction coverage and read that as no state sample.
+
+Live state probe, 2026-10-16 (`https://flex.team/about`), `nav-action-solid`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -86,6 +86,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/IBM/plex/master/LICENSE.txt",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-3-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://blog.scatterlab.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -943,6 +949,20 @@
         "method": "computed-style",
         "selector": "home::div",
         "captured": "2026-09-30"
+      },
+      "components.blog-header-cta.pressed": {
+        "surface_id": "surface-3",
+        "source_id": "surface-3-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.inline-flex.items-center.justify-center \"채용공고\" (87 x 36) via probe-component-states.mjs --match #fbb401 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed transform matrix(1, 0, 0, 1, 0, -2) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.blog-header-cta.focus": {
+        "surface_id": "surface-3",
+        "source_id": "surface-3-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.inline-flex.items-center.justify-center \"채용공고\" (87 x 36) via probe-component-states.mjs --match #fbb401 matched on radius, padding, font-size, height, fg; locale ko-KR: focus shadow #ffffff 0px 0px 0px 0px, #09090b 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -950,12 +970,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 47,
+      "warnings": 49,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 10,
-      "extension-component-property": 23,
+      "extension-component-property": 25,
       "contrast-ratio": 4,
       "orphaned-tokens": 10
     },
@@ -1061,6 +1081,18 @@
         "rule": "broken-ref",
         "path": "components.blog-header-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-header-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.blog-header-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

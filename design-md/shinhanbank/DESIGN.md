@@ -65,6 +65,7 @@ components:
     typography: 16px / 400 / Pretendard
     states: default captured; no expanded-menu record and no state frame
     use: Group Family Site selector (button.btn_selct) at surface-2::[data-omd-capture="40"], 205 px wide, line height 48px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   group-gnb-link:
     type: tab
     backgroundColor: transparent
@@ -347,6 +348,8 @@ Official CI and live corporate blue are retained as different evidence domains.
 ### States
 
 The supplied artifact reports `interactionCount: 0`, and its `surfaces[].elements[]` hold no `::state-hover`, `::state-pressed`, or `::state-focus` frame (checked 2026-09-29), so no pointer state is declared for any component. Corrected 2026-09-29: the July text leaned on the zero interaction count, which covers dialog, tab, menu, and form records only; the absence of state frames is the actual basis. Empty, loading, error, success, validation, disabled, and reduced-motion treatments require a first-party product-surface capture or official documentation.
+
+Live state probe, 2026-10-16 (`https://www.shinhangroup.com/kr/main`), `family-site-selector`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

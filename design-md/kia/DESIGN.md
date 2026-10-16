@@ -99,6 +99,7 @@ components:
     typography: 14px / 400 / 14px Kia Signature Bold
     states: rest on 17 captured instances across home and the EV6 page; no hover or pressed frame was recorded for them, and the collector's expansion pass recorded no interaction events, so no state value is declared
     use: Primary square action (바로가기 and 견적 내기 on the home hero slides, 견적 내기 on the EV6 page) at home::[data-omd-capture="13"], 102 x 48
+    focus: 'outline #000000 dashed 3px on :focus-visible'
   hero-secondary-button:
     type: button
     backgroundColor: '#ffffff'
@@ -577,6 +578,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Header over imagery** | Utility controls are `#ffffff` over the home and EV6 heroes and `#37434b` on the white lineup header. |
 
 The only pointer frames recorded are the browser's default active colour on links, which is not a brand value. The collector's expansion pass recorded no interaction events, so hover, pressed and focus treatments are unmeasured rather than absent. Error, empty, loading and success states were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.kia.com/kr`), `primary-button`: focus — outline #000000 dashed 3px.
 
 ## Do's and Don'ts
 

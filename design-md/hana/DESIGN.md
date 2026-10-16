@@ -95,6 +95,9 @@ components:
     typography: 14px / 400 / 40px NotoSans_Regular, -0.5px tracking
     states: rest on six carousel slides (odd captures 19-29); the hover and pressed frames on captures 19, 21 and 23 recorded no change
     use: Home carousel action (a) at home::[data-omd-capture="19"]; the served HTML labels it 자세히보기
+    height: 40px
+    padding: 0px
+    focus: text-decoration underline, browser default focus ring (outline auto) on :focus-visible
   footer-site-select:
     type: button
     backgroundColor: '#ffffff'
@@ -358,6 +361,8 @@ The June 2026 snapshot's values are superseded wherever this capture contradicts
   - left-navigation hover (`#008485`, medium)
 - **Described variants:** the current left-navigation item and the current pagination page (not declared as selected states).
 - **Not captured:** focus, error, loading, empty, success and disabled styling for brand controls.
+
+Live state probe, 2026-10-16 (`https://www.kebhana.com/`), `slide-cta`: focus — text-decoration underline, browser default focus ring (outline auto).
 
 ## Do's and Don'ts
 

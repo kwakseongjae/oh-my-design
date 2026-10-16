@@ -3,12 +3,12 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 299,
-  "sources": 1848,
+  "sources": 1921,
   "sources_by_kind": {
     "brand-asset": 78,
     "license": 137,
-    "official-doc": 711,
-    "product-surface": 922
+    "official-doc": 713,
+    "product-surface": 993
   },
   "references": {
     "104": {
@@ -162,7 +162,7 @@
       ]
     },
     "3o3": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -188,6 +188,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "jobisnvillains.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.3o3.co.kr"
         },
         {
           "id": "surface-home",
@@ -306,7 +312,7 @@
       ]
     },
     "ably": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -349,6 +355,12 @@
           "id": "team-live",
           "kind": "official-doc",
           "captured": "2026-07-12",
+          "host": "ably.team"
+        },
+        {
+          "id": "team-probe-2026-10-16",
+          "kind": "official-doc",
+          "captured": "2026-10-16",
           "host": "ably.team"
         }
       ]
@@ -828,7 +840,7 @@
       ]
     },
     "baemin": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -853,6 +865,12 @@
           "id": "font-catalog-live",
           "kind": "official-doc",
           "captured": "2026-07-11",
+          "host": "www.woowahan.com"
+        },
+        {
+          "id": "font-catalog-probe-2026-10-16",
+          "kind": "official-doc",
+          "captured": "2026-10-16",
           "host": "www.woowahan.com"
         },
         {
@@ -1200,7 +1218,7 @@
       ]
     },
     "brandi": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1219,6 +1237,12 @@
           "id": "product-a-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.brandi.co.kr"
+        },
+        {
+          "id": "product-a-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.brandi.co.kr"
         },
         {
@@ -1332,7 +1356,7 @@
       ]
     },
     "cafe24": {
-      "checked": "2026-10-01",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1370,6 +1394,12 @@
           "kind": "license",
           "captured": "2026-10-01",
           "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.cafe24.com"
         },
         {
           "id": "surface-home",
@@ -1500,7 +1530,7 @@
       ]
     },
     "channeltalk": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1531,6 +1561,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "channel.io"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "channel.io"
         },
         {
@@ -1752,7 +1788,7 @@
       ]
     },
     "classum": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1783,6 +1819,12 @@
           "id": "home-capture",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "business.classum.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "business.classum.com"
         },
         {
@@ -1944,7 +1986,7 @@
       ]
     },
     "codeit": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1975,6 +2017,12 @@
           "id": "codeit-teams",
           "kind": "official-doc",
           "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.codeit.kr"
         },
         {
@@ -2052,7 +2100,7 @@
       ]
     },
     "coinone": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2072,6 +2120,12 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.coinonecorp.com"
+        },
+        {
+          "id": "exchange-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "coinone.co.kr"
         },
         {
           "id": "history-context",
@@ -2124,7 +2178,7 @@
       ]
     },
     "coupang": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2143,6 +2197,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "www.coupang.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.coupang.com"
         },
         {
@@ -2280,7 +2340,7 @@
       ]
     },
     "dabang": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2311,6 +2371,12 @@
           "id": "map-capture",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.dabangapp.com"
+        },
+        {
+          "id": "product-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.dabangapp.com"
         },
         {
@@ -2418,7 +2484,7 @@
       ]
     },
     "datarize": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2437,6 +2503,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.datarize.ai"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.datarize.ai"
         },
         {
@@ -2682,7 +2754,7 @@
       ]
     },
     "drdiary": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2714,6 +2786,12 @@
           "kind": "license",
           "captured": "2026-09-30",
           "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-4-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "drdiary.co.kr"
         },
         {
           "id": "surface-home",
@@ -2856,13 +2934,19 @@
       ]
     },
     "elice": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
           "id": "brand-page",
           "kind": "official-doc",
           "captured": "2026-09-30",
+          "host": "elice.io"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "elice.io"
         },
         {
@@ -3252,7 +3336,7 @@
       ]
     },
     "finda": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3292,6 +3376,12 @@
           "host": "raw.githubusercontent.com"
         },
         {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "finda.co.kr"
+        },
+        {
           "id": "surface-home",
           "kind": "product-surface",
           "captured": "2026-09-30",
@@ -3312,13 +3402,19 @@
       ]
     },
     "flex": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
           "id": "about-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "flex.team"
+        },
+        {
+          "id": "about-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "flex.team"
         },
         {
@@ -3516,7 +3612,7 @@
       ]
     },
     "furiosaai": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3530,6 +3626,12 @@
           "kind": "license",
           "captured": "2026-09-30",
           "host": "abcdinamo.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "furiosa.ai"
         },
         {
           "id": "newsroom",
@@ -3600,7 +3702,7 @@
       ]
     },
     "genie": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3620,6 +3722,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "www.geniemusic.co.kr"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.genie.co.kr"
         },
         {
           "id": "surface-home",
@@ -3738,7 +3846,7 @@
       ]
     },
     "goorm": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3763,6 +3871,12 @@
           "id": "goorm-sans",
           "kind": "license",
           "captured": "2026-09-30",
+          "host": "www.goorm.io"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.goorm.io"
         },
         {
@@ -3816,7 +3930,7 @@
       ]
     },
     "greencar": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3841,6 +3955,12 @@
           "id": "greencar-probe-home",
           "kind": "product-surface",
           "captured": "2026-09-30",
+          "host": "www.greencar.co.kr"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.greencar.co.kr"
         },
         {
@@ -4002,9 +4122,15 @@
       ]
     },
     "hana": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.kebhana.com"
+        },
         {
           "id": "pr-about",
           "kind": "official-doc",
@@ -4278,7 +4404,7 @@
       ]
     },
     "hwahae": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4292,6 +4418,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "blog.hwahae.co.kr"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.hwahae.co.kr"
         },
         {
           "id": "pretendard-license",
@@ -4374,7 +4506,7 @@
       ]
     },
     "hyundai": {
-      "checked": "2026-09-21",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4412,11 +4544,17 @@
           "kind": "product-surface",
           "captured": "2026-09-21",
           "host": "www.hyundai.com"
+        },
+        {
+          "id": "vehicles-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.hyundai.com"
         }
       ]
     },
     "hyundaicard": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4435,6 +4573,12 @@
           "id": "collector-home",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.hyundaicard.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.hyundaicard.com"
         },
         {
@@ -4506,7 +4650,7 @@
       ]
     },
     "idus": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4526,6 +4670,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "team.idus.com"
+        },
+        {
+          "id": "product-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.idus.com"
         },
         {
           "id": "surface-home",
@@ -4674,7 +4824,7 @@
       ]
     },
     "imweb": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4694,6 +4844,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "team.imweb.me"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "imweb.me"
         },
         {
           "id": "newsroom",
@@ -4722,7 +4878,7 @@
       ]
     },
     "inflearn": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4765,6 +4921,12 @@
           "id": "home-capture",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.inflearn.com"
+        },
+        {
+          "id": "product-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.inflearn.com"
         }
       ]
@@ -4866,7 +5028,7 @@
       ]
     },
     "jandi": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4880,6 +5042,12 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "support.jandi.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.jandi.com"
         },
         {
           "id": "noto-license",
@@ -4932,7 +5100,7 @@
       ]
     },
     "kakao": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -4945,6 +5113,12 @@
           "id": "corp-home-live",
           "kind": "product-surface",
           "captured": "2026-07-11",
+          "host": "www.kakaocorp.com"
+        },
+        {
+          "id": "corp-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.kakaocorp.com"
         },
         {
@@ -5304,13 +5478,19 @@
       ]
     },
     "kbpay": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
           "id": "kbpay-probe-home",
           "kind": "product-surface",
           "captured": "2026-09-30",
+          "host": "card.kbcard.com"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "card.kbcard.com"
         },
         {
@@ -5400,7 +5580,7 @@
       ]
     },
     "kia": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -5414,6 +5594,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "worldwide.kia.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.kia.com"
         },
         {
           "id": "opposites-united",
@@ -5646,7 +5832,7 @@
       ]
     },
     "kream": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -5690,11 +5876,17 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "kream.co.kr"
+        },
+        {
+          "id": "search-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "kream.co.kr"
         }
       ]
     },
     "kurly": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -5728,6 +5920,12 @@
           "host": "www.kurly.com"
         },
         {
+          "id": "new-products-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.kurly.com"
+        },
+        {
           "id": "pretendard-license",
           "kind": "license",
           "captured": "2026-07-13",
@@ -5736,7 +5934,7 @@
       ]
     },
     "kyobobook": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -5798,6 +5996,12 @@
           "kind": "license",
           "captured": "2026-09-30",
           "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-3-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "product.kyobobook.co.kr"
         },
         {
           "id": "surface-home",
@@ -5868,9 +6072,15 @@
       ]
     },
     "laundrygo": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.laundrygo.com"
+        },
         {
           "id": "laundrygo-font",
           "kind": "brand-asset",
@@ -5970,9 +6180,15 @@
       ]
     },
     "lguplus": {
-      "checked": "2026-07-14",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.lguplus.com"
+        },
         {
           "id": "lguplus-about-live",
           "kind": "product-surface",
@@ -6006,7 +6222,7 @@
       ]
     },
     "likelion": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6031,6 +6247,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "likelion.net"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "likelion.net"
         },
         {
@@ -6198,13 +6420,19 @@
       ]
     },
     "liner": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
           "id": "design-system-post",
           "kind": "official-doc",
           "captured": "2026-09-30",
+          "host": "liner.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "liner.com"
         },
         {
@@ -6270,7 +6498,7 @@
       ]
     },
     "lotteon": {
-      "checked": "2026-07-14",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6301,6 +6529,12 @@
           "id": "recent-products-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.lotteon.com"
+        },
+        {
+          "id": "recent-products-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.lotteon.com"
         }
       ]
@@ -6348,7 +6582,7 @@
       ]
     },
     "makinarocks": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6367,6 +6601,12 @@
           "id": "home-capture",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.makinarocks.ai"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.makinarocks.ai"
         },
         {
@@ -6516,7 +6756,7 @@
       ]
     },
     "megabox": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6559,6 +6799,12 @@
           "id": "recruiting",
           "kind": "official-doc",
           "captured": "2026-07-13",
+          "host": "www.megabox.co.kr"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.megabox.co.kr"
         }
       ]
@@ -6828,7 +7074,7 @@
       ]
     },
     "miricanvas": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6847,6 +7093,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.miricanvas.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.miricanvas.com"
         },
         {
@@ -7116,7 +7368,7 @@
       ]
     },
     "moreh": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7129,6 +7381,12 @@
           "id": "about-ko",
           "kind": "official-doc",
           "captured": "2026-09-30",
+          "host": "moreh.io"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "moreh.io"
         },
         {
@@ -7230,7 +7488,7 @@
       ]
     },
     "myrealtrip": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7238,6 +7496,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "about.myrealtrip.com"
+        },
+        {
+          "id": "consumer-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.myrealtrip.com"
         },
         {
           "id": "help-center",
@@ -7320,7 +7584,7 @@
       ]
     },
     "naver": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7345,6 +7609,12 @@
           "id": "naver-probe",
           "kind": "product-surface",
           "captured": "2026-09-29",
+          "host": "www.naver.com"
+        },
+        {
+          "id": "portal-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.naver.com"
         },
         {
@@ -7404,7 +7674,7 @@
       ]
     },
     "naverwebtoon": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7444,6 +7714,12 @@
           "host": "comic.naver.com"
         },
         {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "comic.naver.com"
+        },
+        {
           "id": "webtoon-list-capture",
           "kind": "product-surface",
           "captured": "2026-07-13",
@@ -7452,7 +7728,7 @@
       ]
     },
     "ncsoft": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7460,6 +7736,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "about.ncsoft.com"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.nc.com"
         },
         {
           "id": "surface-home",
@@ -7500,7 +7782,7 @@
       ]
     },
     "nexon": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7514,6 +7796,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "company.nexon.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.nexon.com"
         },
         {
           "id": "surface-home",
@@ -7536,7 +7824,7 @@
       ]
     },
     "nhn": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7561,6 +7849,12 @@
           "id": "services-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.nhn.com"
+        },
+        {
+          "id": "services-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.nhn.com"
         },
         {
@@ -7950,7 +8244,7 @@
       ]
     },
     "onestore": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7993,6 +8287,12 @@
           "id": "game-catalog-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "m.onestore.co.kr"
+        },
+        {
+          "id": "game-catalog-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "m.onestore.co.kr"
         },
         {
@@ -8286,7 +8586,7 @@
       ]
     },
     "payhere": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -8305,6 +8605,12 @@
           "id": "payhere-probe-terminal",
           "kind": "product-surface",
           "captured": "2026-09-30",
+          "host": "payhere.in"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "payhere.in"
         },
         {
@@ -8430,7 +8736,7 @@
       ]
     },
     "pinkfong": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -8443,6 +8749,12 @@
           "id": "company-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.thepinkfongcompany.com"
+        },
+        {
+          "id": "corporate-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.thepinkfongcompany.com"
         },
         {
@@ -9036,7 +9348,7 @@
       ]
     },
     "remember": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9049,6 +9361,12 @@
           "id": "career-postings-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "career.rememberapp.co.kr"
+        },
+        {
+          "id": "career-postings-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "career.rememberapp.co.kr"
         },
         {
@@ -9162,9 +9480,15 @@
       ]
     },
     "returnzero": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.rtzr.ai"
+        },
         {
           "id": "pretendard-license",
           "kind": "license",
@@ -9420,7 +9744,7 @@
       ]
     },
     "sandoll": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9440,6 +9764,12 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "www.sandoll.co.kr"
+        },
+        {
+          "id": "surface-3-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.sandollcloud.com"
         },
         {
           "id": "surface-home",
@@ -9582,7 +9912,7 @@
       ]
     },
     "scatterlab": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9602,6 +9932,12 @@
           "kind": "license",
           "captured": "2026-09-30",
           "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-3-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "blog.scatterlab.co.kr"
         },
         {
           "id": "surface-home",
@@ -9924,7 +10260,7 @@
       ]
     },
     "shinhanbank": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9932,6 +10268,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "bank.shinhan.com"
+        },
+        {
+          "id": "group-corporate-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.shinhangroup.com"
         },
         {
           "id": "group-live",
@@ -9972,7 +10314,7 @@
       ]
     },
     "shinhancard": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9988,6 +10330,12 @@
           "host": "www.shinhancard.com"
         },
         {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.shinhancard.com"
+        },
+        {
           "id": "premium-detail-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
@@ -9996,7 +10344,7 @@
       ]
     },
     "sktelecom": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -10021,6 +10369,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.sktelecom.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.sktelecom.com"
         },
         {
@@ -10104,7 +10458,7 @@
       ]
     },
     "socar": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -10123,6 +10477,12 @@
           "id": "guide-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "www.socar.kr"
+        },
+        {
+          "id": "guide-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.socar.kr"
         },
         {
@@ -10488,7 +10848,7 @@
       ]
     },
     "ssg": {
-      "checked": "2026-10-01",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -10522,6 +10882,12 @@
           "host": "company.ssg.com"
         },
         {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.ssg.com"
+        },
+        {
           "id": "surface-home",
           "kind": "product-surface",
           "captured": "2026-10-01",
@@ -10542,7 +10908,7 @@
       ]
     },
     "stayfolio": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -10550,6 +10916,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "business.stayfolio.com"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.stayfolio.com"
         },
         {
           "id": "surface-home",
@@ -10578,9 +10950,15 @@
       ]
     },
     "stibee": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "stibee.com"
+        },
         {
           "id": "pretendard-license",
           "kind": "license",
@@ -10818,9 +11196,15 @@
       ]
     },
     "tabling": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.tabling.co.kr"
+        },
         {
           "id": "pretendard-license",
           "kind": "license",
@@ -11046,7 +11430,7 @@
       ]
     },
     "teamsparta": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11054,6 +11438,12 @@
           "kind": "license",
           "captured": "2026-09-30",
           "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-3-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "spartaclub.kr"
         },
         {
           "id": "surface-home",
@@ -11268,9 +11658,15 @@
       ]
     },
     "tmap": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.tmapmobility.com"
+        },
         {
           "id": "surface-home",
           "kind": "product-surface",
@@ -11448,7 +11844,7 @@
       ]
     },
     "toss-securities": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11462,6 +11858,12 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "home.tossinvest.com"
+        },
+        {
+          "id": "public-wts-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.tossinvest.com"
         },
         {
           "id": "tossface-repo",
@@ -11808,7 +12210,7 @@
       ]
     },
     "upbit": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11821,6 +12223,12 @@
           "id": "exchange-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.upbit.com"
+        },
+        {
+          "id": "exchange-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.upbit.com"
         },
         {
@@ -11856,7 +12264,7 @@
       ]
     },
     "upstage": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11887,6 +12295,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.upstage.ai"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.upstage.ai"
         },
         {
@@ -12336,7 +12750,7 @@
       ]
     },
     "wooribank": {
-      "checked": "2026-07-14",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12386,6 +12800,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "spot.wooribank.com"
+        },
+        {
+          "id": "legacy-service-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "spot.wooribank.com"
         }
       ]
     },
@@ -12414,7 +12834,7 @@
       ]
     },
     "wrtn": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12422,6 +12842,12 @@
           "kind": "official-doc",
           "captured": "2026-09-30",
           "host": "wrtn.io"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "wrtn.ai"
         },
         {
           "id": "news",
@@ -12456,7 +12882,7 @@
       ]
     },
     "yanolja": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12469,6 +12895,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "nol.yanolja.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "nol.yanolja.com"
         },
         {
@@ -12852,7 +13284,7 @@
       ]
     },
     "zigzag": {
-      "checked": "2026-09-29",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12871,6 +13303,12 @@
           "id": "product-a-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "zigzag.kr"
+        },
+        {
+          "id": "product-a-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "zigzag.kr"
         },
         {

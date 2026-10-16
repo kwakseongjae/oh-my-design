@@ -51,6 +51,9 @@ components:
     disabled: '#f1f3f5'
     states: 'rest on the GNB search submit on both routes (capture 8); hover and pressed sampled on both, all four frames recording bg #00a760; the focus and disabled values come from a 2026-09-16 live CSS inspection (claim method live-css-inspect) that does not name the property, and the bundle holds no focus or disabled frame on this element, so it cannot confirm them'
     use: 'Product GNB search submit; home::[data-omd-capture=8]; icon-only (no text node), so fg is the computed colour its glyph can inherit. Corrected 2026-09-30: the July font leaf (16px / 400 Pretendard) was the inherited page type on an element without text and was removed'
+    height: 42px
+    padding: 0px
+    typography: 16px / 400
   product-nav-action:
     type: button
     backgroundColor: '#f8f9fa'

@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-21",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "official-doc",
         "url": "https://www.hyundai.com/worldwide/en/footer/corporate/history/1967-2000",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "vehicles-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.hyundai.com/kr/ko/e/vehicles",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -947,6 +953,20 @@
         "method": "computed-style",
         "selector": "home::span",
         "captured": "2026-07-13"
+      },
+      "components.vehicle-action.pressed": {
+        "surface_id": "vehicles",
+        "source_id": "vehicles-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.nuxt-link-active \"홈으로\" (180 x 50) via probe-component-states.mjs --match #002c5f matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.vehicle-action.focus": {
+        "surface_id": "vehicles",
+        "source_id": "vehicles-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.nuxt-link-active \"홈으로\" (180 x 50) via probe-component-states.mjs --match #002c5f matched on radius, padding, font-size, height, fg; locale ko-KR: focus border #007fa8, outline #000000 solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -954,12 +974,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 57,
+      "warnings": 59,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 42,
+      "extension-component-property": 44,
       "contrast-ratio": 6,
       "orphaned-tokens": 6
     },
@@ -1017,6 +1037,18 @@
         "rule": "broken-ref",
         "path": "components.vehicle-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.vehicle-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.vehicle-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

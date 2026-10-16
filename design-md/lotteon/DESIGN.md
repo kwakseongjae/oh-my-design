@@ -74,6 +74,8 @@ components:
     typography: 13px / 400
     states: default captured; hover, focus, pressed, disabled and error were not sampled
     use: Dropdown trigger in the recent-products page footer row (captures 89 and 90 at top 1690, below the content area that ends at 1675); corrected 2026-09-30 from a recently viewed products trigger
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: 'outline #333333 solid 3px on :focus-visible'
   gnb-link:
     type: tab
     backgroundColor: transparent
@@ -552,6 +554,8 @@ Tier 2 supplied no component or token value; all promoted visual values come fro
 | Success | No success-state capture |
 
 The interaction count of three covers the tab expansions only. The pointer-state frames are separate: 63 on the header navigation links, of which the 42 hover and pressed frames are declared (corrected 2026-09-30). Neither justifies filling state values for other buttons, inputs, or tabs.
+
+Live state probe, 2026-10-16 (`https://www.lotteon.com/p/mylotte/recent/product`), `recent-products-dropdown`: pressed — no visible change (measured 2026-10-16); focus — outline #333333 solid 3px.
 
 ## Do's and Don'ts
 

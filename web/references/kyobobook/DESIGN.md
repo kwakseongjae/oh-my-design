@@ -163,6 +163,8 @@ components:
     typography: 16px / 700 / 24px Pretendard (PretendardNoPreload), letter-spacing -0.16px
     states: rest only; not probed
     use: 이전페이지 on the error view the product route rendered, at surface-3::[data-omd-capture="32"], 125 x 50
+    padding: 0px
+    pressed: 'bg #2c307c (:hover + :active)'
   error-outline-button:
     type: button
     backgroundColor: transparent
@@ -554,6 +556,8 @@ Only these states were observed on the three captured routes; nothing else is sp
 | **Focus** | Not measured: the probe ran with `--no-focus` and the collector's pseudo-state pass stalled on all three routes. |
 
 KDS documents Default, Hover and Disabled for its button types; the disabled look was not observed and is not specified. Empty, loading and success states were not captured.
+
+Live state probe, 2026-10-16 (`https://product.kyobobook.co.kr/detail/S000221463512`), `error-primary-button`: pressed — bg #2c307c.
 
 ## Do's and Don'ts
 

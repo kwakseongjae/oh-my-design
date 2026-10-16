@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "brand-asset",
         "url": "https://www.laundrygo.com/font/",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.laundrygo.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1133,6 +1139,20 @@
         "method": "computed-style",
         "selector": "surface-3::div",
         "captured": "2026-09-30"
+      },
+      "components.floating-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.btn_default.btn_floating_go_recruit \"B2B·대량세탁 문의\" (256 x 76) via probe-component-states.mjs --match #0ac290 matched on radius, font-size, height, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.floating-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn_default.btn_floating_go_recruit \"B2B·대량세탁 문의\" (256 x 76) via probe-component-states.mjs --match #0ac290 matched on radius, font-size, height, fg; locale ko-KR: focus label #3a3a3a, outline #3a3a3a dotted 1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1140,12 +1160,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 61,
+      "warnings": 62,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 14,
-      "extension-component-property": 31,
+      "extension-component-property": 32,
       "contrast-ratio": 4,
       "orphaned-tokens": 12
     },
@@ -1299,6 +1319,12 @@
         "rule": "broken-ref",
         "path": "components.floating-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.floating-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

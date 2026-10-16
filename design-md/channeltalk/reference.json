@@ -29,7 +29,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -122,6 +122,12 @@
         "kind": "product-surface",
         "url": "https://channel.io/kr",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://channel.io/kr",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1143,6 +1149,13 @@
         "method": "live-inspect",
         "selector": "surface-3::[data-omd-capture=\"1\"]",
         "captured": "2026-07-12"
+      },
+      "components.marketing-primary.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.Hero-styled__CtaButton-sc-f575346f-9.cOVyNs \"무료로 시작하기\" (156 x 48) via probe-component-states.mjs --match #242428 matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

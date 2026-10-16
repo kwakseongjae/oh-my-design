@@ -89,6 +89,7 @@ components:
     pressed: 'bg #ff5252'
     states: 'hover and pressed settle on #ff5252 after an all 0.3s ease transition; focus (Tab #7) shows no change'
     use: 무료로 시작하기 in the header of all three captured pages at home::[data-omd-capture="6"], 128 x 42
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   button-primary-lg:
     type: button
     backgroundColor: '#ff6464'
@@ -445,6 +446,8 @@ Only states read by the fixed probe are listed.
 | Subscriber selector | Pressed | Not measurable (`:active` did not match) |
 
 Empty, loading, error and success states were not observed on these public pages and are not described.
+
+Live state probe, 2026-10-16 (`https://stibee.com/`), `button-primary`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

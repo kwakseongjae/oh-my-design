@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "exchange-home",
@@ -91,6 +91,12 @@
         "kind": "official-doc",
         "url": "https://www.coinonecorp.com/business/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "exchange-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://coinone.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1329,6 +1335,13 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"7\"]",
         "captured": "2026-07-13"
+      },
+      "components.home-primary-cta.focus": {
+        "surface_id": "exchange-home",
+        "source_id": "exchange-home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.MuiButtonBase-root.MuiButton-root.MuiButton-text \"가입하기\" (90 x 49) via probe-component-states.mjs --match #0b59d5 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1336,12 +1349,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 84,
+      "warnings": 85,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 68,
+      "extension-component-property": 69,
       "missing-primary": 1,
       "contrast-ratio": 4,
       "orphaned-tokens": 9
@@ -1574,6 +1587,12 @@
         "rule": "broken-ref",
         "path": "components.home-primary-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-primary-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

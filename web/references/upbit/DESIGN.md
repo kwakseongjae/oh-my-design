@@ -40,6 +40,7 @@ components:
     typography: 12px / 400
     states: default captured; the capture holds no state frame for this element
     use: Exchange percentage quick-fill link; surface-2::[data-omd-capture="139"]
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   home-header-link:
     type: tab
     backgroundColor: transparent
@@ -341,6 +342,8 @@ The prior prose-derived token block, 2025 date stamp, broad navigation/hero/tabl
 ### States
 
 Pointer states are documented only for the header navigation links: hover and pressed both record weight 500 against 400 at rest, on all three surfaces (§4). The selected exchange tab, the selected buy tab, and the current notice page are DOM variants captured at rest. No loading, empty, success, error, disabled, focus, validation, menu, dialog, toast, or tab-transition state is documented; focus is not declared from the bundle because the collector presses before it focuses. Corrected 2026-09-29: the July text treated the empty `interactions[]` record as the absence of every state sample.
+
+Live state probe, 2026-10-16 (`https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC`), `quick-fill`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -74,6 +74,12 @@
         "kind": "official-doc",
         "url": "https://stayfolio.notion.site/2cc309999c4c8072b8dafde8bc6ce394",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.stayfolio.com/findstay?check_in=2026-12-09&check_out=2026-12-10&adult_cnt=2",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1316,6 +1322,20 @@
         "method": "computed-style",
         "selector": "surface-3::li",
         "captured": "2026-09-30"
+      },
+      "components.map-button.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button._toggle-view-mode-button_button__RQFJu \"지도\" (86 x 40) via probe-component-states.mjs --match #000000 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.map-button.focus": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button._toggle-view-mode-button_button__RQFJu \"지도\" (86 x 40) via probe-component-states.mjs --match #000000 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1323,12 +1343,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 67,
+      "warnings": 69,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 13,
-      "extension-component-property": 38,
+      "extension-component-property": 40,
       "contrast-ratio": 2,
       "orphaned-tokens": 14
     },
@@ -1512,6 +1532,18 @@
         "rule": "broken-ref",
         "path": "components.map-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.map-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.map-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

@@ -29,7 +29,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "consumer",
@@ -92,6 +92,12 @@
         "kind": "product-surface",
         "url": "https://square.a-bly.com/",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "team-probe-2026-10-16",
+        "kind": "official-doc",
+        "url": "https://ably.team/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1268,6 +1274,20 @@
         "method": "live-state-probe",
         "selector": "li#dropdown_m20220930d3caa282fded6 > a 입점 소개, rest at page top; label span",
         "captured": "2026-09-29"
+      },
+      "components.corporate-primary.height": {
+        "surface_id": "team",
+        "source_id": "team-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.sc-550aa61b-0.blCHgg \"채용공고 보러가기\" (160 x 56) via probe-component-states.mjs --match #ff5160 matched on radius, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.corporate-primary.padding": {
+        "surface_id": "team",
+        "source_id": "team-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.sc-550aa61b-0.blCHgg \"채용공고 보러가기\" (160 x 56) via probe-component-states.mjs --match #ff5160 matched on radius, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

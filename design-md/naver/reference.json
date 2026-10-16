@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "portal-home",
@@ -85,6 +85,12 @@
         "kind": "product-surface",
         "url": "https://www.naver.com/",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "portal-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.naver.com/",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -1226,6 +1232,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"17\"]",
         "captured": "2026-07-11"
+      },
+      "components.login-cta.height": {
+        "surface_id": "portal-home",
+        "source_id": "portal-home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.MyView-module__link_login___VlF7z \"NAVER로그인\" (380 x 56) via probe-component-states.mjs --match #03a94d matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []

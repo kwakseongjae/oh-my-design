@@ -104,6 +104,8 @@ components:
     pressed: 'bg #e29929, fg #000000'
     states: 'hover and pressed read from settled frames: the hover frame of every homepage action reads the same #237af2 fill with white text (sibling agreement across captures 0-4) and equals the page''s own #lp-pom-button :hover rules; the pressed frames equal its :active rules; focus is not declared, because the collector''s focus frames only repeat the pressed values'
     use: Primary refund action, three of the five homepage calls-to-action (내 환급금 조회하기 at home::[data-omd-capture="1"], 지금 찾으러 가기, 지금 환급 신청하기), 361 x 61, each linking to app.3o3.co.kr
+    padding: 0px
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   eligibility-cta:
     type: button
     backgroundColor: '#2f3943'
@@ -459,6 +461,8 @@ State note: hover and pressed come from settled collector frames that agree acro
 | **Disabled (blog slider arrow)** | The first arrow of the lead slider carries `slick-disabled` at rest. |
 
 Focus was not measured (the collector's focus frames repeat the pressed values), and no empty, loading, error or success screen was captured, so none is described.
+
+Live state probe, 2026-10-16 (`https://www.3o3.co.kr/`), `refund-cta`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

@@ -106,6 +106,9 @@ components:
     height: 36px
     states: rest only; no state frame
     use: 'Header 로그인 link on wrtn.ai at home::[data-omd-capture="7"], 78 x 36; the anchor computes #262626 text on its own #262626 fill, so the visible label sits in a child that was not captured and no label colour or font is claimed; styles were read without following the link'
+    typography: 16px / 400
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   signup-button:
     type: button
     backgroundColor: transparent
@@ -534,6 +537,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Not declared** | The top icon button's hover and pressed frames (`rgba(0, 0, 0, 0.1)`, one element); the tab track's focus frame, unchanged within the compared scope. |
 
 Focus rings, error, empty, loading and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://wrtn.ai/`), `login-button`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

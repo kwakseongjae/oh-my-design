@@ -71,6 +71,7 @@ components:
     focus: no focus indication in the compared scope (self, its ::before/::after, 0 descendants, 3 ancestor levels) — measured 2026-09-29
     states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on 로그인 (Tab 8), logged out and never activated; transition all 0s
     use: Career header 로그인 control
+    height: 32px
   white-header-control:
     type: button
     backgroundColor: '#ffffff'

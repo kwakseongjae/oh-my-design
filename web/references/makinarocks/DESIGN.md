@@ -44,6 +44,8 @@ components:
     height: 38px
     states: rest on all three capture records (capture 5); no state frame
     use: 'Header contact link (a.contact) at home::[data-omd-capture="5"], 117 x 38 on home and 141 x 38 on About and Blog; its #000000 16px / 400 / 25.6px Pretendard text equals the page body text, so no label style is claimed'
+    typography: 16px / 400
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   hero-outline-link:
     type: button
     backgroundColor: transparent
@@ -362,6 +364,8 @@ The bundle holds no `::state-*` frame for any MakinaRocks element, so hover, pre
 ### States
 
 No reusable product-state guidance is established. The bundle holds no `::state-*` frame for any element, so hover, pressed, and focus values are not declared. The disabled carousel arrows (`home::[data-omd-capture="19"]`, `"29"`) record the same captured values as the enabled ones and opacity is not captured, so no disabled treatment is declared either. The blog category link with class `on` is the one selected variant recorded. Empty, loading, error, success, form-validation, and motion states are unresolved rather than inferred from marketing copy. Corrected 2026-09-30: the July text cited `interactions: []` and `interactionCount: 0`; those count menu, dialog, and tab expansions only.
+
+Live state probe, 2026-10-16 (`https://www.makinarocks.ai/`), `header-contact-link`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

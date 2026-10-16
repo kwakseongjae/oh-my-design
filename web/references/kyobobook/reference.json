@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -122,6 +122,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/OFL.txt",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-3-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://product.kyobobook.co.kr/detail/S000221463512",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1609,6 +1615,20 @@
         "method": "computed-style",
         "selector": "surface-2::li",
         "captured": "2026-09-30"
+      },
+      "components.error-primary-button.padding": {
+        "surface_id": "surface-3",
+        "source_id": "surface-3-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.flex.items-center.justify-center \"이전페이지\" (125 x 50) via probe-component-states.mjs --match #5055b1 matched on radius, font-size, height, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.error-primary-button.pressed": {
+        "surface_id": "surface-3",
+        "source_id": "surface-3-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.flex.items-center.justify-center \"이전페이지\" (125 x 50) via probe-component-states.mjs --match #5055b1 matched on radius, font-size, height, fg; locale ko-KR: pressed bg #2c307c (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1616,12 +1636,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 87,
+      "warnings": 88,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 12,
-      "extension-component-property": 60,
+      "extension-component-property": 61,
       "contrast-ratio": 2,
       "orphaned-tokens": 13
     },
@@ -1847,6 +1867,12 @@
         "rule": "broken-ref",
         "path": "components.error-primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.error-primary-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

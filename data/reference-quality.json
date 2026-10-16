@@ -65,7 +65,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -138,7 +138,7 @@
       "next_reverify_at": "2027-01-08",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -377,7 +377,7 @@
       "next_reverify_at": "2027-01-07",
       "evidence_coverage": 1,
       "surface_count": 5,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -579,7 +579,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -639,7 +639,7 @@
       "next_reverify_at": "2027-03-30",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 9,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -737,7 +737,7 @@
       "next_reverify_at": "2027-01-08",
       "evidence_coverage": 1,
       "surface_count": 6,
-      "source_count": 9,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -830,7 +830,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -899,7 +899,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 10,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -935,7 +935,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1000,7 +1000,7 @@
       "next_reverify_at": "2027-01-08",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1068,7 +1068,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1140,7 +1140,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1342,7 +1342,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 9,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1441,7 +1441,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1581,7 +1581,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 9,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1618,7 +1618,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 2,
+      "source_count": 3,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1765,7 +1765,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1813,7 +1813,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1931,7 +1931,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1966,7 +1966,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 9,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2040,7 +2040,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2185,7 +2185,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2207,7 +2207,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2218,7 +2218,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2268,7 +2268,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2325,7 +2325,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2336,7 +2336,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2420,7 +2420,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 6,
-      "source_count": 10,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2488,7 +2488,7 @@
       "next_reverify_at": "2027-01-07",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2592,7 +2592,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2628,7 +2628,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2765,7 +2765,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2776,7 +2776,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2787,7 +2787,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 13,
+      "source_count": 14,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2836,7 +2836,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2897,7 +2897,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2908,7 +2908,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2941,7 +2941,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2976,7 +2976,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3040,7 +3040,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3098,7 +3098,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3249,7 +3249,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3371,7 +3371,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3446,7 +3446,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3479,7 +3479,7 @@
       "next_reverify_at": "2027-01-07",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3501,7 +3501,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3512,7 +3512,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 4,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3561,7 +3561,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3572,7 +3572,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3788,7 +3788,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 5,
-      "source_count": 11,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3945,7 +3945,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4083,7 +4083,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4445,7 +4445,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4509,7 +4509,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 11,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4662,7 +4662,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4720,7 +4720,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4814,7 +4814,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 5,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4825,7 +4825,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 3,
+      "source_count": 4,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4862,7 +4862,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4951,7 +4951,7 @@
       "next_reverify_at": "2027-01-08",
       "evidence_coverage": 1,
       "surface_count": 5,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5146,7 +5146,7 @@
       "next_reverify_at": "2027-03-30",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5184,7 +5184,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5195,7 +5195,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5328,7 +5328,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 9,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5412,7 +5412,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5507,7 +5507,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 3,
+      "source_count": 4,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5551,7 +5551,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 5,
+      "source_count": 6,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5766,7 +5766,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5777,7 +5777,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6094,7 +6094,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6129,7 +6129,7 @@
       "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6183,7 +6183,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 4,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6326,7 +6326,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },

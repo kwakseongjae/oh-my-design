@@ -65,6 +65,8 @@ components:
     use: '48px product utility button; hover capture switches to #f7f8fb'
     pressed: '#f7f8fb'
     states: 'hover and pressed frames sampled on home captures 14 and 15; in all four frames bg #ffffff becomes #f7f8fb and the shadow rgba(0,0,0,0.1) 0 0 8px becomes rgba(0,0,0,0.2) 0 0 6px; focus not declared'
+    height: 48px
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   neutral-badge:
     type: badge
     backgroundColor: '#f7f8fb'
@@ -411,6 +413,8 @@ Pointer-state frames exist for six home elements; the collector expanded no dial
 | Pressed | The same values as hover for both controls. |
 | Sampled, not declared | Header actions `"3"` to `"5"`: background moved from transparent toward `rgb(242, 243, 247)` at 4% to 11% alpha, different per element and per frame, consistent with a transition caught at its start. |
 | Focus | Not declared. The bundle has no focus frame, and a collector focus frame would follow a mouse press, which is not a keyboard `:focus-visible` measurement. |
+
+Live state probe, 2026-10-16 (`https://nol.yanolja.com/`), `utility-button`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

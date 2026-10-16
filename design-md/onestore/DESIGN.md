@@ -25,6 +25,8 @@ components:
     typography: 16px / 400 / 21px
     states: default on one button; the bundle holds no state frame
     use: Game-catalog filled pill button (a.btn.btn-primary) at surface-2::[data-omd-capture="1"], 140 x 45, paired with game-light-button in one button group; the computed family is the system stack, so no family is claimed
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   game-light-button:
     type: button
     backgroundColor: '#ffffff'
@@ -214,6 +216,8 @@ No state-specific UI was observed: the bundle holds no state frame (`::state-*`)
 | Success | No observed state |
 | Skeleton | No observed state |
 | Disabled | No observed state |
+
+Live state probe, 2026-10-16 (`https://m.onestore.co.kr/v2/ko-kr/game`), `game-primary-button`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

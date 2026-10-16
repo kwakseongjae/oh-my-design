@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -104,6 +104,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-4-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://drdiary.co.kr/contact",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1388,6 +1394,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"1\"]",
         "captured": "2026-09-30"
+      },
+      "components.inquiry-button.focus": {
+        "surface_id": "surface-4",
+        "source_id": "surface-4-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.hidden.body3.md:flex \"문의하기\" (204 x 72) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1395,12 +1408,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 74,
+      "warnings": 75,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 11,
-      "extension-component-property": 50,
+      "extension-component-property": 51,
       "contrast-ratio": 2,
       "orphaned-tokens": 11
     },
@@ -1506,6 +1519,12 @@
         "rule": "broken-ref",
         "path": "components.inquiry-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.inquiry-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
