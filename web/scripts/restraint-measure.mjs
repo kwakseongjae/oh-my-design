@@ -50,7 +50,10 @@ for (const route of ROUTES) for (const [w, h] of SIZES) {
     const consent = (el) => !!el.closest('[data-consent],[aria-label*="onsent" i],.cookie,.consent');
     const header = (el) => !!el.closest("header");
     // text blocks: elements with own non-empty text nodes
-    const blocks = new Set(), sizes = new Map(), words = [], numerals = [];
+    // round 10: text inside a [data-content-object] (a reference's own screen, set in its own type
+    // tokens, like the hero chat's Toss card) is content, as R7 already treats its colours: its sizes
+    // are reported apart (contentSizes) and not counted against the chrome's R3 budget
+    const blocks = new Set(), sizes = new Map(), contentSizes = new Set(), words = [], numerals = [];
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     let n;
     while ((n = walker.nextNode())) {
@@ -73,7 +76,8 @@ for (const route of ROUTES) for (const [w, h] of SIZES) {
       const block = el.closest("p,h1,h2,h3,h4,h5,h6,li,dt,dd,a,button,label,summary,figcaption,td,th,span,div") || el;
       blocks.add(block);
       const fs = parseFloat(getComputedStyle(el).fontSize);
-      sizes.set(fs, (sizes.get(fs) || 0) + t.length);
+      if (el.closest("[data-content-object]")) contentSizes.add(fs);
+      else sizes.set(fs, (sizes.get(fs) || 0) + t.length);
       words.push(...t.split(" ").filter((x) => /[\p{L}\p{N}]/u.test(x)));
       numerals.push(...(t.match(/\d[\d,.]*/g) || []));
     }
@@ -112,6 +116,7 @@ for (const route of ROUTES) for (const [w, h] of SIZES) {
       units: blocks.size + controls.length + media.length,
       textBlocks: blocks.size, controls: controls.length, media: media.length,
       sizes: [...sizes.keys()].sort((a, b) => b - a),
+      contentSizes: [...contentSizes].sort((a, b) => b - a),
       ratio: bodySize ? +(maxSize / bodySize).toFixed(2) : 0,
       words: words.length, numerals: numerals.length,
       ctas: ctas.length, accents: accents.size, bordered: bordered.length,

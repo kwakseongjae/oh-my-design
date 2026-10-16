@@ -143,8 +143,8 @@
 .sq-cmd-copy.sq-ok{color:var(--sq-term-acc)}
 .sq-term-runs{min-width:0;padding:12px 0;border-radius:var(--sq-r-panel);background:var(--sq-term);color:var(--sq-term-ink);box-shadow:0 24px 48px -24px rgba(30,20,90,.35)}
 .sq-term-runs{overflow:hidden}
-.sq-term-run{padding:10px 24px;transition:background-color .2s,opacity .2s;opacity:.62}
-.sq-term-run.sq-on{opacity:1;background:color-mix(in srgb,#fff 5%,transparent)}
+.sq-term-run{padding:10px 24px;transition:background-color .2s}
+.sq-term-run.sq-on{background:color-mix(in srgb,#fff 7%,transparent)}
 .sq-tc{display:block;font-size:14px;font-weight:600;line-height:1.6;color:#fff;overflow-wrap:anywhere}
 .sq-tc-ps{color:var(--sq-term-acc)}
 .sq-to{margin:0;font:400 14px/1.6 var(--sq-f-mono);color:var(--sq-term-dim);white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
