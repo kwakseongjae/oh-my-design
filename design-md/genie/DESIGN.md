@@ -135,6 +135,8 @@ components:
     typography: 14px / 400; declared family Malgun Gothic, unresolved in the capture environment
     states: rest only; not probed, no state frame
     use: 컨텐츠 더보기 under the editor section on home, 168 x 40
+    pressed: 'outline #27282d dotted 1px (:hover + :active)'
+    focus: 'outline #27282d dotted 1px on :focus-visible'
   chart-type-tab:
     type: tab
     backgroundColor: '#f6f6f6'
@@ -501,6 +503,8 @@ No other duration or easing was measured. The duration and easing tables of the 
 | **Selected (chart-type tab)** | `#ffffff` fill against the `#f6f6f6` strip | Rest values, /chart/top200 |
 
 Empty, loading, error and disabled states were not observed and are not declared. The collector recorded no interaction events (`interactionCount` 0); that does not mean the site has no other states.
+
+Live state probe, 2026-10-16 (`https://www.genie.co.kr/`), `more-button`: pressed — outline #27282d dotted 1px; focus — outline #27282d dotted 1px.
 
 ## Do's and Don'ts
 

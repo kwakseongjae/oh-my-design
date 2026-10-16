@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -61,6 +61,12 @@
         "kind": "official-doc",
         "url": "https://payfit.com/fr/mentions-legales/",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://payfit.com/fr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -424,6 +430,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.ButtonLink.uy:group/arrow.uy:cursor-pointer \"Essayez maintenant\" (210 x 48) via probe-component-states.mjs --match #0d0d0c matched on radius, padding, font-size, height, fg; locale fr-FR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -431,12 +444,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 34,
+      "warnings": 35,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 15,
+      "extension-component-property": 16,
       "contrast-ratio": 1,
       "orphaned-tokens": 16
     },
@@ -476,6 +489,12 @@
         "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

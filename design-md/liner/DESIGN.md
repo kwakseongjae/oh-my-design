@@ -120,6 +120,9 @@ components:
     hover: 'bg #256a33 — the same settled value on all nine captured instances of this green fill across home, pricing and about; the pressed frame reads the same #256a33, so no separate pressed treatment is declared'
     states: rest and hover; focus was not measured
     use: 시작하기 in the header on home and pricing (84 x 40), Pro 선택하기 and Max 선택하기 on the plan cards (260 x 40) and 팀 플랜 시작하기 (156 x 40) at home::[data-omd-capture="6"]; the label sits on a 0px-padded button
+    padding: 0px
+    pressed: 'bg #256a33 (:hover + :active)'
+    focus: 'shadow #00a0f0 0px 0px 0px 1px inset on :focus-visible'
   primary-button-xl:
     type: button
     backgroundColor: '#2c783c'
@@ -587,6 +590,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Expanded** | The footer language select opens a white menu with a `#e8e8e9` border. |
 
 The hero-card 시작하기 pills show no computed change in their hover frames. Focus was not measured, and error, empty, loading and success states were not captured, so none is described.
+
+Live state probe, 2026-10-16 (`https://liner.com/ko`), `primary-button`: pressed — bg #256a33; focus — shadow #00a0f0 0px 0px 0px 1px inset.
 
 ## Do's and Don'ts
 

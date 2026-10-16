@@ -118,6 +118,7 @@ components:
     pressed: 'bg #ff928b, border #ff928b'
     states: 'hover and pressed frames read #ff928b on all three pages (sibling agreement), the value the page stylesheet authors for .btn_signin:hover and :active, so the frames are the settled end state; focus not measured'
     use: 로그인 at the right of the global header on every captured page, 82 x 40 (read, never followed)
+    focus: 'outline #005fcc dotted 1px on :focus-visible'
   header-search:
     type: input
     backgroundColor: '#ffffff'
@@ -570,6 +571,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Current chip (topic page)** | `#ffffff` text; the fill was not recorded. |
 
 The header search's pressed frame moved focus into the field, and focus is not declared from collector frames, so no input state is given. Error, empty, loading and success states were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.teamblind.com/kr/`), `login-button`: focus — outline #005fcc dotted 1px.
 
 ## Do's and Don'ts
 

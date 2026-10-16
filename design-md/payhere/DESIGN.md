@@ -294,6 +294,7 @@ components:
     typography: 18px / 700 / 28px Noto Sans KR, letter-spacing -1px
     states: rest only
     use: 도입 비용 계산해보기 on the table-order page (capture 15)
+    pressed: opacity 0.9 (:hover + :active)
   floating-cta:
     type: button
     backgroundColor: 'linear-gradient(290.64deg, #163bd8 6.63%, #3da7ff 107.33%)'
@@ -797,6 +798,8 @@ Only these states were observed; nothing else is specified here.
 | **Empty form** | The submit button shows a `#919ba5` fill with a white label. |
 
 Focus was not measured: the probe ran with focus skipped, and the collector's focus frames are not used. Links whose own colour reads as the browser default blue or active red carry their labels in children, so those values are not brand values. Error, loading and success states were not captured, because no form was ever filled or submitted.
+
+Live state probe, 2026-10-16 (`https://payhere.in/table-order/`), `pricing-cta`: pressed — opacity 0.9.
 
 ## Do's and Don'ts
 

@@ -92,6 +92,7 @@ components:
     hover: rgba(255,255,255,0.08)
     pressed: rgba(255,255,255,0.08)
     use: 無料ではじめる, 160×60 — the pink header action. The button's own properties do not change; hover and pressed lay a white ::before at 8% opacity over the pink (re-checked 2026-09-26).
+    padding: 0px
   button-hero-cta:
     type: button
     backgroundColor: '#fc6589'

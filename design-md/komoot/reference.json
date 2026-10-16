@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-27",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -49,6 +49,12 @@
         "kind": "official-doc",
         "url": "https://www.komoot.com/imprint",
         "captured": "2026-09-27"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.komoot.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -340,6 +346,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-27"
+      },
+      "components.button-primary.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.css-l6gvcn \"Login or Signup\" (135 x 43) via probe-component-states.mjs --match #4f6814 matched on radius, padding, font-size, height, fg; locale de-DE: focus bg #404823, shadow rgba(66, 153, 225, 0.5) 0px 0px 0px 3px, outline #1c1a18 solid 4px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -347,12 +360,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 25,
+      "warnings": 26,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 8,
+      "extension-component-property": 9,
       "orphaned-tokens": 15
     },
     "findings": [
@@ -391,6 +404,12 @@
         "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

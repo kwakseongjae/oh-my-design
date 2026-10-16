@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-10-01",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -91,6 +91,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-10-01"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.ssg.com/page/pc/ranking.ssg",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -857,6 +863,27 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"58\"]",
         "captured": "2026-10-01"
+      },
+      "components.filter-chip.padding": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.css-71rgyi \"\" (84 x 28) via probe-component-states.mjs --match #f5f5f5 matched on radius, font-size, height, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.filter-chip.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.css-71rgyi \"\" (84 x 28) via probe-component-states.mjs --match #f5f5f5 matched on radius, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.filter-chip.focus": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.css-71rgyi \"\" (84 x 28) via probe-component-states.mjs --match #f5f5f5 matched on radius, font-size, height, fg; locale ko-KR: focus outline rgba(0, 0, 0, 0.5) dashed 1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -864,12 +891,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 39,
+      "warnings": 41,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 11,
-      "extension-component-property": 20,
+      "extension-component-property": 22,
       "orphaned-tokens": 8
     },
     "findings": [
@@ -1004,6 +1031,18 @@
         "rule": "broken-ref",
         "path": "components.filter-chip.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-chip.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-chip.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

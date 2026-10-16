@@ -21,7 +21,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -48,6 +48,12 @@
         "kind": "product-surface",
         "url": "https://flex.team/about",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "about-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://flex.team/about",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -779,6 +785,13 @@
         "method": "computed-style",
         "selector": "surface-2::li",
         "captured": "2026-07-13"
+      },
+      "components.nav-action-solid.focus": {
+        "surface_id": "about",
+        "source_id": "about-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.l2024-c-cpXHsj.l2024-c-cpXHsj-icObp-variant-invert.l2024-c-cpXHsj-dqQQCT-size-gnbCTA \"도입 문의하기\" (98 x 33) via probe-component-states.mjs --match #111111 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -786,12 +799,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 45,
+      "warnings": 46,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 33,
+      "extension-component-property": 34,
       "missing-primary": 1,
       "contrast-ratio": 2,
       "orphaned-tokens": 5
@@ -880,6 +893,12 @@
         "rule": "broken-ref",
         "path": "components.nav-action-solid.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.nav-action-solid.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

@@ -39,6 +39,7 @@ components:
     focus: outline-style none on the control; no visible focus indication among the compared properties (measured 2026-09-29)
     states: default captured 2026-07-13; hover, pressed and keyboard focus measured 2026-09-29 on the BUSINESS tile (real :hover, :active, and Tab to :focus-visible); transition 0s
     use: home::[data-omd-capture="13"] clickable warm promotional tile; 310px rendered height.
+    height: 310px
   account-pill:
     type: button
     backgroundColor: transparent

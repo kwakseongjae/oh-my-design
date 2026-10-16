@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "product-home",
@@ -85,6 +85,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "product-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.inflearn.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1515,6 +1521,20 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"71\"]",
         "captured": "2026-07-13"
+      },
+      "components.product-search-submit.height": {
+        "surface_id": "product-home",
+        "source_id": "product-home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.mantine-focus-auto.mantine-active.css-1c1hnzk \"search\" (42 x 42) via probe-component-states.mjs --match #00c471 matched on radius, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.product-search-submit.padding": {
+        "surface_id": "product-home",
+        "source_id": "product-home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.mantine-focus-auto.mantine-active.css-1c1hnzk \"search\" (42 x 42) via probe-component-states.mjs --match #00c471 matched on radius, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

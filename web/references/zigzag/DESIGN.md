@@ -121,6 +121,7 @@ components:
     focus: no focus indication in the compared scope (self, its ::before/::after, 0 descendants, 3 ancestor levels) — measured 2026-09-29
     states: 'default captured 2026-07-13 on both product pages; keyboard focus measured 2026-09-29 (Tab 238); hover and pressed deliberately unmeasured: the button was never pressed, because another zigzag control had just fired on mouse-down'
     use: Fixed bottom 구매하기 purchase button at surface-2::[data-omd-capture="37"]
+    height: 46px
   more-button:
     type: button
     backgroundColor: transparent

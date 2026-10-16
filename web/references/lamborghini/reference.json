@@ -21,7 +21,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -84,6 +84,12 @@
         "kind": "license",
         "url": "https://www.lamborghini.com/en-en/privacy-legal",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.lamborghini.com/ko-en",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -387,6 +393,27 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-07-13"
+      },
+      "components.accent-cta.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.btn-accent.btn-large.has-icon \"설정 시작하기\" (192 x 72) via probe-component-states.mjs --match #ffc000 matched on radius, padding, font-size, fg; locale it-IT",
+        "captured": "2026-10-16"
+      },
+      "components.accent-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn-accent.btn-large.has-icon \"설정 시작하기\" (192 x 72) via probe-component-states.mjs --match #ffc000 matched on radius, padding, font-size, fg; locale it-IT: pressed bg #997300 (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.accent-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn-accent.btn-large.has-icon \"설정 시작하기\" (192 x 72) via probe-component-states.mjs --match #ffc000 matched on radius, padding, font-size, fg; locale it-IT: focus outline #1e90ff solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -394,11 +421,11 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 21,
+      "warnings": 23,
       "infos": 3
     },
     "byRule": {
-      "extension-component-property": 16,
+      "extension-component-property": 18,
       "orphaned-tokens": 5
     },
     "findings": [
@@ -419,6 +446,18 @@
         "rule": "broken-ref",
         "path": "components.accent-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.accent-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.accent-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

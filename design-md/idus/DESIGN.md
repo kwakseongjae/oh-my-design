@@ -84,6 +84,7 @@ components:
     pressed: '::before overlay at opacity 0.2'
     states: 'probe on the product page: hover and pressed darken the fill through a black ::before overlay (0 -> 0.1 -> 0.2); the button itself computes transition all 0s; focus was not measured'
     use: 구매하기, the product page's purchase action, 580 x 48 at the end of the action row
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   button-secondary:
     type: button
     backgroundColor: '#ffffff'
@@ -491,6 +492,8 @@ The four probed buttons compute `transition: all 0s` on themselves; the probe fo
 | **Selected sub-tab** | `#333333`, 14px / 700 |
 
 Focus, empty, loading, error and success states were not measured in this pass and are not declared.
+
+Live state probe, 2026-10-16 (`https://www.idus.com/v2/product/d418cb12-ecba-4534-860a-23836c3e0c44`), `button-primary`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

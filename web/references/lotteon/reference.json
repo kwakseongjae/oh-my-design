@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-14",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -67,6 +67,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-14"
+      },
+      {
+        "id": "recent-products-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.lotteon.com/p/mylotte/recent/product",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -1174,6 +1180,20 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"94\"]",
         "captured": "2026-07-13"
+      },
+      "components.recent-products-dropdown.pressed": {
+        "surface_id": "recent-products",
+        "source_id": "recent-products-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.dropDownTrigger \"판매자서비스\" (128 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.recent-products-dropdown.focus": {
+        "surface_id": "recent-products",
+        "source_id": "recent-products-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.dropDownTrigger \"판매자서비스\" (128 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: focus outline #333333 solid 3px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1181,12 +1201,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 67,
+      "warnings": 69,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 53,
+      "extension-component-property": 55,
       "contrast-ratio": 5,
       "orphaned-tokens": 6
     },
@@ -1292,6 +1312,18 @@
         "rule": "broken-ref",
         "path": "components.recent-products-dropdown.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.recent-products-dropdown.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.recent-products-dropdown.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

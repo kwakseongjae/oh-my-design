@@ -47,6 +47,8 @@ components:
     typography: 16px / 500 / HyundaiSansTextKR
     states: default captured; the bundle holds no pointer-state frame for any Hyundai element
     use: Vehicle catalogue filled action (a.btn.nuxt-link-active) at surface-2::[data-omd-capture="15"], 180 x 50; the IONIQ 6 intro carries the same values
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: 'border #007fa8, outline #000000 solid 2px on :focus-visible'
   primary-nav-trigger:
     type: button
     backgroundColor: transparent
@@ -389,6 +391,8 @@ The bundle holds no pointer-state frame (`::state-hover`, `::state-pressed`, `::
 | Slide dot active | class `is-active`: fill `rgba(0, 0, 0, 0.1)` → `#007fa8`. |
 
 Empty, loading, error, success, skeleton, and disabled treatments are unresolved.
+
+Live state probe, 2026-10-16 (`https://www.hyundai.com/kr/ko/e/vehicles`), `vehicle-action`: pressed — no visible change (measured 2026-10-16); focus — border #007fa8, outline #000000 solid 2px.
 
 ## Do's and Don'ts
 

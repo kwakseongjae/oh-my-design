@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-10-01",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -98,6 +98,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-10-01"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.cafe24.com/commerce/design/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1522,6 +1528,13 @@
         "method": "computed-style",
         "selector": "home::div",
         "captured": "2026-10-01"
+      },
+      "components.header-cta.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btnStrong.gSmall \"쇼핑몰 만들기\" (121 x 40) via probe-component-states.mjs --match #000000 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1529,12 +1542,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 72,
+      "warnings": 73,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 16,
-      "extension-component-property": 42,
+      "extension-component-property": 43,
       "contrast-ratio": 1,
       "orphaned-tokens": 13
     },
@@ -1658,6 +1671,12 @@
         "rule": "broken-ref",
         "path": "components.header-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

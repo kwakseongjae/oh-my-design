@@ -29,7 +29,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -92,6 +92,12 @@
         "kind": "product-surface",
         "url": "https://www.upstage.ai/pricing/api",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.upstage.ai/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1207,6 +1213,13 @@
         "method": "live-inspect",
         "selector": "home::div.basic_card-2",
         "captured": "2026-07-13"
+      },
+      "components.public-primary-action.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.button.max-width-full.vertical \"Try in Playground\" (366 x 50) via probe-component-states.mjs --match #5b52ff matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

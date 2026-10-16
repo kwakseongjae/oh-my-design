@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-14",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -98,6 +98,12 @@
         "kind": "official-doc",
         "url": "https://spot.wooribank.com/pot/Dream?withyou=HMMUM0024",
         "captured": "2026-07-14"
+      },
+      {
+        "id": "legacy-service-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://spot.wooribank.com/pot/Dream?withyou=PODEP0001",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -959,6 +965,34 @@
         "method": "selector-backed-computed-style",
         "selector": "home::li (306px x 300px, three)",
         "captured": "2026-07-13"
+      },
+      "components.legacy-all-menu-button.rounded": {
+        "surface_id": "legacy-service",
+        "source_id": "legacy-service-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.level1-item-a-11.btn-all.btn-popup \"전체메뉴\" (50 x 40) via probe-component-states.mjs --match #005329 matched on padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.legacy-all-menu-button.height": {
+        "surface_id": "legacy-service",
+        "source_id": "legacy-service-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.level1-item-a-11.btn-all.btn-popup \"전체메뉴\" (50 x 40) via probe-component-states.mjs --match #005329 matched on padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.legacy-all-menu-button.pressed": {
+        "surface_id": "legacy-service",
+        "source_id": "legacy-service-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.level1-item-a-11.btn-all.btn-popup \"전체메뉴\" (50 x 40) via probe-component-states.mjs --match #005329 matched on padding, font-size, fg; locale ko-KR: pressed bg #37cb4d, border #000000, text-decoration underline (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.legacy-all-menu-button.focus": {
+        "surface_id": "legacy-service",
+        "source_id": "legacy-service-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.level1-item-a-11.btn-all.btn-popup \"전체메뉴\" (50 x 40) via probe-component-states.mjs --match #005329 matched on padding, font-size, fg; locale ko-KR: focus bg #37cb4d, border #000000, text-decoration underline, browser default focus ring (outline auto) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -966,12 +1000,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 61,
+      "warnings": 63,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 45,
+      "extension-component-property": 47,
       "missing-primary": 1,
       "contrast-ratio": 6,
       "orphaned-tokens": 7
@@ -1054,6 +1088,18 @@
         "rule": "broken-ref",
         "path": "components.legacy-all-menu-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.legacy-all-menu-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.legacy-all-menu-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

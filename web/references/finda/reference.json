@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -98,6 +98,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://finda.co.kr/about-us",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1620,6 +1626,13 @@
         "method": "computed-style",
         "selector": "home::div",
         "captured": "2026-09-30"
+      },
+      "components.pill-cta.focus": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.flex.items-center.w-fit \"채용공고 확인하기\" (1180 x 54) via probe-component-states.mjs --match #5d4cf2 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1627,12 +1640,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 81,
+      "warnings": 82,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 15,
-      "extension-component-property": 54,
+      "extension-component-property": 55,
       "contrast-ratio": 1,
       "orphaned-tokens": 11
     },
@@ -1774,6 +1787,12 @@
         "rule": "broken-ref",
         "path": "components.pill-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.pill-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

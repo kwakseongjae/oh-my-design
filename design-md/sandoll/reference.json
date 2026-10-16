@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "official-doc",
         "url": "https://www.sandoll.co.kr/about",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-3-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.sandollcloud.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1266,6 +1272,13 @@
         "method": "computed-style",
         "selector": "surface-3::li",
         "captured": "2026-09-30"
+      },
+      "components.cloud-action-button.focus": {
+        "surface_id": "surface-3",
+        "source_id": "surface-3-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.btn-sandoll.btn-size-md \"SD 격동명조2 보러가기\" (200 x 60) via probe-component-states.mjs --match #4173fa matched on radius, padding, font-size, height, fg; locale ko-KR: focus bg #345cc8 on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1273,12 +1286,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 70,
+      "warnings": 71,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 12,
-      "extension-component-property": 46,
+      "extension-component-property": 47,
       "contrast-ratio": 2,
       "orphaned-tokens": 10
     },
@@ -1510,6 +1523,12 @@
         "rule": "broken-ref",
         "path": "components.cloud-action-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.cloud-action-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

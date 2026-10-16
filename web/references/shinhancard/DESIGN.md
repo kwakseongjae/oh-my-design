@@ -73,6 +73,8 @@ components:
     height: 56px
     states: default captured on all three surfaces (home anchor 312 px wide; detail-page buttons 580 px wide); the capture holds no state frame for this action
     use: shc-btn theme-primary size-xl at home::[data-omd-capture="27"] (also surface-2 capture 32, surface-3 capture 29). The root computes the inherited body text (#101828, 14px / 400 / 24px) and its label element was not sampled, so no label colour or type is declared
+    typography: 14px / 400
+    pressed: transform matrix(0.96, 0, 0, 0.96, 0, 0) (+1 nested-layer changes) (:hover + :active)
   toned-capsule-action:
     type: button
     backgroundColor: '#f0f4fa'
@@ -455,6 +457,8 @@ Legacy primary text, tertiary/indigo button, input, tab, list-row, toggle, unive
 | Chip and card-detail tab active variants | Rest variants paired by the `is-active` class, not by an ARIA state (§4). |
 | Pressed frames on the login action and detail-page text buttons | Recorded, but their dumped properties equal the rest frame; no pressed value is declared. |
 | Focus, disabled, error, loading, empty, success, toast, dialog, and form validation | Not established by the supplied bundle; intentionally omitted rather than synthesized. Focus frames exist for the header links but are never declared from a bundle (the collector presses before it focuses). Corrected 2026-09-29: this row previously listed hover as not established. |
+
+Live state probe, 2026-10-16 (`https://www.shinhancard.com/pconts/html/main.html`), `primary-action`: pressed — transform matrix(0.96, 0, 0, 0.96, 0, 0) (+1 nested-layer changes).
 
 ## Do's and Don'ts
 

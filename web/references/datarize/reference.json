@@ -24,7 +24,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -93,6 +93,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.datarize.ai/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1076,6 +1082,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"53\"]",
         "captured": "2026-07-13"
+      },
+      "components.action-ink-pill.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a \"무료 체험해보기\" (149 x 47) via probe-component-states.mjs --match #111111 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1083,12 +1096,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 56,
+      "warnings": 57,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
-      "extension-component-property": 40,
+      "extension-component-property": 41,
       "missing-primary": 1,
       "contrast-ratio": 4,
       "orphaned-tokens": 6
@@ -1165,6 +1178,12 @@
         "rule": "broken-ref",
         "path": "components.action-ink-pill.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.action-ink-pill.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

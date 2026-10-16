@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -68,6 +68,12 @@
         "kind": "official-doc",
         "url": "https://about.ncsoft.com/en/news/article/nc-ci-renewal-project-en",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.nc.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -995,6 +1001,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"12\"]",
         "captured": "2026-09-30"
+      },
+      "components.portal-contained-button.focus": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.pd-button.pd-button--contained.pd-button--color-common \"바로가기\" (107 x 55) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1002,12 +1015,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 49,
+      "warnings": 50,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 15,
-      "extension-component-property": 24,
+      "extension-component-property": 25,
       "contrast-ratio": 1,
       "orphaned-tokens": 9
     },
@@ -1221,6 +1234,12 @@
         "rule": "broken-ref",
         "path": "components.portal-contained-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.portal-contained-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

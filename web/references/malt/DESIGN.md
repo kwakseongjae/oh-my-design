@@ -46,6 +46,8 @@ components:
     hover: '#d4524f'
     pressed: '#d4524f'
     use: 'Créer mon compte in the header — coral --joy-color-primary-50, deepening to --joy-color-primary-70 #d4524f on hover and press. Keyboard focus draws nothing.'
+    padding: 10px 15px
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   link-login:
     type: button
     backgroundColor: transparent
@@ -202,6 +204,8 @@ Pill-like 30px on the header button, 24px on the search field, 12px on the langu
 
 Hover and press: the primary to `#d4524f`, links and menu items to teal. Focus: nothing drawn on the
 measured header controls, although Joy defines focus colours (`--joy-color-state-focus` `#035266`).
+
+Live state probe, 2026-10-16 (`https://www.malt.fr/`), `button-primary`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

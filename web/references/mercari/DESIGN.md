@@ -43,6 +43,9 @@ components:
     typography: 14px/600 Averta
     states: Default baseline captured; no changed interaction style promoted.
     use: Observed default at home::[data-omd-capture="12"] on the public marketplace home only.
+    height: 32px
+    pressed: opacity 0.76 (:hover + :active)
+    focus: opacity 0.76, browser default focus ring (outline auto) on :focus-visible
   marketing-sell-action:
     type: button
     backgroundColor: '#5356ee'
@@ -237,6 +240,8 @@ The collector recorded three dialog interactions, all triggered from Truste cook
 ### States
 
 No authenticated product workflow was captured. The supplied collector records only public-route selector snapshots and third-party cookie-consent dialogs; it does not establish Mercari empty, loading, error, success, skeleton, or disabled treatments. Do not manufacture those states from the colors or controls above.
+
+Live state probe, 2026-10-16 (`https://www.mercari.com/`), `marketplace-sell-action`: pressed — opacity 0.76; focus — opacity 0.76, browser default focus ring (outline auto).
 
 ## Do's and Don'ts
 

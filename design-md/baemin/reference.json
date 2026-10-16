@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "baemin-home",
@@ -97,6 +97,12 @@
         "kind": "product-surface",
         "url": "https://www.baemin.com/",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "font-catalog-probe-2026-10-16",
+        "kind": "official-doc",
+        "url": "https://www.woowahan.com/fonts",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -1201,6 +1207,20 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"22\"]",
         "captured": "2026-07-11"
+      },
+      "components.catalog-fill-button.pressed": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.btn-fill.pc \"글꼴 패키지 다운로드\" (156 x 52) via probe-component-states.mjs --match #232324 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.catalog-fill-button.focus": {
+        "surface_id": "font-catalog",
+        "source_id": "font-catalog-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.btn-fill.pc \"글꼴 패키지 다운로드\" (156 x 52) via probe-component-states.mjs --match #232324 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []
@@ -1209,11 +1229,11 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 66,
+      "warnings": 68,
       "infos": 2
     },
     "byRule": {
-      "extension-component-property": 53,
+      "extension-component-property": 55,
       "contrast-ratio": 3,
       "orphaned-tokens": 10
     },
@@ -1517,6 +1537,18 @@
         "rule": "broken-ref",
         "path": "components.catalog-fill-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-fill-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.catalog-fill-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

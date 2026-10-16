@@ -84,6 +84,8 @@ components:
     typography: 14px / 500 / MiSans
     states: default only; no interaction event or pseudo-state captured
     use: Careers-marketing primary action, selector surface-4::[data-omd-capture=18]
+    height: 44px
+    pressed: 'bg #27272a (+2 nested-layer changes) (:hover + :active)'
   careers-outline:
     type: button
     textColor: '#18181b'
@@ -265,6 +267,8 @@ All variants are selector-backed observations from the supplied public bundle. `
 ### States
 
 No authenticated application state, empty state, loading state, error state, success state, disabled control, or accessibility-state contract was captured. The audio page is a public tool surface, but the supplied bundle records zero interaction events and zero observed states. The default component observations in §4 must not be expanded into an application-state specification.
+
+Live state probe, 2026-10-16 (`https://www.minimaxi.com/careers`), `careers-primary`: pressed — bg #27272a (+2 nested-layer changes).
 
 ## Do's and Don'ts
 

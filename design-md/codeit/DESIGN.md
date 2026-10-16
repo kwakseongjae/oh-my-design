@@ -133,6 +133,7 @@ components:
     shadow: rgba(0, 0, 0, 0.12) 0px 2px 18px 0px
     states: 'probe on home: hover and pressed change only the opacity of two pseudo-element layers (::before 1 -> 0, ::after 0 -> 1) over a 300ms transition; the layers'' colours were not recorded, so no hover colour is declared; focus (Tab #46) draws only the browser''s default ring'
     use: 무료 체험 시작하기 under the home hero at home::[data-omd-capture="45"], a 400 x 48 button inside its link
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   header-membership-button:
     type: button
     backgroundColor: '#9933ff'
@@ -537,6 +538,8 @@ No easing curve was recorded, so none is given. The earlier duration and easing 
 | Links and buttons | Focus | Browser default ring (`outline: auto`), not a brand style | Probe, home and /subscription |
 
 Empty, loading, error and success states were not observed on the public pages and are not described.
+
+Live state probe, 2026-10-16 (`https://www.codeit.kr/`), `hero-cta`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

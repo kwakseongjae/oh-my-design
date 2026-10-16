@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "official-doc",
         "url": "http://pr.kebhana.com/contents/kor/about/history/index.jsp",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.kebhana.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1116,6 +1122,27 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"46\"]",
         "captured": "2026-09-30"
+      },
+      "components.slide-cta.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a \"자세히보기\" (98 x 40) via probe-component-states.mjs --match #333333 matched on radius, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.slide-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a \"자세히보기\" (98 x 40) via probe-component-states.mjs --match #333333 matched on radius, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.slide-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a \"자세히보기\" (98 x 40) via probe-component-states.mjs --match #333333 matched on radius, font-size, fg; locale ko-KR: focus text-decoration underline, browser default focus ring (outline auto) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1123,12 +1150,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 60,
+      "warnings": 61,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 7,
-      "extension-component-property": 42,
+      "extension-component-property": 43,
       "contrast-ratio": 3,
       "orphaned-tokens": 8
     },
@@ -1240,6 +1267,12 @@
         "rule": "broken-ref",
         "path": "components.slide-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.slide-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

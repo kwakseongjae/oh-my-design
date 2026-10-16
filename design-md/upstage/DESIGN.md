@@ -62,6 +62,7 @@ components:
     focus: outline browser default ring (outline-style auto, offset 1px), not brand — measured 2026-09-29
     states: default captured 2026-07-13 (10 occurrences on home and pricing); hover, pressed and keyboard focus measured 2026-09-29 on Try in Playground (Tab 14); the fill never changes colour; transition all 0s
     use: Public filled conversion action (Try in Playground) inside the home product cards
+    height: 50px
   public-secondary-action:
     type: button
     backgroundColor: '#ffffff'

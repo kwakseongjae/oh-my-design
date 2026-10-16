@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -116,6 +116,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.rtzr.ai/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1204,6 +1210,20 @@
         "method": "computed-style",
         "selector": "surface-4::[data-omd-capture=\"4\"]",
         "captured": "2026-09-30"
+      },
+      "components.header-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.css-1kf09jy \"문의하기\" (98 x 42) via probe-component-states.mjs --match #222222 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.header-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.css-1kf09jy \"문의하기\" (98 x 42) via probe-component-states.mjs --match #222222 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1211,12 +1231,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 60,
+      "warnings": 62,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 12,
-      "extension-component-property": 38,
+      "extension-component-property": 40,
       "contrast-ratio": 1,
       "orphaned-tokens": 9
     },
@@ -1310,6 +1330,18 @@
         "rule": "broken-ref",
         "path": "components.header-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

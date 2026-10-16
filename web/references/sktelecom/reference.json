@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -74,6 +74,12 @@
         "kind": "official-doc",
         "url": "https://news.sktelecom.com/223776",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.sktelecom.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -899,6 +905,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"18\"]",
         "captured": "2026-07-13"
+      },
+      "components.top-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.top-btn.only-tablet-desktop \"TOP\" (55 x 58) via probe-component-states.mjs --match #727887 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -906,12 +919,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 57,
+      "warnings": 58,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 40,
+      "extension-component-property": 41,
       "missing-primary": 1,
       "contrast-ratio": 6,
       "orphaned-tokens": 7
@@ -1006,6 +1019,12 @@
         "rule": "broken-ref",
         "path": "components.top-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.top-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

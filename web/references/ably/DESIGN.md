@@ -94,6 +94,8 @@ components:
     focus: outline browser default ring (outline-style auto), not brand — measured 2026-09-29
     states: default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the floating 채용공고 보러가기 button (Tab 26); pressed equals hover; transition all 0s
     use: Current ABLY Team primary action
+    height: 56px
+    padding: 0px
   corporate-soft-action:
     type: button
     backgroundColor: '#fff2ea'

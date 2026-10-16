@@ -55,6 +55,7 @@ components:
     typography: 17px / 500 Noto Sans KR
     states: default on both product pages (surface-2 capture 17, surface-3 capture 16); the bundle holds no state frame for any Brandi element
     use: Direct purchase link (a.btn-buy) at surface-2::[data-omd-capture="17"], 206 x 61
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   product-partner-buy-button:
     type: button
     backgroundColor: '#00c73c'
@@ -345,6 +346,8 @@ The bundle holds no hover, pressed, or focus frame for any Brandi element (zero 
 ### States
 
 Observed states: the product-option expanded list, the disabled option border (1px `#e1e1e1`), and four selected treatments, each marked by a semantic class and a measured difference from its siblings: the product-detail tab (text `#202429` at 500 over a 4px `#1e1e1e` underline), the product text tab (`#1e1e1e`), the pagination link (`#202429`), and the home promotional tab (`#ff365d` fill, white 700 label). The bundle holds no hover, pressed, or focus frame. Empty, loading, error, success, cart, wish, sold-out, and validation treatments are not specified.
+
+Live state probe, 2026-10-16 (`https://www.brandi.co.kr/products/106329458`), `product-buy-button`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

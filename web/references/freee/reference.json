@@ -27,7 +27,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-19",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -96,6 +96,12 @@
         "kind": "official-doc",
         "url": "https://corp.freee.co.jp/company/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.freee.co.jp/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -393,6 +399,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-07-12"
+      },
+      "components.header-primary.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.c-btn.c-btn-primary.c-btn-autoWidth \"無料ではじめる\" (140 x 31) via probe-component-states.mjs --match #2864f0 matched on radius, padding, font-size, fg; locale ja-JP",
+        "captured": "2026-10-16"
       }
     }
   },

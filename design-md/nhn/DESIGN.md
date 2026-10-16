@@ -94,6 +94,7 @@ components:
     typography: 14px / 500 / Pretendard Variable
     states: four captured at rest on services (button capture 43; links 39, 42, 46); no state frame
     use: Services tag pill at surface-2::[data-omd-capture="43"]; 90-109 px wide, line height 22px, tracking -0.14px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   ir-subtab-link:
     type: tab
     backgroundColor: transparent
@@ -382,6 +383,8 @@ The components below were transcribed on 2026-09-30 from the same 2026-07-13 bun
 ### States
 
 The supplied collector recorded 104 pointer-state frames, all on the header sub-menu links: hover and pressed change the weight from 500 to 700 and the tracking from -0.14px to normal, matching the current sub-page link at rest (§4). Selected states are recorded as current-route markers: the header main link (700), the category tab pill (`#212126` fill, `#ffffff` text) and the IR sub-tab link (`#212126`, 700). The previous-navigation controls were disabled at capture time; opacity is outside the dump, so their disabled look is unresolved. Focus, loading, error, empty and success states were not captured and are unresolved. Corrected 2026-09-30: the July text named the disabled control as the only recorded state and gave it `#212126` text and `opacity: 0.4`, taken from the body text and the class name.
+
+Live state probe, 2026-10-16 (`https://www.nhn.com/services?tab=technology`), `services-pill`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

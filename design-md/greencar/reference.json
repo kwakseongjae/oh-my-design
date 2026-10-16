@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -98,6 +98,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.greencar.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1340,6 +1346,13 @@
         "method": "computed-style",
         "selector": "surface-3::p",
         "captured": "2026-09-30"
+      },
+      "components.button-fill.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.module-fill.style-a \"채용 바로가기\" (128 x 52) via probe-component-states.mjs --match #222222 matched on radius, padding, font-size, height, fg; locale ko-KR: focus bg #00c88c, label #222222, border #00c88c, browser default focus ring (outline auto) (+1 nested-layer changes) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1347,12 +1360,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 66,
+      "warnings": 67,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 15,
-      "extension-component-property": 39,
+      "extension-component-property": 40,
       "contrast-ratio": 2,
       "orphaned-tokens": 10
     },
@@ -1482,6 +1495,12 @@
         "rule": "broken-ref",
         "path": "components.button-fill.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-fill.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

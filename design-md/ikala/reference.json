@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-10-01",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -79,6 +79,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/notofonts/latin-greek-cyrillic/main/OFL.txt",
         "captured": "2026-10-01"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://ikala.ai/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1510,6 +1516,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"20\"]",
         "captured": "2026-10-01"
+      },
+      "components.hero-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.elementor-button.elementor-button-link.elementor-size-sm \"聯絡我們\" (132 x 58) via probe-component-states.mjs --match #061232 matched on radius, padding, font-size, height, fg; locale zh-TW: pressed text-decoration underline (+2 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1517,12 +1530,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 74,
+      "warnings": 75,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 14,
-      "extension-component-property": 42,
+      "extension-component-property": 43,
       "contrast-ratio": 4,
       "orphaned-tokens": 14
     },
@@ -1628,6 +1641,12 @@
         "rule": "broken-ref",
         "path": "components.hero-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.hero-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

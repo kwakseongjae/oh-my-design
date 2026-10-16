@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-17",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -97,6 +97,12 @@
         "kind": "official-doc",
         "url": "https://linear.app/brand",
         "captured": "2026-07-12"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://linear.app/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -628,6 +634,13 @@
         "source_id": "customers-live",
         "method": "live-inspect",
         "captured": "2026-07-12"
+      },
+      "components.primary-action.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.S36ykG_root.S36ykG_variant-invert.S36ykG_size-large \"Get started\" (127 x 44) via probe-component-states.mjs --match #e5e5e6 matched on radius, padding, font-size, height, fg; locale en-US: focus outline #5e69d1 solid 1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -635,12 +648,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 30,
+      "warnings": 31,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
-      "extension-component-property": 17,
+      "extension-component-property": 18,
       "contrast-ratio": 1,
       "orphaned-tokens": 7
     },
@@ -710,6 +723,12 @@
         "rule": "broken-ref",
         "path": "components.primary-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

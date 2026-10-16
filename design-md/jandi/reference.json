@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -121,6 +121,12 @@
         "kind": "license",
         "url": "https://notofonts.github.io/noto-docs/website/use/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.jandi.com/landing/kr",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1030,6 +1036,13 @@
         "method": "computed-style",
         "selector": "surface-6::li",
         "captured": "2026-07-13"
+      },
+      "components.header-primary-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a \"로그인\" (69 x 36) via probe-component-states.mjs --match #00c473 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed bg #00b46a, border #00b46a (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1037,12 +1050,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 54,
+      "warnings": 55,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 41,
+      "extension-component-property": 42,
       "contrast-ratio": 4,
       "orphaned-tokens": 6
     },
@@ -1124,6 +1137,12 @@
         "rule": "broken-ref",
         "path": "components.header-primary-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-primary-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

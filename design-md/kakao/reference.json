@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "corp-home",
@@ -85,6 +85,12 @@
         "kind": "product-surface",
         "url": "https://www.kakaocorp.com/page/",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "corp-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.kakaocorp.com/page/",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -1024,6 +1030,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"11\"]",
         "captured": "2026-07-11"
+      },
+      "components.marketing-download-cta.pressed": {
+        "surface_id": "corp-home",
+        "source_id": "corp-home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn_top.btn_down \"카카오톡 다운로드\" (142 x 32) via probe-component-states.mjs --match #fae100 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []
@@ -1032,11 +1045,11 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 59,
+      "warnings": 60,
       "infos": 2
     },
     "byRule": {
-      "extension-component-property": 45,
+      "extension-component-property": 46,
       "missing-primary": 1,
       "contrast-ratio": 3,
       "orphaned-tokens": 10
@@ -1227,6 +1240,12 @@
         "rule": "broken-ref",
         "path": "components.marketing-download-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.marketing-download-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

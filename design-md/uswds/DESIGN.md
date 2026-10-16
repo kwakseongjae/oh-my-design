@@ -42,6 +42,9 @@ components:
     typography: 16.96px / 700 / Source Sans Pro Web
     states: Default baseline observed; no hover, focus, pressed, disabled, or error value was captured.
     use: Observed site-search submit control on all three captured surfaces
+    height: 38px
+    pressed: 'bg #0050d8, outline #2491ff solid 4px (:hover + :active)'
+    focus: 'outline #2491ff solid 4px on :focus-visible'
   side-navigation-item:
     type: listItem
     backgroundColor: transparent
@@ -246,6 +249,8 @@ No visual state token was captured for the categories below. These are documenta
 | Success | Confirm the completed public-service task plainly; no success color is claimed. |
 | Skeleton | Preserve reading structure while content is unavailable; no skeleton fill value is claimed. |
 | Disabled | Explain unavailable actions where needed; no disabled visual value is claimed. |
+
+Live state probe, 2026-10-16 (`https://designsystem.digital.gov/`), `search-submit`: pressed — bg #0050d8, outline #2491ff solid 4px; focus — outline #2491ff solid 4px.
 
 ## Voice & Tone
 

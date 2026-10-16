@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-12",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -73,6 +73,12 @@
         "kind": "brand-asset",
         "url": "https://brand.withairbnb.com",
         "captured": "2026-07-12"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.airbnb.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -592,6 +598,34 @@
         "source_id": "help-live",
         "method": "live-inspect",
         "captured": "2026-07-12"
+      },
+      "components.icon-action.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.l1lx1n3h.atm_npmupv_14b5rvc_10saat9.atm_4s4swg_18xq13z_10saat9 \"로그인 또는 회원 가입\" (40 x 40) via probe-component-states.mjs --match #f2f2f2 matched on radius, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.icon-action.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.l1lx1n3h.atm_npmupv_14b5rvc_10saat9.atm_4s4swg_18xq13z_10saat9 \"로그인 또는 회원 가입\" (40 x 40) via probe-component-states.mjs --match #f2f2f2 matched on radius, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.icon-action.typography": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.l1lx1n3h.atm_npmupv_14b5rvc_10saat9.atm_4s4swg_18xq13z_10saat9 \"로그인 또는 회원 가입\" (40 x 40) via probe-component-states.mjs --match #f2f2f2 matched on radius, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.icon-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.l1lx1n3h.atm_npmupv_14b5rvc_10saat9.atm_4s4swg_18xq13z_10saat9 \"로그인 또는 회원 가입\" (40 x 40) via probe-component-states.mjs --match #f2f2f2 matched on radius, fg; locale en-US: pressed transform matrix(0.95, 0, 0, 0.95, 0, 0) (+1 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -599,12 +633,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 32,
+      "warnings": 33,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
-      "extension-component-property": 18,
+      "extension-component-property": 19,
       "contrast-ratio": 4,
       "orphaned-tokens": 5
     },
@@ -692,6 +726,12 @@
         "rule": "broken-ref",
         "path": "components.icon-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.icon-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

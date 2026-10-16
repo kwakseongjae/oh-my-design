@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "docs-home",
@@ -85,6 +85,12 @@
         "kind": "license",
         "url": "https://github.com/adobe-fonts/source-code-pro/blob/release/LICENSE.md",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "docs-home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://docs.stripe.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -436,6 +442,13 @@
         "source_id": "docs-home-live",
         "method": "live-inspect",
         "captured": "2026-07-13"
+      },
+      "components.docs-search-prompt.height": {
+        "surface_id": "docs-home",
+        "source_id": "docs-home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.SearchPrompt.⚙.rs-2 \"Search\" (200 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, fg; locale en-US",
+        "captured": "2026-10-16"
       }
     }
   },

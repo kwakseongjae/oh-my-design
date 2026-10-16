@@ -40,6 +40,9 @@ components:
     typography: 24px / 400 / system stack
     states: Default captured; this element has no pointer-state frame.
     use: corporate-home `home::[data-omd-capture="26"]`; one public corporate CTA, 64px rendered height.
+    height: 64px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: 'outline #ffe0ec solid 3px on :focus-visible'
   family-site-pill:
     type: button
     backgroundColor: '#ffffff'
@@ -383,6 +386,8 @@ The prior reference mixed a historical consumer capture into this corporate-only
 ### States
 
 The supplied artifact contains default corporate controls, two measured selected variants (the current-page header menu link in #ff66af and the active locale in #2e2e2e), a hidden mobile-menu dialog structure, and one disabled menu-overflow sample. It also holds twelve hover, pressed and focus frames on four elements; each records colour drift or a colour caught mid-transition, so no hover, pressed or focus value is specified (§4). Corrected 2026-09-29: the July text tied the missing state values to `interactionCount: 0`, which counts only dialog, menu and tab expansions, not pointer frames. It does not provide opened-dialog, empty, loading, error, success, toast, form-validation, or product-state evidence. Those specifications are intentionally absent.
+
+Live state probe, 2026-10-16 (`https://www.thepinkfongcompany.com/`), `corporate-primary-action`: pressed — no visible change (measured 2026-10-16); focus — outline #ffe0ec solid 3px.
 
 ## Do's and Don'ts
 

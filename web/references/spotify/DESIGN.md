@@ -58,6 +58,9 @@ components:
     typography: 14px / 800 / Spotify Mix
     states: focus and pressed snapshots observed
     use: Editorial/newsroom CTA only; not promoted to player chrome
+    height: 50px
+    pressed: 'bg #ffffff, border #000000 (+1 nested-layer changes) (:hover + :active)'
+    focus: 'bg #1ab752, browser default focus ring (outline auto) on :focus-visible'
 omitted:
   - section: spacing
     reason: No verified values in current evidence.
@@ -235,6 +238,8 @@ No duration, easing, or motion token was measured in the supplied evidence. Do n
 ### States
 
 The supplied collector recorded hover, focus, and pressed snapshots for the listed player controls, and focus/pressed snapshots for the newsroom CTA. It recorded disabled/unchecked icon-control instances but did not establish a general disabled visual rule. For partner integrations, the official guidance requires restricted playback controls either to be disabled or not shown; it also documents a like action changing state with messages such as "Added to Liked Songs" and "Removed from Liked Songs." No additional loading, error, toast, or motion state is promoted from this packet.
+
+Live state probe, 2026-10-16 (`https://newsroom.spotify.com/company-info/`), `newsroom-cta`: pressed — bg #ffffff, border #000000 (+1 nested-layer changes); focus — bg #1ab752, browser default focus ring (outline auto).
 
 ## Do's and Don'ts
 

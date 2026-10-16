@@ -84,6 +84,16 @@ const varPrefix = opt("vars");
 const minHeight = Number(opt("min-height", "20"));
 /** 문서화된 높이로 후보를 좁힌다. 흰 배경처럼 흔한 색은 색만으로는 못 고른다. */
 const wantHeight = opt("height") ? Number(opt("height")) : null;
+/**
+ * `--radius` / `--font-size` / `--padding` (2026-10-16). `--match` takes the first element with
+ * that fill, which on a page with a same-coloured banner is not the documented button. These narrow
+ * the pool to elements whose computed border-radius / font-size / padding equal the value the
+ * reference already claims (px, ±1), so a reading can be tied to that component. `--json` adds one
+ * `OMD_JSON {...}` line with the target's identity, every measured state and the unmeasured ones.
+ */
+const wantRadius = opt("radius") != null ? Number(opt("radius")) : null;
+const wantFontSize = opt("font-size") != null ? Number(opt("font-size")) : null;
+const wantPadding = opt("padding") ?? null;
 const nth = Number(opt("nth", "0"));
 /** 비교할 후손 수와 조상 단계 (2026-09-30, 머리말 "비교 범위"). */
 const maxKids = Number(opt("max-kids", "150"));
@@ -226,7 +236,7 @@ async function visit(act) {
 
   // 메인 프레임과 하위 프레임(Storybook 등) 모두에서 찾는다
   for (const frame of page.frames()) {
-    const found = await frame.evaluate(({ match, selector, minHeight, nth, wantHeight, rgbSrc, textNeedle }) => {
+    const found = await frame.evaluate(({ match, selector, minHeight, nth, wantHeight, rgbSrc, textNeedle, wantRadius, wantFontSize, wantPadding }) => {
       const visible = (el) => { const r = el.getBoundingClientRect(); return r.height >= minHeight && r.width >= 8; };
       // `--text`만 주면 색 조건이 "(?!)"라서 후보가 0이었다 — 라벨로 찾으려던 호출이 전부
       // "찾지 못했다"로 끝났다 (2026-09-23 studysapuri). 라벨만 있으면 조작 가능한 요소에서 찾는다.
@@ -245,10 +255,19 @@ async function visit(act) {
         pool = pool.filter((el) => label(el).includes(needle));
       }
       if (wantHeight != null) pool = pool.filter((el) => Math.abs(el.getBoundingClientRect().height - wantHeight) <= 2);
+      const near = (a, b) => Math.abs(a - b) <= 1;
+      // A pill radius (9999px) computes as-written; any value >= half the height draws the same pill.
+      if (wantRadius != null) pool = pool.filter((el) => { const r = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0; return wantRadius >= 999 ? r >= el.getBoundingClientRect().height / 2 - 1 : near(r, wantRadius); });
+      if (wantFontSize != null) pool = pool.filter((el) => near(parseFloat(getComputedStyle(el).fontSize), wantFontSize));
+      if (wantPadding != null) {
+        const px = String(wantPadding).trim().split(/\s+/).map((x) => parseFloat(x) || 0);
+        const want = [px[0], px[1] ?? px[0], px[2] ?? px[0], px[3] ?? px[1] ?? px[0]];
+        pool = pool.filter((el) => { const c = getComputedStyle(el); return [c.paddingTop, c.paddingRight, c.paddingBottom, c.paddingLeft].map(parseFloat).every((g, i) => near(g, want[i])); });
+      }
       if (!pool[nth]) return false;
       pool[nth].setAttribute("data-omd-probe", "1");
       return true;
-    }, { match, selector, minHeight, nth, wantHeight, textNeedle, rgbSrc: match ? rgbPattern(match) : "(?!)" }).catch(() => false);
+    }, { match, selector, minHeight, nth, wantHeight, textNeedle, rgbSrc: match ? rgbPattern(match) : "(?!)", wantRadius, wantFontSize, wantPadding }).catch(() => false);
     if (found) return { page, frame };
   }
   await raceClose(page.close());
@@ -322,7 +341,7 @@ const read = (frame) => frame.evaluate(([prefix, maxKids, upLevels]) => {
     return "";
   };
   const out = {
-    bg: s.backgroundColor, fg: s.color, border: s.borderColor, radius: s.borderRadius,
+    bg: s.backgroundColor, fg: s.color, border: s.borderColor, borderWidth: s.borderWidth, radius: s.borderRadius,
     height: Math.round(rect.height), padding: s.padding, font: `${s.fontSize} / ${s.fontWeight}`,
     shadow: s.boxShadow, outline: `${s.outlineColor} ${s.outlineStyle} ${s.outlineWidth}`,
     transform: s.transform, opacity: s.opacity,
@@ -340,6 +359,9 @@ const read = (frame) => frame.evaluate(([prefix, maxKids, upLevels]) => {
       const paints = !/rgba\([^)]*,\s*0\)|transparent/.test(c.backgroundColor) || c.backgroundImage !== "none" || c.boxShadow !== "none" || parseFloat(c.borderTopWidth) > 0;
       return paints ? `${ps}{bg:${c.backgroundColor};img:${full(c.backgroundImage, 60)}${bgLayout(c) ? ";pos:" + bgLayout(c) : ""};op:${c.opacity};tf:${c.transform};bs:${c.boxShadow}}` : ""; }).join(""),
     is: { hover: el.matches(":hover"), active: el.matches(":active"), focusVisible: el.matches(":focus-visible") },
+    ident: { tag: el.tagName.toLowerCase(), cls: typeof el.className === "string" ? el.className.trim().split(/\s+/).slice(0, 3).join(".") : "",
+      text: (el.getAttribute("aria-label") || el.textContent || el.value || "").replace(/\s+/g, " ").trim().slice(0, 40),
+      width: Math.round(rect.width), lineHeight: s.lineHeight, fontFamily: s.fontFamily.slice(0, 80) },
   };
   // 2026-09-30: 후손(빈 요소 포함)·그 ::before/::after·조상까지 읽는다 — 머리말 "비교 범위".
   const alpha = (c) => { c = String(c); if (c === "transparent") return 0; const m = c.match(/^rgba?\(([^)]*)\)$/); if (m) { const p = m[1].split(/[\s,\/]+/).filter(Boolean); return p.length > 3 ? parseFloat(p[3]) * (p[3].endsWith("%") ? 0.01 : 1) : 1; } const m2 = c.match(/\/\s*([\d.]+%?)\s*\)$/); if (m2) return m2[1].endsWith("%") ? parseFloat(m2[1]) / 100 : parseFloat(m2[1]); return 1; };
@@ -627,4 +649,11 @@ if (varPrefix && Object.keys(states.rest.vars ?? {}).length) {
 }
 
 report();
+if (flag("json") && states.rest) {
+  // borderWidth rides along so a border-colour change on a 0px border is not read as visible.
+  const pick = (x) => ({ bg: x.bg, fg: x.fg, border: x.border, borderWidth: x.borderWidth, radius: x.radius, height: x.height, padding: x.padding, font: x.font, shadow: x.shadow,
+    outline: x.outline, transform: x.transform, opacity: x.opacity, bgImage: x.bgImage, decoration: x.decoration, pseudo: x.pseudo, is: x.is });
+  const measured = Object.fromEntries(Object.entries(states).filter(([k]) => k !== "rest").map(([k, x]) => [k, { ...pick(x), deep: deepDiff(states.rest, x) }]));
+  console.log(`OMD_JSON ${JSON.stringify({ url, ident: states.rest.ident, rest: pick(states.rest), states: measured, unmeasured })}`);
+}
 await finish(0);

@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-14",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -73,6 +73,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-14"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.lguplus.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1115,6 +1121,20 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"27\"]",
         "captured": "2026-07-13"
+      },
+      "components.home-primary-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.c-btn-solid-1-m \"자세히 보기\" (140 x 40) via probe-component-states.mjs --match #e6007e matched on radius, padding, font-size, height, fg; locale ko-KR: pressed bg #730024 (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.home-primary-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.c-btn-solid-1-m \"자세히 보기\" (140 x 40) via probe-component-states.mjs --match #e6007e matched on radius, padding, font-size, height, fg; locale ko-KR: focus bg #730024, outline #ffffff dotted 1px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1122,12 +1142,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 62,
+      "warnings": 64,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 50,
+      "extension-component-property": 52,
       "contrast-ratio": 5,
       "orphaned-tokens": 5
     },
@@ -1167,6 +1187,18 @@
         "rule": "broken-ref",
         "path": "components.home-primary-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-primary-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.home-primary-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

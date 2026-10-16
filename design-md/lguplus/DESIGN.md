@@ -39,6 +39,8 @@ components:
     typography: 16px / 400 / Pretendard
     states: default captured; the capture holds no pointer-state frame for any Home element (interactionCount 0 counts dialog, menu, and tab expansions only), so no hover, focus, pressed, disabled, or error value was observed
     use: Public Home solid CTA at home::[data-omd-capture="19"]
+    pressed: 'bg #730024 (:hover + :active)'
+    focus: 'bg #730024, outline #ffffff dotted 1px on :focus-visible'
   subscription-information-row:
     type: listItem
     backgroundColor: transparent
@@ -442,6 +444,8 @@ The supplied evidence reports `interactionCount: 0`: no dialog, menu, or tab was
 | Pressed | Subscription header links: text `#000000` → `#e6007e`. The purchase CTA's pressed frame moved one channel unit (`rgb(230, 0, 126)` → `rgb(229, 0, 126)`), a transition frame, so no pressed value is declared. |
 | Selected | Home recommendation tab: `#000000` at 28px / 400 → `#e6007e` at 28px / 700 (`aria-selected="true"`). Review pagination current page: `#f3f3f3` fill with `#000000` text at 14px / 700. |
 | Focus | Not keyboard-measured; no focus value is declared. |
+
+Live state probe, 2026-10-16 (`https://www.lguplus.com/`), `home-primary-cta`: pressed — bg #730024; focus — bg #730024, outline #ffffff dotted 1px.
 
 ## Do's and Don'ts
 

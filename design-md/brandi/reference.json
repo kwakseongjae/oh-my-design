@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -73,6 +73,12 @@
         "kind": "official-doc",
         "url": "https://notofonts.github.io/noto-docs/website/use/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "product-a-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.brandi.co.kr/products/106329458",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -988,6 +994,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"36\"]",
         "captured": "2026-07-13"
+      },
+      "components.product-buy-button.pressed": {
+        "surface_id": "product-a",
+        "source_id": "product-a-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn-buy \"바로 구매\" (206 x 61) via probe-component-states.mjs --match #1e1e1e matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -995,12 +1008,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 66,
+      "warnings": 67,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 47,
+      "extension-component-property": 48,
       "missing-primary": 1,
       "contrast-ratio": 5,
       "orphaned-tokens": 10
@@ -1053,6 +1066,12 @@
         "rule": "broken-ref",
         "path": "components.product-buy-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.product-buy-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

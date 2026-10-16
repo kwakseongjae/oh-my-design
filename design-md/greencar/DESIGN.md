@@ -121,6 +121,7 @@ components:
     pressed: 'bg #00c88c, fg #222222, border #00c88c'
     states: 'probe: hover and pressed settle on #00c88c with a #222222 label after an 800ms transition; focus paints the same fill but the only ring is the browser default, so no brand focus style is declared'
     use: 채용 바로가기 on the corporate home at home::[data-omd-capture="39"], 128 x 52, sitting on the green recruiting band
+    focus: 'bg #00c88c, label #222222, border #00c88c, browser default focus ring (outline auto) (+1 nested-layer changes) on :focus-visible'
   button-line:
     type: button
     backgroundColor: transparent
@@ -379,6 +380,8 @@ Only states read from the capture and the probe are listed.
 | Carousel arrow | disabled | `swiper-button-disabled` on the G car round-trip page | collector |
 
 Empty, loading, error and success states were not observed and are not declared.
+
+Live state probe, 2026-10-16 (`https://www.greencar.co.kr/`), `button-fill`: focus — bg #00c88c, label #222222, border #00c88c, browser default focus ring (outline auto) (+1 nested-layer changes).
 
 ## Do's and Don'ts
 

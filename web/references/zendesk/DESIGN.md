@@ -43,6 +43,9 @@ components:
     height: 40
     states: Default only; no hover, focus, pressed, disabled, or loading state was observed
     use: Native button on the public button-documentation route; selector surface-2::[data-omd-capture="90"]
+    typography: 14px / 400
+    pressed: 'bg #0f3655 (:hover + :active)'
+    focus: 'shadow #ffffff 0px 0px 0px 1px, #1f73b7 0px 0px 0px 3px on :focus-visible'
   icon-button:
     type: button
     textColor: '#5c6970'
@@ -260,6 +263,8 @@ The supplied runtime packet has `interactionCount: 0`; it establishes no visual 
 | Success | The supplied capture includes green `#4eab89` as a color observation, not a verified success-message component recipe. |
 | Skeleton | Use only the official purpose-level guidance above; no skeleton geometry, color, or animation token is claimed. |
 | Disabled | No disabled control state was captured. Do not derive one from the static native-button variants. |
+
+Live state probe, 2026-10-16 (`https://garden.zendesk.com/components/button`), `primary-doc-button`: pressed — bg #0f3655; focus — shadow #ffffff 0px 0px 0px 1px, #1f73b7 0px 0px 0px 3px.
 
 ## Do's and Don'ts
 

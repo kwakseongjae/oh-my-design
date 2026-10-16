@@ -29,7 +29,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -110,6 +110,12 @@
         "kind": "product-surface",
         "url": "https://www.socar.kr/guide",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "guide-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.socar.kr/guide",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1042,6 +1048,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"73\"]",
         "captured": "2026-07-12"
+      },
+      "components.primary-action.height": {
+        "surface_id": "guide",
+        "source_id": "guide-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.tw-duration-100.tw-ease-[cubic-bezier(0.42,0,0.58,1)].tw-border-transparent \"웹에서 예약하기\" (149 x 56) via probe-component-states.mjs --match #0078ff matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

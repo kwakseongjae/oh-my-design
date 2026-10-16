@@ -21,7 +21,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -84,6 +84,12 @@
         "kind": "license",
         "url": "https://notofonts.github.io/noto-docs/website/use/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "politics-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://udn.com/news/cate/2/6638",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -363,6 +369,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-07-13"
+      },
+      "components.load-more-button.focus": {
+        "surface_id": "politics",
+        "source_id": "politics-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.btn.btn-ripple.btn-more \"more-news\" (133 x 31) via probe-component-states.mjs --match #c7c7c7 matched on padding, font-size, height, fg; locale zh-TW: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -370,12 +383,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 15,
+      "warnings": 16,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 6,
+      "extension-component-property": 7,
       "contrast-ratio": 1,
       "orphaned-tokens": 5
     },
@@ -415,6 +428,12 @@
         "rule": "broken-ref",
         "path": "components.load-more-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.load-more-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

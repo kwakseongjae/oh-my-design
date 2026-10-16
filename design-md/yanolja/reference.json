@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -91,6 +91,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://nol.yanolja.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1034,6 +1040,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"12\"]",
         "captured": "2026-07-13"
+      },
+      "components.utility-button.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.inline-flex.items-center.justify-center \"이전 배너\" (48 x 48) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.utility-button.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.inline-flex.items-center.justify-center \"이전 배너\" (48 x 48) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1041,12 +1061,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 57,
+      "warnings": 58,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 6,
-      "extension-component-property": 40,
+      "extension-component-property": 41,
       "contrast-ratio": 4,
       "orphaned-tokens": 7
     },
@@ -1116,6 +1136,12 @@
         "rule": "broken-ref",
         "path": "components.utility-button.states",
         "message": "'states' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.utility-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

@@ -126,6 +126,7 @@ components:
     typography: 16px / 700 / 40px Pretendard
     states: rest only on two pages; the Aside bundle has no hover, pressed or focus frame
     use: 쇼핑몰 만들기 in the header of the design service and enterprise pages, 121 x 40, at surface-2::[data-omd-capture="1"] and surface-3::[data-omd-capture="1"]
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   design-cta:
     type: button
     backgroundColor: '#235bf5'
@@ -551,6 +552,8 @@ No motion value is declared. The bundle records no transition or animation prope
 | Carousel focus (intro cards) | The active card is larger (578 × 345 against 406 × 233) and lifts on rgba(0, 0, 0, 0.43) 0 20.57px 51.43px |
 
 Hover, pressed, focus, disabled, empty, loading, error and success states were not captured; the bundle has no state frames and no interaction events, so none is described.
+
+Live state probe, 2026-10-16 (`https://www.cafe24.com/commerce/design/`), `header-cta`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

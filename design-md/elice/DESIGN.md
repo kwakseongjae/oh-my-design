@@ -104,6 +104,8 @@ components:
     typography: 14px / 600 / 24px Pretendard
     states: rest on all three captured pages; the collector recorded no hover, pressed or focus frame for this control, so no state value is declared
     use: 무료로 시작하기 in the header of home and the pricing page at home::[data-omd-capture="8"], 120 x 40 (MuiButton-contained, colorSecondary)
+    pressed: 'bg #4d4d4d (:hover + :active)'
+    focus: 'bg #4d4d4d, browser default focus ring (outline auto) on :focus-visible'
   hero-primary-button:
     type: button
     backgroundColor: '#ffffff'
@@ -566,6 +568,8 @@ Only these states were observed on the captured pages; nothing else is specified
 | **Inverse over the hero** | The action pair turns white: `#ffffff` fill with a `#191f28` label, and a white outline. |
 
 The collector's hover and pressed frames for the header, hero and closing actions were read while the background was still changing, so no hover or pressed value is declared. The pricing tabs' hover and pressed frames are recorded in the verification notes but not declared, because their settling was not confirmed. Focus treatments were not measured. Error, empty, loading and success states were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://elice.io/ko`), `primary-button`: pressed — bg #4d4d4d; focus — bg #4d4d4d, browser default focus ring (outline auto).
 
 ## Do's and Don'ts
 

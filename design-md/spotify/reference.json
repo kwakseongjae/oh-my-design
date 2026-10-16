@@ -21,7 +21,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "product-home",
@@ -69,6 +69,12 @@
         "url": "https://developer.spotify.com/documentation/design",
         "kind": "official-doc",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "newsroom-company-probe-2026-10-16",
+        "kind": "official-doc",
+        "url": "https://newsroom.spotify.com/company-info/",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -321,6 +327,27 @@
         "surface_id": "newsroom-company",
         "source_id": "capture-newsroom",
         "captured": "2026-07-13"
+      },
+      "components.newsroom-cta.height": {
+        "surface_id": "newsroom-company",
+        "source_id": "newsroom-company-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.button \"Learn More (opens in a new tab)\" (182 x 50) via probe-component-states.mjs --match #1ed760 matched on radius, padding, font-size, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.newsroom-cta.pressed": {
+        "surface_id": "newsroom-company",
+        "source_id": "newsroom-company-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.button \"Learn More (opens in a new tab)\" (182 x 50) via probe-component-states.mjs --match #1ed760 matched on radius, padding, font-size, fg; locale en-US: pressed bg #ffffff, border #000000 (+1 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.newsroom-cta.focus": {
+        "surface_id": "newsroom-company",
+        "source_id": "newsroom-company-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.button \"Learn More (opens in a new tab)\" (182 x 50) via probe-component-states.mjs --match #1ed760 matched on radius, padding, font-size, fg; locale en-US: focus bg #1ab752, browser default focus ring (outline auto) on :focus-visible",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []
@@ -329,12 +356,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 20,
+      "warnings": 22,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 15,
+      "extension-component-property": 17,
       "orphaned-tokens": 3
     },
     "findings": [
@@ -439,6 +466,18 @@
         "rule": "broken-ref",
         "path": "components.newsroom-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.newsroom-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.newsroom-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

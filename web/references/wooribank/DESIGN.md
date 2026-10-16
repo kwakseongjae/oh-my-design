@@ -55,6 +55,10 @@ components:
     typography: 15px / 700 / 40px / computed stack beginning 맑은 고딕, tracking -1px
     states: rest; no state frame
     use: Last item of the legacy-service navigation (a.btn-all.btn-popup.site-menu; an a element with no button role) at legacy-service::[data-omd-capture="22"]
+    rounded: 0px
+    height: 40px
+    pressed: 'bg #37cb4d, border #000000, text-decoration underline (:hover + :active)'
+    focus: 'bg #37cb4d, border #000000, text-decoration underline, browser default focus ring (outline auto) on :focus-visible'
   legacy-content-tab:
     type: tab
     backgroundColor: transparent
@@ -334,6 +338,8 @@ Corrected 2026-09-30: this paragraph read `interactionCount: 0` as the reason no
 ### States
 
 Observed: two class-marked selected navigation treatments on the legacy-service route — the link in `li.current` (`#ffffff` fill, `#008a44` label, 2px `#008a44` top border) and the content tab in `li.on` (`#ffffff` label, 1px `#4fa528` top and bottom border; the fill behind the label is not in the capture) — and a layer open on the legacy-information route. The bundle holds no hover, pressed, or focus frame for any element (0 of 458), so none is declared. Empty, loading, error, success, skeleton, and disabled treatments are absent rather than filled with generic banking conventions.
+
+Live state probe, 2026-10-16 (`https://spot.wooribank.com/pot/Dream?withyou=PODEP0001`), `legacy-all-menu-button`: pressed — bg #37cb4d, border #000000, text-decoration underline; focus — bg #37cb4d, border #000000, text-decoration underline, browser default focus ring (outline auto).
 
 ## Do's and Don'ts
 

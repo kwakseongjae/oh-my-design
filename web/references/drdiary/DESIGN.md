@@ -110,6 +110,7 @@ components:
     pressed: opacity 0.8
     states: 'probe on /contact: hover and pressed settle at opacity 0.8 (transition all 0s); focus (Tab #7) shows no change; the bundle''s hover and pressed frames record no fill, text or border change'
     use: '문의하기 on the five inquiry cards of /contact (captures 6-10), 204 x 72, each on a #f5f8fb card with a #dee0e4 hairline; the label is a p and a blue arrow image'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   more-button:
     type: button
     backgroundColor: transparent
@@ -428,6 +429,8 @@ Observed only:
 - **Focus:** no captured control draws an authored focus style. The probe's Tab walk changed only image sources on two controls.
 
 Empty, loading, error and success states belong to the app and were not captured.
+
+Live state probe, 2026-10-16 (`https://drdiary.co.kr/contact`), `inquiry-button`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

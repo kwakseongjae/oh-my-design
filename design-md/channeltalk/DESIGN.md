@@ -58,6 +58,7 @@ components:
     focus: no focus indication in the compared scope (self, its ::before/::after, 1 descendant, 3 ancestor levels) — measured 2026-09-29
     states: 'default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the hero 무료로 시작하기 button (156px x 48px, Tab 6), never activated; hover equals pressed; the #3a3a3f promoted here on 2026-09-17 belongs to the sticky-header link (header-cta), whose 43px height and 9px 14px padding that re-verify reproduced'
     use: Primary signup and conversion action on current KR/US marketing
+    height: 48px
   marketing-outline:
     type: button
     backgroundColor: transparent

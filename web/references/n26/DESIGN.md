@@ -47,6 +47,7 @@ components:
     hover: '#045e58'
     focus: 'ring 0 0 0 2px #ffffff, 0 0 0 4px #045e58'
     use: Girokonto eröffnen — the account-opening pill in --color-nemoTealHeavy. Hover lightens to --color-nemoTealStrong over 0.15s; focus draws a double ring, 2px white inside 4px teal.
+    pressed: 'bg #045e58 (:hover + :active)'
   button-tonal:
     type: button
     backgroundColor: rgba(198,178,159,0.25)
@@ -226,6 +227,8 @@ a teal ring, readable on white and on teal alike.
 Two components. Hover: the primary lightens to `#045e58`; the tonal button doubles its sand. Focus:
 the double ring on both. The plan-selection buttons, tabs and FAQ accordions on the comparison page
 were not measured. No disabled state was observed.
+
+Live state probe, 2026-10-16 (`https://n26.com/de-de`), `button-primary`: pressed — bg #045e58.
 
 ## Do's and Don'ts
 

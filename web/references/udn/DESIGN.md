@@ -44,6 +44,7 @@ components:
     typography: 15px / 400 / 18.75px / Noto Sans TC
     states: Observed default only; no hover, focus, pressed, or disabled value was captured.
     use: Real button at politics selector surface-2::[data-omd-capture=90], repeated on the finance category surface.
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   newsletter-email-input:
     type: input
     backgroundColor: '#ffffff'
@@ -189,6 +190,8 @@ The packet contains three `form-error` interaction captures. Their targets prese
 ### States
 
 The raw artifact records three `form-error` interactions across the public routes. Their captured input targets retain the observed default geometry and expose no distinct error color, border, text, message, loading, success, disabled, skeleton, toast, or empty-state value. Those unobserved state specifications are absent rather than synthesized.
+
+Live state probe, 2026-10-16 (`https://udn.com/news/cate/2/6638`), `load-more-button`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

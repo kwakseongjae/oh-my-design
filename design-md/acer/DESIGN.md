@@ -41,6 +41,8 @@ components:
     typography: 18.912px / 600 / Noto Sans
     states: Default static baseline observed; no interactive state was captured.
     use: Homepage .agw-btn.agw-btn-primary CTA
+    height: 40px
+    focus: 'outline #0071e3 solid 2px on :focus-visible'
   tertiary-cta:
     type: button
     backgroundColor: transparent
@@ -266,6 +268,8 @@ The supplied interaction count is zero. The following are implementation guidanc
 | Skeleton | Match the observed feature-card information hierarchy without claiming an observed skeleton style. |
 | Skeleton | Reserve space for the locale control instead of changing layout abruptly. |
 | Disabled | Do not infer disabled color, opacity, or cursor values from this packet. |
+
+Live state probe, 2026-10-16 (`https://www.acer.com/kr-ko/`), `primary-cta`: focus — outline #0071e3 solid 2px.
 
 ## Do's and Don'ts
 

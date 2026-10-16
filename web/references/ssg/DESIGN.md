@@ -106,6 +106,9 @@ components:
     typography: 13px / 700 / 19.5px Pretendard
     states: rest only on three instances; no state frame in the bundle
     use: Pill filters under the ranking tabs at surface-2::[data-omd-capture="41"] (백화점상품, 73 x 28); the two neighbouring 84 x 28 chips carry logo images instead of text
+    padding: 0px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: outline rgba(0, 0, 0, 0.5) dashed 1px on :focus-visible
   search-field:
     type: input
     backgroundColor: '#ffffff'
@@ -354,6 +357,8 @@ No motion value is declared. The bundle records no transition or animation prope
 | Unselected | `#fafafa` fill with `#666666` 500 label (ranking); transparent with `#888888` 400 label (event) |
 
 Hover, pressed, focus, disabled, empty, loading, error and success states were not captured; the bundle has no state frames and no interaction events, so none is described.
+
+Live state probe, 2026-10-16 (`https://www.ssg.com/page/pc/ranking.ssg`), `filter-chip`: pressed — no visible change (measured 2026-10-16); focus — outline rgba(0, 0, 0, 0.5) dashed 1px.
 
 ## Do's and Don'ts
 

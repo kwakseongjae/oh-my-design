@@ -149,6 +149,8 @@ components:
     typography: 14px / 400 (computes Arial)
     states: rest only; not probed
     use: Region shortcuts under 지역별 인기 웨이팅 맛집 on home (전국, 서울 남부, 서울 북부, 부산, 경남, 광주, 강원, 대구) at home::[data-omd-capture="11"]
+    height: 80px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   category-button:
     type: button
     backgroundColor: transparent
@@ -578,6 +580,8 @@ Only these states were observed on the three captured routes; nothing else is sp
 | **Live data** | The waiting count renders in `#1cfbce` on 13 of the 20 captured TOP100 cards. |
 
 The region and cuisine shortcuts, the map button and the search input were not probed; their states are unmeasured, not absent. Error, empty, loading and success states were not captured.
+
+Live state probe, 2026-10-16 (`https://www.tabling.co.kr/`), `region-button`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

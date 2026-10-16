@@ -125,6 +125,8 @@ components:
     pressed: 'bg #13ab82'
     states: 'probe on /business/ with fixed overlays hidden: hover and pressed settle on #13ab82; on home the fixed header covered it, and Tab never reached it on either page, so focus is unmeasured'
     use: 'Fixed call-to-action at the same spot on all three pages, 256 x 76: B2B·대량세탁 문의 on home, 상담 문의하기 on /business/; the third instance on /culture/ was not probed'
+    padding: 0px
+    focus: 'label #3a3a3a, outline #3a3a3a dotted 1px on :focus-visible'
   inquiry-button:
     type: button
     backgroundColor: '#0ac290'
@@ -467,6 +469,8 @@ Only these states were observed on the captured pages; nothing else is specified
 | **Disabled** | The first arrow of the culture carousel is marked disabled at capture. |
 
 Error, empty, loading and success states were not captured and are not described. Focus on the floating action is unmeasured.
+
+Live state probe, 2026-10-16 (`https://www.laundrygo.com/`), `floating-cta`: focus — label #3a3a3a, outline #3a3a3a dotted 1px.
 
 ## Do's and Don'ts
 

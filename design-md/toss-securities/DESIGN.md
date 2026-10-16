@@ -46,6 +46,8 @@ components:
     typography: 14px / 600 / 16px
     states: default, focus, and pressed observed; colors and geometry remained the same in the retained samples (the dump records no opacity, outline, or transform; the focus frame followed a mouse press and is not a keyboard focus-visible measurement)
     use: Public WTS compact primary link-action
+    pressed: 'bg #2272eb, shadow none (:hover + :active)'
+    focus: outline rgba(0, 12, 30, 0.8) solid 2px on :focus-visible
   investment-primary:
     type: button
     backgroundColor: '#3182f6'
@@ -454,6 +456,8 @@ Only selectors, surfaces, and states present in the supplied raw collector evide
 | Error | Not observed; no error token or variant is claimed. |
 | Loading / skeleton | Not observed; no loading or skeleton token is claimed. |
 | Empty / success | Not observed; no empty or success treatment is claimed. |
+
+Live state probe, 2026-10-16 (`https://www.tossinvest.com/?focusedProductCode=A000660`), `wts-primary-entry`: pressed — bg #2272eb, shadow none; focus — outline rgba(0, 12, 30, 0.8) solid 2px.
 
 ## Voice & Tone
 

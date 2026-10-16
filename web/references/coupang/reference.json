@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -79,6 +79,12 @@
         "kind": "brand-asset",
         "url": "https://news.coupang.com/coupang-media-assets-brand-guidelines-eng/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.coupang.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -719,6 +725,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"61\"]",
         "captured": "2026-07-12"
+      },
+      "components.header-menu-control.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.gnb-menu-btn.gnb-menu-btn-left \"\" (32 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.header-menu-control.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.gnb-menu-btn.gnb-menu-btn-left \"\" (32 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -726,12 +746,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 40,
+      "warnings": 41,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 25,
+      "extension-component-property": 26,
       "missing-primary": 1,
       "contrast-ratio": 4,
       "orphaned-tokens": 6
@@ -832,6 +852,12 @@
         "rule": "broken-ref",
         "path": "components.header-menu-control.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-menu-control.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

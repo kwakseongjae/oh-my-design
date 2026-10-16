@@ -45,6 +45,8 @@ components:
     typography: 16px / 400 / 24px PT Serif
     states: Default geometry observed on three public surfaces; interactionCount is 0, so hover, focus, pressed, disabled, and error values are absent.
     use: Selector-backed .btn action on the public home, brand-story, and timeline routes
+    pressed: 'bg #ffffff, label #dd006f (:hover + :active)'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   search-field:
     type: input
     backgroundColor: '#fff1f5'
@@ -215,6 +217,8 @@ The evidence packet has `interactionCount: 0` and `observedStates: 0`. No menu e
 | Skeleton header | Reserve the measured search and action footprints without simulating interaction states. | Geometry is observed; skeleton styling is not. |
 | Skeleton content | Use neutral placeholders rather than campaign colors. | Illustrative implementation guidance. |
 | Disabled action | Keep the reason visible; do not derive a disabled color from the pink default. | No disabled evidence was captured. |
+
+Live state probe, 2026-10-16 (`https://www.poya.com.tw/`), `primary-pill-action`: pressed — bg #ffffff, label #dd006f; focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "marketing-home",
@@ -85,6 +85,12 @@
         "kind": "license",
         "url": "https://notofonts.github.io/noto-docs/website/use/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "exchange-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -894,6 +900,13 @@
         "method": "computed-style",
         "selector": "surface-2::article",
         "captured": "2026-07-13"
+      },
+      "components.quick-fill.pressed": {
+        "surface_id": "exchange",
+        "source_id": "exchange-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.percentage-button.css-1vvi88j \"10%\" (56 x 28) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []
@@ -902,12 +915,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 62,
+      "warnings": 63,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 43,
+      "extension-component-property": 44,
       "missing-primary": 1,
       "contrast-ratio": 5,
       "orphaned-tokens": 11
@@ -948,6 +961,12 @@
         "rule": "broken-ref",
         "path": "components.quick-fill.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.quick-fill.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

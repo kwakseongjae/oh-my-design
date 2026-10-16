@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -61,6 +61,12 @@
         "kind": "official-doc",
         "url": "https://careers.malt.com/",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.malt.fr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -418,6 +424,20 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.sign-up-button \"Créer mon compte\" (150 x 42) via probe-component-states.mjs --match #fc5757 matched on radius, font-size, height, fg; locale fr-FR",
+        "captured": "2026-10-16"
+      },
+      "components.button-primary.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.sign-up-button \"Créer mon compte\" (150 x 42) via probe-component-states.mjs --match #fc5757 matched on radius, font-size, height, fg; locale fr-FR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -425,12 +445,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 33,
+      "warnings": 34,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 13,
+      "extension-component-property": 14,
       "contrast-ratio": 3,
       "orphaned-tokens": 15
     },
@@ -476,6 +496,12 @@
         "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

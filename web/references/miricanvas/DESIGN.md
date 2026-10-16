@@ -58,6 +58,7 @@ components:
     typography: 14px / 500 / 20px Pretendard Variable
     states: default captured on all three routes; the bundle holds no state frame for any element
     use: Header filled action (button.gidKcw) at home::[data-omd-capture="21"], 80 x 40; repeated near the foot of home (capture 58) and as the highlighted pricing-plan button (surface-3::[data-omd-capture="25"], 249 x 40)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   nav-item:
     type: button
     backgroundColor: transparent
@@ -447,6 +448,8 @@ Tier 2 token/component data could not be retrieved, so no Tier 2 comparison is a
 ### States
 
 No public runtime empty, loading, error, success, validation, disabled, skeleton, or reduced-motion state was captured. This reference deliberately does not prescribe them. The bundle also holds no hover, pressed, or focus frame for any element, so no pointer state is declared; the open navigation menu (§4) is the only captured interaction state.
+
+Live state probe, 2026-10-16 (`https://www.miricanvas.com/ko`), `primary-button`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

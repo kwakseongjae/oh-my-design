@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.makinarocks.ai/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1002,6 +1008,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"32\"]",
         "captured": "2026-07-13"
+      },
+      "components.header-contact-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.contact \"문의하기\" (117 x 38) via probe-component-states.mjs --match #ffffff matched on radius, padding, height; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.header-contact-link.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.contact \"문의하기\" (117 x 38) via probe-component-states.mjs --match #ffffff matched on radius, padding, height; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1009,12 +1029,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 58,
+      "warnings": 59,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 47,
+      "extension-component-property": 48,
       "contrast-ratio": 5,
       "orphaned-tokens": 4
     },
@@ -1072,6 +1092,12 @@
         "rule": "broken-ref",
         "path": "components.header-contact-link.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-contact-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

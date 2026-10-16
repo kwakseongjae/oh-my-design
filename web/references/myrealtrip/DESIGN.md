@@ -37,6 +37,8 @@ components:
     typography: 14px / 600 / Pretendard
     states: 'Default only; the bundle holds no hover, pressed, or focus frame on any of its three surfaces, so none is claimed, and no disabled variant was observed. Corrected 2026-09-29: the July text reasoned from interactionCount 0, which counts expansions, not pointer states.'
     use: Public home and hotel-header action; home::[data-omd-capture="5"] and surface-3::[data-omd-capture="3"]
+    pressed: 'bg #51abf3 (:hover + :active)'
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   selected-locale-tab:
     type: tab
     backgroundColor: '#101418'
@@ -371,6 +373,8 @@ The collector reports one selected tab observation and `interactionCount: 0`, an
 | Success | Not observed |
 | Disabled | Not observed |
 | Hover / pressed / focus | No state frame captured on any surface |
+
+Live state probe, 2026-10-16 (`https://www.myrealtrip.com/`), `primary-header-action`: pressed — bg #51abf3; focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

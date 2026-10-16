@@ -79,6 +79,7 @@ components:
     typography: 14px / 400 / 14px
     states: default captured; no pointer-state sample
     use: Repeated product-list button on new-products at surface-3::[data-omd-capture="148"] (58 occurrences of this variant)
+    height: 20px
   compact-list-control:
     type: button
     backgroundColor: '#f7f7f7'

@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -74,6 +74,12 @@
         "kind": "official-doc",
         "url": "https://app.3o3.co.kr/",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.3o3.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1134,6 +1140,20 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"62\"]",
         "captured": "2026-09-30"
+      },
+      "components.refund-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.lp-element.lp-pom-button.cta-click \"지금 찾으러 가기\" (361 x 61) via probe-component-states.mjs --match #fbbd41 matched on radius, font-size, height, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.refund-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.lp-element.lp-pom-button.cta-click \"지금 찾으러 가기\" (361 x 61) via probe-component-states.mjs --match #fbbd41 matched on radius, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1141,12 +1161,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 56,
+      "warnings": 57,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 11,
-      "extension-component-property": 29,
+      "extension-component-property": 30,
       "contrast-ratio": 2,
       "orphaned-tokens": 14
     },
@@ -1246,6 +1266,12 @@
         "rule": "broken-ref",
         "path": "components.refund-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.refund-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

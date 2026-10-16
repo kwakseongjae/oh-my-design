@@ -43,6 +43,7 @@ components:
     hover: inset 0 0 0 1000px rgba(0,0,0,0.2)
     focus: inset 0 0 0 1000px rgba(0,0,0,0.2)
     use: Try for free — neon green with black text; hover and focus darken it with a 20% black inset shadow.
+    pressed: shadow rgba(0, 0, 0, 0.2) 0px 0px 0px 1000px inset (:hover + :active)
   link-cta:
     type: button
     backgroundColor: transparent
@@ -188,6 +189,8 @@ state could not be measured (an overlay intercepted the pointer) and is not reco
 
 Hover: a 20% black inset on the green button; underline plus a green bar on hero links; the header
 button lifts to `#4d4d4d`. Focus: the same as hover plus the browser's ring. Pressed: not measured.
+
+Live state probe, 2026-10-16 (`https://www.celonis.com/`), `button-primary`: pressed — shadow rgba(0, 0, 0, 0.2) 0px 0px 0px 1000px inset.
 
 ## Do's and Don'ts
 

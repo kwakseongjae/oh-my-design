@@ -26,6 +26,9 @@ components:
     typography: 16px / 400 / LamboType
     states: captured in selected/tab-selected surface context; no activation transition asserted
     use: Marketing accent action at home::[data-omd-capture="45"]
+    height: 72px
+    pressed: 'bg #997300 (:hover + :active)'
+    focus: 'outline #1e90ff solid 2px on :focus-visible'
   outline-action:
     type: button
     textColor: '#ffffff'
@@ -209,6 +212,8 @@ All values below are selector-level observations from the supplied public market
 ### States
 
 The only observed interaction class is tabs: seven captured interactions produced `selected` / `tab-selected` provenance. Disabled carousel-control styling appears in component samples, but no disabled behavior was exercised. Empty, loading, error, success, skeleton, menu, dialog, form-validation, and toast states were not captured and are intentionally omitted.
+
+Live state probe, 2026-10-16 (`https://www.lamborghini.com/ko-en`), `accent-cta`: pressed — bg #997300; focus — outline #1e90ff solid 2px.
 
 ## Do's and Don'ts
 

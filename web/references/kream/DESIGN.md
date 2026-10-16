@@ -50,6 +50,8 @@ components:
     typography: 13px / 400 / Pretendard Variable
     states: default captured; the bundle holds no pointer-state frame for any KREAM element
     use: Search filter (button.filter_button.tint.shape_pill) at surface-3::[data-omd-capture="18"]; 7 instances
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   filter-outline:
     type: button
     backgroundColor: '#ffffff'
@@ -394,6 +396,8 @@ Only component defaults and the route-selected tabs (home category and search re
 | Success | Not observed in the captured routes |
 | Skeleton | Not observed in the captured routes |
 | Disabled | Not observed in the captured routes |
+
+Live state probe, 2026-10-16 (`https://kream.co.kr/search?keyword=nike`), `filter-pill`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

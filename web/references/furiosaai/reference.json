@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -86,6 +86,12 @@
         "kind": "license",
         "url": "https://abcdinamo.com/typefaces/favorit",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://furiosa.ai/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -922,6 +928,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"9\"]",
         "captured": "2026-09-30"
+      },
+      "components.header-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "div.button.u-md-d-none.w-variant-ca1d7055-4faf-cc5f-cfa6-386a09fc63d0 \"Talk to sales​Talk to sales\" (126 x 38) via probe-component-states.mjs --match #e21500 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed bg #b51100 (+2 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -929,12 +942,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 40,
+      "warnings": 41,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 10,
-      "extension-component-property": 21,
+      "extension-component-property": 22,
       "contrast-ratio": 1,
       "orphaned-tokens": 8
     },
@@ -1040,6 +1053,12 @@
         "rule": "broken-ref",
         "path": "components.header-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.header-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

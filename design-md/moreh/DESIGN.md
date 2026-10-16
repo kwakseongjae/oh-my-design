@@ -122,6 +122,7 @@ components:
     hover: 'bg #f34600; the arrow shifts 2px right (settled probe frame after a 120ms transition)'
     pressed: 'bg #f34600, the same settled frame as hover (probe)'
     use: Request Demo on moreh.io and the MoAI Inference Framework page, and the same action on moreh.io/ko/ (captures 8 on all three pages)
+    focus: outline oklch(0.7 0.2 40 / 0.35) solid 2px on :focus-visible
   ghost-on-dark-button:
     type: button
     backgroundColor: transparent
@@ -506,6 +507,8 @@ Only these states were observed; nothing else is specified here.
 | **Hover (footer pill)** | Text `#a09e9a` becomes `#f8f7f4` (probe, settled after 150ms). |
 
 Focus was not measured: the probe ran with focus skipped, and the collector's focus frames are not used. The collector's expansion pass recorded no interaction events, so other hover and pressed treatments are unmeasured rather than absent. Error, empty, loading, success and disabled states were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://moreh.io/`), `primary-button`: focus — outline oklch(0.7 0.2 40 / 0.35) solid 2px.
 
 ## Do's and Don'ts
 

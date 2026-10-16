@@ -44,6 +44,7 @@ components:
     typography: 16px / 700 / noto-sans-cjk-jp
     states: default only; no button interaction state captured
     use: Mobile catalog orange action, selector surface-2::[data-omd-capture=91]
+    focus: 'outline #eb5505 solid 2px on :focus-visible'
   mobile-outline-action:
     type: button
     backgroundColor: '#ffffff'
@@ -270,6 +271,8 @@ Only the tab has captured interaction provenance. Hover, focus, pressed, disable
 ### States
 
 The supplied evidence records one tab-selection interaction and no stable empty, loading, error, success, skeleton, or disabled component states. Those state groups are therefore absent from the token graph and component specifications. An implementation may provide accessible states, but it must not label their visual values as observed au facts.
+
+Live state probe, 2026-10-16 (`https://www.au.com/mobile/`), `mobile-orange-action`: focus — outline #eb5505 solid 2px.
 
 ## Do's and Don'ts
 

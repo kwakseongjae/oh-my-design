@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -86,6 +86,12 @@
         "kind": "official-doc",
         "url": "https://moreh.io/ko/news/",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://moreh.io/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1300,6 +1306,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"22\"]",
         "captured": "2026-09-30"
+      },
+      "components.primary-button.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.btn.btn-primary \"Request Demo→\" (159 x 40) via probe-component-states.mjs --match #ff5700 matched on radius, padding, font-size, height, fg; locale ko-KR: focus outline oklch(0.7 0.2 40 / 0.35) solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1307,12 +1320,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 69,
+      "warnings": 70,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 15,
-      "extension-component-property": 37,
+      "extension-component-property": 38,
       "contrast-ratio": 4,
       "orphaned-tokens": 13
     },
@@ -1436,6 +1449,12 @@
         "rule": "broken-ref",
         "path": "components.primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

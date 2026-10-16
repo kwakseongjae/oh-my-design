@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -67,6 +67,12 @@
         "kind": "official-doc",
         "url": "https://www.npmjs.com/package/@adyen/bento-design-tokens",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.adyen.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -292,6 +298,20 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-cta.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.ds-focusable.group.ds-focusable \"Contact usContact us\" (118 x 48) via probe-component-states.mjs --match #00d16a matched on radius, fg; locale nl-NL",
+        "captured": "2026-10-16"
+      },
+      "components.button-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.ds-focusable.group.ds-focusable \"Contact usContact us\" (118 x 48) via probe-component-states.mjs --match #00d16a matched on radius, fg; locale nl-NL",
+        "captured": "2026-10-16"
       }
     }
   },

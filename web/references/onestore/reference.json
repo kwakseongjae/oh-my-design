@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "store-home",
@@ -121,6 +121,12 @@
         "kind": "license",
         "url": "https://onestorecorp.com/news/presskit/2021/2021-05-17.html",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "game-catalog-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://m.onestore.co.kr/v2/ko-kr/game",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -627,6 +633,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"12\"]",
         "captured": "2026-07-13"
+      },
+      "components.game-primary-button.pressed": {
+        "surface_id": "game-catalog",
+        "source_id": "game-catalog-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.index-module__9URsAa__btn.index-module__9URsAa__btn-primary \"홈으로\" (140 x 45) via probe-component-states.mjs --match #28245b matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.game-primary-button.focus": {
+        "surface_id": "game-catalog",
+        "source_id": "game-catalog-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.index-module__9URsAa__btn.index-module__9URsAa__btn-primary \"홈으로\" (140 x 45) via probe-component-states.mjs --match #28245b matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -634,12 +654,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 35,
+      "warnings": 37,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 1,
-      "extension-component-property": 26,
+      "extension-component-property": 28,
       "missing-primary": 1,
       "contrast-ratio": 3,
       "orphaned-tokens": 4
@@ -674,6 +694,18 @@
         "rule": "broken-ref",
         "path": "components.game-primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.game-primary-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.game-primary-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

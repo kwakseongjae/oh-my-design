@@ -54,6 +54,7 @@ components:
     focus: outline browser default ring (outline-style auto), not brand — measured 2026-09-29
     states: default captured 2026-07-12; hover, pressed and keyboard focus measured 2026-09-29 on the /guide 웹에서 예약하기 link (real :hover, :active and Tab to :focus-visible, three reads); transition all 0.1s ease-in-out
     use: Prominent guide/product action
+    height: 56px
   search-action:
     type: button
     backgroundColor: '#f2f3f8'

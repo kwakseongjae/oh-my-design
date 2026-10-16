@@ -145,6 +145,8 @@ components:
     shadow: rgba(0, 0, 0, 0.08) 0px 3px 5px 0px
     states: rest only; no state frame
     use: Home search launcher (어디로 갈까요?) at home::[data-omd-capture="56"], 467 x 69
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   category-chip:
     type: button
     backgroundColor: transparent
@@ -533,6 +535,8 @@ Only these states were observed on the three captured pages.
 | **Hover and pressed (mega-menu title)** | Background transparent → `rgba(0, 100, 255, 0.1)`, the same on two titles on two pages. |
 
 Focus rings, disabled, loading, empty, error and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.tmapmobility.com/`), `search-pill`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

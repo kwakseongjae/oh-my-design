@@ -116,6 +116,7 @@ components:
     typography: 18px / 600 / 48px KBFGText
     states: 'probe on the KB국민카드 home: hover and pressed show no change across the button and three ancestor levels (transition all 0s); focus was not read, so none is declared'
     use: 로그인 in the login panel of the KB국민카드 home at surface-2::[data-omd-capture="30"], 344 x 48; the only filled action on the four captured pages
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   header-login:
     type: button
     backgroundColor: '#ffffff'
@@ -536,6 +537,8 @@ The probe read `transition: all 0s` on the yellow primary button; its hover and 
 | **Hover and pressed (primary button)** | No change (probe) |
 | **Current item** | Underline or outline plus weight 600 |
 | **Focus** | Not measured; no focus style is declared |
+
+Live state probe, 2026-10-16 (`https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002`), `primary-button`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

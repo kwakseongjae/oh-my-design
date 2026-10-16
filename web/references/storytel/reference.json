@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "official-doc",
         "url": "https://investors.storytel.com/en/",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.storytel.com/se",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -316,6 +322,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-invert.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.button-module-css-module__LsSAJa__button.button-module-css-module__LsSAJa__sizeM.button-module-css-module__LsSAJa__primaryInverted \"Starta erbjudandet\" (185 x 48) via probe-component-states.mjs --match #ffffff matched on radius, font-size, height, fg; locale sv-SE",
+        "captured": "2026-10-16"
       }
     }
   },

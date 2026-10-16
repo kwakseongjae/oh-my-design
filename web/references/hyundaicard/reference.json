@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -85,6 +85,12 @@
         "kind": "product-surface",
         "url": "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.hyundaicard.com/index.jsp",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -998,6 +1004,20 @@
         "method": "computed-style",
         "selector": "home::article (class sec_quick_menu)",
         "captured": "2026-07-13"
+      },
+      "components.login-filled-button.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.btn56_defaultbg_boldtxt \"간편번호 등록\" (280 x 56) via probe-component-states.mjs --match #000000 matched on radius, padding; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.login-filled-button.typography": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.btn56_defaultbg_boldtxt \"간편번호 등록\" (280 x 56) via probe-component-states.mjs --match #000000 matched on radius, padding; locale ko-KR",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []

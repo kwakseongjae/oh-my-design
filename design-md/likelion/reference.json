@@ -29,7 +29,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -98,6 +98,12 @@
         "kind": "product-surface",
         "url": "https://likelion.net/catalog",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://likelion.net/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -942,6 +948,13 @@
         "method": "live-state-probe",
         "selector": "button.flex.w-[84px] 프로그래밍",
         "captured": "2026-09-29"
+      },
+      "components.promo-tile.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.HomeCTACard_EducationCard__sH9lX.relative.bg-[#FCF4EE] \"BUSINESS멋쟁이사자처럼 비즈니스 신청하기자세히 보기\" (600 x 310) via probe-component-states.mjs --match #fcf4ee matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

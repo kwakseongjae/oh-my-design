@@ -144,6 +144,8 @@ components:
     shadow: rgba(26, 26, 26, 0.1) 0px 2px 6px 0px
     states: rest only; no state frame
     use: 지도 (map view) action floating over the FIND STAY listing at surface-2::[data-omd-capture="12"], 86 x 40 — the only filled action on the captured pages
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   stay-badge:
     type: badge
     backgroundColor: rgba(26, 26, 26, 0.6)
@@ -523,6 +525,8 @@ Only these states were observed on the three captured pages.
 | **Loading (listing)** | `#f2f2f2` placeholders at 8px radius for photo, title and region lines. |
 
 Focus rings, disabled, empty, error and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.stayfolio.com/findstay?check_in=2026-12-09&check_out=2026-12-10&adult_cnt=2`), `map-button`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

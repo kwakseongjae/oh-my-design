@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-29",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -85,6 +85,12 @@
         "kind": "product-surface",
         "url": "https://zigzag.kr/",
         "captured": "2026-09-29"
+      },
+      {
+        "id": "product-a-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://zigzag.kr/catalog/products/145661347",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1045,6 +1051,13 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"8\"]",
         "captured": "2026-07-13"
+      },
+      "components.buy-cta.height": {
+        "surface_id": "product-a",
+        "source_id": "product-a-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.BODY_17.BOLD.css-4nqftk \"구매하기\" (460 x 46) via probe-component-states.mjs --match #121314 matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
       }
     }
   },

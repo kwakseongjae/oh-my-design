@@ -144,6 +144,7 @@ components:
     pressed: 'bg #345cc8'
     states: 'probe: hover, pressed and keyboard focus (Tab #110) settle on #345cc8 after an all 0.3s ease transition'
     use: SD 라바 보러가기 (btn-sandoll) over the dark quote section of sandollcloud.com at surface-3::[data-omd-capture="105"], 200 x 60; Sandoll Cloud only
+    focus: 'bg #345cc8 on :focus-visible'
   cloud-sort-tab:
     type: tab
     backgroundColor: '#ffffff'
@@ -458,6 +459,8 @@ Only these states were observed; nothing else is specified here.
 | **Selected** | Current header item on /story in `#ff0600`; selected ranking tab `#1c1c1c` with a white label. |
 
 The collector's own hover and focus frames for the corporate header links were read mid-transition (different values per link) and are superseded by the probe. No authored focus ring was observed on the corporate site. Error, empty, loading and success states were not captured.
+
+Live state probe, 2026-10-16 (`https://www.sandollcloud.com/`), `cloud-action-button`: focus — bg #345cc8.
 
 ## Do's and Don'ts
 

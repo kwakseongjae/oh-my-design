@@ -97,6 +97,7 @@ components:
     typography: 14px / 400 / 20px ABC Favorit
     states: rest on home and About; no state frame
     use: Talk to sales at the right of the header (div.button wrapping the link at home::[data-omd-capture="3"]), 126 x 38
+    pressed: 'bg #b51100 (+2 nested-layer changes) (:hover + :active)'
   notice-modal:
     type: card
     backgroundColor: '#ffffff'
@@ -404,6 +405,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Transition frames (not declared)** | The submit button's pressed frame (transparent zero-size shadows) and focus frame (shadows at alpha 0.024); field focus frames at `#c1cbd9` (focus is never taken from the capture); a 150 × 21 red link on the form page reading `#000000` under the pointer, one element with no sibling. |
 
 Hover and focus treatments on furiosa.ai itself, empty, loading and success states were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://furiosa.ai/`), `header-cta`: pressed — bg #b51100 (+2 nested-layer changes).
 
 ## Do's and Don'ts
 

@@ -92,6 +92,7 @@ components:
     typography: 14px / 500 / 22px Pretendard
     states: rest on home and the Arkain page (capture 7 on each); no state frame
     use: Header 도입 문의하기 action at home::[data-omd-capture="7"], 107 x 40
+    focus: 'outline #262626 solid 2px on :focus-visible'
   hero-cta:
     type: button
     backgroundColor: '#262626'
@@ -584,6 +585,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Transition frames (not declared)** | Global navigation hover (`oklab(0 0 0 / 0)`), goormEDU button pressed (transparent zero-size shadow), a goormEDU tab focus frame at alpha 0.004. |
 
 Focus rings, error, empty, loading and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.goorm.io/`), `header-cta`: focus — outline #262626 solid 2px.
 
 ## Do's and Don'ts
 

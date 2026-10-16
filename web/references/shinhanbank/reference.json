@@ -24,7 +24,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "internet-banking",
@@ -99,6 +99,12 @@
         "kind": "official-doc",
         "url": "https://shinhangroup.com/kr/about/group/mission",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "group-corporate-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.shinhangroup.com/kr/main",
+        "captured": "2026-10-16"
       }
     ],
     "claims": {
@@ -891,6 +897,13 @@
         "method": "computed-style",
         "selector": "surface-3::#grp_prod1",
         "captured": "2026-07-13"
+      },
+      "components.family-site-selector.pressed": {
+        "surface_id": "group-corporate",
+        "source_id": "group-corporate-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.btn_selct \"Family site\" (205 x 48) via probe-component-states.mjs --match #f3f6fb matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     },
     "conflicts": []
@@ -899,12 +912,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 50,
+      "warnings": 51,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 36,
+      "extension-component-property": 37,
       "missing-primary": 1,
       "contrast-ratio": 3,
       "orphaned-tokens": 7
@@ -993,6 +1006,12 @@
         "rule": "broken-ref",
         "path": "components.family-site-selector.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.family-site-selector.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

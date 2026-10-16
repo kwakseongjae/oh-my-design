@@ -43,6 +43,9 @@ components:
     shadow: rgba(41,4,2,0.08) 0 2px 8px
     hover: '#290402'
     use: Iscriviti in the header — aubergine with an off-white label and a soft shadow. Hover changes nothing (pseudo-elements included); focus adds Tailwind's default slate ring.
+    padding: 8px 16px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: 'shadow transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px, #94a3b8 0px 0px 0px 1px, rgba(41, 4, 2, 0.08) 0px 2px 8px 0px on :focus-visible'
   button-login:
     type: button
     backgroundColor: '#ffffff'
@@ -192,6 +195,8 @@ only when `:hover` matched; background-image, text-decoration and pseudo-element
 
 Hover: audience tabs gain a 5% wash and turn aubergine; the header buttons do not change. Focus: a
 1px slate ring (framework default) or the browser's ring.
+
+Live state probe, 2026-10-16 (`https://www.satispay.com/it-it/`), `button-signup`: pressed — no visible change (measured 2026-10-16); focus — shadow transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px, #94a3b8 0px 0px 0px 1px, rgba(41, 4, 2, 0.08) 0px 2px 8px 0px.
 
 ## Do's and Don'ts
 

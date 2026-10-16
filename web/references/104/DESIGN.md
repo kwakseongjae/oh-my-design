@@ -49,8 +49,12 @@ components:
     rounded: 4px
     padding: 0px 12px
     typography: 18px/700/42px operating-system stack
-    states: default static selector observed; interaction capture recorded 0, so no changed state values are published
+    states: default appearance from the 2026-07-13 capture; hover, pressed and keyboard focus measured by a live state probe on 2026-10-16
     use: Observed home navigation-search action
+    height: 46px
+    hover: 'bg #ff7800'
+    pressed: 'bg #ff7800 with a 3.2px rgba(33, 37, 41, 0.5) ring (:hover + :active)'
+    focus: 'bg #d97b00, border #cc7400 on :focus-visible; no outline drawn'
   outline-action:
     type: button
     textColor: '#ff9100'
@@ -109,7 +113,7 @@ That operational clarity sits beside an explicitly people-centered corporate ide
 - Dark `#292929`, muted `#7e7e7e`, white `#ffffff`, and pale divider `#dddddd` carry most of the information hierarchy.
 - Teal `#00afb8` and soft teal `#dbf7f7` appear in a separate topic/pill treatment, rather than as a substitute for the orange action color.
 - The supplied surfaces favor compact, bold labels and 4px action geometry; 8px and 12px are present on dialog and card shells.
-- The capture has no interaction events, so no hover, pressed, focus, disabled, error, menu, or authenticated-product behavior is represented as a product fact.
+- The 2026-07-13 capture has no interaction events. A live state probe on 2026-10-16 measured hover, pressed and keyboard focus on the navigation-search action only; no other hover, pressed, focus, disabled, error, menu, or authenticated-product behavior is represented as a product fact.
 
 ### Primary tasks
 
@@ -195,7 +199,7 @@ The supplied public surfaces support a compact information layout rather than a 
 
 ### Responsive & Interaction Notes
 
-The artifact covers three desktop-public surface records and preserves no interactions. It shows both compact 32–36px actions and a 42px navigation-search action, plus 40px topic tabs, but does not establish a responsive target-size rule. The active topic/tab appearance is a static captured variant, not an observed click transition. Mobile, menus, dialogs beyond the sampled login shell, and form validation remain absent.
+The artifact covers three desktop-public surface records and preserves no interactions. It shows both compact 32–36px actions and a navigation-search action with a 42px line box (46px tall with its 2px transparent border, measured 2026-10-16), plus 40px topic tabs, but does not establish a responsive target-size rule. The active topic/tab appearance is a static captured variant, not an observed click transition. Mobile, menus, dialogs beyond the sampled login shell, and form validation remain absent.
 
 ## Elevation & Depth
 
@@ -269,7 +273,7 @@ No first-party motion duration, easing, reduced-motion policy, or event transiti
 
 ### Scope boundary
 
-The supplied artifact records `interactionCount: 0` and no observed states. The variants above are static selector-backed samples only. No interaction-state transition, toast, form-error, disabled, menu, authenticated account, or input-state rule is inferred.
+The supplied 2026-07-13 artifact records `interactionCount: 0` and no observed states; the navigation-search states come from a separate live probe on 2026-10-16. The variants above are static selector-backed samples only. No interaction-state transition, toast, form-error, disabled, menu, authenticated account, or input-state rule is inferred.
 
 ---
 **Verified:** 2026-07-14
@@ -279,7 +283,7 @@ The supplied artifact records `interactionCount: 0` and no observed states. The 
 
 ### States
 
-No state tokens or state-component facts are published. The sole supplied product-style artifact reports `observedStates: 0`, `interactionKinds: 0`, and `interactionCount: 0`; the artifact therefore does not establish empty, loading, error, success, skeleton, disabled, validation, or transition behavior. Those fields are omitted rather than filled with a generic job-board pattern.
+Only the navigation-search action has measured states. A live probe of `https://www.104.com.tw/` on 2026-10-16 read hover `#ff7800`, pressed `#ff7800` with a 3.2px `rgba(33, 37, 41, 0.5)` ring, and keyboard focus `#d97b00` with a `#cc7400` border and no outline. No other state tokens are published. The 2026-07-13 product-style artifact reports `observedStates: 0`, `interactionKinds: 0`, and `interactionCount: 0`; the artifact therefore does not establish empty, loading, error, success, skeleton, disabled, validation, or transition behavior. Those fields are omitted rather than filled with a generic job-board pattern.
 
 ## Do's and Don'ts
 
@@ -296,7 +300,7 @@ No state tokens or state-component facts are published. The sole supplied produc
 - Do not treat corporate campaign or social-program visuals as product tokens without selector-backed product evidence.
 - Do not use the one low-frequency `#1654b9` link sample as a general primary CTA.
 - Do not present Arial or `MsJhengHeiBold` as a proprietary, web-loadable 104 UI family.
-- Do not add hover, pressed, focus, disabled, validation, or authenticated states to the documented public components.
+- Do not add hover, pressed, focus, disabled, validation, or authenticated states beyond the measured navigation-search states.
 - Do not turn the observed dialog shadow into a blanket shadow on every card or control.
 
 ## Voice & Tone

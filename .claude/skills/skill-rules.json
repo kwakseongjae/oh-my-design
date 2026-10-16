@@ -274,6 +274,14 @@
       "published": "skills/omd-remember/SKILL.md"
     },
     {
+      "id": "omd-restraint",
+      "name": "omd:restraint",
+      "path": ".claude/skills/omd-restraint/SKILL.md",
+      "description": "절제미를 측정 가능한 규칙으로 — 렌더된 페이지를 데스크톱·모바일에서 재서 규칙별 PASS/FAIL+수치(AUDIT)하거나 인벤토리 → 삭제 → 병합 → 비운 자리를 초점에 → 재측정(APPLY). '덜어내 줘', '절제미', '여백 살려줘', 'too busy', 'simplify the page', 「余白を活かして」, 「留白」 류에 트리거. 브랜드 토큰은 DESIGN.md가 이긴다.",
+      "published": "skills/omd-restraint/SKILL.md",
+      "user_invocable": true
+    },
+    {
       "id": "omd-slop-audit",
       "name": "omd:slop-audit",
       "path": ".claude/skills/omd-slop-audit/SKILL.md",

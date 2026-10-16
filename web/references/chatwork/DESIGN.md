@@ -53,6 +53,7 @@ components:
     hover: '#f03748'
     pressed: '#f03748'
     use: The primary call to action (無料登録して使う) — a 50px pill repeated at 35, 60, 80 and 85px tall. Measured across hover and pressed with :hover live; neither changes anything.
+    padding: 0px
   button-outline-red:
     type: button
     backgroundColor: '#ffffff'

@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -61,6 +61,12 @@
         "kind": "product-surface",
         "url": "https://www.shinhancard.com/pconts/html/card/apply/premium/1236160_2205.html",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.shinhancard.com/pconts/html/main.html",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1149,6 +1155,20 @@
         "method": "computed-style",
         "selector": "surface-2::[data-omd-capture=\"31\"]",
         "captured": "2026-07-13"
+      },
+      "components.primary-action.typography": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.shc-btn.theme-primary.size-xl \"로그인\" (312 x 56) via probe-component-states.mjs --match #005df9 matched on radius, padding, height; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.primary-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.shc-btn.theme-primary.size-xl \"로그인\" (312 x 56) via probe-component-states.mjs --match #005df9 matched on radius, padding, height; locale ko-KR: pressed transform matrix(0.96, 0, 0, 0.96, 0, 0) (+1 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1156,12 +1176,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 70,
+      "warnings": 71,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 50,
+      "extension-component-property": 51,
       "contrast-ratio": 6,
       "orphaned-tokens": 10
     },
@@ -1231,6 +1251,12 @@
         "rule": "broken-ref",
         "path": "components.primary-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

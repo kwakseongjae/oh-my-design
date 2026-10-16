@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -86,6 +86,12 @@
         "kind": "official-doc",
         "url": "https://team.idus.com/",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "product-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.idus.com/v2/product/d418cb12-ecba-4534-860a-23836c3e0c44",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1328,6 +1334,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"5\"]",
         "captured": "2026-09-30"
+      },
+      "components.button-primary.focus": {
+        "surface_id": "product",
+        "source_id": "product-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.CoreButton.CoreButton--block.BaseButtonRectangle \"구매하기\" (580 x 48) via probe-component-states.mjs --match #ef7014 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1335,12 +1348,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 73,
+      "warnings": 74,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 9,
-      "extension-component-property": 51,
+      "extension-component-property": 52,
       "contrast-ratio": 3,
       "orphaned-tokens": 10
     },
@@ -1428,6 +1441,12 @@
         "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

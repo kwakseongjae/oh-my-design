@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -86,6 +86,12 @@
         "kind": "official-doc",
         "url": "https://careers.payhere.in/recruit/",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://payhere.in/table-order/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -2294,6 +2300,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"22\"]",
         "captured": "2026-09-30"
+      },
+      "components.pricing-cta.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.PricingInfo__CtaButton-sc-30d8bfe1-5.fzNXVf \"도입 비용 계산해보기\" (212 x 60) via probe-component-states.mjs --match #000000 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed opacity 0.9 (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -2301,12 +2314,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 120,
+      "warnings": 121,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 16,
-      "extension-component-property": 79,
+      "extension-component-property": 80,
       "contrast-ratio": 8,
       "orphaned-tokens": 17
     },
@@ -2730,6 +2743,12 @@
         "rule": "broken-ref",
         "path": "components.pricing-cta.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.pricing-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

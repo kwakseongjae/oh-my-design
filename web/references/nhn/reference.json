@@ -24,7 +24,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -75,6 +75,12 @@
         "kind": "official-doc",
         "url": "https://inside.nhn.com/corp/260",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "services-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.nhn.com/services?tab=technology",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -919,6 +925,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"50\"]",
         "captured": "2026-07-13"
+      },
+      "components.services-pill.pressed": {
+        "surface_id": "services",
+        "source_id": "services-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.relative.flex.items-center \"웹사이트\" (90 x 32) via probe-component-states.mjs --match #f8f8f8 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -926,12 +939,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 52,
+      "warnings": 53,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 37,
+      "extension-component-property": 38,
       "contrast-ratio": 5,
       "orphaned-tokens": 6
     },
@@ -1079,6 +1092,12 @@
         "rule": "broken-ref",
         "path": "components.services-pill.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.services-pill.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

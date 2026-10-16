@@ -146,6 +146,7 @@ components:
     typography: 17px / 700 / 23px Pretendard
     states: rest only; no state frame
     use: 바로가기 on the www.nc.com hero at surface-2::[data-omd-capture="0"], 107 x 55 (pd-button--contained, --color-common, --size-xxl)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   portal-game-card:
     type: card
     rounded: 16px
@@ -413,6 +414,8 @@ Only these states were observed on the three captured pages; nothing else is spe
 | **Transition frame (not declared)** | The unselected NEWS tab's hover and pressed frames at `#acacac`. |
 
 Focus rings, error, empty, loading and success treatments were not captured and are not described.
+
+Live state probe, 2026-10-16 (`https://www.nc.com/`), `portal-contained-button`: focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

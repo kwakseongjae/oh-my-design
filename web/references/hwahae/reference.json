@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -80,6 +80,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.hwahae.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1182,6 +1188,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"6\"]",
         "captured": "2026-09-30"
+      },
+      "components.footer-login-chip.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.hds-inline-flex.hds-justify-center.hds-items-center \"로그인\" (49 x 24) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: pressed bg #f7f7f7 (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.footer-login-chip.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.hds-inline-flex.hds-justify-center.hds-items-center \"로그인\" (49 x 24) via probe-component-states.mjs --match #ffffff matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1189,12 +1209,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 66,
+      "warnings": 68,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 8,
-      "extension-component-property": 42,
+      "extension-component-property": 44,
       "missing-primary": 1,
       "contrast-ratio": 3,
       "orphaned-tokens": 12
@@ -1313,6 +1333,18 @@
         "rule": "broken-ref",
         "path": "components.footer-login-chip.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-login-chip.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.footer-login-chip.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

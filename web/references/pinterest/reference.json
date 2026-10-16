@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-19",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -91,6 +91,12 @@
         "kind": "brand-asset",
         "url": "https://s.pinimg.com/font/Pinterest-Sans-Pro-Regular.otf",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://kr.pinterest.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -580,6 +586,27 @@
         "source_id": "business-capture",
         "method": "computed-style",
         "captured": "2026-07-13"
+      },
+      "components.consumer-primary-action.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.button_l.pointer_t.primary_l \"Log in\" (76 x 48) via probe-component-states.mjs --match #e60023 matched on radius, padding, font-size, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.consumer-primary-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.button_l.pointer_t.primary_l \"Log in\" (76 x 48) via probe-component-states.mjs --match #e60023 matched on radius, padding, font-size, fg; locale en-US: pressed bg #b2001b, transform matrix(0.944444, 0, 0, 0.944444, 0, 0) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.consumer-primary-action.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.button_l.pointer_t.primary_l \"Log in\" (76 x 48) via probe-component-states.mjs --match #e60023 matched on radius, padding, font-size, fg; locale en-US: focus border #ffffff, outline #435ee5 solid 2px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -587,12 +614,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 34,
+      "warnings": 36,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 21,
+      "extension-component-property": 23,
       "contrast-ratio": 1,
       "orphaned-tokens": 8
     },
@@ -644,6 +671,18 @@
         "rule": "broken-ref",
         "path": "components.consumer-primary-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-primary-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.consumer-primary-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

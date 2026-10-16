@@ -38,6 +38,7 @@ components:
     typography: 16px / 700 / Roboto Flex
     states: default observed only; interaction capture reported 0
     use: design.pega.com documentation-site home action (link-as-button class) — not a Pega UX Design System component
+    pressed: 'bg #ffffff, label #000000, shadow #ffffff 0px 0px 0px 1.76px, #076bc9 0px 0px 0px 2.88px, rgba(7, 107, 201, 0.1) 0px 0px 0px 4.8px (:hover + :active)'
   header-search:
     type: input
     backgroundColor: rgba(255, 255, 255, 0.14)
@@ -236,6 +237,8 @@ page lists. That is the failure this roster exists to stop repeating.
 ### States
 
 No authenticated-product empty, loading, success, error, or disabled state was supplied. The packet records zero interaction actions and zero observed states, so no component-state contract is inferred. Pega’s public documentation discusses forms, accessibility, and workflow patterns, but that narrative does not create measured state tokens for this reference.
+
+Live state probe, 2026-10-16 (`https://design.pega.com/`), `dark-link-action`: pressed — bg #ffffff, label #000000, shadow #ffffff 0px 0px 0px 1.76px, #076bc9 0px 0px 0px 2.88px, rgba(7, 107, 201, 0.1) 0px 0px 0px 4.8px.
 
 ## Do's and Don'ts
 

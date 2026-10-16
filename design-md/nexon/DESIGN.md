@@ -110,6 +110,7 @@ components:
     typography: 15px / 400 NEXON Gothic Bold
     states: rest only; the bundle holds no state frame for capture 29
     use: Portal login-box primary link, a 353 x 60 dark block at home::[data-omd-capture="29"]; the green button below it (a.naver-login-btn, 네이버 로그인) is Naver's sign-in and is excluded as a third-party brand element
+    pressed: 'bg #0077ff (:hover + :active)'
   search-input:
     type: input
     textColor: '#222426'
@@ -425,6 +426,8 @@ Only the GNB icon links carry declared hover and pressed values: four siblings s
 | Open — guide family-site select | 250 x 298 dropdown on `#000000`, 1px `#e9ecef` border |
 
 Focus is not declared from the capture. Loading, empty and error states did not occur on these public pages and are not specified.
+
+Live state probe, 2026-10-16 (`https://www.nexon.com/Home/Game`), `login-box-action`: pressed — bg #0077ff.
 
 ## Do's and Don'ts
 

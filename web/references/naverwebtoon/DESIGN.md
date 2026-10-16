@@ -72,6 +72,8 @@ components:
     typography: 12px / 400 / Pretendard
     states: default captured on all three routes; no state frame
     use: Global navigation creator entry (button.GlobalNavigationBar__button_creators) at home::[data-omd-capture="14"], 151 px wide
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
+    focus: no visible change (measured 2026-10-16) on :focus-visible
   gnb-link:
     type: tab
     backgroundColor: transparent
@@ -344,6 +346,8 @@ The legacy prose-derived token sheet, hover/pressed/focus treatments, reader and
 | Pagination, disabled previous | Statically disabled with `#000000`, 14px/500, `surface-3::[data-omd-capture="132"]`; not a generalized disabled rule |
 
 No loading, empty, success, error, toast, skeleton, focus, hover, or pressed state was captured for promotion.
+
+Live state probe, 2026-10-16 (`https://comic.naver.com/index`), `creator-entry`: pressed — no visible change (measured 2026-10-16); focus — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

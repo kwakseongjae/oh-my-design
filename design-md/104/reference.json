@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-14",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -79,6 +79,12 @@
         "kind": "official-doc",
         "url": "https://corp.104.com.tw/zh/sustainability/community/be-a-giver",
         "captured": "2026-07-14"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.104.com.tw/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -337,9 +343,10 @@
       },
       "components.search-action.states": {
         "surface_id": "home",
-        "source_id": "home-live",
-        "method": "supplied-live-extract",
-        "captured": "2026-07-13"
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.nav-search-btn.btn.btn-secondary \"搜尋\" (180 x 46) via probe-component-states.mjs --match #ff9100 --radius 4 --font-size 18 --padding \"0px 12px\" --locale zh-TW; computed line-height 42px plus 2px transparent border: states default appearance from the 2026-07-13 capture; hover, pressed and keyboard focus measured by a live state probe on 2026-10-16",
+        "captured": "2026-10-16"
       },
       "components.search-action.use": {
         "surface_id": "home",
@@ -556,6 +563,34 @@
         "source_id": "home-live",
         "method": "supplied-live-extract",
         "captured": "2026-07-13"
+      },
+      "components.search-action.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.nav-search-btn.btn.btn-secondary \"搜尋\" (180 x 46) via probe-component-states.mjs --match #ff9100 --radius 4 --font-size 18 --padding \"0px 12px\" --locale zh-TW; computed line-height 42px plus 2px transparent border",
+        "captured": "2026-10-16"
+      },
+      "components.search-action.hover": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.nav-search-btn.btn.btn-secondary \"搜尋\" (180 x 46) via probe-component-states.mjs --match #ff9100 --radius 4 --font-size 18 --padding \"0px 12px\" --locale zh-TW; computed line-height 42px plus 2px transparent border: hover bg #ff7800",
+        "captured": "2026-10-16"
+      },
+      "components.search-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.nav-search-btn.btn.btn-secondary \"搜尋\" (180 x 46) via probe-component-states.mjs --match #ff9100 --radius 4 --font-size 18 --padding \"0px 12px\" --locale zh-TW; computed line-height 42px plus 2px transparent border: pressed bg #ff7800 with a 3.2px rgba(33, 37, 41, 0.5) ring (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.search-action.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.nav-search-btn.btn.btn-secondary \"搜尋\" (180 x 46) via probe-component-states.mjs --match #ff9100 --radius 4 --font-size 18 --padding \"0px 12px\" --locale zh-TW; computed line-height 42px plus 2px transparent border: focus bg #d97b00, border #cc7400 on :focus-visible; no outline drawn",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -563,12 +598,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 32,
+      "warnings": 35,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 19,
+      "extension-component-property": 22,
       "contrast-ratio": 1,
       "orphaned-tokens": 9
     },
@@ -608,6 +643,24 @@
         "rule": "broken-ref",
         "path": "components.search-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-action.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-action.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

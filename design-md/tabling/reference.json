@@ -23,7 +23,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -98,6 +98,12 @@
         "kind": "license",
         "url": "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.tabling.co.kr/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1592,6 +1598,20 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"2\"]",
         "captured": "2026-09-30"
+      },
+      "components.region-button.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.areaCuration_button__h40lX \"전국\" (80 x 80) via probe-component-states.mjs --match #f0f4ff matched on radius, padding, font-size, fg; locale ko-KR",
+        "captured": "2026-10-16"
+      },
+      "components.region-button.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.areaCuration_button__h40lX \"전국\" (80 x 80) via probe-component-states.mjs --match #f0f4ff matched on radius, padding, font-size, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1599,12 +1619,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 80,
+      "warnings": 81,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 18,
-      "extension-component-property": 44,
+      "extension-component-property": 45,
       "contrast-ratio": 2,
       "orphaned-tokens": 16
     },
@@ -1758,6 +1778,12 @@
         "rule": "broken-ref",
         "path": "components.region-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.region-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

@@ -72,6 +72,8 @@ components:
     size: 32px x 32px
     states: default captured on both menu buttons (capture 15 and 33; 33 carries the gnb-menu-btn-active class and records the same values); no pointer-state sample
     use: Home header menu button (a.gnb-menu-btn) at home::[data-omd-capture="15"]; it has no text node, so no label colour is claimed
+    height: 32px
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   header-search-input:
     type: input
     backgroundColor: '#ffffff'
@@ -335,6 +337,8 @@ The following states require a product-specific observation before specification
 | Success | Not observed in the captured routes |
 | Skeleton | Not observed in the captured routes |
 | Disabled | Not observed in the captured routes |
+
+Live state probe, 2026-10-16 (`https://www.coupang.com/`), `header-menu-control`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

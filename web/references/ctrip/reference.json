@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-22",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "product-surface",
         "url": "https://hotels.ctrip.com/",
         "captured": "2026-09-22"
+      },
+      {
+        "id": "hotels-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://hotels.ctrip.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -436,6 +442,20 @@
         "source_id": "home-live",
         "method": "live-inspect",
         "captured": "2026-09-22"
+      },
+      "components.button-search.padding": {
+        "surface_id": "hotels",
+        "source_id": "hotels-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.tripui-online-btn.tripui-online-btn-large.tripui-online-btn-solid-primary \"搜索\" (90 x 48) via probe-component-states.mjs --match #006ff6 matched on radius, font-size, fg; locale zh-CN",
+        "captured": "2026-10-16"
+      },
+      "components.button-search.focus": {
+        "surface_id": "hotels",
+        "source_id": "hotels-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.tripui-online-btn.tripui-online-btn-large.tripui-online-btn-solid-primary \"搜索\" (90 x 48) via probe-component-states.mjs --match #006ff6 matched on radius, font-size, fg; locale zh-CN: focus shadow #ffffff 0px 0px 0px 2px, #1733c5 0px 0px 0px 4px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -443,12 +463,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 41,
+      "warnings": 42,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 6,
-      "extension-component-property": 12,
+      "extension-component-property": 13,
       "missing-primary": 1,
       "orphaned-tokens": 22
     },
@@ -512,6 +532,12 @@
         "rule": "broken-ref",
         "path": "components.button-search.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-search.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

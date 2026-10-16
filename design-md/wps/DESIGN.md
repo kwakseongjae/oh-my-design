@@ -68,6 +68,7 @@ components:
     pressed: '#b02928'
     focus: '#dd3332'
     use: 立即下载 (Download now) — the headline call to action, 193×54. Painted from the error ramp, not the brand ramp. Focus matches :focus-visible and changes nothing.
+    height: 54px
   button-secondary:
     type: button
     backgroundColor: transparent

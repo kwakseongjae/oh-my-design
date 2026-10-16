@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -79,6 +79,12 @@
         "kind": "product-surface",
         "url": "https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "surface-2-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1517,6 +1523,13 @@
         "method": "computed-style",
         "selector": "surface-4::li",
         "captured": "2026-09-30"
+      },
+      "components.primary-button.pressed": {
+        "surface_id": "surface-2",
+        "source_id": "surface-2-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.btn.btn--primary \"로그인\" (344 x 48) via probe-component-states.mjs --match #ffcc00 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1524,12 +1537,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 83,
+      "warnings": 84,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 16,
-      "extension-component-property": 58,
+      "extension-component-property": 59,
       "orphaned-tokens": 9
     },
     "findings": [
@@ -1646,6 +1659,12 @@
         "rule": "broken-ref",
         "path": "components.primary-button.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

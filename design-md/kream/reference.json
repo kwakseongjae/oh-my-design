@@ -21,7 +21,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -84,6 +84,12 @@
         "kind": "license",
         "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "search-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://kream.co.kr/search?keyword=nike",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -971,6 +977,20 @@
         "method": "computed-style",
         "selector": "surface-3::[data-omd-capture=\"36\"]",
         "captured": "2026-07-13"
+      },
+      "components.filter-pill.pressed": {
+        "surface_id": "search",
+        "source_id": "search-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.filter_button.tint.shape_pill \"배송0\" (60 x 30) via probe-component-states.mjs --match #f4f4f4 matched on radius, padding, font-size, height, fg; locale ko-KR: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.filter-pill.focus": {
+        "surface_id": "search",
+        "source_id": "search-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.filter_button.tint.shape_pill \"배송0\" (60 x 30) via probe-component-states.mjs --match #f4f4f4 matched on radius, padding, font-size, height, fg; locale ko-KR: focus no visible change (measured 2026-10-16) on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -978,12 +998,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 52,
+      "warnings": 54,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 38,
+      "extension-component-property": 40,
       "contrast-ratio": 6,
       "orphaned-tokens": 4
     },
@@ -1029,6 +1049,18 @@
         "rule": "broken-ref",
         "path": "components.filter-pill.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-pill.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.filter-pill.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

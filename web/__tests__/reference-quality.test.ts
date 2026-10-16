@@ -263,7 +263,8 @@ describe("generated reference quality manifest", () => {
       status: "verified_v2",
       evidenceCoverage: 1,
       surfaceCount: 5,
-      sourceCount: 6,
+      // 7 since 2026-10-16: the font-catalog-probe-2026-10-16 source that measured catalog-fill-button's pressed/focus.
+      sourceCount: 7,
       conflictCount: 0,
       reasonCodes: [],
     });

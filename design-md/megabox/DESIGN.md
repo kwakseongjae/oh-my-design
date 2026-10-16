@@ -36,6 +36,8 @@ components:
     typography: 13.0005px / 400 / NanumBarunGothic
     states: rest on 20 like buttons on the movie route (surface-2 capture 29 and siblings); the bundle holds no state frame for any MEGABOX element
     use: Movie route list action at surface-2::[data-omd-capture="29"].
+    pressed: 'bg #f2f4f8, label #351f67, outline #000000 dotted 1px (+2 nested-layer changes) (:hover + :active)'
+    focus: 'outline #000000 dotted 1px on :focus-visible'
   movie-like-button-on-dark:
     type: button
     backgroundColor: rgba(0, 0, 0, 0.4)
@@ -344,6 +346,8 @@ The `/booking` capture renders 48 elements, all header, navigation, and footer: 
 ### States
 
 Observed: one selected movie-route tab (`li.on`: `#503396` label on `#ffffff`, purple top and side borders, no bottom border) and one static disabled carousel-arrow element on the home. The bundle holds no `::state-hover`, `::state-pressed`, or `::state-focus` sample for any element (0 of 464), so no pointer or focus state is declared. Corrected 2026-09-30: the July text gave `interactionCount: 0` as the reason; that counter covers opened dialogs, tabs, and menus. A home `button.on` has no unmarked sibling to compare against and is not recorded as a state. No empty, loading, error, success, skeleton, or transition treatment is in the bundle, and no fabricated state specification is supplied.
+
+Live state probe, 2026-10-16 (`https://www.megabox.co.kr/movie`), `movie-like-button`: pressed — bg #f2f4f8, label #351f67, outline #000000 dotted 1px (+2 nested-layer changes); focus — outline #000000 dotted 1px.
 
 ## Voice & Tone
 

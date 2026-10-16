@@ -50,6 +50,7 @@ components:
     typography: 14px / 600 / Helvetica (system-computed)
     states: default capture only
     use: Home marketing primary CTA
+    height: 41px
   outline-pill:
     type: button
     textColor: '#f0f0f0'

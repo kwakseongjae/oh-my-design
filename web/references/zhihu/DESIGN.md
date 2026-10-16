@@ -58,6 +58,8 @@ components:
     pressed: oklch(0.535218 0.21381 259.318)
     focus: oklch(0.581758 0.21381 259.318 / 0.3)
     use: Sign-in / register — 36px on the home feed, 34px in columns; focus draws a two-layer ring.
+    height: 36px
+    padding: 0px 16px
   button-secondary:
     type: button
     backgroundColor: '#ffffff'

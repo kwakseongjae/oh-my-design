@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-30",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -67,6 +67,12 @@
         "kind": "official-doc",
         "url": "https://company.nexon.com/ko/company",
         "captured": "2026-09-30"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.nexon.com/Home/Game",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -1085,6 +1091,13 @@
         "method": "computed-style",
         "selector": "home::[data-omd-capture=\"12\"]",
         "captured": "2026-09-30"
+      },
+      "components.login-box-action.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a \"NEXON ID 로그인\" (353 x 60) via probe-component-states.mjs --match #17191d matched on radius, padding, font-size, height, fg; locale ko-KR: pressed bg #0077ff (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -1092,12 +1105,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 61,
+      "warnings": 62,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 8,
-      "extension-component-property": 41,
+      "extension-component-property": 42,
       "contrast-ratio": 1,
       "orphaned-tokens": 11
     },
@@ -1251,6 +1264,12 @@
         "rule": "broken-ref",
         "path": "components.login-box-action.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.login-box-action.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

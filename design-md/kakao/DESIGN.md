@@ -135,6 +135,7 @@ components:
     typography: 13px / 700 / KakaoSmall
     states: default captured 2026-07-11 (home::[data-omd-capture="10"], 142 x 32, tracking -0.5px); on 2026-09-29 hover and pressed matched :hover and :active and left fill, border and label at rest, so no hover or pressed value is declared; keyboard focus draws only the browser default ring (outline auto), so no focus value is declared
     use: 'Corporate-home marketing download pill (a.btn_top.btn_down, 카카오톡 다운로드) beside the dark marketing tag; the only #fae100 element in the capture'
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   service-card:
     type: card
     backgroundColor: transparent
@@ -421,6 +422,8 @@ All six controls probed on the corporate home (navigation pill, search button, d
 | Culture carousel control | default only |
 
 Keyboard focus was walked with real Tab presses on 2026-09-29. None of the six probed controls has an authored focus ring; the browser default is not a Kakao value and is not tokenized.
+
+Live state probe, 2026-10-16 (`https://www.kakaocorp.com/page/`), `marketing-download-cta`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

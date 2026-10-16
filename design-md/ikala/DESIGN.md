@@ -124,6 +124,7 @@ components:
     typography: 18px / 500 / 18px Noto Sans
     states: rest only; no state frame was captured and no probe was run, so no hover, pressed or focus value is declared
     use: Get in Touch on the home hero at home::[data-omd-capture="18"] (167 x 58) and 聯絡我們 on /zh-tw/ (132 x 58)
+    pressed: text-decoration underline (+2 nested-layer changes) (:hover + :active)
   blue-button:
     type: button
     backgroundColor: '#2563eb'
@@ -526,6 +527,8 @@ Sources: three logged-out ikala.ai pages captured through the owner's browser on
 ### States
 
 No state frames were captured: the capture recorded rest values only, with `interactionCount: 0`, which does not mean the site has no states. Read from rest values are the selected solution tab (`#2a415e`), the current-section underline in the header (2px `#000000`) and the disabled carousel arrow. Hover, pressed, focus, loading, error and success treatments are not declared.
+
+Live state probe, 2026-10-16 (`https://ikala.ai/`), `hero-cta`: pressed — text-decoration underline (+2 nested-layer changes).
 
 ## Do's and Don'ts
 
