@@ -1,9 +1,9 @@
 /**
- * NEW / HOT / STATES status badge — concept A square chip (styles/brand-a.css `.sq-chip-*`).
+ * NEW / HOT / STATES status badge — a small pill chip (styles/brand-a.css `.sq-chip-*`).
  *
  * Since rebrand A the badge sits on paper next to the tier chip on archive cards, no longer over
  * brand-coloured tiles, so the r1 glass gradients (and their solid dark bases) are gone.
- * HOT = ink fill, NEW = gamboge fill behind ink (gamboge is never text), STATES = ink outline.
+ * HOT = ink fill, NEW = neutral cell fill, STATES = ink outline (round 10: the Iris accent is kept for actions and selected states).
  * Light and dark come from the --sq-* tokens.
  *
  * STATES is deliberately labelled for what it measures rather than as a verdict:

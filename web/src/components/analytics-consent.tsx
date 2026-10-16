@@ -174,7 +174,7 @@ export function AnalyticsConsent() {
           <span className="line-clamp-2 sm:line-clamp-none">{copy.body}</span>{" "}
           <Link
             href={privacyHref}
-            className="font-semibold text-[var(--sq-ink)] underline decoration-[var(--sq-gamboge)] decoration-2 underline-offset-2"
+            className="font-semibold text-[var(--sq-ink)] underline decoration-[var(--sq-guide)] decoration-2 underline-offset-2"
           >
             {copy.details}
           </Link>
@@ -190,7 +190,7 @@ export function AnalyticsConsent() {
           <button
             type="button"
             onClick={accept}
-            className="min-h-9 bg-[var(--sq-gamboge)] px-3 text-xs font-bold text-[var(--sq-on-gamboge)] transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]"
+            className="min-h-9 rounded-full bg-[var(--sq-primary)] px-4 text-xs font-bold text-[var(--sq-on-primary)] transition-colors hover:bg-[var(--sq-primary-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]"
           >
             {copy.accept}
           </button>

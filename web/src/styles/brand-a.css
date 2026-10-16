@@ -1,32 +1,74 @@
 /*
- * oh-my-design brand system, concept A "Square / 네모 / 方塊" (rebrand 2026-10-13).
- * Proposed for the root DESIGN.md in docs/research/2026-10-13-rebrand/DESIGN.md.patch
- * (not applied; the owner approves design-system changes).
+ * oh-my-design brand system. Round 10 (owner, 2026-10-16: "go with the recommendation",
+ * docs/research/2026-10-17-direction/DIRECTIONS.md): Iris palette, B's radius system,
+ * A's restraint. Proposed for the root DESIGN.md in
+ * docs/research/2026-10-13-rebrand/impl/DESIGN.md.patch (the owner approves DS changes).
  *
- * Every Hangul, kana and hanzi glyph sits in the same square em-box; the site is set
- * like manuscript paper (원고지 / 原稿用紙 / 稿紙). White paper, ink, one gamboge (藤黃)
- * accent used as fill only. Square corners for the site's own chrome — brand radii
- * appear only where a reference's claimed token draws them (keycaps, gen-UI screen).
+ * Iris: an OKLCH ramp with the primary at step 600 (#6749e2) and violet-biased neutrals.
+ * One accent, used only on the main button, the user's chat bubble, the active step and
+ * selected states; chips, tabs and the rest of the chrome stay neutral, and nothing violet
+ * sits behind the keycaps (they are the one multi-hue object on screen, RESTRAINT R7).
  *
- * Contrast (WCAG, measured on the hex values):
- *   ink/paper 18.1  ink-2/paper 8.4  ink/gamboge 9.0
- * Gamboge is never text on paper (2.0:1); it is a fill behind ink, or a mark.
+ * Contrast (WCAG 2.x, measured on the hex values):
+ *   white on primary 5.79   primary on paper 5.79   white on primary-hover 7.80
+ *   primary on p50 5.38     ink on paper 18.6       ink-2 (n600) on paper 6.82
+ * n500 (4.32 on paper) is for icons and decoration only, never body text.
+ * Focus ring: primary (600) at 2px — p400 is 2.6:1 on paper, under the 3:1 a focus
+ * indicator needs, so DIRECTIONS' "400" ring is not used.
+ *
+ * Radius (B): inner 6 · control 14 · pill on actions and chips · card 20 · panel 28 ·
+ * bubble 22. Nested radii shrink inward. The "square chrome" rule of rounds 1-9 is retired.
  *
  * Light only (owner, 2026-10-16): one palette, no theme switch, color-scheme: light.
  */
 @import "./wanted-sans-latin.css";
 
 :root {
-  /* palette */
+  /* Iris ramp + violet-biased neutrals (DIRECTIONS.md, palette B) */
+  --sq-p50: #f6f6fe;
+  --sq-p100: #eaebfe;
+  --sq-p200: #d8d8ff;
+  --sq-p300: #bdbcff;
+  --sq-p400: #9c95ff;
+  --sq-p500: #7f68ff;
+  --sq-p600: #6749e2;
+  --sq-p700: #5437c1;
+  --sq-p800: #402697;
+  --sq-p900: #2a156a;
+  --sq-n50: #f9faff;
+  --sq-n100: #f3f3f8;
+  --sq-n200: #e5e6eb;
+  --sq-n300: #d3d3db;
+  --sq-n400: #a4a4ab;
+  --sq-n500: #797981;
+  --sq-n600: #5a5a63;
+  --sq-n700: #3f3f48;
+  --sq-n800: #25262e;
+  --sq-n900: #13131a;
+
+  /* roles */
   --sq-paper: #ffffff;
-  --sq-ink: #15161a;
-  --sq-ink-2: #4a4d57;
-  --sq-cell: #f4f5f8;
-  --sq-guide: #d6d9e1;
-  --sq-guide-2: #eceef3;
-  --sq-gamboge: #f2a900;
-  --sq-on-gamboge: #15161a;
-  --sq-focus: #1d2bd8;
+  --sq-ink: var(--sq-n900);
+  --sq-ink-2: var(--sq-n600);
+  --sq-icon: var(--sq-n500);
+  --sq-band: var(--sq-n50);
+  --sq-cell: var(--sq-n100);
+  --sq-guide: var(--sq-n300);
+  --sq-guide-2: var(--sq-n200);
+  --sq-primary: var(--sq-p600);
+  --sq-primary-hover: var(--sq-p700);
+  --sq-primary-press: var(--sq-p800);
+  --sq-on-primary: #ffffff;
+  --sq-tint: var(--sq-p50);
+  --sq-focus: var(--sq-p600);
+  /* the terminal's dark field (C): Iris-tinted, low chroma so it reads as ink, not a second accent */
+  --sq-term: #1d1a2e;
+  --sq-term-ink: #ecebf5;
+  --sq-term-dim: #a9a6bd;
+  --sq-term-acc: var(--sq-p200);
+  --sq-term-warn: #f2c879;
+  /* resting panels: one soft violet-grey shadow, no outline */
+  --sq-shadow-panel: 0 1px 2px rgba(20, 20, 60, .04), 0 16px 40px -16px rgba(40, 30, 120, .16);
   /* status text/icon colours (licence badges, copy feedback). ≥5.4:1 on paper and cell; never fills. */
   --sq-ok: #14733f;
   --sq-warn: #8f5200;
@@ -61,24 +103,20 @@
   --sq-fw-heading: 760;
   --sq-fw-strong: 650;
 
-  /* radii: the site's own chrome is square */
-  --sq-radius: 0px;
+  /* radii (B): controls 14, pill buttons and chips, cards 20, panels 28 */
+  --sq-r-inner: 6px;
+  --sq-r-ctl: 14px;
+  --sq-r-pill: 999px;
+  --sq-r-card: 20px;
+  --sq-r-panel: 28px;
+  --sq-r-bubble: 22px;
+  --sq-radius: var(--sq-r-ctl);
 
   /* layout */
   --sq-max: 1360px;
   --sq-gut: 40px;
   --sq-header-h: 68px;
 
-  /* grid-paper motif: 40px cells with heavier 80px 田 lines */
-  --sq-grid-paper:
-    linear-gradient(var(--sq-guide-2) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, var(--sq-guide-2) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(var(--sq-guide) 1px, transparent 1px) 0 0 / 80px 80px,
-    linear-gradient(90deg, var(--sq-guide) 1px, transparent 1px) 0 0 / 80px 80px;
-  /* a single manuscript cell's faint 田 cross guide */
-  --sq-cell-guide:
-    linear-gradient(var(--sq-guide-2), var(--sq-guide-2)) center / 1px 100% no-repeat,
-    linear-gradient(var(--sq-guide-2), var(--sq-guide-2)) center / 100% 1px no-repeat;
 }
 
 @media (max-width: 900px) {
@@ -88,10 +126,10 @@
   }
 }
 
-/* Small square chips shared by non-brand-a components (StatusBadge, FontCard licence). */
-.sq-chip{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 6px;border-radius:var(--sq-radius);font:700 10.5px/1 var(--sq-f-latin),sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+/* Small chips shared by non-brand-a components (StatusBadge, FontCard licence). */
+.sq-chip{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:var(--sq-r-pill);font:700 10.5px/1 var(--sq-f-latin),sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .sq-chip-hot{background:var(--sq-ink);color:var(--sq-paper)}
-.sq-chip-new{background:var(--sq-gamboge);color:var(--sq-on-gamboge)}
+.sq-chip-new{background:var(--sq-cell);color:var(--sq-ink)}
 .sq-chip-states{border:1.5px solid var(--sq-ink);color:var(--sq-ink)}
 .sq-chip-ok{border:1px solid currentColor;color:var(--sq-ok)}
 .sq-chip-warn{border:1px solid currentColor;color:var(--sq-warn)}

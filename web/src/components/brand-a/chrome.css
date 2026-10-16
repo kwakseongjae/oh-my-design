@@ -1,12 +1,12 @@
 /* Site chrome (header, footer, page base) for concept A. Imported by the brand header/footer on every page.
-   Round 7: light only, one control height (36px) across the header tools, one nav size (15px),
-   the layered round-1…6 overrides folded into single rules. */
+   Round 7: light only, one control height (36px) across the header tools, one nav size (15px).
+   Round 10: Iris accent, radius system (controls 14, pill actions, cards 20, panels 28). */
 :where(.sq-root) *{box-sizing:border-box;margin:0;padding:0}
 .sq-root{background:var(--sq-paper);color:var(--sq-ink);font-family:var(--sq-f-en);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;overflow-x:clip}
 :where(.sq-root) a{color:inherit;text-decoration:none}
 :where(.sq-root) :focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.sq-skip{position:absolute;left:8px;top:-60px;background:var(--sq-ink);color:var(--sq-paper);padding:8px 12px;z-index:50}
+.sq-skip{position:absolute;left:8px;top:-60px;background:var(--sq-ink);color:var(--sq-paper);padding:8px 14px;border-radius:var(--sq-r-ctl);z-index:50}
 .sq-skip:focus{top:8px}
 .sq-wrap{max-width:var(--sq-max);margin:0 auto;padding:0 var(--sq-gut)}
 :where(.sq-root) :lang(en){font-family:var(--sq-f-en)}
@@ -34,15 +34,15 @@
 .sq-menu a:hover,.sq-menu-m a:hover{color:var(--sq-ink)}
 .sq-tools{display:flex;align-items:center;gap:12px;margin-left:20px}
 .sq-menu-m{display:none}
-/* GitHub star button: Taste Skill's dark nav pill in concept A (square, like all site chrome) */
-.sq-star{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 14px;background:var(--sq-ink);color:var(--sq-paper);font:600 15px/1 var(--sq-f-latin),sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;transition:background-color .15s}
+/* GitHub star button: Taste Skill's dark nav pill (round 10: a pill, as actions are) */
+.sq-star{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 16px 0 14px;border-radius:var(--sq-r-pill);background:var(--sq-ink);color:var(--sq-paper);font:600 15px/1 var(--sq-f-latin),sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;transition:background-color .15s}
 .sq-star:hover{background:color-mix(in srgb,var(--sq-ink) 84%,var(--sq-paper))}
 .sq-star:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-star svg{flex-shrink:0}
 .sq-star-n{display:inline-flex;align-items:center;gap:5px;min-width:3.4em}
-.sq-star-g{color:var(--sq-gamboge);line-height:1}
+.sq-star-g{color:currentColor;line-height:1}
 /* surface links in the header tools slot (blog index + its ko/en switch, docs language) */
-.sq-xlink{display:inline-flex;align-items:center;min-height:36px;padding:0 10px;font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap}
+.sq-xlink{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:var(--sq-r-pill);font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap}
 .sq-xlink:hover{color:var(--sq-ink);background:var(--sq-cell)}
 .sq-xlink-on{background:var(--sq-ink);color:var(--sq-paper)}
 .sq-xlink-on:hover{background:var(--sq-ink);color:var(--sq-paper)}

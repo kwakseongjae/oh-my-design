@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 export default function GlobalNotFound() {
   return (
     <html lang="en">
-      {/* Concept A (rebrand round 2): paper, ink, the gamboge mark, grid-paper ground. */}
-      <body className="min-h-screen bg-background text-foreground" style={{ background: "var(--sq-grid-paper)", backgroundColor: "var(--sq-paper)" }}>
+      {/* Rebrand round 10: paper, ink, an ink dot mark; no grid ground. */}
+      <body className="min-h-screen bg-background text-foreground" style={{ backgroundColor: "var(--sq-paper)" }}>
         <main className="mx-auto flex min-h-screen max-w-xl flex-col justify-center gap-4 px-4">
           <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
-            <span aria-hidden="true" className="inline-block h-3 w-3 bg-[var(--sq-gamboge)]" />
+            <span aria-hidden="true" className="inline-block h-3 w-3 rounded-full bg-[var(--sq-ink)]" />
             404
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight">This page does not exist.</h1>
@@ -32,8 +32,8 @@ export default function GlobalNotFound() {
             The link may be from an older version of the site. Every DESIGN.md is still in the catalog.
           </p>
           <p className="flex gap-5 text-sm font-semibold">
-            <Link href="/" className="border-b-2 border-[var(--sq-gamboge)] pb-0.5">Home</Link>
-            <Link href="/design-systems" className="border-b-2 border-[var(--sq-gamboge)] pb-0.5">Catalog</Link>
+            <Link href="/" className="border-b-2 border-[var(--sq-guide)] pb-0.5 hover:border-[var(--sq-ink)]">Home</Link>
+            <Link href="/design-systems" className="border-b-2 border-[var(--sq-guide)] pb-0.5 hover:border-[var(--sq-ink)]">Catalog</Link>
           </p>
         </main>
       </body>

@@ -58,19 +58,20 @@
 }
 
 /*
- * oh-my-design product tokens — concept A "Square / 네모 / 方塊" (rebrand
- * 2026-10-13, branch feat/rebrand-a; proposed in
- * docs/research/2026-10-13-rebrand/DESIGN.md.patch, not yet applied).
+ * oh-my-design product tokens — rebrand branch feat/rebrand-a; round 10 (Iris
+ * palette, B radius system; proposed in
+ * docs/research/2026-10-13-rebrand/impl/DESIGN.md.patch, not yet applied).
  *
  * Until round 2 these were a violet-blue system (#7c5cfc, 10px radius) that
  * every page body still read, so the catalog, item page, docs, blog and the
  * consent banner looked unchanged after the landing moved. They are now
  * aliases of the --sq-* values in styles/brand-a.css — no new value is
  * introduced here, only the shadcn names pointed at the brand ones:
- *   primary = ink (gamboge is never text on paper, 2.0:1, so it cannot be
- *   the colour behind `text-primary` links); gamboge stays a fill used by
- *   the brand components directly. Radius 0: the site's own chrome is
- *   square; a reference's claimed radii are inline styles and unaffected.
+ *   primary = ink, so `text-primary` links stay ink: the Iris accent is kept
+ *   for the main button, the user's chat bubble, the active step and
+ *   selected states, which the brand components set directly. Radius 14
+ *   (the control radius of the round-10 system: controls 14, cards 20,
+ *   panels 28); a reference's claimed radii are inline styles and unaffected.
  */
 
 :root {
@@ -97,7 +98,7 @@
   --input: var(--sq-guide);
   --ring: var(--sq-focus);
 
-  --chart-1: var(--sq-gamboge);
+  --chart-1: var(--sq-primary);
   --chart-2: var(--sq-ink);
   --chart-3: var(--sq-ink-2);
   --chart-4: var(--sq-guide);
