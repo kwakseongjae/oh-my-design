@@ -19,7 +19,7 @@
 .sq-seg button:hover{color:var(--sq-ink)}
 .sq-seg button[aria-pressed="true"]{background:var(--sq-ink);color:var(--sq-paper)}
 .sq-seg button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-2px}
-.sq-n{font-weight:450;opacity:.7;font-variant-numeric:tabular-nums}
+.sq-n{font-weight:450;font-variant-numeric:tabular-nums}
 
 /* collections: one menu instead of 16 chips */
 .sq-coll{position:relative}

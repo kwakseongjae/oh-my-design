@@ -258,9 +258,10 @@ body:has([data-omd-paper]) {
   border-color: oklch(0.85 0 0);
 }
 
-/* Selection color */
+/* Selection color (round 10: Iris 200, ink text stays 14:1+ on it) */
 ::selection {
-  background: oklch(0.55 0.22 275 / 0.2);
+  background: var(--sq-p200);
+  color: var(--sq-ink);
 }
 
 /* Font Playground — "invite to type" placeholder shimmer.
