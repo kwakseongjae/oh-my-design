@@ -17,7 +17,7 @@ import "./gen-ui.css";
  */
 type T = BrandCopy["gen"];
 const LOADED_FACE: Partial<Record<SiteLocale, string>> = { ja: "Noto Sans JP", "zh-tw": "Noto Sans TC" };
-const FIRST: Record<string, string> = { KR: "toss", JP: "line", TW: "104" };
+const FIRST: Record<string, string> = { KR: "toss", JP: "freee", TW: "104" };
 const SYS = /^(system|-apple-system|system-ui)$/i;
 const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (m, k) => (k in v ? String(v[k]) : m));
 

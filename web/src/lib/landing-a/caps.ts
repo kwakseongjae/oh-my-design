@@ -10,9 +10,11 @@ import type { CapData, LogoCap } from "./types";
 /**
  * Build-time cap resolver (round 5). Which companies sit on the hero keyboard is data
  * (data/hero-caps.json); what each cap shows is decided here from the brand-svg manifest:
- *   - a record with a stored logo whose every solid fill reads at 3:1 on the claimed
- *     colour → logo cap on that colour; else on its pale tint if that reads → logo cap
- *     (gradient or raster artwork, which the check cannot read, only ever goes on the pale tint);
+ *   - a record with a stored logo whose every silhouette fill reads at 3:1 on a cap → logo cap,
+ *     trying in order: the claimed colour, its pale tint, a neutral white cap (round 8). The
+ *     cap body is decoration, not a colour claim — true of the tint already, so the neutral cap
+ *     is the same rule one step further. Gradient or raster artwork, which the check cannot
+ *     read, only ever goes on the pale tint or the neutral cap;
  *   - otherwise → glyph cap (native first glyph, claimed colour, claimed weight).
  * So a JP/TW logo added to brand-svg.json replaces a glyph cap with no code change.
  * Server only (reads public/ SVGs).
@@ -79,11 +81,25 @@ export function logoOf(id: string, prefer?: string, flat = false): { src: string
 /* Silhouette colours (scripts/logo-edges.mjs → data/brand-svg-edges.json): the fills that
    touch the cap. A fill inside the mark (Mercari's white m on its red box) is read against
    the mark, not the cap. A logo with no entry falls back to every solid fill (fails closed). */
-const EDGES = (edges as { logos: Record<string, { edge: string[] }> }).logos;
+const EDGES = (edges as { logos: Record<string, { edge: string[]; translucent?: boolean }> }).logos;
 export function capFills(src: string, svg: string): string[] {
   return EDGES[src]?.edge?.length ? EDGES[src].edge : solidFills(svg);
 }
-const legible = (src: string, svg: string, on: string) => capFills(src, svg).every((f) => contrast(f, on) >= 3);
+/* Round 8: no measurable colour fails closed, except gradient/raster artwork (`unchecked`), which
+   is only ever offered the pale tint or the neutral cap. */
+const legible = (src: string, svg: string, on: string, unchecked = false) => {
+  if (EDGES[src]?.translucent) return false; // a see-through part reads against whatever is under it: not checkable
+  const f = capFills(src, svg);
+  return f.length ? f.every((x) => contrast(x, on) >= 3) : unchecked;
+};
+
+/** Round 8: the neutral cap — clear white jelly. Pure white, not the paper token: it is the ground that admits most logos. */
+export const NEUTRAL_CAP = "#ffffff";
+
+/** Cap colours tried in order for a logo (first that every silhouette fill reads on at 3:1 wins). */
+export function capOrder(hex: string, unchecked: boolean): string[] {
+  return unchecked ? [paleOf(hex), NEUTRAL_CAP] : [hex, paleOf(hex), NEUTRAL_CAP];
+}
 
 type CapSet = { wide: string[][]; narrow: string[][] };
 const SETS = heroCaps.sets as Record<string, CapSet>;
@@ -107,9 +123,10 @@ export function heroCapsFor(locale: SiteLocale | undefined, cap: (id: string) =>
     if (!d?.hex) continue;
     const base = { id, n: d.n, nLang: d.nLang, rv: d.rv, row: rowOf(set.wide, id), mrow: rowOf(set.narrow, id), g: d.g, gLang: d.gLang, w: d.w };
     const logo = logoOf(id, VARIANTS[id]);
-    // gradient or raster artwork has colours the 3:1 check cannot read: it goes on the pale tint only
-    const unchecked = logo ? /url\(#|<image\b/.test(logo.svg) : false;
-    const capHex = logo ? (unchecked ? [paleOf(d.hex)] : [d.hex, paleOf(d.hex)]).find((h) => legible(logo.src, logo.svg, h)) : undefined;
+    // gradient or raster artwork has colours the 3:1 check cannot read: pale tint or neutral cap only
+    // (a mask or clip path adds no colour, so it does not count)
+    const unchecked = logo ? /fill(?:="|:\s*)url\(#|<image\b|Gradient\b/.test(logo.svg) : false;
+    const capHex = logo ? capOrder(d.hex, unchecked).find((h) => legible(logo.src, logo.svg, h, unchecked)) : undefined;
     if (logo && capHex) {
       const ratio = viewBoxRatio(logo.svg);
       out.push({ ...base, kind: "logo", src: logo.src, ratio, wide: logo.variant !== "symbol" && ratio > 1.6, hex: capHex, on: legendOn(capHex) });

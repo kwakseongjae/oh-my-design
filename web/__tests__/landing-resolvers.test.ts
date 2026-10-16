@@ -100,8 +100,8 @@ describe("landing slot resolvers", () => {
     toss: { slots: [] },
     line: { slots: ["surface", "sr"], button: ["pad", "fs"] },
     pixiv: { slots: ["sr"] },
-    freee: { slots: [], button: ["height"] },
-    "104": { slots: ["face"], button: ["height"] },
+    freee: { slots: [], button: [] },
+    "104": { slots: ["face"], button: [] },
     thsr: { slots: ["surface"] },
     apple: { slots: [] },
   };

@@ -13,13 +13,14 @@
  * their genuine logos are stored. */
 
 /**
- * "From DESIGN.md to screen" picker (round 5): six verified companies. Chips show the
- * genuine logo from brand-svg.json where one is stored (toss, karrot, kakaobank,
- * banksalad, all with every sample-screen token resolved: 16/16, 17/17, 17/17, 18/18);
- * line (JP, round 7: its official brand icon, flat on a plain tile — risk_tier high, chip only)
- * and 104 (TW, glyph chip until a verified logo is stored) open their locales. freee and apple were swapped out.
+ * "From DESIGN.md to screen" picker: seven verified companies. Chips show the genuine logo
+ * from brand-svg.json where one is stored (toss, karrot, kakaobank, banksalad, freee — every
+ * sample-screen slot resolved). Round 8: freee (JP, full coverage after the measured button
+ * backfill, official logo) opens /ja; line stays (official icon, flat chip only — risk_tier
+ * high; its unresolved slots render as silent defaults); 104 (TW, glyph chip until a verified
+ * logo is stored) opens /zh-tw.
  */
-export const GEN_UI_IDS = ["toss", "karrot", "kakaobank", "banksalad", "line", "104"] as const;
+export const GEN_UI_IDS = ["toss", "karrot", "kakaobank", "banksalad", "freee", "line", "104"] as const;
 
 /** Where a company's primary button is ambiguous, the component the reference names as its product button. */
 export const GEN_UI_PREFERRED_BUTTON: Readonly<Record<string, string>> = {
@@ -28,7 +29,7 @@ export const GEN_UI_PREFERRED_BUTTON: Readonly<Record<string, string>> = {
 };
 
 /** Opening company of the gen-UI section per locale region. */
-export const GEN_UI_FIRST = { KR: "toss", JP: "line", TW: "104" } as const;
+export const GEN_UI_FIRST = { KR: "toss", JP: "freee", TW: "104" } as const;
 
 /** Region order follows each locale's own heading. */
 export const REGION_ORDER = {

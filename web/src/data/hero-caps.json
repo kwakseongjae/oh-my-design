@@ -1,5 +1,5 @@
 {
- "note": "Landing hero keyboard, per locale (en and ko use default). Ids only: what each cap shows is resolved at build time (lib/landing-a/caps.ts). A verified reference with a claimed colour becomes a logo cap when web/src/data/brand-svg.json holds a genuine logo for it whose solid fills reach 3:1 on the claimed colour or its pale tint; otherwise it is a glyph cap (native first glyph on the claimed colour). Adding a JP or TW record to brand-svg.json therefore turns that glyph cap into a logo cap with no code change; re-render the posters afterwards (scripts/hero-posters.mjs). Rows are keyboard rows; a wordmark takes a wide cap.",
+ "note": "Landing hero keyboard, per locale (en and ko use default). Ids only: what each cap shows is resolved at build time (lib/landing-a/caps.ts). A verified reference with a claimed colour becomes a logo cap when web/src/data/brand-svg.json holds a genuine logo for it whose silhouette fills reach 3:1 on the claimed colour, its pale tint or a neutral white cap (round 8); otherwise it is a glyph cap (native first glyph on the claimed colour). Adding a JP or TW record to brand-svg.json therefore turns that glyph cap into a logo cap with no code change; re-render the posters afterwards (scripts/hero-posters.mjs). Rows are keyboard rows; a wordmark takes a wide cap.",
  "variants": {
   "toss": "wordmark"
  },
@@ -59,7 +59,7 @@
     [
      "yanolja",
      "freee",
-     "sakura-internet"
+     "pixiv"
     ]
    ],
    "narrow": [
@@ -77,7 +77,7 @@
      "freee"
     ],
     [
-     "sakura-internet",
+     "pixiv",
      "toyota"
     ]
    ]

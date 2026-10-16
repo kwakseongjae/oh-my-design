@@ -241,7 +241,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
             if (from && !reduce.matches) {
               const prev = idsOf(from);
               const fresh = (list as { id: string }[]).map((d) => d.id).filter((id) => !prev.has(id));
-              k3.current?.drop(fresh, { delay: 0.28 });
+              k3.current?.drop(fresh, { delay: 0.04, stagger: 0.07 });
             }
           }));
         })
@@ -258,7 +258,10 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
       from = takeSwitch(locale);
       // prerendered page: the inline poster swap ran before the click; redo it on activation
       if (from && !reduce.matches) h.setAttribute("data-set", setOf(from));
-      if (document.readyState === "complete") go();
+      // round 8: arriving from the language picker, the new caps are what the person waits for —
+      // boot now (keys3d and the logos are in the HTTP cache from the page just left), not after load + idle
+      if (from) boot();
+      else if (document.readyState === "complete") go();
       else addEventListener("load", go, { once: true });
     };
     const prerendering = (document as Document & { prerendering?: boolean }).prerendering;

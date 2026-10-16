@@ -2,8 +2,31 @@
  "schema_version": 3,
  "generated_at": "2026-06-02",
  "note": "Subset of the brand-svg collection (branches feat/brand-svg-gallery and feat/brand-svg-jp, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change. A risk_tier \"high\" record never goes on a keycap; it reaches the picker chip only when it also carries \"landing_use\": \"flat-chip\" (the logo as delivered, flat, on a plain tile with clear space — LINE's guideline forbids decoration, shadow, 3D and modification). landing_use is the only field added on import.",
- "count": 17,
+ "count": 22,
  "records": [
+  {
+   "id": "104",
+   "name": "104人力銀行",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/104/wordmark.svg",
+     "source": "Official corporate site (corp.104.com.tw)",
+     "source_url": "https://corp.104.com.tw/",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://corp.104.com.tw/",
+     "attribution": "104 Corporation (一零四資訊科技)",
+     "usage_note": "공식 기업 사이트 헤더 로고(data-URI svg) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Header logo of 104 Corporation's corporate site, embedded as a data:image/svg+xml URI and decoded unchanged. www.104.com.tw returned 403, so the job-bank header itself was not compared; listed in BLOCKED.md."
+    }
+   },
+   "default_variant": "wordmark"
+  },
   {
    "id": "banksalad",
    "name": "Banksalad",
@@ -81,6 +104,65 @@
      "verified_against": "Live header logo on coconala.com (coconala UI-kit CDN); favicon.svg shows the same prism mark (as an app icon).",
      "risk_tier": "med",
      "source_tier": "official"
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "eslite",
+   "name": "誠品 eslite",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/eslite/combined.svg",
+     "source": "Official corporate site (eslitecorp.com)",
+     "source_url": "https://www.eslitecorp.com/eslite/img/themeImg/logo_b.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://www.eslitecorp.com/eslite/index.jsp",
+     "attribution": "eslite Corporation (誠品股份有限公司)",
+     "usage_note": "공식 기업 사이트 헤더 로고(.svg, 원본 그대로) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Header logo of eslite's official corporate site (title 'eslite誠品 | 官方網站'); white twin logo_w.svg on the same path. www.eslite.com returned 403 to curl, so the retail site could not be cross-checked. The block mark is not published alone, so no symbol was cut out."
+    },
+    "wordmark": {
+     "ref": "brand-svg/eslite/wordmark.svg",
+     "source": "Official corporate site (eslitecorp.com)",
+     "source_url": "https://www.eslitecorp.com/eslite/img/themeImg/logo_title_b.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://www.eslitecorp.com/eslite/index.jsp",
+     "attribution": "eslite Corporation (誠品股份有限公司)",
+     "usage_note": "공식 기업 사이트 워드마크(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Same corporate site, logo_title_b.svg (wordmark without the block mark)."
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "familymart-tw",
+   "name": "全家便利商店 FamilyMart",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/familymart-tw/combined.svg",
+     "source": "Wikimedia Commons",
+     "source_url": "https://commons.wikimedia.org/wiki/File:FamilyMart_Logo_(2016-).svg",
+     "license": "PD",
+     "license_note": "Commons: PD-textlogo; author FamilyMart Co.,Ltd., credited to the FamilyMart UNY Holdings IR library (archived 2016). Trademark of FamilyMart Co., Ltd.; Taiwan FamilyMart uses it under licence.",
+     "license_url": "https://commons.wikimedia.org/wiki/File:FamilyMart_Logo_(2016-).svg",
+     "attribution": "FamilyMart Co., Ltd.",
+     "usage_note": "Wikimedia Commons PD(텍스트 로고) · 원본 벡터 · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Compared with Taiwan FamilyMart's official header logo family.com.tw/Marketing/images/logo_pc_2024.png (raster): same stripes + FamilyMart wordmark; the TW header adds the tagline 全家就是你家 above it, which is not in this file. Neither family.com.tw nor family.co.jp publishes a vector (both serve PNG)."
     }
    },
    "default_variant": "combined"
@@ -254,6 +336,42 @@
    "default_variant": "wordmark"
   },
   {
+   "id": "sakura-internet",
+   "name": "SAKURA internet",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/sakura-internet/combined.svg",
+     "source": "Official site (sakura.ad.jp)",
+     "source_url": "https://www.sakura.ad.jp/assets/images/logo.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://www.sakura.ad.jp/assets/images/logo.svg",
+     "attribution": "SAKURA internet Inc.",
+     "usage_note": "공식 사이트 로고(.svg, symbol 래퍼만 제거) · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Official site logo; same mark as the corporate site id_mono.svg. The source wraps its paths in an unused <symbol>; the wrapper was removed (no path changes). 30th-anniversary variants deliberately not used.",
+     "risk_tier": "med",
+     "source_tier": "official"
+    },
+    "symbol": {
+     "ref": "brand-svg/sakura-internet/symbol.svg",
+     "source": "Official corporate site (sakura.ad.jp/corporate)",
+     "source_url": "https://www.sakura.ad.jp/corporate/wp-content/themes/sakura-corporate/assets/images/favicon.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://www.sakura.ad.jp/corporate/",
+     "attribution": "SAKURA internet Inc.",
+     "usage_note": "공식 사이트 심볼(파비콘 .svg) · 흰 배경 사각형만 제거 · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "The brand's own SVG favicon: the same two petals (#f57 + #808088 at 40%) as the symbol in the stored combined logo and in id_mono.svg, used on its own. Only the full-canvas white background rect was removed; the two petal paths are unchanged."
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
    "id": "smarthr",
    "name": "SmartHR",
    "country": "JP",
@@ -320,6 +438,29 @@
      "attribution": "Viva Republica (Toss) · 2026 New-Dimension CI",
      "usage_note": "공식 심볼(2026 뉴디멘션 3D) · Toss가 벡터 미배포라 공식 래스터 기반 · 식별용",
      "source_tier": "official"
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "toyota",
+   "name": "トヨタ TOYOTA",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/toyota/wordmark.svg",
+     "source": "Official corporate site (global.toyota)",
+     "source_url": "https://global.toyota/pages/contents/image/globaltoyota_logo.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://global.toyota/jp/",
+     "attribution": "Toyota Motor Corporation",
+     "usage_note": "공식 기업 사이트 로고(.svg, 원본 그대로) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "CSS background of #main_logo on global.toyota (公式企業サイト), read from header_footer.css. The corporate site shows the TOYOTA wordmark only; no standalone emblem SVG was found on it."
     }
    },
    "default_variant": "wordmark"

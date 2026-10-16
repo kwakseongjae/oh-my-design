@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { capData, getHeroCaps, getLandingData } from "@/lib/landing-a/data.server";
-import { capFills, chipLogo, logoOf, paleOf, svgText } from "@/lib/landing-a/caps";
+import { NEUTRAL_CAP, capFills, capOrder, chipLogo, logoOf, paleOf, svgText } from "@/lib/landing-a/caps";
 import edges from "@/data/brand-svg-edges.json";
 import { contrast } from "@/lib/landing-a/contrast";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
@@ -51,6 +51,42 @@ describe("hero keycaps", () => {
     expect(ja.find((c) => c.id === "freee")?.kind).toBe("logo");
   });
 
+  it("round 8 cap order: brand colour → pale tint → neutral white; a logo shows if any of them reads at 3:1", () => {
+    expect(capOrder("#2864f0", false)).toEqual(["#2864f0", paleOf("#2864f0"), NEUTRAL_CAP]);
+    expect(capOrder("#2864f0", true)).toEqual([paleOf("#2864f0"), NEUTRAL_CAP]);
+    const legibleOn = (id: string, on: string) => {
+      const l = logoOf(id)!;
+      return capFills(l.src, l.svg).every((f) => contrast(f, on) >= 3);
+    };
+    // pixiv's #0096fa misses its own colour and its tint but reads on white (3.11) → neutral cap on /ja
+    const pixiv = getHeroCaps("ja").find((c) => c.id === "pixiv")!;
+    expect(pixiv.kind).toBe("logo");
+    expect(pixiv.hex).toBe(NEUTRAL_CAP);
+    expect(legibleOn("pixiv", capData("pixiv")!.hex!)).toBe(false);
+    expect(legibleOn("pixiv", paleOf(capData("pixiv")!.hex!))).toBe(false);
+    // the neutral cap is never chosen while the brand colour or its tint reads
+    for (const loc of LOCALES) for (const c of getHeroCaps(loc).filter((x) => x.kind === "logo" && x.hex === NEUTRAL_CAP)) {
+      const hex = capData(c.id)!.hex!;
+      expect(legibleOn(c.id, hex) || legibleOn(c.id, paleOf(hex)), c.id).toBe(false);
+    }
+    // still refused on all three grounds (measured silhouette fills): Mercari's blue dot, SmartHR's teal, coconala's yellow
+    for (const id of ["mercari", "smarthr", "coconala"]) {
+      const hex = capData(id)!.hex!;
+      expect(capOrder(hex, false).some((h) => legibleOn(id, h)), id).toBe(false);
+    }
+  });
+
+  it("round 8 logos from feat/brand-svg-tw-jp: every /ja cap is a logo; /zh-tw shows eslite and FamilyMart", () => {
+    expect(getHeroCaps("ja").filter((c) => c.kind !== "logo").map((c) => c.id)).toEqual([]);
+    const tw = getHeroCaps("zh-tw");
+    for (const id of ["eslite", "familymart-tw"]) expect(tw.find((c) => c.id === id)?.kind, id).toBe("logo");
+    // EVA Air has no stored logo yet: native glyph until one lands in brand-svg.json
+    expect(tw.find((c) => c.id === "evaair")?.kind).toBe(logoOf("evaair") ? "logo" : "glyph");
+    // SAKURA internet's symbol draws one petal at 40% opacity: not checkable on any cap, so it is refused
+    const e = (edges as { logos: Record<string, { translucent?: boolean }> }).logos;
+    expect(e["/brand-svg/sakura-internet/symbol.svg"]?.translucent).toBe(true);
+  });
+
   it("every manifest variant has measured silhouette colours (run scripts/logo-edges.mjs after adding a logo)", () => {
     const logos = (edges as { logos: Record<string, unknown> }).logos;
     for (const r of manifest.records) for (const v of Object.values(r.variants)) expect(logos["/" + (v as { ref: string }).ref], (v as { ref: string }).ref).toBeTruthy();
@@ -91,7 +127,7 @@ describe("hero keycaps", () => {
   it("picker chips: genuine logo where stored, else glyph", () => {
     const gen = getLandingData("en").gen;
     const logos = gen.filter((g) => g.logo).map((g) => g.id);
-    expect(logos).toEqual(["toss", "karrot", "kakaobank", "banksalad", "line"]);
+    expect(logos).toEqual(["toss", "karrot", "kakaobank", "banksalad", "freee", "line", "104"]);
     for (const g of gen.filter((x) => x.logo)) expect(svgText(g.logo!), g.id).toBeTruthy();
   });
 
