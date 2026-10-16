@@ -22,11 +22,11 @@ import "./locale-switch.css";
  */
 const SWITCH_KEY = LOCALE_SWITCH_KEY;
 
-function remember(to: SiteLocale, from: SiteLocale | null) {
+function remember(to: SiteLocale, from: SiteLocale | null, note = true) {
   try {
     document.cookie = `${LOCALE_COOKIE}=${to}; path=/; max-age=31536000; samesite=lax`;
     localStorage.setItem(LOCALE_COOKIE, to);
-    if (from) sessionStorage.setItem(SWITCH_KEY, JSON.stringify({ from, to, t: Date.now() }));
+    if (from && note) sessionStorage.setItem(SWITCH_KEY, JSON.stringify({ from, to, t: Date.now() }));
   } catch {
     /* storage blocked: the link still navigates */
   }
@@ -247,8 +247,8 @@ export function LocaleSwitch({
                     hide(true);
                     return;
                   }
-                  // the drop-in note is for landings only; a twin item page has no keyboard
-                  if (!hrefs?.[l]) remember(l, current);
+                  // the choice is always kept; the drop-in note only for a landing (a twin item page has no keyboard)
+                  remember(l, current, !hrefs?.[l]);
                 }}
               >
                 <span>{m.label}</span>
