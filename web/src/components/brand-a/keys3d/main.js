@@ -108,7 +108,8 @@ export function mount(host, o) {
       u.up = (u.up || 0) + (act * 0.12 - (u.up || 0)) * (still ? 1 : 0.15);
       // drop-in (round 6): height above the rest pose; a cap waiting for its turn is hidden
       const dy = calibrating ? 0 : (u.dy || 0), wait = !calibrating && u.dropAt != null && clock < u.dropAt;
-      g.visible = u.sh.visible = u.pool.visible = !wait;
+      g.visible = u.sh.visible = u.pool.visible = !wait && !u.hidden;
+      if (u.solo === "cap") u.sh.visible = u.pool.visible = false;
       const y = u.lift + 0.035 * b + u.up + dy;              // small individual float, no cluster sway
       g.position.set(u.base.x, y, u.base.z - dy * 0.22);     // falls from slightly up-screen too
       g.rotation.copy(u.tilt);
@@ -318,6 +319,23 @@ export function mount(host, o) {
   const ready = renderer.compileAsync(scene, camera).catch(() => {})
     .then(() => new Promise((r) => requestAnimationFrame(r)))
     .then(() => { if (raf === -1) return; booting = false; calibrate(); });
+  /* Build-only hooks (scripts/hero-posters.mjs via hero-keys ?k3dbg=1): render the base poster
+     (some caps hidden) and matte one cap at a time — "cap" alone without its shadows, or its
+     "shadow" alone (the cap still casts, but draws nothing) — over the paper and over black.
+     floor() recolours clear + floor only; setTheme would recalibrate the caps between passes. */
+  function hide(ids) { caps.forEach((g) => { g.userData.hidden = ids.includes(g.userData.d.id); }); }
+  function solo(id, mode) {
+    caps.forEach((g) => {
+      const u = g.userData, me = u.d.id === id;
+      u.hidden = id != null && !me;
+      u.solo = me ? mode : null;
+      u.skin.castShadow = !(me && mode === "cap");
+      [u.skinM, u.coreM, u.legM].forEach((m) => { m.colorWrite = !(me && mode === "shadow"); m.depthWrite = m === u.legM ? false : !(me && mode === "shadow"); });
+    });
+  }
+  function floorTo(hex) { const c = new THREE.Color(hex); renderer.setClearColor(c, 1); floor.material.color.copy(c); }
+  function renderNow() { pose(clock); renderer.render(scene, camera); }
+
   /* React unmount: stop the loop, drop observers and GPU resources. */
   function destroy() {
     if (raf) cancelAnimationFrame(raf);
@@ -331,7 +349,7 @@ export function mount(host, o) {
     canvas.remove();
   }
   return {
-    ready, setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, drop, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
+    ready, setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, drop, hide, solo, floorTo, renderNow, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
     capPx: () => capPxV,
     canvas, renderer,
     snapshot(type = "image/webp", q = 0.9) { renderer.render(scene, camera); return canvas.toDataURL(type, q); }

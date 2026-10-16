@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { LOCALE_COOKIE, LOCALE_SWITCH_KEY, SITE_LOCALES, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import heroDrop from "@/data/hero-drop.json";
 import "./locale-switch.css";
 
 /**
@@ -40,8 +41,14 @@ export interface LocaleSwitchText {
 }
 
 /* hero poster of each locale's cap set (landing.css --k3p / --k3pm) */
-const posterOf = (l: SiteLocale, phone: boolean) =>
-  `/brand-a/hero-logos${l === "ja" || l === "zh-tw" ? `-${l}` : ""}-light${phone ? "-m" : devicePixelRatio > 1.25 ? "@2x" : ""}.webp`;
+const posterOf = (l: SiteLocale, phone: boolean, kind = "logos") =>
+  `/brand-a/hero-${kind}${l === "ja" || l === "zh-tw" ? `-${l}` : ""}-light${phone ? "-m" : devicePixelRatio > 1.25 ? "@2x" : ""}.webp`;
+/* round 9: what an arrival paints first — the base poster and the 2D drop's sprite sheet (hero-drop.tsx) */
+const DROP = (heroDrop as { sets: Record<string, { d?: { sheet: { src: string } }; m?: { sheet: { src: string } } }> }).sets;
+const dropAssets = (l: SiteLocale, phone: boolean) => {
+  const v = DROP[l === "ja" || l === "zh-tw" ? l : "default"]?.[phone ? "m" : "d"];
+  return v ? [posterOf(l, phone, "base"), v.sheet.src] : [];
+};
 
 let warmed = false;
 /**
@@ -80,7 +87,7 @@ function warm(current: SiteLocale | null, origin: string, hrefs?: Partial<Record
     }
     if (hrefs) return;
     const phone = matchMedia("(max-width:900px)").matches;
-    for (const l of new Set(others.map((x) => posterOf(x, phone)))) {
+    for (const l of new Set(others.flatMap((x) => [...dropAssets(x, phone), posterOf(x, phone)]))) {
       const img = new Image();
       img.decoding = "async";
       img.src = `${origin}${l}`;

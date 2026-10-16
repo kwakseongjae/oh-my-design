@@ -9,6 +9,19 @@
 :root{--k3p:image-set(url(/brand-a/hero-logos-light.webp) 1x,url(/brand-a/hero-logos-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-logos-light-m.webp)}
 .sq-k3[data-set="ja"]{--k3p:image-set(url(/brand-a/hero-logos-ja-light.webp) 1x,url(/brand-a/hero-logos-ja-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-logos-ja-light-m.webp)}
 .sq-k3[data-set="zh-tw"]{--k3p:image-set(url(/brand-a/hero-logos-zh-tw-light.webp) 1x,url(/brand-a/hero-logos-zh-tw-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-logos-zh-tw-light-m.webp)}
+/* Round 9 — 2D drop on arrival from the language picker (landing.tsx dropScript, hero-keys.tsx).
+   [data-drop] shows the base poster: this set's settled scene without the caps new here. Those
+   caps drop in as 2D sprites matted from the same render (data/hero-drop.json), placed in poster
+   space — a stage with the poster's aspect ratio sized like background "cover" — so they settle
+   exactly where the full poster (and, at the poster sizes, the 3D scene) has them. */
+.sq-k3[data-drop]{--k3p:image-set(url(/brand-a/hero-base-light.webp) 1x,url(/brand-a/hero-base-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-base-light-m.webp)}
+.sq-k3[data-drop][data-set="ja"]{--k3p:image-set(url(/brand-a/hero-base-ja-light.webp) 1x,url(/brand-a/hero-base-ja-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-base-ja-light-m.webp)}
+.sq-k3[data-drop][data-set="zh-tw"]{--k3p:image-set(url(/brand-a/hero-base-zh-tw-light.webp) 1x,url(/brand-a/hero-base-zh-tw-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-base-zh-tw-light-m.webp)}
+.sq-k3-drop{position:absolute;left:0;top:0;width:100%;height:100%;container-type:size;overflow:hidden;pointer-events:none;display:none}
+.sq-k3[data-drop] .sq-k3-drop-d{display:block}
+.sq-k3-stage{position:absolute;left:50%;top:50%;width:max(100cqw,calc(100cqh * var(--ar)));height:max(100cqh,calc(100cqw / var(--ar)));transform:translate(-50%,-50%)}
+.sq-k3-s{position:absolute;display:block;background-image:var(--sheet);background-repeat:no-repeat;opacity:0;transform-origin:50% 100%;will-change:transform,opacity}
+.sq-k3-s[data-k="sh"]{transform-origin:50% 50%}
 
 :where(.sq-root) button,:where(.sq-root) select,:where(.sq-root) input{font:inherit;color:inherit}
 :where(.sq-root) code,:where(.sq-root) pre,:where(.sq-root) code[lang]{font-family:var(--sq-f-mono)}
@@ -119,6 +132,8 @@
   .sq-sheet{grid-row:2;grid-column:1;min-height:300px;margin-top:12px}
   .sq-k3{position:relative;grid-row:2;grid-column:1;left:auto;right:auto;top:auto;bottom:auto;min-height:300px;margin-top:12px;z-index:0}
   .sq-k3.sq-poster{background-image:var(--k3pm)}
+  .sq-k3[data-drop] .sq-k3-drop-d{display:none}
+  .sq-k3[data-drop] .sq-k3-drop-m{display:block}
   :where(.sq-root) h1{font-size:clamp(32px,9.6vw,48px)}
   :where(.sq-root) :lang(ko) h1{font-size:clamp(28px,8.2vw,44px)}
   :where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(25px,7.4vw,42px)}

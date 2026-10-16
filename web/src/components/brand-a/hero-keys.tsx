@@ -29,6 +29,11 @@ function idsOf(l: SiteLocale): Set<string> {
   const s = sets[l] ?? sets.default;
   return new Set([...s.wide.flat(), ...s.narrow.flat()]);
 }
+/* Round 9: the inline drop script (hero-drop.tsx) leaves this when it ran the 2D drop:
+   done resolves "done" (sprites settled), "skip" (sheet never decoded: r8 path) or "none". */
+type DropState = { state: string; done: Promise<string> };
+const dropState = () => (window as unknown as { __k3drop?: DropState }).__k3drop ?? null;
+
 /** posters are per cap set */
 const setOf = (l: SiteLocale) => (l === "ja" || l === "zh-tw" ? l : "default");
 
@@ -182,7 +187,9 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
 
   // caps list → scene
   useEffect(() => {
-    narrowRef.current = narrow;
+    // round 9: narrowRef is the breakpoint effect's alone. Writing the `narrow` state here put it
+    // back to false on a phone's first commit (state still false, matchMedia already true), and an
+    // arrival boot at load in the same commit then laid the phone keyboard out as desktop rows
     placeHost();
     let live = true;
     capsFor(shown).then((list) => {
@@ -205,6 +212,12 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
     // back to this locale's own poster (the inline swap showed the previous one)
     const ownPoster = () => h.setAttribute("data-set", setOf(locale));
+    // after a 2D drop: the full poster once the sprites have settled (the same picture)
+    const settle = () => {
+      const D = dropState();
+      const end = () => { h.removeAttribute("data-drop"); ownPoster(); };
+      if (D) D.done.then(end); else end();
+    };
     const boot = () => {
       if (cancelled || state.current !== "idle") return;
       let ok = false;
@@ -216,7 +229,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
       }
       if (!ok || /[?&]k3=poster/.test(location.search)) {
         state.current = "fail";
-        ownPoster();
+        settle();
         return;
       }
       state.current = "loading";
@@ -241,25 +254,33 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
           }) as K3;
           state.current = "ready";
           performance.mark("k3:mounted");
+          if (/[?&]k3dbg=1/.test(location.search)) (window as unknown as { __k3: K3 }).__k3 = k3.current; // scripts/hero-posters.mjs
           // fade the canvas in only once its shaders are compiled and its colours calibrated
           (k3.current.ready ?? Promise.resolve()).then(() => requestAnimationFrame(() => {
             if (cancelled) return;
-            performance.mark("k3:live");
-            h.classList.add("sq-live");
-            // the poster stays under the (opaque) canvas; swap it back once the fade is done
-            setTimeout(ownPoster, 500);
-            // arrival from the picker: only the caps new to this locale fall in
-            if (from && !reduce.matches) {
-              const prev = idsOf(from);
-              const fresh = (list as { id: string }[]).map((d) => d.id).filter((id) => !prev.has(id));
-              k3.current?.drop(fresh, { delay: 0.04, stagger: 0.07 });
-            }
+            // round 9: arriving with a 2D drop, the canvas waits for the sprites to settle — then the
+            // settled sprites, the full poster and the scene are one picture and the fade shows no jump
+            const D = from ? dropState() : null;
+            const reveal = (how?: string) => {
+              if (cancelled) return;
+              performance.mark("k3:live");
+              h.classList.add("sq-live");
+              // the poster stays under the (opaque) canvas; swap it back once the fade is done
+              setTimeout(() => { h.removeAttribute("data-drop"); ownPoster(); }, 500);
+              // no 2D drop ran (r8 path): only the caps new to this locale fall in, in 3D
+              if (from && !reduce.matches && (!D || how === "skip")) {
+                const prev = idsOf(from);
+                const fresh = (list as { id: string }[]).map((d) => d.id).filter((id) => !prev.has(id));
+                k3.current?.drop(fresh, { delay: 0.04, stagger: 0.07 });
+              }
+            };
+            if (D) D.done.then(reveal); else reveal();
           }));
         })
         .catch((e) => {
           console.warn("keys3d: poster fallback", e);
           state.current = "fail";
-          ownPoster();
+          settle();
         });
     };
     // a beat after load, then idle: the page answers input first (the boot is ~300 ms of work);
@@ -268,7 +289,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
     const start = () => {
       from = takeSwitch(locale);
       // prerendered page: the inline poster swap ran before the click; redo it on activation
-      if (from && !reduce.matches) h.setAttribute("data-set", setOf(from));
+      if (from && !reduce.matches && !dropState()) h.setAttribute("data-set", setOf(from));
       // round 8: arriving from the language picker, the new caps are what the person waits for —
       // boot at load (keys3d and the logos are in the HTTP cache from the page just left) without the
       // 300 ms beat and idle wait; not before load, where it competed with hydration on phones

@@ -3,13 +3,14 @@ import { preload } from "react-dom";
 import { getLandingData } from "@/lib/landing-a/data.server";
 import { getRepoStars } from "@/lib/github-stars.server";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
-import { LOCALE_SWITCH_KEY, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
+import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { fmt, getCopy } from "./copy";
 import { CliPanel } from "./cli-panel";
 import { GenUI } from "./gen-ui";
 import { HeroKeys } from "./hero-keys";
 import { CopyButton } from "./copy-button";
+import { HeroDropLayer, dropScript } from "./hero-drop";
 import { rich } from "./rich";
 import { SiteFooterA } from "./site-footer";
 import { SiteHeaderA } from "./site-header";
@@ -19,10 +20,6 @@ import "./landing.css";
 /** The install command, as run in the captured transcript (data/cli-transcript.json). */
 const INSTALL = transcript.runs[0].cmd;
 const WANTED_LATIN = "/fonts/wanted-sans/WantedSansVariable.split.90.woff2";
-
-/* Reduced motion keeps this locale's settled poster. Key shared with locale-switch.tsx. */
-const posterSwap = (locale: SiteLocale) =>
-  `try{var s=JSON.parse(sessionStorage.getItem(${JSON.stringify(LOCALE_SWITCH_KEY)})||"null"),k=document.getElementById("k3");if(s&&k&&s.to===${JSON.stringify(locale)}&&s.from&&s.from!==s.to&&Date.now()-s.t<60000&&!matchMedia("(prefers-reduced-motion: reduce)").matches){k.setAttribute("data-set",(s.from==="ja"||s.from==="zh-tw")?s.from:"default")}}catch(e){}`;
 
 const GH_SKILLS ="https://github.com/kwakseongjae/oh-my-design/tree/main/skills";
 
@@ -81,10 +78,12 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
           {/* 3D host: poster until three.js mounts after idle (hero-keys.tsx). After the copy in
               source order (round 7): a paint mid-parse must not show it where the copy will go;
               z-index (desktop) and its grid cell (phone) place it. */}
-          <div className="sq-k3 sq-poster" id="k3" data-set={locale === "ja" || locale === "zh-tw" ? locale : "default"} aria-hidden="true" suppressHydrationWarning />
-          {/* pre-hydration: arriving from the language picker, show the previous locale's
-              poster until the scene is live, so only the caps new here drop in (hero-keys.tsx) */}
-          <script dangerouslySetInnerHTML={{ __html: posterSwap(locale) }} />
+          <div className="sq-k3 sq-poster" id="k3" data-set={locale === "ja" || locale === "zh-tw" ? locale : "default"} aria-hidden="true" suppressHydrationWarning>
+            <HeroDropLayer locale={locale} />
+          </div>
+          {/* pre-hydration: arriving from the language picker, the caps new here start falling as
+              2D sprites at first paint; the 3D scene takes over once they settle (hero-drop.tsx) */}
+          <script dangerouslySetInnerHTML={{ __html: dropScript(locale) }} />
         </div>
 
         {/* Sections below the hero (round 5): one system — alternating paper / band, the
