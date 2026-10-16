@@ -2,9 +2,9 @@
   "schema_version": 3,
   "generated_at": "2026-10-16",
   "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
-  "count": 82,
+  "count": 86,
   "counts": {
-    "available": 82,
+    "available": 86,
     "source_only": 0
   },
   "records": [
@@ -662,6 +662,29 @@
       "default_variant": "wordmark"
     },
     {
+      "id": "acer",
+      "name": "宏碁 Acer",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/acer/wordmark.svg",
+          "source": "Official site (acer.com)",
+          "source_url": "https://images.acer.com/is/content/acer/acer-4",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.acer.com/tw-zh",
+          "attribution": "Acer Inc.",
+          "usage_note": "공식 사이트 헤더 로고(SVG, Illustrator export) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header <img> on acer.com/tw-zh, served as SVG from Acer's own image CDN. Fetched by the main session from inside the page in the owner's browser (the host returns 403 to non-browser requests); sanitized and svgo-optimised here with geometry rewrites off. Same green 'acer' letterforms as the 2011 identity (Commons 'Acer 2011.svg')."
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
       "id": "adata",
       "name": "ADATA",
       "country": "TW",
@@ -789,6 +812,29 @@
       "default_variant": "symbol"
     },
     {
+      "id": "china-airlines",
+      "name": "中華航空 China Airlines",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/china-airlines/symbol.svg",
+          "source": "Official site (china-airlines.com)",
+          "source_url": "https://www.china-airlines.com/tw/zh",
+          "license": "brand-asset-official",
+          "license_note": "Source is the inline <svg viewBox=\"0 0 72 72\"> plum-blossom mark from the official site's loading screen (the header/footer logos are WebP only). No public third-party logo terms found; identification only.",
+          "license_url": "https://www.china-airlines.com/tw/zh",
+          "attribution": "China Airlines, Ltd.",
+          "usage_note": "공식 사이트 로딩 화면 심볼(인라인 svg, 매화) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Inline loading-screen <svg> of china-airlines.com/tw/zh. Fetched by the main session from inside the page in the owner's browser (the host returns 403 to non-browser requests); sanitized and svgo-optimised here with geometry rewrites off. The site shows the plum blossom alone on that screen, so it is the brand's standalone symbol. It is the same pink radial-gradient five-petal blossom as the emblem in the site's WebP header logo (seen by the main session). Its class attribute was removed. Not re-fetched here, because the host returns 403 to this agent."
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
       "id": "dcard",
       "name": "Dcard",
       "country": "TW",
@@ -842,6 +888,29 @@
         }
       },
       "default_variant": "combined"
+    },
+    {
+      "id": "evaair",
+      "name": "長榮航空 EVA Air",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/evaair/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Logo_EVA_Air.svg",
+          "license": "PD",
+          "license_note": "Commons: Public domain. Trademark of EVA Airways Corporation; identification use only.",
+          "license_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Logo_EVA_Air.svg",
+          "attribution": "EVA Airways Corporation",
+          "usage_note": "Wikimedia Commons PD · 워드마크만(공식 로고의 꼬리날개 지구 심볼 없음) · 식별용",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Checked against the official header PNG logo-evaair-header.png on evaair.com/zh-tw/index.html (main session, owner's browser): same letterforms and green. The official logo adds a tail-fin globe that is absent here, so this is the wordmark only. evaair.com publishes the logo as raster only. viewBox=\"0 0 600 95\" was added to match the file's own width/height so it scales; paths unchanged."
+        }
+      },
+      "default_variant": "wordmark"
     },
     {
       "id": "familymart-tw",
@@ -1455,6 +1524,29 @@
       "default_variant": "combined"
     },
     {
+      "id": "jal",
+      "name": "JAL 日本航空",
+      "country": "JP",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/jal/combined.svg",
+          "source": "Official site (jal.co.jp)",
+          "source_url": "https://www.jal.co.jp/sites/copyright/img/other/logo/logo_jal_353-32.svg",
+          "license": "brand-asset-official",
+          "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+          "license_url": "https://www.jal.co.jp/ja-jp/",
+          "attribution": "Japan Airlines Co., Ltd.",
+          "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "Header logo of jal.co.jp/ja-jp (tsurumaru + JAPAN AIRLINES). Fetched by the main session from inside the page in the owner's browser (the host returns 403 to non-browser requests); sanitized and svgo-optimised here with geometry rewrites off. The footer's white twin (logo_jal_925-88.svg) was not stored: the schema keys variants only by symbol/wordmark/combined and has no slot for an alternate-colour file. Consistent with Commons 'Japan Airlines Wordmark (2011)' (the current 2011 identity)."
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
       "id": "line",
       "name": "LINE",
       "country": "JP",
@@ -1947,7 +2039,7 @@
   ],
   "source_breakdown": {
     "unit": "variants",
-    "official": 86,
-    "Wikimedia Commons": 16
+    "official": 89,
+    "Wikimedia Commons": 17
   }
 }
