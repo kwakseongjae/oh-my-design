@@ -40,7 +40,7 @@
 .sq-star:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-star svg{flex-shrink:0}
 .sq-star-n{display:inline-flex;align-items:center;gap:5px;min-width:3.4em}
-.sq-star-g{color:var(--sq-gamboge);font-size:13px;line-height:1}
+.sq-star-g{color:var(--sq-gamboge);line-height:1}
 /* surface links in the header tools slot (blog index + its ko/en switch, docs language) */
 .sq-xlink{display:inline-flex;align-items:center;min-height:36px;padding:0 10px;font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap}
 .sq-xlink:hover{color:var(--sq-ink);background:var(--sq-cell)}
