@@ -77,6 +77,14 @@
     "#000000": 1
    }
   },
+  "/brand-svg/evaair/wordmark.svg": {
+   "edge": [
+    "#00a650"
+   ],
+   "share": {
+    "#00a650": 1
+   }
+  },
   "/brand-svg/familymart-tw/combined.svg": {
    "edge": [
     "#00a041",

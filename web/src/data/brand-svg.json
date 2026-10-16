@@ -2,7 +2,7 @@
  "schema_version": 3,
  "generated_at": "2026-06-02",
  "note": "Subset of the brand-svg collection (branches feat/brand-svg-gallery and feat/brand-svg-jp, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change. A risk_tier \"high\" record never goes on a keycap; it reaches the picker chip only when it also carries \"landing_use\": \"flat-chip\" (the logo as delivered, flat, on a plain tile with clear space — LINE's guideline forbids decoration, shadow, 3D and modification). landing_use is the only field added on import.",
- "count": 22,
+ "count": 23,
  "records": [
   {
    "id": "104",
@@ -143,6 +143,29 @@
     }
    },
    "default_variant": "combined"
+  },
+  {
+   "id": "evaair",
+   "name": "長榮航空 EVA Air",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/evaair/wordmark.svg",
+     "source": "Wikimedia Commons",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Logo_EVA_Air.svg",
+     "license": "PD",
+     "license_note": "Commons: Public domain. Trademark of EVA Airways Corporation; identification use only.",
+     "license_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Logo_EVA_Air.svg",
+     "attribution": "EVA Airways Corporation",
+     "usage_note": "Wikimedia Commons PD · 워드마크만(공식 로고의 꼬리날개 지구 심볼 없음) · 식별용",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Checked against the official header PNG logo-evaair-header.png on evaair.com/zh-tw/index.html (main session, owner's browser): same letterforms and green. The official logo adds a tail-fin globe that is absent here, so this is the wordmark only. evaair.com publishes the logo as raster only. viewBox=\"0 0 600 95\" was added to match the file's own width/height so it scales; paths unchanged."
+    }
+   },
+   "default_variant": "wordmark"
   },
   {
    "id": "familymart-tw",

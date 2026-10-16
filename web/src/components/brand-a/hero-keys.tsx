@@ -77,7 +77,9 @@ function loadLogo(src: string): Promise<HTMLImageElement | null> {
           const vb = txt.match(/viewBox="([^"]+)"/)?.[1].trim().split(/[\s,]+/).map(Number);
           const ratio = vb && vb[3] > 0 ? vb[2] / vb[3] : 1;
           const w = 2048, h = Math.round(w / ratio);
-          const fixed = txt.replace(/<svg\b([^>]*)>/, (_m, attrs: string) => {
+          // an Illustrator <switch> stub (<foreignObject requiredExtensions=…>, e.g. FamilyMart) draws
+          // nothing but taints the canvas, which kills the colour calibration: drop the stub only
+          const fixed = txt.replace(/<foreignObject\b[^>]*\/>|<foreignObject\b[\s\S]*?<\/foreignObject>/g, "").replace(/<svg\b([^>]*)>/, (_m, attrs: string) => {
             const rest = attrs.replace(/\s(width|height)="[^"]*"/g, "");
             return `<svg${rest} width="${w}" height="${h}">`;
           });
