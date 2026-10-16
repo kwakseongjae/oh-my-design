@@ -73,7 +73,6 @@ components:
     states: default captured on both menu buttons (capture 15 and 33; 33 carries the gnb-menu-btn-active class and records the same values); no pointer-state sample
     use: Home header menu button (a.gnb-menu-btn) at home::[data-omd-capture="15"]; it has no text node, so no label colour is claimed
     height: 32px
-    typography: 16px / 400
     pressed: no visible change (measured 2026-10-16) (:hover + :active)
   header-search-input:
     type: input

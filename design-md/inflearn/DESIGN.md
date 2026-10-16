@@ -53,7 +53,6 @@ components:
     use: 'Product GNB search submit; home::[data-omd-capture=8]; icon-only (no text node), so fg is the computed colour its glyph can inherit. Corrected 2026-09-30: the July font leaf (16px / 400 Pretendard) was the inherited page type on an element without text and was removed'
     height: 42px
     padding: 0px
-    typography: 16px / 400
   product-nav-action:
     type: button
     backgroundColor: '#f8f9fa'

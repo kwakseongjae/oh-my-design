@@ -1535,13 +1535,6 @@
         "method": "computed-style",
         "selector": "button.mantine-focus-auto.mantine-active.css-1c1hnzk \"search\" (42 x 42) via probe-component-states.mjs --match #00c471 matched on radius, fg; locale ko-KR",
         "captured": "2026-10-16"
-      },
-      "components.product-search-submit.typography": {
-        "surface_id": "product-home",
-        "source_id": "product-home-probe-2026-10-16",
-        "method": "computed-style",
-        "selector": "button.mantine-focus-auto.mantine-active.css-1c1hnzk \"search\" (42 x 42) via probe-component-states.mjs --match #00c471 matched on radius, fg; locale ko-KR",
-        "captured": "2026-10-16"
       }
     }
   },

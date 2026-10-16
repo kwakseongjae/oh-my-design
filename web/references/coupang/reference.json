@@ -733,13 +733,6 @@
         "selector": "a.gnb-menu-btn.gnb-menu-btn-left \"\" (32 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding; locale ko-KR",
         "captured": "2026-10-16"
       },
-      "components.header-menu-control.typography": {
-        "surface_id": "home",
-        "source_id": "home-probe-2026-10-16",
-        "method": "computed-style",
-        "selector": "a.gnb-menu-btn.gnb-menu-btn-left \"\" (32 x 32) via probe-component-states.mjs --match #ffffff matched on radius, padding; locale ko-KR",
-        "captured": "2026-10-16"
-      },
       "components.header-menu-control.pressed": {
         "surface_id": "home",
         "source_id": "home-probe-2026-10-16",
