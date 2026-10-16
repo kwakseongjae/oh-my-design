@@ -1,0 +1,74 @@
+// Favicon + app icons, round 10 (owner, 2026-10-16; docs/research/2026-10-17-direction/favicon/):
+// the full "omd" keycap at every size, recoloured from the ink keycap to an Iris violet keycap
+// (gradient #6749e2 → #5437c1, the primary and its hover step) with a white brush.
+// Sources are the logo finals' outline SVGs (docs/research/2026-10-14-logo/final/, gitignored, so
+// the path is passed in): the rounded keycap (icon/app-icon-dark.svg = header/header-icon.svg),
+// the full-bleed square for apple-touch (icon/apple-touch-icon.svg) and the maskable square with
+// the brush inside the 80% safe zone (icon/maskable.svg). Only colours change; paths are verbatim.
+//   node scripts/brand-icons.mjs <logo-final-dir>
+// Writes: src/app/icon.svg, src/app/favicon.ico (16/32/48 PNG frames), src/app/apple-icon.png (180),
+// public/brand/header-icon.svg, public/icons/{android-chrome-192,android-chrome-512,app-icon-512,maskable-512}.png
+import { createRequire } from "node:module";
+import fs from "node:fs";
+import path from "node:path";
+const require = createRequire(new URL("../package.json", import.meta.url));
+const sharp = require("sharp");
+
+const src = process.argv[2];
+if (!src || !fs.existsSync(path.join(src, "icon/app-icon-dark.svg"))) {
+  console.error("usage: node scripts/brand-icons.mjs <docs/research/2026-10-14-logo/final>");
+  process.exit(1);
+}
+const web = new URL("..", import.meta.url).pathname;
+const IRIS = { top: "#6749e2", bottom: "#5437c1", brush: "#ffffff" };
+const recolour = (svg) => {
+  const out = svg
+    .replace(/stop-color="#2a2c33"/g, `stop-color="${IRIS.top}"`)
+    .replace(/stop-color="#15161a"/g, `stop-color="${IRIS.bottom}"`)
+    .replace(/fill="#f1f1ec"/g, `fill="${IRIS.brush}"`);
+  if (/#2a2c33|#15161a|#f1f1ec/.test(out)) throw new Error("an ink colour survived the recolour");
+  return out;
+};
+const read = (f) => recolour(fs.readFileSync(path.join(src, f), "utf8"));
+const rounded = read("icon/app-icon-dark.svg");
+const header = read("header/header-icon.svg");
+const square = read("icon/apple-touch-icon.svg");
+const maskable = read("icon/maskable.svg");
+
+const png = (svg, size) => sharp(Buffer.from(svg), { density: Math.max(72, (72 * size) / 128) * 4 }).resize(size, size).png({ compressionLevel: 9 }).toBuffer();
+
+/* ICO with PNG frames (Vista+ format): ICONDIR + one ICONDIRENTRY per frame, then the PNG bytes. */
+function ico(frames) {
+  const head = Buffer.alloc(6 + 16 * frames.length);
+  head.writeUInt16LE(0, 0);
+  head.writeUInt16LE(1, 2);
+  head.writeUInt16LE(frames.length, 4);
+  let off = head.length;
+  frames.forEach(({ size, buf }, i) => {
+    const e = 6 + 16 * i;
+    head.writeUInt8(size >= 256 ? 0 : size, e);
+    head.writeUInt8(size >= 256 ? 0 : size, e + 1);
+    head.writeUInt8(0, e + 2);
+    head.writeUInt8(0, e + 3);
+    head.writeUInt16LE(1, e + 4);
+    head.writeUInt16LE(32, e + 6);
+    head.writeUInt32LE(buf.length, e + 8);
+    head.writeUInt32LE(off, e + 12);
+    off += buf.length;
+  });
+  return Buffer.concat([head, ...frames.map((f) => f.buf)]);
+}
+
+const w = (rel, data) => {
+  fs.mkdirSync(path.dirname(path.join(web, rel)), { recursive: true });
+  fs.writeFileSync(path.join(web, rel), data);
+  console.log(rel, data.length);
+};
+w("src/app/icon.svg", rounded);
+w("public/brand/header-icon.svg", header);
+w("src/app/favicon.ico", ico(await Promise.all([16, 32, 48].map(async (size) => ({ size, buf: await png(rounded, size) })))));
+w("src/app/apple-icon.png", await sharp(await png(square, 180)).flatten({ background: IRIS.bottom }).png().toBuffer());
+w("public/icons/android-chrome-192.png", await png(rounded, 192));
+w("public/icons/android-chrome-512.png", await png(rounded, 512));
+w("public/icons/app-icon-512.png", await png(rounded, 512));
+w("public/icons/maskable-512.png", await sharp(await png(maskable, 512)).flatten({ background: IRIS.bottom }).png().toBuffer());

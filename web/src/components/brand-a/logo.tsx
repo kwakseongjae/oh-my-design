@@ -6,8 +6,10 @@
  * icon — a jelly key top with a brush "o" — beside live text "oh-my-design" in
  * Wanted Sans 700, like Taste Skill's header. Asset: public/brand/header-icon.svg
  * (the site is light only since 2026-10-16; header-icon-dark.svg stays as a brand asset).
- * Favicons/app icons are Next file conventions: app/favicon.ico, app/icon.svg,
- * app/apple-icon.png, app/manifest.webmanifest (+ public/icons/).
+ * Round 10: the keycap is Iris violet with a white brush, and the favicon is the same full
+ * "omd" keycap at every size. Favicons/app icons are Next file conventions: app/favicon.ico,
+ * app/icon.svg, app/apple-icon.png, app/manifest.webmanifest (+ public/icons/), all written by
+ * scripts/brand-icons.mjs from the logo finals' outline SVGs.
  * Sizes live in chrome.css (.sq-logo-*): 32px icon / 10px gap / 18px text on desktop,
  * 28 / 8 / 16 at ≤640px.
  */
