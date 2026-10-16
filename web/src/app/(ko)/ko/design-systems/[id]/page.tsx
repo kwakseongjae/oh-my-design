@@ -83,13 +83,13 @@ export async function generateMetadata({
       type: "article",
       locale: "ko_KR",
       // The reference card is language-neutral (name, colour, tokens); there is no Korean variant.
-      images: [`/api/og/reference?id=${id}`],
+      images: [`/api/og/reference?id=${id}&lang=ko`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`/api/og/reference?id=${id}`],
+      images: [`/api/og/reference?id=${id}&lang=ko`],
     },
   };
 }
@@ -108,7 +108,7 @@ export default async function KoreanDesignSystemPage({
   const pageUrl = `${SITE_URL}${koDetailPath(id)}`;
   const enName = REGISTRY_BY_ID[id]?.name;
   // Related references that have a Korean page, so Korean pages link among themselves.
-  const related = getRelatedReferences(id, 24).filter((r) => hasKoDetailId(r.id)).slice(0, 6);
+  const related = getRelatedReferences(id, 24, "ko").filter((r) => hasKoDetailId(r.id)).slice(0, 6);
 
   const faq = [
     detail.primary ? { q: `${name}의 대표 UI 색상은 무엇인가요?`, a: detail.primary } : null,
@@ -171,7 +171,7 @@ export default async function KoreanDesignSystemPage({
           evidenceBoundary={editorial?.evidenceBoundary}
           ds={getDesignSystem(detail.id)}
           logo={getLogoRef(detail.id)}
-          cap={keycapFace(detail.id)}
+          cap={keycapFace(detail.id, "ko")}
         />
         {related.length > 0 ? (
           <section className="sq-root sq-rel" aria-labelledby="related-heading">

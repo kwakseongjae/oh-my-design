@@ -50,7 +50,7 @@ function coreFontBasis(loaded: ReturnType<typeof loadReference>) {
 
 /** The item page's keycap: same resolver as the landing, so only a verified
  *  reference's claimed colour/radius/weight paints it (else a blank cap). */
-export function keycapFace(id: string) {
-  const c = capData(id);
+export function keycapFace(id: string, locale: "en" | "ko" = "en") {
+  const c = capData(id, locale);
   return c ? { g: c.g, gLang: c.gLang, c: c.c, hex: c.hex, rv: c.rv, w: c.w } : null;
 }

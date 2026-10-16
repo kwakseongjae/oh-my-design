@@ -37,7 +37,7 @@ function rows(): KoRow[] {
         verified: REFERENCE_QUALITY_BY_ID[ds.refId]?.status === "verified_v2",
         desc: ds.description,
         href: koDetailPath(ds.refId),
-        cap: keycapFace(ds.refId),
+        cap: keycapFace(ds.refId, "ko"),
       };
     });
   // Korean references first, verified before the rest, then by name.

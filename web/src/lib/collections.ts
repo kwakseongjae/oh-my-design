@@ -18,6 +18,7 @@ import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generat
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import type { DesignSystemInfo } from "@/lib/design-systems";
 import { getLogoRef } from "@/lib/logos";
+import { siteName } from "@/lib/i18n/display-name";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import {
   COLOR_FAMILIES,
@@ -297,7 +298,7 @@ export function toCardInfo(e: RefEntry): DesignSystemInfo {
       added: e.added ?? null,
     };
   }
-  const name = e.displayName || e.name;
+  const name = siteName(e, "en");
   return {
     refId: e.id,
     name,

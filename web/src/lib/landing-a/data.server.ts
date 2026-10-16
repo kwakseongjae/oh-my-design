@@ -5,7 +5,8 @@ import { SKILL_COUNT } from "@/data/catalog-meta.generated";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import { chipLogo, heroCapsFor } from "./caps";
 import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON } from "./picks";
-import { CJK_RE, glyphOf, keycapTraits, nativeName, resolveSlots, type TokensLike } from "./resolve";
+import { CJK_RE, glyphOf, keycapTraits, resolveSlots, type TokensLike } from "./resolve";
+import { siteName } from "@/lib/i18n/display-name";
 import type { CapData, GenSpec, LandingData, LandingFacts, LogoCap } from "./types";
 
 /**
@@ -58,13 +59,14 @@ function glyphLang(g: string, cc: string): string {
   return CC_LANG[cc] ?? "en";
 }
 
-export function capData(id: string): CapData | null {
+/** `locale` picks the brand name (lib/i18n/display-name.ts): Hangul display names on Korean pages only. */
+export function capData(id: string, locale: SiteLocale | "en" = "en"): CapData | null {
   const r = REGISTRY_BY_ID[id];
   if (!r) return null;
   const ver = REFERENCE_VERIFICATION_BY_ID[id];
   const verified = isVerified(id);
   const k = verified ? keycapTraits(r.tokens as TokensLike, ver) : { role: null, hex: null, rk: null, rv: null, w: null, wk: null };
-  const n = nativeName(r.name, r.displayName);
+  const n = siteName(r, locale);
   const g = glyphOf(n);
   return {
     id,
@@ -94,16 +96,16 @@ export function capData(id: string): CapData | null {
  * refilled with a guessed colour.
  */
 export function getHeroCaps(locale?: SiteLocale): LogoCap[] {
-  return heroCapsFor(locale, (id) => (isVerified(id) ? capData(id) : null));
+  return heroCapsFor(locale, (id) => (isVerified(id) ? capData(id, locale ?? "en") : null));
 }
 
-export function genSpec(id: string): GenSpec | null {
+export function genSpec(id: string, locale: SiteLocale | "en" = "en"): GenSpec | null {
   const r = REGISTRY_BY_ID[id];
   const q = REFERENCE_QUALITY_BY_ID[id];
   const ver = REFERENCE_VERIFICATION_BY_ID[id];
   if (!r || !q || q.status !== "verified_v2" || !ver) return null;
   const slots = resolveSlots(r.tokens as TokensLike, ver, { preferButton: GEN_UI_PREFERRED_BUTTON[id] });
-  const name = nativeName(r.name, r.displayName);
+  const name = siteName(r, locale);
   return {
     id,
     cc: r.country,
@@ -127,7 +129,7 @@ export function getLandingData(locale?: SiteLocale): LandingData {
   return {
     facts: getFacts(),
     hero: getHeroCaps(locale),
-    gen: GEN_UI_IDS.map(genSpec).filter((s): s is GenSpec => !!s),
+    gen: GEN_UI_IDS.map((id) => genSpec(id, locale ?? "en")).filter((s): s is GenSpec => !!s),
   };
 }
 

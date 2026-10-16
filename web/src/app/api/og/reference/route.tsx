@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { loadReference } from "@/lib/references/repository.server";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
 import { projectActiveReference } from "@/lib/references/consumer-adapter";
+import { siteName } from "@/lib/i18n/display-name";
 
 export async function GET(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id") ?? "";
@@ -26,7 +27,8 @@ export async function GET(request: NextRequest) {
   const primary = loaded.ast?.tokens.colors.primary?.value
     ?? loaded.ast?.identity.brandColor.value
     ?? projection.detail.primary;
-  const name = editorial?.name ?? loaded.ast?.identity.displayName ?? loaded.entry.displayName;
+  // Hangul display names only on the Korean page's card (?lang=ko); English everywhere else.
+  const name = editorial?.name ?? siteName(loaded.entry, request.nextUrl.searchParams.get("lang") === "ko" ? "ko" : "en");
   const checked = loaded.ast?.evidence?.checkedAt ?? loaded.quality.verifiedAt;
 
   return new ImageResponse(

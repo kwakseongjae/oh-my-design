@@ -11,6 +11,7 @@
  */
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { getLogoRef, type LogoRef } from "@/lib/logos";
+import { siteName } from "@/lib/i18n/display-name";
 import {
   REFERENCE_QUALITY_BY_ID,
   type ReferenceQualityStatus,
@@ -74,7 +75,8 @@ function hexToRgb(hex: string): [number, number, number] | null {
  * coherent. Deterministic (id tie-break) so SSG output is stable. Powers
  * detail→detail internal links for session + crawl depth.
  */
-export function getRelatedReferences(id: string, n = 6): RelatedRef[] {
+/** `locale` "ko" names brands in Hangul where the reference records it; every other page gets the English name. */
+export function getRelatedReferences(id: string, n = 6, locale: "en" | "ko" = "en"): RelatedRef[] {
   const self = REGISTRY_BY_ID[id];
   if (!self) return [];
   const selfRgb = hexToRgb(self.primaryColor);
@@ -99,7 +101,7 @@ export function getRelatedReferences(id: string, n = 6): RelatedRef[] {
 
   return scored.slice(0, n).map(({ e }) => ({
     id: e.id,
-    name: e.displayName || e.name,
+    name: siteName(e, locale),
     category: e.category,
     primaryColor: e.primaryColor,
   }));
@@ -111,7 +113,7 @@ export function getAllDesignSystems(): DesignSystemInfo[] {
     .map<DesignSystemInfo>(e => {
       const quality = REFERENCE_QUALITY_BY_ID[e.id];
       if (!quality) throw new Error(`reference quality missing for ${e.id}`);
-      const name = e.displayName || e.name;
+      const name = siteName(e, "en");
       return {
         refId: e.id,
         name: e.ds?.name ?? name,
