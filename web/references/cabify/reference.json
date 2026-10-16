@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "official-doc",
         "url": "https://cabify.com/en/about-us",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://cabify.com/es",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -352,6 +358,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.e-cta.--primary.--s \"Regístrate\" (95 x 40) via probe-component-states.mjs --match #7145d6 matched on radius, font-size, height, fg; locale es-ES",
+        "captured": "2026-10-16"
       }
     }
   },

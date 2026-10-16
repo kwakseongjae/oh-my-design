@@ -32,6 +32,8 @@ components:
     hover: '::before overlay rgba(0,18,34,0.074)'
     focus: 'outline 1px solid #ffffff'
     use: Contact us in the header — green with a navy label. Hover fades in a ::before overlay of --main-light-secondary (navy at 7.4%) over the green; focus draws a 1px white outline.
+    height: 48px
+    padding: 0px 16px
   link-nav:
     type: button
     backgroundColor: transparent

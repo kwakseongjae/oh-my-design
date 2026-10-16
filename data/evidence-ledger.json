@@ -3,12 +3,12 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 299,
-  "sources": 1935,
+  "sources": 1964,
   "sources_by_kind": {
     "brand-asset": 78,
     "license": 137,
-    "official-doc": 714,
-    "product-surface": 1006
+    "official-doc": 716,
+    "product-surface": 1033
   },
   "references": {
     "104": {
@@ -402,7 +402,7 @@
       ]
     },
     "adyen": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -430,6 +430,12 @@
           "host": "www.adyen.com"
         },
         {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.adyen.com"
+        },
+        {
           "id": "ir",
           "kind": "official-doc",
           "captured": "2026-09-26",
@@ -438,7 +444,7 @@
       ]
     },
     "airbnb": {
-      "checked": "2026-07-12",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -457,6 +463,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "www.airbnb.co.kr"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.airbnb.co.kr"
         },
         {
@@ -1332,7 +1344,7 @@
       ]
     },
     "cabify": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1351,6 +1363,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "cabify.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "cabify.com"
         }
       ]
@@ -1488,7 +1506,7 @@
       ]
     },
     "celonis": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -1507,6 +1525,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "www.celonis.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.celonis.com"
         },
         {
@@ -2280,7 +2304,7 @@
       ]
     },
     "ctrip": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -2293,6 +2317,12 @@
           "id": "hotels-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "hotels.ctrip.com"
+        },
+        {
+          "id": "hotels-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "hotels.ctrip.com"
         }
       ]
@@ -3630,7 +3660,7 @@
       ]
     },
     "ft": {
-      "checked": "2026-09-23",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -3643,6 +3673,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-23",
+          "host": "www.ft.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.ft.com"
         },
         {
@@ -4980,7 +5016,7 @@
       ]
     },
     "ing": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -5005,6 +5041,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "www.ing.nl"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.ing.nl"
         }
       ]
@@ -5778,7 +5820,7 @@
       ]
     },
     "komoot": {
-      "checked": "2026-09-27",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -5791,6 +5833,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-27",
+          "host": "www.komoot.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.komoot.com"
         },
         {
@@ -6072,7 +6120,7 @@
       ]
     },
     "lamborghini": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6097,6 +6145,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.lamborghini.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.lamborghini.com"
         },
         {
@@ -6426,7 +6480,7 @@
       ]
     },
     "linear.app": {
-      "checked": "2026-09-17",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6445,6 +6499,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "linear.app"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "linear.app"
         },
         {
@@ -6678,7 +6738,7 @@
       ]
     },
     "malt": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -6697,6 +6757,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "www.malt.fr"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.malt.fr"
         },
         {
@@ -7068,7 +7134,7 @@
       ]
     },
     "minimax": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7081,6 +7147,12 @@
           "id": "careers-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.minimaxi.com"
+        },
+        {
+          "id": "careers-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.minimaxi.com"
         },
         {
@@ -7584,7 +7656,7 @@
       ]
     },
     "n26": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -7597,6 +7669,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "n26.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "n26.com"
         },
         {
@@ -8430,7 +8508,7 @@
       ]
     },
     "oura": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -8449,6 +8527,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "ouraring.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "ouraring.com"
         },
         {
@@ -8616,7 +8700,7 @@
       ]
     },
     "payfit": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -8629,6 +8713,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "payfit.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "payfit.com"
         },
         {
@@ -8700,9 +8790,15 @@
       ]
     },
     "pega": {
-      "checked": "2026-09-18",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "design.pega.com"
+        },
         {
           "id": "pega-component-index",
           "kind": "official-doc",
@@ -8844,7 +8940,7 @@
       ]
     },
     "pinterest": {
-      "checked": "2026-09-19",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -8882,6 +8978,12 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "gestalt.pinterest.systems"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "kr.pinterest.com"
         },
         {
           "id": "pinterest-component-index",
@@ -9468,7 +9570,7 @@
       ]
     },
     "resend": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9488,6 +9590,12 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "abcdinamo.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "resend.com"
         },
         {
           "id": "inter-asset",
@@ -9954,7 +10062,7 @@
       ]
     },
     "satispay": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -9973,6 +10081,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-26",
+          "host": "www.satispay.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.satispay.com"
         }
       ]
@@ -10884,7 +10998,7 @@
       ]
     },
     "spotify": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -10904,6 +11018,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "open.spotify.com"
+        },
+        {
+          "id": "newsroom-company-probe-2026-10-16",
+          "kind": "official-doc",
+          "captured": "2026-10-16",
+          "host": "newsroom.spotify.com"
         },
         {
           "id": "official-design-history",
@@ -11076,7 +11196,7 @@
       ]
     },
     "storytel": {
-      "checked": "2026-09-26",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11092,6 +11212,12 @@
           "host": "www.storytel.com"
         },
         {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.storytel.com"
+        },
+        {
           "id": "investors",
           "kind": "official-doc",
           "captured": "2026-09-26",
@@ -11100,7 +11226,7 @@
       ]
     },
     "stripe": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11119,6 +11245,12 @@
           "id": "docs-home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "docs.stripe.com"
+        },
+        {
+          "id": "docs-home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "docs.stripe.com"
         },
         {
@@ -11382,7 +11514,7 @@
       ]
     },
     "taobao": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -11398,6 +11530,12 @@
           "host": "www.taobao.com"
         },
         {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.taobao.com"
+        },
+        {
           "id": "world-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
@@ -11406,9 +11544,15 @@
       ]
     },
     "teamblind": {
-      "checked": "2026-09-30",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
+          "host": "www.teamblind.com"
+        },
         {
           "id": "pretendard-license",
           "kind": "license",
@@ -12402,7 +12546,7 @@
       ]
     },
     "uswds": {
-      "checked": "2026-09-19",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12427,6 +12571,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "designsystem.digital.gov"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "designsystem.digital.gov"
         },
         {
@@ -12888,7 +13038,7 @@
       ]
     },
     "wps": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -12901,6 +13051,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "www.wps.cn"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.wps.cn"
         },
         {
@@ -13134,7 +13290,7 @@
       ]
     },
     "zapier": {
-      "checked": "2026-07-13",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -13165,6 +13321,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "zapier.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "zapier.com"
         },
         {
@@ -13224,7 +13386,7 @@
       ]
     },
     "zendesk": {
-      "checked": "2026-09-19",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -13261,6 +13423,12 @@
           "id": "garden-palette-official",
           "kind": "official-doc",
           "captured": "2026-07-13",
+          "host": "garden.zendesk.com"
+        },
+        {
+          "id": "surface-2-probe-2026-10-16",
+          "kind": "official-doc",
+          "captured": "2026-10-16",
           "host": "garden.zendesk.com"
         },
         {
@@ -13350,7 +13518,7 @@
       ]
     },
     "zhihu": {
-      "checked": "2026-09-22",
+      "checked": "2026-10-16",
       "claims": 0,
       "sources": [
         {
@@ -13363,6 +13531,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "www.zhihu.com"
+        },
+        {
+          "id": "home-probe-2026-10-16",
+          "kind": "product-surface",
+          "captured": "2026-10-16",
           "host": "www.zhihu.com"
         }
       ]

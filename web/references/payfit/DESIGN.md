@@ -43,6 +43,7 @@ components:
     hover: '#333332'
     focus: 'outline 2px solid #0d9ad8'
     use: 'Essayez maintenant — near-black, lifting to #333332 on hover; press returns to the rest colour (--uy-color-surface-button-primary-pressed). Focus is a 2px blue outline.'
+    pressed: no visible change (measured 2026-10-16) (:hover + :active)
   button-secondary:
     type: button
     backgroundColor: '#ffffff'
@@ -204,6 +205,8 @@ only when `:hover` matched; background-image, text-decoration and pseudo-element
 Hover: primary `#333332`, secondary `#f5f5f4`, header items `#f1f0ef`. Press: the primary back to
 `#0d0d0c`, the secondary keeps a dark border. Focus: a 2px `#0d9ad8` outline on buttons, the
 browser's ring on header items.
+
+Live state probe, 2026-10-16 (`https://payfit.com/fr/`), `button-primary`: pressed — no visible change (measured 2026-10-16).
 
 ## Do's and Don'ts
 

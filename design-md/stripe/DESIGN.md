@@ -50,6 +50,7 @@ components:
     pressed: '#f4f7fa background with #3c4f69 text and #d4dee9 border'
     focus: captured without a distinct computed value
     states: focus, hover, pressed; home and payments only
+    height: 32px
   docs-secondary-action:
     type: button
     backgroundColor: '#ffffff'

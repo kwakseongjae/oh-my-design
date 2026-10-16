@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "official-doc",
         "url": "https://n26.com/en-eu/blog/n26-new-logo-new-colors",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://n26.com/de-de",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -376,6 +382,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.transition-colors.focus-visible:outline-none.cursor-pointer \"Girokonto eröffnen\" (195 x 48) via probe-component-states.mjs --match #003b39 matched on radius, padding, font-size, height, fg; locale de-DE: pressed bg #045e58 (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -383,12 +396,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 29,
+      "warnings": 30,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 1,
-      "extension-component-property": 8,
+      "extension-component-property": 9,
       "orphaned-tokens": 20
     },
     "findings": [
@@ -421,6 +434,12 @@
         "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

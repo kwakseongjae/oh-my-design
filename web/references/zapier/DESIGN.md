@@ -61,6 +61,8 @@ components:
     typography: 18px / 600 / Inter
     states: focus, hover, and pressed observed
     use: Public home and customer-support marketing action; representative home::[data-omd-capture="25"]
+    pressed: 'bg #d24304, border #d24304 (+2 nested-layer changes) (:hover + :active)'
+    focus: 'outline #201515 solid 2px (+2 nested-layer changes) on :focus-visible'
   marketing-dark-action:
     type: button
     backgroundColor: '#201515'
@@ -281,6 +283,8 @@ All variants below are selector-backed public-marketing observations from the su
 ### States
 
 Only selected, expanded/menu-open, hover, pressed, and focus states were observed in the supplied capture. Empty, loading, error, success, skeleton, and disabled-system behavior were not established as a reusable public pattern and should be designed from the target product’s own requirements.
+
+Live state probe, 2026-10-16 (`https://zapier.com/`), `marketing-primary-action`: pressed — bg #d24304, border #d24304 (+2 nested-layer changes); focus — outline #201515 solid 2px (+2 nested-layer changes).
 
 ## Do's and Don'ts
 

@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-22",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "product-surface",
         "url": "https://zhuanlan.zhihu.com/",
         "captured": "2026-09-22"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.zhihu.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -394,6 +400,20 @@
         "source_id": "home-live",
         "method": "live-inspect",
         "captured": "2026-09-22"
+      },
+      "components.button-primary.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.Button.SignFlow-submitButton.FEfUrdfMIKpQDJDqkjte \"登录/注册\" (352 x 36) via probe-component-states.mjs --match #1772f6 matched on radius, font-size, fg; locale zh-CN",
+        "captured": "2026-10-16"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.Button.SignFlow-submitButton.FEfUrdfMIKpQDJDqkjte \"登录/注册\" (352 x 36) via probe-component-states.mjs --match #1772f6 matched on radius, font-size, fg; locale zh-CN",
+        "captured": "2026-10-16"
       }
     }
   },

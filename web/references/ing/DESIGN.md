@@ -36,6 +36,7 @@ components:
     pressed: 'layer rgba(255,255,255,0.16) + inset ring 2px #ffffff'
     focus: 'outline 2px solid #335d7d + inset 2px #ffffff'
     use: Open een rekening — indigo --bg_secondary; hover lays an 8% white layer, press a 16% layer and a white inner ring; focus a 2px navy-teal outline with the white inner ring.
+    padding: 6px 12px
   link-login:
     type: button
     backgroundColor: transparent

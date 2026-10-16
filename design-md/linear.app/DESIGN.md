@@ -64,6 +64,7 @@ components:
     pressed: '#ffffff'
     states: hover and pressed re-measured live 2026-09-17 and share one value — the pill brightens to white; keyboard focus produces no visible change. Compact 32px variant remains local
     use: Highest-priority public get-started action
+    focus: 'outline #5e69d1 solid 1px on :focus-visible'
   secondary-action:
     type: button
     backgroundColor: rgba(255,255,255,0.05)
@@ -238,6 +239,8 @@ Inputs, command palettes, authenticated issue controls, success badges, and dial
 ### States
 
 Public nav focus/hover/pressed and expanded/menu-open states are verified. Embedded menu selected/open is verified. Loading, empty, error, success, disabled workflow, and command-palette states remain absent.
+
+Live state probe, 2026-10-16 (`https://linear.app/`), `primary-action`: focus — outline #5e69d1 solid 1px.
 
 ## Do's and Don'ts
 

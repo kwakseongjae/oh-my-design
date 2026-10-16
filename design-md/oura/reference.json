@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -67,6 +67,12 @@
         "kind": "official-doc",
         "url": "https://ouraring.com/blog/oura-redomiciliation-news/",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://ouraring.com/de",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -364,6 +370,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.rounded-full.text-center.inline-block \"Jetzt kaufen\" (141 x 48) via probe-component-states.mjs --match #2a72de matched on radius, font-size, height, fg; locale fi-FI",
+        "captured": "2026-10-16"
       }
     }
   },

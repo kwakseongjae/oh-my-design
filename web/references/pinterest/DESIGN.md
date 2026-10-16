@@ -48,6 +48,9 @@ components:
     typography: 12px / 400 Pin Sans
     states: Default baseline captured; no changed interaction style promoted.
     use: Consumer header action; home::[data-omd-capture=7]
+    height: 48px
+    pressed: 'bg #b2001b, transform matrix(0.944444, 0, 0, 0.944444, 0, 0) (:hover + :active)'
+    focus: 'border #ffffff, outline #435ee5 solid 2px on :focus-visible'
   consumer-secondary-action:
     type: button
     backgroundColor: '#e5e5e0'
@@ -292,6 +295,8 @@ not enumerated here.
 ### States
 
 The supplied evidence records two business-marketing tab interactions and selected/unselected text treatments. It does not establish consumer loading, empty, error, success, toast, disabled, modal, or validation state contracts. Those unobserved states are intentionally omitted rather than synthesized.
+
+Live state probe, 2026-10-16 (`https://kr.pinterest.com/`), `consumer-primary-action`: pressed — bg #b2001b, transform matrix(0.944444, 0, 0, 0.944444, 0, 0); focus — border #ffffff, outline #435ee5 solid 2px.
 
 ## Voice & Tone
 

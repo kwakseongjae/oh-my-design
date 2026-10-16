@@ -58,6 +58,8 @@ components:
     hover: '#2953d6'
     pressed: '#2953d6'
     use: Primary search submit on hotels.ctrip.com — 48px tall. Rest equals coreColorBlue1; the hover value is not a published token.
+    padding: 0px 16px
+    focus: 'shadow #ffffff 0px 0px 0px 2px, #1733c5 0px 0px 0px 4px on :focus-visible'
   button-login-pill:
     type: button
     backgroundColor: '#f2f8fe'
@@ -282,6 +284,8 @@ Three controls were observed. The sign-in pill carries hover, pressed **and** fo
 identical. The search submit carries hover and pressed, identical. The city chip carries hover
 only. No disabled state was observed on a rendered control, though
 `smtcColorBgDisabledTinted` (`#f5f5f5`) exists as a token.
+
+Live state probe, 2026-10-16 (`https://hotels.ctrip.com/`), `button-search`: focus — shadow #ffffff 0px 0px 0px 2px, #1733c5 0px 0px 0px 4px.
 
 ## Do's and Don'ts
 

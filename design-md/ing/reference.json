@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -61,6 +61,12 @@
         "kind": "official-doc",
         "url": "https://www.ing.com/About-us.htm",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.ing.nl/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -436,6 +442,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "a.link-cta.link-cta--default.link-cta--md \"Open een rekening\" (161 x 36) via probe-component-states.mjs --match #525199 matched on radius, font-size, height, fg; locale nl-NL",
+        "captured": "2026-10-16"
       }
     }
   },

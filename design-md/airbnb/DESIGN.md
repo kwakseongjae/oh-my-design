@@ -74,6 +74,10 @@ components:
     size: 28px
     states: hover and pressed observed
     use: Current compact circular marketplace control
+    height: 40px
+    padding: 0px
+    typography: 14px / 400
+    pressed: transform matrix(0.95, 0, 0, 0.95, 0, 0) (+1 nested-layer changes) (:hover + :active)
   disabled-icon-action:
     type: button
     backgroundColor: '#f2f2f2'
@@ -245,6 +249,8 @@ Red Reserve buttons, listing cards, modal dialogs, badges, inputs, and booking s
 ### States
 
 Marketplace circular controls expose focus, hover, pressed, and disabled states. Category navigation exposes selected/tab-selected states. Search shells expose hover and pressed behavior. Booking loading, error, success, authentication, and empty states remain absent.
+
+Live state probe, 2026-10-16 (`https://www.airbnb.co.kr/`), `icon-action`: pressed — transform matrix(0.95, 0, 0, 0.95, 0, 0) (+1 nested-layer changes).
 
 ## Do's and Don'ts
 

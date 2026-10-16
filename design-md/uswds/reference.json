@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-19",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -88,6 +88,12 @@
         "kind": "license",
         "url": "https://designsystem.digital.gov/about/website-policies-notices/",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://designsystem.digital.gov/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -355,6 +361,27 @@
         "source_id": "components-live",
         "method": "selector-backed-component",
         "captured": "2026-07-13"
+      },
+      "components.search-submit.height": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.site-search__button.usa-button.margin-top-0 \"\" (48 x 38) via probe-component-states.mjs --match #2672de matched on padding, font-size, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.search-submit.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.site-search__button.usa-button.margin-top-0 \"\" (48 x 38) via probe-component-states.mjs --match #2672de matched on padding, font-size, fg; locale en-US: pressed bg #0050d8, outline #2491ff solid 4px (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.search-submit.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.site-search__button.usa-button.margin-top-0 \"\" (48 x 38) via probe-component-states.mjs --match #2672de matched on padding, font-size, fg; locale en-US: focus outline #2491ff solid 4px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -362,12 +389,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 18,
+      "warnings": 20,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 7,
+      "extension-component-property": 9,
       "contrast-ratio": 1,
       "orphaned-tokens": 8
     },
@@ -407,6 +434,18 @@
         "rule": "broken-ref",
         "path": "components.search-submit.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.search-submit.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

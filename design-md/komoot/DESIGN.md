@@ -43,6 +43,7 @@ components:
     hover: '#404823'
     pressed: '#404823'
     use: 'Login or Signup — olive primary (actionBaseFillPrimary) darkening to #404823.'
+    focus: 'bg #404823, shadow rgba(66, 153, 225, 0.5) 0px 0px 0px 3px, outline #1c1a18 solid 4px on :focus-visible'
   nav-ghost-white:
     type: button
     backgroundColor: transparent
@@ -183,6 +184,8 @@ it is not recorded as a brand state.
 
 Hover: olive darkens to `#404823`; ghost navigation takes a 50% ink fill. Press: the same. Focus: a
 non-brand blue ring (not recorded).
+
+Live state probe, 2026-10-16 (`https://www.komoot.com/`), `button-primary`: focus — bg #404823, shadow rgba(66, 153, 225, 0.5) 0px 0px 0px 3px, outline #1c1a18 solid 4px.
 
 ## Do's and Don'ts
 

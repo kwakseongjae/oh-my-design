@@ -43,6 +43,8 @@ components:
     pressed: '#ff5000'
     focus: '#ff5000'
     use: 'The search submit, 72×36. Measured at rest, hover, pressed and focus: all four are byte-identical — the button has no state styling at all.'
+    height: 36px
+    padding: 0px
   button-login:
     type: button
     backgroundColor: '#ff5000'

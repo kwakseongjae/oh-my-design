@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-07-13",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -103,6 +103,12 @@
         "kind": "license",
         "url": "https://github.com/Outfitio/Outfit-Fonts",
         "captured": "2026-07-13"
+      },
+      {
+        "id": "careers-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.minimaxi.com/careers",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -592,6 +598,20 @@
         "source_id": "careers-live",
         "method": "computed-style",
         "captured": "2026-07-13"
+      },
+      "components.careers-primary.height": {
+        "surface_id": "careers",
+        "source_id": "careers-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.group.flex.items-center \"立刻投递\" (128 x 44) via probe-component-states.mjs --match #181e25 matched on radius, padding, font-size, fg; locale en-US",
+        "captured": "2026-10-16"
+      },
+      "components.careers-primary.pressed": {
+        "surface_id": "careers",
+        "source_id": "careers-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.group.flex.items-center \"立刻投递\" (128 x 44) via probe-component-states.mjs --match #181e25 matched on radius, padding, font-size, fg; locale en-US: pressed bg #27272a (+2 nested-layer changes) (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -599,12 +619,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 33,
+      "warnings": 34,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 19,
+      "extension-component-property": 20,
       "missing-primary": 1,
       "contrast-ratio": 1,
       "orphaned-tokens": 9
@@ -717,6 +737,12 @@
         "rule": "broken-ref",
         "path": "components.careers-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.careers-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

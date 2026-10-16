@@ -28,7 +28,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "official-doc",
         "url": "https://www.satispay.com/it-it/chi-siamo/",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.satispay.com/it-it/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -388,6 +394,27 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-signup.padding": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "computed-style",
+        "selector": "button.inline-flex.items-center.justify-center \"Iscriviti\" (82 x 48) via probe-component-states.mjs --match #290402 matched on radius, font-size, height, fg; locale it-IT",
+        "captured": "2026-10-16"
+      },
+      "components.button-signup.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.inline-flex.items-center.justify-center \"Iscriviti\" (82 x 48) via probe-component-states.mjs --match #290402 matched on radius, font-size, height, fg; locale it-IT: pressed no visible change (measured 2026-10-16) (:hover + :active)",
+        "captured": "2026-10-16"
+      },
+      "components.button-signup.focus": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "button.inline-flex.items-center.justify-center \"Iscriviti\" (82 x 48) via probe-component-states.mjs --match #290402 matched on radius, font-size, height, fg; locale it-IT: focus shadow transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px, #94a3b8 0px 0px 0px 1px, rgba(41, 4, 2, 0.08) 0px 2px 8px 0px on :focus-visible",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -395,12 +422,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 30,
+      "warnings": 32,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 1,
-      "extension-component-property": 11,
+      "extension-component-property": 13,
       "orphaned-tokens": 18
     },
     "findings": [
@@ -433,6 +460,18 @@
         "rule": "broken-ref",
         "path": "components.button-signup.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-signup.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-signup.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

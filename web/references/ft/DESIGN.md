@@ -84,6 +84,7 @@ components:
     typography: 12px / 700
     focus: 'ring 0 0 0 4px #ffffff, 0 0 0 8px #4d4845'
     use: Subscribe in the header — slate with white Metric. Focus draws a two-layer authored ring, white inside black-70. Hover was not measured.
+    pressed: 'bg #727071 (:hover + :active)'
   button-offers:
     type: button
     backgroundColor: '#ffffff'
@@ -328,6 +329,8 @@ Four components. Focus measured on all four: two-layer rings on the buttons (swa
 dark and light buttons) and a 2px `#807973` ring on links. Hover and pressed **not measured** —
 the collector could not produce `:hover`. Origami documents teal button hover `#0a5e66` and
 pressed `#052f33`, and link hover `#08474d` with underline `#9ec0bd`.
+
+Live state probe, 2026-10-16 (`https://www.ft.com/`), `button-subscribe`: pressed — bg #727071.
 
 ## Do's and Don'ts
 

@@ -36,6 +36,7 @@ components:
     hover: '#8a6ee4'
     pressed: 'box-shadow 0 0 0 2px #a697ed'
     use: 'Regístrate in the header — --cta-primary-bg-color, lifting to --cta-primary-bg-color-hover #8a6ee4; press adds a 2px lavender ring. Focus is the browser''s ring.'
+    padding: 0px 12px
   button-dark:
     type: button
     backgroundColor: '#1f123f'

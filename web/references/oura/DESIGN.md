@@ -44,6 +44,7 @@ components:
     pressed: '#2056a6'
     focus: 'outline 2px solid #3184ff'
     use: 'Mehr erfahren — a blue pill (--color-blue-100 #2a72de) darkening to --color-blue-200 #2056a6 on hover and press; focus is a 2px bright-blue outline.'
+    padding: 12px 24px
   nav-pill:
     type: button
     backgroundColor: transparent

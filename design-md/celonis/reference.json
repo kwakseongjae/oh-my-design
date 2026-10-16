@@ -22,7 +22,7 @@
   "claimPaths": "design-md-v3",
   "verification_v2": {
     "schema": 2,
-    "checked": "2026-09-26",
+    "checked": "2026-10-16",
     "surfaces": [
       {
         "id": "home",
@@ -55,6 +55,12 @@
         "kind": "official-doc",
         "url": "https://www.celonis.com/legal",
         "captured": "2026-09-26"
+      },
+      {
+        "id": "home-probe-2026-10-16",
+        "kind": "product-surface",
+        "url": "https://www.celonis.com/",
+        "captured": "2026-10-16"
       }
     ],
     "conflicts": [],
@@ -328,6 +334,13 @@
         "source_id": "home-live",
         "method": "computed-style",
         "captured": "2026-09-26"
+      },
+      "components.button-primary.pressed": {
+        "surface_id": "home",
+        "source_id": "home-probe-2026-10-16",
+        "method": "live-state-probe",
+        "selector": "a.button.conversion.small \"Try for free\" (106 x 40) via probe-component-states.mjs --match #5cfe50 matched on radius, padding, font-size, height, fg; locale de-DE: pressed shadow rgba(0, 0, 0, 0.2) 0px 0px 0px 1000px inset (:hover + :active)",
+        "captured": "2026-10-16"
       }
     }
   },
@@ -335,12 +348,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 27,
+      "warnings": 28,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 2,
-      "extension-component-property": 7,
+      "extension-component-property": 8,
       "missing-primary": 1,
       "orphaned-tokens": 17
     },
@@ -380,6 +393,12 @@
         "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",

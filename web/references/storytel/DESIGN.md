@@ -40,6 +40,7 @@ components:
     hover: '#f2eeeb'
     pressed: '#eae6e0'
     use: 'Starta erbjudandet on the dark hero — --color-btn-primary-invert: white pill, hover #f2eeeb, press #eae6e0. Focus is the browser''s ring. Prova nu in the header is a 40px, 13px version.'
+    padding: 12px 20px
   link-nav:
     type: button
     backgroundColor: transparent
