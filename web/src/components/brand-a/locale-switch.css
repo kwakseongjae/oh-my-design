@@ -6,7 +6,7 @@
 .sq-lp-btn:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-lp-caret{transition:transform .15s}
 .sq-lp-btn[aria-expanded="true"] .sq-lp-caret{transform:rotate(180deg)}
-.sq-lp{position:absolute;z-index:60;top:calc(100% + 6px);right:0;margin:0;padding:6px;list-style:none;min-width:176px;max-width:calc(100vw - 32px);background:var(--sq-paper);box-shadow:0 12px 32px -12px rgba(10,11,14,.28),0 0 0 1px rgba(10,11,14,.06)}
+.sq-lp{position:absolute;z-index:60;top:calc(100% + 6px);right:0;margin:0;padding:6px;list-style:none;min-width:176px;max-width:calc(100vw - 32px);background:var(--sq-paper);box-shadow:0 14px 36px -10px rgba(10,11,14,.26),0 2px 8px -2px rgba(10,11,14,.10)}
 .sq-lp[hidden]{display:none}
 .sq-lp a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:0 12px;font-size:15px;font-weight:550;color:var(--sq-ink);text-decoration:none;outline:none}
 .sq-lp a:hover{background:var(--sq-cell)}

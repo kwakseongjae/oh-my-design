@@ -215,10 +215,12 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
         return;
       }
       state.current = "loading";
+      performance.mark("k3:boot");
       placeHost();
       Promise.all([import("./keys3d/main.js"), capsFor(caps.filter((c) => (narrowRef.current ? c.mrow : c.row) >= 0))])
         .then(([m, list]) => {
           if (cancelled) return;
+          performance.mark("k3:loaded");
           capsRef.current = list;
           k3.current = m.mount(h, {
             caps: list,
@@ -233,9 +235,11 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
             },
           }) as K3;
           state.current = "ready";
+          performance.mark("k3:mounted");
           // fade the canvas in only once its shaders are compiled and its colours calibrated
           (k3.current.ready ?? Promise.resolve()).then(() => requestAnimationFrame(() => {
             if (cancelled) return;
+            performance.mark("k3:live");
             h.classList.add("sq-live");
             // the poster stays under the (opaque) canvas; swap it back once the fade is done
             setTimeout(ownPoster, 500);
@@ -261,10 +265,11 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
       // prerendered page: the inline poster swap ran before the click; redo it on activation
       if (from && !reduce.matches) h.setAttribute("data-set", setOf(from));
       // round 8: arriving from the language picker, the new caps are what the person waits for —
-      // boot now (keys3d and the logos are in the HTTP cache from the page just left), not after load + idle
-      if (from) boot();
-      else if (document.readyState === "complete") go();
-      else addEventListener("load", go, { once: true });
+      // boot at load (keys3d and the logos are in the HTTP cache from the page just left) without the
+      // 300 ms beat and idle wait; not before load, where it competed with hydration on phones
+      const next = from ? boot : go;
+      if (document.readyState === "complete") next();
+      else addEventListener("load", next, { once: true });
     };
     const prerendering = (document as Document & { prerendering?: boolean }).prerendering;
     if (prerendering) document.addEventListener("prerenderingchange", start, { once: true });
@@ -275,6 +280,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
     return () => {
       cancelled = true;
       removeEventListener("load", go);
+      removeEventListener("load", boot);
       document.removeEventListener("prerenderingchange", start);
       reduce.removeEventListener("change", onReduce);
       k3.current?.destroy();
