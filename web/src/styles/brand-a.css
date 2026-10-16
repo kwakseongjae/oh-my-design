@@ -9,11 +9,10 @@
  * appear only where a reference's claimed token draws them (keycaps, gen-UI screen).
  *
  * Contrast (WCAG, measured on the hex values):
- *   light  ink/paper 18.1  ink-2/paper 8.4  ink/gamboge 9.0
- *   dark   ink/paper 16.8  ink-2/paper 8.4
+ *   ink/paper 18.1  ink-2/paper 8.4  ink/gamboge 9.0
  * Gamboge is never text on paper (2.0:1); it is a fill behind ink, or a mark.
  *
- * Theme: next-themes puts `.dark` on <html> (system default, toggle in the header).
+ * Light only (owner, 2026-10-16): one palette, no theme switch, color-scheme: light.
  */
 @import "./wanted-sans-latin.css";
 
@@ -80,24 +79,6 @@
   --sq-cell-guide:
     linear-gradient(var(--sq-guide-2), var(--sq-guide-2)) center / 1px 100% no-repeat,
     linear-gradient(var(--sq-guide-2), var(--sq-guide-2)) center / 100% 1px no-repeat;
-}
-
-.dark {
-  --sq-paper: #0f1013;
-  --sq-ink: #f1f1ec;
-  --sq-ink-2: #a9acb6;
-  --sq-cell: #17191e;
-  --sq-guide: #2b2f38;
-  --sq-guide-2: #1d2026;
-  --sq-focus: #8f9bff;
-  --sq-ok: #6fd69c;
-  --sq-warn: #f2c14e;
-  --sq-err: #ff9a8f;
-  --sq-cap-n: #30343c;
-  --sq-cap-n-side: #1b1e23;
-  --sq-drop: rgba(0, 0, 0, 0.6);
-  --sq-sk: #2a2e36;
-  --sq-sk-2: #20232a;
 }
 
 @media (max-width: 900px) {

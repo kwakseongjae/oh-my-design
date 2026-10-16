@@ -28,11 +28,12 @@ async function load(): Promise<number | null> {
   return inflight;
 }
 
-/** Live GitHub star count, or null while loading / when unavailable. */
-export function useGithubStars(): number | null {
+/** Live GitHub star count, or null while loading / when unavailable. `skip` = the caller already has it (no fetch). */
+export function useGithubStars(skip = false): number | null {
   const [stars, setStars] = useState<number | null>(cache ?? null);
 
   useEffect(() => {
+    if (skip) return;
     let alive = true;
     load().then((s) => {
       if (alive) setStars(s);
@@ -40,7 +41,7 @@ export function useGithubStars(): number | null {
     return () => {
       alive = false;
     };
-  }, []);
+  }, [skip]);
 
   return stars;
 }

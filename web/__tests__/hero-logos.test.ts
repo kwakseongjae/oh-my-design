@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { capData, getHeroCaps, getLandingData } from "@/lib/landing-a/data.server";
-import { capFills, paleOf, svgText } from "@/lib/landing-a/caps";
+import { capFills, chipLogo, logoOf, paleOf, svgText } from "@/lib/landing-a/caps";
 import edges from "@/data/brand-svg-edges.json";
 import { contrast } from "@/lib/landing-a/contrast";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
@@ -91,7 +91,20 @@ describe("hero keycaps", () => {
   it("picker chips: genuine logo where stored, else glyph", () => {
     const gen = getLandingData("en").gen;
     const logos = gen.filter((g) => g.logo).map((g) => g.id);
-    expect(logos).toEqual(["toss", "karrot", "kakaobank", "banksalad"]);
+    expect(logos).toEqual(["toss", "karrot", "kakaobank", "banksalad", "line"]);
     for (const g of gen.filter((x) => x.logo)) expect(svgText(g.logo!), g.id).toBeTruthy();
+  });
+
+  it("a high-risk logo (LINE: no effects, no 3D, no modification) reaches the flat chip only, never a keycap", () => {
+    const rec = manifest.records.find((r) => r.id === "line") as { risk_tier: string; landing_use?: string } | undefined;
+    expect(rec?.risk_tier).toBe("high");
+    expect(rec?.landing_use).toBe("flat-chip");
+    expect(logoOf("line")).toBeNull();
+    expect(logoOf("line", undefined, true)?.src).toBe("/brand-svg/line/combined.svg");
+    expect(chipLogo("line")).toBe("/brand-svg/line/combined.svg");
+    for (const loc of LOCALES) expect(getHeroCaps(loc).find((c) => c.id === "line")?.kind ?? "absent", loc).not.toBe("logo");
+    // every other high-risk record stays out of the chip too
+    for (const r of manifest.records as { id: string; risk_tier?: string; landing_use?: string }[])
+      if (r.risk_tier === "high" && r.landing_use !== "flat-chip") expect(chipLogo(r.id), r.id).toBeNull();
   });
 });

@@ -10,12 +10,8 @@ import "./globals.css";
  * directly instead (`experimental.globalNotFound` in next.config.ts). It
  * deliberately carries no site JSON-LD: a 404 is not the organization page.
  *
- * It also renders outside the ThemeProvider, so the inline script below does what
- * next-themes does on every other page (key "theme", default "system", class
- * strategy): it puts `.dark` on <html>, and brand-a.css's dark --sq-* block applies.
+ * Light only, like every other page (globals.css sets color-scheme: light).
  */
-const THEME_SCRIPT =
-  "try{var t=localStorage.getItem('theme')||'system';if(t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');document.documentElement.style.colorScheme=document.documentElement.classList.contains('dark')?'dark':'light'}catch(e){}";
 export const metadata: Metadata = {
   title: "Page not found — oh-my-design",
   robots: { index: false },
@@ -23,10 +19,7 @@ export const metadata: Metadata = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-      </head>
+    <html lang="en">
       {/* Concept A (rebrand round 2): paper, ink, the gamboge mark, grid-paper ground. */}
       <body className="min-h-screen bg-background text-foreground" style={{ background: "var(--sq-grid-paper)", backgroundColor: "var(--sq-paper)" }}>
         <main className="mx-auto flex min-h-screen max-w-xl flex-col justify-center gap-4 px-4">

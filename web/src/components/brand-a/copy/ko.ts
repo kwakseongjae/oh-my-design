@@ -17,17 +17,12 @@ export const KO: BrandCopy = {
     "langTitle": "언어 선택",
     "close": "닫기",
     "langNames": {"en":"영어", "ko":"한국어", "ja":"일본어", "zh-tw":"중국어 번체"},
-    "theme": "테마 바꾸기",
     "skip": "본문으로 건너뛰기"
   },
   "hero": {
     "h1": "<span class=\"nb\">한·중·일 화면을 위한</span> <span class=\"nb\">진짜 디자인 시스템</span>",
-    "lede": "실제 회사의 DESIGN.md {total}개를 코딩 에이전트에 바로 건네세요. 검증된 값에는 모두 출처가 적혀 있어요.",
-    "searchLabel": "레퍼런스 검색",
-    "searchPh": "토스뱅크, 교보문고, 誠品, トヨタ…",
-    "searchEmpty": "그런 이름의 레퍼런스가 없어요. 한글 이름이나 영문 이름으로 찾아보세요.",
-    "searchHint": "{n}개 찾음",
-    "browse": "아카이브 둘러보기",
+    "lede": "실제 회사의 DESIGN.md {total}개. 검증된 값마다 출처가 적혀 있어요.",
+    "browse": "DESIGN.md 둘러보기",
     "how": "어떻게 쓰나요"
   },
   "status": {
@@ -66,15 +61,14 @@ export const KO: BrandCopy = {
       "pick": "회사",
       "sum": "값 {n}개 · 모두 출처 있음",
       "hint": "요소에 마우스를 올리거나 탭하면 값의 출처가 보여요.",
-      "missing": "출처에 없음:",
+      "missing": "아직 측정하지 않아 중립 기본값으로 보여 주는 값:",
       "noFace": "명시된 글꼴이 없어 페이지 글꼴로 보여 줘요.",
       "st": {
         "pressed": "누름",
         "hover": "호버",
         "focus": "포커스"
       },
-      "stNone": "출처에 상태 값 없음",
-      "dflt": "출처에 없음 · 기본값",
+      "dflt": "아직 측정 안 됨 · 중립 기본값",
       "subF": "{f}: 여기서는 불러오지 않아 페이지 글꼴로 보여 줘요. 브랜드 글꼴이 아니고, 실측으로 고른 대체 글꼴도 아니에요.",
       "disp": "디스플레이 글꼴: {d}.",
       "otherDomain": "버튼과 다른 출처 도메인"

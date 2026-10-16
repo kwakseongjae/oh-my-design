@@ -17,7 +17,6 @@
 .sq-bchip-t{display:grid;place-items:center;width:96px;height:96px;flex-shrink:0}
 .sq-bchip-t span{font-size:40px;font-weight:700}
 .sq-bchip-v{width:48px;height:48px;object-fit:contain}
-.dark .sq-bchip-v{filter:invert(1)}
 .sq-bchip-r{width:52px;height:52px;object-fit:contain}
 .sq-ih h1{min-width:0;font-family:var(--sq-f-latin),sans-serif;font-weight:var(--sq-fw-display);font-size:clamp(36px,4.6vw,66px);line-height:1.04;letter-spacing:-0.03em}
 .sq-item-sum{margin-top:28px;max-width:40em;font-size:19px;line-height:1.6;color:var(--sq-ink-2)}

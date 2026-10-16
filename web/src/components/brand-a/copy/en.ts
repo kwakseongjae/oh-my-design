@@ -15,17 +15,12 @@ export const EN = {
     "langTitle": "Choose a language",
     "close": "Close",
     "langNames": {"en":"English", "ko":"Korean", "ja":"Japanese", "zh-tw":"Traditional Chinese"},
-    "theme": "Switch theme",
     "skip": "Skip to content"
   },
   "hero": {
     "h1": "Real design systems for CJK&nbsp;screens.",
-    "lede": "{total} DESIGN.md files from real companies, ready for your coding agent. Every verified value points back to its source.",
-    "searchLabel": "Search references",
-    "searchPh": "tossbank, 교보문고, 誠品, トヨタ…",
-    "searchEmpty": "No reference by that name. Try the company's native or English name.",
-    "searchHint": "{n} matches",
-    "browse": "Browse the archive",
+    "lede": "{total} DESIGN.md files from real companies, every verified value traced to its source.",
+    "browse": "Browse DESIGN.md",
     "how": "How it works"
   },
   "status": {
@@ -64,15 +59,14 @@ export const EN = {
       "pick": "Company",
       "sum": "{n} values · all sourced",
       "hint": "Hover or tap an element to see where its value came from.",
-      "missing": "Not in source:",
+      "missing": "Not measured yet, shown with a neutral default:",
       "noFace": "No face claimed, so the page font is used.",
       "st": {
         "pressed": "pressed",
         "hover": "hover",
         "focus": "focus"
       },
-      "stNone": "no state values in source",
-      "dflt": "not in source · default",
+      "dflt": "Not measured yet · neutral default",
       "subF": "{f}: not loaded here, so the screen uses the page font. That is not the brand face, and no measured substitute is chosen.",
       "disp": "Display face: {d}.",
       "otherDomain": "different source domain from the button"

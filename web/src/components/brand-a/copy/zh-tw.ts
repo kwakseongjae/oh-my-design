@@ -17,17 +17,12 @@ export const ZH_TW: BrandCopy = {
     "langTitle": "選擇語言",
     "close": "關閉",
     "langNames": {"en":"英文", "ko":"韓文", "ja":"日文", "zh-tw":"繁體中文"},
-    "theme": "切換主題",
     "skip": "跳到主要內容"
   },
   "hero": {
     "h1": "<span class=\"nb\">給中日韓介面用的</span><span class=\"nb\">真實設計系統</span>",
-    "lede": "{total} 份真實企業的 DESIGN.md，可以直接交給 AI 程式助理。已驗證的數值都註明了出處。",
-    "searchLabel": "搜尋參考",
-    "searchPh": "誠品、台灣高鐵、토스뱅크…",
-    "searchEmpty": "找不到這個名稱。試試企業的原文名稱或英文名稱。",
-    "searchHint": "{n} 筆結果",
-    "browse": "瀏覽典藏",
+    "lede": "{total} 份真實企業的 DESIGN.md，已驗證的數值都註明了出處。",
+    "browse": "瀏覽 DESIGN.md",
     "how": "使用方式"
   },
   "status": {
@@ -66,15 +61,14 @@ export const ZH_TW: BrandCopy = {
       "pick": "企業",
       "sum": "{n} 個數值・全部有來源",
       "hint": "將游標移到元素上或點一下，就能看到數值的來源。",
-      "missing": "來源未提供：",
+      "missing": "尚未量測，以中性預設值顯示：",
       "noFace": "沒有指定字型，因此使用本頁字型。",
       "st": {
         "pressed": "按下",
         "hover": "懸停",
         "focus": "焦點"
       },
-      "stNone": "來源沒有狀態數值",
-      "dflt": "來源未提供・預設值",
+      "dflt": "尚未量測・中性預設值",
       "subF": "{f}：此處未載入，畫面改用本頁字型。這不是品牌字型，也不是經實測挑選的替代字型。",
       "disp": "標題字型：{d}。",
       "otherDomain": "與按鈕不同的來源網域"

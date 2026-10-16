@@ -8,8 +8,6 @@
 .sq-g5-chip[aria-checked="true"]{border-color:var(--sq-ink);background:var(--sq-ink);color:var(--sq-paper)}
 .sq-g5-chip small{font:600 10.5px/1 var(--sq-f-latin),sans-serif;opacity:.6}
 .sq-jk{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:var(--sw);color:var(--on);font-size:15px;font-weight:760;line-height:1;box-shadow:inset 0 2px 2px color-mix(in srgb,#fff 40%,transparent),inset 0 -3px 0 color-mix(in srgb,#000 22%,transparent),0 2px 4px -1px rgba(0,0,0,.25)}
-.sq-jk-logo{background:#ffffff}
-.sq-jk-logo img{width:22px;height:22px;object-fit:contain;display:block}
 .sq-jk:lang(ja){font-family:var(--sq-f-ja)}
 .sq-jk:lang(zh-Hant){font-family:var(--sq-f-tc)}
 .sq-jk:lang(en){font-family:var(--sq-f-latin),sans-serif}
@@ -60,9 +58,6 @@
 .sq-e-sb{display:inline-flex;align-items:center;padding:6px 14px;font-size:13px;font-weight:600;background:var(--b-bg);color:var(--b-fg,var(--canvas));border-radius:var(--b-r,0px);transition:border-radius .45s,background-color .45s}
 .sq-e-chip{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border:1px solid color-mix(in srgb,var(--fg) 30%,transparent);font:600 11px/1.4 ui-monospace,Menlo,monospace}
 .sq-e-chip i{width:9px;height:9px}
-.sq-e-chip.sq-dash{border-style:dashed;opacity:.75}
-.sq-e.sq-m-head,.sq-e.sq-m-bod,.sq-e.sq-m-sbg,.sq-e.sq-m-sr,.sq-e.sq-m-bh,.sq-e.sq-m-bpad,.sq-e.sq-m-bfont,.sq-e.sq-m-br{outline:1.5px dashed color-mix(in srgb,var(--fg) 40%,transparent);outline-offset:3px}
-.sq-e-card.sq-m-sbg{background:transparent}
 .sq-scr.sq-sk{background:var(--sq-sk-2);color:transparent}
 .sq-e.sq-sk{background:var(--sq-sk)!important;color:transparent!important;border-color:transparent!important;border-radius:0!important;box-shadow:none!important;outline-color:transparent;overflow:hidden}
 .sq-e.sq-sk *{color:transparent!important;background:transparent!important;border-color:transparent!important;box-shadow:none!important}
@@ -77,18 +72,15 @@
   60%{transform:none;box-shadow:0 0 0 2px var(--sq-gamboge)}
   100%{box-shadow:0 0 0 8px transparent}
 }
-.sq-scr [data-k]:hover,.sq-scr [data-k]:focus-visible,.sq-scr [data-k].sq-tipped{outline:1.5px dashed var(--sq-gamboge)!important;outline-offset:3px}
+.sq-scr [data-k]:hover,.sq-scr [data-k]:focus-visible{outline:1.5px solid var(--sq-gamboge)!important;outline-offset:3px}
 .sq-scr:focus-visible{box-shadow:0 0 0 3px var(--sq-focus)}
 .sq-g5-tip{position:absolute;z-index:12;max-width:min(320px,calc(100% - 8px));padding:9px 11px;background:var(--sq-ink);color:var(--sq-paper);font:500 11px/1.5 ui-monospace,Menlo,monospace;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);pointer-events:none}
 .sq-g5-tip div+div{margin-top:4px}
 .sq-g5-tip b{font-weight:700}
 .sq-g5-tip small{display:block;opacity:.7;font-size:10px}
-.sq-g5-tip .sq-x{display:inline-block;padding:0 5px;border:1px dashed currentColor;font-size:10px}
 .sq-g5-sum{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;color:var(--sq-ink-2)}
 .sq-g5-sum .sq-ct{display:inline-flex;align-items:center;gap:7px;font-weight:700;color:var(--sq-ink)}
 .sq-g5-sum .sq-ct::before{content:"";width:9px;height:9px;background:var(--sq-gamboge)}
-.sq-g5-sum .sq-ms{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:center}
-.sq-g5-sum .sq-ms span{font:600 11px/1.4 ui-monospace,Menlo,monospace;padding:0 6px;border:1px dashed var(--sq-ink-2)}
 .sq-g5-sum .sq-face{flex-basis:100%;font-size:12.5px}
 @media (prefers-reduced-motion:reduce) {
   .sq-e,.sq-scr,.sq-g5-code li,.sq-g5-scan{transition:none}
@@ -111,15 +103,9 @@
 @media (max-width:900px) and (prefers-reduced-motion:reduce) {
   .sq-g5-code{scroll-behavior:auto}
 }
-.sq-e.sq-m-head,.sq-e.sq-m-bod,.sq-e.sq-m-sbg,.sq-e.sq-m-sr,.sq-e.sq-m-bh,.sq-e.sq-m-bpad,.sq-e.sq-m-bfont,.sq-e.sq-m-br{outline:0}
 .sq-e-card.sq-m-sbg{background:color-mix(in srgb,var(--fg) 5%,transparent)}
 .sq-e-card.sq-m-sr{border-radius:0}
 .sq-e-btn.sq-m-bpad{padding:0 16px}
-.sq-e-card .sq-mtags{position:absolute;top:8px;right:8px;max-width:calc(100% - 16px);justify-content:flex-end}
-.sq-mtags{display:flex;flex-wrap:wrap;gap:4px}
-.sq-e-btn+.sq-mtags{margin-top:-6px}
-.sq-mtag{display:inline-block;padding:0 5px;border:1px dashed color-mix(in srgb,var(--fg) 45%,transparent);color:color-mix(in srgb,var(--fg) 70%,transparent);font:600 9.5px/1.5 ui-monospace,Menlo,monospace;background:var(--canvas);white-space:nowrap}
-.sq-e.sq-sk .sq-mtags,.sq-e.sq-sk+.sq-mtags{visibility:hidden}
 .sq-g5-tip em{font-style:normal;color:var(--sq-gamboge)}
 .sq-gen-replay:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-gen-replay{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:650;border-bottom:2px solid var(--sq-gamboge);padding-bottom:1px}
@@ -132,3 +118,17 @@
 .sq-g5-agent{border:0;background:var(--sq-cell)}
 .sq-g5-stage{border:0;background:var(--sq-cell);min-height:440px}
 @media (min-width:901px){.sq-g5-code{max-height:440px;overflow-y:auto}}
+/* round 7: missing values. The screen renders the neutral default silently (rules above);
+   an element with an unmeasured value gets one small dot in the screen gutter (never over
+   content) whose hover/focus tooltip says "not measured yet"; the list lives in the summary. */
+.sq-e[data-miss]::after{content:"";position:absolute;top:.55em;right:-13px;width:5px;height:5px;border-radius:50%;background:color-mix(in srgb,var(--fg) 32%,transparent);pointer-events:none}
+.sq-e-card[data-miss]::after,.sq-e-btn[data-miss]::after{top:10px}
+.sq-e.sq-sk[data-miss]::after{display:none}
+.sq-g5-sum .sq-ms{flex-basis:100%;font-size:13px;line-height:1.6;color:var(--sq-ink-2)}
+.sq-g5-sum .sq-ms [lang="en"]{color:var(--sq-ink)}
+.sq-ms-dot{display:inline-block;width:5px;height:5px;margin-right:8px;border-radius:50%;background:var(--sq-ink-2);opacity:.6;vertical-align:middle;transform:translateY(-1px)}
+.sq-g5-tip .sq-x{opacity:.75}
+/* picker chip logos (round 7): the file as delivered — flat, unrecoloured, on a plain white
+   tile with clear space; no jelly bevel or shadow (LINE's guideline forbids decoration and effects). */
+.sq-jk.sq-jk-logo{background:#ffffff;box-shadow:none;padding:5px}
+.sq-jk-logo img{width:20px;height:20px;object-fit:contain;display:block}

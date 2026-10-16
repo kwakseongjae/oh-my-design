@@ -1,14 +1,13 @@
 import transcript from "@/data/cli-transcript.json";
 import type { BrandCopy } from "./copy";
 import { fmt } from "./copy";
-import { CopyButton } from "./copy-button";
 
 /**
  * The omd CLI, shown by its own output (round 5). Every output line is verbatim from a
  * real run of the published package (data/cli-transcript.json, raw captures in
  * impl/r5/cli/); the only thing not printed by the CLI is the "N lines left out" marker,
- * set in the page face so it never reads as output. The first command is the one
- * install command on the page, and it is the copyable one.
+ * set in the page face so it never reads as output. Round 7: the copyable install
+ * command moved to the hero (one Copy per page, R10); here it is shown as it ran.
  */
 export function CliPanel({ t }: { t: BrandCopy["use"] }) {
   const [install, ...rest] = transcript.runs;
@@ -19,7 +18,6 @@ export function CliPanel({ t }: { t: BrandCopy["use"] }) {
           <span className="sq-term-ps" aria-hidden="true">$ </span>
           {install.cmd}
         </code>
-        <CopyButton text={install.cmd} labels={t} />
       </div>
       <Out run={install} gap={t.gap} />
       {rest.map((r) => (

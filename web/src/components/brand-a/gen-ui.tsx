@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent } from "react";
-import type { SiteLocale } from "@/lib/i18n/site-locales";
+import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import type { GenSpec } from "@/lib/landing-a/types";
 import type { BrandCopy } from "./copy";
 import { glyph, lines, methodKey, missingLabels, states, tips, vars, type TipRow } from "./gen-render";
@@ -271,18 +271,18 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
   if (s.famD && s.famT && s.famD.v !== s.famT.v) face += ` ${fill(t.r5.disp, { d: s.famD.v })}`;
   const screenFont = isSys ? 'system-ui,-apple-system,"Segoe UI",sans-serif' : isLoaded ? `var(--font-noto-${locale === "ja" ? "jp" : "tc"}),"${loaded}",sans-serif` : undefined;
 
-  const missTags = (pairs: [string, string][]) => {
-    const tg = pairs.filter(([f]) => miss.has(f as never));
-    return tg.length ? (
-      <span className="sq-mtags">
-        {tg.map(([, label]) => (
-          <span key={label} className="sq-mtag">{`${label}: ${t.r5.dflt}`}</span>
-        ))}
-      </span>
-    ) : null;
+  /* Missing values (round 7): the screen draws the neutral default silently — no tags inside
+     it. An element with an unmeasured value carries one small dot (data-miss, gen-ui.css)
+     whose tooltip names what is unmeasured; the full list sits in the summary under the
+     screen. Nothing here is company-specific: when a value is measured and lands in the
+     reference, vars()/lines() pick it up and the dot and list entry disappear. */
+  const el = (base: string, flags: string[], step: number) => {
+    const m = flags.filter((f) => miss.has(f as never));
+    return {
+      className: `${base}${m.map((f) => ` sq-m-${f}`).join("")}${sk?.has(step) ? " sq-sk" : ""}${snap === step ? " sq-snap" : ""}`,
+      "data-miss": m.length ? "" : undefined,
+    };
   };
-  const cls = (base: string, flags: string[], step: number) =>
-    `${base}${flags.filter((f) => miss.has(f as never)).map((f) => ` sq-m-${f}`).join("")}${sk?.has(step) ? " sq-sk" : ""}${snap === step ? " sq-snap" : ""}`;
 
   const onPickKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
@@ -326,10 +326,10 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
                 onKeyDown={(e) => onPickKey(e, i)}
               >
                 {x.logo ? (
-                  /* genuine logo (brand-svg.json), never recoloured, on a white tile in both themes */
+                  /* genuine logo (brand-svg.json) as delivered: flat, never recoloured, on a plain white tile with clear space */
                   <span className="sq-jk sq-jk-logo" aria-hidden="true">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={x.logo} alt="" width={22} height={22} loading="lazy" decoding="async" />
+                    <img src={x.logo} alt="" width={20} height={20} loading="lazy" decoding="async" />
                   </span>
                 ) : (
                 <span className={`sq-jk${/^\d/.test(g) ? " sq-dg" : ""}`} lang={/^\d/.test(g) || !/[぀-ヿ㐀-鿿가-힣]/.test(g) ? "en" : { KR: "ko", JP: "ja", TW: "zh-Hant" }[x.cc] ?? "en"} style={{ "--sw": pri, "--on": onColor(pri) } as CSSProperties} aria-hidden="true">
@@ -390,14 +390,13 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
           <div className="sq-g5-stage" role="group" aria-label={t.sample.label}>
             <div className={`sq-scr${sk?.has(0) ? " sq-sk" : ""}`} tabIndex={0} style={{ ...(cssVars as CSSProperties), fontFamily: screenFont }} {...tipProps(0)}>
               <div className="sq-scr-in">
-                <p className={cls("sq-e sq-e-h", ["head"], 1)} tabIndex={0} {...tipProps(1)}>
+                <p {...el("sq-e sq-e-h", ["head"], 1)} tabIndex={0} {...tipProps(1)}>
                   <span>{t.sample.title}</span>
                 </p>
-                <p className={cls("sq-e sq-e-p", ["bod", "body"], 1)} {...tipProps(1)}>
+                <p {...el("sq-e sq-e-p", ["bod", "body"], 1)} {...tipProps(1)}>
                   <span>{t.sample.body}</span>
                 </p>
-                <div className={cls("sq-e sq-e-card", ["sbg", "sr"], 3)} tabIndex={0} {...tipProps(3)}>
-                  {missTags([["sbg", "background"], ["sr", "radius"]])}
+                <div {...el("sq-e sq-e-card", ["sbg", "sr"], 3)} tabIndex={0} {...tipProps(3)}>
                   <p className="sq-e-ct">{t.sample.card}</p>
                   {t.sample.rows.map((r) => (
                     <p key={r} className="sq-e-row">
@@ -406,15 +405,15 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
                     </p>
                   ))}
                 </div>
-                <button type="button" className={cls("sq-e sq-e-btn", ["btn", "br", "bh", "bpad", "bfont"], 2)} {...tipProps(2)}>
+                <button type="button" {...el("sq-e sq-e-btn", ["btn", "br", "bh", "bpad", "bfont"], 2)} {...tipProps(2)}>
                   <span>{t.sample.cta}</span>
                 </button>
-                {missTags([["bh", "height"], ["bpad", "padding"], ["bfont", "font"], ["br", "radius"]])}
-                <div className={cls("sq-e sq-e-st", [], 4)} tabIndex={0} {...tipProps(4)}>
-                  <p className="sq-e-ct">{t.sample.states}</p>
-                  <div className="sq-e-sts">
-                    {st.length ? (
-                      st.map((x) =>
+                {/* no claimed state → no states row (the summary lists it as unmeasured) */}
+                {st.length ? (
+                  <div {...el("sq-e sq-e-st", [], 4)} tabIndex={0} {...tipProps(4)}>
+                    <p className="sq-e-ct">{t.sample.states}</p>
+                    <div className="sq-e-sts">
+                      {st.map((x) =>
                         x.css ? (
                           <span key={x.k} className="sq-e-sb" style={x.css as CSSProperties}>{t.r5.st[x.k]}</span>
                         ) : (
@@ -423,12 +422,10 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
                             {x.sw ? <i style={{ background: x.sw }} /> : null}
                           </span>
                         ),
-                      )
-                    ) : (
-                      <span className="sq-e-chip sq-dash">{t.r5.stNone}</span>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -436,12 +433,10 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
             <span className="sq-ct">{fill(t.r5.sum, { n: count })}</span>
             <span className="sq-hint">{t.r5.hint}</span>
             {missing.length ? (
-              <span className="sq-ms">
-                {t.r5.missing}
-                {missing.map((m) => (
-                  <span key={m} lang="en">{m}</span>
-                ))}
-              </span>
+              <p className="sq-ms">
+                <span className="sq-ms-dot" aria-hidden="true" />
+                {t.r5.missing} <span lang="en">{missing.join(", ")}</span>
+              </p>
             ) : null}
             <span className="sq-face">{face}</span>
             <button
@@ -459,7 +454,7 @@ export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; 
             <div className="sq-g5-tip" role="tooltip" ref={tipEl} style={{ top: tip.top, left: tip.left }} lang="en">
               {tipRows[tip.k]?.map((r: TipRow, i) => (
                 <div key={i}>
-                  <b>{r.k}</b> {r.v != null ? r.v : <span className="sq-x">{t.absent}</span>}
+                  <b>{r.k}</b> {r.v != null ? r.v : <span className="sq-x" lang={SITE_LOCALE_META[locale].htmlLang}>{t.r5.dflt}</span>}
                   {r.p ? (
                     <small>
                       {r.p[0]} · {t.m[methodKey(r.p[1])]} · {r.p[2]}

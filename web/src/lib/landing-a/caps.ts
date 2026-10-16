@@ -19,7 +19,7 @@ import type { CapData, LogoCap } from "./types";
  */
 
 interface Variant { ref: string; source: string; license: string }
-interface Rec { id: string; risk_tier?: string; default_variant?: string; variants: Record<string, Variant> }
+interface Rec { id: string; risk_tier?: string; landing_use?: string; default_variant?: string; variants: Record<string, Variant> }
 
 const RECS = (manifest as unknown as { records: Rec[] }).records;
 const REC_BY_ID = new Map(RECS.map((r) => [r.id, r]));
@@ -55,10 +55,16 @@ export function paleOf(hex: string, k = 0.16): string {
   return "#" + c.map((v) => Math.round(255 - (255 - v) * k).toString(16).padStart(2, "0")).join("");
 }
 
-/** The stored logo for an id: a named variant, else the manifest default. Only genuine, non-high-risk records with a file on disk. */
-export function logoOf(id: string, prefer?: string): { src: string; variant: string; svg: string } | null {
+/**
+ * The stored logo for an id: a named variant, else the manifest default. Only genuine
+ * records with a file on disk. High-risk records (a guideline that forbids effects or
+ * modification, e.g. LINE) are refused unless the caller is the flat chip and the record
+ * opts in with `landing_use: "flat-chip"`; keycaps never pass `flat`.
+ */
+export function logoOf(id: string, prefer?: string, flat = false): { src: string; variant: string; svg: string } | null {
   const rec = REC_BY_ID.get(id);
-  if (!rec || rec.risk_tier === "high") return null;
+  if (!rec) return null;
+  if (rec.risk_tier === "high" && !(flat && rec.landing_use === "flat-chip")) return null;
   const names = [prefer, rec.default_variant, ...Object.keys(rec.variants)].filter((v): v is string => !!v && !!rec.variants[v]);
   for (const v of names) {
     const meta = rec.variants[v];
@@ -114,7 +120,11 @@ export function heroCapsFor(locale: SiteLocale | undefined, cap: (id: string) =>
   return out;
 }
 
-/** Picker chip logo: the symbol where one is stored, else the default variant; null → glyph chip. */
+/**
+ * Picker chip logo: the symbol where one is stored, else the default variant; null → glyph
+ * chip. The chip shows the file as delivered — flat, unrecoloured, on a plain tile with clear
+ * space (gen-ui.css .sq-jk-logo) — so flat-chip records are admitted here and only here.
+ */
 export function chipLogo(id: string): string | null {
-  return logoOf(id, "symbol")?.src ?? null;
+  return logoOf(id, "symbol", true)?.src ?? null;
 }

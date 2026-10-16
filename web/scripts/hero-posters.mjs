@@ -1,5 +1,5 @@
 // Hero poster fallbacks (round 5): one set per cap set (default = en/ko, ja, zh-tw) ×
-// theme × width. Renders the live 3D scene (reduced-motion pose), hides everything
+// width (1440 @1x and @2x, 390 @2x; light only since round 7). Renders the live 3D scene (reduced-motion pose), hides everything
 // but #k3, clips to its box, encodes webp into public/brand-a/.
 // Headless playwright-core with GPU flags (not the owner's Chrome).
 //   node scripts/hero-posters.mjs <base-url>
@@ -14,7 +14,7 @@ fs.mkdirSync(outdir, { recursive: true });
 const b = await chromium.launch({ headless: true, channel: "chromium", args: ["--use-angle=metal", "--enable-gpu", "--ignore-gpu-blocklist"] });
 // one set per cap set in data/hero-caps.json (en/ko share default); pass names to limit, e.g. `ja zh-tw`
 const SETS = [["/", ""], ["/ja", "-ja"], ["/zh-tw", "-zh-tw"]].filter(([, n]) => process.argv.length <= 3 || process.argv.slice(3).includes(n.slice(1) || "default"));
-for (const [route, set] of SETS) for (const scheme of ["light", "dark"]) for (const [w, h, dpr, sfx] of [[1440, 900, 1, ""], [390, 844, 2, "-m"]]) {
+for (const [route, set] of SETS) for (const scheme of ["light"]) for (const [w, h, dpr, sfx] of [[1440, 900, 1, ""], [1440, 900, 2, "@2x"], [390, 844, 2, "-m"]]) {
   const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: dpr, colorScheme: scheme, reducedMotion: "reduce" });
   await ctx.addInitScript(() => { try { localStorage.setItem("omd-consent", "denied"); } catch {} });
   const p = await ctx.newPage();

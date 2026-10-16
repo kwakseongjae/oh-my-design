@@ -18,13 +18,13 @@ async function copyText(t: string) {
   }
 }
 
-export function CopyButton({ text, labels }: { text: string; labels: { copy: string; copied: string; failed: string } }) {
+export function CopyButton({ text, labels, className = "sq-copy" }: { text: string; labels: { copy: string; copied: string; failed: string }; className?: string }) {
   const [state, setState] = useState<"idle" | "ok" | "fail">("idle");
   const label = state === "ok" ? labels.copied : state === "fail" ? labels.failed : labels.copy;
   return (
     <button
       type="button"
-      className={`sq-copy${state === "ok" ? " sq-ok" : ""}`}
+      className={`${className}${state === "ok" ? " sq-ok" : ""}`}
       data-copy={text}
       onClick={() => {
         copyText(text).then(

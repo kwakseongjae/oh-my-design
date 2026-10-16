@@ -4,14 +4,11 @@
  * (h1 / 18 / 16), one accent (gamboge, on the main action only), no rules or eyebrows;
  * space separates sections. Gen-UI styles live in gen-ui.css.
  */
-/* Hero posters per theme and cap set (data/hero-caps.json: default for en/ko, ja, zh-tw).
-   --k3p desktop (1440), --k3pm phone (390). Rendered from the live scene (scripts/hero-posters.mjs). */
-:root{--k3p:url(/brand-a/hero-logos-light.webp);--k3pm:url(/brand-a/hero-logos-light-m.webp)}
-.dark{--k3p:url(/brand-a/hero-logos-dark.webp);--k3pm:url(/brand-a/hero-logos-dark-m.webp)}
-.sq-k3[data-set="ja"]{--k3p:url(/brand-a/hero-logos-ja-light.webp);--k3pm:url(/brand-a/hero-logos-ja-light-m.webp)}
-.dark .sq-k3[data-set="ja"]{--k3p:url(/brand-a/hero-logos-ja-dark.webp);--k3pm:url(/brand-a/hero-logos-ja-dark-m.webp)}
-.sq-k3[data-set="zh-tw"]{--k3p:url(/brand-a/hero-logos-zh-tw-light.webp);--k3pm:url(/brand-a/hero-logos-zh-tw-light-m.webp)}
-.dark .sq-k3[data-set="zh-tw"]{--k3p:url(/brand-a/hero-logos-zh-tw-dark.webp);--k3pm:url(/brand-a/hero-logos-zh-tw-dark-m.webp)}
+/* Hero posters per cap set (light only) (data/hero-caps.json: default for en/ko, ja, zh-tw).
+   --k3p desktop (1440 @1x/@2x, matching the canvas pixel ratio so the hand-off is invisible), --k3pm phone (390 @2x). Rendered from the live scene (scripts/hero-posters.mjs). */
+:root{--k3p:image-set(url(/brand-a/hero-logos-light.webp) 1x,url(/brand-a/hero-logos-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-logos-light-m.webp)}
+.sq-k3[data-set="ja"]{--k3p:image-set(url(/brand-a/hero-logos-ja-light.webp) 1x,url(/brand-a/hero-logos-ja-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-logos-ja-light-m.webp)}
+.sq-k3[data-set="zh-tw"]{--k3p:image-set(url(/brand-a/hero-logos-zh-tw-light.webp) 1x,url(/brand-a/hero-logos-zh-tw-light@2x.webp) 2x);--k3pm:url(/brand-a/hero-logos-zh-tw-light-m.webp)}
 
 :where(.sq-root) button,:where(.sq-root) select,:where(.sq-root) input{font:inherit;color:inherit}
 :where(.sq-root) code,:where(.sq-root) pre,:where(.sq-root) code[lang]{font-family:var(--sq-f-mono)}
@@ -21,52 +18,50 @@
 .sq-nb{display:inline-block}
 @media (prefers-reduced-motion:reduce){:where(.sq-root) *{scroll-behavior:auto!important}}
 
-/* ---- hero: simple left, one visual right ---- */
-.sq-hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:48px;align-items:center;min-height:min(820px,calc(100svh - 68px));padding-top:24px;padding-bottom:56px}
-.sq-hero-copy{min-width:0}
+/* ---- hero (round 7, after Taste Skill's hero): a generous left column — headline, one-line
+   subhead, the install command in one dark field with Copy, the main action and one quiet
+   link — against the keyboard on the right. Four type sizes in view (h1 / 18 / 16 / 15 nav),
+   two actions plus the copyable command, one accent (gamboge, on the main action). ---- */
+.sq-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:center;min-height:min(820px,calc(100svh - var(--sq-header-h)));padding-top:24px;padding-bottom:64px}
+.sq-hero-copy{min-width:0;max-width:640px}
 :where(.sq-root) h1{font-size:clamp(40px,4.7vw,68px);line-height:1.06;letter-spacing:-0.032em;font-weight:780}
 :where(.sq-root) :lang(ko) h1{font-size:clamp(34px,4.3vw,62px);line-height:1.22;letter-spacing:-0.03em}
 :where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(30px,3.7vw,54px);line-height:1.3;font-weight:700}
-.sq-lede{margin-top:28px;font-size:18px;line-height:1.65;color:var(--sq-ink-2);max-width:31em}
+.sq-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--sq-ink-2);max-width:30em}
 :where(.sq-root) :lang(ko) .sq-lede{line-height:1.75}
 :where(.sq-root) :lang(ja) .sq-lede,:where(.sq-root) :lang(zh-Hant) .sq-lede{line-height:1.85}
 
-.sq-find{position:relative;margin-top:44px;display:flex;align-items:stretch;max-width:540px;background:var(--sq-cell)}
-.sq-find-ic{display:grid;place-items:center;width:52px;flex-shrink:0;color:var(--sq-ink-2)}
-.sq-find input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;padding:16px 16px 16px 0;color:var(--sq-ink);outline:none}
-.sq-find:focus-within{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-find input::placeholder{color:var(--sq-ink-2)}
-.sq-find input::-webkit-search-cancel-button{filter:grayscale(1)}
-.sq-q-list{position:absolute;left:0;right:0;top:calc(100% + 6px);list-style:none;background:var(--sq-paper);box-shadow:0 12px 32px -12px rgba(0,0,0,.28),0 0 0 1px var(--sq-guide-2);z-index:15;max-height:360px;overflow:auto}
-.sq-q-list li a{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 14px}
-.sq-q-list li[aria-selected="true"] a,.sq-q-list li a:hover{background:var(--sq-cell)}
-.sq-q-list .sq-qg{width:32px;height:32px;display:grid;place-items:center;background:var(--sq-cell);font-weight:760;font-size:16px}
-.sq-q-list .sq-qn{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
-.sq-q-list .sq-qn small{font-weight:450;color:var(--sq-ink-2);margin-left:6px}
-.sq-q-list .sq-qs{font-size:13px;color:var(--sq-ink-2);white-space:nowrap}
-.sq-q-list .sq-empty{padding:14px;color:var(--sq-ink-2);font-size:15px}
-.sq-q-list [lang="ja"]{font-feature-settings:"palt"}
+/* install command: one ink field, the prompt dimmed, Copy inside the field */
+.sq-cmd{display:flex;align-items:center;gap:12px;margin-top:40px;max-width:520px;min-height:56px;padding:8px 8px 8px 20px;background:var(--sq-ink);color:var(--sq-paper)}
+.sq-cmd code{flex:1;min-width:0;font-size:16px;font-weight:500;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sq-cmd-ps{color:color-mix(in srgb,var(--sq-paper) 55%,var(--sq-ink));user-select:none}
+.sq-cmd-copy{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:40px;padding:0 16px;background:color-mix(in srgb,var(--sq-paper) 12%,var(--sq-ink));color:var(--sq-paper);font-size:15px;font-weight:600;transition:background-color .15s}
+.sq-cmd-copy:hover{background:color-mix(in srgb,var(--sq-paper) 22%,var(--sq-ink))}
+.sq-cmd-copy:focus-visible{outline:2px solid var(--sq-gamboge);outline-offset:2px}
+.sq-cmd-copy.sq-ok{color:var(--sq-gamboge)}
 
-.sq-hero-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:24px}
-.sq-cta{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;background:var(--sq-gamboge);color:var(--sq-on-gamboge);font-size:16px;font-weight:700}
+.sq-hero-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:16px}
+.sq-cta{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;background:var(--sq-gamboge);color:var(--sq-on-gamboge);font-size:16px;font-weight:700;transition:background-color .15s}
 .sq-cta:hover{background:color-mix(in srgb,var(--sq-gamboge) 88%,var(--sq-ink))}
-.sq-cta-q{font-size:16px;font-weight:600;color:var(--sq-ink-2)}
+.sq-cta:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+.sq-cta-q{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:16px;font-weight:600;color:var(--sq-ink-2);transition:color .15s}
+.sq-cta-q::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px)}
 .sq-cta-q:hover{color:var(--sq-ink)}
 
-/* the keyboard: one focal visual with air around it */
+/* the keyboard: one focal visual with air around it. The poster stays under the canvas for
+   good (the canvas is opaque once faded in), so the hand-off never shows bare paper. */
 .sq-hero-x{position:relative;isolation:isolate}
 .sq-k3{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0;overflow:hidden}
 .sq-k3.sq-poster{background:var(--k3p) center/cover no-repeat}
-.sq-k3.sq-live{background:none!important}
 .sq-k3-canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .45s ease;touch-action:pan-y}
 .sq-k3.sq-live .sq-k3-canvas{opacity:1}
 .sq-hero-x .sq-hero{position:relative;z-index:1;pointer-events:none}
-.sq-hero-x .sq-hero-copy,.sq-hero-x .sq-q-list{pointer-events:auto}
-.sq-sheet{position:relative;min-width:0;align-self:stretch;min-height:520px}
+.sq-hero-x .sq-hero-copy{pointer-events:auto}
+.sq-sheet{position:relative;z-index:1;min-width:0;align-self:stretch;min-height:520px}
 .sq-kb-links{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;list-style:none}
 .sq-k3-ring{position:absolute;left:0;top:0;width:0;height:0;border-radius:28px;box-shadow:0 0 0 3px var(--sq-focus);opacity:0;pointer-events:none;transition:opacity .15s}
 .sq-k3-ring.sq-on{opacity:1}
-.sq-k3-name{position:absolute;transform:translate(-50%,-100%);padding:5px 10px;background:var(--sq-ink);color:var(--sq-paper);font-size:14px;font-weight:650;white-space:nowrap;pointer-events:none}
+.sq-k3-name{position:absolute;transform:translate(-50%,-100%);padding:5px 10px;background:var(--sq-ink);color:var(--sq-paper);font-size:15px;font-weight:650;white-space:nowrap;pointer-events:none}
 
 /* ---- sections (round 5): one boundary system — full-bleed sections alternate paper and
    a quiet band (--sq-cell), each with the same padding top and bottom and one h2 at the
@@ -116,18 +111,23 @@
 .sq-faq code{font-size:14px;background:var(--sq-cell);padding:1px 5px;overflow-wrap:anywhere}
 
 @media (max-width:900px){
-  .sq-hero{grid-template-columns:1fr;gap:12px;min-height:0;padding-top:32px;padding-bottom:24px}
+  /* phone: copy, then the keyboard; the 3D host shares the sheet's grid cell, so the poster is
+     placed by CSS from the first paint (no JS move, no layout shift) */
+  .sq-hero-x{display:grid;grid-template-columns:minmax(0,1fr)}
+  .sq-hero-x>.sq-hero{display:contents}
+  .sq-hero-copy{grid-row:1;grid-column:1;max-width:none;padding:32px var(--sq-gut) 0}
+  .sq-sheet{grid-row:2;grid-column:1;min-height:300px;margin-top:12px}
+  .sq-k3{position:relative;grid-row:2;grid-column:1;left:auto;right:auto;top:auto;bottom:auto;min-height:300px;margin-top:12px;z-index:0}
+  .sq-k3.sq-poster{background-image:var(--k3pm)}
   :where(.sq-root) h1{font-size:clamp(32px,9.6vw,48px)}
   :where(.sq-root) :lang(ko) h1{font-size:clamp(28px,8.2vw,44px)}
   :where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(25px,7.4vw,42px)}
-  .sq-lede{margin-top:18px;font-size:16px}
-  .sq-find{margin-top:28px}
-  .sq-hero-acts{margin-top:18px}
+  .sq-lede{margin-top:16px;font-size:16px}
+  .sq-cmd{margin-top:28px;min-height:52px;padding:6px 6px 6px 16px;gap:10px}
+  .sq-cmd code{font-size:14px;white-space:normal;overflow-wrap:anywhere}
+  .sq-cmd-copy{min-width:64px;padding:0 12px}
+  .sq-hero-acts{margin-top:12px;gap:8px 24px}
   .sq-cta{min-height:48px;padding:0 20px}
-  .sq-k3{bottom:auto;height:340px}
-  .sq-k3.sq-poster{background-image:var(--k3pm)}
-  .sq-k3.sq-poster:not(.sq-placed){background:none}
-  .sq-sheet{min-height:300px}
   .sq-sec{padding-block:88px}
   :where(.sq-root) h2{font-size:clamp(26px,7vw,34px)}
   .sq-intro{font-size:16px}

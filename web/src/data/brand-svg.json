@@ -1,8 +1,8 @@
 {
  "schema_version": 3,
  "generated_at": "2026-06-02",
- "note": "Subset of the brand-svg collection (branches feat/brand-svg-gallery and feat/brand-svg-jp, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change.",
- "count": 16,
+ "note": "Subset of the brand-svg collection (branches feat/brand-svg-gallery and feat/brand-svg-jp, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change. A risk_tier \"high\" record never goes on a keycap; it reaches the picker chip only when it also carries \"landing_use\": \"flat-chip\" (the logo as delivered, flat, on a plain tile with clear space — LINE's guideline forbids decoration, shadow, 3D and modification). landing_use is the only field added on import.",
+ "count": 17,
  "records": [
   {
    "id": "banksalad",
@@ -182,6 +182,30 @@
     }
    },
    "default_variant": "wordmark"
+  },
+  {
+   "id": "line",
+   "name": "LINE",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "high",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/line/combined.svg",
+     "source": "Official logo guideline (line.me/ja/logo)",
+     "source_url": "https://line.me/static/logo/ai/LINE_Brand_icon_RGB.ai",
+     "license": "brand-asset-official",
+     "license_note": "LY Corp guideline: logo data may not be transformed or processed; animation/effects (scaling, rotation, decoration incl. shadow, outline, 3D) are prohibited; isolation zone must stay clear of other elements; TV/magazine/media use needs inquiry. A gallery grid or a 3D jelly keycap conflicts with these rules.",
+     "license_url": "https://line.me/ja/logo",
+     "attribution": "LY Corporation",
+     "usage_note": "공식 브랜드 아이콘(.ai→SVG 포맷 변환, 형상 무변경) · 변형·장식·효과 금지 · 식별용 · 상표는 각 권리자 소유",
+     "verified_against": "Official BRAND ICON download on line.me/ja/logo (「LINEを表す際は、下記のブランドアイコンを使用することを原則とします」). Vector .ai (PDF, no embedded raster) converted page→SVG with pdftocairo; the icon paths were kept byte-for-byte and only the artboard background, caption text and colour chip removed, viewBox tightened to the icon.",
+     "risk_tier": "high",
+     "source_tier": "official"
+    }
+   },
+   "default_variant": "combined",
+   "landing_use": "flat-chip"
   },
   {
    "id": "mercari",

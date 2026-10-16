@@ -13,7 +13,9 @@ const notoTC = Noto_Sans_TC({
   weight: "variable",
   subsets: ["latin"],
   variable: "--font-noto-tc",
-  display: "swap",
+  // round 7: "optional" — a slow first load keeps the platform face for that view instead of
+  // swapping mid-read (the swap pushed the hero keyboard down: CLS 0.27-0.35 at 390px)
+  display: "optional",
   preload: false,
 });
 

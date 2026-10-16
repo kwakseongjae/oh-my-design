@@ -38,6 +38,7 @@ const setOf = (l: SiteLocale) => (l === "ja" || l === "zh-tw" ? l : "default");
  * shows the company's name only; a click opens its item page.
  */
 interface K3 {
+  ready?: Promise<void>;
   setCaps(caps: unknown[], narrow: boolean): void;
   setTheme(paper: string, dark: boolean): void;
   highlight(id: string): void;
@@ -105,26 +106,16 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
 
   const host = () => document.getElementById("k3");
   const paper = () => getComputedStyle(document.documentElement).getPropertyValue("--sq-paper").trim() || "#ffffff";
-  const isDark = () => document.documentElement.classList.contains("dark");
 
   const rel = (el: Element, h: Element) => {
     const a = el.getBoundingClientRect(), b = h.getBoundingClientRect();
     return { l: a.left - b.left, t: a.top - b.top, r: a.right - b.left, b: a.bottom - b.top };
   };
 
-  /* mobile: the canvas covers only the sheet (cap area), not the copy */
+  /* Round 7: the host is placed by CSS at every width (phone: it shares the sheet's grid
+     cell, landing.css), so nothing moves after first paint. Kept as a hook for the class. */
   const placeHost = () => {
-    const h = host(), hx = document.getElementById("hero-x");
-    if (!h || !hx || !sheet.current) return;
-    if (narrowRef.current) {
-      const s = rel(sheet.current, hx);
-      h.style.top = `${s.t}px`;
-      h.style.height = `${Math.max(220, s.b - s.t)}px`;
-    } else {
-      h.style.top = "";
-      h.style.height = "";
-    }
-    h.classList.add("sq-placed");
+    host()?.classList.add("sq-placed");
   };
 
   /* where the caps may sit: inside the sheet, with air on every side */
@@ -198,13 +189,13 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [narrow, caps]);
 
-  // boot after load + idle
+  // boot after load + idle (and, for a page prerendered from the language picker, after activation)
   useEffect(() => {
     const h = host();
     if (!h) return;
     let cancelled = false;
+    let from: SiteLocale | null = null;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
-    const from = takeSwitch(locale);
     // back to this locale's own poster (the inline swap showed the previous one)
     const ownPoster = () => h.setAttribute("data-set", setOf(locale));
     const boot = () => {
@@ -232,7 +223,7 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
             narrow: narrowRef.current,
             zone,
             paper: paper(),
-            dark: isDark(),
+            dark: false,
             reduce: () => reduce.matches,
             onHover: (d: { id: string } | null) => showName(d ? d.id : null),
             onOpen: (d: { id: string }) => {
@@ -240,16 +231,19 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
             },
           }) as K3;
           state.current = "ready";
-          requestAnimationFrame(() => {
+          // fade the canvas in only once its shaders are compiled and its colours calibrated
+          (k3.current.ready ?? Promise.resolve()).then(() => requestAnimationFrame(() => {
+            if (cancelled) return;
             h.classList.add("sq-live");
-            ownPoster();
+            // the poster stays under the (opaque) canvas; swap it back once the fade is done
+            setTimeout(ownPoster, 500);
             // arrival from the picker: only the caps new to this locale fall in
             if (from && !reduce.matches) {
               const prev = idsOf(from);
               const fresh = (list as { id: string }[]).map((d) => d.id).filter((id) => !prev.has(id));
               k3.current?.drop(fresh, { delay: 0.28 });
             }
-          });
+          }));
         })
         .catch((e) => {
           console.warn("keys3d: poster fallback", e);
@@ -257,29 +251,27 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
           ownPoster();
         });
     };
-    const go = () => ("requestIdleCallback" in window ? requestIdleCallback(boot, { timeout: 900 }) : setTimeout(boot, 200));
-    if (document.readyState === "complete") go();
-    else addEventListener("load", go, { once: true });
-
-    // theme: next-themes toggles .dark on <html>
-    const sync = () => {
-      if (!k3.current) return;
-      k3.current.setTheme(paper(), isDark());
-      k3.current.setCaps(capsRef.current, narrowRef.current);
+    // a beat after load, then idle: the page answers input first (the boot is ~300 ms of work);
+    // the poster covers the wait
+    const go = () => setTimeout(() => ("requestIdleCallback" in window ? requestIdleCallback(boot, { timeout: 1200 }) : boot()), 300);
+    const start = () => {
+      from = takeSwitch(locale);
+      // prerendered page: the inline poster swap ran before the click; redo it on activation
+      if (from && !reduce.matches) h.setAttribute("data-set", setOf(from));
+      if (document.readyState === "complete") go();
+      else addEventListener("load", go, { once: true });
     };
-    const mo = new MutationObserver(sync);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    const prerendering = (document as Document & { prerendering?: boolean }).prerendering;
+    if (prerendering) document.addEventListener("prerenderingchange", start, { once: true });
+    else start();
+
     const onReduce = () => k3.current?.kick();
     reduce.addEventListener("change", onReduce);
-    const ro = "ResizeObserver" in window ? new ResizeObserver(placeHost) : null;
-    const hx = document.getElementById("hero-x");
-    if (ro && hx) ro.observe(hx);
     return () => {
       cancelled = true;
       removeEventListener("load", go);
-      mo.disconnect();
+      document.removeEventListener("prerenderingchange", start);
       reduce.removeEventListener("change", onReduce);
-      ro?.disconnect();
       k3.current?.destroy();
       k3.current = null;
       state.current = "idle";

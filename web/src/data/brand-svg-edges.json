@@ -94,6 +94,15 @@
     "#5f0080": 1
    }
   },
+  "/brand-svg/line/combined.svg": {
+   "edge": [
+    "#06c755"
+   ],
+   "share": {
+    "#06c755": 1,
+    "#ffffff": 0
+   }
+  },
   "/brand-svg/mercari/symbol.svg": {
    "edge": [
     "#ff0211",

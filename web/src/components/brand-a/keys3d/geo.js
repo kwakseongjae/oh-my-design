@@ -38,19 +38,44 @@ export function capGeometry(t, scale = 1, seg = 28, wide = 1) {
   return g;
 }
 
-/* Legend decal that hugs the domed top: a plane whose vertices are dropped onto the cap. */
+/* Legend decal that hugs the domed top: a plane whose vertices are dropped onto the cap.
+ * Round 7: a top-down ray's first hit is the highest triangle under (x, z), so instead of a
+ * Raycaster over every triangle per vertex (~1 s of main thread at boot) the cap's triangles
+ * are binned once on an x/z grid and each vertex tests only its cell. Same result. */
 export function decalGeometry(capGeo, size, wide = 1) {
   const g = new THREE.PlaneGeometry(size * wide, size, 18 * wide, 18);
   g.rotateX(-Math.PI / 2);
-  const mesh = new THREE.Mesh(capGeo, new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }));
-  const ray = new THREE.Raycaster(), dir = new THREE.Vector3(0, -1, 0), o = new THREE.Vector3();
+  const P = capGeo.attributes.position, I = capGeo.index, bb = capGeo.boundingBox;
+  const N = 32, minX = bb.min.x, minZ = bb.min.z, sx = N / Math.max(1e-6, bb.max.x - bb.min.x), sz = N / Math.max(1e-6, bb.max.z - bb.min.z);
+  const cells = Array.from({ length: N * N }, () => []);
+  const tri = I ? I.count / 3 : P.count / 3, vi = (k) => (I ? I.getX(k) : k);
+  const cl = (v) => Math.max(0, Math.min(N - 1, v));
+  for (let t = 0; t < tri; t++) {
+    const a = vi(3 * t), b = vi(3 * t + 1), c = vi(3 * t + 2);
+    const xs = [P.getX(a), P.getX(b), P.getX(c)], zs = [P.getZ(a), P.getZ(b), P.getZ(c)];
+    const cx0 = cl(Math.floor((Math.min(...xs) - minX) * sx)), cx1 = cl(Math.floor((Math.max(...xs) - minX) * sx));
+    const cz0 = cl(Math.floor((Math.min(...zs) - minZ) * sz)), cz1 = cl(Math.floor((Math.max(...zs) - minZ) * sz));
+    for (let zc = cz0; zc <= cz1; zc++) for (let xc = cx0; xc <= cx1; xc++) cells[zc * N + xc].push(a, b, c);
+  }
+  const heightAt = (x, z) => {
+    const list = cells[cl(Math.floor((z - minZ) * sz)) * N + cl(Math.floor((x - minX) * sx))];
+    let best = -Infinity;
+    for (let k = 0; k < list.length; k += 3) {
+      const a = list[k], b = list[k + 1], c = list[k + 2];
+      const ax = P.getX(a), az = P.getZ(a), bx = P.getX(b), bz = P.getZ(b), cx = P.getX(c), cz = P.getZ(c);
+      const d = (bz - cz) * (ax - cx) + (cx - bx) * (az - cz);
+      if (Math.abs(d) < 1e-12) continue;
+      const w1 = ((bz - cz) * (x - cx) + (cx - bx) * (z - cz)) / d, w2 = ((cz - az) * (x - cx) + (ax - cx) * (z - cz)) / d, w3 = 1 - w1 - w2;
+      if (w1 < -1e-6 || w2 < -1e-6 || w3 < -1e-6) continue;
+      const y = w1 * P.getY(a) + w2 * P.getY(b) + w3 * P.getY(c);
+      if (y > best) best = y;
+    }
+    return best;
+  };
   const p = g.attributes.position;
-  const top = capGeo.boundingBox.max.y + 1;
   for (let i = 0; i < p.count; i++) {
-    o.set(p.getX(i), top, p.getZ(i));
-    ray.set(o, dir);
-    const hit = ray.intersectObject(mesh, false)[0];
-    p.setY(i, (hit ? hit.point.y : capGeo.boundingBox.max.y) + 0.004);
+    const y = heightAt(p.getX(i), p.getZ(i));
+    p.setY(i, (Number.isFinite(y) ? y : bb.max.y) + 0.004);
   }
   g.computeVertexNormals();
   return g;

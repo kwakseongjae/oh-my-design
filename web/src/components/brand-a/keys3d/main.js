@@ -21,7 +21,7 @@ export function mount(host, o) {
   const { scene, key, rim, floor, shade } = makeScene(renderer);
   const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 200);
   const blob = blobTexture();
-  let calibrating = false, capPxV = 90, caps = [], hover = null, sel = null, W = 1, Hh = 1, raf = 0, visible = true, last = 0, clock = 0, nextRipple = 2.5;
+  let booting = true, calibrating = false, capPxV = 90, caps = [], hover = null, sel = null, W = 1, Hh = 1, raf = 0, visible = true, last = 0, clock = 0, nextRipple = 2.5;
   const WHITE = new THREE.Color(0xffffff), ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), tmp = new THREE.Vector3();
 
   function setTheme(paper, isDark) {
@@ -75,7 +75,9 @@ export function mount(host, o) {
     camera.updateProjectionMatrix(); camera.updateMatrixWorld();
     const ox = (minx + maxx) / 2, oz = maxz / 2;
     caps.forEach((g, i) => { const s = sl[i]; g.userData.base.set(s.x - ox, 0, s.z - oz); });
-    calibrate();
+    // round 7: calibrate a cap set once; a resize keeps the measured base colours (the
+    // 10-pass read-back was ~250 ms of main thread on every resize, e.g. a scrollbar change)
+    if (booting) return; if (caps.some((g) => !g.userData.cal)) calibrate(); else kick();
   }
 
   function setCaps(list, isNarrow) {
@@ -191,7 +193,7 @@ export function mount(host, o) {
     if (!still && visible && !document.hidden) raf = requestAnimationFrame(frame);
     else if (still && step(0)) raf = requestAnimationFrame(frame);
   }
-  function kick() { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
+  function kick() { if (booting) return; if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
 
   function pick(e) {
     const r = canvas.getBoundingClientRect();
@@ -241,12 +243,24 @@ export function mount(host, o) {
     u.skinM.attenuationColor.copy(c).lerp(WHITE, 0.5);
   }
   function measure() {
-    const pr = renderer.getPixelRatio(), bh = gl.drawingBufferHeight, buf = new Uint8Array(5 * 5 * 4);
-    return probe().map((q) => {
+    // round 7: one read-back per pass (the bounding box of every probe), not 5×5 per point —
+    // each readPixels is a GPU sync, and 9 caps × 6 points × 10 passes was 540 of them
+    const pr = renderer.getPixelRatio(), bw = gl.drawingBufferWidth, bh = gl.drawingBufferHeight;
+    const qs = probe().map((q) => ({ ...q, dp: q.pts.map(([X, Y]) => [Math.round(X * pr) - 2, bh - Math.round(Y * pr) - 3]) }));
+    let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    qs.forEach((q) => q.dp.forEach(([x, y]) => { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x + 5); y1 = Math.max(y1, y + 5); }));
+    x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(bw, x1); y1 = Math.min(bh, y1);
+    const rw = Math.max(1, x1 - x0), rh = Math.max(1, y1 - y0), all = new Uint8Array(rw * rh * 4);
+    gl.readPixels(x0, y0, rw, rh, gl.RGBA, gl.UNSIGNED_BYTE, all);
+    return qs.map((q) => {
       const px = [];
-      q.pts.forEach(([X, Y]) => {
-        gl.readPixels(Math.round(X * pr) - 2, bh - Math.round(Y * pr) - 3, 5, 5, gl.RGBA, gl.UNSIGNED_BYTE, buf);
-        for (let i = 0; i < buf.length; i += 4) px.push([buf[i], buf[i + 1], buf[i + 2]]);
+      q.dp.forEach(([X, Y]) => {
+        for (let yy = 0; yy < 5; yy++) for (let xx = 0; xx < 5; xx++) {
+          const cx = X + xx - x0, cy = Y + yy - y0;
+          if (cx < 0 || cy < 0 || cx >= rw || cy >= rh) continue;
+          const i = (cy * rw + cx) * 4;
+          px.push([all[i], all[i + 1], all[i + 2]]);
+        }
       });
       const lum = (a) => a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
       px.sort((a, b) => lum(a) - lum(b));
@@ -271,7 +285,7 @@ export function mount(host, o) {
         applyBase(u);
       });
     }
-    caps.forEach((g) => { const u = g.userData; if (u.best) { u.cb.copy(u.best); applyBase(u); } });
+    caps.forEach((g) => { const u = g.userData; if (u.best) { u.cb.copy(u.best); applyBase(u); } u.cal = true; });
     calibrating = false;
     kick();
   }
@@ -289,11 +303,21 @@ export function mount(host, o) {
   }
   const onVis = () => { if (!document.hidden) kick(); };
   document.addEventListener("visibilitychange", onVis);
-  const ro = new ResizeObserver(() => layout());
+  let lastSize = "";
+  const ro = new ResizeObserver(() => {
+    const r = host.getBoundingClientRect(), k = `${Math.round(r.width)}x${Math.round(r.height)}`;
+    if (k !== lastSize) { lastSize = k; layout(); }
+  });
   ro.observe(host);
 
   setTheme(o.paper, dark);
   setCaps(o.caps, narrow);
+  /* round 7: compile every program off the main thread first (KHR_parallel_shader_compile where
+     available), then calibrate and start the loop — the first render no longer blocks on shader
+     compiles. Nothing renders before this (kick/layout wait), and the canvas is still invisible. */
+  const ready = renderer.compileAsync(scene, camera).catch(() => {})
+    .then(() => new Promise((r) => requestAnimationFrame(r)))
+    .then(() => { if (raf === -1) return; booting = false; calibrate(); });
   /* React unmount: stop the loop, drop observers and GPU resources. */
   function destroy() {
     if (raf) cancelAnimationFrame(raf);
@@ -307,7 +331,7 @@ export function mount(host, o) {
     canvas.remove();
   }
   return {
-    setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, drop, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
+    ready, setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, drop, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
     capPx: () => capPxV,
     canvas, renderer,
     snapshot(type = "image/webp", q = 0.9) { renderer.render(scene, camera); return canvas.toDataURL(type, q); }

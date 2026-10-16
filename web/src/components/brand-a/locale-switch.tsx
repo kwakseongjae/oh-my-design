@@ -45,6 +45,53 @@ export interface LocaleSwitchText {
   langNames: Record<SiteLocale, string>;
 }
 
+/* hero poster of each locale's cap set (landing.css --k3p / --k3pm) */
+const posterOf = (l: SiteLocale, phone: boolean) =>
+  `/brand-a/hero-logos${l === "ja" || l === "zh-tw" ? `-${l}` : ""}-light${phone ? "-m" : devicePixelRatio > 1.25 ? "@2x" : ""}.webp`;
+
+let warmed = false;
+/**
+ * Round 7: warm the other locales the moment the picker is hovered, focused or opened.
+ * Each language is its own root layout (a full document load), so Chromium gets a
+ * speculation-rules document prefetch (measured: the switch commits from
+ * deliveryType "navigational-prefetch") and other browsers a <link rel=prefetch>. No
+ * prerender: a prerendered landing would run its analytics and DAU ping for a visit that
+ * may never happen. The target hero posters are fetched too, so the new page paints its
+ * keyboard from cache. (hero-keys.tsx still copes with a prerendered page, should a
+ * browser prerender on its own.)
+ */
+function warm(current: SiteLocale | null, origin: string) {
+  if (warmed || typeof document === "undefined") return;
+  warmed = true;
+  const others = SITE_LOCALES.filter((l) => l !== current);
+  // "/" is left out: src/proxy.ts may answer it with a cookie redirect that the click is about to change
+  const urls = others.filter((l) => SITE_LOCALE_META[l].path !== "/").map((l) => `${origin}${SITE_LOCALE_META[l].path}`);
+  try {
+    if (!origin && HTMLScriptElement.supports?.("speculationrules")) {
+      const s = document.createElement("script");
+      s.type = "speculationrules";
+      s.textContent = JSON.stringify({ prefetch: [{ urls, eagerness: "immediate" }] });
+      document.head.appendChild(s);
+    } else {
+      for (const href of urls) {
+        const l = document.createElement("link");
+        l.rel = "prefetch";
+        l.href = href;
+        l.as = "document";
+        document.head.appendChild(l);
+      }
+    }
+    const phone = matchMedia("(max-width:900px)").matches;
+    for (const l of new Set(others.map((x) => posterOf(x, phone)))) {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = `${origin}${l}`;
+    }
+  } catch {
+    /* warming is best effort; the links still navigate */
+  }
+}
+
 export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale | null; t: LocaleSwitchText; origin?: string }) {
   const dlg = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -56,6 +103,7 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
   const show = () => {
     const d = dlg.current;
     if (!d || d.open) return;
+    warm(current, origin);
     d.showModal();
     setOpen(true);
     const r = rows();
@@ -108,6 +156,8 @@ export function LocaleSwitch({ current, t, origin = "" }: { current: SiteLocale 
         aria-expanded={open}
         aria-label={cur ? `${cur.label} — ${t.lang}` : undefined}
         onClick={show}
+        onPointerEnter={() => warm(current, origin)}
+        onFocus={() => warm(current, origin)}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" strokeWidth="1.3" />

@@ -115,11 +115,8 @@
   --sidebar-ring: var(--sq-focus);
 }
 
-/* .dark needs no block of its own: brand-a.css redefines every --sq-* value
-   under .dark and the aliases above follow. Only destructive changes. */
-.dark {
-  --destructive: oklch(0.65 0.2 22);
-}
+/* Light only (owner, 2026-10-16): nothing sets `.dark` any more, so no dark
+   blocks here; `dark:` utilities compile to selectors that never match. */
 
 /*
  * Proof sheet — the 2026-10 landing system (/, /ko, the landing header and
@@ -134,8 +131,6 @@
  * Contrast (WCAG 2.x, measured):
  *   ink    on paper   15.72   ink-2 on paper   6.09   ink-2 on paper-2 5.54
  *   proof  on paper    5.52   proof on paper-2 5.03
- *   dark:  ink on paper 15.31  ink-2 on paper 7.13  ink-2 on paper-2 6.52
- *          proof on paper 6.54  proof on paper-2 5.98
  * proof-mark (#d9271c, 4.21 on paper) is for strokes and marks only — never
  * for text. Small red text always uses --omd-proof.
  */
@@ -150,17 +145,6 @@
   --omd-proof-mark: #d9271c;
   --omd-radius-tag: 2px;
   --omd-radius-card: 6px;
-}
-
-.dark {
-  --omd-paper: #151513;
-  --omd-paper-2: #1e1e1b;
-  --omd-sheet: #1b1b19;
-  --omd-ink: #ecebe5;
-  --omd-ink-2: #a3a29a;
-  --omd-rule: #3a3934;
-  --omd-proof: #ff6b5e;
-  --omd-proof-mark: #ff6b5e;
 }
 
 @theme inline {
@@ -210,6 +194,8 @@ body:has([data-omd-paper]) {
     @apply bg-background text-foreground;
   }
   html {
+    /* light only: native controls, scrollbars and the canvas stay light under an OS dark preference */
+    color-scheme: light;
     @apply font-sans;
     scroll-behavior: smooth;
     font-feature-settings: "cv01", "cv11";
@@ -265,25 +251,15 @@ body:has([data-omd-paper]) {
 :root {
   --marquee-fade: #faf9ff;
 }
-.dark {
-  --marquee-fade: #0f0e15;
-}
 
-/* Preview element borders — adapts to site theme, not the reference theme */
+/* Preview element borders — the site's ground, not the reference theme */
 .preview-border {
   border-color: oklch(0.85 0 0);
-}
-.dark .preview-border {
-  border-color: oklch(0.35 0 0);
 }
 
 /* Selection color */
 ::selection {
   background: oklch(0.55 0.22 275 / 0.2);
-}
-
-.dark ::selection {
-  background: oklch(0.7 0.2 275 / 0.3);
 }
 
 /* Font Playground — "invite to type" placeholder shimmer.
@@ -312,24 +288,11 @@ body:has([data-omd-paper]) {
   -webkit-background-clip: text;
   animation: fp-placeholder-shimmer-sweep 3.5s ease-in-out -1s infinite;
 }
-.dark .fp-placeholder-shimmer {
-  background-image: linear-gradient(
-    90deg,
-    oklch(0.64 0.015 275) 0%,
-    oklch(0.64 0.015 275) 40%,
-    oklch(0.78 0.13 275) 50%,
-    oklch(0.64 0.015 275) 60%,
-    oklch(0.64 0.015 275) 100%
-  );
-}
 @media (prefers-reduced-motion: reduce) {
   .fp-placeholder-shimmer {
     color: oklch(0.58 0.015 275);
     background: none;
     animation: none;
-  }
-  .dark .fp-placeholder-shimmer {
-    color: oklch(0.64 0.015 275);
   }
 }
 
@@ -376,7 +339,4 @@ body:has([data-omd-paper]) {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.5 0 0 / 0.3);
-}
-.dark ::-webkit-scrollbar-thumb {
-  background: oklch(0.4 0 0 / 0.3);
 }

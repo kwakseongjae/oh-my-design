@@ -16,8 +16,8 @@
  * "From DESIGN.md to screen" picker (round 5): six verified companies. Chips show the
  * genuine logo from brand-svg.json where one is stored (toss, karrot, kakaobank,
  * banksalad, all with every sample-screen token resolved: 16/16, 17/17, 17/17, 18/18);
- * line (JP) and 104 (TW) open their locales and stay glyph chips until a verified
- * logo is stored for them. freee and apple (no stored logo) were swapped out.
+ * line (JP, round 7: its official brand icon, flat on a plain tile — risk_tier high, chip only)
+ * and 104 (TW, glyph chip until a verified logo is stored) open their locales. freee and apple were swapped out.
  */
 export const GEN_UI_IDS = ["toss", "karrot", "kakaobank", "banksalad", "line", "104"] as const;
 

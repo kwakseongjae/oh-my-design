@@ -8,6 +8,7 @@ import { landingMetadata } from "@/components/brand-a/metadata";
  * number on the page is resolved from generated data at build time.
  */
 export const metadata: Metadata = landingMetadata("en");
+export const revalidate = 3600; // ISR: the header star count refreshes at most hourly
 
 export default function HomePage() {
   return <LandingA locale="en" />;
