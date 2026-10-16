@@ -27,22 +27,24 @@ describe("hero keycaps", () => {
     expect(getHeroCaps("ko").map((c) => c.id)).toEqual(caps.map((c) => c.id));
   });
 
-  it("ja / zh-tw keep the nine KR logo caps and add three verified caps from that region", () => {
+  it("ja / zh-tw keep six KR logo caps and add six verified logo caps from that region (round 9)", () => {
     const kr = getHeroCaps("en").map((c) => c.id);
     for (const [loc, cc] of [["ja", "JP"], ["zh-tw", "TW"]] as const) {
       const caps = getHeroCaps(loc);
-      expect(kr.every((id) => caps.find((c) => c.id === id)?.kind === "logo"), loc).toBe(true);
+      const shared = caps.filter((c) => kr.includes(c.id));
+      expect(shared.length, loc).toBe(6);
+      expect(shared.every((c) => c.kind === "logo"), loc).toBe(true);
       const local = caps.filter((c) => !kr.includes(c.id));
-      expect(local.length, loc).toBe(3);
+      expect(local.length, loc).toBe(6);
       for (const g of local) {
         expect(REGISTRY_BY_ID[g.id].country, g.id).toBe(cc);
         expect(REFERENCE_QUALITY_BY_ID[g.id].status, g.id).toBe("verified_v2");
+        expect(g.kind, `${g.id} is a logo cap`).toBe("logo");
         expect(g.row >= 0, `${g.id} shown on desktop`).toBe(true);
+        // round 9: no dark cap (owner, 2026-10-16)
+        expect(contrastToWhite(g.hex) < 7, `${g.id} cap ${g.hex} is not dark`).toBe(true);
       }
-      const glyphs = local.filter((c) => c.kind === "glyph");
-      for (const g of glyphs) expect(/[぀-ヿ㐀-鿿]/.test(g.g), `${g.id} native glyph ${g.g}`).toBe(true);
-      expect(new Set(glyphs.map((g) => g.g)).size, `${loc} distinct glyphs`).toBe(glyphs.length);
-      expect(local.filter((g) => g.mrow >= 0).length, `${loc} local caps on phone`).toBeGreaterThanOrEqual(2);
+      expect(local.filter((g) => g.mrow >= 0).length, `${loc} local caps on phone`).toBeGreaterThanOrEqual(4);
     }
   });
 
@@ -144,3 +146,9 @@ describe("hero keycaps", () => {
       if (r.risk_tier === "high" && r.landing_use !== "flat-chip") expect(chipLogo(r.id), r.id).toBeNull();
   });
 });
+
+function contrastToWhite(hex: string): number {
+  const v = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((x) => (x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4));
+  const l = 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+  return 1.05 / (l + 0.05);
+}

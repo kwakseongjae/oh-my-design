@@ -2,7 +2,7 @@
  "schema_version": 3,
  "generated_at": "2026-06-02",
  "note": "Subset of the brand-svg collection (branches feat/brand-svg-gallery and feat/brand-svg-jp, schema v3) used by the landing: hero keycaps (data/hero-caps.json) and the DESIGN.md-to-screen picker chips. Only the variants the landing shows are kept; every provenance field (source, source_url, license, license_url, usage_note, attribution, dark_bg) is copied unchanged. Files: web/public/brand-svg/<id>/<variant>.svg. Logos are trademarks of their owners; shown for reference. Adding a record here (with its file) turns that company's glyph cap or chip into a logo one with no code change. A risk_tier \"high\" record never goes on a keycap; it reaches the picker chip only when it also carries \"landing_use\": \"flat-chip\" (the logo as delivered, flat, on a plain tile with clear space — LINE's guideline forbids decoration, shadow, 3D and modification). landing_use is the only field added on import.",
- "count": 23,
+ "count": 29,
  "records": [
   {
    "id": "104",
@@ -527,6 +527,145 @@
     }
    },
    "default_variant": "combined"
+  },
+  {
+   "id": "caddi",
+   "name": "CADDi",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/caddi/combined.svg",
+     "dark_bg": true,
+     "source": "Official site (caddi.com)",
+     "source_url": "https://caddi.com/ja-jp/",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://caddi.com/ja-jp/",
+     "attribution": "CADDi Inc.",
+     "usage_note": "공식 사이트 헤더 로고(인라인 svg, 흰색) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Inline header <svg> of caddi.com. Its fill was var(--color-text-primary); the live computed value there is #fff, written in. Paths unchanged. White, so dark_bg."
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "chatwork",
+   "name": "Chatwork",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/chatwork/combined.svg",
+     "source": "Official site (go.chatwork.com)",
+     "source_url": "https://go.chatwork.com/ja/image/common/cw_logo_hz_color.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://go.chatwork.com/ja/",
+     "attribution": "kubell Co., Ltd. (Chatwork)",
+     "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "CSS background of .header-global__logo on go.chatwork.com (base.min.css). The petal mark is not published alone on the site."
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "booth",
+   "name": "BOOTH",
+   "country": "JP",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "combined": {
+     "ref": "brand-svg/booth/combined.svg",
+     "source": "Official site (booth.pm)",
+     "source_url": "https://asset.booth.pm/assets/booth_logo-cd38e1da31e93676b081bd8f0aca2805f758f514c8e95dc3f1a8aac5e58dffec.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://booth.pm/ja",
+     "attribution": "pixiv Inc. (BOOTH)",
+     "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Header logo of booth.pm served from BOOTH's asset CDN. No BOOTH press kit was found."
+    }
+   },
+   "default_variant": "combined"
+  },
+  {
+   "id": "china-airlines",
+   "name": "中華航空 China Airlines",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/china-airlines/symbol.svg",
+     "source": "Official site (china-airlines.com)",
+     "source_url": "https://www.china-airlines.com/tw/zh",
+     "license": "brand-asset-official",
+     "license_note": "Source is the inline <svg viewBox=\"0 0 72 72\"> plum-blossom mark from the official site's loading screen (the header/footer logos are WebP only). No public third-party logo terms found; identification only.",
+     "license_url": "https://www.china-airlines.com/tw/zh",
+     "attribution": "China Airlines, Ltd.",
+     "usage_note": "공식 사이트 로딩 화면 심볼(인라인 svg, 매화) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Inline loading-screen <svg> of china-airlines.com/tw/zh. Fetched by the main session from inside the page in the owner's browser (the host returns 403 to non-browser requests); sanitized and svgo-optimised here with geometry rewrites off. The site shows the plum blossom alone on that screen, so it is the brand's standalone symbol. It is the same pink radial-gradient five-petal blossom as the emblem in the site's WebP header logo (seen by the main session). Its class attribute was removed. Not re-fetched here, because the host returns 403 to this agent."
+    }
+   },
+   "default_variant": "symbol"
+  },
+  {
+   "id": "poya",
+   "name": "寶雅 POYA",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "wordmark": {
+     "ref": "brand-svg/poya/wordmark.svg",
+     "source": "Official site (poya.com.tw)",
+     "source_url": "https://www.poya.com.tw/images/logo.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://www.poya.com.tw/",
+     "attribution": "POYA International Co., Ltd.",
+     "usage_note": "공식 사이트 헤더 로고(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "Header logo of poya.com.tw (also used on poya.com.tw/about)."
+    }
+   },
+   "default_variant": "wordmark"
+  },
+  {
+   "id": "udn",
+   "name": "聯合新聞網 udn",
+   "country": "TW",
+   "status": "available",
+   "risk_tier": "med",
+   "variants": {
+    "symbol": {
+     "ref": "brand-svg/udn/symbol.svg",
+     "source": "Official site (udn.com)",
+     "source_url": "https://udn.com/static/img/logo.svg",
+     "license": "brand-asset-official",
+     "license_note": "No public third-party logo terms found; official site asset used for identification only.",
+     "license_url": "https://udn.com/news/index",
+     "attribution": "United Daily News Group (聯合報系)",
+     "usage_note": "공식 사이트 심볼(.svg) · 식별용 · 상표는 각 권리자 소유",
+     "source_tier": "official",
+     "risk_tier": "med",
+     "verified_against": "udn.com header renders logo.svg beside logo_name.svg, and logo.svg also appears alone (25px) elsewhere on the page — the brand uses it as a standalone mark."
+    }
+   },
+   "default_variant": "symbol"
   }
  ]
 }

@@ -52,12 +52,12 @@
      "channeltalk"
     ],
     [
-     "upbit",
-     "socar",
+     "caddi",
+     "chatwork",
      "toyota"
     ],
     [
-     "yanolja",
+     "booth",
      "freee",
      "pixiv"
     ]
@@ -70,10 +70,10 @@
     ],
     [
      "toss",
-     "kurly"
+     "caddi"
     ],
     [
-     "kream",
+     "chatwork",
      "freee"
     ],
     [
@@ -95,13 +95,13 @@
      "channeltalk"
     ],
     [
-     "upbit",
-     "socar",
-     "eslite"
+     "eslite",
+     "china-airlines",
+     "poya"
     ],
     [
-     "yanolja",
      "evaair",
+     "udn",
      "familymart-tw"
     ]
    ],
@@ -113,12 +113,16 @@
     ],
     [
      "toss",
-     "kurly"
+     "poya"
     ],
     [
-     "kream",
      "eslite",
-     "evaair"
+     "china-airlines"
+    ],
+    [
+     "evaair",
+     "udn",
+     "familymart-tw"
     ]
    ]
   }
