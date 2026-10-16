@@ -1,5 +1,10 @@
 # JOURNAL
 
+## 2026-10-16 저녁 — 리브랜딩 9~10차, 일시 중단
+- 한 일: GA4 복구, 한글명 41곳, 공개 스킬 10, 실측 보충 117곳, TW·JP 로고 26곳(차단 4곳 Aside), 랜딩 7~9차(라이트 전용·별 버튼·드롭다운·2D 낙하·한국어 상세 병합), 방향 3안 → 오너가 B+아이리스 선택.
+- 열린 것: 랜딩 10차 구현 중단 지점 `wip/rebrand-a-r10`; referral-1·growth-metrics main 반영 결정.
+- 다음: 10차 완료 → 스크린샷(파비콘·앱 아이콘 포함) 보고.
+
 ## 2026-10-13 — builder 제거 (프리뷰 대기)
 - 한 일: `feat/ia-item-page`에서 builder 완전 제거 + `/builder` 308 핸들러(ref→상세 #use, 그 외→카탈로그), Customize 링크·문구 전부 제거(5개 로캘 문서·llms 포함), AGENTS.md 퍼널 재작성. push `9fc9ea9a`, QA 19/19.
 - 열린 것: 오너 프리뷰 확인 → main GO. CLI 설치 안내문의 'Builder' 문구(npm 범위), legacy 레퍼런스의 Core v2 다운로드 대체 경로 없음.
