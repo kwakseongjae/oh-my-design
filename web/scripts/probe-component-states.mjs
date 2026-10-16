@@ -341,7 +341,7 @@ const read = (frame) => frame.evaluate(([prefix, maxKids, upLevels]) => {
     return "";
   };
   const out = {
-    bg: s.backgroundColor, fg: s.color, border: s.borderColor, radius: s.borderRadius,
+    bg: s.backgroundColor, fg: s.color, border: s.borderColor, borderWidth: s.borderWidth, radius: s.borderRadius,
     height: Math.round(rect.height), padding: s.padding, font: `${s.fontSize} / ${s.fontWeight}`,
     shadow: s.boxShadow, outline: `${s.outlineColor} ${s.outlineStyle} ${s.outlineWidth}`,
     transform: s.transform, opacity: s.opacity,
@@ -650,7 +650,8 @@ if (varPrefix && Object.keys(states.rest.vars ?? {}).length) {
 
 report();
 if (flag("json") && states.rest) {
-  const pick = (x) => ({ bg: x.bg, fg: x.fg, border: x.border, radius: x.radius, height: x.height, padding: x.padding, font: x.font, shadow: x.shadow,
+  // borderWidth rides along so a border-colour change on a 0px border is not read as visible.
+  const pick = (x) => ({ bg: x.bg, fg: x.fg, border: x.border, borderWidth: x.borderWidth, radius: x.radius, height: x.height, padding: x.padding, font: x.font, shadow: x.shadow,
     outline: x.outline, transform: x.transform, opacity: x.opacity, bgImage: x.bgImage, decoration: x.decoration, pseudo: x.pseudo, is: x.is });
   const measured = Object.fromEntries(Object.entries(states).filter(([k]) => k !== "rest").map(([k, x]) => [k, { ...pick(x), deep: deepDiff(states.rest, x) }]));
   console.log(`OMD_JSON ${JSON.stringify({ url, ident: states.rest.ident, rest: pick(states.rest), states: measured, unmeasured })}`);
