@@ -51,6 +51,15 @@ export interface ButtonSlot {
   readonly sp: { readonly pressed: Prov | null; readonly hover: Prov | null; readonly focus: Prov | null };
 }
 
+/** A claimed badge component (round 11: the LINE chat list's unread count). */
+export interface BadgeSlot {
+  readonly k: string;
+  readonly bg: string;
+  readonly fg: string | null;
+  readonly radius: number | null;
+  readonly p: Prov | null;
+}
+
 export interface ResolvedSlots {
   readonly canvas: Claimed | null;
   readonly fg: Claimed | null;
@@ -67,6 +76,22 @@ export interface ResolvedSlots {
   /** UI/text face and display/heading face. */
   readonly famT: Claimed | null;
   readonly famD: Claimed | null;
+  /* round 11: the roles the per-company sample screens consume (docs/REDESIGN_R11_PLAN_2026-10-20.md W2) */
+  /** The most muted text colour (timestamps, places, metadata). */
+  readonly meta: Claimed | null;
+  /** Divider / hairline colour. */
+  readonly line: Claimed | null;
+  /** Link colour. */
+  readonly link: Claimed | null;
+  /** Secondary text tier (body-small, caption, body-2 …). */
+  readonly small: TypeSlot | null;
+  /** Emphasised list-title tier (label, title-3 …). */
+  readonly label: TypeSlot | null;
+  /** Padding, text colour and font of the card component that supplied the card (never mixed across components). */
+  readonly cardPad: Claimed | null;
+  readonly cardFg: Claimed | null;
+  readonly cardFont: TypeSlot | null;
+  readonly badge: BadgeSlot | null;
 }
 
 export interface VerificationLike {
@@ -87,13 +112,22 @@ export interface TokensLike {
 
 export const CANVAS_KEYS = ["canvas", "background", "bg", "surface-base", "page", "page-bg", "white"];
 export const FG_KEYS = ["foreground", "ink", "text", "text-primary", "heading", "on-surface", "portal-ink", "black"];
-export const BODY_KEYS = ["body", "body-text", "text-body", "text-secondary", "secondary-text", "muted", "text-muted", "secondary", "subtle-text", "text-subtle"];
+/** Round 11: `secondary` before `muted`, so a reference with both reads body text in its secondary role and keeps muted for metadata (META_KEYS). */
+export const BODY_KEYS = ["body", "body-text", "text-body", "text-secondary", "secondary-text", "secondary", "muted", "text-muted", "subtle-text", "text-subtle"];
 export const PRIMARY_KEYS = ["primary", "brand", "brand-primary", "accent", "action", "public-action", "brand-green", "cta", "main", "key"];
 export const SURFACE_COLOR_KEYS = ["surface", "surface-1", "card", "card-bg", "surface-subtle", "subtle", "utility-surface", "surface-secondary", "surface-tint", "surface-gray", "layer", "panel", "container"];
 /** rounded.* keys that name a card-like container, in preference order. */
 export const CARD_RADIUS_RE = /card|surface|tile|container|panel/;
 export const LAST_CONTAINER_RADIUS_RE = /dialog|modal|sheet|popup|popover/;
 export const BUTTON_RADIUS_RE = /button|btn|cta|action|control/;
+/** Round 11. Most muted first: a reference whose only secondary role is `muted` resolves it here and in BODY_KEYS alike. */
+export const META_KEYS = ["muted", "text-muted", "text-tertiary", "tertiary", "text-subtle", "subtle-text", "subtle", "secondary", "text-secondary", "secondary-text", "placeholder", "text-placeholder"];
+export const LINE_KEYS = ["divider", "border", "hairline", "line", "separator", "rule", "stroke", "outline", "border-subtle", "border-default", "divider-subtle", "border-muted", "hairline-subtle"];
+export const LINK_KEYS = ["link", "text-link", "link-text", "hyperlink", "anchor", "link-default"];
+/** Secondary text tiers, in preference order (exact key names). */
+export const SMALL_TIER_RE = [/^(body-small|body-sm|body-s|small|text-small|text-sm|body-2|body2|body-secondary)$/, /^caption(-1|-md|-m)?$/, /^(caption|footnote|body-3|helper|detail|fine-print|meta)/];
+/** Emphasised list-title tiers. */
+export const LABEL_TIER_RE = [/^(label|label-md|label-m|label-large|label-lg|title-3|title-sm|title-small|subtitle|subtitle-1|body-strong|body-bold|body-emphasis|strong)$/];
 export const TEXT_FACE_KEYS = ["ui", "text", "body", "sans", "default", "primary", "base"];
 export const DISPLAY_FACE_KEYS = ["display", "heading", "headline", "title"];
 /** Never a UI face. */
@@ -110,7 +144,7 @@ const host = (u: string) => {
 export const num = (x: unknown): number | null =>
   typeof x === "number" ? x : typeof x === "string" && /^-?[\d.]+(px)?$/.test(x.trim()) ? parseFloat(x) : null;
 
-export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLike | undefined, opts: { preferButton?: string } = {}): ResolvedSlots {
+export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLike | undefined, opts: { preferButton?: string; preferCard?: string } = {}): ResolvedSlots {
   const t = tokens ?? {};
   const cl = ver?.claims ?? {};
   const surf = Object.fromEntries((ver?.surfaces ?? []).map((s) => [s.id, s.url]));
@@ -136,6 +170,9 @@ export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLi
   // (not on-*), in the reference's own key order. The key is always shown with the value.
   const ordered = (re: RegExp) => Object.keys(C).filter((k) => re.test(k) && !/^on-/.test(k) && HEX.test(String(C[k]).trim()));
   const primary = pickC(PRIMARY_KEYS) ?? pickC(ordered(/^brand-/)) ?? pickC(ordered(/-action$/));
+  const meta = pickC(META_KEYS);
+  const line = pickC(LINE_KEYS);
+  const link = pickC(LINK_KEYS);
 
   /* typography tiers */
   const T = (t.typography ?? {}) as Record<string, unknown>;
@@ -151,6 +188,7 @@ export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLi
     if (typeof x === "number") return x > 4 ? x / size : x;
     if (typeof x === "string" && /px$/.test(x)) return parseFloat(x) / size;
     if (typeof x === "string" && /^[\d.]+$/.test(x)) return parseFloat(x);
+    if (typeof x === "string" && /^[\d.]+%$/.test(x)) return parseFloat(x) / 100;
     return null;
   };
   const toType = (e: [string, Rec] | undefined | null): TypeSlot | null =>
@@ -168,6 +206,16 @@ export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLi
     tiers.find(([k]) => /^body/.test(k)) ??
     tiers.find(([k]) => /paragraph|^p$|^text(-md|-base)?$|copy|^base$/.test(k)) ??
     null;
+  // round 11: a secondary and an emphasised tier, never the tier already chosen as body
+  const firstTier = (res: readonly RegExp[]) => {
+    for (const re of res) {
+      const hit = tiers.find(([k]) => re.test(k) && k !== bod?.[0]);
+      if (hit) return hit;
+    }
+    return null;
+  };
+  const small = firstTier(SMALL_TIER_RE);
+  const label = firstTier(LABEL_TIER_RE);
 
   /* button */
   const comps = Object.entries(t.components ?? {}).filter(([, o]) => o && typeof o === "object") as [string, Rec][];
@@ -234,7 +282,8 @@ export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLi
   let cardBorder: Claimed | null = null;
   const cards = comps.filter(([k, o]) => o.type === "card" && (cc(k, "radius") || cc(k, "bg")));
   cards.sort((a, b) => {
-    const s = (x: [string, Rec]) => (cc(x[0], "radius") && num(x[1].radius) != null ? 2 : 0) + (HEX.test(String(x[1].bg ?? "").trim()) ? 1 : 0);
+    // round 11: the card the reference names for the company's product (picks.ts) goes first
+    const s = (x: [string, Rec]) => (opts.preferCard === x[0] ? 10 : 0) + (cc(x[0], "radius") && num(x[1].radius) != null ? 2 : 0) + (HEX.test(String(x[1].bg ?? "").trim()) ? 1 : 0);
     return s(b) - s(a);
   });
   for (const [k, o] of cards) {
@@ -245,6 +294,36 @@ export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLi
       const m = String(o.border).match(/#[0-9a-f]{6}/i);
       if (m) cardBorder = { k: `components.${k}.border`, v: m[0].toLowerCase(), p: prov(`tokens.components.${k}.border`) };
     }
+  }
+  /* round 11: padding, text colour and font come only from the first card, so a listing card never
+     takes a popover's padding */
+  let cardPad: Claimed | null = null;
+  let cardFg: Claimed | null = null;
+  let cardFont: TypeSlot | null = null;
+  if (cards.length) {
+    const [k, o] = cards[0];
+    if (cc(k, "padding") && typeof o.padding === "string" && /^\s*[\d.]+px(\s+[\d.]+px){0,3}\s*$/.test(o.padding)) cardPad = { k: `components.${k}.padding`, v: o.padding.trim(), p: prov(`tokens.components.${k}.padding`) };
+    else if (cc(k, "padding") && typeof o.padding === "number") cardPad = { k: `components.${k}.padding`, v: `${o.padding}px`, p: prov(`tokens.components.${k}.padding`) };
+    if (cc(k, "fg") && typeof o.fg === "string" && HEX.test(o.fg.trim())) cardFg = { k: `components.${k}.fg`, v: o.fg.trim().toLowerCase(), p: prov(`tokens.components.${k}.fg`) };
+    const fm = cc(k, "font") && typeof o.font === "string" ? o.font.match(/^\s*(\d+(?:\.\d+)?)px\s*\/\s*(\d{3})(?:\s*\/\s*([\d.]+)px)?/) : null;
+    if (fm) cardFont = { k: `components.${k}.font`, size: +fm[1], weight: +fm[2], lh: fm[3] ? +fm[3] / +fm[1] : null, p: prov(`tokens.components.${k}.font`) };
+  }
+
+  /* badge (round 11): a claimed badge component with a solid fill */
+  let badge: BadgeSlot | null = null;
+  const badges = comps.filter(([k, o]) => o.type === "badge" && typeof o.bg === "string" && HEX.test(String(o.bg).trim()) && cc(k, "bg"));
+  if (badges.length) {
+    const [k, o] = badges[0];
+    const r = cc(k, "radius") ? o.radius : undefined;
+    let radius = r != null ? num(r) : null;
+    if (radius == null && typeof r === "string" && /9999|pill|full/.test(r)) radius = 9999;
+    badge = {
+      k,
+      bg: String(o.bg).trim().toLowerCase(),
+      fg: cc(k, "fg") && typeof o.fg === "string" && HEX.test(o.fg.trim()) ? o.fg.trim().toLowerCase() : null,
+      radius,
+      p: prov(`tokens.components.${k}.bg`),
+    };
   }
   if (!sr) {
     const keys = Object.keys(RD).filter((k) => typeof RD[k] === "number" && claimed(`tokens.rounded.${k}`));
@@ -268,7 +347,10 @@ export function resolveSlots(tokens: TokensLike | undefined, ver: VerificationLi
     if (other) famT = fk([other]);
   }
 
-  return { canvas, fg, body, primary, head: toType(head), bod: toType(bod), btn, surface, sr, cardBorder, famT, famD };
+  return {
+    canvas, fg, body, primary, head: toType(head), bod: toType(bod), btn, surface, sr, cardBorder, famT, famD,
+    meta, line, link, small: toType(small), label: toType(label), cardPad, cardFg, cardFont, badge,
+  };
 }
 
 /* ---------- keycap character (hero + region keys) ---------- */

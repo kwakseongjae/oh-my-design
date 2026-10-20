@@ -4,7 +4,7 @@ import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.gene
 import { SKILL_COUNT } from "@/data/catalog-meta.generated";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import { chipLogo, heroCapsFor } from "./caps";
-import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON } from "./picks";
+import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON, GEN_UI_PREFERRED_CARD } from "./picks";
 import { CJK_RE, glyphOf, keycapTraits, resolveSlots, type TokensLike } from "./resolve";
 import { siteName } from "@/lib/i18n/display-name";
 import type { CapData, GenSpec, LandingData, LandingFacts, LogoCap } from "./types";
@@ -104,7 +104,7 @@ export function genSpec(id: string, locale: SiteLocale | "en" = "en"): GenSpec |
   const q = REFERENCE_QUALITY_BY_ID[id];
   const ver = REFERENCE_VERIFICATION_BY_ID[id];
   if (!r || !q || q.status !== "verified_v2" || !ver) return null;
-  const slots = resolveSlots(r.tokens as TokensLike, ver, { preferButton: GEN_UI_PREFERRED_BUTTON[id] });
+  const slots = resolveSlots(r.tokens as TokensLike, ver, { preferButton: GEN_UI_PREFERRED_BUTTON[id], preferCard: GEN_UI_PREFERRED_CARD[id] });
   const name = siteName(r, locale);
   return {
     id,
