@@ -593,6 +593,61 @@
   - 3D 소품은 OmD가 codex로 자체 제작한다.
   - 챗 UI 참고는 Meta Astryx다(오픈소스 MIT, AI 채팅 템플릿).
   - 푸터 Threads는 `https://www.threads.com/@daon_k`다(linktr.ee/daon_k 링크 목록 근거, Aside 메모 2건 일치).
+- **10/20 11차 실행 중 — 병렬 8개.** 기준은 `feat/rebrand-a` `063d5720`이다.
+  - 사전 커밋 2개:
+    - `c3f66672`: 랜딩을 섹션별 컴포넌트·CSS로 분리했다. 렌더 결과는 동일하다.
+    - `063d5720`: 공유 계약을 넣었다. 공식 로고 86개(`brand-logos.json`), 3D 소품 매니페스트·접근자, 대체 글꼴 접근자 시그니처다.
+  - 워크트리·브랜치 (`.claude/worktrees/r11-*` / `feat/r11-*`):
+
+    | 이름 | 맡은 일 | 포트 |
+    |---|---|---|
+    | hero | W1+W3 | 3211 |
+    | journey | W2 | 3212 |
+    | fonts | 실측 대체 글꼴 | 3213 |
+    | ask | W4, Haiku 5.5 | 3214 |
+    | archive | W6+W7+메타 제목 | 3215 |
+    | docs | W8, 리디렉트 단독 소유 | 3216 |
+    | chrome | W5+W9+별 버튼+스킬 링크 | 3217 |
+    | props | codex 3D 소품 13개 | — |
+
+  - 운영 규칙:
+    - `next build`는 스크래치패드의 `r11-build.sh` 전역 잠금으로 한 번에 하나씩만 돈다.
+    - 통합 워크트리는 `.claude/worktrees/r11-integrate`(`r11-integrate` 브랜치)다.
+    - 검수 서버 :3200은 아직 10차 빌드를 띄우고 있다.
+  - 통합 때 할 일:
+    - 브랜치 8개를 `feat/rebrand-a`에 병합한다.
+    - 공유 카피 파일(`copy/en·ko·ja·zh-tw·r10`)의 죽은 키를 정리한다.
+    - referral-1의 `/docs/connector` 리디렉트를 새 대상으로 바꾼다.
+    - 전체 빌드 후 스크린샷(4개 언어×데스크톱·모바일)을 찍고 :3200을 갱신한 뒤 오너 검수를 받는다.
+  - 오너 몫: `OMD_ASK_ANTHROPIC_API_KEY`를 `web/.env.local`과 Vercel(Production·Preview)에 넣는다. 선택으로 `OMD_ASK_MODEL`·`OMD_ASK_DAILY_CAP`도 넣는다.
+  - 정리: 끝난 10차 이전 워크트리 7개(r2~r9)의 `.next`·`node_modules` 캐시를 삭제했다(재생성 가능, git 상태는 그대로).
+- **10/21 02:40 11차 통합 완료 → 오너 검수 대기.** `feat/rebrand-a` `bd8bf519`(기준 이후 커밋 43개). 검수 서버 :3200을 11차 빌드로 교체했다(`r11-integrate` 워크트리).
+  - **사고.** 에이전트 8개 모두 마지막 `git push`에서 "팀 리더 승인 대기"로 4시간 멈춰 있었다.
+    - 원인: 팀원 세션의 push 권한 요청이 리더 화면에 뜨지 않았다.
+    - 조치: 메인 세션에서 직접 push하고 에이전트를 종료했다.
+    - 교훈: 다음부터 팀원에게는 push를 시키지 않는다(메인이 push한다).
+  - **통합.** 브랜치 8개를 충돌 없이 병합했다(겹치는 파일 0).
+  - **통합 후 고친 것:**
+    - 질문하기 인덱스 재생성(문서 개편 반영).
+    - prune 리디렉트 테스트 기대값 갱신(showcase·ai 페이지 삭제 반영).
+    - 질문하기 검색에서 FAQ에 1.25 가중을 줬다.
+    - 실측 대체 글꼴을 여정·히어로 카드·CLI 화면에 연결했다.
+      - 토스: 한글 Pretendard Variable, 라틴 IBM Plex Sans(자체 호스팅). "대체 글꼴 · 브랜드 글꼴이 아니에요" 표기를 단다.
+      - Google로 가는 요청은 0이다.
+  - **검증:**
+    - 웹 테스트 1,170개 통과, tsc 통과, check-counts 통과, 빌드 통과(정적 페이지 1,483개).
+    - 22개 화면(4개 언어 랜딩, 아카이브, 상세, 문서 × 데스크톱·폰): 200 응답, 가로 넘침 0, 콘솔 오류 0.
+    - 루트 테스트는 1,510개 통과, 3개 실패. 실패는 패키지 스모크 테스트로, 이 기기 npm 캐시에 playwright-core가 없어서 난다(CI에서는 통과하고 r11과 무관하다).
+  - **스크린샷:** 메인 체크아웃 `docs/research/2026-10-20-r11/integrated/shots/`.
+  - **결과 요약:**
+    - EN 히어로는 Linear(커버리지 13/14), TW는 104(13/14, 誠品 7/14)로 정했다.
+    - 실측 대체 글꼴은 토스와 Linear(Berkeley Mono → Fira Code)에만 있다. 나머지는 오픈 글꼴이라 대체가 필요 없거나 브랜드 글꼴이 없다.
+    - 3D 소품 13개(codex, 512px WebP)를 넣었다.
+    - 상세 제목은 "{이름} DESIGN.md — Colors, Typography, Components"이고, FAQPage JSON-LD는 뺐다(보이는 Q&A가 없어서).
+  - **남은 것:**
+    - 오너 시각 검수 OK.
+    - 그다음 `feat/referral-1`·`feat/growth-metrics`를 병합한다. referral-1의 `/docs/connector` 리디렉트는 새 대상(`/docs/en/getting-started#without-cli`)으로 맞춘다.
+    - main 반영 → 2.0.5.
 - **10/17 랜딩 10차 완료 — `feat/rebrand-a` `c77d7d6b`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-a20bdf09ae1779d45). 아이리스 #6749e2 전면, radius 14/알약/20/28, 히어로 키캡+챗 데모, 챗 카드 토스 실값 12개(예시 표기), oh-my-design-cli 시작하기(어두운 터미널만), FAQ(카테고리·검색·아코디언, 9문항×4언어), 연한 아이리스 마무리 띠, 파비콘·앱 아이콘 'omd' 아이리스 키캡 전 크기, OG·logo.png 새 브랜드(실제 Wanted Sans·실시간 수치), 한글명 /ko 한정. 검사: tsc·테스트 1,010·next build·check-counts, 넘침 0, 링크 936, 대비 전부 ≥5.38:1, /ko→/ja 2D→3D 이어받기 정상, 모션 줄이기 정상. 남은 것: 헤더 '스킬' 링크 대상(CLI 섹션 한 줄로 이동), DESIGN.md.patch 사본 반영(메인 체크아웃 impl/DESIGN.md.patch로 복사함).
 - **10/16 ⏸ 일시 중단(오너 이동) — 재개 안내.**
   - 진행 중이던 것: 랜딩 10차(B 구조+아이리스·radius·챗 데모·CLI·FAQ·CTA·파비콘 'omd' 아이리스·한글명 /ko 한정). 정지 완료: `feat/rebrand-a` `699f9d1f`(10차 거의 전부, 빌드·검사 통과) + WIP `7a77999f`(선택 색·폰트 안내 문구) on `wip/rebrand-a-r10`. 남은 것: WIP 포함 재빌드, /ko→/ja 실제 전환 확인, 모션 줄이기 /ko, 아카이브·상세 대비 측정, og-image·logo.png 구버전 교체. 스크린샷 `docs/research/2026-10-13-rebrand/impl/r10/shots/`(699f9d1f 빌드). 재개 시: `wip/rebrand-a-r10`에서 이어서 체크리스트 미완 항목 → 완료 후 `feat/rebrand-a`로 푸시 → 스크린샷 보고(오너는 스크린샷으로 확인 요청).
