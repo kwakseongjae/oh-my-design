@@ -1,0 +1,15 @@
+# Round-11 props, first pass. One line per image: <file>|<subject>.
+# queue.sh builds each prompt as "Subject: <subject>. " + style.txt (verbatim).
+coin.png|a single thick round coin standing slightly tilted, made of soft muted gold (the one exception to the neutral palette), with a plain raised rim and a completely blank smooth face: no symbol, no currency sign, no number, no engraving
+card.png|a single blank payment card with rounded corners, slightly thick like a soft tile, in frosted white with a small plain brushed-silver chip; no numbers, no logo, no network mark, no coloured stripe, nothing printed on it
+check-badge.png|a round badge with a softly scalloped edge, like a rosette seal, in frosted white with one raised brushed-silver checkmark in the centre; the checkmark is the only mark on it
+piggy-bank.png|a small round piggy bank in frosted white with a coin slot on top, four short legs, two small ears and a simple flat snout disc; no eyes and no other facial features
+parcel-box.png|a closed parcel box, a cube-like shipping box in warm light grey with one strip of frosted white tape across the top flaps; no label, no printing, no barcode
+price-tag.png|a single price tag with rounded corners and a punched round hole, with a short loop of brushed-silver string through the hole; the tag is completely blank, with no printed text, numbers or currency signs
+shopping-bag.png|a shopping bag in frosted white with two rounded warm light grey handles; completely plain, with no logo, no print and no label
+chart-bars.png|a small bar chart object: four rounded vertical bars of increasing height standing on a thin rounded base plate, the bars in frosted white and warm light grey with the tallest bar in brushed silver; no axis, no labels, no numbers
+receipt.png|a single paper receipt in frosted white, curling gently, with a zigzag torn bottom edge and three short soft raised blank bars in place of printing; blank paper, no text, no numbers, no printed lines
+calculator.png|a compact calculator with a blank dark grey display window and a grid of rounded soft keys in frosted white and warm light grey; every key and the display are blank, with no numbers, symbols or markings
+briefcase.png|a compact rounded briefcase in warm light grey with a soft handle on top and two small brushed-silver clasps; no logo, no monogram
+chat-bubble.png|a single rounded speech bubble with a short tail at the lower left, in frosted white, with three small raised round dots in its middle; an empty bubble with no text
+palette.png|an artist's paint palette, kidney-shaped with a thumb hole, in frosted white, holding five small round paint dabs in white, light grey, warm grey, brushed silver and soft charcoal; no other colours
