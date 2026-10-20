@@ -1,19 +1,9 @@
 /* FAQ section. Split out of landing.css before round 11 (docs/REDESIGN_R11_PLAN_2026-10-20.md) so each section has one owner; imported by landing.tsx in the original cascade order. */
-/* ---- FAQ: categories + search on the left, the accordion on the right ---- */
+/* ---- FAQ (round 11): the heading on the left, one accordion on the right; the question box (ask.css) sits under it ---- */
 .sq-faq-g{display:grid;grid-template-columns:320px minmax(0,1fr);gap:64px;align-items:start}
 .sq-faq-side{min-width:0}
 .sq-faq-sub{margin-top:12px;font-size:16px;color:var(--sq-ink-2)}
-.sq-fsearch{display:flex;align-items:center;gap:10px;height:52px;margin-top:28px;padding:0 16px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);color:var(--sq-icon)}
-.sq-fsearch:focus-within{box-shadow:inset 0 0 0 2px var(--sq-primary)}
-.sq-fsearch input{all:unset;flex:1;min-width:0;font-size:16px;color:var(--sq-ink)}
-.sq-fsearch input::placeholder{color:var(--sq-ink-2)}
-.sq-cats{display:grid;gap:4px;margin-top:16px}
-.sq-cats button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--sq-r-ctl);font-size:16px;color:var(--sq-n700);transition:background-color .15s,color .15s}
-.sq-cats button:hover{background:var(--sq-cell)}
-.sq-cats button span{color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
-.sq-cats button[aria-pressed="true"]{background:var(--sq-tint);color:var(--sq-primary);font-weight:650}
-.sq-cats button[aria-pressed="true"] span{color:var(--sq-primary)}
-.sq-cats button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-faq-main{display:grid;gap:40px;min-width:0}
 .sq-acc{display:grid;gap:8px;min-width:0}
 .sq-acc-i{border-radius:var(--sq-r-card);background:var(--sq-paper);transition:box-shadow .2s}
 .sq-acc-i.sq-on{box-shadow:var(--sq-shadow-panel)}
@@ -28,14 +18,15 @@
 .sq-on .sq-acc-p{grid-template-rows:1fr}
 .sq-acc-p>div{overflow:hidden}
 .sq-acc-p p{padding:0 24px 22px;font-size:16px;color:var(--sq-ink-2);max-width:44em}
+.sq-acc-p p.sq-acc-link{margin-top:-10px}
+.sq-acc-link a{color:var(--sq-ink);font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.sq-acc-link a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:var(--sq-r-inner)}
 .sq-acc-p code{font-size:14px;padding:1px 6px;border-radius:var(--sq-r-inner);background:var(--sq-cell);overflow-wrap:anywhere}
-.sq-faq-empty{padding:24px;font-size:16px;color:var(--sq-ink-2)}
 @media (prefers-reduced-motion:reduce){.sq-acc-p,.sq-acc-ic{transition:none}}
 @media (max-width:1100px){.sq-faq-g{grid-template-columns:260px minmax(0,1fr);gap:40px}}
 @media (max-width:900px){
   .sq-faq-g{grid-template-columns:minmax(0,1fr);gap:24px}
-  .sq-cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--sq-gut));padding-inline:var(--sq-gut)}
-  .sq-cats button{flex:none;min-height:40px;border-radius:var(--sq-r-pill);background:var(--sq-paper)}
+  .sq-faq-main{gap:32px}
   .sq-acc-b{font-size:16px;padding:14px 16px 14px 18px}
   .sq-acc-p p{padding:0 18px 18px;font-size:15px}
 }
