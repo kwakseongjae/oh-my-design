@@ -1,0 +1,41 @@
+/* Catalog showcase (round 11 W5 #14; catalog-showcase.tsx). Replaces the closing CTA band.
+   One accent: the archive button. Type in view: the h2, 18 (intro), 16 (region labels, button).
+   Tiles are filled, never outlined (RESTRAINT R8). Motion is the tile's: on hover or focus it
+   lifts 3px onto paper with the panel shadow; the logo itself is never recoloured or filtered.
+   prefers-reduced-motion: no transition and no lift. */
+.sq-sc{padding-block:120px 48px} /* + the footer's 72px top margin = the 120px section rhythm */
+.sq-sc-head p{margin-top:12px;font-size:18px;color:var(--sq-ink-2);max-width:40em}
+.sq-sc-groups{display:grid;gap:16px;margin-top:48px}
+.sq-sc-g{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;align-items:center}
+.sq-sc-g h3{font-size:16px;font-weight:650;line-height:1.4;color:var(--sq-ink-2)}
+.sq-sc-grid{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.sq-sc-tile{display:flex;align-items:center;justify-content:center;height:96px;padding:0 16px;border-radius:var(--sq-r-card);background:var(--sq-cell);transition:background-color .2s,box-shadow .2s,transform .2s cubic-bezier(.2,.8,.2,1)}
+.sq-sc-tile:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;background:var(--sq-paper);box-shadow:var(--sq-shadow-panel)}
+@media (hover:hover){.sq-sc-tile:hover{background:var(--sq-paper);box-shadow:var(--sq-shadow-panel);transform:translateY(-3px)}}
+/* optical size from the TSX (--w × --h at desktop); the box keeps its ratio when a tile is narrower */
+.sq-sc-logo{display:block;width:min(calc(var(--w) * 1px),100%);height:auto;aspect-ratio:var(--w) / var(--h);object-fit:contain}
+/* a file with an empty slot on its left (Toss): the box is the drawn part, the file anchored right */
+.sq-sc-crop{object-fit:cover;object-position:100% 50%}
+.sq-sc-end{margin-top:48px}
+/* the primary pill — the same metrics as hero.css .sq-cta, kept separate so the parallel hero work
+   cannot break this link; fold the two together after round 11 */
+.sq-sc-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:var(--sq-r-pill);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;font-weight:700;white-space:nowrap;transition:background-color .15s,transform .12s}
+.sq-sc-cta:hover{background:var(--sq-primary-hover)}
+.sq-sc-cta:active{background:var(--sq-primary-press);transform:scale(.98)}
+.sq-sc-cta:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  .sq-sc-tile,.sq-sc-cta{transition:none}
+  .sq-sc-tile:hover,.sq-sc-cta:active{transform:none}
+}
+@media (max-width:1100px){.sq-sc-g{grid-template-columns:110px minmax(0,1fr);gap:16px}}
+@media (max-width:900px){
+  .sq-sc{padding-block:80px 8px}
+  .sq-sc-head p{font-size:16px}
+  .sq-sc-groups{gap:28px;margin-top:36px}
+  .sq-sc-g{grid-template-columns:minmax(0,1fr);gap:10px}
+  .sq-sc-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .sq-sc-tile{height:72px;padding:0 12px}
+  .sq-sc-logo{width:min(calc(var(--w) * .72px),100%)}
+  .sq-sc-end{margin-top:36px}
+  .sq-sc-cta{min-height:48px;padding:0 20px}
+}
