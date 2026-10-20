@@ -90,6 +90,32 @@ describe("example cards: claimed values only", () => {
   });
 });
 
+describe("example cards: legible", () => {
+  const lum = (hex: string) => {
+    const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((x) => (x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  };
+  const ratio = (a: string, b: string) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+  it("text outside the brand's own buttons is ≥ 4.5:1 on its nearest fill (buttons keep their claimed colours)", () => {
+    const low: string[] = [];
+    const walk = (n: CardNode, bg: string, name: string) => {
+      const fill = n.css?.background?.css;
+      const here = fill && /^#[0-9a-f]{6}$/i.test(fill) ? fill : bg;
+      if (n.cls?.includes("sq-ex-btn")) return;
+      const fg = n.css?.color?.css;
+      if (n.text && fg) { const r = ratio(fg, here); if (r < 4.5) low.push(`${name}: "${n.text}" ${r.toFixed(2)}`); }
+      for (const k of n.kids ?? []) walk(k, here, name);
+    };
+    for (const l of LOCALES) {
+      const hero = getChatCard(l);
+      walk(hero.root, hero.root.css?.background?.css ?? "#ffffff", `hero ${l}`);
+      const cli = getCliScreen(l);
+      walk(cli.root, cli.root.css?.background?.css ?? "#ffffff", `cli ${l}`);
+    }
+    expect(low).toEqual([]);
+  });
+});
+
 describe("copy: one shape in four locales", () => {
   const shape = (o: unknown): unknown =>
     Array.isArray(o) ? (o.length && typeof o[0] === "object" ? o.map(shape) : "array") : o && typeof o === "object" ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, shape(v)])) : typeof o;

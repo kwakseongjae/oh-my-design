@@ -240,12 +240,13 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { roo
   let root: CardNode;
 
   if (kind === "transfer" || kind === "home") {
-    // Toss: a centred success card (transfer) or a list screen (home), product button tds-button
-    const muted = colorTok(id, "muted"), surface = slotColor(s.surface);
+    // Toss: a centred success card (transfer) or a list screen (home), product button tds-button.
+    // Row labels take Toss's body grey, not its muted grey: muted on the surface is 2.8:1.
+    const surface = slotColor(s.surface);
     const title = tierToks(id, "h3") ?? head, small = tierToks(id, "body-small") ?? bod;
     const rows = (a: number) =>
       el("div", { cls: "sq-ex-rows", css: css({ background: surface, borderRadius: srTok }), part: a },
-        t.rows.map(([k, v]) => el("div", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, muted), text: k }), el("span", { css: typeCss(kind === "home" ? bod : small, fg), text: v })])));
+        t.rows.map(([k, v]) => el("div", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, body), text: k }), el("span", { css: typeCss(kind === "home" ? bod : small, fg), text: v })])));
     root = kind === "transfer"
       ? el("div", { cls: "sq-ex-col", css: rootCss }, [
           primary ? el("span", { cls: "sq-ex-ic", css: css({ color: primary }), icon: "check", part: 1 }) : null,
@@ -261,9 +262,10 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { roo
           button(btn, t.cta, 3),
         ]);
   } else if (kind === "artwork") {
-    // pixiv: artwork card — the card/panel heading tier, the metadata caption, likes in the engagement colour
+    // pixiv: artwork card — the card/panel heading tier, the metadata caption, likes in the engagement
+    // colour. Counts take text-muted, not text-tertiary (3.7:1 on the canvas).
     const title = tierToks(id, "heading-m") ?? head, cap = tierToks(id, "caption-s"), tagT = tierToks(id, "caption-m") ?? bod;
-    const tertiary = colorTok(id, "text-tertiary"), red = colorTok(id, "engagement-red"), link = colorTok(id, "link");
+    const red = colorTok(id, "engagement-red"), link = colorTok(id, "link");
     const prop = getProp("palette");
     root = el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
       prop ? el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" }, part: 1 }) : null,
@@ -271,7 +273,7 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { roo
       el("p", { css: typeCss(bod, body), text: t.sub, part: 2 }),
       el("div", { cls: "sq-ex-stats", part: 3 }, [
         red ? el("span", { cls: "sq-ex-ic-s", css: css({ color: red }), icon: "heart" }) : null,
-        ...t.rows.map(([k, v]) => el("span", { css: typeCss(cap, tertiary), text: `${k} ${v}` })),
+        ...t.rows.map(([k, v]) => el("span", { css: typeCss(cap, body), text: `${k} ${v}` })),
       ]),
       t.tags.length ? el("p", { cls: "sq-ex-tags", css: typeCss(tagT, link), text: t.tags.join("　"), part: 3 }) : null,
       button(btn, t.cta, 4),
@@ -291,7 +293,8 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { roo
       ]),
     ]);
   } else {
-    // 104: a job card in its company-card container (fill, 1px edge colour, radius, padding)
+    // 104: a job card in its company-card container (fill, 1px edge colour, radius, padding). Its one
+    // secondary grey (muted) is 4.06:1 on the canvas, so secondary text is the foreground at body weight.
     const label = tierToks(id, "label") ?? bod;
     const cardKey = (s.sr?.k ?? "").replace(/\.radius$/, "");
     const cardBg = s.surface && s.surface.k.startsWith(cardKey) ? slotColor(s.surface) : null;
@@ -301,9 +304,9 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { roo
     root = el("div", { cls: "sq-ex-pad", css: rootCss }, [
       el("div", { cls: `sq-ex-card${edge ? " sq-ex-edge" : ""}`, css: css({ background: cardBg, borderColor: edge, borderRadius: srTok, padding: padTok }) }, [
         el("h3", { css: typeCss(head, fg), text: t.title, part: 1 }),
-        el("p", { css: typeCss(bod, body), text: t.sub, part: 2 }),
+        el("p", { css: typeCss(bod, fg), text: t.sub, part: 2 }),
         el("div", { cls: "sq-ex-kv", part: 3 },
-          t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(bod, body), text: k }), el("span", { css: typeCss(label, fg), text: v })]))),
+          t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(bod, fg), text: k }), el("span", { css: typeCss(label, fg), text: v })]))),
         button(btn, t.cta, 4),
       ]),
     ]);
