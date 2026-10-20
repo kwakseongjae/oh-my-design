@@ -1,0 +1,14 @@
+{
+  "card": [
+    {
+      "file": "card.png",
+      "reason": "First pass rejected after the contact sheet: a frosted white card on white nearly vanished, the least legible prop in the set. Retry 1 (prompts-r1.txt) made it warm light grey with its face tilted toward the viewer and shipped."
+    }
+  ],
+  "briefcase": [
+    {
+      "file": "briefcase.png",
+      "reason": "First pass rejected after the contact sheet: on-style, but the deep box with a split lid read as a toolbox. Retry 1 (prompts-r1.txt) asked for a slim document briefcase with a front flap and shipped."
+    }
+  ]
+}

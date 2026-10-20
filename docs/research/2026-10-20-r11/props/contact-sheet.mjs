@@ -1,10 +1,12 @@
 // Contact sheet for the shipped props: all 13 at 1x (512 px, no resampling), once on a white
 // band and once on a light grey band, labelled by id.
 //
-//   node docs/research/2026-10-20-r11/props/contact-sheet.mjs [out.png] [--dark]
+//   node docs/research/2026-10-20-r11/props/contact-sheet.mjs [out.png] [--dark] [--full]
 //
 // Default output: contact-sheet.png next to this script. --dark adds a third, dark band
 // (a local halo check; the landing is light-only, so the committed sheet has white and grey).
+// The sheet is saved as a 256-colour dithered PNG, about half the full-colour size; --full keeps
+// full colour (use it for edge QA).
 import { createRequire } from "node:module";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -22,6 +24,7 @@ const IDS = [
 ];
 const args = process.argv.slice(2);
 const dark = args.includes("--dark");
+const full = args.includes("--full");
 const out = args.find((a) => !a.startsWith("--")) ?? join(HERE, "contact-sheet.png");
 
 const CELL = 512;
@@ -66,6 +69,8 @@ svg += `</svg>`;
 await sharp(Buffer.from(svg))
   .composite(layers)
   .flatten({ background: "#FFFFFF" })
-  .png({ compressionLevel: 9, adaptiveFiltering: true })
+  .png(full
+    ? { compressionLevel: 9, adaptiveFiltering: true }
+    : { palette: true, quality: 100, dither: 1, effort: 10, compressionLevel: 9 })
   .toFile(out);
 console.log(`${out} ${W}x${H}`);
