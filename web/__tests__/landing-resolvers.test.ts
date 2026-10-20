@@ -15,7 +15,7 @@
 import { describe, expect, it } from "vitest";
 import { REGISTRY } from "@/data/registry.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
-import { GEN_UI_IDS } from "@/lib/landing-a/picks";
+import { GEN_UI_IDS, GEN_UI_PREFERRED_BUTTON, GEN_UI_PREFERRED_CARD } from "@/lib/landing-a/picks";
 import { NON_UI_FACE_RE, num, resolveSlots, type ResolvedSlots, type TokensLike } from "@/lib/landing-a/resolve";
 
 type Slot = "canvas" | "fg" | "body" | "primary" | "head" | "bod" | "btn" | "surface" | "sr" | "face";
@@ -134,5 +134,102 @@ describe("landing slot resolvers", () => {
 
   it("every gen-UI pick resolves a primary button", () => {
     for (const id of GEN_UI_IDS) expect(ALL.find((x) => x.id === id)?.slots.btn, id).toBeTruthy();
+  });
+});
+
+/* Round 11: the roles the per-company sample screens consume. The same two guards as above — the
+   oracle is wider than each key list, so a claimed key the resolver misses fails the test, and
+   every resolved value must carry a claim. */
+type R11Slot = "meta" | "line" | "link" | "small" | "label" | "badge";
+
+function oracle11(tokens: TokensLike | undefined, claims: Record<string, unknown>): Record<R11Slot, string[]> {
+  const t = tokens ?? {};
+  const has = (p: string) => p in claims;
+  const C = t.colors ?? {};
+  const colorKeys = (re: RegExp) => Object.keys(C).filter((k) => re.test(k) && typeof C[k] === "string" && HEX.test(C[k].trim()) && has(`tokens.colors.${k}`));
+  const T = (t.typography ?? {}) as Record<string, unknown>;
+  const tiers = (re: RegExp) =>
+    Object.entries(T)
+      .filter(([k, o]) => k !== "family" && re.test(k) && o && typeof o === "object")
+      .filter(([k, o]) => num((o as Record<string, unknown>).size) != null && num((o as Record<string, unknown>).weight) != null && has(`tokens.typography.${k}.size`) && has(`tokens.typography.${k}.weight`))
+      .map(([k]) => k);
+  const comps = Object.entries(t.components ?? {}).filter(([, o]) => o && typeof o === "object") as [string, Record<string, unknown>][];
+  return {
+    meta: colorKeys(/^(muted|text-muted|text-tertiary|tertiary|text-subtle|subtle-text|subtle|secondary|text-secondary|secondary-text|placeholder|text-placeholder)$/),
+    line: colorKeys(/^(divider|border|hairline|line|separator|rule|stroke|outline|border-subtle|border-default|divider-subtle|border-muted|hairline-subtle)$/),
+    link: colorKeys(/^(link|text-link|link-text|hyperlink|anchor|link-default)$/),
+    small: tiers(/^(body-small|body-sm|body-s|small|text-small|text-sm|body-2|body2|body-secondary|caption.*|footnote.*|body-3|helper.*|detail.*|fine-print|meta.*)$/),
+    label: tiers(/^(label|label-md|label-m|label-large|label-lg|title-3|title-sm|title-small|subtitle|subtitle-1|body-strong|body-bold|body-emphasis|strong)$/),
+    badge: comps.filter(([k, o]) => o.type === "badge" && typeof o.bg === "string" && HEX.test(o.bg.trim()) && has(`tokens.components.${k}.bg`)).map(([k]) => k),
+  };
+}
+
+describe("round-11 sample-screen slots", () => {
+  it("never reports a round-11 slot missing while a matching claimed key exists", () => {
+    const falseMissing: string[] = [];
+    for (const r of REGISTRY) {
+      const ver = REFERENCE_VERIFICATION_BY_ID[r.id];
+      const o = oracle11(r.tokens as TokensLike, (ver?.claims ?? {}) as Record<string, unknown>);
+      const s = resolveSlots(r.tokens as TokensLike, ver);
+      const bodKey = s.bod?.k;
+      for (const slot of ["meta", "line", "link", "badge"] as const) if (!s[slot] && o[slot].length) falseMissing.push(`${r.id}.${slot} ← ${o[slot].join(", ")}`);
+      // the small and label tiers never reuse the tier already resolved as body
+      for (const slot of ["small", "label"] as const) {
+        const cand = o[slot].filter((k) => k !== bodKey);
+        if (!s[slot] && cand.length) falseMissing.push(`${r.id}.${slot} ← ${cand.join(", ")}`);
+      }
+    }
+    expect(falseMissing).toEqual([]);
+  });
+
+  it("only resolves round-11 values that carry a claim", () => {
+    for (const r of REGISTRY) {
+      const ver = REFERENCE_VERIFICATION_BY_ID[r.id];
+      const claims = ver?.claims ?? {};
+      const s = resolveSlots(r.tokens as TokensLike, ver);
+      for (const c of [s.meta, s.line, s.link, s.cardPad, s.cardFg]) if (c) expect(`tokens.${c.k}` in claims, `${r.id} ${c.k}`).toBe(true);
+      for (const ty of [s.small, s.label]) if (ty) expect(`tokens.typography.${ty.k}.size` in claims && `tokens.typography.${ty.k}.weight` in claims, `${r.id} ${ty.k}`).toBe(true);
+      if (s.cardFont) expect(`tokens.${s.cardFont.k}` in claims, `${r.id} ${s.cardFont.k}`).toBe(true);
+      if (s.badge) expect(`tokens.components.${s.badge.k}.bg` in claims, `${r.id} badge`).toBe(true);
+      expect(s.small?.k === s.bod?.k && s.small != null, `${r.id} small reuses body`).toBe(false);
+    }
+  });
+
+  it("card padding, text colour and font come from one card component, never mixed", () => {
+    for (const r of REGISTRY) {
+      const ver = REFERENCE_VERIFICATION_BY_ID[r.id];
+      const s = resolveSlots(r.tokens as TokensLike, ver);
+      const owners = [s.cardPad?.k, s.cardFg?.k, s.cardFont?.k].filter(Boolean).map((k) => k!.split(".")[1]);
+      expect(new Set(owners).size <= 1, `${r.id}: ${owners.join(", ")}`).toBe(true);
+    }
+  });
+
+  it("each pick's sample screen draws on the card its reference names (picks.ts)", () => {
+    const by = (id: string) => {
+      const r = REGISTRY.find((x) => x.id === id)!;
+      return resolveSlots(r.tokens as TokensLike, REFERENCE_VERIFICATION_BY_ID[id], { preferButton: GEN_UI_PREFERRED_BUTTON[id], preferCard: GEN_UI_PREFERRED_CARD[id] });
+    };
+    // karrot: the web feed listing card (transparent, 0px), not the flag-menu popover that outscores it
+    expect(by("karrot").sr).toMatchObject({ k: "components.listing-card.radius", v: 0 });
+    expect(by("karrot").surface?.k).toBe("components.listing-card.bg");
+    expect(by("karrot").cardFont).toMatchObject({ k: "components.listing-card.font", size: 16, weight: 700 });
+    expect(by("karrot").cardPad).toBeNull();
+    expect(by("kakaobank").sr).toMatchObject({ k: "components.link-row.radius", v: 16 });
+    expect(by("kakaobank").cardPad?.v).toBe("22px 24px");
+    expect(by("banksalad").sr).toMatchObject({ k: "components.safety-card.radius", v: 24 });
+    expect(by("banksalad").cardBorder?.v).toBe("#f0f2f5");
+    expect(by("104").sr).toMatchObject({ k: "components.company-card.radius", v: 12 });
+    expect(by("104").cardBorder?.v).toBe("#dddddd");
+    expect(by("freee").sr).toMatchObject({ k: "components.segment-card.radius", v: 8 });
+    // toss names no card component: the claimed surface colour and rounded.md
+    expect(by("toss").sr?.k).toBe("rounded.md");
+    expect(by("toss").surface?.k).toBe("colors.surface");
+    // LINE: no card is claimed (its design site is images only), and its badge is
+    expect(by("line").sr).toBeNull();
+    expect(by("line").surface).toBeNull();
+    expect(by("line").badge).toMatchObject({ k: "notification-badge", bg: "#06c755", fg: "#ffffff", radius: 9999 });
+    expect(by("line").small?.k).toBe("body-2");
+    expect(by("line").label?.k).toBe("title-3");
+    expect(by("104").link?.v).toBe("#1654b9");
   });
 });
