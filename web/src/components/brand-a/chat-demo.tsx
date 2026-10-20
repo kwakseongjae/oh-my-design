@@ -38,7 +38,11 @@ export function ChatDemo({ card, t }: { card: ChatCard; t: Pick<R11HeroCopy, "ch
     { kind: "tool", name: "Read", target: card.read },
     { kind: "tool", name: "Write", target: card.file, add: card.lines },
   ];
-  const note = card.face.name && !card.face.shown ? t.trace.face.replace("{face}", card.face.name) : null;
+  const note = !card.face.name || card.face.shown
+    ? null
+    : card.face.sub
+      ? t.trace.faceSub.replace("{face}", card.face.name).replace("{sub}", card.face.sub)
+      : t.trace.face.replace("{face}", card.face.name);
 
   return (
     <div className={`sq-chat${live ? " sq-live" : ""}`} ref={root} id="chat" role="group" aria-label={t.chat.label} suppressHydrationWarning>

@@ -11,6 +11,7 @@ import { CloseSection } from "./close-section";
 import { FaqSection } from "./faq-section";
 import { HeroSection } from "./hero-section";
 import { JourneySection } from "./journey-section";
+import { ibmPlexSans, pretendard } from "./journey/faces";
 import { SiteFooterA } from "./site-footer";
 import { GITHUB_URL, SiteHeaderA } from "./site-header";
 // section styles in the original cascade order (split out of landing.css before round 11)
@@ -59,8 +60,10 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
   const first = REGION_ORDER[locale][0] as "KR" | "JP" | "TW";
   const archive = catalogPathFor(locale);
 
+  // the root carries the self-hosted substitute faces' variables for the hero card and the CLI
+  // screen (journey/face.ts SUB_FACES); their files load only where text is set in them
   return (
-    <div className="sq-root sq-root-page" lang={htmlLang}>
+    <div className={`sq-root sq-root-page ${pretendard.variable} ${ibmPlexSans.variable}`} lang={htmlLang}>
       <SiteHeaderA locale={locale} current={locale} onLanding stars={stars} />
       <main id="main">
         <HeroSection locale={locale} c={c} r={r} data={data} f={f} archive={archive} />

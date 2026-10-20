@@ -42,7 +42,11 @@ function ApplyScene({ card, prompt, think, trace, active }: Apply & { active: bo
     { kind: "tool", name: "Read", target: card.read },
     { kind: "tool", name: "Write", target: card.file, add: card.lines },
   ];
-  const note = card.face.name && !card.face.shown ? trace.face.replace("{face}", card.face.name) : null;
+  const note = !card.face.name || card.face.shown
+    ? null
+    : card.face.sub
+      ? trace.faceSub.replace("{face}", card.face.name).replace("{sub}", card.face.sub)
+      : trace.face.replace("{face}", card.face.name);
   return (
     <div className={`sq-apply${live ? " sq-live" : ""}`} ref={root} id="cli-apply" suppressHydrationWarning>
       <div className="sq-apply-chat">

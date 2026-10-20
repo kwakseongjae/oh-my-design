@@ -176,7 +176,7 @@ export function GenUI({
       asked.current.add(id);
       if (!("fonts" in document)) return;
       let family = "";
-      if (f.mode === "substitute") {
+      if (f.mode === "substitute" && f.href) {
         if (!document.querySelector(`link[data-r11-face="${CSS.escape(f.href)}"]`)) {
           const l = document.createElement("link");
           l.rel = "stylesheet";

@@ -45,6 +45,8 @@ export interface R11HeroCopy {
     toggle: string;
     /** shown under the Write step when the card is not set in the brand face */
     face: string;
+    /** the same, when the card is set in the brand face's measured substitute ({sub}) */
+    faceSub: string;
     agent: string;
   };
   cli: {
@@ -81,6 +83,7 @@ const KO: R11HeroCopy = {
     summary: "작업 {n}개 · {s}초",
     toggle: "작업 과정",
     face: "{face}는 불러올 수 없어 페이지 글꼴로 그렸어요. 브랜드 글꼴이 아니에요.",
+    faceSub: "{face} 대신 실측으로 고른 대체 글꼴 {sub}로 그렸어요. 브랜드 글꼴이 아니에요.",
     agent: "에이전트",
   },
   cli: {
@@ -126,6 +129,7 @@ const EN: R11HeroCopy = {
     summary: "{n} steps · {s}s",
     toggle: "Steps",
     face: "{face} can't be loaded here, so I set it in the page font. It isn't the brand face.",
+    faceSub: "{face} can't be loaded here, so I set it in {sub}, a substitute chosen by measurement. It isn't the brand face.",
     agent: "Agent",
   },
   cli: {
@@ -171,6 +175,7 @@ const JA: R11HeroCopy = {
     summary: "{n}ステップ・{s}秒",
     toggle: "作業の内容",
     face: "{face}はここでは読み込めないため、ページの書体で表示しています。ブランドの書体ではありません。",
+    faceSub: "{face}の代わりに、計測で選んだ代替書体{sub}で表示しています。ブランドの書体ではありません。",
     agent: "エージェント",
   },
   cli: {
@@ -216,6 +221,7 @@ const ZH_TW: R11HeroCopy = {
     summary: "{n} 個步驟・{s} 秒",
     toggle: "作業過程",
     face: "這裡無法載入 {face}，所以用頁面字型呈現，並非品牌字型。",
+    faceSub: "這裡無法載入 {face}，所以改用實測選出的替代字型 {sub}，並非品牌字型。",
     agent: "AI 程式助理",
   },
   cli: {

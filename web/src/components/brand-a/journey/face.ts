@@ -45,10 +45,23 @@ export const OPEN_FACES: Readonly<Record<string, { readonly cssVar: string; read
   "Noto Sans JP": { cssVar: "--font-r11-noto-jp", scripts: ["latin", "kana"] },
 };
 
+/**
+ * Measured substitutes the site self-hosts (journey/faces.ts), with the scripts their files carry.
+ * A substitute listed here renders from our own files; one that isn't falls back to its Google
+ * Fonts stylesheet (cssUrl), so no browser request goes to Google for the faces we host.
+ * Round 11 measured Toss Product Sans → IBM Plex Sans (Latin) and Pretendard Variable (Hangul),
+ * docs/research/2026-10-20-r11/fonts/toss.md.
+ */
+export const SUB_FACES: Readonly<Record<string, { readonly cssVar: string; readonly scripts: readonly FontScript[] }>> = {
+  "Pretendard Variable": OPEN_FACES["Pretendard Variable"],
+  Pretendard: OPEN_FACES.Pretendard,
+  "IBM Plex Sans": { cssVar: "--font-r11-plex", scripts: ["latin"] },
+};
+
 export type Face =
   | { readonly mode: "real"; readonly k: string; readonly family: string; readonly css: string }
   | { readonly mode: "system"; readonly k: string; readonly family: string; readonly css: string }
-  | { readonly mode: "substitute"; readonly k: string; readonly family: string; readonly sub: string; readonly css: string; readonly href: string }
+  | { readonly mode: "substitute"; readonly k: string; readonly family: string; readonly sub: string; readonly css: string; readonly href?: string }
   | { readonly mode: "uncovered"; readonly k: string; readonly family: string; readonly css: string }
   | { readonly mode: "none"; readonly k: string | null; readonly family: string | null; readonly css: string };
 
@@ -68,7 +81,11 @@ export function faceFor(s: { readonly famT: Claimed | null; readonly famD: Claim
       : { mode: "uncovered", k: fam.k, family, css: page };
   }
   // proprietary (or not self-hosted): a measured substitute for this script, never one chosen by eye
-  const sub = subs.find((x) => x.script === script && x.cssUrl);
-  if (sub?.cssUrl) return { mode: "substitute", k: fam.k, family, sub: sub.family, css: `"${sub.family.replace(/"/g, "")}", ${page}`, href: sub.cssUrl };
+  const sub = subs.find((x) => x.script === script);
+  if (sub) {
+    const host = SUB_FACES[sub.family];
+    if (host?.scripts.includes(script)) return { mode: "substitute", k: fam.k, family, sub: sub.family, css: `var(${host.cssVar}), ${page}` };
+    if (sub.cssUrl) return { mode: "substitute", k: fam.k, family, sub: sub.family, css: `"${sub.family.replace(/"/g, "")}", ${page}`, href: sub.cssUrl };
+  }
   return { mode: "none", k: fam.k, family, css: page };
 }

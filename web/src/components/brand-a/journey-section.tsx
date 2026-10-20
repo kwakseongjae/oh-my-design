@@ -7,7 +7,7 @@ import type { getCopy } from "./copy";
 import { getJourneyCopy } from "./copy/r11-journey";
 import { GenUI, type GenExtra } from "./gen-ui";
 import { faceFor } from "./journey/face";
-import { notoSansJP, pretendard } from "./journey/faces";
+import { ibmPlexSans, notoSansJP, pretendard } from "./journey/faces";
 import { planScreen } from "./journey/model";
 
 type Props = {
@@ -34,7 +34,7 @@ export function JourneySection({ locale, c, data, first }: Props) {
     extras[s.id] = { plan: planScreen(kind, s), face: faceFor(s, locale, getSubstitutes(s.id)), prop: (propId && getProp(propId)) || null };
   }
   return (
-    <section className={`sq-sec sq-band ${pretendard.variable} ${notoSansJP.variable}`} id="reference" aria-labelledby="h-ref">
+    <section className={`sq-sec sq-band ${pretendard.variable} ${notoSansJP.variable} ${ibmPlexSans.variable}`} id="reference" aria-labelledby="h-ref">
       <div className="sq-wrap">
         <h2 id="h-ref">{c.gen.h2}</h2>
         <p className="sq-intro">{j.intro}</p>

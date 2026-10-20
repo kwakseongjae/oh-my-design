@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Noto_Sans_JP } from "next/font/google";
+import { IBM_Plex_Sans, Noto_Sans_JP } from "next/font/google";
 
 /**
  * The open brand faces the journey loads for real (journey/face.ts, rule 1). Declared once here and
@@ -31,4 +31,17 @@ export const notoSansJP = Noto_Sans_JP({
   preload: false,
   adjustFontFallback: false,
   variable: "--font-r11-noto-jp",
+});
+
+/**
+ * IBM Plex Sans, OFL: Toss Product Sans's measured Latin substitute (journey/face.ts SUB_FACES,
+ * docs/research/2026-10-20-r11/fonts/toss.md). Self-hosted by next/font like Noto Sans JP, and only
+ * ever set with the "substitute — not the brand face" label.
+ */
+export const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  adjustFontFallback: false,
+  variable: "--font-r11-plex",
 });

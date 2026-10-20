@@ -1,4 +1,6 @@
 import brandLogos from "@/data/brand-logos.json";
+import { getSubstitutes } from "@/lib/fonts/substitutes";
+import { PAGE_SCRIPT, PAGE_STACK, SUB_FACES } from "@/components/brand-a/journey/face";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
@@ -71,7 +73,7 @@ export interface ChatCard {
   /** distinct claimed tokens the card renders */
   readonly tokens: number;
   /** the claimed UI face, and whether the card is set in it; when a named face isn't shown the trace says so */
-  readonly face: { readonly name: string | null; readonly shown: boolean };
+  readonly face: { readonly name: string | null; readonly shown: boolean; readonly sub?: string };
 }
 
 /** Owner decision 4 (KR, JP) and the measured picks below (EN, TW). */
@@ -222,16 +224,25 @@ const button = (b: BtnToks | null, label: string, part: number) => (b ? el("span
 
 type Faces = Readonly<Record<string, string>>;
 
-function faceOf(id: string, s: ResolvedSlots, faces: Faces) {
+function faceOf(id: string, s: ResolvedSlots, faces: Faces, locale: SiteLocale) {
   const name = s.famT?.v ?? null;
   const loaded = name ? faces[name] : undefined;
-  const tok: Tok | null = name && loaded ? { k: s.famT!.k, v: name, css: loaded } : null;
-  return { name, shown: !!tok, tok };
+  if (name && loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } as Tok };
+  // not loadable here: a substitute measured for this page's script and self-hosted by the site, set
+  // from its own DESIGN.md record and named as a substitute in the trace (AGENTS.md G3); else the page face
+  const script = PAGE_SCRIPT[locale];
+  const sub = name ? getSubstitutes(id).find((x) => x.brandFamily === name && x.script === script) : undefined;
+  const host = sub ? SUB_FACES[sub.family] : undefined;
+  if (name && sub && host?.scripts.includes(script)) {
+    const tok: Tok = { k: `fonts.faces.${name}.substitutes.${script}`, v: sub.family, css: `var(${host.cssVar}), ${PAGE_STACK[locale]}` };
+    return { name, shown: false, sub: sub.family, tok };
+  }
+  return { name, shown: false, tok: null };
 }
 
-function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { root: CardNode; face: { name: string | null; shown: boolean } } {
+function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale: SiteLocale): { root: CardNode; face: ChatCard["face"] } {
   const s = slotsOf(id)!;
-  const f = faceOf(id, s, faces);
+  const f = faceOf(id, s, faces, locale);
   const canvas = slotColor(s.canvas), fg = slotColor(s.fg), body = slotColor(s.body), primary = slotColor(s.primary);
   const btn = buttonToks(id, s.btn);
   const head = slotType(id, s.head), bod = slotType(id, s.bod);
@@ -311,7 +322,7 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces): { roo
       ]),
     ]);
   }
-  return { root, face: { name: f.name, shown: f.shown } };
+  return { root, face: { name: f.name, shown: f.shown, ...(f.sub ? { sub: f.sub } : {}) } };
 }
 
 /* ---------- the source the Write step stands for ---------- */
@@ -363,8 +374,8 @@ function tokCount(n: CardNode, seen = new Set<string>()): number {
   return seen.size;
 }
 
-function finish(id: string, kind: CardKind, file: string, read: string, t: CardText, faces: Faces): ChatCard {
-  const { root, face } = buildRoot(id, kind, t, faces);
+function finish(id: string, kind: CardKind, file: string, read: string, t: CardText, faces: Faces, locale: SiteLocale): ChatCard {
+  const { root, face } = buildRoot(id, kind, t, faces, locale);
   const source = printSource(file, root);
   return { id, kind, file, read, root, parts: parts(root), source, lines: source.split("\n").length, tokens: tokCount(root), face };
 }
@@ -376,12 +387,12 @@ function finish(id: string, kind: CardKind, file: string, read: string, t: CardT
 export function getChatCard(locale: SiteLocale, faces: Faces = {}): ChatCard {
   const id = CHAT_COMPANY[locale];
   const t = getR11Hero(locale).chat;
-  return finish(id, KIND[id], t.file, `.claude/data/references/${id}/DESIGN.md`, t.card, faces);
+  return finish(id, KIND[id], t.file, `.claude/data/references/${id}/DESIGN.md`, t.card, faces, locale);
 }
 
 /** The CLI apply step's screen: the CLI's own next step on a Toss-inspired project, in every locale. */
 export const CLI_APPLY_COMPANY = "toss";
 export function getCliScreen(locale: SiteLocale): ChatCard {
   const t = getR11Hero(locale).cli;
-  return finish(CLI_APPLY_COMPANY, "home", t.file, "DESIGN.md", t.screen, {});
+  return finish(CLI_APPLY_COMPANY, "home", t.file, "DESIGN.md", t.screen, {}, locale);
 }

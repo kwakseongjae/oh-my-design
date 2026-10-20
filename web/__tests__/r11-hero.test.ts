@@ -3,6 +3,7 @@ import transcript from "@/data/cli-transcript.json";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
 import { getR11Hero } from "@/components/brand-a/copy/r11-hero";
+import { getSubstitutes } from "@/lib/fonts/substitutes";
 import {
   CARD_SLOTS, CHAT_CANDIDATES, CHAT_COMPANY, cardCoverage, getChatCard, getCliScreen, pickCompany,
   type CardNode, type ChatCard, type Tok,
@@ -59,6 +60,14 @@ describe("example cards: claimed values only", () => {
       const list = toks(card.root);
       expect(list.length, name).toBeGreaterThan(10);
       for (const [prop, t] of list) {
+        // a measured substitute is set from the reference's own substitute record, never by eye
+        const subKey = /^fonts\.faces\.(.+)\.substitutes\.([a-z-]+)$/.exec(t.k);
+        if (prop === "fontFamily" && subKey) {
+          const rec = getSubstitutes(card.id).find((x) => x.brandFamily === subKey[1] && x.script === subKey[2]);
+          expect(rec?.family, `${name}: ${t.k} measured`).toBe(t.v);
+          expect(t.css, `${name}: ${t.k} self-hosted`).toMatch(/^var\(--font-r11-/);
+          continue;
+        }
         expect(`tokens.${t.k}` in claims, `${name}: ${t.k} claimed`).toBe(true);
         expect(at(card.id, t.k), `${name}: ${t.k} value`).toEqual(t.v);
         if (prop === "fontFamily") continue; // the loaded face for a claimed family name (see face test)
@@ -69,14 +78,19 @@ describe("example cards: claimed values only", () => {
       }
     }
   });
-  it("faces: Toss Product Sans is named and not shown; 104 names none; Linear and pixiv are shown when the page loads them", () => {
+  it("faces: Toss Product Sans is named, not shown, and set in its measured substitute; 104 names none; Linear and pixiv are shown when the page loads them", () => {
     const by = Object.fromEntries(cards.map(([n, c]) => [n, c]));
-    expect(by["hero ko"].face).toEqual({ name: "Toss Product Sans", shown: false });
+    expect(by["hero ko"].face).toEqual({ name: "Toss Product Sans", shown: false, sub: "Pretendard Variable" });
     expect(by["hero zh-tw"].face).toEqual({ name: null, shown: false });
     expect(by["hero en"].face).toEqual({ name: "Inter", shown: true });
     expect(by["hero ja"].face).toEqual({ name: "Noto Sans CJK JP", shown: true });
     expect(getChatCard("en").face).toEqual({ name: "Inter", shown: false });
     for (const l of LOCALES) expect(getCliScreen(l).face.shown).toBe(false);
+    // Toss's substitutes were measured for Latin and Hangul only: none on the kana and Han pages
+    expect(getCliScreen("ko").face.sub).toBe("Pretendard Variable");
+    expect(getCliScreen("en").face.sub).toBe("IBM Plex Sans");
+    expect(getCliScreen("ja").face.sub).toBeUndefined();
+    expect(getCliScreen("zh-tw").face.sub).toBeUndefined();
   });
   it("the Write step's +N is the printed source's line count, and the Read path is the installed catalog copy", () => {
     for (const [name, card] of cards) {
@@ -176,7 +190,7 @@ describe("rendered: the hero chat and the CLI section", async () => {
       expect(text, l).not.toContain(getR10(l).chat.tag);
       expect(text, l).not.toContain(getR10(l).chat.note.slice(0, 12));
       expect(text, l).not.toContain(getR10(l).chat.bar);
-      const faceNote = h.trace.face.replace("{face}", "Toss Product Sans");
+      const faceNote = h.trace.faceSub.replace("{face}", "Toss Product Sans").replace("{sub}", "Pretendard Variable");
       expect(text.includes(faceNote), l).toBe(l === "ko");
     }
   });
