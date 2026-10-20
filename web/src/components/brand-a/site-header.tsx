@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
+import { docsHref, type DocsLocale } from "@/lib/docs/locales";
 import { getCopy } from "./copy";
 import { LocaleSwitch } from "./locale-switch";
 import { Logo } from "./logo";
@@ -9,6 +10,22 @@ import { StarPill } from "./star-pill";
 import "./chrome.css";
 
 export const GITHUB_URL = "https://github.com/kwakseongjae/oh-my-design";
+
+/**
+ * The docs locale each site locale reads (round 11 #29). The docs have five locales
+ * (lib/docs/locales.ts) and every site locale is one of them; zh-cn has no site locale.
+ */
+export const DOCS_LOCALE_OF: Readonly<Record<SiteLocale, DocsLocale>> = {
+  en: "en",
+  ko: "ko",
+  ja: "ja",
+  "zh-tw": "zh-tw",
+};
+
+/** Where the header's and footer's "Skills" link goes: the docs skills page in that locale. */
+export function skillsHrefFor(locale: SiteLocale, docsLocale?: DocsLocale): string {
+  return docsHref(docsLocale ?? DOCS_LOCALE_OF[locale], "skills");
+}
 
 /**
  * Site-wide header (concept A). `locale` picks the nav copy and docs link;
@@ -21,6 +38,10 @@ export const GITHUB_URL = "https://github.com/kwakseongjae/oh-my-design";
  * header). Light only: no theme control. `stars` is the server-fetched count (the landing
  * passes it); undefined lets the pill read it on the client.
  *
+ * Round 11 (#29): "Skills" opens the docs skills page (/docs/<docs locale>/skills) on every
+ * page, the landing included, instead of a landing anchor. `docsLocale` lets a docs page in a
+ * locale the site has no landing for (zh-cn) point Skills and Docs at its own locale.
+ *
  * `origin` prefixes every internal link — "" on the main site; the blog passes
  * the site origin once it serves from its own host (lib/site.ts siteHref).
  * `extra` sits before the language switcher (the blog's own ko/en switch, the
@@ -29,7 +50,6 @@ export const GITHUB_URL = "https://github.com/kwakseongjae/oh-my-design";
 export function SiteHeaderA({
   locale = "en",
   current = null,
-  onLanding = false,
   origin = "",
   extra,
   locales = true,
@@ -37,6 +57,7 @@ export function SiteHeaderA({
   stars,
   localeHrefs,
   twins = false,
+  docsLocale,
 }: {
   /** Language-switch targets read from the page's hreflang alternates (a shared layout's header). */
   twins?: boolean;
@@ -46,6 +67,7 @@ export function SiteHeaderA({
   skipTo?: string;
   locale?: SiteLocale;
   current?: SiteLocale | null;
+  /** Accepted for the landing's call; since round 11 no link depends on it. */
   onLanding?: boolean;
   origin?: string;
   extra?: ReactNode;
@@ -54,15 +76,17 @@ export function SiteHeaderA({
   locales?: boolean;
   /** GitHub stars fetched on the server; null = unavailable (pill without a number). */
   stars?: number | null;
+  /** The docs locale for Skills and Docs when it is not the site locale's own (docs zh-cn). */
+  docsLocale?: DocsLocale;
 }) {
   const t = getCopy(locale).nav;
   const meta = SITE_LOCALE_META[locale];
-  const skills = onLanding ? "#skills" : meta.path === "/" ? "/#skills" : `${meta.path}#skills`;
+  const docs = docsLocale ?? DOCS_LOCALE_OF[locale];
   const links = (
     <>
       <Link href={`${origin}${catalogPathFor(locale)}`} prefetch={false}>{t.archive}</Link>
-      <a href={onLanding ? skills : `${origin}${skills}`}>{t.skills}</a>
-      <Link href={`${origin}${meta.docs}`} prefetch={false}>{t.docs}</Link>
+      <Link href={`${origin}${skillsHrefFor(locale, docs)}`} prefetch={false}>{t.skills}</Link>
+      <Link href={`${origin}${docsHref(docs)}`} prefetch={false}>{t.docs}</Link>
     </>
   );
   return (

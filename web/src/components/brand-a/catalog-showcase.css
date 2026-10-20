@@ -3,7 +3,7 @@
    Tiles are filled, never outlined (RESTRAINT R8). Motion is the tile's: on hover or focus it
    lifts 3px onto paper with the panel shadow; the logo itself is never recoloured or filtered.
    prefers-reduced-motion: no transition and no lift. */
-.sq-sc{padding-block:120px}
+.sq-sc{padding-block:120px 48px} /* + the footer's 72px top margin = the 120px section rhythm */
 .sq-sc-head p{margin-top:12px;font-size:18px;color:var(--sq-ink-2);max-width:40em}
 .sq-sc-groups{display:grid;gap:16px;margin-top:48px}
 .sq-sc-g{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;align-items:center}
@@ -29,7 +29,7 @@
 }
 @media (max-width:1100px){.sq-sc-g{grid-template-columns:110px minmax(0,1fr);gap:16px}}
 @media (max-width:900px){
-  .sq-sc{padding-block:80px}
+  .sq-sc{padding-block:80px 8px}
   .sq-sc-head p{font-size:16px}
   .sq-sc-groups{gap:28px;margin-top:36px}
   .sq-sc-g{grid-template-columns:minmax(0,1fr);gap:10px}

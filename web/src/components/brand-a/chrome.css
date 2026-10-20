@@ -34,13 +34,16 @@
 .sq-menu a:hover,.sq-menu-m a:hover{color:var(--sq-ink)}
 .sq-tools{display:flex;align-items:center;gap:12px;margin-left:20px}
 .sq-menu-m{display:none}
-/* GitHub star button: Taste Skill's dark nav pill (round 10: a pill, as actions are) */
-.sq-star{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 16px 0 14px;border-radius:var(--sq-r-pill);background:var(--sq-ink);color:var(--sq-paper);font:600 15px/1 var(--sq-f-latin),sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;transition:background-color .15s}
+/* GitHub star button: Taste Skill's dark nav pill. Round 11 (#4/#15): white mark, a small grey
+   star, the count in the regular weight, tight gaps; no yellow. Room for the count is kept only
+   while a client-fetched count is on its way ([data-wait]), so the nav does not jump. */
+.sq-star{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 12px;border-radius:var(--sq-r-pill);background:var(--sq-ink);color:var(--sq-paper);font:400 14.5px/1 var(--sq-f-latin),sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;white-space:nowrap;transition:background-color .15s}
 .sq-star:hover{background:color-mix(in srgb,var(--sq-ink) 84%,var(--sq-paper))}
 .sq-star:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-star svg{flex-shrink:0}
-.sq-star-n{display:inline-flex;align-items:center;gap:5px;min-width:3.4em}
-.sq-star-g{color:currentColor;line-height:1}
+.sq-star svg{flex-shrink:0;display:block}
+.sq-star-n{display:inline-flex;align-items:center;gap:5px}
+.sq-star-n[data-wait]{min-width:calc(17px + 2.2em)}
+.sq-star-g{color:var(--sq-n400)}
 /* surface links in the header tools slot (blog index + its ko/en switch, docs language) */
 .sq-xlink{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:var(--sq-r-pill);font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap}
 .sq-xlink:hover{color:var(--sq-ink);background:var(--sq-cell)}
@@ -52,27 +55,43 @@
   .sq-tools{margin-left:auto;gap:8px}
   .sq-menu-m{display:flex;flex-wrap:wrap;gap:4px 20px;padding-bottom:8px;font-size:15px;font-weight:550}
   .sq-menu-m a{min-height:32px}
-  .sq-star{padding:0 11px;gap:7px}
+  .sq-star{padding:0 12px 0 10px;gap:7px}
 }
 @media (max-width:640px){.sq-brand{gap:8px}.sq-logo-icon{width:28px;height:28px}.sq-logo-text{font-size:16px}}
 /* 320–379px: the wordmark yields to the tools; the mark stays */
-@media (max-width:379px){.sq-logo-text{display:none}.sq-tools{gap:6px}.sq-star-n{min-width:0}}
+@media (max-width:379px){.sq-logo-text{display:none}.sq-tools{gap:6px}.sq-star-n[data-wait]{min-width:0}}
 
-/* footer */
-.sq-foot{margin-top:72px;padding:40px 0 48px}
-.sq-foot-in{display:grid;grid-template-columns:minmax(0,1.3fr) auto auto;gap:24px 56px;align-items:start}
-.sq-foot-brand{display:flex;gap:14px;align-items:flex-start}
-.sq-foot-brand .sq-logo-icon{width:40px;height:40px}
-.sq-foot-brand p{font-size:15px;color:var(--sq-ink-2);max-width:26em}
-.sq-foot-brand b{display:block;color:var(--sq-ink);font-family:var(--sq-f-latin),sans-serif;font-size:18px}
-.sq-foot-links,.sq-foot-loc{display:flex;flex-direction:column;gap:8px;font-size:15px}
-.sq-foot-links a,.sq-foot-loc a{color:var(--sq-ink-2)}
-.sq-foot-links a:hover,.sq-foot-loc a:hover{color:var(--sq-ink)}
-.sq-foot-loc a[aria-current="true"]{color:var(--sq-ink);font-weight:700}
-.sq-legal{grid-column:1/-1;font-size:13px;color:var(--sq-ink-2);border-top:1px solid var(--sq-guide-2);padding-top:16px}
+/* footer. Round 11 (#15, after Taste Skill's): brand column (logo, one line, two icon links) and
+   three link columns; one bottom line. Set apart by the band tone, not a rule. Type: the logo's
+   18, 15 (intro, links), 14 (column headings, bottom line). The platform marks stay ink (both
+   brands allow black or white only); hover tints the button behind them, never the mark. Each
+   icon sits in a 40px button: 10px of clear space around a 20px mark (Threads asks for ÷4). */
+.sq-foot{margin-top:72px;padding:64px 0 40px;background:var(--sq-band)}
+.sq-foot-in{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:40px 48px;align-items:start}
+.sq-foot-brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-width:0}
+.sq-foot-logo{display:inline-flex;align-items:center;gap:10px;min-height:36px}
+.sq-foot-tag{font-size:15px;line-height:1.6;color:var(--sq-ink-2);max-width:24em}
+.sq-foot-social{list-style:none;display:flex;gap:8px;margin:2px 0 0 -10px}
+.sq-foot-social a{display:grid;place-items:center;width:40px;height:40px;border-radius:var(--sq-r-pill);color:var(--sq-ink);transition:background-color .15s}
+.sq-foot-social a:hover{background:var(--sq-cell)}
+.sq-foot-social svg{display:block}
+.sq-foot-col{min-width:0}
+.sq-foot-h{margin:0 0 14px;font-size:14px;font-weight:500;line-height:1.4;letter-spacing:0;color:var(--sq-ink-2)}
+.sq-foot-col ul{list-style:none;display:grid;gap:10px}
+.sq-foot-col a{display:inline-block;font-size:15px;line-height:1.5;color:var(--sq-n700);transition:color .15s}
+.sq-foot-col a:hover{color:var(--sq-ink)}
+.sq-foot-col a[aria-current="true"]{color:var(--sq-ink);font-weight:650}
+.sq-foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;margin-top:56px;font-size:14px;line-height:1.6;color:var(--sq-ink-2)}
+.sq-foot-meta{display:flex;flex-wrap:wrap;gap:4px 20px}
+.sq-foot-btn{all:unset;cursor:pointer}
+.sq-foot-meta a,.sq-foot-btn{color:var(--sq-ink-2);transition:color .15s}
+.sq-foot-meta a:hover,.sq-foot-btn:hover{color:var(--sq-ink)}
+.sq-foot-btn:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:var(--sq-r-inner)}
 @media (max-width:900px){
-  .sq-foot-in{grid-template-columns:1fr 1fr}
+  .sq-foot{padding:48px 0 32px}
+  .sq-foot-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px 24px}
   .sq-foot-brand{grid-column:1/-1}
+  .sq-foot-bottom{flex-direction:column;gap:8px;margin-top:40px}
 }
 html:has(.sq-root-page){scroll-padding-top:80px;background:var(--sq-paper)}
 body:has(.sq-root-page){background:var(--sq-paper)}
