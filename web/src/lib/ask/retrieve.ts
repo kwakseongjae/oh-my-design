@@ -33,6 +33,13 @@ const RELATIVE_FLOOR = 0.25;
 const REF_FLOOR = 0.35;
 const MIN_REFS = 2;
 const TIER_PRIOR = { v: 1.15, p: 1, l: 0.9 } as const;
+/**
+ * The FAQ is written to answer a visitor's question in one passage, so it leads when a docs
+ * passage only repeats the question's words. Without it, "What goes into a DESIGN.md?" ranked
+ * the skills page's "Set up and keep DESIGN.md" list above the FAQ answer once the round-11 docs
+ * mentioned DESIGN.md in every skill line.
+ */
+const SRC_PRIOR: Partial<Record<AskChunk["src"], number>> = { faq: 1.25 };
 
 export interface AskHit {
   chunk: AskChunk;
@@ -114,7 +121,7 @@ export function createRetriever(chunks: readonly AskChunk[], intent: readonly st
       for (let i = 0; i < n; i++) {
         if (scores[i] <= 0) continue;
         const c = chunks[i];
-        const s = scores[i] * localeWeight(c.loc, locale) * (c.tier ? TIER_PRIOR[c.tier] : 1);
+        const s = scores[i] * localeWeight(c.loc, locale) * (c.tier ? TIER_PRIOR[c.tier] : 1) * (SRC_PRIOR[c.src] ?? 1);
         if (s > 0) ranked.push({ i, s });
       }
       if (!ranked.length) return [];
