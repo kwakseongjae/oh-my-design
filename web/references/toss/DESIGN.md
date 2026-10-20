@@ -99,32 +99,32 @@ typography:
     fontSize: 36px
     fontWeight: 700
     lineHeight: 54px
-    fontFamily: Toss Product Sans, sans-serif
+    fontFamily: Toss Product Sans, IBM Plex Sans, Pretendard Variable, sans-serif
   h2:
     fontSize: 30px
     fontWeight: 600
     lineHeight: 45px
-    fontFamily: Toss Product Sans, sans-serif
+    fontFamily: Toss Product Sans, IBM Plex Sans, Pretendard Variable, sans-serif
   h3:
     fontSize: 24px
     fontWeight: 600
     lineHeight: 36px
-    fontFamily: Toss Product Sans, sans-serif
+    fontFamily: Toss Product Sans, IBM Plex Sans, Pretendard Variable, sans-serif
   h4:
     fontSize: 22px
     fontWeight: 600
     lineHeight: 33px
-    fontFamily: Toss Product Sans, sans-serif
+    fontFamily: Toss Product Sans, IBM Plex Sans, Pretendard Variable, sans-serif
   body:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 24px
-    fontFamily: Toss Product Sans, sans-serif
+    fontFamily: Toss Product Sans, IBM Plex Sans, Pretendard Variable, sans-serif
   body-small:
     fontSize: 14px
     fontWeight: 400
     lineHeight: 21px
-    fontFamily: Toss Product Sans, sans-serif
+    fontFamily: Toss Product Sans, IBM Plex Sans, Pretendard Variable, sans-serif
   t1:
     fontSize: 30px
     lineHeight: 40px
@@ -256,6 +256,15 @@ fonts:
         - official-product-use
         - live-surface-use
       distribution: none-asserted
+      substitutes:
+        latin:
+          family: IBM Plex Sans
+          provider: google
+          label: substitute — not the brand face
+        hangul:
+          family: Pretendard Variable
+          provider: other
+          label: substitute — not the brand face
     Tossface:
       evidence:
         - declared-only
@@ -387,7 +396,7 @@ The H1–H4, Body and Body Small roles above are a different surface: computed s
 ### Brand face, substitute, safe default
 
 - **Brand face:** Toss Product Sans. No general redistribution right is asserted by the current official sources, so most adopters cannot install it.
-- **Substitute:** none chosen. No measured comparison against an open-licence face exists yet, so no face is named as a substitute.
+- **Substitute:** IBM Plex Sans for Latin and Pretendard Variable for Hangul, each a substitute — not the brand face. Both were chosen by measurement on 2026-10-20, in Toss's own TDS documentation page with the Toss Product Sans files it loads, against open-licence candidates at weights 400, 600 and 700. Latin: x-height ratio 0.739 against 0.731, average advance 0.461 em against 0.459 em. Hangul: body height 0.846 em against 0.852 em, syllable width 0.864 em against 0.865 em. Pretendard Variable is not a Google Fonts face; the closest Google Fonts face for Hangul, IBM Plex Sans KR, measured about three and a half times further off. The six documented type roles list both after the brand face in their font stacks, Latin first, because a Hangul face also carries Latin glyphs.
 - **Safe default (not the brand face):** Noto Sans KR for Hangul and Noto Sans for Latin, when a project must install a face. Label it as a fallback; never present it as Toss Product Sans.
 
 ## Layout

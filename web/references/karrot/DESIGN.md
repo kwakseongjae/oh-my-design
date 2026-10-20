@@ -308,6 +308,12 @@ These are official product and stakeholder contexts, not invented demographic pe
 | **Declared-only** | Pretendard Variable appeared in public stacks and FontFace declarations without visible first-family use in this capture |
 | **Unresolved** | Exact native-app runtime family resolution outside the published SEED semantic roles |
 
+### Brand face, substitute, safe default
+
+- **Brand face:** none for the observed web UI, which resolves to the OS system family (first family -apple-system). SEED defines product roles around platform and system families, and Pretendard Variable is declared only.
+- **Substitute:** none chosen; there is no brand face to stand in for.
+- **Safe default (not the brand face):** none listed; the UI face is already a system stack.
+
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:

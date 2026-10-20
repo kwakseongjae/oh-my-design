@@ -105,6 +105,32 @@ fonts:
   roles:
     ui: Inter
     mono: Berkeley Mono
+  faces:
+    Inter:
+      scripts:
+        - latin
+      evidence:
+        - official-product-use
+        - live-surface-use
+      source: https://rsms.me/inter/
+      licence: OFL-1.1
+      distribution: public
+      note: Captured as Inter Variable; Linear serves the public Inter 4.1 file unmodified.
+    Berkeley Mono:
+      scripts:
+        - latin
+      evidence:
+        - official-product-use
+        - live-surface-use
+      source: https://usgraphics.com/static/products/TX-02/datasheet/TX-02-datasheet.a43c0c7f8d8c.pdf
+      licence: Proprietary and non-transferrable
+      distribution: none-asserted
+      note: U.S. Graphics TX-02; linear.app loads a variable build (Berkeley Mono Variable).
+      substitutes:
+        latin:
+          family: Fira Code
+          provider: google
+          label: substitute — not the brand face
 ---
 
 # Design System Inspiration of Linear
@@ -181,6 +207,12 @@ Neon lime is retained only as a captured customer-card editorial sibling, not a 
 | Method body | Inter Variable | 15px | 400 | 24px | -0.165px |
 | Navigation | Inter Variable | 13px | 400 | 19.5px | -0.13px |
 | Technical preview | Berkeley Mono | 14px | 400 | 24px | normal |
+
+### Brand face, substitute, safe default
+
+- **Brand face:** Inter (captured as Inter Variable) for interface text, and Berkeley Mono for technical previews. Inter is published by its designer under the SIL Open Font License 1.1 (rsms.me/inter), and Linear serves the public Inter 4.1 file unmodified, so it can be installed as itself. Berkeley Mono is U.S. Graphics' TX-02, licensed as "Proprietary and non-transferrable", so most adopters cannot install it.
+- **Substitute:** none is needed for Inter. For Berkeley Mono, Fira Code — a substitute, not the brand face — chosen by measurement on 2026-10-20 on linear.app with the Berkeley Mono file it loads, against seven open-licence monospaced Google Fonts faces: the same 0.600 em advance, and an x-height ratio of 0.765 against 0.762.
+- **Safe default (not the brand face):** none listed; Inter installs as itself and the monospaced role has a measured substitute.
 
 ## Layout
 

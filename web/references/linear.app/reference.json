@@ -846,6 +846,46 @@
       }
     ]
   },
+  "fonts": {
+    "substitutes": {
+      "Berkeley Mono": {
+        "latin": {
+          "family": "Fira Code",
+          "provider": "google",
+          "label": "substitute — not the brand face",
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap",
+          "metrics": {
+            "xHeightRatio": 0.7647,
+            "avgAdvance": 0.6,
+            "weightRange": "300–700, variable wght axis",
+            "classification": "monospace",
+            "delta": {
+              "xHeightRatio": 0.0029,
+              "avgAdvance": 0,
+              "xHeightRatioRelMean": 0.0038,
+              "avgAdvanceRelMean": 0,
+              "weightCoverageMiss": 0,
+              "score": 0.0013,
+              "brandXHeightRatio": 0.7618,
+              "brandAvgAdvance": 0.6,
+              "brandWeightRange": "100 900 declared; intermediate weights render distinctly (variable wght axis)",
+              "brandClassification": "monospace",
+              "definition": "xHeightRatio = mean ink top of x v w z / mean ink top of H I E F T; avgAdvance = sample advance / code points, in em",
+              "sample": "The quick brown fox jumps over the lazy dog",
+              "weights": "400",
+              "sizePx": 14,
+              "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+              "rule": "best Google Fonts candidate",
+              "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+              "page": "https://linear.app/",
+              "measured": "2026-10-20",
+              "record": "docs/research/2026-10-20-r11/fonts/linear.app.measurements.json"
+            }
+          }
+        }
+      }
+    }
+  },
   "migration": {
     "from": "omd-0.1",
     "sourceSha256": "4f6ff9b6c80e8a7c12e3cf095eda4b0edb032524db05cc71544fbf88346053ac",

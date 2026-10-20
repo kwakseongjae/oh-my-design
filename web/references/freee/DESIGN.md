@@ -63,6 +63,14 @@ components:
 fonts:
   roles:
     ui: Noto Sans JP
+  faces:
+    Noto Sans JP:
+      evidence:
+        - live-surface-use
+      source: https://github.com/notofonts/noto-cjk
+      licence: OFL-1.1
+      distribution: public
+      note: freee self-hosts Regular, Medium and Bold OTF files.
 ---
 
 # Design System Inspiration of freee
@@ -140,6 +148,12 @@ The official Vibes repository contains a broader, versioned component and token 
 | Compact header action | Noto Sans JP | 14px | 700 | 21px | Header `.c-btn-primary` |
 
 Do not render a declared Google font, icon face, or a system fallback as though it were Noto Sans JP.
+
+### Brand face, substitute, safe default
+
+- **Brand face:** Noto Sans JP on the captured public site, a Noto CJK face released under the SIL Open Font License 1.1 (github.com/notofonts/noto-cjk); freee self-hosts its Regular, Medium and Bold OTF files. It can be installed as itself.
+- **Substitute:** none needed; the face is installable.
+- **Safe default (not the brand face):** none listed; install Noto Sans JP itself.
 
 ## Layout
 

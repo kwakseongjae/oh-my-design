@@ -193,6 +193,12 @@ The primary-color field uses the high-confidence product action orange `#ff9100`
 
 Do not substitute another sans serif and name it `MsJhengHeiBold`. The declared face retains useful provenance in this section while its visible-use boundary remains intact.
 
+### Brand face, substitute, safe default
+
+- **Brand face:** none established. The captured public stack begins with Arial and operating-system families, no first-party source names a 104 typeface, and MsJhengHeiBold is declared only.
+- **Substitute:** none chosen; there is no brand face to stand in for.
+- **Safe default (not the brand face):** none listed; the observed UI face is an operating-system stack.
+
 ## Layout
 
 The supplied public surfaces support a compact information layout rather than a universal marketing-grid specification. Repeated spacing clusters at 4px, 6px, 8px, 12px, 16px, and 20px. Navigation tabs use 8px by 16px padding, content cards use 16px padding, and compact actions use horizontal 12px padding. The packet does not establish breakpoint, authenticated search-results, application-flow, or mobile-layout rules.

@@ -1,0 +1,223 @@
+{
+  "target": "linear.app",
+  "family": "Berkeley Mono",
+  "weighting": {
+    "avgAdvance": 0.45,
+    "xHeightRatio": 0.35,
+    "weightCoverage": 0.1,
+    "classification": 0.1
+  },
+  "nonGoogleFactor": 0.8,
+  "maxScore": 0.1,
+  "scripts": {
+    "latin": {
+      "chosen": "Fira Code",
+      "rule": "best Google Fonts candidate",
+      "ranked": [
+        {
+          "family": "Fira Code",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/firacode/METADATA.pb",
+          "weightRange": "300–700, variable wght axis",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0,
+            "xHeightRatio": 0.0038049646631466614,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.0013317376321013315,
+          "at400": {
+            "xHeightRatio": 0.7646631416168145,
+            "avgAdvance": 0.5999995640345982
+          }
+        },
+        {
+          "family": "JetBrains Mono",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/jetbrainsmono/METADATA.pb",
+          "weightRange": "100–800, variable wght axis",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0,
+            "xHeightRatio": 0.011489894778752235,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.004021463172563282,
+          "at400": {
+            "xHeightRatio": 0.7530120583056708,
+            "avgAdvance": 0.5999995640345982
+          }
+        },
+        {
+          "family": "Geist Mono",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/geistmono/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.000014532190618717912,
+            "xHeightRatio": 0.02006628883329786,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.007029740577432673,
+          "at400": {
+            "xHeightRatio": 0.7464788644559139,
+            "avgAdvance": 0.5999908447265625
+          }
+        },
+        {
+          "family": "Roboto Mono",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/robotomono/METADATA.pb",
+          "weightRange": "100–700, variable wght axis",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.00016348714446090033,
+            "xHeightRatio": 0.02446002948056195,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.008634579533204087,
+          "at400": {
+            "xHeightRatio": 0.7431318681318682,
+            "avgAdvance": 0.60009765625
+          }
+        },
+        {
+          "family": "Source Code Pro",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/sourcecodepro/METADATA.pb",
+          "weightRange": "200–900, variable wght axis",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0,
+            "xHeightRatio": 0.027587982886488255,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.009655794010270889,
+          "at400": {
+            "xHeightRatio": 0.7407491037877914,
+            "avgAdvance": 0.5999995640345982
+          }
+        },
+        {
+          "family": "IBM Plex Mono",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexmono/METADATA.pb",
+          "weightRange": "100, 200, 300, 400, 500, 600, 700 (static)",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0,
+            "xHeightRatio": 0.029549434176660002,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.010342301961831,
+          "at400": {
+            "xHeightRatio": 0.7392549395243436,
+            "avgAdvance": 0.5999995640345982
+          }
+        },
+        {
+          "family": "DM Mono",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/dmmono/METADATA.pb",
+          "weightRange": "300, 400, 500 (static)",
+          "classification": "monospace",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0,
+            "xHeightRatio": 0.06982899864058047,
+            "weightCoverage": 0,
+            "classification": 0
+          },
+          "score": 0.02444014952420316,
+          "at400": {
+            "xHeightRatio": 0.7085713910361428,
+            "avgAdvance": 0.5999995640345982
+          }
+        }
+      ]
+    }
+  },
+  "sidecar": {
+    "latin": {
+      "family": "Fira Code",
+      "provider": "google",
+      "label": "substitute — not the brand face",
+      "metrics": {
+        "xHeightRatio": 0.7647,
+        "avgAdvance": 0.6,
+        "weightRange": "300–700, variable wght axis",
+        "classification": "monospace",
+        "delta": {
+          "xHeightRatio": 0.0029,
+          "avgAdvance": 0,
+          "xHeightRatioRelMean": 0.0038,
+          "avgAdvanceRelMean": 0,
+          "weightCoverageMiss": 0,
+          "score": 0.0013,
+          "brandXHeightRatio": 0.7618,
+          "brandAvgAdvance": 0.6,
+          "brandWeightRange": "100 900 declared; intermediate weights render distinctly (variable wght axis)",
+          "brandClassification": "monospace",
+          "definition": "xHeightRatio = mean ink top of x v w z / mean ink top of H I E F T; avgAdvance = sample advance / code points, in em",
+          "sample": "The quick brown fox jumps over the lazy dog",
+          "weights": "400",
+          "sizePx": 14,
+          "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+          "rule": "best Google Fonts candidate",
+          "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+          "page": "https://linear.app/",
+          "measured": "2026-10-20",
+          "record": "docs/research/2026-10-20-r11/fonts/linear.app.measurements.json"
+        }
+      }
+    }
+  }
+}

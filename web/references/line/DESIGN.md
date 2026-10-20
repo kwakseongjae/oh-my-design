@@ -123,6 +123,17 @@ fonts:
   roles:
     sans: System
     display: LINESeed
+  faces:
+    LINESeed:
+      name: LINE Seed
+      evidence:
+        - live-surface-use
+        - official-distributed-asset
+      surface: marketing and design-system documentation display roles
+      source: https://seed.line.me/index_en.html
+      licence: OFL-1.1
+      distribution: public
+      note: Messenger product UI uses each platform's system font instead.
 ---
 
 # Design System Inspiration of LINE
@@ -236,6 +247,12 @@ Sizes smaller than 12pt are not recommended. The scale is recommended rather tha
 ### Marketing and documentation
 
 The public consumer surface uses loaded `LINESeed` for major display roles: “Life on LINE” is 70px/700, while “Messenger APP” and “Services” are 60px/700. The design-system documentation also uses LINESeed for 48px/900 page titles and 32px/700 section titles, while its explanatory body uses system-ui.
+
+### Brand face, substitute, safe default
+
+- **Brand face:** LINE Seed (captured as LINESeed) for marketing and design-system display roles. LY Corp. releases it under the SIL Open Font License 1.1 with an official download (seed.line.me), so it can be installed as itself. Messenger product UI has no brand face: it uses each platform's system font.
+- **Substitute:** none needed; LINE Seed is installable and the product UI uses system fonts.
+- **Safe default (not the brand face):** none listed; the product UI face is already a system stack.
 
 ## Layout
 
