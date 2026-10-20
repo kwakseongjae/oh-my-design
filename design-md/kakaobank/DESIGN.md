@@ -173,6 +173,18 @@ components:
 fonts:
   roles:
     ui: Pretendard Variable
+  faces:
+    Pretendard Variable:
+      scripts:
+        - hangul
+        - latin
+      evidence:
+        - official-product-use
+        - live-surface-use
+      source: https://github.com/orioncactus/pretendard
+      licence: OFL-1.1
+      distribution: public
+      note: KakaoBank serves the public Pretendard v1.3.9 variable file unmodified.
 ---
 
 # Design System Inspiration of KakaoBank (카카오뱅크)
@@ -256,6 +268,12 @@ The keyboard focus ring is a different blue, `#007bff` (`rgb(0, 123, 255)`), dra
 | Card heading | 24px | 700 | 34.56px | -0.48px |
 | Body/list | 16px | 400 | 24px | normal |
 | Top navigation | 14px | 600 | 21px | -0.14px |
+
+### Brand face, substitute, safe default
+
+- **Brand face:** Pretendard Variable. Its author publishes it under the SIL Open Font License 1.1 (github.com/orioncactus/pretendard), and KakaoBank serves the public v1.3.9 variable file unmodified, so it can be installed as itself.
+- **Substitute:** none needed; the brand face is installable.
+- **Safe default (not the brand face):** none listed; install Pretendard Variable itself.
 
 ## Layout
 

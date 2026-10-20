@@ -158,6 +158,12 @@ Stripe’s newsroom says its wordmark is available in slate, blurple, and white.
 
 Do not render a system fallback as Söhne or Source Code Pro. The capture supports system-stack documentation typography only.
 
+### Brand face, substitute, safe default
+
+- **Brand face:** none established for the captured Docs routes, which compute an operating-system stack beginning with -apple-system. Söhne appears only as foundry context (Klim's "Söhne in use" showcase) and was not loaded on these routes.
+- **Substitute:** none chosen; the captured surface has no brand face to stand in for.
+- **Safe default (not the brand face):** none listed; the observed UI face is an operating-system stack.
+
 ## Layout
 
 The capture supports documentation layout behavior only: Docs body/list text repeats at 14px, API-reference headings at 32px, and repeated gaps cluster at 4px, 6px, 8px, 12px, 16px, and 24px. Tabs, prompts, and compact actions use zero or low-radius chrome. It does not establish public marketing-grid, Dashboard, checkout, or mobile breakpoint rules.

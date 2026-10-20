@@ -159,6 +159,17 @@ components:
 fonts:
   roles:
     sans: Pretendard
+  faces:
+    Pretendard:
+      scripts:
+        - hangul
+        - latin
+      evidence:
+        - live-surface-use
+      source: https://github.com/orioncactus/pretendard
+      licence: OFL-1.1
+      distribution: public
+      note: Banksalad serves its own subsets of the static Pretendard weights.
 ---
 
 # Design System Inspiration of Banksalad
@@ -276,6 +287,12 @@ Specimen availability requires a loadable font source and is separate from famil
 - **400 carries reading; 700 carries decisions.** Current body/list copy is commonly 400, while headings and the primary loan action are 700.
 - **Tracking is subtle at product sizes.** Current 14–18px roles use approximately -0.06px to -0.09px; no -1px display token is promoted.
 - **Surface evidence stays local.** Authenticated app typography and native-only financial amount roles remain unresolved.
+
+### Brand face, substitute, safe default
+
+- **Brand face:** Pretendard, which its author publishes under the SIL Open Font License 1.1 (github.com/orioncactus/pretendard); Banksalad serves its own subsets of the static weights. It can be installed as itself.
+- **Substitute:** none needed; the brand face is installable.
+- **Safe default (not the brand face):** none listed; install Pretendard itself.
 
 ## Layout
 

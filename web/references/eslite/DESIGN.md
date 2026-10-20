@@ -133,6 +133,12 @@ The homepage, brand directory, and expo catalog are public commerce surfaces. Co
 
 Do not render a system fallback as though it were an Eslite-owned typeface. The documented hierarchy is an observed public-stack boundary, not a font-license or browser-specimen claim.
 
+### Brand face, substitute, safe default
+
+- **Brand face:** none established. The visible stack begins with Noto Sans TC, which had no loaded font file in the capture, followed by PingFang TC, Microsoft JhengHei and system faces; no first-party source names an Eslite typeface.
+- **Substitute:** none chosen; there is no brand face to stand in for.
+- **Safe default (not the brand face):** none listed; the observed UI face is an operating-system stack.
+
 ## Layout
 
 The supplied routes support a public commerce layout with a compact search strip, information-dense lists, and repeatable product-card shells. The search field measures 40px high with 6px vertical, 12px trailing, and 16px leading padding. The evidence also repeats zero-radius card geometry and a 270px card height in the expo catalog. Those are local measurements, not a universal grid, breakpoint, mobile, or checkout-layout specification.

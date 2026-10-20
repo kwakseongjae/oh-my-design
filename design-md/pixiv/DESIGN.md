@@ -147,6 +147,14 @@ components:
 fonts:
   roles:
     sans: Noto Sans CJK JP
+  faces:
+    Noto Sans CJK JP:
+      evidence:
+        - declared-only
+      source: https://github.com/notofonts/noto-cjk
+      licence: OFL-1.1
+      distribution: public
+      note: Charcoal's sans token names it; Charcoal component stories compute Noto Sans JP and pixiv.net body text resolves to the OS UI font.
 ---
 
 # Design System Inspiration of pixiv (ピクシブ)
@@ -324,6 +332,12 @@ Charcoal also publishes `caption-s-10` (10px) and a `text-v1-*` compatibility sc
 - **Numbers are metadata, not heroes**: counts render at 12px in `#858585` — the art is the
   hero, not the stats.
 - **Tags are typographic UI**: tag pills are a primary navigation surface.
+
+### Brand face, substitute, safe default
+
+- **Brand face:** none proprietary. Charcoal's sans token names Noto Sans CJK JP, an open-licence face (SIL Open Font License 1.1, github.com/notofonts/noto-cjk); Charcoal component stories compute Noto Sans JP, and pixiv.net body text resolves to the OS UI font.
+- **Substitute:** none needed; the token's face is installable and the product body uses the OS font.
+- **Safe default (not the brand face):** none listed; the product body already uses an operating-system stack.
 
 ## Layout
 
