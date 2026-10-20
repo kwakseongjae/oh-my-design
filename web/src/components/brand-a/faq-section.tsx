@@ -1,7 +1,11 @@
+import { SITE_LOCALE_META } from "@/lib/i18n/site-locales";
+import { catalogPathFor } from "@/lib/i18n/ko-detail";
+import { Ask } from "./ask";
 import type { getR10 } from "./copy/r10";
 import { getR11Ask, localeOfR10 } from "./copy/r11-ask";
 import { Faq } from "./faq";
 import { rich } from "./rich";
+import "./ask.css";
 
 type Props = {
   r: ReturnType<typeof getR10>;
@@ -10,10 +14,11 @@ type Props = {
 };
 
 /**
- * The FAQ section (docs/REDESIGN_R11_PLAN_2026-10-20.md W4): the heading on the left, seven
- * questions as one accordion on the right. Split out of landing.tsx before round 11 so the
- * section has one owner; styles in faq.css. The props are the composer's fixed contract
- * (landing.tsx is frozen), so the locale is read back from `r`.
+ * The FAQ section (docs/REDESIGN_R11_PLAN_2026-10-20.md W4): the heading on the left; on the
+ * right, seven questions as one accordion and, under them, the question box (ask.tsx →
+ * /api/ask). Split out of landing.tsx before round 11 so the section has one owner; styles in
+ * faq.css and ask.css (imported here, since landing.tsx's import list is frozen). The props are
+ * the composer's fixed contract, so the locale is read back from `r`.
  */
 export function FaqSection({ r, f, issuesHref }: Props) {
   const locale = localeOfR10(r);
@@ -36,6 +41,7 @@ export function FaqSection({ r, f, issuesHref }: Props) {
                 link: x.issueLink ? { label: t.faq.issueLink, href: newIssue } : undefined,
               }))}
             />
+            <Ask t={t.ask} locale={locale} docsHref={SITE_LOCALE_META[locale].docs} archiveHref={catalogPathFor(locale)} />
           </div>
         </div>
       </div>
