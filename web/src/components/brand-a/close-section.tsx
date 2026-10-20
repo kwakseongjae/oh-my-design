@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { getR10 } from "./copy/r10";
+import { CatalogShowcase, localeOfR10 } from "./catalog-showcase";
 
 type Props = {
   r: ReturnType<typeof getR10>;
@@ -8,21 +8,12 @@ type Props = {
 };
 
 /**
- * The closing band. Split out of landing.tsx before round 11 so the section has one owner
- * (docs/REDESIGN_R11_PLAN_2026-10-20.md W5); styles in close.css.
+ * The landing's closing section. Round 11 (docs/REDESIGN_R11_PLAN_2026-10-20.md W5 #14): the CTA
+ * band became the catalog showcase (catalog-showcase.tsx): official logos by country, each opening
+ * its DESIGN.md page, and the archive button. The band's copy (r.band) stays its heading, intro
+ * and button. The export and props are unchanged because landing.tsx composes it; the locale is
+ * read back from `r`, the one locale-bound prop.
  */
 export function CloseSection({ r, f, archive }: Props) {
-  return (
-    <section className="sq-close" aria-labelledby="h-close">
-      <div className="sq-wrap">
-        <div className="sq-close-band">
-          <div>
-            <h2 id="h-close">{f(r.band.h2)}</h2>
-            <p>{r.band.p}</p>
-          </div>
-          <Link className="sq-cta" href={archive} prefetch={false}>{r.band.cta}</Link>
-        </div>
-      </div>
-    </section>
-  );
+  return <CatalogShowcase locale={localeOfR10(r)} h2={f(r.band.h2)} p={f(r.band.p)} cta={r.band.cta} archive={archive} />;
 }

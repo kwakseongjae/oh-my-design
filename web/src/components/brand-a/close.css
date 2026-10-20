@@ -1,11 +1,4 @@
-/* Closing band. Split out of landing.css before round 11 (docs/REDESIGN_R11_PLAN_2026-10-20.md) so each section has one owner; imported by landing.tsx in the original cascade order. */
-/* ---- closing band: a quiet tinted panel with the main action ---- */
-.sq-close{padding-block:120px}
-.sq-close-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;padding:56px;border-radius:var(--sq-r-panel);background:var(--sq-tint)}
-.sq-close-band>div{min-width:0;max-width:44em}
-.sq-close-band p{margin-top:12px;font-size:18px;color:var(--sq-ink-2)}
-@media (max-width:900px){
-  .sq-close{padding-block:80px}
-  .sq-close-band{padding:32px 24px;border-radius:var(--sq-r-card)}
-  .sq-close-band p{font-size:16px}
-}
+/* The closing section's stylesheet slot. landing.tsx imports this file in the original cascade
+   order (split out before round 11, docs/REDESIGN_R11_PLAN_2026-10-20.md). Since round 11 the
+   section is the catalog showcase, styled in catalog-showcase.css, which its component imports;
+   the old CTA band rules (.sq-close, .sq-close-band) are gone with the band. */
