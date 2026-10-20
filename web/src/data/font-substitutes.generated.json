@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "substitutes": {
+    "linear.app": [
+      {
+        "brandFamily": "Berkeley Mono",
+        "script": "latin",
+        "family": "Fira Code",
+        "provider": "google",
+        "label": "substitute — not the brand face",
+        "cssUrl": "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap",
+        "metrics": {
+          "xHeightRatio": 0.7647,
+          "avgAdvance": 0.6,
+          "weightRange": "300–700, variable wght axis",
+          "classification": "monospace",
+          "delta": {
+            "xHeightRatio": 0.0029,
+            "avgAdvance": 0,
+            "xHeightRatioRelMean": 0.0038,
+            "avgAdvanceRelMean": 0,
+            "weightCoverageMiss": 0,
+            "score": 0.0013,
+            "brandXHeightRatio": 0.7618,
+            "brandAvgAdvance": 0.6,
+            "brandWeightRange": "100 900 declared; intermediate weights render distinctly (variable wght axis)",
+            "brandClassification": "monospace",
+            "definition": "xHeightRatio = mean ink top of x v w z / mean ink top of H I E F T; avgAdvance = sample advance / code points, in em",
+            "sample": "The quick brown fox jumps over the lazy dog",
+            "weights": "400",
+            "sizePx": 14,
+            "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+            "rule": "best Google Fonts candidate",
+            "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+            "page": "https://linear.app/",
+            "measured": "2026-10-20",
+            "record": "docs/research/2026-10-20-r11/fonts/linear.app.measurements.json"
+          }
+        }
+      }
+    ],
+    "toss": [
+      {
+        "brandFamily": "Toss Product Sans",
+        "script": "latin",
+        "family": "IBM Plex Sans",
+        "provider": "google",
+        "label": "substitute — not the brand face",
+        "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..700&display=swap",
+        "metrics": {
+          "xHeightRatio": 0.7393,
+          "avgAdvance": 0.4611,
+          "weightRange": "100–700, variable wght axis",
+          "classification": "neo-grotesk",
+          "delta": {
+            "xHeightRatio": 0.0085,
+            "avgAdvance": 0.0022,
+            "xHeightRatioRelMean": 0.0112,
+            "avgAdvanceRelMean": 0.0061,
+            "weightCoverageMiss": 0,
+            "score": 0.0074,
+            "brandXHeightRatio": 0.7308,
+            "brandAvgAdvance": 0.459,
+            "brandWeightRange": "300, 400, 500, 600, 700, 800, 900, 950 (8 static weights; intermediate weights snap to them, no wght axis)",
+            "brandClassification": "not stated by a first-party source",
+            "definition": "xHeightRatio = mean ink top of x v w z / mean ink top of H I E F T; avgAdvance = sample advance / code points, in em",
+            "sample": "The quick brown fox jumps over the lazy dog",
+            "weights": "400, 600, 700",
+            "sizePx": 16,
+            "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+            "rule": "best Google Fonts candidate; stack rule: IBM Plex Sans KR also draws hangul and would override the Pretendard Variable substitute, so Latin candidates that cover hangul are excluded",
+            "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+            "page": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+            "measured": "2026-10-20",
+            "record": "docs/research/2026-10-20-r11/fonts/toss.measurements.json"
+          }
+        }
+      },
+      {
+        "brandFamily": "Toss Product Sans",
+        "script": "hangul",
+        "family": "Pretendard Variable",
+        "provider": "other",
+        "label": "substitute — not the brand face",
+        "cssUrl": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css",
+        "metrics": {
+          "xHeightRatio": 0.8459,
+          "avgAdvance": 0.7328,
+          "weightRange": "45–920, variable wght axis",
+          "classification": "not stated by a first-party source",
+          "delta": {
+            "xHeightRatio": -0.0056,
+            "avgAdvance": 0.0097,
+            "xHeightRatioRelMean": 0.0054,
+            "avgAdvanceRelMean": 0.0094,
+            "weightCoverageMiss": 0,
+            "score": 0.0068,
+            "brandXHeightRatio": 0.8515,
+            "brandAvgAdvance": 0.7231,
+            "brandWeightRange": "300, 400, 500, 600, 700, 800, 900, 950 (8 static weights; intermediate weights snap to them, no wght axis)",
+            "brandClassification": "not stated by a first-party source",
+            "definition": "xHeightRatio = mean ink height of the sample syllables / 1em (Hangul body height); avgAdvance = sample advance / code points, in em",
+            "sample": "다람쥐 헌 쳇바퀴에 타고파",
+            "weights": "400, 600, 700",
+            "sizePx": 16,
+            "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+            "rule": "non-Google candidate scores 0.0068 ≤ 0.8 × best Google 0.0240 (IBM Plex Sans KR)",
+            "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+            "page": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+            "measured": "2026-10-20",
+            "record": "docs/research/2026-10-20-r11/fonts/toss.measurements.json"
+          }
+        }
+      }
+    ]
+  }
+}
