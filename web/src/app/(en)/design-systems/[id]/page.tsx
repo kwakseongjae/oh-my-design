@@ -14,14 +14,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { DetailView } from "./detail-view";
+import { evidencedPreviewTokens } from "./preview-tokens.server";
+import { firstSentence, logoFor } from "../archive-rows.server";
 import { extractTokens } from "@/lib/extract-tokens";
 import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
-import { getLogoRef } from "@/lib/logos";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
-import { keycapFace, loadDetail, type LoadedDetail } from "@/lib/references/detail-loader.server";
+import { loadDetail, type LoadedDetail } from "@/lib/references/detail-loader.server";
 import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { koDetailPath } from "@/lib/i18n/ko-detail";
+import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
+import { ITEM_EN } from "@/components/brand-a/copy/item";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -42,9 +45,17 @@ function refName(id: string): string {
   );
 }
 
-/** "{Name} Design System — DESIGN.md, Colors & Typography" (IA plan, Phase 1). */
+/**
+ * "{Name} DESIGN.md — Colors, Typography, Components" (owner decision 3,
+ * 2026-10-20: the title and the h1 both say "{Name} DESIGN.md"; URLs unchanged).
+ * The suffix steps down so the title stays within 60 characters where it can.
+ */
 function detailTitle(name: string): string {
-  return `${name} Design System — DESIGN.md, Colors & Typography`;
+  const head = `${name} DESIGN.md`;
+  for (const tail of [" — Colors, Typography, Components", " — Colors & Typography"]) {
+    if ((head + tail).length <= 60) return head + tail;
+  }
+  return head;
 }
 
 /**
@@ -67,11 +78,7 @@ function buildSummary(
   const factsSentence = facts.length > 0
     ? `${name}'s reference documents ${facts.join(", ")}.`
     : "";
-  const moodSentence = detail.mood
-    .replace(/\s+/g, " ")
-    .split(/(?<=[.!?])\s/)[0]
-    ?.slice(0, 220)
-    .trim();
+  const moodSentence = firstSentence(detail.mood).slice(0, 220).trim();
   return [factsSentence, moodSentence].filter(Boolean).join(" ");
 }
 
@@ -90,15 +97,14 @@ export async function generateMetadata({
   const name = refName(id);
   const path = `/design-systems/${id}`;
   const editorial = getReferenceEnglishEditorial(id);
-  // Query-shaped title: matches "<brand> design system", "<brand> DESIGN.md"
-  // and "<brand> colors / typography" searches. No site suffix, as before —
-  // the brand and the file name are the part a result needs to show.
-  // The answer-first summary is the description (extractable, and identical to
-  // the visible band + JSON-LD description).
+  // "{Name} DESIGN.md" + a short suffix; no site suffix, as before — the brand
+  // and the file name are the part a result needs to show. The answer-first
+  // summary is the description (extractable, and identical to the visible lead
+  // and the JSON-LD description).
   const title = detailTitle(name);
   const desc =
     buildSummary(name, detail) ||
-    `${name} design system — DESIGN.md, live preview, and token reference.`;
+    `${name} DESIGN.md — colors, typography and components for your coding agent.`;
   return {
     title,
     description: desc,
@@ -139,24 +145,23 @@ export default async function DesignSystemDetailPage({
   const { id } = await params;
   const detail = loadDetail(id);
   if (!detail) notFound();
-  const tokens = extractTokens(detail);
+  const tokens = evidencedPreviewTokens(detail, extractTokens(detail));
   const related = getRelatedReferences(id, 6);
 
   const name = refName(id);
   const summary = buildSummary(name, detail);
-  const editorial = getReferenceEnglishEditorial(id);
   const pageUrl = `${SITE_URL}/design-systems/${id}`;
 
-  // #4 structured data — Article (so the summary is an extractable description
-  // + dateModified feeds Claude's page_age freshness signal) plus a FAQPage
-  // whose answers are all visibly rendered in the answer-first band below
-  // (Google requires FAQ markup to mirror visible content).
+  // Structured data mirrors what the page shows: Article (the summary is its
+  // description; dateModified feeds freshness) and BreadcrumbList. The FAQPage
+  // left with the evidence panel (round 11, #24) — its three answers are no
+  // longer shown as answers on the page, and FAQ markup must mirror visible Q&A.
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "Article",
       inLanguage: "en",
-      headline: `${name} Design System`,
+      headline: ITEM_EN.h1(name),
       description: summary,
       mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
       about: { "@type": "Brand", name },
@@ -182,43 +187,17 @@ export default async function DesignSystemDetailPage({
       publisher: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },
       isPartOf: {
         "@type": "Collection",
-        name: "oh-my-design design systems catalog",
+        name: `oh-my-design ${ARCHIVE_COPY.en.h1}`,
         url: `${SITE_URL}/design-systems`,
       },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: `What is ${name}'s primary UI color?`,
-          acceptedAnswer: { "@type": "Answer", text: detail.primary },
-        },
-        {
-          "@type": "Question",
-          name: `What typeface does ${name} use?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: detail.mono
-              ? `${detail.fontFamily} for UI and prose, ${detail.mono} for code.`
-              : detail.fontFamily,
-          },
-        },
-        {
-          "@type": "Question",
-          name: `What corner radius does ${name}'s design system use?`,
-          acceptedAnswer: { "@type": "Answer", text: detail.radius },
-        },
-      ],
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Design systems", item: `${SITE_URL}/design-systems` },
-        { "@type": "ListItem", position: 3, name, item: pageUrl },
+        { "@type": "ListItem", position: 2, name: ITEM_EN.crumb, item: `${SITE_URL}/design-systems` },
+        { "@type": "ListItem", position: 3, name: ITEM_EN.h1(name), item: pageUrl },
       ],
     },
   ];
@@ -231,13 +210,11 @@ export default async function DesignSystemDetailPage({
       />
       <DetailView
         name={name}
-        detail={detail}
+        detail={{ id: detail.id, designMd: detail.designMd }}
         tokens={tokens}
         summary={summary}
-        evidenceBoundary={editorial?.evidenceBoundary}
-        ds={getDesignSystem(detail.id)}
-        logo={getLogoRef(detail.id)}
-        cap={keycapFace(detail.id)}
+        official={getDesignSystem(detail.id)?.url ?? null}
+        logo={logoFor(detail.id)}
       />
       <RelatedReferences related={related} />
     </>

@@ -1,102 +1,75 @@
 "use client";
 
 /**
- * Neutral nameplate behind brand logos — extracted from the /design-systems
- * directory card so every surface that renders a brand logo shares the same
- * treatment (issue #19). The neutral chip guarantees legibility even when a
- * brand's primary color matches its logo color (e.g. Toss's blue favicon on
- * its blue tile), which used to make builder step-1 logos disappear.
+ * A brand's genuine logo, or nothing (round 11, owner rule #16).
  *
- * Fallback chain mirrors the original card logo: primary URL → favicon →
- * initial letter.
+ * The server resolves which file to show (app/(en)/design-systems/archive-rows.server.ts:
+ * the official SVG collection, else the brand's own favicon). This component only
+ * draws it, flat and as delivered: no recolouring, no effects, white artwork on an
+ * ink tile because that is the ground it was published for. When the image fails —
+ * or comes back as a raster under 32px, which is how Google's favicon proxy answers
+ * an unknown domain (HTTP 404 with a 16×16 globe that browsers render without an
+ * error event) — the component renders nothing and the caller's layout reads as
+ * text only. There is no initial-letter or keycap stand-in.
  */
 
-import { useState } from "react";
-import { isRasterLogo, logoFallbackUrl, logoUrl, type LogoRef } from "@/lib/logo-urls";
+import { useEffect, useRef, useState } from "react";
 
-type Surface = "card" | "brand";
-type Size = "xs" | "md" | "lg";
+export interface BrandLogoData {
+  src: string;
+  kind: "svg" | "favicon";
+  dark?: boolean;
+}
 
-const CHIP: Record<Size, string> = {
-  xs: "h-4 w-4 rounded",
-  md: "h-9 w-9 rounded-lg",
-  lg: "h-12 w-12 rounded-xl",
-};
-const VECTOR: Record<Size, string> = {
-  xs: "h-3 w-3",
-  md: "h-5 w-5",
-  lg: "h-7 w-7",
-};
-const RASTER: Record<Size, string> = {
-  xs: "h-3 w-3 rounded",
-  md: "h-6 w-6 rounded",
-  lg: "h-8 w-8 rounded",
-};
-const INITIAL: Record<Size, string> = {
-  xs: "text-[9px]",
-  md: "text-sm",
-  lg: "text-base",
-};
+const MIN_RASTER = 32;
 
-export function BrandNameplateLogo({
+function unusable(img: HTMLImageElement, kind: BrandLogoData["kind"]): boolean {
+  if (!img.complete) return false;
+  if (img.naturalWidth === 0) return true;
+  return kind === "favicon" && !/\.svg(\?|$)/i.test(img.currentSrc || img.src) && img.naturalWidth < MIN_RASTER;
+}
+
+export function BrandLogo({
   logo,
-  name,
-  surface = "card",
-  size = "md",
   className = "",
+  onMissing,
 }: {
-  /** Resolved server-side (getLogoRef) — null renders the initial letter. */
-  logo: LogoRef | null | undefined;
-  name: string;
-  /** "card"  — theme-aware muted chip on app surfaces (directory cards).
-   *  "brand" — fixed light chip for brand-colored backgrounds (builder
-   *            step-1 tiles), where a theme-muted chip would vanish against
-   *            dark brand primaries in dark mode. */
-  surface?: Surface;
-  size?: Size;
-  /** Extra classes appended to the chip (hover transitions etc.). */
+  logo: BrandLogoData | null | undefined;
+  /** Size and placement come from the caller's stylesheet. */
   className?: string;
+  /** Called once if the image turns out unusable, so a caller can drop surrounding chrome. */
+  onMissing?: () => void;
 }) {
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
-  // Dark logo on the light neutral chip; "card" surfaces invert it in dark mode.
-  const primaryUrl = logoUrl(logo, "111111");
-  const fallbackUrl = logoFallbackUrl(logo);
-  const src = stage === 0 ? (primaryUrl ?? fallbackUrl) : stage === 1 ? fallbackUrl : null;
-  const raster = isRasterLogo(logo);
+  const [gone, setGone] = useState(false);
+  const ref = useRef<HTMLImageElement>(null);
 
-  const chip =
-    surface === "card"
-      ? "bg-muted/60 ring-1 ring-border/50 dark:bg-muted/30 dark:ring-border"
-      : "bg-white/90 ring-1 ring-black/10 shadow-sm";
-  const wrap = `flex shrink-0 items-center justify-center ${CHIP[size]} ${chip} ${className}`;
+  const drop = () => {
+    setGone(true);
+    onMissing?.();
+  };
 
-  if (!src) {
-    return (
-      <div className={wrap}>
-        <span
-          className={`${INITIAL[size]} font-bold ${
-            surface === "card" ? "text-foreground/70" : "text-black/70"
-          }`}
-        >
-          {name.charAt(0).toUpperCase()}
-        </span>
-      </div>
-    );
-  }
+  // An image that failed before hydration fired its events with no listener attached.
+  useEffect(() => {
+    if (ref.current && logo && unusable(ref.current, logo.kind)) drop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [logo?.src]);
+
+  if (!logo || gone) return null;
   return (
-    <div className={wrap}>
+    <span className={`sq-logo${logo.dark ? " sq-logo-dark" : ""}${logo.kind === "favicon" ? " sq-logo-fav" : ""} ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={src}
-        alt={name}
-        onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
-        className={`object-contain ${
-          raster
-            ? RASTER[size]
-            : `${VECTOR[size]}${surface === "card" ? " dark:invert" : ""}`
-        }`}
+        ref={ref}
+        src={logo.src}
+        alt=""
         loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onError={drop}
+        onLoad={(e) => {
+          if (unusable(e.currentTarget, logo.kind)) drop();
+        }}
       />
-    </div>
+    </span>
   );
 }

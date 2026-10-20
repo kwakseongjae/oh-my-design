@@ -1,22 +1,30 @@
 /**
- * Design Systems directory — server half. Reads the registry, the quality
- * table and the collection filters here and hands the client view only the
- * slice it renders.
+ * The DESIGN.md archive (/design-systems) — server half. Reads the registry, the
+ * quality table, the collection filters and the install counters here and hands
+ * the client view only the rows it renders.
  *
  * Until 2026-10-01 this whole page was a client component that imported the
  * registry directly. Each client entry that did so (this page, the detail
  * view, the builder) got its own ~530 KB gz copy of the 521-reference
  * registry, so browsing directory → detail → builder downloaded it up to
  * three times. Keep registry / quality imports on this side of the boundary.
+ *
+ * Static with ISR (round 11): the install counts on the cards come from KV and
+ * refresh hourly. A build without KV credentials renders no counts.
  */
 
 import { getAllDesignSystems } from "@/lib/design-systems";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { SITE_ORIGIN } from "@/lib/site";
 import { COLLECTIONS, getCollectionEntries } from "@/lib/collections";
-import { REFERENCE_QUALITY, REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
-import { capData } from "@/lib/landing-a/data.server";
-import { CatalogView, type CatalogCollection, type CatalogStats, type CatalogSystem } from "./catalog-view";
+import { REFERENCE_QUALITY } from "@/data/reference-quality.generated";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { getInstallCounts } from "@/lib/install-counts.server";
+import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
+import { archiveRow, enName } from "./archive-rows.server";
+import { CatalogView, type CatalogCollection, type CatalogStats } from "./catalog-view";
+
+export const revalidate = 3600;
 
 /**
  * Depth *within the verified tier*, which is where the claim needs qualifying.
@@ -35,28 +43,19 @@ import { CatalogView, type CatalogCollection, type CatalogStats, type CatalogSys
 const VERIFIED = REFERENCE_QUALITY.filter((entry) => entry.status === "verified_v2");
 
 const STATS: CatalogStats = {
-  verified: REFERENCE_QUALITY_COUNTS.verified_v2,
-  partial: REFERENCE_QUALITY_COUNTS.partial,
-  legacy: REFERENCE_QUALITY_COUNTS.legacy_snapshot,
   verifiedInteractive: VERIFIED.filter((entry) => entry.interactiveComponentCount > 0).length,
   verifiedStateful: VERIFIED.filter((entry) => entry.statedComponentCount > 0).length,
 };
 
-export default function DesignSystemsPage() {
-  const systems = getAllDesignSystems();
-  // Concept A keycap chip per card. capData() reads the same resolvers as the
-  // landing (lib/landing-a/resolve.ts), so a cap is coloured only by a claimed
-  // token of a verified reference; everything else is a blank cap. Built here
-  // so the client view never imports the registry.
-  const catalog: CatalogSystem[] = systems.map((ds) => {
-    const cap = capData(ds.refId);
-    return {
-      ...ds,
-      country: cap?.c ?? "",
-      native: cap && cap.n !== ds.name ? cap.n : null,
-      cap: cap ? { g: cap.g, gLang: cap.gLang, c: cap.c, hex: cap.hex, rv: cap.rv, w: cap.w } : null,
-    };
-  });
+const COPY = ARCHIVE_COPY.en;
+
+export default async function DesignSystemsPage() {
+  const installs = await getInstallCounts();
+  // Grid order as before: official systems, then brand guides, then the rest, by name.
+  const rows = getAllDesignSystems()
+    .map((ds) => REGISTRY_BY_ID[ds.refId])
+    .filter((r) => !!r)
+    .map((r) => archiveRow(r, "en", installs));
   const collections: CatalogCollection[] = COLLECTIONS.map((c) => ({
     slug: c.slug,
     titleEn: c.titleEn,
@@ -66,22 +65,21 @@ export default function DesignSystemsPage() {
   }));
 
   // CollectionPage + ItemList mirroring the grid the server renders: every
-  // reference, in grid order, named as its detail page names it (registry
-  // `name` first). Built here so the client view never sees the registry.
+  // reference, in grid order, named as its card and its item page name it.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Design systems",
+    name: COPY.h1,
     url: `${SITE_ORIGIN}/design-systems`,
     isPartOf: { "@type": "WebSite", name: "oh-my-design", url: SITE_ORIGIN },
     mainEntity: {
       "@type": "ItemList",
-      numberOfItems: systems.length,
-      itemListElement: systems.map((ds, i) => ({
+      numberOfItems: rows.length,
+      itemListElement: rows.map((r, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        name: REGISTRY_BY_ID[ds.refId]?.name || REGISTRY_BY_ID[ds.refId]?.displayName || ds.name,
-        url: `${SITE_ORIGIN}/design-systems/${ds.refId}`,
+        name: enName(REGISTRY_BY_ID[r.id]),
+        url: `${SITE_ORIGIN}/design-systems/${r.id}`,
       })),
     },
   };
@@ -89,7 +87,18 @@ export default function DesignSystemsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <CatalogView systems={catalog} collections={collections} stats={STATS} />
+      <CatalogView
+        locale="en"
+        rows={rows}
+        collections={collections}
+        stats={STATS}
+        intro={
+          <section className="sq-wrap sq-arch-hero">
+            <h1>{COPY.h1}</h1>
+            <p className="sq-arch-lede">{COPY.lede(REFERENCE_COUNT)}</p>
+          </section>
+        }
+      />
     </>
   );
 }

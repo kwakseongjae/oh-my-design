@@ -4,15 +4,16 @@ import { SiteFooterA } from "@/components/brand-a/site-footer";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
+import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 
-// Library wording in the title, the head keyword ("design systems") first.
-// The count is the generated literal, never typed by hand.
-const TITLE = `Design Systems Library — ${REFERENCE_COUNT} Company DESIGN.md References`;
+// Archive wording (round 11, #19), "design systems" kept in the title for the
+// queries that already land here. The count is the generated literal, never typed by hand.
+const TITLE = ARCHIVE_COPY.en.meta.title(REFERENCE_COUNT);
+const DESCRIPTION = ARCHIVE_COPY.en.meta.description(REFERENCE_COUNT);
 
 export const metadata: Metadata = {
   title: TITLE,
-  description:
-    `Browse all ${REFERENCE_COUNT} quality-graded company DESIGN.md references. Evidence status, source links, and exports for AI coding agents.`,
+  description: DESCRIPTION,
   // The Korean archive (/ko/design-systems) is this page's twin. Item and
   // evolution pages set their own alternates, so this applies to the index only.
   alternates: {
@@ -21,8 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: TITLE,
-    description:
-      `${REFERENCE_COUNT} real-company DESIGN.md references with computed quality tiers, live previews, and source links.`,
+    description: DESCRIPTION,
     url: "/design-systems",
     type: "website",
     images: [DEFAULT_OG_IMAGE],

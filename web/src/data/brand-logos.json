@@ -2,9 +2,9 @@
   "schema_version": 3,
   "generated_at": "2026-10-16",
   "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
-  "count": 86,
+  "count": 87,
   "counts": {
-    "available": 86,
+    "available": 87,
     "source_only": 0
   },
   "records": [
@@ -2035,11 +2035,34 @@
         }
       },
       "default_variant": "symbol"
+    },
+    {
+      "id": "11st",
+      "name": "11번가 11st",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/11st/symbol.svg",
+          "source": "Official brand page (11stcorp.com/brand) — 11STREET IDENTITY for screen",
+          "source_url": "https://www.11stcorp.com/resources/guide/11STREET_IDENTITY_SCREEN.zip",
+          "license": "brand-asset-official",
+          "license_note": "11STREET Identity Basic Guidelines (11STREET_IDENTITY_ShortGuideline.pdf, in the same zip, marked for distribution): the identity's colour, form and proportion must not be changed; it must not be combined with the 11번가 wordmark; no effects (shadow, outline); no ground that hurts legibility; keep the clear space; minimum size 3mm / 24px. Identification use only.",
+          "license_url": "https://www.11stcorp.com/brand",
+          "attribution": "11Street Co., Ltd.",
+          "usage_note": "공식 아이덴티티(그라디언트, 화면용 .ai→SVG 포맷 변환, 형상 무변경) · 변형·워드마크 결합·효과 금지 · 최소 24px · 식별용 · 상표는 각 권리자 소유",
+          "source_tier": "official",
+          "risk_tier": "med",
+          "verified_against": "11STREET_IDENTITY_SCREEN.zip from the brand page's download list (fetched 2026-10-20, 1,599,839 bytes). [11STREET_IDENTITY]_ai_screen/11STREET_IDENTITY_11Gradiant_screen.ai is a PDF-compatible .ai with no embedded raster; converted page→SVG with pdftocairo 26.09. The identity's clip paths, its gradient fill and all 227 gradient stops were kept byte-for-byte; the artboard's colour legend and caption text were dropped and the viewBox tightened to the identity's clip box (726 440 468 200). The outline matches the Black screen file's identity path coordinate for coordinate. Rendered against the guideline's own specimen: same form and gradient."
+        }
+      },
+      "default_variant": "symbol"
     }
   ],
   "source_breakdown": {
     "unit": "variants",
-    "official": 89,
+    "official": 90,
     "Wikimedia Commons": 17
   }
 }

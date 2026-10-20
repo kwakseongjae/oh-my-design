@@ -35,10 +35,13 @@ export function ReferenceShareButton({
   compact = false,
   labels = EN_LABELS,
   path: pathOverride,
+  variant = "default",
 }: {
   reference: string;
   location: "ref_detail" | "evolution";
   compact?: boolean;
+  /** "brand": the item hero's control (styles in brand-a/item.css); "default": the evolution page's. */
+  variant?: "default" | "brand";
   /** Button text in the page's language; English by default. */
   labels?: ShareLabels;
   /** Path to copy instead of the default English share path (the Korean page shares itself). */
@@ -55,6 +58,15 @@ export function ReferenceShareButton({
     trackReferenceShare({ reference, location, artifact });
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2000);
+  }
+
+  if (variant === "brand") {
+    return (
+      <button type="button" onClick={copyShareLink} aria-label={copied ? labels.ariaCopied : labels.aria} className="sq-share">
+        {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Share2 className="h-4 w-4" aria-hidden="true" />}
+        <span>{copied ? labels.copied : labels.share}</span>
+      </button>
+    );
   }
 
   return (

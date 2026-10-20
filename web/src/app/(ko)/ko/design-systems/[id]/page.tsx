@@ -19,12 +19,13 @@ import type { Metadata } from "next";
 import { SiteFooterA } from "@/components/brand-a/site-footer";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { DetailView } from "@/app/(en)/design-systems/[id]/detail-view";
+import { evidencedPreviewTokens } from "@/app/(en)/design-systems/[id]/preview-tokens.server";
+import { logoFor } from "@/app/(en)/design-systems/archive-rows.server";
 import { ITEM_KO } from "@/components/brand-a/copy/item";
+import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 import { extractTokens } from "@/lib/extract-tokens";
 import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
-import { getLogoRef } from "@/lib/logos";
-import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
-import { keycapFace, loadDetail } from "@/lib/references/detail-loader.server";
+import { loadDetail } from "@/lib/references/detail-loader.server";
 import { KO_DETAIL_IDS, hasKoDetailId, koName } from "@/lib/i18n/ko-detail.server";
 import { KO_CATALOG_PATH, enDetailPath, koDetailPath } from "@/lib/i18n/ko-detail";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
@@ -43,14 +44,11 @@ function load(id: string) {
   const detail = loadDetail(id);
   if (!detail) return null;
   const name = koName(id);
-  const q = detail.referenceQuality;
   const summary = koSummary(name, {
     primary: detail.primary,
     fontFamily: detail.fontFamily,
     mono: detail.mono,
     radius: detail.radius,
-    claimCount: q.claimCount,
-    evidenceClaimCount: q.evidenceClaimCount,
   });
   return { detail, name, summary };
 }
@@ -103,21 +101,14 @@ export default async function KoreanDesignSystemPage({
   const page = load(id);
   if (!page) notFound();
   const { detail, name, summary } = page;
-  const tokens = extractTokens(detail);
-  const editorial = getReferenceEnglishEditorial(id);
+  const tokens = evidencedPreviewTokens(detail, extractTokens(detail));
   const pageUrl = `${SITE_URL}${koDetailPath(id)}`;
   const enName = REGISTRY_BY_ID[id]?.name;
   // Related references that have a Korean page, so Korean pages link among themselves.
   const related = getRelatedReferences(id, 24, "ko").filter((r) => hasKoDetailId(r.id)).slice(0, 6);
 
-  const faq = [
-    detail.primary ? { q: `${name}의 대표 UI 색상은 무엇인가요?`, a: detail.primary } : null,
-    detail.fontFamily
-      ? { q: `${name}의 글꼴은 무엇인가요?`, a: detail.mono ? `UI·본문: ${detail.fontFamily} · 코드: ${detail.mono}` : detail.fontFamily }
-      : null,
-    detail.radius ? { q: `${name} 디자인 시스템의 모서리 반경은 얼마인가요?`, a: detail.radius } : null,
-  ].filter((x): x is { q: string; a: string } => !!x);
-
+  // Article + BreadcrumbList, as on the English page. The FAQPage went with the
+  // evidence panel (round 11, #24): its answers are no longer shown as answers.
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -135,23 +126,15 @@ export default async function KoreanDesignSystemPage({
         : {}),
       author: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },
       publisher: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },
-      isPartOf: { "@type": "Collection", name: "oh-my-design 디자인 시스템 레퍼런스", url: `${SITE_URL}${KO_CATALOG_PATH}` },
+      isPartOf: { "@type": "Collection", name: `oh-my-design ${ARCHIVE_COPY.ko.h1}`, url: `${SITE_URL}${KO_CATALOG_PATH}` },
     },
-    ...(faq.length
-      ? [{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          inLanguage: "ko",
-          mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-        }]
-      : []),
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "홈", item: `${SITE_URL}/ko` },
-        { "@type": "ListItem", position: 2, name: "디자인 시스템", item: `${SITE_URL}${KO_CATALOG_PATH}` },
-        { "@type": "ListItem", position: 3, name, item: pageUrl },
+        { "@type": "ListItem", position: 2, name: ITEM_KO.crumb, item: `${SITE_URL}${KO_CATALOG_PATH}` },
+        { "@type": "ListItem", position: 3, name: ITEM_KO.h1(name), item: pageUrl },
       ],
     },
   ];
@@ -165,13 +148,11 @@ export default async function KoreanDesignSystemPage({
           locale="ko"
           sharePath={koDetailPath(id)}
           name={name}
-          detail={detail}
+          detail={{ id: detail.id, designMd: detail.designMd }}
           tokens={tokens}
           summary={summary}
-          evidenceBoundary={editorial?.evidenceBoundary}
-          ds={getDesignSystem(detail.id)}
-          logo={getLogoRef(detail.id)}
-          cap={keycapFace(detail.id, "ko")}
+          official={getDesignSystem(detail.id)?.url ?? null}
+          logo={logoFor(detail.id)}
         />
         {related.length > 0 ? (
           <section className="sq-root sq-rel" aria-labelledby="related-heading">

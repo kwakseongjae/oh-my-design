@@ -40,20 +40,20 @@ describe("Korean item page metadata", () => {
   it("titles toss with its Korean displayName, taken from the H1 of its own DESIGN.md", async () => {
     const m = await generateMetadata(params("toss"));
     expect(REGISTRY_BY_ID.toss.displayName).toBe("토스");
-    expect(m.title).toBe("토스 디자인 시스템 — DESIGN.md, 색상·타이포그래피");
+    expect(m.title).toBe("토스 DESIGN.md — 색상·타이포그래피·컴포넌트");
   });
 
   it("titles with the registry name when the registry has no Korean displayName", async () => {
     // banksalad: no Hangul brand name anywhere in its DESIGN.md, so none is recorded.
     expect(REGISTRY_BY_ID.banksalad.displayName).toBe(REGISTRY_BY_ID.banksalad.name);
     const m = await generateMetadata(params("banksalad"));
-    expect(m.title).toBe(`${REGISTRY_BY_ID.banksalad.name} 디자인 시스템 — DESIGN.md, 색상·타이포그래피`);
+    expect(m.title).toBe(`${REGISTRY_BY_ID.banksalad.name} DESIGN.md — 색상·타이포그래피·컴포넌트`);
   });
 
   it("titles with the Korean displayName when the registry has one", async () => {
     // tossbank: name "Toss Bank", displayName "토스뱅크".
     const m = await generateMetadata(params("tossbank"));
-    expect(m.title).toBe("토스뱅크 디자인 시스템 — DESIGN.md, 색상·타이포그래피");
+    expect(m.title).toBe("토스뱅크 DESIGN.md — 색상·타이포그래피·컴포넌트");
   });
 
   it("is canonical to itself and pairs with the English page (x-default → English) on both sides", async () => {
@@ -84,13 +84,12 @@ describe("Korean display names", () => {
 });
 
 describe("Korean summary", () => {
-  it("is built only from recorded values and omits a missing one", () => {
-    const s = koSummary("A", { primary: "#000000", radius: "", fontFamily: "Inter", claimCount: 10, evidenceClaimCount: 9 });
-    expect(s).toBe("A DESIGN.md에는 대표 색상(#000000), 글꼴(Inter)이 기록돼 있어요. 값 10개 중 9개에 출처가 붙어 있어요.");
-    expect(koSummary("A", { claimCount: 0, evidenceClaimCount: 0 })).toBe("");
-    expect(koSummary("A", { radius: "6px", claimCount: 5, evidenceClaimCount: 5 })).toBe(
-      "A DESIGN.md에는 모서리 반경(6px)이 기록돼 있어요. 값 5개 모두에 출처가 붙어 있어요.",
+  it("is built only from recorded values, omits a missing one, and no longer counts sourced values", () => {
+    expect(koSummary("A", { primary: "#000000", radius: "", fontFamily: "Inter" })).toBe(
+      "A DESIGN.md에는 대표 색상(#000000), 글꼴(Inter)이 기록돼 있어요.",
     );
+    expect(koSummary("A", {})).toBe("");
+    expect(koSummary("A", { radius: "6px" })).toBe("A DESIGN.md에는 모서리 반경(6px)이 기록돼 있어요.");
   });
 });
 
@@ -102,20 +101,27 @@ describe("Korean item page body", () => {
     }
   });
 
-  it("server-renders exactly one h1, '{표시명} 디자인 시스템', with Korean chrome and parseable JSON-LD", async () => {
+  it("server-renders exactly one h1, '{표시명} DESIGN.md', with Korean chrome and parseable JSON-LD", async () => {
     for (const [id, name] of [["toss", "토스"], ["tossbank", "토스뱅크"], ["stripe", "Stripe"]] as const) {
       const html = await render(id);
       const h1s = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/g) ?? [];
       expect(h1s).toHaveLength(1);
-      expect(h1s[0]!.replace(/<[^>]+>/g, "")).toBe(`${name} 디자인 시스템`);
-      expect(html).toContain('id="use"');
+      expect(h1s[0]!.replace(/<[^>]+>/g, "")).toBe(`${name} DESIGN.md`);
+      expect(html.match(/id="use"/g)).toHaveLength(1);
       expect(html).toContain("DESIGN.md 복사");
-      expect(html).toContain("스킬 설치");
+      expect(html).toContain("내려받기");
+      // Removed in round 11 (#20, #22, #26): the tier badge, the how-to-use section, the sourced-values line, the body note.
+      expect(html).not.toContain("검증 v2");
+      expect(html).not.toContain("쓰는 법");
+      expect(html).not.toContain("출처가 붙어 있어요");
+      expect(html).not.toContain("영어 원문 그대로예요");
       const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
       expect(blocks.length).toBeGreaterThan(0);
       const ld = blocks.flatMap((b) => JSON.parse(b[1]));
+      // No FAQPage: its answers are no longer shown on the page as answers.
+      expect(ld.map((x: { "@type": string }) => x["@type"])).toEqual(["Article", "BreadcrumbList"]);
       const crumb = ld.find((x: { "@type": string }) => x["@type"] === "BreadcrumbList");
-      expect(crumb.itemListElement.map((i: { name: string }) => i.name)).toEqual(["홈", "디자인 시스템", name]);
+      expect(crumb.itemListElement.map((i: { name: string }) => i.name)).toEqual(["홈", "아카이브", `${name} DESIGN.md`]);
       expect(crumb.itemListElement[2].item).toBe(`https://oh-my-design.kr/ko/design-systems/${id}`);
     }
   });
