@@ -148,7 +148,8 @@ export function AnalyticsConsent() {
   const focusOnOpen = useRef(false);
   useEffect(() => {
     const mark = () => {
-      focusOnOpen.current = true;
+      if (card.current) card.current.focus(); // already open: focus it now
+      else focusOnOpen.current = true; // opening on this event: focus once it renders
     };
     window.addEventListener("omd:manage-consent", mark);
     return () => window.removeEventListener("omd:manage-consent", mark);
@@ -199,7 +200,8 @@ export function AnalyticsConsent() {
       lang={loc === "zh-tw" ? "zh-Hant-TW" : loc === "zh-cn" ? "zh-Hans" : loc}
       className="fixed inset-x-3 bottom-3 z-[60] rounded-[var(--sq-r-card)] bg-[var(--sq-paper)] p-4 text-[var(--sq-ink)] shadow-[var(--sq-shadow-panel)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)] sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[380px] sm:p-5"
     >
-      <p className="text-[13.5px] leading-[1.55] text-[var(--sq-ink-2)] sm:text-[14px]">
+      {/* the card sits outside .sq-root, so Korean needs its own keep-all (no mid-word breaks) */}
+      <p className={`text-[13.5px] leading-[1.55] text-[var(--sq-ink-2)] sm:text-[14px] ${loc === "ko" ? "break-keep" : ""}`}>
         {copy.body}{" "}
         <Link
           href={privacyHref}
