@@ -1,0 +1,4826 @@
+{
+  "schema": 1,
+  "target": "toss",
+  "referenceId": "toss",
+  "family": "Toss Product Sans",
+  "kind": "sans",
+  "scripts": [
+    "latin",
+    "hangul"
+  ],
+  "weights": [
+    400,
+    600,
+    700
+  ],
+  "sizePx": 16,
+  "classification": {
+    "value": null,
+    "source": "https://toss.im/tossfeed/article/beginning-of-tps",
+    "note": "The official introduction (2021-10-08) describes the face's balance, context and form but names no type classification."
+  },
+  "page": {
+    "url": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+    "finalUrl": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+    "status": 200,
+    "measuredAt": "2026-10-20T12:41:49.317Z",
+    "brandFontResponses": 48,
+    "brandFontResponseSample": [
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/bold/119.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/semibold/119.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/medium/119.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/regular/119.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/regular/118.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/regular/117.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/bold/118.woff2"
+      },
+      {
+        "status": 200,
+        "url": "https://static.toss.im/tps/20260223/regular/116.woff2"
+      }
+    ]
+  },
+  "tool": {
+    "script": "scripts/fonts/measure.mjs",
+    "method": "canvas 2D measureText (advance + actualBoundingBox), CDP CSS.getPlatformFontsForNode",
+    "playwrightCore": "1.61.1",
+    "chromium": "149.0.7827.55",
+    "platform": "darwin-arm64"
+  },
+  "samples": {
+    "latin": {
+      "text": "The quick brown fox jumps over the lazy dog",
+      "digits": "0123456789",
+      "xHeight": [
+        "x",
+        "v",
+        "w",
+        "z"
+      ],
+      "capHeight": [
+        "H",
+        "I",
+        "E",
+        "F",
+        "T"
+      ],
+      "ascender": [
+        "b",
+        "d",
+        "h",
+        "k",
+        "l"
+      ],
+      "descender": [
+        "g",
+        "j",
+        "p",
+        "q",
+        "y"
+      ]
+    },
+    "hangul": {
+      "text": "다람쥐 헌 쳇바퀴에 타고파",
+      "body": [
+        "다",
+        "람",
+        "쥐",
+        "헌",
+        "쳇",
+        "바",
+        "퀴",
+        "에",
+        "타",
+        "고",
+        "파"
+      ]
+    }
+  },
+  "brand": {
+    "family": "Toss Product Sans",
+    "sizePx": 16,
+    "weights": {
+      "400": {
+        "latin": {
+          "drawn": {
+            "loaded": true,
+            "check": true,
+            "invariant": true,
+            "differsFromFallback": true,
+            "controlStringsThatDiffer": 21,
+            "strings": 21,
+            "platformFonts": [
+              {
+                "familyName": "Toss Product Sans",
+                "postScriptName": "TossProductSans-Regular",
+                "isCustomFont": true,
+                "glyphCount": 92
+              }
+            ],
+            "onlyWebFonts": true,
+            "ok": true
+          },
+          "xHeightRatio": 0.7307953772943576,
+          "avgAdvance": 0.4589503088662791,
+          "capHeight": 0.71826171875,
+          "xHeight": 0.52490234375,
+          "ascender": 0.71826171875,
+          "descender": 0.17451171875,
+          "digitAdvance": 0.58369140625,
+          "digitsTabularByDefault": false
+        },
+        "hangul": {
+          "drawn": {
+            "loaded": true,
+            "check": true,
+            "invariant": true,
+            "differsFromFallback": true,
+            "controlStringsThatDiffer": 12,
+            "strings": 12,
+            "platformFonts": [
+              {
+                "familyName": "Toss Product Sans",
+                "postScriptName": "TossProductSans-Regular",
+                "isCustomFont": true,
+                "glyphCount": 36
+              }
+            ],
+            "onlyWebFonts": true,
+            "ok": true
+          },
+          "xHeightRatio": 0.8515181107954546,
+          "avgAdvance": 0.72314453125,
+          "inkTop": 0.7958984375,
+          "inkBottom": 0.055619673295454544,
+          "inkWidth": 0.7657581676136364,
+          "syllableAdvance": 0.865234375
+        }
+      },
+      "600": {
+        "latin": {
+          "drawn": {
+            "loaded": true,
+            "check": true,
+            "invariant": true,
+            "differsFromFallback": true,
+            "controlStringsThatDiffer": 21,
+            "strings": 21,
+            "platformFonts": [
+              {
+                "familyName": "Toss Product Sans Semibold",
+                "postScriptName": "TossProductSans-Semibold",
+                "isCustomFont": true,
+                "glyphCount": 92
+              }
+            ],
+            "onlyWebFonts": true,
+            "ok": true
+          },
+          "xHeightRatio": 0.7396889790398918,
+          "avgAdvance": 0.47349654796511625,
+          "capHeight": 0.72216796875,
+          "xHeight": 0.5341796875,
+          "ascender": 0.72216796875,
+          "descender": 0.18359375,
+          "digitAdvance": 0.602734375,
+          "digitsTabularByDefault": false
+        },
+        "hangul": {
+          "drawn": {
+            "loaded": true,
+            "check": true,
+            "invariant": true,
+            "differsFromFallback": true,
+            "controlStringsThatDiffer": 12,
+            "strings": 12,
+            "platformFonts": [
+              {
+                "familyName": "Toss Product Sans Semibold",
+                "postScriptName": "TossProductSans-Semibold",
+                "isCustomFont": true,
+                "glyphCount": 36
+              }
+            ],
+            "onlyWebFonts": true,
+            "ok": true
+          },
+          "xHeightRatio": 0.8690074573863636,
+          "avgAdvance": 0.7237723214285714,
+          "inkTop": 0.8042879971590909,
+          "inkBottom": 0.06471946022727272,
+          "inkWidth": 0.7842240767045454,
+          "syllableAdvance": 0.865234375
+        }
+      },
+      "700": {
+        "latin": {
+          "drawn": {
+            "loaded": true,
+            "check": true,
+            "invariant": true,
+            "differsFromFallback": true,
+            "controlStringsThatDiffer": 21,
+            "strings": 21,
+            "platformFonts": [
+              {
+                "familyName": "Toss Product Sans Bold",
+                "postScriptName": "TossProductSans-Bold",
+                "isCustomFont": true,
+                "glyphCount": 92
+              }
+            ],
+            "onlyWebFonts": true,
+            "ok": true
+          },
+          "xHeightRatio": 0.7444369521240728,
+          "avgAdvance": 0.48107058502906974,
+          "capHeight": 0.72412109375,
+          "xHeight": 0.5390625,
+          "ascender": 0.72412109375,
+          "descender": 0.1861328125,
+          "digitAdvance": 0.61298828125,
+          "digitsTabularByDefault": false
+        },
+        "hangul": {
+          "drawn": {
+            "loaded": true,
+            "check": true,
+            "invariant": true,
+            "differsFromFallback": true,
+            "controlStringsThatDiffer": 12,
+            "strings": 12,
+            "platformFonts": [
+              {
+                "familyName": "Toss Product Sans Bold",
+                "postScriptName": "TossProductSans-Bold",
+                "isCustomFont": true,
+                "glyphCount": 36
+              }
+            ],
+            "onlyWebFonts": true,
+            "ok": true
+          },
+          "xHeightRatio": 0.8704279119318182,
+          "avgAdvance": 0.7241908482142857,
+          "inkTop": 0.8049094460227273,
+          "inkBottom": 0.06551846590909091,
+          "inkWidth": 0.7846235795454546,
+          "syllableAdvance": 0.865234375
+        }
+      }
+    },
+    "weightProbe": {
+      "string": "Hamburgefonstiv HOMBURG",
+      "intermediate": [
+        {
+          "weight": 450,
+          "distinctFromNeighbours": false,
+          "snapsTo": 500
+        },
+        {
+          "weight": 550,
+          "distinctFromNeighbours": false,
+          "snapsTo": 600
+        },
+        {
+          "weight": 650,
+          "distinctFromNeighbours": false,
+          "snapsTo": 700
+        }
+      ]
+    },
+    "declared": [
+      {
+        "weight": "300",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 0
+      },
+      {
+        "weight": "400",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 14
+      },
+      {
+        "weight": "500",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 4
+      },
+      {
+        "weight": "600",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 11
+      },
+      {
+        "weight": "700",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 11
+      },
+      {
+        "weight": "800",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 0
+      },
+      {
+        "weight": "900",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 0
+      },
+      {
+        "weight": "950",
+        "style": "normal",
+        "stretch": "normal",
+        "faces": 96,
+        "loaded": 0
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "family": "Inter",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/inter/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/inter/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "Inter[opsz,wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz,wght%5D.ttf",
+          "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+          "sfnt": {
+            "unitsPerEm": 2048,
+            "xHeight": 1118,
+            "capHeight": 1490,
+            "xHeightRatio": 0.7503355704697987,
+            "axes": [
+              {
+                "tag": "opsz",
+                "min": 14,
+                "default": 14,
+                "max": 32
+              },
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 900
+              }
+            ],
+            "family": "Inter",
+            "subfamily": "Regular",
+            "postScript": "Inter-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Inter",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Inter",
+                    "postScriptName": "Inter-Regular_opsz100000_wght",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7457109899328859,
+              "avgAdvance": 0.48910105505654977,
+              "capHeight": 0.7275390625,
+              "xHeight": 0.5425338745117188,
+              "ascender": 0.7275390625,
+              "descender": 0.20703125,
+              "digitAdvance": 0.5877934455871582,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Inter",
+                    "postScriptName": "Inter-Regular_opsz100000_wght",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7391666684831891,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Inter",
+                    "postScriptName": "Inter-Regular_opsz100000_wght2580000",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7457109899328859,
+              "avgAdvance": 0.49834486495616825,
+              "capHeight": 0.7275390625,
+              "xHeight": 0.5425338745117188,
+              "ascender": 0.7275390625,
+              "descender": 0.20703125,
+              "digitAdvance": 0.60682373046875,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Inter",
+                    "postScriptName": "Inter-Regular_opsz100000_wght2580000",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7329725537981305,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Inter",
+                    "postScriptName": "Inter-Regular_opsz100000_wght2BC0000",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7457109899328859,
+              "avgAdvance": 0.502967124761537,
+              "capHeight": 0.7275390625,
+              "xHeight": 0.5425338745117188,
+              "ascender": 0.7275390625,
+              "descender": 0.20703125,
+              "digitAdvance": 0.616339111328125,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Inter",
+                    "postScriptName": "Inter-Regular_opsz100000_wght2BC0000",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7298757008143834,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Roboto",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/roboto/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/roboto/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "Roboto[wdth,wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/roboto/Roboto%5Bwdth,wght%5D.ttf",
+          "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+          "sfnt": {
+            "unitsPerEm": 2048,
+            "xHeight": 1082,
+            "capHeight": 1456,
+            "xHeightRatio": 0.7431318681318682,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 900
+              },
+              {
+                "tag": "wdth",
+                "min": 75,
+                "default": 100,
+                "max": 100
+              }
+            ],
+            "family": "Roboto",
+            "subfamily": "Regular",
+            "postScript": "Roboto-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Roboto",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Roboto",
+                    "postScriptName": "Roboto-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7431318681318682,
+              "avgAdvance": 0.45905250726744184,
+              "capHeight": 0.7109375,
+              "xHeight": 0.5283203125,
+              "ascender": 0.75,
+              "descender": 0.20830078125,
+              "digitAdvance": 0.56201171875,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Roboto",
+                    "postScriptName": "Roboto-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7327955790928432,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Roboto",
+                    "postScriptName": "Roboto-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7431318681318682,
+              "avgAdvance": 0.4641722745673601,
+              "capHeight": 0.7109375,
+              "xHeight": 0.5283203125,
+              "ascender": 0.7500503540039063,
+              "descender": 0.20825042724609374,
+              "digitAdvance": 0.5711956024169922,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Roboto",
+                    "postScriptName": "Roboto-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7329049110412598,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Roboto",
+                    "postScriptName": "Roboto-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7431318681318682,
+              "avgAdvance": 0.4656917660735374,
+              "capHeight": 0.7109375,
+              "xHeight": 0.5283203125,
+              "ascender": 0.7500656127929688,
+              "descender": 0.20823516845703124,
+              "digitAdvance": 0.5739212036132812,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Roboto",
+                    "postScriptName": "Roboto-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7329371997288295,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Noto Sans",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/notosans/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/notosans/METADATA.pb",
+      "classification": {
+        "value": "humanist",
+        "tag": "/Sans/Humanist",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "NotoSans[wdth,wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosans/NotoSans%5Bwdth,wght%5D.ttf",
+          "sha256": "bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 536,
+            "capHeight": 714,
+            "xHeightRatio": 0.7507002801120448,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 900
+              },
+              {
+                "tag": "wdth",
+                "min": 62.5,
+                "default": 100,
+                "max": 100
+              }
+            ],
+            "family": "Noto Sans",
+            "subfamily": "Regular",
+            "postScript": "NotoSans-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Noto Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans",
+                    "postScriptName": "NotoSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7510504484039144,
+              "avgAdvance": 0.48674352778944857,
+              "capHeight": 0.7139999866485596,
+              "xHeight": 0.5362500101327896,
+              "ascender": 0.7599999904632568,
+              "descender": 0.24000006914138794,
+              "digitAdvance": 0.5719995498657227,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Noto Sans",
+                    "postScriptName": "NotoSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7353568077087402,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans",
+                    "postScriptName": "NotoSans-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7597163920790267,
+              "avgAdvance": 0.5046413776486419,
+              "capHeight": 0.7139999866485596,
+              "xHeight": 0.5424374938011169,
+              "ascender": 0.7599999904632568,
+              "descender": 0.24000006914138794,
+              "digitAdvance": 0.5719995498657227,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans",
+                    "postScriptName": "NotoSans-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7353568077087402,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans",
+                    "postScriptName": "NotoSans-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7649684880087807,
+              "avgAdvance": 0.5154732105343841,
+              "capHeight": 0.7139999866485596,
+              "xHeight": 0.5461874902248383,
+              "ascender": 0.7599999904632568,
+              "descender": 0.2400000810623169,
+              "digitAdvance": 0.5719995498657227,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Noto Sans",
+                    "postScriptName": "NotoSans-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7353568077087402,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "IBM Plex Sans",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsans/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 700
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsans/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..700&display=swap",
+      "files": [
+        {
+          "file": "IBMPlexSans[wdth,wght].ttf",
+          "weight": "100 700",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsans/IBMPlexSans%5Bwdth,wght%5D.ttf",
+          "sha256": "3b031aa4216174205bd8471f88a49b91f093169e9e87bd5262242bc5967fe2e3",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 516,
+            "capHeight": 698,
+            "xHeightRatio": 0.7392550143266475,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 700
+              },
+              {
+                "tag": "wdth",
+                "min": 75,
+                "default": 100,
+                "max": 100
+              }
+            ],
+            "family": "IBM Plex Sans",
+            "subfamily": "Regular",
+            "postScript": "IBMPlexSans-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc IBM Plex Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans",
+                    "postScriptName": "IBMPlexSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7392549607416321,
+              "avgAdvance": 0.4611158149186955,
+              "capHeight": 0.6980000138282776,
+              "xHeight": 0.515999972820282,
+              "ascender": 0.7400000095367432,
+              "descender": 0.20240005254745483,
+              "digitAdvance": 0.5999994277954102,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans",
+                    "postScriptName": "IBMPlexSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7302139145987374,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans",
+                    "postScriptName": "IBMPlexSans-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7483434733811896,
+              "avgAdvance": 0.4771507174469704,
+              "capHeight": 0.6980000138282776,
+              "xHeight": 0.5223437547683716,
+              "ascender": 0.7400000095367432,
+              "descender": 0.20240005254745483,
+              "digitAdvance": 0.5999994277954102,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans",
+                    "postScriptName": "IBMPlexSans-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7302139145987374,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans",
+                    "postScriptName": "IBMPlexSans-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.752148948076243,
+              "avgAdvance": 0.4838598384413608,
+              "capHeight": 0.6980000138282776,
+              "xHeight": 0.5249999761581421,
+              "ascender": 0.7400000095367432,
+              "descender": 0.20240005254745483,
+              "digitAdvance": 0.5999994277954102,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "IBM Plex Sans",
+                    "postScriptName": "IBMPlexSans-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7302139145987374,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "DM Sans",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/dmsans/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 1000
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/dmsans/METADATA.pb",
+      "classification": {
+        "value": "geometric",
+        "tag": "/Sans/Geometric",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap",
+      "files": [
+        {
+          "file": "DMSans[opsz,wght].ttf",
+          "weight": "100 1000",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/DMSans%5Bopsz,wght%5D.ttf",
+          "sha256": "8cd08d97e89c24d0aa92edd2f0f4c8ee6195eee9b7c9f154865a58b02f0c1c0d",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 526,
+            "capHeight": 700,
+            "xHeightRatio": 0.7514285714285714,
+            "axes": [
+              {
+                "tag": "opsz",
+                "min": 9,
+                "default": 9,
+                "max": 40
+              },
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 1000
+              }
+            ],
+            "family": "DM Sans",
+            "subfamily": "9pt Regular",
+            "postScript": "DMSans-9ptRegular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc DM Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "DM Sans 9pt",
+                    "postScriptName": "DMSans-9ptRegular_opsz100000_wght",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.717142832571146,
+              "avgAdvance": 0.47736278800077214,
+              "capHeight": 0.699999988079071,
+              "xHeight": 0.5019999742507935,
+              "ascender": 0.7200000286102295,
+              "descender": 0.22240004539489747,
+              "digitAdvance": 0.5706995010375977,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "DM Sans 9pt",
+                    "postScriptName": "DMSans-9ptRegular_opsz100000_wght",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7365997178213937,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "DM Sans 9pt",
+                    "postScriptName": "DMSans-9ptRegular_opsz100000_wght2580000",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.717142832571146,
+              "avgAdvance": 0.49477603823639627,
+              "capHeight": 0.699999988079071,
+              "xHeight": 0.5019999742507935,
+              "ascender": 0.7200000286102295,
+              "descender": 0.22240004539489747,
+              "digitAdvance": 0.5851920127868653,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "DM Sans 9pt",
+                    "postScriptName": "DMSans-9ptRegular_opsz100000_wght2580000",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7319532121930804,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "DM Sans 9pt",
+                    "postScriptName": "DMSans-9ptRegular_opsz100000_wght2BC0000",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.717142832571146,
+              "avgAdvance": 0.5020288866619731,
+              "capHeight": 0.699999988079071,
+              "xHeight": 0.5019999742507935,
+              "ascender": 0.7200000286102295,
+              "descender": 0.22240004539489747,
+              "digitAdvance": 0.5912282943725586,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "DM Sans 9pt",
+                    "postScriptName": "DMSans-9ptRegular_opsz100000_wght2BC0000",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7300177301679339,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Manrope",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/manrope/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 200,
+        "max": 800
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/manrope/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
+      "files": [
+        {
+          "file": "Manrope[wght].ttf",
+          "weight": "200 800",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf",
+          "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+          "sfnt": {
+            "unitsPerEm": 2000,
+            "xHeight": 1080,
+            "capHeight": 1440,
+            "xHeightRatio": 0.75,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 200,
+                "default": 200,
+                "max": 800
+              }
+            ],
+            "family": "Manrope",
+            "subfamily": "ExtraLight",
+            "postScript": "Manrope-ExtraLight"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Manrope",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Manrope ExtraLight",
+                    "postScriptName": "Manrope-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7501166429738213,
+              "avgAdvance": 0.46878136036007906,
+              "capHeight": 0.7200000286102295,
+              "xHeight": 0.5400840044021606,
+              "ascender": 0.7230000257492065,
+              "descender": 0.24300005435943603,
+              "digitAdvance": 0.561398696899414,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Manrope ExtraLight",
+                    "postScriptName": "Manrope-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7224997792925153,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Manrope ExtraLight",
+                    "postScriptName": "Manrope-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7502305747642554,
+              "avgAdvance": 0.4842408645984738,
+              "capHeight": 0.7200000286102295,
+              "xHeight": 0.5401660352945328,
+              "ascender": 0.7230000257492065,
+              "descender": 0.24300005435943603,
+              "digitAdvance": 0.5776005744934082,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Manrope ExtraLight",
+                    "postScriptName": "Manrope-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7224997792925153,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Manrope ExtraLight",
+                    "postScriptName": "Manrope-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7502902414948315,
+              "avgAdvance": 0.4919674008391624,
+              "capHeight": 0.7200000286102295,
+              "xHeight": 0.5402089953422546,
+              "ascender": 0.7230000257492065,
+              "descender": 0.24300005435943603,
+              "digitAdvance": 0.5856983184814453,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Manrope ExtraLight",
+                    "postScriptName": "Manrope-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7224997792925153,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Figtree",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/figtree/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 300,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/figtree/METADATA.pb",
+      "classification": {
+        "value": "geometric",
+        "tag": "/Sans/Geometric",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap",
+      "files": [
+        {
+          "file": "Figtree[wght].ttf",
+          "weight": "300 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/figtree/Figtree%5Bwght%5D.ttf",
+          "sha256": "26ad3db9b31ff7dde67a91ff515d022d2f495cd506590699cf264f0bfe6fb714",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 500,
+            "capHeight": 700,
+            "xHeightRatio": 0.7142857142857143,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 300,
+                "default": 300,
+                "max": 900
+              }
+            ],
+            "family": "Figtree",
+            "subfamily": "Light",
+            "postScript": "Figtree-Light"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Figtree",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Figtree Light",
+                    "postScriptName": "Figtree-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7142506465807286,
+              "avgAdvance": 0.4638580499693405,
+              "capHeight": 0.7000343680381775,
+              "xHeight": 0.5,
+              "ascender": 0.699999988079071,
+              "descender": 0.2078656792640686,
+              "digitAdvance": 0.5634167671203614,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Figtree Light",
+                    "postScriptName": "Figtree-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7324996675763812,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Figtree Light",
+                    "postScriptName": "Figtree-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7141964522810784,
+              "avgAdvance": 0.4717165037643078,
+              "capHeight": 0.7000874876976013,
+              "xHeight": 0.5,
+              "ascender": 0.699999988079071,
+              "descender": 0.20797194242477418,
+              "digitAdvance": 0.5702363014221191,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Figtree Light",
+                    "postScriptName": "Figtree-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7313711983816964,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Figtree Light",
+                    "postScriptName": "Figtree-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7141645671086146,
+              "avgAdvance": 0.4767875227817269,
+              "capHeight": 0.7001187443733216,
+              "xHeight": 0.5,
+              "ascender": 0.699999988079071,
+              "descender": 0.2080406665802002,
+              "digitAdvance": 0.5746373176574707,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Figtree Light",
+                    "postScriptName": "Figtree-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7306428636823382,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Geist",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/geist/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/geist/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "Geist[wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/geist/Geist%5Bwght%5D.ttf",
+          "sha256": "73894e0448cae90a92b6c2f8732b7bb9acb7b94c418bff559dad4a18e1de9659",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 530,
+            "capHeight": 710,
+            "xHeightRatio": 0.7464788732394366,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 900
+              }
+            ],
+            "family": "Geist",
+            "subfamily": "Regular",
+            "postScript": "Geist-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Geist",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Geist",
+                    "postScriptName": "Geist-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7464788555034775,
+              "avgAdvance": 0.4731391197027162,
+              "capHeight": 0.7099999785423279,
+              "xHeight": 0.5299999713897705,
+              "ascender": 0.7099999785423279,
+              "descender": 0.15240006446838378,
+              "digitAdvance": 0.5723993301391601,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Geist",
+                    "postScriptName": "Geist-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7332141058785575,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Geist",
+                    "postScriptName": "Geist-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7521126699078722,
+              "avgAdvance": 0.49440574645996094,
+              "capHeight": 0.7099999785423279,
+              "xHeight": 0.5339999794960022,
+              "ascender": 0.7099999785423279,
+              "descender": 0.15240004062652587,
+              "digitAdvance": 0.5996810913085937,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Geist",
+                    "postScriptName": "Geist-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7301280839102608,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Geist",
+                    "postScriptName": "Geist-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7549296190851728,
+              "avgAdvance": 0.5050359326739644,
+              "capHeight": 0.7099999785423279,
+              "xHeight": 0.5360000133514404,
+              "ascender": 0.7099999785423279,
+              "descender": 0.15240002870559693,
+              "digitAdvance": 0.6133177757263184,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Geist",
+                    "postScriptName": "Geist-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7285855838230678,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Public Sans",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/publicsans/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/publicsans/METADATA.pb",
+      "classification": {
+        "value": "grotesk",
+        "tag": "/Sans/Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "PublicSans[wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/publicsans/PublicSans%5Bwght%5D.ttf",
+          "sha256": "d75a7dc1a27eb9e336d5b33f55489d2ecb5621bf694d5c43b2415bce2ca830a8",
+          "sfnt": {
+            "unitsPerEm": 2000,
+            "xHeight": 1034,
+            "capHeight": 1446,
+            "xHeightRatio": 0.715076071922545,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 100,
+                "max": 900
+              }
+            ],
+            "family": "Public Sans",
+            "subfamily": "Thin",
+            "postScript": "PublicSans-Thin"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Public Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Public Sans Thin",
+                    "postScriptName": "PublicSansRoman-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7150761088669372,
+              "avgAdvance": 0.47712419199389083,
+              "capHeight": 0.7229999899864197,
+              "xHeight": 0.5170000195503235,
+              "ascender": 0.7429999709129333,
+              "descender": 0.16480005979537965,
+              "digitAdvance": 0.5954384803771973,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Public Sans Thin",
+                    "postScriptName": "PublicSansRoman-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7316738537379673,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Public Sans Thin",
+                    "postScriptName": "PublicSansRoman-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7150761088669372,
+              "avgAdvance": 0.48243717814600745,
+              "capHeight": 0.7229999899864197,
+              "xHeight": 0.5170000195503235,
+              "ascender": 0.7429999709129333,
+              "descender": 0.16480005979537965,
+              "digitAdvance": 0.6129416465759278,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Public Sans Thin",
+                    "postScriptName": "PublicSansRoman-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7296648025512695,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Public Sans Thin",
+                    "postScriptName": "PublicSansRoman-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7150761088669372,
+              "avgAdvance": 0.48686493274777437,
+              "capHeight": 0.7229999899864197,
+              "xHeight": 0.5170000195503235,
+              "ascender": 0.7429999709129333,
+              "descender": 0.16480005979537965,
+              "digitAdvance": 0.6275276184082031,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Public Sans Thin",
+                    "postScriptName": "PublicSansRoman-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7279906954084124,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Work Sans",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/worksans/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/worksans/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "WorkSans[wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/worksans/WorkSans%5Bwght%5D.ttf",
+          "sha256": "f50f61f2ba738e239442d40bf1069adb195c224b6a5a73a581fc2f3ed62a9f63",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 500,
+            "capHeight": 660,
+            "xHeightRatio": 0.7575757575757576,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 400,
+                "max": 900
+              }
+            ],
+            "family": "Work Sans",
+            "subfamily": "Regular",
+            "postScript": "WorkSans-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Work Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Work Sans",
+                    "postScriptName": "WorkSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7575757274724029,
+              "avgAdvance": 0.5106042374012082,
+              "capHeight": 0.6600000262260437,
+              "xHeight": 0.5,
+              "ascender": 0.7300000190734863,
+              "descender": 0.21300005912780762,
+              "digitAdvance": 0.574299430847168,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Work Sans",
+                    "postScriptName": "WorkSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7527140208653041,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Work Sans",
+                    "postScriptName": "WorkSansRoman-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7575757274724029,
+              "avgAdvance": 0.512472108353016,
+              "capHeight": 0.6600000262260437,
+              "xHeight": 0.5,
+              "ascender": 0.7185937762260437,
+              "descender": 0.21300004720687865,
+              "digitAdvance": 0.5854716300964355,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Work Sans",
+                    "postScriptName": "WorkSansRoman-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  },
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.7453039714268276,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Work Sans",
+                    "postScriptName": "WorkSansRoman-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7575757274724029,
+              "avgAdvance": 0.5135137868482013,
+              "capHeight": 0.6600000262260437,
+              "xHeight": 0.5,
+              "ascender": 0.7120000123977661,
+              "descender": 0.21300005912780762,
+              "digitAdvance": 0.591938591003418,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "Work Sans",
+                    "postScriptName": "WorkSansRoman-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.7410144805908203,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Noto Sans KR",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/notosanskr/METADATA.pb",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/notosanskr/METADATA.pb",
+      "classification": {
+        "value": "humanist",
+        "tag": "/Sans/Humanist",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap",
+      "files": [
+        {
+          "file": "NotoSansKR[wght].ttf",
+          "weight": "100 900",
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf",
+          "sha256": "194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 543,
+            "capHeight": 733,
+            "xHeightRatio": 0.7407912687585266,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 100,
+                "max": 900
+              }
+            ],
+            "family": "Noto Sans KR",
+            "subfamily": "Thin",
+            "postScript": "NotoSansKR-Thin"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Noto Sans KR",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans KR Thin",
+                    "postScriptName": "NotoSansKR-Thin_Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7408922659690366,
+              "avgAdvance": 0.4794806546943132,
+              "capHeight": 0.7334062457084656,
+              "xHeight": 0.5433750152587891,
+              "ascender": 0.7959531545639038,
+              "descender": 0.2368969202041626,
+              "digitAdvance": 0.5553207397460938,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans KR Thin",
+                    "postScriptName": "NotoSansKR-Thin_Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8815298893234946,
+              "avgAdvance": 0.7707514081682477,
+              "inkTop": 0.8183650536970659,
+              "inkBottom": 0.06316483562642877,
+              "inkWidth": 0.7912954627112909,
+              "syllableAdvance": 0.9199991226196289
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans KR Thin",
+                    "postScriptName": "NotoSansKR-Thin_SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7514752814810762,
+              "avgAdvance": 0.498861268509266,
+              "capHeight": 0.7387343645095825,
+              "xHeight": 0.5551406145095825,
+              "ascender": 0.7973437309265137,
+              "descender": 0.22849693298339843,
+              "digitAdvance": 0.5799636840820312,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans KR Thin",
+                    "postScriptName": "NotoSansKR-Thin_SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8994020277803595,
+              "avgAdvance": 0.7712915284293038,
+              "inkTop": 0.8270468657666986,
+              "inkBottom": 0.07235516201366078,
+              "inkWidth": 0.8095255934379317,
+              "syllableAdvance": 0.9199991226196289
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans KR Thin",
+                    "postScriptName": "NotoSansKR-Thin_Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7555945020018854,
+              "avgAdvance": 0.5064733194750409,
+              "capHeight": 0.7408280968666077,
+              "xHeight": 0.559765636920929,
+              "ascender": 0.7979062795639038,
+              "descender": 0.22520005702972412,
+              "digitAdvance": 0.5896425247192383,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Noto Sans KR Thin",
+                    "postScriptName": "NotoSansKR-Thin_Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.9064205234700983,
+              "avgAdvance": 0.7715036528451102,
+              "inkTop": 0.8304559642618353,
+              "inkBottom": 0.07596455920826305,
+              "inkWidth": 0.8166832449761304,
+              "syllableAdvance": 0.9199991226196289
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "IBM Plex Sans KR",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsanskr/METADATA.pb",
+      "weights": {
+        "variable": false,
+        "list": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700
+        ]
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsanskr/METADATA.pb",
+      "classification": {
+        "value": "neo-grotesk",
+        "tag": "/Sans/Neo Grotesque",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap",
+      "files": [
+        {
+          "file": "IBMPlexSansKR-Regular.ttf",
+          "weight": 400,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsanskr/IBMPlexSansKR-Regular.ttf",
+          "sha256": "53750379270312368cf7641901f43a98dd892e3d9d5798cf25cdc245c85c71c0",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 516,
+            "capHeight": 698,
+            "xHeightRatio": 0.7392550143266475,
+            "axes": [],
+            "family": "IBM Plex Sans KR",
+            "subfamily": "Regular",
+            "postScript": "IBMPlexSansKR-Regular"
+          }
+        },
+        {
+          "file": "IBMPlexSansKR-SemiBold.ttf",
+          "weight": 600,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsanskr/IBMPlexSansKR-SemiBold.ttf",
+          "sha256": "823c1956adf56c27c06b062725dfce23f266e4fd1366290f2957c8407482a817",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 522,
+            "capHeight": 698,
+            "xHeightRatio": 0.7478510028653295,
+            "axes": [],
+            "family": "IBM Plex Sans KR",
+            "subfamily": "SemiBold",
+            "postScript": "IBMPlexSansKR-SemiBold"
+          }
+        },
+        {
+          "file": "IBMPlexSansKR-Bold.ttf",
+          "weight": 700,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsanskr/IBMPlexSansKR-Bold.ttf",
+          "sha256": "9d82a8be5330f6d7b53121262867b402baca672eb69b852928f06d185d357f7d",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 525,
+            "capHeight": 698,
+            "xHeightRatio": 0.7521489971346705,
+            "axes": [],
+            "family": "IBM Plex Sans KR",
+            "subfamily": "Bold",
+            "postScript": "IBMPlexSansKR-Bold"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc IBM Plex Sans KR",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans KR",
+                    "postScriptName": "IBMPlexSansKR-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7392549607416321,
+              "avgAdvance": 0.4611158149186955,
+              "capHeight": 0.6980000138282776,
+              "xHeight": 0.515999972820282,
+              "ascender": 0.7400000095367432,
+              "descender": 0.20240005254745483,
+              "digitAdvance": 0.5999994277954102,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans KR",
+                    "postScriptName": "IBMPlexSansKR-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8620909669182517,
+              "avgAdvance": 0.7514277866908482,
+              "inkTop": 0.761727278882807,
+              "inkBottom": 0.10036368803544478,
+              "inkWidth": 0.7924545407295227,
+              "syllableAdvance": 0.8919992446899414
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans KR SemiBold",
+                    "postScriptName": "IBMPlexSansKR-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7478510092270209,
+              "avgAdvance": 0.47720873633096383,
+              "capHeight": 0.6980000138282776,
+              "xHeight": 0.5220000147819519,
+              "ascender": 0.7400000095367432,
+              "descender": 0.20240005254745483,
+              "digitAdvance": 0.5999994277954102,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans KR SemiBold",
+                    "postScriptName": "IBMPlexSansKR-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8776364380663092,
+              "avgAdvance": 0.7514277866908482,
+              "inkTop": 0.7696363817561757,
+              "inkBottom": 0.1080000563101335,
+              "inkWidth": 0.807090930217369,
+              "syllableAdvance": 0.8919992446899414
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans KR",
+                    "postScriptName": "IBMPlexSansKR-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.752148948076243,
+              "avgAdvance": 0.4838598384413608,
+              "capHeight": 0.6980000138282776,
+              "xHeight": 0.5249999761581421,
+              "ascender": 0.7400000095367432,
+              "descender": 0.20240005254745483,
+              "digitAdvance": 0.5999994277954102,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "IBM Plex Sans KR",
+                    "postScriptName": "IBMPlexSansKR-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8835455179214478,
+              "avgAdvance": 0.7514277866908482,
+              "inkTop": 0.7726363485509699,
+              "inkBottom": 0.11090916937047784,
+              "inkWidth": 0.8123636450618505,
+              "syllableAdvance": 0.8919992446899414
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Gothic A1",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/gothica1/METADATA.pb",
+      "weights": {
+        "variable": false,
+        "list": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900
+        ]
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/gothica1/METADATA.pb",
+      "classification": {
+        "value": "humanist",
+        "tag": "/Sans/Humanist",
+        "source": "https://github.com/google/fonts/blob/main/tags/all/families.csv"
+      },
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap",
+      "files": [
+        {
+          "file": "GothicA1-Regular.ttf",
+          "weight": 400,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gothica1/GothicA1-Regular.ttf",
+          "sha256": "211151bea98098c579610ab1114bb1bfe909057207db561f357b896d076c21ac",
+          "sfnt": {
+            "unitsPerEm": 1024,
+            "xHeight": 538,
+            "capHeight": 749,
+            "xHeightRatio": 0.7182910547396528,
+            "axes": [],
+            "family": "Gothic A1",
+            "subfamily": "Regular",
+            "postScript": "GothicA1-Regular"
+          }
+        },
+        {
+          "file": "GothicA1-SemiBold.ttf",
+          "weight": 600,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gothica1/GothicA1-SemiBold.ttf",
+          "sha256": "7ee3063f2d626936d8a59dfa21525e7ed19b4e89e8fbb0ea5a924cad9b0cc1f4",
+          "sfnt": {
+            "unitsPerEm": 1024,
+            "xHeight": 564,
+            "capHeight": 777,
+            "xHeightRatio": 0.7258687258687259,
+            "axes": [],
+            "family": "Gothic A1",
+            "subfamily": "SemiBold",
+            "postScript": "GothicA1-SemiBold"
+          }
+        },
+        {
+          "file": "GothicA1-Bold.ttf",
+          "weight": 700,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gothica1/GothicA1-Bold.ttf",
+          "sha256": "2e883fa0ae548000996258b4101f2bb732a28b197264f49621a2cb16d6e9f126",
+          "sfnt": {
+            "unitsPerEm": 1024,
+            "xHeight": 577,
+            "capHeight": 791,
+            "xHeightRatio": 0.729456384323641,
+            "axes": [],
+            "family": "Gothic A1",
+            "subfamily": "Bold",
+            "postScript": "GothicA1-Bold"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Gothic A1",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Gothic A1",
+                    "postScriptName": "GothicA1-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7182910547396528,
+              "avgAdvance": 0.46080123546511625,
+              "capHeight": 0.7314453125,
+              "xHeight": 0.525390625,
+              "ascender": 0.7587890625,
+              "descender": 0.22890625,
+              "digitAdvance": 0.5556640625,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Gothic A1",
+                    "postScriptName": "GothicA1-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8694069602272727,
+              "avgAdvance": 0.8073381696428571,
+              "inkTop": 0.7950994318181818,
+              "inkBottom": 0.07430752840909091,
+              "inkWidth": 0.8088600852272727,
+              "syllableAdvance": 0.9609375
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Gothic A1",
+                    "postScriptName": "GothicA1-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7258687258687259,
+              "avgAdvance": 0.4794467659883721,
+              "capHeight": 0.7587890625,
+              "xHeight": 0.55078125,
+              "ascender": 0.78515625,
+              "descender": 0.2287109375,
+              "digitAdvance": 0.5751953125,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Gothic A1",
+                    "postScriptName": "GothicA1-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8983487215909091,
+              "avgAdvance": 0.8257533482142857,
+              "inkTop": 0.8219105113636364,
+              "inkBottom": 0.07643821022727272,
+              "inkWidth": 0.8370028409090909,
+              "syllableAdvance": 0.984375
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Gothic A1",
+                    "postScriptName": "GothicA1-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.729456384323641,
+              "avgAdvance": 0.4890079941860465,
+              "capHeight": 0.7724609375,
+              "xHeight": 0.5634765625,
+              "ascender": 0.7978515625,
+              "descender": 0.2294921875,
+              "digitAdvance": 0.5859375,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Gothic A1",
+                    "postScriptName": "GothicA1-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.9129083806818182,
+              "avgAdvance": 0.8349609375,
+              "inkTop": 0.8356711647727273,
+              "inkBottom": 0.07723721590909091,
+              "inkWidth": 0.8516512784090909,
+              "syllableAdvance": 0.99609375
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Nanum Gothic",
+      "provider": "google",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/google/fonts/blob/main/ofl/nanumgothic/METADATA.pb",
+      "weights": {
+        "variable": false,
+        "list": [
+          400,
+          700,
+          800
+        ]
+      },
+      "metadataSource": "https://github.com/google/fonts/blob/main/ofl/nanumgothic/METADATA.pb",
+      "classification": null,
+      "cssUrl": "https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap",
+      "files": [
+        {
+          "file": "NanumGothic-Regular.ttf",
+          "weight": 400,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nanumgothic/NanumGothic-Regular.ttf",
+          "sha256": "76f45ef4a6bcff344c837c95a7dcc26e017e38b5846d5ae0cdcb5b86be2e2d31",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 542,
+            "capHeight": 743,
+            "xHeightRatio": 0.7294751009421265,
+            "axes": [],
+            "family": "NanumGothic",
+            "subfamily": "Regular",
+            "postScript": "NanumGothic"
+          }
+        },
+        {
+          "file": "NanumGothic-Bold.ttf",
+          "weight": 700,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nanumgothic/NanumGothic-Bold.ttf",
+          "sha256": "f96298f9fb18e364d2370f4c3ce948ac67a2b61af992d7234bc15c42b033c674",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 555,
+            "capHeight": 755,
+            "xHeightRatio": 0.7350993377483444,
+            "axes": [],
+            "family": "NanumGothic",
+            "subfamily": "Bold",
+            "postScript": "NanumGothicBold"
+          }
+        },
+        {
+          "file": "NanumGothic-ExtraBold.ttf",
+          "weight": 800,
+          "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nanumgothic/NanumGothic-ExtraBold.ttf",
+          "sha256": "5c4568e5295a8c52bc30e7efa1ea6d2de43556268ef42daba93540a1ece691ae",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 566,
+            "capHeight": 771,
+            "xHeightRatio": 0.7341115434500648,
+            "axes": [],
+            "family": "NanumGothic",
+            "subfamily": "ExtraBold",
+            "postScript": "NanumGothicExtraBold"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Nanum Gothic",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "NanumGothic",
+                    "postScriptName": "NanumGothic",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7394270141198445,
+              "avgAdvance": 0.483255430709484,
+              "capHeight": 0.7329999923706054,
+              "xHeight": 0.5419999957084656,
+              "ascender": 0.7972000002861023,
+              "descender": 0.16180005073547363,
+              "digitAdvance": 0.6059999465942383,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "NanumGothic",
+                    "postScriptName": "NanumGothic",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8990909511392767,
+              "avgAdvance": 0.7985710416521344,
+              "inkTop": 0.8197272528301586,
+              "inkBottom": 0.0793636983091181,
+              "inkWidth": 0.8133636433631182,
+              "syllableAdvance": 0.9399995803833008
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "NanumGothic",
+                    "postScriptName": "NanumGothicBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7341059871642384,
+              "avgAdvance": 0.483255430709484,
+              "capHeight": 0.7549999952316284,
+              "xHeight": 0.5542500168085098,
+              "ascender": 0.8131999850273133,
+              "descender": 0.15300003290176392,
+              "digitAdvance": 0.6059999465942383,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "NanumGothic",
+                    "postScriptName": "NanumGothicBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.9247273369268938,
+              "avgAdvance": 0.7985710416521344,
+              "inkTop": 0.8357272798364813,
+              "inkBottom": 0.08900005709041249,
+              "inkWidth": 0.8399090917611663,
+              "syllableAdvance": 0.9399995803833008
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "NanumGothic",
+                    "postScriptName": "NanumGothicBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7341059871642384,
+              "avgAdvance": 0.483255430709484,
+              "capHeight": 0.7549999952316284,
+              "xHeight": 0.5542500168085098,
+              "ascender": 0.8131999850273133,
+              "descender": 0.15300003290176392,
+              "digitAdvance": 0.6059999465942383,
+              "digitsTabularByDefault": true
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "NanumGothic",
+                    "postScriptName": "NanumGothicBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.9247273369268938,
+              "avgAdvance": 0.7985710416521344,
+              "inkTop": 0.8357272798364813,
+              "inkBottom": 0.08900005709041249,
+              "inkWidth": 0.8399090917611663,
+              "syllableAdvance": 0.9399995803833008
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "Pretendard Variable",
+      "provider": "other",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+      "weights": {
+        "variable": true,
+        "min": 45,
+        "max": 920
+      },
+      "metadataSource": "https://github.com/orioncactus/pretendard/releases/tag/v1.3.9",
+      "classification": null,
+      "cssUrl": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css",
+      "files": [
+        {
+          "file": "PretendardVariable.ttf",
+          "weight": "45 920",
+          "url": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/public/variable/PretendardVariable.ttf",
+          "sha256": "3090ccde0442bb347aa7685d9ba8b17436a60682df6e8f92a9a670de14056e22",
+          "sfnt": {
+            "unitsPerEm": 2048,
+            "xHeight": 1086,
+            "capHeight": 1448,
+            "xHeightRatio": 0.75,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 45,
+                "default": 400,
+                "max": 930
+              }
+            ],
+            "family": "Pretendard Variable",
+            "subfamily": "Regular",
+            "postScript": "PretendardVariable-Regular"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc Pretendard Variable",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Pretendard Variable",
+                    "postScriptName": "PretendardVariable-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.75,
+              "avgAdvance": 0.4639126090116279,
+              "capHeight": 0.70703125,
+              "xHeight": 0.5302734375,
+              "ascender": 0.70703125,
+              "descender": 0.2013671875,
+              "digitAdvance": 0.5830078125,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Pretendard Variable",
+                    "postScriptName": "PretendardVariable-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8458806818181818,
+              "avgAdvance": 0.7328404017857143,
+              "inkTop": 0.7808061079545454,
+              "inkBottom": 0.06507457386363637,
+              "inkWidth": 0.7659801136363636,
+              "syllableAdvance": 0.8642578125
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Pretendard Variable",
+                    "postScriptName": "PretendardVariable-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.75,
+              "avgAdvance": 0.4794465885605923,
+              "capHeight": 0.70703125,
+              "xHeight": 0.5302734375,
+              "ascender": 0.70703125,
+              "descender": 0.2013671875,
+              "digitAdvance": 0.604638671875,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Pretendard Variable",
+                    "postScriptName": "PretendardVariable-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.861661737615412,
+              "avgAdvance": 0.7300153459821429,
+              "inkTop": 0.7883779352361505,
+              "inkBottom": 0.07328380237926137,
+              "inkWidth": 0.7823971835049716,
+              "syllableAdvance": 0.8642578125
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Pretendard Variable",
+                    "postScriptName": "PretendardVariable-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.75,
+              "avgAdvance": 0.4871510793996412,
+              "capHeight": 0.70703125,
+              "xHeight": 0.5302734375,
+              "ascender": 0.70703125,
+              "descender": 0.2013671875,
+              "digitAdvance": 0.6154296875,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Pretendard Variable",
+                    "postScriptName": "PretendardVariable-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8695519187233665,
+              "avgAdvance": 0.7285505022321429,
+              "inkTop": 0.7921641956676136,
+              "inkBottom": 0.07738772305575284,
+              "inkWidth": 0.7906029441139915,
+              "syllableAdvance": 0.8642578125
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "SUIT Variable",
+      "provider": "other",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://github.com/sun-typeface/SUIT/blob/main/LICENSE",
+      "weights": {
+        "variable": true,
+        "min": 100,
+        "max": 900
+      },
+      "metadataSource": "https://github.com/sun-typeface/SUIT/releases/tag/v2.0.5",
+      "classification": null,
+      "cssUrl": "https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@v2.0.5/fonts/variable/woff2/SUIT-Variable.css",
+      "files": [
+        {
+          "file": "SUIT-Variable.ttf",
+          "weight": "100 900",
+          "url": "https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@v2.0.5/fonts/variable/ttf/SUIT-Variable.ttf",
+          "sha256": "12e1fea375d27869a686d7432c1e6a38154d394994f5d82ace24f36a7db68333",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 461,
+            "capHeight": 722,
+            "xHeightRatio": 0.6385041551246537,
+            "axes": [
+              {
+                "tag": "wght",
+                "min": 100,
+                "default": 100,
+                "max": 900
+              }
+            ],
+            "family": "SUIT Variable",
+            "subfamily": "Thin",
+            "postScript": "SUITVariable-Thin"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc SUIT Variable",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "SUIT Variable Thin",
+                    "postScriptName": "SUITVariable-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.6385041463203213,
+              "avgAdvance": 0.4440866514693859,
+              "capHeight": 0.722000002861023,
+              "xHeight": 0.460999995470047,
+              "ascender": 0.7020000219345093,
+              "descender": 0.2136000633239746,
+              "digitAdvance": 0.5635910034179688,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "SUIT Variable Thin",
+                    "postScriptName": "SUITVariable-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.852454586462541,
+              "avgAdvance": 0.7359935215541294,
+              "inkTop": 0.79381817037409,
+              "inkBottom": 0.05863641608845104,
+              "inkWidth": 0.7645454540510069,
+              "syllableAdvance": 0.873992919921875
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "SUIT Variable Thin",
+                    "postScriptName": "SUITVariable-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.6402500511983529,
+              "avgAdvance": 0.45815623083779977,
+              "capHeight": 0.7273281216621399,
+              "xHeight": 0.4656718671321869,
+              "ascender": 0.7046718597412109,
+              "descender": 0.21760003566741942,
+              "digitAdvance": 0.5754913330078125,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "SUIT Variable Thin",
+                    "postScriptName": "SUITVariable-SemiBold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8640895323319868,
+              "avgAdvance": 0.7359935215541294,
+              "inkTop": 0.799514196135781,
+              "inkBottom": 0.06457533619620583,
+              "inkWidth": 0.7764815381643447,
+              "syllableAdvance": 0.873992919921875
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "SUIT Variable Thin",
+                    "postScriptName": "SUITVariable-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.6410958664751479,
+              "avgAdvance": 0.4652250422987827,
+              "capHeight": 0.7300000190734863,
+              "xHeight": 0.46799999475479126,
+              "ascender": 0.7059999704360962,
+              "descender": 0.21960004568099975,
+              "digitAdvance": 0.5812911987304688,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "SUIT Variable Thin",
+                    "postScriptName": "SUITVariable-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8699091510339216,
+              "avgAdvance": 0.7359935215541294,
+              "inkTop": 0.8023636395281012,
+              "inkBottom": 0.06754551150582054,
+              "inkWidth": 0.782454542646354,
+              "syllableAdvance": 0.873992919921875
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "LINE Seed Sans KR",
+      "provider": "other",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://seed.line.me/index_en.html",
+      "weights": {
+        "variable": false,
+        "list": [
+          100,
+          400,
+          700
+        ]
+      },
+      "metadataSource": "https://seed.line.me/index_en.html",
+      "classification": null,
+      "cssUrl": null,
+      "files": [
+        {
+          "file": "LINESeedKR-Rg.ttf",
+          "weight": 400,
+          "url": "https://seed.line.me/src/images/fonts/LINE_Seed_Sans_KR.zip",
+          "zipPath": "LINE_SeedKR_2023.09.06/TTF/LINESeedKR-Rg.ttf",
+          "sha256": "52fdbf502f57c2652461eee99c8c71a9f85850f93ed411e5ed08e24327e33003",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 505,
+            "capHeight": 734,
+            "xHeightRatio": 0.6880108991825613,
+            "axes": [],
+            "family": "LINE Seed Sans KR",
+            "subfamily": "Regular",
+            "postScript": "LINESeedSansKR-Regular"
+          }
+        },
+        {
+          "file": "LINESeedKR-Bd.ttf",
+          "weight": 700,
+          "url": "https://seed.line.me/src/images/fonts/LINE_Seed_Sans_KR.zip",
+          "zipPath": "LINE_SeedKR_2023.09.06/TTF/LINESeedKR-Bd.ttf",
+          "sha256": "df6d817f60814528922a0e2911b76a1252db0697c2de78a7283ea7a3c8e70e21",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 518,
+            "capHeight": 734,
+            "xHeightRatio": 0.7057220708446866,
+            "axes": [],
+            "family": "LINE Seed Sans KR",
+            "subfamily": "Bold",
+            "postScript": "LINESeedSansKR-Bold"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc LINE Seed Sans KR",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans KR",
+                    "postScriptName": "LINESeedSansKR-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.6880108672093829,
+              "avgAdvance": 0.4806273704351381,
+              "capHeight": 0.734000027179718,
+              "xHeight": 0.5049999952316284,
+              "ascender": 0.75,
+              "descender": 0.22200001478195192,
+              "digitAdvance": 0.5883995056152344,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans KR",
+                    "postScriptName": "LINESeedSansKR-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8519091335209933,
+              "avgAdvance": 0.7415708814348493,
+              "inkTop": 0.782363620671359,
+              "inkBottom": 0.06954551284963434,
+              "inkWidth": 0.7948181981390173,
+              "syllableAdvance": 0.8829994201660156
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans KR",
+                    "postScriptName": "LINESeedSansKR-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.705722053807076,
+              "avgAdvance": 0.5016506993493368,
+              "capHeight": 0.734000027179718,
+              "xHeight": 0.5180000066757202,
+              "ascender": 0.75,
+              "descender": 0.22200001478195192,
+              "digitAdvance": 0.6030993461608887,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans KR",
+                    "postScriptName": "LINESeedSansKR-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8632727861404419,
+              "avgAdvance": 0.7409279687064034,
+              "inkTop": 0.7882727384567261,
+              "inkBottom": 0.07500004768371582,
+              "inkWidth": 0.8177272680808197,
+              "syllableAdvance": 0.8829994201660156
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans KR",
+                    "postScriptName": "LINESeedSansKR-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.705722053807076,
+              "avgAdvance": 0.5016506993493368,
+              "capHeight": 0.734000027179718,
+              "xHeight": 0.5180000066757202,
+              "ascender": 0.75,
+              "descender": 0.22200001478195192,
+              "digitAdvance": 0.6030993461608887,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans KR",
+                    "postScriptName": "LINESeedSansKR-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8632727861404419,
+              "avgAdvance": 0.7409279687064034,
+              "inkTop": 0.7882727384567261,
+              "inkBottom": 0.07500004768371582,
+              "inkWidth": 0.8177272680808197,
+              "syllableAdvance": 0.8829994201660156
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "LINE Seed Sans",
+      "provider": "other",
+      "kind": "sans",
+      "licence": "OFL-1.1",
+      "licenceSource": "https://seed.line.me/index_en.html",
+      "weights": {
+        "variable": false,
+        "list": [
+          100,
+          400,
+          700,
+          800,
+          900
+        ]
+      },
+      "metadataSource": "https://seed.line.me/index_en.html",
+      "classification": null,
+      "cssUrl": null,
+      "files": [
+        {
+          "file": "LINESeedSans_A_Rg.ttf",
+          "weight": 400,
+          "url": "https://seed.line.me/src/images/fonts/LINE_Seed_Sans_EN.zip",
+          "zipPath": "LINE_Seed_Sans_V1.003/App/TTF/LINESeedSans_A_Rg.ttf",
+          "sha256": "9d08720606fa3b834ebcacb83978036138a19037b4e98450b5321bb4cb1b0fb0",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 505,
+            "capHeight": 734,
+            "xHeightRatio": 0.6880108991825613,
+            "axes": [],
+            "family": "LINE Seed Sans App",
+            "subfamily": "Regular",
+            "postScript": "LINESeedSansApp-Regular"
+          }
+        },
+        {
+          "file": "LINESeedSans_A_Bd.ttf",
+          "weight": 700,
+          "url": "https://seed.line.me/src/images/fonts/LINE_Seed_Sans_EN.zip",
+          "zipPath": "LINE_Seed_Sans_V1.003/App/TTF/LINESeedSans_A_Bd.ttf",
+          "sha256": "d3ceca29da5ccfcbc4d73e072fca72f59cfaff2e23f1dcd99e619056d7292854",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 518,
+            "capHeight": 734,
+            "xHeightRatio": 0.7057220708446866,
+            "axes": [],
+            "family": "LINE Seed Sans App",
+            "subfamily": "Bold",
+            "postScript": "LINESeedSansApp-Bold"
+          }
+        },
+        {
+          "file": "LINESeedSans_A_XBd.ttf",
+          "weight": 800,
+          "url": "https://seed.line.me/src/images/fonts/LINE_Seed_Sans_EN.zip",
+          "zipPath": "LINE_Seed_Sans_V1.003/App/TTF/LINESeedSans_A_XBd.ttf",
+          "sha256": "d955a14773bfec9a2d0a1d98f02a59e20bf6fa033fe0134f337fe1c301a4d3c0",
+          "sfnt": {
+            "unitsPerEm": 1000,
+            "xHeight": 531,
+            "capHeight": 734,
+            "xHeightRatio": 0.723433242506812,
+            "axes": [],
+            "family": "LINE Seed Sans App",
+            "subfamily": "ExtraBold",
+            "postScript": "LINESeedSansApp-ExtraBold"
+          }
+        }
+      ],
+      "measured": {
+        "family": "omdc LINE Seed Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans App",
+                    "postScriptName": "LINESeedSansApp-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.6880108672093829,
+              "avgAdvance": 0.4806273704351381,
+              "capHeight": 0.734000027179718,
+              "xHeight": 0.5049999952316284,
+              "ascender": 0.75,
+              "descender": 0.22200001478195192,
+              "digitAdvance": 0.5883995056152344,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "LINE Seed Sans App",
+                    "postScriptName": "LINESeedSansApp-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8514546155929565,
+              "avgAdvance": 0.7274283000401088,
+              "inkTop": 0.7957272908904336,
+              "inkBottom": 0.05572732470252297,
+              "inkWidth": 0.7657272758131678,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans App",
+                    "postScriptName": "LINESeedSansApp-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.705722053807076,
+              "avgAdvance": 0.5016506993493368,
+              "capHeight": 0.734000027179718,
+              "xHeight": 0.5180000066757202,
+              "ascender": 0.75,
+              "descender": 0.22200001478195192,
+              "digitAdvance": 0.6030993461608887,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "LINE Seed Sans App",
+                    "postScriptName": "LINESeedSansApp-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8689091151410883,
+              "avgAdvance": 0.726785387311663,
+              "inkTop": 0.8042727058584039,
+              "inkBottom": 0.06463640928268433,
+              "inkWidth": 0.7842727323824709,
+              "syllableAdvance": 0.8649997711181641
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "LINE Seed Sans App",
+                    "postScriptName": "LINESeedSansApp-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.705722053807076,
+              "avgAdvance": 0.5016506993493368,
+              "capHeight": 0.734000027179718,
+              "xHeight": 0.5180000066757202,
+              "ascender": 0.75,
+              "descender": 0.22200001478195192,
+              "digitAdvance": 0.6030993461608887,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "AppleMyungjo",
+                    "postScriptName": "AppleMyungjo",
+                    "isCustomFont": false,
+                    "glyphCount": 22
+                  },
+                  {
+                    "familyName": "LINE Seed Sans App",
+                    "postScriptName": "LINESeedSansApp-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 14
+                  }
+                ],
+                "onlyWebFonts": false,
+                "ok": false
+              },
+              "xHeightRatio": 0.8703636743805625,
+              "avgAdvance": 0.726785387311663,
+              "inkTop": 0.8049090721390464,
+              "inkBottom": 0.06545460224151611,
+              "inkWidth": 0.7845454463227228,
+              "syllableAdvance": 0.8649997711181641
+            }
+          }
+        }
+      }
+    }
+  ],
+  "crossChecks": [
+    {
+      "url": "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+      "status": 200,
+      "measured": {
+        "family": "Toss Product Sans",
+        "sizePx": 16,
+        "weights": {
+          "400": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Toss Product Sans",
+                    "postScriptName": "TossProductSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7307953772943576,
+              "avgAdvance": 0.4589503088662791,
+              "capHeight": 0.71826171875,
+              "xHeight": 0.52490234375,
+              "ascender": 0.71826171875,
+              "descender": 0.17451171875,
+              "digitAdvance": 0.58369140625,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Toss Product Sans",
+                    "postScriptName": "TossProductSans-Regular",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8515181107954546,
+              "avgAdvance": 0.72314453125,
+              "inkTop": 0.7958984375,
+              "inkBottom": 0.055619673295454544,
+              "inkWidth": 0.7657581676136364,
+              "syllableAdvance": 0.865234375
+            }
+          },
+          "600": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Toss Product Sans Semibold",
+                    "postScriptName": "TossProductSans-Semibold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7396889790398918,
+              "avgAdvance": 0.47349654796511625,
+              "capHeight": 0.72216796875,
+              "xHeight": 0.5341796875,
+              "ascender": 0.72216796875,
+              "descender": 0.18359375,
+              "digitAdvance": 0.602734375,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Toss Product Sans Semibold",
+                    "postScriptName": "TossProductSans-Semibold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8690074573863636,
+              "avgAdvance": 0.7237723214285714,
+              "inkTop": 0.8042879971590909,
+              "inkBottom": 0.06471946022727272,
+              "inkWidth": 0.7842240767045454,
+              "syllableAdvance": 0.865234375
+            }
+          },
+          "700": {
+            "latin": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 21,
+                "strings": 21,
+                "platformFonts": [
+                  {
+                    "familyName": "Toss Product Sans Bold",
+                    "postScriptName": "TossProductSans-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 92
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.7444369521240728,
+              "avgAdvance": 0.48107058502906974,
+              "capHeight": 0.72412109375,
+              "xHeight": 0.5390625,
+              "ascender": 0.72412109375,
+              "descender": 0.1861328125,
+              "digitAdvance": 0.61298828125,
+              "digitsTabularByDefault": false
+            },
+            "hangul": {
+              "drawn": {
+                "loaded": true,
+                "check": true,
+                "invariant": true,
+                "differsFromFallback": true,
+                "controlStringsThatDiffer": 12,
+                "strings": 12,
+                "platformFonts": [
+                  {
+                    "familyName": "Toss Product Sans Bold",
+                    "postScriptName": "TossProductSans-Bold",
+                    "isCustomFont": true,
+                    "glyphCount": 36
+                  }
+                ],
+                "onlyWebFonts": true,
+                "ok": true
+              },
+              "xHeightRatio": 0.8704279119318182,
+              "avgAdvance": 0.7241908482142857,
+              "inkTop": 0.8049094460227273,
+              "inkBottom": 0.06551846590909091,
+              "inkWidth": 0.7846235795454546,
+              "syllableAdvance": 0.865234375
+            }
+          }
+        }
+      }
+    }
+  ]
+}

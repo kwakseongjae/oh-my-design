@@ -1,0 +1,687 @@
+{
+  "target": "toss",
+  "family": "Toss Product Sans",
+  "weighting": {
+    "avgAdvance": 0.45,
+    "xHeightRatio": 0.35,
+    "weightCoverage": 0.1,
+    "classification": 0.1
+  },
+  "nonGoogleFactor": 0.8,
+  "maxScore": 0.1,
+  "scripts": {
+    "latin": {
+      "chosen": "IBM Plex Sans",
+      "rule": "best Google Fonts candidate; stack rule: IBM Plex Sans KR also draws hangul and would override the Pretendard Variable substitute, so Latin candidates that cover hangul are excluded",
+      "ranked": [
+        {
+          "family": "IBM Plex Sans KR",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsanskr/METADATA.pb",
+          "weightRange": "100, 200, 300, 400, 500, 600, 700 (static)",
+          "classification": "neo-grotesk",
+          "eligible": false,
+          "terms": {
+            "avgAdvance": 0.00611878327830256,
+            "xHeightRatio": 0.010989922662075808,
+            "weightCoverage": 0
+          },
+          "score": 0.007333250452180761,
+          "at400": {
+            "xHeightRatio": 0.7392549607416321,
+            "avgAdvance": 0.4611158149186955
+          }
+        },
+        {
+          "family": "IBM Plex Sans",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..700&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsans/METADATA.pb",
+          "weightRange": "100–700, variable wght axis",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.006077938993204977,
+            "xHeightRatio": 0.011211846636486384,
+            "weightCoverage": 0
+          },
+          "score": 0.007399132077458304,
+          "at400": {
+            "xHeightRatio": 0.7392549607416321,
+            "avgAdvance": 0.4611158149186955
+          }
+        },
+        {
+          "family": "Roboto",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/roboto/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.017294320937457034,
+            "xHeightRatio": 0.007762844814132094,
+            "weightCoverage": 0
+          },
+          "score": 0.01166604456311322,
+          "at400": {
+            "xHeightRatio": 0.7431318681318682,
+            "avgAdvance": 0.45905250726744184
+          }
+        },
+        {
+          "family": "Pretendard Variable",
+          "provider": "other",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+          "weightRange": "45–920, variable wght axis",
+          "classification": null,
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.012005987610777284,
+            "xHeightRatio": 0.01589718892891889,
+            "weightCoverage": 0
+          },
+          "score": 0.012185233944412654,
+          "at400": {
+            "xHeightRatio": 0.75,
+            "avgAdvance": 0.4639126090116279
+          }
+        },
+        {
+          "family": "Gothic A1",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/gothica1/METADATA.pb",
+          "weightRange": "100, 200, 300, 400, 500, 600, 700, 800, 900 (static)",
+          "classification": "humanist",
+          "eligible": false,
+          "terms": {
+            "avgAdvance": 0.011032991761625094,
+            "xHeightRatio": 0.018639263311278513,
+            "weightCoverage": 0
+          },
+          "score": 0.012765098279643079,
+          "at400": {
+            "xHeightRatio": 0.7182910547396528,
+            "avgAdvance": 0.46080123546511625
+          }
+        },
+        {
+          "family": "Figtree",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/figtree/METADATA.pb",
+          "weightRange": "300–900, variable wght axis",
+          "classification": "geometric",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.007785317780523011,
+            "xHeightRatio": 0.0325893334770301,
+            "weightCoverage": 0
+          },
+          "score": 0.01656628857577321,
+          "at400": {
+            "xHeightRatio": 0.7142506465807286,
+            "avgAdvance": 0.4638580499693405
+          }
+        },
+        {
+          "family": "Manrope",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/manrope/METADATA.pb",
+          "weightRange": "200–800, variable wght axis",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.022254448874556455,
+            "xHeightRatio": 0.016184258956611422,
+            "weightCoverage": 0
+          },
+          "score": 0.017421102920404895,
+          "at400": {
+            "xHeightRatio": 0.7501166429738213,
+            "avgAdvance": 0.46878136036007906
+          }
+        },
+        {
+          "family": "Public Sans",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/publicsans/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.023508547127325457,
+            "xHeightRatio": 0.03140825484246527,
+            "weightCoverage": 0
+          },
+          "score": 0.023968594891288112,
+          "at400": {
+            "xHeightRatio": 0.7150761088669372,
+            "avgAdvance": 0.47712419199389083
+          }
+        },
+        {
+          "family": "Geist",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/geist/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.041630540691398044,
+            "xHeightRatio": 0.017450477908492187,
+            "weightCoverage": 0
+          },
+          "score": 0.02760156731011265,
+          "at400": {
+            "xHeightRatio": 0.7464788555034775,
+            "avgAdvance": 0.4731391197027162
+          }
+        },
+        {
+          "family": "Noto Sans KR",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/notosanskr/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "humanist",
+          "eligible": false,
+          "terms": {
+            "avgAdvance": 0.050368940021654256,
+            "xHeightRatio": 0.014912779307966537,
+            "weightCoverage": 0
+          },
+          "score": 0.030983884186147444,
+          "at400": {
+            "xHeightRatio": 0.7408922659690366,
+            "avgAdvance": 0.4794806546943132
+          }
+        },
+        {
+          "family": "Inter",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/inter/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.05456321112251217,
+            "xHeightRatio": 0.010087597901626786,
+            "weightCoverage": 0
+          },
+          "score": 0.03120456030077761,
+          "at400": {
+            "xHeightRatio": 0.7457109899328859,
+            "avgAdvance": 0.48910105505654977
+          }
+        },
+        {
+          "family": "DM Sans",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/dmsans/METADATA.pb",
+          "weightRange": "100–1000, variable wght axis",
+          "classification": "geometric",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.042875269787552295,
+            "xHeightRatio": 0.02860881644060063,
+            "weightCoverage": 0
+          },
+          "score": 0.0325632857317875,
+          "at400": {
+            "xHeightRatio": 0.717142832571146,
+            "avgAdvance": 0.47736278800077214
+          }
+        },
+        {
+          "family": "Noto Sans",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/notosans/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "humanist",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.06594904065075129,
+            "xHeightRatio": 0.02745729271315052,
+            "weightCoverage": 0
+          },
+          "score": 0.04365235638048973,
+          "at400": {
+            "xHeightRatio": 0.7510504484039144,
+            "avgAdvance": 0.48674352778944857
+          }
+        },
+        {
+          "family": "Work Sans",
+          "provider": "google",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/worksans/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.08743397117693784,
+            "xHeightRatio": 0.0261587359199931,
+            "weightCoverage": 0
+          },
+          "score": 0.053889827335132895,
+          "at400": {
+            "xHeightRatio": 0.7575757274724029,
+            "avgAdvance": 0.5106042374012082
+          }
+        },
+        {
+          "family": "Nanum Gothic",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/nanumgothic/METADATA.pb",
+          "weightRange": "400, 700, 800 (static)",
+          "classification": null,
+          "eligible": false,
+          "terms": {
+            "avgAdvance": 0.02603665057394723,
+            "xHeightRatio": 0.011078867387261717,
+            "weightCoverage": 0.3333333333333333
+          },
+          "score": 0.05436381075239021,
+          "at400": {
+            "xHeightRatio": 0.7394270141198445,
+            "avgAdvance": 0.483255430709484
+          }
+        },
+        {
+          "family": "SUIT Variable",
+          "provider": "other",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@v2.0.5/fonts/variable/woff2/SUIT-Variable.css",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/sun-typeface/SUIT/blob/main/LICENSE",
+          "weightRange": "100–900, variable wght axis",
+          "classification": null,
+          "eligible": false,
+          "terms": {
+            "avgAdvance": 0.032574077981675505,
+            "xHeightRatio": 0.13317998580215964,
+            "weightCoverage": 0
+          },
+          "score": 0.06807925569167761,
+          "at400": {
+            "xHeightRatio": 0.6385041463203213,
+            "avgAdvance": 0.4440866514693859
+          }
+        },
+        {
+          "family": "LINE Seed Sans",
+          "provider": "other",
+          "scripts": [
+            "latin"
+          ],
+          "cssUrl": null,
+          "licence": "OFL-1.1",
+          "licenceSource": "https://seed.line.me/index_en.html",
+          "weightRange": "100, 400, 700, 800, 900 (static)",
+          "classification": null,
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.049823916043981675,
+            "xHeightRatio": 0.05215709698786795,
+            "weightCoverage": 0.3333333333333333
+          },
+          "score": 0.08223231055430984,
+          "at400": {
+            "xHeightRatio": 0.6880108672093829,
+            "avgAdvance": 0.4806273704351381
+          }
+        },
+        {
+          "family": "LINE Seed Sans KR",
+          "provider": "other",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": null,
+          "licence": "OFL-1.1",
+          "licenceSource": "https://seed.line.me/index_en.html",
+          "weightRange": "100, 400, 700 (static)",
+          "classification": null,
+          "eligible": false,
+          "terms": {
+            "avgAdvance": 0.049823916043981675,
+            "xHeightRatio": 0.05215709698786795,
+            "weightCoverage": 0.3333333333333333
+          },
+          "score": 0.08223231055430984,
+          "at400": {
+            "xHeightRatio": 0.6880108672093829,
+            "avgAdvance": 0.4806273704351381
+          }
+        }
+      ],
+      "unconstrained": {
+        "chosen": "IBM Plex Sans KR",
+        "rule": "best Google Fonts candidate"
+      }
+    },
+    "hangul": {
+      "chosen": "Pretendard Variable",
+      "rule": "non-Google candidate scores 0.0068 ≤ 0.8 × best Google 0.0240 (IBM Plex Sans KR)",
+      "ranked": [
+        {
+          "family": "Pretendard Variable",
+          "provider": "other",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+          "weightRange": "45–920, variable wght axis",
+          "classification": null,
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.009351212771556136,
+            "xHeightRatio": 0.0053599462090428525,
+            "weightCoverage": 0
+          },
+          "score": 0.0067600299115169555,
+          "at400": {
+            "xHeightRatio": 0.8458806818181818,
+            "avgAdvance": 0.7328404017857143
+          }
+        },
+        {
+          "family": "SUIT Variable",
+          "provider": "other",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@v2.0.5/fonts/variable/woff2/SUIT-Variable.css",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/sun-typeface/SUIT/blob/main/LICENSE",
+          "weightRange": "100–900, variable wght axis",
+          "classification": null,
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.01698379280829344,
+            "xHeightRatio": 0.002451666472534274,
+            "weightCoverage": 0
+          },
+          "score": 0.009445322254576715,
+          "at400": {
+            "xHeightRatio": 0.852454586462541,
+            "avgAdvance": 0.7359935215541294
+          }
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/ibmplexsanskr/METADATA.pb",
+          "weightRange": "100, 200, 300, 400, 500, 600, 700 (static)",
+          "classification": "neo-grotesk",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.038310607567211996,
+            "xHeightRatio": 0.0124721569563818,
+            "weightCoverage": 0
+          },
+          "score": 0.024005587044421142,
+          "at400": {
+            "xHeightRatio": 0.8620909669182517,
+            "avgAdvance": 0.7514277866908482
+          }
+        },
+        {
+          "family": "Noto Sans KR",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/notosanskr/METADATA.pb",
+          "weightRange": "100–900, variable wght axis",
+          "classification": "humanist",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.06560666964777083,
+            "xHeightRatio": 0.03719056556869522,
+            "weightCoverage": 0
+          },
+          "score": 0.04726633254504466,
+          "at400": {
+            "xHeightRatio": 0.8815298893234946,
+            "avgAdvance": 0.7707514081682477
+          }
+        },
+        {
+          "family": "LINE Seed Sans KR",
+          "provider": "other",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": null,
+          "licence": "OFL-1.1",
+          "licenceSource": "https://seed.line.me/index_en.html",
+          "weightRange": "100, 400, 700 (static)",
+          "classification": null,
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.02409848155824385,
+            "xHeightRatio": 0.005092850238419937,
+            "weightCoverage": 0.3333333333333333
+          },
+          "score": 0.0510668306866556,
+          "at400": {
+            "xHeightRatio": 0.8519091335209933,
+            "avgAdvance": 0.7415708814348493
+          }
+        },
+        {
+          "family": "Gothic A1",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/gothica1/METADATA.pb",
+          "weightRange": "100, 200, 300, 400, 500, 600, 700, 800, 900 (static)",
+          "classification": "humanist",
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.13676208242979224,
+            "xHeightRatio": 0.0345254719444271,
+            "weightCoverage": 0
+          },
+          "score": 0.08180761363772887,
+          "at400": {
+            "xHeightRatio": 0.8694069602272727,
+            "avgAdvance": 0.8073381696428571
+          }
+        },
+        {
+          "family": "Nanum Gothic",
+          "provider": "google",
+          "scripts": [
+            "hangul",
+            "latin"
+          ],
+          "cssUrl": "https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap",
+          "licence": "OFL-1.1",
+          "licenceSource": "https://github.com/google/fonts/blob/main/ofl/nanumgothic/METADATA.pb",
+          "weightRange": "400, 700, 800 (static)",
+          "classification": null,
+          "eligible": true,
+          "terms": {
+            "avgAdvance": 0.10345238508533271,
+            "xHeightRatio": 0.060789901385733945,
+            "weightCoverage": 0.3333333333333333
+          },
+          "score": 0.11240374678526657,
+          "at400": {
+            "xHeightRatio": 0.8990909511392767,
+            "avgAdvance": 0.7985710416521344
+          }
+        }
+      ]
+    }
+  },
+  "sidecar": {
+    "latin": {
+      "family": "IBM Plex Sans",
+      "provider": "google",
+      "label": "substitute — not the brand face",
+      "metrics": {
+        "xHeightRatio": 0.7393,
+        "avgAdvance": 0.4611,
+        "weightRange": "100–700, variable wght axis",
+        "classification": "neo-grotesk",
+        "delta": {
+          "xHeightRatio": 0.0085,
+          "avgAdvance": 0.0022,
+          "xHeightRatioRelMean": 0.0112,
+          "avgAdvanceRelMean": 0.0061,
+          "weightCoverageMiss": 0,
+          "score": 0.0074,
+          "brandXHeightRatio": 0.7308,
+          "brandAvgAdvance": 0.459,
+          "brandWeightRange": "300, 400, 500, 600, 700, 800, 900, 950 (8 static weights; intermediate weights snap to them, no wght axis)",
+          "brandClassification": "not stated by a first-party source",
+          "definition": "xHeightRatio = mean ink top of x v w z / mean ink top of H I E F T; avgAdvance = sample advance / code points, in em",
+          "sample": "The quick brown fox jumps over the lazy dog",
+          "weights": "400, 600, 700",
+          "sizePx": 16,
+          "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+          "rule": "best Google Fonts candidate; stack rule: IBM Plex Sans KR also draws hangul and would override the Pretendard Variable substitute, so Latin candidates that cover hangul are excluded",
+          "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+          "page": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+          "measured": "2026-10-20",
+          "record": "docs/research/2026-10-20-r11/fonts/toss.measurements.json"
+        }
+      }
+    },
+    "hangul": {
+      "family": "Pretendard Variable",
+      "provider": "other",
+      "label": "substitute — not the brand face",
+      "metrics": {
+        "xHeightRatio": 0.8459,
+        "avgAdvance": 0.7328,
+        "weightRange": "45–920, variable wght axis",
+        "classification": "not stated by a first-party source",
+        "delta": {
+          "xHeightRatio": -0.0056,
+          "avgAdvance": 0.0097,
+          "xHeightRatioRelMean": 0.0054,
+          "avgAdvanceRelMean": 0.0094,
+          "weightCoverageMiss": 0,
+          "score": 0.0068,
+          "brandXHeightRatio": 0.8515,
+          "brandAvgAdvance": 0.7231,
+          "brandWeightRange": "300, 400, 500, 600, 700, 800, 900, 950 (8 static weights; intermediate weights snap to them, no wght axis)",
+          "brandClassification": "not stated by a first-party source",
+          "definition": "xHeightRatio = mean ink height of the sample syllables / 1em (Hangul body height); avgAdvance = sample advance / code points, in em",
+          "sample": "다람쥐 헌 쳇바퀴에 타고파",
+          "weights": "400, 600, 700",
+          "sizePx": 16,
+          "weighting": "0.45 avgAdvance + 0.35 xHeightRatio + 0.10 weight coverage + 0.10 classification (dropped and rescaled when a class is not first-party)",
+          "rule": "non-Google candidate scores 0.0068 ≤ 0.8 × best Google 0.0240 (IBM Plex Sans KR)",
+          "tool": "scripts/fonts/measure.mjs + scripts/fonts/score.mjs; playwright-core 1.61.1, Chromium 149.0.7827.55, canvas measureText + CDP CSS.getPlatformFontsForNode",
+          "page": "https://tossmini-docs.toss.im/tds-mobile/foundation/typography/",
+          "measured": "2026-10-20",
+          "record": "docs/research/2026-10-20-r11/fonts/toss.measurements.json"
+        }
+      }
+    }
+  }
+}
