@@ -1,0 +1,418 @@
+{
+  "coin": {
+    "raw": "coin.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.624,
+    "alphaSnapped": 0.331,
+    "bbox": {
+      "x": 238,
+      "y": 195,
+      "width": 776,
+      "height": 884
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/coin.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 19442
+  },
+  "card": {
+    "raw": "card-r1.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.545,
+    "alphaSnapped": 0.395,
+    "bbox": {
+      "x": 122,
+      "y": 233,
+      "width": 1094,
+      "height": 818
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/card.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 15084
+  },
+  "check-badge": {
+    "raw": "check-badge.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.577,
+    "alphaSnapped": 0.337,
+    "bbox": {
+      "x": 209,
+      "y": 175,
+      "width": 849,
+      "height": 900
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/check-badge.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 21038
+  },
+  "piggy-bank": {
+    "raw": "piggy-bank.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.603,
+    "alphaSnapped": 0.329,
+    "bbox": {
+      "x": 227,
+      "y": 257,
+      "width": 818,
+      "height": 856
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/piggy-bank.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 20508
+  },
+  "parcel-box": {
+    "raw": "parcel-box.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.577,
+    "alphaSnapped": 0.365,
+    "bbox": {
+      "x": 190,
+      "y": 203,
+      "width": 865,
+      "height": 928
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/parcel-box.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 16062
+  },
+  "price-tag": {
+    "raw": "price-tag.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.672,
+    "alphaSnapped": 0.28,
+    "bbox": {
+      "x": 243,
+      "y": 85,
+      "width": 808,
+      "height": 1090
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/price-tag.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 17150
+  },
+  "shopping-bag": {
+    "raw": "shopping-bag.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.597,
+    "alphaSnapped": 0.343,
+    "bbox": {
+      "x": 236,
+      "y": 132,
+      "width": 851,
+      "height": 1022
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/shopping-bag.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 18020
+  },
+  "chart-bars": {
+    "raw": "chart-bars.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.624,
+    "alphaSnapped": 0.309,
+    "bbox": {
+      "x": 124,
+      "y": 176,
+      "width": 1036,
+      "height": 978
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/chart-bars.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 16938
+  },
+  "receipt": {
+    "raw": "receipt.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.593,
+    "alphaSnapped": 0.335,
+    "bbox": {
+      "x": 151,
+      "y": 185,
+      "width": 1009,
+      "height": 898
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/receipt.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 18206
+  },
+  "calculator": {
+    "raw": "calculator.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.519,
+    "alphaSnapped": 0.396,
+    "bbox": {
+      "x": 127,
+      "y": 178,
+      "width": 1048,
+      "height": 970
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/calculator.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 23120
+  },
+  "briefcase": {
+    "raw": "briefcase-r1.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.584,
+    "alphaSnapped": 0.353,
+    "bbox": {
+      "x": 156,
+      "y": 232,
+      "width": 986,
+      "height": 877
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/briefcase.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 19306
+  },
+  "chat-bubble": {
+    "raw": "chat-bubble.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.531,
+    "alphaSnapped": 0.372,
+    "bbox": {
+      "x": 177,
+      "y": 203,
+      "width": 949,
+      "height": 864
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/chat-bubble.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 18728
+  },
+  "palette": {
+    "raw": "palette.png",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "rawCornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawTransparentShare": 0.522,
+    "alphaSnapped": 0.39,
+    "bbox": {
+      "x": 138,
+      "y": 201,
+      "width": 1010,
+      "height": 897
+    },
+    "bboxTouchesRawEdge": false,
+    "margin": 0.08,
+    "output": "web/public/r11-props/palette.webp",
+    "size": [
+      512,
+      512
+    ],
+    "hasAlpha": true,
+    "alphaMin": 0,
+    "quality": 85,
+    "bytes": 22474
+  }
+}
