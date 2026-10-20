@@ -26,8 +26,7 @@
 - **6번.** 진행 과정을 Codex·Claude Code의 도구 호출 UI처럼 바꾼다.
   - 순서는 Thinking(접히는 추론 블록) → `Skill: omd-apply` → `Read .../DESIGN.md` → `Write PaymentComplete.tsx`(diff 요약) 순이다.
   - 도구마다 상태(실행 중 shimmer → 완료 체크)와 소요 시간을 표시한다.
-  - 참고는 shadcn AI Elements(Tool·Reasoning·Message), assistant-ui, beautifului.dev(thinking)이다.
-  - 오너가 말한 "astrx"는 확인되는 대로 추가 참고한다.
+  - 참고는 Meta Astryx(AI 채팅 템플릿), shadcn AI Elements(Tool·Reasoning·Message), assistant-ui, beautifului.dev(thinking)이다.
 - **7번.** 결과물 카드 머리글("미리보기 · 토스 값 12개")을 없앤다.
   - 실제 결제 완료 화면 대신, 오른쪽 영역을 채우는 **예시 카드** 형태로 바꾼다. 예: 송금 완료 카드, 상품 카드.
   - 카드 아래의 설명 문단은 삭제한다.
@@ -78,7 +77,7 @@
   - 핵심 질문 6~7개만 아코디언으로 남긴다.
 - **질문하기(RAG).** 맨 아래에 사용자가 질문을 입력하면 바로 답이 나오는 UI를 둔다.
   - 검색: docs·FAQ·레퍼런스 메타(이름·국가·도메인·요약)·README를 청크로 나눠 인덱싱한다. 1차는 렉시컬 검색(현재 search-index 확장)이고, 임베딩은 다음 단계에서 한다.
-  - 답변: Claude(서버 라우트 `/api/ask`, `OMD_ANTHROPIC_API_KEY`). 검색된 문서만 근거로 쓰고, 출처 링크를 단다. 근거가 없으면 "모르겠어요 + 관련 문서 링크"로 답한다.
+  - 답변: Claude Haiku 5.5(서버 라우트 `/api/ask`, `OMD_ASK_ANTHROPIC_API_KEY`, `OMD_ASK_MODEL`). 설정은 아래 "Claude Haiku 5.5 확인 사실"을 따른다. 검색된 문서만 근거로 쓰고, 출처 링크를 단다. 근거가 없으면 "모르겠어요 + 관련 문서 링크"로 답한다.
   - 보호: IP별 레이트 리밋(Upstash), 일일 호출 상한, 입력 길이 제한, 스트리밍 응답을 둔다. 로그에 개인정보를 남기지 않는다.
   - UI: 입력창, 예시 질문 칩, 스트리밍 답변, 출처 카드.
 
@@ -145,12 +144,59 @@
 2. **그다음.** W5·W9(공통 크롬)를 진행하고, 전체 통합 빌드 → 스크린샷 검수(데스크톱·모바일 4개 언어) → 로컬 검수 서버 순서로 간다.
 3. **오너 OK 후.** `feat/referral-1`·`feat/growth-metrics`를 함께 main에 반영하고, 2.0.5 패치를 낸다(게이트 기록 재생성 포함).
 
-## 오너 결정이 필요한 것
-1. **지역 필터.** 대만을 별도로 둘지(한국·일본·대만·중국·기타), "중화권"으로 묶을지.
-2. **질문하기 비용 상한.**
-   - 모델: claude-haiku-4-5 권장(빠르고 저렴함)
-   - 일일 호출 상한: 예) 1,000회
-   - IP당: 분당 5회
-3. **상세 페이지 제목.** 화면 제목은 "11번가 DESIGN.md"로 바꾼다. 검색용 메타 제목에는 "design system"을 남길지(검색 유입 대부분이 이 키워드).
-4. **히어로 챗 데모 기업.** EN·TW 대표 기업(제안: EN=Stripe 또는 Linear, TW=104 또는 誠品, 샘플 토큰 커버리지로 결정).
-5. **3D 소품.** OmD 자체 생성 소품(codex)을 샘플 화면에 쓰는 것. 브랜드 에셋이 아님을 내부 기록으로 남긴다.
+## 오너 결정 (2026-10-20 확정)
+1. **지역 필터.** 따로 둔다: 전체 / 한국 / 일본 / 대만 / 중국 / 기타.
+2. **질문하기 모델.** Claude Haiku 5.5. 오너가 별도 Anthropic 키를 발급해 연결한다.
+   - 환경 변수:
+     - `OMD_ASK_ANTHROPIC_API_KEY`: 오너가 `web/.env.local`과 Vercel에 직접 넣는다.
+     - `OMD_ASK_MODEL`: 기본값 `claude-haiku-5-5`.
+     - `OMD_ASK_DAILY_CAP`: 기본값 1000.
+   - 키가 없으면 라우트는 503을 돌려주고, UI는 "준비 중"을 보여준다. 기존 `OMD_ANTHROPIC_API_KEY`로 몰래 대체하지 않는다(다른 키에 과금되지 않게).
+   - IP당 분당 5회, 입력 500자 이하.
+3. **메타 제목.** 이번에 갈아엎는다. 화면 h1과 메타 제목을 모두 "{이름} DESIGN.md"로 바꾸고, URL은 그대로 둔다.
+   - 리브랜딩 브랜치의 AGENTS.md "h1은 {Name} design system" 문구도 함께 고친다.
+4. **히어로 챗 데모 기업.** 제안대로 간다. KR=토스, JP=pixiv. EN은 Stripe·Linear, TW는 104·誠品 중 샘플 토큰 커버리지가 완비된 곳으로 정한다(측정값을 기록).
+5. **3D 소품.** OmD가 codex로 직접 만든다. 브랜드 에셋이 아님을 `docs/` 내부 기록과 에셋 매니페스트에 남긴다.
+6. **챗·도구 호출 UI 참고.** 오너가 말한 "astrx"는 **Meta Astryx**다. Meta의 오픈소스(MIT) 디자인 시스템으로 React+StyleX 기반이고, AI 채팅 템플릿을 포함한다(2026-06-28 공개 베타). shadcn AI Elements·assistant-ui·beautifului.dev와 함께 참고하되, 코드를 복제하지 않고 OmD 토큰(아이리스·반경 스케일)으로 다시 그린다.
+7. **푸터 링크.**
+   - Threads: `https://www.threads.com/@daon_k`. 출처는 오너의 linktr.ee/daon_k 링크 목록이다(Aside 메모 2건이 일치).
+   - GitHub: `https://github.com/kwakseongjae/oh-my-design`.
+
+## Claude Haiku 5.5 확인 사실 (2026-10-20, 공식 문서)
+출처:
+- platform.claude.com/docs/en/models/overview
+- platform.claude.com/docs/en/models/haiku-5-5/overview
+- platform.claude.com/docs/en/models/haiku-5-5/migration-guide
+
+**기본 사양.**
+- 모델 ID는 `claude-haiku-5-5`다. 날짜 접미사도 별칭도 없다.
+- 2026-10-07에 출시됐고, 은퇴는 빨라도 2027-10-07이다.
+- 컨텍스트 1M, 최대 출력 128K, 지식 기준 2026-06이다.
+
+**가격 (MTok당).**
+
+| 프롬프트 길이 | 입력 | 출력 | 캐시 읽기 |
+|---|---|---|---|
+| 10만 토큰 이하 | $0.10 | $0.50 | $0.01 |
+| 10만 토큰 초과 | $0.50 | $2.50 | $0.05 |
+
+- 캐시 가능한 최소 프롬프트는 512토큰이다.
+- 같은 글이 Haiku 4.5보다 토큰이 약 30% 더 나온다(새 토크나이저).
+
+**요청 규칙.** 위반하면 400이 난다.
+- `temperature`·`top_p`·`top_k`를 보내지 않는다.
+- 마지막 assistant 턴 prefill을 쓰지 않는다.
+- `thinking: {type: "enabled", budget_tokens}`를 쓰지 않는다. `thinking`은 생략하거나 `{type: "adaptive"}`로 둔다.
+
+**질문하기 권장 설정.**
+- `output_config: {effort: "low"}`로 지연을 줄인다. 기본값은 medium이고, low에서는 쉬운 질문에서 생각 단계를 건너뛸 수 있다.
+- 생각 토큰도 `max_tokens`에 들어간다. 그래서 여유를 둔다(예: 4096).
+- 생각 블록은 기본으로 비어서 온다. 응답 블록은 `type`으로 골라 text만 스트리밍한다.
+
+**거절 처리.**
+- `stop_reason: "refusal"`을 처리한다. Haiku 5.5는 안전 분류기를 돌리고, 서버측 fallback이 **없다**.
+- 거절되면 "답할 수 없어요" 문구와 관련 문서 링크로 마무리한다.
+
+**비용 추정.**
+- 질문 1회(근거 약 6K토큰 + 답 약 600토큰)에 약 $0.001.
+- 일일 상한 1,000회를 다 써도 하루 약 $1, 한 달 약 $30.
