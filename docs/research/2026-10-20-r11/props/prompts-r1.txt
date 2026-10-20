@@ -1,0 +1,5 @@
+# Round-11 props, retry 1 (after the first-pass contact sheet). Same style.txt, revised subjects.
+# briefcase: the first pass was a deep box with a split lid that read as a toolbox.
+# card: frosted white on white nearly vanished; warm light grey, face tilted toward the viewer.
+briefcase-r1.png|a slim classic document briefcase in warm light grey, much wider than it is deep with a thin profile, one soft rounded handle on top and two small brushed-silver clasps on the front flap; no logo, no monogram
+card-r1.png|a single blank payment card with rounded corners in warm light grey, slightly thick like a soft tile, tilted up at a gentle angle so its face is clearly visible, with a small plain brushed-silver chip; no numbers, no logo, no network mark, no coloured stripe, nothing printed on it

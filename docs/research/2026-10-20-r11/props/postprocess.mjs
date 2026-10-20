@@ -30,7 +30,7 @@ const SIZE = 512;
 const MAX_BYTES = 60 * 1024;
 const ALPHA_T = 8; // trim threshold: alpha <= 8/255 (~3%) counts as empty
 const ALPHA_SNAP = 250; // alpha >= 250 becomes 255 (generator bodies sit at ~253)
-const MARGIN = 0.06; // transparent margin on each side, as a share of the final side
+const MARGIN = 0.08; // transparent margin on each side, as a share of the final side
 const QUALITY_START = 85;
 const QUALITY_FLOOR = 70;
 
