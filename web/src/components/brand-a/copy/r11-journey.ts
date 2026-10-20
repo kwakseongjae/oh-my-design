@@ -9,6 +9,8 @@ import type { SiteLocale } from "@/lib/i18n/site-locales";
 type Row3 = readonly [string, string, string];
 
 export interface JourneyCopy {
+  /** the section's one supporting sentence (replaces gen.intro: each company now draws its own screen) */
+  readonly intro: string;
   /** ≤900px: the DESIGN.md pane and the screen pane become two tabs */
   readonly tabs: { readonly label: string; readonly code: string; readonly screen: string };
   readonly face: {
@@ -40,6 +42,7 @@ export interface JourneyCopy {
 }
 
 const EN: JourneyCopy = {
+  intro: "Pick a company, and its main product screen is drawn again from its DESIGN.md alone.",
   tabs: { label: "View", code: "DESIGN.md", screen: "Screen" },
   face: {
     none: "Brand typeface not applied",
@@ -116,6 +119,7 @@ const EN: JourneyCopy = {
 };
 
 const KO: JourneyCopy = {
+  intro: "회사를 고르면 그 회사의 대표 화면을 DESIGN.md에 적힌 값만으로 다시 그려요.",
   tabs: { label: "보기", code: "DESIGN.md", screen: "화면" },
   face: {
     none: "브랜드 글꼴 미적용",
@@ -192,6 +196,7 @@ const KO: JourneyCopy = {
 };
 
 const JA: JourneyCopy = {
+  intro: "企業を選ぶと、その企業の代表的な画面を DESIGN.md の値だけで描き直します。",
   tabs: { label: "表示", code: "DESIGN.md", screen: "画面" },
   face: {
     none: "ブランド書体は未適用",
@@ -268,6 +273,7 @@ const JA: JourneyCopy = {
 };
 
 const ZH_TW: JourneyCopy = {
+  intro: "選一家企業，就只用它 DESIGN.md 裡的數值，重新畫出它的代表畫面。",
   tabs: { label: "檢視", code: "DESIGN.md", screen: "畫面" },
   face: {
     none: "未套用品牌字體",

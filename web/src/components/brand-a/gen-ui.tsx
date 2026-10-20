@@ -109,6 +109,7 @@ export function GenUI({
   const [snap, setSnap] = useState<Step | null>(null);
   const [lit, setLit] = useState<Set<number>>(new Set());
   const [log, setLog] = useState<{ text: string; bold?: string; rest?: string }>({ text: "" });
+  const [said, setSaid] = useState("");
   // provenance tooltip (element id → rows)
   const [tip, setTip] = useState<{ k: string; top: number; left: number } | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -211,19 +212,22 @@ export function GenUI({
       setTip(null);
       loadFace(id);
       const L = linesBy[id];
+      const done = summary(spec, L.length);
       if (reduce) {
         setPlaying(false);
         setSk(null);
         setLit(new Set());
-        typeLog("", 0, summary(spec, L.length));
+        typeLog("", 0, done);
+        setSaid(done.bold + done.rest);
         return;
       }
       setPlaying(true);
       setSk(new Set(STEPS));
       setLit(new Set());
       let logText = "Reading DESIGN.md…";
-      typeLog(logText, 18);
-      let tm = 700;
+      typeLog(logText, 14);
+      // pacing: a 17-token screen reads in about 3.8s, LINE's 10 in under 3s (owner #10: every switch re-runs)
+      let tm = 500;
       for (const st of STEPS) {
         const name = stepName(xp.plan, st);
         const mine = L.map((l, i) => (l.s === st ? i : -1)).filter((i) => i >= 0);
@@ -247,7 +251,7 @@ export function GenUI({
             placeScan(i);
             setLit((p) => new Set(p).add(i));
           }, tm);
-          tm += 160;
+          tm += 80;
         }
         later(() => {
           setSk((p) => {
@@ -262,8 +266,8 @@ export function GenUI({
             mine.forEach((i) => n.delete(i));
             return n;
           });
-        }, tm + 120);
-        tm += 520;
+        }, tm + 100);
+        tm += 380;
       }
       later(() => {
         logText += " → building screen…";
@@ -272,8 +276,9 @@ export function GenUI({
       later(() => {
         setPlaying(false);
         setSk(null);
-        typeLog("", 0, summary(spec, L.length));
-      }, tm + 700);
+        typeLog("", 0, done);
+        setSaid(done.bold + done.rest);
+      }, tm + 450);
     },
     [by, extras, linesBy, reduce, typeLog, summary, loadFace],
   );
@@ -429,7 +434,7 @@ export function GenUI({
       <div className="sq-g5-grid">
         <div className="sq-g5-agent" lang="en">
           <span className="sq-g5-dot" aria-hidden="true" />
-          <span className="sq-g5-log" role="status" aria-live="polite">
+          <span className="sq-g5-log" aria-hidden="true">
             {log.bold ? (
               <>
                 <b>{log.bold}</b>
@@ -440,6 +445,10 @@ export function GenUI({
             )}
           </span>
           <span className="sq-g5-caret" aria-hidden="true" />
+          {/* the typed log is decoration; assistive tech hears the finished result once per run */}
+          <span className="sq-sr" role="status" aria-live="polite">
+            {said}
+          </span>
         </div>
         <div className="sq-g5-tabs" role="tablist" aria-label={j.tabs.label}>
           <button type="button" {...tabProps("screen")}>
@@ -481,7 +490,7 @@ export function GenUI({
               <img className="sq-g5-prop" src={p.src} width={p.width} height={p.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
             ) : null}
             <Screen plan={x.plan} copy={j.sample} el={el} frame={frame} face={faceCss} />
-            {faceNote ? <p className="sq-g5-face">{faceNote}</p> : null}
+            {faceNote && !sk?.has(1) ? <p className="sq-g5-face">{faceNote}</p> : null}
           </div>
           <div className="sq-g5-sum">
             <span className="sq-ct">{fill(t.r5.sum, { n: ls.length })}</span>

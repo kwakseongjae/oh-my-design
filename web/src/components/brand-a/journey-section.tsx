@@ -25,6 +25,7 @@ type Props = {
  * when a screen sets text in them. Styles in gen-ui.css and journey/screens.css.
  */
 export function JourneySection({ locale, c, data, first }: Props) {
+  const j = getJourneyCopy(locale);
   const extras: Record<string, GenExtra> = {};
   for (const s of data.gen) {
     const kind = (GEN_UI_SCREEN as Record<string, (typeof GEN_UI_SCREEN)[keyof typeof GEN_UI_SCREEN] | undefined>)[s.id];
@@ -36,8 +37,8 @@ export function JourneySection({ locale, c, data, first }: Props) {
     <section className={`sq-sec sq-band ${pretendard.variable} ${notoSansJP.variable}`} id="reference" aria-labelledby="h-ref">
       <div className="sq-wrap">
         <h2 id="h-ref">{c.gen.h2}</h2>
-        <p className="sq-intro">{c.gen.intro}</p>
-        <GenUI specs={data.gen} extras={extras} locale={locale} t={c.gen} j={getJourneyCopy(locale)} first={first} />
+        <p className="sq-intro">{j.intro}</p>
+        <GenUI specs={data.gen} extras={extras} locale={locale} t={c.gen} j={j} first={first} />
       </div>
     </section>
   );

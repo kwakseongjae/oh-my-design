@@ -42,7 +42,7 @@
 .sq-g5-code li{font:500 12px/1.5 var(--sq-f-mono);white-space:pre-wrap;overflow-wrap:anywhere;padding:3px 20px;color:var(--sq-ink);border-left:3px solid transparent;transition:background-color .25s,border-color .25s}
 .sq-g5-code li i{display:inline-block;width:.8em;height:.8em;vertical-align:-.08em;margin-left:6px;background:var(--sw);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 18%,transparent)}
 .sq-g5-code li.sq-lit{border-left-color:var(--sq-primary);background:var(--sq-tint)}
-.sq-g5-scan{position:absolute;left:0;right:0;top:0;height:22px;z-index:2;pointer-events:none;opacity:0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sq-primary) 18%,transparent) 45%,color-mix(in srgb,var(--sq-primary) 55%,transparent) 50%,color-mix(in srgb,var(--sq-primary) 18%,transparent) 55%,transparent);transition:top .26s cubic-bezier(.4,.1,.3,1),height .26s,opacity .3s}
+.sq-g5-scan{position:absolute;left:0;right:0;top:0;height:22px;z-index:2;pointer-events:none;opacity:0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sq-primary) 18%,transparent) 45%,color-mix(in srgb,var(--sq-primary) 55%,transparent) 50%,color-mix(in srgb,var(--sq-primary) 18%,transparent) 55%,transparent);transition:top .16s cubic-bezier(.4,.1,.3,1),height .16s,opacity .3s}
 .sq-g5.sq-playing .sq-g5-scan{opacity:.85}
 
 /* the agent log: a control (14) */
@@ -65,7 +65,7 @@
 /* the screen frame (journey/screens.tsx): brand canvas and ink from the plan's variables */
 .sq-scr{box-sizing:border-box;width:min(360px,100%);background:var(--canvas);color:var(--fg);border-radius:20px;padding:26px 22px 24px;outline:none;box-shadow:0 0 0 1px color-mix(in srgb,var(--sq-ink) 10%,transparent),0 2px 4px rgba(21,22,26,.06),0 24px 48px -20px rgba(21,22,26,.38);transition:background-color .45s ease,color .45s ease}
 .sq-scr:focus-visible{box-shadow:0 0 0 3px var(--sq-focus)}
-.sq-scr [data-k]:hover,.sq-scr [data-k]:focus-visible{outline:1.5px solid var(--sq-primary);outline-offset:3px}
+.sq-scr [data-k]:hover:not(:has([data-k]:hover)),.sq-scr [data-k]:focus-visible{outline:1.5px solid var(--sq-primary);outline-offset:3px}
 .sq-e{position:relative;margin:0;transition:background-color .45s ease,color .45s ease,border-radius .45s cubic-bezier(.3,.7,.2,1),box-shadow .3s}
 
 /* skeleton → snap (the generation) */
@@ -102,9 +102,10 @@
   .sq-g5-src{contain:size}
 }
 
-/* ---- phone (#8): chips scroll sideways edge to edge; DESIGN.md and the screen are two tabs ---- */
+/* ---- phone (#8): chips scroll sideways edge to edge (16 to the log: 10 + the 6 kept for the scrollbar);
+   DESIGN.md and the screen are two tabs ---- */
 @media (max-width:900px){
-  .sq-g5-pick-wrap{margin:0 calc(-1 * var(--sq-gut)) 16px;padding:0 var(--sq-gut) 6px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scroll-padding-inline:var(--sq-gut)}
+  .sq-g5-pick-wrap{margin:0 calc(-1 * var(--sq-gut)) 10px;padding:0 var(--sq-gut) 6px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scroll-padding-inline:var(--sq-gut)}
   .sq-g5-pick{flex-wrap:nowrap;width:max-content}
   .sq-g5-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"log" "tabs" "pane";grid-template-rows:auto;row-gap:12px}
   .sq-g5-tabs{grid-area:tabs;display:flex;gap:4px;padding:4px;border-radius:var(--sq-r-pill);background:var(--sq-cell)}
