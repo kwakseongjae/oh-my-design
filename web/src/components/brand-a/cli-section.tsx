@@ -1,95 +1,91 @@
 import transcript from "@/data/cli-transcript.json";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
+import { getCliScreen } from "@/lib/landing-a/chat-data.server";
 import { CopyButton } from "./copy-button";
 import { CliSteps } from "./cli-steps";
 import { fmt, type BrandCopy } from "./copy";
 import type { R10Copy } from "./copy/r10";
+import { getR11Hero } from "./copy/r11-hero";
 
 /**
- * Round 10 "oh-my-design-cli 시작하기" (#use). Three steps beside the real transcript of the
- * published 2.0.3 package (data/cli-transcript.json, never edited), on the page's one dark field.
+ * Round 11 "oh-my-design-cli 시작하기" (#use, docs/REDESIGN_R11_PLAN_2026-10-20.md W3): one line of
+ * context, then two steps driven by scroll — install, then apply. On wide screens the step texts
+ * scroll past a sticky stage that changes with them; phones stack each step over its scene.
  *
- * What the terminal leaves out, at render time and named in the caption (DIRECTIONS.md):
- *   - the install run's per-file list (the transcript itself already marks it `elided`);
- *   - doctor's "Render checks: Google Chrome channel — /Applications/…" line;
- *   - the Next box's border, its blank rows, the two restart/trust notes, and the example
- *     prompt in the other language (ko keeps the KR line, every other locale the EN one).
- * Every printed line is otherwise verbatim (the box rows lose only their right border and padding).
+ *   install  the command (copyable; the hero's install box carries the same INSTALL) and the real
+ *            output of the published package (data/cli-transcript.json, recaptured with
+ *            scripts/capture-cli-transcript.mjs; the JSON's one cut — the per-file list — is
+ *            marked in the terminal with its line count).
+ *   apply    the agent trace (agent-trace.tsx, the hero's) on the left, the screen it writes on
+ *            the right: the CLI's own printed next step ("Using this DESIGN.md, design the home
+ *            screen.") on a Toss-inspired project, drawn only from Toss's verified tokens.
+ *
+ * What the terminal changes at render time, and only this (boxLines): the Next box loses its
+ * border characters, the padding before its right border and its blank rows; trailing spaces go.
+ * Every printed word stays, in order. The doctor run stays in the JSON (same schema) but is no
+ * longer shown — the "check" step is gone (owner, #12).
  */
 export const INSTALL = transcript.runs[0].cmd;
 
-const BOX_NOTE = /Start a new agent session|Codex also requires/;
-
-/** doctor's output, cut as the caption says, split at the Next box: [checks, next]. */
-export function doctorLines(locale: SiteLocale): [string[], string[]] {
-  const lines = transcript.runs[1].lines;
-  const drop = locale === "ko" ? /^\s+EN\s/ : /^\s+KR\s/;
-  const out: string[] = [];
-  for (let i = 0; i < lines.length; i++) {
-    const l = lines[i];
-    if (/Render checks:/.test(l)) { if (lines[i + 1] === "│") i++; continue; }
-    if (/^├─+╯$/.test(l)) continue;
-    if (l.startsWith("◇")) { out.push(l.replace(/\s*─+╮\s*$/, "")); continue; }
-    if (l.length > 2 && l.startsWith("│") && l.endsWith("│")) {
-      const inner = l.slice(1, -1).replace(/\s+$/, "");
-      if (!inner.trim() || BOX_NOTE.test(inner) || drop.test(inner)) continue;
-      out.push("│" + inner);
-      continue;
-    }
-    out.push(l);
-  }
-  const at = out.findIndex((l) => l.startsWith("◇"));
-  return [out.slice(0, at), out.slice(at)];
+/** The command as typed, breakable only at its spaces (never inside `oh-my-design-cli@latest`). */
+export function CmdText({ cmd = INSTALL }: { cmd?: string }) {
+  const words = cmd.split(" ");
+  return <>{words.map((w, i) => <span key={i}>{i ? " " : null}<span className="sq-nb">{w}</span></span>)}</>;
 }
 
-const Cmd = ({ cmd }: { cmd: string }) => (
-  <code className="sq-tc" lang="en"><span className="sq-tc-ps" aria-hidden="true">$ </span>{cmd}</code>
-);
-const tone = (l: string) => (l.startsWith("◆") || l.startsWith("└  Done") ? "sq-ta" : l.startsWith("▲") ? "sq-tw" : /^│\s+(KR|EN)\s/.test(l) ? "sq-tp" : undefined);
-const Out = ({ lines }: { lines: string[] }) => (
-  <pre className="sq-to" lang="en">{lines.map((l, i) => <span key={i} className={tone(l)}>{l + "\n"}</span>)}</pre>
-);
+/** A clack box printed flat: no ─╮ / ├─╯ rules, no right border or padding, no blank box rows. */
+export function boxLines(lines: readonly string[]): string[] {
+  const out: string[] = [];
+  for (const l of lines) {
+    if (/^├─+╯\s*$/.test(l)) continue;
+    if (/^◇\s/.test(l)) { out.push(l.replace(/\s*─+╮\s*$/, "")); continue; }
+    if (l.length > 2 && l.startsWith("│") && l.trimEnd().endsWith("│")) {
+      const inner = l.trimEnd().slice(1, -1).replace(/\s+$/, "");
+      if (inner.trim()) out.push("│" + inner);
+      continue;
+    }
+    out.push(l.replace(/\s+$/, ""));
+  }
+  return out;
+}
 
-export function CliSection({ locale, c, r, total, skills, skillsHref }: { locale: SiteLocale; c: BrandCopy; r: R10Copy; total: number; skills: number; skillsHref: string }) {
-  const [install, doctor] = transcript.runs;
-  const [checks, next] = doctorLines(locale);
-  const t = r.cli;
-  const steps = [
-    {
-      title: t.steps[0].t,
-      body: (
-        <>
-          <p>{t.steps[0].p}</p>
-          <div className="sq-cmd" role="group" aria-label={t.steps[0].t}>
-            <code lang="en"><span className="sq-cmd-ps" aria-hidden="true">$ </span>{INSTALL}</code>
-            <CopyButton text={INSTALL} labels={c.use} className="sq-cmd-copy" />
-          </div>
-        </>
-      ),
-    },
-    { title: t.steps[1].t, body: <><p>{t.steps[1].p}</p><p><code className="sq-chip-code" lang="en">{doctor.cmd}</code></p></> },
-    { title: t.steps[2].t, body: <><p>{t.steps[2].p}</p><p className="sq-say">{t.say}</p></> },
-  ];
-  const term = [
-    <>
-      <Cmd cmd={install.cmd} />
-      <pre className="sq-to" lang="en">
-        {install.lines.join("\n") + "\n"}
+/* the output's own marks: ◆ / Done the success tone, ▲ / ⚠ the warning tone, the prompts it tells you to send in full ink */
+const tone = (l: string) =>
+  /^(◆|└ {2}Done)/.test(l) ? "sq-ta" : /^(▲|│ {2}⚠)/.test(l) ? "sq-tw" : /^│ {4}\S/.test(l) ? "sq-tp" : undefined;
+
+/** Pre-hydration, right after the steps: hide the apply run that is about to play (agent-trace.tsx usePlay). */
+const APPLY_PRE = `(function(){try{var c=document.getElementById("cli-apply");if(c&&!/[?&]demo=/.test(location.search)&&!matchMedia("(prefers-reduced-motion: reduce)").matches)c.classList.add("sq-pre")}catch(e){}})();`;
+
+export function CliSection({ locale, c, r, skills, skillsHref }: { locale: SiteLocale; c: BrandCopy; r: R10Copy; total: number; skills: number; skillsHref: string }) {
+  const h = getR11Hero(locale);
+  const install = transcript.runs[0];
+  const tail = boxLines(install.tail);
+  const term = (
+    <div className="sq-term" role="region" aria-label={r.cli.term}>
+      <div className="sq-term-cmd">
+        <code lang="en"><span className="sq-tc-ps" aria-hidden="true">$ </span><CmdText /></code>
+        <CopyButton text={INSTALL} labels={c.use} className="sq-cmd-copy" />
+      </div>
+      <pre className="sq-to" lang="en" tabIndex={0}>
+        {boxLines(install.lines).map((l, i) => <span key={i} className={tone(l)}>{l + "\n"}</span>)}
         <span className="sq-tg" lang={locale === "zh-tw" ? "zh-Hant" : locale}>{"│  … " + fmt(c.use.gap, { n: install.elided }) + "\n"}</span>
-        <span className="sq-ta">{install.tail.join("\n")}</span>
+        {tail.map((l, i) => <span key={i} className={tone(l)}>{l + (i < tail.length - 1 ? "\n" : "")}</span>)}
       </pre>
-    </>,
-    <><Cmd cmd={doctor.cmd} /><Out lines={checks} /></>,
-    <Out lines={next} />,
-  ];
+    </div>
+  );
   return (
     <section className="sq-sec" id="use" aria-labelledby="h-use">
       <div className="sq-wrap">
-        <h2 id="h-use">{t.h2}</h2>
-        <p className="sq-intro">{fmt(t.p, { total })}</p>
-        <CliSteps steps={steps} term={term} label={t.h2} termLabel={t.term} />
-        <p className="sq-cli-cap">{fmt(t.caption, { ver: transcript.version, date: transcript.captured, n: install.elided })}</p>
-        <p className="sq-cli-skills" id="skills"><a href={skillsHref}>{fmt(t.skillsLine, { skills })}</a></p>
+        <h2 id="h-use">{r.cli.h2}</h2>
+        <p className="sq-intro">{h.cli.context}</p>
+        <CliSteps
+          steps={h.cli.steps}
+          label={r.cli.h2}
+          term={term}
+          apply={{ card: getCliScreen(locale), prompt: h.cli.prompt, think: h.cli.think, trace: h.trace }}
+        />
+        <script dangerouslySetInnerHTML={{ __html: APPLY_PRE }} />
+        <p className="sq-cli-skills" id="skills"><a href={skillsHref}>{fmt(r.cli.skillsLine, { skills })}</a></p>
       </div>
     </section>
   );

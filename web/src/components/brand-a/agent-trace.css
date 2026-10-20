@@ -1,0 +1,91 @@
+/* Round 11 agent trace + example-card layout (agent-trace.tsx), shared by the hero chat and the CLI
+   apply step. The trace sits on the site's sizes (15 for rows, 16 in the host's bubble); the card is
+   a content object whose colours, sizes, radii and heights are its company's tokens (inline styles
+   from chat-data.server.ts) — these classes only lay it out. No outlines: rows separate by space. */
+.sq-at{min-width:0}
+.sq-at-list{list-style:none;display:grid;gap:2px;margin:0;padding:0}
+.sq-at-step{min-width:0;animation:sq-at-rise .32s cubic-bezier(.2,.8,.2,1) both}
+.sq-at-row{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;min-height:34px;font-size:15px;line-height:1.45;color:var(--sq-ink-2)}
+button.sq-at-row{cursor:pointer;border-radius:var(--sq-r-inner)}
+button.sq-at-row:disabled{cursor:default}
+button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-at-ic{flex:none;display:grid;place-items:center;width:20px;height:20px;color:var(--sq-ink-2)}
+.sq-at-ic.sq-ok{color:var(--sq-ink)}
+.sq-at-spin{display:block;width:14px;height:14px;border-radius:50%;border:2px solid var(--sq-guide);border-top-color:var(--sq-primary);animation:sq-at-spin .8s linear infinite}
+.sq-pulse{animation:sq-at-pulse 1.2s ease-in-out infinite}
+.sq-at-l{flex:1;min-width:0;overflow-wrap:anywhere}
+.sq-at-tool{font-weight:650;color:var(--sq-ink)}
+.sq-at-tgt{font:inherit;font-family:var(--sq-f-mono);color:var(--sq-ink-2)}
+.sq-at-tgt span{font-family:var(--sq-f-mono)}
+.sq-at-diff{flex:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sq-at-diff ins{text-decoration:none;color:var(--sq-ok)}
+.sq-at-diff del{text-decoration:none;color:var(--sq-ink-2)}
+.sq-at-t{flex:none;min-width:3em;text-align:right;font-variant-numeric:tabular-nums;color:var(--sq-ink-2)}
+.sq-at-chev{flex:none;color:var(--sq-ink-2);transition:transform .2s}
+[aria-expanded="true"]>.sq-at-chev{transform:rotate(90deg)}
+.sq-at-why{margin:0 0 6px 30px;font-size:15px;line-height:1.55;color:var(--sq-ink-2)}
+.sq-at-note{margin:4px 0 0 30px;font-size:15px;line-height:1.5;color:var(--sq-ink-2)}
+.sq-at-note.sq-hold{visibility:hidden}
+.sq-at-sum{display:none}
+/* a running label: one sweep of light across the ink */
+.sq-shim{background:linear-gradient(90deg,var(--sq-ink-2) 0%,var(--sq-ink-2) 40%,var(--sq-n300) 50%,var(--sq-ink-2) 60%,var(--sq-ink-2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sq-shim 1.6s linear infinite}
+.sq-at-l.sq-shim *{color:transparent}
+
+/* a message (the user's prompt, the one Iris bubble) and the example card's frame: the frame is
+   the site's (card radius, a hairline ring like the stage's); its fill and everything inside are the
+   company's — the card's root node paints its canvas over the whole frame */
+.sq-msg-u{display:flex;justify-content:flex-end}
+.sq-bub{max-width:85%;padding:11px 18px;border-radius:var(--sq-r-bubble) var(--sq-r-bubble) var(--sq-r-inner) var(--sq-r-bubble);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;line-height:1.5}
+.sq-ex{min-height:0;border-radius:var(--sq-r-card);overflow:hidden;box-shadow:0 0 0 1px var(--sq-guide-2);transition:opacity .35s ease}
+.sq-ex-hide{opacity:0}
+/* the card is set in its root's face (a brand face the page loads, else the page face): the site's
+   :lang() face rules would otherwise reach every element inside it */
+.sq-ex :is(div,p,span,ul,li){font-family:inherit}
+
+/* the example card: layout only */
+.sq-ex-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:100%;padding:28px 32px;text-align:center}
+.sq-ex-col.sq-ex-start{align-items:flex-start;text-align:left}
+.sq-ex-pad{display:flex;flex-direction:column;justify-content:center;height:100%;padding:24px}
+.sq-ex-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:100%}
+.sq-ex-edge{border-style:solid;border-width:1px}
+.sq-ex-ic{display:grid;place-items:center;width:48px;height:48px;margin-bottom:8px}
+.sq-ex-ic svg{width:44px;height:44px}
+.sq-ex-ic-s{display:inline-grid;place-items:center;width:16px;height:16px}
+.sq-ex-ic-s svg{width:16px;height:16px}
+.sq-ex-rows{display:grid;gap:6px;width:100%;max-width:400px;margin:14px 0 18px;padding:14px 18px}
+.sq-ex-start .sq-ex-rows{max-width:none;margin:12px 0 16px}
+.sq-ex-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;min-width:0;text-align:left}
+.sq-ex-row>span:last-child{text-align:right}
+.sq-ex-kv{display:grid;width:100%;margin:6px 0 4px}
+.sq-ex-btn{display:inline-flex;align-items:center;justify-content:center;max-width:100%;white-space:nowrap}
+.sq-ex-col:not(.sq-ex-start)>.sq-ex-btn,.sq-ex-start .sq-ex-rows+.sq-ex-btn{width:100%;max-width:400px}
+.sq-ex-card>.sq-ex-btn{margin-top:12px}
+.sq-ex-stats{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;margin-top:10px}
+.sq-ex-tags{margin:2px 0 14px}
+.sq-ex-prop{margin-bottom:8px}
+.sq-ex-prop img{display:block;width:auto;height:96px}
+.sq-ex-wait{opacity:0}
+.sq-ex-in{animation:sq-at-rise .36s cubic-bezier(.2,.8,.2,1) both}
+
+@keyframes sq-at-spin{to{transform:rotate(360deg)}}
+@keyframes sq-at-pulse{50%{opacity:.4}}
+@keyframes sq-at-rise{from{opacity:0;transform:translateY(6px)}}
+@keyframes sq-shim{from{background-position:100% 0}to{background-position:-100% 0}}
+
+/* phones, hero only (compact): the run is one status row that opens into the list */
+@media (max-width:900px){
+  .sq-at-c .sq-at-sum{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;min-height:44px;font-size:15px;line-height:1.45;color:var(--sq-ink-2);cursor:pointer;border-radius:var(--sq-r-inner)}
+  .sq-at-c .sq-at-sum.sq-off{display:none}
+  .sq-at-c:not(.sq-open) .sq-at-list{display:none}
+  .sq-bub{max-width:92%}
+  .sq-ex-col{padding:24px 20px}
+  .sq-ex-pad{padding:16px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .sq-shim{animation:none;background:none;color:inherit}
+  .sq-at-l.sq-shim *{color:inherit}
+  .sq-at-spin,.sq-pulse{animation:none}
+  .sq-at-step,.sq-ex-in{animation:none}
+  .sq-at-chev,.sq-ex{transition:none}
+}

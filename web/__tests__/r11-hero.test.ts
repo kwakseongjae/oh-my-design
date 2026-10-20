@@ -126,3 +126,57 @@ describe("CLI transcript (recaptured with scripts/capture-cli-transcript.mjs)", 
     expect(transcript.note).toMatch(/per-file list/);
   });
 });
+
+describe("rendered: the hero chat and the CLI section", async () => {
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { ChatDemo } = await import("@/components/brand-a/chat-demo");
+  const { CliSection, boxLines, INSTALL } = await import("@/components/brand-a/cli-section");
+  const { getR10 } = await import("@/components/brand-a/copy/r10");
+  const { getCopy } = await import("@/components/brand-a/copy");
+  const visible = (html: string) => html.replace(/<[^>]+>/g, " ");
+
+  it("each locale's chat plays its own company, ends in the card, and carries no example label", () => {
+    for (const l of LOCALES) {
+      const h = getR11Hero(l);
+      const card = getChatCard(l, { Inter: "Inter", "Noto Sans CJK JP": "var(--font-noto-jp)" });
+      const html = renderToStaticMarkup(createElement(ChatDemo, { card, t: { chat: h.chat, trace: h.trace } }));
+      const text = visible(html);
+      expect(text, l).toContain(h.chat.prompt.replace(/'/g, "&#x27;"));
+      expect(text, l).toContain(h.chat.card.title);
+      expect(text, l).toContain(card.file);
+      expect(text, l).toContain(`+${card.lines}`);
+      expect(html, l).toContain(`data-company="${CHAT_COMPANY[l]}"`);
+      expect(text, l).not.toContain(getR10(l).chat.tag);
+      expect(text, l).not.toContain(getR10(l).chat.note.slice(0, 12));
+      expect(text, l).not.toContain(getR10(l).chat.bar);
+      const faceNote = h.trace.face.replace("{face}", "Toss Product Sans");
+      expect(text.includes(faceNote), l).toBe(l === "ko");
+    }
+  });
+
+  it("the CLI section: context line, install → apply, the real output, no caption, no doctor run", () => {
+    for (const l of LOCALES) {
+      const h = getR11Hero(l), r = getR10(l);
+      const html = renderToStaticMarkup(createElement(CliSection, { locale: l, c: getCopy(l), r, total: 521, skills: 31, skillsHref: "#" }));
+      const text = visible(html);
+      expect(text).toContain(h.cli.context);
+      expect(text).toContain(h.cli.steps[0].t);
+      expect(text).toContain(h.cli.steps[1].t);
+      expect(text).not.toContain(r.cli.steps[1].p); // r10's "check" step
+      const caption = r.cli.caption.replace("{ver}", transcript.version).replace("{date}", transcript.captured).replace("{n}", String(transcript.runs[0].elided));
+      expect(text).not.toContain(caption.slice(-24)); // r10's "real output of 2.0.3 on …" caption
+      expect(text).toMatch(/└ {2}Done\. \d+ skills/);
+      expect(text).not.toMatch(/Render checks|omd doctor/);
+      expect(text.replace(/\s+/g, " ")).toContain(INSTALL.replace(/\s+/g, " "));
+    }
+  });
+
+  it("the terminal only drops box borders, padding and blank box rows — every printed word stays", () => {
+    const [install] = transcript.runs;
+    const words = (ls: readonly string[]) => ls.join(" ").replace(/[│◇├─╮╯]/g, " ").split(/\s+/).filter(Boolean);
+    expect(words(boxLines(install.tail))).toEqual(words(install.tail));
+    expect(words(boxLines(install.lines))).toEqual(words(install.lines));
+    expect(boxLines(install.tail).some((x) => /[╮╯]/.test(x))).toBe(false);
+  });
+});
