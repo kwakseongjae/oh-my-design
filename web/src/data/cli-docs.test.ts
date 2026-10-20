@@ -1,18 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { CLI_DOCS } from "./cli-docs";
+import { CLI_DOCS, SKILL_GROUP_IDS } from "./cli-docs";
 import {
   DOC_LOCALES,
   DOC_HTML_LANG,
+  DOC_NAV_GROUPS,
   DOC_OG_LOCALE,
   DOC_PAGES,
   docsHref,
 } from "@/lib/docs/locales";
 import { getDocsToc } from "@/components/cli-docs/docs-route";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
-import { SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+
+const ALL_SKILLS: string[] = Object.values(SKILL_GROUP_IDS).flat();
 
 describe("localized CLI docs", () => {
-  it("ships every requested locale with every page label", () => {
+  it("ships every locale with a label for every page and nav group", () => {
     expect(Object.keys(CLI_DOCS).sort()).toEqual([...DOC_LOCALES].sort());
     for (const locale of DOC_LOCALES) {
       const dictionary = CLI_DOCS[locale];
@@ -20,61 +23,77 @@ describe("localized CLI docs", () => {
       for (const page of DOC_PAGES) {
         expect(dictionary.nav[page], `${locale}/${page}`).toBeTruthy();
       }
+      for (const group of DOC_NAV_GROUPS) {
+        expect(dictionary.navGroups[group.id], `${locale}/${group.id}`).toBeTruthy();
+      }
     }
   });
 
-  it("keeps the same outcome and skill-group shape across locales", () => {
+  it("puts every page in exactly one nav group, in reading order", () => {
+    expect(DOC_NAV_GROUPS.flatMap((group) => group.pages)).toEqual([...DOC_PAGES]);
+  });
+
+  it("keeps the same structure across locales", () => {
     const baseline = CLI_DOCS.en;
     for (const locale of DOC_LOCALES) {
-      expect(CLI_DOCS[locale].overview.outcomes).toHaveLength(baseline.overview.outcomes.length);
-      expect(CLI_DOCS[locale].demo.formats).toHaveLength(3);
-      expect(CLI_DOCS[locale].demo.steps).toHaveLength(6);
-      expect(CLI_DOCS[locale].demo.proof).toHaveLength(6);
-      expect(CLI_DOCS[locale].demo.guardrails).toHaveLength(4);
-      expect(CLI_DOCS[locale].skills.groups.map((group) => group.skills)).toEqual(
-        baseline.skills.groups.map((group) => group.skills),
-      );
-      expect(CLI_DOCS[locale].troubleshooting.cases).toHaveLength(
-        baseline.troubleshooting.cases.length,
-      );
+      const dictionary = CLI_DOCS[locale];
+      expect(dictionary.overview.outcomes).toHaveLength(baseline.overview.outcomes.length);
+      expect(dictionary.overview.next.map((item) => item.page)).toEqual(baseline.overview.next.map((item) => item.page));
+      expect(dictionary.gettingStarted.steps.map((step) => step.command)).toEqual(baseline.gettingStarted.steps.map((step) => step.command));
+      expect(dictionary.gettingStarted.steps.map((step) => Boolean(step.prompt))).toEqual(baseline.gettingStarted.steps.map((step) => Boolean(step.prompt)));
+      expect(dictionary.gettingStarted.channels.map((channel) => channel.command)).toEqual(baseline.gettingStarted.channels.map((channel) => channel.command));
+      expect(dictionary.gettingStarted.rawLinks).toHaveLength(baseline.gettingStarted.rawLinks.length);
+      expect(dictionary.demo.formats).toHaveLength(3);
+      expect(dictionary.demo.steps).toHaveLength(6);
+      expect(dictionary.demo.proof).toHaveLength(6);
+      expect(dictionary.demo.guardrails).toHaveLength(4);
+      expect(dictionary.skills.groups.map((group) => group.skills)).toEqual(baseline.skills.groups.map((group) => group.skills));
     }
   });
 
-  it("keeps installer and Cursor bundle counts aligned across all locales", () => {
+  it("describes every shipped skill, and only those, in every locale", () => {
+    expect(new Set(ALL_SKILLS).size).toBe(SKILL_COUNT);
+    expect(ALL_SKILLS).toContain("omd:autopilot");
+    for (const locale of DOC_LOCALES) {
+      const descriptions = CLI_DOCS[locale].skills.descriptions;
+      expect(Object.keys(descriptions).sort(), locale).toEqual([...ALL_SKILLS].sort());
+      for (const skill of ALL_SKILLS) expect(descriptions[skill]?.trim().length, `${locale} ${skill}`).toBeGreaterThan(8);
+    }
+  });
+
+  it("states the bundle and archive counts the build actually ships", () => {
     const cursorSkillCount = SKILL_COUNT - 1;
-    const documentedSkills = CLI_DOCS.en.skills.groups.flatMap((group) => group.skills);
-
-    expect(documentedSkills).toContain("omd:autopilot");
-    expect(new Set(documentedSkills).size).toBe(SKILL_COUNT);
-
     for (const locale of DOC_LOCALES) {
       const dictionary = CLI_DOCS[locale];
-      const overviewCounts = `${dictionary.overview.truthBody} ${dictionary.overview.proof}`;
-      const skillCounts = `${dictionary.skills.title} ${dictionary.skills.lead} ${dictionary.skills.countNote}`;
-      const cursorChannel = dictionary.gettingStarted.channels.find(
-        (channel) => channel.name === "Cursor",
-      );
+      const cursor = dictionary.gettingStarted.channels.find((channel) => channel.name === "Cursor");
 
-      expect(overviewCounts, locale).toContain(String(SKILL_COUNT));
-      expect(overviewCounts, locale).toContain(String(SUBAGENT_COUNT));
-      expect(overviewCounts, locale).toContain(String(cursorSkillCount));
-      expect(skillCounts, locale).toContain(String(SKILL_COUNT));
-      expect(skillCounts, locale).toContain(String(SUBAGENT_COUNT));
-      expect(cursorChannel?.body, locale).toContain(String(cursorSkillCount));
-      expect(dictionary.showcase.previewStats.join(" "), locale).toContain(
-        String(SKILL_COUNT),
-      );
-      expect(dictionary.showcase.previewStats.join(" "), locale).toContain(
-        String(SUBAGENT_COUNT),
-      );
+      expect(dictionary.overview.lead, locale).toContain(String(REFERENCE_COUNT));
+      expect(dictionary.overview.cli.body, locale).toContain(String(SKILL_COUNT));
+      expect(dictionary.overview.cli.body, locale).toContain(String(SUBAGENT_COUNT));
+      expect(dictionary.skills.lead, locale).toContain(String(SKILL_COUNT));
+      expect(dictionary.skills.lead, locale).toContain(String(SUBAGENT_COUNT));
+      expect(cursor?.body, locale).toContain(String(cursorSkillCount));
+    }
+  });
+
+  it("discloses the quality tiers with their real counts in every locale", () => {
+    for (const locale of DOC_LOCALES) {
+      const dictionary = CLI_DOCS[locale];
+      const quality = dictionary.overview.qualityBody;
+
+      expect(quality, locale).toContain("verified_v2");
+      expect(quality, locale).toContain("partial");
+      expect(quality, locale).toContain("legacy");
+      expect(quality, locale).toContain(String(REFERENCE_QUALITY_COUNTS.verified_v2));
+      expect(quality, locale).toContain(String(REFERENCE_QUALITY_COUNTS.partial));
+      expect(quality, locale).toContain(String(REFERENCE_QUALITY_COUNTS.legacy_snapshot));
+      expect(dictionary.demo.steps.map((step) => `${step.title} ${step.body}`).join(" "), locale).toContain("verified_v2");
     }
   });
 
   it("builds stable localized paths", () => {
     expect(docsHref("ko")).toBe("/docs/ko");
-    expect(docsHref("zh-tw", "getting-started")).toBe(
-      "/docs/zh-tw/getting-started",
-    );
+    expect(docsHref("zh-tw", "getting-started")).toBe("/docs/zh-tw/getting-started");
     expect(docsHref("ja", "demo")).toBe("/docs/ja/demo");
   });
 
@@ -98,57 +117,46 @@ describe("localized CLI docs", () => {
     });
   });
 
-  it("presents the 440-reference catalog as quality graded in every locale", () => {
-    const cursorRuleTerms = {
-      en: "project rule",
-      ko: "프로젝트 규칙",
-      ja: "プロジェクトルール",
-      "zh-cn": "项目规则",
-      "zh-tw": "專案規則",
-    } satisfies Record<(typeof DOC_LOCALES)[number], string>;
-
-    for (const locale of DOC_LOCALES) {
+  it("does not inherit English copy into translated locales", () => {
+    const en = CLI_DOCS.en;
+    for (const locale of DOC_LOCALES.filter((item) => item !== "en")) {
       const dictionary = CLI_DOCS[locale];
-      const qualityDisclosure = `${dictionary.overview.truthBody} ${dictionary.ui.pipelineNote}`;
-
-      expect(qualityDisclosure, locale).toContain("verified_v2");
-      expect(qualityDisclosure, locale).toContain(String(REFERENCE_QUALITY_COUNTS.verified_v2));
-      expect(qualityDisclosure, locale).toContain(String(REFERENCE_QUALITY_COUNTS.partial));
-      expect(qualityDisclosure, locale).toContain(String(REFERENCE_QUALITY_COUNTS.legacy_snapshot));
-      expect(dictionary.overview.truthBody, locale).toContain(String(REFERENCE_QUALITY_COUNTS.total));
-      expect(dictionary.demo.steps.map((step) => `${step.title} ${step.body}`).join(" "), locale)
-        .toContain("verified_v2");
-      expect(dictionary.overview.truthBody, locale).toContain("Cursor");
-      expect(dictionary.overview.truthBody.toLowerCase(), locale).toContain(
-        cursorRuleTerms[locale].toLowerCase(),
-      );
+      expect(dictionary.metaDescription).not.toBe(en.metaDescription);
+      expect(dictionary.overview.lead).not.toBe(en.overview.lead);
+      expect(dictionary.overview.archive.body).not.toBe(en.overview.archive.body);
+      expect(dictionary.overview.qualityBody).not.toBe(en.overview.qualityBody);
+      expect(dictionary.gettingStarted.lead).not.toBe(en.gettingStarted.lead);
+      expect(dictionary.gettingStarted.steps.map((step) => step.prompt)).not.toEqual(en.gettingStarted.steps.map((step) => step.prompt));
+      expect(dictionary.gettingStarted.rawBody).not.toBe(en.gettingStarted.rawBody);
+      expect(dictionary.skills.lead).not.toBe(en.skills.lead);
+      expect(dictionary.skills.descriptions["omd:init"]).not.toBe(en.skills.descriptions["omd:init"]);
+      expect(dictionary.demo.title).not.toBe(en.demo.title);
+      expect(dictionary.demo.starterPrompt).not.toBe(en.demo.starterPrompt);
     }
   });
 
-  it("does not inherit English case-study or catalog copy into translated locales", () => {
-    for (const locale of DOC_LOCALES.filter((item) => item !== "en")) {
-      expect(CLI_DOCS[locale].showcase.prompt).not.toBe(CLI_DOCS.en.showcase.prompt);
-      expect(CLI_DOCS[locale].showcase.verification).not.toEqual(
-        CLI_DOCS.en.showcase.verification,
-      );
-      expect(CLI_DOCS[locale].showcase.previewStats).not.toEqual(
-        CLI_DOCS.en.showcase.previewStats,
-      );
-      expect(CLI_DOCS[locale].showcase.productCase.prompt).not.toBe(
-        CLI_DOCS.en.showcase.productCase.prompt,
-      );
-      expect(CLI_DOCS[locale].showcase.productCase.videoSummary).not.toBe(
-        CLI_DOCS.en.showcase.productCase.videoSummary,
-      );
-      expect(CLI_DOCS[locale].ai.catalogTitle).not.toBe(
-        CLI_DOCS.en.ai.catalogTitle,
-      );
-      expect(CLI_DOCS[locale].ui.pipeline).not.toBe(CLI_DOCS.en.ui.pipeline);
-      expect(CLI_DOCS[locale].demo.title).not.toBe(CLI_DOCS.en.demo.title);
-      expect(CLI_DOCS[locale].demo.starterPrompt).not.toBe(
-        CLI_DOCS.en.demo.starterPrompt,
-      );
+  it("points each locale at its own agent index", () => {
+    const own = { en: "/llms.txt", ko: "/llms.ko.txt", ja: "/llms.ja.txt", "zh-cn": "/llms.zh-cn.txt", "zh-tw": "/llms.zh-tw.txt" } as const;
+    for (const locale of DOC_LOCALES) {
+      const hrefs = CLI_DOCS[locale].gettingStarted.rawLinks.map((link) => link.href);
+      expect(hrefs, locale).toEqual(["/toss/design.md", own[locale], "/llms-full.txt"]);
     }
+  });
+
+  it("writes the Korean docs in 해요체", () => {
+    // Prompts are what a user types to an agent (반말), and the anti-slop "before"
+    // specimens are deliberately bad copy; everything else speaks 해요체.
+    const skip = new Set(["prompt", "starterPrompt", "beforeTitle", "beforeBody", "beforeSignals", "command", "href", "label", "ruleIds", "id", "skills"]);
+    const formal: string[] = [];
+    const walk = (value: unknown, key: string) => {
+      if (skip.has(key)) return;
+      if (typeof value === "string") {
+        if (/니다(?=[.。!?\s"”’)]|$)/.test(value)) formal.push(`${key}: ${value}`);
+      } else if (Array.isArray(value)) value.forEach((item) => walk(item, key));
+      else if (value && typeof value === "object") for (const [k, v] of Object.entries(value)) walk(v, k);
+    };
+    walk(CLI_DOCS.ko, "ko");
+    expect(formal).toEqual([]);
   });
 
   it("ships independent, locale-native anti-slop guidance in all five locales", () => {
@@ -179,9 +187,7 @@ describe("localized CLI docs", () => {
     expect(JSON.stringify(CLI_DOCS.ja.antiSlop)).toContain("AI エージェント");
     expect(JSON.stringify(CLI_DOCS["zh-cn"].antiSlop)).toContain("AI 编程助手");
     expect(JSON.stringify(CLI_DOCS["zh-tw"].antiSlop)).toContain("AI 程式助理");
-    expect(CLI_DOCS["zh-tw"].antiSlop.title).not.toBe(
-      CLI_DOCS["zh-cn"].antiSlop.title,
-    );
+    expect(CLI_DOCS["zh-tw"].antiSlop.title).not.toBe(CLI_DOCS["zh-cn"].antiSlop.title);
   });
 
   it("keeps the live-demo contract honest in every locale", () => {
@@ -196,28 +202,27 @@ describe("localized CLI docs", () => {
     }
   });
 
-  it("scopes the controlled showcase evidence honestly in every locale", () => {
+  it("keeps doctor in getting started, where the old troubleshooting URL now lands", () => {
     for (const locale of DOC_LOCALES) {
-      const productCase = CLI_DOCS[locale].showcase.productCase;
-      expect(productCase.metrics).toHaveLength(4);
-      expect(productCase.metrics.join(" ")).toContain("18");
-      expect(productCase.historicalNote).toContain("18");
-      expect(productCase.historicalNote).toContain("MCP");
-      expect(productCase.disclosure).toContain("Apple");
-      expect(productCase.beforeAlt.length).toBeGreaterThan(15);
-      expect(productCase.afterAlt.length).toBeGreaterThan(15);
-      expect(productCase.videoSummary.length).toBeGreaterThan(15);
+      const steps = CLI_DOCS[locale].gettingStarted.steps;
+      expect(steps.some((step) => step.command?.endsWith(" doctor")), locale).toBe(true);
     }
   });
 
-  it("has a non-empty table of contents for every generated route", () => {
+  it("has a non-empty table of contents with unique ids for every route", () => {
     for (const locale of DOC_LOCALES) {
       for (const page of DOC_PAGES) {
         const toc = getDocsToc(CLI_DOCS[locale], page);
-        expect(Array.isArray(toc), `${locale}/${page}`).toBe(true);
         expect(toc.length, `${locale}/${page}`).toBeGreaterThan(0);
         expect(new Set(toc.map((item) => item.id)).size, `${locale}/${page}`).toBe(toc.length);
+        expect(toc.every((item) => item.label.trim().length > 0), `${locale}/${page}`).toBe(true);
       }
+    }
+  });
+
+  it("links the raw-file section the old docs-for-AI URL now lands on", () => {
+    for (const locale of DOC_LOCALES) {
+      expect(getDocsToc(CLI_DOCS[locale], "getting-started").map((item) => item.id), locale).toContain("without-cli");
     }
   });
 });

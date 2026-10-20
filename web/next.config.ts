@@ -6,6 +6,10 @@ import type { NextConfig } from "next";
 const BLOG_ORIGIN = "https://blog.oh-my-design.kr";
 const BLOG_ON_SUBDOMAIN = process.env.NEXT_PUBLIC_BLOG_SUBDOMAIN === "1";
 
+// Docs locales, mirrored from src/lib/docs/locales.ts (DOC_LOCALES) for the same
+// reason; __tests__/docs-redirects.test.ts asserts they agree.
+const DOCS_LOCALE_PATTERN = "en|ko|ja|zh-cn|zh-tw";
+
 const nextConfig: NextConfig = {
   trailingSlash: false,
   // Two root layouts — app/(en) renders <html lang="en">, app/(ko) renders
@@ -54,7 +58,9 @@ const nextConfig: NextConfig = {
       // /qa-references (noindex) had none and are left to 404.
       { source: "/font-playground", destination: "/design-systems", permanent: true },
       { source: "/presets", destination: "/docs/en/skills", permanent: true },
-      { source: "/benchmarks", destination: "/docs/en/showcase", permanent: true },
+      // Pointed at /docs/en/showcase until that page was removed (round 11, below);
+      // it goes straight to the docs overview now rather than chaining two hops.
+      { source: "/benchmarks", destination: "/docs/en", permanent: true },
       // Merged pages (same decision). Each old URL lands on the content it
       // used to hold: collection slugs become the directory filter, version
       // and comparison pages become anchors on their single page.
@@ -63,7 +69,20 @@ const nextConfig: NextConfig = {
       { source: "/changelog/:version", destination: "/changelog#v:version", permanent: true },
       { source: "/alternatives/:slug", destination: "/alternatives#:slug", permanent: true },
       { source: "/cli", destination: "/docs/en", permanent: true },
-      { source: "/docs/connector", destination: "/docs/en/ai", permanent: true },
+      // The retired MCP connector's docs page (listed in the Connectors Directory
+      // submission). What it promised, reading DESIGN.md from an agent without a
+      // browser, now lives in "Use a DESIGN.md without the CLI". It pointed at
+      // /docs/en/ai until that page was removed in round 11.
+      { source: "/docs/connector", destination: "/docs/en/getting-started#without-cli", permanent: true },
+      // Docs pages removed in round 11 (2026-10-20, owner review item 28), in all
+      // five locales: the showcase case study goes to the overview; troubleshooting
+      // to getting started, whose quick start runs `doctor`; "docs for AI" to the
+      // raw-file section that replaced it. Table: DELETED_DOCS_PAGES in
+      // src/lib/docs/locales.ts. The /docs-md/<locale>/<page>.md twins of these
+      // pages were never linked anywhere, so they are left to 404.
+      { source: `/docs/:locale(${DOCS_LOCALE_PATTERN})/showcase`, destination: "/docs/:locale", permanent: true },
+      { source: `/docs/:locale(${DOCS_LOCALE_PATTERN})/troubleshooting`, destination: "/docs/:locale/getting-started", permanent: true },
+      { source: `/docs/:locale(${DOCS_LOCALE_PATTERN})/ai`, destination: "/docs/:locale/getting-started#without-cli", permanent: true },
       // /builder itself is not here: it is a Route Handler
       // (src/app/builder/route.ts) because an unknown ref must reach the
       // catalog, which a config rule cannot check. A rule here would shadow it.

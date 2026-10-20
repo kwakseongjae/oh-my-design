@@ -22,7 +22,8 @@ import {
   WandSparkles,
 } from "lucide-react";
 import type { CliDocsDictionary } from "@/data/cli-docs";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DocsHead, DocsSection } from "./docs-blocks";
+import { DocsTabs } from "./docs-tabs";
 
 type AntiSlopContent = CliDocsDictionary["antiSlop"];
 type Example = AntiSlopContent["examples"][number];
@@ -50,10 +51,8 @@ function SpecimenCell({
 }) {
   return (
     <div className="min-w-0">
-      <p className={`mb-2 font-mono text-[8px] font-semibold uppercase tracking-[0.16em] ${improved ? "text-primary" : "text-muted-foreground"}`}>
-        {label}
-      </p>
-      <div className={`min-h-48 overflow-hidden rounded-xl bg-background p-3 ${improved ? "ring-1 ring-primary/20" : "ring-1 ring-foreground/10"}`}>
+      <p className="dx-spec-label">{label}</p>
+      <div className={`dx-spec ${improved ? "dx-spec-after" : ""}`}>
         {children}
       </div>
     </div>
@@ -361,24 +360,17 @@ function TextSpecimen({ example, side }: { example: Example; side: "before" | "a
   const isBefore = side === "before";
   const signals = isBefore ? example.beforeSignals : example.afterSignals;
   return (
-    <div className={isBefore ? "rounded-xl bg-muted/45 p-5 ring-1 ring-foreground/10" : "rounded-xl bg-background p-5 ring-1 ring-primary/20"}>
-      <p className="text-lg font-medium leading-7 tracking-tight text-foreground">
-        {isBefore ? example.beforeTitle : example.afterTitle}
-      </p>
-      <p className="mt-3 text-sm leading-6 text-muted-foreground">
-        {isBefore ? example.beforeBody : example.afterBody}
-      </p>
-      <div className="mt-6 flex flex-wrap gap-1.5 border-t border-border/70 pt-4">
+    <div className={`dx-spec dx-spec-text ${isBefore ? "" : "dx-spec-after"}`}>
+      <p className="dx-spec-title">{isBefore ? example.beforeTitle : example.afterTitle}</p>
+      <p className="dx-spec-body">{isBefore ? example.beforeBody : example.afterBody}</p>
+      <ul className="dx-spec-signals">
         {signals.map((signal) => (
-          <span
-            key={signal}
-            className={isBefore ? "rounded-md bg-background px-2 py-1 text-[10px] text-muted-foreground ring-1 ring-foreground/10" : "inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[10px] font-medium text-primary"}
-          >
-            {!isBefore && <Check className="size-2.5" />}
+          <li key={signal}>
+            {!isBefore && <Check className="size-3" aria-hidden="true" />}
             {signal}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -386,44 +378,37 @@ function TextSpecimen({ example, side }: { example: Example; side: "before" | "a
 function ComparisonPanel({ content, example }: { content: AntiSlopContent; example: Example }) {
   const isInterface = example.id === "interface";
   return (
-    <TabsContent value={example.id} className="mt-5">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] lg:items-center">
+    <div className="dx-compare">
+      <div className="dx-compare-pair">
         <div>
-          <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">{content.beforeLabel}</p>
+          <p className="dx-spec-label">{content.beforeLabel}</p>
           {isInterface ? (
-            <div>
+            <>
               <BeforeInterfaceSpecimen nextGen={content.specimen.nextGen} />
-              <h3 className="mt-4 text-base font-medium text-foreground">{example.beforeTitle}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{example.beforeBody}</p>
-            </div>
+              <h3 className="dx-h3 dx-compare-h">{example.beforeTitle}</h3>
+              <p className="dx-p dx-muted">{example.beforeBody}</p>
+            </>
           ) : <TextSpecimen example={example} side="before" />}
         </div>
-        <span className="mx-auto hidden size-8 items-center justify-center rounded-full bg-muted text-muted-foreground ring-1 ring-foreground/10 lg:flex">
-          <ArrowRight className="size-3.5" />
-        </span>
         <div>
-          <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">{content.afterLabel}</p>
+          <p className="dx-spec-label">{content.afterLabel}</p>
           {isInterface ? (
-            <div>
+            <>
               <AfterInterfaceSpecimen specimen={content.specimen} />
-              <h3 className="mt-4 text-base font-medium text-foreground">{example.afterTitle}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{example.afterBody}</p>
-            </div>
+              <h3 className="dx-h3 dx-compare-h">{example.afterTitle}</h3>
+              <p className="dx-p dx-muted">{example.afterBody}</p>
+            </>
           ) : <TextSpecimen example={example} side="after" />}
         </div>
       </div>
-      <div className="mt-5 grid gap-3 border-y border-border/70 py-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
-        <div className="flex flex-wrap gap-1.5">
-          {example.ruleIds.map((ruleId) => (
-            <code key={ruleId} className="rounded-md bg-muted px-2 py-1 text-[10px] text-foreground/70">{ruleId}</code>
-          ))}
-        </div>
-        <p className="text-sm leading-6 text-muted-foreground sm:pl-3">
-          <span className="mr-2 font-medium text-foreground">{content.detectedLabel}</span>
-          {example.reason}
-        </p>
-      </div>
-    </TabsContent>
+      <dl className="dx-kv dx-compare-why">
+        <dt>{content.detectedLabel}</dt>
+        <dd>{example.reason}</dd>
+      </dl>
+      <span className="dx-tags">
+        {example.ruleIds.map((ruleId) => <code key={ruleId} translate="no">{ruleId}</code>)}
+      </span>
+    </div>
   );
 }
 
@@ -431,153 +416,121 @@ export function AntiSlopPage({ dictionary }: { dictionary: CliDocsDictionary }) 
   const content = dictionary.antiSlop;
   const exampleOrder = { interface: 0, writing: 1, locale: 2 } as const;
   const orderedExamples = [...content.examples].sort((left, right) => exampleOrder[left.id] - exampleOrder[right.id]);
-  const defaultExample = orderedExamples[0]?.id;
 
   return (
     <article>
-      <header className="mb-8 border-b border-border/60 pb-6 sm:mb-14 sm:pb-10">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">{content.eyebrow}</p>
-        <h1 className="mt-3 max-w-3xl text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground sm:mt-4 sm:text-5xl lg:text-6xl">
-          {content.title}
-        </h1>
-        <p className="mt-4 max-w-2xl text-pretty text-sm leading-6 text-muted-foreground sm:mt-6 sm:text-lg sm:leading-8">{content.lead}</p>
-      </header>
+      <DocsHead title={content.title} lead={content.lead} />
 
-      <section id="definition" className="scroll-mt-24">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">01 — {content.definitionTitle}</p>
-        <p className="mt-5 max-w-4xl text-balance text-2xl font-medium leading-tight tracking-[-0.025em] text-foreground sm:text-4xl">
-          {content.definitionBody}
-        </p>
-        <p className="mt-6 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">{content.definitionNote}</p>
-      </section>
+      <DocsSection id="definition" title={content.definitionTitle}>
+        <p className="dx-statement">{content.definitionBody}</p>
+        <p className="dx-p dx-muted" style={{ marginTop: 16 }}>{content.definitionNote}</p>
+      </DocsSection>
 
-      <section id="principles" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.principlesTitle}</h2>
-        <ol className="mt-7 border-y border-border/70">
-          {content.principles.map((principle, index) => (
-            <li key={principle.title} className="grid gap-3 border-b border-border/70 py-5 last:border-b-0 sm:grid-cols-[3rem_minmax(0,0.55fr)_minmax(0,1fr)] sm:items-start sm:gap-5">
-              <span className="font-mono text-xs font-medium tabular-nums text-primary">0{index + 1}</span>
-              <h3 className="text-sm font-semibold text-foreground">{principle.title}</h3>
-              <p className="text-sm leading-6 text-muted-foreground">{principle.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section id="atlas" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.atlasTitle}</h2>
-        <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">{content.atlasLead}</p>
-        <div className="mt-8 divide-y divide-border/70 border-y border-border/70">
-          {content.lenses.map((lens, index) => (
-            <article key={lens.id} className="grid gap-7 py-8 lg:grid-cols-[minmax(20rem,0.85fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
-              <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
-                <LensVisual
-                  id={lens.id}
-                  beforeLabel={content.slopSignalLabel}
-                  afterLabel={content.designerPreferenceLabel}
-                  specimen={content.specimen}
-                  ui={content.specimenUi}
-                />
-              </div>
-              <div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-[10px] font-semibold tabular-nums text-primary">{String(index + 1).padStart(2, "0")}</span>
-                  <h3 className="text-xl font-semibold tracking-[-0.025em] text-foreground">{lens.title}</h3>
-                </div>
-                <p className="mt-3 text-sm font-medium leading-6 text-foreground">{lens.question}</p>
-                <dl className="mt-6 grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <dt className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">{content.slopSignalLabel}</dt>
-                    <dd className="mt-2 text-xs leading-5 text-muted-foreground">{lens.slop}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-primary">{content.designerPreferenceLabel}</dt>
-                    <dd className="mt-2 text-xs leading-5 text-foreground/75">{lens.preference}</dd>
-                  </div>
-                  <div className="sm:col-span-2 border-t border-border/70 pt-4">
-                    <dt className="text-[10px] font-medium text-foreground">{content.validWhenLabel}</dt>
-                    <dd className="mt-1 text-xs leading-5 text-muted-foreground">{lens.validWhen}</dd>
-                  </div>
-                </dl>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {lens.ruleIds.map((ruleId) => <code key={ruleId} className="rounded-md bg-muted px-2 py-1 text-[9px] text-foreground/65">{ruleId}</code>)}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="directions" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.directionsTitle}</h2>
-        <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">{content.directionsLead}</p>
-        <div className="mt-8 grid gap-x-8 gap-y-10 lg:grid-cols-3">
-          {content.directions.map((direction) => (
-            <article key={direction.id} className="border-t border-foreground/20 pt-5">
-              <DirectionVisual direction={direction} />
-              <h3 className="mt-6 text-base font-semibold text-foreground">{direction.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{direction.body}</p>
-              <p className="mt-4 text-xs leading-5 text-foreground/75">{direction.proof}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="comparison" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.compareTitle}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">{content.compareLead}</p>
-        <Tabs defaultValue={defaultExample} className="mt-7">
-          <TabsList className="grid h-10 w-full grid-cols-3 sm:w-fit sm:min-w-96" aria-label={content.compareTitle}>
-            {orderedExamples.map((example) => {
-              const Icon = exampleIcons[example.id];
-              return <TabsTrigger key={example.id} value={example.id} className="px-2 sm:px-4"><Icon className="size-3.5" />{example.tab}</TabsTrigger>;
-            })}
-          </TabsList>
-          {orderedExamples.map((example) => <ComparisonPanel key={example.id} content={content} example={example} />)}
-        </Tabs>
-      </section>
-
-      <section id="classifier" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.classifierTitle}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">{content.classifierLead}</p>
-        <div className="mt-7 divide-y divide-border/70 border-y border-border/70">
-          {content.classifications.map((item) => (
-            <div key={item.label} className="grid gap-3 py-5 sm:grid-cols-[7rem_minmax(0,0.65fr)_minmax(0,1fr)] sm:items-start sm:gap-5">
-              <span className={item.label === "SLOP" ? "w-fit rounded-md bg-primary px-2 py-1 font-mono text-[10px] font-semibold tracking-wider text-primary-foreground" : "w-fit rounded-md bg-muted px-2 py-1 font-mono text-[10px] font-semibold tracking-wider text-foreground/65"}>{item.label}</span>
-              <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
-              <p className="text-sm leading-6 text-muted-foreground">{item.body}</p>
+      <DocsSection id="principles" title={content.principlesTitle}>
+        <div className="dx-stack-lg" style={{ gap: 24 }}>
+          {content.principles.map((principle) => (
+            <div key={principle.title} className="dx-item" style={{ gap: 6 }}>
+              <h3 className="dx-h3">{principle.title}</h3>
+              <p className="dx-p dx-muted">{principle.body}</p>
             </div>
           ))}
         </div>
-      </section>
+      </DocsSection>
 
-      <section id="workflow" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.workflowTitle}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">{content.workflowLead}</p>
-        <ol className="mt-7 grid border-y border-border/70 lg:grid-cols-5">
-          {content.workflow.map((step, index) => (
-            <li key={step.title} className="border-b border-border/70 py-5 last:border-b-0 lg:border-b-0 lg:border-r lg:px-4 lg:last:border-r-0 lg:first:pl-0 lg:last:pr-0">
-              <span className="font-mono text-xs font-semibold tabular-nums text-primary">0{index + 1}</span>
-              <h3 className="mt-4 text-sm font-semibold leading-5 text-foreground">{step.title}</h3>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">{step.body}</p>
+      <DocsSection id="atlas" title={content.atlasTitle} lead={content.atlasLead}>
+        <div className="dx-stack-lg" style={{ gap: 56 }}>
+          {content.lenses.map((lens) => (
+            <div key={lens.id} className="dx-item">
+              <h3 className="dx-h3">{lens.title}</h3>
+              <p className="dx-p">{lens.question}</p>
+              <LensVisual
+                id={lens.id}
+                beforeLabel={content.slopSignalLabel}
+                afterLabel={content.designerPreferenceLabel}
+                specimen={content.specimen}
+                ui={content.specimenUi}
+              />
+              <dl className="dx-kv">
+                <dt>{content.slopSignalLabel}</dt>
+                <dd>{lens.slop}</dd>
+                <dt>{content.designerPreferenceLabel}</dt>
+                <dd>{lens.preference}</dd>
+                <dt>{content.validWhenLabel}</dt>
+                <dd>{lens.validWhen}</dd>
+              </dl>
+              <span className="dx-tags">
+                {lens.ruleIds.map((ruleId) => <code key={ruleId} translate="no">{ruleId}</code>)}
+              </span>
+            </div>
+          ))}
+        </div>
+      </DocsSection>
+
+      <DocsSection id="directions" title={content.directionsTitle} lead={content.directionsLead}>
+        <div className="dx-stack-lg">
+          {content.directions.map((direction) => (
+            <div key={direction.id} className="dx-item dx-direction">
+              <DirectionVisual direction={direction} />
+              <div className="dx-item" style={{ gap: 8 }}>
+                <h3 className="dx-h3">{direction.title}</h3>
+                <p className="dx-p dx-muted">{direction.body}</p>
+                <p className="dx-p">{direction.proof}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </DocsSection>
+
+      <DocsSection id="comparison" title={content.compareTitle} lead={content.compareLead}>
+        <DocsTabs
+          label={content.compareTitle}
+          tabs={orderedExamples.map((example) => {
+            const Icon = exampleIcons[example.id];
+            return {
+              value: example.id,
+              label: <><Icon className="size-4" aria-hidden="true" style={{ marginRight: 6 }} />{example.tab}</>,
+              panel: <ComparisonPanel content={content} example={example} />,
+            };
+          })}
+        />
+      </DocsSection>
+
+      <DocsSection id="classifier" title={content.classifierTitle} lead={content.classifierLead}>
+        <div className="dx-stack-lg" style={{ gap: 24 }}>
+          {content.classifications.map((item) => (
+            <div key={item.label} className="dx-item" style={{ gap: 6 }}>
+              <span className="dx-tags"><code translate="no">{item.label}</code></span>
+              <h3 className="dx-h3">{item.title}</h3>
+              <p className="dx-p dx-muted">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </DocsSection>
+
+      <DocsSection id="workflow" title={content.workflowTitle} lead={content.workflowLead}>
+        <ol className="dx-steps">
+          {content.workflow.map((step) => (
+            <li key={step.title}>
+              <h3 className="dx-h3">{step.title}</h3>
+              <p className="dx-p dx-muted">{step.body}</p>
             </li>
           ))}
         </ol>
-      </section>
+      </DocsSection>
 
-      <section id="sources" className="mt-20 scroll-mt-24">
-        <h2 className="text-balance text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">{content.sourcesTitle}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">{content.sourcesLead}</p>
-        <div className="mt-7 divide-y divide-border/70 border-y border-border/70">
+      <DocsSection id="sources" title={content.sourcesTitle} lead={content.sourcesLead}>
+        <ul className="dx-rows">
           {content.sources.map((source) => (
-            <a key={source.href} href={source.href} target="_blank" rel="noreferrer" className="group grid gap-2 rounded-lg py-4 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:grid-cols-[12rem_minmax(0,1fr)_auto] sm:items-center sm:gap-5">
-              <span className="text-sm font-medium text-foreground group-hover:text-primary">{source.label}</span>
-              <span className="text-xs leading-5 text-muted-foreground">{source.note}</span>
-              <ArrowUpRight className="size-3.5 text-muted-foreground group-hover:text-primary" />
-            </a>
+            <li key={source.href}>
+              <a className="dx-row" href={source.href} target="_blank" rel="noreferrer">
+                <span className="dx-row-t" lang="en">{source.label}</span>
+                <span className="dx-row-d">{source.note}</span>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </li>
           ))}
-        </div>
-      </section>
+        </ul>
+      </DocsSection>
     </article>
   );
 }

@@ -39,6 +39,7 @@ for this product using confirmed values only. Keep unknown facts absent.
 - 验证真实产品路由与状态后才算完成。
 
 Docs: https://oh-my-design.kr/docs/zh-cn
+Skills: https://oh-my-design.kr/docs/zh-cn/skills
 Live demo: https://oh-my-design.kr/docs/zh-cn/demo
 AI slop 判定与对比: https://oh-my-design.kr/docs/zh-cn/anti-slop
 Full context: https://oh-my-design.kr/llms-full.txt

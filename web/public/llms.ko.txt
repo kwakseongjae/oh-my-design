@@ -78,6 +78,7 @@ Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 30개를 읽고, 
 ## 사람용 문서
 
 - 한국어: https://oh-my-design.kr/docs/ko
+- 스킬 목록과 각 스킬이 하는 일: https://oh-my-design.kr/docs/ko/skills
 - 한국어 라이브 데모 실행표: https://oh-my-design.kr/docs/ko/demo
 - AI slop 판정 기준과 비교: https://oh-my-design.kr/docs/ko/anti-slop
 - English: https://oh-my-design.kr/docs/en

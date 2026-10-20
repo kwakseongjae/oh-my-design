@@ -34,9 +34,6 @@ function pageDescription(locale: DocsLocale, page: DocsPage): string {
     case "demo": return dictionary.demo.lead;
     case "skills": return dictionary.skills.lead;
     case "anti-slop": return dictionary.antiSlop.lead;
-    case "showcase": return dictionary.showcase.lead;
-    case "troubleshooting": return dictionary.troubleshooting.lead;
-    case "ai": return dictionary.ai.lead;
   }
 }
 
@@ -60,7 +57,7 @@ export async function generateMetadata({
   const page = resolvePage(slug);
   if (!page) return {};
   const dictionary = CLI_DOCS[rawLocale];
-  const title = `${dictionary.nav[page]} — oh-my-design CLI`;
+  const title = `${dictionary.nav[page]} — oh-my-design ${dictionary.ui.docs}`;
   const description = pageDescription(rawLocale, page);
   const languages = {
     ...docsAlternates(page),
@@ -76,7 +73,7 @@ export async function generateMetadata({
     },
     // A child App Router segment cannot safely replace the root <html> without
     // splitting the whole application into route-group root layouts. Keep the
-    // 40 static routes and scope their complete server-rendered document body
+    // 30 static routes and scope their complete server-rendered document body
     // with `lang` in DocsShell; this server-rendered metadata mirrors that
     // locale for clients and crawlers that inspect route metadata.
     other: {
@@ -88,7 +85,7 @@ export async function generateMetadata({
       type: "article",
       locale: DOC_OG_LOCALE[rawLocale],
       url: docsHref(rawLocale, page),
-      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "oh-my-design CLI" }],
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "oh-my-design" }],
     },
     twitter: {
       card: "summary_large_image",

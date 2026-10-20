@@ -90,32 +90,23 @@ export function DocsToc({ items, label }: { items: TocItem[]; label: string }) {
     };
   }, [items]);
 
+  // The current section is the page's one Iris state (docs.css: .dx-toc a[aria-current]).
   return (
-    <div>
-      <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-        {label}
-      </p>
-      <nav className="space-y-1 border-l border-border" aria-label={label}>
-        {items.map((item) => {
-          const isActive = item.id === activeId;
-
-          return (
+    <nav aria-label={label}>
+      <p className="dx-toc-title" aria-hidden="true">{label}</p>
+      <ol>
+        {items.map((item) => (
+          <li key={item.id}>
             <a
-              key={item.id}
               href={`#${item.id}`}
-              aria-current={isActive ? "location" : undefined}
+              aria-current={item.id === activeId ? "location" : undefined}
               onClick={() => setActiveId(item.id)}
-              className={`relative -ml-px block rounded-r-lg border-l-2 px-3 py-1.5 text-[12px] leading-5 transition-colors focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 ${
-                isActive
-                  ? "border-primary bg-primary/10 font-medium text-primary"
-                  : "border-transparent text-muted-foreground hover:bg-muted/60 hover:text-foreground"
-              }`}
             >
               {item.label}
             </a>
-          );
-        })}
-      </nav>
-    </div>
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 }

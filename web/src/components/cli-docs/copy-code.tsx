@@ -21,6 +21,16 @@ export function copyStatusMessage(
   return "";
 }
 
+/** A terminal command (npx, npm …); anything else is a prompt said to the coding agent. */
+export function isShellCommand(code: string): boolean {
+  return /^(?:npx|npm|pnpm|yarn|bun|bunx)\s/.test(code);
+}
+
+/**
+ * A copyable block. Shell commands sit in the landing's dark command field with a `$` per
+ * line; prompts for the agent sit on a light field in the reading face. The label stays
+ * visible on the button and the outcome is announced once through a polite live region.
+ */
 export function CopyCode({
   code,
   copyLabel,
@@ -37,7 +47,7 @@ export function CopyCode({
   const [status, setStatus] = useState<"idle" | "copying" | "copied" | "failed">("idle");
   const inFlight = useRef(false);
   const resetTimer = useRef<number | null>(null);
-  const isShellCommand = /^(?:npx|npm|pnpm|yarn|bun|bunx)\s/.test(code);
+  const shell = isShellCommand(code);
 
   useEffect(() => () => {
     if (resetTimer.current) window.clearTimeout(resetTimer.current);
@@ -78,25 +88,33 @@ export function CopyCode({
   }
 
   return (
-    <div className="group relative overflow-hidden rounded-lg bg-card ring-1 ring-foreground/10">
-      <div className={`flex min-w-0 items-start gap-3 px-4 py-3.5 pr-24 ${isShellCommand ? "" : "min-h-20"}`}>
-        {isShellCommand && <span aria-hidden className="pt-0.5 font-mono text-xs text-primary">$</span>}
-        <code className={`min-w-0 font-mono text-[13px] leading-6 text-foreground/90 ${isShellCommand ? "overflow-x-auto whitespace-pre" : "whitespace-pre-wrap break-words"}`}>
-          {code}
-        </code>
-      </div>
+    <div className={`dx-code ${shell ? "dx-code-shell" : "dx-code-prompt"}`}>
+      <pre>
+        {shell ? (
+          <code translate="no">
+            {code.split("\n").map((line, index) => (
+              <span key={index} style={{ display: "block" }}>
+                <span className="dx-code-ps" aria-hidden="true">$ </span>
+                {line}
+              </span>
+            ))}
+          </code>
+        ) : (
+          code
+        )}
+      </pre>
       <button
         type="button"
         onClick={onCopy}
         disabled={status === "copying"}
         aria-busy={status === "copying"}
         aria-label={copyLabel}
-        className="absolute right-2 top-2 inline-flex h-8 items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:cursor-wait disabled:opacity-70 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        className={`dx-copy${status === "copied" ? " dx-ok" : ""}`}
       >
-        {status === "copied" ? <Check className="h-3.5 w-3.5 text-primary" /> : <Copy className="h-3.5 w-3.5" />}
+        {status === "copied" ? <Check size={15} aria-hidden="true" /> : <Copy size={15} aria-hidden="true" />}
         <span aria-hidden="true">{status === "copied" ? copiedLabel : status === "failed" ? failureLabel : copyLabel}</span>
       </button>
-      <span className="sr-only" role="status" aria-live="polite">
+      <span className="sq-sr" role="status" aria-live="polite">
         {copyStatusMessage(status, copiedLabel, failureLabel)}
       </span>
     </div>
