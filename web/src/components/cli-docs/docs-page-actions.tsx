@@ -38,22 +38,22 @@ export function DocsPageActions({
   const llmsState = copyState?.target === "llms" ? copyState.status : null;
 
   return (
-    <div className="mb-8 flex flex-wrap items-center justify-end gap-2 sm:mb-10" aria-label={labels.pageTools}>
+    <div className="dx-tools" role="group" aria-label={labels.pageTools}>
       <button
         type="button"
         onClick={(event) => void copyText("page", pageContent, event.currentTarget)}
-        className="inline-flex h-8 items-center gap-1.5 rounded-lg bg-background px-3 text-xs font-medium text-foreground/75 ring-1 ring-foreground/10 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        className={`dx-tool${pageState === "copied" ? " dx-ok" : ""}`}
       >
-        {pageState === "copied" ? <Check className="h-3.5 w-3.5 text-primary" /> : <Copy className="h-3.5 w-3.5" />}
-        {pageState === "copied" ? labels.pageCopied : pageState === "failed" ? labels.copyFailed : labels.copyPage}
+        {pageState === "copied" ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+        <span aria-live="polite">{pageState === "copied" ? labels.pageCopied : pageState === "failed" ? labels.copyFailed : labels.copyPage}</span>
       </button>
       <button
         type="button"
         onClick={(event) => void copyText("llms", llmsContent, event.currentTarget)}
-        className="inline-flex h-8 items-center gap-1.5 rounded-lg bg-background px-3 font-mono text-[11px] font-medium text-muted-foreground ring-1 ring-foreground/10 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        className={`dx-tool${llmsState === "copied" ? " dx-ok" : ""}`}
       >
-        {llmsState === "copied" ? <Check className="h-3.5 w-3.5 text-primary" /> : <FileText className="h-3.5 w-3.5" />}
-        {llmsState === "copied" ? labels.copied : llmsState === "failed" ? labels.copyFailed : "llms.txt"}
+        {llmsState === "copied" ? <Check size={16} aria-hidden="true" /> : <FileText size={16} aria-hidden="true" />}
+        <span aria-live="polite" lang={llmsState ? undefined : "en"}>{llmsState === "copied" ? labels.copied : llmsState === "failed" ? labels.copyFailed : "llms.txt"}</span>
       </button>
     </div>
   );

@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
+import { REFERENCE_COUNT, SKILL_COUNT } from "@/lib/catalog-count";
+// Wanted Sans' Hangul slices (unicode-range), so /docs/ko sets Korean in the brand face as
+// /ko does. The docs share the English root layout, which loads only the Latin slices.
+import "@/styles/wanted-sans-cjk.css";
+
+const description = `How to use oh-my-design: take one of ${REFERENCE_COUNT} DESIGN.md files from the archive, install oh-my-design-cli and its ${SKILL_COUNT} frontend skills, and have your coding agent build your UI with it.`;
 
 export const metadata: Metadata = {
   title: {
-    default: "oh-my-design CLI Docs",
+    default: "oh-my-design Docs",
     template: "%s",
   },
-  description:
-    "Outcome-first documentation for oh-my-design: deploy channel-compatible assets from 31 skills and 20 specialist definitions, choose a quality-graded reference, run doctor, and improve a real product route.",
+  description,
   openGraph: {
-    title: "oh-my-design — Docs",
-    description:
-      "Skill-driven design harness for Claude Code, Codex, OpenCode, Cursor.",
+    title: "oh-my-design Docs",
+    description: "The DESIGN.md archive and oh-my-design-cli: install, workflows, skills.",
     type: "article",
     images: [DEFAULT_OG_IMAGE],
   },

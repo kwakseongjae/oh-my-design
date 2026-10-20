@@ -1,4 +1,4 @@
-import { CLI_DOCS } from "@/data/cli-docs";
+import { CLI_DOCS, CLI_DOCTOR_COMMAND, CLI_INSTALL_COMMAND } from "@/data/cli-docs";
 import { docsHref, docsLlmsHref, type DocsLocale, type DocsPage } from "./locales";
 
 const SITE_URL = "https://oh-my-design.kr";
@@ -37,13 +37,16 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
     case "overview": {
       const content = dictionary.overview;
       begin(content.title, content.lead);
+      add(...section(content.partsTitle));
+      add(`### ${content.archive.name}`, content.archive.body);
+      add(`### ${content.cli.name}`, content.cli.body);
+      add(...section(content.installTitle, content.installBody), ...code(CLI_INSTALL_COMMAND), ...code(CLI_DOCTOR_COMMAND), content.afterInstall);
       add(...section(content.outcomesTitle, content.outcomesLead));
       for (const outcome of content.outcomes) {
-        add(`### ${outcome.title}`, outcome.description, `**${dictionary.ui.prompt}**`, ...code(outcome.prompt), `**${dictionary.ui.result}**`, outcome.result);
+        add(`### ${outcome.title}`, outcome.description, `**${dictionary.ui.prompt}**`, ...code(outcome.prompt), `**${dictionary.ui.result}:** ${outcome.result}`);
       }
-      add(`> **${content.truthTitle}** ${content.truthBody}`, content.proof);
-      add(...section(content.installTitle, content.installBody), ...code("npx oh-my-design-cli@latest"), ...code("npx oh-my-design-cli@latest doctor"), content.afterInstall);
-      add(...section(content.differentiatorTitle), ...bullets(content.differentiators));
+      add(...section(content.qualityTitle, content.qualityBody));
+      add(...section(content.nextTitle), ...content.next.map((item) => `- [${dictionary.nav[item.page]}](${SITE_URL}${docsHref(locale, item.page)}): ${item.body}`));
       break;
     }
     case "getting-started": {
@@ -51,9 +54,16 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
       begin(content.title, content.lead);
       add(...section(content.prerequisitesTitle), ...bullets(content.prerequisites));
       add(...section(content.stepsTitle));
-      content.steps.forEach((step, index) => add(`### ${index + 1}. ${step.title}`, step.body, ...(step.command ? code(step.command) : [])));
-      add(...section(content.channelsTitle));
+      content.steps.forEach((step, index) => add(
+        `### ${index + 1}. ${step.title}`,
+        step.body,
+        ...(step.command ? code(step.command) : []),
+        ...(step.prompt ? [`**${dictionary.ui.prompt}**`, ...code(step.prompt)] : []),
+      ));
+      add(...section(content.channelsTitle, content.channelsLead));
       content.channels.forEach((channel) => add(`### ${channel.name}`, channel.body, ...code(channel.command)));
+      add(...section(content.rawTitle, content.rawBody));
+      add(...content.rawLinks.map((link) => `- [${link.label}](${SITE_URL}${link.href}): ${link.description}`));
       add(...section(content.doneTitle, content.doneBody));
       break;
     }
@@ -81,8 +91,9 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
     case "skills": {
       const content = dictionary.skills;
       begin(content.title, content.lead);
-      add(content.countNote);
-      for (const group of content.groups) add(`## ${group.title}`, group.description, ...bullets(group.skills.map((skill) => `\`${skill}\``)));
+      for (const group of content.groups) {
+        add(`## ${group.title}`, group.description, ...bullets(group.skills.map((skill) => `\`${skill}\` — ${content.descriptions[skill]}`)));
+      }
       add(...section(content.routingTitle, content.routingBody));
       break;
     }
@@ -125,32 +136,6 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
       content.workflow.forEach((step, index) => add(`### ${index + 1}. ${step.title}`, step.body));
       add(...section(content.sourcesTitle, content.sourcesLead));
       content.sources.forEach((source) => add(`- [${source.label}](${source.href}) — ${source.note}`));
-      break;
-    }
-    case "showcase": {
-      const content = dictionary.showcase;
-      begin(content.title, content.lead);
-      const product = content.productCase;
-      add(`## ${product.title}`, product.lead, ...bullets(product.metrics));
-      add(`### ${product.promptLabel}`, ...code(product.prompt), product.disclosure, product.historicalNote);
-      add(`- [${product.promptLinkLabel}](${SITE_URL}/showcase/applepresso/PROMPT.md)`, `- [${product.provenanceLinkLabel}](${SITE_URL}/showcase/applepresso/provenance.json)`);
-      break;
-    }
-    case "troubleshooting": {
-      const content = dictionary.troubleshooting;
-      begin(content.title, content.lead);
-      add(...section(content.doctorTitle, content.doctorBody), ...code("npx oh-my-design-cli@latest doctor"));
-      for (const item of content.cases) add(`## ${item.symptom}`, item.fix);
-      break;
-    }
-    case "ai": {
-      const content = dictionary.ai;
-      begin(content.title, content.lead);
-      add(...section(content.machineTitle, content.machineBody));
-      for (const link of content.machineLinks) add(`- [${link.label}](${SITE_URL}${link.href}) — ${link.description}`);
-      add(...section(content.promptTitle), ...code(content.prompt));
-      add(...section(content.contractTitle), ...bullets(content.contract));
-      add(...section(content.catalogTitle, content.catalogBody));
       break;
     }
   }

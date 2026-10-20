@@ -1,0 +1,210 @@
+/* Docs (round 11, owner review item 28): a technical-documentation layout after the Vercel and
+   Next.js docs: grouped left nav, one reading column, an "on this page" list whose current
+   section is the page's one Iris state. Restraint (RESTRAINT.md): one accent; separation by
+   space and tone, not rules or outlined boxes; no eyebrows, mono captions or index numbers;
+   radius 14 on controls and 20 on cards; light only. Tokens come from styles/brand-a.css, and
+   shell commands use the landing's dark command field (cli.css .sq-cmd) so the site reads as one.
+   Type scale: 40 / 28 / 19 / 16 / 15, plus 14 for code (mobile 32 / 24 / 18): h3 and the lede share 19. */
+
+.dx-root{--dx-nav:240px;--dx-toc:208px;--dx-gap:48px;--dx-read:46rem;--dx-top:calc(var(--sq-header-h) + 32px);min-height:100vh}
+/* zh-TW / zh-CN docs carry region subtags, which chrome.css's :lang(zh-Hant) does not match */
+.dx-root:lang(zh-TW){font-family:var(--sq-f-tc);line-break:strict}
+.dx-root:lang(zh-CN){font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",var(--sq-f-latin),sans-serif;line-break:strict}
+.dx-root:lang(ja){line-break:strict}
+.dx-root:is(:lang(ja),:lang(zh-TW),:lang(zh-CN)) .dx-doc{line-height:1.85}
+.dx-root:lang(ko) .dx-doc :is(h1,h2,h3,p,li,dd,dt,a,span,summary){word-break:keep-all;overflow-wrap:anywhere}
+.dx-root code,.dx-root kbd,.dx-root pre{font-family:var(--sq-f-mono)}
+
+/* ---- frame ---- */
+.dx-layout{display:grid;grid-template-columns:var(--dx-nav) minmax(0,1fr) var(--dx-toc);gap:var(--dx-gap);max-width:var(--sq-max);margin:0 auto;padding:0 var(--sq-gut)}
+.dx-side,.dx-toc{position:sticky;top:var(--dx-top);align-self:start;max-height:calc(100vh - var(--dx-top) - 16px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 4px 48px 0}
+.dx-side{padding-top:4px}
+.dx-main{min-width:0;padding:32px 0 96px}
+.dx-main:focus{outline:none}
+.dx-doc{max-width:var(--dx-read);margin:0 auto;font-size:16px;line-height:1.75;color:var(--sq-ink)}
+
+/* ---- left nav ---- */
+.dx-nav{display:grid;gap:28px}
+.dx-nav-group{display:grid;gap:2px}
+.dx-nav-title{padding:0 12px 6px;font-size:15px;font-weight:700;color:var(--sq-ink)}
+.dx-nav a{display:flex;align-items:center;min-height:36px;padding:6px 12px;border-radius:var(--sq-r-ctl);font-size:15px;line-height:1.4;color:var(--sq-ink-2);transition:background-color .15s,color .15s}
+.dx-nav a:hover{background:var(--sq-cell);color:var(--sq-ink)}
+.dx-nav a[aria-current="page"]{background:var(--sq-cell);color:var(--sq-ink);font-weight:650}
+
+/* phones and small tablets: the nav folds into one disclosure under the header */
+.dx-mnav{display:none}
+.dx-mnav summary{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-radius:var(--sq-r-ctl);background:var(--sq-cell);font-size:15px;font-weight:650;color:var(--sq-ink);cursor:pointer;list-style:none}
+.dx-mnav summary::-webkit-details-marker{display:none}
+.dx-mnav summary svg{flex-shrink:0;color:var(--sq-ink-2)}
+.dx-mnav summary svg:last-child{margin-left:auto;transition:transform .15s}
+.dx-mnav details[open] summary svg:last-child{transform:rotate(180deg)}
+.dx-mnav .dx-nav{padding:16px 0 8px}
+.dx-mnav summary:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+
+/* ---- on this page ---- */
+.dx-toc-title{padding:0 0 10px 14px;font-size:15px;font-weight:700;color:var(--sq-ink)}
+.dx-toc ol{list-style:none;display:grid;gap:2px}
+.dx-toc a{position:relative;display:block;padding:5px 8px 5px 14px;border-radius:0 var(--sq-r-inner) var(--sq-r-inner) 0;font-size:15px;line-height:1.45;color:var(--sq-ink-2);transition:color .15s}
+.dx-toc a:hover{color:var(--sq-ink)}
+.dx-toc a::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;border-radius:var(--sq-r-pill);background:transparent;transition:background-color .15s}
+.dx-toc a[aria-current="location"]{color:var(--sq-primary);font-weight:650}
+.dx-toc a[aria-current="location"]::before{background:var(--sq-primary)}
+
+/* ---- page head ---- */
+.dx-tools{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.dx-tool{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px;border-radius:var(--sq-r-ctl);font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap;transition:background-color .15s,color .15s}
+.dx-tool:hover{background:var(--sq-cell);color:var(--sq-ink)}
+.dx-tool:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.dx-tool svg{flex-shrink:0}
+.dx-tool.dx-ok svg{color:var(--sq-ok)}
+.dx-h1{font-size:40px;line-height:1.15;font-weight:var(--sq-fw-heading);letter-spacing:-0.025em;text-wrap:balance}
+.dx-lede{margin-top:16px;font-size:19px;line-height:1.6;color:var(--sq-ink-2);text-wrap:pretty}
+.dx-head{margin-bottom:56px}
+
+/* ---- sections and text ---- */
+.dx-sec{margin-top:64px}
+.dx-sec:first-of-type{margin-top:0}
+/* anchor jumps: html's scroll-padding-top (80px, chrome.css .sq-root-page) plus 16 here lands a heading at ~96px, above the TOC's 144px reading line */
+.dx-h2{font-size:28px;line-height:1.25;font-weight:var(--sq-fw-heading);letter-spacing:-0.02em;text-wrap:balance;scroll-margin-top:16px}
+.dx-h3{font-size:19px;line-height:1.4;font-weight:700;letter-spacing:-0.01em}
+.dx-sec>.dx-h2+*{margin-top:16px}
+.dx-p{text-wrap:pretty}
+.dx-p+.dx-p{margin-top:12px}
+.dx-muted{color:var(--sq-ink-2)}
+.dx-doc a.dx-link{color:var(--sq-ink);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
+.dx-doc a.dx-link:hover{color:var(--sq-primary);text-decoration-color:currentColor}
+.dx-doc :not(pre)>code{padding:2px 6px;border-radius:var(--sq-r-inner);background:var(--sq-cell);font-size:.875em;overflow-wrap:anywhere}
+.dx-list{display:grid;gap:8px;padding-left:1.25em;list-style:disc}
+.dx-list li::marker{color:var(--sq-icon)}
+.dx-stack{display:grid;gap:12px}
+.dx-stack-lg{display:grid;gap:40px}
+.dx-sec .dx-stack,.dx-sec .dx-stack-lg,.dx-sec .dx-list,.dx-sec .dx-cards,.dx-sec .dx-steps,.dx-sec .dx-rows,.dx-sec .dx-tabs{margin-top:24px}
+
+/* ---- code: shell commands sit in the landing's dark field; prompts to the agent on a light one ---- */
+.dx-code{position:relative;display:flex;align-items:flex-start;gap:12px;min-width:0;border-radius:var(--sq-r-ctl)}
+.dx-code pre{flex:1;min-width:0;margin:0;font-size:14px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.dx-code-shell{padding:9px 8px 9px 18px;background:var(--sq-term);color:var(--sq-term-ink)}
+.dx-code-shell pre{padding:6px 0;font-weight:500}
+.dx-code-ps{color:var(--sq-term-dim);user-select:none}
+.dx-code-prompt{padding:12px 8px 12px 18px;background:var(--sq-cell);color:var(--sq-ink)}
+.dx-code-prompt pre{padding:4px 0;font-family:inherit;font-size:15px;line-height:1.7}
+.dx-copy{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:76px;height:36px;padding:0 12px;border-radius:calc(var(--sq-r-ctl) - 4px);font-size:14px;font-weight:600;transition:background-color .15s,color .15s}
+.dx-copy:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.dx-copy[aria-busy="true"]{cursor:wait;opacity:.7}
+.dx-code-shell .dx-copy{background:color-mix(in srgb,#fff 12%,var(--sq-term));color:var(--sq-term-ink)}
+.dx-code-shell .dx-copy:hover{background:color-mix(in srgb,#fff 22%,var(--sq-term))}
+.dx-code-shell .dx-copy:focus-visible{outline-color:var(--sq-p300)}
+.dx-code-shell .dx-copy.dx-ok{color:var(--sq-term-acc)}
+.dx-code-prompt .dx-copy{background:var(--sq-paper);color:var(--sq-ink-2)}
+.dx-code-prompt .dx-copy:hover{color:var(--sq-ink)}
+.dx-code-prompt .dx-copy.dx-ok{color:var(--sq-ok)}
+
+/* ---- numbered steps (a real sequence, so the numbers stay) ---- */
+.dx-steps{list-style:none;counter-reset:dx-step;display:grid;gap:32px}
+.dx-steps>li{counter-increment:dx-step;display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:16px}
+.dx-steps>li::before{content:counter(dx-step);display:flex;align-items:center;justify-content:center;width:28px;height:28px;margin-top:-1px;border-radius:var(--sq-r-pill);background:var(--sq-cell);font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--sq-ink)}
+.dx-steps>li>*{grid-column:2}
+.dx-steps .dx-h3+*{margin-top:6px}
+.dx-steps .dx-code{margin-top:14px}
+
+/* ---- cards (radius 20, tone only) ---- */
+.dx-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dx-card{display:flex;flex-direction:column;gap:10px;padding:24px;border-radius:var(--sq-r-card);background:var(--sq-band)}
+.dx-card .dx-p{color:var(--sq-ink-2)}
+.dx-card-action{margin-top:auto;padding-top:6px;display:inline-flex;align-items:center;gap:6px;align-self:flex-start;font-weight:650;color:var(--sq-ink);transition:color .15s}
+.dx-card-action:hover{color:var(--sq-primary)}
+.dx-callout{padding:24px;border-radius:var(--sq-r-card);background:var(--sq-band)}
+.dx-callout .dx-p{margin-top:8px;color:var(--sq-ink-2)}
+
+/* ---- link rows (raw files, next steps, sources) ---- */
+.dx-rows{display:grid;gap:4px;list-style:none}
+.dx-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 16px;padding:12px 14px;margin:0 -14px;border-radius:var(--sq-r-ctl);transition:background-color .15s}
+.dx-row:hover{background:var(--sq-cell)}
+.dx-row-t{font-weight:650;color:var(--sq-ink)}
+.dx-row-t code{padding:0;background:none;font-size:15px}
+.dx-row-d{grid-column:1;font-size:15px;line-height:1.6;color:var(--sq-ink-2)}
+.dx-row svg{grid-column:2;grid-row:1/span 2;color:var(--sq-icon);transition:color .15s,transform .15s}
+.dx-row:hover svg{color:var(--sq-ink)}
+
+/* ---- outcome / workflow items ---- */
+.dx-item{display:grid;gap:12px}
+.dx-item .dx-p{color:var(--sq-ink-2)}
+.dx-kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:15px;line-height:1.6}
+.dx-kv dt{font-weight:650;color:var(--sq-ink)}
+.dx-kv dd{color:var(--sq-ink-2)}
+.dx-tags{display:flex;flex-wrap:wrap;gap:6px}
+.dx-tags code{padding:3px 9px;border-radius:var(--sq-r-inner);background:var(--sq-cell);font-size:13.5px;color:var(--sq-ink)}
+
+/* ---- skills reference ---- */
+.dx-skills{display:grid;gap:2px;margin-top:20px}
+.dx-skill{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:4px 20px;padding:10px 0}
+.dx-skill code{justify-self:start;padding:2px 8px;border-radius:var(--sq-r-inner);background:var(--sq-cell);font-size:14px;line-height:1.6;color:var(--sq-ink)}
+.dx-skill p{font-size:15px;line-height:1.6;color:var(--sq-ink-2)}
+
+/* ---- tabs (channel installs) ---- */
+.dx-tablist{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:var(--sq-r-ctl);background:var(--sq-cell)}
+.dx-tab{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:calc(var(--sq-r-ctl) - 4px);font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap;transition:background-color .15s,color .15s}
+.dx-tab:hover{color:var(--sq-ink)}
+.dx-tab[data-active],.dx-tab[aria-selected="true"]{background:var(--sq-paper);color:var(--sq-ink);font-weight:650;box-shadow:0 1px 2px rgba(20,20,60,.08)}
+.dx-tab:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.dx-tabpanel{margin-top:16px}
+.dx-tabpanel[hidden]{display:none}
+.dx-tabpanel .dx-p{margin-bottom:14px;color:var(--sq-ink-2)}
+
+/* ---- previous / next ---- */
+.dx-pager{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:96px}
+.dx-pager a{display:grid;gap:4px;padding:18px 22px;border-radius:var(--sq-r-card);background:var(--sq-band);transition:background-color .15s}
+.dx-pager a:hover{background:var(--sq-cell)}
+.dx-pager a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.dx-pager small{display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--sq-ink-2)}
+.dx-pager b{font-size:16px;font-weight:650;color:var(--sq-ink)}
+.dx-pager .dx-next{grid-column:2;text-align:right;justify-items:end}
+
+/* ---- responsive ---- */
+@media (max-width:1199px){
+  .dx-layout{grid-template-columns:var(--dx-nav) minmax(0,1fr)}
+  .dx-toc{display:none}
+}
+@media (max-width:899px){
+  .dx-layout{display:block}
+  .dx-side{display:none}
+  .dx-mnav{display:block;max-width:var(--sq-max);margin:0 auto;padding:4px var(--sq-gut) 0}
+  .dx-main{padding:28px 0 72px}
+  .dx-h1{font-size:32px}
+  .dx-lede,.dx-h3,.dx-statement{font-size:18px}
+  .dx-head{margin-bottom:44px}
+  .dx-sec{margin-top:52px}
+  .dx-h2{font-size:24px}
+  .dx-cards{grid-template-columns:minmax(0,1fr)}
+  .dx-skill{grid-template-columns:minmax(0,1fr)}
+  .dx-pager{margin-top:72px;grid-template-columns:minmax(0,1fr)}
+  .dx-pager .dx-next{grid-column:1}
+}
+@media (max-width:480px){
+  .dx-code{flex-direction:column;align-items:stretch;gap:4px}
+  .dx-code-shell,.dx-code-prompt{padding:10px 10px 10px 16px}
+  .dx-copy{align-self:flex-end}
+}
+@media (prefers-reduced-motion:reduce){
+  .dx-root *{transition:none!important}
+}
+
+/* ---- AI slop page: specimens (illustrations of a rule, aria-hidden) and comparisons ---- */
+.dx-statement{font-size:19px;line-height:1.6;font-weight:500;color:var(--sq-ink);text-wrap:pretty}
+.dx-spec-label{margin-bottom:8px;font-size:15px;font-weight:650;color:var(--sq-ink-2)}
+.dx-spec{min-height:12rem;overflow:hidden;padding:12px;border-radius:var(--sq-r-ctl);background:var(--sq-band)}
+.dx-spec-after{background:var(--sq-paper);box-shadow:inset 0 0 0 1.5px var(--sq-guide-2)}
+.dx-spec-text{display:flex;flex-direction:column;gap:10px;padding:20px;min-height:0}
+.dx-spec-title{font-size:17px;line-height:1.5;font-weight:650;color:var(--sq-ink)}
+.dx-spec-body{font-size:15px;line-height:1.65;color:var(--sq-ink-2)}
+.dx-spec-signals{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px;list-style:none}
+.dx-spec-signals li{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:var(--sq-r-inner);background:var(--sq-cell);font-size:13.5px;color:var(--sq-ink-2)}
+.dx-spec-after .dx-spec-signals li{color:var(--sq-ink)}
+.dx-compare{display:grid;gap:16px}
+.dx-compare-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dx-compare-h{margin-top:14px}
+.dx-compare-pair .dx-p{margin-top:6px;font-size:15px}
+.dx-direction{grid-template-columns:minmax(0,16rem) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:899px){
+  .dx-compare-pair,.dx-direction{grid-template-columns:minmax(0,1fr)}
+}
