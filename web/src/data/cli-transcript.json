@@ -1,16 +1,46 @@
 {
- "note": "Real terminal output of oh-my-design-cli 2.0.3 (npx, published package), captured 2026-10-14 in an empty project (package.json only), macOS. Lines are verbatim; `elided` marks lines left out (the per-file 'created' list of the install run). doctor ran with PLAYWRIGHT_BROWSERS_PATH pointed at an empty folder so no personal cache path is printed. Raw captures: docs/research/2026-10-13-rebrand/impl/r5/cli/.",
- "version": "2.0.3",
- "captured": "2026-10-14",
+ "note": "Real terminal output of oh-my-design-cli 2.0.4 (npx, published package), captured 2026-10-20 in an empty project (package.json only), macOS, piped (no TTY, no colour). Lines are verbatim; `elided` counts the one cut: the install run's per-file list (181 \"created/updated\" rows and the blank \"│\" rows between them), which is identical noise. doctor ran with PLAYWRIGHT_BROWSERS_PATH pointed at an empty folder so no personal cache path is printed. Capture: scripts/capture-cli-transcript.mjs; raw files: docs/research/2026-10-20-r11/hero/transcript/raw/ (local).",
+ "version": "2.0.4",
+ "captured": "2026-10-20",
  "runs": [
   {
    "cmd": "npx oh-my-design-cli@latest",
    "lines": [
-    "┌  omd install-skills  (.)"
+    "┌  omd install-skills  (.)",
+    "│",
+    "│  Scope: project  (.)",
+    "│",
+    "│  Skills (31): claude-design, omd-aphrodite, omd-apply, omd-asset-fetch, omd-autopilot, omd-cjk-type-shader, omd-codex-image, omd-designer-review, omd-experiment-gallery, omd-feel, omd-final-qa, omd-harness, omd-humanize, omd-init, omd-issue, omd-kr-writer, omd-landing, omd-learn, omd-locale-adapter, omd-media, omd-orchestrator, omd-reference-capture, omd-remember, omd-restraint, omd-setup, omd-shader-hero, omd-showcase, omd-slop-audit, omd-sync, omd-taste, omd-update",
+    "│",
+    "│  Agents (20): omd-a11y-auditor, omd-art-director, omd-asset-curator, omd-codex-image, omd-critic, omd-design-system-architect, omd-designer-review, omd-final-qa, omd-humanizer, omd-kr-writer, omd-locale-adapter, omd-master, omd-microcopy, omd-orchestrator, omd-persona-tester, omd-slop-auditor, omd-ui-junior, omd-ux-engineer, omd-ux-researcher, omd-ux-writer",
+    "│",
+    "│  Targets: claude-code, codex, opencode",
+    "│",
+    "│  ",
+    "│  Results:",
+    "│"
    ],
-   "elided": 386,
+   "elided": 362,
    "tail": [
-    "└  Done. 30 skills · 20 sub-agents · 4 hooks · 521 catalog refs ready (178 changed · 0 already current)."
+    "◇  Next ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮",
+    "│                                                                                                                                       │",
+    "│  Restart your coding agent, then send this prompt:                                                                                    │",
+    "│                                                                                                                                       │",
+    "│    Set up a Toss-inspired design system for a family meal-tracking app. Ask before writing DESIGN.md.                                 │",
+    "│                                                                                                                                       │",
+    "│  OmD routes the request through omd:init, prepares an exact preview, and adopts the approved package atomically. Then continue with:  │",
+    "│    Using this DESIGN.md, design the home screen.                                                                                      │",
+    "│                                                                                                                                       │",
+    "│  Full walkthrough: “Your first 60 seconds” in the README. Routing is automatic; no slash command is required.                         │",
+    "│  Power user: /omd-harness <task> opens the full checkpointed pipeline.                                                                │",
+    "│                                                                                                                                       │",
+    "│  ⚠ Already running? Restart the coding agent. Codex must also trust the project before loading project-local roles.                   │",
+    "│                                                                                                                                       │",
+    "├───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯",
+    "│",
+    "│  Reference catalog: 521 DESIGN.md synced → .claude/data/references/<id>/DESIGN.md + .codex/data/references/<id>/DESIGN.md + .opencode/data/references/<id>/DESIGN.md",
+    "│",
+    "└  Done. 31 skills · 20 sub-agents · 4 hooks · 521 catalog refs ready (181 changed · 0 already current)."
    ]
   },
   {
@@ -18,11 +48,11 @@
    "lines": [
     "┌  omd doctor  (.)",
     "│",
-    "◆  Claude Code  30 skills · 20 sub-agents · 521 references",
+    "◆  Claude Code  31 skills · 20 sub-agents · 521 references",
     "│",
-    "◆  Codex  30 skills · 20 sub-agents · 521 references",
+    "◆  Codex  31 skills · 20 sub-agents · 521 references",
     "│",
-    "◆  OpenCode  30 skills · 20 sub-agents · 521 references",
+    "◆  OpenCode  31 skills · 20 sub-agents · 521 references",
     "│",
     "◆  Render checks: Google Chrome channel — /Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "│",

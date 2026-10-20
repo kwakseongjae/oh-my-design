@@ -1,9 +1,14 @@
 import Link from "next/link";
+import { Inter } from "next/font/google";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import type { getLandingData } from "@/lib/landing-a/data.server";
+import { getChatCard } from "@/lib/landing-a/chat-data.server";
 import type { getCopy } from "./copy";
 import type { getR10 } from "./copy/r10";
-import { ChatDemo, chatScript } from "./chat-demo";
+import { getR11Hero } from "./copy/r11-hero";
+import { ChatDemo } from "./chat-demo";
+import { CmdText, INSTALL } from "./cli-section";
+import { CopyButton } from "./copy-button";
 import { HeroKeys } from "./hero-keys";
 import { HeroDropLayer, dropScript } from "./hero-drop";
 import { rich } from "./rich";
@@ -11,18 +16,37 @@ import { rich } from "./rich";
 type Props = {
   locale: SiteLocale;
   c: ReturnType<typeof getCopy>;
+  /** round 10 copy; the hero no longer reads it (kept so landing.tsx's call is unchanged) */
   r: ReturnType<typeof getR10>;
   data: ReturnType<typeof getLandingData>;
   f: (s: string) => string;
   archive: string;
 };
 
+/* Linear's claimed UI face is Inter (OFL): the EN chat card is set in it. Not preloaded — the file is
+   fetched only where the card's text uses it (/ on the EN landing), while the run plays. */
+const inter = Inter({ subsets: ["latin"], display: "swap", preload: false });
+
+/** The face a locale's page loads for its chat company's claimed UI face (chat-data.server.ts). pixiv
+ *  names Noto Sans CJK JP; the ja layout loads the same Noto CJK design as Google Fonts' Noto Sans JP. */
+const FACES: Partial<Record<SiteLocale, Record<string, string>>> = {
+  en: { Inter: inter.style.fontFamily },
+  ja: { "Noto Sans CJK JP": "var(--font-noto-jp)" },
+};
+
+/** Pre-hydration, right after the chat: hide the run that is about to play (agent-trace.tsx usePlay). */
+const CHAT_PRE = `(function(){try{var c=document.getElementById("chat");if(c&&!/[?&]demo=/.test(location.search)&&!matchMedia("(prefers-reduced-motion: reduce)").matches)c.classList.add("sq-pre")}catch(e){}})();`;
+
 /**
- * The hero: the headline and one sentence on the left, the actions on the right, then one stage —
- * the 3D logo keycaps beside the illustrative chat. Split out of landing.tsx before round 11 so the
- * hero has one owner (docs/REDESIGN_R11_PLAN_2026-10-20.md W1); styles in hero.css.
+ * The hero (round 11, docs/REDESIGN_R11_PLAN_2026-10-20.md W1): the headline and one sentence; two
+ * actions — the archive, and the install command (the one #use runs, copyable); then one stage: the
+ * 3D logo keycaps beside the chat, which plays this locale's company from prompt to example card.
+ * The stage keeps round 10's geometry (the posters and 2D-drop sprites are rendered from it);
+ * phones stack the keycaps over the chat. Styles in hero.css.
  */
-export function HeroSection({ locale, c, r, data, f, archive }: Props) {
+export function HeroSection({ locale, c, data, f, archive }: Props) {
+  const h = getR11Hero(locale);
+  const card = getChatCard(locale, FACES[locale]);
   return (
     <section className="sq-wrap sq-hero" aria-labelledby="h-hero">
       <div className="sq-hero-top">
@@ -32,7 +56,10 @@ export function HeroSection({ locale, c, r, data, f, archive }: Props) {
         </div>
         <div className="sq-hero-acts">
           <Link className="sq-cta" href={archive} prefetch={false}>{c.hero.browse}</Link>
-          <a className="sq-cta-q" href="#use">{r.hero.install}</a>
+          <div className="sq-inst" role="group" aria-label={h.install}>
+            <code lang="en"><span className="sq-inst-ps" aria-hidden="true">$ </span><CmdText /></code>
+            <CopyButton text={INSTALL} labels={c.use} className="sq-inst-copy" />
+          </div>
         </div>
       </div>
       <div className="sq-stage">
@@ -49,11 +76,10 @@ export function HeroSection({ locale, c, r, data, f, archive }: Props) {
           <HeroKeys caps={data.hero} label={c.kb.label} locale={locale} />
         </div>
         <div className="sq-stage-chat">
-          <ChatDemo t={r.chat} />
-          <script dangerouslySetInnerHTML={{ __html: chatScript }} />
+          <ChatDemo card={card} t={{ chat: h.chat, trace: h.trace }} />
+          <script dangerouslySetInnerHTML={{ __html: CHAT_PRE }} />
         </div>
       </div>
-      <p className="sq-stage-note">{r.chat.note}</p>
     </section>
   );
 }
