@@ -39,6 +39,7 @@ for this product using confirmed values only. Keep unknown facts absent.
 - 実際の製品ルートと状態を確認して完了です。
 
 Docs: https://oh-my-design.kr/docs/ja
+Skills: https://oh-my-design.kr/docs/ja/skills
 Live demo: https://oh-my-design.kr/docs/ja/demo
 AI slop の判定基準と比較: https://oh-my-design.kr/docs/ja/anti-slop
 Full context: https://oh-my-design.kr/llms-full.txt
