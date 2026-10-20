@@ -4,6 +4,10 @@
 > `/api/mcp` endpoint now returns HTTP 410 and the MCP package is archive-only.
 > Skills, the local catalog, and raw `/<id>/design.md` URLs replaced this transport.
 > The remainder of this document is preserved only as decision history.
+> The `/docs/connector` URL submitted below 308s to
+> `/docs/en/getting-started#without-cli` (round 11, 2026-10-20), the section on
+> reading a DESIGN.md without a browser; it pointed at `/docs/en/ai` until that page
+> was removed.
 
 Mapped field-by-field to the **actual** submission flow (Anthropic docs, 2026-06).
 The in-app portal has **11 steps**; the standalone form
