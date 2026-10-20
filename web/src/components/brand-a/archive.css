@@ -1,5 +1,5 @@
 /* DESIGN.md archive (/design-systems, /ko/design-systems), round 11 (W6). Tokens: --sq-* (styles/brand-a.css).
-   Restraint (RESTRAINT.md): type in view = h1 · 20 (lede, card name) · 15 (summary, filters) · 14 (card meta).
+   Restraint (RESTRAINT.md R3): type in view = h1 · 20 (lede, card name) · 15 (everything else); phones h1 · 17 · 16 (search, no iOS zoom) · 15.
    Separation by tone and space, not lines. Ink is the "on" state of filters; Iris stays on actions and focus.
    Radius: 14 controls, pill chips, 20 cards. */
 .sq-arch{padding-bottom:24px}
@@ -14,7 +14,7 @@
 .sq-arch-searchrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
 .sq-arch-search{display:flex;align-items:center;gap:12px;flex:1 1 420px;max-width:640px;height:52px;padding:0 8px 0 16px;border-radius:var(--sq-r-ctl);background:var(--sq-cell);color:var(--sq-ink-2);transition:background-color .15s}
 .sq-arch-search-i{flex-shrink:0}
-.sq-arch-search input{all:unset;flex:1;min-width:0;height:100%;font-size:16px;color:var(--sq-ink)}
+.sq-arch-search input{all:unset;flex:1;min-width:0;height:100%;font-size:15px;color:var(--sq-ink)}
 .sq-arch-search input::placeholder{color:var(--sq-ink-2);opacity:.85}
 .sq-arch-search input::-webkit-search-cancel-button{display:none}
 .sq-arch-search:focus-within{background:var(--sq-paper);outline:2px solid var(--sq-focus);outline-offset:0}
@@ -24,16 +24,16 @@
 .sq-arch-menus{display:flex;flex-wrap:wrap;gap:8px}
 
 /* menus (tier, collections): one control each instead of a chip row */
-.sq-menu{position:relative}
-.sq-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;height:44px;padding:0 36px 0 16px;border-radius:var(--sq-r-ctl);font-size:15px;font-weight:600;color:var(--sq-ink);white-space:nowrap;background:var(--sq-cell) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1.5 1.5 4.5 4.5 4.5-4.5' stroke='%235a5a63' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center}
-.sq-menu summary::-webkit-details-marker{display:none}
-.sq-menu summary:hover,.sq-menu[open] summary{background-color:var(--sq-guide-2)}
-.sq-menu summary:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-menu-list{position:absolute;z-index:20;top:calc(100% + 6px);right:0;width:300px;max-height:min(60vh,480px);overflow:auto;display:flex;flex-direction:column;padding:6px;border-radius:var(--sq-r-card);background:var(--sq-paper);box-shadow:var(--sq-shadow-panel),0 0 0 1px var(--sq-guide-2)}
-.sq-menu-list a,.sq-menu-list button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:12px;font-size:15px;color:var(--sq-ink-2)}
-.sq-menu-list a:hover,.sq-menu-list button:hover{background:var(--sq-cell);color:var(--sq-ink)}
-.sq-menu-list a[aria-current="true"],.sq-menu-list button[aria-pressed="true"]{color:var(--sq-ink);font-weight:700}
-.sq-menu-list a:focus-visible,.sq-menu-list button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-2px}
+.sq-fmenu{position:relative}
+.sq-fmenu summary{list-style:none;cursor:pointer;display:flex;align-items:center;height:44px;padding:0 36px 0 16px;border-radius:var(--sq-r-ctl);font-size:15px;font-weight:600;color:var(--sq-ink);white-space:nowrap;background:var(--sq-cell) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1.5 1.5 4.5 4.5 4.5-4.5' stroke='%235a5a63' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center}
+.sq-fmenu summary::-webkit-details-marker{display:none}
+.sq-fmenu summary:hover,.sq-fmenu[open] summary{background-color:var(--sq-guide-2)}
+.sq-fmenu summary:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-fmenu-list{position:absolute;z-index:20;top:calc(100% + 6px);right:0;width:300px;max-height:min(60vh,480px);overflow:auto;display:flex;flex-direction:column;padding:6px;border-radius:var(--sq-r-card);background:var(--sq-paper);box-shadow:var(--sq-shadow-panel),0 0 0 1px var(--sq-guide-2)}
+.sq-fmenu-list a,.sq-fmenu-list button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:12px;font-size:15px;color:var(--sq-ink-2)}
+.sq-fmenu-list a:hover,.sq-fmenu-list button:hover{background:var(--sq-cell);color:var(--sq-ink)}
+.sq-fmenu-list a[aria-current="true"],.sq-fmenu-list button[aria-pressed="true"]{color:var(--sq-ink);font-weight:700}
+.sq-fmenu-list a:focus-visible,.sq-fmenu-list button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-2px}
 
 /* filter rows: pill chips, ink when on */
 .sq-arch-frow{display:flex;flex-wrap:wrap;gap:6px}
@@ -68,7 +68,7 @@
 .sq-card-name > span:first-child{min-width:0;overflow-wrap:anywhere}
 .sq-card-v{display:inline-flex;flex-shrink:0;color:var(--sq-ink)}
 .sq-card-sum{font-size:15px;line-height:1.5;color:var(--sq-ink-2);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
-.sq-card-meta{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:14px;color:var(--sq-ink-2)}
+.sq-card-meta{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:15px;color:var(--sq-ink-2)}
 .sq-card-tag{padding:3px 10px;border-radius:var(--sq-r-pill);background:var(--sq-paper);color:var(--sq-ink);font-weight:600}
 .sq-card-n{margin-left:auto;color:var(--sq-ink);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 
@@ -91,13 +91,14 @@
   .sq-arch-lede{font-size:17px}
   .sq-arch-tools{padding-top:24px;gap:12px}
   .sq-arch-search{flex-basis:100%;max-width:none}
-  .sq-menu{position:static}
-  .sq-menu-list{left:var(--sq-gut);right:var(--sq-gut);top:auto;width:auto;margin-top:6px}
+  .sq-arch-search input{font-size:16px}
+  .sq-fmenu{position:static}
+  .sq-fmenu-list{left:var(--sq-gut);right:var(--sq-gut);top:auto;width:auto;margin-top:6px}
   /* one line of chips that scrolls inside itself; the page never scrolls sideways */
   .sq-arch-frow{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;margin:0 calc(-1 * var(--sq-gut));padding:0 var(--sq-gut)}
   .sq-arch-frow::-webkit-scrollbar{display:none}
   .sq-fchip{flex-shrink:0;padding:0 12px}
   .sq-cards{grid-template-columns:minmax(0,1fr);gap:12px}
   .sq-card-a{padding:18px}
-  .sq-card-name{font-size:19px}
+  .sq-card-name{font-size:17px}
 }

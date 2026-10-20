@@ -269,9 +269,9 @@ function TierMenu({
   fmt: (n: number) => string;
 }) {
   return (
-    <details className="sq-menu">
+    <details className="sq-fmenu">
       <summary aria-label={`${copy.tierLabel}: ${copy.tiers[tier]}`}>{copy.tiers[tier]}</summary>
-      <div className="sq-menu-list" role="group" aria-label={copy.tierLabel}>
+      <div className="sq-fmenu-list" role="group" aria-label={copy.tierLabel}>
         {TIERS.map((t) => (
           <button
             key={t}
@@ -301,14 +301,14 @@ function CollectionMenu({
   active: CatalogCollection | null;
 }) {
   return (
-    <details className="sq-menu">
+    <details className="sq-fmenu">
       <summary>{active ? active.titleEn : copy.collections}</summary>
       {/*
         * The former /collections/<slug> pages are this menu; their URLs 308 to
         * /design-systems?collection=<slug> (next.config.ts). Links, not a
         * <select>, so every collection URL stays crawlable.
         */}
-      <div className="sq-menu-list">
+      <div className="sq-fmenu-list">
         {collections.map((c) => (
           <Link
             key={c.slug}

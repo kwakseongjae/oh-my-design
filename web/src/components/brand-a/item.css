@@ -1,6 +1,6 @@
 /* Item page (/design-systems/[id], /ko/design-systems/[id]), round 11 (W7). Tokens: --sq-* (styles/brand-a.css).
    First screen: crumb row · logo + h1 "{Name} DESIGN.md" · summary · #use (Copy DESIGN.md, Download).
-   Type in the first screen: h1 · 19 lede · 17 actions · 15 small; 26 section headings below the fold.
+   Type in the first screen (RESTRAINT.md R3, ≤4): h1 · 26 section heading · 17 lede and actions · 15 small.
    Iris only on the main action; the second action is ink. Radius 14 controls, pill actions, 20 cards.
    Separation by space and tone, not lines (RESTRAINT.md). */
 
@@ -24,11 +24,12 @@
 .sq-ih-logo.sq-logo-fav{padding:14px}
 .sq-ih-logo.sq-logo-fav img{width:44px}
 .sq-ih h1{min-width:0;font-family:var(--sq-f-latin),sans-serif;font-weight:var(--sq-fw-display);font-size:clamp(36px,4.6vw,66px);line-height:1.04;letter-spacing:-0.03em;overflow-wrap:anywhere}
-.sq-item-sum{margin-top:24px;max-width:40em;font-size:19px;line-height:1.6;color:var(--sq-ink-2)}
+.sq-item-sum{margin-top:24px;max-width:40em;font-size:17px;line-height:1.65;color:var(--sq-ink-2)}
 
-/* #use: two equal actions. Old /builder?ref=<id> links land here (lib/legacy-builder/redirect.ts);
-   the scroll margin keeps the h1 in view above them. */
-.sq-ih-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:36px;scroll-margin-top:calc(var(--sq-header-h) + 200px)}
+/* #use: two equal actions. Old /builder?ref=<id> links land here (lib/legacy-builder/redirect.ts).
+   The group sits in the first screen, so a wide scroll margin means arriving on #use does not scroll
+   at all on 1440×900 or 390×844: the logo, h1 and summary stay in view above the actions. */
+.sq-ih-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:36px;scroll-margin-top:min(70vh,640px)}
 .sq-act{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:var(--sq-r-pill);font-size:17px;font-weight:700;white-space:nowrap;transition:background-color .15s}
 .sq-act svg{flex-shrink:0}
 .sq-act-primary{background:var(--sq-primary);color:var(--sq-on-primary)}

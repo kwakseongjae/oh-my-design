@@ -51,7 +51,7 @@ export interface ArchiveCopy {
 const EN: ArchiveCopy = {
   h1: "DESIGN.md archive",
   lede: (n) =>
-    `${n} real products, each saved as a DESIGN.md your coding agent can read. Pick one, drop it into your project, and build with its colors, type and components.`,
+    `${n} real products as DESIGN.md files your coding agent can read: colors, type and components, ready to drop into your project.`,
   meta: {
     title: (n) => `DESIGN.md Archive — ${n} Real-Company Design Systems`,
     description: (n) =>
@@ -96,10 +96,9 @@ const EN: ArchiveCopy = {
 
 const KO: ArchiveCopy = {
   h1: "DESIGN.md 아카이브",
-  lede: (n) =>
-    `실제 서비스 ${n}곳의 디자인을 코딩 에이전트가 읽는 DESIGN.md로 모았어요. 하나를 골라 프로젝트에 넣으면 그 색상·글꼴·컴포넌트로 만들 수 있어요.`,
+  lede: (n) => `실제 서비스 ${n}곳의 디자인을 코딩 에이전트가 읽는 DESIGN.md로 모았어요. 골라서 프로젝트에 넣으면 돼요.`,
   ledeKo: (kr, intl, rest) => ({
-    before: `코딩 에이전트가 읽는 DESIGN.md로 실제 서비스의 디자인을 모았어요. 한국 기업 ${kr}곳과 검증된 해외 기업 ${intl}곳이 있고, 나머지 ${rest}곳은 `,
+    before: `한국 기업 ${kr}곳과 검증된 해외 기업 ${intl}곳의 DESIGN.md예요. 나머지 ${rest}곳은 `,
     link: "영문 아카이브",
     after: "에 있어요.",
   }),
@@ -147,8 +146,7 @@ const KO: ArchiveCopy = {
 
 const JA: ArchiveCopy = {
   h1: "DESIGN.md アーカイブ",
-  lede: (n) =>
-    `実在する${n}のプロダクトのデザインを、コーディングエージェントが読める DESIGN.md にまとめました。ひとつ選んでプロジェクトに置けば、その色・書体・コンポーネントで作れます。`,
+  lede: (n) => `実在する${n}のプロダクトのデザインを、コーディングエージェントが読める DESIGN.md にまとめました。選んでプロジェクトに置くだけです。`,
   meta: {
     title: (n) => `DESIGN.md アーカイブ — 実在する${n}社のデザインシステム`,
     description: (n) =>
@@ -193,8 +191,7 @@ const JA: ArchiveCopy = {
 
 const ZH_TW: ArchiveCopy = {
   h1: "DESIGN.md 典藏",
-  lede: (n) =>
-    `收錄 ${n} 個真實產品的設計，每一份都是程式代理讀得懂的 DESIGN.md。挑一份放進專案，就能用它的色彩、字體與元件來打造。`,
+  lede: (n) => `收錄 ${n} 個真實產品的設計，每一份都是程式代理讀得懂的 DESIGN.md。挑一份放進專案就好。`,
   meta: {
     title: (n) => `DESIGN.md 典藏 — ${n} 家真實企業的設計系統`,
     description: (n) =>
