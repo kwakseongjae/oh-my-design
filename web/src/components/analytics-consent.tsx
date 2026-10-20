@@ -13,38 +13,47 @@ import { loadMixpanel, mpOptIn, mpOptOut, mpPageview } from "@/lib/mixpanel";
 
 type ConsentLocale = "en" | "ko" | "ja" | "zh-cn" | "zh-tw";
 
+/* Round 11 (W9): two short lines for the corner card. Each still names both vendors and says no
+   ads and no data sales — that is the disclosure, the privacy page ("details") has the rest. */
 const CONSENT_COPY: Record<ConsentLocale, {
+  /** Accessible name of the card. */
+  label: string;
   body: string;
   details: string;
   decline: string;
   accept: string;
 }> = {
   en: {
-    body: "We use Google Analytics and Mixpanel to understand how oh-my-design is used and improve the product. We do not run ads or sell your data.",
+    label: "Analytics cookies",
+    body: "Google Analytics and Mixpanel show us how the site is used. No ads, no data sales.",
     details: "Learn more",
     decline: "Decline",
     accept: "Accept",
   },
   ko: {
-    body: "oh-my-design 사용 현황을 파악하고 제품을 개선하기 위해 Google Analytics와 Mixpanel을 사용합니다. 광고를 게재하거나 데이터를 판매하지 않습니다.",
+    label: "분석 쿠키 동의",
+    body: "Google Analytics와 Mixpanel로 사이트 이용 현황을 살펴봐요. 광고를 싣거나 데이터를 팔지 않아요.",
     details: "자세히 보기",
     decline: "거부",
     accept: "동의",
   },
   ja: {
-    body: "oh-my-design の利用状況を把握し、製品を改善するために Google Analytics と Mixpanel を使用します。広告の表示やデータの販売は行いません。",
+    label: "アクセス解析 Cookie の同意",
+    body: "Google Analytics と Mixpanel で利用状況を把握しています。広告やデータの販売はしません。",
     details: "詳しく見る",
     decline: "拒否",
     accept: "同意",
   },
   "zh-cn": {
-    body: "我们使用 Google Analytics 和 Mixpanel 了解 oh-my-design 的使用情况并改进产品。不会投放广告，也不会出售您的数据。",
+    label: "分析 Cookie 同意",
+    body: "我们用 Google Analytics 和 Mixpanel 了解网站的使用情况。不投放广告，也不出售数据。",
     details: "了解详情",
     decline: "拒绝",
     accept: "同意",
   },
   "zh-tw": {
-    body: "我們使用 Google Analytics 與 Mixpanel 瞭解 oh-my-design 的使用情況並改善產品。不會投放廣告，也不會出售您的資料。",
+    label: "分析 Cookie 同意",
+    body: "我們用 Google Analytics 與 Mixpanel 瞭解網站的使用情況。不投放廣告，也不販售資料。",
     details: "瞭解詳情",
     decline: "拒絕",
     accept: "同意",
@@ -132,6 +141,24 @@ export function AnalyticsConsent() {
     return () => window.removeEventListener("omd:manage-consent", open);
   }, []);
 
+  // Presentation (round 11): when the card is re-opened from a "cookie settings" control, move
+  // focus into it so a keyboard or screen-reader user lands on the choice they asked for. The
+  // first, automatic showing never takes focus.
+  const card = useRef<HTMLDivElement>(null);
+  const focusOnOpen = useRef(false);
+  useEffect(() => {
+    const mark = () => {
+      focusOnOpen.current = true;
+    };
+    window.addEventListener("omd:manage-consent", mark);
+    return () => window.removeEventListener("omd:manage-consent", mark);
+  }, []);
+  useEffect(() => {
+    if (!showBanner || !focusOnOpen.current) return;
+    focusOnOpen.current = false;
+    card.current?.focus();
+  }, [showBanner]);
+
   // Mixpanel pageview on subsequent SPA navs (the first one is fired by
   // applyGrant after opt-in). mpPageview no-ops until opted in.
   useEffect(() => {
@@ -156,46 +183,43 @@ export function AnalyticsConsent() {
 
   if (!showBanner) return null;
 
-  // Concept A (rebrand round 2): a slim bar on the bottom edge — one line on
-  // desktop, two on phones — so the hero's first screen (headline, search,
-  // tier counts, keyboard readout) stays visible. A corner card was tried and
-  // covered the tier counts at 1440. Presentation only: the geo / stored-
-  // choice / accept / decline logic above is unchanged.
+  // Round 11 (W9, docs/REDESIGN_R11_PLAN_2026-10-20.md): a small card in the bottom-right corner
+  // instead of the full-width bar. Two lines of copy, the details link, and Decline and Accept
+  // as the same button: same size, same fill, same weight, so neither choice is pushed
+  // (regulatory practice: refusing is as easy as agreeing). On phones it is a compact card
+  // fixed to the bottom edge, below the hero's actions. Presentation only: the geo /
+  // stored-choice / accept / decline logic above is unchanged.
   const loc = consentLocale(pathname);
   return (
     <div
+      ref={card}
       role="region"
-      aria-label={copy.details}
+      aria-label={copy.label}
+      tabIndex={-1}
       lang={loc === "zh-tw" ? "zh-Hant-TW" : loc === "zh-cn" ? "zh-Hans" : loc}
-      className="fixed inset-x-0 bottom-0 z-[60] border-t-2 border-[var(--sq-ink)] bg-[var(--sq-paper)] text-[var(--sq-ink)]"
+      className="fixed inset-x-3 bottom-3 z-[60] rounded-[var(--sq-r-card)] bg-[var(--sq-paper)] p-4 text-[var(--sq-ink)] shadow-[var(--sq-shadow-panel)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)] sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[380px] sm:p-5"
     >
-      <div className="mx-auto flex max-w-[1360px] items-center gap-3 px-4 py-2.5 sm:gap-6 sm:px-10">
-        <p className="min-w-0 flex-1 text-[11.5px] leading-snug text-[var(--sq-ink-2)] sm:text-xs">
-          <span className="line-clamp-2 sm:line-clamp-none">{copy.body}</span>{" "}
-          <Link
-            href={privacyHref}
-            className="font-semibold text-[var(--sq-ink)] underline decoration-[var(--sq-guide)] decoration-2 underline-offset-2"
-          >
-            {copy.details}
-          </Link>
-        </p>
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            onClick={decline}
-            className="min-h-9 border border-[var(--sq-guide)] px-3 text-xs font-semibold text-[var(--sq-ink-2)] transition-colors hover:border-[var(--sq-ink)] hover:text-[var(--sq-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]"
-          >
-            {copy.decline}
-          </button>
-          <button
-            type="button"
-            onClick={accept}
-            className="min-h-9 rounded-full bg-[var(--sq-primary)] px-4 text-xs font-bold text-[var(--sq-on-primary)] transition-colors hover:bg-[var(--sq-primary-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]"
-          >
-            {copy.accept}
-          </button>
-        </div>
+      <p className="text-[13.5px] leading-[1.55] text-[var(--sq-ink-2)] sm:text-[14px]">
+        {copy.body}{" "}
+        <Link
+          href={privacyHref}
+          className="whitespace-nowrap font-semibold text-[var(--sq-ink)] underline decoration-[var(--sq-guide)] decoration-2 underline-offset-2 hover:decoration-current"
+        >
+          {copy.details}
+        </Link>
+      </p>
+      <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4">
+        <button type="button" onClick={decline} className={CHOICE}>
+          {copy.decline}
+        </button>
+        <button type="button" onClick={accept} className={CHOICE}>
+          {copy.accept}
+        </button>
       </div>
     </div>
   );
 }
+
+/** Decline and Accept share this one class: neither choice outweighs the other. */
+const CHOICE =
+  "min-h-10 rounded-[var(--sq-r-pill)] bg-[var(--sq-cell)] px-4 text-[14px] font-semibold text-[var(--sq-ink)] transition-colors hover:bg-[var(--sq-guide-2)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sq-focus)]";

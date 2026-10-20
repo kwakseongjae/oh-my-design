@@ -115,3 +115,101 @@ describe("catalog showcase: per locale", () => {
     for (const l of SITE_LOCALES) expect(localeOfR10(getR10(l))).toBe(l);
   });
 });
+
+describe("header: Skills opens the docs skills page (#29)", () => {
+  it("every site locale maps to its docs locale and its skills page", async () => {
+    const { DOCS_LOCALE_OF, skillsHrefFor } = await import("@/components/brand-a/site-header");
+    const { DOC_LOCALES } = await import("@/lib/docs/locales");
+    expect(Object.keys(DOCS_LOCALE_OF).sort()).toEqual([...SITE_LOCALES].sort());
+    for (const l of SITE_LOCALES) {
+      expect(DOC_LOCALES).toContain(DOCS_LOCALE_OF[l]);
+      expect(skillsHrefFor(l)).toBe(`/docs/${l}/skills`);
+    }
+    expect(skillsHrefFor("en", "zh-cn")).toBe("/docs/zh-cn/skills");
+  });
+  it("no landing anchor is left in the header", () => {
+    expect(read("src/components/brand-a/site-header.tsx")).not.toMatch(/#skills/);
+  });
+});
+
+describe("star pill (#4/#15): Taste's pill, no yellow", () => {
+  it("grey star, regular-weight count, no yellow anywhere in the pill or the app button", () => {
+    const css = read("src/components/brand-a/chrome.css");
+    expect(css).toMatch(/\.sq-star\{[^}]*font:400 /);
+    expect(css).toMatch(/\.sq-star-g\{color:var\(--sq-n400\)\}/);
+    for (const f of ["src/components/brand-a/star-pill.tsx", "src/components/github-star-button.tsx", "src/components/brand-a/chrome.css"]) {
+      const code = read(f).replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+      expect(/#facc15|yellow|amber/i.test(code), f).toBe(false);
+    }
+  });
+  it("draws GitHub's brand-kit Invertocat, not a redrawn one", async () => {
+    const { GITHUB_MARK } = await import("@/components/brand-a/copy/r11-chrome");
+    expect(GITHUB_MARK.viewBox).toBe("0 0 98 96");
+    for (const f of ["src/components/brand-a/star-pill.tsx", "src/components/github-star-button.tsx"]) {
+      expect(read(f), f).toMatch(/GITHUB_MARK/);
+    }
+  });
+});
+
+describe("footer (#15)", () => {
+  it("every locale has every chrome string, the bottom line takes the year", async () => {
+    const { getChromeCopy } = await import("@/components/brand-a/copy/r11-chrome");
+    const keys = Object.keys(getChromeCopy("en").foot).sort();
+    for (const l of SITE_LOCALES) {
+      const t = getChromeCopy(l);
+      expect(Object.keys(t.foot).sort(), l).toEqual(keys);
+      for (const [k, v] of Object.entries(t.foot)) expect(v.trim().length, `${l} ${k}`).toBeGreaterThan(0);
+      expect(t.foot.legal, l).toContain("{year}");
+      expect(Object.keys(t.showcase.regions).sort(), l).toEqual(["JP", "KR", "TW"]);
+    }
+  });
+  it("Korean chrome is in 해요체, not 합니다체", async () => {
+    const { getChromeCopy } = await import("@/components/brand-a/copy/r11-chrome");
+    const ko = JSON.stringify(getChromeCopy("ko"));
+    expect(ko).not.toMatch(/습니다|입니다/);
+    expect(read("src/components/analytics-consent.tsx")).not.toMatch(/습니다|입니다/);
+  });
+  it("renders the spec'd columns, icon links and one bottom line", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { createElement } = await import("react");
+    const { SiteFooterA } = await import("@/components/brand-a/site-footer");
+    const html = (l: (typeof SITE_LOCALES)[number]) => renderToStaticMarkup(createElement(SiteFooterA, { locale: l, current: l }));
+    const ko = html("ko");
+    for (const href of ["/ko/design-systems", "/docs/ko/skills", "/docs/ko", "/changelog", "https://github.com/kwakseongjae/oh-my-design", "https://www.npmjs.com/package/oh-my-design-cli", "https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE", "https://www.threads.com/@daon_k", "/privacy/ko", "/terms/ko"]) {
+      expect(ko, href).toContain(`href="${href}"`);
+    }
+    expect(ko).toContain('aria-label="GitHub의 oh-my-design 저장소"');
+    expect(ko).toContain('aria-label="Threads의 @daon_k"');
+    expect(ko).toContain(`© ${new Date().getFullYear()} oh-my-design.`);
+    expect(ko).toMatch(/<a href="\/ko" lang="ko" hrefLang="ko" aria-current="true">/);
+    expect(html("ja")).toContain('href="/docs/ja/skills"');
+    expect(html("zh-tw")).toContain('href="/docs/zh-tw/skills"');
+    expect(fs.existsSync(path.join(WEB, "../LICENSE"))).toBe(true);
+  });
+  it("the blog's own index link is not listed twice", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { createElement } = await import("react");
+    const { SiteFooterA } = await import("@/components/brand-a/site-footer");
+    const { blogIndexHref, blogFeedHref } = await import("@/lib/site");
+    const out = renderToStaticMarkup(createElement(SiteFooterA, { locale: "en", extraLinks: [{ label: "Blog", href: blogIndexHref("en") }, { label: "RSS", href: blogFeedHref("en") }] }));
+    expect(out.split(`href="${blogIndexHref("en")}"`).length - 1).toBe(1);
+    expect(out).toContain(`href="${blogFeedHref("en")}"`);
+  });
+});
+
+describe("consent card (W9): presentation only", () => {
+  const src = read("src/components/analytics-consent.tsx");
+  it("Decline and Accept are the same button", () => {
+    expect(src.match(/className=\{CHOICE\}/g)).toHaveLength(2);
+    expect(src).not.toMatch(/--sq-primary/);
+  });
+  it("every locale still names both vendors and keeps the details link", () => {
+    expect(src.match(/body: "[^"]*Google Analytics[^"]*Mixpanel/g)).toHaveLength(5);
+    expect(src).toMatch(/href=\{privacyHref\}/);
+  });
+  it("the consent gate itself is untouched", () => {
+    for (const s of ["else if (known && !eu) applyGrant();", "else setShowBanner(true);", 'setStoredConsent("granted");', 'setStoredConsent("denied");', "revokeGAConsent();", 'window.addEventListener("omd:manage-consent", open);']) {
+      expect(src, s).toContain(s);
+    }
+  });
+});
