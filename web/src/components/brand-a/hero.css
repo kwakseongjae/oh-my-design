@@ -4,7 +4,7 @@
    the chat. Four type sizes in view on the site's side (h1 / 18 / 16 / 15); the example card is a
    content object set in its company's tokens. One accent: the main action, the user's bubble and the
    running step. Trace and card-layout rules live in agent-trace.css. */
-.sq-hero{padding-top:48px;padding-bottom:0}
+.sq-hero{padding-top:40px;padding-bottom:0}
 .sq-hero-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px}
 .sq-hero-copy{flex:1 1 480px;min-width:0;max-width:760px}
 :where(.sq-root) h1{font-size:clamp(40px,4.3vw,60px);line-height:1.1;letter-spacing:-0.035em;font-weight:760}
@@ -28,7 +28,7 @@
 /* the stage: one panel (28), the keycaps on paper — the 3D floor and the posters are rendered on
    #ffffff, and nothing violet sits behind the caps — and the chat on the band tone. Fixed height
    so the caps box is the same on every locale (the posters are rendered from it). */
-.sq-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:640px;margin-top:40px;border-radius:var(--sq-r-panel);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel)}
+.sq-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:640px;margin-top:32px;border-radius:var(--sq-r-panel);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel)}
 .sq-stage-caps{position:relative;min-width:0;background:var(--sq-paper);isolation:isolate}
 .sq-stage-chat{position:relative;min-width:0;min-height:0;background:var(--sq-band)}
 
@@ -48,6 +48,9 @@
 .sq-chat{display:flex;flex-direction:column;gap:16px;height:100%;padding:24px 28px 28px}
 .sq-chat-log{display:flex;flex-direction:column;gap:12px;min-width:0}
 .sq-chat .sq-ex{flex:1}
+/* in the hero the card's content starts at the top of its frame, so more of it is above the fold */
+.sq-chat :is(.sq-ex-col,.sq-ex-pad){justify-content:flex-start}
+.sq-chat .sq-ex-col{padding-top:24px}
 .sq-chat.sq-pre .sq-at,.sq-chat.sq-pre .sq-ex{visibility:hidden}
 .sq-chat.sq-pre .sq-ex{opacity:0} /* so the rewind (pre off, card hidden) never fades a full frame out */
 .sq-off{display:none!important}
