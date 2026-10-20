@@ -10,6 +10,7 @@
 .sq-ask-field[data-disabled]{background:var(--sq-band);box-shadow:none}
 .sq-ask-field textarea{all:unset;box-sizing:border-box;display:block;width:100%;min-height:64px;padding:14px 16px 2px;font-size:16px;line-height:1.55;color:var(--sq-ink);white-space:pre-wrap;overflow-wrap:anywhere;resize:none}
 .sq-ask-field textarea::placeholder{color:var(--sq-ink-2)}
+.sq-ask-field textarea:lang(ko){word-break:keep-all}
 .sq-ask-field textarea:disabled{cursor:not-allowed}
 .sq-ask-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8px 8px 16px}
 .sq-ask-count{font-size:14px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
@@ -30,12 +31,15 @@
 .sq-ask-out[data-idle]{margin-top:0;gap:0}
 .sq-ask-q{font-size:16px;color:var(--sq-ink-2);overflow-wrap:anywhere}
 .sq-ask-a{display:grid;gap:12px;font-size:16px;line-height:1.7;color:var(--sq-ink);overflow-wrap:anywhere}
-.sq-ask-a ul{display:grid;gap:6px;margin:0;padding-left:1.2em}
+.sq-ask-a ul{display:grid;gap:6px;margin:0;padding-left:1.25em;list-style:disc}
+.sq-ask-a li::marker{color:var(--sq-ink-2)}
 .sq-ask-a code{font-size:14px;padding:1px 6px;border-radius:var(--sq-r-inner);background:var(--sq-cell)}
 .sq-ask-cites{white-space:nowrap}
 .sq-ask-cite{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;margin-left:4px;border-radius:var(--sq-r-pill);background:var(--sq-cell);color:var(--sq-ink-2);font-size:14px;line-height:1;font-weight:650;font-variant-numeric:tabular-nums;text-decoration:none;vertical-align:1px}
 .sq-ask-cite:hover{background:var(--sq-guide-2);color:var(--sq-ink)}
 .sq-ask-cite:focus-visible{outline:2px solid var(--sq-focus);outline-offset:1px}
+.sq-ask-caret{display:inline-block;width:2px;height:1.05em;margin-left:3px;vertical-align:-0.15em;border-radius:1px;background:var(--sq-ink-2);animation:sq-ask-blink 1s steps(2,start) infinite}
+@keyframes sq-ask-blink{to{visibility:hidden}}
 .sq-ask-msg{color:var(--sq-ink)}
 .sq-ask-note{font-size:14px;color:var(--sq-ink-2)}
 .sq-ask-links{display:flex;flex-wrap:wrap;gap:8px 20px}
@@ -55,7 +59,7 @@
 .sq-ask-n{grid-row:1 / span 2;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--sq-paper);color:var(--sq-ink-2);font-size:14px;font-weight:650;font-variant-numeric:tabular-nums}
 .sq-ask-st{font-size:16px;font-weight:650;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
 .sq-ask-su{min-width:0;font-size:14px;color:var(--sq-ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media (prefers-reduced-motion:reduce){.sq-ask-sk i{animation:none}.sq-ask-field,.sq-ask-go,.sq-ask-chip,.sq-ask-src a{transition:none}}
+@media (prefers-reduced-motion:reduce){.sq-ask-sk i,.sq-ask-caret{animation:none}.sq-ask-field,.sq-ask-go,.sq-ask-chip,.sq-ask-src a{transition:none}}
 @media (max-width:900px){
   .sq-ask{padding:20px 18px 18px}
   .sq-ask-src ol{grid-template-columns:minmax(0,1fr)}

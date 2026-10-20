@@ -25,7 +25,11 @@ export function parseInline(line: string, sourceCount: number): AskInline[] {
       if (n.length) {
         const last = out[out.length - 1];
         if (last?.k === "cite") last.n.push(...n.filter((x) => !last.n.includes(x)));
-        else out.push({ k: "cite", n: [...new Set(n)] });
+        else {
+          // the pill keeps its own gap; "works [1]." should not read "works  ①."
+          if (last?.k === "text") last.v = last.v.replace(/\s+$/, "");
+          out.push({ k: "cite", n: [...new Set(n)] });
+        }
       }
       continue;
     }

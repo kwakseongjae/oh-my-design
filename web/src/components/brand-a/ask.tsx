@@ -37,12 +37,17 @@ function Inline({ parts, sources, t }: { parts: AskInline[]; sources: AskSource[
 
 function Answer({ state, t }: { state: AskState; t: R11AskCopy }) {
   const blocks = parseAnswer(state.text, state.sources.length);
+  // while the answer streams, a caret sits at its end (the status line says it for screen readers)
+  const caret = state.phase === "streaming" ? <span className="sq-ask-caret" aria-hidden="true" /> : null;
+  const lastBlock = blocks.length - 1;
   return blocks.map((b, i) =>
     b.k === "p" ? (
-      <p key={i}><Inline parts={b.parts} sources={state.sources} t={t} /></p>
+      <p key={i}><Inline parts={b.parts} sources={state.sources} t={t} />{i === lastBlock ? caret : null}</p>
     ) : (
       <ul key={i}>
-        {b.items.map((item, j) => <li key={j}><Inline parts={item} sources={state.sources} t={t} /></li>)}
+        {b.items.map((item, j) => (
+          <li key={j}><Inline parts={item} sources={state.sources} t={t} />{i === lastBlock && j === b.items.length - 1 ? caret : null}</li>
+        ))}
       </ul>
     ),
   );

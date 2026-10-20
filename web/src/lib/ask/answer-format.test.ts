@@ -4,9 +4,9 @@ import { parseAnswer, parseInline, sourceLabel } from "./answer-format";
 describe("answer formatting", () => {
   it("turns [n] into citations, dropping numbers with no source", () => {
     expect(parseInline("Yes [1][2], see [1, 3] and [9].", 3)).toEqual([
-      { k: "text", v: "Yes " },
+      { k: "text", v: "Yes" },
       { k: "cite", n: [1, 2] },
-      { k: "text", v: ", see " },
+      { k: "text", v: ", see" },
       { k: "cite", n: [1, 3] },
       { k: "text", v: " and ." },
     ]);
