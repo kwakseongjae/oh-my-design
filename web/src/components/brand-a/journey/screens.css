@@ -1,0 +1,66 @@
+/* Round 11 sample screens (journey/screens.tsx). Layout only. Every colour, size, weight, radius and
+   component geometry arrives through the frame's custom properties, which carry claimed tokens and
+   nothing else (journey/model.ts). An unset property falls back to the CSS initial value (no fill, no
+   radius, the face's normal line height), never to a stand-in brand value. Gaps and the inner padding
+   of a card whose reference names none are neutral layout, identical for every company. */
+
+/* the screen's face: set on every element, because the page sets each language's face per element (chrome.css :lang) */
+.sq-g5 .sq-x,.sq-g5 .sq-x *{font-family:var(--scr-ff)}
+.sq-x{text-align:start}
+.sq-x p,.sq-x ul{margin:0;padding:0;list-style:none}
+.sq-x-in{display:flex;flex-direction:column;gap:20px}
+
+/* type tiers (head · body · small · label · the card component's own font) and text roles */
+.sq-x-h{font-size:var(--h-fs);font-weight:var(--h-fw);line-height:var(--h-lh,normal);overflow-wrap:anywhere}
+.sq-x-p{font-size:var(--p-fs);font-weight:var(--p-fw);line-height:var(--p-lh,normal)}
+.sq-x-s{font-size:var(--s-fs);font-weight:var(--s-fw);line-height:var(--s-lh,normal)}
+.sq-x-l{font-size:var(--l-fs);font-weight:var(--l-fw);line-height:var(--l-lh,normal)}
+.sq-x-cf{font-size:var(--cf-fs);font-weight:var(--cf-fw);line-height:var(--cf-lh,normal);color:var(--cf-fg,inherit)}
+.sq-x-body{color:var(--body)}
+.sq-x-meta{color:var(--meta)}
+.sq-x-link{color:var(--link,inherit)}
+.sq-x-stack{display:flex;flex-direction:column;gap:4px}
+
+/* the claimed card: fill, radius, border, padding when the component names one */
+.sq-x-card{background:var(--c-bg,transparent);border-radius:var(--c-r,0);border:1px solid var(--c-bd,transparent);padding:var(--c-pad,16px 18px)}
+
+/* the claimed button; full width only where the reference describes a full-width action */
+.sq-x-btn{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;align-self:flex-start;max-width:100%;background:var(--b-bg);color:var(--b-fg);border-radius:var(--b-r,0);height:var(--b-h,auto);padding:var(--b-pad,0);font-size:var(--b-fs);font-weight:var(--b-fw);line-height:var(--b-lh,normal);white-space:nowrap}
+.sq-x-wide{align-self:stretch}
+
+/* lists */
+.sq-x-list{display:flex;flex-direction:column;gap:14px}
+.sq-x-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sq-x-row>:last-child{flex-shrink:0;text-align:end}
+.sq-x-col{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sq-x-ruled{gap:0}
+.sq-x-ruled .sq-x-row{padding-block:12px}
+.sq-x-ruled .sq-x-row+.sq-x-row{border-top:1px solid var(--line,transparent)}
+.sq-x-panel{display:flex;flex-direction:column;gap:12px}
+
+/* karrot: the header row and the feed of listing cards */
+.sq-x-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 12px}
+.sq-x-feed{display:flex;flex-direction:column}
+.sq-x-item{display:flex;flex-direction:column;gap:2px;background:var(--c-bg,transparent);border-radius:var(--c-r,0);padding:var(--c-pad,14px 0)}
+.sq-x-item+.sq-x-item{border-top:1px solid var(--line,transparent)}
+
+/* kakaobank: link rows */
+.sq-x-links{display:flex;flex-direction:column;gap:10px}
+.sq-x-link-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--c-bg,transparent);border-radius:var(--c-r,0);padding:var(--c-pad,16px 18px)}
+.sq-x-link-row>:last-child{flex-shrink:0}
+
+/* freee: entries */
+.sq-x-ledger{display:flex;flex-direction:column}
+.sq-x-entry{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:12px;padding-block:12px;border-bottom:1px solid var(--line,transparent)}
+.sq-x-entry:first-child{border-top:1px solid var(--line,transparent)}
+
+/* 104: postings on the company card */
+.sq-x-jobs{display:flex;flex-direction:column;gap:12px}
+.sq-x-job{display:flex;flex-direction:column;gap:2px;background:var(--c-bg,transparent);border:1px solid var(--c-bd,transparent);border-radius:var(--c-r,0);padding:var(--c-pad,16px)}
+
+/* LINE: chat rows, the unread count on the notification badge */
+.sq-x-chats{display:flex;flex-direction:column;gap:18px}
+.sq-x-chat{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px;row-gap:2px}
+.sq-x-chat>:nth-child(even){justify-self:end}
+.sq-x-chat>.sq-x-s.sq-x-body{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sq-x-badge{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:1.7em;padding:1px .45em;background:var(--g-bg);color:var(--g-fg);border-radius:var(--g-r,0);font-size:var(--s-fs);font-weight:var(--s-fw);line-height:var(--s-lh,normal)}
