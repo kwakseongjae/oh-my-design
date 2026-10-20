@@ -1,0 +1,100 @@
+/* Hero: headline, actions, stage, keycaps, illustrative chat. Split out of landing.css before round 11 (docs/REDESIGN_R11_PLAN_2026-10-20.md) so each section has one owner; imported by landing.tsx in the original cascade order. */
+/* ---- hero (round 10, direction B): the headline and one sentence on the left, the two actions on
+   the right, then one stage — the keycaps on white beside the illustrative chat. Four type sizes
+   in view (h1 / 18 / 16 / 15); the Toss screen inside the chat is a content object set in Toss
+   type tokens. One accent: the main action and the user's bubble. ---- */
+.sq-hero{padding-top:48px;padding-bottom:0}
+.sq-hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px}
+.sq-hero-copy{min-width:0;max-width:760px}
+:where(.sq-root) h1{font-size:clamp(40px,4.3vw,60px);line-height:1.1;letter-spacing:-0.035em;font-weight:760}
+:where(.sq-root) :lang(ko) h1{font-size:clamp(34px,3.9vw,56px);line-height:1.22;letter-spacing:-0.03em}
+:where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(30px,3.5vw,50px);line-height:1.3;font-weight:700}
+.sq-lede{margin-top:16px;font-size:18px;line-height:1.6;color:var(--sq-ink-2);max-width:34em}
+.sq-hero-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;flex-shrink:0;padding-bottom:4px}
+.sq-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:var(--sq-r-pill);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;font-weight:700;white-space:nowrap;transition:background-color .15s,transform .12s}
+.sq-cta:hover{background:var(--sq-primary-hover)}
+.sq-cta:active{background:var(--sq-primary-press);transform:scale(.98)}
+.sq-cta:focus-visible,.sq-cta-q:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+.sq-cta-q{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:var(--sq-r-pill);background:var(--sq-cell);color:var(--sq-ink);font-size:16px;font-weight:650;white-space:nowrap;transition:background-color .15s}
+.sq-cta-q:hover{background:var(--sq-guide-2)}
+
+/* the stage: one panel (28), the keycaps on paper — the 3D floor and the posters are rendered on
+   #ffffff, and nothing violet sits behind the caps — and the chat on the band tone. Fixed height
+   so the caps box is the same on every locale (the posters are rendered from it). */
+.sq-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:640px;margin-top:40px;border-radius:var(--sq-r-panel);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel)}
+.sq-stage-caps{position:relative;min-width:0;background:var(--sq-paper);isolation:isolate}
+.sq-stage-chat{position:relative;min-width:0;min-height:0;background:var(--sq-band)}
+.sq-stage-note{margin-top:16px;font-size:15px;color:var(--sq-ink-2);max-width:60em}
+
+/* the keyboard: the poster stays under the canvas for good (the canvas is opaque once faded in),
+   so the hand-off never shows bare paper */
+.sq-k3{position:absolute;inset:0;z-index:0;overflow:hidden}
+.sq-k3.sq-poster{background:var(--k3p) center/cover no-repeat}
+.sq-k3-canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .45s ease;touch-action:pan-y}
+.sq-k3.sq-live .sq-k3-canvas{opacity:1}
+.sq-sheet{position:absolute;inset:0;z-index:1;pointer-events:none}
+.sq-kb-links{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;list-style:none}
+.sq-k3-ring{position:absolute;left:0;top:0;width:0;height:0;border-radius:var(--sq-r-panel);box-shadow:0 0 0 3px var(--sq-focus);opacity:0;pointer-events:none;transition:opacity .15s}
+.sq-k3-ring.sq-on{opacity:1}
+.sq-k3-name{position:absolute;transform:translate(-50%,-100%);padding:5px 12px;border-radius:var(--sq-r-pill);background:var(--sq-ink);color:var(--sq-paper);font-size:15px;font-weight:650;white-space:nowrap;pointer-events:none}
+
+/* ---- the chat (shadcn-style anatomy: message, bubble, trace with a shimmer on the running step,
+   artifact card). Illustrative; chat-demo.tsx. ---- */
+.sq-chat{display:flex;flex-direction:column;height:100%}
+.sq-chat-tag{padding:18px 28px 0;font-size:15px;color:var(--sq-ink-2)}
+.sq-chat-log{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:12px 28px 20px}
+.sq-msg-u{display:flex;justify-content:flex-end}
+.sq-bub{max-width:85%;padding:11px 18px;border-radius:var(--sq-r-bubble) var(--sq-r-bubble) var(--sq-r-inner) var(--sq-r-bubble);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;line-height:1.5}
+.sq-msg-a{display:flex;flex-direction:column;gap:12px;min-width:0}
+.sq-trace{list-style:none;padding:6px 16px;border-radius:var(--sq-r-card);background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}
+.sq-trace li{display:flex;align-items:center;gap:10px;min-width:0;padding:5px 0;font-size:15px;line-height:1.45;color:var(--sq-n700)}
+.sq-tl{min-width:0;overflow-wrap:anywhere}
+.sq-trace code{font-size:15px;color:var(--sq-ink);overflow-wrap:anywhere}
+.sq-ic{flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--sq-n800);color:var(--sq-paper)}
+.sq-trace li.sq-run .sq-ic{background:transparent;box-shadow:inset 0 0 0 2px var(--sq-primary);animation:sq-pulse 1.2s ease-in-out infinite}
+.sq-shim{background:linear-gradient(90deg,var(--sq-ink-2) 0%,var(--sq-ink-2) 40%,var(--sq-n300) 50%,var(--sq-ink-2) 60%,var(--sq-ink-2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sq-shim 1.6s linear infinite}
+@keyframes sq-shim{from{background-position:100% 0}to{background-position:-100% 0}}
+@keyframes sq-pulse{50%{opacity:.45}}
+.sq-off{display:none!important}
+.sq-chat-pre .sq-trace,.sq-chat-pre .sq-art{display:none}
+.sq-trace li:not(.sq-off),.sq-in{animation:sq-rise .32s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sq-rise{from{opacity:0;transform:translateY(6px)}}
+.sq-art{margin:0;border-radius:var(--sq-r-card);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}
+.sq-art-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 16px;font-size:15px;color:var(--sq-ink-2);background:var(--sq-cell)}
+.sq-art-bar b{font-weight:650;color:var(--sq-ink);font-family:var(--sq-f-mono);font-size:15px}
+.sq-art-bar span{white-space:nowrap}
+.sq-art-body{display:grid;place-items:center;padding:14px 20px 16px}
+.sq-pay{display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;max-width:320px;text-align:center}
+.sq-pay-chk{display:grid;place-items:center;margin-bottom:2px}
+.sq-pay-chk svg{width:32px;height:32px}
+.sq-pay-rows{width:100%;margin:10px 0 12px;padding:6px 14px;text-align:left}
+.sq-pay-rows div{display:flex;justify-content:space-between;gap:12px;padding:2px 0}
+.sq-pay-btn{display:flex;align-items:center;justify-content:center;width:100%}
+@media (prefers-reduced-motion:reduce){
+  .sq-shim{animation:none;color:var(--sq-ink-2);background:none}
+  .sq-trace li.sq-run .sq-ic{animation:none}
+  .sq-trace li:not(.sq-off),.sq-in{animation:none}
+  .sq-k3-canvas{transition:none}
+}
+@media (max-width:900px){
+  .sq-hero{padding-top:28px}
+  .sq-hero-top{flex-direction:column;align-items:flex-start}
+  :where(.sq-root) h1{font-size:clamp(32px,9.2vw,46px)}
+  :where(.sq-root) :lang(ko) h1{font-size:clamp(28px,8vw,42px)}
+  :where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(25px,7.2vw,40px)}
+  .sq-lede{font-size:16px}
+  .sq-hero-acts{gap:8px}
+  .sq-cta,.sq-cta-q{min-height:48px;padding:0 20px}
+  .sq-stage{grid-template-columns:minmax(0,1fr);height:auto;margin-top:28px;border-radius:var(--sq-r-card)}
+  .sq-stage-caps{height:300px}
+  .sq-k3.sq-poster{background-image:var(--k3pm)}
+  .sq-k3[data-drop] .sq-k3-drop-d{display:none}
+  .sq-k3[data-drop] .sq-k3-drop-m{display:block}
+  .sq-chat-tag{padding:16px 16px 0}
+  .sq-chat-log{overflow:visible;padding:12px 16px 16px}
+  .sq-bub{max-width:92%}
+  .sq-trace{padding:4px 12px}
+  .sq-art-bar span{display:none}
+  .sq-art-body{padding:16px 12px}
+}
+@media (max-width:400px){:where(.sq-root) :lang(ja) h1{letter-spacing:0}}

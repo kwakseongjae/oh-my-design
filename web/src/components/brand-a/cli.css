@@ -1,0 +1,41 @@
+/* oh-my-design-cli section. Split out of landing.css before round 11 (docs/REDESIGN_R11_PLAN_2026-10-20.md) so each section has one owner; imported by landing.tsx in the original cascade order. */
+/* ---- oh-my-design-cli: three steps beside the transcript; the terminal is the page's one dark
+   field (C), Iris-tinted ink, panel radius. The active step is the one violet state here. ---- */
+.sq-cli-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;margin-top:48px;align-items:start}
+.sq-steps{list-style:none;display:grid;gap:12px}
+.sq-step{min-width:0;border-radius:var(--sq-r-card);background:var(--sq-band);transition:background-color .2s,box-shadow .2s}
+.sq-step.sq-on{background:var(--sq-paper);box-shadow:inset 0 0 0 2px var(--sq-primary),var(--sq-shadow-panel)}
+.sq-step-t{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;width:100%;min-height:44px;padding:16px 20px 4px;border-radius:var(--sq-r-card);font-size:18px;font-weight:700;color:var(--sq-ink)}
+.sq-step-t:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-step-b{padding:0 20px 20px;font-size:16px;color:var(--sq-ink-2)}
+.sq-step-b>p+p,.sq-step-b>p+div{margin-top:12px}
+.sq-chip-code{display:inline-block;padding:3px 10px;border-radius:var(--sq-r-inner);background:var(--sq-cell);color:var(--sq-ink);font-size:14px;overflow-wrap:anywhere}
+.sq-say{display:inline-block;padding:8px 14px;border-radius:var(--sq-r-ctl) var(--sq-r-ctl) var(--sq-r-ctl) var(--sq-r-inner);background:var(--sq-cell);color:var(--sq-ink)}
+/* the one copyable command on the page */
+.sq-cmd{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 8px 8px 18px;border-radius:var(--sq-r-ctl);background:var(--sq-term);color:var(--sq-term-ink)}
+.sq-cmd code{flex:1;min-width:0;font-size:15px;font-weight:500;line-height:1.4;overflow-wrap:anywhere}
+.sq-cmd-ps{color:var(--sq-term-dim);user-select:none}
+.sq-cmd-copy{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:40px;padding:0 16px;border-radius:calc(var(--sq-r-ctl) - 4px);background:color-mix(in srgb,#fff 12%,var(--sq-term));color:var(--sq-term-ink);font-size:15px;font-weight:600;transition:background-color .15s}
+.sq-cmd-copy:hover{background:color-mix(in srgb,#fff 22%,var(--sq-term))}
+.sq-cmd-copy:focus-visible{outline:2px solid var(--sq-p300);outline-offset:2px}
+.sq-cmd-copy.sq-ok{color:var(--sq-term-acc)}
+.sq-term-runs{min-width:0;padding:12px 0;border-radius:var(--sq-r-panel);background:var(--sq-term);color:var(--sq-term-ink);box-shadow:0 24px 48px -24px rgba(30,20,90,.35)}
+.sq-term-runs{overflow:hidden}
+.sq-term-run{padding:10px 24px;transition:background-color .2s}
+.sq-term-run.sq-on{background:color-mix(in srgb,#fff 7%,transparent)}
+.sq-tc{display:block;font-size:14px;font-weight:600;line-height:1.6;color:#fff;overflow-wrap:anywhere}
+.sq-tc-ps{color:var(--sq-term-acc)}
+.sq-to{margin:0;font:400 14px/1.6 var(--sq-f-mono);color:var(--sq-term-dim);white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+.sq-to .sq-ta{color:var(--sq-term-acc)}
+.sq-to .sq-tw{color:var(--sq-term-warn)}
+.sq-to .sq-tp{color:var(--sq-term-ink)}
+.sq-to span:not(.sq-tg),.sq-trace code span{font-family:var(--sq-f-mono)}
+.sq-tg{font-family:var(--sq-f-latin),sans-serif}
+.sq-tg:lang(ko){font-family:var(--sq-f-ko)}.sq-tg:lang(ja){font-family:var(--sq-f-ja)}.sq-tg:lang(zh-Hant){font-family:var(--sq-f-tc)}
+.sq-cli-cap{margin-top:16px;font-size:15px;color:var(--sq-ink-2);max-width:60em}
+.sq-cli-skills{margin-top:12px;font-size:16px;scroll-margin-top:96px}
+@media (max-width:900px){
+  .sq-cli-grid{grid-template-columns:minmax(0,1fr);margin-top:28px}
+  .sq-term-run{padding:8px 16px}
+  .sq-to,.sq-tc{font-size:12.5px}
+}

@@ -33,84 +33,6 @@
 .sq-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){:where(.sq-root) *{scroll-behavior:auto!important}}
 
-/* ---- hero (round 10, direction B): the headline and one sentence on the left, the two actions on
-   the right, then one stage — the keycaps on white beside the illustrative chat. Four type sizes
-   in view (h1 / 18 / 16 / 15); the Toss screen inside the chat is a content object set in Toss
-   type tokens. One accent: the main action and the user's bubble. ---- */
-.sq-hero{padding-top:48px;padding-bottom:0}
-.sq-hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px}
-.sq-hero-copy{min-width:0;max-width:760px}
-:where(.sq-root) h1{font-size:clamp(40px,4.3vw,60px);line-height:1.1;letter-spacing:-0.035em;font-weight:760}
-:where(.sq-root) :lang(ko) h1{font-size:clamp(34px,3.9vw,56px);line-height:1.22;letter-spacing:-0.03em}
-:where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(30px,3.5vw,50px);line-height:1.3;font-weight:700}
-.sq-lede{margin-top:16px;font-size:18px;line-height:1.6;color:var(--sq-ink-2);max-width:34em}
-.sq-hero-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;flex-shrink:0;padding-bottom:4px}
-.sq-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:var(--sq-r-pill);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;font-weight:700;white-space:nowrap;transition:background-color .15s,transform .12s}
-.sq-cta:hover{background:var(--sq-primary-hover)}
-.sq-cta:active{background:var(--sq-primary-press);transform:scale(.98)}
-.sq-cta:focus-visible,.sq-cta-q:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
-.sq-cta-q{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:var(--sq-r-pill);background:var(--sq-cell);color:var(--sq-ink);font-size:16px;font-weight:650;white-space:nowrap;transition:background-color .15s}
-.sq-cta-q:hover{background:var(--sq-guide-2)}
-
-/* the stage: one panel (28), the keycaps on paper — the 3D floor and the posters are rendered on
-   #ffffff, and nothing violet sits behind the caps — and the chat on the band tone. Fixed height
-   so the caps box is the same on every locale (the posters are rendered from it). */
-.sq-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:640px;margin-top:40px;border-radius:var(--sq-r-panel);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel)}
-.sq-stage-caps{position:relative;min-width:0;background:var(--sq-paper);isolation:isolate}
-.sq-stage-chat{position:relative;min-width:0;min-height:0;background:var(--sq-band)}
-.sq-stage-note{margin-top:16px;font-size:15px;color:var(--sq-ink-2);max-width:60em}
-
-/* the keyboard: the poster stays under the canvas for good (the canvas is opaque once faded in),
-   so the hand-off never shows bare paper */
-.sq-k3{position:absolute;inset:0;z-index:0;overflow:hidden}
-.sq-k3.sq-poster{background:var(--k3p) center/cover no-repeat}
-.sq-k3-canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .45s ease;touch-action:pan-y}
-.sq-k3.sq-live .sq-k3-canvas{opacity:1}
-.sq-sheet{position:absolute;inset:0;z-index:1;pointer-events:none}
-.sq-kb-links{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;list-style:none}
-.sq-k3-ring{position:absolute;left:0;top:0;width:0;height:0;border-radius:var(--sq-r-panel);box-shadow:0 0 0 3px var(--sq-focus);opacity:0;pointer-events:none;transition:opacity .15s}
-.sq-k3-ring.sq-on{opacity:1}
-.sq-k3-name{position:absolute;transform:translate(-50%,-100%);padding:5px 12px;border-radius:var(--sq-r-pill);background:var(--sq-ink);color:var(--sq-paper);font-size:15px;font-weight:650;white-space:nowrap;pointer-events:none}
-
-/* ---- the chat (shadcn-style anatomy: message, bubble, trace with a shimmer on the running step,
-   artifact card). Illustrative; chat-demo.tsx. ---- */
-.sq-chat{display:flex;flex-direction:column;height:100%}
-.sq-chat-tag{padding:18px 28px 0;font-size:15px;color:var(--sq-ink-2)}
-.sq-chat-log{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:12px 28px 20px}
-.sq-msg-u{display:flex;justify-content:flex-end}
-.sq-bub{max-width:85%;padding:11px 18px;border-radius:var(--sq-r-bubble) var(--sq-r-bubble) var(--sq-r-inner) var(--sq-r-bubble);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;line-height:1.5}
-.sq-msg-a{display:flex;flex-direction:column;gap:12px;min-width:0}
-.sq-trace{list-style:none;padding:6px 16px;border-radius:var(--sq-r-card);background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}
-.sq-trace li{display:flex;align-items:center;gap:10px;min-width:0;padding:5px 0;font-size:15px;line-height:1.45;color:var(--sq-n700)}
-.sq-tl{min-width:0;overflow-wrap:anywhere}
-.sq-trace code{font-size:15px;color:var(--sq-ink);overflow-wrap:anywhere}
-.sq-ic{flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--sq-n800);color:var(--sq-paper)}
-.sq-trace li.sq-run .sq-ic{background:transparent;box-shadow:inset 0 0 0 2px var(--sq-primary);animation:sq-pulse 1.2s ease-in-out infinite}
-.sq-shim{background:linear-gradient(90deg,var(--sq-ink-2) 0%,var(--sq-ink-2) 40%,var(--sq-n300) 50%,var(--sq-ink-2) 60%,var(--sq-ink-2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sq-shim 1.6s linear infinite}
-@keyframes sq-shim{from{background-position:100% 0}to{background-position:-100% 0}}
-@keyframes sq-pulse{50%{opacity:.45}}
-.sq-off{display:none!important}
-.sq-chat-pre .sq-trace,.sq-chat-pre .sq-art{display:none}
-.sq-trace li:not(.sq-off),.sq-in{animation:sq-rise .32s cubic-bezier(.2,.8,.2,1) both}
-@keyframes sq-rise{from{opacity:0;transform:translateY(6px)}}
-.sq-art{margin:0;border-radius:var(--sq-r-card);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}
-.sq-art-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 16px;font-size:15px;color:var(--sq-ink-2);background:var(--sq-cell)}
-.sq-art-bar b{font-weight:650;color:var(--sq-ink);font-family:var(--sq-f-mono);font-size:15px}
-.sq-art-bar span{white-space:nowrap}
-.sq-art-body{display:grid;place-items:center;padding:14px 20px 16px}
-.sq-pay{display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;max-width:320px;text-align:center}
-.sq-pay-chk{display:grid;place-items:center;margin-bottom:2px}
-.sq-pay-chk svg{width:32px;height:32px}
-.sq-pay-rows{width:100%;margin:10px 0 12px;padding:6px 14px;text-align:left}
-.sq-pay-rows div{display:flex;justify-content:space-between;gap:12px;padding:2px 0}
-.sq-pay-btn{display:flex;align-items:center;justify-content:center;width:100%}
-@media (prefers-reduced-motion:reduce){
-  .sq-shim{animation:none;color:var(--sq-ink-2);background:none}
-  .sq-trace li.sq-run .sq-ic{animation:none}
-  .sq-trace li:not(.sq-off),.sq-in{animation:none}
-  .sq-k3-canvas{transition:none}
-}
-
 /* ---- sections: full-bleed, alternating paper and the band tone, the same padding, one h2 each ---- */
 .sq-sec{padding-block:120px}
 .sq-hero+.sq-sec{margin-top:120px}
@@ -121,118 +43,13 @@
 .sq-intro{margin-top:16px;font-size:18px;color:var(--sq-ink-2);max-width:40em}
 #reference .sq-g5{margin-top:48px}
 
-/* ---- oh-my-design-cli: three steps beside the transcript; the terminal is the page's one dark
-   field (C), Iris-tinted ink, panel radius. The active step is the one violet state here. ---- */
-.sq-cli-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;margin-top:48px;align-items:start}
-.sq-steps{list-style:none;display:grid;gap:12px}
-.sq-step{min-width:0;border-radius:var(--sq-r-card);background:var(--sq-band);transition:background-color .2s,box-shadow .2s}
-.sq-step.sq-on{background:var(--sq-paper);box-shadow:inset 0 0 0 2px var(--sq-primary),var(--sq-shadow-panel)}
-.sq-step-t{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;width:100%;min-height:44px;padding:16px 20px 4px;border-radius:var(--sq-r-card);font-size:18px;font-weight:700;color:var(--sq-ink)}
-.sq-step-t:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-step-b{padding:0 20px 20px;font-size:16px;color:var(--sq-ink-2)}
-.sq-step-b>p+p,.sq-step-b>p+div{margin-top:12px}
-.sq-chip-code{display:inline-block;padding:3px 10px;border-radius:var(--sq-r-inner);background:var(--sq-cell);color:var(--sq-ink);font-size:14px;overflow-wrap:anywhere}
-.sq-say{display:inline-block;padding:8px 14px;border-radius:var(--sq-r-ctl) var(--sq-r-ctl) var(--sq-r-ctl) var(--sq-r-inner);background:var(--sq-cell);color:var(--sq-ink)}
-/* the one copyable command on the page */
-.sq-cmd{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 8px 8px 18px;border-radius:var(--sq-r-ctl);background:var(--sq-term);color:var(--sq-term-ink)}
-.sq-cmd code{flex:1;min-width:0;font-size:15px;font-weight:500;line-height:1.4;overflow-wrap:anywhere}
-.sq-cmd-ps{color:var(--sq-term-dim);user-select:none}
-.sq-cmd-copy{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:40px;padding:0 16px;border-radius:calc(var(--sq-r-ctl) - 4px);background:color-mix(in srgb,#fff 12%,var(--sq-term));color:var(--sq-term-ink);font-size:15px;font-weight:600;transition:background-color .15s}
-.sq-cmd-copy:hover{background:color-mix(in srgb,#fff 22%,var(--sq-term))}
-.sq-cmd-copy:focus-visible{outline:2px solid var(--sq-p300);outline-offset:2px}
-.sq-cmd-copy.sq-ok{color:var(--sq-term-acc)}
-.sq-term-runs{min-width:0;padding:12px 0;border-radius:var(--sq-r-panel);background:var(--sq-term);color:var(--sq-term-ink);box-shadow:0 24px 48px -24px rgba(30,20,90,.35)}
-.sq-term-runs{overflow:hidden}
-.sq-term-run{padding:10px 24px;transition:background-color .2s}
-.sq-term-run.sq-on{background:color-mix(in srgb,#fff 7%,transparent)}
-.sq-tc{display:block;font-size:14px;font-weight:600;line-height:1.6;color:#fff;overflow-wrap:anywhere}
-.sq-tc-ps{color:var(--sq-term-acc)}
-.sq-to{margin:0;font:400 14px/1.6 var(--sq-f-mono);color:var(--sq-term-dim);white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
-.sq-to .sq-ta{color:var(--sq-term-acc)}
-.sq-to .sq-tw{color:var(--sq-term-warn)}
-.sq-to .sq-tp{color:var(--sq-term-ink)}
-.sq-to span:not(.sq-tg),.sq-trace code span{font-family:var(--sq-f-mono)}
-.sq-tg{font-family:var(--sq-f-latin),sans-serif}
-.sq-tg:lang(ko){font-family:var(--sq-f-ko)}.sq-tg:lang(ja){font-family:var(--sq-f-ja)}.sq-tg:lang(zh-Hant){font-family:var(--sq-f-tc)}
-.sq-cli-cap{margin-top:16px;font-size:15px;color:var(--sq-ink-2);max-width:60em}
-.sq-cli-skills{margin-top:12px;font-size:16px;scroll-margin-top:96px}
+/* links inside the CLI and FAQ sections (shared) */
 .sq-cli-skills a,.sq-faq-sub a,.sq-faq-empty a{text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:4px;text-decoration-thickness:2px}
 .sq-cli-skills a:hover,.sq-faq-sub a:hover,.sq-faq-empty a:hover{text-decoration-color:currentColor}
 
-/* ---- FAQ: categories + search on the left, the accordion on the right ---- */
-.sq-faq-g{display:grid;grid-template-columns:320px minmax(0,1fr);gap:64px;align-items:start}
-.sq-faq-side{min-width:0}
-.sq-faq-sub{margin-top:12px;font-size:16px;color:var(--sq-ink-2)}
-.sq-fsearch{display:flex;align-items:center;gap:10px;height:52px;margin-top:28px;padding:0 16px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);color:var(--sq-icon)}
-.sq-fsearch:focus-within{box-shadow:inset 0 0 0 2px var(--sq-primary)}
-.sq-fsearch input{all:unset;flex:1;min-width:0;font-size:16px;color:var(--sq-ink)}
-.sq-fsearch input::placeholder{color:var(--sq-ink-2)}
-.sq-cats{display:grid;gap:4px;margin-top:16px}
-.sq-cats button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--sq-r-ctl);font-size:16px;color:var(--sq-n700);transition:background-color .15s,color .15s}
-.sq-cats button:hover{background:var(--sq-cell)}
-.sq-cats button span{color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
-.sq-cats button[aria-pressed="true"]{background:var(--sq-tint);color:var(--sq-primary);font-weight:650}
-.sq-cats button[aria-pressed="true"] span{color:var(--sq-primary)}
-.sq-cats button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-acc{display:grid;gap:8px;min-width:0}
-.sq-acc-i{border-radius:var(--sq-r-card);background:var(--sq-paper);transition:box-shadow .2s}
-.sq-acc-i.sq-on{box-shadow:var(--sq-shadow-panel)}
-.sq-acc h3{font-size:inherit;font-weight:inherit;margin:0}
-.sq-acc-b{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:60px;padding:16px 20px 16px 24px;border-radius:var(--sq-r-card);font-size:18px;font-weight:650;color:var(--sq-ink)}
-.sq-acc-b:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-acc-ic{position:relative;flex:none;width:28px;height:28px;border-radius:50%;background:var(--sq-cell);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.sq-acc-ic::before,.sq-acc-ic::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:1px;background:currentColor}
-.sq-acc-ic::after{transform:rotate(90deg)}
-.sq-on .sq-acc-ic{transform:rotate(45deg)}
-.sq-acc-p{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s cubic-bezier(.2,.8,.2,1)}
-.sq-on .sq-acc-p{grid-template-rows:1fr}
-.sq-acc-p>div{overflow:hidden}
-.sq-acc-p p{padding:0 24px 22px;font-size:16px;color:var(--sq-ink-2);max-width:44em}
-.sq-acc-p code{font-size:14px;padding:1px 6px;border-radius:var(--sq-r-inner);background:var(--sq-cell);overflow-wrap:anywhere}
-.sq-faq-empty{padding:24px;font-size:16px;color:var(--sq-ink-2)}
-@media (prefers-reduced-motion:reduce){.sq-acc-p,.sq-acc-ic{transition:none}}
-
-/* ---- closing band: a quiet tinted panel with the main action ---- */
-.sq-close{padding-block:120px}
-.sq-close-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;padding:56px;border-radius:var(--sq-r-panel);background:var(--sq-tint)}
-.sq-close-band>div{min-width:0;max-width:44em}
-.sq-close-band p{margin-top:12px;font-size:18px;color:var(--sq-ink-2)}
-
-@media (max-width:1100px){.sq-faq-g{grid-template-columns:260px minmax(0,1fr);gap:40px}}
 @media (max-width:900px){
-  .sq-hero{padding-top:28px}
-  .sq-hero-top{flex-direction:column;align-items:flex-start}
-  :where(.sq-root) h1{font-size:clamp(32px,9.2vw,46px)}
-  :where(.sq-root) :lang(ko) h1{font-size:clamp(28px,8vw,42px)}
-  :where(.sq-root) :lang(ja) h1,:where(.sq-root) :lang(zh-Hant) h1{font-size:clamp(25px,7.2vw,40px)}
-  .sq-lede{font-size:16px}
-  .sq-hero-acts{gap:8px}
-  .sq-cta,.sq-cta-q{min-height:48px;padding:0 20px}
-  .sq-stage{grid-template-columns:minmax(0,1fr);height:auto;margin-top:28px;border-radius:var(--sq-r-card)}
-  .sq-stage-caps{height:300px}
-  .sq-k3.sq-poster{background-image:var(--k3pm)}
-  .sq-k3[data-drop] .sq-k3-drop-d{display:none}
-  .sq-k3[data-drop] .sq-k3-drop-m{display:block}
-  .sq-chat-tag{padding:16px 16px 0}
-  .sq-chat-log{overflow:visible;padding:12px 16px 16px}
-  .sq-bub{max-width:92%}
-  .sq-trace{padding:4px 12px}
-  .sq-art-bar span{display:none}
-  .sq-art-body{padding:16px 12px}
   .sq-sec{padding-block:80px}
   .sq-hero+.sq-sec{margin-top:80px}
   :where(.sq-root) h2{font-size:clamp(26px,7vw,32px)}
   .sq-intro{font-size:16px}
-  .sq-cli-grid{grid-template-columns:minmax(0,1fr);margin-top:28px}
-  .sq-term-run{padding:8px 16px}
-  .sq-to,.sq-tc{font-size:12.5px}
-  .sq-faq-g{grid-template-columns:minmax(0,1fr);gap:24px}
-  .sq-cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--sq-gut));padding-inline:var(--sq-gut)}
-  .sq-cats button{flex:none;min-height:40px;border-radius:var(--sq-r-pill);background:var(--sq-paper)}
-  .sq-acc-b{font-size:16px;padding:14px 16px 14px 18px}
-  .sq-acc-p p{padding:0 18px 18px;font-size:15px}
-  .sq-close{padding-block:80px}
-  .sq-close-band{padding:32px 24px;border-radius:var(--sq-r-card)}
-  .sq-close-band p{font-size:16px}
 }
-@media (max-width:400px){:where(.sq-root) :lang(ja) h1{letter-spacing:0}}

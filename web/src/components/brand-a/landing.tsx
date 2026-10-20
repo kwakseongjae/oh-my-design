@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { preload } from "react-dom";
 import { getLandingData } from "@/lib/landing-a/data.server";
 import { getRepoStars } from "@/lib/github-stars.server";
@@ -7,16 +6,19 @@ import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { fmt, getCopy } from "./copy";
 import { getR10 } from "./copy/r10";
-import { ChatDemo, chatScript } from "./chat-demo";
 import { CliSection } from "./cli-section";
-import { Faq } from "./faq";
-import { GenUI } from "./gen-ui";
-import { HeroKeys } from "./hero-keys";
-import { HeroDropLayer, dropScript } from "./hero-drop";
-import { plain, rich } from "./rich";
+import { CloseSection } from "./close-section";
+import { FaqSection } from "./faq-section";
+import { HeroSection } from "./hero-section";
+import { JourneySection } from "./journey-section";
 import { SiteFooterA } from "./site-footer";
 import { GITHUB_URL, SiteHeaderA } from "./site-header";
+// section styles in the original cascade order (split out of landing.css before round 11)
 import "./landing.css";
+import "./hero.css";
+import "./cli.css";
+import "./faq.css";
+import "./close.css";
 
 const WANTED_LATIN = "/fonts/wanted-sans/WantedSansVariable.split.90.woff2";
 const GH_SKILLS = `${GITHUB_URL}/tree/main/skills`;
@@ -33,6 +35,10 @@ const GH_ISSUES = `${GITHUB_URL}/issues`;
  * command), the FAQ (categories, search, accordion) and a closing band. Server component: every
  * number comes from generated data at build time; the keycaps, chat, steps, FAQ and copy
  * buttons hydrate as islands.
+ *
+ * Round 11 prep: this file is now only the composer. Each section lives in its own component
+ * (hero-section, journey-section, cli-section, faq-section, close-section) and stylesheet, so the
+ * parallel round-11 work streams never edit the same file (docs/REDESIGN_R11_PLAN_2026-10-20.md).
  */
 export async function LandingA({ locale }: { locale: SiteLocale }) {
   const c = getCopy(locale);
@@ -57,70 +63,11 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
     <div className="sq-root sq-root-page" lang={htmlLang}>
       <SiteHeaderA locale={locale} current={locale} onLanding stars={stars} />
       <main id="main">
-        <section className="sq-wrap sq-hero" aria-labelledby="h-hero">
-          <div className="sq-hero-top">
-            <div className="sq-hero-copy">
-              <h1 id="h-hero">{rich(c.hero.h1)}</h1>
-              <p className="sq-lede">{rich(f(c.hero.lede))}</p>
-            </div>
-            <div className="sq-hero-acts">
-              <Link className="sq-cta" href={archive} prefetch={false}>{c.hero.browse}</Link>
-              <a className="sq-cta-q" href="#use">{r.hero.install}</a>
-            </div>
-          </div>
-          <div className="sq-stage">
-            <div className="sq-stage-caps">
-              {/* 3D host: the poster until three.js mounts after idle (hero-keys.tsx); the canvas, the
-                  2D drop layer and the hidden link list all share this one box, which is the box the
-                  posters are rendered from (scripts/hero-posters.mjs clips to #k3). */}
-              <div className="sq-k3 sq-poster" id="k3" data-set={locale === "ja" || locale === "zh-tw" ? locale : "default"} aria-hidden="true" suppressHydrationWarning>
-                <HeroDropLayer locale={locale} />
-              </div>
-              {/* pre-hydration: arriving from the language picker, the caps new here start falling as
-                  2D sprites at first paint; the 3D scene takes over once they settle (hero-drop.tsx) */}
-              <script dangerouslySetInnerHTML={{ __html: dropScript(locale) }} />
-              <HeroKeys caps={data.hero} label={c.kb.label} locale={locale} />
-            </div>
-            <div className="sq-stage-chat">
-              <ChatDemo t={r.chat} />
-              <script dangerouslySetInnerHTML={{ __html: chatScript }} />
-            </div>
-          </div>
-          <p className="sq-stage-note">{r.chat.note}</p>
-        </section>
-
-        <section className="sq-sec sq-band" id="reference" aria-labelledby="h-ref">
-          <div className="sq-wrap">
-            <h2 id="h-ref">{c.gen.h2}</h2>
-            <p className="sq-intro">{c.gen.intro}</p>
-            <GenUI specs={data.gen} locale={locale} t={c.gen} first={first} />
-          </div>
-        </section>
-
+        <HeroSection locale={locale} c={c} r={r} data={data} f={f} archive={archive} />
+        <JourneySection locale={locale} c={c} data={data} first={first} />
         <CliSection locale={locale} c={c} r={r} total={F.total} skills={F.skills} skillsHref={GH_SKILLS} />
-
-        <section className="sq-sec sq-band" id="faq" aria-labelledby="h-faq">
-          <div className="sq-wrap">
-            <Faq
-              t={r.faq}
-              issuesHref={GH_ISSUES}
-              head={<><h2 id="h-faq">{r.faq.h2}</h2><p className="sq-faq-sub"><a href={GH_ISSUES}>{r.faq.sub}</a></p></>}
-              items={r.faq.items.map((x) => ({ cat: x.cat, q: x.q, text: plain(f(x.a)), answer: rich(f(x.a)) }))}
-            />
-          </div>
-        </section>
-
-        <section className="sq-close" aria-labelledby="h-close">
-          <div className="sq-wrap">
-            <div className="sq-close-band">
-              <div>
-                <h2 id="h-close">{f(r.band.h2)}</h2>
-                <p>{r.band.p}</p>
-              </div>
-              <Link className="sq-cta" href={archive} prefetch={false}>{r.band.cta}</Link>
-            </div>
-          </div>
-        </section>
+        <FaqSection r={r} f={f} issuesHref={GH_ISSUES} />
+        <CloseSection r={r} f={f} archive={archive} />
       </main>
       <SiteFooterA locale={locale} current={locale} />
     </div>
