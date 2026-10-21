@@ -7,9 +7,14 @@ export function fmtEm(v: number): string {
   return `${v < 0 ? "−" : ""}${Math.abs(v)}em`;
 }
 
+/** One screenshot, linked to its full-size file (on a phone the desktop pair is thumbnail-sized). */
 function Shot({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) {
-  // eslint-disable-next-line @next/next/no-img-element -- static files from public/hangul, sized by the asset contract
-  return <img className="hg-shot-img" src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />;
+  return (
+    <a className="hg-shot-a" href={src}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- static files from public/hangul, sized by the asset contract */}
+      <img className="hg-shot-img" src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+    </a>
+  );
 }
 
 /**

@@ -114,12 +114,15 @@
 .hg-eval-c{margin-top:8px;font-size:15px;line-height:1.6;color:var(--sq-ink-2);max-width:44em}
 
 /* ---- launch content (asset-sections.tsx) ---- */
-.hg-shots{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;margin-top:40px;align-items:start}
+.hg-shots{display:grid;gap:40px;margin-top:40px}
 .hg-shot{margin:0;min-width:0}
 .hg-shot-k{font-size:15px;line-height:1.5;font-weight:650;color:var(--sq-ink)}
-.hg-shot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+.hg-shot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:10px}
+.hg-shot--phone .hg-shot-pair{max-width:600px}
 .hg-shot-side{min-width:0}
 .hg-shot-l{margin-bottom:6px;font-size:14px;line-height:1.5;color:var(--sq-ink-2)}
+.hg-shot-a{display:block;border-radius:12px}
+.hg-shot-a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
 .hg-shot-img{display:block;width:100%;height:auto;border-radius:12px;background:var(--sq-cell);box-shadow:0 0 0 1px var(--sq-guide-2)}
 .hg-video{margin:48px 0 0;max-width:880px}
 .hg-video-h{margin-bottom:12px}
@@ -181,7 +184,6 @@
 /* ---- narrow desktops and tablets ---- */
 @media (max-width:1100px){
   .hg-cards{grid-template-columns:minmax(0,1fr);max-width:560px}
-  .hg-shots{grid-template-columns:minmax(0,1fr)}
 }
 
 /* ---- phones: the two results stack; both stay in the first screen ---- */
