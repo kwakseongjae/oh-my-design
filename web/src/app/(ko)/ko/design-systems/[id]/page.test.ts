@@ -69,6 +69,11 @@ describe("Korean item page metadata", () => {
       expect(en.alternates?.languages).toMatchObject({ ko: `/ko/design-systems/${id}` });
       expect(ko.openGraph && "locale" in ko.openGraph ? ko.openGraph.locale : null).toBe("ko_KR");
       expect(String(ko.description)).toMatch(HANGUL);
+      // share cards live at /og/* since referral-1: robots.txt disallows /api/ for every crawler, so
+      // an /api/og URL never reaches the 308 and the card shows no image
+      const og = JSON.stringify([ko.openGraph, ko.twitter]);
+      expect(og, id).not.toContain("/api/og");
+      expect(og, id).toContain(`/og/reference?id=${id}&lang=ko`);
     }
   });
 });

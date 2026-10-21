@@ -81,13 +81,13 @@ export async function generateMetadata({
       type: "article",
       locale: "ko_KR",
       // The reference card is language-neutral (name, colour, tokens); there is no Korean variant.
-      images: [`/api/og/reference?id=${id}&lang=ko`],
+      images: [`/og/reference?id=${id}&lang=ko`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`/api/og/reference?id=${id}&lang=ko`],
+      images: [`/og/reference?id=${id}&lang=ko`],
     },
   };
 }
