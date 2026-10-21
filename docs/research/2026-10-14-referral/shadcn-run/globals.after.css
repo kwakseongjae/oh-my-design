@@ -1,0 +1,468 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/noto-sans";
+@import "@fontsource-variable/noto-sans-kr";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    /* Toss Product Sans is the brand face but is not installable (no redistribution right).
+       Noto Sans KR / Noto Sans are the DESIGN.md safe default: a fallback, not the brand face. */
+    --font-sans: "Toss Product Sans", "Noto Sans Variable", "Noto Sans KR Variable", -apple-system, system-ui, sans-serif;
+    --font-heading: var(--font-sans);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --color-primary-hover: var(--primary-hover);
+    --color-body: var(--body);
+    --color-surface: var(--surface);
+    --color-weak: var(--weak);
+    --color-weak-foreground: var(--weak-foreground);
+    --color-focus-ring-soft: var(--focus-ring-soft);
+    --color-grey-50: var(--grey-50);
+    --color-grey-100: var(--grey-100);
+    --color-grey-200: var(--grey-200);
+    --color-grey-300: var(--grey-300);
+    --color-grey-400: var(--grey-400);
+    --color-grey-500: var(--grey-500);
+    --color-grey-600: var(--grey-600);
+    --color-grey-700: var(--grey-700);
+    --color-grey-800: var(--grey-800);
+    --color-grey-900: var(--grey-900);
+    --color-blue-50: var(--blue-50);
+    --color-blue-100: var(--blue-100);
+    --color-blue-200: var(--blue-200);
+    --color-blue-300: var(--blue-300);
+    --color-blue-400: var(--blue-400);
+    --color-blue-500: var(--blue-500);
+    --color-blue-600: var(--blue-600);
+    --color-blue-700: var(--blue-700);
+    --color-blue-800: var(--blue-800);
+    --color-blue-900: var(--blue-900);
+    --color-red-50: var(--red-50);
+    --color-red-100: var(--red-100);
+    --color-red-200: var(--red-200);
+    --color-red-300: var(--red-300);
+    --color-red-400: var(--red-400);
+    --color-red-500: var(--red-500);
+    --color-red-600: var(--red-600);
+    --color-red-700: var(--red-700);
+    --color-red-800: var(--red-800);
+    --color-red-900: var(--red-900);
+    --color-orange-50: var(--orange-50);
+    --color-orange-100: var(--orange-100);
+    --color-orange-200: var(--orange-200);
+    --color-orange-300: var(--orange-300);
+    --color-orange-400: var(--orange-400);
+    --color-orange-500: var(--orange-500);
+    --color-orange-600: var(--orange-600);
+    --color-orange-700: var(--orange-700);
+    --color-orange-800: var(--orange-800);
+    --color-orange-900: var(--orange-900);
+    --color-yellow-50: var(--yellow-50);
+    --color-yellow-100: var(--yellow-100);
+    --color-yellow-200: var(--yellow-200);
+    --color-yellow-300: var(--yellow-300);
+    --color-yellow-400: var(--yellow-400);
+    --color-yellow-500: var(--yellow-500);
+    --color-yellow-600: var(--yellow-600);
+    --color-yellow-700: var(--yellow-700);
+    --color-yellow-800: var(--yellow-800);
+    --color-yellow-900: var(--yellow-900);
+    --color-green-50: var(--green-50);
+    --color-green-100: var(--green-100);
+    --color-green-200: var(--green-200);
+    --color-green-300: var(--green-300);
+    --color-green-400: var(--green-400);
+    --color-green-500: var(--green-500);
+    --color-green-600: var(--green-600);
+    --color-green-700: var(--green-700);
+    --color-green-800: var(--green-800);
+    --color-green-900: var(--green-900);
+    --color-teal-50: var(--teal-50);
+    --color-teal-100: var(--teal-100);
+    --color-teal-200: var(--teal-200);
+    --color-teal-300: var(--teal-300);
+    --color-teal-400: var(--teal-400);
+    --color-teal-500: var(--teal-500);
+    --color-teal-600: var(--teal-600);
+    --color-teal-700: var(--teal-700);
+    --color-teal-800: var(--teal-800);
+    --color-teal-900: var(--teal-900);
+    --color-purple-50: var(--purple-50);
+    --color-purple-100: var(--purple-100);
+    --color-purple-200: var(--purple-200);
+    --color-purple-300: var(--purple-300);
+    --color-purple-400: var(--purple-400);
+    --color-purple-500: var(--purple-500);
+    --color-purple-600: var(--purple-600);
+    --color-purple-700: var(--purple-700);
+    --color-purple-800: var(--purple-800);
+    --color-purple-900: var(--purple-900);
+    /* DESIGN.md radius steps -> the Tailwind class each component uses.
+       sm/md: small surfaces; lg/xl/2xl/3xl: button-small/medium/large/xlarge. 4xl (pills) is capped at the largest step. */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 10px;
+    --radius-2xl: 14px;
+    --radius-3xl: 16px;
+    --radius-4xl: 16px;
+}
+
+/* DESIGN.md: no canonical shadow token, use flat color layering. */
+@theme {
+    --shadow-2xs: 0 0 #0000;
+    --shadow-xs: 0 0 #0000;
+    --shadow-sm: 0 0 #0000;
+    --shadow-md: 0 0 #0000;
+    --shadow-lg: 0 0 #0000;
+    --shadow-xl: 0 0 #0000;
+    --shadow-2xl: 0 0 #0000;
+}
+
+:root {
+    --background: #ffffff;
+    --foreground: #191f28;
+    --card: #ffffff;
+    --card-foreground: #191f28;
+    --popover: #ffffff;
+    --popover-foreground: #191f28;
+    --primary: #3182f6;
+    --primary-foreground: #ffffff;
+    --primary-hover: #2272eb;
+    --secondary: #e8f3ff;
+    --secondary-foreground: #1b64da;
+    --muted: #f2f4f6;
+    --muted-foreground: #8b95a1;
+    --accent: #f2f4f6;
+    --accent-foreground: #191f28;
+    --destructive: #e42939;
+    --border: #e5e8eb;
+    --input: #e5e8eb;
+    --ring: #8ac0ff;
+    --focus-ring-soft: #b8d9ff;
+    --body: #4e5968;
+    --surface: #f2f4f6;
+    --weak: #e8f3ff;
+    --weak-foreground: #1b64da;
+    --chart-1: #3182f6;
+    --chart-2: #03b26c;
+    --chart-3: #fe9800;
+    --chart-4: #a234c7;
+    --chart-5: #18a5a5;
+    --radius: 0.625rem;
+    --sidebar: #f9fafb;
+    --sidebar-foreground: #191f28;
+    --sidebar-primary: #3182f6;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f2f4f6;
+    --sidebar-accent-foreground: #191f28;
+    --sidebar-border: #e5e8eb;
+    --sidebar-ring: #8ac0ff;
+    --grey-50: #f9fafb;
+    --grey-100: #f2f4f6;
+    --grey-200: #e5e8eb;
+    --grey-300: #d1d6db;
+    --grey-400: #b0b8c1;
+    --grey-500: #8b95a1;
+    --grey-600: #6b7684;
+    --grey-700: #4e5968;
+    --grey-800: #333d4b;
+    --grey-900: #191f28;
+    --blue-50: #e8f3ff;
+    --blue-100: #c9e2ff;
+    --blue-200: #90c2ff;
+    --blue-300: #64a8ff;
+    --blue-400: #4593fc;
+    --blue-500: #3182f6;
+    --blue-600: #2272eb;
+    --blue-700: #1b64da;
+    --blue-800: #1957c2;
+    --blue-900: #194aa6;
+    --red-50: #ffeeee;
+    --red-100: #ffd4d6;
+    --red-200: #feafb4;
+    --red-300: #fb8890;
+    --red-400: #f66570;
+    --red-500: #f04452;
+    --red-600: #e42939;
+    --red-700: #d22030;
+    --red-800: #bc1b2a;
+    --red-900: #a51926;
+    --orange-50: #fff3e0;
+    --orange-100: #ffe0b0;
+    --orange-200: #ffcd80;
+    --orange-300: #ffbd51;
+    --orange-400: #ffa927;
+    --orange-500: #fe9800;
+    --orange-600: #fb8800;
+    --orange-700: #f57800;
+    --orange-800: #ed6700;
+    --orange-900: #e45600;
+    --yellow-50: #fff9e7;
+    --yellow-100: #ffefbf;
+    --yellow-200: #ffe69b;
+    --yellow-300: #ffdd78;
+    --yellow-400: #ffd158;
+    --yellow-500: #ffc342;
+    --yellow-600: #ffb331;
+    --yellow-700: #faa131;
+    --yellow-800: #ee8f11;
+    --yellow-900: #dd7d02;
+    --green-50: #f0faf6;
+    --green-100: #aeefd5;
+    --green-200: #76e4b8;
+    --green-300: #3fd599;
+    --green-400: #15c47e;
+    --green-500: #03b26c;
+    --green-600: #02a262;
+    --green-700: #029359;
+    --green-800: #028450;
+    --green-900: #027648;
+    --teal-50: #edf8f8;
+    --teal-100: #bce9e9;
+    --teal-200: #89d8d8;
+    --teal-300: #58c7c7;
+    --teal-400: #30b6b6;
+    --teal-500: #18a5a5;
+    --teal-600: #109595;
+    --teal-700: #0c8585;
+    --teal-800: #097575;
+    --teal-900: #076565;
+    --purple-50: #f9f0fc;
+    --purple-100: #edccf8;
+    --purple-200: #da9bef;
+    --purple-300: #c770e4;
+    --purple-400: #b44bd7;
+    --purple-500: #a234c7;
+    --purple-600: #9128b4;
+    --purple-700: #8222a2;
+    --purple-800: #73228e;
+    --purple-900: #65237b;
+}
+
+/* Derived: DESIGN.md is light-only. Built from the grey and blue scales. */
+.dark {
+    --background: #191f28;
+    --foreground: #f9fafb;
+    --card: #333d4b;
+    --card-foreground: #f9fafb;
+    --popover: #333d4b;
+    --popover-foreground: #f9fafb;
+    --primary: #3182f6;
+    --primary-foreground: #ffffff;
+    --primary-hover: #4593fc;
+    --secondary: #194aa6;
+    --secondary-foreground: #c9e2ff;
+    --muted: #333d4b;
+    --muted-foreground: #b0b8c1;
+    --accent: #333d4b;
+    --accent-foreground: #f9fafb;
+    --destructive: #f66570;
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: #4593fc;
+    --focus-ring-soft: #194aa6;
+    --body: #d1d6db;
+    --surface: #333d4b;
+    --weak: #194aa6;
+    --weak-foreground: #c9e2ff;
+    --chart-1: #4593fc;
+    --chart-2: #15c47e;
+    --chart-3: #ffa927;
+    --chart-4: #b44bd7;
+    --chart-5: #30b6b6;
+    --sidebar: #191f28;
+    --sidebar-foreground: #f9fafb;
+    --sidebar-primary: #3182f6;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #333d4b;
+    --sidebar-accent-foreground: #f9fafb;
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: #4593fc;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+/* TDS keyboard focus: two-layer ring, 1px #8ac0ff + 3px #b8d9ff. Unlayered so it beats the utility ring. */
+:is(button, a[href], [role="button"], [role="tab"], [role="checkbox"], [role="radio"], [role="switch"], [role="slider"]):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--ring), 0 0 0 3px var(--focus-ring-soft);
+}
+
+/* Type scale: TDS tokens t1-t7 / st1-st13 and the documentation roles. No weights on t*/st* (DESIGN.md gives none). */
+@utility type-t1 {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+@utility type-st1 {
+  font-size: 29px;
+  line-height: 38px;
+}
+
+@utility type-st2 {
+  font-size: 28px;
+  line-height: 37px;
+}
+
+@utility type-st3 {
+  font-size: 27px;
+  line-height: 36px;
+}
+
+@utility type-t2 {
+  font-size: 26px;
+  line-height: 35px;
+}
+
+@utility type-st4 {
+  font-size: 25px;
+  line-height: 34px;
+}
+
+@utility type-st5 {
+  font-size: 24px;
+  line-height: 33px;
+}
+
+@utility type-st6 {
+  font-size: 23px;
+  line-height: 32px;
+}
+
+@utility type-t3 {
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@utility type-st7 {
+  font-size: 21px;
+  line-height: 30px;
+}
+
+@utility type-t4 {
+  font-size: 20px;
+  line-height: 29px;
+}
+
+@utility type-st8 {
+  font-size: 19px;
+  line-height: 28px;
+}
+
+@utility type-st9 {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+@utility type-t5 {
+  font-size: 17px;
+  line-height: 25.5px;
+}
+
+@utility type-st10 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility type-t6 {
+  font-size: 15px;
+  line-height: 22.5px;
+}
+
+@utility type-st11 {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@utility type-t7 {
+  font-size: 13px;
+  line-height: 19.5px;
+}
+
+@utility type-st12 {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@utility type-st13 {
+  font-size: 11px;
+  line-height: 16.5px;
+}
+
+@utility type-doc-h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 54px;
+}
+
+@utility type-doc-h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 45px;
+}
+
+@utility type-doc-h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+@utility type-doc-h4 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 33px;
+}
+
+@utility type-doc-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+@utility type-doc-body-small {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}

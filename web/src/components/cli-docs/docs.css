@@ -133,6 +133,11 @@
 .dx-kv dt{font-weight:650;color:var(--sq-ink)}
 .dx-kv dd{color:var(--sq-ink-2)}
 .dx-tags{display:flex;flex-wrap:wrap;gap:6px}
+/* shadcn recipe (feat/referral-1): measured facts as a key/value list, and a passage quoted
+   verbatim from the run's REPORT.md, kept in its own Markdown and set in the code face */
+.dx-sec .dx-facts{margin-top:24px;row-gap:12px}
+.dx-excerpt{margin:24px 0 0;padding:16px 18px;border-radius:var(--sq-r-ctl);background:var(--sq-band);font-size:13.5px;line-height:1.65;color:var(--sq-ink);white-space:pre-wrap;overflow-wrap:anywhere}
+.dx-excerpt+.dx-list{margin-top:20px}
 .dx-tags code{padding:3px 9px;border-radius:var(--sq-r-inner);background:var(--sq-cell);font-size:13.5px;color:var(--sq-ink)}
 
 /* ---- skills reference ---- */

@@ -1,6 +1,8 @@
 ---
 name: omd:update
 description: Safely update an existing oh-my-design installation in place and verify it afterward. Use when the user asks to update, upgrade, refresh, reinstall, or check whether their OmD skills, agents, hooks, or reference catalog are current.
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

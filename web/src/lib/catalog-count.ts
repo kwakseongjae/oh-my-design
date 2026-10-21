@@ -12,7 +12,10 @@
  *     registry. catalog-count.test.ts asserts the literal still equals
  *     REGISTRY.length.
  *   - SKILL_COUNT / SUBAGENT_COUNT mirror what npm actually ships.
+ *   - PUBLIC_SKILL_COUNT is SKILL_COUNT minus skills marked
+ *     `metadata.internal: true` — the set `npx skills add <repo>` lists and the
+ *     docs skills page shows (owner decision 2026-10-15).
  * Static files that can't import TS (README, llms.txt) are kept honest by
  * scripts/sync-catalog.mjs + the scripts/check-counts.mjs drift guard.
  */
-export { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/data/catalog-meta.generated";
+export { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/data/catalog-meta.generated";

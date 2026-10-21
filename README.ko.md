@@ -8,7 +8,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 스킬 31개, 전문 역할 20개, 프리셋 계약 93개, 품질 등급 레퍼런스 500개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
+  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 공개 스킬 10개, 전문 역할 20개, 프리셋 계약 93개, 품질 등급 레퍼런스 500개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
 </p>
 
 <p align="center">
@@ -187,9 +187,9 @@ Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 30개를 읽습�
 
 ## 패키지 구성
 
-**31 스킬 · 20 서브에이전트 · 500개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 30개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
+**공개 스킬 10개 · 20 서브에이전트 · 500개 이상의 품질 등급형 레퍼런스 · 활성화 hooks.** 설치기는 전체 번들 스킬 31개를 씁니다. 아래 공개 스킬에, 워크플로가 스스로 부르는 내부 스킬(취향 루프, shim 동기화, 리뷰·글쓰기 역할, 라이브 캡처, 실험)이 더해집니다. 내부 스킬도 그대로 설치되고 동작하며, 목록에만 나오지 않습니다. Cursor에는 이식 가능한 스킬 30개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
 
-- **스킬** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — 불만을 GitHub 이슈로 바로 접수 / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), 랜딩과 미디어 (`omd:setup` — 이 머신에 실제로 있는 이미지·영상 채널을 찾아 기록 / `omd:landing` — 스크롤 원페이지 랜딩 / `omd:aphrodite` — 랜딩 검사 전 항목을 통과하는 최고 마감 랜딩 / `omd:media` — 브랜드 자산 세트 / `omd:showcase` — 스크롤 시연 영상), 효과 하나짜리 셰이더 스킬 (`omd:shader-hero` — DESIGN.md 색 두 개로 찍는 디더링 히어로, 대비 실측 / `omd:cjk-type-shader` — 선택 가능한 진짜 한글·일본어·중국어 제목을 한지 위 먹 글씨처럼), 글쓰기와 리뷰 (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 인터페이스 품질 (`omd:feel` / `omd:restraint` — "덜어내 줘"를 수치로: 초점 하나·첫 화면 조각 ≤ 5·여백은 덩어리로 / `omd:slop-audit`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
+- **스킬** — 시스템 (`omd-init` — 품질 등급 레퍼런스에서 DESIGN.md 시작 / `omd-apply` — 모든 UI 수정이 DESIGN.md를 근거로 / `omd-autopilot` — 프롬프트 하나로 만들고 검증까지), 인터페이스 품질 (`omd-feel` — 출처 등급이 붙은 인터페이스 규칙 113개 / `omd-restraint` — "덜어내 줘"를 수치로: 초점 하나·첫 화면 조각 ≤ 5·여백은 덩어리로 / `omd-slop-audit` — 맥락 없는 UI·카피 기본값을 rule ID로 진단), 문장 (`omd-humanize` — 사실과 명령어는 지키고 다섯 언어 문장을 자연스럽게), 화면 (`omd-landing` — 스크롤 원페이지 랜딩 / `omd-shader-hero` — DESIGN.md 색 두 개로 찍는 디더링 히어로, 대비 실측 / `omd-cjk-type-shader` — 선택 가능한 진짜 한글·일본어·중국어 제목을 한지 위 먹 글씨처럼). 하나씩 따로 설치할 수도 있습니다: `npx skills add kwakseongjae/oh-my-design --skill omd-feel`.
 - **서브에이전트** — `omd-master` + 19 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 문장 다듬기, slop 감사, a11y 감사, 페르소나 테스트, 비평, …).
 - **레퍼런스** — 기업 `DESIGN.md` 500개 이상에 근거와 품질 상태를 명시합니다. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 가져올 수 있습니다.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse 활성화 — 슬래시 명령 없이 자연어만으로 스킬이 발동합니다.

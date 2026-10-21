@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { CLI_DOCS, SKILL_GROUP_IDS } from "./cli-docs";
 import {
@@ -10,9 +12,28 @@ import {
 } from "@/lib/docs/locales";
 import { getDocsToc } from "@/components/cli-docs/docs-route";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
-import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 
+/** The skills the docs list: the public set (owner decision 2026-10-15), not the whole bundle. */
 const ALL_SKILLS: string[] = Object.values(SKILL_GROUP_IDS).flat();
+
+/**
+ * What `npx skills add` lists: the skills package.json ships, minus `metadata.internal: true`
+ * (the rule scripts/check-counts.mjs and build-registry.mjs apply). The docs name an installed
+ * skill the way Claude Code invokes it, `omd:<x>` for the `omd-<x>` folder.
+ */
+function publicSkillIds(): string[] {
+  const repo = join(__dirname, "..", "..", "..");
+  const files: string[] = JSON.parse(readFileSync(join(repo, "package.json"), "utf8")).files ?? [];
+  return files
+    .filter((entry) => entry.startsWith("skills/"))
+    .filter((entry) => {
+      const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---/.exec(readFileSync(join(repo, entry, "SKILL.md"), "utf8"))?.[1] ?? "";
+      const metadata = /^metadata:[ \t]*\r?\n((?:[ \t]+.*(?:\r?\n|$))*)/m.exec(frontmatter)?.[1] ?? "";
+      return !/^[ \t]+internal:[ \t]*true[ \t]*$/m.test(metadata);
+    })
+    .map((entry) => entry.replace(/^skills\//, "").replace(/\/$/, "").replace(/^omd-/, "omd:"));
+}
 
 describe("localized CLI docs", () => {
   it("ships every locale with a label for every page and nav group", () => {
@@ -51,8 +72,10 @@ describe("localized CLI docs", () => {
     }
   });
 
-  it("describes every shipped skill, and only those, in every locale", () => {
-    expect(new Set(ALL_SKILLS).size).toBe(SKILL_COUNT);
+  it("lists exactly the public skills, and describes each one in every locale", () => {
+    expect(new Set(ALL_SKILLS).size).toBe(PUBLIC_SKILL_COUNT);
+    expect(PUBLIC_SKILL_COUNT).toBeLessThan(SKILL_COUNT);
+    expect([...ALL_SKILLS].sort()).toEqual(publicSkillIds().sort());
     expect(ALL_SKILLS).toContain("omd:autopilot");
     for (const locale of DOC_LOCALES) {
       const descriptions = CLI_DOCS[locale].skills.descriptions;
@@ -68,8 +91,12 @@ describe("localized CLI docs", () => {
       const cursor = dictionary.gettingStarted.channels.find((channel) => channel.name === "Cursor");
 
       expect(dictionary.overview.lead, locale).toContain(String(REFERENCE_COUNT));
+      // The installer writes the whole bundle; the overview says so and names the public part.
       expect(dictionary.overview.cli.body, locale).toContain(String(SKILL_COUNT));
+      expect(dictionary.overview.cli.body, locale).toContain(String(PUBLIC_SKILL_COUNT));
       expect(dictionary.overview.cli.body, locale).toContain(String(SUBAGENT_COUNT));
+      // The skills page lists the public set and states the bundle once.
+      expect(dictionary.skills.lead, locale).toContain(String(PUBLIC_SKILL_COUNT));
       expect(dictionary.skills.lead, locale).toContain(String(SKILL_COUNT));
       expect(dictionary.skills.lead, locale).toContain(String(SUBAGENT_COUNT));
       expect(cursor?.body, locale).toContain(String(cursorSkillCount));

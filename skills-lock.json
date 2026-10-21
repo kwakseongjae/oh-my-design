@@ -1,6 +1,10 @@
 {
   "version": 1,
   "skills": {
+    "claude-design": {
+      "source": "skills/claude-design",
+      "sourceType": "local"
+    },
     "ego-browser": {
       "source": "citrolabs/ego-lite",
       "sourceType": "github",
@@ -11,6 +15,166 @@
       "source": "davila7/claude-code-templates",
       "sourceType": "github",
       "computedHash": "c7a60543ca235c272d002f0dd6e1370c9cc37f4df604d9f9d75daefaa31ef89a"
+    },
+    "omd": {
+      "source": ".claude/skills/omd",
+      "sourceType": "local"
+    },
+    "omd-add-reference": {
+      "source": ".claude/skills/omd-add-reference",
+      "sourceType": "local"
+    },
+    "omd-aphrodite": {
+      "source": "skills/omd-aphrodite",
+      "sourceType": "local"
+    },
+    "omd-apply": {
+      "source": "skills/omd-apply",
+      "sourceType": "local"
+    },
+    "omd-asset-fetch": {
+      "source": "skills/omd-asset-fetch",
+      "sourceType": "local"
+    },
+    "omd-autopilot": {
+      "source": "skills/omd-autopilot",
+      "sourceType": "local"
+    },
+    "omd-batch-launch": {
+      "source": ".claude/skills/omd-batch-launch",
+      "sourceType": "local"
+    },
+    "omd-cjk-type-shader": {
+      "source": "skills/omd-cjk-type-shader",
+      "sourceType": "local"
+    },
+    "omd-codex-image": {
+      "source": "skills/omd-codex-image",
+      "sourceType": "local"
+    },
+    "omd-component-harvest": {
+      "source": ".claude/skills/omd-component-harvest",
+      "sourceType": "local"
+    },
+    "omd-design": {
+      "source": ".agents/skills/omd-design",
+      "sourceType": "local"
+    },
+    "omd-designer-review": {
+      "source": "skills/omd-designer-review",
+      "sourceType": "local"
+    },
+    "omd-experiment-gallery": {
+      "source": "skills/omd-experiment-gallery",
+      "sourceType": "local"
+    },
+    "omd-feel": {
+      "source": "skills/omd-feel",
+      "sourceType": "local"
+    },
+    "omd-final-qa": {
+      "source": "skills/omd-final-qa",
+      "sourceType": "local"
+    },
+    "omd-harness": {
+      "source": "skills/omd-harness",
+      "sourceType": "local"
+    },
+    "omd-humanize": {
+      "source": "skills/omd-humanize",
+      "sourceType": "local"
+    },
+    "omd-init": {
+      "source": "skills/omd-init",
+      "sourceType": "local"
+    },
+    "omd-issue": {
+      "source": "skills/omd-issue",
+      "sourceType": "local"
+    },
+    "omd-kr-writer": {
+      "source": "skills/omd-kr-writer",
+      "sourceType": "local"
+    },
+    "omd-lab-01-designmd-impact": {
+      "source": ".claude/skills/omd-lab-01-designmd-impact",
+      "sourceType": "local"
+    },
+    "omd-lab-02-design-harness": {
+      "source": "skills/omd-lab-02-design-harness",
+      "sourceType": "local"
+    },
+    "omd-landing": {
+      "source": "skills/omd-landing",
+      "sourceType": "local"
+    },
+    "omd-learn": {
+      "source": "skills/omd-learn",
+      "sourceType": "local"
+    },
+    "omd-locale-adapter": {
+      "source": "skills/omd-locale-adapter",
+      "sourceType": "local"
+    },
+    "omd-media": {
+      "source": "skills/omd-media",
+      "sourceType": "local"
+    },
+    "omd-migrate": {
+      "source": ".claude/skills/omd-migrate",
+      "sourceType": "local"
+    },
+    "omd-orchestrator": {
+      "source": "skills/omd-orchestrator",
+      "sourceType": "local"
+    },
+    "omd-reference-capture": {
+      "source": "skills/omd-reference-capture",
+      "sourceType": "local"
+    },
+    "omd-release-hygiene": {
+      "source": ".claude/skills/omd-release-hygiene",
+      "sourceType": "local"
+    },
+    "omd-remember": {
+      "source": "skills/omd-remember",
+      "sourceType": "local"
+    },
+    "omd-restraint": {
+      "source": "skills/omd-restraint",
+      "sourceType": "local"
+    },
+    "omd-setup": {
+      "source": "skills/omd-setup",
+      "sourceType": "local"
+    },
+    "omd-shader-hero": {
+      "source": "skills/omd-shader-hero",
+      "sourceType": "local"
+    },
+    "omd-showcase": {
+      "source": "skills/omd-showcase",
+      "sourceType": "local"
+    },
+    "omd-slop-audit": {
+      "source": "skills/omd-slop-audit",
+      "sourceType": "local"
+    },
+    "omd-sync": {
+      "source": "skills/omd-sync",
+      "sourceType": "local"
+    },
+    "omd-taste": {
+      "source": "skills/omd-taste",
+      "sourceType": "local"
+    },
+    "omd-token-backfill": {
+      "source": ".claude/skills/omd-token-backfill",
+      "sourceType": "local"
+    },
+    "omd-update": {
+      "source": "skills/omd-update",
+      "sourceType": "local"
     }
   }
 }

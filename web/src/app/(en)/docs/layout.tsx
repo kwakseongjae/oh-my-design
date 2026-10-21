@@ -6,7 +6,9 @@ import { REFERENCE_COUNT, SKILL_COUNT } from "@/lib/catalog-count";
 // /ko does. The docs share the English root layout, which loads only the Latin slices.
 import "@/styles/wanted-sans-cjk.css";
 
-const description = `How to use oh-my-design: take one of ${REFERENCE_COUNT} DESIGN.md files from the archive, install oh-my-design-cli and its ${SKILL_COUNT} frontend skills, and have your coding agent build your UI with it.`;
+// Bare "N skills" means the public set (owner decision 2026-10-15); the installer's full
+// set is "the N-skill bundle" (scripts/check-counts.mjs holds the prose surfaces to this).
+const description = `How to use oh-my-design: take one of ${REFERENCE_COUNT} DESIGN.md files from the archive, install oh-my-design-cli, a ${SKILL_COUNT}-skill bundle of frontend skills, and have your coding agent build your UI with it.`;
 
 export const metadata: Metadata = {
   title: {

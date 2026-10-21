@@ -1,5 +1,11 @@
 # JOURNAL
 
+## 2026-10-14 (referral round 1, `feat/referral-1`)
+
+- **한 일**: 공유 이미지 `/api/og/*` → `/og/*`(robots 허용, 옛 URL 308). skills/ 15개 `name: omd:x` → `omd-x` + `skills-lock.json`으로 레포 내 설치본(.claude/.agents) 숨김 → `npx skills` 발견 54→31, 콜론 0. `/docs/<locale>/shadcn` 레시피(5개 로캘) + 배포판 toss로 shadcn 스킬 실제 1회 실행 기록(`docs/research/2026-10-14-referral/shadcn-run/`). ui-skills PR 초안(`UI-SKILLS-PR.md`, 미제출).
+- **열린 것**: ui-skills PR 제출은 오너 확인 + main 반영 뒤. D3 공개 6~8개(`metadata.internal`) 선정은 오너. `npx skills`로 옛 이름 설치한 사용자는 update 때 "deleted upstream" 표시(행당 ≤20).
+- **다음**: main 반영 후 라이브에서 `curl -A Twitterbot /og/reference?id=toss` 재확인, ui-skills PR, `hangul` 공개 시 skills.sh 이름 확인.
+
 ## 2026-09-30
 
 - **한 일**: 상위 20 프로브 C·D → 저작 6곳 + 번들 심화 13곳(웨이브 6) = 19곳 브랜치(`cf59d446`). 프로브 도구 사각지대(빈 자식 레이어·자손 링·tabIndex<0·비활성·Tab 안착) 발견 → 도구 수정(`b6f7370b`) → 라이브 8곳 부재 판독 재측정: 198/220 유지, 22건 정정(karrot·naver·yeogiotte, `7a3a703a`). 도구 2차(스프라이트·img·SVG·inert, `662f5653`). onestore 개발자 포털(브라우저 기본값)·11st 번들 포커스 철회. Evidence 요약 날짜 수정.

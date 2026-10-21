@@ -1,4 +1,5 @@
 import { CLI_DOCS, CLI_DOCTOR_COMMAND, CLI_INSTALL_COMMAND } from "@/data/cli-docs";
+import { SHADCN_EARLIER_RUNS, SHADCN_RUN_EVIDENCE, SHADCN_RUN_EXCERPT, SHADCN_SKILL_SOURCE } from "@/data/docs-shadcn-recipe";
 import { docsHref, docsLlmsHref, type DocsLocale, type DocsPage } from "./locales";
 
 const SITE_URL = "https://oh-my-design.kr";
@@ -86,6 +87,19 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
       for (const workflow of content.workflows) {
         add(`## ${workflow.title}`, workflow.when, `**${dictionary.ui.prompt}**`, ...code(workflow.prompt), `**${dictionary.ui.result}**`, ...bullets(workflow.outputs), `**${dictionary.ui.skillsLabel}:** ${workflow.skills.join(", ")}`);
       }
+      break;
+    }
+    case "shadcn": {
+      const content = dictionary.shadcn;
+      begin(content.title, content.lead);
+      add(...section(content.answerTitle, content.answerBody));
+      add(...section(content.stepsTitle));
+      content.steps.forEach((step, index) => add(`### ${index + 1}. ${step.title}`, step.body, ...(step.command ? code(step.command) : [])));
+      add(`### ${content.promptTitle}`, ...code(content.prompt));
+      add(...section(content.carryTitle, content.carryLead), ...bullets(content.carries.map((fact) => `**${fact.label}:** ${fact.value}`)));
+      add(...section(content.limitsTitle), ...bullets(content.limits));
+      add(...section(content.evidenceTitle, content.evidenceBody), SHADCN_RUN_EXCERPT.split("\n").map((line) => `> ${line}`).join("\n"));
+      add(`- [${content.evidenceLink}](${SHADCN_RUN_EVIDENCE})`, `- [${content.evidenceLinkEarlier}](${SHADCN_EARLIER_RUNS})`, `- [shadcn-ui/ui#12252](${SHADCN_SKILL_SOURCE})`);
       break;
     }
     case "skills": {

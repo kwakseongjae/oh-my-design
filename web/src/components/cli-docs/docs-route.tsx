@@ -1,6 +1,8 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { CLI_DOCTOR_COMMAND, CLI_DOCS, CLI_INSTALL_COMMAND, type CliDocsDictionary } from "@/data/cli-docs";
+import { SHADCN_EARLIER_RUNS, SHADCN_RUN_EVIDENCE, SHADCN_RUN_EXCERPT, SHADCN_SKILL_SOURCE } from "@/data/docs-shadcn-recipe";
 import { DOCS_SITE_LOCALE, docsHref, type DocsLocale, type DocsPage } from "@/lib/docs/locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { CopyCode } from "./copy-code";
@@ -39,6 +41,14 @@ export function getDocsToc(dictionary: CliDocsDictionary, page: DocsPage): TocIt
         { id: "proof", label: dictionary.demo.proofTitle },
         { id: "guardrails", label: dictionary.demo.guardrailsTitle },
       ];
+    case "shadcn":
+      return [
+        { id: "answer", label: dictionary.shadcn.answerTitle },
+        { id: "steps", label: dictionary.shadcn.stepsTitle },
+        { id: "carries", label: dictionary.shadcn.carryTitle },
+        { id: "limits", label: dictionary.shadcn.limitsTitle },
+        { id: "evidence", label: dictionary.shadcn.evidenceTitle },
+      ];
     case "skills":
       return [
         ...dictionary.skills.groups.map((group, index) => ({ id: `skill-group-${index + 1}`, label: group.title })),
@@ -68,6 +78,7 @@ export function CliDocsRoute({ locale, page }: { locale: DocsLocale; page: DocsP
       {page === "getting-started" && <GettingStartedPage dictionary={dictionary} />}
       {page === "workflows" && <WorkflowsPage dictionary={dictionary} />}
       {page === "demo" && <DemoPage dictionary={dictionary} />}
+      {page === "shadcn" && <ShadcnPage dictionary={dictionary} />}
       {page === "skills" && <SkillsPage dictionary={dictionary} />}
       {page === "anti-slop" && <AntiSlopPage dictionary={dictionary} />}
     </DocsShell>
@@ -300,6 +311,73 @@ function DemoPage({ dictionary }: { dictionary: CliDocsDictionary }) {
             </div>
           ))}
         </div>
+      </DocsSection>
+    </article>
+  );
+}
+
+/**
+ * A DESIGN.md from the archive handed to shadcn's own skill (feat/referral-1, 2026-10-14).
+ * Shell commands here are not the OmD install, so they copy as "agent" (the install
+ * metric counts only `npx oh-my-design-cli@latest`); the prompt copies as "recipe".
+ */
+function ShadcnPage({ dictionary }: { dictionary: CliDocsDictionary }) {
+  const content = dictionary.shadcn;
+  const evidenceLinks = [
+    { href: SHADCN_RUN_EVIDENCE, label: content.evidenceLink },
+    { href: SHADCN_EARLIER_RUNS, label: content.evidenceLinkEarlier },
+    { href: SHADCN_SKILL_SOURCE, label: "shadcn-ui/ui#12252" },
+  ];
+  return (
+    <article>
+      <DocsHead title={content.title} lead={content.lead} />
+
+      <DocsSection id="answer" title={content.answerTitle}>
+        <p className="dx-p"><InlineText text={content.answerBody} /></p>
+      </DocsSection>
+
+      <DocsSection id="steps" title={content.stepsTitle}>
+        <ol className="dx-steps">
+          {content.steps.map((step) => (
+            <li key={step.title}>
+              <h3 className="dx-h3">{step.title}</h3>
+              <p className="dx-p dx-muted"><InlineText text={step.body} /></p>
+              {step.command ? <Code dictionary={dictionary} code={step.command} kind="agent" /> : null}
+            </li>
+          ))}
+        </ol>
+        <div className="dx-item" style={{ marginTop: 40 }}>
+          <h3 className="dx-h3">{content.promptTitle}</h3>
+          <Code dictionary={dictionary} code={content.prompt} kind="recipe" />
+        </div>
+      </DocsSection>
+
+      <DocsSection id="carries" title={content.carryTitle} lead={content.carryLead}>
+        <dl className="dx-kv dx-facts">
+          {content.carries.map((fact) => (
+            <Fragment key={fact.label}>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </Fragment>
+          ))}
+        </dl>
+      </DocsSection>
+
+      <DocsSection id="limits" title={content.limitsTitle}>
+        <ul className="dx-list">
+          {content.limits.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </DocsSection>
+
+      <DocsSection id="evidence" title={content.evidenceTitle} lead={content.evidenceBody}>
+        <pre lang="en" translate="no" className="dx-excerpt">{SHADCN_RUN_EXCERPT}</pre>
+        <ul className="dx-list">
+          {evidenceLinks.map((link) => (
+            <li key={link.href}>
+              <a className="dx-link" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+            </li>
+          ))}
+        </ul>
       </DocsSection>
     </article>
   );

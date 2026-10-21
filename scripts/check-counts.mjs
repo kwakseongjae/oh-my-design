@@ -6,7 +6,12 @@
 //
 // Authoritative sources (identical to build-registry.mjs / sync-catalog.mjs):
 //   references = web/references/<id>/DESIGN.md dirs
-//   skills     = package.json "files" entries under skills/ (what npm ships)
+//   skills     = package.json "files" entries under skills/ (what npm ships —
+//                the full bundle `omd install-skills` writes)
+//   public     = those skills minus `metadata.internal: true` (what `npx skills
+//                add <repo>` lists; owner decision 2026-10-15). Bare "N skills"
+//                means this number; the bundle is written "N-skill bundle",
+//                "N bundled skills" or "N shipped skills".
 //   sub-agents = agents/omd-*.md (mirrors install-skills.ts's agent filter)
 //
 // Rendered web pages (docs/page.tsx, landing sections, faq data) read
@@ -24,6 +29,15 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REFS_DIR = path.join(ROOT, 'web', 'references');
 
+// `metadata:` block containing `internal: true` (vercel-labs/skills checks
+// `metadata.internal === true`). Kept in sync with web/scripts/sync-catalog.mjs
+// and web/scripts/build-registry.mjs.
+function isInternalSkill(skillMd) {
+  const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---/.exec(skillMd)?.[1] ?? '';
+  const block = /^metadata:[ \t]*\r?\n((?:[ \t]+.*(?:\r?\n|$))*)/m.exec(frontmatter)?.[1] ?? '';
+  return /^[ \t]+internal:[ \t]*true[ \t]*$/m.test(block);
+}
+
 function authoritative() {
   const refs = existsSync(REFS_DIR)
     ? readdirSync(REFS_DIR, { withFileTypes: true }).filter(
@@ -33,6 +47,9 @@ function authoritative() {
   const pkg = JSON.parse(readFileSync(path.join(ROOT, 'package.json'), 'utf-8'));
   const shippedSkillPaths = (pkg.files || []).filter((f) => f.startsWith('skills/'));
   const skills = shippedSkillPaths.length;
+  const publicSkills = shippedSkillPaths.filter(
+    (skillPath) => !isInternalSkill(readFileSync(path.join(ROOT, skillPath, 'SKILL.md'), 'utf-8')),
+  ).length;
   const cursorSkills = shippedSkillPaths.filter((skillPath) => {
     const skillMd = readFileSync(path.join(ROOT, skillPath, 'SKILL.md'), 'utf-8');
     const frontmatter = /^---\n([\s\S]*?)\n---/.exec(skillMd)?.[1] ?? '';
@@ -79,16 +96,27 @@ function authoritative() {
       };
     }
   }
-  return { refs, skills, cursorSkills, subagents, tiers };
+  return { refs, skills, publicSkills, cursorSkills, subagents, tiers };
 }
 
-const { refs, skills, cursorSkills, subagents, tiers } = authoritative();
+const { refs, skills, publicSkills, cursorSkills, subagents, tiers } = authoritative();
 
 // Phrase-anchored: capture the number immediately before a canonical noun phrase.
 // Sub-counts ("15 specialists", "6 skills (v0.2 layer)") use different phrasing
 // and are intentionally not matched.
 const rules = [
-  { label: 'skills', re: /\b(\d+)(?=\s+skills\b)/g, val: skills },
+  { label: 'public skills', re: /\b(\d+)(?=\s+skills\b)/g, val: publicSkills },
+  { label: 'public skills', re: /\b(\d+)(?=\s+(?:public|product) skills\b)/g, val: publicSkills },
+  { label: 'bundled skills', re: /\b(\d+)(?=\s+bundled skills\b)/g, val: skills },
+  // CJK forms, one fixed phrasing per locale for each number.
+  { label: '공개 스킬', re: /공개 스킬 (\d+)(?=개)/g, val: publicSkills, after: true },
+  { label: 'の公開スキル', re: /(\d+)(?= の公開スキル)/g, val: publicSkills },
+  { label: '公開スキル', re: /公開スキル(\d+)(?=個)/g, val: publicSkills, after: true },
+  { label: '个公开技能', re: /(\d+)(?= 个公开技能)/g, val: publicSkills },
+  { label: '個公開 skills', re: /(\d+)(?= 個公開(?:技能| skills))/g, val: publicSkills },
+  { label: '전체 번들 스킬', re: /전체 번들 스킬 (\d+)(?=개)/g, val: skills, after: true },
+  { label: 'フルバンドルの スキル', re: /フルバンドルの (\d+)(?= スキル)/g, val: skills },
+  { label: '完整套件的 skills', re: /完整套件的 (\d+)(?= [个個](?:技能| skills))/g, val: skills },
   {
     label: 'Cursor Agent Skills',
     re: /\b(\d+)(?=\s+(?:compatible|native) (?:OmD )?Agent Skills\b)/g,
@@ -106,13 +134,12 @@ const rules = [
   // "the full 27-skill bundle" and "21 shipped product skills" (llms.txt) sat
   // stale beside a correct "28 skills" heading because the hyphenated and the
   // qualified forms never reached the rule above.
-  { label: 'skills', re: /\b(\d+)(?=-skill\b)/g, val: skills },
-  { label: 'skills', re: /\b(\d+)(?=\s+shipped (?:product )?skills\b)/g, val: skills },
+  { label: 'bundled skills', re: /\b(\d+)(?=-skill\b)/g, val: skills },
+  { label: 'bundled skills', re: /\b(\d+)(?=\s+shipped (?:product )?skills\b)/g, val: skills },
   { label: 'sub-agents', re: /\b(\d+)(?=\s+sub-agents\b)/g, val: subagents },
   // The site JSON-LD's "N product skills and N specialist agent definitions"
   // ran five skills and one agent stale until 2026-10-01; neither phrasing
-  // reached a rule.
-  { label: 'product skills', re: /\b(\d+)(?=\s+product skills\b)/g, val: skills },
+  // reached a rule. "product skills" is now the public count (rule above).
   { label: 'specialist agents', re: /\b(\d+)(?=\s+specialist agents?\b)/g, val: subagents },
   {
     label: 'references',
@@ -197,5 +224,5 @@ if (failures.length) {
 }
 console.log(
   `✓ check-counts: refs=${refs}${tiers ? ` (${tiers.verified} verified / ${tiers.partial} partial / ${tiers.legacy} legacy)` : ''}`
-    + ` skills=${skills} cursor-skills=${cursorSkills} sub-agents=${subagents} consistent across ${SURFACES.length} surfaces`,
+    + ` skills=${publicSkills} public / ${skills} bundled cursor-skills=${cursorSkills} sub-agents=${subagents} consistent across ${SURFACES.length} surfaces`,
 );

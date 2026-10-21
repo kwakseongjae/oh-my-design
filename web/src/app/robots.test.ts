@@ -21,4 +21,15 @@ describe("robots.txt", () => {
       expect(rule.disallow).not.toContain("/reference/");
     }
   });
+  it("lets share-card fetchers reach every og:image path the site emits", () => {
+    // Twitterbot, facebookexternalhit and Slackbot fall under `*`, and they
+    // honour it: a card image under a disallowed prefix renders as no image.
+    const imagePaths = ["/og-image.png", "/og/reference?id=toss", "/og/blog?slug=x&locale=ko"];
+    for (const rule of [robots().rules].flat()) {
+      const disallow = [rule.disallow ?? []].flat();
+      for (const path of imagePaths) {
+        expect(disallow.some((prefix) => path.startsWith(prefix)), `${rule.userAgent} ${path}`).toBe(false);
+      }
+    }
+  });
 });

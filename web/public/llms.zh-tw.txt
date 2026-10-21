@@ -1,6 +1,8 @@
 # oh-my-design
 
-> 把有品質分級的設計依據交給 AI 程式代理的開源工作流程。Claude Code、Codex、OpenCode 可安裝包含 31 個產品 skills 與 20 個代理定義的完整套件；Cursor 2.4+ 會取得 30 個相容 Agent Skills、精簡的專案 rule 與本地目錄，但不安裝 OmD 子代理或 hooks。521 份有品質分級的 DESIGN.md 中 verified_v2 299 份、partial 109 份、legacy 113 份；公開示範請使用 verified_v2。
+> 把有品質分級的設計依據交給 AI 程式代理的開源工作流程。Claude Code、Codex、OpenCode 可安裝完整套件的 31 個 skills 與 20 個代理定義；Cursor 2.4+ 會取得 30 個相容 Agent Skills、精簡的專案 rule 與本地目錄，但不安裝 OmD 子代理或 hooks。521 份有品質分級的 DESIGN.md 中 verified_v2 299 份、partial 109 份、legacy 113 份；公開示範請使用 verified_v2。
+
+`npx skills add kwakseongjae/oh-my-design` 列出的是 10 個公開 skills（`omd-init`、`omd-apply`、`omd-autopilot`、`omd-feel`、`omd-restraint`、`omd-slop-audit`、`omd-humanize`、`omd-landing`、`omd-shader-hero`、`omd-cjk-type-shader`）。其餘是工作流程自行呼叫的內部 skills，仍包含在完整套件中並正常運作。
 
 ## 產品模型
 
@@ -42,5 +44,6 @@ Docs: https://oh-my-design.kr/docs/zh-tw
 Skills: https://oh-my-design.kr/docs/zh-tw/skills
 Live demo: https://oh-my-design.kr/docs/zh-tw/demo
 AI slop 判定與對照: https://oh-my-design.kr/docs/zh-tw/anti-slop
+OmD 參考 + shadcn 技能配方: https://oh-my-design.kr/docs/zh-tw/shadcn
 Full context: https://oh-my-design.kr/llms-full.txt
 Raw reference: `https://oh-my-design.kr/<id>/design.md`

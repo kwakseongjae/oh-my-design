@@ -27,7 +27,7 @@ export const FAQ_EN: FaqEntry[] = [
   },
   {
     q: "How does oh-my-design work?",
-    a: "Run `npx oh-my-design-cli@latest` once in your project and choose the detected coding-agent channels. The installer carries " + SKILL_COUNT + " product skills, " + SUBAGENT_COUNT + " specialist role definitions, and " + REFERENCE_COUNT + " reference DESIGN.md files, then writes only what each channel supports. Run `npx oh-my-design-cli@latest doctor`, restart your agent, and describe the product screen you want in natural language.",
+    a: "Run `npx oh-my-design-cli@latest` once in your project and choose the detected coding-agent channels. The installer carries " + SKILL_COUNT + " bundled skills, " + SUBAGENT_COUNT + " specialist role definitions, and " + REFERENCE_COUNT + " reference DESIGN.md files, then writes only what each channel supports. Run `npx oh-my-design-cli@latest doctor`, restart your agent, and describe the product screen you want in natural language.",
     jsonLd: true,
   },
   {

@@ -54,14 +54,28 @@ const COUNT_SURFACES = [
 
 // Authoritative bundled counts (mirror what npm ships + the installer's filters,
 // same definitions as scripts/build-registry.mjs → catalog-meta.generated.ts).
+// A skill is internal when its frontmatter has a `metadata:` block containing
+// `internal: true` (vercel-labs/skills checks `metadata.internal === true` and
+// leaves it out of `npx skills add <repo>` listings). Same rule as
+// scripts/check-counts.mjs; inlined because the Vercel build only sees web/.
+function isInternalSkill(skillMd) {
+  const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---/.exec(skillMd)?.[1] ?? '';
+  const block = /^metadata:[ \t]*\r?\n((?:[ \t]+.*(?:\r?\n|$))*)/m.exec(frontmatter)?.[1] ?? '';
+  return /^[ \t]+internal:[ \t]*true[ \t]*$/m.test(block);
+}
+
 function bundledCounts() {
   const rootPkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf-8'));
-  const skills = (rootPkg.files || []).filter((f) => f.startsWith('skills/')).length;
+  const shipped = (rootPkg.files || []).filter((f) => f.startsWith('skills/'));
+  const skills = shipped.length;
+  const publicSkills = shipped.filter(
+    (s) => !isInternalSkill(readFileSync(join(ROOT, s, 'SKILL.md'), 'utf-8')),
+  ).length;
   const agentsDir = join(ROOT, 'agents');
   const subagents = existsSync(agentsDir)
     ? readdirSync(agentsDir).filter((f) => /^omd-.*\.md$/.test(f)).length
     : 0;
-  return { skills, subagents };
+  return { skills, publicSkills, subagents };
 }
 
 // Self-healing count replacement: each rule matches the NUMBER immediately
@@ -71,9 +85,22 @@ function bundledCounts() {
 // number, which is how "15 skills" / "221 references" froze). Sub-counts like
 // "15 specialists" / "6 skills (v0.2 layer)" use different phrasing and are left
 // untouched by design.
-function countRules({ refs, skills, subagents, tiers }) {
+function countRules({ refs, skills, publicSkills, subagents, tiers }) {
   const rules = [
-    { re: /\b\d+(?=\s+skills\b)/g, val: skills },
+    // Mirrors check-counts.mjs (2026-10-15): bare "N skills" and "N public/product
+    // skills" are the public count; the bundle is "N-skill bundle", "N bundled
+    // skills" or "N shipped skills", plus the CJK forms below.
+    { re: /\b\d+(?=\s+skills\b)/g, val: publicSkills },
+    { re: /\b\d+(?=\s+(?:public|product) skills\b)/g, val: publicSkills },
+    { re: /\b\d+(?=\s+bundled skills\b)/g, val: skills },
+    { re: /(?<=공개 스킬 )\d+(?=개)/g, val: publicSkills },
+    { re: /\d+(?= の公開スキル)/g, val: publicSkills },
+    { re: /(?<=公開スキル)\d+(?=個)/g, val: publicSkills },
+    { re: /\d+(?= 个公开技能)/g, val: publicSkills },
+    { re: /\d+(?= 個公開(?:技能| skills))/g, val: publicSkills },
+    { re: /(?<=전체 번들 스킬 )\d+(?=개)/g, val: skills },
+    { re: /(?<=フルバンドルの )\d+(?= スキル)/g, val: skills },
+    { re: /(?<=完整套件的 )\d+(?= [个個](?:技能| skills))/g, val: skills },
     // Mirrors check-counts.mjs (2026-10-01): "27-skill bundle", "21 shipped product skills".
     { re: /\b\d+(?=-skill\b)/g, val: skills },
     { re: /\b\d+(?=\s+shipped (?:product )?skills\b)/g, val: skills },
@@ -197,10 +224,10 @@ console.log('[mirror] design-md re-synced');
 
 // ── 4. count strings (self-healing) ────────────────────────────────────
 {
-  const { skills, subagents } = bundledCounts();
+  const { skills, publicSkills, subagents } = bundledCounts();
   const tiers = tierCounts();
-  const rules = countRules({ refs: fp.count, skills, subagents, tiers });
-  console.log(`[count] targets: refs=${fp.count} skills=${skills} sub-agents=${subagents}`
+  const rules = countRules({ refs: fp.count, skills, publicSkills, subagents, tiers });
+  console.log(`[count] targets: refs=${fp.count} skills=${skills} public-skills=${publicSkills} sub-agents=${subagents}`
     + (tiers ? ` verified=${tiers.verified} partial=${tiers.partial} legacy=${tiers.legacy}` : ''));
   for (const p of COUNT_SURFACES) {
     if (!existsSync(p)) { console.warn(`[count] skip missing ${p}`); continue; }

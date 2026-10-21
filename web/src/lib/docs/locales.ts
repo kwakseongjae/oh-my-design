@@ -7,12 +7,15 @@ export type DocsLocale = (typeof DOC_LOCALES)[number];
  * follow it). Round 11 (2026-10-20, owner review item 28) removed "showcase",
  * "troubleshooting" and "ai"; their old URLs 308 in next.config.ts
  * (DELETED_DOCS_PAGES below is the list the redirect test checks).
+ * "shadcn" (feat/referral-1, 2026-10-14) is a guide: a DESIGN.md from the archive
+ * handed to shadcn's own skill.
  */
 export const DOC_PAGES = [
   "overview",
   "getting-started",
   "workflows",
   "demo",
+  "shadcn",
   "skills",
   "anti-slop",
 ] as const;
@@ -22,7 +25,7 @@ export type DocsPage = (typeof DOC_PAGES)[number];
 /** Left-nav sections, Next.js-docs style: each page sits in exactly one group. */
 export const DOC_NAV_GROUPS = [
   { id: "start", pages: ["overview", "getting-started"] },
-  { id: "guides", pages: ["workflows", "demo"] },
+  { id: "guides", pages: ["workflows", "demo", "shadcn"] },
   { id: "reference", pages: ["skills", "anti-slop"] },
 ] as const satisfies ReadonlyArray<{ id: string; pages: readonly DocsPage[] }>;
 

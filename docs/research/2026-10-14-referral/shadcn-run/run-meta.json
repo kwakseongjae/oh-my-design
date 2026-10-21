@@ -1,0 +1,16 @@
+{
+ "date": "2026-10-14",
+ "num_turns": 15,
+ "duration_ms": 221067,
+ "total_cost_usd": 0.8014401999999999,
+ "is_error": false,
+ "models": [
+  "claude-sonnet-5-5"
+ ],
+ "driver": "claude --dangerously-skip-permissions -p \"$(cat PROMPT.txt)\" --model sonnet --max-turns 80",
+ "design_md_source": "https://oh-my-design.kr/toss/design.md (downloaded unchanged)",
+ "design_md_sha256": "2856700e9e17643d76df051f25dffbf8e3007f7d28aa11d97a963aa906d1d352",
+ "skill_install": "npx skills add shadcn/ui --skill shadcn -a claude-code -y (telemetry disabled)",
+ "scaffold": "npx shadcn@latest init --name app --base base --preset maia --template next --no-monorepo -y; npx shadcn@latest add --all -y (61 components)",
+ "not_run": "skill Steps 6-7 (showcase page, browser verification); no dev server"
+}
