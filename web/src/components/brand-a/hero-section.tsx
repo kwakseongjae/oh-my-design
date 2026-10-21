@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import type { getLandingData } from "@/lib/landing-a/data.server";
-import { getChatCard } from "@/lib/landing-a/chat-data.server";
+import { getHeroChats } from "@/lib/landing-a/chat-data.server";
 import type { getCopy } from "./copy";
 import type { getR10 } from "./copy/r10";
 import { getR11Hero } from "./copy/r11-hero";
@@ -27,11 +27,14 @@ type Props = {
    fetched only where the card's text uses it (/ on the EN landing), while the run plays. */
 const inter = Inter({ subsets: ["latin"], display: "swap", preload: false });
 
-/** The face a locale's page loads for its chat company's claimed UI face (chat-data.server.ts). pixiv
- *  names Noto Sans CJK JP; the ja layout loads the same Noto CJK design as Google Fonts' Noto Sans JP. */
+/** The face a locale's page loads for a chat company's claimed UI face (chat-data.server.ts faceOf).
+ *  pixiv names Noto Sans CJK JP; the ja layout loads the same Noto CJK design as Google Fonts' Noto
+ *  Sans JP, which freee names. udn names Noto Sans TC, which the zh-tw layout loads. Pretendard is on
+ *  the landing root (landing.tsx) and resolved there. */
 const FACES: Partial<Record<SiteLocale, Record<string, string>>> = {
   en: { Inter: inter.style.fontFamily },
-  ja: { "Noto Sans CJK JP": "var(--font-noto-jp)" },
+  ja: { "Noto Sans CJK JP": "var(--font-noto-jp)", "Noto Sans JP": "var(--font-noto-jp)" },
+  "zh-tw": { "Noto Sans TC": "var(--font-noto-tc)" },
 };
 
 /** Pre-hydration, right after the chat: hide the run that is about to play (agent-trace.tsx usePlay). */
@@ -41,12 +44,14 @@ const CHAT_PRE = `(function(){try{var c=document.getElementById("chat");if(c&&!/
  * The hero (round 11, docs/REDESIGN_R11_PLAN_2026-10-20.md W1): the headline and one sentence; two
  * actions — the archive, and the install command (the one #use runs, copyable); then one stage: the
  * 3D logo keycaps beside the chat, which plays this locale's company from prompt to example card.
+ * Round 12: a keycap picks the chat's company; every company on this locale's keyboard, and the
+ * opening one, has its chat built here (getHeroChats) and handed to the chat island.
  * The stage keeps round 10's geometry (the posters and 2D-drop sprites are rendered from it);
  * phones stack the keycaps over the chat. Styles in hero.css.
  */
 export function HeroSection({ locale, c, data, f, archive }: Props) {
   const h = getR11Hero(locale);
-  const card = getChatCard(locale, FACES[locale]);
+  const { initial, chats } = getHeroChats(locale, data.hero, FACES[locale]);
   return (
     <section className="sq-wrap sq-hero" aria-labelledby="h-hero">
       <div className="sq-hero-top">
@@ -76,7 +81,7 @@ export function HeroSection({ locale, c, data, f, archive }: Props) {
           <HeroKeys caps={data.hero} label={c.kb.label} locale={locale} />
         </div>
         <div className="sq-stage-chat">
-          <ChatDemo card={card} t={{ chat: h.chat, trace: h.trace }} />
+          <ChatDemo chats={chats} initial={initial} t={{ trace: h.trace, link: h.chat.link }} />
           <script dangerouslySetInnerHTML={{ __html: CHAT_PRE }} />
         </div>
       </div>

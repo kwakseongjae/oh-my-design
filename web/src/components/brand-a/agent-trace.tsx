@@ -173,15 +173,41 @@ export function useInView(ref: RefObject<HTMLElement | null>, threshold = 0.25):
  * start). Starts at the final step, which the server rendered. Reduced motion or ?demo=final keeps
  * it; ?demo=mid freezes at `mid`. `live` turns true in the same commit that rewinds to 0, so the
  * host's className (which the pre-hydration script extended with sq-pre) drops sq-pre exactly then.
+ *
+ * `replay` (round 12, the hero chat's keycap pick): each new `key` after mount drops whatever is
+ * running and plays the run again from 0 on `replay.times` (same length as `times`); under reduced
+ * motion or ?demo it jumps straight to the end. A replay before the first `go` stands in for that run.
+ * The rewind happens in the render that sees the new key (React's "adjust state while rendering"),
+ * so the host never paints the new subject at the old step.
  */
-export function usePlay(times: readonly number[], go: boolean, mid: number): { s: number; live: boolean } {
+const stillNow = () => {
+  const q = new URLSearchParams(location.search).get("demo");
+  return q === "final" || q === "mid" || matchMedia("(prefers-reduced-motion: reduce)").matches;
+};
+
+export function usePlay(
+  times: readonly number[],
+  go: boolean,
+  mid: number,
+  replay?: { readonly key: number; readonly times: readonly number[] },
+): { s: number; live: boolean } {
   const last = times.length - 1;
   const [st, setSt] = useState({ s: last, live: false });
   const mode = useRef<"wait" | "still" | "play">("wait");
   const timers = useRef<number[]>([]);
+  const start = useRef(0);
+  const key = replay?.key ?? 0;
+  const fast = replay?.times;
+  // a pick only ever happens on the client after hydration, so the server never takes this branch
+  const [rendered, setRendered] = useState(key);
+  if (fast && key !== rendered) {
+    setRendered(key);
+    setSt({ s: stillNow() ? fast.length - 1 : 0, live: true });
+  }
+  const played = useRef(key);
   useEffect(() => {
     const q = new URLSearchParams(location.search).get("demo");
-    const still = q === "final" || q === "mid" || matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const still = stillNow();
     let raf = 0;
     if (still) {
       mode.current = "still";
@@ -205,11 +231,25 @@ export function usePlay(times: readonly number[], go: boolean, mid: number): { s
         if (i) timers.current.push(window.setTimeout(() => setSt({ s: i, live: true }), ms));
       });
     });
+    start.current = raf;
     return () => {
       if (fired) return;
       cancelAnimationFrame(raf);
       mode.current = "wait";
     };
   }, [go, times]);
+  // the replay's schedule (the render above already rewound to 0, or jumped to the end when still)
+  useEffect(() => {
+    if (!fast || key === played.current) return;
+    played.current = key;
+    cancelAnimationFrame(start.current);
+    timers.current.forEach(clearTimeout);
+    timers.current.length = 0;
+    if (mode.current === "still") return;
+    mode.current = "play";
+    fast.forEach((ms, i) => {
+      if (i) timers.current.push(window.setTimeout(() => setSt({ s: i, live: true }), ms));
+    });
+  }, [key, fast]);
   return st;
 }

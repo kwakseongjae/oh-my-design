@@ -52,11 +52,17 @@
 .sq-chat :is(.sq-ex-col,.sq-ex-pad){justify-content:flex-start}
 .sq-chat .sq-ex-col{padding-top:24px}
 .sq-chat.sq-pre .sq-at,.sq-chat.sq-pre .sq-ex{visibility:hidden}
+/* round 12: the shown company's item page — a quiet text link under the card, in the trace's ink and
+   size, never a second filled action (the hero's one accent stays on its main action) */
+.sq-chat-go{display:flex;justify-content:flex-end;margin-top:-6px}
+.sq-chat-go a{display:inline-flex;align-items:center;min-height:32px;font-size:15px;line-height:1.4;color:var(--sq-ink-2);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:4px;border-radius:var(--sq-r-inner);transition:color .15s,text-decoration-color .15s}
+.sq-chat-go a:hover{color:var(--sq-ink);text-decoration-color:currentColor}
+.sq-chat-go a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-chat.sq-pre .sq-ex{opacity:0} /* so the rewind (pre off, card hidden) never fades a full frame out */
 .sq-off{display:none!important}
 
 @media (prefers-reduced-motion:reduce){
-  .sq-k3-canvas{transition:none}
+  .sq-k3-canvas,.sq-chat-go a{transition:none}
 }
 @media (max-width:900px){
   .sq-hero{padding-top:28px}
@@ -77,5 +83,7 @@
   .sq-k3[data-drop] .sq-k3-drop-m{display:block}
   .sq-chat{height:auto;gap:12px;padding:16px}
   .sq-chat .sq-ex{flex:none}
+  .sq-chat-go{margin-top:-2px}
+  .sq-chat-go a{min-height:44px}
 }
 @media (max-width:400px){:where(.sq-root) :lang(ja) h1{letter-spacing:0}}
