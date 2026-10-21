@@ -127,6 +127,8 @@ export interface HangulCopy {
     readonly headingLetterSpacing: string;
     readonly median: string;
     readonly range: string;
+    /** the label for the middle half of the services (the interquartile range) */
+    readonly iqr: string;
     readonly fonts: string;
     /** {count} */
     readonly fontCount: string;
@@ -228,6 +230,7 @@ const KO: HangulCopy = {
     headingLetterSpacing: "제목 자간",
     median: "중앙값",
     range: "범위",
+    iqr: "가운데 절반",
     fonts: "주 글꼴",
     fontCount: "{count}곳",
   },
@@ -346,6 +349,7 @@ const EN: HangulCopy = {
     headingLetterSpacing: "Heading letter-spacing",
     median: "Median",
     range: "Range",
+    iqr: "Middle half",
     fonts: "Primary font",
     fontCount: "{count} services",
   },

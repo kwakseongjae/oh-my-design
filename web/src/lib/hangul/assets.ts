@@ -61,7 +61,5 @@ export interface Spread {
 }
 
 export function getHangulAssets(): HangulAssets {
-  // JSON imports type arrays as number[], so the iqr tuple needs the unknown step; the shape is
-  // checked in src/data/hangul-assets.test.ts.
-  return data as unknown as HangulAssets;
+  return data as HangulAssets;
 }

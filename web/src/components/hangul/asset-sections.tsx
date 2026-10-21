@@ -92,10 +92,13 @@ export function CompareSection({ assets, t, band }: { assets: HangulAssets; t: H
 export function MeasuredSection({ assets, t, band }: { assets: HangulAssets; t: HangulCopy["assets"]; band: boolean }) {
   const m = assets.measured;
   if (!m) return null;
+  // Body line-height shows its interquartile range, never min–max: measured-67.md says its extremes
+  // are single-line UI text sized by height (1.0) and fixed-pixel values (4.571), not paragraph
+  // line-height (contract doc in lib/hangul/assets.ts). Spreads without an IQR keep min–max.
   const stats = [
-    { k: t.bodyLineHeight, v: m.bodyLineHeight, f: (x: number) => String(x) },
-    { k: t.bodyLetterSpacing, v: m.bodyLetterSpacingEm, f: fmtEm },
-    { k: t.headingLetterSpacing, v: m.headingLetterSpacingEm, f: fmtEm },
+    { k: t.bodyLineHeight, v: m.bodyLineHeight, f: (x: number) => x.toFixed(2).replace(/0$/, ""), iqrOnly: true },
+    { k: t.bodyLetterSpacing, v: m.bodyLetterSpacingEm, f: fmtEm, iqrOnly: false },
+    { k: t.headingLetterSpacing, v: m.headingLetterSpacingEm, f: fmtEm, iqrOnly: false },
   ];
   const top = Math.max(1, ...m.topFonts.map((x) => x.count));
   return (
@@ -110,9 +113,17 @@ export function MeasuredSection({ assets, t, band }: { assets: HangulAssets; t: 
                 <dt>{s.k}</dt>
                 <dd>
                   <span className="hg-mstat-v hg-num">{s.f(s.v.median)}</span>
-                  <span className="hg-mstat-r">
-                    {t.median} · {t.range} <span className="hg-num">{s.f(s.v.min)} – {s.f(s.v.max)}</span>
-                  </span>
+                  {s.v.iqr && s.v.iqr.length === 2 ? (
+                    <span className="hg-mstat-r">
+                      {t.median} · {t.iqr} <span className="hg-num">{s.f(s.v.iqr[0])} – {s.f(s.v.iqr[1])}</span>
+                    </span>
+                  ) : s.iqrOnly ? (
+                    <span className="hg-mstat-r">{t.median}</span>
+                  ) : (
+                    <span className="hg-mstat-r">
+                      {t.median} · {t.range} <span className="hg-num">{s.f(s.v.min)} – {s.f(s.v.max)}</span>
+                    </span>
+                  )}
                 </dd>
               </div>
             ))}
