@@ -54,6 +54,12 @@ type SkillGroup = {
   skills: string[];
 };
 
+/** A skill's own page on this site (a launch page), linked after its description. */
+type SkillPage = {
+  href: string;
+  label: string;
+};
+
 type DemoFormat = {
   duration: string;
   title: string;
@@ -219,6 +225,12 @@ export interface CliDocsDictionary {
     groups: SkillGroup[];
     /** One line per skill id, what it does for the user. Every shipped skill has one. */
     descriptions: Record<string, string>;
+    /**
+     * Skills with their own page, keyed like `descriptions`. /hangul's launch page is
+     * `/ko/hangul` in Korean and `/hangul` (English) everywhere else, a fixed contract with
+     * the page that ships under web/src/app (cli-docs.test.ts pins it).
+     */
+    pages: Record<string, SkillPage>;
     routingTitle: string;
     routingBody: string;
   };
@@ -543,6 +555,7 @@ const en: BaseDictionary = {
       "omd:slop-audit": "Finds generated-UI patterns that have no product reason, with rule IDs and line references.",
       "omd:humanize": "Edits copy in five languages so it reads naturally, keeping facts and commands intact.",
     },
+    pages: { hangul: { href: "/hangul", label: "About /hangul" } },
     routingTitle: "Naming a skill is optional",
     routingBody: "“Improve this checkout and verify it” works better than chaining four skills by hand. Use a name when you want one particular skill.",
   },
@@ -898,6 +911,7 @@ const ko: BaseDictionary = {
       "omd:slop-audit": "제품 근거 없이 반복된 생성형 UI 패턴을 규칙 ID와 코드 위치로 찾아요.",
       "omd:humanize": "다섯 언어의 문장을 자연스럽게 다듬고, 사실과 명령어는 그대로 지켜요.",
     },
+    pages: { hangul: { href: "/ko/hangul", label: "/hangul 소개" } },
     routingTitle: "스킬 이름은 몰라도 돼요",
     routingBody: "‘결제 화면을 개선하고 검증해줘’라고 말하는 편이 스킬 네 개를 직접 이어 붙이는 것보다 나아요. 특정 스킬을 쓰고 싶을 때만 이름을 부르세요.",
   },
@@ -1205,6 +1219,7 @@ const ja: BaseDictionary = {
       "omd:slop-audit": "製品上の理由がない生成 UI パターンを、ルール ID と行番号付きで見つけます。",
       "omd:humanize": "5言語の文章を自然に整えます。事実とコマンドはそのまま残します。",
     },
+    pages: { hangul: { href: "/hangul", label: "/hangul の紹介（英語）" } },
     routingTitle: "スキル名の指定は任意です",
     routingBody: "「この決済画面を改善して、検証して」と頼むほうが、スキルを4つ手作業でつなぐよりうまくいきます。名前は、特定のスキルを使いたいときにだけ指定してください。",
   },
@@ -1512,6 +1527,7 @@ const zhCn: BaseDictionary = {
       "omd:slop-audit": "找出缺少产品依据的生成式 UI 模式，并标注规则 ID 和代码位置。",
       "omd:humanize": "润色五种语言的文案，让它读起来自然，同时保留事实和命令。",
     },
+    pages: { hangul: { href: "/hangul", label: "/hangul 介绍（英文）" } },
     routingTitle: "技能名可以不写",
     routingBody: "直接说“改进这个支付页并验证结果”，比自己串联四个技能效果更好。只有想用某个特定技能时，才需要写出它的名字。",
   },
@@ -1819,6 +1835,7 @@ const zhTw: BaseDictionary = {
       "omd:slop-audit": "找出缺乏產品理由的生成式 UI 模式，附上規則 ID 與程式碼行號。",
       "omd:humanize": "潤飾五種語言的文案，讓文字讀來自然，事實與指令保持不變。",
     },
+    pages: { hangul: { href: "/hangul", label: "/hangul 介紹（英文）" } },
     routingTitle: "技能名稱可以省略",
     routingBody: "直接說「改善這個結帳頁並驗證結果」，效果會比自己串接四個技能更好。只有想用特定技能時，才需要指名。",
   },
