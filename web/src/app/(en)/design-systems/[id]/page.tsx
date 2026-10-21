@@ -14,9 +14,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { DetailView } from "./detail-view";
-import { evidencedPreviewTokens } from "./preview-tokens.server";
+import { buildPreviewModel } from "./preview-tokens.server";
 import { firstSentence, logoFor } from "../archive-rows.server";
-import { extractTokens } from "@/lib/extract-tokens";
 import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
@@ -147,7 +146,7 @@ export default async function DesignSystemDetailPage({
   const { id } = await params;
   const detail = loadDetail(id);
   if (!detail) notFound();
-  const tokens = evidencedPreviewTokens(detail, extractTokens(detail));
+  const preview = buildPreviewModel(detail);
   const related = getRelatedReferences(id, 6);
 
   const name = refName(id);
@@ -213,7 +212,7 @@ export default async function DesignSystemDetailPage({
       <DetailView
         name={name}
         detail={{ id: detail.id, designMd: detail.designMd }}
-        tokens={tokens}
+        preview={preview}
         official={getDesignSystem(detail.id)?.url ?? null}
         logo={logoFor(detail.id)}
       />

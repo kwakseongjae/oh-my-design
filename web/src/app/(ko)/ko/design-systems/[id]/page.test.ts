@@ -135,6 +135,16 @@ describe("Korean item page body", () => {
     expect(ld[0].description).toContain("기록돼 있어요");
   });
 
+  it("labels the preview in Korean and keeps the reference's values as written", async () => {
+    const html = await render("pixiv");
+    for (const heading of ["색상", "브랜드", "면과 글자", "상태", "타이포그래피", "타입 스케일", "여백과 모양", "여백", "모서리 반경", "컴포넌트"]) {
+      expect(html, heading).toContain(`>${heading}</`);
+    }
+    expect(html).toContain("11개 모두 보기");
+    expect(html).toContain("#0096fa");
+    expect(html).not.toContain("웹 글꼴 출처 기록 없음");
+  });
+
   it("keeps related links among Korean pages", async () => {
     const html = await render("toss");
     const related = (html.split('id="related-heading"')[1] ?? "").split("</section>")[0];

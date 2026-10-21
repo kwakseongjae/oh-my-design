@@ -82,6 +82,25 @@ describe("English item page body", () => {
     expect(body).not.toContain(description);
   });
 
+  it("presents what the reference records: grouped colours, every type role, spacing and shape, components", async () => {
+    const html = renderToStaticMarkup(await Page(params("toss")));
+    for (const heading of ["Colors", "Brand", "Surface &amp; text", "Scales", "Typography", "Type scale", "Spacing &amp; shape", "Spacing", "Corner radius", "Components"]) {
+      expect(html, heading).toContain(`>${heading}</`);
+    }
+    expect(html).toContain("Show all 26");
+    // A face that does not load is named, never set in a stand-in, and carries no not-loaded note.
+    expect(html).not.toContain("No web font source on record");
+    expect(html).not.toMatch(/not loaded|Live preview unavailable/);
+  });
+
+  it("gives a reference with nothing recorded to preview no empty pane and no phone toggle", async () => {
+    const html = renderToStaticMarkup(await Page(params("discord")));
+    expect(html).toContain("sq-item-solo");
+    expect(html).not.toContain('class="sq-item-pv');
+    expect(html).not.toContain("sq-panes-m");
+    expect(html).toContain('id="md-heading"');
+  });
+
   it("shows 11st's official identity and no logo for a Simple Icons reference", async () => {
     expect(renderToStaticMarkup(await Page(params("11st")))).toContain('src="/brand-svg/11st/symbol.svg"');
     const stripe = renderToStaticMarkup(await Page(params("stripe")));

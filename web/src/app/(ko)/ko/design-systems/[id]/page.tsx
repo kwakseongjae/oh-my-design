@@ -20,11 +20,10 @@ import type { Metadata } from "next";
 import { SiteFooterA } from "@/components/brand-a/site-footer";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { DetailView } from "@/app/(en)/design-systems/[id]/detail-view";
-import { evidencedPreviewTokens } from "@/app/(en)/design-systems/[id]/preview-tokens.server";
+import { buildPreviewModel } from "@/app/(en)/design-systems/[id]/preview-tokens.server";
 import { logoFor } from "@/app/(en)/design-systems/archive-rows.server";
 import { ITEM_KO } from "@/components/brand-a/copy/item";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
-import { extractTokens } from "@/lib/extract-tokens";
 import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
 import { loadDetail } from "@/lib/references/detail-loader.server";
 import { KO_DETAIL_IDS, hasKoDetailId, koName } from "@/lib/i18n/ko-detail.server";
@@ -102,7 +101,7 @@ export default async function KoreanDesignSystemPage({
   const page = load(id);
   if (!page) notFound();
   const { detail, name, summary } = page;
-  const tokens = evidencedPreviewTokens(detail, extractTokens(detail));
+  const preview = buildPreviewModel(detail);
   const pageUrl = `${SITE_URL}${koDetailPath(id)}`;
   const enName = REGISTRY_BY_ID[id]?.name;
   // Related references that have a Korean page, so Korean pages link among themselves.
@@ -150,7 +149,7 @@ export default async function KoreanDesignSystemPage({
           sharePath={koDetailPath(id)}
           name={name}
           detail={{ id: detail.id, designMd: detail.designMd }}
-          tokens={tokens}
+          preview={preview}
           official={getDesignSystem(detail.id)?.url ?? null}
           logo={logoFor(detail.id)}
         />
