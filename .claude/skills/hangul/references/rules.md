@@ -2,7 +2,7 @@
 
 Every rule in `SKILL.md` §3 with its evidence, tier and source URL. Evidence quotes are verbatim where marked "…", otherwise paraphrased. A rule appears in the main table only if every factual claim in it has a URL. The one exception is the `Intl.NumberFormat('ko-KR')` output in HG-13, which is a local Node run anyone can reproduce. Everything else is in **Unverified** at the end.
 
-Research base: `docs/research/2026-09-29-growth/hangul-canon.md` (canon rows H-01…H-27) and `hangul-measure.md`. The key DS and spec numbers were re-checked on 2026-09-29 against the original pages (raw HTML via curl, plus WebFetch); see the **Verification log**.
+Research base: OmD's internal research canon, `docs/research/2026-09-29-growth/hangul-canon.md` (canon rows H-01…H-27) and `hangul-measure.md` (local-only, not committed to the public repository). The key DS and spec numbers were re-checked on 2026-09-29 against the original pages (raw HTML via curl, plus WebFetch); see the **Verification log**.
 
 ## Tiers
 
@@ -91,6 +91,6 @@ The research canon flagged its KRDS, SEED and TDS values as coming from WebFetch
 - WCAG 3.1.1 (Language of Page). Not fetched; HG-2 rests on the W3C i18n article.
 - Naver and Kakao design-system typography docs. Not consulted.
 - The folk claim that "−1px to −2px letter-spacing is normal for Korean fonts". No source. lqez 2018 saw −1px to +0.8px, and OmD's data floor is −0.03em for headings.
-- How often each failure mode actually appears in agent output. No data yet; the eval plan measures it.
+- How often each failure mode appears in agent output beyond the 2026-09 eval (three Korean UI prompts, Codex and Claude Sonnet, 36 runs; [eval-2026-09.md](./eval-2026-09.md)).
 - Whether TDS React Native units map 1:1 to CSS px. They're compared as equal here.
 - The exact default `font-sans` stack of each Tailwind version. The checker only relies on it naming no Korean face.
