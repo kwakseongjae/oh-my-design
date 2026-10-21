@@ -121,8 +121,35 @@ describe("hangul-assets.json", () => {
   });
 
   it.runIf(assets.measured !== null)("measured equals what scripts/hangul/build-measured.mjs computes from measured-67.md", () => {
-    // Fails rather than skips when measured-67.md can't be read (neither on disk nor via git).
+    // Fails rather than skips when skills/hangul/references/measured-67.md is not on disk.
     const out = execFileSync("node", [join(REPO, "scripts/hangul/build-measured.mjs")], { cwd: REPO, encoding: "utf8" });
     expect(assets.measured).toEqual(JSON.parse(out).measured);
+  });
+
+  it.runIf(assets.measured !== null)("each spread carries n, and an IQR only where measured-67.md states one", () => {
+    const m = assets.measured!;
+    for (const [name, s] of Object.entries({
+      bodyLineHeight: m.bodyLineHeight,
+      bodyLetterSpacingEm: m.bodyLetterSpacingEm,
+      headingLetterSpacingEm: m.headingLetterSpacingEm,
+    })) {
+      expect(Number.isInteger(s.n), name).toBe(true);
+      expect(s.n!, name).toBeGreaterThan(0);
+      expect(s.n!, name).toBeLessThanOrEqual(m.services);
+      expect(s.min, name).toBeLessThanOrEqual(s.median);
+      expect(s.median, name).toBeLessThanOrEqual(s.max);
+      if (s.iqr) {
+        expect(s.iqr[0], name).toBeGreaterThanOrEqual(s.min);
+        expect(s.iqr[0], name).toBeLessThanOrEqual(s.median);
+        expect(s.iqr[1], name).toBeGreaterThanOrEqual(s.median);
+        expect(s.iqr[1], name).toBeLessThanOrEqual(s.max);
+      }
+    }
+    // measured-67.md: "median 1.5, p25 1.429, p75 1.538 (53 numeric …)", read as stated
+    expect(m.bodyLineHeight.n).toBe(53);
+    expect(m.bodyLineHeight.iqr).toEqual([1.429, 1.538]);
+    // the file states no quartiles for body letter-spacing and only p25 for headings: never computed here
+    expect(m.bodyLetterSpacingEm.iqr).toBeUndefined();
+    expect(m.headingLetterSpacingEm.iqr).toBeUndefined();
   });
 });

@@ -7,13 +7,18 @@
  *   node scripts/hangul/build-measured.mjs --write    also write it into hangul-assets.json
  *   node scripts/hangul/build-measured.mjs --check    exit 1 unless hangul-assets.json already holds it
  *
- * Source: skills/hangul/references/measured-67.md on disk once the skill is on this branch, otherwise
- * `git show origin/feat/hangul-skill:<same path>`. If neither resolves, it fails; it never falls back
- * to numbers of its own.
+ * Source: skills/hangul/references/measured-67.md, read from disk (the skill ships on the same branch).
+ * If the file is missing, the script fails; it never falls back to numbers of its own.
  *
  * Every number is computed from the per-service table and then checked against the summary the same
  * file states in prose (counts, medians, quartiles, the font table). A disagreement means the parse or
  * the file drifted, so the script stops instead of writing a number nobody can trace.
+ *
+ * What is computed and what is read:
+ * - min / median / max and n are computed from the per-service table (n = rows with a numeric value).
+ * - iqr is read, never computed: it is filled only where the file's prose states both quartiles, and
+ *   the computed quartiles must equal them. Today that is body line-height (p25 1.429, p75 1.538).
+ *   Heading letter-spacing states p25 only and body letter-spacing states none, so they carry no iqr.
  *
  * Choices this script makes (state them wherever the card is shown):
  * - min / median / max are over the numeric cells of each column. The file itself warns that body
@@ -24,30 +29,19 @@
  *   Neo + Spoqa as Spoqa Han Sans). The buckets "brand or custom faces", "no loaded font (system)" and
  *   "Latin-only primary face" are not families and are left out; the rest is services minus the sum.
  */
-import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const SOURCE_PATH = "skills/hangul/references/measured-67.md";
-const SOURCE_REF = "origin/feat/hangul-skill";
 const ASSETS = join(ROOT, "web", "src", "data", "hangul-assets.json");
 const TOP_FONT_MIN_SERVICES = 2;
 
 export function readSource() {
   const onDisk = join(ROOT, SOURCE_PATH);
-  if (existsSync(onDisk)) return { text: readFileSync(onDisk, "utf8"), from: SOURCE_PATH };
-  try {
-    const text = execFileSync("git", ["show", `${SOURCE_REF}:${SOURCE_PATH}`], {
-      cwd: ROOT,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-    });
-    return { text, from: `${SOURCE_REF}:${SOURCE_PATH}` };
-  } catch {
-    throw new Error(`build-measured: ${SOURCE_PATH} is not on disk and \`git show ${SOURCE_REF}:${SOURCE_PATH}\` failed`);
-  }
+  if (!existsSync(onDisk)) throw new Error(`build-measured: ${SOURCE_PATH} is not on disk`);
+  return { text: readFileSync(onDisk, "utf8"), from: SOURCE_PATH };
 }
 
 function fail(message) {
@@ -94,7 +88,14 @@ function quantile(sorted, q) {
 }
 
 const round = (x) => Math.round(x * 1000) / 1000;
-const spread = (sorted) => ({ min: round(sorted[0]), median: round(quantile(sorted, 0.5)), max: round(sorted[sorted.length - 1]) });
+/** min / median / max and n computed from the column; iqr only when the file states both quartiles. */
+const spread = (sorted, statedIqr) => ({
+  min: round(sorted[0]),
+  median: round(quantile(sorted, 0.5)),
+  max: round(sorted[sorted.length - 1]),
+  n: sorted.length,
+  ...(statedIqr ? { iqr: statedIqr } : {}),
+});
 
 const BRAND_FACES = ["Toss Product Sans", "HyundaiSansTextKR", "YouandiNewKr", "KakaoSmall", "SamsungOneKorean", "Digital One Shinhan", "SKT Sans Text"];
 const LATIN_ONLY = [
@@ -204,13 +205,15 @@ export function buildMeasured(text) {
     measured: {
       services: rows.length,
       date: months[0],
-      bodyLineHeight: spread(lh),
+      // iqr is the file's own p25/p75, read verbatim (checked above against the computed quartiles)
+      bodyLineHeight: spread(lh, [Number(lhStated[2]), Number(lhStated[3])]),
       bodyLetterSpacingEm: spread(bls),
       headingLetterSpacingEm: spread(hls),
       topFonts,
     },
     notes: [
-      `body line-height: ${lh.length} numeric of ${rows.length}; the file reads values under 1.3 as single-line UI text and over 1.8 as fixed-pixel line-heights, so quote the median`,
+      `body line-height: ${lh.length} numeric of ${rows.length}; the file reads values under 1.3 as single-line UI text and over 1.8 as fixed-pixel line-heights, so quote the median and the IQR (read from the file: p25 ${lhStated[2]}, p75 ${lhStated[3]})`,
+      "letter-spacing spreads carry no iqr: the file states no quartiles for body letter-spacing and only p25 for headings",
       headingNote,
       `topFonts: families with >= ${TOP_FONT_MIN_SERVICES} services; not families: ${Object.entries(buckets)
         .filter(([b]) => ["Brand or custom faces", "No loaded font", "Latin-only primary face"].includes(b))

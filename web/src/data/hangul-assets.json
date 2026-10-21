@@ -29,17 +29,24 @@
     "bodyLineHeight": {
       "min": 1,
       "median": 1.5,
-      "max": 4.571
+      "max": 4.571,
+      "n": 53,
+      "iqr": [
+        1.429,
+        1.538
+      ]
     },
     "bodyLetterSpacingEm": {
       "min": -0.071,
       "median": 0,
-      "max": 0
+      "max": 0,
+      "n": 67
     },
     "headingLetterSpacingEm": {
       "min": -0.05,
       "median": 0,
-      "max": 0.006
+      "max": 0.006,
+      "n": 64
     },
     "topFonts": [
       {
