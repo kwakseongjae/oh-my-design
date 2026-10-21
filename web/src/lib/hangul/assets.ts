@@ -52,8 +52,12 @@ export interface Spread {
   max: number;
   /** services with a numeric value for this field */
   n?: number;
-  /** the interquartile range [q1, q3], when measured-67.md reports it */
-  iqr?: [number, number];
+  /**
+   * The interquartile range [q1, q3], when measured-67.md reports both quartiles. Typed as an array,
+   * not a tuple: a JSON import infers number[] and a tuple would fail the cast below. The assets
+   * test pins it to exactly two values with min ≤ q1 ≤ median ≤ q3 ≤ max.
+   */
+  iqr?: readonly number[];
 }
 
 export function getHangulAssets(): HangulAssets {
