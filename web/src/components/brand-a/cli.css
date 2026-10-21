@@ -1,25 +1,33 @@
-/* oh-my-design-cli (round 11, docs/REDESIGN_R11_PLAN_2026-10-20.md W3): one context line, then two
-   steps driven by scroll. Wide: the step texts in the left column scroll past one sticky stage on
-   the right; both scenes share its cell and the active step's fades in. Phones: each text over its
-   scene, nothing pinned. The terminal is the page's one dark field; the active step's title is the
-   section's one violet state. Sizes in view: h2 / 18 / 16 / 15 (the screen is a content object). */
-.sq-cli{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:56px;margin-top:56px}
-.sq-cli-item{grid-column:1;min-height:min(60vh,560px)}
+/* oh-my-design-cli (round 13, owner 2026-10-21): one context line, then the two steps as rows — each
+   step's text beside its own visual, which plays once when the row comes into view. Nothing is
+   pinned (round 11's sticky stage left empty bands before and after it), so a text always sits level
+   with its visual and nothing releases; phones stack each text over its visual. Every visual has a
+   fixed height, so a run never moves what is below it. The terminal is the page's one dark field.
+   Sizes in view: h2 / 18 / 16 / 15 (the screen is a content object). */
+.sq-cli{display:grid;row-gap:72px;margin:56px 0 0;padding:0;list-style:none}
+.sq-cli-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:56px;align-items:start}
 .sq-cli-txt{padding-top:8px;max-width:26em}
-.sq-cli-t{font-size:18px;font-weight:700;line-height:1.4;color:var(--sq-ink-2);transition:color .2s}
-.sq-cli-txt.sq-on .sq-cli-t{color:var(--sq-primary)}
+.sq-cli-t{font-size:18px;font-weight:700;line-height:1.4;color:var(--sq-ink)}
 .sq-cli-txt p{margin-top:8px;font-size:16px;line-height:1.6;color:var(--sq-ink-2)}
-.sq-cli-scene{grid-column:2;grid-row:1 / span 2;align-self:start;position:sticky;top:calc(var(--sq-header-h) + 40px);height:540px;min-width:0;opacity:0;pointer-events:none;transition:opacity .35s ease}
-.sq-cli-scene.sq-on{opacity:1;pointer-events:auto}
+.sq-cli-vis{min-width:0}
 
 /* install: the command row over the real output */
-.sq-term{display:flex;flex-direction:column;height:100%;border-radius:var(--sq-r-panel);overflow:hidden;background:var(--sq-term);color:var(--sq-term-ink);box-shadow:0 24px 48px -24px rgba(30,20,90,.35)}
-.sq-term-cmd{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;min-height:64px;padding:10px 12px 10px 24px;background:color-mix(in srgb,#fff 6%,var(--sq-term))}
+.sq-term{display:flex;flex-direction:column;height:480px;border-radius:var(--sq-r-panel);overflow:hidden;background:var(--sq-term);color:var(--sq-term-ink);box-shadow:0 24px 48px -24px rgba(30,20,90,.35)}
+.sq-term-cmd{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;min-height:64px;padding:10px 12px 10px 24px;background:color-mix(in srgb,#fff 6%,var(--sq-term))}
 .sq-term-cmd code{flex:1 1 200px;min-width:0;font-size:15px;font-weight:600;line-height:1.4;color:#fff}
 .sq-tc-ps{color:var(--sq-term-acc);user-select:none}
-.sq-cmd-copy{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:40px;padding:0 16px;border-radius:calc(var(--sq-r-ctl) - 4px);background:color-mix(in srgb,#fff 12%,var(--sq-term));color:var(--sq-term-ink);font-size:15px;font-weight:600;transition:background-color .15s}
-.sq-cmd-copy:hover{background:color-mix(in srgb,#fff 22%,var(--sq-term))}
-.sq-cmd-copy:focus-visible{outline:2px solid var(--sq-p300);outline-offset:2px}
+/* typing: the untyped rest is laid out but unseen, the caret takes no width (so nothing reflows) */
+.sq-tc-rest{visibility:hidden}
+.sq-tc-car{position:relative;display:inline-block;width:0;height:1.15em;vertical-align:-.2em}
+.sq-tc-car::after{content:"";position:absolute;top:0;bottom:0;left:0;width:.58em;background:var(--sq-term-acc)}
+.sq-idle .sq-tc-car::after,.sq-to-cur{animation:sq-blink 1.05s steps(1,end) infinite}
+.sq-cmd-copy,.sq-term-re{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;height:40px;border-radius:calc(var(--sq-r-ctl) - 4px);background:color-mix(in srgb,#fff 12%,var(--sq-term));color:var(--sq-term-ink);transition:background-color .15s}
+.sq-cmd-copy{min-width:76px;padding:0 16px;font-size:15px;font-weight:600}
+.sq-term-re{width:40px}
+/* until a run has played (hero.css owns a global .sq-off that removes the box; this keeps its space) */
+.sq-term-re.sq-re-wait{visibility:hidden}
+.sq-cmd-copy:hover,.sq-term-re:hover{background:color-mix(in srgb,#fff 22%,var(--sq-term))}
+.sq-cmd-copy:focus-visible,.sq-term-re:focus-visible{outline:2px solid var(--sq-p300);outline-offset:2px}
 .sq-cmd-copy.sq-ok{color:var(--sq-term-acc)}
 .sq-to{flex:1;min-height:0;overflow:auto;margin:0;padding:16px 24px 20px;font:400 15px/1.6 var(--sq-f-mono);color:var(--sq-term-dim);white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,#fff 22%,transparent) transparent}
 .sq-to:focus-visible{outline:2px solid var(--sq-p300);outline-offset:-6px;border-radius:var(--sq-r-card)}
@@ -29,26 +37,44 @@
 .sq-to span:not(.sq-tg),.sq-term-cmd code span{font-family:var(--sq-f-mono)}
 .sq-tg{font-family:var(--sq-f-latin),sans-serif}
 .sq-tg:lang(ko){font-family:var(--sq-f-ko)}.sq-tg:lang(ja){font-family:var(--sq-f-ja)}.sq-tg:lang(zh-Hant){font-family:var(--sq-f-tc)}
+/* the terminal's cursor while the command runs (not output: it carries no text) */
+.sq-to-cur{display:inline-block;width:.58em;height:1.15em;vertical-align:-.2em;background:var(--sq-term-dim)}
+/* pre-hydration (cli-section.tsx): the run about to play is hidden until it rewinds to the empty prompt */
+.sq-term.sq-pre .sq-tc-txt,.sq-term.sq-pre .sq-to>*{visibility:hidden}
 
 /* apply: the agent's trace beside the screen it writes */
-.sq-apply{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;height:100%;padding:24px;border-radius:var(--sq-r-panel);background:var(--sq-band);box-shadow:0 0 0 1px var(--sq-guide-2)}
+.sq-apply{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;height:540px;padding:24px;border-radius:var(--sq-r-panel);background:var(--sq-band);box-shadow:0 0 0 1px var(--sq-guide-2)}
 .sq-apply-chat{display:flex;flex-direction:column;gap:12px;min-width:0;min-height:0;overflow:hidden}
 .sq-apply.sq-pre .sq-at,.sq-apply.sq-pre .sq-apply-scr{visibility:hidden}
 .sq-apply.sq-pre .sq-apply-scr{opacity:0}
 
-.sq-cli-skills{margin-top:24px;font-size:16px;scroll-margin-top:96px}
+.sq-cli-skills{margin-top:32px;font-size:16px;scroll-margin-top:96px}
+
+@keyframes sq-blink{50%{opacity:0}}
 
 @media (prefers-reduced-motion:reduce){
-  .sq-cli-scene,.sq-cli-t{transition:none}
+  .sq-idle .sq-tc-car::after,.sq-to-cur{animation:none}
+  /* nothing plays, so there is nothing to replay */
+  .sq-term-re{display:none}
+}
+/* narrow desktops and tablets: a 4/8 split would squeeze the apply panel's two columns (the Write
+   row breaks inside the file name at 1024), so each text sits over its visual at full width */
+@media (max-width:1100px){
+  .sq-cli-row{grid-template-columns:minmax(0,1fr);row-gap:20px}
+  .sq-cli-txt{padding-top:0;max-width:40em}
 }
 @media (max-width:900px){
-  .sq-cli{grid-template-columns:minmax(0,1fr);margin-top:28px}
-  .sq-cli-item{grid-column:auto;min-height:0}
-  .sq-cli-txt{padding-top:0}
-  .sq-cli-txt .sq-cli-t,.sq-cli-txt.sq-on .sq-cli-t{color:var(--sq-ink)}
-  .sq-cli-scene{grid-column:auto;grid-row:auto;position:static;height:auto;margin:16px 0 40px;opacity:1;pointer-events:auto}
+  .sq-cli{row-gap:56px;margin-top:28px}
+  .sq-cli-row{row-gap:16px}
+  .sq-term{height:440px}
   .sq-term-cmd{padding-left:16px}
-  .sq-to{max-height:420px;padding:12px 16px 16px}
+  .sq-to{padding:12px 16px 16px}
   .sq-apply{grid-template-columns:minmax(0,1fr);height:auto;padding:16px}
   .sq-apply-scr{min-height:380px}
+}
+/* phones: the command and both buttons don't fit one line, so the buttons take a row of their own
+   at the top right and the command line stays right above the output it starts */
+@media (max-width:600px){
+  .sq-term-cmd{justify-content:flex-end;gap:8px;padding:8px 8px 12px 16px}
+  .sq-term-cmd code{order:1;flex:1 0 100%}
 }

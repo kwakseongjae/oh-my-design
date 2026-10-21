@@ -73,6 +73,8 @@ export interface R11HeroCopy {
     prompt: string;
     file: string;
     think: string;
+    /** accessible name (and tooltip) of the terminal's replay button: the install plays once in view */
+    replay: string;
     screen: CardText;
   };
 }
@@ -210,6 +212,7 @@ const KO: R11HeroCopy = {
     prompt: "이 DESIGN.md로 홈 화면 만들어줘",
     file: "HomeScreen.tsx",
     think: "홈 화면에는 오늘의 식단과 식단을 추가하는 버튼이 필요해요. 프로젝트의 DESIGN.md를 읽고 거기 적힌 값만 쓸게요.",
+    replay: "설치 다시 보기",
     screen: {
       title: "오늘의 식단",
       sub: "가족 4명이 함께 기록해요",
@@ -353,6 +356,7 @@ const EN: R11HeroCopy = {
     prompt: "Using this DESIGN.md, design the home screen.",
     file: "HomeScreen.tsx",
     think: "The home screen needs today's meals and a way to add one. I'll read the project's DESIGN.md and use only the values in it.",
+    replay: "Replay the install",
     screen: {
       title: "Today's meals",
       sub: "Logged by a family of four",
@@ -496,6 +500,7 @@ const JA: R11HeroCopy = {
     prompt: "このDESIGN.mdでホーム画面を作って",
     file: "HomeScreen.tsx",
     think: "ホーム画面には今日の献立と、献立を追加するボタンが要ります。プロジェクトのDESIGN.mdを読み、そこにある値だけを使います。",
+    replay: "インストールをもう一度見る",
     screen: {
       title: "今日の献立",
       sub: "家族4人で記録しています",
@@ -639,6 +644,7 @@ const ZH_TW: R11HeroCopy = {
     prompt: "用這份 DESIGN.md 做首頁",
     file: "HomeScreen.tsx",
     think: "首頁需要今天的餐點和新增按鈕。我先讀專案的 DESIGN.md，只用裡面的數值。",
+    replay: "重播安裝過程",
     screen: {
       title: "今日菜單",
       sub: "全家 4 個人一起記錄",
