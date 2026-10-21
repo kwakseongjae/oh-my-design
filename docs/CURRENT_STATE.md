@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-21 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-10-14 · 계측 기반 (성장 계획 P0/5) — 브랜치 `feat/growth-metrics`, main 미반영
@@ -16,6 +16,25 @@
   - 로컬 `data/growth/metrics.jsonl`(3줄, 비공개 지표 포함)을 비공개 레포에 시드. `data/growth/`는 이제 gitignore 대상이다.
 - **Vercel Web Analytics 재도입.** `@vercel/analytics` 2.0.1, `web/src/components/vercel-analytics.tsx`. Pro 플랜은 1K 이벤트당 $0.03이다. 리퍼러와 상위 페이지는 대시보드나 `/v1/query/web-analytics/visits/aggregate?by=referrerHostname`으로 본다. 개인정보 처리방침(en/ko)을 갱신했다.
 - **GA4 복구.** `scripts/analytics/RESTORE-2026-10.md`. 코드는 수정할 필요가 없고(엔드포인트 최신 확인), GCP 프로젝트·키·권한은 오너가 처리한다.
+
+## ▶ 2026-10-21 17시 · 리브랜딩 main 반영 + 2.0.5 출시 완료, 브랜치 정리
+
+- **출시.**
+  - main `6a9eab05`: rebrand-a를 fast-forward한 뒤 상태 문서 브랜치를 병합했다. 후속 커밋은 `3b37e9db`(og 경로 테스트).
+  - Vercel Production 성공. 라이브 확인: `/`·`/ko`·아카이브·상세·`/docs/en/shadcn` 200, `/og/reference` PNG, `/builder` 308, `/api/ask` 404.
+  - `v2.0.5` 태그 → 릴리스 워크플로. 1차는 `activation-reuse` 테스트가 리눅스 CI에서 흔들려 실패했고, 재실행에서 통과했다.
+  - npm `oh-my-design-cli@2.0.5`가 latest다(provenance 있음).
+  - 오너 GO(10/21 "ㄱㄱ")는 strict 게이트 waiver를 포함한다.
+- **정리.**
+  - main에 병합된 워크트리 39개를 제거했다. 그 안의 docs/research 산출물 421개 이상은 메인 체크아웃에 보존했다(gitignored).
+  - 병합된 로컬 브랜치 75개, 원격 브랜치 27개를 삭제했다.
+  - 메인 체크아웃은 이제 `main`이다. 상태 문서도 main에 있다.
+- **남긴 미병합 브랜치 (오너 판단):**
+  - /hangul 계열: `feat/hangul-launch-page`(+3), 원격 `feat/hangul-skill`(+4), `worktree-agent-ac741…`(스킬 미러 재동기화), `worktree-agent-a624…`(배민 타이포 블로그 발행), `worktree-agent-aee69…`(도구 수정).
+  - 로고 갤러리: `feat/brand-svg-tw-jp`(+5), `feat/brand-svg-jp`(+3), `feat/brand-svg-gallery`(+1). 데이터는 main에 들어갔고, 남은 건 갤러리 페이지다.
+  - 오래된 실험: `feat/design-tokens`(+44, 4달), `feat/33-fidelity-gate`(+7), `codex/priority3-test-v2`(+6), `t2/migration-waves`, `landing-renewal-v3`, 원격 `cursor/setup-dev-environment-e438`.
+  - `growth-data`는 주간 공개 지표 데이터 브랜치라 유지한다.
+- **다음 큰 작업 후보(오너와 결정):** A) /hangul 출시(P3) · B) ja/zh-tw 아카이브·상세(P2) · C) 레퍼럴 엔진(ui-skills PR 등, P4) · D) partial/legacy 레퍼런스 검증.
 
 ## ▶ 2026-09-29 · 성장 전략 결정 17개 → 병렬 실행 착수 (521 · 227)
 
