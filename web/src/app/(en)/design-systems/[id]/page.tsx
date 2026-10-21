@@ -24,6 +24,7 @@ import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { koDetailPath } from "@/lib/i18n/ko-detail";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 import { ITEM_EN } from "@/components/brand-a/copy/item";
+import { RelatedMark } from "../related-mark";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -242,7 +243,7 @@ function RelatedReferences({
           {related.map((r) => (
             <li key={r.id}>
               <Link href={`/design-systems/${r.id}`}>
-                <span className="sq-rel-sw" style={{ background: r.primaryColor }} aria-hidden="true" />
+                <RelatedMark id={r.id} color={r.primaryColor} />
                 <span className="sq-rel-t">
                   <b>{r.name}</b>
                   <span>{r.category.replace(/-/g, " ")}</span>

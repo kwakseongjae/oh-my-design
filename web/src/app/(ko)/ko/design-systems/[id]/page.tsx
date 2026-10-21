@@ -30,6 +30,7 @@ import { KO_DETAIL_IDS, hasKoDetailId, koName } from "@/lib/i18n/ko-detail.serve
 import { KO_CATALOG_PATH, enDetailPath, koDetailPath } from "@/lib/i18n/ko-detail";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { koDescription, koDetailTitle, koSummary } from "./ko-summary";
+import { RelatedMark } from "@/app/(en)/design-systems/related-mark";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -161,7 +162,7 @@ export default async function KoreanDesignSystemPage({
                 {related.map((r) => (
                   <li key={r.id}>
                     <Link href={koDetailPath(r.id)}>
-                      <span className="sq-rel-sw" style={{ background: r.primaryColor }} aria-hidden="true" />
+                      <RelatedMark id={r.id} color={r.primaryColor} />
                       <span className="sq-rel-t">
                         <b>{koName(r.id)}</b>
                         <span lang="en">{r.category.replace(/-/g, " ")}</span>
