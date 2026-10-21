@@ -652,7 +652,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - [Documentation](https://oh-my-design.kr/docs/en): the DESIGN.md archive and oh-my-design-cli: install, workflows, skills
 - [Skills](https://oh-my-design.kr/docs/en/skills): the 10 public skills and what each one does; the installer also writes the internal skills they call
 - [OmD reference + shadcn skill](https://oh-my-design.kr/docs/en/shadcn): where to get a real DESIGN.md for shadcn's skill (`npx skills add shadcn/ui`), what carries over (tokens, Known Gaps, labelled font fallback) and the measured limits
-- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references; each reference page copies or downloads its DESIGN.md and gives the install command and a first prompt
+- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references; each reference page copies or downloads its DESIGN.md
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
 - [Blog](https://oh-my-design.kr/blog): release notes and what held up in the harness — Korean canonical with English versions at /blog/en, RSS at /blog/feed.xml
 - [Use a DESIGN.md without the CLI](https://oh-my-design.kr/docs/en/getting-started#without-cli): raw /<id>/design.md endpoints and these llms files; the old MCP connector is retired
