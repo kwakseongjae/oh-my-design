@@ -17,5 +17,45 @@
     "source": "Codex p1-A-r3"
   },
   "video": null,
-  "measured": null
+  "measured": {
+    "services": 67,
+    "date": "2026-07",
+    "bodyLineHeight": {
+      "min": 1,
+      "median": 1.5,
+      "max": 4.571
+    },
+    "bodyLetterSpacingEm": {
+      "min": -0.071,
+      "median": 0,
+      "max": 0
+    },
+    "headingLetterSpacingEm": {
+      "min": -0.05,
+      "median": 0,
+      "max": 0.006
+    },
+    "topFonts": [
+      {
+        "family": "Pretendard",
+        "count": 40
+      },
+      {
+        "family": "Noto Sans KR",
+        "count": 3
+      },
+      {
+        "family": "Toss Product Sans",
+        "count": 3
+      },
+      {
+        "family": "Nanum",
+        "count": 2
+      },
+      {
+        "family": "Spoqa Han Sans",
+        "count": 2
+      }
+    ]
+  }
 }
