@@ -8,11 +8,17 @@
  *   - a crumb row: back to the archive on the left; the official site and Share
  *     on the right;
  *   - the brand's genuine logo (or none) and the one <h1>, "{Name} DESIGN.md";
- *   - the answer-first summary (the extractable lead Claude/Brave cite);
  *   - `#use`: Copy DESIGN.md and Download, two equal buttons. Old /builder?ref=
  *     links 308 to /design-systems/<id>#use and land on this group.
  * Below it, the canonical DESIGN.md — byte for byte, as before — beside the
- * preview (swatches, type, a few components). On phones one pane at a time.
+ * preview (colours, type, spacing and shape, components). On phones one pane at
+ * a time. A reference that records nothing the preview can draw (the legacy
+ * snapshots, whose tokens were written from prose) gets no preview pane: the
+ * DESIGN.md stands alone, with no empty column and no empty phone tab.
+ *
+ * Round 13 (owner, 2026-10-21): the description line under the h1 is gone. The
+ * same sentence still feeds the meta description, OG and the JSON-LD
+ * description, which are built on the server and do not depend on this view.
  *
  * Removed in this round, by the owner's list: the tier badge, the "how to use"
  * section (install command, first prompt, raw .md link), the evidence panel and
@@ -24,6 +30,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ReferencePreview } from "@/components/reference-preview";
+import { hasPreviewContent, type PreviewModel } from "@/components/item/preview-model";
 import { BrandLogo, type BrandLogoData } from "@/components/brand-logo";
 import { ReferenceShareButton } from "@/components/reference-share-button";
 import { copyText } from "@/lib/clipboard";
@@ -34,7 +41,6 @@ import {
   trackExternalClick,
   trackMdViewToggle,
 } from "@/lib/design-systems/analytics";
-import type { ParsedTokens } from "@/lib/extract-tokens";
 import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
 import "@/components/brand-a/archive.css";
 import "@/components/brand-a/item.css";
@@ -49,8 +55,7 @@ type MobileView = "preview" | "markdown";
 export function DetailView({
   name,
   detail,
-  tokens,
-  summary,
+  preview,
   official,
   logo,
   locale = "en",
@@ -63,17 +68,16 @@ export function DetailView({
   /** Brand name from the server page — the same string as the title and JSON-LD. */
   name: string;
   detail: Detail;
-  /** Preview tokens, already reduced by the server to what the reference records. */
-  tokens: ParsedTokens;
+  /** The preview, built by the server from the reference's own tokens (preview-tokens.server.ts). */
+  preview: PreviewModel;
   /** Official design-system / brand-guide link from the registry, resolved by the server. */
   official: string | null;
   /** Genuine logo resolved by the server (archive-rows.server.ts), or null. */
   logo: BrandLogoData | null;
-  /** Answer-first extract from the server page — also the JSON-LD description. */
-  summary?: string;
 }) {
   const t = locale === "ko" ? ITEM_KO : ITEM_EN;
-  const [mobileView, setMobileView] = useState<MobileView>("preview");
+  const withPreview = hasPreviewContent(preview);
+  const [mobileView, setMobileView] = useState<MobileView>(withPreview ? "preview" : "markdown");
   const [copied, setCopied] = useState(false);
   const [hasLogo, setHasLogo] = useState(!!logo);
 
@@ -134,7 +138,6 @@ export function DetailView({
                 DESIGN.md title is demoted, so neither competes with it. */}
             <h1>{t.h1(name)}</h1>
           </div>
-          {summary ? <p className="sq-item-sum">{summary}</p> : null}
           <div id="use" className="sq-ih-acts" role="group" aria-label={t.useLabel}>
             <button type="button" onClick={copyMd} className="sq-act sq-act-primary">
               <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
@@ -163,16 +166,18 @@ export function DetailView({
       </section>
 
       {/* Phones: one pane at a time, the preview first (recognition before reading). */}
-      <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label={t.show}>
-        <button type="button" onClick={() => toggleMobileView("preview")} aria-pressed={mobileView === "preview"}>
-          {t.preview}
-        </button>
-        <button type="button" onClick={() => toggleMobileView("markdown")} aria-pressed={mobileView === "markdown"}>
-          DESIGN.md
-        </button>
-      </div>
+      {withPreview ? (
+        <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label={t.show}>
+          <button type="button" onClick={() => toggleMobileView("preview")} aria-pressed={mobileView === "preview"}>
+            {t.preview}
+          </button>
+          <button type="button" onClick={() => toggleMobileView("markdown")} aria-pressed={mobileView === "markdown"}>
+            DESIGN.md
+          </button>
+        </div>
+      ) : null}
 
-      <div className="sq-wrap sq-item-body">
+      <div className={`sq-wrap sq-item-body${withPreview ? "" : " sq-item-solo"}`}>
         <section className={`sq-item-md ${mobileView === "markdown" ? "" : "sq-m-hide"}`} aria-labelledby="md-heading">
           <h2 id="md-heading" className="sq-md-h">
             DESIGN.md
@@ -183,11 +188,13 @@ export function DetailView({
           </div>
         </section>
 
-        <section className={`sq-item-pv ${mobileView === "preview" ? "" : "sq-m-hide"}`} aria-label={t.preview}>
-          <div className="sq-item-pv-in">
-            <ReferencePreview tokens={tokens} labels={t.pv} />
-          </div>
-        </section>
+        {withPreview ? (
+          <section className={`sq-item-pv ${mobileView === "preview" ? "" : "sq-m-hide"}`} aria-label={t.preview}>
+            <div className="sq-item-pv-in">
+              <ReferencePreview model={preview} labels={t.pv} />
+            </div>
+          </section>
+        ) : null}
       </div>
     </div>
   );

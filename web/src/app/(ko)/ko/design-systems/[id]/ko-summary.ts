@@ -39,7 +39,7 @@ export function koSummary(name: string, d: KoSummaryInput): string {
   return facts.length ? `${name} DESIGN.md에는 ${facts.join(", ")}이 기록돼 있어요.` : "";
 }
 
-/** Meta description: the visible summary plus what the page lets you do. */
+/** Meta description: the summary plus what the page lets you do. Round 13: the summary is no longer printed on the page. */
 export function koDescription(name: string, summary: string): string {
   const tail = "영어 원문 그대로 복사하거나 내려받을 수 있어요.";
   return summary ? `${summary} ${tail}` : `${name} DESIGN.md예요. ${tail}`;

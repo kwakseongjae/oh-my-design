@@ -71,6 +71,36 @@ describe("English item page body", () => {
     expect(ld[1].itemListElement.map((i: { name: string }) => i.name)).toEqual(["Home", "Archive", "Toss DESIGN.md"]);
   });
 
+  it("drops the description line under the h1 (round 13) but keeps it as the JSON-LD description", async () => {
+    const html = renderToStaticMarkup(await Page(params("toss")));
+    expect(html).not.toContain('class="sq-item-sum"');
+    const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((b) => JSON.parse(b[1]));
+    const { description } = (await generateMetadata(params("toss"))) as { description: string };
+    expect(ld[0].description).toBe(description);
+    // The sentence is in the structured data and the meta tags only, not in the page body.
+    const body = html.replace(/<script[\s\S]*?<\/script>/g, "");
+    expect(body).not.toContain(description);
+  });
+
+  it("presents what the reference records: grouped colours, every type role, spacing and shape, components", async () => {
+    const html = renderToStaticMarkup(await Page(params("toss")));
+    for (const heading of ["Colors", "Brand", "Surface &amp; text", "Scales", "Typography", "Type scale", "Spacing &amp; shape", "Spacing", "Corner radius", "Components"]) {
+      expect(html, heading).toContain(`>${heading}</`);
+    }
+    expect(html).toContain("Show all 26");
+    // A face that does not load is named, never set in a stand-in, and carries no not-loaded note.
+    expect(html).not.toContain("No web font source on record");
+    expect(html).not.toMatch(/not loaded|Live preview unavailable/);
+  });
+
+  it("gives a reference with nothing recorded to preview no empty pane and no phone toggle", async () => {
+    const html = renderToStaticMarkup(await Page(params("discord")));
+    expect(html).toContain("sq-item-solo");
+    expect(html).not.toContain('class="sq-item-pv');
+    expect(html).not.toContain("sq-panes-m");
+    expect(html).toContain('id="md-heading"');
+  });
+
   it("shows 11st's official identity and no logo for a Simple Icons reference", async () => {
     expect(renderToStaticMarkup(await Page(params("11st")))).toContain('src="/brand-svg/11st/symbol.svg"');
     const stripe = renderToStaticMarkup(await Page(params("stripe")));

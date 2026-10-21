@@ -1,5 +1,5 @@
-/* Item page (/design-systems/[id], /ko/design-systems/[id]), round 11 (W7). Tokens: --sq-* (styles/brand-a.css).
-   First screen: crumb row · logo + h1 "{Name} DESIGN.md" · summary · #use (Copy DESIGN.md, Download).
+/* Item page (/design-systems/[id], /ko/design-systems/[id]), round 11 (W7), round 13. Tokens: --sq-* (styles/brand-a.css).
+   First screen: crumb row · logo + h1 "{Name} DESIGN.md" · #use (Copy DESIGN.md, Download). The summary line left in round 13.
    Type in the first screen (RESTRAINT.md R3, ≤4): h1 · 26 section heading · 17 lede and actions · 15 small.
    Iris only on the main action; the second action is ink. Radius 14 controls, pill actions, 20 cards.
    Separation by space and tone, not lines (RESTRAINT.md). */
@@ -24,11 +24,10 @@
 .sq-ih-logo.sq-logo-fav{padding:14px}
 .sq-ih-logo.sq-logo-fav img{width:44px}
 .sq-ih h1{min-width:0;font-family:var(--sq-f-latin),sans-serif;font-weight:var(--sq-fw-display);font-size:clamp(36px,4.6vw,66px);line-height:1.04;letter-spacing:-0.03em;overflow-wrap:anywhere}
-.sq-item-sum{margin-top:24px;max-width:40em;font-size:17px;line-height:1.65;color:var(--sq-ink-2)}
 
 /* #use: two equal actions. Old /builder?ref=<id> links land here (lib/legacy-builder/redirect.ts).
    The group sits in the first screen, so a wide scroll margin means arriving on #use does not scroll
-   at all on 1440×900 or 390×844: the logo, h1 and summary stay in view above the actions. */
+   at all on 1440×900 or 390×844: the logo and h1 stay in view above the actions. */
 .sq-ih-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:36px;scroll-margin-top:min(70vh,640px)}
 .sq-act{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:var(--sq-r-pill);font-size:17px;font-weight:700;white-space:nowrap;transition:background-color .15s}
 .sq-act svg{flex-shrink:0}
@@ -43,6 +42,8 @@
 /* ---- body: the canonical DESIGN.md beside the preview ---- */
 .sq-panes-m{display:none}
 .sq-item-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 64px;padding-top:24px;padding-bottom:64px}
+/* nothing recorded to preview (legacy snapshots): the DESIGN.md alone, at its reading measure */
+.sq-item-solo{grid-template-columns:minmax(0,1fr)}
 .sq-item-md,.sq-item-pv{min-width:0}
 .sq-md-h,.sq-pv-sec h2,.sq-rel h2{font-family:var(--sq-f-latin),sans-serif;font-size:26px;font-weight:var(--sq-fw-heading);line-height:1.25;letter-spacing:-0.015em}
 .sq-md-h{margin-bottom:24px}
@@ -66,19 +67,41 @@
 .sq-md-body div:has(> table){border-radius:var(--sq-r-ctl)}
 .sq-md-body blockquote{font-style:normal;color:var(--sq-ink-2)}
 
-/* ---- preview (components/reference-preview.tsx): swatches, type, a few components ---- */
-.sq-pv{display:grid;gap:56px;padding-bottom:32px}
-.sq-pv-sec h2{margin-bottom:20px}
-.sq-pv ul{list-style:none;margin:0;padding:0}
+/* ---- preview (components/reference-preview.tsx), round 13 ----
+   Colours (brand large, groups by key, hue ramps) · Typography (faces, every recorded role) ·
+   Spacing & shape (bars, radius tiles, shadows) · Components (+ recorded states).
+   Separation by tone and space: grey panels hold white rows, no rules. Bars are neutral; the only
+   saturated colour in the column is the reference's own. Radius: 14 rows/controls, 20 panels. */
+.sq-pv{display:grid;gap:64px;padding-bottom:32px}
+.sq-pv-sec h2{margin-bottom:24px}
+.sq-pv ul,.sq-pv ol{list-style:none;margin:0;padding:0}
+.sq-pv-group + .sq-pv-group{margin-top:40px}
+.sq-pv-group h3,.sq-pv-scale h3{font-size:17px;font-weight:700;line-height:1.35;margin-bottom:14px}
 
-.sq-pv-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:20px 12px}
-.sq-pv-sw button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;width:100%;border-radius:var(--sq-r-ctl)}
-.sq-pv-sw button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
-.sq-pv-chip{display:block;height:96px;margin-bottom:6px;border-radius:var(--sq-r-ctl);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 10%,transparent);transition:transform .15s}
-.sq-pv-sw button:hover .sq-pv-chip{transform:translateY(-2px)}
+/* colours */
+.sq-pv-lead{margin-bottom:20px}
+.sq-pv-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:20px 12px}
+.sq-pv-sw button,.sq-pv-lead button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;width:100%;border-radius:var(--sq-r-ctl)}
+.sq-pv-sw button:focus-visible,.sq-pv-lead button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+.sq-pv-chip{display:block;height:80px;margin-bottom:6px;border-radius:var(--sq-r-ctl);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 10%,transparent);transition:transform .15s}
+.sq-pv-lead .sq-pv-chip{height:144px;border-radius:var(--sq-r-card)}
+.sq-pv-sw button:hover .sq-pv-chip,.sq-pv-lead button:hover .sq-pv-chip{transform:translateY(-2px)}
 .sq-pv-sw-n{font-size:15px;font-weight:650;color:var(--sq-ink);overflow-wrap:anywhere}
+.sq-pv-lead .sq-pv-sw-n{font-size:17px;font-weight:700}
 .sq-pv-sw-v{font-size:15px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
 
+.sq-pv-ramps{display:grid;gap:20px}
+.sq-pv-ramp-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin-bottom:8px;font-size:15px;line-height:1.4}
+.sq-pv-ramp-h b{font-weight:650}
+.sq-pv-ramp-h > span{color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
+.sq-pv-strip{position:relative;display:grid;border-radius:var(--sq-r-ctl);overflow:hidden}
+.sq-pv-strip::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 10%,transparent);pointer-events:none}
+.sq-pv-strip button{all:unset;box-sizing:border-box;cursor:pointer;display:block;height:48px;min-width:0}
+.sq-pv-strip button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-3px}
+.sq-pv-strip-l{display:grid;margin-top:6px;font-size:14px;color:var(--sq-ink-2);text-align:center;font-variant-numeric:tabular-nums}
+.sq-pv-strip-l span{min-width:0;overflow:hidden;white-space:nowrap}
+
+/* typography */
 .sq-pv-fonts{display:grid;gap:12px}
 .sq-pv-font{display:flex;align-items:center;gap:20px;padding:20px 22px;border-radius:var(--sq-r-card);background:var(--sq-cell);min-width:0}
 .sq-pv-aa{flex-shrink:0;font-size:56px;line-height:1;color:var(--sq-ink)}
@@ -87,21 +110,49 @@
 .sq-pv-font-t span{font-size:15px;color:var(--sq-ink-2)}
 .sq-pv-font-t a{margin-top:4px;font-size:15px;font-weight:600;color:var(--sq-ink);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:4px}
 .sq-pv-font-t a:hover{text-decoration-color:var(--sq-ink)}
-.sq-pv-scale{margin-top:28px}
-.sq-pv-scale h3{font-size:17px;font-weight:700;margin-bottom:8px}
-.sq-pv-scale li{display:grid;gap:4px;padding:12px 0;min-width:0}
-.sq-pv-scale-m{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:15px}
-.sq-pv-scale-m b{font-weight:650}
-.sq-pv-scale-m span{color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
-.sq-pv-scale-s{display:block;color:var(--sq-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sq-pv-fonts + .sq-pv-scale{margin-top:32px}
+.sq-pv-steps{display:grid;gap:6px;padding:6px;border-radius:var(--sq-r-card);background:var(--sq-cell)}
+.sq-pv-step{display:grid;gap:12px;padding:16px 18px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);min-width:0}
+.sq-pv-step-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;min-width:0}
+.sq-pv-step-n{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0;font-size:15px;line-height:1.45}
+.sq-pv-step-n b{font-weight:650;overflow-wrap:anywhere}
+.sq-pv-step-n span{color:var(--sq-ink-2)}
+.sq-pv-step-m{font-size:15px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sq-pv-spec{display:block;color:var(--sq-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sq-pv-tbar{display:block;height:6px;border-radius:3px;background:var(--sq-guide)}
+.sq-pv-more{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0 4px;font-size:15px;font-weight:650;color:var(--sq-ink);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:4px}
+.sq-pv-more:hover{text-decoration-color:var(--sq-ink)}
+.sq-pv-more:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:6px}
 
-.sq-pv-comp{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px 16px}
-.sq-pv-comp li{min-width:0}
+/* spacing & shape */
+.sq-pv-space{display:grid;gap:4px;padding:6px;border-radius:var(--sq-r-card);background:var(--sq-cell)}
+.sq-pv-space li{display:grid;grid-template-columns:minmax(0,8em) 4.5em minmax(0,1fr);align-items:center;gap:12px;min-height:44px;padding:0 14px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);font-size:15px}
+.sq-pv-space-n{font-weight:650;overflow-wrap:anywhere}
+.sq-pv-space-v{color:var(--sq-ink-2);font-variant-numeric:tabular-nums;text-align:right}
+.sq-pv-space-b{display:block;height:16px;max-width:100%;border-radius:4px;background:var(--sq-n400)}
+.sq-pv-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:20px 12px}
+.sq-pv-tiles li{display:grid;align-content:start;gap:2px;min-width:0}
+.sq-pv-rad{display:block;width:72px;height:72px;margin-bottom:10px;background:var(--sq-cell);box-shadow:inset 0 0 0 2px var(--sq-guide)}
+.sq-pv-tile-n{font-size:15px;font-weight:650;overflow-wrap:anywhere}
+.sq-pv-tile-v{font-size:15px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.sq-pv-shadows{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+.sq-pv-shadows .sq-pv-tile-v{font-size:14px;line-height:1.5}
+.sq-pv-elev-st{display:flex;align-items:center;justify-content:center;min-height:120px;margin-bottom:12px;padding:24px;border-radius:var(--sq-r-card);background:var(--sq-cell)}
+.sq-pv-elev{display:block;width:100%;max-width:120px;height:64px;border-radius:var(--sq-r-ctl);background:var(--sq-paper)}
+
+/* components */
+.sq-pv-comp{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 16px}
+.sq-pv-comp > li{min-width:0}
 .sq-pv-stage{display:flex;align-items:center;justify-content:center;min-height:132px;padding:28px 20px;border-radius:var(--sq-r-card);background:var(--sq-cell);overflow:hidden}
 .sq-pv-stage-dark{background:var(--sq-n900)}
-.sq-pv-cap{display:grid;gap:2px;padding:12px 2px 0;min-width:0}
-.sq-pv-cap b{font-size:15px;font-weight:650;overflow-wrap:anywhere}
-.sq-pv-cap span{font-size:14px;line-height:1.5;color:var(--sq-ink-2);overflow-wrap:anywhere}
+.sq-pv-cap{display:grid;gap:4px;padding:12px 2px 0;min-width:0}
+.sq-pv-cap > b{font-size:15px;font-weight:650;overflow-wrap:anywhere}
+.sq-pv-cap > span{font-size:14px;line-height:1.5;color:var(--sq-ink-2);overflow-wrap:anywhere}
+.sq-pv-states{display:grid;gap:2px;font-size:14px;line-height:1.5;color:var(--sq-ink-2)}
+.sq-pv-states li{min-width:0;overflow-wrap:anywhere}
+.sq-pv-states i{display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:50%;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 16%,transparent)}
+.sq-pv-states b,.sq-pv-inv b{font-weight:650;color:var(--sq-ink)}
+.sq-pv-inv{font-size:14px;line-height:1.5;color:var(--sq-ink-2);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .sq-pv-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;max-width:100%;padding:0 20px;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sq-pv-input{display:flex;align-items:center;width:100%;max-width:300px;min-height:44px;padding:0 14px;font-size:15px}
 .sq-pv-input span{opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -135,7 +186,6 @@
   .sq-ih-logo.sq-logo-fav{padding:10px}
   .sq-ih-logo.sq-logo-fav img{width:36px}
   .sq-ih h1{font-size:clamp(30px,9vw,40px)}
-  .sq-item-sum{margin-top:16px;font-size:17px}
   .sq-ih-acts{margin-top:24px;gap:10px}
   .sq-act{flex:1 1 0;min-width:0;padding:0 16px;font-size:16px}
   .sq-share span{display:none}
@@ -149,13 +199,19 @@
   .sq-item-pv{margin-top:0}
   .sq-m-hide{display:none}
   .sq-md-body > div{font-size:16px}
-  .sq-pv{gap:44px}
+  .sq-pv{gap:48px}
   .sq-pv-sw{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .sq-pv-chip{height:80px}
+  .sq-pv-chip{height:72px}
+  .sq-pv-lead .sq-pv-chip{height:112px}
   .sq-pv-aa{font-size:44px}
+  .sq-pv-step{padding:14px}
+  .sq-pv-space li{grid-template-columns:minmax(0,1fr) 4em minmax(0,1.1fr);padding:0 12px}
+  .sq-pv-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sq-pv-shadows{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sq-rel ul{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 /* Korean item page (/ko/design-systems/<id>): Hangul headings need more leading than
    the Latin 1.04 / 1.25 when they wrap (hangul HG-5). Same sizes as the English page. */
 :lang(ko) .sq-ih h1{line-height:1.3;letter-spacing:-0.02em}
 :lang(ko) :is(.sq-md-h,.sq-pv-sec,.sq-rel) h2,:lang(ko) .sq-md-h{line-height:1.32}
+:lang(ko) .sq-pv-group h3,:lang(ko) .sq-pv-scale h3{line-height:1.45}

@@ -131,6 +131,34 @@ describe("Korean item page body", () => {
     }
   });
 
+  it("drops the summary line (round 13); the Korean sentence stays only in the JSON-LD and meta description", async () => {
+    const html = await render("pixiv");
+    expect(html).not.toContain('class="sq-item-sum"');
+    const body = html.replace(/<script[\s\S]*?<\/script>/g, "");
+    expect(body).not.toContain("기록돼 있어요");
+    const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((b) => JSON.parse(b[1]));
+    expect(ld[0].description).toContain("기록돼 있어요");
+  });
+
+  it("labels the preview in Korean and keeps the reference's values as written", async () => {
+    const html = await render("pixiv");
+    for (const heading of ["색상", "브랜드", "면과 글자", "상태", "타이포그래피", "타입 스케일", "여백과 모양", "여백", "모서리 반경", "컴포넌트"]) {
+      expect(html, heading).toContain(`>${heading}</`);
+    }
+    expect(html).toContain("11개 모두 보기");
+    expect(html).toContain("#0096fa");
+    expect(html).not.toContain("웹 글꼴 출처 기록 없음");
+  });
+
+  it("gives a Korean legacy page (prose-derived tokens) no empty 미리보기 pane and no toggle", async () => {
+    const legacy = KO_DETAIL_IDS.find((id) => REGISTRY_BY_ID[id]?.tokens?.source === "prose-derived");
+    expect(legacy).toBeDefined();
+    const html = await render(legacy!);
+    expect(html).toContain("sq-item-solo");
+    expect(html).not.toContain('class="sq-item-pv');
+    expect(html).not.toContain("sq-panes-m");
+  });
+
   it("keeps related links among Korean pages", async () => {
     const html = await render("toss");
     const related = (html.split('id="related-heading"')[1] ?? "").split("</section>")[0];

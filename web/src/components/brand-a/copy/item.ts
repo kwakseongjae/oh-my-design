@@ -12,6 +12,7 @@
  */
 
 import type { FontLicense } from "@/lib/font-registry";
+import type { ColorGroupKey, StateKey } from "@/components/item/preview-model";
 
 export interface InstallLabels {
   install: string;
@@ -36,18 +37,32 @@ export interface ShareLabels {
 export interface PreviewLabels {
   colors: string;
   type: string;
+  shape: string;
   components: string;
-  copyHex: (hex: string) => string;
+  /** Colour groups, named after what the token keys say (components/item/preview-model.ts). */
+  groups: Record<ColorGroupKey, string>;
+  /** Numbered hue scales ("grey50" … "grey900"), drawn as ramps. */
+  scales: string;
+  copyColor: (name: string, hex: string) => string;
   copied: string;
   scale: string;
+  showAll: (n: number) => string;
+  showFewer: string;
+  /** Screen-reader form of a type role's metrics; an unrecorded metric is left out. */
+  metrics: (size: number, lineHeight?: string, weight?: number, tracking?: string) => string;
+  spacing: string;
+  radius: string;
+  elevation: string;
   /** Font roles as the reference names them; an unlisted role is shown as written. */
   roles: Record<string, string>;
   license: Record<FontLicense, string>;
-  /** A face that is not in the font registry: its licence is unknown, so none is claimed. */
-  noRecord: string;
   install: (where: string) => string;
   source: (where: string) => string;
-  spec: { fill: string; text: string; border: string; radius: string; height: string };
+  spec: { fill: string; text: string; border: string; radius: string; height: string; padding: string; type: string };
+  /** Component state names; the recorded value follows as written. */
+  states: Record<StateKey, string>;
+  /** Lead-in for a component's recorded `states` inventory. */
+  inventory: string;
 }
 
 export interface ItemLabels {
@@ -97,11 +112,39 @@ export const ITEM_EN: ItemLabels = {
   pv: {
     colors: "Colors",
     type: "Typography",
+    shape: "Spacing & shape",
     components: "Components",
-    copyHex: (hex) => `Copy ${hex}`,
+    groups: { brand: "Brand", surface: "Surface & text", status: "Status", other: "Other colors" },
+    scales: "Scales",
+    copyColor: (name, hex) => `Copy ${name} ${hex}`,
     copied: "Copied",
     scale: "Type scale",
-    roles: { primary: "Primary", mono: "Monospace", display: "Display", serif: "Serif", fallback: "Fallback", icon: "Icon", declared: "Declared" },
+    showAll: (n) => `Show all ${n}`,
+    showFewer: "Show fewer",
+    metrics: (size, lh, w, tr) =>
+      [`${size}px`, lh ? `line height ${lh}` : null, w ? `weight ${w}` : null, tr ? `letter spacing ${tr}` : null]
+        .filter(Boolean)
+        .join(", "),
+    spacing: "Spacing",
+    radius: "Corner radius",
+    elevation: "Elevation",
+    roles: {
+      primary: "Primary",
+      mono: "Monospace",
+      display: "Display",
+      serif: "Serif",
+      fallback: "Fallback",
+      icon: "Icon",
+      declared: "Declared",
+      sans: "Sans",
+      ui: "UI",
+      brand: "Brand",
+      body: "Body",
+      heading: "Heading",
+      code: "Code",
+      numerals: "Numerals",
+      editorial: "Editorial",
+    },
     license: {
       OFL: "Open font · OFL",
       "Apache 2.0": "Open font · Apache 2.0",
@@ -110,10 +153,20 @@ export const ITEM_EN: ItemLabels = {
       System: "System font",
       Mixed: "Mixed licences",
     },
-    noRecord: "No web font source on record",
     install: (w) => `Install via ${w}`,
     source: (w) => `Source · ${w}`,
-    spec: { fill: "Fill", text: "Text", border: "Border", radius: "Radius", height: "Height" },
+    spec: { fill: "Fill", text: "Text", border: "Border", radius: "Radius", height: "Height", padding: "Padding", type: "Type" },
+    states: {
+      hover: "Hover",
+      pressed: "Pressed",
+      active: "Active",
+      focus: "Focus",
+      disabled: "Disabled",
+      selected: "Selected",
+      checked: "Checked",
+      error: "Error",
+    },
+    inventory: "States",
   },
 };
 
@@ -144,11 +197,37 @@ export const ITEM_KO: ItemLabels = {
   pv: {
     colors: "색상",
     type: "타이포그래피",
+    shape: "여백과 모양",
     components: "컴포넌트",
-    copyHex: (hex) => `${hex} 복사`,
+    groups: { brand: "브랜드", surface: "면과 글자", status: "상태", other: "그 밖의 색" },
+    scales: "단계별 색",
+    copyColor: (name, hex) => `${name} ${hex} 복사`,
     copied: "복사했어요",
     scale: "타입 스케일",
-    roles: { primary: "기본", mono: "고정폭", display: "디스플레이", serif: "세리프", fallback: "폴백", icon: "아이콘", declared: "선언" },
+    showAll: (n) => `${n}개 모두 보기`,
+    showFewer: "접기",
+    metrics: (size, lh, w, tr) =>
+      [`${size}px`, lh ? `행간 ${lh}` : null, w ? `굵기 ${w}` : null, tr ? `자간 ${tr}` : null].filter(Boolean).join(", "),
+    spacing: "여백",
+    radius: "모서리 반경",
+    elevation: "그림자",
+    roles: {
+      primary: "기본",
+      mono: "고정폭",
+      display: "디스플레이",
+      serif: "세리프",
+      fallback: "폴백",
+      icon: "아이콘",
+      declared: "선언",
+      sans: "산세리프",
+      ui: "UI",
+      brand: "브랜드",
+      body: "본문",
+      heading: "제목",
+      code: "코드",
+      numerals: "숫자",
+      editorial: "에디토리얼",
+    },
     license: {
       OFL: "오픈 글꼴 · OFL",
       "Apache 2.0": "오픈 글꼴 · Apache 2.0",
@@ -157,9 +236,19 @@ export const ITEM_KO: ItemLabels = {
       System: "시스템 글꼴",
       Mixed: "라이선스 혼합",
     },
-    noRecord: "웹 글꼴 출처 기록 없음",
     install: (w) => `${w}에서 설치`,
     source: (w) => `출처 · ${w}`,
-    spec: { fill: "채움", text: "글자", border: "테두리", radius: "반경", height: "높이" },
+    spec: { fill: "채움", text: "글자", border: "테두리", radius: "반경", height: "높이", padding: "안쪽 여백", type: "글자 크기·굵기" },
+    states: {
+      hover: "호버",
+      pressed: "누름",
+      active: "활성",
+      focus: "포커스",
+      disabled: "비활성",
+      selected: "선택",
+      checked: "체크",
+      error: "오류",
+    },
+    inventory: "기록된 상태",
   },
 };
