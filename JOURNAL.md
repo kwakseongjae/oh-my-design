@@ -1,5 +1,11 @@
 # JOURNAL
 
+## 2026-10-21 — 13차 main 준비, 브랜치 `feat/r13-mainprep`
+
+- **한 일**: referral-1(`bdaa413c`)·growth-metrics(`b0d5e5f0`)를 리브랜딩에 병합했다. 라운드 11 문서 구조에 shadcn 가이드(5개 언어, Guides 그룹)와 공개 스킬 10개를 이식했고, 2.0.5 범프·CHANGELOG(`cf74d427`)까지 마쳤다. 게이트와 스모크 근거는 `docs/research/2026-10-21-r13/mainprep/`(gitignored)에 있다.
+- **열린 것**: 품질 게이트 BLOCKED(2.0.4와 같은 상태) → 오너 waiver 필요. `/ko/design-systems/[id]` og:image가 아직 `/api/og`다(상세 스트림 몫). Vercel 스크립트 태그는 동의 전·거부 후에도 로드되고, 거부 후에는 비컨만 0이다(growth-metrics 설계 그대로).
+- **다음**: 리드 push → 오너 GO·waiver → main 병합 → v2.0.5 태그.
+
 ## 2026-10-14 — 계측 기반(P0/5), 브랜치 `feat/growth-metrics`
 
 - **한 일**: 주간 스냅샷 워크플로(`.github/workflows/growth-snapshot.yml`, 월 03:23 UTC + 수동)를 만들었다. 공개 지표(별·npm·skills.sh)는 공개 브랜치 `growth-data`에, 비공개 지표(트래픽·리퍼러·DAU)는 별도 비공개 레포에만 쓴다. 레포가 공개라 로그·아티팩트에도 내보내지 않는다(`--quiet`). Vercel Web Analytics를 다시 붙였다(쿠키 없음, Decline 시 drop). GA4 복구 가이드는 `scripts/analytics/RESTORE-2026-10.md`.
