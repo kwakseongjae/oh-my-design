@@ -1,0 +1,47 @@
+/* Specimens on the /hangul page. Everything in this file reproduces the eval page Codex built
+   WITHOUT the skill (Codex CLI, p1-A-r3; values from hangul-content/CONTENT-NOTES.md), so the
+   "before" states break /hangul rules on purpose: word-break:normal on a heading, tracking below
+   −0.03em, 8px and 10px captions. Each "after" adds only the CSS that rule changes. The /hangul
+   checker is run on this file separately from the page's own CSS (hangul.css); its findings here
+   are the reproductions, and nothing else on the page may produce one.
+   All specimen text is set in the Pretendard this page self-hosts (journey/faces.ts), so the
+   reader sees the same face on every device; the eval page used Arial + the platform Korean face.
+   The eval page's colours (#fff, #191f28, #f7f9fc …) are the specimen's content, not site tokens. */
+
+/* ---- the hero demo: the metrics card's h2 at a phone width (break-demo.tsx) ---- */
+.hg-sp{position:absolute;top:12px;left:50%;padding:15px 0 18px;border-radius:24px;background:#fff;color:#191f28;box-shadow:0 1px 2px rgba(20,20,60,.06),0 10px 28px -14px rgba(40,30,120,.22);transform:translateX(-50%) scale(var(--hg-s,1));transform-origin:50% 0;-webkit-font-smoothing:antialiased}
+.hg-sp-card{margin:0 20px;padding:26px 17px;border:1px solid #f1f4f8;border-radius:16px;background:#f7f9fc;text-align:center}
+.hg-sp .hg-sp-h{margin:0;font-family:var(--font-r11-pretendard),var(--sq-f-ko);font-size:18px;line-height:1.6;font-weight:600;letter-spacing:-0.5px;word-break:normal;overflow-wrap:normal;text-wrap:wrap}
+/* the two lines /hangul adds (HG-10 + HG-9) */
+.hg-sp.hg-sp--fix .hg-sp-h{word-break:keep-all;overflow-wrap:anywhere}
+/* the break map's off-screen copy: laid out, never painted, removed once measured */
+.hg-probe{position:absolute;left:0;top:0;width:0;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
+.hg-sp.hg-sp--probe{position:static;transform:none;box-shadow:none}
+/* phones: less padding above and below the heading (only its width sets the line breaks) */
+@media (max-width:900px){
+  .hg-sp{top:0;padding:10px 0;box-shadow:0 0 0 1px var(--sq-guide-2)}
+  .hg-sp-card{padding-block:16px}
+}
+
+/* ---- why · HG-7: the hero h1 at 44px, tracking only (both states keep-all, as the eval's fix) ---- */
+.hg-sp7{width:100%;text-align:center}
+.hg-sp7 .hg-h7{margin:0;font-family:var(--font-r11-pretendard),var(--sq-f-ko);font-size:44px;line-height:1.33;font-weight:750;letter-spacing:-0.064em;color:#191f28;word-break:keep-all;overflow-wrap:anywhere;text-wrap:wrap}
+.hg-sp7.hg-sp7--fix .hg-h7{letter-spacing:-0.03em}
+@media (max-width:420px){.hg-sp7 .hg-h7{font-size:38px}}
+
+/* ---- why · HG-3: the metric columns at ≤680px, caption sizes only ---- */
+.hg-sp3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;width:min(350px,100%);padding:26px 17px;border:1px solid #f1f4f8;border-radius:16px;background:#f7f9fc;color:#191f28;text-align:center;font-family:var(--font-r11-pretendard),var(--sq-f-ko)}
+.hg-sp3 .hg-m3-col{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:95px;padding:0 6px;border-left:1px solid #e5eaf1}
+.hg-sp3 .hg-m3-col:first-child{border-left:0}
+.hg-sp3 .hg-m3-col>*{font-family:var(--font-r11-pretendard),var(--sq-f-ko);word-break:normal;overflow-wrap:normal}
+.hg-sp3 .hg-m3-l{margin:0 0 10px;font-size:10px;line-height:1.5;color:#757e8e}
+.hg-sp3 .hg-m3-v{font-size:28px;line-height:1.3;font-weight:750;letter-spacing:0;white-space:nowrap}
+.hg-sp3 .hg-m3-v span{margin-left:2px;font-size:13px;letter-spacing:0}
+.hg-sp3 .hg-m3-n{margin-top:9px;font-size:8px;line-height:1.5;color:#a0a8b5}
+@media (max-width:420px){.hg-sp3{padding-inline:8px}}
+/* /hangul: nothing below 11px, broken between words */
+.hg-sp3.hg-sp3--fix .hg-m3-l,.hg-sp3.hg-sp3--fix .hg-m3-n{font-size:11px}
+.hg-sp3.hg-sp3--fix .hg-m3-col>*{word-break:keep-all;overflow-wrap:break-word}
+
+/* ---- why · HG-1: the stack itself (rendering it would need the platform fonts it falls to) ---- */
+.hg-c1{max-width:100%;margin:0;font-size:14px;line-height:1.6;font-weight:500;color:var(--sq-ink);text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal}
