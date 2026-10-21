@@ -1,11 +1,15 @@
 import brandLogos from "@/data/brand-logos.json";
+import { lookupFont } from "@/lib/font-registry";
 import { getSubstitutes } from "@/lib/fonts/substitutes";
-import { PAGE_SCRIPT, PAGE_STACK, SUB_FACES } from "@/components/brand-a/journey/face";
+import { OPEN_FACES, PAGE_SCRIPT, PAGE_STACK, SUB_FACES } from "@/components/brand-a/journey/face";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
-import { getR11Hero, type CardText } from "@/components/brand-a/copy/r11-hero";
+import { getR11Hero, withName, type CardText, type HeroKind } from "@/components/brand-a/copy/r11-hero";
+import { detailHrefFor, hasKoDetail, type QualityStatus } from "@/lib/i18n/ko-detail";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
+import { contrast } from "./contrast";
+import { capData } from "./data.server";
 import { GEN_UI_PREFERRED_BUTTON } from "./picks";
 import { getProp } from "./props";
 import { num, resolveSlots, type ButtonSlot, type Claimed, type ResolvedSlots, type TokensLike, type TypeSlot } from "./resolve";
@@ -29,6 +33,44 @@ import { num, resolveSlots, type ButtonSlot, type Claimed, type ResolvedSlots, t
  *       → tie; no official logo for either → Linear's button is `primary-action` (the get-started
  *       pill), Stripe's only claimed buttons are Docs controls (`docs-search-prompt`) → Linear.
  *   TW  104 13/14 (no UI face) · eslite 7/14 (no heading tier, no button) → 104.
+ *
+ * Round 12 (owner 2026-10-21): a keycap picks the chat's company. Every company on the locale's
+ * keyboard (data/hero-caps.json) gets a card, built here for the locale's caps plus its opening
+ * company and handed to the client chat (getHeroChats). The card kind follows what the company's
+ * product is (KIND). Toss, pixiv, Linear and 104 keep their round-11 cards unchanged; the other
+ * companies are drawn by generic builders that fill each part of the card from a role ladder over
+ * the company's own claimed tokens (titleType, textType, smallType, boxOf, legible), so a part
+ * whose role no claimed token fills is left unset, never borrowed from another company or from
+ * OmD. Coverage of the 14 card slots, measured 2026-10-21 (the test prints it):
+ *
+ *   company          kind      slots  missing
+ *   toss             transfer  14/14  —
+ *   kakaobank        transfer  14/14  —
+ *   upbit            transfer  12/14  heading type, UI face
+ *   socar            booking   14/14  —
+ *   freee            task      14/14  —
+ *   pixiv            artwork   13/14  card radius
+ *   channeltalk      task      13/14  body type
+ *   kream            product   13/14  heading type
+ *   yanolja          booking   13/14  surface
+ *   linear.app       issue     13/14  surface
+ *   104              job       13/14  UI face
+ *   china-airlines   booking   12/14  surface, UI face
+ *   udn              article   12/14  surface, card radius
+ *   kurly            product   11/14  surface, heading type, body type
+ *   caddi            task      11/14  card radius, heading type, body type
+ *   chatwork         task      11/14  surface, heading type, body type
+ *   poya             product   11/14  body text, surface, card radius
+ *   booth            product   10/14  surface, card radius, heading type, UI face
+ *   class101         product    8/14  surface, no button (5 slots)
+ *   eslite           product    7/14  heading type, no button (5 slots), UI face
+ *   toyota           booking    6/14  body text, surface, card radius, no button (5 slots)
+ *   familymart-tw    product    6/14  body text, card radius, no button (5 slots), UI face
+ *   evaair           booking    5/14  body text, card radius, heading type, no button (5 slots), UI face
+ *
+ * "heading type" / "body type" count the resolver's tiers (a claimed size and weight); chatwork and
+ * caddi claim sizes without weights, which the cards set as a size alone. The last five draw no
+ * button: none of them claims a button with a solid fill.
  */
 
 /** One claimed token as rendered: token path (no `tokens.` prefix), the registry value, its CSS. */
@@ -54,7 +96,7 @@ export interface CardNode {
   readonly part?: number;
 }
 
-export type CardKind = "transfer" | "artwork" | "issue" | "job" | "home";
+export type CardKind = HeroKind | "home";
 
 export interface ChatCard {
   readonly id: string;
@@ -76,10 +118,62 @@ export interface ChatCard {
   readonly face: { readonly name: string | null; readonly shown: boolean; readonly sub?: string };
 }
 
+/** A card as the client chat gets it: the printed source stays on the server (only its line count is shown). */
+export type ClientCard = Omit<ChatCard, "source">;
+
+/** One company's chat on the hero (round 12): its card, the request in the page language, and its item page. */
+export interface HeroChat {
+  readonly card: ClientCard;
+  readonly prompt: string;
+  /** the chat's accessible name */
+  readonly label: string;
+  readonly think: string;
+  /** the company as its keycap shows it (Hangul only on /ko) */
+  readonly name: string;
+  readonly nLang: string;
+  /** the company's item page (lib/i18n/ko-detail.ts) */
+  readonly href: string;
+}
+
 /** Owner decision 4 (KR, JP) and the measured picks below (EN, TW). */
 export const CHAT_COMPANY: Readonly<Record<SiteLocale, string>> = { ko: "toss", ja: "pixiv", en: "linear.app", "zh-tw": "104" };
 export const CHAT_CANDIDATES = { en: ["stripe", "linear.app"], "zh-tw": ["104", "eslite"] } as const;
-const KIND: Readonly<Record<string, CardKind>> = { toss: "transfer", pixiv: "artwork", "linear.app": "issue", "104": "job" };
+
+/**
+ * The card each company's chat ends in, by what its product is (round 12). Fintech (Toss, KakaoBank,
+ * Upbit's digital-asset exchange) → a transfer receipt; commerce, retail and marketplaces → a product
+ * card; mobility, travel, airlines and stays (Toyota's test drive too) → a booking confirmation; news
+ * → an article; B2B SaaS (Channel Talk's team inbox, Chatwork's tasks, CADDi's quotes, freee's
+ * approvals) → a task card; and the round-11 artwork (pixiv), issue (Linear) and job (104) cards.
+ */
+export const KIND: Readonly<Record<string, HeroKind>> = {
+  toss: "transfer", kakaobank: "transfer", upbit: "transfer",
+  pixiv: "artwork",
+  "linear.app": "issue",
+  "104": "job",
+  kream: "product", kurly: "product", class101: "product", booth: "product", eslite: "product", poya: "product", "familymart-tw": "product",
+  socar: "booking", yanolja: "booking", toyota: "booking", "china-airlines": "booking", evaair: "booking",
+  udn: "article",
+  channeltalk: "task", chatwork: "task", caddi: "task", freee: "task",
+};
+
+/**
+ * Where the button the resolver ranks first is not the one a card should carry: Yanolja's top-ranked
+ * `utility-button` is a white fill whose edge is a shadow the tokens don't carry, so on its white
+ * canvas it would read as bare text; its `outlined-action` is the full-width action of its hotel and
+ * leisure pages (1px #1b1c1f edge).
+ */
+const CHAT_PREFERRED_BUTTON: Readonly<Record<string, string>> = { yanolja: "outlined-action" };
+
+/**
+ * Tiers a generic card takes by name where the role ladders below would pick another. Toss's card
+ * title is its h3 (round 11). CADDi publishes an unnamed size scale (12–48px, sizes without weights)
+ * whose §3 says 16px leads and 14px follows; its 20px step titles the card.
+ */
+const PIN: Readonly<Record<string, { readonly title?: string; readonly text?: string; readonly small?: string }>> = {
+  toss: { title: "h3" },
+  caddi: { title: "l", text: "m", small: "s" },
+};
 
 /* ---------- coverage ---------- */
 
@@ -93,7 +187,7 @@ export type CardSlot = (typeof CARD_SLOTS)[number];
 const slotsOf = (id: string): ResolvedSlots | null => {
   const r = REGISTRY_BY_ID[id];
   if (!r) return null;
-  return resolveSlots(r.tokens as TokensLike, REFERENCE_VERIFICATION_BY_ID[id], { preferButton: GEN_UI_PREFERRED_BUTTON[id] });
+  return resolveSlots(r.tokens as TokensLike, REFERENCE_VERIFICATION_BY_ID[id], { preferButton: CHAT_PREFERRED_BUTTON[id] ?? GEN_UI_PREFERRED_BUTTON[id] });
 };
 
 /** The button reads as the primary action: the resolver's own top rank (preferred component or a primary/cta name). */
@@ -167,9 +261,17 @@ function colorTok(id: string, key: string): Tok | null {
   const v = claimedAt(id, `colors.${key}`);
   return typeof v === "string" && HEX.test(v.trim()) ? { k: `colors.${key}`, v, css: v.trim().toLowerCase() } : null;
 }
-const slotColor = (c: Claimed | null): Tok | null => (c && HEX.test(c.v) ? { k: c.k, v: c.v, css: c.v } : null);
+/** A resolved colour slot as a token: the registry's own value (its case kept), the resolver's lower-cased hex as CSS. */
+const slotColor = (id: string, c: Claimed | null): Tok | null => (c && HEX.test(c.v) ? { k: c.k, v: (claimedAt(id, c.k) as string | undefined) ?? c.v, css: c.v } : null);
 
-type TypeToks = { fontSize: Tok; fontWeight: Tok; lineHeight?: Tok };
+/** A type tier as CSS. `fontWeight` is absent only for a tier that claims a size without a weight. */
+type TypeToks = { fontSize: Tok; fontWeight?: Tok; lineHeight?: Tok };
+function lineTok(id: string, key: string): Tok | null {
+  const lh = claimedAt(id, `typography.${key}.lineHeight`);
+  if (typeof lh === "number") return { k: `typography.${key}.lineHeight`, v: lh, css: lh > 4 ? px(lh) : String(lh) };
+  if (typeof lh === "string" && /^[\d.]+(px)?$/.test(lh.trim())) return { k: `typography.${key}.lineHeight`, v: lh, css: lh.trim() };
+  return null;
+}
 function tierToks(id: string, key: string): TypeToks | null {
   const size = claimedAt(id, `typography.${key}.size`), weight = claimedAt(id, `typography.${key}.weight`);
   const sz = num(size), wt = num(weight);
@@ -178,9 +280,8 @@ function tierToks(id: string, key: string): TypeToks | null {
     fontSize: { k: `typography.${key}.size`, v: size as string | number, css: px(sz) },
     fontWeight: { k: `typography.${key}.weight`, v: weight as string | number, css: String(wt) },
   };
-  const lh = claimedAt(id, `typography.${key}.lineHeight`);
-  if (typeof lh === "number") out.lineHeight = { k: `typography.${key}.lineHeight`, v: lh, css: lh > 4 ? px(lh) : String(lh) };
-  else if (typeof lh === "string" && /^[\d.]+(px)?$/.test(lh.trim())) out.lineHeight = { k: `typography.${key}.lineHeight`, v: lh, css: lh.trim() };
+  const lh = lineTok(id, key);
+  if (lh) out.lineHeight = lh;
   return out;
 }
 const slotType = (id: string, t: TypeSlot | null) => (t ? tierToks(id, t.k) : null);
@@ -220,55 +321,205 @@ function el(tag: CardNode["tag"], o: Omit<CardNode, "tag" | "kids"> = {}, kids?:
 }
 const button = (b: BtnToks | null, label: string, part: number) => (b ? el("span", { cls: "sq-ex-btn", css: css(b), text: label, part }) : null);
 
-/* ---------- the cards ---------- */
+/* ---------- round 12: role ladders for the generic cards ---------- */
+
+interface Tier { readonly k: string; readonly size: number; readonly weight: number | null }
+
+/** Every type tier with a claimed size (`leading` is a line-height scale, not a tier). */
+function tiersOf(id: string): Tier[] {
+  const T = ((REGISTRY_BY_ID[id]?.tokens as TokensLike | undefined)?.typography ?? {}) as Record<string, unknown>;
+  const out: Tier[] = [];
+  for (const k of Object.keys(T)) {
+    if (k === "family" || k === "leading") continue;
+    const size = num(claimedAt(id, `typography.${k}.size`));
+    if (size != null) out.push({ k, size, weight: num(claimedAt(id, `typography.${k}.weight`)) });
+  }
+  return out;
+}
+
+/** A tier's claimed size, with its weight and line height where those are claimed too. */
+function tierType(id: string, key: string): TypeToks | null {
+  const strict = tierToks(id, key);
+  if (strict) return strict;
+  const size = claimedAt(id, `typography.${key}.size`), sz = num(size);
+  if (sz == null) return null;
+  const out: TypeToks = { fontSize: { k: `typography.${key}.size`, v: size as string | number, css: px(sz) } };
+  const lh = lineTok(id, key);
+  if (lh) out.lineHeight = lh;
+  return out;
+}
+
+/** The size and weight a claimed card component's `font` declares (e.g. Kurly's product-list article, 14px / 400). */
+function compFont(id: string, t: TypeSlot | null): TypeToks | null {
+  if (!t || !t.k.startsWith("components.")) return null;
+  const v = claimedAt(id, t.k) as string;
+  return { fontSize: { k: t.k, v, css: px(t.size) }, fontWeight: { k: t.k, v, css: String(t.weight) } };
+}
+
+const largest = (xs: readonly Tier[]): Tier | undefined => [...xs].sort((a, b) => b.size - a.size)[0];
+const HEAD_KEY = /h[1-6]|heading|headline|title|display|section|subhead|subtitle/;
+const PAGE_HEAD = /marketing|hero|banner|cover/;
+const INPUT_KEY = /search|input|field|placeholder|code|mono/;
+
+/**
+ * A card title: the tier the reference names for a card, else its largest heading that fits a card
+ * (18–28px, then up to 32px), else its largest emphasised tier (weight ≥ 600, 16–28px), else any
+ * tier of 18–32px, else a heading that claims only a size, else — every heading being larger — its
+ * smallest heading, as resolve.ts does (China Airlines' 40px section heading). Page-scale headings
+ * (marketing, hero) and input text are never a card title. Nothing fits → no size is set.
+ */
+function titleType(id: string): TypeToks | null {
+  const pin = PIN[id]?.title;
+  if (pin) return tierType(id, pin);
+  const all = tiersOf(id).filter((t) => !INPUT_KEY.test(t.k));
+  const heads = all.filter((t) => HEAD_KEY.test(t.k) && !PAGE_HEAD.test(t.k));
+  const weighed = (t: Tier) => t.weight != null;
+  const pick =
+    heads.find((t) => /card/.test(t.k) && weighed(t)) ??
+    largest(heads.filter((t) => weighed(t) && t.size >= 18 && t.size <= 28)) ??
+    largest(heads.filter((t) => weighed(t) && t.size >= 16 && t.size <= 32)) ??
+    largest(all.filter((t) => weighed(t) && t.weight! >= 600 && t.size >= 16 && t.size <= 28)) ??
+    largest(all.filter((t) => weighed(t) && t.size >= 18 && t.size <= 32)) ??
+    largest(heads.filter((t) => !weighed(t) && t.size >= 18 && t.size <= 28)) ??
+    [...heads].filter(weighed).sort((a, b) => a.size - b.size)[0];
+  return pick ? tierType(id, pick.k) : null;
+}
+
+function firstTier(id: string, res: readonly RegExp[]): TypeToks | null {
+  const all = tiersOf(id);
+  for (const re of res) {
+    const hit = all.find((t) => re.test(t.k));
+    if (hit) return tierType(id, hit.k);
+  }
+  return null;
+}
+
+/** Running text: the resolver's body tier, else the card component's own font, else a body-named tier. */
+function textType(id: string, s: ResolvedSlots): TypeToks | null {
+  const pin = PIN[id]?.text;
+  if (pin) return tierType(id, pin);
+  return slotType(id, s.bod) ?? compFont(id, s.cardFont) ?? firstTier(id, [/^(body-?1|body|text|paragraph|copy)$/, /-body$/]);
+}
+
+/** Secondary text (labels, captions, times): a small or caption tier, else running text. */
+function smallType(id: string, s: ResolvedSlots): TypeToks | null {
+  const pin = PIN[id]?.small;
+  if (pin) return tierType(id, pin);
+  return slotType(id, s.small) ?? firstTier(id, [/^(body-?small|small|body-?2|text-?small)$/, /^(caption|utility|dense|compact-control|meta|footnote|helper)/]) ?? textType(id, s);
+}
+
+/** Text colour on a fill: the first candidate that reads at 4.5:1 there. */
+const AA = 4.5;
+function legible(fill: string | null, ...cands: (Tok | null)[]): Tok | null {
+  const bg = fill && HEX.test(fill) ? fill : "#ffffff";
+  return cands.find((t) => !!t && HEX.test(t.css) && contrast(t.css, bg) >= AA) ?? null;
+}
+
+/**
+ * The container a generic card's group sits in. When the radius or fill comes from a claimed card
+ * component, that component alone supplies the fill, edge, padding and text colour (never mixed
+ * across components, as in resolve.ts); otherwise the company's surface colour and card radius.
+ */
+interface Box { readonly bg: Tok | null; readonly edge: Tok | null; readonly radius: Tok | null; readonly pad: Tok | null; readonly fg: Tok | null }
+function boxOf(id: string, s: ResolvedSlots): Box {
+  const srTok: Tok | null = s.sr ? { k: s.sr.k, v: claimedAt(id, s.sr.k) as string | number, css: px(s.sr.v) } : null;
+  const comp = [s.sr?.k, s.surface?.k].find((k) => k?.startsWith("components."))?.replace(/\.[^.]+$/, "") ?? null;
+  if (!comp) return { bg: slotColor(id, s.surface), edge: null, radius: srTok, pad: null, fg: null };
+  const mine = (c: { k: string } | null) => !!c && c.k.startsWith(`${comp}.`);
+  const pad = mine(s.cardPad) && !/^0(px)?(\s+0(px)?)*$/.test(s.cardPad!.v) ? { k: s.cardPad!.k, v: claimedAt(id, s.cardPad!.k) as string, css: s.cardPad!.v } : null;
+  return {
+    bg: mine(s.surface) ? slotColor(id, s.surface) : null,
+    edge: mine(s.cardBorder) ? { k: s.cardBorder!.k, v: claimedAt(id, s.cardBorder!.k) as string, css: s.cardBorder!.v } : null,
+    radius: mine(s.sr) ? srTok : null,
+    pad,
+    fg: mine(s.cardFg) ? slotColor(id, s.cardFg) : null,
+  };
+}
+
+/** A button's 1px edge colour when the component claims one (Kurly's and Upbit's white controls are drawn by it). */
+function buttonEdge(id: string, b: ButtonSlot | null): Tok | null {
+  if (!b) return null;
+  const v = claimedAt(id, `components.${b.k}.border`);
+  const m = typeof v === "string" ? v.match(/^\s*1px\b[^#]*?(#[0-9a-f]{6})\b/i) : null;
+  return m ? { k: `components.${b.k}.border`, v: v as string, css: m[1].toLowerCase() } : null;
+}
+const buttonG = (b: BtnToks | null, edge: Tok | null, label: string, part: number) =>
+  b ? el("span", { cls: `sq-ex-btn${edge ? " sq-ex-edge" : ""}`, css: css({ ...b, borderColor: edge }), text: label, part }) : null;
+
+/* ---------- faces ---------- */
 
 type Faces = Readonly<Record<string, string>>;
 
+/** Open faces the landing root loads for real (landing.tsx puts --font-r11-pretendard on .sq-root). */
+const ROOT_FACES: readonly string[] = ["Pretendard", "Pretendard Variable"];
+
+/**
+ * The face a card is set in (AGENTS.md, G3), per (company, page language):
+ *  1. a face this page loads for the claimed one (hero-section.tsx FACES: Inter on /, Noto Sans JP
+ *     and Noto Sans CJK JP on /ja, Noto Sans TC on /zh-tw) — the brand face, shown;
+ *  2. an open face the landing root self-hosts (Pretendard), OFL, whose file carries the page
+ *     language's script (Latin + Hangul only: never on /ja or /zh-tw) — shown;
+ *  3. a substitute measured for this page's script and self-hosted by the site, set from its own
+ *     DESIGN.md record and named as a substitute in the trace;
+ *  4. else the page face, and the trace says the brand face isn't applied.
+ */
 function faceOf(id: string, s: ResolvedSlots, faces: Faces, locale: SiteLocale) {
   const name = s.famT?.v ?? null;
-  const loaded = name ? faces[name] : undefined;
-  if (name && loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } as Tok };
-  // not loadable here: a substitute measured for this page's script and self-hosted by the site, set
-  // from its own DESIGN.md record and named as a substitute in the trace (AGENTS.md G3); else the page face
+  if (!name) return { name, shown: false, tok: null };
+  const loaded = faces[name];
+  if (loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } as Tok };
   const script = PAGE_SCRIPT[locale];
-  const sub = name ? getSubstitutes(id).find((x) => x.brandFamily === name && x.script === script) : undefined;
+  const open = OPEN_FACES[name];
+  if (open && ROOT_FACES.includes(name) && lookupFont(name).license === "OFL" && open.scripts.includes(script)) {
+    return { name, shown: true, tok: { k: s.famT!.k, v: name, css: `var(${open.cssVar}), ${PAGE_STACK[locale]}` } as Tok };
+  }
+  const sub = getSubstitutes(id).find((x) => x.brandFamily === name && x.script === script);
   const host = sub ? SUB_FACES[sub.family] : undefined;
-  if (name && sub && host?.scripts.includes(script)) {
+  if (sub && host?.scripts.includes(script)) {
     const tok: Tok = { k: `fonts.faces.${name}.substitutes.${script}`, v: sub.family, css: `var(${host.cssVar}), ${PAGE_STACK[locale]}` };
     return { name, shown: false, sub: sub.family, tok };
   }
   return { name, shown: false, tok: null };
 }
 
+/* ---------- the cards ---------- */
+
 function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale: SiteLocale): { root: CardNode; face: ChatCard["face"] } {
   const s = slotsOf(id)!;
   const f = faceOf(id, s, faces, locale);
-  const canvas = slotColor(s.canvas), fg = slotColor(s.fg), body = slotColor(s.body), primary = slotColor(s.primary);
+  const canvas = slotColor(id, s.canvas), fg = slotColor(id, s.fg), body = slotColor(id, s.body), primary = slotColor(id, s.primary);
   const btn = buttonToks(id, s.btn);
   const head = slotType(id, s.head), bod = slotType(id, s.bod);
   const srTok: Tok | null = s.sr ? { k: s.sr.k, v: claimedAt(id, s.sr.k) as string | number, css: px(s.sr.v) } : null;
   const rootCss = css({ background: canvas, color: fg, fontFamily: f.tok });
+  const page = canvas?.css ?? null;
   let root: CardNode;
 
   if (kind === "transfer" || kind === "home") {
-    // Toss: a centred success card (transfer) or a list screen (home), product button tds-button.
-    // Row labels take Toss's body grey, not its muted grey: muted on the surface is 2.8:1.
-    const surface = slotColor(s.surface);
-    const title = tierToks(id, "h3") ?? head, small = tierToks(id, "body-small") ?? bod;
+    // A centred success card (transfer) or a list screen (home, the CLI's Toss screen): rows on the
+    // company's surface. Toss is round 11's card, unchanged: its title is pinned to h3, its rows take
+    // body-small, and its row labels take its body grey (its muted grey on the surface is 2.8:1).
+    // The check takes the primary colour only where it reads at 3:1 on the canvas (KakaoBank's
+    // yellow #ffe300 doesn't, so its receipt has no mark).
+    const box = boxOf(id, s);
+    const fill = box.bg?.css ?? page;
+    const title = titleType(id) ?? head, small = smallType(id, s), text = textType(id, s);
+    const ink = legible(fill, box.fg, fg), soft = legible(fill, body, box.fg, fg);
     const rows = (a: number) =>
-      el("div", { cls: "sq-ex-rows", css: css({ background: surface, borderRadius: srTok }), part: a },
-        t.rows.map(([k, v]) => el("div", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, body), text: k }), el("span", { css: typeCss(kind === "home" ? bod : small, fg), text: v })])));
+      el("div", { cls: "sq-ex-rows", css: css({ background: box.bg, borderRadius: box.radius }), part: a },
+        t.rows.map(([k, v]) => el("div", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(kind === "home" ? text : small, ink), text: v })])));
+    const mark = primary && page && contrast(primary.css, page) >= 3 ? primary : null;
     root = kind === "transfer"
       ? el("div", { cls: "sq-ex-col", css: rootCss }, [
-          primary ? el("span", { cls: "sq-ex-ic", css: css({ color: primary }), icon: "check", part: 1 }) : null,
-          el("h3", { css: typeCss(title, fg), text: t.title, part: 2 }),
-          el("p", { css: typeCss(bod, body), text: t.sub, part: 2 }),
+          mark ? el("span", { cls: "sq-ex-ic", css: css({ color: mark }), icon: "check", part: 1 }) : null,
+          el("h3", { css: typeCss(title, legible(page, fg)), text: t.title, part: 2 }),
+          el("p", { css: typeCss(text, legible(page, body, fg)), text: t.sub, part: 2 }),
           rows(3),
-          button(btn, t.cta, 4),
+          buttonG(btn, buttonEdge(id, s.btn), t.cta, 4),
         ])
       : el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
-          el("h3", { css: typeCss(title, fg), text: t.title, part: 1 }),
-          el("p", { css: typeCss(small, body), text: t.sub, part: 1 }),
+          el("h3", { css: typeCss(title, legible(page, fg)), text: t.title, part: 1 }),
+          el("p", { css: typeCss(small, legible(page, body, fg)), text: t.sub, part: 1 }),
           rows(2),
           button(btn, t.cta, 3),
         ]);
@@ -303,12 +554,12 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale
         button(btn, t.cta, 4),
       ]),
     ]);
-  } else {
+  } else if (kind === "job") {
     // 104: a job card in its company-card container (fill, 1px edge colour, radius, padding). Its one
     // secondary grey (muted) is 4.06:1 on the canvas, so secondary text is the foreground at body weight.
     const label = tierToks(id, "label") ?? bod;
     const cardKey = (s.sr?.k ?? "").replace(/\.radius$/, "");
-    const cardBg = s.surface && s.surface.k.startsWith(cardKey) ? slotColor(s.surface) : null;
+    const cardBg = s.surface && s.surface.k.startsWith(cardKey) ? slotColor(id, s.surface) : null;
     const edge: Tok | null = s.cardBorder ? { k: s.cardBorder.k, v: claimedAt(id, s.cardBorder.k) as string, css: s.cardBorder.v } : null;
     const pad = cardKey ? claimedAt(id, `${cardKey}.padding`) : undefined;
     const padTok: Tok | null = typeof pad === "string" && /px/.test(pad) ? { k: `${cardKey}.padding`, v: pad, css: pad } : null;
@@ -321,6 +572,57 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale
         button(btn, t.cta, 4),
       ]),
     ]);
+  } else if (kind === "product") {
+    // Commerce: a list item — the OmD shopping-bag prop on the company's product tile (its surface
+    // and card radius, from one component when a card component supplies them) beside the item and
+    // one line, then price and delivery rows and the buy button. A row, not a stacked tile, so the
+    // card fits the hero's fixed-height column on every locale.
+    const box = boxOf(id, s);
+    const title = titleType(id), text = textType(id, s), small = smallType(id, s);
+    const ink = legible(page, fg), soft = legible(page, body, fg);
+    const prop = getProp("shopping-bag");
+    root = el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
+      el("div", { cls: "sq-ex-item" }, [
+        prop ? el("div", { cls: "sq-ex-media", css: css({ background: box.bg, borderRadius: box.radius }), part: 1 }, [
+          el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" } }),
+        ]) : null,
+        el("div", { cls: "sq-ex-itxt" }, [
+          el("h3", { css: typeCss(title, ink), text: t.title, part: 1 }),
+          el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }),
+        ]),
+      ]),
+      el("div", { cls: "sq-ex-kv", part: 3 },
+        t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(text, ink), text: v })]))),
+      buttonG(btn, buttonEdge(id, s.btn), t.cta, 4),
+    ]);
+  } else {
+    // booking / task / article: one group in the company's card container when it claims one — a
+    // card component's own fill, edge, padding and text colour, or its surface colour (whose inner
+    // padding is OmD's, as round 11's rows panel) — else straight on the canvas.
+    const box = boxOf(id, s);
+    const framed = !!(box.bg && box.bg.css !== page) || !!box.edge;
+    const fill = (framed ? box.bg?.css : null) ?? page;
+    const ink = legible(fill, box.fg, fg), soft = legible(fill, body, box.fg, fg), meta = legible(fill, slotColor(id, s.meta), body, box.fg, fg);
+    const title = titleType(id), text = textType(id, s), small = smallType(id, s);
+    const strong = slotType(id, s.label) ?? text;
+    const boxCss = framed ? css({ background: box.bg, borderColor: box.edge, borderRadius: box.radius, padding: box.pad }) : {};
+    const cls = `sq-ex-card${framed && box.edge ? " sq-ex-edge" : ""}${framed && !box.pad ? " sq-ex-inset" : ""}`;
+    const cta = buttonG(btn, buttonEdge(id, s.btn), t.cta, 4);
+    const kids: (CardNode | null)[] = kind === "booking"
+      ? [
+          el("h3", { css: typeCss(title, ink), text: t.title, part: 1 }),
+          el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }),
+          el("div", { cls: "sq-ex-kv", part: 3 },
+            t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(strong, ink), text: v })]))),
+          cta,
+        ]
+      : [
+          t.tags.length ? el("p", { css: typeCss(small, meta), text: t.tags.join(" · "), part: 1 }) : null,
+          el("h3", { css: typeCss(title, ink), text: t.title, part: 2 }),
+          el("p", { css: typeCss(text, soft), text: t.sub, part: 3 }),
+          cta,
+        ];
+    root = el("div", { cls: "sq-ex-pad", css: rootCss }, [el("div", { cls, css: boxCss }, kids)]);
   }
   return { root, face: { name: f.name, shown: f.shown, ...(f.sub ? { sub: f.sub } : {}) } };
 }
@@ -380,14 +682,59 @@ function finish(id: string, kind: CardKind, file: string, read: string, t: CardT
   return { id, kind, file, read, root, parts: parts(root), source, lines: source.split("\n").length, tokens: tokCount(root), face };
 }
 
+/** The installed catalog copy the Read step opens. */
+const readPath = (id: string) => `.claude/data/references/${id}/DESIGN.md`;
+
 /**
- * The hero chat's card for a locale. `faces` maps a claimed UI face to the CSS family the page
+ * One company's card in a locale's chat. `faces` maps a claimed UI face to the CSS family the page
  * loads for it (hero-section.tsx): a face the page doesn't load is left unset and named in the trace.
  */
+export function getCompanyCard(locale: SiteLocale, id: string, faces: Faces = {}): ChatCard {
+  const k = getR11Hero(locale).chat.kinds[KIND[id]];
+  return finish(id, KIND[id], k.file, readPath(id), k.card, faces, locale);
+}
+
+/** The card a locale's chat opens on (its representative company). */
 export function getChatCard(locale: SiteLocale, faces: Faces = {}): ChatCard {
-  const id = CHAT_COMPANY[locale];
-  const t = getR11Hero(locale).chat;
-  return finish(id, KIND[id], t.file, `.claude/data/references/${id}/DESIGN.md`, t.card, faces, locale);
+  return getCompanyCard(locale, CHAT_COMPANY[locale], faces);
+}
+
+/** The companies a locale's chat can show: its opening company, then its keyboard's (verified, with a card kind). */
+export function chatIds(locale: SiteLocale, capIds: readonly string[]): string[] {
+  return [...new Set([CHAT_COMPANY[locale], ...capIds])].filter((id) => !!KIND[id] && REFERENCE_QUALITY_BY_ID[id]?.status === "verified_v2");
+}
+
+/**
+ * Every chat the hero can show on a locale (round 12): the opening company and each keycap's,
+ * named as its keycap names it (`caps`; the opening company, when it has no cap, by the same rule,
+ * data.server.ts capData), with its item-page link.
+ */
+export function getHeroChats(
+  locale: SiteLocale,
+  caps: readonly { readonly id: string; readonly n: string; readonly nLang: string }[],
+  faces: Faces = {},
+): { initial: string; chats: Record<string, HeroChat> } {
+  const copy = getR11Hero(locale).chat;
+  const named = new Map(caps.map((c) => [c.id, c]));
+  const chats: Record<string, HeroChat> = {};
+  for (const id of chatIds(locale, caps.map((c) => c.id))) {
+    const nm = named.get(id) ?? capData(id, locale);
+    if (!nm) continue;
+    const k = copy.kinds[KIND[id]];
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- the printed source stays on the server
+    const { source, ...card } = finish(id, KIND[id], k.file, readPath(id), k.card, faces, locale);
+    const r = REGISTRY_BY_ID[id];
+    chats[id] = {
+      card,
+      prompt: withName(k.prompt, nm.n, locale),
+      label: withName(k.label, nm.n, locale),
+      think: withName(k.think, nm.n, locale),
+      name: nm.n,
+      nLang: nm.nLang,
+      href: detailHrefFor(locale, id, hasKoDetail(r.country, REFERENCE_QUALITY_BY_ID[id]?.status as QualityStatus | undefined)),
+    };
+  }
+  return { initial: CHAT_COMPANY[locale], chats };
 }
 
 /** The CLI apply step's screen: the CLI's own next step on a Toss-inspired project, in every locale. */
