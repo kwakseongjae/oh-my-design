@@ -16,7 +16,13 @@
     },
     "source": "Codex p1-A-r3"
   },
-  "video": null,
+  "video": {
+    "mp4": "/hangul/before-after.mp4",
+    "poster": "/hangul/before-after-poster.webp",
+    "width": 1280,
+    "height": 720,
+    "seconds": 12
+  },
   "measured": {
     "services": 67,
     "date": "2026-07",
