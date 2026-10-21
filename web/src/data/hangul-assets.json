@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "note": "/hangul launch assets (docs/HANGUL_LAUNCH_PLAN_2026-10-21.md H3). Files live in web/public/hangul/. Read through web/src/lib/hangul/assets.ts; the page renders a section only when its entry is filled, never a placeholder.",
+  "beforeAfter": null,
+  "video": null,
+  "measured": null
+}
