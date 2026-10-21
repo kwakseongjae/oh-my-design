@@ -8,7 +8,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>讓 AI 程式助理依照專案自己的 DESIGN.md 工作。</strong> 內含引導式安裝與 doctor、10 個公開 skills、20 個專業角色，以及 500 個以上經過品質分級的企業參考。使用本機工作流程不需要另外申請 API 金鑰或架設 MCP 伺服器。
+  <strong>讓 AI 程式助理依照專案自己的 DESIGN.md 工作。</strong> 內含引導式安裝與 doctor、11 個公開 skills、20 個專業角色，以及 500 個以上經過品質分級的企業參考。使用本機工作流程不需要另外申請 API 金鑰或架設 MCP 伺服器。
 </p>
 
 <p align="center">
@@ -133,19 +133,19 @@ CLI 只負責安裝與檢查套件。之後的設計工作都以自然語言交�
 | **Claude Code** | `--agent claude-code` (預設) | 完整套件 — `.claude/` 下的 skills、20 個子代理、hooks、data |
 | **Codex** | `--agent codex` | `.agents/skills/` 技能、`.codex/agents/` 內嵌子代理角色，以及 `.codex/data/` 本機參考目錄 |
 | **OpenCode** | `--agent opencode` | 專案：`.opencode/{skills,agents,data}/` 內的技能、原生子代理與參考目錄；全域：`~/.config/opencode/{skills,agents,data}/` 內的相同套件 |
-| **Cursor** | `--agent cursor` | `.cursor/skills/` 中 30 個相容 Agent Skills、精簡 `.cursor/rules/omd-design.mdc` bootstrap 與共用 `.claude/data` 目錄；不安裝獨立子代理定義或 hooks |
+| **Cursor** | `--agent cursor` | `.cursor/skills/` 中 31 個相容 Agent Skills、精簡 `.cursor/rules/omd-design.mdc` bootstrap 與共用 `.claude/data` 目錄；不安裝獨立子代理定義或 hooks |
 
 預設會安裝到所有偵測到的 AI 程式助理。若要以非互動方式安裝單一通道，請執行 `npx oh-my-design-cli@latest install-skills --agent <name> --all`。
 
 ### Cursor 的正確使用路徑
 
-Cursor 2.4+ 會從 `.cursor/skills/` 載入 30 個相容 OmD Agent Skills。安裝後重新啟動 Cursor，以自然語言要求建立設計系統，或直接呼叫 `/omd-init`。常駐 rule 維持保留中的使用者修正、已採用 Bound System／standalone DESIGN.md、框架預設值的順序，以及 unknown-as-absence。
+Cursor 2.4+ 會從 `.cursor/skills/` 載入 31 個相容 OmD Agent Skills。安裝後重新啟動 Cursor，以自然語言要求建立設計系統，或直接呼叫 `/omd-init`。常駐 rule 維持保留中的使用者修正、已採用 Bound System／standalone DESIGN.md、框架預設值的順序，以及 unknown-as-absence。
 
 舊版 Cursor 可使用 `--cursor-rule-only` 安裝既有 rule + 目錄相容模式。OmD 的獨立專業子代理定義與 hooks 不會安裝到 Cursor。
 
 ## 套件內容
 
-**10 個公開 skills · 20 個子代理角色 · 500 個以上附品質與依據狀態的參考 · 啟動 hooks。** 安裝程式會寫入完整套件的 31 個 skills：公開 skills（`omd-init` / `omd-apply` / `omd-autopilot` / `omd-feel` / `omd-restraint` / `omd-slop-audit` / `omd-humanize` / `omd-landing` / `omd-shader-hero` / `omd-cjk-type-shader`），加上工作流程自行呼叫的內部 skills（偏好迴圈、shim 同步、審查與寫作角色、即時擷取、實驗）。內部 skills 一樣會安裝並正常運作，只是不列在清單上。Cursor 會取得 30 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
+**11 個公開 skills · 20 個子代理角色 · 500 個以上附品質與依據狀態的參考 · 啟動 hooks。** 安裝程式會寫入完整套件的 32 個 skills：公開 skills（`omd-init` / `omd-apply` / `omd-autopilot` / `omd-feel` / `hangul` / `omd-restraint` / `omd-slop-audit` / `omd-humanize` / `omd-landing` / `omd-shader-hero` / `omd-cjk-type-shader`），加上工作流程自行呼叫的內部 skills（偏好迴圈、shim 同步、審查與寫作角色、即時擷取、實驗）。內部 skills 一樣會安裝並正常運作，只是不列在清單上。Cursor 會取得 31 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
 
 每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/<id>/design.md`，AI 程式助理可以直接讀取。完整的 skill 與 agent 參考文件：**[oh-my-design.kr/docs/zh-tw](https://oh-my-design.kr/docs/zh-tw)**。
 
