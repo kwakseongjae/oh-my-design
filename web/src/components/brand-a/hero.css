@@ -44,14 +44,12 @@
 .sq-k3-ring.sq-on{opacity:1}
 .sq-k3-name{position:absolute;transform:translate(-50%,-100%);padding:5px 12px;border-radius:var(--sq-r-pill);background:var(--sq-ink);color:var(--sq-paper);font-size:15px;font-weight:650;white-space:nowrap;pointer-events:none}
 
-/* ---- the chat: the prompt, the trace, then the example card filling the rest of the column ---- */
+/* ---- the chat: the prompt, the trace, then the example — one finished component centred on OmD's
+   stage (agent-trace.css .sq-ex), which fills the rest of the column ---- */
 .sq-chat{display:flex;flex-direction:column;gap:16px;height:100%;padding:24px 28px 28px}
 .sq-chat-log{display:flex;flex-direction:column;gap:12px;min-width:0}
 .sq-chat .sq-ex{flex:1}
-/* in the hero the card's content starts at the top of its frame, so more of it is above the fold */
-.sq-chat :is(.sq-ex-col,.sq-ex-pad){justify-content:flex-start}
-.sq-chat .sq-ex-col{padding-top:24px}
-.sq-chat.sq-pre .sq-at,.sq-chat.sq-pre .sq-ex{visibility:hidden}
+.sq-chat.sq-pre .sq-at,.sq-chat.sq-pre .sq-ex>*{visibility:hidden}
 /* round 12: the shown company's item page — a quiet text link under the card, in the trace's ink and
    size, never a second filled action (the hero's one accent stays on its main action). On the
    fixed-height stage it sits in the chat's bottom gutter, so it takes no room from the card
@@ -60,21 +58,26 @@
 .sq-chat-go a{display:inline-block;font-size:15px;line-height:1.4;color:var(--sq-ink-2);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:3px;border-radius:var(--sq-r-inner);transition:color .15s,text-decoration-color .15s}
 .sq-chat-go a:hover{color:var(--sq-ink);text-decoration-color:currentColor}
 .sq-chat-go a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-chat.sq-pre .sq-ex{opacity:0} /* so the rewind (pre off, card hidden) never fades a full frame out */
+.sq-chat.sq-pre .sq-ex>*{opacity:0} /* so the rewind (pre off, card hidden) never fades a full component out */
 .sq-off{display:none!important}
 
-/* A short card frame (901–1100px wide, or a two-line face note): OmD's own spacing tightens so no
-   brand value gets squeezed. Measured 2026-10-21 over every card, 4 locales, 1440/1024/901: the
-   round-11 Toss card needs 310px and the column gave it 267–291px at 901–1024 (its 56px button was
-   being flexed down); with this, none of the 138 overflows, and at 1440 no frame is below 310. */
+/* A short stage (901–1100px wide, where the trace's Read path takes two lines): OmD's own spacing
+   inside the component tightens so no brand value gets squeezed or cut — never a claimed padding,
+   size or height. Measured 2026-10-21 (round 13) over every card on the 4 locales: 138 desktop cases
+   at 1440/1024/901 (stage 335–372px tall) and 77 at 390 (the phone keyboard's 35, plus the 42
+   wide-keyboard picks shown after a resize): no component leaves its stage, none starts above it. */
 @media (min-width:901px){
   .sq-chat .sq-ex{container-type:size}
-  @container (max-height:309px){
-    .sq-chat .sq-ex-col{padding-top:10px;padding-bottom:10px}
-    .sq-chat .sq-ex-pad{padding-top:12px;padding-bottom:12px}
-    .sq-chat .sq-ex-ic{width:36px;height:36px;margin-bottom:0}
-    .sq-chat .sq-ex-ic svg{width:32px;height:32px}
-    .sq-chat .sq-ex-rows{margin:8px 0 10px;padding-top:10px;padding-bottom:10px}
+  @container (max-height:350px){
+    .sq-chat :is(.sq-ex-receipt,.sq-ex-home){padding-top:18px;padding-bottom:18px}
+    .sq-chat .sq-ex-ic{width:32px;height:32px;margin-bottom:2px}
+    .sq-chat .sq-ex-ic svg{width:28px;height:28px}
+    .sq-chat .sq-ex-rows{margin:8px 0 12px;padding-top:10px;padding-bottom:10px}
+    .sq-chat :is(.sq-ex-tk,.sq-ex-list).sq-ex-inset{padding-top:16px;padding-bottom:16px}
+    .sq-chat .sq-ex-li{padding:7px 0}
+    .sq-chat .sq-ex-items{margin-bottom:10px}
+    .sq-chat .sq-ex-tk{gap:2px}
+    .sq-chat .sq-ex-tk>.sq-ex-btn{margin-top:8px}
   }
 }
 @media (prefers-reduced-motion:reduce){

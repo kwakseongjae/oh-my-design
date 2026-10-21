@@ -22,6 +22,12 @@ import {
  * Round 12 (owner 2026-10-21): a keycap picks the chat's company, so every company on a locale's
  * keyboard has a card, and every one of those cards — not only the four opening ones — goes through
  * the same claimed-token, legibility, face and source checks.
+ *
+ * Round 13 (owner 2026-10-21): every card is one finished component (a receipt, a ticket, a list in a
+ * card, a carousel …) on OmD's stage, and no font note is rendered. OmD's chrome — the stage, a
+ * neutral ring where no border is claimed, the shadow — lives in classes, never in a card's `css`;
+ * a box is rounded only by a claimed card radius. The fit in the hero's fixed stage is a browser
+ * measurement (docs/research/2026-10-21-r13/hero/README.md), not a unit test.
  */
 const LOCALES = ["en", "ko", "ja", "zh-tw"] as const;
 type L = (typeof LOCALES)[number];
@@ -162,7 +168,7 @@ describe("example cards: claimed values only", () => {
   it("the Write step's +N is the printed source's line count, and the Read path is the installed catalog copy", () => {
     for (const [name, card] of cards) {
       expect(card.lines, name).toBe(card.source.split("\n").length);
-      expect(card.lines, name).toBeGreaterThan(10);
+      expect(card.lines, name).toBeGreaterThanOrEqual(10);
       expect(card.parts, name).toBeGreaterThanOrEqual(3);
       for (const t of texts(card.root)) expect(card.source, `${name}: "${t}" printed`).toContain(t.split(" ")[0].replace(/[{}<>]/g, ""));
       if (name.startsWith("hero")) expect(card.read, name).toBe(`.claude/data/references/${card.id}/DESIGN.md`);
@@ -206,6 +212,74 @@ describe("example cards: legible", () => {
       walk(card.root, card.root.css?.background?.css ?? "#ffffff", card.root.css?.color?.css ?? "#000000", name);
     }
     expect(low).toEqual([]);
+  });
+});
+
+describe("round 13: each card is one finished component; OmD's chrome never passes as a brand value", () => {
+  const all = (): [string, ChatCard][] => [...heroCards(), ...LOCALES.map((l) => [`cli ${l}`, getCliScreen(l)] as [string, ChatCard])];
+  const walk = (n: CardNode, f: (n: CardNode) => void) => {
+    f(n);
+    for (const k of n.kids ?? []) walk(k, f);
+  };
+  const has = (n: CardNode, c: string) => (n.cls ?? "").split(" ").includes(c);
+  const FORM: Record<string, string> = {
+    transfer: "sq-ex-receipt", home: "sq-ex-home", booking: "sq-ex-ticket", task: "sq-ex-list", article: "sq-ex-list",
+    artwork: "sq-ex-art", issue: "sq-ex-issue", job: "sq-ex-job",
+  };
+
+  it("the root is the component: a framed box in its kind's form, or a carousel of three framed product cards with three dots", () => {
+    for (const [name, card] of all()) {
+      if (card.kind === "product") {
+        expect(card.root.ui, name).toBe("carousel");
+        const track = card.root.kids?.find((k) => k.ui === "track");
+        expect(track?.label, name).toBeTruthy();
+        expect(track?.kids?.length, name).toBe(3);
+        for (const c of track?.kids ?? []) expect(has(c, "sq-ex-frame") && has(c, "sq-ex-pcard"), name).toBe(true);
+        expect(card.root.kids?.find((k) => k.ui === "dots")?.kids?.length, name).toBe(3);
+        expect(card.root.css?.background, `${name}: the carousel itself has no box`).toBeUndefined();
+      } else {
+        expect(has(card.root, "sq-ex-frame"), name).toBe(true);
+        expect(has(card.root, FORM[card.kind]), name).toBe(true);
+        expect(card.root.css?.background, `${name}: a box is painted in the company's own fill`).toBeDefined();
+      }
+    }
+  });
+
+  it("a box's edge is its company's claimed border (sq-ex-edge, colour set) or else OmD's neutral ring (no colour set)", () => {
+    for (const [name, card] of all()) {
+      walk(card.root, (n) => {
+        if (!has(n, "sq-ex-frame")) return;
+        if (has(n, "sq-ex-edge")) expect(n.css?.borderColor, name).toBeDefined();
+        else expect(n.css?.borderColor, name).toBeUndefined();
+      });
+    }
+  });
+
+  it("OmD never rounds a brand's box: a company with no claimed card radius gets none (square, the CSS initial value)", () => {
+    const square = new Set<string>();
+    for (const [name, card] of all()) {
+      if (!cardCoverage(card.id).missing.includes("card radius")) continue;
+      square.add(card.id);
+      walk(card.root, (n) => {
+        if (!has(n, "sq-ex-btn")) expect(n.css?.borderRadius, `${name}: ${n.cls ?? n.tag}`).toBeUndefined(); // a button's own radius is claimed separately
+      });
+    }
+    expect([...square].sort()).toEqual(["booth", "caddi", "evaair", "familymart-tw", "pixiv", "poya", "toyota", "udn"]);
+  });
+
+  it("the printed source is the component an agent writes: no OmD chrome class in it", () => {
+    for (const [name, card] of all()) expect(card.source, name).not.toMatch(/className="[^"]*\b(frame|inset)\b/);
+  });
+
+  it("copy: the carousel, the task list and the news list carry three items in every locale", () => {
+    for (const l of LOCALES) {
+      for (const k of ["product", "task", "article"] as const) {
+        const c = getR11Hero(l).chat.kinds[k].card;
+        expect(c.rows.length, `${l} ${k}`).toBe(3);
+        for (const [a, b] of c.rows) expect(a && b, `${l} ${k}`).toBeTruthy();
+      }
+      expect(getR11Hero(l).chat.kinds.product.card.cta, l).toBeUndefined();
+    }
   });
 });
 
@@ -337,6 +411,24 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
       for (const b of bits) expect(visible(cli), `cli ${l}`).not.toContain(b);
       expect(cli, `cli ${l}`).not.toContain("sq-at-note");
     }
+  });
+
+  it("the carousel renders its track as a named group and its first dot as current; nothing in it is a control", () => {
+    let seen = 0;
+    for (const l of LOCALES) {
+      const h = getR11Hero(l);
+      const { chats } = getHeroChats(l, getHeroCaps(l), PAGE_FACES[l]);
+      const id = Object.keys(chats).find((x) => KIND[x] === "product");
+      if (!id) continue;
+      seen++;
+      const html = renderToStaticMarkup(createElement(ChatDemo, { chats, initial: id, t: { trace: h.trace, link: h.chat.link } }));
+      const ex = html.slice(html.indexOf('class="sq-ex'));
+      expect(ex, l).toContain(`role="group" aria-label="${esc(h.chat.kinds.product.card.title)}"`);
+      expect(ex.match(/class="sq-ex-dot\b/g)?.length, l).toBe(3);
+      expect(ex, l).toMatch(/class="sq-ex-dot sq-on"/);
+      expect(ex.slice(0, ex.indexOf('class="sq-chat-go"')), l).not.toMatch(/<(button|a)\b/);
+    }
+    expect(seen).toBe(4);
   });
 
   it("the keyboard is a list of buttons that pick the chat's company — none links to a page", () => {

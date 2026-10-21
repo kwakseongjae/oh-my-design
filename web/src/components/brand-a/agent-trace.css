@@ -1,7 +1,9 @@
 /* Round 11 agent trace + example-card layout (agent-trace.tsx), shared by the hero chat and the CLI
    apply step. The trace sits on the site's sizes (15 for rows, 16 in the host's bubble); the card is
    a content object whose colours, sizes, radii and heights are its company's tokens (inline styles
-   from chat-data.server.ts) — these classes only lay it out. No outlines: rows separate by space. */
+   from chat-data.server.ts) — these classes only lay it out. No outlines in the trace: rows separate
+   by space. Round 13: the card is one finished component on OmD's stage; the chrome rule (what is
+   OmD's here, what is the company's) is written above .sq-ex below. */
 .sq-at{min-width:0}
 .sq-at-list{list-style:none;display:grid;gap:2px;margin:0;padding:0}
 .sq-at-step{min-width:0;animation:sq-at-rise .32s cubic-bezier(.2,.8,.2,1) both}
@@ -29,49 +31,114 @@ button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--
 .sq-shim{background:linear-gradient(90deg,var(--sq-ink-2) 0%,var(--sq-ink-2) 40%,var(--sq-n300) 50%,var(--sq-ink-2) 60%,var(--sq-ink-2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sq-shim 1.6s linear infinite}
 .sq-at-l.sq-shim *{color:transparent}
 
-/* a message (the user's prompt, the one Iris bubble) and the example card's frame: the frame is
-   the site's (card radius, a hairline ring like the stage's); its fill and everything inside are the
-   company's — the card's root node paints its canvas over the whole frame */
+/* a message (the user's prompt, the one Iris bubble) */
 .sq-msg-u{display:flex;justify-content:flex-end}
 .sq-bub{max-width:85%;padding:11px 18px;border-radius:var(--sq-r-bubble) var(--sq-r-bubble) var(--sq-r-inner) var(--sq-r-bubble);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;line-height:1.5}
-.sq-ex{min-height:0;border-radius:var(--sq-r-card);overflow:hidden;box-shadow:0 0 0 1px var(--sq-guide-2);transition:opacity .35s ease}
-.sq-ex-hide{opacity:0}
-/* the card is set in its root's face (a brand face the page loads, else the page face): the site's
-   :lang() face rules would otherwise reach every element inside it */
-.sq-ex :is(div,p,span,ul,li){font-family:inherit}
 
-/* the example card: layout only */
-.sq-ex-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:100%;padding:28px 32px;text-align:center}
-.sq-ex-col.sq-ex-start{align-items:flex-start;text-align:left}
-.sq-ex-pad{display:flex;flex-direction:column;justify-content:center;height:100%;padding:24px}
-.sq-ex-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:100%}
+/* ---- the example: one finished component on OmD's stage (round 13, owner 2026-10-21) ----
+   Brand values are inline styles, each a claimed token of the company (chat-data.server.ts). Every
+   class below is OmD's presentation or layout and carries none:
+   - .sq-ex, the stage: the white panel (paper, a hairline, the site's card radius), its padding,
+     and the component centred in it. margin:auto, so a component taller than the panel starts at
+     the top instead of losing its top edge;
+   - .sq-ex-frame, a component's box: one neutral shadow under it and a neutral 1px ring around it
+     where its company claims no border for it; .sq-ex-edge draws the claimed border instead (1px,
+     its colour inline) and keeps only the shadow. Both neutrals are OmD ink at low alpha, so they
+     read alike on any brand fill and never stand in for a brand colour;
+   - corners are never OmD's: border-radius comes inline from a claimed card radius, else it stays
+     unset (square, the CSS initial value), as journey/screens.css does;
+   - layout: gaps, alignment, widths, the inner padding of a box that claims none (.sq-ex-inset and
+     the forms' own), the carousel's card width, the dots' size, the ticket's perforation (its
+     dashes take a claimed line colour inline, else .sq-ex-perf-n's neutral). */
+.sq-ex{--sq-ex-ring:0 0 0 1px rgba(19,19,26,.14);--sq-ex-lift:0 1px 2px rgba(19,19,26,.06),0 12px 28px -12px rgba(19,19,26,.22);display:flex;flex-direction:column;min-width:0;min-height:0;padding:16px;line-height:normal;border-radius:var(--sq-r-card);overflow:hidden;background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2)}
+/* the stage stays; only the component waits for the Write step (.sq-ex-hide) and fades in */
+.sq-ex>*{flex:none;margin:auto;max-width:100%;transition:opacity .35s ease}
+.sq-ex-hide>*{opacity:0}
+/* the component is set in its root's face (a brand face the page loads, else the page face): the
+   site's :lang() face rules would otherwise reach every element inside it */
+.sq-ex :is(div,p,span,ul,li){font-family:inherit}
+/* an unclaimed line height is the face's own (normal, the CSS initial value), not the page's leading */
+.sq-ex :is(p,ul,li){margin:0;padding:0}
+.sq-ex ul{list-style:none}
+/* Japanese breaks at phrase boundaries, as the site's own ja headings do (chrome.css) */
+.sq-ex :is(p,span):lang(ja){word-break:auto-phrase}
+
+/* chrome: the frame and the claimed edge */
+.sq-ex-frame{box-shadow:var(--sq-ex-ring),var(--sq-ex-lift)}
+.sq-ex-frame.sq-ex-edge{box-shadow:var(--sq-ex-lift)}
 .sq-ex-edge{border-style:solid;border-width:1px}
-.sq-ex-ic{display:grid;place-items:center;width:44px;height:44px;margin-bottom:6px}
-.sq-ex-ic svg{width:40px;height:40px}
+.sq-ex-btn{display:inline-flex;align-items:center;justify-content:center;max-width:100%;white-space:nowrap}
+
+/* transfer: a receipt card · home: the CLI's home-screen card. Their rows sit in a panel on the
+   company's surface (fill and radius inline; its inner padding OmD's) */
+.sq-ex-receipt,.sq-ex-home{display:flex;flex-direction:column;gap:4px;width:360px;padding:24px}
+.sq-ex-receipt{align-items:center;text-align:center}
+.sq-ex-home{align-items:flex-start}
+.sq-ex-ic{display:grid;place-items:center;width:40px;height:40px;margin-bottom:6px}
+.sq-ex-ic svg{width:36px;height:36px}
+.sq-ex-rows{display:grid;gap:6px;width:100%;margin:12px 0 16px;padding:14px 18px}
+.sq-ex-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;min-width:0;text-align:start}
+.sq-ex-row>span:last-child{text-align:end}
+.sq-ex-receipt>.sq-ex-btn,.sq-ex-home>.sq-ex-btn{align-self:stretch}
+
+/* booking: a ticket — the confirmation over a perforation, the stub of key/value pairs and the button */
+.sq-ex-ticket{display:flex;flex-direction:column;width:360px}
+.sq-ex-tk{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.sq-ex-tk.sq-ex-inset{padding:20px 24px}
+.sq-ex-ic-m{display:inline-block;width:.8em;height:.8em;margin-inline-end:.3em;vertical-align:-.06em}
+.sq-ex-ic-m svg{display:block;width:100%;height:100%}
+.sq-ex-perf{height:0;border-top:1px dashed}
+.sq-ex-perf-n{border-top-color:rgba(19,19,26,.22)}
+.sq-ex-kv2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;width:100%}
+.sq-ex-kvc{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sq-ex-tk>.sq-ex-btn{align-self:stretch;margin-top:12px}
+
+/* task · article: a list in a card — the heading, three items ruled in a claimed line colour (else
+   spaced), the button */
+.sq-ex-list{display:flex;flex-direction:column;width:380px}
+.sq-ex-list.sq-ex-inset{padding:20px 24px}
+.sq-ex-lh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+.sq-ex-items{display:flex;flex-direction:column;margin-bottom:14px}
+.sq-ex-li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-width:0;padding:9px 0}
+.sq-ex-li.sq-ex-ruled{border-top-style:solid;border-top-width:1px}
+.sq-ex-li>p{min-width:0}
+.sq-ex-meta{flex:none;white-space:nowrap}
+.sq-ex-clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.sq-ex-list>.sq-ex-btn{align-self:stretch}
+
+/* product: a carousel — the heading, a track of product cards (the third peeks past the edge;
+   scrollable sideways, snapping to a card) and dots that follow it. The track's padding keeps the
+   cards' ring and shadow inside its scroll box. The cards are the boxes; the carousel has none. */
+.sq-ex-carousel{display:flex;flex-direction:column;gap:12px;width:560px;min-width:0}
+.sq-ex-track{display:flex;gap:12px;min-width:0;margin:-8px -16px -16px -8px;padding:8px 16px 16px 8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:8px;scrollbar-width:none}
+.sq-ex-track::-webkit-scrollbar{display:none}
+.sq-ex-track:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-ex-pcard{flex:0 0 clamp(124px,40%,232px);display:flex;flex-direction:column;min-width:0;overflow:hidden;scroll-snap-align:start}
+.sq-ex-track .sq-ex-frame{--sq-ex-lift:0 1px 2px rgba(19,19,26,.06),0 6px 14px -8px rgba(19,19,26,.2)}
+.sq-ex-pmedia{display:grid;place-items:center;height:104px}
+.sq-ex-pmedia .sq-ex-prop img{display:block;width:auto;height:76px}
+.sq-ex-pbody{display:flex;flex-direction:column;gap:4px;padding:10px 12px 12px}
+.sq-ex-dots{display:flex;justify-content:center;gap:6px}
+.sq-ex-dot{width:6px;height:6px;border-radius:50%;opacity:.22;transition:opacity .2s}
+.sq-ex-dot.sq-on{opacity:1}
+
+/* artwork: the thumbnail (an OmD prop on the company's surface) beside the title, artist, counts,
+   tags and the follow button */
+.sq-ex-art{display:flex;align-items:flex-start;gap:16px;width:400px;padding:20px}
+.sq-ex-thumb{flex:none;display:grid;place-items:center;width:112px;height:112px}
+.sq-ex-thumb .sq-ex-prop img{display:block;width:auto;height:80px}
+.sq-ex-artx{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.sq-ex-stats{display:flex;align-items:center;flex-wrap:wrap;gap:4px 12px;margin-top:4px}
+.sq-ex-artx>.sq-ex-btn{margin-top:10px}
 .sq-ex-ic-s{display:inline-grid;place-items:center;width:16px;height:16px}
 .sq-ex-ic-s svg{width:16px;height:16px}
-.sq-ex-rows{display:grid;gap:6px;width:100%;max-width:400px;margin:12px 0 16px;padding:14px 18px}
-.sq-ex-start .sq-ex-rows{max-width:none;margin:12px 0 16px}
-.sq-ex-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;min-width:0;text-align:left}
-.sq-ex-row>span:last-child{text-align:right}
-.sq-ex-kv{display:grid;width:100%;margin:6px 0 4px}
-.sq-ex-btn{display:inline-flex;align-items:center;justify-content:center;max-width:100%;white-space:nowrap}
-.sq-ex-col:not(.sq-ex-start)>.sq-ex-btn,.sq-ex-start .sq-ex-rows+.sq-ex-btn{width:100%;max-width:400px}
-.sq-ex-card>.sq-ex-btn{margin-top:12px}
-.sq-ex-stats{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;margin-top:10px}
-.sq-ex-tags{margin:2px 0 14px}
-.sq-ex-prop{margin-bottom:8px}
-.sq-ex-prop img{display:block;width:auto;height:96px}
-/* round 12 generic cards: a product list item — the tile (the company's surface and radius, set
-   inline) holding the OmD prop, beside the name and one line; the inner padding of a surface whose
-   company claims none (OmD's, like .sq-ex-rows); space above a button that follows a key-value list */
-.sq-ex-item{display:flex;align-items:center;gap:16px;width:100%;margin-bottom:6px}
-.sq-ex-itxt{display:flex;flex-direction:column;gap:4px;min-width:0}
-.sq-ex-media{flex:none;display:grid;place-items:center;width:88px;height:88px}
-.sq-ex-media .sq-ex-prop{margin:0}
-.sq-ex-media .sq-ex-prop img{height:64px}
-.sq-ex-inset{padding:20px 24px}
-.sq-ex-col .sq-ex-kv+.sq-ex-btn{margin-top:12px}
+
+/* issue (Linear) · job (104): the company's own card component, its padding inline */
+.sq-ex-issue,.sq-ex-job{display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:400px}
+.sq-ex-issue>.sq-ex-btn{margin-top:12px}
+.sq-ex-kv{display:grid;width:100%;margin:4px 0 2px}
+.sq-ex-job>.sq-ex-btn{align-self:stretch;margin-top:12px}
+.sq-ex-prop img{display:block}
 /* a picked company's request re-enters (chat-demo.tsx keys the bubble by pick) */
 .sq-msg-new{animation:sq-at-rise .32s cubic-bezier(.2,.8,.2,1) both}
 .sq-ex-wait{opacity:0}
@@ -88,10 +155,10 @@ button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--
   .sq-at-c .sq-at-sum.sq-off{display:none}
   .sq-at-c:not(.sq-open) .sq-at-list{display:none}
   .sq-bub{max-width:92%}
-  .sq-ex-col{padding:24px 20px}
-  .sq-ex-pad{padding:16px}
-  .sq-ex-media{width:72px;height:72px}
-  .sq-ex-media .sq-ex-prop img{height:52px}
+  .sq-ex-receipt,.sq-ex-home{padding:20px}
+  .sq-ex-art{gap:14px;padding:16px}
+  .sq-ex-thumb{width:96px;height:96px}
+  .sq-ex-thumb .sq-ex-prop img{height:68px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -99,5 +166,7 @@ button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--
   .sq-at-l.sq-shim *{color:inherit}
   .sq-at-spin,.sq-pulse{animation:none}
   .sq-at-step,.sq-ex-in,.sq-msg-new{animation:none}
-  .sq-at-chev,.sq-ex{transition:none}
+  .sq-ex-track{scroll-snap-type:none}
+  .sq-ex-dot{transition:none}
+  .sq-at-chev,.sq-ex>*{transition:none}
 }

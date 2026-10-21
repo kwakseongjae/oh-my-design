@@ -10,8 +10,10 @@ import { useHeroPick } from "./hero-pick";
 /**
  * Round 11 hero chat (docs/REDESIGN_R11_PLAN_2026-10-20.md W1 #2 #5 #6 #7 #8). The user's prompt,
  * the agent's trace (Thinking → Skill omd-apply → Read the company's DESIGN.md → Write the card),
- * and an example card that fills the rest of the column, drawn only from that company's verified
- * tokens (lib/landing-a/chat-data.server.ts builds it on the server; this island only plays it).
+ * and the example drawn only from that company's verified tokens (lib/landing-a/chat-data.server.ts
+ * builds it on the server; this island only plays it). Round 13: the example is one finished
+ * component — a receipt, a ticket, a list in a card, a carousel … — centred on OmD's stage, the
+ * white panel that fills the rest of the column (agent-trace.css .sq-ex).
  * It opens on the page locale's own company (ko Toss, ja pixiv, en Linear, zh-tw 104); every locale
  * is its own document, so a language switch — the 2D drop included — loads and replays the new one.
  *

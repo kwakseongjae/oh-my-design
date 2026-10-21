@@ -135,10 +135,15 @@ const ICON = {
   heart: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z" /></svg>,
 } as const;
 
+const styleOf = (n: CardNode) => (n.css ? (Object.fromEntries(Object.entries(n.css).map(([p, t]) => [p, t!.css])) as CSSProperties) : undefined);
+const clsOf = (n: CardNode, shown: number, extra?: string) =>
+  [n.cls, extra, n.part != null ? (shown >= n.part ? "sq-ex-in" : "sq-ex-wait") : null].filter(Boolean).join(" ") || undefined;
+
 /** Render a card tree (chat-data.server.ts). Values come only from its tokens; parts beyond `shown` wait, invisible, in place. */
 export function CardView({ n, shown }: { n: CardNode; shown: number }) {
-  const style = n.css ? (Object.fromEntries(Object.entries(n.css).map(([p, t]) => [p, t!.css])) as CSSProperties) : undefined;
-  const cls = [n.cls, n.part != null ? (shown >= n.part ? "sq-ex-in" : "sq-ex-wait") : null].filter(Boolean).join(" ") || undefined;
+  if (n.ui === "carousel") return <Carousel n={n} shown={shown} />;
+  const style = styleOf(n);
+  const cls = clsOf(n, shown);
   if (n.icon) return <span className={cls} style={style} aria-hidden="true">{ICON[n.icon]}</span>;
   // eslint-disable-next-line @next/next/no-img-element -- an OmD prop from the props manifest, sized by its own width/height
   if (n.img) return <span className={cls}><img src={n.img.src} alt="" width={n.img.width} height={n.img.height} /></span>;
@@ -148,6 +153,53 @@ export function CardView({ n, shown }: { n: CardNode; shown: number }) {
       {n.text}
       {n.kids?.map((k, i) => <CardView key={i} n={k} shown={shown} />)}
     </Tag>
+  );
+}
+
+/**
+ * Round 13: the product carousel. Its track scrolls sideways and snaps to a card (touch, trackpad, or
+ * the arrow keys once it has focus); the dots are a quiet indicator of the card at the track's start,
+ * not controls (the hero keeps its pressable things to the keycaps and its two actions). Nothing
+ * moves on its own: there is no autoplay, and under reduced motion the track neither snaps nor
+ * scrolls smoothly (agent-trace.css).
+ */
+function Carousel({ n, shown }: { n: CardNode; shown: number }) {
+  const track = useRef<HTMLDivElement>(null);
+  const [cur, setCur] = useState(0);
+  const onScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const cards = [...el.children] as HTMLElement[];
+    const x0 = el.getBoundingClientRect().left;
+    let best = 0, d = Infinity;
+    cards.forEach((c, i) => {
+      const dx = Math.abs(c.getBoundingClientRect().left - x0);
+      if (dx < d) { d = dx; best = i; }
+    });
+    // at the end of the track the last card is the current one, though it never reaches the start
+    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) best = cards.length - 1;
+    setCur(best);
+  };
+  return (
+    <div className={clsOf(n, shown)} style={styleOf(n)}>
+      {n.kids?.map((k, i) => {
+        if (k.ui === "track") {
+          return (
+            <div key={i} ref={track} className={clsOf(k, shown)} style={styleOf(k)} onScroll={onScroll} tabIndex={0} role="group" aria-label={k.label}>
+              {k.kids?.map((c, j) => <CardView key={j} n={c} shown={shown} />)}
+            </div>
+          );
+        }
+        if (k.ui === "dots") {
+          return (
+            <div key={i} className={clsOf(k, shown)} style={styleOf(k)} aria-hidden="true">
+              {k.kids?.map((d, j) => <span key={j} className={clsOf(d, shown, j === cur ? "sq-on" : undefined)} style={styleOf(d)} />)}
+            </div>
+          );
+        }
+        return <CardView key={i} n={k} shown={shown} />;
+      })}
+    </div>
   );
 }
 
