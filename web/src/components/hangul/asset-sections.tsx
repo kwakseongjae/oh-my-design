@@ -29,7 +29,7 @@ export function CompareSection({ assets, t, band }: { assets: HangulAssets; t: H
   return (
     <section id="compare" className={`hg-sec${band ? " hg-band" : ""}`} aria-labelledby="hg-compare-h">
       <div className="sq-wrap">
-        <h2 id="hg-compare-h">{beforeAfter ? t.shotsH2 : t.videoH2}</h2>
+        <h2 id="hg-compare-h" className="hg-d">{beforeAfter ? t.shotsH2 : t.videoH2}</h2>
         {beforeAfter ? (
           <>
             <p className="hg-intro">{fill(t.shotsCaption, { source: beforeAfter.source })}</p>
@@ -104,7 +104,7 @@ export function MeasuredSection({ assets, t, band }: { assets: HangulAssets; t: 
   return (
     <section id="measured" className={`hg-sec${band ? " hg-band" : ""}`} aria-labelledby="hg-measured-h">
       <div className="sq-wrap">
-        <h2 id="hg-measured-h">{fill(t.measuredH2, { services: m.services })}</h2>
+        <h2 id="hg-measured-h" className="hg-d">{fill(t.measuredH2, { services: m.services })}</h2>
         <p className="hg-intro">{fill(t.measuredSub, { date: m.date })}</p>
         <div className="hg-mcard">
           <dl className="hg-mstats">

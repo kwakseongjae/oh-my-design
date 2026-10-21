@@ -8,6 +8,7 @@ import { BLOG_ON_SUBDOMAIN, blogPostHref, blogPostUrl } from "@/lib/site";
 import { CompareSection, MeasuredSection } from "./asset-sections";
 import { BreakDemo } from "./break-demo";
 import {
+  EVAL_FIGURES,
   H1_STACK,
   H3_METRICS,
   H7_LINES,
@@ -19,6 +20,7 @@ import {
   type HangulLocale,
   type WhyCard,
 } from "./copy";
+import { songMyung } from "./faces";
 import { SpecimenToggle } from "./specimen-toggle";
 import "./hangul.css";
 import "./specimens.css";
@@ -99,7 +101,7 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
   const band = (id: string) => order.indexOf(id) % 2 === 1;
 
   return (
-    <div className={`sq-root sq-root-page hg-root ${pretendard.variable}`} lang={locale}>
+    <div className={`sq-root sq-root-page hg-root ${pretendard.variable} ${songMyung.variable}`} lang={locale}>
       <SiteHeaderA locale={locale} current={locale} localeHrefs={{ en: HANGUL_PATH.en, ko: HANGUL_PATH.ko }} />
       <main id="main" className="hg-main">
         <section className="sq-wrap hg-hero" aria-labelledby="hg-h1">
@@ -109,7 +111,7 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
                 <span className="hg-kicker-name" lang="en">/hangul</span>
                 <span>{t.hero.kicker}</span>
               </p>
-              <h1 id="hg-h1">{t.hero.h1}</h1>
+              <h1 id="hg-h1" className="hg-d">{t.hero.h1}</h1>
               <p className="hg-lede">{t.hero.lede}</p>
             </div>
             <a className="hg-cta" href="#install">{t.hero.cta}</a>
@@ -120,7 +122,7 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
 
         <section id="why" className={`hg-sec${band("why") ? " hg-band" : ""}`} aria-labelledby="hg-why-h">
           <div className="sq-wrap">
-            <h2 id="hg-why-h">{t.why.h2}</h2>
+            <h2 id="hg-why-h" className="hg-d">{t.why.h2}</h2>
             <p className="hg-intro">{t.why.intro}</p>
             <ul className="hg-cards">
               {t.why.cards.map((card) => (
@@ -144,21 +146,23 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
 
         <section id="eval" className={`hg-sec${band("eval") ? " hg-band" : ""}`} aria-labelledby="hg-eval-h">
           <div className="sq-wrap">
-            <h2 id="hg-eval-h">{t.evals.h2}</h2>
+            <h2 id="hg-eval-h" className="hg-d">{t.evals.h2}</h2>
             <p className="hg-eval-unit">{t.evals.unit}</p>
             <div className="hg-eval">
               <div className="hg-fig">
                 <p className="hg-fig-l">{t.evals.before.label}</p>
-                <p className="hg-fig-n hg-num">
-                  17<span>/18</span>
+                <p className="hg-fig-n hg-num hg-d">
+                  {EVAL_FIGURES.before}
+                  <span>/{EVAL_FIGURES.runs}</span>
                 </p>
                 <p className="hg-fig-s">{t.evals.before.sub}</p>
               </div>
               <span className="hg-fig-arrow" aria-hidden="true">→</span>
               <div className="hg-fig">
                 <p className="hg-fig-l">{t.evals.after.label}</p>
-                <p className="hg-fig-n hg-num">
-                  0<span>/18</span>
+                <p className="hg-fig-n hg-num hg-d">
+                  {EVAL_FIGURES.after}
+                  <span>/{EVAL_FIGURES.runs}</span>
                 </p>
                 <p className="hg-fig-s">{t.evals.after.sub}</p>
               </div>
@@ -173,7 +177,7 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
 
         <section id="rules" className={`hg-sec${band("rules") ? " hg-band" : ""}`} aria-labelledby="hg-rules-h">
           <div className="sq-wrap">
-            <h2 id="hg-rules-h">{t.rules.h2}</h2>
+            <h2 id="hg-rules-h" className="hg-d">{t.rules.h2}</h2>
             <p className="hg-intro">{t.rules.intro}</p>
             <ol className="hg-rules">
               {t.rules.list.map((r) => (
@@ -188,7 +192,7 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
 
         <section id="install" className={`hg-sec${band("install") ? " hg-band" : ""}`} aria-labelledby="hg-install-h">
           <div className="sq-wrap">
-            <h2 id="hg-install-h">{t.install.h2}</h2>
+            <h2 id="hg-install-h" className="hg-d">{t.install.h2}</h2>
             <div className="hg-inst" role="group" aria-label={t.install.boxLabel}>
               <code lang="en">
                 <span className="hg-inst-ps" aria-hidden="true">$ </span>

@@ -44,6 +44,13 @@ export const H1_STACK = {
   after: 'font-family: "Pretendard Variable", Pretendard, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;',
 } as const;
 
+/** The eval's headline figures: runs with a BLOCK or WARN, without the skill and with it, of 18 each. */
+export const EVAL_FIGURES = { before: 17, after: 0, runs: 18 } as const;
+
+/** The 판심제 set vertically in the fold of the hero's woodblock leaf (decoration, aria-hidden;
+ *  the same on both pages, because the subject is the Korean script). */
+export const PANSIM_TITLE = "한글 조판";
+
 export const INSTALL_CLI = "npx oh-my-design-cli@latest";
 export const INSTALL_SKILL = "npx skills add kwakseongjae/oh-my-design --skill hangul";
 /** The blog post that goes out with the launch; linked only while it exists in that locale. */

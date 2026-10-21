@@ -17,12 +17,12 @@
 .hg-root code,.hg-root pre,.hg-root code span{font-family:var(--sq-f-mono)}
 
 /* ---- type ---- */
-.hg-main h1{margin-top:12px;font-size:52px;line-height:1.3;letter-spacing:-0.03em;font-weight:760;text-wrap:balance}
-.hg-main h2{font-size:40px;line-height:1.32;letter-spacing:-0.025em;font-weight:740;max-width:22em;text-wrap:balance}
+/* The display face (faces.ts): Song Myung, one weight, on .hg-d only. Its natural leading is 1.25, so
+   1.3 sits right on English headings too; the Korean floors apply to both pages. */
+.hg-d{font-family:var(--font-hg-display),var(--font-r11-pretendard),var(--sq-f-ko);font-weight:400;font-synthesis:none;letter-spacing:0}
+.hg-main h1{margin-top:12px;font-size:52px;line-height:1.3;text-wrap:balance}
+.hg-main h2{font-size:40px;line-height:1.32;max-width:22em;text-wrap:balance}
 .hg-main h3{font-size:19px;line-height:1.4;letter-spacing:0;font-weight:700}
-/* English display type: Latin leading (the Korean floors above don't apply to it) */
-.hg-root:lang(en) .hg-main h1{line-height:1.15}
-.hg-root:lang(en) .hg-main h2{line-height:1.22}
 @media (max-width:1279px){.hg-main h1{font-size:46px}.hg-main h2{font-size:34px}}
 @media (max-width:1023px){.hg-main h1{font-size:40px}}
 @media (max-width:900px){.hg-main h2{font-size:28px}}
@@ -106,8 +106,8 @@
 .hg-eval{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:24px;max-width:880px;margin-top:32px;padding-top:24px;border-top:2px solid var(--sq-ink)}
 .hg-fig{min-width:0}
 .hg-fig-l{font-size:16px;line-height:1.5;font-weight:650;color:var(--sq-ink)}
-.hg-fig-n{margin-top:4px;font-size:112px;line-height:1.3;font-weight:760;letter-spacing:0;color:var(--sq-ink);white-space:nowrap}
-.hg-fig-n span{margin-left:.06em;font-size:.4em;font-weight:600;color:var(--sq-ink-2)}
+.hg-fig-n{margin-top:4px;font-size:112px;line-height:1.3;color:var(--sq-ink);white-space:nowrap}
+.hg-fig-n span{margin-left:.06em;font-size:.4em;color:var(--sq-ink-2)}
 .hg-fig-s{font-size:15px;line-height:1.5;color:var(--sq-ink-2)}
 .hg-fig-arrow{padding-bottom:56px;font-size:40px;line-height:1.3;color:var(--sq-ink-2)}
 .hg-eval-m{margin-top:40px;font-size:17px;line-height:1.65;color:var(--sq-ink);max-width:44em}

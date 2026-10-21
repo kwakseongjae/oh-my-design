@@ -30,6 +30,9 @@ import type { HangulAssets } from "@/lib/hangul/assets";
 vi.mock("@/components/brand-a/journey/faces", () => ({
   pretendard: { variable: "hg-test-pretendard", style: { fontFamily: "Pretendard" } },
 }));
+vi.mock("@/components/hangul/faces", () => ({
+  songMyung: { variable: "hg-test-songmyung", style: { fontFamily: "Song Myung" } },
+}));
 
 /**
  * /hangul launch pages (docs/HANGUL_LAUNCH_PLAN_2026-10-21.md H2): the hreflang pair, the share
