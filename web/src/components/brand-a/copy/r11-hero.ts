@@ -68,14 +68,6 @@ export interface R11HeroCopy {
     summary: string;
     /** accessible name of the button that opens the collapsed run */
     toggle: string;
-    /**
-     * @deprecated Round 13 (owner 2026-10-21): no font notes in the chat; the hero renders neither
-     * line and AgentTrace ignores its note. Kept only while cli-steps.tsx (the CLI stream's file)
-     * still reads both; delete them with that read.
-     */
-    face: string;
-    /** @deprecated see `face` */
-    faceSub: string;
     agent: string;
   };
   cli: {
@@ -206,8 +198,6 @@ const KO: R11HeroCopy = {
     done: "완료",
     summary: "작업 {n}개 · {s}초",
     toggle: "작업 과정",
-    face: "{face}는 불러올 수 없어 페이지 글꼴로 그렸어요. 브랜드 글꼴이 아니에요.",
-    faceSub: "{face} 대신 실측으로 고른 대체 글꼴 {sub}로 그렸어요. 브랜드 글꼴이 아니에요.",
     agent: "에이전트",
   },
   cli: {
@@ -346,8 +336,6 @@ const EN: R11HeroCopy = {
     done: "Done",
     summary: "{n} steps · {s}s",
     toggle: "Steps",
-    face: "{face} can't be loaded here, so I set it in the page font. It isn't the brand face.",
-    faceSub: "{face} can't be loaded here, so I set it in {sub}, a substitute chosen by measurement. It isn't the brand face.",
     agent: "Agent",
   },
   cli: {
@@ -486,8 +474,6 @@ const JA: R11HeroCopy = {
     done: "完了",
     summary: "{n}ステップ・{s}秒",
     toggle: "作業の内容",
-    face: "{face}はここでは読み込めないため、ページの書体で表示しています。ブランドの書体ではありません。",
-    faceSub: "{face}の代わりに、計測で選んだ代替書体{sub}で表示しています。ブランドの書体ではありません。",
     agent: "エージェント",
   },
   cli: {
@@ -626,8 +612,6 @@ const ZH_TW: R11HeroCopy = {
     done: "完成",
     summary: "{n} 個步驟・{s} 秒",
     toggle: "作業過程",
-    face: "這裡無法載入 {face}，所以用頁面字型呈現，並非品牌字型。",
-    faceSub: "這裡無法載入 {face}，所以改用實測選出的替代字型 {sub}，並非品牌字型。",
     agent: "AI 程式助理",
   },
   cli: {

@@ -67,13 +67,6 @@ export function AgentTrace({
   /** each step's duration, shown once it is done */
   ms: readonly number[];
   labels: TraceLabels;
-  /**
-   * Ignored since round 13 (owner, 2026-10-21: no font notes in the chat). The example cards no
-   * longer set text in a substitute face — a card is set in its brand face only where that open
-   * face loads for real, else in the page's own face — so there is nothing to label. Still
-   * accepted so an older caller (cli-steps.tsx) keeps compiling; it renders nothing.
-   */
-  note?: string | null;
   compact?: boolean;
 }) {
   const [think, setThink] = useState(false);

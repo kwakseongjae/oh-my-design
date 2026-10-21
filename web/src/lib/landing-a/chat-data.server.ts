@@ -126,7 +126,7 @@ export interface ChatCard {
    * `sub` is never set since round 13 (no substitute faces in the chat); it stays optional in the
    * type only so an older reader (cli-steps.tsx) keeps compiling.
    */
-  readonly face: { readonly name: string | null; readonly shown: boolean; readonly sub?: string };
+  readonly face: { readonly name: string | null; readonly shown: boolean };
 }
 
 /** A card as the client chat gets it: the printed source stays on the server (only its line count is shown). */

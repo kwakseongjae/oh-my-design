@@ -135,7 +135,7 @@ describe("example cards: claimed values only", () => {
     }
     // no card anywhere carries a substitute: not the field, not a substitute record, not the self-hosted substitute face
     for (const [k, card] of [...Object.entries(by), ...LOCALES.map((l) => [`cli ${l}`, getCliScreen(l)] as const)]) {
-      expect(card.face.sub, k).toBeUndefined();
+      expect(Object.keys(card.face).sort(), k).toEqual(["name", "shown"]);
       expect(JSON.stringify(card.root), k).not.toMatch(/substitutes|--font-r11-plex/);
     }
     // round 12: Pretendard (OFL, on the landing root) carries Latin and Hangul only
@@ -391,11 +391,14 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
   });
 
   // round 13 (owner 2026-10-21): no font note anywhere in the chat — any company, any locale, and the
-  // CLI apply step, which still hands AgentTrace a note (cli-steps.tsx) that it no longer renders
-  const noteBits = (l: L) => {
-    const h = getR11Hero(l);
-    return [h.trace.face, h.trace.faceSub].flatMap((x) => x.split(/\{face\}|\{sub\}/)).map((x) => x.trim()).filter((x) => x.length >= 6).map(esc);
+  // CLI apply step. The note strings are gone from the copy, so the phrases they used are pinned here.
+  const NOTE_PHRASES: Record<L, readonly string[]> = {
+    ko: ["브랜드 글꼴이 아니에요", "페이지 글꼴로 그렸어요", "실측으로 고른 대체 글꼴"],
+    en: ["It isn't the brand face", "set it in the page font", "a substitute chosen by measurement"],
+    ja: ["ブランドの書体ではありません", "ページの書体で表示しています", "計測で選んだ代替書体"],
+    "zh-tw": ["並非品牌字型", "用頁面字型呈現", "實測選出的替代字型"],
   };
+  const noteBits = (l: L) => NOTE_PHRASES[l].map(esc);
   it("no font note is rendered for any company the hero can show, nor on the CLI apply step", () => {
     for (const l of LOCALES) {
       const h = getR11Hero(l);

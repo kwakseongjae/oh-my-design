@@ -139,8 +139,10 @@ export function HeroKeys({ caps, label, locale, initial }: { caps: readonly Logo
 
   /* where the caps may sit: inside the sheet, with air on every side */
   const zone = () => {
-    const h = host()!;
-    const W = h.clientWidth, s = rel(sheet.current!, h);
+    // a frame can still ask after a client-side navigation away from the landing has removed #k3
+    const h = host();
+    if (!h || !sheet.current) return { x0: 0, x1: 0, y0: 0, y1: 0 };
+    const W = h.clientWidth, s = rel(sheet.current, h);
     if (narrowRef.current) return { x0: 24, x1: W - 24, y0: 18, y1: h.clientHeight - 18 };
     const padX = (s.r - s.l) * 0.04, padY = (s.b - s.t) * 0.06;
     return { x0: s.l + padX, x1: Math.min(W - 24, s.r + (W - s.r) * 0.5), y0: s.t + padY, y1: s.b - padY };
