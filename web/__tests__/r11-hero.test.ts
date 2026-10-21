@@ -27,7 +27,7 @@ import {
  * card, a carousel …) on OmD's stage, and no font note is rendered. OmD's chrome — the stage, a
  * neutral ring where no border is claimed, the shadow — lives in classes, never in a card's `css`;
  * a box is rounded only by a claimed card radius. The fit in the hero's fixed stage is a browser
- * measurement (docs/research/2026-10-21-r13/hero/README.md), not a unit test.
+ * measurement (its result is written above hero.css's short-stage container query), not a unit test.
  */
 const LOCALES = ["en", "ko", "ja", "zh-tw"] as const;
 type L = (typeof LOCALES)[number];
