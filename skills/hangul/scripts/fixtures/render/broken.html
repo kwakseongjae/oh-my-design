@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>render-check fixture (broken)</title>
+<style>
+  body { margin: 0; padding: 16px; font: 16px/1.5 system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+  /* A spaceless word wider than the box has to break inside itself, by syllable breaking or by
+     overflow-wrap's emergency break. The same failure as a caption that wraps "…금융 생 / 활". */
+  .box { width: 7.5em; word-break: normal; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+  <p class="box">나에게 맞는 속도로 차곡차곡모아가는금융생활습관을 시작해 보세요.</p>
+</body>
+</html>

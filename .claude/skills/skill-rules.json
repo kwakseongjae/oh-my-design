@@ -30,6 +30,14 @@
       "published": false
     },
     {
+      "id": "hangul",
+      "name": "hangul",
+      "path": ".claude/skills/hangul/SKILL.md",
+      "description": "Fixes the Korean (Hangul) typography that coding agents get wrong in web UI: line breaking (break-all, keep-all, overflow-wrap), letter-spacing (자간), line-height (행간), font stacks, lang, synthetic italic/bold, number and unit formatting, truncation. Numeric, testable rules from W3C klreq and CSS Text, the public KRDS / SEED / Toss TDS docs, and OmD's measurement of 67 Korean services (2026-07). APPLY while building Korean UI; AUDIT HTML/CSS/JSX/TSX/Tailwind with a deterministic checker. Triggers: '한글 타이포', '한국어 화면이 어색해', '줄바꿈 이상해', '자간', '행간', 'Pretendard', 'keep-all', 'Korean typography', 'Hangul', 'fix Korean text', '한글 폰트', '단어가 중간에 잘려'. General interface feel (motion, targets, contrast) → omd-feel. Brand tokens → omd-apply. When the project's DESIGN.md defines typography tokens, those tokens win over these defaults.",
+      "published": "skills/hangul/SKILL.md",
+      "user_invocable": true
+    },
+    {
       "id": "omd",
       "name": "omd",
       "path": ".claude/skills/omd/SKILL.md",

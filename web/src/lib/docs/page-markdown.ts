@@ -106,7 +106,10 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
       const content = dictionary.skills;
       begin(content.title, content.lead);
       for (const group of content.groups) {
-        add(`## ${group.title}`, group.description, ...bullets(group.skills.map((skill) => `\`${skill}\` — ${content.descriptions[skill]}`)));
+        add(`## ${group.title}`, group.description, ...bullets(group.skills.map((skill) => {
+          const own = content.pages[skill];
+          return `\`${skill}\` — ${content.descriptions[skill]}${own ? ` [${own.label}](${SITE_URL}${own.href})` : ""}`;
+        })));
       }
       add(...section(content.routingTitle, content.routingBody));
       break;

@@ -1,10 +1,10 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 31-skill + 20-sub-agent bundle; Cursor receives 30 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 521 DESIGN.md references: 299 verified_v2, 109 partial, and 113 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 32-skill + 20-sub-agent bundle; Cursor receives 31 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 521 DESIGN.md references: 299 verified_v2, 109 partial, and 113 legacy. Use verified_v2 references for public demos.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor 2.4+ receives 30 compatible Agent Skills under `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 500+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
+`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor 2.4+ receives 31 compatible Agent Skills under `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 500+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
 
 The core installer runs no AI calls, ships no telemetry, and requires no API key, daemon, or MCP server. Your coding-agent session provides inference. The optional `claude-design` skill opens the user's logged-in claude.ai/design session in Chrome rather than calling an OmD API.
 
@@ -34,7 +34,7 @@ The CLI only installs and diagnoses. Product design work happens through natural
 
 ## Cursor path
 
-Cursor 2.4+ discovers the 30 compatible OmD Agent Skills from `.cursor/skills/`, alongside a small `.cursor/rules/omd-design.mdc` bootstrap and the shared `.claude/data` catalog. Restart Cursor after installation, then ask naturally or invoke `/omd-init` explicitly. OmD sub-agent definitions and activation hooks are not installed in Cursor.
+Cursor 2.4+ discovers the 31 compatible OmD Agent Skills from `.cursor/skills/`, alongside a small `.cursor/rules/omd-design.mdc` bootstrap and the shared `.claude/data` catalog. Restart Cursor after installation, then ask naturally or invoke `/omd-init` explicitly. OmD sub-agent definitions and activation hooks are not installed in Cursor.
 
 For older Cursor clients, `--cursor-rule-only` installs the rule + catalog compatibility mode without Agent Skills. There, create the project spec through one of these paths:
 
@@ -53,17 +53,18 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 10 public skills
+## The 11 public skills
 
-These are the skills `npx skills add kwakseongjae/oh-my-design` lists, and each one also installs alone (`--skill <name>`). `npx oh-my-design-cli` installs the full 31-skill bundle: these ten plus the internal skills the workflows call on their own (preference loop, shim sync, review and writing roles, live capture, labs). Internal skills stay installed and keep working; they are just not listed.
+These are the skills `npx skills add kwakseongjae/oh-my-design` lists, and each one also installs alone (`--skill <name>`). `npx oh-my-design-cli` installs the full 32-skill bundle: these eleven plus the internal skills the workflows call on their own (preference loop, shim sync, review and writing roles, live capture, labs). Internal skills stay installed and keep working; they are just not listed.
 
 The system (3):
 - **omd-init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
 - **omd-apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
 - **omd-autopilot** — One-prompt autonomous product design: decides whether to reuse, establish, or refresh the design system, then builds and verifies the real surface.
 
-Interface quality (3):
+Interface quality (4):
 - **omd-feel** — Applies and audits 113 provenance-graded HIG / Material / WCAG rules for motion, spacing, typography, and accessibility.
+- **hangul** — Korean typography for web UI: line breaking (`break-all`, `keep-all`, `overflow-wrap`), letter-spacing, line-height, font stacks, `lang`, synthetic italic/bold, number formatting and truncation as numeric rules (HG-1…HG-14) from W3C klreq / CSS Text, KRDS / SEED / TDS and OmD's measurement of 67 Korean services; ships a deterministic source checker and an optional rendered line-break check. DESIGN.md type tokens win. Its installed name is `hangul` in every channel (no `omd` prefix).
 - **omd-restraint** — Restraint as measurable rules: audits a rendered page at desktop and phone widths (one focal point, ≤ 5 first-screen pieces, ≤ 4 type sizes, ≤ 2 hero CTAs, one accent, empty share, thin screens, page length) and applies a cut → merge → enlarge → re-measure pass; every rule carries a measured / convention / heuristic grade.
 - **omd-slop-audit** — Finds clusters of context-free UI and copy defaults without guessing authorship, then separates slop, quality failures, and preference.
 
@@ -650,7 +651,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - [Live demo runbook](https://oh-my-design.kr/docs/en/demo): 5-, 15-, and 30-minute truthful demo formats
 - [AI slop definition and comparisons](https://oh-my-design.kr/docs/en/anti-slop): observable criteria, before/after examples, and the OmD review direction
 - [Documentation](https://oh-my-design.kr/docs/en): the DESIGN.md archive and oh-my-design-cli: install, workflows, skills
-- [Skills](https://oh-my-design.kr/docs/en/skills): the 10 public skills and what each one does; the installer also writes the internal skills they call
+- [Skills](https://oh-my-design.kr/docs/en/skills): the 11 public skills and what each one does; the installer also writes the internal skills they call
 - [OmD reference + shadcn skill](https://oh-my-design.kr/docs/en/shadcn): where to get a real DESIGN.md for shadcn's skill (`npx skills add shadcn/ui`), what carries over (tokens, Known Gaps, labelled font fallback) and the measured limits
 - [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references; each reference page copies or downloads its DESIGN.md
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
@@ -663,8 +664,8 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 ```
 oh-my-design/
-├── skills/              # 31 shipped product skills (source of truth)
-├── agents/              # 18 sub-agent definitions
+├── skills/              # 32 shipped product skills (source of truth)
+├── agents/              # 20 sub-agent definitions
 ├── web/references/      # 521 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus
 ├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
