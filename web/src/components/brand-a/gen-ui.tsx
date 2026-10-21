@@ -490,7 +490,9 @@ export function GenUI({
               <img className="sq-g5-prop" src={p.src} width={p.width} height={p.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
             ) : null}
             <Screen plan={x.plan} copy={j.sample} el={el} frame={frame} face={faceCss} />
-            {faceNote && !sk?.has(1) ? <p className="sq-g5-face">{faceNote}</p> : null}
+            {/* the label's line is held while the screen builds (hidden, not absent), so nothing below
+                moves when it appears: on a phone the late line pushed the next section 32px (CLS) */}
+            {faceNote ? <p className="sq-g5-face" style={sk?.has(1) ? { visibility: "hidden" } : undefined}>{faceNote}</p> : null}
           </div>
           <div className="sq-g5-sum">
             <span className="sq-ct">{fill(t.r5.sum, { n: ls.length })}</span>
