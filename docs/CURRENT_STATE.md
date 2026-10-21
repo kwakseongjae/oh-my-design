@@ -35,6 +35,15 @@
   - 오래된 실험: `feat/design-tokens`(+44, 4달), `feat/33-fidelity-gate`(+7), `codex/priority3-test-v2`(+6), `t2/migration-waves`, `landing-renewal-v3`, 원격 `cursor/setup-dev-environment-e438`.
   - `growth-data`는 주간 공개 지표 데이터 브랜치라 유지한다.
 - **다음 큰 작업 후보(오너와 결정):** A) /hangul 출시(P3) · B) ja/zh-tw 아카이브·상세(P2) · C) 레퍼럴 엔진(ui-skills PR 등, P4) · D) partial/legacy 레퍼런스 검증.
+- **오너 결정(17:20).** 다음 작업은 **/hangul 출시**다. 오래된 실험 브랜치 6개는 삭제했다(로컬·원격).
+  - 페이지는 한국어 + 영어(`/ko/hangul` 기본, `/hangul`)로 만든다.
+  - 콘텐츠는 전후 비교 + 67곳 데이터 카드 + 비교 영상이고, 배민 타이포 글과 Threads·X 문안도 포함한다.
+  - 계획: `docs/HANGUL_LAUNCH_PLAN_2026-10-21.md`. 계약: `web/src/data/hangul-assets.json` + `web/src/lib/hangul/assets.ts`. main은 `79825ca4`다.
+- **/hangul 병렬 3개 진행 중.** 기준은 main `79825ca4`이고, 에이전트는 커밋만 하며 push는 메인이 한다.
+  - `r14-skill`(H1): feat/hangul-skill을 main에 맞춘다. 공개 스킬 10→11, 번들 32, 카운트 표면·테스트, docs 스킬 페이지 링크, 2.0.6 준비(태그는 하지 않음).
+  - `r14-page`(H2): `/ko/hangul`·`/hangul`을 새 디자인으로 다시 만든다. v4 피드백 전부 반영(출처 삭제, 체커 단계 제거 등). 자기 페이지에 /hangul 검사를 돌린다(dogfood).
+  - `r14-content`(H3): 같은 페이지(Codex p1-A-r3) 전후 이미지, 67곳 데이터(스크립트로 계산), 비교 영상(MP4·포스터), 배민 글(10/22 날짜), Threads·X 문안을 만든다.
+  - 옛 초안 `skills/hangul/`(9/29)은 스크래치패드 `backup/skills-hangul-draft-2026-09-29`로 옮겼다.
 
 ## ▶ 2026-09-29 · 성장 전략 결정 17개 → 병렬 실행 착수 (521 · 227)
 
