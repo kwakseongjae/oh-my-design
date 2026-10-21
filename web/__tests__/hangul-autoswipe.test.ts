@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AutoSwipe, IDLE_MS, MAX_PLAYS, SWEEP, ease, sweepAt, sweepMs, type Clock, type SwipePhase } from "@/components/hangul/autoswipe";
+import { AutoSwipe, IDLE_MS, MAX_PLAYS, START_DELAY_MS, SWEEP, ease, sweepAt, sweepMs, type Clock, type SwipePhase } from "@/components/hangul/autoswipe";
 
 /**
  * The hero demo's auto-swipe (components/hangul/autoswipe.ts): when it plays, what it drives, and
@@ -66,6 +66,8 @@ describe("AutoSwipe", () => {
     s.run(5000);
     expect(s.widths).toEqual([]);
     s.swipe.setInView(true);
+    expect(s.swipe.state).toEqual({ phase: "idle", plays: 0 });
+    s.run(START_DELAY_MS + 16);
     expect(s.swipe.state).toEqual({ phase: "playing", plays: 1 });
     s.run(sweepMs() + 32);
     expect(Math.max(...s.widths)).toBe(430);
@@ -75,10 +77,20 @@ describe("AutoSwipe", () => {
     expect(s.widths.every((w, i) => i === 0 || w !== s.widths[i - 1])).toBe(true);
   });
 
+  it("does not start if the demo leaves view during the start delay", () => {
+    const s = setup();
+    s.swipe.setInView(true);
+    s.run(START_DELAY_MS / 2);
+    s.swipe.setInView(false);
+    s.run(START_DELAY_MS * 4);
+    expect(s.swipe.state).toEqual({ phase: "idle", plays: 0 });
+    expect(s.widths).toEqual([]);
+  });
+
   it("stops at once on interaction and never plays again", () => {
     const s = setup();
     s.swipe.setInView(true);
-    s.run(600);
+    s.run(START_DELAY_MS + 600);
     const at = s.width();
     expect(at).toBeGreaterThan(360);
     s.swipe.interact();
@@ -96,11 +108,11 @@ describe("AutoSwipe", () => {
   it("replays once after the idle wait if untouched, and never more than twice", () => {
     const s = setup();
     s.swipe.setInView(true);
-    s.run(sweepMs() + 32);
+    s.run(START_DELAY_MS + sweepMs() + 32);
     expect(s.swipe.state.plays).toBe(1);
     s.run(IDLE_MS - 500);
     expect(s.swipe.state).toEqual({ phase: "idle", plays: 1 });
-    s.run(600);
+    s.run(600 + START_DELAY_MS);
     expect(s.swipe.state).toEqual({ phase: "playing", plays: 2 });
     s.run(sweepMs() + 32);
     s.run(IDLE_MS * 4);
@@ -114,18 +126,19 @@ describe("AutoSwipe", () => {
   it("holds the replay until the demo is back in view", () => {
     const s = setup();
     s.swipe.setInView(true);
-    s.run(sweepMs() + 32);
+    s.run(START_DELAY_MS + sweepMs() + 32);
     s.swipe.setInView(false);
     s.run(IDLE_MS * 2);
     expect(s.swipe.state).toEqual({ phase: "idle", plays: 1 });
     s.swipe.setInView(true);
+    s.run(START_DELAY_MS + 16);
     expect(s.swipe.state).toEqual({ phase: "playing", plays: 2 });
   });
 
   it("a touch during the idle wait cancels the replay", () => {
     const s = setup();
     s.swipe.setInView(true);
-    s.run(sweepMs() + 32);
+    s.run(START_DELAY_MS + sweepMs() + 32);
     s.swipe.interact();
     s.run(IDLE_MS * 2);
     expect(s.swipe.state).toEqual({ phase: "stopped", plays: 1 });

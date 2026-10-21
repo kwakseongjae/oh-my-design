@@ -2,7 +2,8 @@
  * The hero demo's auto-swipe (owner, 2026-10-21): developers drag a width slider unprompted, most
  * people don't, so the slider moves once by itself to show that it moves.
  *
- * - It plays when the demo is at least half in view, never before.
+ * - It plays when the demo has been at least half in view for START_DELAY_MS, never before (a short
+ *   beat, so the page has settled and the reader's eye has landed).
  * - It drives the same width the reader drives, so both frames, the break map and the readout
  *   follow it live.
  * - Any pointerdown, keydown or focus on the control stops it at once, for good.
@@ -34,6 +35,7 @@ export const SWEEP: readonly SweepLeg[] = [
   { to: 360, ms: 500 },
 ];
 
+export const START_DELAY_MS = 600;
 export const IDLE_MS = 8000;
 export const MAX_PLAYS = 2;
 
@@ -83,6 +85,7 @@ export class AutoSwipe {
   private mayPlay = true;
   private raf: number | null = null;
   private timer: number | null = null;
+  private delay: number | null = null;
   private from = 0;
   private t0 = 0;
   private last = Number.NaN;
@@ -105,6 +108,10 @@ export class AutoSwipe {
   /** From an IntersectionObserver: is at least half of the demo in view? */
   setInView(inView: boolean): void {
     this.inView = inView;
+    if (!inView && this.delay !== null) {
+      this.clock.cancelLater(this.delay);
+      this.delay = null;
+    }
     this.maybePlay();
   }
 
@@ -125,11 +132,21 @@ export class AutoSwipe {
   private cancel(): void {
     if (this.raf !== null) this.clock.cancelFrame(this.raf);
     if (this.timer !== null) this.clock.cancelLater(this.timer);
+    if (this.delay !== null) this.clock.cancelLater(this.delay);
     this.raf = null;
     this.timer = null;
+    this.delay = null;
   }
 
   private maybePlay(): void {
+    if (this.phase !== "idle" || !this.inView || !this.mayPlay || this.plays >= MAX_PLAYS || this.delay !== null) return;
+    this.delay = this.clock.later(() => {
+      this.delay = null;
+      this.start();
+    }, START_DELAY_MS);
+  }
+
+  private start(): void {
     if (this.phase !== "idle" || !this.inView || !this.mayPlay || this.plays >= MAX_PLAYS) return;
     this.plays += 1;
     this.phase = "playing";
