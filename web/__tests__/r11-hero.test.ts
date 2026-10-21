@@ -361,7 +361,7 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
   const { renderToStaticMarkup } = await import("react-dom/server");
   const { ChatDemo } = await import("@/components/brand-a/chat-demo");
   const { HeroKeys } = await import("@/components/brand-a/hero-keys");
-  const { CliSection, boxLines, INSTALL } = await import("@/components/brand-a/cli-section");
+  const { CliSection, INSTALL } = await import("@/components/brand-a/cli-section");
   const { getR10 } = await import("@/components/brand-a/copy/r10");
   const { getCopy } = await import("@/components/brand-a/copy");
   const visible = (html: string) => html.replace(/<[^>]+>/g, " ");
@@ -448,7 +448,7 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
     }
   });
 
-  it("the CLI section: context line, install → apply, the real output, no caption, no doctor run", () => {
+  it("the CLI section: context line, install → apply, the install abstract, no caption, no doctor run", () => {
     for (const l of LOCALES) {
       const h = getR11Hero(l), r = getR10(l);
       const html = renderToStaticMarkup(createElement(CliSection, { locale: l, c: getCopy(l), r, total: 521, skills: 31, skillsHref: "#" }));
@@ -459,17 +459,11 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
       expect(text).not.toContain(r.cli.steps[1].p); // r10's "check" step
       const caption = r.cli.caption.replace("{ver}", transcript.version).replace("{date}", transcript.captured).replace("{n}", String(transcript.runs[0].elided));
       expect(text).not.toContain(caption.slice(-24)); // r10's "real output of 2.0.3 on …" caption
-      expect(text).toMatch(/└ {2}Done\. \d+ skills/);
+      expect(text).toMatch(/└ {2}Done\. Restart your agent/);
+      expect(text).toContain("Installing for each agent");
       expect(text).not.toMatch(/Render checks|omd doctor/);
       expect(text.replace(/\s+/g, " ")).toContain(INSTALL.replace(/\s+/g, " "));
     }
   });
 
-  it("the terminal only drops box borders, padding and blank box rows — every printed word stays", () => {
-    const [install] = transcript.runs;
-    const words = (ls: readonly string[]) => ls.join(" ").replace(/[│◇├─╮╯]/g, " ").split(/\s+/).filter(Boolean);
-    expect(words(boxLines(install.tail))).toEqual(words(install.tail));
-    expect(words(boxLines(install.lines))).toEqual(words(install.lines));
-    expect(boxLines(install.tail).some((x) => /[╮╯]/.test(x))).toBe(false);
-  });
 });

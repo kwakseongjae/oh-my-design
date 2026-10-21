@@ -24,11 +24,12 @@ import { CopyButton } from "./copy-button";
 
 /* ---------- install: the command typed, then the real output streamed ---------- */
 
-/** One row of the install output (cli-section.tsx installRows): its text and tone class, or the transcript's one cut. */
+/** One row of the install output (cli-section.tsx installScript): its text and tone class; `hold` pauses before it (the install's work). */
 export interface TermRow {
   readonly t: string;
   readonly c?: string;
   readonly gap?: boolean;
+  readonly hold?: boolean;
 }
 
 /** the prompt waits a beat before the first key */
@@ -56,7 +57,7 @@ export function installBeats(cmd: string, rows: readonly TermRow[]): number[] {
   t += ENTER;
   out.push(t);
   rows.forEach((r, i) => {
-    t += i === 0 ? START : r.gap ? HOLD : i === rows.length - 1 ? LAST : r.t.trim() === "│" ? BLANK : ROW;
+    t += i === 0 ? START : r.gap || r.hold ? HOLD : i === rows.length - 1 ? LAST : r.t.trim() === "│" ? BLANK : ROW;
     out.push(t);
   });
   return out;

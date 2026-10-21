@@ -4,16 +4,18 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import transcript from "@/data/cli-transcript.json";
-import { CliSection, INSTALL, boxLines, installRows } from "@/components/brand-a/cli-section";
+import { CliSection, HOOK_COUNT, INSTALL, PUBLIC_SKILLS, installScript } from "@/components/brand-a/cli-section";
+import { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 import { installBeats, installFrame } from "@/components/brand-a/cli-steps";
 import { fmt, getCopy } from "@/components/brand-a/copy";
 import { getR10 } from "@/components/brand-a/copy/r10";
 import { getR11Hero } from "@/components/brand-a/copy/r11-hero";
 
 /**
- * Round 13 CLI section (owner 2026-10-21): the install terminal types the command and streams the
- * real output, the two steps are rows (no sticky stage, so no empty bands and no jump), and the
- * apply trace carries no brand-face note.
+ * Round 13 CLI section (owner 2026-10-21): the install terminal types the command and streams an
+ * abstract of what it does (the agents it finds, what each gets, every skill, the archive), the two
+ * steps are rows (no sticky stage, so no empty bands and no jump), and the apply trace carries no
+ * brand-face note.
  */
 const LOCALES = ["en", "ko", "ja", "zh-tw"] as const;
 const [install] = transcript.runs;
@@ -25,46 +27,65 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const render = (l: (typeof LOCALES)[number]) =>
   renderToStaticMarkup(createElement(CliSection, { locale: l, c: getCopy(l), r: getR10(l), total: 521, skills: 31, skillsHref: "#" }));
 
-describe("the streamed install is the transcript, in order, with its one cut marked", () => {
-  it("every row is a transcript line in its order; the cut is one row that counts what it leaves out", () => {
-    for (const l of LOCALES) {
-      const gap = fmt(getCopy(l).use.gap, { n: install.elided });
-      const rows = installRows(gap);
-      expect(rows.filter((r) => !r.gap).map((r) => r.t), l).toEqual([...boxLines(install.lines), ...boxLines(install.tail)]);
-      const cuts = rows.flatMap((r, i) => (r.gap ? [i] : []));
-      expect(cuts, l).toEqual([boxLines(install.lines).length]);
-      expect(rows[cuts[0]].t, l).toBe(`│  … ${gap}`);
-      expect(rows[cuts[0]].t, l).toContain(String(install.elided));
-      expect(rows.at(-1)?.t, l).toMatch(/^└ {2}Done\. \d+ skills/);
-      for (const r of rows) expect([undefined, "sq-ta", "sq-tw", "sq-tp"], r.t).toContain(r.c);
-    }
+describe("the streamed install: one command, every agent in its own format, every skill", () => {
+  const rows = installScript();
+  const text = rows.map((r) => r.t).join("\n");
+  const ROOT = path.resolve(WEB, "..");
+
+  it("opens on the CLI, ends on Done, and only uses the terminal's tones", () => {
+    expect(rows[0]).toEqual({ t: "◆  oh-my-design-cli", c: "sq-ta" });
+    expect(rows.at(-1)?.t).toMatch(/^└ {2}Done\./);
+    for (const r of rows) expect([undefined, "sq-ta", "sq-tw", "sq-tp"], r.t).toContain(r.c);
   });
 
-  it("types at a hand's pace, pauses before Enter, holds at the cut, and ends on Done in a few seconds", () => {
-    const rows = installRows("x");
+  it("every number is the installer's own: catalog counts, and the hook count from the real run", () => {
+    expect(HOOK_COUNT).toBe(Number(/(\d+) hooks/.exec(install.tail.join("\n"))?.[1]));
+    expect(text).toContain(`Claude Code   ${SKILL_COUNT} skills · ${SUBAGENT_COUNT} sub-agents · ${HOOK_COUNT} hooks`);
+    expect(text).toContain(`Codex         ${SKILL_COUNT} skills · ${SUBAGENT_COUNT} sub-agents`);
+    expect(text).toContain(`${PUBLIC_SKILL_COUNT} public, ${SKILL_COUNT} in the bundle`);
+    expect(text).toContain(`+ ${SKILL_COUNT - PUBLIC_SKILLS.length} more`);
+    expect(text).toContain(`${REFERENCE_COUNT} references`);
+  });
+
+  it("what each agent gets matches the installer: sub-agents for Claude Code, Codex and OpenCode, hooks for Claude Code only", () => {
+    const src = fs.readFileSync(path.join(ROOT, "src/cli/install-skills.ts"), "utf8");
+    for (const ch of ["claude", "codex", "opencode"]) expect(src).toContain(`installAgentFile(packageRoot, installRoot, '${ch}'`);
+    expect(src).not.toContain("installAgentFile(packageRoot, installRoot, 'cursor'");
+    expect(src).toMatch(/join\(projectRoot, '\.claude', 'hooks', filename\)/);
+    expect(text).toMatch(/Cursor {8}Agent Skills · DESIGN\.md rule/);
+    expect(text).not.toMatch(/Cursor .*sub-agents|Codex .*hooks/);
+  });
+
+  it("the public skills are exactly the skills npx skills lists (no metadata.internal)", () => {
+    const listed = fs
+      .readdirSync(path.join(ROOT, "skills"))
+      .filter((d) => fs.existsSync(path.join(ROOT, "skills", d, "SKILL.md")))
+      .filter((d) => !/^\s*internal:\s*true\s*$/m.test(fs.readFileSync(path.join(ROOT, "skills", d, "SKILL.md"), "utf8").split(/^---\s*$/m)[1] ?? ""));
+    expect([...listed].sort()).toEqual([...PUBLIC_SKILLS].sort());
+    expect(PUBLIC_SKILLS.length).toBe(PUBLIC_SKILL_COUNT);
+    for (const n of PUBLIC_SKILLS) expect(text).toContain(n);
+  });
+
+  it("types at a hand's pace, pauses before Enter, holds where the install works, and ends on Done in a few seconds", () => {
     const t = installBeats(INSTALL, rows);
     const n = INSTALL.length;
     expect(t.length).toBe(n + 2 + rows.length);
     for (let i = 1; i < t.length; i++) expect(t[i], `beat ${i}`).toBeGreaterThan(t[i - 1]);
-    // the characters: 35–60 ms apart
     for (let i = 2; i <= n; i++) expect(t[i] - t[i - 1], `key ${i}`).toBeGreaterThanOrEqual(35);
     for (let i = 2; i <= n; i++) expect(t[i] - t[i - 1], `key ${i}`).toBeLessThanOrEqual(60);
-    // a small pause before Enter, longer than any keystroke
     expect(t[n + 1] - t[n]).toBeGreaterThanOrEqual(250);
-    // the longest wait in the output is the cut, standing for the install's work
     const out = rows.map((_, k) => t[n + 2 + k] - t[n + 1 + k]);
-    const cut = rows.findIndex((r) => r.gap);
-    expect(Math.max(...out)).toBe(out[cut]);
+    expect(Math.max(...out)).toBe(out[rows.findIndex((r) => r.hold)]);
     expect(t.at(-1)).toBeLessThan(7000);
   });
 
   it("a beat maps to characters typed, Enter, then rows shown", () => {
-    const n = INSTALL.length, rows = installRows("x").length;
+    const n = INSTALL.length;
     expect(installFrame(0, n)).toEqual({ typed: 0, entered: false, shown: 0 });
     expect(installFrame(7, n)).toEqual({ typed: 7, entered: false, shown: 0 });
     expect(installFrame(n, n)).toEqual({ typed: n, entered: false, shown: 0 });
     expect(installFrame(n + 1, n)).toEqual({ typed: n, entered: true, shown: 0 });
-    expect(installFrame(n + 1 + rows, n)).toEqual({ typed: n, entered: true, shown: rows });
+    expect(installFrame(n + 1 + rows.length, n)).toEqual({ typed: n, entered: true, shown: rows.length });
   });
 });
 
@@ -89,7 +110,7 @@ describe("rendered: two rows, the finished runs, no font note", () => {
   it("the server renders the finished install: the whole command, every row, Done; the copy button carries the command", () => {
     for (const l of LOCALES) {
       const html = render(l);
-      const rows = installRows(fmt(getCopy(l).use.gap, { n: install.elided }));
+      const rows = installScript();
       for (const r of rows) expect(html, `${l}: ${r.t}`).toContain(esc(r.t));
       expect(html, l).not.toMatch(/sq-tc-rest|sq-tc-car|sq-to-cur/); // nothing left to type, no cursor
       expect(visible(html).replace(/\s+/g, " "), l).toContain(INSTALL);

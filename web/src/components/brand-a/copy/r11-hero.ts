@@ -203,7 +203,7 @@ const KO: R11HeroCopy = {
   cli: {
     context: "oh-my-design-cli는 레퍼런스와 디자인 스킬을 내 코딩 에이전트에 설치하는 도구예요.",
     steps: [
-      { t: "설치", p: "프로젝트 루트에서 한 번 실행하세요. Claude Code·Codex·OpenCode에 함께 들어가요." },
+      { t: "설치", p: "프로젝트 루트에서 한 번 실행하세요. 프로젝트에 있는 코딩 에이전트를 찾아, 저마다 맞는 형식으로 모든 스킬과 DESIGN.md 아카이브를 설치해요." },
       { t: "적용", p: "에이전트에게 한 문장으로 부탁하세요. omd-apply가 DESIGN.md를 읽고 그 값으로 화면을 만들어요." },
     ],
     prompt: "이 DESIGN.md로 홈 화면 만들어줘",
@@ -341,7 +341,7 @@ const EN: R11HeroCopy = {
   cli: {
     context: "oh-my-design-cli installs the references and design skills into your coding agent.",
     steps: [
-      { t: "Install", p: "Run it once in your project root. It goes into Claude Code, Codex and OpenCode in one pass." },
+      { t: "Install", p: "Run it once in your project root. It finds the coding agents in the project and installs every skill and the DESIGN.md archive in each one's own format." },
       { t: "Apply", p: "Ask your agent in one sentence. omd-apply reads DESIGN.md and builds the screen from its values." },
     ],
     prompt: "Using this DESIGN.md, design the home screen.",
@@ -479,7 +479,7 @@ const JA: R11HeroCopy = {
   cli: {
     context: "oh-my-design-cliは、リファレンスとデザインスキルをお使いのコーディングエージェントに入れるツールです。",
     steps: [
-      { t: "インストール", p: "プロジェクトのルートで一度実行します。Claude Code・Codex・OpenCodeにまとめて入ります。" },
+      { t: "インストール", p: "プロジェクトのルートで一度実行します。プロジェクト内のコーディングエージェントを見つけ、それぞれの形式ですべてのスキルとDESIGN.mdアーカイブを入れます。" },
       { t: "適用", p: "エージェントに一文で頼みます。omd-applyがDESIGN.mdを読み、その値で画面を作ります。" },
     ],
     prompt: "このDESIGN.mdでホーム画面を作って",
@@ -617,7 +617,7 @@ const ZH_TW: R11HeroCopy = {
   cli: {
     context: "oh-my-design-cli 是把參考資料和設計技能裝進你的 AI 程式助理的工具。",
     steps: [
-      { t: "安裝", p: "在專案根目錄執行一次，Claude Code、Codex 與 OpenCode 就會一起裝好。" },
+      { t: "安裝", p: "在專案根目錄執行一次。它會找出專案裡的程式碼代理，依各自的格式裝好所有技能與 DESIGN.md 典藏。" },
       { t: "套用", p: "用一句話請 AI 程式助理動手。omd-apply 會讀 DESIGN.md，用裡面的數值做出畫面。" },
     ],
     prompt: "用這份 DESIGN.md 做首頁",

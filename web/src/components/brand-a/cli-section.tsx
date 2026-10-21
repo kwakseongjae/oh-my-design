@@ -1,5 +1,6 @@
 import transcript from "@/data/cli-transcript.json";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
+import { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 import { getCliScreen } from "@/lib/landing-a/chat-data.server";
 import { CliSteps, type TermRow } from "./cli-steps";
 import { fmt, type BrandCopy } from "./copy";
@@ -12,19 +13,21 @@ import { getR11Hero } from "./copy/r11-hero";
  * 2026-10-21) replaced round 11's sticky stage, which left empty bands before and after it.
  *
  *   install  the command typed at the prompt (copyable; the hero's install box carries the same
- *            INSTALL), then the real output of the published package streamed row by row
- *            (data/cli-transcript.json, recaptured with scripts/capture-cli-transcript.mjs). Every
- *            streamed row is a transcript line, in its order; the JSON's one cut — the per-file
- *            list — streams as one dim row that says how many lines it leaves out (installRows).
+ *            INSTALL), then an abstract of what that one command does (installScript): it finds the
+ *            coding agents in the project and installs every skill in each agent's own format.
+ *            Owner, 2026-10-21: "실제 설치되는 스크립트가 필요한 게 아니야 … 저 스크립트 하나로 사용자가
+ *            필요로 하는 에이전트 환경에 맞춰 설치가 된다는 걸 보여 주는 거지." Every number and path in it
+ *            is the installer's own: counts from catalog-meta.generated (SKILL / SUBAGENT /
+ *            REFERENCE), the hook count from the real 2.0.4 run's Done line, and what each agent
+ *            gets from src/cli/install-skills.ts (sub-agents for Claude Code, Codex and OpenCode;
+ *            hooks for Claude Code only; Cursor's Agent Skills plus a DESIGN.md rule).
  *   apply    the agent trace (agent-trace.tsx, the hero's) on the left, the screen it writes on
  *            the right: the CLI's own printed next step ("Using this DESIGN.md, design the home
  *            screen.") on a Toss-inspired project, drawn only from Toss's verified tokens. No
  *            brand-face note under the trace (owner, round 13).
  *
- * What the terminal changes at render time, and only this (boxLines): the Next box loses its
- * border characters, the padding before its right border and its blank rows; trailing spaces go.
- * Every printed word stays, in order. The doctor run stays in the JSON (same schema) but is no
- * longer shown — the "check" step is gone (owner, #12).
+ * The example project has Claude Code, Codex and Cursor but no OpenCode, so the run shows the
+ * installer skipping an agent that isn't there (it preselects the agents it detects).
  */
 export const INSTALL = transcript.runs[0].cmd;
 
@@ -34,38 +37,41 @@ export function CmdText({ cmd = INSTALL }: { cmd?: string }) {
   return <>{words.map((w, i) => <span key={i}>{i ? " " : null}<span className="sq-nb">{w}</span></span>)}</>;
 }
 
-/** A clack box printed flat: no ─╮ / ├─╯ rules, no right border or padding, no blank box rows. */
-export function boxLines(lines: readonly string[]): string[] {
-  const out: string[] = [];
-  for (const l of lines) {
-    if (/^├─+╯\s*$/.test(l)) continue;
-    if (/^◇\s/.test(l)) { out.push(l.replace(/\s*─+╮\s*$/, "")); continue; }
-    if (l.length > 2 && l.startsWith("│") && l.trimEnd().endsWith("│")) {
-      const inner = l.trimEnd().slice(1, -1).replace(/\s+$/, "");
-      if (inner.trim()) out.push("│" + inner);
-      continue;
-    }
-    out.push(l.replace(/\s+$/, ""));
-  }
-  return out;
-}
+/** The skills `npx skills` lists (no `metadata.internal`); __tests__/r13-cli.test.ts pins them to skills/. */
+export const PUBLIC_SKILLS = [
+  "omd-init", "omd-apply", "omd-autopilot", "omd-feel", "omd-restraint",
+  "omd-slop-audit", "omd-humanize", "omd-landing", "omd-shader-hero", "omd-cjk-type-shader",
+] as const;
 
-/* the output's own marks: ◆ / Done the success tone, ▲ / ⚠ the warning tone, the prompts it tells you to send in full ink */
-const tone = (l: string) =>
-  /^(◆|└ {2}Done)/.test(l) ? "sq-ta" : /^(▲|│ {2}⚠)/.test(l) ? "sq-tw" : /^│ {4}\S/.test(l) ? "sq-tp" : undefined;
+/** Hooks the installer writes for Claude Code, read from the real 2.0.4 run's Done line. */
+export const HOOK_COUNT = Number(/(\d+) hooks/.exec(transcript.runs[0].tail.join("\n"))?.[1]);
 
 /**
- * The install run as the terminal streams it: the lines before the cut, the cut as one marked row
- * (`gap`, the page's "{n} lines left out"), then the lines after it — the transcript's order, nothing
- * else.
+ * The install as the terminal streams it: one command, the agents it finds, what each one gets, the
+ * skills, the archive, Done. `hold` marks the beat where the install does its work.
  */
-export function installRows(gap: string): TermRow[] {
-  const run = transcript.runs[0];
-  const row = (t: string): TermRow => {
-    const c = tone(t);
-    return c ? { t, c } : { t };
-  };
-  return [...boxLines(run.lines).map(row), { t: "│  … " + gap, gap: true }, ...boxLines(run.tail).map(row)];
+export function installScript(): TermRow[] {
+  const more = SKILL_COUNT - PUBLIC_SKILLS.length;
+  const names = PUBLIC_SKILLS.join(" · ").match(/.{1,46}(?:\s·\s|$)/g) ?? [];
+  return [
+    { t: "◆  oh-my-design-cli", c: "sq-ta" },
+    { t: "│" },
+    { t: "◇  Coding agents in this project", c: "sq-tp" },
+    { t: "│  ✓ Claude Code   ✓ Codex   ✓ Cursor   – OpenCode (not here)" },
+    { t: "│" },
+    { t: "◇  Installing for each agent", c: "sq-tp", hold: true },
+    { t: `│  Claude Code   ${SKILL_COUNT} skills · ${SUBAGENT_COUNT} sub-agents · ${HOOK_COUNT} hooks` },
+    { t: `│  Codex         ${SKILL_COUNT} skills · ${SUBAGENT_COUNT} sub-agents` },
+    { t: "│  Cursor        Agent Skills · DESIGN.md rule" },
+    { t: "│" },
+    { t: `◇  Skills — ${PUBLIC_SKILL_COUNT} public, ${SKILL_COUNT} in the bundle`, c: "sq-tp" },
+    ...names.map((n) => ({ t: `│  ${n.replace(/\s·\s$/, "")}` })),
+    { t: `│  + ${more} more` },
+    { t: "│" },
+    { t: `◇  DESIGN.md archive — ${REFERENCE_COUNT} references, offline`, c: "sq-tp" },
+    { t: "│" },
+    { t: "└  Done. Restart your agent and ask in one sentence.", c: "sq-ta" },
+  ];
 }
 
 /** Pre-hydration, right after the steps: hide the two runs that are about to play (agent-trace.tsx usePlay). */
@@ -92,7 +98,7 @@ export function CliSection({ locale, c, r, skills, skillsHref }: { locale: SiteL
           steps={h.cli.steps}
           install={{
             cmd: INSTALL,
-            rows: installRows(fmt(c.use.gap, { n: transcript.runs[0].elided })),
+            rows: installScript(),
             gapLang: locale === "zh-tw" ? "zh-Hant" : locale,
             labels: { region: r.cli.term, copy: { copy: c.use.copy, copied: c.use.copied, failed: c.use.failed }, replay: h.cli.replay },
           }}
