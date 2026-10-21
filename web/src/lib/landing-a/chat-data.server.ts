@@ -573,19 +573,24 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale
       ]),
     ]);
   } else if (kind === "product") {
-    // Commerce: the OmD shopping-bag prop on the company's product tile (its surface and card radius,
-    // from one component when a card component supplies them), then the item, one line, price and
-    // delivery rows and the buy button.
+    // Commerce: a list item — the OmD shopping-bag prop on the company's product tile (its surface
+    // and card radius, from one component when a card component supplies them) beside the item and
+    // one line, then price and delivery rows and the buy button. A row, not a stacked tile, so the
+    // card fits the hero's fixed-height column on every locale.
     const box = boxOf(id, s);
     const title = titleType(id), text = textType(id, s), small = smallType(id, s);
     const ink = legible(page, fg), soft = legible(page, body, fg);
     const prop = getProp("shopping-bag");
     root = el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
-      prop ? el("div", { cls: "sq-ex-media", css: css({ background: box.bg, borderRadius: box.radius }), part: 1 }, [
-        el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" } }),
-      ]) : null,
-      el("h3", { css: typeCss(title, ink), text: t.title, part: 1 }),
-      el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }),
+      el("div", { cls: "sq-ex-item" }, [
+        prop ? el("div", { cls: "sq-ex-media", css: css({ background: box.bg, borderRadius: box.radius }), part: 1 }, [
+          el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" } }),
+        ]) : null,
+        el("div", { cls: "sq-ex-itxt" }, [
+          el("h3", { css: typeCss(title, ink), text: t.title, part: 1 }),
+          el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }),
+        ]),
+      ]),
       el("div", { cls: "sq-ex-kv", part: 3 },
         t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(text, ink), text: v })]))),
       buttonG(btn, buttonEdge(id, s.btn), t.cta, 4),

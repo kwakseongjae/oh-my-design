@@ -64,11 +64,14 @@ button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--
 .sq-ex-tags{margin:2px 0 14px}
 .sq-ex-prop{margin-bottom:8px}
 .sq-ex-prop img{display:block;width:auto;height:96px}
-/* round 12 generic cards: a product tile (the company's surface and radius, set inline) holding the
-   OmD prop; the inner padding of a surface whose company claims none (OmD's, like .sq-ex-rows);
-   space above a button that follows a key-value list */
-.sq-ex-media{display:grid;place-items:center;width:100%;height:136px;margin-bottom:12px}
+/* round 12 generic cards: a product list item — the tile (the company's surface and radius, set
+   inline) holding the OmD prop, beside the name and one line; the inner padding of a surface whose
+   company claims none (OmD's, like .sq-ex-rows); space above a button that follows a key-value list */
+.sq-ex-item{display:flex;align-items:center;gap:16px;width:100%;margin-bottom:6px}
+.sq-ex-itxt{display:flex;flex-direction:column;gap:4px;min-width:0}
+.sq-ex-media{flex:none;display:grid;place-items:center;width:88px;height:88px}
 .sq-ex-media .sq-ex-prop{margin:0}
+.sq-ex-media .sq-ex-prop img{height:64px}
 .sq-ex-inset{padding:20px 24px}
 .sq-ex-col .sq-ex-kv+.sq-ex-btn{margin-top:12px}
 /* a picked company's request re-enters (chat-demo.tsx keys the bubble by pick) */
@@ -89,8 +92,8 @@ button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--
   .sq-bub{max-width:92%}
   .sq-ex-col{padding:24px 20px}
   .sq-ex-pad{padding:16px}
-  .sq-ex-media{height:112px}
-  .sq-ex-media img{height:80px}
+  .sq-ex-media{width:72px;height:72px}
+  .sq-ex-media .sq-ex-prop img{height:52px}
 }
 
 @media (prefers-reduced-motion:reduce){
