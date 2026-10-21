@@ -2,10 +2,11 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsInit } from "@/components/analytics-init";
 import { AnalyticsConsent } from "@/components/analytics-consent";
+import { VercelAnalytics } from "@/components/vercel-analytics";
 import { GA_ID } from "@/lib/gtag";
 import { EEA_REGION_CODES } from "@/lib/eea";
 import { SITE_ORIGIN } from "@/lib/site";
-import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
 import pkg from "../../../package.json" with { type: "json" };
 
@@ -68,7 +69,7 @@ const SITE_JSON_LD = {
         priceCurrency: "USD",
       },
       featureList: [
-        `${SKILL_COUNT} product skills and ${SUBAGENT_COUNT} specialist agent definitions`,
+        `${PUBLIC_SKILL_COUNT} public skills (a ${SKILL_COUNT}-skill bundle) and ${SUBAGENT_COUNT} specialist agent definitions`,
         "Native project skills for Claude Code, Codex, OpenCode, and Cursor 2.4+",
         TIERS,
         "verified_v2 references recommended for public demos",
@@ -106,6 +107,7 @@ export function RootDocument({
         <ThemeProvider>{children}</ThemeProvider>
         <AnalyticsInit />
         <AnalyticsConsent />
+        <VercelAnalytics />
         {GA_ID && (
           <>
             {/* Consent Mode v2 defaults run BEFORE config (same inline script =

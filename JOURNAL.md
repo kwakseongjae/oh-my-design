@@ -1,5 +1,23 @@
 # JOURNAL
 
+## 2026-10-21 — 13차 main 준비, 브랜치 `feat/r13-mainprep`
+
+- **한 일**: referral-1(`bdaa413c`)·growth-metrics(`b0d5e5f0`)를 리브랜딩에 병합했다. 라운드 11 문서 구조에 shadcn 가이드(5개 언어, Guides 그룹)와 공개 스킬 10개를 이식했고, 2.0.5 범프·CHANGELOG(`cf74d427`)까지 마쳤다. 게이트와 스모크 근거는 `docs/research/2026-10-21-r13/mainprep/`(gitignored)에 있다.
+- **열린 것**: 품질 게이트 BLOCKED(2.0.4와 같은 상태) → 오너 waiver 필요. `/ko/design-systems/[id]` og:image가 아직 `/api/og`다(상세 스트림 몫). Vercel 스크립트 태그는 동의 전·거부 후에도 로드되고, 거부 후에는 비컨만 0이다(growth-metrics 설계 그대로).
+- **다음**: 리드 push → 오너 GO·waiver → main 병합 → v2.0.5 태그.
+
+## 2026-10-14 — 계측 기반(P0/5), 브랜치 `feat/growth-metrics`
+
+- **한 일**: 주간 스냅샷 워크플로(`.github/workflows/growth-snapshot.yml`, 월 03:23 UTC + 수동)를 만들었다. 공개 지표(별·npm·skills.sh)는 공개 브랜치 `growth-data`에, 비공개 지표(트래픽·리퍼러·DAU)는 별도 비공개 레포에만 쓴다. 레포가 공개라 로그·아티팩트에도 내보내지 않는다(`--quiet`). Vercel Web Analytics를 다시 붙였다(쿠키 없음, Decline 시 drop). GA4 복구 가이드는 `scripts/analytics/RESTORE-2026-10.md`.
+- **열린 것**: 오너가 비공개 레포·PAT·시크릿을 만들어야 한다(`METRICS_REPO` 변수 + `METRICS_REPO_TOKEN`, `GH_TRAFFIC_TOKEN`, `OMD_KV_REST_API_URL/TOKEN`). 그 전까지는 공개 지표만 쌓인다. GA4 복구(구글 로그인)도 오너 몫이다.
+- **다음**: 시크릿을 넣은 뒤 workflow_dispatch로 한 번 돌리고, 로컬 `data/growth/metrics.jsonl`(3줄, 비공개)을 비공개 레포에 시드한다.
+
+## 2026-10-14 (referral round 1, `feat/referral-1`)
+
+- **한 일**: 공유 이미지 `/api/og/*` → `/og/*`(robots 허용, 옛 URL 308). skills/ 15개 `name: omd:x` → `omd-x` + `skills-lock.json`으로 레포 내 설치본(.claude/.agents) 숨김 → `npx skills` 발견 54→31, 콜론 0. `/docs/<locale>/shadcn` 레시피(5개 로캘) + 배포판 toss로 shadcn 스킬 실제 1회 실행 기록(`docs/research/2026-10-14-referral/shadcn-run/`). ui-skills PR 초안(`UI-SKILLS-PR.md`, 미제출).
+- **열린 것**: ui-skills PR 제출은 오너 확인 + main 반영 뒤. D3 공개 6~8개(`metadata.internal`) 선정은 오너. `npx skills`로 옛 이름 설치한 사용자는 update 때 "deleted upstream" 표시(행당 ≤20).
+- **다음**: main 반영 후 라이브에서 `curl -A Twitterbot /og/reference?id=toss` 재확인, ui-skills PR, `hangul` 공개 시 skills.sh 이름 확인.
+
 ## 2026-09-30
 
 - **한 일**: 상위 20 프로브 C·D → 저작 6곳 + 번들 심화 13곳(웨이브 6) = 19곳 브랜치(`cf59d446`). 프로브 도구 사각지대(빈 자식 레이어·자손 링·tabIndex<0·비활성·Tab 안착) 발견 → 도구 수정(`b6f7370b`) → 라이브 8곳 부재 판독 재측정: 198/220 유지, 22건 정정(karrot·naver·yeogiotte, `7a3a703a`). 도구 2차(스프라이트·img·SVG·inert, `662f5653`). onestore 개발자 포털(브라우저 기본값)·11st 번들 포커스 철회. Evidence 요약 날짜 수정.

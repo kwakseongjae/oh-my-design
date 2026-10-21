@@ -1,6 +1,8 @@
 # oh-my-design
 
-> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode には31の製品スキルと20のエージェント定義のフルバンドルを、Cursor 2.4+ には互換 Agent Skills 30 個と小さなプロジェクト rule、ローカルカタログを導入します。品質グレード付き DESIGN.md 521件は verified_v2 299件、partial 109件、legacy 113件で、公開デモには verified_v2 を使います。
+> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode にはフルバンドルの 31 スキルと20のエージェント定義を、Cursor 2.4+ には互換 Agent Skills 30 個と小さなプロジェクト rule、ローカルカタログを導入します。品質グレード付き DESIGN.md 521件は verified_v2 299件、partial 109件、legacy 113件で、公開デモには verified_v2 を使います。
+
+`npx skills add kwakseongjae/oh-my-design` が一覧に出すのは 10 の公開スキル（`omd-init`、`omd-apply`、`omd-autopilot`、`omd-feel`、`omd-restraint`、`omd-slop-audit`、`omd-humanize`、`omd-landing`、`omd-shader-hero`、`omd-cjk-type-shader`）です。残りはワークフローが自ら呼び出す内部スキルで、フルバンドルに含まれ、そのまま動作します。
 
 ## モデル
 
@@ -42,5 +44,6 @@ Docs: https://oh-my-design.kr/docs/ja
 Skills: https://oh-my-design.kr/docs/ja/skills
 Live demo: https://oh-my-design.kr/docs/ja/demo
 AI slop の判定基準と比較: https://oh-my-design.kr/docs/ja/anti-slop
+OmD リファレンス + shadcn スキルのレシピ: https://oh-my-design.kr/docs/ja/shadcn
 Full context: https://oh-my-design.kr/llms-full.txt
 Raw reference: `https://oh-my-design.kr/<id>/design.md`

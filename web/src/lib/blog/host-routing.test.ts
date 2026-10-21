@@ -33,6 +33,8 @@ describe("routing on the blog host", () => {
     // send the page's own JS and images to /blog/... and 404 the whole render.
     ["/_next/static/chunks/main.js", null],
     ["/api/track", null],
+    // Share cards render on whichever host a post links them from.
+    ["/og/blog", null],
     ["/logo.png", null],
     ["/favicon.ico", null],
     // Dotted, but the blog owns these: they have blog-specific routes.

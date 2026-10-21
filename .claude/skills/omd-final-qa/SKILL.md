@@ -2,6 +2,8 @@
 name: omd:final-qa
 description: "출간 ready 직전 read-only critic. 8-item rubric 강제. 'looks good' rubber-stamp 금지. 라인 ref 필수. 2-round revision hard cap. '최종 QA', '출간 검수', 'rubric으로 평가' 류 트리거."
 user-invocable: true
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

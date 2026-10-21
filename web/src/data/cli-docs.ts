@@ -1,6 +1,7 @@
 import type { DocsLocale, DocsNavGroup, DocsPage } from "@/lib/docs/locales";
-import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
+import { SHADCN_RECIPE, type ShadcnRecipeCopy } from "./docs-shadcn-recipe";
 
 export const CLI_INSTALL_COMMAND = "npx oh-my-design-cli@latest";
 export const CLI_DOCTOR_COMMAND = "npx oh-my-design-cli@latest doctor";
@@ -10,10 +11,14 @@ export const CLI_DOCTOR_COMMAND = "npx oh-my-design-cli@latest doctor";
  * source the landing reads), so no locale can drift from the shipped bundle.
  * The one literal left in prose is the Cursor Agent Skills count, which is
  * written in a phrasing scripts/check-counts.mjs verifies against SKILL.md.
+ * `skills` is the full bundle the installer writes; `public` is the part
+ * `npx skills add` lists (owner decision 2026-10-15), and the skills page
+ * shows only those.
  */
 const N = {
   refs: REFERENCE_COUNT,
   skills: SKILL_COUNT,
+  public: PUBLIC_SKILL_COUNT,
   agents: SUBAGENT_COUNT,
   verified: REFERENCE_QUALITY_COUNTS.verified_v2,
   partial: REFERENCE_QUALITY_COUNTS.partial,
@@ -277,20 +282,31 @@ export interface CliDocsDictionary {
     sourcesLead: string;
     sources: AntiSlopSource[];
   };
+  /** /docs/<locale>/shadcn — the copy lives in ./docs-shadcn-recipe.ts. */
+  shadcn: ShadcnRecipeCopy;
 }
 
-/** Skill ids by group, shared by every locale (only titles and descriptions are translated). */
+/** A locale as written below, before its shadcn recipe copy and nav label are merged in. */
+type BaseDictionary = Omit<CliDocsDictionary, "nav" | "shadcn"> & {
+  nav: Record<Exclude<DocsPage, "shadcn">, string>;
+};
+
+/**
+ * Public skill ids by group, shared by every locale (only titles and descriptions are
+ * translated). Public skills only (owner decision 2026-10-15): the installer still
+ * writes the full bundle, and skills marked `metadata.internal: true` keep working,
+ * but they are not listed here, in the READMEs, in llms.txt or by `npx skills add`.
+ */
 export const SKILL_GROUP_IDS = {
-  system: ["omd:init", "omd:apply", "omd:sync", "omd:update", "omd:setup", "omd:remember", "omd:learn", "omd:taste"],
-  build: ["omd:autopilot", "omd:harness", "omd:orchestrator", "omd:landing", "omd:aphrodite", "omd:media", "omd:showcase", "omd:shader-hero", "omd:cjk-type-shader", "omd:asset-fetch", "omd:codex-image", "claude-design"],
-  quality: ["omd:feel", "omd:restraint", "omd:slop-audit", "omd:designer-review", "omd:final-qa", "omd:experiment-gallery", "omd:issue"],
-  content: ["omd:kr-writer", "omd:locale-adapter", "omd:humanize"],
-  evidence: ["omd:reference-capture"],
+  system: ["omd:init", "omd:apply"],
+  build: ["omd:autopilot", "omd:landing", "omd:shader-hero", "omd:cjk-type-shader"],
+  quality: ["omd:feel", "omd:restraint", "omd:slop-audit"],
+  content: ["omd:humanize"],
 } as const;
 
-const SKILL_GROUP_ORDER = ["system", "build", "quality", "content", "evidence"] as const;
+const SKILL_GROUP_ORDER = ["system", "build", "quality", "content"] as const;
 
-/** Builds the five skill groups from translated titles and descriptions, in the shared order. */
+/** Builds the skill groups from translated titles and descriptions, in the shared order. */
 function skillGroups(text: Record<(typeof SKILL_GROUP_ORDER)[number], { title: string; description: string }>): SkillGroup[] {
   return SKILL_GROUP_ORDER.map((id) => ({ ...text[id], skills: [...SKILL_GROUP_IDS[id]] }));
 }
@@ -304,7 +320,7 @@ function rawLinks(llms: { href: string; description: string }, rawDescription: s
   ];
 }
 
-const en: CliDocsDictionary = {
+const en: BaseDictionary = {
   localeName: "English",
   metaDescription: "How to use oh-my-design: take a DESIGN.md from the archive of real companies, install oh-my-design-cli, and have your coding agent build your UI with it.",
   ui: {
@@ -351,7 +367,7 @@ const en: CliDocsDictionary = {
     },
     cli: {
       name: "oh-my-design-cli",
-      body: `One command adds ${N.skills} skills, ${N.agents} specialist agents and an offline copy of the archive to Claude Code, Codex, OpenCode or Cursor, as far as each tool supports them. The skills set up your project's DESIGN.md and follow it on every UI change.`,
+      body: `One command adds the ${N.skills}-skill bundle (${N.public} public skills and the internal ones they call), ${N.agents} specialist agents and an offline copy of the archive to Claude Code, Codex, OpenCode or Cursor, as far as each tool supports them. The skills set up your project's DESIGN.md and follow it on every UI change.`,
       action: "Install the CLI",
     },
     installTitle: "Install",
@@ -385,7 +401,7 @@ const en: CliDocsDictionary = {
     next: [
       { page: "getting-started", body: "Install, check the install, and make one visible change." },
       { page: "workflows", body: "Ready-made prompts for common jobs." },
-      { page: "skills", body: "Every skill the CLI installs, and what each one does." },
+      { page: "skills", body: "The public skills, and what each one does." },
     ],
   },
   gettingStarted: {
@@ -507,46 +523,24 @@ const en: CliDocsDictionary = {
   },
   skills: {
     title: "Skills",
-    lead: `oh-my-design-cli ships ${N.skills} skills and ${N.agents} specialist agents. You rarely need their names: describe the result and the agent picks the skill. Name one when you want exact control.`,
+    lead: `These are the ${N.public} public skills. oh-my-design-cli installs them as a ${N.skills}-skill bundle, together with the internal skills they call, and ${N.agents} specialist agents. You rarely need their names: describe the result and the agent picks the skill. Name one when you want exact control.`,
     groups: skillGroups({
-      system: { title: "Set up and keep DESIGN.md", description: "Create the project's DESIGN.md, apply it, keep it in sync, and fold in your corrections." },
+      system: { title: "Set up and keep DESIGN.md", description: "Create the project's DESIGN.md and apply it to every UI change." },
       build: { title: "Build screens", description: "Go from a brief to a working interface, with real assets and a handoff." },
-      quality: { title: "Check quality", description: "Review feel, consistency, restraint, generated-UI patterns and readiness to ship." },
-      content: { title: "Write copy", description: "Write Korean long-form, and adapt copy to other languages without translating it word for word." },
-      evidence: { title: "Capture evidence", description: "Record a live public site as versioned evidence for a reference." },
+      quality: { title: "Check quality", description: "Review feel, restraint and generated-UI patterns." },
+      content: { title: "Write copy", description: "Make product copy read naturally in five languages without changing facts or commands." },
     }),
     descriptions: {
       "omd:init": "Sets up DESIGN.md from the closest real-company reference.",
       "omd:apply": "Applies your DESIGN.md to every UI change your agent makes.",
-      "omd:sync": "Copies DESIGN.md changes into CLAUDE.md, AGENTS.md and the Cursor rule.",
-      "omd:update": "Updates an existing install in place and checks it afterwards.",
-      "omd:setup": "Finds the image, video and browser tools you already have and saves your choices.",
-      "omd:remember": "Records a design correction so later sessions follow it.",
-      "omd:learn": "Folds recorded corrections into DESIGN.md.",
-      "omd:taste": "Shows what it has learned about your taste: applied, pending, on hold and unknown.",
       "omd:autopilot": "Designs and builds a new screen from one prompt, then verifies it.",
-      "omd:harness": "Designs step by step and stops at three checkpoints for your approval.",
-      "omd:orchestrator": "Coordinates writing, localization, review and QA agents, with at most two revision rounds.",
       "omd:landing": "Builds a scroll-driven one-page landing from DESIGN.md.",
-      "omd:aphrodite": "Finishes a landing page to showcase quality: type, grain, depth and scroll timing.",
-      "omd:media": "Generates on-brand hero images, illustrations, icons and OG images with the image tool you have.",
-      "omd:showcase": "Records a rendered page as a scroll demo video.",
       "omd:shader-hero": "Builds a full-bleed launch hero in two colors from DESIGN.md and measures its text contrast.",
       "omd:cjk-type-shader": "Renders a large Korean, Japanese or Chinese headline as ink on hanji.",
-      "omd:asset-fetch": "Fills placeholders with real free-license assets from verified URLs.",
-      "omd:codex-image": "Turns image placeholders into real images through the channel you're using.",
-      "claude-design": "Builds a design brief from your codebase, sends it to Claude Design and returns the result link.",
       "omd:feel": "Applies or audits 113 measured interface-feel rules.",
       "omd:restraint": "Measures focus, type sizes and whitespace, and removes what a page doesn't need.",
       "omd:slop-audit": "Finds generated-UI patterns that have no product reason, with rule IDs and line references.",
-      "omd:designer-review": "Reviews a screen against DESIGN.md: type, color, radius, states and mobile.",
-      "omd:final-qa": "Runs a read-only final check against an eight-item rubric before you publish.",
-      "omd:experiment-gallery": "Puts several design experiments side by side on one page.",
-      "omd:issue": "Files a problem you hit with oh-my-design as a structured GitHub issue.",
-      "omd:kr-writer": "Writes Korean long-form in one of 12 voice presets.",
-      "omd:locale-adapter": "Adapts Korean source copy into English, Japanese and Chinese without literal translation.",
       "omd:humanize": "Edits copy in five languages so it reads naturally, keeping facts and commands intact.",
-      "omd:reference-capture": "Captures a brand's live site (tokens, structure, screenshots) with attribution.",
     },
     routingTitle: "Naming a skill is optional",
     routingBody: "“Improve this checkout and verify it” works better than chaining four skills by hand. Use a name when you want one particular skill.",
@@ -680,7 +674,7 @@ const en: CliDocsDictionary = {
   },
 };
 
-const ko: CliDocsDictionary = {
+const ko: BaseDictionary = {
   localeName: "한국어",
   metaDescription: "oh-my-design 사용법이에요. 실제 회사의 DESIGN.md를 아카이브에서 고르고, oh-my-design-cli를 설치해 코딩 에이전트가 그 파일대로 화면을 만들게 하는 방법을 안내해요.",
   ui: {
@@ -727,7 +721,7 @@ const ko: CliDocsDictionary = {
     },
     cli: {
       name: "oh-my-design-cli",
-      body: `명령어 한 줄이면 스킬 ${N.skills}개, 전문 에이전트 ${N.agents}개, 오프라인 아카이브가 Claude Code·Codex·OpenCode·Cursor에 설치돼요. 도구마다 지원하는 만큼만 들어가요. 스킬은 프로젝트의 DESIGN.md를 만들고, UI를 고칠 때마다 그 파일을 따라요.`,
+      body: `명령어 한 줄이면 전체 번들 스킬 ${N.skills}개(공개 스킬 ${N.public}개와 이 스킬들이 부르는 내부 스킬), 전문 에이전트 ${N.agents}개, 오프라인 아카이브가 Claude Code·Codex·OpenCode·Cursor에 설치돼요. 도구마다 지원하는 만큼만 들어가요. 스킬은 프로젝트의 DESIGN.md를 만들고, UI를 고칠 때마다 그 파일을 따라요.`,
       action: "CLI 설치하기",
     },
     installTitle: "설치",
@@ -761,7 +755,7 @@ const ko: CliDocsDictionary = {
     next: [
       { page: "getting-started", body: "설치하고 확인한 뒤 눈에 보이는 변화 하나를 만들어요." },
       { page: "workflows", body: "자주 하는 작업을 바로 쓸 수 있는 프롬프트로 모았어요." },
-      { page: "skills", body: "CLI가 설치하는 스킬과 각 스킬이 하는 일을 볼 수 있어요." },
+      { page: "skills", body: "공개 스킬과 각 스킬이 하는 일을 볼 수 있어요." },
     ],
   },
   gettingStarted: {
@@ -883,46 +877,24 @@ const ko: CliDocsDictionary = {
   },
   skills: {
     title: "스킬",
-    lead: `oh-my-design-cli에는 스킬 ${N.skills}개와 전문 에이전트 ${N.agents}개가 들어 있어요. 이름을 외울 필요는 없어요. 원하는 결과를 말하면 에이전트가 알맞은 스킬을 골라요. 꼭 그 스킬을 써야 할 때만 이름을 불러 주세요.`,
+    lead: `여기 있는 건 공개 스킬 ${N.public}개예요. oh-my-design-cli는 이 스킬들이 부르는 내부 스킬까지 더해 전체 번들 스킬 ${N.skills}개와 전문 에이전트 ${N.agents}개를 설치해요. 이름을 외울 필요는 없어요. 원하는 결과를 말하면 에이전트가 알맞은 스킬을 골라요. 꼭 그 스킬을 써야 할 때만 이름을 불러 주세요.`,
     groups: skillGroups({
-      system: { title: "DESIGN.md 만들고 지키기", description: "프로젝트의 DESIGN.md를 만들고, 적용하고, 동기화하고, 내가 고친 내용을 반영해요." },
+      system: { title: "DESIGN.md 만들고 지키기", description: "프로젝트의 DESIGN.md를 만들고, UI를 고칠 때마다 적용해요." },
       build: { title: "화면 만들기", description: "요구사항에서 시작해 실제 에셋이 들어간 동작하는 화면과 인계 자료까지 만들어요." },
-      quality: { title: "품질 확인하기", description: "인터랙션 감각, 일관성, 절제, 생성형 UI 패턴, 출시 준비 상태를 점검해요." },
-      content: { title: "글쓰기", description: "한국어 장문을 쓰고, 다른 언어로는 직역하지 않고 다시 써요." },
-      evidence: { title: "근거 남기기", description: "공개된 라이브 사이트를 레퍼런스의 근거로 버전을 붙여 기록해요." },
+      quality: { title: "품질 확인하기", description: "인터랙션 감각, 절제, 생성형 UI 패턴을 점검해요." },
+      content: { title: "글쓰기", description: "사실과 명령어는 그대로 두고 다섯 언어의 제품 문장을 자연스럽게 다듬어요." },
     }),
     descriptions: {
       "omd:init": "실제 회사 레퍼런스 중 가장 가까운 것으로 DESIGN.md를 만들어요.",
       "omd:apply": "에이전트가 UI를 고칠 때마다 DESIGN.md를 따르게 해요.",
-      "omd:sync": "DESIGN.md가 바뀌면 CLAUDE.md, AGENTS.md, Cursor 규칙에도 반영해요.",
-      "omd:update": "설치된 oh-my-design을 그 자리에서 업데이트하고 확인해요.",
-      "omd:setup": "이미 갖고 있는 이미지·영상·브라우저 도구를 찾아서 무엇을 쓸지 저장해요.",
-      "omd:remember": "디자인 교정을 기록해서 다음 세션도 그대로 따르게 해요.",
-      "omd:learn": "기록해 둔 교정을 DESIGN.md에 반영해요.",
-      "omd:taste": "지금까지 파악한 취향을 반영됨, 대기, 보류, 모름으로 나눠 보여 줘요.",
       "omd:autopilot": "프롬프트 하나로 새 화면을 설계하고 구현한 뒤 검증해요.",
-      "omd:harness": "단계별로 디자인하고, 세 번의 체크포인트마다 승인을 기다려요.",
-      "omd:orchestrator": "글쓰기, 현지화, 리뷰, QA 에이전트를 조율하고 수정은 두 번까지만 돌려요.",
       "omd:landing": "DESIGN.md로 스크롤형 원페이지 랜딩을 만들어요.",
-      "omd:aphrodite": "랜딩을 쇼케이스 수준으로 마감해요. 서체, 질감, 깊이, 스크롤 타이밍까지 다듬어요.",
-      "omd:media": "쓸 수 있는 이미지 도구로 히어로, 일러스트, 아이콘, OG 이미지를 브랜드에 맞게 만들어요.",
-      "omd:showcase": "렌더링한 페이지를 스크롤 데모 영상으로 녹화해요.",
       "omd:shader-hero": "DESIGN.md의 두 가지 색으로 전면 히어로를 만들고 글자 대비를 측정해요.",
       "omd:cjk-type-shader": "한국어·일본어·중국어 큰 제목을 한지에 번진 먹처럼 그려요.",
-      "omd:asset-fetch": "플레이스홀더를 주소를 확인한 무료 라이선스 에셋으로 채워요.",
-      "omd:codex-image": "이미지 플레이스홀더를 지금 쓰는 채널에서 실제 이미지로 바꿔요.",
-      "claude-design": "코드베이스로 디자인 브리프를 만들어 Claude Design에 보내고 결과 링크를 돌려줘요.",
       "omd:feel": "측정으로 정한 인터페이스 감각 규칙 113개를 적용하거나 점검해요.",
       "omd:restraint": "초점, 글자 크기, 여백을 재고 페이지에 필요 없는 것을 덜어 내요.",
       "omd:slop-audit": "제품 근거 없이 반복된 생성형 UI 패턴을 규칙 ID와 코드 위치로 찾아요.",
-      "omd:designer-review": "화면을 DESIGN.md와 비교해 글꼴, 색, 모서리, 상태, 모바일을 검토해요.",
-      "omd:final-qa": "공개하기 전에 8개 항목으로 마지막 점검을 해요. 파일은 고치지 않아요.",
-      "omd:experiment-gallery": "여러 디자인 실험을 한 페이지에 나란히 놓고 비교해요.",
-      "omd:issue": "oh-my-design을 쓰다 겪은 문제를 정리된 GitHub 이슈로 올려요.",
-      "omd:kr-writer": "12가지 말투 프리셋으로 한국어 장문을 써요.",
-      "omd:locale-adapter": "한국어 원문을 영어, 일본어, 중국어로 직역하지 않고 옮겨 써요.",
       "omd:humanize": "다섯 언어의 문장을 자연스럽게 다듬고, 사실과 명령어는 그대로 지켜요.",
-      "omd:reference-capture": "브랜드 라이브 사이트의 토큰, 구조, 스크린샷을 출처와 함께 모아요.",
     },
     routingTitle: "스킬 이름은 몰라도 돼요",
     routingBody: "‘결제 화면을 개선하고 검증해줘’라고 말하는 편이 스킬 네 개를 직접 이어 붙이는 것보다 나아요. 특정 스킬을 쓰고 싶을 때만 이름을 부르세요.",
@@ -1056,7 +1028,7 @@ const ko: CliDocsDictionary = {
   },
 };
 
-const ja: CliDocsDictionary = {
+const ja: BaseDictionary = {
   localeName: "日本語",
   metaDescription: "oh-my-design の使い方です。実在する企業の DESIGN.md をアーカイブから選び、oh-my-design-cli をインストールして、コーディングエージェントがそのファイルに沿って画面を作るまでを説明します。",
   ui: {
@@ -1103,7 +1075,7 @@ const ja: CliDocsDictionary = {
     },
     cli: {
       name: "oh-my-design-cli",
-      body: `コマンド一つで、${N.skills}個のスキル、${N.agents}個の専門エージェント、アーカイブのオフライン版が Claude Code、Codex、OpenCode、Cursor にインストールされます。各ツールには、そのツールが対応しているものだけが入ります。スキルはプロジェクトの DESIGN.md を用意し、UI を変更するたびにその内容に従います。`,
+      body: `コマンド一つで、フルバンドルの ${N.skills} スキル（${N.public} の公開スキルと、それらが呼び出す内部スキル）、${N.agents}個の専門エージェント、アーカイブのオフライン版が Claude Code、Codex、OpenCode、Cursor にインストールされます。各ツールには、そのツールが対応しているものだけが入ります。スキルはプロジェクトの DESIGN.md を用意し、UI を変更するたびにその内容に従います。`,
       action: "CLI をインストール",
     },
     installTitle: "インストール",
@@ -1137,7 +1109,7 @@ const ja: CliDocsDictionary = {
     next: [
       { page: "getting-started", body: "インストールして確認し、目に見える変更を一つ加えます。" },
       { page: "workflows", body: "よくある作業を、そのまま使えるプロンプトにまとめています。" },
-      { page: "skills", body: "CLI がインストールするすべてのスキルと、それぞれでできることを確認できます。" },
+      { page: "skills", body: "公開スキルと、それぞれでできることを確認できます。" },
     ],
   },
   gettingStarted: {
@@ -1211,46 +1183,24 @@ const ja: CliDocsDictionary = {
   ] },
   skills: {
     title: "スキル",
-    lead: `oh-my-design-cli には ${N.skills}個のスキルと ${N.agents}個の専門エージェントが含まれています。名前を覚える必要はありません。ほしい結果を伝えれば、エージェントが合うスキルを選びます。使うスキルを自分で決めたいときは、名前で指定してください。`,
+    lead: `ここに載っているのは ${N.public} の公開スキルです。oh-my-design-cli は、これらが呼び出す内部スキルを含むフルバンドルの ${N.skills} スキルと、${N.agents}個の専門エージェントをインストールします。名前を覚える必要はありません。ほしい結果を伝えれば、エージェントが合うスキルを選びます。使うスキルを自分で決めたいときは、名前で指定してください。`,
     groups: skillGroups({
-      system: { title: "DESIGN.md を作って維持する", description: "プロジェクトの DESIGN.md を作成・適用・同期し、伝えた修正を反映します。" },
+      system: { title: "DESIGN.md を作って維持する", description: "プロジェクトの DESIGN.md を作成し、UI を変更するたびに適用します。" },
       build: { title: "画面を作る", description: "要件から始めて、実際のアセットを使った動く画面と引き継ぎ資料まで作ります。" },
-      quality: { title: "品質を確かめる", description: "操作感、一貫性、抑制、生成 UI にありがちなパターン、リリースの準備状況を点検します。" },
-      content: { title: "文章を書く", description: "韓国語の長文を書き、ほかの言語には直訳せずに書き直します。" },
-      evidence: { title: "根拠を残す", description: "公開中のサイトを、リファレンスの根拠としてバージョン付きで記録します。" },
+      quality: { title: "品質を確かめる", description: "操作感、抑制、生成 UI にありがちなパターンを点検します。" },
+      content: { title: "文章を書く", description: "事実とコマンドを保ったまま、5 言語の製品文を自然に整えます。" },
     }),
     descriptions: {
       "omd:init": "いちばん近い実在企業のリファレンスから DESIGN.md を用意します。",
       "omd:apply": "エージェントが UI を変えるたびに DESIGN.md を適用します。",
-      "omd:sync": "DESIGN.md の変更を CLAUDE.md、AGENTS.md、Cursor のルールに反映します。",
-      "omd:update": "インストール済みの oh-my-design をその場で更新し、確認まで行います。",
-      "omd:setup": "手元の画像・動画・ブラウザ用ツールを検出し、どれを使うかを保存します。",
-      "omd:remember": "デザインの修正指示を記録し、以降のセッションでも従うようにします。",
-      "omd:learn": "記録した修正指示を DESIGN.md に反映します。",
-      "omd:taste": "これまでに把握した好みを、反映済み・反映待ち・保留・不明に分けて示します。",
       "omd:autopilot": "プロンプト一つで新しい画面を設計・実装し、検証まで行います。",
-      "omd:harness": "段階を追ってデザインし、3つのチェックポイントで承認を待ちます。",
-      "omd:orchestrator": "執筆・ローカライズ・レビュー・QA の各エージェントを調整し、修正は最大2回に抑えます。",
       "omd:landing": "DESIGN.md をもとに、スクロール連動型のワンページランディングを作ります。",
-      "omd:aphrodite": "ランディングを、書体・質感・奥行き・スクロールのタイミングまでショーケース水準に仕上げます。",
-      "omd:media": "手元の画像ツールで、ブランドに合うヒーロー画像・イラスト・アイコン・OG 画像を作ります。",
-      "omd:showcase": "レンダリングしたページを、スクロールするデモ動画として録画します。",
       "omd:shader-hero": "DESIGN.md の2色で画面いっぱいのヒーローを作り、文字のコントラストを測ります。",
       "omd:cjk-type-shader": "日中韓の大見出しを、和紙ににじむ墨のように描きます。",
-      "omd:asset-fetch": "プレースホルダーを、URL を確認した無料ライセンスの素材で埋めます。",
-      "omd:codex-image": "画像のプレースホルダーを、使用中のチャネルで実際の画像に差し替えます。",
-      "claude-design": "コードベースからデザインブリーフを作って Claude Design に送り、結果のリンクを返します。",
       "omd:feel": "数値化した113のインターフェース細部ルールで仕上げ・点検します。",
       "omd:restraint": "焦点、文字サイズ、余白を測り、ページに要らないものを削ります。",
       "omd:slop-audit": "製品上の理由がない生成 UI パターンを、ルール ID と行番号付きで見つけます。",
-      "omd:designer-review": "画面を DESIGN.md と照らし合わせ、書体・色・角丸・状態・モバイル表示をレビューします。",
-      "omd:final-qa": "公開前に8項目で最終チェックをします。ファイルは変更しません。",
-      "omd:experiment-gallery": "複数のデザイン実験を1ページに並べて比べます。",
-      "omd:issue": "oh-my-design の使用中に起きた問題を、整理した GitHub Issue として登録します。",
-      "omd:kr-writer": "12種類の文体プリセットで、韓国語の長文を書きます。",
-      "omd:locale-adapter": "韓国語の原文を、直訳せずに英語・日本語・中国語で書き直します。",
       "omd:humanize": "5言語の文章を自然に整えます。事実とコマンドはそのまま残します。",
-      "omd:reference-capture": "公開中のブランドサイトから、トークン・構造・スクリーンショットを出典付きで集めます。",
     },
     routingTitle: "スキル名の指定は任意です",
     routingBody: "「この決済画面を改善して、検証して」と頼むほうが、スキルを4つ手作業でつなぐよりうまくいきます。名前は、特定のスキルを使いたいときにだけ指定してください。",
@@ -1384,7 +1334,7 @@ const ja: CliDocsDictionary = {
   },
 };
 
-const zhCn: CliDocsDictionary = {
+const zhCn: BaseDictionary = {
   localeName: "简体中文",
   metaDescription: "oh-my-design 使用指南：从资料库中选一份真实公司的 DESIGN.md，安装 oh-my-design-cli，再让 AI 编程助手按这份文件构建界面。",
   ui: {
@@ -1431,7 +1381,7 @@ const zhCn: CliDocsDictionary = {
     },
     cli: {
       name: "oh-my-design-cli",
-      body: `一条命令就能把 ${N.skills} 个技能、${N.agents} 个专业智能体和资料库的离线副本安装到 Claude Code、Codex、OpenCode 和 Cursor，每个工具只安装它支持的部分。这些技能会为项目建立 DESIGN.md，之后每次修改 UI 都以它为准。`,
+      body: `一条命令就能把完整套件的 ${N.skills} 个技能（${N.public} 个公开技能和它们调用的内部技能）、${N.agents} 个专业智能体和资料库的离线副本安装到 Claude Code、Codex、OpenCode 和 Cursor，每个工具只安装它支持的部分。这些技能会为项目建立 DESIGN.md，之后每次修改 UI 都以它为准。`,
       action: "安装 CLI",
     },
     installTitle: "安装",
@@ -1465,7 +1415,7 @@ const zhCn: CliDocsDictionary = {
     next: [
       { page: "getting-started", body: "安装并检查，然后做出一处看得见的改动。" },
       { page: "workflows", body: "把常见任务整理成可以直接使用的提示词。" },
-      { page: "skills", body: "查看 CLI 安装的所有技能，以及每个技能的作用。" },
+      { page: "skills", body: "查看公开技能，以及每个技能的作用。" },
     ],
   },
   gettingStarted: {
@@ -1539,46 +1489,24 @@ const zhCn: CliDocsDictionary = {
   ] },
   skills: {
     title: "技能",
-    lead: `oh-my-design-cli 包含 ${N.skills} 个技能和 ${N.agents} 个专业智能体。不需要记住它们的名字：描述你想要的结果，AI 编程助手会选择合适的技能。需要精确控制时，再写出技能名。`,
+    lead: `这里列出的是 ${N.public} 个公开技能。oh-my-design-cli 会安装完整套件的 ${N.skills} 个技能（含这些技能调用的内部技能）和 ${N.agents} 个专业智能体。不需要记住它们的名字：描述你想要的结果，AI 编程助手会选择合适的技能。需要精确控制时，再写出技能名。`,
     groups: skillGroups({
-      system: { title: "建立并维护 DESIGN.md", description: "创建项目的 DESIGN.md，应用并同步它，再把你的修正并入其中。" },
+      system: { title: "建立并维护 DESIGN.md", description: "创建项目的 DESIGN.md，并在每次修改 UI 时应用它。" },
       build: { title: "构建界面", description: "从需求开始，做出使用真实素材、可以运行的界面，并完成交接。" },
-      quality: { title: "检查质量", description: "检查交互手感、一致性、克制程度、生成式 UI 模式和上线准备情况。" },
-      content: { title: "撰写文案", description: "撰写韩语长文，并用其他语言重新组织表达，不做逐字翻译。" },
-      evidence: { title: "记录依据", description: "把公开的线上网站按版本记录下来，作为参考文件的依据。" },
+      quality: { title: "检查质量", description: "检查交互手感、克制程度和生成式 UI 模式。" },
+      content: { title: "撰写文案", description: "保留事实与命令，把五种语言的产品文案改得自然。" },
     }),
     descriptions: {
       "omd:init": "选出最接近的真实公司参考，据此建立 DESIGN.md。",
       "omd:apply": "让 AI 编程助手每次修改 UI 时都遵循 DESIGN.md。",
-      "omd:sync": "把 DESIGN.md 的改动同步到 CLAUDE.md、AGENTS.md 和 Cursor 规则。",
-      "omd:update": "原地更新已安装的 oh-my-design，并在更新后检查。",
-      "omd:setup": "找出你已有的图片、视频和浏览器工具，并保存你的选择。",
-      "omd:remember": "记录一条设计修正，让之后的会话都照此执行。",
-      "omd:learn": "把已记录的修正并入 DESIGN.md。",
-      "omd:taste": "展示目前掌握的审美偏好，分为已应用、待处理、暂缓和未知。",
       "omd:autopilot": "根据一条提示词设计并实现新界面，然后完成验证。",
-      "omd:harness": "分阶段设计，在三个检查点停下来等你批准。",
-      "omd:orchestrator": "协调写作、本地化、评审和 QA 智能体，最多修改两轮。",
       "omd:landing": "根据 DESIGN.md 制作滚动式单页落地页。",
-      "omd:aphrodite": "把落地页打磨到可公开展示的水准，包括字体、质感、层次和滚动节奏。",
-      "omd:media": "用你现有的图像工具，生成符合品牌的首屏大图、插画、图标和 OG 图。",
-      "omd:showcase": "把渲染好的页面录制成滚动演示视频。",
       "omd:shader-hero": "用 DESIGN.md 里的两种颜色制作全幅首屏，并测量文字对比度。",
       "omd:cjk-type-shader": "把韩文、日文或中文大标题渲染成韩纸上晕开的墨迹。",
-      "omd:asset-fetch": "用 URL 已核实的免费授权素材填充占位符。",
-      "omd:codex-image": "在你当前使用的渠道里，把图片占位符换成真实图片。",
-      "claude-design": "根据代码库生成设计简报，发送到 Claude Design 并返回结果链接。",
       "omd:feel": "应用或检查 113 条基于测量的界面手感规则。",
       "omd:restraint": "测量焦点、字号和留白，删去页面不需要的元素。",
       "omd:slop-audit": "找出缺少产品依据的生成式 UI 模式，并标注规则 ID 和代码位置。",
-      "omd:designer-review": "对照 DESIGN.md 评审界面的字体、颜色、圆角、状态和移动端。",
-      "omd:final-qa": "发布前对照 8 项清单做最终检查，不修改任何文件。",
-      "omd:experiment-gallery": "把多个设计实验放在同一页面上并排比较。",
-      "omd:issue": "把使用 oh-my-design 时遇到的问题整理成 GitHub Issue 并提交。",
-      "omd:kr-writer": "从 12 种语气预设中选一种，撰写韩语长文。",
-      "omd:locale-adapter": "把韩语原文改写成英文、日文和中文，不做直译。",
       "omd:humanize": "润色五种语言的文案，让它读起来自然，同时保留事实和命令。",
-      "omd:reference-capture": "采集品牌线上网站的 token、结构和截图，并注明出处。",
     },
     routingTitle: "技能名可以不写",
     routingBody: "直接说“改进这个支付页并验证结果”，比自己串联四个技能效果更好。只有想用某个特定技能时，才需要写出它的名字。",
@@ -1712,7 +1640,7 @@ const zhCn: CliDocsDictionary = {
   },
 };
 
-const zhTw: CliDocsDictionary = {
+const zhTw: BaseDictionary = {
   localeName: "繁體中文（台灣）",
   metaDescription: "oh-my-design 使用說明：從典藏挑選一份真實企業的 DESIGN.md，安裝 oh-my-design-cli，再讓 AI 程式助理照著這份檔案實作介面。",
   ui: {
@@ -1759,7 +1687,7 @@ const zhTw: CliDocsDictionary = {
     },
     cli: {
       name: "oh-my-design-cli",
-      body: `一行指令，就能把 ${N.skills} 個技能、${N.agents} 個專業代理和典藏的離線副本裝進 Claude Code、Codex、OpenCode 與 Cursor，每個工具只會裝進它支援的部分。這些技能會為專案建立 DESIGN.md，之後每次修改 UI 都會遵循它。`,
+      body: `一行指令，就能把完整套件的 ${N.skills} 個技能（${N.public} 個公開技能與它們呼叫的內部技能）、${N.agents} 個專業代理和典藏的離線副本裝進 Claude Code、Codex、OpenCode 與 Cursor，每個工具只會裝進它支援的部分。這些技能會為專案建立 DESIGN.md，之後每次修改 UI 都會遵循它。`,
       action: "安裝 CLI",
     },
     installTitle: "安裝",
@@ -1793,7 +1721,7 @@ const zhTw: CliDocsDictionary = {
     next: [
       { page: "getting-started", body: "安裝並確認安裝結果，再做出一個看得見的改變。" },
       { page: "workflows", body: "把常見工作整理成可以直接使用的提示詞。" },
-      { page: "skills", body: "CLI 安裝的所有技能，以及每個技能的用途。" },
+      { page: "skills", body: "公開技能，以及每個技能的用途。" },
     ],
   },
   gettingStarted: {
@@ -1867,46 +1795,24 @@ const zhTw: CliDocsDictionary = {
   ] },
   skills: {
     title: "技能",
-    lead: `oh-my-design-cli 內含 ${N.skills} 個技能與 ${N.agents} 個專業代理。名稱不必背：說出想要的結果，AI 程式助理就會選用合適的技能。需要精確控制時，再指定技能名稱。`,
+    lead: `這裡列出的是 ${N.public} 個公開技能。oh-my-design-cli 會安裝完整套件的 ${N.skills} 個技能（含這些技能呼叫的內部技能）與 ${N.agents} 個專業代理。名稱不必背：說出想要的結果，AI 程式助理就會選用合適的技能。需要精確控制時，再指定技能名稱。`,
     groups: skillGroups({
-      system: { title: "建立並維護 DESIGN.md", description: "建立專案的 DESIGN.md，套用並保持同步，再把你提出的修正納入其中。" },
+      system: { title: "建立並維護 DESIGN.md", description: "建立專案的 DESIGN.md，並在每次修改 UI 時套用它。" },
       build: { title: "製作畫面", description: "從需求說明出發，做出放進真實素材、可實際運作的介面，並備妥交付資料。" },
-      quality: { title: "檢查品質", description: "檢查介面細節、一致性、設計是否節制、生成式 UI 模式，以及是否已準備好上線。" },
-      content: { title: "撰寫文案", description: "撰寫韓文長文，並依各語言的習慣改寫成其他語言，不逐字直譯。" },
-      evidence: { title: "記錄依據", description: "把公開的線上網站加上版本記錄下來，作為參考的依據。" },
+      quality: { title: "檢查品質", description: "檢查介面細節、設計是否節制，以及生成式 UI 模式。" },
+      content: { title: "撰寫文案", description: "保留事實與指令，把五種語言的產品文案改得自然。" },
     }),
     descriptions: {
       "omd:init": "從最接近的真實企業參考建立 DESIGN.md。",
       "omd:apply": "AI 程式助理每次修改 UI，都會套用你的 DESIGN.md。",
-      "omd:sync": "DESIGN.md 有變動時，同步更新 CLAUDE.md、AGENTS.md 與 Cursor 規則。",
-      "omd:update": "就地更新已安裝的 oh-my-design，並在更新後檢查。",
-      "omd:setup": "找出你已有的圖片、影片與瀏覽器工具，並儲存你的選擇。",
-      "omd:remember": "記錄你對設計的修正，之後的工作階段也會照著做。",
-      "omd:learn": "把記錄下來的修正併入 DESIGN.md。",
-      "omd:taste": "列出目前掌握到的偏好，分為已套用、待處理、暫緩與未知。",
       "omd:autopilot": "用一則提示詞設計並實作新畫面，最後再驗證。",
-      "omd:harness": "逐步進行設計，在三個檢查點停下來等你核准。",
-      "omd:orchestrator": "協調撰寫、在地化、審查與 QA 代理，修訂最多兩輪。",
       "omd:landing": "依 DESIGN.md 製作隨捲動展開的一頁式到達網頁。",
-      "omd:aphrodite": "打磨到達網頁的字型、顆粒質感、層次與捲動節奏，達到可公開展示的水準。",
-      "omd:media": "用你現有的圖片工具，產生符合品牌的主視覺、插圖、圖示與 OG 圖片。",
-      "omd:showcase": "把渲染好的頁面錄成捲動示範影片。",
       "omd:shader-hero": "用 DESIGN.md 的兩種顏色做出滿版主視覺，並量測文字對比。",
       "omd:cjk-type-shader": "把中日韓大標題畫成在宣紙上暈開的墨跡。",
-      "omd:asset-fetch": "把預留位置換成網址經過確認的免費授權素材。",
-      "omd:codex-image": "在你目前使用的工具裡，把圖片預留位置換成真實圖片。",
-      "claude-design": "從程式碼庫整理出設計需求，送到 Claude Design，再回傳結果連結。",
       "omd:feel": "用 113 條量化的介面細節規則來打磨或檢查。",
       "omd:restraint": "量測視覺焦點、字級與留白，拿掉頁面不需要的元素。",
       "omd:slop-audit": "找出缺乏產品理由的生成式 UI 模式，附上規則 ID 與程式碼行號。",
-      "omd:designer-review": "對照 DESIGN.md 檢視畫面的字型、色彩、圓角、狀態與行動版。",
-      "omd:final-qa": "發布前依 8 項標準做最後檢查，不會修改任何檔案。",
-      "omd:experiment-gallery": "把多個設計實驗並排在同一頁，方便比較。",
-      "omd:issue": "把使用 oh-my-design 時遇到的問題整理成 GitHub issue 回報。",
-      "omd:kr-writer": "用 12 種預設語氣之一撰寫韓文長文。",
-      "omd:locale-adapter": "把韓文原稿改寫成英文、日文與中文，不逐字直譯。",
       "omd:humanize": "潤飾五種語言的文案，讓文字讀來自然，事實與指令保持不變。",
-      "omd:reference-capture": "擷取品牌線上網站的 token、結構與螢幕截圖，並註明出處。",
     },
     routingTitle: "技能名稱可以省略",
     routingBody: "直接說「改善這個結帳頁並驗證結果」，效果會比自己串接四個技能更好。只有想用特定技能時，才需要指名。",
@@ -2039,10 +1945,15 @@ const zhTw: CliDocsDictionary = {
     ],
   },
 };
+function withRecipe(base: BaseDictionary, locale: DocsLocale): CliDocsDictionary {
+  const recipe = SHADCN_RECIPE[locale];
+  return { ...base, nav: { ...base.nav, shadcn: recipe.navLabel }, shadcn: recipe };
+}
+
 export const CLI_DOCS: Record<DocsLocale, CliDocsDictionary> = {
-  en,
-  ko,
-  ja,
-  "zh-cn": zhCn,
-  "zh-tw": zhTw,
+  en: withRecipe(en, "en"),
+  ko: withRecipe(ko, "ko"),
+  ja: withRecipe(ja, "ja"),
+  "zh-cn": withRecipe(zhCn, "zh-cn"),
+  "zh-tw": withRecipe(zhTw, "zh-tw"),
 };

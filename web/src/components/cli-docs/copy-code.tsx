@@ -21,9 +21,12 @@ export function copyStatusMessage(
   return "";
 }
 
-/** A terminal command (npx, npm …); anything else is a prompt said to the coding agent. */
+/**
+ * A terminal command (npx, npm …, and the shadcn page's `curl` download); anything else is a
+ * prompt said to the coding agent.
+ */
 export function isShellCommand(code: string): boolean {
-  return /^(?:npx|npm|pnpm|yarn|bun|bunx)\s/.test(code);
+  return /^(?:npx|npm|pnpm|yarn|bun|bunx|curl)\s/.test(code);
 }
 
 /**

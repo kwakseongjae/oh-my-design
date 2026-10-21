@@ -1,0 +1,10 @@
+Use the shadcn skill (installed in this project with `npx skills add shadcn/ui`) and follow its design-system workflow in design-system.md to apply ./DESIGN.md to this existing Next.js app. ./DESIGN.md was downloaded unchanged from https://oh-my-design.kr/toss/design.md.
+
+Steps 1 and 2 are already done: the app was scaffolded with `--base base --preset maia --template next` and `npx shadcn@latest add --all -y` has installed every component (components/ui). Do not re-run init or add.
+
+Do Step 3, Step 4, Step 5 and "Report Back" only:
+- Step 3: write the extraction working table to EXTRACTION.md in this directory before editing anything.
+- Step 4 and Step 5: edit the files exactly as the skill says.
+- Report Back: write the report to REPORT.md in this directory.
+
+Do not start a dev server, do not open a browser, and do not do Step 6 or Step 7. Do not ask questions; make the decisions the skill tells you to make and record them in REPORT.md.

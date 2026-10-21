@@ -1,0 +1,14 @@
+[22:27:04] init
+[22:27:49] add-all
+      61
+[22:28:25] skill
+ls: .agents/skills: No such file or directory
+.claude/skills:
+total 0
+drwxr-xr-x@  3 kwakseongjae  staff   96 10월 14 22:28 .
+drwxr-xr-x@  3 kwakseongjae  staff   96 10월 14 22:28 ..
+drwxr-xr-x@ 14 kwakseongjae  staff  448 10월 14 22:28 shadcn
+[22:28:32] design-md
+2856700e9e17643d76df051f25dffbf8e3007f7d28aa11d97a963aa906d1d352  DESIGN.md
+[22:28:33] claude
+[22:32:22] done 0
