@@ -137,7 +137,8 @@
 .sq-pv-tile-v{font-size:15px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .sq-pv-shadows{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
 .sq-pv-shadows .sq-pv-tile-v{font-size:14px;line-height:1.5}
-.sq-pv-elev{display:block;width:100%;max-width:168px;height:72px;margin:8px 0 16px;border-radius:var(--sq-r-ctl);background:var(--sq-paper)}
+.sq-pv-elev-st{display:flex;align-items:center;justify-content:center;min-height:120px;margin-bottom:12px;padding:24px;border-radius:var(--sq-r-card);background:var(--sq-cell)}
+.sq-pv-elev{display:block;width:100%;max-width:120px;height:64px;border-radius:var(--sq-r-ctl);background:var(--sq-paper)}
 
 /* components */
 .sq-pv-comp{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 16px}

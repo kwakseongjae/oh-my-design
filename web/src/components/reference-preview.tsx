@@ -366,7 +366,12 @@ function Shape({
           <ul className="sq-pv-tiles sq-pv-shadows">
             {shadows.map((s) => (
               <li key={s.name}>
-                {s.css ? <span className="sq-pv-elev" style={{ boxShadow: s.css }} aria-hidden="true" /> : null}
+                {/* A white tile on a grey stage: a recorded `none` reads as a flat card, a shadow as lift. */}
+                {s.css ? (
+                  <span className="sq-pv-elev-st" aria-hidden="true">
+                    <span className="sq-pv-elev" style={{ boxShadow: s.css }} />
+                  </span>
+                ) : null}
                 <span className="sq-pv-tile-n" lang="en">{s.name}</span>
                 <span className="sq-pv-tile-v" lang="en">{s.label}</span>
               </li>

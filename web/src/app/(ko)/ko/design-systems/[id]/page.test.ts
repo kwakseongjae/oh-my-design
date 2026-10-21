@@ -145,6 +145,15 @@ describe("Korean item page body", () => {
     expect(html).not.toContain("웹 글꼴 출처 기록 없음");
   });
 
+  it("gives a Korean legacy page (prose-derived tokens) no empty 미리보기 pane and no toggle", async () => {
+    const legacy = KO_DETAIL_IDS.find((id) => REGISTRY_BY_ID[id]?.tokens?.source === "prose-derived");
+    expect(legacy).toBeDefined();
+    const html = await render(legacy!);
+    expect(html).toContain("sq-item-solo");
+    expect(html).not.toContain('class="sq-item-pv');
+    expect(html).not.toContain("sq-panes-m");
+  });
+
   it("keeps related links among Korean pages", async () => {
     const html = await render("toss");
     const related = (html.split('id="related-heading"')[1] ?? "").split("</section>")[0];
