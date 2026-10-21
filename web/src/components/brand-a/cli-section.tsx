@@ -71,6 +71,14 @@ export function installRows(gap: string): TermRow[] {
 /** Pre-hydration, right after the steps: hide the two runs that are about to play (agent-trace.tsx usePlay). */
 const PRE = `(function(){try{if(/[?&]demo=/.test(location.search)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;["cli-term","cli-apply"].forEach(function(i){var c=document.getElementById(i);if(c)c.classList.add("sq-pre")})}catch(e){}})();`;
 
+/** The product name never breaks at its hyphens (a 390px /ja heading broke after "oh-my-design-"). */
+function noBreakName(h: string) {
+  const name = "oh-my-design-cli";
+  const i = h.indexOf(name);
+  if (i < 0) return h;
+  return <>{h.slice(0, i)}<span className="sq-nb">{name}</span>{h.slice(i + name.length)}</>;
+}
+
 export function CliSection({ locale, c, r, skills, skillsHref }: { locale: SiteLocale; c: BrandCopy; r: R10Copy; total: number; skills: number; skillsHref: string }) {
   const h = getR11Hero(locale);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars -- the printed source stays on the server
@@ -78,7 +86,7 @@ export function CliSection({ locale, c, r, skills, skillsHref }: { locale: SiteL
   return (
     <section className="sq-sec" id="use" aria-labelledby="h-use">
       <div className="sq-wrap">
-        <h2 id="h-use">{r.cli.h2}</h2>
+        <h2 id="h-use">{noBreakName(r.cli.h2)}</h2>
         <p className="sq-intro">{h.cli.context}</p>
         <CliSteps
           steps={h.cli.steps}
