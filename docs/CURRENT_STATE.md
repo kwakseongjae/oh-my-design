@@ -505,9 +505,240 @@
   - 봇 차단 4곳(ssg·cafe24·medibloc·ikala)은 Aside 실제 브라우저에서 CAPTCHA 없이 열린다(로그아웃 상태 확인).
   - Aside는 파일을 쓸 수 없어서 새 경로를 만들었다(`df00acdf`): REPL에서 `extract.js`를 실행하고, 큰 출력이 하네스 tool-results 파일로 저장되면 `assemble.mts`로 수집기와 같은 집계를 거쳐 번들을 만든다. 상태 프레임은 없다.
   - 사전 조건 통과: ssg 75, cafe24 71, medibloc 80, ikala 80.
-  - **완료 (`3ad85637`)**: 4곳 → Verified v2(합계 295→299). 처음엔 250개 요소 상한 때문에 ssg·cafe24 대표색을 잘린 표본으로 골랐다. 페이지 전수 측정으로 바로잡았다: ssg `#ff5452`(라벨 124개, CSS primary), cafe24 `#084fff`(홈 주 CTA). 추출기 상한을 500으로 올리고 상한 도달 시 경고를 낸다(`84d9e27d`). **사이트 반영 GO 대기.**
+  - **완료 (`3ad85637`)**: 4곳 → Verified v2(합계 295→299). 처음엔 250개 요소 상한 때문에 ssg·cafe24 대표색을 잘린 표본으로 골랐다. 페이지 전수 측정으로 바로잡았다: ssg `#ff5452`(라벨 124개, CSS primary), cafe24 `#084fff`(홈 주 CTA). 추출기 상한을 500으로 올리고 상한 도달 시 경고를 낸다(`84d9e27d`).
+  - **사이트 반영 (15:20, main `ca5ad8f5`).** 첫 배포(`cd43eb74`)는 실패했다. ssg·cafe24가 `verification_v2.surfaces`에 타입에 없는 `viewport` 키를 넣었고, next build 타입 검사에서 걸렸다(파이프라인 tsc는 incremental 캐시 때문에 놓친 것으로 보인다). 키를 빼고 재배포해 성공했다. 라이브 확인: ssg `#ff5452`(SSG Coral), cafe24 `#084fff`, medibloc `#0066ff`, ikala `#061232`.
+  - **절차 추가:** 사이트 반영 전에 로컬 `next build`를 돌린다.
   - tellingme·queenit은 coverage 미달 사유라 Aside로는 해결되지 않는다(같은 렌더).
 - **10/1 — 위임 판단:** protopie KR 유지, medibloc은 medibloc.com의 브랜드를 기술(GROWTH_DECISIONS).
+- **10/1 결정: /hangul은 오너 검토 후 출시**(프리뷰 확인 → 스킬 병합 → npm 패치 → 페이지 반영).
+- **10/1 오너 검토 결과 → 재작업 중.** 페이지: "내용은 좋은데 디자인·레이아웃이 아쉽다" → 에디토리얼 타이포 콘셉트로 재디자인(`feat/hangul-launch-page`, next build 필수). 영상: "별로" → 오너가 쓰던 HyperFrames로 다시 만든다(`.promo/2026-10-01-hangul/`, 1080×1350·1080×1920).
+- **10/1 오후 진행.** 페이지 v4(교정지 콘셉트) `eac8a999` 푸시 — 프리뷰 https://oh-my-design-hwciyn3cm-kwakseongjaes-projects.vercel.app/hangul , 오너 검토 대기. 영상: 오너가 "HyperFrames 아님, 너무 구림" → HyperFrames 판 폐기, 오너가 설치했던 **Tesseract 0.2.0**(mirage-hq, `~/Library/Application Support/Tesseract/bin/tsrct`, 스킬은 `occ-promo/.claude/skills/tesseract-*`)으로 재제작 중 → `.promo/2026-10-01-hangul-tsrct/`.
+- **10/1 15:45 오너 2차 검토 (v4).** ① 히어로 '있어요' 완성이 스크롤해야 보여 사실상 안 보임 ② 카피 비문('직접 폭 움직여 보기', '갈렸습니다') ③ eval 구간 간소화/삭제 ④ 스펙표 텍스트 겹침 ⑤ 설치 1단계 명령 잘림, 3단계(체커) 삭제 ⑥ 하단 출처 삭제 → v5 수정 에이전트 실행 중. **새 트랙: OmD 전반 리디자인+SEO**(저트래픽 축소, 랜딩 시각 개편, 로고·컨셉·docs·README 리뉴얼) → 감사(읽기 전용) 실행 중 `docs/research/2026-10-01-redesign/AUDIT.md`. 오너: 다음 버전에서 /hangul 페이지도 새 컨셉으로 재제작.
+- **10/1 16:30 리디자인 감사 완료** (`docs/research/2026-10-01-redesign/AUDIT.md`, Vercel 30일 사람 요청 기준): 트래픽은 /builder 9,464·/design-systems/[id] 7,680·/ 5,786에 집중, 나머지 전부 <600. 저수요 실측: presets 8·font-playground 20·benchmarks 23·collections 21·evolution 21·faq 40·alternatives 71·cli 95, playground 0(404). 발견: robots AI봇 그룹이 /api·/reference 차단 누락, 기본 OG 이미지 '58 design systems' 구버전, 홈 canonical 없음, 랜딩 HTML 800KB·이미지 532, lang=en 고정(KR 수요 우세), llms.{ko,ja,zh}.txt 440 등 카운트 낡음. 오너 결정 8건 대기(컨셉·로고·룩·언어·컷 목록·legacy 113 색인·/api/mcp·/hangul 위치). Tesseract 영상 r2(14s) 오너에게 전달.
+- **10/1 16:40 오너 결정 R1~R4** (`docs/REDESIGN_DECISIONS_2026-10-01.md`): 카탈로그 우선 / 톤은 시안 2~3개 비교 후 / 영어 기본+한국어 랜딩 / 감사 표대로 페이지 정리. 실행: ① 첫 화면 시안 3개 목업 ② 페이지 정리+SEO 즉시 수정 브랜치(`feat/site-prune-seo`, 출시 GO는 오너).
+- **10/1 17:10 /hangul v5 `a158e35e`** (오너 지적 6건 반영: 자동 재생 히어로·첫 화면 안, 카피 전면 교정, eval 1줄, 스펙표 겹침 해소, 설치 2단계+복사, 출처 삭제; tsc·vitest·next build 통과). 프리뷰 https://oh-my-design-be497ueqs-kwakseongjaes-projects.vercel.app/hangul — 오너 검토 대기. 남은 것: 사이트 쿠키 배너가 첫 로드 히어로 하단을 가림(사이트 공통).
+- **10/1 17:30 랜딩 시안 3개** (`docs/research/2026-10-01-redesign/mockups/`): A 교정지(타이포·/hangul과 연결), B 스와치 인덱스(검증 299 primary 색 벽 — 첫 화면 브랜드명 안 보임), C 브랜드 입기(선택 브랜드 색으로 첫 화면 변신 — 흰 글자 대비 미달·브랜드 사이트처럼 보일 위험). 데이터는 전부 레지스트리·라이브 실측. 오너 선택 대기(R2).
+- **10/1 17:45 오너 위임: "다른 프론트 스킬 사이트를 고려해 최선의 UI와 리팩토링을 해 봐" (R2 → Claude 판단).** 계획: ① 경쟁 사이트 조사(skills.sh·shadcn·21st.dev·Magic UI·v0·awesome-design-md·Mobbin/Refero — 첫 화면에 출처·근거를 보이는지가 핵심 질문) ② 방향 확정(기본안 A 교정지 틀 + C 브랜드 카드는 틴트 면+어두운 글자, B 색 벽은 /design-systems 인덱스) ③ prune 브랜치 완료 후 그 위에 `feat/redesign-landing` — 범위: 랜딩+전역 토큰 통일·next/font 단일화(Pretendard 셀프호스트)·로고 월 제거·KR 랜딩 lang. builder·카탈로그 상세·docs는 범위 밖. 임시 워드마크(되돌릴 수 있음). /hangul은 운영 404라 링크 금지.
+- **10/1 18:20 `feat/site-prune-seo` 완료** (`ca073538`…`8bc91c36`, 7커밋, ca5ad8f5 기반, 푸시·Vercel 프리뷰 빌드 성공 — SSO 뒤). 삭제 5(playground·font-playground·presets·benchmarks·qa-references), 308 리디렉트 10(collections→/design-systems?collection=, changelog/:v→#v, alternatives/:slug→#slug, cli→/docs/en, docs/connector→/docs/en/ai 등), robots AI봇 disallow·홈 canonical·평이한 설명·레지스트리 기반 OG(빌드 생성 /og-image.png), llms 다국어·README 카운트 정정+가드 확장. web tsc·1011 테스트·next build, 루트 lint·1499 테스트 통과. 미해결(범위 밖): 레퍼런스·블로그 OG가 /api/og/ 아래라 공유봇 차단, 사이트 검색 마크업 ?q= 미지원. 주의: 루트 npm test가 capture-reference-evidence.mjs(7MB 번들)를 재작성함 → git checkout으로 복구. main 머지·출시 GO는 오너.
+- **10/1 18:40 경쟁 조사 완료** (`docs/research/2026-10-01-redesign/COMPETITORS.md`, 10곳): 첫 화면에 출처·근거를 보이는 곳 없음(getdesign.md 550+는 출처 면책까지 명시). → **방향 확정: A 교정지 틀 + 첫 화면 근거 수치(299/109/113 정의+실제 근거 링크) + 행별 상태 + C 미리보기 카드(브랜드색은 견본·버튼만, 글자색은 실측 대비)**. 구현 에이전트 실행 중: `feat/redesign-landing`(prune 브랜치 기반) — 랜딩·KR 랜딩(lang=ko)·헤더/푸터·전역 토큰·next/font 단일화·Pretendard 셀프호스트·로고 월 제거·임시 워드마크·DESIGN.md.patch(적용은 오너 승인).
+- **10/1 19:50 `feat/redesign-landing` 완료** (`729d6f70`…`b4fbee5a`, prune 브랜치 위). 첫 화면: '299 company design systems, every value traced to a capture.' + 등급 컬럼(299/109/113 정의, Toss 81/81 근거 링크) + 검색 + 많이 고른 10곳(상태·국가·실측 색, 클릭→/builder) + 브랜드 미리보기 카드. /ko(lang=ko, hreflang). (en) 라우트 그룹+RootDocument, Schibsted Grotesk(랜딩만)·Geist 1회·Pretendard 셀프호스트(/ko만). 홈 무게 HTML 794→135KB, 초기 JS 1,068→165KB gz, 이미지 532→0. 대비 40건 전부 통과, 퍼널 클릭 검증, builder·toss 상세 픽셀 차이 0. 검증 299개 전부 claim 100% 근거 확인(헤드라인 근거). 남은 것: 레퍼런스 목록 데이터가 builder·카탈로그·상세에 각자 번들(최대 3회 다운로드, 랜딩 제거 부작용), 헤더/푸터는 랜딩에만, 동의 배너 보라색, /docs/ko lang=en, JSON-LD 검색 ?q= 미지원·스킬 수 낡음. DESIGN.md.patch는 `docs/research/2026-10-01-redesign/` (미적용, 오너 승인 대기).
+- **10/1 20:00 오너: "권장으로 가자"** = 데이터 중복 수정 → prune+랜딩 함께 main 반영(출시 GO, 수정 후). 추가 위임: SEO에 맞춰 경로·이름 변경 허용("builder보다 저장소에 가깝다", /design-systems는 실험 기능으로 포지션 애매하나 SEO 유입 집중). 실행 중: 번들 중복 수정(랜딩 워크트리), IA·경로 재설계 계획(읽기 전용, `docs/research/2026-10-01-redesign/IA-PLAN.md`).
+- **10/1 20:30 IA 계획 완료 → 결정 D1~D7 기록** (`docs/REDESIGN_DECISIONS_2026-10-01.md`): URL 유지, 랜딩 행 → 상세, 상세에 #use 핸드오프, builder 'Customize' 개칭, /reference→308, 한국어 상세는 Phase 3. 구현은 번들 중복 수정·main 반영 뒤 새 브랜치.
+- **10/1 21:20 출시 완료 — main `c0ec4385`** (오너 GO, prune+SEO+새 랜딩+번들 중복 수정 `136191eb`). Vercel Production success, 라이브 확인: / ·/ko(lang=ko)·/design-systems·toss 상세·builder 200, 리디렉트 308 정상(presets·cli·collections·changelog), playground 404, 홈 canonical, /og-image.png. 번들: 여정 JS 2.28MB→643KB gz, 클라이언트 레지스트리 import 금지 가드 테스트 추가. 카탈로그 정렬은 영어 collation으로 고정(이전엔 브라우저 언어 따라 한글 먼저 — 오너 확인 사항). 다음: IA D1~D7 구현 브랜치.
+- **10/1 22:10 `feat/ia-item-page` 완료** (`93f5570e`…`589d13f5`, main c0ec4385 기반, 푸시). 랜딩 행·검색·카드 → /design-systems/[id]; 상세에 #use(복사·다운로드·Raw·설치·첫 프롬프트·Customize) — 헤더 버튼·하단 설치 바는 #use로 이동(중복 없음); 상세 제목 '{Name} Design System — DESIGN.md, Colors & Typography'·서버 h1·BreadcrumbList; 인덱스 'Design Systems Library — 521…'+ItemList; builder 'Customize a DESIGN.md'(sr-only h1, 화면 픽셀 동일); /reference→308(robots에서 /reference 차단 해제 — 리디렉트를 봐야 하므로); 사이트 JSON-LD SearchAction 제거·스킬/에이전트 수 상수화+가드; AGENTS.md 퍼널 개정. 브랜드명은 registry name 우선(영문 페이지에 한글 displayName 129건 → 영문). tsc·1023 테스트·next build·브라우저 61/61 통과. 남은 것: 네비 'Catalog' 표기, builder 선택 그리드→상세 여부, 'Builder' 문구 2곳, /ko→상세 이벤트 유실 가능성, GA4 /ga4 패스 미실행. main 반영은 오너 GO 대기.
+- **10/13 재개.** 10/1 이후 레포 변화 없음(main c0ec4385 그대로, 라이브 200). 주간 스냅샷 재개: DAU 381(10/12)·WAU 1,959·MAU 10,521(9/28 9,668↑), 별 534, npm 주 1,802·월 5,612. GitHub 뷰는 10/2 이후 감소. 대기 중: IA 브랜치 main GO, /hangul 출시 방식, DESIGN.md.patch 승인, Tesseract 영상 사용.
+- **10/13 오너 지적·방향 전환.** ① IA 브랜치는 builder를 'Customize'로 남겨 오너 방향(builder 격하·제거, 'DESIGN.md 아카이브 + 프론트 스킬')과 불일치 → 재작업 필요. ② 10/1 랜딩은 오너가 브라우저 검토 없이 반영됨('권장으로 가자'를 출시 GO로 해석) + getdesign.md와 닮았다는 지적 + 다른 페이지는 옛 디자인 그대로 → **규칙: 화면 변경은 오너가 프리뷰 URL을 직접 확인한 뒤에만 main 반영.** ③ 계획 리뉴얼 `docs/GROWTH_PLAN_2026-10-13.md`(유입·레퍼럴 + CJK 브랜딩·언어 확장, P0~P4). 오너 결정 Q1~Q5 대기(builder 처리, 랜딩 되돌림, 브랜딩 범위, 레퍼러 계측, 로캘 순서).
+- **10/13 오너 결정** (`docs/REDESIGN_DECISIONS_2026-10-01.md` 하단): builder 완전 제거(리디렉트), 전면 리브랜딩(codex 이미지·로고 허용), 로캘 ko→ja→zh-tw 승인. **계측 확인:** GA4 태그(G-5XCHN3NJXC)는 운영에서 계속 수집 중 — 죽은 건 조회 API(GCP 프로젝트 삭제)뿐. Vercel Web Analytics는 대시보드에서 켜져 있으나 4월에 패키지 제거(GA4로 교체)되어 현재 미수집, Speed Insights도 패키지 없음(hasData false). 실행: 트렌드 조사(shadcn DESIGN.md·ui-skills·shaders), builder 제거(IA 브랜치, 프리뷰만), 리브랜딩은 조사 후.
+- **10/13 트렌드 조사 완료** (`docs/research/2026-10-13-trends/TRENDS.md`): shadcn/ui 스킬(10/9 PR #12252)은 DESIGN.md를 **소비**하고 프리셋 8종; 출처 질문에 VoltAgent awesome-design-md·flavors·typeui를 안내, OmD 미언급. Google DESIGN.md 린터가 OmD toss에서 토큰 0개 인식(YAML 없음) → Google/Stitch 형식 내보내기 필요. shadcn 스킬은 대체 폰트 사용 지시(우리 무대체 원칙과 충돌). skills.sh에서 CJK 스킬은 빈 땅(korean-typography 246 설치 vs emil 346K). OmD는 ui-skills.com 미등재(registry.ts PR로 등재), skills.sh 최고 20설치(콜론 이름). shaders: `shaders` 주 287K, paper-design 1.1M; 단일 효과 스킬이 잘 퍼짐.
+- **10/13 제안서** `docs/PROPOSAL_FORMAT_FONT_SHADER_2026-10-13.md`: ① Core v2.1 = Google 호환 상위집합(검증 토큰만 frontmatter, Google 8섹션 순서, OmD 섹션은 추가 섹션, 근거는 사이드카; Google lint는 모르는 섹션 보존·추가 키 관대 — 확인함) ② 폰트 3층(브랜드 사실 / 실측 유사도 권장 대체·'not the brand face' 표기 / 문자 체계별 안전 기본값) + AGENTS 폰트 문구 정정 필요 ③ 셰이더 = 단일 효과 니치 스킬 2~3개(CJK 타이포 셰이더·런칭 히어로·OG 영상). 오너 결정 대기.
+- **10/13 오너: 규격은 추가 리서치·논의 필요, 폰트 설명 추가 요청, 셰이더 허가(리브랜딩에도 활용).** 실행: 규격 지형 리서치(`docs/research/2026-10-13-format/FORMAT-LANDSCAPE.md`), 셰이더 단일 효과 스킬 2개(`feat/shader-skills`: CJK 디스플레이 타입 셰이더, DESIGN.md 토큰 런칭 히어로). 폰트 실측(휴리스틱): family가 있는 489개 중 약 248개가 브랜드·독점 추정 폰트를 하나 이상 씀, 215 오픈, 26 시스템 스택만, 32 미기재.
+- **10/13 리브랜딩 시안 3개 완료** (`docs/research/2026-10-13-rebrand/index.html`, 로컬 `python3 -m http.server 8765`로 열기): A 네모(원고지 칸·한글 음절 블록 마크), B 인(印)·검인(봉인=출처, 먹 셰이더 WebGPU+CSS 폴백, 세리프), C 표본실(펠트 서랍·핀 꽂힌 색 칩 라벨). 에이전트 추천 B. 주의: 'OMD'는 Omnicom 미디어 에이전시 이름과 겹침(상표 확인 필요), 검인·検印·표본의 원어민 뉘앙스 점검 필요. 오너 선택 대기.
+- **10/13 오너: A 컨셉(네모)으로 랜딩 전체 프로토타입 + 4개 언어(en·ko·ja·zh-TW) i18n** → 에이전트 실행 중 (`docs/research/2026-10-13-rebrand/a-landing/`, 로컬 8765).
+- **10/13 규격 리서치 완료** (`docs/research/2026-10-13-format/FORMAT-LANDSCAPE.md`). **정정:** frontmatter 없는 건 3개(toss·krds·serendie, Core v2)뿐, 나머지 518개는 legacy 0.1 YAML frontmatter이나 토큰이 `tokens:` 아래라 Google lint가 무시. Google 파서는 fenced ```yaml 블록도 읽음 → Core v2 toss에 섹션별 yaml 블록 4개 넣어 lint 오류 0·토큰 전부 인식 확인. 합의 지형: 에이전트용 Markdown+YAML 토큰, 도구용 DTCG 2025.10 JSON(10/28 안정), 실시간은 MCP; 어느 스펙도 출처·CJK 필드 없음; 폰트는 3갈래(대체를 토큰에 / 금지(Atlassian) / 이름표 대체(ko-design-md)). 추천 D(§3 유지, 섹션 안 fenced YAML Google 스키마 토큰, 근거는 그래프·사이드카; shadcn용 'Do's and Don'ts'·'Known Gaps' H3), A(변환 파일)는 보조 다운로드. 진짜 비용은 멈춘 legacy→Core v2 전환. 오너 결정 5개 대기.
+- **10/13 오너 규격 결정 F1~F5** (`docs/REDESIGN_DECISIONS_2026-10-01.md` 하단): B 허용(실증으로 확정), 대체 폰트 허용, lint 오류 0 게이트, 새 형식 전환 진행, CJK 조판 구조화+산문. Phase 1(스펙 v3 초안·샘플 3개·shadcn end-to-end·리더 인벤토리) 착수 → 오너에게 스펙+샘플 보인 뒤 518 일괄 전환. 멈췄던 랜딩 프로토타입·셰이더 스킬 에이전트 재개.
+- **10/13 형식 Phase 1 완료** (`feat/design-md-v3` `03bad274`, 푸시; PHASE1.md는 그 브랜치 `docs/research/2026-10-13-format/PHASE1.md`, -f 커밋). shadcn 스킬 실측(claude -p, 각 2회): B·D 동률(11색·7 radius·Known Gaps 3.71:1·Noto 대체 표기, Inter 미사용) → **B 채택**(F4: D는 Core v2 경로 강제, 공개 파일 다수가 frontmatter). 스펙 `spec/design-md-v3.md`(3.0.0): 파일 내 version 없음, 출처는 `reference.json` 사이드카, 폰트 3층, `typesetting:` lint 침묵 확인, Known Gaps는 Governance 끝, 빈 토큰 그룹은 `omitted:`. 샘플 toss·stripe·baemin lint 오류 0·값 비교 일치. 리더 27그룹(~45파일); 3개만 바꾸면 build-registry 중단·등급 296/109/116 등 예상대로 깨짐. Phase 2 계획(공유 리더 어댑터 → dry-run 518 원본 일치 → 카나리아 배치 → 작성기 전환) 확정 대기. 오너 결정: 스펙·toss 샘플 검토, toss 간격 토큰(4/6/8/16/24/32, 패키지 원본엔 있고 보이는 Core v2 파일엔 없음) 유지 여부, AGENTS.md 폰트 규칙 개정(전후 문구 준비).
+- **10/13 셰이더 스킬 1차** (`feat/shader-skills` `f3010172`·`d84a9683`, 푸시): `omd-cjk-type-shader`(먹 번짐, 실제 텍스트 유지, WebGL2), `omd-shader-hero`(DESIGN.md 토큰 → 메시 그라디언트). 라이브러리 @paper-design/shaders 0.0.81(Apache-2.0, 5~7KiB gz) — `shaders`(MIT, WebGPU 전용, 710KiB, 텔레메트리 기본 on)는 업그레이드 경로로만. 실 GPU(Metal) 렌더 확인, 스킬 수 28→30. **메인 검토: 바이럴 수준 아님**(먹 번짐이 회색 테두리 스티커처럼 보임, 히어로는 흔한 메시 그라디언트) → 2차 개선 지시. 데모는 `docs/research/2026-10-13-shader-skills/`.
+- **10/13 셰이더 스킬 2차** (`8139eff9`, 푸시): 먹 번짐을 텍스트 자체를 먹색으로 + 위에 젖음→마름·획 끝 고임·마른 붓결·드문 섬유 번짐·절차적 한지 질감으로 재작업 — 메인 검토로 **바이럴 수준 판정**(출시 1순위). 히어로는 메시 그라디언트 → 2색 디더(리소 인쇄풍, 혼색 없음, 제목 대비 ≥4.5 강제, 실측 18.8:1) — 독특하나 강한 그래픽. 둘 다 실 GPU 렌더·폴백·모션 줄이기 통과. 미확인: 모바일 사파리·안드로이드. main 반영·npm은 오너 GO.
+- **10/13 A 컨셉 랜딩 프로토타입 완료** (`docs/research/2026-10-13-rebrand/a-landing/`, http://127.0.0.1:8765/a-landing/?lang=ko|en|ja|zh-TW, ?theme=dark): 헤더·4개 언어 전환(html lang·URL·기억), 히어로(원고지 격자, 셀→/design-systems/<id>, 레지스트리에 있는 고유 이름만·근거 있는 색만), 토스 해부(81/81, 값별 출처·방법·날짜), 지역별(KR 202/137 검증, JP 61/34, TW 63/11, CN 13/10, 기타 182/107), 에이전트에 쓰는 3단계, 스킬(공개 6 + /hangul·CJK 셰이더 '준비 중', JA·ZH 조판 '계획'), 차별점, FAQ 6, 푸터. 서체 Wanted Sans / Noto Sans JP(palt) / Noto Sans TC, 오버플로 0(4언어×5폭), 링크 0 오류. 약점: 일본 셀이 라틴 글자(레지스트리에 고유 이름 없음), 원어민 검수 필요, 첫 프롬프트 영어 고정, #use는 IA 브랜치에만, 사파리·실기기 미검증. 오너 검토 대기.
+- **10/13 오너 프로토타입 피드백 → 3차 진행 중:** ① 레퍼런스 해부를 번호 나열 대신 DESIGN.md 스캔 → 화면 생성(gen-UI) 애니메이션 ② 히어로 격자를 3D·기업 특징이 보이게 → 3D 키캡 키보드(키캡 radius·굵기를 실제 토큰에서) ③ 지역 섹션 '기타' 삭제·가볍게 → 한(ㅎ)·あ·ㄅ 입력기 범례 3D 키캡 3개.
+- **10/13 프로토타입 3차 완료:** 히어로 3D 키캡 키보드(키캡 radius·각인 굵기를 회사 실제 토큰에서, 값 없으면 중립+표기, 눌림·타이핑 잔물결), Gen UI 스캔→생성(토스·LINE·104人力銀行 전환, 출처 태그, 없는 값은 '원본에 없음'), 지역 키캡 3개(한·ㄅ·あ, 기타 삭제, 누르면 검증 예시 4곳). 메인 검토: 키보드·지역 좋음, Gen UI 오른쪽이 스펙 표처럼 보임 → 4차(토큰만으로 만든 샘플 앱 화면 조립) 진행 중.
+- **10/13 오너: 키캡을 블렌더 같은 질감의 진짜 3D로, 박스 영역 없이 열린 공간의 오브제로, 몽글몽글한 젤리·풍선 질감(참고 이미지: 반투명 핑크 풍선 S, 광택 블루 젤리 R)** → three.js MeshPhysicalMaterial(투과·클리어코트·환경맵) 부푼 키캡 재제작 에이전트 실행 중(히어로만, Gen UI 4차와 파일 분리).
+- **10/13 Gen UI 4차 완료:** 오른쪽이 토큰만으로 조립되는 샘플 앱 화면(이번 달 지출·최근 내역·자세히 보기 버튼·누름/포커스, 4개 언어 문구, '이 토큰으로 만든 샘플 화면' 표기), 값마다 출처 말풍선+연결선, 없는 값은 점선 '원본에 없음'. 메인 검토 OK.
+- **10/13 오너 피드백:** 키캡이 너무 기울어짐 → 실제 키보드 배열(행 스태거·일정 간격·넓은 키 하나, 카메라 10~20°)로 3D 에이전트에 전달. Gen UI: 섹션 번호 배지(1·2) 전부 삭제, 진짜 Gen UI 느낌(에이전트 로그 스트림·스켈레톤→해석·값 적용 모핑), 검증 기업 8~12곳 선택 시 즉시 재적용 → 5차 진행 중.
+- **10/13 3D 젤리 키캡 완료** (three.js 0.186.1 번들 141KB gz, 유휴 후 로드; 투과·클리어코트·RoomEnvironment, 브랜드색 내부 코어; 5/5/4/2 스태거 배열·카메라 14~16°; radius 토큰으로 단단함/말랑함; 스프링 눌림; 폴백 webp 포스터 4장). 메인 검토: 젤리 질감·배치 좋음. 약점: 위에서 보는 각도라 투명감보다 사탕처럼 보임, 같은 하이라이트 반복, 어두운 키(誠品·도요타)에서 각인 가독성 낮음, 토스 파랑이 보라 쪽으로 틀어 보임(색 정확도 확인 필요).
+- **10/13 Gen UI 5차 완료:** 섹션 번호 배지 6개 삭제. 검증 기업 11곳 피커(토스·당근·KRDS·숨고·104·台灣高鐵·LINE·pixiv·freee·Apple·Linear — 샘플 화면에 필요한 값이 다 있는 곳만), 에이전트 로그 타이핑, 스켈레톤→값 적용 스냅, 전환 ~450ms 재적용+'Applied …' 한 줄, 무조작 시 자동 순환, 출처는 호버/탭, 없는 값 점선. 메인 검토 OK. 3D 키캡 색 정확도·각인 가독성 다듬기 진행 중.
+- **10/13 3D 키캡 다듬기 완료:** 색 정확도 최대 ΔE00 2.7(이전 19.1; 톤매핑 끔·쉰 제거·런타임 색 보정), 각인은 대비로 흰/검 선택·1024px 텍스처로 선명, 하이라이트 키마다 변화, 바닥 반사는 생략. 번들 142KB gz. 메인 검토 OK. 프로토타입 전체(히어로 3D 키캡·Gen UI·지역 키캡·4개 언어) 오너 검토 대기.
+- **10/13 오너 지적: Apple 카드 점선** = 매퍼가 `rounded.md`만 찾아서 오탐(Apple에는 docs-card 18px·hig-reference-card 존재) → '모르면 비운다'가 '있는데 비운다'가 됨. 수정 지시: 슬롯별 의미 검색(type:card → rounded.card류 → md), 다른 증거 도메인이면 말풍선에 명시(HIG docs vs apple.com), 누락 표시는 요소 전체 점선 대신 작은 인라인 태그+기본값, 11곳 커버리지 재점검.
+- **10/13 오탐 수정 완료(5b):** Apple 카드 hig-reference-card 18px·흰 배경, 추가 오탐 5곳(freee·台灣高鐵·Linear·숨고·pixiv) 해소, 누락은 요소 기본값+작은 점선 태그로, 다른 출처 도메인 표시. 메인 재검토에서 폰트 오탐 1건 추가 발견(Apple SF Pro Display/Text가 family.display/text에 있는데 '명시된 글꼴 없음') → 수정 지시.
+- **10/13 폰트 오탐 수정(5c):** 글꼴을 ui→text→body→sans→default, 제목은 display→heading으로 의미 검색. Apple(SF Pro Text/Display)·freee(Noto Sans JP)·台灣高鐵(Noto Sans TC)·Linear(Inter) '명시 없음' 오탐 해소. 못 불러오는 브랜드 서체는 이름+'대체, 브랜드 서체 아님' 표기, 로캘에서 실제 로드되는 Noto는 '명시된 그대로'. 교훈: 실구현 시 모든 슬롯 의미 검색 + 521 전체 오탐 검사.
+- **10/13 밤 오너 결정 G1~G5** 기록. **builder 제거 운영 반영 완료 — main `3f442a7b`** (Vercel Production success; 라이브: /builder?ref=toss → /design-systems/toss#use 308, /builder → /design-systems, /reference/toss → 상세, 상세 제목 'Toss Design System — DESIGN.md, Colors & Typography', 홈에 /builder 링크 0). npm 미로그인(401) → publish는 오너. 실행 중: ① release/2.0.3(셰이더 스킬 병합·버전·변경기록·main 반영, publish 제외) ② v3 토스 샘플 공식 TDS 문서 대조 + Phase 2 전환(브랜치만) ③ 리브랜딩 A 실구현 `feat/rebrand-a`(4개 언어 라우트·3D 키캡·Gen UI·521 전체 슬롯 오탐 테스트, **main 금지**). AGENTS.md 폰트 규칙은 2.0.3 반영 후 main에 커밋 예정.
+- **10/13 2.0.3 main 반영·운영 배포 완료** (main `6fd57dc2`, Vercel success): 셰이더 스킬 2개(omd-cjk-type-shader·omd-shader-hero, 둘 다 품질 기준 통과), 스킬 30/커서 29, CHANGELOG 2.0.3, capture-reference-evidence 번들 재생성 커밋. 충돌은 cli-docs.ts 3줄만. npm 미배포: `.github/workflows/release.yml`이 `v*.*.*` 태그 푸시로 trusted publishing → 오너가 `npm run gate:quality:strict`(로컬 픽스처 필요; BLOCKED면 CHANGELOG 면제 기재 여부 판단) 후 `git tag v2.0.3 origin/main && git push origin v2.0.3`. 루트 npm test는 타임아웃 플레이크(autopilot v2 readiness generator 15s). **AGENTS.md 폰트 규칙 개정 main 커밋 `ba2b71df`(G3).**
+- **10/14 리브랜딩 A 실구현 1차 완료 — `feat/rebrand-a` `7c2ef5f2`, main 미반영(G1)**. 프리뷰 https://oh-my-design-e4f02s8f8-kwakseongjaes-projects.vercel.app (SSO). 로캘별 루트 레이아웃 `/`·`/ko`·`/ja`·`/zh-tw`(lang·hreflang·x-default·사이트맵, `/zh-TW` 등은 proxy 308, 선택 쿠키로 `/`→307), 랜딩 전체 이식(3D 키캡 유휴 로드·포스터, Gen UI 11곳, 지역 키캡, 4개 언어), 데이터는 빌드 시 레지스트리에서. **521 전체 슬롯 오탐 테스트** `web/__tests__/landing-resolvers.test.ts` — 작업 중 실제 오탐 2종(text-body류 9건, brand-*/main류 14건) 발견·수정, 현재 0. 무게: HTML 23KB·CSS 34KB·JS 206KB gz(+3D 139KB 유휴). tsc·vitest 967·next build·check-counts 통과, 오버플로·링크·퍼널 OK. DESIGN.md.patch 미적용. 남은 것: 정보 페이지 푸터 없음·docs/blog 헤더 미적용·상세 페이지 테마 토글 2개, 로캘별 포스터, 동의 배너가 아직 보라색·첫 화면 가림, 원어민 검수(셰이더 스킬 문구 4개 포함).
+- **10/14 npm 2.0.3 배포 완료** (오너 지시 '너가 해'): strict 게이트 BLOCKED — 2.0.2와 동일 상태(게이트 대상 스킬·검사기 2.0.2 이후 바이트 동일)라 CHANGELOG에 waiver 기록(`a0c7dedb`), 첫 태그 실행은 llms-full.txt stale로 publish 실패 → 재생성 `6c97e3ec`, 태그 이동 후 재실행 성공. trusted publishing+provenance, npm latest=2.0.3 확인. 2.0.2에서 약속한 게이트 receipt 재생성은 여전히 미이행(다음 릴리스 전). 리브랜딩 2차(사이트 전체 일관화) 진행 중.
+- **10/14 DESIGN.md v3 전환 완료 — `feat/design-md-v3` `d9a9798d`, main 미반영.** 521개 전부 v3. 토스는 공식 TDS 문서(tossmini-docs.toss.im/tds-mobile, 34쪽) 대조: 역할 색 전부 공식 팔레트 단계와 일치, 팔레트 80색·타입 스케일 t1–t7/st1–st13 추가(claim 81→207), 간격·누름·포커스는 캡처 근거로 유지+Known Gaps 명시(문서엔 없음). dry-run 518/518 원본 완전 일치, 작성기 바이트 동일 왕복. 배치마다 가드 유지(등급 299/109/113·모션 193·레지스트리/claim 동일·lint 오류 0). build-registry는 실제 YAML 파서로 교체(serendie·sumup 설명 오염, 29cm·line·lotteon llms 설명 YAML 조각 문제 해소). 차이: 상세 페이지 산문 추정 강조색 11곳 변동. 남은 것: 옛 편집 도구 5개 v3 미지원(포팅/폐기), add-reference/batch-launch 생성 게이트, .omd/system 아카이브 유지 여부, MCP가 v3 원본을 줄지, 캡처 번들 재빌드. 기록 `docs/research/2026-10-13-format/PHASE2.md`(브랜치). main 반영은 오너 GO.
+- **10/14 리브랜딩 2차 완료 — `feat/rebrand-a` `59dd5282`, main 미반영(G1).** 프리뷰 https://oh-my-design-cw0v7hljb-kwakseongjaes-projects.vercel.app (SSO). 사이트 전역 토큰을 A(종이·먹·각진 모서리·Wanted Sans)로 → 모든 페이지 본문이 A로. 동의 배너는 하단 얇은 바(히어로 안 가림, 로캘 문구), 아카이브(격자 히어로·키캡 칩·지역 키캡 필터·등급 필터·검색, SEO 동일), 상세(키캡 히어로·#use 주 패널·근거 서랍·테마 토글 1개·폰트 이름표 규칙), docs/blog 헤더·푸터, 로캘별 포스터, 404. 표 `docs/research/2026-10-13-rebrand/impl/CONSISTENCY.md`. tsc·vitest 967·next build·check-counts, SEO 21경로·퍼널·링크 582 OK. 남은 것: what-is·changelog 320/390 가로 넘침(운영에도 있음), changelog의 MIGRATION.md 404(운영도), 하드코딩 색 몇 곳, DESIGN.md.patch 7·21행 문구, 원어민·사파리·실기기, OG 이미지. v3와 병합 필요(상세 근거 81→207 등).
+- **10/14 v3 운영 반영 완료 — main `b3d2751b`** (오너 GO, Vercel success). 라이브: 홈·/ko·아카이브·상세(toss·stripe·baemin·line) 200, `/toss/design.md`가 Google frontmatter v3로 서빙, 라이브 파일 `@google/design.md lint` 오류 0(경고 110, 인포 2). 다음: 리브랜딩 브랜치에 main(v3) 재병합 + 잔여 정리.
+- **10/14 리브랜딩 3차(최종 검수 후보) — `feat/rebrand-a` `cdaf3dd8`, main 미반영(G1).** 프리뷰 https://oh-my-design-1wv8lg5c4-kwakseongjaes-projects.vercel.app (SSO). main(v3) 병합 충돌 없음(package.json만 양쪽 추가 유지), 521 리졸버 테스트 v3 데이터로 0 오탐·슬롯 변화 없음, 복사 텍스트는 v3 파일과 바이트 동일. 수정: what-is·changelog 넘침, MIGRATION.md 링크→GitHub, 하드코딩 색→토큰(새 상태색 --sq-ok/warn/err 추가 — 오너 승인 필요), 404 테마 추종, serendie 로고 404 가드, DESIGN.md.patch 갱신(미적용). 검사: tsc·vitest 966·next build·check-counts, 31경로×6폭 넘침 0, 링크 593 OK, SEO 26경로 OK. 남은 것: HOT/NEW 칩 실데이터 미확인, 아카이브 썸네일 제거, OG 이미지 구버전, docs/blog/evolution 본문 레이아웃 기존 유지, 원어민·사파리·실기기. 오너 최종 검수 대기.
+- **10/14 오너 로컬 검수 피드백(랜딩):** ① 로고가 너무 밋밋 — 원래 오너가 만든 브러시 스크립트 'OMD' 타이포 로고 DNA로, codex 이미지 활용해 재작업 ② 히어로의 299/109/113 등 분류 정보는 과함 → 시각적 와우 중심 ③ 키캡 느낌 유지 + **기업 로고 SVG를 각인한 키캡**(아티즌 키캡 유행; 로고는 `feat/brand-svg-gallery` 47개 KR/TW 공식 SVG), +505 키 삭제 ④ '+505 more' 텍스트 대신 검색 + 아카이브 직행 버튼 ⑤ 레퍼런스 tasteskill.dev — 절제미·여백 적극 활용, 불필요한 건 빼고 필요한 건 크게(랜딩·DESIGN.md 보기·상세) ⑥ OMD 스킬에 절제미가 부족하면 스킬화. 실행: Taste Skill 분석(→`docs/research/2026-10-14-restraint/RESTRAINT.md`), 로고 방향 3~4안(→`docs/research/2026-10-14-logo/`). 이후 절제 재설계.
+- **10/14 Taste Skill 분석 완료** (`docs/research/2026-10-14-restraint/RESTRAINT.md`, MIT 레포, 복사 없음): OmD 히어로가 빽빽한 건 빈 픽셀보다 첫 화면의 양 — 단어 139 vs 55, 숫자 17 vs 2, 서체 크기 10 vs 7, 주 행동 없음. 규칙 10개(초점 1·첫 화면 5조각·서체 4크기·헤드라인 2줄·CTA 2·히어로 통계 금지·강조색 1·격자/테두리는 기능 있을 때만·눈썹 라벨/중복 배지 금지·빈 영역 ≥65%). 기존 한계 규칙은 `docs/design-excellence/scale-and-simplicity.md`·`src/cli/check.ts`에 있으나 aphrodite만 사용. 실행 중: 절제 재설계(`feat/rebrand-a`, 히어로 단순화·로고 각인 키캡·검색+아카이브 버튼·상세/아카이브 정리·규칙 실측 전후), `omd-restraint` 스킬(`feat/omd-restraint`, AUDIT 실측 스크립트+APPLY), 로고 방향 3~4안.
+- **10/14 로고 4안 완료** (`docs/research/2026-10-14-logo/index.html`, 로컬 8766): ① 오너 OMD 브러시 스크립트 다듬기+금빛 스와시 ② 'oh my design' 전체 브러시 워드마크 ③ 금빛 젤리 키캡 위 'omd' ④ 'oh my'(손글씨)+'design/디자인'(Wanted Sans)+금빛 마침표(로캘별 교체). 모두 실제 SVG 경로·16~512px·파비콘·헤더 미리보기. 에이전트 추천: 헤더=④, 표현용=①, 앱 아이콘=③. 주의: 'OMD'는 Omnicom 미디어 에이전시와 글자 겹침(형태는 다름) → 전체 이름 우선. 오너 선택 대기.
+- **10/14 오너 로고 결정:** 앱 아이콘 = ③ 키캡 'omd'(하단 바 없이), README = ② 'oh my design' 브러시 워드마크+스와시(d2-1/lockup 느낌), 사이트 헤더 = 앱 아이콘 + 텍스트(Taste Skill처럼). 최종 에셋 제작 중 → `docs/research/2026-10-14-logo/final/`, 이후 리브랜딩 브랜치 Logo 컴포넌트·파비콘·README에 적용.
+- **10/14 로고 최종 에셋 완료** (`docs/research/2026-10-14-logo/final/`): 앱 아이콘(키캡 'omd', 하단 바 제거, 5색; 16/32px는 'o' 단순화; ico·apple-touch·android·maskable 안전영역 검증·webmanifest), README 워드마크·배너(1280×320 라이트/다크, <picture>), 헤더 락업(아이콘32/28px+Wanted Sans 18/16px). 전부 SVG 경로·svgo·8KB 미만. 절제 재설계 에이전트에 적용 지시.
+- **10/14 `omd-restraint` 스킬 완료 — `feat/omd-restraint`** (`760982e6`·`999a1fe1`·`afc16142`, 푸시, main·npm 미반영). AUDIT 스크립트(`scripts/audit.mjs`: 초점 비율·첫 화면 조각·서체 크기·단어·CTA·강조색·빈 영역·길이 실측) + APPLY 절차 + '빈약함도 실패' 반대 규칙, 규칙마다 근거 등급(M/C/H). `omd check restraint <url|file>` CLI. 자가검증: busy FAIL·restrained PASS. 실측: tasteskill.dev FAIL 6규칙(조각 6·서체 7·버튼 5·모노 라벨 17 등), oh-my-design.kr FAIL 14규칙(초점 1.68·조각 22·단어 243·CTA 15). 스킬 31/커서 30. 약점: 랜딩 검사기 로직 복사(공유 아님), R9 모노 데이터/장식 구분 못 함, H 임계값은 두 사이트 기반.
+- **10/14 절제 재설계 완료 — `feat/rebrand-a` `3dac68a4`, main 미반영(G1).** 로컬 http://localhost:3200 (워크트리 agent-a4f327068b31dfe19). 히어로: 2줄 헤드라인·한 문장·검색·'아카이브 둘러보기'+'어떻게 쓰나요', 통계·리드아웃·+505 제거, 오른쪽은 **로고 각인 젤리 키캡 9개**(kakaobank·toss·class101·yanolja·kurly·kream·upbit·channeltalk·socar; 로고 대비 3:1 미만이면 연한 틴트 캡, 재채색 없음, 출처 유지). 아래: Gen UI 한 화면(6곳)·설치 한 줄·'왜' 한 문장·FAQ. 새 로고(헤더 아이콘+텍스트, 파비콘·매니페스트, README 4개 배너). 상세: 첫 화면 h1·요약·Copy+Download만, 읽기 폭 ~72자. 아카이브: 24개씩 더보기, 컬렉션 메뉴 하나. 실측(전→후, 1440): 서체 크기 11→4, 단어 102→36, 숫자 17→1, 테두리 8→0, 빈 영역 64→80%, 길이 6.7→4.3화면; 아카이브 모바일 107→3.6화면. 미달: 토스 상세 첫 화면 서체 7가지, 상세 키캡이 글자(로고 아님). 결정 필요: 일본·대만 로고 없어 /ja·/zh-tw 키캡도 전부 한국 브랜드.
+- **10/14 오너 피드백(r4):** 일본·대만 키캡 = (b) 글자 키캡 2~3개 섞기 + (c) 일본 공식 로고 새로 수집(진짜만, `feat/brand-svg-jp`). 섹션 구분 모호 → 일관된 경계 체계. Gen UI 섹션명 'DESIGN.md에서 화면까지의 여정', 기업 칩도 공식 로고로. '에이전트에게 건네기'+'갤러리는 겉모습…' 문장 섹션 → omd CLI 실제 실행 화면+공개 스킬 소개 중심 단순 섹션. 실행 중: 일본 로고 수집, 랜딩 5차.
+- **10/14 랜딩 5차 완료 — `feat/rebrand-a` `39e74905`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-aca9d52a7366f530a). 키캡 세트 데이터화(`web/src/data/hero-caps.json`; 로고가 매니페스트에 있고 3:1이면 로고 캡, 아니면 글자) — /ja 도요타·사쿠라·파나소닉, /zh-tw 誠品·長榮·全家 글자 캡. 섹션 경계 = 흰색/옅은 회색 띠 교대+128/88px 여백, 섹션마다 h2 하나. '여정' 섹션(ko 'DESIGN.md에서 화면까지의 여정') 칩 공식 로고(토스·당근·카카오뱅크·뱅크샐러드; LINE·104는 로고 없어 글자). CLI 섹션: npx oh-my-design-cli@latest 실제 출력(설치 처음/끝 줄+doctor 전체, 2.0.3 날짜 표기)+공개 스킬 4개. 측정: 첫 화면 r4와 동일, 길이 4.9화면, 넘침 0, 링크 OK.
+- **10/14 일본 공식 로고 14개 수집 — `feat/brand-svg-jp`** (17파일, 전부 공식 사이트·CDN·프레스킷, 트레이싱 없음): BASE·Qiita·Zenn·Mercari·pixiv·LINE·Cybozu·coconala·freee·Hatena·MIXI·SAKURA internet·SmartHR·SoftBank. 시트 `docs/research/2026-10-14-jp-logos/sheet.png`, 표 LOGOS.md. 위험: LINE(고)·Zenn(중)은 가이드가 장식·3D·그림자 금지 → 젤리 키캡과 충돌, Cybozu(고)는 2차 사용 사전 신청 필요, Qiita는 상업적 사용 사전 연락. 스킵: Sony·JAL·Panasonic·Toyota·au·Mynavi(사이트 차단). 주의: 이 푸시로 47개 KR/TW 갤러리 커밋 `6fac31ec`이 처음 origin에 올라감(오너 검토 전이던 기능), 구 브랜치라 pre-commit 훅 스크립트 부재로 `--no-verify` 커밋 2건. 진행 중: 언어 선택 모달+언어 전환 시 키캡 낙하(6차).
+- **10/14 오너: 일본 키캡 로고는 추천대로(Mercari·freee·pixiv·BASE·SmartHR·coconala, LINE·Zenn·Cybozu·Qiita 제외), 키캡 로고 사용 조건 점검 불필요 — 그냥 사용.** 6차 에이전트에 반영 지시(검증 레퍼런스만, 여정 칩 LINE→JP 로고 기업 교체 시도, ja 포스터 재렌더).
+- **10/14 랜딩 6차 완료 — `feat/rebrand-a` `cd2b2331`, main 미반영.** 로컬 http://localhost:3200 재기동(빌드 재생성). 언어 선택 = 지구본+언어명 버튼 → 네이티브 <dialog> 모달(데스크톱 가운데 420px, 600px 이하 하단 시트), 키캡 글리프(A·한·あ·ㄅ)+고유 언어명, 키보드 조작·포커스 트랩·Esc. 언어 전환 시 새 로캘 키캡만 중력 낙하·착지 찌그러짐·두 번 튕김(~1.1s), 이웃 키 흔들림, 첫 방문·모션 줄이기는 정지. 일본 로고: 테두리 색 대비 측정(`logo-edges.mjs`)으로 바꿨는데도 freee만 3:1 통과 → /ja 키캡 = 한국 로고 9+freee 로고+도요타·사쿠라 글자; Mercari·pixiv·SmartHR·coconala는 대비 부족으로 미표시(매니페스트엔 있음). 여정 칩 LINE 유지(일본 로고 기업 중 샘플 토큰 완비 없음, freee 16/17). 약점: 3D 전환 순간 공유 키캡이 잠깐 흐려짐, /·/ko로 돌아갈 때는 낙하 없음.
+- **10/14 오너: 리브랜딩(1)은 추가 개선 예정(오너 피드백 대기), 2~5 진행.** 실행 중 4개: ② 2.0.4 릴리스(omd-restraint, main+npm, 게이트 waiver — omd-landing SKILL.md 변경 있음 명시) ③ 한국어 상세 `/ko/design-systems/[id]`(`feat/ko-detail`, 리브랜딩 기반, hreflang 쌍) ④ 레퍼럴 1차(`feat/referral-1`: OG를 /api/og 밖으로, shadcn 사용법 docs, 스킬 하이픈 이름 이전안, ui-skills PR 초안 — **제출은 오너 확인 후**) ⑤ 계측(`feat/growth-metrics`: 주간 스냅샷 GitHub Action+데이터 브랜치, Vercel Web Analytics 재도입 검토, GA4 API 복구 가이드).
+- **10/14 계측 결정(Claude):** 레포가 공개라 데이터 브랜치에 DAU/트래픽/레퍼러를 올리면 영구 공개됨 → 공개 소스(별·npm·skills.sh)만 공개 브랜치 허용, 비공개 지표는 별도 **비공개 레포**(오너가 생성 + PAT 시크릿) 설정 시에만 기록, 워크플로 아티팩트도 공개 레포에선 노출되므로 사용 금지, 기존 로컬 metrics.jsonl은 공개 푸시 금지.
+- **10/14 2.0.4 출시 완료** — main `973cabc4`(Vercel success), 태그 v2.0.4 릴리스 워크플로 1회 통과, npm latest=2.0.4(provenance). omd-restraint 포함, 스킬 31/커서 30. 게이트 BLOCKED(2.0.3과 동일 상태) + CHANGELOG waiver: 이번엔 omd-landing SKILL.md 경계 메모 4줄 변경·v3로 toss/stripe/karrot 레퍼런스 재작성 → receipt 재생성 범위가 커짐. 로컬 루트 테스트 1개(autopilot v2 readiness, 22s>15s 한도)는 이 기기에서 매번 시간 초과, CI 통과.
+- **10/14 계측 작업 완료 — `feat/growth-metrics`** (`057efbc2`·`9280be78`·`cc4e2971`·`48c94e9e`·`cfb1a8e2`, main 미반영). 주간 스냅샷 워크플로(월 03:23 UTC): 공개 수치는 공개 고아 브랜치 `growth-data`(`metrics-public.jsonl`, 시드 `22f25e2a`, 공개 필드만), 비공개 수치는 별도 비공개 레포 설정 시에만. 기본 GITHUB_TOKEN은 트래픽 불가(Administration read 필요) → 오너가 만들 것: 비공개 레포 `oh-my-design-metrics`, 변수 METRICS_REPO, 시크릿 METRICS_REPO_TOKEN·GH_TRAFFIC_TOKEN·OMD_KV_REST_API_URL/TOKEN. Vercel Web Analytics 재도입(@vercel/analytics 2.0.1, 쿠키 없음, 거절 시 이벤트 드롭, Pro 1천 이벤트당 $0.03), 개인정보 페이지 갱신 — **오너 결정: EU 문구 (a) '쿠키 기반 분석'으로 수정 vs (b) EU 미선택 방문자도 차단**. GA4 복구 가이드 `scripts/analytics/RESTORE-2026-10.md`(오너 Google 로그인 필요 단계 표시). 워크플로는 main에 있어야 실행됨.
+- **10/14 레퍼럴 1차 완료 — `feat/referral-1`** (main 미반영, 2.0.4 병합됨). ① 공유 이미지 `/api/og/*` → `/og/reference`·`/og/blog`(옛 주소 308, Twitterbot·facebookexternalhit·Slackbot curl로 200 PNG 확인) ② `/docs/<locale>/shadcn` 사용법 5개 언어 — shadcn 스킬 실제 end-to-end 1회(토스 v3 파일 그대로, claude -p 3분41초 $0.80): 색 역할+팔레트 8개·radius 7·타입 26·버튼 높이·누름/포커스·대비 갭 3.71·'대체 없음+Noto 라벨' 반영, Inter 미사용(쇼케이스 화면 단계는 미실행) ③ 스킬 이름: skills.sh는 frontmatter name 기준 → 15개 `omd:x`→`omd-x`, 미러 폴더 skills-lock에 local 표시 → 목록 54→32개; `omd install-skills` 설치명은 폴더 기준이라 `/omd:feel` 등 그대로 동작, 단 npx skills로 옛 이름 설치한 사용자(행당 ~20)는 재설치 필요(CHANGELOG 기재) ④ ui-skills PR 초안 `docs/research/2026-10-14-referral/UI-SKILLS-PR.md`(omd-feel·omd-cjk-type-shader + 선택 omd-apply·omd-restraint) — **main 반영 후·오너 확인 후 제출**. 결정 필요: 공개 스킬 6~8개 선정 후 나머지 metadata.internal로 숨길지.
+- **10/14 한국어 상세 페이지 완료 — `feat/ko-detail`** (리브랜딩 기반 3커밋, main·rebrand 미반영). `/ko/design-systems/[id]` 364개(한국 202 + 해외 검증 162; 해외 partial/legacy 157개는 얇은 중복이라 제외, 단일 판정 함수 `lib/i18n/ko-detail.ts`), lang=ko, 제목 '{이름} 디자인 시스템 — DESIGN.md, 색상·타이포그래피', 한국어 #use·근거 라벨·JSON-LD, hreflang ko/en/x-default 양방향, 사이트맵 쌍, `/ko/design-systems` 인덱스(24개씩·한국/해외 필터). 본문은 영어 원본 그대로(바이트 동일), 요약은 페이지에 있는 값만으로 만든 한국어 한 문장(번역 없음). /ko 랜딩 링크 → 한국어 페이지. 테스트 987 통과, 정적 페이지 1,132→1,497(+191MB). **핵심 공백: 한국 레퍼런스 67곳(토스·카카오뱅크·배민 등)이 레지스트리에 한글 displayName이 없어 제목이 'Toss 디자인 시스템' → '토스 디자인 시스템' 검색어 불일치.** 캐노니컬 파일엔 '(토스)' 같은 현지어 이름이 이미 적혀 있음 → 오너 결정: frontmatter displayName에 반영할지.
+- **10/15 오너:** 리브랜딩 1차 마무리 후 main 반영 예정 → 검수 화면 로컬 재오픈(http://localhost:3200, `cd2b2331`). EU 문구 (a) 수정 커밋 `cac08713`(feat/growth-metrics). 한글 이름 반영 위치·공개 스킬 정리·오너 설정 항목 설명 요청.
+- **10/16 GA4·Search Console 조회 복구 완료** (오너 위임, Aside로 직접): GCP 프로젝트 `omd-analytics-2026`, API 2개 사용 설정, 서비스 계정 `omd-analytics-reader@omd-analytics-2026.iam.gserviceaccount.com`, 키 → `scripts/analytics/.secrets/sa.json`(gitignored, 600), GA4 속성 533041908 뷰어·GSC sc-domain:oh-my-design.kr 제한적 권한 부여. `pull-all.mjs --days 28`: ga4·gsc·active·upstash·public ✓ (GA4 선택 리포트 일부는 미등록 커스텀 차원 400 — 핵심 리포트 정상). 28일: 채널 Direct 5,500·Organic 2,538(google 2,169·naver 197)·Referral 1,277(threads 412·wikidocs 298·padlet 271·blog.naver 172)·AI Assistant 153 세션; 국가 KR 4,520명; 랜딩 / 2,778·/builder 2,626(10/13 제거 전)·/design-systems 365. GSC는 브랜드 검색어가 대부분, 비브랜드는 revolut design system(노출 225, 4.7위)·design system builder(82)·ai slop design(74, 3위). 참고: GA4 속성에 다른 프로젝트 Firebase 서비스 계정(dongibuyeo-8eeff) 뷰어 존재. 비공개 지표 자동 수집은 오너가 불필요 판단.
+- **10/16 한글 표시 이름 41곳** (`feat/ko-display-names` `70c7d586` → `feat/ko-detail` 병합 `4bf2f002`): 기존 사이드카 키 `catalog.display_name_kr` 사용(빌드가 이미 읽음), 캐노니컬 H1/§1 현지어 이름만 출처로; 26곳은 원본에 브랜드 한글명 없어 비움(banksalad·upbit·kream 등). 등급 불변, 레지스트리 diff는 displayName 41줄만. `/ko/design-systems/toss` 제목 '토스 디자인 시스템 — …' 확인. 공개 스킬 정리 에이전트 재개 중.
+- **10/16 공개 스킬 정리 완료 — `feat/referral-1`** (`80599afd`·`683feb37`, main 미반영). 공개 10개: omd-init·apply·autopilot·feel·restraint·slop-audit·humanize·landing·shader-hero·cjk-type-shader. 22개 `metadata.internal: true`로 숨김(삭제 없음; harness·aphrodite·remember·learn·taste·sync·update·setup·media·showcase·asset-fetch·codex-image·experiment-gallery·orchestrator·kr-writer·locale-adapter·designer-review·final-qa·issue·reference-capture·lab-02·claude-design). 사실 확인: metadata.internal은 src/에서 안 읽고 skills.sh(vercel-labs/skills CLI)만 읽음 → `omd install-skills`는 그대로 31개 설치, `npx skills add` 목록만 10개(숨긴 것도 --skill로 설치 가능). 카운트 표기: 공개 10 / 번들 31 분리, check-counts·PUBLIC_SKILL_COUNT 가드. 영향: npx skills로 숨긴 스킬 설치한 사용자(이름당 1~4)는 update 시 '업스트림 삭제' 안내.
+- **10/16 오너 피드백(r6):** ① LINE 로고 미사용·Gen UI 표시 깨짐(누락 태그가 내용과 겹침) → 여정 칩에 LINE 공식 로고를 **평면·무가공**으로(가이드가 장식·3D 금지), 누락 표시는 화면 밖 요약으로 ② '출처에 없음' 보충 요청 → **실측으로 보충**(LINE·104 먼저, 이후 검증 레퍼런스 전반; `feat/backfill-genui-slots`, 추측·유사 브랜드 값 금지) ③ 초기 렌더·언어 전환 느림, UI 러프 → 성능 실측 전후·폴리시 ④ 히어로: '아카이브 둘러보기'→'DESIGN.md 둘러보기', 헤더에 GitHub 스타 버튼(실제 별 수, Taste Skill식) ⑤ 다크 모드 불필요 → 라이트 전용. 실행 중: 랜딩 7차, 실측 보충.
+- **10/16 랜딩 7차 완료 — `feat/rebrand-a` `43ff67d0`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-ae27f1425c88f2d04). LINE 공식 로고 평면 칩(`landing_use: flat-chip`, 고위험 로고는 3D 금지 테스트), 샘플 화면 누락 태그 제거→조용한 기본값+5px 점+요약 텍스트. 히어로: 'DESIGN.md 둘러보기'+설치 명령 블록(복사)+'어떻게 쓰나요', 히어로 검색 제거(CTA 2개 규칙), 헤더 GitHub 별 버튼(실제 537, GitHub API 1시간 재검증, 실패 시 숫자 없음; 콘셉트 A 규칙상 사각). 라이트 전용(테마 라이브러리·다크 CSS·다크 포스터 제거, color-scheme light, 테스트). 성능: / 데스크톱 TTI 2317→786ms·TBT 2227→211·INP 392→72, 폰 TTI 6007→2215·INP 904→136, /ja 폰 CLS 0.35→0; 언어 전환 후 3D 가동 2478→1236ms(클릭→인터랙티브는 비슷). 결정: 별 버튼 둥글게 할지(콘셉트 A 규칙 변경), 히어로 검색 제거 유지할지.
+- **10/16 오너 피드백(r7):** /ja·/zh-tw 키캡이 글자로 나옴 → 로고 찾기 + 키캡 규칙에 중립(흰) 캡 추가(브랜드색→연한 틴트→중립, 3:1 통과 시 로고). 언어 전환 ~2초 → 추가 최적화(목표 데스크톱 <600ms, 포스터·HTML 프리페치, 뷰 트랜지션). 언어 모달 → 버튼 아래 드롭다운, 보조 글리프 라벨 제거, 심플. 실행 중: TW·JP 검증 레퍼런스 공식 로고 수집(`feat/brand-svg-tw-jp`, 차단된 곳은 BLOCKED.md → 메인 세션이 Aside로), 랜딩 8차.
+- **10/16 실측 보충 완료 — `feat/backfill-genui-slots`** (`74a52203`, main 미반영): 검증 레퍼런스 117곳에 실측값 추가(버튼 높이·여백·글꼴·radius, 누름·포커스; 기존 색 claim이 가리키는 같은 페이지에서 요소 정체성 확인 후 기록, 각 값에 새 출처·방법·날짜). 샘플 화면 슬롯 완비 14→42곳. 104 완비(검색 버튼 46px·호버·누름·포커스). **LINE은 보충 불가**(디자인 시스템 사이트가 이미지뿐, 마케팅 사이트는 다른 증거 도메인). 등급 불변, 추가만. 부작용: 117곳 verification_v2.checked가 10/16으로 이동, 56곳 states 설명문이 7월 캡처 기준으로 남음. 랜딩 8차에 병합 지시 + 여정 일본 칩 LINE→freee(완비+로고).
+- **10/16 TW·JP 공식 로고 22개 추가 — `feat/brand-svg-tw-jp`** (매니페스트 82): eslite·familymart-tw(Commons PD)·toyota·sakura 심볼·104·poya·thsr·udn·booth·caddi·chatwork·crowdworks·folio·loglass(고위험)·newspicks·nulab·pairs·panasonic·recruit·serendie·smartbank·sony. PNG만 있어 제외: au·ikala·taishinbank·mynavi·studysapuri·teamlab. 차단 4곳은 메인 세션이 Aside로 확보: JAL(공식 SVG 2종)·Acer(공식 SVG)·China Airlines(공식 사이트 인라인 심볼)·EVA Air(공식은 PNG뿐 → Commons PD 워드마크, 공식 PNG와 글자·색 일치 확인) → 로고 에이전트에 추가 지시. 랜딩 8차에 TW/JP 로고 반영+logo-edges 실행 지시.
+- **10/16 차단 4곳 로고 추가 완료** (`feat/brand-svg-tw-jp` `034e8894`, 86개): jal·acer·china-airlines(로딩 화면 심볼)·evaair(Commons PD 워드마크). 목표 31곳 중 26곳 확보, 6곳은 PNG뿐. 랜딩 8차에 반영 지시.
+- **10/16 디스크 부족(1.2G)으로 r8 빌드 중단 → 정리:** 끝난 에이전트 스크래치패드(v3 4.4G·itemcopy·shadcn-run·sim-public)와 끝난 워크트리 13개의 `.next` 빌드 캐시 삭제(재생성 가능) → 여유 8.6G. 검수 서버 워크트리(ae27f…)와 r8 워크트리는 유지. r8 로컬 커밋 `ea8a6bca`(중립 캡, /ja·/zh-tw 키캡 전부 로고, 드롭다운, freee 기본, 백필 병합) 빌드 재개. 참고: 남은 워크트리들이 각 ~1GB(node_modules) — 추후 정리 대상.
+- **10/16 랜딩 8차 완료 — `feat/rebrand-a` `9c75cddf`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-a9736719530c1c7da, 재빌드). 키캡 규칙 브랜드색→연한 틴트→중립 흰 캡, /ja·/zh-tw 12개 전부 로고(도요타·freee·pixiv·eslite·EVA Air·全家 등), SAKURA는 40% 투명 꽃잎이 1.6:1이라 pixiv로 교체(되돌리기 1줄). 언어 드롭다운(176px, 네이티브 이름+체크, 메뉴 롤·키보드). /ja 여정 기본 칩 freee(완비+로고), 백필 병합. 전환 속도: 새 페이지 표시는 이미 ~220ms(데스크톱), 체감 2초는 새 키캡 낙하가 3D 부팅(코드·로고 로드 90~530ms+구성 150+색 보정 100~300)을 기다리기 때문 — 600ms 안에 새 키캡 보이려면 낙하 연출 포기 / 2D 낙하 포스터 / 프리렌더 중 선택 필요. 뷰 트랜지션은 헤드리스에서 새 페이지 미표시로 미채택.
+- **10/16 오너 결정:** 언어 전환 (b) 2D 낙하 → 3D 이어받기, 사쿠라→pixiv 유지, 메루카리·SmartHR·coconala 대신 대비 통과하는 다른 검증 JP/TW 로고로 대체. 질문: '언어 바꾸면 사이트 번역이 바뀌는 느낌, i18n 아니었나?' → 현재 i18n은 랜딩 4개 언어(+docs 5개 언어)뿐이고 아카이브·상세는 영어(한국어 상세는 별도 브랜치) — 9차에 ko-detail 병합, ja·zh-tw 상세/아카이브는 다음 단계로 설명. 랜딩 9차 실행 중.
+- **10/16 오너 피드백(r8 검수):** 전반적으로 네모네모 → 부드러운 radius, 노란 프라이머리 구림 → **컬리류 바이올렛**으로 재설계, 'omd CLI로 시작하기'→'oh-my-design-cli 시작하기'+UI 개선, shadcn 챗 UI식 생성 예시 섹션 추가, FAQ 제대로 설계. '키캡·GenUI 빼고 랜딩에 마음에 드는 부분 없음' → **예시 이미지로 방향 제안 먼저**. 파비콘 확인: 검수 빌드는 키캡 'o' 단순화(16px용)·apple-icon은 'omd', 운영은 옛 보라 OMD(리브랜딩 미반영) → 전 크기 'omd' 키캡 제안. 실행 중: 방향 제안 2~3안(`docs/research/2026-10-17-direction/`, 로컬 8767), 랜딩 9차(재개).
+- **10/16 랜딩 9차 완료 — `feat/rebrand-a` `1638f97c`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-a9cec44f3c40dea32, 재빌드). ko-detail 병합(한국어 상세 364·아카이브, 언어 메뉴가 같은 레퍼런스 쌍으로 이동). 2D 낙하→3D 이어받기(빌드 시 기본 포스터+도착 키캡 스프라이트 생성, 하이드레이션 전 인라인 스크립트로 낙하, 정착 후 3D 크로스페이드; 클릭→새 키캡 움직임 데스크톱 230~480ms·폰 560~610ms, 3D 가동은 낙하 끝난 뒤 ~1.55s). 대체 키캡 /ja CADDi·Chatwork·BOOTH, /zh-tw China Airlines·POYA·udn. 남은 것: 1440·390 외 폭에선 포스터·3D 어긋남(크로스페이드 시 이동 보임), 빠른 클릭 600~735ms, **한글 표시 이름이 / ·/ja·영문 아카이브에도 노출(오너 결정 필요)**.
+- **10/16 방향 제안 3안 완료** (`docs/research/2026-10-17-direction/`, 로컬 http://127.0.0.1:8767): A 소프트 플럼 에디토리얼(#82219b, 컬리와 가장 가까움), B 대화로 보여 주는 제품 데모(아이리스 #6749e2, 히어로에 키캡+챗 데모), C 큰 글자 평면 바이올렛(#833cd5, 96px 제목). 공통: 3D 키캡·여정 유지, 둥근 radius(컨트롤 10~14·알약 버튼·카드 14~20), 챗 생성 예시(토스 실제 토큰 12개로 결제 완료 화면, '예시' 표기), 'oh-my-design-cli 시작하기'(실제 2.0.3 출력·설치→확인→적용), FAQ 2종(카테고리+아코디언 / 검색형), 마무리 CTA. 파비콘: 전 크기 'omd' 키캡 + 선택 바이올렛 재채색 권장. 에이전트 추천: B 구조+아이리스+A의 절제(히어로 축소, A FAQ+B 검색, 터미널만 C의 어두운 면). 오너 선택 대기.
+- **10/16 오너: 추천안으로(B 구조+아이리스 #6749e2+A 절제), 결과는 스크린샷으로, 파비콘·앱 아이콘 포함.** 파비콘 전 크기 'omd' 키캡·아이리스 재채색, 한글 표시 이름은 /ko에서만. 랜딩 10차 구현 실행 중(`feat/rebrand-a`).
+- **10/20 오너 검수 피드백 29건 → 11차 계획 수립** (`docs/REDESIGN_R11_PLAN_2026-10-20.md`): W1 히어로·챗(설치 버튼 삭제, 언어별 대표 기업 데모, Codex식 도구 호출 UI, 예시 카드), W2 여정(매번 재생성, 기업별 대표 상품 샘플·에셋·실측 대체 글꼴), W3 CLI(설치→적용, 스크롤 전환), W4 FAQ 축소+RAG 질문하기(Anthropic 키 있음·코드 없음·임베딩 비어 있음), W5 로고 카탈로그 쇼케이스·Taste식 푸터·별 버튼, W6 아카이브(실제 로고·카드 그리드+설치 수·지역/도메인 필터·DESIGN.md 아카이브 문구), W7 상세(‘{이름} DESIGN.md’, 근거·쓰는 법·원문·넓게 보기 삭제, 컴포넌트 축소), W8 문서(Vercel식, 실제 사례·문제 해결·AI용 문서 삭제, 스킬 링크→docs), W9 쿠키 카드.
+- **10/20 오너 결정 확정 → 11차 실행 착수.** 계획 문서 '오너 결정' 절에 기록했다.
+  - 지역 필터는 따로 둔다(한국·일본·대만·중국·기타).
+  - 질문하기는 **Claude Haiku 5.5**다. 공식 문서로 확인한 모델 ID는 `claude-haiku-5-5`(2026-10-07 출시). 가격은 10만 토큰 이하 프롬프트 기준 입력 $0.10·출력 $0.50(MTok당)이다.
+    - temperature·prefill·budget_tokens를 보내면 400이 난다.
+    - 서버측 fallback이 없으므로 refusal을 직접 처리한다.
+    - effort는 low로 둔다.
+  - 질문하기 환경 변수: `OMD_ASK_ANTHROPIC_API_KEY`(오너가 별도 키를 `web/.env.local`과 Vercel에 넣는다), `OMD_ASK_MODEL`, `OMD_ASK_DAILY_CAP`. 기존 키로 몰래 대체하지 않는다.
+  - 메타 제목과 h1은 "{이름} DESIGN.md"로 바꾸고, URL은 유지한다.
+  - 히어로 데모 기업은 KR 토스, JP pixiv다. EN·TW는 커버리지 측정으로 정한다.
+  - 3D 소품은 OmD가 codex로 자체 제작한다.
+  - 챗 UI 참고는 Meta Astryx다(오픈소스 MIT, AI 채팅 템플릿).
+  - 푸터 Threads는 `https://www.threads.com/@daon_k`다(linktr.ee/daon_k 링크 목록 근거, Aside 메모 2건 일치).
+- **10/20 11차 실행 중 — 병렬 8개.** 기준은 `feat/rebrand-a` `063d5720`이다.
+  - 사전 커밋 2개:
+    - `c3f66672`: 랜딩을 섹션별 컴포넌트·CSS로 분리했다. 렌더 결과는 동일하다.
+    - `063d5720`: 공유 계약을 넣었다. 공식 로고 86개(`brand-logos.json`), 3D 소품 매니페스트·접근자, 대체 글꼴 접근자 시그니처다.
+  - 워크트리·브랜치 (`.claude/worktrees/r11-*` / `feat/r11-*`):
+
+    | 이름 | 맡은 일 | 포트 |
+    |---|---|---|
+    | hero | W1+W3 | 3211 |
+    | journey | W2 | 3212 |
+    | fonts | 실측 대체 글꼴 | 3213 |
+    | ask | W4, Haiku 5.5 | 3214 |
+    | archive | W6+W7+메타 제목 | 3215 |
+    | docs | W8, 리디렉트 단독 소유 | 3216 |
+    | chrome | W5+W9+별 버튼+스킬 링크 | 3217 |
+    | props | codex 3D 소품 13개 | — |
+
+  - 운영 규칙:
+    - `next build`는 스크래치패드의 `r11-build.sh` 전역 잠금으로 한 번에 하나씩만 돈다.
+    - 통합 워크트리는 `.claude/worktrees/r11-integrate`(`r11-integrate` 브랜치)다.
+    - 검수 서버 :3200은 아직 10차 빌드를 띄우고 있다.
+  - 통합 때 할 일:
+    - 브랜치 8개를 `feat/rebrand-a`에 병합한다.
+    - 공유 카피 파일(`copy/en·ko·ja·zh-tw·r10`)의 죽은 키를 정리한다.
+    - referral-1의 `/docs/connector` 리디렉트를 새 대상으로 바꾼다.
+    - 전체 빌드 후 스크린샷(4개 언어×데스크톱·모바일)을 찍고 :3200을 갱신한 뒤 오너 검수를 받는다.
+  - 오너 몫: `OMD_ASK_ANTHROPIC_API_KEY`를 `web/.env.local`과 Vercel(Production·Preview)에 넣는다. 선택으로 `OMD_ASK_MODEL`·`OMD_ASK_DAILY_CAP`도 넣는다.
+  - 정리: 끝난 10차 이전 워크트리 7개(r2~r9)의 `.next`·`node_modules` 캐시를 삭제했다(재생성 가능, git 상태는 그대로).
+- **10/21 02:40 11차 통합 완료 → 오너 검수 대기.** `feat/rebrand-a` `bd8bf519`(기준 이후 커밋 43개). 검수 서버 :3200을 11차 빌드로 교체했다(`r11-integrate` 워크트리).
+  - **사고.** 에이전트 8개 모두 마지막 `git push`에서 "팀 리더 승인 대기"로 4시간 멈춰 있었다.
+    - 원인: 팀원 세션의 push 권한 요청이 리더 화면에 뜨지 않았다.
+    - 조치: 메인 세션에서 직접 push하고 에이전트를 종료했다.
+    - 교훈: 다음부터 팀원에게는 push를 시키지 않는다(메인이 push한다).
+  - **통합.** 브랜치 8개를 충돌 없이 병합했다(겹치는 파일 0).
+  - **통합 후 고친 것:**
+    - 질문하기 인덱스 재생성(문서 개편 반영).
+    - prune 리디렉트 테스트 기대값 갱신(showcase·ai 페이지 삭제 반영).
+    - 질문하기 검색에서 FAQ에 1.25 가중을 줬다.
+    - 실측 대체 글꼴을 여정·히어로 카드·CLI 화면에 연결했다.
+      - 토스: 한글 Pretendard Variable, 라틴 IBM Plex Sans(자체 호스팅). "대체 글꼴 · 브랜드 글꼴이 아니에요" 표기를 단다.
+      - Google로 가는 요청은 0이다.
+  - **검증:**
+    - 웹 테스트 1,170개 통과, tsc 통과, check-counts 통과, 빌드 통과(정적 페이지 1,483개).
+    - 22개 화면(4개 언어 랜딩, 아카이브, 상세, 문서 × 데스크톱·폰): 200 응답, 가로 넘침 0, 콘솔 오류 0.
+    - 루트 테스트는 1,510개 통과, 3개 실패. 실패는 패키지 스모크 테스트로, 이 기기 npm 캐시에 playwright-core가 없어서 난다(CI에서는 통과하고 r11과 무관하다).
+  - **스크린샷:** 메인 체크아웃 `docs/research/2026-10-20-r11/integrated/shots/`.
+  - **결과 요약:**
+    - EN 히어로는 Linear(커버리지 13/14), TW는 104(13/14, 誠品 7/14)로 정했다.
+    - 실측 대체 글꼴은 토스와 Linear(Berkeley Mono → Fira Code)에만 있다. 나머지는 오픈 글꼴이라 대체가 필요 없거나 브랜드 글꼴이 없다.
+    - 3D 소품 13개(codex, 512px WebP)를 넣었다.
+    - 상세 제목은 "{이름} DESIGN.md — Colors, Typography, Components"이고, FAQPage JSON-LD는 뺐다(보이는 Q&A가 없어서).
+  - **남은 것:**
+    - 오너 시각 검수 OK.
+    - 그다음 `feat/referral-1`·`feat/growth-metrics`를 병합한다. referral-1의 `/docs/connector` 리디렉트는 새 대상(`/docs/en/getting-started#without-cli`)으로 맞춘다.
+    - main 반영 → 2.0.5.
+- **10/21 오너 12차 피드백 3건 → 진행 중.**
+  1. **히어로 키캡.** 누르면 이동하지 않고 오른쪽 챗이 그 회사로 다시 렌더링되게 한다. 챗 아래에 "{회사} DESIGN.md" 버튼을 둬서 상세로 따로 이동한다.
+     - 에이전트 `r12-hero`가 맡았다. 워크트리 `.claude/worktrees/r12-hero`, 브랜치 `feat/r12-hero`(기준 `bd8bf519`).
+     - push는 금지하고 메인이 병합한다.
+     - 키캡 회사마다 검증 토큰만으로 카드를 만든다(카드 종류는 업종별로 정한다).
+  2. **질문하기 제거.** 완료, `cb6e422c`.
+     - UI, `/api/ask`, `lib/ask`, 인덱스, 빌드 훅을 삭제했다. FAQ 카피는 `copy/r11-faq.ts`로 옮겼다.
+     - `OMD_ASK_*` 환경 변수는 이제 필요 없다(오너에게 안내).
+  3. **쇼케이스 "+N more".** 완료, `63d21a59`.
+     - 줄마다 로고 5개 뒤에 "+N 더 보기" 칸을 두고, 누르면 `<아카이브>?region=` 필터가 걸린 아카이브로 간다.
+     - 아카이브가 `?region=`을 읽게 했다.
+     - 화면 확인: /ko는 +197·+6·+29, /는 +197·+58·+56이다. 누르면 "364개 중 202개"로 필터된 채 열린다.
+  - `feat/rebrand-a`는 `63d21a59`(2·3 반영), :3200은 이 빌드다. 히어로를 병합하면 다시 빌드하고 오너에게 보고한다.
+  - **1번 완료 → 12차 전체 오너 검수 대기.** `feat/rebrand-a` `187f5195`, :3200 갱신.
+    - 병합한 히어로 커밋: `264ce00d`·`5c34fa1d`·`f55440b0`. 메인 후속 `187f5195`: 폰에서 선택하면 챗을 화면 안으로 스크롤, 죽은 `kb.label` 삭제.
+    - 키캡을 누르면 이동하지 않고 챗이 그 회사로 다시 재생된다(2.2초). 챗 아래 "{회사} DESIGN.md →" 링크가 선택을 따라간다.
+    - 카드 종류를 transfer·product·booking·task·article로 늘렸다(기존 artwork·issue·job·home 유지). 커버리지는 14슬롯 기준이다.
+    - **약한 카드**(검증 토큰 그대로라 생기는 것):
+      - 버튼이 없는 곳 5개: class101·eslite·familymart-tw·toyota·evaair.
+      - Channel Talk은 제목이 본문보다 작다.
+      - Kurly는 버튼 높이가 20px다.
+      - udn은 회색 바탕에 흰 글자 버튼이다.
+    - 정한 것: zh-tw 프롬프트·링크는 "104人力銀行"(링크와 같은 이름 규칙). 선택은 조회 수와 섞이므로 집계하지 않는다.
+    - 검증: 웹 테스트 1,119개 통과, 빌드 통과. ko·zh-tw에서 데스크톱·폰 선택 2회씩 해 봤다. 주소 이동 없음, 오류 0, 폰은 첫 선택에 스크롤이 생긴다(0→333).
+    - 참고: 로컬 빌드를 여러 번 돌려 GitHub API 한도에 걸려서, 지금 :3200의 별 버튼 숫자가 숨겨져 있다(설계상 실패하면 숨긴다).
+- **10/21 13차 피드백 6건 + main 준비 → 병렬 4개 진행 중.** 기준은 `feat/rebrand-a` `187f5195`다. push는 메인만 한다.
+  - **별 숫자.** 완료, `0e91d945`(r11-integrate). API가 실패하면 마지막 실측값을 쓴다(`web/src/data/github-stars.json`: 542, 10/21). 갱신 스크립트는 `web/scripts/refresh-github-stars.mjs`.
+  - **`r13-hero`.** 히어로·CLI 결과 카드를 흰 칸 안의 완성형 컴포넌트로 바꾼다(카드·캐러셀·티켓 등, 보더 포함). 챗 글꼴 문구를 삭제한다.
+    - G3 정리: 히어로·CLI 카드는 이제 대체 글꼴을 쓰지 않는다. 오픈 글꼴이 실제로 로드될 때만 브랜드 글꼴, 아니면 페이지 글꼴이고 문구는 없다. 여정 섹션의 라벨 달린 대체는 유지한다.
+  - **`r13-cli`.** 설치 단계는 명령 타이핑 + 실제 출력 스트리밍으로 바꾼다. 적용 단계는 스크롤 시작·끝 설계를 고친다(권장: 단계별 행 + 화면에 들어오면 재생). 적용 쪽 글꼴 문구도 삭제한다.
+  - **`r13-item`.** 상세 설명 문단을 삭제한다. styles.refero.design 분석 문서를 쓰고, 오른쪽 토큰 표현을 보강한다(역할별 색, 타이포 스케일, 간격, 반경, 컴포넌트 상태).
+  - **`r13-mainprep`.** referral-1과 growth-metrics를 병합한다(shadcn 문서를 새 문서 구조로 이식, `/docs/connector`는 r11 대상 유지, Vercel 분석은 동의 카드 연동). 2.0.5 버전과 CHANGELOG, 생성물 재생성, 전체 게이트 결과를 낸다. 머지·태그는 오너 GO 뒤에 한다.
+  - 다음: 4개가 끝나면 r11-integrate에 병합한다 → 빌드·스크린샷 → :3200 갱신 → 오너에게 최종 GO를 요청한다.
+- **10/21 16:00 13차 통합 완료 + main 출시 후보 준비 끝 → 오너 GO 대기.** `feat/rebrand-a` `c13f39a4`. main(`973cabc4`)이 조상이라 fast-forward로 머지된다(160커밋). 버전 2.0.5, CHANGELOG(r10~13·referral·growth·waiver).
+  - **병합:**
+    - r13-mainprep: referral-1과 growth-metrics. shadcn 문서를 새 문서 구조로 이식했고 Vercel 분석을 붙였다.
+    - r13-cli: 설치 타이핑과 행 레이아웃.
+    - r13-item: 설명 제거, 오른쪽 토큰 표현 보강. 분석은 `docs/research/2026-10-21-r13/item/ANALYSIS.md`.
+    - r13-hero: 완성형 컴포넌트, 글꼴 문구·대체 경로 제거.
+  - **메인이 직접 고친 것:**
+    - 한국어 상세 og:image를 `/og`로 옮겼다.
+    - CLI 제목의 줄바꿈을 막았다.
+    - 여정 라벨 줄을 미리 확보했다.
+    - 죽은 글꼴 문구 코드를 정리했다.
+    - zone() 오류를 막았다.
+    - 폰 CLS를 0.104~0.206에서 0.000~0.002로 낮췄다. 원인은 히어로 챗 재생 끝의 접힘(-44)과 펼침(+44)이었고, 높이를 유지하게 했다.
+    - CHANGELOG에 r13 내용을 넣고 llms-full을 재생성했다.
+  - **검증:**
+    - 웹 테스트 1,174개 통과, tsc 통과, 빌드 통과.
+    - llms-full·presets·quality·ledger·AST 검사 통과.
+    - 루트 테스트의 실패는 환경 문제(ENOTCACHED 3개, 부하 중 타임아웃은 단독 실행하면 통과)다.
+    - 화면 확인: 별 542 표시, 토요타 티켓, KREAM 캐러셀, CLI 타이핑, 적용 행 정렬, 상세 오른쪽 위계, shadcn 200, `/og` PNG 200.
+    - 로컬 404는 `/_vercel/insights`뿐이다(Vercel에서만 제공되는 경로라 정상).
+  - **오너 GO에 들어 있는 결정:**
+    1. `gate:quality:strict` waiver(2.0.4와 같은 상태).
+    2. 카드 radius가 기록되지 않은 8곳은 각진 모서리로 둔다(값을 지어내지 않음).
+    3. Vercel 분석은 동의 전에 쿠키 없이 집계하고, 거부하면 0이다(결정 (a) 유지).
+  - **GO 뒤 순서:** main fast-forward 푸시 → Vercel Production 새 SHA 확인 → `v2.0.5` 태그 → 릴리스 워크플로(npm) 확인 → 라이브 확인.
+- **10/21 16:20 14차 피드백 2건 반영 → 다시 GO 대기.** `feat/rebrand-a` `2c2b1f52`, :3200 갱신.
+  - **설치 터미널.** 실제 출력 대신, 명령 하나가 무엇을 하는지 추상화해서 보여 준다.
+    - 순서: 감지한 에이전트(Claude Code·Codex·Cursor, OpenCode는 없음) → 에이전트별 설치 → 스킬(공개 10개 이름 + 21개 더) → DESIGN.md 521개 → Done. 터미널 한 화면에 다 들어간다.
+    - 숫자는 catalog-meta(31·10·20·521)와 2.0.4 실제 완료 줄의 훅 4개에서 가져온다.
+    - 에이전트별 구성은 install-skills.ts와 같다: 서브에이전트는 CC·Codex·OpenCode, 훅은 CC만, Cursor는 Agent Skills + 규칙.
+    - 테스트가 공개 스킬 목록을 skills/와 대조한다.
+  - **비슷한 디자인 시스템.** 아카이브와 같은 규칙으로 로고를 보여 준다(공식 SVG → 자사 파비콘). 둘 다 없으면 대표색 칩. 토스 기준 6곳 중 5곳이 로고다.
+  - 웹 테스트 1,176개 통과, 빌드 통과, llms-full 최신.
+- **10/21 16:25 CLI 속도 조정.** `feat/rebrand-a` `ae77e79c`, :3200 갱신.
+  - 오너 요청은 "cli 화면쪽 조금 더 빠릿하게"였다.
+  - 설치 실행을 약 4.2초에서 약 2초로, 적용을 3.8초에서 1.95초로 줄였다. 둘 다 화면에 25%만 들어와도 시작한다.
+  - 실측(3D 끈 상태): 진입 후 0.8초에 타이핑 시작, 2.6초에 Done(샘플링 오차 포함).
+- **10/17 랜딩 10차 완료 — `feat/rebrand-a` `c77d7d6b`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-a20bdf09ae1779d45). 아이리스 #6749e2 전면, radius 14/알약/20/28, 히어로 키캡+챗 데모, 챗 카드 토스 실값 12개(예시 표기), oh-my-design-cli 시작하기(어두운 터미널만), FAQ(카테고리·검색·아코디언, 9문항×4언어), 연한 아이리스 마무리 띠, 파비콘·앱 아이콘 'omd' 아이리스 키캡 전 크기, OG·logo.png 새 브랜드(실제 Wanted Sans·실시간 수치), 한글명 /ko 한정. 검사: tsc·테스트 1,010·next build·check-counts, 넘침 0, 링크 936, 대비 전부 ≥5.38:1, /ko→/ja 2D→3D 이어받기 정상, 모션 줄이기 정상. 남은 것: 헤더 '스킬' 링크 대상(CLI 섹션 한 줄로 이동), DESIGN.md.patch 사본 반영(메인 체크아웃 impl/DESIGN.md.patch로 복사함).
+- **10/16 ⏸ 일시 중단(오너 이동) — 재개 안내.**
+  - 진행 중이던 것: 랜딩 10차(B 구조+아이리스·radius·챗 데모·CLI·FAQ·CTA·파비콘 'omd' 아이리스·한글명 /ko 한정). 정지 완료: `feat/rebrand-a` `699f9d1f`(10차 거의 전부, 빌드·검사 통과) + WIP `7a77999f`(선택 색·폰트 안내 문구) on `wip/rebrand-a-r10`. 남은 것: WIP 포함 재빌드, /ko→/ja 실제 전환 확인, 모션 줄이기 /ko, 아카이브·상세 대비 측정, og-image·logo.png 구버전 교체. 스크린샷 `docs/research/2026-10-13-rebrand/impl/r10/shots/`(699f9d1f 빌드). 재개 시: `wip/rebrand-a-r10`에서 이어서 체크리스트 미완 항목 → 완료 후 `feat/rebrand-a`로 푸시 → 스크린샷 보고(오너는 스크린샷으로 확인 요청).
+  - 리브랜딩 최신 확정본: `feat/rebrand-a` `1638f97c`(9차). 로컬 검수 서버 :3200은 9차 빌드(워크트리 agent-a9cec44f3c40dea32), 방향 갤러리 :8767.
+  - main 반영 대기(리브랜딩과 별개): `feat/referral-1`(OG·shadcn 문서·스킬 이름·공개 스킬 10), `feat/growth-metrics`(공개 지표 워크플로·Vercel 분석·EU 문구). 데이터 브랜치: `feat/backfill-genui-slots`(실측 117곳, rebrand에 병합됨), `feat/brand-svg-tw-jp`(로고 86).
+  - 결정 대기 없음(10차는 오너 승인안). main 반영·출시 GO는 오너.
+- **10/13 builder 제거 완료 — 프리뷰 대기 (`feat/ia-item-page` `9fc9ea9a`, push만, main 미반영).** 커밋 3개(19e39441 제거+308 핸들러, b1a46224 사이트 문구·링크, 9fc9ea9a AGENTS.md·추적 계획·slop-audit 스킬). `/builder?ref=<id>` → `/design-systems/<id>#use`, ref 없음·미등록 → `/design-systems` (Route Handler `web/src/app/builder/route.ts`, 표 테스트 `web/src/lib/legacy-builder/redirect.test.ts`). `/curation`·`/font-playground`는 `/design-systems` 직행. tsc·vitest 967·next build·check-counts 통과, 헤드리스 QA 19/19(스크린샷 `docs/research/2026-10-13-builder-removal/`). 열린 것: CLI `install-skills.ts` 안내문이 아직 'Builder에서 Core v2 다운로드'(npm 릴리스 범위), 상세 다운로드는 원본 바이트라 legacy 레퍼런스는 Core v2가 아님; `/api/references` 목록·상세 API는 외부 소비 가능성 때문에 유지(빌더 전용 `catalog` 블록만 제거); 루트 DESIGN.md(gitignored)와 `web/public/design.md` 원칙 3줄 수정.
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
   - 페이지 구성:
     - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.

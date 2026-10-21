@@ -1,5 +1,35 @@
 # JOURNAL
 
+## 2026-10-21 16시 — 13차 반영 + main 출시 후보(2.0.5) 준비 완료
+- 한 일: 별 숫자를 실측값으로 대체, 히어로 카드 완성형 컴포넌트, 글꼴 문구 제거, CLI 타이핑·행 레이아웃, 상세 설명 제거·토큰 표현 보강, referral-1·growth-metrics 병합, 2.0.5 준비. 폰 CLS 0.1~0.2를 0으로. `feat/rebrand-a` `c13f39a4`(main에서 fast-forward 가능).
+- 열린 것: 오너 GO(waiver 포함) → main 푸시·태그·npm·라이브 확인.
+- 교훈: 생성물 검사(gen:llms-full:check)는 CHANGELOG 수정 뒤에도 다시 돌린다.
+
+## 2026-10-21 오후 — 12차 피드백 3건 반영, 검수 대기
+- 한 일: 히어로 키캡 선택 → 챗을 그 회사로 다시 재생 + "{회사} DESIGN.md" 링크(에이전트 r12-hero, 카드 종류 5개 추가). 질문하기 기능 전체 삭제. 쇼케이스 각 줄 "+N 더 보기" → 지역 필터 아카이브. 폰에서 선택하면 챗으로 스크롤. `feat/rebrand-a` `187f5195`, :3200 갱신.
+- 열린 것: 오너 시각 검수(약한 카드 5곳 처리 여부 포함), referral-1·growth-metrics 병합, 2.0.5.
+- 다음: 오너 OK → 남은 카피 키 정리 → main 반영·릴리스.
+
+## 2026-10-21 새벽 — 리브랜딩 11차 병렬 8개 → 통합, 검수 대기
+- 한 일: Haiku 5.5 확인(`claude-haiku-5-5`) 후 계획에 반영. 랜딩 섹션 분리·공유 계약을 사전 커밋하고 8개 병렬 실행 → 충돌 0으로 통합. 통합 후 수정 4건(질문하기 인덱스, 리디렉트 테스트, FAQ 가중, 실측 대체 글꼴 연결). `feat/rebrand-a` `bd8bf519`, :3200 갱신.
+- 열린 것: 오너 시각 검수, `OMD_ASK_ANTHROPIC_API_KEY` 설정(오너), referral-1·growth-metrics 병합, 2.0.5.
+- 교훈: 팀원 에이전트는 push 승인 요청이 리더에게 안 보여 4시간 멈췄다 → push는 메인 세션이 한다.
+
+## 2026-10-16 저녁 — 리브랜딩 9~10차, 일시 중단
+- 한 일: GA4 복구, 한글명 41곳, 공개 스킬 10, 실측 보충 117곳, TW·JP 로고 26곳(차단 4곳 Aside), 랜딩 7~9차(라이트 전용·별 버튼·드롭다운·2D 낙하·한국어 상세 병합), 방향 3안 → 오너가 B+아이리스 선택.
+- 열린 것: 랜딩 10차 구현 중단 지점 `wip/rebrand-a-r10`; referral-1·growth-metrics main 반영 결정.
+- 다음: 10차 완료 → 스크린샷(파비콘·앱 아이콘 포함) 보고.
+
+## 2026-10-13 — builder 제거 (프리뷰 대기)
+- 한 일: `feat/ia-item-page`에서 builder 완전 제거 + `/builder` 308 핸들러(ref→상세 #use, 그 외→카탈로그), Customize 링크·문구 전부 제거(5개 로캘 문서·llms 포함), AGENTS.md 퍼널 재작성. push `9fc9ea9a`, QA 19/19.
+- 열린 것: 오너 프리뷰 확인 → main GO. CLI 설치 안내문의 'Builder' 문구(npm 범위), legacy 레퍼런스의 Core v2 다운로드 대체 경로 없음.
+- 다음: 프리뷰 URL 오너 확인, 리브랜딩 조사.
+
+## 2026-10-01 저녁 — 리디자인 1차 출시
+- 한 일: /hangul v5·Tesseract 영상 r2, 리디자인 감사·경쟁 조사·시안 3개, 페이지 정리+SEO, 교정지 랜딩(/·/ko), 번들 중복 수정 → main c0ec4385 출시·라이브 확인.
+- 열린 것: IA D1~D7 구현(랜딩 행→상세, 상세 #use, builder 'Customize'), DESIGN.md.patch 승인, /hangul 새 컨셉 재제작, 한국어 상세(Phase 3), 레퍼런스·블로그 OG가 /api/og 아래(공유봇 차단).
+- 다음: IA 구현 브랜치 → 오너 보고.
+
 ## 2026-10-21 — 13차 main 준비, 브랜치 `feat/r13-mainprep`
 
 - **한 일**: referral-1(`bdaa413c`)·growth-metrics(`b0d5e5f0`)를 리브랜딩에 병합했다. 라운드 11 문서 구조에 shadcn 가이드(5개 언어, Guides 그룹)와 공개 스킬 10개를 이식했고, 2.0.5 범프·CHANGELOG(`cf74d427`)까지 마쳤다. 게이트와 스모크 근거는 `docs/research/2026-10-21-r13/mainprep/`(gitignored)에 있다.
