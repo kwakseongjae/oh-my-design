@@ -52,7 +52,9 @@ export const HOOK_COUNT = Number(/(\d+) hooks/.exec(transcript.runs[0].tail.join
  */
 export function installScript(): TermRow[] {
   const more = SKILL_COUNT - PUBLIC_SKILLS.length;
-  const names = PUBLIC_SKILLS.join(" · ").match(/.{1,46}(?:\s·\s|$)/g) ?? [];
+  // three lines on a wide terminal, the rest of the bundle closing the last one, so the whole run fits
+  // the fixed-height terminal at 1440 without the agents line scrolling away
+  const names = `${PUBLIC_SKILLS.join(" · ")} · + ${more} more`.match(/.{1,64}(?:\s·\s|$)/g) ?? [];
   return [
     { t: "◆  oh-my-design-cli", c: "sq-ta" },
     { t: "│" },
@@ -66,10 +68,8 @@ export function installScript(): TermRow[] {
     { t: "│" },
     { t: `◇  Skills — ${PUBLIC_SKILL_COUNT} public, ${SKILL_COUNT} in the bundle`, c: "sq-tp" },
     ...names.map((n) => ({ t: `│  ${n.replace(/\s·\s$/, "")}` })),
-    { t: `│  + ${more} more` },
     { t: "│" },
     { t: `◇  DESIGN.md archive — ${REFERENCE_COUNT} references, offline`, c: "sq-tp" },
-    { t: "│" },
     { t: "└  Done. Restart your agent and ask in one sentence.", c: "sq-ta" },
   ];
 }
