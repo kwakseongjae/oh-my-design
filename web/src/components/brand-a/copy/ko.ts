@@ -30,9 +30,6 @@ export const KO: BrandCopy = {
     "p": "부분",
     "l": "이전"
   },
-  "kb": {
-    "label": "키보드에 새긴 회사들. 키를 누르면 그 회사의 DESIGN.md가 열려요."
-  },
   "gen": {
     "h2": "DESIGN.md에서 화면까지의 여정",
     "intro": "회사를 고르면 같은 화면이 그 회사 파일만으로 다시 그려져요.",

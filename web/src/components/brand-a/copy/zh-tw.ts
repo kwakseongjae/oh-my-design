@@ -30,9 +30,6 @@ export const ZH_TW: BrandCopy = {
     "p": "部分驗證",
     "l": "舊版"
   },
-  "kb": {
-    "label": "刻在鍵盤上的企業。按下按鍵，就會打開它的 DESIGN.md。"
-  },
   "gen": {
     "h2": "從 DESIGN.md 到畫面的旅程",
     "intro": "選一家企業，同一個畫面就只用它的檔案重新繪製。",

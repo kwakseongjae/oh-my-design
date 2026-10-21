@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import type { HeroChat } from "@/lib/landing-a/chat-data.server";
 import type { R11HeroCopy } from "./copy/r11-hero";
 import { AgentTrace, CardView, useInView, usePlay, type TraceStep } from "./agent-trace";
@@ -52,6 +52,17 @@ export function ChatDemo({
   const chat = chats[id];
   const card = chat.card;
   const { s, live } = usePlay(TIMES, seen, 6, { key: pick.seq, times: FAST });
+  // phones stack the keycaps over the chat, so a pick would change content below the fold: bring
+  // the chat into view (the least scroll that shows it; instant under reduced motion). Desktop has
+  // both side by side and never scrolls.
+  useEffect(() => {
+    const el = root.current;
+    if (!pick.seq || !el || !matchMedia("(max-width:900px)").matches) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight * 0.6 && r.bottom <= innerHeight) return;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" });
+  }, [pick.seq]);
   const at = AT[s];
   const steps: TraceStep[] = [
     { kind: "think", text: chat.think },

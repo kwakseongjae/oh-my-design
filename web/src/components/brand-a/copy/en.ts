@@ -28,9 +28,6 @@ export const EN = {
     "p": "Partial",
     "l": "Legacy"
   },
-  "kb": {
-    "label": "Companies engraved on the keyboard. Each key opens its DESIGN.md."
-  },
   "gen": {
     "h2": "From DESIGN.md to screen",
     "intro": "Pick a company. The same screen restyles from its file alone.",
