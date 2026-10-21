@@ -1,7 +1,6 @@
 import brandLogos from "@/data/brand-logos.json";
 import { lookupFont } from "@/lib/font-registry";
-import { getSubstitutes } from "@/lib/fonts/substitutes";
-import { OPEN_FACES, PAGE_SCRIPT, PAGE_STACK, SUB_FACES } from "@/components/brand-a/journey/face";
+import { OPEN_FACES, PAGE_SCRIPT, PAGE_STACK } from "@/components/brand-a/journey/face";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
@@ -114,7 +113,11 @@ export interface ChatCard {
   readonly lines: number;
   /** distinct claimed tokens the card renders */
   readonly tokens: number;
-  /** the claimed UI face, and whether the card is set in it; when a named face isn't shown the trace says so */
+  /**
+   * The claimed UI face, and whether the card is set in it (else it is in the page's own face).
+   * `sub` is never set since round 13 (no substitute faces in the chat); it stays optional in the
+   * type only so an older reader (cli-steps.tsx) keeps compiling.
+   */
   readonly face: { readonly name: string | null; readonly shown: boolean; readonly sub?: string };
 }
 
@@ -459,25 +462,21 @@ const ROOT_FACES: readonly string[] = ["Pretendard", "Pretendard Variable"];
  *     and Noto Sans CJK JP on /ja, Noto Sans TC on /zh-tw) — the brand face, shown;
  *  2. an open face the landing root self-hosts (Pretendard), OFL, whose file carries the page
  *     language's script (Latin + Hangul only: never on /ja or /zh-tw) — shown;
- *  3. a substitute measured for this page's script and self-hosted by the site, set from its own
- *     DESIGN.md record and named as a substitute in the trace;
- *  4. else the page face, and the trace says the brand face isn't applied.
+ *  3. else no face is set: the card is in the page's own face (inherited), not a stand-in.
+ *
+ * Round 13 (owner 2026-10-21): no font notes in the chat. The measured-substitute step is gone from
+ * these cards — a substitute may only be rendered with its label, and the chat no longer carries
+ * one — so a proprietary face (Toss Product Sans, toyotatext_rg …) leaves the card in the page face.
+ * The journey's labelled substitutes (journey/face.ts) are untouched.
  */
-function faceOf(id: string, s: ResolvedSlots, faces: Faces, locale: SiteLocale) {
+function faceOf(s: ResolvedSlots, faces: Faces, locale: SiteLocale): { name: string | null; shown: boolean; tok: Tok | null } {
   const name = s.famT?.v ?? null;
   if (!name) return { name, shown: false, tok: null };
   const loaded = faces[name];
-  if (loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } as Tok };
-  const script = PAGE_SCRIPT[locale];
+  if (loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } };
   const open = OPEN_FACES[name];
-  if (open && ROOT_FACES.includes(name) && lookupFont(name).license === "OFL" && open.scripts.includes(script)) {
-    return { name, shown: true, tok: { k: s.famT!.k, v: name, css: `var(${open.cssVar}), ${PAGE_STACK[locale]}` } as Tok };
-  }
-  const sub = getSubstitutes(id).find((x) => x.brandFamily === name && x.script === script);
-  const host = sub ? SUB_FACES[sub.family] : undefined;
-  if (sub && host?.scripts.includes(script)) {
-    const tok: Tok = { k: `fonts.faces.${name}.substitutes.${script}`, v: sub.family, css: `var(${host.cssVar}), ${PAGE_STACK[locale]}` };
-    return { name, shown: false, sub: sub.family, tok };
+  if (open && ROOT_FACES.includes(name) && lookupFont(name).license === "OFL" && open.scripts.includes(PAGE_SCRIPT[locale])) {
+    return { name, shown: true, tok: { k: s.famT!.k, v: name, css: `var(${open.cssVar}), ${PAGE_STACK[locale]}` } };
   }
   return { name, shown: false, tok: null };
 }
@@ -486,7 +485,7 @@ function faceOf(id: string, s: ResolvedSlots, faces: Faces, locale: SiteLocale) 
 
 function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale: SiteLocale): { root: CardNode; face: ChatCard["face"] } {
   const s = slotsOf(id)!;
-  const f = faceOf(id, s, faces, locale);
+  const f = faceOf(s, faces, locale);
   const canvas = slotColor(id, s.canvas), fg = slotColor(id, s.fg), body = slotColor(id, s.body), primary = slotColor(id, s.primary);
   const btn = buttonToks(id, s.btn);
   const head = slotType(id, s.head), bod = slotType(id, s.bod);
@@ -624,7 +623,7 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale
         ];
     root = el("div", { cls: "sq-ex-pad", css: rootCss }, [el("div", { cls, css: boxCss }, kids)]);
   }
-  return { root, face: { name: f.name, shown: f.shown, ...(f.sub ? { sub: f.sub } : {}) } };
+  return { root, face: { name: f.name, shown: f.shown } };
 }
 
 /* ---------- the source the Write step stands for ---------- */
@@ -687,7 +686,7 @@ const readPath = (id: string) => `.claude/data/references/${id}/DESIGN.md`;
 
 /**
  * One company's card in a locale's chat. `faces` maps a claimed UI face to the CSS family the page
- * loads for it (hero-section.tsx): a face the page doesn't load is left unset and named in the trace.
+ * loads for it (hero-section.tsx): a face the page doesn't load is left unset (the page face shows).
  */
 export function getCompanyCard(locale: SiteLocale, id: string, faces: Faces = {}): ChatCard {
   const k = getR11Hero(locale).chat.kinds[KIND[id]];

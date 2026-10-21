@@ -12,7 +12,7 @@
  * The CLI's apply step follows the CLI's own printed next step ("Using this DESIGN.md, design the home
  * screen.", data/cli-transcript.json) on a Toss-inspired project, so its screen is Toss in every locale.
  *
- * Placeholders: {name} a company, {s} seconds, {n} count, {face} a brand face name, {sub} its substitute. */
+ * Placeholders: {name} a company, {s} seconds, {n} count ({face} / {sub} only in the retired face notes). */
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 
 /** Text of one example card. A card kind uses the fields it needs (chat-data.server.ts). */
@@ -61,9 +61,13 @@ export interface R11HeroCopy {
     summary: string;
     /** accessible name of the button that opens the collapsed run */
     toggle: string;
-    /** shown under the Write step when the card is not set in the brand face */
+    /**
+     * @deprecated Round 13 (owner 2026-10-21): no font notes in the chat; the hero renders neither
+     * line and AgentTrace ignores its note. Kept only while cli-steps.tsx (the CLI stream's file)
+     * still reads both; delete them with that read.
+     */
     face: string;
-    /** the same, when the card is set in the brand face's measured substitute ({sub}) */
+    /** @deprecated see `face` */
     faceSub: string;
     agent: string;
   };

@@ -59,7 +59,7 @@ function Label({ s, run }: { s: TraceStep; run: boolean }) {
 }
 
 export function AgentTrace({
-  steps, at, ms, labels, note, compact = false,
+  steps, at, ms, labels, compact = false,
 }: {
   steps: readonly TraceStep[];
   /** the running step; earlier steps are done; ≥ steps.length = all done; < 0 = none yet */
@@ -67,7 +67,12 @@ export function AgentTrace({
   /** each step's duration, shown once it is done */
   ms: readonly number[];
   labels: TraceLabels;
-  /** one line under the trace once the last step is done (the brand-face label) */
+  /**
+   * Ignored since round 13 (owner, 2026-10-21: no font notes in the chat). The example cards no
+   * longer set text in a substitute face — a card is set in its brand face only where that open
+   * face loads for real, else in the page's own face — so there is nothing to label. Still
+   * accepted so an older caller (cli-steps.tsx) keeps compiling; it renders nothing.
+   */
   note?: string | null;
   compact?: boolean;
 }) {
@@ -119,7 +124,6 @@ export function AgentTrace({
           );
         })}
       </ol>
-      {note ? <p className={`sq-at-note${all ? "" : " sq-hold"}`}>{note}</p> : null}
     </div>
   );
 }

@@ -24,8 +24,6 @@ button.sq-at-row:focus-visible,.sq-at-sum:focus-visible{outline:2px solid var(--
 .sq-at-chev{flex:none;color:var(--sq-ink-2);transition:transform .2s}
 [aria-expanded="true"]>.sq-at-chev{transform:rotate(90deg)}
 .sq-at-why{margin:0 0 6px 30px;font-size:15px;line-height:1.55;color:var(--sq-ink-2)}
-.sq-at-note{margin:4px 0 0 30px;font-size:15px;line-height:1.5;color:var(--sq-ink-2)}
-.sq-at-note.sq-hold{visibility:hidden}
 .sq-at-sum{display:none}
 /* a running label: one sweep of light across the ink */
 .sq-shim{background:linear-gradient(90deg,var(--sq-ink-2) 0%,var(--sq-ink-2) 40%,var(--sq-n300) 50%,var(--sq-ink-2) 60%,var(--sq-ink-2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sq-shim 1.6s linear infinite}

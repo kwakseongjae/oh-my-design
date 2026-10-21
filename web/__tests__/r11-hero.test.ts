@@ -6,7 +6,6 @@ import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.gene
 import { getR11Hero, HERO_KINDS, withName } from "@/components/brand-a/copy/r11-hero";
 import { heroPick, pickCompany, resetHeroPick } from "@/components/brand-a/hero-pick";
 import { PAGE_SCRIPT } from "@/components/brand-a/journey/face";
-import { getSubstitutes } from "@/lib/fonts/substitutes";
 import { detailHrefFor } from "@/lib/i18n/ko-detail";
 import { getHeroCaps } from "@/lib/landing-a/data.server";
 import {
@@ -94,14 +93,8 @@ describe("example cards: claimed values only", () => {
       const list = toks(card.root);
       expect(list.length, name).toBeGreaterThan(10);
       for (const [prop, t] of list) {
-        // a measured substitute is set from the reference's own substitute record, never by eye
-        const subKey = /^fonts\.faces\.(.+)\.substitutes\.([a-z-]+)$/.exec(t.k);
-        if (prop === "fontFamily" && subKey) {
-          const rec = getSubstitutes(card.id).find((x) => x.brandFamily === subKey[1] && x.script === subKey[2]);
-          expect(rec?.family, `${name}: ${t.k} measured`).toBe(t.v);
-          expect(t.css, `${name}: ${t.k} self-hosted`).toMatch(/^var\(--font-r11-/);
-          continue;
-        }
+        // round 13: a face is only ever the claimed family itself, never a substitute record
+        if (prop === "fontFamily") expect(t.k, `${name}: face`).toMatch(/^typography\.family\./);
         expect(`tokens.${t.k}` in claims, `${name}: ${t.k} claimed`).toBe(true);
         expect(at(card.id, t.k), `${name}: ${t.k} value`).toEqual(t.v);
         if (prop === "fontFamily") continue; // the loaded face for a claimed family name (see face test)
@@ -122,20 +115,23 @@ describe("example cards: claimed values only", () => {
     for (const l of LOCALES) expect(getChatCard(l).kind).toBe(KIND[CHAT_COMPANY[l]]);
   });
 
-  it("faces: a face is shown only where this page loads it for real; otherwise the trace names it", () => {
+  it("faces: a face is set only where this page loads it for real; otherwise the page face, never a substitute", () => {
     const by = Object.fromEntries(LOCALES.flatMap((l) => chatSet(l).map((id) => [`${l} ${id}`, getCompanyCard(l, id, PAGE_FACES[l])])));
-    // round 11, unchanged
-    expect(by["ko toss"].face).toEqual({ name: "Toss Product Sans", shown: false, sub: "Pretendard Variable" });
+    // round 13: Toss Product Sans is not loadable and its measured substitutes are no longer used here
+    expect(by["ko toss"].face).toEqual({ name: "Toss Product Sans", shown: false });
     expect(by["zh-tw 104"].face).toEqual({ name: null, shown: false });
     expect(by["en linear.app"].face).toEqual({ name: "Inter", shown: true });
     expect(by["ja pixiv"].face).toEqual({ name: "Noto Sans CJK JP", shown: true });
     expect(getChatCard("en").face).toEqual({ name: "Inter", shown: false });
-    for (const l of LOCALES) expect(getCliScreen(l).face.shown).toBe(false);
-    // Toss's substitutes were measured for Latin and Hangul only: none on the kana and Han pages
-    expect(getCliScreen("ko").face.sub).toBe("Pretendard Variable");
-    expect(getCliScreen("en").face.sub).toBe("IBM Plex Sans");
-    expect(getCliScreen("ja").face.sub).toBeUndefined();
-    expect(getCliScreen("zh-tw").face.sub).toBeUndefined();
+    for (const l of LOCALES) {
+      expect(getCliScreen(l).face).toEqual({ name: "Toss Product Sans", shown: false });
+      expect(getCliScreen(l).root.css?.fontFamily, `cli ${l}`).toBeUndefined();
+    }
+    // no card anywhere carries a substitute: not the field, not a substitute record, not the self-hosted substitute face
+    for (const [k, card] of [...Object.entries(by), ...LOCALES.map((l) => [`cli ${l}`, getCliScreen(l)] as const)]) {
+      expect(card.face.sub, k).toBeUndefined();
+      expect(JSON.stringify(card.root), k).not.toMatch(/substitutes|--font-r11-plex/);
+    }
     // round 12: Pretendard (OFL, on the landing root) carries Latin and Hangul only
     for (const id of ["kakaobank", "kurly", "socar", "channeltalk"]) {
       expect(by[`ko ${id}`].face.shown, `ko ${id}`).toBe(true);
@@ -154,7 +150,7 @@ describe("example cards: claimed values only", () => {
       const fam = card.root.css?.fontFamily;
       const l = k.split(" ")[0] as L;
       if (!card.face.shown) {
-        if (fam) expect(fam.k, k).toMatch(/^fonts\.faces\./); // only a labelled substitute
+        expect(fam, `${k}: not shown, so no face is set`).toBeUndefined();
         continue;
       }
       expect(fam, k).toBeDefined();
@@ -236,7 +232,6 @@ describe("copy: one shape in four locales", () => {
     for (const k of HERO_KINDS) expect(new Set(LOCALES.map((l) => getR11Hero(l).chat.kinds[k].prompt)).size, k).toBe(4);
     expect(new Set(LOCALES.map((l) => getR11Hero(l).cli.context)).size).toBe(4);
     expect(getR11Hero("ko").cli.context).toBe("oh-my-design-cli는 레퍼런스와 디자인 스킬을 내 코딩 에이전트에 설치하는 도구예요.");
-    for (const l of LOCALES) expect(getR11Hero(l).trace.face).toContain("{face}");
   });
 
   it("the opening prompts read as they did in round 11 (104 now by its full name, as its link names it)", () => {
@@ -317,8 +312,30 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
       expect(text, l).not.toContain(getR10(l).chat.tag);
       expect(text, l).not.toContain(getR10(l).chat.note.slice(0, 12));
       expect(text, l).not.toContain(getR10(l).chat.bar);
-      const faceNote = h.trace.faceSub.replace("{face}", "Toss Product Sans").replace("{sub}", "Pretendard Variable");
-      expect(text.includes(faceNote), l).toBe(l === "ko");
+      expect(html, l).not.toContain("sq-at-note");
+    }
+  });
+
+  // round 13 (owner 2026-10-21): no font note anywhere in the chat — any company, any locale, and the
+  // CLI apply step, which still hands AgentTrace a note (cli-steps.tsx) that it no longer renders
+  const noteBits = (l: L) => {
+    const h = getR11Hero(l);
+    return [h.trace.face, h.trace.faceSub].flatMap((x) => x.split(/\{face\}|\{sub\}/)).map((x) => x.trim()).filter((x) => x.length >= 6).map(esc);
+  };
+  it("no font note is rendered for any company the hero can show, nor on the CLI apply step", () => {
+    for (const l of LOCALES) {
+      const h = getR11Hero(l);
+      const { chats } = getHeroChats(l, getHeroCaps(l), PAGE_FACES[l]);
+      const bits = noteBits(l);
+      expect(bits.length, l).toBeGreaterThanOrEqual(2);
+      for (const id of Object.keys(chats)) {
+        const html = renderToStaticMarkup(createElement(ChatDemo, { chats, initial: id, t: { trace: h.trace, link: h.chat.link } }));
+        for (const b of bits) expect(visible(html), `${l} ${id}`).not.toContain(b);
+        expect(html, `${l} ${id}`).not.toContain("sq-at-note");
+      }
+      const cli = renderToStaticMarkup(createElement(CliSection, { locale: l, c: getCopy(l), r: getR10(l), total: 521, skills: 31, skillsHref: "#" }));
+      for (const b of bits) expect(visible(cli), `cli ${l}`).not.toContain(b);
+      expect(cli, `cli ${l}`).not.toContain("sq-at-note");
     }
   });
 
