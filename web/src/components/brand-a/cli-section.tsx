@@ -56,9 +56,7 @@ export function installScript(): TermRow[] {
   // the fixed-height terminal at 1440 without the agents line scrolling away
   const names = `${PUBLIC_SKILLS.join(" · ")} · + ${more} more`.match(/.{1,64}(?:\s·\s|$)/g) ?? [];
   return [
-    { t: "◆  oh-my-design-cli", c: "sq-ta" },
-    { t: "│" },
-    { t: "◇  Coding agents in this project", c: "sq-tp" },
+    { t: "◆  Coding agents in this project", c: "sq-tp" },
     { t: "│  ✓ Claude Code   ✓ Codex   ✓ Cursor   – OpenCode (not here)" },
     { t: "│" },
     { t: "◇  Installing for each agent", c: "sq-tp", hold: true },

@@ -32,8 +32,8 @@ describe("the streamed install: one command, every agent in its own format, ever
   const text = rows.map((r) => r.t).join("\n");
   const ROOT = path.resolve(WEB, "..");
 
-  it("opens on the CLI, ends on Done, and only uses the terminal's tones", () => {
-    expect(rows[0]).toEqual({ t: "◆  oh-my-design-cli", c: "sq-ta" });
+  it("opens on the agents it finds, ends on Done, and only uses the terminal's tones", () => {
+    expect(rows[0]).toEqual({ t: "◆  Coding agents in this project", c: "sq-tp" });
     expect(rows.at(-1)?.t).toMatch(/^└ {2}Done\./);
     for (const r of rows) expect([undefined, "sq-ta", "sq-tw", "sq-tp"], r.t).toContain(r.c);
   });
