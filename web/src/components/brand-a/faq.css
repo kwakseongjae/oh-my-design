@@ -1,5 +1,5 @@
 /* FAQ section. Split out of landing.css before round 11 (docs/REDESIGN_R11_PLAN_2026-10-20.md) so each section has one owner; imported by landing.tsx in the original cascade order. */
-/* ---- FAQ (round 11): the heading on the left, one accordion on the right; the question box (ask.css) sits under it ---- */
+/* ---- FAQ (round 11): the heading on the left, one accordion on the right ---- */
 .sq-faq-g{display:grid;grid-template-columns:320px minmax(0,1fr);gap:64px;align-items:start}
 .sq-faq-side{min-width:0}
 .sq-faq-sub{margin-top:12px;font-size:16px;color:var(--sq-ink-2)}

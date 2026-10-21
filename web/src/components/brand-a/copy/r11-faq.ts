@@ -1,9 +1,11 @@
-/* Round 11 FAQ + question box copy (owner review 2026-10-20, item 13; docs/REDESIGN_R11_PLAN_2026-10-20.md W4).
+/* Round 11 FAQ copy (owner review 2026-10-20, item 13; docs/REDESIGN_R11_PLAN_2026-10-20.md W4).
+ * The question box under the FAQ was removed on 2026-10-21 (owner: "직접 물어보는 기능은 그냥 빼자");
+ * its implementation stays in git history on feat/r11-ask.
  * The FAQ keeps the seven questions a visitor needs before installing; the categories and the
  * question search are gone. Answers reuse the owner-reviewed round 10 text where it survives.
  * Written natively per locale, not converted; Korean is plain 해요체.
- * Placeholders are filled from generated data by the landing (`f` in landing.tsx) and by the ask
- * index builder (lib/ask/build-index.ts): {total}, {tossChk}, {tossNext}. No other numbers are
+ * Placeholders are filled from generated data by the landing (`f` in landing.tsx): {total},
+ * {tossChk}, {tossNext}. No other numbers are
  * written into the copy, so nothing here goes stale when the catalog grows.
  * Markup allowed in FAQ answers: <code>, &lt; &gt; (rich.tsx).
  * Client-safe: no generated data is imported here. */
@@ -17,42 +19,8 @@ export interface R11FaqItem {
   issueLink?: true;
 }
 
-export interface R11AskCopy {
-  title: string;
-  desc: string;
-  label: string;
-  placeholder: string;
-  submit: string;
-  stop: string;
-  examplesLabel: string;
-  examples: string[];
-  /** Screen-reader prefix for the echoed question. */
-  question: string;
-  loading: string;
-  streaming: string;
-  sources: string;
-  newTab: string;
-  disclaimer: string;
-  truncated: string;
-  stopped: string;
-  notFound: string;
-  refused: string;
-  rateIp: string;
-  rateDaily: string;
-  busy: string;
-  failed: string;
-  tooLong: string;
-  unavailable: string;
-  retry: string;
-  docs: string;
-  archive: string;
-  /** aria-label for a citation link; {n} is the source number. */
-  cite: string;
-}
-
 export interface R11Copy {
   faq: { items: R11FaqItem[]; issueLink: string };
-  ask: R11AskCopy;
 }
 
 const KO: R11Copy = {
@@ -89,36 +57,6 @@ const KO: R11Copy = {
         a: "네. 아카이브에는 한국·일본·대만·중국 회사의 레퍼런스가 특히 많아요. 사이트는 한국어·영어·일본어·번체 중국어로 볼 수 있고, 함께 설치되는 omd-humanize와 omd-locale-adapter 스킬은 한국어·일본어·중국어 문장을 그 언어답게 다듬어요.",
       },
     ],
-  },
-  ask: {
-    title: "직접 물어보기",
-    desc: "문서와 레퍼런스에서 찾아 AI가 답해요. 답마다 출처를 달아요.",
-    label: "질문",
-    placeholder: "궁금한 것을 물어보세요",
-    submit: "묻기",
-    stop: "멈추기",
-    examplesLabel: "예시 질문",
-    examples: ["Codex에서도 쓸 수 있나요?", "DESIGN.md에는 무엇이 들어가나요?", "일본 회사 레퍼런스도 있나요?"],
-    question: "질문",
-    loading: "근거를 찾고 있어요",
-    streaming: "답을 쓰고 있어요",
-    sources: "출처",
-    newTab: "새 탭에서 열려요",
-    disclaimer: "AI가 쓴 답이라 틀릴 수 있어요. 출처에서 확인해 주세요.",
-    truncated: "답이 길어 여기서 멈췄어요. 나머지는 출처에서 확인해 주세요.",
-    stopped: "답을 멈췄어요.",
-    notFound: "문서에서 이 질문의 답을 찾지 못했어요. 문서나 아카이브를 둘러보세요.",
-    refused: "이 질문에는 답할 수 없어요. 아래 문서가 도움이 될 수 있어요.",
-    rateIp: "질문이 조금 빨라요. 1분 뒤에 다시 물어봐 주세요.",
-    rateDaily: "오늘 준비한 답변을 모두 썼어요. 내일 다시 물어봐 주세요.",
-    busy: "지금 질문이 몰려 있어요. 잠시 뒤 다시 물어봐 주세요.",
-    failed: "답을 가져오지 못했어요. 잠시 뒤 다시 물어봐 주세요.",
-    tooLong: "질문은 500자까지 쓸 수 있어요.",
-    unavailable: "질문하기는 준비 중이에요. 그동안 위의 질문과 문서를 참고해 주세요.",
-    retry: "다시 묻기",
-    docs: "문서 보기",
-    archive: "아카이브 열기",
-    cite: "출처 {n}",
   },
 };
 
@@ -157,36 +95,6 @@ const EN: R11Copy = {
       },
     ],
   },
-  ask: {
-    title: "Ask a question",
-    desc: "An AI answers from the docs and the archive, and every answer links its sources.",
-    label: "Your question",
-    placeholder: "Ask about oh-my-design",
-    submit: "Ask",
-    stop: "Stop",
-    examplesLabel: "Example questions",
-    examples: ["Does it work with Codex?", "What goes into a DESIGN.md?", "Are there Japanese companies?"],
-    question: "Question",
-    loading: "Finding sources",
-    streaming: "Writing the answer",
-    sources: "Sources",
-    newTab: "opens in a new tab",
-    disclaimer: "Written by an AI, so it can be wrong. Check the sources.",
-    truncated: "The answer was cut off here. The sources have the rest.",
-    stopped: "Stopped.",
-    notFound: "The docs don't answer that one. Try the docs or the archive.",
-    refused: "This question can't be answered here. These pages may help.",
-    rateIp: "That's a lot of questions at once. Try again in a minute.",
-    rateDaily: "Today's answers have run out. Please come back tomorrow.",
-    busy: "Lots of people are asking right now. Please try again shortly.",
-    failed: "Couldn't get an answer. Please try again shortly.",
-    tooLong: "Questions can be up to 500 characters.",
-    unavailable: "Asking isn't available yet. Until it is, the questions above and the docs cover the basics.",
-    retry: "Ask again",
-    docs: "Read the docs",
-    archive: "Open the archive",
-    cite: "Source {n}",
-  },
 };
 
 const JA: R11Copy = {
@@ -223,36 +131,6 @@ const JA: R11Copy = {
         a: "はい。アーカイブには日本・韓国・台湾・中国の企業のリファレンスが特に多くあります。サイトは日本語・英語・韓国語・繁体字中国語で読めます。一緒にインストールされるomd-humanizeとomd-locale-adapterのスキルは、日本語・韓国語・中国語の文章をその言語らしく整えます。",
       },
     ],
-  },
-  ask: {
-    title: "質問する",
-    desc: "ドキュメントとアーカイブをもとにAIが答え、回答ごとに出典を示します。",
-    label: "質問",
-    placeholder: "知りたいことを入力",
-    submit: "送信",
-    stop: "停止",
-    examplesLabel: "質問の例",
-    examples: ["Codexでも使えますか？", "DESIGN.mdには何が書かれていますか？", "日本企業のリファレンスはありますか？"],
-    question: "質問",
-    loading: "出典を探しています",
-    streaming: "回答を書いています",
-    sources: "出典",
-    newTab: "新しいタブで開きます",
-    disclaimer: "AIによる回答のため、誤りを含むことがあります。出典で確認してください。",
-    truncated: "回答が長いため、ここで止まりました。続きは出典で確認してください。",
-    stopped: "回答を止めました。",
-    notFound: "ドキュメントにはこの質問の答えが見つかりませんでした。ドキュメントやアーカイブをご覧ください。",
-    refused: "この質問にはお答えできません。次のページが参考になるかもしれません。",
-    rateIp: "質問の間隔が短すぎます。1分ほどしてから、もう一度お試しください。",
-    rateDaily: "本日の回答数の上限に達しました。また明日お試しください。",
-    busy: "ただいま質問が集中しています。少し時間をおいてお試しください。",
-    failed: "回答を取得できませんでした。少し時間をおいてお試しください。",
-    tooLong: "質問は500文字まで入力できます。",
-    unavailable: "質問機能は準備中です。それまでは、上の質問とドキュメントをご覧ください。",
-    retry: "もう一度質問する",
-    docs: "ドキュメントを見る",
-    archive: "アーカイブを開く",
-    cite: "出典 {n}",
   },
 };
 
@@ -291,41 +169,11 @@ const ZH_TW: R11Copy = {
       },
     ],
   },
-  ask: {
-    title: "直接提問",
-    desc: "AI 會從文件與典藏中找出答案，每個回答都附上出處。",
-    label: "你的問題",
-    placeholder: "想問什麼？",
-    submit: "提問",
-    stop: "停止",
-    examplesLabel: "問題範例",
-    examples: ["Codex 也能用嗎？", "DESIGN.md 裡寫了什麼？", "有台灣企業的參考嗎？"],
-    question: "問題",
-    loading: "正在尋找出處",
-    streaming: "正在撰寫回答",
-    sources: "出處",
-    newTab: "在新分頁開啟",
-    disclaimer: "這是 AI 寫的回答，可能有誤，請以出處為準。",
-    truncated: "回答太長，到這裡就停了。其餘內容請看出處。",
-    stopped: "已停止回答。",
-    notFound: "文件裡找不到這個問題的答案。可以看看文件或典藏。",
-    refused: "這個問題無法回答。下面的頁面或許有幫助。",
-    rateIp: "提問有點太頻繁了，請一分鐘後再試。",
-    rateDaily: "今天的回答次數已經用完，請明天再來。",
-    busy: "目前提問的人很多，請稍後再試。",
-    failed: "沒能取得回答，請稍後再試。",
-    tooLong: "問題最多 500 個字。",
-    unavailable: "提問功能還在準備中。在那之前，可以先看上面的問題與文件。",
-    retry: "再問一次",
-    docs: "看文件",
-    archive: "打開典藏",
-    cite: "出處 {n}",
-  },
 };
 
 const BY: Record<SiteLocale, R11Copy> = { en: EN, ko: KO, ja: JA, "zh-tw": ZH_TW };
 
-export function getR11Ask(locale: SiteLocale): R11Copy {
+export function getR11Faq(locale: SiteLocale): R11Copy {
   return BY[locale];
 }
 
