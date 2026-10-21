@@ -1,40 +1,56 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import type { ChatCard } from "@/lib/landing-a/chat-data.server";
-import type { R11HeroCopy } from "./copy/r11-hero";
-import { AgentTrace, CardView, useInView, usePlay, type TraceStep } from "./agent-trace";
+import { useEffect, useRef, type ReactNode } from "react";
+import type { ClientCard } from "@/lib/landing-a/chat-data.server";
+import { AgentTrace, CardView, useInView, usePlay, type TraceLabels, type TraceStep } from "./agent-trace";
 
 /**
- * Round 11 CLI steps (W3): install → apply, driven by scroll. Wide screens: the two step texts sit
- * in the left column and scroll past one sticky stage on the right, which shows the scene of the
- * step crossing the middle of the viewport (IntersectionObserver, not a scroll timeline, so every
- * browser gets it). Phones: each text sits over its own scene, nothing pinned. The active step's
- * title is the section's one violet state. Focus moving into a scene makes its step active, so a
- * keyboard never lands on a faded scene.
+ * Round 13 CLI steps (owner 2026-10-21): install → apply as two rows, each step's text beside its
+ * own visual, and each visual plays once when its row comes into view. Phones stack each text over
+ * its visual.
  *
- * The apply scene plays the hero's trace (agent-trace.tsx) once it is on screen — the active step
- * on wide screens, in view on phones — and ends in the screen the Write step creates.
+ * Round 11 drove both steps from one sticky stage. That needed tall spacer items beside the pinned
+ * scene, which left empty bands before and after it and set the second step's text well below the
+ * panel it described. Rows have no start or end to fit to the scroll: a text and its visual share a
+ * row, nothing is pinned, and every visual has a fixed height (the apply trace keeps its finished
+ * height while it plays), so nothing below a visual moves as it plays.
+ *
+ * The apply run follows the hero's model (agent-trace.tsx usePlay): the server renders the finished
+ * state, which reduced motion, ?demo=final and no-JS keep; a pre-hydration script in cli-section.tsx
+ * hides what is about to play; the run rewinds to its start once it is in view.
  */
+
+/* ---------- apply: the agent trace beside the screen it writes ---------- */
+
 const TIMES = [0, 300, 1300, 1750, 2350, 2700, 3050, 3400, 3800];
 const AT = [-1, 0, 1, 2, 3, 3, 3, 3, 4];
 const PART = [0, 0, 0, 0, 0, 1, 2, 3, 99];
 const MS = [1000, 450, 600, 1450];
 
-type Apply = { card: ChatCard; prompt: string; think: string; trace: R11HeroCopy["trace"] };
+export interface ApplyProps {
+  card: ClientCard;
+  prompt: string;
+  think: string;
+  trace: TraceLabels;
+}
 
-function ApplyScene({ card, prompt, think, trace, active }: Apply & { active: boolean }) {
+function ApplyScene({ card, prompt, think, trace }: ApplyProps) {
   const root = useRef<HTMLDivElement>(null);
+  const chat = useRef<HTMLDivElement>(null);
   const seen = useInView(root, 0.35);
-  const [phone, setPhone] = useState(false);
+  // phones stack the trace over the screen: until the run ends, the trace keeps the height of the
+  // finished state the server rendered, so the screen under it never moves as its rows arrive
   useEffect(() => {
-    const mq = matchMedia("(max-width:900px)");
-    const on = () => setPhone(mq.matches);
-    on();
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  const { s, live } = usePlay(TIMES, phone ? seen : active && seen, 5);
+    const el = chat.current;
+    // reduced motion and ?demo= keep the finished state (usePlay): nothing will play, nothing to hold
+    const still = /[?&]demo=/.test(location.search) || matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (seen && el && !still && !el.style.minHeight) el.style.minHeight = `${el.offsetHeight}px`;
+  }, [seen]);
+  const { s, live } = usePlay(TIMES, seen, 5);
+  const last = TIMES.length - 1;
+  useEffect(() => {
+    if (live && s === last && chat.current) chat.current.style.minHeight = "";
+  }, [live, s, last]);
   const at = AT[s];
   const steps: TraceStep[] = [
     { kind: "think", text: think },
@@ -42,18 +58,13 @@ function ApplyScene({ card, prompt, think, trace, active }: Apply & { active: bo
     { kind: "tool", name: "Read", target: card.read },
     { kind: "tool", name: "Write", target: card.file, add: card.lines },
   ];
-  const note = !card.face.name || card.face.shown
-    ? null
-    : card.face.sub
-      ? trace.faceSub.replace("{face}", card.face.name).replace("{sub}", card.face.sub)
-      : trace.face.replace("{face}", card.face.name);
   return (
     <div className={`sq-apply${live ? " sq-live" : ""}`} ref={root} id="cli-apply" suppressHydrationWarning>
-      <div className="sq-apply-chat">
+      <div className="sq-apply-chat" ref={chat}>
         <div className="sq-msg-u">
           <p className="sq-bub">{prompt}</p>
         </div>
-        <AgentTrace steps={steps} at={at} ms={MS} labels={trace} note={note} />
+        <AgentTrace steps={steps} at={at} ms={MS} labels={trace} />
       </div>
       <div className={`sq-apply-scr sq-ex${at >= 3 ? "" : " sq-ex-hide"}`} data-company={card.id}>
         <CardView n={card.root} shown={PART[s]} />
@@ -62,23 +73,11 @@ function ApplyScene({ card, prompt, think, trace, active }: Apply & { active: bo
   );
 }
 
-export function CliSteps({ steps, label, term, apply }: { steps: readonly { t: string; p: string }[]; label: string; term: ReactNode; apply: Apply }) {
-  const [on, setOn] = useState(0);
-  const texts = useRef<(HTMLDivElement | null)[]>([]);
+/* ---------- the two rows ---------- */
+
+export function CliSteps({ steps, term, apply }: { steps: readonly { t: string; p: string }[]; term: ReactNode; apply: ApplyProps }) {
   const termBox = useRef<HTMLDivElement>(null);
   const scrolled = useRef(false);
-
-  // the step whose text crosses the middle band of the viewport is active
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (es) => {
-        for (const e of es) if (e.isIntersecting) setOn(Number((e.target as HTMLElement).dataset.i));
-      },
-      { rootMargin: "-45% 0px -45% 0px" },
-    );
-    for (const t of texts.current) if (t) io.observe(t);
-    return () => io.disconnect();
-  }, []);
 
   // the install scene "runs" once: its output scrolls to the end the first time it is on screen
   useEffect(() => {
@@ -99,22 +98,26 @@ export function CliSteps({ steps, label, term, apply }: { steps: readonly { t: s
     return () => io.disconnect();
   }, []);
 
-  const txt = (i: number) => (
-    <div className={`sq-cli-txt${on === i ? " sq-on" : ""}`} data-i={i} ref={(el) => { texts.current[i] = el; }}>
+  const text = (i: number) => (
+    <div className="sq-cli-txt">
       <h3 className="sq-cli-t">{steps[i].t}</h3>
       <p>{steps[i].p}</p>
     </div>
   );
   return (
-    <div className="sq-cli" role="group" aria-label={label} data-on={on}>
-      <div className="sq-cli-item">{txt(0)}</div>
-      <div className={`sq-cli-scene${on === 0 ? " sq-on" : ""}`} data-scene="0" ref={termBox} onFocusCapture={() => setOn(0)}>
-        {term}
-      </div>
-      <div className="sq-cli-item">{txt(1)}</div>
-      <div className={`sq-cli-scene${on === 1 ? " sq-on" : ""}`} data-scene="1" onFocusCapture={() => setOn(1)}>
-        <ApplyScene {...apply} active={on === 1} />
-      </div>
-    </div>
+    <ol className="sq-cli">
+      <li className="sq-cli-row" data-step="install">
+        {text(0)}
+        <div className="sq-cli-vis" ref={termBox}>
+          {term}
+        </div>
+      </li>
+      <li className="sq-cli-row" data-step="apply">
+        {text(1)}
+        <div className="sq-cli-vis">
+          <ApplyScene {...apply} />
+        </div>
+      </li>
+    </ol>
   );
 }

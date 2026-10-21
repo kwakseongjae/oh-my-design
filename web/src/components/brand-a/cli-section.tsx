@@ -8,9 +8,9 @@ import type { R10Copy } from "./copy/r10";
 import { getR11Hero } from "./copy/r11-hero";
 
 /**
- * Round 11 "oh-my-design-cli 시작하기" (#use, docs/REDESIGN_R11_PLAN_2026-10-20.md W3): one line of
- * context, then two steps driven by scroll — install, then apply. On wide screens the step texts
- * scroll past a sticky stage that changes with them; phones stack each step over its scene.
+ * "oh-my-design-cli 시작하기" (#use): one line of context, then two steps — install, then apply — as
+ * rows, each step's text beside its own visual (cli-steps.tsx). Round 13 (owner 2026-10-21) replaced
+ * round 11's sticky stage, which left empty bands before and after it.
  *
  *   install  the command (copyable; the hero's install box carries the same INSTALL) and the real
  *            output of the published package (data/cli-transcript.json, recaptured with
@@ -18,7 +18,8 @@ import { getR11Hero } from "./copy/r11-hero";
  *            marked in the terminal with its line count).
  *   apply    the agent trace (agent-trace.tsx, the hero's) on the left, the screen it writes on
  *            the right: the CLI's own printed next step ("Using this DESIGN.md, design the home
- *            screen.") on a Toss-inspired project, drawn only from Toss's verified tokens.
+ *            screen.") on a Toss-inspired project, drawn only from Toss's verified tokens. No
+ *            brand-face note under the trace (owner, round 13).
  *
  * What the terminal changes at render time, and only this (boxLines): the Next box loses its
  * border characters, the padding before its right border and its blank rows; trailing spaces go.
@@ -58,6 +59,8 @@ const APPLY_PRE = `(function(){try{var c=document.getElementById("cli-apply");if
 
 export function CliSection({ locale, c, r, skills, skillsHref }: { locale: SiteLocale; c: BrandCopy; r: R10Copy; total: number; skills: number; skillsHref: string }) {
   const h = getR11Hero(locale);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- the printed source stays on the server
+  const { source, ...card } = getCliScreen(locale);
   const install = transcript.runs[0];
   const tail = boxLines(install.tail);
   const term = (
@@ -78,12 +81,7 @@ export function CliSection({ locale, c, r, skills, skillsHref }: { locale: SiteL
       <div className="sq-wrap">
         <h2 id="h-use">{r.cli.h2}</h2>
         <p className="sq-intro">{h.cli.context}</p>
-        <CliSteps
-          steps={h.cli.steps}
-          label={r.cli.h2}
-          term={term}
-          apply={{ card: getCliScreen(locale), prompt: h.cli.prompt, think: h.cli.think, trace: h.trace }}
-        />
+        <CliSteps steps={h.cli.steps} term={term} apply={{ card, prompt: h.cli.prompt, think: h.cli.think, trace: h.trace }} />
         <script dangerouslySetInnerHTML={{ __html: APPLY_PRE }} />
         <p className="sq-cli-skills" id="skills"><a href={skillsHref}>{fmt(r.cli.skillsLine, { skills })}</a></p>
       </div>
