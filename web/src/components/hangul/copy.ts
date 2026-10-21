@@ -97,6 +97,11 @@ export interface HangulCopy {
     /** {pct}: how the frames are shown */
     readonly scaled: string;
     readonly actual: string;
+    /** the chip beside the slider's thumb, until the reader first touches the control */
+    readonly hint: string;
+    /** the slider's aria-valuetext: {w} the width, {word} {p} the word the "before" frame breaks */
+    readonly valueBroken: string;
+    readonly valueWhole: string;
   };
   readonly why: {
     readonly h2: string;
@@ -185,6 +190,9 @@ const KO: HangulCopy = {
     note: "Codex가 스킬 없이 만든 평가 페이지의 제목과 CSS를 옮기고, 글꼴만 이 페이지의 Pretendard로 바꿨어요. 이미지가 아니라 지금 브라우저가 그린 실제 텍스트예요.",
     scaled: "{pct}% 크기",
     actual: "실제 크기",
+    hint: "직접 밀어 보세요",
+    valueBroken: "{w}px, 스킬 없이는 ‘{word}’{p} 끊겨요",
+    valueWhole: "{w}px, 끊긴 단어가 없어요",
   },
   why: {
     h2: "에이전트는 한국어를 영어처럼 조판해요",
@@ -304,6 +312,9 @@ const EN: HangulCopy = {
     note: "The heading and its CSS come from a page Codex built without the skill in our eval. Only the font changed, to the Pretendard this page loads. It’s live text drawn by your browser, not an image.",
     scaled: "shown at {pct}%",
     actual: "actual size",
+    hint: "Drag to try",
+    valueBroken: "{w}px: without the skill, ‘{word}’ breaks",
+    valueWhole: "{w}px: no broken words",
   },
   why: {
     h2: "Agents typeset Korean like English",
