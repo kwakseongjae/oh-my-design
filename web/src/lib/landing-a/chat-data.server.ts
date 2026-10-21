@@ -1,7 +1,6 @@
 import brandLogos from "@/data/brand-logos.json";
 import { lookupFont } from "@/lib/font-registry";
-import { getSubstitutes } from "@/lib/fonts/substitutes";
-import { OPEN_FACES, PAGE_SCRIPT, PAGE_STACK, SUB_FACES } from "@/components/brand-a/journey/face";
+import { OPEN_FACES, PAGE_SCRIPT, PAGE_STACK } from "@/components/brand-a/journey/face";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
@@ -84,7 +83,7 @@ export type CssProp = "color" | "background" | "borderColor" | "borderRadius" | 
 
 export interface CardNode {
   readonly tag: "div" | "p" | "h3" | "span" | "ul" | "li";
-  /** OmD layout class (sq-ex-*): flex, gaps, alignment. Never a brand value. */
+  /** OmD class (sq-ex-*): layout and presentation chrome (agent-trace.css). Never a brand value. */
   readonly cls?: string;
   readonly css?: Partial<Record<CssProp, Tok>>;
   readonly text?: string;
@@ -94,6 +93,14 @@ export interface CardNode {
   readonly kids?: readonly CardNode[];
   /** stream-in order while the Write step runs (1-based); absent = with its parent */
   readonly part?: number;
+  /**
+   * Round 13: a carousel's parts (agent-trace.tsx CardView). `carousel` holds one `track` (the cards,
+   * scrollable sideways) and one `dots` row whose current dot follows the track. Optional, so older
+   * readers of the tree still render every node.
+   */
+  readonly ui?: "carousel" | "track" | "dots";
+  /** Round 13: the accessible name of a node that needs one (the carousel's track). */
+  readonly label?: string;
 }
 
 export type CardKind = HeroKind | "home";
@@ -114,7 +121,11 @@ export interface ChatCard {
   readonly lines: number;
   /** distinct claimed tokens the card renders */
   readonly tokens: number;
-  /** the claimed UI face, and whether the card is set in it; when a named face isn't shown the trace says so */
+  /**
+   * The claimed UI face, and whether the card is set in it (else it is in the page's own face).
+   * `sub` is never set since round 13 (no substitute faces in the chat); it stays optional in the
+   * type only so an older reader (cli-steps.tsx) keeps compiling.
+   */
   readonly face: { readonly name: string | null; readonly shown: boolean; readonly sub?: string };
 }
 
@@ -319,7 +330,7 @@ function el(tag: CardNode["tag"], o: Omit<CardNode, "tag" | "kids"> = {}, kids?:
   const k = kids?.filter((x): x is CardNode => !!x);
   return { tag, ...o, ...(k?.length ? { kids: k } : {}) };
 }
-const button = (b: BtnToks | null, label: string, part: number) => (b ? el("span", { cls: "sq-ex-btn", css: css(b), text: label, part }) : null);
+const button = (b: BtnToks | null, label: string, part: number) => (b && label ? el("span", { cls: "sq-ex-btn", css: css(b), text: label, part }) : null);
 
 /* ---------- round 12: role ladders for the generic cards ---------- */
 
@@ -444,7 +455,7 @@ function buttonEdge(id: string, b: ButtonSlot | null): Tok | null {
   return m ? { k: `components.${b.k}.border`, v: v as string, css: m[1].toLowerCase() } : null;
 }
 const buttonG = (b: BtnToks | null, edge: Tok | null, label: string, part: number) =>
-  b ? el("span", { cls: `sq-ex-btn${edge ? " sq-ex-edge" : ""}`, css: css({ ...b, borderColor: edge }), text: label, part }) : null;
+  b && label ? el("span", { cls: `sq-ex-btn${edge ? " sq-ex-edge" : ""}`, css: css({ ...b, borderColor: edge }), text: label, part }) : null;
 
 /* ---------- faces ---------- */
 
@@ -459,103 +470,264 @@ const ROOT_FACES: readonly string[] = ["Pretendard", "Pretendard Variable"];
  *     and Noto Sans CJK JP on /ja, Noto Sans TC on /zh-tw) — the brand face, shown;
  *  2. an open face the landing root self-hosts (Pretendard), OFL, whose file carries the page
  *     language's script (Latin + Hangul only: never on /ja or /zh-tw) — shown;
- *  3. a substitute measured for this page's script and self-hosted by the site, set from its own
- *     DESIGN.md record and named as a substitute in the trace;
- *  4. else the page face, and the trace says the brand face isn't applied.
+ *  3. else no face is set: the card is in the page's own face (inherited), not a stand-in.
+ *
+ * Round 13 (owner 2026-10-21): no font notes in the chat. The measured-substitute step is gone from
+ * these cards — a substitute may only be rendered with its label, and the chat no longer carries
+ * one — so a proprietary face (Toss Product Sans, toyotatext_rg …) leaves the card in the page face.
+ * The journey's labelled substitutes (journey/face.ts) are untouched.
  */
-function faceOf(id: string, s: ResolvedSlots, faces: Faces, locale: SiteLocale) {
+function faceOf(s: ResolvedSlots, faces: Faces, locale: SiteLocale): { name: string | null; shown: boolean; tok: Tok | null } {
   const name = s.famT?.v ?? null;
   if (!name) return { name, shown: false, tok: null };
   const loaded = faces[name];
-  if (loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } as Tok };
-  const script = PAGE_SCRIPT[locale];
+  if (loaded) return { name, shown: true, tok: { k: s.famT!.k, v: name, css: loaded } };
   const open = OPEN_FACES[name];
-  if (open && ROOT_FACES.includes(name) && lookupFont(name).license === "OFL" && open.scripts.includes(script)) {
-    return { name, shown: true, tok: { k: s.famT!.k, v: name, css: `var(${open.cssVar}), ${PAGE_STACK[locale]}` } as Tok };
-  }
-  const sub = getSubstitutes(id).find((x) => x.brandFamily === name && x.script === script);
-  const host = sub ? SUB_FACES[sub.family] : undefined;
-  if (sub && host?.scripts.includes(script)) {
-    const tok: Tok = { k: `fonts.faces.${name}.substitutes.${script}`, v: sub.family, css: `var(${host.cssVar}), ${PAGE_STACK[locale]}` };
-    return { name, shown: false, sub: sub.family, tok };
+  if (open && ROOT_FACES.includes(name) && lookupFont(name).license === "OFL" && open.scripts.includes(PAGE_SCRIPT[locale])) {
+    return { name, shown: true, tok: { k: s.famT!.k, v: name, css: `var(${open.cssVar}), ${PAGE_STACK[locale]}` } };
   }
   return { name, shown: false, tok: null };
 }
 
-/* ---------- the cards ---------- */
+/* ---------- the cards (round 13: each one a finished component) ---------- */
+
+/**
+ * Round 13 (owner 2026-10-21: "카드면 카드, 캐러셀이면 캐러셀 등으로 보더까지 해서 완성형으로 보여줘.
+ * 저 하얀칸 안에"): each example is one finished component with its own boundary, sized to its
+ * content and centred on OmD's stage — the white panel, agent-trace.css `.sq-ex` — instead of loose
+ * text across the panel. The form follows the kind:
+ *
+ *   transfer  a receipt card      — check, amount, recipient, a panel of rows, the button
+ *   home      a home-screen card  — the CLI's Toss screen: title, a panel of rows, the button
+ *   booking   a ticket            — the confirmation over a perforation, a key/value stub, the button
+ *   task      a task list card    — a heading, three tasks with their status, the button
+ *   article   a news list card    — the section, three headlines with their times, load-more
+ *   product   a carousel          — a heading, three product cards (the third peeking), dots
+ *   artwork   an artwork card     — the thumbnail beside title, artist, counts, tags, follow
+ *   issue     an issue card       — Linear's customer card: ID · status, title, one line, action
+ *   job       a job posting card  — 104's company card: role, company, pay, apply
+ *
+ * Brand values and presentation chrome:
+ *  - brand: every inline value (a node's `css`) is one claimed token of the company, as in rounds
+ *    11–12. A component's box takes a claimed card component's own fill, edge, radius and padding
+ *    together (never mixed across components) or, where none is claimed, the company's canvas as
+ *    its fill and its card radius (resolve.ts `sr`) as its corners;
+ *  - chrome: OmD's classes only (agent-trace.css), never a token and never in the printed source:
+ *    the stage behind the component; a neutral 1px ring on a box whose company claims no border for
+ *    it (`sq-ex-frame` without `sq-ex-edge`); one neutral shadow under each box; layout (gaps,
+ *    widths, the inner padding of a box that claims none, the carousel's card width, the dots' size
+ *    and the ticket perforation's dashes where no line colour is claimed);
+ *  - corners: OmD never rounds a brand's box. Without a claimed card radius, border-radius is left
+ *    unset — the CSS initial value, square — as journey/screens.css does. Toyota, FamilyMart, EVA Air
+ *    and udn claim only square or none; pixiv, BOOTH, POYA and CADDi claim no card radius.
+ */
+
+interface Base {
+  readonly id: string;
+  readonly s: ResolvedSlots;
+  readonly canvas: Tok | null;
+  readonly fg: Tok | null;
+  readonly body: Tok | null;
+  readonly primary: Tok | null;
+  readonly btn: BtnToks | null;
+  readonly face: Tok | null;
+}
+
+/** A box's classes: OmD's frame (neutral ring and shadow), or the claimed edge with the shadow only. */
+const frame = (form: string, edge: Tok | null, more = "") => `sq-ex-frame sq-ex-${form}${edge ? " sq-ex-edge" : ""}${more ? ` ${more}` : ""}`;
+
+/** The company's card radius (resolve.ts `sr`) as a token, or null — then no radius is set. */
+const cardRadius = (id: string, s: ResolvedSlots): Tok | null => (s.sr ? { k: s.sr.k, v: claimedAt(id, s.sr.k) as string | number, css: px(s.sr.v) } : null);
+
+/** The check mark takes the primary colour only where it reads at 3:1 on its fill (KakaoBank's yellow doesn't). */
+const markOn = (primary: Tok | null, fill: string | null) => (primary && fill && contrast(primary.css, fill) >= 3 ? primary : null);
+
+/** Emphasised short text (a price, a value): the label tier, else the largest emphasised tier of 14–20px, else running text. */
+function strongType(id: string, s: ResolvedSlots): TypeToks | null {
+  const lab = slotType(id, s.label);
+  if (lab) return lab;
+  const pick = largest(tiersOf(id).filter((t) => t.weight != null && t.weight >= 600 && t.size >= 14 && t.size <= 20 && !INPUT_KEY.test(t.k)));
+  return pick ? tierType(id, pick.k) : textType(id, s);
+}
+
+/**
+ * The box a group-shaped component (ticket, list) is drawn in: the claimed card component's own fill,
+ * edge, radius, padding and text colour, or the company's surface colour and card radius, else its
+ * canvas — so a box always has the company's own fill behind its text.
+ */
+function outerBox(id: string, s: ResolvedSlots, canvas: Tok | null) {
+  const box = boxOf(id, s);
+  return { ...box, bg: box.bg ?? canvas };
+}
+
+/** transfer · home: a receipt or home-screen card on the canvas, its rows on the company's surface (round 11's layout, now framed). */
+function receiptCard(b: Base, kind: "transfer" | "home", t: CardText): CardNode {
+  const { id, s, canvas, fg, body, primary, btn, face } = b;
+  const box = boxOf(id, s);
+  const page = canvas?.css ?? null;
+  const fill = box.bg?.css ?? page;
+  // Toss is round 11's card: its title pinned to h3, its rows in body-small, its row labels in its
+  // body grey (its muted grey on the surface is 2.8:1)
+  const title = titleType(id) ?? slotType(id, s.head), small = smallType(id, s), text = textType(id, s);
+  const ink = legible(fill, box.fg, fg), soft = legible(fill, body, box.fg, fg);
+  const rows = (part: number) =>
+    el("div", { cls: "sq-ex-rows", css: css({ background: box.bg, borderRadius: box.radius }), part },
+      t.rows.map(([k, v]) => el("div", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(kind === "home" ? text : small, ink), text: v })])));
+  const shell = css({ background: canvas, color: legible(page, fg), fontFamily: face, borderRadius: cardRadius(id, s) });
+  if (kind === "transfer") {
+    const mark = markOn(primary, page);
+    return el("div", { cls: frame("receipt", null), css: shell }, [
+      mark ? el("span", { cls: "sq-ex-ic", css: css({ color: mark }), icon: "check", part: 1 }) : null,
+      el("h3", { css: typeCss(title, legible(page, fg)), text: t.title, part: 2 }),
+      t.sub ? el("p", { css: typeCss(text, legible(page, body, fg)), text: t.sub, part: 2 }) : null,
+      rows(3),
+      buttonG(btn, buttonEdge(id, s.btn), t.cta ?? "", 4),
+    ]);
+  }
+  return el("div", { cls: frame("home", null), css: shell }, [
+    el("h3", { css: typeCss(title, legible(page, fg)), text: t.title, part: 1 }),
+    t.sub ? el("p", { css: typeCss(small, legible(page, body, fg)), text: t.sub, part: 1 }) : null,
+    rows(2),
+    buttonG(btn, buttonEdge(id, s.btn), t.cta ?? "", 3),
+  ]);
+}
+
+/** booking: a ticket — the confirmation over a perforation, then the booking number and date, and the button. */
+function ticketCard(b: Base, t: CardText): CardNode {
+  const { id, s, canvas, fg, body, primary, btn, face } = b;
+  const box = outerBox(id, s, canvas);
+  const fill = box.bg?.css ?? null;
+  const ink = legible(fill, box.fg, fg), soft = legible(fill, body, box.fg, fg);
+  const title = titleType(id), text = textType(id, s), small = smallType(id, s), strong = strongType(id, s);
+  const rule = slotColor(id, s.line);
+  const mark = markOn(primary, fill);
+  const pad = css({ padding: box.pad });
+  return el("div", { cls: frame("ticket", box.edge), css: css({ background: box.bg, color: ink, fontFamily: face, borderColor: box.edge, borderRadius: box.radius }) }, [
+    el("div", { cls: `sq-ex-tk${box.pad ? "" : " sq-ex-inset"}`, css: pad }, [
+      // the check sits in the title's first line, sized by the title's own claimed size
+      el("h3", { cls: "sq-ex-tkh", css: typeCss(title, ink), part: 1 }, [
+        mark ? el("span", { cls: "sq-ex-ic-m", css: css({ color: mark }), icon: "check" }) : null,
+        el("span", { text: t.title }),
+      ]),
+      t.sub ? el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }) : null,
+    ]),
+    el("div", { cls: `sq-ex-perf${rule ? "" : " sq-ex-perf-n"}`, css: css({ borderColor: rule }), part: 3 }),
+    el("div", { cls: `sq-ex-tk${box.pad ? "" : " sq-ex-inset"}`, css: pad }, [
+      el("div", { cls: "sq-ex-kv2", part: 3 },
+        t.rows.map(([k, v]) => el("div", { cls: "sq-ex-kvc" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(strong, ink), text: v })]))),
+      buttonG(btn, buttonEdge(id, s.btn), t.cta ?? "", 4),
+    ]),
+  ]);
+}
+
+/** task · article: a list in a card — a heading, three items with their status or time, ruled where a line colour is claimed, and the button. */
+function listCard(b: Base, kind: "task" | "article", t: CardText): CardNode {
+  const { id, s, canvas, fg, body, btn, face } = b;
+  const box = outerBox(id, s, canvas);
+  const fill = box.bg?.css ?? null;
+  const ink = legible(fill, box.fg, fg), meta = legible(fill, slotColor(id, s.meta), body, box.fg, fg);
+  const title = titleType(id), text = textType(id, s), small = smallType(id, s);
+  const rule = slotColor(id, s.line);
+  const item = (k: string, v: string, i: number) =>
+    el("li", { cls: `sq-ex-li${rule ? " sq-ex-ruled" : ""}`, css: css({ borderColor: rule }), part: i ? 3 : 2 }, [
+      el("p", { cls: kind === "article" ? "sq-ex-clamp" : undefined, css: typeCss(text, ink), text: k }),
+      el("span", { cls: "sq-ex-meta", css: typeCss(small, meta), text: v }),
+    ]);
+  return el("div", { cls: frame("list", box.edge, `sq-ex-${kind}${box.pad ? "" : " sq-ex-inset"}`), css: css({ background: box.bg, color: ink, fontFamily: face, borderColor: box.edge, borderRadius: box.radius, padding: box.pad }) }, [
+    el("div", { cls: "sq-ex-lh", part: 1 }, [
+      el("h3", { css: typeCss(title, ink), text: t.title }),
+      t.tags[0] ? el("span", { css: typeCss(small, meta), text: t.tags[0] }) : null,
+    ]),
+    el("ul", { cls: "sq-ex-items" }, t.rows.map(([k, v], i) => item(k, v, i))),
+    buttonG(btn, buttonEdge(id, s.btn), t.cta ?? "", 4),
+  ]);
+}
+
+/** Generic OmD props for the carousel's three products (the copy's rows name them in this order). */
+const PRODUCT_PROPS = ["shopping-bag", "piggy-bank", "briefcase"] as const;
+
+/**
+ * product: a carousel. The carousel itself has no box (as on a shop's page); each product card does —
+ * the canvas as its fill, the company's card radius and, where claimed, its card border — with the
+ * product's picture on the company's surface (full-bleed at the card's top, so the card's own corners
+ * clip it), the name and the price. The third card peeks past the edge; the dots follow the track.
+ */
+function carouselCard(b: Base, t: CardText): CardNode {
+  const { id, s, canvas, fg, body, face } = b;
+  const box = boxOf(id, s);
+  const page = canvas?.css ?? null;
+  const ink = legible(page, fg), head = legible("#ffffff", fg);
+  const title = titleType(id), text = textType(id, s), strong = strongType(id, s);
+  const radius = cardRadius(id, s);
+  const edge: Tok | null = s.cardBorder && s.sr && s.cardBorder.k.replace(/\.[^.]+$/, "") === s.sr.k.replace(/\.[^.]+$/, "")
+    ? { k: s.cardBorder.k, v: claimedAt(id, s.cardBorder.k) as string, css: s.cardBorder.v } : null;
+  const media = box.bg && box.bg.css !== page ? box.bg : null;
+  const cards = t.rows.map(([name, price], i) => {
+    const prop = getProp(PRODUCT_PROPS[i % PRODUCT_PROPS.length]);
+    return el("div", { cls: frame("pcard", edge), css: css({ background: canvas, borderColor: edge, borderRadius: radius }), part: i ? 3 : 2 }, [
+      prop ? el("div", { cls: "sq-ex-pmedia", css: css({ background: media }) }, [el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" } })]) : null,
+      el("div", { cls: "sq-ex-pbody" }, [
+        el("p", { cls: "sq-ex-clamp", css: typeCss(text, legible(page, body, fg) ?? ink), text: name }),
+        el("p", { css: typeCss(strong, ink), text: price }),
+      ]),
+    ]);
+  });
+  return el("div", { cls: "sq-ex-carousel", ui: "carousel", css: css({ color: head, fontFamily: face }) }, [
+    el("h3", { css: typeCss(title, head), text: t.title, part: 1 }),
+    el("div", { cls: "sq-ex-track", ui: "track", label: t.title }, cards),
+    fg ? el("div", { cls: "sq-ex-dots", ui: "dots", part: 4 }, cards.map(() => el("span", { cls: "sq-ex-dot", css: css({ background: fg }) }))) : null,
+  ]);
+}
 
 function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale: SiteLocale): { root: CardNode; face: ChatCard["face"] } {
   const s = slotsOf(id)!;
-  const f = faceOf(id, s, faces, locale);
+  const f = faceOf(s, faces, locale);
   const canvas = slotColor(id, s.canvas), fg = slotColor(id, s.fg), body = slotColor(id, s.body), primary = slotColor(id, s.primary);
   const btn = buttonToks(id, s.btn);
   const head = slotType(id, s.head), bod = slotType(id, s.bod);
-  const srTok: Tok | null = s.sr ? { k: s.sr.k, v: claimedAt(id, s.sr.k) as string | number, css: px(s.sr.v) } : null;
-  const rootCss = css({ background: canvas, color: fg, fontFamily: f.tok });
-  const page = canvas?.css ?? null;
+  const srTok = cardRadius(id, s);
+  const b: Base = { id, s, canvas, fg, body, primary, btn, face: f.tok };
   let root: CardNode;
 
-  if (kind === "transfer" || kind === "home") {
-    // A centred success card (transfer) or a list screen (home, the CLI's Toss screen): rows on the
-    // company's surface. Toss is round 11's card, unchanged: its title is pinned to h3, its rows take
-    // body-small, and its row labels take its body grey (its muted grey on the surface is 2.8:1).
-    // The check takes the primary colour only where it reads at 3:1 on the canvas (KakaoBank's
-    // yellow #ffe300 doesn't, so its receipt has no mark).
-    const box = boxOf(id, s);
-    const fill = box.bg?.css ?? page;
-    const title = titleType(id) ?? head, small = smallType(id, s), text = textType(id, s);
-    const ink = legible(fill, box.fg, fg), soft = legible(fill, body, box.fg, fg);
-    const rows = (a: number) =>
-      el("div", { cls: "sq-ex-rows", css: css({ background: box.bg, borderRadius: box.radius }), part: a },
-        t.rows.map(([k, v]) => el("div", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(kind === "home" ? text : small, ink), text: v })])));
-    const mark = primary && page && contrast(primary.css, page) >= 3 ? primary : null;
-    root = kind === "transfer"
-      ? el("div", { cls: "sq-ex-col", css: rootCss }, [
-          mark ? el("span", { cls: "sq-ex-ic", css: css({ color: mark }), icon: "check", part: 1 }) : null,
-          el("h3", { css: typeCss(title, legible(page, fg)), text: t.title, part: 2 }),
-          el("p", { css: typeCss(text, legible(page, body, fg)), text: t.sub, part: 2 }),
-          rows(3),
-          buttonG(btn, buttonEdge(id, s.btn), t.cta, 4),
-        ])
-      : el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
-          el("h3", { css: typeCss(title, legible(page, fg)), text: t.title, part: 1 }),
-          el("p", { css: typeCss(small, legible(page, body, fg)), text: t.sub, part: 1 }),
-          rows(2),
-          button(btn, t.cta, 3),
-        ]);
-  } else if (kind === "artwork") {
-    // pixiv: artwork card — the card/panel heading tier, the metadata caption, likes in the engagement
-    // colour. Counts take text-muted, not text-tertiary (3.7:1 on the canvas).
+  if (kind === "transfer" || kind === "home") root = receiptCard(b, kind, t);
+  else if (kind === "booking") root = ticketCard(b, t);
+  else if (kind === "task" || kind === "article") root = listCard(b, kind, t);
+  else if (kind === "product") root = carouselCard(b, t);
+  else if (kind === "artwork") {
+    // pixiv: the thumbnail (an OmD prop on its surface) beside the card/panel heading tier, the
+    // artist, likes in the engagement colour and the metadata caption, the tags in its link colour.
+    // Counts take text-muted, not text-tertiary (3.7:1 on the canvas). No card radius is claimed.
     const title = tierToks(id, "heading-m") ?? head, cap = tierToks(id, "caption-s"), tagT = tierToks(id, "caption-m") ?? bod;
     const red = colorTok(id, "engagement-red"), link = colorTok(id, "link");
     const prop = getProp("palette");
-    root = el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
-      prop ? el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" }, part: 1 }) : null,
-      el("h3", { css: typeCss(title, fg), text: t.title, part: 1 }),
-      el("p", { css: typeCss(bod, body), text: t.sub, part: 2 }),
-      el("div", { cls: "sq-ex-stats", part: 3 }, [
-        red ? el("span", { cls: "sq-ex-ic-s", css: css({ color: red }), icon: "heart" }) : null,
-        ...t.rows.map(([k, v]) => el("span", { css: typeCss(cap, body), text: `${k} ${v}` })),
+    root = el("div", { cls: frame("art", null), css: css({ background: canvas, color: fg, fontFamily: f.tok, borderRadius: srTok }) }, [
+      prop ? el("div", { cls: "sq-ex-thumb", css: css({ background: slotColor(id, s.surface) }), part: 1 }, [el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" } })]) : null,
+      el("div", { cls: "sq-ex-artx" }, [
+        el("h3", { css: typeCss(title, fg), text: t.title, part: 1 }),
+        t.sub ? el("p", { css: typeCss(bod, body), text: t.sub, part: 2 }) : null,
+        el("div", { cls: "sq-ex-stats", part: 3 }, [
+          red ? el("span", { cls: "sq-ex-ic-s", css: css({ color: red }), icon: "heart" }) : null,
+          ...t.rows.map(([k, v]) => el("span", { css: typeCss(cap, body), text: `${k} ${v}` })),
+        ]),
+        t.tags.length ? el("p", { css: typeCss(tagT, link), text: t.tags.join("　"), part: 3 }) : null,
+        button(btn, t.cta ?? "", 4),
       ]),
-      t.tags.length ? el("p", { cls: "sq-ex-tags", css: typeCss(tagT, link), text: t.tags.join("　"), part: 3 }) : null,
-      button(btn, t.cta, 4),
     ]);
   } else if (kind === "issue") {
-    // Linear: an issue card on the dark canvas — hairline edge, the card radius and padding of its customer card
+    // Linear: its customer card is the component — the card radius and padding it claims, edged in
+    // its hairline (round 11) — on its dark canvas, since the card's own fill is transparent
     const nav = tierToks(id, "navigation") ?? bod, secondary = colorTok(id, "secondary") ?? body, hairline = colorTok(id, "hairline");
     const card = (s.sr?.k ?? "").replace(/\.radius$/, "");
     const pad = card.startsWith("components.") ? claimedAt(id, `${card}.padding`) : undefined;
     const padTok: Tok | null = typeof pad === "string" && /px/.test(pad) ? { k: `${card}.padding`, v: pad, css: pad } : null;
-    root = el("div", { cls: "sq-ex-pad", css: rootCss }, [
-      el("div", { cls: "sq-ex-card sq-ex-edge", css: css({ borderColor: hairline, borderRadius: srTok, padding: padTok }) }, [
-        t.tags.length ? el("p", { css: typeCss(nav, body), text: t.tags.join(" · "), part: 1 }) : null,
-        el("h3", { css: typeCss(head, fg), text: t.title, part: 2 }),
-        el("p", { css: typeCss(bod, secondary), text: t.sub, part: 3 }),
-        button(btn, t.cta, 4),
-      ]),
+    root = el("div", { cls: frame("issue", hairline), css: css({ background: canvas, color: fg, fontFamily: f.tok, borderColor: hairline, borderRadius: srTok, padding: padTok }) }, [
+      t.tags.length ? el("p", { css: typeCss(nav, body), text: t.tags.join(" · "), part: 1 }) : null,
+      el("h3", { css: typeCss(head, fg), text: t.title, part: 2 }),
+      t.sub ? el("p", { css: typeCss(bod, secondary), text: t.sub, part: 3 }) : null,
+      button(btn, t.cta ?? "", 4),
     ]);
-  } else if (kind === "job") {
-    // 104: a job card in its company-card container (fill, 1px edge colour, radius, padding). Its one
+  } else {
+    // 104: its company card is the component (fill, 1px edge colour, radius, padding). Its one
     // secondary grey (muted) is 4.06:1 on the canvas, so secondary text is the foreground at body weight.
     const label = tierToks(id, "label") ?? bod;
     const cardKey = (s.sr?.k ?? "").replace(/\.radius$/, "");
@@ -563,73 +735,21 @@ function buildRoot(id: string, kind: CardKind, t: CardText, faces: Faces, locale
     const edge: Tok | null = s.cardBorder ? { k: s.cardBorder.k, v: claimedAt(id, s.cardBorder.k) as string, css: s.cardBorder.v } : null;
     const pad = cardKey ? claimedAt(id, `${cardKey}.padding`) : undefined;
     const padTok: Tok | null = typeof pad === "string" && /px/.test(pad) ? { k: `${cardKey}.padding`, v: pad, css: pad } : null;
-    root = el("div", { cls: "sq-ex-pad", css: rootCss }, [
-      el("div", { cls: `sq-ex-card${edge ? " sq-ex-edge" : ""}`, css: css({ background: cardBg, borderColor: edge, borderRadius: srTok, padding: padTok }) }, [
-        el("h3", { css: typeCss(head, fg), text: t.title, part: 1 }),
-        el("p", { css: typeCss(bod, fg), text: t.sub, part: 2 }),
-        el("div", { cls: "sq-ex-kv", part: 3 },
-          t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(bod, fg), text: k }), el("span", { css: typeCss(label, fg), text: v })]))),
-        button(btn, t.cta, 4),
-      ]),
-    ]);
-  } else if (kind === "product") {
-    // Commerce: a list item — the OmD shopping-bag prop on the company's product tile (its surface
-    // and card radius, from one component when a card component supplies them) beside the item and
-    // one line, then price and delivery rows and the buy button. A row, not a stacked tile, so the
-    // card fits the hero's fixed-height column on every locale.
-    const box = boxOf(id, s);
-    const title = titleType(id), text = textType(id, s), small = smallType(id, s);
-    const ink = legible(page, fg), soft = legible(page, body, fg);
-    const prop = getProp("shopping-bag");
-    root = el("div", { cls: "sq-ex-col sq-ex-start", css: rootCss }, [
-      el("div", { cls: "sq-ex-item" }, [
-        prop ? el("div", { cls: "sq-ex-media", css: css({ background: box.bg, borderRadius: box.radius }), part: 1 }, [
-          el("div", { cls: "sq-ex-prop", img: { src: prop.src, width: prop.width, height: prop.height, alt: "" } }),
-        ]) : null,
-        el("div", { cls: "sq-ex-itxt" }, [
-          el("h3", { css: typeCss(title, ink), text: t.title, part: 1 }),
-          el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }),
-        ]),
-      ]),
+    root = el("div", { cls: frame("job", edge), css: css({ background: cardBg ?? canvas, color: fg, fontFamily: f.tok, borderColor: edge, borderRadius: srTok, padding: padTok }) }, [
+      el("h3", { css: typeCss(head, fg), text: t.title, part: 1 }),
+      t.sub ? el("p", { css: typeCss(bod, fg), text: t.sub, part: 2 }) : null,
       el("div", { cls: "sq-ex-kv", part: 3 },
-        t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(text, ink), text: v })]))),
-      buttonG(btn, buttonEdge(id, s.btn), t.cta, 4),
+        t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(bod, fg), text: k }), el("span", { css: typeCss(label, fg), text: v })]))),
+      button(btn, t.cta ?? "", 4),
     ]);
-  } else {
-    // booking / task / article: one group in the company's card container when it claims one — a
-    // card component's own fill, edge, padding and text colour, or its surface colour (whose inner
-    // padding is OmD's, as round 11's rows panel) — else straight on the canvas.
-    const box = boxOf(id, s);
-    const framed = !!(box.bg && box.bg.css !== page) || !!box.edge;
-    const fill = (framed ? box.bg?.css : null) ?? page;
-    const ink = legible(fill, box.fg, fg), soft = legible(fill, body, box.fg, fg), meta = legible(fill, slotColor(id, s.meta), body, box.fg, fg);
-    const title = titleType(id), text = textType(id, s), small = smallType(id, s);
-    const strong = slotType(id, s.label) ?? text;
-    const boxCss = framed ? css({ background: box.bg, borderColor: box.edge, borderRadius: box.radius, padding: box.pad }) : {};
-    const cls = `sq-ex-card${framed && box.edge ? " sq-ex-edge" : ""}${framed && !box.pad ? " sq-ex-inset" : ""}`;
-    const cta = buttonG(btn, buttonEdge(id, s.btn), t.cta, 4);
-    const kids: (CardNode | null)[] = kind === "booking"
-      ? [
-          el("h3", { css: typeCss(title, ink), text: t.title, part: 1 }),
-          el("p", { css: typeCss(text, soft), text: t.sub, part: 2 }),
-          el("div", { cls: "sq-ex-kv", part: 3 },
-            t.rows.map(([k, v]) => el("p", { cls: "sq-ex-row" }, [el("span", { css: typeCss(small, soft), text: k }), el("span", { css: typeCss(strong, ink), text: v })]))),
-          cta,
-        ]
-      : [
-          t.tags.length ? el("p", { css: typeCss(small, meta), text: t.tags.join(" · "), part: 1 }) : null,
-          el("h3", { css: typeCss(title, ink), text: t.title, part: 2 }),
-          el("p", { css: typeCss(text, soft), text: t.sub, part: 3 }),
-          cta,
-        ];
-    root = el("div", { cls: "sq-ex-pad", css: rootCss }, [el("div", { cls, css: boxCss }, kids)]);
   }
-  return { root, face: { name: f.name, shown: f.shown, ...(f.sub ? { sub: f.sub } : {}) } };
+  return { root, face: { name: f.name, shown: f.shown } };
 }
 
 /* ---------- the source the Write step stands for ---------- */
 
 const jsx = (s: string) => s.replace(/[{}<>]/g, (c) => `{"${c}"}`);
+const CHROME_CLS = new Set(["sq-ex-frame", "sq-ex-inset"]);
 
 /** Print a card tree as the TSX an agent would write; its line count is the Write step's +N. */
 export function printSource(file: string, root: CardNode): string {
@@ -638,7 +758,8 @@ export function printSource(file: string, root: CardNode): string {
   const out: string[] = [];
   const attrs = (n: CardNode) => {
     const st = n.css ? Object.entries(n.css).map(([p, t]) => `${p}: ${JSON.stringify(t!.css)}`).join(", ") : "";
-    const cls = n.cls ? n.cls.split(" ").map((c) => c.replace(/^sq-ex-/, "")).join(" ") : "";
+    // OmD's chrome classes (the frame, the inset padding) are presentation, not part of the component an agent writes
+    const cls = n.cls ? n.cls.split(" ").filter((c) => !CHROME_CLS.has(c)).map((c) => c.replace(/^sq-ex-/, "")).join(" ") : "";
     return (cls ? ` className="${cls}"` : "") + (st ? ` style={{ ${st} }}` : "");
   };
   const walk = (n: CardNode, d: number) => {
@@ -687,7 +808,7 @@ const readPath = (id: string) => `.claude/data/references/${id}/DESIGN.md`;
 
 /**
  * One company's card in a locale's chat. `faces` maps a claimed UI face to the CSS family the page
- * loads for it (hero-section.tsx): a face the page doesn't load is left unset and named in the trace.
+ * loads for it (hero-section.tsx): a face the page doesn't load is left unset (the page face shows).
  */
 export function getCompanyCard(locale: SiteLocale, id: string, faces: Faces = {}): ChatCard {
   const k = getR11Hero(locale).chat.kinds[KIND[id]];

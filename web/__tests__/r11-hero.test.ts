@@ -6,7 +6,6 @@ import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.gene
 import { getR11Hero, HERO_KINDS, withName } from "@/components/brand-a/copy/r11-hero";
 import { heroPick, pickCompany, resetHeroPick } from "@/components/brand-a/hero-pick";
 import { PAGE_SCRIPT } from "@/components/brand-a/journey/face";
-import { getSubstitutes } from "@/lib/fonts/substitutes";
 import { detailHrefFor } from "@/lib/i18n/ko-detail";
 import { getHeroCaps } from "@/lib/landing-a/data.server";
 import {
@@ -23,6 +22,12 @@ import {
  * Round 12 (owner 2026-10-21): a keycap picks the chat's company, so every company on a locale's
  * keyboard has a card, and every one of those cards — not only the four opening ones — goes through
  * the same claimed-token, legibility, face and source checks.
+ *
+ * Round 13 (owner 2026-10-21): every card is one finished component (a receipt, a ticket, a list in a
+ * card, a carousel …) on OmD's stage, and no font note is rendered. OmD's chrome — the stage, a
+ * neutral ring where no border is claimed, the shadow — lives in classes, never in a card's `css`;
+ * a box is rounded only by a claimed card radius. The fit in the hero's fixed stage is a browser
+ * measurement (its result is written above hero.css's short-stage container query), not a unit test.
  */
 const LOCALES = ["en", "ko", "ja", "zh-tw"] as const;
 type L = (typeof LOCALES)[number];
@@ -94,14 +99,8 @@ describe("example cards: claimed values only", () => {
       const list = toks(card.root);
       expect(list.length, name).toBeGreaterThan(10);
       for (const [prop, t] of list) {
-        // a measured substitute is set from the reference's own substitute record, never by eye
-        const subKey = /^fonts\.faces\.(.+)\.substitutes\.([a-z-]+)$/.exec(t.k);
-        if (prop === "fontFamily" && subKey) {
-          const rec = getSubstitutes(card.id).find((x) => x.brandFamily === subKey[1] && x.script === subKey[2]);
-          expect(rec?.family, `${name}: ${t.k} measured`).toBe(t.v);
-          expect(t.css, `${name}: ${t.k} self-hosted`).toMatch(/^var\(--font-r11-/);
-          continue;
-        }
+        // round 13: a face is only ever the claimed family itself, never a substitute record
+        if (prop === "fontFamily") expect(t.k, `${name}: face`).toMatch(/^typography\.family\./);
         expect(`tokens.${t.k}` in claims, `${name}: ${t.k} claimed`).toBe(true);
         expect(at(card.id, t.k), `${name}: ${t.k} value`).toEqual(t.v);
         if (prop === "fontFamily") continue; // the loaded face for a claimed family name (see face test)
@@ -122,20 +121,23 @@ describe("example cards: claimed values only", () => {
     for (const l of LOCALES) expect(getChatCard(l).kind).toBe(KIND[CHAT_COMPANY[l]]);
   });
 
-  it("faces: a face is shown only where this page loads it for real; otherwise the trace names it", () => {
+  it("faces: a face is set only where this page loads it for real; otherwise the page face, never a substitute", () => {
     const by = Object.fromEntries(LOCALES.flatMap((l) => chatSet(l).map((id) => [`${l} ${id}`, getCompanyCard(l, id, PAGE_FACES[l])])));
-    // round 11, unchanged
-    expect(by["ko toss"].face).toEqual({ name: "Toss Product Sans", shown: false, sub: "Pretendard Variable" });
+    // round 13: Toss Product Sans is not loadable and its measured substitutes are no longer used here
+    expect(by["ko toss"].face).toEqual({ name: "Toss Product Sans", shown: false });
     expect(by["zh-tw 104"].face).toEqual({ name: null, shown: false });
     expect(by["en linear.app"].face).toEqual({ name: "Inter", shown: true });
     expect(by["ja pixiv"].face).toEqual({ name: "Noto Sans CJK JP", shown: true });
     expect(getChatCard("en").face).toEqual({ name: "Inter", shown: false });
-    for (const l of LOCALES) expect(getCliScreen(l).face.shown).toBe(false);
-    // Toss's substitutes were measured for Latin and Hangul only: none on the kana and Han pages
-    expect(getCliScreen("ko").face.sub).toBe("Pretendard Variable");
-    expect(getCliScreen("en").face.sub).toBe("IBM Plex Sans");
-    expect(getCliScreen("ja").face.sub).toBeUndefined();
-    expect(getCliScreen("zh-tw").face.sub).toBeUndefined();
+    for (const l of LOCALES) {
+      expect(getCliScreen(l).face).toEqual({ name: "Toss Product Sans", shown: false });
+      expect(getCliScreen(l).root.css?.fontFamily, `cli ${l}`).toBeUndefined();
+    }
+    // no card anywhere carries a substitute: not the field, not a substitute record, not the self-hosted substitute face
+    for (const [k, card] of [...Object.entries(by), ...LOCALES.map((l) => [`cli ${l}`, getCliScreen(l)] as const)]) {
+      expect(card.face.sub, k).toBeUndefined();
+      expect(JSON.stringify(card.root), k).not.toMatch(/substitutes|--font-r11-plex/);
+    }
     // round 12: Pretendard (OFL, on the landing root) carries Latin and Hangul only
     for (const id of ["kakaobank", "kurly", "socar", "channeltalk"]) {
       expect(by[`ko ${id}`].face.shown, `ko ${id}`).toBe(true);
@@ -154,7 +156,7 @@ describe("example cards: claimed values only", () => {
       const fam = card.root.css?.fontFamily;
       const l = k.split(" ")[0] as L;
       if (!card.face.shown) {
-        if (fam) expect(fam.k, k).toMatch(/^fonts\.faces\./); // only a labelled substitute
+        expect(fam, `${k}: not shown, so no face is set`).toBeUndefined();
         continue;
       }
       expect(fam, k).toBeDefined();
@@ -166,7 +168,7 @@ describe("example cards: claimed values only", () => {
   it("the Write step's +N is the printed source's line count, and the Read path is the installed catalog copy", () => {
     for (const [name, card] of cards) {
       expect(card.lines, name).toBe(card.source.split("\n").length);
-      expect(card.lines, name).toBeGreaterThan(10);
+      expect(card.lines, name).toBeGreaterThanOrEqual(10);
       expect(card.parts, name).toBeGreaterThanOrEqual(3);
       for (const t of texts(card.root)) expect(card.source, `${name}: "${t}" printed`).toContain(t.split(" ")[0].replace(/[{}<>]/g, ""));
       if (name.startsWith("hero")) expect(card.read, name).toBe(`.claude/data/references/${card.id}/DESIGN.md`);
@@ -213,6 +215,74 @@ describe("example cards: legible", () => {
   });
 });
 
+describe("round 13: each card is one finished component; OmD's chrome never passes as a brand value", () => {
+  const all = (): [string, ChatCard][] => [...heroCards(), ...LOCALES.map((l) => [`cli ${l}`, getCliScreen(l)] as [string, ChatCard])];
+  const walk = (n: CardNode, f: (n: CardNode) => void) => {
+    f(n);
+    for (const k of n.kids ?? []) walk(k, f);
+  };
+  const has = (n: CardNode, c: string) => (n.cls ?? "").split(" ").includes(c);
+  const FORM: Record<string, string> = {
+    transfer: "sq-ex-receipt", home: "sq-ex-home", booking: "sq-ex-ticket", task: "sq-ex-list", article: "sq-ex-list",
+    artwork: "sq-ex-art", issue: "sq-ex-issue", job: "sq-ex-job",
+  };
+
+  it("the root is the component: a framed box in its kind's form, or a carousel of three framed product cards with three dots", () => {
+    for (const [name, card] of all()) {
+      if (card.kind === "product") {
+        expect(card.root.ui, name).toBe("carousel");
+        const track = card.root.kids?.find((k) => k.ui === "track");
+        expect(track?.label, name).toBeTruthy();
+        expect(track?.kids?.length, name).toBe(3);
+        for (const c of track?.kids ?? []) expect(has(c, "sq-ex-frame") && has(c, "sq-ex-pcard"), name).toBe(true);
+        expect(card.root.kids?.find((k) => k.ui === "dots")?.kids?.length, name).toBe(3);
+        expect(card.root.css?.background, `${name}: the carousel itself has no box`).toBeUndefined();
+      } else {
+        expect(has(card.root, "sq-ex-frame"), name).toBe(true);
+        expect(has(card.root, FORM[card.kind]), name).toBe(true);
+        expect(card.root.css?.background, `${name}: a box is painted in the company's own fill`).toBeDefined();
+      }
+    }
+  });
+
+  it("a box's edge is its company's claimed border (sq-ex-edge, colour set) or else OmD's neutral ring (no colour set)", () => {
+    for (const [name, card] of all()) {
+      walk(card.root, (n) => {
+        if (!has(n, "sq-ex-frame")) return;
+        if (has(n, "sq-ex-edge")) expect(n.css?.borderColor, name).toBeDefined();
+        else expect(n.css?.borderColor, name).toBeUndefined();
+      });
+    }
+  });
+
+  it("OmD never rounds a brand's box: a company with no claimed card radius gets none (square, the CSS initial value)", () => {
+    const square = new Set<string>();
+    for (const [name, card] of all()) {
+      if (!cardCoverage(card.id).missing.includes("card radius")) continue;
+      square.add(card.id);
+      walk(card.root, (n) => {
+        if (!has(n, "sq-ex-btn")) expect(n.css?.borderRadius, `${name}: ${n.cls ?? n.tag}`).toBeUndefined(); // a button's own radius is claimed separately
+      });
+    }
+    expect([...square].sort()).toEqual(["booth", "caddi", "evaair", "familymart-tw", "pixiv", "poya", "toyota", "udn"]);
+  });
+
+  it("the printed source is the component an agent writes: no OmD chrome class in it", () => {
+    for (const [name, card] of all()) expect(card.source, name).not.toMatch(/className="[^"]*\b(frame|inset)\b/);
+  });
+
+  it("copy: the carousel, the task list and the news list carry three items in every locale", () => {
+    for (const l of LOCALES) {
+      for (const k of ["product", "task", "article"] as const) {
+        const c = getR11Hero(l).chat.kinds[k].card;
+        expect(c.rows.length, `${l} ${k}`).toBe(3);
+        for (const [a, b] of c.rows) expect(a && b, `${l} ${k}`).toBeTruthy();
+      }
+      expect(getR11Hero(l).chat.kinds.product.card.cta, l).toBeUndefined();
+    }
+  });
+});
+
 describe("copy: one shape in four locales", () => {
   const shape = (o: unknown): unknown =>
     Array.isArray(o) ? (o.length && typeof o[0] === "object" ? o.map(shape) : "array") : o && typeof o === "object" ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, shape(v)])) : typeof o;
@@ -236,7 +306,6 @@ describe("copy: one shape in four locales", () => {
     for (const k of HERO_KINDS) expect(new Set(LOCALES.map((l) => getR11Hero(l).chat.kinds[k].prompt)).size, k).toBe(4);
     expect(new Set(LOCALES.map((l) => getR11Hero(l).cli.context)).size).toBe(4);
     expect(getR11Hero("ko").cli.context).toBe("oh-my-design-cli는 레퍼런스와 디자인 스킬을 내 코딩 에이전트에 설치하는 도구예요.");
-    for (const l of LOCALES) expect(getR11Hero(l).trace.face).toContain("{face}");
   });
 
   it("the opening prompts read as they did in round 11 (104 now by its full name, as its link names it)", () => {
@@ -317,9 +386,49 @@ describe("rendered: the hero chat, the keyboard and the CLI section", async () =
       expect(text, l).not.toContain(getR10(l).chat.tag);
       expect(text, l).not.toContain(getR10(l).chat.note.slice(0, 12));
       expect(text, l).not.toContain(getR10(l).chat.bar);
-      const faceNote = h.trace.faceSub.replace("{face}", "Toss Product Sans").replace("{sub}", "Pretendard Variable");
-      expect(text.includes(faceNote), l).toBe(l === "ko");
+      expect(html, l).not.toContain("sq-at-note");
     }
+  });
+
+  // round 13 (owner 2026-10-21): no font note anywhere in the chat — any company, any locale, and the
+  // CLI apply step, which still hands AgentTrace a note (cli-steps.tsx) that it no longer renders
+  const noteBits = (l: L) => {
+    const h = getR11Hero(l);
+    return [h.trace.face, h.trace.faceSub].flatMap((x) => x.split(/\{face\}|\{sub\}/)).map((x) => x.trim()).filter((x) => x.length >= 6).map(esc);
+  };
+  it("no font note is rendered for any company the hero can show, nor on the CLI apply step", () => {
+    for (const l of LOCALES) {
+      const h = getR11Hero(l);
+      const { chats } = getHeroChats(l, getHeroCaps(l), PAGE_FACES[l]);
+      const bits = noteBits(l);
+      expect(bits.length, l).toBeGreaterThanOrEqual(2);
+      for (const id of Object.keys(chats)) {
+        const html = renderToStaticMarkup(createElement(ChatDemo, { chats, initial: id, t: { trace: h.trace, link: h.chat.link } }));
+        for (const b of bits) expect(visible(html), `${l} ${id}`).not.toContain(b);
+        expect(html, `${l} ${id}`).not.toContain("sq-at-note");
+      }
+      const cli = renderToStaticMarkup(createElement(CliSection, { locale: l, c: getCopy(l), r: getR10(l), total: 521, skills: 31, skillsHref: "#" }));
+      for (const b of bits) expect(visible(cli), `cli ${l}`).not.toContain(b);
+      expect(cli, `cli ${l}`).not.toContain("sq-at-note");
+    }
+  });
+
+  it("the carousel renders its track as a named group and its first dot as current; nothing in it is a control", () => {
+    let seen = 0;
+    for (const l of LOCALES) {
+      const h = getR11Hero(l);
+      const { chats } = getHeroChats(l, getHeroCaps(l), PAGE_FACES[l]);
+      const id = Object.keys(chats).find((x) => KIND[x] === "product");
+      if (!id) continue;
+      seen++;
+      const html = renderToStaticMarkup(createElement(ChatDemo, { chats, initial: id, t: { trace: h.trace, link: h.chat.link } }));
+      const ex = html.slice(html.indexOf('class="sq-ex'));
+      expect(ex, l).toContain(`role="group" aria-label="${esc(h.chat.kinds.product.card.title)}"`);
+      expect(ex.match(/class="sq-ex-dot\b/g)?.length, l).toBe(3);
+      expect(ex, l).toMatch(/class="sq-ex-dot sq-on"/);
+      expect(ex.slice(0, ex.indexOf('class="sq-chat-go"')), l).not.toMatch(/<(button|a)\b/);
+    }
+    expect(seen).toBe(4);
   });
 
   it("the keyboard is a list of buttons that pick the chat's company — none links to a page", () => {

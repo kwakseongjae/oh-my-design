@@ -12,16 +12,23 @@
  * The CLI's apply step follows the CLI's own printed next step ("Using this DESIGN.md, design the home
  * screen.", data/cli-transcript.json) on a Toss-inspired project, so its screen is Toss in every locale.
  *
- * Placeholders: {name} a company, {s} seconds, {n} count, {face} a brand face name, {sub} its substitute. */
+ * Placeholders: {name} a company, {s} seconds, {n} count ({face} / {sub} only in the retired face notes). */
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 
-/** Text of one example card. A card kind uses the fields it needs (chat-data.server.ts). */
+/**
+ * Text of one example card. A card kind uses the fields it needs (chat-data.server.ts). Round 13: the
+ * product carousel, the task list and the news list carry their items in `rows` — [name, price],
+ * [task, status], [headline, time], three each in every locale — and leave out what they don't show.
+ */
 export interface CardText {
   title: string;
-  sub: string;
+  /** one line under the title (left out by the carousel, the task list and the news list) */
+  sub?: string;
   rows: [string, string][];
+  /** small labels: the issue's ID and status, the artwork's tags, the task list's count */
   tags: string[];
-  cta: string;
+  /** the button (the carousel has none) */
+  cta?: string;
 }
 
 /** What a company's product is decides its card (chat-data.server.ts KIND). */
@@ -61,9 +68,13 @@ export interface R11HeroCopy {
     summary: string;
     /** accessible name of the button that opens the collapsed run */
     toggle: string;
-    /** shown under the Write step when the card is not set in the brand face */
+    /**
+     * @deprecated Round 13 (owner 2026-10-21): no font notes in the chat; the hero renders neither
+     * line and AgentTrace ignores its note. Kept only while cli-steps.tsx (the CLI stream's file)
+     * still reads both; delete them with that read.
+     */
     face: string;
-    /** the same, when the card is set in the brand face's measured substitute ({sub}) */
+    /** @deprecated see `face` */
     faceSub: string;
     agent: string;
   };
@@ -138,16 +149,14 @@ const KO: R11HeroCopy = {
         },
       },
       product: {
-        prompt: "{name} 스타일로 상품 카드 만들어줘",
-        label: "예시 대화: 에이전트가 {name} DESIGN.md로 상품 카드를 만드는 과정",
-        file: "ProductCard.tsx",
-        think: "상품 카드에는 상품 이름, 한 줄 설명, 가격, 구매 버튼이 들어가야 해요. {name} DESIGN.md를 읽고 색과 글자 크기, 버튼 값은 거기 적힌 그대로 쓸게요.",
+        prompt: "{name} 스타일로 상품 캐러셀 만들어줘",
+        label: "예시 대화: 에이전트가 {name} DESIGN.md로 상품 캐러셀을 만드는 과정",
+        file: "ProductCarousel.tsx",
+        think: "상품 캐러셀에는 제목, 사진과 이름과 가격이 담긴 상품 카드 세 장, 넘김 표시가 들어가야 해요. {name} DESIGN.md를 읽고 색과 글자 크기, 모서리 값은 거기 적힌 그대로 쓸게요.",
         card: {
-          title: "캔버스 토트백",
-          sub: "두꺼운 면 소재 · 데일리 사이즈",
-          rows: [["판매가", "29,000원"], ["배송", "내일 도착 예정"]],
+          title: "이번 주 추천 상품",
+          rows: [["캔버스 토트백", "29,000원"], ["도자기 저금통", "18,000원"], ["가죽 서류 가방", "89,000원"]],
           tags: [],
-          cta: "구매하기",
         },
       },
       booking: {
@@ -164,29 +173,27 @@ const KO: R11HeroCopy = {
         },
       },
       article: {
-        prompt: "{name} 스타일로 기사 카드 만들어줘",
-        label: "예시 대화: 에이전트가 {name} DESIGN.md로 기사 카드를 만드는 과정",
-        file: "ArticleCard.tsx",
-        think: "기사 카드에는 분야, 시각, 제목, 요약, 읽기 버튼이 들어가야 해요. {name} DESIGN.md를 읽고 색과 글자 크기, 버튼 값은 거기 적힌 그대로 쓸게요.",
+        prompt: "{name} 스타일로 뉴스 목록 카드 만들어줘",
+        label: "예시 대화: 에이전트가 {name} DESIGN.md로 뉴스 목록 카드를 만드는 과정",
+        file: "NewsList.tsx",
+        think: "뉴스 목록 카드에는 분야 이름, 기사 제목 세 개와 각각의 시각, 더 보기 버튼이 들어가야 해요. {name} DESIGN.md를 읽고 색과 글자 크기, 버튼 값은 거기 적힌 그대로 쓸게요.",
         card: {
-          title: "주말 전국 맑음, 아침저녁은 쌀쌀",
-          sub: "주말 내내 맑겠지만 아침과 저녁에는 기온이 크게 떨어지겠습니다. 외출할 때 겉옷을 챙기는 것이 좋겠습니다.",
-          rows: [],
-          tags: ["생활", "2시간 전"],
-          cta: "기사 읽기",
+          title: "생활",
+          rows: [["주말 전국 맑음, 아침저녁은 쌀쌀", "2시간 전"], ["지하철 주말 운행 시간 조정", "3시간 전"], ["단풍 절정, 이번 주말이 마지막", "5시간 전"]],
+          tags: [],
+          cta: "기사 더 보기",
         },
       },
       task: {
-        prompt: "{name} 스타일로 업무 카드 만들어줘",
-        label: "예시 대화: 에이전트가 {name} DESIGN.md로 업무 카드를 만드는 과정",
-        file: "TaskCard.tsx",
-        think: "업무 카드에는 번호, 상태, 제목, 한 줄 설명, 담당 버튼이 들어가야 해요. {name} DESIGN.md를 읽고 색과 글자 크기, 버튼 값은 거기 적힌 그대로 쓸게요.",
+        prompt: "{name} 스타일로 업무 목록 카드 만들어줘",
+        label: "예시 대화: 에이전트가 {name} DESIGN.md로 업무 목록 카드를 만드는 과정",
+        file: "TaskList.tsx",
+        think: "업무 목록 카드에는 제목, 업무 세 건과 각각의 상태, 업무 추가 버튼이 들어가야 해요. {name} DESIGN.md를 읽고 색과 글자 크기, 버튼 값은 거기 적힌 그대로 쓸게요.",
         card: {
-          title: "견적 요청 검토하기",
-          sub: "금액과 납기를 확인하고 오늘 안에 회신해 주세요.",
-          rows: [],
-          tags: ["#128", "진행 중"],
-          cta: "내게 배정",
+          title: "오늘 할 일",
+          rows: [["견적 요청 검토하기", "진행 중"], ["납품 일정 확정하기", "대기"], ["회의록 공유하기", "완료"]],
+          tags: ["3건"],
+          cta: "업무 추가하기",
         },
       },
     },
@@ -282,16 +289,14 @@ const EN: R11HeroCopy = {
         },
       },
       product: {
-        prompt: "Make a product card in {name}'s style",
-        label: "Example conversation: an agent builds a product card from {name}'s DESIGN.md",
-        file: "ProductCard.tsx",
-        think: "A product card needs the item's name, one line about it, the price and a buy button. I'll read {name}'s DESIGN.md and use its colours, type sizes and button values exactly as written.",
+        prompt: "Make a product carousel in {name}'s style",
+        label: "Example conversation: an agent builds a product carousel from {name}'s DESIGN.md",
+        file: "ProductCarousel.tsx",
+        think: "A product carousel needs a heading, three product cards with a picture, a name and a price, and a position indicator. I'll read {name}'s DESIGN.md and use its colours, type sizes and corner values exactly as written.",
         card: {
-          title: "Canvas tote bag",
-          sub: "Heavy cotton · everyday size",
-          rows: [["Price", "$24.00"], ["Delivery", "Arrives tomorrow"]],
+          title: "Picked for you",
+          rows: [["Canvas tote bag", "$24.00"], ["Ceramic piggy bank", "$16.00"], ["Leather briefcase", "$89.00"]],
           tags: [],
-          cta: "Buy now",
         },
       },
       booking: {
@@ -308,29 +313,27 @@ const EN: R11HeroCopy = {
         },
       },
       article: {
-        prompt: "Make a news card in {name}'s style",
-        label: "Example conversation: an agent builds a news card from {name}'s DESIGN.md",
-        file: "ArticleCard.tsx",
-        think: "A news card needs a section, a time, the headline, a summary and a read button. I'll read {name}'s DESIGN.md and use its colours, type sizes and button values exactly as written.",
+        prompt: "Make a news list card in {name}'s style",
+        label: "Example conversation: an agent builds a news list card from {name}'s DESIGN.md",
+        file: "NewsList.tsx",
+        think: "A news list card needs a section heading, three headlines with their times and a button for more. I'll read {name}'s DESIGN.md and use its colours, type sizes and button values exactly as written.",
         card: {
-          title: "Clear skies this weekend, with chilly mornings",
-          sub: "Expect sunshine across the region, but temperatures drop sharply at both ends of the day, so bring a jacket.",
-          rows: [],
-          tags: ["Life", "2 hours ago"],
-          cta: "Read more",
+          title: "Life",
+          rows: [["Clear skies this weekend, chilly mornings", "2 hours ago"], ["Weekend subway hours change", "3 hours ago"], ["Autumn leaves peak this weekend", "5 hours ago"]],
+          tags: [],
+          cta: "More stories",
         },
       },
       task: {
-        prompt: "Make a task card in {name}'s style",
-        label: "Example conversation: an agent builds a task card from {name}'s DESIGN.md",
-        file: "TaskCard.tsx",
-        think: "A task card needs a number, a status, a title, one line of context and an assign button. I'll read {name}'s DESIGN.md and use its colours, type sizes and button values exactly as written.",
+        prompt: "Make a task list card in {name}'s style",
+        label: "Example conversation: an agent builds a task list card from {name}'s DESIGN.md",
+        file: "TaskList.tsx",
+        think: "A task list card needs a heading, three tasks with their status and a button to add one. I'll read {name}'s DESIGN.md and use its colours, type sizes and button values exactly as written.",
         card: {
-          title: "Review the quote request",
-          sub: "Check the price and the delivery date, then reply by the end of the day.",
-          rows: [],
-          tags: ["#128", "In progress"],
-          cta: "Assign to me",
+          title: "Today",
+          rows: [["Review the quote", "In progress"], ["Confirm delivery", "To do"], ["Share the notes", "Done"]],
+          tags: ["3 tasks"],
+          cta: "Add a task",
         },
       },
     },
@@ -426,16 +429,14 @@ const JA: R11HeroCopy = {
         },
       },
       product: {
-        prompt: "{name}風の商品カードを作って",
-        label: "会話の例：エージェントが{name}のDESIGN.mdから商品カードを作るまで",
-        file: "ProductCard.tsx",
-        think: "商品カードには、商品名、ひとことの説明、価格、購入ボタンが要ります。{name}のDESIGN.mdを読み、色・文字サイズ・ボタンの値は書かれているとおりに使います。",
+        prompt: "{name}風の商品カルーセルを作って",
+        label: "会話の例：エージェントが{name}のDESIGN.mdから商品カルーセルを作るまで",
+        file: "ProductCarousel.tsx",
+        think: "商品カルーセルには、見出し、写真と商品名と価格の入った商品カード3枚、位置を示すドットが要ります。{name}のDESIGN.mdを読み、色・文字サイズ・角の値は書かれているとおりに使います。",
         card: {
-          title: "キャンバストートバッグ",
-          sub: "厚手のコットン・普段使いのサイズ",
-          rows: [["価格", "2,980円"], ["配送", "明日お届け予定"]],
+          title: "今週のおすすめ",
+          rows: [["キャンバストートバッグ", "2,980円"], ["陶器の貯金箱", "1,980円"], ["レザーブリーフケース", "12,800円"]],
           tags: [],
-          cta: "購入する",
         },
       },
       booking: {
@@ -452,29 +453,27 @@ const JA: R11HeroCopy = {
         },
       },
       article: {
-        prompt: "{name}風のニュースカードを作って",
-        label: "会話の例：エージェントが{name}のDESIGN.mdからニュースカードを作るまで",
-        file: "ArticleCard.tsx",
-        think: "ニュースカードには、ジャンル、時刻、見出し、要約、続きを読むボタンが要ります。{name}のDESIGN.mdを読み、色・文字サイズ・ボタンの値は書かれているとおりに使います。",
+        prompt: "{name}風のニュース一覧カードを作って",
+        label: "会話の例：エージェントが{name}のDESIGN.mdからニュース一覧カードを作るまで",
+        file: "NewsList.tsx",
+        think: "ニュース一覧カードには、ジャンル名、3本の見出しとそれぞれの時刻、もっと見るボタンが要ります。{name}のDESIGN.mdを読み、色・文字サイズ・ボタンの値は書かれているとおりに使います。",
         card: {
-          title: "週末は全国的に晴れ　朝晩は冷え込み",
-          sub: "週末は各地で晴れる見込みですが、朝晩は気温が大きく下がります。外出には上着があると安心です。",
-          rows: [],
-          tags: ["くらし", "2時間前"],
-          cta: "記事を読む",
+          title: "くらし",
+          rows: [["週末は全国的に晴れ　朝晩は冷え込み", "2時間前"], ["地下鉄の週末ダイヤを一部変更", "3時間前"], ["紅葉が見頃に　今週末が最後か", "5時間前"]],
+          tags: [],
+          cta: "もっと見る",
         },
       },
       task: {
-        prompt: "{name}風のタスクカードを作って",
-        label: "会話の例：エージェントが{name}のDESIGN.mdからタスクカードを作るまで",
-        file: "TaskCard.tsx",
-        think: "タスクカードには、番号、ステータス、タイトル、一行の説明、担当ボタンが要ります。{name}のDESIGN.mdを読み、色・文字サイズ・ボタンの値は書かれているとおりに使います。",
+        prompt: "{name}風のタスクリストを作って",
+        label: "会話の例：エージェントが{name}のDESIGN.mdからタスクリストを作るまで",
+        file: "TaskList.tsx",
+        think: "タスクリストには、見出し、3件のタスクとそれぞれの状態、追加ボタンが要ります。{name}のDESIGN.mdを読み、色・文字サイズ・ボタンの値は書かれているとおりに使います。",
         card: {
-          title: "見積もり依頼を確認する",
-          sub: "金額と納期を確認して、今日中に返信してください。",
-          rows: [],
-          tags: ["#128", "対応中"],
-          cta: "自分に割り当て",
+          title: "今日のタスク",
+          rows: [["見積もり依頼を確認", "対応中"], ["納期を確定する", "未着手"], ["議事録を共有", "完了"]],
+          tags: ["3件"],
+          cta: "タスクを追加",
         },
       },
     },
@@ -570,16 +569,14 @@ const ZH_TW: R11HeroCopy = {
         },
       },
       product: {
-        prompt: "用{name}的風格做一張商品卡片",
-        label: "對話範例：AI 程式助理用{name}的 DESIGN.md 做出商品卡片",
-        file: "ProductCard.tsx",
-        think: "商品卡片需要商品名稱、一句介紹、價格和購買按鈕。我先讀{name}的 DESIGN.md，色彩、字級和按鈕數值都照檔案寫的用。",
+        prompt: "用{name}的風格做一個商品輪播",
+        label: "對話範例：AI 程式助理用{name}的 DESIGN.md 做出商品輪播",
+        file: "ProductCarousel.tsx",
+        think: "商品輪播需要標題、三張附有照片、品名和價格的商品卡片，以及位置指示點。我先讀{name}的 DESIGN.md，色彩、字級和圓角數值都照檔案寫的用。",
         card: {
-          title: "帆布托特包",
-          sub: "厚磅棉布・日常尺寸",
-          rows: [["售價", "NT$590"], ["配送", "明天送達"]],
+          title: "本週推薦",
+          rows: [["帆布托特包", "NT$590"], ["陶瓷存錢筒", "NT$390"], ["皮革公事包", "NT$2,680"]],
           tags: [],
-          cta: "立即購買",
         },
       },
       booking: {
@@ -596,29 +593,27 @@ const ZH_TW: R11HeroCopy = {
         },
       },
       article: {
-        prompt: "用{name}的風格做一張新聞卡片",
-        label: "對話範例：AI 程式助理用{name}的 DESIGN.md 做出新聞卡片",
-        file: "ArticleCard.tsx",
-        think: "新聞卡片需要分類、時間、標題、摘要和閱讀按鈕。我先讀{name}的 DESIGN.md，色彩、字級和按鈕數值都照檔案寫的用。",
+        prompt: "用{name}的風格做一張新聞列表卡片",
+        label: "對話範例：AI 程式助理用{name}的 DESIGN.md 做出新聞列表卡片",
+        file: "NewsList.tsx",
+        think: "新聞列表卡片需要分類名稱、三則新聞標題和各自的時間，以及看更多的按鈕。我先讀{name}的 DESIGN.md，色彩、字級和按鈕數值都照檔案寫的用。",
         card: {
-          title: "週末各地晴朗　早晚溫差大",
-          sub: "週末各地大多是晴天，但清晨和夜間氣溫明顯下降，外出記得多帶一件外套。",
-          rows: [],
-          tags: ["生活", "2 小時前"],
-          cta: "閱讀全文",
+          title: "生活",
+          rows: [["週末各地晴朗　早晚溫差大", "2 小時前"], ["捷運週末營運時間調整", "3 小時前"], ["楓紅正盛　本週末最後機會", "5 小時前"]],
+          tags: [],
+          cta: "看更多新聞",
         },
       },
       task: {
-        prompt: "用{name}的風格做一張待辦卡片",
-        label: "對話範例：AI 程式助理用{name}的 DESIGN.md 做出待辦卡片",
-        file: "TaskCard.tsx",
-        think: "待辦卡片需要編號、狀態、標題、一行說明和指派按鈕。我先讀{name}的 DESIGN.md，色彩、字級和按鈕數值都照檔案寫的用。",
+        prompt: "用{name}的風格做一張待辦清單卡片",
+        label: "對話範例：AI 程式助理用{name}的 DESIGN.md 做出待辦清單卡片",
+        file: "TaskList.tsx",
+        think: "待辦清單卡片需要標題、三件待辦和各自的狀態，以及新增按鈕。我先讀{name}的 DESIGN.md，色彩、字級和按鈕數值都照檔案寫的用。",
         card: {
-          title: "確認報價需求",
-          sub: "請確認金額和交期，今天之內回覆。",
-          rows: [],
-          tags: ["#128", "處理中"],
-          cta: "指派給我",
+          title: "今日待辦",
+          rows: [["確認報價需求", "處理中"], ["確定交貨日期", "未開始"], ["分享會議紀錄", "已完成"]],
+          tags: ["3 件"],
+          cta: "新增待辦",
         },
       },
     },
