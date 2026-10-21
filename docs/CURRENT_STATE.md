@@ -706,6 +706,14 @@
     2. 카드 radius가 기록되지 않은 8곳은 각진 모서리로 둔다(값을 지어내지 않음).
     3. Vercel 분석은 동의 전에 쿠키 없이 집계하고, 거부하면 0이다(결정 (a) 유지).
   - **GO 뒤 순서:** main fast-forward 푸시 → Vercel Production 새 SHA 확인 → `v2.0.5` 태그 → 릴리스 워크플로(npm) 확인 → 라이브 확인.
+- **10/21 16:20 14차 피드백 2건 반영 → 다시 GO 대기.** `feat/rebrand-a` `2c2b1f52`, :3200 갱신.
+  - **설치 터미널.** 실제 출력 대신, 명령 하나가 무엇을 하는지 추상화해서 보여 준다.
+    - 순서: 감지한 에이전트(Claude Code·Codex·Cursor, OpenCode는 없음) → 에이전트별 설치 → 스킬(공개 10개 이름 + 21개 더) → DESIGN.md 521개 → Done. 터미널 한 화면에 다 들어간다.
+    - 숫자는 catalog-meta(31·10·20·521)와 2.0.4 실제 완료 줄의 훅 4개에서 가져온다.
+    - 에이전트별 구성은 install-skills.ts와 같다: 서브에이전트는 CC·Codex·OpenCode, 훅은 CC만, Cursor는 Agent Skills + 규칙.
+    - 테스트가 공개 스킬 목록을 skills/와 대조한다.
+  - **비슷한 디자인 시스템.** 아카이브와 같은 규칙으로 로고를 보여 준다(공식 SVG → 자사 파비콘). 둘 다 없으면 대표색 칩. 토스 기준 6곳 중 5곳이 로고다.
+  - 웹 테스트 1,176개 통과, 빌드 통과, llms-full 최신.
 - **10/17 랜딩 10차 완료 — `feat/rebrand-a` `c77d7d6b`, main 미반영.** 로컬 http://localhost:3200 (워크트리 agent-a20bdf09ae1779d45). 아이리스 #6749e2 전면, radius 14/알약/20/28, 히어로 키캡+챗 데모, 챗 카드 토스 실값 12개(예시 표기), oh-my-design-cli 시작하기(어두운 터미널만), FAQ(카테고리·검색·아코디언, 9문항×4언어), 연한 아이리스 마무리 띠, 파비콘·앱 아이콘 'omd' 아이리스 키캡 전 크기, OG·logo.png 새 브랜드(실제 Wanted Sans·실시간 수치), 한글명 /ko 한정. 검사: tsc·테스트 1,010·next build·check-counts, 넘침 0, 링크 936, 대비 전부 ≥5.38:1, /ko→/ja 2D→3D 이어받기 정상, 모션 줄이기 정상. 남은 것: 헤더 '스킬' 링크 대상(CLI 섹션 한 줄로 이동), DESIGN.md.patch 사본 반영(메인 체크아웃 impl/DESIGN.md.patch로 복사함).
 - **10/16 ⏸ 일시 중단(오너 이동) — 재개 안내.**
   - 진행 중이던 것: 랜딩 10차(B 구조+아이리스·radius·챗 데모·CLI·FAQ·CTA·파비콘 'omd' 아이리스·한글명 /ko 한정). 정지 완료: `feat/rebrand-a` `699f9d1f`(10차 거의 전부, 빌드·검사 통과) + WIP `7a77999f`(선택 색·폰트 안내 문구) on `wip/rebrand-a-r10`. 남은 것: WIP 포함 재빌드, /ko→/ja 실제 전환 확인, 모션 줄이기 /ko, 아카이브·상세 대비 측정, og-image·logo.png 구버전 교체. 스크린샷 `docs/research/2026-10-13-rebrand/impl/r10/shots/`(699f9d1f 빌드). 재개 시: `wip/rebrand-a-r10`에서 이어서 체크리스트 미완 항목 → 완료 후 `feat/rebrand-a`로 푸시 → 스크린샷 보고(오너는 스크린샷으로 확인 요청).
