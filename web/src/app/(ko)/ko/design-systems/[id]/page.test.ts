@@ -126,6 +126,15 @@ describe("Korean item page body", () => {
     }
   });
 
+  it("drops the summary line (round 13); the Korean sentence stays only in the JSON-LD and meta description", async () => {
+    const html = await render("pixiv");
+    expect(html).not.toContain('class="sq-item-sum"');
+    const body = html.replace(/<script[\s\S]*?<\/script>/g, "");
+    expect(body).not.toContain("기록돼 있어요");
+    const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((b) => JSON.parse(b[1]));
+    expect(ld[0].description).toContain("기록돼 있어요");
+  });
+
   it("keeps related links among Korean pages", async () => {
     const html = await render("toss");
     const related = (html.split('id="related-heading"')[1] ?? "").split("</section>")[0];

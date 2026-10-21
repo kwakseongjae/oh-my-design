@@ -4,6 +4,7 @@
  * Under the (ko) root layout, so the document is <html lang="ko">. It renders the
  * same DetailView as /design-systems/<id> with Korean chrome: the DESIGN.md body
  * is the canonical English file, byte for byte (shared loader), and the summary
+ * — the meta / OG / JSON-LD description; not printed on the page since round 13 —
  * is a Korean sentence over values the page shows (ko-summary.ts), never a
  * translation of the English body or editorial.
  *
@@ -150,7 +151,6 @@ export default async function KoreanDesignSystemPage({
           name={name}
           detail={{ id: detail.id, designMd: detail.designMd }}
           tokens={tokens}
-          summary={summary}
           official={getDesignSystem(detail.id)?.url ?? null}
           logo={logoFor(detail.id)}
         />

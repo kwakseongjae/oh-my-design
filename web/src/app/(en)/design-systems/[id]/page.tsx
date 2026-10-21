@@ -60,8 +60,10 @@ function detailTitle(name: string): string {
 
 /**
  * Answer-first extract — the 2-3 sentence summary Claude/Brave lift and cite.
- * Built from the parsed tokens so it always mirrors what the page renders.
- * Reused verbatim as the JSON-LD `description` (structured data === visible text).
+ * Built from values the page shows (or the reviewed editorial summary), and used
+ * as the meta / OG description and the JSON-LD `description`. Since round 13
+ * (owner, 2026-10-21) it is no longer printed under the h1; the values it names
+ * are still on the page, in the DESIGN.md and the preview.
  */
 function buildSummary(
   name: string,
@@ -99,8 +101,8 @@ export async function generateMetadata({
   const editorial = getReferenceEnglishEditorial(id);
   // "{Name} DESIGN.md" + a short suffix; no site suffix, as before — the brand
   // and the file name are the part a result needs to show. The answer-first
-  // summary is the description (extractable, and identical to the visible lead
-  // and the JSON-LD description).
+  // summary is the description (extractable, and identical to the JSON-LD
+  // description).
   const title = detailTitle(name);
   const desc =
     buildSummary(name, detail) ||
@@ -212,7 +214,6 @@ export default async function DesignSystemDetailPage({
         name={name}
         detail={{ id: detail.id, designMd: detail.designMd }}
         tokens={tokens}
-        summary={summary}
         official={getDesignSystem(detail.id)?.url ?? null}
         logo={logoFor(detail.id)}
       />

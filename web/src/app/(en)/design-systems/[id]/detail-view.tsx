@@ -8,11 +8,14 @@
  *   - a crumb row: back to the archive on the left; the official site and Share
  *     on the right;
  *   - the brand's genuine logo (or none) and the one <h1>, "{Name} DESIGN.md";
- *   - the answer-first summary (the extractable lead Claude/Brave cite);
  *   - `#use`: Copy DESIGN.md and Download, two equal buttons. Old /builder?ref=
  *     links 308 to /design-systems/<id>#use and land on this group.
  * Below it, the canonical DESIGN.md — byte for byte, as before — beside the
  * preview (swatches, type, a few components). On phones one pane at a time.
+ *
+ * Round 13 (owner, 2026-10-21): the description line under the h1 is gone. The
+ * same sentence still feeds the meta description, OG and the JSON-LD
+ * description, which are built on the server and do not depend on this view.
  *
  * Removed in this round, by the owner's list: the tier badge, the "how to use"
  * section (install command, first prompt, raw .md link), the evidence panel and
@@ -50,7 +53,6 @@ export function DetailView({
   name,
   detail,
   tokens,
-  summary,
   official,
   logo,
   locale = "en",
@@ -69,8 +71,6 @@ export function DetailView({
   official: string | null;
   /** Genuine logo resolved by the server (archive-rows.server.ts), or null. */
   logo: BrandLogoData | null;
-  /** Answer-first extract from the server page — also the JSON-LD description. */
-  summary?: string;
 }) {
   const t = locale === "ko" ? ITEM_KO : ITEM_EN;
   const [mobileView, setMobileView] = useState<MobileView>("preview");
@@ -134,7 +134,6 @@ export function DetailView({
                 DESIGN.md title is demoted, so neither competes with it. */}
             <h1>{t.h1(name)}</h1>
           </div>
-          {summary ? <p className="sq-item-sum">{summary}</p> : null}
           <div id="use" className="sq-ih-acts" role="group" aria-label={t.useLabel}>
             <button type="button" onClick={copyMd} className="sq-act sq-act-primary">
               <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
