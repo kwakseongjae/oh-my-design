@@ -2,6 +2,7 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsInit } from "@/components/analytics-init";
 import { AnalyticsConsent } from "@/components/analytics-consent";
+import { VercelAnalytics } from "@/components/vercel-analytics";
 import { GA_ID } from "@/lib/gtag";
 import { EEA_REGION_CODES } from "@/lib/eea";
 import { SITE_ORIGIN } from "@/lib/site";
@@ -106,6 +107,7 @@ export function RootDocument({
         <ThemeProvider>{children}</ThemeProvider>
         <AnalyticsInit />
         <AnalyticsConsent />
+        <VercelAnalytics />
         {GA_ID && (
           <>
             {/* Consent Mode v2 defaults run BEFORE config (same inline script =

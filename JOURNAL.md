@@ -1,5 +1,11 @@
 # JOURNAL
 
+## 2026-10-14 — 계측 기반(P0/5), 브랜치 `feat/growth-metrics`
+
+- **한 일**: 주간 스냅샷 워크플로(`.github/workflows/growth-snapshot.yml`, 월 03:23 UTC + 수동)를 만들었다. 공개 지표(별·npm·skills.sh)는 공개 브랜치 `growth-data`에, 비공개 지표(트래픽·리퍼러·DAU)는 별도 비공개 레포에만 쓴다. 레포가 공개라 로그·아티팩트에도 내보내지 않는다(`--quiet`). Vercel Web Analytics를 다시 붙였다(쿠키 없음, Decline 시 drop). GA4 복구 가이드는 `scripts/analytics/RESTORE-2026-10.md`.
+- **열린 것**: 오너가 비공개 레포·PAT·시크릿을 만들어야 한다(`METRICS_REPO` 변수 + `METRICS_REPO_TOKEN`, `GH_TRAFFIC_TOKEN`, `OMD_KV_REST_API_URL/TOKEN`). 그 전까지는 공개 지표만 쌓인다. GA4 복구(구글 로그인)도 오너 몫이다.
+- **다음**: 시크릿을 넣은 뒤 workflow_dispatch로 한 번 돌리고, 로컬 `data/growth/metrics.jsonl`(3줄, 비공개)을 비공개 레포에 시드한다.
+
 ## 2026-10-14 (referral round 1, `feat/referral-1`)
 
 - **한 일**: 공유 이미지 `/api/og/*` → `/og/*`(robots 허용, 옛 URL 308). skills/ 15개 `name: omd:x` → `omd-x` + `skills-lock.json`으로 레포 내 설치본(.claude/.agents) 숨김 → `npx skills` 발견 54→31, 콜론 0. `/docs/<locale>/shadcn` 레시피(5개 로캘) + 배포판 toss로 shadcn 스킬 실제 1회 실행 기록(`docs/research/2026-10-14-referral/shadcn-run/`). ui-skills PR 초안(`UI-SKILLS-PR.md`, 미제출).

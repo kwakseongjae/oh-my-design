@@ -1,0 +1,135 @@
+name: Growth Snapshot
+
+# Weekly growth snapshot (scripts/growth/snapshot.mjs). GitHub keeps traffic for
+# 14 days and the Upstash active-user sketches expire after 35, so a missed week
+# loses data for good. This runs every Monday and on demand.
+#
+# This repository is public, and so are its branches, its Actions logs and its
+# workflow artifacts. The data is therefore split:
+#   public  -> branch `growth-data` of this repo, file metrics-public.jsonl:
+#              GitHub stars/forks/watchers/issues, npm downloads, skills.sh installs.
+#   private -> a SEPARATE PRIVATE repo, file metrics.jsonl: the full record, adding
+#              GitHub traffic/clones/referrers and DAU/WAU/MAU. Collected only when
+#              the repository variable METRICS_REPO and the secret METRICS_REPO_TOKEN
+#              are both set; otherwise private sources are not even fetched.
+# The record is never printed (--quiet) and never uploaded as an artifact.
+#
+# Owner setup (Settings -> Secrets and variables -> Actions):
+#   variable METRICS_REPO          e.g. kwakseongjae/oh-my-design-metrics (private, initialised)
+#   secret   METRICS_REPO_TOKEN    fine-grained PAT, that repo only, Contents: read and write
+#   secret   GH_TRAFFIC_TOKEN      fine-grained PAT, oh-my-design only, Administration: read
+#                                  (GITHUB_TOKEN cannot be granted Administration, which the
+#                                  traffic endpoints require)
+#   secret   OMD_KV_REST_API_URL   Upstash REST URL of the production KV
+#   secret   OMD_KV_REST_API_TOKEN Upstash REST token. The script only runs PFCOUNT, so the
+#                                  read-only token should do; confirm with one local
+#                                  pull-active.mjs run using it, else use the full token.
+
+on:
+  schedule:
+    - cron: "23 3 * * 1" # Mondays 03:23 UTC (12:23 KST); clear of reverify (Mon 01:37)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: growth-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    name: Collect and append snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write # push to this repo's growth-data branch only
+    env:
+      METRICS_REPO: ${{ vars.METRICS_REPO }}
+      HAS_PRIVATE: ${{ vars.METRICS_REPO != '' && secrets.METRICS_REPO_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Check out public data branch
+        uses: actions/checkout@v5
+        with:
+          ref: growth-data
+          path: .growth-public
+
+      - name: Check out private metrics repo
+        if: env.HAS_PRIVATE == 'true'
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.METRICS_REPO }}
+          token: ${{ secrets.METRICS_REPO_TOKEN }}
+          path: .growth-private
+
+      - name: Note skipped private sources
+        if: env.HAS_PRIVATE != 'true'
+        run: echo "::notice title=Private growth stats skipped::METRICS_REPO (variable) and METRICS_REPO_TOKEN (secret) are not both set, so GitHub traffic and DAU/WAU/MAU were not collected this run. Only public sources were recorded."
+
+      - name: Collect
+        id: collect
+        env:
+          # Repo stats are public, so github.token suffices for --public-only runs.
+          GH_TOKEN: ${{ secrets.GH_TRAFFIC_TOKEN || github.token }}
+          OMD_KV_REST_API_URL: ${{ env.HAS_PRIVATE == 'true' && secrets.OMD_KV_REST_API_URL || '' }}
+          OMD_KV_REST_API_TOKEN: ${{ env.HAS_PRIVATE == 'true' && secrets.OMD_KV_REST_API_TOKEN || '' }}
+          GROWTH_PUBLIC_FILE: .growth-public/metrics-public.jsonl
+          GROWTH_METRICS_FILE: .growth-private/metrics.jsonl
+        run: |
+          set +e
+          args=(--quiet --strict)
+          if [ "$HAS_PRIVATE" != "true" ]; then args+=(--public-only); fi
+          node scripts/growth/snapshot.mjs "${args[@]}"
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Guard public file against private fields
+        run: |
+          if grep -qE '"(github_traffic|active|referrers|dau_last_complete)"' .growth-public/metrics-public.jsonl; then
+            echo "::error::private fields found in metrics-public.jsonl; refusing to push"
+            exit 1
+          fi
+
+      - name: Commit public snapshot
+        working-directory: .growth-public
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics-public.jsonl
+          if git diff --cached --quiet; then echo "no new public line"; exit 0; fi
+          git commit -q -m "data: public growth snapshot $(date -u +%F)"
+          for _ in 1 2 3; do
+            git push -q origin HEAD:growth-data && exit 0
+            sleep 5
+            git pull -q --rebase origin growth-data
+          done
+          exit 1
+
+      - name: Commit private snapshot
+        if: env.HAS_PRIVATE == 'true'
+        working-directory: .growth-private
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics.jsonl
+          if git diff --cached --quiet; then echo "no new private line"; exit 0; fi
+          git commit -q -m "data: growth snapshot $(date -u +%F)"
+          for _ in 1 2 3; do
+            git push -q origin HEAD && exit 0
+            sleep 5
+            git pull -q --rebase
+          done
+          exit 1
+
+      - name: Fail on source errors
+        if: steps.collect.outputs.rc != '0'
+        run: |
+          echo "::error::snapshot.mjs exited ${{ steps.collect.outputs.rc }}: see the FAIL lines in the Collect step. Partial results were committed."
+          exit 1

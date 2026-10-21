@@ -101,6 +101,9 @@ data/audit/
 # search queries / geo / PII-adjacent data). Synthesized reports go to data/audit/.
 scripts/analytics/.secrets/
 data/analytics/
+# Hand-run growth snapshots hold private stats (traffic, DAU). Their durable home is
+# the private METRICS_REPO; public fields live on the growth-data branch.
+data/growth/
 
 # Local-only working artifacts. Bulk stays out of the repo (owner decision,
 # 2026-09-16): reference-evidence/ is 145MB of internal capture bundles and
