@@ -106,6 +106,25 @@ export function GenUI({
   // playback state
   const [playing, setPlaying] = useState(false);
   const [sk, setSk] = useState<Set<Step> | null>(null); // steps still skeleton (null = resolved)
+  // The stage never shrinks while a run plays: the skeleton is shorter than the built screen, and on a
+  // phone the dip and the regrowth moved everything below (CLS ~0.1). Its min-height holds the tallest
+  // screen built so far; a resize starts it over.
+  const stageEl = useRef<HTMLDivElement>(null);
+  const stageMin = useRef(0);
+  const holdStage = useCallback(() => {
+    const el = stageEl.current;
+    if (!el) return;
+    stageMin.current = Math.max(stageMin.current, el.offsetHeight);
+    el.style.minHeight = `${stageMin.current}px`;
+  }, []);
+  useEffect(() => {
+    const reset = () => {
+      stageMin.current = 0;
+      if (stageEl.current) stageEl.current.style.minHeight = "";
+    };
+    addEventListener("resize", reset);
+    return () => removeEventListener("resize", reset);
+  }, []);
   const [snap, setSnap] = useState<Step | null>(null);
   const [lit, setLit] = useState<Set<number>>(new Set());
   const [log, setLog] = useState<{ text: string; bold?: string; rest?: string }>({ text: "" });
@@ -221,6 +240,7 @@ export function GenUI({
         setSaid(done.bold + done.rest);
         return;
       }
+      holdStage();
       setPlaying(true);
       setSk(new Set(STEPS));
       setLit(new Set());
@@ -278,9 +298,10 @@ export function GenUI({
         setSk(null);
         typeLog("", 0, done);
         setSaid(done.bold + done.rest);
+        requestAnimationFrame(holdStage);
       }, tm + 450);
     },
-    [by, extras, linesBy, reduce, typeLog, summary, loadFace],
+    [by, extras, linesBy, reduce, typeLog, summary, loadFace, holdStage],
   );
 
   // first view → one run; nothing replays on its own after that
@@ -483,7 +504,7 @@ export function GenUI({
           </div>
         </figure>
         <div className="sq-g5-out" ref={out} {...panelProps("screen")}>
-          <div className="sq-g5-stage" role="group" aria-label={t.sample.label}>
+          <div className="sq-g5-stage" ref={stageEl} role="group" aria-label={t.sample.label}>
             {p ? (
               /* OmD's own generic prop (never a brand asset): on the stage, outside the brand's screen */
               // eslint-disable-next-line @next/next/no-img-element

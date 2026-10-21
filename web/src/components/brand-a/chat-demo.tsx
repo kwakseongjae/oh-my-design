@@ -57,6 +57,22 @@ export function ChatDemo({
   const chat = chats[id];
   const card = chat.card;
   const { s, live } = usePlay(TIMES, seen, 6, { key: pick.seq, times: FAST });
+  // Phones put the chat in the page flow, so its own height changes moved everything below: at the
+  // end of a run the trace folds (-44px) a beat before the card's last part shows (+44px), which
+  // scored CLS ~0.1 on a 390px page. The chat keeps the height it first renders with (the finished
+  // run, server-rendered) and only ever grows past it. Desktop sits in a fixed-height stage.
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const mq = matchMedia("(max-width:900px)");
+    const hold = () => {
+      el.style.minHeight = "";
+      if (mq.matches) el.style.minHeight = `${el.offsetHeight}px`;
+    };
+    hold();
+    mq.addEventListener("change", hold);
+    return () => mq.removeEventListener("change", hold);
+  }, []);
   // phones stack the keycaps over the chat, so a pick would change content below the fold: bring
   // the chat into view (the least scroll that shows it; instant under reduced motion). Desktop has
   // both side by side and never scrolls.
