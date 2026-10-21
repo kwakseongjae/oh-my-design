@@ -274,7 +274,7 @@ const EN: HangulCopy = {
   hero: {
     kicker: "Korean typography skill",
     h1: "Korean headings that don’t break mid-word",
-    lede: "Coding agents typeset Korean as if it were English. /hangul is a skill that gives them 14 rules for Korean type, from line breaking and letter-spacing to line height and font stacks.",
+    lede: "Coding agents typeset Korean like English. /hangul is a skill that gives them 14 rules for Korean type, from line breaks to font stacks.",
     cta: "Install",
   },
   demo: {
