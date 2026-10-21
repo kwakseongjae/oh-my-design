@@ -2,8 +2,11 @@ import { describe, expect, it, vi } from "vitest";
 import {
   copyStatusMessage,
   copyTextWithTextarea,
+  isShellCommand,
   runCopyAttempt,
 } from "./copy-code";
+import { SHADCN_RECIPE } from "@/data/docs-shadcn-recipe";
+import { DOC_LOCALES } from "@/lib/docs/locales";
 
 describe("copyStatusMessage", () => {
   it("announces only the localized outcome, never the copied payload", () => {
@@ -11,6 +14,19 @@ describe("copyStatusMessage", () => {
     expect(copyStatusMessage("failed", "Copied", "Copy failed")).toBe("Copy failed");
     expect(copyStatusMessage("idle", "Copied", "Copy failed")).toBe("");
     expect(copyStatusMessage("copying", "Copied", "Copy failed")).toBe("");
+  });
+});
+
+describe("isShellCommand", () => {
+  it("puts every terminal step in the shell field and keeps prompts out of it", () => {
+    expect(isShellCommand("npx oh-my-design-cli@latest doctor")).toBe(true);
+    expect(isShellCommand("curl -o DESIGN.md https://oh-my-design.kr/toss/design.md")).toBe(true);
+    expect(isShellCommand("Build a shadcn/ui design system from ./DESIGN.md.")).toBe(false);
+    for (const locale of DOC_LOCALES) {
+      const recipe = SHADCN_RECIPE[locale];
+      for (const step of recipe.steps) if (step.command) expect(isShellCommand(step.command), `${locale}: ${step.command}`).toBe(true);
+      expect(isShellCommand(recipe.prompt), locale).toBe(false);
+    }
   });
 });
 
