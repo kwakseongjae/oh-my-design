@@ -71,6 +71,12 @@
     2. 2.0.6 태그의 strict 게이트 waiver.
     3. 게시 문안(`docs/research/2026-10-21-hangul/posts.md`)으로 Threads·X에 직접 게시한다.
   - **OK 뒤 순서:** main fast-forward → Vercel 라이브 확인 → CHANGELOG 날짜 확정 → `v2.0.6` 태그 → npm 확인 → r14 브랜치·워크트리 정리.
+  - **20:30 추가 확인.** 런치 브랜치 팁은 `6fc9ae7a`이고 main을 병합해 두어 fast-forward 가능하다. Vercel 프리뷰 성공.
+    - /hangul 자체 검사: 페이지 텍스트의 끊긴 단어는 0이다(검출된 1건은 데모의 '전' 프레임, 의도된 재현). check.mjs --strict에서 페이지 CSS 위반은 없다(specimens.css의 BLOCK·WARN은 의도된 재현, FYI 2건은 영어 제목 행간).
+    - 루트 게이트: lint·tsup·check:catalog·presets·bench·pack 위생(hangul 21파일) 통과. vitest는 1,512 통과, 실패 4는 ENOTCACHED 3개 + 부하 타임아웃 1개(단독 실행 통과).
+    - OG: `/hangul/og-ko.png`·`og-en.png` 200.
+    - CHANGELOG 문구를 수정했다(배민 글은 9/29 기발행 → "페이지를 링크한다"로).
+    - 알려진 항목: 비교 영상 속 Before/After 라벨이 KO 페이지에서도 영어다.
 
 ## ▶ 2026-09-29 · 성장 전략 결정 17개 → 병렬 실행 착수 (521 · 227)
 
