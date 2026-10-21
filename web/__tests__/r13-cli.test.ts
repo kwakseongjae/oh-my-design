@@ -66,17 +66,19 @@ describe("the streamed install: one command, every agent in its own format, ever
     for (const n of PUBLIC_SKILLS) expect(text).toContain(n);
   });
 
-  it("types at a hand's pace, pauses before Enter, holds where the install works, and ends on Done in a few seconds", () => {
+  it("types fast but uneven, pauses before Enter, holds where the install works, and ends on Done in about two seconds", () => {
     const t = installBeats(INSTALL, rows);
     const n = INSTALL.length;
     expect(t.length).toBe(n + 2 + rows.length);
     for (let i = 1; i < t.length; i++) expect(t[i], `beat ${i}`).toBeGreaterThan(t[i - 1]);
-    for (let i = 2; i <= n; i++) expect(t[i] - t[i - 1], `key ${i}`).toBeGreaterThanOrEqual(35);
-    for (let i = 2; i <= n; i++) expect(t[i] - t[i - 1], `key ${i}`).toBeLessThanOrEqual(60);
-    expect(t[n + 1] - t[n]).toBeGreaterThanOrEqual(250);
+    for (let i = 2; i <= n; i++) expect(t[i] - t[i - 1], `key ${i}`).toBeGreaterThanOrEqual(18);
+    for (let i = 2; i <= n; i++) expect(t[i] - t[i - 1], `key ${i}`).toBeLessThanOrEqual(32);
+    // the pause before Enter is longer than any keystroke
+    expect(t[n + 1] - t[n]).toBeGreaterThan(32 * 4);
     const out = rows.map((_, k) => t[n + 2 + k] - t[n + 1 + k]);
     expect(Math.max(...out)).toBe(out[rows.findIndex((r) => r.hold)]);
-    expect(t.at(-1)).toBeLessThan(7000);
+    // owner 2026-10-21: snappier — the whole run in about two seconds
+    expect(t.at(-1)).toBeLessThan(2500);
   });
 
   it("a beat maps to characters typed, Enter, then rows shown", () => {

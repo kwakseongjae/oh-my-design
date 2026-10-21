@@ -32,16 +32,20 @@ export interface TermRow {
   readonly hold?: boolean;
 }
 
+/*
+ * Pace (owner 2026-10-21: "cli 화면쪽 조금 더 빠릿하게"): the whole install reads in about two
+ * seconds, half of round 13's run, and starts as soon as a quarter of the terminal is in view.
+ */
 /** the prompt waits a beat before the first key */
-const IDLE = 500;
-/** ms per key after the first: 35–60, uneven so it reads as a hand, fixed so server and client agree */
-const KEYS = [46, 39, 55, 42, 51, 37, 58, 44, 49, 40, 53, 47, 36, 57, 43, 50, 38, 54];
+const IDLE = 150;
+/** ms per key after the first: 18–32, uneven so it reads as a hand, fixed so server and client agree */
+const KEYS = [24, 20, 29, 22, 27, 19, 31, 23, 26, 21, 28, 25, 18, 30, 22, 27, 20, 29];
 /** the pause before Enter */
-const ENTER = 420;
+const ENTER = 180;
 /** after Enter: the first row, an output row, a blank gutter row (it comes with the row before) */
-const START = 240, ROW = 60, BLANK = 25;
-/** the hold before the marked cut, standing for the install's work (the per-file list it stands for), and before Done */
-const HOLD = 900, LAST = 320;
+const START = 100, ROW = 32, BLANK = 12;
+/** the hold where the install does its work (the `hold` row), and before Done */
+const HOLD = 380, LAST = 140;
 
 /**
  * When each beat of the install run lands (ms from its start): beat 0 the empty prompt, beats 1…n the
@@ -113,7 +117,7 @@ function InstallTerm({ cmd, rows, gapLang, labels }: InstallProps) {
   const out = useRef<HTMLPreElement>(null);
   // follow the newest row unless the reader has scrolled up to read
   const stick = useRef(true);
-  const seen = useInView(root, 0.5);
+  const seen = useInView(root, 0.25);
   const [key, setKey] = useState(0);
   const times = useMemo(() => installBeats(cmd, rows), [cmd, rows]);
   const { s, live } = usePlay(times, seen, Math.round(cmd.length * 0.55), { key, times });
@@ -172,7 +176,8 @@ function InstallTerm({ cmd, rows, gapLang, labels }: InstallProps) {
 
 /* ---------- apply: the agent trace beside the screen it writes ---------- */
 
-const TIMES = [0, 300, 1300, 1750, 2350, 2700, 3050, 3400, 3800];
+/* about half of round 13's 3.8 s; the step durations the trace prints (MS) are the agent's, not the playback's */
+const TIMES = [0, 150, 650, 880, 1180, 1360, 1540, 1720, 1950];
 const AT = [-1, 0, 1, 2, 3, 3, 3, 3, 4];
 const PART = [0, 0, 0, 0, 0, 1, 2, 3, 99];
 const MS = [1000, 450, 600, 1450];
@@ -187,7 +192,7 @@ export interface ApplyProps {
 function ApplyScene({ card, prompt, think, trace }: ApplyProps) {
   const root = useRef<HTMLDivElement>(null);
   const chat = useRef<HTMLDivElement>(null);
-  const seen = useInView(root, 0.35);
+  const seen = useInView(root, 0.25);
   // phones stack the trace over the screen: until the run ends, the trace keeps the height of the
   // finished state the server rendered, so the screen under it never moves as its rows arrive
   useEffect(() => {
