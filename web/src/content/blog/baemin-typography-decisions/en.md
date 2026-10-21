@@ -15,9 +15,9 @@ Baemin, the Korean delivery service, offers an instructive example. Its public f
 
 ## A recognizable voice has different jobs
 
-The official font catalog describes lettering influenced by signs and explains why Hanna Air was developed for body text: people had been using the stronger Hanna heading face in longer passages. Even within one brand, an expressive title and a paragraph can need different treatment. [Official font catalog](https://www.woowahan.com/fonts)
+The official font catalog describes lettering influenced by signs and explains why Hanna Air was developed for body text: people had been using the bold Hanna heading face in longer passages. Even within one brand, an expressive title and a paragraph can need different treatment. [Official font catalog](https://www.woowahan.com/fonts)
 
-The 2024 Kkubulim announcement adds another part of that history, describing loose, irregular curves and a connection to older signage. The background helps explain the character of the letters. [Kkubulim announcement](https://www.woowahan.com/report/detail/778)
+The 2024 Kkubulim announcement adds another part of that history. It describes curves bent naturally rather than rounded off, and places the face after earlier Baemin typefaces modeled on old signboards, such as Jua, Dohyeon and Euljiro. The background helps explain the character of the letters. [Kkubulim announcement](https://www.woowahan.com/report/detail/778)
 
 Our application of these references is to assign expression a specific role. An invitation headline can carry personality. Dates, prices, and application deadlines need to be easy to find and compare. Repeating the headline’s treatment across every detail may weaken that hierarchy. This is an OmD interpretation for a new project, rather than a quoted rule from Baemin’s UI system.
 
@@ -31,7 +31,7 @@ For your own page, prepare mixed content before choosing type. A line such as `�
 
 ## Record a rebrand with its date
 
-On July 22, 2025, Baemin announced that a brighter mint color and a new typeface, WORK, had been applied to the app. The announcement describes simplified diagonal Hangul strokes and a plan for gradual UI/UX changes. That provides dated evidence of product use. [Baemin 2.0 announcement](https://www.woowahan.com/report/detail/975?page=1)
+On July 22, 2025, Baemin announced that a brighter mint color and a new typeface, WORK, had been applied to the app. The announcement describes Hangul diagonal strokes simplified into block forms and a plan for gradual UI/UX changes. That provides dated evidence of product use. [Baemin 2.0 announcement](https://www.woowahan.com/report/detail/975)
 
 DESIGN.md can retain WORK’s name, the stated characteristics, and the announcement date. The same source does not establish an exact current color value or the font used for every piece of text in today’s app. The terms for publicly distributed font families also need to be checked against the named files. This article does not redistribute WORK or display another face as a WORK specimen. [Official font terms](https://www.woowahan.com/fonts/license)
 
@@ -61,7 +61,7 @@ then review the rendered screen.
 
 ## Apply it to one small screen
 
-[Open the original example](/blog-assets/sunday-table.html)
+[Open the Sunday Table example](/blog-assets/sunday-table.html)
 
 For an original example, imagine a neighborhood meal called “Sunday Table.” The title invites people in. A separate information group carries the date, location, and availability. The button names the signup action, and the same area communicates when registration is closed.
 
@@ -69,4 +69,4 @@ The test is concrete: can a first-time visitor find when and where the meal take
 
 When collecting a reference, keep its visual character and its original job together. Choose a company in the [catalog](https://oh-my-design.kr/design-systems), then distinguish the facts you are carrying forward from the choices your new project still needs to make.
 
-OmD is also preparing a skill for Hangul typography.
+OmD’s [/hangul](https://oh-my-design.kr/hangul) skill checks and fixes the line breaks, letter-spacing and line-height of the Korean text on your page.
