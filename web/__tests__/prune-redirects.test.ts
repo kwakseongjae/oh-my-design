@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import config from "../next.config";
 
@@ -38,5 +40,24 @@ describe("pruned-page redirects", () => {
         permanent: true,
       });
     }
+  });
+
+  it("sends old share-card URLs to the /og route handlers, which nothing redirects", async () => {
+    // feat/referral-1: robots.txt disallows /api/ for every crawler, so the cards
+    // moved to /og/. The handlers must exist at the new path and be gone from the
+    // old one, and no rule may bounce /og/ anywhere else.
+    const redirects = await config.redirects!();
+    const app = join(__dirname, "..", "src", "app");
+    for (const kind of ["reference", "blog"]) {
+      expect(existsSync(join(app, "og", kind, "route.tsx")), `/og/${kind}`).toBe(true);
+      expect(existsSync(join(app, "api", "og", kind)), `/api/og/${kind}`).toBe(false);
+    }
+    expect(redirects.filter((rule) => rule.source.startsWith("/og"))).toEqual([]);
+  });
+
+  it("never points at the docs-for-AI page round 11 removed", async () => {
+    // /docs/connector used to land on /docs/en/ai; that page now 308s itself.
+    const redirects = await config.redirects!();
+    expect(redirects.filter((rule) => /^\/docs\/[^/]+\/ai(?:[#?/]|$)/.test(rule.destination))).toEqual([]);
   });
 });
