@@ -71,6 +71,10 @@ export interface ChromeCopy {
     regions: Record<ShowcaseRegion, string>;
     /** Accessible name suffix of each logo link: "{name} DESIGN.md". */
     item: string;
+    /** The last tile of a row: "+{n}" over this word; it opens the archive filtered to the row's country. */
+    more: string;
+    /** That tile's accessible name: {n} more, {region} the row's label. */
+    moreLabel: string;
   };
 }
 
@@ -92,6 +96,8 @@ const EN: ChromeCopy = {
   showcase: {
     regions: { KR: "Korea", JP: "Japan", TW: "Taiwan" },
     item: "{name} DESIGN.md",
+    more: "more",
+    moreLabel: "{n} more from {region} in the archive",
   },
 };
 
@@ -113,6 +119,8 @@ const KO: ChromeCopy = {
   showcase: {
     regions: { KR: "한국", JP: "일본", TW: "대만" },
     item: "{name} DESIGN.md",
+    more: "더 보기",
+    moreLabel: "아카이브에서 {region} 회사 {n}곳 더 보기",
   },
 };
 
@@ -134,6 +142,8 @@ const JA: ChromeCopy = {
   showcase: {
     regions: { KR: "韓国", JP: "日本", TW: "台湾" },
     item: "{name} の DESIGN.md",
+    more: "もっと見る",
+    moreLabel: "アーカイブで{region}の企業をあと{n}社見る",
   },
 };
 
@@ -155,6 +165,8 @@ const ZH_TW: ChromeCopy = {
   showcase: {
     regions: { KR: "韓國", JP: "日本", TW: "台灣" },
     item: "{name} 的 DESIGN.md",
+    more: "查看更多",
+    moreLabel: "在典藏查看另外 {n} 家{region}企業",
   },
 };
 

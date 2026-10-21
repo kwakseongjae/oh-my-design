@@ -10,6 +10,10 @@
 .sq-sc-g h3{font-size:16px;font-weight:650;line-height:1.4;color:var(--sq-ink-2)}
 .sq-sc-grid{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .sq-sc-tile{display:flex;align-items:center;justify-content:center;height:96px;padding:0 16px;border-radius:var(--sq-r-card);background:var(--sq-cell);transition:background-color .2s,box-shadow .2s,transform .2s cubic-bezier(.2,.8,.2,1)}
+/* the row's last tile: "+N more" opens the archive filtered to that country (owner, 2026-10-21) */
+.sq-sc-more{flex-direction:column;gap:2px}
+.sq-sc-more-n{font-size:22px;font-weight:700;line-height:1.2;color:var(--sq-ink);font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.sq-sc-more-l{font-size:14px;line-height:1.4;color:var(--sq-ink-2)}
 .sq-sc-tile:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;background:var(--sq-paper);box-shadow:var(--sq-shadow-panel)}
 @media (hover:hover){.sq-sc-tile:hover{background:var(--sq-paper);box-shadow:var(--sq-shadow-panel);transform:translateY(-3px)}}
 /* optical size from the TSX (--w × --h at desktop); the box keeps its ratio when a tile is narrower */

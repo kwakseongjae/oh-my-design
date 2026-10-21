@@ -75,15 +75,12 @@ export function CatalogView({
   return (
     <div className="sq-root sq-arch">
       {intro}
-      {collections.length > 0 ? (
-        // useSearchParams needs a Suspense boundary on a prerendered page; the
-        // fallback (no collection) is also the SSR output.
-        <Suspense fallback={<Archive {...props} slug={null} />}>
-          <ArchiveFromParams {...props} />
-        </Suspense>
-      ) : (
-        <Archive {...props} slug={null} />
-      )}
+      {/* useSearchParams needs a Suspense boundary on a prerendered page; the fallback (no
+          collection, every region) is also the SSR output. `?region=` comes from the landing's
+          "+N more" tiles (catalog-showcase.tsx), `?collection=` from the collection links. */}
+      <Suspense fallback={<Archive {...props} slug={null} initialRegion="all" />}>
+        <ArchiveFromParams {...props} />
+      </Suspense>
     </div>
   );
 }
@@ -91,12 +88,16 @@ export function CatalogView({
 type ArchiveProps = { rows: ArchiveRow[]; collections: CatalogCollection[]; stats: CatalogStats; copy: ArchiveCopy };
 
 function ArchiveFromParams(props: ArchiveProps) {
-  const slug = useSearchParams().get("collection");
-  return <Archive {...props} slug={slug} />;
+  const params = useSearchParams();
+  const slug = props.collections.length > 0 ? params.get("collection") : null;
+  const asked = params.get("region");
+  const initialRegion: ArchiveRegionKey = REGIONS.find((r) => r === asked) ?? "all";
+  // a new ?region= (another "+N more" tile) starts the filters over
+  return <Archive key={initialRegion} {...props} slug={slug} initialRegion={initialRegion} />;
 }
 
-function Archive({ rows, collections, stats, copy, slug }: ArchiveProps & { slug: string | null }) {
-  const [region, setRegion] = useState<ArchiveRegionKey>("all");
+function Archive({ rows, collections, stats, copy, slug, initialRegion }: ArchiveProps & { slug: string | null; initialRegion: ArchiveRegionKey }) {
+  const [region, setRegion] = useState<ArchiveRegionKey>(initialRegion);
   const [domain, setDomain] = useState<string>("all");
   const [tier, setTier] = useState<ArchiveTierKey>("all");
   const [query, setQuery] = useState("");

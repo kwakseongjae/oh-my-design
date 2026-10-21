@@ -2,9 +2,11 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import logoManifest from "@/data/brand-logos.json";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
+import { getAllDesignSystems } from "@/lib/design-systems";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { SITE_LOCALES, type SiteLocale } from "@/lib/i18n/site-locales";
-import { detailHrefFor, hasKoDetail } from "@/lib/i18n/ko-detail";
+import { catalogPathFor, detailHrefFor, hasKoDetail } from "@/lib/i18n/ko-detail";
+import { KO_DETAIL_IDS } from "@/lib/i18n/ko-detail.server";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
 import { fmt } from "./copy";
 import { getR10 } from "./copy/r10";
@@ -13,13 +15,15 @@ import "./catalog-showcase.css";
 
 /**
  * The catalog showcase (round 11 W5 #14): the closing band of the landing became a grid of
- * official logos, six per country, each opening that company's DESIGN.md page, then one archive
- * button (the section's one accent).
+ * official logos, five per country, each opening that company's DESIGN.md page. The sixth tile of a
+ * row is "+N more" (owner, 2026-10-21): it opens the archive filtered to that country
+ * (`?region=`, read by catalog-view.tsx), and N is what that filter shows beyond the five. Then
+ * one archive button (the section's one accent).
  *
- * Which companies: an editorial pick, like lib/landing-a/picks.ts. Six per country so each row
- * spans six different businesses (KR: fintech, commerce, portal, local marketplace, mobility,
- * B2B messaging; JP: marketplace, accounting, HR, automotive, creative platform, developer
- * community; TW: jobs, PC hardware, books and retail, airline, convenience stores, news). Every
+ * Which companies: an editorial pick, like lib/landing-a/picks.ts. Five per country so each row
+ * spans five different businesses (KR: fintech, commerce, portal, local marketplace, mobility;
+ * JP: marketplace, accounting, HR, automotive, creative platform; TW: jobs, PC hardware, books
+ * and retail, airline, convenience stores). Every
  * pick is a verified (v2) reference whose official logo is in data/brand-logos.json.
  *
  * Logo rules, from the manifest itself:
@@ -57,7 +61,6 @@ export const SHOWCASE_PICKS: Readonly<Record<ShowcaseRegion, readonly ShowcasePi
     { id: "naver", variant: "wordmark", ratio: 5.211 },
     { id: "karrot", variant: "combined", ratio: 1.781 },
     { id: "socar", variant: "combined", ratio: 4.591 },
-    { id: "channeltalk", variant: "combined", ratio: 5.092 },
   ],
   JP: [
     { id: "mercari", variant: "wordmark", ratio: 4.986 },
@@ -65,7 +68,6 @@ export const SHOWCASE_PICKS: Readonly<Record<ShowcaseRegion, readonly ShowcasePi
     { id: "smarthr", variant: "combined", ratio: 5.385 },
     { id: "toyota", variant: "wordmark", ratio: 5.667 },
     { id: "pixiv", variant: "wordmark", ratio: 2.412 },
-    { id: "qiita", variant: "wordmark", ratio: 3.134 },
   ],
   TW: [
     { id: "104", variant: "wordmark", ratio: 2.125 },
@@ -73,7 +75,6 @@ export const SHOWCASE_PICKS: Readonly<Record<ShowcaseRegion, readonly ShowcasePi
     { id: "eslite", variant: "wordmark", ratio: 5.043 },
     { id: "evaair", variant: "wordmark", ratio: 6.316 },
     { id: "familymart-tw", variant: "combined", ratio: 6.873 },
-    { id: "udn", variant: "wordmark", ratio: 4.237 },
   ],
 };
 
@@ -118,20 +119,37 @@ export interface ShowcaseItem {
   crop: boolean;
 }
 
+export interface ShowcaseMore {
+  n: number;
+  href: string;
+  label: string;
+  aria: string;
+}
+
 export interface ShowcaseGroup {
   region: ShowcaseRegion;
   label: string;
   items: ShowcaseItem[];
+  /** "+N more": the rest of this country in the archive this landing links to; null when none. */
+  more: ShowcaseMore | null;
+}
+
+/**
+ * How many references the archive a landing links to lists for a country: /ko/design-systems lists
+ * the Korean-page set (KO_DETAIL_IDS), the English archive every design system. Region = registry
+ * country, as in the archive's own filter (archive-rows.server.ts archiveRegion).
+ */
+export function archiveCount(locale: SiteLocale, region: ShowcaseRegion): number {
+  const ids = locale === "ko" ? KO_DETAIL_IDS : getAllDesignSystems().map((d) => d.refId);
+  return ids.filter((id) => REGISTRY_BY_ID[id]?.country === region).length;
 }
 
 /** Showcase rows for a landing locale, in that locale's region order. */
 export function showcaseFor(locale: SiteLocale): ShowcaseGroup[] {
   const t = getChromeCopy(locale).showcase;
   const regions = REGION_ORDER[locale].filter((r): r is ShowcaseRegion => r in SHOWCASE_PICKS);
-  return regions.map((region) => ({
-    region,
-    label: t.regions[region],
-    items: SHOWCASE_PICKS[region].flatMap((p): ShowcaseItem[] => {
+  return regions.map((region) => {
+    const items = SHOWCASE_PICKS[region].flatMap((p): ShowcaseItem[] => {
       const rec = LOGOS.get(p.id);
       const v = rec?.variants[p.variant];
       if (!rec || !v || rec.risk_tier === "high" || v.risk_tier === "high" || v.dark_bg || !v.source || !v.license) return [];
@@ -148,8 +166,14 @@ export function showcaseFor(locale: SiteLocale): ShowcaseGroup[] {
         ...opticalSize(visible),
         crop: !!p.crop,
       }];
-    }),
-  })).filter((g) => g.items.length > 0);
+    });
+    const n = archiveCount(locale, region) - items.length;
+    const more: ShowcaseMore | null =
+      n > 0
+        ? { n, href: `${catalogPathFor(locale)}?region=${region}`, label: t.more, aria: fmt(t.moreLabel, { n, region: t.regions[region] }) }
+        : null;
+    return { region, label: t.regions[region], items, more };
+  }).filter((g) => g.items.length > 0);
 }
 
 /** The landing locale a round-10 copy object belongs to (CloseSection's props carry no locale). */
@@ -200,6 +224,14 @@ export function CatalogShowcase({
                     </Link>
                   </li>
                 ))}
+                {g.more ? (
+                  <li>
+                    <Link className="sq-sc-tile sq-sc-more" href={g.more.href} prefetch={false} aria-label={g.more.aria}>
+                      <span className="sq-sc-more-n" aria-hidden="true">+{g.more.n}</span>
+                      <span className="sq-sc-more-l" aria-hidden="true">{g.more.label}</span>
+                    </Link>
+                  </li>
+                ) : null}
               </ul>
             </div>
           ))}

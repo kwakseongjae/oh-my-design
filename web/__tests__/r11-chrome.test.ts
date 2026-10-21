@@ -7,7 +7,8 @@ import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
 import { SITE_LOCALES } from "@/lib/i18n/site-locales";
 import { getR10 } from "@/components/brand-a/copy/r10";
-import { SHOWCASE_PICKS, localeOfR10, opticalSize, showcaseFor } from "@/components/brand-a/catalog-showcase";
+import { SHOWCASE_PICKS, archiveCount, localeOfR10, opticalSize, showcaseFor } from "@/components/brand-a/catalog-showcase";
+import { catalogPathFor } from "@/lib/i18n/ko-detail";
 
 /**
  * Round 11 chrome (docs/REDESIGN_R11_PLAN_2026-10-20.md W5, W9, item 29). The showcase renders
@@ -25,8 +26,8 @@ const REC = new Map(RECS.map((r) => [r.id, r]));
 const PICKS = Object.entries(SHOWCASE_PICKS).flatMap(([region, ps]) => ps.map((p) => ({ region, ...p })));
 
 describe("catalog showcase: the pick list", () => {
-  it("six picks per country, no company twice", () => {
-    for (const ps of Object.values(SHOWCASE_PICKS)) expect(ps).toHaveLength(6);
+  it("five picks per country, no company twice", () => {
+    for (const ps of Object.values(SHOWCASE_PICKS)) expect(ps).toHaveLength(5);
     expect(new Set(PICKS.map((p) => p.id)).size).toBe(PICKS.length);
   });
 
@@ -76,11 +77,19 @@ describe("catalog showcase: the pick list", () => {
 });
 
 describe("catalog showcase: per locale", () => {
-  it("three rows of six in each locale's region order", () => {
+  it("three rows of five logos and a +N tile, in each locale's region order", () => {
     for (const l of SITE_LOCALES) {
       const g = showcaseFor(l);
       expect(g.map((x) => x.region), l).toEqual(REGION_ORDER[l].filter((r) => r !== "CN"));
-      for (const row of g) expect(row.items, `${l} ${row.region}`).toHaveLength(6);
+      for (const row of g) {
+        expect(row.items, `${l} ${row.region}`).toHaveLength(5);
+        // "+N more" opens the archive this landing links to, filtered to the row's country, and N is
+        // exactly what that filter lists beyond the five logos
+        expect(row.more, `${l} ${row.region}`).not.toBeNull();
+        expect(row.more!.href).toBe(`${catalogPathFor(l)}?region=${row.region}`);
+        expect(row.more!.n).toBe(archiveCount(l, row.region) - 5);
+        expect(row.more!.aria).toContain(String(row.more!.n));
+      }
     }
   });
 
