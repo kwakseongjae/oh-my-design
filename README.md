@@ -8,7 +8,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 10 public skills, 20 specialist roles, 93 preset contracts, 500+ quality-graded references. No API key or MCP server for the core workflows.
+  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 11 public skills, 20 specialist roles, 93 preset contracts, 500+ quality-graded references. No API key or MCP server for the core workflows.
 </p>
 
 <p align="center">
@@ -284,21 +284,21 @@ Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `K
 | **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 20 sub-agents, hooks, data under `.claude/` |
 | **Codex** | `--agent codex` | Skills at `.agents/skills/`, embedded sub-agent roles under `.codex/agents/`, and the local catalog under `.codex/data/` |
 | **OpenCode** | `--agent opencode` | Project: skills, native sub-agents, and catalog under `.opencode/{skills,agents,data}/`; global: the same bundle under `~/.config/opencode/{skills,agents,data}/` |
-| **Cursor** | `--agent cursor` | 30 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
+| **Cursor** | `--agent cursor` | 31 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
 
 The default install targets every detected agent. For one non-interactive channel, run `npx oh-my-design-cli@latest install-skills --agent <name> --all`.
 
 ### Cursor's supported path
 
-Cursor 2.4+ discovers the 30 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
+Cursor 2.4+ discovers the 31 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
 
 For older Cursor clients, `--cursor-rule-only` installs the historical rule + catalog compatibility mode without Agent Skills. OmD's separately generated specialist sub-agent definitions and hooks remain unavailable in Cursor.
 
 ## What's inside
 
-**10 public skills · 20 sub-agents · 500+ quality-graded references · activation hooks.** The installer writes the full 31-skill bundle: the public skills below plus the internal skills the workflows call on their own (preference loop, shim sync, review and writing roles, live capture, labs). Internal skills stay installed and keep working; they are just not listed. Cursor receives the 30 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
+**11 public skills · 20 sub-agents · 500+ quality-graded references · activation hooks.** The installer writes the full 32-skill bundle: the public skills below plus the internal skills the workflows call on their own (preference loop, shim sync, review and writing roles, live capture, labs). Internal skills stay installed and keep working; they are just not listed. Cursor receives the 31 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
-- **Skills** — the system (`omd-init` — bootstrap DESIGN.md from a quality-graded reference / `omd-apply` — every UI change cites DESIGN.md / `omd-autopilot` — one prompt to a built, verified surface), interface quality (`omd-feel` — 113 provenance-graded interface rules / `omd-restraint` — restraint as measured rules: one focal point, fewer pieces, whitespace in blocks / `omd-slop-audit` — context-free UI and copy defaults, with rule IDs), copy (`omd-humanize` — natural KO/EN/JA/ZH copy that keeps facts and commands), and surfaces (`omd-landing` — scroll-native one-page landing / `omd-shader-hero` — a two-ink dithered hero from your DESIGN.md colors, contrast measured / `omd-cjk-type-shader` — real, selectable Korean/Japanese/Chinese display type that reads as sumi ink on hanji). Each also installs alone: `npx skills add kwakseongjae/oh-my-design --skill omd-feel`.
+- **Skills** — the system (`omd-init` — bootstrap DESIGN.md from a quality-graded reference / `omd-apply` — every UI change cites DESIGN.md / `omd-autopilot` — one prompt to a built, verified surface), interface quality (`omd-feel` — 113 provenance-graded interface rules / `hangul` — Korean typography for web UI: line breaks, letter-spacing, line-height and font stacks from W3C klreq, KRDS / SEED / TDS and 67 measured Korean services, with a deterministic checker / `omd-restraint` — restraint as measured rules: one focal point, fewer pieces, whitespace in blocks / `omd-slop-audit` — context-free UI and copy defaults, with rule IDs), copy (`omd-humanize` — natural KO/EN/JA/ZH copy that keeps facts and commands), and surfaces (`omd-landing` — scroll-native one-page landing / `omd-shader-hero` — a two-ink dithered hero from your DESIGN.md colors, contrast measured / `omd-cjk-type-shader` — real, selectable Korean/Japanese/Chinese display type that reads as sumi ink on hanji). Each also installs alone: `npx skills add kwakseongjae/oh-my-design --skill omd-feel`.
 - **Sub-agents** — `omd-master` + 19 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
 - **References** — 500+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.

@@ -40,6 +40,7 @@
     "skills/omd-showcase",
     "skills/omd-cjk-type-shader",
     "skills/omd-shader-hero",
+    "skills/hangul",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",

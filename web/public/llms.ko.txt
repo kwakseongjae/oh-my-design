@@ -1,6 +1,6 @@
 # oh-my-design
 
-> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 전체 번들 스킬 31개와 에이전트 정의 20개를, Cursor 2.4+에는 호환 Agent Skills 30개와 작은 프로젝트 rule, 로컬 카탈로그를 설치합니다. 품질 등급이 표시된 DESIGN.md 레퍼런스 521개 중 verified_v2 299개, partial 109개, legacy 113개이며 공개 데모에는 verified_v2를 사용합니다.
+> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 전체 번들 스킬 32개와 에이전트 정의 20개를, Cursor 2.4+에는 호환 Agent Skills 31개와 작은 프로젝트 rule, 로컬 카탈로그를 설치합니다. 품질 등급이 표시된 DESIGN.md 레퍼런스 521개 중 verified_v2 299개, partial 109개, legacy 113개이며 공개 데모에는 verified_v2를 사용합니다.
 
 ## 제품 모델
 
@@ -47,7 +47,7 @@ DESIGN.md를 적용해 홈 화면을 개선해줘.
 
 ## Cursor 경로
 
-Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 30개를 읽고, 작은 프로젝트 rule과 공용 `.claude/data` 카탈로그를 함께 받습니다. 설치 후 Cursor를 재시작하고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. OmD 서브에이전트 정의와 활성화 hooks는 Cursor에 설치하지 않습니다.
+Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 31개를 읽고, 작은 프로젝트 rule과 공용 `.claude/data` 카탈로그를 함께 받습니다. 설치 후 Cursor를 재시작하고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. OmD 서브에이전트 정의와 활성화 hooks는 Cursor에 설치하지 않습니다.
 
 구형 Cursor에서 `--cursor-rule-only`(rule + 카탈로그 호환 모드)를 쓴다면 다음 중 하나로 프로젝트 DESIGN.md를 만듭니다.
 
@@ -56,12 +56,12 @@ Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 30개를 읽고, 
 
 이후 `@DESIGN.md를 읽고 동작은 유지한 채 홈 화면을 다시 디자인해줘`라고 요청합니다. rule의 우선순위는 `DESIGN.md` → `.omd/preferences.md`의 대기 중 교정 → 프레임워크 기본값입니다.
 
-## 공개 스킬 10개
+## 공개 스킬 11개
 
-`npx skills add kwakseongjae/oh-my-design`이 보여 주는 스킬이며, 하나씩 따로 설치할 수도 있습니다(`--skill <이름>`). `npx oh-my-design-cli`는 전체 번들 스킬 31개를 설치합니다. 이 10개에 워크플로가 스스로 부르는 내부 스킬(취향 루프, shim 동기화, 리뷰·글쓰기 역할, 라이브 캡처, 실험)이 더해지며, 내부 스킬도 그대로 동작하고 목록에만 나오지 않습니다.
+`npx skills add kwakseongjae/oh-my-design`이 보여 주는 스킬이며, 하나씩 따로 설치할 수도 있습니다(`--skill <이름>`). `npx oh-my-design-cli`는 전체 번들 스킬 32개를 설치합니다. 이 11개에 워크플로가 스스로 부르는 내부 스킬(취향 루프, shim 동기화, 리뷰·글쓰기 역할, 라이브 캡처, 실험)이 더해지며, 내부 스킬도 그대로 동작하고 목록에만 나오지 않습니다.
 
 - 시스템: `omd-init`, `omd-apply`, `omd-autopilot`
-- 인터페이스 품질: `omd-feel`, `omd-restraint`, `omd-slop-audit`
+- 인터페이스 품질: `omd-feel`, `hangul`, `omd-restraint`, `omd-slop-audit`
 - 문장: `omd-humanize`
 - 화면: `omd-landing`, `omd-shader-hero`, `omd-cjk-type-shader`
 

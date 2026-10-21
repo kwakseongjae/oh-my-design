@@ -300,7 +300,7 @@ type BaseDictionary = Omit<CliDocsDictionary, "nav" | "shadcn"> & {
 export const SKILL_GROUP_IDS = {
   system: ["omd:init", "omd:apply"],
   build: ["omd:autopilot", "omd:landing", "omd:shader-hero", "omd:cjk-type-shader"],
-  quality: ["omd:feel", "omd:restraint", "omd:slop-audit"],
+  quality: ["omd:feel", "hangul", "omd:restraint", "omd:slop-audit"],
   content: ["omd:humanize"],
 } as const;
 
@@ -422,7 +422,7 @@ const en: BaseDictionary = {
       { name: "Claude Code", body: "Installs skills, sub-agents and the catalog, and merges the project hooks into your existing settings.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "Codex", body: "Installs skills, agent roles with their instructions built in, helpers, and the local reference catalog.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "OpenCode", body: "Installs skills, native sub-agents and the offline catalog. A project install lives in `.opencode`; `--global` uses `~/.config/opencode`, and `doctor --global` checks it.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "Installs 30 native Agent Skills, a small DESIGN.md bootstrap rule and the shared catalog. Use `--cursor-rule-only` only for older clients.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "Installs 31 native Agent Skills, a small DESIGN.md bootstrap rule and the shared catalog. Use `--cursor-rule-only` only for older clients.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     rawTitle: "Use a DESIGN.md without the CLI",
     rawBody: "Every file in the archive is plain Markdown. Copy or download it from its page, or fetch it by URL. Agents can read these without a browser.",
@@ -527,7 +527,7 @@ const en: BaseDictionary = {
     groups: skillGroups({
       system: { title: "Set up and keep DESIGN.md", description: "Create the project's DESIGN.md and apply it to every UI change." },
       build: { title: "Build screens", description: "Go from a brief to a working interface, with real assets and a handoff." },
-      quality: { title: "Check quality", description: "Review feel, restraint and generated-UI patterns." },
+      quality: { title: "Check quality", description: "Review feel, Korean typography, restraint and generated-UI patterns." },
       content: { title: "Write copy", description: "Make product copy read naturally in five languages without changing facts or commands." },
     }),
     descriptions: {
@@ -538,6 +538,7 @@ const en: BaseDictionary = {
       "omd:shader-hero": "Builds a full-bleed launch hero in two colors from DESIGN.md and measures its text contrast.",
       "omd:cjk-type-shader": "Renders a large Korean, Japanese or Chinese headline as ink on hanji.",
       "omd:feel": "Applies or audits 113 measured interface-feel rules.",
+      "hangul": "Fixes Korean line breaks, letter-spacing, line-height and font stacks with rules from W3C, Korean design systems and 67 measured Korean services, and checks them.",
       "omd:restraint": "Measures focus, type sizes and whitespace, and removes what a page doesn't need.",
       "omd:slop-audit": "Finds generated-UI patterns that have no product reason, with rule IDs and line references.",
       "omd:humanize": "Edits copy in five languages so it reads naturally, keeping facts and commands intact.",
@@ -776,7 +777,7 @@ const ko: BaseDictionary = {
       { name: "Claude Code", body: "스킬, 서브에이전트, 카탈로그를 설치하고, 프로젝트 훅은 지금 설정과 안전하게 합쳐요.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "Codex", body: "스킬, 지침이 들어 있는 에이전트 역할, 보조 도구, 로컬 레퍼런스 카탈로그를 설치해요.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "OpenCode", body: "스킬, 네이티브 서브에이전트, 오프라인 카탈로그를 설치해요. 프로젝트 설치는 `.opencode`에, `--global`은 `~/.config/opencode`에 들어가고 `doctor --global`로 확인해요.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "네이티브 Agent Skills 30개, 작은 DESIGN.md 부트스트랩 규칙, 공유 카탈로그를 설치해요. 오래된 클라이언트에서만 `--cursor-rule-only`를 쓰세요.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "네이티브 Agent Skills 31개, 작은 DESIGN.md 부트스트랩 규칙, 공유 카탈로그를 설치해요. 오래된 클라이언트에서만 `--cursor-rule-only`를 쓰세요.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     rawTitle: "CLI 없이 DESIGN.md 쓰기",
     rawBody: "아카이브의 파일은 모두 평범한 Markdown이에요. 파일 페이지에서 복사하거나 내려받아도 되고, 주소로 바로 가져와도 돼요. 에이전트도 브라우저 없이 읽을 수 있어요.",
@@ -881,7 +882,7 @@ const ko: BaseDictionary = {
     groups: skillGroups({
       system: { title: "DESIGN.md 만들고 지키기", description: "프로젝트의 DESIGN.md를 만들고, UI를 고칠 때마다 적용해요." },
       build: { title: "화면 만들기", description: "요구사항에서 시작해 실제 에셋이 들어간 동작하는 화면과 인계 자료까지 만들어요." },
-      quality: { title: "품질 확인하기", description: "인터랙션 감각, 절제, 생성형 UI 패턴을 점검해요." },
+      quality: { title: "품질 확인하기", description: "인터랙션 감각, 한글 타이포그래피, 절제, 생성형 UI 패턴을 점검해요." },
       content: { title: "글쓰기", description: "사실과 명령어는 그대로 두고 다섯 언어의 제품 문장을 자연스럽게 다듬어요." },
     }),
     descriptions: {
@@ -892,6 +893,7 @@ const ko: BaseDictionary = {
       "omd:shader-hero": "DESIGN.md의 두 가지 색으로 전면 히어로를 만들고 글자 대비를 측정해요.",
       "omd:cjk-type-shader": "한국어·일본어·중국어 큰 제목을 한지에 번진 먹처럼 그려요.",
       "omd:feel": "측정으로 정한 인터페이스 감각 규칙 113개를 적용하거나 점검해요.",
+      "hangul": "한글 줄바꿈·자간·행간·글꼴을 W3C 명세, 국내 디자인 시스템, 한국 서비스 67곳 실측값에 맞춰 고치고 점검해요.",
       "omd:restraint": "초점, 글자 크기, 여백을 재고 페이지에 필요 없는 것을 덜어 내요.",
       "omd:slop-audit": "제품 근거 없이 반복된 생성형 UI 패턴을 규칙 ID와 코드 위치로 찾아요.",
       "omd:humanize": "다섯 언어의 문장을 자연스럽게 다듬고, 사실과 명령어는 그대로 지켜요.",
@@ -1130,7 +1132,7 @@ const ja: BaseDictionary = {
       { name: "Claude Code", body: "スキル、サブエージェント、カタログをインストールし、プロジェクトのフックを既存の設定に安全にマージします。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "Codex", body: "スキル、指示を組み込んだエージェントロール、補助ツール、ローカルのリファレンスカタログをインストールします。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "OpenCode", body: "スキル、ネイティブのサブエージェント、オフラインで使えるカタログをインストールします。プロジェクト単位のインストール先は `.opencode` です。`--global` を付けると `~/.config/opencode` に入り、`doctor --global` で確認できます。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "ネイティブの Agent Skills 30 個、DESIGN.md 用の小さなブートストラップルール、共有カタログをインストールします。`--cursor-rule-only` は古いクライアントでのみ使ってください。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "ネイティブの Agent Skills 31 個、DESIGN.md 用の小さなブートストラップルール、共有カタログをインストールします。`--cursor-rule-only` は古いクライアントでのみ使ってください。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     rawTitle: "CLI なしで DESIGN.md を使う",
     rawBody: "アーカイブのファイルはすべてプレーンな Markdown です。ファイルのページからコピーやダウンロードができ、URL を指定すれば直接取得できます。エージェントもブラウザなしで読めます。",
@@ -1187,7 +1189,7 @@ const ja: BaseDictionary = {
     groups: skillGroups({
       system: { title: "DESIGN.md を作って維持する", description: "プロジェクトの DESIGN.md を作成し、UI を変更するたびに適用します。" },
       build: { title: "画面を作る", description: "要件から始めて、実際のアセットを使った動く画面と引き継ぎ資料まで作ります。" },
-      quality: { title: "品質を確かめる", description: "操作感、抑制、生成 UI にありがちなパターンを点検します。" },
+      quality: { title: "品質を確かめる", description: "操作感、韓国語の組版、抑制、生成 UI にありがちなパターンを点検します。" },
       content: { title: "文章を書く", description: "事実とコマンドを保ったまま、5 言語の製品文を自然に整えます。" },
     }),
     descriptions: {
@@ -1198,6 +1200,7 @@ const ja: BaseDictionary = {
       "omd:shader-hero": "DESIGN.md の2色で画面いっぱいのヒーローを作り、文字のコントラストを測ります。",
       "omd:cjk-type-shader": "日中韓の大見出しを、和紙ににじむ墨のように描きます。",
       "omd:feel": "数値化した113のインターフェース細部ルールで仕上げ・点検します。",
+      "hangul": "韓国語の改行・字間・行間・フォントを、W3C、韓国のデザインシステム、韓国の67サービスの実測値に沿って直し、点検します。",
       "omd:restraint": "焦点、文字サイズ、余白を測り、ページに要らないものを削ります。",
       "omd:slop-audit": "製品上の理由がない生成 UI パターンを、ルール ID と行番号付きで見つけます。",
       "omd:humanize": "5言語の文章を自然に整えます。事実とコマンドはそのまま残します。",
@@ -1436,7 +1439,7 @@ const zhCn: BaseDictionary = {
       { name: "Claude Code", body: "安装技能、子代理和参考目录，并把项目 hooks 安全地合并到现有设置中。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "Codex", body: "安装技能、内置指令的智能体角色、辅助工具和本地参考目录。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "OpenCode", body: "安装技能、原生子代理和离线参考目录。项目级安装位于 `.opencode`；使用 `--global` 时安装到 `~/.config/opencode`，并用 `doctor --global` 检查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "安装原生 Agent Skills 30 个、一条精简的 DESIGN.md 引导规则和共享参考目录。仅在旧版客户端上使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "安装原生 Agent Skills 31 个、一条精简的 DESIGN.md 引导规则和共享参考目录。仅在旧版客户端上使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     rawTitle: "不安装 CLI 也能用 DESIGN.md",
     rawBody: "资料库里的文件都是普通的 Markdown。可以在文件页面复制或下载，也可以直接用 URL 获取。AI 编程助手不需要浏览器也能读取。",
@@ -1493,7 +1496,7 @@ const zhCn: BaseDictionary = {
     groups: skillGroups({
       system: { title: "建立并维护 DESIGN.md", description: "创建项目的 DESIGN.md，并在每次修改 UI 时应用它。" },
       build: { title: "构建界面", description: "从需求开始，做出使用真实素材、可以运行的界面，并完成交接。" },
-      quality: { title: "检查质量", description: "检查交互手感、克制程度和生成式 UI 模式。" },
+      quality: { title: "检查质量", description: "检查交互手感、韩文排版、克制程度和生成式 UI 模式。" },
       content: { title: "撰写文案", description: "保留事实与命令，把五种语言的产品文案改得自然。" },
     }),
     descriptions: {
@@ -1504,6 +1507,7 @@ const zhCn: BaseDictionary = {
       "omd:shader-hero": "用 DESIGN.md 里的两种颜色制作全幅首屏，并测量文字对比度。",
       "omd:cjk-type-shader": "把韩文、日文或中文大标题渲染成韩纸上晕开的墨迹。",
       "omd:feel": "应用或检查 113 条基于测量的界面手感规则。",
+      "hangul": "按照 W3C 规范、韩国设计系统和 67 个韩国服务的实测值，修正并检查韩文的换行、字距、行高和字体。",
       "omd:restraint": "测量焦点、字号和留白，删去页面不需要的元素。",
       "omd:slop-audit": "找出缺少产品依据的生成式 UI 模式，并标注规则 ID 和代码位置。",
       "omd:humanize": "润色五种语言的文案，让它读起来自然，同时保留事实和命令。",
@@ -1742,7 +1746,7 @@ const zhTw: BaseDictionary = {
       { name: "Claude Code", body: "安裝技能、子代理與參考庫，並把專案的 hooks 合併進你現有的設定。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "Codex", body: "安裝技能、內含指示的代理角色、輔助工具，以及本機參考庫。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "OpenCode", body: "安裝技能、原生子代理與離線參考庫。專案安裝會放在 `.opencode`；加上 `--global` 則放在 `~/.config/opencode`，並用 `doctor --global` 檢查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "安裝內容：原生 Agent Skills 30 個、精簡的 DESIGN.md 啟動規則，以及共用參考庫。只有舊版用戶端才需要 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "安裝內容：原生 Agent Skills 31 個、精簡的 DESIGN.md 啟動規則，以及共用參考庫。只有舊版用戶端才需要 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     rawTitle: "不安裝 CLI，直接使用 DESIGN.md",
     rawBody: "典藏中的檔案都是一般的 Markdown。可以在檔案頁面複製或下載，也能直接用網址取得。AI 程式助理不必開瀏覽器也能讀取。",
@@ -1799,7 +1803,7 @@ const zhTw: BaseDictionary = {
     groups: skillGroups({
       system: { title: "建立並維護 DESIGN.md", description: "建立專案的 DESIGN.md，並在每次修改 UI 時套用它。" },
       build: { title: "製作畫面", description: "從需求說明出發，做出放進真實素材、可實際運作的介面，並備妥交付資料。" },
-      quality: { title: "檢查品質", description: "檢查介面細節、設計是否節制，以及生成式 UI 模式。" },
+      quality: { title: "檢查品質", description: "檢查介面細節、韓文排版、設計是否節制，以及生成式 UI 模式。" },
       content: { title: "撰寫文案", description: "保留事實與指令，把五種語言的產品文案改得自然。" },
     }),
     descriptions: {
@@ -1810,6 +1814,7 @@ const zhTw: BaseDictionary = {
       "omd:shader-hero": "用 DESIGN.md 的兩種顏色做出滿版主視覺，並量測文字對比。",
       "omd:cjk-type-shader": "把中日韓大標題畫成在宣紙上暈開的墨跡。",
       "omd:feel": "用 113 條量化的介面細節規則來打磨或檢查。",
+      "hangul": "依 W3C 規範、韓國設計系統與 67 個韓國服務的實測值，修正並檢查韓文的換行、字距、行高與字型。",
       "omd:restraint": "量測視覺焦點、字級與留白，拿掉頁面不需要的元素。",
       "omd:slop-audit": "找出缺乏產品理由的生成式 UI 模式，附上規則 ID 與程式碼行號。",
       "omd:humanize": "潤飾五種語言的文案，讓文字讀來自然，事實與指令保持不變。",
