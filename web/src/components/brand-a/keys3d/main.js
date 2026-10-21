@@ -1,6 +1,9 @@
 /* Hero jelly keycaps (three.js 0.186.1). Ported verbatim from the concept-A prototype
    (docs/research/2026-10-13-rebrand/a-landing/_work/keys3d, rounds 4 + colour fixes); only the
-   canvas class and a destroy() for React unmount were added. Loaded with import() after idle. */
+   canvas class and a destroy() for React unmount were added. Loaded with import() after idle.
+   Round 12: a click or tap picks a company for the hero chat (o.onPick) instead of opening its
+   page, and select(id) holds the picked cap in the active pose (raised, pressed in) until another
+   is picked. Hover, focus (highlight) and a tap's name chip stay transient. */
 import * as THREE from "three";
 import { makeRenderer, makeScene, makeCap, disposeCap, blobTexture } from "./scene.js";
 import { H } from "./geo.js";
@@ -21,7 +24,7 @@ export function mount(host, o) {
   const { scene, key, rim, floor, shade } = makeScene(renderer);
   const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 200);
   const blob = blobTexture();
-  let booting = true, calibrating = false, capPxV = 90, caps = [], hover = null, sel = null, W = 1, Hh = 1, raf = 0, visible = true, last = 0, clock = 0, nextRipple = 2.5;
+  let booting = true, calibrating = false, capPxV = 90, caps = [], hover = null, sel = null, picked = null, W = 1, Hh = 1, raf = 0, visible = true, last = 0, clock = 0, nextRipple = 2.5;
   const WHITE = new THREE.Color(0xffffff), ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), tmp = new THREE.Vector3();
 
   function setTheme(paper, isDark) {
@@ -104,7 +107,7 @@ export function mount(host, o) {
     const still = o.reduce();
     caps.forEach((g) => {
       const u = g.userData, b = still || calibrating ? 0 : Math.sin(time * 1.1 + u.phase);
-      const act = g === hover || g === sel ? 1 : 0;
+      const act = g === hover || g === sel || u.d.id === picked ? 1 : 0;
       u.up = (u.up || 0) + (act * 0.12 - (u.up || 0)) * (still ? 1 : 0.15);
       // drop-in (round 6): height above the rest pose; a cap waiting for its turn is hidden
       const dy = calibrating ? 0 : (u.dy || 0), wait = !calibrating && u.dropAt != null && clock < u.dropAt;
@@ -127,7 +130,7 @@ export function mount(host, o) {
     const still = o.reduce();
     caps.forEach((g) => {
       const u = g.userData;
-      let target = g === hover || g === sel ? 0.24 : 0;
+      let target = g === hover || g === sel || u.d.id === picked ? 0.24 : 0;
       if (still) { u.sq = target; u.v = 0; u.dy = 0; u.dropAt = null; return; }
       if (u.dropAt != null && clock >= u.dropAt && dt > 0) {
         // gravity; on contact: bounce with lost energy, a squash kick, neighbours jostle
@@ -150,7 +153,7 @@ export function mount(host, o) {
     if (!caps.length) return;
     const c0 = caps[Math.floor(Math.random() * caps.length)];
     const near = caps.slice().sort((a, b) => a.userData.base.distanceTo(c0.userData.base) - b.userData.base.distanceTo(c0.userData.base)).slice(0, 4);
-    near.forEach((g, i) => setTimeout(() => { if (g !== hover && g !== sel) g.userData.v += 3.4 - i * 0.6; }, i * 110));
+    near.forEach((g, i) => setTimeout(() => { if (g !== hover && g !== sel && g.userData.d.id !== picked) g.userData.v += 3.4 - i * 0.6; }, i * 110));
   }
 
   /* Drop-in (round 6): after a language switch, the caps that are new for this locale
@@ -205,8 +208,8 @@ export function mount(host, o) {
   }
   function setHover(g) {
     if (g === hover) return;
-    hover = g; canvas.style.cursor = g ? "pointer" : "";
-    if (g) sel = g;
+    // round 12: the hovered cap is raised only while hovered; the picked one stays raised on its own
+    hover = sel = g; canvas.style.cursor = g ? "pointer" : "";
     o.onHover(g ? g.userData.d : null);
     kick();
   }
@@ -214,13 +217,21 @@ export function mount(host, o) {
   canvas.addEventListener("pointerleave", () => setHover(null));
   canvas.addEventListener("click", (e) => {
     const g = pick(e); if (!g) return;
-    if (e.pointerType !== "mouse" && sel !== g) { sel = g; hover = null; o.onHover(g.userData.d); g.userData.v += 3; kick(); return; }
-    o.onOpen(g.userData.d);
+    // round 12: one click or tap picks (nothing navigates, so a tap needn't arm first); a tap
+    // also shows the name, which a mouse already sees on hover
+    if (e.pointerType !== "mouse") { sel = g; hover = null; o.onHover(g.userData.d); }
+    g.userData.v += 3; kick();
+    o.onPick(g.userData.d);
   });
 
   function highlight(id) {
     const g = caps.find((c) => c.userData.d.id === id) || null;
     sel = g; if (g && !o.reduce()) g.userData.v += 2.5;
+    kick();
+  }
+  /* the hero chat's company: held raised by id, so a rebuild (breakpoint, theme) keeps it */
+  function select(id) {
+    picked = id || null;
     kick();
   }
   /* colour probe: screen points on the cap top, around (not on) the legend */
@@ -349,7 +360,7 @@ export function mount(host, o) {
     canvas.remove();
   }
   return {
-    ready, setCaps, setTheme, highlight, ringOf, kick, probe, calibrate, destroy, drop, hide, solo, floorTo, renderNow, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
+    ready, setCaps, setTheme, highlight, select, ringOf, kick, probe, calibrate, destroy, drop, hide, solo, floorTo, renderNow, measure: () => { pose(0); renderer.render(scene, camera); return measure().map((c) => c.getHexString(THREE.SRGBColorSpace)); },
     capPx: () => capPxV,
     canvas, renderer,
     snapshot(type = "image/webp", q = 0.9) { renderer.render(scene, camera); return canvas.toDataURL(type, q); }

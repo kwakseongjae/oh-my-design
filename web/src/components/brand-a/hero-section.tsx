@@ -78,7 +78,7 @@ export function HeroSection({ locale, c, data, f, archive }: Props) {
           {/* pre-hydration: arriving from the language picker, the caps new here start falling as
               2D sprites at first paint; the 3D scene takes over once they settle (hero-drop.tsx) */}
           <script dangerouslySetInnerHTML={{ __html: dropScript(locale) }} />
-          <HeroKeys caps={data.hero} label={c.kb.label} locale={locale} />
+          <HeroKeys caps={data.hero} label={h.keys} locale={locale} initial={initial} />
         </div>
         <div className="sq-stage-chat">
           <ChatDemo chats={chats} initial={initial} t={{ trace: h.trace, link: h.chat.link }} />

@@ -287,10 +287,11 @@ describe("CLI transcript (recaptured with scripts/capture-cli-transcript.mjs)", 
   });
 });
 
-describe("rendered: the hero chat and the CLI section", async () => {
+describe("rendered: the hero chat, the keyboard and the CLI section", async () => {
   const { createElement } = await import("react");
   const { renderToStaticMarkup } = await import("react-dom/server");
   const { ChatDemo } = await import("@/components/brand-a/chat-demo");
+  const { HeroKeys } = await import("@/components/brand-a/hero-keys");
   const { CliSection, boxLines, INSTALL } = await import("@/components/brand-a/cli-section");
   const { getR10 } = await import("@/components/brand-a/copy/r10");
   const { getCopy } = await import("@/components/brand-a/copy");
@@ -318,6 +319,20 @@ describe("rendered: the hero chat and the CLI section", async () => {
       expect(text, l).not.toContain(getR10(l).chat.bar);
       const faceNote = h.trace.faceSub.replace("{face}", "Toss Product Sans").replace("{sub}", "Pretendard Variable");
       expect(text.includes(faceNote), l).toBe(l === "ko");
+    }
+  });
+
+  it("the keyboard is a list of buttons that pick the chat's company — none links to a page", () => {
+    for (const l of LOCALES) {
+      const caps = getHeroCaps(l);
+      const html = renderToStaticMarkup(createElement(HeroKeys, { caps, label: getR11Hero(l).keys, locale: l, initial: CHAT_COMPANY[l] }));
+      expect(html, l).not.toMatch(/<a\b|href=/);
+      const buttons = [...html.matchAll(/<button type="button" aria-pressed="(true|false)" aria-controls="chat" lang="[^"]+">([^<]+)<\/button>/g)];
+      expect(buttons.length, l).toBe(caps.filter((c) => c.row >= 0).length);
+      const pressed = buttons.filter((b) => b[1] === "true").map((b) => b[2]);
+      // the opening company is pressed where it has a key (ko Toss, ja pixiv); Linear and 104 have none
+      const own = caps.find((c) => c.id === CHAT_COMPANY[l]);
+      expect(pressed, l).toEqual(own ? [own.n] : []);
     }
   });
 

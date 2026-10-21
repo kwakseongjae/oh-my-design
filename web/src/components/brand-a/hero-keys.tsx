@@ -4,11 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { LogoCap } from "@/lib/landing-a/types";
 import { LOCALE_SWITCH_KEY, type SiteLocale } from "@/lib/i18n/site-locales";
 import heroCaps from "@/data/hero-caps.json";
-import { detailHrefFor } from "@/lib/i18n/ko-detail";
-
-/* Every hero cap is a verified reference (data.server.ts getHeroCaps), and every
-   verified reference has a Korean page, so /ko caps open /ko/design-systems/<id>. */
-const capHref = (locale: SiteLocale, id: string) => detailHrefFor(locale, id, true);
+import { pickCompany, useHeroPick } from "./hero-pick";
 
 /* Arrival from the language picker (locale-switch.tsx SWITCH_KEY): the locale we came
    from, read once and cleared. Stale (> 60 s) or mismatched notes are ignored. */
@@ -44,14 +40,22 @@ const setOf = (l: SiteLocale) => (l === "ja" || l === "zh-tw" ? l : "default");
  * on import failure, or with ?k3=poster — the pre-rendered poster is the background.
  *
  * The canvas is decorative (aria-hidden); the same companies are a visually hidden
- * list of real links whose focus squishes the cap and draws a ring. Hover or focus
- * shows the company's name only; a click opens its item page.
+ * list of buttons whose focus squishes the cap and draws a ring. Hover or focus
+ * shows the company's name only.
+ *
+ * Round 12 (owner 2026-10-21): a key no longer opens the company's item page. A click
+ * or tap on a cap, or its button, picks the company the hero chat shows (hero-pick.ts;
+ * the chat carries the link to the item page), and the picked cap stays raised — the
+ * hover pose, held (keys3d select()). The buttons say which one is pressed
+ * (aria-pressed) and that they drive the chat (aria-controls). Picking needs no WebGL:
+ * on the poster the buttons still switch the chat.
  */
 interface K3 {
   ready?: Promise<void>;
   setCaps(caps: unknown[], narrow: boolean): void;
   setTheme(paper: string, dark: boolean): void;
   highlight(id: string): void;
+  select(id: string | null): void;
   ringOf(id: string): { x: number; y: number } | null;
   capPx(): number;
   kick(): void;
@@ -105,8 +109,11 @@ function loadLogo(src: string): Promise<HTMLImageElement | null> {
   return imgCache.get(src)!;
 }
 
-export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; label: string; locale: SiteLocale }) {
+export function HeroKeys({ caps, label, locale, initial }: { caps: readonly LogoCap[]; label: string; locale: SiteLocale; initial: string }) {
   const [narrow, setNarrow] = useState(false);
+  const pick = useHeroPick();
+  const current = pick.id ?? initial;
+  const currentRef = useRef(current);
   const shown = caps.filter((c) => (narrow ? c.mrow : c.row) >= 0);
   const [name, setName] = useState<{ n: string; lang: string; x: number; y: number } | null>(null);
   const sheet = useRef<HTMLDivElement>(null);
@@ -172,6 +179,12 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
     if (el) el.style.cssText = `left:${x - (size * (c.wide ? 1.9 : 1)) / 2}px;top:${y - size / 2}px;width:${size * (c.wide ? 1.9 : 1)}px;height:${size}px`;
     setName({ n: c.n, lang: c.nLang, x, y: y - k3.current.capPx() * 0.72 });
   };
+
+  // the chat's company stays raised on the keyboard (a build run for the posters keeps every cap at rest)
+  useEffect(() => {
+    currentRef.current = current;
+    if (!/[?&]k3dbg=1/.test(location.search)) k3.current?.select(current);
+  }, [current]);
 
   // breakpoint
   useEffect(() => {
@@ -248,10 +261,9 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
             dark: false,
             reduce: () => reduce.matches,
             onHover: (d: { id: string } | null) => showName(d ? d.id : null),
-            onOpen: (d: { id: string }) => {
-              window.location.href = capHref(locale, d.id);
-            },
+            onPick: (d: { id: string }) => pickCompany(d.id),
           }) as K3;
+          if (!/[?&]k3dbg=1/.test(location.search)) k3.current.select(currentRef.current);
           state.current = "ready";
           performance.mark("k3:mounted");
           if (/[?&]k3dbg=1/.test(location.search)) (window as unknown as { __k3: K3 }).__k3 = k3.current; // scripts/hero-posters.mjs
@@ -322,9 +334,12 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
       <ul className="sq-kb-links" aria-label={label}>
         {shown.map((c) => (
           <li key={c.id}>
-            <a
-              href={capHref(locale, c.id)}
+            <button
+              type="button"
+              aria-pressed={current === c.id}
+              aria-controls="chat"
               lang={c.nLang}
+              onClick={() => pickCompany(c.id)}
               onFocus={() => {
                 if (k3.current) {
                   k3.current.highlight(c.id);
@@ -334,10 +349,13 @@ export function HeroKeys({ caps, label, locale }: { caps: readonly LogoCap[]; la
                   }, 60);
                 }
               }}
-              onBlur={() => showName(null)}
+              onBlur={() => {
+                k3.current?.highlight("");
+                showName(null);
+              }}
             >
               {c.n}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
