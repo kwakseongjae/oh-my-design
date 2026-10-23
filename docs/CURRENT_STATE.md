@@ -1,7 +1,20 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-21 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-23 19시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-10-23 · README 슬림화 — `feat/readme-slim` `b1f43910`(push 완료), 오너 프리뷰 대기
+
+- **요청(10/23).** README가 과하다. shadcn급으로 압축하고 위트 있게, DESIGN.md로 화면이 만들어지는 GenUI 영상을 넣고, 상세는 다른 MD로 옮긴다. 두 축은 DESIGN.md 아카이브와 CJK 프론트엔드 스킬.
+- **결과.** README 4종이 338·228·177·172줄에서 69·60·60·60줄이 됐다.
+  - 구성: 배너 · 태그라인(사이트 푸터 문장) · 훅 · GenUI 영상 · 설치 · 두 갈래 · 첫 60초(설치기의 실제 프롬프트) · 링크. 숫자는 500+만 남겼다.
+  - 훅은 로케일마다 따로 썼고, 출시된 스킬이 실제로 고치는 것만 골랐다. EN·KO는 `있어요` 줄바꿈(autopilot keep-all), JA는「〜することができます」(humanize JA), zh-TW는「視頻」(humanize ZH-TW).
+  - 영상: `docs/readme/genui-{en,ko,ja,zh-tw}.webp`(16초, 960×549, 약 550KB). 랜딩의 DESIGN.md→화면 섹션을 로케일별로 녹화했다(Toss·freee·104). 스크립트는 `scripts/readme/record-genui.cjs`.
+  - 옮긴 곳: `docs/guide/skills.md`(공개 스킬과 SKILL.md 링크), `install.md`(에이전트별·전역·Cursor·update), `design-md.md`(Core v2와 v3, 유도 사슬, 운영 트랜잭션). 번역 README는 자기 언어의 사이트 문서로 연결한다. 가이드도 개수 없이 썼다.
+- **같이 고친 것.** llms-full에 가이드 3개를 넣었다(재생성). 죽은 링크 `benchmarks/ui-resolve-bench/e2e/`(ee445abc 이후 미추적)를 뺐다. CLI_QUICKSTART의 Cursor 스킬 수(21, 실제 30)와 AGENTS.md의 없는 README 섹션 포인터를 지웠다. npm 패키지에 영상은 들어가지 않는다(files에 docs/readme 없음).
+- **검증.** check-counts·gen:llms-full:check 통과. web cli-docs·catalog-integrity 556 통과. 루트 vitest 1,514 통과, 부하 타임아웃 2개는 단독 실행에서 통과. GitHub 브랜치 렌더 4종을 확인했다(영상 로드, JA·zh-TW 줄 이음 공백 없음).
+- **오너 몫.** https://github.com/kwakseongjae/oh-my-design/tree/feat/readme-slim 에서 README를 보고 OK → main 병합.
+- **병합 뒤.** npm 페이지의 README는 다음 배포(2.0.6)에 바뀐다. `feat/hangul-launch`에 main을 병합하면 README 4종이 충돌한다 → 슬림판을 택하고 `docs/guide/skills.md`에 hangul 한 줄을 더한다.
 
 ## ▶ 2026-10-14 · 계측 기반 (성장 계획 P0/5) — 브랜치 `feat/growth-metrics`, main 미반영
 
@@ -95,7 +108,7 @@
     - 결정 사항: 슬라이더 범위는 320~430 유지, 눈금 320·360·375·390·412·430. 기기 이름은 대표 폭일 때만 붙인다.
   - **출시 대기:** `feat/hangul-launch` `6fc9ae7a`(1차 통합본, main에서 fast-forward 가능). r15가 끝나면 r15를 그 위에 얹어 다시 프리뷰한다.
   - **오너 몫:** 프리뷰 OK, 2.0.6 strict 게이트 waiver, Threads·X 게시.
-  - 실행 중인 에이전트·Codex 작업 없음. 검수 서버 :3200은 1차 통합본을 띄우고 있다.
+  - 실행 중인 에이전트·Codex 작업 없음. 검수 서버 :3200은 내려가 있다. 다시 띄우려면 `cd .claude/worktrees/r14-integrate/web && npx next start -p 3200`.
 
 ## ▶ 2026-09-29 · 성장 전략 결정 17개 → 병렬 실행 착수 (521 · 227)
 

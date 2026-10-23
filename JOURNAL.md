@@ -1,5 +1,10 @@
 # JOURNAL
 
+## 2026-10-23 — README 슬림화 (feat/readme-slim, 오너 프리뷰 대기)
+- 한 일: README 4종을 훅·GenUI 영상·설치·두 갈래·첫 60초·링크로 압축했다(60~69줄). 상세는 docs/guide 3개로 옮기고, 로케일별 GenUI 영상을 녹화했다. llms-full에 가이드를 넣고 죽은 링크와 낡은 카운트를 정리했다.
+- 열린 것: 오너 프리뷰 OK → main 병합. 이후 feat/hangul-launch의 README 충돌 해소. /hangul r15는 계속 일시 중단.
+- 다음: OK를 받으면 main에 병합하고 GitHub에서 확인한다(npm README는 2.0.6 배포 때 바뀐다).
+
 ## 2026-10-21 밤 — /hangul 2차 진행 중 일시 중단
 - 한 일: /hangul 1차 통합(스킬·페이지·콘텐츠·블로그 수정, feat/hangul-launch). 오너 피드백(훈민정음 느낌, 오토 스와이프)으로 r15를 시작해 컨셉 보드·Song Myung·Codex 아트·오토 스와이프 컨트롤러까지 했다.
 - 열린 것: r15 break-demo 연결(WIP c1b8535a) → 해례본 스타일 → 검증 → 오너 프리뷰, 2.0.6 waiver.
