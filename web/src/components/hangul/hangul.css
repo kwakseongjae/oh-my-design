@@ -72,6 +72,8 @@
 .hg-sec{padding-block:72px 112px}
 .hg-sec>.sq-wrap::before{content:"";display:block;height:7px;margin-bottom:48px;border-top:3px solid var(--hg-ink);border-bottom:1px solid var(--hg-ink)}
 .hg-band{background:var(--hg-paper-2)}
+/* the footer follows the last leaf directly, without a strip of the site's white between them */
+.hg-root .sq-foot{margin-top:0}
 
 /* ---- hero ---- */
 .hg-hero{padding-top:28px;padding-bottom:16px}
@@ -149,18 +151,20 @@
 .hg-range:focus-visible{outline:none}
 .hg-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--hg-paper),0 0 0 5px var(--hg-ink)}
 .hg-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 3px var(--hg-paper),0 0 0 5px var(--hg-ink)}
-/* the chip and the hand ride the thumb: the inner box spans the thumb's track and is translated by
-   the slider's position, so its left edge is always the thumb's centre */
+/* the chip and the hand ride the thumb. The inner box is as long as the thumb's track, set to the left
+   of it and translated right by the slider's position, so its right edge is always the thumb's centre
+   and nothing it holds reaches past the rail. Only transforms move them (flip included): riding the
+   thumb is never a layout shift. */
 .hg-follow{position:absolute;top:0;bottom:0;left:22px;right:22px;pointer-events:none}
-.hg-follow-in{position:absolute;inset:0;transform:translateX(calc(var(--p) * 100%))}
-.hg-chip{position:absolute;top:50%;left:32px;display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1.5px solid var(--hg-ink);border-radius:var(--sq-r-pill);background:var(--hg-paper);font-size:14px;line-height:1.3;font-weight:650;color:var(--hg-ink);white-space:nowrap;transform:translateY(-50%)}
-.is-flip .hg-chip{left:auto;right:calc(100% + 32px)}
+.hg-follow-in{position:absolute;top:0;bottom:0;right:100%;width:100%;transform:translateX(calc(var(--p) * 100%))}
+.hg-chip{position:absolute;top:50%;left:calc(100% + 32px);display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1.5px solid var(--hg-ink);border-radius:var(--sq-r-pill);background:var(--hg-paper);font-size:14px;line-height:1.3;font-weight:650;color:var(--hg-ink);white-space:nowrap;transform:translateY(-50%)}
+.is-flip .hg-chip{transform:translate(calc(-100% - 64px),-50%)}
 .is-touched .hg-chip{opacity:0;visibility:hidden}
-.hg-hand{position:absolute;left:4px;top:24px;width:26px;height:26px;color:var(--hg-ink);opacity:0}
+.hg-hand{position:absolute;left:calc(100% + 4px);top:24px;width:26px;height:26px;color:var(--hg-ink);opacity:0}
 .hg-hand path{stroke:var(--hg-paper)}
 .is-playing .hg-hand{opacity:1}
 .hg-ticks{position:relative;height:20px;font:500 13px/20px var(--sq-f-mono);color:var(--hg-ink-2)}
-.hg-ticks span{position:absolute;top:0;left:calc(100% / 222 + var(--p) * (100% - 100% / 111));transform:translateX(-50%)}
+.hg-ticks span{position:absolute;top:0;left:calc(100% / 222 + var(--p) * (100% - 100% / 111));transform:translateX(-50%);white-space:nowrap}
 .hg-sum{margin-top:14px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:60em}
 .hg-note{margin-top:6px;font-size:14px;line-height:1.6;color:var(--hg-ink-2);max-width:60em}
 
