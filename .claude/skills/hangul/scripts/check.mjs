@@ -227,6 +227,7 @@ function cssRegions(file) {
 // element in the markup files (tag, classes, id, parent) and its descendant text nodes. Attributes
 // never count as text (aria-label="모아 홈" on a "moa." logo is not Hangul text). No cascade, no runtime.
 const MARKUP_EXT = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.vue', '.svelte', '.astro', '.mdx']);
+const TS_TYPE_WORD = /^(number|string|boolean|bigint|symbol|object|any|unknown|never|void|null|undefined|keyof|typeof|readonly|infer)$/;
 const VOID_TAG = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
 const STR_LIT = /(["'`])((?:\\.|(?!\1)[^\\])*?)\1/g;
 const UNRESOLVED = { kinds: new Set(), unresolved: true };
@@ -307,9 +308,10 @@ function scanMarkup(abs, ext, raw) {
     if (lt < 0) break;
     const m = /^<(\/?)([A-Za-z][\w:.-]*)(?=[\s/>])/.exec(text.slice(lt, lt + 80));
     if (!m) { i = lt + 1; continue; }
-    // `useRef<HTMLDialogElement>(null)` or `Array<Item>` is a TypeScript generic, not a tag: a capitalised
-    // name right after an identifier, with no attributes. (A lowercase tag may follow text directly: moa<span>.)
-    if (lt > 0 && /[\w$.]/.test(text[lt - 1]) && !m[1] && /^[A-Z]/.test(m[2])) {
+    // `useRef<HTMLDialogElement>(null)`, `useState<number | null>(null)` or `Array<Item>` is a TypeScript
+    // generic, not a tag: a capitalised name or a TS type keyword right after an identifier, with no
+    // attributes. (A lowercase HTML tag may follow text directly: moa<span>.)
+    if (lt > 0 && /[\w$.]/.test(text[lt - 1]) && !m[1] && (/^[A-Z]/.test(m[2]) || TS_TYPE_WORD.test(m[2]))) {
       const close = text.indexOf('>', lt);
       if (close < 0 || !text.slice(lt + m[0].length, close).includes('=')) { i = lt + 1; continue; }
     }

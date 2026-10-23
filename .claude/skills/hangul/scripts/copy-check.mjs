@@ -12,8 +12,9 @@
  * were judging.
  *
  * It reads source, not the running product: it sees the strings written in the code and guesses each
- * one's role (button, error, empty state, toast, dialog, heading, label, placeholder, helper, body,
- * alt text) from the element, component, prop, key or call around it. It cannot see strings fetched
+ * one's role (button, empty state, toast, heading, label, placeholder, helper, body, alt text) from
+ * the element, component, prop, key or call around it, and flags strings that read as an error or sit
+ * in a dialog. It cannot see strings fetched
  * at runtime, text in images, or which strings share a screen; the speech-level check (HW-11) treats a
  * file as one screen. Test and spec files are skipped. A clean run is not proof of good copy, and a
  * hit is a prompt to read the string in its place.
@@ -79,8 +80,10 @@ function endingLevel(sentence) {
   const m = /([가-힣]+)$/.exec(core);
   if (!m) return null;
   const w = m[1];
-  if (/(아니다|다니다)$/.test(w)) return 'haera';
-  if (/(니다|니까|십시오|십시요|소서)$/.test(w)) return 'hapsyo';
+  // 합쇼체 is -ㅂ니다/-습니다 and -ㅂ니까/-습니까: the syllable before 니 closes with ㅂ (합니다, 입니다,
+  // 있습니다). '마음이니까', '만나니까' and '아니다' end in other syllables and are not 합쇼체.
+  if (/(니다|니까)$/.test(w)) return w.length >= 3 && jong(w[w.length - 3]) === 17 ? 'hapsyo' : /다$/.test(w) ? 'haera' : 'noun';
+  if (/(십시오|십시요|소서)$/.test(w)) return 'hapsyo';
   if (/(죠|지요)$/.test(w)) return 'haeyo';
   if (/요$/.test(w) && !/(필요|중요|주요|수요|개요|강요|소요|요요|불필요)$/.test(w)) return 'haeyo';
   if (/다$/.test(w)) return 'haera';
@@ -104,7 +107,7 @@ const ERRORISH = /err(or)?|fail|invalid|danger|exception|warn/i;
 const ERROR_TEXT = /(오류|에러|실패|문제가 (발생|생겼)|할 수 없|수 없어|수 없습니다|되지 않았|못했|불가능|잘못된|유효하지 않|만료|초과했|부족해|부족합)/;
 // A dialog is context, not a role: a button or paragraph inside one keeps its own role.
 const DIALOGISH = /^(window\.)?(confirm|alert|prompt)$|(Dialog|Modal|Sheet|Popup|Popover|Confirm)|(^|[-_\s.])(dialog|modal|sheet|popup|popover|confirm)(?![a-z])/;
-const LEGALISH = /terms|policy|privacy|legal|agreement|consent[-_]?(text|body|doc)|disclaimer|약관|개인정보/i;
+const LEGALISH = /terms|policy|privacy|legal|agreement|consent[-_]?(text|body|doc)|disclaimer|약관|개인정보|^term$|^term[A-Z_-]|[a-z]Term(s)?([A-Z_-]|$)/i;
 // Strings written in someone else's voice or kept as data: example prompts a user would type, search
 // aliases, keywords, sample content, FAQ questions. They are not the product speaking, so no rule reads them.
 const COPY_KEY = /^(primary|alternates|text|label|title|message|body|copy|cta|description|placeholder|helper|value)$/i;
@@ -273,8 +276,12 @@ function extract(abs, ext, raw) {
         push(part.pos + lead, part.text, infoOf(chain, { via: 'text', name: el.raw }));
       }
     }
-    for (const seg of top) if (!seg.expr && seg.hangul) push(seg.pos, seg.s, { via: 'text' });
-    for (const seg of rec.segs) if (!seg.expr) blank(seg.pos, seg.pos + seg.s.length);
+    // In JSX/TSX/JS, text outside every element is code (imports, constants, types), not copy: the
+    // literal pass below reads its strings with their names. In HTML-like files it is text.
+    const codeFile = CODE_EXT.has(ext);
+    if (!codeFile) for (const seg of top) if (!seg.expr && seg.hangul) push(seg.pos, seg.s, { via: 'text' });
+    const topSet = new Set(codeFile ? top : []);
+    for (const seg of rec.segs) if (!seg.expr && !topSet.has(seg)) blank(seg.pos, seg.pos + seg.s.length);
 
     // attribute values on each element
     for (const el of els) {
@@ -346,7 +353,9 @@ function literalPass(code, push, chainAt, infoOf) {
     else if ((mm = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')\s*:\s*(?:[^:{},]*\?\s*(?:[^:{},]*:\s*)?)?$/.exec(tail + ' '))) name = mm[1].replace(/^["']|["']$/g, '');
     else if ((mm = /([A-Za-z_$][\w$.]*)\s*(?<![=!<>])=(?!=|>)\s*(?:[^=;]*\?\s*(?:[^=;:]*:\s*)?)?$/.exec(tail + ' '))) name = mm[1];
     // an array of strings under a data key ("aliases: ['…', '…']") reads its key from the bracket before it
-    const arrayKey = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')\s*[:=]\s*\[[^\]]*$/.exec(tail);
+    // the array may hold long strings, so look further back for its opening bracket
+    const arrayKey = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')\s*[:=]\s*\[[^\]]*$/.exec(code.slice(Math.max(0, at - 4000), at));
+    if (!name && arrayKey) name = arrayKey[1].replace(/^["']|["']$/g, ''); // const terms = ['…', '…']
     const dataName = (!call && name && DATA_NAME.test(name.split('.').pop())) || (arrayKey && DATA_NAME.test(arrayKey[1].replace(/^["']|["']$/g, '')));
     if (dataName) { push(at + 1, s, { role: 'data', via: 'literal', name }); continue; }
     // logs, test titles, assertions and module paths are not UI copy
