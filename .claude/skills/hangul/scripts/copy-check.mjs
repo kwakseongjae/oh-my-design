@@ -93,7 +93,6 @@ function endingLevel(sentence) {
 // tracked separately because they cut across roles (an error toast, a button inside a dialog).
 const NAME_ROLES = [
   ['toast', /toast|snack|notif(y|ication)|enqueue|flash/i],
-  ['dialog', /^(window\.)?(confirm|alert|prompt)$|dialog|modal|sheet|popup|popover/i],
   ['empty', /empty|no[-_]?(result|data|item|content)s?|zero[-_]?state|blank[-_]?state/i],
   ['button', /(^|[^a-z])(btn|button|cta|submit|ok|cancel|primary[-_]?action|secondary[-_]?action)($|[^a-z])|(button|btn|cta|submit|ok|cancel|confirm|action)(text|label|title)?$|^(ok|cancel|confirm|submit|action)$/i],
   ['placeholder', /placeholder/i],
@@ -103,7 +102,8 @@ const NAME_ROLES = [
 ];
 const ERRORISH = /err(or)?|fail|invalid|danger|exception|warn/i;
 const ERROR_TEXT = /(오류|에러|실패|문제가 (발생|생겼)|할 수 없|수 없어|수 없습니다|되지 않았|못했|불가능|잘못된|유효하지 않|만료|초과했|부족해|부족합)/;
-const DIALOGISH = /dialog|modal|sheet|popup|popover|confirm|alert(?!.*(error|danger))/i;
+// A dialog is context, not a role: a button or paragraph inside one keeps its own role.
+const DIALOGISH = /^(window\.)?(confirm|alert|prompt)$|(Dialog|Modal|Sheet|Popup|Popover|Confirm)|(^|[-_\s.])(dialog|modal|sheet|popup|popover|confirm)(?![a-z])/;
 const LEGALISH = /terms|policy|privacy|legal|agreement|consent[-_]?(text|body|doc)|disclaimer|약관|개인정보/i;
 // Strings written in someone else's voice or kept as data: example prompts a user would type, search
 // aliases, keywords, sample content, FAQ questions. They are not the product speaking, so no rule reads them.
@@ -128,7 +128,7 @@ function roleFromElement(chain) {
     if (el.tag === 'a' && [...el.cls].some((c) => /btn|button|cta/i.test(c))) return 'button';
     const byComponent = /^[A-Z]/.test(el.raw) ? roleFromNames([el.raw]) : null;
     if (byComponent) return byComponent;
-    const byClass = roleFromNames([...el.cls].filter((c) => /^(btn|button|cta|toast|snackbar|dialog|modal|empty|title|heading|headline|helper|hint|caption|label|placeholder)([-_].*)?$/i.test(c)));
+    const byClass = roleFromNames([...el.cls].filter((c) => /^(btn|button|cta|toast|snackbar|empty|title|heading|headline|helper|hint|caption|label|placeholder)([-_].*)?$/i.test(c)));
     if (byClass) return byClass;
   }
   return null;
@@ -478,7 +478,7 @@ const STRING_RULES = [
   { id: 'HW-4', check(s, report) {
     if (!isUi(s)) return;
     const t = s.text;
-    if ((s.err || s.role === 'error' || s.role === 'toast' || s.role === 'dialog') && TECH.test(t)) report('WARN', 'error copy shows a technical term or code; say it in the user\'s words');
+    if ((s.err || s.role === 'error' || s.role === 'toast' || s.dialog) && TECH.test(t)) report('WARN', 'error copy shows a technical term or code; say it in the user\'s words');
     if (!GENERIC_ERR.test(t)) return;
     if (!NEXT_STEP.test(t)) report('WARN', 'generic error with no next step: say what happened and what the user can do now');
     else if (!CAUSE.test(t)) report('FYI', 'error says what to do but not what happened; name the cause when it is known');
