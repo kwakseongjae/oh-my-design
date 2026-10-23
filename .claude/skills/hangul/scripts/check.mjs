@@ -901,4 +901,10 @@ function main(argv) {
   return exit;
 }
 
-process.exitCode = main(process.argv.slice(2));
+// copy-check.mjs reuses the markup index; running this file directly still runs the CLI.
+export { HANGUL, SKIP_DIR, MARKUP_EXT, STR_LIT, isUrlish, maskMarkup, scanMarkup, makeLineAt, elementKind };
+
+const invokedDirectly = (() => {
+  try { return fs.realpathSync(process.argv[1] || '') === fs.realpathSync(fileURLToPath(import.meta.url)); } catch { return false; }
+})();
+if (invokedDirectly) process.exitCode = main(process.argv.slice(2));
