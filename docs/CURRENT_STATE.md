@@ -3,7 +3,9 @@
 갱신: **2026-10-23 19시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-10-23 · README 슬림화 — `feat/readme-slim` `b1f43910`(push 완료), 오너 프리뷰 대기
+## ▶ 2026-10-23 · README 슬림화 — main 병합 완료 `968f76c4`
+
+- **10/23 오너 GO**("나쁘지 않네. 메인으로 ㄱㄱ") → `feat/readme-slim`을 main에 병합(`968f76c4`, no-ff)하고 push했다. 병합 뒤 check-counts·llms-full 검사 통과. GitHub main에서 README·영상 4개·가이드 3개가 열린다. Vercel Production 성공(약 140초). 라이브 `llms-full.txt`에 새 README와 가이드 3개가 들어 있다(생성 시각이 저장소본과 같음). `/`·`/ko`·`/docs/en`·아카이브·`/toss/design.md` 200. 브랜치(로컬·원격)와 `.claude/worktrees/readme`는 정리했다.
 
 - **요청(10/23).** README가 과하다. shadcn급으로 압축하고 위트 있게, DESIGN.md로 화면이 만들어지는 GenUI 영상을 넣고, 상세는 다른 MD로 옮긴다. 두 축은 DESIGN.md 아카이브와 CJK 프론트엔드 스킬.
 - **결과.** README 4종이 338·228·177·172줄에서 69·60·60·60줄이 됐다.
@@ -13,8 +15,8 @@
   - 옮긴 곳: `docs/guide/skills.md`(공개 스킬과 SKILL.md 링크), `install.md`(에이전트별·전역·Cursor·update), `design-md.md`(Core v2와 v3, 유도 사슬, 운영 트랜잭션). 번역 README는 자기 언어의 사이트 문서로 연결한다. 가이드도 개수 없이 썼다.
 - **같이 고친 것.** llms-full에 가이드 3개를 넣었다(재생성). 죽은 링크 `benchmarks/ui-resolve-bench/e2e/`(ee445abc 이후 미추적)를 뺐다. CLI_QUICKSTART의 Cursor 스킬 수(21, 실제 30)와 AGENTS.md의 없는 README 섹션 포인터를 지웠다. npm 패키지에 영상은 들어가지 않는다(files에 docs/readme 없음).
 - **검증.** check-counts·gen:llms-full:check 통과. web cli-docs·catalog-integrity 556 통과. 루트 vitest 1,514 통과, 부하 타임아웃 2개는 단독 실행에서 통과. GitHub 브랜치 렌더 4종을 확인했다(영상 로드, JA·zh-TW 줄 이음 공백 없음).
-- **오너 몫.** https://github.com/kwakseongjae/oh-my-design/tree/feat/readme-slim 에서 README를 보고 OK → main 병합.
-- **병합 뒤.** npm 페이지의 README는 다음 배포(2.0.6)에 바뀐다. `feat/hangul-launch`에 main을 병합하면 README 4종이 충돌한다 → 슬림판을 택하고 `docs/guide/skills.md`에 hangul 한 줄을 더한다.
+- **프리뷰.** 오너가 GitHub 브랜치 렌더를 보고 OK했다(10/23).
+- **남은 것.** npm 페이지의 README는 다음 배포(2.0.6)에 바뀐다. `feat/hangul-launch`에 main을 병합하면 README 4종이 충돌한다 → 슬림판을 택하고 `docs/guide/skills.md`에 hangul 한 줄을 더한다.
 
 ## ▶ 2026-10-14 · 계측 기반 (성장 계획 P0/5) — 브랜치 `feat/growth-metrics`, main 미반영
 
