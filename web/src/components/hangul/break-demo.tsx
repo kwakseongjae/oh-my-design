@@ -14,6 +14,8 @@ const TICKS = [320, 360, 375, 390, 412, 430] as const;
 /** Frames grow past actual size only where every width still fits; hangul.css sets the same 1.25 at
  *  this breakpoint, so the server-rendered frame and the measured one never disagree at START. */
 const BIG = "(min-width: 1240px)";
+/** Past the middle of the range the chip sits left of the thumb, so it never runs off a phone's rail. */
+const FLIP = 375;
 
 type Sweep = { off: boolean[]; on: boolean[] };
 const pct = (w: number) => (w - MIN) / (MAX - MIN);
@@ -83,9 +85,10 @@ function Hand() {
  * fonts, with and without the rule, drawn as 계선 (column rules): a vermilion rule where a word
  * breaks mid-word.
  *
- * The slider moves once by itself when the demo comes into view (autoswipe.ts, owner 2026-10-21),
- * driving the same width state as a reader would; the first touch on the control stops it for good.
- * Never under prefers-reduced-motion: there the chip just sits by the thumb.
+ * The slider moves by itself when it comes into view (autoswipe.ts, owner 2026-10-21), driving the same
+ * width state as a reader would, and once more after 8 s if nobody touched it. The reader's first press
+ * on the demo, or key or focus on its control, stops it for good and takes the chip away. Never under
+ * prefers-reduced-motion: there the chip just sits by the thumb.
  *
  * Every frame has a fixed-height stage and the map has fixed cells, so measuring and the auto-swipe
  * never move anything below them. The probe that draws the map is built off-screen, measured and removed.
@@ -197,7 +200,9 @@ export function BreakDemo({ t, locale }: { t: HangulCopy["demo"]; locale: Hangul
     };
   }, []);
 
-  // The auto-swipe, and the hand-off: any pointerdown, keydown or focus on the control stops it.
+  // The auto-swipe, and the hand-off: a press anywhere on the demo, or a key or focus on its control,
+  // stops it at once and for good. It watches the control, not the whole demo: on a phone the leaf is
+  // taller than the screen, and the swipe is there to show that the slider moves.
   useEffect(() => {
     const root = rootRef.current;
     const ctl = ctlRef.current;
@@ -207,8 +212,12 @@ export function BreakDemo({ t, locale }: { t: HangulCopy["demo"]; locale: Hangul
       setTouched(true);
       swipe?.interact();
     };
-    const events = ["pointerdown", "keydown", "focusin"] as const;
-    for (const e of events) ctl.addEventListener(e, touch, true);
+    const hands: [HTMLElement, string][] = [
+      [root, "pointerdown"],
+      [ctl, "keydown"],
+      [ctl, "focusin"],
+    ];
+    for (const [el, e] of hands) el.addEventListener(e, touch, true);
     let io: IntersectionObserver | null = null;
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!still && typeof IntersectionObserver === "function") {
@@ -217,10 +226,10 @@ export function BreakDemo({ t, locale }: { t: HangulCopy["demo"]; locale: Hangul
       io = new IntersectionObserver(([e]) => s.setInView(e.isIntersecting && e.intersectionRatio >= 0.5), {
         threshold: [0, 0.5, 1],
       });
-      io.observe(root);
+      io.observe(ctl);
     }
     return () => {
-      for (const e of events) ctl.removeEventListener(e, touch, true);
+      for (const [el, e] of hands) el.removeEventListener(e, touch, true);
       io?.disconnect();
       swipe?.dispose();
     };
@@ -257,6 +266,7 @@ export function BreakDemo({ t, locale }: { t: HangulCopy["demo"]; locale: Hangul
     <div
       ref={rootRef}
       className={`hg-demo${playing ? " is-playing" : ""}${touched ? " is-touched" : ""}`}
+      data-swipe={phase}
       role="group"
       aria-label={t.label}
       lang={locale}
@@ -329,9 +339,12 @@ export function BreakDemo({ t, locale }: { t: HangulCopy["demo"]; locale: Hangul
                   aria-valuetext={valueText}
                   aria-describedby="hg-map-sum"
                 />
-                <div className={`hg-follow${width > 392 ? " is-flip" : ""}`} style={{ "--p": pct(width) } as CSSProperties} aria-hidden="true">
-                  <Hand />
-                  <span className="hg-chip">{t.hint}</span>
+                {/* moved by transform along the thumb's track, so riding on the thumb is never a layout shift */}
+                <div className="hg-follow" aria-hidden="true">
+                  <div className={`hg-follow-in${width > FLIP ? " is-flip" : ""}`} style={{ "--p": pct(width) } as CSSProperties}>
+                    <Hand />
+                    <span className="hg-chip">{t.hint}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -342,13 +355,13 @@ export function BreakDemo({ t, locale }: { t: HangulCopy["demo"]; locale: Hangul
                 ))}
               </div>
             </div>
-            <p id="hg-map-sum" className="hg-sum">
-              {fill(t.summary, { off: off ?? "–", on: on ?? "–" })}
-            </p>
           </div>
         </div>
       </div>
 
+      <p id="hg-map-sum" className="hg-sum">
+        {fill(t.summary, { off: off ?? "–", on: on ?? "–" })}
+      </p>
       <p className="hg-note">{t.note}</p>
     </div>
   );
