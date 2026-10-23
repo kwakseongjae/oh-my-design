@@ -108,6 +108,12 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
           <div className="hg-hero-top">
             <div className="hg-hero-copy">
               <p className="hg-kicker">
+                {/* the one seal: a blank 인장 impression with the 천지인 marks (ㆍ ㅡ ㅣ) drawn as shapes */}
+                <span className="hg-seal" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </span>
                 <span className="hg-kicker-name" lang="en">/hangul</span>
                 <span>{t.hero.kicker}</span>
               </p>
