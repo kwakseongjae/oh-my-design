@@ -57,4 +57,4 @@ Claude Code, Codex, OpenCode, Cursor에서 씁니다. API 키도 MCP 서버도 �
 
 ---
 
-MIT. 아카이브의 DESIGN.md는 각 회사의 디자인을 기록한 것이고, 그 디자인은 해당 회사의 것입니다. 교육용 참고 자료로 재구성했습니다.
+[MIT](LICENSE). 아카이브의 DESIGN.md는 각 회사의 디자인을 기록한 것이고, 그 디자인은 해당 회사의 것입니다. 교육용 참고 자료로 재구성했습니다.

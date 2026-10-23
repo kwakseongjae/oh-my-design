@@ -66,4 +66,4 @@ Not a Toss person? Swap in any company from the [archive](https://oh-my-design.k
 
 ---
 
-MIT. Each DESIGN.md in the archive describes a company's design, which belongs to that company; it is reproduced here for educational reference.
+[MIT](LICENSE). Each DESIGN.md in the archive describes a company's design, which belongs to that company; it is reproduced here for educational reference.

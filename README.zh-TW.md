@@ -57,4 +57,4 @@ npx oh-my-design-cli@latest
 
 ---
 
-MIT。典藏中的 DESIGN.md 記錄的是各企業的設計，設計歸各企業所有，僅為教育性參考而重現。
+[MIT](LICENSE)。典藏中的 DESIGN.md 記錄的是各企業的設計，設計歸各企業所有，僅為教育性參考而重現。
