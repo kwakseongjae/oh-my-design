@@ -203,11 +203,11 @@ Failures to look for:
 
 | | |
 |---|---|
-| 말투 | 하십시오체 (합쇼체) in formal situations and with anyone you are not close to, whatever their rank; 해요체 by closeness; never 해라체; one style throughout. Humble forms where the action is done for the reader (`말씀드리다`, `안내드리다`, `보내 드리다`, `여쭙다`, `뵙다`), not on every verb, and never an archaic stand-in (`청하다`, `사료되다`). A request reads `~해 주시면 감사하겠습니다` or `~해 주시기 바랍니다`; to someone outside, `~해 주십시오` reads as an order. `저희 회사` for your own side |
+| 말투 | 하십시오체 (합쇼체) in formal situations and with anyone you are not close to, whatever their rank; 해요체 by closeness; never 해라체; one style throughout. Humble forms where the action is done for the reader (`말씀드리다`, `안내드리다`, `보내 드리다`, `여쭙다`, `뵙다`), not on every verb, and never an archaic stand-in (`청하다`, `사료되다`). A request to someone outside reads `~해 주시면 감사하겠습니다`, `~해 주실 수 있을까요?` or, for the ask itself, `~을 요청드립니다`. `~해 주십시오` reads as an order, `~하시기 바랍니다` as a public notice, and a bare `요청합니다` as blunt on first contact. `저희 회사` for your own side |
 | 작성 방식 | A letter's shape: salutation → greeting → body → closing → your name. Salutation `○○○ 님` (spaced) or a title (`○○○ 팀장님`). Sign-off `○○○ 드림` or `○○○ 올림`, with your title **before** the name (`마케팅팀 과장 ○○○ 드림`); after the name it honors yourself. If you weren't given the sender's name, keep `○○○` in the sign-off and say so; a mail signed by a company alone reads unfinished |
 | 흐름 | Salutation → greeting → on first contact, one sentence on who you are (team, title, name) → the ask or the news → details (dates, attachments) → what you need, by when → closing → name. The ask comes early, but after the introduction: a stranger reads who is asking first. One ask per mail |
 | 어휘 | No `○○로부터` in a sign-off; no stacked honorifics (`○○○ 님 귀하`); in writing, `감사합니다` rather than `수고하세요` to a senior |
-| 표기 | A proposed time with its weekday (`10월 28일(화) 14:00~14:30`); a deadline as a date, not `빠른 시일 내` |
+| 표기 | A proposed time with its weekday (`10월 28일(화) 14:00~14:30`); slots as `아래 세 일정` or `세 시간대`, never `세 시간`, which reads as three hours; a deadline as a date, not `빠른 시일 내` |
 
 Failures to look for:
 - **Translated openers and closers:** `이 메일이 잘 도착했기를 바랍니다`, `궁금한 점이 있으시면 주저하지 말고 연락 주세요`.

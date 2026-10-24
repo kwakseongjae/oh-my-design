@@ -130,3 +130,79 @@ Documents out of 22 with at least one case of the kind:
 | `월세 부담을 덜어 드리기 위해, 무주택 청년에게 월세를 지원합니다.` | `무주택 청년의 월세 부담을 덜 수 있도록 월세를 지원합니다.` | '-어 드리다' in an institution's notice is over-polite, and the comma after '위해' isn't needed. | — |
 | `신청 전에 문의처에서 확인해 주세요.` | `신청 전에 문의처로 문의해 주세요.` | 문의처 is whom you ask, not where you check: the particle is wrong. | — |
 | The summary sends readers to "신청 방법", which sends them to "문의처" | say how to apply in "신청 방법" | A loop: the page never says how to apply. | — |
+
+## With the skill: the same requests again
+
+The same eleven requests went to the same writer, with `/hangul` in the folder and one line asking it to follow `SKILL.md`. The editor and its rubric were the same as before, still blind to which arm wrote what.
+
+### Setup
+
+| | Without (A) | With the skill (B′) | After the fixes below (B″) |
+|---|---|---|---|
+| Documents | 22 | 22 | 6 (deck, e-mail, press × 2) |
+| Turns allowed | 20 | 40 | 40 |
+| Tools | file edits only | file edits, and `node` so it could run `copy-check.mjs` | same as B′ |
+| Writer cost | $0.92 | $4.29 | $1.24 |
+
+The editor's cost was not recorded.
+
+### Editor's scores
+
+Each dimension is 1–5, and the total is out of 25. The B″ column is B′ with its deck, e-mail and press documents replaced by the six re-runs.
+
+| Dimension | A | B′ | B″ |
+|---|---|---|---|
+| register | 4.50 | 4.82 | 4.82 |
+| convention | 3.91 | 4.45 | 4.45 |
+| flow | 4.32 | 4.41 | 4.55 |
+| diction | 4.05 | 4.09 | 4.14 |
+| mechanics | 4.27 | 4.77 | 4.86 |
+| **total** | **21.05** | **22.55** | **22.82** |
+| issues quoted per document | 7.55 | 4.32 | 3.82 |
+
+Situations that scored higher with the skill: 8 of 11. Mean totals, A → B″:
+
+| Situation | A | B″ | What the editor's quotes show |
+|---|---|---|---|
+| report | 21.0 | 24.5 | A's quotes: 개조식 not applied (×2), a parenthesis spaced off, `-드리다`, a summary that didn't match the body. B′'s three quotes were a unit, a term and a repetition |
+| deck | 17.0 | 20.0 | register rose from 3 to 4.5. The deck is still the weakest situation: figures repeated across slides, headlines restated in the body |
+| landing | 23.0 | 23.5 | A mixed 해요체 and 합쇼체; B′ didn't |
+| app screens | 24.0 | 23.0 | worse. The skill writes `닫기` on a dialog button that only closes (the Apps in Toss rule), and the editor expected `취소`. The rule stays because it is sourced |
+| notice | 20.5 | 22.5 | the weekday and a clearer time window were added. B′ still mixed in one 해요체 request, and used colloquial words |
+| e-mail | 23.0 | 22.0 | worse at first (20.0), then fixed in part: see below |
+| press | 22.0 | 21.5 | about even. Both arms repeated the lead in the body |
+| docs | 22.0 | 24.0 | A left a maintainer's note and a meta heading, and wrote `하나의` and `만들어진`. B′ had two minor quotes |
+| hiring | 20.5 | 24.0 | A left template instructions (×4), spaced its ranges and mixed endings in a list. B′'s quotes were `의` overuse (×2) and one collocation |
+| clinic page | 19.5 | 21.5 | ranges, weekdays and the writer's memo were fixed. Order and wording issues remain |
+| district office page | 19.0 | 24.5 | A left notes to the writer (×3), spaced parentheses off (×4) and used `-드리다` (×2). B′'s only quotes were dates without the year (×2) |
+
+### What `copy-check.mjs` found
+
+Documents with at least one finding, A → B′. B′ ran the checker itself, so part of this drop is by construction. The editor's scores above are the independent measure.
+
+| Rule | A | B′ |
+|---|---|---|
+| HW-D1, a note to the writer or a placeholder left in | 14 | 1 |
+| HW-3, ranges, dates, parentheses | 16 | 3 |
+| HW-11, speech levels mixed | 4 | 0 |
+| HW-D2, one list with two ending forms | 6 | 0 |
+
+### What the test changed in the skill
+
+B′ scored worse than A on e-mail (20 against 23). The editor's quotes showed why, and they led to four changes. B″ re-ran the deck, the e-mail and the press release with those changes:
+
+- **The -드리다 rule went too far.** `-드리다` after an action noun is a valid humble suffix (`설명드리다`, `요청드리다`). The skill had called `요청드립니다` over-polite, so the writer replaced it with `청합니다`, which reads archaic. The rule is now a note on a run of three or more.
+- **Slots the convention needs were being dropped.** Told never to leave a placeholder, the writer wrote `바른걸음 대표는` with no name and signed a mail with the company alone. A slot the convention needs now keeps a visible `○○○` and is listed in the reply.
+- **E-mail request forms.** The editor read `알려 주십시오` as an order, `~하시기 바랍니다` as a public notice, and a bare `요청합니다` as blunt on first contact. The card now gives the forms to use, and puts the sender's introduction before the ask.
+- **Slide bullets as sentences.** A slide whose bullets all ended in `~다` read as prose. HW-R5 now flags it.
+
+E-mail rose to 22 and the deck to 20, and the press release stayed at 21.5.
+
+One later change to the e-mail card was not re-run: writing `세 일정` instead of `세 시간`, which reads as three hours.
+
+### Limits
+
+- One writer model, and two runs per situation (one per re-run cell). The editor is an LLM from the same family as the writer.
+- The arm with the skill had more turns and could run `node`.
+- Documents s06–s11 of B′ ran with a `copy-check.mjs` whose '가장 ~ 중 하나' FYI was broader than at the commit they started from.
+- These numbers show direction, not size.

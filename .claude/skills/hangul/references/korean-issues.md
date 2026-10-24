@@ -188,6 +188,7 @@ These came up most often in the 2026-10-25 test, and none of them can be matched
 - **Information out of order or repeated** (16 of 22 documents). This covers a summary restated at the end, background before the lead, and the same figure on three slides.
 - **One thing under two names** (10 of 22). `화상 미팅` and `화상 회의` in one mail, `할 일` and `액션 아이템` on one page.
 - **Subject, connective or collocation that doesn't agree** (10 of 22). `집밥은 시간이 부족합니다`, `1위를 만듭니다`.
+- **Words with two readings.** `세 시간 모두 어려우시면` means three hours as easily as three time slots. Write `세 일정`. In the with-skill test this was the most common issue left in e-mails.
 - **Pronouns with no antecedent, stacked modifiers, and meaning.**
 
 Read for them before running the checker. A clean run says nothing about them.
