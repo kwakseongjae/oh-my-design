@@ -1,5 +1,15 @@
 # JOURNAL
 
+## 2026-10-23 — README 슬림화, main 반영(968f76c4)
+- 한 일: README 4종을 훅·GenUI 영상·설치·두 갈래·첫 60초·링크로 압축했다(60~69줄). 상세는 docs/guide 3개로 옮기고, 로케일별 GenUI 영상을 녹화했다. 오너 OK 뒤 main에 병합하고 Vercel 라이브(llms-full)까지 확인, 브랜치·워크트리를 정리했다.
+- 열린 것: feat/hangul-launch에 main을 병합할 때 README 충돌 해소(슬림판 + skills.md에 hangul). npm README는 2.0.6 배포 때 바뀐다. /hangul r15는 계속 일시 중단.
+- 다음: 오너가 "작업 재개해줘"라고 하면 CURRENT_STATE의 ⏸ 항목에서 /hangul r15를 이어 간다.
+
+## 2026-10-21 밤 — /hangul 2차 진행 중 일시 중단
+- 한 일: /hangul 1차 통합(스킬·페이지·콘텐츠·블로그 수정, feat/hangul-launch). 오너 피드백(훈민정음 느낌, 오토 스와이프)으로 r15를 시작해 컨셉 보드·Song Myung·Codex 아트·오토 스와이프 컨트롤러까지 했다.
+- 열린 것: r15 break-demo 연결(WIP c1b8535a) → 해례본 스타일 → 검증 → 오너 프리뷰, 2.0.6 waiver.
+- 다음: CURRENT_STATE의 ⏸ 항목에서 재개한다.
+
 ## 2026-10-21 17시 — main 반영·2.0.5 출시·브랜치 정리
 - 한 일: rebrand-a를 main에 fast-forward하고 상태 문서를 병합, Vercel 라이브 확인, v2.0.5 npm 출시(1차 CI 흔들림은 재실행으로 통과). 워크트리 39개·로컬 브랜치 75개·원격 브랜치 27개 정리, 산출물은 보존.
 - 열린 것: 미병합 브랜치 정리 판단(/hangul·로고 갤러리·오래된 실험), 다음 큰 작업 선택.

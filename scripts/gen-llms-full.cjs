@@ -7,6 +7,7 @@
 //
 // Sources (in order):
 //   1. README.md                              — top-level pitch
+//      docs/guide/{skills,install,design-md}.md — what the slim README links out to
 //   2. CHANGELOG.md                            — full release history
 //   3. skills/omd-autopilot/SKILL.md           — autonomous entry point
 //   4. skills/omd-harness/SKILL.md             — guided entry point
@@ -135,6 +136,10 @@ parts.push(`# oh-my-design — llms-full.txt
 `);
 
 parts.push(section('README', safeRead('README.md')));
+// The README is a pitch; the skill list, per-agent install and the DESIGN.md formats live in these.
+parts.push(section('Guide — skills', safeRead('docs/guide/skills.md')));
+parts.push(section('Guide — install', safeRead('docs/guide/install.md')));
+parts.push(section('Guide — DESIGN.md', safeRead('docs/guide/design-md.md')));
 parts.push(section('CHANGELOG (full release history)', safeRead('CHANGELOG.md')));
 parts.push(section('Skill — omd:autopilot (one prompt → system → product → proof)', safeRead('skills/omd-autopilot/SKILL.md')));
 parts.push(section('Skill — omd:harness (Discovery → Wireframe → Components → Microcopy → Validation)', safeRead('skills/omd-harness/SKILL.md')));

@@ -5,7 +5,7 @@ oh-my-design gives your existing AI coding environment two things it can reuse a
 - a local catalog of 500+ real-company `DESIGN.md` references; and
 - skills and specialist roles for creating, applying, reviewing, and maintaining your own `DESIGN.md`.
 
-The CLI is the installer, updater, and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor 2.4+ receives 21 compatible Agent Skills, a small project bootstrap rule, and the catalog; it does not receive OmD's separately generated sub-agent definitions.
+The CLI is the installer, updater, and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor 2.4+ receives the compatible Agent Skills, a small project bootstrap rule, and the catalog; it does not receive OmD's separately generated sub-agent definitions.
 
 When you do not know what to ask next, route one sentence locally:
 

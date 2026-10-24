@@ -1,7 +1,22 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-21 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-23 19시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-10-23 · README 슬림화 — main 병합 완료 `968f76c4`
+
+- **10/23 오너 GO**("나쁘지 않네. 메인으로 ㄱㄱ") → `feat/readme-slim`을 main에 병합(`968f76c4`, no-ff)하고 push했다. 병합 뒤 check-counts·llms-full 검사 통과. GitHub main에서 README·영상 4개·가이드 3개가 열린다. Vercel Production 성공(약 140초). 라이브 `llms-full.txt`에 새 README와 가이드 3개가 들어 있다(생성 시각이 저장소본과 같음). `/`·`/ko`·`/docs/en`·아카이브·`/toss/design.md` 200. 브랜치(로컬·원격)와 `.claude/worktrees/readme`는 정리했다.
+
+- **요청(10/23).** README가 과하다. shadcn급으로 압축하고 위트 있게, DESIGN.md로 화면이 만들어지는 GenUI 영상을 넣고, 상세는 다른 MD로 옮긴다. 두 축은 DESIGN.md 아카이브와 CJK 프론트엔드 스킬.
+- **결과.** README 4종이 338·228·177·172줄에서 69·60·60·60줄이 됐다.
+  - 구성: 배너 · 태그라인(사이트 푸터 문장) · 훅 · GenUI 영상 · 설치 · 두 갈래 · 첫 60초(설치기의 실제 프롬프트) · 링크. 숫자는 500+만 남겼다.
+  - 훅은 로케일마다 따로 썼고, 출시된 스킬이 실제로 고치는 것만 골랐다. EN·KO는 `있어요` 줄바꿈(autopilot keep-all), JA는「〜することができます」(humanize JA), zh-TW는「視頻」(humanize ZH-TW).
+  - 영상: `docs/readme/genui-{en,ko,ja,zh-tw}.webp`(16초, 960×549, 약 550KB). 랜딩의 DESIGN.md→화면 섹션을 로케일별로 녹화했다(Toss·freee·104). 스크립트는 `scripts/readme/record-genui.cjs`.
+  - 옮긴 곳: `docs/guide/skills.md`(공개 스킬과 SKILL.md 링크), `install.md`(에이전트별·전역·Cursor·update), `design-md.md`(Core v2와 v3, 유도 사슬, 운영 트랜잭션). 번역 README는 자기 언어의 사이트 문서로 연결한다. 가이드도 개수 없이 썼다.
+- **같이 고친 것.** llms-full에 가이드 3개를 넣었다(재생성). 죽은 링크 `benchmarks/ui-resolve-bench/e2e/`(ee445abc 이후 미추적)를 뺐다. CLI_QUICKSTART의 Cursor 스킬 수(21, 실제 30)와 AGENTS.md의 없는 README 섹션 포인터를 지웠다. npm 패키지에 영상은 들어가지 않는다(files에 docs/readme 없음).
+- **검증.** check-counts·gen:llms-full:check 통과. web cli-docs·catalog-integrity 556 통과. 루트 vitest 1,514 통과, 부하 타임아웃 2개는 단독 실행에서 통과. GitHub 브랜치 렌더 4종을 확인했다(영상 로드, JA·zh-TW 줄 이음 공백 없음).
+- **프리뷰.** 오너가 GitHub 브랜치 렌더를 보고 OK했다(10/23).
+- **남은 것.** npm 페이지의 README는 다음 배포(2.0.6)에 바뀐다. `feat/hangul-launch`에 main을 병합하면 README 4종이 충돌한다 → 슬림판을 택하고 `docs/guide/skills.md`에 hangul 한 줄을 더한다.
 
 ## ▶ 2026-10-14 · 계측 기반 (성장 계획 P0/5) — 브랜치 `feat/growth-metrics`, main 미반영
 
@@ -71,6 +86,31 @@
     2. 2.0.6 태그의 strict 게이트 waiver.
     3. 게시 문안(`docs/research/2026-10-21-hangul/posts.md`)으로 Threads·X에 직접 게시한다.
   - **OK 뒤 순서:** main fast-forward → Vercel 라이브 확인 → CHANGELOG 날짜 확정 → `v2.0.6` 태그 → npm 확인 → r14 브랜치·워크트리 정리.
+  - **20:30 추가 확인.** 런치 브랜치 팁은 `6fc9ae7a`이고 main을 병합해 두어 fast-forward 가능하다. Vercel 프리뷰 성공.
+    - /hangul 자체 검사: 페이지 텍스트의 끊긴 단어는 0이다(검출된 1건은 데모의 '전' 프레임, 의도된 재현). check.mjs --strict에서 페이지 CSS 위반은 없다(specimens.css의 BLOCK·WARN은 의도된 재현, FYI 2건은 영어 제목 행간).
+    - 루트 게이트: lint·tsup·check:catalog·presets·bench·pack 위생(hangul 21파일) 통과. vitest는 1,512 통과, 실패 4는 ENOTCACHED 3개 + 부하 타임아웃 1개(단독 실행 통과).
+    - OG: `/hangul/og-ko.png`·`og-en.png` 200.
+    - CHANGELOG 문구를 수정했다(배민 글은 9/29 기발행 → "페이지를 링크한다"로).
+    - 알려진 항목: 비교 영상 속 Before/After 라벨이 KO 페이지에서도 영어다.
+- **10/21 오너 프리뷰 피드백 → /hangul 2차(r15) 진행 중.**
+  - 피드백: "나쁘진 않은데 훈민정음·한글 느낌 나게", 히어로 화면 폭 슬라이더는 일반인이 안 해 볼 것이다 → 오토 스와이프로 움직이는 것임을 보여 준다. Codex 이미지 활용 가능.
+  - 에이전트 `r15-hangul`. 워크트리 `.claude/worktrees/r15-hangul`, 브랜치 `feat/r15-hangul`(기준 feat/hangul-launch `6fc9ae7a`). 커밋만 한다.
+  - 아트 디렉션: 해례본 어휘(광곽·계선·판심·어미, 한지·먹, 주색 인장 1개 = 페이지 액센트, 상형·가획·천지인·모아쓰기, 세로쓰기 소품). 제목용 OFL 판본/명조 서체. Codex로 텍스처·인장·상형 도판을 만들되 이미지 안에 글자는 넣지 않는다. 컨셉 보드 2~3안 → 1안 선택.
+  - 히어로: 화면에 들어오면 한 번 3~4초 오토 스와이프한다. 사용자가 조작하면 즉시 멈추고, 안 건드리면 8초 뒤 1회 재생. "직접 밀어 보세요" 칩, 44px 엄지, 기기 눈금. 모션 줄이기면 정지.
+  - 계속 지킬 것: /hangul 자기 검사 통과, CLS < 0.05.
+- **⏸ 10/21 일시 중단(오너 요청, 빠르게·안전하게).** 재개 지점:
+  - **r15 /hangul 2차:** `feat/r15-hangul` `c1b8535a`(push 완료).
+    - 끝난 것:
+      - 컨셉 보드: 해례본 판면 방향 선택, `docs/research/2026-10-21-hangul/r15/concept/`.
+      - 제목 서체: Song Myung(OFL), 17.6KB 서브셋.
+      - Codex 아트: 한지 바탕, 빈 인장, 목판 먹.
+      - 오토 스와이프 컨트롤러와 테스트.
+    - 진행 중(마지막 WIP, 미검증): break-demo에 컨트롤러 연결.
+    - 다음: 연결 마무리 → 섹션을 해례본 방향으로 재스타일 → 빌드 → /hangul 자기 검사 → 스크린샷 → 오너 프리뷰.
+    - 결정 사항: 슬라이더 범위는 320~430 유지, 눈금 320·360·375·390·412·430. 기기 이름은 대표 폭일 때만 붙인다.
+  - **출시 대기:** `feat/hangul-launch` `6fc9ae7a`(1차 통합본, main에서 fast-forward 가능). r15가 끝나면 r15를 그 위에 얹어 다시 프리뷰한다.
+  - **오너 몫:** 프리뷰 OK, 2.0.6 strict 게이트 waiver, Threads·X 게시.
+  - 실행 중인 에이전트·Codex 작업 없음. 검수 서버 :3200은 내려가 있다. 다시 띄우려면 `cd .claude/worktrees/r14-integrate/web && npx next start -p 3200`.
 
 ## ▶ 2026-09-29 · 성장 전략 결정 17개 → 병렬 실행 착수 (521 · 227)
 
