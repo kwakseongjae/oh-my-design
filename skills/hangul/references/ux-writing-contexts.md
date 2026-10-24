@@ -19,6 +19,14 @@ Tiers as in `ux-writing.md`: **SPEC** = statute, 고시, orthography (verified i
 
 Two can apply at once: a 국립대병원 site is `medical` + `public`, a fintech landing is `commerce` + `finance`. Apply both rule sets; the checker takes one genre per file, so run it once per genre. Run the checker with `--context=<genre>`, or put a pragma in a file's first 10 lines (`<!-- hangul-context: medical -->`, `// hangul-context: report`, or a JSON key `"hangul-context": "public"`); the pragma wins.
 
+Without either, the checker detects three genres on strong evidence, one file at a time, and names each file it placed with the signals that decided it:
+
+- `medical`: two distinct clinic signals among the file's Korean strings (진료시간, 진료과목, 의료진, 휴진, 내원, 진료 예약, 원장 인사·소개, 야간 진료, 진료 안내, 접수 마감). A pet app's "동물병원 진료 예약" is one signal and stays `app`.
+- `public`: two distinct public-sector signals (누리집, 민원, 정부24, 주민센터·행정복지센터, 정보공개, 공공데이터, 전자정부 in the text; a `.go.kr` or `gov.kr` link, KRDS `krds-` classes in the markup). One government link stays `app`.
+- `report`: a slide-deck format marker only (reveal.js, Marp, Slidev). `report` switches HW-8 and HW-11 off, so a wrong guess would hide defects; a `reports/` or `slides/` folder (a dashboard, a carousel) and report-like wording never decide it.
+
+Precedence: pragma, then `--context`, then detection, then `app`. `--context=app` turns detection off. A file detection doesn't place gets exactly the output it got before genres existed. When a page shows both clinic and public-sector signals, the stronger side wins (medical on a tie); run again with `--context` for the other.
+
 ## 2. Report, PPT, internal documents (`report`)
 
 Changes from the default: bullets end in 명사형 (~함·~음·~임) and sentences in 합쇼체 or 해라체, **not 해요체** (this inverts the `app` profile's Toss-style 해요체 default; HW-11's one-level rule still holds, with the level set by the genre); HW-8's "say what the user did" doesn't apply, since a report states what was done; dates `2026. 10. 24.` and 24-hour times `14:00`; one piece of information per line. Short strings only: long narrative goes to omd-kr-writer (`biz-formal-report`), post-editing to omd-humanize.
@@ -163,7 +171,8 @@ The KMA board's standards change at its weekly meetings; recheck before citing t
 
 ## 10. Checker scope and limits
 
-- `--context` applies to every file in the run; a file's pragma overrides it; an unknown pragma is reported as `CTX` (WARN) and the run's genre applies. Without a context the output is the same as before contexts existed.
+- `--context` applies to every file in the run; a file's pragma overrides it; an unknown pragma is reported as `CTX` (WARN) and the run's genre (or detection) applies. Without a flag, detection (§1) places `report`, `medical` and `public` files on strong evidence and the output names them; every other file gets the same output as before contexts existed. `--context=app` turns detection off.
+- Detection reads one file at a time. A component with one clinic signal (a footer with the clinic's name) isn't placed even when the page beside it is; give the directory `--context=medical` or the file a pragma.
 - `report` turns off HW-11's 합쇼체/해요체 check and HW-8's system-wording FYI, and adds HW-R1…R4. `medical` and `public` keep every HW rule and add theirs. `commerce`, `dev`, `finance` and `notify` change nothing in the checker yet.
 - Legal text (a 약관 or privacy component or file) is skipped by HW-M*, HW-P1…P4 and HW-R*.
 - The checker can't see whether a page is an ad, whether a hospital is designated, or whether a claim has a source. A clean run is not legal clearance; a medical or commerce hit is a prompt to read the string with whoever owns the claim.

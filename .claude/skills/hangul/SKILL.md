@@ -82,15 +82,15 @@ HW-1 … HW-14 describe app and service UI; that is the default profile, `app`. 
 | Profile | When | What changes | Checker |
 |---|---|---|---|
 | `app` (default) | app and service screens | nothing: HW-1 … HW-14 | default |
-| `report` | 보고서, PPT, 슬라이드, 사내 문서 | bullets end in 명사형 (~함·~음), sentences in 합쇼체 or 해라체, never 해요체; 24-hour times; one fact per line; a slide title states the conclusion | `--context=report` (HW-R1 … R4) |
-| `medical` | hospital and clinic sites | 의료법 제56조 covers the clinic's own site: no cure or result guarantees, no "부작용 없는", no superlatives, no testimonials or before/after, no inducements; side effects named and never in small type | `--context=medical` (HW-M1 … M9, at most WARN) |
-| `public` | government, local-government and public-institution sites | 국어기본법 제14조: plain Korean, foreign script only in parentheses; 합쇼체 is fine; no '~할 것', '~ 바람', '~하라'; '장애인', not '장애우' | `--context=public` (HW-P1 … P5) |
+| `report` | 보고서, PPT, 슬라이드, 사내 문서 | bullets end in 명사형 (~함·~음), sentences in 합쇼체 or 해라체, never 해요체; 24-hour times; one fact per line; a slide title states the conclusion | `--context=report`, or detected from a reveal.js, Marp or Slidev deck (HW-R1 … R4) |
+| `medical` | hospital and clinic sites | 의료법 제56조 covers the clinic's own site: no cure or result guarantees, no "부작용 없는", no superlatives, no testimonials or before/after, no inducements; side effects named and never in small type | `--context=medical`, or detected from two clinic signals (HW-M1 … M9, at most WARN) |
+| `public` | government, local-government and public-institution sites | 국어기본법 제14조: plain Korean, foreign script only in parentheses; 합쇼체 is fine; no '~할 것', '~ 바람', '~하라'; '장애인', not '장애우' | `--context=public`, or detected from two public-sector signals (HW-P1 … P5) |
 | `commerce` | landing, product and promotion pages | superlatives need proof; a discount comes from the real prior price; the total price on the first price screen; cancelling as easy as joining | reference only |
 | `dev` | developer tools, B2B dashboards, CLIs | 외래어 표기법, product names untranslated; a developer error shows the message, then the code | reference only |
 | `finance` | loans, insurance, investment, terms | required disclosures word for word; no per-day premiums, no 원금 보장; 예금자보호 is 1억 원 | reference only |
 | `notify` | ad texts, push, 알림톡, marketing consent | "(광고)" first and a free opt-out last; consent says 광고성 정보 수신 동의 | reference only |
 
-A file can name its genre with a pragma in its first 10 lines (`<!-- hangul-context: medical -->`, or a JSON key `"hangul-context"`); it wins over the flag. When two genres apply (a 국립대병원 site is `medical` and `public`), apply both and run the checker once per genre. Long narrative in any genre goes to omd-kr-writer and omd-humanize.
+Which genre a file gets: its pragma in the first 10 lines (`<!-- hangul-context: medical -->`, or a JSON key `"hangul-context"`), else `--context`, else detection, else `app`. Detection only adds a genre on strong evidence: two distinct clinic signals for `medical` (진료시간, 의료진, 휴진, 내원…), two public-sector ones for `public` (민원, 정부24, a `.go.kr` link, KRDS classes…), and for `report`, which turns HW-8 and HW-11 off, only a slide-deck format marker, never a folder name or the wording. The checker names every file it placed and the signals that decided it; `--context=app` turns detection off. When two genres apply (a 국립대병원 site is `medical` and `public`), apply both and run the checker once per genre. Long narrative in any genre goes to omd-kr-writer and omd-humanize.
 
 ## 4. Decision table by surface
 
@@ -168,7 +168,7 @@ rg -n -e 'keep-all|break-keep' -e 'overflow-wrap|wrap-anywhere|break-words'
 rg -n -e 'text-autospace|text-spacing-trim|line-break\s*:\s*anywhere|auto-phrase' -e '[0-9]{4,}원'
 ```
 
-4. Run the copy checker: `node <this-skill-dir>/scripts/copy-check.mjs [--context=<genre>] <files-or-dirs>` (`--json`, `--strict`, and `--list` to see every Korean string it found with the role it guessed). It reads JSX/TSX text, HTML, attribute values, JS/TS string literals and JSON message files; it skips test, story and generated files. With `--context=report`, HW-11's 합쇼체/해요체 check and HW-8's system-wording note give way to HW-R1 … R4.
+4. Run the copy checker: `node <this-skill-dir>/scripts/copy-check.mjs [--context=<genre>] <files-or-dirs>` (`--json`, `--strict`, and `--list` to see every Korean string it found with the role it guessed). It reads JSX/TSX text, HTML, attribute values, JS/TS string literals and JSON message files; it skips test, story and generated files. Without `--context` it detects report, medical and public files (§3c) and names each one with the signals that placed it; check that each detection is right, and rerun with `--context` where it isn't. In a report, HW-11's 합쇼체/해요체 check and HW-8's system-wording note give way to HW-R1 … R4.
 5. Read every hit in context, drop false positives, and report with the §7 table.
 6. Optional render step, when the page can be opened (a dev-server URL or an `.html` file): `node <this-skill-dir>/scripts/render-check.mjs <url-or-file> [widths]`. It renders the page in headless Chrome at 360, 390 and 1440px and lists every Korean word broken across lines (`생 / 활`, `있어 / 요.`), which the source checker cannot see. It needs `playwright-core` (or `playwright`) and a local Chrome or Chromium; without them it prints how to install one and exits 0. Exit 1 means at least one broken word. Body prose may break between syllables by design (HG-10), so read each hit in context; headings, buttons, labels and captions should have none.
 

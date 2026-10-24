@@ -3,7 +3,7 @@
  * /hangul copy check: deterministic, dependency-free scan of the Korean UI copy in HTML, JSX/TSX,
  * JS/TS string literals and JSON message files. Node >= 18.
  *
- *   node copy-check.mjs [--json] [--strict] [--list] [--context=<name>] <file-or-dir>...
+ *   node copy-check.mjs [--json] [--strict] [--list] [--context=<name>|auto] <file-or-dir>...
  *   node copy-check.mjs --self-test
  *
  * Exit code: 1 if any BLOCK finding (with --strict: any BLOCK or WARN), otherwise 0.
@@ -11,12 +11,16 @@
  * --list prints every string it found with the role it guessed, which is how to see what the rules
  * were judging.
  *
- * --context names the surface genre (references/ux-writing-contexts.md): app (the default, which changes
- * nothing), report, medical, public, commerce, dev, finance, notify. report, medical and public add their
- * own rules (HW-R*, HW-M*, HW-P*) and report changes how HW-8 and HW-11 apply; the other genres have no
- * checker rules yet, so the HW defaults apply. A file can set its own genre with a pragma in its first 10
- * lines, which wins over the flag: a comment such as `hangul-context: report`, or a top-level JSON key
- * "hangul-context" with the genre as its value.
+ * --context names the surface genre (references/ux-writing-contexts.md): app (the HW defaults alone),
+ * report, medical, public, commerce, dev, finance, notify. report, medical and public add their own rules
+ * (HW-R*, HW-M*, HW-P*) and report changes how HW-8 and HW-11 apply; the other genres have no checker
+ * rules yet, so the HW defaults apply. Which genre a file gets: its pragma (a comment such as
+ * `hangul-context: report` in its first 10 lines, or a top-level JSON key "hangul-context"), else the
+ * flag, else detection (`auto`, the default), else app. --context=app turns detection off.
+ * Detection only ever adds a genre's rules on strong evidence: medical and public need two distinct
+ * signals in the file, and report (which switches HW-8 and HW-11 off) needs a slide-deck format marker
+ * (reveal.js, Marp, Slidev), never a folder name or the wording. A detected file is named in the output
+ * with the signals that decided it.
  *
  * It reads source, not the running product: it sees the strings written in the code and guesses each
  * one's role (button, empty state, toast, heading, label, placeholder, helper, body, alt text) from
@@ -504,6 +508,39 @@ function pragmaOf(raw) {
   for (let i = 0; i < head.length; i++) { const m = PRAGMA.exec(head[i]); if (m) return { name: m[1].toLowerCase(), line: i + 1 }; }
   return null;
 }
+// ---- genre detection (--context=auto, the default) ----
+// Each signal is [pattern, label]. Medical and public: two distinct signals in the file's Korean strings
+// (public also reads the markup for a government domain or KRDS classes). One mention never decides it:
+// a pet app's '동물병원 진료 예약' or one '.go.kr' link stays app. Report: a slide-deck format marker only.
+const DETECT_MEDICAL = [
+  [/진료\s?시간/, '진료시간'], [/진료\s?과목/, '진료과목'], [/의료진/, '의료진'], [/휴진/, '휴진'], [/내원/, '내원'],
+  [/진료\s?예약/, '진료 예약'], [/(?:대표\s?)?원장(?:님|\s?인사|\s?소개)/, '원장'], [/야간\s?진료/, '야간 진료'],
+  [/진료\s?안내/, '진료 안내'], [/접수\s?마감/, '접수 마감'],
+];
+const DETECT_PUBLIC = [
+  [/누리집/, '누리집'], [/민원/, '민원'], [/정부\s?24/, '정부24'], [/주민\s?센터|행정\s?복지\s?센터/, '주민센터'],
+  [/정보\s?공개/, '정보공개'], [/공공\s?데이터/, '공공데이터'], [/전자\s?정부/, '전자정부'],
+];
+const DETECT_PUBLIC_RAW = [[/[\w-]\.go\.kr\b|\/\/(?:www\.)?gov\.kr\b/, 'a .go.kr link'], [/\bkrds-[a-z]/, 'KRDS classes']];
+const DECK_MARKERS = [
+  [/\breveal(?:\.min)?\.(?:js|css)\b|class=["'][^"']*\breveal\b[^"']*["'][\s\S]*class=["'][^"']*\bslides\b/, 'reveal.js'],
+  [/^marp:\s*true\b|data-marpit|\bmarpit\b/m, 'Marp'],
+  [/@slidev\/|^\s*slidev:/m, 'Slidev'],
+];
+/** The genre the file's own content points to, or null: { genre, signals }. One genre per file. */
+function detectGenre(raw, found) {
+  for (const [re, label] of DECK_MARKERS) if (re.test(raw)) return { genre: 'report', signals: [label] };
+  const text = found.map((x) => x.text).join('\n');
+  const hits = (list, src) => list.filter(([re]) => re.test(src)).map(([, label]) => label);
+  const med = hits(DETECT_MEDICAL, text);
+  const pub = [...hits(DETECT_PUBLIC, text), ...hits(DETECT_PUBLIC_RAW, raw)];
+  // a 국립대병원 page can show both: the stronger side wins, medical on a tie (run again with --context for the other)
+  if (med.length >= 2 && med.length >= pub.length) return { genre: 'medical', signals: med };
+  if (pub.length >= 2) return { genre: 'public', signals: pub };
+  if (med.length >= 2) return { genre: 'medical', signals: med };
+  return null;
+}
+
 // report: 국립국어원 「쉬운 공문서 쓰기 길잡이」 제3부 제3장; 「행정업무규정」 제7조⑤; 「한글 맞춤법」 마침표 (1) [붙임 2]
 const NOUN_END = /\s[가-힣]*[함음임됨냄봄짐줌옴씀]\.?$/; // a 명사형 ending (확보함, 낮아짐, 있음) on a line of two or more words
 const CLOCK12 = /(?:오전|오후)\s?\d{1,2}\s?(?:시|:\d{2})/;
@@ -785,14 +822,15 @@ const FILE_RULES = [
   } },
 ];
 
-export { sentences, endingLevel, extract, jong, STRING_RULES, FILE_RULES, CONTEXTS, pragmaOf };
+export { sentences, endingLevel, extract, jong, STRING_RULES, FILE_RULES, CONTEXTS, pragmaOf, detectGenre };
 
 // ---- run -----------------------------------------------------------------------------
-function run(inputs, { base = process.cwd(), context = 'app' } = {}) {
+function run(inputs, { base = process.cwd(), context = 'auto' } = {}) {
   const files = collect(inputs);
   const F = new Findings();
   const strings = [];
   const contexts = {}; // file → genre, for every file that isn't 'app'
+  const detected = {}; // file → the signals that decided its genre, for files detection placed
   for (const abs of files) {
     const ext = path.extname(abs).toLowerCase();
     const raw = fs.readFileSync(abs, 'utf8');
@@ -800,13 +838,17 @@ function run(inputs, { base = process.cwd(), context = 'app' } = {}) {
     const rel = path.relative(base, abs);
     const file = (rel.startsWith('..') ? abs : rel).split(path.sep).join('/');
     const legalFile = LEGALISH.test(file);
-    // the file's own pragma wins over --context
-    const pragma = pragmaOf(raw);
-    let ctx = context;
-    if (pragma && CONTEXTS.includes(pragma.name)) ctx = pragma.name;
-    else if (pragma) F.add(file, pragma.line, 'WARN', 'CTX', `unknown hangul-context '${pragma.name}' (known: ${CONTEXTS.join(', ')}); ${context} rules applied`);
-    if (ctx !== 'app') contexts[file] = ctx;
     const found = extract(abs, ext, raw).map((x) => ({ ...x, file, legal: x.legal || legalFile }));
+    // the file's own pragma, then --context, then detection, then app
+    const pragma = pragmaOf(raw);
+    let ctx = context === 'auto' ? 'app' : context;
+    if (pragma && CONTEXTS.includes(pragma.name)) ctx = pragma.name;
+    else {
+      if (pragma) F.add(file, pragma.line, 'WARN', 'CTX', `unknown hangul-context '${pragma.name}' (known: ${CONTEXTS.join(', ')}); ${context === 'auto' ? 'detection' : context} applied`);
+      const d = context === 'auto' ? detectGenre(raw, found) : null;
+      if (d) { ctx = d.genre; detected[file] = d.signals; }
+    }
+    if (ctx !== 'app') contexts[file] = ctx;
     for (const s of found) for (const r of STRING_RULES) r.check(s, (sev, msg) => F.add(file, s.line, sev, r.id, msg), ctx);
     for (const r of FILE_RULES) r.check(found, (line, sev, msg) => F.add(file, line, sev, r.id, msg), ctx);
     strings.push(...found);
@@ -816,12 +858,16 @@ function run(inputs, { base = process.cwd(), context = 'app' } = {}) {
   for (const x of findings) summary[x.severity]++;
   const res = { files: files.length, strings, findings, summary };
   if (Object.keys(contexts).length) res.contexts = contexts;
+  if (Object.keys(detected).length) res.detected = detected;
   return res;
 }
 
 function printHuman(res, exit, list) {
   const genres = res.contexts ? [...new Set(Object.values(res.contexts))].sort().join(', ') : '';
   const out = [`/hangul copy-check · ${res.files} file(s) · ${res.strings.length} Korean string(s)${genres ? ` · context ${genres}` : ''}`];
+  if (res.detected) {
+    for (const [file, signals] of Object.entries(res.detected)) out.push(`${file}  detected as ${res.contexts[file]} (${signals.join(', ')}); --context=app turns detection off`);
+  }
   if (list) for (const s of res.strings) out.push(`${s.file}:${s.line}  [${s.role}${s.err ? ',error' : ''}${s.dialog ? ',dialog' : ''}${s.link ? ',link' : ''}]  ${s.text}`);
   const w = Math.max(0, ...res.findings.map((f) => `${f.file}:${f.line}`.length));
   for (const f of res.findings) out.push(`${`${f.file}:${f.line}`.padEnd(w)}  ${f.severity.padEnd(5)}  ${f.rule.padEnd(5)}  ${f.message}`);
@@ -884,6 +930,19 @@ const EXPECTED = {
   'ctx-good': [],
   // ctx-pragma, no flag: a report pragma turns HW-11 into HW-R1 for its own file only; an unknown genre is reported
   'ctx-pragma': ['app.html:4 WARN HW-11', 'app.html:5 WARN HW-11', 'deck.html:5 WARN HW-R1', 'typo.html:1 WARN CTX'],
+  // detection (no flag): a clinic page with two medical signals, a notice with three public ones, a reveal.js deck
+  'auto-medical': ['clinic.html:7 WARN HW-M1', 'clinic.html:8 WARN HW-M3', 'clinic.html:9 WARN HW-M4'],
+  'auto-public': ['notice.html:6 FYI HW-P1', 'notice.html:7 WARN HW-P5'],
+  'auto-report': ['deck.html:8 WARN HW-R1', 'deck.html:9 FYI HW-R4', 'deck.html:10 FYI HW-R4', 'deck.html:11 FYI HW-R3'],
+  // the bait stays app: one medical signal (동물병원 진료 예약), one .go.kr link, a reports/ folder whose mixed
+  // levels HW-11 still catches, and a carousel under components/slides/
+  'auto-app': ['reports/Monthly.tsx:5 WARN HW-11', 'reports/Monthly.tsx:6 WARN HW-11'],
+};
+// What detection must decide for each fixture run without a flag (file → genre); every other fixture, none.
+const DETECTED = {
+  'auto-medical': { 'clinic.html': 'medical' },
+  'auto-public': { 'notice.html': 'public' },
+  'auto-report': { 'deck.html': 'report' },
 };
 
 // The genre a context fixture runs under. The others run under the default, and ctx-good and ctx-pragma
@@ -898,7 +957,7 @@ function selfTest() {
   for (const name of Object.keys(EXPECTED)) {
     const at = path.join(dir, name);
     if (!fs.existsSync(at)) { parts.push(`${name} missing`); ok = false; continue; }
-    const res = run([at], { base: at, context: CONTEXT_OF[name] || 'app' });
+    const res = run([at], { base: at, context: CONTEXT_OF[name] || 'auto' });
     const got = new Set(res.findings.map(key));
     const want = new Set(EXPECTED[name]);
     const missing = [...want].filter((k) => !got.has(k));
@@ -907,12 +966,16 @@ function selfTest() {
     parts.push(`${name} ${res.findings.length} (${res.summary.BLOCK} BLOCK · ${res.summary.WARN} WARN · ${res.summary.FYI} FYI), expected ${want.size}`);
     for (const k of missing) console.log(`  ${name} missing: ${k}`);
     for (const k of extra) console.log(`  ${name} unexpected: ${k} ${res.findings.find((f) => key(f) === k).message}`);
+    if (!CONTEXT_OF[name]) {
+      const got = Object.fromEntries(Object.keys(res.detected || {}).map((f) => [f, res.contexts[f]]));
+      if (JSON.stringify(got) !== JSON.stringify(DETECTED[name] || {})) { ok = false; console.log(`  ${name} detected ${JSON.stringify(got)}, expected ${JSON.stringify(DETECTED[name] || {})}`); }
+    }
   }
-  // the genre fixtures run without their context must raise no genre rule (HW-R*, HW-M*, HW-P*)
+  // --context=app turns every genre off: the genre fixtures raise no genre rule (HW-R*, HW-M*, HW-P*) under it
   const leaks = [];
-  for (const name of Object.keys(CONTEXT_OF)) {
+  for (const name of [...Object.keys(CONTEXT_OF), ...Object.keys(DETECTED)]) {
     const at = path.join(dir, name);
-    if (fs.existsSync(at)) for (const f of run([at], { base: at }).findings) if (/^HW-[A-Z]/.test(f.rule)) leaks.push(`${name} ${key(f)}`);
+    if (fs.existsSync(at)) for (const f of run([at], { base: at, context: 'app' }).findings) if (/^HW-[A-Z]/.test(f.rule)) leaks.push(`${name} ${key(f)}`);
   }
   for (const k of leaks) console.log(`  genre rule outside its context: ${k}`);
   const first = JSON.stringify(run([path.join(dir, 'bad')], { base: path.join(dir, 'bad') }));
@@ -926,7 +989,7 @@ function selfTest() {
 function main(argv) {
   const flags = new Set();
   const inputs = [];
-  let context = 'app';
+  let context = 'auto';
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--context') context = argv[++i] ?? '';
@@ -935,12 +998,12 @@ function main(argv) {
     else inputs.push(a);
   }
   if (flags.has('--help') || (!inputs.length && !flags.has('--self-test'))) {
-    console.log(`usage: node copy-check.mjs [--json] [--strict] [--list] [--context=<${CONTEXTS.join('|')}>] <file-or-dir>...\n       node copy-check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN)`);
+    console.log(`usage: node copy-check.mjs [--json] [--strict] [--list] [--context=<auto|${CONTEXTS.join('|')}>] <file-or-dir>...\n       node copy-check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN); --context defaults to auto (detection), app turns it off`);
     return flags.has('--help') ? 0 : 2;
   }
   if (flags.has('--self-test')) return selfTest();
-  if (!CONTEXTS.includes(context)) {
-    console.error(`unknown --context '${context}' (known: ${CONTEXTS.join(', ')})`);
+  if (context !== 'auto' && !CONTEXTS.includes(context)) {
+    console.error(`unknown --context '${context}' (known: auto, ${CONTEXTS.join(', ')})`);
     return 2;
   }
   const res = run(inputs, { context });
