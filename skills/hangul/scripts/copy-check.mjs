@@ -631,14 +631,26 @@ function pragmaOf(raw) {
 }
 // ---- detection (--context=auto, the default) ----
 // Only a format marker decides it: a reveal.js, Marp or Slidev deck. A deck switches HW-8's and HW-11's UI
-// checks off, so a folder name ('slides/' is a carousel as often as a deck) or the wording never does.
+// checks off, so a folder name ('slides/' is a carousel as often as a deck) or the wording never does. A marker
+// counts only where the format puts it: in a Markdown or text file, a key in its front matter; elsewhere, a
+// tag, an attribute or an import. A document that merely names reveal.js or Marp is not a deck.
 const DECK_MARKERS = [
-  [/\breveal(?:\.min)?\.(?:js|css)\b|class=["'][^"']*\breveal\b[^"']*["'][\s\S]*class=["'][^"']*\bslides\b/, 'reveal.js'],
-  [/^marp:\s*true\b|data-marpit|\bmarpit\b/m, 'Marp'],
-  [/@slidev\/|^\s*slidev:/m, 'Slidev'],
+  [/<(?:script|link)\b[^>]*\breveal(?:\.min)?\.(?:js|css)\b|class=["'][^"']*\breveal\b[^"']*["'][\s\S]*class=["'][^"']*\bslides\b/, 'reveal.js'],
+  [/\bdata-marpit\b|class=["'][^"']*\bmarpit\b/, 'Marp'],
+  [/(?:from\s+|import\s*\(\s*|require\s*\(\s*|["'])@slidev\//, 'Slidev'],
+];
+const FRONT_MATTER_MARKERS = [
+  [/^marp:\s*true\b/m, 'Marp'],
+  [/^slidev:/m, 'Slidev'],
 ];
 /** The situation the file's own content points to, or null: { genre, signals }. */
-function detectGenre(raw) {
+function detectGenre(raw, ext = '') {
+  if (PROSE_EXT.has(ext)) {
+    const fm = raw.match(/^---\s*\n([\s\S]*?)\n(?:---|\.\.\.)\s*(?:\n|$)/);
+    if (!fm) return null;
+    for (const [re, label] of FRONT_MATTER_MARKERS) if (re.test(fm[1])) return { genre: 'deck', signals: [label] };
+    return null;
+  }
   for (const [re, label] of DECK_MARKERS) if (re.test(raw)) return { genre: 'deck', signals: [label] };
   return null;
 }
@@ -1029,7 +1041,7 @@ function run(inputs, { base = process.cwd(), context = 'auto' } = {}) {
     if (pragma && CONTEXTS.includes(pragma.name)) ctx = pragma.name;
     else {
       if (pragma) F.add(file, pragma.line, 'WARN', 'CTX', `unknown hangul-context '${pragma.name}' (known: ${CONTEXTS.join(', ')}); ${context === 'auto' ? 'detection' : context} applied`);
-      const d = context === 'auto' ? detectGenre(raw) : null;
+      const d = context === 'auto' ? detectGenre(raw, ext) : null;
       if (d) { ctx = d.genre; detected[file] = d.signals; }
     }
     if (ctx !== 'app') contexts[file] = ctx;
@@ -1101,10 +1113,11 @@ const EXPECTED = {
   'ctx-good': [],
   // ctx-pragma, no flag: a report pragma turns HW-11 into HW-R1 for its own file only; an unknown situation is reported
   'ctx-pragma': ['app.html:4 WARN HW-11', 'app.html:5 WARN HW-11', 'deck.html:5 WARN HW-R1', 'typo.html:1 WARN CTX', 'mail.md:2 FYI HW-10', 'mail.md:6 FYI HW-10'],
-  // detection (no flag): a reveal.js deck
-  'auto-report': ['deck.html:8 WARN HW-R1', 'deck.html:9 FYI HW-R4', 'deck.html:10 FYI HW-R4', 'deck.html:11 FYI HW-R3'],
+  // detection (no flag): a reveal.js deck, and a Marp deck whose front matter says so
+  'auto-report': ['deck.html:8 WARN HW-R1', 'deck.html:9 FYI HW-R4', 'deck.html:10 FYI HW-R4', 'deck.html:11 FYI HW-R3', 'slides.md:8 WARN HW-R1'],
   // the bait stays app: a reports/ folder whose mixed levels HW-11 still catches, a carousel under
-  // components/slides/, a page with one clinic word and one .go.kr link (whose '국내 최고' is a claim, HW-12)
+  // components/slides/, a page with one clinic word and one .go.kr link (whose '국내 최고' is a claim, HW-12),
+  // and notes that name reveal.js, Marp and data-marpit in their text
   'auto-app': ['reports/Monthly.tsx:5 WARN HW-11', 'reports/Monthly.tsx:6 WARN HW-11', 'NearbyVets.tsx:5 FYI HW-12'],
   // every situation (owner 2026-10-25): an ad-consent toggle labelled as a benefit, and '장애우'; the privacy-consent
   // and 마케팅 정보 수신 동의 labels, a benefit notice title and a sentence about benefit notices stay quiet
@@ -1147,7 +1160,7 @@ const EXPECTED = {
 const EVERY_PROFILE = new Set(['HW-P5', 'HW-D1', 'HW-D2', 'HW-D3', 'HW-D4']);
 // What detection must decide for each fixture run without a flag (file → situation); every other fixture, none.
 const DETECTED = {
-  'auto-report': { 'deck.html': 'deck' },
+  'auto-report': { 'deck.html': 'deck', 'slides.md': 'deck' },
 };
 
 // The situation a fixture runs under. The others run under the default (auto), and ctx-good and ctx-pragma set
