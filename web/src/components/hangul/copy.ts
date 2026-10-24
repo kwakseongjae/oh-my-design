@@ -106,7 +106,7 @@ const KO: HangulCopy = {
   hero: {
     kicker: "한국어 조판·문구 스킬",
     h1: "같은 화면, 다른 한국어",
-    lede: "왼쪽은 스킬 없이, 오른쪽은 /hangul로 만든 화면이에요. 조판과 문구 말고는 모두 같아요. /hangul은 코딩 에이전트에게 한국어 조판 규칙 14가지와 문구 규칙 14가지를 알려 주는 스킬이에요.",
+    lede: "스킬 없이 만든 화면과 /hangul로 만든 화면이에요. 조판과 문구 말고는 모두 같아요. /hangul은 코딩 에이전트에게 한국어 조판 규칙 14가지와 문구 규칙 14가지를 알려 주는 스킬이에요.",
     cta: "설치하기",
     ctaRules: "규칙 28가지 보기",
     tagsLabel: "두 화면에서 달라진 곳",
@@ -215,7 +215,7 @@ const EN: HangulCopy = {
   hero: {
     kicker: "Korean typography and writing skill",
     h1: "Same screen, different Korean",
-    lede: "Left: without the skill. Right: built with /hangul. Only the typesetting and the words differ. /hangul is a skill that gives coding agents 14 rules for Korean typography and 14 for Korean UI copy.",
+    lede: "One screen built without the skill, one with /hangul. Only the typesetting and the words differ. /hangul is a skill that gives coding agents 14 rules for Korean typography and 14 for Korean UI copy.",
     cta: "Install",
     ctaRules: "See the 28 rules",
     tagsLabel: "What differs between the two screens",
