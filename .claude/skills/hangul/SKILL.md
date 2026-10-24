@@ -205,4 +205,5 @@ Every run ends with this table, in the user's language. One row per change; Why 
 - [`scripts/render-check.mjs`](./scripts/render-check.mjs): the optional rendered word-break check (needs `playwright-core` and Chrome/Chromium). `node scripts/render-check.mjs --self-test` renders `scripts/fixtures/render/`.
 - [`references/ux-writing.md`](./references/ux-writing.md): every writing rule (HW-1 … HW-14) with sources, tiers, the plain-word table, speech level by source, the 2026-10-24 verification log, and the Unverified list.
 - [`scripts/copy-check.mjs`](./scripts/copy-check.mjs): the deterministic copy checker, zero dependencies. `node scripts/copy-check.mjs --self-test` runs `scripts/fixtures/copy/` (`bad`, `good`, `fp`, `tp`).
+- [`references/eval-2026-09.md`](./references/eval-2026-09.md) and [`references/eval-2026-10-writing.md`](./references/eval-2026-10-writing.md): the before/after evals of the typography and writing layers, with the caveats to quote alongside their numbers.
 - [`NOTICE.md`](./NOTICE.md): attribution for SEED Design (Apache-2.0) and toss/apps-in-toss-harness (BSD-3-Clause).
