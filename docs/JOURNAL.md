@@ -1,5 +1,5 @@
 ## 2026-10-24 — /hangul 문구 계층 완성, 사전 등록 평가는 '기준 미충족'으로 정직하게 보고
-- 한 일: HW-1~14 + copy-check + 근거 문서, 36회 평가(Codex·Claude), 평가 문서, 페이지 `#writing`, CHANGELOG·llms·docs, main 병합. 브랜치 `feat/hangul-launch-r2` `fa34610e` 푸시, 프리뷰 빌드 성공.
+- 한 일: HW-1~14 + copy-check + 근거 문서, 36회 평가(Codex·Claude), 평가 문서, 페이지 `#writing`, CHANGELOG·llms·docs, main 병합. 브랜치 `feat/hangul-launch-r2` `ffa9e979` 푸시, 프리뷰 빌드 성공.
 - 결과: BLOCK+WARN 중앙값 0→0(기준 미충족). 지적이 나온 결과물 11/18→2/18(대부분 제목 끝 마침표 FYI). 검사기 오류 10건 수정, 사전 등록판 수치도 함께 공개.
 - 실패: Claude 서브에이전트가 레포의 CURRENT_STATE 규칙 메모를 읽어 A 9개 중 5개가 오염됐다. Codex만 깨끗하다. 메모리에 재발 방지책을 적었다.
 - 열린 것: 오너 프리뷰(시각 GO), main 병합, 2.0.6 출시 GO와 strict waiver. packaged smoke 3개는 로컬 npm 캐시 탓에 main에서도 실패한다.

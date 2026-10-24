@@ -3,7 +3,7 @@
 갱신: **2026-10-24 16시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-10-24 · /hangul UX 라이팅 계층 + 문구 평가 완료 — `feat/hangul-launch-r2` `fa34610e`, 오너 프리뷰 대기
+## ▶ 2026-10-24 · /hangul UX 라이팅 계층 + 문구 평가 완료 — `feat/hangul-launch-r2` `ffa9e979`, 오너 프리뷰 대기
 
 - **오너 요청·결정(10/24).** UX 라이팅을 실제 연구 근거로 고도화해 `hangul`에 넣는다(토스 앱인토스 하네스, 당근, 대기업 사례). 2.0.6은 문구 비교 평가가 끝난 뒤 출시. 평가 채널은 Claude 서브에이전트(Sonnet)와 Codex CLI.
 - **만든 것(브랜치 `feat/hangul-launch-r2`, 원격 푸시 완료).**
@@ -27,7 +27,7 @@
   - QA: `next start`로 ko/en 1440·390을 확인했다. 넘침 0, 끊긴 한국어 낱말 0(360 포함, 페이지 전체), 표제 서체 로드. 캡처는 `docs/research/2026-10-21-hangul/r15/qa/writing-*.png`.
   - 페이지 소스에 copy-check를 돌리면 인용한 '나쁜 예시'만 걸리고, check.mjs는 의도된 '전' 견본(specimens.css)만 건다.
 - **오너 대기.**
-  - 프리뷰 확인(시각 GO): https://oh-my-design-c2pqvetop-kwakseongjaes-projects.vercel.app/ko/hangul (Vercel 로그인 필요)
+  - 프리뷰 확인(시각 GO): https://oh-my-design-git-feat-hangul-launch-r2-kwakseongjaes-projects.vercel.app/ko/hangul (브랜치 별칭, 최신 배포 https://oh-my-design-lsueqsjfg-kwakseongjaes-projects.vercel.app — 둘 다 Vercel 로그인 필요)
   - 그 뒤 main 병합 → 2.0.6 출시 GO와 strict 게이트 waiver.
 - **다음.** GO 시 main 병합 → 라이브 확인 → `v2.0.6` 태그 → npm 확인 → 상태 문서 갱신. 선택: `docs/research/2026-10-21-hangul/posts.md`에 문구 규칙 게시물 초안(평가 수치를 인용하면 주의 사항을 함께, 토스·당근 보증 표현 금지).
 
