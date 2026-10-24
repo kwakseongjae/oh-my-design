@@ -495,6 +495,8 @@ const DOUBLE_NEG = /(?:지 않으면|안 하면|없으면)[^.!?]{0,20}(?:수 없
 const OBJECT_HONORIFIC = /(나오셨|품절이(?:세요|십니다|시네요)|매진이(?:세요|십니다)|(?:접수|등록|변경|취소|발송|배송|결제|완료|적립|할인|입고|준비|처리|승인|해지|연결|설치|저장|삭제|품절|매진)되셨|말씀이 계시)/;
 const LOSS = /놓치(?:면|지 마|시면|기 전에)|손해(?:예요|입니다|를 보|볼)|후회(?:할|하실|하지 않)|마지막 기회|지금 (?:아니면|안 하면)|(?:곧|오늘) (?:마감|종료|사라져)|(?:품절|매진) 임박|서두르세요/;
 const DECLINE = /^(아니요|아니오|괜찮아요|됐어요|싫어요|다음에|안 ?할래요)[,.\s]/;
+// consent to advertising labelled as a benefit ('혜택 알림 받기'): references/ux-writing-contexts.md HW-N2
+const AD_CONSENT_AS_BENEFIT = /혜택\s?(?:알림|소식)\s?(?:받기|수신|동의)/;
 const SHAME = /(포기|손해|안 받|필요 없|비싸게|싫|버릴|안 할래|모를래|관심 없)/;
 
 // ---- surface genres (references/ux-writing-contexts.md) -------------------------------
@@ -544,7 +546,8 @@ function detectGenre(raw, found) {
 // report: 국립국어원 「쉬운 공문서 쓰기 길잡이」 제3부 제3장; 「행정업무규정」 제7조⑤; 「한글 맞춤법」 마침표 (1) [붙임 2]
 const NOUN_END = /\s[가-힣]*[함음임됨냄봄짐줌옴씀]\.?$/; // a 명사형 ending (확보함, 낮아짐, 있음) on a line of two or more words
 const CLOCK12 = /(?:오전|오후)\s?\d{1,2}\s?(?:시|:\d{2})/;
-// medical: 의료법 제27조③·제42조·제56조②, 시행령 제23조①, and the 대한의사협회 의료광고심의위원회 list (2025-09-18)
+// medical: 의료법 제27·42·56조 and its decree, and the medical-ad review boards' frequent corrections. The dated evidence is
+// in references/ux-writing-contexts.md §9; messages name the article, never a clause, a figure or a list date.
 const M_CURE = /완치(?!\s?(?:판정|기준|여부|라는|란|는\s?어렵|가\s?어렵|되지\s?않|할\s?수\s?없|를\s?(?:장담|보장)할\s?수\s?없))/;
 const M_GUARANTEE = /100\s?%\s?(?:효과|성공|만족|완치|회복|개선|보장|안전|효능)|(?:효과|결과|성공)(?:를|가|을|는)?\s?보장(?!할\s?수\s?없|하지\s?(?:않|못)|되지\s?않)|확실한\s?효과|효과(?:가|는)?\s?확실|반드시\s?(?:효과|낫|좋아|치료|개선)|책임(?:집니다|질게요|져요|지겠습니다)/;
 const M_NOHARM = /(?:부작용|통증|흉터|붓기|출혈|재발|후유증|감염)(?:이나|이|가|은|는|도|과|와|나)?\s?(?:전혀\s?|거의\s?)?(?:없(?:는|이|고|어요|습니다|음|다|으며)|제로|0\s?%|걱정\s?(?:없|마세요))/g;
@@ -557,7 +560,7 @@ const M_PCT = /(\d{1,3})\s?%\s?(?:할인|DC|OFF|세일)/i;
 const M_EVENT = /반값|특가|할인\s?이벤트|이벤트\s?(?:가격|가(?![가-힣])|진행)|파격\s?(?:할인|가격)/;
 const M_SPECIALTY = /(?<!지정\s?[가-힣]{0,8})전문\s?병원|특화|노하우|전문(?=\s?(?:클리닉|센터|진료|치료|시술|의원)|$)/;
 const M_ENDORSE = /(?:추천|선정|수상|인증|보증|공인)\s?(?:병원|의원|의료기관|의사|클리닉)|베스트\s?닥터|감사장|상장|(?:학회|협회|언론|방송|매체|고객|소비자)\s?(?:추천|선정|인증)/;
-const M_ENDORSE_OK = /보건복지부\s?인증|의료기관\s?인증|의료기관평가인증원/; // 제56조제2항제14호 가목: the statutory certification may be shown
+const M_ENDORSE_OK = /보건복지부\s?인증|의료기관\s?인증|의료기관평가인증원/; // the official certification may be shown
 const M_KMA = [
   [/(?:한\s?번에|한번에)\s?(?:해결|끝|치료|완성|개선|교정)/, "'한번에' → '동시에' or '한곳에서'"],
   [/당일\s?(?:시술|수술|회복|퇴원|효과)|빠른\s?(?:회복|치료|효과)|바로\s?일상\s?(?:생활|복귀)|즉시\s?효과/, "a speed claim becomes '…지향' ('빠른 회복 지향')"],
@@ -656,6 +659,8 @@ const STRING_RULES = [
     const t = s.text.trim();
     if (s.role === 'button' && DECLINE.test(t + ' ') && SHAME.test(t)) report('WARN', `decline option that shames the user ('${t}'): write a neutral '다음에 할게요' or '닫기'`);
     else if (LOSS.test(t)) report('FYI', 'loss or pressure framing; say what the user gets instead');
+    // every profile (owner 2026-10-25): a short label only, so a sentence about benefit notices stays quiet
+    if (!s.legal && t.length <= 30 && AD_CONSENT_AS_BENEFIT.test(t)) report('FYI', `consent label that reads as a benefit ('${t}'): if it asks consent to advertising, call it that ('광고성 정보 수신 동의 (선택)') and keep it optional; ignore this if it isn't about ads`);
   } },
   { id: 'HW-13', check(s, report) {
     if (!isUi(s)) return;
@@ -671,7 +676,7 @@ const STRING_RULES = [
   // ---- genre: report (HW-R*), string-level; HW-R1, HW-R2 and HW-R4 are file rules ----
   { id: 'HW-R3', check(s, report, ctx) {
     if (ctx !== 'report' || !isUi(s) || s.legal) return;
-    if (CLOCK12.test(s.text)) report('FYI', "12-hour time ('오후 2시'): reports use 24-hour '14:00' (행정업무규정 제7조제5항, binding for 공문서)");
+    if (CLOCK12.test(s.text)) report('FYI', "12-hour time ('오후 2시'): reports use 24-hour '14:00', the 공문서 standard");
   } },
 
   // ---- genre: medical (HW-M*). A clinic's own site is inside 의료법 제56조 (its ① covers 인터넷) though
@@ -679,58 +684,55 @@ const STRING_RULES = [
   { id: 'HW-M1', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     const m = s.text.match(M_CURE) || s.text.match(M_GUARANTEE);
-    if (m) report('WARN', `guaranteed result or cure ('${m[0].trim()}'): 의료법 제56조제2항제2호 and 시행령 제23조제1항제2호 forbid saying a treatment always works; say what it aims at ('통증 개선을 목표로 해요')`);
+    if (m) report('WARN', `guaranteed result or cure ('${m[0].trim()}'): medical ads may not promise that a treatment works (의료법 제56조); say what it aims at ('통증 개선을 목표로 해요')`);
   } },
   { id: 'HW-M2', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     for (const m of s.text.matchAll(M_NOHARM)) {
       const end = m.index + m[0].length;
       if (M_NOHARM_OK.test(s.text.slice(end, end + 16))) continue;
-      report('WARN', `'${m[0].trim()}': an absolute about side effects or pain; 의료법 제56조제2항제7호·제8호 (중요 정보 누락, 과장); name the possible side effects instead`);
+      report('WARN', `'${m[0].trim()}': an absolute about side effects or pain hides what a patient needs to know (의료법 제56조); name the possible side effects instead`);
       break;
     }
   } },
   { id: 'HW-M3', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     const m = s.text.match(M_SUPER);
-    if (m) report('WARN', `superlative or exclusive claim ('${m[0].trim()}'): 과장·비교 광고 (의료법 제56조제2항제4호·제8호); the KMA review board rejects 최고·최신·최초·획기적; state a checkable fact with its source, or drop it`);
+    if (m) report('WARN', `superlative or exclusive claim ('${m[0].trim()}'): exaggeration and comparison are barred in medical ads (의료법 제56조); state a checkable fact with its basis, or drop it`);
   } },
   { id: 'HW-M4', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     const m = s.text.match(M_REVIEW);
-    if (m) report('WARN', `patient testimonial or before/after ('${m[0].trim()}'): 치료경험담 광고 (의료법 제56조제2항제2호, 시행령 제23조제1항제2호), on the clinic's own site too`);
+    if (m) report('WARN', `patient testimonial or before/after ('${m[0].trim()}'): barred in medical ads, on the clinic's own site too (의료법 제56조)`);
   } },
   { id: 'HW-M5', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     const m = s.text.match(M_INDUCE);
-    if (m) report('WARN', `inducing patients ('${m[0].trim()}'): rewards for reviews, 본인부담금 면제·할인, free procedures and first-come offers are 환자 유인 (의료법 제27조제3항)`);
+    if (m) report('WARN', `inducing patients ('${m[0].trim()}'): review rewards, waived or discounted copays, free procedures and first-come offers lure patients (의료법 제27조)`);
   } },
   { id: 'HW-M6', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
-    const pct = s.text.match(M_PCT);
-    const m = pct || s.text.match(M_EVENT);
-    if (!m) return;
-    const big = pct ? Number(pct[1]) >= 50 : /반값/.test(m[0]);
-    report(big ? 'WARN' : 'FYI', `discount or event on 비급여 care ('${m[0].trim()}'): state the amount, who, how long and the price before it (시행령 제23조제1항제13호); the KMA review board rejects 진료비용·이벤트·할인 wording${big ? '; 보건복지부 treated 50%+ discounts as excessive inducement (2017)' : ''}`);
+    const m = s.text.match(M_PCT) || s.text.match(M_EVENT);
+    if (m) report('FYI', `discount or event on non-covered care ('${m[0].trim()}'): state the amount, who it is for, how long, and the regular price; review boards often reject event and discount wording`);
   } },
   { id: 'HW-M7', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     const m = s.text.match(M_SPECIALTY);
-    if (m) report('FYI', `'${m[0].trim()}': only a hospital designated by 보건복지부 may use 전문병원 (의료법 제42조제1항제2호; '보건복지부 지정 ○○전문병원 (지정기간: …)'); for a focus area the KMA board accepts '중점진료' or '집중진료'`);
+    if (m) report('FYI', `'${m[0].trim()}': only a hospital 보건복지부 designated may say 전문병원, in the designated form (의료법 제42조); for a focus area write '중점진료' or '집중진료'`);
   } },
   { id: 'HW-M8', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal || M_ENDORSE_OK.test(s.text)) return;
     const m = s.text.match(M_ENDORSE);
-    if (m) report('FYI', `endorsement, award or certification ('${m[0].trim()}'): 의료법 제56조제2항제14호 allows only 의료기관 인증 and public or statutory certification ('보건복지부 인증 의료기관 (유효기간: …)')`);
+    if (m) report('FYI', `endorsement, award or certification ('${m[0].trim()}'): only official certifications such as 의료기관 인증 may be shown, in their official form (의료법 제56조)`);
   } },
   { id: 'HW-M9', check(s, report, ctx) {
     if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
     const t = s.text.trim();
     // a label that is only '(더) 알아보기' is a CTA, whatever element holds it (an <a> is read with its parent)
-    if (/^(?:더\s?)?알아보기$/.test(t)) { report('FYI', "CTA '알아보기': the KMA review board asks for '문의하기' in medical ads"); return; }
+    if (/^(?:더\s?)?알아보기$/.test(t)) { report('FYI', "CTA '알아보기' reads as advertising on a clinic page; '문의하기' or '예약 문의하기' says what happens"); return; }
     for (const [re, fix] of M_KMA) {
       const m = t.match(re);
-      if (m) { report('FYI', `'${m[0].trim()}': often rejected by the KMA review board (2025-09-18); ${fix}`); return; }
+      if (m) { report('FYI', `'${m[0].trim()}': overstates how quick or easy a treatment is; describe what happens instead (${fix})`); return; }
     }
   } },
 
@@ -751,8 +753,9 @@ const STRING_RULES = [
     if (ctx !== 'public' || !isUi(s) || s.legal) return;
     if (P_HALGEOSIDA.test(s.text)) report('FYI', "'~다 할 것이다' → '~다'");
   } },
-  { id: 'HW-P5', check(s, report, ctx) {
-    if (ctx !== 'public' || !isCopy(s)) return;
+  // HW-P5 applies in every profile (owner 2026-10-25); the P names where it came from, not where it applies
+  { id: 'HW-P5', check(s, report) {
+    if (!isCopy(s)) return;
     const m = s.text.match(P_DISCRIM);
     if (m) report('WARN', `'${m[0]}' → '장애인', the neutral legal term (국립국어원 길잡이, 차별적 표현)`);
   } },
@@ -916,7 +919,7 @@ const EXPECTED = {
   // and '효과가 확실한'
   'ctx-medical': [
     'clinic.html:4 WARN HW-M1', 'clinic.html:5 WARN HW-M1', 'clinic.html:6 WARN HW-M2', 'clinic.html:7 WARN HW-M3', 'clinic.html:8 WARN HW-M4',
-    'clinic.html:9 WARN HW-M5', 'clinic.html:10 WARN HW-M6', 'clinic.html:11 FYI HW-M6', 'clinic.html:12 FYI HW-M7', 'clinic.html:13 FYI HW-M8',
+    'clinic.html:9 WARN HW-M5', 'clinic.html:10 FYI HW-M6', 'clinic.html:11 FYI HW-M6', 'clinic.html:12 FYI HW-M7', 'clinic.html:13 FYI HW-M8',
     'clinic.html:14 FYI HW-M9', 'clinic.html:15 FYI HW-M9', 'clinic.html:16 FYI HW-14', 'clinic.html:16 WARN HW-M4', 'clinic.html:17 WARN HW-M2',
     'clinic.html:18 WARN HW-M1',
   ],
@@ -937,7 +940,12 @@ const EXPECTED = {
   // the bait stays app: one medical signal (동물병원 진료 예약), one .go.kr link, a reports/ folder whose mixed
   // levels HW-11 still catches, and a carousel under components/slides/
   'auto-app': ['reports/Monthly.tsx:5 WARN HW-11', 'reports/Monthly.tsx:6 WARN HW-11'],
+  // every profile (owner 2026-10-25): an ad-consent toggle labelled as a benefit, and '장애우'; the privacy-consent
+  // and 마케팅 정보 수신 동의 labels, a benefit notice title and a sentence about benefit notices stay quiet
+  'consent': ['Settings.tsx:4 FYI HW-12', 'Settings.tsx:9 WARN HW-P5'],
 };
+// rules that apply in every profile, whatever their letter says
+const EVERY_PROFILE = new Set(['HW-P5']);
 // What detection must decide for each fixture run without a flag (file → genre); every other fixture, none.
 const DETECTED = {
   'auto-medical': { 'clinic.html': 'medical' },
@@ -975,7 +983,7 @@ function selfTest() {
   const leaks = [];
   for (const name of [...Object.keys(CONTEXT_OF), ...Object.keys(DETECTED)]) {
     const at = path.join(dir, name);
-    if (fs.existsSync(at)) for (const f of run([at], { base: at, context: 'app' }).findings) if (/^HW-[A-Z]/.test(f.rule)) leaks.push(`${name} ${key(f)}`);
+    if (fs.existsSync(at)) for (const f of run([at], { base: at, context: 'app' }).findings) if (/^HW-[A-Z]/.test(f.rule) && !EVERY_PROFILE.has(f.rule)) leaks.push(`${name} ${key(f)}`);
   }
   for (const k of leaks) console.log(`  genre rule outside its context: ${k}`);
   const first = JSON.stringify(run([path.join(dir, 'bad')], { base: path.join(dir, 'bad') }));
