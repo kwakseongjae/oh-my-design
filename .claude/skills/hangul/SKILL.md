@@ -253,7 +253,7 @@ What changes most between a report, a notice and an app screen is how the text a
 
   One situation per file. The checker names every file it placed and the signals that decided it, and `--context=app` turns detection off.
 
-  When you run the checker on what you wrote, pass `--context`. Don't write a pragma into a file you deliver: in a JSON message file it becomes a key the app loads, and in a document it is an editing mark. Use a pragma only where the project already does.
+  When you run the checker on what you wrote, pass `--context`. Don't write a pragma into a file you deliver: in a JSON message file it becomes a key the app loads, and in a document it is an editing mark. Use a pragma only where the project already does. The same goes for any key that isn't copy (`_meta`, notes on variables): put those in your reply.
 
   These run in every situation:
   - HW-12;
