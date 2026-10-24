@@ -553,7 +553,9 @@ const STRING_RULES = [
     if ((s.role === 'toast' || s.role === 'body' || s.role === 'helper') && SYSTEM_DONE.test(t)) report('FYI', "system wording ('처리가 완료되었습니다'): say what the user did ('저장했어요', '보냈어요')");
   } },
   { id: 'HW-9', check(s, report) {
-    if (!isUi(s)) return;
+    // legal text keeps its negative: a consent notice must say what refusing costs ("동의하지 않으면 가입할 수 없어요"),
+    // which is the rule's own exception (the user must know something is unavailable)
+    if (!isUi(s) || s.legal) return;
     if (DOUBLE_NEG.test(s.text)) report('FYI', "double negative: say it positively ('~하면 ~할 수 있어요')");
   } },
   { id: 'HW-10', check(s, report) {
@@ -657,7 +659,8 @@ const EXPECTED = {
   good: [],
   // a particle 께, -ㄹ수록, 아니에요, 날것, units after numerals, well-formed dates, times and ranges, legal text
   // in 합쇼체 inside a Terms component, record data (JSON, and a typed LISTINGS array in TS), console.log, a
-  // test file, a helper line whose class starts with "button" (button-hint) and a logo's wordmark dot: all quiet.
+  // test file, a helper line whose class starts with "button" (button-hint), a logo's wordmark dot and the
+  // negative a consent notice must keep: all quiet.
   fp: [],
   // the true positives beside those classes: -ㄹ께요, 쓸수 있어요, 무료에요, 할것, one 합쇼체 line, 10 : 20, 2026.10.24,
   // a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading), and a typed

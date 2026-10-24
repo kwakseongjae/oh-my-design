@@ -11,6 +11,7 @@ export function Signup() {
       <p>9월 15일~9월 25일, 2026. 10. 24., 오전 10:20</p>
       <TermsOfService>
         <p>본 약관은 회사가 제공하는 서비스의 이용 조건을 규정합니다.</p>
+        <p>동의를 거부할 수 있습니다. 다만 동의하지 않으면 가입할 수 없습니다.</p>
       </TermsOfService>
       <button>닫기</button>
       <button>다음</button>
