@@ -365,6 +365,7 @@ UI strings. For documents, the situation's card in `references/situations.md` pl
    - **Order:** is the point first, and is nothing said twice?
    - **Names:** does each thing keep one name?
    - **Agreement:** does each subject agree with its predicate?
+   - **Collocation:** does each verb fit its noun? `점수가 18% 좋아졌다` → `점수가 18% 높아졌다`. In both test rounds this was the most quoted fault left with the skill, and no pattern catches it.
    
    For text someone already wrote, list Before/After and apply only what the user approves.
 5. **Never deliver a note to the writer** (HW-D1). For a value you don't have (a name, a date, a figure, an address), ask.
