@@ -1,9 +1,9 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-24 20시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-24 23시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-10-24 20시 · /hangul r16 — 최종 페이지 프리뷰 준비(Stream A), 문구 상황별 케이스 진행 중(Stream B)
+## ▶ 2026-10-24 23시 · /hangul r16 — 두 흐름 모두 브랜치에 반영, 오너 프리뷰·결정 대기
 
 - **오너 결정(19:20, 19:33).**
   - 히어로 B(어두운 바탕, moa 화면 두 대). 모바일도 B(폰 한 대 + 전환 버튼).
@@ -11,16 +11,28 @@
   - "같은 화면, 다른 문구" 구성 유지.
   - **키캡은 만들지 않는다.** '3D 에셋'은 moa 데모 화면 안에 들어갈 아이콘·일러스트를 뜻한다(19:33). moa 품질 작업도 같이.
   - 문구 스킬은 토스 톤이 기본값이되, PPT 보고서·병원 홈페이지 같은 상황별 케이스를 im-not-ai 같은 기존 레퍼런스를 참고해 넓힌다.
-- **Stream A — 완료, 오너 프리뷰 대기.** 브랜치 `feat/hangul-launch-r2` 푸시 `873942ab`. 프리뷰(로그인 필요): https://oh-my-design-git-feat-hangul-launch-r2-kwakseongjaes-projects.vercel.app/ko/hangul (영문 /hangul).
+- **브랜치 `feat/hangul-launch-r2` 푸시 `5bf90e4e`.** 프리뷰(로그인 필요, 23:16 배포 Ready): https://oh-my-design-git-feat-hangul-launch-r2-kwakseongjaes-projects.vercel.app/ko/hangul (영문 /hangul).
+- **Stream A — 최종 페이지.**
   - `91f67671` 새 페이지: 히어로 B → 조판 챕터(문구 고정, 조판만 다름) → 문구 챕터(조판 고정, 문구만 다름) → 규칙 28 → 설치(잉크 바탕). 옛 한지·해례본 콘셉트, 줄바꿈 데모, 스펙시멘 토글, 송명 글꼴, 한지 아트를 지웠다.
     - moa 화면 부품(`moa-copy.ts`·`moa-screen.tsx`·`moa.css`): 상태바·앱바·잔액·최근 보낸 사람·토스트·혜택 배너·지표 카드·확인 시트·오류·탭바. 히어로 폰은 바가 고정되고 내용이 스스로 스크롤된다.
     - `split-view.tsx`: 넓으면 좌우, 880px 아래는 한 자리 + 전환 버튼(3.2초 자동 전환, 누르면 멈춤, 동작 줄이기 설정이면 없음). 챕터 전환 버튼은 헤더 아래에 붙는다.
     - 고친 버그: 사이트 `:lang(ko)` 규칙이 moa 화면의 글꼴·줄바꿈을 덮어써 '스킬 없이' 쪽이 Arial이 아니었다. 이제 그쪽에서만 음절 사이 줄바꿈이 보인다(render-check: 페이지 본문 0).
   - `f9e42ff3` 3D 아이콘 4개(선물·송금 완료 체크·지표 막대·와이파이 × 배지): three.js 기본 도형으로 직접 모델링·렌더링(`web/scripts/moa-art/`), 26KB, 외부 에셋 없음.
-  - `7662ba3c` 공유 카드(ko/en)를 히어로 B로. `be59571e` 평가 문서의 페이지 절 갱신. `873942ab` 히어로 설명에서 좌우 표현 제거(모바일에 맞게).
-  - 검증: web vitest 1,210 통과, tsc, `next build` 통과(/hangul·/ko/hangul 정적), 1440/390 ko·en 화면 확인, 히어로 스크롤·모바일 자동 전환·고정 버튼 동작 확인. 프리뷰 배포 Ready(20:05).
-- **Stream B — 진행 중(팀원 `uxw-contexts`, 같은 워크트리, 미커밋).** 제안서 `docs/research/2026-10-24-ux-writing/R6-proposal.md`: 프로필 8종(app 기본값 = 토스식 HW-1…14 그대로, report·medical·public·commerce·dev·finance·notify), 장르 규칙 46개, 그중 18개를 copy-check `--context`/파일 프래그마로 검사. 기존 픽스처 출력은 바이트 단위로 같다고 보고. 끝나면 검토 → SKILL.md §3c 통합 → 자체 시험·미러 동기화 → 커밋.
-- **다음.** Stream B 통합 커밋·푸시 → 오너 프리뷰 GO → main 병합 → 2.0.6 출시(출시 GO·strict 면제는 오너).
+  - `7662ba3c` 공유 카드(ko/en)를 히어로 B로. `be59571e` 평가 문서의 페이지 절. `873942ab` 히어로 설명에서 좌우 표현 제거(모바일).
+- **Stream B — 문구 상황별 프로필(팀원 `uxw-contexts` 초안, 검토·통합 `5bdaae32`, CHANGELOG `38dde1c8`, llms-full `5bf90e4e`).**
+  - `skills/hangul/references/ux-writing-contexts.md`: 프로필 8종. app(기본값, 토스식 HW-1…14 그대로)·report·medical·public·commerce·dev·finance·notify. 장르 규칙 46개(SPEC 28·DS 15·OP 3), 출처는 2026-10-24에 원문 확인.
+  - copy-check `--context=<genre>`와 파일 프래그마: report(HW-R1…R4, HW-11 합쇼/해요 혼용·HW-8 시스템 문구 끔), medical(HW-M1…M9, WARN까지만), public(HW-P1…P5). 나머지 28개는 레퍼런스만. 기본 출력은 HEAD와 바이트 단위로 같음(직접 확인, bad/good/fp/tp × 플래그 유무).
+  - SKILL.md §3c·APPLY 2단계·AUDIT `--context`·장르 심각도·법률 검토 대체 아님 Don't; omd-humanize 라우팅(장르 문단은 프로필이 지정한 im-not-ai 계열로, 개조식에는 C-1/2/3/9/10 미적용). 미러 동기화.
+  - 리서치 원문: `docs/research/2026-10-24-ux-writing/R6-contexts.md`, 제안서 `R6-proposal.md`(gitignore).
+- **검증.** web vitest 1,210 통과, `next build` 통과, 스킬 단위 138 통과, copy-check·check 자체 시험 PASS. 루트 vitest 1,516 통과·4 실패: 패키지 설치 스모크 3건이 `npm install --offline`에서 `picocolors` ENOTCACHED(npm 캐시 문제, 내용 무관), readiness 생성기 1건이 부하 중 15초 시간 초과. HEAD~에서 다시 돌려 보지는 않았다.
+- **오너 결정 대기(지금은 보수적 기본값으로 동작).**
+  1. 의료: 완치·부작용 없는·치료 후기를 BLOCK으로 올릴지(현재 WARN 상한).
+  2. KISA 광고 동의 표현(HW-N2)을 기본 app 프로필 검사에도 넣을지(현재 레퍼런스만, 기본 출력 불변).
+  3. '장애우' 규칙을 모든 장르에 적용할지(현재 public만).
+  4. 장르 자동 감지 여부(현재 명시: 플래그·프래그마).
+  5. 다음 검사기 라운드를 '예금자보호 5천만 원'(2025-09-01부터 1억 원)부터 할지.
+  6. 매주 바뀌는 KMA 목록 기반 HW-M9를 유지할지(현재 유지, 재확인 주의 문구).
+- **다음.** 오너 프리뷰 GO → main 병합 → 2.0.6 출시(출시 GO·strict 면제는 오너). 위 6개 결정.
 
 ## ▶ 2026-10-24 18시 · /hangul 페이지 r16 — 오너 피드백 반영 중, 시안 선택 대기
 
@@ -32,7 +44,7 @@
 - **반영(브랜치 `feat/hangul-launch-r2`).**
   - `434d497e`: 수치 섹션·실측 카드·인장 제거. 문구 쪽 11/18 수치도 같은 장치라 같이 뺐고, 평가 문서에 적었다.
   - `8a440fc4`: 검사기가 '되어집니다' 같은 활용형 이중 피동을 놓치던 것을 고쳤다. 평가 36개 결과는 그대로다.
-- **시안(오너 선택 대기).** 캔버스 https://claude.ai/artifact/EKF59MpK9A82or7kFUebxZ (비공개). 원본은 `docs/research/2026-10-21-hangul/r16/canvas/`(gitignore).
+- **시안(오너 선택 대기).** 캔버스 https://claude.ai/artifact/EKF59MpK9A82or7kFUebxZ (비공개; 23시 기준 이 계정에서 찾을 수 없음 — 삭제된 것으로 보임). 원본은 `docs/research/2026-10-21-hangul/r16/canvas/`(gitignore).
   - 히어로 3안, 각각 데스크톱과 모바일 390.
     - A: 흰 바탕. 조판 타일(폭이 숨 쉬며 단어가 끊기는 곳에 표시)과 문구 타일(자모 타이핑 → 취소선 → 고친 문구)을 나란히 둔다.
     - B: 어두운 바탕. moa 화면 두 대가 같이 스크롤되고, 가운데 규칙 태그가 차례로 켜진다. 모바일은 폰 한 대에 전환 버튼.
