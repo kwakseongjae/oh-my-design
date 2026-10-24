@@ -139,8 +139,14 @@ function roleFromNames(names) {
   return null;
 }
 
+// A logo or wordmark is a name, not copy: its text keeps the brand's own spelling, dot and all ("다시.").
+const LOGOISH = (el) => [...el.cls].some((c) => /^(logo|wordmark)([-_].*)?$/i.test(c)) || /^(Logo|Wordmark|BrandMark)$/.test(el.raw);
+// A class that names a hint, caption or note marks helper text even when it starts with "button" ("button-hint").
+const HELPER_CLASS = /(^|[-_])(hint|help|helper|caption|desc|description|note|subtext|subtitle)$/i;
+
 function roleFromElement(chain) {
   // chain: innermost first
+  if (chain.slice(0, 2).some(LOGOISH)) return 'data';
   for (const el of chain) {
     if (el.tag === 'button' || (el.tag === 'input' && /type\s*=\s*["']?(submit|button)/i.test(el.attrs || ''))) return 'button';
     if (/^h[1-6]$/.test(el.tag)) return 'heading';
@@ -149,6 +155,7 @@ function roleFromElement(chain) {
     if (el.tag === 'a' && [...el.cls].some((c) => /btn|button|cta/i.test(c))) return 'button';
     const byComponent = /^[A-Z]/.test(el.raw) ? roleFromNames([el.raw]) : null;
     if (byComponent) return byComponent;
+    if ([...el.cls].some((c) => HELPER_CLASS.test(c))) return 'helper';
     const byClass = roleFromNames([...el.cls].filter((c) => /^(btn|button|cta|toast|snackbar|empty|title|heading|headline|helper|hint|caption|label|placeholder)([-_].*)?$/i.test(c)));
     if (byClass) return byClass;
   }
@@ -649,8 +656,8 @@ const EXPECTED = {
   ],
   good: [],
   // a particle 께, -ㄹ수록, 아니에요, 날것, units after numerals, well-formed dates, times and ranges, legal text
-  // in 합쇼체 inside a Terms component, record data (JSON, and a typed LISTINGS array in TS), console.log and
-  // a test file: all quiet.
+  // in 합쇼체 inside a Terms component, record data (JSON, and a typed LISTINGS array in TS), console.log, a
+  // test file, a helper line whose class starts with "button" (button-hint) and a logo's wordmark dot: all quiet.
   fp: [],
   // the true positives beside those classes: -ㄹ께요, 쓸수 있어요, 무료에요, 할것, one 합쇼체 line, 10 : 20, 2026.10.24,
   // a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading), and a typed

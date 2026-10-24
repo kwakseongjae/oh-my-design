@@ -15,6 +15,8 @@ export function Signup() {
       <button>닫기</button>
       <button>다음</button>
       <img src="/deco.png" alt="" />
+      <p className="button-hint">다음 화면에서 한 번 더 확인할 수 있어요.</p>
+      <button className="logo">다시<span className="logo-dot">.</span></button>
     </section>
   );
 }
