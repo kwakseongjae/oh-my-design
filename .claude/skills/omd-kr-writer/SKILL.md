@@ -1,6 +1,6 @@
 ---
 name: omd:kr-writer
-description: "한국어 블로그·장문 글을 12개 voice preset으로 작성하거나 다듬는다 — toss-tech-design (default), karrot-neighborly, brunch-maker-popular, naver-d2-engineering, biz-formal-report, academic-paper, journalism-broadsheet, kakao-warm-product, line-global-saas, academic-lecture-essay, emotional-brand, legal-disclosure."
+description: "oh-my-design 블로그 글을 12개 voice preset으로 작성하거나 다듬는다. 한국어 표기·띄어쓰기·번역투·높임과 상황별 문체는 hangul 스킬을 따르고, 보고서·피치덱·공지·이메일·보도자료 같은 문서 자체는 hangul이 맡는다 — toss-tech-design (default), karrot-neighborly, brunch-maker-popular, naver-d2-engineering, biz-formal-report, academic-paper, journalism-broadsheet, kakao-warm-product, line-global-saas, academic-lecture-essay, emotional-brand, legal-disclosure."
 user-invocable: true
 metadata:
   internal: true
@@ -194,8 +194,9 @@ oh-my-design 블로그의 한국어 본문을 **Toss Tech 디자인 카테고리
 3. production blog frontmatter는 `title`, `description`, `date`, `tags` 네 필드만 쓴다. `date`는 `YYYY-MM-DD`, `tags`는 비어 있지 않은 inline list다. `title_ko`, `subtitle_ko`, `locale`, `voice_preset` 같은 추가 필드는 strict parser가 거부한다.
 4. H2 헤더와 본문을 선택한 preset에 맞춰 작성한다. default에서는 종결어미를 `-요` 계열로 통일한다.
 5. 실제 에셋이 제공된 경우에만 본문 주장과 연결해 배치한다. 에셋이 없으면 placeholder 대신 handoff에 필요 항목을 남긴다.
-6. 글의 핵심 판단으로 마무리하고 사실·frontmatter·링크·이미지 경로를 다시 확인한다.
-7. 영어판이 필요한 경우 한국어 canonical 확정 뒤 locale-adapter가 별도 `en.md`를 만든다. kr-writer는 영어판을 한국어의 원본으로 취급하지 않는다.
+6. 한국어는 hangul 스킬의 규칙을 따른다: `skills/hangul/references/korean-issues.md`(번역투·띄어쓰기·높임·문장 부호)와 글에 맞는 상황 카드(`skills/hangul/references/situations.md`). 끝나면 `node skills/hangul/scripts/copy-check.mjs <ko.md>`로 점검해 BLOCK을 0으로 만들고, WARN과 FYI는 문맥에서 읽고 판단한다.
+7. 글의 핵심 판단으로 마무리하고 사실·frontmatter·링크·이미지 경로를 다시 확인한다.
+8. 영어판이 필요한 경우 한국어 canonical 확정 뒤 locale-adapter가 별도 `en.md`를 만든다. kr-writer는 영어판을 한국어의 원본으로 취급하지 않는다.
 
 production blog가 아닌 문서에는 요청된 출력 스키마를 따른다. 위 네 필드 frontmatter를 임의로 덧붙이지 않는다.
 
