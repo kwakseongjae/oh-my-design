@@ -6,7 +6,7 @@
  * "Version 1.00", "Copyright 2018 The Song Myung Project Authors", SIL Open Font License 1.1 (OFL.txt
  * here, copied from the same folder). The full file is 2.0 MB for the 2,350 syllables of KS X 1001.
  *
- * The pages set only a few strings in it (the h1, the h2s, the eval figures and the 판심제 in the hero
+ * The pages set only a few strings in it (the h1, the h2s and the 판심제 in the hero
  * demo; every such element carries the class `hg-d`), so the subset holds exactly the Hangul syllables
  * of those strings in both locales, plus Basic Latin and the punctuation the font ships (‘ ’ “ ” … – —).
  * Song Myung has no − (U+2212) or →, so neither may be set in this face. display-glyphs.json records
@@ -24,8 +24,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { EVAL_FIGURES, HANGUL_COPY, PANSIM_TITLE, WRITING_EVAL, fill } from "../copy.ts";
-import assets from "../../../data/hangul-assets.json" with { type: "json" };
+import { HANGUL_COPY, PANSIM_TITLE } from "../copy.ts";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(HERE, "SongMyung-display.woff2");
@@ -37,10 +36,9 @@ if (!src || !python) {
 }
 
 /** The strings the pages set in the display face (keep in step with the `hg-d` elements). */
-const strings = [PANSIM_TITLE, `${EVAL_FIGURES.before}/${EVAL_FIGURES.runs}`, `${EVAL_FIGURES.after}/${EVAL_FIGURES.runs}`, `${WRITING_EVAL.before.all}/${WRITING_EVAL.runs}`, `${WRITING_EVAL.after.all}/${WRITING_EVAL.runs}`];
+const strings = [PANSIM_TITLE];
 for (const t of Object.values(HANGUL_COPY)) {
-  strings.push(t.hero.h1, t.why.h2, t.evals.h2, t.assets.shotsH2, t.assets.videoH2, t.writing.h2, t.rules.h2, t.install.h2);
-  strings.push(fill(t.assets.measuredH2, { services: assets.measured?.services ?? 0 }));
+  strings.push(t.hero.h1, t.why.h2, t.assets.shotsH2, t.assets.videoH2, t.writing.h2, t.rules.h2, t.install.h2);
 }
 const ascii = Array.from({ length: 0x7e - 0x20 + 1 }, (_, i) => String.fromCharCode(0x20 + i)).filter((c) => c !== "`");
 const wanted = new Set([...ascii, ..."‘’“”…–—", ...strings.join("")]);

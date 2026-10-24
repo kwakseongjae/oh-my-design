@@ -9,7 +9,7 @@ import sitemap from "@/app/sitemap";
 import { metadata as koMetadata } from "@/app/(ko)/ko/hangul/page";
 import { metadata as enMetadata } from "@/app/(en)/hangul/page";
 import { HangulPage } from "@/components/hangul/hangul-page";
-import { CompareSection, MeasuredSection, fmtEm } from "@/components/hangul/asset-sections";
+import { CompareSection } from "@/components/hangul/asset-sections";
 import {
   DEMO_HEADING,
   H3_METRICS,
@@ -18,7 +18,6 @@ import {
   INSTALL_CLI,
   INSTALL_SKILL,
   LAUNCH_POST_SLUG,
-  WRITING_EVAL,
   fill,
   objectParticle,
   subjectParticle,
@@ -124,24 +123,11 @@ describe("/hangul pages", () => {
     expect(html).toContain('id="install"');
   });
 
-  it("states the eval as the results doc words it, caveats included", () => {
-    const ko = HANGUL_COPY.ko.evals;
-    const en = HANGUL_COPY.en.evals;
-    expect(ko.h2).toContain("18개 중 17개");
-    expect(en.h2).toContain("17 of 18");
-    expect(ko.unit).toMatch(/BLOCK.*WARN/);
-    expect(en.unit).toMatch(/BLOCK.*WARN/);
-    expect(ko.after.sub).toBe("BLOCK 0 · WARN 0");
-    // the four caveats: the checker ships with the skill, it reads source only, the skill was named
-    // in the prompt (all in the caveat line), and 3 runs per cell (in the method line)
-    expect(ko.caveat).toMatch(/체커/);
-    expect(ko.caveat).toMatch(/소스 코드/);
-    expect(ko.caveat).toMatch(/프롬프트/);
-    expect(ko.method).toMatch(/3번씩/);
-    expect(en.caveat).toMatch(/checker/);
-    expect(en.caveat).toMatch(/source code/);
-    expect(en.caveat).toMatch(/prompt/);
-    expect(en.method).toMatch(/three runs each/);
+  it.each(LOCALES)("%s: quotes no eval totals, no measured card and no seal (owner review 2026-10-24)", (locale) => {
+    const html = render(locale);
+    expect(html).not.toMatch(/id="(eval|measured)"/);
+    expect(html).not.toContain("hg-seal");
+    expect(html).not.toMatch(/18개 중 17개|17 of 18|\/18</);
   });
 });
 
@@ -165,24 +151,13 @@ describe("/hangul rules list", () => {
 });
 
 describe("/hangul writing section", () => {
-  it("adds up its figures: per channel to the whole, and never more than the runs", () => {
-    for (const arm of [WRITING_EVAL.before, WRITING_EVAL.after]) {
-      expect(arm.codex + arm.claude).toBe(arm.all);
-      expect(arm.all).toBeLessThanOrEqual(WRITING_EVAL.runs);
-    }
-    expect(WRITING_EVAL.bw.before).toBeLessThanOrEqual(WRITING_EVAL.before.all);
-    expect(WRITING_EVAL.bw.after).toBeLessThanOrEqual(WRITING_EVAL.after.all);
-  });
 
-  it.each(LOCALES)("%s: marks a part of each quoted string, says the examples were picked, and states the criterion", (locale) => {
+  it.each(LOCALES)("%s: marks a part of each quoted string and says the examples were picked", (locale) => {
     const w = HANGUL_COPY[locale].writing;
     for (const f of w.fixes) expect(f.before).toContain(f.mark);
     expect(w.fixesNote).toMatch(locale === "ko" ? /골랐어요/ : /picked/);
-    expect(w.evalCaveat).toMatch(locale === "ko" ? /미리 정한 기준/ : /criterion/);
     const html = render(locale);
     expect(html).toContain('id="writing"');
-    expect(html).toContain(`${WRITING_EVAL.before.all}<span>/${WRITING_EVAL.runs}</span>`);
-    expect(html).toContain(`${WRITING_EVAL.after.all}<span>/${WRITING_EVAL.runs}</span>`);
     expect(html.indexOf('id="writing"')).toBeLessThan(html.indexOf('id="rules"'));
   });
 });
@@ -219,24 +194,13 @@ describe("/hangul launch assets (hangul-assets.json contract)", () => {
       source: "fixture-run",
     },
     video: { mp4: "/hangul/fixture.mp4", poster: "/hangul/fixture.webp", width: 1280, height: 720, seconds: 9.6 },
-    measured: {
-      services: 3,
-      date: "fixture-date",
-      bodyLineHeight: { min: 1, median: 1.5, max: 2 },
-      bodyLetterSpacingEm: { min: -0.07, median: 0, max: 0 },
-      headingLetterSpacingEm: { min: -0.05, median: 0, max: 0.006 },
-      topFonts: [
-        { family: "Fixture Sans", count: 2 },
-        { family: "Fixture Serif", count: 1 },
-      ],
-    },
+    measured: null,
   };
-  const html = (el: typeof CompareSection | typeof MeasuredSection, assets: HangulAssets) =>
+  const html = (el: typeof CompareSection, assets: HangulAssets) =>
     renderToStaticMarkup(createElement(el, { assets, t: HANGUL_COPY.ko.assets, band: false }));
 
   it("renders nothing while every entry is empty", () => {
     expect(html(CompareSection, EMPTY)).toBe("");
-    expect(html(MeasuredSection, EMPTY)).toBe("");
   });
 
   it("renders each block only when its own entry exists", () => {
@@ -249,18 +213,8 @@ describe("/hangul launch assets (hangul-assets.json contract)", () => {
     expect(video).toContain('<source src="/hangul/fixture.mp4" type="video/mp4"/>');
     expect(video).toContain('poster="/hangul/fixture.webp"');
     expect(video).not.toContain("<img");
-    const measured = html(MeasuredSection, { ...EMPTY, measured: FIXTURE.measured });
-    expect(measured).toContain("한국 서비스 3곳을 직접 쟀어요");
-    expect(measured).toContain("−0.07em");
-    expect(measured).toContain("Fixture Sans");
-    expect(html(CompareSection, { ...EMPTY, measured: FIXTURE.measured })).toBe("");
   });
 
-  it("formats em values with a real minus sign", () => {
-    expect(fmtEm(-0.03)).toBe("−0.03em");
-    expect(fmtEm(0)).toBe("0");
-    expect(fmtEm(0.006)).toBe("0.006em");
-  });
 
   it("ships no test values in the data file", () => {
     const raw = fs.readFileSync(path.join(WEB, "src/data/hangul-assets.json"), "utf8");

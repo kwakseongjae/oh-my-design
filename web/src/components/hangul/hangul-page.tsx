@@ -5,10 +5,9 @@ import { pretendard } from "@/components/brand-a/journey/faces";
 import { getHangulAssets } from "@/lib/hangul/assets";
 import { getPost } from "@/lib/blog/posts";
 import { BLOG_ON_SUBDOMAIN, blogPostHref, blogPostUrl } from "@/lib/site";
-import { CompareSection, MeasuredSection } from "./asset-sections";
+import { CompareSection } from "./asset-sections";
 import { BreakDemo } from "./break-demo";
 import {
-  EVAL_FIGURES,
   H1_STACK,
   H3_METRICS,
   H7_LINES,
@@ -82,12 +81,12 @@ function specimen(card: WhyCard, fix: boolean) {
  * H2), in the site's concept-A chrome and tokens. One focal point per view:
  *   1. hero — the live before/after of an eval heading (BreakDemo), both results in the first screen
  *   2. why — three defects that render on an eval page, each with a before/after switch
- *   3. eval — 17/18 → 0/18, worded as the results doc supports, with its caveats in one line
- *   4. launch content (screenshots, video, measured-67) — only the entries the content stream filled
- *   5. writing — strings agents wrote without the skill, each beside its rewrite, and the writing eval
- *   6. the 28 rules (14 typography, 14 writing), one line each
- *   7. install — one copy box, the skill-only alternative, then the docs and blog links
- * No source list (owner v4 review): the skill files carry the citations.
+ *   3. launch content (screenshots, video) — only the entries the content stream filled
+ *   4. writing — strings agents wrote without the skill, each beside its rewrite
+ *   5. the 28 rules (14 typography, 14 writing), one line each
+ *   6. install — one copy box, the skill-only alternative, then the docs and blog links
+ * No source list (owner v4 review): the skill files carry the citations. No eval figures, no
+ * measured-67 card and no seal (owner review 2026-10-24): the evals live in the skill's references.
  */
 export function HangulPage({ locale }: { locale: HangulLocale }) {
   const t = HANGUL_COPY[locale];
@@ -96,9 +95,8 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
   const postHref = post ? (BLOG_ON_SUBDOMAIN ? blogPostUrl(post.slug, locale) : blogPostHref(post.slug, locale)) : null;
 
   // sections after the hero alternate paper and band; the launch-content ones may be absent
-  const order: string[] = ["why", "eval"];
+  const order: string[] = ["why"];
   if (assets.beforeAfter || assets.video) order.push("compare");
-  if (assets.measured) order.push("measured");
   order.push("writing", "rules", "install");
   const band = (id: string) => order.indexOf(id) % 2 === 1;
 
@@ -110,12 +108,6 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
           <div className="hg-hero-top">
             <div className="hg-hero-copy">
               <p className="hg-kicker">
-                {/* the one seal: a blank 인장 impression with the 천지인 marks (ㆍ ㅡ ㅣ) drawn as shapes */}
-                <span className="hg-seal" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </span>
                 <span className="hg-kicker-name" lang="en">/hangul</span>
                 <span>{t.hero.kicker}</span>
               </p>
@@ -152,36 +144,8 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
           </div>
         </section>
 
-        <section id="eval" className={`hg-sec${band("eval") ? " hg-band" : ""}`} aria-labelledby="hg-eval-h">
-          <div className="sq-wrap">
-            <h2 id="hg-eval-h" className="hg-d">{t.evals.h2}</h2>
-            <p className="hg-eval-unit">{t.evals.unit}</p>
-            <div className="hg-eval">
-              <div className="hg-fig">
-                <p className="hg-fig-l">{t.evals.before.label}</p>
-                <p className="hg-fig-n hg-num hg-d">
-                  {EVAL_FIGURES.before}
-                  <span>/{EVAL_FIGURES.runs}</span>
-                </p>
-                <p className="hg-fig-s">{t.evals.before.sub}</p>
-              </div>
-              <span className="hg-fig-arrow" aria-hidden="true">→</span>
-              <div className="hg-fig">
-                <p className="hg-fig-l">{t.evals.after.label}</p>
-                <p className="hg-fig-n hg-num hg-d">
-                  {EVAL_FIGURES.after}
-                  <span>/{EVAL_FIGURES.runs}</span>
-                </p>
-                <p className="hg-fig-s">{t.evals.after.sub}</p>
-              </div>
-            </div>
-            <p className="hg-eval-m">{t.evals.method}</p>
-            <p className="hg-eval-c">{t.evals.caveat}</p>
-          </div>
-        </section>
 
         <CompareSection assets={assets} t={t.assets} band={band("compare")} />
-        <MeasuredSection assets={assets} t={t.assets} band={band("measured")} />
 
         <WritingSection t={t.writing} band={band("writing")} />
 

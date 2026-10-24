@@ -63,8 +63,8 @@ describe("/hangul display face (Song Myung subset)", () => {
 
   it.each(["ko", "en"] as const)("%s: every character set in the face is in the subset", (locale) => {
     const text = displayText(render(locale));
-    // the h1, the h2s and the two eval figures at least
-    expect(text.length).toBeGreaterThanOrEqual(8);
+    // the h1 and the h2s at least (the eval figures left the page on 2026-10-24)
+    expect(text.length).toBeGreaterThanOrEqual(6);
     const have = new Set(manifest.text);
     const missing = [...new Set(text.join("").replace(/\s/g, ""))].filter((c) => !have.has(c));
     expect(missing).toEqual([]);

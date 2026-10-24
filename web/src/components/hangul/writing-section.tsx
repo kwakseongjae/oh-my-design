@@ -1,4 +1,4 @@
-import { fill, type HangulCopy, WRITING_EVAL } from "./copy";
+import type { HangulCopy } from "./copy";
 
 /** The before string with its faulty part marked the way a proofreader would, in vermilion. */
 function Marked({ text, mark }: { text: string; mark: string }) {
@@ -15,7 +15,7 @@ function Marked({ text, mark }: { text: string; mark: string }) {
 
 /**
  * The writing layer (skills/hangul/SKILL.md §3b): strings agents wrote without the skill in the
- * writing eval, each beside the same string rewritten to the rule it broke, and the eval's figures.
+ * writing eval, each beside the same string rewritten to the rule it broke.
  * The before strings are quoted as the agents wrote them; the after strings are rewrites, and the
  * section says so.
  */
@@ -47,28 +47,6 @@ export function WritingSection({ t, band }: { t: HangulCopy["writing"]; band: bo
           ))}
         </ol>
         <p className="hg-fix-note">{t.fixesNote}</p>
-        <p className="hg-eval-unit hg-eval-unit--w">{t.evalUnit}</p>
-        <div className="hg-eval">
-          <div className="hg-fig">
-            <p className="hg-fig-l">{t.evalBefore.label}</p>
-            <p className="hg-fig-n hg-num hg-d">
-              {WRITING_EVAL.before.all}
-              <span>/{WRITING_EVAL.runs}</span>
-            </p>
-            <p className="hg-fig-s">{fill(t.evalBefore.sub, WRITING_EVAL.before)}</p>
-          </div>
-          <span className="hg-fig-arrow" aria-hidden="true">→</span>
-          <div className="hg-fig">
-            <p className="hg-fig-l">{t.evalAfter.label}</p>
-            <p className="hg-fig-n hg-num hg-d">
-              {WRITING_EVAL.after.all}
-              <span>/{WRITING_EVAL.runs}</span>
-            </p>
-            <p className="hg-fig-s">{fill(t.evalAfter.sub, WRITING_EVAL.after)}</p>
-          </div>
-        </div>
-        <p className="hg-eval-m">{fill(t.evalMethod, { runs: WRITING_EVAL.runs })}</p>
-        <p className="hg-eval-c">{fill(t.evalCaveat, { bwBefore: WRITING_EVAL.bw.before, bwAfter: WRITING_EVAL.bw.after, runs: WRITING_EVAL.runs })}</p>
       </div>
     </section>
   );

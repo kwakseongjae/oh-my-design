@@ -179,7 +179,7 @@ The plan said the launch page would quote those median runs. The page instead sh
 - HW-11 · p3-A-r2 `app/page.tsx:59`, "화면 구현을 위한 예시 약관입니다." (WARN, every version)
 - HW-2 · p2-A-r3 `app/page.tsx:59`, "4만원 이하" (FYI, every version)
 
-Three of the four are FYI. The page says the examples were picked and that the rewrites are ours, and it quotes the BLOCK + WARN count beside its headline figure. The median-run samples above are the unpicked view.
+Three of the four are FYI. The page says the examples were picked and that the rewrites are ours. It quotes no eval figures: an owner review on 2026-10-24 took the figure blocks off the page, so the numbers live here and in `eval-2026-09.md`. The median-run samples above are the unpicked view.
 
 ## Caveats (state these whenever the result is quoted)
 

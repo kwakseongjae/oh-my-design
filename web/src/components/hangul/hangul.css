@@ -83,11 +83,6 @@
 .hg-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:15px;line-height:1.5;color:var(--hg-ink-2)}
 .hg-kicker-name{font:600 15px/1.5 var(--sq-f-mono);color:var(--hg-ink)}
 /* the seal: the blank impression (art/seal.webp) with 천지인 as shapes, ㆍ (하늘) ㅡ (땅) ㅣ (사람) */
-.hg-seal{position:relative;flex:none;width:44px;height:44px;background:url(/hangul/art/seal.webp) 50%/cover no-repeat}
-.hg-seal i{position:absolute;background:var(--hg-paper)}
-.hg-seal i:nth-child(1){left:9px;top:18px;width:8px;height:8px;border-radius:50%}
-.hg-seal i:nth-child(2){left:19px;top:20.5px;width:9px;height:3px}
-.hg-seal i:nth-child(3){left:30px;top:11px;width:3px;height:22px}
 .hg-lede{margin-top:14px;font-size:18px;line-height:1.65;color:var(--hg-ink-2);max-width:38em}
 .hg-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:var(--hg-r);background:var(--hg-ink);color:var(--hg-paper);font-size:16px;font-weight:700;white-space:nowrap;transition:background-color .15s,transform .12s}
 .hg-cta:hover{background:var(--sq-primary-hover)}
@@ -188,16 +183,6 @@
 .hg-foot-note{margin-top:48px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:48em}
 
 /* ---- eval: one statement, two figures, ruled like a printed table ---- */
-.hg-eval-unit{margin-top:16px;font-size:16px;line-height:1.6;color:var(--hg-ink-2)}
-.hg-eval{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:24px;max-width:880px;margin-top:32px;padding-block:24px 8px;border-block:1px solid var(--hg-ink)}
-.hg-fig{min-width:0}
-.hg-fig-l{font-size:16px;line-height:1.5;font-weight:650;color:var(--hg-ink)}
-.hg-fig-n{margin-top:4px;font-size:112px;line-height:1.3;color:var(--hg-ink);white-space:nowrap}
-.hg-fig-n span{margin-left:.06em;font-size:.4em;color:var(--hg-ink-2)}
-.hg-fig-s{font-size:15px;line-height:1.5;color:var(--hg-ink-2)}
-.hg-fig-arrow{padding-bottom:56px;font-size:40px;line-height:1.3;color:var(--hg-ink-2)}
-.hg-eval-m{margin-top:40px;font-size:17px;line-height:1.65;color:var(--hg-ink);max-width:44em}
-.hg-eval-c{margin-top:8px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:44em}
 
 /* ---- launch content (asset-sections.tsx) ---- */
 .hg-shots{display:grid;gap:40px;margin-top:40px}
@@ -214,23 +199,6 @@
 .hg-video-h{margin-bottom:12px}
 .hg-video-el{display:block;width:100%;height:auto;border-radius:var(--hg-r);background:var(--hg-cell);box-shadow:0 0 0 1px var(--hg-ink)}
 .hg-video-c{margin-top:10px;font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
-/* the measured card: a framed leaf with a 계선 between its two columns */
-.hg-mcard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px;padding:3px;border:3px solid var(--hg-ink);background:var(--hg-paper)}
-.hg-mstats,.hg-fonts{min-width:0;padding:28px 32px}
-.hg-mstats{display:grid;gap:24px;margin:0;border:1px solid var(--hg-ink);border-right:0}
-.hg-mstat dt{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
-.hg-mstat dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin:4px 0 0}
-.hg-mstat-v{font-size:40px;line-height:1.3;font-weight:760;letter-spacing:0;color:var(--hg-ink)}
-.hg-mstat-r{font-size:15px;line-height:1.5;color:var(--hg-ink-2)}
-.hg-fonts{border:1px solid var(--hg-ink)}
-.hg-mstats:only-child{border-right:1px solid var(--hg-ink)}
-.hg-fonts-h{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
-.hg-fonts-list{list-style:none;display:grid;gap:12px;margin-top:12px}
-.hg-font{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr) auto;align-items:center;gap:12px}
-.hg-font-name{font-size:16px;line-height:1.5;font-weight:600;color:var(--hg-ink);overflow-wrap:anywhere}
-.hg-font-bar{height:8px;background:var(--hg-cell);overflow:hidden}
-.hg-font-bar span{display:block;height:100%;background:var(--hg-ink)}
-.hg-font-n{font-size:15px;line-height:1.5;color:var(--hg-ink-2);white-space:nowrap}
 
 /* ---- writing: proof slips. The agent's string with the faulty part marked in 주색, as a proofreader
    would, and the rewrite under it; the writing eval closes the section like the typography one ---- */
@@ -245,7 +213,6 @@
 .hg-fix-mark{background:none;color:var(--hg-red);text-decoration:underline wavy var(--hg-red);text-decoration-thickness:1.5px;text-underline-offset:5px}
 .hg-fix-why{margin-top:12px;padding-top:12px;border-top:1px solid var(--hg-rule);font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
 .hg-fix-note{margin-top:24px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:44em}
-.hg-eval-unit--w{margin-top:56px}
 
 /* ---- rules: fourteen lines in two columns, a 계선 between them ---- */
 .hg-rules-g{margin-top:48px}
@@ -301,10 +268,6 @@
   .hg-hero{padding-top:14px}
   .hg-hero-top{flex-direction:column;align-items:stretch;gap:0}
   .hg-hero-copy{flex:none}
-  .hg-seal{width:36px;height:36px}
-  .hg-seal i:nth-child(1){left:7px;top:14.5px;width:7px;height:7px}
-  .hg-seal i:nth-child(2){left:15.5px;top:16.5px;width:8px;height:3px}
-  .hg-seal i:nth-child(3){left:25px;top:9px;width:3px;height:18px}
   .hg-lede{font-size:16px;line-height:1.6;margin-top:12px}
   .hg-hero-top .hg-cta{display:none}
   .hg-cta--m{display:flex;margin-top:20px}
@@ -330,22 +293,10 @@
   .hg-rail,.hg-ticks{grid-column:1/-1}
   .hg-rail{margin-inline:calc(20px - 22px + (100% - 40px) / 222)}
   .hg-ticks{margin-inline:20px}
-  .hg-eval{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-  .hg-fig-arrow{display:none}
-  .hg-fig-n{font-size:72px}
-  .hg-mcard{grid-template-columns:minmax(0,1fr)}
-  .hg-mstats,.hg-fonts{padding:20px}
-  .hg-mstats{border-right:1px solid var(--hg-ink);border-bottom:0}
   .hg-rules{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row;background:none}
   .hg-fixes{grid-template-columns:minmax(0,1fr)}
   .hg-fix-row{grid-template-columns:minmax(0,1fr);gap:2px;font-size:17px}
   .hg-rule:nth-child(8){border-top-color:var(--hg-rule)}
   .hg-inst{padding-left:14px}
   .hg-inst code{font-size:15px}
-}
-@media (max-width:479px){
-  .hg-fig-n{font-size:60px}
-  .hg-mstat-v{font-size:32px}
-  .hg-font{grid-template-columns:minmax(0,1fr) auto}
-  .hg-font-bar{grid-column:1/-1;order:3}
 }

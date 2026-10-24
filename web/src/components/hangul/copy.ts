@@ -3,10 +3,9 @@
  *
  * Every number here has one source, and the copy says only what that source supports:
  *  - the eval: docs/research/2026-09-29-growth/hangul-eval-results.md and its raw results
- *    (17/18 runs without the skill had a BLOCK or WARN; 0/18 with it; Codex 9/9 and Claude 8/9;
- *    every Codex run hit HG-7, tightening headings to about −0.06em; 6 of 9 Codex runs had no Korean face).
- *    The results doc lists caveats to state whenever the result is quoted; `evalCaveat` carries
- *    all four (checker ships with the skill, the skill arm named it, 3 runs per cell, source only).
+ *    (every Codex run without the skill hit HG-7, tightening headings to about −0.06em; 6 of 9 Codex
+ *    runs had no Korean face). The page quotes no eval totals (owner review 2026-10-24); those and
+ *    their caveats live in skills/hangul/references/eval-2026-09.md and eval-2026-10-writing.md.
  *  - the eval page itself (Codex p1-A-r3, no skill), as measured for the launch content
  *    (hangul-content/CONTENT-NOTES.md): the 44px heading at −2.8px, the 8px/10px captions,
  *    and the Arial-first stack that drew "320" in Arial and "만 명" in Apple SD Gothic Neo.
@@ -42,19 +41,6 @@ export const H3_METRICS = [
 export const H1_STACK = {
   before: 'font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;',
   after: 'font-family: "Pretendard Variable", Pretendard, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;',
-} as const;
-
-/** The eval's headline figures: runs with a BLOCK or WARN, without the skill and with it, of 18 each. */
-export const EVAL_FIGURES = { before: 17, after: 0, runs: 18 } as const;
-
-/** The writing eval's figures (skills/hangul/references/eval-2026-10-writing.md, scored with the checker 2.0.6
- *  ships): runs with at least one copy-check finding, FYI included, of 18 without the skill and 18 with it,
- *  split by channel; `bw` counts runs with a BLOCK or WARN only, the measure the plan's criterion used. */
-export const WRITING_EVAL = {
-  before: { all: 11, codex: 8, claude: 3 },
-  after: { all: 2, codex: 2, claude: 0 },
-  bw: { before: 1, after: 0 },
-  runs: 18,
 } as const;
 
 /** The 판심제 set vertically in the fold of the hero's woodblock leaf (decoration, aria-hidden;
@@ -131,14 +117,6 @@ export interface HangulCopy {
     readonly cards: readonly WhyCard[];
     readonly footnote: string;
   };
-  readonly evals: {
-    readonly h2: string;
-    readonly unit: string;
-    readonly before: { readonly label: string; readonly sub: string };
-    readonly after: { readonly label: string; readonly sub: string };
-    readonly method: string;
-    readonly caveat: string;
-  };
   readonly assets: {
     readonly shotsH2: string;
     /** {source} */
@@ -151,20 +129,6 @@ export interface HangulCopy {
     /** {seconds} */
     readonly videoCaption: string;
     readonly gif: string;
-    /** {services} */
-    readonly measuredH2: string;
-    /** {date} */
-    readonly measuredSub: string;
-    readonly bodyLineHeight: string;
-    readonly bodyLetterSpacing: string;
-    readonly headingLetterSpacing: string;
-    readonly median: string;
-    readonly range: string;
-    /** the label for the middle half of the services (the interquartile range) */
-    readonly iqr: string;
-    readonly fonts: string;
-    /** {count} */
-    readonly fontCount: string;
   };
   readonly writing: {
     readonly h2: string;
@@ -174,15 +138,6 @@ export interface HangulCopy {
     readonly fixes: readonly CopyFix[];
     /** where the examples come from and who rewrote them */
     readonly fixesNote: string;
-    /** what the two figures count */
-    readonly evalUnit: string;
-    /** sub: {codex} {claude} */
-    readonly evalBefore: { readonly label: string; readonly sub: string };
-    readonly evalAfter: { readonly label: string; readonly sub: string };
-    /** {runs} */
-    readonly evalMethod: string;
-    /** {bwBefore} {bwAfter} {runs} */
-    readonly evalCaveat: string;
   };
   readonly rules: {
     readonly h2: string;
@@ -212,7 +167,7 @@ const KO: HangulCopy = {
   meta: {
     title: "/hangul — 코딩 에이전트의 한국어 조판과 문구를 바로잡는 스킬",
     description:
-      "코딩 에이전트는 한국어를 영어처럼 조판해요. /hangul은 줄바꿈·자간·행간·글꼴 목록 같은 조판 규칙 14가지와 맞춤법·오류 문구·말투 같은 문구 규칙 14가지를 에이전트에게 알려 주는 스킬이에요. 조판 평가에서는 스킬 없이 만든 18개 중 17개가 규칙을 어겼어요. /hangul을 쓴 18개에는 BLOCK과 WARN이 하나도 없었어요.",
+      "코딩 에이전트는 한국어를 영어처럼 조판해요. /hangul은 줄바꿈·자간·행간·글꼴 목록 같은 조판 규칙 14가지와 맞춤법·오류 문구·말투 같은 문구 규칙 14가지를 에이전트에게 알려 주는 스킬이에요.",
     ogAlt: "/hangul — ‘있어 / 요.’로 끊긴 제목과 ‘있어요.’로 바로잡은 제목",
   },
   hero: {
@@ -268,14 +223,6 @@ const KO: HangulCopy = {
     ],
     footnote: "Claude(Sonnet)가 스킬 없이 만든 결과물은 주로 본문 자간을 −0.01~−0.02em 좁혔어요. 보통 글자 크기에서는 눈으로 구분하기 어려워서 여기에는 싣지 않았어요.",
   },
-  evals: {
-    h2: "스킬 없이 만든 18개 중 17개가 규칙을 어겼어요",
-    unit: "BLOCK이나 WARN이 하나라도 나온 결과물",
-    before: { label: "스킬 없이", sub: "Codex 9개 · Claude 8개" },
-    after: { label: "/hangul 적용", sub: "BLOCK 0 · WARN 0" },
-    method: "한국어 UI 과제 3개를 Codex CLI와 Claude(Sonnet)에 3번씩 맡겼어요. 스킬 없이 18개, /hangul을 써서 18개를 만들었어요.",
-    caveat: "채점은 스킬에 든 체커로 소스 코드만 읽었고, 스킬을 쓴 쪽은 프롬프트에서 스킬을 지정했어요. 그래서 스킬 쪽에 유리한 비교일 수 있어요.",
-  },
   assets: {
     shotsH2: "같은 화면, /hangul 적용 전과 후",
     shotsCaption: "스킬 없이 만든 평가 페이지({source})에 /hangul 규칙을 적용했어요. 조판만 바꾸고 레이아웃과 색, 문구는 그대로 뒀어요.",
@@ -286,16 +233,6 @@ const KO: HangulCopy = {
     videoH2: "나란히 스크롤해 보면",
     videoCaption: "적용 전과 후 화면을 나란히 스크롤한 {seconds}초 영상이에요.",
     gif: "GIF로 보기",
-    measuredH2: "한국 서비스 {services}곳을 직접 쟀어요",
-    measuredSub: "{date} 공개 웹 화면 기준이에요.",
-    bodyLineHeight: "본문 행간",
-    bodyLetterSpacing: "본문 자간",
-    headingLetterSpacing: "제목 자간",
-    median: "중앙값",
-    range: "범위",
-    iqr: "가운데 절반",
-    fonts: "주 글꼴",
-    fontCount: "{count}곳",
   },
   writing: {
     h2: "문구도 한국어답게",
@@ -338,13 +275,6 @@ const KO: HangulCopy = {
       },
     ],
     fixesNote: "예시는 스킬 없이 만든 결과물에서 문구 검사기가 짚은 문구 가운데 규칙마다 하나씩 골랐어요. 고친 문구는 규칙에 맞춰 다시 쓴 거예요.",
-    evalUnit: "문구 검사기 지적이 하나라도 나온 결과물 (FYI 포함)",
-    evalBefore: { label: "스킬 없이", sub: "Codex {codex}개 · Claude {claude}개" },
-    evalAfter: { label: "/hangul 적용", sub: "Codex {codex}개 · Claude {claude}개" },
-    evalMethod:
-      "조판 평가와 같은 방식이에요. 문구가 많은 화면 3개(송금, 중고거래 검색, 회원가입)를 Codex와 Claude(Sonnet)에 3번씩 맡겼어요. 스킬 없이 {runs}개, /hangul을 써서 {runs}개를 만들었어요.",
-    evalCaveat:
-      "차이는 대부분 제목 끝 마침표 같은 FYI에서 났어요. BLOCK이나 WARN이 나온 결과물은 스킬 없이도 {runs}개 중 {bwBefore}개, /hangul을 쓰면 {bwAfter}개라, 미리 정한 기준(이 수가 줄어드는 것)으로는 차이를 보이지 못했어요. 맞춤법 오류(BLOCK)는 양쪽 모두 없었어요. 검사기는 스킬에 든 것이고, 스킬을 쓴 쪽은 이 검사기를 직접 돌려 가며 고쳤어요. Claude가 스킬 없이 만든 9개 중 5개는 작업 중에 이 저장소의 규칙 메모를 읽었어요. 평가 문서에 결과물마다 적어 뒀어요.",
   },
   rules: {
     h2: "/hangul의 규칙 28가지",
@@ -401,7 +331,7 @@ const EN: HangulCopy = {
   meta: {
     title: "/hangul — Korean typography and UX writing for coding agents",
     description:
-      "Coding agents typeset Korean as if it were English. /hangul is a skill that gives them 14 rules for Korean line breaking, letter-spacing, line height and font stacks, and 14 for the copy: spelling, error messages, speech level. In our typography eval, 17 of 18 runs without the skill broke a rule; the 18 runs with /hangul had no BLOCK or WARN at all.",
+      "Coding agents typeset Korean as if it were English. /hangul is a skill that gives them 14 rules for Korean line breaking, letter-spacing, line height and font stacks, and 14 for the copy: spelling, error messages, speech level.",
     ogAlt: "/hangul — a Korean heading broken as ‘있어 / 요.’, and the same heading kept whole",
   },
   hero: {
@@ -457,14 +387,6 @@ const EN: HangulCopy = {
     ],
     footnote: "Without the skill, Claude (Sonnet) mostly tightened body text by −0.01 to −0.02em. That’s hard to see at normal sizes, so it isn’t shown here.",
   },
-  evals: {
-    h2: "17 of 18 runs without the skill broke a rule",
-    unit: "Runs with at least one BLOCK or WARN",
-    before: { label: "Without the skill", sub: "Codex 9 · Claude 8" },
-    after: { label: "With /hangul", sub: "0 BLOCK · 0 WARN" },
-    method: "We gave Codex CLI and Claude (Sonnet) three Korean UI tasks, three runs each: 18 runs without the skill and 18 with /hangul.",
-    caveat: "The checker that scored the runs ships with the skill and reads source code only, and the runs with the skill named it in the prompt, so the comparison may favor the skill.",
-  },
   assets: {
     shotsH2: "The same page, before and after /hangul",
     shotsCaption: "A page from the eval ({source}), built without the skill, with the /hangul rules applied. Only the typography changed; layout, color and copy stayed as they were.",
@@ -475,16 +397,6 @@ const EN: HangulCopy = {
     videoH2: "Scrolled side by side",
     videoCaption: "The before and after pages, scrolled side by side ({seconds} seconds).",
     gif: "View as GIF",
-    measuredH2: "We measured {services} Korean services",
-    measuredSub: "Public web pages, as of {date}.",
-    bodyLineHeight: "Body line height",
-    bodyLetterSpacing: "Body letter-spacing",
-    headingLetterSpacing: "Heading letter-spacing",
-    median: "Median",
-    range: "Range",
-    iqr: "Middle half",
-    fonts: "Primary font",
-    fontCount: "{count} services",
   },
   writing: {
     h2: "The words, too",
@@ -527,13 +439,6 @@ const EN: HangulCopy = {
       },
     ],
     fixesNote: "We picked one example per rule from the strings the copy checker flagged in runs without the skill. The rewrites are ours, not agent output.",
-    evalUnit: "Runs with at least one copy-checker finding, FYI included",
-    evalBefore: { label: "Without the skill", sub: "Codex {codex} · Claude {claude}" },
-    evalAfter: { label: "With /hangul", sub: "Codex {codex} · Claude {claude}" },
-    evalMethod:
-      "The same method as the typography eval: three copy-heavy screens (a money transfer, a secondhand-market search, a sign-up), given to Codex and Claude (Sonnet) three times each, {runs} runs without the skill and {runs} with it.",
-    evalCaveat:
-      "Most of the difference is at FYI level, chiefly a period at the end of a heading. Runs with a BLOCK or WARN were {bwBefore} of {runs} without the skill and {bwAfter} with it, so the eval’s pre-set criterion (fewer of those) was not met. Neither arm had a misspelling (BLOCK). The checker ships with the skill, and the runs with the skill ran it themselves as they worked. Five of the nine Claude runs without the skill read this repository’s notes on the rules while they worked; the eval write-up flags each one.",
   },
   rules: {
     h2: "The 28 rules in /hangul",

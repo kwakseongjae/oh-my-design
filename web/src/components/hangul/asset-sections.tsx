@@ -1,12 +1,6 @@
 import type { HangulAssets } from "@/lib/hangul/assets";
 import { fill, type HangulCopy } from "./copy";
 
-/** −0.03 → "−0.03em", 0 → "0" (a real minus sign, as the rest of the page writes it). */
-export function fmtEm(v: number): string {
-  if (v === 0) return "0";
-  return `${v < 0 ? "−" : ""}${Math.abs(v)}em`;
-}
-
 /** One screenshot, linked to its full-size file (on a phone the desktop pair is thumbnail-sized). */
 function Shot({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) {
   return (
@@ -84,67 +78,6 @@ export function CompareSection({ assets, t, band }: { assets: HangulAssets; t: H
             </figcaption>
           </figure>
         ) : null}
-      </div>
-    </section>
-  );
-}
-
-export function MeasuredSection({ assets, t, band }: { assets: HangulAssets; t: HangulCopy["assets"]; band: boolean }) {
-  const m = assets.measured;
-  if (!m) return null;
-  // Body line-height shows its interquartile range, never min–max: measured-67.md says its extremes
-  // are single-line UI text sized by height (1.0) and fixed-pixel values (4.571), not paragraph
-  // line-height (contract doc in lib/hangul/assets.ts). Spreads without an IQR keep min–max.
-  const stats = [
-    { k: t.bodyLineHeight, v: m.bodyLineHeight, f: (x: number) => x.toFixed(2).replace(/0$/, ""), iqrOnly: true },
-    { k: t.bodyLetterSpacing, v: m.bodyLetterSpacingEm, f: fmtEm, iqrOnly: false },
-    { k: t.headingLetterSpacing, v: m.headingLetterSpacingEm, f: fmtEm, iqrOnly: false },
-  ];
-  const top = Math.max(1, ...m.topFonts.map((x) => x.count));
-  return (
-    <section id="measured" className={`hg-sec${band ? " hg-band" : ""}`} aria-labelledby="hg-measured-h">
-      <div className="sq-wrap">
-        <h2 id="hg-measured-h" className="hg-d">{fill(t.measuredH2, { services: m.services })}</h2>
-        <p className="hg-intro">{fill(t.measuredSub, { date: m.date })}</p>
-        <div className="hg-mcard">
-          <dl className="hg-mstats">
-            {stats.map((s) => (
-              <div key={s.k} className="hg-mstat">
-                <dt>{s.k}</dt>
-                <dd>
-                  <span className="hg-mstat-v hg-num">{s.f(s.v.median)}</span>
-                  {s.v.iqr && s.v.iqr.length === 2 ? (
-                    <span className="hg-mstat-r">
-                      {t.median} · {t.iqr} <span className="hg-num">{s.f(s.v.iqr[0])} – {s.f(s.v.iqr[1])}</span>
-                    </span>
-                  ) : s.iqrOnly ? (
-                    <span className="hg-mstat-r">{t.median}</span>
-                  ) : (
-                    <span className="hg-mstat-r">
-                      {t.median} · {t.range} <span className="hg-num">{s.f(s.v.min)} – {s.f(s.v.max)}</span>
-                    </span>
-                  )}
-                </dd>
-              </div>
-            ))}
-          </dl>
-          {m.topFonts.length > 0 ? (
-            <div className="hg-fonts">
-              <p className="hg-fonts-h">{t.fonts}</p>
-              <ol className="hg-fonts-list">
-                {m.topFonts.map((f) => (
-                  <li key={f.family} className="hg-font">
-                    <span className="hg-font-name" lang="en">{f.family}</span>
-                    <span className="hg-font-bar" aria-hidden="true">
-                      <span style={{ width: `${(f.count / top) * 100}%` }} />
-                    </span>
-                    <span className="hg-font-n hg-num">{fill(t.fontCount, { count: f.count })}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ) : null}
-        </div>
       </div>
     </section>
   );
