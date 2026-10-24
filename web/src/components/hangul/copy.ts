@@ -47,6 +47,16 @@ export const H1_STACK = {
 /** The eval's headline figures: runs with a BLOCK or WARN, without the skill and with it, of 18 each. */
 export const EVAL_FIGURES = { before: 17, after: 0, runs: 18 } as const;
 
+/** The writing eval's figures (skills/hangul/references/eval-2026-10-writing.md, scored with the checker 2.0.6
+ *  ships): runs with at least one copy-check finding, FYI included, of 18 without the skill and 18 with it,
+ *  split by channel; `bw` counts runs with a BLOCK or WARN only, the measure the plan's criterion used. */
+export const WRITING_EVAL = {
+  before: { all: 11, codex: 8, claude: 3 },
+  after: { all: 2, codex: 2, claude: 0 },
+  bw: { before: 1, after: 0 },
+  runs: 18,
+} as const;
+
 /** The 판심제 set vertically in the fold of the hero's woodblock leaf (decoration, aria-hidden;
  *  the same on both pages, because the subject is the Korean script). */
 export const PANSIM_TITLE = "한글 조판";
@@ -59,6 +69,17 @@ export const LAUNCH_POST_SLUG = "baemin-typography-decisions";
 export interface HangulRule {
   readonly id: string;
   readonly text: string;
+}
+
+/** One string from the writing eval, as an agent wrote it without the skill, and the same string
+ *  rewritten to the rule it broke. `mark` is the part a proofreader would mark (a substring of before). */
+export interface CopyFix {
+  readonly id: string;
+  readonly where: string;
+  readonly before: string;
+  readonly mark: string;
+  readonly after: string;
+  readonly why: string;
 }
 
 export interface WhyCard {
@@ -145,7 +166,34 @@ export interface HangulCopy {
     /** {count} */
     readonly fontCount: string;
   };
-  readonly rules: { readonly h2: string; readonly intro: string; readonly list: readonly HangulRule[] };
+  readonly writing: {
+    readonly h2: string;
+    readonly intro: string;
+    readonly before: string;
+    readonly after: string;
+    readonly fixes: readonly CopyFix[];
+    /** where the examples come from and who rewrote them */
+    readonly fixesNote: string;
+    /** what the two figures count */
+    readonly evalUnit: string;
+    /** sub: {codex} {claude} */
+    readonly evalBefore: { readonly label: string; readonly sub: string };
+    readonly evalAfter: { readonly label: string; readonly sub: string };
+    /** {runs} */
+    readonly evalMethod: string;
+    /** {bwBefore} {bwAfter} {runs} */
+    readonly evalCaveat: string;
+  };
+  readonly rules: {
+    readonly h2: string;
+    readonly intro: string;
+    /** the typography rules (HG-n, skills/hangul/SKILL.md §3) */
+    readonly typeH3: string;
+    readonly list: readonly HangulRule[];
+    /** the writing rules (HW-n, skills/hangul/SKILL.md §3b) */
+    readonly writingH3: string;
+    readonly writing: readonly HangulRule[];
+  };
   readonly install: {
     readonly h2: string;
     readonly boxLabel: string;
@@ -162,15 +210,15 @@ export interface HangulCopy {
 
 const KO: HangulCopy = {
   meta: {
-    title: "/hangul — 코딩 에이전트의 한국어 조판을 바로잡는 스킬",
+    title: "/hangul — 코딩 에이전트의 한국어 조판과 문구를 바로잡는 스킬",
     description:
-      "코딩 에이전트는 한국어를 영어처럼 조판해요. /hangul은 줄바꿈, 자간, 행간, 글꼴 목록 같은 한국어 조판 규칙 14가지를 에이전트에게 알려 주는 스킬이에요. 평가에서 스킬 없이 만든 18개 중 17개가 규칙을 어겼고, /hangul을 쓴 18개에는 BLOCK과 WARN이 하나도 없었어요.",
+      "코딩 에이전트는 한국어를 영어처럼 조판해요. /hangul은 줄바꿈·자간·행간·글꼴 목록 같은 조판 규칙 14가지와 맞춤법·오류 문구·말투 같은 문구 규칙 14가지를 에이전트에게 알려 주는 스킬이에요. 조판 평가에서는 스킬 없이 만든 18개 중 17개가 규칙을 어겼어요. /hangul을 쓴 18개에는 BLOCK과 WARN이 하나도 없었어요.",
     ogAlt: "/hangul — ‘있어 / 요.’로 끊긴 제목과 ‘있어요.’로 바로잡은 제목",
   },
   hero: {
-    kicker: "한국어 조판 스킬",
+    kicker: "한국어 조판·문구 스킬",
     h1: "AI가 만든 한국어 제목, 단어 중간에서 끊기지 않게",
-    lede: "코딩 에이전트는 한국어를 영어처럼 조판해요. /hangul은 줄바꿈과 자간, 행간, 글꼴 목록까지 한국어 조판 규칙 14가지를 에이전트에게 알려 주는 스킬이에요.",
+    lede: "코딩 에이전트는 한국어를 영어처럼 조판해요. /hangul은 줄바꿈과 자간부터 맞춤법과 오류 문구까지, 조판 규칙 14가지와 문구 규칙 14가지를 에이전트에게 알려 주는 스킬이에요.",
     cta: "설치하기",
   },
   demo: {
@@ -225,7 +273,7 @@ const KO: HangulCopy = {
     unit: "BLOCK이나 WARN이 하나라도 나온 결과물",
     before: { label: "스킬 없이", sub: "Codex 9개 · Claude 8개" },
     after: { label: "/hangul 적용", sub: "BLOCK 0 · WARN 0" },
-    method: "한국어 UI 과제 3개를 Codex CLI와 Claude(Sonnet)에 3번씩 맡겨, 스킬 없이 18개와 /hangul을 써서 18개를 만들었어요.",
+    method: "한국어 UI 과제 3개를 Codex CLI와 Claude(Sonnet)에 3번씩 맡겼어요. 스킬 없이 18개, /hangul을 써서 18개를 만들었어요.",
     caveat: "채점은 스킬에 든 체커로 소스 코드만 읽었고, 스킬을 쓴 쪽은 프롬프트에서 스킬을 지정했어요. 그래서 스킬 쪽에 유리한 비교일 수 있어요.",
   },
   assets: {
@@ -249,9 +297,59 @@ const KO: HangulCopy = {
     fonts: "주 글꼴",
     fontCount: "{count}곳",
   },
+  writing: {
+    h2: "문구도 한국어답게",
+    intro:
+      "조판 다음은 문구예요. /hangul은 화면 문구 규칙 14가지도 함께 알려 줘요. 「한글 맞춤법」과 국립국어원 자료, KRDS·앱인토스·SEED 공개 문서, 한국어 UX 라이팅 연구에서 가져온 규칙이에요. 국립국어원이 2025년 12월에 3,000명에게 어려운 어휘와 잘못된 표현 30가지를 물었어요. 바꿔야 한다는 답이 가장 많았던 것(93.3%)은 ‘커피 나오셨습니다’ 같은 지나친 높임이었어요.",
+    before: "스킬 없이",
+    after: "규칙대로",
+    fixes: [
+      {
+        id: "HW-8",
+        where: "독서 모임 가입 완료 화면",
+        before: "사이책 가입이 완료됐어요.",
+        mark: "가입이 완료됐어요",
+        after: "사이책에 가입했어요.",
+        why: "‘가입이 완료됐어요’는 시스템이 처리한 상태를 말해요. 사용자가 한 일로 쓰면 더 짧고 분명해요.",
+      },
+      {
+        id: "HW-12",
+        where: "중고거래 앱 새 글 알림 시트",
+        before: "놓치지 마세요",
+        mark: "놓치지 마세요",
+        after: "새 글 알림",
+        why: "놓칠까 봐 걱정하게 만드는 대신 무엇을 받는지 말해요. 바로 아래 제목이 이미 알림을 받을지 묻고 있어요.",
+      },
+      {
+        id: "HW-11",
+        where: "독서 모임 약관 창",
+        before: "화면 구현을 위한 예시 약관입니다.",
+        mark: "약관입니다",
+        after: "화면을 보여 주려고 넣은 예시 약관이에요.",
+        why: "이 화면의 문구는 대부분 해요체인데 이 문장은 합쇼체예요. 한 화면에서는 말투를 하나로 맞춰요.",
+      },
+      {
+        id: "HW-2",
+        where: "중고거래 앱 가격 필터",
+        before: "4만원 이하",
+        mark: "4만원",
+        after: "4만 원 이하",
+        why: "‘만’처럼 한글로 쓴 수 뒤에 오는 단위 ‘원’은 띄어 써요. 국립국어원의 「쉬운 공문서 쓰기 길잡이」도 ‘1천만원’을 ‘1천만 원’으로 고쳐요.",
+      },
+    ],
+    fixesNote: "예시는 스킬 없이 만든 결과물에서 문구 검사기가 짚은 문구 가운데 규칙마다 하나씩 골랐어요. 고친 문구는 규칙에 맞춰 다시 쓴 거예요.",
+    evalUnit: "문구 검사기 지적이 하나라도 나온 결과물 (FYI 포함)",
+    evalBefore: { label: "스킬 없이", sub: "Codex {codex}개 · Claude {claude}개" },
+    evalAfter: { label: "/hangul 적용", sub: "Codex {codex}개 · Claude {claude}개" },
+    evalMethod:
+      "조판 평가와 같은 방식이에요. 문구가 많은 화면 3개(송금, 중고거래 검색, 회원가입)를 Codex와 Claude(Sonnet)에 3번씩 맡겼어요. 스킬 없이 {runs}개, /hangul을 써서 {runs}개를 만들었어요.",
+    evalCaveat:
+      "차이는 대부분 제목 끝 마침표 같은 FYI에서 났어요. BLOCK이나 WARN이 나온 결과물은 스킬 없이도 {runs}개 중 {bwBefore}개, /hangul을 쓰면 {bwAfter}개라, 미리 정한 기준(이 수가 줄어드는 것)으로는 차이를 보이지 못했어요. 맞춤법 오류(BLOCK)는 양쪽 모두 없었어요. 검사기는 스킬에 든 것이고, 스킬을 쓴 쪽은 이 검사기를 직접 돌려 가며 고쳤어요. Claude가 스킬 없이 만든 9개 중 5개는 작업 중에 이 저장소의 규칙 메모를 읽었어요. 평가 문서에 결과물마다 적어 뒀어요.",
+  },
   rules: {
-    h2: "/hangul의 규칙 14가지",
-    intro: "규칙은 W3C 명세, KRDS·SEED·TDS 공개 문서, 한국 서비스 67곳을 잰 값에서 가져왔어요. 프로젝트의 DESIGN.md에 타이포그래피 값이 있으면 그 값을 먼저 따라요.",
+    h2: "/hangul의 규칙 28가지",
+    intro: "조판 규칙은 W3C 명세, KRDS·SEED·TDS 공개 문서, 한국 서비스 67곳을 잰 값에서, 문구 규칙은 「한글 맞춤법」과 국립국어원 자료, KRDS·앱인토스·SEED 공개 문서, 한국어 연구에서 가져왔어요. 프로젝트의 DESIGN.md에 타이포그래피 값이나 말투가 있으면 그것을 먼저 따라요.",
+    typeH3: "조판 14가지",
     list: [
       { id: "HG-1", text: "글꼴 목록 맨 앞에 한글 글꼴" },
       { id: "HG-2", text: '<html lang="ko">로 문서 언어 밝히기' },
@@ -268,12 +366,29 @@ const KO: HangulCopy = {
       { id: "HG-13", text: "숫자는 1,000원처럼, 한 화면에 한 방식으로" },
       { id: "HG-14", text: "말줄임은 CSS로, 말줄임표 안에서 줄 바꾸지 않기" },
     ],
+    writingH3: "문구 14가지",
+    writing: [
+      { id: "HW-1", text: "맞춤법대로: 돼요, 됐어요, 할게요, 며칠" },
+      { id: "HW-2", text: "띄어쓰기: 할 수 있어요, 할 때, 준비 중이에요" },
+      { id: "HW-3", text: "문장 부호: 2026. 10. 24., 10:20, 버튼에는 마침표 없이" },
+      { id: "HW-4", text: "오류 문구는 무슨 일인지와 지금 할 일을 함께" },
+      { id: "HW-5", text: "버튼은 누르면 일어나는 일로: 송금하기, 닫기" },
+      { id: "HW-6", text: "한 문장에는 한 가지만" },
+      { id: "HW-7", text: "쉬운 말로: 금일 대신 오늘" },
+      { id: "HW-8", text: "데이터가 아니라 사용자가 한 일로: 저장했어요" },
+      { id: "HW-9", text: "같은 내용이면 할 수 있는 쪽으로" },
+      { id: "HW-10", text: "사물은 높이지 않기: 커피가 나왔어요" },
+      { id: "HW-11", text: "한 화면에는 한 가지 말투, 브랜드가 정한 대로" },
+      { id: "HW-12", text: "겁주거나 죄책감을 주지 않기" },
+      { id: "HW-13", text: "느낌표는 드물게, 오류 문구에는 쓰지 않기" },
+      { id: "HW-14", text: "대체 텍스트에 ‘이미지·사진’ 쓰지 않기" },
+    ],
   },
   install: {
     h2: "설치하고, 평소처럼 요청하세요",
     boxLabel: "설치 명령",
     alt: "hangul 스킬만 받으려면 이렇게 설치해요.",
-    usage: "“이 화면 한글 줄바꿈이 이상해”, “한국어 랜딩 만들어 줘”처럼 말하면 돼요. 새 화면을 만들 때는 규칙을 적용하고, 이미 있는 코드는 점검해서 고칠 곳을 표로 알려 줘요.",
+    usage: "“이 화면 한글 줄바꿈이 이상해”, “오류 문구 다듬어 줘”, “한국어 랜딩 만들어 줘”처럼 말하면 돼요. 새 화면을 만들 때는 규칙을 적용하고, 이미 있는 코드는 점검해서 고칠 곳을 표로 알려 줘요. 이미 쓴 문구는 바꾸기 전에 먼저 물어봐요.",
     copy: { copy: "복사", copied: "복사했어요", failed: "복사하지 못했어요" },
     more: "더 읽어 보기",
     docs: "스킬 문서",
@@ -284,15 +399,15 @@ const KO: HangulCopy = {
 
 const EN: HangulCopy = {
   meta: {
-    title: "/hangul — Korean typography for coding agents",
+    title: "/hangul — Korean typography and UX writing for coding agents",
     description:
-      "Coding agents typeset Korean as if it were English. /hangul is a skill that gives them 14 rules for Korean line breaking, letter-spacing, line height and font stacks. In our eval, 17 of 18 runs without the skill broke a rule; the 18 runs with /hangul had no BLOCK or WARN at all.",
+      "Coding agents typeset Korean as if it were English. /hangul is a skill that gives them 14 rules for Korean line breaking, letter-spacing, line height and font stacks, and 14 for the copy: spelling, error messages, speech level. In our typography eval, 17 of 18 runs without the skill broke a rule; the 18 runs with /hangul had no BLOCK or WARN at all.",
     ogAlt: "/hangul — a Korean heading broken as ‘있어 / 요.’, and the same heading kept whole",
   },
   hero: {
-    kicker: "Korean typography skill",
+    kicker: "Korean typography and writing skill",
     h1: "Korean headings that don’t break mid-word",
-    lede: "Coding agents typeset Korean like English. /hangul is a skill that gives them 14 rules for Korean type, from line breaks to font stacks.",
+    lede: "Coding agents typeset Korean like English. /hangul is a skill that gives them 14 rules for Korean type and 14 for Korean UI copy, from line breaks to error messages.",
     cta: "Install",
   },
   demo: {
@@ -371,9 +486,59 @@ const EN: HangulCopy = {
     fonts: "Primary font",
     fontCount: "{count} services",
   },
+  writing: {
+    h2: "The words, too",
+    intro:
+      "Then come the words. /hangul also gives agents 14 rules for the strings on a Korean screen, drawn from Korean orthography and 국립국어원 (the National Institute of Korean Language), the public KRDS, Apps in Toss and SEED docs, and Korean UX-writing studies. In December 2025, 국립국어원 asked 3,000 people about 30 hard words and wrong expressions. The one most said should change (93.3%) was excessive honorifics, like ‘커피 나오셨습니다’ (“the coffee has honorably come out”).",
+    before: "Without",
+    after: "Rewritten",
+    fixes: [
+      {
+        id: "HW-8",
+        where: "Book club sign-up, done screen",
+        before: "사이책 가입이 완료됐어요.",
+        mark: "가입이 완료됐어요",
+        after: "사이책에 가입했어요.",
+        why: "“Sign-up has been completed” reports what the system processed. Saying what the user did (“You’ve joined”) is shorter and clearer.",
+      },
+      {
+        id: "HW-12",
+        where: "Secondhand market, new-post alert sheet",
+        before: "놓치지 마세요",
+        mark: "놓치지 마세요",
+        after: "새 글 알림",
+        why: "“Don’t miss out” leans on worry. Name what the user gets instead (“New-post alerts”); the heading below already asks the question.",
+      },
+      {
+        id: "HW-11",
+        where: "Book club, terms dialog",
+        before: "화면 구현을 위한 예시 약관입니다.",
+        mark: "약관입니다",
+        after: "화면을 보여 주려고 넣은 예시 약관이에요.",
+        why: "Most strings on this screen are in 해요체; this sentence is in 합쇼체. One screen keeps one speech level.",
+      },
+      {
+        id: "HW-2",
+        where: "Secondhand market, price filter",
+        before: "4만원 이하",
+        mark: "4만원",
+        after: "4만 원 이하",
+        why: "After a number written in Hangul, such as 만 (ten thousand), the unit 원 takes a space. 국립국어원’s plain-document guide corrects ‘1천만원’ to ‘1천만 원’.",
+      },
+    ],
+    fixesNote: "We picked one example per rule from the strings the copy checker flagged in runs without the skill. The rewrites are ours, not agent output.",
+    evalUnit: "Runs with at least one copy-checker finding, FYI included",
+    evalBefore: { label: "Without the skill", sub: "Codex {codex} · Claude {claude}" },
+    evalAfter: { label: "With /hangul", sub: "Codex {codex} · Claude {claude}" },
+    evalMethod:
+      "The same method as the typography eval: three copy-heavy screens (a money transfer, a secondhand-market search, a sign-up), given to Codex and Claude (Sonnet) three times each, {runs} runs without the skill and {runs} with it.",
+    evalCaveat:
+      "Most of the difference is at FYI level, chiefly a period at the end of a heading. Runs with a BLOCK or WARN were {bwBefore} of {runs} without the skill and {bwAfter} with it, so the eval’s pre-set criterion (fewer of those) was not met. Neither arm had a misspelling (BLOCK). The checker ships with the skill, and the runs with the skill ran it themselves as they worked. Five of the nine Claude runs without the skill read this repository’s notes on the rules while they worked; the eval write-up flags each one.",
+  },
   rules: {
-    h2: "The 14 rules in /hangul",
-    intro: "They come from W3C specs, the public KRDS, SEED and TDS docs, and measurements of 67 Korean services. When your DESIGN.md sets a type value, that value wins.",
+    h2: "The 28 rules in /hangul",
+    intro: "The typography rules come from W3C specs, the public KRDS, SEED and TDS docs, and measurements of 67 Korean services; the writing rules from Korean orthography and 국립국어원, the public KRDS, Apps in Toss and SEED docs, and Korean studies. When your DESIGN.md sets a type value or a voice, that wins.",
+    typeH3: "Typography",
     list: [
       { id: "HG-1", text: "A Korean font first in the stack" },
       { id: "HG-2", text: 'Declare the language: <html lang="ko">' },
@@ -390,12 +555,29 @@ const EN: HangulCopy = {
       { id: "HG-13", text: "Numbers as 1,000원, one style per screen" },
       { id: "HG-14", text: "Truncate with CSS, never inside an ellipsis" },
     ],
+    writingH3: "Writing",
+    writing: [
+      { id: "HW-1", text: "Spelling: 돼요, 됐어요, 할게요, 며칠" },
+      { id: "HW-2", text: "Spacing: 할 수 있어요, 할 때, 준비 중이에요" },
+      { id: "HW-3", text: "Punctuation: 2026. 10. 24., 10:20, no period on buttons" },
+      { id: "HW-4", text: "Errors say what happened and what to do now" },
+      { id: "HW-5", text: "Buttons say what happens: 송금하기, 닫기" },
+      { id: "HW-6", text: "One message per sentence" },
+      { id: "HW-7", text: "Plain words: 오늘, not 금일" },
+      { id: "HW-8", text: "What the user did, not the data state" },
+      { id: "HW-9", text: "Say what’s possible when the content is the same" },
+      { id: "HW-10", text: "Honor people, never things: 커피가 나왔어요" },
+      { id: "HW-11", text: "One speech level per screen, as the brand sets it" },
+      { id: "HW-12", text: "No pressure, no guilt" },
+      { id: "HW-13", text: "Exclamation marks rarely, none in errors" },
+      { id: "HW-14", text: "Alt text without 이미지 or 사진" },
+    ],
   },
   install: {
     h2: "Install it, then ask as usual",
     boxLabel: "Install command",
     alt: "To install only the hangul skill:",
-    usage: "Say things like “the Korean line breaks look off” or “build a Korean landing page.” On new screens it applies the rules; on existing code it audits and lists what to change in a table.",
+    usage: "Say things like “the Korean line breaks look off”, “fix the Korean error messages” or “build a Korean landing page.” On new screens it applies the rules; on existing code it audits and lists what to change in a table, and asks before it rewrites copy someone already wrote.",
     copy: { copy: "Copy", copied: "Copied", failed: "Copy failed" },
     more: "Read more",
     docs: "Skills docs",

@@ -22,6 +22,7 @@ import {
 } from "./copy";
 import { songMyung } from "./faces";
 import { SpecimenToggle } from "./specimen-toggle";
+import { WritingSection } from "./writing-section";
 import "./hangul.css";
 import "./specimens.css";
 
@@ -83,8 +84,9 @@ function specimen(card: WhyCard, fix: boolean) {
  *   2. why — three defects that render on an eval page, each with a before/after switch
  *   3. eval — 17/18 → 0/18, worded as the results doc supports, with its caveats in one line
  *   4. launch content (screenshots, video, measured-67) — only the entries the content stream filled
- *   5. the 14 rules, one line each
- *   6. install — one copy box, the skill-only alternative, then the docs and blog links
+ *   5. writing — strings agents wrote without the skill, each beside its rewrite, and the writing eval
+ *   6. the 28 rules (14 typography, 14 writing), one line each
+ *   7. install — one copy box, the skill-only alternative, then the docs and blog links
  * No source list (owner v4 review): the skill files carry the citations.
  */
 export function HangulPage({ locale }: { locale: HangulLocale }) {
@@ -97,7 +99,7 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
   const order: string[] = ["why", "eval"];
   if (assets.beforeAfter || assets.video) order.push("compare");
   if (assets.measured) order.push("measured");
-  order.push("rules", "install");
+  order.push("writing", "rules", "install");
   const band = (id: string) => order.indexOf(id) % 2 === 1;
 
   return (
@@ -181,18 +183,30 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
         <CompareSection assets={assets} t={t.assets} band={band("compare")} />
         <MeasuredSection assets={assets} t={t.assets} band={band("measured")} />
 
+        <WritingSection t={t.writing} band={band("writing")} />
+
         <section id="rules" className={`hg-sec${band("rules") ? " hg-band" : ""}`} aria-labelledby="hg-rules-h">
           <div className="sq-wrap">
             <h2 id="hg-rules-h" className="hg-d">{t.rules.h2}</h2>
             <p className="hg-intro">{t.rules.intro}</p>
-            <ol className="hg-rules">
-              {t.rules.list.map((r) => (
-                <li key={r.id} className="hg-rule">
-                  <span className="hg-rule-tag" lang="en">{r.id}</span>
-                  <span className="hg-rule-t">{r.text}</span>
-                </li>
-              ))}
-            </ol>
+            {(
+              [
+                ["type", t.rules.typeH3, t.rules.list],
+                ["writing", t.rules.writingH3, t.rules.writing],
+              ] as const
+            ).map(([key, h3, list]) => (
+              <div key={key} className="hg-rules-g">
+                <h3 className="hg-rules-h">{h3}</h3>
+                <ol className="hg-rules">
+                  {list.map((r) => (
+                    <li key={r.id} className="hg-rule">
+                      <span className="hg-rule-tag" lang="en">{r.id}</span>
+                      <span className="hg-rule-t">{r.text}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
           </div>
         </section>
 

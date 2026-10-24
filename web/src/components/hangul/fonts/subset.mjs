@@ -24,7 +24,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { EVAL_FIGURES, HANGUL_COPY, PANSIM_TITLE, fill } from "../copy.ts";
+import { EVAL_FIGURES, HANGUL_COPY, PANSIM_TITLE, WRITING_EVAL, fill } from "../copy.ts";
 import assets from "../../../data/hangul-assets.json" with { type: "json" };
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -37,9 +37,9 @@ if (!src || !python) {
 }
 
 /** The strings the pages set in the display face (keep in step with the `hg-d` elements). */
-const strings = [PANSIM_TITLE, `${EVAL_FIGURES.before}/${EVAL_FIGURES.runs}`, `${EVAL_FIGURES.after}/${EVAL_FIGURES.runs}`];
+const strings = [PANSIM_TITLE, `${EVAL_FIGURES.before}/${EVAL_FIGURES.runs}`, `${EVAL_FIGURES.after}/${EVAL_FIGURES.runs}`, `${WRITING_EVAL.before.all}/${WRITING_EVAL.runs}`, `${WRITING_EVAL.after.all}/${WRITING_EVAL.runs}`];
 for (const t of Object.values(HANGUL_COPY)) {
-  strings.push(t.hero.h1, t.why.h2, t.evals.h2, t.assets.shotsH2, t.assets.videoH2, t.rules.h2, t.install.h2);
+  strings.push(t.hero.h1, t.why.h2, t.evals.h2, t.assets.shotsH2, t.assets.videoH2, t.writing.h2, t.rules.h2, t.install.h2);
   strings.push(fill(t.assets.measuredH2, { services: assets.measured?.services ?? 0 }));
 }
 const ascii = Array.from({ length: 0x7e - 0x20 + 1 }, (_, i) => String.fromCharCode(0x20 + i)).filter((c) => c !== "`");

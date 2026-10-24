@@ -18,6 +18,7 @@ import {
   INSTALL_CLI,
   INSTALL_SKILL,
   LAUNCH_POST_SLUG,
+  WRITING_EVAL,
   fill,
   objectParticle,
   subjectParticle,
@@ -154,6 +155,35 @@ describe("/hangul rules list", () => {
   it.skipIf(!fs.existsSync(skill))("matches the rule IDs in skills/hangul/SKILL.md", () => {
     const ids = [...fs.readFileSync(skill, "utf8").matchAll(/^\d+\.\s+\*\*(HG-\d+)\b/gm)].map((m) => m[1]);
     expect(HANGUL_COPY.ko.rules.list.map((r) => r.id)).toEqual(ids);
+  });
+
+  it.skipIf(!fs.existsSync(skill))("lists the writing rules in skills/hangul/SKILL.md §3b, in both languages", () => {
+    const ids = [...fs.readFileSync(skill, "utf8").matchAll(/^\d+\.\s+\*\*(HW-\d+)\b/gm)].map((m) => m[1]);
+    expect(ids).toHaveLength(14);
+    for (const locale of ["ko", "en"] as const) expect(HANGUL_COPY[locale].rules.writing.map((r) => r.id)).toEqual(ids);
+  });
+});
+
+describe("/hangul writing section", () => {
+  it("adds up its figures: per channel to the whole, and never more than the runs", () => {
+    for (const arm of [WRITING_EVAL.before, WRITING_EVAL.after]) {
+      expect(arm.codex + arm.claude).toBe(arm.all);
+      expect(arm.all).toBeLessThanOrEqual(WRITING_EVAL.runs);
+    }
+    expect(WRITING_EVAL.bw.before).toBeLessThanOrEqual(WRITING_EVAL.before.all);
+    expect(WRITING_EVAL.bw.after).toBeLessThanOrEqual(WRITING_EVAL.after.all);
+  });
+
+  it.each(LOCALES)("%s: marks a part of each quoted string, says the examples were picked, and states the criterion", (locale) => {
+    const w = HANGUL_COPY[locale].writing;
+    for (const f of w.fixes) expect(f.before).toContain(f.mark);
+    expect(w.fixesNote).toMatch(locale === "ko" ? /골랐어요/ : /picked/);
+    expect(w.evalCaveat).toMatch(locale === "ko" ? /미리 정한 기준/ : /criterion/);
+    const html = render(locale);
+    expect(html).toContain('id="writing"');
+    expect(html).toContain(`${WRITING_EVAL.before.all}<span>/${WRITING_EVAL.runs}</span>`);
+    expect(html).toContain(`${WRITING_EVAL.after.all}<span>/${WRITING_EVAL.runs}</span>`);
+    expect(html.indexOf('id="writing"')).toBeLessThan(html.indexOf('id="rules"'));
   });
 });
 

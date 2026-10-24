@@ -15,7 +15,8 @@
   --sq-f-en:var(--sq-f-latin),var(--font-r11-pretendard),-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   font-synthesis:none;
 }
-.hg-root:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+/* both locales: the English page quotes Korean too (국립국어원, ‘커피 나오셨습니다’), and keep-all leaves Latin alone */
+.hg-root{word-break:keep-all;overflow-wrap:anywhere}
 .hg-root :lang(ko) :is(em,i){font-style:normal}
 .hg-num{font-variant-numeric:tabular-nums}
 .hg-root code,.hg-root pre,.hg-root code span{font-family:var(--sq-f-mono)}
@@ -231,8 +232,26 @@
 .hg-font-bar span{display:block;height:100%;background:var(--hg-ink)}
 .hg-font-n{font-size:15px;line-height:1.5;color:var(--hg-ink-2);white-space:nowrap}
 
+/* ---- writing: proof slips. The agent's string with the faulty part marked in 주색, as a proofreader
+   would, and the rewrite under it; the writing eval closes the section like the typography one ---- */
+.hg-fixes{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 56px;margin-top:40px}
+.hg-fix{min-width:0;padding-top:16px;border-top:3px solid var(--hg-ink)}
+.hg-fix-where{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
+.hg-fix-where .hg-rule-tag{width:auto}
+.hg-fix-row{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;margin-top:12px;font-size:18px;line-height:1.6;color:var(--hg-ink);word-break:keep-all;overflow-wrap:anywhere}
+.hg-fix-row--before{color:var(--hg-ink-2)}
+.hg-fix-k{font-size:14px;line-height:2;font-weight:650;color:var(--hg-ink-2)}
+.hg-fix-t{min-width:0}
+.hg-fix-mark{background:none;color:var(--hg-red);text-decoration:underline wavy var(--hg-red);text-decoration-thickness:1.5px;text-underline-offset:5px}
+.hg-fix-why{margin-top:12px;padding-top:12px;border-top:1px solid var(--hg-rule);font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
+.hg-fix-note{margin-top:24px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:44em}
+.hg-eval-unit--w{margin-top:56px}
+
 /* ---- rules: fourteen lines in two columns, a 계선 between them ---- */
-.hg-rules{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(7,auto);grid-auto-flow:column;column-gap:64px;margin-top:40px;border-bottom:1px solid var(--hg-ink);background:linear-gradient(var(--hg-rule),var(--hg-rule)) 50% 0/1px 100% no-repeat}
+.hg-rules-g{margin-top:48px}
+.hg-rules-g+.hg-rules-g{margin-top:56px}
+.hg-rules-h{font-size:19px;line-height:1.4}
+.hg-rules{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(7,auto);grid-auto-flow:column;column-gap:64px;margin-top:16px;border-bottom:1px solid var(--hg-ink);background:linear-gradient(var(--hg-rule),var(--hg-rule)) 50% 0/1px 100% no-repeat}
 .hg-rule{display:flex;align-items:baseline;gap:16px;min-width:0;padding:16px 0;border-top:1px solid var(--hg-rule)}
 .hg-rule:nth-child(1),.hg-rule:nth-child(8){border-top-color:var(--hg-ink)}
 .hg-rule-tag{flex:none;width:56px;font:600 14px/1.5 var(--sq-f-mono);color:var(--hg-ink-2)}
@@ -318,6 +337,8 @@
   .hg-mstats,.hg-fonts{padding:20px}
   .hg-mstats{border-right:1px solid var(--hg-ink);border-bottom:0}
   .hg-rules{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row;background:none}
+  .hg-fixes{grid-template-columns:minmax(0,1fr)}
+  .hg-fix-row{grid-template-columns:minmax(0,1fr);gap:2px;font-size:17px}
   .hg-rule:nth-child(8){border-top-color:var(--hg-rule)}
   .hg-inst{padding-left:14px}
   .hg-inst code{font-size:15px}
