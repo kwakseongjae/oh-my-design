@@ -58,14 +58,14 @@ A text that changes reader changes its endings with it. A report that becomes a 
 | `site` | 랜딩, 홈페이지, 서비스 소개, 기능 소개 | HW-1…14 |
 | `product` | 상품 상세, 상품 설명, 상품명 | HW-1…14 |
 | `report` | 보고서, 기획서, 주간 보고, 회의 자료, 원페이지 | HW-R1…R5 |
-| `deck` | 피치덱, IR, 발표 자료, 슬라이드, 장표 | HW-R1…R5; detected from a reveal.js, Marp or Slidev deck |
+| `deck` | 피치덱, IR, 발표 자료, 슬라이드, 장표 | HW-R1…R6; detected from a reveal.js, Marp or Slidev deck |
 | `notice` | 공지, 안내문, 점검, 정책 변경, 장애 안내 | HW-P1…P4 |
 | `email` | 메일, 이메일, 제안 메일, 사과 메일, 메시지 | HW-1…14 |
 | `press` | 보도자료, 언론 배포 | HW-11 (해라체 narration) |
 | `docs` | README, 가이드, API 문서, 릴리스 노트 | HW-1…14 |
 | `hiring` | 채용 공고, 직무 소개 | HW-1…14 |
 
-Give the checker the situation with `--context=<situation>` or with a pragma in a file's first 10 lines (`<!-- hangul-context: press -->`). The pragma wins, and without either a deck is detected from its format; everything else runs as `app`. Every situation also gets the document rules HW-D1…D4 on Markdown and text files:
+Give the checker the situation with `--context=<situation>` or with a pragma in a file's first 10 lines (`<!-- hangul-context: press -->`). The pragma wins, and without either a deck is detected from its format; everything else runs as `app`. Every situation also gets the document rules HW-D1…D4 on Markdown and text files: When an agent checks what it wrote, it passes `--context` and doesn't add a pragma to the file it delivers; in a JSON message file a pragma becomes a key the app loads.
 - HW-D1: notes to the writer or placeholders left in the document;
 - HW-D2: one list, one ending form;
 - HW-D3: stock LLM formulas;
@@ -116,7 +116,7 @@ Failures to look for:
 - **Paragraphs on slides.** Speaker notes written onto the slide.
 - **One slide, two ending forms.** Two 명사형 lines and one 합쇼체 sentence. Checked by HW-D2.
 - **Sentences as bullets.** `1인분 장보기는 식재료가 남아 버려지기 쉽다` on a slide whose next slide has 명사형 lines. The body is keywords and figures (`남는 식재료`, `배달비 부담`). Checked by HW-R5.
-- **The same figure on three slides,** which blurs what each slide is for.
+- **The same figure on three slides,** which blurs what each slide is for. Checked by HW-R6 in Markdown decks.
 - **Translated deck scaffolding.** `Why Now? → 왜 지금인가?`, `문제점: … / 해결책: …`, rhetorical questions.
 - **Notes to the writer left on a slide.** `※ 출처 확인 후 추가하세요`. Checked by HW-D1.
 

@@ -21,10 +21,12 @@ The patterns that do separate AI output from human writing:
 |---|---|---|
 | the cleft `중요한 것은 ~이다` | about 10× | HW-D3 (per occurrence, FYI) |
 | `A가 아니라 B` as the default way to make a point | 9.2× | HW-D4 (three or more per document) |
-| a comma right after a connective ending (`빠르지만, 비싸다`) | 4.84× | HW-D4 (density) |
+| a comma right after a connective ending (`빠르지만, 비싸다`) | 4.84× | HW-D4 (density; off in report and press, where im-not-ai found people write more of them) |
 | the passive progressive `~되고 있다` | about 2.5× | HW-D4 (three or more per document) |
 
 국립국어원 still advises against the first group in official documents. So the checker flags one occurrence only when a norm backs it: 「한글 맞춤법」, 「외래어 표기법」, a dictionary headword or an explicit 국립국어원 correction. Everything else is flagged by density, or left to the reader.
+
+Surface cues are weak on their own. A 2026 detection study warns that Korean benchmarks lean on such cues and overstate detection; im-not-ai capped its comma family after a human essay was flagged high, and switched the comma signal off in columns and reports, where people write more of these commas. So every density check here is an FYI.
 
 Two more cautions:
 
@@ -117,10 +119,12 @@ Each entry: ✗ → ✓, then what reports it and what to watch. IDs in parenthe
 
 - **Mixed speech levels** (RG01). ✗ `주문이 접수되었습니다. 배송은 내일 시작돼요.` → ✓ `주문을 받았어요. 배송은 내일 시작해요.` *HW-11 WARN* (per file for UI, per long paragraph for documents). A report or deck that slips into 해요체 is *HW-R1*, and 해라체 beside 합쇼체 there is *HW-R2*. A press release narrated in 합쇼체 gets an *HW-11 FYI* under `--context=press`.
 - **One list, two ending forms** (the test). ✗ `- 3년 이상 경력자 / - Kotlin 능숙 / - 원활한 소통이 가능하신 분` → ✓ one form throughout. *HW-D2 FYI.*
+- **The same figure on three or more slides** (both test rounds). ✗ `고객사 42곳` on the cover, the traction slide and the market slide → ✓ one home for the figure; other slides make their own point. *HW-R6 FYI* in Markdown decks.
 - **Bullets written as sentences in a report or deck** (the test). ✗ `- 1인분 장보기는 식재료가 남아 버려지기 쉽다` → ✓ `- 1인분 장보기, 남는 식재료`. 개조식 lines end in 명사형. *HW-R5 FYI.*
 
 ### Spacing (SP)
 
+- **이날·그날** (round 2). ✗ `이 날은 예약할 수 있는 시간이 없어요` → ✓ `이날은 …`. Both are 표준국어대사전 nouns. *HW-2 FYI.*
 - **Dependent nouns** (SP01). ✗ `할수 있어요`, `회의중에는`, `5회이상`, `가입한지 1년`, `비워 두면 안돼요` → ✓ `할 수 있어요`, `회의 중에는`, `5회 이상`, `가입한 지 1년`, `안 돼요`. *HW-2 WARN.* ✗ `결제시`, `정리하는데 30분 걸렸어요`, `한 달에 한번` → ✓ `결제 시` (or `결제하면`), `정리하는 데`, `한 번`. *HW-2 FYI.* Each check is guarded against its look-alike:
   - `그중`, `도중` and `사용중지` are single words;
   - `-ㄴ지` is also the ending "whether";
@@ -164,6 +168,7 @@ Each entry: ✗ → ✓, then what reports it and what to watch. IDs in parenthe
 The 2026-10-25 test found these in 8 of 22 documents. A drafting agent writes them for the person who asked for the document, and the document's readers see them:
 
 - **Notes to the writer.** ✗ `※ 실제 수치로 바꿔 주세요`, `(근무지 주소를 입력해 주세요)`, `> 작성 시 확인 필요` → ✓ ask for the value, or leave it out and say so in your reply. *HW-D1 WARN.*
+- **A pragma left in a deliverable** (round 2). ✗ `"hangul-context": "app"` in a locale file, or `<!-- hangul-context: deck -->` at the top of a deck → ✓ pass `--context` to the checker instead. In a JSON message file the pragma becomes a key the app loads.
 - **Unfilled placeholders.** ✗ `[담당자 이름]` scattered through a document → ✓ the value, or a question to the user. *HW-D1 FYI.* Where the convention needs the value, a quote's speaker (`○○○ 대표는`) or a signature, keep one visible `○○○` and list it in your reply. Dropping the element instead (`바른걸음 대표는`) breaks the convention, and the 2026-10-25 test's editor marked that down.
 - **A particle after a variable.** ✗ `{name}으로`, `{email}을` → ✓ `{name}(으)로`, or put a noun before it (`{email} 주소로`). *HW-1 FYI,* because the right particle depends on the value.
 

@@ -665,7 +665,9 @@ const FORMULA = [
 // choppy 7 or more.
 const DENSITY = [
   [/(?:이|가)\s아니라\s/, 3, 0, "the contrast 'A가 아니라 B' (an LLM habit, im-not-ai C-8)"],
-  [/(?:고|며|면|서|지만|는데|니까|므로|어서|아서|해서),\s/, 5, 6, "a comma right after a connective ending (im-not-ai C-11)"],
+  // people write more of these commas than agents do in columns and reports (im-not-ai #121, 2026-08-29), so
+  // report and press skip it
+  [/(?:고|며|면|서|지만|는데|니까|므로|어서|아서|해서),\s/, 5, 6, "a comma right after a connective ending (im-not-ai C-11)", new Set(['report', 'press'])],
   [/되고\s?있(?:다|습니다|어요|으며|는)/, 3, 0, "the passive progressive '~되고 있다' (im-not-ai A-20)"],
   [/[을를]\s?통해(?:서)?\s/, 4, 3, "'~을 통해'"],
   [/에\s?(?:대한|대해|관한|관해)\s/, 5, 3, "'~에 대한·~에 대해'"],
@@ -718,6 +720,9 @@ const STRING_RULES = [
     if (si) report('FYI', `spacing: '${si[0]}' → '${si[1]} 시' (or a verb: '${si[1]}하면', '${si[1]}할 때')`);
     if (/는데\s(?:\d+\s?(?:분|시간|일|주|개월|년|원)|시간이|돈이|비용이|도움이)/.test(t)) report('FYI', "spacing: '~하는데 시간이 걸려요' → '~하는 데' (데 = 'in doing' is a dependent noun; '-는데' = 'but' attaches)");
     if (/(?:하루|일주일|한\s?달|한\s?해|1년|평생)에\s?한번/.test(t)) report('FYI', "spacing: a count is '한 번' ('한 달에 한 번'); '한번' means 'once, try'");
+    // 이날·그날 are 표준국어대사전 nouns ('the day just mentioned'), checked 2026-10-25
+    const nal = t.match(/(?<![가-힣])(이|그)\s날(?=[은는이을에의도만]|부터|까지|\s|$|[,.])/);
+    if (nal) report('FYI', `spacing: '${nal[1]} 날' → '${nal[1]}날' (one word in the dictionary)`);
     if (/\d\s?만원/.test(t)) report('FYI', "spacing: 'N만원' → 'N만 원' after the Hangul unit 만 (marketing copy may keep '만원' by house style)");
   } },
   { id: 'HW-3', check(s, report, ctx) {
@@ -924,11 +929,12 @@ const FILE_RULES = [
 
   // ---- documents (HW-D4): frames that are normal once but not in a run; people write some of these more than
   // agents do (im-not-ai's corpus: ~을 통해, ~에 대해), so only a document that leans on one is told ----
-  { id: 'HW-D4', check(strings, report) {
+  { id: 'HW-D4', check(strings, report, ctx) {
     const prose = strings.filter((s) => s.prose && isUi(s) && !s.legal);
     if (!prose.length) return;
     const chars = prose.reduce((k, s) => k + (s.text.match(/[가-힣]/g) || []).length, 0);
-    for (const [re, min, per1000, msg] of DENSITY) {
+    for (const [re, min, per1000, msg, skip] of DENSITY) {
+      if (skip && skip.has(ctx)) continue;
       const hits = prose.filter((s) => re.test(s.text));
       const n = prose.reduce((k, s) => k + (s.text.match(new RegExp(re.source, 'g')) || []).length, 0);
       if (n >= min && (n * 1000) / Math.max(chars, 1) >= per1000) report(hits[0].line, 'FYI', `${msg} ×${n} in this document; rewrite some of them`);
@@ -966,6 +972,25 @@ const FILE_RULES = [
       const full = items.filter((s) => { const sens = sentences(s.text); const last = sens[sens.length - 1] || s.text; const lv = endingLevel(last); return (lv === 'haera' || lv === 'hapsyo' || lv === 'haeyo') && isStatement(last); });
       if (full.length === items.length) report(items[0].line, 'FYI', `these ${items.length} bullets are full sentences; 개조식 lines in a report or slide end in 명사형 ('식재료가 남아 버려짐', '배달비 부담')`);
     }
+  } },
+  // HW-R6 · one job per slide: the same figure on three or more slides blurs what each slide is for (2026-10-25
+  // test: the deck was the weakest situation in both rounds, and repeated figures were its most quoted fault).
+  // Markdown decks only, where a heading starts a slide.
+  { id: 'HW-R6', check(strings, report, ctx) {
+    if (ctx !== 'deck') return;
+    const FIG = /\d[\d,.]*\s?(?:조|억|만|천)?\s?(?:원|%p|%|곳|명|개사|개|건|배|개월)/g;
+    const where = new Map();
+    let slide = 0;
+    for (const s of strings) {
+      if (!s.prose) continue;
+      if (s.role === 'heading') slide++;
+      for (const m of s.text.matchAll(FIG)) {
+        const k = m[0].replace(/\s/g, '');
+        if (!where.has(k)) where.set(k, { slides: new Set(), line: s.line });
+        where.get(k).slides.add(slide);
+      }
+    }
+    for (const [k, v] of where) if (v.slides.size >= 3) report(v.line, 'FYI', `'${k}' appears on ${v.slides.size} slides; give each slide one job and the figure one home (the ask may repeat the amount)`);
   } },
   // HW-R4 · 명사형 lines with and without a final period. 「한글 맞춤법」 문장 부호 마침표 (1) [붙임 2] allows both;
   // keeping one per document is a skill call.
@@ -1099,6 +1124,8 @@ const EXPECTED = {
   ],
   // ctx-press under --context=press: a 합쇼체 sentence in the narration; the 해라체 lead and the quoted 합쇼체 stay quiet
   'ctx-press': ['release.md:5 FYI HW-11'],
+  // ctx-deck under --context=deck: '42곳' on three slides (HW-R6); '15억 원' on one stays quiet
+  'ctx-deck': ['pitch.md:6 FYI HW-R6'],
   // Korean-specific mechanics (references/korean-issues.md): dependent nouns closed up (회의중, 5회이상, 가입한지,
   // 안돼; 결제시, 하는데 시간, 한번 as FYI), a thing honored, a double passive, loanwords, a comma after 그러나, two
   // dots, a slash date, an ungrouped number, Japanese-style 한자어, 소개시키다, '가장 ~ 중 하나', and '~' softening an
@@ -1112,6 +1139,8 @@ const EXPECTED = {
     'guide.md:31 FYI HW-7', 'guide.md:33 FYI HW-8', 'guide.md:35 FYI HW-8', 'mail.md:2 FYI HW-3',
     // request.md: -드리다 on three verbs in one e-mail (부탁드리다 isn't counted)
     'request.md:2 FYI HW-D4',
+    // day.md: '이 날' (이날 is one word); 그날 and '이 날짜' stay quiet
+    'day.md:1 FYI HW-2',
   ],
 };
 // rules that apply in every situation, whatever their letter says
@@ -1123,7 +1152,7 @@ const DETECTED = {
 
 // The situation a fixture runs under. The others run under the default (auto), and ctx-good and ctx-pragma set
 // theirs per file with a pragma.
-const CONTEXT_OF = { 'ctx-report': 'report', 'ctx-notice': 'notice', 'ctx-press': 'press' };
+const CONTEXT_OF = { 'ctx-report': 'report', 'ctx-notice': 'notice', 'ctx-press': 'press', 'ctx-deck': 'deck' };
 
 function selfTest() {
   const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures', 'copy');
