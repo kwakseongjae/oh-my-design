@@ -8,6 +8,7 @@ export function Notice() {
       <p>서비스 이용 조건이 바뀝니다.</p>
       <p>오전 10 : 20에 시작해요</p>
       <p>2026.10.24부터 바뀌어요</p>
+      <h2>새 소식 <button onClick={() => setNotice("다음 달에 열립니다.")}>알림 받기</button></h2>
     </section>
   );
 }

@@ -284,11 +284,16 @@ function extract(abs, ext, raw) {
     for (const seg of rec.segs) if (!seg.expr && !topSet.has(seg)) blank(seg.pos, seg.pos + seg.s.length);
 
     // attribute values on each element
+    const handlers = [];
     for (const el of els) {
       const attrs = el.attrs.slice(el.raw.length + 1);
       const base = el.start + el.raw.length + 1;
       const chain = [];
       for (let e = el; e; e = e.parent) chain.push(e);
+      // an event handler ({() => setToast('저장했어요')}) is code: it stays for the literal pass, which reads
+      // its strings by the call they are passed to (toasts, notices and alerts usually live there), not by
+      // the element around them
+      const keep = [];
       const re = /([A-Za-z_:@][\w:.-]*)\s*=\s*/g;
       let m;
       while ((m = re.exec(attrs))) {
@@ -309,7 +314,8 @@ function extract(abs, ext, raw) {
           }
         } else continue;
         re.lastIndex = b;
-        if (/^(class|className|style|href|src|srcSet|id|key|ref|type|rel|target|lang|dir|role|for|htmlFor|xmlns|d|viewBox|fill|stroke|width|height|name)$/i.test(name) || /^(data-|on[A-Z]|on:|@|bind:)/.test(name)) continue;
+        if (/^(on[A-Z]|on:)/.test(name)) { if (q === '{') keep.push([base + k, base + b]); continue; }
+        if (/^(class|className|style|href|src|srcSet|id|key|ref|type|rel|target|lang|dir|role|for|htmlFor|xmlns|d|viewBox|fill|stroke|width|height|name)$/i.test(name) || /^(data-|@|bind:)/.test(name)) continue;
         const valueSrc = attrs.slice(k, b);
         const lits = q === '{' ? [...valueSrc.matchAll(STR_LIT)].map((x) => ({ s: x[2], at: x.index + 1 })) : [{ s: valueSrc.slice(1, -1), at: 1 }];
         let role = /^(aria-label|aria-description|alt|title)$/i.test(name) ? 'a11y' : roleFromNames([name]);
@@ -320,7 +326,10 @@ function extract(abs, ext, raw) {
           push(base + k + l.at, l.s, { role: role || roleFromElement(chain), err: ERRORISH.test(name) || errOf(chain), via: 'attr', name, names: [name, ...chainNames(chain)] });
         }
       }
-      blank(el.start, el.tagEnd);
+      let from = el.start;
+      for (const [a, b] of keep) { blank(from, a); from = b; }
+      blank(from, el.tagEnd);
+      handlers.push(...keep);
     }
     if (ext === '.html' || ext === '.htm') {
       // inline scripts were masked for markup; read their literals as code
@@ -330,7 +339,7 @@ function extract(abs, ext, raw) {
       }
       return out;
     }
-    literalPass(code, push, chainAt, infoOf);
+    literalPass(code, push, chainAt, infoOf, (at) => handlers.some(([a, b]) => at >= a && at < b));
     return out;
   }
   if (CODE_EXT.has(ext)) literalPass(code, push, null, null);
@@ -338,7 +347,7 @@ function extract(abs, ext, raw) {
 }
 
 /** String literals in code, with the call, key or variable they belong to. */
-function literalPass(code, push, chainAt, infoOf) {
+function literalPass(code, push, chainAt, infoOf, inHandler = () => false) {
   for (const m of code.matchAll(STR_LIT)) {
     const s = m[2];
     if (!HANGUL.test(s)) continue;
@@ -361,7 +370,7 @@ function literalPass(code, push, chainAt, infoOf) {
     // logs, test titles, assertions and module paths are not UI copy
     if (name && /^(console\.\w+|logger\.\w+|log|debug|describe|it|test|expect|require|import)$/.test(name)) continue;
     const thrown = /\bthrow\s+(new\s+)?\w*Error\s*\(\s*$/.test(tail) || /^(Error|TypeError|RangeError|reject)$/.test(name || '');
-    if (chainAt) {
+    if (chainAt && !inHandler(at)) {
       const chain = chainAt(at);
       if (chain.length) {
         const info = infoOf(chain, { via: 'literal', name });
@@ -625,10 +634,11 @@ const EXPECTED = {
   // a particle 께, -ㄹ수록, 아니에요, 날것, units after numerals, well-formed dates, times and ranges, legal text
   // in 합쇼체 inside a Terms component, record data, console.log and a test file: all quiet.
   fp: [],
-  // the true positives beside those classes: -ㄹ께요, 쓸수 있어요, 무료에요, 할것, one 합쇼체 line, 10 : 20, 2026.10.24
+  // the true positives beside those classes: -ㄹ께요, 쓸수 있어요, 무료에요, 할것, one 합쇼체 line, 10 : 20, 2026.10.24,
+  // and a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading)
   tp: [
     'Notice.tsx:4 BLOCK HW-1', 'Notice.tsx:5 WARN HW-2', 'Notice.tsx:6 WARN HW-1', 'Notice.tsx:7 WARN HW-2', 'Notice.tsx:8 WARN HW-11',
-    'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'ui.json:2 WARN HW-11',
+    'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'Notice.tsx:11 WARN HW-11', 'ui.json:2 WARN HW-11',
   ],
 };
 
