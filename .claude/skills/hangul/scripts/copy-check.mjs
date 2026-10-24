@@ -112,6 +112,24 @@ const LEGALISH = /terms|policy|privacy|legal|agreement|consent[-_]?(text|body|do
 // aliases, keywords, sample content, FAQ questions. They are not the product speaking, so no rule reads them.
 const COPY_KEY = /^(primary|alternates|text|label|title|message|body|copy|cta|description|placeholder|helper|value)$/i;
 const DATA_NAME = /^(prompts?|.*prompt(s|for)?|utterances?|says?|said|samples?|examples?|aliases|.*aliases|synonyms?|keywords?|queries|query|search(terms?|words?)|tags?|q|questions?)$/i;
+// An array named for content its users write or own (listings, posts, people) holds sample records, not
+// the product's own copy: "바구니 달린 자전거 팝니다" is a seller's title. Matched on the array's name only.
+const RECORD_NAME = /^(listings?|products?|goods|posts?|articles?|reviews?|comments?|feeds?|threads?|chats?|family|families|recipients?|people|persons|members?|friends?|contacts?|users?|sellers?|neighbou?rs?|neighbou?rhoods?|books?|mock\w*|dummy\w*|fixtures?|seeds?)$/i;
+
+/** The name of the array a literal sits in: its variable (`const LISTINGS: Listing[] = [`) or key (`aliases: [`). */
+function arrayKeyAt(code, at) {
+  let depth = 0;
+  for (let i = at - 1, stop = Math.max(0, at - 20000); i >= stop; i--) {
+    const ch = code[i];
+    if (ch === ']') depth++;
+    else if (ch === '[') {
+      if (depth > 0) { depth--; continue; }
+      const m = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')(?:\s*:\s*[^=;{}()]+?\s*=|\s*[:=])\s*$/.exec(code.slice(Math.max(0, i - 200), i));
+      return m ? m[1].replace(/^["']|["']$/g, '') : null;
+    }
+  }
+  return null;
+}
 
 function roleFromNames(names) {
   for (const n of names) {
@@ -361,11 +379,10 @@ function literalPass(code, push, chainAt, infoOf, inHandler = () => false) {
     else if ((mm = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')\s*:\s*(?:\([^()]*\)|[A-Za-z_$][\w$]*)\s*=>\s*$/.exec(tail + ' '))) name = mm[1].replace(/^["']|["']$/g, ''); // key: (x) => `…`
     else if ((mm = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')\s*:\s*(?:[^:{},]*\?\s*(?:[^:{},]*:\s*)?)?$/.exec(tail + ' '))) name = mm[1].replace(/^["']|["']$/g, '');
     else if ((mm = /([A-Za-z_$][\w$.]*)\s*(?<![=!<>])=(?!=|>)\s*(?:[^=;]*\?\s*(?:[^=;:]*:\s*)?)?$/.exec(tail + ' '))) name = mm[1];
-    // an array of strings under a data key ("aliases: ['…', '…']") reads its key from the bracket before it
-    // the array may hold long strings, so look further back for its opening bracket
-    const arrayKey = /([A-Za-z_$][\w$]*|"[^"]*"|'[^']*')\s*[:=]\s*\[[^\]]*$/.exec(code.slice(Math.max(0, at - 4000), at));
-    if (!name && arrayKey) name = arrayKey[1].replace(/^["']|["']$/g, ''); // const terms = ['…', '…']
-    const dataName = (!call && name && DATA_NAME.test(name.split('.').pop())) || (arrayKey && DATA_NAME.test(arrayKey[1].replace(/^["']|["']$/g, '')));
+    // an array of strings under a data key ("aliases: ['…', '…']") reads its key from the bracket that opens it
+    const arrayKey = arrayKeyAt(code, at);
+    if (!name && arrayKey) name = arrayKey; // const terms = ['…', '…']
+    const dataName = (!call && name && DATA_NAME.test(name.split('.').pop())) || (arrayKey && (DATA_NAME.test(arrayKey) || RECORD_NAME.test(arrayKey)));
     if (dataName) { push(at + 1, s, { role: 'data', via: 'literal', name }); continue; }
     // logs, test titles, assertions and module paths are not UI copy
     if (name && /^(console\.\w+|logger\.\w+|log|debug|describe|it|test|expect|require|import)$/.test(name)) continue;
@@ -632,13 +649,15 @@ const EXPECTED = {
   ],
   good: [],
   // a particle 께, -ㄹ수록, 아니에요, 날것, units after numerals, well-formed dates, times and ranges, legal text
-  // in 합쇼체 inside a Terms component, record data, console.log and a test file: all quiet.
+  // in 합쇼체 inside a Terms component, record data (JSON, and a typed LISTINGS array in TS), console.log and
+  // a test file: all quiet.
   fp: [],
   // the true positives beside those classes: -ㄹ께요, 쓸수 있어요, 무료에요, 할것, one 합쇼체 line, 10 : 20, 2026.10.24,
-  // and a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading)
+  // a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading), and a typed
+  // array of UI labels (STEPS), which is copy, not records
   tp: [
     'Notice.tsx:4 BLOCK HW-1', 'Notice.tsx:5 WARN HW-2', 'Notice.tsx:6 WARN HW-1', 'Notice.tsx:7 WARN HW-2', 'Notice.tsx:8 WARN HW-11',
-    'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'Notice.tsx:11 WARN HW-11', 'ui.json:2 WARN HW-11',
+    'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'Notice.tsx:11 WARN HW-11', 'steps.ts:5 WARN HW-11', 'ui.json:2 WARN HW-11',
   ],
 };
 
