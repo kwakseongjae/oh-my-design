@@ -44,7 +44,7 @@ Two more cautions:
 | Length (LN) | three conditions and two dates in one sentence | one fact per sentence; a list for three or more | HW-6 for amounts; read | notice, email |
 | Redundancy (RD) | `과반수 이상`, `매 분기마다`, `약 300여 곳`, `진위 여부` | keep one of the two | HW-7 | report, notice, press |
 | Vocabulary (VO) | `제고`, `소정의`, `니즈`, `컨펌`, `혁신적인 최적의 솔루션` | plain words; facts instead of adjectives | HW-7 for the plain-word list; HW-12 for unsupported claims; read for buzzwords | site, deck, press |
-| Honorifics (HN) | `품절이십니다`, `카드 결제 가능하세요`, `공유드리겠습니다`, `박지영 과장 드림` | `품절이에요`, `카드로 결제할 수 있어요`, `공유하겠습니다`, `과장 박지영 드림` | HW-10 | app, email, product |
+| Honorifics (HN) | `품절이십니다`, `카드 결제 가능하세요`, `-드리다` on every verb, `박지영 과장 드림` | `품절이에요`, `카드로 결제할 수 있어요`, `-드리다` once, `과장 박지영 드림` | HW-10, HW-D4 | app, email, product |
 | Register (RG) | 해요체 beside 합쇼체; 명사형 bullets beside sentences | one level per surface or document; one ending form per list | HW-11, HW-R1·R2, HW-D2 | report, deck, site |
 | Spacing (SP) | `할수`, `회의중`, `5회이상`, `가입한지`, `안돼요`, `결제시`, `1천만원` | `할 수`, `회의 중`, `5회 이상`, `가입한 지`, `안 돼요`, `결제 시`, `1천만 원` | HW-2 | app, notice, product |
 | Punctuation (PU) | `02:00 ~ 06:00`, `그러나,`, `처리 중..`, `안녕하세요~` in a mail, `14:00 – 14:30` | `02:00~06:00`, `그러나`, `…`, a period, `14:00~14:30` | HW-3, HW-13, HW-D4 | notice, email, report |
@@ -110,13 +110,14 @@ Each entry: ✗ → ✓, then what reports it and what to watch. IDs in parenthe
 
 - **`-시-` on a thing** (HN01). ✗ `주문하신 커피 나오셨습니다`, `품절이십니다`, `카드 결제 가능하세요`, `재고 있으십니다` → ✓ `커피가 나왔어요`, `품절이에요`, `카드로 결제할 수 있어요`, `재고가 있어요`. *HW-10 WARN.* A question to a person is right (`통화 가능하세요?`, `쿠폰 있으세요?`), and the checker leaves questions alone.
 - **Doubled or misplaced honorifics** (HN02). ✗ `김지수 님 귀하`, `어르신분들`, `진행하시겠으십니까` → ✓ `김지수 님`, `어르신들`, `진행하시겠습니까`. *HW-10 FYI* for `님 귀하`; read for the rest.
-- **Over-politeness** (the 2026-10-25 test). ✗ `공유드리겠습니다`, `요청드립니다`, `전달드립니다` → ✓ `공유하겠습니다`, `요청합니다`, `전달합니다`. *HW-10 FYI.* `말씀드리다`, `감사드리다` and `부탁드리다` are standard.
+- **`-드리다` on verb after verb** (the 2026-10-25 test). After an action noun, `-드리다` is a valid humble suffix, written closed up (`설명드리다`, `안내드리다`). It is right where the action is done for the reader. ✗ `공유드리고 … 요청드리며 … 전달드리겠습니다` → ✓ keep it once and use plain verbs for the rest (`요청합니다`, `보내 드립니다`). *HW-D4* when one document uses it three or more times. Don't overcorrect into an archaic verb: told to avoid `요청드립니다`, the test's writer reached for `청합니다`, and the editor marked it down.
 - **Your title after your own name** (the test). ✗ `박지영 과장 드림` → ✓ `마케팅팀 과장 박지영 드림`. *HW-10 FYI.* The title goes before the name because after it, it honors the writer.
 
 ### Register (RG)
 
 - **Mixed speech levels** (RG01). ✗ `주문이 접수되었습니다. 배송은 내일 시작돼요.` → ✓ `주문을 받았어요. 배송은 내일 시작해요.` *HW-11 WARN* (per file for UI, per long paragraph for documents). A report or deck that slips into 해요체 is *HW-R1*, and 해라체 beside 합쇼체 there is *HW-R2*. A press release narrated in 합쇼체 gets an *HW-11 FYI* under `--context=press`.
 - **One list, two ending forms** (the test). ✗ `- 3년 이상 경력자 / - Kotlin 능숙 / - 원활한 소통이 가능하신 분` → ✓ one form throughout. *HW-D2 FYI.*
+- **Bullets written as sentences in a report or deck** (the test). ✗ `- 1인분 장보기는 식재료가 남아 버려지기 쉽다` → ✓ `- 1인분 장보기, 남는 식재료`. 개조식 lines end in 명사형. *HW-R5 FYI.*
 
 ### Spacing (SP)
 
@@ -163,7 +164,7 @@ Each entry: ✗ → ✓, then what reports it and what to watch. IDs in parenthe
 The 2026-10-25 test found these in 8 of 22 documents. A drafting agent writes them for the person who asked for the document, and the document's readers see them:
 
 - **Notes to the writer.** ✗ `※ 실제 수치로 바꿔 주세요`, `(근무지 주소를 입력해 주세요)`, `> 작성 시 확인 필요` → ✓ ask for the value, or leave it out and say so in your reply. *HW-D1 WARN.*
-- **Unfilled placeholders.** ✗ `[담당자 이름]`, `○○○ 드림`, `OOO` → ✓ the value, or a question to the user. *HW-D1 FYI,* because a template sometimes means to keep them.
+- **Unfilled placeholders.** ✗ `[담당자 이름]` scattered through a document → ✓ the value, or a question to the user. *HW-D1 FYI.* Where the convention needs the value, a quote's speaker (`○○○ 대표는`) or a signature, keep one visible `○○○` and list it in your reply. Dropping the element instead (`바른걸음 대표는`) breaks the convention, and the 2026-10-25 test's editor marked that down.
 - **A particle after a variable.** ✗ `{name}으로`, `{email}을` → ✓ `{name}(으)로`, or put a noun before it (`{email} 주소로`). *HW-1 FYI,* because the right particle depends on the value.
 
 ## 3. Where each situation hurts most

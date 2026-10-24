@@ -40,7 +40,8 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
   - frames that are normal once but not in a run (HW-D4);
   - dependent nouns (`회의 중`, `5회 이상`, `가입한 지`, `안 돼요`);
   - 35 dictionary-checked loanword spellings;
-  - honorifics on things (`결제 가능하세요`), over-politeness (`공유드리겠습니다`) and a title after one's own name in a sign-off;
+  - honorifics on things (`결제 가능하세요`), `-드리다` on verb after verb, and a title after one's own name in a sign-off;
+  - report and slide bullets written as full sentences instead of 개조식 (HW-R5);
   - double passives, and the frames 국립국어원 corrects (`~함에 있어`, `필요로 하다`);
   - unsupported claims, in every situation;
   - punctuation, dates and numbers (`02:00~06:00`, `10월 24일(토)`, `12,000명`).

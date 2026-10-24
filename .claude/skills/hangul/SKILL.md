@@ -26,7 +26,7 @@ In documents the habits are different but just as visible:
 
 - a report bullet in 해요체;
 - `~함에 있어` and `필요로 하는`;
-- `공유드리겠습니다`;
+- `-드리다` on every verb (`공유드리고 … 요청드리며 …`);
 - `02:00 ~ 06:00`;
 - a note to the writer left on a slide.
 
@@ -172,7 +172,7 @@ Rule IDs (HW-n) are what `copy-check.mjs` reports. The rules hold in every situa
 10. **HW-10 · Honor people, never things, and don't over-honor.**
     - Write `커피가 나왔어요`, `품절이에요`, `카드로 결제할 수 있어요`, not `나오셨습니다`, `품절이세요`, `결제 가능하세요`.
     - Keep -시- for people and use it sparingly.
-    - Use -드리다 only where it belongs (`말씀드리다`, `감사드리다`, `부탁드리다`), not `공유드리다` or `요청드리다`.
+    - `-드리다` after an action noun is a valid humble form where the action is done for the reader (`설명드리다`, `안내드리다`). On verb after verb it reads over-polite: keep it once and use the plain verb for the rest (`요청합니다`), never an archaic one (`청합니다`).
     - In a letter your title goes before your name: `마케팅팀 과장 박지영 드림`.
 
     *Why:* -시- honors the subject. In 국립국어원's survey (published 2026-02, n = 3,000), 93.3% said excessive honorifics such as `커피 나오셨습니다` should change, the top item of 30. Apps in Toss and SEED both minimize honorifics. 「표준 언어 예절」 sets the letter forms. *DATA + DS.*
@@ -196,7 +196,9 @@ Rule IDs (HW-n) are what `copy-check.mjs` reports. The rules hold in every situa
 
 Documents add four checks. `copy-check.mjs` runs them on Markdown and text files in every situation:
 
-- **HW-D1 · Nothing for the writer left in the document.** That means a note (`※ 실제 수치로 바꿔 주세요`, `(주소를 입력해 주세요)`) or an unfilled placeholder (`[담당자 이름]`, `○○○`). Ask for the value, or leave it out and say so in your reply.
+- **HW-D1 · Nothing for the writer left in the document.**
+  - A note to the writer (`※ 실제 수치로 바꿔 주세요`, `(주소를 입력해 주세요)`) is a WARN.
+  - An unfilled slot (`[담당자 이름]`, `○○○`) is an FYI. Keep one only where the document's convention needs the value, such as a quote's speaker or a signature, and list it in your reply.
 - **HW-D2 · One ending form per list.** Every item is a 명사형 line, or every item is a sentence.
 - **HW-D3 · No stock LLM formulas.** That covers:
   - a meta opener (`~에 대해 알아보겠습니다`, `크게 세 가지로 나눌 수 있습니다`);
@@ -208,7 +210,8 @@ Documents add four checks. `copy-check.mjs` runs them on Markdown and text files
   - a comma after every connective ending;
   - `~되고 있다`;
   - `~을 통해`;
-  - `~에 대해`.
+  - `~에 대해`;
+  - `-드리다` on verb after verb.
 
 ## 3c. Situations
 
@@ -227,10 +230,10 @@ What changes most between a report, a notice and an app screen is how the text a
 | `app` (default) | app and service screens | §3b, §3d and §4b as they stand | — |
 | `site` | landing, home and feature pages | the brand's level (B2B usually 합쇼체); one message per hero. Flow: what it is and for whom → what the reader gets → how → proof with its basis → action | — |
 | `product` | product detail pages | the brand's level; checkable facts as text (materials, sizes, origin). Flow: value → facts → use and care → cautions → delivery and returns | — |
-| `report` | 보고서, 기획서, 주간 보고, 회의 자료 | 명사형 bullets, or 합쇼체/해라체 sentences, one per document, never 해요체; 개조식 with each figure's base and period. Flow: a title that states the point → 개요 → the most important item first → what is asked, next steps | HW-R1 … R4 |
-| `deck` | 피치덱, IR, 발표 자료, 슬라이드 | a headline that states the takeaway (명사형 or 해라체), keywords on the slide, 하십시오체 when spoken; one message per slide. Flow: problem → solution → market → model → traction → team → the ask. A government business-plan form keeps its own form | HW-R1 … R4 |
+| `report` | 보고서, 기획서, 주간 보고, 회의 자료 | 명사형 bullets, or 합쇼체/해라체 sentences, one per document, never 해요체; 개조식 with each figure's base and period. Flow: a title that states the point → 개요 → the most important item first → what is asked, next steps | HW-R1 … R5 |
+| `deck` | 피치덱, IR, 발표 자료, 슬라이드 | a headline that states the takeaway (명사형 or 해라체), keywords on the slide, 하십시오체 when spoken; one message per slide. Flow: problem → solution → market → model → traction → team → the ask. A government business-plan form keeps its own form | HW-R1 … R5 |
 | `notice` | 공지, 안내문, 점검·장애·정책 변경 안내 | 합쇼체, plain, no command or blame; labelled blocks. Flow: what, when and who is affected first → what the reader must do (or that nothing is needed) → details → contact. An incident apologizes first | HW-P1 … P4 |
-| `email` | 메일, 제안·사과·요청 메일 | 하십시오체 (or 해요체 by closeness), one throughout; humble verbs where they belong. Flow: salutation → who you are → the ask in the first lines → details → deadline → your name, with your title before it | — |
+| `email` | 메일, 제안·사과·요청 메일 | 하십시오체 (or 해요체 by closeness), one throughout; requests as `~해 주시면 감사하겠습니다`, not `~해 주십시오`. Flow: salutation → on first contact, who you are → the ask → details → deadline → your name, with your title before it | — |
 | `press` | 보도자료 | 해라체 narration (`출시했다`, `밝혔다`); quotes in the speaker's own words and level. Flow: 표제 → 부제 → a lead with who, when and what → details → quote → `(끝)` | HW-11 narration note |
 | `docs` | README, 가이드, API 문서, 릴리스 노트 | one level per doc set; the developer as the actor, verbs instead of 진행·수행, numbered steps, one term per concept | — |
 | `hiring` | 채용 공고, 직무 소개 | one level throughout, invitational. Flow: the team → the work → requirements → preferred → conditions → process; one form per list; no personality boilerplate | — |
@@ -360,7 +363,10 @@ UI strings. For documents, the situation's card in `references/situations.md` pl
    - **Agreement:** does each subject agree with its predicate?
    
    For text someone already wrote, list Before/After and apply only what the user approves.
-5. **Never deliver a document with a note to the writer or a placeholder in it** (HW-D1). If a value is missing (a date, a name, a figure, an address), ask. Or leave it out and list what's missing in your reply.
+5. **Never deliver a note to the writer** (HW-D1). For a value you don't have (a name, a date, a figure, an address), ask.
+   - If you can't ask, keep the slot where the document's convention needs the value (a quote's speaker, a signature) as one visible `○○○`, and list every slot in your reply.
+   - Otherwise leave the value out and say so.
+   - Never invent the value, and never drop a conventional element because its value is missing.
 6. **Run the checkers** on what you wrote, then write the §7 table:
    - `check.mjs` for typography;
    - `copy-check.mjs` for wording, with `--context=<situation>` for anything but `app`. It reads Markdown and text files as documents.
@@ -393,7 +399,7 @@ rg -n -e 'text-autospace|text-spacing-trim|line-break\s*:\s*anywhere|auto-phrase
    - **Situations.** `app`, `site`, `product`, `report`, `deck`, `notice`, `email`, `press`, `docs`, `hiring` (§3c).
      - Without `--context`, a file's pragma decides, and then deck detection. Everything else runs as `app`.
      - It names every file it placed and why. Check that each placement is right, and rerun with `--context` where it isn't.
-     - In a report or deck, HW-11's 합쇼체/해요체 check and HW-8's system-wording note give way to HW-R1 … R4.
+     - In a report or deck, HW-11's 합쇼체/해요체 check and HW-8's system-wording note give way to HW-R1 … R5.
 5. Read every hit in context, drop false positives, and report with the §7 table. For a document, also read it for what no pattern sees (§3e).
 6. **Optional render step**, when the page can be opened (a dev-server URL or an `.html` file): `node <this-skill-dir>/scripts/render-check.mjs <url-or-file> [widths]`.
    - It renders the page in headless Chrome at 360, 390 and 1440px and lists every Korean word broken across lines (`생 / 활`, `있어 / 요.`), which the source checker cannot see.
@@ -434,7 +440,7 @@ Copy severity (`copy-check.mjs`):
   - a note to the writer left in a document (HW-D1);
   - 해요체 in a report or deck (HW-R1);
   - `장애우` (HW-P5).
-- **FYI**: everything else, where the right call depends on intent the checker can't see. That includes HW-D2 … D4, HW-R2 … R4 and HW-P1 … P4.
+- **FYI**: everything else, where the right call depends on intent the checker can't see. That includes HW-D2 … D4, HW-R2 … R5 and HW-P1 … P4.
 
 HG-1, HG-6, HG-7, HG-8 and HG-11 are judged on the text a rule actually reaches. The checker traces each selector, class or style attribute to the elements in the scanned markup and reads their text; attributes such as `aria-label` don't count.
 - HG-1, HG-6 and HG-7 are skipped only when every element they reach holds non-Hangul text (a Latin wordmark, an English tagline in Georgia).
@@ -477,7 +483,7 @@ Every run ends with this table, in the user's language. One row per change; Why 
 - Don't present one brand's DS values as another brand's facts, and don't overwrite DESIGN.md values.
 - Don't impose 해요체 or 합쇼체. The level is the brand's and the situation's (HW-11, §3c); Toss's 해요체 rule is Toss's.
 - Don't change meaning while fixing wording. Facts, amounts, dates, conditions, product names and legal terms stay. Don't invent a cause, a benefit, a figure or a time estimate.
-- Don't leave a note to the writer, a template instruction or a placeholder in a document you deliver (HW-D1). Ask, or list what's missing in your reply.
+- Don't leave a note to the writer or a template instruction in a document you deliver (HW-D1). Ask for a missing value. Where the convention needs it, keep a visible `○○○` and list it in your reply. Don't invent the value or drop the element.
 - Don't thin native prose. One `~을 통해` or `~에 대해` is normal Korean (§3e). Don't turn a hedge into an assertion in medical, financial, legal or policy text.
 - Don't rewrite text in someone else's voice or kept as data: user input, quotations, example prompts, search aliases, brand names, quoted reviews.
 - Don't mass-replace existing text without the user's approval.

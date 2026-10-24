@@ -57,8 +57,8 @@ A text that changes reader changes its endings with it. A report that becomes a 
 | `app` (default) | 앱, 화면, 버튼, 토스트, 온보딩 | HW-1…14 |
 | `site` | 랜딩, 홈페이지, 서비스 소개, 기능 소개 | HW-1…14 |
 | `product` | 상품 상세, 상품 설명, 상품명 | HW-1…14 |
-| `report` | 보고서, 기획서, 주간 보고, 회의 자료, 원페이지 | HW-R1…R4 |
-| `deck` | 피치덱, IR, 발표 자료, 슬라이드, 장표 | HW-R1…R4; detected from a reveal.js, Marp or Slidev deck |
+| `report` | 보고서, 기획서, 주간 보고, 회의 자료, 원페이지 | HW-R1…R5 |
+| `deck` | 피치덱, IR, 발표 자료, 슬라이드, 장표 | HW-R1…R5; detected from a reveal.js, Marp or Slidev deck |
 | `notice` | 공지, 안내문, 점검, 정책 변경, 장애 안내 | HW-P1…P4 |
 | `email` | 메일, 이메일, 제안 메일, 사과 메일, 메시지 | HW-1…14 |
 | `press` | 보도자료, 언론 배포 | HW-11 (해라체 narration) |
@@ -86,6 +86,7 @@ Failures to look for:
 - **Topic titles.** `3분기 실적` makes the reader open the body to find the point.
 - **Noun stacks passed off as 개조식.** `고객 니즈 기반 온보딩 프로세스 고도화를 통한 리텐션 극대화 추진`: with the particles gone, nobody knows who does what.
 - **Bullets that don't match.** 명사형 lines beside full sentences, or an object without its verb. Checked by HW-D2 and HW-R4.
+- **Bullets written as sentences.** Every item ends in `~다` or `~습니다`, so the list reads as prose cut into lines. Checked by HW-R5.
 - **English scaffolding.** Executive Summary, Key Takeaways and Action Items as section heads, where Korean reports use 개요·현황·문제점·대안·추진 계획·건의.
 
 | Before | After |
@@ -114,6 +115,7 @@ Failures to look for:
 - **Topic headlines.** `시장 분석` gives the investor nothing to take away.
 - **Paragraphs on slides.** Speaker notes written onto the slide.
 - **One slide, two ending forms.** Two 명사형 lines and one 합쇼체 sentence. Checked by HW-D2.
+- **Sentences as bullets.** `1인분 장보기는 식재료가 남아 버려지기 쉽다` on a slide whose next slide has 명사형 lines. The body is keywords and figures (`남는 식재료`, `배달비 부담`). Checked by HW-R5.
 - **The same figure on three slides,** which blurs what each slide is for.
 - **Translated deck scaffolding.** `Why Now? → 왜 지금인가?`, `문제점: … / 해결책: …`, rhetorical questions.
 - **Notes to the writer left on a slide.** `※ 출처 확인 후 추가하세요`. Checked by HW-D1.
@@ -201,9 +203,9 @@ Failures to look for:
 
 | | |
 |---|---|
-| 말투 | 하십시오체 (합쇼체) in formal situations and with anyone you are not close to, whatever their rank; 해요체 by closeness; never 해라체; one style throughout. Humble verbs where they belong (드리다, 여쭙다, 뵙다, 말씀드리다), `저희 회사` for your own side |
-| 작성 방식 | A letter's shape: salutation → greeting → body → closing → your name. Salutation `○○○ 님` (spaced) or a title (`○○○ 팀장님`). Sign-off `○○○ 드림` or `○○○ 올림`, with your title **before** the name (`마케팅팀 과장 ○○○ 드림`); after the name it honors yourself |
-| 흐름 | Salutation → greeting and, on first contact, who you are (team, title, name) → the ask or the news in the first lines → details (dates, attachments) → what you need, by when → closing → name. One ask per mail |
+| 말투 | 하십시오체 (합쇼체) in formal situations and with anyone you are not close to, whatever their rank; 해요체 by closeness; never 해라체; one style throughout. Humble forms where the action is done for the reader (`말씀드리다`, `안내드리다`, `보내 드리다`, `여쭙다`, `뵙다`), not on every verb, and never an archaic stand-in (`청하다`, `사료되다`). A request reads `~해 주시면 감사하겠습니다` or `~해 주시기 바랍니다`; to someone outside, `~해 주십시오` reads as an order. `저희 회사` for your own side |
+| 작성 방식 | A letter's shape: salutation → greeting → body → closing → your name. Salutation `○○○ 님` (spaced) or a title (`○○○ 팀장님`). Sign-off `○○○ 드림` or `○○○ 올림`, with your title **before** the name (`마케팅팀 과장 ○○○ 드림`); after the name it honors yourself. If you weren't given the sender's name, keep `○○○` in the sign-off and say so; a mail signed by a company alone reads unfinished |
+| 흐름 | Salutation → greeting → on first contact, one sentence on who you are (team, title, name) → the ask or the news → details (dates, attachments) → what you need, by when → closing → name. The ask comes early, but after the introduction: a stranger reads who is asking first. One ask per mail |
 | 어휘 | No `○○로부터` in a sign-off; no stacked honorifics (`○○○ 님 귀하`); in writing, `감사합니다` rather than `수고하세요` to a senior |
 | 표기 | A proposed time with its weekday (`10월 28일(화) 14:00~14:30`); a deadline as a date, not `빠른 시일 내` |
 
@@ -211,7 +213,8 @@ Failures to look for:
 - **Translated openers and closers:** `이 메일이 잘 도착했기를 바랍니다`, `궁금한 점이 있으시면 주저하지 말고 연락 주세요`.
 - **A title after your own name:** `박지영 과장 드림` (HW-10).
 - **당신 or 귀하 in the body** (HW-8).
-- **Over-polite stacking:** `요청드립니다`, `공유드리겠습니다` (HW-10); `~해 주시면 대단히 감사하겠습니다` on every request.
+- **`-드리다` on verb after verb:** `공유드리고 … 요청드리며 … 전달드리겠습니다`. Keep it once where the action is for the reader (HW-D4 at three). The opposite overcorrection, `화상 미팅을 청합니다`, reads archaic: write `요청합니다` or `부탁드립니다`.
+- **The same thank-you formula on every request,** or none at all (`가능한 시간대를 알려 주십시오`).
 - **Thanking before the reader has done anything:** `읽어 주셔서 감사합니다` as the opening line, `시간 내 주셔서 감사합니다` before they have agreed.
 - **The ask buried or several:** three paragraphs of context, then four questions with no deadline.
 
@@ -228,7 +231,7 @@ Failures to look for:
 | 작성 방식 | An information block (보도 일시 or 배포 즉시, 담당 부서, 담당자, 연락처). The 표제 is concise, as a sentence or a noun phrase. The 부제 is a noun phrase in one or two lines. The lead is the first sentence: who, when, what, with the announcement date (`~한다고 2일 밝혔다`) |
 | 흐름 | 표제 → 부제 → lead → details (figures, schedule, background) → quote → next steps → `한편` background → `(끝)` → 붙임 and contacts. `###` is the English convention |
 | 어휘 | Plain words for 관청용어 (`제고` → `높이기`, `일환으로` → `하나로`, `금년` → `올해`); `~에 위치한` → `~에 있는`; `회의를 갖는다` → `연다`; a needed foreign term in Hangul with the original in parentheses |
-| 표기 | Days in the current month as the day (`22일`, `오는 27일`); approximate numbers with one marker (`30여 명` or `약 30명`, not `약 30여 명`); the first quote names the speaker as name, company, title (`○○○ 바른걸음 대표는`) |
+| 표기 | Days in the current month as the day (`22일`, `오는 27일`); approximate numbers with one marker (`30여 명` or `약 30명`, not `약 30여 명`); the first quote names the speaker as name, company, title (`○○○ 바른걸음 대표는`). Without the name, keep `○○○` there and say so; `바른걸음 대표는` alone drops the convention |
 
 Failures to look for:
 - **합쇼체 or 해요체 narration:** `○○를 출시했습니다` (HW-11 under `press`).

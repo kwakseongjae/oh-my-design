@@ -594,14 +594,13 @@ const DOUBLE_NEG = /(?:지 않으면|안 하면|없으면)[^.!?]{0,20}(?:수 없
 const CALQUES = [
   [/(?<![가-힣])하나의\s[가-힣A-Za-z]/, "'하나의 + noun' is 'a single …': put the count after the noun ('PDF 하나로')"],
   [/[을를]\s?바탕으로\s(?:만들어진|생성된|작성된)/, "'~을 바탕으로 만들어진' is 'generated based on': '~으로 만든'"],
-  [/가장\s[가-힣]+\s?(?:것|곳|방법|서비스|제품|도구|기업|사람)\s?중\s?(?:의\s)?하나/, "'가장 ~한 것 중 하나' is 'one of the most …': say what sets it apart"],
+  [/가장\s[^.!?\n,]{1,24}?\s중(?:의|에)?\s?하나/, "'가장 ~한 것 중 하나' is 'one of the most …': say what sets it apart"],
   [/는\s?것이\s?(?:중요|필요)(?:합니다|해요|하다|함)/, "'~하는 것이 중요합니다' wraps the point in a noun clause: '~해야 합니다', '~하세요'"],
   [/(?:주의|확인|협조|동의|참여)가\s?요구(?:됩니다|돼요|된다|됨)/, "'~가 요구됩니다' is an English passive: '~해야 합니다', '~해 주세요'"],
   [/(?<![가-힣])당신(?:의|은|이|을|에게|께|만의)/, "'당신' is 'you' translated: Korean drops the subject or uses a name, a title or 님"],
   [/소개(?:시키|시켜|시켰|시킵)/, "'소개시키다' adds a causative the verb doesn't need: '소개하다'"],
   [/[을를]\s?(?:수행|실시)(?:합니다|해요|한다|하세요|함|했습니다)|(?:설치|삭제|업데이트|재시작|가입|인증|등록|변경|결제)[을를]?\s?진행(?:합니다|해요|한다|하세요|함)/, "a noun plus a light verb ('설치를 진행합니다', '점검을 실시합니다') pads the verb: '설치합니다', '점검합니다'"],
 ];
-const DRIDA = /(공유|요청|전달|회신|제안)\s?드(?:리|립|려|렸)/;
 const OBJECT_HONORIFIC = /(나오셨|품절이(?:세요|십니다|시네요)|매진이(?:세요|십니다)|(?:접수|등록|변경|취소|발송|배송|결제|완료|적립|할인|입고|준비|처리|승인|해지|연결|설치|저장|삭제|품절|매진)되셨|말씀이 계시)/;
 // a thing that 'is possible' or 'exists', said with -시- ('카드 결제 가능하세요', '재고 있으십니다'); a question
 // to a person ('통화 가능하세요?', '쿠폰 있으세요?') honors that person and is right
@@ -670,6 +669,9 @@ const DENSITY = [
   [/되고\s?있(?:다|습니다|어요|으며|는)/, 3, 0, "the passive progressive '~되고 있다' (im-not-ai A-20)"],
   [/[을를]\s?통해(?:서)?\s/, 4, 3, "'~을 통해'"],
   [/에\s?(?:대한|대해|관한|관해)\s/, 5, 3, "'~에 대한·~에 대해'"],
+  // '-드리다' after an action noun is a valid humble suffix (설명드리다, 안내드리다); on verb after verb it reads
+  // over-polite. A writer told to avoid it reached for '청합니다', which reads worse (2026-10-25 test)
+  [/(?:공유|요청|전달|회신|제안|안내|확인|연락|설명|답변|보고|문의|협조|공지|발송)\s?드(?:리|립|려|렸)/, 3, 0, "'-드리다' on verb after verb ('공유드리겠습니다', '요청드립니다'): fine where the action is done for the reader, over-polite in a run. Use the plain verb for the rest ('요청합니다', '보내 드립니다'), not an archaic one ('청합니다')"],
 ];
 // documents: what a drafting agent leaves for the person who asked, which the reader must never see
 const WRITER_NOTE = /예시(?:입니다|예요)[^\n]{0,40}(?:실제|바꿔|수정|맞게|남기고)|게시 전에|실제 (?:정보|내용|값|주소|시간|수치|항목|계획)(?:으로|로|만|에)? ?[^.\n]{0,12}(?:바꿔|수정|교체|남기|맞게)|확인 후[^.\n]{0,20}(?:수정|기입|추가|채워|바꿔)(?:해)? ?(?:주세요|하세요)|(?:추정|가정)(?:해서|하여|에 기반)[^.\n]{0,15}(?:문구|썼|작성|적었)|(?:작성 시|별도) 확인 필요|대괄호|\((?:[^)]*?)(?:입력|기입|기재)해 주세요\)/;
@@ -794,8 +796,6 @@ const STRING_RULES = [
     const sig = s.text.match(/(?:^|\s)[가-힣]{2,4}\s(?:사원|주임|대리|과장|차장|부장|팀장|실장|본부장|이사|상무|전무|매니저|책임|선임|수석)\s?(?:드림|올림)\s*$/);
     if (sig) report('FYI', `a title after your own name honors yourself ('${sig[0].trim()}'): put it before the name ('마케팅팀 과장 ○○○ 드림')`);
     if (/님\s?귀하|씨\s?귀하/.test(s.text)) report('FYI', "'님 귀하' stacks two honorifics: '○○○ 님' or '○○○ 귀하'");
-    const d = s.text.match(DRIDA);
-    if (d) report('FYI', `'${d[0]}' stacks -드리다 on a noun that doesn't take it and reads over-polite: '${d[1]}하겠습니다', '${d[1]}합니다' (말씀드리다, 감사드리다 and 부탁드리다 are fine)`);
   } },
   { id: 'HW-12', check(s, report) {
     if (!isUi(s)) return;
@@ -955,6 +955,18 @@ const FILE_RULES = [
     }
     reportMinority(by, 'hapsyo', 'haera', report, 'FYI', `this document mixes ${LEVEL_NAME.hapsyo} ×${by.hapsyo.length} and ${LEVEL_NAME.haera} ×${by.haera.length} sentences; keep one (명사형 bullets sit with either)`);
   } },
+  // HW-R5 · 개조식: a report's or a slide's bullets end in 명사형 (국립국어원 「쉬운 공문서 쓰기 길잡이」 제3부 제3장);
+  // a list whose every item is a full sentence reads as prose cut into lines. A mixed list is HW-D2's.
+  { id: 'HW-R5', check(strings, report, ctx) {
+    if (!DOC_REGISTER.has(ctx)) return;
+    const lists = new Map();
+    for (const s of strings) if (s.prose && s.list && isUi(s) && !s.legal) (lists.get(s.list) || lists.set(s.list, []).get(s.list)).push(s);
+    for (const items of lists.values()) {
+      if (items.length < 2) continue;
+      const full = items.filter((s) => { const sens = sentences(s.text); const last = sens[sens.length - 1] || s.text; const lv = endingLevel(last); return (lv === 'haera' || lv === 'hapsyo' || lv === 'haeyo') && isStatement(last); });
+      if (full.length === items.length) report(items[0].line, 'FYI', `these ${items.length} bullets are full sentences; 개조식 lines in a report or slide end in 명사형 ('식재료가 남아 버려짐', '배달비 부담')`);
+    }
+  } },
   // HW-R4 · 명사형 lines with and without a final period. 「한글 맞춤법」 문장 부호 마침표 (1) [붙임 2] allows both;
   // keeping one per document is a skill call.
   { id: 'HW-R4', check(strings, report, ctx) {
@@ -1056,7 +1068,8 @@ const EXPECTED = {
   ],
   // situations (references/situations.md). ctx-report under --context=report: a 해요체 line, 명사형 lines with and
   // without a period, a 해라체 line beside 합쇼체 ones, '오후 2시'; HW-8's system wording and HW-11 stay quiet there.
-  'ctx-report': ['deck.html:6 WARN HW-R1', 'deck.html:7 FYI HW-R4', 'deck.html:8 FYI HW-R4', 'deck.html:10 FYI HW-R2', 'deck.html:13 FYI HW-R3'],
+  // brief.md: a list of full sentences where 개조식 wants 명사형 (HW-R5); the 명사형 list after it stays quiet
+  'ctx-report': ['deck.html:6 WARN HW-R1', 'deck.html:7 FYI HW-R4', 'deck.html:8 FYI HW-R4', 'deck.html:10 FYI HW-R2', 'deck.html:13 FYI HW-R3', 'brief.md:3 FYI HW-R5'],
   // ctx-notice under --context=notice: '~할 것', '~ 바람', '~하라', '~다 할 것이다', 장애우
   'ctx-notice': ['notice.html:5 FYI HW-P1', 'notice.html:6 FYI HW-P2', 'notice.html:7 FYI HW-P3', 'notice.html:8 FYI HW-P4', 'notice.html:9 WARN HW-P5'],
   // ctx-good: the same rewritten, each file naming its situation with a pragma (HTML comment, JSON key)
@@ -1088,14 +1101,17 @@ const EXPECTED = {
   'ctx-press': ['release.md:5 FYI HW-11'],
   // Korean-specific mechanics (references/korean-issues.md): dependent nouns closed up (회의중, 5회이상, 가입한지,
   // 안돼; 결제시, 하는데 시간, 한번 as FYI), a thing honored, a double passive, loanwords, a comma after 그러나, two
-  // dots, a slash date, an ungrouped number, Japanese-style 한자어, 소개시키다, and '~' softening an e-mail. The last four paragraphs hold their
+  // dots, a slash date, an ungrouped number, Japanese-style 한자어, 소개시키다, '가장 ~ 중 하나', and '~' softening an
+  // e-mail. The last four paragraphs hold their
   // look-alikes (그중, 사용중지, 이상한, 할지, 안됐어요, 비상시, 없는데, questions to a person, ranges, a fraction,
   // 즉, three dots, 12,000) and stay quiet
   korean: [
     'guide.md:1 WARN HW-2', 'guide.md:3 WARN HW-2', 'guide.md:5 WARN HW-2', 'guide.md:7 WARN HW-2', 'guide.md:9 FYI HW-2',
     'guide.md:11 FYI HW-2', 'guide.md:13 FYI HW-2', 'guide.md:15 WARN HW-10', 'guide.md:17 WARN HW-8', 'guide.md:19 BLOCK HW-1',
     'guide.md:21 FYI HW-1', 'guide.md:23 FYI HW-3', 'guide.md:25 FYI HW-3', 'guide.md:27 FYI HW-3', 'guide.md:29 FYI HW-3',
-    'guide.md:31 FYI HW-7', 'guide.md:33 FYI HW-8', 'mail.md:2 FYI HW-3',
+    'guide.md:31 FYI HW-7', 'guide.md:33 FYI HW-8', 'guide.md:35 FYI HW-8', 'mail.md:2 FYI HW-3',
+    // request.md: -드리다 on three verbs in one e-mail (부탁드리다 isn't counted)
+    'request.md:2 FYI HW-D4',
   ],
 };
 // rules that apply in every situation, whatever their letter says

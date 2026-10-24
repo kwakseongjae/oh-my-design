@@ -27,7 +27,7 @@ Documents out of 22 with at least one case of the kind:
 | Notes to the writer or unfilled placeholders left in the document | 8 | HW-D1 |
 | Spacing, standard words and loanword spelling (정기배송, 요구사항, 붓기, 컨퍼런스) | 8 | partly (HW-1, HW-2) |
 | Endings mixed: 명사형 items beside full sentences, 해요체 beside 합쇼체 | 6 | HW-11, HW-D2, HW-R1 |
-| Over-politeness (공유드리겠습니다, 요청드립니다, thanking before the reader has done anything) | 5 | partly (HW-10) |
+| Over-politeness (-드리다 on verb after verb, thanking before the reader has done anything) | 5 | partly (HW-D4 when -드리다 runs to three) |
 
 ## Cases by situation
 
@@ -37,7 +37,7 @@ Documents out of 22 with at least one case of the kind:
 |---|---|---|---|
 | `# 3분기 업무 보고서` | `# 3분기 업무 보고: 가입자 목표 120% 달성, 결제 안정화가 과제` | A topic title makes the reader open the body to find the point. A Korean report title carries the content and the direction. | — |
 | `- 신규 가입자가 목표를 2만 명 초과 달성했습니다.` (in a 개조식 list) | `- 신규 가입자 12만 명, 목표 대비 2만 명 초과` | A report's bullets are 개조식, ending in 명사형. A full 합쇼체 sentence in a bullet reads like a letter. | HW-D2 when the list mixes |
-| `원인과 재발 방지 대책은 별도로 정리해 공유드리겠습니다.` | `원인과 재발 방지 대책은 따로 정리해 공유하겠습니다.` | '공유' doesn't take the suffix -드리다. Stacking it reads over-polite, and a report's plain register doesn't need it. | HW-10 |
+| `원인과 재발 방지 대책은 별도로 정리해 공유드리겠습니다.` | `원인과 재발 방지 대책은 따로 정리해 공유하겠습니다.` | '공유드리다' is a valid form, since -드리다 attaches to action nouns. But a report to one's own lead keeps a plain register, and the humble suffix adds politeness it doesn't need. A style call. | HW-D4 when repeated |
 | `4분기 결제 모듈 교체를 통해 근본적으로 해소할 계획입니다.` | `4분기에 결제 모듈을 교체해 근본적으로 해소할 계획입니다.` | '~을 통해' is the English "through"; Korean says it with a verb. One use is normal Korean, so only a run is flagged. | HW-D4 when repeated |
 | `매출 기회 손실과 사용자 불편이 있었을 수 있습니다.` | `결제 장애 80분 동안 매출 기회 손실 발생(규모 산정 중)` | A hedge where a report should state what is known and what is still being measured. | — |
 | `## 5. 맺음` … `3분기에는 성장 지표가 목표를 넘어섰습니다.` | (delete; the summary already says it) | A closing chapter that repeats the summary is letter form, not report form. | — |
@@ -82,7 +82,7 @@ Documents out of 22 with at least one case of the kind:
 |---|---|---|---|
 | `갑작스러운 연락에도 읽어 주셔서 감사합니다.` (the opening line) | `갑작스럽게 연락드려 양해를 부탁드립니다.` | Thanking someone for reading before they have read. | — |
 | `바쁘신 중에 시간 내 주셔서 감사합니다. 회신 기다리겠습니다.` / `감사합니다.` | `바쁘신 중에 읽어 주셔서 감사합니다. 회신 기다리겠습니다.` (one thanks) | They haven't given any time yet, and 감사합니다 closes twice. | — |
-| `부담 없이 30분 화상 미팅을 요청드립니다.` | `편하실 때 30분 정도 화상으로 이야기 나눌 수 있을까요?` | '요청' doesn't take -드리다, and '부담 없이' modifies the sender's act instead of the reader's. | HW-10 |
+| `부담 없이 30분 화상 미팅을 요청드립니다.` | `편하실 때 30분 정도 화상으로 이야기 나눌 수 있을까요?` | '부담 없이' modifies the sender's act instead of the reader's. A question leaves the reader room to decline. '요청드립니다' itself is a valid form. | — |
 | `10월 27일(화) 14:00 – 14:30` | `10월 27일(화) 14:00~14:30` | A spaced dash for a range is an English habit; Korean writes ~. | HW-3 |
 
 ### 보도자료 — a launch release
