@@ -9,6 +9,7 @@ export function Notice() {
       <p>오전 10 : 20에 시작해요</p>
       <p>2026.10.24부터 바뀌어요</p>
       <h2>새 소식 <button onClick={() => setNotice("다음 달에 열립니다.")}>알림 받기</button></h2>
+      <p>잔액은 다음 날 자동으로 이체되어집니다.</p>
     </section>
   );
 }

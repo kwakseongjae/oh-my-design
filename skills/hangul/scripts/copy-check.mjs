@@ -476,7 +476,8 @@ const TECH = /\b(undefined|null|NaN|Exception|ERR_[A-Z_]+|stack trace|status cod
 const VAGUE_BUTTON = /^(확인|예|네|OK|오케이|제출|진행|실행)$/i;
 const VAGUE_LINK = /^(자세히 ?보기|더 ?보기|바로 ?가기|여기|여기를 클릭|클릭|링크)$/;
 const QUANTITY = /\d[\d,.]*\s*(?:원|%|일|개월|달|년|회|번|건|개|명|시간|분|초|km|m|kg|GB|MB|자|차|주)/g;
-const DOUBLE_PASSIVE = /(보여지|보여져|보여졌|되어지|되어져|되어졌|잊혀지|잊혀져|잊혀졌|쓰여지|쓰여져|쓰여졌|불려지|불려져|불려졌|닫혀지|닫혀져|닫혀졌|열려지|열려져|열려졌|짜여지|짜여져|읽혀지|읽혀져|팔려지|팔려져|담겨지|담겨져|놓여지|놓여져|나뉘어지|나뉘어져)/;
+// a passive stem plus -어지다 in any form: 되어지는, 되어져요, 되어졌어요, 되어집니다, 되어질, 되어짐
+const DOUBLE_PASSIVE = /((?:보여|되어|잊혀|쓰여|불려|닫혀|열려|짜여|읽혀|팔려|담겨|놓여|나뉘어)(?:지|져|졌|집|질|짐))/;
 const SYSTEM_DONE = /처리(?:가|를|이)? ?(?:완료|되었|됐)|완료(?:되었|됐)(?:습니다|어요)|처리 중입니다/;
 const DOUBLE_NEG = /(?:지 않으면|안 하면|없으면)[^.!?]{0,20}(?:수 없|안 돼|못 해|불가)|(?:실패|오류)(?:하지|가 없지) 않/;
 const OBJECT_HONORIFIC = /(나오셨|품절이(?:세요|십니다|시네요)|매진이(?:세요|십니다)|(?:접수|등록|변경|취소|발송|배송|결제|완료|적립|할인|입고|준비|처리|승인|해지|연결|설치|저장|삭제|품절|매진)되셨|말씀이 계시)/;
@@ -663,11 +664,12 @@ const EXPECTED = {
   // negative a consent notice must keep: all quiet.
   fp: [],
   // the true positives beside those classes: -ㄹ께요, 쓸수 있어요, 무료에요, 할것, one 합쇼체 line, 10 : 20, 2026.10.24,
-  // a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading), and a typed
-  // array of UI labels (STEPS), which is copy, not records
+  // a 합쇼체 notice set from a click handler inside a heading (read as code, not as the heading), a typed
+  // array of UI labels (STEPS), which is copy, not records, and a double passive in 합쇼체 (되어집니다)
   tp: [
     'Notice.tsx:4 BLOCK HW-1', 'Notice.tsx:5 WARN HW-2', 'Notice.tsx:6 WARN HW-1', 'Notice.tsx:7 WARN HW-2', 'Notice.tsx:8 WARN HW-11',
-    'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'Notice.tsx:11 WARN HW-11', 'steps.ts:5 WARN HW-11', 'ui.json:2 WARN HW-11',
+    'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'Notice.tsx:11 WARN HW-11', 'Notice.tsx:12 WARN HW-8', 'Notice.tsx:12 WARN HW-11',
+    'steps.ts:5 WARN HW-11', 'ui.json:2 WARN HW-11',
   ],
 };
 

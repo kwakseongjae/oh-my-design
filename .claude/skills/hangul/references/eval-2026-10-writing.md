@@ -24,7 +24,7 @@ A summary of OmD's before/after eval of the skill's writing layer (HW-1…HW-14,
 - **Secondary:** `scripts/check.mjs --json` (typography) on the same directories.
 - **Checkers.** Both arms were scored with two versions, and both are reported:
   - *pre-registered*, frozen with the plan: copy-check `c80996775cbeb4de`, check `5381ba84e2941ce2` (SHA-256 prefixes), at commit `e282eca7`. This is also the version in the B runs' `.agents/skills/hangul/`, which those runs ran on their own work.
-  - *final*, the version 2.0.6 ships: copy-check `80384ea2d772a45d`, check `99a048097bccdf8d`, at commit `72463442`. Why it changed is [below](#why-the-checker-changed).
+  - *final*, the version that scored this eval: copy-check `80384ea2d772a45d`, check `99a048097bccdf8d`, at commit `72463442`. Why it changed is [below](#why-the-checker-changed). A later fix (double passives in every conjugation, such as 되어집니다) changes no finding in these 36 runs; 2.0.6 ships that version.
   - Intermediate revisions were used for looks at partial results: copy-check `de95d2e52267af4d` (commit `0a8b6b6a`) on the Codex half, then `a4445da3c7e49404` (`2b991190`), `0de31f66d8855176` (`6c46dce8`) and `0b99daff9ed86404` (`d16e74de`) as runs finished. They are not reported as columns; what each changed is in the list below.
 - **The skill the B runs read** is `e282eca7`'s. Before release only the checker changed (below) and the wording of two citations to the 국립국어원 survey, not the rules.
 
