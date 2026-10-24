@@ -15,6 +15,8 @@ Research base: five research passes run on 2026-10-24 over Toss, Karrot, Korean 
 
 When the project's DESIGN.md sets a voice, speech level, address term or house spelling, it overrides every tier here. These rules fill only what the brand leaves unset.
 
+These rules are the default profile, `app`. Genre profiles (report, medical, public, commerce, developer, finance, notification) and their rules are in [`ux-writing-contexts.md`](./ux-writing-contexts.md).
+
 ## Main table
 
 | ID | Rule | Evidence | Tier | Sources |

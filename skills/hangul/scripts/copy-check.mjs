@@ -3,13 +3,20 @@
  * /hangul copy check: deterministic, dependency-free scan of the Korean UI copy in HTML, JSX/TSX,
  * JS/TS string literals and JSON message files. Node >= 18.
  *
- *   node copy-check.mjs [--json] [--strict] [--list] <file-or-dir>...
+ *   node copy-check.mjs [--json] [--strict] [--list] [--context=<name>] <file-or-dir>...
  *   node copy-check.mjs --self-test
  *
  * Exit code: 1 if any BLOCK finding (with --strict: any BLOCK or WARN), otherwise 0.
  * Rule IDs match skills/hangul/SKILL.md §3b (HW-1 … HW-14); sources are in references/ux-writing.md.
  * --list prints every string it found with the role it guessed, which is how to see what the rules
  * were judging.
+ *
+ * --context names the surface genre (references/ux-writing-contexts.md): app (the default, which changes
+ * nothing), report, medical, public, commerce, dev, finance, notify. report, medical and public add their
+ * own rules (HW-R*, HW-M*, HW-P*) and report changes how HW-8 and HW-11 apply; the other genres have no
+ * checker rules yet, so the HW defaults apply. A file can set its own genre with a pragma in its first 10
+ * lines, which wins over the flag: a comment such as `hangul-context: report`, or a top-level JSON key
+ * "hangul-context" with the genre as its value.
  *
  * It reads source, not the running product: it sees the strings written in the code and guesses each
  * one's role (button, empty state, toast, heading, label, placeholder, helper, body, alt text) from
@@ -417,7 +424,8 @@ class Findings {
     if (!prev || RANK[severity] > RANK[prev.severity]) this.map.set(key, { file, line, severity, rule, message });
   }
   list() {
-    const no = (r) => parseInt(r.slice(3), 10) || 99;
+    // HW-1 … HW-14 by number, then the genre rules (HW-R*, HW-M*, HW-P*) after them, then anything else
+    const no = (r) => { const m = /^[A-Z]+-([A-Z]?)(\d+)$/.exec(r); return !m ? 999 : m[1] ? 100 + (m[1].charCodeAt(0) - 64) * 50 + Number(m[2]) : Number(m[2]); };
     return [...this.map.values()].sort((a, b) => (a.file < b.file ? -1 : a.file > b.file ? 1 : a.line - b.line || no(a.rule) - no(b.rule) || (a.message < b.message ? -1 : 1)));
   }
 }
@@ -485,6 +493,47 @@ const LOSS = /놓치(?:면|지 마|시면|기 전에)|손해(?:예요|입니다|
 const DECLINE = /^(아니요|아니오|괜찮아요|됐어요|싫어요|다음에|안 ?할래요)[,.\s]/;
 const SHAME = /(포기|손해|안 받|필요 없|비싸게|싫|버릴|안 할래|모를래|관심 없)/;
 
+// ---- surface genres (references/ux-writing-contexts.md) -------------------------------
+// A genre applies to a whole file. 'app' changes nothing; report, medical and public add their rules below
+// (HW-R*, HW-M*, HW-P*); commerce, dev, finance and notify have none yet, so the HW defaults apply.
+const CONTEXTS = ['app', 'report', 'medical', 'public', 'commerce', 'dev', 'finance', 'notify'];
+const PRAGMA = /hangul-context["']?\s*[:=]\s*["']?([A-Za-z]+)/;
+/** The genre a file declares in its first 10 lines: { name, line } or null. */
+function pragmaOf(raw) {
+  const head = raw.split('\n', 10);
+  for (let i = 0; i < head.length; i++) { const m = PRAGMA.exec(head[i]); if (m) return { name: m[1].toLowerCase(), line: i + 1 }; }
+  return null;
+}
+// report: 국립국어원 「쉬운 공문서 쓰기 길잡이」 제3부 제3장; 「행정업무규정」 제7조⑤; 「한글 맞춤법」 마침표 (1) [붙임 2]
+const NOUN_END = /\s[가-힣]*[함음임됨냄봄짐줌옴씀]\.?$/; // a 명사형 ending (확보함, 낮아짐, 있음) on a line of two or more words
+const CLOCK12 = /(?:오전|오후)\s?\d{1,2}\s?(?:시|:\d{2})/;
+// medical: 의료법 제27조③·제42조·제56조②, 시행령 제23조①, and the 대한의사협회 의료광고심의위원회 list (2025-09-18)
+const M_CURE = /완치(?!\s?(?:판정|기준|여부|라는|란|는\s?어렵|가\s?어렵|되지\s?않|할\s?수\s?없|를\s?(?:장담|보장)할\s?수\s?없))/;
+const M_GUARANTEE = /100\s?%\s?(?:효과|성공|만족|완치|회복|개선|보장|안전|효능)|(?:효과|결과|성공)(?:를|가|을|는)?\s?보장(?!할\s?수\s?없|하지\s?(?:않|못)|되지\s?않)|확실한\s?효과|효과(?:가|는)?\s?확실|반드시\s?(?:효과|낫|좋아|치료|개선)|책임(?:집니다|질게요|져요|지겠습니다)/;
+const M_NOHARM = /(?:부작용|통증|흉터|붓기|출혈|재발|후유증|감염)(?:이나|이|가|은|는|도|과|와|나)?\s?(?:전혀\s?|거의\s?)?(?:없(?:는|이|고|어요|습니다|음|다|으며)|제로|0\s?%|걱정\s?(?:없|마세요))/g;
+// what follows a "없는" that makes it a caution, not a claim: '없는 것은 아니에요', '없는 시술은 없어요'
+const M_NOHARM_OK = /^\s?(?:것은|건|게)\s?아니|^\s?(?:시술|치료|수술|약|방법)(?:은|는)\s?없|^\s?(?:다고|라고)\s?(?:할|말할|볼)\s?수\s?없|^지\s?(?:는\s?)?않/;
+const M_SUPER = /최고(?!\s?(?:혈압|치|점|령|온도|기온|속도|한도))|최초(?!\s?(?:진료|진단|내원|접수|발병|증상|등록|처방|감염|확진))|유일|최상|최첨단|획기적|넘버\s?원|(?<![A-Za-z])No\.?\s?1(?!\d)|(?<!\d)(?<!(?:원인|사망|발생률?|발병률?|빈도)\s?)1위|최신\s?(?:장비|기술|시술|치료|기기|의료|레이저)/;
+const M_REVIEW = /(?:치료|시술|수술|진료|환자|내원|생생한?|리얼|실제)\s?(?:후기|경험담|체험기|사례)|체험기|경험담|전\s?[·ㆍ]?\s?후\s?(?:사진|비교|모습|변화|이미지)|비포\s?(?:&|앤드?)?\s?애프터|before\s?(?:&|and|\/)?\s?after/i;
+const M_INDUCE = /(?:리뷰|후기)(?:를|을)?\s?(?:작성|쓰기|쓰면|남기면|참여|인증)[^.!?]{0,15}(?:드려요|드립니다|증정|지급|적립|할인|쿠폰|상품권|선물|사은품)|(?:리뷰|후기)\s?이벤트|본인\s?부담금?\s?(?:면제|할인|무료|0원)|(?:소개|추천|친구|지인|가족)(?:하면|하시면|와\s?함께|과\s?함께|이랑|랑)[^.!?]{0,12}(?:할인|혜택|무료|증정)|선착순|(?<!(?:국가|국민|보건소|건강보험)[^.!?]{0,8})무료\s?(?:시술|검사|진료|수술|치료)/;
+const M_PCT = /(\d{1,3})\s?%\s?(?:할인|DC|OFF|세일)/i;
+const M_EVENT = /반값|특가|할인\s?이벤트|이벤트\s?(?:가격|가(?![가-힣])|진행)|파격\s?(?:할인|가격)/;
+const M_SPECIALTY = /(?<!지정\s?[가-힣]{0,8})전문\s?병원|특화|노하우|전문(?=\s?(?:클리닉|센터|진료|치료|시술|의원)|$)/;
+const M_ENDORSE = /(?:추천|선정|수상|인증|보증|공인)\s?(?:병원|의원|의료기관|의사|클리닉)|베스트\s?닥터|감사장|상장|(?:학회|협회|언론|방송|매체|고객|소비자)\s?(?:추천|선정|인증)/;
+const M_ENDORSE_OK = /보건복지부\s?인증|의료기관\s?인증|의료기관평가인증원/; // 제56조제2항제14호 가목: the statutory certification may be shown
+const M_KMA = [
+  [/(?:한\s?번에|한번에)\s?(?:해결|끝|치료|완성|개선|교정)/, "'한번에' → '동시에' or '한곳에서'"],
+  [/당일\s?(?:시술|수술|회복|퇴원|효과)|빠른\s?(?:회복|치료|효과)|바로\s?일상\s?(?:생활|복귀)|즉시\s?효과/, "a speed claim becomes '…지향' ('빠른 회복 지향')"],
+  [/(?<!\d)1\s?:\s?1(?!\d)\s?(?:맞춤|진료|상담|관리|케어)|일대일\s?(?:맞춤|진료|상담|관리|케어)/, "'1:1' → '맞춤'"],
+  [/(?:통증|질환|문제|고민)\s?(?:해결|솔루션)|정답|비결|근본\s?(?:치료|해결)|정직한/, "'해결·솔루션·정답·비결·근본·정직한' → '개선' or '지향'"],
+];
+// public: 국립국어원 「쉬운 공문서 쓰기 길잡이」 제1부 제2장 (고압적 표현, 차별적 표현)
+const P_GEOT = /([가-힣])\s것\s*[.!]?$/; // '~할 것' closing a sentence (the syllable before 것 ends in ㄹ)
+const P_BARAM = /(?:문의|협조|참고|확인|제출|지참|참석|양지|숙지|유의|회신|작성|신청|준수|이행|방문|참여|열람|기재|첨부|보고|하기|주기|되기)\s?바람\s*[.!]?$/;
+const P_HARA = /[가-힣](?:하라|해라|하여라)\s*[.!]?$/;
+const P_HALGEOSIDA = /(?:다|라)\s?(?:고\s?)?할\s?것이다/;
+const P_DISCRIM = /장애(?:자(?!녀)|우)/;
+
 const STRING_RULES = [
   { id: 'HW-1', check(s, report) {
     if (!isCopy(s)) return;
@@ -545,13 +594,14 @@ const STRING_RULES = [
     if (!isUi(s)) return;
     for (const [re, msg] of PLAIN) if (re.test(s.text)) report('FYI', `plain word: ${msg}`);
   } },
-  { id: 'HW-8', check(s, report) {
+  { id: 'HW-8', check(s, report, ctx) {
     if (!isUi(s)) return;
     const t = s.text;
     if (DOUBLE_PASSIVE.test(t)) report('WARN', `double passive '${t.match(DOUBLE_PASSIVE)[1]}…': use the single form ('보이는', '되는', '쓰인')`);
     if (/에 의해(서)? /.test(t)) report('FYI', "'~에 의해 ~되다' reads as translated English; make the actor the subject");
     if (/에 있어서/.test(t)) report('FYI', "'~에 있어서' → '~에서' / '~에 대해'");
-    if ((s.role === 'toast' || s.role === 'body' || s.role === 'helper') && SYSTEM_DONE.test(t)) report('FYI', "system wording ('처리가 완료되었습니다'): say what the user did ('저장했어요', '보냈어요')");
+    // a report states what was done ('처리 완료됨'); the user's-side wording is for screens that address a user
+    if (ctx !== 'report' && (s.role === 'toast' || s.role === 'body' || s.role === 'helper') && SYSTEM_DONE.test(t)) report('FYI', "system wording ('처리가 완료되었습니다'): say what the user did ('저장했어요', '보냈어요')");
   } },
   { id: 'HW-9', check(s, report) {
     // legal text keeps its negative: a consent notice must say what refusing costs ("동의하지 않으면 가입할 수 없어요"),
@@ -580,38 +630,169 @@ const STRING_RULES = [
     if (s.role !== 'a11y' || !/^(alt|aria-label)$/i.test(s.name || '')) return;
     if (/(이미지|사진|아이콘|그림)$/.test(s.text.trim())) report('FYI', `alt text '${s.text.trim()}': drop '이미지·사진·아이콘' (a screen reader already says it); decorative images take alt=""`);
   } },
+
+  // ---- genre: report (HW-R*), string-level; HW-R1, HW-R2 and HW-R4 are file rules ----
+  { id: 'HW-R3', check(s, report, ctx) {
+    if (ctx !== 'report' || !isUi(s) || s.legal) return;
+    if (CLOCK12.test(s.text)) report('FYI', "12-hour time ('오후 2시'): reports use 24-hour '14:00' (행정업무규정 제7조제5항, binding for 공문서)");
+  } },
+
+  // ---- genre: medical (HW-M*). A clinic's own site is inside 의료법 제56조 (its ① covers 인터넷) though
+  // outside prior review, and a pattern can't tell an ad from patient education, so nothing here is a BLOCK.
+  { id: 'HW-M1', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const m = s.text.match(M_CURE) || s.text.match(M_GUARANTEE);
+    if (m) report('WARN', `guaranteed result or cure ('${m[0].trim()}'): 의료법 제56조제2항제2호 and 시행령 제23조제1항제2호 forbid saying a treatment always works; say what it aims at ('통증 개선을 목표로 해요')`);
+  } },
+  { id: 'HW-M2', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    for (const m of s.text.matchAll(M_NOHARM)) {
+      const end = m.index + m[0].length;
+      if (M_NOHARM_OK.test(s.text.slice(end, end + 16))) continue;
+      report('WARN', `'${m[0].trim()}': an absolute about side effects or pain; 의료법 제56조제2항제7호·제8호 (중요 정보 누락, 과장); name the possible side effects instead`);
+      break;
+    }
+  } },
+  { id: 'HW-M3', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const m = s.text.match(M_SUPER);
+    if (m) report('WARN', `superlative or exclusive claim ('${m[0].trim()}'): 과장·비교 광고 (의료법 제56조제2항제4호·제8호); the KMA review board rejects 최고·최신·최초·획기적; state a checkable fact with its source, or drop it`);
+  } },
+  { id: 'HW-M4', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const m = s.text.match(M_REVIEW);
+    if (m) report('WARN', `patient testimonial or before/after ('${m[0].trim()}'): 치료경험담 광고 (의료법 제56조제2항제2호, 시행령 제23조제1항제2호), on the clinic's own site too`);
+  } },
+  { id: 'HW-M5', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const m = s.text.match(M_INDUCE);
+    if (m) report('WARN', `inducing patients ('${m[0].trim()}'): rewards for reviews, 본인부담금 면제·할인, free procedures and first-come offers are 환자 유인 (의료법 제27조제3항)`);
+  } },
+  { id: 'HW-M6', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const pct = s.text.match(M_PCT);
+    const m = pct || s.text.match(M_EVENT);
+    if (!m) return;
+    const big = pct ? Number(pct[1]) >= 50 : /반값/.test(m[0]);
+    report(big ? 'WARN' : 'FYI', `discount or event on 비급여 care ('${m[0].trim()}'): state the amount, who, how long and the price before it (시행령 제23조제1항제13호); the KMA review board rejects 진료비용·이벤트·할인 wording${big ? '; 보건복지부 treated 50%+ discounts as excessive inducement (2017)' : ''}`);
+  } },
+  { id: 'HW-M7', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const m = s.text.match(M_SPECIALTY);
+    if (m) report('FYI', `'${m[0].trim()}': only a hospital designated by 보건복지부 may use 전문병원 (의료법 제42조제1항제2호; '보건복지부 지정 ○○전문병원 (지정기간: …)'); for a focus area the KMA board accepts '중점진료' or '집중진료'`);
+  } },
+  { id: 'HW-M8', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal || M_ENDORSE_OK.test(s.text)) return;
+    const m = s.text.match(M_ENDORSE);
+    if (m) report('FYI', `endorsement, award or certification ('${m[0].trim()}'): 의료법 제56조제2항제14호 allows only 의료기관 인증 and public or statutory certification ('보건복지부 인증 의료기관 (유효기간: …)')`);
+  } },
+  { id: 'HW-M9', check(s, report, ctx) {
+    if (ctx !== 'medical' || !isCopy(s) || s.legal) return;
+    const t = s.text.trim();
+    // a label that is only '(더) 알아보기' is a CTA, whatever element holds it (an <a> is read with its parent)
+    if (/^(?:더\s?)?알아보기$/.test(t)) { report('FYI', "CTA '알아보기': the KMA review board asks for '문의하기' in medical ads"); return; }
+    for (const [re, fix] of M_KMA) {
+      const m = t.match(re);
+      if (m) { report('FYI', `'${m[0].trim()}': often rejected by the KMA review board (2025-09-18); ${fix}`); return; }
+    }
+  } },
+
+  // ---- genre: public (HW-P*): 국립국어원 「쉬운 공문서 쓰기 길잡이」 제1부 제2장 ----
+  { id: 'HW-P1', check(s, report, ctx) {
+    if (ctx !== 'public' || !isUi(s) || s.legal) return;
+    if (sentences(s.text).some((sen) => { const m = sen.match(P_GEOT); return m && jong(m[1]) === 8; })) report('FYI', "'~할 것' reads as an order; write '~하세요' or '~해야 합니다'");
+  } },
+  { id: 'HW-P2', check(s, report, ctx) {
+    if (ctx !== 'public' || !isUi(s) || s.legal) return;
+    if (sentences(s.text).some((sen) => P_BARAM.test(sen))) report('FYI', "'~ 바람' reads as an order; write '~하기 바랍니다' or '~해 주시기 바랍니다'");
+  } },
+  { id: 'HW-P3', check(s, report, ctx) {
+    if (ctx !== 'public' || !isUi(s) || s.legal) return;
+    if (sentences(s.text).some((sen) => P_HARA.test(sen))) report('FYI', "imperative '~하라': write '~하십시오' or '~하세요'");
+  } },
+  { id: 'HW-P4', check(s, report, ctx) {
+    if (ctx !== 'public' || !isUi(s) || s.legal) return;
+    if (P_HALGEOSIDA.test(s.text)) report('FYI', "'~다 할 것이다' → '~다'");
+  } },
+  { id: 'HW-P5', check(s, report, ctx) {
+    if (ctx !== 'public' || !isCopy(s)) return;
+    const m = s.text.match(P_DISCRIM);
+    if (m) report('WARN', `'${m[0]}' → '장애인', the neutral legal term (국립국어원 길잡이, 차별적 표현)`);
+  } },
 ];
 
 // HW-11 · one speech level per screen. A file stands in for a screen; strings in legal text, alt text
 // and record data are left out, and so are long passages (over 200 characters).
-const LEVEL_NAME = { hapsyo: '합쇼체 (-습니다)', haeyo: '해요체 (-어요)' };
+const LEVEL_NAME = { hapsyo: '합쇼체 (-습니다)', haeyo: '해요체 (-어요)', haera: '해라체 (-다)' };
+// statements decide the register; questions and requests ('~할까요?', '~하세요') sit with either
+const isStatement = (sen) => !/[?？]\s*$/.test(sen) && !/(세요|십시오|십시요)[\s.!…]*$/.test(sen) && !/^(네|예|아니요|아니오)[\s.!…,]*$/.test(sen);
+/** Flag the lines on the minority side of a two-way split (both sides when they tie). */
+function reportMinority(by, a, b, report, severity, msg) {
+  if (!by[a].length || !by[b].length) return;
+  const minority = by[a].length < by[b].length ? a : by[b].length < by[a].length ? b : null;
+  for (const k of minority ? [minority] : [a, b]) for (const line of new Set(by[k])) report(line, severity, msg);
+}
 const FILE_RULES = [
-  { id: 'HW-11', check(strings, report) {
+  { id: 'HW-11', check(strings, report, ctx) {
     const by = { hapsyo: [], haeyo: [] };
     for (const s of strings) {
       if (!isUi(s) || s.legal || s.text.length > 200) continue;
       for (const sen of sentences(s.text)) {
         const lv = endingLevel(sen);
-        // statements decide the register; questions and requests ('~할까요?', '~하세요') sit with either
-        const statement = !/[?？]\s*$/.test(sen) && !/(세요|십시오|십시요)[\s.!…]*$/.test(sen) && !/^(네|예|아니요|아니오)[\s.!…,]*$/.test(sen);
+        const statement = isStatement(sen);
         if ((lv === 'hapsyo' || lv === 'haeyo') && statement) by[lv].push(s.line);
         else if (lv === 'banmal' && s.role !== 'heading') report(s.line, 'FYI', 'banmal (해체) in UI copy; use the speech level DESIGN.md sets');
       }
     }
+    if (ctx === 'report') return; // a report has its own register rules (HW-R1, HW-R2)
     if (!by.hapsyo.length || !by.haeyo.length) return;
     const minority = by.hapsyo.length < by.haeyo.length ? 'hapsyo' : by.haeyo.length < by.hapsyo.length ? 'haeyo' : null;
     const msg = `this file mixes ${LEVEL_NAME.hapsyo} ×${by.hapsyo.length} and ${LEVEL_NAME.haeyo} ×${by.haeyo.length}; keep one level per surface, as DESIGN.md sets it`;
     for (const lv of minority ? [minority] : ['hapsyo', 'haeyo']) for (const line of new Set(by[lv])) report(line, 'WARN', msg);
   } },
+
+  // ---- genre: report (HW-R*), file-level ----
+  // HW-R1 · 해요체 in a report. Every report example in 국립국어원 「쉬운 공문서 쓰기 길잡이」 제3부 제3장 ends in
+  // 명사형 (~함·~음·~임), 해라체 or 합쇼체, and none in 해요체.
+  { id: 'HW-R1', check(strings, report, ctx) {
+    if (ctx !== 'report') return;
+    for (const s of strings) {
+      if (!isUi(s) || s.legal) continue;
+      if (sentences(s.text).some((sen) => endingLevel(sen) === 'haeyo' && isStatement(sen))) report(s.line, 'WARN', "해요체 in report or slide copy: end the line in 명사형 ('늘었음', '확보함') or in the document's 합쇼체/해라체");
+    }
+  } },
+  // HW-R2 · 합쇼체 and 해라체 sentences mixed in one document; 명사형 bullets sit with either (skill call)
+  { id: 'HW-R2', check(strings, report, ctx) {
+    if (ctx !== 'report') return;
+    const by = { hapsyo: [], haera: [] };
+    for (const s of strings) {
+      if (!isUi(s) || s.legal) continue;
+      for (const sen of sentences(s.text)) { const lv = endingLevel(sen); if ((lv === 'hapsyo' || lv === 'haera') && isStatement(sen)) by[lv].push(s.line); }
+    }
+    reportMinority(by, 'hapsyo', 'haera', report, 'FYI', `this document mixes ${LEVEL_NAME.hapsyo} ×${by.hapsyo.length} and ${LEVEL_NAME.haera} ×${by.haera.length} sentences; keep one (명사형 bullets sit with either)`);
+  } },
+  // HW-R4 · 명사형 lines with and without a final period. 「한글 맞춤법」 문장 부호 마침표 (1) [붙임 2] allows both;
+  // keeping one per document is a skill call.
+  { id: 'HW-R4', check(strings, report, ctx) {
+    if (ctx !== 'report') return;
+    const by = { dot: [], bare: [] };
+    for (const s of strings) {
+      if (!isUi(s) || s.legal || /^(heading|button|label)$/.test(s.role)) continue;
+      const t = s.text.trim();
+      if (NOUN_END.test(t)) by[t.endsWith('.') ? 'dot' : 'bare'].push(s.line);
+    }
+    reportMinority(by, 'dot', 'bare', report, 'FYI', `명사형 lines end with a period ×${by.dot.length} and without ×${by.bare.length}; 「한글 맞춤법」 allows both, keep one`);
+  } },
 ];
 
-export { sentences, endingLevel, extract, jong, STRING_RULES, FILE_RULES };
+export { sentences, endingLevel, extract, jong, STRING_RULES, FILE_RULES, CONTEXTS, pragmaOf };
 
 // ---- run -----------------------------------------------------------------------------
-function run(inputs, { base = process.cwd() } = {}) {
+function run(inputs, { base = process.cwd(), context = 'app' } = {}) {
   const files = collect(inputs);
   const F = new Findings();
   const strings = [];
+  const contexts = {}; // file → genre, for every file that isn't 'app'
   for (const abs of files) {
     const ext = path.extname(abs).toLowerCase();
     const raw = fs.readFileSync(abs, 'utf8');
@@ -619,19 +800,28 @@ function run(inputs, { base = process.cwd() } = {}) {
     const rel = path.relative(base, abs);
     const file = (rel.startsWith('..') ? abs : rel).split(path.sep).join('/');
     const legalFile = LEGALISH.test(file);
+    // the file's own pragma wins over --context
+    const pragma = pragmaOf(raw);
+    let ctx = context;
+    if (pragma && CONTEXTS.includes(pragma.name)) ctx = pragma.name;
+    else if (pragma) F.add(file, pragma.line, 'WARN', 'CTX', `unknown hangul-context '${pragma.name}' (known: ${CONTEXTS.join(', ')}); ${context} rules applied`);
+    if (ctx !== 'app') contexts[file] = ctx;
     const found = extract(abs, ext, raw).map((x) => ({ ...x, file, legal: x.legal || legalFile }));
-    for (const s of found) for (const r of STRING_RULES) r.check(s, (sev, msg) => F.add(file, s.line, sev, r.id, msg));
-    for (const r of FILE_RULES) r.check(found, (line, sev, msg) => F.add(file, line, sev, r.id, msg));
+    for (const s of found) for (const r of STRING_RULES) r.check(s, (sev, msg) => F.add(file, s.line, sev, r.id, msg), ctx);
+    for (const r of FILE_RULES) r.check(found, (line, sev, msg) => F.add(file, line, sev, r.id, msg), ctx);
     strings.push(...found);
   }
   const findings = F.list();
   const summary = { BLOCK: 0, WARN: 0, FYI: 0 };
   for (const x of findings) summary[x.severity]++;
-  return { files: files.length, strings, findings, summary };
+  const res = { files: files.length, strings, findings, summary };
+  if (Object.keys(contexts).length) res.contexts = contexts;
+  return res;
 }
 
 function printHuman(res, exit, list) {
-  const out = [`/hangul copy-check · ${res.files} file(s) · ${res.strings.length} Korean string(s)`];
+  const genres = res.contexts ? [...new Set(Object.values(res.contexts))].sort().join(', ') : '';
+  const out = [`/hangul copy-check · ${res.files} file(s) · ${res.strings.length} Korean string(s)${genres ? ` · context ${genres}` : ''}`];
   if (list) for (const s of res.strings) out.push(`${s.file}:${s.line}  [${s.role}${s.err ? ',error' : ''}${s.dialog ? ',dialog' : ''}${s.link ? ',link' : ''}]  ${s.text}`);
   const w = Math.max(0, ...res.findings.map((f) => `${f.file}:${f.line}`.length));
   for (const f of res.findings) out.push(`${`${f.file}:${f.line}`.padEnd(w)}  ${f.severity.padEnd(5)}  ${f.rule.padEnd(5)}  ${f.message}`);
@@ -671,7 +861,34 @@ const EXPECTED = {
     'Notice.tsx:9 FYI HW-3', 'Notice.tsx:10 FYI HW-3', 'Notice.tsx:11 WARN HW-11', 'Notice.tsx:12 WARN HW-8', 'Notice.tsx:12 WARN HW-11',
     'steps.ts:5 WARN HW-11', 'ui.json:2 WARN HW-11',
   ],
+  // genres (references/ux-writing-contexts.md). ctx-report under --context=report: a 해요체 line, 명사형 lines
+  // with and without a period, a 해라체 line beside 합쇼체 ones, '오후 2시'; HW-8's system wording and HW-11 stay
+  // quiet there.
+  'ctx-report': ['deck.html:6 WARN HW-R1', 'deck.html:7 FYI HW-R4', 'deck.html:8 FYI HW-R4', 'deck.html:10 FYI HW-R2', 'deck.html:13 FYI HW-R3'],
+  // ctx-medical under --context=medical: 완치, 100% 보장, 부작용 없는, 최고, 치료 후기, a reward for reviews, 70% and
+  // an event price, 전문병원, 학회 추천, the '더 알아보기' CTA, 당일 시술, before/after alt text, '흉터가 거의 없어요'
+  // and '효과가 확실한'
+  'ctx-medical': [
+    'clinic.html:4 WARN HW-M1', 'clinic.html:5 WARN HW-M1', 'clinic.html:6 WARN HW-M2', 'clinic.html:7 WARN HW-M3', 'clinic.html:8 WARN HW-M4',
+    'clinic.html:9 WARN HW-M5', 'clinic.html:10 WARN HW-M6', 'clinic.html:11 FYI HW-M6', 'clinic.html:12 FYI HW-M7', 'clinic.html:13 FYI HW-M8',
+    'clinic.html:14 FYI HW-M9', 'clinic.html:15 FYI HW-M9', 'clinic.html:16 FYI HW-14', 'clinic.html:16 WARN HW-M4', 'clinic.html:17 WARN HW-M2',
+    'clinic.html:18 WARN HW-M1',
+  ],
+  // ctx-medical-fp under --context=medical: 본인부담률 100%, 최고 혈압, 최초 진료일, '부작용이 없는 시술은 없어요',
+  // '없는 것은 아니에요', 완치 판정, '보장할 수 없어요', 최신 소식, 환자 안전, care instructions before and after a
+  // procedure, 국가건강검진, the designated 전문병원 and 의료기관 인증 lines, 사망 원인 1위, '한 번에 한 분씩', 내과 전문의
+  'ctx-medical-fp': [],
+  // ctx-public under --context=public: '~할 것', '~ 바람', '~하라', '~다 할 것이다', 장애우
+  'ctx-public': ['notice.html:5 FYI HW-P1', 'notice.html:6 FYI HW-P2', 'notice.html:7 FYI HW-P3', 'notice.html:8 FYI HW-P4', 'notice.html:9 WARN HW-P5'],
+  // ctx-good: the same three genres rewritten, each file naming its genre with a pragma (HTML comment, JSON key)
+  'ctx-good': [],
+  // ctx-pragma, no flag: a report pragma turns HW-11 into HW-R1 for its own file only; an unknown genre is reported
+  'ctx-pragma': ['app.html:4 WARN HW-11', 'app.html:5 WARN HW-11', 'deck.html:5 WARN HW-R1', 'typo.html:1 WARN CTX'],
 };
+
+// The genre a context fixture runs under. The others run under the default, and ctx-good and ctx-pragma
+// set theirs per file with a pragma.
+const CONTEXT_OF = { 'ctx-report': 'report', 'ctx-medical': 'medical', 'ctx-medical-fp': 'medical', 'ctx-public': 'public' };
 
 function selfTest() {
   const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures', 'copy');
@@ -681,7 +898,7 @@ function selfTest() {
   for (const name of Object.keys(EXPECTED)) {
     const at = path.join(dir, name);
     if (!fs.existsSync(at)) { parts.push(`${name} missing`); ok = false; continue; }
-    const res = run([at], { base: at });
+    const res = run([at], { base: at, context: CONTEXT_OF[name] || 'app' });
     const got = new Set(res.findings.map(key));
     const want = new Set(EXPECTED[name]);
     const missing = [...want].filter((k) => !got.has(k));
@@ -691,23 +908,42 @@ function selfTest() {
     for (const k of missing) console.log(`  ${name} missing: ${k}`);
     for (const k of extra) console.log(`  ${name} unexpected: ${k} ${res.findings.find((f) => key(f) === k).message}`);
   }
+  // the genre fixtures run without their context must raise no genre rule (HW-R*, HW-M*, HW-P*)
+  const leaks = [];
+  for (const name of Object.keys(CONTEXT_OF)) {
+    const at = path.join(dir, name);
+    if (fs.existsSync(at)) for (const f of run([at], { base: at }).findings) if (/^HW-[A-Z]/.test(f.rule)) leaks.push(`${name} ${key(f)}`);
+  }
+  for (const k of leaks) console.log(`  genre rule outside its context: ${k}`);
   const first = JSON.stringify(run([path.join(dir, 'bad')], { base: path.join(dir, 'bad') }));
   const deterministic = first === JSON.stringify(run([path.join(dir, 'bad')], { base: path.join(dir, 'bad') }));
-  console.log(`self-test: ${parts.join('; ')}; deterministic ${deterministic}`);
-  ok = ok && deterministic;
+  console.log(`self-test: ${parts.join('; ')}; gated ${leaks.length === 0}; deterministic ${deterministic}`);
+  ok = ok && deterministic && leaks.length === 0;
   console.log(ok ? 'self-test: PASS' : 'self-test: FAIL');
   return ok ? 0 : 1;
 }
 
 function main(argv) {
-  const flags = new Set(argv.filter((a) => a.startsWith('--')));
-  const inputs = argv.filter((a) => !a.startsWith('--'));
+  const flags = new Set();
+  const inputs = [];
+  let context = 'app';
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--context') context = argv[++i] ?? '';
+    else if (a.startsWith('--context=')) context = a.slice('--context='.length);
+    else if (a.startsWith('--')) flags.add(a);
+    else inputs.push(a);
+  }
   if (flags.has('--help') || (!inputs.length && !flags.has('--self-test'))) {
-    console.log('usage: node copy-check.mjs [--json] [--strict] [--list] <file-or-dir>...\n       node copy-check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN)');
+    console.log(`usage: node copy-check.mjs [--json] [--strict] [--list] [--context=<${CONTEXTS.join('|')}>] <file-or-dir>...\n       node copy-check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN)`);
     return flags.has('--help') ? 0 : 2;
   }
   if (flags.has('--self-test')) return selfTest();
-  const res = run(inputs);
+  if (!CONTEXTS.includes(context)) {
+    console.error(`unknown --context '${context}' (known: ${CONTEXTS.join(', ')})`);
+    return 2;
+  }
+  const res = run(inputs, { context });
   const exit = res.summary.BLOCK > 0 || (flags.has('--strict') && res.summary.WARN > 0) ? 1 : 0;
   if (flags.has('--json')) console.log(JSON.stringify({ ...res, exit }, null, 2));
   else printHuman(res, exit, flags.has('--list'));
