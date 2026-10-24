@@ -81,7 +81,7 @@ adopted `profile: portable-core` authority gate above has passed.
 - Honorific level (반말/존댓말) follows `content-locales` — never mix in one product.
 - Particle usage matches the declared register (구어체 vs 문어체).
 - Sino-Korean (한자어) vs native-Korean ratio matches the declared voice fingerprint.
-- Write to the `hangul` skill's writing rules (`SKILL.md` §3b, HW-1…HW-14) wherever `content-locales` is silent: spelling and spacing, errors with a next step, buttons that say what happens, no honorifics on things. `content-locales` still wins on voice, speech level and address terms. When the skill is installed, run its `scripts/copy-check.mjs` on `components/microcopy.json` and fix every BLOCK and WARN before writing the file.
+- Write to the `hangul` skill's writing rules (HW-1…HW-14 in its `SKILL.md`) wherever `content-locales` is silent: spelling and spacing, errors with a next step, buttons that say what happens, no honorifics on things. `content-locales` still wins on voice, speech level and address terms. When the skill is installed, run its `scripts/copy-check.mjs` on `components/microcopy.json` and fix every BLOCK and WARN before writing the file.
 
 ## On output
 
