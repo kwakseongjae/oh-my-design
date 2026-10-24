@@ -172,14 +172,14 @@ Claude no-skill runs only (times KST, 2026-10-24; "first write" is the run's fir
 
 ## What the launch page shows (a deviation from the plan)
 
-The plan said the launch page would quote those median runs. The page instead shows four examples, one per rule, picked from strings the final checker flagged in Codex runs without the skill, each beside our rewrite:
+The plan said the launch page would quote those median runs. It quotes no eval output at all. An owner review on 2026-10-24 took the figure blocks off the page, and the r16 page that followed (owner picks the same day) shows the writing rules on an illustration instead: moa, a fintech home screen drawn for the page, set twice with only the strings changed (`web/src/components/hangul/moa-copy.ts`).
 
-- HW-8 · p3-A-r3 `app/page.tsx:62`, "사이책 가입이 완료됐어요." (FYI; the pre-registered checker missed it, every revision flags it)
-- HW-12 · p2-A-r3 `app/page.tsx:63`, the eyebrow "놓치지 마세요" (FYI, every version)
-- HW-11 · p3-A-r2 `app/page.tsx:59`, "화면 구현을 위한 예시 약관입니다." (WARN, every version)
-- HW-2 · p2-A-r3 `app/page.tsx:59`, "4만원 이하" (FYI, every version)
+- The strings on the side without the skill are written for the page, not taken from any run. They collect phrasings agents commonly write (hype and exclamation marks, a system-side success message, a double passive, 합쇼체 mixed into 해요체, 금일, 500만원) so that each breaks a rule the chapter names beside it.
+- copy-check finds 2 WARN and 6 FYI in them and nothing in the rewrites (`web/__tests__/hangul-page.test.ts` runs it). It does not see every marked rule: 고객님 (HW-8), 확인 · 취소 (HW-5) and the greeting's tone (HW-12) need a reader.
+- The screens carry no "demo" label (owner: it breaks immersion). One line under the install box says the moa screens are examples made to show the rules.
+- The four strings this section used to list (HW-8 p3-A-r3, HW-12 p2-A-r3, HW-11 p3-A-r2, HW-2 p2-A-r3) are no longer on the page; they stay in the samples above and in `raw/`.
 
-Three of the four are FYI. The page says the examples were picked and that the rewrites are ours. It quotes no eval figures: an owner review on 2026-10-24 took the figure blocks off the page, so the numbers live here and in `eval-2026-09.md`. The median-run samples above are the unpicked view.
+The numbers live here and in `eval-2026-09.md`. The median-run samples above are the unpicked view.
 
 ## Caveats (state these whenever the result is quoted)
 
