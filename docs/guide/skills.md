@@ -18,6 +18,12 @@ skill. Each name links to the `SKILL.md` the agent reads.
 
 ## Frontend, CJK first
 
+- **[hangul](../../skills/hangul/SKILL.md)** — Korean on the web, set and written
+  the way Korean services do it. Headings that break between words, tracking and
+  line-height from W3C klreq, KRDS and 67 measured Korean services, a font stack
+  that starts with a Korean face. Then the strings: spelling and spacing to
+  「한글 맞춤법」, errors that say what to do next, one speech level per screen.
+  A checker for each half.
 - **[omd-humanize](../../skills/omd-humanize/SKILL.md)** — Edits product copy in Korean,
   English, Japanese and Chinese (Simplified and Traditional) until it reads like
   someone local wrote it. Facts, numbers, commands and links stay put.
