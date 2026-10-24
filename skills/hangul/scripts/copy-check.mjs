@@ -689,6 +689,9 @@ const DENSITY = [
 ];
 // documents: what a drafting agent leaves for the person who asked, which the reader must never see
 const WRITER_NOTE = /예시(?:입니다|예요)[^\n]{0,40}(?:실제|바꿔|수정|맞게|남기고)|게시 전에|실제 (?:정보|내용|값|주소|시간|수치|항목|계획)(?:으로|로|만|에)? ?[^.\n]{0,12}(?:바꿔|수정|교체|남기|맞게)|확인 후[^.\n]{0,20}(?:수정|기입|추가|채워|바꿔)(?:해)? ?(?:주세요|하세요)|(?:추정|가정)(?:해서|하여|에 기반)[^.\n]{0,15}(?:문구|썼|작성|적었)|(?:작성 시|별도) 확인 필요|대괄호|\((?:[^)]*?)(?:입력|기입|기재)해 주세요\)/;
+// a line about the document's own writing choices ('헤드라인은 명사형, 본문은 키워드와 수치다', round 2): two parallel
+// 'X는 Y' clauses about its parts, or a register it says it settled on. FYI: a style guide says such things on purpose
+const STYLE_NOTE = /(?:헤드라인|제목|본문|불릿|항목)(?:은|는)\s?(?:명사형|해요체|합쇼체|해라체|개조식|키워드)[^.\n]{0,24},\s?(?:헤드라인|제목|본문|불릿|항목)(?:은|는)|(?:해요체|합쇼체|해라체|명사형|개조식)(?:으로|로)\s?(?:통일했|맞췄)/;
 const PLACEHOLDER = /\[[^\]\n]{0,40}(?:기재|입력|이름|성함|연락처|주소|금액|날짜|링크|직함|회사명|담당자|OO|○○|XX)[^\]\n]{0,40}\]|○{2,}|◯{2,}|(?<![A-Za-z])O{3,}(?![A-Za-z])/;
 
 const STRING_RULES = [
@@ -864,6 +867,8 @@ const STRING_RULES = [
     if (!s.prose || s.role === 'a11y') return;
     const n = s.text.match(WRITER_NOTE);
     if (n) { report('WARN', `a note to the writer is left in the document ('${n[0].trim()}'): move it out, to the chat, a PR description or a comment`); return; }
+    const st = s.text.match(STYLE_NOTE);
+    if (st) { report('FYI', `a line about the document's own writing ('${st[0].trim()}'): writing choices go in your reply, not in the document`); return; }
     const p = s.text.match(PLACEHOLDER);
     // a draft without the facts keeps its placeholders honestly; they only must not ship
     if (p) report('FYI', `an unfilled placeholder ('${p[0].trim()}'): fill it before the document goes out, and list what is still missing outside the document`);
@@ -1134,6 +1139,8 @@ const EXPECTED = {
     // last line (붓기 as 'pour', 아니라면, 위해) stays quiet
     'issues.md:3 WARN HW-8', 'issues.md:5 WARN HW-8', 'issues.md:7 FYI HW-7', 'issues.md:9 FYI HW-D3', 'issues.md:11 FYI HW-D3',
     'issues.md:13 BLOCK HW-1', 'issues.md:15 FYI HW-D4', 'issues.md:19 FYI HW-8', 'issues.md:21 FYI HW-D3',
+    // meta-note.md: a line about the deck's own writing (round 2); a style rule stated as a rule stays quiet
+    'meta-note.md:3 FYI HW-D1',
   ],
   // ctx-press under --context=press: a 합쇼체 sentence in the narration; the 해라체 lead and the quoted 합쇼체 stay quiet
   'ctx-press': ['release.md:5 FYI HW-11'],

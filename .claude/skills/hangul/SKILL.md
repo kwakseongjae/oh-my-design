@@ -374,6 +374,7 @@ UI strings. For documents, the situation's card in `references/situations.md` pl
    - An unknown detail of a figure (its period, its base, its source) is a question for your reply, never a mark in the document: write `이탈률 1.2%`, and ask in the reply whether it is monthly.
    - Otherwise leave the value out and say so.
    - Never invent the value, and never drop a conventional element because its value is missing.
+   - Your writing choices (speech level, headline form, units) go in your reply too. ✗ `헤드라인은 명사형, 본문은 키워드와 수치다.` as the first line of a deck.
 6. **Run the checkers** on what you wrote, then write the §7 table:
    - `check.mjs` for typography;
    - `copy-check.mjs` for wording, with `--context=<situation>` for anything but `app`. It reads Markdown and text files as documents. Pass the situation on the command line; don't add a pragma to the file.
