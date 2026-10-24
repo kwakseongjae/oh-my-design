@@ -1,7 +1,35 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-23 19시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-24 16시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-10-24 · /hangul UX 라이팅 계층 + 문구 평가 완료 — `feat/hangul-launch-r2` `fa34610e`, 오너 프리뷰 대기
+
+- **오너 요청·결정(10/24).** UX 라이팅을 실제 연구 근거로 고도화해 `hangul`에 넣는다(토스 앱인토스 하네스, 당근, 대기업 사례). 2.0.6은 문구 비교 평가가 끝난 뒤 출시. 평가 채널은 Claude 서브에이전트(Sonnet)와 Codex CLI.
+- **만든 것(브랜치 `feat/hangul-launch-r2`, 원격 푸시 완료).**
+  - 스킬: 문구 규칙 HW-1~14(SKILL.md §3b·§4b), `references/ux-writing.md`(규칙별 출처·등급), `scripts/copy-check.mjs`(픽스처 bad/good/fp/tp), `NOTICE.md`(SEED Apache-2.0, apps-in-toss-harness BSD-3). 토스 하네스 G6/G8은 하네스 자체 기준이라 OP 등급으로만 인용했다. 토스 보증처럼 읽히는 표현은 쓰지 않았다.
+  - 평가 문서: `skills/hangul/references/eval-2026-10-writing.md`(SKILL.md §9에서 링크).
+  - 페이지: `/ko/hangul`·`/hangul`에 `#writing` 섹션(교정 카드 4장, 평가 수치, 주의 문구). 규칙 목록 28개. 히어로에서 '번역한 것처럼 써요'를 뺐다(평가가 뒷받침하지 않음). 두 언어 모두 keep-all(영어 페이지 속 한국어 낱말이 390px에서 끊겼다).
+  - 문서: CHANGELOG 2.0.6(문구 규칙·문구 평가), llms.txt, cli-docs 5개 언어, llms-full. main 병합(`c43806a7`, 슬림 README 채택), `docs/guide/skills.md`에 hangul 한 줄.
+  - 라우팅: omd-humanize 설명 → 코드 속 한국어 UI 문구는 hangul. omd-microcopy는 HW 규칙을 따르고 copy-check를 돌린다.
+- **평가 결과(36회, 사전 등록 `docs/research/2026-10-24-ux-writing/EVAL-PLAN.md`).**
+  - 사전 기준(프롬프트·채널별 BLOCK+WARN 중앙값이 B에서 더 낮음)은 **미충족**이다. 스킬 없이도 중앙값이 0이었다. BLOCK은 양쪽 모두 0이다.
+  - 지적이 하나라도 나온 결과물은 11/18 → 2/18(Codex 8→2, Claude 3→0), 지적 수는 25 → 2. 25개 중 15개가 제목·버튼 끝 마침표(HW-3, FYI)다. 조판은 18/24 → 0/0.
+  - 검사기 오류 10건을 고쳤다(최종 copy-check `80384ea2…`, 커밋 `72463442`). 수정 #7~#10은 A 칸만 바꿨다(+1/−4). 사전 등록판 수치도 함께 싣는다.
+  - **프로토콜 실패:** Claude A 9개 중 5개(p1-A-r3, p2-A-r2, p3-A-r1·r2·r3)가 메인 체크아웃 CURRENT_STATE의 규칙 메모를 쓰기 전에 읽었다. Codex는 레포 밖에서 돌아 깨끗하다. 다시 돌리거나 칸을 바꾸지 않았다(advisor 검토). Claude 18개 중 14개가 advisor 도구를 썼다(아암당 7개). 재발 방지는 메모리 `project_eval_subagent_isolation.md`에 적었다.
+  - 원자료(실행 폴더 36개, 결과 JSON, 감사 스크립트, 검사기 스냅샷, Claude 기록 18개): `docs/research/2026-10-24-ux-writing/raw/`(gitignore, 75MB). 평가 중 옮긴 상태 노트 원문은 `STATE-2026-10-24.md`.
+- **검증.**
+  - web: 1,222 통과, `next build` OK, 타입 OK.
+  - 루트 vitest 1,515 통과, 실패 5개를 확인했다.
+    - cutover 테스트는 고쳤다(omd-microcopy의 '§3b' 표기).
+    - readiness 생성기는 단독 실행에서 통과한다.
+    - packaged smoke 3개는 main에서도 `npm install --offline` 단계에서 실패한다. 로컬 npm 캐시 문제다.
+  - QA: `next start`로 ko/en 1440·390을 확인했다. 넘침 0, 끊긴 한국어 낱말 0(360 포함, 페이지 전체), 표제 서체 로드. 캡처는 `docs/research/2026-10-21-hangul/r15/qa/writing-*.png`.
+  - 페이지 소스에 copy-check를 돌리면 인용한 '나쁜 예시'만 걸리고, check.mjs는 의도된 '전' 견본(specimens.css)만 건다.
+- **오너 대기.**
+  - 프리뷰 확인(시각 GO): https://oh-my-design-c2pqvetop-kwakseongjaes-projects.vercel.app/ko/hangul (Vercel 로그인 필요)
+  - 그 뒤 main 병합 → 2.0.6 출시 GO와 strict 게이트 waiver.
+- **다음.** GO 시 main 병합 → 라이브 확인 → `v2.0.6` 태그 → npm 확인 → 상태 문서 갱신. 선택: `docs/research/2026-10-21-hangul/posts.md`에 문구 규칙 게시물 초안(평가 수치를 인용하면 주의 사항을 함께, 토스·당근 보증 표현 금지).
 
 ## ▶ 2026-10-23 · README 슬림화 — main 병합 완료 `968f76c4`
 
