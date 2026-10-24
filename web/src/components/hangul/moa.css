@@ -1,0 +1,149 @@
+/* moa, the app the /hangul page sets twice (moa-screen.tsx). Two typesettings, picked by data-typo:
+   "ai" is the moa page Codex built without the skill in the 2026-09 typography eval (an Arial-first
+   stack, headings at −0.064em, body at −0.02em, tight leading, 10px captions, syllable breaking);
+   "fix" is the same screen set by HG-1…HG-14. Everything that is not typesetting (colour, spacing,
+   radii, art) is shared, so the two differ only where the rules reach.
+   The status bar is drawn by the phone, not the app, so it keeps one face on both sides. */
+
+.moa{
+  --moa-ink:#191f28;
+  --moa-ink-2:#4e5968;
+  --moa-ink-3:#6b7684;
+  --moa-mute:#b0b8c1;
+  --moa-bg:#f2f4f6;
+  --moa-card:#fff;
+  --moa-blue:#3478f6;
+  --moa-blue-ink:#1b64da;
+  --moa-line:#e5e8eb;
+  position:relative;display:flex;flex-direction:column;width:100%;max-width:360px;
+  background:var(--moa-bg);color:var(--moa-ink);text-align:left;
+  font-family:var(--moa-ff);font-size:15px;font-weight:400;line-height:var(--moa-lh);letter-spacing:var(--moa-ls);
+  word-break:var(--moa-wb);overflow-wrap:var(--moa-ow);
+  -webkit-font-smoothing:antialiased;
+}
+.moa[data-typo="ai"]{
+  --moa-ff:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --moa-ls-h:-0.064em;--moa-ls:-0.02em;--moa-lh-h:1.15;--moa-lh:1.25;
+  --moa-cap:10px;--moa-tab:10px;--moa-wb:normal;--moa-ow:normal;
+}
+.moa[data-typo="fix"]{
+  --moa-ff:var(--font-r11-pretendard),"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --moa-ls-h:-0.02em;--moa-ls:0;--moa-lh-h:1.35;--moa-lh:1.5;
+  --moa-cap:13px;--moa-tab:12px;--moa-wb:keep-all;--moa-ow:anywhere;
+}
+.moa p{margin:0}
+.moa ul{list-style:none;margin:0;padding:0}
+/* The site sets every Korean element's face and break rule directly (chrome.css,
+   ":where(.sq-root) :lang(ko) …", up to 0-1-1), so inheriting from .moa alone is not enough: every
+   element in the screen takes the screen's own, at 0-2-0. The chip and the status bar opt out below. */
+.moa[data-typo],.moa[data-typo] *{font-family:var(--moa-ff);word-break:var(--moa-wb);overflow-wrap:var(--moa-ow)}
+
+/* ---- the phone's status bar and the app bar ---- */
+.moa-top{flex:none;background:var(--moa-card)}
+.moa-status{display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 24px 0 30px;
+  font:600 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;letter-spacing:0;color:var(--moa-ink)}
+.moa[data-typo] .moa-time{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+.moa-status-i{display:flex;align-items:center;gap:5px}
+.moa-status-i svg{display:block}
+.moa-bar{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px}
+.moa-logo{display:flex;align-items:center;gap:8px}
+.moa-logo svg{display:block}
+.moa-logo-t{font-size:20px;font-weight:800;line-height:1;letter-spacing:var(--moa-ls-h);color:var(--moa-ink)}
+.moa-bell{position:relative;display:block;color:var(--moa-ink-2)}
+.moa-bell svg{display:block}
+.moa-dot{position:absolute;top:1px;right:2px;width:7px;height:7px;border-radius:50%;background:#f04452;box-shadow:0 0 0 2px var(--moa-card)}
+
+/* ---- content ---- */
+.moa-view{position:relative}
+.moa-scroll{display:flex;flex-direction:column;gap:12px;padding:6px 16px 24px}
+.moa[data-typo] .moa-chip{display:flex;align-items:center;width:fit-content;height:22px;margin-top:8px;padding:0 8px;border-radius:6px;
+  font:700 11.5px/1 var(--sq-f-latin),-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:0;white-space:nowrap;
+  color:#1d4ed8;background:#e0e7ff}
+.moa[data-typo] .moa-chip[data-tone="before"]{color:#9a3412;background:#ffedd5}
+.moa-wavy{text-decoration:underline wavy #ea580c;text-decoration-thickness:1.5px;text-underline-offset:4px;text-decoration-skip-ink:none}
+
+.moa-hello{padding:14px 4px 6px}
+.moa-hello-t{font-size:22px;font-weight:750;line-height:var(--moa-lh-h);letter-spacing:var(--moa-ls-h)}
+
+.moa-card{display:flex;flex-direction:column;padding:20px;border-radius:20px;background:var(--moa-card)}
+.moa-label{font-size:14px;color:var(--moa-ink-3)}
+.moa-amount{margin-top:6px!important;font-size:28px;font-weight:800;line-height:1.25;letter-spacing:var(--moa-ls-h);font-variant-numeric:tabular-nums}
+.moa-delta{margin-top:4px!important;font-size:14px;color:var(--moa-ink-3)}
+.moa-delta b{font-weight:700;color:var(--moa-blue-ink);font-variant-numeric:tabular-nums}
+.moa-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:18px}
+.moa-btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:6px 10px;border-radius:14px;
+  font-size:15px;font-weight:650;line-height:1.3;text-align:center}
+.moa-btn--soft{background:#f2f4f6;color:#333d4b}
+.moa-btn--blue{background:var(--moa-blue);color:#fff}
+
+.moa-h{font-size:15px;font-weight:700}
+.moa-people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:14px!important}
+.moa-people li{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.moa-avatar{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;font-size:17px;font-weight:700;letter-spacing:0;
+  background:linear-gradient(160deg,#fff4e6,#ffe0b8);color:#c2410c;box-shadow:inset 0 -2px 0 rgba(0,0,0,.05)}
+.moa-avatar[data-i="1"]{background:linear-gradient(160deg,#ebfbee,#c9f0d2);color:#2b8a3e}
+.moa-avatar[data-i="2"]{background:linear-gradient(160deg,#f3f0ff,#ddd3ff);color:#6741d9}
+.moa-avatar[data-i="3"]{background:linear-gradient(160deg,#e7f5ff,#c6e4ff);color:#1971c2}
+.moa-name{font-size:13px;color:var(--moa-ink-2)}
+
+/* art slots: one picture each, shared by both sides (public/hangul/moa/) */
+.moa-art{flex:none;display:block;width:var(--a);height:var(--a);background:center/contain no-repeat}
+.moa-art--sent{--a:46px;background-image:url(/hangul/moa/sent.webp)}
+.moa-art--gift{--a:64px;margin:-6px -2px -6px 0;background-image:url(/hangul/moa/gift.webp)}
+.moa-art--chart{--a:56px;margin:-8px -6px -10px 8px;background-image:url(/hangul/moa/chart.webp)}
+.moa-art--offline{--a:40px;background-image:url(/hangul/moa/offline.webp)}
+
+.moa-toast{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;background:#191f28;color:#fff;
+  box-shadow:0 10px 24px -14px rgba(25,31,40,.55)}
+.moa-toast-in{display:flex;flex-direction:column;min-width:0}
+.moa-toast-t{font-size:15px;font-weight:700}
+.moa-toast-s{margin-top:2px!important;font-size:13px;color:#b0b8c1}
+
+.moa-banner{display:flex;align-items:center;gap:12px;padding:16px 16px 16px 18px;border-radius:18px;background:#e8f3ff;color:var(--moa-blue-ink)}
+.moa-banner-in{display:flex;flex-direction:column;flex:1;min-width:0}
+.moa-banner-t{font-size:15px;font-weight:650}
+
+.moa-stats-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.moa-cap{font-size:var(--moa-cap);font-weight:700;color:var(--moa-blue-ink)}
+.moa-stats-h{margin-top:6px!important;font-size:24px;font-weight:800;line-height:var(--moa-lh-h);letter-spacing:var(--moa-ls-h)}
+.moa-figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--moa-line)}
+.moa-fig{min-width:0}
+.moa-fig-v{font-size:14px;font-weight:700;line-height:1.2;color:var(--moa-ink);white-space:nowrap}
+.moa-fig-v b{font-size:22px;font-weight:800;letter-spacing:var(--moa-ls-h);font-variant-numeric:tabular-nums}
+.moa-fig-l{margin-top:4px!important;font-size:13px;color:var(--moa-ink-3)}
+.moa-asof{margin-top:14px!important;font-size:var(--moa-cap);color:var(--moa-ink-3)}
+
+.moa-sheet{display:flex;flex-direction:column;padding:12px 20px 20px;border-radius:24px;background:var(--moa-card);
+  box-shadow:0 -1px 0 var(--moa-line),0 18px 40px -24px rgba(25,31,40,.35)}
+.moa-grab{align-self:center;width:36px;height:4px;margin-bottom:16px;border-radius:2px;background:#d1d6db}
+.moa-sheet-t{font-size:20px;font-weight:750;line-height:var(--moa-lh-h);letter-spacing:var(--moa-ls-h)}
+.moa-sheet-b{margin-top:6px!important;font-size:15px;color:var(--moa-ink-2)}
+.moa-sheet .moa-actions{margin-top:20px}
+.moa-sheet .moa-btn{min-height:52px}
+
+.moa-error{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:16px;background:#fff1f0;color:#b42318}
+.moa-error-in{display:flex;flex-direction:column;min-width:0}
+.moa-error-t{font-size:15px;font-weight:600}
+.moa-helper{display:flex;flex-direction:column;padding:0 4px}
+.moa-helper-t{font-size:14px;color:var(--moa-ink-2)}
+
+/* ---- the tab bar ---- */
+.moa-tabs{flex:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));height:62px;padding:6px 8px 4px;
+  border-top:1px solid #eef0f3;background:var(--moa-card)}
+.moa-tabs li{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:3px;color:var(--moa-mute)}
+.moa-tabs li.is-on{color:var(--moa-ink)}
+.moa-tabs svg{display:block}
+.moa-tabs span{font-size:var(--moa-tab);font-weight:600;line-height:1.2}
+
+/* ---- fixed chrome: bars stay, the content between them scrolls by itself (the hero's phones).
+   --moa-h is the screen's height, set by the frame; the scroll ends where the content does. ---- */
+.moa--fixed{height:100%;max-width:none}
+.moa--fixed .moa-view{flex:1;min-height:0;overflow:hidden}
+@keyframes moa-scroll{
+  0%,8%{transform:translateY(0)}
+  46%,58%{transform:translateY(calc(-100% + var(--moa-h) - 158px))}
+  96%,100%{transform:translateY(0)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .moa--fixed .moa-scroll{animation:moa-scroll 18s ease-in-out infinite;will-change:transform}
+}

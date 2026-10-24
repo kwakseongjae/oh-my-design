@@ -1,5 +1,7 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
@@ -9,44 +11,36 @@ import sitemap from "@/app/sitemap";
 import { metadata as koMetadata } from "@/app/(ko)/ko/hangul/page";
 import { metadata as enMetadata } from "@/app/(en)/hangul/page";
 import { HangulPage } from "@/components/hangul/hangul-page";
-import { CompareSection } from "@/components/hangul/asset-sections";
-import {
-  DEMO_HEADING,
-  H3_METRICS,
-  H7_LINES,
-  HANGUL_COPY,
-  INSTALL_CLI,
-  INSTALL_SKILL,
-  LAUNCH_POST_SLUG,
-  fill,
-  objectParticle,
-  subjectParticle,
-  type HangulLocale,
-} from "@/components/hangul/copy";
+import { HANGUL_COPY, INSTALL_CLI, INSTALL_SKILL, LAUNCH_POST_SLUG, type HangulLocale } from "@/components/hangul/copy";
+import { MOA_COPY, MOA_COPY_MARKS, MOA_SHARED, MOA_TYPE_MARKS } from "@/components/hangul/moa-copy";
 import { getPost } from "@/lib/blog/posts";
-import type { HangulAssets } from "@/lib/hangul/assets";
 
 // next/font/local only works inside the Next compiler; the page needs nothing from it but the class.
 vi.mock("@/components/brand-a/journey/faces", () => ({
   pretendard: { variable: "hg-test-pretendard", style: { fontFamily: "Pretendard" } },
 }));
-vi.mock("@/components/hangul/faces", () => ({
-  songMyung: { variable: "hg-test-songmyung", style: { fontFamily: "Song Myung" } },
-}));
 
 /**
- * /hangul launch pages (docs/HANGUL_LAUNCH_PLAN_2026-10-21.md H2): the hreflang pair, the share
- * cards, the sitemap, what each page renders, and the launch-asset contract (render a block only
- * when its entry exists, never a placeholder).
+ * /hangul launch pages (r16, owner review 2026-10-24): the hreflang pair, the share cards, the
+ * sitemap, what each page renders, and the claims the page makes about its own moa screens.
  */
 
 const WEB = path.resolve(__dirname, "..");
+const ROOT = path.resolve(WEB, "..");
 const ORIGIN = "https://oh-my-design.kr";
 const LOCALES: HangulLocale[] = ["ko", "en"];
 const META: Record<HangulLocale, Metadata> = { ko: koMetadata, en: enMetadata };
 const PATH: Record<HangulLocale, string> = { ko: "/ko/hangul", en: "/hangul" };
 
 const render = (locale: HangulLocale) => renderToStaticMarkup(createElement(HangulPage, { locale }));
+/** the markup of one section, from its opening tag to the next <section */
+const section = (html: string, id: string) => {
+  const start = html.indexOf(`<section id="${id}"`);
+  expect(start, id).toBeGreaterThan(-1);
+  const end = html.indexOf("<section", start + 1);
+  return html.slice(start, end === -1 ? undefined : end);
+};
+const ids = (s: string) => s.split(/\s*·\s*/);
 
 function pngSize(file: string): { width: number; height: number } {
   const buf = fs.readFileSync(file);
@@ -91,21 +85,18 @@ describe("/hangul in the sitemap", () => {
 });
 
 describe("/hangul pages", () => {
-  it.each(LOCALES)("%s: one h1, both demo results, the install command, no placeholder", (locale) => {
+  it.each(LOCALES)("%s: one h1, the sections in order, the install command, no placeholder", (locale) => {
     const html = render(locale);
     const t = HANGUL_COPY[locale];
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     expect(html).toContain(t.hero.h1);
-    // the demo: the eval heading in both screens, as Korean text
-    expect(html).toContain('data-hangul-specimen="before"');
-    expect(html).toContain('data-hangul-specimen="after"');
-    expect(html.split(DEMO_HEADING).length - 1).toBeGreaterThanOrEqual(2);
-    expect(html).toMatch(/<p class="hg-sp-h" lang="ko">/);
+    const order = ['id="hg-h1"', '<section id="type"', '<section id="copy"', '<section id="rules"', '<section id="install"'].map((s) => html.indexOf(s));
+    expect(order.every((i) => i > -1)).toBe(true);
+    expect([...order].sort((a, b) => a - b)).toEqual(order);
     // one copy box: the bundle command is the box, the skill-only command a line under it
     expect(html.match(/class="hg-inst"/g)).toHaveLength(1);
     expect(html).toContain(`data-copy="${INSTALL_CLI}"`);
     for (const token of INSTALL_SKILL.split(" ")) expect(html).toContain(token);
-    // no checker step and no source list (owner v4 review)
     expect(html).not.toContain("check.mjs");
     expect(html).not.toMatch(/id="(sources|checker)"/);
     expect(html).not.toMatch(/TODO|placeholder|lorem|FILL IN/i);
@@ -120,14 +111,98 @@ describe("/hangul pages", () => {
     if (post) expect(html).toContain(`/${locale === "ko" ? "blog" : "blog/en"}/${LAUNCH_POST_SLUG}`);
     else expect(html).not.toContain(LAUNCH_POST_SLUG);
     expect(html).toContain('href="#install"');
-    expect(html).toContain('id="install"');
+    expect(html).toContain('href="#rules"');
   });
 
-  it.each(LOCALES)("%s: quotes no eval totals, no measured card and no seal (owner review 2026-10-24)", (locale) => {
+  it.each(LOCALES)("%s: no eval totals, no measured card, no seal, no keycaps (owner review 2026-10-24)", (locale) => {
     const html = render(locale);
-    expect(html).not.toMatch(/id="(eval|measured)"/);
+    expect(html).not.toMatch(/id="(eval|measured|writing)"/);
     expect(html).not.toContain("hg-seal");
     expect(html).not.toMatch(/18개 중 17개|17 of 18|\/18</);
+    expect(html).not.toMatch(/keys3d|k3-canvas|hg-keys/);
+  });
+
+  it.each(LOCALES)("%s: no 'demo' label over the screens, and one line under the install box says they are examples", (locale) => {
+    const html = render(locale);
+    const note = HANGUL_COPY[locale].install.screensNote;
+    expect(html.split(note)).toHaveLength(2);
+    expect(html.indexOf(note)).toBeGreaterThan(html.indexOf('<section id="install"'));
+    expect(html).not.toContain("시연용");
+  });
+});
+
+describe("/hangul moa screens", () => {
+  it.each(LOCALES)("%s: the hero pairs the screen without the skill and with it, in phones", (locale) => {
+    const hero = render(locale).split('<section id="type"')[0];
+    expect(hero.match(/class="hg-phone"/g)).toHaveLength(2);
+    expect(hero).toContain('data-typo="ai"');
+    expect(hero).toContain('data-typo="fix"');
+    expect(hero).toContain(MOA_COPY.ai.toast);
+    expect(hero).toContain(MOA_COPY.fix.toast);
+    expect(hero).not.toContain('class="moa-chip"');
+  });
+
+  it.each(LOCALES)("%s: the 조판 chapter changes only the typesetting, the 문구 chapter only the strings", (locale) => {
+    const html = render(locale);
+    const type = section(html, "type");
+    expect(type.match(/data-typo="ai"/g)).toHaveLength(1);
+    expect(type.match(/data-typo="fix"/g)).toHaveLength(1);
+    expect(type).not.toContain(MOA_COPY.ai.toast);
+    expect(type.split(MOA_COPY.fix.toast)).toHaveLength(3);
+    const copy = section(html, "copy");
+    expect(copy).not.toContain('data-typo="ai"');
+    expect(copy.match(/data-typo="fix"/g)).toHaveLength(2);
+    expect(copy).toContain(MOA_COPY.ai.toast);
+    expect(copy).toContain(MOA_COPY.fix.toast);
+    expect(copy).toContain('class="moa-wavy"');
+  });
+
+  it("every rule a screen marks or the hero lights is explained beside it and is a real rule", () => {
+    for (const locale of LOCALES) {
+      const t = HANGUL_COPY[locale];
+      const rules = new Set([...t.rules.list, ...t.rules.writing].map((r) => r.id));
+      const typeNotes = new Set(t.type.notes.flatMap((n) => ids(n.id)));
+      const copyNotes = new Set(t.copy.notes.flatMap((n) => ids(n.id)));
+      for (const m of Object.values(MOA_TYPE_MARKS).flatMap(ids)) expect(typeNotes.has(m), `${locale} type ${m}`).toBe(true);
+      for (const m of Object.values(MOA_COPY_MARKS).flatMap((v) => ids(v ?? ""))) expect(copyNotes.has(m), `${locale} copy ${m}`).toBe(true);
+      for (const id of [...typeNotes, ...copyNotes, ...t.hero.tags.map((g) => g.id)]) expect(rules.has(id), `${locale} ${id}`).toBe(true);
+      for (const g of t.hero.tags) expect(typeNotes.has(g.id) || copyNotes.has(g.id), `${locale} tag ${g.id}`).toBe(true);
+    }
+  });
+
+  it("set every Hangul syllable in the self-hosted Pretendard subset (KS X 1001)", () => {
+    const euckr = new TextDecoder("euc-kr");
+    const ksx = new Set<string>();
+    for (let a = 0xb0; a <= 0xc8; a++) for (let b = 0xa1; b <= 0xfe; b++) ksx.add(euckr.decode(new Uint8Array([a, b])));
+    const text = JSON.stringify([MOA_COPY, MOA_SHARED]);
+    const missing = [...new Set([...text].filter((c) => /[가-힣]/.test(c) && !ksx.has(c)))];
+    expect(missing).toEqual([]);
+  });
+
+  const checker = path.join(ROOT, "skills", "hangul", "scripts", "copy-check.mjs");
+  it.skipIf(!fs.existsSync(checker))("copy-check: nothing in the /hangul strings or the shared ones, findings in the others", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "hg-moa-"));
+    const check = (name: string, strings: readonly string[]) => {
+      const file = path.join(dir, `${name}.tsx`);
+      fs.writeFileSync(file, `export const S = [\n${strings.map((s) => `  ${JSON.stringify(s)}`).join(",\n")}\n];\n`);
+      let out = "";
+      try {
+        out = execFileSync(process.execPath, [checker, "--json", file], { encoding: "utf8" });
+      } catch (e) {
+        out = String((e as { stdout?: string }).stdout ?? "");
+      }
+      return JSON.parse(out).summary as { BLOCK: number; WARN: number; FYI: number };
+    };
+    const s = MOA_SHARED;
+    const shared = [s.app, s.amount, s.deltaLead, s.delta, s.accounts, s.transfer, s.recentH, ...s.recent, s.statsCap, s.statsH, ...s.stats.flatMap((f) => [f.value + f.unit, f.label]), s.asOf, ...s.tabs];
+    try {
+      expect(check("fix", Object.values(MOA_COPY.fix))).toEqual({ BLOCK: 0, WARN: 0, FYI: 0 });
+      expect(check("shared", shared)).toEqual({ BLOCK: 0, WARN: 0, FYI: 0 });
+      const ai = check("ai", Object.values(MOA_COPY.ai));
+      expect(ai.WARN + ai.FYI).toBeGreaterThan(0);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 
@@ -136,88 +211,15 @@ describe("/hangul rules list", () => {
     expect(HANGUL_COPY[locale].rules.list.map((r) => r.id)).toEqual(Array.from({ length: 14 }, (_, i) => `HG-${i + 1}`));
   });
 
-  // Once the skill lands on main (stream H1), the page's list must match its rule IDs.
-  const skill = path.resolve(WEB, "..", "skills", "hangul", "SKILL.md");
+  const skill = path.resolve(ROOT, "skills", "hangul", "SKILL.md");
   it.skipIf(!fs.existsSync(skill))("matches the rule IDs in skills/hangul/SKILL.md", () => {
-    const ids = [...fs.readFileSync(skill, "utf8").matchAll(/^\d+\.\s+\*\*(HG-\d+)\b/gm)].map((m) => m[1]);
-    expect(HANGUL_COPY.ko.rules.list.map((r) => r.id)).toEqual(ids);
+    const found = [...fs.readFileSync(skill, "utf8").matchAll(/^\d+\.\s+\*\*(HG-\d+)\b/gm)].map((m) => m[1]);
+    expect(HANGUL_COPY.ko.rules.list.map((r) => r.id)).toEqual(found);
   });
 
   it.skipIf(!fs.existsSync(skill))("lists the writing rules in skills/hangul/SKILL.md §3b, in both languages", () => {
-    const ids = [...fs.readFileSync(skill, "utf8").matchAll(/^\d+\.\s+\*\*(HW-\d+)\b/gm)].map((m) => m[1]);
-    expect(ids).toHaveLength(14);
-    for (const locale of ["ko", "en"] as const) expect(HANGUL_COPY[locale].rules.writing.map((r) => r.id)).toEqual(ids);
-  });
-});
-
-describe("/hangul writing section", () => {
-
-  it.each(LOCALES)("%s: marks a part of each quoted string and says the examples were picked", (locale) => {
-    const w = HANGUL_COPY[locale].writing;
-    for (const f of w.fixes) expect(f.before).toContain(f.mark);
-    expect(w.fixesNote).toMatch(locale === "ko" ? /골랐어요/ : /picked/);
-    const html = render(locale);
-    expect(html).toContain('id="writing"');
-    expect(html.indexOf('id="writing"')).toBeLessThan(html.indexOf('id="rules"'));
-  });
-});
-
-describe("/hangul specimens", () => {
-  it("are set only in syllables the self-hosted Pretendard subset carries (KS X 1001)", () => {
-    const euckr = new TextDecoder("euc-kr");
-    const ksx = new Set<string>();
-    for (let a = 0xb0; a <= 0xc8; a++) for (let b = 0xa1; b <= 0xfe; b++) ksx.add(euckr.decode(new Uint8Array([a, b])));
-    const text = [DEMO_HEADING, ...H7_LINES, ...H3_METRICS.flatMap((m) => [m.label, m.unit, m.note])].join("");
-    const missing = [...new Set([...text].filter((c) => /[가-힣]/.test(c) && !ksx.has(c)))];
-    expect(missing).toEqual([]);
-  });
-
-  it("word the break readout with the right particles", () => {
-    expect(subjectParticle("있어요")).toBe("가");
-    expect(subjectParticle("많은")).toBe("이");
-    expect(objectParticle("요.")).toBe("로");
-    expect(objectParticle("은")).toBe("으로");
-    expect(objectParticle("길")).toBe("로");
-    expect(fill(HANGUL_COPY.ko.demo.broken, { word: "있어요", p: "가", head: "있어", tail: "요.", ro: "로" })).toBe(
-      "‘있어요’가 ‘있어 / 요.’로 끊겼어요",
-    );
-  });
-});
-
-describe("/hangul launch assets (hangul-assets.json contract)", () => {
-  const EMPTY: HangulAssets = { beforeAfter: null, video: null, measured: null };
-  // A shape-only fixture for the render logic; these values are not data and never ship.
-  const FIXTURE: HangulAssets = {
-    beforeAfter: {
-      desktop: { before: "/hangul/fixture-b-d.webp", after: "/hangul/fixture-a-d.webp", width: 1440, height: 900 },
-      phone: { before: "/hangul/fixture-b-p.webp", after: "/hangul/fixture-a-p.webp", width: 390, height: 844 },
-      source: "fixture-run",
-    },
-    video: { mp4: "/hangul/fixture.mp4", poster: "/hangul/fixture.webp", width: 1280, height: 720, seconds: 9.6 },
-    measured: null,
-  };
-  const html = (el: typeof CompareSection, assets: HangulAssets) =>
-    renderToStaticMarkup(createElement(el, { assets, t: HANGUL_COPY.ko.assets, band: false }));
-
-  it("renders nothing while every entry is empty", () => {
-    expect(html(CompareSection, EMPTY)).toBe("");
-  });
-
-  it("renders each block only when its own entry exists", () => {
-    const shots = html(CompareSection, { ...EMPTY, beforeAfter: FIXTURE.beforeAfter });
-    expect(shots).toContain('src="/hangul/fixture-b-d.webp"');
-    expect(shots).toContain('width="390" height="844"');
-    expect(shots).toContain("fixture-run");
-    expect(shots).not.toContain("<video");
-    const video = html(CompareSection, { ...EMPTY, video: FIXTURE.video });
-    expect(video).toContain('<source src="/hangul/fixture.mp4" type="video/mp4"/>');
-    expect(video).toContain('poster="/hangul/fixture.webp"');
-    expect(video).not.toContain("<img");
-  });
-
-
-  it("ships no test values in the data file", () => {
-    const raw = fs.readFileSync(path.join(WEB, "src/data/hangul-assets.json"), "utf8");
-    expect(raw).not.toMatch(/fixture|test-|example\./i);
+    const found = [...fs.readFileSync(skill, "utf8").matchAll(/^\d+\.\s+\*\*(HW-\d+)\b/gm)].map((m) => m[1]);
+    expect(found).toHaveLength(14);
+    for (const locale of LOCALES) expect(HANGUL_COPY[locale].rules.writing.map((r) => r.id)).toEqual(found);
   });
 });

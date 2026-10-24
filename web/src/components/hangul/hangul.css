@@ -1,302 +1,217 @@
-/* /hangul launch page (/ko/hangul, /hangul), r15 direction A, "해례본 한 장" (one leaf of the Haerye):
-   docs/research/2026-10-21-hangul/r15/concept/CONCEPT.md. The page is printed on 한지 in 먹; the
-   hero demo is a woodblock leaf (double 광곽, a 판심 with inward 어미 and a vertical 판심제, 계선 for the
-   break map). 주색 vermilion is the one accent: it marks broken words, like a proofreader's red ink,
-   and the one seal. The install button and the slider thumb are ink. The site header and footer keep
-   their own chrome (Iris stays there only), so every colour below is scoped to .hg-main.
+/* /hangul launch page (/ko/hangul, /hangul), r16 (owner review 2026-10-24): hero B on ink, then two
+   chapters on paper (조판, 문구), the rules on a band and the install box back on ink.
    The page's own text follows the rules it advertises: a Korean face first (Wanted Sans on /ko,
-   Pretendard for any Hangul on /hangul), body 16–18px at 1.6–1.65 with tracking 0, headings at 1.3+
+   Pretendard for any Hangul on /hangul), body 15–18px at 1.5–1.65 with tracking 0, headings at 1.2+
    and never tighter than −0.03em, keep-all with overflow-wrap:anywhere, no italic. Display sizes step
-   by media query, not clamp(), so the /hangul checker can read them. The eval reproductions live in
-   specimens.css. */
+   by media query, not clamp(), so the /hangul checker can read them. The moa screens have their own
+   sheet (moa.css): one of their two typesettings breaks these rules on purpose. */
 
 .hg-root{
   /* Hangul inside English copy falls to the Pretendard this page loads, not the platform face */
   --sq-f-en:var(--sq-f-latin),var(--font-r11-pretendard),-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   font-synthesis:none;
+  word-break:keep-all;overflow-wrap:anywhere;
 }
-/* both locales: the English page quotes Korean too (국립국어원, ‘커피 나오셨습니다’), and keep-all leaves Latin alone */
-.hg-root{word-break:keep-all;overflow-wrap:anywhere}
 .hg-root :lang(ko) :is(em,i){font-style:normal}
-.hg-num{font-variant-numeric:tabular-nums}
-.hg-root code,.hg-root pre,.hg-root code span{font-family:var(--sq-f-mono)}
+.hg-root code,.hg-root code span{font-family:var(--sq-f-mono)}
 
-/* ---- the leaf palette (contrast on 한지 #f6f1e7: 먹 15.4:1, 옅은 먹 6.5:1, 주색 5.1:1) ---- */
-.hg-main{
-  --hg-paper:#f6f1e7;   /* 한지 */
-  --hg-paper-2:#efe7d6; /* 한지, a shade deeper: the band sections and the demo's screen stage */
-  --hg-cell:#e8dfcc;    /* wells and tracks; 옅은 먹 on it 5.5:1 */
-  --hg-ink:#1c1a16;     /* 먹 */
-  --hg-ink-2:#5c564b;   /* 옅은 먹 */
-  --hg-red:#b8391f;     /* 주색 */
-  --hg-rule:#cfc4ae;    /* 괘선, decoration only */
-  --hg-r:var(--sq-r-inner); /* the site scale's smallest radius: print-sharp corners for the page's own controls */
-  /* the site tokens the page's rules and shared components read, mapped onto the leaf palette */
-  --sq-paper:var(--hg-paper);
-  --sq-band:var(--hg-paper-2);
-  --sq-cell:var(--hg-cell);
-  --sq-ink:var(--hg-ink);
-  --sq-ink-2:var(--hg-ink-2);
-  --sq-guide:var(--hg-rule);
-  --sq-guide-2:var(--hg-rule);
-  --sq-primary:var(--hg-ink);
-  --sq-primary-hover:#38342c;
-  --sq-primary-press:#000;
-  --sq-on-primary:var(--hg-paper);
-  --sq-focus:var(--hg-ink);
-  --sq-err:var(--hg-red);
-  --sq-ok:var(--hg-ink);
-  color:var(--hg-ink);
-  /* the 한지 ground: a faint fibre tile centred on #f6f1e7 (public/hangul/art/PROVENANCE.md) */
-  background:url(/hangul/art/hanji-tile.webp) 0 0/384px 384px repeat var(--hg-paper);
+/* the header sits on the hero's ink */
+.hg-root .sq-top{
+  --sq-paper:#0e0f11;--sq-ink:#f2f2ef;--sq-ink-2:#a3a4aa;--sq-icon:#8b8c93;
+  --sq-cell:#1c1e22;--sq-band:#16171a;--sq-guide:#2b2d32;--sq-guide-2:#2b2d32;
+  --sq-focus:#f2f2ef;
+  color:var(--sq-ink);
 }
+
+/* ---- palette (contrast on #fff: ink 18.6:1, ink-2 6.5:1, ink-3 4.6:1, before 5.2:1, after 6.7:1;
+   on #0e0f11: night-ink 17.4:1, night-ink-2 7.9:1, night-before 11.2:1, night-after 10.6:1) ---- */
+.hg-main{
+  --hg-ink:#121214;
+  --hg-ink-2:#5d5e66;
+  --hg-ink-3:#76777f;
+  --hg-paper:#fff;
+  --hg-band:#f5f5f7;
+  --hg-well:#f2f2f5;
+  --hg-line:#e4e5ea;
+  --hg-before:#c2410c;
+  --hg-before-dot:#ea580c;
+  --hg-after:#1d4ed8;
+  --hg-after-dot:#2563eb;
+  --hg-night:#0e0f11;
+  --hg-night-2:#1c1e22;
+  --hg-night-line:#2b2d32;
+  --hg-night-ink:#f2f2ef;
+  --hg-night-ink-2:#a3a4aa;
+  --hg-night-before:#fdba74;
+  --hg-night-after:#93c5fd;
+  background:var(--hg-paper);color:var(--hg-ink);
+}
+.hg-main p,.hg-main h1,.hg-main h2,.hg-main h3{margin:0}
 
 /* ---- type ---- */
-/* The display face (faces.ts): Song Myung, one weight, on .hg-d only. Its natural leading is 1.25, so
-   1.3 sits right on English headings too; the Korean floors apply to both pages. */
-.hg-d{font-family:var(--font-hg-display),var(--font-r11-pretendard),var(--sq-f-ko);font-weight:400;font-synthesis:none;letter-spacing:0}
-.hg-main .hg-d{letter-spacing:0}
-.hg-main h1{margin-top:10px;font-size:52px;line-height:1.3;text-wrap:balance}
-.hg-main h2{font-size:40px;line-height:1.32;max-width:22em;text-wrap:balance}
-.hg-main h3{font-size:19px;line-height:1.4;letter-spacing:0;font-weight:700}
-@media (max-width:1279px){.hg-main h1{font-size:46px}.hg-main h2{font-size:34px}}
-@media (max-width:1023px){.hg-main h1{font-size:40px}}
-@media (max-width:900px){.hg-main h2{font-size:28px}}
-@media (max-width:639px){.hg-main h1{font-size:28px}}
+/* .hg-main twice over the site's ":where(.sq-root) :lang(ko) h1/h2" (0-1-1) */
+.hg-main .hg-h1{font-size:64px;line-height:1.2;font-weight:760;letter-spacing:-0.025em;text-wrap:balance}
+.hg-main .hg-h2{font-size:44px;line-height:1.25;font-weight:760;letter-spacing:-0.02em;text-wrap:balance}
+@media (max-width:1279px){.hg-main .hg-h1{font-size:56px}.hg-main .hg-h2{font-size:40px}}
+@media (max-width:1023px){.hg-main .hg-h1{font-size:46px}.hg-main .hg-h2{font-size:34px}}
+@media (max-width:639px){.hg-main .hg-h1{font-size:36px;line-height:1.25}.hg-main .hg-h2{font-size:28px;line-height:1.3}}
+.hg-intro{margin-top:16px!important;max-width:40em;font-size:18px;line-height:1.65;color:var(--hg-ink-2)}
 
-.hg-intro{margin-top:16px;font-size:18px;line-height:1.65;color:var(--hg-ink-2);max-width:40em}
-.hg-link{color:var(--hg-ink);text-decoration:underline;text-decoration-color:var(--hg-rule);text-underline-offset:4px;text-decoration-thickness:2px}
-.hg-link:hover{text-decoration-color:currentColor}
+/* ---- hero (B): ink, centred head, the pair of phones ---- */
+.hg-hero{padding:56px 0 96px;background:var(--hg-night);color:var(--hg-night-ink)}
+.hg-hero-head{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:880px;margin:0 auto;text-align:center}
+.hg-kicker{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 10px;font-size:15px;line-height:1.5;color:var(--hg-night-ink-2)}
+.hg-kicker-name{font:600 15px/1.5 var(--sq-f-mono);color:var(--hg-night-ink)}
+.hg-lede{max-width:38em;font-size:18px;line-height:1.65;color:var(--hg-night-ink-2);text-wrap:balance}
+.hg-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px}
+.hg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:var(--sq-r-pill);
+  font-size:16px;line-height:1.3;font-weight:650;white-space:nowrap;transition:background-color .15s,border-color .15s,transform .12s}
+.hg-btn--solid{background:var(--hg-night-ink);color:var(--hg-night)}
+.hg-btn--solid:hover{background:#fff}
+.hg-btn--line{border:1px solid #3a3c42;color:var(--hg-night-ink)}
+.hg-btn--line:hover{border-color:var(--hg-night-ink-2)}
+.hg-btn:active{transform:scale(.98)}
+.hg-btn:focus-visible{outline:2px solid var(--hg-night-ink);outline-offset:3px}
 
-/* ---- sections: each opens like a new leaf, under the top edge of a 광곽 (a thick rule over a thin
-   one); paper and the deeper band tone alternate (hangul-page.tsx decides which) ---- */
-.hg-sec{padding-block:72px 112px}
-.hg-sec>.sq-wrap::before{content:"";display:block;height:7px;margin-bottom:48px;border-top:3px solid var(--hg-ink);border-bottom:1px solid var(--hg-ink)}
-.hg-band{background:var(--hg-paper-2)}
-/* the footer follows the last leaf directly, without a strip of the site's white between them */
+/* the phone: a frame, a screen, the island over the status bar; moa.css scrolls what is inside */
+.hg-phone{width:376px;height:536px;padding:8px;border-radius:48px;
+  background:linear-gradient(160deg,#2c2e33,#151619);
+  box-shadow:0 0 0 1px #34363c,inset 0 0 0 1px rgba(255,255,255,.05),0 48px 80px -48px rgba(0,0,0,.9)}
+.hg-phone-screen{--moa-h:520px;position:relative;height:100%;overflow:hidden;border-radius:40px;background:#f2f4f6;isolation:isolate}
+.hg-phone-screen::before{content:"";position:absolute;z-index:2;top:10px;left:50%;width:92px;height:26px;border-radius:14px;background:#0b0b0c;transform:translateX(-50%)}
+
+/* the rules that differ, lit one after another while the screens scroll (one 18 s cycle) */
+.hg-tags{list-style:none;display:flex;flex-direction:column;gap:10px;margin:64px 0 0;padding:0}
+.hg-tag{padding:10px 14px;border:1px solid var(--hg-night-line);border-radius:12px;font-size:14px;line-height:1.45;color:var(--hg-night-ink-2);text-align:left}
+.hg-tag b{margin-right:4px;font:600 13px/1.45 var(--sq-f-mono);color:var(--hg-night-ink)}
+@keyframes hg-lit{
+  0%,16%,100%{border-color:var(--hg-night-line);color:var(--hg-night-ink-2);background-color:transparent}
+  4%,11%{border-color:#7cb8ff;color:#fff;background-color:rgba(124,184,255,.1)}
+}
+@media (prefers-reduced-motion:no-preference){.hg-tag{animation:hg-lit 18s ease-in-out infinite both}}
+
+/* ---- the pair (split-view.tsx): wide = side by side with the middle column; narrow = one place
+   and a switch ---- */
+.hg-split{margin-top:48px}
+.hg-switch-box{display:none}
+.hg-split-stage{display:grid;grid-template-areas:"b m a";justify-content:center;align-items:start;gap:32px 40px}
+.hg-split--hero .hg-split-stage{grid-template-columns:auto minmax(0,240px) auto}
+.hg-split--chapter .hg-split-stage{grid-template-columns:360px minmax(0,300px) 360px}
+.hg-side{grid-area:b;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0;margin:0}
+.hg-side--after{grid-area:a}
+.hg-split-mid{grid-area:m;min-width:0}
+.hg-side-l{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.5;font-weight:650}
+.hg-side-dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.hg-split--hero .hg-side--before .hg-side-l{color:var(--hg-night-before)}
+.hg-split--hero .hg-side--after .hg-side-l{color:var(--hg-night-after)}
+.hg-split--chapter .hg-side--before .hg-side-l{color:var(--hg-before)}
+.hg-split--chapter .hg-side--after .hg-side-l{color:var(--hg-after)}
+
+.hg-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;max-width:340px;padding:4px;border-radius:var(--sq-r-pill)}
+.hg-switch-btn{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;border-radius:var(--sq-r-pill);
+  font-size:15px;line-height:1.3;font-weight:650;text-align:center;cursor:pointer;transition:background-color .25s,color .25s}
+.hg-switch-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.hg-switch-hint{font-size:13px;line-height:1.5}
+.hg-split--hero .hg-switch{background:var(--hg-night-2)}
+.hg-split--hero .hg-switch-btn{color:#c9cacf}
+.hg-split--hero .hg-switch-btn[data-side="before"][aria-pressed="true"]{background:var(--hg-night-before);color:var(--hg-night)}
+.hg-split--hero .hg-switch-btn[data-side="after"][aria-pressed="true"]{background:var(--hg-night-after);color:var(--hg-night)}
+.hg-split--hero .hg-switch-hint{color:var(--hg-night-ink-2)}
+.hg-split--chapter .hg-switch{background:#f1f1f4;box-shadow:0 8px 24px -14px rgba(18,18,20,.45)}
+.hg-split--chapter .hg-switch-btn{color:var(--hg-ink-2)}
+.hg-split--chapter .hg-switch-btn[data-side="before"][aria-pressed="true"]{background:var(--hg-before);color:#fff}
+.hg-split--chapter .hg-switch-btn[data-side="after"][aria-pressed="true"]{background:var(--hg-after);color:#fff}
+.hg-split--chapter .hg-switch-hint{display:none}
+
+/* ---- chapters ---- */
+.hg-chapter{padding:104px 0 112px}
+.hg-chapter+.hg-chapter{border-top:1px solid var(--hg-line)}
+.hg-ch-head{max-width:760px}
+.hg-eyebrow{margin-bottom:12px!important;font-size:15px;line-height:1.5;font-weight:700;color:var(--hg-after)}
+.hg-split--chapter{margin-top:56px}
+.hg-shot{width:360px;max-width:100%;overflow:hidden;border-radius:28px;box-shadow:0 0 0 1px var(--hg-line),0 28px 56px -36px rgba(18,18,20,.4)}
+.hg-notes{list-style:none;display:grid;gap:12px;margin:44px 0 0;padding:0}
+.hg-note{padding:14px 16px 16px;border-radius:14px;background:var(--hg-well)}
+.hg-note-id{font:600 13px/1.5 var(--sq-f-mono);color:var(--hg-after)}
+.hg-note-t{margin-top:2px!important;font-size:16px;line-height:1.45;font-weight:700}
+.hg-note-b{margin-top:4px!important;font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
+
+/* ---- the 28 rules ---- */
+.hg-rules-sec{padding:104px 0 112px;background:var(--hg-band)}
+.hg-rules-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 64px;margin-top:48px}
+.hg-rules-g{min-width:0}
+.hg-rules-h{font-size:19px;line-height:1.4;font-weight:700}
+.hg-rules{list-style:none;margin:16px 0 0;padding:0;border-top:1.5px solid var(--hg-ink)}
+.hg-rule{display:flex;align-items:baseline;gap:16px;min-width:0;padding:14px 0;border-bottom:1px solid var(--hg-line)}
+.hg-rule-tag{flex:none;width:52px;font:600 14px/1.5 var(--sq-f-mono);color:var(--hg-ink-2)}
+.hg-rule-t{min-width:0;font-size:16px;line-height:1.55}
+
+/* ---- install, back on ink ---- */
+.hg-install{padding:104px 0 112px;background:var(--hg-night);color:var(--hg-night-ink)}
+.hg-inst{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;max-width:760px;min-height:64px;margin-top:32px;padding:10px 10px 10px 22px;
+  border-radius:16px;background:var(--hg-night-2);box-shadow:inset 0 0 0 1px var(--hg-night-line)}
+.hg-inst code{flex:1 1 280px;min-width:0;font-size:16px;line-height:1.5;font-weight:500;color:var(--hg-night-ink)}
+.hg-inst-ps{color:var(--hg-night-ink-2);user-select:none}
+.hg-tok{display:inline-block}
+.hg-inst-copy{all:unset;box-sizing:border-box;flex:none;margin-left:auto;display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:44px;padding:0 16px;
+  border-radius:12px;background:var(--hg-night-ink);color:var(--hg-night);font-size:15px;line-height:1.3;font-weight:650;cursor:pointer;transition:background-color .15s}
+.hg-inst-copy:hover{background:#fff}
+.hg-inst-copy:focus-visible{outline:2px solid var(--hg-night-ink);outline-offset:3px}
+.hg-inst-copy.sq-ok{color:var(--hg-night)}
+.hg-inst-alt{max-width:760px;margin-top:16px!important;font-size:15px;line-height:1.6;color:var(--hg-night-ink-2)}
+.hg-inst-alt-cmd{display:block;margin-top:4px;font-size:15px;line-height:1.6;font-weight:500;color:var(--hg-night-ink)}
+.hg-inst-use{max-width:40em;margin-top:24px!important;font-size:17px;line-height:1.65}
+.hg-more{margin-top:48px}
+.hg-more-h{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-night-ink-2)}
+.hg-more ul{list-style:none;display:grid;max-width:760px;margin:12px 0 0;padding:0;border-bottom:1px solid var(--hg-night-line)}
+.hg-more-a{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;padding:16px 4px;border-top:1px solid var(--hg-night-line);color:inherit;text-decoration:none;transition:background-color .15s}
+.hg-more-a:hover{background:var(--hg-night-2)}
+.hg-more-a:focus-visible{outline:2px solid var(--hg-night-ink);outline-offset:2px}
+.hg-more-k{min-width:6em;font-size:14px;line-height:1.5;font-weight:650;color:var(--hg-night-ink-2)}
+.hg-more-t{min-width:0;font-size:17px;line-height:1.5;font-weight:600;text-decoration:underline;text-decoration-color:#4a4c52;text-underline-offset:4px;text-decoration-thickness:2px}
+.hg-more-a:hover .hg-more-t{text-decoration-color:currentColor}
+.hg-screens-note{margin-top:40px!important;font-size:14px;line-height:1.6;color:var(--hg-night-ink-2)}
+/* the footer follows the ink band directly */
 .hg-root .sq-foot{margin-top:0}
 
-/* ---- hero ---- */
-.hg-hero{padding-top:28px;padding-bottom:16px}
-.hg-hero-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px}
-.hg-hero-copy{flex:1 1 560px;min-width:0}
-.hg-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:15px;line-height:1.5;color:var(--hg-ink-2)}
-.hg-kicker-name{font:600 15px/1.5 var(--sq-f-mono);color:var(--hg-ink)}
-/* the seal: the blank impression (art/seal.webp) with 천지인 as shapes, ㆍ (하늘) ㅡ (땅) ㅣ (사람) */
-.hg-lede{margin-top:14px;font-size:18px;line-height:1.65;color:var(--hg-ink-2);max-width:38em}
-.hg-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:var(--hg-r);background:var(--hg-ink);color:var(--hg-paper);font-size:16px;font-weight:700;white-space:nowrap;transition:background-color .15s,transform .12s}
-.hg-cta:hover{background:var(--sq-primary-hover)}
-.hg-cta:active{background:var(--sq-primary-press);transform:scale(.98)}
-.hg-cta:focus-visible{outline:2px solid var(--hg-ink);outline-offset:3px}
-.hg-cta--m{display:none}
-
-/* ---- the hero demo as one leaf (break-demo.tsx): the result without the skill is the left
-   half-leaf, /hangul the right, the 판심 in the fold, the width control across the foot ---- */
-.hg-demo{position:relative;margin-top:20px}
-.hg-leaf{padding:3px;border:3px solid var(--hg-ink);background:var(--hg-paper)}
-.hg-leaf-in{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);border:1px solid var(--hg-ink)}
-.hg-pane{display:flex;flex-direction:column;gap:8px;min-width:0;margin:0;padding:18px 24px 16px}
-.hg-pane-name{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink)}
-/* fixed height: the phone screen inside is positioned and scaled, so nothing here moves the page */
-.hg-stage{--hg-s:1;position:relative;height:170px;overflow:hidden;background:var(--hg-paper-2)}
-@media (min-width:1240px){.hg-stage{--hg-s:1.25;height:206px}}
-.hg-mark{position:absolute;top:0;left:0;border:2px solid var(--hg-red);border-radius:var(--sq-r-pill);pointer-events:none}
-.hg-read{min-height:1.45em;font-size:19px;line-height:1.45;font-weight:700;color:var(--hg-ink)}
-.hg-read.is-bad{color:var(--hg-red)}
-/* a proofreader's ○: nothing to mark */
-.hg-read.is-good::before{content:"";display:inline-block;width:.6em;height:.6em;margin-right:.4em;border:2px solid currentColor;border-radius:50%;vertical-align:-.02em}
-.hg-code{min-height:calc(3.2em + 11px);margin:0;padding-top:10px;border-top:1px solid var(--hg-rule);font-size:14px;line-height:1.6;font-weight:500;color:var(--hg-ink);white-space:pre-wrap;overflow-wrap:anywhere}
-
-/* 판심: ruled on both sides, an inward-facing black 어미 at each end, the 판심제 set vertically */
-.hg-pansim{display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-width:0;border-inline:1px solid var(--hg-ink)}
-.hg-eomi{flex:none;display:block;width:100%;height:30px;background:var(--hg-ink)}
-.hg-eomi--top{clip-path:polygon(0 0,100% 0,100% 100%,50% 42%,0 100%)}
-.hg-eomi--bottom{clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
-.hg-pansim-t{writing-mode:vertical-rl;font-size:20px;line-height:1.3;color:var(--hg-ink)}
-.hg-pansim-t>span{display:inline-block}
-.hg-pansim-t>span+span{margin-inline-start:.35em}
-.hg-pansim-t>.hg-pansim-sp{inline-size:.5em}
-
-/* the width control across the foot of the leaf */
-.hg-ctl{grid-column:1/-1;display:grid;gap:6px;padding:14px 24px 12px;border-top:1px solid var(--hg-ink)}
-.hg-ctl-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px}
-.hg-ctl-l{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink)}
-.hg-width-v{display:inline-flex;align-items:baseline;gap:10px;white-space:nowrap}
-.hg-width-v output{font:600 15px/1.5 var(--sq-f-mono);color:var(--hg-ink)}
-.hg-scale{display:inline-block;min-width:6.8em;font-size:14px;line-height:1.5;text-align:right;color:var(--hg-ink-2)}
-.hg-map{display:grid;gap:6px}
-/* label · the 111 widths · count; the rail and the ticks sit in the widths' column */
-.hg-row{display:grid;grid-template-columns:72px minmax(0,1fr) 64px;align-items:center;column-gap:16px}
-.hg-map-k{font-size:14px;line-height:1.5;color:var(--hg-ink-2);white-space:nowrap}
-/* 계선: one column rule per width, pale where the heading holds, vermilion where a word breaks */
-.hg-cells{display:flex;height:24px;cursor:pointer;touch-action:pan-y}
-.hg-cell{flex:1 1 0;min-width:0;background:linear-gradient(var(--hg-rule),var(--hg-rule)) 50% 0/1px 100% no-repeat}
-.hg-cell.is-broken{background-image:linear-gradient(var(--hg-red),var(--hg-red));background-size:2px 100%}
-.hg-cell.is-now{background-image:linear-gradient(var(--hg-ink),var(--hg-ink));background-size:3px 100%}
-.hg-map-n{font-size:15px;line-height:1.5;font-weight:650;text-align:right;color:var(--hg-ink)}
-.hg-map-n small{font-size:inherit;font-weight:500;color:var(--hg-ink-2)}
-/* the rail runs under the rules, so the thumb never hides a width: it is the widths' column plus a
-   thumb's radius less half a width on each side, so each thumb position sits under its own rule */
-.hg-rail,.hg-ticks{grid-column:2}
-.hg-rail{position:relative;margin-inline:calc(-22px + 100% / 222)}
-.hg-range{display:block;width:100%;height:44px;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer;touch-action:pan-y}
-.hg-range::-webkit-slider-runnable-track{height:2px;border-radius:1px;background:var(--hg-rule)}
-.hg-range::-moz-range-track{height:2px;border-radius:1px;background:var(--hg-rule)}
-.hg-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:44px;height:44px;margin-top:-21px;border:0;border-radius:50%;background:linear-gradient(var(--hg-paper),var(--hg-paper)) 50%/2px 18px no-repeat var(--hg-ink)}
-.hg-range::-moz-range-thumb{width:44px;height:44px;border:0;border-radius:50%;background:linear-gradient(var(--hg-paper),var(--hg-paper)) 50%/2px 18px no-repeat var(--hg-ink)}
-.hg-range:focus-visible{outline:none}
-.hg-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--hg-paper),0 0 0 5px var(--hg-ink)}
-.hg-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 3px var(--hg-paper),0 0 0 5px var(--hg-ink)}
-/* the chip and the hand ride the thumb. The inner box is as long as the thumb's track, set to the left
-   of it and translated right by the slider's position, so its right edge is always the thumb's centre
-   and nothing it holds reaches past the rail. Only transforms move them (flip included): riding the
-   thumb is never a layout shift. */
-.hg-follow{position:absolute;top:0;bottom:0;left:22px;right:22px;pointer-events:none}
-.hg-follow-in{position:absolute;top:0;bottom:0;right:100%;width:100%;transform:translateX(calc(var(--p) * 100%))}
-.hg-chip{position:absolute;top:50%;left:calc(100% + 32px);display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1.5px solid var(--hg-ink);border-radius:var(--sq-r-pill);background:var(--hg-paper);font-size:14px;line-height:1.3;font-weight:650;color:var(--hg-ink);white-space:nowrap;transform:translateY(-50%)}
-.is-flip .hg-chip{transform:translate(calc(-100% - 64px),-50%)}
-.is-touched .hg-chip{opacity:0;visibility:hidden}
-.hg-hand{position:absolute;left:calc(100% + 4px);top:24px;width:26px;height:26px;color:var(--hg-ink);opacity:0}
-.hg-hand path{stroke:var(--hg-paper)}
-.is-playing .hg-hand{opacity:1}
-.hg-ticks{position:relative;height:20px;font:500 13px/20px var(--sq-f-mono);color:var(--hg-ink-2)}
-.hg-ticks span{position:absolute;top:0;left:calc(100% / 222 + var(--p) * (100% - 100% / 111));transform:translateX(-50%);white-space:nowrap}
-.hg-sum{margin-top:14px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:60em}
-.hg-note{margin-top:6px;font-size:14px;line-height:1.6;color:var(--hg-ink-2);max-width:60em}
-
-/* ---- why: three specimens, each a small frame with its own switch ---- */
-.hg-cards{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:48px}
-.hg-card{min-width:0}
-.hg-tg-stage{display:flex;flex-direction:column;height:280px;overflow:hidden;border:1px solid var(--hg-ink);background:var(--hg-paper-2)}
-.hg-band .hg-tg-stage{background:var(--hg-paper)}
-.hg-tg-spec{flex:1;display:grid;place-items:center;min-height:0;padding:20px 16px;overflow:hidden}
-.hg-tg-val{flex:none;min-height:calc(3em + 24px);padding:12px 16px;border-top:1px solid var(--hg-rule);font-size:14px;line-height:1.5;color:var(--hg-ink-2);font-variant-numeric:tabular-nums}
-.hg-seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px;border:1px solid var(--hg-ink);border-radius:var(--hg-r);overflow:hidden}
-.hg-seg-btn{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;font-size:15px;line-height:1.4;font-weight:650;text-align:center;color:var(--hg-ink-2);cursor:pointer;transition:background-color .15s,color .15s}
-.hg-seg-btn+.hg-seg-btn{border-left:1px solid var(--hg-ink)}
-.hg-seg-btn:hover{color:var(--hg-ink);background:var(--hg-cell)}
-.hg-seg-btn[aria-pressed="true"]{background:var(--hg-ink);color:var(--hg-paper)}
-.hg-seg-btn:focus-visible{outline:2px solid var(--hg-ink);outline-offset:-5px;box-shadow:inset 0 0 0 3px var(--hg-paper)}
-.hg-rule-id{margin-top:24px;font:600 14px/1.5 var(--sq-f-mono);color:var(--hg-ink-2)}
-.hg-card h3{margin-top:4px}
-.hg-card-body{margin-top:8px;font-size:16px;line-height:1.65;color:var(--hg-ink-2)}
-.hg-foot-note{margin-top:48px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:48em}
-
-/* ---- eval: one statement, two figures, ruled like a printed table ---- */
-
-/* ---- launch content (asset-sections.tsx) ---- */
-.hg-shots{display:grid;gap:40px;margin-top:40px}
-.hg-shot{margin:0;min-width:0}
-.hg-shot-k{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink)}
-.hg-shot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:10px}
-.hg-shot--phone .hg-shot-pair{max-width:600px}
-.hg-shot-side{min-width:0}
-.hg-shot-l{margin-bottom:6px;font-size:14px;line-height:1.5;color:var(--hg-ink-2)}
-.hg-shot-a{display:block;border-radius:var(--hg-r)}
-.hg-shot-a:focus-visible{outline:2px solid var(--hg-ink);outline-offset:3px}
-.hg-shot-img{display:block;width:100%;height:auto;border-radius:var(--hg-r);background:var(--hg-cell);box-shadow:0 0 0 1px var(--hg-ink)}
-.hg-video{margin:48px 0 0;max-width:880px}
-.hg-video-h{margin-bottom:12px}
-.hg-video-el{display:block;width:100%;height:auto;border-radius:var(--hg-r);background:var(--hg-cell);box-shadow:0 0 0 1px var(--hg-ink)}
-.hg-video-c{margin-top:10px;font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
-
-/* ---- writing: proof slips. The agent's string with the faulty part marked in 주색, as a proofreader
-   would, and the rewrite under it; the writing eval closes the section like the typography one ---- */
-.hg-fixes{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 56px;margin-top:40px}
-.hg-fix{min-width:0;padding-top:16px;border-top:3px solid var(--hg-ink)}
-.hg-fix-where{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
-.hg-fix-where .hg-rule-tag{width:auto}
-.hg-fix-row{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;margin-top:12px;font-size:18px;line-height:1.6;color:var(--hg-ink);word-break:keep-all;overflow-wrap:anywhere}
-.hg-fix-row--before{color:var(--hg-ink-2)}
-.hg-fix-k{font-size:14px;line-height:2;font-weight:650;color:var(--hg-ink-2)}
-.hg-fix-t{min-width:0}
-.hg-fix-mark{background:none;color:var(--hg-red);text-decoration:underline wavy var(--hg-red);text-decoration-thickness:1.5px;text-underline-offset:5px}
-.hg-fix-why{margin-top:12px;padding-top:12px;border-top:1px solid var(--hg-rule);font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
-.hg-fix-note{margin-top:24px;font-size:15px;line-height:1.6;color:var(--hg-ink-2);max-width:44em}
-
-/* ---- rules: fourteen lines in two columns, a 계선 between them ---- */
-.hg-rules-g{margin-top:48px}
-.hg-rules-g+.hg-rules-g{margin-top:56px}
-.hg-rules-h{font-size:19px;line-height:1.4}
-.hg-rules{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(7,auto);grid-auto-flow:column;column-gap:64px;margin-top:16px;border-bottom:1px solid var(--hg-ink);background:linear-gradient(var(--hg-rule),var(--hg-rule)) 50% 0/1px 100% no-repeat}
-.hg-rule{display:flex;align-items:baseline;gap:16px;min-width:0;padding:16px 0;border-top:1px solid var(--hg-rule)}
-.hg-rule:nth-child(1),.hg-rule:nth-child(8){border-top-color:var(--hg-ink)}
-.hg-rule-tag{flex:none;width:56px;font:600 14px/1.5 var(--sq-f-mono);color:var(--hg-ink-2)}
-.hg-rule-t{min-width:0;font-size:17px;line-height:1.55;color:var(--hg-ink)}
-
-/* ---- install: one copy box, printed solid from the block (art/woodblock-ink.webp) ---- */
-.hg-inst{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;max-width:760px;min-height:64px;margin-top:32px;padding:10px 10px 10px 22px;border-radius:var(--hg-r);background:url(/hangul/art/woodblock-ink.webp) 0 0/256px 256px repeat var(--hg-ink);color:var(--hg-paper)}
-.hg-inst code{flex:1 1 280px;min-width:0;font-size:16px;line-height:1.5;font-weight:500}
-.hg-inst-ps{color:var(--hg-rule);user-select:none}
-.hg-tok{display:inline-block}
-.hg-inst-copy{all:unset;box-sizing:border-box;flex:none;margin-left:auto;display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:44px;padding:0 16px;border-radius:var(--hg-r);background:var(--hg-paper);color:var(--hg-ink);font-size:15px;line-height:1.3;font-weight:650;cursor:pointer;transition:background-color .15s}
-.hg-inst-copy:hover{background:var(--hg-paper-2)}
-.hg-inst-copy:focus-visible{outline:2px solid var(--hg-paper);outline-offset:3px}
-.hg-inst-copy.sq-ok{color:var(--hg-ink)}
-.hg-inst-alt{max-width:760px;margin-top:16px;font-size:15px;line-height:1.6;color:var(--hg-ink-2)}
-.hg-inst-alt-cmd{display:block;margin-top:4px;font-size:15px;line-height:1.6;font-weight:500;color:var(--hg-ink)}
-.hg-inst-use{max-width:40em;margin-top:24px;font-size:17px;line-height:1.65;color:var(--hg-ink)}
-.hg-more{margin-top:48px}
-.hg-more-h{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
-.hg-more ul{list-style:none;display:grid;max-width:760px;margin-top:12px;border-bottom:1px solid var(--hg-rule)}
-.hg-more-a{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;padding:16px 4px;border-top:1px solid var(--hg-rule);transition:background-color .15s}
-.hg-more li:first-child .hg-more-a{border-top-color:var(--hg-ink)}
-.hg-more-a:hover{background:var(--hg-cell)}
-.hg-more-a:focus-visible{outline:2px solid var(--hg-ink);outline-offset:2px}
-.hg-more-k{min-width:6em;font-size:14px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
-.hg-more-t{min-width:0;font-size:17px;line-height:1.5;font-weight:600;color:var(--hg-ink);text-decoration:underline;text-decoration-color:var(--hg-rule);text-underline-offset:4px;text-decoration-thickness:2px}
-.hg-more-a:hover .hg-more-t{text-decoration-color:currentColor}
-
-@media (prefers-reduced-motion:no-preference){
-  .hg-mark{transition:transform .12s ease-out,width .12s ease-out,height .12s ease-out}
-  .hg-chip{transition:opacity .2s ease-out,visibility .2s}
-  .hg-hand{transition:opacity .2s ease-out}
-}
 @media (prefers-reduced-motion:reduce){
-  .hg-cta,.hg-seg-btn,.hg-inst-copy,.hg-more-a{transition:none}
+  .hg-btn,.hg-switch-btn,.hg-inst-copy,.hg-more-a{transition:none}
 }
 
-/* ---- narrow desktops and tablets ---- */
-@media (max-width:1100px){
-  .hg-cards{grid-template-columns:minmax(0,1fr);max-width:560px}
+/* ---- the chapter pair loses its middle column first, then the hero's ---- */
+@media (max-width:1199px){
+  .hg-split--chapter .hg-split-stage{grid-template-columns:360px 360px;grid-template-areas:"b a" "m m"}
+  .hg-split--chapter .hg-notes{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px;margin:8px auto 0}
+}
+@media (max-width:1151px){
+  .hg-split--hero .hg-split-stage{grid-template-columns:auto auto;grid-template-areas:"b a" "m m"}
+  .hg-split--hero .hg-tags{flex-direction:row;flex-wrap:wrap;justify-content:center;max-width:760px;margin:0 auto}
 }
 
-/* ---- phones: the two results stack with the 판심 as a band between them; both stay in the first screen ---- */
-@media (max-width:900px){
-  .hg-sec{padding-block:56px 80px}
-  .hg-sec>.sq-wrap::before{margin-bottom:32px}
-  .hg-hero{padding-top:14px}
-  .hg-hero-top{flex-direction:column;align-items:stretch;gap:0}
-  .hg-hero-copy{flex:none}
-  .hg-lede{font-size:16px;line-height:1.6;margin-top:12px}
-  .hg-hero-top .hg-cta{display:none}
-  .hg-cta--m{display:flex;margin-top:20px}
-  .hg-intro{font-size:16px}
-  .hg-demo{margin-top:16px}
-  .hg-leaf{padding:2px;border-width:2px}
-  .hg-leaf-in{grid-template-columns:minmax(0,1fr)}
-  .hg-pane{gap:6px;padding:10px 12px}
-  /* the screen spans the leaf, so it is shown as close to actual size as a phone allows */
-  .hg-stage{height:116px;margin-inline:-12px}
-  .hg-read{font-size:17px}
-  .hg-code{min-height:0}
-  .hg-pane:first-child .hg-code{display:none}
-  .hg-pansim{flex-direction:row;height:26px;border-inline:0;border-block:1px solid var(--hg-ink)}
-  .hg-eomi{width:28px;height:100%}
-  .hg-eomi--top{clip-path:polygon(0 0,100% 0,42% 50%,100% 100%,0 100%)}
-  .hg-eomi--bottom{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,58% 50%)}
-  .hg-pansim-t{writing-mode:horizontal-tb;font-size:15px;line-height:1.3}
-  .hg-ctl{padding:12px 12px 10px}
-  /* label and count on one line, the 111 widths under them; rail and ticks inset by a thumb's radius */
-  .hg-row{grid-template-columns:minmax(0,1fr) auto;row-gap:4px;column-gap:12px}
-  .hg-cells{grid-column:1/-1;order:3;height:22px;margin-inline:20px}
-  .hg-rail,.hg-ticks{grid-column:1/-1}
-  .hg-rail{margin-inline:calc(20px - 22px + (100% - 40px) / 222)}
-  .hg-ticks{margin-inline:20px}
-  .hg-rules{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row;background:none}
-  .hg-fixes{grid-template-columns:minmax(0,1fr)}
-  .hg-fix-row{grid-template-columns:minmax(0,1fr);gap:2px;font-size:17px}
-  .hg-rule:nth-child(8){border-top-color:var(--hg-rule)}
+/* ---- phones and small tablets (mobile B): one screen, a switch above it ---- */
+@media (max-width:879px){
+  .hg-hero{padding:32px 0 64px}
+  .hg-hero-head{gap:14px}
+  .hg-kicker,.hg-kicker-name{font-size:14px}
+  .hg-lede{font-size:16px;line-height:1.6}
+  .hg-intro{font-size:16px;line-height:1.6}
+  .hg-split{margin-top:32px}
+  .hg-switch-box{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:16px}
+  .hg-split--chapter .hg-switch-box{position:sticky;top:calc(var(--sq-header-h,56px) + 8px);z-index:3}
+  .hg-split-stage,.hg-split--hero .hg-split-stage,.hg-split--chapter .hg-split-stage{grid-template-columns:minmax(0,1fr);grid-template-areas:"s" "m";gap:24px}
+  .hg-side,.hg-side--after{grid-area:s;transition:opacity .45s ease}
+  .hg-split[data-side="before"] .hg-side--after,.hg-split[data-side="after"] .hg-side--before{opacity:0;pointer-events:none}
+  .hg-side-l{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .hg-phone{width:340px;max-width:100%;height:500px;border-radius:44px}
+  .hg-phone-screen{--moa-h:484px;border-radius:36px}
+  .hg-split--hero .hg-tags{gap:6px;max-width:400px}
+  .hg-split--hero .hg-tag{padding:4px 10px;border-radius:var(--sq-r-pill);font-size:13px}
+  .hg-split--hero .hg-tag b{font-size:12px}
+  .hg-chapter,.hg-rules-sec,.hg-install{padding:64px 0 72px}
+  .hg-split--chapter{margin-top:32px}
+  .hg-split--chapter .hg-notes{grid-template-columns:minmax(0,1fr);margin:0}
+  .hg-rules-cols{grid-template-columns:minmax(0,1fr)}
   .hg-inst{padding-left:14px}
   .hg-inst code{font-size:15px}
 }
+@media (prefers-reduced-motion:reduce){.hg-side{transition:none}}
