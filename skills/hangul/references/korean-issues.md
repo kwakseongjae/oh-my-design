@@ -163,6 +163,14 @@ Each entry: ✗ → ✓, then what reports it and what to watch. IDs in parenthe
 - **Antithesis and transformation** (AI04). ✗ `단순한 메신저를 넘어 일하는 방식의 플랫폼으로 진화합니다.` → ✓ `메신저에 결재와 일정 기능을 더했습니다.` *HW-D4* for `A가 아니라 B` three or more times in one document. A real correction (`환불이 아니라 교환만 됩니다`) carries information.
 - **Empty release notes.** ✗ `버그 수정 및 성능 개선` → ✓ name the bug and what changed. *HW-D3 FYI.*
 
+### Invented facts (round 2)
+
+A cross-family fact audit read every round-2 document against its request. It counted claims the request doesn't state: features, steps, policies, dates, contacts and promises.
+
+- **How many.** Without the skill: 6.5 per document. With it: 5.3.
+- **Examples.** `빈 시간이 생기면 알려 드릴게요` with a `빈 시간 알림 받기` button for a feature nobody mentioned; `25일 밝혔다` in a press release with no date given; `구청 민원실로 문의해 주세요` with no contact given.
+- **Fix.** Use a variable in UI strings (`{date}`). Use a visible `○○○` where a document's convention needs the value. List assumptions in the reply (SKILL.md §1).
+
 ### Drafting debris (DOC)
 
 The 2026-10-25 test found these in 8 of 22 documents. A drafting agent writes them for the person who asked for the document, and the document's readers see them:

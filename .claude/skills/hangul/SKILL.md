@@ -62,6 +62,8 @@ The first time this skill runs in a conversation, open with this line, verbatim.
 - **Restraint.** Change only what breaks a rule below. If nothing does, say so and change nothing. Zero changes is a successful run.
 - **No invented numbers or facts.** Every value comes from this file or `references/`.
   - Don't invent the cause of an error, a benefit or a figure. If you don't know it, ask, or say what's missing.
+  - Don't invent a feature, a step, a policy, a date, a contact or a promise to make copy feel complete. ✗ `빈 시간이 생기면 알려 드릴게요` when no such alert exists, `구청 민원실로 문의해 주세요` when no contact was given.
+  - Write what the request states. For a value a screen needs, use a variable (`{date}`, `{contact}`). In a document, use a visible `○○○` where the convention needs the value (§5 step 5). List every assumption in your reply. In the 2026-10-25 test, both arms added about five such claims per document.
   - If a case isn't covered, say it isn't.
 - Explanations and the Before/After/Why table are in the user's language: Korean for Korean text.
 
@@ -368,7 +370,7 @@ UI strings. For documents, the situation's card in `references/situations.md` pl
    
    For text someone already wrote, list Before/After and apply only what the user approves.
 5. **Never deliver a note to the writer** (HW-D1). For a value you don't have (a name, a date, a figure, an address), ask.
-   - If you can't ask, keep a visible `○○○` only for a name the convention needs (a quote's speaker, a signature), and list every slot in your reply.
+   - If you can't ask, keep a visible `○○○` only where the convention needs the value (a quote's speaker, a signature, a press release's announcement date), and list every slot in your reply.
    - An unknown detail of a figure (its period, its base, its source) is a question for your reply, never a mark in the document: write `이탈률 1.2%`, and ask in the reply whether it is monthly.
    - Otherwise leave the value out and say so.
    - Never invent the value, and never drop a conventional element because its value is missing.
