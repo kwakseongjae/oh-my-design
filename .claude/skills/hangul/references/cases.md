@@ -141,7 +141,7 @@ The same eleven requests went to the same writer, with `/hangul` in the folder a
 |---|---|---|---|
 | Documents | 22 | 22 | 6 (deck, e-mail, press × 2) |
 | Turns allowed | 20 | 40 | 40 |
-| Tools | file edits only | file edits, and `node` so it could run `copy-check.mjs` | same as B′ |
+| Tools | file edits; Bash was not pre-approved, so non-interactive mode denied it | file edits, and `node` pre-approved so it could run `copy-check.mjs` | same as B′ |
 | Writer cost | $0.92 | $4.29 | $1.24 |
 
 The editor's cost was not recorded.

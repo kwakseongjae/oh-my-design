@@ -1,6 +1,6 @@
 ---
 name: omd:humanize
-description: "제품 문서·UX 카피·랜딩 카피를 KO/EN/JA/ZH-CN/ZH-TW 각 언어의 자연스러운 문장으로 다듬되 사실·수치·명령어·링크·브랜드 voice를 보존한다. 'AI 티 없애줘', '번역투 고쳐줘', '문장이 기계적이야', '현지 사용자처럼 다듬어줘', 'humanize this copy' 요청에 사용한다. 한국어만 쓰거나 다듬는 일(화면 문구, 보고서·피치덱·공지·이메일·보도자료 같은 문서, 번역투·맞춤법·띄어쓰기·높임)은 길이와 상관없이 hangul 스킬이 맡고, 여러 locale을 함께 다듬을 때 한국어 부분은 hangul의 규칙을 따른다. AI 작성 여부를 판정하거나 탐지 회피를 약속하지 않는다."
+description: "제품 문서·UX 카피·랜딩 카피를 KO/EN/JA/ZH-CN/ZH-TW 각 언어의 자연스러운 문장으로 다듬되 사실·수치·명령어·링크·브랜드 voice를 보존한다. 영어·일본어·중국어 문장이나 여러 locale을 함께 다듬는 'AI 티 없애줘', '번역투 고쳐줘', '문장이 기계적이야', '현지 사용자처럼 다듬어줘', 'humanize this copy' 요청에 사용한다. 한국어만 쓰거나 다듬는 일(화면 문구, 보고서·피치덱·공지·이메일·보도자료 같은 문서, 번역투·맞춤법·띄어쓰기·높임)은 길이와 상관없이 hangul 스킬이 맡고, 여러 locale을 함께 다듬을 때 한국어 부분은 hangul의 규칙을 따른다. AI 작성 여부를 판정하거나 탐지 회피를 약속하지 않는다."
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

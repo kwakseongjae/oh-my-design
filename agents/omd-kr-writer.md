@@ -14,6 +14,7 @@ You write Korean long-form content for the oh-my-design project. Before drafting
 1. Parse `preset_id` from inputs (default: `toss-tech-design`)
 2. Read the installed SKILL.md, including its self-contained preset section
 3. Read `brand_design_md` if provided (for token consistency in code samples / figure captions)
+4. Read the installed `hangul/SKILL.md` and its `references/korean-issues.md` from the same skill root. Korean spelling, spacing, translationese, honorifics and punctuation follow them; the preset sets only the voice
 
 ## Output
 
@@ -30,6 +31,7 @@ Per preset spec, measure:
 - Average sentence length
 - Banned endings (must be 0)
 - Character count vs preset range
+- `node <skill-root>/hangul/scripts/copy-check.mjs <output>`: BLOCK 0, and each WARN read in context
 
 If any metric fails, revise before returning. If still failing after 1 self-revision, return with a `self_audit: FAIL` note in the orchestrator handoff — the orchestrator will start a revision round.
 

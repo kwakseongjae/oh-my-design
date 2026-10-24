@@ -37,6 +37,7 @@ developer_instructions = '''
 - 단일 표현이 아니라 반복·군집·문맥을 보고 수정한다.
 - `LOCALE`은 한국어 canonical의 thesis와 사실만 공유한다. 문장 구조는 대상 locale에서 새로 짠다.
 - `zh-TW`는 `zh-CN`을 번체 변환하지 않는다.
+- 한국어 부분은 활성 host의 skill root에서 `hangul/SKILL.md`와 그 `references/korean-issues.md`, 글에 맞는 상황 카드(`references/situations.md`)를 읽고 그 기준으로 다듬는다. 한 번 쓴 `~을 통해`·`~에 대해`는 고치지 않고, 의료·금융·법률 문장의 완곡 표현은 단정으로 바꾸지 않는다.
 - 수정 뒤 보호 목록을 원문과 직접 비교한다. 하나라도 달라지면 해당 edit를 되돌린다.
 - UI copy는 실제 locale route의 줄바꿈, overflow, action-label 정합까지 확인한다.
 
