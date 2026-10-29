@@ -26,6 +26,9 @@
  *            compared per control, breadth-first) · --up N (ancestor levels compared; default 3; a cfg control may carry "up")
  *            --out file.json [--quiet: JSON only to the file] · --summary (a readable verdict per state on stderr, also with --quiet)
  *            --hide-overlays · --no-focus · --no-mouse
+ *            --close "<css>[,<css>…]" (after the consent step, clicks the first visible match of each selector once: the close
+ *            button of a region, newsletter or promo dialog that traps focus. Never an Accept, Confirm or country choice.
+ *            Recorded in boot.closed; the scroll video page does not repeat it.)
  *            --browser headless|worker (default headless; worker opens headed Chrome with its own UA and a fresh temporary
  *            profile, never the owner's profile; locale, viewport, Accept-Language and launch args stay the same)
  *            --shots dir (opt-in PNG crops: <key>-rest/hover/pressed/focus.png, 12px padding clamped to the viewport;
@@ -123,7 +126,7 @@ import { chromium } from "playwright-core";
 // ───────────────────────────── arguments ─────────────────────────────
 const argv = process.argv.slice(2);
 const url = argv.find((a) => /^https?:\/\//.test(a));
-const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual"]);
+const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual", "close"]);
 const PER_CONTROL = new Set(["nth", "tag", "landmark", "min-height", "exact", "key", "label", "href"]);
 const g = {};
 const cli = [];
@@ -1203,6 +1206,7 @@ function summaryText() {
   const b = result.boot;
   const L = [`# ${result.tool} ${url} -> ${b.finalUrl ?? "?"} status=${b.status ?? "?"} tabs=${result.tabsPressed ?? "-"} walkStop=${result.walkStop ?? "-"} reReads=${result.tabReReads ?? "-"} elapsed=${b.elapsedMs}ms${b.watchdog ? ` WATCHDOG=${b.watchdog}` : ""}${b.block ? " BLOCKED" : ""}`];
   if (b.consent?.rejectedVia) L.push(`# consent rejected via ${b.consent.rejectedVia}`);
+  for (const c of b.closed ?? []) L.push(`# closed ${c.selector}: ${c.clicked ?? "no visible match"}`);
   for (const [k, R] of Object.entries(result.controls)) {
     if (!R.found) { L.push(`${k}: NOT FOUND — ${R.hover?.unmeasured ?? ""}`); continue; }
     const id = R.identity ?? {};
@@ -1225,6 +1229,19 @@ async function main() {
   page = await loadWithRetries();
   const consent = await page.evaluate(consentFn).catch(() => null);
   if (consent) { await sleep(1500); await page.waitForLoadState("load").catch(() => {}); await sleep(Math.min(WAIT, 4000)); }
+  if (g.close) {
+    result.boot.closed = [];
+    for (const sel of String(g.close).split(",").map((x) => x.trim()).filter(Boolean)) {
+      const hit = await page.evaluate((q) => {
+        const b = [...document.querySelectorAll(q)].find((e) => e.getClientRects().length);
+        if (!b) return null;
+        b.click();
+        return (b.getAttribute("aria-label") || b.textContent || "").trim().slice(0, 60) || b.tagName.toLowerCase();
+      }, sel).catch((e) => `error: ${String(e?.message ?? e).split("\n")[0].slice(0, 100)}`);
+      result.boot.closed.push({ selector: sel, clicked: hit });
+      if (hit && !hit.startsWith("error:")) await sleep(1200);
+    }
+  }
   result.boot.consent = { rejectedVia: consent, fixedElementsAfter: await page.evaluate(() => window.__omdKb?.fixedInventory?.() ?? []).catch(() => []) };
 
   if (g.survey) {
