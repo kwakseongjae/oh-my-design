@@ -1,6 +1,6 @@
 # oh-my-design
 
-> 把带质量等级的设计依据交给 AI 编程代理的开源工作流。Claude Code、Codex、OpenCode 可安装完整套件的 31 个技能和 20 个智能体定义；Cursor 2.4+ 会获得 30 个兼容 Agent Skills、精简的项目 rule 与本地目录，但不安装 OmD 子代理或 hooks。525 份带质量等级的 DESIGN.md 中 verified_v2 303 份、partial 109 份、legacy 113 份；公开演示请使用 verified_v2。
+> 把带质量等级的设计依据交给 AI 编程代理的开源工作流。Claude Code、Codex、OpenCode 可安装完整套件的 31 个技能和 20 个智能体定义；Cursor 2.4+ 会获得 30 个兼容 Agent Skills、精简的项目 rule 与本地目录，但不安装 OmD 子代理或 hooks。526 份带质量等级的 DESIGN.md 中 verified_v2 304 份、partial 109 份、legacy 113 份；公开演示请使用 verified_v2。
 
 `npx skills add kwakseongjae/oh-my-design` 列出的是 10 个公开技能（`omd-init`、`omd-apply`、`omd-autopilot`、`omd-feel`、`omd-restraint`、`omd-slop-audit`、`omd-humanize`、`omd-landing`、`omd-shader-hero`、`omd-cjk-type-shader`）。其余是工作流自行调用的内部技能，仍包含在完整套件中并正常运行。
 

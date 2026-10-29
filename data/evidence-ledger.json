@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 303,
-  "sources": 2014,
+  "references_with_verification_v2": 304,
+  "sources": 2024,
   "sources_by_kind": {
     "brand-asset": 81,
     "license": 137,
-    "official-doc": 750,
-    "product-surface": 1046
+    "official-doc": 757,
+    "product-surface": 1049
   },
   "references": {
     "104": {
@@ -10850,6 +10850,72 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.shinhancard.com"
+        }
+      ]
+    },
+    "sixt": {
+      "checked": "2026-10-29",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-campaign",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "brand-refresh",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "brand-rollout",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "company-faq",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-10-29",
+          "host": "www.sixt.de"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "group-imprint",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "about.sixt.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-10-29",
+          "host": "www.sixt.de"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.sixt.de"
         }
       ]
     },

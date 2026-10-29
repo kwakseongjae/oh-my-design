@@ -4,7 +4,7 @@
 // SUBAGENT_COUNT = agents/omd-*.md (mirrors install-skills.ts's agent filter).
 // REFERENCE_COUNT = REGISTRY.length, emitted as a literal so client components can
 // print the count without bundling the 2 MB registry.
-export const REFERENCE_COUNT = 525;
+export const REFERENCE_COUNT = 526;
 export const SKILL_COUNT = 31;
 export const PUBLIC_SKILL_COUNT = 10;
 export const SUBAGENT_COUNT = 20;

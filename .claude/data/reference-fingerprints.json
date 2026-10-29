@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 525,
+ "count": 526,
  "items": [
   {
    "id": "104",
@@ -10062,6 +10062,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "sixt",
+   "primary_color_hex": "#ff5000",
+   "category": "automotive",
+   "visual_theme": "SIXT's German rental homepage: a close-up vehicle photo behind a white horizontal booking panel, an orange #ff5000 'Autos anzeigen' CTA, then a full-width orange headline band of condensed uppercase HelveticaNow black in near-black #1a1a1a, photographic offer cards and a dark footer. The CTA keeps its orange and darkens through a 4% then 8% ::after layer; nav links slide an underline in; keyboard focus is a 3px orange box-shadow ring.",
+   "voice_fingerprint": {
+    "register": "premium car rental, direct booking labels with playful campaign headlines",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-retail"
+   },
+   "tone_keywords": [
+    "premium",
+    "orange",
+    "bold",
+    "condensed",
+    "photographic"
+   ],
+   "antipatterns": [
+    "changing the CTA's background on hover; it lays a 4% dark layer over the orange",
+    "the browser's outline for focus; focus is a 3px orange box-shadow",
+    "framing the inner location input; the wrapper carries the border and the inset focus ring",
+    "a substitute grotesque for HelveticaNow; none is chosen",
+    "one light palette; the tokens have prime, option (dark) and accent (orange) contexts"
+   ],
+   "has_personas": false,
+   "category_raw": "car rental"
   },
   {
    "id": "sktelecom",
