@@ -200,7 +200,7 @@ Five controls were measured at 1440×1000, `en-US`, on the public homepage. Valu
 | “Accounting” app tile | Anchor 146.7×133px; radius 0; padding 0; Inter 16px/600; transparent over `#f3f4f6`, anchor color `#714b67`; visible caption 14px/600 `#111827` | Anchor color `#432c3d`; `translateY(-4px)`; caption stays `#111827` | Same measured result as hover | Browser `auto` outline only; no brand focus token |
 | Header “Try it free” | 90×36px; radius 4.8px; padding 8px 16px; Inter 12px/600; bg `#714b67`, fg `#ffffff`; 1px `#714b67` border | bg `#604058`; border `#5a3c52` | bg `#5a3c52`; border `#55384d` | Hover colours plus the primary 4px shadow |
 
-Both purple CTAs and the advisor control retain **`linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0))`** in every measured state. Their resting shadows are `none`. The white labels on the two purple CTAs remain white. The Accounting image is **80×80px**, with a white background and the shadow described in §6. Its outer link is square; this does not describe the image's corner radius.
+Both purple CTAs and the advisor control retain **`linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0))`** in every measured state. Their resting shadows are `none`. The white labels on the two purple CTAs remain white. The Accounting image is **80×80px**, with a white background and the shadow described under Elevation & Depth. Its outer link is square; this does not describe the image's corner radius.
 
 The survey also measured the lower-page CTA at **61px high**, radius **8px**, padding **16px 32px**, Inter **18px/600**. Its interaction states were not measured.
 

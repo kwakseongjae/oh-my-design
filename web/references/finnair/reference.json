@@ -497,6 +497,12 @@
         "method": "live-inspect",
         "captured": "2026-10-29"
       },
+      "components.offer-card.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
       "components.offer-card.rounded": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -605,12 +611,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 48,
+      "warnings": 49,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 3,
-      "extension-component-property": 24,
+      "extension-component-property": 25,
       "missing-primary": 1,
       "orphaned-tokens": 20
     },
@@ -774,6 +780,12 @@
       {
         "severity": "warning",
         "rule": "broken-ref",
+        "path": "components.offer-card.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
         "path": "components.offer-card.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
@@ -907,7 +919,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "eef932ed81e9ba1ccc30cf6a5860488f14ff7cd5ce2878bf6798562fb5100be9",
+    "sourceSha256": "666f83d6637629e8a035fb0f5dc334308faf4b45f0cf3c03d813c03a7bff821f",
     "overlay": null,
     "prose": [],
     "numeric": [

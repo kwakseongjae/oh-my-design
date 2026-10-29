@@ -221,12 +221,6 @@
         "method": "computed-style",
         "captured": "2026-10-29"
       },
-      "components.cart-cta.backgroundColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-10-29"
-      },
       "components.cart-cta.textColor": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -264,12 +258,6 @@
         "captured": "2026-10-29"
       },
       "components.cart-cta.use": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-10-29"
-      },
-      "components.genius-nav.backgroundColor": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -847,7 +835,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "3e292af11506fcafc1e06094dbc6d7db1fb6c42cd751e3bee5936f53647dcff3",
+    "sourceSha256": "db7b1e3f9cc357b52ab584bc96593b51679b90ba8c006b52823143528864ec64",
     "overlay": null,
     "prose": [],
     "numeric": [

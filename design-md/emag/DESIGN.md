@@ -49,7 +49,6 @@ rounded:
 components:
   cart-cta:
     type: button
-    backgroundColor: transparent
     textColor: '#ffffff'
     rounded: 8px
     height: 42px
@@ -67,10 +66,9 @@ components:
     hover: 'bg #f1f8fe'
     pressed: 'bg #f1f8fe; inset shadow rgba(0,0,0,0.125) 0 3px 5px'
     focus: 'bg #f1f8fe; bottom-right radius 16px to 0'
-    use: 'Header Caută control; 1px border on top, right and bottom, none on left; right corners 16px, left corners square. Press and focus also show the browser''s auto outline (outline-color #0082e6), which is not a brand ring.'
+    use: 'Header Caută control; the visible content is the search icon and the Caută text is screen-reader-only, so its #0082e6 on #ffffff (3.94:1) is an icon contrast, above the 3:1 non-text minimum. 1px border on top, right and bottom, none on left; right corners 16px, left corners square. Press and focus also show the browser''s auto outline (outline-color #0082e6), which is not a brand ring.'
   genius-nav:
     type: button
-    backgroundColor: transparent
     textColor: '#ffffff'
     rounded: 16px
     height: 30px

@@ -50,7 +50,7 @@ components:
     padding: 0px 20px
     typography: 12px / 600
     hover: 'Text turns #f4f4f4 and gains a solid #f4f4f4 underline.'
-    focus: 'Text turns #434343; a 2px solid #ffffff border and a 4px #ffffff box-shadow halo appear inside a 2px solid #121212 outline at offset 0 (the link widens from 82.8px to 86.8px).'
+    focus: 'Text turns #434343; a 2px solid #ffffff border sits inside a 2px solid #121212 outline at offset 0, and a 4px #ffffff box-shadow spread shows as a white halo outside the outline (the link widens from 82.8px to 86.8px).'
     use: Mujer, an uppercase collection link over the hero photograph.
   nav-mujer:
     type: button
@@ -205,9 +205,9 @@ The worker measured two buttons on Mango's own white consent panel while it was 
 | **Solo cookies necesarias** | 224 × 44px; padding 10px 24px; 12px/600, line height 16px | Text **#131313**, 1px solid **#131313** border; declared `HeadingsFontES` remains unresolved |
 | **Configurar cookies** | 153 × 44px; padding 0px; 13px/600, line height 20px | Text and underline **#131313**, no border; `DefaultFontES` is live-loaded |
 
-The product links were re-measured with the consent panel rejected and the country dialog closed. The hero Mujer link is 82.8 × 48px with 0px 20px padding and **#fdfdfd** ink; the header Mujer link is 42.8 × 16px; Buscar is 51.7 × 24px; footer Ayuda is 41.5 × 38px with 7px 0px padding. The last three use **#131313** ink. All four are transparent links with 0px radius, no border, no shadow and 12px/600 type with a 16px line height; their declared family is `HeadingsFontES` (unresolved, §3).
+The product links were re-measured with the consent panel rejected and the country dialog closed. The hero Mujer link is 82.8 × 48px with 0px 20px padding and **#fdfdfd** ink; the header Mujer link is 42.8 × 16px; Buscar is 51.7 × 24px; footer Ayuda is 41.5 × 38px with 7px 0px padding. The last three use **#131313** ink. All four are transparent links with 0px radius, no border, no shadow and 12px/600 type with a 16px line height; their declared family is `HeadingsFontES` (unresolved; see Typography).
 
-**States.** Keyboard focus on every link shifts the text to **#434343**, the semantic brand-hover step, and draws a **2px solid #121212** outline: offset 1px on the header Mujer link, 2px on Buscar and Ayuda. Over the photograph the hero link adds a 2px solid white **#ffffff** border and a 4px white halo inside the outline, at offset 0. On hover the hero link's text turns **#f4f4f4** and gains a solid **#f4f4f4** underline.
+**States.** Keyboard focus on every link shifts the text to **#434343**, the semantic brand-hover step, and draws a **2px solid #121212** outline: offset 1px on the header Mujer link, 2px on Buscar and Ayuda. Over the photograph the hero link adds a 2px solid white **#ffffff** border inside the outline (offset 0) and a 4px white box-shadow spread that shows as a white halo outside it: white, dark, white from the inside out. On hover the hero link's text turns **#f4f4f4** and gains a solid **#f4f4f4** underline.
 
 ### States
 
@@ -215,7 +215,7 @@ Re-measured in a fresh-profile browser at 1440 × 1000 with the consent panel re
 
 | Control | Hover | Pressed | Keyboard focus |
 |---|---|---|---|
-| Hero Mujer | Text → **#f4f4f4**, solid **#f4f4f4** underline | UNMEASURED (`:active` did not match) | Text → **#434343**; 2px solid white border, 4px white halo, **2px solid #121212** outline at offset 0 |
+| Hero Mujer | Text → **#f4f4f4**, solid **#f4f4f4** underline | UNMEASURED (`:active` did not match) | Text → **#434343**; 2px solid white border inside a **2px solid #121212** outline at offset 0, 4px white halo outside it |
 | Header Mujer | UNMEASURED (opens the menu; `:hover` did not match) | UNMEASURED | Text → **#434343**; **2px solid #121212**, offset 1px |
 | Buscar | UNMEASURED (covered by the open menu backdrop) | UNMEASURED | Text and icon → **#434343**; **2px solid #121212**, offset 2px |
 | Footer Ayuda | UNMEASURED (outside the viewport) | UNMEASURED | Text → **#434343**; **2px solid #121212**, offset 2px |
@@ -237,7 +237,7 @@ No disabled state was measured.
 
 - Let fashion photography carry the strong colour; use the measured semantic neutrals for interface roles.
 - Keep the measured consent actions square and 44px high, with distinct hover and pressed colours.
-- Draw keyboard focus as a 2px solid **#121212** outline with the text shifted to **#434343**; over photography, add a white 2px border and a 4px white halo inside it.
+- Draw keyboard focus as a 2px solid **#121212** outline with the text shifted to **#434343**; over photography, put a white 2px border inside it and a 4px white box-shadow halo outside it.
 - Keep font aliases, loading evidence and type metrics explicit.
 
 ### Don't
@@ -254,4 +254,4 @@ The captured Spanish UI uses short commerce labels such as **Mujer**, **Buscar**
 
 “Build a Mango-style desktop fashion entry with a centred wordmark, compact uppercase collection navigation and a full-width fashion photograph. Use **#ffffff** surfaces and **#131313** interface ink. Preserve the separation between the loaded UI alias `DefaultFontES` and the loaded inspirational alias `InspirationalFontES`.”
 
-“Set the collection links as uppercase 12px/600 text with no box: **#131313** in the header, **#fdfdfd** over the hero photograph with 0px 20px padding. On hover the hero link turns **#f4f4f4** and underlines. On keyboard focus every link shifts to **#434343** and gets a 2px solid **#121212** outline; over the photograph add a 2px white border and a 4px white halo inside it. Their declared `HeadingsFontES` face is unresolved; choose no substitute.”
+“Set the collection links as uppercase 12px/600 text with no box: **#131313** in the header, **#fdfdfd** over the hero photograph with 0px 20px padding. On hover the hero link turns **#f4f4f4** and underlines. On keyboard focus every link shifts to **#434343** and gets a 2px solid **#121212** outline; over the photograph put a 2px white border inside it and a 4px white box-shadow halo outside it. Their declared `HeadingsFontES` face is unresolved; choose no substitute.”

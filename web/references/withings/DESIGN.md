@@ -122,8 +122,8 @@ These are values from the live storefront’s computed root custom properties, w
 | Primary | `#6784fe` | `--color-violet`, `--color-primary`; the primary link’s measured rest background. |
 | Primary hover | `#5570e0` | `--color-primary-hover` and `--color-primary-button-hover-background`; the primary action's measured hover and pressed background and inset edge. |
 | Foreground | `#0f0f0f` | `--color-foreground`, `--color-black`; the most common paragraph ink, 16 paragraphs. |
-| Background | `#ffffff` | `--color-background`, `--color-white`; primary action label and the ground behind the secondary link. |
-| Sand | `#f2eeea` | `--color-sand`; also present in 8 background census entries. |
+| Background | `#ffffff` | `--color-background`, `--color-white`; primary action label; the ground behind the header link and the search trigger (crop pixels). |
+| Sand | `#f2eeea` | `--color-sand`; also present in 8 background census entries, and the ground behind the secondary link and the watch card (crop pixels `rgb(242, 238, 234)`). |
 | Beige | `#eae6e0` | `--color-beige`; root value, normalized from uppercase hex. |
 | Neutral | `#c9c9c9` | `--color-neutral`, `--color-border`. |
 | Neutral dark | `#4e4e4e` | `--color-neutral-dark`. |
@@ -160,7 +160,7 @@ A photograph-backed hero precedes the product sections in the captured viewport.
 
 ### Responsive Behavior
 
-Only desktop 1440 × 1000 was captured. The h1/h2 clamp declarations in §3 are verified CSS, but mobile layout, breakpoints and touch states were not measured.
+Only desktop 1440 × 1000 was captured. The h1/h2 clamp declarations under Typography are verified CSS, but mobile layout, breakpoints and touch states were not measured.
 
 ## Elevation & Depth
 
@@ -176,15 +176,15 @@ First-party sources opened on 2026-10-29: [French storefront](https://www.within
 
 ## Components
 
-The following are computed rest observations from identified DOM controls; their states follow the table. The worker's states run was blocked by a regional shipping dialog and a promotional popup, so the states below come from a re-measure with both closed (see §14).
+The following are computed rest observations from identified DOM controls; their states follow the table. The worker's states run was blocked by a regional shipping dialog and a promotional popup, so the states below come from a re-measure with both closed.
 
 | Control | Rest geometry and type | Rest appearance |
 |---|---|---|
 | Primary action link, “Commencez votre suivi” | 218 × 51.2px; radius 16px; padding 16px 24px; Aeonik 16px/500 | Background `#6784fe`, label `#ffffff`; no border; a 1px inset shadow in the same violet-blue. Links to the store collection. |
-| Secondary action link, “Toutes les montres” | 153.7 × 20.2px; radius 0px; padding 0px; Aeonik 16px/500 | Transparent on measured white; label and 1px bottom border `#6784fe`; an inline caret. Links to the watches collection. |
+| Secondary action link, “Toutes les montres” | 153.7 × 20.2px; radius 0px; padding 0px; Aeonik 16px/500 | Transparent over the sand `#f2eeea` section; label and 1px bottom border `#6784fe`; an inline caret. Links to the watches collection. |
 | Header navigation link, “Boutique” | 87.8 × 44px; radius 0px; padding 0px; Aeonik 16px/400 | Transparent on measured white; visible child label `#0f0f0f`; no border or shadow. |
 | Search trigger, “Rechercher” | 44 × 44px; radius 0px; padding 0px; Aeonik 14px/400 | Transparent on measured white; inline search icon stroke `#0f0f0f`; no border or shadow. The text label is hidden. |
-| Watch card link, “ScanWatch 2 42mm Bleue & Argent” | 260.2 × 327.4px in the states run; radius 0px; padding 0px; Aeonik 14px/400 | Transparent on measured white; own colour `#6784fe`, but its child label is visually hidden. The visible product content is outside the link’s descendant subtree; this colour is not claimed for the visible product title. |
+| Watch card link, “ScanWatch 2 42mm Bleue & Argent” | 260.2 × 327.4px in the states run; radius 0px; padding 0px; Aeonik 14px/400 | Transparent over the sand `#f2eeea` card ground; own colour `#6784fe`, but its child label is visually hidden. The visible product content is outside the link’s descendant subtree; this colour is not claimed for the visible product title. |
 | Footer input, placeholder “Votre e-mail” | 281.2 × 42.4px; radius 16px; padding 12.8px 20px; Aeonik 14px/400 | Background `#0f0f0f`, foreground `#ffffff`; no own border or shadow. Its immediate wrapper has a 1px white border. |
 
 **States.** The primary action darkens on hover and press: its background and its 1px inset edge both turn `#5570e0`, the declared `--color-primary-hover`. The secondary link drops its underline (the bottom border turns transparent) and slides its caret 4px to the right. Keyboard focus is an authored 1px solid outline, not the browser ring: `#6784fe` offset 3px on the primary action and the secondary link, `#6784fe` offset 2px on the product card, `#0f0f0f` offset 3px on Boutique and offset 2px on the search icon. Boutique, the search icon and the product card did not change on hover or press within the compared scope. The footer email field changed in none of the three states, so it stays a rest description.

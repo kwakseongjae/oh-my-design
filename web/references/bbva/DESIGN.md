@@ -166,7 +166,7 @@ Hazte cliente and Ver Cuenta Online declare the same string; Hazte cliente's hov
 
 ## Components
 
-All identities below were measured on the Spanish homepage at 1440×1000. The worker's capture left the consent panel open (reject label “Declinar”); the states below come from a re-measure with it rejected (see §14). The consent button stays a prose observation, not a component.
+All identities below were measured on the Spanish homepage at 1440×1000. The worker's capture left the consent panel open (reject label “Declinar”); the states below come from a re-measure with it rejected (see States). The consent button stays a prose observation, not a component.
 
 | Control | Identity and rest styling |
 |---|---|
@@ -181,7 +181,7 @@ All six controls have no drawn border and no rest box shadow. No visible search 
 
 **States.** Filled actions carry an oversized two-tone background image and slide it on hover. On Hazte cliente it is `linear-gradient(100deg, rgb(33, 101, 202) 50%, rgb(12, 109, 255) 50%)`, sized `210% 100%`; hover and press move it from `99% 50%` to `0px 50%`, so the darker `#2165ca` half fills the button while `background-color` stays `#0c6dff`. Ver Cuenta Online has the same structure with a white `#ffffff` half; its hover did not register in the probe. Text links, the product shortcut and the search icon darken from `#001391` to `#070e46` on hover, and the shortcut's icon rises 8px. Keyboard focus on every measured control is the same authored double ring: an inner 2px `#85c8ff` and an outer 4px `#070e46` box-shadow.
 
-Declinar, the consent button, has a fixed `linear-gradient(100deg, rgb(7, 14, 70) 50%, rgb(0, 19, 145) 50%)` background image, sized `210% 100%`, without repetition. Hover and press move its position from `99% 50%` to `0px 50%`, exposing the darker half, and change the text to `#f7f8f8`. Its computed background colour remains `#001391`. Keyboard focus adds the two shadows described in §14.
+Declinar, the consent button, has a fixed `linear-gradient(100deg, rgb(7, 14, 70) 50%, rgb(0, 19, 145) 50%)` background image, sized `210% 100%`, without repetition. Hover and press move its position from `99% 50%` to `0px 50%`, exposing the darker half, and change the text to `#f7f8f8`. Its computed background colour remains `#001391`. Keyboard focus adds the two shadows described under States.
 
 ### States
 

@@ -120,7 +120,7 @@ components:
     padding: 0px
     typography: 15px / 400
     shadow: 0 2px 6px rgba(79,94,113,0.08), 0 0 2px rgba(79,94,113,0.12), 0 0 1px rgba(41,47,55,0.3)
-    hover: 'white content layer opacity 0 to 1; title and price fg #252a31; origin appears in #4f5e71; larger shadow; see sections 6 and 14'
+    hover: 'white content layer opacity 0 to 1; title and price fg #252a31; origin appears in #4f5e71; larger shadow; see Elevation & Depth and States'
     pressed: same measured content and shadow as hover; zero additional changes in the recorded comparison scope
     use: 'Seoul to Bangkok destination anchor, 211.2px wide. The recorded fg is the visible title/price child color at rest; the anchor''s own inherited color is #252a31.'
   club-join:
@@ -273,7 +273,7 @@ Measurements are from one desktop state pass after the tool recorded **Reject al
 | **Seoul → Bangkok** — destination anchor | 211.2 × 234px; 6px radius; zero root padding; 15px/400 | Transparent anchor over photography; visible title and price `#ffffff`; root's own inherited ink is `#252a31` |
 | **Join for free** — Club promotion anchor | 145.2 × 52px; 12px radius; padding 0 28px; 16px/500 | `#007061` fill, `#ffffff` text; no border or shadow |
 
-Explore darkens on hover and adds an inset shadow when pressed. The Club CTA uses the darker product ramp. The header actions change text colour without filling their boxes. The destination card reveals a white information layer on hover; reproduce the child treatment as well as the anchor geometry. Section 14 gives the complete measured state differences.
+Explore darkens on hover and adds an inset shadow when pressed. The Club CTA uses the darker product ramp. The header actions change text colour without filling their boxes. The destination card reveals a white information layer on hover; reproduce the child treatment as well as the anchor geometry. The States table below gives the complete measured state differences.
 
 ### States
 
@@ -281,7 +281,7 @@ Each hover snapshot reports `:hover = true`; each pressed snapshot also reports 
 
 | Control | Hover | Pressed | Keyboard focus |
 |---|---|---|---|
-| Explore | Fill `#007565` | Fill `#006153` plus the inset shadow in section 6 | Fill `#007565` plus `1px auto` browser outline; offset 0 |
+| Explore | Fill `#007565` | Fill `#006153` plus the inset shadow in Elevation & Depth | Fill `#007565` plus `1px auto` browser outline; offset 0 |
 | Help & support | Own and child ink `#007565` | Same ink; no additional delta from hover | Rest ink plus `1px auto` browser outline; offset 0 |
 | Flights | Own and child ink `#005c4f` | Same ink; no additional delta from hover | Rest ink plus `1px auto` browser outline; offset 1px |
 | Destination input | No additional difference against the post-Tab parked baseline | Same comparison result | Width 204.9 → 316px and enclosing inset line 1 → 2px; both persist after blur, so neither is published as focus-only behaviour |

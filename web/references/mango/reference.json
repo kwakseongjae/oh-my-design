@@ -720,7 +720,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "80d977ab6a5d29cebfe6bb0986a6c85ea069573f71ce02d9c5018f66fd47bc8e",
+    "sourceSha256": "32b28bc3bfad6b25ac3d97e3e499e6c35edbd7223d825fb3ca49c9536cb8a2b6",
     "overlay": null,
     "prose": [],
     "numeric": [

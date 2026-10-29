@@ -85,12 +85,13 @@ components:
     typography: 16px / 400
     hover: 'The 1px solid #84808c outline thickens to 2px, offset 0.'
     focus: 'outline 2px solid #84808c; outline-offset: 0px'
-    use: 'Mihin Lisää kohde — a destination selector button, with 0px 8px 8px 0px corners and a 1px #84808c rest outline. Mihin is 16px/400; Lisää kohde is #9c99a3. Pressed measured unchanged from hover.'
+    use: 'Mihin Lisää kohde — a destination selector button, with 0px 8px 8px 0px corners and a 1px #84808c rest outline. Mihin is 16px/400; Lisää kohde is #9c99a3. Pressing returns the outline to the 1px rest width.'
   offer-card:
     type: card
     rounded: 8px
     hover: The surrounding offer section's layered shadow deepens from color(srgb 0 0 0 / 0.03) 0px 2px 4px 3px, 0px 1px 2px 0px, 0px 1px 1px 0px to 0px 8px 16px 12px, 0px 4px 8px 0px, 0px 2px 4px 0px (each layer 3% black).
-    use: Tukholma, a destination offer card link (238.9 × 108px link inside an 8px-radius section). Its pressed and focus readings are browser defaults and are not stated.
+    pressed: 'The parent offer section fills #f6f5f3; the hover shadow stays.'
+    use: Tukholma, a destination offer card link (238.9 × 108px link inside an 8px-radius section). Its focus reading and the link's own pressed colour and auto outline are browser defaults and are not stated.
 omitted:
   - section: spacing
     reason: No verified values in current evidence.
@@ -179,7 +180,7 @@ Only the 1440×1000 desktop viewport was rendered; mobile behaviour and breakpoi
 
 ## Elevation & Depth
 
-All six target controls have `box-shadow: none` at rest. Offer cards sit in sections with a faint three-layer shadow that deepens on hover (§4). The root property `--surface-modal-overlay` is `rgba(0, 0, 0, .5)`, and the screenshot shows the consent backdrop dimming the page. No general shadow scale was measured.
+All six target controls have `box-shadow: none` at rest. Offer cards sit in sections with a faint three-layer shadow that deepens on hover (see Components). The root property `--surface-modal-overlay` is `rgba(0, 0, 0, .5)`, and the screenshot shows the consent backdrop dimming the page. No general shadow scale was measured.
 
 ## Motion & Easing
 
@@ -191,18 +192,18 @@ All six target elements report the raw computed transition `all 0s ease 0s`. Som
 
 ## Components
 
-Measurements are from the Finnish desktop homepage. Keyboard focus comes from the worker's capture, a real Tab walk with the consent dialog open; hover and press come from a re-measure with the dialog rejected (§14).
+Measurements are from the Finnish desktop homepage. Keyboard focus comes from the worker's capture, a real Tab walk with the consent dialog open; hover and press come from a re-measure with the dialog rejected (see States).
 
 | Control | Identity and rest appearance | Measured authored state |
 |---|---|---|
 | **Varaa nyt** — Melbourne action link | 96.5×40px; radius 40px; padding 6px 12px; white background, deep blue label and 2px deep blue border | Hover and press: background `#f0f4fd`; focus: 2px solid deep blue outline, offset 3px |
-| **Valitse päivät** — first date button, Stockholm offer | 242×40px; radius 40px; padding 6px 12px; white background, deep blue label and 2px deep blue border | Hover: `#f0f4fd`; press also fills the offer panel `#f6f5f3`; same focus outline |
+| **Valitse päivät** — first date button, Stockholm offer | 238.9×40px; radius 40px; padding 6px 12px; white background, deep blue label and 2px deep blue border | Hover: `#f0f4fd`; press also fills the offer panel `#f6f5f3`; same focus outline |
 | **Varaukseni** — header navigation link | 81.8×24px; radius 0px; padding 0px; transparent over a white header; deep blue 16px/500 text | Hover and press: immediate parent fills `#f0f4fd`; focus: that parent gets the 2px solid deep blue outline, offset 3px |
 | **Mihin Lisää kohde** — destination selector button | 254.8×72px; corners 0px 8px 8px 0px; padding 12px 12px 12px 32px; white background; deep blue label and muted empty prompt; 1px form-colour rest outline | Hover and focus: outline thickens to 2px, offset 0px |
 
 For the destination selector, the rest and focus outline colour is `#84808c`; the empty prompt is `#9c99a3`. Its asymmetric radius is preserved in prose rather than reduced to a single numeric component radius.
 
-The **Stockholm card text link** is 242×108px, radius 0px, padding 0px and transparent over a measured white content area. The surrounding card section was radius 8px in the survey. Its visible title is deep blue, 20px/700. On hover the surrounding offer section's layered shadow deepens: each of its three 3% black layers grows, from `0px 2px 4px 3px, 0px 1px 2px 0px, 0px 1px 1px 0px` to `0px 8px 16px 12px, 0px 4px 8px 0px, 0px 2px 4px 0px`. Its pressed and focus readings were browser defaults (the `auto` ring and the default link colours), so only the hover enters the component.
+The **Stockholm card text link** is 238.9×108px, radius 0px, padding 0px and transparent over a measured white content area. The surrounding card section was radius 8px in the survey. Its visible title is deep blue, 20px/700. On hover the surrounding offer section's layered shadow deepens: each of its three 3% black layers grows, from `0px 2px 4px 3px, 0px 1px 2px 0px, 0px 1px 1px 0px` to `0px 8px 16px 12px, 0px 4px 8px 0px, 0px 2px 4px 0px`. On press the link's parent offer section fills `#f6f5f3` while the hover shadow stays. The link's own pressed colour and its focus `auto` ring are browser defaults and are not stated.
 
 The first-party consent dialog's reject button, **Käytä vain välttämättömiä** (720×40px, the same outlined pill), turned `#f0f4fd` on hover and press in the worker's capture; it stays an observation, not a component.
 
