@@ -43,7 +43,7 @@ const server = new McpServer({ name: 'omd-capture', version: '0.1.0' });
 server.registerTool('probe_page', {
   description:
     'Load one public page in the worker Chrome (headed, fresh profile, consent rejected) and measure it with probe-keyboard-states.mjs. ' +
-    'mode "survey" lists interactive elements to choose from; mode "states" measures up to 6 controls (identity, rest, hover, pressed, keyboard focus) ' +
+    'mode "survey" lists interactive elements to choose from and records the census (every custom property with its value, the top rendered colours, paragraph ink, fonts and @font-face sources) plus page screenshots and a scroll video; mode "states" measures up to 6 controls (identity, rest, hover, pressed, keyboard focus) ' +
     'and saves a PNG crop of each control in each state, page screenshots (viewport, full) and a scroll video. Returns the summary and the output directory.',
   inputSchema: {
     url: z.string().regex(/^https?:\/\/[^\s]+$/),
@@ -64,7 +64,7 @@ server.registerTool('probe_page', {
   const dir = path.join(ROOT, id, stamp());
   fs.mkdirSync(dir, { recursive: true });
   const args = [url, '--browser', 'worker', '--locale', locale, '--out', path.join(dir, mode === 'survey' ? 'survey.json' : 'states.json'), '--quiet', '--summary'];
-  if (mode === 'survey') args.push('--survey');
+  if (mode === 'survey') args.push('--survey', '--census', '--visual', dir);
   else {
     if (!controls?.length) return { content: [{ type: 'text', text: 'mode "states" needs controls (run mode "survey" first)' }], isError: true };
     const cfg = path.join(dir, 'cfg.json');

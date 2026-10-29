@@ -34,6 +34,10 @@
  *            120px every 60ms, up to 12000px; failures/budget skips in visual.errors never fail the probe)
  *            Evidence paths are relative to --out's directory (otherwise cwd); unsafe key filename characters are percent-encoded.
  *            Any of these three flags records boot.browser; without them the existing output is unchanged.
+ *            --census (with --survey: also records PROBE_BRIEF items 1–3 in result.census — every custom property on
+ *            :root (computed) and every one declared in a stylesheet, open shadow roots and adopted sheets included, with
+ *            its first selector; the top-15 rendered bg / text / border colours and the text colour inside <p>; the font
+ *            family on body / h1 / button, the loaded faces and the @font-face sources; cross-origin sheets it could not read)
  *            --retries 3 --retry-wait 60000 (block/403 policy) · --budget 420000 · --close-timeout 5000 · --help
  *   exit     0 ok · 1 error · 2 usage · 3 budget/signal, partial JSON · 4 blocked or unreachable after the retries (boot.block)
  *
@@ -186,6 +190,58 @@ const SUMMARY = !!g.summary;
 // Headless keeps the existing plain desktop UA. Worker uses the headed Chrome's actual UA.
 const REAL_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
 const CONTEXT = { viewport: { width: 1440, height: 1000 }, ...(BROWSER === "headless" ? { userAgent: REAL_UA } : {}), locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
+
+// --census (2026-10-29): PROBE_BRIEF items 1–3 in one evaluation, so a sandboxed worker gets them through the capture
+// MCP tool instead of writing its own browser script. Open shadow roots are walked (SBB's Lyne renders in them).
+function censusFn() {
+  const out = { computedVars: {}, declaredVars: {}, unreadableSheets: [], fontFaces: [], census: {}, fonts: {} };
+  const root = getComputedStyle(document.documentElement);
+  for (let i = 0; i < root.length; i++) { const n = root[i]; if (n.startsWith("--")) out.computedVars[n] = root.getPropertyValue(n).trim(); }
+  const seenFace = new Set();
+  const walk = (rules, ctx) => {
+    for (const r of rules) {
+      try {
+        if (r.constructor?.name === "CSSFontFaceRule" || r.type === 5) {
+          const fam = r.style.getPropertyValue("font-family").replace(/["']/g, "").trim(), src = r.style.getPropertyValue("src").slice(0, 300);
+          const k = fam + "|" + r.style.getPropertyValue("font-weight") + "|" + r.style.getPropertyValue("font-style");
+          if (!seenFace.has(k)) { seenFace.add(k); out.fontFaces.push({ family: fam, weight: r.style.getPropertyValue("font-weight"), style: r.style.getPropertyValue("font-style"), src }); }
+        } else if (r.style) {
+          for (let i = 0; i < r.style.length; i++) {
+            const n = r.style[i];
+            if (n.startsWith("--") && !(n in out.declaredVars)) out.declaredVars[n] = { value: r.style.getPropertyValue(n).trim(), selector: String(r.selectorText ?? ctx ?? "").slice(0, 100) };
+          }
+        }
+        if (r.cssRules?.length) walk(r.cssRules, r.conditionText ?? r.name ?? r.selectorText ?? ctx);
+      } catch {}
+    }
+  };
+  const sheetsOf = (scope) => [...(scope.styleSheets ?? []), ...(scope.adoptedStyleSheets ?? [])];
+  const scopes = [document];
+  const elements = [];
+  const visit = (node) => { for (const el of node.querySelectorAll("*")) { elements.push(el); if (el.shadowRoot) { scopes.push(el.shadowRoot); visit(el.shadowRoot); } } };
+  visit(document);
+  for (const scope of scopes) for (const sh of sheetsOf(scope)) {
+    let rules = null;
+    try { rules = sh.cssRules; } catch { out.unreadableSheets.push(sh.href ?? "(inline)"); continue; }
+    if (rules) walk(rules, "");
+  }
+  const bg = new Map(), fg = new Map(), bd = new Map(), ink = new Map();
+  const add = (m, k) => m.set(k, (m.get(k) ?? 0) + 1);
+  for (const el of elements) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    const cs = getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") continue;
+    if (cs.backgroundColor && cs.backgroundColor !== "rgba(0, 0, 0, 0)" && cs.backgroundColor !== "transparent") add(bg, cs.backgroundColor);
+    if ([...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) { add(fg, cs.color); if (el.closest("p") || el.tagName === "P") add(ink, cs.color); }
+    if (cs.borderTopStyle !== "none" && parseFloat(cs.borderTopWidth) > 0) add(bd, cs.borderTopColor);
+  }
+  const top = (m, n = 15) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([color, count]) => ({ color, count }));
+  out.census = { elements: elements.length, shadowRoots: scopes.length - 1, bg: top(bg), text: top(fg), border: top(bd), paragraphInk: top(ink, 3) };
+  const fam = (sel) => { const el = document.querySelector(sel); return el ? getComputedStyle(el).fontFamily : null; };
+  out.fonts = { body: fam("body"), h1: fam("h1"), button: fam("button"), loaded: [...new Set([...document.fonts].filter((f) => f.status === "loaded").map((f) => `${f.family.replace(/["']/g, "")} ${f.weight} ${f.style}`))] };
+  return out;
+}
 
 // ───────────────────────────── shared state + shutdown ─────────────────────────────
 const T0 = Date.now();
@@ -1172,6 +1228,7 @@ async function main() {
   result.boot.consent = { rejectedVia: consent, fixedElementsAfter: await page.evaluate(() => window.__omdKb?.fixedInventory?.() ?? []).catch(() => []) };
 
   if (g.survey) {
+    if (g.census) result.census = await page.evaluate(censusFn).catch((e) => ({ error: String(e?.message ?? e).split("\n")[0].slice(0, 200) }));
     const s = await page.evaluate(([lim, mh]) => window.__omdKb.survey(lim, mh), [Number(g["survey-limit"] ?? 400), 8]);
     result.rows = s.rows;
     result.fixed = s.fixed;
