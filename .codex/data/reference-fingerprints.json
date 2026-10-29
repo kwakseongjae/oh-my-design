@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 528,
+ "count": 529,
  "items": [
   {
    "id": "104",
@@ -6363,6 +6363,34 @@
    ],
    "has_personas": false,
    "category_raw": "freelance-marketplace"
+  },
+  {
+   "id": "mango",
+   "primary_color_hex": "#131313",
+   "category": "ecommerce",
+   "visual_theme": "Mango's Spanish fashion shop: a full-width fashion photograph under a 56px sticky header with a centred wordmark and compact uppercase 12px/600 collection links in #131313 on white, a large serif campaign line, and square, boxless controls. The photograph carries the colour; the interface stays in semantic neutrals (#434343 hover, #2a2a2a active). Keyboard focus shifts text to #434343 inside a 2px solid #121212 outline; over the photo the hero link adds a white border and halo, and on hover it turns #f4f4f4 with an underline.",
+   "voice_fingerprint": {
+    "register": "fashion retail, terse uppercase commerce labels with an expressive campaign line",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "es-fashion"
+   },
+   "tone_keywords": [
+    "fashion",
+    "minimal",
+    "monochrome",
+    "photographic",
+    "Mediterranean"
+   ],
+   "antipatterns": [
+    "a brand accent colour in the interface; the photograph carries colour",
+    "rounded or filled buttons; controls are square and boxless",
+    "a browser focus ring; focus is a 2px solid #121212 outline with the text shifted to #434343",
+    "importing store-interior or garment colours into UI tokens",
+    "a substitute face for the unresolved HeadingsFontES alias"
+   ],
+   "has_personas": false,
+   "category_raw": "fashion retail"
   },
   {
    "id": "mastercard",

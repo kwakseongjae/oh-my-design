@@ -6243,6 +6243,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "mango",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 69,
+    "evidenceClaimCount": 69,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "mastercard",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-06-06",
@@ -12971,10 +12993,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 306,
+  "verified_v2": 307,
   "partial": 109,
   "legacy_snapshot": 113,
-  "total": 528
+  "total": 529
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
