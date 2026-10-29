@@ -17,6 +17,8 @@
   - D 조사: Codex max 18분 20초. 사실 10건 URL 근거, 대조군 판정 정확, `--sbb-*` 1,389개. 본 세션 3건 대조 일치.
   - 범위 이탈: Codex가 레포 규칙대로 CURRENT_STATE·JOURNAL 수정(되돌림), Sonnet이 빌드로 무관한 번들 변경 → 지시서 양식에 금지 추가.
   - 계획: `docs/WORKER_PLAN_2026-10-29.md`. 오너 결정 5건(§8) 대기.
+- **오너 결정(18:42).** ① 워커 브라우저 = 전용 Chrome 프로필 ② MCP v2 = 수집 데이터 제공(캡처 도구는 내부 전용, '로컬 사이트 분석'은 내림) ③ Sol 워커 동시 4개. 계획 §6·§8 반영.
+- **진행(18:45~).** 워커 키트(미커밋, main 작업 트리): `scripts/workers/spawn.sh`(codex/claude, Sol 4개 상한, `--mcp capture`), `scripts/workers/capture-mcp.mjs`(고정 도구 `probe_page` 하나, 결과는 `artifacts/reference-evidence/visual/<id>/<시각>/`), `docs/workers/WORK_ORDER_TEMPLATE.md`. 연결 시험 통과(샌드박스 워커 → MCP → 샌드박스 밖 프로브). 캡처 기능(`--browser worker`·`--shots`·`--visual`)은 Sol max 워커가 `probe-keyboard-states.mjs`에 구현 중(워크트리 `.claude/worktrees/cx-capture`, 브랜치 `codex/capture-visual`).
 - **참고.** MCP 커넥터 v1은 2026-07-14 Core v2 전환 때 퇴역(/api/mcp 410, npm 패키지 보관). 성장 계획(10/13)은 AI 인용 채널로 MCP 커넥터를 다시 적어 둠. 10/25 /hangul 로컬 보고서(`docs/research/2026-10-25-hangul-report/index.html`)는 마감 직전(통계 카드 줄바꿈·섹션 캡처의 고정 헤더 겹침 수정 남음).
 
 ## ▶ 2026-10-25 3시 반 · /hangul — 열린 작업 마무리 + 로컬 화면·테스트 결과 문서 + UX 라이팅 추가 테스트 + 리서치·오픈소스 조사 (진행 중)
