@@ -1,3 +1,9 @@
+## 2026-10-29 21시 반 — Codex Sol 워커 시험·계획, DESIGN.md 웨이브 9곳 Sol 저작으로 verified(`feat/eu-wave5`, 530 / 308)
+- 한 일: gpt-6.1-sol max 워커 시험(샌드박스 Chrome 불가 → 샌드박스 밖 캡처 MCP `probe_page`, 워커 전용 헤디드 Chrome), 계획 `docs/WORKER_PLAN_2026-10-29.md`, 오너 결정 3건(전용 프로필·MCP v2는 수집 데이터만·Sol 동시 4개). 웨이브 5·5b: sbb·odoo·kiwi·emag·sixt·withings·bbva·mango·finnair 전부 verified, 서사 오류 0.
+- 고친 도구: 프로브 `--close`, MCP `close`·`hideOverlays`, 거부어(루마니아어·체코어·스페인어·핀란드어), 지시서 규칙(국가·렌더 타입·모션 근거·간격 숫자·동의 버튼). 증거 매니페스트 1190개, iCloud 동기화.
+- 열린 것: `feat/eu-wave5` main 머지 GO, effort 기본값(§8 #3), MCP v2 명세. 10/25 건(프리뷰 GO, 2.0.6 GO·waiver 등) 그대로.
+- 다음: 새 후보 센서스 → 다음 Sol 웨이브(동시 4개), 워크트리 정리 전 node_modules 심볼릭 링크 제거.
+
 ## 2026-10-25 2시 반 — /hangul 문구 계층을 상황 중심으로 재편, 스킬 유무 비교, 브랜치 `ac71dc26`
 - 한 일: 상황 10개(종결은 독자 관계를 따름), 의료·공공 법령 검사 제거, copy-check 산문 모드·HW-D1~D4·HW-R5·한국어 특유 검사, situations·korean-issues·cases 레퍼런스, kr-writer·humanize가 hangul 참조.
 - 테스트(sonnet 작성, opus 블라인드 채점): A 21.05 → B″ 22.82/25, 문서당 지적 7.55 → 3.82, 11개 중 8개 상황 상승. B′에서 -드리다·자리표시자 규칙이 과해 이메일이 떨어진 것을 찾아 고쳤다.
