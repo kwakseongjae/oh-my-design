@@ -59,17 +59,23 @@ server.registerTool('probe_page', {
         nth: z.number().int().min(0).max(50).optional(), href: z.string().max(300).optional(),
       }),
     })).max(6).optional().describe('required for mode "states": the controls to measure, in the probe cfg shape'),
+    close: z.array(z.string().regex(/^[^,]{1,200}$/)).max(4).optional()
+      .describe('CSS selectors of dialog close buttons to click once after the consent step (a region, newsletter or promo dialog that covers the page or traps focus). Close buttons only: never Accept, Confirm or a country choice. Each click is printed as "# closed <selector>: <label>".'),
+    hideOverlays: z.boolean().optional()
+      .describe('states mode: hide a fixed/sticky layer that still covers a control during the pointer pass only. Say so in your report.'),
   },
-}, async ({ url, id, locale, mode, controls }) => {
+}, async ({ url, id, locale, mode, controls, close, hideOverlays }) => {
   const dir = path.join(ROOT, id, stamp());
   fs.mkdirSync(dir, { recursive: true });
   const args = [url, '--browser', 'worker', '--locale', locale, '--out', path.join(dir, mode === 'survey' ? 'survey.json' : 'states.json'), '--quiet', '--summary'];
+  if (close?.length) args.push('--close', close.join(','));
   if (mode === 'survey') args.push('--survey', '--census', '--visual', dir);
   else {
     if (!controls?.length) return { content: [{ type: 'text', text: 'mode "states" needs controls (run mode "survey" first)' }], isError: true };
     const cfg = path.join(dir, 'cfg.json');
     fs.writeFileSync(cfg, JSON.stringify({ controls }, null, 2));
     args.push('--cfg', cfg, '--shots', path.join(dir, 'shots'), '--visual', dir);
+    if (hideOverlays) args.push('--hide-overlays');
   }
   const r = await run(args, 15 * 60 * 1000);
   fs.writeFileSync(path.join(dir, 'summary.txt'), r.out + r.err);
