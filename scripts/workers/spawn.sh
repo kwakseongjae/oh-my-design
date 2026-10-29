@@ -62,8 +62,8 @@ if [ "$ENGINE" = codex ]; then
     MCP_ARGS=(-c 'mcp_servers.capture.command="node"' -c "mcp_servers.capture.args=[\"$REPO/scripts/workers/capture-mcp.mjs\"]" -c 'mcp_servers.capture.default_tools_approval_mode="approve"' -c 'mcp_servers.capture.tool_timeout_sec=900')
   fi
   GIT_FLAGS=(); git -C "$WORKDIR" rev-parse --git-dir >/dev/null 2>&1 || GIT_FLAGS=(--skip-git-repo-check)
-  CMD=(codex exec --ignore-user-config --json "${GIT_FLAGS[@]}" -C "$WORKDIR" -m "$MODEL" -c "model_reasoning_effort=\"$EFFORT\""
-       -s workspace-write -c 'sandbox_workspace_write.network_access=true' -c 'approval_policy="never"' "${MCP_ARGS[@]}"
+  CMD=(codex exec --ignore-user-config --json ${GIT_FLAGS[@]+"${GIT_FLAGS[@]}"} -C "$WORKDIR" -m "$MODEL" -c "model_reasoning_effort=\"$EFFORT\""
+       -s workspace-write -c 'sandbox_workspace_write.network_access=true' -c 'approval_policy="never"' ${MCP_ARGS[@]+"${MCP_ARGS[@]}"}
        --output-last-message "$RUN_DIR/last-message.md" --color never -)
   ( cd "$WORKDIR" && "${CMD[@]}" < "$RUN_DIR/order.md" > "$RUN_DIR/worker.log" 2>&1; echo $? > "$RUN_DIR/exit-code" ) </dev/null >/dev/null 2>&1 &
 else
