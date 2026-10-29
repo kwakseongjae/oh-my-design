@@ -385,6 +385,7 @@ UI strings. For documents, the situation's card in `references/situations.md` pl
 1. Read DESIGN.md type tokens. A brand value is not a violation.
 2. Run the checker: `node <this-skill-dir>/scripts/check.mjs <files-or-dirs>`.
    - `--json` gives machine output, and `--strict` fails on WARN too.
+   - Both checkers support `--format=github` for pull request annotations; copy the workflow in [`references/ci.md`](./references/ci.md).
    - Exit 1 means at least one BLOCK.
    - While walking it skips `node_modules`, build output and dot-directories. Pass a path like `.omd/runs/<run-id>` explicitly to check it.
 3. Grep for what the checker can't parse (CSS-in-JS, dynamic class names, config files):
@@ -505,6 +506,7 @@ Every run ends with this table, in the user's language. One row per change; Why 
 
 ## 9. References
 
+- [`references/ci.md`](./references/ci.md): a GitHub Actions workflow for both checkers on changed files, with inline annotations and strict checks.
 - [`references/rules.md`](./references/rules.md): every typography rule with source URLs and its tier. It also holds the 2026-09-29 verification log and the Unverified list.
 - [`references/measured-67.md`](./references/measured-67.md): how OmD measured 67 Korean services, the distributions, and the per-service table.
 - [`references/ux-writing.md`](./references/ux-writing.md): every writing rule (HW-1 … HW-14) with sources and tiers. It also holds the plain-word table, speech level by source, the 2026-10-24 verification log, and the Unverified list.

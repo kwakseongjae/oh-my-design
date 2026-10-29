@@ -3,7 +3,7 @@
  * /hangul check: deterministic, dependency-free scan for Korean (Hangul) typography
  * defects in HTML, CSS, JSX/TSX and Tailwind class strings. Node >= 18.
  *
- *   node check.mjs [--json] [--strict] [--assume-ko] <file-or-dir>...
+ *   node check.mjs [--json|--format=github] [--strict] [--assume-ko] <file-or-dir>...
  *   node check.mjs --self-test
  *
  * Exit code: 1 if any BLOCK finding (with --strict: any BLOCK or WARN), otherwise 0.
@@ -837,6 +837,21 @@ function run(inputs, { base = process.cwd(), assumeKo = false } = {}) {
   return { files: files.length, hangul: ctx.hasHangul, active, findings, notes, summary };
 }
 
+function escapeGithubMessage(value) {
+  return String(value).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+}
+
+function escapeGithubProperty(value) {
+  return escapeGithubMessage(value).replace(/:/g, '%3A').replace(/,/g, '%2C');
+}
+
+function printGithub(res, exit) {
+  const levels = { BLOCK: 'error', WARN: 'warning', FYI: 'notice' };
+  const out = res.findings.map((f) => `::${levels[f.severity]} file=${escapeGithubProperty(f.file)},line=${escapeGithubProperty(f.line)},title=${escapeGithubProperty(f.rule)}::${escapeGithubMessage(f.message)}`);
+  out.push(`${res.summary.BLOCK} BLOCK · ${res.summary.WARN} WARN · ${res.summary.FYI} FYI · exit ${exit}`);
+  console.log(out.join('\n'));
+}
+
 function printHuman(res, exit) {
   const out = [`/hangul check · ${res.files} file(s) · Hangul ${res.hangul ? 'found' : 'not found'}`];
   const w = Math.max(0, ...res.findings.map((f) => `${f.file}:${f.line}`.length));
@@ -897,20 +912,25 @@ function selfTest() {
 function main(argv) {
   const flags = new Set(argv.filter((a) => a.startsWith('--')));
   const inputs = argv.filter((a) => !a.startsWith('--'));
+  if (flags.has('--format=github') && flags.has('--json')) {
+    console.error('--format=github cannot be used with --json');
+    return 2;
+  }
   if (flags.has('--help') || (!inputs.length && !flags.has('--self-test'))) {
-    console.log('usage: node check.mjs [--json] [--strict] [--assume-ko] <file-or-dir>...\n       node check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN)');
+    console.log('usage: node check.mjs [--json|--format=github] [--strict] [--assume-ko] <file-or-dir>...\n       node check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN)');
     return flags.has('--help') ? 0 : 2;
   }
   if (flags.has('--self-test')) return selfTest();
   const res = run(inputs, { assumeKo: flags.has('--assume-ko') });
   const exit = res.summary.BLOCK > 0 || (flags.has('--strict') && res.summary.WARN > 0) ? 1 : 0;
   if (flags.has('--json')) console.log(JSON.stringify({ ...res, exit }, null, 2));
+  else if (flags.has('--format=github')) printGithub(res, exit);
   else printHuman(res, exit);
   return exit;
 }
 
-// copy-check.mjs reuses the markup index; running this file directly still runs the CLI.
-export { HANGUL, SKIP_DIR, MARKUP_EXT, STR_LIT, isUrlish, maskMarkup, scanMarkup, makeLineAt, elementKind };
+// copy-check.mjs reuses the markup index and GitHub formatter; running this file directly still runs the CLI.
+export { HANGUL, SKIP_DIR, MARKUP_EXT, STR_LIT, isUrlish, maskMarkup, scanMarkup, makeLineAt, elementKind, printGithub };
 
 const invokedDirectly = (() => {
   try { return fs.realpathSync(process.argv[1] || '') === fs.realpathSync(fileURLToPath(import.meta.url)); } catch { return false; }

@@ -3,7 +3,7 @@
  * /hangul copy check: deterministic, dependency-free scan of Korean copy: UI strings in HTML, JSX/TSX,
  * JS/TS string literals and JSON message files, and documents in Markdown and text files. Node >= 18.
  *
- *   node copy-check.mjs [--json] [--strict] [--list] [--context=<situation>|auto] <file-or-dir>...
+ *   node copy-check.mjs [--json|--format=github] [--strict] [--list] [--context=<situation>|auto] <file-or-dir>...
  *   node copy-check.mjs --self-test
  *
  * Exit code: 1 if any BLOCK finding (with --strict: any BLOCK or WARN), otherwise 0.
@@ -30,7 +30,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { HANGUL, SKIP_DIR, MARKUP_EXT, STR_LIT, maskMarkup, scanMarkup, makeLineAt } from './check.mjs';
+import { HANGUL, SKIP_DIR, MARKUP_EXT, STR_LIT, maskMarkup, scanMarkup, makeLineAt, printGithub } from './check.mjs';
 
 const COPY_EXT = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.ts', '.mjs', '.cjs', '.vue', '.svelte', '.astro', '.json', '.md', '.mdx', '.markdown', '.txt']);
 // documents (reports, decks, notices, e-mails, press releases, docs) read as prose: one string per paragraph,
@@ -1222,8 +1222,12 @@ function main(argv) {
     else if (a.startsWith('--')) flags.add(a);
     else inputs.push(a);
   }
+  if (flags.has('--format=github') && flags.has('--json')) {
+    console.error('--format=github cannot be used with --json');
+    return 2;
+  }
   if (flags.has('--help') || (!inputs.length && !flags.has('--self-test'))) {
-    console.log(`usage: node copy-check.mjs [--json] [--strict] [--list] [--context=<auto|${CONTEXTS.join('|')}>] <file-or-dir>...\n       node copy-check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN); --context defaults to auto (detection), app turns it off`);
+    console.log(`usage: node copy-check.mjs [--json|--format=github] [--strict] [--list] [--context=<auto|${CONTEXTS.join('|')}>] <file-or-dir>...\n       node copy-check.mjs --self-test\nexit 1 on any BLOCK (with --strict: any BLOCK or WARN); --context defaults to auto (detection), app turns it off`);
     return flags.has('--help') ? 0 : 2;
   }
   if (flags.has('--self-test')) return selfTest();
@@ -1234,6 +1238,10 @@ function main(argv) {
   const res = run(inputs, { context });
   const exit = res.summary.BLOCK > 0 || (flags.has('--strict') && res.summary.WARN > 0) ? 1 : 0;
   if (flags.has('--json')) console.log(JSON.stringify({ ...res, exit }, null, 2));
+  else if (flags.has('--format=github')) {
+    if (flags.has('--list')) for (const s of res.strings) console.log(`${s.file}:${s.line}  [${s.role}${s.err ? ',error' : ''}${s.dialog ? ',dialog' : ''}${s.link ? ',link' : ''}]  ${s.text}`);
+    printGithub(res, exit);
+  }
   else printHuman(res, exit, flags.has('--list'));
   return exit;
 }
