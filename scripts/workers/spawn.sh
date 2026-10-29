@@ -12,6 +12,7 @@
 # claude: claude -p --model sonnet --effort medium, acceptEdits, a narrow Bash allowlist, no skills or MCP.
 # Output: a run directory under $OMD_WORKER_RUNS (default ~/.omd-workers/runs) with order.md, worker.log,
 #         last-message.md, meta.json, pid, and exit-code when done. The last stdout line is RUN_DIR=<path>.
+# The worker's subshell drops this script's stdio, so `spawn.sh … | tail` returns at once.
 # Workers never commit or push; the orchestrator reviews the diff, reruns the checks and commits.
 set -euo pipefail
 
@@ -64,7 +65,7 @@ if [ "$ENGINE" = codex ]; then
   CMD=(codex exec --ignore-user-config --json "${GIT_FLAGS[@]}" -C "$WORKDIR" -m "$MODEL" -c "model_reasoning_effort=\"$EFFORT\""
        -s workspace-write -c 'sandbox_workspace_write.network_access=true' -c 'approval_policy="never"' "${MCP_ARGS[@]}"
        --output-last-message "$RUN_DIR/last-message.md" --color never -)
-  ( cd "$WORKDIR" && "${CMD[@]}" < "$RUN_DIR/order.md" > "$RUN_DIR/worker.log" 2>&1; echo $? > "$RUN_DIR/exit-code" ) &
+  ( cd "$WORKDIR" && "${CMD[@]}" < "$RUN_DIR/order.md" > "$RUN_DIR/worker.log" 2>&1; echo $? > "$RUN_DIR/exit-code" ) </dev/null >/dev/null 2>&1 &
 else
   CLAUDE_BIN="$(command -v claude)"
   ( cd "$WORKDIR" && "$CLAUDE_BIN" -p "$(cat "$RUN_DIR/order.md")" --model "$MODEL" --effort "$EFFORT" --output-format stream-json --verbose \
@@ -76,7 +77,7 @@ else
 r=[json.loads(l) for l in open(sys.argv[1]) if l.startswith('{')]
 res=[x for x in r if x.get('type')=='result']
 open(sys.argv[2],'w').write(res[-1].get('result','') if res else '')" "$RUN_DIR/worker.log" "$RUN_DIR/last-message.md" 2>/dev/null
-    echo $ec > "$RUN_DIR/exit-code" ) &
+    echo $ec > "$RUN_DIR/exit-code" ) </dev/null >/dev/null 2>&1 &
 fi
 echo $! > "$RUN_DIR/pid"
 cat > "$RUN_DIR/meta.json" <<EOF

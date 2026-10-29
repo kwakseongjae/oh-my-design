@@ -3,7 +3,7 @@
 갱신: **2026-10-29 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획, 오너 결정 대기
+## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획 · 19시 DESIGN.md 웨이브 Sol 워커 4개 가동
 
 - **오너 요청(10/29 17:04).** Codex Plus 크레딧이 넉넉하니 gpt-6.1-sol 최대 effort를 워커로 써서 hangul·DESIGN.md 확충 작업을 시험. 기획은 Opus, 워커는 필요에 따라 Sonnet 5.5 medium 또는 6.1-sol 최대 effort. 나중에 DESIGN.md·사이트 분석을 MCP처럼 제공하는 방향까지 기획. 먼저 가능성 시험 후 계획.
 - **시험(17:00~).**
@@ -19,6 +19,10 @@
   - 계획: `docs/WORKER_PLAN_2026-10-29.md`. 오너 결정 5건(§8) 대기.
 - **오너 결정(18:42).** ① 워커 브라우저 = 전용 Chrome 프로필 ② MCP v2 = 수집 데이터 제공(캡처 도구는 내부 전용, '로컬 사이트 분석'은 내림) ③ Sol 워커 동시 4개. 계획 §6·§8 반영.
 - **진행(18:45~).** 워커 키트(미커밋, main 작업 트리): `scripts/workers/spawn.sh`(codex/claude, Sol 4개 상한, `--mcp capture`), `scripts/workers/capture-mcp.mjs`(고정 도구 `probe_page` 하나, 결과는 `artifacts/reference-evidence/visual/<id>/<시각>/`), `docs/workers/WORK_ORDER_TEMPLATE.md`. 연결 시험 통과(샌드박스 워커 → MCP → 샌드박스 밖 프로브). 캡처 기능(`--browser worker`·`--shots`·`--visual`)은 Sol max 워커가 `probe-keyboard-states.mjs`에 구현 중(워크트리 `.claude/worktrees/cx-capture`, 브랜치 `codex/capture-visual`).
+- **진행(19:00~) · 캡처 반영 + DESIGN.md 웨이브(Sol 워커 4개 가동 중).**
+  - main 커밋·푸시: `0a1305d9`(캡처 기능, Sol 워커 구현·본 세션 검토·실측), `b62d10af`(워커 키트·PROBE_BRIEF), `387315d5`(`--census`: PROBE_BRIEF 측정 1~3을 survey에 기록, 캡처 MCP survey가 사용). spawn.sh 출력 파이프 붙잡힘 수정·PROBE_BRIEF census 설명은 미커밋.
+  - **가동 중인 워커(19:12~, gpt-6.1-sol max, `--mcp capture`)**: w5-sbb(de-CH, 시범 — survey.json 읽기 확인됨) · w5-kiwi(en-US) · w5-emag(ro-RO) · w5-odoo(en-US). 실행 기록 `~/.omd-workers/runs/w5-*`, 작업 폴더 `~/.omd-workers/wave5/<id>/`(지시서 양식 `_shared/ORDER_TEMPLATE.md`, 생성기 `make-order.py`). 캡처 중 워커 전용 Chrome 창이 화면에 뜬다.
+  - 각 워커 산출: report.md · verification.md · front.yaml · body.md · sources.json, 조립기(`assemble-reference.mjs`) 자체 점검까지. **이번은 저작 시험**(§4 ④는 여전히 본 세션) — 본 세션이 ②′ 헤드라인 재측정(크롭 확인), ③ 분리, 서사 문장 전부 출처 대조, 국가 판정(emag = Prosus 소유 → 모회사 규칙 판단 필요), §4 체크리스트 후 커밋. 결과는 WORKER_PLAN §2·COLLECTOR_MODEL_TRIAL에 기록.
 - **참고.** MCP 커넥터 v1은 2026-07-14 Core v2 전환 때 퇴역(/api/mcp 410, npm 패키지 보관). 성장 계획(10/13)은 AI 인용 채널로 MCP 커넥터를 다시 적어 둠. 10/25 /hangul 로컬 보고서(`docs/research/2026-10-25-hangul-report/index.html`)는 마감 직전(통계 카드 줄바꿈·섹션 캡처의 고정 헤더 겹침 수정 남음).
 
 ## ▶ 2026-10-25 3시 반 · /hangul — 열린 작업 마무리 + 로컬 화면·테스트 결과 문서 + UX 라이팅 추가 테스트 + 리서치·오픈소스 조사 (진행 중)
