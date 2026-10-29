@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-01T00:00:00Z",
+ "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 521,
+ "count": 522,
  "items": [
   {
    "id": "104",
@@ -9661,6 +9661,34 @@
    ],
    "has_personas": false,
    "category_raw": "mobile-payments"
+  },
+  {
+   "id": "sbb",
+   "primary_color_hex": "#eb0000",
+   "category": "consumer-tech",
+   "visual_theme": "Swiss Federal Railways' booking portal in a reduced palette: white ground, #212121 titles and #686868 body ink in the SBB face, pale #f6f6f6 offer cards with an 8px radius, and the SBB red #eb0000 kept for the primary pill (hover #c60018, pressed #a20013). Actions are 48px pills whose painted ::before layer grows on hover; every control focuses with a 1px black outline offset 3px. Built on Lyne, SBB's public web-component design system.",
+   "voice_fingerprint": {
+    "register": "Swiss national railway, concise and action-oriented",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-ch-rail-travel"
+   },
+   "tone_keywords": [
+    "reduced",
+    "red",
+    "public-service",
+    "clear",
+    "swiss"
+   ],
+   "antipatterns": [
+    "red on secondary controls; red marks important navigation and the primary action",
+    "pure black body text; paragraphs are #686868 and titles #212121",
+    "square buttons; actions are pills",
+    "browser-default focus rings; focus is a 1px black outline offset 3px",
+    "long button labels; SBB asks for 1–4 words in sentence case"
+   ],
+   "has_personas": false,
+   "category_raw": "rail-travel"
   },
   {
    "id": "scatterlab",

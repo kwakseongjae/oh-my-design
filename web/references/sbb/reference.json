@@ -1,0 +1,958 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "sbb",
+    "name": "SBB",
+    "country": "CH",
+    "category": "consumer-tech",
+    "homepage": "https://www.sbb.ch/de",
+    "primary_color": "#eb0000",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=sbb.ch&sz=128"
+    },
+    "verified": "2026-10-29",
+    "added": "2026-10-29"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-10-29",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-10-29",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-surface",
+        "url": "https://www.sbb.ch/de",
+        "inspected": "2026-10-29"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.sbb.ch/de",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "company",
+        "kind": "official-doc",
+        "url": "https://company.sbb.ch/en/company/about-us.html",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "history",
+        "kind": "official-doc",
+        "url": "https://company.sbb.ch/en/company/125-years/history.html",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "imprint",
+        "kind": "official-doc",
+        "url": "https://company.sbb.ch/de/meta/legallines/impressum.html",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "imprint-en",
+        "kind": "official-doc",
+        "url": "https://company.sbb.ch/en/meta/legallines/imprint.html",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "brand-page",
+        "kind": "official-doc",
+        "url": "https://company.sbb.ch/en/company/about-us/brand-sbb.html",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "passenger",
+        "kind": "official-doc",
+        "url": "https://company.sbb.ch/en/company/about-us/organisation/passenger-division.html",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "federal-owner",
+        "kind": "official-doc",
+        "url": "https://www.efv.admin.ch/en/enterprises-institutions",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "digital",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "ds-docs",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/design-system/lyne/what-is-lyne/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "color-docs",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/foundation/colors/base-colors/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "logo-docs",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/foundation/brand/logo/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "principles",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/principles/ux-principles/overview/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "ux-writing-about",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/foundation/language/about/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "ux-writing-controls",
+        "kind": "official-doc",
+        "url": "https://digital.sbb.ch/en/foundation/language/button-and-links/",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "theme-css",
+        "kind": "brand-asset",
+        "url": "https://digital.sbb.ch/assets/css/standard-theme.css?v=b6bb97ee",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "control-company",
+        "kind": "product-surface",
+        "url": "https://company.sbb.ch/zz-this-does-not-exist",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "control-digital",
+        "kind": "product-surface",
+        "url": "https://digital.sbb.ch/zz-this-does-not-exist",
+        "captured": "2026-10-29"
+      },
+      {
+        "id": "control-404",
+        "kind": "product-surface",
+        "url": "https://www.sbb.ch/zz-this-does-not-exist",
+        "captured": "2026-10-29"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.background": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.content": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.header-ink": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.label": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.primary-hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.primary-pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.secondary-hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.secondary-pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "colors.surface": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.journey-origin.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.menu-button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.offer-card.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.primary-cta.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.backgroundColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.secondary-cta.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.focus": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "components.status-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-10-29"
+      },
+      "rounded.card": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.action.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.action.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.action.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.action.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.journey.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.journey.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.journey.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.journey.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.navigation.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.navigation.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.navigation.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      },
+      "typography.navigation.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-10-29"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 40,
+      "infos": 2
+    },
+    "byRule": {
+      "extension-component-property": 30,
+      "orphaned-tokens": 10
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.primary-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.secondary-cta.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.secondary-cta.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.secondary-cta.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.secondary-cta.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.secondary-cta.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.status-link.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.status-link.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.status-link.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.status-link.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.status-link.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.journey-origin.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.journey-origin.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.journey-origin.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.journey-origin.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.journey-origin.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.offer-card.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.offer-card.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.offer-card.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.offer-card.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.offer-card.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-button.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-button.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-button.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-button.focus",
+        "message": "'focus' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.menu-button.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-hover",
+        "message": "'primary-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-pressed",
+        "message": "'primary-pressed' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.content",
+        "message": "'content' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.header-ink",
+        "message": "'header-ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.label",
+        "message": "'label' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.secondary-hover",
+        "message": "'secondary-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.secondary-pressed",
+        "message": "'secondary-pressed' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.focus",
+        "message": "'focus' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "1347486b459027b56b0116032cf2c071711fdac73c9eea6f4651591cbe452fb8",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.action.fontSize",
+      "typography.journey.fontSize",
+      "typography.navigation.fontSize",
+      "rounded.card",
+      "components.status-link.rounded",
+      "components.journey-origin.rounded",
+      "components.offer-card.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "added",
+        "omd",
+        "tokens",
+        "verification_v2"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "action",
+        "journey",
+        "navigation"
+      ]
+    }
+  }
+}
