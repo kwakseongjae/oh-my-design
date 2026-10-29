@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-10-29",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 523,
+  "count": 524,
   "counts": {
-    "verified_v2": 301,
+    "verified_v2": 302,
     "partial": 109,
     "legacy_snapshot": 113,
-    "total": 523
+    "total": 524
   },
   "items": [
     {
@@ -2645,6 +2645,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "kiwi",
+      "status": "verified_v2",
+      "verified_at": "2026-10-29",
+      "next_reverify_at": "2027-04-27",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "kkbox",

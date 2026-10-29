@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 523,
+ "count": 524,
  "items": [
   {
    "id": "104",
@@ -5427,6 +5427,34 @@
    "signature_motion": "*Durations** (named, not raw milliseconds):",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "kiwi",
+   "primary_color_hex": "#008f7b",
+   "category": "consumer-tech",
+   "visual_theme": "Kiwi.com's flight search on the Orbit system: white and #f5f7f9 grounds, #252a31 ink in Circular, a white search panel, and teal product green #008f7b on 8px-radius 44px actions (hover #007565, pressed #006153 with a soft inset shadow). A darker #007061 runs the Club CTA; destination cards reveal a white information panel on hover. Keyboard focus is the browser ring.",
+   "voice_fingerprint": {
+    "register": "budget flight travel, confident and playful",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-flight-travel"
+   },
+   "tone_keywords": [
+    "teal",
+    "practical",
+    "playful",
+    "guaranteed",
+    "travel"
+   ],
+   "antipatterns": [
+    "pure black ink; text is #252a31",
+    "square buttons; actions round at 8px (12px on the large Club CTA)",
+    "a drop shadow on pressed buttons; press adds a soft inset",
+    "inventing a brand focus ring; focus is the browser's own",
+    "Orbit status colours used as brand accents; the brand is product green"
+   ],
+   "has_personas": false,
+   "category_raw": "flight-travel"
   },
   {
    "id": "kkbox",

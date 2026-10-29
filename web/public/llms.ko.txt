@@ -1,6 +1,6 @@
 # oh-my-design
 
-> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 전체 번들 스킬 31개와 에이전트 정의 20개를, Cursor 2.4+에는 호환 Agent Skills 30개와 작은 프로젝트 rule, 로컬 카탈로그를 설치합니다. 품질 등급이 표시된 DESIGN.md 레퍼런스 523개 중 verified_v2 301개, partial 109개, legacy 113개이며 공개 데모에는 verified_v2를 사용합니다.
+> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 전체 번들 스킬 31개와 에이전트 정의 20개를, Cursor 2.4+에는 호환 Agent Skills 30개와 작은 프로젝트 rule, 로컬 카탈로그를 설치합니다. 품질 등급이 표시된 DESIGN.md 레퍼런스 524개 중 verified_v2 302개, partial 109개, legacy 113개이며 공개 데모에는 verified_v2를 사용합니다.
 
 ## 제품 모델
 
