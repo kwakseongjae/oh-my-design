@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 529,
+ "count": 530,
  "items": [
   {
    "id": "104",
@@ -3336,6 +3336,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "finnair",
+   "primary_color_hex": "#0c0243",
+   "category": "consumer-tech",
+   "visual_theme": "Finnair's Finnish booking homepage: deep-blue #0c0243 ink on white and warm off-white #f6f5f3, FinnairText for the interface and FinnairHeadlinePro for headlines, 40px outlined pill actions with a 2px deep-blue border, 72px route selectors with asymmetric 8px corners, and offer cards in 8px sections with a faint three-layer shadow. Hover fills pills and the navigation item with pale blue #f0f4fd, thickens the route selector's grey outline to 2px and deepens the card shadow; keyboard focus is a 2px solid #0c0243 outline offset 3px.",
+   "voice_fingerprint": {
+    "register": "Finnish flag carrier, direct travel-task labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fi-travel"
+   },
+   "tone_keywords": [
+    "Nordic",
+    "calm",
+    "deep-blue",
+    "rounded",
+    "practical"
+   ],
+   "antipatterns": [
+    "filled primary pills; actions are white with a 2px deep-blue border",
+    "a darker fill on press; pills keep the #f0f4fd hover fill",
+    "black text; ink is the deep blue #0c0243",
+    "symmetric corners on the route selector; it uses 0 8px 8px 0",
+    "a substitute face for the declared-only FinnairSans"
+   ],
+   "has_personas": false,
+   "category_raw": "airline"
   },
   {
    "id": "firstory",

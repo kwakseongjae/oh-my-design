@@ -3282,6 +3282,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "finnair",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 81,
+    "evidenceClaimCount": 81,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "firstory",
     "status": "partial",
     "verifiedAt": "2026-06-10",
@@ -12993,10 +13015,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 307,
+  "verified_v2": 308,
   "partial": 109,
   "legacy_snapshot": 113,
-  "total": 529
+  "total": 530
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
