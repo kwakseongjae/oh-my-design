@@ -89,7 +89,6 @@ components:
     use: 'Explore flight-search button; measured width 84px. Keyboard focus also changes its fill to #007565; the accompanying auto outline is browser supplied. No focus token is published.'
   help-support:
     type: button
-    backgroundColor: transparent
     textColor: '#252a31'
     border: none
     rounded: 8px
@@ -102,7 +101,6 @@ components:
     use: Help & support secondary header action; measured width 103px.
   flights-nav:
     type: button
-    backgroundColor: transparent
     textColor: '#008f7b'
     border: none
     rounded: 8px
@@ -115,7 +113,6 @@ components:
     use: Flights header navigation anchor, href /en/, styled as an Orbit text action; measured width 46.3px.
   bangkok-card:
     type: card
-    backgroundColor: transparent
     textColor: '#ffffff'
     border: none
     rounded: 6px
@@ -321,4 +318,3 @@ Use the measured controls as component examples. Unverified workflows and absent
 ### Known Gaps
 
 - **Contrast, `explore`.** Text `#ffffff` on `#008f7b` measures 4.03:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `help-support`.** Text `#252a31` on `#00000000` measures 1.45:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

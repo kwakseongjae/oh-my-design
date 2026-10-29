@@ -233,12 +233,6 @@
         "method": "computed-style",
         "captured": "2026-10-29"
       },
-      "components.bangkok-card.backgroundColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-10-29"
-      },
       "components.bangkok-card.border": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -449,12 +443,6 @@
         "method": "live-inspect",
         "captured": "2026-10-29"
       },
-      "components.flights-nav.backgroundColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-10-29"
-      },
       "components.flights-nav.border": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -516,12 +504,6 @@
         "captured": "2026-10-29"
       },
       "components.flights-nav.use": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-10-29"
-      },
-      "components.help-support.backgroundColor": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -851,13 +833,13 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 58,
+      "warnings": 57,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
       "extension-component-property": 30,
-      "contrast-ratio": 2,
+      "contrast-ratio": 1,
       "orphaned-tokens": 21
     },
     "findings": [
@@ -1079,12 +1061,6 @@
       },
       {
         "severity": "warning",
-        "rule": "contrast-ratio",
-        "path": "components.help-support",
-        "message": "textColor (#252a31) on backgroundColor (#00000000) has contrast ratio 1.45:1, below WCAG AA minimum of 4.5:1."
-      },
-      {
-        "severity": "warning",
         "rule": "orphaned-tokens",
         "path": "colors.primary-hover",
         "message": "'primary-hover' is defined but never referenced by any component."
@@ -1213,7 +1189,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "2864c1c1f6e1a1231a2ad687578890742ce14663384be38498468fa330143f29",
+    "sourceSha256": "f9c25c548441f3911f20ec227899f3d8f042fc72d745b3d86305f23cbd1ceb02",
     "overlay": null,
     "prose": [],
     "numeric": [
