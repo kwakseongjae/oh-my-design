@@ -71,11 +71,13 @@ The order matters. A WAF often starts blocking after browser probes, so read the
 **Rules the assembler and the catalog gate enforce:**
 - `tokens.colors` values are 6-digit lowercase hex only, quoted. Write alpha or rgba values in prose.
 - `rounded` values are numbers only. Write percentages and pills in prose.
+- `spacing` values are numbers only (`sm: 16`, not `"16px"`); the registry rejects strings.
 - Every hex in `tokens.colors`, and every hex in a component's `bg`, `fg` or `border`, must also appear in `body.md` outside the frontmatter.
 - The body-text colour role is named `foreground`, never `text`.
 - A component declares only the states that were measured. If focus is the browser's `auto` ring, create no focus token.
 - Typography `family` lists only faces that were loaded or are officially documented as the product face, with their evidence class stated in §3.
 - Component `type` must be one of: button, input, card, badge, tab, toggle, toast, dialog, listItem, avatar. A link styled as an action or a nav link is `button`; a card link is `card`. Say in `use` that it is a link.
+- **Consent-banner buttons are not components**, even when the site styles its own banner with brand tokens. Their measured states may support a token in prose; put product controls in `components`.
 - **Never declare an interactive component without at least one measured state.** If a control's states are all unchanged, browser-only (`auto` outline) or polluted (a change that persists after blur), keep it in the body prose and leave it out of `components`. The gate marks the whole reference partial otherwise.
 - **Do not write `bg: "transparent"`.** The converter turns it into `#00000000` and publishes a false contrast gap measured against black. Omit `bg` for a transparent control, and say in `use` what it sits on.
 - **Motion values must be grounded.** Every `NNms` and `cubic-bezier(...)` in §15 must appear verbatim in `verification.md`. Copy the raw computed `transition` strings from states.json into the Proof block, and write the curves in §15 exactly as computed, spaces included: `cubic-bezier(0.4, 0, 0.2, 1)`.
