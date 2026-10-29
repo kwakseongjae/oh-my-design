@@ -1,3 +1,8 @@
+## 2026-10-29 22시 반 — EU 9곳 독립 검수·main 머지·운영 확인, MCP v2 명세, ego lite 검토 (오너 지시로 중단)
+- 한 일: Sol 검수 워커 3개 → BLOCK 6·WARN 17 원본 대조 후 수정, main 머지 `4b2dc3a9`·배포 확인(530 / 308). effort 기본값 확정. `docs/MCP_V2_SPEC_2026-10-29.md` 초안. ego lite는 지역 창 문제를 못 푼다고 판단(WORKER_PLAN).
+- 열린 것: MCP v2 D1~D6, 2.0.6 출시 GO·waiver(번들 재빌드 포함), /hangul 프리뷰 GO, 조립기 `§N` 참조·변환기 Known Gaps 후속.
+- 다음: CURRENT_STATE "재개 큐" 1번부터.
+
 ## 2026-10-29 21시 반 — Codex Sol 워커 시험·계획, DESIGN.md 웨이브 9곳 Sol 저작으로 verified(`feat/eu-wave5`, 530 / 308)
 - 한 일: gpt-6.1-sol max 워커 시험(샌드박스 Chrome 불가 → 샌드박스 밖 캡처 MCP `probe_page`, 워커 전용 헤디드 Chrome), 계획 `docs/WORKER_PLAN_2026-10-29.md`, 오너 결정 3건(전용 프로필·MCP v2는 수집 데이터만·Sol 동시 4개). 웨이브 5·5b: sbb·odoo·kiwi·emag·sixt·withings·bbva·mango·finnair 전부 verified, 서사 오류 0.
 - 고친 도구: 프로브 `--close`, MCP `close`·`hideOverlays`, 거부어(루마니아어·체코어·스페인어·핀란드어), 지시서 규칙(국가·렌더 타입·모션 근거·간격 숫자·동의 버튼). 증거 매니페스트 1190개, iCloud 동기화.

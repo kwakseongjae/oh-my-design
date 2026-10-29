@@ -1,7 +1,26 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-29 21시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-29 22시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-10-29 22시 반 · EU 웨이브 9곳 main 머지·배포 확인 + MCP v2 명세 + ego lite 검토 · **오너 지시로 중단, 재개 대기**
+
+- **오너 요청(21:31).** ① ego lite로 지역·동의 창 문제를 풀 수 있나 ② main 머지 전 마지막 검수 ③ effort 기본값 확인 ④ MCP v2 명세 미루지 말 것 ⑤ 남은 작업 브리핑. 22시 반경 "현재 진행 중인 작업만 하고 중단 후 재개 준비".
+- **② 완료.**
+  - Sol max 검수 워커 3개가 9곳을 다시 대조: BLOCK 6, WARN 17. 원본으로 확인 후 수정 `63c807e2`. 그중 mango 포커스 순서·finnair 누름 상태 설명은 본 세션이 검토 때 잘못 쓴 것, withings 흰 바탕은 워커 초안을 본 세션이 놓친 것.
+  - llms 파일 누락 수정 `bdeb3e88`. main 병합 `4b2dc3a9`(no-ff) → 푸시 → **운영 배포 확인**(약 2분): 9곳 영·한 상세·raw 200, h1, `#use`, llms.txt 530.
+  - 상세: WORKER_PLAN "마지막 검수" 절. 검수 지시서 `docs/workers/FINAL_REVIEW_ORDER_TEMPLATE.md`, spawn.sh 빈 배열 버그 수정 `42916932`.
+- **③ 확정.** 조사·저작·검수 Sol max, 좁은 구현 Sonnet medium(WORKER_PLAN §8 #3).
+- **④ 초안 완료.** `docs/MCP_V2_SPEC_2026-10-29.md`: `/api/mcp` 재사용, 도구 6개, 값마다 근거, 모르는 값은 `absent`. 오너 결정 D1~D6 대기. Phase 0(410 카운터)은 승인 뒤.
+- **① 답.** ego lite로는 안 풀림(같은 IP라 같은 지역 창, 워커는 이미 브라우저를 직접 켜지 않음, 오너 프로필·API 이식 비용). 현 구조 유지, 개선 후보 `--close auto`. WORKER_PLAN "ego lite 검토" 절.
+- **⑤ 재개 큐(순서대로).**
+  1. 오너 결정: MCP v2 D1~D6 → 승인 시 Phase 0(410 카운터) → Phase 1(Sol 구현, 워크트리).
+  2. 2.0.6 출시 GO·strict waiver(10/25부터 대기). 출시 때 capture 번들 재빌드(스페인어·핀란드어 거부어 포함, `npm run build`가 바꾸는 `skills/omd-reference-capture/scripts/capture-reference-evidence.mjs`)와 런타임 미러 재동기화.
+  3. /hangul 프리뷰 GO, 외래어 4쌍·KOGL 어휘·페이지 소개 문구(10/25 열린 것).
+  4. 후속 과제: 조립기가 레거시 `§N` 참조를 v3 제목으로 안 바꿈(카탈로그 304개 파일에 `§숫자`, 일부는 끊긴 참조) / 변환기가 숨은 라벨 아이콘 버튼에도 텍스트 대비 Known Gaps를 생성 / 변환기의 spacing 생략 문구 / `build-embeddings`가 소비처 없이 빌드마다 실행.
+  5. 다음 Sol 웨이브: 새 후보 센서스부터(EU 웨이브 5 소진). `--close auto` 구현 후보.
+  6. 루트 전체 테스트를 부하 낮을 때 다시 돌려 기록(이번엔 load 43~66, main도 66건 시간 초과).
+- **정리 상태.** 워크트리 `.claude/worktrees/eu-wave5`(브랜치 머지됨, `node_modules` 심볼릭 링크만 미추적) 남겨 둠. 제거 전 심볼릭 링크부터 지울 것. 워커 폴더 `~/.omd-workers/{wave5,wave5b,final-review}/`(원본 `*.worker.*`, 검수 전 `*.prefinal.*`).
 
 ## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획 · 20시 DESIGN.md 웨이브 4/4 · 21시 반 웨이브 5b 5/5 verified(Sol 저작 채택, 530 / 308)
 
