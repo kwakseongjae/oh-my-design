@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 522,
+ "count": 523,
  "items": [
   {
    "id": "104",
@@ -7715,6 +7715,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "odoo",
+   "primary_color_hex": "#714b67",
+   "category": "saas",
+   "visual_theme": "Odoo's business-app suite on its marketing homepage: white and #f3f4f6 grey fields, #111827 ink in Inter, big Caveat handwriting with drawn highlights, and Odoo purple #714b67 on compact 6.4px-radius buttons under a faint 145° white gradient (hover #604058, pressed #5a3c52, focus a 4px purple-tinted ring). A six-column grid of colourful app icons lifts each tile 4px on hover.",
+   "voice_fingerprint": {
+    "register": "direct business software, simple and affordable",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-business-software"
+   },
+   "tone_keywords": [
+    "integrated",
+    "informal",
+    "purple",
+    "simple",
+    "affordable"
+   ],
+   "antipatterns": [
+    "teal #017e84 as the button colour; the CTAs are purple #714b67",
+    "handwriting on controls; Caveat is display-only, controls are Inter",
+    "heavy drop shadows on buttons; they use a faint white gradient",
+    "pure black ink; text is #111827",
+    "recreating or recolouring the logo; Odoo forbids it"
+   ],
+   "has_personas": false,
+   "category_raw": "business-software"
   },
   {
    "id": "ohouse",

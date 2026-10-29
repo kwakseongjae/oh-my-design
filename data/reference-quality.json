@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-10-29",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 522,
+  "count": 523,
   "counts": {
-    "verified_v2": 300,
+    "verified_v2": 301,
     "partial": 109,
     "legacy_snapshot": 113,
-    "total": 522
+    "total": 523
   },
   "items": [
     {
@@ -3734,6 +3734,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "odoo",
+      "status": "verified_v2",
+      "verified_at": "2026-10-29",
+      "next_reverify_at": "2027-04-27",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "ohouse",

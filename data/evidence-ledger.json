@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 300,
-  "sources": 1983,
+  "references_with_verification_v2": 301,
+  "sources": 1996,
   "sources_by_kind": {
-    "brand-asset": 79,
+    "brand-asset": 81,
     "license": 137,
-    "official-doc": 730,
-    "product-surface": 1037
+    "official-doc": 739,
+    "product-surface": 1039
   },
   "references": {
     "104": {
@@ -8258,6 +8258,90 @@
           "kind": "product-surface",
           "captured": "2026-09-23",
           "host": "www.ocado.com"
+        }
+      ]
+    },
+    "odoo": {
+      "checked": "2026-10-29",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-history",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "brand-asset",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "frontend-css",
+          "kind": "brand-asset",
+          "captured": "2026-10-29",
+          "host": "odoocdn.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "partnership",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "press-index",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
+        },
+        {
+          "id": "terms-sale",
+          "kind": "official-doc",
+          "captured": "2026-10-29",
+          "host": "www.odoo.com"
         }
       ]
     },
