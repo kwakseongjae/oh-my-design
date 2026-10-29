@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 526,
+ "count": 527,
  "items": [
   {
    "id": "104",
@@ -12528,6 +12528,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "withings",
+   "primary_color_hex": "#6784fe",
+   "category": "healthcare",
+   "visual_theme": "Withings' French health-device storefront: Aeonik in regular and medium weights, #0f0f0f ink on white and sand #f2eeea surfaces, square navigation and a violet-blue #6784fe primary action with 16px corners and a same-colour 1px inset edge that deepens to #5570e0 on hover. Text links carry a 1px violet underline that disappears on hover while the caret slides 4px; keyboard focus is a 1px solid outline offset 2–3px.",
+   "voice_fingerprint": {
+    "register": "calm consumer-health retail, concrete next-step labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-retail"
+   },
+   "tone_keywords": [
+    "calm",
+    "health",
+    "violet-blue",
+    "rounded",
+    "quiet"
+   ],
+   "antipatterns": [
+    "a browser focus ring; focus is a 1px solid outline with an offset",
+    "rounding the navigation; only the primary action and the email field have 16px corners",
+    "a drop shadow on the primary action; its edge is a 1px inset of its own colour",
+    "a substitute grotesque for Aeonik; none is chosen",
+    "underlining text links on hover; the underline is at rest and disappears on hover"
+   ],
+   "has_personas": false,
+   "category_raw": "connected health devices"
   },
   {
    "id": "wolt",
