@@ -925,6 +925,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "bbva",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 69,
+    "evidenceClaimCount": 69,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "beusable",
     "status": "partial",
     "verifiedAt": "2026-07-02",
@@ -2951,6 +2973,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "emag",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 78,
+    "evidenceClaimCount": 78,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
+    "conflictCount": 0,
+    "tier1SourceCount": 5,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "epidemicsound",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -3232,6 +3276,28 @@ export const REFERENCE_QUALITY = [
     "tier1SourceCount": 4,
     "componentCount": 15,
     "interactiveComponentCount": 11,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "finnair",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 82,
+    "evidenceClaimCount": 82,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
     "statedComponentCount": 4,
     "reasonCodes": [],
     "advisoryCodes": [],
@@ -5358,6 +5424,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.263
   },
   {
+    "id": "kiwi",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 122,
+    "evidenceClaimCount": 122,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "kkbox",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-06-01",
@@ -6172,6 +6260,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 3,
     "interactiveComponentCount": 3,
     "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "mango",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 69,
+    "evidenceClaimCount": 69,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -7547,6 +7657,28 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "odoo",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 87,
+    "evidenceClaimCount": 87,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
   },
@@ -9518,6 +9650,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "sbb",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 84,
+    "evidenceClaimCount": 84,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 19,
+    "conflictCount": 0,
+    "tier1SourceCount": 19,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "scatterlab",
     "status": "verified_v2",
     "verifiedAt": "2026-09-30",
@@ -9801,6 +9955,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "sixt",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 87,
+    "evidenceClaimCount": 87,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -12257,6 +12433,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "withings",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 70,
+    "evidenceClaimCount": 70,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 6,
+    "conflictCount": 0,
+    "tier1SourceCount": 6,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "wolt",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -12817,10 +13015,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 299,
+  "verified_v2": 308,
   "partial": 109,
   "legacy_snapshot": 113,
-  "total": 521
+  "total": 530
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
