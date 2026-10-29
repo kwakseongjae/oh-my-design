@@ -1,6 +1,6 @@
 # oh-my-design
 
-> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode にはフルバンドルの 31 スキルと20のエージェント定義を、Cursor 2.4+ には互換 Agent Skills 30 個と小さなプロジェクト rule、ローカルカタログを導入します。品質グレード付き DESIGN.md 527件は verified_v2 305件、partial 109件、legacy 113件で、公開デモには verified_v2 を使います。
+> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode にはフルバンドルの 31 スキルと20のエージェント定義を、Cursor 2.4+ には互換 Agent Skills 30 個と小さなプロジェクト rule、ローカルカタログを導入します。品質グレード付き DESIGN.md 528件は verified_v2 306件、partial 109件、legacy 113件で、公開デモには verified_v2 を使います。
 
 `npx skills add kwakseongjae/oh-my-design` が一覧に出すのは 10 の公開スキル（`omd-init`、`omd-apply`、`omd-autopilot`、`omd-feel`、`omd-restraint`、`omd-slop-audit`、`omd-humanize`、`omd-landing`、`omd-shader-hero`、`omd-cjk-type-shader`）です。残りはワークフローが自ら呼び出す内部スキルで、フルバンドルに含まれ、そのまま動作します。
 

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 527,
+ "count": 528,
  "items": [
   {
    "id": "104",
@@ -920,6 +920,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "bbva",
+   "primary_color_hex": "#001391",
+   "category": "fintech",
+   "visual_theme": "BBVA's Spanish retail bank homepage after the 2025 '¿Avanzamos?' rebrand: deep blue #070e46 text on white, #001391 links and a #0c6dff 'Hazte cliente' action, 56px filled actions with 8px corners, Benton Sans BBVA for the interface and a Tiempos Headline serif for promotional lines. Filled actions slide an oversized two-tone background image on hover (the darker #2165ca half sweeps in); links and icons darken to #070e46; every focus is a double ring, 2px #85c8ff inside 4px #070e46.",
+   "voice_fingerprint": {
+    "register": "warm retail banking, simple language with substance",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "es-banking"
+   },
+   "tone_keywords": [
+    "trustworthy",
+    "deep-blue",
+    "optimistic",
+    "clear",
+    "accessible"
+   ],
+   "antipatterns": [
+    "a flat background-colour hover on filled actions; the two-tone image slides instead",
+    "a single focus outline; focus is a 2px light-blue ring inside a 4px navy ring",
+    "pill buttons; actions have 8px corners",
+    "treating Tiempos BBVA as a verified CSS family; the loaded serif is Tiempos Headline",
+    "pure black text; ink is #070e46"
+   ],
+   "has_personas": false,
+   "category_raw": "retail bank"
   },
   {
    "id": "beusable",
