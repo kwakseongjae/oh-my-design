@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 524,
+ "count": 525,
  "items": [
   {
    "id": "104",
@@ -2998,6 +2998,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "education"
+  },
+  {
+   "id": "emag",
+   "primary_color_hex": "#0082e6",
+   "category": "ecommerce",
+   "visual_theme": "Romania's eMAG storefront: a red-magenta-purple-blue gradient navigation strip over white product cards on #f4f4f4, #222222 ink in Open Sans, and eMAG blue #0082e6 on the search button and the blue-gradient cart buttons. A purple #7040a4 'Vinde pe eMAG' pill clears to a white outline on hover; pressed buttons share a soft inset shadow; nav links gain a 1px white border on hover.",
+   "voice_fingerprint": {
+    "register": "mass-market Romanian e-commerce, short task labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ro-retail"
+   },
+   "tone_keywords": [
+    "retail",
+    "gradient",
+    "blue",
+    "dense",
+    "practical"
+   ],
+   "antipatterns": [
+    "a single flat brand colour; the strip runs red to blue",
+    "rounded search inputs; the inner input is square inside a rounded wrapper",
+    "colour-fill hovers on the nav strip; hover adds a white border",
+    "drop shadows on pressed buttons; press is an inset",
+    "inventing a focus ring; focus is the browser's own"
+   ],
+   "has_personas": false,
+   "category_raw": "marketplace"
   },
   {
    "id": "epidemicsound",

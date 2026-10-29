@@ -2951,6 +2951,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "emag",
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-29",
+    "tokensExtractedAt": "2026-10-29",
+    "nextReverifyAt": "2027-04-27",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 80,
+    "evidenceClaimCount": 80,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
+    "conflictCount": 0,
+    "tier1SourceCount": 5,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "epidemicsound",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -12883,10 +12905,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 302,
+  "verified_v2": 303,
   "partial": 109,
   "legacy_snapshot": 113,
-  "total": 524
+  "total": 525
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
