@@ -1,7 +1,23 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-25 3시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-29 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획, 오너 결정 대기
+
+- **오너 요청(10/29 17:04).** Codex Plus 크레딧이 넉넉하니 gpt-6.1-sol 최대 effort를 워커로 써서 hangul·DESIGN.md 확충 작업을 시험. 기획은 Opus, 워커는 필요에 따라 Sonnet 5.5 medium 또는 6.1-sol 최대 effort. 나중에 DESIGN.md·사이트 분석을 MCP처럼 제공하는 방향까지 기획. 먼저 가능성 시험 후 계획.
+- **시험(17:00~).**
+  - codex-cli 0.165.0, ChatGPT 로그인. gpt-6.1-sol 목록에 있음(effort low~max, ultra=자동 위임). max·ultra 비대화형 호출 성공(10/25엔 'ChatGPT 계정 미지원'이었음).
+  - 샌드박스(workspace-write+network): 네트워크·웹 검색 됨, **Chrome 실행은 막힘(SIGABRT)**. 샌드박스 밖 stdio MCP 서버로 Chrome을 띄우는 도구는 `mcp_servers.<n>.default_tools_approval_mode="approve"`로 동작 확인 → 브라우저 측정은 화이트리스트 MCP 도구로 제공 가능.
+  - 워커는 `--ignore-user-config`(개인 MCP·브라우저·computer-use 미로드), 비 git 폴더는 `--skip-git-repo-check` 필요.
+  - 파일럿 2개(6.1-sol max): H = hangul 검사기 `--format=github`(워크트리 `.claude/worktrees/cx-hangul-ghfmt`, 브랜치 `codex/hangul-ghfmt`), D = SBB(CH) 1차 사실·정적 토큰 조사(브라우저 없음). 실행기·지시서: 세션 scratchpad `codex-w/`.
+- **오너 질문(17:2x): 워커가 개인 브라우저·로그인을 쓰면 안 되나, 브라우저 없이 어떻게 조사하나, 스크롤 영상·스크린샷 근거는?** 시험: 헤드리스 Chrome은 SBB 빈 화면·Odoo 403, **화면 있는(headed) 일반 Chrome + 로그인 없는 새 프로필**은 SBB 정상(뷰포트 81KB, 전체 1.1MB, 스크롤 영상 4MB, `docs/research/2026-10-29-visual-evidence/`). 제안: 워커 전용 Chrome 프로필(개인 계정 로그인 금지) + 측정·캡처 도구를 샌드박스 밖 MCP로, 컨트롤 상태별 크롭 이미지를 검증 근거로. 사이트 게재는 정책 정한 뒤 오너 결정.
+- **파일럿 결과(17:35).**
+  - H 구현: Codex max 9분 44초 vs Sonnet medium 2분 10초($0.58), 둘 다 통과(테스트 147/143, 기본 출력 동일). Codex 코드·테스트 + Sonnet 문서 설명을 합쳐 `7c0af0e7`로 hangul 브랜치에 넣고 푸시.
+  - D 조사: Codex max 18분 20초. 사실 10건 URL 근거, 대조군 판정 정확, `--sbb-*` 1,389개. 본 세션 3건 대조 일치.
+  - 범위 이탈: Codex가 레포 규칙대로 CURRENT_STATE·JOURNAL 수정(되돌림), Sonnet이 빌드로 무관한 번들 변경 → 지시서 양식에 금지 추가.
+  - 계획: `docs/WORKER_PLAN_2026-10-29.md`. 오너 결정 5건(§8) 대기.
+- **참고.** MCP 커넥터 v1은 2026-07-14 Core v2 전환 때 퇴역(/api/mcp 410, npm 패키지 보관). 성장 계획(10/13)은 AI 인용 채널로 MCP 커넥터를 다시 적어 둠. 10/25 /hangul 로컬 보고서(`docs/research/2026-10-25-hangul-report/index.html`)는 마감 직전(통계 카드 줄바꿈·섹션 캡처의 고정 헤더 겹침 수정 남음).
 
 ## ▶ 2026-10-25 3시 반 · /hangul — 열린 작업 마무리 + 로컬 화면·테스트 결과 문서 + UX 라이팅 추가 테스트 + 리서치·오픈소스 조사 (진행 중)
 
