@@ -1,9 +1,9 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-29 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-10-29 22시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획 · 20시 DESIGN.md 웨이브 4/4 verified(Sol 저작 채택)
+## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획 · 20시 DESIGN.md 웨이브 4/4 · 22시 웨이브 5b 5/5 verified(Sol 저작 채택, 530 / 308)
 
 - **오너 요청(10/29 17:04).** Codex Plus 크레딧이 넉넉하니 gpt-6.1-sol 최대 effort를 워커로 써서 hangul·DESIGN.md 확충 작업을 시험. 기획은 Opus, 워커는 필요에 따라 Sonnet 5.5 medium 또는 6.1-sol 최대 effort. 나중에 DESIGN.md·사이트 분석을 MCP처럼 제공하는 방향까지 기획. 먼저 가능성 시험 후 계획.
 - **시험(17:00~).**
@@ -25,8 +25,12 @@
   - 결과(WORKER_PLAN §2b): 워커당 17~27분, 입력 390만~670만(95~97% 캐시)·출력 4.6만~5.4만. ②′ 재측정 4/4 일치, 서사 문장 중 출처에 없는 것 0. 본 세션 수정은 전부 지시서 공백 탓(국가 규칙·렌더 타입·모션 근거·상태 없는 컴포넌트) → 양식에 반영. **Sol max 저작 채택**(4회차 Sonnet 저작 탈락과 대비).
   - 국가 판정 2건(규칙대로, 오너 문의 불필요): kiwi CZ(워커 제안 US=사모펀드 General Atlantic 본사), emag RO(워커 제안 NL=Prosus). 근거: 실제 본사 운영지 규칙(wolt·moreh 선례).
   - 마무리 점검: kiwi 투명 배경이 `#00000000`으로 바뀌어 거짓 대비 경고(1.45:1)가 생기던 것 수정(`15e578ac`, 양식에 금지 추가). emag 서체는 로드 목록에서 확인(Open Sans 400/600/700). 로컬 증거 매니페스트 갱신·iCloud 백업 동기화(`e7feb9d4`).
-  - **가동 중(20:09~): 웨이브 5b Sol 워커 4개** — w5b-sixt(de-DE) · w5b-withings(fr-FR) · w5b-bbva(es-ES) · w5b-mango(es-ES, 429 주의). 폴더 `~/.omd-workers/wave5b/<id>/`, 기록 `~/.omd-workers/runs/w5b-*`. finnair는 자리 나면.
-  - 오너 대기: ① `feat/eu-wave5` main 머지(=배포) GO ② WORKER_PLAN §8 #3 effort 기본값 — 제안: 조사·저작 Sol max, 범위 좁은 코드 Sonnet medium.
+- **웨이브 5b(20:09~22시) · 5/5 verified.** sixt `836baa20` · withings `87666094` · bbva `174f0cf7` · mango `405a5ed8` · finnair `6094ec05`(브랜치 `feat/eu-wave5`, 푸시됨). **530 / 308 verified.** EU 웨이브 5 후보 16곳 소진 — 다음 웨이브는 새 후보 센서스부터.
+  - 워커 17~24분, 입력 391만~484만(95~96% 캐시)·출력 3.3만~4.8만. 국가·분류 5/5 워커 제안 그대로. 1차 출처에 없는 서사 문장 0, 언론 출처 1건 제외(리디렉트).
+  - 공통 장애: 캡처 브라우저가 한국이라 지역·국가 창·프로모션 팝업이 페이지를 덮고 포커스를 가둠(withings 상태 0개, mango 링크 inert) + 스페인어·핀란드어 거부어 누락. 고침(main 푸시): 프로브 `--close` `18e2d85c`, MCP `close`·`hideOverlays` `4073a8c1`, 거부어 `80bc72fa`·`34db1a42`, 지시서 규칙(간격 숫자·동의 버튼은 컴포넌트 아님) `9844c84f`.
+  - 검토 증거는 `artifacts/reference-evidence/visual/<id>/review-20261029/`, 로컬 매니페스트 1190개·435.1MB 검증 OK, iCloud 동기화 완료.
+  - 워커 폴더 `~/.omd-workers/wave5b/<id>/`(원본은 `*.worker.*`), 기록 `~/.omd-workers/runs/w5b-*`. 결과표 WORKER_PLAN §2b.
+  - 오너 대기: ① `feat/eu-wave5`(9곳) main 머지(=배포) GO ② WORKER_PLAN §8 #3 effort 기본값 — 제안: 조사·저작 Sol max, 범위 좁은 코드 Sonnet medium ③ MCP v2 명세는 이후.
 - **참고.** MCP 커넥터 v1은 2026-07-14 Core v2 전환 때 퇴역(/api/mcp 410, npm 패키지 보관). 성장 계획(10/13)은 AI 인용 채널로 MCP 커넥터를 다시 적어 둠. 10/25 /hangul 로컬 보고서(`docs/research/2026-10-25-hangul-report/index.html`)는 마감 직전(통계 카드 줄바꿈·섹션 캡처의 고정 헤더 겹침 수정 남음).
 
 ## ▶ 2026-10-25 3시 반 · /hangul — 열린 작업 마무리 + 로컬 화면·테스트 결과 문서 + UX 라이팅 추가 테스트 + 리서치·오픈소스 조사 (진행 중)

@@ -7,8 +7,8 @@
       "dir": "artifacts/reference-evidence",
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
-      "fileCount": 398,
-      "bytes": 242623138,
+      "fileCount": 680,
+      "bytes": 302986952,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -942,6 +942,194 @@
           "sha256": "d0658e7d4e25f61f0d6a39eaeba2fe8eda6b91c0cac5caef83b269d0d6078a3d",
           "bytes": 705693
         },
+        "visual/bbva/20261029-111136/full.png": {
+          "sha256": "f163431b04bf6384583508cafb3f66bd0429861873536f2f31d89c4f605238b5",
+          "bytes": 1358237
+        },
+        "visual/bbva/20261029-111136/scroll.webm": {
+          "sha256": "9635b0c06e9401da064ce7f7ca3d661d919ad398b17906ca7b733db02e1de6c5",
+          "bytes": 1293255
+        },
+        "visual/bbva/20261029-111136/summary.txt": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "visual/bbva/20261029-111136/survey.json": {
+          "sha256": "735747ec0a89dfc878754ebb36d63c781cec7d0e2a1acf47d82a15110e5b274f",
+          "bytes": 719907
+        },
+        "visual/bbva/20261029-111136/viewport.png": {
+          "sha256": "3839cb7d6aa8934c8e643987e1edfae6f4b7abe3605c1f17863f25b57e1450c7",
+          "bytes": 322522
+        },
+        "visual/bbva/20261029-111304/cfg.json": {
+          "sha256": "efa9d206230db1747008c03c784b90b62d1f3904ab7ef26d5ef3f7ec9ad6f087",
+          "bytes": 1878
+        },
+        "visual/bbva/20261029-111304/full.png": {
+          "sha256": "1935471859f5b3f5d2f9cc951daa0bf10efc5ec0833392c6fa9be8aa86c939c3",
+          "bytes": 1927862
+        },
+        "visual/bbva/20261029-111304/scroll.webm": {
+          "sha256": "46c6a66def107fbf2ea4d54d55784e9466dfc5e75fd24d8e14e9364cbd1fd5f3",
+          "bytes": 2136122
+        },
+        "visual/bbva/20261029-111304/shots/consent-reject-focus.png": {
+          "sha256": "4e9920071aa08e88ca5803add8c2c23fee4f325afd58d7abc07b1640acf051c1",
+          "bytes": 2081
+        },
+        "visual/bbva/20261029-111304/shots/consent-reject-hover.png": {
+          "sha256": "c053f181dffad8bcbb3845eee9385da225750f5891c1ae3f13dbb74f66ca11e0",
+          "bytes": 1608
+        },
+        "visual/bbva/20261029-111304/shots/consent-reject-pressed.png": {
+          "sha256": "c053f181dffad8bcbb3845eee9385da225750f5891c1ae3f13dbb74f66ca11e0",
+          "bytes": 1608
+        },
+        "visual/bbva/20261029-111304/shots/consent-reject-rest.png": {
+          "sha256": "502593e95ed655f6d9cfd2295535975ad8780fe7680dcabb2bb72270841a85b3",
+          "bytes": 1590
+        },
+        "visual/bbva/20261029-111304/shots/nav-business-rest.png": {
+          "sha256": "73d926dc662c31d672a44a36fe0131328aade19100e13659aadb41b8eb982d4d",
+          "bytes": 2161
+        },
+        "visual/bbva/20261029-111304/shots/primary-cta-rest.png": {
+          "sha256": "7011ef1c55d9d4eee7c7317ba40c32492908444ed20a2ab59282d3be694b945b",
+          "bytes": 1425
+        },
+        "visual/bbva/20261029-111304/shots/search-trigger-rest.png": {
+          "sha256": "d423b537b110fb5e4a20f6b48ede8f1e1dcfdb10c8e66d630b505683d5b53ae4",
+          "bytes": 546
+        },
+        "visual/bbva/20261029-111304/shots/secondary-cta-rest.png": {
+          "sha256": "e9a05878ac240dc964ff827b1e2b555b8b9d4187fadd67cea114a49f33116d2e",
+          "bytes": 6768
+        },
+        "visual/bbva/20261029-111304/states.json": {
+          "sha256": "fd2e56eaf7133d4759c9f23fa67c8f46ba7ad51bcef8a419b020617db7a6f894",
+          "bytes": 66344
+        },
+        "visual/bbva/20261029-111304/summary.txt": {
+          "sha256": "1aaae716339f4dd84e6ea316839dee78c790b0ff2902415389cc6c18521cbf11",
+          "bytes": 7143
+        },
+        "visual/bbva/20261029-111304/viewport.png": {
+          "sha256": "5fd7630331b4d37ec7e1abc5693545a4bafc4fe7cab09936d3e19cc3d1e51450",
+          "bytes": 321940
+        },
+        "visual/bbva/review-20261029/cfg.json": {
+          "sha256": "c9d14bf5b0b3b16dd26b06b6c934c89317dd56332d982aa80d1ddffb8c5d2ec7",
+          "bytes": 1429
+        },
+        "visual/bbva/review-20261029/fp.json": {
+          "sha256": "6510a07f4a23c23da20485b4561861f0d22704f823dae637f057f5caabdc5899",
+          "bytes": 1248
+        },
+        "visual/bbva/review-20261029/n/p0.html": {
+          "sha256": "593db7128d84cb851969c0e105a60a555eb508774419d1e6dbe3bc495631c2df",
+          "bytes": 202406
+        },
+        "visual/bbva/review-20261029/n/p1.html": {
+          "sha256": "7185f87315412694f3c14b12ed72342f9b68f81522795cb92a711e09f68c01f7",
+          "bytes": 170869
+        },
+        "visual/bbva/review-20261029/n/p2.html": {
+          "sha256": "754895ade986e3eaf0a996902fd9e39910970e521944285ffa279db4f3407ea5",
+          "bytes": 161799
+        },
+        "visual/bbva/review-20261029/n/p3.html": {
+          "sha256": "d363b4260adcaed53a907424f3c3914ced9f1b57ee5afe54e577a2dc6f6046b5",
+          "bytes": 140052
+        },
+        "visual/bbva/review-20261029/n/p4.html": {
+          "sha256": "60a6b7aa239271ef2a279c7f65e2f953e6ab88526835c2db3c8d66957efe1b30",
+          "bytes": 124968
+        },
+        "visual/bbva/review-20261029/n/p5.html": {
+          "sha256": "940a1e8ff36d67d68cfa812823eaaf934086ea9d37eceddda2efbb5f8b7d1f6a",
+          "bytes": 147715
+        },
+        "visual/bbva/review-20261029/n/p6.html": {
+          "sha256": "aafb0709637138c23422f7091786c5b332bae9a14a8f7feb8924ac1fb36b15b1",
+          "bytes": 184350
+        },
+        "visual/bbva/review-20261029/n/p7.html": {
+          "sha256": "5cdc6cedc4d263de622213d2549d08b7e5b51d8f266426a77ae7e0ce5e63cf27",
+          "bytes": 226248
+        },
+        "visual/bbva/review-20261029/n/p8.html": {
+          "sha256": "6c92d8db2584fee9b5f46f76225ec23ef187bbb8e69283631a1d302ab54f46a6",
+          "bytes": 158620
+        },
+        "visual/bbva/review-20261029/shots/nav-business-focus.png": {
+          "sha256": "5b4237c5c12eac9c87282bf71c231e636a5b51bd897bb050bbf8d2890fb4eaf2",
+          "bytes": 2948
+        },
+        "visual/bbva/review-20261029/shots/nav-business-hover.png": {
+          "sha256": "caa8cd644ef67a6f29918b579720beea724128d14dc73f0c754fd111facc0acc",
+          "bytes": 2828
+        },
+        "visual/bbva/review-20261029/shots/nav-business-rest.png": {
+          "sha256": "40d280a958fc772d5e9c2b7650a3255c3f2bf00562b4f962b8b1efaffcdafd3b",
+          "bytes": 2872
+        },
+        "visual/bbva/review-20261029/shots/primary-cta-focus.png": {
+          "sha256": "7790ad4a16e2832eb7b80bf30a9451de9bcd9135a2ebbe014a23936bce9eb80a",
+          "bytes": 2290
+        },
+        "visual/bbva/review-20261029/shots/primary-cta-hover.png": {
+          "sha256": "58a45f0f5b91ca279fcc0c35d17f0cc3f9d145dd87aaf981c4acbaaad6a59f7d",
+          "bytes": 1991
+        },
+        "visual/bbva/review-20261029/shots/primary-cta-pressed.png": {
+          "sha256": "8b94b5b54e740d39e8e2aaf56856cc37785943f986a13788a5b8eb92384946bd",
+          "bytes": 1994
+        },
+        "visual/bbva/review-20261029/shots/primary-cta-rest.png": {
+          "sha256": "333ea8fccba7cdd91225b8ab154224062866ec72843887322f688f190ef5df77",
+          "bytes": 1710
+        },
+        "visual/bbva/review-20261029/shots/product-card-focus.png": {
+          "sha256": "055342c4336fcd1607162071a9cbb77d32f878a1a5a57517a7236ec3aa62a52a",
+          "bytes": 3401
+        },
+        "visual/bbva/review-20261029/shots/product-card-hover.png": {
+          "sha256": "af41c512289f0a4016507db00804b11f2e685bb4c2f7760425db389813e46f21",
+          "bytes": 3346
+        },
+        "visual/bbva/review-20261029/shots/search-trigger-focus.png": {
+          "sha256": "fffa2d364e005f7fe3c6489e73d66e95cf00f79b2a17087c166671743d9e08ea",
+          "bytes": 614
+        },
+        "visual/bbva/review-20261029/shots/search-trigger-hover.png": {
+          "sha256": "9ea759aed9d25bfa5db690fae115734e4ac788c563266df6160acd8a58790a11",
+          "bytes": 1219
+        },
+        "visual/bbva/review-20261029/shots/search-trigger-rest.png": {
+          "sha256": "a4c118406dfbe8561221e3f8827ebd75c4f79e1e92fc600a4c734b4c2b8c46fb",
+          "bytes": 562
+        },
+        "visual/bbva/review-20261029/shots/secondary-cta-focus.png": {
+          "sha256": "e3a72a0afaeb51d19bbc6488849532172bbce6343b60ec46fa2997810f8db278",
+          "bytes": 3240
+        },
+        "visual/bbva/review-20261029/shots/secondary-cta-rest.png": {
+          "sha256": "0e106db4d523b481e7598dfdf4ceee0be58d6768456268fac6b5eb775dc4305f",
+          "bytes": 2598
+        },
+        "visual/bbva/review-20261029/states.json": {
+          "sha256": "ac8a6a92029d6ddf351ffccceadaaea32b6e81de38a29037d56f260a5a28cf27",
+          "bytes": 109221
+        },
+        "visual/bbva/review-20261029/summary.txt": {
+          "sha256": "4f16548c8e0ed3a4e6da91f6a3ec7220e03c8fb44c97ee0ad97d5ad76e28e3ad",
+          "bytes": 10386
+        },
+        "visual/bbva/review-20261029/sync.log": {
+          "sha256": "799cd85ed5d3e9fac37d680db047497f25aa0214138b33e5ac70bf78891f9514",
+          "bytes": 2341
+        },
         "visual/emag/20261029-101719/full.png": {
           "sha256": "1cdd215d78f6cf82e8ecc140cadba542ae2ee3d18cf1c2a1e90926997779dcd8",
           "bytes": 2644943
@@ -1102,6 +1290,238 @@
           "sha256": "05a9b412e5b86364024ec51658e84f91e0e18f23766bc4189146da98ecad7f6f",
           "bytes": 352413
         },
+        "visual/finnair/20261029-113011/full.png": {
+          "sha256": "4a6c5e4bdf35d493f0339b0ae11e64cec27cfd7b3e88502e32a5799baa1ad251",
+          "bytes": 1240548
+        },
+        "visual/finnair/20261029-113011/scroll.webm": {
+          "sha256": "97c690c629d65153acfa8e86358387647f4b2c73fe5f4391e92c12c0cc35d3e9",
+          "bytes": 1288056
+        },
+        "visual/finnair/20261029-113011/summary.txt": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "visual/finnair/20261029-113011/survey.json": {
+          "sha256": "e3b517d29c6a984fddbe496f7d1bad9c5e50fe8ad13423ae222bf87f453cddca",
+          "bytes": 71339
+        },
+        "visual/finnair/20261029-113011/viewport.png": {
+          "sha256": "5a4a6973a57381be0aa2b4a45b99043ef72857d1c70b1e34160bbddb5bd039e2",
+          "bytes": 464862
+        },
+        "visual/finnair/20261029-113143/cfg.json": {
+          "sha256": "67dc1742dcd6c86a403fdd1bcfd0aaa02a0de7d2b97d6ea422a677784c05c5a6",
+          "bytes": 1522
+        },
+        "visual/finnair/20261029-113143/full.png": {
+          "sha256": "01723929136e6656c8e90d38066356590685206a3d7e2b39945983c6c406591f",
+          "bytes": 1238913
+        },
+        "visual/finnair/20261029-113143/scroll.webm": {
+          "sha256": "def7ec340ae047e9a30de63c6415cc6c70e5a79b42ab08532ebbe2860dad5f47",
+          "bytes": 1320754
+        },
+        "visual/finnair/20261029-113143/shots/book-now-focus.png": {
+          "sha256": "6e8973594447d0b7ce9a1dac74459903f3dd460e341a9df25c8c0fd9856057e0",
+          "bytes": 3590
+        },
+        "visual/finnair/20261029-113143/shots/card-stockholm-focus.png": {
+          "sha256": "bc70cac6b66974183814c3eeb2fc52348546a1232b2e8ac9035176f3fd786c3b",
+          "bytes": 7740
+        },
+        "visual/finnair/20261029-113143/shots/consent-reject-focus.png": {
+          "sha256": "437363cd1d28b2039768c43a6a9b22002960d3424e3607ae047708369e1bef38",
+          "bytes": 6106
+        },
+        "visual/finnair/20261029-113143/shots/consent-reject-hover.png": {
+          "sha256": "2f02df598d91bef174b6a266a1ffb556fedb37dac5a5c6ad3ac72a5713184efd",
+          "bytes": 4766
+        },
+        "visual/finnair/20261029-113143/shots/consent-reject-pressed.png": {
+          "sha256": "2f02df598d91bef174b6a266a1ffb556fedb37dac5a5c6ad3ac72a5713184efd",
+          "bytes": 4766
+        },
+        "visual/finnair/20261029-113143/shots/consent-reject-rest.png": {
+          "sha256": "cbe37553c6e05b17eb694c71442aa8739e5450cccd43696b17b3b8ebd7d52801",
+          "bytes": 4770
+        },
+        "visual/finnair/20261029-113143/shots/date-select-focus.png": {
+          "sha256": "9d2fb6e8dacd02a0c086a7745f4bdf80b84d9c1a11c7c8ba3908bcaace4a3359",
+          "bytes": 4248
+        },
+        "visual/finnair/20261029-113143/shots/destination-focus.png": {
+          "sha256": "a50d3a2cba611c8a41ee2594c1b2d04d216cb18780d56a621ef20135bdfc772c",
+          "bytes": 1034
+        },
+        "visual/finnair/20261029-113143/shots/destination-rest.png": {
+          "sha256": "a50d3a2cba611c8a41ee2594c1b2d04d216cb18780d56a621ef20135bdfc772c",
+          "bytes": 1034
+        },
+        "visual/finnair/20261029-113143/shots/nav-manage-focus.png": {
+          "sha256": "8eb073afa940ac874ab4268a0c3e4dab62464818e12aeafa431f40fd388c79f4",
+          "bytes": 2563
+        },
+        "visual/finnair/20261029-113143/shots/nav-manage-rest.png": {
+          "sha256": "174d288beda7586fdd7687e53676923c4e3c4cb3ec4c7bd243d1f71f5ab33fc3",
+          "bytes": 1890
+        },
+        "visual/finnair/20261029-113143/states.json": {
+          "sha256": "4f37db84bf9a3814313c7be45002cd2e65c9a2cf593bf9752a61a2f22d819a12",
+          "bytes": 117491
+        },
+        "visual/finnair/20261029-113143/summary.txt": {
+          "sha256": "9f674125159df3fcc6700e33f93f612a9d2396de7e0e5ce1101547c881a46d2f",
+          "bytes": 9955
+        },
+        "visual/finnair/20261029-113143/viewport.png": {
+          "sha256": "c09d081d1ed542401ad487b98c5ecf8bd5ff8f62cc381d42e4738e657e7282b6",
+          "bytes": 466636
+        },
+        "visual/finnair/review-20261029/b/p0.txt": {
+          "sha256": "4ac23dc0402969bb0d69485ae10478a8e867d7b85d6655b8efcfb89597e5407c",
+          "bytes": 10762
+        },
+        "visual/finnair/review-20261029/b/p1.txt": {
+          "sha256": "7856131fadb33034d23ac329262d46a58325f8675cdf470819fbd333933dc9a3",
+          "bytes": 27266
+        },
+        "visual/finnair/review-20261029/b/p2.txt": {
+          "sha256": "dcbe57da4842e0d2a7ec34dc9ecd97931d661eee155a30b2bf22af6d0cb825c0",
+          "bytes": 571009
+        },
+        "visual/finnair/review-20261029/b/p3.txt": {
+          "sha256": "7cb3995b755f3e546f1db6bfac5216432b4311379344145b7c5dd6ff27ca4888",
+          "bytes": 9652
+        },
+        "visual/finnair/review-20261029/b/p4.txt": {
+          "sha256": "67e0baa101a0efcef102bb04468f57ad27594134994deff1ab00c5c3f16e1b27",
+          "bytes": 9431
+        },
+        "visual/finnair/review-20261029/b/p5.txt": {
+          "sha256": "dce0c54451571549304633014d823b6dd7f2468e144018b2f6ecc162adf40de7",
+          "bytes": 332769
+        },
+        "visual/finnair/review-20261029/cfg.json": {
+          "sha256": "c95ef0ef71748b80815c570a2311f90e1387b55c542d72c6cf03fa1783e687aa",
+          "bytes": 1144
+        },
+        "visual/finnair/review-20261029/ctl/p0.txt": {
+          "sha256": "47d114aa2428ecd72072c348dc11254fcab05421013c512ddec020d24676be3c",
+          "bytes": 332997
+        },
+        "visual/finnair/review-20261029/ctl/p1.txt": {
+          "sha256": "6a35d69b16fcbf8c90e103dfef8575fd9bfa2757231fd507af3020324192b8dd",
+          "bytes": 432745
+        },
+        "visual/finnair/review-20261029/fp.json": {
+          "sha256": "118f0bc8caa674b1c6057f177c0100511727f98b51a23cc577cd8fa4fbc0e924",
+          "bytes": 1249
+        },
+        "visual/finnair/review-20261029/n/p0.html": {
+          "sha256": "fa100668223b1406bcfd0994d7799bfe0b448bd3bab3a4e3920cf548953cd5b1",
+          "bytes": 385
+        },
+        "visual/finnair/review-20261029/n/p1.html": {
+          "sha256": "368deaf38bea11ef01748f8f697a351da2a4c80aeb0dde8ee2e0db821f3d8dc9",
+          "bytes": 397
+        },
+        "visual/finnair/review-20261029/n/p2.html": {
+          "sha256": "3762a694a7b64cc10208363edbb9d2baad1c75b09fea58b0b4647e38d9fe94b9",
+          "bytes": 25939
+        },
+        "visual/finnair/review-20261029/n/p3.html": {
+          "sha256": "faa38a312b5f2a09b14c9041e93015d0d1acf8a4c1ac35655b9913e80716e3fe",
+          "bytes": 400
+        },
+        "visual/finnair/review-20261029/n/p4.html": {
+          "sha256": "58b8ed9f6c8a549dfe623e6c6f72d405e8403803b97dceded63a564f98b02c71",
+          "bytes": 400
+        },
+        "visual/finnair/review-20261029/n/p5.html": {
+          "sha256": "1d43e5441ec65013a01a8d76db0209a9d114427aa2809359e25c4dc8edc83ab8",
+          "bytes": 32031
+        },
+        "visual/finnair/review-20261029/n/p6.html": {
+          "sha256": "8d35c886a183e52bf89551da15fedf9aef40a1a4a58071d0e8e8ce064c630348",
+          "bytes": 95266
+        },
+        "visual/finnair/review-20261029/n/p7.html": {
+          "sha256": "290200aac8854311cbf41a557692e4f034a0260eb53017d3f6c4832f75dc3b70",
+          "bytes": 373
+        },
+        "visual/finnair/review-20261029/shots/book-now-hover.png": {
+          "sha256": "132a6b903d76c6ea25e7b5f7f646892280ead1bd030b3db6a5ef49deb8939560",
+          "bytes": 2430
+        },
+        "visual/finnair/review-20261029/shots/book-now-pressed.png": {
+          "sha256": "1584ecb11942556114cbcbe9dc4b7efd0c7e44ffbda48f60908d892e4cfe6775",
+          "bytes": 2435
+        },
+        "visual/finnair/review-20261029/shots/card-stockholm-hover.png": {
+          "sha256": "8ac13a8af86fee07f650fe0fb375048e77c7bf01f54df036270944c5ac9ddf89",
+          "bytes": 6017
+        },
+        "visual/finnair/review-20261029/shots/card-stockholm-pressed.png": {
+          "sha256": "7a77f6da406b822e2fcfe80c098f67abe3f5145d3ea7f3a7639d91de40c28b46",
+          "bytes": 6354
+        },
+        "visual/finnair/review-20261029/shots/date-select-hover.png": {
+          "sha256": "9a6646b26b8eeedcd39634543b482340c4f9b12e7caa7a8dfd30ad7c5d8e906c",
+          "bytes": 3104
+        },
+        "visual/finnair/review-20261029/shots/date-select-pressed.png": {
+          "sha256": "9babd32e437f548a3243a8c7a9f02d538a927d0fe4255e7b2d4de055600283da",
+          "bytes": 3140
+        },
+        "visual/finnair/review-20261029/shots/destination-hover.png": {
+          "sha256": "c58b563665c943435e852c01496144c58c65aeae4be6c3be979a1b0074110f7e",
+          "bytes": 4928
+        },
+        "visual/finnair/review-20261029/shots/destination-pressed.png": {
+          "sha256": "494b97dd1656ff1f8fed6ca5112a2a87a0b41f4ad837925bddecdc5dc86f5566",
+          "bytes": 4957
+        },
+        "visual/finnair/review-20261029/shots/destination-rest.png": {
+          "sha256": "494b97dd1656ff1f8fed6ca5112a2a87a0b41f4ad837925bddecdc5dc86f5566",
+          "bytes": 4957
+        },
+        "visual/finnair/review-20261029/shots/nav-manage-hover.png": {
+          "sha256": "df6c675d67873505c8ba424d85f8f7f8fc49397d2e6cc1cf1a8e3f8443e60be0",
+          "bytes": 2211
+        },
+        "visual/finnair/review-20261029/shots/nav-manage-pressed.png": {
+          "sha256": "df6c675d67873505c8ba424d85f8f7f8fc49397d2e6cc1cf1a8e3f8443e60be0",
+          "bytes": 2211
+        },
+        "visual/finnair/review-20261029/shots/nav-manage-rest.png": {
+          "sha256": "550c16cfc9da3b169483ebe650a8009312d1e68a375b7ff68f74d37ac4d186c0",
+          "bytes": 1834
+        },
+        "visual/finnair/review-20261029/states.json": {
+          "sha256": "09886ef4faff0db9cee42412012243124f8ccb9afa7478c17ea6ecbf8005633e",
+          "bytes": 91229
+        },
+        "visual/finnair/review-20261029/summary.txt": {
+          "sha256": "6388b07963f2017cf4a13de087b171af2058c37bf851388dbae926bd570df40a",
+          "bytes": 10424
+        },
+        "visual/finnair/review-20261029/sync.log": {
+          "sha256": "e3bebadc4b50598e655ee651f9fd7f0caf44b1f2c6cdab5e14aecd779b0bc72f",
+          "bytes": 2341
+        },
+        "visual/finnair/review-20261029/visual/full.png": {
+          "sha256": "c1d8074f23ffd72e1b77f1b8a5e4d9f537424cd77cbb4dccb0765e48086d0f28",
+          "bytes": 1348343
+        },
+        "visual/finnair/review-20261029/visual/scroll.webm": {
+          "sha256": "32203146506cc762c717b80214626a00c2fe2cccd9eafb05064e0668add7b238",
+          "bytes": 2012025
+        },
+        "visual/finnair/review-20261029/visual/viewport.png": {
+          "sha256": "e97c5dabb9925cda16371b48e81864d1911b327b81e3a2cdcaa93d0913f84a5a",
+          "bytes": 589942
+        },
         "visual/kiwi/20261029-101723/full.png": {
           "sha256": "a5b1205eda38880cfdc1f5f415c855fb59489fde8d906f554dce1ce7b79fe305",
           "bytes": 1542688
@@ -1237,6 +1657,214 @@
         "visual/kiwi/20261029-101844/viewport.png": {
           "sha256": "f87bbd87300db0450779864ba152d55374e1d5457b5c0530caeeb5e839c0107b",
           "bytes": 566346
+        },
+        "visual/mango/20261029-111226/full.png": {
+          "sha256": "84299c6994994a4de2ecbc9abbc1338e4455621715a5e10a6e18abd3a7c6af2a",
+          "bytes": 1065581
+        },
+        "visual/mango/20261029-111226/scroll.webm": {
+          "sha256": "b73803416790345461832ab1676d97ffd89a7bc3672eabc7fb02326188612c21",
+          "bytes": 801845
+        },
+        "visual/mango/20261029-111226/summary.txt": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "visual/mango/20261029-111226/survey.json": {
+          "sha256": "de5ceaf77f18d55a7f984911cebfa660b6f71e989c33840da18badde27d7b5c9",
+          "bytes": 92451
+        },
+        "visual/mango/20261029-111226/viewport.png": {
+          "sha256": "696d7c7a61f9e4372ceabec9aefb751be64fe156d3401864d14a64257a4c68c9",
+          "bytes": 1015412
+        },
+        "visual/mango/20261029-111422/cfg.json": {
+          "sha256": "46c27c02fde45be0010c54f37baaac98e6b884d4cd05e2c06e344f2531f902a0",
+          "bytes": 1567
+        },
+        "visual/mango/20261029-111422/full.png": {
+          "sha256": "d01e5312227246d5bee82547cb81839ca7e21ef4f8e8af22544e76a24b66281d",
+          "bytes": 1065092
+        },
+        "visual/mango/20261029-111422/scroll.webm": {
+          "sha256": "13d817d7a8c6ff2f82e23a2ca0331b32cd9a09c0cf412393634db1eafa12432e",
+          "bytes": 799945
+        },
+        "visual/mango/20261029-111422/shots/cookie-config-focus.png": {
+          "sha256": "11e53e89fc2d39ab272656b0136390146467635bf1e3797ee286e4f17902e0c1",
+          "bytes": 2567
+        },
+        "visual/mango/20261029-111422/shots/cookie-config-hover.png": {
+          "sha256": "ae80646f49eff3097878424634036b4a8162f1527e607133ee4e54ea07cb38e1",
+          "bytes": 2530
+        },
+        "visual/mango/20261029-111422/shots/cookie-config-pressed.png": {
+          "sha256": "f296b61cc9c2cc8ebc6f422a5115f60d3050d921509b42c3b7e34fb0c00ea4f5",
+          "bytes": 2505
+        },
+        "visual/mango/20261029-111422/shots/cookie-config-rest.png": {
+          "sha256": "51c1e2cd397ee55c61af511e7c7f5f01fa6e0a038058945b3819406282fde923",
+          "bytes": 2523
+        },
+        "visual/mango/20261029-111422/shots/cookie-necessary-focus.png": {
+          "sha256": "5c88e2cf5b59df4aa3556d62bb20c8d2b85fafe9fe171f0138f41a8f7cc977aa",
+          "bytes": 2983
+        },
+        "visual/mango/20261029-111422/shots/cookie-necessary-hover.png": {
+          "sha256": "6375fea94a32f23ac66de35f488ae90cd9e9755afb62ea4a40fd470a6896bcf0",
+          "bytes": 2942
+        },
+        "visual/mango/20261029-111422/shots/cookie-necessary-pressed.png": {
+          "sha256": "4e390cea749c9f0d8d61e3e79983269b9884817606aadf602ceeabc5fecf4ac4",
+          "bytes": 2900
+        },
+        "visual/mango/20261029-111422/shots/cookie-necessary-rest.png": {
+          "sha256": "b74cb6be7e99de9d667eede911ddfd3df7251e4949daef62d95a32f1703825bf",
+          "bytes": 2907
+        },
+        "visual/mango/20261029-111422/shots/hero-mujer-rest.png": {
+          "sha256": "24ef8a4be616d4f80a4e398d7487f2f96a39f8af3030e3ba8df641af32ed13cc",
+          "bytes": 1681
+        },
+        "visual/mango/20261029-111422/shots/nav-mujer-rest.png": {
+          "sha256": "8c98a2a0fdc39ec2f7b6288efe1e86956a46ba14db2860a18f34a21265c6511a",
+          "bytes": 827
+        },
+        "visual/mango/20261029-111422/shots/search-link-rest.png": {
+          "sha256": "1fb836e7f0a29f375e4c4bda5eef32a230b6f78cd754304892f15c5de040ed93",
+          "bytes": 1139
+        },
+        "visual/mango/20261029-111422/states.json": {
+          "sha256": "adaeda6369ab2c2e8b513f3b665055d1d4b432f3979ece6c42d1f7b6b7a9950f",
+          "bytes": 90430
+        },
+        "visual/mango/20261029-111422/summary.txt": {
+          "sha256": "4c3539bc3268117d647459689c1f22efbd3098ba5099727ebb609b516bebabe7",
+          "bytes": 11766
+        },
+        "visual/mango/20261029-111422/viewport.png": {
+          "sha256": "2ccffbfcf70312c3d0cd8169300ff4a1e0ef2301a22cde7690b641fb2c57e32a",
+          "bytes": 1014965
+        },
+        "visual/mango/review-20261029/cfg.json": {
+          "sha256": "c2c5b30df0f46034862c6b127e62153285c9b615094d2b4d9df2a84be9001fa8",
+          "bytes": 865
+        },
+        "visual/mango/review-20261029/dialogs.png": {
+          "sha256": "61377136866b390b57be2874e1274397068e9119adaf4861774ff17e90647bb5",
+          "bytes": 980990
+        },
+        "visual/mango/review-20261029/fp.json": {
+          "sha256": "a83cecb11ffe9fd75e0fd82bc28619c8e8fc767008943f42cb6987ef65c16f5c",
+          "bytes": 1351
+        },
+        "visual/mango/review-20261029/n/p0.html": {
+          "sha256": "628c1c8eb0ae33a8ad154094c644588f052fe0d3dd9c352756544849cd0d0e5e",
+          "bytes": 120012
+        },
+        "visual/mango/review-20261029/n/p1.html": {
+          "sha256": "04cd6ffe8beebaca7e4e03586ea42e0e6417c3dff80636025d0fd065ad2a28e3",
+          "bytes": 115687
+        },
+        "visual/mango/review-20261029/n/p2.html": {
+          "sha256": "d3a3b5a3c58431eeba5c18b1122f3e380cde3739bc6f5fe6bf8f682a10e89369",
+          "bytes": 109123
+        },
+        "visual/mango/review-20261029/n/p3.html": {
+          "sha256": "1d6d250c26fcf6ad1c7ec3d47657c6a5443990e433956ac204f4e8959b05adaf",
+          "bytes": 97034
+        },
+        "visual/mango/review-20261029/n/p4.html": {
+          "sha256": "8d6eb83c03df7ef28f5596b0db7fb7dfff52542c4b20459b134dea2a4e729496",
+          "bytes": 101542
+        },
+        "visual/mango/review-20261029/n/p5.html": {
+          "sha256": "873eb585e7b7565ebf98389e41ffc1909d5eae98c855a123a148b38a63fe3962",
+          "bytes": 148220
+        },
+        "visual/mango/review-20261029/n/p6.html": {
+          "sha256": "b6ed18a615739f1c72f119d2457292da2d41e4738ae699830f98b4201c83209d",
+          "bytes": 327414
+        },
+        "visual/mango/review-20261029/n/p7.html": {
+          "sha256": "8f57a0439d792044255ac68596414dd6b673313c873af7b568cf3e4edfcdafe5",
+          "bytes": 40687
+        },
+        "visual/mango/review-20261029/shots/hero-mujer-rest.png": {
+          "sha256": "c8045c2d89b9eaa0e0d90370b596637e8d8b912165ec150213293578cea439bf",
+          "bytes": 1535
+        },
+        "visual/mango/review-20261029/shots/nav-mujer-rest.png": {
+          "sha256": "3800eedc376c8e9788a1e3cfecd0e4f2604fe9d0a955fb3fa97969a3c708fe71",
+          "bytes": 834
+        },
+        "visual/mango/review-20261029/shots/search-link-rest.png": {
+          "sha256": "16df8095e46fb90c1af19498489f96bdfd3385af1b0a191a91c4550e034aba0f",
+          "bytes": 1144
+        },
+        "visual/mango/review-20261029/shots2/footer-ayuda-focus.png": {
+          "sha256": "0c36f9521d25bd78d29c7ae72466c328f137241c47ecd04c92e9e590bcf2e06c",
+          "bytes": 963
+        },
+        "visual/mango/review-20261029/shots2/hero-mujer-focus.png": {
+          "sha256": "47e4519760e54395c465b885903f2b3983e2ce5e79f064639eaa37ffbb563fc3",
+          "bytes": 4901
+        },
+        "visual/mango/review-20261029/shots2/hero-mujer-hover.png": {
+          "sha256": "eaa7d3d1ef535c0ed62e9b127127cc09ae2268e1b78695f043c72683f290cf79",
+          "bytes": 5509
+        },
+        "visual/mango/review-20261029/shots2/hero-mujer-rest.png": {
+          "sha256": "9fee36cba46500a14764fb5b8e0676a975a755553abdf6134b5c0ece3241d942",
+          "bytes": 5493
+        },
+        "visual/mango/review-20261029/shots2/nav-mujer-focus.png": {
+          "sha256": "cb38dbebf2b15d69b8bca050827b3c8522ef3afbb91c025c6de886fdd655aa9d",
+          "bytes": 854
+        },
+        "visual/mango/review-20261029/shots2/nav-mujer-rest.png": {
+          "sha256": "2d030fb24e9e96f2904ce280ded1d55f1db5253d23f955d8933b593876491457",
+          "bytes": 834
+        },
+        "visual/mango/review-20261029/shots2/search-link-focus.png": {
+          "sha256": "568c6a9db73d39eaaa17c36718dd964d92bb53e0343e65a84e4813f036f84e89",
+          "bytes": 1206
+        },
+        "visual/mango/review-20261029/shots2/search-link-rest.png": {
+          "sha256": "8807e70cb26f540fbc1b299f0ac4231dbd1cb37070d6047bf9c107f54b98c0a2",
+          "bytes": 1155
+        },
+        "visual/mango/review-20261029/states.json": {
+          "sha256": "75f688d5ea2767b2338ea2ff41991b52e8c3db5922df9c1ef91a3dd0080b8c21",
+          "bytes": 23885
+        },
+        "visual/mango/review-20261029/states2.json": {
+          "sha256": "4e0c3de0b7790d66319a25092e8c2c2a3b3a515c929477ee38bda2edaa61dff3",
+          "bytes": 82365
+        },
+        "visual/mango/review-20261029/summary.txt": {
+          "sha256": "a9b514eb86d0bc3c202164d5a2661ec0958c52baf107052c51d1ce4675c1749f",
+          "bytes": 3797
+        },
+        "visual/mango/review-20261029/summary2.txt": {
+          "sha256": "4454698400dd640b3b7542b2cc6e673a0fabeb473bfdc641863e00999d28f502",
+          "bytes": 8043
+        },
+        "visual/mango/review-20261029/sync.log": {
+          "sha256": "63ea0eef668cc37d8b96173e330b6e949b502547e82130218b242e814e75bc4e",
+          "bytes": 2340
+        },
+        "visual/mango/review-20261029/visual2/full.png": {
+          "sha256": "e5c7d1b0bc9a082fe45114c5aa93ea10a36a245d0c46ca8966fa3cc8d2f1e7ed",
+          "bytes": 882021
+        },
+        "visual/mango/review-20261029/visual2/scroll.webm": {
+          "sha256": "8a73b45282f048ecf605c97c81df01b1e1a7f43cd079e80c977909e1b2e66c68",
+          "bytes": 1328932
+        },
+        "visual/mango/review-20261029/visual2/viewport.png": {
+          "sha256": "2077980556f1b0582d718800b779485c5764af98db4ae479e531cba04ab9b7e9",
+          "bytes": 830046
         },
         "visual/odoo/20261029-101634/full.png": {
           "sha256": "63dc6903340f472950f056cb533fc3b020c1099673b9c1789543688b89220d8d",
@@ -1529,6 +2157,506 @@
         "visual/sbb/20261029-101723/viewport.png": {
           "sha256": "ff20abd633ba09d734798632bd69eb24f1311738aefc97774bf3042384d6880f",
           "bytes": 103172
+        },
+        "visual/sixt/20261029-111142/full.png": {
+          "sha256": "acaf79499f3889a7c7d346494da7adede7437a46dfb5c916096dd1a9a4041073",
+          "bytes": 1456356
+        },
+        "visual/sixt/20261029-111142/scroll.webm": {
+          "sha256": "48b4442ce30661207f0eca260ce729ddbdb2109278ba38eedbfa1e866f6ceae5",
+          "bytes": 1944384
+        },
+        "visual/sixt/20261029-111142/summary.txt": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "visual/sixt/20261029-111142/survey.json": {
+          "sha256": "5c800b026b1f306ad2e6d9cafe8b2eaa1df9a0aa252729a144adda1b5ac74fee",
+          "bytes": 149045
+        },
+        "visual/sixt/20261029-111142/viewport.png": {
+          "sha256": "0cbcd47a5bf4bb011dfee5b86a86491be3ed51d692e0a73a8154526431bbf028",
+          "bytes": 369169
+        },
+        "visual/sixt/20261029-111310/cfg.json": {
+          "sha256": "f2d2d0e6df677e6ce93c2c689496505094ea6c171a0e71b29d978367af434e0f",
+          "bytes": 1428
+        },
+        "visual/sixt/20261029-111310/full.png": {
+          "sha256": "7b88aafd39d620a46baa2753783fe762651fd0c4e0efa9f8a872a999e218ae68",
+          "bytes": 2234590
+        },
+        "visual/sixt/20261029-111310/scroll.webm": {
+          "sha256": "7465947ddc2086a4e721e54f426842472f4e7f699c532cc0db68db4cb700c616",
+          "bytes": 1784448
+        },
+        "visual/sixt/20261029-111310/shots/auto-abo-focus.png": {
+          "sha256": "ab310f4f914ef6b2866c5a7f94ded5006b219d0d65951d4cf47ac37afd0a53a3",
+          "bytes": 5658
+        },
+        "visual/sixt/20261029-111310/shots/auto-abo-rest.png": {
+          "sha256": "4c2d940e84b410bde9266634fe9e68461bf6e56ced8d2075ed2b3aff213694f7",
+          "bytes": 4514
+        },
+        "visual/sixt/20261029-111310/shots/help-nav-focus.png": {
+          "sha256": "3603a58c2009e3be561485b44f458e238e0dea97cdecd7c446dd67cead1b051f",
+          "bytes": 4452
+        },
+        "visual/sixt/20261029-111310/shots/help-nav-rest.png": {
+          "sha256": "551c56184f052dec0abfc68e01a76c5dbe86005bd9047e893e59f4f9a2bbc410",
+          "bytes": 3587
+        },
+        "visual/sixt/20261029-111310/shots/learn-more-focus.png": {
+          "sha256": "a9f5fa6f77debf84253e1a41bedee1fe0beb40f24c5c560060a0fd79dde71d69",
+          "bytes": 3019
+        },
+        "visual/sixt/20261029-111310/shots/pickup-input-focus.png": {
+          "sha256": "44dfc7dd51be6b37b49e576419c8437acc19b88a3e1e6aadca3b69ddbd5fa0af",
+          "bytes": 3325
+        },
+        "visual/sixt/20261029-111310/shots/pickup-input-hover.png": {
+          "sha256": "da9b266eaf7044685f2b8fa7626325eec8908d90bb474beb65018981974cc833",
+          "bytes": 3113
+        },
+        "visual/sixt/20261029-111310/shots/pickup-input-pressed.png": {
+          "sha256": "44dfc7dd51be6b37b49e576419c8437acc19b88a3e1e6aadca3b69ddbd5fa0af",
+          "bytes": 3325
+        },
+        "visual/sixt/20261029-111310/shots/pickup-input-rest.png": {
+          "sha256": "da9b266eaf7044685f2b8fa7626325eec8908d90bb474beb65018981974cc833",
+          "bytes": 3113
+        },
+        "visual/sixt/20261029-111310/shots/show-cars-focus.png": {
+          "sha256": "d67fa1ae1ddc790abe8a59077943a25a3e464b011e42ef1793eec373422844cc",
+          "bytes": 3261
+        },
+        "visual/sixt/20261029-111310/shots/show-cars-hover.png": {
+          "sha256": "a29ffa511f7630e01cd0f3f6e5ebd19dcc9c26e57aa6783a3a5b1cfedd3d6d18",
+          "bytes": 2791
+        },
+        "visual/sixt/20261029-111310/shots/show-cars-pressed.png": {
+          "sha256": "1670e423c0590e442e69569d6210c5d9dafb0848ea8abdaf529934ae910dbc2d",
+          "bytes": 2755
+        },
+        "visual/sixt/20261029-111310/shots/show-cars-rest.png": {
+          "sha256": "c3f9cabc7a7421986c671e7a0fc66e49d4d524ae1ea79b29140aaf4bda7147e1",
+          "bytes": 2435
+        },
+        "visual/sixt/20261029-111310/shots/weekend-card-focus.png": {
+          "sha256": "5efaf72eec131455e45d5a99cab4a8a71087a1ffdc03c2a13f2eeb90c48af8f5",
+          "bytes": 175632
+        },
+        "visual/sixt/20261029-111310/states.json": {
+          "sha256": "06cb2bf341a2409145d37fe130a0ea7e1a3add1d8b01f7f4009cf7799d659e32",
+          "bytes": 146405
+        },
+        "visual/sixt/20261029-111310/summary.txt": {
+          "sha256": "cf584c5b5221040c7682e94026e0f8f9aad375a55bb341f952d084e04c9eaa83",
+          "bytes": 11581
+        },
+        "visual/sixt/20261029-111310/viewport.png": {
+          "sha256": "9ac5c8e35207a9988f744f2578ff405dd604f594026264ae38dc97e29bdf1232",
+          "bytes": 199491
+        },
+        "visual/sixt/20261029-111507/cfg.json": {
+          "sha256": "f74b7143b051eaecbac45528bde54ca50bfe04837d8e649e5ceaf6c7b4676eb8",
+          "bytes": 461
+        },
+        "visual/sixt/20261029-111507/full.png": {
+          "sha256": "27709315f28da1ecf2affddf69299024da6b628bed52b6f392ebde2faff07bf7",
+          "bytes": 1877487
+        },
+        "visual/sixt/20261029-111507/scroll.webm": {
+          "sha256": "6775b27f77fa2d9838755024454db9eccd8a59bd0f76392fdffa0ad8080fd4df",
+          "bytes": 1942496
+        },
+        "visual/sixt/20261029-111507/shots/auto-abo-focus.png": {
+          "sha256": "ab310f4f914ef6b2866c5a7f94ded5006b219d0d65951d4cf47ac37afd0a53a3",
+          "bytes": 5658
+        },
+        "visual/sixt/20261029-111507/shots/auto-abo-hover.png": {
+          "sha256": "fa4e808c01b0d8bd89f264bfe99a227a73900f50e6a885da2e59b146a9efe7be",
+          "bytes": 4505
+        },
+        "visual/sixt/20261029-111507/shots/auto-abo-pressed.png": {
+          "sha256": "9f0f651ff8792e5eb0edfab26e82ef3f748a305b477e1c27583c68b6bdc3ed0b",
+          "bytes": 4556
+        },
+        "visual/sixt/20261029-111507/shots/auto-abo-rest.png": {
+          "sha256": "4c2d940e84b410bde9266634fe9e68461bf6e56ced8d2075ed2b3aff213694f7",
+          "bytes": 4514
+        },
+        "visual/sixt/20261029-111507/shots/help-nav-focus.png": {
+          "sha256": "49a5f33601f5e416302a3ee5c3d3dc996447b688279a2e29c955e177fa6e120f",
+          "bytes": 4429
+        },
+        "visual/sixt/20261029-111507/shots/help-nav-hover.png": {
+          "sha256": "ecba5c8e459625a534fb89b504b824aff36dc535668092387d0e4d42d0dc88a3",
+          "bytes": 3578
+        },
+        "visual/sixt/20261029-111507/shots/help-nav-pressed.png": {
+          "sha256": "8b391e71158ac4178abe1bb5c1a84282c4e06b049d1a5cafbdd38c3c429ba20f",
+          "bytes": 3604
+        },
+        "visual/sixt/20261029-111507/shots/help-nav-rest.png": {
+          "sha256": "da1fffcb727208fd5c26966814a52273a3927e545298f74eab6f9236b6190879",
+          "bytes": 3591
+        },
+        "visual/sixt/20261029-111507/states.json": {
+          "sha256": "7e24339c9fefc08bb9594116b9dd6f6f65f6c672df7e18a72bb7f0095a3fb124",
+          "bytes": 71701
+        },
+        "visual/sixt/20261029-111507/summary.txt": {
+          "sha256": "3e68b91c2cf32bab576560bd82046d16cc507325519c6d2e27730fbc252097b4",
+          "bytes": 5935
+        },
+        "visual/sixt/20261029-111507/viewport.png": {
+          "sha256": "8240fa6827f80e1e00bf0868f6a95309960de88f23aff465351edf3dcd85eeb0",
+          "bytes": 369183
+        },
+        "visual/sixt/review-20261029/72944529383f8d15c9ffd8bbc830a39a.html": {
+          "sha256": "bd885dfc8b3cec84c574be7c998d2493251fe2c26c0fa400bc6b3367d48d8b05",
+          "bytes": 208394
+        },
+        "visual/sixt/review-20261029/a952fca84ad227af457faf9918555dde.html": {
+          "sha256": "a3902452d4206f17e452ee5d1085781f7991cd583727324ac27e69b8cc457dbf",
+          "bytes": 1932
+        },
+        "visual/sixt/review-20261029/ba7d993c495a5bc94b704094cae9107f.html": {
+          "sha256": "130a40fd920f8c37ee3d0bd30dfee033cf73ca99726cdb017d57b0897b1d1b19",
+          "bytes": 5787
+        },
+        "visual/sixt/review-20261029/e88f21b162e4ec0aeeb8ba119812fd71.html": {
+          "sha256": "a7e258d260a18593ba404ec9f2d8fba997a2b238fd9c3aad95b4fdcdfc3cddb5",
+          "bytes": 5820
+        },
+        "visual/sixt/review-20261029/ffa1ea71efc5266e818fe67827c1f195.html": {
+          "sha256": "fbf4993f4741946c891ebf609183056d72940013892f3317f765c1660da1e788",
+          "bytes": 53711
+        },
+        "visual/sixt/review-20261029/fp.json": {
+          "sha256": "097c40523e8a0c0c6c6e5ccafad86c41b8ef9ae9fdff8112aafb2c6b294dc920",
+          "bytes": 1274
+        },
+        "visual/sixt/review-20261029/shots/auto-abo-focus.png": {
+          "sha256": "ab310f4f914ef6b2866c5a7f94ded5006b219d0d65951d4cf47ac37afd0a53a3",
+          "bytes": 5658
+        },
+        "visual/sixt/review-20261029/shots/auto-abo-rest.png": {
+          "sha256": "4c2d940e84b410bde9266634fe9e68461bf6e56ced8d2075ed2b3aff213694f7",
+          "bytes": 4514
+        },
+        "visual/sixt/review-20261029/shots/help-nav-focus.png": {
+          "sha256": "49a5f33601f5e416302a3ee5c3d3dc996447b688279a2e29c955e177fa6e120f",
+          "bytes": 4429
+        },
+        "visual/sixt/review-20261029/shots/help-nav-rest.png": {
+          "sha256": "95804a59b5ed35d7ca48e87a06003f616af4785173c6c9e3aa59f12bd06e0f96",
+          "bytes": 3590
+        },
+        "visual/sixt/review-20261029/shots/learn-more-focus.png": {
+          "sha256": "1895f7c97b7cc06c808221fc0e1c47f52db01852cbf3de7178880dbd1e9141ee",
+          "bytes": 3021
+        },
+        "visual/sixt/review-20261029/shots/pickup-input-focus.png": {
+          "sha256": "44dfc7dd51be6b37b49e576419c8437acc19b88a3e1e6aadca3b69ddbd5fa0af",
+          "bytes": 3325
+        },
+        "visual/sixt/review-20261029/shots/pickup-input-hover.png": {
+          "sha256": "da9b266eaf7044685f2b8fa7626325eec8908d90bb474beb65018981974cc833",
+          "bytes": 3113
+        },
+        "visual/sixt/review-20261029/shots/pickup-input-pressed.png": {
+          "sha256": "44dfc7dd51be6b37b49e576419c8437acc19b88a3e1e6aadca3b69ddbd5fa0af",
+          "bytes": 3325
+        },
+        "visual/sixt/review-20261029/shots/pickup-input-rest.png": {
+          "sha256": "da9b266eaf7044685f2b8fa7626325eec8908d90bb474beb65018981974cc833",
+          "bytes": 3113
+        },
+        "visual/sixt/review-20261029/shots/show-cars-focus.png": {
+          "sha256": "a462e708f47d6d64ebd636fccfb2d533c617b5ba3013b082216d659e8fbfe8cb",
+          "bytes": 3261
+        },
+        "visual/sixt/review-20261029/shots/show-cars-hover.png": {
+          "sha256": "a29ffa511f7630e01cd0f3f6e5ebd19dcc9c26e57aa6783a3a5b1cfedd3d6d18",
+          "bytes": 2791
+        },
+        "visual/sixt/review-20261029/shots/show-cars-pressed.png": {
+          "sha256": "1670e423c0590e442e69569d6210c5d9dafb0848ea8abdaf529934ae910dbc2d",
+          "bytes": 2755
+        },
+        "visual/sixt/review-20261029/shots/show-cars-rest.png": {
+          "sha256": "c3f9cabc7a7421986c671e7a0fc66e49d4d524ae1ea79b29140aaf4bda7147e1",
+          "bytes": 2435
+        },
+        "visual/sixt/review-20261029/shots/weekend-card-focus.png": {
+          "sha256": "0f3472964ce7c656ffb191752f6dcc63fcfd98d44a9456346ab59a821ec6af80",
+          "bytes": 177048
+        },
+        "visual/sixt/review-20261029/states.json": {
+          "sha256": "7e0079ff87592bfbbee35e4ee1b343eabf55c338b0b2cace54f150584dcbd8f9",
+          "bytes": 145944
+        },
+        "visual/sixt/review-20261029/summary.txt": {
+          "sha256": "adef28aa0ce537a4a705c44c2e6ee1b16dbb776de7e7ea5fc3be3e2119d841e7",
+          "bytes": 11581
+        },
+        "visual/sixt/review-20261029/sync.log": {
+          "sha256": "f1a4a0a51f75c23c4c61b4defd676897dcad4c85e6c967d82b949be649737d75",
+          "bytes": 2341
+        },
+        "visual/sixt/review-20261029/text/p0.txt": {
+          "sha256": "e48935f15b892e7aac2efdc64af7c0ce25ac0633c5f8794cc1570743aa85c190",
+          "bytes": 5619
+        },
+        "visual/sixt/review-20261029/text/p1.txt": {
+          "sha256": "d670eaeb2351fa2762d5de91a4c6a3cd181981d7835f8c11244e27f3f8040400",
+          "bytes": 1136
+        },
+        "visual/sixt/review-20261029/text/p2.txt": {
+          "sha256": "6042d046575d38e26354d9a3edc1c3af826c911c8c5be4957d52ae699fb0890e",
+          "bytes": 3064
+        },
+        "visual/sixt/review-20261029/text/p3.txt": {
+          "sha256": "fc70ede4e82630f28a94bfaad121f5aa43ede8d4272b7ae3e0756c412571f38a",
+          "bytes": 1630
+        },
+        "visual/sixt/review-20261029/text/p4.txt": {
+          "sha256": "798570d8565f6113d0fdbaad8468c099041c763de47c4f292650e4df98dae50d",
+          "bytes": 19881
+        },
+        "visual/sixt/review-20261029/text/p5.txt": {
+          "sha256": "d0f8f3b3d0b96663bf706f8022b7314b1c937d385b297209946620ba770d1081",
+          "bytes": 2605
+        },
+        "visual/sixt/review-20261029/text/p6.txt": {
+          "sha256": "d0e4426fe9ee15154a05ef4e32f84a211d9fba3db9741dd00a5e2ae82d597cad",
+          "bytes": 1595
+        },
+        "visual/sixt/review-20261029/text/p7.txt": {
+          "sha256": "19d05ab450e277241154b2e04dc6da85d34ef170c4eb57b61358de07e70d267c",
+          "bytes": 1351
+        },
+        "visual/sixt/review-20261029/text2/p0.txt": {
+          "sha256": "5ae805bfa8614281470df0080950336d926f81ff11fa76f1c7a6a37f6ee190c4",
+          "bytes": 59215
+        },
+        "visual/sixt/review-20261029/text2/p1.txt": {
+          "sha256": "5dcca5bb307c03540dc5c778a08a318c1675866ad2e6d3c2a8ba90e4e0bf1b0e",
+          "bytes": 15209
+        },
+        "visual/withings/20261029-111212/full.png": {
+          "sha256": "86a8dc5fc319d0d7fb148bd6990ec0cbbbaac91c61232f60ac910f5beab1ec20",
+          "bytes": 1118075
+        },
+        "visual/withings/20261029-111212/scroll.webm": {
+          "sha256": "1dafc92a30664c9f86cc620e0f27ff1c1b4f7dd0d9bd700383b50bf28c1c89dd",
+          "bytes": 1559124
+        },
+        "visual/withings/20261029-111212/summary.txt": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "visual/withings/20261029-111212/survey.json": {
+          "sha256": "1305ffb95b50cb9a1bd90a9244e48d96ad1d585f98fa5806a81a4f75c9be0781",
+          "bytes": 325373
+        },
+        "visual/withings/20261029-111212/viewport.png": {
+          "sha256": "de49aa43ce87626c10458ab6ce046b288f83c27105f1411a92f61c0f379355eb",
+          "bytes": 405643
+        },
+        "visual/withings/20261029-111354/cfg.json": {
+          "sha256": "142f0e8d67f250fe6fb4aba52fd123cb9c8b8d1941f8d1eeb3c9055b035b4d68",
+          "bytes": 1586
+        },
+        "visual/withings/20261029-111354/full.png": {
+          "sha256": "fceebe69b975753343ad55d0467997c86ff55005e0ed3decb04e12a139604640",
+          "bytes": 2144693
+        },
+        "visual/withings/20261029-111354/scroll.webm": {
+          "sha256": "be91adb5febdfd0366c90e06798d9b9326b283560e874703e96e48c88f88e27d",
+          "bytes": 1404631
+        },
+        "visual/withings/20261029-111354/shots/nav-store-rest.png": {
+          "sha256": "e8f26d8bef6e4b786500d237f3174dfdaf52eaaf81e683aecc48b37d4cab8e54",
+          "bytes": 10168
+        },
+        "visual/withings/20261029-111354/shots/primary-cta-rest.png": {
+          "sha256": "7a20f4157e6d1b077020de3bae56166b2710c9dc88f88d852b9f68c0d09fbfe3",
+          "bytes": 6201
+        },
+        "visual/withings/20261029-111354/shots/search-trigger-rest.png": {
+          "sha256": "f5ed16b45c674ed4668501fba85b53cce601a365825b6c22f2e7985c14940d53",
+          "bytes": 696
+        },
+        "visual/withings/20261029-111354/states.json": {
+          "sha256": "0f0116c104c1805196e07c2f7fc765fceca9ab757e148ff62609646e31cb8d6e",
+          "bytes": 50306
+        },
+        "visual/withings/20261029-111354/summary.txt": {
+          "sha256": "50520e72554c702ef578289f9184f173c6479d57c0531565ef2ceffc6c93376c",
+          "bytes": 5858
+        },
+        "visual/withings/20261029-111354/viewport.png": {
+          "sha256": "26a0585051b8bf40edb555b5da4fa278a8a9e9b6516f696e5accdeb50f85edcc",
+          "bytes": 522862
+        },
+        "visual/withings/review-20261029/cfg-cta.json": {
+          "sha256": "6e5203be5202ee0cc3f2e9f0c831252c3c976843d621220afd5bad8ab3a9fe70",
+          "bytes": 174
+        },
+        "visual/withings/review-20261029/fp.json": {
+          "sha256": "d35fea4f8462910c43d5896a80148b431c7c757b3c4c5133e80d0d08767e0d39",
+          "bytes": 1236
+        },
+        "visual/withings/review-20261029/press.html": {
+          "sha256": "8a7d5be4bec952d1d1e062126c6b0dece9f5e5006e47c60321e27976a77a3ecc",
+          "bytes": 1185681
+        },
+        "visual/withings/review-20261029/shots/email-input-focus.png": {
+          "sha256": "6b2f86a17b19eb1d74b91c72d6ce809ad98c4d905430c56fd7cb6edfd0d2efd3",
+          "bytes": 1724
+        },
+        "visual/withings/review-20261029/shots/email-input-hover.png": {
+          "sha256": "8723eb4d18ad0929f1e5a364edccb6ce0f1719b59c5af521b9352cd4d45d3279",
+          "bytes": 2121
+        },
+        "visual/withings/review-20261029/shots/email-input-pressed.png": {
+          "sha256": "6169ef6383aa45a7568eb4b4f41fcc4f957a2b016676649fed3d2302fc319c68",
+          "bytes": 2118
+        },
+        "visual/withings/review-20261029/shots/nav-store-focus.png": {
+          "sha256": "d49bebdc5f2696ecc55a530c1ddd5ca4dbd9d86cc75ff7a56cc54d29969882a2",
+          "bytes": 1419
+        },
+        "visual/withings/review-20261029/shots/nav-store-hover.png": {
+          "sha256": "4c7cee395701f4e784bfcfe2b69dbcd15c6e8d12b932d17d430e47c7e5c074a5",
+          "bytes": 1380
+        },
+        "visual/withings/review-20261029/shots/nav-store-pressed.png": {
+          "sha256": "4c7cee395701f4e784bfcfe2b69dbcd15c6e8d12b932d17d430e47c7e5c074a5",
+          "bytes": 1380
+        },
+        "visual/withings/review-20261029/shots/nav-store-rest.png": {
+          "sha256": "4c7cee395701f4e784bfcfe2b69dbcd15c6e8d12b932d17d430e47c7e5c074a5",
+          "bytes": 1380
+        },
+        "visual/withings/review-20261029/shots/primary-cta-focus.png": {
+          "sha256": "b705246024e91814a285a72eacafe60dc5f8184fd0b9100c14b8bb238c8f0fa3",
+          "bytes": 9379
+        },
+        "visual/withings/review-20261029/shots/primary-cta-rest.png": {
+          "sha256": "c61db0ffdafb69529de469c42b0a606e7d7fddecb4eccb097d145ecd8031e38e",
+          "bytes": 7283
+        },
+        "visual/withings/review-20261029/shots/search-trigger-focus.png": {
+          "sha256": "11682687938ab28d90e28998a6c4a60c7252132d04fc66eacea8da1620239677",
+          "bytes": 428
+        },
+        "visual/withings/review-20261029/shots/search-trigger-hover.png": {
+          "sha256": "6340527eccee473c5ff8dadf51290a014949ac37c204eb78475d6583e14abec0",
+          "bytes": 390
+        },
+        "visual/withings/review-20261029/shots/search-trigger-pressed.png": {
+          "sha256": "6340527eccee473c5ff8dadf51290a014949ac37c204eb78475d6583e14abec0",
+          "bytes": 390
+        },
+        "visual/withings/review-20261029/shots/search-trigger-rest.png": {
+          "sha256": "6340527eccee473c5ff8dadf51290a014949ac37c204eb78475d6583e14abec0",
+          "bytes": 390
+        },
+        "visual/withings/review-20261029/shots/secondary-link-focus.png": {
+          "sha256": "8031a3d712827b4c419de5aea42bf3428b01199c4bb153161d1040b95c56356a",
+          "bytes": 2463
+        },
+        "visual/withings/review-20261029/shots/secondary-link-hover.png": {
+          "sha256": "82c5b533156a2768f8d85707810c50bb9bd168d6718e31ce3ede48b8682222e4",
+          "bytes": 2391
+        },
+        "visual/withings/review-20261029/shots/secondary-link-pressed.png": {
+          "sha256": "82c5b533156a2768f8d85707810c50bb9bd168d6718e31ce3ede48b8682222e4",
+          "bytes": 2391
+        },
+        "visual/withings/review-20261029/shots/watch-card-focus.png": {
+          "sha256": "254e6c827f627a2a676b72db87af8627d0bccfed386af63437e76b6822cf9f18",
+          "bytes": 44332
+        },
+        "visual/withings/review-20261029/shots/watch-card-hover.png": {
+          "sha256": "5983ecf785bd66ebb617eb9c454c52d673c37598afda5a1ad2bc72a3c508133d",
+          "bytes": 48726
+        },
+        "visual/withings/review-20261029/shots/watch-card-pressed.png": {
+          "sha256": "5983ecf785bd66ebb617eb9c454c52d673c37598afda5a1ad2bc72a3c508133d",
+          "bytes": 48726
+        },
+        "visual/withings/review-20261029/shots-cta/primary-cta-hover.png": {
+          "sha256": "39adaf902e609b0fdf35aebd434c9f3b88e9c1198e565e885a43e59f9857f2ae",
+          "bytes": 7847
+        },
+        "visual/withings/review-20261029/shots-cta/primary-cta-pressed.png": {
+          "sha256": "83ea0aeee892eed0b0a96e80242b6ba537290e73cf035ef5d87907c72ddb7393",
+          "bytes": 7816
+        },
+        "visual/withings/review-20261029/shots-cta/primary-cta-rest.png": {
+          "sha256": "0e2f4e24a4aa135140ed1bb4041b5ccb50505d340f43f3d6befd41422b5b5cfc",
+          "bytes": 11959
+        },
+        "visual/withings/review-20261029/states-cta.json": {
+          "sha256": "7a226bef984d40bc4d4f2eada46cd009a535cbb83d287745dd1ed95bb5cc7ca5",
+          "bytes": 17115
+        },
+        "visual/withings/review-20261029/states.json": {
+          "sha256": "4f38db60fb61b6af6f3cfb32d2b5433ff317892fdc121e49fe7cdce56269476f",
+          "bytes": 152329
+        },
+        "visual/withings/review-20261029/summary-cta.txt": {
+          "sha256": "620ae5e8bd9a9a3f409a525ef418e65d4dba5d5d2f6d722b817b4f2b1eb4d66d",
+          "bytes": 2261
+        },
+        "visual/withings/review-20261029/summary.txt": {
+          "sha256": "a67c8d540819ca0d335adb46997aeabde6ff71cdfc3c7bf68f5f08dfa0e10244",
+          "bytes": 13810
+        },
+        "visual/withings/review-20261029/sync.log": {
+          "sha256": "e2f8c25cd94da6ef3dcec93377aff446ce639adc856d2dbf8e09b418a4250c12",
+          "bytes": 2341
+        },
+        "visual/withings/review-20261029/text/p0.txt": {
+          "sha256": "21bd20b378ee81ae3a69a51c18fd43f52165a1b5ed92d7d48e5bf4e7faf909d8",
+          "bytes": 138066
+        },
+        "visual/withings/review-20261029/text/p1.txt": {
+          "sha256": "55790c4d13cea70fd5868e7dd0e12e5bc759a7898f6f63acb7818890fa5c0715",
+          "bytes": 105098
+        },
+        "visual/withings/review-20261029/text/p2.txt": {
+          "sha256": "427ff639cf2fef398c65e6ed2fd375b4af6a4968040a09973bb24d744d040ffc",
+          "bytes": 136177
+        },
+        "visual/withings/review-20261029/text/p3.txt": {
+          "sha256": "d7e1d529b01481d29d44a5c1e208fea8349227f2e8559b40f9b4fd07aa63d1b5",
+          "bytes": 47804
+        },
+        "visual/withings/review-20261029/text/p4.txt": {
+          "sha256": "51fe64b796a4a2ad1bba4fb3eb9a057af8d901d9e9199ad051a5cdac4b835902",
+          "bytes": 111417
+        },
+        "visual/withings/review-20261029/text2/p0.txt": {
+          "sha256": "40d70a3dcc97fcdab234055b0b726f567942251bed55c98420870dfbb2e0a1f1",
+          "bytes": 5118
+        },
+        "visual/withings/review-20261029/visual/full.png": {
+          "sha256": "8e6c225afbe69da66f2445c0ccd606d68919ba448be24d00e73430f11b83371d",
+          "bytes": 1962973
+        },
+        "visual/withings/review-20261029/visual/scroll.webm": {
+          "sha256": "5cafe6cf9878873c4f6683e897f5a8bcb967778b7b01303683c40c604c57cd7a",
+          "bytes": 1506848
+        },
+        "visual/withings/review-20261029/visual/viewport.png": {
+          "sha256": "de064379c5165035168ba2d5be33904bc32fa3a60411e3a31e4a378dcaa26aea",
+          "bytes": 318393
         },
         "vuno.json": {
           "sha256": "8c0a620c8503c32b0ae08889282793f5a95f5db811a048d47deae979f4082834",

@@ -66,8 +66,9 @@
    emag(RO, --brand 187) · odoo(BE) · sbb(CH, --sbb 1,197) · finnair(FI). 탈락: babbel(0)·idealo(tw)·raisin(404)·scalable(--bs=Bootstrap)·
    on(4)·proton(tw)·galaxus(해시)·catawiki(tw·toastify)·mistral(이미 등재). 차단: mobile.de·immoscout(401)·flink·allegro·inpost·rohlik·sezane(403).
    국가 CZ·RO·BE·CH 추가.
-   **진행 2026-10-29: 11/16 등재**(+sbb·odoo·kiwi·emag — Sol 워커 4개 저작·본 세션 검토, 브랜치 `feat/eu-wave5`, 아직 main 미머지).
-   남음: sixt·withings·mango·bbva·finnair(curl 403/429 — 워커 브라우저로 재시도 대상).
+   **마감 2026-10-29: 16/16 등재**(+sbb·odoo·kiwi·emag, 이어 sixt·withings·bbva·mango·finnair — Sol 워커 저작·본 세션 검토,
+   브랜치 `feat/eu-wave5`, main 미머지 = 오너 GO 대기). 지역·동의 창 장애는 프로브 `--close`·MCP `close`·거부어(스페인어·핀란드어)로 해결.
+   다음 EU 웨이브는 새 후보 센서스부터.
 5i. **EU 웨이브 4** — 스카우팅 2026-09-26: **16/32(50%)** — vinted(LT, --v) · vipps(NO, 854) · lego(DK, --ds 2,178) ·
    toogoodtogo(DK, --dt) · idealista(ES, kiwi) · fever(ES, --fv 608) · bitpanda(AT) · wetransfer(NL, --wt) · ns(NL, --nes 496) ·
    zooplus(DE, --pp) · epidemicsound(SE, --es) · bolt(EE — ruby/iris/mint은 Radix 기본값, 제외 후 판단) · avanza(SE) ·
@@ -151,6 +152,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-10-29 · 회차 68–72 · sixt(DE) · withings(FR) · bbva(ES) · mango(ES) · finnair(FI) — Sol 워커 웨이브 5b, 국가·분류 5/5 워커 제안 그대로. 지역·동의 창이 공통 장애 → 프로브 `--close`, MCP `close`·`hideOverlays`, 스페인어·핀란드어 거부어, 지시서 규칙(WORKER_PLAN §2b) · 브랜치 `feat/eu-wave5` · **530 / 308**
 - 2026-10-29 · 회차 64–67 · sbb(CH) · odoo(BE) · kiwi(CZ — 투자사 본사 아님) · emag(RO — 인수사 본사 아님) — **Sol max 워커 4개가 저작, 본 세션은 재측정·대조·판정**(WORKER_PLAN §2b). 프로브에 루마니아어·체코어 거부어. 브랜치 `feat/eu-wave5` · **525 / 303**
 - 2026-09-27 · 회차 60–63 · deepl · komoot(Schönefeld GmbH) · blinkist · n8n — EU 웨이브 5 4/16. 국가 CZ·RO·BE·CH 추가, 거부어 "Refuse" · **518 / 224**
 - 2026-09-27 · 회차 58–59 · avanza(SE, soft 404 대조군·자사 favicon) · trivago(DE, hover 오버레이로 미측정·catch-all 대조군 무신호 기록) · 동의 거부어에 스웨덴어 추가 · **514 / 220**
