@@ -24,7 +24,9 @@
   - **브랜치 `feat/eu-wave5`(워크트리 `.claude/worktrees/eu-wave5`, 푸시됨, main 미머지 = 오너 GO 필요)**: sbb `9a37295b` · odoo `d86d515b` · kiwi `3bb4ebe9` · emag `5d23d4c6` · 프로브 거부어 `5d5e196a`. **525 / 303 verified**.
   - 결과(WORKER_PLAN §2b): 워커당 17~27분, 입력 390만~670만(95~97% 캐시)·출력 4.6만~5.4만. ②′ 재측정 4/4 일치, 서사 문장 중 출처에 없는 것 0. 본 세션 수정은 전부 지시서 공백 탓(국가 규칙·렌더 타입·모션 근거·상태 없는 컴포넌트) → 양식에 반영. **Sol max 저작 채택**(4회차 Sonnet 저작 탈락과 대비).
   - 국가 판정 2건(규칙대로, 오너 문의 불필요): kiwi CZ(워커 제안 US=사모펀드 General Atlantic 본사), emag RO(워커 제안 NL=Prosus). 근거: 실제 본사 운영지 규칙(wolt·moreh 선례).
-  - 다음: EU 웨이브 5 남은 5곳(sixt·withings·mango·bbva·finnair, curl 403/429)을 같은 구성으로. 워커 작업 폴더 `~/.omd-workers/wave5/<id>/`, 실행 기록 `~/.omd-workers/runs/w5-*`.
+  - 마무리 점검: kiwi 투명 배경이 `#00000000`으로 바뀌어 거짓 대비 경고(1.45:1)가 생기던 것 수정(`15e578ac`, 양식에 금지 추가). emag 서체는 로드 목록에서 확인(Open Sans 400/600/700). 로컬 증거 매니페스트 갱신·iCloud 백업 동기화(`e7feb9d4`).
+  - **가동 중(20:09~): 웨이브 5b Sol 워커 4개** — w5b-sixt(de-DE) · w5b-withings(fr-FR) · w5b-bbva(es-ES) · w5b-mango(es-ES, 429 주의). 폴더 `~/.omd-workers/wave5b/<id>/`, 기록 `~/.omd-workers/runs/w5b-*`. finnair는 자리 나면.
+  - 오너 대기: ① `feat/eu-wave5` main 머지(=배포) GO ② WORKER_PLAN §8 #3 effort 기본값 — 제안: 조사·저작 Sol max, 범위 좁은 코드 Sonnet medium.
 - **참고.** MCP 커넥터 v1은 2026-07-14 Core v2 전환 때 퇴역(/api/mcp 410, npm 패키지 보관). 성장 계획(10/13)은 AI 인용 채널로 MCP 커넥터를 다시 적어 둠. 10/25 /hangul 로컬 보고서(`docs/research/2026-10-25-hangul-report/index.html`)는 마감 직전(통계 카드 줄바꿈·섹션 캡처의 고정 헤더 겹침 수정 남음).
 
 ## ▶ 2026-10-25 3시 반 · /hangul — 열린 작업 마무리 + 로컬 화면·테스트 결과 문서 + UX 라이팅 추가 테스트 + 리서치·오픈소스 조사 (진행 중)
