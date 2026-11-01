@@ -2,9 +2,9 @@
   "schema_version": 3,
   "generated_at": "2026-10-16",
   "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
-  "count": 87,
+  "count": 88,
   "counts": {
-    "available": 87,
+    "available": 88,
     "source_only": 0
   },
   "records": [
@@ -2058,11 +2058,29 @@
         }
       },
       "default_variant": "symbol"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/samsung/wordmark.svg",
+          "source": "Official site (samsung.com)",
+          "source_url": "https://www.samsung.com/sec/",
+          "license": "brand-asset-official",
+          "license_url": "https://www.samsung.com/sec/",
+          "usage_note": "공식 사이트 GNB 헤더 inline SVG 추출(fill currentColor → #000000) · 식별용 · 상표 삼성전자"
+        }
+      },
+      "default_variant": "wordmark"
     }
   ],
   "source_breakdown": {
     "unit": "variants",
-    "official": 90,
+    "official": 91,
     "Wikimedia Commons": 17
   }
 }

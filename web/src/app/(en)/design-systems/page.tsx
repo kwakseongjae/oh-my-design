@@ -21,7 +21,7 @@ import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { getInstallCounts } from "@/lib/install-counts.server";
 import { getViewCounts } from "@/lib/view-counts.server";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
-import { archiveRow, enName, recommendedOrder } from "./archive-rows.server";
+import { archiveRow, defaultOrder, enName } from "./archive-rows.server";
 import { CatalogView, type CatalogCollection } from "./catalog-view";
 
 export const revalidate = 3600;
@@ -30,14 +30,13 @@ const COPY = ARCHIVE_COPY.en;
 
 export default async function DesignSystemsPage() {
   const [installs, views] = await Promise.all([getInstallCounts(), getViewCounts()]);
-  // Recommended order (30-day page views, then installs); ties keep the old grid order:
-  // official systems, then brand guides, then the rest, by name.
-  const rows = recommendedOrder(
+  // Default order: installs, then 30-day page views; ties keep the old grid order
+  // (official systems, then brand guides, then the rest, by name).
+  const rows = defaultOrder(
     getAllDesignSystems()
       .map((ds) => REGISTRY_BY_ID[ds.refId])
       .filter((r) => !!r)
-      .map((r) => archiveRow(r, "en", installs)),
-    views,
+      .map((r) => archiveRow(r, "en", installs, views)),
   );
   const collections: CatalogCollection[] = COLLECTIONS.map((c) => ({
     slug: c.slug,

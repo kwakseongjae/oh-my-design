@@ -13,16 +13,14 @@
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 
 export type ArchiveRegionKey = "all" | "KR" | "JP" | "TW" | "CN" | "other";
-/** "recommended" = 30-day page views (server order); "updated" = last checked; "name" = collation order. */
-export type ArchiveSortKey = "recommended" | "updated" | "name";
+/** "installs" = the server order (default); "views" = 30-day page views; "updated" = last checked; "name" = collation. */
+export type ArchiveSortKey = "installs" | "views" | "updated" | "name";
 
 export interface ArchiveCopy {
   /** The archive's one h1. */
   h1: string;
   /** Lede for the whole catalog ({count} = every reference). */
   lede: (count: number) => string;
-  /** Lede for the Korean archive, which lists the references that have a Korean page. */
-  ledeKo?: (kr: number, intl: number, rest: number) => { before: string; link: string; after: string };
   meta: { title: (count: number) => string; description: (count: number) => string };
   search: { label: string; placeholder: string; clear: string };
   regionLabel: string;
@@ -35,7 +33,8 @@ export interface ArchiveCopy {
   sorts: Record<ArchiveSortKey, string>;
   collections: string;
   showAll: string;
-  count: (shown: number, total: number) => string;
+  /** Shown only while a filter or search narrows the list: the number in the accent colour, then this unit (with its own leading space where the language needs one). */
+  results: (n: number) => string;
   clear: string;
   empty: string;
   toTop: string;
@@ -76,10 +75,10 @@ const EN: ArchiveCopy = {
     government: "Government",
   },
   sortLabel: "Sort",
-  sorts: { recommended: "Recommended", updated: "Recently updated", name: "Name" },
+  sorts: { installs: "Most installed", views: "Most viewed", updated: "Recently updated", name: "Name" },
   collections: "Collections",
   showAll: "Show all",
-  count: (shown, total) => (shown === total ? `${total} DESIGN.md files` : `${shown} of ${total} DESIGN.md files`),
+  results: (n) => (n === 1 ? " result" : " results"),
   clear: "Clear filters",
   empty: "No DESIGN.md matches these filters.",
   toTop: "Back to top",
@@ -90,12 +89,8 @@ const EN: ArchiveCopy = {
 
 const KO: ArchiveCopy = {
   h1: "DESIGN.md 아카이브",
-  lede: (n) => `실제 서비스 ${n}곳의 디자인을 코딩 에이전트가 읽는 DESIGN.md로 모았어요. 골라서 프로젝트에 넣으면 돼요.`,
-  ledeKo: (kr, intl, rest) => ({
-    before: `한국 기업 ${kr}곳과 해외 기업 ${intl}곳의 DESIGN.md예요. 나머지 ${rest}곳은 `,
-    link: "영문 아카이브",
-    after: "에 있어요.",
-  }),
+  lede: (n) =>
+    `잘 만든 서비스 ${n}곳의 색상·글꼴·컴포넌트를 DESIGN.md 한 파일씩으로 정리했어요. 마음에 드는 곳을 골라 프로젝트에 넣으면 코딩 에이전트가 그 디자인을 따라 만들어요.`,
   meta: {
     title: (n) => `DESIGN.md 아카이브 — 기업 ${n}곳의 디자인 시스템`,
     description: (n) =>
@@ -123,10 +118,10 @@ const KO: ArchiveCopy = {
     government: "공공",
   },
   sortLabel: "정렬",
-  sorts: { recommended: "추천순", updated: "업데이트순", name: "이름순" },
+  sorts: { installs: "설치순", views: "조회순", updated: "업데이트순", name: "이름순" },
   collections: "컬렉션",
   showAll: "전체 보기",
-  count: (shown, total) => (shown === total ? `DESIGN.md ${total}개` : `DESIGN.md ${total}개 중 ${shown}개`),
+  results: () => "개",
   clear: "필터 지우기",
   empty: "조건에 맞는 DESIGN.md가 없어요.",
   toTop: "맨 위로",
@@ -165,10 +160,10 @@ const JA: ArchiveCopy = {
     government: "行政",
   },
   sortLabel: "並び替え",
-  sorts: { recommended: "おすすめ順", updated: "更新順", name: "名前順" },
+  sorts: { installs: "インストール数順", views: "閲覧数順", updated: "更新順", name: "名前順" },
   collections: "コレクション",
   showAll: "すべて表示",
-  count: (shown, total) => (shown === total ? `DESIGN.md ${total}件` : `DESIGN.md ${total}件中 ${shown}件`),
+  results: () => "件",
   clear: "絞り込みを解除",
   empty: "条件に合う DESIGN.md はありません。",
   toTop: "トップへ戻る",
@@ -207,10 +202,10 @@ const ZH_TW: ArchiveCopy = {
     government: "政府",
   },
   sortLabel: "排序",
-  sorts: { recommended: "推薦", updated: "最近更新", name: "名稱" },
+  sorts: { installs: "安裝最多", views: "瀏覽最多", updated: "最近更新", name: "名稱" },
   collections: "精選集",
   showAll: "顯示全部",
-  count: (shown, total) => (shown === total ? `${total} 份 DESIGN.md` : `${total} 份中的 ${shown} 份 DESIGN.md`),
+  results: () => " 份",
   clear: "清除篩選",
   empty: "沒有符合條件的 DESIGN.md。",
   toTop: "回到頂端",

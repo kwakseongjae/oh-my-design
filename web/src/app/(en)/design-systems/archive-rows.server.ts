@@ -195,23 +195,16 @@ export interface ArchiveRow {
   summaryLang: string;
   /** Registry category slug; the label comes from copy/r11-archive.ts. */
   domain: string;
+  /** Registry country; drives the region filter, not shown on the card. */
   country: string;
-  countryLabel: string;
   region: ArchiveRegion;
   /** When the reference was last checked against the live site (registry `verified`), for the update sort. */
   updated: string;
   logo: ArchiveLogo | null;
-  /** copy + download + install counters; 0 = unknown or none, hidden. */
+  /** copy + download + install counters; 0 = unknown or none, hidden. The default sort. */
   installs: number;
-}
-
-/** Country name in the page language. The registry writes UK where ISO writes GB. */
-function countryLabel(code: string, locale: ArchiveLocale): string {
-  try {
-    return new Intl.DisplayNames([locale], { type: "region" }).of(code === "UK" ? "GB" : code) ?? code;
-  } catch {
-    return code;
-  }
+  /** GA4 page views of the item pages, last 30 days; 0 = unknown or none. Sort only, never shown. */
+  views: number;
 }
 
 /** The English page's brand name — the same function as the item page's title and h1. */
@@ -219,7 +212,12 @@ export function enName(r: RefEntry): string {
   return r.name || r.displayName || r.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
 }
 
-export function archiveRow(r: RefEntry, locale: ArchiveLocale, installs: Record<string, number>): ArchiveRow {
+export function archiveRow(
+  r: RefEntry,
+  locale: ArchiveLocale,
+  installs: Record<string, number>,
+  views: Record<string, number> = {},
+): ArchiveRow {
   const name = locale === "ko" ? koName(r.id) : enName(r);
   const summary = summaryOf(r.id);
   return {
@@ -232,24 +230,23 @@ export function archiveRow(r: RefEntry, locale: ArchiveLocale, installs: Record<
     summaryLang: textLang(summary, r.country),
     domain: r.category,
     country: r.country,
-    countryLabel: countryLabel(r.country, locale),
     region: archiveRegion(r.country),
     updated: r.verified ?? "",
     logo: logoFor(r.id),
     installs: installs[r.id] ?? 0,
+    views: views[r.id] ?? 0,
   };
 }
 
 /**
- * The archive's recommended order (the default sort): 30-day page views first,
- * then installs, then the order the rows came in (official systems, brand guides,
- * the rest by name). Computed once on the server so the client, the SSR markup
- * and the JSON-LD list agree. With no view data (no KV) this is the incoming
- * order, ranked only by installs where those exist.
+ * The archive's default order (owner, 2026-11-02: "설치 수 기준으로 정렬"): installs
+ * first, the number each card shows; then 30-day page views; then the order the
+ * rows came in. Computed once on the server so the client, the SSR markup and the
+ * JSON-LD list agree. Without KV or GA4 data it is the incoming order.
  */
-export function recommendedOrder(rows: ArchiveRow[], views: Record<string, number>): ArchiveRow[] {
+export function defaultOrder(rows: ArchiveRow[]): ArchiveRow[] {
   return rows
-    .map((row, i) => ({ row, i, v: views[row.id] ?? 0 }))
-    .sort((a, b) => b.v - a.v || b.row.installs - a.row.installs || a.i - b.i)
+    .map((row, i) => ({ row, i }))
+    .sort((a, b) => b.row.installs - a.row.installs || b.row.views - a.row.views || a.i - b.i)
     .map((x) => x.row);
 }

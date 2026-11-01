@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { fetchPageViews, getViewCounts, ITEM_PATH_RE, viewsById } from "./view-counts.server";
-import { recommendedOrder, type ArchiveRow } from "@/app/(en)/design-systems/archive-rows.server";
+import { defaultOrder, type ArchiveRow } from "@/app/(en)/design-systems/archive-rows.server";
 
-const row = (id: string, installs = 0): ArchiveRow =>
-  ({ id, name: id, installs, updated: "", region: "other", domain: "saas" }) as unknown as ArchiveRow;
+const row = (id: string, installs = 0, views = 0): ArchiveRow =>
+  ({ id, name: id, installs, views, updated: "", region: "other", domain: "saas" }) as unknown as ArchiveRow;
 
 describe("GA4 page views", () => {
   it("is empty without credentials (local and CI builds), so the archive keeps its old order", async () => {
@@ -55,21 +55,19 @@ describe("GA4 page views", () => {
   });
 });
 
-describe("recommended order", () => {
-  it("ranks by views, then installs, then the incoming order", () => {
-    const rows = [row("a", 5), row("b"), row("c", 9), row("d"), row("e")];
-    const order = recommendedOrder(rows, { b: 40, d: 40, e: 3 }).map((r) => r.id);
-    expect(order).toEqual(["b", "d", "e", "c", "a"]);
+describe("default order", () => {
+  it("ranks by installs, then 30-day views, then the incoming order", () => {
+    const rows = [row("a", 5), row("b", 0, 40), row("c", 9), row("d", 0, 40), row("e", 5, 3)];
+    expect(defaultOrder(rows).map((r) => r.id)).toEqual(["c", "e", "a", "b", "d"]);
   });
 
-  it("without view data keeps the incoming order except where installs rank", () => {
-    const rows = [row("a"), row("b", 2), row("c")];
-    expect(recommendedOrder(rows, {}).map((r) => r.id)).toEqual(["b", "a", "c"]);
+  it("without any counts keeps the incoming order", () => {
+    expect(defaultOrder([row("a"), row("b"), row("c")]).map((r) => r.id)).toEqual(["a", "b", "c"]);
   });
 
   it("does not reorder the array it was given", () => {
-    const rows = [row("a"), row("b")];
-    recommendedOrder(rows, { b: 1 });
+    const rows = [row("a"), row("b", 1)];
+    defaultOrder(rows);
     expect(rows.map((r) => r.id)).toEqual(["a", "b"]);
   });
 });

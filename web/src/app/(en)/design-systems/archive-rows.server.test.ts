@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
+import { KO_DETAIL_IDS } from "@/lib/i18n/ko-detail.server";
 import {
   archiveRegion,
   archiveRow,
@@ -97,7 +98,14 @@ describe("archive rows", () => {
     const en = archiveRow(REGISTRY_BY_ID.toss, "en", { toss: 12 });
     const ko = archiveRow(REGISTRY_BY_ID.toss, "ko", {});
     expect(en).toMatchObject({ name: "Toss", href: "/design-systems/toss", installs: 12, region: "KR", domain: "fintech" });
-    expect(ko).toMatchObject({ name: "토스", href: "/ko/design-systems/toss", installs: 0, countryLabel: "대한민국" });
+    expect(ko).toMatchObject({ name: "토스", href: "/ko/design-systems/toss", installs: 0, views: 0, country: "KR" });
     expect(en.terms).toContain("토스");
+  });
+
+  it("links a reference without a Korean page to its English page from /ko", () => {
+    const koPages = new Set<string>(KO_DETAIL_IDS);
+    const foreign = REGISTRY.find((r) => !koPages.has(r.id));
+    expect(foreign).toBeDefined();
+    expect(archiveRow(foreign!, "ko", {}).href).toBe(`/design-systems/${foreign!.id}`);
   });
 });

@@ -14,9 +14,11 @@
  * `?collection=<slug>` filters exactly as before on the English page (the old
  * /collections/<slug> URLs 308 here), and the JSON-LD stays in page.tsx.
  *
- * Round 12 (owner, 2026-11-01): the rows arrive in the recommended order (30-day
- * page views, archive-rows.server.ts `recommendedOrder`), which is the default
- * sort. Cards load 40 at a time as the reader scrolls, with no button. Region,
+ * Round 12 (owner, 2026-11-01/02): the rows arrive in the default order, installs
+ * then 30-day page views (archive-rows.server.ts `defaultOrder`). Cards load 40 at a
+ * time as the reader scrolls, with no button. Filters are a region segment and one
+ * scrolling row of domains, with the accent marking what is on; the number of
+ * matches appears, in the accent, only while something narrows the list. Region,
  * domain, sort and search live in the URL (`history.replaceState`), and the number
  * of loaded cards plus the scroll position are kept in sessionStorage when a card
  * is opened, so Back lands on the same card. The evidence tier is internal and no
@@ -54,7 +56,7 @@ export interface CatalogCollection {
 const PAGE = 40;
 
 const REGIONS: ArchiveRegionKey[] = ["all", "KR", "JP", "TW", "CN", "other"];
-const SORTS: ArchiveSortKey[] = ["recommended", "updated", "name"];
+const SORTS: ArchiveSortKey[] = ["installs", "views", "updated", "name"];
 
 /** Where an opened card leaves the list state for Back to restore. */
 const RESTORE_KEY = "omd:archive:restore";
@@ -65,12 +67,12 @@ type Restore = { path: string; sig: string; limit: number; y: number; id: string
 
 /** The archive state the URL carries; collection stays the server's `?collection=`. */
 type Initial = { region: ArchiveRegionKey; domain: string; sort: ArchiveSortKey; q: string };
-const DEFAULT_INITIAL: Initial = { region: "all", domain: "all", sort: "recommended", q: "" };
+const DEFAULT_INITIAL: Initial = { region: "all", domain: "all", sort: "installs", q: "" };
 
 function initialFrom(params: URLSearchParams | null): Initial {
   if (!params) return DEFAULT_INITIAL;
   const region = REGIONS.find((r) => r === params.get("region")) ?? "all";
-  const sort = SORTS.find((s) => s === params.get("sort")) ?? "recommended";
+  const sort = SORTS.find((s) => s === params.get("sort")) ?? "installs";
   return { region, domain: params.get("domain") || "all", sort, q: params.get("q") ?? "" };
 }
 
@@ -133,7 +135,8 @@ function Archive({
   const base = useMemo(() => {
     const ids = collection ? new Set(collection.ids) : null;
     const list = ids ? rows.filter((r) => ids.has(r.id)) : [...rows];
-    // `rows` is already the recommended order; the other sorts are stable on top of it.
+    // `rows` is already the default (installs) order; the other sorts are stable on top of it.
+    if (sort === "views") list.sort((a, b) => b.views - a.views);
     if (sort === "name") list.sort((a, b) => collator.compare(a.name, b.name));
     if (sort === "updated") list.sort((a, b) => b.updated.localeCompare(a.updated));
     return list;
@@ -148,7 +151,7 @@ function Archive({
     const set = (k: string, v: string, dflt: string) => (v && v !== dflt ? url.searchParams.set(k, v) : url.searchParams.delete(k));
     set("region", region, "all");
     set("domain", domain, "all");
-    set("sort", sort, "recommended");
+    set("sort", sort, "installs");
     set("q", query_, "");
     if (url.href !== window.location.href) window.history.replaceState(window.history.state, "", url);
   }, [live, region, domain, sort, query_]);
@@ -228,36 +231,37 @@ function Archive({
           </div>
         </div>
 
-        <div className="sq-arch-frow" role="group" aria-label={copy.regionLabel}>
-          {REGIONS.map((r) => (
-            <button
-              key={r}
-              type="button"
-              className="sq-fchip"
-              aria-pressed={region === r}
-              disabled={r !== "all" && r !== region && !regionCount[r]}
-              onClick={() => setRegion(r)}
-            >
-              {copy.regions[r]} <span className="sq-n">{fmt(regionCount[r] ?? 0)}</span>
+        <div className="sq-arch-filters">
+          <div className="sq-seg" role="group" aria-label={copy.regionLabel}>
+            {REGIONS.map((r) => (
+              <button
+                key={r}
+                type="button"
+                aria-pressed={region === r}
+                disabled={r !== "all" && r !== region && !regionCount[r]}
+                onClick={() => setRegion(r)}
+              >
+                {copy.regions[r]}
+              </button>
+            ))}
+          </div>
+          <div className="sq-arch-frow" role="group" aria-label={copy.domainLabel}>
+            <button type="button" className="sq-fchip" aria-pressed={domain === "all"} onClick={() => setDomain("all")}>
+              {copy.allDomains}
             </button>
-          ))}
-        </div>
-        <div className="sq-arch-frow sq-arch-frow-d" role="group" aria-label={copy.domainLabel}>
-          <button type="button" className="sq-fchip" aria-pressed={domain === "all"} onClick={() => setDomain("all")}>
-            {copy.allDomains} <span className="sq-n">{fmt(domainCount.all ?? 0)}</span>
-          </button>
-          {domains.map((d) => (
-            <button
-              key={d}
-              type="button"
-              className="sq-fchip"
-              aria-pressed={domain === d}
-              disabled={d !== domain && !domainCount[d]}
-              onClick={() => setDomain(d)}
-            >
-              {domainLabel(copy, d)} <span className="sq-n">{fmt(domainCount[d] ?? 0)}</span>
-            </button>
-          ))}
+            {domains.map((d) => (
+              <button
+                key={d}
+                type="button"
+                className="sq-fchip"
+                aria-pressed={domain === d}
+                disabled={d !== domain && !domainCount[d]}
+                onClick={() => setDomain(d)}
+              >
+                {domainLabel(copy, d)}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -272,12 +276,20 @@ function Archive({
             <p className="sq-arch-coll-intro">{collection.introEn0}</p>
           </div>
         ) : null}
+        {/* The match count only while something narrows the list (owner, 2026-11-02). */}
         <p className="sq-arch-count" role="status" aria-live="polite">
-          {copy.count(shown.length, base.length)}
-          {refined ? (
-            <button type="button" onClick={reset}>
-              {copy.clear}
-            </button>
+          {refined || collection ? (
+            <>
+              <span>
+                <strong>{fmt(shown.length)}</strong>
+                {copy.results(shown.length)}
+              </span>
+              {refined ? (
+                <button type="button" onClick={reset}>
+                  {copy.clear}
+                </button>
+              ) : null}
+            </>
           ) : null}
         </p>
         {shown.length > 0 ? (
@@ -488,7 +500,11 @@ function ArchiveCard({
           trackDetailOpen({ reference: r.id, source: "directory" });
         }}
       >
-        {logo ? <BrandLogo logo={r.logo} className="sq-card-logo" onMissing={() => setLogo(false)} /> : null}
+        {/* Domain and installs carry the card (owner, 2026-11-02); the country is a filter, not card text. */}
+        <span className="sq-card-top">
+          {logo ? <BrandLogo logo={r.logo} className="sq-card-logo" onMissing={() => setLogo(false)} /> : null}
+          <span className="sq-card-tag">{domainLabel(copy, r.domain)}</span>
+        </span>
         <span className="sq-card-name">
           <span lang={r.nameLang}>{r.name}</span>
         </span>
@@ -497,15 +513,14 @@ function ArchiveCard({
             {r.summary}
           </span>
         ) : null}
-        <span className="sq-card-meta">
-          <span className="sq-card-tag">{domainLabel(copy, r.domain)}</span>
-          <span>{r.countryLabel}</span>
-          {r.installs > 0 ? (
-            <span className="sq-card-n" title={copy.installsTitle}>
-              {copy.installs(r.installs)}
-            </span>
-          ) : null}
-        </span>
+        {r.installs > 0 ? (
+          <span className="sq-card-n" title={copy.installsTitle}>
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 2.5v7.5M4.5 6.5 8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {copy.installs(r.installs)}
+          </span>
+        ) : null}
       </Link>
     </li>
   );
