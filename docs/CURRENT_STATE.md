@@ -3,7 +3,7 @@
 갱신: **2026-11-01 22시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-11-01 23시 반 · 아카이브 개편 — **구현·로컬 검증 완료, 프리뷰 → 오너 GO 대기** (워크트리 `.claude/worktrees/archive-r12`, 브랜치 `feat/archive-r12` `a7b1bc47`)
+## ▶ 2026-11-02 0시 · 아카이브 개편 — **GA4 직접 조회로 전환, 오너가 Vercel에 `GOOGLE_SA_KEY_JSON` 추가 → 프리뷰 GO 대기** (워크트리 `.claude/worktrees/archive-r12`, 브랜치 `feat/archive-r12` `6d375613`)
 
 - **오너 요청(22:27).** ① 목록 페이지의 무한 스크롤·페이지 나눔이 대충(누를 때마다 24개) ② 추천순 = 조회수순을 기본 정렬로 ③ 검증/미검증 표시는 사용자에게 필요 없으니 빼고 아카이브 페이지 구성 ④ 재개 큐와 합쳐 계획 구체화, 멘트 받고 진행.
 - **현황 조사.**
@@ -15,6 +15,8 @@
 - **오너 결정(22:4x).** 무한 스크롤, 한 번에 40개. 조회수 순은 GA4로 해결(Mixpanel은 필요 없으면 GA4라도). 검증 등급은 내부용(화면에서 제거). 진행.
 - **GA4는 이미 살아 있음.** 10/16에 복구 1~4단계(`omd-analytics-2026` 프로젝트, `omd-analytics-reader` 서비스 계정, 새 키)와 속성 권한이 끝나 있었고, 메모리만 옛 상태였다. `pull-ga4.mjs --days 7` 성공(`benchmark_activation` 보고서 하나만 없는 맞춤 측정기준으로 400). Mixpanel은 무료 플랜이 조회 API를 막음 — 유일한 소비처였던 빌더 퍼널이 10/13에 사라져서 SDK 제거를 별도 작은 변경으로 제안(`/privacy` 수정 포함).
 - **확정 설계(계획 1을 대체).** GA4 최근 30일 `screenPageViews`(`/design-systems/<id>`, `/ko/design-systems/<id>` 합산) → `scripts/analytics/sync-views.mjs`가 KV `omd:views:30d`(+`omd:views:meta` asOf)에 씀 → 아카이브 서버가 KV를 읽어 조회수 → 가져간 수 → 기존 순서로 정렬(서버에서 한 번, 클라이언트는 그 순서를 추천순으로 씀). Vercel에 GA4 키를 넣지 않음. 자동화는 GitHub 비밀값 3개(`GOOGLE_SA_KEY_JSON`, `OMD_KV_REST_API_URL`, `OMD_KV_REST_API_TOKEN`)가 생기면 워크플로로, 그전엔 본 세션이 머지 때·세션마다 실행. 무한 스크롤 40개, 필터·정렬·검색은 URL(`replaceState`), 불러온 개수·스크롤은 세션 저장소로 복원, 맨 위로. 정렬: 추천순(기본)·업데이트순·이름순. 머지는 프리뷰 GO 뒤.
+- **오너 질문(23:5x) "KV를 굳이 써야해? GA4 활용해서는 못해?" → GA4 직접 조회로 전환 `6d375613`.** `web/src/lib/view-counts.server.ts`가 GA4 Data API(pagePath × screenPageViews, 30일)를 한 시간에 한 번 `unstable_cache` 안에서 직접 호출(서비스 계정 JWT를 node:crypto로 서명, 실패는 캐시하지 않음). `sync-views.mjs`·`views-sync.yml` 삭제, 본 세션이 만든 KV 키 `omd:views:30d`·`omd:views:meta` 삭제(DEL 2). 키를 빌드에만 넘긴 로컬 빌드에서 en·ko 첫 카드 toss·karrot·apple·kakao·naver·krds·samsung·alan 확인. 테스트 8개, web 전체는 부하(load 283) 시간 초과 5건 — 단독 재실행 29/29 통과.
+  - **필요한 것:** Vercel 프로젝트 환경 변수 `GOOGLE_SA_KEY_JSON` = `scripts/analytics/.secrets/sa.json` 내용(Production + Preview). 없으면 추천순이 가져간 수·기존 순서로 대체. 변수 추가 뒤 새 배포부터 적용.
 - **진행(23시).**
   - KV 동기화 실행: GA4 30일 732경로 → 518곳, `omd:views:30d` 기록·재조회 확인(asOf 2026-10-31). 1위 toss, 2 karrot, 3 apple, 4 kakao, 5 naver.
   - 구현 `a7b1bc47`: `scripts/analytics/sync-views.mjs`(`--quiet`은 공개 CI 로그용, 수치 미출력), `.github/workflows/views-sync.yml`(매일 00:17 UTC, 비밀값 3개 없으면 건너뜀), `web/src/lib/view-counts.server.ts`, `recommendedOrder`, catalog-view 개편(40개 자동, URL 상태, 카드 기준 복원, 맨 위로, 등급 UI 제거), 4개 언어 문구, `/ko` 소개문에서 "검증된" 삭제.
