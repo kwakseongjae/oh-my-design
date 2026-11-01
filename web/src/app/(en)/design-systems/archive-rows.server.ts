@@ -16,7 +16,6 @@
  */
 
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
-import { REFERENCE_QUALITY_BY_ID, type ReferenceQualityStatus } from "@/data/reference-quality.generated";
 import logoCollection from "@/data/brand-logos.json";
 import { CJK_RE } from "@/lib/landing-a/resolve";
 import { loadDetail } from "@/lib/references/detail-loader.server";
@@ -199,8 +198,8 @@ export interface ArchiveRow {
   country: string;
   countryLabel: string;
   region: ArchiveRegion;
-  tier: ReferenceQualityStatus;
-  verifiedAt: string | null;
+  /** When the reference was last checked against the live site (registry `verified`), for the update sort. */
+  updated: string;
   logo: ArchiveLogo | null;
   /** copy + download + install counters; 0 = unknown or none, hidden. */
   installs: number;
@@ -221,7 +220,6 @@ export function enName(r: RefEntry): string {
 }
 
 export function archiveRow(r: RefEntry, locale: ArchiveLocale, installs: Record<string, number>): ArchiveRow {
-  const q = REFERENCE_QUALITY_BY_ID[r.id];
   const name = locale === "ko" ? koName(r.id) : enName(r);
   const summary = summaryOf(r.id);
   return {
@@ -236,9 +234,22 @@ export function archiveRow(r: RefEntry, locale: ArchiveLocale, installs: Record<
     country: r.country,
     countryLabel: countryLabel(r.country, locale),
     region: archiveRegion(r.country),
-    tier: q?.status ?? "legacy_snapshot",
-    verifiedAt: q?.verifiedAt ?? null,
+    updated: r.verified ?? "",
     logo: logoFor(r.id),
     installs: installs[r.id] ?? 0,
   };
+}
+
+/**
+ * The archive's recommended order (the default sort): 30-day page views first,
+ * then installs, then the order the rows came in (official systems, brand guides,
+ * the rest by name). Computed once on the server so the client, the SSR markup
+ * and the JSON-LD list agree. With no view data (no KV) this is the incoming
+ * order, ranked only by installs where those exist.
+ */
+export function recommendedOrder(rows: ArchiveRow[], views: Record<string, number>): ArchiveRow[] {
+  return rows
+    .map((row, i) => ({ row, i, v: views[row.id] ?? 0 }))
+    .sort((a, b) => b.v - a.v || b.row.installs - a.row.installs || a.i - b.i)
+    .map((x) => x.row);
 }

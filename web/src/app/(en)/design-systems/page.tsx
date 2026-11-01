@@ -17,45 +17,28 @@ import { getAllDesignSystems } from "@/lib/design-systems";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { SITE_ORIGIN } from "@/lib/site";
 import { COLLECTIONS, getCollectionEntries } from "@/lib/collections";
-import { REFERENCE_QUALITY } from "@/data/reference-quality.generated";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { getInstallCounts } from "@/lib/install-counts.server";
+import { getViewCounts } from "@/lib/view-counts.server";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
-import { archiveRow, enName } from "./archive-rows.server";
-import { CatalogView, type CatalogCollection, type CatalogStats } from "./catalog-view";
+import { archiveRow, enName, recommendedOrder } from "./archive-rows.server";
+import { CatalogView, type CatalogCollection } from "./catalog-view";
 
 export const revalidate = 3600;
-
-/**
- * Depth *within the verified tier*, which is where the claim needs qualifying.
- *
- * Catalog-wide the numbers read reassuringly — 404 of 440 have an interactive
- * component — and that is exactly why they are the wrong ones to print here: they
- * bury the thing a reader is being misled about. All 36 references with no
- * interactive component sit in `verified_v2`; there are none in `partial` and none
- * in `legacy_snapshot`.
- *
- * That is not a coincidence, it is how the tier is defined. `verified_v2` asks for
- * a complete evidence graph, and a document that claims less has less to ground:
- * the 36 average 35 claims against 62 for the rest, both at 100% coverage. Claiming
- * less is the cheaper route to the badge, so the badge cannot be read as depth.
- */
-const VERIFIED = REFERENCE_QUALITY.filter((entry) => entry.status === "verified_v2");
-
-const STATS: CatalogStats = {
-  verifiedInteractive: VERIFIED.filter((entry) => entry.interactiveComponentCount > 0).length,
-  verifiedStateful: VERIFIED.filter((entry) => entry.statedComponentCount > 0).length,
-};
 
 const COPY = ARCHIVE_COPY.en;
 
 export default async function DesignSystemsPage() {
-  const installs = await getInstallCounts();
-  // Grid order as before: official systems, then brand guides, then the rest, by name.
-  const rows = getAllDesignSystems()
-    .map((ds) => REGISTRY_BY_ID[ds.refId])
-    .filter((r) => !!r)
-    .map((r) => archiveRow(r, "en", installs));
+  const [installs, views] = await Promise.all([getInstallCounts(), getViewCounts()]);
+  // Recommended order (30-day page views, then installs); ties keep the old grid order:
+  // official systems, then brand guides, then the rest, by name.
+  const rows = recommendedOrder(
+    getAllDesignSystems()
+      .map((ds) => REGISTRY_BY_ID[ds.refId])
+      .filter((r) => !!r)
+      .map((r) => archiveRow(r, "en", installs)),
+    views,
+  );
   const collections: CatalogCollection[] = COLLECTIONS.map((c) => ({
     slug: c.slug,
     titleEn: c.titleEn,
@@ -91,7 +74,6 @@ export default async function DesignSystemsPage() {
         locale="en"
         rows={rows}
         collections={collections}
-        stats={STATS}
         intro={
           <section className="sq-wrap sq-arch-hero">
             <h1>{COPY.h1}</h1>

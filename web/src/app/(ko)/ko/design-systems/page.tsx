@@ -19,24 +19,28 @@ import { REFERENCE_QUALITY } from "@/data/reference-quality.generated";
 import { KO_DETAIL_IDS } from "@/lib/i18n/ko-detail.server";
 import { KO_CATALOG_PATH } from "@/lib/i18n/ko-detail";
 import { getInstallCounts } from "@/lib/install-counts.server";
+import { getViewCounts } from "@/lib/view-counts.server";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
-import { archiveRow, type ArchiveRow } from "@/app/(en)/design-systems/archive-rows.server";
-import { CatalogView, type CatalogStats } from "@/app/(en)/design-systems/catalog-view";
+import { archiveRow, recommendedOrder, type ArchiveRow } from "@/app/(en)/design-systems/archive-rows.server";
+import { CatalogView } from "@/app/(en)/design-systems/catalog-view";
 
 export const revalidate = 3600;
 
 const SITE_URL = "https://oh-my-design.kr";
 const COPY = ARCHIVE_COPY.ko;
 
+/** Evidence tier is internal (owner, 2026-11-01): it only breaks ties in the base order. */
+const VERIFIED_IDS: ReadonlySet<string> = new Set(REFERENCE_QUALITY.filter((e) => e.status === "verified_v2").map((e) => e.id));
+
 function rows(installs: Record<string, number>): ArchiveRow[] {
   const all = KO_DETAIL_IDS.map((id) => REGISTRY_BY_ID[id])
     .filter((r) => !!r)
     .map((r) => archiveRow(r, "ko", installs));
-  // Korean references first, verified before the rest, then by name.
+  // Base order under the recommended sort: Korean references first, verified before the rest, then by name.
   return all.sort(
     (a, b) =>
       Number(b.country === "KR") - Number(a.country === "KR") ||
-      Number(b.tier === "verified_v2") - Number(a.tier === "verified_v2") ||
+      Number(VERIFIED_IDS.has(b.id)) - Number(VERIFIED_IDS.has(a.id)) ||
       a.name.localeCompare(b.name, "ko"),
   );
 }
@@ -46,12 +50,6 @@ const STATIC_ROWS = rows({});
 const KR = STATIC_ROWS.filter((r) => r.country === "KR").length;
 const INTL = STATIC_ROWS.length - KR;
 const REST = REFERENCE_COUNT - STATIC_ROWS.length;
-
-const VERIFIED = REFERENCE_QUALITY.filter((e) => e.status === "verified_v2" && KO_DETAIL_IDS.includes(e.id));
-const STATS: CatalogStats = {
-  verifiedInteractive: VERIFIED.filter((e) => e.interactiveComponentCount > 0).length,
-  verifiedStateful: VERIFIED.filter((e) => e.statedComponentCount > 0).length,
-};
 
 const TITLE = COPY.meta.title(STATIC_ROWS.length);
 const DESCRIPTION = COPY.meta.description(STATIC_ROWS.length);
@@ -74,7 +72,8 @@ export const metadata: Metadata = {
 };
 
 export default async function KoreanDesignSystemsPage() {
-  const list = rows(await getInstallCounts());
+  const [installs, views] = await Promise.all([getInstallCounts(), getViewCounts()]);
+  const list = recommendedOrder(rows(installs), views);
   const lede = COPY.ledeKo!(KR, INTL, REST);
   const jsonLd = [
     {
@@ -113,7 +112,6 @@ export default async function KoreanDesignSystemsPage() {
         <CatalogView
           locale="ko"
           rows={list}
-          stats={STATS}
           intro={
             <section className="sq-wrap sq-arch-hero">
               <h1>{COPY.h1}</h1>

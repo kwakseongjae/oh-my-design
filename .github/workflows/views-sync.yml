@@ -1,0 +1,42 @@
+# Daily: copy the item pages' 30-day GA4 page views into KV for the archive's
+# recommended order (scripts/analytics/sync-views.mjs, web/src/lib/view-counts.server.ts).
+# Needs three repository secrets; without them the job skips and the archive keeps
+# the last synced ranking. --quiet keeps traffic numbers out of this public log.
+name: views-sync
+
+on:
+  schedule:
+    - cron: "17 0 * * *" # 00:17 UTC (09:17 KST), after GA4 has closed the previous day
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: views-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      HAS_SECRETS: ${{ secrets.GOOGLE_SA_KEY_JSON != '' && secrets.OMD_KV_REST_API_URL != '' && secrets.OMD_KV_REST_API_TOKEN != '' }}
+    steps:
+      - name: Skip without secrets
+        if: env.HAS_SECRETS != 'true'
+        run: echo "GOOGLE_SA_KEY_JSON / OMD_KV_REST_API_URL / OMD_KV_REST_API_TOKEN not set; skipping."
+      - uses: actions/checkout@v5
+        if: env.HAS_SECRETS == 'true'
+      - uses: actions/setup-node@v5
+        if: env.HAS_SECRETS == 'true'
+        with:
+          node-version: 22
+      - name: Sync GA4 views into KV
+        if: env.HAS_SECRETS == 'true'
+        env:
+          GA4_PROPERTY_ID: "533041908"
+          GOOGLE_SA_KEY_JSON: ${{ secrets.GOOGLE_SA_KEY_JSON }}
+          OMD_KV_REST_API_URL: ${{ secrets.OMD_KV_REST_API_URL }}
+          OMD_KV_REST_API_TOKEN: ${{ secrets.OMD_KV_REST_API_TOKEN }}
+        run: node scripts/analytics/sync-views.mjs --quiet

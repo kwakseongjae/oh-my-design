@@ -13,7 +13,8 @@
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 
 export type ArchiveRegionKey = "all" | "KR" | "JP" | "TW" | "CN" | "other";
-export type ArchiveTierKey = "all" | "verified_v2" | "partial" | "legacy_snapshot";
+/** "recommended" = 30-day page views (server order); "updated" = last checked; "name" = collation order. */
+export type ArchiveSortKey = "recommended" | "updated" | "name";
 
 export interface ArchiveCopy {
   /** The archive's one h1. */
@@ -30,20 +31,16 @@ export interface ArchiveCopy {
   allDomains: string;
   /** Registry `category` slug → label. An unknown slug falls back to the slug itself. */
   domains: Record<string, string>;
-  tierLabel: string;
-  tiers: Record<ArchiveTierKey, string>;
+  sortLabel: string;
+  sorts: Record<ArchiveSortKey, string>;
   collections: string;
   showAll: string;
   count: (shown: number, total: number) => string;
-  /** Said only when a reader narrows to the verified tier: the badge is not depth. */
-  verifiedQualifier: (interactive: number, stated: number) => string;
   clear: string;
   empty: string;
-  more: (n: number) => string;
-  left: (n: number) => string;
+  toTop: string;
   installs: (n: number) => string;
   installsTitle: string;
-  verified: string;
   /** Number formatting for counts. */
   numberLocale: string;
 }
@@ -78,19 +75,16 @@ const EN: ArchiveCopy = {
     healthcare: "Healthcare",
     government: "Government",
   },
-  tierLabel: "Evidence tier",
-  tiers: { all: "Any tier", verified_v2: "Verified", partial: "Partial", legacy_snapshot: "Legacy" },
+  sortLabel: "Sort",
+  sorts: { recommended: "Recommended", updated: "Recently updated", name: "Name" },
   collections: "Collections",
   showAll: "Show all",
   count: (shown, total) => (shown === total ? `${total} DESIGN.md files` : `${shown} of ${total} DESIGN.md files`),
-  verifiedQualifier: (a, b) => `${a} carry interactive components, ${b} record per-state values`,
   clear: "Clear filters",
   empty: "No DESIGN.md matches these filters.",
-  more: (n) => `Show ${n} more`,
-  left: (n) => `${n} left`,
+  toTop: "Back to top",
   installs: (n) => `${n.toLocaleString("en-US")} ${n === 1 ? "install" : "installs"}`,
   installsTitle: "Copies, downloads and install commands",
-  verified: "Verified",
   numberLocale: "en-US",
 };
 
@@ -98,7 +92,7 @@ const KO: ArchiveCopy = {
   h1: "DESIGN.md 아카이브",
   lede: (n) => `실제 서비스 ${n}곳의 디자인을 코딩 에이전트가 읽는 DESIGN.md로 모았어요. 골라서 프로젝트에 넣으면 돼요.`,
   ledeKo: (kr, intl, rest) => ({
-    before: `한국 기업 ${kr}곳과 검증된 해외 기업 ${intl}곳의 DESIGN.md예요. 나머지 ${rest}곳은 `,
+    before: `한국 기업 ${kr}곳과 해외 기업 ${intl}곳의 DESIGN.md예요. 나머지 ${rest}곳은 `,
     link: "영문 아카이브",
     after: "에 있어요.",
   }),
@@ -128,19 +122,16 @@ const KO: ArchiveCopy = {
     healthcare: "헬스케어",
     government: "공공",
   },
-  tierLabel: "근거 등급",
-  tiers: { all: "모든 등급", verified_v2: "검증", partial: "부분 검증", legacy_snapshot: "이전 스냅숏" },
+  sortLabel: "정렬",
+  sorts: { recommended: "추천순", updated: "업데이트순", name: "이름순" },
   collections: "컬렉션",
   showAll: "전체 보기",
   count: (shown, total) => (shown === total ? `DESIGN.md ${total}개` : `DESIGN.md ${total}개 중 ${shown}개`),
-  verifiedQualifier: (a, b) => `인터랙티브 컴포넌트가 있는 곳 ${a}곳, 상태별 값을 기록한 곳 ${b}곳`,
   clear: "필터 지우기",
   empty: "조건에 맞는 DESIGN.md가 없어요.",
-  more: (n) => `${n}개 더 보기`,
-  left: (n) => `${n}개 남음`,
+  toTop: "맨 위로",
   installs: (n) => `설치 ${n.toLocaleString("ko-KR")}`,
   installsTitle: "복사·내려받기·설치 명령 복사를 합친 수",
-  verified: "검증됨",
   numberLocale: "ko-KR",
 };
 
@@ -173,19 +164,16 @@ const JA: ArchiveCopy = {
     healthcare: "ヘルスケア",
     government: "行政",
   },
-  tierLabel: "根拠の段階",
-  tiers: { all: "すべての段階", verified_v2: "検証済み", partial: "一部検証", legacy_snapshot: "旧スナップショット" },
+  sortLabel: "並び替え",
+  sorts: { recommended: "おすすめ順", updated: "更新順", name: "名前順" },
   collections: "コレクション",
   showAll: "すべて表示",
   count: (shown, total) => (shown === total ? `DESIGN.md ${total}件` : `DESIGN.md ${total}件中 ${shown}件`),
-  verifiedQualifier: (a, b) => `インタラクティブなコンポーネントあり ${a}件、状態ごとの値あり ${b}件`,
   clear: "絞り込みを解除",
   empty: "条件に合う DESIGN.md はありません。",
-  more: (n) => `さらに${n}件表示`,
-  left: (n) => `残り${n}件`,
+  toTop: "トップへ戻る",
   installs: (n) => `${n.toLocaleString("ja-JP")}回インストール`,
   installsTitle: "コピー・ダウンロード・インストールコマンドの合計",
-  verified: "検証済み",
   numberLocale: "ja-JP",
 };
 
@@ -218,19 +206,16 @@ const ZH_TW: ArchiveCopy = {
     healthcare: "醫療健康",
     government: "政府",
   },
-  tierLabel: "依據等級",
-  tiers: { all: "所有等級", verified_v2: "已驗證", partial: "部分驗證", legacy_snapshot: "舊快照" },
+  sortLabel: "排序",
+  sorts: { recommended: "推薦", updated: "最近更新", name: "名稱" },
   collections: "精選集",
   showAll: "顯示全部",
   count: (shown, total) => (shown === total ? `${total} 份 DESIGN.md` : `${total} 份中的 ${shown} 份 DESIGN.md`),
-  verifiedQualifier: (a, b) => `${a} 份含互動元件，${b} 份記錄了各狀態的值`,
   clear: "清除篩選",
   empty: "沒有符合條件的 DESIGN.md。",
-  more: (n) => `再顯示 ${n} 份`,
-  left: (n) => `還有 ${n} 份`,
+  toTop: "回到頂端",
   installs: (n) => `${n.toLocaleString("zh-TW")} 次安裝`,
   installsTitle: "複製、下載與安裝指令的合計",
-  verified: "已驗證",
   numberLocale: "zh-TW",
 };
 
