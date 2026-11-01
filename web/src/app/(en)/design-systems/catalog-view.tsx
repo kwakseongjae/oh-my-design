@@ -16,9 +16,10 @@
  *
  * Round 12 (owner, 2026-11-01/02): the rows arrive in the default order, installs
  * then 30-day page views (archive-rows.server.ts `defaultOrder`). Cards load 40 at a
- * time as the reader scrolls, with no button. Filters are a region segment and one
- * scrolling row of domains, with the accent marking what is on; the number of
- * matches appears, in the accent, only while something narrows the list. Region,
+ * time as the reader scrolls, with no button. Region and domain are two menus beside
+ * the search, not rows of chips (owner: "나열하지 말고"); a menu that narrows the
+ * list turns the accent, and the number of matches appears, in the accent, only
+ * while something narrows the list. Region,
  * domain, sort and search live in the URL (`history.replaceState`), and the number
  * of loaded cards plus the scroll position are kept in sessionStorage when a card
  * is opened, so Back lands on the same card. The evidence tier is internal and no
@@ -226,43 +227,26 @@ function Archive({
             ) : null}
           </label>
           <div className="sq-arch-menus">
+            <PickMenu
+              label={copy.regionLabel}
+              value={region}
+              options={REGIONS.map((r) => ({ key: r, label: r === "all" ? copy.regions.all : copy.regions[r], off: r !== "all" && r !== region && !regionCount[r] }))}
+              onPick={(r) => setRegion(r as ArchiveRegionKey)}
+            />
+            <PickMenu
+              label={copy.domainLabel}
+              value={domain}
+              options={[
+                { key: "all", label: copy.allDomains, off: false },
+                ...domains.map((d) => ({ key: d, label: domainLabel(copy, d), off: d !== domain && !domainCount[d] })),
+              ]}
+              onPick={setDomain}
+            />
             <SortMenu copy={copy} sort={sort} setSort={setSort} />
             {collections.length > 0 ? <CollectionMenu copy={copy} collections={collections} active={collection ?? null} /> : null}
           </div>
         </div>
 
-        <div className="sq-arch-filters">
-          <div className="sq-seg" role="group" aria-label={copy.regionLabel}>
-            {REGIONS.map((r) => (
-              <button
-                key={r}
-                type="button"
-                aria-pressed={region === r}
-                disabled={r !== "all" && r !== region && !regionCount[r]}
-                onClick={() => setRegion(r)}
-              >
-                {copy.regions[r]}
-              </button>
-            ))}
-          </div>
-          <div className="sq-arch-frow" role="group" aria-label={copy.domainLabel}>
-            <button type="button" className="sq-fchip" aria-pressed={domain === "all"} onClick={() => setDomain("all")}>
-              {copy.allDomains}
-            </button>
-            {domains.map((d) => (
-              <button
-                key={d}
-                type="button"
-                className="sq-fchip"
-                aria-pressed={domain === d}
-                disabled={d !== domain && !domainCount[d]}
-                onClick={() => setDomain(d)}
-              >
-                {domainLabel(copy, d)}
-              </button>
-            ))}
-          </div>
-        </div>
       </section>
 
       <section className="sq-wrap sq-arch-list">
@@ -300,6 +284,46 @@ function Archive({
       </section>
       {live ? <ToTop label={copy.toTop} /> : null}
     </>
+  );
+}
+
+/**
+ * A filter as one menu (region, domain). Closed it reads as the dimension ("지역")
+ * until a value is picked, then as that value in the accent.
+ */
+function PickMenu({
+  label,
+  value,
+  options,
+  onPick,
+}: {
+  label: string;
+  value: string;
+  options: { key: string; label: string; off: boolean }[];
+  onPick: (key: string) => void;
+}) {
+  const on = value !== "all";
+  const current = options.find((o) => o.key === value)?.label ?? label;
+  return (
+    <details className={on ? "sq-fmenu sq-fmenu-on" : "sq-fmenu"}>
+      <summary aria-label={`${label}: ${current}`}>{on ? current : label}</summary>
+      <div className="sq-fmenu-list" role="group" aria-label={label}>
+        {options.map((o) => (
+          <button
+            key={o.key}
+            type="button"
+            aria-pressed={value === o.key}
+            disabled={o.off}
+            onClick={(e) => {
+              onPick(o.key);
+              e.currentTarget.closest("details")?.removeAttribute("open");
+            }}
+          >
+            <span>{o.label}</span>
+          </button>
+        ))}
+      </div>
+    </details>
   );
 }
 

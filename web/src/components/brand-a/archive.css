@@ -35,23 +35,11 @@
 .sq-fmenu-list a[aria-current="true"],.sq-fmenu-list button[aria-pressed="true"]{color:var(--sq-ink);font-weight:700}
 .sq-fmenu-list a:focus-visible,.sq-fmenu-list button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-2px}
 
-/* filters (round 12, owner 2026-11-02: "흑백에 난잡해"): a region segment and one scrolling row of
-   domains, no per-chip counts. The accent marks what is on: solid for the region, a tint for the domain. */
-.sq-arch-filters{display:grid;gap:12px;min-width:0}
-.sq-seg{display:inline-flex;justify-self:start;max-width:100%;gap:2px;padding:4px;overflow-x:auto;scrollbar-width:none;border-radius:var(--sq-r-pill);background:var(--sq-cell)}
-.sq-seg::-webkit-scrollbar{display:none}
-.sq-seg button{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:var(--sq-r-pill);font-size:15px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap;transition:background-color .15s,color .15s}
-.sq-seg button:hover{color:var(--sq-ink)}
-.sq-seg button[aria-pressed="true"]{background:var(--sq-p600);color:var(--sq-paper)}
-.sq-seg button:disabled{cursor:default;opacity:.4;color:var(--sq-ink-2)}
-.sq-seg button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-2px}
-.sq-arch-frow{display:flex;gap:6px;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding-right:40px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent)}
-.sq-arch-frow::-webkit-scrollbar{display:none}
-.sq-fchip{all:unset;box-sizing:border-box;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:var(--sq-r-pill);box-shadow:inset 0 0 0 1px var(--sq-guide-2);font-size:15px;font-weight:550;color:var(--sq-ink-2);white-space:nowrap;transition:background-color .15s,color .15s,box-shadow .15s}
-.sq-fchip:hover{background:var(--sq-cell);color:var(--sq-ink)}
-.sq-fchip[aria-pressed="true"]{background:var(--sq-p100);box-shadow:inset 0 0 0 1px var(--sq-p300);color:var(--sq-p700);font-weight:700}
-.sq-fchip:disabled{cursor:default;opacity:.4;background:none}
-.sq-fchip:focus-visible{outline:2px solid var(--sq-focus);outline-offset:-2px}
+/* filters (round 12, owner 2026-11-02: "흑백에 난잡해", "나열하지 말고"): region and domain are menus
+   beside the search, like the sort. A menu that narrows the list turns the iris accent. */
+.sq-fmenu-on summary{background-color:var(--sq-p100);color:var(--sq-p700);box-shadow:inset 0 0 0 1px var(--sq-p300);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1.5 1.5 4.5 4.5 4.5-4.5' stroke='%235437c1' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.sq-fmenu-on summary:hover,.sq-fmenu-on[open] summary{background-color:var(--sq-p200)}
+.sq-fmenu-list button:disabled{cursor:default;opacity:.4;background:none}
 
 /* ---- list ---- */
 .sq-arch-list{padding-top:16px}
@@ -104,11 +92,6 @@
   .sq-arch-search input{font-size:16px}
   .sq-fmenu{position:static}
   .sq-fmenu-list{left:var(--sq-gut);right:var(--sq-gut);top:auto;width:auto;margin-top:6px}
-  /* the chip rows bleed to the screen edge and scroll inside themselves; the page never scrolls sideways */
-  .sq-arch-frow{margin:0 calc(-1 * var(--sq-gut));padding:0 40px 0 var(--sq-gut)}
-  .sq-seg{justify-self:stretch}
-  .sq-seg button{padding:0 14px}
-  .sq-fchip{padding:0 12px}
   .sq-cards{grid-template-columns:minmax(0,1fr);gap:12px}
   .sq-card-a{padding:18px}
   .sq-card-name{font-size:17px}
