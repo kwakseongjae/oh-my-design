@@ -12,6 +12,7 @@ import {
   logoFor,
   summaryOf,
   textLang,
+  paletteOf,
 } from "./archive-rows.server";
 
 describe("archive logos: genuine or none", () => {
@@ -107,5 +108,30 @@ describe("archive rows", () => {
     const foreign = REGISTRY.find((r) => !koPages.has(r.id));
     expect(foreign).toBeDefined();
     expect(archiveRow(foreign!, "ko", {}).href).toBe(`/design-systems/${foreign!.id}`);
+  });
+});
+
+describe("archive card palette", () => {
+  it("uses only the reference's own hex tokens, primary first, at most five", () => {
+    for (const r of REGISTRY) {
+      const pal = paletteOf(r);
+      const own = new Set([r.primaryColor, ...Object.values(r.tokens?.colors ?? {})].map((v) => String(v).toLowerCase()));
+      expect(pal.length).toBeLessThanOrEqual(5);
+      for (const c of pal) {
+        expect(c).toMatch(/^#[0-9a-f]{6}$/);
+        expect(own.has(c)).toBe(true);
+      }
+      if (/^#[0-9a-f]{6}$/i.test(r.primaryColor)) expect(pal[0]).toBe(r.primaryColor.toLowerCase());
+    }
+  });
+
+  it("prefers distinct hues over shades of one colour", () => {
+    const pal = paletteOf({
+      primaryColor: "#3182f6",
+      tokens: { colors: { a: "#3182f6", b: "#2272eb", c: "#f04452", d: "#ffffff", e: "#191f28", f: "#1b64da" } },
+    } as never);
+    expect(pal.slice(0, 2)).toEqual(["#3182f6", "#f04452"]);
+    expect(pal).toContain("#191f28");
+    expect(pal).toContain("#ffffff");
   });
 });

@@ -179,6 +179,49 @@ export function summaryOf(id: string): string {
   return SUMMARIES.get(id) ?? "";
 }
 
+/* ─────────── palette ─────────── */
+
+const HEX6 = /^#[0-9a-f]{6}$/i;
+
+function hsl(hex: string): { h: number; s: number; l: number; c: number } {
+  const n = parseInt(hex.slice(1), 16);
+  const r = ((n >> 16) & 255) / 255, g = ((n >> 8) & 255) / 255, b = (n & 255) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), c = max - min, l = (max + min) / 2;
+  let h = 0;
+  if (c) h = max === r ? ((g - b) / c) % 6 : max === g ? (b - r) / c + 2 : (r - g) / c + 4;
+  return { h: (h * 60 + 360) % 360, s: c ? c / (1 - Math.abs(2 * l - 1)) : 0, l, c };
+}
+
+/**
+ * The card swatches (owner, 2026-11-02: cards too plain): only the reference's
+ * own colour tokens, never a derived or invented value. The primary colour first,
+ * then the most chromatic tokens whose hue differs from those already picked,
+ * then the darkest and lightest neutrals if room is left. At most five.
+ */
+export function paletteOf(r: Pick<RefEntry, "primaryColor" | "tokens">): string[] {
+  const all = [r.primaryColor, ...Object.values(r.tokens?.colors ?? {})]
+    .filter((v): v is string => typeof v === "string" && HEX6.test(v))
+    .map((v) => v.toLowerCase())
+    .filter((v, i, list) => list.indexOf(v) === i);
+  const picked: string[] = [];
+  const near = (a: string, b: string) => {
+    const x = hsl(a), y = hsl(b);
+    const dh = Math.min(Math.abs(x.h - y.h), 360 - Math.abs(x.h - y.h));
+    return dh < 20 && Math.abs(x.l - y.l) < 0.15;
+  };
+  if (r.primaryColor && HEX6.test(r.primaryColor)) picked.push(r.primaryColor.toLowerCase());
+  for (const v of [...all].sort((a, b) => hsl(b).c - hsl(a).c)) {
+    if (picked.length >= 5) break;
+    if (hsl(v).c < 0.12 || picked.includes(v) || picked.some((p) => hsl(p).c >= 0.12 && near(p, v))) continue;
+    picked.push(v);
+  }
+  const neutrals = all.filter((v) => hsl(v).c < 0.12 && !picked.includes(v)).sort((a, b) => hsl(a).l - hsl(b).l);
+  for (const v of [neutrals[0], neutrals[neutrals.length - 1]]) {
+    if (picked.length < 5 && v && !picked.includes(v)) picked.push(v);
+  }
+  return picked;
+}
+
 /* ─────────── rows ─────────── */
 
 export type ArchiveLocale = "en" | "ko";
@@ -205,6 +248,8 @@ export interface ArchiveRow {
   installs: number;
   /** GA4 page views of the item pages, last 30 days; 0 = unknown or none. Sort only, never shown. */
   views: number;
+  /** Up to five of the reference's own colour tokens for the card swatches (see `paletteOf`). */
+  palette: string[];
 }
 
 /** The English page's brand name — the same function as the item page's title and h1. */
@@ -235,6 +280,7 @@ export function archiveRow(
     logo: logoFor(r.id),
     installs: installs[r.id] ?? 0,
     views: views[r.id] ?? 0,
+    palette: paletteOf(r),
   };
 }
 

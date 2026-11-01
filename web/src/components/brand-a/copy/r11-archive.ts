@@ -22,7 +22,15 @@ export interface ArchiveCopy {
   /** Lede for the whole catalog ({count} = every reference). */
   lede: (count: number) => string;
   meta: { title: (count: number) => string; description: (count: number) => string };
-  search: { label: string; placeholder: string; clear: string };
+  search: {
+    label: string;
+    placeholder: string;
+    clear: string;
+    /** Heading over the suggestion chips while the field is empty. */
+    suggest: string;
+    /** Last row of the preview: closes it and leaves the filtered list below. */
+    seeAll: (n: number, q: string) => string;
+  };
   regionLabel: string;
   regions: Record<ArchiveRegionKey, string>;
   domainLabel: string;
@@ -53,7 +61,13 @@ const EN: ArchiveCopy = {
     description: (n) =>
       `Browse ${n} real-company design systems as DESIGN.md files: colors, typography and components your coding agent can follow, filtered by region and domain.`,
   },
-  search: { label: "Search the archive", placeholder: "Search by name, id or what it does", clear: "Clear search" },
+  search: {
+    label: "Search the archive",
+    placeholder: "Search by name, id or what it does",
+    clear: "Clear search",
+    suggest: "Try",
+    seeAll: (n, q) => `See all ${n} ${n === 1 ? "result" : "results"} for “${q}”`,
+  },
   regionLabel: "Region",
   regions: { all: "All", KR: "Korea", JP: "Japan", TW: "Taiwan", CN: "China", other: "Other" },
   domainLabel: "Domain",
@@ -96,7 +110,13 @@ const KO: ArchiveCopy = {
     description: (n) =>
       `기업 ${n}곳의 디자인 시스템을 DESIGN.md로 둘러보세요. 지역과 분야로 골라 색상·글꼴·컴포넌트를 코딩 에이전트에 바로 건넬 수 있어요.`,
   },
-  search: { label: "아카이브 검색", placeholder: "회사 이름, id, 하는 일로 찾기", clear: "검색어 지우기" },
+  search: {
+    label: "아카이브 검색",
+    placeholder: "회사 이름, id, 하는 일로 찾기",
+    clear: "검색어 지우기",
+    suggest: "이렇게 찾아보세요",
+    seeAll: (n, q) => `‘${q}’ 결과 ${n}개 모두 보기`,
+  },
   regionLabel: "지역",
   regions: { all: "전체", KR: "한국", JP: "일본", TW: "대만", CN: "중국", other: "기타" },
   domainLabel: "분야",
@@ -138,7 +158,13 @@ const JA: ArchiveCopy = {
     description: (n) =>
       `実在する${n}社のデザインシステムを DESIGN.md で探せます。地域と分野で絞り込み、色・書体・コンポーネントをそのままコーディングエージェントに渡せます。`,
   },
-  search: { label: "アーカイブを検索", placeholder: "社名、id、事業内容で検索", clear: "検索語を消去" },
+  search: {
+    label: "アーカイブを検索",
+    placeholder: "社名、id、事業内容で検索",
+    clear: "検索語を消去",
+    suggest: "検索の例",
+    seeAll: (n, q) => `「${q}」の結果 ${n}件をすべて表示`,
+  },
   regionLabel: "地域",
   regions: { all: "すべて", KR: "韓国", JP: "日本", TW: "台湾", CN: "中国", other: "その他" },
   domainLabel: "分野",
@@ -180,7 +206,13 @@ const ZH_TW: ArchiveCopy = {
     description: (n) =>
       `以 DESIGN.md 瀏覽 ${n} 家真實企業的設計系統。依地區與領域篩選，把色彩、字體與元件直接交給你的程式代理。`,
   },
-  search: { label: "搜尋典藏", placeholder: "以公司名稱、id 或業務搜尋", clear: "清除搜尋" },
+  search: {
+    label: "搜尋典藏",
+    placeholder: "以公司名稱、id 或業務搜尋",
+    clear: "清除搜尋",
+    suggest: "試試看",
+    seeAll: (n, q) => `查看「${q}」的全部 ${n} 份結果`,
+  },
   regionLabel: "地區",
   regions: { all: "全部", KR: "韓國", JP: "日本", TW: "台灣", CN: "中國", other: "其他" },
   domainLabel: "領域",

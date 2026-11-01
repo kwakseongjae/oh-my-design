@@ -28,7 +28,7 @@
 
 import { Suspense, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BrandLogo } from "@/components/brand-logo";
 import { trackCollectionOpen } from "@/lib/collections/analytics";
 import { trackDetailOpen } from "@/lib/design-systems/analytics";
@@ -199,41 +199,54 @@ function Archive({
   // A new filter or sort starts again at the top.
   const sig = `${slug ?? ""}|${region}|${domain}|${sort}|${q}`;
   const fmt = (n: number) => n.toLocaleString(copy.numberLocale);
+  // Shown under the empty search field: the three most installed names, then the two largest domains.
+  const suggestions = useMemo(
+    () => [...rows.slice(0, 3).map((r) => r.name), ...domains.slice(0, 2).map((d) => domainLabel(copy, d))],
+    [rows, domains, copy],
+  );
+
+  // Menus close on a click outside them and on Escape (owner, 2026-11-02); opening one closes the others.
+  useEffect(() => {
+    const closeAll = (keep?: Element | null) =>
+      document.querySelectorAll<HTMLDetailsElement>("details.sq-fmenu[open]").forEach((d) => d !== keep && d.removeAttribute("open"));
+    const onDown = (e: PointerEvent) => closeAll((e.target as Element | null)?.closest?.("details.sq-fmenu"));
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      const open = document.querySelector<HTMLDetailsElement>("details.sq-fmenu[open]");
+      if (!open) return;
+      open.removeAttribute("open");
+      open.querySelector("summary")?.focus();
+    };
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
 
   return (
     <>
       <section className="sq-wrap sq-arch-tools" aria-label={copy.search.label}>
         <div className="sq-arch-searchrow">
-          <label className="sq-arch-search">
-            <span className="sq-sr">{copy.search.label}</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" className="sq-arch-search-i">
-              <circle cx="8.75" cy="8.75" r="5.75" fill="none" stroke="currentColor" strokeWidth="2" />
-              <path d="m13.1 13.1 4.4 4.4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder={copy.search.placeholder}
-              autoComplete="off"
-              spellCheck={false}
-            />
-            {query ? (
-              <button type="button" className="sq-arch-search-x" onClick={() => setQuery("")} aria-label={copy.search.clear}>
-                <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-                  <path d="m3 3 8 8M11 3l-8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </button>
-            ) : null}
-          </label>
+          <SearchBox
+            copy={copy}
+            query={query}
+            setQuery={setQuery}
+            preview={shown.slice(0, 6)}
+            total={shown.length}
+            suggestions={suggestions}
+          />
           <div className="sq-arch-menus">
             <PickMenu
+              icon={ICON.region}
               label={copy.regionLabel}
               value={region}
               options={REGIONS.map((r) => ({ key: r, label: r === "all" ? copy.regions.all : copy.regions[r], off: r !== "all" && r !== region && !regionCount[r] }))}
               onPick={(r) => setRegion(r as ArchiveRegionKey)}
             />
             <PickMenu
+              icon={ICON.domain}
               label={copy.domainLabel}
               value={domain}
               options={[
@@ -291,12 +304,224 @@ function Archive({
  * A filter as one menu (region, domain). Closed it reads as the dimension ("지역")
  * until a value is picked, then as that value in the accent.
  */
+/**
+ * The search field with a live preview (owner, 2026-11-02): while typing, the first
+ * six matches under the current filters and sort, each a link to its item page, and
+ * a last row that closes the preview over the filtered list. Empty and focused, a
+ * few example searches. Arrow keys move through the preview, Enter opens the active
+ * match, Escape or a click outside closes it. The list below filters as before.
+ */
+function SearchBox({
+  copy,
+  query,
+  setQuery,
+  preview,
+  total,
+  suggestions,
+}: {
+  copy: ArchiveCopy;
+  query: string;
+  setQuery: (q: string) => void;
+  preview: ArchiveRow[];
+  total: number;
+  suggestions: string[];
+}) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
+  const wrap = useRef<HTMLDivElement>(null);
+  const input = useRef<HTMLInputElement>(null);
+  const q = query.trim();
+  const items = q ? preview : [];
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => {
+      if (!wrap.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", onDown);
+    return () => document.removeEventListener("pointerdown", onDown);
+  }, [open]);
+
+  const go = (r: ArchiveRow) => {
+    setOpen(false);
+    trackDetailOpen({ reference: r.id, source: "search-preview" });
+    router.push(r.href);
+  };
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") return setOpen(false);
+    if (e.key === "Enter") {
+      if (open && active >= 0 && items[active]) {
+        e.preventDefault();
+        go(items[active]);
+      } else setOpen(false);
+      return;
+    }
+    if (!items.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setOpen(true);
+      setActive((i) => Math.min(i + 1, items.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActive((i) => Math.max(i - 1, -1));
+    }
+  };
+  const showPanel = open && (q ? true : suggestions.length > 0);
+
+  return (
+    <div className="sq-arch-searchbox" ref={wrap}>
+      <label className="sq-arch-search">
+        <span className="sq-sr">{copy.search.label}</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" className="sq-arch-search-i">
+          <circle cx="8.75" cy="8.75" r="5.75" fill="none" stroke="currentColor" strokeWidth="2" />
+          <path d="m13.1 13.1 4.4 4.4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+        <input
+          ref={input}
+          type="search"
+          role="combobox"
+          aria-expanded={showPanel}
+          aria-controls="sq-sp"
+          aria-autocomplete="list"
+          aria-activedescendant={active >= 0 && items[active] ? `sq-sp-${items[active].id}` : undefined}
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setActive(-1);
+            setOpen(true);
+          }}
+          onFocus={() => {
+            setActive(-1);
+            setOpen(true);
+          }}
+          onKeyDown={onKeyDown}
+          placeholder={copy.search.placeholder}
+          autoComplete="off"
+          spellCheck={false}
+        />
+        {query ? (
+          <button
+            type="button"
+            className="sq-arch-search-x"
+            onClick={() => {
+              setQuery("");
+              input.current?.focus();
+            }}
+            aria-label={copy.search.clear}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="m3 3 8 8M11 3l-8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+        ) : null}
+      </label>
+      {showPanel ? (
+        <div className="sq-sp" id="sq-sp">
+          {q ? (
+            items.length > 0 ? (
+              <>
+                <ul role="listbox" aria-label={copy.search.label}>
+                  {items.map((r, i) => (
+                    <li key={r.id} id={`sq-sp-${r.id}`} role="option" aria-selected={i === active}>
+                      <Link
+                        href={r.href}
+                        className="sq-sp-row"
+                        tabIndex={-1}
+                        onMouseEnter={() => setActive(i)}
+                        onClick={() => {
+                          setOpen(false);
+                          trackDetailOpen({ reference: r.id, source: "search-preview" });
+                        }}
+                      >
+                        {r.logo ? (
+                          <BrandLogo logo={r.logo} className="sq-sp-logo" />
+                        ) : (
+                          <span className="sq-sp-dot" style={{ background: r.palette[0] }} aria-hidden="true" />
+                        )}
+                        <span className="sq-sp-name">
+                          <b lang={r.nameLang}>{r.name}</b>
+                          <span>{domainLabel(copy, r.domain)}</span>
+                        </span>
+                        {r.installs > 0 ? <span className="sq-sp-n">{copy.installs(r.installs)}</span> : null}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  className="sq-sp-all"
+                  onClick={() => {
+                    setOpen(false);
+                    input.current?.blur();
+                  }}
+                >
+                  {copy.search.seeAll(total, q)}
+                </button>
+              </>
+            ) : (
+              <p className="sq-sp-empty">{copy.empty}</p>
+            )
+          ) : (
+            <div className="sq-sp-suggest">
+              <p>{copy.search.suggest}</p>
+              <div>
+                {suggestions.map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => {
+                      setQuery(s);
+                      input.current?.focus();
+                    }}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+const ICON = {
+  region: (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M1.75 8h12.5M8 1.75c1.7 1.8 2.5 3.9 2.5 6.25S9.7 12.45 8 14.25C6.3 12.45 5.5 10.35 5.5 8S6.3 3.55 8 1.75Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  ),
+  domain: (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <rect x="2" y="2" width="5" height="5" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="9" y="2" width="5" height="5" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="2" y="9" width="5" height="5" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="9" y="9" width="5" height="5" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  ),
+  sort: (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M5 2.5v11M2.5 11 5 13.5 7.5 11M11 13.5v-11M8.5 5 11 2.5 13.5 5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  check: (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" className="sq-fmenu-check">
+      <path d="m3.5 8.5 3 3 6-6.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+};
+
 function PickMenu({
+  icon,
   label,
   value,
   options,
   onPick,
 }: {
+  icon: ReactNode;
   label: string;
   value: string;
   options: { key: string; label: string; off: boolean }[];
@@ -306,7 +531,10 @@ function PickMenu({
   const current = options.find((o) => o.key === value)?.label ?? label;
   return (
     <details className={on ? "sq-fmenu sq-fmenu-on" : "sq-fmenu"}>
-      <summary aria-label={`${label}: ${current}`}>{on ? current : label}</summary>
+      <summary aria-label={`${label}: ${current}`}>
+        <span className="sq-fmenu-i">{icon}</span>
+        {on ? current : label}
+      </summary>
       <div className="sq-fmenu-list" role="group" aria-label={label}>
         {options.map((o) => (
           <button
@@ -320,6 +548,7 @@ function PickMenu({
             }}
           >
             <span>{o.label}</span>
+            {value === o.key ? ICON.check : null}
           </button>
         ))}
       </div>
@@ -330,7 +559,10 @@ function PickMenu({
 function SortMenu({ copy, sort, setSort }: { copy: ArchiveCopy; sort: ArchiveSortKey; setSort: (s: ArchiveSortKey) => void }) {
   return (
     <details className="sq-fmenu">
-      <summary aria-label={`${copy.sortLabel}: ${copy.sorts[sort]}`}>{copy.sorts[sort]}</summary>
+      <summary aria-label={`${copy.sortLabel}: ${copy.sorts[sort]}`}>
+        <span className="sq-fmenu-i">{ICON.sort}</span>
+        {copy.sorts[sort]}
+      </summary>
       <div className="sq-fmenu-list" role="group" aria-label={copy.sortLabel}>
         {SORTS.map((s) => (
           <button
@@ -343,6 +575,7 @@ function SortMenu({ copy, sort, setSort }: { copy: ArchiveCopy; sort: ArchiveSor
             }}
           >
             <span>{copy.sorts[s]}</span>
+            {sort === s ? ICON.check : null}
           </button>
         ))}
       </div>
@@ -537,14 +770,24 @@ function ArchiveCard({
             {r.summary}
           </span>
         ) : null}
-        {r.installs > 0 ? (
-          <span className="sq-card-n" title={copy.installsTitle}>
-            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-              <path d="M8 2.5v7.5M4.5 6.5 8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            {copy.installs(r.installs)}
-          </span>
-        ) : null}
+        <span className="sq-card-foot">
+          {/* The reference's own colour tokens (archive-rows.server.ts paletteOf). */}
+          {r.palette.length > 0 ? (
+            <span className="sq-card-pal" aria-hidden="true">
+              {r.palette.map((c) => (
+                <i key={c} style={{ background: c }} />
+              ))}
+            </span>
+          ) : null}
+          {r.installs > 0 ? (
+            <span className="sq-card-n" title={copy.installsTitle}>
+              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 2.5v7.5M4.5 6.5 8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {copy.installs(r.installs)}
+            </span>
+          ) : null}
+        </span>
       </Link>
     </li>
   );
