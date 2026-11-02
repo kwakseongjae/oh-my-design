@@ -4438,28 +4438,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "hubspot",
-    "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
-    "tokenSource": "reconciled",
-    "claimCount": 138,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 140,
+    "evidenceClaimCount": 140,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 17,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 9,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 17,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13010,8 +13006,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 309,
-  "partial": 108,
+  "verified_v2": 310,
+  "partial": 107,
   "legacy_snapshot": 113,
   "total": 530
 } as const;

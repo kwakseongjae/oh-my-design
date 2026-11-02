@@ -154,7 +154,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 205 -> 197 (2026-09-30): wave P7, eight more.
     // 197 -> 193 (2026-10-01): ssg, cafe24, medibloc, ikala (Aside captures).
     // 193 -> 192 (2026-11-02): paypal re-verified from a live capture; §15 writes only computed transitions.
-    expect(flagged.length).toBe(192);
+    // 192 -> 191 (2026-11-02): hubspot, the same way.
+    expect(flagged.length).toBe(191);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
