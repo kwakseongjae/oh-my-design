@@ -10,6 +10,7 @@ import { KO_DETAIL_IDS, koName } from "@/lib/i18n/ko-detail.server";
 import { detailHrefFor, hasKoDetailShort } from "@/lib/i18n/ko-detail";
 import { loadDetail } from "@/lib/references/detail-loader.server";
 import { koSummary } from "./ko-summary";
+import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 
 const HANGUL = /[가-힣]/;
 const params = (id: string) => ({ params: Promise.resolve({ id }) });
@@ -165,5 +166,15 @@ describe("Korean item page body", () => {
     const hrefs = [...related.matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
     expect(hrefs.length).toBeGreaterThan(0);
     for (const h of hrefs) expect(h.startsWith("/ko/design-systems/")).toBe(true);
+  });
+
+  it("draws related references as the archive's cards: domain in Korean, the reference's own colours", async () => {
+    const html = await render("toss");
+    const related = (html.split('id="related-heading"')[1] ?? "").split("</section>")[0];
+    const tags = [...related.matchAll(/class="sq-card-tag">([^<]+)</g)].map((m) => m[1]);
+    expect(tags).toHaveLength(6);
+    for (const t of tags) expect(Object.values(ARCHIVE_COPY.ko.domains)).toContain(t);
+    expect(related.match(/<i style="background:#[0-9a-f]{6}"/g)?.length).toBeGreaterThanOrEqual(6);
+    expect(related).not.toContain("sq-rel-sw");
   });
 });
