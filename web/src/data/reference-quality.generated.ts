@@ -3800,29 +3800,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "gitlab",
-    "status": "partial",
-    "verifiedAt": "2026-06-17",
-    "tokensExtractedAt": "2026-06-17",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 158,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 77,
+    "evidenceClaimCount": 77,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 26,
     "conflictCount": 0,
-    "tier1SourceCount": 5,
-    "componentCount": 11,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
+    "tier1SourceCount": 26,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13030,8 +13025,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 323,
-  "partial": 98,
+  "verified_v2": 324,
+  "partial": 97,
   "legacy_snapshot": 112,
   "total": 533
 } as const;

@@ -165,7 +165,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 184 -> 183 (2026-11-02): govuk.
     // 183 -> 182 (2026-11-02): datadog.
     // 182 -> 181 (2026-11-02): mercury (legacy, rewritten from a live capture).
-    expect(flagged.length).toBe(181);
+    // 181 -> 180 (2026-11-02): gitlab.
+    expect(flagged.length).toBe(180);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
