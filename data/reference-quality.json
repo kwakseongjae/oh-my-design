@@ -4,8 +4,8 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 533,
   "counts": {
-    "verified_v2": 324,
-    "partial": 97,
+    "verified_v2": 325,
+    "partial": 96,
     "legacy_snapshot": 112,
     "total": 533
   },
@@ -3659,16 +3659,14 @@
     },
     {
       "id": "nintendo",
-      "status": "partial",
-      "verified_at": "2026-06-17",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "nota",

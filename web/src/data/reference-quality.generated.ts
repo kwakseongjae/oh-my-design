@@ -7398,28 +7398,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "nintendo",
-    "status": "partial",
-    "verifiedAt": "2026-06-17",
-    "tokensExtractedAt": "2026-06-17",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 114,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 113,
+    "evidenceClaimCount": 113,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 8,
-    "interactiveComponentCount": 7,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 9,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13025,8 +13021,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 324,
-  "partial": 97,
+  "verified_v2": 325,
+  "partial": 96,
   "legacy_snapshot": 112,
   "total": 533
 } as const;

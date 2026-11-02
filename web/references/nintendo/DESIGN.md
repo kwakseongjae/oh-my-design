@@ -2,68 +2,57 @@
 name: Nintendo
 colors:
   primary: '#e60012'
-  ink: '#484848'
-  ink-jp: '#3c3c3c'
+  primary-hover: '#ac000d'
+  foreground: '#484848'
   muted: '#727272'
-  muted-jp: '#8c8c8c'
-  disabled: '#c8c8c8'
+  neutral-light: '#c8c8c8'
   on-primary: '#ffffff'
   canvas: '#ffffff'
   surface: '#f8f8f8'
   surface-alt: '#efefef'
-  surface-jp: '#f2f2f2'
-  hairline: '#e0e0e0'
-  eshop-green: '#468254'
+  hairline: '#dadada'
+  focus-ring: '#3946a0'
   accent-blue: '#4b5cce'
-  accent-navy: '#27455c'
 typography:
   display:
     fontSize: 28px
     fontWeight: 600
-    lineHeight: 1.35
-    use: Section/feature headline (H2), Geologica
+    use: Small desktop H1 size token and bold theme weight; not a maximum headline size
   subheading:
     fontSize: 21px
     fontWeight: 600
-    lineHeight: 1.4
-    use: Card / panel head (H2)
+    use: Desktop H2 size token and bold theme weight
   label:
     fontSize: 16px
     fontWeight: 600
     lineHeight: 1.4
-    use: Section label, nav, eyebrow
+    use: Visible title of the measured featured card
   body:
     fontSize: 16px
-    fontWeight: 400
+    fontWeight: 300
     lineHeight: 1.4
-    use: Standard reading text, US
-  body-jp:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 2
-    use: Standard reading text, JP (32px line-height)
+    use: Homepage body CSS default, also observed on the featured-card anchor
   button:
     fontSize: 18px
     fontWeight: 600
-    lineHeight: 1
-    use: Primary CTA label
+    lineHeight: 1.4
+    use: Start shopping link label; 25.2px line-height
   nav:
     fontSize: 14px
     fontWeight: 600
     lineHeight: 1
-    use: Top nav menu item
+    use: Explore, Shop and Support trigger geometry in the survey
   caption:
     fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.4
-    use: Search input, small labels
+    use: Desktop caption size token; search-input weight was not re-measured
 rounded:
-  xs: 2px
+  none: 0px
   sm: 4px
   md: 8px
   lg: 12px
+  round: 16px
+  utility: 20px
   pill: 48px
-  full: 9999px
 spacing:
   xs: 4
   sm: 8
@@ -79,18 +68,12 @@ components:
     textColor: '#ffffff'
     rounded: 8px
     height: 48px
-    padding: 0 24px
-    typography: 18px / 600 Geologica
-    use: Primary CTA — Log in, Learn more, Start shopping
-  button-play:
-    type: button
-    backgroundColor: '#e60012'
-    textColor: '#ffffff'
-    rounded: 48px
-    height: 32px
-    padding: 0 16px
-    typography: 16px / 600 Geologica
-    use: Inline Play pill on media cards
+    padding: 0px 24px
+    typography: 18px / 600 Geologica Variable
+    hover: 'background span #ac000d, 1px matching border, matrix(1.05, 0, 0, 1.05, 0, 0)'
+    pressed: 'background span #ac000d, matrix(0.990029, 0, 0, 0.990029, 0, 0)'
+    focus: '4px solid #3946a0 outline, offset 4px; background span border 4px solid color(srgb 1 1 1 / 0.5)'
+    use: Start shopping is a link to /us/store/. The background span changes; the anchor and white label keep their rest colours.
   button-utility:
     type: button
     backgroundColor: '#f8f8f8'
@@ -98,43 +81,58 @@ components:
     rounded: 20px
     height: 32px
     padding: 8px 12px
-    typography: 14px / 600 Geologica
-    use: Header utility pills — Search, Wish List, Cart
-  link-red:
+    typography: 14px / 600 Geologica Variable
+    hover: 'label and icon #e60012'
+    pressed: 'label and icon #e60012'
+    focus: '4px solid #3946a0 outline, offset 4px'
+    use: Search launcher in the header. This is a button; no search input was exposed in the survey.
+  account-outline:
     type: button
     textColor: '#e60012'
-    typography: 16px / 600 Geologica
-    use: Trending-topic / inline navigational link, red text on transparent
-  nav-item:
-    type: tab
+    border: '#e60012'
+    rounded: 20px
+    height: 30px
+    padding: 6px 12px
+    typography: 14px / 600 Geologica Variable
+    focus: '4px solid #3946a0 outline, offset 4px'
+    use: Log in / Sign up header button, transparent on white with a 1px red border. Visible label 14px/600; element font 16px/400. Hover and pressed had no detected style changes in the recorded scope.
+  nav-about:
+    type: button
     textColor: '#484848'
-    typography: 14px / 600 Geologica
-    use: Top nav menu trigger (Explore, Shop, Support)
-    active: 'text #e60012'
+    rounded: 4px
+    height: 29.4px
+    padding: 0px
+    typography: 18px / 600 Geologica Variable
+    hover: 'label bottom border 2px solid #ac000d; anchor colour #ac000d'
+    pressed: 'label bottom border 2px solid #ac000d; anchor colour #ac000d'
+    focus: '4px solid #3946a0 outline, offset 8px; same underline as hover'
+    use: 'About Nintendo is a footer navigation link, transparent on white. The visible label remains #484848; the anchor itself is #e60012 at rest and 21px/600.'
   card-media:
     type: card
-    backgroundColor: '#ffffff'
-    rounded: 12px
-    shadow: rgba(0,0,0,0.07) 0px 2px 8px
-    use: Game/topic media tile
-  input-search:
-    type: input
-    backgroundColor: '#ffffff'
     textColor: '#484848'
     rounded: 0px
-    typography: 14px / 400 Geologica
-    use: Header search field, bottom-border affordance
-  carousel-arrow:
+    height: 311.3px
+    padding: 0px
+    typography: 16px / 600 Geologica Variable
+    hover: 'title #e60012; image wrapper matrix(1.05, 0, 0, 1.05, 0, 0)'
+    pressed: 'title #e60012; image wrapper matrix(1.05, 0, 0, 1.05, 0, 0)'
+    focus: 'anchor radius 8px; 4px solid #3946a0 outline, offset 4px'
+    use: 'Shop the Pikmin Collection is a card link on the white page, with white child panels and #dadada borders. Anchor 262px wide, transparent and shadow none; inherited anchor font 16px/300, visible title 16px/600.'
+  pause-pill:
     type: button
-    textColor: '#dadada'
-    rounded: 8px
-    padding: 16px
-    use: Hero carousel prev/next, rgba(0,0,0,0.3) scrim bg
+    backgroundColor: '#e60012'
+    textColor: '#ffffff'
+    rounded: 48px
+    height: 32px
+    padding: 0px 16px
+    typography: 16px / 600 Geologica Variable
+    hover: 'background span #ac000d; sampled matrix(1.0395, 0, 0, 1.0395, 0, 0)'
+    pressed: 'background span #ac000d; sampled matrix(0.980129, 0, 0, 0.980129, 0, 0)'
+    focus: '4px solid #3946a0 outline, offset 4px; background span border 4px solid color(srgb 1 1 1 / 0.5)'
+    use: Pause icon button for the homepage carousel, 32px wide. Transform numbers are captured samples, not general motion targets.
 fonts:
   roles:
     sans: Geologica Variable
-    cjk: YakuHanJPs, Roboto, Hiragino Kaku Gothic ProN
-    mono: system-ui
 ---
 
 # Design System Inspiration of Nintendo
@@ -143,399 +141,180 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Nintendo's web presence is a masterclass in disciplined brand craft: a near-shadowless, light-canvas system where a single saturated red does almost all the emotional work. The page opens on pure white (`#ffffff`) with soft cool-grey surfaces (`#f8f8f8`, `#efefef`) segmenting content, and text rendered in a warm dark grey (`#484848` on the US site, `#3c3c3c` on the Japanese site) — never pure black for body copy. Against that quiet neutral ground, the signature **Nintendo red (`#e60012`)** is reserved with surgical restraint: it is the color of every primary call-to-action, every inline navigational link, and the wordmark itself. The brand has kept this red essentially unchanged for decades, and the web treats it as sacred — the eye is trained that "red means action, red means Nintendo."
+Nintendo makes home entertainment products, with a history beginning in Kyoto in 1889 with hanafuda playing cards. Its own account connects its characters, ideas and worlds with a mission of bringing enjoyment to people together. The corporate history now includes Nintendo Switch 2's launch in 2025, following Nintendo Switch in 2017. The Switch 2 announcement extends that shared-play theme through GameChat and GameShare. These are documented product developments; no visual rebrand was established by the sources opened. [Company profile](https://www.nintendo.co.jp/corporate/en/outline/index.html), [About Nintendo](https://www.nintendo.com/us/about/), [history](https://www.nintendo.co.jp/corporate/en/history/index.html), [Switch 2 announcement](https://www.nintendo.co.jp/corporate/release/en/2025/250402.html).
 
-The typographic personality differs by region but shares the same calm confidence. The US store runs **Geologica Variable** — a humanist sans with subtle warmth — at a friendly 16px body and 28px feature headlines, both at weight 600 for headings and 400 for prose. The Japanese site runs the authentic CJK stack **`YakuHanJPs, Roboto, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Arial, nc3Jp, sans-serif`**, with YakuHan handling tightened half-width kana punctuation and Hiragino carrying the kanji — a deliberately legible, generously line-spaced (32px on 16px) reading rhythm that respects dense Japanese text. The split is regional, not philosophical: both surfaces feel orderly, optimistic, and family-friendly rather than hard-sell.
+The measured US homepage (`nintendo.com/us/`, HTML `en-US`) pairs a white canvas with dark-grey text and Nintendo red. Broad promotional images carry changing product stories; the surrounding controls use compact semibold labels, grey dividers and rounded corners. A separately measured Japanese homepage (`nintendo.com/jp/index.html`, HTML `ja`) shares the red while using its own font stack, darker text and a taller header. The US request stayed on the US edition despite the collector's Japanese locale and South Korean network location.
 
-What distinguishes Nintendo from louder consumer-tech peers is its restraint with depth and geometry. Shadows are barely-there — a whisper of `rgba(0,0,0,0.07) 0px 2px 8px` lifts media cards, and a slightly firmer `rgba(72,72,72,0.15) 0px 4px 16px` floats featured tiles; separation otherwise comes from flat tint and a thin `#e0e0e0` hairline. Geometry is gently rounded: 12px media cards, 8px primary buttons, fully-pill (48px) inline Play affordances, and 20px utility pills in the header. On the Japanese site the radii tighten to 2-3px with circular (50%) icon chips, a subtly more compact, information-dense register. The result is an interface that feels engineered, trustworthy, and welcoming all at once — playful where it persuades, precise everywhere else.
+For a design in this style, use **`#e60012`** for the main action, **`#484848`** for US foreground text, and **`#ffffff`** for the canvas and text on red. The primary action is 48px high with an 8px radius; the header Search control is a smaller 32px pill. Colour also has roles beyond red: the live theme assigns **`#3946a0`** to focus and secondary actions. Keyboard focus is a visible part of the expression, with a solid blue outline and, on the red CTA, a translucent inner border. These are observations of this homepage, not historical claims about the identity.
 
-**Key Characteristics:**
-- Single signature **Nintendo red (`#e60012`)** reserved for primary CTAs, inline links, and the wordmark — the system's one "action" color, identical across US and JP
-- Warm dark-grey ink instead of black — `#484848` (US, Geologica) and `#3c3c3c` (JP, CJK stack)
-- **Geologica Variable** on the US store; authentic **YakuHan + Hiragino Kaku Gothic ProN** CJK stack on the Japanese site
-- Light canvas with cool-grey tint surfaces (`#f8f8f8`, `#efefef`, `#f2f2f2` JP) and a single `#e0e0e0` hairline
-- Near-shadowless depth — `rgba(0,0,0,0.07) 0px 2px 8px` soft lift, `rgba(72,72,72,0.15) 0px 4px 16px` for featured cards
-- Gently rounded geometry: 12px cards, 8px primary buttons, 48px Play pills, 20px header pills (US); 2-3px + 50% circles (JP)
-- Restrained secondary accents — eShop green (`#468254`), occasional blue (`#4b5cce`) and navy (`#27455c`) for service/section theming, never competing with red
-- Muted-grey neutral ladder (`#727272` → `#c8c8c8`) for secondary and disabled text
-
-### Primary tasks
-
-- Search the store for a game, hardware item, or news article
-- Shop for a console and games for your kids
-- Save games to a wish list or cart before buying
-- Pre-order or buy a game and see the next step
-- Read Nintendo Direct recaps and topic announcements
+Primary tasks visible on the surface are browsing featured games and merchandise, opening Search, following news, entering the store, and accessing the wish list, cart and account entry points. Buying, authentication and form submission were not exercised.
 
 ### Brand Narrative
 
-Nintendo Co., Ltd. (任天堂) is a **Kyoto, Japan**-headquartered video-game and consumer-hardware company, originally founded in **1889** as a maker of *hanafuda* playing cards before transforming, across the late 20th century, into one of the most recognizable entertainment brands in the world. Its design identity is defined less by trend-chasing than by an unusual constancy: the **Nintendo red (`#e60012`)** and the wordmark have remained essentially unchanged for decades, and the brand treats that consistency as an asset rather than a constraint.
+Nintendo's corporate history traces its beginnings to Fusajiro Yamauchi's hanafuda business in Kyoto in 1889. The company adopted its present corporate name in 1963, established its American subsidiary in 1980, launched Nintendo Switch in 2017 and opened the Nintendo Museum in 2024. The history records Nintendo Switch 2's launch in 2025. [Company history](https://www.nintendo.co.jp/corporate/en/history/index.html).
 
-That discipline carries into the digital product. Where many consumer-tech sites chase maximal contrast, heavy gradients, and aggressive conversion chrome, Nintendo's web surfaces stay deliberately calm: a light canvas, a single sacred accent color, gently rounded geometry, and imagery-forward storytelling. The product is fun; the chrome around it is composed. This restraint signals trust to a famously broad audience — Nintendo sells to children, parents, and adults who grew up with the brand simultaneously, and the design has to feel safe, legible, and joyful for all of them at once.
+The Switch 2 announcement describes new forms of play through magnetic controllers, mouse operation, GameChat and GameShare. Shared activity provides a documented link between the company's stated purpose and the new hardware generation. For this reference, the visual takeaway is the separation seen on the live homepage: bright product artwork sits within a largely white, grey and red interface. [Switch 2 announcement](https://www.nintendo.co.jp/corporate/release/en/2025/250402.html).
 
-What Nintendo refuses, visible in its design: the cold, high-contrast aesthetic of enterprise tech; dark-pattern urgency in commerce; and the dilution of its red into a decorative palette. What it embraces: a near-immutable brand red used with restraint, region-tuned typography (Geologica in the West, the YakuHan + Hiragino CJK stack in Japan), flat-and-light depth, and a warm, family-first voice — craft in service of play.
+Nintendo Co., Ltd.'s company profile places its headquarters in Kyoto, Japan. The measured US website is legally provided by Nintendo of America Inc.; Nintendo's About page identifies that Redmond operation as a wholly owned subsidiary. The reference retains the global Nintendo identity and records that regional operator distinction in its verification notes. [Company profile](https://www.nintendo.co.jp/corporate/en/outline/index.html), [Terms of Use](https://www.nintendo.com/us/terms-of-use/), [About Nintendo](https://www.nintendo.com/us/about/).
 
 ### Principles
 
-1. **One sacred red.** Nintendo red (`#e60012`) is the single action color and brand signature. *UI implication:* reserve it for primary CTAs, inline links, and the wordmark — never let a competing saturated hue dilute it.
-2. **Constancy is the brand.** The wordmark and red have barely changed in decades. *UI implication:* favor durable, classic choices over trend-driven styling; the 8-12px radius and warm grey ink should age gracefully.
-3. **Calm chrome, playful content.** The product is fun; the interface around it is composed. *UI implication:* keep elevation whisper-soft and layouts orderly so imagery and play carry the energy.
-4. **Region-tuned legibility.** Each script gets a font and rhythm tuned for it. *UI implication:* Geologica for Western surfaces; YakuHan + Hiragino with generous 2.0 line-height for Japanese.
-5. **Welcoming to everyone.** Kids, parents, and lifelong fans share the same surface. *UI implication:* clear hierarchy, plain copy, friendly geometry, and high legibility over cleverness.
+These are implementation principles drawn from the measured page, with the company-purpose connection identified separately.
+
+1. **Stable labels, responsive layers.** The primary CTA changes its background span while preserving the label. The card animates an image wrapper separately from its title.
+2. **Visible keyboard feedback.** Use the authored 4px blue outline, the correct component offset and the red-button inner border.
+3. **Orderly framing for varied artwork.** White panels, dark-grey type and thin dividers repeat around promotional imagery.
+4. **Respect the measured region.** US Geologica evidence and Japanese YakuHanJPs/Roboto evidence are separate. Keep regional metrics and unconfirmed fallback faces explicit.
+5. **Shared enjoyment as a content direction.** Nintendo's stated mission and the Switch 2 announcement support experiences people can enjoy together; they do not establish invented personas or usability findings. [About Nintendo](https://www.nintendo.com/us/about/), [Switch 2 announcement](https://www.nintendo.co.jp/corporate/release/en/2025/250402.html).
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Nintendo audience segments (families, lifelong fans, new players), not individual people.*
-
-**Maya Thompson, 38, Seattle.** A parent buying a console and games for her two kids. Values that the store feels safe, legible, and unintimidating — clear prices, gentle CTAs, no dark-pattern urgency. Trusts the brand because the experience matches the family-friendly reputation.
-
-**Kenji Sato, 27, Osaka.** A lifelong fan who reads トピックス and Nintendo Direct recaps on the Japanese site. Appreciates the generous line-height and authentic typography that make dense Japanese announcements easy to read. Notices and values that the red and wordmark never change.
-
-**Diego Ramirez, 19, Mexico City.** A new Switch owner browsing games on sale. Finds the red "Learn more" and "Start shopping" buttons obvious and frictionless. Likes that the site is calm and image-forward rather than a wall of conversion pop-ups.
+No first-party persona research was verified.
 
 ## Colors
 
-### Primary
-- **Nintendo Red** (`#e60012`): The brand's near-immutable signature. Primary CTA background (Log in, Learn more, Start shopping), the Play pill, all inline navigational/trending links, and the wordmark. The single saturated "action" hue, confirmed identical on both `nintendo.com/us` (rgb 230,0,18) and `nintendo.com/jp`.
+The US root describes itself as `Nintendo Light Theme`. Its **169 `--theme-*` properties** are separate from embedded chat and consent namespaces. The colour roles below come from that namespace and the rendered census.
 
-### Text / Ink
-- **Ink Grey (US)** (`#484848`): Primary body, heading, nav, and label color on the US store — a warm dark grey, never pure black.
-- **Ink Grey (JP)** (`#3c3c3c`): Primary text color on the Japanese site — a slightly deeper warm grey paired with the CJK stack.
-- **Muted Grey** (`#727272`): Secondary text, captions, metadata on the US site.
-- **Muted Grey (JP)** (`#8c8c8c`): Secondary/tertiary text on the Japanese site.
-- **Disabled Grey** (`#c8c8c8`): Disabled controls, placeholder, lowest-emphasis labels and carousel chrome.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary | `#e60012` | `--theme-color-primary`, primary-button background and link tokens; Start shopping at rest |
+| Primary hover | `#ac000d` | `--theme-color-primaryHover`; measured background span of Start shopping on hover and press |
+| Foreground | `#484848` | `--theme-colors-text-standard`; all 15 paragraphs counted in the US census |
+| Muted | `#727272` | `--theme-color-darkGray3`; 72 text instances in the census |
+| Light neutral | `#c8c8c8` | `--theme-color-lightGray1`; a neutral, not the theme's disabled-button background |
+| Canvas / on-primary | `#ffffff` | `--theme-colors-ui-bgMain`, primary-button content and rendered white panels |
+| Accent surface | `#f8f8f8` | `--theme-colors-ui-bgAccent`; measured Search background |
+| Alternate surface | `#efefef` | `--theme-color-lightGray3`; also assigned to maintenance and quaternary-hover backgrounds in the theme |
+| Hairline | `#dadada` | `--theme-colors-ui-line`; measured header/footer and card-panel borders |
+| Focus / secondary | `#3946a0` | `--theme-color-focus`, `--theme-color-secondary`; measured authored focus outline |
+| Blue description tag | `#4b5cce` | `--theme-colors-descriptionTag-blue`; the token does not establish an online-service role |
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, and text on red/dark.
-- **Surface Grey** (`#f8f8f8`): Cool-grey tint for header utility pills and segmented blocks (US).
-- **Surface Alt** (`#efefef`): Slightly firmer grey for inset fields and alternating bands (US).
-- **Surface Grey (JP)** (`#f2f2f2`): The Japanese site's primary tinted surface for chips and panels.
-- **Hairline** (`#e0e0e0`): Thin borders, dividers, and card outlines — the primary separation device in the near-shadowless system.
+The theme explicitly assigns **`#dadada`** to `--theme-colors-button-background-disabled`. No disabled control was tested, so this is a token declaration rather than a measured disabled appearance.
 
-### Secondary Accents (service / section theming)
-- **eShop Green** (`#468254`): Commerce/store accent used sparingly on shop surfaces and availability states.
-- **Accent Blue** (`#4b5cce`): Occasional section/service theming (online services), kept subordinate to red.
-- **Accent Navy** (`#27455c`): Deep navy band/section background for immersive editorial moments.
-- **On-Primary White** (`#ffffff`): Text/iconography on the red CTA and dark backgrounds.
+Keep regional evidence distinct. The Japanese survey found paragraph text **`#3c3c3c`** (8 paragraphs) and **`#8c8c8c`** (5 paragraphs), plus **`#f2f2f2`** backgrounds. Its rendered background census also contains **`#e60012`**. Those regional values are retained here without populating the US token map.
 
 ## Typography
 
-### Font Family
-- **US (sans)**: `Geologica Variable`, with fallback `-apple-system, "system-ui", sans-serif` — used for all US-store headings, nav, body, and button labels.
-- **JP (CJK)**: `YakuHanJPs, Roboto, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Arial, nc3Jp, sans-serif` — YakuHan tightens half-width kana punctuation, Roboto covers Latin, Hiragino Kaku Gothic ProN renders kanji/kana; `nc3Jp` is Nintendo's bundled web font fallback.
+**Official product-use documentation:** no Nintendo typography specification was identified in the first-party pages opened. The font conclusions below are live-site evidence.
 
-### Hierarchy
+**Live-loaded, US:** `document.fonts` reports **Geologica Variable, weight range 100–900, normal**. Body, H1 and button declarations all name it first. The census records a same-origin WOFF2-variations face at `/us/_next/static/media/geologica-cyrillic-ext-crsv-normal.d322343e.woff2`. That is the census's deduplicated source sample; it does not establish which language-subset resource rendered each glyph. The theme also declares the variation setting `"CRSV" 1`.
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Feature Headline (H2) | Geologica | 28px (1.75rem) | 600 | 1.35 (37.8px) | Section/feature titles, US |
-| Panel Heading (H2) | Geologica | 21px (1.31rem) | 600 | 1.40 (29.4px) | Card / login panel heads |
-| Section Label | Geologica | 16px (1.00rem) | 600 | 1.40 (22.4px) | Eyebrow labels ("Trending topics"), nav groups |
-| Body | Geologica | 16px (1.00rem) | 400 | 1.40 (22.4px) | Standard reading text, US |
-| Body (JP) | CJK stack | 16px (1.00rem) | 400 | 2.00 (32px) | Standard reading text, Japanese site |
-| Primary Button | Geologica | 18px (1.13rem) | 600 | 1.00 | Primary CTA label |
-| Nav Item | Geologica | 14px (0.88rem) | 600 | 1.00 | Top nav menu triggers |
-| Nav Item (JP) | CJK stack | 14px (0.88rem) | 700 | 1.00 | Japanese top nav (heavier weight) |
-| Caption / Input | Geologica | 14px (0.88rem) | 400 | 1.40 | Search field, small labels |
+**Live-loaded, Japan:** **YakuHanJPs normal and bold**, and **Roboto 400, 700 and 900**, appear in the loaded-face list. YakuHanJPs has regular and bold WOFF2/WOFF declarations under `/jp/common/font/`. The unreadable-sheet list identifies Google Fonts stylesheets for Roboto; the binary font URLs are not exposed. The loaded list confirms availability of these faces, not the identity of the font rasterizing every Japanese glyph.
 
-### Principles
-- **Weight 600 carries headings; 400 carries prose.** Across US headings (28px, 21px, 16px labels) the heading weight is a consistent 600 semibold — confident but never heavy. Body sits at 400.
-- **Regional font discipline.** Geologica owns the US store; the YakuHan + Hiragino CJK stack owns the Japanese site. The two never swap — each is tuned for its script's legibility.
-- **Generous Japanese line-height.** JP body runs at 32px line-height on 16px text (2.0) versus 1.4 on the US site — denser scripts get more vertical air for readability.
-- **No display heroics.** Headlines top out at 28px on the home surface; Nintendo leans on imagery and the red accent for impact rather than oversized type.
+**Official distributed assets:** no standalone Nintendo font package or font licence was opened. Site CSS declares assets for `nc3Jp` at `/jp/common/font/NotoSansJP-Regular.woff2` and the corresponding bold file, plus WOFF alternatives. These declarations are kept as metadata; neither face is in the loaded list.
+
+**Declared-only:** the Japanese CSS stack is `YakuHanJPs, Roboto, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Arial, nc3Jp, sans-serif`. Hiragino, Arial and `nc3Jp` are not in this capture's loaded-face list and receive no specimen. The US also declares Roboto Condensed Variable and the VideoJS/NOAVideo icon faces without listing them as loaded; they are not promoted to the UI family. Platform fallback names remain CSS facts, not additional brand faces.
+
+**Unresolved:** Nintendo's official rationale for the font choice, the exact Japanese system-fallback glyph face, Roboto's binary font path, and any font distribution licence. **Substitute: none chosen.**
+
+| Role / evidence | Size | Weight | Line-height |
+|---|---:|---:|---:|
+| US body CSS default; same inherited metrics on the measured card anchor | 16px | 300 | 22.4px / 1.4 |
+| Start shopping visible label | 18px | 600 | 25.2px / 1.4 on the link |
+| Featured-card visible title | 16px | 600 | Theme line-height 1.4; label box approximately 22px |
+| Explore / Shop / Support trigger in survey | 14px | 600 | 14px |
+| Search visible label | 14px | 600 | 14px |
+| Account visible label | 14px | 600 | Element line-height 16px; element font 16px/400 |
+| About Nintendo footer link | Element 21px; label 18px | 600 | Element 29.4px |
+| Small desktop H1 size token | 28px (`1.75rem`) | Bold theme token 600 | No separate H1 line-height measurement |
+| Desktop H2 size token | 21px (`1.3125rem`) | Bold theme token 600 | No panel-heading line-height measurement |
+| Desktop caption size token | 14px (`0.875rem`) | Not established for an input | Not measured |
+| Japanese inherited reading metrics, sampled on links | 16px | 400 | 32px |
+| Japanese main navigation triggers | 14px | 700 | 72px, within a 72px control |
+
+The US theme also defines a larger desktop H1 size, **38px** (`2.375rem`). Consequently, 28px is a named size in this system, not a verified maximum. Preserve the distinction between an element's inherited font and a separately styled visible label.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px
-- Notable: Primary CTAs use 24px horizontal padding with zero vertical padding (height-driven at 48px); utility pills use a compact 8px/12px
+Use a wide image-led opening followed by distinct content bands and horizontal card rails. At the measured 1440 × 1000 viewport, the US header's logo link is 132 × 59px; the theme's desktop header-height token is 59px. The 48px navigation triggers sit inside that header rather than defining its full height.
 
-### Grid & Container
-- Centered, generous-margin content column with full-width hero/carousel banners at the top
-- Trending-topics and feature sections arranged as horizontal media-tile rows / carousels
-- Feature bands alternate white (`#ffffff`) with subtle grey tint, separated by `#e0e0e0` hairlines
-- Media tiles use 12px radius and group games, news, and topics
+The US theme defines a **90rem** maximum page width and a **71.5rem** slim width. The survey's central promotional image links are **1144px** wide at x≈141px, matching the slim token at the observed 16px scale. The first featured cards are 262px wide, with initial x positions 32, 332, 632 and 932px: a 300px pitch. The carousel can move that row horizontally, so those initial positions are not fixed page coordinates for all states.
 
-### Whitespace Philosophy
-- **Calm, breathable rhythm**: despite being a content- and commerce-dense product, the home surface is airy with generous vertical spacing between sections.
-- **Flat segmentation**: sections separate by background tint and hairline, rarely by heavy elevation.
-- **Imagery does the heavy lifting**: large key-art banners carry visual energy so the chrome can stay quiet and orderly.
+The complete declared theme spacing sequence is **0, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 64, 80, 96, 112 and 128px** at this scale. The prior 4/8/12/16/24/32/48 subset is retained in the machine tokens. An official universal 8px base-unit rule was not established.
 
-### Border Radius Scale
-- Extra-small (2px): JP chips, fine inset elements
-- Small (4px): small containers, inline chips
-- Medium (8px): primary buttons, carousel-arrow chips
-- Large (12px): media/feature cards — the workhorse
-- Pill (20px): header utility pills
-- Full (48px / 9999px): Play affordance and status pills; 50% circular icon chips on JP
+The radius vocabulary combines theme values **8px**, **12px** and **16px** with component-specific values: **0px** on the resting card anchor, **4px** on the footer link, **20px** on header utility/account controls and **48px** on the 32px media control. Use the measured component geometry rather than treating these as interchangeable sizes.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, condensed nav (hamburger), carousels become swipe rows |
-| Tablet | 640-1024px | 2-up media tiles, moderate padding |
-| Desktop | 1024-1440px | Full layout, multi-column feature rows, centered content with margins |
-
-#### Touch Targets
-- Primary CTAs at 48px height for a comfortable, unmistakable tap target
-- Header utility pills at 32px height with 8px/12px padding
-- Nav items spaced within the 48px (US) / 72px (JP) header
-- Carousel arrows padded at 16px for easy reach over imagery
-
-#### Collapsing Strategy
-- Hero/carousel banners maintain full-width treatment, reduce internal padding on mobile
-- Feature media-tile rows: multi-column → 2-up → single-column swipe
-- Top nav: horizontal menu → hamburger toggle
-- Tinted/white alternating bands maintain full-width treatment
-
-#### Image Behavior
-- Key-art banners and media tiles maintain 12px radius across breakpoints
-- Card shadows stay whisper-soft at all sizes, consistent with the flat system
-- Game/box-art imagery scales to fit tile aspect ratios without added borders
+Rendered behavior was measured only at **1440 × 1000**. The theme declares mobile/desktop font pairs: body 14/16px, caption 12/14px, small H1 21/28px, large H1 28/38px and H2 18/21px. These are named CSS values, not observations of a resized page. Column collapse, hamburger navigation, touch scrolling and cross-breakpoint image/shadow behavior were not verified.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f8f8f8` / `#f2f2f2` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e0e0e0` border | Card outlines, dividers |
-| Soft (Level 3) | `rgba(0,0,0,0.07) 0px 2px 8px` | Standard media tiles, subtle lift |
-| Card (Level 4) | `rgba(72,72,72,0.15) 0px 4px 16px` | Featured / promoted tiles |
+The measured controls use no shadow on their actionable roots. The featured card obtains separation from white panels and a thin grey border; the header and footer also use `#dadada` rules. This supports a light, restrained treatment for these parts of the page.
 
-**Shadow Philosophy**: Nintendo runs a near-shadowless, light system. Live inspection found the strongest standard elevation to be a whisper-soft `rgba(0,0,0,0.07) 0px 2px 8px` on media cards, with featured tiles reaching only `rgba(72,72,72,0.15) 0px 4px 16px` — itself a brand-warm grey shadow rather than pure black. Most separation is done flat, through `#f8f8f8` tint and `#e0e0e0` hairlines. The Japanese site is flatter still (tighter 2-3px radii, minimal shadow). This restraint keeps the interface feeling clean, fast, and approachable — emphasis is reached for with the red accent (`#e60012`), never with heavy drop shadows.
+The cached US homepage's inline CSS contains a desktop shadow declaration: `box-shadow:0px 4px 16px 0px #48484826` on `.ftCEaF`, inside `@media (min-width: 1025px)`. That class also declares `opacity:0`. It is retained as a declared shadow fact, without assigning it to a visible featured-card role. No shadow scale is published in the machine tokens.
 
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.soft`: `rgba(0,0,0,0.07) 0px 2px 8px 0px`
-- `shadow.card`: `rgba(72,72,72,0.15) 0px 4px 16px 0px`
+The root scrim declarations are `rgba(0,0,0,.6)` for dark and `hsla(0,0%,100%,.6)` for light. The carousel-arrow sample uses its own lighter black alpha of 0.3; keep these contexts distinct.
 
 ## Motion & Easing
 
-**Durations**:
+The theme declares `--theme-movement-duration: 200ms`, `--theme-movement-easing: ease-in-out` and `--theme-movement-delay: 25ms`. These are root values; they are not a measured duration for every interaction. The account button's raw computed transition is **`all 0.2s ease-in-out 0s`**. The other five actionable roots report **`all 0s ease 0s`**, although their descendants can still animate.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, carousel slide, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, hero/banner reveals |
+The primary CTA's background span reaches `matrix(1.05, 0, 0, 1.05, 0, 0)` on hover. The theme separately declares X/Y hover targets of 1.05 and X/Y tap targets of 0.99, with spring hover transitions and stiffness 600. The measured pressed matrix was `matrix(0.990029, 0, 0, 0.990029, 0, 0)`. The card's image wrapper also reaches scale 1.05 on hover and press. Pause produced the distinct sampled matrices recorded in §14; they are observations rather than reusable target values.
 
-**Easings**:
+No carousel travel duration, entrance/exit cubic-bezier curve, page-transition duration or reduced-motion behavior was verified.
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel slides |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+---
 
-**Motion rules**: Motion is friendly but composed — consistent with the calm, image-forward aesthetic. Carousels slide at `motion-standard / ease-enter`; cards lift subtly on hover with the soft shadow deepening slightly. A gentle, tasteful bounce is acceptable on playful interactive moments (it's a games brand), but core navigation and commerce flows stay steady and predictable. Under `prefers-reduced-motion: reduce`, carousels and reveals collapse to instant; the experience remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via global playwright getComputedStyle on two surfaces:
-- https://www.nintendo.com/us/ — US store: Geologica Variable, ink #484848, brand red #e60012
-  (rgb 230,0,18) on primary CTAs/links/wordmark, utility pills #f8f8f8, media-card 12px radius,
-  soft shadow rgba(0,0,0,0.07) 0px 2px 8px, featured-card shadow rgba(72,72,72,0.15) 0px 4px 16px.
-- https://www.nintendo.com/jp/ — Japanese site: CJK stack
-  "YakuHanJPs, Roboto, Hiragino Kaku Gothic ProN, ヒラギノ角ゴ ProN W3, Arial, nc3Jp, sans-serif",
-  ink #3c3c3c, body line-height 32px on 16px, red #e60012 confirmed dominant, surface #f2f2f2,
-  tighter 2-3px radii + 50% circular icon chips.
-
-Token-level claims (§1-9) are sourced from these two live inspections.
-
-Voice samples (§10) are verbatim from the live US homepage (feature headlines, "Trending topics" label).
-
-Brand narrative (§11): Nintendo Co., Ltd. (任天堂), Kyoto-headquartered, founded 1889 as a
-hanafuda card maker, later a global video-game/hardware company. These are widely documented
-public facts; specific claims beyond the homepage are general public knowledge, not directly
-quoted from a verified Nintendo statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Nintendo audience
-segments (families, lifelong fans, new players). Names are illustrative; they do not refer to
-real people.
-
-Interpretive claims (e.g., "one sacred red", "calm chrome, playful content", "constancy is the
-brand") are editorial readings connecting Nintendo's observed design to its positioning, not
-directly sourced Nintendo statements.
--->
+Measured 2026-11-02. Live surfaces: [US homepage](https://www.nintendo.com/us/) and [Japanese homepage](https://www.nintendo.com/jp/). Company and narrative sources are linked at the claims they support. Raw measurements, source excerpts, the nonsense-path control and the complete prior-content disposition are in the accompanying verification and report files.
 
 ## Components
 
-### Buttons
+The six controls below were measured on the US homepage with real pointer states and keyboard Tab focus. Geometry is the resting actionable element, unless a child is explicitly named. All six have `box-shadow: none` on that element.
 
-**Primary CTA**
-- Background: `#e60012`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 0px 24px
-- Height: 48px
-- Font: 18px Geologica weight 600
-- Use: Primary call-to-action — "Log in", "Learn more", "Start shopping", "See all news articles"
+| Control | Resting identity | Construction |
+|---|---|---|
+| Start shopping | 183.3 × 48px; 8px radius; padding 0px 24px; 18px/600 | Link to `/us/store/`; `#e60012` background and `#ffffff` text; a separate background span owns the interactive colour and scale |
+| Search | 96.6 × 32px; 20px radius; padding 8px 12px; 14px/600 | Header launcher button; `#f8f8f8` background, `#484848` label and search icon |
+| Log in / Sign up | 155.3 × 30px; 20px radius; padding 6px 12px | Header button, transparent on white; 1px `#e60012` border and red label; visible label 14px/600, element 16px/400 |
+| About Nintendo | 142.8 × 29.4px; 4px radius; padding 0px | Footer link on white; anchor 21px/600 with `#e60012` colour, but visible child label 18px/600 and `#484848` |
+| Shop the Pikmin Collection | 262 × 311.3px; anchor radius 0px; padding 0px | Card link; transparent anchor, white child panels with 1px `#dadada` edges; anchor 16px/300, visible title 16px/600 in `#484848` |
+| Pause | 32 × 32px; CSS radius 48px; padding 0px 16px; 16px/600 | Red carousel icon button with a white icon; the oversized radius produces a circular visible control at this size |
 
-**Play Pill**
-- Background: `#e60012`
-- Text: `#ffffff`
-- Radius: 48px
-- Padding: 0px 16px
-- Height: 32px
-- Font: 16px Geologica weight 600
-- Use: Inline "Play" affordance on media cards — fully pill-shaped
+The card's rounded visual panels and the actionable anchor are separate layers. Keyboard focus changes the anchor radius from 0px to 8px. Do not assign the theme's 12px container radius to every card link's root box.
 
-**Utility Pill**
-- Background: `#f8f8f8`
-- Text: `#484848`
-- Radius: 20px
-- Padding: 8px 12px
-- Height: 32px
-- Font: 14px Geologica weight 600
-- Use: Header utility actions — "Search", "Wish List", "Cart"
+Additional resting geometry from the survey: Wish List and Cart links are 40 × 32px with 20px radii and padding 8px 12px; their inherited element font is 16px/300, and they are icon controls. Explore, Shop and Support are white 48px-high menu triggers, 14px/600, with padding 16px 14px. The first Next page carousel arrow is 68 × 359.3px with an 8px radius, padding 16px, `rgba(0, 0, 0, 0.3)` background and `#dadada` foreground. These controls were not state-probed and are not emitted as interactive component tokens.
 
-**Red Inline Link**
-- Text: `#e60012`
-- Font: 16px Geologica weight 600
-- Use: Trending-topic and inline navigational links ("Nintendo Direct", "Games on sale") — red text on transparent, no background
+No visible search input was listed by the US survey. Its geometry and states remain unmeasured. No standalone badge component was state-probed; the featured card contains a compact red Shop now label with white text.
 
-**Carousel Arrow**
-- Background: `rgba(0,0,0,0.3)`
-- Text: `#dadada`
-- Radius: 8px
-- Padding: 16px
-- Use: Hero/product carousel previous & next controls — dark scrim chip over imagery
-
-### Inputs & Forms
-
-**Header Search**
-- Background: `#ffffff`
-- Text: `#484848`
-- Radius: 0px
-- Font: 14px Geologica weight 400
-- Use: Header search field ("Search games, hardware, news, etc") — bottom-border affordance, no fill
-
-### Cards & Containers
-
-**Media Tile**
-- Background: `#ffffff`
-- Radius: 12px
-- Shadow: `rgba(0,0,0,0.07) 0px 2px 8px`
-- Use: Game / topic / news media tile — the workhorse content card
-
-**Featured Card**
-- Background: `#ffffff`
-- Radius: 12px
-- Shadow: `rgba(72,72,72,0.15) 0px 4px 16px`
-- Use: Elevated featured/promoted tile — firmer lift than the standard media tile
-
-### Badges
-
-**Red Status Pill**
-- Background: `#e60012`
-- Text: `#ffffff`
-- Radius: 48px
-- Font: 14px Geologica weight 600
-- Use: Emphasis / status pill (e.g. "New", availability) — the red action color in compact form
-
-### Navigation
-- Background: `#ffffff`
-- Text: `#484848`
-- Font: 14px Geologica weight 600
-- Height: 48px nav row (US) / 72px header (JP)
-- Active: red `#e60012` text/indicator on active item
-- Use: Top horizontal nav ("Explore", "Shop", "Support" on US; "本体・グッズ", "ゲームソフト", "トピックス", "サポート" on JP)
-
----
-
-**Verified:** 2026-06-17 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces US + JP)
-**Tier 1 sources:** https://www.nintendo.com/us/ (US store — nav, hero CTAs, media cards, utility pills, live DOM), https://www.nintendo.com/jp/ (Japanese site — CJK font stack, nav, red accent confirmation, live DOM)
-**Tier 2 sources:** getdesign.md/nintendo — 0 DESIGN.md files (no match); styles.refero.design/?q=nintendo — no Nintendo-specific style page (generic catalog returned)
-**Conflicts unresolved:** none
+Japanese resting geometry remains regional: main menu triggers are 72px high and use 14px/700; the トピックス記事一覧 link has a 2px radius and padding 11px 24px. Japanese interaction states were not measured.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (wish list / cart, none yet)** | White canvas. Single Ink Grey (`#484848`) line explaining nothing is saved yet, with one red CTA to browse games. No clutter, friendly tone. |
-| **Empty (search, no results)** | Muted Grey (`#727272`) single line stating no matches, with suggestions or a path to browse. Calm, never a dead-end error. |
-| **Loading (storefront fetch)** | Skeleton media tiles at final 12px-radius dimensions on `#f8f8f8` tint, flat soft pulse consistent with the near-shadowless system. |
-| **Loading (in-place refresh)** | Previous content stays visible; a subtle red `#e60012` progress affordance signals activity without blocking the view. |
-| **Error (page/network failure)** | Friendly Ink Grey message with plain-language explanation and a retry. No raw error codes; states what to do next. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, in a warm tone — not just "Required". |
-| **Success (purchase / pre-order placed)** | Brief calm confirmation with order/next-step detail linked immediately below. Enthusiastic but not gimmicky. |
-| **Skeleton** | `#f8f8f8` blocks at final dimensions, 12px radius, flat soft pulse — no shadow shimmer. |
-| **Disabled** | Disabled Grey (`#c8c8c8`) text on reduced-opacity surface; red actions fade rather than turn a foreign grey, preserving brand read. |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Start shopping | Background span `#e60012` → `#ac000d`; border follows; span scale 1.05 | Same dark red; sampled span matrix `(0.990029, 0, 0, 0.990029, 0, 0)` | 4px solid `#3946a0`, offset 4px; span border becomes `4px solid color(srgb 1 1 1 / 0.5)` |
+| Search | Label and SVG path `#484848` → `#e60012`; background unchanged | Same as hover, no additional recorded change | 4px solid blue outline, offset 4px; label retains rest grey |
+| Log in / Sign up | No detected style change within recorded scope; `:hover` true | No detected style change; `:active` true | 4px solid blue outline, offset 4px |
+| About Nintendo | Anchor colour darkens to `#ac000d`; visible grey label gains a 2px dark-red bottom border | Same as hover | Same dark-red underline plus 4px solid blue outline, offset 8px |
+| Shop the Pikmin Collection | Title turns red; image wrapper scale 1.05 | Same as hover | Anchor radius 0px → 8px; 4px solid blue outline, offset 4px; title remains rest grey |
+| Pause | Background span darkens and its border follows; sampled scale 1.0395 | Same dark red; sampled scale 0.980129 | 4px blue outline, offset 4px; translucent-white 4px span border |
+
+The account control's unchanged readings cover its self, pseudo-elements, four descendants including its SVG/path, and three ancestor levels. No claim is made about effects outside that scope. All six focus indications were authored solid outlines, and none persisted after blur in the collector's check. Disabled, empty, loading, validation-error and purchase-success states were not exercised.
 
 ## Do's and Don'ts
 
-### Do
-- Reserve Nintendo red (`#e60012`) for primary CTAs, inline links, and the wordmark — keep it the single "action" color
-- Use warm dark grey for text (`#484848` US, `#3c3c3c` JP) instead of pure black
-- Use Geologica Variable on Western/US surfaces and the YakuHan + Hiragino CJK stack on Japanese surfaces
-- Separate sections with flat `#f8f8f8`/`#f2f2f2` tint and `#e0e0e0` hairlines rather than heavy shadows
-- Keep elevation whisper-soft — `rgba(0,0,0,0.07) 0px 2px 8px` for standard cards
-- Use 12px radius for media cards, 8px for primary buttons, 48px pills for inline Play affordances
-- Let large key-art imagery carry visual energy so the UI chrome stays calm
-- Use weight 600 for headings and 400 for body
-
-### Don't
-- Spread red across many elements — it dilutes the single-action signal
-- Use pure black (`#000000`) for body text — reserve warm grey
-- Swap the regional fonts — Geologica stays Western, the CJK stack stays Japanese
-- Reach for heavy drop shadows or hard elevation — the system is flat and light
-- Introduce a competing saturated accent — eShop green, blue, and navy stay subordinate to red
-- Set oversized display headlines — the home surface tops out around 28px and leans on imagery
-- Use sharp square corners on cards or pills — geometry is gently rounded
-- Tighten Japanese body line-height below its generous 2.0 rhythm
+- Use white surfaces, `#484848` reading text, red actions and thin `#dadada` separators for the measured US pattern.
+- Build the primary action with a stable white label and an independently animated background span.
+- Preserve the authored blue keyboard outline and its offset; retain the inner translucent border on the red controls.
+- Let promotional artwork provide the broader colour range. Keep control and text colours tied to their documented roles.
+- Keep the visible card title semibold while distinguishing it from the root's lighter inherited font.
+- Do not turn the Japanese fallback stack into a list of confirmed loaded faces.
+- Do not treat a transparent card anchor as a white-filled root, or its focus radius as its resting radius.
+- Do not infer global font maxima, responsive breakpoints, loading states or disabled styling from unrelated controls.
 
 ## Voice & Tone
 
-Nintendo's voice is **warm, inviting, and family-friendly** — playful where it persuades, plain and orderly where it informs. Copy is welcoming and benefit-first ("Experience The World's Game like never before", "Get up and move with friends and family") without slipping into hype or pressure. Calls-to-action are gentle imperatives — "Learn more", "Start shopping", "Pre-order now!" — and the rare exclamation reads as genuine enthusiasm rather than urgency-marketing. The brand speaks to a broad audience (kids, parents, lifelong fans) at once, so the register stays clear, optimistic, and never condescending or jargon-heavy.
+The homepage uses short task labels such as Start shopping, Learn more and Shop now, alongside product and collection names. The featured-card title Shop the Pikmin Collection describes its destination directly. Use concrete verbs and the actual product name when extending this pattern.
 
-| Context | Tone |
-|---|---|
-| Hero / feature headlines | Inviting, experiential. "Experience The World's Game like never before." Enthusiastic, never hard-sell. |
-| CTAs | Gentle imperatives. "Learn more", "Start shopping", "See all news articles". |
-| Trending topics / links | Plain and direct. "Nintendo Direct", "Games on sale", "Online services". |
-| Product / availability | Benefit-first, friendly. "Pre-order now! Blast off on a high…", "Available now!". |
-| Support / account | Calm, reassuring, helpful. Plain instructions over marketing language. |
-
-**Voice samples (verbatim from live homepage 2026-06-17):**
-- "Experience The World's Game like never before" — feature headline (experiential invitation). *(verified live)*
-- "Get up and move with friends and family" — feature headline (inclusive, family-first). *(verified live)*
-- "Trending topics" — section label (plain, orderly navigation). *(verified live)*
-
-**Forbidden register**: fear-based or urgency-manipulation marketing, dense industry jargon left unexplained, edgy/exclusionary humor, condescension toward younger players, exclamation-stacked hype.
+Nintendo's About page describes a mission centered on enjoyment and experiences people can share; its accessibility paragraph explicitly includes people of different ages and abilities. A welcoming reading of the site follows that evidence, but no formal copywriting guide, forbidden-word list or conversion-tone policy was verified. [About Nintendo](https://www.nintendo.com/us/about/).
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / link / brand: Nintendo Red (`#e60012`)
-- Heading / body text (US): Ink Grey (`#484848`)
-- Heading / body text (JP): Ink Grey (`#3c3c3c`)
-- Secondary text: Muted Grey (`#727272`)
-- Disabled: Disabled Grey (`#c8c8c8`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f8f8f8`) / `#f2f2f2` (JP)
-- Hairline: `#e0e0e0`
-- Secondary accents: eShop Green (`#468254`), Blue (`#4b5cce`), Navy (`#27455c`)
+“Create a Nintendo US-style store band on white. Set the main Start shopping link to 48px high, 8px radius and padding 0px 24px, with an 18px/600 Geologica Variable label. Use `#e60012` and `#ffffff`. On hover, darken its background span to `#ac000d` and scale that span to 1.05 while the label stays fixed. Add a 4px solid `#3946a0` keyboard outline with 4px offset and the measured translucent inner border.”
 
-### Example Component Prompts
-- "Create a Nintendo-style hero on white background with a full-width key-art banner. Section label at 16px Geologica weight 600, color #484848. One primary red CTA: #e60012 background, white text, 8px radius, 0 24px padding, 48px height, 18px Geologica weight 600 — 'Learn more'. Carousel arrows as rgba(0,0,0,0.3) chips with 8px radius."
-- "Design a media tile: white background, 12px radius, soft shadow rgba(0,0,0,0.07) 0px 2px 8px. Title 21px Geologica weight 600, #484848. An inline red Play pill: #e60012 background, white text, 48px radius, 32px height."
-- "Build a header: white nav, 48px row. Utility pills (Search, Wish List, Cart) at #f8f8f8 background, #484848 text, 20px radius, 32px height, 14px Geologica weight 600. Nav items 14px weight 600, red #e60012 on active."
-- "Create a Japanese-locale layout using font-family: YakuHanJPs, Roboto, 'Hiragino Kaku Gothic ProN', sans-serif. Body 16px weight 400 with 32px line-height, color #3c3c3c. Red accent #e60012 for links and CTAs."
+“Build a 262px-wide featured card link with white child panels and `#dadada` borders on the white page. Give the visible title 16px/600 Geologica Variable in `#484848`. On hover and press, turn that title `#e60012` and scale the image wrapper to 1.05. Keep the actionable anchor's resting radius 0px; make it 8px with the blue outline during keyboard focus.”
 
-### Iteration Guide
-1. Nintendo red (`#e60012`) is the single action color — don't spread it
-2. Geologica Variable for US/Western; YakuHan + Hiragino Kaku Gothic ProN for Japanese
-3. Text is warm grey (`#484848` US / `#3c3c3c` JP), never pure black
-4. Keep elevation whisper-soft (`rgba(0,0,0,0.07) 0px 2px 8px`); separate with tint + `#e0e0e0` hairline
-5. Geometry: 12px cards, 8px primary buttons, 48px Play pills, 20px header pills
-6. Headings at weight 600, body at 400; home headlines top out around 28px
-7. Let key-art imagery carry the energy; keep chrome calm
+“Use the 32px-high Search launcher as a grey utility pill: 20px radius, padding 8px 12px, `#f8f8f8` background and 14px/600 label. Hover and press turn its label and icon red. Follow the measured focus treatment.”
 
----
+These prompts describe the measured controls. They do not supply unverified input, modal, commerce-completion or mobile patterns.
