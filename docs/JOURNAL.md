@@ -1,3 +1,8 @@
+## 2026-11-03 0시 반 — 재검증 1차 main 반영, 2차 8건 브랜치, CJK 전환, 재개 대기
+- 한 일: Mixpanel 제거·MCP v2(Phase 0·1)·/hangul·v2.0.6 출시(오너 승인분), 재검증 1차 10건 main `7ce00f93`(318 verified), 2차 8건(신규 justeat·ovhcloud·pipedrive 포함) 브랜치 `feat/reverify-w1`(533 / 326). spawn.sh 독립 세션 수정, 프로브 섀도 루트·거부어 보강, run-queue/land-reference 도구.
+- 열린 것: headspace·mercedes-benz 반영 → 2차 머지 GO, duolingo pressed 보강, 3차 묶음(CJK, `~/.omd-workers/queue-batch3.txt`), MCP 1b·2a 지시서(`~/.omd-workers/mcp-1b`, `mcp-2`).
+- 다음: 오너 재개 신호 → CURRENT_STATE 최신 항목 "재개 순서" 1번부터.
+
 ## 2026-11-02 15시 50분 — 아카이브 개편(r12) main 머지·운영 확인, 관련 카드 개편
 - 한 일: 아카이브 4차례 리뷰 반영(무한 스크롤 40, GA4 조회수 직접 조회, 설치순 기본, 검증 표시 제거, /ko 전체 530, 메뉴형 필터, 검색 미리보기, 색 견본 카드, 삼성·애플 로고) + 상세 페이지 관련 카드를 아카이브 카드로(`16e276de`). 오너 GO로 머지 `f23f6f79`, 운영 확인, 워크트리 정리.
 - 열린 것: MCP v2 D1~D6, 2.0.6 출시 GO·waiver, /hangul 프리뷰 GO, Mixpanel 제거 OK.
