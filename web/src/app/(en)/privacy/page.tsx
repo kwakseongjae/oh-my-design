@@ -78,9 +78,8 @@ export default function PrivacyPage() {
             errors and scroll depth to fix bugs.
           </p>
           <p>
-            We do <strong className="font-medium text-foreground">not</strong>{" "}
-            collect your IP address, and we never store it in our own
-            counters.
+            We <strong className="font-medium text-foreground">never</strong>{" "}
+            store your IP address in our own counters.
           </p>
         </Section>
 
