@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 316,
-  "sources": 2219,
+  "references_with_verification_v2": 317,
+  "sources": 2234,
   "sources_by_kind": {
     "brand-asset": 92,
     "license": 138,
-    "official-doc": 884,
-    "product-surface": 1105
+    "official-doc": 894,
+    "product-surface": 1110
   },
   "references": {
     "104": {
@@ -7490,6 +7490,102 @@
           "kind": "product-surface",
           "captured": "2026-07-12",
           "host": "lovable.dev"
+        }
+      ]
+    },
+    "mailchimp": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "acquisition",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "bootstrap",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "design-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.mailchimp.com"
+        },
+        {
+          "id": "design-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.mailchimp.com"
+        },
+        {
+          "id": "founders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "patterns-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "ux.mailchimp.com"
+        },
+        {
+          "id": "patterns-unavailable",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "ux.mailchimp.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "voice",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "styleguide.mailchimp.com"
+        },
+        {
+          "id": "voice-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "styleguide.mailchimp.com"
         }
       ]
     },
