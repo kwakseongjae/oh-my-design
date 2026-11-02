@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 537,
+ "count": 538,
  "items": [
   {
    "id": "104",
@@ -5453,6 +5453,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "kbs",
+   "primary_color_hex": "#0090d4",
+   "category": "consumer-tech",
+   "visual_theme": "KBS is South Korea's public broadcaster. Its own history traces radio broadcasting to 1927, television to 1961 and the establishment of 한국방송공사 as a public broadcasting corporation to 1973. Today its services include television, radio and KBS+ digital media. [K",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "kcd",

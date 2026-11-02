@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 332,
-  "sources": 2506,
+  "references_with_verification_v2": 333,
+  "sources": 2520,
   "sources_by_kind": {
-    "brand-asset": 126,
+    "brand-asset": 128,
     "license": 138,
-    "official-doc": 1061,
-    "product-surface": 1181
+    "official-doc": 1069,
+    "product-surface": 1185
   },
   "references": {
     "104": {
@@ -7430,6 +7430,96 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "card.kbcard.com"
+        }
+      ]
+    },
+    "kbs": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.kbs.co.kr"
+        },
+        {
+          "id": "header-script",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "static.kbs.co.kr"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.kbs.co.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sso.kbs.co.kr"
+        },
+        {
+          "id": "location",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "about.kbs.co.kr"
+        },
+        {
+          "id": "main-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "static.kbs.co.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sso.kbs.co.kr"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "static.kbs.co.kr"
+        },
+        {
+          "id": "strategy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sso.kbs.co.kr"
         }
       ]
     },
