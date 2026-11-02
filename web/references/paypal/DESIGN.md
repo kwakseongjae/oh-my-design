@@ -3,151 +3,112 @@ name: PayPal
 colors:
   primary: '#002991'
   primary-light: '#60cdff'
+  accent-sky: '#60cdff'
   canvas: '#ffffff'
   on-primary: '#ffffff'
-  ink: '#000000'
-  link: '#0070e0'
-  muted: '#686a6d'
+  foreground: '#000000'
+  link: '#0066f5'
+  focus-ring: '#0066f5'
+  focus-inverse: '#3db5ff'
   surface-warm: '#f1efea'
   surface-grey: '#edf0f2'
-  surface-light-blue: '#f0f2f9'
-  accent-sky: '#60cdff'
-  accent-pale-sky: '#b8e9ff'
-  border-default: '#e6e7e8'
-  success: '#007a56'
-  error: '#c0212b'
+  primary-hover: '#333333'
+  primary-pressed: '#4d4d4d'
+  header-primary-hover: '#3d3d3d'
+  header-primary-pressed: '#4f4f4f'
 typography:
-  display-hero:
-    fontSize: 99px
-    fontWeight: 900
-    lineHeight: 1.1
-    letterSpacing: '-1.5px'
-    use: Homepage hero headline — PayPal Pro ExtraBold
-  display-lg:
-    fontSize: 67px
-    fontWeight: 900
-    lineHeight: 1.15
-    letterSpacing: '-1px'
-    use: Section headings — PayPal Pro ExtraBold
-  section:
-    fontSize: 45px
-    fontWeight: 900
-    lineHeight: 1.2
-    letterSpacing: '-0.6px'
-    use: Sub-section titles — PayPal Pro
-  body:
+  button:
     fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.4
-    use: Standard UI and body text — Plain
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: '-0.24px'
+    use: Measured main CTA links; loaded PayPal Pro Text VF
   nav:
     fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1
-    use: Navigation links — Plain
-  button:
-    fontSize: 18px
-    fontWeight: 900
-    lineHeight: 1
-    use: CTA button labels — PayPal Pro
-  caption:
-    fontSize: 14px
-    fontWeight: 400
+    fontWeight: 700
     lineHeight: 1.5
-    use: Small labels and metadata — Plain
+    letterSpacing: '-0.24px'
+    use: Measured Developer header link; loaded PayPal Pro Text VF
+  legal-link:
+    fontSize: 14px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Terms links in the homepage survey; loaded PayPal Pro Text VF
 rounded:
-  sm: 4px
-  md: 8px
-  lg: 25px
   full: 1000px
-spacing:
-  xs: 4
-  sm: 8
-  md: 16
-  base: 24
-  lg: 32
-  xl: 48
-  xxl: 64
-  section: 96
 components:
   button-primary:
     type: button
     backgroundColor: '#000000'
     textColor: '#ffffff'
     rounded: 1000px
-    padding: 14px 33px
-    height: 52px
-    typography: 18px / 900 PayPal Pro
-    use: Primary CTA — black fill on light backgrounds
-  button-outline-dark:
+    height: 48px
+    padding: 12px 20px
+    typography: 16px / 700 PayPal Pro Text VF
+    hover: 'bg #333333; padding 14px 22px; height 52px'
+    pressed: 'bg #4d4d4d; padding 12px 20px; height 48px; 2px solid #0066f5 outline, offset 2px'
+    focus: '2px solid #0066f5 outline, offset 2px'
+    use: Learn More — a link to the seasonal campaign, on the white hero. Hover expands layout without a transform.
+  button-secondary:
     type: button
     textColor: '#000000'
-    border: '1px solid #000000'
     rounded: 1000px
-    padding: 14px 33px
-    height: 52px
-    typography: 18px / 900 PayPal Pro
-    use: Secondary CTA on light sections
-  button-outline-light:
+    height: 48px
+    padding: 12px 20px
+    typography: 16px / 700 PayPal Pro Text VF
+    hover: Translucent blue fill increases; padding 14px 22px; height 52px. Exact alpha in body.
+    pressed: 'Translucent blue fill increases further; height 48px; 2px solid #0066f5 outline, offset 2px. Exact alpha in body.'
+    focus: '2px solid #0066f5 outline, offset 2px'
+    use: Browse Offers — a link on white. A translucent blue fill replaces the prior outline; its exact rgba values are in the body.
+  button-secondary-dark:
     type: button
     textColor: '#ffffff'
-    border: '1px solid #ffffff'
     rounded: 1000px
-    padding: 14px 33px
-    height: 52px
-    typography: 18px / 900 PayPal Pro
-    use: Secondary CTA on dark blue sections
-  button-white:
+    height: 48px
+    padding: 12px 20px
+    typography: 16px / 700 PayPal Pro Text VF
+    hover: Translucent grey fill changes; padding 14px 22px. Exact rgba and raw geometry in body.
+    pressed: 'Translucent grey fill changes; 2px solid #3db5ff outline, offset 2px. Exact rgba and raw geometry in body.'
+    focus: '2px solid #3db5ff outline, offset 2px'
+    use: Learn About Pay in 4 — a link inside a layered card. Only the reversible self outline is a focus token; the persistent ancestor reveal is excluded.
+  nav-developer:
     type: button
-    backgroundColor: '#ffffff'
     textColor: '#000000'
-    border: '1px solid #ffffff'
-    rounded: 1000px
-    padding: 14px 33px
-    height: 52px
-    typography: 18px / 900 PayPal Pro
-    use: Play/video CTA on dark surfaces
-  nav-tab:
-    type: tab
-    textColor: '#000000'
-    typography: 16px / 400 Plain
-    rounded: 104px
-    padding: 0 20px
+    rounded: 33554400px
     height: 40px
-    active: black bg with link-blue text
-    use: Top nav section tabs (Personal / Business)
-  input-form:
-    type: input
-    backgroundColor: '#ffffff'
-    border: '1px solid #e6e7e8'
-    rounded: 8px
-    typography: 16px / 400 Plain
-    use: 'Login and form inputs, focus ring #0070e0'
-  card-surface:
-    type: card
-    backgroundColor: '#ffffff'
-    rounded: 16px
-    shadow: rgba(0,0,0,0.08) 0px 24px 48px 0px
-    use: Elevated content card — layered-card class; large-radius diffuse lift shadow
-  badge-status:
-    type: badge
-    backgroundColor: '#f0f2f9'
-    textColor: '#002991'
-    rounded: 4px
-    padding: 2px 8px
-    typography: 12px / 400 Plain
-    use: Status and category tag
-  cookie-dialog:
-    type: dialog
-    backgroundColor: '#ffffff'
-    rounded: 1000px
-    border: '2px solid #cfd3d8'
-    use: Cookie consent bottom bar action buttons
+    padding: 8px 12px
+    typography: 16px / 700 PayPal Pro Text VF
+    hover: A translucent blue ::before surface appears at 110.625px by 44px; exact alpha in body.
+    pressed: The ::before surface darkens and returns to 106.625px by 40px; exact alpha in body.
+    focus: '::before outline 2px solid #0066f5, offset 2px'
+    use: Developer — a header link on white; the anchor has a transparent background. Radius is the literal computed 3.35544e+07px pill value.
+  header-login:
+    type: button
+    textColor: '#000000'
+    height: 48px
+    padding: 12px 20px
+    typography: 16px / 700 PayPal Pro Text VF
+    hover: '::before translucent blue fill changes and grows from 87.9219px by 48px to 91.9219px by 52px; exact alpha in body.'
+    pressed: '::before fill changes and returns to 87.9219px by 48px; exact alpha in body.'
+    focus: '::before outline 2px solid #0066f5, offset 2px'
+    use: Log In — a header link on white; its own background is transparent and its painted surface is ::before. No navigation was activated.
+  header-signup:
+    type: button
+    textColor: '#ffffff'
+    height: 48px
+    padding: 12px 20px
+    typography: 16px / 700 PayPal Pro Text VF
+    hover: '::before bg #3d3d3d; painted size 105.172px by 52px'
+    pressed: '::before bg #4f4f4f; painted size 101.172px by 48px'
+    focus: '::before outline 2px solid #0066f5, offset 2px'
+    use: Sign Up — a header link on white; its own background is transparent, while ::before supplies the black resting fill. The anchor's own 0px radius does not describe that painted pill.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 fonts:
   roles:
     display: PayPal Pro
-    ui: Plain
-    fallback: Helvetica Neue, Arial, sans-serif
+    ui: PayPal Pro Text VF
 ---
 
 # Design System Inspiration of PayPal
@@ -156,414 +117,210 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-PayPal's homepage is a study in high-contrast black-and-white modernism punctuated by a signature sky blue hero. The page opens with an immersive pale-blue section (`#60cdff`) carrying a monumental black headline in **PayPal Pro** at nearly 100px weight 900 — a typographic statement that projects authority and consumer-brand boldness in equal measure. This "PayPal Open" aesthetic is the 2023 rebrand: out with the legacy gradient blues, in with a graphic, editorial visual language that stands closer to Nike or Apple than to a traditional bank. Every call-to-action on the consumer homepage is a full-pill `1000px` radius button at weight 900 — not tentative, not rounded-rectangle — an opinionated choice that signals confidence.
+PayPal connects shopping, sending money, receiving payments and saving within a payments platform. Its September 2024 PayPal Everywhere announcement expanded the consumer proposition into in-store spending and rewards alongside online checkout. The current US homepage makes that breadth tangible through shopping imagery, payment-plan cards, money-transfer features and savings content. [PayPal Everywhere](https://newsroom.paypal-corp.com/2024-09-05-Introducing-PayPal-Everywhere)
 
-Beneath the sky-blue hero, the system alternates between pure white canvas sections and deep midnight-blue (`#002991`) immersive sections — PayPal's signature brand dark. These dark sections carry white-text headlines and white-outline pill buttons, creating a dramatic light/dark cadence. The custom `PayPal Pro` typeface with its geometrically rounded `Century Gothic`-lineage letterforms is everywhere display-scale: weight 900 exerts the brand at headlines while the UI font `Plain` at weight 400 handles functional legibility for navigation and body copy, creating a clear two-font two-weight system.
+The identity refresh introduced in **2024** pairs a black wordmark with blue accents. Pentagram, the project's design author, describes a system built around simplicity, optimism and trust, with the monogram and wordmark able to work independently. **PayPal Pro** provides the geometric display voice; its documented lineage is Lineto's LL Supreme/Futura. [Pentagram](https://www.pentagram.com/work/paypal/story), [Lineto](https://lineto.com/bespoke/paypal)
 
-**Key Characteristics:**
-- Full-pill CTAs (1000px radius) in weight 900 PayPal Pro — no hedging, maximum brand confidence
-- Sky blue (`#60cdff`) as the hero surface accent and the new signature PayPal visual entry point
-- Midnight blue (`#002991`) for immersive brand-dark sections — replacing the legacy #003087 deep navy
-- PayPal Pro display font (Century Gothic heritage) at weight 900 for all headlines
-- Plain UI font at weight 400 for navigation and body — a clean functional pairing
-- Black-on-white / white-on-black as the everyday CTA contrast system (not the old PayPal blue)
-- Minimal shadow system: large-radius diffuse lift `rgba(0,0,0,0.08) 0px 24px 48px 0px` on `layered-card` elements; everything else is flat color separation
+The live page opens with a **white seasonal hero**, a large black headline, a compact black pill action and a blue gift-and-product image mosaic. Farther down, the sky-blue `#60cdff` hero section and midnight-blue `#002991` surfaces remain part of the page. White, black and these two blues provide the measured visual contrast. The current functional face is **PayPal Pro Text VF**. The main action links combine a 1000px radius with 16px/700 labels and a 48px resting height.
 
-### Primary tasks
+#### Primary tasks
 
-- Get paid by clients for freelance work
-- Pay on a merchant site without handing over a card number
-- Choose between paying in full now and paying over time
-- Track business sales and push a customer dispute to resolution
-- Integrate the checkout flow into another company's product
+- Pay for purchases online or in stores, including available pay-over-time options.
+- Send or request money; the live page also presents a pooling action.
+- Explore rewards, the debit card and savings.
+- Receive commercial payments and explore checkout integrations through the business offering. The opened business page retains the PayPal Open positioning. [Business](https://www.paypal.com/us/business)
 
 ### Brand Narrative
 
-PayPal was founded in **1998** by **Peter Thiel, Max Levchin, Luke Nosek, Ken Howery,** and others — originally as **Confinity**, a cryptography-focused startup based in Palo Alto. The company merged with **Elon Musk's X.com** in **2000**, with PayPal emerging as the combined brand. eBay acquired PayPal in **2002 for $1.5 billion** and spun it off as an independent publicly traded company in **2015** (NASDAQ: PYPL). Headquartered in **San Jose, California**, PayPal today operates across **200+ countries**, supports **25+ currencies**, and serves approximately **400 million active accounts globally**.
+PayPal's published history reaches back to **1998**. Its own prospectus identifies **Peter Thiel** and **Max Levchin** as Confinity co-founders in December 1998, records the merger with **Elon Musk's X.com in March 2000**, and describes the email-based payment product. PayPal's 2015 separation announcement confirms **eBay's 2002 acquisition for $1.5 billion** and its return to independent public trading under **PYPL in July 2015**. [Prospectus, pp. 69, 72 and F-45](https://www.paypalobjects.com/html/PayPal_Prospectus.pdf), [Separation announcement](https://newsroom.ie.paypal-corp.com/2015-07-20-PayPal-Celebrates-Listing-on-Nasdaq-and-Completes-Separation-from-eBay-Inc)
 
-The founding insight — that moving money should be as simple as sending email — defined a category that didn't formally exist: digital wallet + peer-to-peer payments + online checkout, all in one network. PayPal's network effect is its moat: merchants accept PayPal because customers trust it; customers use it because merchants accept it.
+The corporate facts page identifies its headquarters in **San Jose, California** and reports **439 million active consumer and merchant accounts as of year-end 2025**. The US agreement names PayPal, Inc. and identifies PayPal Holdings, Inc. as its parent. [Company facts](https://about.pypl.com/who-we-are/history-and-facts/), [US agreement](https://www.paypal.com/us/legalhub/paypal/useragreement-full)
 
-The 2023 rebrand under CEO Alex Chriss signaled a deliberate pivot: away from legacy financial-services visual language (muted blues, cautious rounded-rectangle buttons, corporate gradients) toward a bold consumer-brand aesthetic anchored by sky blue, maximum-weight headlines, and full-pill CTAs. The "PayPal Open" campaign positioned the platform as infrastructure for independent commerce — not a bank, not just a checkout button, but an open financial network. The word "Open" in PayPal Pro at nearly 100px is the design-system argument made typographically: unambiguous, large, and confident.
+The 2024 identity work and PayPal Everywhere proposition connect the established online-payments service to everyday spending. The live seasonal shopping lead, debit-card and rewards content carry that broader proposition into the current homepage. [Lineto](https://lineto.com/bespoke/paypal), [PayPal Everywhere](https://newsroom.paypal-corp.com/2024-09-05-Introducing-PayPal-Everywhere)
 
 ### Principles
 
-1. **Financial inclusion by design.** PayPal's mission is "democratizing financial services" — making tools available to those underserved by traditional banking. *UI implication:* the checkout experience prioritizes clarity; zero unnecessary friction between intent and action.
-2. **Trust through simplicity.** The brand earns trust by removing complexity, not by performing security theater. *UI implication:* no cluttered dashboards; bold simple type over decorative chrome; "See How You're Safe" is a CTA, not a warning.
-3. **Open infrastructure.** The rebrand explicitly positions PayPal as a platform for independent commerce. *UI implication:* the design system supports both consumer-wallet and merchant-tools surfaces with the same token set — the font, the pill, the color cadence are identical.
-4. **Bold confidence, not corporate caution.** The shift from rounded-rectangle to full-pill, from 600-weight to 900-weight, from muted-blue to sky-blue is intentional brand repositioning. *UI implication:* every design decision should read as decisive. If a component feels tentative, it is off-brand.
-5. **Color as architecture.** The alternating white / sky-blue / midnight-blue section system is not decoration — it is the structural logic of every PayPal marketing page. *UI implication:* color sections replace dividers; background-change is the primary navigation cue between content blocks.
+PayPal's corporate values page names **Inclusion, Innovation, Collaboration and Wellness** and describes **Work Customer Back** as starting from customers' needs. The identity author separately names **simplicity, optimism and trust** as its visual-strategy principles. [Company values](https://about.pypl.com/who-we-are/mission-vision-values/default.aspx), [Pentagram](https://www.pentagram.com/work/paypal/story)
+
+For this reference, the resulting authoring guidance is an interpretation: make the action clear, give keyboard focus a visible reversible indication, and let the measured type and surface contrast establish hierarchy. The opened sources do not establish a shared token system for every PayPal application or a ban on particular neutral combinations.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable PayPal user segments (peer-to-peer senders, online shoppers, small merchants, enterprise checkout integrators), not individual people.*
-
-**Amara Osei, 27, Atlanta.** A freelance photographer who uses PayPal to get paid by clients and split dinner with friends via Venmo (PayPal subsidiary). Values the network — everyone already has a PayPal. Doesn't think of PayPal as a "bank"; thinks of it as "the button on checkout pages that I trust."
-
-**David Lin, 42, Houston.** Owner of a mid-sized e-commerce business (outdoor gear). Chose PayPal as a payment processor because its checkout button converts — customers abandon carts when they don't see it. Uses PayPal Business Dashboard weekly. Cares about dispute resolution speed more than UI aesthetics.
-
-**Priya Mehta, 34, Chicago.** A frequent international online shopper who pays in USD on US sites. Uses PayPal because it doesn't expose her card number to every merchant. Noticed the 2023 design refresh; found the new sky-blue hero more "energetic" than before but still trusts the logo above everything.
-
-**Marcus Rodriguez, 38, San Jose.** Engineering director at a Series-B fintech integrating PayPal Checkout into a B2B SaaS tool. Works with the developer docs daily. Wants a clean, stable API — doesn't care about the marketing homepage. Trusts PayPal because of its fraud protection and global reach, not its visual identity.
+No sourced persona research was opened; no fictional person or behavioural preference is presented as company evidence.
 
 ## Colors
 
-### Primary Brand
-- **PayPal Midnight Blue** (`#002991`): Deep brand blue for immersive sections, the PayPal logo field, and dark-surface backgrounds. Replaces the legacy `#003087` dark navy as the primary immersive color.
-- **PayPal Sky Blue** (`#60cdff`): The signature hero accent — a vibrant, modern light blue (`blue-400-plate` in PayPal's internal palette) used for the hero section background and card accents. This is the new face of PayPal's refresh.
-- **Pale Sky** (`#b8e9ff`): Tinted sky-blue surface for lighter section accents and gradient transitions.
+These values come from the homepage's rendered census and control states. The separately fetched theme stylesheet corroborates the palette declarations; declaration evidence is kept distinct from computed measurements.
 
-### Canvas & Surface
-- **Pure White** (`#ffffff`): Primary page background and content card surface. The dominant canvas.
-- **Warm Ivory** (`#f1efea`): Warm off-white used for select feature sections, adding warmth to break the cold white grid.
-- **Surface Grey** (`#edf0f2`): Cool neutral light grey for close-button backgrounds and subtle chrome.
-- **Surface Light Blue** (`#f0f2f9`): A barely-there blue-tinted surface for badge/tag backgrounds.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary / midnight surface | `#002991` | Five background observations; theme `--style-fill-1` on white plates. |
+| Primary light / sky accent | `#60cdff` | Two background observations; the later sticky hero carries `blue-400-plate`. |
+| Canvas | `#ffffff` | Eleven background observations; the seasonal opener is white. |
+| On dark surfaces | `#ffffff` | Pay in 4 link label; fourteen paragraph-ink observations. |
+| Foreground | `#000000` | Twenty-six paragraph-ink observations; primary action fill and light-surface labels. |
+| Link / light-surface focus | `#0066f5` | Three text observations and the measured authored focus outlines. |
+| Inverse focus | `#3db5ff` | Pay in 4 link's reversible self outline. |
+| Warm surface | `#f1efea` | One background observation; `.document-body-root` declares this background. |
+| Cool surface | `#edf0f2` | One background observation; the theme declares it for `neutral-200-plate`. |
+| Main action hover / press | `#333333` / `#4d4d4d` | Seasonal Learn More link. |
+| Header Sign Up hover / press | `#3d3d3d` / `#4f4f4f` | Painted `::before` surface; differs from the main action's pair. |
 
-### Interactive & Semantic
-- **Link Blue** (`#0070e0`): Standard hyperlink and inline-action text color (standard blue accessibility value).
-- **Ink Black** (`#000000`): Primary heading, CTA button fill on light sections, and body text on marketing surfaces.
-- **Muted Grey** (`#686a6d`): Secondary text, captions, metadata, muted labels.
+### Translucent surfaces
 
-### Semantic Colors
-- **Success Green** (`#007a56`): Success state indicators — payment confirmed, action completed.
-- **Error Red** (`#c0212b`): Error state indicators — payment declined, form validation failures.
+Keep the measured alpha; do not replace these fills with an opaque guessed swatch.
 
-### Border & Utility
-- **Border Default** (`#e6e7e8`): Standard border for form inputs and card outlines.
+- Browse Offers: `rgba(5, 55, 130, 0.08)` at rest, `rgba(5, 55, 130, 0.153)` on hover, `rgba(5, 55, 130, 0.227)` while pressed.
+- Learn About Pay in 4: `rgba(204, 204, 204, 0.28)` at rest, `rgba(189, 189, 189, 0.424)` on hover, `rgba(204, 204, 204, 0.494)` while pressed. The corresponding dark-plate theme declarations use those same RGB channels and alpha bytes.
+- Developer navigation: its `::before` surface appears as `rgba(5, 55, 130, 0.04)` on hover and `rgba(5, 55, 130, 0.08)` while pressed.
+- Header Log In: its `::before` surface changes from `rgba(5, 55, 130, 0.08)` to `rgba(5, 55, 130, 0.118)` on hover and `rgba(5, 55, 130, 0.153)` while pressed.
+- Muted ink appears in the census as `rgba(0, 0, 0, 0.63)`; the white-plate theme declares `--style-general-text-muted: #000000a1`.
+
+Semantic success, error and form-border colours were not verified for a rendered product state.
 
 ## Typography
 
-### Font Family
-- **Display**: `PayPal Pro` (internally named; Century Gothic heritage, geometric rounded modern) — all headlines and CTAs
-- **UI / Body**: `Plain` — PayPal's proprietary UI sans-serif; fallback to `"Helvetica Neue", Arial, sans-serif`
+### Evidence classes
 
-### Hierarchy
+**Official product use.** PayPal's own page CSS declares PayPal Pro for headline styling and PayPal Pro Text VF for base, strong and button typography on this marketing surface. The opened company narrative pages do not document an application-wide font specification. The design author's official project account identifies PayPal Pro as a custom LL Supreme/Futura adaptation and describes Pro Text as a small-size companion. [Theme CSS](https://www.paypalobjects.com/marketing/pp-com-components-pds60/themes/paypal60-DJqhL8L_.css), [Pentagram](https://www.pentagram.com/work/paypal/story)
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | PayPal Pro | ~99px (fluid) | 900 | 1.10 | -1.5px | "Pay, send, and save smarter" — viewport-relative size |
-| Section Heading | PayPal Pro | ~67px (fluid) | 900 | 1.15 | -1.0px | H2 feature headings |
-| Sub-section | PayPal Pro | ~45px (fluid) | 900 | 1.20 | -0.6px | H3 product feature subheads |
-| CTA Button | PayPal Pro | 17.86px (≈18px) | 900 | 1.00 | normal | All pill CTA buttons |
-| Navigation | Plain | 16px | 400 | 1.00 | normal | Tab navigation |
-| Body / UI | Plain | 16px | 400 | 1.40 | normal | Standard functional text |
-| Caption / Label | Plain | 14px | 400 | 1.50 | normal | Metadata, small labels |
-| Muted text | Plain | 14px | 500 | 1.40 | normal | Helper links, footnotes |
+**Live-loaded.** The census lists exactly `PayPal Pro 900 normal` and `PayPal Pro Text VF 400 900 normal`. The latter is one variable face with a declared 400–900 weight range. Computed family on the h1 starts with PayPal Pro; body and button declarations start with PayPal Pro Text VF. The measured actions and header link use that variable face at 700.
 
-### Principles
-- **Weight 900 as brand signature**: PayPal uses maximum weight (900 / ExtraBold / Black) exclusively for all display text. There is no headline at 600 or 700. This creates an unambiguous typographic identity — decisive and bold.
-- **Two fonts, two registers**: PayPal Pro owns brand/marketing/CTA; Plain owns every functional UI element. Neither font crosses into the other's domain.
-- **Fluid headline scale**: Display sizes are fluid/viewport-relative (using CSS `clamp` or viewport units), so the hero headline ranges from ~56px on mobile to ~99px on large desktop. The underlying weight never changes.
-- **Short copy discipline**: Headlines are brief declarative statements ("Pay, send, and save smarter"). Description copy is minimal. The type does not explain; it announces.
+**Official distributed assets.** The page's own `@font-face` rules point to PayPal-hosted WOFF2 resources: `PayPalProSWeb-Black.woff2` for display 900 and `PayPalProTextVFWeb.woff2` for the variable text face. Asset URLs were recorded from the census; no font binary was downloaded and no reuse licence was verified.
+
+**Declared-only.** `PayPal Pro` 400 references `PayPalProSWeb-Book.woff2`, but that face is absent from the loaded list and receives no specimen. Century Gothic is named in the h1 fallback stack; Helvetica, Arial and sans-serif also occur in stacks. None is reported as a loaded face by this census. A fallback-stack name does not establish the design lineage.
+
+**Unresolved.** Plain's ownership, licence and historical product role were not established by the opened sources. It is absent from the current loaded list. Substitute: none chosen.
+
+### Measured control hierarchy
+
+| Role | Face | Size / weight | Line height | Letter spacing |
+|---|---|---|---|---|
+| Main action links | PayPal Pro Text VF | 16px / 700 | 24px | -0.24px |
+| Developer header link | PayPal Pro Text VF | 16px / 700 | 24px | -0.24px |
+| Header Log In / Sign Up | PayPal Pro Text VF | 16px / 700 | 24px | -0.24px |
+| Terms links in survey | PayPal Pro Text VF | 14px / 700 | 21px | Not captured |
+| Personal / Business hero segment links | PayPal Pro Text VF | 16px / 400 on the anchor | 22.4px | Not captured |
+
+The hero-segment anchor measurement does not establish the styling of every visible descendant label.
+
+### Source-declared display scale
+
+The seasonal h1 and later rewards h2 use `heading-text-size-headline-3` in the page HTML. Its PayPal theme rule declares `font-size: clamp(2.65625rem,5.91518vw - 1.12946rem,5.96875rem)` and `line-height: 1.1`. Theme headline-4 declares `clamp(2.3125rem,4.40848vw - .508929rem,4.78125rem)` with line height 1.1. The theme declares headline weight 900. These are CSS declarations, not newly measured heading pixel sizes. [Theme CSS](https://www.paypalobjects.com/marketing/pp-com-components-pds60/themes/paypal60-DJqhL8L_.css)
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 16px, 24px, 32px, 48px, 64px, 96px
-- Section rhythm: alternating white and sky-blue/midnight-blue full-width bands create a dramatic horizontal cadence without explicit grid gutters
+At the captured **1440 × 1000** viewport, the seasonal headline and primary action are centred. The image mosaic spans the content width below them. A location banner sits above the header. A QR app link is visible at the lower right.
 
-### Grid & Container
-- Full-width immersive sections at 100vw for the brand moments (sky blue hero, midnight blue product sections)
-- Centered content container approximately 1200px max-width
-- Hero text is left-aligned at large scale, centered on mobile
-- Feature section cards in 2-column or 3-column grids on desktop
+The survey records the later sticky hero at **1425 × 1000px** and five sticky card wrappers at **1080 × 438px**. These describe specific captured elements, not a universal container width or card aspect ratio. The page combines white, sky-blue and midnight-blue surfaces; use those surface changes to organise comparable marketing sections.
 
-### Whitespace Philosophy
-- **Generous macro, tight micro**: section-to-section spacing is very generous (96px+), but the in-section content is dense with large type doing the heavy lifting. This is a marketing site optimized for scroll, not information density.
-- **Type as spacer**: enormous PayPal Pro headlines at 99px don't need margin to create separation — they inherently dominate vertical space, creating white space by their own scale.
-- **Color as divider**: full-bleed section background changes replace border/line dividers. The palette handles all section separation.
+Use the measured micro spacing: main actions rest at **12px vertical / 20px horizontal** padding and expand to **14px / 22px** on hover. Developer navigation uses **8px / 12px**. The survey's hero-segment links use **10px / 16px**. No global spacing scale is established from these local values.
 
-### Border Radius Scale
-- Micro (4px): badge/tag pills
-- Small (8px): form inputs, small containers
-- Medium (16px): content cards and feature panels
-- Large (25px): nav item container chrome
-- Full (1000px): all CTA buttons — the signature pill shape
+For content cards, the theme declares `--card-content-border-radius: clamp(1.5rem, 1.5rem + 0vw, 1.5rem)`. The layered-card rule consumes that property. Keep that source declaration separate from the measured 1000px main-action radius. [Card CSS](https://www.paypalobjects.com/marketing/pp-com-components-pds60/component-chunks/LayeredCardWrapper-C8iim8ic.css)
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses (fluid type), CTAs full-width |
-| Tablet | 640-1024px | 2-column feature cards, moderate padding |
-| Desktop | 1024-1280px | Full 3-column grid, max-width container |
-| Large Desktop | >1280px | Centered content, fluid type at maximum scale |
+Only the desktop viewport was rendered for this verification. The source CSS confirms fluid headline formulas; it does not establish a measured mobile composition.
 
-#### Touch Targets
-- All CTA buttons at 52px height — comfortably above the 44px minimum
-- Cookie consent buttons at 48px height
-- Navigation tabs at 40px height with generous horizontal padding
+The layered-card stylesheet declares a five-column internal grid from **`min-width:41.0625rem`** and a twelve-column internal grid from **`min-width:64rem`**. These are columns within the card, not a count of adjacent cards. It changes sticky-card wrapper row gap from `.75rem` to `1rem` at 41.0625rem. [Card CSS](https://www.paypalobjects.com/marketing/pp-com-components-pds60/component-chunks/LayeredCardWrapper-C8iim8ic.css)
 
-#### Collapsing Strategy
-- Hero headline: ~99px at desktop → scales to ~56px on mobile (fluid/viewport units), weight 900 maintained throughout
-- Navigation: horizontal tab strip → hamburger collapse on mobile
-- Feature cards: 3-column → 2-column → stacked single column
-- Full-bleed section colors maintained at all widths — the alternating bands are mobile-native
-- Section spacing: 96px → 48px on mobile
+Measured desktop target heights are **48px** for the main actions and header account links, **40px** for Developer, and **36px** for the hero-segment anchors. Mobile stacking, menu collapse and touch behaviour were not verified.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow — full-bleed color sections | Hero, product highlight sections |
-| Elevated Card (Level 1) | `rgba(0,0,0,0.08) 0px 24px 48px 0px` | `layered-card` elements — feature cards on white canvas (live-measured) |
-| Standard (Level 2) | `rgba(0,0,0,0.15) 0px 8px 24px` | Elevated cards, sticky nav |
-| Overlay (Level 3) | `rgba(0,0,0,0.3)` scrim | Modals and video overlays |
+The primary action and the three measured header links have no own box shadow. Browse Offers and Pay in 4 have the raw resting declaration `rgba(0, 0, 0, 0) 0px 0px 0px 1px inset`; it becomes `none` on hover and press. The fully transparent declaration does not establish visible elevation.
 
-**Shadow Philosophy**: PayPal's rebrand moved away from the heavy blue-tinted shadows of the legacy system toward flat color-section architecture. Depth is communicated through background-color contrast (white → sky blue → midnight blue) rather than elevation. When shadows appear (on standalone `layered-card` elements), they use a large-radius, low-opacity diffuse lift — `rgba(0,0,0,0.08) 0px 24px 48px 0px` — not brand-colored and not a tight drop shadow. There is also an ambient `rgba(0,0,0,0.01) 0px 0px 17px` on the CookieBanner container (radius 16px), effectively invisible. The focus is on surface, not lift.
+The current layered-card stylesheet retains a diffuse shadow: **`box-shadow: 0 1.5rem 3rem #00000014`**. A `.layered-article-card.black-plate` variant declares `0 1.5rem 3rem #0000001a`. These are first-party source declarations; the card surface itself was not newly sampled for computed shadow geometry. [Card CSS](https://www.paypalobjects.com/marketing/pp-com-components-pds60/component-chunks/LayeredCardWrapper-C8iim8ic.css)
 
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.card`: `rgba(0, 0, 0, 0.08) 0px 24px 48px 0px`
-- `shadow.elevated`: `rgba(0, 0, 0, 0.15) 0px 8px 24px`
+The census records three backgrounds of `rgba(0, 0, 0, 0.3)`, without identifying them as modal scrims. A global elevation ladder is not established.
 
 ## Motion & Easing
 
-**Durations**:
+For the three main action links the raw computed transition is:
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection ticks, checkbox, radio |
-| `motion-fast` | 120ms | Hover states, button press, focus ring |
-| `motion-standard` | 200ms | Dropdown, sheet, tooltip, form validation |
-| `motion-slow` | 300ms | Section transitions, modal entrance, page-level reveals |
+`padding, margin, width, height 0.3s cubic-bezier(0.4, 1.2, 0.2, 1) 0s`
 
-**Easings**:
+The primary and Browse Offers links grow by 4px in both width and height on hover through a 2px increase on each padding edge. Their own transforms remain `none`. The raw transition on Developer, Log In and Sign Up anchors is **`all 0s ease 0s`**; their painted pseudo-element states change. An anchor's transition string does not establish the timing of every pseudo-element.
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — modals, sheets, menus |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals and exits |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Signature motions:**
-1. **Pill button hover**: subtle scale-up (`scale(1.02)`) on hover at `motion-fast / ease-standard` — the pill inflates slightly to signal responsiveness without losing its contained geometry.
-2. **Section scroll reveal**: content blocks within blue sections fade in from below at `motion-slow / ease-enter` as the user scrolls. The section background color is already visible before content appears.
-3. **Checkout loading**: the PayPal two-letter monogram logo animates to signal processing. This is a brand-owned animation used at the moment of highest trust (payment processing).
-4. **Reduce motion**: under `prefers-reduced-motion: reduce`, all transitions collapse to `motion-instant`. The PayPal checkout loader falls back to a static state indicator. No motion at the cost of accessibility.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on https://www.paypal.com/us/home
-and https://www.paypal.com/us/webapps/mpp/merchant:
-
-- H2 "Pay, send, and save smarter": PayPal Pro 99.4px / weight 900 / color rgb(0,0,0) on #60cdff bg
-- H2 "Take your business further, faster": PayPal Pro 67.1px / weight 900
-- H1 "PayPal Open": PayPal Pro 99.4px / weight 900 / color rgb(0,0,0)
-- CTAs ("Sign Up", "Browse Offers", "Send Money"): 1000px radius / 52px height / 17.86px PayPal Pro weight 900 / padding 13.93px 32.86px
-- Outline light CTA "Learn About Pay in 4": transparent bg / #ffffff text / 1px solid #ffffff
-- Black fill CTA "Sign Up": #000000 bg / #ffffff text
-- White fill CTA "Play video": #ffffff bg / #000000 text
-- Nav tabs "Personal"/"Business": 104px radius / 40px height / 16px Plain weight 400
-- Hero section bg (blue-400-plate class): rgb(96, 205, 255) = #60cdff
-- Brand dark section bg: rgb(0, 41, 145) = #002991
-- Cookie consent buttons: rgba(255,255,255,0.7) bg / 1000px radius / 2px solid #cfd3d8
-- body: font-family Plain / color rgb(0,0,0) / font-size 16px / line-height 18.4px
-- bgFreq top: #ffffff ×12, #000000 ×6, #60cdff ×2, #002991 ×2
-
-Brand narrative: publicly documented history (PayPal / Confinity merger, eBay acquisition 2002,
-spin-off 2015, HQ San Jose). CEO Alex Chriss as of 2023 — publicly documented leadership transition.
-2023 rebrand details inferred from live inspect of new homepage design vs. widely documented rebrand.
-
-Personas are fictional archetypes for illustrative purposes only.
-
-Voice samples verified from live homepage and merchant page inspects (2026-06-22).
--->
+Pay in 4's ancestor changes from `matrix(1, 0, 0, 1, 12, 12)` and opacity 0 to `none` and opacity 1 when revealed. Both persist after blur, so they are retained as reveal observations without a focus or timing token. The identity author's gesture-based motion direction draws on payment actions. Reduced-motion behaviour and checkout loading animation were not verified. [Pentagram](https://www.pentagram.com/work/paypal/story)
 
 ## Components
 
-### Buttons
+All six measured controls are **links**. Their type in the component registry is `button`, including the navigation link. Every listed component has authored state changes.
 
-**Primary (Black Fill)**
-- Background: `#000000`
-- Text: `#ffffff`
-- Radius: 1000px
-- Padding: 14px 33px
-- Height: 52px
-- Font: 17.86px PayPal Pro weight 900
-- Use: Primary CTAs on light backgrounds ("Sign Up", "Enterprise Solutions", "Read Case Study")
+### Main primary action
 
-**Outline Dark**
-- Background: transparent
-- Text: `#000000`
-- Border: 1px solid `#000000`
-- Radius: 1000px
-- Padding: 14px 33px
-- Height: 52px
-- Font: 17.86px PayPal Pro weight 900
-- Use: Secondary CTAs on white sections ("Browse Offers", "Contact Sales", "Learn More")
+The seasonal **Learn More** link measures **129.5 × 48px**, with a **1000px radius**, **12px 20px padding**, **16px/700** text, 24px line height and -0.24px tracking. Its fill is `#000000`, label `#ffffff`, border `none` and shadow `none`. Hover grows its layout to 133.5 × 52px. Its own transform stays `none`.
 
-**Outline Light (Dark Section)**
-- Background: transparent
-- Text: `#ffffff`
-- Border: 1px solid `#ffffff`
-- Radius: 1000px
-- Padding: 14px 33px
-- Height: 52px
-- Font: 17.86px PayPal Pro weight 900
-- Use: Secondary CTAs on midnight blue sections ("Learn About Pay in 4", "Send Money", "Get Paid")
+### Secondary action on white
 
-**White Fill (Dark Section)**
-- Background: `#ffffff`
-- Text: `#000000`
-- Border: 1px solid `#ffffff`
-- Radius: 1000px
-- Padding: 14px 33px
-- Height: 52px
-- Font: 17.86px PayPal Pro weight 900
-- Use: Video/media play triggers on dark sections ("Play video")
+**Browse Offers** measures **152 × 48px**, radius **1000px**, padding **12px 20px**, with the same text metrics. It has black text, the translucent blue fill listed in §2, border `none`, and a fully transparent inset shadow declaration. The hover layout is 156 × 52px. It has an authored blue focus outline.
 
-**Cookie Consent (Tertiary)**
-- Background: `rgba(255, 255, 255, 0.7)`
-- Text: `#000000`
-- Border: 2px solid `#cfd3d8`
-- Radius: 1000px
-- Padding: 10px 30px
-- Height: 48px
-- Font: 14px Plain weight 500
-- Use: Cookie accept/decline actions in the consent bar
+### Secondary action inside a dark card
 
-### Inputs & Forms
+**Learn About Pay in 4** measures **201.3 × 48px** at the initial read, radius **1000px**, padding **12px 20px**, with white text and a translucent grey fill. Its border is `none`. The keyboard outline is the lighter inverse-focus blue. The initial ancestor is hidden by a scroll reveal; that reveal persists after blur and is excluded from the focus treatment. The reversible outline is independently confirmed.
 
-**Default**
-- Background: `#ffffff`
-- Border: 1px solid `#e6e7e8`
-- Radius: 8px
-- Font: 16px Plain weight 400
-- Focus: border/ring shifts to `#0070e0`
-- Use: Login email/phone, form fields
+### Header links and their painted layers
 
-### Cards & Containers
+**Developer** measures **106.6 × 40px**, padding **8px 12px**, with black 16px/700 text. Its own background is transparent on white. The literal computed radius is **`3.35544e+07px`** (33554400px), a pill result. Hover, press and keyboard focus paint `::before`; the label span remains black.
 
-**Standard Content Card** (`layered-card`)
-- Background: `#ffffff`
-- Radius: 16px
-- Shadow: `rgba(0, 0, 0, 0.08) 0px 24px 48px 0px`
-- Use: Feature cards, product showcases on white sections — large-radius diffuse lift (live-measured on `.layered-card` class, 5 instances)
+**Log In** measures **87.9 × 48px** and **Sign Up** **101.2 × 48px**. Both anchors have **12px 20px padding**, 16px/700 text, 24px line height, -0.24px tracking, transparent own backgrounds, no border and no shadow. Their own radius is **0px**; their visible pills are painted by `::before`. Log In's label is black. Sign Up's label is white over a black pseudo-element. The probe does not record that pseudo-element's radius, so a numeric visible-pill radius is not assigned to these two component records.
 
-**Sky Blue Section**
-- Background: `#60cdff`
-- Use: Hero entry section background — the new PayPal signature opener
+### Other component evidence
 
-**Midnight Blue Section**
-- Background: `#002991`
-- Use: Immersive brand-dark content sections — "Pay in 4", product highlight panels
-
-### Badges & Tags
-
-**Status Tag**
-- Background: `#f0f2f9`
-- Text: `#002991`
-- Radius: 4px
-- Padding: 2px 8px
-- Font: 12px Plain weight 400
-- Use: Category labels, status indicators
-
-### Navigation
-
-**Top Nav**
-- Background: `#000000` (sticky/transparent at scroll top)
-- Text: `#000000` (inverted when on light sections)
-- Font: 16px Plain weight 400
-- Height: 40px tab height
-- Active tab: black background with `rgb(0, 0, 238)` link text
-- Radius: 104px per tab item
-- Use: Personal / Business top-level tabs
-
----
-
-**Verified:** 2026-06-22 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.paypal.com/us/home, https://www.paypal.com/us/webapps/mpp/merchant
-**Tier 2 sources:** getdesign.md/paypal — not found (404); styles.refero.design/?q=paypal — no results returned
-**Conflicts unresolved:** none
+The survey contains no search input or whole-card anchor. It does contain action links inside layered cards. Inputs, status badges, white media buttons and consent-button styling have no newly measured product component record.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no transactions, personal wallet)** | White canvas. Single line in muted grey (`#686a6d`) describing zero activity. One black-fill pill CTA to a first action ("Send your first payment"). Minimal — no illustrations. |
-| **Empty (merchant dashboard, no sales)** | Clean statement in `#000000` at body scale; a single CTA in the primary pill style. |
-| **Loading (checkout page)** | PayPal spinner — the wordmark animates into a ring. Background stays white. Content shifts in when ready. |
-| **Loading (dashboard data)** | Skeleton rectangles at the dimensions of the final content. Neutral grey `#e6e7e8` blocks, no shimmer color tint. |
-| **Error (payment declined)** | Inline alert with error red-adjacent tone. Specific code + clear plain-English explanation + retry path. PayPal's error system names the decline reason (e.g., "Insufficient funds") rather than hiding behind a generic message. |
-| **Error (form validation)** | Field-level inline message below the input. Red border on the field. The message says what went wrong and how to fix it. |
-| **Success (payment sent)** | Brief inline confirmation. No toast — the transaction row updates inline. "Sent. [amount] to [name]." Then transaction history reflects immediately. |
-| **Success (checkout complete)** | Dedicated confirmation screen. PayPal wordmark + "You're all set." + order summary. Calm, uncluttered. No celebration animation. |
-| **Skeleton** | Grey `#e6e7e8` blocks at final dimensions. Simple opacity or shimmer. No brand-colored animation. |
-| **Disabled** | Reduced opacity on button surface and text. Black fill fades to grey; pill shape preserved. |
+All hover, pressed and focus readings below have `measured: true`; hover matches `:hover`, press matches `:active`, and keyboard focus matches `:focus-visible`. The focus outlines below are solid authored outlines and disappear after blur.
+
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Seasonal Learn More | Fill `#333333`; 133.5 × 52px; padding 14px 22px. | Fill `#4d4d4d`; 129.5 × 48px; padding 12px 20px; blue outline also present. | Self outline: 2px solid `#0066f5`, offset 2px. |
+| Browse Offers | Fill `rgba(5, 55, 130, 0.153)`; 156 × 52px; padding 14px 22px; transparent inset shadow becomes none. | Fill `rgba(5, 55, 130, 0.227)`; 152 × 48px; shadow none; blue outline present. | Self outline: 2px solid `#0066f5`, offset 2px. |
+| Developer | `::before` appears: `rgba(5, 55, 130, 0.04)`, 110.625 × 44px. | `::before`: `rgba(5, 55, 130, 0.08)`, 106.625 × 40px. | `::before` outline: 2px solid `#0066f5`, offset 2px. |
+| Learn About Pay in 4 | Fill `rgba(189, 189, 189, 0.424)`; raw bounding box 204 × 51.7px; padding 14px 22px; shadow none. | Fill `rgba(204, 204, 204, 0.494)`; raw bounding box 200 × 47.7px; shadow none; inverse outline present. | Self outline: 2px solid `#3db5ff`, offset 2px. Persistent ancestor changes excluded. |
+| Header Log In | `::before`: `rgba(5, 55, 130, 0.118)`, 91.9219 × 52px. | `::before`: `rgba(5, 55, 130, 0.153)`, 87.9219 × 48px. | `::before` outline: 2px solid `#0066f5`, offset 2px. |
+| Header Sign Up | `::before`: `#3d3d3d`, 105.172 × 52px. | `::before`: `#4f4f4f`, 101.172 × 48px. | `::before` outline: 2px solid `#0066f5`, offset 2px. |
+
+The comparison includes each control, its pseudo-elements, descendants and three ancestor levels. Developer has one label descendant; the other five have none. It covers computed styling and selected DOM attributes, not canvas/video pixels, cross-origin frames or unrelated siblings. These observations establish no disabled, empty, loading, validation, checkout-success or transaction-history treatment.
 
 ## Do's and Don'ts
 
 ### Do
-- Use PayPal Pro weight 900 for all display headlines — the maximum weight is the brand
-- Use full-pill radius (1000px) for every CTA button — no rounded rectangles on marketing surfaces
-- Use sky blue (`#60cdff`) as the hero entry surface color — it is the new face of PayPal
-- Use midnight blue (`#002991`) for immersive brand-dark sections
-- Alternate white and brand-color sections to create the PayPal scroll cadence
-- Use `Plain` at weight 400 for all navigation and functional UI text
-- Pair black-fill buttons on light sections with white-outline buttons as secondary actions
-- Keep headline copy short and declarative — the type announces, not explains
+
+- Pair the loaded PayPal Pro display face with the loaded PayPal Pro Text VF functional face.
+- Use the measured black primary action, translucent secondary fills and white labels on dark actions.
+- Keep the 1000px radius on the measured main action links.
+- Reproduce the hover padding increase and reversible authored focus outlines.
+- Use short action labels and benefit-led feature headings, following the opened page samples.
 
 ### Don't
-- Don't use the legacy PayPal blue (#003087 or #0070ba) for the primary brand color — the 2023 rebrand moved to midnight blue (#002991) and sky blue (#60cdff)
-- Don't use rounded-rectangle buttons (16px or 24px radius) — PayPal CTAs are full-pill
-- Don't apply the PayPal brand blue as an interactive element color — `#0070e0` is for hyperlinks only
-- Don't use weight 700 or lower for PayPal Pro headlines — 900 is the only weight at display scale
-- Don't use drop shadows for section separation — use full-bleed background color changes
-- Don't use Plain for headlines — PayPal Pro owns every display-scale text element
-- Don't mix warm and cool neutrals in the same section — the system separates them intentionally
+
+- Treat a fallback font name as an installed or loaded brand font.
+- Give every CTA the prior 900-weight label; the measured controls use 700.
+- Replace a translucent fill with a guessed opaque colour.
+- Assign an anchor's 0px radius or transparent background to its separately painted pseudo-element.
+- Use a persistent scroll reveal as a keyboard-focus token.
 
 ## Voice & Tone
 
-PayPal's voice is **direct, bold, and empowering** — a global payments brand that speaks to everyday users and enterprise merchants in the same confident register. Post-2023 rebrand, the tone shifted from financial-services caution to consumer-brand boldness. Hero copy reads like a product manifesto: "Pay, send, and save smarter." "PayPal Open." Section headings declare rather than explain: "Pay now or pay over time. It's your choice." There are no hedges, no fine print in the headlines, and no exclamation marks performing excitement — the scale of the type does that work.
+The opened homepage uses concise, benefit-led headings and direct action labels. Its seasonal lead is **“Shine all season with PayPal”**; the later product hero retains **“Pay, send, and save smarter.”** Browse Offers, Send Money and Get Paid name the next action directly. The security action is phrased **“See How You're Safe.”** These are observed examples, not a published list of forbidden grammatical forms.
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Declarative, bold. Noun-first or verb-first. "Pay, send, and save smarter." Never conditional. |
-| Product feature heads | Benefit-led, crisp. "Take your business further, faster." |
-| CTAs | Direct imperative. "Sign Up", "Send Money", "Get Paid", "Browse Offers". |
-| Dark section copy | Slightly more expansive — builds momentum. "The tools your business runs on. In one place." |
-| Legal / security copy | Plain, reassuring. "See How You're Safe." |
-| Developer surfaces | Functional and precise — aligns with global developer expectations. |
-| Merchant surfaces | Results-focused. "Real stories. Real wins." |
-
-**Voice samples (verified live 2026-06-22):**
-- "Pay, send, and save smarter" — homepage hero H2 (PayPal Pro 99px/900)
-- "Take your business further, faster" — merchant page H2
-- "PayPal Open" — business page hero H1
-- "Real stories. Real wins." — merchant page H2
-
-**Forbidden register**: passive constructions, jargon-heavy explanations in above-fold copy, legacy banking formality, exclamation-heavy excitement.
+The opened business page uses **“Take your business further, faster”**, **“PayPal Open”** and **“Real stories. Real wins.”** For a similar merchant surface, state the outcome and keep the action concrete. The consumer and business copy samples do not prove identical UI tokens across those surfaces. [Business](https://www.paypal.com/us/business)
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Brand dark (immersive sections): PayPal Midnight Blue (`#002991`)
-- Hero accent surface: PayPal Sky Blue (`#60cdff`)
-- Page background: Pure White (`#ffffff`)
-- Primary CTA (light backgrounds): Ink Black (`#000000`) fill
-- Heading / body text: Ink Black (`#000000`)
-- Muted text: Muted Grey (`#686a6d`)
-- Link / interactive: Link Blue (`#0070e0`)
-- Border: `#e6e7e8`
+### Quick colour reference
 
-### Example Component Prompts
-- "Create a PayPal-style hero section: #60cdff background, full-width. Headline ~96px PayPal Pro weight 900, letter-spacing -1.5px, color #000000. One black-fill pill CTA (#000000 bg, white text, 1000px radius, 14px 33px padding) and one outline pill CTA (transparent, 1px solid #000000, black text)."
-- "Design a PayPal brand-dark section: #002991 background, white text. Headline 67px PayPal Pro weight 900 color #ffffff. Outline CTAs: 1px solid #ffffff, white text, 1000px radius, 52px height."
-- "Build a feature card (layered-card): white background, 16px radius, rgba(0,0,0,0.08) 0px 24px 48px 0px shadow. Title 45px PayPal Pro weight 900 color #000000. Body 16px Plain weight 400 color #686a6d."
-- "Create top navigation: white or black sticky header. Plain 16px weight 400 for nav links. Tabs with 104px radius, 40px height. Log In = white fill + 3px black border; Sign Up = black fill, white text."
+Midnight `#002991`; sky `#60cdff`; canvas `#ffffff`; foreground and primary fill `#000000`; link and light-surface focus `#0066f5`; inverse focus `#3db5ff`. Secondary fills retain the rgba values in §2.
 
-### Iteration Guide
-1. PayPal Pro weight 900 is the only display weight — never use 600 or 700 for headlines
-2. Every CTA is a full-pill: 1000px radius, 52px height, 14px 33px padding
-3. Black-on-white + white-on-black is the core CTA contrast system — not the old PayPal blue
-4. Section cadence: white → sky blue (#60cdff) → white → midnight blue (#002991) → repeat
-5. Plain font handles all UI text: 16px/400 for nav and body, 14px/400 for captions
-6. No brand-colored shadows — layered-card elevation uses `rgba(0,0,0,0.08) 0px 24px 48px 0px` (large-radius diffuse lift)
-7. Sky blue (#60cdff) is the modern PayPal entry color; midnight blue (#002991) is the immersive depth color
+### Example component prompts
 
----
+- “Build the captured seasonal primary action: a black link on white, 48px high, 1000px radius, 12px 20px padding, white 16px/700 PayPal Pro Text VF. On hover use `#333333` and 14px 22px padding; on press use `#4d4d4d` and the resting size. Add the measured blue focus outline.”
+- “Build the captured secondary link on white with the three blue-alpha fills in §2, black text, 1000px radius, the same text metrics and padding expansion.”
+- “Use a Developer header link with a 40px anchor and a separately painted hover layer growing to 44px; keep the black label and put the focus outline on that layer.”
+
+### Iteration guide
+
+Check the painted layer as well as the anchor. Preserve the distinct hover colours of the main action and header Sign Up. Keep card source declarations in rem and avoid presenting them as a new computed card measurement. Display font files and the variable text face remain separate assets; no substitute is chosen.

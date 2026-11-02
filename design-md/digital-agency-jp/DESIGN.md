@@ -3,9 +3,11 @@ name: Digital Agency Design System (DADS)
 colors:
   primary: '#0017c1'
   primary-hover: '#00118f'
+  primary-pressed: '#000060'
   link: '#00118f'
+  link-pressed: '#e25100'
   canvas: '#ffffff'
-  ink: '#333333'
+  foreground: '#333333'
   ink-strong: '#1a1a1a'
   ink-pure: '#000000'
   muted: '#666666'
@@ -14,45 +16,49 @@ colors:
   surface: '#f2f2f2'
   surface-alt: '#e6e6e6'
   tint-blue: '#e8f1fe'
-  tint-blue-selected: '#d9e6ff'
+  tint-blue-100: '#d9e6ff'
+  outline-hover: '#c5d7fb'
+  outline-pressed: '#9db7f9'
   error: '#ec0000'
   success: '#197a4b'
   on-primary: '#ffffff'
+  focus-highlight: '#ffd43d'
 typography:
   display:
     fontSize: 32px
     fontWeight: 700
     lineHeight: 1.5
-    use: Section headline (H2), Noto Sans JP Bold
+    use: Section-heading style; first-party stylesheet and official Std-32B-150, not a new computed heading measurement
   heading:
     fontSize: 20px
     fontWeight: 700
     lineHeight: 1.5
-    use: Page title (H1) / card heading (H3)
+    use: Measured card-title size/weight; line height and sidebar-logo metrics from first-party CSS
   body-lg:
     fontSize: 17px
     fontWeight: 400
     lineHeight: 1.7
-    use: Default body text, generous CJK line-height
+    use: Measured card body and declared desktop prose
   body:
     fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.5
-    use: UI text, nav links, button labels
+    lineHeight: 1
+    use: Measured search-input text
   nav:
     fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.5
-    use: Header nav items
+    lineHeight: 1.3
+    use: Measured sidebar navigation label
   button:
     fontSize: 16px
     fontWeight: 700
-    lineHeight: 1.5
-    use: Button label, Bold
+    lineHeight: 1
+    use: Measured search button and outline page-navigation link
 rounded:
+  none: 0px
+  focus-link: 4px
   sm: 8px
   md: 16px
-  full: 9999px
 spacing:
   xs: 4
   sm: 8
@@ -69,10 +75,12 @@ components:
     textColor: '#ffffff'
     rounded: 8px
     height: 48px
-    padding: 8px 16px
-    typography: 16px / 700 Noto Sans JP
-    use: Primary filled action — search submit, key CTA
-    states: 'hover #00118f'
+    padding: 8px 0px
+    typography: 16px / 700
+    hover: 'bg #00118f; white label becomes underlined'
+    pressed: 'bg #000060; white label remains underlined'
+    focus: 'outline 4px solid #000000, offset 2px; box-shadow 0 0 0 2px #ffd43d'
+    use: 'search-submit: 検索, the sidebar''s 56px-wide submit button; not submitted during measurement.'
   button-outline:
     type: button
     backgroundColor: '#ffffff'
@@ -81,14 +89,22 @@ components:
     rounded: 8px
     height: 56px
     padding: 12px 16px
-    typography: 16px / 700 Noto Sans JP
-    use: Secondary outline action — section anchors
-    states: 'hover bg #e8f1fe'
+    typography: 16px / 700
+    hover: 'bg #c5d7fb; text, border and arrow #00118f; underline'
+    pressed: 'bg #9db7f9; text, border and arrow #000060; underline'
+    focus: 'outline 4px solid #000000, offset 2px; box-shadow 0 0 0 2px #ffd43d'
+    use: 'outline-prev: ヘッダーコンテナ: 概要, a link to the preceding component overview on the button page.'
   button-text:
     type: button
     textColor: '#00118f'
-    typography: 17px / 400 Noto Sans JP
-    use: Inline text link button (e.g. Figma file link)
+    rounded: 0px
+    height: 25px
+    padding: 0px
+    typography: 17px / 700
+    hover: 'text, underline and external-link pseudo-element #0017c1'
+    pressed: 'text, underline and external-link pseudo-element #e25100'
+    focus: 'bg #ffd43d; radius 4px; outline 4px solid #000000, offset 2px; box-shadow 0 0 0 2px #ffd43d'
+    use: 'figma-link: デザインデータ（Figma）, an underlined link on the white documentation canvas; its rest background is transparent and omitted here.'
   input-text:
     type: input
     backgroundColor: '#ffffff'
@@ -96,36 +112,36 @@ components:
     border: '1px solid #666666'
     rounded: 8px
     height: 48px
-    padding: 0 16px
-    typography: 16px / 400 Noto Sans JP
-    use: 'Search box / text input, focus blue #0017c1'
+    padding: 0px 16px 0px 48px
+    typography: 16px / 400
+    hover: 'border 1px solid #000000'
+    pressed: 'border #000000 with simultaneous focus-visible: outline 4px solid #000000, offset 2px; box-shadow 0 0 0 2px #ffd43d'
+    focus: 'outline 4px solid #000000, offset 2px; box-shadow 0 0 0 2px #ffd43d; border remains #666666 without hover'
+    use: 'site-search: #sidebar-search-input, 161px wide, labelled サイト内検索; the pressed capture also matches focus-visible.'
   card-canvas:
     type: card
     backgroundColor: '#ffffff'
-    textColor: '#333333'
+    textColor: '#000000'
     border: '1px solid #949494'
     rounded: 16px
+    height: 153.8px
     padding: 24px
-    use: 'Content navigation card, no shadow, #00118f heading'
+    typography: 17px / 400
+    hover: 'bg #f2f2f2; description gains a black underline'
+    pressed: 'bg #f2f2f2; description gains a black underline'
+    focus: 'outline 4px solid #000000, offset 2px; box-shadow 0 0 0 2px #ffd43d'
+    use: 'intro-card: はじめに, a 504.5px-wide navigation link. Visible description #000000; title #00118f at 20px/700. The link itself inherits #333333.'
   nav-link:
-    type: tab
+    type: button
     textColor: '#333333'
-    typography: 16px / 400 Noto Sans JP
+    rounded: 0px
+    height: 44px
     padding: 10px 16px
-    active: 'text #00118f + 2px bottom border #0017c1'
-    use: Header navigation item
-  chip-blue:
-    type: badge
-    backgroundColor: '#e8f1fe'
-    textColor: '#00118f'
-    rounded: 8px
-    typography: 16px / 400 Noto Sans JP
-    use: Selected / informational chip tint
-  error-text:
-    type: badge
-    textColor: '#ec0000'
-    typography: 16px / 400 Noto Sans JP
-    use: Field-level error message colour
+    typography: 16px / 400
+    hover: 'bg #f2f2f2; underline #333333'
+    pressed: 'bg #f2f2f2; underline #333333'
+    focus: 'bg #ffd43d; inset box-shadow 0 0 0 6px #ffd43d; outline 4px solid #000000, offset -4px'
+    use: 'intro-nav: はじめに, a 269px-wide sidebar link on white; its transparent rest background is omitted.'
 fonts:
   roles:
     sans: Noto Sans JP
@@ -137,158 +153,132 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-The Digital Agency Design System (デジタル庁デザインシステム, DADS) is the official design system of Japan's Digital Agency (デジタル庁), published openly at `design.digital.go.jp/dads/` under CC BY 4.0. Its job is the opposite of a consumer brand's: not to delight or differentiate, but to make government services legible, accessible, and trustworthy for every citizen — including those on low-end devices, with low vision, or with low digital fluency. The result is a system of deliberate, almost austere clarity. The canvas is pure white (`#ffffff`); body text sits in a calm near-black (`#333333`) — softened off pure black for long-form readability — and the entire identity hangs on a single confident government blue (`#0017c1`).
+The Digital Agency Design System (デジタル庁デザインシステム, DADS) brings together design language, UI components and usability/accessibility guidance for public websites and services. Its publisher, Japan's Digital Agency (デジタル庁), makes the system available to both public and private users. The agency's stated mission is digitalization that leaves nobody behind. [Official overview](https://www.digital.go.jp/policies/servicedesign/designsystem), [DADS introduction](https://design.digital.go.jp/dads/introduction/about/).
 
-That blue does two jobs. As a solid fill (`#0017c1`, the search-submit button) it is "the action," and as a darker text-weight variant (`#00118f`) it carries every link, every card heading, and every interactive label on white. This two-step blue — a saturated fill for surfaces, a deeper navy-blue for text-on-white — is the system's core contrast strategy, chosen so that link text clears WCAG contrast against white while filled buttons stay vivid. There is no second accent hue competing for attention; semantic colour is reserved strictly for meaning (error red `#ec0000`, success green `#197a4b`).
+The live documentation site gives that work a clear visual expression: a white canvas (`#ffffff`), dark prose (`#333333`), underlined deep-blue resource links (`#00118f`), and rounded cards bounded by grey hairlines (`#949494`). The compact blue search button (`#0017c1`) stands beside a white search field in the fixed left sidebar. At the measured desktop size, the button and input are 48px high; the introduction card has a 16px radius and 24px padding. Black-and-yellow keyboard focus is a prominent part of the visual language. These observations describe the documentation site captured on 2026-11-02.
 
-The typographic voice is unmistakably Japanese-civic: the stack leads with **Noto Sans JP** (`"Noto Sans", "Noto Sans JP", system-ui, sans-serif`), the open-source CJK workhorse chosen precisely because it renders consistently across every government device and platform without licensing friction. Body runs at a generous 17px with a roomy 1.7 line-height — wide leading is a CJK-legibility decision, giving dense kanji and kana room to breathe. Headlines step up to Bold (weight 700) at 20px (page title) and 32px (section) but never shout; weight, not size, carries hierarchy. Depth is essentially absent — `box-shadow: none` across the hero, nav, cards, and buttons. Separation comes from thin `#949494` hairlines, flat grey surfaces (`#f2f2f2`, `#e6e6e6`), and an 8px/16px radius scale that reads as friendly-but-serious. This is design as public infrastructure: quiet, accessible, and built to be copied by every ministry.
+The current guidance describes DADS as a platform design system: adopters define a local design system around their own organization or service. The supplied colors, sizes, spacing and corner shapes are starting values based on the Digital Agency website, and can be edited while preserving the accessibility structure. This makes the reference useful both for reproducing the documentation site's appearance and for understanding which choices the platform leaves to its adopters. [Platform guidance](https://design.digital.go.jp/dads/guidance/design-system/), [local design-system guidance](https://design.digital.go.jp/dads/guidance/local-design-system/).
 
-**Key Characteristics:**
-- Single government blue: solid fill `#0017c1` for actions, deeper `#00118f` for text-on-white links/headings
-- Noto Sans JP as the mandated open-source CJK typeface — consistent cross-device government rendering
-- Near-black `#333333` body text instead of pure black — softer for long-form civic reading
-- Generous CJK line-height (1.7 on 17px body) for kanji/kana legibility
-- Flat, shadow-free system — `box-shadow: none`; separation via `#949494` hairlines and grey surfaces
-- Restrained radius scale (8px inputs/buttons, 16px cards) — approachable but institutional
-- Semantic colour reserved for meaning only — error red `#ec0000`, success green `#197a4b`
-- Accessibility-first: high contrast, large 48–56px touch targets, CC BY 4.0 openness
+The live title carries **v2.18.2**. The homepage records Figma v2.18.2 and documentation updates on **2026-10-21**, and explains “β版” as a living standard. Its visible structure combines an introduction, system resources, content cards and dated release information. [Homepage](https://design.digital.go.jp/dads/), [document updates](https://design.digital.go.jp/dads/updates-dads/).
 
-### Primary tasks
-
-- Copy component snippets and Figma files into a government service build.
-- Read a component page to learn when to use it.
-- Justify a design decision to non-design stakeholders with documented guidance.
-- Find the right entry point into the system from the homepage.
+Primary tasks supported by the opened pages are finding guidance through navigation or search, reading component overview/usage/accessibility pages, and locating Figma data or HTML/React examples. The guidance also describes the system as shared material for communication among designers, developers and other stakeholders. [Resources](https://design.digital.go.jp/dads/resources/), [platform guidance](https://design.digital.go.jp/dads/guidance/design-system/).
 
 ### Brand Narrative
 
-The Digital Agency Design System (デジタル庁デザインシステム, DADS) is published by **Japan's Digital Agency (デジタル庁)**, the government body established on **September 1, 2021** to lead the digital transformation of Japan's public sector and to standardise the quality of government digital services. DADS exists to solve a structural problem: across hundreds of ministries, agencies, and local governments, public websites and services had been built inconsistently — varying in accessibility, usability, and trust. A shared, open design system lets every government team build services that are consistent, accessible, and recognisably part of the same trustworthy whole.
+The Digital Agency was established on **2021-09-01**, as its site policy states. It describes its work as advancing digital transformation and creating services from the public's perspective. Its contact address is in Tokyo. [Site policy](https://www.digital.go.jp/site-policy), [organization](https://www.digital.go.jp/about).
 
-DADS is published openly at `design.digital.go.jp/dads/` under a **CC BY 4.0** licence, with design language, accessibility and usability guidelines, Figma libraries, and ready-to-use HTML and React component snippets. The "β版" (beta) labelling — visible in the live header as "v2.14.0" — is itself a statement of posture: the system is iterated in public, versioned transparently, and treated as evolving infrastructure rather than a finished brand artifact.
+The design-system history records the first Figma publication in **November 2022**. A dedicated DADS site launched on **2024-05-30** to make the guidelines easier to consult. In October 2026, the documentation expanded its account of platform and local design systems, then added usage guidance to multiple components on **2026-10-21**. The visible beta label expresses continuing improvement and research/practice in the system's own description. [History](https://www.digital.go.jp/policies/servicedesign/designsystem), [launch notice](https://www.digital.go.jp/news/83ba2c71-89b9-4b4f-9b24-dd2d06a66774), [updates](https://design.digital.go.jp/dads/updates-dads/), [platform guidance](https://design.digital.go.jp/dads/guidance/design-system/).
 
-What DADS refuses, visible in its design: the visual flourish and persuasion of consumer branding (no second accent colour, no shadows, no decorative type) and the inconsistency of ad-hoc government sites. What it embraces: a single high-contrast government blue, the mandated open-source Noto Sans JP for universal CJK rendering, generous accessible spacing, and an openness (CC BY 4.0, public versioning) that mirrors its civic mission — design as shared public infrastructure.
+The published materials have distinct licensing arrangements. The notices direct documentation users to attribution/editing instructions and the agency's copyright policy. They identify **CC BY 4.0 for Figma Community design data** and **MIT for GitHub code snippets**, with separate treatment of included assets. The resources page links plain HTML/CSS/JavaScript examples and React/Tailwind CSS examples, plus a token-based Tailwind plugin. [Notices](https://design.digital.go.jp/dads/introduction/notices/), [resources](https://design.digital.go.jp/dads/resources/).
 
 ### Principles
 
-1. **Accessibility is the baseline, not a feature.** High contrast, large touch targets, and a mandated legible CJK typeface are non-negotiable. *UI implication:* meet WCAG contrast (Link Blue `#00118f` for text on white), keep targets 44px+, never rely on colour alone to convey meaning.
-2. **One blue, meaning-only colour.** A single brand blue carries identity; every other colour must mean something. *UI implication:* use `#0017c1`/`#00118f` for brand and action; reserve red `#ec0000` and green `#197a4b` strictly for error/success.
-3. **Consistency across every ministry.** The system's value is that a citizen recognises the same patterns everywhere. *UI implication:* reuse the documented components and tokens verbatim; do not invent local variants.
-4. **Flat clarity over decoration.** Trust comes from legibility, not visual flourish. *UI implication:* no shadows; separate with hairlines and grey surfaces; keep type and layout calm.
-5. **Open and iterated in public.** CC BY 4.0, public versioning, and a β posture make the system improvable by everyone. *UI implication:* design for reuse and forking; document rationale and accessibility notes alongside every component.
+The first-party guidance names three aims: **accessibility first**, **broad applicability and usefulness for administrative organizations**, and **continuous, sustainable improvement through research and practice**. It explains that reusable primitive information elements support customization and that beta labeling carries the intention to keep improving. [Platform guidance](https://design.digital.go.jp/dads/guidance/design-system/).
+
+The local-system guidance turns those aims into constraints on adaptation: retain semantic color meanings, preserve focus indicators and accessibility implementation, maintain the specified contrast requirements, and keep reading-text line height at least 1.5. Colors, spacing and shapes can then express the adopting service's own design policy. [Local design systems](https://design.digital.go.jp/dads/guidance/local-design-system/).
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable DADS user segments (government service teams, ministry developers, and the citizens they serve), not individual people.*
-
-**佐藤 健, 38, 東京.** A front-end developer on a ministry digital-services team. Pulls DADS HTML/React snippets and Figma libraries to build a public-benefit application form. Values that the components ship with accessibility built in, so he doesn't have to re-derive contrast ratios and focus states for every project.
-
-**田中 美咲, 45, 大阪.** A service designer at a local government office modernising a citizen-facing portal. Uses the DADS guidelines to justify design decisions to non-design stakeholders — the documented rationale and the CC BY 4.0 openness make it easy to adopt without procurement friction.
-
-**鈴木 一郎, 67, 地方都市.** A citizen using a government service on an older Android phone with larger text settings. Never sees DADS by name, but benefits directly: high-contrast blue links he can read, large tappable buttons, and a calm uncluttered layout that doesn't overwhelm him.
+No first-party individual personas were verified. The opened material addresses public-service organizations and their design/development stakeholders; the resources page also points administrative officers and businesses beginning accessibility work to an introductory guide. [Platform guidance](https://design.digital.go.jp/dads/guidance/design-system/), [resources](https://design.digital.go.jp/dads/resources/).
 
 ## Colors
 
-### Primary
-- **Government Blue** (`#0017c1`): Primary action colour. Solid fill on the search-submit button (`rgb(0, 23, 193)`), and the 1px border + text colour of outline buttons. The system's single "action" hue.
-- **Link Blue** (`#00118f`): Deeper navy-blue (`rgb(0, 17, 143)`) used for all text-on-white links, card headings (H3), and inline link buttons. The text-weight companion to the fill blue, tuned for contrast against white.
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on the blue fill.
+The homepage census contains **178 computed root properties** and **190 declared custom properties**. Its palette is first-party: ten primitive hue ramps, neutral ramps and semantic aliases. The values below distinguish observed uses from palette availability. The full raw list is retained in the research report.
 
-### Text Hierarchy
-- **Ink** (`#333333`): Default body and heading text (`rgb(51, 51, 51)`) — near-black, the dominant foreground colour across the page.
-- **Ink Strong** (`#1a1a1a`): Input field text (`rgb(26, 26, 26)`) — a slightly deeper near-black for entered values.
-- **Pure Black** (`#000000`): Occasional maximum-contrast text accent.
-- **Muted** (`#666666`): Secondary text and the homepage search-input border (`rgb(102, 102, 102)`).
-- **Muted Alt** (`#767676`): Tertiary / placeholder-level grey (`rgb(118, 118, 118)`), the minimum AA-passing grey on white.
+| Role or primitive | Value | Opened or measured evidence |
+|---|---|---|
+| Primary action / on-primary | `#0017c1` / `#ffffff` | Search button rest; blue also supplies outline-link text and border |
+| Primary hover / resource-link rest | `#00118f` | Search-button hover, Figma link and card title at rest |
+| Primary pressed | `#000060` | Search-button press and outline-link pressed text/border; Blue-1200 |
+| Resource-link pressed | `#e25100` | Figma link text, underline and external-link pseudo-element during press; Orange-700 |
+| Canvas | `#ffffff` | Input and card backgrounds; viewport shows a white page |
+| Foreground | `#333333` | Gray-800; prose paragraphs, sidebar label and inherited card-link foreground |
+| Input ink | `#1a1a1a` | Gray-900; search-input computed text color |
+| Black | `#000000` | Card-description text, authored focus outline and input hover border |
+| Muted | `#666666` | Gray-600; search-input rest border and secondary paragraph ink |
+| Neutral threshold grey | `#767676` | Gray-536 in the root palette; the palette documentation identifies it at the text-contrast threshold against white |
+| Hairline | `#949494` | Gray-420; introduction-card border |
+| Surface | `#f2f2f2` | Gray-50; card and sidebar-link hover/press backgrounds |
+| Surface alternate | `#e6e6e6` | Gray-100; root primitive and button-overview background census |
+| Blue tint | `#e8f1fe` | Blue-50 root primitive; available in the button-overview census |
+| Blue tint 100 | `#d9e6ff` | Blue-100 root primitive; available in the button-overview census |
+| Outline hover | `#c5d7fb` | Blue-200; measured previous-page outline-link hover background |
+| Outline pressed | `#9db7f9` | Blue-300; measured outline-link pressed background |
+| Error | `#ec0000` | `--color-semantic-error-1` resolves to Red-800 |
+| Success | `#197a4b` | `--color-semantic-success-2` resolves to Green-800 |
+| Focus highlight | `#ffd43d` | Yellow-300; measured focus fill/shadow, paired with black outlines |
 
-### Surface & Borders
-- **Hairline** (`#949494`): Card and container border (`rgb(148, 148, 148)`) — the primary separation device in this shadow-free system.
-- **Surface Grey** (`#f2f2f2`): Flat tinted surface (`rgb(242, 242, 242)`) for content blocks and code samples.
-- **Surface Alt** (`#e6e6e6`): A darker grey surface (`rgb(230, 230, 230)`) for alternating / nested blocks.
-- **Tint Blue** (`#e8f1fe`): Soft blue tint (`rgb(232, 241, 254)`) for informational chips and hover backgrounds.
-- **Tint Blue Selected** (`#d9e6ff`): Stronger blue tint (`rgb(217, 230, 255)`) for selected/active states.
+The general palette supports more than the blue used by this documentation site. The color guidance defines key, common and semantic colors; semantic hue/meaning relationships must be preserved when adapting a service. The local-system guidance permits changing key colors and using link hues other than blue while preserving its accessibility requirements. [Color guidance](https://design.digital.go.jp/dads/foundations/color/), [palette](https://design.digital.go.jp/dads/foundations/color/color-palette/), [local design systems](https://design.digital.go.jp/dads/guidance/local-design-system/).
 
-### Semantic
-- **Error Red** (`#ec0000`): Error text and destructive indicators (`rgb(236, 0, 0)`).
-- **Success Green** (`#197a4b`): Success and confirmation indicators (`rgb(25, 122, 75)`).
+The paragraph census is mixed: `#333333` appears five times, black five times and `#666666` once. The measured introduction card makes the distinction concrete: its link inherits `#333333`, its heading is `#00118f`, and its visible description is **black**. Preserve these roles when reproducing that card.
 
 ## Typography
 
-### Font Family
-- **Primary**: `Noto Sans JP`, declared as the stack `"Noto Sans", "Noto Sans JP", -apple-system, system-ui, sans-serif`. The open-source CJK typeface is mandated so every government surface renders identically without font-licensing barriers.
+**Official product use.** The typography guidance adopts **Noto Sans JP** for proportional text and **Noto Sans Mono** for monospaced text. It identifies the fonts as open source under SIL Open Font License 1.1 and supplies CSS and Google Fonts examples. It explicitly allows OS/device-native fonts and acknowledges that user agents can change the displayed face. [Typography guidance](https://design.digital.go.jp/dads/foundations/typography/).
 
-### Hierarchy
+**Live-loaded.** Both surveys list `Noto Sans JP 100 900 normal` and `Noto Sans 100 900 normal` in loaded faces. Body, H1 and button declarations use `"Noto Sans", "Noto Sans JP", sans-serif`. The page links a Google Fonts stylesheet requesting Noto Sans JP and Noto Sans Mono. The census could not read that cross-origin stylesheet's rules, so the exact font file selected by the capture browser is unresolved.
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Section Heading (H2) | Noto Sans JP | 32px (2.00rem) | 700 | 1.50 (48px) | Major section titles |
-| Page Title (H1) | Noto Sans JP | 20px (1.25rem) | 700 | 1.50 | Site/page title in header |
-| Card Heading (H3) | Noto Sans JP | 20px (1.25rem) | 700 | 1.50 | Card titles, in Link Blue `#00118f` |
-| Body Large | Noto Sans JP | 17px (1.06rem) | 400 | 1.70 (28.9px) | Default body — generous CJK leading |
-| Body / UI | Noto Sans JP | 16px (1.00rem) | 400 | 1.50 | Nav links, body UI text |
-| Button | Noto Sans JP | 16px (1.00rem) | 700 | 1.50 | Button labels — Bold |
+**Official distributed assets.** The opened first-party stylesheet embeds a variable **Noto Sans** WOFF2 data URL restricted to `unicode-range: U+3B2` (the beta character). The site's notices identify subsetted Noto Sans data and its SIL license. This is a narrowly scoped distributed font asset. [Live stylesheet](https://design.digital.go.jp/dads/assets/B27ZN1QL.css), [notices](https://design.digital.go.jp/dads/introduction/notices/).
 
-### Principles
-- **Weight carries hierarchy, not just size**: Headings are Bold (700) while body stays Regular (400); the jump from 16px body to 20px heading is modest, so weight does the heavy lifting.
-- **Generous CJK leading**: The 17px body runs at 1.70 line-height (28.9px) — wide leading gives kanji and kana density room to remain legible.
-- **One typeface, every surface**: Noto Sans JP is the sole family. No display/body split, no decorative type — consistency across ministries and devices is the goal.
-- **Civic restraint**: No italics, no condensed weights, no letter-spacing tricks. The type reads as neutral, official, and accessible.
+**Declared-only on these surfaces.** Noto Sans Mono is named in `--font-family-mono` and officially documented for `pre`/`code`, but neither survey reports it loaded. Its documented role is retained here without a live specimen. The capture's per-control family field reports the first stack member, Noto Sans; it does not establish a face separately for every glyph.
+
+**Unresolved.** Exact per-glyph font selection and consistent rendering across other government devices were not measured. **Substitute: none chosen.**
+
+| Role | Size / weight / line height | Evidence class |
+|---|---|---|
+| Section heading | 32px / 700 / 1.5 (48px) | Official `Std-32B-150`; desktop heading declaration in the live stylesheet |
+| Sidebar site title | 20px / 700 / 1.5 (30px) | Live stylesheet declaration for `.dads-sidebar__logo` |
+| Card title | 20px / 700 / 1.5 (30px) | Measured child font and 30px element height; line height declared in `.card__title` CSS |
+| Card body / desktop prose | 17px / 400 / 1.7 (28.9px) | Card measurement and prose stylesheet declaration |
+| Sidebar navigation | 16px / 400 / 20.8px (1.3) | Measured “はじめに” link |
+| Search input | 16px / 400 / 16px (1) | Measured input |
+| Filled / outline label | 16px / 700 / 16px (1) | Measured search button and outline link |
+| Figma resource link | 17px / 700 / 28.9px | Measured homepage resource link |
+
+The official scale distinguishes regular 400 and bold 700, normally uses at least 16 CSS px for body/UI, and recommends at least 1.5 line height for reading text. It includes display sizes as well as standard, dense, oneline and mono styles. It also defines letter spacing rather than prohibiting it; measured values include 0.32px on the 16px buttons and 0.34px on the 17px card/link. [Typography guidance](https://design.digital.go.jp/dads/foundations/typography/).
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: Card padding lands at 24px (measured); nav items use 10px/16px padding for comfortable 44px+ touch targets
+At 1440×1000 the documentation homepage has a fixed **left sidebar**, measured at 289px including its boundary, with the site title, search and vertical navigation. Main content begins to its right. The introduction and guidance cards share a row, followed by further content cards. On the button overview, a separate sticky table of contents sits beside the document. Both layouts are visible in the captures; they are not a horizontal desktop header.
 
-### Grid & Container
-- Centered content column with a fixed header containing the title, nav, and search box
-- The homepage groups system entry points as a grid of bordered navigation cards (16px radius, `#949494` hairline)
-- Sections separate by flat grey surfaces (`#f2f2f2`, `#e6e6e6`) and hairlines rather than elevation
-- Component docs use a left rail + content layout typical of documentation systems
+The stylesheet defines the card grid as `repeat(auto-fit,minmax(min(22rem,100%),1fr))` with a 2rem gap. Its card padding is 1.5rem at the measured desktop width. Main-content and table-of-contents dimensions have their own `--common-*` properties. [Live stylesheet](https://design.digital.go.jp/dads/assets/B27ZN1QL.css).
 
-### Whitespace Philosophy
-- **Clarity over density**: Government content prioritises scannability — generous vertical rhythm and 1.7 body leading keep dense Japanese text readable.
-- **Flat segmentation**: blocks separate by background tint and `#949494` hairlines, never by shadow.
-- **Touch-first sizing**: interactive targets sit at 44–56px tall for accessibility on touch devices.
+The prior spacing values remain useful as **observed or declared values**, rather than a mandatory global scale:
 
-### Border Radius Scale
-- Small (8px): buttons, inputs, chips — the workhorse
-- Medium (16px): cards and content containers
-- Full (9999px): pills where used
+| Value | Concrete evidence |
+|---|---|
+| 4px | Button's declared `.25rem` column gap |
+| 8px | Measured filled-button vertical padding; declared search-box gap |
+| 12px | Measured outline-link vertical padding |
+| 16px | Measured navigation horizontal padding and search-input right padding |
+| 24px | Measured card padding |
+| 32px | Declared 2rem card-grid gap |
+| 48px | Declared 3rem desktop prose H1 bottom margin |
+| 64px | Declared 4rem desktop section-heading top margin |
+
+Rem equivalents use the 16px UI reference corroborated by the captures. The [spacing guidance](https://design.digital.go.jp/dads/foundations/spacing/) presents 8 CSS px as a commonly used base and gives an 8/24/64 example. It says absolute spacing values are not prescribed and tokenization is optional. Consistency and expressing relationships between content are the stated concerns.
+
+Measured corner values are 0px for the sidebar/resource links, 8px for the filled/outline/input controls, 16px for the card, and 4px on the focused resource link. The [corner-shape guidance](https://design.digital.go.jp/dads/foundations/corner-shapes/) provides five broad styles and calls for component-specific adjustment according to size and proportion.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, header collapses to hamburger, cards stack |
-| Tablet | 768-1024px | Moderate padding, 2-up card grid |
-| Desktop | >1024px | Full layout, multi-column card grid, persistent header nav |
+Browser captures cover **desktop 1440×1000 only**. The following responsive facts are first-party documentation or stylesheet declarations, rather than measurements at additional widths:
 
-#### Touch Targets
-- Buttons at 48–56px height with 8–16px padding — comfortably tappable
-- Search input at 48px height with a clear 48px icon affordance
-- Nav items with 10px/16px padding land at 44px tall — meeting accessibility minimums
+| Source | Declared behavior |
+|---|---|
+| General layout guidance | Example with one breakpoint: mobile/tablet below 768px, desktop at or above 768px; adopters may define additional breakpoints |
+| Documentation stylesheet, `width >= 48rem` | Prose changes from 1rem to 1.0625rem; 32-style section headings change from 1.5rem to 2rem; card padding becomes 1.5rem on all sides |
+| Documentation stylesheet, `width >= 64rem` | Fixed sidebar is displayed and the page uses an 18rem sidebar column |
+| Documentation stylesheet, `width >= 80rem` | Documents with a table of contents place it beside the body |
+| Card grid | Auto-fit tracks with the 22rem minimum expression in §5; a fixed tablet two-column breakpoint is not declared by that rule |
 
-#### Collapsing Strategy
-- Header nav: horizontal links → hamburger menu button on mobile
-- Navigation card grid: multi-column → 2-up → stacked single column
-- Section headings (32px) reduce on mobile while weight 700 is maintained
-- Grey/white alternating sections maintain full-width treatment
-
-#### Image Behavior
-- Figma/component preview images and diagrams carry no shadow at any size, consistent with the flat system
-- Cards maintain 16px radius across breakpoints
+The measured 48–56px action heights, 8px control radii and 16px card radius are desktop observations. The card's 1rem radius is declared outside a breakpoint. [Layout guidance](https://design.digital.go.jp/dads/foundations/layout/), [live stylesheet](https://design.digital.go.jp/dads/assets/B27ZN1QL.css).
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f2f2f2` / `#e6e6e6` background shift | Block / section separation without elevation |
-| Hairline (Level 2) | `1px solid #949494` border | Card and container outlines, dividers |
+The measured controls have `box-shadow: none` at rest. Borders and white/grey surfaces do much of the visible grouping on these documentation pages. Keyboard focus adds a yellow shadow to these controls; it is part of their focus indicator.
 
-**Shadow Philosophy**: DADS is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, header, navigation cards, and buttons. Depth and grouping are communicated entirely through flat tinted surfaces (`#f2f2f2`, `#e6e6e6`) and thin `#949494` hairlines. This is a deliberate accessibility-and-performance choice: flat surfaces render predictably across the full range of government-citizen devices, avoid the visual noise of stacked shadows, and keep focus on content and high-contrast colour. When emphasis is needed, the system reaches for the blue (`#0017c1` fill / `#00118f` text) or the blue tints (`#e8f1fe`, `#d9e6ff`), never elevation.
+The wider system documents **eight elevation shadow variables**. For example, `--elevation-1` is `0 2px 8px 1px #0000001a, 0 1px 5px 0 #0000004d`. These alpha colors belong to the shadow definition. The [elevation guidance](https://design.digital.go.jp/dads/foundations/elevation/) explains both drop shadows and overlay shading, treats level 0 as the default, and assigns higher levels to overlay components. It also requires sufficient boundary contrast independently of the shadow. Use its elevation model when the UI's structure benefits from it; a flat rest-state card does not establish a system-wide prohibition.
 
 ### Values kept in prose
 
@@ -298,237 +288,74 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-**Durations**:
+All six measured controls report the exact computed transition **`all 0s ease 0s`**. Their captured style changes therefore provide no nonzero transition duration or authored timing curve to reuse. Disclosure expansion, page transitions and dialog motion were not measured.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, focus, press |
-| `motion-standard` | 200ms | Disclosure/accordion expand, dropdown, sheet |
-| `motion-slow` | 320ms | Page-level transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — disclosures, dropdowns, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is minimal, functional, and quiet — consistent with an accessibility-first government system. Disclosures and accordions expand at `motion-standard / ease-enter`; hover and focus respond at `motion-fast`. No bounce, no spring, no decorative animation — public infrastructure signals steadiness and predictability. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the interface remains fully functional. Motion must never be the sole carrier of meaning.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle:
-- https://design.digital.go.jp/ (DADS homepage) — title "デジタル庁デザインシステムβ版",
-  body Noto Sans JP / 17px / line-height 28.9px (1.70) / color rgb(51,51,51) #333333;
-  search submit button bg rgb(0,23,193) #0017c1 / white text / 8px radius / weight 700;
-  search input bg #ffffff / 1px solid rgb(102,102,102) #666666 / 8px radius / 48px / text rgb(26,26,26) #1a1a1a;
-  nav links color rgb(51,51,51) / 16px / 10px 16px padding; section H2 32px/700;
-  card H3 color rgb(0,17,143) #00118f / 20px / 700; navigation card bg #ffffff /
-  1px solid rgb(148,148,148) #949494 / 16px radius / 24px padding / box-shadow none.
-- https://design.digital.go.jp/dads/components/button/ (button component page) —
-  filled button rgb(0,23,193) #0017c1 white text 8px; outline button bg #ffffff /
-  1px solid rgb(0,23,193) / text rgb(0,23,193) / 8px radius / 56px / 12px 16px padding;
-  colour scan surfaced rgb(232,241,254) #e8f1fe, rgb(217,230,255) #d9e6ff tints,
-  rgb(236,0,0) #ec0000 error, rgb(25,122,75) #197a4b success, rgb(242,242,242) #f2f2f2,
-  rgb(230,230,230) #e6e6e6 surfaces, rgb(118,118,118) #767676 muted.
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) are verbatim from the live site (document.title and section H2 headings).
-
-Brand narrative (§11): Japan's Digital Agency (デジタル庁) was established September 1, 2021;
-DADS is published at design.digital.go.jp/dads under CC BY 4.0 with Figma + HTML/React
-snippets and accessibility/usability guidelines (per the homepage and the brief's Tier 1
-hints). The β/version posture ("β版 v2.14.0") is verbatim from the live header.
-
-Personas (§13) are fictional archetypes informed by publicly observable DADS user segments
-(government service teams, ministry developers, citizens). Names are illustrative; they do
-not refer to real people.
-
-Interpretive claims (e.g., "one blue, meaning-only colour", "flat clarity as a rejection of
-consumer-branding flourish") are editorial readings connecting DADS's observed design to its
-civic mission, not directly quoted Digital Agency statements.
--->
+The opened stylesheet includes a `prefers-reduced-motion:reduce` rule that disables animations on progress-indicator spinner/linear elements and their descendants. This is a scoped declaration; a universal transition-collapse rule was not established. [Live stylesheet](https://design.digital.go.jp/dads/assets/B27ZN1QL.css).
 
 ## Components
 
-### Buttons
+Six specific controls were measured at 1440×1000 with real pointer hover/press and keyboard Tab focus. All have authored changes; none of the recorded focus changes persisted after blur. Navigation and resource controls below are links.
 
-**Filled (Primary)**
-- Background: `#0017c1`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 8px 16px
-- Height: 48px
-- Font: 16px Noto Sans JP weight 700
-- Hover: `#00118f` background
-- Use: Primary action — search submit ("検索"), key CTAs
+| Control | Rest identity and appearance |
+|---|---|
+| **Filled search button** — “検索” | 56×48px; radius 8px; padding 8px 0px; 16px/700; blue `#0017c1`, white label; transparent 4px double border; no rest shadow |
+| **Outline previous-page link** — “ヘッダーコンテナ: 概要” | 360.5×56px on the button overview; radius 8px; padding 12px 16px; 16px/700; white with `#0017c1` text, arrow and 1px border; no rest shadow |
+| **Figma resource link** — “デザインデータ（Figma）” | 229.7×25px in the states capture; radius 0; padding 0; 17px/700; transparent over white; underlined `#00118f`; external-link pseudo-element |
+| **Site-search input** — `#sidebar-search-input` | 161×48px; radius 8px; padding 0px 16px 0px 48px; 16px/400; white, `#1a1a1a` text, 1px `#666666` border |
+| **Introduction card link** — “はじめに …” | 504.5×153.8px; radius 16px; padding 24px; white with 1px `#949494` border; 17px/400 inherited text, blue 20px/700 title and black description; no rest shadow |
+| **Sidebar introduction link** — “はじめに” | 269×44px; radius 0; padding 10px 16px; 16px/400; transparent over white, `#333333` label and diamond icon |
 
-**Outline (Secondary)**
-- Background: `#ffffff`
-- Text: `#0017c1`
-- Border: 1px solid `#0017c1`
-- Radius: 8px
-- Padding: 12px 16px
-- Height: 56px
-- Font: 16px Noto Sans JP weight 700
-- Hover: `#e8f1fe` background tint
-- Use: Secondary actions — section anchor links ("ヘッダーコンテナ: 概要")
+The filled search control darkens and gains an underline on hover. The outline link changes its fill, text, border and arrow together. The Figma resource link keeps an underline and changes color through rest, hover and press. The card changes background and underlines its description. Full state values appear in §14.
 
-**Text Link**
-- Text: `#00118f`
-- Font: 17px Noto Sans JP weight 400
-- Use: Inline link button (e.g. "v2.0.0以降のFigmaファイル")
-
-### Inputs & Forms
-
-**Text Input / Search Box**
-- Background: `#ffffff`
-- Text: `#1a1a1a`
-- Border: 1px solid `#666666`
-- Radius: 8px
-- Padding: 0 16px (48px left pad when icon present)
-- Height: 48px
-- Font: 16px Noto Sans JP weight 400
-- Focus: blue `#0017c1` border
-- Use: Search box and standard text fields
-
-### Cards & Containers
-
-**Navigation Card**
-- Background: `#ffffff`
-- Text: `#333333`
-- Border: 1px solid `#949494`
-- Radius: 16px
-- Padding: 24px
-- Use: Content navigation cards (はじめに / ガイダンス / 基本デザイン) — heading in Link Blue `#00118f`, no shadow
-
-### Badges & Chips
-
-**Informational Chip**
-- Background: `#e8f1fe`
-- Text: `#00118f`
-- Radius: 8px
-- Font: 16px Noto Sans JP weight 400
-- Use: Selected / informational chip tint
-
-**Error Indicator**
-- Text: `#ec0000`
-- Font: 16px Noto Sans JP weight 400
-- Use: Field-level error message colour
-
-### Navigation
-- Background: `#ffffff`
-- Text: `#333333`
-- Font: 16px Noto Sans JP weight 400
-- Padding: 10px 16px
-- Active: Link Blue `#00118f` text + 2px bottom border `#0017c1`
-- Use: Top horizontal header nav (はじめに / ガイダンス / 基本デザイン / コンポーネント / リソース / お知らせ)
-
----
-
-**Verified:** 2026-06-17 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://design.digital.go.jp/ (DADS homepage, live computed style); https://design.digital.go.jp/dads/components/button/ (button component page, live computed style — filled/outline buttons + semantic colour scan)
-**Tier 2 sources:** getdesign.md/digital-agency-jp — not listed (government DS, outside coverage); styles.refero.design — not listed
-**Conflicts unresolved:** none
-
-### Published component roster (49 published, none measured here)
-
-The Japan Digital Agency Design System (DADS) publishes **49 components**, read from its own index at `https://design.digital.go.jp/dads/components/` on
-2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
-rendered page in a browser. No value, state or geometry below is asserted by this reference.
+**Published roster.** The opened [component index](https://design.digital.go.jp/dads/components/) still has 49 unique component destinations. The names are retained in the Japanese used by the index; this roster does not supply measured specifications for those components:
 
 アコーディオン, イメージスライダー, インプットテキスト, カルーセル, カード, コンボボックス, スイッチ, スクロールトップボタン, ステップナビゲーション, セレクトボックス, タブ, チェックボックス, チップタグ, チップラベル, テキストエリア, テーブルコントロール, テーブル／データテーブル, ディスクロージャー, ディバイダー, ドロワー, ノティフィケーションバナー, ハンバーガーメニューボタン, パンくずナビゲーション, ファイルアップロード／ドロップエリア, プログレスインジケーター, ヘッダーコンテナ, ページナビゲーション, ボタン, ボトムナビゲーション, メガメニュー, メニューリスト, メニューリストボックス, モバイルメニュー, モーダルダイアログ, ユーティリティリンク, ラジオボタン, ランゲージセレクター, リソースリスト, 引用ブロック, 日付ピッカー／カレンダー, 検索ボックス, 水平メニュー, 注釈ブロック, 画像, 目次, 箇条書きリスト, 緊急時バナー, 見出し, 説明リスト
 
-Names are given in Japanese because that is how the host publishes them. Translating them would
-produce names this design system does not use.
+No informational-chip or field-error specimen was measured.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no results)** | White canvas. Single Ink (`#333333`) line at body size explaining no matching results, with one filled blue (`#0017c1`) action to adjust the query. No decorative illustration. |
-| **Empty (no saved items)** | Muted (`#666666`) single line stating nothing is saved yet, plus a plain path back. Calm and factual. |
-| **Loading (content fetch)** | Skeleton blocks on `#f2f2f2` tinted surface at final dimensions, 16px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place)** | Inline progress; previous content stays visible. No full-screen blocking. |
-| **Error (request failed)** | Inline message in Error Red `#ec0000` with a plain-language explanation of what happened and what to do next. Never a bare generic error. |
-| **Error (form validation)** | Field-level message in `#ec0000` below the input; input border shifts to indicate the error. Describes what is valid, not just "必須" (required). |
-| **Success (action completed)** | Brief confirmation in Success Green `#197a4b` with next-step detail linked below. No celebratory flourish. |
-| **Skeleton** | `#f2f2f2` blocks at final dimensions, 16px radius, flat pulse. |
-| **Disabled** | Muted Alt (`#767676`) text on a reduced-contrast surface; the affordance is clearly non-interactive while remaining readable. |
-| **Focus** | Visible focus ring in government blue `#0017c1` on every interactive element — a hard accessibility requirement. |
+**Standard exterior focus indicator**, measured on the filled button, outline link, input and card: `outline: 4px solid #000000`, offset 2px, plus `box-shadow: 0 0 0 2px #ffd43d`. Each is an authored solid outline, and its focus changes clear after blur.
+
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Search submit | Fill `#00118f`; white underline | Fill `#000060`; white underline | Exterior indicator; rest fill remains |
+| Outline previous-page link | Fill `#c5d7fb`; text/border/arrow `#00118f`; underline | Fill `#9db7f9`; text/border/arrow `#000060`; underline | Exterior indicator; white fill and rest text remain |
+| Figma resource link | Text, underline and external-link pseudo-element `#0017c1` | Text, underline and external-link pseudo-element `#e25100` | Yellow background; radius 4px; exterior indicator; rest text color remains |
+| Site search | Border black | Border black plus the exterior indicator; this capture also matches `:focus-visible` | Exterior indicator; rest `#666666` border when pointer is away |
+| Introduction card | Fill `#f2f2f2`; description underlined in black | Same recorded changes as hover | Exterior indicator; white fill remains |
+| Sidebar introduction link | Fill `#f2f2f2`; `#333333` underline | Same recorded changes as hover | Yellow fill, 6px inset yellow shadow, 4px black outline at **−4px offset** |
+
+All pointer captures actually matched `:hover`; pressed captures also matched `:active`. The probe compared the controls, pseudo-elements, descendants and three ancestor levels, including the navigation/outline SVGs. This is a DOM/computed-style scope; it does not prove absence of changes in canvas, inaccessible frames, closed shadow roots or sibling elements.
+
+The stylesheet additionally declares a hover underline-thickness change from `.0625rem` to `.1875rem` for prose resource links and card titles. The probe's decoration string does not measure thickness; these are declared values from the [live stylesheet](https://design.digital.go.jp/dads/assets/B27ZN1QL.css).
+
+Empty, loading, request-error, form-validation, success, skeleton and disabled presentations were not measured.
 
 ## Do's and Don'ts
 
-### Do
-- Use solid government blue (`#0017c1`) for filled primary actions and outline-button borders/text
-- Use the deeper Link Blue (`#00118f`) for all text-on-white links and card headings
-- Use Noto Sans JP across every surface — it's the mandated open-source CJK typeface
-- Use near-black `#333333` for body text instead of pure black
-- Give body text generous line-height (1.7 on 17px) for CJK legibility
-- Separate content with `#949494` hairlines and `#f2f2f2`/`#e6e6e6` grey surfaces, not shadows
-- Keep radius restrained — 8px on buttons/inputs/chips, 16px on cards
-- Reserve red (`#ec0000`) and green (`#197a4b`) strictly for error/success meaning
-- Keep touch targets large (44–56px) for accessibility
+- Use the measured blue pair for this site's filled actions and resource links, including the darker pressed fill and orange resource-link press.
+- Preserve underlines and the black/yellow keyboard indicators. The local-system guidance explicitly says the supplied focus indicator must not be changed.
+- Keep 17px/1.7 reading text separate from the denser one-line control and navigation metrics.
+- Reproduce the measured 8px control and 16px card radii when recreating these documentation controls.
+- Preserve semantic hue/meaning relationships and the local guidance's text/background and non-text contrast requirements when adapting the palette.
+- Define an adopter's local design system before customizing components; the guidance permits changing key color, spacing and corners within its accessibility requirements.
 
-### Don't
-- Add a second accent hue — blue is the only brand colour; colour beyond it must carry meaning
-- Use drop shadows for elevation — DADS is a flat, shadow-free system
-- Use pure black (`#000000`) for body text — reserve near-black `#333333`
-- Use the fill blue (`#0017c1`) for small text on white where contrast is tight — use Link Blue `#00118f`
-- Substitute a non-CJK or licensed font — Noto Sans JP is mandated for cross-device consistency
-- Use sharp 0px corners or oversized radii — stay in the 8–16px range
-- Crowd Japanese text with tight line-height — keep CJK leading generous
-- Use red or green decoratively — they are semantic-only
+These directions follow the six controls and [local design-system guidance](https://design.digital.go.jp/dads/guidance/local-design-system/). Avoid treating a homepage color, font choice, corner range or flat rest state as a universal rule for every adopting service.
 
 ## Voice & Tone
 
-DADS's voice is **plain, neutral, and accessible** — the register of a public institution that must be understood by every citizen regardless of digital fluency. Copy is functional Japanese: section labels are direct nouns ("はじめに" / Introduction, "ガイダンス" / Guidance, "基本デザイン" / Basic Design, "コンポーネント" / Components), and instructions favour clarity over personality. There is no marketing tone, no superlatives, no exclamation — the system documents itself with the calm precision of a public manual.
+The sampled copy uses descriptive Japanese section names and short action labels. Navigation includes “はじめに”, “ガイダンス”, “基本デザイン”, “コンポーネント” and “リソース”; the measured submit label is “検索”. The homepage's “デジタル庁デザインシステムの構成” and “本ウェブサイトのコンテンツ” introduce explanatory sections. Its title openly includes the beta status, while the sidebar adds v2.18.2. [Homepage](https://design.digital.go.jp/dads/).
 
-| Context | Tone |
-|---|---|
-| Section / nav labels | Direct nouns. "はじめに", "ガイダンス", "コンポーネント", "リソース". |
-| Component docs | Explanatory and precise — what the component is, when to use it, accessibility notes. |
-| CTAs / actions | Plain imperatives. "検索" (Search). No hype. |
-| Accessibility guidance | Concrete and rule-based — states the requirement plainly. |
-| Versioning / notices | Factual. "デジタル庁デザインシステムβ版 v2.14.0" — states the version and beta status openly. |
-
-**Voice samples (verbatim from live site):**
-- "デジタル庁デザインシステムβ版" — site title, states beta status openly. *(verified live 2026-06-17, document.title)*
-- "デジタル庁デザインシステムの構成" ("Composition of the Digital Agency Design System") — section H2, neutral explanatory framing. *(verified live 2026-06-17)*
-- "本ウェブサイトのコンテンツ" ("Contents of this website") — section H2, plain descriptive label. *(verified live 2026-06-17)*
-
-**Forbidden register**: marketing superlatives, emotional appeals, exclamation-heavy hype, undefined jargon, anything that reads as promotional rather than informational. Government content is for everyone — clarity beats cleverness.
+The component overview distinguishes overview, usage and accessibility content. Release notes attach dates and revisions to changes. This supports a functional, explanatory reading of the sampled voice. The platform guidance leaves organization-specific brand and communication policy to the adopter; no official forbidden-register list was verified. [Button overview](https://design.digital.go.jp/dads/components/button/), [updates](https://design.digital.go.jp/dads/updates-dads/), [platform guidance](https://design.digital.go.jp/dads/guidance/design-system/).
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary action (filled): Government Blue (`#0017c1`)
-- Link / heading text: Link Blue (`#00118f`)
-- Background: Pure White (`#ffffff`)
-- Body text: Ink (`#333333`)
-- Input text: Ink Strong (`#1a1a1a`)
-- Muted text / border: Muted (`#666666`), Muted Alt (`#767676`)
-- Hairline: `#949494`
-- Surfaces: Surface Grey (`#f2f2f2`), Surface Alt (`#e6e6e6`)
-- Blue tints: `#e8f1fe`, `#d9e6ff`
-- Error: Red (`#ec0000`), Success: Green (`#197a4b`)
+For a documentation page based on the measured surface:
 
-### Example Component Prompts
-- "Create a government service header on white. Title at 20px Noto Sans JP weight 700, color #333333. Horizontal nav links at 16px weight 400, #333333, active item gets #00118f text + 2px bottom border #0017c1. Search box: white bg, 1px solid #666666 border, 8px radius, 48px tall, with a filled blue submit button (#0017c1 bg, white text, 8px radius, 16px weight 700)."
-- "Design a navigation card: white background, 1px solid #949494 border, 16px radius, 24px padding, no shadow. Heading at 20px Noto Sans JP weight 700 in #00118f. Body at 17px weight 400, line-height 1.7, #333333."
-- "Build an outline button: white bg, 1px solid #0017c1 border, #0017c1 text, 8px radius, 16px Noto Sans JP weight 700, 56px tall. Hover fills #e8f1fe."
-- "Create a form field with error: input at white bg, 1px solid #666666, 8px radius, 48px tall; on error show #ec0000 message text below at 16px Noto Sans JP."
+- “Use a white canvas with `#333333` prose, the officially adopted Noto Sans JP, and 17px/1.7 reading text. Place title, search and 16px/400 navigation in a fixed desktop left sidebar.”
+- “Build the 56×48px search button in `#0017c1`, white 16px/700 text and an 8px radius. Hover uses `#00118f` with an underline; press uses `#000060`. Keyboard focus adds a 4px black outline, 2px offset and 2px yellow shadow.”
+- “Make a white introduction-card link with a 1px `#949494` border, 16px radius and 24px padding. Use a 20px/700 underlined `#00118f` title and 17px/1.7 black description. Hover and press use `#f2f2f2` and underline the description.”
+- “Make the previous-page outline link 56px high with 12px 16px padding. Start with `#0017c1` text/border on white; hover uses `#c5d7fb` and `#00118f`; press uses `#9db7f9` and `#000060`.”
 
-### Iteration Guide
-1. Blue is the only brand colour — `#0017c1` for fills/borders, `#00118f` for text links and headings
-2. Noto Sans JP everywhere; weight 700 for headings/buttons, 400 for body
-3. No shadows — separate with `#949494` hairlines and `#f2f2f2`/`#e6e6e6` surfaces
-4. Body text is `#333333` (never pure black); give it 1.7 line-height for CJK
-5. Radius stays 8px (buttons/inputs/chips) to 16px (cards)
-6. Red `#ec0000` and green `#197a4b` are semantic-only — never decorative
-7. Keep touch targets 44–56px for accessibility
-
----
+For an adopting service, follow the platform's local-system process and preserve its accessibility structure. Noto Sans Mono retains its official code role without a live specimen in this capture. Substitute: none chosen.

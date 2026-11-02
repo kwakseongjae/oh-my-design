@@ -2,72 +2,86 @@
 name: HubSpot
 colors:
   primary: '#ff4800'
+  primary-hover: '#c93700'
+  primary-pressed: '#9f2800'
+  secondary-hover: '#fcece6'
+  secondary-pressed: '#fcc6b1'
   primary-tint: '#fcded2'
   canvas: '#fcfcfa'
   warm-parchment: '#f8f5ee'
-  ink: '#1f1f1f'
+  foreground: '#1f1f1f'
   deep-teal: '#042729'
-  graphite: '#60605f'
-  mist: '#cacac8'
+  video-card-teal: '#061c1d'
   on-primary: '#ffffff'
-  cadet-navy: '#15295a'
+  focus-ring: '#459195'
 typography:
   display-hero:
-    fontSize: 80px
-    fontWeight: 500
-    lineHeight: 1.19
-    use: Hero display — HubSpot Serif Page Header Human
+    fontSize: 65px
+    fontWeight: 300
+    lineHeight: 1.2
+    use: 'Homepage H1: loaded HubSpot Serif; page CSS .-custom-font-size-65 at width >= 1080px sets 65px/78px; not a separate computed heading sample'
+  display-01:
+    fontSize: 112px
+    fontWeight: 300
+    lineHeight: 1.07142857
+    use: Computed root --cl-font-size-display-01 = 7rem; generic display token, not the current hero
+  display-02:
+    fontSize: 72px
+    fontWeight: 300
+    lineHeight: 1.22222222
+    use: Computed root --cl-font-size-display-02 = 4.5rem; generic display token
   heading-xl:
     fontSize: 48px
-    fontWeight: 500
-    lineHeight: 1.1
-    use: Large section headlines — HubSpot Serif
+    fontWeight: 300
+    lineHeight: 1.15384615
+    use: Computed root H1 tokens; HubSpot Serif
   heading-lg:
     fontSize: 40px
-    fontWeight: 500
-    lineHeight: 1.15
-    use: Section headings — HubSpot Serif
+    fontWeight: 300
+    lineHeight: 1.1
+    use: Computed root H2 tokens; HubSpot Serif
   heading:
     fontSize: 24px
     fontWeight: 500
-    lineHeight: 1.42
-    use: Card headings — HubSpot Sans
+    lineHeight: 1.41666667
+    use: Computed root H3 tokens
   heading-sm:
     fontSize: 22px
     fontWeight: 500
-    lineHeight: 1.45
-    use: Sub-section heads — HubSpot Sans
+    lineHeight: 1.45454545
+    use: Computed root H4 tokens
   subheading:
     fontSize: 18px
-    fontWeight: 400
-    lineHeight: 1.67
-    use: Feature descriptions
+    fontWeight: 300
+    lineHeight: 1.77777778
+    use: Computed root large paragraph tokens
   body:
     fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.56
-    use: Standard reading text
+    fontWeight: 300
+    lineHeight: 1.75
+    use: Computed root medium paragraph tokens
   body-sm:
     fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.57
-    use: Secondary UI text, labels
+    fontWeight: 300
+    lineHeight: 1.57142857
+    use: Computed root small paragraph tokens
   caption:
     fontSize: 12px
     fontWeight: 500
-    lineHeight: 1.6
-    use: Small labels, eyebrows
+    lineHeight: 1.66666667
+    use: Computed root microcopy tokens
   button:
     fontSize: 16px
     fontWeight: 500
-    lineHeight: 1
-    use: Primary button label
+    lineHeight: 1.75
+    use: 'Survey: 56px medium CTA, 28px line height'
   button-sm:
     fontSize: 14px
     fontWeight: 500
-    lineHeight: 1
-    use: Small button label
+    lineHeight: 1.57142857
+    use: Measured 42px header CTA, 22px line height
 rounded:
+  none: 0px
   sm: 4px
   md: 8px
   lg: 16px
@@ -80,89 +94,76 @@ spacing:
   lg: 24
   xl: 32
   xxl: 48
+  inline-medium: 40
+  inline-large: 64
+  section-small: 40
   section: 64
+  section-large: 96
 components:
   button-primary:
     type: button
     backgroundColor: '#ff4800'
     textColor: '#ffffff'
+    border: 2px solid rgba(0, 0, 0, 0)
     rounded: 8px
+    height: 68px
     padding: 16px 40px
-    typography: 18px / 500 HubSpot Sans
-    border: 2px solid rgba(0,0,0,0)
-    states: hover darken
-    use: Primary CTA — Get a demo / Get started
+    typography: 18px / 500 HubSpot Sans; line-height 32px
+    hover: 'bg #c93700'
+    pressed: 'bg #9f2800'
+    focus: 'bg #c93700; outline 2px solid #459195; outline-offset 2px'
+    use: Hero Get a demo link; accessible label includes of HubSpot's premium software; white text remains unchanged in the measured states.
   button-outlined:
     type: button
     backgroundColor: '#ffffff'
     textColor: '#ff4800'
-    rounded: 8px
-    padding: 16px 40px
-    typography: 18px / 500 HubSpot Sans
     border: '2px solid #ff4800'
-    use: Secondary CTA — Get started free
-  button-dark:
-    type: button
-    backgroundColor: '#1f1f1f'
-    textColor: '#ffffff'
     rounded: 8px
-    padding: 8px 16px
-    typography: 14px / 500 HubSpot Sans
-    use: Dark surface CTA — Learn more
+    height: 68px
+    padding: 16px 40px
+    typography: 18px / 500 HubSpot Sans; line-height 32px
+    hover: 'bg #fcece6; fg #c93700; border 2px solid #c93700'
+    pressed: 'bg #fcc6b1; fg #9f2800; border 2px solid #c93700'
+    focus: 'bg #fcece6; fg #c93700; border 2px solid #c93700; outline 2px solid #459195; outline-offset 2px'
+    use: Hero Get started free link; accessible label includes with HubSpot's free tools.
   button-sm:
     type: button
     backgroundColor: '#ff4800'
     textColor: '#ffffff'
+    border: 2px solid rgba(0, 0, 0, 0)
     rounded: 8px
+    height: 42px
     padding: 8px 16px
-    typography: 14px / 500 HubSpot Sans
-    use: Compact primary button
-  input-default:
-    type: input
-    backgroundColor: '#ffffff'
-    border: '1px solid #cacac8'
-    rounded: 4px
+    typography: 14px / 500 HubSpot Sans; line-height 22px
+    hover: 'bg #c93700'
+    pressed: 'bg #9f2800'
+    focus: 'bg #c93700; outline 2px solid #459195; outline-offset 2px'
+    use: Header Get a demo link; compact counterpart of the measured hero CTA.
+  nav-pricing:
+    type: button
     textColor: '#1f1f1f'
-    typography: 16px HubSpot Sans
-    use: Standard text/email input
-  card-product:
+    rounded: 0px
+    height: 28px
+    padding: 0px
+    typography: 16px / 500 HubSpot Sans; line-height 28px
+    hover: 'text-decoration underline solid #1f1f1f'
+    pressed: 'text-decoration underline solid #1f1f1f'
+    focus: 'underline; ::after outline 2px solid #459195; outline-offset -2px; pseudo-element 80px by 76px'
+    use: Pricing navigation link; transparent control on the white header. Background omitted; measured link box is 52px by 28px.
+  card-video:
     type: card
-    backgroundColor: '#fcfcfa'
-    textColor: '#1f1f1f'
-    rounded: 16px
-    border: 2px solid rgba(0,0,0,0.11)
-    padding: 24px
-    use: Product hub overview card
-  card-feature:
-    type: card
-    backgroundColor: '#ffffff'
-    textColor: '#1f1f1f'
-    rounded: 16px
-    border: '1px solid #1f1f1f'
-    padding: 24px 32px
-    use: Feature content card with hairline border
-  badge-default:
-    type: badge
-    backgroundColor: '#fcded2'
-    textColor: '#ff4800'
-    rounded: 4px
-    padding: 4px 8px
-    typography: 12px / 500 HubSpot Sans
-    use: Warm peach accent pill / tag
-  tab-filter:
-    type: tab
-    backgroundColor: '#f8f5ee'
-    textColor: '#1f1f1f'
-    rounded: 16px
-    typography: 14px / 500 HubSpot Sans
-    active: 'text #1f1f1f bg #f8f5ee'
-    use: Filter tab (By Use Case / By Team Size)
+    backgroundColor: '#061c1d'
+    textColor: '#f8f5ee'
+    rounded: 0px
+    height: 560px
+    padding: 0px
+    hover: width 459px to 800px; preview and play-button opacity 0 to 1
+    pressed: width 459px to 800px; preview and play-button opacity 0 to 1
+    use: 'All your customer data, right at your fingertips. video trigger, a div with role=button. Image covers the teal base; visible H2 inherits #f8f5ee. Keyboard focus was UNMEASURED; no focus token.'
 fonts:
   roles:
     sans: HubSpot Sans
     serif: HubSpot Serif
-    fallback-sans: Inter
-    fallback-serif: Source Serif 4
 ---
 
 # Design System Inspiration of HubSpot
@@ -171,439 +172,182 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-HubSpot's homepage is a warm, modern marketing platform — approachable and energetic without sacrificing professionalism. The page opens on a canvas cream background (`#fcfcfa`), a softly warmed white that reads organic and friendly rather than clinical. The primary brand accent is an assertive Sprout Orange (`#ff4800`), reserved almost exclusively for CTAs and key functional icons, making every call-to-action unmistakably clear. Deep ink (`#1f1f1f`) anchors headings and body text — almost-black with a touch of warmth that prevents harshness. Dark teal sections (`#042729`) appear as immersive brand moments, providing dramatic contrast without defaulting to pure black.
+HubSpot was founded in 2006 by Brian Halligan and Dharmesh Shah. Its company history describes them as MIT graduate students in 2004, noticing that buyers wanted helpful information instead of ads. That history follows the expansion from inbound marketing into a customer platform, now described as agentic and built on an AI-powered Smart CRM. Its mission links business growth to customers' success. [Company story](https://www.hubspot.com/our-story)
 
-HubSpot's typographic system is built on two proprietary fonts: **HubSpot Sans** (weight 300–500) for all UI and body copy, and **HubSpot Serif** (weight 500) for display and section headlines. At hero sizes, a third variant — HubSpot Serif Page Header Human — appears at 80px, projecting warmth and confidence simultaneously. This serif/sans split is unusual for a SaaS brand but reflects HubSpot's positioning: part technology company, part inbound-marketing thought leader. The result is a system that feels editorial and trustworthy rather than purely technical.
+The live marketing surface combines editorial serif headlines, restrained sans-serif navigation, orange actions, warm neutral tokens and photographic video cards. The current hero is centered on white, with two actions below the copy and three photographic cards beneath it. Orange also appears as the period after the headline: the page's `.-brand::after` rule supplies the punctuation. This is an observed brand accent as well as an action color. The official trademark page identifies the orange sprocket as a recognizable brand mark. [Homepage](https://www.hubspot.com/), [trademark guidelines](https://legal.hubspot.com/tm-usage-guidelines)
 
-Elevation is minimal and intentional. Rather than multi-layer shadows, HubSpot uses hairline borders (`rgba(0,0,0,0.11)`) and alternating background tints — canvas cream versus warm parchment (`#f8f5ee`) — to segment content. When CTAs appear on dark teal sections, they switch to outlined variants with cream borders, maintaining the orange-is-primary-action rule without breaking accessibility.
+HubSpot's September 2025 product design writing describes a phased refresh intended to reduce cognitive load and create a more coherent platform, with accessibility and AI as drivers. It describes WCAG 2.2 AA as a goal under active work and dark mode as a future possibility. These are stated directions, not measured completion claims. [Designing for Your Next Decade of Growth](https://product.hubspot.com/blog/designing-for-your-next-decade-growth)
 
-**Key Characteristics:**
-- Sprout Orange (`#ff4800`) as the single CTA and action color — never decorative
-- Canvas cream (`#fcfcfa`) page background — warm, organic, not clinical white
-- HubSpot Sans + HubSpot Serif proprietary type system — editorial SaaS hybrid
-- 8px border-radius on all interactive elements (buttons, inputs, nav items)
-- 16px radius on cards and content containers
-- Nearly shadow-free: separation via hairline borders and tint alternation
-- Deep teal (`#042729`) for dark brand-immersive sections
-- Warm parchment (`#f8f5ee`) as alternating section tint
-
-### Primary tasks
-
-- Move a deal through the stages of a pipeline
-- Import a list of contacts into an empty CRM
-- Generate a report while the previous data stays visible
-- See every marketing and sales interaction before calling a customer
-- Manage outbound follow-up with a sequence of touches
+Primary tasks on this public surface are to explore the product hubs, compare pricing, request a demo and start with free tools. The captured controls describe this marketing website; authenticated CRM workflows are a separate surface.
 
 ### Brand Narrative
 
-HubSpot was founded in **2006** by **Brian Halligan** and **Dharmesh Shah** at MIT, emerging from a shared observation: traditional outbound marketing (cold calls, purchased email lists, intrusive ads) was becoming less effective as buyers gained control of their information consumption. Their answer was the **Inbound methodology** — create content people actually want, attract them to you, engage them with useful tools, and delight them after they become customers. This was not merely a business model; it was a philosophy that HubSpot turned into a product category.
+The company history starts with a change in buyer behavior: helpful information mattered more than interruptions. HubSpot's subsequent expansion beyond marketing explains the breadth of its customer-platform story. Its mission connects a company's success with its customers' success. [Company story](https://www.hubspot.com/our-story)
 
-The company's flagship product began as a marketing automation and CMS platform, grew into a full CRM suite spanning Marketing Hub, Sales Hub, Service Hub, Content Hub, and Operations Hub, and evolved further into the **HubSpot Customer Platform** — a unified system where customer data, AI tools, and connected workflows sit in a single database rather than a patchwork of integrations. The Canvas design system codifies the visual and interaction language of this unified platform.
+Its official inbound guide still describes three stages: attract people through useful content, engage them with relevant insights and solutions, then delight customers with support. The guide now presents Loop Marketing as a further development for AI-assisted personalization, wider distribution and iteration. This supplies a current link between the founding method and the platform's newer AI story. [Inbound methodology](https://www.hubspot.com/inbound-marketing)
 
-What makes HubSpot distinctive as a brand is its dual identity: a technology company with the soul of a publishing house. HubSpot Academy has trained millions; the HubSpot Blog is one of the most-read marketing resources on the internet; the annual INBOUND conference draws tens of thousands of practitioners. The brand earns trust not by outspending competitors on advertising but by being genuinely useful before asking for anything — which is exactly what it recommends to customers.
+Canvas is supported as part of that design history. HubSpot's 2018 article introduces HubSpot Canvas as its design language and explains how inconsistent interfaces motivated a shared system. The 2021 article identifies Canvas as the home of components, patterns and voice guidance, with an internal inclusive-content page. The former public Canvas host now redirects even a nonsense path to a general blog article; its endpoint does not prove a current documentation site. [Canvas history](https://product.hubspot.com/blog/how-building-a-design-system-empowers-your-team-to-focus-on-people-not-pixels), [inclusive-content article](https://product.hubspot.com/blog/inclusivity-is-a-design-principle)
 
 ### Principles
 
-1. **Inbound over outbound.** Build tools that attract; don't push. *UI implication:* CTAs are invitations, not demands. Free tiers and free educational resources are first-class citizens of every pricing surface.
-2. **Clear, not clever.** One of the five Canvas principles: "We design for clarity and focus." *UI implication:* a single orange CTA per pairing; no competing action colors; visual hierarchy that leads the eye to the next right step without ambiguity.
-3. **Human connection at scale.** Another Canvas principle: "We foster a sense of joy by humanizing the experience in ways that resonate across cultures." *UI implication:* warm type choices (HubSpot Serif, canvas cream), people-centric photography, copy that addresses the user's goal rather than the product's feature.
-4. **Integrated, not bolted-on.** The unified Customer Platform is the antithesis of the point-solution stack. *UI implication:* design system tokens are shared across Marketing, Sales, Service, and Content surfaces — the orange, the fonts, the radius scale do not differ by hub.
-5. **Grow better, not just bigger.** HubSpot's mission is to help businesses "grow better" — implying that the manner of growth (sustainable, customer-centric, inbound) matters as much as velocity. *UI implication:* trust-building touchpoints (transparent pricing, free tools, educational resources) are designed with the same fidelity as revenue-driving CTAs.
+- **Connect growth with customer success.** This is the company's stated mission context. Use it to keep the task and benefit clear in marketing copy. [Company story](https://www.hubspot.com/our-story)
+- **Reduce cognitive load through consistency.** The 2025 design article links simplification and visual hierarchy with a cohesive platform. Preserve clear grouping and predictable control states. [Design evolution](https://product.hubspot.com/blog/designing-for-your-next-decade-growth)
+- **Write inclusively and plainly.** The published product-writing guidance supports understandable language and neutral pronouns. [Inclusive content](https://product.hubspot.com/blog/inclusivity-is-a-design-principle)
+
+These combine sourced principles with practical implementation guidance; they are not presented as a newly verified list of Canvas's five original principle names.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable HubSpot user segments (SMB marketers, growth-stage sales teams, customer success managers, operations leads), not individual people.*
-
-**Priya Nair, 33, Austin.** Marketing manager at a 50-person SaaS startup. Runs HubSpot Marketing Hub for email, SEO, and landing pages. Chose HubSpot over competitors because the free CRM let her start without a budget approval cycle. Uses HubSpot Academy certifications to upskill her team. Measures HubSpot's value by whether it helps her move faster than her head count would otherwise allow.
-
-**Marcus Osei, 28, London.** BDR at a Series B fintech. Lives in HubSpot Sales Hub and uses Sequences to manage outbound follow-up without losing the inbound philosophy — every touch is useful, not just a bump. Values the clean pipeline view and the fact that every prospect interaction is logged automatically. Would be frustrated by a redesign that added steps to the daily workflow.
-
-**Jess Thornton, 41, Chicago.** VP of Customer Success at a mid-market software company. Uses Service Hub to manage a 12-person support team. Cares about the 360-degree contact view because it means her team can see every marketing and sales interaction before picking up the phone. Chose HubSpot because it eliminated the "who owns this customer?" question.
-
-**Tomás Ferrara, 37, Buenos Aires.** Marketing agency owner running HubSpot for 14 SMB clients via the Solutions Partner Program. Appreciates the standardization — one set of tools, one UI, one certification ecosystem. Uses the HubSpot Blog as much as the product documentation.
+No first-party persona profiles were verified.
 
 ## Colors
 
-### Primary & Brand
-- **Sprout Orange** (`#ff4800`): The single action color. Primary CTA backgrounds, active states, brand icons, functional accents. Reserved — never for decorative backgrounds.
-- **Peach Tint** (`#fcded2`): Soft warm accent surface. Used for badges, soft highlights, and the subtle hero gradient area.
+The survey enumerated 776 computed root custom properties and 937 distinct declared property names. The first-party palette uses `--hubspot-2025-*` primitives, `--light-theme-*` and `--dark-theme-*` semantic roles, and `--cl-color-*` aliases. Ownership follows the homepage's `data-cl-brand=hubspot-2025` selectors. The following values come from those properties and the measured controls. [Homepage](https://www.hubspot.com/)
 
-### Canvas & Surfaces
-- **Canvas Cream** (`#fcfcfa`): Primary page background and default card surface. Warm, slightly off-white.
-- **Warm Parchment** (`#f8f5ee`): Alternating section background. Creates visual rhythm without borders or shadows.
-- **Pure White** (`#ffffff`): Secondary card surface for outlined cards; button background for outlined CTA variant.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary | `#ff4800` | `--cl-color-button-primary-fill-idle`; both demo links at rest |
+| Primary hover | `#c93700` | Primary fill on hover and keyboard focus; secondary hover text and border |
+| Primary pressed | `#9f2800` | Primary pressed fill; secondary pressed text |
+| Secondary hover surface | `#fcece6` | Hero free-tools CTA on hover and focus |
+| Secondary pressed surface | `#fcc6b1` | Hero free-tools CTA while pressed |
+| Peach accent | `#fcded2` | Declared `--wf-animated-carousel-breeze-orange-4`; one rendered background in the census; not a verified badge recipe |
+| Canvas token | `#fcfcfa` | `--cl-color-background-01`; seven rendered backgrounds; the hero overrides this with white |
+| Warm parchment | `#f8f5ee` | `--cl-color-background-02`; also the visible video-card heading ink |
+| Foreground | `#1f1f1f` | `--cl-color-text-01`; paragraph ink on 22 paragraphs |
+| Deep teal | `#042729` | `--dark-theme-background-01`; one rendered background |
+| Video-card base | `#061c1d` | Measured first video card; covered by its image and gradient |
+| White / on primary | `#ffffff` | Demo label, secondary rest fill, header and hero surface; 37 rendered backgrounds |
+| Focus ring | `#459195` | `--cl-color-focus-01`; authored solid outlines in keyboard measurements |
 
-### Text & Ink
-- **Ink** (`#1f1f1f`): Primary text and heading color. All body copy, headings, and interactive labels on light backgrounds.
-- **Graphite** (`#60605f`): Muted secondary text. Descriptions, captions, metadata.
-- **Mist** (`#cacac8`): Disabled states, inactive markers, input borders.
+Secondary text is an alpha role: `--cl-color-text-02 = rgba(0, 0, 0, 0.6196078431)`. The census serializes two text uses as `rgba(0, 0, 0, 0.62)` and 99 as `rgba(255, 255, 255, 0.62)`. Border census values include `rgba(0, 0, 0, 0.11)` on 35 elements. These are alpha values, not opaque palette entries.
 
-### Dark & Depth
-- **Deep Teal** (`#042729`): Dark brand sections. Footer, immersive product features, high-contrast brand moments.
-- **Cadet Navy** (`#15295a`): Deep blue-navy for occasional dark accents and enterprise-tier section backgrounds.
-
-### On-Surface
-- **On-Primary** (`#ffffff`): Text on orange primary CTA buttons.
+The footer semantic background is `#1f1f1f` (`--cl-color-background-footer-01`), separate from the dark section's deep teal.
 
 ## Typography
 
-### Font Family
-- **Primary Display**: `HubSpot Serif` — 40–80px, weight 500 only. Section headlines and hero moments.
-- **Primary UI/Body**: `HubSpot Sans` — 12–24px, weights 300/400/500. All navigation, buttons, labels, body copy.
-- **Fallbacks**: `Source Serif 4` for HubSpot Serif; `Inter` for HubSpot Sans.
+| Evidence class | What was verified |
+|---|---|
+| Official product use | No opened typography document names the authenticated application's product face. Homepage use does not establish that face. |
+| Live-loaded | `document.fonts` reports HubSpot Sans `300 400 normal` and `500 600 normal`; HubSpot Serif `400 600 normal` and `300 normal`. The declared body and button family is HubSpot Sans; H1 is HubSpot Serif. |
+| Official distributed assets | Homepage `@font-face` rules serve `HubSpotSans-Book.woff2`, `HubSpotSans-Medium.woff2`, `HubSpotSerif-Medium.woff2` and `HubSpotSerif-Book.woff2` from `www.hubspot.com/hubfs/assets/hs-components/v4/fonts/hubspot-2025/`. The rules establish asset names and serving paths; no license or redistribution permission was verified. |
+| Declared-only | Zen Kaku Gothic New has Regular, Medium and Bold WOFF2 declarations under the first-party `/fonts/ja/` path but no loaded face in this English capture. Runtime root variables also name Lexend Deca and LexendDeca; neither loaded. A Google Fonts Lato stylesheet was unreadable to the census and no Lato face loaded. None receives a specimen or a family token. |
+| Unresolved | Font authorship, licensing, product-wide adoption and script coverage were not established. Substitute: none chosen. |
 
-### Hierarchy
+The metric table separates computed root tokens from specific control geometry. Rem values remain visible below; their pixel equivalents use 16px/rem, cross-checked against the expanded search input, whose matching CSS declares .875rem and whose measured type is 14px. The current H1 has class `.-custom-font-size-65`; page CSS sets it to 65px with 78px line height at widths of at least 1080px. Its base heading weight resolves through the 300 root heading token. This authored rule is separate from the generic display and H1 tokens. [Homepage CSS and live font census](https://www.hubspot.com/)
 
-| Role | Font | Size | Weight | Line Height | Use |
-|------|------|------|--------|-------------|-----|
-| Display Hero | HubSpot Serif | 80px | 500 | 1.19 | Hero section headline |
-| Heading XL | HubSpot Serif | 48px | 500 | 1.10 | Large section titles |
-| Heading LG | HubSpot Serif | 40px | 500 | 1.15 | Section headings |
-| Heading | HubSpot Sans | 24px | 500 | 1.42 | Card headings, sub-sections |
-| Heading SM | HubSpot Sans | 22px | 500 | 1.45 | Smaller section heads |
-| Subheading | HubSpot Sans | 18px | 400 | 1.67 | Feature descriptions, intro text |
-| Body | HubSpot Sans | 16px | 400 | 1.56 | Standard reading text |
-| Body SM | HubSpot Sans | 14px | 400 | 1.57 | Secondary UI, labels, nav items |
-| Caption | HubSpot Sans | 12px | 500 | 1.60 | Eyebrows, small labels |
-| Button LG | HubSpot Sans | 18px | 500 | 1.00 | Large CTA button labels |
-| Button | HubSpot Sans | 16px | 500 | 1.00 | Standard button labels |
-| Button SM | HubSpot Sans | 14px | 500 | 1.00 | Compact button labels |
+| Role | Size | Weight | Line-height | Evidence |
+|---|---:|---:|---:|---|
+| Current hero | 65px | 300 | 78px / 1.2 | Page-specific CSS at width ≥1080px; not an additional computed H1 sample |
+| Display 01 | 112px / 7rem | 300 | 1.07142857 | Computed root `--cl-*-display-01` |
+| Display 02 | 72px / 4.5rem | 300 | 1.22222222 | Computed root `--cl-*-display-02` |
+| H1 / heading XL | 48px / 3rem | 300 | 1.15384615 | Computed root H1 tokens |
+| H2 / heading LG | 40px / 2.5rem | 300 | 1.1 | Computed root H2 tokens |
+| H3 / heading | 24px / 1.5rem | 500 | 1.41666667 | Computed root H3 tokens |
+| H4 / heading SM | 22px / 1.375rem | 500 | 1.45454545 | Computed root H4 tokens |
+| Large paragraph | 18px / 1.125rem | 300 | 1.77777778 | Computed root paragraph tokens |
+| Medium paragraph | 16px / 1rem | 300 | 1.75 | Computed root paragraph tokens |
+| Small paragraph | 14px / .875rem | 300 | 1.57142857 | Computed root paragraph tokens |
+| Microcopy | 12px / .75rem | 500 | 1.66666667 | Computed root microcopy tokens |
+| Hero action | 18px | 500 | 32px | Both measured hero links |
+| Medium action | 16px | 500 | 28px | Survey's 56px CTA pair |
+| Compact action | 14px | 500 | 22px | Measured 42px header demo link |
+| Pricing nav link | 16px | 500 | 28px | Measured header link |
 
-### Principles
-- **Serif for display, sans for UI**: HubSpot Serif owns every headline above 32px. HubSpot Sans owns every interactive, label, and body element. The split signals trustworthy authority (serif) and functional clarity (sans).
-- **Weight 500 as the signature**: Heading, button, and caption elements all land at 500 — a medium weight that reads confident without shouting.
-- **Weight 400 for reading**: Body, subheading, and nav use 400 to stay legible and approachable.
-- **Line-height relaxes at body sizes**: 1.56–1.67 at body scale gives the marketing copy room to breathe; display sizes tighten to 1.10–1.19.
+Use the measured serif/sans distinction when reproducing this surface. Keep the light paragraph and large-heading weights distinct from medium action labels; a universal 500 heading rule would lose the current hierarchy.
 
 ## Layout
 
-### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 40px, 48px, 56px, 64px, 80px
-- Notable: Section gaps land at 64–80px; card padding at 24–32px; element gaps at 16–24px
+The current desktop composition has a two-level header, a centered headline and supporting paragraph, a centered CTA pair, then a three-card photographic row. The first two card x positions are 16px and 483px with a 459px card width, giving an 8px gap. This replaces the prior reference's two-column hero description. The product platform block below combines a sticky sidebar with a card region. [Homepage markup, survey and viewport](https://www.hubspot.com/)
 
-### Grid & Container
-- Max content width: 1200px
-- Hero: dual-column on desktop — left text block with serif headline + CTA pair, right product screenshot
-- Feature sections: alternating 2-column and 3-column grid layouts
-- Full-width dark sections (`#042729`) with cream/white text for brand immersion
-- Product hub cards in a multi-tab dropdown grid (3–4 columns)
+Computed root container tokens are 1080px default, 1220px large/current section maximum and 1460px enhanced. `--global-nav-content-max-width` is 1220px. These are named container options, not a claim that every section is constrained to one width.
 
-### Whitespace Philosophy
-- **Tint alternation over shadow**: canvas cream (`#fcfcfa`) and warm parchment (`#f8f5ee`) alternating sections create visual rhythm without dividers or elevation.
-- **Hairline restraint**: card borders are 1–2px at low opacity (`rgba(0,0,0,0.11)`) rather than solid lines.
-- **Breathing sections**: 64–80px vertical rhythm between sections gives the marketing surface a generous, editorial cadence.
+Spacing properties retain a small set of repeatable steps: block gaps .5/1/1.5/2rem; tile gaps .75/1/1.5/2rem; container padding 1/1.5/2rem; current inline gaps 1.5/2.5/4rem. At 16px/rem these are 8, 12, 16, 24, 32, 40 and 64px. The navigation's `.global-nav-card-text-wrapper` also declares a .25rem/4px gap. Section-padding tokens are 0, 24, 40, 64 and 96px. These values establish spacing options, not a universal base-unit policy.
 
-### Border Radius Scale
-- Micro (4px): badges, input fields
-- Standard (8px): buttons, navigation pills, form elements
-- Relaxed (16px): cards, content containers, filter tabs
-- Full (9999px): avatar circles (if used)
+The declared module property `--breeze-agents-multi-column-content-gap-mobile: 3rem` also retains a 48px spacing option; this is CSS evidence, not a rendered mobile measurement.
+
+The radius properties are 4px small/input, 8px medium/small-container, 16px container and 9999px round. The measured video card and Pricing link use 0px. The circular carousel controls in the survey use `50%`; that percentage is kept in prose rather than converted into a numeric radius token. An avatar use for 9999px was not verified.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero stacks, nav collapses to hamburger |
-| Tablet | 640–1024px | 2-column feature grids, reduced padding |
-| Desktop | 1024–1280px | Full 2–3 column layout, serif hero headline at full scale |
-| Large Desktop | >1280px | Centered content with generous margins, 1200px max-width |
-
-#### Touch Targets
-- Primary CTA at 42px height (small) to 68px (large hero) — generous tap targets
-- Navigation tabs at 38px height with 16px radius
-- Input fields at 34px minimum height
-- Filter tabs: 38px height with 16px radius
-
-#### Collapsing Strategy
-- Hero: serif 80px display → 48px on tablet → 32px on mobile; CTA buttons stack vertically
-- Navigation: horizontal product mega-menu → collapsed hamburger with slide-out panel
-- Feature cards: 3-column → 2-column → single column
-- Dark brand sections: maintain full-width treatment; reduce internal padding on mobile
+Only the 1440×1000 viewport was rendered. Homepage CSS changes generic type tokens at 900px and applies the current hero's 65px/78px override at 1080px; these are inspected CSS conditions, not tested mobile layouts. Navigation collapse, touch behavior and other viewport geometries remain unmeasured.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, headings, text |
-| Tint (Level 1) | `#f8f5ee` warm parchment background | Section alternation |
-| Hairline (Level 2) | `rgba(0,0,0,0.11)` border or `1px solid #1f1f1f` | Card outlines, product tabs |
-| Dark (Level 3) | `#042729` full-width section | Immersive brand-dark moments |
-
-**Shadow Philosophy**: HubSpot's live DOM shows `box-shadow: none` across the hero, nav, buttons, and most cards. Separation is achieved entirely through background tinting and thin hairline borders. This is a deliberate modern-flat approach: warm-toned surfaces already have visual warmth, and shadows would add visual noise inconsistent with the clean editorial aesthetic. When depth emphasis is needed, the system reaches for the ink border (`#1f1f1f`) or the orange brand color — never a shadow stack.
+All six sampled controls have `box-shadow: none` at rest. The census includes low-alpha black borders; this supports flat control treatments without establishing a universal ban on shadows. The video card creates legibility over photography with the measured descendant gradient `linear-gradient(188deg, rgba(58, 61, 59, 0) 28.2%, rgb(31, 31, 31) 94.49%)`. Its preview layer has a 1px `rgba(255, 255, 255, 0.4)` border and a `rgba(255, 255, 255, 0.17)` fill. Those are specific layers, not general elevation tokens. [Homepage control capture](https://www.hubspot.com/)
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 - `shadow.none`: `none`
-- `shadow.hairline`: `0 0 0 1px rgba(31,31,31,0.11)`
 
 ## Motion & Easing
 
-**Durations**:
+Measured raw computed transitions are:
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Focus rings, selection ticks, toggle commits |
-| `motion-fast` | 120ms | Hover, focus, button press overlay |
-| `motion-standard` | 200ms | Dropdown open, card expand, sheet slide |
-| `motion-slow` | 320ms | Page transitions, hero reveal, modal enter |
+- Both hero CTAs and the compact header demo link: `background-color, color 0.15s, 0.15s linear, linear 0s, 0s`. The probe reports a longest transition of 150ms.
+- Pricing link: `all 0s ease 0s`; longest transition 0ms.
+- Search input: `all 0.3s ease-in 0s`; longest transition 300ms. Its expansion outlasts blur, so this is an observation of the expanding search control rather than an isolated focus animation.
+- First video card: `flex 0.35s ease 0s`; longest transition 350ms. The card width changes between the measured states.
 
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — dropdowns, modals, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is purposeful and unobtrusive — consistent with HubSpot's "clear and human" design principles. The mega-navigation dropdown opens at `motion-standard / ease-enter`; filter tabs switch at `motion-fast`; CRM row expansions use `motion-standard`. No spring or bounce — HubSpot is professional SaaS, not a consumer entertainment app. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional and all state changes remain perceptible through color and content rather than motion.
-
-**Signature motions**: Pipeline card drag-and-drop uses `motion-fast` positional updates with a subtle card lift (hairline border intensification rather than shadow — consistent with the flat system). The hero section on hubspot.com fades in at `motion-slow / ease-enter` on first paint. Email campaign send animation plays a brief single-loop success illustration then settles into the Closed Won toast.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on:
-- https://www.hubspot.com/ (homepage, primary surface)
-- https://www.hubspot.com/pricing (secondary surface)
-
-Canvas DS (2026-06-22): https://canvas.hubspot.com — confirmed 5 design principles
-(Clear, Human, Inbound, Integrated, Collaborative) and Canvas system description.
-
-Voice samples (§10) are verbatim from the live homepage hero section (2026-06-22).
-
-Brand narrative (§11): HubSpot founded 2006 by Brian Halligan and Dharmesh Shah at MIT;
-Inbound methodology as founding concept. These are widely documented public facts;
-specifics from Wikipedia and HubSpot's public About/history pages.
-
-Personas (§13) are fictional archetypes informed by publicly observable HubSpot user
-segments (SMB marketers, SDRs, CS managers, agency partners). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "dual identity as a technology company with the soul of a
-publishing house", "inbound philosophy echoes through every surface") are editorial
-readings connecting HubSpot's stated methodology to observed design patterns, not
-directly sourced HubSpot statements.
--->
+No reduced-motion behavior, spring behavior, page-entry timing, toast duration or authenticated workflow animation was measured. [Homepage control capture](https://www.hubspot.com/)
 
 ## Components
 
-### Buttons
+All controls below are logged-out homepage observations at 1440×1000. Links were sampled with pointer states and a real Tab walk; their destinations were not activated. Consent was rejected using “Decline all.” [Homepage](https://www.hubspot.com/)
 
-**Primary CTA (Large)**
-- Background: `#ff4800`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 16px 40px
-- Font: 18px HubSpot Sans weight 500
-- Border: 2px solid transparent
-- Use: Primary page-level CTA ("Get a demo", "Get a demo of HubSpot's premium software")
+**Primary hero action — Get a demo.** A link measuring 183.5×68px, with 8px corners, 16px 40px padding, 18px/500 HubSpot Sans and 32px line height. Rest is `#ff4800` with `#ffffff` text and a transparent 2px border. Hover changes only the fill to `#c93700`; pressed fill is `#9f2800`. Keyboard focus uses the hover fill and a solid 2px `#459195` outline offset 2px. Those focus changes disappear after blur.
 
-**Primary CTA (Medium)**
-- Background: `#ff4800`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 12px 24px
-- Font: 16px HubSpot Sans weight 500
-- Use: Section-level primary CTA
+**Secondary hero action — Get started free.** A 220×68px link with the same radius, padding and typography. Rest is `#ffffff` with `#ff4800` text and a 2px orange border. Hover gives `#fcece6` fill, `#c93700` text and border. Press gives `#fcc6b1` fill and `#9f2800` text; the border remains `#c93700`. Keyboard focus combines the hover treatment with the same 2px `#459195` outline and 2px offset.
 
-**Primary CTA (Small)**
-- Background: `#ff4800`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 8px 16px
-- Font: 14px HubSpot Sans weight 500
-- Use: Inline small CTA
+**Compact primary action.** The header demo link is 113.4×42px, radius 8px, padding 8px 16px, type 14px/500 with 22px line height. Its rest, hover, pressed and focus colors match the primary hero action. The survey also records a medium primary/secondary pair at 56px high, padding 12px 24px, type 16px/500 and line height 28px; that pair's states were not separately measured.
 
-**Secondary Outlined (Large)**
-- Background: `#ffffff`
-- Text: `#ff4800`
-- Radius: 8px
-- Padding: 16px 40px
-- Font: 18px HubSpot Sans weight 500
-- Border: 2px solid `#ff4800`
-- Use: Secondary CTA paired with primary ("Get started free")
+**Dark-section secondary, rest only.** The survey's final free-tools link is 56px high with an 8px radius, 12px 24px padding and 16px/500 HubSpot Sans at 28px line height. Its rest fill is `rgba(0, 0, 0, 0.11)`, with `#f8f5ee` text and a 2px border in the same color. This confirms the prior dark outlined variant's rest treatment; without a state pass it stays out of component tokens.
 
-**Secondary Outlined (Medium)**
-- Background: `#ffffff`
-- Text: `#ff4800`
-- Radius: 8px
-- Padding: 12px 24px
-- Font: 16px HubSpot Sans weight 500
-- Border: 2px solid `#ff4800`
-- Use: Section-level secondary action
+**Pricing navigation link.** A 52×28px transparent link on the white header, radius 0, no padding or border, 16px/500 HubSpot Sans. Rest ink is `#1f1f1f`. Hover and press add a solid underline in that ink. Keyboard focus retains the underline and paints an 80×76px `::after` layer with a 2px solid `#459195` outline, offset −2px. The ring belongs to the pseudo-element, not the 52×28px link box.
 
-**Dark Surface CTA**
-- Background: `#1f1f1f`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 8px 16px
-- Font: 14px HubSpot Sans weight 500
-- Use: CTA on light canvas — "Learn more about Revenue Hub"
+**Video card — All your customer data, right at your fingertips.** The first image card is a `div` with `role=button`, 459×560px at rest, square corners, no padding, no border and no shadow. Its base is `#061c1d`; its visible H2 ink is `#f8f5ee`. Container inheritance is 16px/300 HubSpot Sans with 28px line height; this is not a measurement of the H2's own font. Hover and press widen the card to 800×560px. Its image and gradient widen with it; preview and play-button opacity change from 0 to 1. Content height changes from 126px to 95px and the heading box from 395×62px to 736×31px. Keyboard focus was UNMEASURED because the Tab walk wrapped through the chat iframe before reaching this card.
 
-**Dark Section Outlined**
-- Background: rgba(0,0,0,0.11)
-- Text: `#f8f5ee`
-- Radius: 8px
-- Padding: 12px 24px
-- Font: 16px HubSpot Sans weight 500
-- Border: 2px solid `#f8f5ee`
-- Use: Secondary CTA when page is on deep teal dark section
-
-### Inputs & Forms
-
-**Default Input**
-- Background: `#ffffff`
-- Border: 1px solid `#cacac8`
-- Radius: 4px
-- Text: `#1f1f1f`
-- Font: 16px HubSpot Sans weight 300
-- Padding: 3.2px 8px
-- Use: Email/text fields in nav search and landing forms
-
-### Cards & Containers
-
-**Product Card**
-- Background: `#fcfcfa`
-- Text: `#1f1f1f`
-- Radius: 8px
-- Border: 2px solid rgba(0,0,0,0.11)
-- Padding: 12px 24px
-- Use: Product suite overview tabs in header dropdown
-
-**Feature Card**
-- Background: `#ffffff`
-- Text: `#1f1f1f`
-- Radius: 16px
-- Border: 1px solid `#1f1f1f`
-- Padding: 24px 32px
-- Use: Feature content card with hairline border (no shadow)
-
-### Badges
-
-**Peach Tag**
-- Background: `#fcded2`
-- Text: `#ff4800`
-- Radius: 4px
-- Padding: 4px 8px
-- Font: 12px HubSpot Sans weight 500
-- Use: Warm peach accent labels, category tags
-
-### Tabs
-
-**Filter Tab (Active)**
-- Background: `#f8f5ee`
-- Text: `#1f1f1f`
-- Radius: 16px
-- Padding: 8px
-- Font: 14px HubSpot Sans weight 500
-- Use: Active filter tab ("By Use Case", "By Team Size", "Why HubSpot?")
-
-**Filter Tab (Inactive)**
-- Background: `#ffffff`
-- Text: `#1f1f1f`
-- Radius: 16px
-- Padding: 8px
-- Font: 14px HubSpot Sans weight 400
-- Use: Inactive filter tab option
-
----
-
-**Verified:** 2026-06-22
-**Tier 1 sources:** https://www.hubspot.com/ (live DOM, homepage, computed styles); https://www.hubspot.com/pricing (secondary surface, pricing page); https://canvas.hubspot.com (Canvas Design System)
-**Tier 2 sources:** styles.refero.design/style/3e100552-a8ad-4179-b89a-6aa5113b92e1 (HubSpot refero entry — confirmed #ff4800 primary, 8px button radius, 16px card radius); getdesign.md/hubspot — 404, not listed
-**Conflicts unresolved:** none (Tier 1 live orange #ff4800 = rgb(255,72,0) matches refero Sprout Orange exactly)
+**Search, retained as a raw observation.** The header search input rests at 16×34.4px, radius 4px, padding 3.2px 8px, 16px/300 with 28px line height, transparent over white, ink `#1f1f1f`, border and shadow none. Hover produced no compared-style change while `:hover` matched. Pressed and Tab-focus snapshots show 1035×42.5px with white fill, a 1px `rgba(0, 0, 0, 0.47)` border, a white 46% gradient, padding 8px 16px 8px 40px and 14px/300 type. All those focus differences remained after blur. They do not establish an isolated focus treatment, so no search component or search focus token is published.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no contacts in CRM)** | Canvas cream background. HubSpot Sans 18px weight 400 in ink: "You haven't added any contacts yet." Orange CTA: "Import contacts" or "Create a contact." No heavy illustration — warm and direct. |
-| **Empty (no deals in pipeline)** | Graphite (`#60605f`) at 14px: "No deals in this pipeline." Pipeline tabs remain visible so user can switch stages or add manually. Clear action path. |
-| **Loading (dashboard)** | Skeleton rows on canvas cream at final card dimensions. 16px radius on card skeletons. Subtle shimmer consistent with the flat, warm-toned system. No animated orange — reserve the primary for action. |
-| **Loading (report generating)** | Inline progress indicator below the report title. Previous data stays visible. HubSpot Sans 14px weight 400 "Generating your report..." |
-| **Error (connection failed)** | Inline banner in peach tint (`#fcded2`) with orange left-border accent. Ink text at 14px: specific failure reason + retry link. Never a generic "Something went wrong." |
-| **Error (form validation)** | Field-level. Orange-tint border on the input. HubSpot Sans 12px weight 500 error text below: describes what's missing and how to fix it. |
-| **Error (API / integration)** | Contextual inline message with the integration name and the failed action explicitly stated. Link to troubleshooting documentation. |
-| **Success (form submitted)** | Brief inline confirmation on canvas cream. Ink heading at 24px/500: "You're all set!" Body 16px/400: confirms next step (email on the way, meeting link follows). No toast on form pages — the confirmation replaces the form. |
-| **Success (deal closed)** | Toast at top-right. 3-second auto-dismiss. HubSpot Sans 14px/500: "Deal marked as Closed Won." Optional confetti on first-close milestone. |
-| **Skeleton** | Canvas cream blocks at final element dimensions, 16px radius for cards, 4px for badges, 8px for buttons. Warm-toned shimmer pulse. |
-| **Disabled** | Mist (`#cacac8`) border and 40% opacity on surface. Orange actions fade to peach tint (`#fcded2`) text — preserves brand read while clearly indicating inactivity. |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Hero and header demo links | Fill `#c93700` | Fill `#9f2800` | Hover fill plus solid 2px `#459195` outline, offset 2px |
+| Hero free-tools link | Fill `#fcece6`; text/border `#c93700` | Fill `#fcc6b1`; text `#9f2800`; border `#c93700` | Hover colors plus the same authored outline |
+| Pricing link | Ink underline | Ink underline | Underline plus outlined `::after`, 80×76px, offset −2px |
+| First video card | Width 459→800px; preview/play opacity 0→1 | Same observed differences from rest | UNMEASURED; Tab cycle ended before landing |
+| Search input | No change within the probe's compared style/DOM scope | Expansion and style changes described in §4 | Expansion persisted after blur; no isolated focus token |
+
+The probe includes self, pseudo-elements, descendants and three ancestor levels. For search there are zero descendants; for the card there are ten, including an SVG, a `use` and one image. It does not compare video pixels, cross-origin iframe contents or every sibling. Empty, loading, validation, success and disabled CRM states were not inspected.
 
 ## Do's and Don'ts
 
-### Do
-- Use Sprout Orange (`#ff4800`) exclusively for CTAs and active-state icons — it is the system's action signal
-- Use HubSpot Serif (weight 500) for all section headlines above 32px
-- Use HubSpot Sans for all body text, labels, buttons, and navigation
-- Apply 8px radius to all buttons and interactive elements
-- Apply 16px radius to cards and content containers
-- Separate sections with canvas cream / warm parchment alternation — not with shadows
-- Pair every primary orange CTA with a secondary outlined variant
-- Use `#1f1f1f` ink as the text color instead of pure black
+The following are implementation guidance drawn from this capture:
 
-### Don't
-- Use Sprout Orange for decorative backgrounds or illustration fills — reserve it for action
-- Apply large drop shadows to cards — use hairline borders instead
-- Mix HubSpot Serif into body or UI copy — it belongs only at display sizes
-- Use more than two CTAs side-by-side without clear hierarchy (primary orange + secondary outlined)
-- Apply a radius larger than 16px to cards — HubSpot cards are not pill-shaped
-- Use pure white (`#ffffff`) as the default page background — canvas cream (`#fcfcfa`) is the correct base
-- Use the orange as a section background color — it loses its call-to-action signal value
+- Pair the measured orange demo link with the outlined free-tools link when reproducing the current hero.
+- Preserve the distinct hover and pressed orange values and the teal authored focus outline.
+- Use loaded HubSpot Serif for this surface's large editorial headings and HubSpot Sans for the measured controls and reading text.
+- Keep 8px CTA corners, 4px search corners and square video-card geometry distinct.
+- Treat cream, parchment, white and dark teal as separate surface roles; the current hero has an explicit white background.
+- Retain the orange headline punctuation when reproducing the hero's brand treatment.
+- Do not infer the authenticated product's states, font stack or theme from the marketing page.
 
 ## Voice & Tone
 
-HubSpot's voice is **warm, helpful, and confident** — the inbound-marketing pioneer who genuinely believes that if you help people first, business follows. Where enterprise SaaS defaults to authoritative distance or technical density, HubSpot's copy leans into clarity, optimism, and approachability. Headlines favor concrete capability over abstract superlative ("Grow better" not "Revolutionize your pipeline"). CTAs are action-forward without pressure: "Get a demo" and "Get started free" rather than "Unlock unlimited power." The Inbound methodology — attract, engage, delight — echoes through every surface.
+HubSpot's 2021 design writing explicitly describes its product voice as “clear, helpful, human, and kind.” It calls for plain language, second-person address, active voice, simple verbs and inclusive wording, including neutral pronouns. These are documented product-writing principles, distinct from an inference about every current marketing sentence. [Inclusivity Is a Design Principle](https://product.hubspot.com/blog/inclusivity-is-a-design-principle)
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Declarative and warm. "The HubSpot Customer Platform." Confident without superlatives. |
-| Product descriptions | Benefit-first, concrete. "Manage your pipeline" not "Transform your revenue potential." |
-| CTAs | Direct, generous. "Get started free." "Get a demo." No manufactured urgency. |
-| Marketing blog / Academy | Educational, accessible, peer-to-peer. Shares frameworks, not just features. |
-| Error messages | Helpful and specific. States what's wrong and what to do next. |
-| Onboarding | Encouraging, step-oriented. Celebrates small wins on the path to platform mastery. |
-| Pricing | Transparent, tier-explicit. Free tier prominently available. |
-
-**Voice samples (verbatim from live homepage):**
-- "The HubSpot Customer Platform" — hero heading (declarative, brand-anchored). *(verified live 2026-06-22)*
-- "Get a demo of HubSpot's premium software" — primary CTA label (action + context). *(verified live 2026-06-22)*
-- "Get started free with HubSpot's free tools" — secondary CTA label (generous, no-pressure). *(verified live 2026-06-22)*
-
-**Forbidden register**: aggressive scarcity tactics, jargon-stacked feature lists presented without benefit context, exclamation-heavy hype, "revolutionary" or "game-changing" superlatives, heavy enterprise procurement tone ("request a quote", "contact a specialist" as the first option).
+The visible homepage actions are “Get a demo” and “Get started free.” Their accessible names add context about premium software and free tools. These are verified current copy examples; no error-message or onboarding register was inspected. [Homepage](https://www.hubspot.com/)
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Sprout Orange (`#ff4800`)
-- Background: Canvas Cream (`#fcfcfa`)
-- Alternate section: Warm Parchment (`#f8f5ee`)
-- Primary text: Ink (`#1f1f1f`)
-- Secondary text: Graphite (`#60605f`)
-- Disabled / input border: Mist (`#cacac8`)
-- Dark section: Deep Teal (`#042729`)
-- Accent badge: Peach Tint (`#fcded2`)
+“Build a centered marketing hero with a white surface and `#1f1f1f` text. Use the live-loaded HubSpot Serif heading face and HubSpot Sans supporting text. Add the orange period after the heading. Pair a 68px-high `#ff4800` demo link with a white, orange-outlined free-tools link; both have 8px corners, 16px 40px padding and 18px/500 labels at 32px line height. Primary hover is `#c93700`, pressed is `#9f2800`; keyboard focus adds a 2px `#459195` solid outline offset 2px.”
 
-### Example Component Prompts
-- "Create a hero on canvas cream (#fcfcfa). Headline in HubSpot Serif 48px weight 500, line-height 1.10, color #1f1f1f. Subtext HubSpot Sans 18px weight 400, color #1f1f1f. Orange primary CTA: #ff4800 bg, white text, 8px radius, 16px 40px padding, 18px/500. Paired outlined CTA: white bg, #ff4800 text and 2px border, same geometry."
-- "Design a feature card: white background, 1px solid #1f1f1f border, 16px radius, no shadow. Heading 24px HubSpot Sans weight 500, color #1f1f1f. Body 16px weight 400, color #60605f. Card padding 24–32px."
-- "Build an alternating-section layout: first section #fcfcfa, second #f8f5ee. HubSpot Serif 40px/500 for section titles. HubSpot Sans 16px/400 for descriptions."
-- "Create a product card tab: #fcfcfa background, 8px radius, 2px rgba(0,0,0,0.11) border. Title 16px HubSpot Sans weight 500, #1f1f1f. Orange #ff4800 icon."
+“Below the hero, create the measured square photographic video card at 459×560px on `#061c1d`, with `#f8f5ee` heading ink and the observed dark image gradient. At this desktop width, hover expands it to 800px and reveals the preview and play button. Do not invent an unmeasured focus style.”
 
-### Iteration Guide
-1. HubSpot Serif for all headlines above 32px; HubSpot Sans for everything else
-2. Orange (`#ff4800`) = action only. Every other color is neutral.
-3. No shadows — use tint alternation and hairline borders for separation
-4. Button geometry: 8px radius; cards: 16px radius; badges: 4px radius
-5. Canvas cream is the page background, not pure white
-6. CTA pairing is always orange primary + white/orange-outlined secondary
-7. Dark sections use deep teal (`#042729`), not black
-
----
+These prompts describe the captured surface. Font files were observed, not downloaded; no substitute was chosen.
 
 ## Governance
 
@@ -612,4 +356,3 @@ HubSpot's voice is **warm, helpful, and confident** — the inbound-marketing pi
 - **Contrast, `button-primary`.** Text `#ffffff` on `#ff4800` measures 3.40:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
 - **Contrast, `button-outlined`.** Text `#ff4800` on `#ffffff` measures 3.40:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
 - **Contrast, `button-sm`.** Text `#ffffff` on `#ff4800` measures 3.40:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-default`.** Text `#ff4800` on `#fcded2` measures 2.67:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

@@ -1,160 +1,124 @@
 ---
 name: Databricks
 colors:
-  primary: '#FF3621'
-  primary-alt: '#EB1600'
-  navy: '#0B2026'
-  teal: '#1B3139'
-  teal-mid: '#1B5162'
-  link: '#016BC1'
-  body: '#1B3139'
-  muted: '#90A5B1'
-  muted-light: '#EDF2F8'
+  primary: '#ff3621'
+  primary-alt: '#eb1600'
+  primary-hover: '#bd2b26'
+  primary-pressed: '#ff5f46'
+  navy: '#0b2026'
+  teal: '#1b3139'
+  teal-mid: '#1b5162'
+  foreground: '#1b3139'
+  link: '#016bc1'
+  muted: '#90a5b1'
+  muted-light: '#edf2f8'
   on-primary: '#ffffff'
   canvas: '#ffffff'
-  surface: '#EEEDE9'
-  surface-light: '#F9F7F4'
-  hairline: '#F4F4F4'
-  success: '#468254'
-  success-light: '#F9FFFA'
+  surface: '#eeede9'
+  surface-light: '#f9f7f4'
+  secondary-interaction: '#618794'
 typography:
-  display-hero:
-    fontSize: 60px
-    fontWeight: 500
-    lineHeight: 1.1
-    use: Hero headline — DM Sans Medium
-  display-lg:
-    fontSize: 56px
-    fontWeight: 400
-    lineHeight: 1.14
-    use: Page H1 — DM Sans Regular
-  section:
-    fontSize: 48px
-    fontWeight: 500
-    lineHeight: 1.17
-    use: Feature section headline — DM Sans Medium
-  subsection:
-    fontSize: 40px
-    fontWeight: 400
-    lineHeight: 1.2
-    use: Sub-section heading — DM Sans Regular
-  card-heading:
-    fontSize: 28px
-    fontWeight: 400
-    lineHeight: 1.29
-    use: Card/feature title — DM Sans Regular
-  body-lg:
-    fontSize: 18px
-    fontWeight: 400
-    lineHeight: 1.44
-    use: Feature descriptions
   body:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Standard UI text — DM Sans Regular
+    use: Inherited font on the featured-card link root and FAQ controls; live-loaded DM Sans
   button:
     fontSize: 16px
     fontWeight: 500
-    lineHeight: 1.25
-    use: Primary button label — DM Sans Medium
+    lineHeight: 1.5
+    use: Both measured hero CTA links; live-loaded DM Sans
   nav:
     fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.25
-    use: Navigation links
+    lineHeight: 1
+    use: Main navigation menu buttons in the desktop survey
   caption:
     fontSize: 14px
     fontWeight: 400
-    lineHeight: 1.5
-    use: Small labels, nav utility links
-  code:
+    lineHeight: 1.428571
+    use: Footer links in the desktop survey
+  utility:
     fontSize: 14px
     fontWeight: 400
-    lineHeight: 1.6
-    use: Code snippets, technical displays — DM Mono
+    lineHeight: 1
+    use: Measured Contact Us navigation link
 rounded:
+  none: 0px
   sm: 2px
-  md: 4px
   lg: 20px
-  full: 9999px
 spacing:
-  xs: 4
   sm: 8
   md: 12
   base: 16
   lg: 24
   xl: 32
-  xxl: 48
-  section: 64
 components:
   button-primary:
     type: button
-    backgroundColor: '#FF3621'
+    backgroundColor: '#eb1600'
     textColor: '#ffffff'
     rounded: 0px
-    padding: 8px 24px
     height: 40px
+    padding: 8px 24px
     typography: 16px / 500 DM Sans
-    use: Primary CTA — Try Databricks, Start free trial, Explore the product
+    hover: 'bg #bd2b26'
+    pressed: 'bg #ff5f46'
+    use: Explore the product is a link in the homepage hero. Line height 24px; normal tracking; no shadow. Keyboard focus uses the browser auto outline.
   button-secondary:
     type: button
-    backgroundColor: '#1B3139'
+    backgroundColor: '#1b3139'
     textColor: '#ffffff'
     rounded: 0px
+    height: 40px
     padding: 8px 24px
-    height: 40px
     typography: 16px / 500 DM Sans
-    use: Secondary CTA — See demo, Request a pricing quote
-  button-ghost:
+    hover: 'bg #618794'
+    pressed: 'bg #618794'
+    use: See demo is a link beside the primary hero CTA. Line height 24px; normal tracking; no shadow.
+  nav-contact:
     type: button
-    backgroundColor: '#EEEDE9'
-    textColor: '#1B3139'
-    rounded: 2px
-    padding: 12px 10px
-    height: 40px
-    typography: 16px / 400 DM Sans
-    use: Tertiary/muted action — Manage Preferences, cookie preferences
-  nav-tab-active:
-    type: tab
-    textColor: '#1B3139'
     backgroundColor: '#ffffff'
-    rounded: 20px
-    padding: 12px 16px
+    textColor: '#1b3139'
+    rounded: 0px
     height: 40px
-    typography: 16px / 700 DM Sans
-    active: white bg + bold 700 weight, 20px radius
-    use: Product section tab — Platform, Database, AI, BI, Governance
+    padding: 0px 0px 0px 16px
+    typography: 14px / 400 DM Sans
+    hover: 'fg #ff3621'
+    pressed: 'fg #ff3621'
+    use: Contact Us is a link in Main Navigation, with 14px line height and no shadow.
+  site-search:
+    type: button
+    textColor: '#1b5162'
+    rounded: 0px
+    height: 24px
+    padding: 2px
+    typography: 16px / 400 DM Sans
+    hover: 'SVG icon stroke #ff3621'
+    pressed: 'SVG icon stroke #ff3621'
+    use: 'Site search is a div with role=button on the white header. The visible icon is #1b5162; the transparent root inherits #1b3139. No search input was present in the survey.'
+  card-featured:
+    type: card
+    backgroundColor: rgba(237, 242, 248, 0.05)
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 173px
+    padding: 24px
+    typography: 16px / 400 DM Sans
+    hover: 'bg rgba(237, 242, 248, 0.1); bottom border 1px solid #ff5f46; arrow stroke #ff3621'
+    pressed: 'bg rgba(237, 242, 248, 0.1); bottom border 1px solid #ff5f46; arrow stroke #ff3621'
+    use: 'Lakebase featured-product card is a 319px-wide link on the navy section. fg describes its white title; its paragraph and resting arrow use #90a5b1. The anchor root inherits #016bc1, which is not the visible title color. No shadow.'
   nav-tab-inactive:
     type: tab
-    backgroundColor: rgba(237,242,248,0.1)
+    backgroundColor: rgba(237, 242, 248, 0.1)
     textColor: '#ffffff'
     rounded: 20px
-    padding: 12px 16px
     height: 40px
+    padding: 12px 16px
     typography: 16px / 500 DM Sans
-    use: Inactive product section tab on dark navy background
-  card-product:
-    type: card
-    backgroundColor: '#ffffff'
-    textColor: '#1B3139'
-    rounded: 0px
-    use: Product pricing card — Data Engineering, Data Warehousing
-  badge-success:
-    type: badge
-    backgroundColor: '#F9FFFA'
-    textColor: '#468254'
-    rounded: 4px
-    typography: 14px / 400 DM Sans
-    use: Success status badge, availability indicator
-  input-text:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#1B3139'
-    border: '1px solid #EEEDE9'
-    rounded: 2px
-    typography: 16px DM Sans
-    use: 'Form input, search field; focus: 1px solid #FF3621'
+    hover: bg rgba(237, 242, 248, 0.2)
+    pressed: bg rgba(237, 242, 248, 0.2)
+    use: Database is the inactive product tab in the homepage navy section, 103.8px wide with 16px line height. Keyboard focus was not reached; no focus token is declared.
 fonts:
   roles:
     sans: DM Sans
@@ -167,425 +131,197 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Databricks presents the visual language of high-stakes enterprise data infrastructure translated into confident, approachable design. The canvas opens on pure white (`#ffffff`) layered with deep teal headings (`#1B3139`) and accented by a single blazing red-orange — **Lava 600** (`#FF3621`) — that functions as the brand's sole action color. This isn't the cautious blue of generic SaaS; it's a bold, volcanic tone that signals the platform's origins in Apache Spark and its promise to handle the heaviest workloads at speed.
+Databricks brings data engineering, analytics and AI into a unified platform built on an open lakehouse foundation. Its [company history](https://www.databricks.com/company/about-us) dates the founding to 2013; the [press kit](https://www.databricks.com/company/newsroom/press-kit) identifies seven researchers at UC Berkeley’s AMP Lab and connects their work to Apache Spark, Delta Lake, MLflow and Unity Catalog.
 
-The typography is built entirely on **DM Sans**, a geometric humanist sans-serif commissioned for its legibility across dense data interfaces. Display headlines run at weight 500 (Medium) at large sizes — a moderate, confident choice that avoids both the feather-light luxury of fintech and the heavy-handed boldness of legacy enterprise. Body text and most headings use weight 400 (Regular), giving the system an open, readable quality even when dense with technical content. **DM Mono** serves as the monospaced companion for code depictions and data labels.
+The public website pairs a white canvas (`#ffffff`) with deep teal ink (`#1b3139`), large navy sections (`#0b2026`) and warm pale surfaces. The hero places a large, partly red headline beside a product demonstration, followed by two square CTA links. Rounded product tabs create a different silhouette within the dark section. This combination of broad color fields, product imagery, DM Sans and compact rectangular actions is the distinctive visual expression visible in the capture.
 
-The color system is anchored by a dual-background architecture: **Navy 900** (`#0B2026`) provides deep, immersive dark sections for product showcases and feature demonstrations, while **Oat Medium** (`#EEEDE9`) and **Oat Light** (`#F9F7F4`) offer warm, neutral off-white surfaces that avoid clinical sterility. The teal body color (`#1B3139`) sits between these two poles as the functional UI ink — dark enough for strong contrast, warm enough to avoid the coldness of black.
+The current homepage leads with Lakebase, a serverless Postgres offering for applications and agents. The current [platform page](https://www.databricks.com/product/platform) emphasizes enterprise context, governance and choice across clouds, data and models, and presents Genie, Agent Bricks, Databricks Apps and other capabilities together. Read together, these pages show an expansion of the lakehouse story into operational databases and agent development. The design reference below follows that public marketing surface.
 
-**Key Characteristics:**
-- DM Sans as the sole brand typeface — geometric humanist, weight 400/500 duality
-- Lava 600 (`#FF3621`) as the single CTA color — bold, volcanic, unmistakable
-- Navy 900 (`#0B2026`) for immersive dark sections; Oat surfaces for warm neutrals
-- Square-cornered buttons (0px radius) — engineering precision, no decorative rounding
-- Pill-radius tabs (`20px`) on product navigation against dark backgrounds
-- Link color (`#016BC1`) — distinct enterprise blue for inline references
-- DM Mono for all code/technical display contexts
+#### Primary tasks
 
-### Primary tasks
-
-- Run the ETL pipelines that feed a demand-forecasting model
-- Track machine-learning experiments and register models with MLflow
-- Query the same data with SQL for business intelligence
-- Govern data access across Azure and AWS workloads in one place
-- Check starting prices in DBUs without booking a demo call
+- Build batch and streaming ETL pipelines with Lakeflow; query data with SQL for analytics and business intelligence. These capabilities are described on the homepage.
+- Track machine-learning experiments and manage registered models with MLflow, as described in [MLflow on Databricks](https://docs.databricks.com/aws/en/mlflow/).
+- Govern data access and AI assets through the platform's single governance model across clouds. Its cloud-provider navigation names AWS, Azure and GCP.
+- Review public product pricing and the DBU definition on the [pricing page](https://www.databricks.com/product/pricing).
 
 ### Brand Narrative
 
-Databricks was founded in **2013** by **Ali Ghodsi, Ion Stoica, Matei Zaharia, and five other co-founders** from **UC Berkeley's AMPLab** — the research lab that created **Apache Spark**, the open-source distributed computing engine that would become the backbone of big data processing globally. The founding premise was direct: Spark had demonstrated that data analytics didn't need to be slow, brittle, or locked into proprietary systems, but productizing it for enterprises required a platform layer that AMPLab researchers weren't positioned to build. Databricks was that company.
+The company traces its origins to academia and open source: seven researchers at UC Berkeley's AMP Lab founded Databricks in 2013. Its [founders page](https://www.databricks.com/company/founders) names Ali Ghodsi, Ion Stoica, Matei Zaharia, Patrick Wendell, Reynold Xin, Andy Konwinski and Arsalan Tavakoli-Shiraji. The press kit credits the founding group with the lakehouse architecture and the named open source projects. The current platform still joins data engineering, analytics, governance and AI, while the homepage gives operational Postgres and agents a leading role.
 
-The platform evolved from a managed Spark service into the **Data Intelligence Platform** — a unified lakehouse architecture that combines data warehousing, data engineering, machine learning, and business intelligence. The signature concept, the **Lakehouse**, merges the flexibility of a data lake with the reliability of a data warehouse, resolving a decade-long industry tension between the two approaches. The term was coined by Databricks researchers and published as an academic paper before becoming a product category.
+The platform FAQ explains a lakehouse as combining a data lake's flexibility with a data warehouse's reliability. It identifies Delta Lake's data-quality rules, ACID transactions and time travel as supporting capabilities. This gives the unified-platform narrative a concrete architectural basis.
 
-The **Lava 600** (`#FF3621`) brand color signals this Spark origin — volcanic, energetic, technically rigorous. It is not a corporate red; it is the color of combustion and computation. The Navy 900 (`#0B2026`) and Oat palette provide the stable infrastructure beneath that intensity: warm, grounded, built to last.
+The [August 2026 company announcement](https://www.databricks.com/kr/company/newsroom/press-releases/databricks-grows-80-yoy-surpasses-7b-revenue-run-rate-scales) reports a $190 billion valuation following a $5 billion strategic investment. The current press kit reports more than 20,000 organizations and a San Francisco headquarters. These are dated company statements, rather than visual-system claims.
 
-Databricks refused the VC-funded pivot to black-box AI; its bet was on open, composable architecture (Delta Lake, MLflow, Unity Catalog as open-source projects) paired with enterprise cloud delivery. As of 2025–2026, Databricks is valued at over $62B and serves thousands of enterprise customers across Azure, AWS, and GCP.
+Databricks also publishes [dashboard design guidance](https://www.databricks.com/blog/design-beautiful-dashboards-aibi), dated June 17, 2026, covering audience, hierarchy, readability and reusable workspace themes. Its example is explicitly a fictional customer's brand. That writing supports the product's customer-theming capability, not a default Databricks palette or a new corporate rebrand.
 
 ### Principles
 
-1. **Open first.** Databricks built its moat on open-source projects (Spark, Delta Lake, MLflow) rather than proprietary lock-in. *UI implication:* the platform surfaces data in standard formats; the design language avoids false urgency or dark patterns that obscure pricing or capabilities.
-2. **Simple to start, infinite to scale.** The onboarding surface should feel as accessible as a trial button; the platform scales to exabyte workloads. *UI implication:* primary CTAs are direct ("Try Databricks", "Start free trial"); complexity is surfaced progressively.
-3. **Data and AI are one system.** The lakehouse thesis unified what were separate silos. *UI implication:* navigation and information architecture reflect a unified platform, not a suite of separate tools.
-4. **Precision is a feature.** Pricing is stated in DBUs with starting prices visible without a demo call. *UI implication:* typography uses no decorative tracking; documentation is peer-to-peer and dense rather than dumbed down.
-5. **Infrastructure deserves beautiful design.** The Lava-and-Navy palette is a deliberate refusal of the gray-and-blue enterprise default. *UI implication:* every surface should reflect the conviction that data infrastructure can be both rigorous and visually distinctive.
+- **Unify related work.** The platform page presents data, analytics, AI and governance together. Reflect that relationship in the product-section information hierarchy.
+- **Keep choices visible.** The platform describes choice across cloud, data and models; the homepage provides separate product explanations and a public pricing route.
+- **Build hierarchy for the audience.** The company's dashboard-design article advises varying layout density for technical and executive readers and emphasizing the most important information. This is published dashboard guidance.
+- **Make interaction changes specific.** In this measured public-site set, use background changes for CTA links and tabs, a text/stroke accent for utility controls, and a border plus arrow accent for the featured card. This is an implementation guide derived from observations.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Databricks user segments (data engineers, ML scientists, data analysts, enterprise architects), not individual people.*
-
-**Aarav Mehta, 32, Seattle.** Senior data engineer at a Fortune 500 retailer, responsible for the ETL pipelines that feed the company's demand-forecasting models. Evaluates Databricks on Spark performance benchmarks and Delta Lake ACID guarantees, not marketing copy. Trusts tools whose documentation is written by engineers for engineers. Would immediately distrust a pricing page that hid per-unit costs behind a "contact sales" wall.
-
-**Dr. Sarah Chen, 37, San Francisco.** ML research scientist at a healthcare AI company using Databricks MLflow for experiment tracking and model registry. Chose Databricks over alternatives because the open-source first approach means her team can run MLflow locally before committing to the managed service. Values the platform's willingness to publish research papers rather than keeping architecture decisions proprietary.
-
-**Marcus Williams, 45, Chicago.** VP of Data Infrastructure at a major financial institution. Evaluates Databricks on Unity Catalog's governance controls and compliance posture. Cares about the platform's multicloud flexibility — his bank has Azure and AWS workloads that need a unified governance layer. Finds the Databricks brand visually credible for presenting to a C-suite: serious, technical, not flashy.
-
-**Elena Kowalski, 28, Austin.** Data analyst at a scale-up company. Uses Databricks SQL (previously Databricks SQL Analytics) for business intelligence queries. Came to Databricks from a pure warehouse background; appreciates that the platform lets her run SQL alongside the data engineering team's Spark jobs on the same data layer. Finds the visual design cleaner and more modern than legacy warehouse vendors.
+The platform FAQ identifies business and technical users across data and AI teams: natural-language insights and workflows for business users, and code, apps and engineering operations for technical users. Individual research-backed personas were not established.
 
 ## Colors
 
-### Primary Brand
+These are homepage observations, with the control-specific roles distinguished from the broader rendered census.
 
-- **Lava 600** (`#FF3621`): The Databricks signature. All primary CTAs ("Try Databricks", "Start free trial", "Explore the product"). A saturated red-orange that functions as the system's single interactive action color.
-- **Lava Pressed** (`#EB1600`): Darker Lava variant for pressed/hover states on primary buttons. Not documented as a separate token but observed in interaction states.
-- **Navy 900** (`#0B2026`): The deepest background color. Used for full-width dark brand sections, feature showcases, and hero overlays. Not black — a very dark teal that retains brand warmth.
+| Role | Value | Observed use |
+|---|---|---|
+| Primary accent | `#ff3621` | Hero emphasis; Contact Us text and search-icon stroke on hover/press |
+| Primary action rest | `#eb1600` | Explore the product and the header Try Databricks link |
+| Primary action hover | `#bd2b26` | Settled hero-primary background |
+| Primary action pressed | `#ff5f46` | Hero-primary pressed background; featured-card interaction border |
+| Navy | `#0b2026` | Full-width product and other dark sections |
+| Teal / foreground | `#1b3139` | Light-surface paragraph ink, navigation labels and secondary CTA rest |
+| Mid teal | `#1b5162` | Search-icon rest stroke, language control and paragraph ink |
+| Link blue | `#016bc1` | For example, the See more customer stories link |
+| Muted | `#90a5b1` | Featured-card description and rest arrow; footer links |
+| Cloud base | `#edf2f8` | RGB base of translucent tabs and featured cards |
+| White canvas / on-primary | `#ffffff` | Page canvas, CTA labels and dark-section text |
+| Warm surface | `#eeede9` | Product panels and customer-logo controls |
+| Light warm surface | `#f9f7f4` | One rendered background in the census |
+| Secondary interaction | `#618794` | See demo hover and pressed background |
 
-### Functional UI
+Keep the cloud alpha with its context: the inactive Database tab uses `rgba(237, 242, 248, 0.1)` at rest and `rgba(237, 242, 248, 0.2)` on hover/press. The Lakebase featured card uses `rgba(237, 242, 248, 0.05)` at rest and `rgba(237, 242, 248, 0.1)` during interaction, over the navy section.
 
-- **Teal Body** (`#1B3139`): Primary text, headings, nav labels, and secondary button backgrounds. The system's ink color — warm, dark, distinct from Navy.
-- **Teal Mid** (`#1B5162`): Secondary teal for language-selector and sub-UI elements. Slightly lighter than Teal Body.
-- **Link Blue** (`#016BC1`): All inline text links and reference anchors. A classic enterprise blue that signals clickability within dense technical content.
-- **Muted Blue-Gray** (`#90A5B1`): Secondary text, caption, metadata, muted labels.
-- **Cloud Blue** (`#EDF2F8`): Very light blue-gray tint for decorative tab backgrounds on dark surfaces (observed as `rgba(237,242,248,0.1)`).
-
-### Surfaces
-
-- **White** (`#ffffff`): Page canvas, cards, modal backgrounds, primary section backgrounds.
-- **Oat Medium** (`#EEEDE9`): Warm neutral surface for sections, cookie banners, and muted UI containers. The "paper" of the system.
-- **Oat Light** (`#F9F7F4`): Lightest warm neutral surface for subtle section separation.
-- **Near-White** (`#F4F4F4`): Hairline surface for dividers and subtle separations.
-
-### Semantic Colors
-
-- **Success Green** (`#468254`): Success state text and badge color. Data-validated green for positive signals.
-- **Success Surface** (`#F9FFFA`): Very light green tint for success badge backgrounds.
+The paragraph census is mixed: white occurs 14 times, mid teal 7 times and teal 5 times. `foreground` names the verified teal ink on light surfaces; it does not describe every paragraph on the page. Colors are not restricted to buttons: the hero, navigation text, search icon and featured-card arrow also carry the primary accent.
 
 ## Typography
 
-### Font Family
+### Font evidence classes
 
-- **Primary**: `DM Sans` (Google Fonts) — the single brand typeface for all marketing, product, and documentation surfaces
-- **Monospace**: `DM Mono` (Google Fonts) — all code depictions, technical data labels, and terminal-style displays
-- **Fallback**: `sans-serif` for DM Sans; `monospace` for DM Mono
+- **Official product use:** no product-wide font prescription was established from a usable official guideline page. The homepage observations do not establish the authenticated application's font.
+- **Live-loaded:** DM Sans 400, 500, 600 and 700, and DM Mono 400. Body, H1 and button family declarations are `"DM Sans", sans-serif`. The live-loaded interface specimens supported here are from the public homepage.
+- **Official distributed assets observed in CSS:** DM Sans is served from same-origin `/en-website-assets/static/sans_400_ext.woff2`, `sans_500_ext.woff2`, `sans_600_ext.woff2` and `sans_700_ext.woff2`. DM Mono 400 is embedded as a WOFF2 data URL in the website stylesheet. These are observed delivery methods; a font license was not opened.
+- **Declared-only:** Merriweather 500 and Hubot Sans 100–900 have same-origin `@font-face` declarations but were absent from the loaded-face list. They receive no specimen or family token here.
+- **Excluded loaded faces:** Inter 400/600 comes from Qualified's chat embed; icomoon is an icon face. Neither is an authored body-text family in this reference. The declared swiper-icons face belongs to the carousel library.
+- **Unresolved:** the legacy commissioning story, the claim that DM Sans covers every product/documentation surface, and the exclusive code/data role asserted for DM Mono. DM Mono's family is retained as live-loaded, without assigning an unobserved text role. Substitute: none chosen.
 
-### Hierarchy
+### Measured control typography
 
-| Role | Font | Size | Weight | Notes |
-|------|------|------|--------|-------|
-| Display Hero | DM Sans | 60px | 500 | Home hero: "The database your AI agents deserve" |
-| Display H1 | DM Sans | 56px | 400 | Pricing H1: "Databricks pricing" |
-| Section H2 | DM Sans | 48px | 500 | "Build and run apps, agents and AI on your data" |
-| Sub-section H2 | DM Sans | 40px | 400 | "How does Databricks pricing work?" |
-| Card H3 | DM Sans | 28px | 400 | "Pay as you go", feature card titles |
-| Body Large | DM Sans | 18px | 400 | Feature descriptions |
-| Body | DM Sans | 16px | 400 | Standard UI text, nav links |
-| Button | DM Sans | 16px | 500 | Primary/secondary button labels |
-| Caption/Nav | DM Sans | 14px | 400 | Small labels, utility links |
-| Code | DM Mono | 14px | 400 | Code snippets and technical displays |
+| Element | Size / weight | Line height | Tracking |
+|---|---|---|---|
+| Hero CTA links | 16px / 500 DM Sans | 24px | normal |
+| Contact Us utility link | 14px / 400 DM Sans | 14px | normal |
+| Main navigation menu buttons | 16px / 400 DM Sans | 16px | Not captured in survey |
+| Platform tab, selected | 16px / 700 DM Sans | 16px | Not captured in survey |
+| Database tab, inactive | 16px / 500 DM Sans | 16px | normal |
+| Featured-card link root | 16px / 400 DM Sans | 24px | normal |
+| Footer links | 14px / 400 DM Sans | 20px | Not captured in survey |
 
-### Principles
+### Declared hierarchy in the opened homepage HTML/CSS
 
-- **Weight simplicity**: DM Sans 400 (Regular) and 500 (Medium) cover the entire system. No bold (700) on primary content — tabs use 700 only for the active state indicator.
-- **No custom letter-spacing**: Databricks does not apply custom tracking at any scale — DM Sans's default metrics are used throughout. This reinforces the engineer's preference for clean defaults.
-- **Regular at display**: Unlike Stripe's weight-300 whisper, Databricks uses Regular (400) for most page H1s — a grounded, unshowy confidence.
-- **Mono for data**: DM Mono is reserved exclusively for code and technical displays, never used in marketing prose.
+The hero H1 explicitly binds responsive utilities: 44px/52px by default, 48px/60px from 1280px, 56px/68px from 1366px and 60px/72px from 1536px. Its weight utility declares 500. These are source declarations, not additional viewport measurements.
+
+The stylesheet's generic H1 rule is 40px/48px, 48px/56px from 768px and 56px/64px from 1280px. Generic H2 is 28px/36px and 40px/48px from 768px; generic H3 is 24px/32px and 28px/36px from 768px. The featured-card title binds H4 and semibold utilities, declaring 20px/28px at weight 600. These source rules keep the broader hierarchy separate from the measured control metrics.
+
+Both the product-section and customer-story H2 elements bind weight-500 `font-medium` and `lg:tracking-t-1`; the tracking rule declares `letter-spacing:-.01em` from 1280px. Normal tracking measured on the controls is therefore not a rule for every heading.
+
+The opened pricing page retains the labels Databricks pricing, How does Databricks pricing work?, and Pay as you go. Their computed typography was not remeasured; the generic source hierarchy above remains a separate evidence class.
 
 ## Layout
 
-### Spacing System
+At 1440 × 1000, the page starts with a fixed white navigation bar and a two-column hero: copy/actions on the left, product imagery on the right. Broad navy product sections alternate with white and warm customer-story areas. Product pills precede a large product demonstration; four featured-product cards form a desktop row. Customer stories, awards, editorial/event cards, a closing CTA and FAQ, and a multi-column footer follow.
 
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px (section)
-- Notable: Hero buttons use generous horizontal padding (24px) for command presence; nav buttons use tighter 12px horizontal padding
+Five first-party root variables declare content widths: `--content-width-sm: 520px`, `--content-width-md: 1136px`, `--content-width-lg: 1144px`, `--content-width-xl: 1312px` and `--content-width-xxl: 1456px`. A customer-story link measures 1312px wide at x=57 in the survey, providing a concrete desktop container reference.
 
-### Grid & Container
-
-- Centered max-width layout (~1200px content area)
-- Hero: centered single or two-column with the 60px DM Sans headline and dual CTA buttons
-- Feature sections: alternating full-width dark (Navy `#0B2026`) and white/Oat sections
-- Product tabs row: horizontal scrollable pill row against dark background
-- Pricing: card grid for product category tiles
-
-### Whitespace Philosophy
-
-- **Enterprise generosity**: Despite being a data-dense platform, Databricks's marketing site is generously spaced — sections breathe with 64px+ vertical rhythm.
-- **Dark sections as contrast**: Navy `#0B2026` full-width sections create dramatic contrast against white, functioning as visual resets rather than decorative accents.
-- **Square precision**: 0px radius on CTAs signals engineering discipline — this is infrastructure software, not consumer B2C.
-
-### Border Radius Scale
-
-- Zero (0px): Primary buttons, secondary buttons — the signature engineering aesthetic
-- Micro (2px): Cookie/preference UI, minor form inputs
-- Pill (20px): Product navigation tabs on dark sections
-- Standard (4px): Badges, small status indicators
+Use the observed spacing values in context: 8px vertical and 24px horizontal padding on hero CTA links; 12px padding on the header CTA; 16px horizontal padding on product tabs; 24px on featured cards. The hero pair's coordinates show an approximately 32px gap; its HTML binds `lg:gap-4`, and that CSS rule declares 32px. These observations do not establish a universal spacing scale.
 
 ### Responsive Behavior
 
-#### Breakpoints
-
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, tabs scroll |
-| Tablet | 640–1024px | 2-column feature grids, moderate padding |
-| Desktop | 1024–1280px | Full layout, multi-column grids |
-| Large Desktop | >1280px | Centered content, generous whitespace |
-
-#### Touch Targets
-
-- Primary CTA buttons: 40px height, generous 24px horizontal padding
-- Nav tabs: 40px height, 12–16px padding for comfortable tapping
-- Nav links: full header height (65px zone) for easy touch
-
-#### Collapsing Strategy
-
-- Hero: 60px headline scales to ~36px on mobile; DM Sans weight 500 maintained
-- Navigation: horizontal link bar → hamburger or collapsed menu
-- Dark feature sections: maintain full-width treatment, compress internal padding
-- Product tab row: horizontal scroll on narrow viewports
-- Pricing cards: 3-column → single column stacked
+The captured viewport is desktop 1440 × 1000. The opened homepage source declares a stacked hero that switches to a row from 768px. Its featured-card grid binds one column by default, two from 768px and four from 1280px. The H1's declared size changes at 1280px, 1366px and 1536px, as detailed in §3. These are CSS declarations; narrow-viewport rendering, touch behavior and tab scrolling were not measured.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, all standard surfaces |
-| Card (Level 1) | `0px 2px 8px rgba(27,49,57,0.12)` | Content cards, pricing tiles |
-| Elevated (Level 2) | `0px 4px 16px rgba(27,49,57,0.16)` | Dropdowns, nav flyouts |
-| Dark Section | `#0B2026` background | Full-width Navy sections for product demos |
-| Ring (Accessibility) | Focus outline on interactive elements | Keyboard navigation |
-
-**Shadow Philosophy**: Databricks uses restraint with shadows — the primary depth signals are the dramatic alternation between white and Navy `#0B2026` sections, not elevation layers. Cards on white surfaces receive a subtle teal-tinted shadow (`rgba(27,49,57,...)`) rather than neutral black, tying elevation to the brand's teal palette.
-
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.card`: `0px 2px 8px rgba(27,49,57,0.12)`
-- `shadow.elevated`: `0px 4px 16px rgba(27,49,57,0.16)`
+All six measured controls report `box-shadow: none` at rest. Color-field changes, the featured card's bottom border and its arrow provide interaction depth without a measured shadow change. The customer-story panel visibly casts a soft shadow in the full-page capture; its numerical shadow was not measured. The earlier card/dropdown shadow formulas are not established by these controls.
 
 ## Motion & Easing
 
-**Durations**:
+The two hero links declare a **200ms** transition with `cubic-bezier(0.4, 0, 0.2, 1)` across the listed visual properties. The inactive Database tab declares **150ms** with the same curve for color, background, border, decoration, fill and stroke. The Lakebase featured card declares `all` at **300ms** with `cubic-bezier(0.4, 0, 1, 1)`.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | State commits, toggle snaps |
-| `motion-fast` | 100ms | Button hover overlay, focus ring |
-| `motion-standard` | 200ms | Tab transitions, dropdown appears |
-| `motion-slow` | 300ms | Page-level section reveals, panel slides |
+The survey also exposes a button labelled Pause decorative banner animation. Its presence is verified; reduced-motion behavior and the effect of activating that control were not measured. The computed transition strings and state-settling evidence are copied into the verification notes.
 
-**Easings**:
+---
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Panels, dropdowns arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way UI transitions |
-
-**Motion rules**: Motion is functional and quiet — infrastructure software signals reliability through steadiness. Decorative banner animations on the Databricks homepage include a pause control as a first-class affordance (observed as an accessibility-forward `<button>` element). Tab transitions use `motion-standard / ease-standard`. No spring, no overshoot, no bounce — data pipelines don't bounce. Under `prefers-reduced-motion: reduce`, all transitions collapse to `motion-instant`; the decorative banner animation is paused.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via Playwright getComputedStyle on:
-- https://www.databricks.com/ (homepage)
-- https://www.databricks.com/product/pricing (pricing page)
-- https://www.databricks.com/product/data-intelligence-platform (product page)
-
-Official brand portal (2026-06-22):
-- https://brand.databricks.com/ — confirms: Lava 600 (#FF3621), Navy 900 (#0B2026), Oat Medium (#EEEDE9), Oat Light (#F9F7F4), DM Sans primary, DM Mono monospace
-
-Brand narrative: Databricks founded 2013 by UC Berkeley AMPLab researchers (Ali Ghodsi, Ion Stoica, Matei Zaharia et al.); Apache Spark origin; Lakehouse architecture concept; Delta Lake, MLflow, Unity Catalog as open-source projects. These are widely documented public facts.
-
-Voice samples (§10) are verbatim from the live homepage (H1, product H2, positioning H2), verified 2026-06-22.
-
-Personas (§13) are fictional archetypes informed by publicly observable Databricks user segments. Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "Lava is the color of combustion and computation", "square corners as engineering precision") are editorial readings connecting Databricks's observed design to its positioning, not directly sourced Databricks statements.
-
-The live CTA renders rgb(235,22,0) (#EB1600) which is close to but slightly different from brand-documented Lava 600 (#FF3621). This may reflect browser rendering or a live variant. Brand portal value (#FF3621) is used as authoritative primary_color; both values are documented in the conflict matrix in .verification.md.
--->
+**Sources and measurement:** Homepage survey and one states capture, 2026-11-02, worker browser, 1440 × 1000, en-US; [company](https://www.databricks.com/company/about-us), [press kit](https://www.databricks.com/company/newsroom/press-kit), [platform](https://www.databricks.com/product/platform), [pricing](https://www.databricks.com/product/pricing), [MLflow documentation](https://docs.databricks.com/aws/en/mlflow/), [dashboard design writing](https://www.databricks.com/blog/design-beautiful-dashboards-aibi), and the [dated company announcement](https://www.databricks.com/kr/company/newsroom/press-releases/databricks-grows-80-yoy-surpasses-7b-revenue-run-rate-scales). The [privacy notice](https://www.databricks.com/legal/privacynotice) names the legal controller and San Francisco address. The brand-host catch-all is not used to establish named palette or font-policy claims.
 
 ## Components
 
-### Buttons
+### Primary and secondary action links
 
-**Primary (Lava)**
-- Background: `#FF3621`
-- Text: `#ffffff`
-- Radius: 0px
-- Padding: 8px 24px
-- Height: 40px
-- Font: 16px DM Sans weight 500
-- Use: Primary CTA — "Try Databricks", "Start free trial", "Explore the product"
+**Explore the product** is 198.1 × 40px, radius 0px, padding 8px 24px, DM Sans 16px/500 with 24px line height, white text and no border or shadow. Its background is `#eb1600` at rest, `#bd2b26` on settled hover and `#ff5f46` while pressed.
 
-**Secondary (Navy)**
-- Background: `#1B3139`
-- Text: `#ffffff`
-- Radius: 0px
-- Padding: 8px 24px
-- Height: 40px
-- Font: 16px DM Sans weight 500
-- Use: Secondary CTA — "See demo", "Request a pricing quote"
+**See demo** is 123.6 × 40px with the same geometry and typography. Its background is `#1b3139` at rest and `#618794` on hover and press; its label remains white. These measurements apply to the hero pair. The header's Try Databricks link is also 40px high but has 12px padding in the survey.
 
-**Tertiary (Oat)**
-- Background: `#EEEDE9`
-- Text: `#1B3139`
-- Radius: 2px
-- Padding: 12px 10px
-- Font: 16px DM Sans weight 400
-- Use: Muted/preference actions — cookie settings, manage preferences
+### Navigation link and search trigger
 
-### Cards & Containers
+**Contact Us** is a navigation link: 88.7 × 40px, white background, teal text, radius 0px, left padding 16px and DM Sans 14px/400 with 14px line height. Hover and press change the text to `#ff3621`.
 
-**Product Pricing Card**
-- Background: `#ffffff`
-- Text: `#1B3139`
-- Radius: 0px
-- Use: Pricing page product tiles — Data Engineering, Data Warehousing
+**Site search** is a 24 × 24px `div` with `role=button`, radius 0px and 2px padding on the white header. Its transparent root inherits `#1b3139`, while the visible SVG stroke is `#1b5162`; hover and press change that stroke to `#ff3621`. No first-party search input was present in the survey.
 
-**Dark Feature Panel**
-- Background: `#0B2026`
-- Text: `#ffffff`
-- Use: Full-width dark sections for product demos and feature showcases
+### Featured card
 
-**Oat Surface Section**
-- Background: `#EEEDE9`
-- Text: `#1B3139`
-- Use: Alternating warm-neutral content sections
+The **Lakebase** card is a 319 × 173px link with radius 0px, 24px padding and no shadow. Its root font is 16px/400 with 24px line height. The visible title is white; the description and resting arrow are `#90a5b1`. The root's blue link color, `#016bc1`, is not the title color.
 
-### Tabs
+The card's cloud background brightens from 5% to 10% alpha on hover and press. A resting, transparent 1px bottom border becomes solid `#ff5f46`, and the arrow stroke changes from muted to `#ff3621`. The rest crop was outside the initial viewport; the hover, pressed and focus crops show the intended Lakebase card.
 
-**Product Tab — Active**
-- Background: `#ffffff`
-- Text: `#1B3139`
-- Radius: 20px
-- Padding: 12px 16px
-- Height: 40px
-- Font: 16px DM Sans weight 700
-- Use: Active state on dark-background tab row — Platform, Database, AI, BI
+### Product tabs
 
-**Product Tab — Inactive**
-- Background: `rgba(237, 242, 248, 0.1)`
-- Text: `#ffffff`
-- Radius: 20px
-- Padding: 12px 16px
-- Height: 40px
-- Font: 16px DM Sans weight 500
-- Use: Inactive product section tabs on dark Navy background
+The surveyed row lists Platform, Database, AI, Business intelligence, Governance, Data warehousing and Data engineering.
 
-### Badges
+The surveyed selected **Platform** tab is white with teal text, 40px high, radius 20px, padding 12px 16px and DM Sans 16px/700 with 16px line height. This selected appearance is retained as a rest observation, rather than a separately harvested interactive component.
 
-**Success Badge**
-- Background: `#F9FFFA`
-- Text: `#468254`
-- Radius: 4px
-- Font: 14px DM Sans weight 400
-- Use: Positive state indicators, availability badges
+The measured inactive **Database** tab is 103.8 × 40px, radius 20px, padding 12px 16px and DM Sans 16px/500 with 16px line height. Its white text stays fixed as the cloud background changes from 10% to 20% alpha on hover and press. Keyboard focus was not reached for this `tabIndex=-1` control.
 
-### Inputs & Forms
+### Radius
 
-**Default Text Input**
-- Background: `#ffffff`
-- Text: `#1B3139`
-- Border: 1px solid `#EEEDE9`
-- Radius: 2px
-- Font: 16px DM Sans Regular
-- Focus: 1px solid `#FF3621`
-- Use: Form fields, search inputs
-
----
-
-**Verified:** 2026-06-22
-**Tier 1 sources:** https://www.databricks.com/ (live inspect), https://www.databricks.com/product/pricing (live inspect), https://www.databricks.com/product/data-intelligence-platform (live inspect), https://brand.databricks.com/ (official brand portal — Lava 600 `#FF3621`, Navy 900 `#0B2026`, Oat Medium `#EEEDE9`, Oat Light `#F9F7F4`, DM Sans / DM Mono confirmed)
-**Tier 2 sources:** getdesign.md/databricks — not found (404); styles.refero.design/?q=databricks — no Databricks listing found after search
-**Conflicts unresolved:** none. Brand portal hex (`#FF3621`) vs. live inspect CTA (`rgb(235,22,0)` = `#EB1600`): live CTA appears to use a rendered variant; brand official Lava 600 = `#FF3621` is authoritative and used as primary. Both documented.
+The observed set is 0px for the measured CTA links, navigation link, search trigger and featured card; 20px for product tabs; and 2px on the surveyed customer-logo controls. Success badges and form-input styling were not established.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (notebook, no results)** | White canvas. DM Sans 16px Teal `#1B3139` message. Single Lava CTA to run a query or load sample data. No illustration. Honest about the empty state. |
-| **Empty (cluster list, none running)** | Muted `#90A5B1` text at 14px: "No clusters running." Link in `#016BC1` to create one. |
-| **Loading (job run)** | Inline progress indicator, Lava `#FF3621` accent. Text stays visible; spinner does not block content. |
-| **Loading (dashboard first paint)** | Skeleton blocks at card dimensions in Oat Medium `#EEEDE9`, 0px radius matching card geometry. Consistent with the flat, shadow-light system. |
-| **Error (pipeline failure)** | Inline error message, precise: error type + job ID + link to logs. Never "Something went wrong" alone. |
-| **Error (form validation)** | Field-level. `#FF3621` border on field + error text below at 14px. Describes what's invalid. |
-| **Error (cluster timeout)** | Structured: "Cluster timed out after N minutes" with restart CTA in Lava. Precise, actionable. |
-| **Success (job completed)** | `#F9FFFA` surface badge with `#468254` text: "Succeeded". Duration and output size shown. No emoji. |
-| **Success (resource created)** | Brief inline confirmation at body size. Past tense: "Cluster started." CTA to open the resource. |
-| **Skeleton** | `#EEEDE9` Oat Medium blocks at final dimensions, 0px radius for card skeletons. Flat pulse animation. |
-| **Disabled** | Opacity reduced. Lava actions fade to a muted orange-red; the brand hue is preserved even at low opacity. |
-| **Running (live cluster)** | `#468254` green status dot + "Running" label. Active, not just "available". |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Explore the product | Background `#bd2b26` | Background `#ff5f46` | Browser `auto` outline, 1px, offset 5px |
+| See demo | Background `#618794` | Background `#618794` | Browser `auto` outline, 1px, offset 5px |
+| Contact Us | Text `#ff3621` | Text `#ff3621` | Browser `auto` outline, 1px, offset 1px |
+| Site search | SVG stroke `#ff3621` | SVG stroke `#ff3621` | Browser `auto` outline, 1px, offset 0px |
+| Lakebase featured card | Cloud 10%; bottom border `#ff5f46`; arrow `#ff3621` | Same measured changes | Browser `auto` outline, 1px, offset 1px |
+| Database tab | Cloud 20% | Cloud 20% | Unmeasured; not reached by Tab |
+
+Each hover reading matched `:hover`, and each pressed reading matched `:active`. The measured focus changes cleared after blur; all five reached controls used the browser's own ring. Disabled, loading, validation, notebook and cluster-result states were not exercised.
 
 ## Do's and Don'ts
 
-### Do
-- Use DM Sans for all text — it's the only brand typeface
-- Use DM Mono for code, data labels, and technical displays
-- Apply Lava 600 (`#FF3621`) exclusively for primary CTAs — it's the action signal
-- Use 0px radius on buttons — square corners communicate engineering precision
-- Use Navy 900 (`#0B2026`) for immersive dark sections
-- Use Teal (`#1B3139`) as the body text color, not pure black
-- Apply pill radius (20px) only for navigation tabs on dark backgrounds
-- Use Oat Medium (`#EEEDE9`) for warm neutral sections and surfaces
-
-### Don't
-- Use warm orange-red (`#FF3621`) for anything other than primary action buttons
-- Round primary CTA buttons — Databricks CTAs are sharp-cornered (0px)
-- Use pure black (`#000000`) as body color — the system uses Teal `#1B3139`
-- Use `#FF3621` as a text color in running prose — it's for buttons only
-- Add decorative gradients or complex shadows — the system is precise and clean
-- Use weight 700 in DM Sans on headings — reserve it for active tab state only
-- Use DM Mono for body text — it's strictly for code/data contexts
-- Mix multiple accent colors — Lava is the single active hue
+- Build the hero actions as square 40px links with the measured 16px/500 labels and 8px 24px padding.
+- Keep the action's resting `#eb1600`, hover `#bd2b26` and pressed `#ff5f46` distinct.
+- Use the deep navy field to support white text and translucent cloud tabs/cards.
+- Give the inactive tab a 20px radius and its measured alpha change; keep the selected tab's surveyed weight 700.
+- Use the card's visible white title and muted description rather than its inherited anchor color.
+- Keep the measured icon and text accent changes in navigation; the primary accent also appears outside filled CTAs.
+- Preserve the distinction between public-site typography and product-wide font policy, and between declared CSS and measured states.
+- Use native keyboard focus behavior where observed; no brand focus-ring token was measured.
 
 ## Voice & Tone
 
-Databricks's voice is **precise, ambitious, and technically confident** — the voice of a platform that emerged from academia (UC Berkeley's AMPLab) and never left behind its conviction that the right architecture solves the hardest problems. The homepage headline "The database your AI agents deserve" is emblematic: assertive, technically specific, quietly provocative. Marketing copy treats the data engineer and data scientist as intelligent peers, not as buyers to be persuaded with superlatives.
+The current homepage pairs a short database proposition with concrete product nouns: Postgres, apps and agents. The main actions are direct imperatives such as Explore the product and See demo. The header uses Try Databricks; the pricing page uses Start free trial and Request a pricing quote. Product sections describe tasks and capabilities; the Lakeflow passage describes ingesting, transforming and orchestrating data. The public pricing page explains pay-as-you-go billing and defines DBUs. These are observed copy patterns, rather than a documented corporate tone policy.
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Declarative, technically grounded. "The database your AI agents deserve." No hype words. |
-| Product descriptions | Capability-first. "Orchestrate, transform, ingest." Verbs before adjectives. |
-| CTAs | Direct imperatives. "Try Databricks", "Start free trial", "Explore the product". |
-| Pricing | Transparent, precise. "Starting at $0.15 / DBU" — no ambiguity. |
-| Documentation | Peer-to-peer. Assumes technical proficiency; dense, precise, example-led. |
-| About / Careers | Mission-driven without grandiosity. "Simple. Open. Multicloud." |
-| Error messages | Structured and actionable — data engineers expect specific error types. |
-
-**Voice samples (verbatim, verified live 2026-06-22):**
-- "The database your AI agents deserve" — home hero H1 *(verified live)*
-- "Build and run apps, agents and AI on your data" — product section H2 *(verified live)*
-- "Intelligent. Simple. Private." — platform positioning H2 *(verified live)*
-
-**Forbidden register**: vague superlatives ("revolutionary", "industry-leading", "best-in-class" as empty filler), consumer-app enthusiasm ("🚀 We're excited to…"), jargon without definition in user-facing copy, passive voice on CTAs.
+The current hero reads “One database for AI, apps and agents”. The earlier product-section wording, “Build and run apps, agents and AI on your data”, remains in the opened homepage. No authored error-message tone or forbidden-word list was established.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
+“Build a Databricks-style public marketing hero on `#ffffff`, using live-loaded DM Sans. Place the copy beside a large product demonstration. Use a 40px square primary action link with white 16px/500 text, 24px line height and 8px 24px padding. Set its rest background to `#eb1600`, hover to `#bd2b26` and pressed to `#ff5f46`. Pair it with a matching secondary link using `#1b3139`, changing to `#618794` on hover and press.”
 
-- Primary CTA: Lava 600 (`#FF3621`)
-- Secondary CTA: Teal (`#1B3139`)
-- Background: White (`#ffffff`)
-- Dark section bg: Navy 900 (`#0B2026`)
-- Warm surface: Oat Medium (`#EEEDE9`)
-- Heading/body text: Teal (`#1B3139`)
-- Muted text: Blue-Gray (`#90A5B1`)
-- Link: Enterprise Blue (`#016BC1`)
-- Success: Green (`#468254`)
+“Create a navy product section with 40px-high, 20px-radius tabs. The selected rest appearance is white with teal 16px/700 text; the inactive appearance is cloud at 10% alpha with white 16px/500 text, increasing to 20% alpha on hover and press. Under it, use a square featured-card link with a white title, muted description, 24px padding, a 5% cloud background and the measured border/arrow interaction.”
 
-### Example Component Prompts
-
-- "Create a hero section on white background. H1 at 60px DM Sans weight 500, color #1B3139. Subtext at 18px weight 400, #90A5B1. Two CTAs: primary Lava #FF3621 bg, white text, 0px radius, 8px 24px padding — 'Try for free'; secondary #1B3139 bg, white text, same geometry — 'See demo'."
-- "Design a dark feature section: #0B2026 background, white headings at 48px DM Sans weight 500. Tab row with pill buttons (20px radius): active tab white bg + #1B3139 text weight 700; inactive tabs rgba(237,242,248,0.1) bg + white text weight 500."
-- "Build a pricing card: white background, 0px radius. H3 at 28px DM Sans weight 400, #1B3139. Body at 16px weight 400, #1B3139. Link in #016BC1. Lava CTA at bottom."
-- "Create a badge: #F9FFFA background, #468254 text, 4px radius, 14px DM Sans weight 400."
-
-### Iteration Guide
-
-1. DM Sans is the only typeface — never substitute another sans
-2. Use weight 400 for most content; 500 for CTAs and key headings; 700 only for active tab state
-3. 0px radius on all buttons — sharp corners are intentional brand design
-4. Lava (`#FF3621`) is the single CTA color — do not use it for icons, text, or decorations
-5. Teal (`#1B3139`) is both the body text color and the secondary button background
-6. Navy (`#0B2026`) for immersive dark sections — not Teal, not black
-7. DM Mono for any code or technical data display
-8. Oat Medium (`#EEEDE9`) for warm-neutral surfaces, not gray
-
----
+Use the evidence classes and declared type rules in §3 when expanding the layout. Substitute: none chosen.
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `button-primary`.** Text `#ffffff` on `#ff3621` measures 3.62:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `card-featured`.** Text `#ffffff` on `#edf2f80d` measures 1.13:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
 - **Contrast, `nav-tab-inactive`.** Text `#ffffff` on `#edf2f81a` measures 1.13:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

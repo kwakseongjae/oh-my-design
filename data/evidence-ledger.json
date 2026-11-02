@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 308,
-  "sources": 2064,
+  "references_with_verification_v2": 318,
+  "sources": 2296,
   "sources_by_kind": {
-    "brand-asset": 82,
-    "license": 137,
-    "official-doc": 782,
-    "product-surface": 1063
+    "brand-asset": 96,
+    "license": 138,
+    "official-doc": 937,
+    "product-surface": 1125
   },
   "references": {
     "104": {
@@ -398,6 +398,144 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "adobe": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-blog-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "brand-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "brand-writing-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "adobe.design"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "adobe.design"
+        },
+        {
+          "id": "ds-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-motion",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-sitemap",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-type-system",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "use.typekit.net"
+        },
+        {
+          "id": "founding",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "hq",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "s2-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "s2.spectrum.adobe.com"
+        },
+        {
+          "id": "s2-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "s2.spectrum.adobe.com"
+        },
+        {
+          "id": "s2-sitemap",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "s2.spectrum.adobe.com"
+        },
+        {
+          "id": "spectrum-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
         }
       ]
     },
@@ -2621,6 +2759,138 @@
         }
       ]
     },
+    "databricks": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-assets",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "brandfolder.com"
+        },
+        {
+          "id": "brand-assets-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "brandfolder.com"
+        },
+        {
+          "id": "brand-assets-redirect",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "brandfolder.com"
+        },
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "brand.databricks.com"
+        },
+        {
+          "id": "brand-host-ownership",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.databricks.com"
+        },
+        {
+          "id": "brand-welcome",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.databricks.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "company-update",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "design-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "founders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "leaders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "mlflow-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "docs.databricks.com"
+        },
+        {
+          "id": "platform",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "platform-redirect",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "press-kit",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "pricing",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        }
+      ]
+    },
     "datarize": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -2828,6 +3098,156 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "www.bahn.de"
+        }
+      ]
+    },
+    "digital-agency-jp": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "button",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "color",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "color-palette",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "company-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "components",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "corner-shapes",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "ds-introduction",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "ds-license",
+          "kind": "license",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "elevation",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "layout",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "local-design",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "resources",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "stylesheet",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "updates",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
         }
       ]
     },
@@ -4217,6 +4637,384 @@
         }
       ]
     },
+    "govuk": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "accessibility-requirements",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "banner-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-blue",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-intro",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-publication",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "brand-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "button",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "button-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "clear-language",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "colour",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "components",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "confirmation",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "control-brand",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "control-ds",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "control-gds-blog",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "gds.blog.gov.uk"
+        },
+        {
+          "id": "control-guidance",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "design-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "ds-css-0",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "ds-example-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "ds-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "gds.blog.gov.uk"
+        },
+        {
+          "id": "effective-links",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "error-message",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "error-summary",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "gds-about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "gds-blog-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "gds.blog.gov.uk"
+        },
+        {
+          "id": "gds-contact",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "guidance-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "headings",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "home-css-0",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "home-css-1",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "input-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "inset-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "inset-text",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "layout",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "notification-banner",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "paragraphs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "patterns",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "progressive-enhancement",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "secondary-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "select",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "select-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "style-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "tag",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "tag-colours",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "tag-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "task-list",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "text-input",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "tone-current",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "type-scale",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "typeface",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "unavailable",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "warning-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        }
+      ]
+    },
     "greencar": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -4646,6 +5444,114 @@
           "kind": "product-surface",
           "captured": "2026-09-22",
           "host": "www.huawei.com"
+        }
+      ]
+    },
+    "hubspot": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "blog-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "blog.hubspot.com"
+        },
+        {
+          "id": "brand-candidate-404",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.hubspot.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "legal.hubspot.com"
+        },
+        {
+          "id": "canvas-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "product.hubspot.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.hubspot.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.hubspot.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.hubspot.com"
+        },
+        {
+          "id": "design-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "product.hubspot.com"
+        },
+        {
+          "id": "ds-candidate",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "canvas.hubspot.com"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "canvas.hubspot.com"
+        },
+        {
+          "id": "ds-redirect-target",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.hubspot.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.hubspot.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "legal.hubspot.com"
+        },
+        {
+          "id": "inbound-method",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.hubspot.com"
+        },
+        {
+          "id": "inclusive-content",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "product.hubspot.com"
+        },
+        {
+          "id": "legal-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "legal.hubspot.com"
+        },
+        {
+          "id": "product-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "product.hubspot.com"
         }
       ]
     },
@@ -6965,6 +7871,102 @@
         }
       ]
     },
+    "mailchimp": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "acquisition",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "bootstrap",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "design-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.mailchimp.com"
+        },
+        {
+          "id": "design-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.mailchimp.com"
+        },
+        {
+          "id": "founders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "patterns-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "ux.mailchimp.com"
+        },
+        {
+          "id": "patterns-unavailable",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "ux.mailchimp.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mailchimp.com"
+        },
+        {
+          "id": "voice",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "styleguide.mailchimp.com"
+        },
+        {
+          "id": "voice-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "styleguide.mailchimp.com"
+        }
+      ]
+    },
     "makinarocks": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -7832,6 +8834,84 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.mongodb.design"
+        }
+      ]
+    },
+    "monzo": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "current-account",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "design-index",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "press",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "writing-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "writing-system",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
         }
       ]
     },
@@ -9215,6 +10295,126 @@
         }
       ]
     },
+    "paypal": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.pentagram.com"
+        },
+        {
+          "id": "business",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.paypal.com"
+        },
+        {
+          "id": "card-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.paypalobjects.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.pypl.com"
+        },
+        {
+          "id": "company-values",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.pypl.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.paypal.com"
+        },
+        {
+          "id": "control-lineto",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "lineto.com"
+        },
+        {
+          "id": "control-paypalobjects",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.paypalobjects.com"
+        },
+        {
+          "id": "control-pentagram",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.pentagram.com"
+        },
+        {
+          "id": "evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "newsroom.paypal-corp.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.paypal.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.paypal.com"
+        },
+        {
+          "id": "layout-helpers-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.paypalobjects.com"
+        },
+        {
+          "id": "main-components-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.paypalobjects.com"
+        },
+        {
+          "id": "merchant-redirect",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.paypal.com"
+        },
+        {
+          "id": "prospectus",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.paypalobjects.com"
+        },
+        {
+          "id": "separation",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "newsroom.ie.paypal-corp.com"
+        },
+        {
+          "id": "theme-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.paypalobjects.com"
+        },
+        {
+          "id": "type-foundry",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "lineto.com"
+        }
+      ]
+    },
     "pega": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -10283,6 +11483,126 @@
         }
       ]
     },
+    "salesforce": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "company-story",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "developer-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "developer.salesforce.com"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.lightningdesignsystem.com"
+        },
+        {
+          "id": "ds-developer",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "developer.salesforce.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.lightningdesignsystem.com"
+        },
+        {
+          "id": "ds-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "font-note-unreadable",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "help.salesforce.com"
+        },
+        {
+          "id": "font-release-shell",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "developer.salesforce.com"
+        },
+        {
+          "id": "headquarters",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "hooks-distribution",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "unpkg.com"
+        },
+        {
+          "id": "hooks-metadata",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "unpkg.com"
+        },
+        {
+          "id": "hooks-official-repo",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.salesforce.com"
+        }
+      ]
+    },
     "samsung": {
       "checked": "2026-09-29",
       "claims": 0,
@@ -11186,6 +12506,138 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "news.sktelecom.com"
+        }
+      ]
+    },
+    "skyscanner": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "medium.com"
+        },
+        {
+          "id": "colour-design",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "medium.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "ds-components",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-readme",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "ds-root",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-tokens",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "ds-utilities",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-welcome",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "foundations",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "unpkg.com"
+        },
+        {
+          "id": "founder-check",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "medium-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "medium.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "raw-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "unpkg-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "unpkg.com"
         }
       ]
     },

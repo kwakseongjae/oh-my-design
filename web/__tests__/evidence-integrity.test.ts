@@ -153,7 +153,17 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 214 -> 205 (2026-09-30): wave P6, nine more.
     // 205 -> 197 (2026-09-30): wave P7, eight more.
     // 197 -> 193 (2026-10-01): ssg, cafe24, medibloc, ikala (Aside captures).
-    expect(flagged.length).toBe(193);
+    // 193 -> 192 (2026-11-02): paypal re-verified from a live capture; §15 writes only computed transitions.
+    // 192 -> 191 (2026-11-02): hubspot, the same way.
+    // 191 -> 190 (2026-11-02): skyscanner.
+    // 190 -> 189 (2026-11-02): digital-agency-jp.
+    // 189 -> 188 (2026-11-02): databricks.
+    // 188 -> 187 (2026-11-02): salesforce.
+    // 187 -> 186 (2026-11-02): monzo.
+    // 186 -> 185 (2026-11-02): adobe.
+    // 185 -> 184 (2026-11-02): mailchimp.
+    // 184 -> 183 (2026-11-02): govuk.
+    expect(flagged.length).toBe(183);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
@@ -164,7 +174,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // `adobe` was one of the 130 cleared, so it is off the list now; `17live` stands in
     // as a still-flagged case — its prose says "over `motion-reaction`", a token the
     // removed table was the only definition of.
-    expect(flagged).toContain("adobe");   // reverted: its hedge sentence dangled once the table went
+    // adobe was the example here until its 2026-11-02 live re-verification grounded every motion value.
+    expect(flagged).toContain("17live");
   }, 120_000);
 
   it("keeps the palette-grounding snapshot readable as evidence, not as an accusation", () => {

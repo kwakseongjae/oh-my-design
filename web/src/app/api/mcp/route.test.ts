@@ -7,6 +7,7 @@ import { inputs, outputs, annotations, CATALOG, NOTICE, type ToolName } from "@/
 import { MAX_RESPONSE_BYTES } from "@/lib/mcp/response";
 import { mcpRateLimit } from "@/lib/mcp/operations";
 import { REGISTRY } from "@/data/registry.generated";
+import { REFERENCE_QUALITY } from "@/data/reference-quality.generated";
 
 const mocks = vi.hoisted(() => ({
   scheduled: [] as (() => unknown)[],
@@ -84,8 +85,12 @@ it("initializes statelessly and lists exactly six read-only tools with input and
   }
 });
 
+// Re-verification moves references from partial to verified (skyscanner did on 2026-11-02), so the
+// partial example comes from the quality data instead of a fixed name.
+const PARTIAL = REFERENCE_QUALITY.find((entry) => entry.status === "partial")!.id;
+
 describe.each([
-  ["toss", "verified_v2"], ["sixt", "verified_v2"], ["skyscanner", "partial"], ["mercury", "legacy"],
+  ["toss", "verified_v2"], ["sixt", "verified_v2"], [PARTIAL, "partial"], ["mercury", "legacy"],
 ] as const)("real %s (%s)", (id, status) => {
   it("satisfies every tool's output contract and preserves trust", async () => {
     const calls: [ToolName, object][] = [
@@ -140,10 +145,18 @@ it("reports absent groups and states without substituting or promoting prose sta
   expect(data.absent).toEqual(expect.arrayContaining(["spacing", "shadow", "motion", "fonts.faces", "display_name_ko"]));
   expect(data.groups).not.toHaveProperty("spacing");
   expect(data.reference).not.toHaveProperty("display_name_ko");
-  const states = outputs.get_component_states.parse((await tool("get_component_states", { id: "skyscanner", component: "button-primary" })).structuredContent);
+  // A partial reference's component whose states exist only in prose: none may be promoted to a measured state.
+  let prose: { id: string; component: string } | undefined;
+  for (const entry of REFERENCE_QUALITY.filter((item) => item.status === "partial")) {
+    const all = outputs.get_component_states.parse((await tool("get_component_states", { id: entry.id })).structuredContent);
+    const component = all.components.find((item) => item.not_measured.length === 3);
+    if (component) { prose = { id: entry.id, component: component.id }; break; }
+  }
+  expect(prose).toBeDefined();
+  const states = outputs.get_component_states.parse((await tool("get_component_states", { id: prose!.id, component: prose!.component })).structuredContent);
   expect(states.components[0].states).toEqual({});
   expect(states.components[0].not_measured).toEqual(["hover", "pressed", "focus"]);
-  expect(states.absent).toContain("components.button-primary.hover");
+  expect(states.absent).toContain(`components.${prose!.component}.hover`);
   const missing = outputs.get_component_states.parse((await tool("get_component_states", { id: "toss", component: "zz-nonexistent" })).structuredContent);
   expect(missing.components).toEqual([]);
   expect(missing.absent).toContain("components.zz-nonexistent");
@@ -172,12 +185,12 @@ it("serves the default toss token request within the full HTTP budget", async ()
 });
 
 it("returns an actionable tool error instead of truncating a real oversized comparison", async () => {
-  const result = await tool("compare_references", { ids: ["toss", "sixt", "skyscanner", "mercury"] });
+  const result = await tool("compare_references", { ids: ["toss", "sixt", PARTIAL, "mercury"] });
   expect(result.isError).toBe(true);
   expect(result.structuredContent).toMatchObject({ error: { code: "response_too_large", message: expect.stringContaining("fewer") } });
 });
 
-it.each(["toss", "sixt", "skyscanner", "mercury"])("returns canonical UTF-8 bytes for %s, without the raw route footer", async (id) => {
+it.each(["toss", "sixt", PARTIAL, "mercury"])("returns canonical UTF-8 bytes for %s, without the raw route footer", async (id) => {
   const data = outputs.get_design_md.parse((await tool("get_design_md", { id })).structuredContent);
   const canonical = readFileSync(join(process.cwd(), "references", id, "DESIGN.md"));
   expect(Buffer.from(data.markdown, "utf8").equals(canonical)).toBe(true);
@@ -206,7 +219,7 @@ it("never writes catalog files, invokes a provider, or records input text/person
   const query = "private-person@example.test calm blue fintech";
   await tool("search_references", { query });
   await tool("get_reference", { id: "toss" });
-  await tool("get_tokens", { id: "skyscanner" });
+  await tool("get_tokens", { id: PARTIAL });
   await tool("get_design_md", { id: "mercury" });
   await tool("get_component_states", { id: "sixt" });
   await tool("compare_references", { ids: ["toss", "sixt"], aspects: ["radius"] });
@@ -219,7 +232,7 @@ it("never writes catalog files, invokes a provider, or records input text/person
   for (const [method, key, field] of mocks.counters) {
     expect(["hincrby", "expire", "eval"]).toContain(method);
     expect(key).toMatch(/^omd:mcp:v2:/);
-    if (method === "hincrby") expect([...Object.keys(inputs), "toss", "sixt", "skyscanner", "mercury"]).toContain(field);
+    if (method === "hincrby") expect([...Object.keys(inputs), "toss", "sixt", PARTIAL, "mercury"]).toContain(field);
   }
   expect(mocks.counters.filter(([method, key]) => method === "hincrby" && String(key).includes(":tools:"))).toHaveLength(6);
 });

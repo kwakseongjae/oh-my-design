@@ -7,7 +7,7 @@ colors:
   brand-dark: '#05203c'
   canvas: '#ffffff'
   canvas-contrast: '#eff3f8'
-  surface-low-contrast: '#f7f9fb'
+  surface-low-contrast: '#f5f7fa'
   surface-subtle: '#e3f0ff'
   surface-highlight: '#e0e4e9'
   foreground: '#161616'
@@ -18,163 +18,81 @@ colors:
   error: '#e70866'
   success: '#0c838a'
   warning: '#f55d42'
+  input-ink: '#000000'
 typography:
-  display:
-    fontSize: 64px
-    fontWeight: 900
-    lineHeight: 1.2
-    use: Brand World display; very large display copy only
-  hero-1:
-    fontSize: 40px
+  action-label:
+    fontSize: 16px
     fontWeight: 700
-    lineHeight: 1.25
-    use: Page hero headline (large)
-  hero-2:
-    fontSize: 32px
+    lineHeight: 1.5
+    use: Visible labels of the measured search CTA, login button and hotels navigation card
+  nav-label:
+    fontSize: 14px
     fontWeight: 700
-    lineHeight: 1.25
-    use: Secondary hero / section heads
-  heading-1:
-    fontSize: 28px
-    fontWeight: 700
-    lineHeight: 1.3
-    use: Major headings
-  heading-2:
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.3
-    use: Sub-section headings
-  body-lg:
-    fontSize: 20px
-    fontWeight: 400
-    lineHeight: 1.4
-    use: Large body / feature descriptions
-  body:
+    use: Visible labels of the measured Flights and Hotels header links; their wrappers compute to 16px/400
+  search-input:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Standard reading text
-  body-sm:
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.43
-    use: Secondary body, captions
-  label:
-    fontSize: 14px
-    fontWeight: 700
-    lineHeight: 1.43
-    use: Buttons and labels
-  caption:
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.33
-    use: Fine print, metadata
+    use: Measured departure combobox text
 rounded:
+  none: 0px
   xs: 4px
   sm: 8px
   md: 12px
-  lg: 24px
-  full: 9999px
-spacing:
-  sm: 4
-  md: 8
-  base: 16
-  lg: 24
-  xl: 32
-  xxl: 40
-  xxxl: 64
-  xxxxl: 96
+  nav: 100px
 components:
   button-primary:
     type: button
     backgroundColor: '#0062e3'
     textColor: '#ffffff'
-    rounded: 8px
-    height: 36px
-    padding: 0px 16px
-    typography: 16px / 400 Skyscanner Relative
-    hover: '#024daf'
-    use: Primary CTA — search, book, confirm
+    rounded: 12px
+    height: 72px
+    padding: 12px 16px
+    typography: 16px / 700 Skyscanner Relative
+    hover: 'bg #024daf'
+    pressed: 'bg #024daf'
+    use: 검색하기, the main search button. Pointer states measured with the consent overlay temporarily hidden; keyboard focus unmeasured.
   button-secondary:
     type: button
     backgroundColor: '#e0e4e9'
     textColor: '#161616'
     rounded: 8px
     height: 36px
-    padding: 0px 16px
-    typography: 16px / 400 Skyscanner Relative
-    hover: '#c1c7cf'
-    use: Secondary actions
-  button-featured:
-    type: button
-    backgroundColor: '#0062e3'
-    textColor: '#ffffff'
-    rounded: 8px
-    height: 48px
-    padding: 0px 16px
-    typography: 16px / 400 Skyscanner Relative
-    use: Large featured CTA (Large button variant)
-  tab-active:
-    type: tab
-    backgroundColor: '#0062e3'
-    textColor: '#ffffff'
-    rounded: 100px
-    padding: 0px 16px
-    height: 36px
-    typography: 16px / 400
-    use: Active product tab (Flights, Hotels, Cars)
-    active: 'bg #0062e3 text #ffffff'
+    padding: 6px 16px
+    typography: 16px / 700 Skyscanner Relative
+    hover: 'bg #c1c7cf'
+    pressed: 'bg #c1c7cf'
+    use: 로그인, the header secondary button, measured without activating sign-in. Pointer states used hideOverlays; keyboard focus unmeasured.
   tab-inactive:
-    type: tab
-    backgroundColor: transparent
+    type: button
     textColor: '#ffffff'
     rounded: 100px
-    padding: 0px 16px
     height: 36px
-    border: rgba(255,255,255,0.5) 0px 0px 0px 1px inset
-    use: Inactive product tab
-  input-search:
-    type: input
-    backgroundColor: '#ffffff'
-    border: none
-    rounded: 12px
     padding: 0px 16px
-    height: 72px
-    typography: 16px / 400 Skyscanner Relative
-    use: Flight/hotel search field block
-  card-default:
+    typography: 14px / 700 Skyscanner Relative
+    shadow: rgb(193, 199, 207) 0px 0px 0px 1px inset
+    hover: 'bg #154679; inset shadow rgb(21, 70, 121) 0px 0px 0px 1px inset'
+    pressed: 'bg #154679; inset shadow rgb(21, 70, 121) 0px 0px 0px 1px inset'
+    use: '숙소, a header navigation link with role=tab. Its background is transparent on #05203c. Font describes its visible child label; wrapper is 16px/400. Pointer states used hideOverlays; keyboard focus unmeasured.'
+  card-nav-hotels:
     type: card
-    backgroundColor: '#ffffff'
-    rounded: 12px
-    shadow: rgba(0,0,0,0.08) 0px 4px 8px 0px, rgb(230,233,235) 0px 0px 0px 1px
-    use: Standard content card
-  badge-info:
-    type: badge
-    backgroundColor: '#e3f0ff'
-    textColor: '#0062e3'
-    rounded: 6px
-    padding: 4px 8px
-    typography: 12px / 400
-    use: Status / informational pill
-  toggle-on:
-    type: toggle
-    backgroundColor: '#0062e3'
-    textColor: '#ffffff'
-    use: Toggle/checkbox in 'on' state
-  chip-filter:
-    type: badge
     backgroundColor: '#05203c'
     textColor: '#ffffff'
-    rounded: 8px
-    border: '1px solid #c1c7cf'
-    padding: 0px 12px
-    height: 32px
-    typography: 14px / 400
-    use: Filter chip in active/selected state
+    rounded: 12px
+    height: 72px
+    padding: 0px
+    typography: 16px / 700 Skyscanner Relative
+    shadow: rgba(37, 32, 31, 0.3) 0px 1px 3px 0px
+    hover: 'child bg #154679; shadow rgba(37, 32, 31, 0.25) 0px 4px 14px 0px'
+    pressed: 'child bg #154679; shadow rgba(37, 32, 31, 0.3) 0px 1px 3px 0px'
+    use: 숙소, the 290px-wide main navigation card link. Background and shadow are measured on div@0, the BpkCardV2 child; foreground and font on the visible label. Padding is the outer link's 0px. Pointer states used hideOverlays; keyboard focus unmeasured.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 fonts:
   roles:
-    sans: '''Skyscanner Relative'''
-    serif: Larken
+    sans: Skyscanner Relative
+    korean: Noto Sans KR
 ---
 
 # Design System Inspiration of Skyscanner
@@ -183,547 +101,193 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Skyscanner's product speaks with the confidence of a global travel marketplace that has handled hundreds of millions of searches — clear, energetic, and trustworthy, without the corporate gravity of legacy airline booking tools. The system opens on a pure white canvas (`#ffffff`) wrapped in a luminous, cornflower-sky blue (`#0062e3`) for its primary CTA, while a deep midnight navy (`#05203c`) anchors contrast surfaces, headers-on-dark, and the brand's most authoritative moments. The result is a palette that feels genuinely sky-inspired — open, optimistic, and reliably actionable.
+Skyscanner compares flight, hotel and car-hire prices to help travellers plan journeys. Its own history dates its start to 2003. The current product combines search tools with discovery: its history records Vibes and Savvy Search in 2024, then the price-drop tool DROPS in 2025. [Company history](https://www.skyscanner.net/about-us).
 
-Skyscanner's typographic identity is built on a custom geometric sans, **"Skyscanner Relative"**, a humanist typeface designed in-house that forms the foundation of every word in the product — from hero headlines at weight 900 to button labels at weight 700 to body text at 400. A secondary editorial serif, **Larken**, is reserved for brand storytelling surfaces (audience/campaign pages), giving the system an expressive toggle between two registers: functional sans and editorial serif. The body size is a deliberate 16px at 1.5 line-height, engineered for scan-first search interactions where users compare prices and routes at speed.
+The visual foundation is blue, navy and white: **`#0062e3`** for the main search action and selected Flights link, **`#05203c`** behind the search area and on navigation cards, and **`#ffffff`** for the page and search-field surfaces. **Skyscanner Relative** and **Noto Sans KR** loaded on the captured Korean surface. A 72px search action, 36px product links and rounded navigation cards give the page a clear hierarchy of tasks. These are observations of the homepage reached automatically from `skyscanner.net` in the collector's Korean location.
 
-The design language is defined by **rounded softness at every scale**: corner radii cascade from 4px (checkbox borders) through 8px (buttons, chips) to 12px (search panels, major cards) and 100px (product-selector pill tabs). The search form itself — Skyscanner's most visited surface — is a card composed of white-background input blocks with generous 72px height, minimal borders, and a single electric-blue submit button. Depth comes from a dual-layer shadow system: a neutral `rgba(0,0,0,0.08)` fill-shadow layered with a subtle `rgb(230,233,235)` inset ring for cards, and a three-level ambient/standard/XL scale for floating panels.
+The 2024 brand account traces an evolution from the 2019 rebrand toward a reduced palette and a consistent grid. [Design team's account](https://medium.com/skyscanner-product-design/building-a-plane-mid-flight-how-we-created-the-new-skyscanner-brand-world-df64fae5c229). Its companion colour article explains that Brand and Product use separate libraries built from shared primitives, with product choices organised by semantic role. [Product colour design](https://medium.com/skyscanner-product-design/how-we-fixed-skyscanners-broken-colour-palette-ec25d19167dc).
 
-**Key Characteristics:**
-- Custom "Skyscanner Relative" typeface for all product text; Larken serif for editorial surfaces
-- Sky blue `#0062e3` (Backpack `--bpk-core-accent`) as the single interactive/CTA colour
-- Midnight navy `#05203c` (Backpack `--bpk-core-primary`) for dark surfaces and brand depth
-- Pill-shaped product-selector tabs (100px radius) on deep navy hero backgrounds
-- Large (72px) search-input blocks with card-style grouping and 12px radius
-- 8px radius for standard buttons; no square corners, no excessive rounding
-- Dual-layer card shadow: `rgba(0,0,0,0.08)` + `rgb(230,233,235)` ring border
-- "Eco" teal (`#0fa1a9`) for environmental/sustainability signals (green travel)
-- Typography weight triad: 900 (display), 700 (headings/labels), 400 (body)
-
-### Primary tasks
-
-- Compare fares across airlines and booking sites at once
-- Search for a hotel or car hire, not only flights
-- Set a price alert and wait for a drop
-- Find the cheapest place to fly with no fixed destination
-- See every price before creating an account
+Primary tasks supported by the company history and captured navigation are comparing flights, finding hotels or car hire, exploring destinations with Everywhere, and monitoring flight prices with Price Alerts.
 
 ### Brand Narrative
 
-Skyscanner was founded in **2001** by **Gareth Williams, Barry Smith, and Bonamy Grimes** — three friends in Edinburgh who, working on a coding side project, realised they couldn't find a quick way to compare airfares across carriers. The company began as a tool for their own travel frustration. It launched publicly in 2003 as one of the first flight-aggregator search engines, predating Google Flights by nearly a decade.
+Skyscanner's history runs from flight comparison in 2003 to Everywhere in 2006 and Price Alerts in 2012, then car hire in 2013 and hotels in 2014. The same timeline records Ctrip's acquisition in 2016 for £1.4bn, identifying Ctrip today as Trip.com Group. [Company history](https://www.skyscanner.net/about-us).
 
-The Edinburgh origin is foundational to the brand: Skyscanner grew from a developer's tool into a mass-consumer product while retaining a sense of curious, problem-solving pragmatism that distinguishes it from its American competitors. The product's promise — find the cheapest way to get from A to B, regardless of airline or booking site — was radical in an era when each airline kept fares inside its own walled garden.
-
-Skyscanner's growth arc ran through a **2014 Series A investment by Sequoia Capital**, followed by rapid international expansion (now supporting 52 languages and 70 currencies), until **2016, when Chinese travel giant Ctrip (now Trip.com Group) acquired Skyscanner for £1.4 billion** — the largest-ever acquisition of a British tech company at the time. Despite the acquisition, Skyscanner continues to operate as an independent brand headquartered in Edinburgh, with offices in London, Barcelona, and Shenzhen.
-
-The **Backpack design system** (open-sourced in 2016) represents the company's commitment to building product with the rigor of a design-forward tech company. The name "Backpack" is on-brand: it's the traveller's essential companion — reliable, well-organised, and always ready for the next destination.
-
-What Skyscanner refuses: airline-owned bias (all results are ordered by price and relevance, not commercial arrangement by default), dark-pattern urgency tactics, and the visual register of legacy travel agencies (photo carousels of stock beach shots, heavy serif editorial fonts, cluttered layouts). What it embraces: clean information hierarchy, honest pricing, and the conviction that travel comparison should feel effortless.
+Backpack describes its purpose as creating intuitive traveller-first experiences, and its rendered welcome page separates foundations, components, content, accessibility, localisation and brand resources. [Backpack](https://www.skyscanner.design/latest/welcome-to-backpack-Mtf5OEo4). Its public web repository now says it is archived and names `@skyscanner/backpack-web@43.16.0` as the final public release; it directs internal contributors to a separate repository. This is the public repository's status, not a claim that Skyscanner has stopped developing its design system. [Official repository README](https://raw.githubusercontent.com/Skyscanner/backpack/main/README.md).
 
 ### Principles
 
-1. **Traveller-first, always.** Backpack's stated mission is "creating intuitive traveller-first experiences." Every UI decision must ask whether it serves the traveller's goal (finding the best flight) or the business's short-term goal (a higher-margin booking). When they conflict, traveller wins. *UI implication:* Default sort is "Best" (price + convenience), not "Most profitable to partners."
-2. **Clarity over cleverness.** Skyscanner operates in 52 languages. Every copy string, icon, and pattern must translate — literally and conceptually. Metaphors that work in English often break in Japanese. *UI implication:* Prefer universal iconography and literal label text over witty but cryptic shorthand.
-3. **Earn trust through honesty.** Price alerts, fare history charts, and calendar-view cheapest-day tools all share the same underlying ethic: give travellers the information they need to make the best decision for themselves, even if it means saying "this isn't the cheapest week to fly." *UI implication:* Transparency about pricing, fees, and data sourcing is non-negotiable.
-4. **Softness signals safety.** The rounded, sky-blue visual system is deliberate — buying airline tickets involves significant money and travel anxiety. The rounded corners and friendly palette lower the cognitive and emotional cost of engaging with a complex task. *UI implication:* Never introduce sharp edges, high-contrast warnings, or aggressive red on the primary booking surface.
-5. **Speed is a feature.** The search widget is the product's beating heart. Every millisecond of perceived lag erodes trust. *UI implication:* Skeletons, optimistic UI, and progressive result-loading are first-class experiences — never an afterthought.
+- **Traveller-first:** Backpack's stated purpose, supported by the product's flight, hotel and car-hire tasks.
+- **Consistency and usability:** the brand team's stated tests. [Design team's account](https://medium.com/skyscanner-product-design/building-a-plane-mid-flight-how-we-created-the-new-skyscanner-brand-world-df64fae5c229).
+- **Roles before arbitrary colour combinations:** the product colour article organises decisions under Text, Core, Status, Surface and Canvas, with component states handled by private tokens. [Product colour design](https://medium.com/skyscanner-product-design/how-we-fixed-skyscanners-broken-colour-palette-ec25d19167dc).
 
 ### Personas
 
-*Personas below are fictional archetypes informed by Skyscanner's publicly documented user research and travel patterns, not individual people.*
-
-**Priya Mehta, 28, London.** A digital nomad who does quarterly visa runs and uses Skyscanner's Everywhere destination search to find the cheapest escape from the UK before winter. She books within a day of searching — she doesn't read airline blogs, she trusts the price calendar. Values speed over aesthetics; becomes immediately mistrustful if a result feels artificially highlighted.
-
-**Tomás García, 41, Madrid.** A business traveller who flies four times a month within Europe. Uses price alerts to monitor fluctuating routes, and specifically appreciates Skyscanner's lack of sponsored placement in the default sort. He's noticed that other aggregators surface results "sponsored by" airlines; Skyscanner feels neutral. That neutrality is his primary loyalty driver.
-
-**Aiko Nakamura, 24, Osaka.** A university student planning her first solo trip to Europe with a fixed ¥200,000 budget. Skyscanner is her first search every time because it shows all prices without requiring sign-in. She's overwhelmed by choice and relies heavily on the "Best" sort and the "Price alerts" feature to feel in control of a situation where she has low expertise.
-
-**Daniel Osei, 35, Accra.** A diaspora traveller who flies Accra–London twice a year for family visits. Uses Skyscanner to monitor routes and set alerts, then often books directly with the airline. Values the breadth of route coverage and the fact that African routes are included — not all aggregators cover them comprehensively.
+No company-backed persona study was verified; the prior fictional people are not presented as research.
 
 ## Colors
 
-### Primary
-- **Sky Blue / Core Accent** (`#0062e3`): `--bpk-core-accent`. The system's single interactive colour — primary CTA backgrounds, links, active tabs, checkbox fills, segmented-control selected state, and the search submit button. This is the colour Skyscanner owns.
-- **Midnight Navy / Core Primary** (`#05203c`): `--bpk-core-primary` / `--bpk-surface-contrast`. The deepest brand colour — hero section backgrounds (dark), the chip-filter active state, the search panel's "swap origin and destination" button ring. Not black; a deep indigo-navy with travel-brand personality.
-- **Pure White** (`#ffffff`): Page canvas, card surfaces, text on dark/blue backgrounds, input fields.
+The product census contains **319 computed root custom properties**, including **317 `--bpk-*` properties**. The stylesheet walk found 403 distinct declared properties, including 340 Backpack properties and 59 `--tw-*` framework properties. The following colours come from the product census; documented roles do not imply that every corresponding component was exercised.
 
-### Surface Scale
-- **Canvas Contrast** (`#eff3f8`): `--bpk-canvas-contrast`. The cool-off-white secondary surface — badge backgrounds, info-banner backgrounds, alternate section tints.
-- **Surface Low Contrast** (`#f7f9fb`): Subtler page tint, hover states on secondary items.
-- **Surface Subtle** (`#e3f0ff`): Blue-tinted subtle surface for promotional sections and active DS sidebar items.
-- **Surface Highlight** (`#e0e4e9`): `--bpk-surface-highlight`. Disabled backgrounds, secondary button fill.
+| Role | Value | Evidence and scope |
+|---|---|---|
+| Primary / Core Accent | `#0062e3` | `--bpk-core-accent`; search CTA, selected Flights link and checked Add hotels checkbox |
+| Blue action hover | `#024daf` | Search CTA hover and pressed; `--bpk-private-button-colour-bg-feature-pressed` |
+| Deep interactive blue | `#154679` | Hotels header link hover/pressed; hotels navigation card hover/pressed |
+| Brand dark | `#05203c` | `--bpk-core-primary`, `--bpk-surface-contrast`; navigation-card child at rest |
+| Canvas | `#ffffff` | `--bpk-canvas-default`; white field surfaces and inverse labels |
+| Canvas contrast | `#eff3f8` | `--bpk-canvas-contrast` |
+| Surface low contrast | `#f5f7fa` | `--bpk-surface-low-contrast`; corrects the prior reference's value |
+| Surface subtle | `#e3f0ff` | `--bpk-surface-subtle` |
+| Surface highlight | `#e0e4e9` | `--bpk-surface-highlight`; header login button at rest |
+| Foreground | `#161616` | `--bpk-text-primary`; paragraph ink in six sampled paragraphs |
+| Muted | `#626971` | `--bpk-text-secondary` |
+| On primary | `#ffffff` | Visible labels on the search CTA, product links and navigation card |
+| Line | `#c1c7cf` | `--bpk-border-default`; inactive Hotels link's inset ring; login hover/pressed fill |
+| Core eco | `#0fa1a9` | `--bpk-core-eco`; no environmental component was interacted with |
+| Error | `#e70866` | `--bpk-status-danger-spot`, `--bpk-text-error` |
+| Success | `#0c838a` | `--bpk-status-success-spot`, `--bpk-text-success` |
+| Warning | `#f55d42` | `--bpk-status-warning-spot`, `--bpk-border-warning` |
+| Input ink | `#000000` | Actual departure input text; distinct from paragraph foreground |
 
-### Text & Border
-- **Foreground** (`#161616`): `--bpk-text-primary`. Primary body text. Near-black with a warm undertone — not pure black.
-- **Muted** (`#626971`): `--bpk-text-secondary`. Secondary body text, captions, metadata.
-- **Line Default** (`#c1c7cf`): `--bpk-other-line-default`. Standard border — input outlines, chip borders, dividers.
+Transparency is contextual. The inactive Hotels link is transparent over navy, with an inset `#c1c7cf` ring. The header locale button uses `rgba(255, 255, 255, 0.1)` over navy. Neither is an opaque black surface.
 
-### Interactive States
-- **Primary Hover** (`#024daf`): Button and active-state hover for blue actions.
-- **Primary Deep** (`#154679`): Pressed state, date-selector highlight, deep hover.
-
-### Semantic & Eco
-- **Eco Teal** (`#0fa1a9`): `--bpk-core-eco`. Sustainability / green travel signal — unique in the palette.
-- **Error / Danger** (`#e70866`): `--bpk-status-danger-spot`. Form validation errors, destructive states.
-- **Success** (`#0c838a`): `--bpk-status-success-spot`. Confirmation, positive status.
-- **Warning / Disruption** (`#f55d42`): `--bpk-status-warning-spot`. Disruption / delay alerts.
+The colour article distinguishes public semantic choices from private interaction shades. That distinction is visible in the census: `--bpk-core-accent` names a shared colour, while `--bpk-private-button-colour-bg-feature-pressed` names a particular state. The page also carries a deprecated-link property and a test colour; their presence is not a recommendation to use them. [Product colour design](https://medium.com/skyscanner-product-design/how-we-fixed-skyscanners-broken-colour-palette-ec25d19167dc).
 
 ## Typography
 
-### Font Family
-- **Product / Primary**: `'Skyscanner Relative'` — custom humanist geometric sans, developed in-house. Fallback: `-apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`. Global locale fallbacks include `Noto Sans` family variants for CJK, Arabic, Hebrew, Thai.
-- **Editorial / Brand**: `'Larken'` — serif typeface reserved for Brand World / audience / campaign surfaces only. Never used in product UI.
+| Evidence class | Finding |
+|---|---|
+| Official product use | The published Backpack foundations package defines `Skyscanner Relative` as its base family. The live product declares it first in `--bpk-base-font-stack`. |
+| Live-loaded | `Skyscanner Relative` normal 400, 700 and 900; `Noto Sans KR` normal 400, 700 and 900. Noto Sans KR is a face loaded by this regional product, not a substitute selected for this reference. |
+| Official distributed assets | The product's `@font-face` rules advertise WOFF2 and WOFF files on `js.skyscnr.com/sttc/bpk-fonts/`. Loaded Relative faces correspond to Book, Bold and Black files; loaded Korean faces to Regular, Bold and ExtraBold files. No font binaries were separately downloaded. |
+| Declared-only | Relative 500 and its italic faces; Larken 300/400; other Noto locale faces advertised by the CSS were absent from the loaded list. No specimen is assigned to them. |
+| Unresolved | Font-file licensing and Larken use on other product routes were not established. Substitute: none chosen. |
 
-### Hierarchy
+Skyscanner's design team credits **Colophon** for Relative and describes even strokes, rounded corners and forms related to the sunrise symbol. **Larken**, by **Ellen Luff and Tom Watkins**, is an officially described secondary brand face used in Regular and Light. This confirms its brand metadata, but does not establish live rendering on the captured product page. Larken remains outside the machine typography families. [Design team's account](https://medium.com/skyscanner-product-design/building-a-plane-mid-flight-how-we-created-the-new-skyscanner-brand-world-df64fae5c229).
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display | Skyscanner Relative | 64px | 900 | ~1.20 | Brand World hero; very few words only |
-| Hero 1 | Skyscanner Relative | 40px | 700 | 1.25 | Page hero headline |
-| Hero 2 | Skyscanner Relative | 32px | 700 | 1.25 | Secondary hero / feature section |
-| Heading 1 | Skyscanner Relative | 28px | 700 | 1.30 | Major headings |
-| Heading 2 | Skyscanner Relative | 24px | 700 | 1.30 | Sub-section headings |
-| Body Large | Skyscanner Relative | 20px | 400 | 1.40 | Feature descriptions |
-| Body Default | Skyscanner Relative | 16px | 400 | 1.50 | Standard reading text |
-| Body Small | Skyscanner Relative | 14px | 400 | 1.43 | Captions, secondary UI |
-| Label | Skyscanner Relative | 14px | 700 | 1.43 | Button labels, form labels |
-| Caption | Skyscanner Relative | 12px | 400 | 1.33 | Fine print, metadata |
+The body, h1 and first button all declare the product's multilingual Relative-first stack. Loaded status establishes the six faces above; it does not identify which font painted each individual glyph.
 
-### Principles
-- **Relative is always sans**: Larken is for storytelling only; every product UI — buttons, inputs, tabs, navigation — uses Skyscanner Relative.
-- **Major-third scale**: The type scale derives from a major-third progression (1.250 ratio), creating consistent harmonic jumps across sizes.
-- **8px baseline grid**: All sizes and line-heights snap to a 4px/8px grid.
-- **Two headline weights**: Weight 900 for display-level brand moments; weight 700 for all other headings, labels, and button text; weight 400 for body and UI copy.
-- **No tracking manipulation**: Unlike many brand systems, Skyscanner Relative is designed to run at 0 letter-spacing — the font's optical balance makes additional tracking unnecessary.
+Measured typography:
+
+- Search CTA and login label: **16px / 700**, 24px line height.
+- Hotels navigation-card label: **16px / 700**; its outer link computes to 16px / 400 with 20.8px line height.
+- Flights and Hotels header labels: **14px / 700**; their outer links compute to 16px / 400 with 20.8px line height.
+- Departure input: **16px / 400**, 24px line height.
+- The six measured outer controls report `letter-spacing: normal`.
+
+The prior reference also drew on `@skyscanner/bpk-foundations-web@24.6.0`. Its published size and matching line-height variables remain useful metadata, kept here in their original units rather than presented as newly measured homepage headings:
+
+| Published suffix | Font size | Matching line height |
+|---|---|---|
+| xs | `.75rem` | `1rem` |
+| sm | `.875rem` | `1.25rem` |
+| base | `1rem` | `1.5rem` |
+| lg | `1.25rem` | `1.75rem` |
+| xl | `1.5rem` | `2rem` |
+| xxl | `2rem` | `2.5rem` |
+| xxxl | `2.5rem` | `3rem` |
+| xxxxxl | `4rem` | `4rem` |
+
+The package names book 400, bold 700 and black 900 weights, also observed as loaded Relative faces. It additionally declares negative tracking for tight, display and hero styles. The prior blanket rule of zero tracking is therefore not a system-wide rule. [Published foundations](https://unpkg.com/@skyscanner/bpk-foundations-web@24.6.0/tokens/base.default.scss).
 
 ## Layout
 
-### Spacing System
-- Base unit: 4px
-- Backpack scale: sm=4px, md=8px, base=16px, lg=24px, xl=32px, xxl=40px, xxxl=64px, xxxxl=96px
-- The search widget is the most layout-critical element: a card-shaped container with 12px radius, internal blocks at 72px height each, and a separate submit button at 12px radius
+At 1440px viewport width, the search area spans x=108 to approximately x=1332. The captured product links sit at y=108, search controls at y=284, and the four 290px navigation cards at y=520. The graphic promotion spans 1224px. These are desktop coordinates, not a maximum-width or responsive rule.
 
-### Grid & Container
-- Centered max-width content (approximately 1280px)
-- Hero: full-width dark (`#05203c`) background with centered search widget
-- Product tabs: horizontal pill row centered in the hero
-- Results: vertical list of cards, full container width on mobile, 3-column-capable layout on desktop
-- Marketing pages: alternating white and tinted sections (`#eff3f8`)
+The live spacing properties are `sm: 0.25rem`, `md: 0.5rem`, `base: 1rem`, `lg: 1.5rem`, `xl: 2rem`, `xxl: 2.5rem`, `xxxl: 4rem`, and `xxxxl: 6rem`. Smaller `xs: 0.125rem` and `xxs: 0.0625rem` properties are also present. Pixel padding that was directly measured is recorded with each control above.
 
-### Whitespace Philosophy
-- **Generous block spacing**: The 72px search-input height deliberately provides large touch targets and visual breathing room
-- **Precision within components**: Component internal padding is tight (8px-16px) while section-level spacing is generous (48px-64px)
-- **Scan-first density**: Flight result cards are information-dense by design — price, airline, times, duration, stops in one readable block
+Measured corners include 0px on the input, 4px on checkboxes, 8px on the login button and chips, 12px on the search action and navigation card, and 100px on product links. The CSS additionally declares radii `lg: 1.5rem`, `xl: 3rem`, `nav-tabs: 1.125rem`, and `full: 62.4375rem`; the declared nav-tabs value does not replace the measured 100px product-link radius. The versioned foundations package declares its older xl radius as `2.5rem`, a different value from the live root’s `3rem`.
 
-### Border Radius Scale
-- 4px: Checkboxes, micro-elements
-- 6px: Small badges, cookie consent buttons on Backpack docs
-- 8px: Standard buttons, chips, form inputs (button-border-radius = 0.5rem)
-- 12px (0.75rem): Card containers, search widget, input-large
-- 24px (1.5rem): lg token — large viewport containers
-- 100px / full: Product selector pill tabs, full-round avatars
+For brand composition, the team calls its grid “flightpath” and anchors text, logos and images to it. [Design team's account](https://medium.com/skyscanner-product-design/building-a-plane-mid-flight-how-we-created-the-new-skyscanner-brand-world-df64fae5c229).
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, stacked search blocks, compressed nav |
-| Tablet | 768-1024px | 2-column capability, expanded product tabs |
-| Desktop | 1024-1280px | Full search widget, 3-column results grid |
-| Large Desktop | >1280px | Centered content with fixed max-width (~1280px) |
-
-#### Touch Targets
-- Search input blocks at 72px height — comfortably tappable on touch
-- Buttons at 36px (standard) / 48px (large) height
-- Product tabs at 36px height with generous 16px horizontal padding
-- Minimum interactive target: 44px (accessibility guideline)
-
-#### Collapsing Strategy
-- Hero search widget: stacks vertically on mobile; horizontal row on desktop
-- Product tabs: horizontal scroll on narrow viewports
-- Result cards: single column on mobile; multi-column on desktop
-- Navigation: hamburger menu on mobile; expanded horizontal nav on desktop
-- Typography scale: hero sizes reduce proportionally (40px → 28px on mobile)
+Only the desktop 1440×1000 product surface was measured. The live stylesheet declares breakpoint starts of `20rem`, `22.5rem`, `32.0625rem`, `48.0625rem`, `64.0625rem` and `80.0625rem`, with base `0rem`. Mobile reflow, scrolling tabs, navigation collapse and responsive type changes were not measured.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow | Page background, nav, inline text |
-| SM (1) | `rgba(22,22,22,0.25) 0px 1px 3px` | Subtle lift, tooltip, chip hover |
-| Card (2) | `rgba(0,0,0,0.08) 0px 4px 8px, rgb(230,233,235) 0px 0px 0px 1px` | Flight/hotel result cards, content panels |
-| MD (3) | `rgba(22,22,22,0.25) 0px 4px 14px` | Dropdowns, date picker popover |
-| XL (4) | `rgba(22,22,22,0.25) 0px 12px 50px` | Modals, popovers, autosuggest panel |
+The hotels navigation card demonstrates a small-to-large shadow change, then a return to the small shadow while pressed:
 
-**Shadow philosophy**: Skyscanner's shadow system is neutral — `rgba(22,22,22,0.25)` uses the brand's off-black foreground colour (not pure black) as the shadow source, keeping depth warm rather than cold. The card-level shadow adds a `rgb(230,233,235)` inset ring (nearly invisible on white) that creates a crisp, inset-border effect without a visible CSS border — this is the characteristic "floating card" look of Skyscanner's search results.
+| State | Raw computed child shadow |
+|---|---|
+| Rest | `rgba(37, 32, 31, 0.3) 0px 1px 3px 0px` |
+| Hover | `rgba(37, 32, 31, 0.25) 0px 4px 14px 0px` |
+| Pressed | `rgba(37, 32, 31, 0.3) 0px 1px 3px 0px` |
+
+Root Backpack shadow variables are a different evidence group: small, large and xl colour properties contain `#16161640`; their vertical offsets are `0.0625rem`, `0.25rem` and `0.75rem`, and blurs `0.1875rem`, `0.875rem` and `3.125rem`. Preserve those raw declarations without replacing the measured card's brown-tinted shadow. The separately opened published theme CSS expresses its small, large and xl shadow colours as `rgba(22, 22, 22, 0.25)`; that source metadata remains valid, without establishing which unvisited component uses it. The opened foundations package also contains the brown-tinted small/large shadow values. A dual-layer white result-card shadow was not re-established on this surface.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.sm`: `rgba(22,22,22,0.25) 0px 1px 3px 0px`
-- `shadow.md`: `rgba(22,22,22,0.25) 0px 4px 14px 0px`
-- `shadow.xl`: `rgba(22,22,22,0.25) 0px 12px 50px 0px`
-- `shadow.card`: `rgba(0,0,0,0.08) 0px 4px 8px 0px, rgb(230,233,235) 0px 0px 0px 1px`
+- `shadow.card-nav-rest`: `rgba(37, 32, 31, 0.3) 0px 1px 3px 0px`
+- `shadow.card-nav-hover`: `rgba(37, 32, 31, 0.25) 0px 4px 14px 0px`
 
 ## Motion & Easing
 
-**Durations (Backpack `duration-*` tokens):**
+All six outer controls report the raw computed transition **`all 0s ease 0s`**. The card's hover and pressed passes separately report a longest compared transition of **200ms**; the export does not include that descendant's full shorthand or easing curve. The card observations establish settled state values, not a reconstructed animation recipe.
 
-| Token | Value | Use |
-|---|---|---|
-| `duration-xs` | 50ms | Micro-interactions — checkbox tick, toggle snap |
-| `duration-sm` | 200ms | Button press feedback, chip toggle, tab selection |
-| `duration-base` | 400ms | Card reveal, panel expand, date picker open |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — panels, cards, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way — tab switches, chip toggles |
-
-**Motion rules**: Skyscanner's motion language is functional and restrained — motion communicates state change, not personality. Search-widget inputs (72px height) expand/contract at `duration-base / ease-enter`. Price sort re-ordering uses staggered `duration-sm` on each card. The product tab switch (Flights → Hotels) transitions with a `duration-sm` background-colour swap — the pill moves, the content cross-fades at `duration-base`. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; skeleton-to-content switches become immediate. The `eco` teal signal animates with a subtle `duration-base` fade-in to draw the eye to environmental data without being intrusive.
-
-**Signature motion:**
-1. **Search submit**: On clicking the blue "Search" button, the button performs a brief `duration-xs` scale-down press, then the page transitions to results with the hero collapsing from 72px blocks to a compact sticky header at `duration-base / ease-exit`. The transition anchors the user spatially.
-2. **Price alert confirmation**: The bell icon bounces once at `duration-sm` with `ease-enter` — the one place a slight delight motion appears, because a price alert is a moment of user accomplishment in a task-oriented flow.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (§10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle:
-- https://www.skyscanner.design/ (Backpack DS site) — body font rgb(22,22,22), font-family "Skyscanner Relative", bg rgb(255,255,255); nav link bg rgb(227,240,255) active = #e3f0ff; accent text rgb(0,98,227) = #0062e3; dark panel bg rgb(5,32,61) ≈ #05203c; card shadow rgba(0,0,0,0.08) 0px 4px 8px + rgb(230,233,235) ring; button bg rgb(0,98,227) "Allow all cookies" = #0062e3 radius 6px
-- https://www.skyscanner.co.kr/ (consumer app, KR locale redirect — bypassed captcha) — tab active bg rgb(0,98,227) = #0062e3, radius 100px; hero H2 color rgb(255,255,255), font-size 32px, font-weight 700; search submit bg rgb(0,98,227) radius 12px; product tabs pill shape 36px height; body font: "Skyscanner Relative" confirmed
-
-Backpack CSS token file (https://raw.githubusercontent.com/Skyscanner/backpack/main/token-sync/css/theme-backpack-light.css, fetched 2026-06-22):
-- --bpk-core-accent: #0062e3
-- --bpk-core-primary: #05203c
-- --bpk-core-eco: #0fa1a9
-- --bpk-surface-hero: #0062e3
-- --bpk-surface-contrast: #05203c
-- --bpk-text-primary: #161616
-- --bpk-text-secondary: #626971
-- --bpk-other-line-default: #c1c7cf
-- --bpk-status-danger-spot: #e70866
-- --bpk-status-success-spot: #0c838a
-- --bpk-private-button-colour-bg-primary: #05203c
-- --bpk-private-button-colour-bg-featured: #0062e3
-- --bpk-private-button-dimension-radius: 0.5rem (8px)
-- --bpk-canvas-contrast: #eff3f8
-- --bpk-surface-subtle: #e3f0ff
-- --bpk-surface-highlight: #e0e4e9
-- Shadows: xl-color rgba(22,22,22,0.25) xl-blur 3.125rem (50px) xl-y 0.75rem (12px)
-
-npm @skyscanner/bpk-foundations-web@24.6.0/tokens/base.default.scss (fetched 2026-06-22):
-- $bpk-font-family-base: 'Skyscanner Relative'
-- $bpk-font-family-larken: 'Larken'
-- $bpk-font-weight-book: 400; $bpk-font-weight-bold: 700; $bpk-font-weight-black: 900
-- $bpk-font-size-xs: .75rem (12px); $bpk-font-size-sm: .875rem (14px); $bpk-font-size-base: 1rem (16px); $bpk-font-size-lg: 1.25rem (20px); $bpk-font-size-xl: 1.5rem (24px); $bpk-font-size-xxl: 2rem (32px)
-- $bpk-border-radius-xs: .25rem (4px); $bpk-border-radius-sm: .5rem (8px); $bpk-border-radius-md: .75rem (12px); $bpk-border-radius-lg: 1.5rem (24px); $bpk-border-radius-xl: 2.5rem (40px)
-- Spacing: sm=4px md=8px base=16px lg=24px xl=32px xxl=40px xxxl=64px xxxxl=96px
-
-Brand narrative: Skyscanner founded 2001 Edinburgh by Gareth Williams, Barry Smith, Bonamy Grimes. 2016 acquisition by Ctrip for £1.4B — widely documented public facts (Wikipedia, The Guardian, Skyscanner company blog). Backpack open-source DS launched 2016 — documented on GitHub (skyscanner/backpack, first commit history).
-
-Voice samples §10 verified live:
-- Korean hero headline verified on https://www.skyscanner.co.kr/ (2026-06-22)
-- Captcha copy "Are you a person or a robot?" verified on skyscanner.net captcha page (2026-06-22)
-- Backpack welcome copy verified on https://www.skyscanner.design (2026-06-22)
-
-Personas are fictional archetypes informed by publicly observable Skyscanner user segments. Names are illustrative and do not refer to real people.
-
-Interpretive claims (e.g. "Edinburgh heritage shows in understated confidence", "softness signals safety") are editorial readings connecting Skyscanner's observed design to its positioning, not directly sourced Skyscanner statements.
-
-Tier 2 sources: getdesign.md/skyscanner returned "No designs found." refero search returned no Skyscanner entry. Both searches attempted and negative results documented honestly.
--->
+The previously cited foundations package explicitly publishes `$bpk-duration-xs: 50ms`, `$bpk-duration-sm: 200ms` and `$bpk-duration-base: 400ms`. These are versioned package metadata; their assignment to checkbox ticks, tab switches, panel reveals or price alerts was not measured. No previous cubic-bezier curve, scale-down, bell bounce, stagger or reduced-motion behaviour was re-established. [Published foundations](https://unpkg.com/@skyscanner/bpk-foundations-web@24.6.0/tokens/base.default.scss).
 
 ## Components
 
-### Buttons
+Product state measurements used the automatically redirected Korean homepage at 1440×1000. The consent banner remained open; the probe temporarily hid its covering wrapper during pointer passes. All keyboard-focus states are **UNMEASURED**. Product components below are separate from the consent controls.
 
-**Primary**
-- Background: `#0062e3`
-- Text: `#ffffff`
-- Radius: 8px
-- Height: 36px
-- Padding: 0px 16px
-- Font: 16px / 400 / Skyscanner Relative
-- Hover: `#024daf` background
-- Use: Primary CTAs — search submit, book, confirm
+| Key and exact control | Identity | Rest appearance | Hover | Pressed |
+|---|---|---|---|---|
+| `search`: 검색하기 | 90.9×72px; radius 12px; padding 12px 16px; 16px/700 | `#0062e3` / `#ffffff`; no border or shadow | Fill `#024daf` | Fill `#024daf` |
+| `login`: 로그인, header | 96×36px; radius 8px; padding 6px 16px; 16px/700 | `#e0e4e9` / `#161616`; no border or shadow | Fill `#c1c7cf` | Fill `#c1c7cf` |
+| `nav-hotels`: 숙소, header link | 81.8×36px; radius 100px; padding 0px 16px; outer 16px/400, label 14px/700 | Transparent over `#05203c`; white label; 1px inset `#c1c7cf` shadow | Fill and inset ring `#154679` | Same as hover |
+| `nav-flights`: 항공권, selected header link | 94.6×36px; radius 100px; padding 0px 16px; outer 16px/400, label 14px/700 | `#0062e3` / `#ffffff`; matching 1px inset ring | No change in compared scope | No change in compared scope |
+| `origin`: 서울 (모두), departure combobox | 208.5×24px; radius 0px; padding 0px; 16px/400 | Transparent over white; `#000000` ink; no border/shadow | No change in compared scope | Width 176.5px; third ancestor gains white 2px shadow and blue 4px outline, offset −3px |
+| `card-hotels`: 숙소, main navigation card link | 290×72px; radius 12px; outer padding 0px; outer 16px/400, label 16px/700 | Painted child `#05203c`, white label; small shadow | Child fill `#154679`; larger shadow | Child keeps `#154679`; returns to small shadow |
 
-**Primary Large**
-- Background: `#0062e3`
-- Text: `#ffffff`
-- Radius: 8px
-- Height: 48px
-- Padding: 0px 16px
-- Font: 16px / 400 / Skyscanner Relative
-- Use: Featured/Large button variant (high-emphasis surfaces)
+The card's clickable outer link itself is transparent and computes to `#161616`; its visible child and label supply the navy-and-white appearance. The component record deliberately identifies that painted child.
 
-**Secondary**
-- Background: `#e0e4e9`
-- Text: `#161616`
-- Radius: 8px
-- Height: 36px
-- Padding: 0px 16px
-- Font: 16px / 400 / Skyscanner Relative
-- Hover: `#c1c7cf` background
-- Use: Secondary actions alongside primary
+The selected Flights link stays in prose because its measured pointer states were unchanged. Its compared scope included the control, pseudos, six descendants (one SVG and two paths) and three ancestor levels. The origin input also stays out of the component records: its pointer press changed layout and ancestor focus styling, and persistence after blur was not established. The raw observation is not a keyboard-focus recipe.
 
-**Destructive (Danger)**
-- Background: `#e0e4e9`
-- Text: `#e70866`
-- Radius: 8px
-- Height: 36px
-- Padding: 0px 16px
-- Hover: `#e70866` background with white text
-- Use: Delete, cancel, destructive actions
+Other rest observations retained from the survey, without interactive component records:
 
-**Secondary on Dark**
-- Background: `rgba(255,255,255,0.1)`
-- Text: `#ffffff`
-- Radius: 8px
-- Height: 36px
-- Padding: 0px 16px
-- Use: Secondary actions on navy/dark surfaces (hero panels)
+- Date buttons: 72px high, square internal corners, white fill, black computed text, padding 0px 16px. The traveller button ends the group with `0px 12px 12px 0px` corners.
+- Add nearby airports checkbox: 20×20px, radius 4px, white fill and **3px** `#626971` border. The checked Add hotels checkbox has blue fill and border.
+- Country chip: 32px high, radius 8px, padding 0px 16px, 16px/400, navy fill and white text. Adjacent chips are transparent with `#161616` text.
+- The header locale button is 36px high, radius 8px, padding 6px 16px, 16px/700, with translucent white fill and white text.
 
-### Inputs & Forms
+Live CSS separately declares a navy primary button, a blue featured button, grey secondary and destructive fills, and a destructive pressed fill of `#e70866`. It declares default minimum height `2.25rem`, large minimum height `3rem`, radius `.5rem` and horizontal padding `1rem`. These declarations describe system recipes; they are not measurements of additional interactive controls.
 
-**Search Input Block**
-- Background: `#ffffff`
-- Radius: 0px (individual block; 12px on the outer container)
-- Height: 72px
-- Padding: 0px 16px
-- Font: 16px / 400 / Skyscanner Relative
-- Border: none (grouped card with outer container border)
-- Use: Departure/destination/date/passenger fields in the search widget
+The rendered Backpack navigation still lists **91 components** and a separate **10 utility components**. Names alone do not provide a measured state or geometry. [Component navigation](https://www.skyscanner.design/latest/components/accordion/web-sEshz9Z5), [utility navigation](https://www.skyscanner.design/latest/components/utility-components/aria-live/web-6z9vnspZ).
 
-**Standard Input**
-- Background: `#ffffff`
-- Border: 1px solid `#c1c7cf`
-- Radius: 8px
-- Padding: 12px 16px
-- Font: 16px / 400 / Skyscanner Relative
-- Focus: 2px solid `#0062e3`
-- Use: Standard form inputs (sign-in, booking details)
+Accordion, AI Blurb, App Search Modal, Autosuggest, Badge, Banner alert, Bar chart, Blockquote, Bottom navigation, Bottom sheet, Breadcrumb, Breakpoint, Button, Bubble, Calendar, Card, Card button, Card carousel, Card list, Carousel, Compare, Context Menu, Cells, Chat UI, Checkbox, Checkbox Card, Chip, Chip group, Collapsible, Data Table, Datepicker, Description list, Dialog, Divider, Drawer, Field Set, Flare, Flight leg, Floating action button, Floating notification, Flow Stack View, Form label, Form validation, Graphic promotion, Horizontal navigation, Image, Image Gallery, Infinite scroll, Info Banner, Inset Banner, Journey Arrow, Link, List, Map, Mobile scroll container, Modal, Navigation bar, Navigation Tab Group, Nudger, Overlay, Page indicator, Pagination, Panel, Phone input, Popover, Price, Price Range, Progress bar, Radio button, Rating, Rating Bar, Scrollable calendar, Search Input Control, Search Input Summary, Section header, Section list, Segmented Control, Select, Skeleton, Slider, Snippet, Spinner, Split input, Star rating, Swap Button, Switch, Table, Text, Text input, Thumb Button, Tooltip.
 
-**Checkbox**
-- Background (checked): `#0062e3`
-- Border (unchecked): 2px solid `#626971`
-- Radius: 4px
-- Use: Filter toggles, trip options, preference checkboxes
-
-### Cards & Containers
-
-**Standard Card**
-- Background: `#ffffff`
-- Radius: 12px
-- Shadow: `rgba(0,0,0,0.08) 0px 4px 8px 0px, rgb(230,233,235) 0px 0px 0px 1px`
-- Use: Flight result cards, hotel cards, content panels on white page
-
-**Surface Contrast Card**
-- Background: `#05203c`
-- Text: `#ffffff`
-- Radius: 12px
-- Padding: 12px 16px
-- Use: On-dark-surface information cards (e.g. Backpack docs dark panel)
-
-**Tinted Surface Card**
-- Background: `#eff3f8`
-- Radius: 12px
-- Use: Secondary/grouped content on canvas contrast background
-
-### Badges & Chips
-
-**Info Badge**
-- Background: `#e3f0ff`
-- Text: `#0062e3`
-- Radius: 6px
-- Padding: 4px 8px
-- Font: 12px / 400
-- Use: Informational tags, labels, "best value" type pills
-
-**Filter Chip (Off)**
-- Background: transparent
-- Border: 1px solid `#c1c7cf`
-- Text: `#161616`
-- Radius: 8px
-- Height: 32px
-- Padding: 0px 12px
-- Use: Deselected filter chips (stops, airlines, times)
-
-**Filter Chip (On / Active)**
-- Background: `#05203c`
-- Text: `#ffffff`
-- Radius: 8px
-- Height: 32px
-- Padding: 0px 12px
-- Use: Selected filter chips (active state)
-
-### Tabs
-
-**Product Tab (Active)**
-- Background: `#0062e3`
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 0px 16px
-- Height: 36px
-- Font: 16px / 400
-- Use: Active product selector tab (Flights, Hotels, Car hire) on dark hero
-
-**Product Tab (Inactive)**
-- Background: transparent
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 0px 16px
-- Height: 36px
-- Border: `rgba(255,255,255,0.5) 0px 0px 0px 1px inset`
-- Use: Inactive product tabs on dark/blue hero backgrounds
-
-**Navigation Tab (Active)**
-- Background: `#024daf`
-- Text: `#ffffff`
-- Use: Segmented control selected state on contrast surface
-
----
-
-**Verified:** 2026-06-22
-**Tier 1 sources:** https://www.skyscanner.design (Backpack design system — live CSS token extraction and component inspect); https://github.com/Skyscanner/backpack/blob/main/token-sync/css/theme-backpack-light.css (published CSS variables — authoritative token source); https://unpkg.com/@skyscanner/bpk-foundations-web@24.6.0/tokens/base.default.scss (npm package token file — spacing, radius, typography scale); https://www.skyscanner.co.kr/ (live homepage inspect via playwright getComputedStyle — button/tab/input computed values)
-**Tier 2 sources:** getdesign.md/skyscanner — "No designs found"; styles.refero.design/?q=skyscanner — no Skyscanner entry found (results were unrelated travel brands)
-**Conflicts unresolved:** none
-
-### Published component roster (91 components and 10 utility components, none measured here)
-
-Backpack publishes **91 components** plus a separate **Utility components** section of 10, read
-from the design system's own left-hand navigation at `https://www.skyscanner.design/latest/`
-on 2026-09-19. No value, state or geometry is asserted for any name below.
-
-Accordion, AI Blurb, App Search Modal, Autosuggest, Badge, Banner alert, Bar chart, Blockquote, Bottom navigation, Bottom sheet, Breadcrumb, Breakpoint, Bubble, Button, Calendar, Card, Card button, Card carousel, Card list, Carousel, Cells, Chat UI, Checkbox, Checkbox Card, Chip, Chip group, Collapsible, Compare, Context Menu, Data Table, Datepicker, Description list, Dialog, Divider, Drawer, Field Set, Flare, Flight leg, Floating action button, Floating notification, Flow Stack View, Form label, Form validation, Graphic promotion, Horizontal navigation, Image, Image Gallery, Infinite scroll, Info Banner, Inset Banner, Journey Arrow, Link, List, Map, Mobile scroll container, Modal, Navigation bar, Navigation Tab Group, Nudger, Overlay, Page indicator, Pagination, Panel, Phone input, Popover, Price, Price Range, Progress bar, Radio button, Rating, Rating Bar, Scrollable calendar, Search Input Control, Search Input Summary, Section header, Section list, Segmented Control, Select, Skeleton, Slider, Snippet, Spinner, Split input, Star rating, Swap Button, Switch, Table, Text, Text input, Thumb Button, Tooltip
-
-**Utility components (10):** Alignment, Aria live, Code, Dynamic Layout, Intent Trigger Button,
-Interactive, Skip link, Theming, Visually Hidden, Z index. Backpack files these under their own
-heading, separate from the 91, and that separation is kept here rather than folded in.
-
-The list is flat because the navigation presents it flat — one `Components` group in alphabetical
-order, with `Utility components` as its own sibling heading.
-
-**How it was read, and why that matters.** `skyscanner.design` serves a 2 KB shell: the whole
-site is client-rendered, `/components` redirects to a welcome page, and the served HTML contains
-no component links at all. Every URL also carries an opaque suffix — Accordion's page is
-`/latest/components/accordion/web-sEshz9Z5` — so a sitemap gives ids, not names. The names above
-come from the rendered navigation in a real browser. A fetch-only pass cannot reproduce them, and
-recording that is part of the record: this host defeats the probe that found every other roster
-in this catalogue.
-
-### What this reference measured, and on which surface
-
-The eighteen stylings above are grouped as Buttons, Inputs & Forms, Cards & Containers, Badges &
-Chips, and Tabs. Their **colour values are Backpack's own**, cited by the system's variable names
-— `--bpk-core-accent` `#0062e3`, `--bpk-core-primary` `#05203c` — and drawn from the published
-`theme-backpack-light.css` and the `@skyscanner/bpk-foundations-web` token package. That is
-first-party token identity, and it is stronger evidence than most references in this catalogue
-carry.
-
-The **geometry** is a different matter. Per this reference's own Tier 1 list, the computed
-button, tab and input values were inspected on `skyscanner.co.kr` — the live traveller product,
-which is built with Backpack but is not Backpack's documentation. So "Primary", "Filter Chip
-(On / Active)" and "Product Tab (Active)" are this reference's descriptors for controls observed
-in the product, not readings of Backpack's Button, Chip or Navigation Tab Group pages. Several
-names coincide with published components; none of the eighteen is claimed as a documented
-instance of one, and none of the 91 above carries a measured value here.
+Utility components: Aria live, Alignment, Code, Dynamic Layout, Intent Trigger Button, Interactive, Skip link, Theming, Visually Hidden, Z index.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no flight results)** | White canvas. Single friendly explanation at body text in `#161616`: "We couldn't find any flights for those dates." Suggestion to adjust dates or try nearby airports. One Sky Blue (`#0062e3`) CTA to modify search. No illustration — keeps the functional register. |
-| **Empty (price alert, no price drop yet)** | Calm informational state. Muted slate `#626971` text: "We'll let you know when prices drop for this route." One button to manage alerts. |
-| **Loading (search results)** | Skeleton cards at final result-card dimensions, `#eff3f8` fill, 12px radius. Animation: flat 1s pulse (no shimmer). Top of the page: "Searching hundreds of airlines..." in muted slate with animated dots. |
-| **Loading (calendar / price grid)** | Progressive skeleton fill — dates appear as data loads, not all at once. Prevents "flash of empty grid." |
-| **Error (search failed)** | Inline message in the hero below the search form. Plain language: "Something went wrong. Please try your search again." One `#0062e3` "Try again" button. No `#e70866` — error message stays on the calm blue system. |
-| **Error (form validation)** | Field-level inline message. `#e70866` icon + text below the input: "Please enter a valid departure date." Never modal. |
-| **Success (alert set)** | Inline confirmation: "`#0c838a` checkmark + "Alert set for London Heathrow → Barcelona"." Auto-dismisses. No modal. |
-| **Skeleton (result cards)** | `#eff3f8` background blocks at precise card dimensions. Airline logo placeholder, route text placeholder (70% width), price block placeholder. 12px radius matching final card. |
-| **Disabled** | Secondary button-style: `#e0e4e9` background, `#626971` text. Sky Blue elements fade to `rgba(0,98,227,0.4)` rather than switching to generic grey. |
-| **Price alert active** | Badge: `#e3f0ff` background, `#0062e3` text, 6px radius, bell icon. "Price tracked" label. |
-| **Price drop notification** | `#0c838a` success-tinted banner: "Prices dropped! [Route] is now from [price]." One CTA to search. |
+The measured changes are those in §4: blue and grey action fills darken, the inactive Hotels product link gains a deep-blue fill and ring, and the Hotels navigation card changes its painted child and elevation. Its pressed shadow differs from hover. The selected Flights link has no observed pointer-state change within the recorded DOM/CSS scope.
+
+Keyboard focus is **UNMEASURED for all six controls** because the consent dialog trapped the Tab walk. No keyboard-focus token is published. Empty results, validation, loading, success, alert notifications and disabled-state behaviour were not exercised.
 
 ## Do's and Don'ts
 
-### Do
-- Use `#0062e3` (Sky Blue) for all interactive/CTA elements — it's the action colour
-- Use "Skyscanner Relative" for every product UI text element
-- Apply 8px radius to buttons and chips — it's the workhorse radius
-- Use 100px pill radius for product-selector tabs only
-- Give search input blocks 72px height — generous touch targets are the brand standard
-- Use the dual-layer card shadow (`rgba(0,0,0,0.08)` + `rgb(230,233,235)` ring) for content cards
-- Use `#05203c` navy as the hero background — the brand's confident dark surface
-- Apply 12px radius to search panel containers and result cards
-- Use "Larken" for editorial/brand campaign surfaces only
-- Use `#0fa1a9` eco teal exclusively for sustainability and environmental signals
+- Reproduce the measured search action as a 72px, 12px-radius blue control with a bold 16px label.
+- Preserve the difference between 8px-radius secondary buttons and 100px-radius product links.
+- Read the visible label's typography and colour when an anchor wraps a styled child.
+- Keep semantic colour roles and component-specific interaction shades separate.
+- Use paragraph foreground for paragraphs; retain the measured black input ink where reproducing that input.
+- Keep Larken's confirmed brand metadata separate from live font availability. Substitute: none chosen.
+- Do not apply the captured navigation-card shadow to an unmeasured flight-result card, or turn a pointer-triggered ancestor ring into a keyboard-focus token.
 
-### Don't
-- Use pure black (`#000000`) for text — foreground is `#161616`
-- Apply Larken in product UI — it belongs to brand storytelling only
-- Use weight 900 for anything but the most exceptional display copy
-- Mix Sky Blue (`#0062e3`) with other accent colours on the same surface
-- Decrease radius below 4px — Skyscanner is intentionally soft and rounded
-- Use pill-radius (100px) on buttons — that's reserved for the product tab row
-- Skip the eco teal signal when featuring environmental or carbon-conscious travel options
-- Use drop shadows heavier than XL — the system stays subtle with neutral shadow tones
+These implementation directions come from the measurements and source distinctions above; they do not establish rules for unvisited product routes.
 
 ## Voice & Tone
 
-Skyscanner's voice is **curious, helpful, and refreshingly human** — a savvy travel companion, not a booking engine. The product's purpose is to remove complexity from travel planning, and the copy reflects this: straightforward, jargon-free, and action-oriented. Skyscanner communicates with a light British wit — enough personality to feel alive, never enough to be distracting. The company's Edinburgh heritage shows in understated confidence: Skyscanner doesn't hype, it clarifies.
+The company presents travel planning as help for the traveller; its About page closes with “It’s your world. We’ll help you explore it.” [About Skyscanner](https://www.skyscanner.net/about-us). The captured Korean hero reads “수백만 개의 저가 항공권. 검색 한 번으로 간단하게.” (Millions of cheap flights, simply found in one search; translation). Captured action labels are short and task-specific: 검색하기 (Search), 숙소 (Hotels), and 어디든지 검색 (Search Everywhere).
 
-| Context | Tone |
-|---|---|
-| Search / navigation CTAs | Concise, actionable. "Search flights." "Find your perfect trip." Direct without commanding. |
-| Empty / no-results | Empathetic and constructive. Explains the gap and offers alternatives — never blames the traveller. |
-| Pricing / alert copy | Honest and specific. "Prices for this route are lower on Tuesdays." No "Amazing deal!" inflation. |
-| Error messages | Friendly and helpful. States what happened and what to try next in plain language. |
-| App onboarding | Warm and welcoming. Sets expectations without overwhelming. |
-| Marketing / brand | Aspirational but grounded. Travel as a human need, not a luxury status signal. |
-| Legal / privacy | Clear and complete. Skyscanner's GDPR-era copy is unusually readable for legal text. |
-
-**Voice samples (from live surfaces):**
-- "수백만 개의 저가 항공권. 검색 한 번으로 간단하게." — hero headline ("Millions of cheap flights. Simply found in one search.") *(verified live 2026-06-22)*
-- "Are you a person or a robot?" — bot-detection captcha page (conversational, charming even in friction). *(verified live 2026-06-22)*
-- "Backpack is Skyscanner's design system, a collection of guidelines, components and tools for creating intuitive traveller-first experiences." — Backpack homepage (clear, brand-purposeful prose). *(verified live 2026-06-22)*
-
-**Forbidden register**: "Best prices GUARANTEED!", spam-adjacent urgency ("Only 2 seats left!"), dark-pattern FOMO, overclaim superlatives ("World's greatest"), corporate jargon, exclamation-heavy hype.
+The brand article's bubble is a conversational companion that offers tips and cheeky lines. This describes that brand device, rather than an unverified global rule for errors, legal copy or urgency messaging. [Design team's account](https://medium.com/skyscanner-product-design/building-a-plane-mid-flight-how-we-created-the-new-skyscanner-brand-world-df64fae5c229).
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Sky Blue (`#0062e3`)
-- CTA Hover: Blue Mid (`#024daf`)
-- Page Background: Pure White (`#ffffff`)
-- Hero / Dark Surface: Midnight Navy (`#05203c`)
-- Canvas Contrast: Cool Off-White (`#eff3f8`)
-- Primary Text: Off-Black (`#161616`)
-- Secondary Text: Slate (`#626971`)
-- Line / Border: Cool Grey (`#c1c7cf`)
-- Eco / Sustainability: Teal (`#0fa1a9`)
-- Error: Magenta-Red (`#e70866`)
-- Success: Teal Green (`#0c838a`)
+Use this bounded recipe: “Build a desktop travel-search area on `#05203c`. Use white field surfaces and a 72px blue search action with 12px radius, 12px 16px padding and a 16px/700 label; hover and pressed fill `#024daf`. Make the secondary header button 36px high with 8px corners, `#e0e4e9` fill and `#161616` label, changing to `#c1c7cf` on hover and press. Use 36px product links with 100px corners and visible 14px/700 labels. A navy Hotels navigation card changes to `#154679` and increases its shadow on hover, then reduces the shadow while pressed.”
 
-### Example Component Prompts
-- "Create a hero section on `#05203c` midnight navy. Center a horizontal row of pill tabs (100px radius, 36px height, 0px 16px padding) — active tab: `#0062e3` bg, white text; inactive: transparent, white text, 1px inset rgba(255,255,255,0.5) border. Below tabs: white search panel card, 12px radius, grouped input blocks 72px height each, Skyscanner Relative 16px/400. CTA button: `#0062e3`, 12px radius, 12px 16px padding, white text."
-- "Design a flight result card: white background, 12px radius, dual shadow: rgba(0,0,0,0.08) 0px 4px 8px, rgb(230,233,235) 0px 0px 0px 1px. Airline logo left, route/time center, price right in Sky Blue `#0062e3`. Skyscanner Relative — price at 20px/700, details at 14px/400, `#626971`."
-- "Build a filter chip row: each chip 32px height, 8px radius, Skyscanner Relative 14px/400. Off: transparent bg, `#c1c7cf` border, `#161616` text. On: `#05203c` bg, white text."
-- "Create an info badge: `#e3f0ff` background, `#0062e3` text, 6px radius, 4px 8px padding, 12px/400 Skyscanner Relative."
-- "Design an eco signal badge: `#0fa1a9` background (or tinted surface with eco text), paired with leaf icon. Signals low-carbon flight option."
-
-### Iteration Guide
-1. Skyscanner Relative is the only typeface for product UI — never substitute
-2. `#0062e3` Sky Blue = action. Use it for exactly one primary CTA per section
-3. `#05203c` navy = the brand's confident dark — use for hero backgrounds and high-contrast surfaces
-4. Card radius is 12px; button radius is 8px; pill tabs are 100px — never interchange
-5. Dual-layer card shadow is the brand signature: `rgba(0,0,0,0.08) 0px 4px 8px, rgb(230,233,235) 0px 0px 0px 1px`
-6. Search input blocks are 72px tall — don't reduce; touch ergonomics are intentional
-7. Eco teal (`#0fa1a9`) belongs only to sustainability/environmental signals
-
----
+The loaded families are Skyscanner Relative and Noto Sans KR on this regional surface. Use the measured geometry without inventing unavailable fonts or keyboard-focus treatments.

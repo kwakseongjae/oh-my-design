@@ -2,144 +2,162 @@
 name: Monzo
 colors:
   primary: '#ff4f40'
-  primary-alt: '#f64d3f'
   midnight: '#091723'
   deep-navy: '#112231'
   teal: '#016b83'
   canvas: '#ffffff'
   mint: '#f2f8f3'
   soft-mint: '#e3ebe4'
-  ink: '#091723'
-  body: '#6b747b'
-  muted: '#b5b9bd'
+  foreground: '#091723'
   on-primary: '#ffffff'
   on-dark: '#ffffff'
   on-midnight: '#ffffff'
-  hairline: '#c2c8d0'
+  navy-hover: '#2c3a43'
+  navy-600: '#3b4c54'
+  grey-300: '#c9d0c6'
+  grey-400: '#aeb5a7'
+  grey-500: '#75817e'
+  focus-ring: '#009ace'
+  legacy-focus-ring: '#218fb7'
+  nav-focus-ring: '#00a4db'
+  blue-200: '#bbf6e2'
+  blue-300: '#8ce6d1'
+  blue-400: '#68cdb5'
+  pink-300: '#ffa9df'
+  negative: '#d70015'
+  red-450: '#ff6961'
+  red-500: '#ff453a'
+  red-accent: '#ff3b30'
+  positive: '#248a3d'
+  green-300: '#30db5b'
+  green-400: '#30d158'
+  green-450: '#34c759'
+  green-accent: '#44d12c'
+  black-primitive: '#000000'
 typography:
-  display-hero:
-    fontSize: 61px
-    fontWeight: 800
-    lineHeight: 1
-    use: Hero billboard, MonzoSansDisplay ExtraBold
-  heading-lg:
-    fontSize: 49px
-    fontWeight: 800
-    lineHeight: 1.15
-    use: Section titles (clamp ~48.8px at 1440px)
-  heading:
-    fontSize: 39px
-    fontWeight: 800
-    lineHeight: 1.2
-    use: Sub-section heads (clamp ~39px)
-  subheading:
-    fontSize: 25px
-    fontWeight: 800
-    lineHeight: 1.3
-    use: Card heads, H3, footer category (MonzoSansDisplay)
   body:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.4
-    use: Standard reading text, MonzoSansText
-  body-sm:
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.4
-    use: Captions, metadata
+    use: Inherited outer-control text; MonzoSansText live-loaded. Paragraph ink is recorded separately in prose.
+  subheading:
+    fontSize: 25px
+    fontWeight: 700
+    use: Personal account card title; title family not separately captured.
   button:
     fontSize: 16px
     fontWeight: 600
-    lineHeight: 1
-    use: Button labels, MonzoSansText SemiBold
+    lineHeight: 1.4
+    use: Visible CTA labels; modular outer element is weight 400.
+  button-small:
+    fontSize: 12.8px
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Visible Learn more label; outer element is weight 400.
   nav:
     fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1
-    use: Nav links, MonzoSansText
+    fontWeight: 600
+    lineHeight: 1.4
+    use: Visible Business label; outer element is weight 400.
 rounded:
+  none: 0px
   xs: 4px
+  xsmall: 8px
+  small: 12px
+  medium: 16px
   sm: 24px
   md: 32px
+  xlarge: 48px
   lg: 64px
+  nav: 100px
+  modular-button: 128px
   full: 500px
 spacing:
+  xxs: 2
   xs: 4
   sm: 8
+  small: 12
   md: 16
   base: 24
   lg: 32
   xl: 48
   xxl: 64
   section: 80
+  wide: 96
+  widest: 128
 components:
   button-primary:
     type: button
     backgroundColor: '#091723'
     textColor: '#ffffff'
+    border: '1px solid #091723'
     rounded: 500px
+    height: 51.2px
     padding: 12px 24px
     typography: 16px / 600 MonzoSansText
-    use: Primary CTA on home ('Sign up')
-  button-teal:
-    type: button
-    backgroundColor: '#016b83'
-    textColor: '#ffffff'
-    rounded: 500px
-    padding: 12px 24px
-    typography: 16px / 600 MonzoSansText
-    use: Product-page primary CTA ('Open a personal account')
+    hover: 'bg and border #2c3a43'
+    pressed: 'bg and border #112231; 1px solid #218fb7 outline, offset 0px'
+    focus: '1px solid #218fb7 outline, offset 2px'
+    use: Header Sign up link; measured 108.4px wide, with no box shadow.
   button-white:
     type: button
     backgroundColor: '#ffffff'
     textColor: '#091723'
+    border: '1px solid #ffffff'
     rounded: 500px
+    height: 48.4px
     padding: 12px 24px
     typography: 16px / 600 MonzoSansText
-    use: Hero-dark surface CTA ('Open a free bank account')
-  button-chip:
+    hover: bg and border rgba(255, 255, 255, 0.8)
+    pressed: 'bg and border rgba(255, 255, 255, 0.9); 1px solid #218fb7 outline, offset 0px'
+    focus: '1px solid #218fb7 outline, offset 2px'
+    use: Hero Open a free Monzo account link over photography; measured 264.3px wide.
+  button-modular:
     type: button
-    backgroundColor: '#3b4c54'
-    textColor: '#ffffff'
-    rounded: 64px
-    padding: 8px 16px
-    typography: 16px / 600 MonzoSansText
-    use: Filter chip / feature tab ('Free features')
-  input-search:
-    type: input
-    backgroundColor: '#ffffff'
-    border: '1px solid #c2c8d0'
-    rounded: 500px
-    typography: 16px MonzoSansText
-    shadow: rgba(0,0,0,0.1) 0px 0px 10px 0px
-    use: Search field on light background
-  card-mint:
-    type: card
-    backgroundColor: '#f2f8f3'
-    rounded: 32px
-    use: Tinted content card on mint surface
-  card-white:
-    type: card
-    backgroundColor: '#ffffff'
-    rounded: 32px
-    use: White feature card on mint background
-  card-dark:
-    type: card
     backgroundColor: '#091723'
     textColor: '#ffffff'
-    rounded: 32px
-    use: Dark card on brand dark surface
-  badge-coral:
-    type: badge
-    backgroundColor: '#ff4f40'
-    textColor: '#ffffff'
-    rounded: 4px
-    use: Hot Coral accent badge / tag
-  nav-tab:
-    type: tab
-    textColor: '#091723'
+    rounded: 128px
+    height: 48px
+    padding: 0px 24px
     typography: 16px / 400 MonzoSansText
-    use: 'Top nav item; active = coral #ff4f40 text'
+    hover: 'bg #2c3a43'
+    pressed: 'bg #112231'
+    focus: '2px solid #009ace outline, offset 2px'
+    use: First modular Open a free Monzo account link below the hero; 262.3px wide. The visible b label is 16px/600; outer element 16px/400. No border or box shadow.
+  nav-business:
+    type: button
+    textColor: rgba(9, 23, 35, 0.6)
+    rounded: 100px
+    height: 40px
+    padding: 8px 12px
+    typography: 16px / 400 MonzoSansText
+    hover: 'label and icon fg #091723'
+    pressed: 'label and icon fg #091723'
+    focus: 'label and icon fg #091723; 2px solid #00a4db outline, offset 2px'
+    use: Header Business link; transparent on the pale navigation container, 125px wide. Visible span label is weight 600; no border or box shadow.
+  button-secondary:
+    type: button
+    textColor: '#091723'
+    border: '2px solid #091723'
+    rounded: 128px
+    height: 36px
+    padding: 0px 16px
+    typography: 12.8px / 400 MonzoSansText
+    hover: bg rgba(9, 23, 35, 0.1)
+    pressed: bg rgba(9, 23, 35, 0.2)
+    focus: '2px solid #009ace outline, offset 2px'
+    use: Learn more link in the Current accounts carousel card, targeting /current-account; transparent on white, 106.2px wide. Visible b label is 12.8px/600; no box shadow.
+  card-personal:
+    type: card
+    textColor: '#091723'
+    rounded: 0px
+    height: 281px
+    padding: 0px
+    typography: 16px / 400 MonzoSansText
+    hover: 'title underline #091723; arrow fill rgba(9, 23, 35, 0.1); graphic transform matrix(0.984808, -0.173648, 0.173648, 0.984808, -2.66421, -3.59193)'
+    pressed: same title, arrow and graphic changes as hover
+    focus: 'wrapper radius 32px; 2px solid #009ace outline, offset 2px; inner article height 281px to 241px'
+    use: 'Personal account card link; measured wrapper 416.3px wide, transparent on white, with no border or box shadow. Its inner article is #f2f8f3; title is 25px/700. Focus changes reversed after blur and reproduced twice; inner height is an observation rather than a general sizing rule.'
 fonts:
   roles:
     display: MonzoSansDisplay
@@ -152,419 +170,187 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Monzo is the UK's most recognisable neobank, and its visual identity is built around one audacious choice: a single saturated Hot Coral (`#ff4f40`) on a canvas that is otherwise nearly achromatic. The homepage opens on pure white (`#ffffff`) with a deep Midnight Ink (`#091723`) nav bar and the coral reserved almost entirely for the physical card, the logo, and occasional editorial headings — a ratio that makes every appearance of the accent feel intentional, almost ceremonial. Product pages shift the palette slightly: a cool Mint surface (`#f2f8f3`) carries content cards, Teal (`#016b83`) powers the primary CTA, and dark full-bleed sections in Midnight Ink create a dramatic chiaroscuro against all that white.
+Monzo is a smartphone bank founded in early 2015, with its headquarters in London. Its current About page reports more than 16 million personal and business customers, sets a mission to make money work for everyone, and describes a bank built around solving customers’ problems, fairness and transparency. [Company](https://monzo.com/about) · [Press](https://monzo.com/press)
 
-The typography is a two-font custom system — **MonzoSansDisplay** for all headlines and **MonzoSansText** for body and UI — both commissioned exclusively for Monzo. Display headlines run weight 800 at large sizes (approximately 48.8px on hero at desktop), while body and UI text runs MonzoSansText at 16px / weight 400 with `-0.05em` letter-spacing built into the brand spec. The combination reads as warm but engineered: approachable enough for a 16-year-old opening their first account, precise enough for a freelancer checking their tax pot.
+Hot Coral remains the recognisable signature. Monzo’s October 2022 refresh with Ragged Edge put it alongside deep navy, soft white and a broader secondary palette. That announcement connects the identity to warmth, empathy and optimism; it also introduced more expressive illustration and warmer photography. [2022 brand refresh](https://monzo.com/blog/weve-had-a-little-makeover)
 
-What distinguishes Monzo from its fintech peers is the geometry: every interactive element — buttons, nav links, the search bar — uses a full 500px pill radius. There are essentially no hard corners on interactive surfaces. Cards use generous 32px–64px radii. Shadows are nearly absent; the sole exception is a soft `rgba(0,0,0,0.1)` float on the search bar. Depth and section separation come entirely from alternating backgrounds (white ↔ mint ↔ midnight), not from elevation.
+The current website adds another layer. Monzo’s May 2026 design article describes a new modular web system, semantic tokens and reusable content blocks. The bank card’s silhouette informs those blocks, with rounded corners, bold typography and app demonstrations. Hot Coral is deliberately used for moments of personality because red can also suggest an error. [2026 website system](https://monzo.com/blog/reimagining-monzo-com-building-a-modular-high-fidelity-web-design-system-that-scales)
 
-**Key Characteristics:**
-- Hot Coral (`#ff4f40`) appears only on logo, card product, and select headings — never as a button fill
-- Midnight Ink (`#091723`) is the primary CTA background on home; Teal (`#016b83`) on product pages
-- MonzoSansDisplay (weight 800) for all display titles — warm, rounded, distinctly non-banking
-- MonzoSansText for all body and UI — semibolded (600) on interactive labels
-- 500px pill radius on every button and interactive element — the brand's most recognisable gesture
-- Nearly zero shadows; depth through flat surface alternation (white / mint `#f2f8f3` / midnight `#091723`)
-- Negative letter-spacing (`-0.05em`) on MonzoSansText throughout the UI
+The captured homepage combines a white header, a large rounded photographic hero, dark and pale surfaces, a coral wordmark and product-card illustrations. Its headline places everyday life ahead of financial administration. Two button implementations coexist: the header and hero use 500px radii; the modular content buttons use 128px radii. Both remain visually pill-shaped. This is a useful reference for a friendly banking website with clear action hierarchy and tangible product imagery.
 
-### Primary tasks
+#### Primary tasks
 
-- Open a free bank account from the site
-- Watch a balance and each payment update in real time
-- Set money aside in pots for rent and groceries
-- Search back through months of transactions to find one
-- Send a payment and confirm the amount and recipient
+- Open a free account or compare personal, joint, children’s and business accounts.
+- Explore saving, credit, investments and pensions.
+- Learn about organising money with Pots and Salary Sorter, receiving instant spending notifications and protecting an account.
+
+These are public-site tasks and product descriptions, observed on the [homepage](https://monzo.com) and [current-account page](https://monzo.com/current-account).
 
 ### Brand Narrative
 
-Monzo was founded in **2015** in London by **Tom Blomfield** (CEO), Jonas Huckestein, Jason Bates, Paul Rippon, and Gary Dolman — a team largely assembled from Starling Bank — and launched its first prepaid beta card in 2016 before becoming a fully licensed UK bank in 2017. The company's founding premise was radical transparency: at a time when UK high-street banks (Barclays, HSBC, Lloyds, NatWest) still operated on legacy core-banking systems and charged opaque fees, Monzo offered real-time spending notifications, instant balance updates, and zero foreign transaction fees — features so obviously missing from traditional banking that the viral waitlist was the proof of demand.
+Monzo’s press page dates its founding to early 2015 and says it became a regulated bank in August 2016. It describes a bank built for smartphones, with a London headquarters. Those are the documented milestones used here. [Press](https://monzo.com/press)
 
-The signature product decision was the **Hot Coral debit card** — a color so loud it became a social signal. Being spotted paying with the coral card became a status marker among London millennials; the color itself became the brand. Monzo has grown to serve **over 15 million personal and business customers** in the UK (as of 2025), with a stated mission of *"making money work for everyone"* — which explicitly includes under-16s, 16-17s, and business customers, not just the financially comfortable early-adopter demographic.
-
-What Monzo refuses, visible in its design system: the institutional gravity of dark-navy-and-gold banking aesthetics, dense fee disclosure buried in fine print, and any design that treats a bank account as a product to be sold rather than a problem to be solved. What it embraces: a consumer-app sensibility applied to financial infrastructure; a single audacious coral as the only saturated accent; and a tone of voice that treats the reader as an intelligent adult who deserves plain English.
+The coral card continues as a recurring identity asset: it anchors the 2022 visual refresh and, in the 2026 website system, becomes a shape for communicating product features. The current page brings that asset into rounded modular content, practical demonstrations and scenes of everyday life. [Brand refresh](https://monzo.com/blog/weve-had-a-little-makeover) · [Website evolution](https://monzo.com/blog/reimagining-monzo-com-building-a-modular-high-fidelity-web-design-system-that-scales)
 
 ### Principles
 
-1. **Make money work for everyone.** The company's stated mission. *UI implication:* the product must be legible to a 16-year-old opening their first account and to a small business owner managing cash flow — the same interface, the same clarity.
-2. **Transparency, always.** Real-time notifications, instant balance, no hidden fees. *UI implication:* never surface a number the user hasn't understood; states (loading, error, empty) must tell users exactly what's happening and what to do.
-3. **Restraint earns attention.** The coral is powerful because it appears rarely. *UI implication:* use one accent color; keep 95% of the UI achromatic; make every coral touch an intentional event.
-4. **A bank in your pocket.** Monzo lives in the app; the website is a sign-up surface. *UI implication:* 500px pill geometry, flat shadows, and generous touch targets reflect native iOS/Android DNA, not desktop-web banking conventions.
-5. **Warm but precise.** MonzoSansDisplay is rounded and friendly; the system is still exact about spacing and color values. *UI implication:* warmth through form (rounded type, pill shapes), precision through function (consistent tokens, no improvisation).
+- **Solve customers’ problems fairly and transparently.** The company’s own description of how it wants to improve banking. [About](https://monzo.com/about)
+- **Build reusable, coherent web content.** The 2026 system connects design, engineering and content through shared tokens and modular blocks. [Website system](https://monzo.com/blog/reimagining-monzo-com-building-a-modular-high-fidelity-web-design-system-that-scales)
+- **Keep product writing short, active and consistent.** These are the three principles in Monzo’s public writing-system announcement. [Writing system](https://monzo.com/blog/weve-made-our-writing-system-available-to-all)
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Monzo user segments (UK millennials, Gen Z first-time bankers, small business owners, families), not individual people.*
-
-**Priya Mehta, 24, London.** A graduate working her first full-time job. Opened Monzo because her flatmate showed her the coral card and real-time notifications. Uses spending pots religiously — one for rent, one for groceries, one for festivals. Trusts Monzo because it never hid a fee and the UI tells her exactly what happened the second she spends. Would switch banks if Monzo ever started feeling like her parents' bank.
-
-**Jake Thornton, 31, Manchester.** A freelancer who uses Monzo Business for invoicing and personal Monzo for living expenses. Values the tax pot feature and the clear separation of business income. Reads the in-app explanations because they're in plain English. Gets mildly annoyed by traditional banks' 48-hour confirmation SMS — Monzo's instant notifications feel like the baseline of respect.
-
-**Amara Osei, 42, Birmingham.** A parent who opened a Monzo Under 16 account for her daughter. Appreciates the controls and the notifications sent to both accounts. Chose Monzo specifically because the app didn't feel intimidating or "like banking" — it felt like a practical tool.
-
-**Dan Kowalski, 37, Leeds.** An e-commerce seller who switched from a high-street business account. The switching guarantee and instant setup made it a no-brainer. Judges fintech apps by how quickly he can find a transaction from six months ago; Monzo's search passes that test.
+No researched personas were verified; the homepage explicitly presents personal, joint, under-16s and business account audiences.
 
 ## Colors
 
-### Primary
-- **Hot Coral** (`#ff4f40`): The signature brand color. Appears on the physical Hot Coral debit card, the Monzo logo, certain editorial headings, and icon/link accents. Never fills a button background. This restraint is the rule — the system keeps the interface 95% achromatic so coral retains maximum attention value.
-- **Midnight Ink** (`#091723`): The dominant dark color. Primary CTA button background on the homepage ("Sign up"), the nav bar background in dark mode, footer, and full-bleed dark sections. Deep, almost navy-black — warmer than pure black.
-- **Pure White** (`#ffffff`): Page canvas and card surface on light sections.
+The survey found 26 computed root properties and 400 distinct declared custom-property names. The palette below is declared in Monzo’s `.monzo-com-design-system`; the semantic aliases establish roles. A declaration is evidence of a token, not proof that every colour is visible on this page. Midnight and mint are descriptive aliases retained from the reference; the CSS primitive names are listed alongside.
 
-### Brand & Surface
-- **Mint Canvas** (`#f2f8f3`): The primary page tint. Used for content card backgrounds, section washes, and alternating light sections. A very pale green-white that reads as fresh and clean.
-- **Soft Mint** (`#e3ebe4`): Hover fill and chip inactive state. Slightly deeper than Mint Canvas.
-- **Deep Navy** (`#112231`): A slightly lighter dark than Midnight Ink, used for section backgrounds and footer accents.
+| Role / primitive | Value | Evidence and use |
+|---|---|---|
+| Hot Coral / primary | `#ff4f40` | `--color-brand`; semantic accent; also rendered in the background and text census and the card illustration |
+| Foreground / Midnight | `#091723` | `--color-navy-900`, primary content and primary-action default; measured header and content CTA fills |
+| Primary hover | `#2c3a43` | `--color-navy-700`; measured dark CTA hover |
+| Deep navy / primary pressed | `#112231` | `--color-navy-800`; measured dark CTA pressed fill and inverse primary background alias |
+| Navy 600 | `#3b4c54` | Link-hover and neutral-darker aliases; also rendered as a background |
+| Canvas / inverse content | `#ffffff` | `--color-white`; measured light CTA fill and dark CTA lettering |
+| Mint | `#f2f8f3` | `--color-grey-100`, secondary background; measured personal-card article fill |
+| Soft mint | `#e3ebe4` | `--color-grey-200`; declared inverse-primary hover fill |
+| Grey 300 / 400 / 500 | `#c9d0c6` · `#aeb5a7` · `#75817e` | Declared neutral ramp; grey 500 also appears in rendered backgrounds |
+| Blue accent | `#009ace` | Semantic action and field focus; measured modular-button, secondary-link and card focus outlines |
+| Other measured focus colours | `#218fb7` · `#00a4db` | Header/hero outline and Business-navigation outline respectively; preserve these distinct observations |
+| Blue 200 / 300 / 400 / 500 | `#bbf6e2` · `#8ce6d1` · `#68cdb5` · `#218fb7` | Declared blue primitives |
+| Teal 550 / pink 300 | `#016b83` · `#ffa9df` | Declared Flex Purchase / Flex Build product-colour aliases; no teal CTA was state-measured |
+| Negative / red primitives | `#d70015` · `#ff6961` · `#ff453a` · `#ff3b30` | Negative content and field-error alias uses red 550; inverse negative uses red 450; remaining entries are declared primitives |
+| Positive / green primitives | `#248a3d` · `#30db5b` · `#30d158` · `#34c759` · `#44d12c` | Positive content uses green 550 and inverse positive uses green 300; remaining entries are declared primitives |
+| Black primitive | `#000000` | Declared primitive; it is not the measured dominant paragraph ink |
 
-### Interactive
-- **Teal CTA** (`#016b83`): The primary CTA color on product/feature pages ("Open a personal account", "Personal account"). A deep blue-green that complements the coral without competing.
-- **Muted Slate** (`#6b747b`): Secondary body text, metadata, and navigation links in the muted state.
-- **Fog** (`#b5b9bd`): Placeholder text, tertiary labels, and borders.
+Most sampled paragraphs use **`rgba(9, 23, 35, 0.6)`**: 52 paragraphs, compared with 10 white and 6 opaque Midnight paragraphs. Keep that alpha rather than flattening it into a solid grey. Separators and secondary hover fills use navy at 10%; secondary pressed fills use 20%. These alpha roles are separate from the solid palette.
 
-### Text
-- **Ink / Midnight** (`#091723`): Primary headings and body text on light surfaces.
-- **White** (`#ffffff`): All text on dark (midnight / teal) surfaces.
-- **Muted Nav** (`rgba(9, 23, 35, 0.6)`): Inactive / secondary nav items at reduced opacity.
-
-### Hairline & Border
-- **Hairline** (`#c2c8d0`): Card borders, form field outlines, dividers.
+The rendered background census is led by white ×25, mint ×21 and Midnight ×12. These are element counts, not screen-area percentages. The evidence does not establish a fixed accent-to-neutral ratio or a universal prohibition on coral surfaces.
 
 ## Typography
 
-### Font Family
-- **Display**: `MonzoSansDisplay` — custom commissioned type, weights 600–800. Used for all headlines, H1–H4, and footer section titles.
-- **Body/UI**: `MonzoSansText` — custom commissioned type, weights 400–700. Document default for body copy, nav links, button labels, and captions.
-- **CSS Variables**: `--font-stack-body: "MonzoSansText", sans-serif` / `--font-stack-title: "MonzoSansDisplay", sans-serif`
+### Evidence classes
 
-### Hierarchy
+- **Official use documentation:** the 2022 brand announcement identifies Oldschool Grotesk as its hero face and Monzo Sans as the functional face, a custom cut of Universal Sans chosen for readability, generous dots and curled ends. This documents the brand at that date. It does not identify the current private banking app’s font files. [Official announcement](https://monzo.com/blog/weve-had-a-little-makeover)
+- **Live-loaded on monzo.com:** `MonzoSansDisplay` at 600, 700 and 800 normal; `MonzoSansText` at 400, 600 and 700 normal. The regular Text face is reported as `normal normal` by `document.fonts`. The census declares body and buttons as `MonzoSansText`, and H1 as `MonzoSansDisplay`.
+- **Official distributed assets:** no distributable font package or licence was opened. The page’s `@font-face` rules point to relative WOFF2 files named `MonzoSansDisplay-ExtraBold.woff2`, `-Bold.woff2`, `-SemiBold.woff2`, and the equivalent Text regular, semibold and bold files. These declarations corroborate the loaded faces; the files were not downloaded and no redistribution licence was established.
+- **Declared-only:** CSS also names `Oldschool` 800, served from `OldschoolGroteskCompact-ExtraBold.woff2`, and Maison Neue Web / Maison Neue Mono Web. They are absent from the loaded list. Display regular/medium, Text medium and all the listed italic faces also lack loaded status in this capture. No specimen is supplied for an unloaded face.
+- **Unresolved:** an exclusive commission for both live families, universal headline weights, and current in-app font mapping. Substitute: none chosen.
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | MonzoSansDisplay | ~61px (clamp) | 800 | 1.0 | Maximum billboard; single-line authority |
-| Heading LG | MonzoSansDisplay | ~49px (clamp) | 800 | 1.15 | Hero H2 / feature section titles |
-| Heading | MonzoSansDisplay | ~39px (clamp) | 800 | 1.2 | Sub-section H2 heads |
-| Subheading | MonzoSansDisplay | ~25px (clamp) | 800 | 1.3 | Card H3, footer category labels |
-| Body | MonzoSansText | 16px | 400 | 1.4 | Standard reading text |
-| Body Small | MonzoSansText | 14px | 400 | 1.4 | Captions, metadata |
-| Button | MonzoSansText | 16px | 600 | 1.0 | All button labels, semibold |
-| Nav | MonzoSansText | 16px | 400 | 1.0 | Navigation links |
+### Measured interface metrics
 
-### Principles
-- **Two-font discipline**: MonzoSansDisplay owns headlines; MonzoSansText owns everything else. They never swap.
-- **Weight 800 as the display voice**: Headlines at 800 weight create a bold, confident, consumer-app personality — the opposite of the understated European banking tradition.
-- **Clamp-driven fluid sizing**: Monzo uses CSS `clamp()` extensively — headline sizes scale fluidly between mobile and desktop. No hard breakpoint font-size jumps.
-- **SemiBold for interactive labels**: Button labels and nav items use weight 600 (not 400 or 700) — precise mid-weight for legibility without visual noise.
-- **Letter-spacing on body**: `-0.05em` on MonzoSansText throughout, giving the body text a slightly tight, refined quality without going full condensed.
+| Element | Outer element | Visible label / title | Line height |
+|---|---|---|---|
+| Header Sign up | 16px / 600 MonzoSansText | 16px / 600 | 22.4px |
+| Hero account CTA | 16px / 600 MonzoSansText | 16px / 600 | 22.4px |
+| Modular account CTA | 16px / 400 MonzoSansText | 16px / 600 | 22.4px |
+| Business navigation | 16px / 400 MonzoSansText | 16px / 600 | 22.4px |
+| Small Learn more link | 12.8px / 400 MonzoSansText | 12.8px / 600 | 17.92px |
+| Personal-account card link | 16px / 400 MonzoSansText | Title 25px / 700; title-family not separately captured | Outer 22.4px |
+
+All six outer elements measured `letter-spacing: normal`. Do not apply the legacy reference’s global negative tracking to them.
+
+The root retains a fluid type scale: `--text-billboard` is `clamp(2.986rem,2.6276rem + 1.7918vw,3.8147rem)`; heading 1 is `clamp(2.4883rem,2.2447rem + 1.2182vw,3.0518rem)`; heading 2 is `clamp(2.0736rem,1.9145rem + 0.7953vw,2.4414rem)`; heading 4 is `clamp(1.44rem,1.387rem + 0.2649vw,1.5625rem)`. These are captured CSS expressions, not a second viewport measurement. The default line-height token is 1.4; the newer system also declares 1.2 for large headings.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 16px, 24px, 32px, 48px, 64px, 80px, 128px
-- Card padding: 30–32px
-- Section gaps: 64–80px
-- Element gap within cards: 24px
+The desktop viewport is 1440×1000. The survey’s sticky header is 87px high. The hero image starts below it and has large rounded corners, white text and an inverse CTA. The captured page then uses horizontal product carousels, app demonstrations, account cards, travel and savings content, a security feature area and footer navigation. This arrangement matches the reusable-block approach described in the [website-system article](https://monzo.com/blog/reimagining-monzo-com-building-a-modular-high-fidelity-web-design-system-that-scales).
 
-### Grid & Container
-- Max content width: ~1200px (centered)
-- Hero: full-bleed dark section with centered single-column content
-- Feature sections: 2-column card grids alternating white ↔ mint backgrounds
-- Dark sections (`#091723`) for brand immersion and closing CTAs
+Monzo declares a spacing scale of **2, 4, 8, 12, 16, 24, 32, 48, 64, 80, 96 and 128px**. For concrete controls, keep the measured 12px 24px header/hero padding, 0px 24px modular-action padding, 0px 16px small-action padding and 8px 12px navigation padding. These do not establish one universal card-padding or section-gap value.
 
-### Whitespace Philosophy
-- **Generous breathing room**: Monzo uses wide section spacing (64–80px gaps) to let each value proposition breathe — the consumer-app analogue to Stripe's engineering density.
-- **Surface alternation as structure**: White → Mint → Midnight alternation creates rhythm without borders or shadows.
-- **Pill geometry as warmth**: The 500px radius on all interactive elements signals friendliness — the antithesis of institutional banking corners.
-
-### Border Radius Scale
-- Micro (4px): Badges and small tags
-- Input / Search (500px): Buttons and search pill — full radius
-- Card SM (24px): Smaller containers
-- Card MD (32px): Content cards — the workhorse
-- Card LG (64px): Large feature cards
-- Full (500px): Buttons, nav pills, all interactive elements
+The declared corner scale is **4, 8, 12, 16, 24, 32, 48 and 64px**. Measured link/button wrappers additionally use 0, 100, 128 and 500px. Choose the treatment for the specific component rather than assigning 500px to all interactive elements. In the survey, other interactive step/security buttons use 16px and carousel markers use 0px.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses via clamp, button full-width |
-| Tablet | 640–1024px | 2-up cards, moderate padding |
-| Desktop | 1024–1200px | Full layout, centered max-width 1200px, 3-column feature grids |
-
-#### Touch Targets
-- All pill buttons at minimum 48px height — generous touch target
-- Nav height ~56–64px header
-- Filter chips at 38px height with 16px padding — comfortable tap area
-
-#### Collapsing Strategy
-- Hero: clamp `--text-billboard` from ~47px (mobile) to ~61px (desktop), weight 800 maintained
-- Cards: 2-column → single-column stacked
-- Nav: horizontal pill links → hamburger toggle on mobile
-
-#### Image Behavior
-- App/phone mockups carry no shadow, consistent with the flat system
-- Cards maintain radius at all sizes
+Only the 1440×1000 desktop surface was measured. The captured root type expressions are fluid; Monzo’s 2026 article says its system is responsive and tested across content densities, locales and scripts. Specific mobile breakpoints, stacking rules and touch layouts remain unverified. [Official system description](https://monzo.com/blog/reimagining-monzo-com-building-a-modular-high-fidelity-web-design-system-that-scales)
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | All cards, nav, sections — most of the system |
-| Float (Level 1) | `rgba(0,0,0,0.1) 0px 0px 10px 0px` | Search bar only — the system's single shadow usage |
+The measured link wrappers have `box-shadow: none`. Surface contrast provides much of their separation, but the system also has an explicit elevation scale.
 
-**Shadow Philosophy**: Monzo is near-shadowless. Background alternation (white / `#f2f8f3` mint / `#091723` midnight) creates visual hierarchy without elevation. This mobile-first, flat-surface approach makes the UI feel native on iOS/Android where it lives natively as a banking app — lift-based skeuomorphism would feel out of place.
+| Declared level | Raw box-shadow token |
+|---|---|
+| 1 | `0px 2px 8px rgba(0,0,0,.16)` |
+| 2 | `0px 4px 16px rgba(0,0,0,.16)` |
+| 3 | `0px 8px 32px rgba(0,0,0,.16)` |
+| 4 | `0px 16px 48px rgba(0,0,0,.24)` |
+| 5 | `0px 32px 64px rgba(0,0,0,.24)` |
+
+CSS also declares subscription gradients in light, dark and Hot Coral variants; their application was not state-probed.
+
+The Personal account card illustration actually computes `filter: drop-shadow(rgba(0, 0, 0, 0.16) 0px 2px 8px)`. This supports selective depth on product imagery. A claim that the search bar is the system’s sole shadow usage is not supported.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 - `shadow.none`: `none`
-- `shadow.float`: `rgba(0, 0, 0, 0.1) 0px 0px 10px 0px`
+- `shadow.level1`: `0px 2px 8px rgba(0,0,0,.16)`
+- `shadow.level2`: `0px 4px 16px rgba(0,0,0,.16)`
+- `shadow.level3`: `0px 8px 32px rgba(0,0,0,.16)`
+- `shadow.level4`: `0px 16px 48px rgba(0,0,0,.24)`
+- `shadow.level5`: `0px 32px 64px rgba(0,0,0,.24)`
 
 ## Motion & Easing
 
-**Durations**:
+The modular primary and small secondary link both compute **`background-color 0.3s cubic-bezier(0, 0, 1, 1) 0s`**. Their hover transition is 300ms; the pointer-down capture reports a longest transition of 0ms. The hero action computes **`background-color 0.2s ease 0s`**, while the Business and card link wrappers compute **`all 0s ease 0s`**. Descendants can still animate: the card graphic changes from `none` to `matrix(0.984808, -0.173648, 0.173648, 0.984808, -2.66421, -3.59193)` on hover and press.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | State commits, notification ticks, focus rings |
-| `motion-fast` | 100ms | Hover, chip press, pill ripple |
-| `motion-standard` | 200ms | Card expand, dropdown, sheet |
-| `motion-slow` | 300ms | Page-level transitions, hero section reveals |
+The stylesheet separately declares instant 0ms, short 100ms, medium 200ms, long 300ms, extra-long 400ms and super-long 600ms durations. It also includes spring parameters, so a brand-wide prohibition on springs is not supported. No app-sheet, transaction-row or reduced-motion behaviour was measured. The website article describes attention-guiding animations; it does not specify these timings. [Official design writing](https://monzo.com/blog/reimagining-monzo-com-building-a-modular-high-fidelity-web-design-system-that-scales)
 
-**Easings**:
+---
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — sheets, cards, notifications |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and app-native — consistent with Monzo's mobile-first DNA. Pill chips respond to press with subtle scale/opacity; transaction rows reveal at `motion-standard / ease-enter`. No bounce or spring — a current-account product signals steady reliability. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional and the coral accent never animates.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on:
-- https://monzo.com/ (homepage)
-- https://monzo.com/current-account/ (product surface)
-
-Key observations:
-- body: font-family MonzoSansText; color rgb(0,0,0); font-size 16px; line-height 22.4px
-- H2 hero "Monzo for all your money": MonzoSansDisplay; 48.8288px; weight 800; color rgb(255,255,255)
-- H1 "Current accounts that keep up": MonzoSansDisplay; 48.8288px; weight 800; white
-- Nav CTA "Sign up": bg rgb(9,23,35) #091723; color white; radius 500px; 12px 24px; 16px/600 MonzoSansText; height 51px
-- Product CTA "Open a personal account": bg rgb(1,107,131) #016b83; white; radius 500px; 12px 24px; height 48px
-- Hero dark CTA "Open a free bank account": bg rgb(255,255,255); color rgb(9,23,35); radius 500px; 12px 24px; height 48px
-- Filter chip "Free features": bg rgb(59,76,84) #3b4c54; white; radius 64px; 8px 16px; height 38px
-- Filter chip "Paid features": bg rgb(227,235,228) #e3ebe4; color #091723; radius 64px; 8px 16px; height 38px
-- Hot Coral sections: bg rgb(255,79,64) #ff4f40 (app download media column) and rgb(246,77,63) #f64d3f (flashcard)
-- CSS vars: --font-stack-body "MonzoSansText"; --font-stack-title "MonzoSansDisplay"; --default-line-height 1.4
-- Background frequency (home): white ×34, midnight #091723 ×21, mint-soft #e3ebe4 ×11, mint #f2f8f3 ×10
-- Fonts on page: MonzoSansText, MonzoSansDisplay (only)
-
-Voice samples from live site and WebFetch of monzo.com/tone-of-voice/ and monzo.com/about/.
-Mission "make money work for everyone" from monzo.com/about/.
-Brand narrative (founding 2015, Tom Blomfield, 15M customers) is widely documented public fact.
-Tier-2: styles.refero.design/style/e8a1d114-6924-4f03-acd2-996dd30f15a6 confirmed coral + mint + midnight system.
-getdesign.md/monzo: not found.
-
-Personas (§13) are fictional archetypes, names illustrative.
-Interpretive claims are editorial readings connecting Monzo's observed design to its positioning.
--->
+Measured 2026-11-02 on the public UK-English homepage, logged out, at 1440×1000. Computed styles and loaded fonts came from the survey and state captures. Company and brand context came from the linked first-party pages; verification.md records raw samples, scope and prior-reference dispositions.
 
 ## Components
 
-### Buttons
+The six controls below were measured after rejecting consent, using real hover, mouse-down and Tab focus. All are links. No search input was present in the survey.
 
-**Primary (Home — Midnight Ink)**
-- Background: `#091723`
-- Text: `#ffffff`
-- Radius: 500px
-- Padding: 12px 24px
-- Font: 16px / 600 / MonzoSansText
-- Height: 51px (computed)
-- Use: Primary nav CTA ("Sign up") — dark pill on light background
+| Control | Rest identity | Hover | Pressed | Keyboard focus |
+|---|---|---|---|---|
+| Header **Sign up** | 108.4×51.2px; 500px radius; 12px 24px padding; `#091723` / `#ffffff`; 1px matching border | Fill and border `#2c3a43` | Fill and border `#112231`; 1px solid `#218fb7` outline, offset 0 | 1px solid `#218fb7`, offset 2px |
+| Hero **Open a free Monzo account** | 264.3×48.4px; 500px; 12px 24px; `#ffffff` / `#091723`; 1px white border | Fill and border white at 80% alpha | White at 90% alpha; 1px solid `#218fb7` outline, offset 0 | 1px solid `#218fb7`, offset 2px |
+| First modular **Open a free Monzo account** | 262.3×48px; 128px; 0px 24px; `#091723` / `#ffffff`; no border | Fill `#2c3a43` | Fill `#112231` | 2px solid `#009ace`, offset 2px |
+| Header **Business** | 125×40px; 100px; 8px 12px; transparent over pale navigation container; label navy at 60% alpha | Label and icon become `#091723` | Same changed label and icon as hover | Same opaque label/icon plus 2px solid `#00a4db`, offset 2px |
+| Current-accounts **Learn more** | 106.2×36px; 128px; 0px 16px; transparent on white; `#091723` label and 2px border | Navy 10% fill | Navy 20% fill | 2px solid `#009ace`, offset 2px |
+| **Personal account** card link | Wrapper 416.3×281px; radius 0px; padding 0px; transparent on white; `#091723`; inner article mint | Title underline becomes opaque Midnight; arrow gains navy 10% fill; card graphic rotates/translates | Same descendant changes as hover | Wrapper radius 32px and 2px solid `#009ace`, offset 2px; inner article height 281→241px |
 
-**Primary (Product — Teal)**
-- Background: `#016b83`
-- Text: `#ffffff`
-- Radius: 500px
-- Padding: 12px 24px
-- Font: 16px / 600 / MonzoSansText
-- Height: 48px (computed)
-- Use: Product-page primary CTA ("Open a personal account", "Personal account") — teal pill on light or mint background
-
-**Inverse (White on Dark)**
-- Background: `#ffffff`
-- Text: `#091723`
-- Radius: 500px
-- Padding: 12px 24px
-- Font: 16px / 600 / MonzoSansText
-- Height: 48px (computed)
-- Use: CTA within dark/hero sections ("Open a free bank account") — white pill on midnight surface
-
-**Filter Chip (Active)**
-- Background: `#3b4c54`
-- Text: `#ffffff`
-- Radius: 64px
-- Padding: 8px 16px
-- Font: 16px / 600 / MonzoSansText
-- Height: 38px (computed)
-- Use: Active state tab/filter ("Free features")
-
-**Filter Chip (Inactive)**
-- Background: `#e3ebe4`
-- Text: `#091723`
-- Radius: 64px
-- Padding: 8px 16px
-- Font: 16px / 600 / MonzoSansText
-- Height: 38px (computed)
-- Use: Inactive tab/filter pill ("Paid features")
-
-### Inputs
-
-**Search / Default**
-- Background: `#ffffff`
-- Border: 1px solid `#c2c8d0`
-- Radius: 500px
-- Font: 16px MonzoSansText
-- Shadow: `rgba(0, 0, 0, 0.1) 0px 0px 10px 0px`
-- Use: Search bar on light background — the only surface using a shadow in the system
-
-### Cards & Containers
-
-**Mint Surface Card**
-- Background: `#f2f8f3`
-- Radius: 32px
-- Use: Content card on page mint background — separation via flat tint, no border
-
-**White Feature Card**
-- Background: `#ffffff`
-- Radius: 32px
-- Use: White card on mint background — light elevation via background contrast
-
-**Dark (Midnight) Card**
-- Background: `#091723`
-- Text: `#ffffff`
-- Radius: 32px
-- Use: Dark feature card on midnight-background section
-
-### Badges
-
-**Hot Coral Badge**
-- Background: `#ff4f40`
-- Text: `#ffffff`
-- Radius: 4px
-- Use: Accent badge — the one context where coral fills a surface rather than tinting text
-
-### Navigation
-
-- Background: transparent (white page) / `#091723` (dark mode / mobile)
-- Text: `rgba(9, 23, 35, 0.6)` for inactive; `#091723` for active
-- Font: 16px MonzoSansText weight 400
-- Active: personal/business toggle uses `#091723` background pill, white text
-- CTA: Midnight Ink pill ("Sign up") right-aligned
-
----
-
-**Verified:** 2026-06-22
-**Tier 1 sources:** https://monzo.com/ (homepage, live DOM inspect) · https://monzo.com/current-account/ (product surface, live DOM inspect)
-**Tier 2 sources:** styles.refero.design/style/e8a1d114-6924-4f03-acd2-996dd30f15a6 (Monzo — Warm coral on cool mint paper) · getdesign.md/monzo — not found
-**Conflicts unresolved:** none (Refero confirmed coral as brand-signature / pill-500px / mint surface system; live inspect confirmed identical values)
+The card’s inner height change reproduced in both state passes and reversed after blur. Preserve it as an observation, not a general card-sizing rule. The wrapper itself remains 281px high. Its graphic has a measured drop-shadow filter; the six link wrappers themselves have no box shadow.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no transactions)** | Mint canvas (`#f2f8f3`), single Midnight Ink sentence in body size explaining no activity, one teal or midnight pill CTA to add a pot or make a payment. No illustration by default. |
-| **Empty (pot, no savings)** | Muted Slate (`#6b747b`) single line with next step ("Add money to this pot"). Honest, calm, no hype. |
-| **Loading (transactions fetch)** | Skeleton rows at final card dimensions with 32px radius; flat mint pulse shimmer — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (account balance)** | Blurred/skeleton balance string in midnight ink; no spinner overlay that blocks the rest of the UI. |
-| **Error (network fail)** | Inline banner in near-coral tone (coral `#ff4f40` border, white background); plain-English description of what failed and one retry action. No generic "Something went wrong" alone. |
-| **Error (form validation)** | Field-level: red-toned border with 14px MonzoSansText message below. States what's wrong and what would be valid. |
-| **Error (card declined)** | Push notification + in-app state: names the decline type in plain English. No jargon. |
-| **Success (payment sent)** | Instant in-app confirmation with the transaction amount and recipient in a coral-accented row. No toast with emoji — the transaction row is the state. |
-| **Success (pot created)** | Brief inline confirmation in warm tone; pot visible immediately below. 3s auto-dismiss if a toast appears. |
-| **Skeleton** | Mint (`#f2f8f3`) blocks at final dimensions, 32px radius, flat pulse — no shadow shimmer. |
-| **Disabled** | Muted Slate (`#6b747b`) on reduced-opacity background; midnight CTAs fade to reduced opacity rather than switch to grey to preserve brand read. |
+For dark actions, preserve the measured rest → hover → pressed sequence: `#091723` → `#2c3a43` → `#112231`. For the inverse hero action, white becomes 80% on hover and 90% on press. The outlined secondary link adds navy 10% and 20% fills. Navigation instead strengthens the label/icon from 60% navy to opaque Midnight.
+
+Keyboard focus is authored, not a browser `auto` ring: header/hero actions use a 1px solid `#218fb7` outline, modular/secondary/card links use 2px solid `#009ace`, and the Business link uses 2px solid `#00a4db`; all have 2px offsets. Every captured focus change disappears after blur. The card additionally changes its wrapper radius and inner layout as recorded in §4.
+
+No empty, loading, validation-error, payment-success or disabled-state component was exercised. The stylesheet declares negative, positive, loading and disabled semantic values, but these alone do not establish complete rendered state designs.
 
 ## Do's and Don'ts
 
-### Do
-- Use Hot Coral (`#ff4f40`) only on logo, card product, editorial headings, and icon accents
-- Use Midnight Ink (`#091723`) for primary CTAs on home and for dark full-bleed sections
-- Use Teal (`#016b83`) for CTAs on product feature pages
-- Apply 500px radius to every button and interactive pill — it's the brand's signature geometry
-- Use MonzoSansDisplay weight 800 for all display headlines
-- Use MonzoSansText weight 600 for all button labels and interactive text
-- Separate sections by alternating white, mint (`#f2f8f3`), and midnight — never with shadows
-- Apply `-0.05em` letter-spacing on MonzoSansText body elements
+- Keep Hot Coral as a recognisable brand signal, and use the measured dark and inverse treatments for these CTAs.
+- Use the loaded Monzo Sans families, clear visible semibold labels and the specific control geometry recorded above.
+- Preserve opaque Midnight for strong content and alpha navy for quieter paragraphs and navigation.
+- Distinguish the header/hero implementation from modular content components, especially their radii and focus outlines.
+- Do not impose a fixed neutral-to-accent percentage, a universal 500px radius, global negative tracking or a blanket ban on secondary colours and elevation.
+- Do not turn a declared field-error colour into an invented error component or an unloaded font declaration into a specimen.
 
-### Don't
-- Use Hot Coral as a button background fill — it must stay as an accent color, not a CTA color
-- Use shadows for card elevation — Monzo's depth comes from surface-color contrast
-- Apply hard square corners to buttons or interactive elements — everything is a pill
-- Mix in additional accent colors beyond coral, teal, and midnight
-- Use light-weight (300 / 400) headlines — display is always weight 800
-- Use MonzoSansDisplay for body text — it's a display-only face
-- Introduce gradients on backgrounds — sections are flat, single-tone fills
-- Over-decorate: the system's power is restraint; every coral touch is an event
+These implementation recommendations follow the measured controls and declared tokens, rather than adding brand rules.
 
 ## Voice & Tone
 
-Monzo's voice is defined by three official principles — **Straightforward Kindness**, **Everyday Magic**, and **Warm Wit** — calibrated by channel, so operational messages dial up clarity and dial down humor, while campaigns can fully embrace wit. The through-line is approachability: every word prioritises what matters to the reader, not what's convenient to say internally. Monzo's tone-of-voice guide explicitly bans passive voice (to obscure responsibility), empty marketing clichés ("discover", "so much more"), and any humor that targets or punches down.
+Monzo’s published writing principles are **Straightforward kindness**, **Everyday magic** and **Warm wit**. They put the reader’s needs first, use inclusive everyday language, explain jargon and generally favour active voice. When Monzo has made a mistake, the guide asks for one sincere apology followed by the remedy. It allows rare deliberate exceptions to active voice, rather than imposing an absolute ban. [Writing principles](https://monzo.com/tone-of-voice)
 
-| Context | Tone |
-|---|---|
-| Operational (notifications, alerts) | Straightforward Kindness maxed; Warm Wit absent — direct, responsible, solution-oriented |
-| Customer service | Clear and warm; single sincere apology then pivot to resolution |
-| Marketing / campaigns | All three principles active; vivid unexpected word choices over tired adjectives |
-| Nav / UI labels | Plain, functional, lowercase-friendly ("Bank accounts", "Savings and ISAs") |
-| Hero headlines | Confident declarative, consumer-warm: "Your New Favourite Bank", "Bank on an award-winning app" |
+Operational and service communication prioritises clarity and kindness, with no warm wit. Marketing permits more playfulness; campaigns and social channels give humour more room. The guide rejects jokes at others’ expense and literal magic clichés. Its 2025 public writing-system announcement adds three product-writing rules: keep it short, use active voice and be consistent. [Writing system](https://monzo.com/blog/weve-made-our-writing-system-available-to-all)
 
-**Voice samples (verbatim from live site):**
-- "Your New Favourite Bank" — homepage title *(verified live 2026-06-22)*
-- "Monzo for all your money" — homepage H2 hero *(verified live 2026-06-22)*
-- "Current accounts that keep up" — current-account H1 *(verified live 2026-06-22)*
-- "We're here to make money work for everyone" — about page mission statement *(verified via WebFetch 2026-06-22)*
-
-**Forbidden register**: passive-voice responsibility-dodging, empty hype verbs ("unlock", "discover"), gendered or ableist language, clichés requiring specialized cultural knowledge, literal magic references, punch-down humor.
+Live wording illustrates the range: the homepage headline is “Spend your money on life, not your life on money”; the [current-account page](https://monzo.com/current-account) retains “Current accounts that keep up”. Action labels remain direct: “Sign up” and “Learn more”.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Hot Coral: `#ff4f40` — logo, card, editorial accent only
-- Primary CTA (home): Midnight Ink `#091723`
-- Primary CTA (product): Teal `#016b83`
-- Inverse CTA: White `#ffffff` on dark backgrounds
-- Page canvas: White `#ffffff`
-- Tinted surface: Mint `#f2f8f3`
-- Dark section: Midnight `#091723`
-- Body text (light bg): Midnight `#091723`
-- Secondary text: Slate `#6b747b`
-- Muted nav: `rgba(9,23,35,0.6)`
-- Hairline / border: `#c2c8d0`
+Use these measured examples when building in the website’s style:
 
-### Example Component Prompts
-- "Create a hero section with midnight-ink background (`#091723`). Headline at ~49px MonzoSansDisplay weight 800, color white. Subhead 16px MonzoSansText weight 400, rgba(255,255,255,0.7). White pill CTA: white bg, #091723 text, 500px radius, 12px 24px padding, 16px/600 MonzoSansText."
-- "Design a feature card: white background (#ffffff), 32px radius, no shadow. Title at 25px MonzoSansDisplay weight 800, color #091723. Body 16px MonzoSansText weight 400, #6b747b. On a mint (#f2f8f3) section background."
-- "Create a teal CTA button: bg #016b83, white text, 500px radius, 12px 24px padding, 16px/600 MonzoSansText — 'Open a personal account'."
-- "Build a primary nav: white background, transparent. MonzoSansText 16px/400 links in rgba(9,23,35,0.6) inactive, #091723 active. Midnight pill ('Sign up') right-aligned: bg #091723, white text, 500px radius, 12px 24px padding."
+- “Create a 48px account-opening link with a 128px radius, 0px 24px padding, Midnight `#091723` fill and a white 16px/600 MonzoSansText label. Its outer element is 16px/400. Hover changes the fill to `#2c3a43`; pressing changes it to `#112231`; keyboard focus adds a 2px solid `#009ace` outline with 2px offset.”
+- “Create a small outlined Learn more link on white: 36px high, 128px radius, 0px 16px padding, 2px Midnight border and 12.8px/600 MonzoSansText lettering. Use navy at 10% alpha on hover and 20% on press.”
+- “For the photographic hero, use the measured white account-opening link: 48.4px high, 500px radius, 12px 24px padding and Midnight lettering. Its hover and pressed fills are white at 80% and 90% alpha.”
 
-### Iteration Guide
-1. Hot Coral (`#ff4f40`) is the brand ace — never dilute by spreading it on CTAs
-2. All interactive elements are 500px radius pills — this is non-negotiable
-3. Page depth = surface alternation, not shadows (white → mint → midnight)
-4. Headline = MonzoSansDisplay 800; UI = MonzoSansText 400/600
-5. CTA color depends on surface: midnight on white, teal on light/product, white on dark
-6. `-0.05em` letter-spacing on MonzoSansText gives body text its brand-specific feel
-
----
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `badge-coral`.** Text `#ffffff` on `#ff4f40` measures 3.26:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+Keep each example attached to its measured surface. A current private banking-app screen was not inspected.

@@ -1,85 +1,76 @@
 ---
 name: Salesforce
 colors:
-  primary: '#0176d3'
+  primary: '#066afe'
+  primary-hover: '#022ac0'
   primary-dark: '#0b5cab'
+  legacy-primary: '#0176d3'
   navy: '#032d60'
-  hero-navy: '#002c6e'
+  deep-navy: '#002c6e'
   brand-bright: '#1b96ff'
-  sky: '#00a1e0'
-  ink: '#080707'
-  ink-soft: '#181818'
+  foreground: '#181818'
+  legacy-ink: '#080707'
   canvas: '#ffffff'
   cloud-tint: '#eaf5fe'
-  surface: '#f4f4f4'
   hairline: '#e5e5e5'
   error: '#ea001e'
   success: '#2e844a'
   warning: '#dd7a01'
   on-primary: '#ffffff'
+  link-hover: '#002775'
+  slack-tile-hover: '#7526e3'
 typography:
-  display-hero:
-    fontSize: 70px
-    fontWeight: 400
-    lineHeight: 1
-    use: Homepage hero H1, ITC Avant Garde
-  display-lg:
-    fontSize: 60px
-    fontWeight: 400
-    lineHeight: 1
-    use: Dark-section statement H2
+  display-xl:
+    fontSize: 80px
+    lineHeight: 1.1
+    use: 'Declared PBC display-1: 80px / 88px; tracking -0.018em; not an H1 measurement'
   display-md:
     fontSize: 56px
-    fontWeight: 400
-    lineHeight: 1.14
-    use: Page-level H1 (pricing)
+    lineHeight: 1.142857
+    use: 'Declared PBC display-2: 56px / 64px; tracking -0.012em; pricing page not re-measured'
   section:
     fontSize: 40px
-    fontWeight: 400
     lineHeight: 1.2
     letterSpacing: '-0.32px'
-    use: Section H2
+    use: 'Declared PBC display-4: 40px / 48px, -0.008em = -0.32px at this size'
   subsection:
     fontSize: 24px
-    fontWeight: 400
-    lineHeight: 1.33
-    letterSpacing: '-0.06px'
-    use: Card H3, ITC Avant Garde
+    lineHeight: 1.333333
+    letterSpacing: '-0.096px'
+    use: 'Declared PBC display-6: 24px / 32px, -0.004em; separate from measured Slack label'
   card-title:
     fontSize: 20px
-    fontWeight: 400
     lineHeight: 1.4
     letterSpacing: '-0.08px'
-    use: Industry/product card heads
+    use: 'Declared PBC display-7: 20px / 28px, -0.004em'
   body-lg:
     fontSize: 18px
     fontWeight: 400
-    lineHeight: 1.56
-    use: Inline links, intro copy, Salesforce Sans
+    lineHeight: 1.555556
+    use: 'Surveyed inline pricing link: Salesforce Sans 18px / 400 / 28px; not a paragraph measurement'
   body:
     fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Standard reading text, Salesforce Sans
+    use: Declared PBC body-2 size; not a paragraph line-height measurement
   button:
     fontSize: 16px
     fontWeight: 700
     lineHeight: 1.5
-    letterSpacing: 0.02px
-    use: CTA labels, Salesforce Sans Bold
+    use: 'Measured hero and pill labels: Salesforce Sans 16px / 700 / 24px; hero tracking normal, pill -0.032px'
   link-sm:
     fontSize: 14px
     fontWeight: 700
-    lineHeight: 1.43
-    use: Tertiary 'Learn more' text CTAs
+    lineHeight: 1.428571
+    letterSpacing: '-0.028px'
+    use: 'Measured finance industry link: 14px / 700 / 20px'
 rounded:
+  none: 0px
   sm: 4px
-  md: 8px
+  secondary: 6px
   lg: 16px
+  media: 22px
   xl: 32px
   full: 9999px
 spacing:
-  xs: 4
   sm: 8
   md: 12
   base: 16
@@ -94,62 +85,74 @@ components:
     backgroundColor: '#0176d3'
     textColor: '#ffffff'
     rounded: 4px
-    padding: 12px 32px
+    padding: 8px 32px
     height: 52px
     typography: 16px / 700
-    border: '2px solid #0176d3'
-    use: Primary CTA — 'Start for free', 'Calculate pricing'
+    border: 1px solid rgba(0, 0, 0, 0)
+    hover: 'bg #0b5cab'
+    pressed: 'bg #0b5cab; 2px solid #ffffff border; 4px solid #1b96ff outline, offset 0px; width 193.2px to 195.2px'
+    use: Hero link 무료로 시작하기; /kr/small-business/free-trial/starter-suite-v2/?d=pb. Mouse-down includes pointer focus; keyboard focus unmeasured.
   button-secondary:
     type: button
     backgroundColor: '#ffffff'
     textColor: '#0176d3'
-    rounded: 4px
-    padding: 12px 32px
+    rounded: 6px
+    padding: 8px 32px
     height: 52px
     typography: 16px / 700
-    border: '2px solid #0176d3'
-    use: Paired outline CTA — 'Watch demo'
-  button-tertiary:
+    border: '1px solid #0176d3'
+    hover: 'bg #eaf5fe'
+    pressed: 'bg #eaf5fe; 2px solid #001642 border; 4px solid #1b96ff outline, offset 0px; width 151.7px to 153.7px'
+    use: Hero link 데모 보기; /kr/small-business/demos/smb-overview/?d=pb. Mouse-down includes pointer focus; keyboard focus unmeasured.
+  button-pill:
     type: button
-    textColor: '#032d60'
-    rounded: 4px
-    typography: 14px / 700
-    use: '''Learn more'' text CTA on cards'
-  carousel-control:
-    type: button
+    backgroundColor: '#066afe'
     textColor: '#ffffff'
     rounded: 9999px
-    height: 48px
-    border: '2px solid #ffffff'
-    use: Prev/next/pause controls on testimonial carousel
+    padding: 14px 32px
+    height: 52px
+    typography: 16px / 700
+    hover: 'bg #022ac0'
+    pressed: 'bg #022ac0; 3px solid #066afe outline, offset 2px'
+    use: 'Starter Suite link 무료로 시작하기 in a pbc-button host; aria-label 무료로 시작하기: 비즈니스의 모든 영역에적용 가능한 내장형 AI. Rest border none; decorative ::after present. Keyboard focus unmeasured.'
+  button-tertiary:
+    type: button
+    textColor: '#022ac0'
+    rounded: 4px
+    padding: 0px
+    height: 24px
+    typography: 14px / 700
+    border: 2px solid rgba(0, 0, 0, 0)
+    hover: 'fg #002775; underline removed'
+    pressed: 'fg #080707; 2px solid #080707 border; radius 9999px; 3px solid #066afe outline, offset 2px; underline removed'
+    use: 'Finance industry link 자세히 알아보기, aria-label 자세히 알아보기: 금융 서비스. Transparent on measured white backing; rest underline; keyboard focus unmeasured.'
   card-glass:
     type: card
     textColor: '#ffffff'
     rounded: 32px
-    border: 2px solid rgba(255,255,255,0.1)
-    padding: 19px
-    use: Translucent product tile (Slack/Agentforce/Customer 360/Data 360) on dark hero, bg rgba(255,255,255,0.05)
-  card-media:
-    type: card
-    textColor: '#080707'
-    rounded: 22px
-    use: Customer-story video testimonial card
-  card-tint:
-    type: card
-    backgroundColor: '#eaf5fe'
-    textColor: '#032d60'
-    use: Light cloud-blue section band / promo panel
+    border: 2px solid rgba(255, 255, 255, 0.1)
+    padding: 19.2px
+    height: 176.4px
+    typography: 24px / 100
+    hover: 'bg #7526e3'
+    pressed: 'bg #7526e3; 2px solid #ffffff border; 5px solid #ffffff outline, offset 0px'
+    use: 'Slack product tile link /kr/slack/ on the dark hero; rest fill rgba(255, 255, 255, 0.05), with no opaque bg token. fg and font refer to visible heading; anchor inherited fg is #080707 and font 16px / 400. Width 240px. Keyboard focus unmeasured.'
   nav-link:
-    type: tab
-    textColor: '#080707'
-    typography: 16px / 400
-    active: 'text #0176d3'
-    use: Global nav item
+    type: button
+    textColor: '#032d60'
+    rounded: 0px
+    padding: 0px
+    height: 18px
+    typography: 14px / 400
+    hover: 'fg and underline color #0176d3'
+    pressed: 'fg and underline color #0176d3'
+    use: Global-header contact link 문의하기, a.contact-heading, aria-label 문의 예약하기. Transparent on measured white backing; underlined. Contact link, not a main menu tab. Keyboard focus unmeasured.
 fonts:
   roles:
-    display: ITC Avant Garde (AvantGardeForSalesforce)
+    display: ITC Avant Garde
     body: Salesforce Sans
-    app: system-ui (SLDS 2 product UI)
+    localized-display: Seol Sans Heavy
+    pbc-display: Avant Garde for Salesforce
 ---
 
 # Design System Inspiration of Salesforce
@@ -158,419 +161,205 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Salesforce's design language is enterprise software's most institutional blue, rebuilt for the AI-agent era. The marketing surface opens on a white canvas (`#ffffff`) with near-black body text (`#080707`), deep navy headlines (`#032d60`), and one unmistakable action color: Salesforce Blue (`#0176d3`). What makes this system notable is its rare alignment between brand theater and engineering truth — the exact hex painted on the homepage's "Start for free" button is also the canonical `color-brand-base-50` token in Lightning Design System 2, the company's official design system. Very few companies at this scale keep their marketing chrome and their product token source in lockstep.
+Salesforce delivers cloud CRM and presents its platform as a place where people, AI agents, applications, and data work together. Its company story traces that proposition to cloud-delivered CRM in 1999 and now frames it around the Agentic Enterprise. The public design team describes its work as designing human and agent interactions. These are the company's current product and design narratives. [Company story](https://www.salesforce.com/company/our-story/) · [Salesforce Design](https://www.salesforce.com/design/).
 
-The typographic voice changed decisively with the Agentforce-era rebrand: display text now runs in **ITC Avant Garde** (served as `AvantGardeForSalesforce`) at weight 400 — a geometric, almost retro-futurist face that gives 70px hero headlines a rounded, optimistic confidence — while everything functional below it runs in the workhorse **Salesforce Sans** at 16px/24px. The contrast is deliberate: Avant Garde says "Welcome to the Agentic Enterprise" like a keynote slide; Salesforce Sans handles the dense feature copy, nav, and buttons like the CRM it sells. In the product itself, SLDS 2 takes a third position entirely, defaulting to a system-ui font stack for native-feeling app chrome.
+The measured homepage is the Korean edition (`salesforce.com/kr/`), where salesforce.com sent the capture browser; it combines a pale blue opening, a dark blue Agentic Enterprise presentation, translucent product tiles, customer videos, and white product and industry sections. Rounded display lettering sits above functional Salesforce Sans labels. The five product tiles name Slack, Tableau, Agentforce, Customer 360, and Data 360. Their 32px corners and translucent white fills give the presentation a softer geometry than the rectangular hero actions. This description comes from the captured Korean homepage, reached from the root URL even with an en-US browser locale.
 
-Geometry tells a two-world story. Marketing CTAs are conservative 4px-radius rectangles with bold 16px/700 labels and generous 12px 32px padding — banking-grade trustworthiness. But the storytelling layer above them is soft and atmospheric: translucent glass product tiles at 32px radius with `rgba(255,255,255,0.1)` borders floating on dark hero gradients, 22px-radius video testimonial cards, and fully circular (9999px) carousel controls. Sections alternate between white, a light cloud tint (`#eaf5fe`), and a neutral grey (`#f4f4f4`), keeping long enterprise pages legible. Depth is shy on marketing surfaces (borders over shadows), while SLDS 2 defines a precise four-level layered shadow scale built on `#181818` alpha tints for the product.
+Two action systems coexist on that page. The hero's 52px-high primary link remains `#0176d3` with a 4px radius; the later Starter Suite action is also 52px high but uses `#066afe` and a 9999px pill radius. Both use white 16px/700 Salesforce Sans labels. The shared label treatment ties together visibly different controls. A purple Slack-tile hover adds another interactive color. Build from the relevant measured component rather than treating one blue and one radius as universal.
 
-**Key Characteristics:**
-- One blue to rule the system: `#0176d3` is simultaneously the live CTA color and SLDS 2's `color-brand-base-50` token
-- ITC Avant Garde display over Salesforce Sans body — keynote voice over CRM voice
-- Deep navy `#032d60` (SLDS `brand-base-20`) for headings, never pure black
-- Conservative 4px CTA radius against soft 22–32px storytelling cards
-- 13-step official brand-blue ramp from `#001639` ink to `#eef4ff` mist (SLDS 2 styling hooks)
-- Section banding in white / cloud tint `#eaf5fe` / grey `#f4f4f4`
-- Bold 700-weight button labels — enterprise buttons that read as commitments
-- SLDS 2 ("Bring your brand to life") as the token backbone: CSS custom properties, `--slds-g-*` global styling hooks
+The product design system has its own evolution. Salesforce's December 2025 design article describes SLDS 2 as generally available with Winter ’26 and discusses conversational, personalized experiences. Its developer documentation says the new CSS framework separates structure from visual design using styling hooks. That product architecture is useful context; the marketing measurements below describe the public website. [Design article](https://www.salesforce.com/blog/experience-design-with-slds-2/) · [Developer comparison](https://developer.salesforce.com/docs/platform/lwc/guide/create-components-css-slds1-slds2.html).
 
-### Primary tasks
+#### Primary tasks
 
-- Get pricing and a demo before any call with sales
-- Watch named customer stories before reading the feature catalog
-- Read a plain-language definition of an unfamiliar platform term
-- Create a new record from a list view that is still empty
-- Re-theme a platform component instead of forking it
+The captured page offers trial and demo links, pricing information, product destinations, named customer videos, industry solutions, learning links, and FAQ controls. The official developer documentation additionally explains how to customize Salesforce components through styling hooks; no signed-in CRM workflow was inspected.
 
 ### Brand Narrative
 
-Salesforce was founded in **1999** by **Marc Benioff** with co-founders Parker Harris, Dave Moellenhoff, and Frank Dominguez, on a premise the company still recites verbatim: bringing CRM software to the cloud and pioneering Software-as-a-Service — "Since 1999, we've been focused on helping companies connect with customers in new and better ways" (salesforce.com/company, live). The founding rejection was packaged software itself; the early "No Software" logo made the enemy explicit. The same page timelines the arc since: the AppExchange marketplace (2005), the Trailblazer Community (2006), #1 CRM market share by IDC (2012), the Slack acquisition (2021), Data 360 (2022), and Agentforce (2024) — culminating in the current re-founding around the "Agentic Enterprise," where "humans and agents drive customer success together."
+Salesforce's history page identifies Marc Benioff, Parker Harris, Frank Dominguez, and Dave Moellenhoff as the people building its first CRM in March 1999. It records the February 2000 launch around an anti-packaged-software message. The company story describes the subsequent cloud CRM platform, the 2006 community, Slack's 2021 acquisition, Data 360's 2022 launch under earlier names, Agentforce's 2024 launch, and the Agentic Enterprise framing in 2025. The detailed history names AppExchange for 2005; the current story retroactively calls that milestone AgentExchange. [History](https://www.salesforce.com/news/stories/the-history-of-salesforce/) · [Company story](https://www.salesforce.com/company/our-story/).
 
-Two structural choices distinguish the brand from its enterprise peers. First, values are product surface: Trust, Customer Success, Innovation, Equality, and Sustainability are published as a ranked list with Trust explicitly "#1," and the company's stated self-image — "We believe business is the greatest platform for change" — extends into the 1-1-1 model its founders launched (1% of equity, technology, and employee time to communities), which grew into the 18,000-company Pledge 1% movement. Second, community is identity: customers, partners, and employees share one name, Trailblazers, and the design system's mascots and learning platform (Trailhead) institutionalize that warmth inside an otherwise serious enterprise visual language.
+The company story credits IDC with first ranking Salesforce number one in CRM market share in 2012. It publishes five values: Trust, Customer Success, Innovation, Equality, and Sustainability, with Trust explicitly first. Its mission connects helping one another do their best with customer success and industry influence, and its business philosophy presents companies as a platform for social change. It includes employees, customers, and partners in its Trailblazer community and describes its 1-1-1 commitment as 1% each of equity, technology, and employee time. That section reports more than 18,000 companies joining Pledge 1%; its FAQ gives a higher lower bound, more than 20,000. Both are published participation thresholds rather than an exact count.
 
-The design system carries both threads. The single trustworthy blue, analyst-footnoted superlatives, and conservative 4px CTAs express Trust; the Avant Garde keynote type, glass tiles, and agent-era vocabulary express the perpetual reinvention. SLDS 2's own tagline — "Bring your brand to life" — signals the newest turn: a token architecture (global styling hooks) built so that thousands of customer brands, and now AI agents, can restyle the platform without breaking it.
+The marketing capture places that broad platform story into a concrete sequence of agentic presentation, product destinations, customer proof, industry choices, and learning. The design team's separate SLDS 2 writing concerns a customizable Lightning-platform system. Neither source establishes that a particular CTA radius, font, or blue shade was chosen to express a corporate value.
 
 ### Principles
 
-1. **Trust is the #1 value — and a visual spec.** The company literally ranks Trust first among its values. *UI implication:* conservative geometry (4px CTAs), navy-on-white legibility, analyst citations beside every superlative, and zero dark patterns around pricing and trials.
-2. **Customer success outranks product features.** The stated mission is "to bring out the best in one another, deliver success to our customers." *UI implication:* proof surfaces (logo walls, video testimonials, outcome stats) get first-class layout treatment — the carousel of customer stories sits higher than the feature catalog.
-3. **One platform, many brands.** SLDS 2 exists so customers can "bring your brand to life" on Salesforce rails. *UI implication:* build on tokens, not hard-coded values; every color/radius/shadow should resolve to a styling hook so theming never forks components.
-4. **Define the category, then define the words.** From SaaS to Agentic Enterprise, Salesforce names eras and immediately explains them in plain language. *UI implication:* every new term on a page gets a "Simply put…" definitional block; vocabulary never floats unexplained.
-5. **Keynote moments, catalog discipline.** The brand alternates theatrical announcement surfaces with dense, scannable product grids. *UI implication:* let heroes and dark bands be dramatic (70px Avant Garde, glass tiles), but keep cards compact, uniform, and CTA-terminated.
+The following implementation guidance is derived from the evidence, rather than presented as Salesforce's internal design principles:
+
+1. **Pair the platform story with destinations.** The captured presentation leads into five named product tiles and separate trial/demo actions.
+2. **Preserve typography roles.** The measured action labels use bold Salesforce Sans; display families and localized declarations are documented separately.
+3. **Keep component variants intact.** The hero rectangle, pill, underlined contact link, and product tile have distinct measured states.
+4. **Use styling hooks within their documented scope.** Salesforce's developer guide describes customization through CSS custom properties; it does not make the marketing and product surfaces interchangeable.
+5. **Make values and definitions explicit in copy.** Trust and community are published company themes; a causal connection to specific visual metrics has not been established.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Salesforce user segments (admins, sales leaders, developers, partners), not individual people.*
-
-**Dana Whitfield, 38, Atlanta.** Salesforce Admin at a 2,000-seat logistics company and a proud Trailhead Ranger. Lives in Setup and the Trailblazer Community; evaluates every release note by what it means for her flows. The brand's warmth toward admins — mascots, badges, community identity — is a real reason she's stayed in the ecosystem for a decade.
-
-**Priya Raghavan, 45, Chicago.** VP of Sales Operations evaluating the Agentforce pitch. Skeptical of AI hype, reassured by the IDC footnotes, the Trust-first values page, and named customer stories from companies her size. Wants the demo, the pricing calculator, and a security whitepaper before any call with sales.
-
-**Tomás Herrera, 29, Mexico City.** Platform developer at an SI partner building Lightning Web Components for clients. Works against SLDS 2 styling hooks daily and cares that `--slds-g-*` tokens let him re-theme a component without forking it. Reads the design-system changelog the way admins read release notes.
-
-**Grace Park, 33, Seoul.** Marketing director at a mid-market retailer on the localized Salesforce site. Experiences the brand through the Korean-localized keynote surface (Seol Sans display over the same blue system) and judges the platform by how coherent that localization feels.
+No persona research was verified; the prior named fictional biographies are excluded and individually logged in the report.
 
 ## Colors
 
-### Primary
-- **Salesforce Blue** (`#0176d3`): Primary CTA background, links, active states. Canonical SLDS 2 token `color-brand-base-50`. Verified identical on the live homepage CTA and in the official styling-hooks package.
-- **Navy** (`#032d60`): Heading color across marketing surfaces (H1/H2/H3) and SLDS `color-brand-base-20`. The brand's "serious" register.
-- **Hero Navy** (`#002c6e`): Slightly cooler navy observed on the homepage hero H1 — a marketing-grade deepening of the heading navy.
-- **Link Blue** (`#0b5cab`): Inline text links and hover-state blue; SLDS `color-brand-base-40`.
+### Measured actions and reading colors
 
-### Brand Blue Ramp (SLDS 2 `color-brand-base-*`)
-- **Brand Bright** (`#1b96ff`): `brand-base-60` — vivid accent blue for charts, highlights, focus accents.
-- **Sky** (`#00a1e0`): The classic Salesforce cloud cyan, surviving on eyebrow labels and brand moments.
-- The full official ramp runs `#001639` → `#03234d` → `#032d60` → `#014486` → `#0b5cab` → `#0176d3` → `#1b96ff` → `#57a3fd` → `#78b0fd` → `#aacbff` → `#d8e6fe` → `#eef4ff` → white.
+| Role | Value | Evidence and application |
+|---|---|---|
+| Current PBC primary | `#066afe` | Starter Suite pill link at rest; root `--sds-c-button-primary-color-background` and `--pbc-g-electric-blue-50` |
+| Current primary hover/press | `#022ac0` | Same pill's measured background; finance industry link's rest ink |
+| Hero primary | `#0176d3` | Rectangular hero trial link; also `--hgf-g-brand-default-color` |
+| Hero hover / inline links | `#0b5cab` | Hero primary hover and press; surveyed inline pricing link |
+| Navy | `#032d60` | Header contact link at rest; declared PBC display color |
+| Deep navy | `#002c6e` | Two rendered text-color occurrences in the census; their heading roles were not captured |
+| Foreground | `#181818` | Dominant paragraph ink: 23 paragraph occurrences; `--pbc-g-text-body-color` |
+| Other inherited ink | `#080707` | Slack anchor's own inherited color and finance link on mouse press; not the dominant paragraph color |
+| Canvas / on-primary | `#ffffff` | White backgrounds, visible Slack text, and primary-action labels |
+| Cloud tint | `#eaf5fe` | Ten rendered backgrounds; hero secondary hover and press |
+| Hairline | `#e5e5e5` | Rendered background and border census; neutral palette custom property |
+| Industry-link hover | `#002775` | Measured finance link hover ink |
+| Slack tile hover/press | `#7526e3` | Measured tile fill; `--hgf-g-purple-vibrant-40` also resolves to it |
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page canvas, cards, button text on blue.
-- **Ink** (`#080707`): Body text on marketing surfaces — near-black with a warm cast.
-- **Ink Soft** (`#181818`): Secondary near-black; SLDS `color-neutral-base-10` and the base of the official shadow ramp.
-- **Cloud Tint** (`#eaf5fe`): Light blue section bands and promo panels on the live site (marketing's own tint, near SLDS `brand-base-95`).
-- **Surface Grey** (`#f4f4f4`): Neutral alternating section background.
-- **Hairline** (`#e5e5e5`): Borders and dividers; SLDS `color-neutral-base-90`.
+The hero secondary's pressed border is `#001642`. Hero presses also expose a `#1b96ff` outline. Those are mouse-down observations, not keyboard-focus measurements.
 
-### Semantic (SLDS 2 ramps, `*-base-50` anchors)
-- **Error Red** (`#ea001e`): Destructive actions, error text/icons (`color-error-base-50`).
-- **Success Green** (`#2e844a`): Success states and confirmations (`color-success-base-50`).
-- **Warning Amber** (`#dd7a01`): Warnings and caution banners (`color-warning-base-60`, the ramp's usable mid-tone).
+### Available brand and semantic palettes
 
-### On-Color
-- **On Primary** (`#ffffff`): Text/icons on Salesforce Blue and navy surfaces.
+The live `--sds-g-color-palette-blue-*` properties expose twelve entries at levels 10, 15, 20, 30, 40, 50, 60, 65, 70, 80, 90, and 95: `#001639`, `#03234d`, `#032d60`, `#014486`, `#0b5cab`, `#0176d3`, `#1b96ff`, `#57a3fd`, `#78b0fd`, `#aacbff`, `#d8e6fe`, and `#eef4ff`. The previously cited Salesforce UX package distributes these values under `color-brand-base-*` and adds level 100, `#ffffff`, completing its 13-step ramp. This confirms palette availability, not exclusive use by every marketing action.
+
+The live stylesheet also exposes error `#ea001e` through `--sds-g-color-error-base-contrast-1`, success `#2e844a` through `--sds-g-color-success-base-contrast-1`, and orange `#dd7a01` through `--sds-g-color-palette-orange-60`. The versioned package names the corresponding anchors `color-error-base-50`, `color-success-base-50`, and `color-warning-base-60`. These values are available palette evidence; no validation, confirmation, or warning UI was exercised. The header also has a green action, so blue is not the only action color on this page.
+
+The package's neutral ramp includes `#181818`, `#2e2e2e`, `#444444`, `#747474`, `#c9c9c9`, `#e5e5e5`, `#f3f3f3`, and `#ffffff`. The current census separately confirms several of those neutrals. [Versioned Salesforce UX hooks](https://unpkg.com/@salesforce-ux/sds-styling-hooks@1.1.0-alpha.4/dist/hooks.raw.json).
 
 ## Typography
 
-### Font Family
-- **Display**: `ITC Avant Garde` (web-served as `AvantGardeForSalesforce`) — all marketing headlines H1–H3. Localized surfaces pair it with regional faces (e.g. `Seol Sans Heavy` for Korean display text).
-- **Body / UI**: `Salesforce Sans`, fallback Arial — body copy, nav, buttons, links.
-- **Product (SLDS 2)**: system-ui stack (`system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto…`) with `Consolas/Menlo` monospace — the app deliberately reads native, not branded.
+### Evidence classes
 
-### Hierarchy
+- **Official product use:** the opened Salesforce developer page establishes SLDS 2 and its styling-hook architecture, but does not identify the product's default typeface. The Help release-note page returned a CSS-error shell. No product-font assertion or product specimen is made from that page.
+- **Live-loaded on this marketing surface:** `document.fonts` reports Salesforce Sans 400 normal, 400 italic, and 700 normal; ITC Avant Garde 500 and 100 normal; Seol Sans Heavy 750 normal; Avant Garde for Salesforce 600 normal; and Salesforce Icons 700 normal. The icon face is not a reading font. The heading declaration names ITC Avant Garde; the body and button declarations name Salesforce Sans.
+- **Official distributed assets:** the census's readable `@font-face` rules point to WOFF2 and WOFF files under `https://a.sfdcstatic.com/shared/fonts/`. Salesforce Sans uses the `salesforce-sans/` directory; the display and regional faces use `avant-garde/`. The displayed family aliases ITC Avant Garde and Avant Garde for Salesforce both have readable rules referencing `AvantGardeForSalesforceW05-Dm`. This records the distribution and aliases, not a font license.
+- **Declared-only faces:** readable rules also name M XiangHe Hei SC Bold 700, M XiangHe Hei TC Bold 700, Tazugane Info Heavy 750, and Handset Sans Thai Bold 700. They are absent from the loaded-face list and receive no specimen. The live `--sds-g-font-family` declaration and the Salesforce UX package name a system-ui stack; the package also names a Consolas/Menlo/Monaco/Courier monospace stack. These are declarations and package metadata, without proof that these stacks supplied rendered glyphs on this homepage or a signed-in product surface.
+- **Unresolved:** the source rule for the loaded ITC Avant Garde 100 entry is not among the readable font-face rules. Exact glyph selection across the Korean and Latin text was not measured. The date when the brand adopted these fonts, font licensing, and the prior claim that Avant Garde never appears in CRM are unconfirmed. Substitute: none chosen.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | ITC Avant Garde | 70px | 400 | 1.00 (70px) | normal | Homepage hero H1 |
-| Display Large | ITC Avant Garde | 60px | 400 | 1.00 (60px) | normal | Dark-section statement H2 |
-| Display Medium | ITC Avant Garde | 56px | 400 | 1.14 (64px) | normal | Page H1 (pricing) |
-| Section Heading | ITC Avant Garde | 40px | 400 | 1.20 (48px) | -0.32px | Standard section H2 |
-| Sub-section | ITC Avant Garde | 24–25px | 400 | 1.33 (32px) | -0.06px | Product tile H3 |
-| Card Title | ITC Avant Garde | 20px | 400 | 1.40 (28px) | -0.08px | Industry/product cards |
-| Body Large | Salesforce Sans | 18px | 400 | 1.56 (28px) | -0.02px | Inline links, intro copy |
-| Body | Salesforce Sans | 16px | 400 | 1.50 (24px) | normal | Default reading text |
-| Button | Salesforce Sans | 16px | 700 | 1.50 (24px) | 0.02px | CTA labels |
-| Link Small | Salesforce Sans | 14px | 700 | 1.43 (20px) | -0.028px | Tertiary text CTAs |
+Two stylesheets were unreadable to the CSSOM census; the report lists them. Family tokens contain only faces that the loaded-face census actually names. No substitute or declared-only regional face is included in them.
 
-### Principles
-- **Weight 400 display, weight 700 action**: headlines never bold up — Avant Garde's geometry carries the presence — while every button label is emphatic 700.
-- **Type ramp is modular in product**: SLDS 2 publishes a 1rem base with a 1.125 ratio (`FONT_SIZE_1` 1.125rem → `FONT_SIZE_10` 3.247rem) so app typography scales deterministically.
-- **Three-font federation**: Avant Garde (brand voice), Salesforce Sans (marketing UI), system-ui (product UI). Each layer stays in its lane; Salesforce Sans never does hero duty, Avant Garde never appears inside the CRM.
-- **Tracking is gentle**: marketing headings tighten only slightly (-0.32px at 40px); buttons run a hair open (+0.02px). Nothing as aggressive as fashion-brand tracking.
+### Declared marketing scale
+
+These are `--pbc-g-text-display-N-*` root values, not measured H1–H3 instances. Their font weights are not inferred.
+
+| PBC display level | Size / line height | Tracking |
+|---|---|---|
+| 1 | 80px / 88px | -0.018em |
+| 2 | 56px / 64px | -0.012em |
+| 3 | 48px / 56px | -0.01em |
+| 4 | 40px / 48px | -0.008em, equivalent to -0.32px at 40px |
+| 5 | 32px / 40px | -0.004em |
+| 6 | 24px / 32px | -0.004em, equivalent to -0.096px at 24px |
+| 7 | 20px / 28px | -0.004em, equivalent to -0.08px at 20px |
+| 8 | 16px / 24px | -0.004em |
+
+Declared PBC body sizes are 20px, 18px, 16px, 14px, and 12px. Body and H1 family declarations are distinct, but this census did not capture a paragraph's size and line height. It does not re-establish the prior 16px/24px paragraph specification.
+
+### Measured labels
+
+Hero and pill actions use Salesforce Sans at 16px/700 with 24px line height. Hero tracking is normal; pill tracking is -0.032px. The finance industry link uses 14px/700, 20px line height, and -0.028px tracking. The header contact link uses 14px/400 and 20px line height, in an 18px-high inline box. The surveyed inline pricing link uses Salesforce Sans 18px/400 with a 28px line height. The Slack tile's visible heading is 24px/100 in the computed snapshot; its anchor has 16px/400 with a 24px line height. These roles must not be collapsed into a universal display weight of 400.
+
+### Versioned product-foundation metadata
+
+The previously cited `@salesforce-ux/sds-styling-hooks@1.1.0-alpha.4` still distributes a 1rem font-size base and a scale from 1.125rem to 3.247rem, with intermediate values 1.266, 1.424, 1.602, 1.802, 2.027, 2.281, 2.566, and 2.887rem. Its line-height choices include 1, 1.25, 1.375, 1.5, 1.75, and 2. This is a named, older package version; it is not asserted to be the current SLDS 2 release. [Versioned hooks](https://unpkg.com/@salesforce-ux/sds-styling-hooks@1.1.0-alpha.4/dist/hooks.raw.json) · [Package metadata](https://unpkg.com/@salesforce-ux/sds-styling-hooks@1.1.0-alpha.4/package.json).
 
 ## Layout
 
-### Spacing System
-- Base unit: 4px (SLDS 2 `spacing-1` = 0.25rem)
-- Scale: 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80 (SLDS `spacing-1` → `spacing-12`)
-- Marketing CTAs carry 12px 32px padding; hero CTAs expand to 20px 32px
+The desktop capture is 1440×1000. The hero trial/demo pair sits at x=836px and x=1045px, y=266px, leaving a 15.8px measured gap between their boxes. The product-tile row starts at x=73px and y=848px; its five 240px-wide tiles begin at x=73, 333, 593, 853, and 1113px, giving 20px horizontal gaps. Those are page-instance measurements, not a general grid contract.
 
-### Grid & Container
-- Wide centered container with generous side margins; enterprise pages run long and rely on section banding for rhythm
-- Hero: full-bleed, headline + paired CTA buttons, followed by a dark immersive "Agentic Enterprise" band with the four glass product tiles in a row
-- Feature sections: 3–4 column card grids (industries, products, roles)
-- Customer proof: horizontally scrolling carousel of 22px-radius video cards with circular controls
+The full-page capture shows the blue presentation and customer-video carousel before two alternating text/media sections, a platform illustration, a four-column industry-card layout, report cards, learning cards, events, a trial invitation, FAQs, and the footer. White reading sections and pale blue bands separate these areas. This preserves the prior distinction between large presentation areas and denser product browsing, without assigning an unmeasured container maximum.
 
-### Whitespace Philosophy
-- **Banded, not empty**: Salesforce paces very long pages by alternating white / `#eaf5fe` cloud tint / `#f4f4f4` grey full-width bands rather than relying on raw whitespace.
-- **Density at the card level**: individual cards are compact (20px titles, 14px text CTAs) because a single page may present eight industries and a dozen products.
-- **Keynote moments breathe**: the dark hero and statement H2 sections get dramatic vertical padding — the page alternates between presentation mode and catalog mode.
+The live root spacing scale `--sds-g-spacing-1…12` is 0.25rem, 0.5rem, 0.75rem, 1rem, 1.5rem, 2rem, 2.5rem, 3rem, 3.5rem, 4rem, 4.5rem, and 5rem. The complete rem scale is retained without assuming a measured root-font conversion. Numeric spacing entries use measured CTA padding and explicitly pixel-valued declarations: 8px, 12px, 16px, 24px, 32px, 48px, 64px, and 80px. The 12px value is declared button padding rather than the measured hero padding; 80px is a component-scoped `--space80` declaration. The same component-scoped family also declares 40px, 56px, and 72px. PBC declares a 1280px container maximum; this is not a measured page-wide maximum.
 
-### Border Radius Scale
-- Tight (4px): buttons, text-CTA focus rings — the enterprise workhorse
-- Standard (8px): SLDS `radius-border-3` product containers
-- Relaxed (16px): SLDS `radius-border-4`, larger marketing panels
-- Soft (22px): media/testimonial cards
-- Plush (32px): glass product tiles on dark heroes
-- Circle (9999px / 100%): carousel controls, avatars
+Observed radii are 0px for the contact link, 4px for the hero primary and finance text link, 6px for the hero secondary, 22px for video controls, 32px for product tiles, and 9999px for pills and carousel buttons. `--pbc--border-radius-16` declares 16px. The global hooks additionally expose 0.125rem, 0.25rem, 0.5rem, 1rem, and 100% radius options. Percent circles remain prose rather than numeric radius tokens.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column; hero drops to ~40px display; CTA pair stacks full-width |
-| Tablet | 768–1024px | 2-column card grids; carousel shows fewer cards |
-| Desktop | 1024–1440px | Full 3–4 column grids, mega-menu nav |
-| Wide | >1440px | Centered container, banding runs full-bleed |
-
-#### Touch Targets
-- CTAs render at 52px height — comfortably above the 44px floor
-- Carousel controls are 48px circles
-- Card-level text CTAs gain padding on touch layouts
-
-#### Collapsing Strategy
-- Hero: 70px → ~40px Avant Garde, weight 400 maintained; paired CTAs stack vertically
-- Glass product tiles: 4-up row → 2×2 grid → vertical stack, radius preserved
-- Industry/product grids: 4 → 2 → 1 columns
-- Global nav: mega-menu → hamburger with full-screen sheet
-- Section bands keep full-width color treatment at every size
-
-#### Image Behavior
-- Video testimonial cards keep 22px radius at all sizes
-- Dark hero artwork crops horizontally, tiles stay legible
-- Product screenshots sit in 8–16px radius containers per SLDS scale
+Only desktop was captured. Breakpoints, mobile stacking, hamburger behavior, touch-specific padding, image crops, and reduced-motion layouts were not measured. The declared PBC container-padding values are 64px and a separately named mobile value of 48px; their minimum-spacing counterparts are 24px and 16px. These names do not establish the viewport widths at which they apply.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow; borders and band color changes | Marketing sections, cards, nav |
-| Shadow 1 | `0 0 2px 0 #18181814, 0 2px 4px 1px #18181828` | Subtle raise — buttons, small popovers (SLDS) |
-| Shadow 2 | `0 2px 8px -2px #18181814, 0 8px 12px -2px #18181828` | Cards, dropdown menus (SLDS) |
-| Shadow 3 | `0 12px 24px -4px #18181814, 0 16px 32px -4px #18181828` | Panels, docked composer (SLDS) |
-| Shadow 4 | `0 24px 48px -4px #18181833` | Modals, spotlight surfaces (SLDS) |
+All six measured anchors have `box-shadow: none` at rest, hover, and mouse press. The Slack tile uses translucent fill and border rather than a box shadow. This is a statement about these controls; it is not a prohibition on shadows across the marketing site.
 
-**Shadow Philosophy**: The marketing site is conspicuously shadow-shy — live inspection found `box-shadow: none` across hero CTAs, cards, and nav; separation comes from band color, hairlines, and the translucent borders of glass tiles. Real elevation lives in the product: SLDS 2 defines a strict four-level ladder where every layer is an alpha tint of neutral `#181818` (8–20% opacity), paired in two-layer ambient + key combinations. The effect is precise, neutral, and document-like — no colored shadows, no decorative glow. Depth in Salesforce-land is information hierarchy, not atmosphere; the one atmospheric exception is the dark hero, which uses translucency (`rgba(255,255,255,0.05)` fills, `rgba(255,255,255,0.1)` borders) instead of shadow to float its product tiles.
+The live root exposes these current values:
+
+| Hook | Raw computed value |
+|---|---|
+| `--sds-g-shadow-1` | `0 0 2px 0 #18181808, 0 2px 4px 1px #18181816` |
+| `--sds-g-shadow-2` | `0 2px 8px -2px #18181808, 0 8px 12px -2px #18181816` |
+| `--sds-g-shadow-3` | `0 12px 24px -4px #18181808, 0 16px 32px -4px #18181816` |
+| `--sds-g-shadow-4` | `0 24px 48px -2px #18181820` |
+
+The versioned Salesforce UX package retains a different four-level scale. Levels 1–3 respectively use `0 0 2px 0 #18181814, 0 2px 4px 1px #18181828`; `0 2px 8px -2px #18181814, 0 8px 12px -2px #18181828`; and `0 12px 24px -4px #18181814, 0 16px 32px -4px #18181828`. Its level 4 is `0 24px 48px -4px #18181833`. These older distributed values remain useful versioned context; the machine tokens use the current homepage hooks. No modal, popover, or composer usage is inferred from either scale.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.level-1`: `0 0 2px 0 #18181814, 0 2px 4px 1px #18181828`
-- `shadow.level-2`: `0 2px 8px -2px #18181814, 0 8px 12px -2px #18181828`
-- `shadow.level-3`: `0 12px 24px -4px #18181814, 0 16px 32px -4px #18181828`
-- `shadow.level-4`: `0 24px 48px -4px #18181833`
+- `shadow.level-1`: `0 0 2px 0 #18181808, 0 2px 4px 1px #18181816`
+- `shadow.level-2`: `0 2px 8px -2px #18181808, 0 8px 12px -2px #18181816`
+- `shadow.level-3`: `0 12px 24px -4px #18181808, 0 16px 32px -4px #18181816`
+- `shadow.level-4`: `0 24px 48px -2px #18181820`
 
 ## Motion & Easing
 
-**Durations**:
+The hero pair's raw computed transition ends in `0.3s cubic-bezier(0.2, 1, 0.25, 1) 0s`; its property list includes color, background color, border color, text-decoration color, fill, stroke, opacity, box shadow, transform, filter, and backdrop filter. The Slack tile reports `border-color, transform, background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s`. The pill and finance link report `color 0.1s linear 0s`. The contact link reports `all 0s ease 0s`. Full strings are copied verbatim into the verification Proof block.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection ticks, focus rings, tab switches |
-| `motion-fast` | 100–150ms | Hover/press feedback, menu open |
-| `motion-standard` | 200–250ms | Modals, panels, toasts, accordion |
-| `motion-slow` | 300–400ms | Page-level transitions, marketing reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Surfaces arriving (modals, panels, toasts) |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way state changes |
-
-**Motion rules**: Motion is utilitarian in product and presentational only on marketing surfaces. In-app, SLDS-style motion is brief and spatially literal — panels slide from the edge they belong to, toasts drop from the top, nothing bounces; a CRM screen is a workplace, and spring physics would read as toy-like. On marketing pages, the carousel auto-advances with an explicit pause control (a live accessibility affordance observed on the homepage), and scroll reveals are gentle fades at `motion-slow`. Under `prefers-reduced-motion: reduce`, carousels stop auto-playing and transitions collapse to instant — consistent with accessibility being part of the Trust value. *(Token names and curves are illustrative consolidations; SLDS motion guidance is the product source of truth.)*
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-11) via playwright getComputedStyle:
-- https://www.salesforce.com/ (geo-served /kr/) — hero H1 70px ITC Avant Garde #002c6e;
-  primary CTA #0176d3 / 4px / 12-20px 32px / 16px 700; outline secondary; glass tiles
-  rgba(255,255,255,0.05) bg / 32px radius; carousel controls 9999px; section bands
-  #eaf5fe / #f4f4f4; body Salesforce Sans 16/24 #080707; headings #032d60.
-- https://www.salesforce.com/pricing/ — EN surface, same button/heading system
-  (H1 56px Avant Garde #032d60, CTAs "Calculate pricing"/"Start for free").
-- https://www.lightningdesignsystem.com/ — SLDS 2 confirmed (title "Lightning Design
-  System 2", "Summer '26 2.8.2", H1 font AvantGardeForSalesforce, copy "Bring your
-  brand to life", "Pro-code control, no-code design", CSS-custom-property architecture).
-- @salesforce-ux/sds-styling-hooks 1.1.0-alpha.4 hooks.raw.json (unpkg) — official
-  token values: color-brand-base ramp (#001639…#eef4ff, base-50 #0176d3), neutral ramp,
-  error/success/warning ramps, radius 2/4/8/16/circle, 4px spacing grid, shadow-1..4,
-  system-ui font stack, FONT_SIZE ratio 1.125.
-
-Voice samples (§10) are verbatim from the live company page and SLDS cover fetched
-2026-06-11: "Welcome to the Agentic Enterprise.", "Salesforce. The #1 Agentic CRM.",
-"Trust is our #1 value…", "We are Trailblazers.", "Bring your brand to life."
-
-Brand narrative (§11): founding year 1999 and SaaS-pioneer framing, values list
-(Trust/Customer Success/Innovation/Equality/Sustainability), mission sentence,
-1-1-1 model and Pledge 1% (18,000+ companies), timeline (AppExchange 2005,
-Trailblazer Community 2006, IDC #1 2012, Slack 2021, Data 360 2022, Agentforce 2024)
-are all quoted/paraphrased from https://www.salesforce.com/company/ as rendered live
-2026-06-11. Co-founder names (Parker Harris, Dave Moellenhoff, Frank Dominguez) and
-the early "No Software" logo are widely documented public facts, not from that page.
-
-Personas (§13) are fictional archetypes informed by publicly observable Salesforce
-user segments (admins, ops leaders, partner developers, localized-market users).
-Names are illustrative; they do not refer to real people.
-
-§14 States and §15 Motion are editorial consolidations of observed marketing behavior
-(carousel pause control, banner patterns) and SLDS conventions (stencils, toasts);
-where not directly measured they are marked illustrative.
-
-Interpretive claims (e.g., "Trust as a visual spec", "keynote moments, catalog
-discipline", the three-font federation reading) are editorial readings connecting
-Salesforce's stated values to its observed design system, not Salesforce statements.
--->
+These declarations accompany the settled pointer samples; the pill's reported color-only transition does not establish an animated background-color transition. Menu, modal, toast, page-reveal, carousel timing, and reduced-motion behavior were not measured. No duration or easing tokens are invented for them.
 
 ## Components
 
-### Buttons
+All six measured controls are links. Product controls were sampled by actual hover and mouse-down, with the consent overlay temporarily hidden for those pointer passes. Pressed here means mouse-down with pointer focus; keyboard focus is unmeasured. The card's visible white text is reported separately from its anchor's inherited near-black color.
 
-**Primary**
-- Background: `#0176d3`
-- Text: `#ffffff`
-- Border: 2px solid `#0176d3`
-- Radius: 4px
-- Padding: 12px 32px
-- Font: 16px / 700 / Salesforce Sans
-- Use: Primary CTA — "Start for free", "Calculate pricing", "자세히 알아보기"
+| Control | Rest identity | Hover | Mouse press |
+|---|---|---|---|
+| Hero trial, “무료로 시작하기” | 193.2×52px; 4px radius; 8px 32px padding; 16px/700; `#0176d3` / `#ffffff`; 1px transparent border | Fill `#0b5cab` | Same fill; 2px white border; 4px solid `#1b96ff` outline, offset 0px; width 195.2px |
+| Hero demo, “데모 보기” | 151.7×52px; 6px radius; 8px 32px padding; 16px/700; `#ffffff` / `#0176d3`; 1px blue border | Fill `#eaf5fe` | Same fill; 2px `#001642` border; same hero outline; width 153.7px |
+| Header contact, “문의하기” | 48.5×18px; radius 0; padding 0; 14px/400; transparent on white; `#032d60`; underlined | Ink and underline color become `#0176d3` | Same as hover |
+| Slack product tile | 240×176.4px; 32px radius; 19.2px padding; fill `rgba(255, 255, 255, 0.05)`; 2px `rgba(255, 255, 255, 0.1)` border; visible white heading 24px/100 | Fill `#7526e3` | Same fill; border white; 5px solid white outline, offset 0px |
+| Starter Suite trial pill, “무료로 시작하기” | 188.9×52px; 9999px radius; 14px 32px padding; 16px/700; `#066afe` / `#ffffff`; border none | Fill `#022ac0` | Same fill; 3px solid `#066afe` outline, offset 2px |
+| Finance industry, “자세히 알아보기” | 92.3×24px; 4px radius; padding 0; 14px/700; transparent on white; `#022ac0`; 2px transparent border and underline | Ink `#002775`; underline removed | Ink and border `#080707`; radius 9999px; 3px solid `#066afe` outline, offset 2px; underline absent |
 
-**Secondary (Outline)**
-- Background: `#ffffff`
-- Text: `#0176d3`
-- Border: 2px solid `#0176d3`
-- Radius: 4px
-- Padding: 12px 32px
-- Font: 16px / 700 / Salesforce Sans
-- Use: Paired secondary CTA next to every primary — "Watch demo", "Start for free" (pricing)
+The pill includes a decorative `::after` gradient/mask layer. Its measured hover delta is the background color; the probe reported no changed pseudo-element property. No transparency is normalized to a black component background.
 
-The hero instance of the pair renders at 20px 32px padding (52px total height) with the secondary at 6px radius and a 1px border; lower sections settle on the canonical 12px 32px / 4px / 2px-border spec above. Both variants hold a 52px rendered height.
+### Surveyed geometry without component-state tokens
 
-**Tertiary (Text CTA)**
-- Text: `#032d60`
-- Radius: 4px
-- Font: 14px / 700 / Salesforce Sans
-- Use: "Learn more" links on industry and product cards — no background, navy label with arrow
+The video-testimonial controls have a 22px radius, 442px width, 286.6px height, inherited `#080707` ink, and Salesforce Sans 16px/400 in this survey. Their accessible labels identify POSCO, MUSINSA, Toss, and Pandora. The carousel's previous, pause, and next buttons are 48×48px, have a 9999px radius, white text, a 2px white border, and transparent fills; their font declaration is Salesforce Sans 16px/400. Their states were not sampled, so they remain geometry references rather than interactive component tokens. The survey exposes “Pause carousel”; it does not establish reduced-motion behavior.
 
-**Carousel Control**
-- Background: transparent
-- Text: `#ffffff`
-- Border: 2px solid `#ffffff`
-- Radius: 9999px
-- Font: 16px / 400
-- Use: Circular 48px prev / next / pause controls on the customer-story carousel
-
-### Cards & Containers
-
-**Glass Product Tile**
-- Background: `rgba(255,255,255,0.05)`
-- Text: `#ffffff`
-- Border: 2px solid `rgba(255,255,255,0.1)`
-- Radius: 32px
-- Padding: 19px
-- Font: 16px / 700 / Salesforce Sans
-- Use: The four-product story tiles (Slack, Agentforce, Customer 360, Data 360) floating on the dark "Agentic Enterprise" hero
-
-**Media / Testimonial Card**
-- Text: `#080707`
-- Radius: 22px
-- Use: Customer-story video cards (PepsiCo, FedEx, OpenTable…) in the carousel
-
-**Tinted Section Panel**
-- Background: `#eaf5fe`
-- Text: `#032d60`
-- Use: Light cloud-blue band for pricing promos and product sections; alternates with white and `#f4f4f4` grey bands
-
-### Navigation
-- Background: `#ffffff`
-- Links: 16px Salesforce Sans, `#080707` text
-- Active/hover: `#0176d3`
-- CTA: primary blue button right-aligned
-- Use: Global marketing nav; mega-menu panels on white
-
-### SLDS 2 Product Foundations (official styling hooks)
-- Radius scale: 2px / 4px / 8px / 16px / circle (`radius-border-1…4`, `radius-border-circle`)
-- Spacing scale: 4px-based, `spacing-1` 0.25rem → `spacing-12` 5rem
-- Shadows: four layered levels built on `#181818` alpha (see §6)
-- Semantic color ramps: 10-step error / success / warning ladders anchored at `#ea001e` / `#2e844a` / `#dd7a01`
-- All exposed as CSS custom properties (`--slds-g-*` global styling hooks) — SLDS 2's defining architecture
-
----
-**Verified:** 2026-06-11
-**Tier 1 sources:** https://www.salesforce.com/ (live DOM, geo-served /kr/ surface); https://www.salesforce.com/pricing/ (live DOM, EN); https://www.salesforce.com/company/ (live, values/mission); https://www.lightningdesignsystem.com/ (SLDS 2 docs, live); @salesforce-ux/sds-styling-hooks 1.1.0-alpha.4 hooks.raw.json via https://unpkg.com (official SLDS 2 token source)
-**Tier 2 sources:** none available (getdesign.md/salesforce — "No designs found"; styles.refero.design ?q=salesforce search — no Salesforce style page listed)
-**Conflicts unresolved:** none
+The top-level navigation buttons declare Salesforce Sans 16px/700 and navy `#032d60`, with 36px-high boxes. The right-hand header action is a 44px-high green `#2e844a` pill with white ink. These controls were surveyed without a state pass; the measured header contact link in the table is a separate control. No search input appears in the survey.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no records in a list view)** | White surface, one navy (`#032d60`) sentence stating the view is empty, one primary `#0176d3` action ("New"). Product empty states may add a small Trailhead-style illustration — warmth is allowed inside the app. |
-| **Empty (dashboard, no data yet)** | Plain-language explanation of what will appear plus a setup CTA; never a bare "No data". |
-| **Loading (record/page)** | Stencil skeletons at final layout dimensions in `#e5e5e5` on white — SLDS's stencil pattern — with the blue spinner reserved for in-place refreshes. |
-| **Loading (long operation)** | Determinate progress where possible; copy states what is being processed. |
-| **Error (form validation)** | Field-level: `#ea001e` border and 14px error text below the field naming the exact rule violated; errors also summarized at top of form for accessibility. |
-| **Error (system/API)** | Inline banner on `#feded8`-tinted surface with `#ea001e` icon, plain-language cause, and a retry or "contact admin" path. Trust value forbids vague blame-the-user copy. |
-| **Success (record saved)** | Green toast (`#2e844a` accent) top-center, past tense ("Account saved"), auto-dismiss; the record itself reflects the new state immediately. |
-| **Success (flow completed)** | Inline confirmation with next-step links rather than celebration; enterprise users are mid-task. |
-| **Skeleton** | `#e5e5e5` stencil blocks at final dimensions, subtle pulse, no shimmer gradients. |
-| **Disabled** | Reduced-contrast neutral (`#c9c9c9`-range) fill and label together; disabled primaries never stay brand-blue, preserving the rule that `#0176d3` always means actionable. |
-| **Warning (limits, expiring trial)** | Amber (`#dd7a01`) banner with concrete numbers and a resolving CTA — never countdown-pressure styling. |
+Hover and mouse-press results are the six control observations in §4. Every hover snapshot has `hover: true`; every press has `active: true` and pointer focus. Color changes, border changes, outline geometry, text decoration, and the finance link's radius change are recorded there. Keyboard focus is UNMEASURED: the actual Tab walk cycles through the consent banner's privacy link, settings link, and accept button. No focus component field is declared.
+
+CSS declares disabled button background/border `#c9c9c9` and text `#ffffff`, but no disabled control was measured. Empty lists, empty dashboards, skeletons, validation errors, API errors, toasts, completed flows, warnings, and long-operation feedback were not observed. No such component-state patterns are supplied from those declarations.
 
 ## Do's and Don'ts
 
-### Do
-- Use `#0176d3` as the single action blue — it is both the live CTA color and the official `color-brand-base-50` token
-- Set headings in ITC Avant Garde at weight 400; let the geometry, not boldness, carry presence
-- Use `#032d60` navy for headings and pair every primary CTA with a white outline secondary
-- Keep CTA geometry conservative: 4px radius, 2px border, 12px 32px padding, 16px/700 label
-- Alternate white / `#eaf5fe` / `#f4f4f4` section bands to pace long pages
-- Pull semantic colors from the SLDS ramps (`#ea001e` error, `#2e844a` success, `#dd7a01` warning)
-- Use the SLDS radius scale (2/4/8/16/circle) and `#181818`-alpha layered shadows inside product UI
-- Reserve soft 22–32px radii for storytelling cards and glass tiles, not for controls
-
-### Don't
-- Introduce a second action color — blue owns every interactive affordance
-- Bold the display face — Avant Garde runs at 400; bolding it breaks the keynote voice
-- Use pure black for headings or body (`#032d60` navy and `#080707` ink are the system's darks)
-- Add drop shadows to marketing cards — separation is banding, hairlines, and translucent borders
-- Use Salesforce Sans for hero headlines or Avant Garde inside product UI — the font federation is strict
-- Round CTAs into pills — 4px is the contract; pills belong to carousel controls only
-- Tint shadows with brand color — SLDS shadows are neutral `#181818` alphas by design
-- Hand-pick off-ramp blues — use the 13-step `color-brand-base` ladder
+- Keep the hero's rectangular CTA pair distinct from the later PBC pill actions; use their measured colors, borders, padding, and radii together.
+- Use Salesforce Sans 700 for the measured action labels. Preserve the separate loaded display families and the Korean display declaration rather than substituting a different font.
+- Use `#181818` for the dominant paragraph-ink reference. Keep `#080707` where that value was actually measured.
+- Preserve the dark product tile's translucent rest treatment, white visible text, and measured purple hover.
+- Use the named palette and spacing declarations as available values, while distinguishing declarations from rendered component geometry.
+- Do not apply the former “one blue for every interactive affordance” or “4px for every CTA” rules: both contradict this page.
+- Do not turn a pointer-press outline into a keyboard-focus specification, or infer empty, error, loading, and success patterns from palette availability.
+- Keep product styling-hook guidance separate from website component measurements. Salesforce's developer documentation recommends global styling hooks and explicitly distinguishes their support from component hooks.
 
 ## Voice & Tone
 
-Salesforce speaks in **confident, evangelical, customer-success-first** corporate keynote voice. It is the register of a company that invented a category and never stopped announcing it: declarative superlatives backed by analyst citations ("The #1 Agentic CRM" footnoted to IDC), mission vocabulary ("Trailblazers", "Agentic Enterprise"), and an unusual willingness to lead with values (Trust before product). Where developer brands whisper, Salesforce projects — but the projection is disciplined: claims get sources, jargon gets a plain-language definition ("Simply put, an agentic enterprise is…"), and every story ends in a customer outcome, not a feature.
+The opened company page uses the identity line “Salesforce. The #1 AI CRM.” and calls its community “Trailblazers.” Its explanatory copy defines the Agentic Enterprise before presenting the platform. Values copy explicitly ranks trust first. A source credit accompanies the company page's CRM market-share claim; that does not prove every superlative across the site has an analyst footnote. [Company story](https://www.salesforce.com/company/our-story/).
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Big declarative claims, present tense. "Welcome to the Agentic Enterprise." |
-| Category claims | Superlative + citation. "#1 Agentic CRM" footnoted to IDC market-share data. |
-| Concept explainers | Patient, definitional. "Simply put, an agentic enterprise is a business where humans and AI agents work together…" |
-| CTAs | Imperative, momentum-flavored: "Start for free", "Calculate pricing", "Take the Pledge". |
-| Values copy | Earnest and first-person-plural. "Trust is our #1 value." |
-| Customer stories | Outcome-led, named logos (PepsiCo, FedEx), executive quotes. |
-| Community | Warm, identity-building. "We are Trailblazers." |
-
-**Voice samples (verbatim, live 2026-06-11):**
-- "Welcome to the Agentic Enterprise." — homepage H2 / company page hero
-- "Salesforce. The #1 Agentic CRM." — salesforce.com/company hero
-- "Trust is our #1 value. We build trust by leading with ethics and through the integrity of our technology." — salesforce.com/company values
-- "We are Trailblazers." — salesforce.com/company
-- "Bring your brand to life." — lightningdesignsystem.com (SLDS 2 cover)
-
-**Forbidden register**: unsourced superlatives (every "#1" carries its analyst footnote), cynicism or irony about customer success, developer-snark, and anything that undercuts the Trust value — security and ethics copy is never playful.
+For a reference implementation, use the observed combination of short action labels, definitions for platform terminology, named customer examples, and explicit values copy. These are readings of the opened page's writing patterns, not a verified internal voice manual. No official list of forbidden tones was found.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / link: Salesforce Blue (`#0176d3`)
-- Inline link / hover: Link Blue (`#0b5cab`)
-- Headings: Navy (`#032d60`), hero variant (`#002c6e`)
-- Body text: Ink (`#080707`)
-- Background: White (`#ffffff`), Cloud Tint (`#eaf5fe`), Surface Grey (`#f4f4f4`)
-- Accent: Brand Bright (`#1b96ff`), Sky (`#00a1e0`)
-- Border: Hairline (`#e5e5e5`)
-- Semantic: Error (`#ea001e`), Success (`#2e844a`), Warning (`#dd7a01`)
+### Quick color reference
 
-### Example Component Prompts
-- "Create a hero: white background, H1 at 70px ITC Avant Garde weight 400, line-height 1.0, color #002c6e. Sub-copy 16px Salesforce Sans #080707. Two buttons: primary #0176d3 bg, white 16px/700 label, 4px radius, 12px 32px padding; secondary white bg, #0176d3 text, 2px solid #0176d3 border, same geometry."
-- "Design a dark 'Agentic Enterprise' band: deep navy-to-blue gradient, H2 60px ITC Avant Garde white. Four glass tiles: rgba(255,255,255,0.05) background, 2px solid rgba(255,255,255,0.1) border, 32px radius, white 24px Avant Garde titles and 16px/700 Salesforce Sans descriptions."
-- "Build an industry card grid: white cards on #f4f4f4 band, 20px ITC Avant Garde titles in #032d60, 16px Salesforce Sans body #080707, and a 14px/700 'Learn more' text CTA in #032d60 with arrow."
-- "Create a pricing promo panel: #eaf5fe background, #032d60 heading 40px Avant Garde with -0.32px tracking, body 16px Salesforce Sans, primary #0176d3 CTA 'Calculate pricing' and white outline secondary 'Start for free'."
-- "Design a product-UI modal per SLDS 2: white surface, 8px radius, shadow 0 24px 48px -4px #18181833, system-ui typography, primary action #0176d3, destructive action #ea001e."
+Current pill: `#066afe` → `#022ac0`. Hero action: `#0176d3` → `#0b5cab`. Contact: `#032d60` → `#0176d3`. Industry link: `#022ac0` → `#002775`. Reading ink: `#181818`. White: `#ffffff`. Cloud tint: `#eaf5fe`. Slack hover: `#7526e3`.
 
-### Iteration Guide
-1. `#0176d3` is the only interactive color — every button, link, and active state
-2. Display = ITC Avant Garde 400; UI = Salesforce Sans (700 on buttons); product = system-ui
-3. CTAs: 4px radius, 2px border, 12px 32px padding, always shipped as primary + outline pair
-4. Pace long pages with white / `#eaf5fe` / `#f4f4f4` bands instead of shadows
-5. Storytelling surfaces may go soft (22–32px radius, glass translucency); controls never do
-6. Pull any extra blues from the official ramp (`#1b96ff`, `#0b5cab`, `#032d60`), never invent
-7. Product UI obeys SLDS 2 hooks: 2/4/8/16 radius, 4px spacing grid, `#181818`-alpha shadows
+### Component prompts grounded in the capture
 
----
+- “Build a 52px-high Salesforce hero link with a 4px radius, 8px 32px padding, Salesforce Sans 16px/700, a `#0176d3` fill, white label, and a 1px transparent border. Hover changes the fill to `#0b5cab`. Pair it with the measured white demo link, whose radius is 6px and border is 1px blue.”
+- “Build the captured Starter Suite trial link as a 52px-high pill, 14px 32px padding, Salesforce Sans 16px/700, `#066afe` fill and white text. Hover darkens it to `#022ac0`. Do not supply an unmeasured keyboard-focus state.”
+- “Build the Slack product-tile link at 240×176.4px, 32px radius, 19.2px padding, a 5% white fill and a 10% white 2px border on the dark presentation. Keep the visible title and description white. Hover changes its fill to `#7526e3`.”
+
+Match the intended region and control before reusing a value: the same trial wording identifies two differently styled links on this page.

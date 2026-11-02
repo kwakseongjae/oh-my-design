@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-29",
+  "generated_at": "2026-11-02",
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 530,
   "counts": {
-    "verified_v2": 308,
-    "partial": 109,
+    "verified_v2": 318,
+    "partial": 99,
     "legacy_snapshot": 113,
     "total": 530
   },
@@ -168,16 +168,14 @@
     },
     {
       "id": "adobe",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 22,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "adyen",
@@ -1120,16 +1118,14 @@
     },
     {
       "id": "databricks",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 21,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "datadog",
@@ -1257,16 +1253,14 @@
     },
     {
       "id": "digital-agency-jp",
-      "status": "partial",
-      "verified_at": "2026-06-17",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 24,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "discord",
@@ -1981,16 +1975,14 @@
     },
     {
       "id": "govuk",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 62,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "greencar",
@@ -2189,16 +2181,14 @@
     },
     {
       "id": "hubspot",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 17,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "humanscape",
@@ -3066,16 +3056,14 @@
     },
     {
       "id": "mailchimp",
-      "status": "partial",
-      "verified_at": "2026-06-17",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 15,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "makinarocks",
@@ -3408,16 +3396,14 @@
     },
     {
       "id": "monzo",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "moreh",
@@ -4017,16 +4003,14 @@
     },
     {
       "id": "paypal",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 19,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "paypay",
@@ -4699,16 +4683,14 @@
     },
     {
       "id": "salesforce",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 19,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "samsung",
@@ -4956,16 +4938,14 @@
     },
     {
       "id": "skyscanner",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-02",
+      "next_reverify_at": "2027-05-01",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 21,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "slack",
