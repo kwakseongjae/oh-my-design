@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Keep the Sol slots filled from a queue file and print one line per event (for a Monitor):
-#   SPAWNED <id> · DONE <id> exit=<n> · SKIPPED <id> (<why>) · IDLE (queue empty, none of ours running)
+#   SPAWNED <id> · DONE <id> exit=<n> · RETRY <id> (capacity) · SKIPPED <id> (<why>) · IDLE (queue empty, none of ours running)
 #
 #   scripts/workers/run-queue.sh <queue-file> [--cap N]
 #
@@ -41,7 +41,15 @@ while :; do
     b=$(basename "$d")
     if [ -f "$d/exit-code" ] && [ ! -e "$SEEN/$b" ]; then
       touch "$SEEN/$b"; id=${b#rv-}; id=${id%-20*}
-      echo "DONE $id exit=$(cat "$d/exit-code")"
+      ec=$(cat "$d/exit-code")
+      # Codex capacity errors end a run in seconds or minutes with no work done: park the run and queue the
+      # item again at the end (once per run directory), instead of losing it.
+      if [ "$ec" != 0 ] && grep -q "at capacity" "$d/worker.log" 2>/dev/null; then
+        for l in "${LINES[@]}"; do set -- $l; if [ "$2" = "$id" ]; then LINES+=("$l"); break; fi; done
+        mv "$d" "$d.killed"; echo "RETRY $id (model at capacity)"
+      else
+        echo "DONE $id exit=$ec"
+      fi
     fi
   done
   while [ "$i" -lt "${#LINES[@]}" ] && [ "$(live_sol)" -lt "$CAP" ]; do
