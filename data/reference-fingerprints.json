@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 531,
+ "count": 532,
  "items": [
   {
    "id": "104",
@@ -8144,6 +8144,29 @@
    ],
    "has_personas": false,
    "category_raw": "health-wearables"
+  },
+  {
+   "id": "ovhcloud",
+   "primary_color_hex": "#0050d7",
+   "category": "backend-devops",
+   "visual_theme": "OVHcloud provides public and private cloud, shared hosting and dedicated servers, alongside domain names and communications services. Its history begins in 1999, when Octave Klaba founded OVH while studying at ICAM in Lille to meet a community need for interne",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
   },
   {
    "id": "pairs",
