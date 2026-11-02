@@ -159,7 +159,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 190 -> 189 (2026-11-02): digital-agency-jp.
     // 189 -> 188 (2026-11-02): databricks.
     // 188 -> 187 (2026-11-02): salesforce.
-    expect(flagged.length).toBe(187);
+    // 187 -> 186 (2026-11-02): monzo.
+    expect(flagged.length).toBe(186);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.

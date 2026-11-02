@@ -6881,29 +6881,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "monzo",
-    "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
-    "tokenSource": "reconciled",
-    "claimCount": 121,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 150,
+    "evidenceClaimCount": 150,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 12,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 10,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
+    "tier1SourceCount": 12,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -12990,8 +12985,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 314,
-  "partial": 103,
+  "verified_v2": 315,
+  "partial": 102,
   "legacy_snapshot": 113,
   "total": 530
 } as const;

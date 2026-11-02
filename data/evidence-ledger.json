@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 314,
-  "sources": 2185,
+  "references_with_verification_v2": 315,
+  "sources": 2197,
   "sources_by_kind": {
     "brand-asset": 91,
     "license": 138,
-    "official-doc": 860,
-    "product-surface": 1096
+    "official-doc": 869,
+    "product-surface": 1099
   },
   "references": {
     "104": {
@@ -8222,6 +8222,84 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.mongodb.design"
+        }
+      ]
+    },
+    "monzo": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "current-account",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "design-index",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "press",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "writing-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
+        },
+        {
+          "id": "writing-system",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "monzo.com"
         }
       ]
     },
