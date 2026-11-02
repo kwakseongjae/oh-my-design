@@ -1,6 +1,6 @@
 {
   "name": "oh-my-design-cli",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 500+ quality-graded references.",
   "type": "module",
   "bin": {
@@ -40,6 +40,7 @@
     "skills/omd-showcase",
     "skills/omd-cjk-type-shader",
     "skills/omd-shader-hero",
+    "skills/hangul",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",

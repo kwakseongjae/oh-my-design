@@ -84,6 +84,17 @@ describe("localized CLI docs", () => {
     }
   });
 
+  it("links /hangul to its launch page: /ko/hangul from the Korean docs, the English /hangul elsewhere", () => {
+    // A fixed URL contract with the launch page (docs/HANGUL_LAUNCH_PLAN_2026-10-21.md).
+    for (const locale of DOC_LOCALES) {
+      const pages = CLI_DOCS[locale].skills.pages;
+      expect(Object.keys(pages), locale).toEqual(["hangul"]);
+      expect(pages.hangul.href, locale).toBe(locale === "ko" ? "/ko/hangul" : "/hangul");
+      expect(pages.hangul.label, locale).toContain("/hangul");
+      for (const skill of Object.keys(pages)) expect(ALL_SKILLS, `${locale} ${skill}`).toContain(skill);
+    }
+  });
+
   it("states the bundle and archive counts the build actually ships", () => {
     const cursorSkillCount = SKILL_COUNT - 1;
     for (const locale of DOC_LOCALES) {

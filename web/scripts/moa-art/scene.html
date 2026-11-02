@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>moa art</title>
+<style>html,body{margin:0;background:transparent}</style>
+<script type="importmap">{"imports":{"three":"/three/build/three.module.js","three/addons/":"/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+/* The four illustrations in the /hangul page's moa screens, modelled from three.js primitives and
+   rendered on a transparent ground (render.mjs drives this page and writes the WebP files). One
+   material family for all four: soft gloss over a clay body, the moa blue, a yellow ribbon and a
+   coral for the error. Lit like the home page's keys: a RoomEnvironment plus a key light up-left. */
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const C = {
+  blue: "#2c6cf0", blueLid: "#3f7df7", blueMid: "#5f95fb", bluePale: "#9cbfff", plate: "#dbe6ff",
+  yellow: "#ffbf1f", white: "#ffffff", coral: "#ff5c5c", red: "#d92d2d",
+};
+
+function mat(hex, o = {}) {
+  return new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color(hex), roughness: 0.34, metalness: 0,
+    clearcoat: 0.55, clearcoatRoughness: 0.28,
+    sheen: 0.15, sheenRoughness: 0.55, sheenColor: new THREE.Color("#ffffff"),
+    ...o,
+  });
+}
+const mesh = (geo, m, x = 0, y = 0, z = 0) => {
+  const me = new THREE.Mesh(geo, m);
+  me.position.set(x, y, z);
+  me.castShadow = me.receiveShadow = true;
+  return me;
+};
+/** a rounded stroke from a to b (x, y in the group's plane, z fixed) */
+function stroke(a, b, r, m, z = 0) {
+  const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy);
+  const me = mesh(new THREE.CapsuleGeometry(r, len, 8, 24), m, (a[0] + b[0]) / 2, (a[1] + b[1]) / 2, z);
+  me.rotation.z = Math.atan2(dy, dx) - Math.PI / 2;
+  return me;
+}
+
+const BUILD = {
+  /* 혜택 banner: a gift box with a yellow ribbon and bow */
+  gift() {
+    const g = new THREE.Group(), rib = mat(C.yellow, { roughness: 0.3 });
+    g.add(mesh(new RoundedBoxGeometry(1.0, 0.74, 1.0, 6, 0.1), mat(C.blue), 0, 0.37, 0));
+    g.add(mesh(new RoundedBoxGeometry(1.12, 0.26, 1.12, 6, 0.09), mat(C.blueLid), 0, 0.83, 0));
+    g.add(mesh(new RoundedBoxGeometry(0.22, 0.76, 1.03, 4, 0.04), rib, 0, 0.37, 0));
+    g.add(mesh(new RoundedBoxGeometry(1.03, 0.76, 0.22, 4, 0.04), rib, 0, 0.37, 0));
+    g.add(mesh(new RoundedBoxGeometry(0.22, 0.28, 1.15, 4, 0.04), rib, 0, 0.83, 0));
+    g.add(mesh(new RoundedBoxGeometry(1.15, 0.28, 0.22, 4, 0.04), rib, 0, 0.83, 0));
+    const loop = new THREE.TorusGeometry(0.21, 0.085, 20, 56);
+    const l = mesh(loop, rib, -0.21, 1.13, 0.02), r = mesh(loop, rib, 0.21, 1.13, 0.02);
+    l.rotation.set(0.35, 0.75, 0.45); r.rotation.set(0.35, -0.75, -0.45);
+    l.scale.set(1.05, 0.78, 1); r.scale.set(1.05, 0.78, 1);
+    g.add(l, r, mesh(new THREE.SphereGeometry(0.12, 28, 18), rib, 0, 1.02, 0.02));
+    return { g, cam: [2.25, 2.0, 3.1], at: [0, 0.6, 0] };
+  },
+  /* the sent toast: a blue coin with a white check */
+  sent() {
+    const g = new THREE.Group(), R = 0.66, T = 0.24, r = 0.09, pts = [new THREE.Vector2(0, -T / 2)];
+    for (let i = 0; i <= 10; i++) { const a = -Math.PI / 2 + (i / 10) * (Math.PI / 2); pts.push(new THREE.Vector2(R - r + r * Math.cos(a), -T / 2 + r + r * Math.sin(a))); }
+    for (let i = 0; i <= 10; i++) { const a = (i / 10) * (Math.PI / 2); pts.push(new THREE.Vector2(R - r + r * Math.cos(a), T / 2 - r + r * Math.sin(a))); }
+    pts.push(new THREE.Vector2(0, T / 2));
+    const coin = mesh(new THREE.LatheGeometry(pts, 96), mat(C.blue));
+    coin.rotation.x = Math.PI / 2;
+    const w = mat(C.white, { roughness: 0.25 }), z = T / 2 + 0.03;
+    g.add(coin, stroke([-0.27, 0.02], [-0.08, -0.17], 0.075, w, z), stroke([-0.08, -0.17], [0.28, 0.2], 0.075, w, z));
+    g.rotation.set(0.12, -0.42, 0.05);
+    return { g, cam: [0.5, 0.55, 3.2], at: [0, 0, 0] };
+  },
+  /* the figures card: three rising bars on a plate */
+  chart() {
+    const g = new THREE.Group();
+    g.add(mesh(new RoundedBoxGeometry(1.5, 0.12, 0.72, 4, 0.05), mat(C.plate), 0, 0.06, 0));
+    [[-0.46, 0.5, C.bluePale], [0, 0.84, C.blueMid], [0.46, 1.2, C.blue]].forEach(([x, h, col]) => {
+      g.add(mesh(new RoundedBoxGeometry(0.34, h, 0.34, 6, 0.09), mat(col), x, 0.12 + h / 2, 0));
+    });
+    return { g, cam: [1.9, 1.5, 3.3], at: [0, 0.58, 0] };
+  },
+  /* the error: Wi-Fi with a red × badge (a slash hid half the arcs at 40px) */
+  offline() {
+    const g = new THREE.Group(), coral = mat(C.coral), y0 = -0.42, tube = 0.095;
+    [0.36, 0.67, 0.98].forEach((rad) => {
+      const arc = mesh(new THREE.TorusGeometry(rad, tube, 24, 80, Math.PI / 2), coral, 0, y0, 0);
+      arc.rotation.z = Math.PI / 4;
+      g.add(arc);
+      for (const a of [Math.PI / 4, (3 * Math.PI) / 4]) g.add(mesh(new THREE.SphereGeometry(tube, 24, 16), coral, rad * Math.cos(a), y0 + rad * Math.sin(a), 0));
+    });
+    g.add(mesh(new THREE.SphereGeometry(0.135, 32, 20), coral, 0, y0, 0));
+    // the badge: a small red coin in front, bottom right, with a white ×
+    const R = 0.34, T = 0.16, r = 0.07, pts = [new THREE.Vector2(0, -T / 2)];
+    for (let i = 0; i <= 10; i++) { const a = -Math.PI / 2 + (i / 10) * (Math.PI / 2); pts.push(new THREE.Vector2(R - r + r * Math.cos(a), -T / 2 + r + r * Math.sin(a))); }
+    for (let i = 0; i <= 10; i++) { const a = (i / 10) * (Math.PI / 2); pts.push(new THREE.Vector2(R - r + r * Math.cos(a), T / 2 - r + r * Math.sin(a))); }
+    pts.push(new THREE.Vector2(0, T / 2));
+    const bx = 0.62, by = -0.5, bz = 0.22;
+    const badge = mesh(new THREE.LatheGeometry(pts, 72), mat(C.red), bx, by, bz);
+    badge.rotation.x = Math.PI / 2;
+    const w = mat(C.white, { roughness: 0.25 }), z = bz + T / 2 + 0.02, d = 0.12;
+    g.add(badge, stroke([bx - d, by + d], [bx + d, by - d], 0.045, w, z), stroke([bx - d, by - d], [bx + d, by + d], 0.045, w, z));
+    g.rotation.set(0.1, -0.3, 0);
+    return { g, cam: [0.3, 0.3, 3.2], at: [0, 0, 0] };
+  },
+};
+
+const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setClearColor(0x000000, 0);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NeutralToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.VSMShadowMap;
+const pm = new THREE.PMREMGenerator(renderer);
+const env = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+
+window.renderArt = (kind, size) => {
+  const scene = new THREE.Scene();
+  scene.environment = env;
+  scene.environmentIntensity = 0.75;
+  scene.environmentRotation.set(0.35, 0.6, 0);
+  const key = new THREE.DirectionalLight(0xffffff, 1.7);
+  key.position.set(-3, 6, 4);
+  key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048);
+  key.shadow.radius = 6; key.shadow.blurSamples = 16; key.shadow.bias = -0.0006;
+  const sc = key.shadow.camera; sc.left = -2; sc.right = 2; sc.top = 2; sc.bottom = -2; sc.near = 0.5; sc.far = 20;
+  const rim = new THREE.DirectionalLight(0xfff4e8, 0.7);
+  rim.position.set(4, 2, -4);
+  scene.add(key, key.target, rim);
+
+  const { g, cam, at } = BUILD[kind]();
+  scene.add(g);
+  // fit: aim at the box centre from the given side, then set the distance so the projected bounds
+  // fill 86% of the square, and shift the view so they sit in the middle
+  const box = new THREE.Box3().setFromObject(g), pts = [];
+  for (const x of [box.min.x, box.max.x]) for (const y of [box.min.y, box.max.y]) for (const z of [box.min.z, box.max.z]) pts.push(new THREE.Vector3(x, y, z));
+  const centre = box.getCenter(new THREE.Vector3());
+  const dir = new THREE.Vector3(...cam).sub(new THREE.Vector3(...at)).normalize();
+  const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
+  let dist = 4, bounds = null;
+  const measure = () => {
+    camera.position.copy(centre).addScaledVector(dir, dist);
+    camera.lookAt(centre);
+    camera.updateMatrixWorld();
+    camera.updateProjectionMatrix();
+    let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    for (const p of pts) { const v = p.clone().project(camera); x0 = Math.min(x0, v.x); x1 = Math.max(x1, v.x); y0 = Math.min(y0, v.y); y1 = Math.max(y1, v.y); }
+    return { x0, x1, y0, y1 };
+  };
+  for (let i = 0; i < 4; i++) {
+    bounds = measure();
+    dist *= Math.max(bounds.x1 - bounds.x0, bounds.y1 - bounds.y0) / 1.72;
+  }
+  bounds = measure();
+  const mx = (bounds.x0 + bounds.x1) / 2, my = (bounds.y0 + bounds.y1) / 2;
+  camera.setViewOffset(size, size, (mx * size) / 2, (-my * size) / 2, size, size);
+  camera.updateProjectionMatrix();
+  renderer.setSize(size, size, false);
+  renderer.render(scene, camera);
+  const url = canvas.toDataURL("image/png");
+  scene.traverse((o) => { if (o.isMesh) { o.geometry.dispose(); o.material.dispose(); } });
+  return url;
+};
+window.__ready = true;
+</script>
+</body>
+</html>

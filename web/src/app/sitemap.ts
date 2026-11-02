@@ -8,6 +8,8 @@ import { BLOG_ON_SUBDOMAIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
 import { LANDING_LANGUAGE_ALTERNATES, SITE_LOCALES, SITE_LOCALE_META } from "@/lib/i18n/site-locales";
 import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { KO_CATALOG_PATH, koDetailPath } from "@/lib/i18n/ko-detail";
+import { HANGUL_PATH } from "@/components/hangul/copy";
+import { HANGUL_LANGUAGES } from "@/components/hangul/metadata";
 
 const siteUrl = "https://oh-my-design.kr";
 
@@ -20,6 +22,11 @@ const ARCHIVE_ALTERNATES: Record<string, string> = {
   ko: `${siteUrl}${KO_CATALOG_PATH}`,
   "x-default": `${siteUrl}/design-systems`,
 };
+
+// The /hangul launch page pair (components/hangul/metadata.ts): Korean is the default, English x-default.
+const HANGUL_ALTERNATES: Record<string, string> = Object.fromEntries(
+  Object.entries(HANGUL_LANGUAGES).map(([lang, path]) => [lang, `${siteUrl}${path}`]),
+);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -48,6 +55,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.88,
       alternates: { languages: ARCHIVE_ALTERNATES },
     },
+    ...[HANGUL_PATH.ko, HANGUL_PATH.en].map((path) => ({
+      url: `${siteUrl}${path}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+      alternates: { languages: HANGUL_ALTERNATES },
+    })),
     {
       url: `${siteUrl}/faq`,
       lastModified: now,

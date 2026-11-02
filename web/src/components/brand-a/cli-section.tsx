@@ -39,7 +39,7 @@ export function CmdText({ cmd = INSTALL }: { cmd?: string }) {
 
 /** The skills `npx skills` lists (no `metadata.internal`); __tests__/r13-cli.test.ts pins them to skills/. */
 export const PUBLIC_SKILLS = [
-  "omd-init", "omd-apply", "omd-autopilot", "omd-feel", "omd-restraint",
+  "omd-init", "omd-apply", "omd-autopilot", "omd-feel", "hangul", "omd-restraint",
   "omd-slop-audit", "omd-humanize", "omd-landing", "omd-shader-hero", "omd-cjk-type-shader",
 ] as const;
 

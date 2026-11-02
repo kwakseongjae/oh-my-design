@@ -391,12 +391,23 @@ function SkillsPage({ dictionary }: { dictionary: CliDocsDictionary }) {
       {content.groups.map((group, index) => (
         <DocsSection key={group.title} id={`skill-group-${index + 1}`} title={group.title} lead={group.description}>
           <div className="dx-skills">
-            {group.skills.map((skill) => (
-              <div key={skill} className="dx-skill">
-                <code translate="no">{skill}</code>
-                <p>{content.descriptions[skill]}</p>
-              </div>
-            ))}
+            {group.skills.map((skill) => {
+              const own = content.pages[skill];
+              return (
+                <div key={skill} className="dx-skill">
+                  <code translate="no">{skill}</code>
+                  <p>
+                    {content.descriptions[skill]}
+                    {own && (
+                      <>
+                        {" "}
+                        <Link className="dx-link" href={own.href} prefetch={false}>{own.label}</Link>
+                      </>
+                    )}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </DocsSection>
       ))}

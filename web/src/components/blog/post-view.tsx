@@ -34,7 +34,17 @@ export function BlogPostView({
       <BlogHtmlLang locale={post.locale} />
       <BlogHeader locale={locale} switchTo={switchTo} />
 
-      <article id="main" className="mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6" lang={post.locale}>
+      {/* Korean posts break between words, not syllables (/hangul HG-10: keep-all, paired with
+          overflow-wrap so a long token still wraps; klreq §7.1.1 allows it for the whole document).
+          Table cells take break-word instead of anywhere (HG-9: "break-word where min-content must
+          stay intact"), so a column grows to its longest word and the table's own overflow-x
+          wrapper scrolls, rather than splitting 프로|젝트. Scoped to Korean: keep-all would make
+          Chinese or Japanese runs unbreakable. */}
+      <article
+        id="main"
+        className={`mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6${post.locale === "ko" ? " [word-break:keep-all] [&_td]:[overflow-wrap:break-word] [&_th]:[overflow-wrap:break-word]" : ""}`}
+        lang={post.locale}
+      >
         <Link
           href={blogIndexHref(locale)}
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
