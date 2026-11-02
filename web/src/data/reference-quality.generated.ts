@@ -8447,6 +8447,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "pipedrive",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 87,
+    "evidenceClaimCount": 87,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 7,
+    "conflictCount": 0,
+    "tier1SourceCount": 7,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "pixiv",
     "status": "verified_v2",
     "verifiedAt": "2026-09-21",
@@ -13008,10 +13030,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 322,
+  "verified_v2": 323,
   "partial": 98,
   "legacy_snapshot": 112,
-  "total": 532
+  "total": 533
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 532,
+ "count": 533,
  "items": [
   {
    "id": "104",
@@ -8681,6 +8681,29 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "consumer"
+  },
+  {
+   "id": "pipedrive",
+   "primary_color_hex": "#017737",
+   "category": "saas",
+   "visual_theme": "Pipedrive is a sales CRM for small and medium-sized businesses. It began with salespeople in Estonia in 2010 and centres its product on visualising a sales process, managing leads and automating sales work. Its own company page identifies New York as its headq",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "pixiv",
