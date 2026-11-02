@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 310,
-  "sources": 2100,
+  "references_with_verification_v2": 311,
+  "sources": 2121,
   "sources_by_kind": {
     "brand-asset": 86,
     "license": 137,
-    "official-doc": 801,
-    "product-surface": 1076
+    "official-doc": 816,
+    "product-surface": 1082
   },
   "references": {
     "104": {
@@ -11414,6 +11414,138 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "news.sktelecom.com"
+        }
+      ]
+    },
+    "skyscanner": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "medium.com"
+        },
+        {
+          "id": "colour-design",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "medium.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "ds-components",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-readme",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "ds-root",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-tokens",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "ds-utilities",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "ds-welcome",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.design"
+        },
+        {
+          "id": "foundations",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "unpkg.com"
+        },
+        {
+          "id": "founder-check",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "medium-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "medium.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "raw-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.skyscanner.net"
+        },
+        {
+          "id": "unpkg-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "unpkg.com"
         }
       ]
     },
