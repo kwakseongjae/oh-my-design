@@ -1,7 +1,16 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 17시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
+
+- **오너(16:4x) "a 방향 좋은거 같아. 한글 프리뷰도 좋아."** → 2.0.6 = (a) hangul + 2.0.5 이후 전부, /hangul 프리뷰 GO(10/25 세부 항목 기본값 포함: 히어로에 문서 한 문장 추가 `43c41f1b`, 외래어 4쌍 FYI 유지, KOGL 4쌍 유지).
+- **머지.** main의 미커밋 `.gitignore`(`.vercel`, Vercel CLI가 추가)가 브랜치의 `.gitignore` 변경과 겹쳐 머지가 멈춤 → 그 한 줄을 먼저 커밋 `80c8a869` → `git merge --no-ff origin/feat/hangul-launch-r2` `6dea355d`(무충돌) → 푸시. 버전 2.0.6, 스킬 32/공개 11/Cursor 31, check-counts 일치.
+- **운영 확인(배포 `1kj0hvwub`).** `/ko/hangul`·`/hangul` 200(h1 "같은 화면, 다른 한국어" / "Same screen, different Korean", 문서 문장 있음), `/ko/design-systems` 530장, `/design-systems/toss` 관련 카드 6, `/llms.txt` 32-skill, `/docs/en/skills`에 hangul.
+- **출시 완료.** `v2.0.6` 태그 = `6dea355d`(origin/main) → Release to npm 워크플로 `41408278596` 성공(node18-smoke·publish) → **npm latest 2.0.6, provenance 있음**(레지스트리 반영 약 2분 지연). strict 게이트 waiver는 CHANGELOG 2.0.6에 기록.
+- **정리.** 워크트리 `r15-hangul` 제거(자체 node_modules, 미커밋 없음). 원격 브랜치 `feat/hangul-launch-r2` 남김. 남은 hangul 옛 워크트리 `hangul-launch`(`feat/hangul-launch-page`)·`hangul-uxw`는 손대지 않음.
+- **계속 진행 중.** 재검증 파일럿 `rv-paypal`(Sol max), 신규 후보 센서스(Sonnet 팀원, 276곳). MCP v2 Phase 1은 Sol 슬롯이 나면.
 
 ## ▶ 2026-11-02 17시 · 오너 승인 1·2·4 처리 + 미검증 처리·700 확충 착수 · /hangul GO와 2.0.6 구성 결정 대기
 
