@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 318,
-  "sources": 2296,
+  "references_with_verification_v2": 319,
+  "sources": 2310,
   "sources_by_kind": {
     "brand-asset": 96,
     "license": 138,
-    "official-doc": 937,
-    "product-surface": 1125
+    "official-doc": 947,
+    "product-surface": 1129
   },
   "references": {
     "104": {
@@ -6302,6 +6302,96 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.jandi.com"
+        }
+      ]
+    },
+    "justeat": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "newsroom.justeattakeaway.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "newsroom.justeattakeaway.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.justeattakeaway.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "ds-about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-colour",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-tokens",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "legal-index",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
         }
       ]
     },

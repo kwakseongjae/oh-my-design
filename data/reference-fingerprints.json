@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 530,
+ "count": 531,
  "items": [
   {
    "id": "104",
@@ -5168,6 +5168,27 @@
    "has_personas": true,
    "category_raw": "Developer Recruiting (Saramin)",
    "country": "KR"
+  },
+  {
+   "id": "justeat",
+   "primary_color_hex": "#ff8000",
+   "category": "consumer-tech",
+   "visual_theme": "Just Eat lets people order from restaurants, grocery stores and other local businesses. Its UK website terms identify the operator as **Just Eat.co.uk Ltd**, with a London registered office. [UK terms](https://www.just-eat.co.uk/terms-and-conditions) The group",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "kakao",
