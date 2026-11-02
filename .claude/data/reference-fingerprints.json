@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 538,
+ "count": 539,
  "items": [
   {
    "id": "104",
@@ -11705,6 +11705,29 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "ai-infrastructure"
+  },
+  {
+   "id": "tokyo-metropolitan",
+   "primary_color_hex": "#1a753f",
+   "category": "government",
+   "visual_theme": "Tokyo Metropolitan Government's general portal connects visitors to government information, departments, procedures and public announcements. Its site policy identifies the operator as **東京都**, a Japanese local government. The official chronology records the e",
+   "voice_fingerprint": {
+    "register": "government",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "government"
   },
   {
    "id": "toogoodtogo",
