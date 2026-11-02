@@ -24,6 +24,9 @@ const OUT = path.resolve(__dirname, "..", "src", "data", "embeddings.generated.j
 
 const BATCH = 50;
 
+/** Our own failure reasons: safe to print (no provider body, no headers). */
+class EmbedError extends Error {}
+
 /** Same fields and first Overview paragraph as keyword search; no token guesses. */
 export function embedTextFor(entry, markdown) {
   const overview = sectionsOf(markdown).find((section) => section.title === "Overview")?.markdown ?? "";
@@ -41,14 +44,14 @@ export async function embedCatalog(items, { model, reference_ast, key, request =
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({ model, input: slice.map((item) => item.text) }),
     });
-    if (!response.ok) throw new Error("Embedding request failed");
+    if (!response.ok) throw new EmbedError(`Embedding request failed (HTTP ${response.status})`);
     const payload = await response.json();
-    if (!Array.isArray(payload.data) || payload.data.length !== slice.length) throw new Error("Incomplete embedding response");
+    if (!Array.isArray(payload.data) || payload.data.length !== slice.length) throw new EmbedError("Incomplete embedding response");
     const ordered = [...payload.data].sort((a, b) => a.index - b.index);
     const dimension = dim || ordered[0]?.embedding?.length;
     if (!Number.isInteger(dimension) || dimension <= 0
       || !ordered.every((item, index) => item.index === index && isEmbeddingVector(item.embedding, dimension))) {
-      throw new Error("Invalid embedding vectors");
+      throw new EmbedError("Invalid embedding vectors");
     }
     dim = dimension;
     slice.forEach((item, index) => { vectors[item.id] = ordered[index].embedding; });
@@ -65,7 +68,7 @@ async function main() {
   }
   const { REGISTRY } = await import("../src/data/registry.generated.ts");
   const { reference_ast } = JSON.parse(readFileSync(path.resolve(__dirname, "..", "src", "lib", "mcp", "catalog.generated.json"), "utf8"));
-  if (typeof reference_ast !== "string" || !reference_ast) throw new Error("Missing catalog hash");
+  if (typeof reference_ast !== "string" || !reference_ast) throw new EmbedError("Missing catalog hash");
   const items = REGISTRY.map((entry) => ({
     id: entry.id,
     // readReferenceSource, not the file: it handles every on-disk shape (check-reader-blindness).
@@ -79,8 +82,9 @@ async function main() {
 // Non-fatal by design: a missing key, wrong model slug, or API hiccup must
 // never break a deploy — the runtime falls back to keyword search. Exit 0 always.
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  main().catch(() => {
-    // Never print provider bodies or errors, which may echo request headers.
-    console.warn("[build-embeddings] generation failed — skipping (keyword fallback if no matching corpus).");
+  main().catch((error) => {
+    // Print only our own reasons (an HTTP status at most); a provider body or a foreign error may echo request headers.
+    const reason = error instanceof EmbedError ? error.message : error?.name ?? "unknown error";
+    console.warn(`[build-embeddings] generation failed (${reason}) — skipping (keyword fallback if no matching corpus).`);
   });
 }
